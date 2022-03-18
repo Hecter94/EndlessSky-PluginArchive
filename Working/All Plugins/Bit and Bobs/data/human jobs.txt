@@ -1,0 +1,130 @@
+mission "Recontruction Efforts [0]"
+	name "Bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination> to aid in reconstruction efforts. You will receive <payment>."
+	cargo random 25 2 .05
+	to offer
+		random < 85
+	source
+		attributes mining factory oil
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination
+		system "Pollux"
+		attributes "paradise" "rich"
+	on complete
+		payment
+		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+
+
+mission "Bulk passenger transport [0]"
+	name "Bulk passenger transport to <planet>"
+	job
+	repeat
+	description `Take <bunks> passengers to <destination>. Payment will be <payment>.`
+	passengers 35 45
+	to offer
+		random < 80
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination
+		distance 3 7
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on complete
+		payment
+		payment 36000
+		dialog "The large group of passengers depart onto <planet> and you receive the agreed - upon payment of <payment>."
+		
+mission "Bulk passenger transport [1]"
+	name "Bulk passenger transport to <planet>"
+	job
+	repeat
+	description `Take <bunks> passengers to <destination>. Payment will be <payment>.`
+	passengers 40 50
+	to offer
+		random < 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination
+		distance 2 5
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on complete
+		payment
+		payment 38000
+		dialog "The large group of passengers depart onto <planet> and you receive the agreed - upon payment of <payment>."
+		
+mission "Bulk passenger transport [2]"
+	name "Bulk passenger transport to <planet>"
+	job
+	repeat
+	description `Take <bunks> passengers to <destination>. Payment will be <payment>.`
+	passengers 70 90
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination
+		distance 3 4
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on complete
+		payment
+		payment 40000
+		dialog "The large group of passengers depart onto <planet> and you receive the agreed - upon payment of <payment>."
+		
+mission "Crocoduck"
+	name "Strange Delivery to <planet>"
+	job
+	description "Deliver a live animal to <destination>. Payment is <payment>."
+	cargo "Strange bird" 1
+	to offer
+		random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination
+		distance 3 8
+		government Republic "Free Worlds" Syndicate Neutral
+	on accept
+		dialog "Upon accepting the job, you are given a crate like the ones they use to carry dogs. Inside is a a creature that would normally pass for a bird, but has an odd reptilian head. There's nothing quite like it."
+	on complete
+		payment 5000 1000
+		log `Delivered some kind of bird. It looked like a goose and an alligator crudely composited together. I've never seen anything like it!`
+		dialog `Despite it's constant attempts to the contrary, the bird(?) has remained in it's crate. You hand it over to your contact on <planet> and are given a payment of <payment>.`
+		
+mission "Legend Bounty Hunting"
+	name "Hunt down <npc>"
+	description "A pirate vessel named <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> for payment (<payment>)."
+	repeat
+	job
+	to offer
+		"combat rating" > 5000
+		random < 10
+	source
+		government Republic "Free Worlds" Syndicate Neutral
+		attributes rim south north "dirt belt" core frontier
+	npc kill
+		personality heroic staying nemesis target
+		government Bounty
+		system
+			distance 1 2
+		fleet
+			names "Legendary Pirate"
+			variant
+				"Insane Cruiser"
+				"Insane Leviathan" 2
+				"Insane Falcon" 3
+			variant
+				"Insane Cruiser"
+				"Insane Leviathan" 3
+				"Insane Falcon" 2
+			variant
+				"Cool Baccy"
+				"Insane Leviathan" 2
+				"Insane Falcon" 3
+			variant
+				"Cool Baccy"
+				"Insane Leviathan" 3
+				"Insane Falcon" 2
+		dialog "The <npc> has been eliminated. You can claim the bounty payment by returning to <destination>."
+	on complete
+		payment 5000000
+		dialog "The government of <planet> gratefully pays you <payment> for eliminating the <npc>."
