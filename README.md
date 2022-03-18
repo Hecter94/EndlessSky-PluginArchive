@@ -1,5 +1,6 @@
 # EndlessSky-PluginArchive
 Known Issues
+
 "Bounty" Arfecta is spawned directly outside starting location. 
 Culprit: The Station of Dr. Rousseau, Mission: "Puzzle 3". No location is defined so Arfecta is spawned on first "landing".
 
