@@ -94,7 +94,33 @@ Unfinished but playable.
 
 **Created by toilethinges**
 
-**Continued development by kestrel1110**
+**Continued development by Bereskatuket (Kestrel1110)**
+
+-description-
+
+**Status**
+
+-status-
+
+## Advanced Starts
+
+![advancedstarts](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Advanced%20Starts/icon.jpg)
+
+**Created by Bereskatuket (Kestrel1110)**
+
+Adds several new starting options to the game.
+
+**Status**
+
+-status-
+
+## Akasha Chronicles
+
+![akasha](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Akasha%20Chronicles/icon.png)
+
+**Original author: Gillax**
+
+**Current author: jchamlin**
 
 -description-
 
