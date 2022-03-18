@@ -1,0 +1,620 @@
+﻿# Copyright (c) 2016 by Jonathan Steck
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Enigma Corp [0]"
+	source
+		government "Pirate"
+	name "Enigma Corp"
+	description "Help get the CEO of Enigma Corporation back to <destination>."
+	destination "Enigma Prime"
+	to offer
+		has "main plot completed"
+	on offer
+		conversation
+			`You walk into the <origin> spaceport, getting some nasty looks from people nearby as usual and the feeling that someone really wants to stab you right now.`
+			`	You head on over to the bar to grab a drink and notice the man seated next to you is wearing a suit. Normally this wouldn't be something to worry about, but you find it rather odd considering the setting of mostly dirty, raggedy space pirates.`
+			`	As you take a sip of your drink, the man turns to you.`
+			`	"I can tell this isn't the kind of place you normally go to. You think you could help me out?"`
+			choice
+				`	"Who are you?"`
+					goto what
+				`	"No thanks, I've better things to do."`
+					goto no
+
+			label no
+			`	"Hold on. I believe I could persuade you otherwise."`
+				goto what
+
+			label what
+			`	"I'm the owner of a rather successful ship and weapons development company: ‘The Enigma Corporation.’ I'm sure you've heard about it."`
+			`	"Well I've heard some good things about you, <last>, and I was wondering if you could give me a hand. Between you and me, I'm kind of stuck here."`
+			choice
+				`	"Sure thing. Where do you need to go?"`
+					goto yes
+				`	"What do I get out if it?"`
+					goto reward
+				`	"I'm no SpaceUber driver. Go find another ride."`
+					goto nope
+
+			label reward
+			`	"My destination is a place where we don't normally allow outsiders to enter. It has never before seen technology that would probably interest you, as well as a line of ships that are stronger than almost anything else currently on the market."`
+			`	"So, what do you say?"`
+			choice
+				`	"You've got my attention. Where to?"`
+					goto yes
+				`	"Not interested. I can probably get better things by raiding the Quarg."`
+					goto nope
+
+			label nope
+			`	"I'd have thought someone who helped saved the human race would be a little more friendly."`
+				decline
+
+			label yes
+			`	"Go to <destination>. It's located north of Deep Sky space, right by Suhail."`
+				accept
+
+	on accept
+		event "Enigma Prime Open"
+		"reputation: Enigma Corp" += 20
+	
+	on decline
+		"reputation: Enigma Corp" = -1
+
+	on complete
+		event "Talk to Dolent" 10
+		payment 30000000
+		conversation
+			`	"Thank you for the ride. Not many people these days would care enough to help out a stranger. Help yourself to the outfitters and shipyards, and I'd love to have you work for me in the future."`
+			`	He begins walking off towards a wing of the station labeled "Restricted Access," but then turns around and walks back to you.`
+			`	"I almost forgot something."`
+			`	He hands you <payment>.`
+			`	"Keep the change. And call me if you need anything."`
+			`	He winks, and goes back walking towards the restricted access area.`
+
+
+event "Talk to Dolent"
+
+event "Enigma Prime Open"
+	planet "Enigma Prime"
+		"required reputation" 20
+		bribe 0.1
+	planet "Enigma Meridian"
+		"required reputation" 20
+		bribe 0.1
+
+mission "EC reverse compat"
+	landing
+	invisible
+	to offer
+		has "event: Enigma Prime Open"
+	on offer
+		event "Enigma Update"
+		fail
+
+event "Enigma Update"
+	planet "Enigma Meridian"
+		"required reputation" 20
+		bribe 0.1
+	planet "Enigma Prime"
+		outfitter "Common Outfits"
+		outfitter "Basic Outfits"
+		outfitter "Ammo North"
+		shipyard "Basic Ships"
+		shipyard "Lionheart Basics"
+		description `A near constant stream of freighters are landing and launching from the hangar of the station, presumably to bring supplies for whatever crazy experiments the corporation is conducting in this secretive station. Much of the station is labeled as "authorized personnel only," leaving you with only the outfitters and shipyards to explore. `
+		description `Part of the hangar wall is a large tinted glass window facing the center of the system. You are able to see the binary stars orbiting each other in close proximity, one pulling gas from the other due to its immense gravity.`
+		spaceport `The spaceport is full of men and women in light blue suits, most of which are busy unloading the freighters that enter the station and carting off the cargo to another section of the station. At the far end of the hangar you can see what appears to be a shipyard of sorts, with workers building or repairing small ships that you have never seen before, likely a new ship that will eventually be released onto the market.`
+		"required reputation" 20
+		bribe 0.1
+	system Enigma
+		fleet "Small Enigma Merchents" 500
+		fleet "Large Enigma Merchants" 1000
+		fleet "Small Enigma Military" 750
+		fleet "Large Enigma Military" 1500
+		fleet "Small Northern Merchants" 1500
+		fleet "Large Northern Merchants" 3000
+		fleet "Small Northern Pirates" 2000
+		fleet "Large Northern Pirates" 3000
+		fleet "Small Deep" 3000
+		fleet "Large Deep" 5000
+		fleet "Oblivion" 25000
+		fleet "Keeper" 75000
+
+mission "Enigma Corp [1a]"
+	source "Enigma Prime"
+	name "A Brand New Car"
+	description "Escort the new EC-070 up to Mebsuta and test the EMP device on the stolen frigate."
+	destination "Enigma Prime"
+	to offer
+		has "Enigma Corp [0]: done"
+		has "event: Talk to Dolent"
+	on offer
+		conversation
+			`Do you wish to find the CEO of Enigma Corp?`
+			choice
+				`	(Yes.)`
+					goto begin
+				`	(Not right now.)`
+					defer
+
+			label begin
+			choice
+				`	(Ask where he is.)`
+					goto help
+				`	(Attempt to find him on your own.)`
+					goto solo
+					
+			label help
+			`	You notice what looks like a reception desk in the corner of the spaceport and walk over to it. The lady working the desk looks up from her computer and notices you.`
+			`	"Hello, how may I help you?"`
+			choice
+				`	"I would like to schedule an appointment with the CEO of the corporation."`
+					goto appointment
+				`	"Do you believe that I could get ahold of the CEO right now?"`
+					goto now
+				`	"Don't mind me, I'm just looking around."`
+					goto looking
+					
+			label appointment
+			`	"As of right now, the earliest that I could get you an appointment with Mr. Dolent is four months from now. Is that fine with you?"`
+			choice
+				`	That is way too long. Do you think I could talk to him right now?`
+					goto now
+				`	"You know what, nevermind."`
+					defer
+				
+			label looking
+			`	"Have a nice day then."`
+				defer
+			
+			label now
+			`	"Give me a minute to call him and see." The lady picks up the phone on the reception desk and punches in a few numbers.`
+			`	"Mr. Dolent, there's a captain down here who wishes to see you. His name is..." She brings the phone down from her ear and looks at you.`
+			`	"<first> <last>," you say.`
+			`	"Captain <last>."`
+			`	Mr. Dolent screams so loud on the other side of the line that you can hear him from where you're standing.`
+			`	"Don't you know who he is? Send him down here!"`
+			`	The lady pulls the phone away from her ear and rubs her temples.`
+			`	"Down that hallway. Fifteenth door on the right side. It's labeled 'Conference Room D.'"`
+			`	`
+			`	You walk down the hallways that the lady pointed to and find the room labeled 'Conference Room D'. You walk on in to find the CEO reclined back on a rather luxurious looking chair looking out the window at the huge blue star in the center of the system, with a faint red glow coming from the right side of the star from the other star behind it.`
+				goto meeting
+			
+			label solo
+			`	You walk over to the area labeled "Restricted Access" that you saw before. It leads down a long hallway that curved with the station and is lined with metal doors on either side. There appears to be no one guarding the hallway and you don't notice any cameras that could spot you.`
+			choice
+				`	Go down the hallway.`
+					goto going
+				`	Ask around.`
+					goto help
+					
+			label going
+			`	Making sure that no one is looking, you dart down the hallway until you can't see where you came from anymore.`
+			choice
+				`	Keep going down the hallway.`
+					goto hallway
+				`	Open one of the doors near you.`
+					goto doors
+					
+			label doors
+			`	Where you are standing, there are four doors around you.`
+				goto doorchoicea
+			
+			label doorchoicea
+			choice
+				`	Open the door labeled "Authorized personnel only."`
+					goto personnela
+				`	Open the door labeled "Do not open. I'm serious."`
+					goto seriousa
+				`	Open the door labeled "Airlock."`
+					goto airlock
+				`	Open the rusted door with no label.`
+					goto nolabela
+				`	Forget the doors and go farther down the hallway.`
+					goto hallway
+					
+			label doorchoiceb
+			choice
+				`	Open the door labeled "Authorized personnel only."`
+					goto personnelb
+				`	Open the door labeled "Do not open. I'm serious."`
+					goto seriousb
+				`	Open the door labeled "Airlock."`
+					goto airlock
+				`	Open the rusted door with no label.`
+					goto nolabelb
+				`	Forget the doors and go farther down the hallway.`
+					goto hallway
+					
+			label airlock
+			`	You open the door to the airlock and step inside. You notice that it is surprisingly luxurious looking for what is suppose to be an airlock. There are leather couches and a minibar in the corner of the room.`
+			`	You turn back around leave, but suddenly the door closes on you. A siren begins to go off and the wall behind you begins to make noises of gears turning.`
+			`	The wall opens up, and you are dragged into the vacuum of space.`
+				die
+					
+			label nolabela
+			`	As you approach the door with no label, you begin to hear something behind the door. There is a low thudding sound that occurs every few seconds.`
+			`	Thud... Thud... Thud...`
+			`	You hesitantly stretch your hand out to turn the knob on the door. As you begin to open the door, you hear a low growling sound that begins to grow louder the more you open the door. The room is completely dark so you can not see what it is.`
+			choice
+				`	Close the door and try another one.`
+					goto doorchoicea
+				`	Try and find a light.`
+					goto light
+					
+			label nolabelb
+			`	As you approach the door with no label, you begin to hear something behind the door. There is a low thudding sound that occurs every few seconds.`
+			`	Thud... Thud... Thud...`
+			`	You hesitantly stretch your hand out to turn the knob on the door. As you begin to open the door, you hear a low growling sound that begins to grow louder the more you open the door. The room is completely dark so you can not see what it is.`
+			choice
+				`	Close the door and try another one.`
+					goto doorchoiceb
+				`	Try and find a light.`
+					goto light
+					
+			label light
+			`	You fiddle around the wall to try and find a lightswitch. You finally find one and flip it on. You turn to look into the room to find yourself face to face with a large, hairy, drooling mess of a monster chained to the wall.`
+			`	Before you even know it, the beast is already on top of you with its large claws wrapped around your leg. It drags you into the room and slams your body against the ceiling light, plunging the room back into darkness.`
+			`	Never again do you see the light.`
+				die
+			
+			label seriousa
+			`	You step up to the door labeled "Do not open." You grab the knob and to your surprise it turns, completely unlocked. Inside you see that the walls are lined with rail rifles and personal shield generators.`
+			`	In the back of the room is a desk, and on top of the desk, a keycard. You grab the keycard and head back to the hallway.`
+				goto doorchoiceb
+						
+			label seriousb
+			`	You already checked this room. Nothing new here.`
+				goto doorchoiceb
+
+			label personnela		
+			`	The door appears to require a key card. Maybe you can find one somewhere else.`
+				goto doorchoicea
+					
+			label personnelb
+			`	The door appears to require a key card. You try the keycard that you found in the other room, and it works. The door unlocks and slides open.`
+			`	You look inside to see what looks like a security room. There is a desk in the middle of the room and the walls are lined with cameras showing all sorts of different parts of the station.`
+			`	There is nobody at the desk.`
+			choice
+				`	Sit in the desk and watch the TVs.`
+					goto sit
+				`	Return to the hallway`
+					goto doorchoiceb
+			
+			label sit
+			`	You sit down in the chair and begin skimming over the dozens of TVs on the walls.`
+			`	Most of the video screens show boring scenes of empty hallways or just normal shipyard work areas, but one screen catches your eye.`
+			`	It appears to be overlooking one of the lab areas where they test and develop new technology.`
+			`	In the lab are two people fitted head to toe in hazmat suits, observing what appears to be a Quarg on an operating table. The Quarg seems to be dead, but then the hazmat figures pull out a laser scalpel and begin cutting into the Quarg.`
+			`	You can't hear anything, but you can see the Quarg begin to twist and spasm, held down by multiple metal clamps. After about thirty seconds of watching the poor creature get tortured, you look away in disgust. Just then, a shadow falls over the room from the doorway.`
+			`	You turn around to find yourself face to face with the CEO of Enigma Corp. He looks at you, then to the screen, then back to you. He begins to reach down to his side, looking as though he is about to pull a weapon.`
+			choice
+				`	"No! Wait! I won't tell anyone!"`
+					goto wait
+				`	Attempt to pull your gun and fire first.`
+					goto gun
+			
+			label wait
+			`	"Sorry, but I can't take that chance." He pulls his pistol from his hip and fires one shot, right between your eyes.`
+				die
+			
+			label gun
+			`	You reach down to pull your laser pistol up to fire. The CEO dodges behind the doorway and closes it, locking you inside.` 
+			`	You get up and attempt to find a way out, but realize that there is a foul smell starting to kill the room. You look down to one of the vents along the wall and notice a yellow gas begin to pour out of the vent.`
+			`	Before you know it, you are slowly choking for air, trying to find any pocket of oxygen. You crumble to the floor from exhaustion and slowly suffocate to death.`
+				die
+			
+			label hallway
+			`	You continue walking down the hallway when you hear a door open behind you. Before you can run, you find yourself face to face with the same man you transported here from that pirate planet.`
+			`	"Captain <last>...? What are you doing here?"`
+			choice
+				`	"I was actually looking for you. I was told that I could find you down here somewhere."`
+					goto find
+				`	RUN FORREST`
+					goto forrest
+			
+			label forrest
+			`	Instead of being a sensible person and just trying to play it cool, you decide to turn around and bolt.`
+			`	But before you get far, you suddenly feel a sharp pain in your back. You fall to the ground and turn around to see the CEO pointing a smoking laser pistol directly at you.`
+			`	He begins walking toward you, pistol still in hand. "I have no idea why you would run, but it makes me think that it isn't safe enough to keep you alive."`
+			`	He points the gun to your head and pulls the trigger. The last thing you'll ever see is his smug smile while he pushes that gun against your head.`
+				die
+			
+			label find
+			`	"Well you came to the right place." He turns around and goes back into the door that he came from.`
+				goto meeting
+			
+			label meeting
+			`	"Come on in, <last>. Have a seat."`
+			`	"I don't believe I've ever formally introduced myself. The name is David M. Dolent. What brings you here to see me?"`
+			choice
+				`	"I heard that Enigma Corp is always developing new technology, and I thought it would be nice to know what you guys have coming up."`
+					goto tech
+				`	"Well you just seemed like such an interesting individual the first time that I met you that I just had to try and talk to such a cool guy again."`
+					goto cooldude
+				`	"No reason. I'm just bored and was looking for something to do."`
+					goto bored
+			
+			label tech
+			`	"Indeed we are."`
+				goto proposition
+			
+			label cooldude
+			`	"Yes, I tend to have that effect on people. Do you want to know something really cool though?"`
+				goto proposition
+			
+			label bored
+			`	"Well then you came to the right place, <last>. Here at Enigma Corp we've always got something new to have fun with."`
+				goto proposition
+				
+			label proposition
+			`	"As of right now, we have two new ships that need a bit of combat testing. Both are variants of ships we already have out on the market, but they include special features meant for only the most important of individuals."`
+			`	"The first one, the EC-070, is a combat version of the EC-069 'Star King.' It comes specially fitted with an EMP device used to scramble the electronics of ships that happen to get too close to the ship, allowing for safer travel from pirates. Pirates warp in and get to close? Set off the EMP and jump out ASAP."`
+			`	"The second one, which is going to need a few more weeks of preparation before we're ready to put a human inside of it, is the EC-078, which is just the EC-077 strapped without new prototype cloaking device."`
+			`	"The device is rather large at the moment, which is why it needs to be integrated directly into the ship. It works by increasing the gravity around the ship using harvested dark matter, allowing the ship to bend the light around it and become almost completely invisible."`
+			`	"So, would you be interested in helping to test them?"`
+			choice
+				`	"Sure, I'd love to. Where to I start?"`
+					goto accept
+				`	"I'm not too much a fan of testing technology. Given the power of my ship, I usually just end up blowing everything up anyways."`
+					goto decline
+					
+			label decline
+			`	"That's a shame that you won't even try. Well, if you ever need to chat then you know where to find me."`
+				decline
+				
+			label accept
+			`	"Right now we have an EC-070 ready to launch in the shipyard."`
+			`	"We got word earlier today that there is a pirate up in Mebsuta who thinks he's tough shit. He stole a Navy frigate and is not waving it around like a war trophy. Go up there, disable his ship, and board to to look at how the ship was damaged by the EMP device. After that, do whatever you want with him and come back here with the data."`
+			`	"Oh, and just make sure you keep the EC-070 alive. They aren't cheap."`
+				accept
+
+	npc save accompany
+		government "Enigma Corp"
+		personality escort heroic
+		system "Enigma"
+		ship "EC-070 'Star Guardian'" "Prototype Ship"
+			
+	npc board
+		government "Pirate"
+		personality heroic staying
+		system "Mebsuta"
+		ship "Frigate" "Soulless Sun"
+			
+	npc
+		government "Pirate"
+		personality staying
+		system "Mebsuta"
+		fleet "Large Northern Pirates"
+		
+	on decline
+		"reputation: Enigma Corp" --
+		event "Star Guardian" 90
+			
+	on complete
+		"reputation: Enigma Corp" ++
+		payment 1000000
+		event "Star Guardian" 30
+		conversation
+			`As you step out of your ship, Mr. Dolent is already waiting on the platform for you.`
+			`	"Did you get good results?"`
+			choice
+				`	"It went perfectly. That frigate never stood a chance."`
+					goto perfect
+				`	"I don't know, the device didn't seem to consistent."`
+					goto consistent
+
+			label perfect
+			`	"That's great to know. We'll make sure to start producing as many as we can right away. If you want to buy some of your own, just come back in a few weeks."`
+				goto payment
+
+			label consistent
+			`	"We had noticed that during testing, but there wasn't much of a way around it without directly damaging the ship. It will just have to stay that way until we can develop some sort of field technology that will allow it to be more consistent."`
+			`	"We'll make sure to start producing as many as we can right away. If you want to buy some of your own, just come back in a few weeks."`
+				goto payment
+
+			label payment
+			`	"Also, here's some cash for the troubles." Mr. Dolent reaches into his pocket and pulls out a credit chips. <payment>."`
+			`	"Well, you know where to find me."`
+
+event "Star Guardian"
+	shipyard "EC-0"
+		"EC-070 'Star Guardian'"
+
+mission "Enigma Corp [1b1]"
+	landing
+	name "Another Brand New Car"
+	description "Return to Enigma Prime to help test out the EC-078."
+	destination "Enigma Prime"
+	to offer
+		has "Enigma Corp [1a]: done"
+		has "event: Star Guardian"
+	on offer
+		conversation
+			`You receive a message from Enigma Corp.`
+			`	"<last>, the EC-078 is ready for testing, and the EC-070 is now open to the public. Come stop on by if you want to help test out the EC-078."`
+			choice
+				`	"Sure. I should arrive in a few day's time,"`
+					accept
+				`	"Sorry, but I am rather busy at the moment. Would you be able to wait for me?"`
+					goto busy
+
+			label busy
+			`	"I'm on a tight schedule, so if you don't do it then we'll simply have someone else do it in your place."`
+			choice
+				`	"I suppose I could make some time for it. I'll be there as soon as possible."`
+					accept
+				`	"Well I don't have any time to help, so you'll have to find someone else. "`
+					goto decline
+					
+			label decline
+			`	"Well that's too bad. Hopefully you find some time later to help out."`
+				decline
+
+	on decline
+		"reputation: Enigma Corp" --
+		event "Dire Hawk" 120
+	
+	on complete
+		"reputation: Enigma Corp" ++
+
+mission "Enigma Corp [1b2]"
+	landing
+	name "Another Brand New Car"
+	description "Return to Enigma Prime to help test out the EC-078."
+	destination "Enigma Prime"
+	to offer
+		not "Enigma Corp [1a]: done"
+		has "event: Star Guardian"
+	on offer
+		conversation
+			`You receive a message from Enigma Corp.`
+			`	"<last>, it's been a while. It took us longer to get the EC-070 fully developed than expected without your help, but it's finally avialable for purchase here at <destination>.`
+			`	"You might also want to know that we have the EC-078 ready for testing; that's the one with the prototype cloaking device. Come stop on by if you want to help test it out."`
+			choice
+				`	"Sure. I should arrive in a few day's time,"`
+					accept
+				`	"Sorry, but I am rather busy at the moment. Would you be able to wait for me?"`
+					goto busy
+
+			label busy
+			`	"I'm on a tight schedule, so if you don't do it then we'll simply have someone else do it in your place."`
+			choice
+				`	"I suppose I could make some time for it. I'll be there as soon as possible."`
+					accept
+				`	"Well I don't have any time to help, so you'll have to find someone else. "`
+					goto decline
+					
+			label decline
+			`	"Well that's too bad. Hopefully you will eventually find some time to help out."`
+				decline
+
+	on decline
+		"reputation: Enigma Corp" --
+		event "Dire Hawk" 180
+	
+	on complete
+		"reputation: Enigma Corp" ++
+
+ship "Quicksilver" "Quicksilver (Automaton)"
+	attributes
+		category "Light Warship"
+		"cost" 1090000
+		"shields" 3000
+		"hull" 800
+		"automaton" 1
+		"mass" 120
+		"drag" 2.7
+		"heat dissipation" .8
+		"fuel capacity" 400
+		"cargo space" 10
+		"outfit space" 240
+		"weapon capacity" 60
+		"engine capacity" 70
+		weapon
+			"blast radius" 40
+			"shield damage" 400
+			"hull damage" 200
+			"hit force" 600
+	outfits
+		"Particle Cannon" 2
+		
+		"RT-I Radiothermal"
+		"LP036a Battery Pack"
+		"D23-QP Shield Generator"
+		"Cooling Ducts"
+		
+		"Greyhound Plasma Thruster"
+		"Greyhound Plasma Steering"
+		"Hyperdrive"
+
+mission "Enigma Corp [1c]"
+	source "Enigma Prime"
+	landing
+	name "Another Brand New Car"
+	description "Test the EC-078 cloaks on the Quicksilver."
+	destination "Enigma Prime"
+	to offer
+		or
+			has "Enigma Corp [1b1]: done"
+			has "Enigma Corp [1b2]: done"
+	
+	on offer
+		conversation
+			`You walk over to the reception desk and ask for Mr. Dolent. The receptionist sends you down to the same conference room that you first spoke with Mr. Dolent in.`
+			`	You find Mr. Dolent staring out the room's window towards the system center, the large star slowly being devoured by the smaller one. He doesn't seem to notice you.`
+			choice
+				`	"Hello."`
+					goto hello
+				`	(Wait.)`
+					goto wait
+
+			label hello
+			`	"Oh, <last>. I didn't see you come in."`
+			`	"How's it been?"`
+			choice
+				`	"Fairly normal, at least by my standards."`
+					goto anyways
+				`	"Making money as usual."`
+					goto anyways
+				`	"Not too well, considering that I recently lost some important ships in my fleet."`
+					goto bad
+
+			label wait
+			`	The room is silent for a few minutes until Mr. Dolent breaks the silence.`
+			`	"You do realize that I know you're there, right?"`
+			`	"..."`
+			`	"Whatever, I like to just sit and think in silence.`
+				goto anyways
+
+			label bad
+			`	Mr. Dolent looks you in the eyes and appears to frown. "Oh, well that's too bad."`
+
+			label anyways
+			`	"Anyways, the EC-078 is ready for testing."`
+			`	"We have an automated Quicksilver that will be used to test the EC-078. All I need you to do is supervise to make sure that the 78 doesn't get blown up."`
+			`	"Have the EC-078 cloak near the Quicksilver and make sure that it works properly. After that just go ahead and blow up the drone before landing back here."`
+			`	"I will be leaving for an... uh... a business trip in a few minutes, so once you finish testing the cloaks my receptionist shall be waiting near the landing pads to retrieve the data."`
+				accept
+	
+	npc save
+		government "Escort"
+		personality heroic
+		ship "EC-078 'Dire Hawk'" "Prototype Ship"
+				
+	npc kill
+		government "Test Dummy"
+		personality
+			heroic
+			entering
+			confustion 100
+		ship "Quicksilver (Automaton)" "Automaton A-119"
+				
+	npc save
+		government "Enigma Corp"
+		personality uninterested
+		ship "EC-069 'Star King'" `Dolent's Stallion`
+				
+	on fail
+		"reputation: Enigma Corp" = -1
+	
+	on decline
+		"reputation: Enigma Corp" --
+	
+	on complete
+		"reputation: Enigma Corp" ++
+		payment 1000000
+		event "Dire Hawk" 45
+		dialog `After returning to Enigma Prime with the EC-078, you pass off the data about the prototype cloaking devices to the receptionist. She then hands you a credit chip for payment. <payment>.`
+		dialog `	"We will have produced enough EC-078s to begin selling them in a few weeks," the receptionist says to you before leaving into the halls of the massive station.`
+		
+event "Dire Hawk"
+	shipyard "EC-0"
+		"EC-078 'Dire Hawk'"
