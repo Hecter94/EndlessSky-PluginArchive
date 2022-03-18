@@ -5,6 +5,7 @@ outfitter "developer"
 	"M2 Browning Dual"
 	"M2 Browning Dual Turret"
 	"M2 Browning HMG"
+	"M82 Anti-Materiel Rifle"
 
 outfitter "Basic Outfits"
 	"50 cal Ammo"
@@ -13,6 +14,7 @@ outfitter "Basic Outfits"
 	"M2 Browning Dual"
 	"M2 Browning Dual Turret"
 	"M2 Browning HMG"
+	"M82 Anti-Materiel Rifle"
 	
 outfitter "Southern Ammo"
 	"50 cal Ammo"
@@ -34,7 +36,7 @@ outfit "50 cal Box"
 	thumbnail "outfit/bullet storage"
 	"mass" 2
 	"outfit space" -5
-	"gatling round capacity" 30000
+	"50 cal capacity" 30000
 	ammo "50 cal Ammo"
 	description "."
 
@@ -61,7 +63,7 @@ outfit "M2 Browning"
 	"outfit space" -0.4
 	"weapon capacity" -0.4
 	"gun ports" -1
-	"gatling round capacity" 30000
+	"50 cal capacity" 30000
 	weapon
 		sprite "projectile/tinyflare"
 			"random start frame"
@@ -87,7 +89,7 @@ outfit "M2 Browning Dual"
 	"outfit space" -0.8
 	"weapon capacity" -0.8
 	"gun ports" -1
-	"gatling round capacity" 60000
+	"50 cal capacity" 60000
 	weapon
 		sprite "projectile/tinyflare"
 			"random start frame"
@@ -114,7 +116,7 @@ outfit "M2 Browning Dual Turret"
 	"outfit space" -1
 	"weapon capacity" -1
 	"turret mounts" -1
-	"gatling round capacity" 60000
+	"50 cal capacity" 60000
 	"required crew" 1
 	weapon
 		"hardpoint sprite" "hardpoint/m2 browning dual turret"
@@ -139,7 +141,72 @@ outfit "M2 Browning HMG"
 	category "Hand to Hand"
 	cost 10000
 	thumbnail "outfit/m2 browning"
-	"capture attack" .5
+	"capture attack" .4
 	"capture defense" 2.2
 	"unplunderable" 1
-	description ``
+	description `Browning machine gun provides a powerful defense against enemy boarding group but very cumbersome to move around for offense.`
+
+outfit "M82 Anti-Materiel Rifle"
+	category "Hand to Hand"
+	cost 10000
+	thumbnail "outfit/m82 rifle"
+	"capture attack" .9
+	"capture defense" 1.1
+	"unplunderable" 1
+	description `Much more powerful than a standard laser rifle but not very suitable for indoor combat, still could knock out a few covers if needed though.`
+
+
+shipyard "Basic Ships"
+	"Sparrow (Browning)"
+
+ship "Sparrow" "Sparrow (Browning)"
+	outfits
+		"M2 Browning" 2
+		"M2 Browning Dual" 4
+		"M2 Browning Dual Turret"
+		"50 cal Ammo" 360000
+		
+		"nGVF-BB Fuel Cell"
+		"LP036a Battery Pack"
+		"D14-RN Shield Generator"
+		
+		"Chipmunk Plasma Thruster"
+		"Chipmunk Plasma Steering"
+		"Hyperdrive"
+		
+	engine -5 35
+	engine 5 35
+	gun -7 -10
+	gun 7 -10
+	gun -17.5 -4 "M2 Browning Dual"
+	gun 17.5 -4 "M2 Browning Dual"
+	gun -27.5 -2 "M2 Browning Dual"
+	gun 27.5 -2 "M2 Browning Dual"
+	turret 0 -15.5
+	leak "flame" 60 80
+	explode "tiny explosion" 15
+	explode "small explosion" 5
+	description "Someone thought beam laser sucks so they strapped a few Brownings on a Sparrow instead."
+	
+mission "50cal: add ships"
+	landing
+	invisible
+	deadline 1
+	on offer
+		event "50cal: add ships to fleets"
+
+event "50cal: add ships to fleets"
+	fleet "Small Southern Merchant"
+		add variant 12
+			"Sparrow (Browning)"
+			
+	fleet "Small Southern Pirate"
+		add variant 20
+			"Sparrow (Browning)"
+		add variant 12
+			"Sparrow (Browning)" 2
+		add variant 12
+			"Sparrow (Browning)" 3
+		add variant 12
+			"Fury"
+			"Sparrow (Browning)"
