@@ -1,0 +1,81 @@
+# Copyright (c) 2022 by pilover100
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+# First contact missions
+
+mission "Starlus Intro [0]"
+	name "Unknown Species First Contact"
+	description "Find someone who can help you understand the new oceanic species you have met."
+	landing
+	source
+		attributes "Starlus"
+	on offer
+		log `Found an odd species to the south of human space that live underwater, communicating with them is going to be interesting to say the least.`
+		conversation
+			`When you land on this world your ship detects multiple energy signatures floating in the oceans of <origin>. Do you investigate?`
+			choice
+				`	Naturally!`
+					goto land
+				`	Yes, but be armed just in case...`
+					goto armed
+				`	No, this looks pretty weird...`
+					depart
+			label armed
+			`	Deciding to be cautious you arm yourself before preparing to land.`
+			label land
+			`	Just as you were about to try locating a suitable place to land near one of the settlements below, you notice a small ship is hovering near by the <ship>. Evidently it wants you to follow it to where the locals want you to land.`
+			`	As you follow the mysterious craft down into the lower atmosphere, you notice that every settlement on <origin> is floating just below the surface of the ocean. You wonder how you're expected to land when you're presented with perhaps the largest sea-going structure you've ever seen.`
+			scene "scene/Starlus_city.png"
+			`	The ship that you were following hovers expectantly above a landing platform upon one of these giant rafts, cautiously you set down on the pad.`
+			choice
+				`	(Leave the <ship>)`
+					goto pad
+				`	(Leave the planet whilst you still can)`
+					depart
+				`	(Wait in the <ship>)`
+					goto wait
+			label wait
+			`	You wait in your ship for several minutes but no one approaches your ship.`
+			choice
+				`	(Leave the <ship>)`
+					goto outside
+				`	(Leave the planet whilst you still can)`
+					depart
+			label outside
+			`	As you step out of your ship, you notice that you've landed in water that is about waist deep. Given how all the settlements on this planet are in the oceans you suspect that life here is aquatic.`
+			choice
+				`	(Look around your ship)`
+					goto pad
+				`	(Explore the area)`
+			label area
+			`	As you prepare to explore the raft city you've landed upon and wade out away from your ship you notice several eel-like lifeforms approaching you under the water. As they come closer you notice the water vibrating above these aliens, they appear to be trying to speak to you.`
+			goto listen
+			label pad
+			`	As you wade around your ship you notice several eel-like lifeforms approaching you under the water. As they come closer you notice the water vibrating above these aliens, they appear to be trying to speak to you.`
+			label listen
+			choice
+				`	(Stick your head under the water)`
+				`	(Try and find an underwater mic and use that)`
+					goto mic
+			`	You stick your head under water and notice an odd tasting tang. But you have no time to worry about that as the aliens start speaking in earnest.`
+			goto speak
+			label mic
+			`	You eventually find an underwater mic in your ground kit and drop it into the water by your feet and place the headphones into your ears. The aliens immediately start speaking in earnest.`
+			label speak
+			`	One of the eels hums "Ips fah da Starlus, ouka iud lakx ois.", their language is quite unlike anything you've ever heard before.`
+			choice
+				`	"Greetings, my name is <first> <last>."`
+				`	"Hi, I'm Captain <first> <last> of the <ship>."`
+				`	"I'm here representing humanity, my name is <first>."`
+			`	Your choice of words is completely lost upon them but they seem to have made a good indication of hearing you even underwater. After a moment of thought you conclude that you need help to establish communication with them and try an communicate using gestures that you'll come back here in a short while when you will try and communicate with them.`
+			`	(Come back here after finding someone who is willing to help you)`
+			accept
+	to complete
+		never
