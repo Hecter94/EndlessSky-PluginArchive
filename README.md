@@ -2,7 +2,7 @@
 
 Some plugins have been updated to work with continous, any plugins which have been updated will be in the "Working" directory, originals of those plugins will be available in the "originals" directory for compatability and for archival
 
-Please see [here](Plugin%20Manifest) for a list of plugins and their descriptions and please see below for a list of known issues.
+Please see [here](Plugin%20Manifest.md) for a list of plugins and their descriptions and please see below for a list of known issues.
 
 Known Issues
 
