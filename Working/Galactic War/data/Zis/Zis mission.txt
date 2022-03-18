@@ -1,0 +1,26 @@
+mission "GW: Zis Sword equipped"
+	invisible
+	landing
+	on offer
+		require "Zis Standard Sword" 1
+		set "GW: Zis Sword equipped set"
+		fail "GW: Zis Sword unequipped"
+
+mission "GW: Zis Sword unequipped"
+	invisible
+	landing
+	repeat
+	to offer
+		not "GW: Zis Sword unequipped: active"
+	on offer
+		require "Zis Standard Sword" 0
+		clear "GW: Zis Sword equipped set"
+		fail "GW: Zis Sword equipped"
+
+mission "Clean up 17/01/2022"
+	invisible
+	landing
+	to offer
+		has "GW: Zis Sword unequipped: active"
+	on offer
+		fail "GW: Zis Sword equipped"

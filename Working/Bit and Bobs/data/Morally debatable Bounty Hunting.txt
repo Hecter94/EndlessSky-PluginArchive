@@ -1,0 +1,91 @@
+government "Targeted"
+	swizzle 5
+
+	"player reputation" -1000
+	"bribe" 0
+	"fine" 0
+	"hostile hail" "hostile civilian"
+
+	
+	
+mission "Hunt Down Unspecified Ship (North)"
+	job
+	repeat
+	name "Bounty Hunting"
+	description "An anonymous individual has asked you to hunt down a fleet that was last seen near this system, then return to <planet> to receive <payment>."
+	source
+		government Republic Syndicate Pirate
+		attributes rim south north "dirt belt" core frontier
+	to offer
+		"combat rating" > 300
+		random < 30
+	npc kill
+		personality heroic staying nemesis target
+		government "Targeted"
+		system
+			distance 1 2
+		fleet "Unspecified Southern Ship"
+			names "civilian"
+			variant
+				"Behemoth"
+			variant
+				"Behemoth (Speedy)"
+			variant
+				"Behemoth (Heavy)"
+			variant
+				"Bulk Freighter"
+			variant
+				"Bulk Freighter (Blaster)"
+			variant
+				"Bulk Freighter (Heavy)"
+			variant
+				"Class C Freighter"
+				"Combat Drone" 12
+		dialog "You have destroyed the specified ships. You can now return to <planet> to collect your payment."
+	on complete
+		payment 100000
+		dialog "You find a bundle of credit chips totaling <payment> near your landing pad. You were told that you wouldn't get arrested for this, but you can't help but feel like you've done something really wrong."		
+		
+mission "Hunt Down Unspecified Ship (South)"
+	job
+	repeat
+	name "Bounty Hunting"
+	description "An anonymous individual has asked you to hunt down a fleet that was last seen near this system, then return to <planet> to receive <payment>."
+	source
+		government Republic Syndicate Pirate
+		attributes rim south north "dirt belt" core frontier
+	to offer
+		"combat rating" > 500
+		random < 20
+	npc kill
+		personality heroic staying nemesis target
+		government "Targeted"
+		system
+			distance 1 2
+		fleet
+			names "civilian"
+			variant
+				"Hauler III" 3
+			variant
+				"Argosy (Laser)"
+			variant
+				"Argosy (Turret)"
+			variant
+				"Argosy (Blaster)"
+			variant
+				"Argosy"
+			variant
+				"Roost"
+				"Finch" 4
+			variant
+				"Roost (Sidewinder)"
+				"Finch" 2
+				"Boxwing" 2
+			variant
+				"Falcon"
+			variant
+				"Quicksilver (Auto)" 2
+		dialog "You have destroyed the specified ships. You can now return to <planet> to collect your payment."
+	on complete
+		payment 50000
+		dialog "You find a bundle of credit chips totaling <payment> near your landing pad. You were told that you wouldn't get arrested for this, but you can't help but feel like you've done something really wrong."

@@ -1,0 +1,49 @@
+mission "First Contact: Ignaggen"
+	landing
+	invisible
+	source
+		government "Ignaggen"
+	to offer
+		has "gw: debug mode"
+	on offer
+		conversation
+			`You never know what to expect when meeting an alien race for the first time. As you approach the planet's atmosphere, you see more of the hulking ships that dominate this part of the galaxy, and a part of you wonders how they even manage to fly.`
+			`	Honestly, the smaller ships look like someone strapped rocket engines to a boulder, and the larger ones are more mountain than starship.`
+			`	You aren't sure whether you should be surprised when your computer negotiates an approach vector for a large metropolis atop a dusty red mesa. Because, sure, that is what your flight computer is meant to do, and that is what it does everywhere else, but for its protocols to be compatible with those of a completely alien race?`
+			`	The mysterious black box, somehow still plugged in despite all attempts to be rid of it, glows faintly. Suspiciously. Just what did that thing do to your ship's systems? And why won't it leave you alone?`
+
+			choice
+				`	(Narrow your eyes at the device and mouth, "I'm onto you.")`
+					goto sus
+				`	(Take the high ground and ignore it.)`
+					goto ignore
+
+			label sus
+			`	It may be your imagination, but you feel the box ignoring you with an almost feline smugness.`
+				goto done
+
+			label ignore
+			`	You know better than to fall for the mind games of an inanimate object.`
+
+			label done
+			`	At any rate, your ship's systems identify this planet as <origin>, belonging to a race called the Ignaggen.`
+
+
+#
+# Debug Tools
+#
+
+mission "gw: ignaggen mission reset"
+	name "GW: Ignaggen Mission Reset"
+	job
+	repeat
+	deadline 1
+	to offer
+		has "gw: debug mode"
+	description "Reset all Ignaggen missions and events."
+	source
+		government "cheat" "Ignaggen"
+	on accept
+		dialog phrase "gw mission reset"
+		clear "First Contact: Ignaggen: declined"
+		clear "First Contact: Ignaggen: offered"
