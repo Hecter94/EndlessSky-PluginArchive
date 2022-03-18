@@ -34,6 +34,74 @@ A mod designed to replicate Star Wars in Endless Sky.
 
 Unfinished but playable.
 
+## AES Aben
+
+![aben](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Aben/icon.png)
+
+**Created by Darcy Manoel**
+
+-description-
+
+**Status**
+
+## AES Fallen
+
+![fallen](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Fallen/icon.png)
+
+**Created by Darcy Manoel**
+
+-description-
+
+**Status**
+
+-status-
+
+## AES Irm
+
+![irm](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Irm/icon.png)
+
+**Created by Darcy Manoel**
+
+-description-
+
+**Status**
+
+-status-
+
+## AES Misc
+
+![aesmisc](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Misc/icon.png)
+
+**Created by Darcy Manoel**
+
+-description-
+
+**Status**
+
+## AES Omnis
+
+![omnis](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Omnis/icon.png)
+
+**Created by Darcy Manoel**
+
+-description-
+
+**Status**
+
+## Adamas Project
+
+![adamas](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Adamas%20Project/icon.png)
+
+**Created by toilethinges**
+
+**Continued development by kestrel1110**
+
+-description-
+
+**Status**
+
+-status-
+
 ## Core Mining, Inc.
 
 ![Core Mining, Inc.](https://raw.githubusercontent.com/DJF113/Core-Mining-Inc/main/icon.png)
