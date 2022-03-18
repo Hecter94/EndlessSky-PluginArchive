@@ -128,6 +128,96 @@ Adds several new starting options to the game.
 
 -status-
 
+## Akashic War
+
+## Alien Ship
+
+## All Content Plugin
+
+## Alpha Wars
+
+## Altera
+
+## Alternate Human Shields
+
+## Alternate Start Luna
+
+## Amalgamation
+
+## Androids
+
+## Andromeda Torpedo
+
+## Animated Ships
+
+## Animated Stars
+
+## Arbiter
+
+## Arena
+
+## Arrival Distance Override
+
+## Assault Cruiser
+
+## Automation and PlanetSideStorage
+
+## Automation
+
+## Bacterian T2
+
+## Bactrian Mission
+
+## Bailiff
+
+## Ballistic Mayhem
+
+## Bardagh's Ship Variants
+
+## Bare Ships
+
+## Beccas Endless Expansion
+
+## Better Korath
+
+## Better Vanilla Pirates
+
+## Beyond the Sky
+
+## Bits and Bobs
+
+## Boarding Missions
+
+## Bounty Hunters
+
+## Burst Anti-Missile
+
+## Businessman Mod
+
+## COTSA
+
+## Cannon Friendly Weapon Pack
+
+## Captain Last and the Timeship
+
+## Casual Mod
+
+## Checkmatemate
+
+## Ciu Creo
+
+## Civil War
+
+## Cloaking Device Unlocked
+
+## Cobbled Ships
+
+## Cognitive Subdivision
+
+## Colorado
+
+## Colorful Void Sprites
+
 ## Core Mining, Inc.
 
 ![Core Mining, Inc.](https://raw.githubusercontent.com/DJF113/Core-Mining-Inc/main/icon.png)
@@ -139,6 +229,22 @@ This is an alternate story for Endless Sky that gives you the chance to work for
 **Status**
 
 In development and playable on 0.9.15 Continuous.
+
+## Custom Landscapes
+
+## Custom Outfitting (Chop Shop)
+
+## Custom Portraits
+
+## Czartracks Ship Pack
+
+## DaBestShipEver
+
+## Dark Ships
+
+## Defense Drone Plugin
+
+## Derogam
 
 ## Twin Argosy
 
