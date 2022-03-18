@@ -1,0 +1,937 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+# Contents: a spinoff from the Cartography missions,
+# particularly "Cartography: Midnight's Lost Orphan"
+
+
+
+mission "Midnight Lost Orphan: Abandoned Halcyon"
+	landing
+	invisible
+	source "Orphan"
+	to offer
+		has "Cartography: Midnight's Lost Orphan: done"
+	on offer
+		require "Midnight's Lost Orphan" 1
+		conversation
+			scene "thumbnail/carabao-thumb"
+			`You find an abandoned city ship parked on the surface. It looks familiar, but you can't quite remember why. The ship is in very good condition and is outfitted with a variety of alien weapons.`
+			choice
+				`	(Take the ship.)`
+					accept
+				`	(Leave the ship.)`
+					defer
+	on accept
+		give ship "Carabao" "Halcyon"
+		
+	npc kill
+		government "Drak"
+		personality waiting vindictive staying
+		ship "Archon" "Warden of Atrocity"
+
+	npc kill
+		government "Quarg"
+		personality waiting heroic vindictive
+		fleet
+			names "quarg"
+			cargo 1
+			variant
+				"Quarg Skylark" 4
+				"Quarg Wardragon" 4
+				
+				
+
+mission "Midnight Lost Orphan: Captain of Atrocity"
+	boarding
+	invisible
+	repeat
+	source
+		not attributes "automaton"
+	destination Earth
+	to offer
+		has "captain of atrocity"
+		random < ( 24 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"captain of atrocity" ++
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You enjoy a perverse pleasure while wielding the supernatural powers granted to you by Midnight's Lost Orphan. You anticipate slaughtering the defenders with unrestrained cruelty and malice.`
+				depart
+
+mission "Midnight Lost Orphan: Captain of Atrocity 2"
+	invisible
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		"captain of atrocity" >= 10
+	on offer
+		require "Midnight's Lost Orphan" 1
+		dialog `You are the Demon Captain of Atrocities, <first> <last>. As you walk through the spaceport, lesser captains and their crews back away in fear and terror.`
+	on accept
+		fail
+
+mission "Midnight Lost Orphan: Captain of Atrocity 3"
+	invisible
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		"captain of atrocity" >= 20
+	on offer
+		require "Midnight's Lost Orphan" 1
+		dialog `You are the Demon Captain of Atrocities, <first> <last>. As you settle in to relax at a bar, the other patrons flee in terror.`
+	on accept
+		fail
+
+mission "Midnight Lost Orphan: Captain of Atrocity 4"
+	invisible
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		"captain of atrocity" >= 30
+	on offer
+		require "Midnight's Lost Orphan" 1
+		dialog `You are the Demon Captain of Atrocities, <first> <last>. As you walk through the spaceport, a sniper takes a shot at your head. But the supernatural power of Midnight's Lost Orphan stops the bullet in mid-air and sends it flying back through the sniper's skull! The crowd in the busy spaceport flees in terror.`
+	on accept
+		fail
+
+mission "Midnight Lost Orphan: Captain of Atrocity 5"
+	invisible
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		"captain of atrocity" >= 40
+	on offer
+		require "Midnight's Lost Orphan" 1
+		dialog `You are the Demon Captain of Atrocities, <first> <last>. The spaceport is completely deserted. Perhaps news of your arrival preceded you, and the locals fled in panicked fear.`
+	on accept
+		fail
+
+
+
+mission "Midnight Lost Orphan: Pirate Atrocity"
+	invisible
+	source
+		government "Pirate"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Pirate" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Republic Atrocity"
+	invisible
+	source
+		government "Republic"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Republic" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Syndicate Atrocity"
+	invisible
+	source
+		government "Syndicate"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Syndicate" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Free Worlds Atrocity"
+	invisible
+	source
+		government "Free Worlds"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Free Worlds" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Hai Atrocity"
+	invisible
+	source
+		government "Hai"
+		not planet "Darkwaste"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Hai" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Remnant Atrocity"
+	invisible
+	source
+		government "Remnant"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Remnant" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Wanderer Atrocity"
+	invisible
+	source
+		government "Wanderer"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Wanderer" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+mission "Midnight Lost Orphan: Coalition Atrocity"
+	invisible
+	source
+		government "Coalition" "Heliarch"
+		not attributes "uninhabited" "station"
+	to offer
+		random < ( 9 + "captain of atrocity" )
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"reputation: Coalition" -= 10
+		"reputation: Heliarch" -= 10
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You wake up in an alley. You don't remember how you got here or why your hands are covered in blood. You feel relieved when you realize that the blood isn't yours. You try your best to conceal your hands as you make your way back to your ship...`
+				accept
+	on accept
+		"captain of atrocity" += 10
+		fail
+
+
+
+
+
+
+mission "Midnight Lost Orphan: Chaos Hammer"
+	landing
+	invisible
+	source
+		attributes "core" "core pirate"
+	to offer
+		not "Midnight Lost Orphan: Arctic Dragon: active"
+		not "Midnight Lost Orphan: Night Sword: active"
+		or
+			"captain of atrocity" >= 50
+			and			
+				has "Midnight Lost Orphan: Pirate Atrocity: failed"
+				has "Midnight Lost Orphan: Republic Atrocity: failed"
+				has "Midnight Lost Orphan: Syndicate Atrocity: failed"
+				has "Midnight Lost Orphan: Free Worlds Atrocity: failed"
+				has "Midnight Lost Orphan: Hai Atrocity: failed"
+				has "Midnight Lost Orphan: Remnant Atrocity: failed"
+				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
+				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+
+	on offer
+		require "Midnight's Lost Orphan" 1
+
+	on enter
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			choice
+				`	(Let it go.)`
+					goto release
+				`	(Resist.)`
+			
+			branch resist
+				random < ( 100 - "captain of atrocity" )
+				
+			`You are overcome by agonizing pain as you try to prevent the creature from leaving by sheer force of will. But you feel it slipping away...`
+				goto release
+
+			label resist
+			`By sheer force of will, you prevent the creature from separating itself from you. You are still the Demon Captain of Atrocities! But the experience has left you weary. Clearly, you are losing control over the creature.`
+				defer
+			
+			label release
+			scene thumbnail/raider
+			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
+				accept
+
+	on defer
+		"captain of atrocity" += 2
+
+	on accept
+		clear "captain of atrocity"
+		outfit "Midnight's Lost Orphan"	-1
+
+	npc board
+		government "Pirate"
+		personality target waiting fleeing uninterested
+		ship "Korath Raider (Chaos Hammer)" "Chaos Hammer"
+		ship "Korath Chaser" "Malice"
+		ship "Korath Chaser" "Cruelty"
+		dialog `You find the ship's brig has been converted into a torure chamber. Most of the prisoners are dead. Those who are still alive are near death, their wounds too severe to treat.`
+
+	on complete
+		"captain of atrocity" ++
+
+ship "Korath Raider" "Korath Raider (Chaos Hammer)"
+	outfits
+		"Korath Banisher" 4
+		"Korath Grab-Strike"
+		"Korath Warder"
+		
+		"Triple Plasma Core"
+		"Systems Core (Large)"
+		"Large Heat Shunt" 2
+		"Small Heat Shunt"
+		"Brig"
+		"Fuel Processor"
+		"Midnight's Lost Orphan"
+		"Korath Repeater Rifle" 250
+		"Alien Torture Device"
+
+		"Thruster (Planetary Class)"
+		"Steering (Planetary Class)"
+		"Jump Drive"
+
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Warder"
+	turret "Korath Grab-Strike"
+
+
+
+mission "Midnight Lost Orphan: Chaos Hammer Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Lost Orphan: Chaos Hammer: done"
+		not "captain of atrocity"
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"captain of atrocity" ++
+		"Midnight Lost Orphan: Captain of Atrocity 2: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 3: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 4: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 5: offered" --
+		"Midnight Lost Orphan: Pirate Atrocity: offered" --
+		"Midnight Lost Orphan: Republic Atrocity: offered" --
+		"Midnight Lost Orphan: Syndicate Atrocity: offered" --
+		"Midnight Lost Orphan: Free Worlds Atrocity: offered" --
+		"Midnight Lost Orphan: Hai Atrocity: offered" --
+		"Midnight Lost Orphan: Remnant Atrocity: offered" --
+		"Midnight Lost Orphan: Wanderer Atrocity: offered" --
+		"Midnight Lost Orphan: Coalition Atrocity: offered" --
+		fail
+
+
+
+mission "Midnight Lost Orphan: Arctic Dragon"
+	landing
+	invisible
+	source
+		attributes "north" "hai" "paradise" "north pirate"
+	to offer
+		not "Midnight Lost Orphan: Chaos Hammer: active"
+		not "Midnight Lost Orphan: Night Sword: active"
+		or
+			"captain of atrocity" >= 60
+			and			
+				has "Midnight Lost Orphan: Pirate Atrocity: failed"
+				has "Midnight Lost Orphan: Republic Atrocity: failed"
+				has "Midnight Lost Orphan: Syndicate Atrocity: failed"
+				has "Midnight Lost Orphan: Free Worlds Atrocity: failed"
+				has "Midnight Lost Orphan: Hai Atrocity: failed"
+				has "Midnight Lost Orphan: Remnant Atrocity: failed"
+				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
+				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+
+	on offer
+		require "Midnight's Lost Orphan" 1
+
+	on enter
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			choice
+				`	(Let it go.)`
+					goto release
+				`	(Resist.)`
+			
+			branch resist
+				random < ( 100 - "captain of atrocity" )
+				
+			`You are overcome by agonizing pain as you try to prevent the creature from leaving by sheer force of will. But you feel it slipping away...`
+				goto release
+
+			label resist
+			`By sheer force of will, you prevent the creature from separating itself from you. You are still the Demon Captain of Atrocities! But the experience has left you weary. Clearly, you are losing control over the creature.`
+				defer
+			
+			label release
+			scene "thumbnail/hai shield beetle"
+			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
+				accept
+
+	on defer
+		"captain of atrocity" += 2
+
+	on accept
+		clear "captain of atrocity"
+		outfit "Midnight's Lost Orphan"	-1
+
+	npc board
+		government "Pirate"
+		personality target waiting fleeing uninterested
+		ship "Shield Beetle (Jump, Pulse)" "Arctic Dragon"
+		conversation
+			`You are surprised to find a large muscular Unfettered amongst the ship's crew. He draws a large knife and screams a battle cry before charging at you!`
+			choice
+				`	(Dodge.)`
+				`	(Parry.)`
+				`	(Shoot him.)`
+					goto shoot
+			`	Your attempt at close quarters combat fails miserably as his knife sinks into your vital organs.`
+				die
+			label shoot
+			`	You nonchalantly fire on the Unfettered warrior and he collapses onto the floor. The rest of the battle continues to rage on, unabated by this strange scene.`
+				accept
+
+	on complete
+		"captain of atrocity" ++
+
+ship "Shield Beetle" "Shield Beetle (Arctic Dragon)"
+	outfits
+		"Ion Cannon" 2
+		"Pulse Cannon" 6
+		"Pulse Turret" 4
+
+		"Boulder Reactor"
+		"Geode Reactor"
+		"Hai Ravine Batteries"
+		"Hai Diamond Regenerator" 2
+		"Hai Williwaw Cooling" 3
+		"Midnight's Lost Orphan"
+		"Dual Pulse Pistols"
+		"Pulse Rifle" 94
+
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Jump Drive"
+
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+
+
+mission "Midnight Lost Orphan: Arctic Dragon Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Lost Orphan: Arctic Dragon: done"
+		not "captain of atrocity"
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"captain of atrocity" ++
+		"Midnight Lost Orphan: Captain of Atrocity 2: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 3: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 4: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 5: offered" --
+		"Midnight Lost Orphan: Pirate Atrocity: offered" --
+		"Midnight Lost Orphan: Republic Atrocity: offered" --
+		"Midnight Lost Orphan: Syndicate Atrocity: offered" --
+		"Midnight Lost Orphan: Free Worlds Atrocity: offered" --
+		"Midnight Lost Orphan: Hai Atrocity: offered" --
+		"Midnight Lost Orphan: Remnant Atrocity: offered" --
+		"Midnight Lost Orphan: Wanderer Atrocity: offered" --
+		"Midnight Lost Orphan: Coalition Atrocity: offered" --
+		fail
+	
+
+mission "Midnight Lost Orphan: Night Sword"
+	landing
+	invisible
+	source
+		attributes "dirt belt" "ember waste" "south" "south pirate"
+	to offer
+		has "event: Gravedigger defeated"
+		not "Midnight Lost Orphan: Chaos Hammer: active"
+		not "Midnight Lost Orphan: Arctic Dragon: active"
+		or
+			"captain of atrocity" >= 60
+			and			
+				has "Midnight Lost Orphan: Pirate Atrocity: failed"
+				has "Midnight Lost Orphan: Republic Atrocity: failed"
+				has "Midnight Lost Orphan: Syndicate Atrocity: failed"
+				has "Midnight Lost Orphan: Free Worlds Atrocity: failed"
+				has "Midnight Lost Orphan: Hai Atrocity: failed"
+				has "Midnight Lost Orphan: Remnant Atrocity: failed"
+				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
+				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+
+	on offer
+		require "Midnight's Lost Orphan" 1
+
+	on enter
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			choice
+				`	(Let it go.)`
+					goto release
+				`	(Resist.)`
+			
+			branch resist
+				random < ( 100 - "captain of atrocity" )
+				
+			`You are overcome by agonizing pain as you try to prevent the creature from leaving by sheer force of will. But you feel it slipping away...`
+				goto release
+
+			label resist
+			`By sheer force of will, you prevent the creature from separating itself from you. You are still the Demon Captain of Atrocities! But the experience has left you weary. Clearly, you are losing control over the creature.`
+				defer
+			
+			label release
+			scene thumbnail/albatross
+			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
+				accept
+
+	on defer
+		"captain of atrocity" += 2
+
+	on accept
+		clear "captain of atrocity"
+		outfit "Midnight's Lost Orphan"	-1
+
+	npc board
+		government "Grave Diggers"
+		personality target waiting fleeing uninterested
+		ship "Albatross (Night Sword)" "Night Sword"
+		dialog `You pass through the ship's sick bay and find a corpse strapped onto the operating table. The clothing on the corpse suggests it was a Syndicate lab worker. Blood is leaking out from one of it's ears. A nearby monitor shows some sort of parasitic worm has settled inside the corpse's skull...`
+		
+	on complete
+		"captain of atrocity" ++
+
+ship "Albatross" "Albatross (Night Sword)"
+	outfits
+		"Inhibitor Cannon" 6
+		"Thrasher Turret" 2
+		"Point Defense Turret"
+
+		"Aeon Cell"
+		"Epoch Cell"
+		"Crystal Capacitor"
+		"Thermoelectric Cooler" 3
+		"Quantum Key Stone"
+		"Midnight's Lost Orphan"
+		"Korath Repeater Rifle" 75
+		"Tuning Rifle" 75
+		"Almachian Brain Maggots"
+
+		"Smelter-Class Thruster"
+		"Smelter-Class Steering"
+		"Jump Drive"
+
+	turret "Thrasher Turret"
+	turret "Thrasher Turret"
+	turret
+	turret
+	turret "Point Defense Turret"
+
+
+mission "Midnight Lost Orphan: Night Sword Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Lost Orphan: Night Sword: done"
+		not "captain of atrocity"
+	on offer
+		require "Midnight's Lost Orphan" 1
+		"captain of atrocity" ++
+		"Midnight Lost Orphan: Captain of Atrocity 2: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 3: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 4: offered" --
+		"Midnight Lost Orphan: Captain of Atrocity 5: offered" --
+		"Midnight Lost Orphan: Pirate Atrocity: offered" --
+		"Midnight Lost Orphan: Republic Atrocity: offered" --
+		"Midnight Lost Orphan: Syndicate Atrocity: offered" --
+		"Midnight Lost Orphan: Free Worlds Atrocity: offered" --
+		"Midnight Lost Orphan: Hai Atrocity: offered" --
+		"Midnight Lost Orphan: Remnant Atrocity: offered" --
+		"Midnight Lost Orphan: Wanderer Atrocity: offered" --
+		"Midnight Lost Orphan: Coalition Atrocity: offered" --
+		fail
+
+
+
+mission "Midnight Lost Orphan: Blood Wind"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate"
+	to offer
+		has "Midnight Lost Orphan: Chaos Hammer: done"
+		has "Midnight Lost Orphan: Arctic Dragon: done"
+		has "Midnight Lost Orphan: Night Sword: done"
+	on offer
+		require "Midnight's Lost Orphan" 1
+
+	on enter
+		conversation
+			scene "outfit/midnight lost orphan"
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			choice
+				`	(Let it go.)`
+					goto release
+				`	(Resist.)`
+			
+			branch resist
+				random < ( 50 - "captain of atrocity" )
+				
+			`You are overcome by agonizing pain as you try to prevent the creature from leaving by sheer force of will. But you feel it slipping away...`
+				goto release
+
+			label resist
+			`By sheer force of will, you prevent the creature from separating itself from you. You are still the Demon Captain of Atrocities! But the experience has left you weary. Clearly, you are losing control over the creature.`
+				defer
+			
+			label release
+			scene "scene/scene-bloodwind"
+			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
+				accept
+
+	on defer
+		"captain of atrocity" += 10
+
+	on accept
+		clear "captain of atrocity"
+		outfit "Midnight's Lost Orphan"	-1
+
+	npc board
+		to spawn
+			has "event: kestrel available: more engines"
+		government "Alpha"
+		personality target waiting fleeing uninterested
+		ship "Kestrel (Blood Wind Engines)" "Blood Wind"
+		conversation
+			apply
+				set "Blood Wind Trap"
+			`You board the Blood Wind, but find no crew aboard. When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. The Blood Wind is emitting a distress signal, and a self destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+	npc board
+		to spawn
+			has "event: kestrel available: more shields"
+		government "Alpha"
+		personality target waiting fleeing uninterested
+		ship "Kestrel (Blood Wind Shields)" "Blood Wind"
+		conversation
+			apply
+				set "Blood Wind Trap"
+			`You board the Blood Wind, but find no crew aboard. When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. The Blood Wind is emitting a distress signal, and a self destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+	npc board
+		to spawn
+			has "event: kestrel available: more weapons"
+		government "Alpha"
+		personality target waiting fleeing uninterested
+		ship "Kestrel (Blood Wind Weapons)" "Blood Wind"
+		conversation
+			apply
+				set "Blood Wind Trap"
+			`You board the Blood Wind, but find no crew aboard. When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. The Blood Wind is emitting a distress signal, and a self destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+	npc kill
+		to spawn
+			has "Blood Wind Trap"
+		government "Alpha"
+		personality entering heroic vindictive
+		fleet "Marauder Parade" 2
+	npc kill
+		to spawn
+			has "event: Grudge Legacy"
+			has "Blood Wind Trap"
+		government "Alpha"
+		personality entering heroic vindictive
+		fleet "Grudge Parade" 2
+
+
+		
+ship "Kestrel" "Kestrel (Blood Wind Engines)"
+	sprite "ship/bloodwind"
+	add attributes
+		"drag" -1.0
+		"fuel capacity" 100
+		"engine capacity" 30
+
+	outfits
+		"Particle Cannon" 4
+		"Torpedo Launcher" 2
+		"Torpedo" 60
+		"Heavy Laser Turret" 4
+		
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"D94-YV Shield Generator"
+		"Liquid Helium Cooler"
+		"Fuel Pod" 3
+		"Tactical Scanner" 2
+		"Midnight's Lost Orphan"
+		"Sniper Rifle"
+		"Laser Rifle" 127
+		
+		"Afterburner"
+		"Orca Plasma Thruster"
+		"Orca Plasma Steering"
+		"Jump Drive"
+
+	gun "Torpedo Launcher"
+	gun "Torpedo Launcher"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+
+ship "Kestrel" "Kestrel (Blood Wind Shields)"
+	sprite "ship/bloodwind"
+	add attributes
+		"shields" 3000
+		"hull" 1500
+		"heat dissipation" .06
+	outfits
+		"Particle Cannon" 4
+		"Torpedo Launcher" 2
+		"Torpedo" 60
+		"Heavy Laser Turret" 4
+		
+		"Fusion Reactor"
+		"LP072a Battery Pack"
+		"D94-YV Shield Generator"
+		"D41-HY Shield Generator"
+		"Liquid Nitrogen Cooler"
+		"Tactical Scanner" 2
+		"Midnight's Lost Orphan"
+		"Sniper Rifle"
+		"Laser Rifle" 127
+		
+		"Orca Plasma Thruster"
+		"Orca Plasma Steering"
+		"Jump Drive"
+
+	gun "Torpedo Launcher"
+	gun "Torpedo Launcher"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+	gun "Particle Cannon"
+
+ship "Kestrel" "Kestrel (Blood Wind Weapons)"
+	sprite "ship/bloodwind"
+	add attributes
+		"weapon capacity" 40
+	outfits
+		"Particle Cannon" 4
+		"Meteor Missile Launcher" 6
+		"Meteor Missile" 180
+		"Torpedo Launcher" 2
+		"Torpedo" 60
+		"Heavy Laser Turret" 4		
+
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"D94-YV Shield Generator"
+		"Liquid Nitrogen Cooler"
+		"Tactical Scanner" 2
+		"Midnight's Lost Orphan"
+		"Sniper Rifle"
+		"Laser Rifle" 127
+
+		"Orca Plasma Thruster"
+		"Orca Plasma Steering"
+		"Jump Drive"
+
+	gun -31 66 "Particle Cannon"
+	gun 31 66 "Particle Cannon"
+	gun -31 66 "Meteor Missile Launcher"
+	gun 31 66 "Meteor Missile Launcher"
+	gun -53 61 "Particle Cannon"
+	gun 53 61 "Particle Cannon"
+	gun -53 61 "Meteor Missile Launcher"
+	gun 53 61 "Meteor Missile Launcher"
+	gun -75 57 "Torpedo Launcher"
+	gun 75 57 "Torpedo Launcher"
+	gun -75 57 "Meteor Missile Launcher"
+	gun 75 57 "Meteor Missile Launcher"
+	turret -7 -4 "Heavy Laser Turret"
+	turret 7 -4 "Heavy Laser Turret"
+	turret -23 14 "Heavy Laser Turret"
+	turret 23 14 "Heavy Laser Turret"
+
+
+
+mission "Quash Lives!"
+	landing
+	invisible
+	source "Orphan"
+	to offer
+		has "quash dead?"
+	on offer
+		conversation
+			scene "scene/scene-station5dark"
+			`You are exploring the ruins of the orphan planet.` 
+		
+			branch "backup"
+				or
+					has "T.H.O.R."
+					has "Bearer of The Blade"
+		
+			label alone
+			`You are suddenly lifted off the ground by a supernatural force. "I knew you'd come back, Captain <first> <last>."`
+			choice
+				`	"Quash!?! You're alive!?!"`
+					goto QuashEnd
+				
+			label backup
+			
+			branch "Quantum Key Blade"
+				has "Bearer of The Blade"
+
+			`You've sent T.H.O.R. to scout ahead. After your previous experience here, you aren't taking any chances.`
+			choice
+				`	"T.H.O.R., situation status?"`
+			scene "outfit/thor"
+			`	The Tactical Heavy Offensive Robot responds, "No hostiles detected. The ruin appears to be..." the comm is flooded with static.`
+			choice
+				`	"T.H.O.R., respond!"`
+			`	Silence. What will you do?`
+			choice
+				`	(I don't like this. Abandon T.H.O.R. and head back to the ship.)`
+					goto abandon
+				`	(See what happened to T.H.O.R.)`
+			`	You rush towards T.H.O.R.'s last known location. There, you find the mangled remains of the robot. Whatever did this should have made a lot of noise. Instead, there was nothing but the dead silence which surrounds you even now...`
+				goto alone
+
+			label "Quantum Key Blade"
+			
+			branch "Quantum T.H.O.R."
+				or
+					has "T.H.O.R."
+
+			` You have your Quantum Key Blade in hand, just in case. After your previous experience here, you aren't taking any chances. As you delve ever deeper into the ruin, the deafening silence smothers you. Finally, the quiet is broken by the sound of something behind you! As you turn to look, the Quantum Key Blade is wrenched out of your hands. It flies towards the darkness, where a massive gray hand catches it. A familiar Quarg steps out into your field of vision.`
+
+			label QuashKeyblade
+			choice
+				`	"Quash!?! You're alive!?!"`
+			scene "outfit/quantum key blade"
+			`	"Were you counting on the Hai's little toy to save you?" It turns the blade over in its hands. "Alright then. Entertain me!" Quash tosses the Quantum Key Blade towards you. Quash charges towards you. When you catch the blade, the Quarg's almost upon you!`
+			choice
+				`	(Activate Quantum Shifting.)`
+				`	(Stab at Quash.)`
+					goto stab
+			`	You activate Quantum Shifting expecting Quash to barrel past you. But Quash grabs you instead! It rips the blade out of your hands and forces you both out of Quantum Shifting. "If one is knowledgeable of the quantum mechanics involved, getting the entity to emulate them is child's play."`
+				goto QuashEnd
+
+			label stab
+			`	You stab at Quash, but it barrels past you as though the Quarg had Quantum Shifted with a Keyblade of its own. As you turn to face it, the blade is ripped from your hands once again as you are telekinetically lifted into the air. "If one is knowledgeable of the quantum mechanics involved, getting the entity to emulate them is child's play."` 
+				goto QuashEnd
+			
+			label "Quantum T.H.O.R."
+			`You've sent T.H.O.R. to scout ahead. After your previous experience here, you aren't taking any chances.`
+			choice
+				`	"T.H.O.R., situation status?"`
+			scene "outfit/thor"
+			`	The Tactical Heavy Offensive Robot responds, "No hostiles detected. The ruin appears to be..." the comm is flooded with static.`
+			choice
+				`	"T.H.O.R., respond!"`
+			`	Silence. What will you do?`
+			choice
+				`	(I don't like this. Abandon T.H.O.R. and head back to the ship.)`
+					goto abandon
+				`	(See what happened to T.H.O.R.)`
+			`	You draw your Quantum Key Blade and rush towards T.H.O.R.'s last known location. There, you find the mangled remains of the robot. Whatever did this should have made a lot of noise. Instead, there was nothing but the dead silence which surrounds you even now... Finally, the quiet is broken by the sound of something behind you! As you turn to look, the Quantum Key Blade is wrenched out of your hands. It flies towards the darkness, where a massive gray hand catches it. A familiar Quarg steps out into your field of vision.`
+				goto QuashKeyblade
+
+			label abandon
+			`	Barmy is gonna flip when he learns about this. But you aren't ready to lose your life to whatever eldritch horror took down T.H.O.R.`
+				defer
+					
+			label QuashEnd
+			scene "scene/scene-station5blood"
+			`	"To answer your question, yes. As you can see, I am very much alive. Carabaos like the Halcyon have robust autopiloting systems." You feel intense pressure on your limbs as several bones snap. "Humans were wise to be distrustful of that technology." The pain spreads to your torso as several internal organs burst. "With it, I managed to trick those other Quarg into thinking I'd died." You feel intense pain building up in your head. "But that left me without a ship. Thank you Captain <first> <last>, for coming to my rescue." Like a puppet with its strings severed, your lifeless body crumples to the ground.`
+				die
+							
+	on defer
+		clear "T.H.O.R."
+		outfit "T.H.O.R." -1

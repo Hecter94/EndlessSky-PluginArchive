@@ -1,0 +1,233 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+# Contents: If the player angers the Wanderers by fighting the Pug, these missions open the Wanderer worlds to demands for tribute.
+# Reconciliation missions are at the end.
+
+
+
+#----------Wanderer worlds retained by Wanderers after Unfettered invasion------------
+
+mission "Angri Byrds"
+	landing
+	invisible
+	to offer
+		has "Wanderers Ap'arak 3: Pug: done"
+	on offer
+		event "angri byrds"
+
+event "angri byrds"
+	planet "Varu Tev'kei"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Kort Kehai"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Vara Rakak"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Tik Klai"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Vara Kehi'ki"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Vara K'chrai"
+		tribute 10000
+			threshold 20000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Varu Ek'lak'lai"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Var' Kayi"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 10
+			fleet "Wanderer Defense" 50
+	planet "Var' Roi"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+	planet "Varu Tek'kai"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+
+#-----Worlds in Korath space colonized by Wanderers-----
+
+mission "Angri Byrds 2"
+	landing
+	invisible
+	to offer
+		has "Wanderers Ap'arak 3: done"
+		has "Wanderers Ap'arak 3: Pug: done"
+	on offer
+		event "Wanderers tribute Spera Anatrusk"
+event "Wanderers tribute Spera Anatrusk"
+	planet "Spera Anatrusk"
+		tribute 1000
+			threshold 3000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+
+		
+mission "Angri Byrds 3"
+	landing
+	invisible
+	to offer
+		has "Wanderers: Mentors 3: done"
+		has "Wanderers Ap'arak 3: Pug: done"
+	on offer
+		event "Wanderer tribute Desi Seledrak" 24
+
+event "Wanderer tribute Desi Seledrak"
+	planet "Desi Seledrak"
+		tribute 1000
+			threshold 3000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+
+
+# Locked for version 0.9.14. Ready to unlock if colony expands in later version of vanilla game.
+#mission "Angri Byrds 4"
+#	landing
+#	invisible
+#	to offer
+#		has "event: wanderers: sabira eseskrai colony"
+#		has "Wanderers Ap'arak 3: Pug: done"
+#	on offer
+#		event "Wanderer tribute Sabira Eseskrai"
+#
+#event "Wanderer tribute Sabira Eseskrai"
+#	planet "Sabira Eseskrai"
+#		tribute 1000
+#			threshold 3000
+#			fleet "Wanderer Drones" 5
+#			fleet "Wanderer Defense" 10
+		
+		
+		
+#------Temporarily negates hostility with Kor Mereti. He did say they were "fond" of you...--------
+	
+mission "Angri Byrds: Mereti Fondness"
+	landing
+	invisible
+	repeat
+	to offer
+		has "Wanderers: Sestor: Scan Drones: offered"
+		has "reputation: Kor Mereti" < 0
+		not "Wanderers: Peace Through Strength 2: done"
+	on offer
+		"reputation: Kor Mereti" >?= 1
+	
+
+
+	
+#------Reconciliation missions to restore peace after full domination of Wanderer territory.------
+
+mission "Angri Byrds: Peace Through Strength 1"
+	landing
+	name "Peace Through Strength"
+	description "Go to Desi Seledrak and meet with the Wanderer leaders."
+	source
+		government "Wanderer"
+	destination "Desi Seledrak"
+	to offer
+		has "Wanderers Ap'arak 3: Pug: done"
+		"tribute: Varu Tev'kei" > 0
+		"tribute: Kort Kehai" > 0
+		"tribute: Vara Rakak" > 0
+		"tribute: Tik Klai" > 0
+		"tribute: Vara Kehi'ki" > 0
+		"tribute: Vara K'chrai" > 0
+		"tribute: Varu Ek'lak'lai" > 0
+		"tribute: Var' Kayi" > 0
+		"tribute: Var' Roi" > 0
+		"tribute: Varu Tek'kai" > 0
+		"tribute: Spera Anatrusk" > 0
+		"tribute: Desi Seledrak" > 0
+	on offer
+		dialog
+			`You receive an invitation to a meeting on Desi Seledrak to discuss a cessation of hostilties between you and the Wanderers.`
+
+mission "Angri Byrds: Peace Through Strength 2"
+	landing
+	invisible
+	source "Desi Seledrak"
+	to offer
+		has "Angri Byrds: Peace Through Strength 1: done"
+	on offer
+		conversation
+			`Soon after you land, you are ushered in to a meeting with several of the senior Wanderer leaders. Among them you recognize the military commander Sobari Tele'ek, terraformer Tema'a Iriket, chief advisor on the Kor Mereti Meto Pa'aret, and Firstborn Ektasi Rek.`
+			`	"Hello Captain <first> <last>," Ektasi Rek welcomes you. We have invited you here to discuss a formal cessation of hostilities between you and our people.`
+			`	"Too many have died in needless battle with you," adds Tema'a Iriket. "Our [first? primary?] focus should be on developing these new worlds, not [participating? engaging?] in pointless warfare over a [robbery? pillaging?] between this human and the Pug." Several who are sitting near her nod in agreement.`
+			`	"There are some who [argue? preach?] the Pug have abandoned us to our fate here because of the actions of Captain <last>," states Sobari Tele'ek. There are murmurs amongst those present and from the agitation in their voices, you're certain there are some here who would shoot you now if they thought they could get away with it.`
+			`	Meto Pa'aret has been silent, quietly tinkering with a Kor Mereti Reasoning Node while the others were talking. When he realizes it's his turn to speak, he states, "The Mereti were willing to fight <last> on our behalf at first, but after the [failure? tragedy?] with the Exiles, their collective opinion is in disarray."`
+			`	Rek speaks again. "Ultimately, fighting with you now is not in the best interest of our people. We are prepared to cease hostilities if you will release all tribute demands you have placed upon our worlds."`
+			choice
+				`	(Reject their offer.)`
+				`	(Negotiate a better offer.)`
+					goto negotiate
+
+			`	You refuse their offer. The room erupts in anarchy and one of the military officers opens fire on you. You fail to react in time and die on the spot. Your last sight is seeing Rek sadly watching as you crumple onto the floor.`
+				die
+
+			label negotiate
+			`	After some consideration, you respond,"My grievance with the Pug is unrelated to my relationship with the Wanderers. Yet the Wanderers were the first to open fire on me. I am willing to cease hostilities if the Wanderers will continue to pay ten percent of existing tributes or one percent of estimated average planetary daily gross domestic production based on the most recent monthly data; whichever is lesser." You remember the banker who gave you the loan for your first ship and wonder if this is what it was like on his side of the table. The translation device squeaks and squawks. Hopefully it accurately conveys your proposition.`
+			`	Rek clarifies the translation of your counter offer to everyone present. There are heated discussions moving too fast for your device to translate. After a while, the arguments die down and Rek speaks again. "We accept."`
+				accept
+	on accept
+		log `Finally restored peaceful relations with the Wanderers after an unfortunate misunderstanding regarding the Pug.`
+		event "Angri Byrds Peace Through Strength"
+		"reputation: Wanderer" >?= 1
+		"reputation: Kor Mereti" >?= 1
+		"tribute: Varu Tev'kei" <?= 200
+		"tribute: Kort Kehai" <?= 200
+		"tribute: Vara Rakak" <?= 200
+		"tribute: Tik Klai" <?= 200
+		"tribute: Vara Kehi'ki" <?= 200
+		"tribute: Vara K'chrai" <?= 1000
+		"tribute: Varu Ek'lak'lai" <?= 200
+		"tribute: Var' Kayi" <?= 200
+		"tribute: Var' Roi" <?= 200
+		"tribute: Varu Tek'kai" <?= 200
+		"tribute: Spera Anatrusk" <?= 100
+		"tribute: Desi Seledrak" <?= 100
+
+event "Angri Byrds Peace Through Strength"
+
+
+
+mission "Angri Byrds: Peace Through Strength Patch"
+	landing
+	invisible
+	to offer
+		has "event: Wanderers Peace Through Strength"
+		"tribute: Sabira Eseskrai" > 0
+	on offer
+		"tribute: Sabira Eseskrai" <?= 100
