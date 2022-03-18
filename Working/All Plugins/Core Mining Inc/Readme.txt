@@ -126,6 +126,9 @@ as well.
 		hunting mission, which included lowering the level of the nemesis ship, and giving you
 		an unmarked escort. Added landscape to Keselrig.
 
+-0.1.8-
+	~Very small update fixing a bug where a mission wouldn't show up.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 5. Known Issues
 
