@@ -1,0 +1,870 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Storm Seeker Raider 1"
+	invisible
+	source "Season's End"
+	on offer
+		conversation
+			scene "thumbnail/raider"
+			`You are surprised to find one of these parked here. An entry hatch was left open, inviting you into the dark interior of the ship.`
+			choice
+				`	Enter.`
+			scene "scene/scene-sivael6cropred"
+			`	As you explore the ship, you realize that the crew was human. You are able to figure this out, because their dead bodies are strewn about. From their attire and equipment, they were probably pirates. They died violently. A mutiny, perhaps? After some more exploration, you note that the jump drive is missing. Maybe it was stolen by another crew. The mystery will have to be left unsolved.`
+			`	This ship isn't going anywhere in its current condition, but if you return with an extra jump drive, it can be salvaged.`
+				accept
+	on accept
+		fail
+		
+mission "Storm Seeker Raider 2"
+	name "Salvage Operation"
+	description "Bring 145 crew and a Jump Drive to <destination> to salvage an abandoned raider."
+	source
+		not planet "Season's End"
+	destination "Season's End"
+	passengers 145
+	to offer
+		has "Storm Seeker Raider 1: failed"
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/raider"
+			`Do you want to use one of your jump drives to salvage the abandoned pirate raider on Season's End?`
+			choice
+				`	Yes. I'll also need to transport 145 crew to the station to operate the salvaged ship.`
+					accept
+				`	Maybe another time.`
+					defer
+				`	Meh. I don't really want to go through the trouble.`
+					decline
+	on complete
+		outfit "Jump Drive" -1
+		give ship "Korath Raider" "Bloody End"
+		conversation
+			scene "thumbnail/raider"
+			`As soon as you arrive, your crew gets to work on installing a jump drive onto the abandoned raider and cleaning out the previous... mess. Once installed, the ship is ready to launch.`
+			
+
+
+mission "Storm Seeker Shallow Pond"
+	invisible
+	repeat
+	source "Season's End"
+	to offer
+		or
+			has "Storm Seeker Raider 2: done"
+			has "Storm Seeker Raider 2: declined"
+		or
+			not "randomize Storm Seeker Shallow Pond"
+			and
+				has "randomize Storm Seeker Shallow Pond"
+				random < 30 - ( 3 * "Storm Seeker Shallow Pond: failed" )
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "scene/scene-shallow pond"
+			`After several hours of searching, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					decline
+	on decline
+		set "randomize Storm Seeker Shallow Pond"
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Shallow Pond (Jump)"
+		give ship "Flycatcher"
+		set "randomize Storm Seeker Shallow Pond"
+		fail
+		
+mission "Storm Seeker Skulduggery"
+	invisible
+	source "Season's End"
+	destination "Earth"
+	to offer
+		has "main plot completed"
+		has "Storm Seeker Shallow Pond: failed"
+		random < 40 + ( 10 * "Storm Seeker Shallow Pond: failed" )
+	deadline 1
+	on offer
+		conversation
+			scene "scene/scene-stormseekerskulduggery"
+			`Ever since you landed, you've had the feeling that something about the spaceport seeems different, but you're not sure what it is. As you start to inspect one of the abandoned ships, you hear the roar of engines outside! Rushing out of the abandoned space ship, you see a medium warship taking off with several of the abandoned interceptors. Do you pursue?`
+			choice
+				`	Of course!`
+					launch
+	npc kill
+		government "Alpha"
+		personality waiting coward
+		fleet
+			names "pirate"
+			variant
+				"Shallow Pond (Jump)" 10
+				"Flycatcher" 10
+
+	on fail
+		dialog `The warship escaped. Whoever that is may have scavenged more ships from Season's End. You're certain this isn't the last time you'll cross paths.`
+		
+mission "Storm Seeker Raid: Free Worlds"
+	invisible
+	source
+		government "Free Worlds"
+	to offer
+		has "Storm Seeker Skulduggery: failed"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Don't join the fight.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few militia pilots have gathered to help repel the pirate attack. You join them, and prepare your ship for the upcoming battle...`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-stormseekerraid"
+			`This is no ordinary pirate fleet. Amid the chaos you spot a familiar ship jumping away from the system...`
+				accept
+
+	npc
+		government "Militia"
+		personality launching heroic
+		fleet "Large Militia"
+		fleet "Small Militia"
+
+	npc
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder fleet X"
+		fleet "Coalition Pirate"
+				
+	npc disable
+		government "Pirate"
+		personality target waiting staying plunders harvests
+		fleet "Storm Seeker Raid"
+	
+	on visit
+		dialog `There are still pirate ships in orbit. Rejoin the battle.`
+	on complete
+		"Storm Seeker Raid: Paradise: offered" --
+		payment 100000
+		conversation
+			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
+
+mission "Storm Seeker Raid: Syndicate"
+	invisible
+	source
+		government "Syndicate"
+	to offer
+		has "Storm Seeker Skulduggery: failed"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Don't join the fight.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few Syndicate pilots have gathered to help repel the pirate attack. You join them, and prepare your ship for the upcoming battle...`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-stormseekerraid"
+			`This is no ordinary pirate fleet. Amid the chaos you spot a familiar ship jumping away from the system...`
+				accept
+
+	npc
+		government "Syndicate"
+		personality launching heroic
+		fleet "Large Syndicate"
+		fleet "Small Syndicate"
+
+	npc
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet
+			names "pirate"
+			variant
+				"Korath Raider" 
+				"Korath Chaser" 12
+				"Falcon (Korath)"
+				"Protector (Korath)"
+				"Vanguard (Korath)"
+				"Bastion (Korath)"
+				"Roost (Korath)"
+				"Aerie (Korath)"
+				"Nest (Korath)"
+				"Splinter (Korath)"
+				"Modified Argosy (Korath)"
+				"Quicksilver (Korath)"
+
+			
+	npc disable
+		government "Pirate"
+		personality target waiting staying plunders harvests
+		fleet "Storm Seeker Raid"
+	
+	on visit
+		dialog `There are still pirate ships in orbit. Rejoin the battle.`
+	on complete
+		"Storm Seeker Raid: Deep: offered" --
+		payment 100000
+		conversation
+			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
+
+mission "Storm Seeker Raid: Deep"
+	invisible
+	source
+		government "Republic"
+		attributes "deep"
+	to offer
+		has "Storm Seeker Skulduggery: failed"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Don't join the fight.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few Deep Security pilots have gathered to help repel the pirate attack. You join them, and prepare your ship for the upcoming battle...`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-stormseekerraid"
+			`This is no ordinary pirate fleet. Amid the chaos you spot a familiar ship jumping away from the system...`
+				accept
+
+	npc
+		government "Deep Security"
+		personality launching heroic
+		fleet "Large Deep Security"
+		fleet "Small Deep Security"
+
+	npc
+		government "Pirate"
+		personality waiting plunders harvests coward		
+		fleet
+			names "pirate"
+			variant
+				"Falcon (Remnant)" 2
+				"Osprey (Remnant)" 4
+				"Raven (Remnant)" 6
+				"Hawk (Remnant)" 8
+			
+	npc disable
+		government "Pirate"
+		personality target waiting staying plunders harvests
+		fleet "Storm Seeker Raid"
+				
+	on visit
+		dialog `There are still pirate ships in orbit. Rejoin the battle.`
+	on complete
+		"Storm Seeker Raid: North: offered" --
+		payment 100000
+		conversation
+			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
+			
+mission "Storm Seeker Raid: Paradise"
+	invisible
+	source
+		government "Republic"
+		attributes "paradise"
+	to offer
+		has "Storm Seeker Skulduggery: failed"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Don't join the fight.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few Navy pilots have gathered to help repel the pirate attack. You join them, and prepare your ship for the upcoming battle...`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-stormseekerraid"
+			`This is no ordinary pirate fleet. Amid the chaos you spot a familiar ship jumping away from the system...`
+				accept
+
+	npc
+		government "Republic"
+		personality launching heroic
+		fleet "Large Republic"
+		fleet "Small Republic"
+
+	npc
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder Parade"
+	
+	npc
+		to spawn
+			has "event: Grudge Legacy"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Grudge Parade"
+			
+	npc disable
+		government "Pirate"
+		personality target waiting staying plunders harvests
+		fleet "Storm Seeker Raid"
+	
+	on visit
+		dialog `There are still pirate ships in orbit. Rejoin the battle.`
+	on complete
+		"Storm Seeker Raid: Syndicate: offered" --
+		payment 100000
+		conversation
+			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
+			
+mission "Storm Seeker Raid: North"
+	invisible
+	source
+		government "Republic"
+		attributes "north"
+	to offer
+		has "Storm Seeker Skulduggery: failed"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Don't join the fight.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few Navy pilots have gathered to help repel the pirate attack. You join them, and prepare your ship for the upcoming battle...`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-stormseekerraid"
+			`This is no ordinary pirate fleet. Amid the chaos you spot a familiar ship jumping away from the system...`
+				accept
+
+
+	npc
+		government "Navy (Oathkeeper)"
+		personality launching heroic
+		fleet "Large Oathkeeper"
+		fleet "Small Oathkeeper"
+
+	npc kill
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet
+			names "pirate"
+			variant
+				"Shield Beetle"
+				"Shield Beetle (Pulse)"
+				"Shield Beetle (Tracker)"
+				"Bactrian (Hai Weapons)"
+				"Bactrian (Hai Engines)"
+				"Leviathan (Hai Weapons)"
+				"Leviathan (Hai Engines)"
+				"Marauder Firebird (Hai)"
+				"Marauder Quicksilver (Hai)"
+				"Marauder Splinter (Hai)"
+				"Marauder Bounder (Hai)"
+				"Mule (Hai Weapons)"
+				"Mule (Hai Engines)"
+				"Osprey (Alien Weapons)"
+				"Firebird (Hai Shields)"
+				"Firebird (Hai Weapons)"
+				"Corvette (Hai)"
+				"Headhunter (Hai)"
+				"Dagger" 3
+
+	npc disable
+		government "Pirate"
+		personality target waiting staying plunders harvests
+		fleet "Storm Seeker Raid"
+
+	on visit
+		dialog `There are still pirate ships in orbit. Rejoin the battle.`
+	on complete
+		"Storm Seeker Raid: Free Worlds: offered" --
+		payment 100000
+		conversation
+			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
+			
+mission "Storm Seeker Counter Attack 1"
+	landing
+	name "Storm Seeker"
+	description "Meet Admiral Danforth on <destination> regarding the Alpha attacks happening across the galaxy."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		not attributes "uninhabited"
+	destination "Luna"
+	to offer
+		has "free worlds plot completed"
+		has "Storm Seeker Raid: North: done"
+		has "Storm Seeker Raid: Paradise: done"
+		has "Storm Seeker Raid: Deep: done"
+		has "Storm Seeker Raid: Syndicate: done"
+		has "Storm Seeker Raid: Free Worlds: done"
+	on offer
+		dialog `You receive an invitation from Admiral Danforth to join a strategy meeting on <destination> regarding the recent Alpha attacks happening across the galaxy.`
+
+mission "Storm Seeker Counter Attack 2"
+	landing
+	name "Storm Seeker"
+	description "Track down the Alpha ship 'Rolling Thunder' and eliminate it before the other Storm Seekers can claim the reward."
+	source "Luna"
+	to offer
+		has "Storm Seeker Counter Attack 1: done"
+	on offer
+		conversation
+			scene "scene/scene-stormseekerstrategy"
+			`As soon as you arrive on Luna, Navy Intelligence escorts you to the meeting. There, you and a small group of other elite captains are given a debriefing regarding the raids which have taken place and the Alpha ship which was present during all of these attacks. Each of the captains present assisted in defending against these raids. While you feel a sense of pride in defending more planets than the other captains, you note that there were more planets attacked that you were not involved in defending. The captain who succesfully eliminates this threat will be granted an honorary Navy License. You are all dismissed.`
+				accept
+	on accept
+		"Storm Seeker Raid: North: offered" --
+		"Storm Seeker Raid: Paradise: offered" --
+		"Storm Seeker Raid: Deep: offered" --
+		"Storm Seeker Raid: Syndicate: offered" --
+		"Storm Seeker Raid: Free Worlds: offered" --
+	
+	npc kill
+		government "Storm Seekers"
+		system "Almaaz"
+		personality marked disables staying waiting surveillance
+		ship "Shield Beetle" "Winter Wolf"
+	npc kill
+		government "Storm Seekers"
+		system "Alnilam"
+		personality marked disables staying waiting surveillance
+		ship "Solifuge" "Sanctuary"
+	npc kill
+		government "Storm Seekers"
+		system "Arneb"
+		personality marked disables staying waiting surveillance
+		ship "Strong Wind" "Rising Phoenix"
+	npc kill
+		government "Storm Seekers"
+		system "Almach"
+		personality marked disables staying waiting surveillance
+		ship "Korath Dredger" "Juggernaut"
+	npc kill
+		government "Storm Seekers"
+		system "Alcyone"
+		personality marked disables staying waiting surveillance
+		ship "Korath Raider" "Berserker"
+	npc kill
+		government "Storm Seekers"
+		system "Algenib"
+		personality marked disables staying waiting surveillance
+		ship "Albatross" "Edge of Midnight"
+	npc kill
+		government "Storm Seekers"
+		system "Gienah"
+		personality marked disables staying waiting surveillance
+		ship "Pelican" "Twight Mystery"
+	npc kill
+		government "Storm Seekers"
+		system "Shaula"
+		personality marked disables staying waiting surveillance
+		ship "Heliarch Judicator" "Day of Judgement"
+	npc kill
+		government "Storm Seekers"
+		system "Men"
+		personality marked disables staying waiting surveillance
+		ship "Heliarch Interdictor" "Light of Redemption"
+	npc kill
+		government "Storm Seekers"
+		system "Antares"
+		personality marked disables staying waiting surveillance
+		ship "Riptide" "Sierra Madre"
+	npc kill
+		to despawn
+			or
+				has "event: kestrel available: more engines"
+				has "event: kestrel available: more shields"
+				has "event: kestrel available: more weapons"
+		government "Storm Seekers"
+		system "Nunki"
+		personality marked disables staying waiting surveillance
+		ship "Bactrian (Hired Gun)" "Sleeping Dragon"
+	npc kill
+		to spawn
+			has "event: kestrel available: more engines"
+		system "Nunki"
+		government "Storm Seekers"
+		personality marked disables staying waiting surveillance
+		ship "Kestrel (Battle Engines)" "Black Dragon"
+		fleet
+			fighters "civilian"
+			variant
+				"Finch" 2
+	npc kill
+		to spawn
+			has "event: kestrel available: more shields"
+		system "Nunki"
+		government "Storm Seekers"
+		personality marked disables staying waiting surveillance
+		ship "Kestrel (Battle Shields)" "Black Dragon"
+		fleet
+			fighters "civilian"
+			variant
+				"Finch" 2
+	npc kill
+		to spawn
+			has "event: kestrel available: more weapons"
+		system "Nunki"
+		government "Storm Seekers"
+		personality marked disables staying waiting surveillance
+		ship "Kestrel (Battle Weapons)" "Black Dragon"
+		fleet
+			fighters "civilian"
+			variant
+				"Finch" 2
+
+	npc kill
+		government "Alpha"
+		personality waiting fleeing
+		system Diyu
+		ship "Shallow Pond" "Chocolate"
+		ship "Flycatcher" "Peanut Butter"
+	
+	on enter Diyu
+		conversation
+			scene "scene/scene-shallow pond"
+			`That Shallow Pond is making a run for it. Could the Rolling Thunder be here in Diyu?`
+				accept
+
+mission "Storm Seeker Counter Attack 3 Clue"
+	landing
+	invisible
+	repeat
+	source "Wang Xiang Tai"
+	to offer
+		has "Storm Seeker Counter Attack 2: active"
+		or
+			not "Storm Seeker Counter Attack 3: active"
+			not "Storm Seeker Counter Attack 3: done"
+	on offer
+		dialog "Maybe you can get a lead on the Rolling Thunder by checking the jobs board. If they're doing business on Wang Xiang Tai, one of the jobs is certain lead back to them."
+
+mission "Storm Seeker Counter Attack 3"
+	job
+	name "Underworld Meeting"
+	description "Take <fare> to a clandestine meeting in <destination>'s underworld. Then return them to <origin>. Payment is 50000 credits."
+	source "Wang Xiang Tai"
+	destination "Naihe Qiao"
+	passengers 1
+	to offer
+		has "Storm Seeker Counter Attack 1: done"
+		or
+			not "Underworld Meeting (easy): active"
+			not "Underworld Meeting (hard): active"
+	on accept
+		dialog `Your passenger is young hot shot named Kenny. "This meeting is a pretty big deal for me. You were highly recommended. I hope you live up to your reputation. Also, don't be alarmed, but the people we're meeting are a bit unusual...`
+	on fail
+		dialog `[MISSION FAILED] Without your passenger to guide you, you fail to find the meeting location for the Alpha ship, Rolling Thunder. If life were a game, you could load a save file and try again.`
+	on complete
+		conversation
+			scene "thumbnail/storm seeker-thumb"
+			`Your passenger, Kenny, directs you through a network of underground caverns to reach the designated meeting spot. After a moment the Rolling Thunder appears. It hails you. "Captain <first> <last>, I'd heard you were part of some elite squad Danforth put together to hunt me down. Kenny, you're not getting out of this alive."`
+			`Kenny curses his luck as you maneuver the <ship> to take evasive action. It doesn't take long for the battle to abandon the cramped Underworld tunnels of Naihe Qiao for open space.`
+
+mission "Storm Seeker Counter Attack 4"
+	landing
+	name "Underworld Meeting"
+	description "Take <fare> to a clandestine meeting in <origin>'s underworld. Then return them to <destination>. Payment is 50000 credits."
+	source "Naihe Qiao"
+	destination "Wang Xiang Tai"
+	passengers 1
+	to offer
+		has "Storm Seeker Counter Attack 3: done"
+	on offer
+		"Storm Seeker Raid: North: offered" += 2
+		"Storm Seeker Raid: Paradise: offered" += 2
+		"Storm Seeker Raid: Deep: offered" += 2
+		"Storm Seeker Raid: Syndicate: offered" += 2
+		"Storm Seeker Raid: Free Worlds: offered" += 2
+		fail "Storm Seeker Raid: North"
+		fail "Storm Seeker Raid: Paradise"
+		fail "Storm Seeker Raid: Deep"
+		fail "Storm Seeker Raid: Syndicate"
+		fail "Storm Seeker Raid: Free Worlds"
+
+	
+	on enter
+		conversation
+			scene "scene/scene-badcompany"
+			`Kenny cowers in a corner of your ship muttering unintelligently to himself while you engage the Rolling Thunder. As you clear the planet's atmosphere, scanners show that more company has arrived...`
+	
+	npc
+		government "Alpha"
+		personality entering heroic vindictive
+		fleet
+			names "pirate"
+			variant
+				"Tsunami"
+				"Tornado" 2
+				"Deep River Rapids"
+				"Deep River Pirate 4" 3
+				"Deep River Pirate 3"
+				"Deep River Pirate 2"
+				"Deep River Pirate 1"
+				"Deep River Pirate 0"
+				"Winter Leaf" 2
+				"Autumn Leaf" 3
+				"Summer Leaf" 6
+				"Spring Leaf" 9
+				"Shallow Pond" 12
+				"Flycatcher (Laser)" 12
+				"Rainmaker (Wanderer)" 4
+
+	npc kill
+		government "Alpha"
+		system "Aya'arak"
+		personality waiting heroic vindictive
+		ship "Storm Seeker" "Rolling Thunder"
+		dialog `You've defeated the Rolling Thunder. Dump Kenny off on Wang Xiang Tai, then head to Luna for your reward.`
+	
+	on complete
+		"reputation: Pirate" -= 2
+		fail "Storm Seeker Counter Attack 2"
+		dialog `You dump an ungrateful Kenny off on Wang Xiang Tai and make preparations to head for Luna.`
+
+
+
+mission "Storm Seeker Counter Attack 4 Patch"
+	landing
+	invisible
+	to offer
+		has "Storm Seeker Counter Attack 4: done"
+	on offer
+		"Storm Seeker Raid: North: offered" += 10
+		"Storm Seeker Raid: Paradise: offered" += 10
+		"Storm Seeker Raid: Deep: offered" += 10
+		"Storm Seeker Raid: Syndicate: offered" += 10
+		"Storm Seeker Raid: Free Worlds: offered" += 10
+		fail "Storm Seeker Raid: North"
+		fail "Storm Seeker Raid: Paradise"
+		fail "Storm Seeker Raid: Deep"
+		fail "Storm Seeker Raid: Syndicate"
+		fail "Storm Seeker Raid: Free Worlds"
+		fail
+
+mission "Storm Seeker Counter Attack 5"
+	landing
+	name "Storm Seeker"
+	description "Return to <destination> to claim your reward for defeating the Alpha ship 'Rolling Thunder'."
+	destination Luna
+	to offer
+		has "Storm Seeker Counter Attack 3: done"
+	on complete
+		set "license: Navy"
+		conversation
+			scene "outfit/navy license"
+			`Navy Intelligence thanks you for you contribution to galactic safety and stability. You are awarded a honorary Navy license in recognition for your service to the Republic.`
+
+#keeping this for anyone who got version 0.9.14.8
+
+event "Storm Seeker Reward Expires"
+
+mission "Storm Seeker Reward Expires"
+	landing
+	invisible
+	to offer
+		has "event: Storm Seeker Reward Expires"
+	on offer
+		clear "license: Navy Auxiliary"
+		clear "license: Navy Cruiser"
+		clear "license: Navy Carrier"
+		fail
+
+
+
+mission "Storm Seeker Epilogue: Spring Leaf"
+	invisible
+	source "Season's End"
+	repeat
+	to offer
+		or
+			and
+				has "Storm Seeker Counter Attack 4: done"
+				not "Storm Seeker Epilogue: Spring Leaf: done"
+			and
+				has "Storm Seeker Epilogue: Spring Leaf: done"
+				random < 35 - ( 3 * "Storm Seeker Epilogue: Spring Leaf: done" )
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/spring leaf-thumb"
+			`After several hours of searching, and scavenging parts from ships that are otherwise unsalvageable, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					defer
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Spring Leaf (Jump)"
+
+ship "Spring Leaf" "Spring Leaf (Jump)"
+	outfits
+		"Sunbeam"
+		
+		"Yellow Sun Reactor"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 3 Radiant Thruster"
+		"Type 3 Radiant Steering"
+		"Jump Drive"
+
+
+
+mission "Storm Seeker Epilogue: Winter Leaf"
+	invisible
+	source "Season's End"
+	to offer
+		has "Storm Seeker Epilogue: Spring Leaf: done"
+		random < 30
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/winter leaf-thumb"
+			`After several hours of searching, and scavenging parts from ships that are otherwise unsalvageable, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					defer
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Winter Leaf (Jump)"
+
+ship "Winter Leaf" "Winter Leaf (Jump)"
+	outfits
+		"Sunbeam" 3
+		"Wanderer Anti-Missile"
+		
+		"White Sun Reactor"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Jump Drive"
+
+
+
+mission "Storm Seeker Epilogue: Storm Seeker"
+	invisible
+	source "Season's End"
+	to offer
+		has "Storm Seeker Epilogue: Winter Leaf: done"
+		random < 25
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/storm seeker-thumb"
+			`After several hours of searching, and scavenging parts from ships that are otherwise unsalvageable, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					defer
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Storm Seeker"
+
+
+
+mission "Storm Seeker Epilogue: Tornado"
+	invisible
+	source "Season's End"
+	to offer
+		has "Storm Seeker Epilogue: Storm Seeker: done"
+		random < 20
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/tornado-thumb"
+			`After several hours of searching, and scavenging parts from ships that are otherwise unsalvageable, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					defer
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Tornado (Jump)"
+
+ship "Tornado" "Tornado (Jump)"
+	outfits
+		"Sunbeam" 4
+		"Sunbeam Turret" 2
+		"Wanderer Anti-Missile" 2
+		
+		"Yellow Sun Reactor" 2
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Jump Drive"
+
+
+
+mission "Storm Seeker Epilogue: Tsunami"
+	invisible
+	source "Season's End"
+	to offer
+		has "Storm Seeker Epilogue: Tornado: done"
+		random < 15
+	on offer
+		require "Jump Drive" 2
+		conversation
+			scene "thumbnail/tsunami-thumb"
+			`After several hours of searching, and scavenging parts from ships that are otherwise unsalvageable, you find a ship that's almost salvageable. All it requires is a jump drive.`
+			choice
+				`Use one of your jump drives to salvage the ship.`
+					accept
+				`Do not salvage the ship.`
+					defer
+	on accept
+		outfit "Jump Drive" -1
+		give ship "Tsunami (Jump)"
+
+ship "Tsunami" "Tsunami (Jump)"
+	outfits
+		"Sunbeam" 4
+		"Sunbeam Turret" 5
+		
+		"Blue Sun Reactor"
+		"White Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 2 Radiant Steering"
+		"Jump Drive"
+		
+
+
+mission "Storm Seeker Epilogue: Season's End"
+	invisible
+	source "Season's End"
+	repeat
+	to offer
+		has "Storm Seeker Epilogue: Tsunami: done"
+		random < 30 - ( 3 * "Storm Seeker Epilogue: Season's End: failed" )		
+	on offer
+		dialog `After several hours of searching, you fail to find any ship that's salvageable. While you might have overlooked a Shallow Pond or Spring Leaf, you have no doubt that you've checked all the larger derelicts and confirmed that there's nothing left but piles of useless scrap.`
+	on accept
+		fail

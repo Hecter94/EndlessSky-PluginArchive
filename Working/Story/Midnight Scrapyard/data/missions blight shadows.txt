@@ -1,0 +1,616 @@
+# Copyright (c) 2022 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of th.e License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details
+
+
+
+######################
+# Blight Shadow Missions
+######################
+
+event "Infected with Shadowblight"
+
+
+
+mission "Scrapyard Sebra Skira TL5"
+	landing
+	invisible
+	to offer
+		"Scrapyard Threat Level" >= 5
+	on enter "Silikatakfar"
+		dialog `There's an old space station here. It might be worth checking out.`
+	on accept
+		fail
+
+mission "Scrapyard Eggs Pirate 1"
+	landing
+	invisible
+	source "Sebra Skira"
+	destination "Greenrock"
+	to offer
+		"Scrapyard Threat Level" >= 5
+	on offer
+		conversation
+			scene "outfit/blight egg"
+			`While exploring the station, you find some gigantic eggs of alien origin. The shells are composed of some black leathery membranes.`
+			choice
+				`	(Leave them alone.)`
+				`	(Smash them.)`
+					goto omelette
+				`	(Keep them.)`
+					goto keep
+
+			`	You decide to leave the eggs alone and get out of here before whatever laid them comes back.`
+				depart
+			label omelette
+			`	You violently smash the eggs and are splattered with black slime. It might be a good idea to decontaminate your environmental suit later...`
+				decline
+			label keep
+			`	You carefully load the eggs into a crate and store them in your cargo hold. Perhaps they will be worth something to the right buyer. Perhaps a place that deals with exotic animals would be interested...`
+				accept
+	on decline
+		event "Infected with Shadowblight" 
+	on accept
+		event "Pirate Egg timer" 180
+		outfit "Blight Shadow Eggs" 1
+	on complete
+		dialog `You carry one of the Blight Shadow eggs around port looking for a buyer. Eventually, you receive a tip on where to meet someone who might be interested in the eggs. Head to the spaceport when you are ready to make a deal.`
+
+event "Pirate Egg timer"
+
+mission "Scrapyard Eggs Pirate 2"
+	name "Egg Buyer"
+	description "Head to the spaceport on Greenrock and find a buyer for the Blight Shadow eggs."
+	source "Greenrock"
+	to offer
+		has "Scrapyard Eggs Pirate 1: done"
+	on offer
+		require "Blight Shadow Eggs"
+		conversation
+			`After going to the address where someone might be interested in buying your Blight Shadow eggs, you find yourself at what is likely an illegal zoo for exotic creatures.`
+			`	A man in rugged attire approaches you. "G'day mate. What can I do yer for?"`
+			choice
+				`	"I'm interested in selling these eggs."`
+					goto overeasy
+				`	"I found these eggs in space."`
+					goto poached
+			
+			label overeasy
+			scene "outfit/blight egg"
+			`	"Let's see what you've got here..." The man looks over the eggs. "Weird ones, eh? I'll give ya 150000 for the lot of 'em."`
+			choice
+				`	"OK, I'll take the money."`
+				`	"I was hoping for a better deal."`
+					goto poached
+					
+			`	You take the money and leave the eggs at the zoo.`
+				decline
+			
+			label poached
+			scene "outfit/blight egg"
+			`	"Hmm..." The man looks over the eggs. "Tell ya what. How about I do the work of raising them and you get to keep one once it's fully grown?"`
+			choice
+				`	(This sounds like a bad idea. Better ask for money.)`
+					goto overeasy
+				`	(This sounds intriguing. Accept his offer.)`
+			
+			`	"Alright. It's a deal." You both shake hands. He introduces himself as Gemini Jack. "Check back with me in a few months. Hopefully these things will have hatched by then."`
+				accept
+	on decline
+		outfit "Blight Shadow Eggs" -1
+		payment 150000
+	on accept
+		outfit "Blight Shadow Eggs" -1
+	to complete
+		has "event: Pirate Egg timer"
+
+mission "Scrapyard Eggs Pirate 3"
+	landing
+	invisible
+	source "Greenrock"
+	to offer
+		has "Scrapyard Eggs Pirate 2: done"
+	on offer
+		conversation
+			`It's been a while since you left the eggs with Gemini Jack. When you check up on him and the eggs, he invites you to visit the zoo and see for yourself how they've grown.`
+			`	He has some Blight Shadows locked up in a gigantic titanium holding tank. Anyone approaching the holding area carries a titanium shield large enough to hide behind. The shields look like they've taken quite a bit of abuse... "They're a dangerous lot, 'specially due to their intelligence. We have to keep repairing the tank because they can eat through the metal plating. Lead, iron, titanium... The type of metal doesn't matter if they're left alone long enough." He has them perform some tricks to demonstrate that they've been trained. "Go ahead and pick one."`
+			`	It takes all day, but you manage to determine which of the creatures is best suited for you. The zoo workers load it into your cargo bay. The plan is to release it once you're in orbit. This entire scheme sounds ridiculous, but it's too late to back out now.`
+				accept
+	npc kill
+		government "Escort"
+		personality launching escort disables mute
+		ship "Blight Shadow"
+		dialog `It was a crazy idea to try keeping one as a pet. But the Blight Shadow that you hatched from an egg served you well in the time you had together.`	
+	on complete
+		conversation
+			`You wonder how Gemini Jack is doing with the rest of the Blight Shadows. Maybe he could sell you a new one to replace the one you lost.`
+			`When you arrive at the zoo's location, you find an abandoned ruin. There is no sign of Jack or the other zoo keepers. All the cages are destroyed or empty, the animals nowhere to be seen. The titanium holding tank that the Blight Shadows were kept in is a blasted wreck. Something terrible took place here, but there's no one around to tell you what happened.`
+
+mission "Scrapyard Pirate Eggs Hatch"
+	landing
+	invisible
+	to offer
+		has "event: Pirate Egg timer"
+		not "Scrapyard Eggs Pirate 2: offered"
+	on offer
+		require "Blight Shadow Eggs"
+		fail "Scrapyard Eggs Pirate 1"
+		"Scrapyard Eggs Pirate 1: offered" --
+	on enter	
+		outfit "Blight Shadow Eggs" -1
+		conversation
+			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
+				accept
+	npc kill
+		government "Blight Shadows"
+		personality fleeing disables unconstrained mute
+		fleet "Small Blight Shadow" 3
+
+
+
+mission "Scrapyard Devru Kaska TL15"
+	landing
+	invisible
+	to offer
+		has "event: remnant: return the samples timer"
+		"Scrapyard Threat Level" >= 15
+		or
+			has "Scrapyard Eggs Pirate 3: offered"
+			has "Scrapyard Pirate Eggs Hatch: offered"
+	on enter "Sobarati"
+		dialog `There's an old space station here. It might be worth checking out.`
+	on accept
+		fail
+
+mission "Scrapyard Eggs Remnant 1"
+	landing
+	name "Remnant Egg Research"
+	description "Present the Blight Shadow eggs to the Remnant for research."
+	source "Devru Kaska"
+	destination "Aventine"
+	to offer
+		has "event: remnant: return the samples timer"
+		"Scrapyard Threat Level" >= 15
+		or
+			has "Scrapyard Eggs Pirate 3: offered"
+			has "Scrapyard Pirate Eggs Hatch: offered"
+	on offer
+		conversation
+			scene "outfit/blight egg"
+			`While exploring the station, you find more Blight Shadow eggs. You can see movement underneath the shell's black leathery membranes.`
+			choice
+				`	(Leave them alone.)`
+				`	(Smash them.)`
+					goto omelette
+				`	(Keep them.)`
+					goto keep
+
+			`	You decide to leave the eggs alone and get out of here before whatever laid them comes back.`
+				depart
+			label omelette
+			`	You violently smash the eggs and are splattered with black slime. It might be a good idea to decontaminate your environmental suit later...`
+				decline
+			label keep
+			`	You carefully load the eggs into a crate and store them in your cargo hold. After your experience with the pirates, you wonder if taking them to the Remnant might yield better results...`
+				accept
+	on decline
+		event "Infected with Shadowblight" 
+	on accept
+		event "Remnant Egg timer" 30
+		outfit "Blight Shadow Eggs" 1
+	on complete
+		outfit "Blight Shadow Eggs" -1
+		conversation
+			scene "outfit/blight egg"
+			`You take the eggs to Plume's lab and tell him everything you know about the Blight Shadows.`
+			`"Amazing..." He trills, "And they're not native to our galaxy?" You sign an affirmative. His hands move in gestures indicating that he and the other researchers will gladly accept the eggs for research and share their findings with you.`
+
+event "Remnant Egg timer"
+
+
+mission "Scrapyard Eggs Remnant 2"
+	landing
+	invisible
+	source "Caelian"
+	to offer
+		has "Scrapyard Eggs Remnant 1: done"
+		has "event: Remnant Egg timer"
+		has "remnant chilia"
+	on offer
+		conversation
+			`You receive an invitation from Prefect Chilia to meet at a Remnant weapons lab.`
+			`	"Some of the egg samples you delivered were made available to us," he sings. "After several experiments, we managed to create this."`
+			scene "outfit/blight rifle"
+			`	He presents you with a bulky long gun. "A prototype blight rifle. I would like for you to field test it for us."`
+			label questions
+			choice
+				`	"Prototype?"`
+					goto prototype
+				`	"Blight rifle?"`
+					goto blightrifle
+				`	"I'd be glad to field test it for you."`
+		
+			`	He hands the rifle to you. "May the Embers burn bright for you, Captain."`
+				accept
+		
+			label blightrifle
+			`	"It is a vicious weapon. It works by draining the energy from any creature it is used on. Such creatures are reduced to withered husks. One benefit of all this is that it charges itself whenever it drains a creature's life force." He sings all this in a light tone. Briefly, you wonder who or what was used for target practice in the earlier experiments. Perhaps it would be better to not think too much about that.`
+				goto questions
+		
+			label prototype
+			`	"We went through three eggs, and this is the result," he sings. "Hopefully we can acquire more eggs to continue our research."`
+				goto questions
+	on accept
+		outfit "Blight Rifle" 1
+		event "Blight Rifle Testing"
+		fail
+
+event "Blight Rifle Testing"
+
+mission "Blight Rifle Testing"
+	boarding
+	invisible
+	repeat
+	source
+		category "Transport" "Light Freighter" "Heavy Freighter" "Light Warship" "Medium Warship" "Heavy Warship"
+		not attributes "automaton"
+	destination "Caelian"
+	to offer
+		has "event: Blight Rifle Testing"
+		random < 50
+	on offer
+		"Blight Rifle Testing" ++
+		fail
+
+mission "Scrapyard Blight Rifle 1"
+	name "Blight Rifle Testing"
+	description "Head to <planet> to report your Blight Rifle field test results to Prefect Chilia."
+	boarding
+	source
+		category "Transport" "Light Freighter" "Heavy Freighter" "Light Warship" "Medium Warship" "Heavy Warship"
+		not attributes "automaton"
+	destination "Caelian"
+	to offer
+		"Blight Rifle Testing" > 10
+		random < 50
+	on offer
+		require "Blight Rifle" 1
+		conversation
+			scene "outfit/blight rifle"
+			`The prototype blight rifle starts shaking wildly. Then part of the casing shatters, splattering you with black slime! Unfortunately, the rifle is a complete wreck. You'll have to rely on some other weapon for now.`
+				accept
+	on accept
+		outfit "Blight Rifle" -1
+		event "Infected with Shadowblight" 
+	on complete
+		dialog `Head to the spaceport to report your Blight Rifle field test results to Prefect Chilia.`
+
+mission "Scrapyard Blight Rifle 2"
+	invisible
+	source "Caelian"
+	to offer
+		has "Scrapyard Blight Rifle 1: done"
+	on offer
+		conversation
+			`You find Prefect Chilia at the weapons research lab and report what happened with the Blight Rifle.`
+			`"That is very unfortunate," he sings. "However we have another test model for you to try out, if you are interested. The new casing should be sturdier than before."`
+			choice
+				`	"Sure, I'm willing to try it out."`
+				`	"Sorry, I don't want to be slimed again."`
+					decline
+
+			scene "outfit/blight rifle"
+			`	He hands the rifle to you. "May the Embers burn bright for you, Captain."`
+				accept
+	on accept
+		outfit "Blight Rifle" 1
+		"Blight Rifle Testing" <?= 0
+		fail
+
+mission "Scrapyard Blight Rifle 3"
+	boarding
+	name "Blight Rifle Testing"
+	description "Head to <planet> to report your Blight Rifle field test results to Prefect Chilia."
+	source
+		category "Transport" "Light Freighter" "Heavy Freighter" "Light Warship" "Medium Warship" "Heavy Warship"
+		not attributes "automaton"
+	destination "Caelian"
+	to offer
+		"Blight Rifle Testing" > 20
+		random < 50
+	on offer
+		require "Blight Rifle" 1
+		conversation
+			scene "outfit/blight rifle"
+			`The test model blight rifle starts shaking wildly. Then part of the casing shatters, splattering you with black slime! Unfortunately, the rifle is a complete wreck. You'll have to rely on some other weapon for now.`
+				accept
+	on accept
+		outfit "Blight Rifle" -1
+		"Scrapyard Blight Rifle 2: offered" --
+	on complete
+		"Scrapyard Blight Rifle 3: offered" --
+		dialog `Head to the spaceport to report your Blight Rifle field test results to Prefect Chilia.`
+		
+
+
+mission "Scrapyard Remnant Eggs Hatch"
+	landing
+	invisible
+	to offer
+		has "event: Remnant Egg timer"
+		not "Scrapyard Eggs Remnant 1: done"
+	on offer
+		require "Blight Shadow Eggs"
+		fail "Scrapyard Eggs Remnant 1"
+		"Scrapyard Eggs Remnant 1: offered" --
+	on enter	
+		outfit "Blight Shadow Eggs" -1
+		conversation
+			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
+				accept
+	npc kill
+		government "Blight Shadows"
+		personality fleeing disables unconstrained mute
+		fleet "Small Blight Shadow" 3
+
+
+
+mission "Scrapyard Shadowblight Hai"
+	landing
+	invisible
+	source
+		government "Hai"
+	to offer
+		has "event: Infected with Shadowblight"
+	on offer
+		event "Shadowblight Hai"
+	on enter
+		dialog `The Blight Shadows have reached Hai space. Could they be following you?`
+	npc kill
+		government "Blight Shadows"
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
+
+event "Shadowblight Hai"
+	system "Bote Asu"
+		add fleet "Large Blight Shadow" 50000
+
+
+mission "Scrapyard Shadowblight Wanderer"
+	landing
+	invisible
+	source
+		government "Wanderer"
+	to offer
+		has "event: Infected with Shadowblight"
+	on offer
+		event "Shadowblight Wanderer"
+	on enter
+		dialog `The Blight Shadows have reached Wanderer space. Could they be following you?`
+	npc kill
+		government "Blight Shadows"
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
+		
+event "Shadowblight Wanderer"
+	system "Prakacha'a"
+		add fleet "Large Blight Shadow" 50000
+	system Eshkoshtar
+		add fleet "Large Blight Shadow" 50000
+	system Salipastart
+		add fleet "Large Blight Shadow" 50000
+
+
+mission "Scrapyard Adjust Shadowblight Wanderer"
+	landing
+	invisible
+	to offer
+		has "event: Shadowblight Wanderer"
+	on offer
+		event "Adjust Shadowblight Wanderer"
+		fail
+		
+event "Adjust Shadowblight Wanderer"
+	system Eshkoshtar
+		remove fleet "Large Blight Shadow" 50000
+	system Salipastart
+		remove fleet "Large Blight Shadow" 50000
+
+
+mission "Scrapyard Shadowblight Coalition"
+	landing
+	invisible
+	source
+		government "Coalition"
+	to offer
+		has "event: Infected with Shadowblight"
+	on enter
+		dialog `The Blight Shadows have reached Coalition space. Could they be following you?`
+	npc kill
+		government "Blight Shadows"
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
+
+
+		
+mission "Scrapyard Shadowblight Remnant"
+	landing
+	invisible
+	source
+		government "Remnant"
+	to offer
+		has "event: Infected with Shadowblight"
+	on enter
+		dialog `The Blight Shadows have reached Remnant space. Could they be following you?`
+	npc kill
+		government "Blight Shadows"
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
+
+
+
+mission "Scrapyard Shadowblight Human"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate"
+	to offer
+		has "event: Infected with Shadowblight"
+	on offer
+		event "Shadowblight Human"
+	on enter
+		dialog `The Blight Shadows have reached Human space. Could they be following you?`
+	npc kill
+		government "Blight Shadows"
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
+
+event "Shadowblight Human"
+	system Mintaka
+		add fleet "Large Blight Shadow" 50000
+	system Rigel
+		add fleet "Large Blight Shadow" 50000
+	system Mirzam
+		add fleet "Large Blight Shadow" 50000
+	system Hassaleh
+		add fleet "Large Blight Shadow" 50000
+	system Sumar
+		add fleet "Large Blight Shadow" 50000
+	system Rajak
+		add fleet "Large Blight Shadow" 50000
+	system "Ultima Thule"
+		add fleet "Large Blight Shadow" 50000
+	system Cardax
+		add fleet "Large Blight Shadow" 50000
+	system Orbona
+		add fleet "Large Blight Shadow" 50000
+	system Terminus
+		add fleet "Large Blight Shadow" 50000
+	system Limen
+		add fleet "Large Blight Shadow" 50000
+	system Mora
+		add fleet "Large Blight Shadow" 50000
+	system Fala
+		add fleet "Large Blight Shadow" 50000
+	system Algieba
+		add fleet "Large Blight Shadow" 50000
+	system Muphrid
+		add fleet "Large Blight Shadow" 50000
+	system Mizar
+		add fleet "Large Blight Shadow" 50000
+	system Gacrux
+		add fleet "Large Blight Shadow" 50000
+	system Holeb
+		add fleet "Large Blight Shadow" 50000
+	system Tais
+		add fleet "Large Blight Shadow" 50000
+	system Wei
+		add fleet "Large Blight Shadow" 50000
+	system Alnasl
+		add fleet "Large Blight Shadow" 50000
+	system Eber
+		add fleet "Large Blight Shadow" 50000
+	system "Alpha Arae"
+		add fleet "Large Blight Shadow" 50000
+	system Eltanin
+		add fleet "Large Blight Shadow" 50000
+	system Moktar
+		add fleet "Large Blight Shadow" 50000
+	system Oblate
+		add fleet "Large Blight Shadow" 50000
+	system Eteron
+		add fleet "Large Blight Shadow" 50000
+	system Persian
+		add fleet "Large Blight Shadow" 50000
+	system Lurata
+		add fleet "Large Blight Shadow" 50000
+	system Lesath
+		add fleet "Large Blight Shadow" 50000
+	system "Beta Lupi"
+		add fleet "Large Blight Shadow" 50000
+	system Zubenelgenubi
+		add fleet "Large Blight Shadow" 50000
+	system Minkar
+		add fleet "Large Blight Shadow" 50000
+	system Volax
+		add fleet "Large Blight Shadow" 50000
+	system Sospi
+		add fleet "Large Blight Shadow" 50000
+	system Unagi
+		add fleet "Large Blight Shadow" 50000
+	system Hatysa
+		add fleet "Large Blight Shadow" 50000
+	system Gorvi
+		add fleet "Large Blight Shadow" 50000
+	system Tortor
+		add fleet "Large Blight Shadow" 50000
+	system Danoa
+		add fleet "Large Blight Shadow" 50000
+	system Durax
+		add fleet "Large Blight Shadow" 50000
+	system Kugel
+		add fleet "Large Blight Shadow" 50000
+	system "Gamma Cassiopeiae"
+		add fleet "Large Blight Shadow" 50000
+	system Regulus
+		add fleet "Large Blight Shadow" 50000
+	system Fingol
+		add fleet "Large Blight Shadow" 50000
+	system Nocte
+		add fleet "Large Blight Shadow" 50000
+	system Ipsing
+		add fleet "Large Blight Shadow" 50000
+	system Hintar
+		add fleet "Large Blight Shadow" 50000
+	system Orvala
+		add fleet "Large Blight Shadow" 50000
+	system Boral
+		add fleet "Large Blight Shadow" 50000
+	system Naper
+		add fleet "Large Blight Shadow" 50000
+	system Ildaria
+		add fleet "Large Blight Shadow" 50000
+	system Sadr
+		add fleet "Large Blight Shadow" 50000
+	system Umbral
+		add fleet "Large Blight Shadow" 50000
+
+
+
+mission "Scrapyard Random Station Eggs"
+	landing
+	invisible
+	repeat
+	source
+		planet "Sebra Skira" "Devru Kaska" "Metwar Skaretar" "Makwar Pratarati"
+	to offer
+		has "event: Infected with Shadowblight"
+		random < 20
+	on offer
+		conversation
+			scene "outfit/blight egg"
+			`Soon after landing, you find a cluster of broken Blight Shadow eggs. The black slime splattering the area looks fresh...`
+				accept
+	npc kill
+		government "Blight Shadows"
+		personality entering disables unconstrained mute
+		fleet "Large Blight Shadow"
+
+mission "Scrapyard Random Station Eggs cleanup"
+	landing
+	invisible
+	repeat
+	source
+		not attributes "korath"
+	to offer
+		has "Scrapyard Random Station Eggs: active"
+	on offer
+		fail "Scrapyard Random Station Eggs"
+		fail
