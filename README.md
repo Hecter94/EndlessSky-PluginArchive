@@ -1,4 +1,7 @@
 # EndlessSky-PluginArchive
+
+Some plugins have been updated to work with continous, any plugins which have been updated will be in the "Working" directory, originals of those plugins will be available in the "originals" directory for compatability and for archival
+
 Known Issues
 
 "Bounty" Arfecta is spawned directly outside starting location. 
