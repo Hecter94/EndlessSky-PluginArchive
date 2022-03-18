@@ -1,0 +1,337 @@
+﻿# Copyright (c) 2016 by Jonathan Steck
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Navy License [-1]"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+	on offer
+		event "geminus rebuilt soon" 60
+		fail
+
+event "geminus rebuilt soon"
+
+mission "Navy License [0]"
+	source "Geminus"
+	name "Rebuilding Geminus"
+	description "Assist the Republic Navy in rebuilding the shipyard that was lost before the war. Head to <destination> and meet up with a convoy of freighters."
+	destination "Prime"
+	to offer
+		has "main plot completed"
+		not "event: geminus rebuilt soon"
+	to fail
+		has "event: geminus rebuilt"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+	on offer
+		conversation
+			`	With the war being behind humanity, each of the factions of the war now need to rebuild their lost infrastructure.`
+			`	Landing on Geminus, you look over the destroyed shipyard off in the distance. How many lives must have died just to stop a recession.`
+			`	As you refuel your ship, you are approached by a Navy officer.`
+			`	"Excuse me, aren't you Captain <last>?"`
+			choice
+				`"Yes I am."`
+					goto yes
+				`"No, never heard of them."`
+					goto no
+
+			label no
+			`	"Oh, okay. Sorry to bother you."`
+				decline
+
+			label yes
+			`	"It's nice to meet you, Captain. I'm Officer Smith. I hope that you don't have any hard feelings over the war and all. Personally, I was one of the ones that opposed the thought of war as soon as it was brought up."`
+			choice
+				`	"Don't worry about it. No one in the Navy or Free Worlds truly wanted war."`
+					goto continue
+
+			label continue
+			`	"Sucks that we all had to suffer because of some fanatics in the Syndicate."`
+			`	"Anyways, what I wanted to talk to you about was helping to rebuild the shipyard. We took a huge hit due to the attack. It'd be nice to have as many helping hands as possible so we can be ready if something else happens. Could you spare your ships for a bit in order to help us out?"`
+			choice
+				`	"I'd love to, officer. What do you need me to do?"`
+					goto help
+				`	"Sorry, I'm way too busy helping to keep things in the Free Worlds in check in order to help."`
+					goto decline
+
+			label decline
+			`	"It's alright. It was nice talking to you though."`
+				decline
+
+			label help
+			`	"We have plenty of freighters right now, but we're spread thin when it comes to combat ships. It would be extremely helpful if you were able to go to <destination> and escort the freighters back here to Geminus."`
+			choice
+				`	"Those freighters will be back here in no time."`
+					accept
+				`	"Sorry, but I don't have any combat ships of my own to spare to help."`
+					goto decline2
+
+			label decline2
+			`	"Sorry to hear that. Well, it was nice speaking with you."`
+				decline
+
+	on complete
+		conversation
+			`	You land on Prime and look around the spaceport. You notice a group of Navy freighters off in the distance and approach them. You talk with them and explain why you're here, and they agree to follow you back to Geminus.`
+
+mission "Navy License [1]"
+	source "Prime"
+	name "Rebuilding Geminus"
+	landing
+	description "Return to <destination> with the freighters."
+	destination "Geminus"
+	to offer
+		has "Navy License [0]: done"
+	to fail
+		has "event: geminus rebuilt"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+
+	npc save accompany
+		government "Republic"
+		personality timid escort
+		system Betelgeuse
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 5
+		
+	npc
+		government "Pirate"
+		personality waiting heroic plunders
+		system Alheka
+		fleet
+			names "pirate"
+			variant
+				"Hawk" 3
+
+	on visit
+		dialog "You arrived at your destination, but you appear to have left the Freighters behind! Return to space and wait for the Freighters to arrive with you."
+				
+	on complete
+		conversation
+			`	You return to Geminus with the convoy of freighters. They immediately begin unloading their cargo on to the spaceport as transport drones carry the crates off to the shipyard location.`
+			`	You wait around the space bar to see if Officer Smith will show back up. Just before you leave, you notice Officer Smith walking into the bar.`
+			`	The officer walks over to you and orders a beer.`
+			`	"How did the journey go, Captain <last>?"`
+			choice
+				`	"It went well. There wasn't much trouble at all."`
+					goto notrouble
+				`	"It was rather difficult; we were raided by a number of pirates along the way."`
+					goto trouble
+
+			label trouble
+			`	"That's bad, but at least you made it back."`
+				goto next
+
+			label notrouble
+			`	"That's good to hear."`
+				goto next
+
+			label next
+			`	You hear an alert sound and Officer Smith reaches into his pocket to pull out a holotablet.`
+			`	"I've just gotten an order from Parliament. There are a couple of engineers out in the Deep. We've been ordered to pick them up and bring them back here. We currently don't have any free ships to make the trip. Do you think that you would be able to pick them up for me?"`
+			choice
+				`	"Sure thing, I'll be back in a few weeks."`
+					goto yes
+				`	"Sorry, but I've got other work to get going to."`
+					decline
+
+			label yes
+			`	"Nice. See you then."`
+
+mission "Navy License [2]"
+	name "Rebuilding Geminus"
+	source "Geminus"
+	landing
+	description "Pick up some engineers at <destination>."
+	destination "Valhalla"
+	to offer
+		has "Navy License [1]: done"
+	to fail
+		has "event: geminus rebuilt"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+
+	on complete
+		conversation
+			`	You pick up the Deep engineers and refuel your ship to head back to Geminus.`
+
+mission "Navy License [3]"
+	name "Rebuilding Geminus"
+	source "Valhalla"
+	landing
+	description "Head back to <destination> with the engineers."
+	destination "Geminus"
+	passengers 10
+	blocked "You do not have enough passenger space to pick up this mission. Make sure you have enough space for at least 10 passengers."
+	to offer
+		has "Navy License [2]: done"
+	to fail
+		has "event: geminus rebuilt"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus  shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+
+mission "Navy License [4]"
+	name "Rebuilding Geminus"
+	source "Geminus"
+	landing
+	description "Head to the Far North and assist in defending the Oathkeepers."
+	destination "Farpoint"
+	to offer
+		has "Navy License [3]: done"
+	to fail
+		has "event: geminus rebuilt"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+	on offer
+		conversation
+			`	You land back on Geminus to the sound of alarms going off. Everyone is running frantically to their ships and launching into orbit. You quickly drop off the engineers and find Officer Smith inside of a command tent talking to some other officers.`
+			`	"<last>! Just the person I wanted to see. We've just gotten word that there the Oathkeepers up north are under attack by a large hostile force. We weren't able to pick up who it was, so we're assuming that it's a clan of pirates. We need a combat fleet there ASAP, and we're going to need all we've got."`
+			choice
+				`	"You don't even need to ask, I'll be heading there right away."`
+					accept
+				`	"What does that mean for me?"`
+					goto me
+				`	"Sorry, but I'm in no position to help out here. You're on your own."`
+					decline
+
+			label me
+			`	"Given the severity of the situation, all other missions are going to need to be scrapped for now, so the only thing we would need you to do is head up north right now and assist in fending off the hostile fleet."`
+			choice
+				`	"Will do, officer."`
+					accept
+				`	"Sorry, but I'm in no position to help out here. You're on your own."`
+					decline
+
+	npc
+		government "Republic"
+		personality escort
+		system Castor
+		fleet
+			names "republic capital"
+			variant
+				"Carrier" 2
+				"Lance" 8
+				"Combat Drone" 12
+					
+	npc kill
+		government "Pirate"
+		personality staying
+		system Alnitak
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Heavy)" 5
+				"Firebird (Plasma)" 3
+				"Corvette (Speedy)" 3
+				"Firebird (Plasma)" 3
+
+	npc kill
+		government "Pirate"
+		personality staying
+		system Rigel
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Heavy)" 7
+				"Firebird (Plasma)" 4
+				"Corvette (Speedy)" 4
+				"Firebird (Plasma)" 4
+
+	npc
+		government "Navy (Oathkeeper)"
+		personality staying
+		system Alnitak
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier" 2
+				"Lance" 8
+				"Combat Drone" 10
+				"Cruiser" 1
+				"Frigate" 2
+				"Gunboat" 3
+
+	npc
+		government "Navy (Oathkeeper)"
+		personality staying
+		system Rigel
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier" 2
+				"Lance" 8
+				"Combat Drone" 10
+				"Frigate" 3
+				"Gunboat" 4
+
+	on visit
+		dialog "There are still some pirates that you need to kill in order to complete this mission. Launch back into space and finish the job."
+
+	on complete
+		conversation
+			`	You land down on Farpoint after the battle. Given the faces of some of the Navy soldiers, you can tell that this was a heavy loss for some people.`
+			`	You are escorted over to a group of buildings just outside of the spaceport. Upon entering, you immediately come into eye contact with Admiral Danforth.`
+			`	"Captain <last>! So good to see that you came to our aid! It's nice to know that things are in a good enough situation for the Free Worlds to be assisting the Navy. What brings you up this far anyways?"`
+			choice
+				`	"Officer Smith from Geminus told me what was going on and I came here as fast as I could."`
+					goto smith
+				`	"I was just coming back to say hi when I noticed that your fleet needed some help."`
+					goto intown
+
+			label smith
+			`	"Ah, yes. Officer Smith. He's one of the Oathkeepers, you know.  He was sent down to Geminus to help with the rebuilding."`
+			`	"Yeah, I've been assisting in rebuilding the shipyard along with him," you respond.`
+			`	"Well, thanks for the hand. If you're heading back to Geminus, make sure to tell Smith I said hi."`
+				goto end
+
+			label intown
+			`	"Well that’s nice to know. Thanks for the hand. If you ever want to talk again, you know where to find me."`
+				goto end
+
+			label end
+			`	`
+
+mission "Navy License [5]"
+	name "Rebuilding Geminus"
+	landing
+	source "Farpoint"
+	description "Go back to <destination> and report back to Officer Smith."
+	destination "Geminus"
+	to offer
+		has "Navy License [4]: done"
+	on fail
+		dialog "You have failed your mission in assisting to rebuild the Geminus shipyard, as you took too long and the shipyard was eventually rebuilt without you."
+	on complete
+		set "license: Navy"
+		set "license: Cruiser"
+		set "license: Carrier"
+		conversation
+			`	Returning to the Geminus spaceport, you notice Officer Smith standing down on the ground waiting for you to land. As you exit your ship, he extends his hand out to you.`
+			`	"Thanks for the help, Captain. Some of the soldiers were telling me over comms that you really saved their rears."`
+			`	"Anything to help out," you respond as you shake hands.`
+			`	"In terms of the rebuilding, I think that we have everything set here. We should have the shipyard back up and running within the next few months."`
+			`	"As you break away from the handshake, Officer Smith reaches into his pocket and hands you something. You look at them and realize that they are license for Navy ships."`
+			`	"If anyone asks, you found them."`
+			`	Officer Smith smiles and gives you a quick pat on the back before walking off back to the tents outside of the spaceport.`
+
+mission "Geminus Rebuilt Notification"
+	invisible
+	landing
+	to offer
+		has "Navy License [5]: done"
+		has "event: geminus rebuilt"
+	on offer
+		dialog `You notice you've just received a message from Officer Smith. "Guess what, we've finally completed rebuilding the shipyard! Come stop by some time and pick up some ships if you want."`
+			fail

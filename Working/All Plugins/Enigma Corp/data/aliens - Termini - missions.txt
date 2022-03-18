@@ -1,0 +1,167 @@
+﻿# Copyright (c) 2016 by Jonathan Steck
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Termini Intro"
+	name "Strange Figure"
+	description "Go to Vega and board the disabled Termini scout in the area."
+	autosave
+	landing
+	source "Pugglemug" "Puggelequat"
+	to offer
+		has "event: Termini Appear"
+	on offer
+		conversation
+			`As you step out of your ship, you notice a shadowy figure move from behind a stack of crates and quickly approach you.`
+			choice
+				`	(Karate chop.)`
+					goto chop
+				`	(Shoot.)`
+					goto shoot
+						
+			label chop
+			`	Before the figure reached you, you karate chop it in the neck region. It crumbles to the ground with a grunt, and attempts to get back up.`
+			choice
+				`	(Wait.)`
+					goto wait
+				`	(Shoot to kill.)`
+					goto kill
+			
+			label shoot
+			`	You quickly pull your laser pistol and fire at the figure. The laser fires straight through it, and the figure cripples down on top of you. As you push it off of you, it grunts, still barely alive.`
+			choice
+				`	(Look at what it is.)`
+					goto see
+				`	(Shoot to kill.)`
+					goto kill
+						
+			label kill
+			`	You aim for the head of the figure and pull the trigger. It crumbles back down to the ground, completely unmoving this time.`
+				goto leave
+			
+			label leave
+			`	You drag the body behind the crates so that no one sees it and go on your merry way.`
+				decline
+			
+			label wait
+			`	You decide to wait to see what happens next. The figure removes the hood from its head while standing back up, revealing the face of a young looking man.`
+				goto introduction
+				
+			label see
+			`	You remove the hood from the figure to reveal the fast of a young looking man. Before you can even react, He quickly grabs you by the neck.`
+			`	"What... The... Heck..." he mutters. The man lets go of your neck and reaches into his pocket. He pulls out what looks to be a pen of sorts and sticks it into his wound. The wound quickly heals, something that you have never seen before.`
+			`The man gets to his feet, putting the pen object back in his pocket.`
+				goto introduction
+				
+			label introduction
+			`	"That's one interesting way to introduce yourself. Hi, I'm Jon. You must be asshole." He says with a smirk as he extends his hand.`
+			choice
+				`	(Shake his hand.)`
+					goto shake
+				`	(NOW shoot to kill.)`
+					goto triggerhappy
+						
+			label shake
+			`You extend your hand to shake his.`
+			`	"The name's <first>," you say, remaining weary of the man's movements.`
+			`	"I know. In fact, I don't think that there's a single person who doesn't know. But never mind that, I need to ask you of something.`
+				goto choice
+			
+			label triggerhappy
+			`	You pull your gun up to fire, and with an almost inhuman reaction time the man makes a quick grab for your gun. Before you're even able to think about pulling the trigger, he already has the gun in his hand.`
+			`	"Calm DOWN there kiddo. All I want to do is ask you something."`
+				goto choice
+				
+			label choice
+			choice
+				`	"What?"`
+					goto what
+				`	"No, you just came out of nowhere and now you're asking things of me?"`
+					goto no
+						
+			label no
+			`	"I don't care, shut up."`
+				goto what
+			
+			label what
+			`	"I'm not sure if you've noticed, but there appears to be a number of interestingly new ships flying around near that wormhole that those Pug fellows left behind. Now supposedly, someone has spotted one of them sitting around doing absolutely nothing in Vega. I was wondering if you could fly out there and see if you can board it, look at what it's got inside, and come back here to tell me what you find."`
+			choice
+				`	"What's in it for me?"`
+					goto me
+				`	"Why can't you do it yourself?"`
+					goto why
+				`	"No, why should I do anything for you?"`
+					goto nowhy
+						
+			label why
+			`	"Because I'm too cheap for a pilot license and I thought that you'd be the perfect person for the job."`
+				goto choice2
+				
+			label me
+			`	"An adventure. Come on, just do it."`
+				goto choice2
+				
+			label nowhy
+			`	"You know, that's a pretty fair point... I'll just leave."`
+			`	He turns off and walks back behind the crates that he had jumped from, never to be seen again.`
+				decline
+			
+			label choice2
+			`	"So, what do you say?"`
+			choice
+				`	"Sure."`
+					goto sure
+				`	"No."`
+					goto no2
+						
+			label no2
+			`	"Your loss."`
+			`	He turns off and walks back behind the crates that he had jumped from, never to be seen again.`
+				decline
+			
+			label sure
+			`	"Sounds great, now get out there."`
+				accept
+			
+	npc board save
+		government Termini
+		personality derelict
+		system Vega
+		ship "Scout Drone"
+		dialog "You try and find your way inside of the drone, but nothing works. There are no access hatches of any kind or kinks in the hull that would signify any sort of entry point. Even when attempting to blow a hole in the hull, you don't make a scratch. You make sure to take note of all this and return to Jon with the news."
+		
+	on accept
+		"reputation: Termini" = -1000
+		
+	on complete
+		"reputation: Termini" = 1000
+		payment 1000000
+		conversation
+			`	You find Jon in the bar and tell him what you found, or more fittingly, what you didn't find.`
+			`	"That's rather interesting. So there was absolutely no way to get in, and the material that the drones are made of is impenetrable."`
+			choice
+				`	"What now?"`
+					goto now
+				`	"Now can I get some cash?"`
+					goto cash
+
+			label now
+			`	"I don't know, I'm going to have to go back to the drawing board on how to study these things. I've tried scanning them, but that doesn't work at all, which is why I tried to see if you could find anything right up on them."`
+			`	"If I find anything new, I'll make sure to contact you. That is, if you still want to help of course."`
+				goto end
+
+			label cash
+			`	"What, you think I'm made of money? Why do you think I asked you to do this for me?"`
+			`	Even as he is saying this, he pulls out a few credit chips from his pocket and places them in your hand. <payment>.`
+			`	"Now I've got to get going and see what else I can find about these aliens. Given how strong they seem so far, lord knows what will happen if they turn hostile."`
+				goto end
+
+			label end
+			`	Jon walks back behind the crates that he first appeared from, the only sounds that can be heard are those of the busy spaceport.`
+	

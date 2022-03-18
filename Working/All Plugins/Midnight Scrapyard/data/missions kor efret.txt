@@ -1,0 +1,216 @@
+# Copyright (c) 2022 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of th.e License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details
+
+
+
+######################
+# Kor Efret Missions
+######################
+
+
+mission "Scrapyard: Laki Nemparu Shipyard"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "Wanderers: Sestor: Final: done"
+	on offer
+		event "Laki Nemparu opens Shipyard" 30
+		conversation
+			scene "scene/scene-korathtransports"
+			`	You notice the Kor Efret have set up a shipyard. While no ships appear to be ready for sale, you see several under construction.`
+				accept
+	to complete
+		has "event: Laki Nemparu opens Shipyard"
+	on complete
+		dialog `The shipyard appears to be open. A fleet of new ships is on display.`
+		
+shipyard "Kor Efret Scrapyard"
+	"Korath Transport"
+	"Korath Transport B"
+	"Korath Transport C"
+	"Korath Chaser"
+		
+event "Laki Nemparu opens Shipyard"
+	planet "Laki Nemparu"
+		add	shipyard "Kor Efret Scrapyard"
+	outfitter "Korath Basics"
+		add "Korath Scanner"
+	fleet "Kor Efret Home"
+		add variant
+			"Korath Transport"
+		add variant
+			"Korath Transport B"
+		add variant
+			"Korath Transport C"
+			"Korath Chaser" 2
+
+
+
+mission "Scrapyard Derelict World Ship"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		"Scrapyard Threat Level" >= 25
+	on enter "Celeborim"
+		conversation
+			scene "scene/scene-derelictworldship"
+			`You stumble upon tragic scene. A derelict Kor Efret world ship is surrounded by blight shadows. The ship hails you, and though you don't speak their language, it's obviously a distress call. The ship is heavily damaged and it will be a miracle if you can escort it back to Laki Nemparu in the Kashikt system.`
+				accept
+
+	npc
+		government "Blight Shadows"
+		system "Celeborim"
+		personality waiting heroic disables unconstrained mute
+		fleet "Large Blight Shadow"
+		
+	npc
+		government "Blight Shadows"
+		system "Asikafarnut"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 2
+	
+	npc
+		government "Blight Shadows"
+		system "Silikatakfar"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 3
+	
+	npc
+		government "Blight Shadows"
+		system "Mesuket"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 4
+	
+	npc
+		government "Blight Shadows"
+		system "Eshkoshtar"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 5
+	
+	npc
+		government "Blight Shadows"
+		system "Salipastart"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 5
+
+	npc
+		government "Blight Shadows"
+		system "Mekislepti"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 6
+
+	npc
+		government "Blight Shadows"
+		system "Similisti"
+		personality waiting heroic disables unconstrained mute staying
+		fleet "Large Blight Shadow" 6
+
+	npc
+		government "Blight Shadows"
+		system "Sevrelect"
+		personality entering heroic disables unconstrained mute
+		fleet "Large Blight Shadow"
+	
+	npc assist accompany save
+		government "Kor Efret"
+		system "Celeborim"
+		personality escort target waiting derelict pacifist
+		ship "Korath World-Ship D (Crippled)" "Lekfarosk"
+
+	on enter "Kaliptari"
+		dialog `Take the crippled world ship to the outfitter on Laki Nemparu in the Kashikt system.`
+
+	on enter "Kashikt"
+		dialog `You've finally reached Kashikt. Escort the world ship to Laki Nemparu.` 
+
+	on complete
+		give ship "Korath World-Ship D (Crippled)" "Lekfarosk"
+		conversation
+			scene "thumbnail/world-ship d"
+			`The Kor Efret are grateful to you for saving them from certain death. They seem to want to give you a tour of their ship, but as the tour progresses, it becomes apparent that they are offering the ship to you as a gesture of thanks. While you appreciate the reward, you can't help but notice that damage to the ship's key systems hasn't been repaired...`
+			
+ship "Korath World-Ship" "Korath World-Ship D (Crippled)"
+	sprite "ship/world-ship d"
+	thumbnail "thumbnail/world-ship d"
+	add attributes
+		"fused circuits" -5
+	outfits		
+		"Triple Plasma Core (Damaged)"
+		"Systems Core (Damaged)"
+		"Large Heat Shunt"
+		"Small Heat Shunt" 2
+		
+		"Thruster (Planetary Class)(Damaged)"
+		"Steering (Planetary Class)(Damaged)"
+		"Hyperdrive (Damaged)"
+
+	turret -74 -156
+	turret 74 -155.5
+	turret -42 -50.5
+	turret 44 -50.5
+	turret -27.5 134.5
+	turret 27 134.5
+	turret -89 293
+	turret 87.5 292.5
+
+
+
+mission "Scrapyard: Warmonger Construction"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "Scrapyard Derelict World Ship: done"
+	on offer
+		event "Warmonger Construction Completed" 30
+		conversation
+			scene "thumbnail/korath warmonger-thumb"
+			`	You notice a new type of ship under construction in the shipyard. While none are available for sale yet, the ship looks somewhat familiar...`
+				accept
+	to complete
+		has "event: Warmonger Construction Completed"
+	on complete
+		dialog `The new warship is available for sale in the shipyard. A fleet of the new ships is on display.`
+
+event "Warmonger Construction Completed"
+	shipyard "Kor Efret Scrapyard"
+		add "Korath Warmonger"
+	outfitter "Korath Basics"
+		add "Korath Afterburner"
+	fleet "Kor Efret Home"
+		add variant 15
+			"Korath Warmonger"
+			"Korath Chaser" 2
+		add variant 10
+			"Korath World-Ship"
+			"Korath Warmonger" 2
+			"Korath Chaser" 4
+		add variant 10
+			"Korath World-Ship B"
+			"Korath Warmonger" 2
+			"Korath Chaser" 4
+		add variant 10
+			"Korath World-Ship C"
+			"Korath Warmonger" 2
+			"Korath Chaser" 4
+		add variant 15
+			"Korath Transport"
+		add variant 15
+			"Korath Transport B"
+		add variant 15
+			"Korath Transport C"
+			"Korath Chaser" 2
+
+
+
+
