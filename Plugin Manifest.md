@@ -102,6 +102,8 @@ Unfinished but playable.
 
 -status-
 
+## Adjusted Hyperdrive
+
 ## Advanced Starts
 
 ![advancedstarts](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Advanced%20Starts/icon.jpg)
@@ -368,6 +370,8 @@ Nonfunctional
 
 ## Human Ship Expansion
 
+## Human Steering Flares
+
 ## Humans Alternate Universe
 
 ## Hyperdrive Boosters
@@ -391,6 +395,8 @@ Nonfunctional
 ## Kestrel Rework
 
 ## Kestrel-M
+
+## KorExiles-PA
 
 ## Korath Automation Upgrade
 
