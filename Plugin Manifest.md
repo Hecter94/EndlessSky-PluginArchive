@@ -736,7 +736,7 @@ Nonfunctional
 
 **Model Creator Unknown**
 
-**Stats provided by Zoura the Quaernan Guy.**
+**Stats provided by Zoura the Quaernan Guy, fleet variants by DJF113**
 
 Adds a new ship created by joining two Argosies together.
 
