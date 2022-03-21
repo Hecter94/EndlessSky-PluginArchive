@@ -22,6 +22,10 @@ Title screen missing/corrupted.
 Normandy, A Galaxy Far Far Away, Endless Depth, plugin and Businessman Mod all override the title screen, using one or more of these can cause issues with it 	looking corrupted or "missing". Recommend to use one of these at a time, OR delete title.png from \images to restore the vanilla title screen
 Edge of Endless, Civil War, Jump to Lightspeed and Star Wars all edit the vanilla interface, this can also cause issues and can only be fixed by editing the interfaces.txt file in the plugin
 
-"Star Wars" includes a copy of vanilla data files and will likely conflict with any missions added/changed since it was created. Specifically known to conflict with changes to the Remnant storyline
+"Star Wars" includes a copy of vanilla data files and will likely conflict with any missions added/changed since it was created. Specifically known to conflict with changes to the Remnant storyline.
+Star Wars has an image named fury which conflicts with vanilla fury.
 
 Bare Ships clears all ships from shipyards, meaning only bare versions of ships will be available, any plugins adding other ships not to custom shipyards will likely be incompatible
+
+Final Frontier sets every government swizzle to 0.
+Final Frontier has an image named raider which conflicts with vanilla korath raider.
