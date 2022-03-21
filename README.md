@@ -27,5 +27,4 @@ Star Wars has an image named fury which conflicts with vanilla fury.
 
 Bare Ships clears all ships from shipyards, meaning only bare versions of ships will be available, any plugins adding other ships not to custom shipyards will likely be incompatible
 
-Final Frontier sets every government swizzle to 0.
-Final Frontier has an image named raider which conflicts with vanilla korath raider.
+Final Frontier sets every government swizzle to 0, also has an image named raider which conflicts with vanilla korath raider.
