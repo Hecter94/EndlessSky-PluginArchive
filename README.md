@@ -2,6 +2,8 @@
 
 Some plugins have been updated to work with continous, any plugins which have been updated will be in the "Working" directory, originals of those plugins will be available in the "originals" directory for compatability and for archival
 
+Note, by default GitHub does not allow for downloading a single folder, you will need to download or clone the repository and then pick the plugins you want. Alternatively, you can use a third party tool such as [this](https://download-directory.github.io/) to download a single folder. Simply paste the url to the folder you want in that tool and you will be given a link to download just that folder.
+
 Please see [here](Plugin%20Manifest.md) for a list of plugins and their descriptions and please see below for a list of known issues.
 
 Known Issues
