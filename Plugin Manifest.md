@@ -609,7 +609,7 @@ Star Wars mod.
 
 **Status**
 
-Abandoned, Should be playable on 0.9.14 Continuous.
+Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Just a ship
 
@@ -679,6 +679,18 @@ Nonfunctional
 
 ## Lost in Midnight
 
+![Lost in Midnight](https://raw.githubusercontent.com/MidnightPlugins/Lost-in-Midnight/main/icon.png)
+
+**Created by MidnightPlugins**
+
+A mission focused plugin for Endless Sky.
+
+[Lost in Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)
+
+**Status**
+
+In development, Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Low Quality
 
 ## MAY
@@ -740,6 +752,18 @@ Playable on 0.9.15 Continuous.
 ## Mess
 
 ## Midnight Scrapyard
+
+![Midnight Scrapyard](https://raw.githubusercontent.com/MidnightPlugins/Midnight-Scrapyard/main/icon.png)
+
+**Created by MidnightPlugins**
+
+A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
+
+[Midnight Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard)
+
+**Status**
+
+In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Military Plugin
 
