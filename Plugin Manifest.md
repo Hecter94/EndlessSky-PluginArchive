@@ -634,7 +634,7 @@ Playable on 0.9.15 Continuous.
 
 ## Pirate Hunter
 
-**Created by Unknown**
+**Created by Zavindur**
 
 Get money from killing pirates.
 
