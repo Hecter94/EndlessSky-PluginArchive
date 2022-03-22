@@ -142,6 +142,14 @@ Adds several new starting options to the game.
 
 ## Alternate Human Shields
 
+**Created by 1010Todd**
+
+Add alternate version of human shield generator with high regen but long delay to outfitters.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Alternate Start Luna
 
 ## Amalgamation
