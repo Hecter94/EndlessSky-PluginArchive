@@ -478,6 +478,14 @@ Playable on 0.9.15 Continuous.
 
 ## KorExiles-PA
 
+**Created by Ejothims**
+
+Addition for Korath Exiles Post-Automata.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Korath Automation Upgrade
 
 ## Korath Domination
@@ -624,6 +632,14 @@ Playable on 0.9.15 Continuous.
 
 ## Persistent NPC
 
+**Created by 1010Todd**
+
+Proof-of-concept for NPC that upgrades over time if they don't die.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Pheonix
 
 ## Pilots License
@@ -748,6 +764,16 @@ Playable on 0.9.15 Continuous.
 
 ## Spacefarer
 
+**Created by Samrocketman**
+
+No capture, no outfit looting, one Jump Drive run.
+
+[Spacefarer](https://github.com/samrocketman/Spacefarer)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Speed Stabilisers
 
 ## Sprites
@@ -830,6 +856,14 @@ Playable on 0.9.15 Continuous.
 
 ## Trollship
 
+**Created by Unknown**
+
+Occasionally spawn troll ships.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Tufton Plugin
 
 ## Tuftons Stuffs
@@ -891,6 +925,16 @@ No thumbnail image.
 ## arr mateys
 
 ## prototype D
+
+**Created by Samrocketman**
+
+No capture, no outfit looting, one Jump Drive run.
+
+[Spacefarer](https://github.com/samrocketman/Spacefarer)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## synchrony
 
