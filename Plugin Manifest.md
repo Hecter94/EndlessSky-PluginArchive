@@ -1,4 +1,4 @@
-[40k Pack](https://github.com/1010todd/Endless-Sky-40K)
+## [40k Pack](https://github.com/1010todd/Endless-Sky-40K)
 
 ![40k pack](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/40k%20Pack/icon.png)
 
