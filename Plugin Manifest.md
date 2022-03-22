@@ -1047,7 +1047,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ![Spacefarer](https://raw.githubusercontent.com/samrocketman/Spacefarer/main/icon.png)
 
-**Created by samrocketman**
+**Created by samrocketman and Airhead**
 
 No capture, no outfit looting, one Jump Drive run.
 
@@ -1071,6 +1071,18 @@ Playable on 0.9.15 Continuous.
 
 ## Starbridge Pack
 
+![Starbridge Pack](https://raw.githubusercontent.com/Autohummer/Endless-Sky-Starbridge-Pack/main/icon.png)
+
+**Created by Autohummer**
+
+Add Starbridge(and its variant) from Escape Velocity series.
+
+[Starbridge Pack](https://github.com/Autohummer/Endless-Sky-Starbridge-Pack)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Stargate Mod
 
 ## Starhopper
@@ -1092,6 +1104,16 @@ Playable on 0.9.15 Continuous.
 ## Syndicate Campaign
 
 ## Syndicate Capital Ships
+
+**Created by Ejothims**
+
+New Syndicate heavy warships.
+
+[Syndicate Capital Ships](https://github.com/EjoThims/Syndicate-Capital-Ships)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Tachyon
 
@@ -1134,6 +1156,14 @@ Playable on 0.9.15 Continuous.
 ## Titans
 
 ## Tribute and Domination
+
+**Created by Legolas**
+
+Allow you to tribute (almost) every planet(alien included) and start your own faction.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Trin
 
