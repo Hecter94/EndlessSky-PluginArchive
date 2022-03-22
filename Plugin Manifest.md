@@ -142,6 +142,14 @@ Adds several new starting options to the game.
 
 ## Alternate Human Shields
 
+**Created by 1010Todd**
+
+Add alternate version of human shield generator with high regen but long delay to outfitters.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Alternate Start Luna
 
 ## Amalgamation
@@ -226,7 +234,23 @@ Playable on 0.9.15 Continuous.
 
 ## Checkmatemate
 
+**Created by Zoura**
+
+Unlocks checkmate stuff without having to do FWs
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Ciu Creo
+
+**Created by Luna**
+
+Cheat/Dev-tool plugin.
+
+**Status**
+
+Playable on 0.9.14.
 
 ## Civil War
 
@@ -234,11 +258,27 @@ Playable on 0.9.15 Continuous.
 
 ## Cobbled Ships
 
+**Created by Zoura**
+
+Add several new ships.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Cognitive Subdivision
 
 ## Colorado
 
 ## Colorful Void Sprites
+
+**Created by rob59er**
+
+Colorful Void Sprites
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Core Mining, Inc.
 
@@ -266,6 +306,18 @@ In development and playable on 0.9.15 Continuous.
 
 ## Defense Drone Plugin
 
+![Defense Drone](https://raw.githubusercontent.com/starmlerp/ESDefenseDronePlugin/master/icon.png)
+
+**Created by starmlerp**
+
+This plugin adds a few human drones, intended to be added into vanilla game. All credit to @Loyse for ship design.
+
+[Defense Drone Plugin](https://github.com/starmlerp/ESDefenseDronePlugin)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Derogam
 
 ## Derp Ship
@@ -292,11 +344,35 @@ Nonfunctional
 
 ## ES Ships
 
+**Created by Unknown**
+
+Animated Ships.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Easier Korath Automatons
 
 ## Edge of Endless
 
+**Created by Zach Farmer**
+
+Large plugin that adds a bunch of stuffs to the galaxy. And lots of big ships.
+
+**Status**
+
+Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
+
 ## Elite Sky
+
+**Created by Ferociousfeind**
+
+Add ships from Elite Dangerous.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Addon
 
@@ -305,6 +381,19 @@ Nonfunctional
 ## Endless Depth Mod
 
 ## Endless Gauntlet
+
+![Endless Gauntlet](https://raw.githubusercontent.com/EndlessSkyPlugins/Endless-Gauntlet/main/icon.png)
+
+**Created by comnom(maintained by samrocketman)**
+
+This plugin generates an arcade-style gauntlet wherein you take a mission, jump through a wormhole, and face a series of randomly generated fleets.
+Intended for end-game players who are comfortable running a python script.
+
+[Endless Gauntlet](https://github.com/EndlessSkyPlugins/Endless-Gauntlet)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Horizon
 
@@ -320,6 +409,18 @@ Nonfunctional
 
 ## Epic Trucker
 
+![Epic Trucker](https://raw.githubusercontent.com/KelvallRogers/epic-trucker/master/icon.png)
+
+**Created by KelvallRogers**
+
+This plug-in adds additional cargo and passenger (and both at once) missions to the game increasing the scale and scope for a player who wants to focus on running a huge trucker shipping delivery and passenger service.
+
+[Epic Trucker](https://github.com/KelvallRogers/epic-trucker)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Ertluk
 
 ## Eternals
@@ -333,6 +434,18 @@ Nonfunctional
 ## Experimental
 
 ## Exporianes
+
+![Exporianes](https://raw.githubusercontent.com/kestrel1110/Exporianes/master/icon.png)
+
+**Created by Bereskatuket(Kestrel1110)**
+
+Adds a new race of T5 aliens to the Milky-Way galaxy. They can be reached after completing the Emerald Sword missions and having a combat rating of 13.
+
+[Exporianes](https://github.com/kestrel1110/Exporianes)
+
+**Status**
+
+In development, Playable on 0.9.15 Continuous.
 
 ## Extra Large Jobs
 
@@ -392,6 +505,16 @@ Nonfunctional
 
 ## Gyroscopes
 
+**Created by TheronEpic**
+
+This plugin adds a set of Gyroscopes: They can store an amount of energy, and can produce turning force, despite not taking any engine space. But, they are dense, and constantly consume energy.
+
+[Gyroscopes](https://github.com/TheronEpic/theronepics-gyroscopes)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## H2H Outfits
 
 ## HONK
@@ -401,6 +524,14 @@ Nonfunctional
 ## Hauler Expansion
 
 ## Heliarch Shopping & Korath Konvenience
+
+**Created by Waladil**
+
+KorExile outfits to KorEfret outfitter and mission to get Heliarch License and buy their outfits.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## HellFire Missile
 
@@ -452,6 +583,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Investment Bank
 
+**Created by appdevland**
+
+When you are rich enough some investment banks will offer you a chance to invest with them to gain an increased daily salary.
+
+[Investment Bank](https://github.com/appdevland/investment-bank-es-plugin)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Ironclad
 
 ![Ironclad](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Ironclad/images/outfit/eic%20dual%20large%20cannon%20turret.png)
@@ -468,6 +609,16 @@ Playable on 0.9.15 Continuous.
 
 ## Jump to Lightspeed
 
+**Created by Krayt Dragon Moddding**
+
+Star Wars mod.
+
+[Jump To Lightspeed](https://www.moddb.com/mods/endless-sky-jump-to-lightspeed)
+
+**Status**
+
+Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
+
 ## Just a ship
 
 ## Kaynz
@@ -478,6 +629,14 @@ Playable on 0.9.15 Continuous.
 
 ## KorExiles-PA
 
+**Created by Ejothims**
+
+Addition for Korath Exiles Post-Automata.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Korath Automation Upgrade
 
 ## Korath Domination
@@ -486,7 +645,27 @@ Playable on 0.9.15 Continuous.
 
 ## Lampyrid Start
 
+![Lampyrid Start](https://raw.githubusercontent.com/Zitchas/ES_Lampyrid_Start/main/icon.png)
+
+**Created by Zitchas**
+
+Alternate start with Lampyrid ship.
+
+[Lampyrid Start](https://github.com/Zitchas/ES_Lampyrid_Start)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Landing Fees and Tax
+
+**Created by Unknown**
+
+After one year you will have to pay fee for landing.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Legendary Pirates
 
@@ -507,6 +686,18 @@ Nonfunctional
 ## Loronar Transport
 
 ## Lost in Midnight
+
+![Lost in Midnight](https://raw.githubusercontent.com/MidnightPlugins/Lost-in-Midnight/main/icon.png)
+
+**Created by MidnightPlugins**
+
+A mission focused plugin for Endless Sky.
+
+[Lost in Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)
+
+**Status**
+
+In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Low Quality
 
@@ -570,9 +761,29 @@ Playable on 0.9.15 Continuous.
 
 ## Midnight Scrapyard
 
+![Midnight Scrapyard](https://raw.githubusercontent.com/MidnightPlugins/Midnight-Scrapyard/main/icon.png)
+
+**Created by MidnightPlugins**
+
+A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
+
+[Midnight Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard)
+
+**Status**
+
+In development, Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Military Plugin
 
 ## Mining ships
+
+**Created by 1010Todd**
+
+Add a few ships and weapons focused on asteroid mining.
+
+**Status**
+
+Playable since the version that adds minable asteroid (0.9.3).
 
 ## Missile Expansion
 
@@ -588,6 +799,18 @@ Playable on 0.9.15 Continuous.
 
 ## More Ships Plugin
 
+![More Ships Plugin](https://raw.githubusercontent.com/loiseeer/The-more-ships-plugin/master/icon.png)
+
+**Created by Loyser(Loiseeer)**
+
+Add a few new human ships.
+
+[More Ships Plugin](https://github.com/loiseeer/The-more-ships-plugin)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## MultiTech Extra Light
 
 ## Nanachi Missions
@@ -597,6 +820,16 @@ Playable on 0.9.15 Continuous.
 ## Navy Conscript
 
 ## New Sky
+
+**Created by 1010Todd**
+
+Add a small galaxy with a few alien. Content merged with Galactic War
+
+[New Sky](https://github.com/1010todd/ES-New_Sky)
+
+**Status**
+
+No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 
 ## News Plugin
 
@@ -616,6 +849,16 @@ Playable on 0.9.15 Continuous.
 
 ## Orion Missile
 
+**Created by Marksman-ES**
+
+Add a missile based on Orion Drive nuclear propulsion, gets more powerful over range.
+
+[Orion Missile](https://github.com/TheMarksman-ES/Orion-Missile)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Paradise World Jobs
 
 ## Particle Turret
@@ -623,6 +866,14 @@ Playable on 0.9.15 Continuous.
 ## Pathmakers Way
 
 ## Persistent NPC
+
+**Created by 1010Todd**
+
+Proof-of-concept for NPC that upgrades over time if they don't die.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Pheonix
 
@@ -666,9 +917,33 @@ Playable on 0.9.15 Continuous.
 
 ## Quaernan
 
+**Created by Zoura**
+
+Add Quaernan, a human worldship from alternate universe.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## QuaernanHardpoints
 
+**Created by Zoura**
+
+Add Quaernan, a human worldship from alternate universe.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## QuaernanHardpointsCarries
+
+**Created by Zoura**
+
+Add Quaernan, a human worldship from alternate universe along with its complement.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Quarg AM
 
@@ -677,6 +952,16 @@ Playable on 0.9.15 Continuous.
 ## Quarg Elder Dragon
 
 ## Quarg Military Retaliation
+
+**Created by Issacssv**
+
+**Art by msmestad**
+
+Quarg fight back when farmed.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Quarg Outfit Overhaul
 
@@ -692,7 +977,25 @@ Playable on 0.9.15 Continuous.
 
 ## Recovery Ships Safemode
 
+**Created by 1010Todd**
+
+Add a few new ships for carrying other ships. Safemode avoids meddling with vanilla category.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Recovery Ships
+
+**Created by 1010Todd**
+
+Add a few new ships for carrying other ships.
+
+WARNING: Will cause Light Warship and Light Freighter escorts from mission to not spawn.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Red Cross
 
@@ -736,17 +1039,55 @@ Playable on 0.9.15 Continuous.
 
 ## Smugglers, Corporations, and Other Thieves
 
+**Created by Unknown**
+
+Add a few new ships and weapons.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Solar Sails
+
+**Created by TheronEpic**
+
+Add Solar Sail propulsion for human and Coalition.
+
+[Solar Sails](https://github.com/TheronEpic/theronepic-solar-sails)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Space Conversion
 
 ## Space Invaders
+
+**Created by mdsmestad**
+
+Add Space Invaders from classic shoot'em up game Space Invaders.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Space Shuttle Start
 
 ## Space Things
 
 ## Spacefarer
+
+![Spacefarer](https://raw.githubusercontent.com/samrocketman/Spacefarer/main/icon.png)
+
+**Created by samrocketman and Airhead**
+
+No capture, no outfit looting, one Jump Drive run.
+
+[Spacefarer](https://github.com/samrocketman/Spacefarer)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Speed Stabilisers
 
@@ -761,6 +1102,18 @@ Playable on 0.9.15 Continuous.
 ## StarSector
 
 ## Starbridge Pack
+
+![Starbridge Pack](https://raw.githubusercontent.com/Autohummer/Endless-Sky-Starbridge-Pack/main/icon.png)
+
+**Created by Autohummer**
+
+Add Starbridge(and its variant) from Escape Velocity series.
+
+[Starbridge Pack](https://github.com/Autohummer/Endless-Sky-Starbridge-Pack)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Stargate Mod
 
@@ -783,6 +1136,16 @@ Playable on 0.9.15 Continuous.
 ## Syndicate Campaign
 
 ## Syndicate Capital Ships
+
+**Created by Ejothims**
+
+New Syndicate heavy warships.
+
+[Syndicate Capital Ships](https://github.com/EjoThims/Syndicate-Capital-Ships)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Tachyon
 
@@ -826,9 +1189,25 @@ Playable on 0.9.15 Continuous.
 
 ## Tribute and Domination
 
+**Created by Legolas**
+
+Allow you to tribute (almost) every planet(alien included) and start your own faction.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Trin
 
 ## Trollship
+
+**Created by Unknown**
+
+Occasionally spawn troll ships.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Tufton Plugin
 
@@ -891,6 +1270,14 @@ No thumbnail image.
 ## arr mateys
 
 ## prototype D
+
+**Created by 1010Todd**
+
+Add a single ship to Tarazed Shipyards.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## synchrony
 
