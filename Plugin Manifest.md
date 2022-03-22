@@ -176,6 +176,14 @@ Adds several new starting options to the game.
 
 ## Bardagh's Ship Variants
 
+**Created by Bardagh**
+
+Add bare bone version of some ships to shipyards for captains who bring their own outfits.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Bare Ships
 
 ## Beccas Endless Expansion
@@ -185,6 +193,18 @@ Adds several new starting options to the game.
 ## Better Vanilla Pirates
 
 ## Beyond the Sky
+
+![Beyond the Sky](https://raw.githubusercontent.com/1010todd/Beyond-the-Sky/main/images/thumbnail/quarg%20psuchawrl%20thumb.png)
+
+**Created by 1010Todd**
+
+Additional ships and reaction to being farmed for high tier alien(Pug, Quarg).
+
+[Beyond the Sky](https://github.com/1010todd/Beyond-the-Sky)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Bits and Bobs
 
@@ -316,6 +336,16 @@ Nonfunctional
 
 ## Extra Large Jobs
 
+![Extra Large Jobs](https://raw.githubusercontent.com/endless-sky/endless-sky/master/images/effect/box-0.png)
+
+**Created by 1010Todd**
+
+Add various large to extremely large jobs for extra large ships.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Extra Missiles Outfit
 
 ## Flak Weapons
@@ -335,6 +365,18 @@ Nonfunctional
 ## Galactic Couriers
 
 ## Galactic War
+
+![Galactic War](https://raw.githubusercontent.com/1010todd/Galactic-War/master/icon.png)
+
+**Created by 1010Todd**
+
+Large content plugin with new galaxy to explore and (planned)storyline.
+
+[Galactic War](https://github.com/1010todd/Galactic-War)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Galaxias
 
@@ -366,11 +408,39 @@ Nonfunctional
 
 ## High DPI
 
+**Created by Micheal Zahniser (Maintained by the ES Community)**
+
+Official High-DPI graphics for Endless Sky. Note: check repository below for most up-to-date version.
+
+[High DPI](https://github.com/endless-sky/endless-sky-high-dpi)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## High Tier Warships
+
+![High Tier Warships](https://raw.githubusercontent.com/1010todd/Beyond-the-Sky/main/images/thumbnail/quarg%20tarasque%20thumb.png)
+
+**Created by 1010Todd**
+
+Additional ships and reaction to being farmed for high tier alien(Pug, Quarg). Renamed to Beyond the Sky.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Human Ship Expansion
 
 ## Human Steering Flares
+
+**Created by Ferociousfeind**
+
+Add steering flare to human ships.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Humans Alternate Universe
 
@@ -383,6 +453,16 @@ Nonfunctional
 ## Investment Bank
 
 ## Ironclad
+
+![Ironclad](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Ironclad/images/outfit/eic%20dual%20large%20cannon%20turret.png)
+
+**Created by 1010Todd**
+
+Add a single-system faction which use hull-only WW2-style warships.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Jaling Expansion
 
@@ -472,6 +552,14 @@ Nonfunctional
 
 ## Mega Freight
 
+**Created by 1010Todd**
+
+Add various ships to human space.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Merchant Marine
 
 ## Mercury
@@ -546,6 +634,14 @@ Nonfunctional
 
 ## Pirate Hunter
 
+**Created by Zavindur**
+
+Get money from killing pirates.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Plasma Mine
 
 ## Portraits for News
@@ -557,6 +653,14 @@ Nonfunctional
 ## ProjectRunabout
 
 ## Pug Defense
+
+**Created by Wyrdean**
+
+Add a system where you can challenge an increasing tier of Pugs for a reward.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
 
 ## Pulse
 
