@@ -1307,6 +1307,16 @@ No thumbnail image.
 
 ## Ursa Polaris
 
+**Created by Local God**
+
+Post-mainline mission to build a universal outfitter.
+
+[Ursa Polaris](https://github.com/LocalGod79/UrsaPolaris)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
+
 ## Utili-Pak
 
 ## Vile Corp
@@ -1322,6 +1332,16 @@ No thumbnail image.
 ## Watcher
 
 ## West Iron
+
+**Created by Kat(Kryes-Omega)**
+
+Add a faction with some missions.
+
+[West Iron](https://github.com/Kryes-Omega/endless-sky-WestIron)
+
+**Status**
+
+Unconfirmed
 
 ## What a Wonderful World-Ship
 
