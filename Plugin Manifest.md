@@ -256,6 +256,8 @@ Playable on 0.9.15 Continuous.
 
 ## Burst Anti-Missile
 
+**Created by mdsmestad**
+
 ## Businessman Mod
 
 **Created by Evan**
@@ -465,6 +467,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Endless Addon
 
 ## Endless Cargo
+
+**Created by northrupt...@gmail.com(YellowApple)**
+
+Shipping Containers that aren't welded to ships
+
+**Status**
+
+Functional
 
 ## Endless Depth Mod
 
