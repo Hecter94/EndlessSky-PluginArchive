@@ -156,6 +156,16 @@ Playable on 0.9.15 Continuous.
 
 ## Androids
 
+**Created by Disiuze**
+
+This mod reimplements the android but with a few balancing fixes.
+
+[Androids](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Andromeda Torpedo
 
 ## Animated Ships
@@ -173,6 +183,28 @@ Playable on 0.9.15 Continuous.
 ## Automation and PlanetSideStorage
 
 ## Automation
+
+**Created by Disiuze**
+
+This mod implements a new outfit which automates a ship. Requires a karma higher than 2 during the Free Worlds story.
+
+[Automation](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
+## Androids
+
+**Created by Disiuze**
+
+This mod reimplements the android but with a few balancing fixes.
+
+[Androids](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Bacterian T2
 
@@ -659,9 +691,11 @@ Playable on 0.9.15 Continuous.
 
 ## Landing Fees and Tax
 
-**Created by Unknown**
+**Created by Disiuze**
 
 After one year you will have to pay fee for landing.
+
+[Landing Fees and Tax](https://github.com/Disiuze/misc-projects)
 
 **Status**
 
@@ -833,7 +867,29 @@ No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 
 ## News Plugin
 
+**Created by SeaLiteral**
+
+Add some spaceport news.
+
+[News Plugin](https://github.com/SeaLiteral/endless-sky-news-plugin)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15.
+
 ## No Bactrian
+
+**Created by Disiuze**
+
+This mod removes Bactrians and Mules from the shipyard and fleet definitions.
+
+NOTE: Overrides fleets and Lionheart shipyards, might cause problem with other plugin.
+
+[No Bactrian](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15.
 
 ## No Drag Mod
 
@@ -846,6 +902,16 @@ No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 ## Nuclear War
 
 ## Octyl
+
+**Created by Ferociousfeind**
+
+A modest plugin about some squids out in space. 
+
+[Octyl](https://github.com/Ferociousfeind/Octyl-Emergence)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Orion Missile
 
@@ -1241,6 +1307,16 @@ No thumbnail image.
 
 ## Ursa Polaris
 
+**Created by Local God**
+
+Post-mainline mission to build a universal outfitter.
+
+[Ursa Polaris](https://github.com/LocalGod79/UrsaPolaris)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
+
 ## Utili-Pak
 
 ## Vile Corp
@@ -1256,6 +1332,16 @@ No thumbnail image.
 ## Watcher
 
 ## West Iron
+
+**Created by Kat(Kryes-Omega)**
+
+Add a faction with some missions.
+
+[West Iron](https://github.com/Kryes-Omega/endless-sky-WestIron)
+
+**Status**
+
+Unconfirmed
 
 ## What a Wonderful World-Ship
 
