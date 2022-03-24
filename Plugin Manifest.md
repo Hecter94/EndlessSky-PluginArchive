@@ -156,6 +156,16 @@ Playable on 0.9.15 Continuous.
 
 ## Androids
 
+**Created by Disiuze**
+
+This mod reimplements the android but with a few balancing fixes.
+
+[Androids](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Andromeda Torpedo
 
 ## Animated Ships
@@ -182,6 +192,28 @@ Playable on 0.9.15 Continuous.
 
 ## Automation
 
+**Created by Disiuze**
+
+This mod implements a new outfit which automates a ship. Requires a karma higher than 2 during the Free Worlds story.
+
+[Automation](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
+## Androids
+
+**Created by Disiuze**
+
+This mod reimplements the android but with a few balancing fixes.
+
+[Androids](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Bacterian T2
 
 ## Bactrian Mission
@@ -189,6 +221,8 @@ Playable on 0.9.15 Continuous.
 ## Bailiff
 
 ## Ballistic Mayhem
+
+**Created by SpiralCat**
 
 ## Bardagh's Ship Variants
 
@@ -238,9 +272,23 @@ Playable on 0.9.15 Continuous.
 
 ## Burst Anti-Missile
 
+**Created by mdsmestad**
+
 ## Businessman Mod
 
+**Created by Evan**
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## COTSA
+
+**Created by mdsmestad**
+
+**Status**
+
+Unknown
 
 ## Cannon Friendly Weapon Pack
 
@@ -318,6 +366,14 @@ In development and playable on 0.9.15 Continuous.
 
 ## DaBestShipEver
 
+**Created by mdsmestad**
+
+Add DaBestShipEver.
+
+**Status**
+
+Unknown
+
 ## Dark Ships
 
 ## Defense Drone Plugin
@@ -336,17 +392,45 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Derogam
 
+**Created by Lorantine**
+
+A big WIP project of dragon aliens.
+
+**Status**
+
+Functional
+
 ## Derp Ship
 
 ## Destiny
 
+**Created by Dantoys**
+
+Add Destiny to the Game.
+
+**Status**
+
+Unknown
+
 ## Disable Pack
 
+**Created by "That Guy"**
+
+A small plugin which stops ships destroying everything!
+
+**Status**
+
+Unknown
+
 ## Dr_Z
+
+**Created by Dr. Z**
 
 ## Dragonflame-Fabrication
 
 ## Dragoon
+
+**Created by mdsmestad**
 
 ## Dreadnought
 
@@ -356,13 +440,19 @@ Nonfunctional
 
 ## Dual Blaster
 
+**Created by Nathan**
+
+**Status**
+
+Unknown
+
 ## EMP
 
 ## ES Ships
 
-**Created by Unknown**
+**Created by Yann**
 
-Animated Ships.
+Sprites with modified cockpit/bridge.
 
 **Status**
 
@@ -393,6 +483,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Endless Addon
 
 ## Endless Cargo
+
+**Created by northrupt...@gmail.com(YellowApple)**
+
+Shipping Containers that aren't welded to ships
+
+**Status**
+
+Functional
 
 ## Endless Depth Mod
 
@@ -442,6 +540,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Eternals
 
 ## Evasion Bomb
+
+**Created by Vilhelm**
 
 ## Exotic Matter
 
@@ -495,9 +595,13 @@ Playable on 0.9.15 Continuous.
 
 ## Free Worlds Saga
 
+**Created by Ian**
+
 ## Free-kitten
 
 ## Galactic Conquest (Fallen)
+
+**Created by SpiralCat**
 
 ## Galactic Couriers
 
@@ -550,6 +654,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## H2H Outfits
 
 ## HONK
+
+**Created by Killerhurtz **
+
+Honk. A plugin for color and hilarity.
+
+**Status**
+
+Unknown
 
 ## Hai Engine
 
@@ -639,6 +751,16 @@ Playable on 0.9.15 Continuous.
 
 ## Jaling Expansion
 
+**Created by RizkyPramudyaCJ **
+
+Jaling Expansion adds another human civilization which not connected to human space. 
+
+[Jaling Expansion](https://github.com/RizkyPramudyaCJ/Jaling-Expansion)
+
+**Status**
+
+Unknown
+
 ## Jump to Lightspeed
 
 **Created by Krayt Dragon Moddding**
@@ -691,9 +813,11 @@ Playable on 0.9.15 Continuous.
 
 ## Landing Fees and Tax
 
-**Created by Unknown**
+**Created by Disiuze**
 
 After one year you will have to pay fee for landing.
+
+[Landing Fees and Tax](https://github.com/Disiuze/misc-projects)
 
 **Status**
 
@@ -712,6 +836,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 Nonfunctional
 
 ## Little Addon
+
+**Created by HorusX5**
+
+Rescues mission
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Lleytons ES Starships
 
@@ -773,6 +905,8 @@ Nonfunctional
 
 ## Mega Bactrian
 
+**Created by mdsmestad**
+
 ## Mega Freight
 
 **Created by 1010Todd**
@@ -784,6 +918,14 @@ Add various ships to human space.
 Playable on 0.9.15 Continuous.
 
 ## Merchant Marine
+
+**Created by AnotherMonkey**
+
+Add a few new human ships.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Mercury
 
@@ -851,6 +993,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Navy Conscript
 
+**Created by Timothy Butterworth**
+
+Mission to join the navy.
+
+**Status**
+
+Unknown
+
 ## New Sky
 
 **Created by 1010Todd**
@@ -865,7 +1015,29 @@ No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 
 ## News Plugin
 
+**Created by SeaLiteral**
+
+Add some spaceport news.
+
+[News Plugin](https://github.com/SeaLiteral/endless-sky-news-plugin)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15.
+
 ## No Bactrian
+
+**Created by Disiuze**
+
+This mod removes Bactrians and Mules from the shipyard and fleet definitions.
+
+NOTE: Overrides fleets and Lionheart shipyards, might cause problem with other plugin.
+
+[No Bactrian](https://github.com/Disiuze/misc-projects)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15.
 
 ## No Drag Mod
 
@@ -877,7 +1049,25 @@ No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Nuclear War
 
+**Created by House Kitty**
+
+Merchant and Pirate Hawks equiped with Nukes locked in an endless and massive battle in the Holeb system. 
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
+
 ## Octyl
+
+**Created by Ferociousfeind**
+
+A modest plugin about some squids out in space. 
+
+[Octyl](https://github.com/Ferociousfeind/Octyl-Emergence)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Orion Missile
 
@@ -1077,9 +1267,17 @@ Playable on 0.9.15 Continuous.
 
 ## Ship511L
 
+**Created by mdsmestad**
+
+Just a ship model. CC use however you like
+
+**Status**
+
+Nonfunctional, just sprite.
+
 ## Smugglers, Corporations, and Other Thieves
 
-**Created by Unknown**
+**Created by pootthedestroyer**
 
 Add a few new ships and weapons.
 
@@ -1135,6 +1333,14 @@ Playable on 0.9.15 Continuous.
 
 ## Squid Ship
 
+**Created by seanpuller**
+
+Add a star-camouflaged and animated ship.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Star Destroyer
 
 ## Star Wars
@@ -1159,9 +1365,19 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Starhopper
 
+**Created by mdsmestad**
+
 ## Starlus
 
 ## Stronger Hulls
+
+**Created by Connor Waterbanks**
+
+Note: Made for 0.9.6
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous
 
 ## Super Carrier
 
@@ -1172,6 +1388,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Superquest
 
 ## Swarm Ship
+
+**Created by mdsmestad**
 
 ## Syndicate Campaign
 
@@ -1223,6 +1441,8 @@ Playable on 0.9.15 Continuous.
 
 ## The Machines are Taking Over
 
+**Created by SpiralCat**
+
 ## The Mysterious Baby
 
 ## The Ships of the Internet
@@ -1247,11 +1467,21 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Trin
 
+**Created by Elyssaen**
+
+Add hostile T3 alien
+
+[Trin](https://github.com/Elyssaen/trin)
+
+**Status**
+
+Unknown
+
 ## Trollship
 
-**Created by Unknown**
+**Created by House Kitty**
 
-Occasionally spawn troll ships.
+Occasionally spawn troll ships in transport.
 
 **Status**
 
@@ -1265,7 +1495,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ![Twin Argosy](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/Ships/Twinargosy/images/TwinArgosy.png)
 
-**Model Creator Unknown**
+**Model Creator y-...@gmx.de**
 
 **Stats provided by Zoura the Quaernan Guy, fleet variants by DJF113**
 
@@ -1281,13 +1511,39 @@ No thumbnail image.
 
 ## Ultimate Cheater Plugin
 
+**Created by mdsmestad**
+
+Cheat/Dev-tool Plugin
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Ultra Protector
 
 ## Undisclosed Plugin
 
+**Created by petervdmeer**
+
+Various concept idea.
+
+**Status**
+
+Unknown
+
 ## Unfettered Conquest
 
 ## Ursa Polaris
+
+**Created by Local God(LocalGod79)**
+
+Post-mainline mission to build a universal outfitter.
+
+[Ursa Polaris](https://github.com/LocalGod79/UrsaPolaris)
+
+**Status**
+
+Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Utili-Pak
 
@@ -1301,9 +1557,27 @@ No thumbnail image.
 
 ## Warm Start
 
+**Created by david.e...@gmail.com**
+
+Alternate start with selectable background.
+
+**Status**
+
+Unconfirmed
+
 ## Watcher
 
 ## West Iron
+
+**Created by Kat(Kryes-Omega)**
+
+Add a faction with some missions.
+
+[West Iron](https://github.com/Kryes-Omega/endless-sky-WestIron)
+
+**Status**
+
+Unconfirmed
 
 ## What a Wonderful World-Ship
 
