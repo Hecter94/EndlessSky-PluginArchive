@@ -174,7 +174,23 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Arbiter
 
+**Created by czartrak**
+
+-description-
+
+[Arbiter](https://github.com/czartrak/es-arbiter)
+
+**Status**
+
 ## Arena
+
+**Created by 10010101001**
+
+-description-
+
+[Arena](https://github.com/10010101001/Arena)
+
+**Status**
 
 ## Arrival Distance Override
 
@@ -232,6 +248,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Better Korath
 
+**Created by superdragon322**
+
+-description-
+
+[Better Korath](https://github.com/superdragon322/Better-Korath-)
+
+**Status**
+
 ## Better Vanilla Pirates
 
 ## Beyond the Sky
@@ -250,9 +274,27 @@ Playable on 0.9.15 Continuous.
 
 ## Bits and Bobs
 
+## BiteOfTheAnt
+
+**Created by TayganPhilglas**
+
+-description-
+
+[BiteOfTheAnt](https://github.com/TayganPhilglas/EndlessSky-BiteOfTheAnt-Mod)
+
+**Status**
+
 ## Boarding Missions
 
 ## Bounty Hunters
+
+**Created by WarlordMike**
+
+-description-
+
+[Bounty Hunters](https://github.com/WarlordMike/es-bounty-hunters)
+
+**Status**
 
 ## Burst Anti-Missile
 
@@ -317,6 +359,14 @@ Playable on 0.9.15 Continuous.
 ## Cognitive Subdivision
 
 ## Colorado
+
+**Created by clintmoyer**
+
+-description-
+
+[Colorado](https://github.com/clintmoyer/endless-sky-plugins/tree/master/colorado)
+
+**Status**
 
 ## Colorful Void Sprites
 
@@ -466,6 +516,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Addon
 
+**Created by IModThings**
+
+-description-
+
+[Endless Addon](https://github.com/IModThings/I_M_T-Endless-Sky-Mods/tree/master/Endless%20Addon)
+
+**Status**
+
 ## Endless Cargo
 
 **Created by northrupt...@gmail.com(YellowApple)**
@@ -527,9 +585,35 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 **Created by Vilhelm**
 
+## Everything-n-more
+
+**Created by Please-Close-This-Issue**
+
+-description-
+
+[Everything-n-more](https://github.com/Please-Close-This-Issue/everything-n-more-mod-)
+
+**Status**
+
 ## Exotic Matter
 
+**Created by CristopherZhong**
+
+-description-
+
+[Exotic Matter](https://github.com/ChristopherZhong/endless-sky-exotic-matter-plugin)
+
+**Status**
+
 ## Expanded Territory
+
+**Created by virmitio**
+
+-description-
+
+[Expanded Territory](https://github.com/virmitio/ES_ExpandedTerritory)
+
+**Status**
 
 ## Experimental
 
@@ -575,11 +659,27 @@ Playable on 0.9.15 Continuous.
 
 ## Free-kitten
 
+**Created by Epchk**
+
+-description-
+
+[Free Kitten](https://github.com/Epchk/ES-free-kitten)
+
+**Status**
+
 ## Galactic Conquest (Fallen)
 
 **Created by SpiralCat**
 
 ## Galactic Couriers
+
+**Created by Derekcz**
+
+-description-
+
+[Galactic Couriers](https://github.com/Derekcz/galactic-couriers)
+
+**Status**
 
 ## Galactic War
 
@@ -596,6 +696,14 @@ Large content plugin with new galaxy to explore and (planned)storyline.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Galaxias
+
+**Created by mdpiper**
+
+-description-
+
+[Galaxias](https://github.com/mdpiper/galaxias)
+
+**Status**
 
 ## Generic Plugin
 
@@ -691,6 +799,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Improved Ship Integrity
 
+**Created by Xolarix**
+
+-description-
+
+[Improved Ship Integrity](https://github.com/Xolarix/Improved-Ship-Integrity)
+
+**Status**
+
 ## Inheritance
 
 ## Investment Bank
@@ -745,6 +861,14 @@ Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Kaynz
 
+**Created by Mcgode**
+
+-description-
+
+[Kaynz](https://github.com/Mcgode/Kaynz)
+
+**Status**
+
 ## Kestrel Rework
 
 ## Kestrel-M
@@ -764,6 +888,14 @@ Playable on 0.9.15 Continuous.
 ## Korath Domination
 
 ## Kraz Cybernetics Evolution
+
+**Created by MCOfficer**
+
+-description-
+
+[Kraz Cybernetics](https://github.com/MCOfficer/Kraz-Cybernetics-Evolution)
+
+**Status**
 
 ## Lampyrid Start
 
@@ -835,6 +967,26 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MAY
 
+## MaddreMod
+
+**Created by Maddremor
+
+-description-
+
+[MaddreMod](https://github.com/Maddremor/ES-MaddreMod)
+
+**Status**
+
+## Marauder Swarmer
+
+**Created by Tadrix**
+
+-description-
+
+[Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
+
+**Status**
+
 ## Mark 2 Pug
 
 ## Mass Driver
@@ -866,8 +1018,6 @@ Nonfunctional
 ## Maurader Osprey
 
 ## Maurader Pieces
-
-## Maurader Swarmer
 
 ## Maurader Corvette
 
@@ -901,6 +1051,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Mess
 
+**Created by FranchuFranchu**
+
+-description-
+
+[Mess](https://github.com/FranchuFranchu/endless-sky-mess-plugin)
+
+**Status**
+
 ## Midnight Scrapyard
 
 ![Midnight Scrapyard](https://raw.githubusercontent.com/MidnightPlugins/Midnight-Scrapyard/main/icon.png)
@@ -917,6 +1075,14 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Military Plugin
 
+**Created by JPG7D**
+
+-description-
+
+[Military Plugin](https://github.com/JPG7D/endless-sky-military-plugin)
+
+**Status**
+
 ## Mining ships
 
 **Created by 1010Todd**
@@ -932,6 +1098,14 @@ Playable since the version that adds minable asteroid (0.9.3).
 ## Missile Turrets
 
 ## Moar Jobs
+
+**Created by appdevland**
+
+-description-
+
+[Moar Jobs](https://github.com/appdevland/moarjobs-es-plugin)
+
+**Status**
 
 ## Modified Falcon
 
@@ -954,6 +1128,14 @@ Add a few new human ships.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MultiTech Extra Light
+
+**Created by sgtdrew720**
+
+-description-
+
+[Multitech Extra Light](https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-)
+
+**Status**
 
 ## Nanachi Missions
 
@@ -1049,6 +1231,16 @@ Add a missile based on Orion Drive nuclear propulsion, gets more powerful over r
 
 Playable on 0.9.15 Continuous.
 
+## Overkill
+
+**Created by Carter-M-II**
+
+-description-
+
+[Overkill[(https://github.com/Carter-M-II/ES-Overkill)
+
+**Status**
+
 ## Paradise World Jobs
 
 ## Particle Turret
@@ -1098,6 +1290,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Created by Wyrdean**
 
 Add a system where you can challenge an increasing tier of Pugs for a reward.
+
+[Pug Defense](https://github.com/Wyrdean/Pug-Defense)
 
 **Status**
 
@@ -1189,6 +1383,14 @@ Playable on 0.9.15 Continuous.
 
 ## Red Cross
 
+**Created by SirRailOfGun**
+
+-description-
+
+[Red Cross](https://github.com/SirRailOfGun/ES-Red-Cross)
+
+**Status**
+
 ## Remnant
 
 ## Republic Battlecruiser
@@ -1224,6 +1426,14 @@ Playable on 0.9.15 Continuous.
 ## ShieldsUp_ZZOverride
 
 ## Ship Modded
+
+**Created by Beanzilla**
+
+-description-
+
+[Ship Modded](https://github.com/Beanzilla/ShipModded)
+
+**Status**
 
 ## Ship511L
 
@@ -1371,7 +1581,23 @@ Playable on 0.9.15 Continuous.
 
 ## The Arion Campaign
 
+**Created by Red-57**
+
+-description-
+
+[The Arion Campaign](https://github.com/Red-57/The-Arion-Campaign)
+
+**Status**
+
 ## The Borg Captain
+
+**Created by The-Borg-Captain**
+
+-description-
+
+[The Borg Captain](https://github.com/The-Borg-Captain/TheBorgCaptain-s-Shipyard)
+
+**Status**
 
 ## The Empire's March
 
@@ -1379,9 +1605,25 @@ Playable on 0.9.15 Continuous.
 
 ## The Evora Navaiya
 
+**Created by Polaria1**
+
+-description-
+
+[The Evora Navaiya](https://github.com/Polaria1/The-Evora-Navaiya)
+
+**Status**
+
 ## The Final Frontier
 
 ## The Forgotten
+
+**Created by Startome**
+
+-description-
+
+[The Forgotten](https://github.com/Startome/TheForgotten)
+
+**Status**
 
 ## The Great Journey
 
@@ -1479,6 +1721,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Various concept idea.
 
+[Undisclosed Plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin)
+
 **Status**
 
 Unknown
@@ -1540,6 +1784,14 @@ Unconfirmed
 ## X-70B-Phantom-master
 
 ## Yokoyama
+
+**Created by dilydaly**
+
+-description-
+
+[Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)
+
+**Status**
 
 ## arr mateys
 
