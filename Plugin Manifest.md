@@ -274,6 +274,16 @@ Playable on 0.9.15 Continuous.
 
 ## Bits and Bobs
 
+## BiteOfTheAnt
+
+**Created by TayganPhilglas**
+
+-description-
+
+[BiteOfTheAnt](https://github.com/TayganPhilglas/EndlessSky-BiteOfTheAnt-Mod)
+
+**Status**
+
 ## Boarding Missions
 
 ## Bounty Hunters
@@ -574,6 +584,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Evasion Bomb
 
 **Created by Vilhelm**
+
+## Everything-n-more
+
+**Created by Please-Close-This-Issue**
+
+-description-
+
+[Everything-n-more](https://github.com/Please-Close-This-Issue/everything-n-more-mod-)
+
+**Status**
 
 ## Exotic Matter
 
@@ -947,6 +967,26 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MAY
 
+## MaddreMod
+
+**Created by Maddremor
+
+-description-
+
+[MaddreMod](https://github.com/Maddremor/ES-MaddreMod)
+
+**Status**
+
+## Marauder Swarmer
+
+**Created by Tadrix**
+
+-description-
+
+[Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
+
+**Status**
+
 ## Mark 2 Pug
 
 ## Mass Driver
@@ -978,16 +1018,6 @@ Nonfunctional
 ## Maurader Osprey
 
 ## Maurader Pieces
-
-## Maurader Swarmer
-
-**Created by Tadrix**
-
--description-
-
-[Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
-
-**Status**
 
 ## Maurader Corvette
 
