@@ -506,6 +506,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Addon
 
+**Created by IModThings**
+
+-description-
+
+[Endless Addon](https://github.com/IModThings/I_M_T-Endless-Sky-Mods/tree/master/Endless%20Addon)
+
+**Status**
+
 ## Endless Cargo
 
 **Created by northrupt...@gmail.com(YellowApple)**
@@ -630,6 +638,14 @@ Playable on 0.9.15 Continuous.
 **Created by Ian**
 
 ## Free-kitten
+
+**Created by Epchk**
+
+-description-
+
+[Free Kitten](https://github.com/Epchk/ES-free-kitten)
+
+**Status**
 
 ## Galactic Conquest (Fallen)
 
@@ -965,6 +981,14 @@ Nonfunctional
 
 ## Maurader Swarmer
 
+**Created by Tadrix**
+
+-description-
+
+[Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
+
+**Status**
+
 ## Maurader Corvette
 
 ## Mega Bactrian
@@ -1236,6 +1260,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Created by Wyrdean**
 
 Add a system where you can challenge an increasing tier of Pugs for a reward.
+
+[Pug Defense](https://github.com/Wyrdean/Pug-Defense)
 
 **Status**
 
