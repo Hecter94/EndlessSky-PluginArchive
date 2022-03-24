@@ -164,6 +164,14 @@ Playable on 0.9.15 Continuous.
 
 ## Arbiter
 
+**Created by czartrak
+
+-description-
+
+[Arbiter](https://github.com/czartrak/es-arbiter)
+
+**Status
+
 ## Arena
 
 ## Arrival Distance Override
@@ -197,6 +205,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Beccas Endless Expansion
 
 ## Better Korath
+
+**Created by superdragon322
+
+-description-
+
+[Better Korath](https://github.com/superdragon322/Better-Korath-)
+
+**Status
 
 ## Better Vanilla Pirates
 
@@ -429,6 +445,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Exotic Matter
 
+**Created by CristopherZhong
+
+-description-
+
+[Exotic Matter](https://github.com/ChristopherZhong/endless-sky-exotic-matter-plugin)
+
+**Status
+
 ## Expanded Territory
 
 ## Experimental
@@ -476,6 +500,14 @@ Playable on 0.9.15 Continuous.
 ## Galactic Conquest (Fallen)
 
 ## Galactic Couriers
+
+**Created by Derekcz
+
+-description-
+
+[Galactic Couriers](https://github.com/Derekcz/galactic-couriers)
+
+**Status
 
 ## Galactic War
 
@@ -999,6 +1031,14 @@ Playable on 0.9.15 Continuous.
 
 ## Red Cross
 
+**Created by SirRailOfGun
+
+-description-
+
+[Red Cross](https://github.com/SirRailOfGun/ES-Red-Cross)
+
+**Status
+
 ## Remnant
 
 ## Republic Battlecruiser
@@ -1155,6 +1195,14 @@ Playable on 0.9.15 Continuous.
 
 ## The Borg Captain
 
+**Created by The-Borg-Captain
+
+-description-
+
+[The Borg Captain](https://github.com/The-Borg-Captain/TheBorgCaptain-s-Shipyard)
+
+**Status
+
 ## The Empire's March
 
 ## The Enclave
@@ -1266,6 +1314,14 @@ No thumbnail image.
 ## X-70B-Phantom-master
 
 ## Yokoyama
+
+**Created by dilydaly
+
+-description-
+
+[Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)
+
+**Status
 
 ## arr mateys
 
