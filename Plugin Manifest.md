@@ -174,13 +174,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Arbiter
 
-**Created by czartrak
+**Created by czartrak**
 
 -description-
 
 [Arbiter](https://github.com/czartrak/es-arbiter)
 
-**Status
+**Status**
 
 ## Arena
 
@@ -240,13 +240,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Better Korath
 
-**Created by superdragon322
+**Created by superdragon322**
 
 -description-
 
 [Better Korath](https://github.com/superdragon322/Better-Korath-)
 
-**Status
+**Status**
 
 ## Better Vanilla Pirates
 
@@ -333,6 +333,14 @@ Playable on 0.9.15 Continuous.
 ## Cognitive Subdivision
 
 ## Colorado
+
+**Created by clintmoyer**
+
+-description-
+
+[Colorado](https://github.com/clintmoyer/endless-sky-plugins/tree/master/colorado)
+
+**Status**
 
 ## Colorful Void Sprites
 
@@ -545,13 +553,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Exotic Matter
 
-**Created by CristopherZhong
+**Created by CristopherZhong**
 
 -description-
 
 [Exotic Matter](https://github.com/ChristopherZhong/endless-sky-exotic-matter-plugin)
 
-**Status
+**Status**
 
 ## Expanded Territory
 
@@ -605,13 +613,13 @@ Playable on 0.9.15 Continuous.
 
 ## Galactic Couriers
 
-**Created by Derekcz
+**Created by Derekcz**
 
 -description-
 
 [Galactic Couriers](https://github.com/Derekcz/galactic-couriers)
 
-**Status
+**Status**
 
 ## Galactic War
 
@@ -933,6 +941,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Mess
 
+**Created by FranchuFranchu**
+
+-description-
+
+[Mess](https://github.com/FranchuFranchu/endless-sky-mess-plugin)
+
+**Status**
+
 ## Midnight Scrapyard
 
 ![Midnight Scrapyard](https://raw.githubusercontent.com/MidnightPlugins/Midnight-Scrapyard/main/icon.png)
@@ -949,6 +965,14 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Military Plugin
 
+**Created by JPG7D**
+
+-description-
+
+[Military Plugin](https://github.com/JPG7D/endless-sky-military-plugin)
+
+**Status**
+
 ## Mining ships
 
 **Created by 1010Todd**
@@ -964,6 +988,14 @@ Playable since the version that adds minable asteroid (0.9.3).
 ## Missile Turrets
 
 ## Moar Jobs
+
+**Created by appdevland**
+
+-description-
+
+[Moar Jobs](https://github.com/appdevland/moarjobs-es-plugin)
+
+**Status**
 
 ## Modified Falcon
 
@@ -1221,13 +1253,13 @@ Playable on 0.9.15 Continuous.
 
 ## Red Cross
 
-**Created by SirRailOfGun
+**Created by SirRailOfGun**
 
 -description-
 
 [Red Cross](https://github.com/SirRailOfGun/ES-Red-Cross)
 
-**Status
+**Status**
 
 ## Remnant
 
@@ -1413,13 +1445,13 @@ Playable on 0.9.15 Continuous.
 
 ## The Borg Captain
 
-**Created by The-Borg-Captain
+**Created by The-Borg-Captain**
 
 -description-
 
 [The Borg Captain](https://github.com/The-Borg-Captain/TheBorgCaptain-s-Shipyard)
 
-**Status
+**Status**
 
 ## The Empire's March
 
@@ -1430,6 +1462,14 @@ Playable on 0.9.15 Continuous.
 ## The Final Frontier
 
 ## The Forgotten
+
+**Created by Startome**
+
+-description-
+
+[The Forgotten](https://github.com/Startome/TheForgotten)
+
+**Status**
 
 ## The Great Journey
 
@@ -1527,6 +1567,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Various concept idea.
 
+[Undisclosed Plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin)
+
 **Status**
 
 Unknown
@@ -1589,13 +1631,13 @@ Unconfirmed
 
 ## Yokoyama
 
-**Created by dilydaly
+**Created by dilydaly**
 
 -description-
 
 [Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)
 
-**Status
+**Status**
 
 ## arr mateys
 
