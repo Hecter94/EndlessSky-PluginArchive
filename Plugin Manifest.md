@@ -184,6 +184,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Arena
 
+**Created by 10010101001**
+
+-description-
+
+[Arena](https://github.com/10010101001/Arena)
+
+**Status**
+
 ## Arrival Distance Override
 
 ## Assault Cruiser
@@ -269,6 +277,14 @@ Playable on 0.9.15 Continuous.
 ## Boarding Missions
 
 ## Bounty Hunters
+
+**Created by WarlordMike**
+
+-description-
+
+[Bounty Hunters](https://github.com/WarlordMike/es-bounty-hunters)
+
+**Status**
 
 ## Burst Anti-Missile
 
@@ -563,6 +579,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Expanded Territory
 
+**Created by virmitio**
+
+-description-
+
+[Expanded Territory](https://github.com/virmitio/ES_ExpandedTerritory)
+
+**Status**
+
 ## Experimental
 
 ## Exporianes
@@ -636,6 +660,14 @@ Large content plugin with new galaxy to explore and (planned)storyline.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Galaxias
+
+**Created by mdpiper**
+
+-description-
+
+[Galaxias](https://github.com/mdpiper/galaxias)
+
+**Status**
 
 ## Generic Plugin
 
@@ -731,6 +763,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Improved Ship Integrity
 
+**Created by Xolarix**
+
+-description-
+
+[Improved Ship Integrity](https://github.com/Xolarix/Improved-Ship-Integrity)
+
+**Status**
+
 ## Inheritance
 
 ## Investment Bank
@@ -785,6 +825,14 @@ Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Kaynz
 
+**Created by Mcgode**
+
+-description-
+
+[Kaynz](https://github.com/Mcgode/Kaynz)
+
+**Status**
+
 ## Kestrel Rework
 
 ## Kestrel-M
@@ -804,6 +852,14 @@ Playable on 0.9.15 Continuous.
 ## Korath Domination
 
 ## Kraz Cybernetics Evolution
+
+**Created by MCOfficer**
+
+-description-
+
+[Kraz Cybernetics](https://github.com/MCOfficer/Kraz-Cybernetics-Evolution)
+
+**Status**
 
 ## Lampyrid Start
 
@@ -1018,6 +1074,14 @@ Add a few new human ships.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MultiTech Extra Light
+
+**Created by sgtdrew720**
+
+-description-
+
+[Multitech Extra Light](https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-)
+
+**Status**
 
 ## Nanachi Missions
 
@@ -1297,6 +1361,14 @@ Playable on 0.9.15 Continuous.
 
 ## Ship Modded
 
+**Created by Beanzilla**
+
+-description-
+
+[Ship Modded](https://github.com/Beanzilla/ShipModded)
+
+**Status**
+
 ## Ship511L
 
 **Created by mdsmestad**
@@ -1443,6 +1515,14 @@ Playable on 0.9.15 Continuous.
 
 ## The Arion Campaign
 
+**Created by Red-57**
+
+-description-
+
+[The Arion Campaign](https://github.com/Red-57/The-Arion-Campaign)
+
+**Status**
+
 ## The Borg Captain
 
 **Created by The-Borg-Captain**
@@ -1458,6 +1538,14 @@ Playable on 0.9.15 Continuous.
 ## The Enclave
 
 ## The Evora Navaiya
+
+**Created by Polaria1**
+
+-description-
+
+[The Evora Navaiya](https://github.com/Polaria1/The-Evora-Navaiya)
+
+**Status**
 
 ## The Final Frontier
 
