@@ -30,3 +30,5 @@ Star Wars has an image named fury which conflicts with vanilla fury.
 Bare Ships clears all ships from shipyards, meaning only bare versions of ships will be available, any plugins adding other ships not to custom shipyards will likely be incompatible
 
 Final Frontier sets every government swizzle to 0, also has an image named raider which conflicts with vanilla korath raider.
+
+Elite Sky make Interceptor "bay type" which seems to make any interceptor escort jump around randomly.
