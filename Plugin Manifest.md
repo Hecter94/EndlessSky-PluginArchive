@@ -142,6 +142,16 @@ Adds several new starting options to the game.
 
 ## Altera
 
+**Created by EricD112**
+
+Add a new advanced race to the east.
+
+[Altera](https://github.com/EricD112/Altera)
+
+**Status**
+
+Playable on 0.9.15 Continuous.
+
 ## Alternate Human Shields
 
 **Created by 1010Todd**
@@ -176,8 +186,6 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Arbiter
 
-## Archetto
-
 **Created by czartrak**
 
 -description-
@@ -185,6 +193,12 @@ Playable on 0.9.14, 0.9.15 Continuous.
 [Arbiter](https://github.com/czartrak/es-arbiter)
 
 **Status**
+
+## Archetto
+
+**Created by Hilokiyz**
+
+Add a ship.
 
 ## Arena
 
@@ -250,11 +264,23 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Bare Ships
 
+**Created by Unknown**
+
+Shipyards now sell bare hulls with no outfits.
+
 ## Battle Carrier
 
 ## Battleship Test
 
+**Created by Quarg Block(Brick)**
+
+Add post-Kor Sestor Invasion navy ship.
+
 ## Beccas Endless Expansion
+
+**Created by Becca**
+
+Add several new ships for various vanilla races with very vanilla-looking sprites (Made by same person who remade several vanilla sprites).
 
 ## Better Korath
 
@@ -267,6 +293,12 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Status**
 
 ## Better Vanilla Pirates
+
+**Created by ZBok**
+
+Enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game.
+
+[Better Vanilla Pirates](https://github.com/ZBok/BetterVanillaPirates)
 
 ## Beyond the Sky
 
@@ -331,6 +363,8 @@ Unknown
 ## Captain Last and the Timeship
 
 ## Carriers
+
+**Created by Arkhne**
 
 ## Casual Mod
 
@@ -599,7 +633,15 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Ertluk
 
+**Created by ZBok**
+
+Add a race.
+
 ## Eternals
+
+**Created by comnom**
+
+Add a race.
 
 ## Evasion Bomb
 
@@ -667,9 +709,21 @@ Playable on 0.9.15 Continuous.
 
 ## Fancy Weapons
 
+**Created by 1010Todd**
+
+Add various weapons utilizing complex submunition chain to be used as example. Not intended for normal gameplay.
+
+**Status**
+
+Requires AES Omnis to access.
+
 ## Flak Weapons
 
 ## Flak&Snare
+
+**Created by Tehhowch**
+
+Add a few new weapons.
 
 ## Flamethrower Turret
 
@@ -743,7 +797,23 @@ Nonfunctional
 
 ## GreyShipVolume
 
+**Created by 1010Todd**
+
+**Stats by MasterofGrey**
+
+Lots of map to calculate ship volume(outfit/cargo space) and mass.
+
+WARNING: single-file race might have unrelated data attached (Pug, Drak, etc.)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Gulliver
+
+**Created by Danzig Or War(Test-711)**
+
+Add non-spaceflight race and a T2 race. Heavily WIP.
 
 ## Gyroscopes
 
@@ -771,11 +841,23 @@ Unknown
 
 ## HW Rebalance Test
 
+**Created by 1010Todd**
+
+Triple human heavy warship mass to make them slower.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Hai Engine
 
 ## Hauler Expansion
 
 ## Heliarch Avenger
+
+**Created by Arachi(Arachi-lover)**
+
+Add a Heliarch superheavy warship.
 
 ## Heliarch Shopping & Korath Konvenience
 
@@ -833,6 +915,12 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## IJN Yamato
 
+**Created by hilokiyz**
+
+**Model by Guillaume Côté**
+
+WW2 Yamato but in space.
+
 ## Improved Ship Integrity
 
 **Created by Xolarix**
@@ -846,6 +934,10 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Inheritance
 
 ## Interdictor
+
+**Created by Nechochwen**
+
+Fuel Damage before fuel damage is a thing in vanilla.
 
 ## Investment Bank
 
@@ -909,7 +1001,13 @@ Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Kestrel Rework
 
+**Created by Unknown**
+
+Make Kestrel a much better ship, and increased requirements.
+
 ## Kestrel-M
+
+**Created by mdsmestad**
 
 ## KorExiles-PA
 
@@ -962,6 +1060,10 @@ After one year you will have to pay fee for landing.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Legendary Pirates
+
+**Created by Lake(Galaucus)**
+
+Legendary version of ships used by pirates as person ships.
 
 ## Lemurias Extra ES Stuff
 
@@ -1031,7 +1133,15 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Mass-ive Fix
 
+**Created by Anarchist2**
+
+Make mass and outfit space of a few outfits the same.
+
 ## Mata
+
+**Created by Karimi(Karirawri)**
+
+Add a new advanced race south east of Ember Waste.
 
 ## Matthew's first attempt at alien ship
 
@@ -1193,6 +1303,10 @@ Unknown
 
 ## Nemesis
 
+**Created by Zavindur**
+
+Add a ship.
+
 ## New Sky
 
 **Created by 1010Todd**
@@ -1279,7 +1393,7 @@ Playable on 0.9.15 Continuous.
 
 -description-
 
-[Overkill[(https://github.com/Carter-M-II/ES-Overkill)
+[Overkill](https://github.com/Carter-M-II/ES-Overkill)
 
 **Status**
 
@@ -1291,7 +1405,15 @@ Playable on 0.9.15 Continuous.
 
 ## Pathmakers Way
 
+**Created by Unknown**
+
+Add a new race with systems scattered in between the existing gaps across human space.
+
 ## Penthrower
+
+**Created by 1010Todd**
+
+Joke plugin that add a new ship and a few weapons.
 
 ## Persistent NPC
 
@@ -1379,7 +1501,11 @@ Playable on 0.9.15 Continuous.
 
 ## Quarg Balaur
 
+**Created by Darcy Manoel**
+
 ## Quarg Elder Dragon
+
+**Created by mdsmestad**
 
 ## Quarg Military Retaliation
 
@@ -1447,6 +1573,10 @@ Playable on 0.9.15 Continuous.
 
 ## Republic Juggernaut
 
+**Created by 1010Todd**
+
+New Republic heavy warship for a competition.
+
 ## Restock
 
 ## Reverse Engineering
@@ -1454,6 +1584,10 @@ Playable on 0.9.15 Continuous.
 ## Riley's Plugin
 
 ## Sarcina
+
+**Created by Darcy Manoel**
+
+Add a few ships across a few races. Add a new race Irm. Renamed and updated to AES Misc
 
 ## Sci-Fi Flavours
 
@@ -1605,11 +1739,17 @@ Playable on 0.9.14, 0.9.15 Continuous
 
 ## Super Kestrel
 
+**Created by mdsmestad**
+
 ## Super Ships
 
 ## Superquest
 
 ## Support Beams
+
+**Created by 1010Todd**
+
+Add a few supportive beams (Repair, Shields, etc.) Don't give to AI.
 
 ## Swarm Ship
 
@@ -1630,6 +1770,8 @@ New Syndicate heavy warships.
 Playable on 0.9.15 Continuous.
 
 ## Tachyon
+
+**Created by mdsmestad**
 
 ## That Someone
 
@@ -1659,6 +1801,16 @@ Playable on 0.9.15 Continuous.
 
 ## The Enclave
 
+**Created by Storm Crow**
+
+The Enclave focuses around the discovery of an isolated group of humans in a distant galaxy. Separated from the rest of their species for almost half a millennium, how have these people developed?
+
+[The Enclave(updated fork)](https://github.com/1010todd/The-Enclave)
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## The Evora Navaiya
 
 **Created by Polaria1**
@@ -1670,6 +1822,10 @@ Playable on 0.9.15 Continuous.
 **Status**
 
 ## The Final Frontier
+
+**Created by Unknown**
+
+Add Star Trek ships.
 
 ## The Forgotten
 
@@ -1684,6 +1840,14 @@ Playable on 0.9.15 Continuous.
 ## The Great Journey
 
 ## The Heroes
+
+**Created by mdsmestad**
+
+Add a bunch of person ships representing the community members.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
 
 ## The Jump Gate Project
 
@@ -1773,6 +1937,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Ultra Protector
 
+**Created by hilokiyz**
+
+Add Protector with 8 Protectors attached each arm instead of just a turret.
+
+**Status**
+
+Playable on 0.9.14, 0.9.15 Continuous.
+
 ## Undisclosed Plugin
 
 **Created by petervdmeer**
@@ -1804,6 +1976,10 @@ Should be playable on 0.9.14, 0.9.15 Continuous.
 ## Vile Corp
 
 ## Visible Minable Asteroids
+
+**Created by Unknown**
+
+Add highlighting box around mineable asteroids.
 
 ## Wanderers Storyline
 
@@ -1853,7 +2029,11 @@ Unconfirmed
 
 **Status**
 
-## Zweihaner
+## Zweihander
+
+**Created by 1010Todd**
+
+Add a Zweihander(sword) as H2H. Yes it's useless.
 
 ## prototype D
 
@@ -1872,3 +2052,13 @@ Playable on 0.9.15 Continuous.
 ## wanderer engines
 
 ## zFleet Patch
+
+**Created by 1010Todd**
+
+Patch for playing with (nearly) all plugins in this archive at the same time making plugin-added fleet variants appear and include several plugin ships not included with a fleet to a fleet.
+
+WARNING: May accidentally spawn the wrong Kraken.
+
+**Status**
+
+Playable on 0.9.15 Continuous.
