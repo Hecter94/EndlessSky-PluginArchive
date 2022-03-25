@@ -138,6 +138,8 @@ Adds several new starting options to the game.
 
 ## Alpha Wars
 
+## Alphean Boolean's Expansion
+
 ## Altera
 
 ## Alternate Human Shields
@@ -174,6 +176,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Arbiter
 
+## Archetto
+
 **Created by czartrak**
 
 -description-
@@ -193,6 +197,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Status**
 
 ## Arrival Distance Override
+
+## Arr Mateys
 
 ## Assault Cruiser
 
@@ -243,6 +249,10 @@ Add bare bone version of some ships to shipyards for captains who bring their ow
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Bare Ships
+
+## Battle Carrier
+
+## Battleship Test
 
 ## Beccas Endless Expansion
 
@@ -319,6 +329,8 @@ Unknown
 ## Cannon Friendly Weapon Pack
 
 ## Captain Last and the Timeship
+
+## Carriers
 
 ## Casual Mod
 
@@ -408,6 +420,8 @@ Add DaBestShipEver.
 
 Unknown
 
+## Dangerous Games
+
 ## Dark Ships
 
 ## Defense Drone Plugin
@@ -461,6 +475,8 @@ Unknown
 **Created by Dr. Z**
 
 ## Dragonflame-Fabrication
+
+## Dragoon Industries
 
 ## Dragoon
 
@@ -552,6 +568,10 @@ Intended for end-game players who are comfortable running a python script.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Horizon
+
+## Endless Sky except everything makes that weird Tim Allen noise
+
+## Endless Sky except ships make that weird Tim Allen sound when they die
 
 ## Endless Sky Starbridge Pack
 
@@ -645,7 +665,11 @@ Playable on 0.9.15 Continuous.
 
 ## Extra Missiles Outfit
 
+## Fancy Weapons
+
 ## Flak Weapons
+
+## Flak&Snare
 
 ## Flamethrower Turret
 
@@ -681,6 +705,8 @@ Playable on 0.9.15 Continuous.
 
 **Status**
 
+## Galactic Invaders
+
 ## Galactic War
 
 ![Galactic War](https://raw.githubusercontent.com/1010todd/Galactic-War/master/icon.png)
@@ -715,6 +741,10 @@ Nonfunctional
 
 ## Gray Box
 
+## GreyShipVolume
+
+## Gulliver
+
 ## Gyroscopes
 
 **Created by TheronEpic**
@@ -739,9 +769,13 @@ Honk. A plugin for color and hilarity.
 
 Unknown
 
+## HW Rebalance Test
+
 ## Hai Engine
 
 ## Hauler Expansion
+
+## Heliarch Avenger
 
 ## Heliarch Shopping & Korath Konvenience
 
@@ -797,6 +831,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Hyperdrive Boosters
 
+## IJN Yamato
+
 ## Improved Ship Integrity
 
 **Created by Xolarix**
@@ -808,6 +844,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Status**
 
 ## Inheritance
+
+## Interdictor
 
 ## Investment Bank
 
@@ -925,8 +963,6 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Legendary Pirates
 
-## Lemuria's Extra ES Stuff
-
 ## Lemurias Extra ES Stuff
 
 ## Leviathan
@@ -964,6 +1000,8 @@ A mission focused plugin for Endless Sky.
 In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Low Quality
+
+## M.A.C cannon
 
 ## MAY
 
@@ -1111,6 +1149,8 @@ Playable since the version that adds minable asteroid (0.9.3).
 
 ## Modular Haulers
 
+## Monitor
+
 ## More Missions
 
 ## More Ships Plugin
@@ -1150,6 +1190,8 @@ Mission to join the navy.
 **Status**
 
 Unknown
+
+## Nemesis
 
 ## New Sky
 
@@ -1241,11 +1283,15 @@ Playable on 0.9.15 Continuous.
 
 **Status**
 
+## Paradigm Shift
+
 ## Paradise World Jobs
 
 ## Particle Turret
 
 ## Pathmakers Way
+
+## Penthrower
 
 ## Persistent NPC
 
@@ -1355,6 +1401,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Raptor
 
+## Ravens Aerie
+
 ## Realistic Solor System
 
 ## Recluse
@@ -1397,6 +1445,8 @@ Playable on 0.9.15 Continuous.
 
 ## Republic Destroyer
 
+## Republic Juggernaut
+
 ## Restock
 
 ## Reverse Engineering
@@ -1406,6 +1456,8 @@ Playable on 0.9.15 Continuous.
 ## Sarcina
 
 ## Sci-Fi Flavours
+
+## Science Stuff
 
 ## Shadow's Expansion
 
@@ -1557,6 +1609,8 @@ Playable on 0.9.14, 0.9.15 Continuous
 
 ## Superquest
 
+## Support Beams
+
 ## Swarm Ship
 
 **Created by mdsmestad**
@@ -1576,6 +1630,8 @@ New Syndicate heavy warships.
 Playable on 0.9.15 Continuous.
 
 ## Tachyon
+
+## That Someone
 
 ## The Adamas Project
 
@@ -1644,6 +1700,8 @@ Playable on 0.9.15 Continuous.
 ## The Station of Dr. Rousseau
 
 ## The Swarm Project
+
+## The Witch
 
 ## Tiny Ships
 
@@ -1751,6 +1809,8 @@ Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## War of Worlds
 
+## Warehouse
+
 ## Warm Start
 
 **Created by david.e...@gmail.com**
@@ -1793,7 +1853,7 @@ Unconfirmed
 
 **Status**
 
-## arr mateys
+## Zweihaner
 
 ## prototype D
 
@@ -1807,4 +1867,8 @@ Playable on 0.9.15 Continuous.
 
 ## synchrony
 
+## test convo
+
 ## wanderer engines
+
+## zFleet Patch
