@@ -9,7 +9,7 @@ Third party tool such as [this](https://download-directory.github.io/) can downl
 Paste the url to the folder url into that tool and you will be given a .zip for that folder. 
 - For example, for the "50 cal" plugin, enter: https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/50%20cal
 
-Github by default only allows the entire library to be downloaded as a single .zip. **Github may have issues with very large file sizes**, workarounds include cloning the repository with Github Desktop and asking for a copy (e.g. Google Drive).  
+Github by default only allows the entire library to be downloaded as a single .zip. **Github may have issues with downloading very large file sizes**, workarounds include cloning the repository with Github Desktop and asking for a copy (e.g. Google Drive).  
 
 ## Notes
 
