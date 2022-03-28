@@ -1,7 +1,7 @@
 # Endless Sky Plugin Archive
 
 ## Introduction
-A comprehensive library of ~200 ancient and new plugins for the open-source game Endless Sky. 
+A comprehensive library of ~350 ancient and new plugins for the open-source game Endless Sky. 
 
 ## Downloading: 
  
