@@ -17,7 +17,7 @@ Github by default only allows the entire library to be downloaded as a single .z
 
 "Originals" directory – archived copies of original plugins 
 
-"Nonfunctional" directory – plugins with serious conflict with continuous build
+"Nonfunctional" directory – plugins that will not function without updates
 
 [Here](Plugin%20Manifest.md) for plugin list and descriptions.
 ## Known Plugin Issues
