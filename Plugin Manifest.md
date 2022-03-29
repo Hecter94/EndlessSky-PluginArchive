@@ -432,6 +432,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 This is an alternate story for Endless Sky that gives you the chance to work for a startup mining company.
 
+[Core Mining, Inc.](https://github.com/DJF113/Core-Mining-Inc)
+
 **Status**
 
 In development and playable on 0.9.15 Continuous.
@@ -602,6 +604,16 @@ Intended for end-game players who are comfortable running a python script.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Horizon
+
+![Endless Horizon](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Endless%20Horizon/images/ship/constitution.png)
+
+Star Trek overhaul mod adding 10 ships and a number of outfits.
+
+[Endless Horizon](https://www.moddb.com/games/endless-sky-endless-horizon)
+
+**Status**
+
+Abandoned.
 
 ## Endless Sky except everything makes that weird Tim Allen noise
 
@@ -1743,6 +1755,14 @@ Playable on 0.9.14, 0.9.15 Continuous
 
 ## Super Ships
 
+![super ships](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Super%20Ships/images/ship/United%20Earth%20Carrier.png)
+
+**Created by taldarus**
+
+Adds more ships and outfits to the game.
+
+[Super Ships](https://www.moddb.com/mods/super-ships)
+
 ## Superquest
 
 ## Support Beams
@@ -1855,7 +1875,11 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## The Machines are Taking Over
 
+![the machines are taking over](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/The%20Machines%20are%20Taking%20Over/machine.ico)
+
 **Created by SpiralCat**
+
+Adds mechs and some other customization options.
 
 ## The Mysterious Baby
 
@@ -1909,7 +1933,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Twin Argosy
 
-![Twin Argosy](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/Ships/Twinargosy/images/TwinArgosy.png)
+![Twin Argosy](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Twinargosy/images/ship/TwinArgosy.png)
 
 **Model Creator y-...@gmx.de**
 
@@ -1984,6 +2008,14 @@ Add highlighting box around mineable asteroids.
 ## Wanderers Storyline
 
 ## War of Worlds
+
+![warofworlds](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/War%20of%20Worlds/images/ship/Mamoth.png)
+
+**Created by fjc130**
+
+Adds four new ships to the game.
+
+[War of Worlds](https://www.moddb.com/mods/war-of-worlds-v01)
 
 ## Warehouse
 
