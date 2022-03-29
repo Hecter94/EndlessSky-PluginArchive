@@ -138,6 +138,14 @@ Adds several new starting options to the game.
 
 ## Alpha Wars
 
+**Created by Makuta-Miras (Storm Crow) and warp-core**
+
+Adds some outfits and ships for a planned Alpha Wars overhaul.
+
+**Status**
+
+Abandoned.
+
 ## Alphean Boolean's Expansion
 
 ## Altera
@@ -225,18 +233,6 @@ Add a ship.
 This mod implements a new outfit which automates a ship. Requires a karma higher than 2 during the Free Worlds story.
 
 [Automation](https://github.com/Disiuze/misc-projects)
-
-**Status**
-
-Playable on 0.9.14, 0.9.15 Continuous.
-
-## Androids
-
-**Created by Disiuze**
-
-This mod reimplements the android but with a few balancing fixes.
-
-[Androids](https://github.com/Disiuze/misc-projects)
 
 **Status**
 
@@ -432,6 +428,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 This is an alternate story for Endless Sky that gives you the chance to work for a startup mining company.
 
+[Core Mining, Inc.](https://github.com/DJF113/Core-Mining-Inc)
+
 **Status**
 
 In development and playable on 0.9.15 Continuous.
@@ -603,6 +601,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Horizon
 
+![Endless Horizon](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Endless%20Horizon/images/ship/constitution.png)
+
+Star Trek overhaul mod adding 10 ships and a number of outfits.
+
+[Endless Horizon](https://www.moddb.com/games/endless-sky-endless-horizon)
+
+**Status**
+
+Abandoned.
+
 ## Endless Sky except everything makes that weird Tim Allen noise
 
 ## Endless Sky except ships make that weird Tim Allen sound when they die
@@ -747,7 +755,17 @@ Add a few new weapons.
 
 ## Galactic Conquest (Fallen)
 
+![Galactic Conquest](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Galactic%20Conquest/galactic%20conquest.ico)
+
 **Created by SpiralCat**
+
+Starts you on an abandoned alien station, where you are tasked with conquering the galaxy. Adds ships and outfits.
+
+[Galactic Conquest](https://www.moddb.com/mods/galactic-conquest)
+
+**Status**
+
+Abandoned. An updated version appears to have been made by 1010Todd. [AES Fallen](https://github.com/Adde-Endless-Sky/AES-Fallen)
 
 ## Galactic Couriers
 
@@ -976,6 +994,8 @@ Jaling Expansion adds another human civilization which not connected to human sp
 Unknown
 
 ## Jump to Lightspeed
+
+![JTL](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Jump%20to%20Lightspeed/images/ship/x%20wing.png)
 
 **Created by Krayt Dragon Moddding**
 
@@ -1743,6 +1763,14 @@ Playable on 0.9.14, 0.9.15 Continuous
 
 ## Super Ships
 
+![super ships](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Super%20Ships/images/ship/United%20Earth%20Carrier.png)
+
+**Created by taldarus**
+
+Adds more ships and outfits to the game.
+
+[Super Ships](https://www.moddb.com/mods/super-ships)
+
 ## Superquest
 
 ## Support Beams
@@ -1801,6 +1829,8 @@ Playable on 0.9.15 Continuous.
 
 ## The Enclave
 
+![The Enclave](https://raw.githubusercontent.com/1010todd/The-Enclave/master/icon.png)
+
 **Created by Storm Crow**
 
 The Enclave focuses around the discovery of an isolated group of humans in a distant galaxy. Separated from the rest of their species for almost half a millennium, how have these people developed?
@@ -1855,7 +1885,11 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## The Machines are Taking Over
 
+![the machines are taking over](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/The%20Machines%20are%20Taking%20Over/machine.ico)
+
 **Created by SpiralCat**
+
+Adds mechs and some other customization options.
 
 ## The Mysterious Baby
 
@@ -1909,7 +1943,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Twin Argosy
 
-![Twin Argosy](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/Ships/Twinargosy/images/TwinArgosy.png)
+![Twin Argosy](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Twinargosy/images/ship/TwinArgosy.png)
 
 **Model Creator y-...@gmx.de**
 
@@ -1984,6 +2018,14 @@ Add highlighting box around mineable asteroids.
 ## Wanderers Storyline
 
 ## War of Worlds
+
+![warofworlds](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/War%20of%20Worlds/images/ship/Mamoth.png)
+
+**Created by fjc130**
+
+Adds four new ships to the game.
+
+[War of Worlds](https://www.moddb.com/mods/war-of-worlds-v01)
 
 ## Warehouse
 
