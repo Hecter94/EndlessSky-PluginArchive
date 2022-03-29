@@ -68,6 +68,8 @@ Unfinished but playable.
 
 -status-
 
+## AES Korath
+
 ## AES Misc
 
 ![aesmisc](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Misc/icon.png)
@@ -87,6 +89,8 @@ Unfinished but playable.
 -description-
 
 **Status**
+
+## AES Quarg
 
 ## Adamas Project
 
@@ -173,6 +177,8 @@ Playable on 0.9.15 Continuous.
 ## Alternate Start Luna
 
 ## Amalgamation
+
+## Ambriel
 
 ## Androids
 
@@ -776,6 +782,8 @@ Abandoned. An updated version appears to have been made by 1010Todd. [AES Fallen
 [Galactic Couriers](https://github.com/Derekcz/galactic-couriers)
 
 **Status**
+
+## Galactic Hazards
 
 ## Galactic Invaders
 
@@ -2092,6 +2100,8 @@ Playable on 0.9.15 Continuous.
 ## test convo
 
 ## wanderer engines
+
+## zFW Patch
 
 ## zFleet Patch
 
