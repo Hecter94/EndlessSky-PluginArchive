@@ -138,6 +138,14 @@ Adds several new starting options to the game.
 
 ## Alpha Wars
 
+**Created by Makuta-Miras (Storm Crow) and warp-core**
+
+Adds some outfits and ships for a planned Alpha Wars overhaul.
+
+**Status**
+
+Abandoned.
+
 ## Alphean Boolean's Expansion
 
 ## Altera
@@ -225,18 +233,6 @@ Add a ship.
 This mod implements a new outfit which automates a ship. Requires a karma higher than 2 during the Free Worlds story.
 
 [Automation](https://github.com/Disiuze/misc-projects)
-
-**Status**
-
-Playable on 0.9.14, 0.9.15 Continuous.
-
-## Androids
-
-**Created by Disiuze**
-
-This mod reimplements the android but with a few balancing fixes.
-
-[Androids](https://github.com/Disiuze/misc-projects)
 
 **Status**
 
@@ -759,7 +755,17 @@ Add a few new weapons.
 
 ## Galactic Conquest (Fallen)
 
+![Galactic Conquest](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Galactic%20Conquest/galactic%20conquest.ico)
+
 **Created by SpiralCat**
+
+Starts you on an abandoned alien station, where you are tasked with conquering the galaxy. Adds ships and outfits.
+
+[Galactic Conquest](https://www.moddb.com/mods/galactic-conquest)
+
+**Status**
+
+Abandoned. An updated version appears to have been made by 1010Todd. [AES Fallen](https://github.com/Adde-Endless-Sky/AES-Fallen)
 
 ## Galactic Couriers
 
@@ -988,6 +994,8 @@ Jaling Expansion adds another human civilization which not connected to human sp
 Unknown
 
 ## Jump to Lightspeed
+
+![JTL](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Jump%20to%20Lightspeed/images/ship/x%20wing.png)
 
 **Created by Krayt Dragon Moddding**
 
