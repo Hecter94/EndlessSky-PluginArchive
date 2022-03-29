@@ -1,10 +1,12 @@
-## [40k Pack](https://github.com/1010todd/Endless-Sky-40K)
+## 40k Pack
 
 ![40k pack](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/40k%20Pack/icon.png)
 
 **Created by 1010Todd**
 
 Warhammer 40k mod for Endless Sky. Adds ships, outfits, missions and systems to the game.
+
+[40k Pack](https://github.com/1010todd/Endless-Sky-40K)
 
 **Status**
 
@@ -30,6 +32,8 @@ Complete and playable on 0.9.15 Continuous.
 
 A mod designed to replicate Star Wars in Endless Sky.
 
+[A Galaxy Far Far Away](https://github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away)
+
 **Status**
 
 Unfinished but playable.
@@ -42,6 +46,8 @@ Unfinished but playable.
 
 -description-
 
+[AES Aben](https://github.com/Adde-Endless-Sky/AES-Aben)
+
 **Status**
 
 ## AES Fallen
@@ -51,6 +57,8 @@ Unfinished but playable.
 **Created by Darcy Manoel**
 
 -description-
+
+[AES Fallen](https://github.com/Adde-Endless-Sky/AES-Fallen)
 
 **Status**
 
@@ -64,11 +72,21 @@ Unfinished but playable.
 
 -description-
 
+[AES Irm](https://github.com/Adde-Endless-Sky/AES-Irm)
+
 **Status**
 
 -status-
 
 ## AES Korath
+
+**Created by Darcy Manoel**
+
+-description-
+
+[AES Korath](https://github.com/Adde-Endless-Sky/AES-Korath)
+
+**Status**
 
 ## AES Misc
 
@@ -77,6 +95,8 @@ Unfinished but playable.
 **Created by Darcy Manoel**
 
 -description-
+
+[AES Misc](https://github.com/Adde-Endless-Sky/AES-Misc)
 
 **Status**
 
@@ -88,9 +108,19 @@ Unfinished but playable.
 
 -description-
 
+[AES Omnis](https://github.com/Adde-Endless-Sky/AES-Omnis)
+
 **Status**
 
 ## AES Quarg
+
+**Created by Darcy Manoel**
+
+-description-
+
+[AES Quarg](https://github.com/Adde-Endless-Sky/AES-Quarg)
+
+**Status**
 
 ## Adamas Project
 
@@ -140,11 +170,21 @@ Adds several new starting options to the game.
 
 ## All Content Plugin
 
+**Created by Michael Zahniser (Maintained by the ES Community)**
+
+-description-
+
+[All Content Plugin](https://github.com/endless-sky/all-content-plugin)
+
+**Status**
+
 ## Alpha Wars
 
 **Created by Makuta-Miras (Storm Crow) and warp-core**
 
 Adds some outfits and ships for a planned Alpha Wars overhaul.
+
+[Alpha Wars](https://github.com/Makuta-Miras/ES-Alpha-Wars)
 
 **Status**
 
@@ -753,7 +793,7 @@ Add a few new weapons.
 
 **Created by Epchk**
 
--description-
+Adds a mission that pays you with a kitten.
 
 [Free Kitten](https://github.com/Epchk/ES-free-kitten)
 
@@ -901,7 +941,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## High DPI
 
-**Created by Micheal Zahniser (Maintained by the ES Community)**
+**Created by Michael Zahniser (Maintained by the ES Community)**
 
 Official High-DPI graphics for Endless Sky. Note: check repository below for most up-to-date version.
 
