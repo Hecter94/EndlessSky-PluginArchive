@@ -370,11 +370,19 @@ Playable on 0.9.15 Continuous.
 
 ## Boarding Missions
 
+**Created by tmbutterworth**
+
+Adds more boarding missions to the game.
+
+[Boarding Missions](https://github.com/tmbutterworth/boarding-missions)
+
+**Status**
+
 ## Bounty Hunters
 
 **Created by WarlordMike**
 
--description-
+Adds a storyline where you can become a bounty hunter.
 
 [Bounty Hunters](https://github.com/WarlordMike/es-bounty-hunters)
 
@@ -410,6 +418,14 @@ Unknown
 
 ## Casual Mod
 
+**Created by pphotography**
+
+-description-
+
+[Casual Mod](https://github.com/pphotography/EndlessSky_CasualMod)
+
+**Status**
+
 ## Checkmatemate
 
 **Created by Zoura**
@@ -425,6 +441,8 @@ Playable on 0.9.15 Continuous.
 **Created by Luna**
 
 Cheat/Dev-tool plugin.
+
+[Ciu Creo](https://github.com/RestingImmortal/Ciu-Kreo)
 
 **Status**
 
@@ -460,7 +478,9 @@ Playable on 0.9.15 Continuous.
 
 **Created by rob59er**
 
-Colorful Void Sprites
+Makes Void Sprites colorful.
+
+[Colorful Void Sprites](https://github.com/Rob59er/Colorful-Void-Sprites)
 
 **Status**
 
@@ -574,7 +594,7 @@ Nonfunctional
 
 Unknown
 
-## EMP
+## EMP Weapons
 
 ## ES Ships
 
@@ -895,11 +915,21 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## H2H Outfits
 
+**Created by tmbutterworth**
+
+-description-
+
+[H2H Outfits](https://github.com/tmbutterworth/hand-to-hand-outfits)
+
+**Status**
+
 ## HONK
 
 **Created by Killerhurtz **
 
 Honk. A plugin for color and hilarity.
+
+[HONK](https://github.com/Killerhurtz/ES-HONK)
 
 **Status**
 
@@ -1365,6 +1395,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Mission to join the navy.
 
+[Navy Conscript](https://github.com/tmbutterworth/navy-conscript)
+
 **Status**
 
 Unknown
@@ -1469,6 +1501,14 @@ Playable on 0.9.15 Continuous.
 
 ## Paradise World Jobs
 
+**Created by tmbutterworth**
+
+Adds more jobs to the paradise worlds.
+
+[Paradise World Jobs](https://github.com/tmbutterworth/paradise-world-jobs)
+
+**Status**
+
 ## Particle Turret
 
 ## Pathmakers Way
@@ -1496,6 +1536,14 @@ Playable on 0.9.15 Continuous.
 ## Pheonix
 
 ## Pilots License
+
+**Created by tmbutterworth**
+
+-description
+
+[Pilots License](https://github.com/tmbutterworth/pilots-license)
+
+**Status**
 
 ## PipMod
 
