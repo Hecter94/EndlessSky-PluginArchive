@@ -1,10 +1,12 @@
-## [40k Pack](https://github.com/1010todd/Endless-Sky-40K)
+## 40k Pack
 
 ![40k pack](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/40k%20Pack/icon.png)
 
 **Created by 1010Todd**
 
 Warhammer 40k mod for Endless Sky. Adds ships, outfits, missions and systems to the game.
+
+[40k Pack](https://github.com/1010todd/Endless-Sky-40K)
 
 **Status**
 
@@ -30,6 +32,8 @@ Complete and playable on 0.9.15 Continuous.
 
 A mod designed to replicate Star Wars in Endless Sky.
 
+[A Galaxy Far Far Away](https://github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away)
+
 **Status**
 
 Unfinished but playable.
@@ -42,6 +46,8 @@ Unfinished but playable.
 
 -description-
 
+[AES Aben](https://github.com/Adde-Endless-Sky/AES-Aben)
+
 **Status**
 
 ## AES Fallen
@@ -51,6 +57,8 @@ Unfinished but playable.
 **Created by Darcy Manoel**
 
 -description-
+
+[AES Fallen](https://github.com/Adde-Endless-Sky/AES-Fallen)
 
 **Status**
 
@@ -64,9 +72,21 @@ Unfinished but playable.
 
 -description-
 
+[AES Irm](https://github.com/Adde-Endless-Sky/AES-Irm)
+
 **Status**
 
 -status-
+
+## AES Korath
+
+**Created by Darcy Manoel**
+
+-description-
+
+[AES Korath](https://github.com/Adde-Endless-Sky/AES-Korath)
+
+**Status**
 
 ## AES Misc
 
@@ -75,6 +95,8 @@ Unfinished but playable.
 **Created by Darcy Manoel**
 
 -description-
+
+[AES Misc](https://github.com/Adde-Endless-Sky/AES-Misc)
 
 **Status**
 
@@ -85,6 +107,18 @@ Unfinished but playable.
 **Created by Darcy Manoel**
 
 -description-
+
+[AES Omnis](https://github.com/Adde-Endless-Sky/AES-Omnis)
+
+**Status**
+
+## AES Quarg
+
+**Created by Darcy Manoel**
+
+-description-
+
+[AES Quarg](https://github.com/Adde-Endless-Sky/AES-Quarg)
 
 **Status**
 
@@ -136,11 +170,21 @@ Adds several new starting options to the game.
 
 ## All Content Plugin
 
+**Created by Michael Zahniser (Maintained by the ES Community)**
+
+-description-
+
+[All Content Plugin](https://github.com/endless-sky/all-content-plugin)
+
+**Status**
+
 ## Alpha Wars
 
 **Created by Makuta-Miras (Storm Crow) and warp-core**
 
 Adds some outfits and ships for a planned Alpha Wars overhaul.
+
+[Alpha Wars](https://github.com/Makuta-Miras/ES-Alpha-Wars)
 
 **Status**
 
@@ -173,6 +217,8 @@ Playable on 0.9.15 Continuous.
 ## Alternate Start Luna
 
 ## Amalgamation
+
+## Ambriel
 
 ## Androids
 
@@ -324,11 +370,19 @@ Playable on 0.9.15 Continuous.
 
 ## Boarding Missions
 
+**Created by tmbutterworth**
+
+Adds more boarding missions to the game.
+
+[Boarding Missions](https://github.com/tmbutterworth/boarding-missions)
+
+**Status**
+
 ## Bounty Hunters
 
 **Created by WarlordMike**
 
--description-
+Adds a storyline where you can become a bounty hunter.
 
 [Bounty Hunters](https://github.com/WarlordMike/es-bounty-hunters)
 
@@ -364,6 +418,14 @@ Unknown
 
 ## Casual Mod
 
+**Created by pphotography**
+
+-description-
+
+[Casual Mod](https://github.com/pphotography/EndlessSky_CasualMod)
+
+**Status**
+
 ## Checkmatemate
 
 **Created by Zoura**
@@ -379,6 +441,8 @@ Playable on 0.9.15 Continuous.
 **Created by Luna**
 
 Cheat/Dev-tool plugin.
+
+[Ciu Creo](https://github.com/RestingImmortal/Ciu-Kreo)
 
 **Status**
 
@@ -414,7 +478,9 @@ Playable on 0.9.15 Continuous.
 
 **Created by rob59er**
 
-Colorful Void Sprites
+Makes Void Sprites colorful.
+
+[Colorful Void Sprites](https://github.com/Rob59er/Colorful-Void-Sprites)
 
 **Status**
 
@@ -528,7 +594,7 @@ Nonfunctional
 
 Unknown
 
-## EMP
+## EMP Weapons
 
 ## ES Ships
 
@@ -747,7 +813,7 @@ Add a few new weapons.
 
 **Created by Epchk**
 
--description-
+Adds a mission that pays you with a kitten.
 
 [Free Kitten](https://github.com/Epchk/ES-free-kitten)
 
@@ -776,6 +842,8 @@ Abandoned. An updated version appears to have been made by 1010Todd. [AES Fallen
 [Galactic Couriers](https://github.com/Derekcz/galactic-couriers)
 
 **Status**
+
+## Galactic Hazards
 
 ## Galactic Invaders
 
@@ -847,11 +915,21 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## H2H Outfits
 
+**Created by tmbutterworth**
+
+-description-
+
+[H2H Outfits](https://github.com/tmbutterworth/hand-to-hand-outfits)
+
+**Status**
+
 ## HONK
 
 **Created by Killerhurtz **
 
 Honk. A plugin for color and hilarity.
+
+[HONK](https://github.com/Killerhurtz/ES-HONK)
 
 **Status**
 
@@ -893,7 +971,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## High DPI
 
-**Created by Micheal Zahniser (Maintained by the ES Community)**
+**Created by Michael Zahniser (Maintained by the ES Community)**
 
 Official High-DPI graphics for Endless Sky. Note: check repository below for most up-to-date version.
 
@@ -1317,6 +1395,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Mission to join the navy.
 
+[Navy Conscript](https://github.com/tmbutterworth/navy-conscript)
+
 **Status**
 
 Unknown
@@ -1421,6 +1501,14 @@ Playable on 0.9.15 Continuous.
 
 ## Paradise World Jobs
 
+**Created by tmbutterworth**
+
+Adds more jobs to the paradise worlds.
+
+[Paradise World Jobs](https://github.com/tmbutterworth/paradise-world-jobs)
+
+**Status**
+
 ## Particle Turret
 
 ## Pathmakers Way
@@ -1448,6 +1536,14 @@ Playable on 0.9.15 Continuous.
 ## Pheonix
 
 ## Pilots License
+
+**Created by tmbutterworth**
+
+-description
+
+[Pilots License](https://github.com/tmbutterworth/pilots-license)
+
+**Status**
 
 ## PipMod
 
@@ -2092,6 +2188,8 @@ Playable on 0.9.15 Continuous.
 ## test convo
 
 ## wanderer engines
+
+## zFW Patch
 
 ## zFleet Patch
 
