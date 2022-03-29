@@ -4,7 +4,13 @@ mission "Octyl in Coalition space [0]"
 	landing
 	to offer
 		has "Coalition: Contributor: done"
-		random < 10
+		random < 1
+		random < 25
+	source
+		not
+			government Coalition
+		not
+			government Heliarch
 	destination "Ring of Friendship"
 	on offer
 		conversation
@@ -16,7 +22,7 @@ mission "Octyl in Coalition space [0]"
 			`You are escorted to a private docking bay on <planet> by a few Heliarch warships, and are greeted by a trifecta of the Heliarch as you disembark your vessel. A Saryd, a Kimek, and an Arachi, wearing golden Heliarch circlets.`
 			`	"A great service," the Saryd starts, "we require of you. The first human in Coalition space, you are, and our most recent alien encounter, you have become."`
 			`	"Like family, the three races of the coalition have become," explains the Kimek. "Forgotten how to negotiate well, we have, and comfortable with our friendship we have grown."`
-			`	"Foreign arrivals, there are," the Arachi explains with a hint of urgency, "what to do with them, we know not. Help us, will you?"
+			`	"Foreign arrivals, there are," the Arachi explains with a hint of urgency, "what to do with them, we know not. Help us, will you?"`
 			choice
 				`	"Yes, I can help you with alien invaders."`
 					goto agree
@@ -24,7 +30,7 @@ mission "Octyl in Coalition space [0]"
 					goto questioning
 				`	"Not now, I am done with aliens."`
 			`	"Understood, you are," says the Saryd.`
-			`	"Will struggle on our own, the Coalition will," says the Kimek.`
+			`	"Struggle on our own, the Coalition will," says the Kimek.`
 			`	"Please reconsider some time, will you?" finishes the Arach.`
 				defer
 			label agree
@@ -40,11 +46,11 @@ mission "Octyl in Coalition space [0]"
 					goto "how long"
 				`	"Have the aliens attacked you yet?"`
 					goto attacking
-				`	"No, just show me where they are."
+				`	"No, just show me where they are."`
 					goto end
 
 			label "how long"
-			`	"For not very long, the visitors have been among us," answers the Saryd, "As soon as they arrived, we contacted you."
+			`	"For not very long, the visitors have been among us," answers the Saryd, "As soon as they arrived, we contacted you."`
 			choice
 				`	"Have the aliens attacked you yet?"`
 					goto attacking2
@@ -55,13 +61,13 @@ mission "Octyl in Coalition space [0]"
 			`	"Not for very long, they have been here," answers the Saryd, "As soon as they appeared, you we contacted."`
 
 			label attacking2
-			`	"The Coalition, they have not yet attacked," explains the Kimek, "A dangerous move at any moment, they could make, we understand."
+			`	"The Coalition, they have not yet attacked," explains the Kimek, "A dangerous move at any moment, they could make, we understand."`
 			`	"How strong they are, we do not know," the Arachi admits solemnly, "With force rivaling the Quarg, they might be able to attack. We do not know. Which is why you, to help us, we ask."`
 			`	After a moment of silence, the Saryd asks, "To ask us, do you have anything else, human <last>?"`
 
 			choice
 				`	"What if they attack, and you can't defend yourselves?"`
-				`	"No, that is all, thank you. Do you know anything else of importance?"
+				`	"No, that is all, thank you. Do you know anything else of importance?"`
 					goto end
 			`	The three look between each other, before the Arachi answers, "Run, we will, and your help we will ask for."`
 			`	After a longer and more tense silence, the Saryd explained, "Uncertain, we are. Emotional and afraid, we are."`
@@ -71,42 +77,38 @@ mission "Octyl in Coalition space [0]"
 				`	"This sounds like my kind of job. Do you have more details?"`
 				`	"This sounds risky to me, what else do you know?"`
 			label end
-			`	"In vessels like huge asteroids, the alien visitors have arrived. Anything, they have not done yet." explains the Saryd, before instructing, "Fly with us to the visitors, we need you to, and meet with them."
+			`	"In vessels like huge asteroids, the alien visitors have arrived. Anything, they have not done yet." explains the Saryd, before instructing, "Fly with us to the visitors, we need you to, and meet with them."`
 			`	"If they are aggressive and do not want to negotiate," adds the Kimek, "we attack and push them out. If they do not respond to hails, we will explore their giant ship in search of them."`
-			`	"If to assist us you wish not, leave you may." says the Arachi, "But if to assist us you wish, meet the Heliarch again in the spaceport."`
+			`	"If to assist us you wish not, leave you may." says the Arachi, "But if to assist us you wish, meet us the Heliarch again in the spaceport."`
 
 
 
 mission "Octyl in Coalition space [1]"
-	name "Converge with Heliarch's defense"
-	description "With a fleet of Heliarch vessels, converge with the rest of the Heliarch's preparatory defensive fleets on <destination>."
+	name "Converge with Heliarch defense"
+	description "With a fleet of Heliarch vessels, converge with the rest of the Heliarch's preparatory defensive fleets on the <destination>."
 	to offer
 		has "Octyl in Coalition space [0]: done"
 	source "Ring of Friendship"
-	destination "Flowing Fields"
-	blocked "You have reached the convergence point specified, but you must have forgotten your Heliarch troupe! Wait for them to arrive in orbit, before returning here with them."
+	destination "Ring of Power"
+	blocked "You have reached the ring segment specified, but you must have forgotten your Heliarch troupe! Wait for them to arrive in orbit, before returning here with them."
 	npc accompany
 		government Heliarch
 		personality heroic disables escort
 			confusion 5
-		ship "Heliarch Punisher (Skylance)" "Vigilant Shield"
 		ship "Heliarch Interdictor (Skylance)" "Tenacious Agent"
-		ship "Heliarch Interdictor (Skylance)" "Cautious Guard"
-		ship "Heliarch Neutralizer" "Unwavering Manager"
 		ship "Heliarch Neutralizer" "Pragmatic Director"
-		ship "Heliarch Neutralizer" "Unbending Seeker"
 		ship "Heliarch Neutralizer" "Attentive Governor"
 
 	on offer
 		conversation
 			`You spend some time idling near the docking bays of the Ring of Friendship, waiting for Heliarch agents to instruct you further. While waiting, you notice the activity on the ring world had picked up considerably. Double, perhaps triple the activity you're used to seeing.`
 			`	On top of the increased activity, the atmosphere seems more tense than usual. Groups of Heliarch agents rushing to and from ships, tending to the ringworld, preparing their warships. Wide-eyed, you watch a large group of Heliarchs ferry shipments of Quarg equipment, and install them onto veteran-looking Punishers.`
-			`	After watching the seventh Skylance being installed, a triplet of the Heliarch approach you. "Captain <last>, you are?" asks the Saryd, "Weapons, you hold? Assistance, we may need."`
+			`	After watching the first Skylance being installed, a triplet of the Heliarch approach you. "Captain <last>, you are?" asks the Saryd, "Weapons, you have? Assistance, we may need."`
 			choice
 				`	"Yes, I have weapons."`
 				`	"No, I am here to talk to the aliens."`
 					goto diplomacy
-				`	"Are those Quarg Skylances?"
+				`	"Are those Quarg Skylances?"`
 					goto skylance
 			`	"Good! Precautions, we take. Devastating foes, the Quarg were. A repeat, we the Heliarch do not want," says the Kimek.`
 			`	"Aggressive, we are being," notes the Arachi, "but losses we will not take. If friendly they are, attack we will not."`
@@ -124,7 +126,7 @@ mission "Octyl in Coalition space [1]"
 			label prepare
 			`	"Prepare, you must," advises the Saryd, "Time, we suspect we do not have."`
 			`	"A fight, we foresee," adds the Kimek with a tinge of fear and apprehension in its voice.`
-			`	The three turn away, and help install an eighth and final Skylance onto a Heliarch Interdictor. Once their work is done, you are allowed to see their handiwork.`
+			`	The three turn away, and help install a second Skylance onto a Heliarch Interdictor. Once their work is done, you are allowed to see their handiwork.`
 			choice
 				`	"It's a masterpiece, I'm sure they'll do well."`
 				`	"It's not the best, but it will have to do."`
@@ -135,28 +137,28 @@ mission "Octyl in Coalition space [1]"
 			label logistics
 			`	"So much power, the Quarg Skylances use," pipes in an Arachi, "Batteries, we must rely on. Enough power, our reactors cannot provide. But in bursts, if we fire, just as strong the weapons remain."`
 			`	"Please," says a Saryd, "To the visitors, follow us if you wish."`
-			`	"Gather strength, we will," clarifies a Kimek, "Unite our forces we will, on the Saryd world Flowing Fields.
+			`	"Gather strength, we will," clarifies a Kimek, "Unite our forces we will, on the Ring of Power."`
 				accept
 	on complete
-		conversation 
-			`As you guide the fleet of Heliarch warships to the modest spaceport of Flowing Fields, you watch the few families of Saryd that live nearby approach the ships with awe, disdain, or a mix of the two.`
-			`	Then, you turn around and see many, many more pouring in from the skies. You try to keep track, but you lose count some time after the fifth Punisher flies in for landing. After several minutes of waiting for the fuss of the locals to calm down, a trio of Heliarch agents confront you.`
+		conversation
+			`As you guide the fleet of warships to a modest hangar on the Ring of Power, you watch swarms of Heliarch agents pour in to inspect the vessels. It seems bringing their defense fleets into action was a lot more difficult and nerve-wracking than much of the Heliarch had anticipated.`
+			`	Then, you turn around and see many, many more pouring in from the skies. You try to keep track, but you lose count some time after the fifth Punisher flies in for landing. After several minutes of waiting through standard safety procedures, a trio of Heliarch agents confront you.`
 			`	"To Lone Cloud, we have pinpointed our visitors," explains the Saryd, "To Lone Cloud, we shall fly. A fight, you should expect, <last>."`
 			`	"What they may do, we know not," says the Kimek.`
 			`	"If the Coalition will ultimately survive, we know not," spouts the Arachi.`
 			choice
-				`	"We will survive whatever is beyond that hyperspace link."`
+				`	"We will survive whatever has arrived in your space from the great beyond."`
 				`	"If we talk to them, whatever they are, maybe we don't have to fight."`
 				`	"Maybe your Skylances are enough to scare them away."`
 			`	"Maybe," says the Saryd solemnly, "All we can do is hope."`
-			`	"Meet we the Heliarch back in the spaceport," says the Kimek, "when you are ready."
+			`	"Meet we the Heliarch back in the spaceport," says the Kimek, "when you are ready."`
 
 
 
 mission "Octyl in Coalition space [2]"
 	name "Confront foreign visitors in Coalition space"
 	description "With the Heliarch's defensive fleet, confront whoever has appeared in the Lone Cloud system."
-	source "Flowing Fields"
+	source "Ring of Power"
 	destination "Vibrant Water"
 	to offer
 		has "Octyl in Coalition space [1]: done"
@@ -165,28 +167,15 @@ mission "Octyl in Coalition space [2]"
 		personality heroic disables escort
 			confusion 5
 		ship "Heliarch Punisher (Skylance)" "Vigilant Shield"
-		ship "Heliarch Punisher (Skylance)" "Watchful Protector"
-		ship "Heliarch Punisher (Skylance)" "Steady Advocate"
-		ship "Heliarch Punisher (Skylance)" "Durable Ward"
-
 		ship "Heliarch Interdictor (Skylance)" "Tenacious Agent"
 		ship "Heliarch Interdictor (Skylance)" "Cautious Guard"
-		ship "Heliarch Interdictor (Skylance)" "Rugged Sentinel"
-		ship "Heliarch Interdictor (Skylance)" "Adamant Curator"
-		ship "Heliarch Interdictor" "Assiduous Seeker"
-		ship "Heliarch Interdictor" "Obdurate Judge"
 		ship "Heliarch Interdictor" "Adamant Defender"
-
 		ship "Heliarch Neutralizer" "Unwavering Manager"
 		ship "Heliarch Neutralizer" "Pragmatic Director"
-		ship "Heliarch Neutralizer" "Capable Director"
+		ship "Heliarch Neutralizer" "Unbending Seeker"
+		ship "Heliarch Neutralizer" "Attentive Governor"
 		ship "Heliarch Neutralizer" "Relentless Guardian"
 		ship "Heliarch Neutralizer" "Unyielding Shield"
-		ship "Heliarch Neutralizer" "Stalwart Ranger"
-		ship "Heliarch Neutralizer" "Careful Advocate"
-		ship "Heliarch Neutralizer" "Stalwart Defender"
-		ship "Heliarch Neutralizer" "Sturdy Shield"
-		ship "Heliarch Neutralizer" "Rugged Officer"
 
 	npc kill
 		system "Lone Cloud"
@@ -194,16 +183,14 @@ mission "Octyl in Coalition space [2]"
 		personality waiting staying heroic mute
 			confusion 25
 		ship "Octyl Nautilus (mission)" "Esbinyar Enmaboryi Am"
-		ship "Octyl Nautilus (mission)" "Xonomnu Zenermni"
 		ship "Octyl Nautilus (mission)" "Ecelmna Anivyu Benli"
-		ship "Octyl Nautilus (mission)" "Boliyu Hememou Zmni"
 		ship "Octyl Nautilus (mission)" "Ghewap Nmyayk Theo"
 		dialog
 			`The last of the fleet of "Octyl" ships has been destroyed. You have been instructed to land on Vibrant Water to reconvene.`
 	on offer
 		conversation
-			`You signal to a Heliarch agent that you're ready to go. They smile, nod, and shout something to the rest of the group of Heliarch agents awaiting your readiness. With your little hand signal, dozens of antigravity engines roar to life, and you watch dozens of Heliarch ships slowly rise into the air.`
-			`	You board your own vessel and signal one of the warships.`
+			`You signal to a Heliarch agent that you're ready to go. They smile, nod, and shout something to the rest of the group of Heliarch agents awaiting your readiness. With your little hand signal, dozens of antigravity engines roar to life, and you watch dozens of Heliarch ships slowly float away from the ringworld.`
+			`	You board your own vessel and hail one of the warships.`
 			choice
 				`	"Are we all ready to go?"`
 				`	"What have you gathered about these aliens?"`
@@ -233,16 +220,153 @@ mission "Octyl in Coalition space [2]"
 			`	"Which ship we may talk to we still do not know," warns the Kimek.`
 			`	"If we can even communicate we do not know," mutters the Arachi, before leaving the holographic display's range.`
 			label end
-			`	Without another word, the ships begin to rise faster, and you break atmosphere. There is no telling what could have arrived in Coalition space beyond that hyperspace link...`
+			`	Without another word, the ships begin to rise faster, and you break atmosphere. There is no telling what could have arrived in Coalition space from the great beyond...`
 				launch
 	on enter "Lone Cloud"
 		dialog
-			`Upon jumping into the system, your scanners immediately pick up five giant ships in the system. Their communication systems appear to be malfunctioning, as they aren't responding to your hails.`
+			`Upon jumping into the system, your scanners immediately pick up three giant ships in the system. Their communication systems appear to be malfunctioning, as they aren't responding to your hails.`
 	on visit
 		dialog
-			`It might be a good idea to 
+			`It might be a good idea to help the Heliarch with the battle overhead, instead of waiting it out on the planet.`
 	on complete
+		payment 500000
 		conversation
-			`[unfinished]`
+			`You and the remaining Heliarch ships zero in on a particularly large and conveniently flat iceberg to land on, instead of moving out of your way to find the more common spaceport. The iceberg rocks with each ship's landing, and sinks a concerning amount into the tropical waters around you.`
+			`	The crew of the ships convene near the center of the iceberg, discussing various topics to maintain morale. It doesn't take long for an Arach to approach you and begin conversation. They explain how these icebergs house unique biospheres unlike anything found across Coalition space, due to its unique situation. "Temporary, the entire system is. Melt and become one with the oceans, this iceberg will soon, as before countless others have." The quirky nature of Heliarch translators makes the scientist very difficult to follow.`
+			choice
+				`	(Continue listening to the scientist)`
+					goto xenobiology
+				`	"Sorry, I'm just here to fend off the invaders."`
+			`	The Arach looks somewhat disheartened, before returning to their study of the surrounding organisms.`
+				goto next
+			label xenobiology
+			`	You spend some time with the Arach scientist as they explain as best they can the niches of the organisms around you. They explain ways to discern a predatory, herbivorous, and parasitic organisms apart, how to identify likely edible substances, and what classification systems the Coalition use to categorize organisms across their section of the galaxy. Unfortunately, the translator inhibits your understanding of the subject for some time, though the Arach doesn't seem to mind explaining concepts to you in simpler terms.`
+			`	Out of seemingly nowhere, the Arach looks up at you and stutters, (though the translator seems indifferent to the tonal change,) "Sorry, I am. Introductions I have neglected." They shuffle around for a moment before continuing slowly, "Mutug I am known. Have a name, do you?`
+			`	"<first> <last>," you reply, "Nice to meet you, Mutug."`
+			`	"Same to you, <first>! A pleasure it was with you to speak with." With the introductions now out of the way, the Arach launches back into an explanation. By the time they feel satisfied with your knowledge of the surrounding biosphere, Vibrant Water's sun is nearly setting.`
+			`	A small group of Heliarch agents approach you to join the Arach.`
+				goto octyl
+			label next
+			`	After spending more time on the iceberg, socializing with various Heliarch agents, you notice that Vibrant Water's sun is beginning to set. The same Arach scientist from before approaches you with a small group of shaken-looking agents, and look like they have something they need to tell you.`
+			choice
+				`	(Hear what they have to say.)`
+				`	"I'm sorry, I'm not interested in more xenobiology."`
+			label octyl
+			`	"<first>, important to you, this is," says a Saryd.`
+			`	"While fighting the Octyl ships, intruders we were accosted by," explains a Kimek.`
+			`	"Little pods carrying a number of aggressive creatures, into our hull they drilled," the Arach describes, "venomous, they were. Many of our people they poisoned and killed. But what is interesting is not that. Frail and malnourished, they seemed. Hostage Heliarch agents, they captured and consumed, as well. With our superior numbers the creatures we fought off, but our entire crew they nearly wiped out even with clear disadvantages."`
+			choice
+				`	"Do you think these creatures killed the original crew of the ships, why they didn't respond to our hails?"`
+					goto pest
+				`	"Do you know if they were only after food?"`
+					goto food
+				`	"Did you capture a few for study?"`
+					goto study
+				`	[some other question]`
+			`	[answer to last question]`
+			choice
+				`	[pest question]`
+					goto pest
+				`	[food question]`
+			label food
+			`	[answer to food question]`
+			choice
+				`	[pest question]`
+				`	[study question]`
+					goto study
+			label pest
+			`	[answer pest question]`
+			`	[beckon player along to see something]`
+			label study
+			`	[bring player to see octyl specimen]`
+			`	[indirectly answer other questions]`
+			`	[octyl specimen BREAKS OUT OF CONTAINMENT OH NO]`
+			`	[insert somewhat-complex interaction with the thing here]`
+			`	[survive the octyl, it runs away into the sea never to be seen again]`
+			`	[different scientist approaches player]`
 			`	[say something about one more ship on the scanners]`
 			`	[put a timer for two months before the next mission]`
+		event "octyl physalia arrives" 40 100
+event "octyl physalia arrives"
+
+mission "Octyl in Coalition space [3]"
+	name "Octyl in Coalition space"
+	description "Report to the Heliarch, and see what they want to do about the Octyl."
+	deadline 7 3.5
+	landing
+	source
+		not government Coalition
+		not government Heliarch
+	to offer
+		has "event: octyl physalia arrives"
+		random < 30
+	destination "Ring of Friendship"
+	on offer
+		conversation
+			`[the player is called back to coalition space because the octyl ship has arrived]`
+			`	[tell the player to get to the ring of friendship again]`
+			`	[TIME SENSITIVE MISSION!]`
+				accept
+
+mission "Octyl in Coalition space [4]"
+	name "Octyl in Coalition space"
+	description "Bring <fare> and <cargo> to the Octyl planetoid."
+	blocked "You have arrived on <origin>, but you do not have enough space to service the Heliarch! Return when you have enough space for <tons> of cargo capacity and <fare> available."
+	cargo "scanning equipment" 30
+	passengers 12
+	landing
+	source "Ring of Friendship"
+	destination "Fourth Shadow"
+	on offer
+		payment 80000
+		conversation
+			`[heliarch loads cargo and passengers aboard]`
+			`	[forward payment of <payment> for coming back on such short notice]`
+	npc disable
+		government Octyl
+		personality heroic opportunistic staying waiting target mute
+			confusion 0
+		system "3 Spring Rising"
+		ship "Octyl Physalia (mission)" "Nmygherid"
+		dialog "After blasting at the surface of the planetoid, you must've severed an important something, as activity has all but ceased. A heliarch scientist suggests landing on the planetoid to get more accurate information, but warns it may be dangerous."
+	on complete
+		conversation
+			`[land on the slum planet]`
+			`	[talk about it being slum and whatnot. Some people seem averse to you and the heliarch]`
+			`	[talk more about boarding/exploring the planetoid]`
+			`	[attract attention of a few coalition "extremists"]`
+			`	[heliarch agents tell you not to worry about it, and take care of the issue]`
+
+
+
+
+mission "Octyl in Coalition space [5A]" #don't board, report back to the ring
+	name "Report back to the <destination>"
+	description `` #Placeholder empty description.
+	destination "Ring of Friendship"
+	to offer
+		has "Octyl in Coalition space [4]: done"
+	to fail
+		has "Octyl in Coalition space [5B]: done"
+	on complete
+		conversation
+			`[you took the safer route and didn't explore the planetoid]`
+
+
+
+mission "Octyl in Coalition space [5B]" #board, meet the Octyl in-person
+	name "Explore the <npc> more closely"
+	description `` #Placehoder empty description.
+	destination "Ring of Friendship"
+	to offer
+		has "Octyl in Coalition space [4]: done"
+	to fail
+		has "Octyl in Coalition space [5A]: done"
+	npc board
+		government Octyl
+		personality derelict
+		system "3 Spring Rising"
+		ship "Octyl Physalia (mission)" "Nmygherid"
+	on complete
+		conversation
+			`[does this conversation happen right when you board the ship?]`
