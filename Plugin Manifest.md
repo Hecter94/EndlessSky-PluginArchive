@@ -1829,6 +1829,8 @@ Playable on 0.9.15 Continuous.
 
 ## The Enclave
 
+![The Enclave](https://raw.githubusercontent.com/1010todd/The-Enclave/master/icon.png)
+
 **Created by Storm Crow**
 
 The Enclave focuses around the discovery of an isolated group of humans in a distant galaxy. Separated from the rest of their species for almost half a millennium, how have these people developed?
