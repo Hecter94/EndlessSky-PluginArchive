@@ -450,6 +450,16 @@ Playable on 0.9.14.
 
 ## Civil War
 
+**Created by kikotheexile**
+
+A story-driven variation of the 2015 game Endless Sky, the spiritual successor to Escape Velocity. You can still explore other star systems. Earn money by trading, carrying passengers, or completing missions. Use your earnings to buy a better ship or to upgrade the weapons and engines on your current one. Blow up pirates. But now you can Truly pick a side in the Civil War.
+
+[Civil War](https://github.com/kikotheexile/Endless-Sky-Civil-War)
+
+**Status**
+
+Total conversion mod, will likely function but is outdated, expect issues.
+
 ## Cloaking Device Unlocked
 
 ## Cobbled Ships
