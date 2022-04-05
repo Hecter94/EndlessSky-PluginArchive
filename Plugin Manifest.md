@@ -220,6 +220,8 @@ Playable on 0.9.15 Continuous.
 
 ## Ambriel
 
+## Androids Rebalanced
+
 ## Androids
 
 **Created by Disiuze**
@@ -237,6 +239,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Animated Ships
 
 ## Animated Stars
+
+## Antiquity
 
 ## Arbiter
 
@@ -333,6 +337,8 @@ Add several new ships for various vanilla races with very vanilla-looking sprite
 [Better Korath](https://github.com/superdragon322/Better-Korath-)
 
 **Status**
+
+## Better Thunderhead Lance
 
 ## Better Vanilla Pirates
 
@@ -532,6 +538,8 @@ Unknown
 
 ## Dark Ships
 
+## Death Pancake
+
 ## Defense Drone Plugin
 
 ![Defense Drone](https://raw.githubusercontent.com/starmlerp/ESDefenseDronePlugin/master/icon.png)
@@ -557,6 +565,8 @@ A big WIP project of dragon aliens.
 Functional
 
 ## Derp Ship
+
+## Destination Sol
 
 ## Destiny
 
@@ -630,6 +640,8 @@ Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Elite Sky
 
+## Elystian Plugin
+
 **Created by Ferociousfeind**
 
 Add ships from Elite Dangerous.
@@ -659,6 +671,8 @@ Shipping Containers that aren't welded to ships
 Functional
 
 ## Endless Depth Mod
+
+## Endless Fortress 2
 
 ## Endless Gauntlet
 
@@ -1081,6 +1095,10 @@ Jaling Expansion adds another human civilization which not connected to human sp
 
 Unknown
 
+## Join the Navy
+
+## Jojo's Galactic Adventure
+
 ## Jump to Lightspeed
 
 ![JTL](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/Jump%20to%20Lightspeed/images/ship/x%20wing.png)
@@ -1417,6 +1435,10 @@ Unknown
 
 Add a ship.
 
+## Nerf This Sound Replacer
+
+## New Galaxy
+
 ## New Sky
 
 **Created by 1010Todd**
@@ -1472,6 +1494,8 @@ Merchant and Pirate Hawks equiped with Nukes locked in an endless and massive ba
 **Status**
 
 Should be playable on 0.9.14, 0.9.15 Continuous.
+
+## OP Thunderhead Lance
 
 ## Octyl
 
@@ -2007,9 +2031,13 @@ Adds mechs and some other customization options.
 
 ## The Witch
 
+## Thunderhead Lance
+
 ## Tiny Ships
 
 ## Titans
+
+## TooManyBlasters
 
 ## Tribute and Domination
 
@@ -2167,6 +2195,8 @@ Unconfirmed
 
 ## X-70B-Phantom-master
 
+## YEET
+
 ## Yokoyama
 
 **Created by dilydaly**
@@ -2183,6 +2213,8 @@ Unconfirmed
 
 Add a Zweihander(sword) as H2H. Yes it's useless.
 
+## multiplayer map
+
 ## prototype D
 
 **Created by 1010Todd**
@@ -2198,6 +2230,8 @@ Playable on 0.9.15 Continuous.
 ## test convo
 
 ## wanderer engines
+
+## worker bot
 
 ## zFW Patch
 
