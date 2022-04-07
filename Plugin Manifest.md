@@ -548,6 +548,16 @@ This is an alternate story for Endless Sky that gives you the chance to work for
 
 In development and playable on 0.9.15 Continuous.
 
+## Costly Drives
+
+**Created by Anarchist2**
+
+-description-
+
+[Costly Drives](https://github.com/Anarchist2/costly-drives)
+
+**Status**
+
 ## Custom Landscapes
 
 ## Custom Outfitting (Chop Shop)
@@ -1105,6 +1115,16 @@ WW2 Yamato but in space.
 
 **Status**
 
+## Incendiary Grenades
+
+**Created by czartrak**
+
+-description-
+
+[Incendiary Grenades](https://github.com/czartrak/Incendiary-Grenades-ES)
+
+**Status**
+
 ## Inheritance
 
 ## Interdictor
@@ -1298,6 +1318,16 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 ## M.A.C cannon
 
 ## MAY
+
+## Mad Quest
+
+**Created by czartrak**
+
+-description-
+
+[Mad Quest](https://github.com/czartrak/Mad-Quest)
+
+**Status**
 
 ## MaddreMod
 
@@ -1515,6 +1545,16 @@ Add a ship.
 
 ## Nerf This Sound Replacer
 
+## New Droid Regime
+
+**Created by czartrak**
+
+-description-
+
+[New Droid Regime](https://github.com/czartrak/New-Droid-Regime)
+
+**Status**
+
 ## New Galaxy
 
 ## New Sky
@@ -1540,6 +1580,16 @@ Add some spaceport news.
 **Status**
 
 Playable on 0.9.14, 0.9.15.
+
+## Newscasts
+
+**Created by czartrak**
+
+-description-
+
+[Newscasts](https://github.com/czartrak/ES-newscasts)
+
+**Status**
 
 ## No Bactrian
 
@@ -1687,7 +1737,17 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Project Olympus
 
-## ProjectRunabout
+## Project Runabout
+
+## Project Technovirus
+
+**Created by czartrak**
+
+-description-
+
+[Project Technovirus](https://github.com/czartrak/Project-Technovirus)
+
+**Status**
 
 ## Pug Defense
 
