@@ -132,6 +132,8 @@ Unfinished but playable.
 
 -description-
 
+[Adamas Project](https://github.com/toilethinges/Adamas-Project)
+
 **Status**
 
 -status-
@@ -159,6 +161,8 @@ Adds several new starting options to the game.
 **Current author: jchamlin**
 
 -description-
+
+[Akasha Chronicles](https://github.com/jchamlin/akasha-chronicles)
 
 **Status**
 
@@ -222,6 +226,14 @@ Playable on 0.9.15 Continuous.
 
 ## Androids Rebalanced
 
+**Created by czartrak**
+
+-description-
+
+[Androids Rebalanced](https://github.com/czartrak/Androids-Rebalanced)
+
+**Status**
+
 ## Androids
 
 **Created by Disiuze**
@@ -237,6 +249,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Andromeda Torpedo
 
 ## Animated Ships
+
+**Created by beccabunny**
+
+Adds animations to many ships.
+
+[Animated Ships](https://github.com/beccabunny/Animated-ships)
+
+**Status**
 
 ## Animated Stars
 
@@ -272,6 +292,14 @@ Add a ship.
 
 ## Arr Mateys
 
+**Created by Ryan S. Northrup**
+
+Adds some missions for the pirate worlds.
+
+[Arr Mateys](https://bitbucket.org/YellowApple/arrr-mateys/src/master/)
+
+**Status
+
 ## Assault Cruiser
 
 ## Automation and PlanetSideStorage
@@ -304,6 +332,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Add bare bone version of some ships to shipyards for captains who bring their own outfits.
 
+[Ship Variants](https://github.com/Bardagh/ship-variants/)
+
 **Status**
 
 Playable on 0.9.14, 0.9.15 Continuous.
@@ -327,6 +357,8 @@ Add post-Kor Sestor Invasion navy ship.
 **Created by Becca**
 
 Add several new ships for various vanilla races with very vanilla-looking sprites (Made by same person who remade several vanilla sprites).
+
+[Beccas Endless Expansion](https://github.com/beccabunny/Beccas-Endless-Expansion)
 
 ## Better Korath
 
@@ -516,6 +548,16 @@ This is an alternate story for Endless Sky that gives you the chance to work for
 
 In development and playable on 0.9.15 Continuous.
 
+## Costly Drives
+
+**Created by Anarchist2**
+
+-description-
+
+[Costly Drives](https://github.com/Anarchist2/costly-drives)
+
+**Status**
+
 ## Custom Landscapes
 
 ## Custom Outfitting (Chop Shop)
@@ -523,6 +565,14 @@ In development and playable on 0.9.15 Continuous.
 ## Custom Portraits
 
 ## Czartracks Ship Pack
+
+**Created by czartrak**
+
+-description-
+
+[Czartraks Ship Pack](https://github.com/czartrak/Czartraks-Ship-Pack)
+
+**Status**
 
 ## DaBestShipEver
 
@@ -662,9 +712,11 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Endless Cargo
 
-**Created by northrupt...@gmail.com(YellowApple)**
+**Created by Ryan S. Northrup**
 
 Shipping Containers that aren't welded to ships
+
+[Endless Cargo](https://bitbucket.org/YellowApple/endless-cargo/src/master/)
 
 **Status**
 
@@ -705,8 +757,6 @@ Abandoned.
 
 ## Endless Sky except ships make that weird Tim Allen sound when they die
 
-## Endless Sky Starbridge Pack
-
 ## Enigma Corp High DPI
 
 ## Enigma Corp Legacy
@@ -740,6 +790,10 @@ Add a race.
 **Created by comnom**
 
 Add a race.
+
+[Eternals](https://github.com/comnom/Eternals)
+
+**Status**
 
 ## Evasion Bomb
 
@@ -824,6 +878,14 @@ Requires AES Omnis to access.
 Add a few new weapons.
 
 ## Flamethrower Turret
+
+**Created by ItsNickBarry**
+
+Adds a turret variant of the flamethrower
+
+[Flamethrower Turret](https://github.com/ItsNickBarry/endless-sky-flamethrower-turret)
+
+**Status**
 
 ## Flavour Text
 
@@ -1033,6 +1095,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Hyperdrive Boosters
 
+**Created by Jafdy**
+
 ## IJN Yamato
 
 **Created by hilokiyz**
@@ -1048,6 +1112,16 @@ WW2 Yamato but in space.
 -description-
 
 [Improved Ship Integrity](https://github.com/Xolarix/Improved-Ship-Integrity)
+
+**Status**
+
+## Incendiary Grenades
+
+**Created by czartrak**
+
+-description-
+
+[Incendiary Grenades](https://github.com/czartrak/Incendiary-Grenades-ES)
 
 **Status**
 
@@ -1127,9 +1201,13 @@ Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Kestrel Rework
 
-**Created by Unknown**
+**Created by MinneIceCube**
 
 Make Kestrel a much better ship, and increased requirements.
+
+[Kestrel Rework](https://github.com/MinneIceCube/KestrelRework)
+
+**Status**
 
 ## Kestrel-M
 
@@ -1146,6 +1224,14 @@ Addition for Korath Exiles Post-Automata.
 Playable on 0.9.15 Continuous.
 
 ## Korath Automation Upgrade
+
+**Created by Kriegstofu**
+
+-description-
+
+[Korath Automation Upgrade](https://github.com/Kriegstofu/Korath-Automation-Upgrade)
+
+**Status**
 
 ## Korath Domination
 
@@ -1233,6 +1319,16 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MAY
 
+## Mad Quest
+
+**Created by czartrak**
+
+-description-
+
+[Mad Quest](https://github.com/czartrak/Mad-Quest)
+
+**Status**
+
 ## MaddreMod
 
 **Created by Maddremor
@@ -1262,6 +1358,10 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 **Created by Anarchist2**
 
 Make mass and outfit space of a few outfits the same.
+
+[Mass-ive Fix](https://github.com/Anarchist2/Mass-ive-fix)
+
+**Status**
 
 ## Mata
 
@@ -1385,6 +1485,14 @@ Playable since the version that adds minable asteroid (0.9.3).
 
 ## Modular Haulers
 
+**Created by PhantomBerserker**
+
+-description-
+
+[Modular Haulers](https://github.com/PhantomBerserker/ES-Modular-Haulers)
+
+**Status**
+
 ## Monitor
 
 ## More Missions
@@ -1437,6 +1545,16 @@ Add a ship.
 
 ## Nerf This Sound Replacer
 
+## New Droid Regime
+
+**Created by czartrak**
+
+-description-
+
+[New Droid Regime](https://github.com/czartrak/New-Droid-Regime)
+
+**Status**
+
 ## New Galaxy
 
 ## New Sky
@@ -1462,6 +1580,16 @@ Add some spaceport news.
 **Status**
 
 Playable on 0.9.14, 0.9.15.
+
+## Newscasts
+
+**Created by czartrak**
+
+-description-
+
+[Newscasts](https://github.com/czartrak/ES-newscasts)
+
+**Status**
 
 ## No Bactrian
 
@@ -1583,6 +1711,14 @@ Playable on 0.9.15 Continuous.
 
 ## Pirate Expansion
 
+**Created by beccabunny**
+
+Expands pirates with new ships, outfits, and adds several new systems in the north.
+
+[Pirate Expansion](https://github.com/beccabunny/Pirate-Expansion)
+
+**Status**
+
 ## Pirate Hunter
 
 **Created by Zavindur**
@@ -1601,7 +1737,17 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Project Olympus
 
-## ProjectRunabout
+## Project Runabout
+
+## Project Technovirus
+
+**Created by czartrak**
+
+-description-
+
+[Project Technovirus](https://github.com/czartrak/Project-Technovirus)
+
+**Status**
 
 ## Pug Defense
 
@@ -1679,7 +1825,15 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Ravens Aerie
 
-## Realistic Solor System
+## Realistic Solar System
+
+**Created by beccabunny**
+
+Modifies the Sol system, adding every planet, large moon, and two dwarf planets.
+
+[Realistic Solar System](https://github.com/beccabunny/Realistic-Solar-System)
+
+**Status**
 
 ## Recluse
 
@@ -1740,6 +1894,14 @@ New Republic heavy warship for a competition.
 Add a few ships across a few races. Add a new race Irm. Renamed and updated to AES Misc
 
 ## Sci-Fi Flavours
+
+**Created by LinearPerk**
+
+-description-
+
+[Sci-Fi-Flavours](https://github.com/LinearPerk/Sci-Fi-Flavours)
+
+**Status**
 
 ## Science Stuff
 
@@ -1804,6 +1966,12 @@ Add Solar Sail propulsion for human and Coalition.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Space Conversion
+
+**Created by whismerhill**
+
+-description-
+
+[Space Conversion](https://www.nexusmods.com/endlesssky/mods/1)
 
 ## Space Invaders
 
@@ -1983,9 +2151,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## The Final Frontier
 
-**Created by Unknown**
+**Created by Swingfire**
 
 Add Star Trek ships.
+
+[The Final Frontier](https://www.indiedb.com/mods/endless-sky-the-final-frontier)
+
+**Status**
 
 ## The Forgotten
 
@@ -2005,6 +2177,8 @@ Add Star Trek ships.
 
 Add a bunch of person ships representing the community members.
 
+[The Heroes](https://github.com/Hondolor/The-Heroes-ES-Pluggin)
+
 **Status**
 
 Playable on 0.9.14, 0.9.15 Continuous.
@@ -2020,6 +2194,10 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Created by SpiralCat**
 
 Adds mechs and some other customization options.
+
+[The Machines are Taking Over](https://www.moddb.com/mods/the-machines-are-taking-over)
+
+**Status**
 
 ## The Mysterious Baby
 
@@ -2099,6 +2277,8 @@ No thumbnail image.
 
 Cheat/Dev-tool Plugin
 
+[Ultimate Cheater Plugin](https://github.com/Hondolor/mdsmestad-Ultimate-Cheater-Pluggin)
+
 **Status**
 
 Playable on 0.9.14, 0.9.15 Continuous.
@@ -2145,11 +2325,23 @@ Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Visible Minable Asteroids
 
-**Created by Unknown**
+**Created by hellminister**
 
 Add highlighting box around mineable asteroids.
 
+[Visible Mineable Asteroids](https://steamcommunity.com/sharedfiles/filedetails/?id=1199797331)
+
+**Status**
+
 ## Wanderers Storyline
+
+**Created by beccabunny**
+
+A continuation to the wanderer storyline, with new ships, outfits, and missions.
+
+[Wanderer Storyline](https://github.com/beccabunny/Wanderer-Storyline)
+
+**Status**
 
 ## War of Worlds
 
@@ -2193,7 +2385,7 @@ Unconfirmed
 
 ## World Forge
 
-## X-70B-Phantom-master
+## X-70B-Phantom
 
 ## YEET
 
