@@ -6,6 +6,24 @@
 #		Limited items will not be taken (e.g. Sheragi)
 #		
 # Todo : Mission marker, for those who don't read.
+# Todo : Move to job board to avoid clogging spaceport and avoid accidentally selling critical outfits?
+
+mission "Nuru: Outfit Delivery[template]" #Job board mode, might be cleaner..? But no dialog for blackbox and outfit info
+	name "Sell Outfit"
+	description `The Nuru wants to buy your Electron Beam.`
+	job
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+		never
+	on accept
+		outfit "Electron Beam" -1
+		payment 250000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 23
+		fail
 
 		#==============================WEAPON
 		
@@ -276,6 +294,35 @@ mission "Nuru: Outfit Delivery[Korath Grab-Strike]"
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 56
 		
+mission "Nuru: Outfit Delivery[Korath Disruptor]"
+	
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Korath Disruptor. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			#`	When they arrived one of the Nuru said something, ""`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Korath Disruptor" -1
+		payment 1143000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 36
+		
 mission "Nuru: Outfit Delivery[Korath Detainer]"
 	
 	source
@@ -291,7 +338,7 @@ mission "Nuru: Outfit Delivery[Korath Detainer]"
 				`	"No."`
 					defer
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
-			#`	When they arrived one of the Nuru said something, ""`
+			`	When they arrived one of the Nuru said something, "This weapon have interesting function, if our calculation is correct it will disrupt engines of ships. This can be good police weapon for us and our friends."`
 			branch "firstpay" "next"
 				"Nuru: Outfit Delivery Counter" <= 0
 			label "next"
@@ -304,6 +351,34 @@ mission "Nuru: Outfit Delivery[Korath Detainer]"
 		payment 1480000
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 78
+		
+mission "Nuru: Outfit Delivery[Vokkar Gun]"
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Vokkar Gun. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			#`	When they arrived one of the Nuru said something, ""`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Vokkar Gun" -1
+		payment 180000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 22
 		
 		#=================================================ENGINES
 		
