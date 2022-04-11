@@ -131,6 +131,110 @@ mission "Dels officer: crossed Panmur Kaul check"
 	on enter "Panmur Kaul"
 		set "Dels: entered Panmur Kaul"
 
+mission "Dels: Scout beyond Panmur Kaul"
+	name "Explore beyond Panmur Kaul"
+	destination "Vobeelee"
+	waypoint "Mitura"
+	waypoint "Kuvynra"
+	waypoint "Hsiorul"
+	description "The Kaote wants you to explore space beyond Panmur Kaul then return to <destination>"
+	to offer
+		has "Dels: crossed Panmur Kaul"
+		has "language: Dels"
+		random < 30
+		has "never offer"
+	on offer
+		conversation
+			branch "Dels officer"
+				has "license: Dels Officer"
+			`	As you were wandering the spaceport you notice a Dels officer walking towards you`
+			label "Dels officer"
+			`	As you were wandering the spaceport you notice a Dels lieutenant walking towards you, "Officer <first>, we have recieved reports that you've went into Panmur Kaul and survived. We want you to write a report to defense research division and conduct further exploration if possible."`
+			choice
+				`	"How far do I have to go?"`
+					goto howfar
+				`	"Got it."`
+					accept
+				`	"It's too dangerous, I'm not going back there."`
+			`	"We are aware of the danger that lurks in there, that's why we need you to gather more information about them. This is an order from higher ups, you cannot decline it. However this is not extremely urgent, you can take your time to prepare."`
+			choice
+				`	"Alright"`
+					accept
+				`	"Ok, how far do I have to go in there?"`
+			label howfar
+			`	"A far as you can, but don't push too hard and get killed. I'll send you a few coordinate to mark the minimal area you have to check. If you manage to obtain any of their outfits we will have to take some for research, you will be compensated for your extra effort."`
+				accept
+	on enter Kulhyran
+		"Dels: Found Insker city" += 1
+	on enter Kyrunhel
+		"Dels: Found Insker city" += 1
+	on enter Helsain
+		"Dels: Found Insker city" += 1
+	on enter Frashun
+		"Dels: Found Insker-Akralva boarder" += 1
+	on enter Chelychre
+		"Dels: Found Insker-Akralva boarder" += 1
+	on enter Hushenir
+		"Dels: Found Insker-Akralva boarder" += 1
+	on enter Kelahker
+		"Dels: Found Insker-Akralva boarder" += 1
+	on enter Anshrykr
+		"Dels: Found Insker-Akralva boarder" += 1
+	on enter Nvhranrl
+		"Dels: Found Insker East boarder" += 1
+	on enter Mcahere
+		"Dels: Found Insker East boarder" += 1
+	on enter Irenshr
+		"Dels: Found Insker West boarder" += 1
+	on enter Ruhsynn
+		"Dels: Found Insker West boarder" += 1
+	on enter Ukrnskrr
+		"Dels: Found Insker West boarder" += 1
+	on enter Ashryne
+		"Dels: Found Insker South boarder" += 1
+	on enter Akslor
+		"Dels: Found Insker South boarder" += 1
+	on enter Bhrynkkr
+		"Dels: Found Insker South boarder" += 1
+	on enter Ahlsryii
+		"Dels: Found Tehru Miitr" += 1
+	on enter Yrnyiir
+		"Dels: Found Tehru Miitr" += 1
+	on enter "Behsr Ler"
+		"Dels: Found Tehru Miitr" += 1
+	on enter "Ukcelarii"
+		"Dels: Found Insker Southern boarder" +=1
+	on complete
+		payment 2500000
+		conversation 
+			branch "Found All Boarder"
+				"Dels: Found Insker South boarder" >= 1
+				"Dels: Found Insker West boarder" >= 1
+				"Dels: Found Insker East boarder" >= 1
+				"Dels: Found Insker-Akralva boarder" >= 1
+			label check2
+			branch "Found Akralva Boarder"
+				"Dels: Found Insker-Akralva boarder" >= 1
+			label check3
+			branch "Found Miitr"
+				"Dels: Found Tehru Miitr" >= 1
+			`You write a report of what you found exploring beyond Panmur Kaul and send it to the headquarter along with your sensor data. It didn't took long before you recieve your payment of <payment>.`
+				decline
+			label "Found All Boarder"
+			action
+				payment 3500000 #Need 0.9.15
+			``
+				goto check2
+			label "Found Akralva Boarder"
+			action
+				payment 1250000 #Need 0.9.15
+			label "Found Miitr"
+			action
+				payment 1250000 #Need 0.9.15
+
+
+	
+
 #================There's still problems that we can't really check player's ship/attribute or manage the crew with missions
 
 mission "Dels officer: Made Dels Kaote angry notif"
@@ -458,6 +562,9 @@ mission "Dels officer: Promotion to Commander"
 		conversation
 			`Upon landing you're notified that the Dels Kaote Navy is grateful for your service and contribution to the Dels. They have decided to promote you to the rank of commander and grant you permission to purchase and command their Decso class cruisers.`
 
+#===========================================
+#--------------FIRST CONTACT----------------
+#===========================================
 
 mission "First Contact: Dels Dardornai"
 	landing

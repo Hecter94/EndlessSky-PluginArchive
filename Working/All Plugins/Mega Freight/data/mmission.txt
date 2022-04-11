@@ -1,0 +1,62 @@
+mission "MGF: Order Alcazar"
+	landing
+	source "Shangri-La"
+	to offer
+		"credits" >= 4000000000
+		has "MGF: Polaris Alcazar: active"
+	on offer
+		conversation
+			`You fly pass a massive battlestation as you approach the planet to land and wonder that maybe with the money you have you can order one built for you. Maybe you can ask around and see how you can get one your own?`
+			choice
+				`	(Yes.)`
+				`	(No.)`
+					decline
+				`	(Maybe next time.)`
+					defer
+			branch `war hero`
+				has "main plot completed"
+			`	You eventually find your way to order the battlestation for yourself. While they won't allow private ownership of the battlestation maybe you can bribe your way to it with enough money, which will set you back about 800,000,000 credits`
+			choice
+				`	(Bribe to buy it.)`
+				`	(No, you've changed your mind.)`
+					defer
+			action
+				payment -800000000
+			`	When dealing with the Syndicates money is always the solution, you managed to bribe the authorities to build it for you. The station will take about a year to build, they'll message you when it's ready.`
+				accept
+			label `war hero`
+			`	You eventually find your way to order the battlestation for yourself. Though while they normally won't allow private ownership of the battlestation, being a war hero you can get a pass. You still have to pay for it however, the price will be 400,000,000 credits.`
+			choice
+				`	(Place the order.)`
+					
+				`	(No, you've changed your mind.)`
+					defer
+			action
+				payment -400000000
+			`	The station will take about a year to build, they'll message you when it's ready.`
+				accept
+	on accept
+		event "MGF: Ordered Alcazar Built" 366
+		fail
+		
+event "MGF: Ordered Alcazar Built"
+
+mission `MGF: Pickup Alcazar Notification"
+	landing
+	source
+		near `Polaris` 1 200
+	destination `Shangri-La`
+	on offer
+		conversation
+			`Upon landing you're notified that your SC-1 Alcazar Battlestation is ready to be picked up.`
+				accept
+	
+mission `MGF: Pickup Alcazar`
+	landing
+	source `Shangri-La`
+	to offer
+		has "event: MGF: Ordered Alcazar Built"
+	on offer
+		conversation
+			`	You arrived at the <origin> to pick up your SC-1 Alcazar battlestation which awaits for you at low orbit.`
+		give ship "SC-1 Alcazar"

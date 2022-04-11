@@ -6,19 +6,22 @@ Currently the mod requires Endless Sky version 0.9.13+ to work properly.
 
 Some stars use new sprites that is was introduced in continous. Due to the system editor using the new resource some system might include these newer stars. Download and use this plugin to see the new stars: https://mega.nz/file/wUhGQaKB#O5_cjWEa5aQTUJ-gBZLE0lmGq6I_0NbQO_19t0xhPhs
 
+![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
+
 ## About
-This is a massive content mod about a war in another galaxy.
-While no story content yet it's currently consist of:
+This is a massive content mod about a war in another galaxy. While no storyline exist yet there's a large galaxy to explore filled with various aliens with different advancement and specializations.
 
-1 Accessible galaxy.
+Currently the plugin consist of:
 
-26+ Races with their own ships and outfits. Some with unique mechanic such as territory changes or even hunt you down depending on your interactions.
+* 1 Accessible galaxy.
 
-Over 100 Ships,
+* 26+ Races with their own ships and outfits. Some with unique mechanic such as territory changes or even hunt you down depending on your interactions.
 
-Over 600 Outfits,
+* Over 100 Ships,
 
-Over 1500 Systems.
+* Over 600 Outfits,
+
+* Over 1500 Systems.
 
 ## Accessing the Contents
 
@@ -46,8 +49,11 @@ Lite version: (Outdated)
 This version will have less animation frames and exclude @2x images to reduce memory required to load the plugin. Use this if you're using low end machines or 32 bit machines.
 https://mega.nz/file/8QpAAYhJ#H2vVusIAPKdlMZlzVNwTfTwzpV6tYQBsvZDXDdNhB54
 
+
+
 ## Contact
 If you found any bug/issue or have some suggestion, feel free to open an issue here or find me in Endless Sky Community discord server; https://discord.gg/ZeuASSx 
 
 I'll sometime update development progress there in #plugin chat.
 
+![GWcap3](https://user-images.githubusercontent.com/19187937/152831081-86783ac0-a228-4abd-9dd2-54952738b864.PNG)
