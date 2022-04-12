@@ -57,6 +57,7 @@ Github by default only allows the entire library to be downloaded as a single .z
 ***The Station of Dr. Rousseau***
 - "Bounty" Arfecta is spawned directly outside starting location. 
 	Culprit: , Mission: "Puzzle 3". No location is defined so Arfecta is spawned on first "landing".
+- "Hunt Dread Pirate Roberts" mission offers everywhere due to a lack of a source filter	
 
 ***Edge of Endless***
 - Overrides Luxury Accommodations and give it much higher space, bunks, and crew requirement, might make some ships that comes with it appears to have negative space and/or bunks.
