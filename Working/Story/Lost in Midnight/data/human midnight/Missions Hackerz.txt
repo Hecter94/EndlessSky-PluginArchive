@@ -1,0 +1,298 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+# Contents: The Hackerz represent an alternative form of piracy. They scan players like the official government ships.
+# But the fines are redirected to their own accounts instead of the government. Destroying a Hackerz drone
+# results in fake fines being applied against the player.
+# A short job chain is included.
+
+
+
+mission "Hackerz"
+	landing
+	invisible
+	deadline 1
+	repeat
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		not attributes "uninhabited"
+	to offer
+		has "credits" > 1000000
+		random < 40
+	npc kill
+		government "Hackerz"
+		personality waiting surveillance
+		ship "Hackerz Drone" "Hackerz"
+		conversation
+			apply
+				set "You've been hacked"
+			scene "ship/science drone"
+			`	Your ship's hyperspace network relay starts making unusual sounds. After a moment it returns to normal...`
+
+mission "Hackerz: You've Been Hacked"
+	landing
+	invisible
+	repeat
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		has "You've been hacked"
+	on offer
+		clear "You've been hacked"
+		payment -100000
+		dialog phrase "Hackerz LOL"
+	on accept
+		fail
+
+mission "Hackerz 1"
+	landing
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate"
+		not attributes "uninhabited"
+	to offer
+		has "Hackerz: offered"
+	on offer
+		conversation 
+			`As you disembark from your ship, a nearby street vendor tries to sell you a book: "How to Hack a Science Drone For Fun and Profit."`
+			`	The author is listed as "P.K." Looks like some sort of 'get rich quick' scheme.`
+				decline
+	on decline
+		log "Factions" "Hackerz" `Someone named "P.K." wrote a guide for hacking into science drones to abuse the cargo scan and fine systems used by most governments. If a lot of people start doing this, it could become a big problem. Whoever "P.K." is, he must be a madman.`
+
+
+
+# The following mission chain is the Hackerz trolling the Bounty Hunters.
+
+
+
+mission "Hackerz 2A"
+	job
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <planet> in the <system> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination
+		government "Pirate"
+	to offer
+		has "Hackerz 1: declined"
+		
+mission "Hackerz 2B"
+	landing
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <planet> in the <system> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	to offer
+		has "Hackerz 2A: done"
+	on offer
+		conversation
+			`The instructions given to you at the job office lead you to a run down farm house far from the space port. There is a simple fence with an unlocked gate surrounding the perimeter.`
+			choice
+				`	(Check for traps.)`
+				`	(Enter through the gate.)`
+					goto gate
+			
+			`	After checking both the fence and gate, you find no traps.`
+			
+			label gate
+			`	With no other entrance in sight, you enter through the gate. You hear a loud squawk and notice some chickens wandering about within the fenced enclosure. The door to the house is just a few steps away.`
+			choice
+				`	(Enter the front door.)`
+					goto door
+				`	(Check for a back door entrance.)`
+			
+			`	You ignore the front entrance and search the other side of the house for a rear entrance. You easily find one.`
+			
+			label door
+			`	After checking the knob, you are surprised to find that the door is unlocked.`
+			choice
+				`	(Check the door for traps.)`
+				`	(Kick the door in!)`
+					goto kickin
+				
+			`	Searching the edges of the door, you find no traps.`
+			
+			label kickin
+			`	You kick in the door with your pistol drawn and yell out "This is a raid! Nobody move!"`
+			choice
+				`	(Assess the situation.)`
+			
+			`	The house is quiet and empty. After searching the rooms, you find an old woman dozing off on a couch. There are no computers or networking equipment in the building. She starts to wake up from all the noise you've been making.`
+			choice
+				`	(Point your gun at her.)`
+				`	(Put your gun away.)`
+			
+			`	After a moment she realizes that she isn't alone and focuses her attention on you. "Hey there youngun'. It's been a spell since I've had a visitor. Would you like some tea?"`
+			`	After conversing with her for a while, it doesn't take long for you to realize that you were fed false information.`
+				decline
+	on decline
+		log `Took on a job to locate the Hackerz. False information lead me to an old lady living alone in a dilapidated farm house instead.`
+
+
+mission "Hackerz 3"
+	job
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to a derelict in orbit around <destination> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination
+		government "Pirate"
+	to offer
+		has "Hackerz 2B: declined"
+	on offer
+		"reputation: Derelict" >?= 0
+	npc assist save
+		government "Derelict"
+		system destination
+		personality derelict target waiting staying pacifist mute
+		ship "Explosive Derelict Bactrian" "P.K.'s Party Palace"
+		conversation
+			`When the airlock opens your senses are overwhelmed by the sound of loud music and the scent of burnt recreational herbs. Hundreds of partygoers are too busy enjoying themselves to take notice of your entrance. After searching around for a bit, you find that the ship has power for life support, lighting, and music. But no weapons, navigation, or propulsion. You also haven't found any networking equipment. Suddenly, you hear panicked screaming coming from the partygoers. When you investigate what's going on, you see that everyone is rushing to abandon ship. You ask one of them what's going on. They yell "Bomb!" while still fleeing. Now would be a good time to run back to your ship.`
+				flee
+	on fail
+		"reputation: Derelict" >?= 0
+		log `Took on a job to locate the Hackerz. The information lead me to a rave on a derelict space ship instead. While searching the ship, a bomb was set to explode. I barely escaped. Trying to track down the Hackerz is getting dangerous.`
+
+ship "Explosive Derelict Bactrian"
+	sprite "ship/bactrian"
+	thumbnail "thumbnail/bactrian"
+	attributes
+		category "Heavy Warship"
+		"hull" 8600
+		"mass" 940
+		"drag" 16.1
+		"heat dissipation" .4
+		weapon
+			"blast radius" 300
+			"shield damage" 3000
+			"hull damage" 1500
+			"hit force" 4500
+	explode "large explosion" 40
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+
+
+mission "Hackerz 3: Result Patch"
+	landing
+	invisible
+	to offer
+		or
+			has "Hackerz 3: done"
+			has "Hackerz 3: declined"
+	on offer
+		set "Hackerz 3: failed"
+		fail	
+
+mission "Hackerz 3: Derelict Patch"
+	landing
+	invisible
+	to offer
+		has "Hackerz 3: failed"
+		has "reputation: Derelict" < 0
+	on offer
+		"reputation: Derelict" >?= 0
+		fail
+
+
+mission "Hackerz 4"
+	job
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <planet> in the <system> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination
+		government "Republic" "Syndicate" "Free Worlds"
+	to offer
+		has "Hackerz 3: failed"
+	to complete
+		never
+	on visit
+		set "Hackerz Angry Bounty Hunter"
+		conversation
+			`Your information has lead you to an abandoned warehouse some distance from the space port. There don't appear to be any guards or traps. Carefully, you make your way inside the building.`
+			choice
+				`	(Continue your search.)`
+
+			`	You'd just finished searching the third room when someone kicks in the door down the hall!`
+			`	"Filthy Hackerz!" Screams an angry man with a shotgun. "The bounty isn't enough to pay me back all the money you stole!"`
+			`	The angry man sees you and opens fire!`
+			choice
+				`	(Try to reason with him.)`
+				`	(Get outta here!)`
+					goto dodge
+			`	You hold your hands up and try to reason with him. But he is too crazed to have a discussion with. You are hit by a shotgun slug and your headless corpse falls to the floor.`
+				die
+			label dodge
+			`	You narrowly avoid a shotgun slug and jump out the nearest window. Fortunately, the window was already broken, but you still get some minor scrapes from the few shards of glass remaining in the frame. "Better than a shotgun slug to the head," you exclaim to yourself as you run for your ship.`
+				launch
+	npc save
+		to spawn
+			has "Hackerz Angry Bounty Hunter"
+		government "Bounty Hunter"
+		system destination
+		personality launching heroic vindictive unconstrained nemesis
+		ship "Headhunter" "Payback"
+	on fail
+		clear "Hackerz Angry Bounty Hunter"
+		log `The latest Hackerz job was a dud. Another bounty hunter mistook me for one of them. I'm lucky I didn't lose my head. If I hadn't been interrupted, the abandoned warehouse I was searching would've probably turned out to become another dud. I'm starting to suspect that the job board system itself has been hacked and all of the jobs for tracing the Hackerz is another one of their sick jokes.`
+
+mission "Hackerz 4B"
+	landing
+	invisible
+	to offer
+		has "Hackerz 4: active"
+		has "Hackerz Angry Bounty Hunter"
+	on offer
+		fail "Hackerz 4"
+		clear "Hackerz Angry Bounty Hunter"
+		fail
+
+
+# ship stats for a Hackerz drone
+
+ship "Hackerz Drone"
+	sprite "ship/science drone"
+	attributes
+		category "Drone"
+		"cost" 50000
+		"hull" 400
+		"automaton" 1
+		"mass" 30
+		"drag" 2
+		"heat dissipation" 1
+		"outfit space" 65
+		"weapon capacity" 0
+		"engine capacity" 50
+		"self destruct" 1
+		weapon
+			"blast radius" 3
+			"shield damage" 30
+			"hull damage" 15
+			"hit force" 45
+	outfits
+		"nGVF-AA Fuel Cell"
+		"LP036a Battery Pack"
+		"Cargo Scanner"
+		"Outfit Scanner"
+		
+		"X1700 Ion Thruster"
+		"X1200 Ion Steering"
+		
+	engine -15 30
+	engine 15 30
+	leak "flame" 60 80
+	explode "tiny explosion" 15
+	explode "small explosion" 5
+	description "This civilian science drone has been taken over by hackers and repurposed for abusing the cargo scan fining system."
+
+
+

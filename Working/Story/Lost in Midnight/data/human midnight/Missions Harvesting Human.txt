@@ -1,0 +1,60 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Harvesting: Fossil Acquisitions"
+	invisible
+	repeat
+	source Alexandria
+	to offer
+		random < 20
+	on offer
+		require Fossil
+		dialog
+			`If there is any place in the galaxy to find a serious buyer for the alien fossil you found, this is definitely it. After asking around for a bit, you finally find an official who is interested in purchasing a fossil. You have to answer some questions about how you obtained the fossil, but the process is quick and simple. Once you complete the transaction, you will be short one fossil, but 400,000 credits richer.`
+	on accept
+		outfit Fossil -1
+		payment 400000
+		fail
+		
+mission "Harvesting: Fossil Researcher"
+	invisible
+	repeat
+	source
+		attributes "research"
+	to offer
+		random < 40
+	on offer
+		require Fossil
+		dialog
+			`<planet> has a noticeable scientific community present. If there is any place in the galaxy to find a serious buyer for the alien fossil you found, this might be it. After asking around for a bit, you finally find a researcher who is interested in purchasing a fossil. You have to answer some questions about how you obtained the fossil, but the process is quick and simple. Once you complete the transaction, you will be short one fossil, but 300,000 credits richer.`
+	on accept
+		outfit Fossil -1
+		payment 300000
+		fail
+
+mission "Harvesting: Fossil Collector"
+	invisible
+	repeat
+	source
+		attributes "paradise"
+	to offer
+		random < 60
+	on offer
+		require Fossil
+		dialog
+			`The paradise worlds are filled with people who have more money than sense. If there is any place in the galaxy to quickly find a a rich sucker willing to pay ridiculous sums of money for the alien fossil you found, this could be it. After asking around for a bit, you finally find a collector who is interested in purchasing a fossil. Once you complete the transaction, you will be short one fossil, but 200,000 credits richer.`
+	on accept
+		"reputation: Midnight Market" ++
+		outfit Fossil -1
+		payment 200000
+		fail

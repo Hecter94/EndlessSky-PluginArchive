@@ -1,0 +1,46 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Harvesting Quantumium Research"
+	name "Quantumium Research"
+	description "Deliver 10 Quantumium stones to Aeolus on <destination>. Payment is <payment>."
+	source Viminal
+	to offer
+		has "Remnant: Keystone Research 1: done"
+		or
+			not "Randomize Harvesting Quantumium Research"
+			and
+				has "Randomize Harvesting Quantumium Research"
+				random < 20
+	on offer
+		require "Quantumium" 1
+		conversation
+			scene "outfit/quantumium"
+			`You remember Aeolus mentioning that he was looking for alternatives to the Quantum Key Stone. Do you want to show Aeolus the Quantumium you found?`
+			choice
+				`	(Yes.)`
+				`	(Not right now.)`
+					defer
+			`	Aeolus is surprised when you present him with the Quantumium. "I would be very interested in more samples. Probably ten would be enough. You'll be rewarded with <payment>."`
+			choice
+				`	"I'll bring them to you as soon as I can."`
+					accept
+				`	"It was hard just getting this one."`
+			`	"I see. If they're that rare, then we might not have a practical use for them." He taps at his commlink and walks away."`
+				decline
+	on defer
+		set "Randomize Harvesting Quantumium Research"
+	on complete
+		outfit "Quantumium" -10
+		payment 10000000
+		dialog `The Remnant accept your delivery of Quantumium and reward you with <payment>.`
