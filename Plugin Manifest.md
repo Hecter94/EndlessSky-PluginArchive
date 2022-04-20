@@ -148,6 +148,8 @@ Unfinished but playable.
 
 Adds several new starting options to the game.
 
+[Advanced Starts](https://github.com/kestrel1110/ES-Advanced-Starts)
+
 **Status**
 
 -status-
@@ -298,7 +300,7 @@ Adds some missions for the pirate worlds.
 
 [Arr Mateys](https://bitbucket.org/YellowApple/arrr-mateys/src/master/)
 
-**Status
+**Status**
 
 ## Assault Cruiser
 
@@ -340,9 +342,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Bare Ships
 
-**Created by Unknown**
+**Created by lifeyouristhis**
 
 Shipyards now sell bare hulls with no outfits.
+
+[Bare Ships plugin](https://github.com/lifeyouristhis/bare-ships-plugin)
+
+**Status**
 
 ## Battle Carrier
 
@@ -359,6 +365,8 @@ Add post-Kor Sestor Invasion navy ship.
 Add several new ships for various vanilla races with very vanilla-looking sprites (Made by same person who remade several vanilla sprites).
 
 [Beccas Endless Expansion](https://github.com/beccabunny/Beccas-Endless-Expansion)
+
+**Status**
 
 ## Better Korath
 
@@ -379,6 +387,8 @@ Add several new ships for various vanilla races with very vanilla-looking sprite
 Enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game.
 
 [Better Vanilla Pirates](https://github.com/ZBok/BetterVanillaPirates)
+
+**Status**
 
 ## Beyond the Sky
 
@@ -552,7 +562,7 @@ In development and playable on 0.9.15 Continuous.
 
 **Created by Anarchist2**
 
--description-
+Increased the cost of drives
 
 [Costly Drives](https://github.com/Anarchist2/costly-drives)
 
@@ -585,6 +595,14 @@ Add DaBestShipEver.
 Unknown
 
 ## Dangerous Games
+
+**Created by davidwhitman**
+
+-description-
+
+[Dangerous Games](https://github.com/davidwhitman/endless-sky-dangerous-games)
+
+**Status**
 
 ## Dark Ships
 
@@ -644,6 +662,14 @@ Unknown
 
 ## Dragonflame-Fabrication
 
+**Created by Lake (Galaucus)**
+
+A post-Emerald Sword mission chain that allows Kraz to manufacture a replacement Dragonflame Cannon.
+
+[Dragonflame-Fabrication](https://github.com/Galaucus/Dragonflame-Fabrication)
+
+**Status**
+
 ## Dragoon Industries
 
 ## Dragoon
@@ -677,6 +703,14 @@ Sprites with modified cockpit/bridge.
 Playable on 0.9.15 Continuous.
 
 ## Easier Korath Automatons
+
+**Created by Bereskatuket (Kestrel1110)**
+
+-description-
+
+[Easier Korath Automatons](https://github.com/kestrel1110/Easier-Korath-Automatons)
+
+**Status**
 
 ## Edge of Endless
 
@@ -759,9 +793,33 @@ Abandoned.
 
 ## Enigma Corp High DPI
 
+**Created by Amazinite**
+
+-description-
+
+[Enigma Corp High DPI](https://github.com/Amazinite/Enigma-Corp-Legacy)
+
+**Status**
+
 ## Enigma Corp Legacy
 
+**Created by Amazinite**
+
+-description-
+
+[Enigma Corp Legacy](https://github.com/Amazinite/Enigma-Corp-Legacy)
+
+**Status**
+
 ## Enigma Corp
+
+**Created by Amazinite**
+
+-description-
+
+[Enigma Corp](https://github.com/Amazinite/Enigma-Corp)
+
+**Status**
 
 ## Epic Outfits
 
@@ -1011,7 +1069,7 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## HONK
 
-**Created by Killerhurtz **
+**Created by Killerhurtz**
 
 Honk. A plugin for color and hilarity.
 
@@ -1105,6 +1163,10 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 WW2 Yamato but in space.
 
+[IJN Yamato](https://github.com/hilokiyz/IJN-Yamato-Endless-Sky)
+
+**Status**
+
 ## Improved Ship Integrity
 
 **Created by Xolarix**
@@ -1159,7 +1221,7 @@ Playable on 0.9.15 Continuous.
 
 ## Jaling Expansion
 
-**Created by RizkyPramudyaCJ **
+**Created by RizkyPramudyaCJ**
 
 Jaling Expansion adds another human civilization which not connected to human space. 
 
@@ -1277,7 +1339,19 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Legendary version of ships used by pirates as person ships.
 
+[Legendary Pirates](https://github.com/Galaucus/Endless-Sky-Legendary-Pirates)
+
+**Status**
+
 ## Lemurias Extra ES Stuff
+
+**Created by a-random-lemurian**
+
+-description-
+
+[Lemurias Extra ES Stuff](https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff)
+
+**Status**
 
 ## Leviathan
 
@@ -1331,7 +1405,7 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 ## MaddreMod
 
-**Created by Maddremor
+**Created by Maddremor**
 
 -description-
 
@@ -1733,6 +1807,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Portraits for News
 
+**Created by Anarchist2**
+
+Re-adds news portraits.
+
+[ES news portraits](https://github.com/Anarchist2/ES-news-portraits)
+
+**Status**
+
 ## Poseidon
 
 ## Project Olympus
@@ -1985,6 +2067,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Space Shuttle Start
 
+**Created by MidnightPlugins**
+
+-description-
+
+[Space Shuttle Start](https://github.com/MidnightPlugins/Space-Shuttle-Start)
+
+**Status**
+
 ## Space Things
 
 ## Spacefarer
@@ -2042,6 +2132,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Created by mdsmestad**
 
 ## Starlus
+
+**Created by pilover100**
+
+-description-
+
+[Starlus](https://github.com/pilover100/Starlus-Plugin)
+
+**Status**
 
 ## Stronger Hulls
 
@@ -2186,6 +2284,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## The Jump Gate Project
 
 ## The Legacy
+
+**Created by pega3**
+
+-description-
+
+[The Legacy](https://github.com/pega3/endless-sky-the-legacy-plugin)
+
+**Status**
 
 ## The Machines are Taking Over
 
