@@ -2271,6 +2271,8 @@ Complete and playable on 0.9.15 Continuous.
 
 No thumbnail image.
 
+## Ultaka Invasion of Milky Way
+
 ## Ultimate Cheater Plugin
 
 **Created by mdsmestad**
@@ -2366,6 +2368,8 @@ Alternate start with selectable background.
 Unconfirmed
 
 ## Watcher
+
+## Weapon Ranges
 
 ## West Iron
 
