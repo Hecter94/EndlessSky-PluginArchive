@@ -25,7 +25,7 @@ mission "Scrapyard: Scrapyard Develops"
 	landing
 	invisible
 	to offer
-		has "Wanderers: Sestor: Final: done"
+		has "event: wanderers: sestor eliminated"
 	on offer
 		event "Scrapyard Develops" 3
 
@@ -149,7 +149,7 @@ mission "First Contact: Blight Shadows"
 		event "Blight Shadow Infestation"
 	npc kill
 		system Asikafarnut
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting staying disables unconstrained mute
 		fleet "Large Blight Shadow" 2
 	npc kill
@@ -208,13 +208,13 @@ event "Blight Shadow Infestation"
 mission "Scrapyard Boarding A"
 	landing
 	invisible
-	repeat 5
+	repeat 6
 	destination "Desi Seledrak"
 	to offer
 		has "event: Scrapyard Develops"
 		random < 25
 	npc board
-		government "Scrapyard Derelict"
+		government "Derelict (Killable)"
 		system
 			attributes "Scrapyard"
 		personality waiting derelict mute
@@ -227,22 +227,24 @@ mission "Scrapyard Boarding A"
 mission "Scrapyard Boarding B"
 	landing
 	invisible
-	repeat 10
+	repeat 4
+	source
+		attributes "korath"
 	destination "Desi Seledrak"
 	to offer
 		has "event: Blight Shadow Infestation"
 		random < 25
-	on offer
-		"Scrapyard Threat Level" ++	
 	npc board
-		government "Scrapyard Derelict"
+		government "Derelict (Killable)"
 		system
 			attributes "Scrapyard"
 		personality waiting derelict mute
 		fleet "Error Scrap"
 	on fail
+		"Scrapyard Threat Level" ++	
 		"Scrapyard Boarding B: offered" --
 	on complete
+		"Scrapyard Threat Level" ++	
 		"Scrapyard Boarding B: offered" --	
 
 
@@ -358,7 +360,7 @@ mission "Scrapyard Subsidurial"
 				accept
 	npc
 		system Mesuket
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Small Blight Shadow"
 	npc accompany save
@@ -371,7 +373,17 @@ mission "Scrapyard Subsidurial"
 			scene "thumbnail/subsidurial"
 			`The subsidurial comes to a rest on the adjacent landing pad. It seems to have fallen asleep. Several Wanderers gawk at it in exasperation. As you disembark your ship, some look to you for an explanation. You tell them that it came here on its own. Hopefully you won't get blamed for any damage it does to the spaceport while you're here...`
 
-		
+mission "Scrapyard Subsidurial 2"
+	landing
+	invisible
+	to offer 
+		has "Scrapyard Subsidurial: done"
+	npc kill
+		system Kaliptari
+		government "Indigenous Lifeform"
+		personality timid mining harvests mute unconstrained marked
+		ship "Subsidurial"
+
 
 
 mission "Scrapyard Sebra Skira TL20"
@@ -571,7 +583,7 @@ mission "Scrapyard Random Station Scrap Mereti"
 	invisible
 	repeat
 	source
-		planet "Metwar Skaretar" "Makwar Pratarati"
+		planet "Metwar Skaretar" "MakwaroPratarati"
 	to offer
 		has "event: Scrapyard Develops"
 		random < 40
@@ -583,4 +595,6 @@ mission "Scrapyard Random Station Scrap Mereti"
 	on accept
 		outfit "Reasoning Node" 1
 		fail
+
+
 

@@ -1,0 +1,305 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+outfit "Secret Prototype"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "A secret prototype stolen from a merchant vessel. You have no idea how it works." 
+
+mission "Bounty Hunting (Secret Prototype)"
+	name "Stolen prototype near <system>"
+	description "A heavy warship known as the <npc> has stolen a secret prototype near the <system> system. Recover the cargo and return it to <planet> for <payment>."
+	repeat
+	job
+	to offer
+		"combat rating" > 1000
+		random < 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc board
+		government "Bounty (Disguised)"
+		personality heroic staying nemesis target
+		system
+			distance 3 4
+		fleet
+			names "pirate"
+			variant
+				"Marauder Falcon (Secret Prototype)"
+			variant
+				"Marauder Leviathan (Secret Prototype)"
+			variant
+				"Marauder Protector (Secret Prototype)"
+			variant
+				"Marauder Vanguard (Secret Prototype)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		outfit "Secret Protoype" -1
+		payment 1500000
+		dialog phrase "The authorities pay you <payment> for returning the secret protoype."
+		
+
+
+mission "Protection: Heavy"
+	job
+	repeat 5
+	deadline 15
+	name "Protection Escort"
+	description "Pay the <npc> 125,000 credits to escort your fleet until <date>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral"
+	to offer
+		random < 20
+		"ships: Medium Warship" < 5
+		"ships: Heavy Warship" <= 1
+	on accept
+		payment -125000
+		dialog `You pay the <npc> 125,000 credits to escort your fleet until <date>."
+	on fail
+		dialog `The protection contract with <npc> has expired.`
+	npc save
+		government "Merchant"
+		personality heroic
+		fleet "Protection Heavy"
+
+mission "Protection: Medium"
+	job
+	repeat 10
+	deadline 15
+	name "Protection Escort"
+	description "Pay the <npc> 100,000 credits to escort your fleet until <date>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral"
+	to offer
+		random < 25
+		"ships: Medium Warship" <= 1
+		not "ships: Heavy Warship"
+	on accept
+		payment -100000
+		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>."
+	on fail
+		dialog `The protection contract with <npc> has expired.`
+	npc save
+		government "Merchant"
+		personality heroic
+		fleet "Protection Medium"
+				
+mission "Protection: Light"
+	job
+	repeat 15
+	deadline 15
+	name "Protection Escort"
+	description "Pay the <npc> 80,000 credits to escort your fleet until <date>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral"
+	to offer
+		random < 30
+		"ships: Light Warship" < 5
+		not "ships: Medium Warship"
+	on accept
+		payment -80000
+		dialog `You pay the <npc> 80,000 credits to escort your fleet until <date>."
+	on fail
+		dialog `The protection contract with <npc> has expired.`
+	npc save
+		government "Merchant"
+		personality heroic
+		fleet "Protection Light"
+			
+mission "Protection: Marauder"
+	job
+	repeat 5
+	deadline 15
+	name "Protection Escort"
+	description "Pay the <npc> 100,000 credits to escort your fleet until <date>."
+	source
+		attributes "frontier" "rim"
+	to offer
+		random < 30
+	on accept
+		payment -100000
+		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>."
+	on fail
+		dialog `The protection contract with <npc> has expired.`
+	npc save
+		government "Independent"
+		personality plunders heroic
+		fleet "Marauder Independent"
+
+
+
+####################
+# Cryostasis Pod Jobs require a "Cryostasis Pod" from Genesis
+####################
+
+mission "Cryostasis Prisoner (source)"
+	job
+	repeat
+	deadline
+	passengers 1
+	name "Cryostasis Prisoner"
+	description "A notorious pirate captain has finally been convicted and sentenced to life in prison. Transport this dangerous criminal to <destination>. Only the most secure transports will be offered this job. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		not attributes "uninhabited" "deep"
+	destination "Huginn Station"
+	to offer
+		random < 25
+	on offer
+		require "Brig"
+		require "Cryostasis Pod"
+	npc evade
+		government "Pirate"
+		personality heroic harvests plunders
+		fleet "Marauder fleet VIII"
+	npc evade
+		government "Pirate"
+		system
+			distance 1
+		personality heroic harvests plunders
+		fleet "Marauder fleet IX"
+	npc evade
+		government "Pirate"
+		system
+			distance 2
+		personality heroic harvests plunders
+		fleet "Marauder fleet X"
+	on complete
+		payment 25000 175
+		payment 100000
+		dialog `The cryostasis pod opens with a hiss. Your passenger wakes up and, before she's fully conscious, a team of well-armed guards takes her away. You collect your payment of <payment>.`
+		
+mission "Cryostasis Prisoner (destination)"
+	job
+	repeat
+	deadline
+	passengers 1
+	name "Cryostasis Prisoner"
+	description "A notorious pirate captain has finally been convicted and sentenced to life in prison. Transport this dangerous criminal to <destination>. Only the most secure transports will be offered this job. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		not attributes "uninhabited" "deep"
+	destination "Huginn Station"
+	to offer
+		random < 25
+	on offer
+		require "Brig"
+		require "Cryostasis Pod"
+	npc evade
+		government "Pirate"
+		system destination
+		personality heroic harvests plunders
+		fleet "Marauder fleet VIII"
+	npc evade
+		government "Pirate"
+		system destination
+		personality staying heroic harvests plunders coward
+		fleet "Marauder fleet IX"
+	npc evade
+		government "Pirate"
+		system destination
+		personality staying heroic harvests plunders
+		fleet "Marauder fleet X"
+	on complete
+		payment 25000 175
+		payment 100000
+		dialog `The cryostasis pod opens with a hiss. Your passenger wakes up and, before he's fully conscious, a team of well-armed guards takes him away. You collect your payment of <payment>.`
+		
+mission "Cryostasis Organ Transplant (easy)"
+	job
+	repeat
+	passengers 1
+	deadline 1 1
+	name "Urgent Organ Transplant"
+	description "An organ donor has recently passed on. An organ urgently needs to be delivered to the recipient by <date>. Reliable cold storage is required. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		not attributes "uninhabited"
+	to offer
+		random < 25
+	on offer
+		require "Cryostasis Pod"
+	destination
+		distance 2 10
+		not attributes "uninhabited" "station"
+	on complete
+		payment 25000 175
+		dialog `The cryostasis pod opens with a hiss and you retrieve the donated organ. A medical team rushes it to the intended recipient. You may have saved a life. Your payment of <payment> is just a bonus.`
+		
+mission "Cryostasis Organ Transplant (medium)"
+	job
+	repeat
+	passengers 1
+	deadline 3 1
+	name "Urgent Organ Transplant"
+	description "An organ donor has recently passed on. These organs urgently need to be delivered to their recipients by <date>. Delivery to <destination> is less urgent and should be saved for last. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		not attributes "uninhabited"
+	to offer
+		random < 20
+	on offer
+		require "Cryostasis Pod"
+	stopover
+		distance 2 3
+		not attributes "uninhabited" "station"
+	stopover
+		distance 2 3
+		not attributes "uninhabited" "station"
+	destination
+		distance 3 4
+		not attributes "uninhabited" "station"
+	on stopover
+		dialog `You have just one last organ to deliver.`
+	on complete
+		payment 25000 175
+		dialog `The cryostasis pod opens with a hiss and you retrieve the last of the donated organs. A medical team rushes it to the intended recipient. Three lives may have been saved with your help. Compared to that, your payment of <payment> is just a bonus.`
+		
+mission "Cryostasis Organ Transplant (hard)"
+	job
+	repeat
+	passengers 1
+	deadline 3 2
+	name "Urgent Organ Transplant"
+	description "An organ donor has recently passed on. These organs urgently need to be delivered to their recipients by <date>. Delivery to <destination> is less urgent and should be saved for last. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		not attributes "uninhabited"
+	to offer
+		random < 15
+	on offer
+		require "Cryostasis Pod"
+	stopover
+		distance 2 3
+		not attributes "uninhabited" "station"
+	stopover
+		distance 2 3
+		not attributes "uninhabited" "station"
+	stopover
+		distance 2 3
+		not attributes "uninhabited" "station"
+	stopover
+		distance 3 4
+		not attributes "uninhabited" "station"
+	destination
+		distance 4 5
+		not attributes "uninhabited" "station"
+	on stopover
+		dialog `You have just one last organ to deliver.`
+	on complete
+		payment 25000 175
+		dialog `The cryostasis pod opens with a hiss and you retrieve the last of the donated organs. A medical team rushes it to the intended recipient. Five lives may have been saved with your help. Compared to that, your payment of <payment> is just a bonus.`

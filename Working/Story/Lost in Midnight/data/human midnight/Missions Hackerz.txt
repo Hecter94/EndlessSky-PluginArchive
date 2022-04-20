@@ -17,6 +17,137 @@
 # A short job chain is included.
 
 
+mission "Drone Hacking 1"
+	assisting
+	repeat
+	minor
+	source
+		category "Drone"
+		attributes "cargo scan power"
+		attributes "automaton"
+	to offer
+		random < 50
+	on offer
+		require "Drone Hacking"
+		conversation
+			scene "outfit/data pad"
+			`You've successfully hacked this drone's scanning systems for fun and profit.`
+				decline
+	on decline
+		"How to Hack a Science Drone For Fun and Profit" ++
+	# A mission with no destination will not be offered, so give it one.
+	# What the destination is doesn't matter, because you always 'decline' this.
+	destination "Earth"
+
+mission "Drone Hacking 10"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 10
+	on offer
+		"salary: Hackerz" = 10
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 10 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 100"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 20
+	on offer
+		"salary: Hackerz" = 100
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 100 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 1000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 40
+	on offer
+		"salary: Hackerz" = 1000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 1000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 2000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 80
+	on offer
+		"salary: Hackerz" = 2000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 2000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 3000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 160
+	on offer
+		"salary: Hackerz" = 3000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 3000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 4000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 320
+	on offer
+		"salary: Hackerz" = 4000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 4000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 5000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 640
+	on offer
+		"salary: Hackerz" = 5000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 5000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 6000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 1280
+	on offer
+		"salary: Hackerz" = 6000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 6000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 7000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 2560
+	on offer
+		"salary: Hackerz" = 7000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 7000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 8000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 5120
+	on offer
+		"salary: Hackerz" = 8000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 8000 credits per day from hacked drones.`
+				decline
 
 mission "Hackerz"
 	landing
@@ -32,7 +163,7 @@ mission "Hackerz"
 	npc kill
 		government "Hackerz"
 		personality waiting surveillance
-		ship "Hackerz Drone" "Hackerz"
+		ship "Science Drone" "Hackerz"
 		conversation
 			apply
 				set "You've been hacked"
@@ -63,14 +194,26 @@ mission "Hackerz 1"
 	to offer
 		has "Hackerz: offered"
 	on offer
+		event "How to Hack a Science Drone"
+		log "Factions" "Hackerz" `Someone named "P.K." wrote a guide for hacking into science drones to abuse the cargo scan and fine systems used by most governments. If a lot of people start doing this, it could become a big problem. Whoever "P.K." is, he must be a madman.`
 		conversation 
 			`As you disembark from your ship, a nearby street vendor tries to sell you a book: "How to Hack a Science Drone For Fun and Profit."`
 			`	The author is listed as "P.K." Looks like some sort of 'get rich quick' scheme.`
 				decline
-	on decline
-		log "Factions" "Hackerz" `Someone named "P.K." wrote a guide for hacking into science drones to abuse the cargo scan and fine systems used by most governments. If a lot of people start doing this, it could become a big problem. Whoever "P.K." is, he must be a madman.`
 
+event "How to Hack a Science Drone"
+	outfitter "Pirate Outfits"
+		add "Drone Hacking"
 
+mission "Patch Drone Hacking"
+	landing
+	invisible
+	to offer
+		has "Hackerz 1: declined"
+		not "event: How to Hack a Science Drone"
+	on offer
+		event "How to Hack a Science Drone"
+		fail
 
 # The following mission chain is the Hackerz trolling the Bounty Hunters.
 
@@ -257,42 +400,119 @@ mission "Hackerz 4B"
 		fail
 
 
-# ship stats for a Hackerz drone
+mission "Hackerz: Add Science Drones"
+	landing
+	invisible
+	on offer
+		event "add science drones"
+		fail
 
-ship "Hackerz Drone"
-	sprite "ship/science drone"
-	attributes
-		category "Drone"
-		"cost" 50000
-		"hull" 400
-		"automaton" 1
-		"mass" 30
-		"drag" 2
-		"heat dissipation" 1
-		"outfit space" 65
-		"weapon capacity" 0
-		"engine capacity" 50
-		"self destruct" 1
-		weapon
-			"blast radius" 3
-			"shield damage" 30
-			"hull damage" 15
-			"hit force" 45
-	outfits
-		"nGVF-AA Fuel Cell"
-		"LP036a Battery Pack"
-		"Cargo Scanner"
-		"Outfit Scanner"
-		
-		"X1700 Ion Thruster"
-		"X1200 Ion Steering"
-		
-	engine -15 30
-	engine 15 30
-	leak "flame" 60 80
-	explode "tiny explosion" 15
-	explode "small explosion" 5
-	description "This civilian science drone has been taken over by hackers and repurposed for abusing the cargo scan fining system."
-
-
-
+event "add science drones"
+	system Mintaka
+		add fleet "Science Drone" 4000
+	system Rigel
+		add fleet "Science Drone" 4000
+	system Mirzam
+		add fleet "Science Drone" 4000
+	system Hassaleh
+		add fleet "Science Drone" 4000
+	system Sumar
+		add fleet "Science Drone" 4000
+	system Rajak
+		add fleet "Science Drone" 4000
+	system "Ultima Thule"
+		add fleet "Science Drone" 4000
+	system Cardax
+		add fleet "Science Drone" 4000
+	system Orbona
+		add fleet "Science Drone" 4000
+	system Terminus
+		add fleet "Science Drone" 4000
+	system Limen
+		add fleet "Science Drone" 4000
+	system Mora
+		add fleet "Science Drone" 4000
+	system Fala
+		add fleet "Science Drone" 4000
+	system Algieba
+		add fleet "Science Drone" 4000
+	system Muphrid
+		add fleet "Science Drone" 4000
+	system Mizar
+		add fleet "Science Drone" 4000
+	system Gacrux
+		add fleet "Science Drone" 4000
+	system Holeb
+		add fleet "Science Drone" 4000
+	system Tais
+		add fleet "Science Drone" 4000
+	system Wei
+		add fleet "Science Drone" 4000
+	system Alnasl
+		add fleet "Science Drone" 4000
+	system Eber
+		add fleet "Science Drone" 4000
+	system "Alpha Arae"
+		add fleet "Science Drone" 4000
+	system Eltanin
+		add fleet "Science Drone" 4000
+	system Moktar
+		add fleet "Science Drone" 4000
+	system Oblate
+		add fleet "Science Drone" 4000
+	system Eteron
+		add fleet "Science Drone" 4000
+	system Persian
+		add fleet "Science Drone" 4000
+	system Lurata
+		add fleet "Science Drone" 4000
+	system Lesath
+		add fleet "Science Drone" 4000
+	system "Beta Lupi"
+		add fleet "Science Drone" 4000
+	system Zubenelgenubi
+		add fleet "Science Drone" 4000
+	system Minkar
+		add fleet "Science Drone" 4000
+	system Volax
+		add fleet "Science Drone" 4000
+	system Sospi
+		add fleet "Science Drone" 4000
+	system Unagi
+		add fleet "Science Drone" 4000
+	system Hatysa
+		add fleet "Science Drone" 4000
+	system Gorvi
+		add fleet "Science Drone" 4000
+	system Tortor
+		add fleet "Science Drone" 4000
+	system Danoa
+		add fleet "Science Drone" 4000
+	system Durax
+		add fleet "Science Drone" 4000
+	system Kugel
+		add fleet "Science Drone" 4000
+	system "Gamma Cassiopeiae"
+		add fleet "Science Drone" 4000
+	system Regulus
+		add fleet "Science Drone" 4000
+	system Fingol
+		add fleet "Science Drone" 4000
+	system Nocte
+		add fleet "Science Drone" 4000
+	system Ipsing
+		add fleet "Science Drone" 4000
+	system Hintar
+		add fleet "Science Drone" 4000
+	system Orvala
+		add fleet "Science Drone" 4000
+	system Boral
+		add fleet "Science Drone" 4000
+	system Naper
+		add fleet "Science Drone" 4000
+	system Ildaria
+		add fleet "Science Drone" 4000
+	system Sadr
+		add fleet "Science Drone" 4000
+	system Umbral
+		add fleet "Science Drone" 4000

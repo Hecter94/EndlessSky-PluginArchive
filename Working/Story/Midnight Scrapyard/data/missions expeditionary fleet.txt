@@ -139,7 +139,7 @@ mission "Scrapyard Uwa Fahn Attack"
 				accept
 
 	on enter "Uwa Fahn"
-		dialog `It's a Kor Sestor expedtionary fleet. They mustn't be allowed to land!`
+		dialog `It's a Kor Sestor expedtionary fleet. They can not be allowed to land!`
 
 	npc
 		government "Hai"
@@ -150,7 +150,7 @@ mission "Scrapyard Uwa Fahn Attack"
 	npc kill
 		system "Uwa Fahn"
 		government "Kor Sestor"
-		personality target waiting
+		personality target waiting staying
 		fleet "Kor Sestor Expedition"
 		dialog `The alien fleet has been defeated. Check if the authorities on <planet> will reward you for your efforts.`
 	
@@ -167,7 +167,10 @@ mission "Scrapyard Bore Fah Attack"
 		near "Bore Fah" 1 3
 	destination "Snowfeather"
 	to offer
-		has "Scrapyard Uwa Fahn Attack: done"
+		or
+			has "Scrapyard Uwa Fahn Attack: done"
+			has "Scrapyard Uwa Fahn Attack: declined"
+			
 	on offer
 		conversation
 			scene "scene/scene-sestorexpedition"
@@ -190,8 +193,8 @@ mission "Scrapyard Bore Fah Attack"
 	
 	npc kill
 		system "Bore Fah"
-		government "Blight Shadows"
-		personality target waiting disables unconstrained mute
+		government "Invasive Predator"
+		personality target waiting disables unconstrained mute staying
 		fleet "Infested Sestor Expedition"
 		dialog `The alien threat has been defeated. Check if the authorities on <planet> will reward you for your efforts.`
 	
@@ -214,7 +217,7 @@ mission "Scrapyard Persitar Fleet Wreck"
 
 planet "Persitar Wreck"
 	attributes uninhabited midnight
-	landscape "land/sivael6"
+	landscape "land/nasa-ksc20170322"
 	description "These ruined derelicts appear to be part of a Kor Sestor expeditionary fleet. With no jump drives, it must have taken this fleet centuries to arrive here. The largest ship is loaded with construction equipment. If these ships had managed to find a suitable planet to set up a base of operations, it could have lead to the return of the Kor Sestor. You wonder how many more of these fleets are out there."
 
 event "Scrapyard Persitar Fleet Wreck"
@@ -244,7 +247,7 @@ mission "Scrapyard Exploring the Persitar Wreck"
 			`While exploring the derelict, you find several crates of Obsolete Transceivers. While there's no practical use for them, they can be sold for scrap. You also find black slime splattered all over one of the damaged areas of the ship. As you are loading the transceivers onto your ship, something bangs on the hull of the derelict...`
 				accept
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting staying disables unconstrained mute
 		fleet "Large Blight Shadow" 3
 
@@ -274,3 +277,97 @@ event "Patch: Blight Shadows Nest In Persitar"
 		remove fleet "Large Blight Shadow" 1000
 
 
+
+mission "Scrapyard Stakoshstar 1"
+	name "Sestor Expeditionary Fleet"
+	description "Scout <waypoints> for a Kor Sestor expeditionary fleet and eliminate it."
+	source
+		government "Wanderer"
+	destination "Desi Seledrak"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: Sestor Expeditionary Fleets"
+		"Scrapyard Threat Level" >= 30
+	on offer
+		event "stakoshtar in prakacha'a"
+		conversation
+			scene "planet/lava4-b"
+			`Some of the Wanderer pilots are talking about a fleet of strange ships in the <waypoints> system. From the description of the ships, it sounds like they are a Kor Sestor expeditionary fleet. According to the pilots, one of these ships is outfitted with a really big gun. It supposedly turned one of the Prakacha'a planets into a fiery hellscape.`
+				accept
+	on enter "Prakacha'a"
+		conversation
+			scene "scene/scene-sestorexpedition"
+			`There is a Kor Sestor expeditionary fleet here. It has an unusual ship with it.`
+			choice
+				`	(Look closer.)`
+			scene "ship/stakoshtar 187/stakoshtar"
+			`	The gun on this ship is enormous. It would be bad if the Unfettered got their hands on it.`
+				accept
+	npc kill
+		government "Kor Sestor"
+		system "Prakacha'a"
+		personality target waiting staying marked
+		fleet
+			names "kor sestor"
+			commodities Equipment Electronics Construction
+			variant
+				"Grakerat 572"
+				"Tercheldar 150" 2
+				"Skoretak 13" 4
+				"Stakoshtar 187"
+		conversation
+			scene "ship/stakoshtar 187/stakoshtar"
+			apply
+				set "defeatedd stakoshtar 187 in prakacha'a"
+			`You've stopped the Stakoshtar 187 from damaging any more worlds. A telepathic presence addresses you. It says, "During their civil war, the Korath used this weapon against planetary targets. Scars from such battles still cover the surface of many of their worlds. You've done well to stop this one."`
+				accept
+
+
+
+event "stakoshtar in prakacha'a"
+	system "Prakacha'a"
+		object
+			sprite star/g0
+			distance 32.5255
+			period 12.7118
+			offset 180
+		object
+			sprite star/k5-old
+			distance 82.4745
+			period 12.7118
+		object
+			sprite planet/lava4-b
+			distance 247.965
+			period 40.2479
+		object
+			sprite planet/desert5-b
+			distance 458.205
+			period 101.099
+		object
+			sprite planet/rock19-b
+			distance 692.455
+			period 187.822
+		object
+			sprite planet/tethys
+			distance 846.065
+			period 253.667
+		object
+			sprite planet/gas6-b
+			distance 4036.31
+			period 2643.24
+			object
+				sprite planet/callisto-b
+				distance 294
+				period 12.8761
+			object
+				sprite planet/rock3-b
+				distance 437
+				period 23.3339
+			object
+				sprite planet/io-b
+				distance 540
+				period 32.052
+			object
+				sprite planet/dust3-b
+				distance 723
+				period 49.6561

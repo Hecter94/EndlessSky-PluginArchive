@@ -17,17 +17,15 @@
 ######################
 
 
-mission "Scrapyard Devourer (Neutral)"
+mission "Scrapyard Devourer (Neutral) 1"
 	landing
 	invisible
 	to offer
 		( "Scrapyard Boarding A: active" + "Scrapyard Boarding B: active" ) >= 2
 	npc kill
-		to despawn
-			"Scrapyard Threat Level" >= 20
 		government "Kor Scrappers"
 		system "Silikatakfar"
-		personality mining harvests plunders uninterested
+		personality waiting staying mining harvests plunders uninterested
 		fleet "Korath Devourer (Neutral)"
 		
 mission "Scrapyard Scrapper Siege (Faronektu)"
@@ -46,7 +44,7 @@ mission "Scrapyard Scrapper Siege (Faronektu)"
 			not "Randomize Scrapyard Scrapper Siege (Faronektu)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Faronektu)"
-				Random < 25
+				Random < 15
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Fara Skaeruti in the Faronektu system. Can you assist in [defending, protecting] the Mereti?`
@@ -85,7 +83,7 @@ mission "Scrapyard Scrapper Siege (Mekislepti)"
 			not "Randomize Scrapyard Scrapper Siege (Mekislepti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Mekislepti)"
-				Random < 25
+				Random < 15
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Aresepru Nat in the Mekislepti system. Can you assist in [defending, protecting] the Mereti?`
@@ -125,7 +123,7 @@ mission "Scrapyard Scrapper Siege (Similisti)"
 			not "Randomize Scrapyard Scrapper Siege (Similisti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Similisti)"
-				Random < 25
+				Random < 15
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Mereti Station in the Similisti system. Can you assist in [defending, protecting] the Mereti?`
@@ -392,7 +390,7 @@ mission "Scrapyard Damnation 3"
 		dialog `The Blight Shadows have made it this far without the Kor Mereti to hold them back. The sooner you bring the Mereti back to normal, the better.`
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system Kaliptari
 		personality waiting staying heroic disables unconstrained mute
 		fleet "Large Blight Shadow" 3
@@ -401,7 +399,7 @@ mission "Scrapyard Damnation 3"
 		dialog `Looks like the Damnation ran into a little trouble. Board the ship and learn how they're controlling the Mereti!`
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system Feroteri
 		personality waiting staying heroic disables unconstrained mute
 		fleet "Large Blight Shadow" 3
@@ -506,7 +504,7 @@ mission "Scrapyard Damnation 4"
 				accept
 
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system Kaliptari
 		personality waiting staying heroic disables unconstrained mute
 		fleet "Large Blight Shadow"
@@ -514,7 +512,7 @@ mission "Scrapyard Damnation 4"
 	on enter Chimitarp
 		dialog `The Blight Shadows are running amok. Hopefully the Mereti will keep them in check once you deliver the Node 8 Processor to <planet>.`	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system Chimitarp
 		personality waiting staying heroic disables unconstrained mute
 		fleet "Large Blight Shadow" 3
@@ -618,7 +616,7 @@ mission "Scrapyard Damnation Epilogue"
 	on enter
 		dialog `The Mereti send a message of gratitude for [restoring, fixing] The Mind.`
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system Chimitarp
 		personality waiting staying heroic disables unconstrained mute
 		fleet "Small Blight Shadow"
@@ -650,6 +648,18 @@ mission "Scrapyard Scrapper Siege Reset"
 		clear "Scrapyard Scrapper Siege (Mekislepti): offered"
 		clear "Scrapyard Scrapper Siege (Similisti): offered"
 		fail
+
+mission "Scrapyard Devourer (Neutral) 2"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Damnation Epilogue: done"
+	npc kill
+		government "Kor Scrappers"
+		system " Eneremprukt"
+		personality waiting staying mining harvests plunders uninterested
+		fleet "Korath Devourer (Neutral)"
+
 
 ####################
 # Bonus Missions
