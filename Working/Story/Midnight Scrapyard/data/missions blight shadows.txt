@@ -149,7 +149,7 @@ mission "Scrapyard Pirate Eggs Hatch"
 			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
 				accept
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality fleeing disables unconstrained mute
 		fleet "Small Blight Shadow" 3
 
@@ -356,7 +356,7 @@ mission "Scrapyard Remnant Eggs Hatch"
 			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
 				accept
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality fleeing disables unconstrained mute
 		fleet "Small Blight Shadow" 3
 
@@ -374,7 +374,7 @@ mission "Scrapyard Shadowblight Hai"
 	on enter
 		dialog `The Blight Shadows have reached Hai space. Could they be following you?`
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Large Blight Shadow"
 
@@ -395,7 +395,7 @@ mission "Scrapyard Shadowblight Wanderer"
 	on enter
 		dialog `The Blight Shadows have reached Wanderer space. Could they be following you?`
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Large Blight Shadow"
 		
@@ -434,7 +434,7 @@ mission "Scrapyard Shadowblight Coalition"
 	on enter
 		dialog `The Blight Shadows have reached Coalition space. Could they be following you?`
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Small Blight Shadow"
 
@@ -450,7 +450,7 @@ mission "Scrapyard Shadowblight Remnant"
 	on enter
 		dialog `The Blight Shadows have reached Remnant space. Could they be following you?`
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Small Blight Shadow"
 
@@ -468,7 +468,7 @@ mission "Scrapyard Shadowblight Human"
 	on enter
 		dialog `The Blight Shadows have reached Human space. Could they be following you?`
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality waiting disables unconstrained mute
 		fleet "Large Blight Shadow"
 
@@ -599,7 +599,7 @@ mission "Scrapyard Random Station Eggs"
 			`Soon after landing, you find a cluster of broken Blight Shadow eggs. The black slime splattering the area looks fresh...`
 				accept
 	npc kill
-		government "Blight Shadows"
+		government "Invasive Predator"
 		personality entering disables unconstrained mute
 		fleet "Large Blight Shadow"
 
@@ -614,3 +614,28 @@ mission "Scrapyard Random Station Eggs cleanup"
 	on offer
 		fail "Scrapyard Random Station Eggs"
 		fail
+
+
+
+mission "Scrapyard Blight Mutation"
+	landing
+	invisible
+	to offer
+		has "event: Infected with Shadowblight"
+		"Scrapyard Threat Level" >= 25
+	on offer
+		event "scrapyard blight mutation"
+		fail
+		
+event "scrapyard blight mutation"
+	system Celeborim
+		remove fleet "Small Blight Shadow" 800
+		add fleet "Small Blight Mutation" 800
+	system Makferuti
+		remove fleet "Small Blight Shadow" 800
+		add fleet "Small Blight Mutation" 800
+	system Asikafarnut
+		add fleet "Small Blight Mutation" 800
+	system Sobarati
+		remove fleet "Small Blight Shadow" 800
+		add fleet "Small Blight Mutation" 800

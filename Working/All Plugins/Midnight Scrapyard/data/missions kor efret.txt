@@ -16,12 +16,24 @@
 ######################
 
 
+
+fleet "Kor Efret Miners"
+	government "Kor Efret"
+	personality mining harvests coward
+		confusion 20
+	cargo 0
+	variant 3
+		"Korath Explorer"
+		"Korath Chaser"
+
+
+
 mission "Scrapyard: Laki Nemparu Shipyard"
 	landing
 	invisible
 	source "Laki Nemparu"
 	to offer
-		has "Wanderers: Sestor: Final: done"
+		has "event: wanderers taking jobs from kor efreti"
 	on offer
 		event "Laki Nemparu opens Shipyard" 30
 		conversation
@@ -34,15 +46,17 @@ mission "Scrapyard: Laki Nemparu Shipyard"
 		dialog `The shipyard appears to be open. A fleet of new ships is on display.`
 		
 shipyard "Kor Efret Scrapyard"
+	"Korath Chaser"
+	"Korath Explorer"
 	"Korath Transport"
 	"Korath Transport B"
 	"Korath Transport C"
-	"Korath Chaser"
 		
 event "Laki Nemparu opens Shipyard"
 	planet "Laki Nemparu"
 		add	shipyard "Kor Efret Scrapyard"
 	outfitter "Korath Basics"
+		add "Korath Afterburner"
 		add "Korath Scanner"
 	fleet "Kor Efret Home"
 		add variant
@@ -52,6 +66,37 @@ event "Laki Nemparu opens Shipyard"
 		add variant
 			"Korath Transport C"
 			"Korath Chaser" 2
+
+mission "Midnight Scrapyard: Kor Efret Miners"
+	landing
+	invisible
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+	on offer
+		event "kor efret miners scrapyard"
+		fail
+
+event "kor efret miners scrapyard"
+	system Sumprast
+		add fleet "Kor Efret Miners" 4000
+	system Sevrelect
+		add fleet "Kor Efret Miners" 4000
+	system Kashikt
+		add fleet "Kor Efret Miners" 4000
+	system Furmeliki
+		add fleet "Kor Efret Miners" 6000
+	system Dokdobaru
+		add fleet "Kor Efret Miners" 6000
+	system Chikatip
+		add fleet "Kor Efret Miners" 8000
+	system Skeruto
+		add fleet "Kor Efret Miners" 8000
+	system Meftarkata
+		add fleet "Kor Efret Miners" 8000
+	system Chornifath
+		add fleet "Kor Efret Miners" 8000
+	system Hesselpost
+		add fleet "Kor Efret Miners" 8000
 
 
 
@@ -68,55 +113,55 @@ mission "Scrapyard Derelict World Ship"
 				accept
 
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Celeborim"
 		personality waiting heroic disables unconstrained mute
 		fleet "Large Blight Shadow"
 		
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Asikafarnut"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 2
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Silikatakfar"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 3
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Mesuket"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 4
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Eshkoshtar"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 5
 	
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Salipastart"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 5
 
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Mekislepti"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 6
 
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Similisti"
 		personality waiting heroic disables unconstrained mute staying
 		fleet "Large Blight Shadow" 6
 
 	npc
-		government "Blight Shadows"
+		government "Invasive Predator"
 		system "Sevrelect"
 		personality entering heroic disables unconstrained mute
 		fleet "Large Blight Shadow"
@@ -213,4 +258,311 @@ event "Warmonger Construction Completed"
 
 
 
+mission "Scrapyard: Efret Salvage License 1"
+	landing
+	name "Efret License"
+	description "Ask Rek to help you convince the Kor Efret to sell you weapons and other outfits installed on their ships."
+	source
+		government "Kor Efret"
+		not attributes "uninhabited"
+	destination "Desi Seledrak"
+	to offer
+		has "Warmonger Construction Completed"
+		random < 40
+	on offer
+		conversation
+			scene "scene/scene-korath weapons"
+			`With all the new ships being sold, you wonder if it's possible to buy the weapons and other outfits installed on them separately. Maybe Rek can help translate your request.`
+				accept
+	npc evade
+		government "Invasive Predator"
+		system Solifar
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
+	on complete
+		dialog `Visit the spaceport to look for Rek.`
 
+mission "Scrapyard: Efret Salvage License 2"
+	name "Efret License"
+	description "Ask Rek to help you convince the Kor Efret to sell you weapons and other outfits installed on their ships."
+	source "Desi Seledrak"
+	destination "Setar Fort"
+	to offer
+		has "Scrapyard: Efret Salvage License 1: done"
+	on offer
+		conversation
+			`When you ask to meet Rek, you are told that she as returned to Setar Fort.`
+				accept
+	npc evade
+		government "Invasive Predator"
+		system Sevrelect
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
+	on complete
+		set "license: Efret Salvage"
+		event "access efret salvage"
+		conversation
+			`	You find Rek giving a presentation at a meeting of some sort. It appears to be about the colony at Sabira Eseskrai, though you can't figure out the details. After waiting for her to finish, you approach her. "These shadow creature attacks have caused some colonists to have second thoughts about settling on planets farther than the Quarg ring. I can't blame them. The ship I was on was also attacked. It was an unnerving experience. The worst part wasn't the attack itself. It was being stranded in space on a derelict with no power without knowing how long it would take for someone to rescue us... or if we'd even be rescued."
+			choice
+				`	"It would help me fight the shadows if I were able to buy weapons from the Kor Efret."
+			scene "outfit/efret salvage license"
+			"Let's visit the outfitter and see if we can arrange something." After exchanging the customary greeting, Rek talks with the outfitter for a bit. The outfitter grabs something from the back of the shop and hands it to you. Rek translates, "Simply present this to any Kor Efret outfitter and they'll give you access to their stock of salvaged outfits."
+
+
+outfitter "Efret Salvage"
+	"Korath Detainer"
+	"Korath Repeater"
+	"Korath Slicer"
+	"Korath Banisher"
+	"Korath Disruptor"
+	"Korath Grab-Strike"
+	"Korath Warder"
+	"Korath Repeater Turret"
+	"Korath Slicer Turret"
+	"Korath Minelayer"
+	"Korath Piercer Launcher"
+	"Korath Mine"
+	"Korath Mine Rack"
+	"Korath Piercer"
+	"Korath Piercer Rack"
+	"Double Plasma Core"
+	"Plasma Core"
+	"Generator (Furnace Class)"
+	"Generator (Candle Class)"
+	"Systems Core (Medium)"
+	"Systems Core (Small)"
+	"Small Heat Shunt"
+	"Control Transceiver"
+	"Reasoning Node"
+	"Thruster (Planetary Class)"
+	"Thruster (Lunar Class)"
+	"Thruster (Comet Class)"
+	"Thruster (Asteroid Class)"
+	"Steering (Planetary Class)"
+	"Steering (Lunar Class)"
+	"Steering (Comet Class)"
+	"Steering (Asteroid Class)"
+	"Outfits Expansion"
+	Hyperdrive
+
+outfitter "Efret Salvage Advanced"
+	"Triple Plasma Core"
+	"Generator (Inferno Class)"
+	"Systems Core (Large)"
+	"Large Heat Shunt"
+	"Thruster (Stellar Class)"
+	"Steering (Stellar Class)"
+
+event "access efret salvage"
+	planet "Laki Nemparu"
+		add outfitter "Efret Salvage"
+		add outfitter "Efret Salvage Advanced"
+	planet "Setar Fort"
+		add outfitter "Efret Salvage"
+
+
+
+######################
+# Jobs
+######################
+
+
+
+mission "Scrapyard: Escort to Wanderer Colony (Big)"
+	job
+	repeat
+	name "Escort Kor Efret"
+	description "Escort the <npc> to <destination>. Payment is <payment>."
+	source
+		government "Kor Efret"
+	destination 
+		government "Wanderer"
+		attributes "korath
+	to offer
+		has "event: wanderers taking jobs from kor efreti"
+		random < 15
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Korath World-Ship"
+			variant
+				"Korath World-Ship B"
+			variant
+				"Korath World-Ship C"
+
+mission "Scrapyard: Escort to Wanderer Colony (Small)"
+	job
+	repeat
+	name "Escort Kor Efret"
+	description "Escort the <npc> to <destination>. Payment is <payment>."
+	source
+		government "Kor Efret"
+	destination 
+		government "Wanderer"
+		attributes "korath
+		not attributes "uninhabited"
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+		random < 25
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Korath Transport"
+			variant
+				"Korath Transport B"
+			variant
+				"Korath Transport C"
+
+mission "Scrapyard: Escort to Wanderer Worlds A"
+	job
+	repeat
+	name "Escort Kor Efret"
+	description "Escort the <npc> to <destination>. Payment is <payment>."
+	source
+		government "Kor Efret"
+	destination 
+		government "Wanderer"
+		not attributes "korath
+		not attributes "uninhabited"
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+		random < 25
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Korath Explorer"
+				
+mission "Scrapyard: Escort to Wanderer Worlds B"
+	job
+	repeat
+	name "Escort Kor Efret"
+	description "Escort the <npc> to <destination>. Payment is <payment>."
+	source
+		government "Kor Efret"
+	destination
+		government "Wanderer"
+		not attributes "korath
+		not attributes "uninhabited"
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+		random < 25
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Korath Explorer"
+
+mission "Scrapyard: Kor Efret Salvage"
+	job
+	repeat
+	name "Escort Kor Efret"
+	description "Escort the <npc> on a salvage expedition to <stopovers>. Then escort them back to <destination>. Payment is <payment>."
+	source
+		government "Kor Efret"
+	stopover
+		attributes "korath"
+		attributes "uninhabited"
+	on stopover
+		dialog `The Kor Efret crew work quickly to scavange as much as they can. After loading their ship, the captain signals it's time to return to <destination>.`
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+		random < 25
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Korath Explorer"
+
+mission "Scrapyard: Wanderer Planetary Survey"
+	job
+	repeat
+	name "Wanderer Planetary Survey"
+	description "Escort the <npc> on a survey expedition to <stopovers>. Then escort them back to <destination>. Payment is <payment>."
+	source
+		government "Wanderer"
+		attributes "korath"
+	stopover
+		attributes "korath"
+		attributes "uninhabited"
+		not attributes "station"
+	on stopover
+		dialog `The Wanderer scientists work quickly to gather samples and specimens. After completing their mission objectives, the captain signals it's time to return to <destination>.`
+	to offer
+		has "event: wanderers: sestor planets unrestricted"
+		random < 25
+	npc accompany save
+		government "Wanderer"
+		personality target escort
+		fleet
+			names "wanderer"
+			variant
+				"Strong Wind"
+
+
+
+##################
+# Bonus Mission
+##################
+
+fleet "Exiled Explorers"
+	government "Korath"
+	personality plunders harvests surveillance
+	names "korath"
+	cargo 0
+	variant
+		"Korath Explorer (Exile)"
+		"Korath Chaser" 2
+	variant
+		"Korath Explorer (Sestor)"
+		"Korath Chaser" 2
+	variant
+		"Korath Explorer (Banisher)"
+		"Korath Explorer (Grab-Strike)"
+		"Korath Chaser" 4
+	variant
+		"Korath Explorer (Exile)" 1
+		"Korath Explorer (Banisher)"
+		"Korath Explorer (Grab-Strike)"
+		"Korath Chaser" 6
+
+mission "Scrapyard: Exiled Explorers"
+	landing
+	invisible
+	source Fossil
+	on offer
+		event "exiled explorers"
+		dialog `You've only barely disembarked from your ship when a shadow passes overhead. It isn't one of those strange crystalline structures floating in this system. It might be another ship.`
+	npc kill
+		government "Korath"
+		personality waiting staying plunders harvests surveillance
+		fleet
+			names "korath"
+			cargo 0
+			variant
+				"Korath Explorer (Exile)"
+				"Korath Chaser" 2
+		
+event "exiled explorers"
+	system "Kor Ak'Mari"
+		add fleet "Exiled Explorers" 40000
+	system "Sagittarius A*"
+		add fleet "Exiled Explorers" 40000
+	system Tekochtli
+		add fleet "Exiled Explorers" 30000
+	system Kalsolli
+		add fleet "Exiled Explorers" 30000
+	system Temeh
+		add fleet "Exiled Explorers" 30000

@@ -112,47 +112,86 @@ mission "Grave Digger: Penguin"
 		log "People" "Lu Bu" `Another human has found his way into Remnant space. Captain Lu Bu seems to be the culprit behind the theft of the stolen Kestrel prototype from Wayfarer. After talking with Taely, I get the impression Lu Bu may even have an arsenal of stolen technology. If we ever crossed paths, he might find my ship a tempting target.`
 
 event "Grave Digger Betrayal"
-	system Aki'il
-		add fleet "Grave Digger raid" 4000
-	system Delia
-		add fleet "Grave Digger raid" 6000
-	system Dixere
-		add fleet "Grave Digger raid" 8000
-	system Esix
-		add fleet "Grave Digger raid" 10000
-	system Fearis
-		add fleet "Grave Digger raid" 8000
-	system Feraticus
-		add fleet "Grave Digger raid" 8000
-	system Fereti
-		add fleet "Grave Digger raid" 8000
-	system Gerenus
-		add fleet "Grave Digger raid" 12000
-	system Giribea
-		add fleet "Grave Digger raid" 8000
-	system Lire
-		add fleet "Grave Digger raid" 6000
-	system Nona
-		add fleet "Grave Digger raid" 12000
-	system Paeli
-		add fleet "Grave Digger raid" 12000
-	system Queri
-		add fleet "Grave Digger raid" 12000
-	system Relifer
-		add fleet "Grave Digger raid" 8000
-	system Ritilas
-		add fleet "Grave Digger raid" 10000
-	system Polerius
-		add fleet "Grave Digger raid" 12000
-		add fleet "Grave Digger Smugglers" 12000
-	system Ossipago
-		add fleet "Grave Digger Smugglers" 8000
-	system Antevorta
-		add fleet "Grave Digger Smugglers" 6000
-	system Cardea
-		add fleet "Grave Digger Smugglers" 4000
-	system Terminus
-		add fleet "Grave Digger Smugglers" 4000
+
+
+
+mission "Grave Digger: Suspicious Ship"
+	landing
+	name "Scan Suspicious Ship"
+	description "Locate and scan the cargo and outfits of a human ship that was spotted wandering in the Ember Waste. Then report to <destination>."
+	source
+		government "Remnant"
+	to offer
+		has "event: Grave Digger Betrayal"
+		random < 40
+	on offer
+		conversation
+			`	A messenger delivers an announcement: "A suspicious human ship ship has been spotted wanding in the Ember Waste. We are asking all pilots to look out for this ship and scan it." Ironically, you suspect that you were subjected to similar observation when you first entered the Ember Waste.`
+			choice
+				`	(Accept.)`
+					accept
+				`	(Ignore.)`
+					defer
+	npc scan
+		government "Independent"
+		system
+			attributes "ember waste"
+		personality target waiting staying uninterested
+		fleet
+			names "independent"
+			cargo 3
+			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			variant
+				"Falcon (Remnant)"
+			variant
+				"Osprey (Remnant)"
+			variant
+				"Raven (Remnant)"
+			variant
+				"Hawk (Remnant)"
+	on abort
+		clear "Grave Digger: Suspicious Ship: offered"
+	on fail
+		clear "Grave Digger: Suspicious Ship: offered"
+	on complete
+		"reputation: Remnant" ++
+		Payment 100000
+		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts. More jobs like this one will be posted on the job boards.`
+
+
+
+mission "Grave Digger: Suspicious Ship Job"
+	job
+	repeat
+	name "Scan Suspicious Ship"
+	description "Locate and scan the cargo and outfits of a human ship that was spotted wandering in the Ember Waste. Then report to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	to offer
+		has "Grave Digger: Suspicious Ship: done"
+		random < 15
+	npc "scan cargo" "scan outfits"
+		government "Independent"
+		system
+			attributes "ember waste"
+		personality target waiting staying uninterested
+		fleet
+			names "independent"
+			cargo 3
+			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			variant
+				"Falcon (Remnant)"
+			variant
+				"Osprey (Remnant)"
+			variant
+				"Raven (Remnant)"
+			variant
+				"Hawk (Remnant)"
+	on complete
+		"reputation: Remnant" ++
+		Payment 100000
+		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts.`
+
 
 
 mission "Grave Digger: Graveyard Robbery A"
@@ -277,7 +316,7 @@ ship "Pelican" "Pelican (disarmed)"
 		"Smelter-Class Steering"
 		"Hyperdrive"
 
-
+		
 
 mission "Grave Digger: Lu Bu's Legend"
 	invisible
@@ -470,6 +509,158 @@ ship "Ibis" "Ibis (disarmed)"
 		"Forge-Class Thruster"
 		"Forge-Class Steering" 2
 		"Hyperdrive"
+
+
+
+phrase "prefect concludes ember waste tour"
+	word
+		`The prefect thanks you for indulging his curiosity and <payment> is deposited into your account.`
+		`The prefect thanks you for indulging her curiosity and <payment> is deposited into your account.`
+
+mission "Escort: Ember Waste Tour"
+	job
+	name "Escort: Ember Waste Tour"
+	description "A prefect wants to tour the Ember Waste. Visit the marked systems, then escort the <npc> back to <origin>. Payment is <payment>."
+	source
+		government "Remnant"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	to offer
+		"reputation: Remnant" >= 10
+		has "license: Remnant"
+		random < 15
+	on waypoint
+		dialog `You've completed the tour. Escort the <npc> back to <destination>.`
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		cargo 0
+		fleet
+			names "remnant"
+			variant
+				"Prefect's Albatross"
+	on visit
+		dialog `There are still systems the prefect wants to visit.`
+	on abort
+		"reputation: Remnant" --
+	on fail
+		"reputation: Remnant" -= 1000
+	on complete
+		payment 1000000
+		"reputation: Remnant" ++
+		dialog phrase "prefect concludes ember waste tour"
+		
+	
+
+mission "Grave Digger: Prefect's Albatross 1"
+	job
+	name "Escort: Ember Waste Tour"
+	description "A prefect wants to tour the Ember Waste. Visit the marked systems, then escort the Prefect's Albatross back to <origin>. Payment is 1,000,000 credits."
+	source
+		government "Remnant"
+	waypoint Cardea
+	waypoint Ossipago
+	waypoint Polerius
+	destination 
+	to offer
+		"reputation: Remnant" >= 10
+		not "event: Grave Digger Testimony"
+		not "event: Gravedigger defeated"
+		or
+			has "Grave Digger: Graveyard Robbery Job A: done"
+			has "Grave Digger: Graveyard Robbery Job B: done"
+			has "Grave Digger: Graveyard Robbery Job C: done"
+	on enter Cardea
+		dialog `A suspicious looking fleet is near the Ember Waste Threshold.`
+	on enter Ossipago
+		dialog `A suspicious looking fleet leaves the system as soon as you arrive.`
+	on enter Polerius
+		dialog `A suspicious looking fleet launched from <planet> before leaving the system.`
+	on waypoint
+		dialog `The prefect wants to investigate what the suspicious fleet was doing on <planet>.`
+	on abort
+		"reputation: Remnant" --
+	on fail
+		"reputation: Remnant" -= 1000
+	npc
+		system Cardea
+		government "Independent"
+		personality waiting staying mute
+		fleet
+			names "independent"
+			cargo 3
+			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			variant
+				"Falcon (Remnant)"
+				"Osprey (Remnant)"
+				"Raven (Remnant)"
+				"Hawk (Remnant)" 2
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		ship "Prefect's Albatross" "Ancient Muse"
+
+
+mission "Grave Digger: Prefect's Albatross 2"
+	landing
+	name "Escort: Ember Waste Tour"
+	description "The prefect wants to go to <planet> to confer with other prefects about the suspicious fleets."
+	destinatition
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		has "Grave Digger: Prefect's Albatross 1: done"
+	on offer
+		conversation
+			`	A search of the station doesn't reveal much. You find discarded food and beverage containers littered about but not much else. While it's obvious that someone was here, they left no evidence of what they did other than eat lunch.`
+				accept
+	on abort
+		"reputation: Remnant" --
+	on fail
+		"reputation: Remnant" -= 1000
+	on enter
+		dialog `The prefect wants to go to <planet> to confer with other prefects about the suspicious fleets.`
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		ship "Prefect's Albatross" "Ancient Muse"
+	on complete
+		payment 1000000
+		"reputation: Remnant" ++
+		dialog phrase "prefect concludes ember waste tour"
+
+
+
+mission "Grave Digger: Suspicious Ship Tracking"
+	job
+	repeat
+	name "Scan Suspicious Ship"
+	description "Locate and scan the cargo and outfits of a human ship that was spotted wandering in the Ember Waste. Then report to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	to offer
+		has "Grave Digger: Suspicious Ship Job: done"
+		has "Grave Digger: Prefect's Albatross 2: done"
+		not "event: Grave Digger Testimony"
+		not "event: Gravedigger defeated"
+		random < 25
+	npc "scan cargo" "scan outfits"
+		government "Independent (Killable)" 
+		system Terminus
+		personality target waiting staying uninterested mute
+		fleet "Grave Digger Smugglers"
+	on complete
+		"reputation: Remnant" ++
+		Payment 100000
+		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts.`
 
 
 
@@ -882,46 +1073,46 @@ mission "Nemesis: Grave Digger"
 
 event "Gravedigger defeated"
 	system Aki'il
-		remove fleet "Grave Digger raid" 4000
+		remove fleet "Grave Digger raid"
 	system Delia
-		remove fleet "Grave Digger raid" 6000
+		remove fleet "Grave Digger raid"
 	system Dixere
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Esix
-		remove fleet "Grave Digger raid" 10000
+		remove fleet "Grave Digger raid"
 	system Fearis
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Feraticus
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Fereti
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Gerenus
-		remove fleet "Grave Digger raid" 12000
+		remove fleet "Grave Digger raid"
 	system Giribea
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Lire
-		remove fleet "Grave Digger raid" 6000
+		remove fleet "Grave Digger raid"
 	system Nona
-		remove fleet "Grave Digger raid" 12000
+		remove fleet "Grave Digger raid"
 	system Paeli
-		remove fleet "Grave Digger raid" 12000
+		remove fleet "Grave Digger raid"
 	system Queri
-		remove fleet "Grave Digger raid" 12000
+		remove fleet "Grave Digger raid"
 	system Relifer
-		remove fleet "Grave Digger raid" 8000
+		remove fleet "Grave Digger raid"
 	system Ritilas
-		remove fleet "Grave Digger raid" 10000
-	system Polerius
-		remove fleet "Grave Digger raid" 12000
-		remove fleet "Grave Digger Smugglers" 12000
+		remove fleet "Grave Digger raid"
+	system 
+		remove fleet "Grave Digger raid"
+		remove fleet "Grave Digger Smugglers"
 	system Ossipago
-		remove fleet "Grave Digger Smugglers" 8000
+		remove fleet "Grave Digger Smugglers"
 	system Antevorta
-		remove fleet "Grave Digger Smugglers" 6000
+		remove fleet "Grave Digger Smugglers"
 	system Cardea
-		remove fleet "Grave Digger Smugglers" 4000
+		remove fleet "Grave Digger Smugglers"
 	system Terminus
-		remove fleet "Grave Digger Smugglers" 4000
+		remove fleet "Grave Digger Smugglers"
 
 
 
