@@ -404,6 +404,8 @@ Additional ships and reaction to being farmed for high tier alien(Pug, Quarg).
 
 Playable on 0.9.15 Continuous.
 
+## Binary reOrder
+
 ## Bits and Bobs
 
 ## BiteOfTheAnt
@@ -791,6 +793,16 @@ Abandoned.
 
 ## Endless Sky except ships make that weird Tim Allen sound when they die
 
+## Endless-Sky-Ship
+
+**Created by The-Borg-Captain**
+
+-description-
+
+[Endless-Sky-Ship](https://github.com/The-Borg-Captain/Endless-Sky-Ship)
+
+**Status**
+
 ## Enigma Corp High DPI
 
 **Created by Amazinite**
@@ -818,6 +830,16 @@ Abandoned.
 -description-
 
 [Enigma Corp](https://github.com/Amazinite/Enigma-Corp)
+
+**Status**
+
+## Enki-Station
+
+**Created by Nergal8617**
+
+-description-
+
+[Enki-Station](https://github.com/Nergal8617/Enki-Station)
 
 **Status**
 
@@ -1044,6 +1066,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 **Created by Danzig Or War(Test-711)**
 
 Add non-spaceflight race and a T2 race. Heavily WIP.
+
+## Gungnir
+
+**Created by jschiav**
+
+-description-
+
+[Gungnir](https://github.com/jschiav/Gungnir)
+
+**Status**
 
 ## Gyroscopes
 
@@ -1805,6 +1837,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Plasma Mine
 
+## PlayerRewards
+
+**Created by Beanzilla**
+
+-description](https://github.com/Beanzilla/PlayerRewards)
+
+**Status**
+
 ## Portraits for News
 
 **Created by Anarchist2**
@@ -2015,6 +2055,26 @@ Add a few ships across a few races. Add a new race Irm. Renamed and updated to A
 
 **Status**
 
+## Ship Testing
+
+**Created by loiseeer**
+
+-description-
+
+[Ship Testing](https://github.com/loiseeer/Ship-testing)
+
+**Status**
+
+## Shipmod
+
+**Created by Lake (Galaucus)**
+
+-description-
+
+[Shipmod](https://github.com/Galaucus/Shipmod)
+
+**Status**
+
 ## Ship511L
 
 **Created by mdsmestad**
@@ -2196,6 +2256,16 @@ Playable on 0.9.15 Continuous.
 ## Tachyon
 
 **Created by mdsmestad**
+
+## Terrans
+
+**Created by TimCabbage**
+
+-description-
+
+[Terrans](https://github.com/TimCabbage/EndlessSkyTerrans)
+
+**Status**
 
 ## That Someone
 
@@ -2476,6 +2546,14 @@ Unconfirmed
 ## Watcher
 
 ## Weapon Ranges
+
+**Created by EjoThims**
+
+-description-
+
+[Weapon Ranges](https://github.com/EjoThims/Weapon-Ranges)
+
+**Status**
 
 ## West Iron
 
