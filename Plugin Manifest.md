@@ -1841,7 +1841,9 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 **Created by Beanzilla**
 
--description](https://github.com/Beanzilla/PlayerRewards)
+-description-
+
+[PlayerRewards](https://github.com/Beanzilla/PlayerRewards)
 
 **Status**
 
