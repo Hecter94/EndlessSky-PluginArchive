@@ -524,6 +524,14 @@ Playable on 0.9.15 Continuous.
 
 ## Cognitive Subdivision
 
+**Created by professorlust**
+
+-description-
+
+[Cognitive Subdivision](https://github.com/professorlust/cognitive-subdivision)
+
+**Status**
+
 ## Colorado
 
 **Created by clintmoyer**
@@ -1404,6 +1412,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Lleytons ES Starships
 
 ## Loronar Transport
+
+**Created by Armalarde7895**
+
+Adds the Loronar medium transport from Star Wars.
+
+[Loronar Transport](https://github.com/Armalarde7895/Loronar-transport)
+
+**Status**
 
 ## Lost in Midnight
 
@@ -2385,6 +2401,14 @@ Adds mechs and some other customization options.
 
 ## The Swarm Project
 
+**Created by jafdy**
+
+-description-
+
+[The Swarm Project](https://github.com/jafdy/the-swarm-project)
+
+**Status**
+
 ## The Witch
 
 ## Thunderhead Lance
@@ -2576,6 +2600,14 @@ Unconfirmed
 ## World Forge
 
 ## X-70B-Phantom
+
+**Created by Armalarde7895**
+
+Adds the X-70B Phantom from Star Wars
+
+[X-70B-Phantom](https://github.com/Armalarde7895/X-70B-Phantom)
+
+**Status**
 
 ## YEET
 
