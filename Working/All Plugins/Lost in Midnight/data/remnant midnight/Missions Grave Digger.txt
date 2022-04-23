@@ -517,7 +517,7 @@ phrase "prefect concludes ember waste tour"
 		`The prefect thanks you for indulging his curiosity and <payment> is deposited into your account.`
 		`The prefect thanks you for indulging her curiosity and <payment> is deposited into your account.`
 
-mission "Escort: Ember Waste Tour"
+mission "Escort: Prefect's Albatross 1"
 	job
 	name "Escort: Ember Waste Tour"
 	description "A prefect wants to tour the Ember Waste. Visit the marked systems, then escort the <npc> back to <origin>. Payment is <payment>."
@@ -536,7 +536,11 @@ mission "Escort: Ember Waste Tour"
 	to offer
 		"reputation: Remnant" >= 10
 		has "license: Remnant"
-		random < 15
+		random < 25
+	on accept
+		conversation
+			scene "ship/prefect's albatross"
+			`The wings of this Albatross sweep back, giving it a sleek appearance. This marks it as a Prefect's Albatross, used on the rare occasion when a Prefect isn't riding on a cloaked ship.`
 	on waypoint
 		dialog `You've completed the tour. Escort the <npc> back to <destination>.`
 	npc accompany save
@@ -553,11 +557,54 @@ mission "Escort: Ember Waste Tour"
 		"reputation: Remnant" --
 	on fail
 		"reputation: Remnant" -= 1000
+		dialog `Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
 	on complete
 		payment 1000000
 		"reputation: Remnant" ++
 		dialog phrase "prefect concludes ember waste tour"
 		
+mission "Escort: Prefect's Albatross 2"
+	job
+	repeat
+	name "Escort: Ember Waste Tour"
+	description "A prefect wants to tour the Ember Waste. Visit the marked systems, then escort the <npc> back to <origin>. Payment is <payment>."
+	source
+		government "Remnant"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	waypoint
+		attributes "ember waste"
+	to offer
+		"reputation: Remnant" >= 10
+		has "license: Remnant"
+		random < 10
+	on waypoint
+		dialog `You've completed the tour. Escort the <npc> back to <destination>.`
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		cargo 0
+		fleet
+			names "remnant"
+			variant
+				"Prefect's Albatross"
+	on visit
+		dialog `There are still systems the prefect wants to visit.`
+	on abort
+		"reputation: Remnant" --
+	on fail
+		"reputation: Remnant" -= 1000
+		dialog `Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
+	on complete
+		payment 1000000
+		"reputation: Remnant" ++
+		dialog phrase "prefect concludes ember waste tour"
 	
 
 mission "Grave Digger: Prefect's Albatross 1"
@@ -569,7 +616,7 @@ mission "Grave Digger: Prefect's Albatross 1"
 	waypoint Cardea
 	waypoint Ossipago
 	waypoint Polerius
-	destination 
+	destination "Ceilia'sei"
 	to offer
 		"reputation: Remnant" >= 10
 		not "event: Grave Digger Testimony"

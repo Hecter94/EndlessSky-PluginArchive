@@ -14,8 +14,54 @@
 # Contents: A sequel to the Free Worlds campaign.
 # - Introduces a new hostile faction, the Oathbreakers.
 # - One Shield Fortress can be captured during these missions.
+# - One Strategos can be captured during these missions.
 # - One Saryd Trailblazer may be captured if it wasn't acquired
 #   during the Midnight Market missions.
+
+
+
+
+
+
+mission "Oathbreaker Strategos Deployed"
+	invisible
+	source
+		attributes "deep" "north" "paradise" "core" "dirtbelt"
+		not attributes "uninhabited"
+	to offer
+		has "main plot completed"
+	on offer
+		conversation
+			scene "thumbnail/strategos-thumb"
+			`There's broadcast playing at the bar. They're showing the deployment of the Strategos class Navy super carrier, "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
+			`	There's a low whistle. A spectator in the crowd comments, "The war might've gone differently if the Navy had a few of those in their fleet."`
+			`	Another one quips, "I'll bet the real reason they're deploying to the Dirt Belt is to keep the Free Worlds in check."`
+			`	Someone else notes, "Even the name Poisonwood refers to that one southern planet that refused to leave the Republic."`
+			`	As the ceremonial wine bottle is about to break over the hull, the captain, Marcus Junius, is asked to comment. "I look forward to a successful campaign." The red wine splatters across the ship's printine hull.`
+				accept
+	npc kill
+		government "Republic"
+		system "Delta Velorum"
+		personality waiting staying vindictive
+		ship "Strategos" "R.N.S. Poisonwood"
+		ship "Lance" "Gamma One"
+		ship "Lance" "Gamma Two"
+		ship "Lance" "Gamma Three"
+		ship "Lance" "Gamma Four"
+		ship "Lance" "Gamma Five"
+		ship "Lance" "Gamma Six"
+		ship "Enforcer Drone" "Delta One"
+		ship "Enforcer Drone" "Delta Two"
+		ship "Enforcer Drone" "Delta Three"
+		ship "Enforcer Drone" "Delta Four"
+		ship "Enforcer Drone" "Delta Five"
+		ship "Enforcer Drone" "Delta Six"
+		ship "Enforcer Drone" "Delta Seven"
+		ship "Enforcer Drone" "Delta Eight"
+		ship "Enforcer Drone" "Delta Nine"
+		ship "Enforcer Drone" "Delta Ten"
+		ship "Enforcer Drone" "Delta Eleven"
+		ship "Enforcer Drone" "Delta Twelve"
 
 
 
@@ -633,6 +679,9 @@ mission "Memoria Alpha Repeat"
 		or
 			has "Escort Memoria Alpha: offered"
 			has "Oathbreaker Memoria Alpha: offered"
+		or
+			not "Escort Memoria Alpha: failed"
+			not "Oathbreaker Memoria Alpha: failed"
 		month >= 3
 	on offer
 		clear "Escort Memoria Alpha: offered"
@@ -652,7 +701,6 @@ mission "Oathbreaker Alpine Larch"
 	to offer
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
-		"Oathbreaker escalation" > 1
 	on offer
 		conversation
 			scene thumbnail/skein
@@ -685,7 +733,7 @@ mission "Oathbreaker Alpine Larch"
 	on complete
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
-		payment 150000
+		payment 250000
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
 
 
@@ -701,7 +749,7 @@ mission "Oathbreaker Escalation"
 	to offer
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
-		"Oathbreaker escalation" > 2
+		"Oathbreaker escalation" >= 2
 	on offer
 		conversation
 			scene thumbnail/bactrian
@@ -750,7 +798,7 @@ mission "Oathbreaker Black Oak"
 	to offer
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
-		"Oathbreaker escalation" > 3
+		"Oathbreaker escalation" >= 4
 	on offer
 		conversation
 			scene thumbnail/dreadnought
@@ -783,35 +831,127 @@ mission "Oathbreaker Black Oak"
 	on complete
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
-		payment 350000
+		payment 450000
+		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
+
+
+
+mission "Oathbreaker Poisonwood"
+	name `Oathbreaker warship "R.N.S. Poisonwood"`
+	description `The Strategos class Navy super carrier "R.N.S. Poisonwood" is joining the Oathbreakers. Find the ship and eliminate it.`
+	source
+		government "Free Worlds"
+		not attributes "uninhabited"
+	destination Bourne
+	to offer
+		has "salary: Free Worlds"
+		has "event: Oathbreaker Random"
+		"Oathbreaker Strategos Deployed: active"
+		"Oathbreaker escalation" >= 6
+	on offer
+		fail "Oathbreaker Strategos Deployed"
+		conversation
+			scene thumbnail/strategos-thumb
+			`You receive an urgent message from Alondo on Bourne. "Hello <first>! We've just got confirmation from the Republic that the Strategos class Navy super carrier "R.N.S. Poisonwood" has abandoned its mission in the Dirt Belt and is likely on it's way to the south to join the Oathbreakers. We are recruiting every pilot in the area to hunt down that ship and destroy it before that happens.`
+			choice
+				`	"I'll do my best to hunt them down."`
+					goto vigilant
+				`	"Sorry, I'm busy with something else now."`
+					goto slacker
+			
+			label vigilant
+			`	"Thanks <first>. Good luck with the hunt."`
+				accept
+
+			label slacker
+			`	"Don't give me that! You're still accepting your Militia salary. You could at least pretend to still be a hero."`
+				accept
+
+	on abort
+		"reputation: Free Worlds" --
+		dialog `Word gets around that you are a quitter who gave up the search for the <npc>...`
+
+	npc kill
+		government "Oathbreaker"
+		system
+			government "Free Worlds"
+			distance 5 10
+		personality target waiting staying vindictive
+		fleet "Fugitive Oathbreaker" 2
+		ship "Strategos" "R.N.S. Poisonwood"
+		ship "Lance" "Gamma One"
+		ship "Lance" "Gamma Two"
+		ship "Lance" "Gamma Three"
+		ship "Lance" "Gamma Four"
+		ship "Lance" "Gamma Five"
+		ship "Lance" "Gamma Six"
+		ship "Enforcer Drone" "Delta One"
+		ship "Enforcer Drone" "Delta Two"
+		ship "Enforcer Drone" "Delta Three"
+		ship "Enforcer Drone" "Delta Four"
+		ship "Enforcer Drone" "Delta Five"
+		ship "Enforcer Drone" "Delta Six"
+		ship "Enforcer Drone" "Delta Seven"
+		ship "Enforcer Drone" "Delta Eight"
+		ship "Enforcer Drone" "Delta Nine"
+		ship "Enforcer Drone" "Delta Ten"
+		ship "Enforcer Drone" "Delta Eleven"
+		ship "Enforcer Drone" "Delta Twelve"
+		dialog "You've eliminated the R.N.S. Poisonwood. Report to <desination>."
+
+	on complete
+		"reputation: Free Worlds" ++
+		"Oathbreaker escalation" ++
+		payment 550000
+		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the R.N.S. Poisonwood joining the Oathbreaker fleets.`
+
+
+
+mission "Oathbreaker Hijacked Warship"
+	job
+	deadline 7
+	name "Oathbreaker warship near <system>"
+	description `Oathbreakers have hijacked the <npc> near <system>. Locate the ship and reclaim or destroy it before they escape. The ship will be considered lost if not recovered by <date>.`
+	source
+		government "Free Worlds"
+		not attributes "uninhabited"
+	to offer
+		or
+			has "Oathbreaker Alpine Larch: offered"
+			has "Oathbreaker Escalation: offered"
+			has "Oathbreaker Black Oak: offered"
+		not "event: Oathbreaker diminish"
+	npc kill
+		government "Oathbreaker"
+		personality target waiting fleeing uninterested timid
+		fleet "Oathbreaker Stolen Militia"
+	on complete
+		"reputation: Free Worlds" ++
+		"Oathbreaker escalation" ++
+		payment 150000
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
 
 
 
 mission "Oathbreaker Metallic Asteroids 1"
 	landing
-	invisible
-	repeat 3
 	source
-		government "Pirate" "Republic" "Neutral"
 		attributes "south pirate" "dirt belt pirate" "dirt belt"
 		not attributes "uninhabited"
 	to offer
 		has "event: Oathbreaker Random"
 		not "Oathbreaker Thermopylae: offered"
-		random < 30
+		random < 60
 	on offer
 		conversation
 			scene "outfit/metallic asteroid"
-			`You notice a ship unloading several metallic asteroids. They don't look particularly valuable. Weird.`
+			`You notice a ship loading several metallic asteroids. They don't look particularly valuable. Weird.`
 			choice
 				`	(Ask them about the asteroids.)`
 				`	(Mind your own business.)`
 					defer
 			`	"Our client wanted them. I don't know why. I'm not inclined to find out."`
-				accept
-	on complete
-		"Oathbreaker Metallic Asteroids: offered" --
+				decline
 
 mission "Oathbreaker Metallic Asteroids 2"
 	name "Bulk delivery to <planet>"
@@ -835,7 +975,6 @@ mission "Oathbreaker Metallic Asteroids 2"
 
 mission "Oathbreaker Metallic Asteroids 3"
 	landing
-	invisible
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
 		not attributes "uninhabited"
@@ -860,7 +999,7 @@ mission "Oathbreaker Thermopylae"
 	stopover "Hope"
 	to offer
 		has "event: Oathbreaker Random"
-		"Oathbreaker escalation" > 4
+		"Oathbreaker escalation" >= 8
 
 	on offer
 		conversation
@@ -1039,7 +1178,7 @@ mission "Nemesis: Oath Breaker"
 	to offer
 		has "Oathbreaker Pirate Gossip: declined"
 		has "Oathbreaker Thermopylae: done"
-		"Oathbreaker escalation" > 5
+		"Oathbreaker escalation" >= 10
 	on offer
 		conversation
 			scene "scene/scene-oathbreakerfinal"
@@ -1071,7 +1210,7 @@ mission "Nemesis: Oath Breaker"
 		government "Oathbreaker"
 		personality target waiting staying vindictive
 		system destination
-		ship "Saryd Trailblazer (Oathbreaker)" "Revenant"
+		ship "Saryd Trailblazer (Pug)" "Revenant"
 
 	npc kill
 		to spawn
@@ -1099,12 +1238,12 @@ mission "Nemesis: Oath Breaker"
 		government "Oathbreaker"
 		personality target waiting staying vindictive
 		system destination
-		ship "Carrier (Mark II)" "Normandy"
-		ship "Cruiser (Mark II)" "Midway"
-		ship "Frigate (Mark II)" "Lexington"
-		ship "Gunboat (Mark II)" "Iwo Jima"
+		ship "Carrier (Pug)" "Normandy"
+		ship "Cruiser (Pug)" "Midway"
+		ship "Frigate (Pug)" "Lexington"
+		ship "Gunboat (Pug)" "Iwo Jima"
 		ship "Rainmaker (Mark II)" "Pearl Harbor"
-		ship "Auxiliary (Battle)" "Gettysburg"
+		ship "Auxiliary (Oathbreaker)" "Gettysburg"
 		fleet
 			fighters "Oathbreaker fighter"
 			variant
@@ -1145,11 +1284,11 @@ mission "Nemesis: Oath Breaker"
 
 
 
-ship "Saryd Trailblazer" "Saryd Trailblazer (Oathbreaker)"
+ship "Saryd Trailblazer" "Saryd Trailblazer (Pug)"
 	outfits
-		"Typhoon Launcher" 4
-		"Typhoon Torpedo" 120
-		"Quad Blaster Turret" 6
+		"Pug Seeker" 4
+		"Quad Blaster Turret" 4
+		"Heavy Anti-Missile Turret" 2
 		"Cooling Module" 5
 		"Large Shield Module"
 		"Scanning Module"
@@ -1168,9 +1307,19 @@ ship "Saryd Trailblazer" "Saryd Trailblazer (Oathbreaker)"
 		"Fragmentation Grenades" 26
 		"Laser Rifle" 52
 		Hyperdrive
+	gun -23 -106 "Pug Seeker"
+	gun 23 -106 "Pug Seeker"
+	gun -15 -125 "Pug Seeker"
+	gun 15 -125 "Pug Seeker"
+	turret -17 -104 "Quad Blaster Turret"
+	turret 17 -104 "Quad Blaster Turret"
+	turret -1 -96 "Heavy Anti-Missile Turret"
+	turret -41 -6 "Quad Blaster Turret"
+	turret 41 -6 "Quad Blaster Turret"
+	turret -1 157 "Heavy Anti-Missile Turret"
 
 
-ship "Auxiliary" "Auxiliary (Battle)"
+ship "Auxiliary" "Auxiliary (Oathbreaker)"
 	outfits
 		"Sidewinder Missile Launcher" 2
 		"Sidewinder Missile" 100

@@ -978,3 +978,501 @@ mission "Ghost Hunting: Friendship 1"
 
 
 
+mission "Ghost Hunting: Curse of the Carabao 1"
+	source
+		government "Republic"
+		attributes "deep"
+		not attributes "station" "uninhabited" "pirate" "shipyard"
+	to offer
+		"credits" >= 18000000
+		or
+			not "Randomize Ghost Hunting: Curse of the Carabao 1"
+			and
+				has "Randomize Ghost Hunting: Curse of the Carabao 1"
+				random < 5
+	on offer
+		conversation
+			scene "thumbnail/carabao-thumb"
+			`You notice someone trying to sell a used city ship. It looks different from the more ubiquitous Bactrian.`
+			choice
+				`	"Tell me more about this ship."`
+					goto info
+					"Is a city ship license required to buy this ship?"
+				`	"Not interested in buying a ship right now."`
+					defer
+			
+			`	"I'm not a professional dealer. I'm just unloading my own personal property."
+			choice
+				`	"Tell me more about this ship."`
+					goto info
+				`	"Not interested in buying a ship right now."`
+					defer
+			
+			label info
+			`	The seller says "An alternative to the Bactrian, the Carabao suffered from unpopularity due to its reliance on drones and automated systems. But if you're not averse to owning such a ship, the price is 18,000,000."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				
+			`	"Thank you for your purchase!"`
+
+				decline
+				
+			label negotiate
+			
+			`	"Alright, I can meet you halfway. Is 13,500,000 OK?"`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's still too much. I'm not interested."`
+					defer
+
+			`	"Thank you for your purchase!"`
+				accept
+	
+	on defer
+		set "Randomize Ghost Hunting: Curse of the Carabao 1"
+	on decline
+		set "curse of the carabao"
+		payment -18000000
+		give ship "Carabao" "Quiet Night"
+	on accept
+		set "curse of the carabao"
+		payment -13500000
+		give ship "Carabao" "Quiet Night"
+		fail
+
+
+
+mission "Ghost Hunting: Curse of the Carabao 2"
+	source
+		attributes "frontier"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+	on offer
+		require "Carabao AI"
+		conversation
+			scene "thumbnail/carabao-thumb"
+			`You notice one of the locals looking at the Carabao from the edge of the landing pad.`
+			`He notices you and says, "I feel sorry for whoever owns that ship."`
+			choice
+				`	"Why?"`
+				`	"I own that ship."
+					goto scare
+			`He responds, "That's a Carabao. Those ships are cursed! Back in the colonization days, the unfortunate colonists who traveled on those ships died grisly and gruesome deaths as the automated systems went haywire and run amok."`
+			choice
+				`	"I own that ship."
+			label scare
+			`"Oh."
+				decline
+			
+
+phrase "curse of the carabao"
+	word
+		`When you arrive at port, you discover that one of your passengers `
+	word
+		`died in a horrifying accident involving `
+		`died in a tragic mishap caused by `
+		`died in a grisly tragedy as a result of `
+	word
+		`a food processor `
+		`a security `
+		`a power conduit `
+		`an air lock `
+		`a life support `
+		`a weapons `
+		`a fuel injection `
+		`a sonic shower `
+	word
+		`safety failure. `
+		`system failure. `
+		`system malfunction. `
+		`safety malfunction. `
+	word
+		`The specific details are quite gruesome. While spaceport authorities investigate the death, your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey.`
+
+
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [0]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Passengers [0]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Passengers [0]"
+	on accept
+		fail "Passengers [0]"
+		fail
+		
+mission "Ghost Hunting: Curse of the Carabao Passengers [1]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Passengers [1]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Passengers [1]"
+	on accept
+		fail "Passengers [1]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [2]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Passengers [2]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Passengers [2]"
+	on accept
+		fail "Passengers [2]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [3]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Passengers [3]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Passengers [3]"
+	on accept
+		fail "Passengers [3]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [4]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Passengers [4]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Passengers [4]"
+	on accept
+		fail "Passengers [4]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Tourists out [1]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Tourists out [1]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Tourists out [1]"
+	on accept
+		fail "Tourists out [1]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Wealthy tourists out"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Wealthy tourists out: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Wealthy tourists out"
+	on accept
+		fail "Wealthy tourists out"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Tourists back [1]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Tourists back [1]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Tourists back [1]"
+	on accept
+		fail "Tourists back [1]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Wealthy tourists back"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Wealthy tourists back: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Wealthy tourists back"
+	on accept
+		fail "Wealthy tourists back"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Strike Breakers [mining]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Strike Breakers [mining]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Strike Breakers [mining]"
+	on accept
+		fail "Strike Breakers [mining]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Strike Breakers [textile]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Strike Breakers [textile]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Strike Breakers [textile]"
+	on accept
+		fail "Strike Breakers [textile]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Strike Breakers [factory]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Strike Breakers [factory]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Strike Breakers [factory]"
+	on accept
+		fail "Strike Breakers [factory]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Colonists [0]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Colonists [0]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Colonists [0]"
+	on accept
+		fail "Colonists [0]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Colonists [1]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Colonists [1]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Colonists [1]"
+	on accept
+		fail "Colonists [1]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Stranded Field Trip"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Stranded Field Trip: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Stranded Field Trip"
+	on accept
+		fail "Stranded Field Trip"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao "Released Prisoners [0]""
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has ""Released Prisoners [0]": active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail ""Released Prisoners [0]""
+	on accept
+		fail ""Released Prisoners [0]""
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Released Prisoners [1]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Released Prisoners [1]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Released Prisoners [1]"
+	on accept
+		fail "Released Prisoners [1]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Released Prisoners [2]"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Released Prisoners [2]: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Released Prisoners [2]"
+	on accept
+		fail "Released Prisoners [2]"
+		fail
+
+mission "Ghost Hunting: Curse of the Carabao Transport scientists"
+	landing
+	minor
+	repeat
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "Transport scientists: active"
+		random < 10
+	on offer
+		require "Carabao AI"
+		dialog phrase "curse of the carabao"
+	on decline
+		fail "Transport scientists"
+	on accept
+		fail "Transport scientists"
+		fail
+
