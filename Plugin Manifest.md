@@ -418,6 +418,16 @@ Playable on 0.9.15 Continuous.
 
 **Status**
 
+## Boarding Licenses
+
+**Created by An-archist**
+
+-description-
+
+[Boarding License](https://github.com/An-archist/boarding-licenses)
+
+**Status**
+
 ## Boarding Missions
 
 **Created by tmbutterworth**
@@ -744,6 +754,16 @@ Add ships from Elite Dangerous.
 
 Playable on 0.9.14, 0.9.15 Continuous.
 
+## Ema Skylark
+
+**Created by rymeilema**
+
+-description-
+
+[Ema Skylark](https://github.com/rymeilema/rymeilema-skylark)
+
+**Status**
+
 ## Endless Addon
 
 **Created by IModThings**
@@ -976,6 +996,16 @@ Adds a turret variant of the flamethrower
 **Status**
 
 ## Flavour Text
+
+## Flip Those Ships
+
+**Created by TheronEpic**
+
+-description-
+
+[Flip Those Ships](https://github.com/TheronEpic/Flip-Those-Ships)
+
+**Status**
 
 ## Flying Saucer
 
@@ -1393,6 +1423,16 @@ Legendary version of ships used by pirates as person ships.
 
 **Status**
 
+## Lertsek
+
+**Created by TheronEpic**
+
+-description-
+
+[Lertsek](https://github.com/TheronEpic/lertsek)
+
+**Status**
+
 ## Leviathan
 
 **Status**
@@ -1461,6 +1501,26 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 **Status**
 
+## Make Communism Great Again
+
+**Created by JonathanZhang1**
+
+-description-
+
+[Make Communism Great Again](https://github.com/JonathanZhang1/Make-communism-great-again-endless-sky)
+
+**Status**
+
+## Marauder Bactrian
+
+**Created by jchamlin**
+
+-description-
+
+[Marauder Bactrian](https://github.com/jchamlin/marauder-bactrian)
+
+**Status**
+
 ## Marauder Swarmer
 
 **Created by Tadrix**
@@ -1468,6 +1528,16 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 -description-
 
 [Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
+
+**Status**
+
+## Marausprey
+
+**Created by TheronEpic**
+
+Adds a Marauder Osprey, as well as two variants with different sprites.
+
+[Marausprey](https://github.com/TheronEpic/marausprey)
 
 **Status**
 
@@ -2073,6 +2143,16 @@ Add a few ships across a few races. Add a new race Irm. Renamed and updated to A
 
 **Status**
 
+## Ship Overhaul
+
+**Created by Vrok-Kronos**
+
+-description-
+
+[Ship Overhaul](https://github.com/Vrok-Kronos/endless-sky-ship-overhaul)
+
+**Status**
+
 ## Ship Testing
 
 **Created by loiseeer**
@@ -2102,6 +2182,16 @@ Just a ship model. CC use however you like
 **Status**
 
 Nonfunctional, just sprite.
+
+## Shirni
+
+**Created by Quantumshark**
+
+Adds a new alien species who live north of the Deep.
+
+[Shirni](https://github.com/Quantumshark/ES-Shirni)
+
+**Status**
 
 ## Smugglers, Corporations, and Other Thieves
 
@@ -2168,6 +2258,16 @@ No capture, no outfit looting, one Jump Drive run.
 **Status**
 
 Playable on 0.9.15 Continuous.
+
+## Spacetime Ripper Warhead
+
+**Created by Karirawri**
+
+-description-
+
+[Spacetime Ripper Warhead](https://github.com/Karirawri/Spacetime-Ripper-Warhead)
+
+**Status**
 
 ## Speed Stabilisers
 
@@ -2270,6 +2370,16 @@ New Syndicate heavy warships.
 **Status**
 
 Playable on 0.9.15 Continuous.
+
+## Syndicate Consultancy
+
+**Created by Elyssaen**
+
+-description-
+
+[Syndicate Consultancy](https://github.com/Elyssaen/syndicate-consultancy)
+
+**Status**
 
 ## Tachyon
 
@@ -2618,6 +2728,16 @@ Adds the X-70B Phantom from Star Wars
 -description-
 
 [Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)
+
+**Status**
+
+## ZES Global
+
+**Created by Zitchas**
+
+-description-
+
+[ZES Global](https://github.com/Zitchas/ZESglobal)
 
 **Status**
 
