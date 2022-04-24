@@ -418,6 +418,16 @@ Playable on 0.9.15 Continuous.
 
 **Status**
 
+## Boarding Licenses
+
+**Created by An-archist**
+
+-description-
+
+[Boarding License](https://github.com/An-archist/boarding-licenses)
+
+**Status**
+
 ## Boarding Missions
 
 **Created by tmbutterworth**
@@ -523,6 +533,14 @@ Add several new ships.
 Playable on 0.9.15 Continuous.
 
 ## Cognitive Subdivision
+
+**Created by professorlust**
+
+-description-
+
+[Cognitive Subdivision](https://github.com/professorlust/cognitive-subdivision)
+
+**Status**
 
 ## Colorado
 
@@ -735,6 +753,16 @@ Add ships from Elite Dangerous.
 **Status**
 
 Playable on 0.9.14, 0.9.15 Continuous.
+
+## Ema Skylark
+
+**Created by rymeilema**
+
+-description-
+
+[Ema Skylark](https://github.com/rymeilema/rymeilema-skylark)
+
+**Status**
 
 ## Endless Addon
 
@@ -968,6 +996,16 @@ Adds a turret variant of the flamethrower
 **Status**
 
 ## Flavour Text
+
+## Flip Those Ships
+
+**Created by TheronEpic**
+
+-description-
+
+[Flip Those Ships](https://github.com/TheronEpic/Flip-Those-Ships)
+
+**Status**
 
 ## Flying Saucer
 
@@ -1385,6 +1423,16 @@ Legendary version of ships used by pirates as person ships.
 
 **Status**
 
+## Lertsek
+
+**Created by TheronEpic**
+
+-description-
+
+[Lertsek](https://github.com/TheronEpic/lertsek)
+
+**Status**
+
 ## Leviathan
 
 **Status**
@@ -1404,6 +1452,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Lleytons ES Starships
 
 ## Loronar Transport
+
+**Created by Armalarde7895**
+
+Adds the Loronar medium transport from Star Wars.
+
+[Loronar Transport](https://github.com/Armalarde7895/Loronar-transport)
+
+**Status**
 
 ## Lost in Midnight
 
@@ -1445,6 +1501,26 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 
 **Status**
 
+## Make Communism Great Again
+
+**Created by JonathanZhang1**
+
+-description-
+
+[Make Communism Great Again](https://github.com/JonathanZhang1/Make-communism-great-again-endless-sky)
+
+**Status**
+
+## Marauder Bactrian
+
+**Created by jchamlin**
+
+-description-
+
+[Marauder Bactrian](https://github.com/jchamlin/marauder-bactrian)
+
+**Status**
+
 ## Marauder Swarmer
 
 **Created by Tadrix**
@@ -1452,6 +1528,16 @@ In development, Playable on 0.9.14, 0.9.15 Continuous.
 -description-
 
 [Marauder Swarmer](https://github.com/Tadrix/es-mswarmer)
+
+**Status**
+
+## Marausprey
+
+**Created by TheronEpic**
+
+Adds a Marauder Osprey, as well as two variants with different sprites.
+
+[Marausprey](https://github.com/TheronEpic/marausprey)
 
 **Status**
 
@@ -2057,6 +2143,16 @@ Add a few ships across a few races. Add a new race Irm. Renamed and updated to A
 
 **Status**
 
+## Ship Overhaul
+
+**Created by Vrok-Kronos**
+
+-description-
+
+[Ship Overhaul](https://github.com/Vrok-Kronos/endless-sky-ship-overhaul)
+
+**Status**
+
 ## Ship Testing
 
 **Created by loiseeer**
@@ -2086,6 +2182,16 @@ Just a ship model. CC use however you like
 **Status**
 
 Nonfunctional, just sprite.
+
+## Shirni
+
+**Created by Quantumshark**
+
+Adds a new alien species who live north of the Deep.
+
+[Shirni](https://github.com/Quantumshark/ES-Shirni)
+
+**Status**
 
 ## Smugglers, Corporations, and Other Thieves
 
@@ -2152,6 +2258,16 @@ No capture, no outfit looting, one Jump Drive run.
 **Status**
 
 Playable on 0.9.15 Continuous.
+
+## Spacetime Ripper Warhead
+
+**Created by Karirawri**
+
+-description-
+
+[Spacetime Ripper Warhead](https://github.com/Karirawri/Spacetime-Ripper-Warhead)
+
+**Status**
 
 ## Speed Stabilisers
 
@@ -2254,6 +2370,16 @@ New Syndicate heavy warships.
 **Status**
 
 Playable on 0.9.15 Continuous.
+
+## Syndicate Consultancy
+
+**Created by Elyssaen**
+
+-description-
+
+[Syndicate Consultancy](https://github.com/Elyssaen/syndicate-consultancy)
+
+**Status**
 
 ## Tachyon
 
@@ -2384,6 +2510,14 @@ Adds mechs and some other customization options.
 ## The Station of Dr. Rousseau
 
 ## The Swarm Project
+
+**Created by jafdy**
+
+-description-
+
+[The Swarm Project](https://github.com/jafdy/the-swarm-project)
+
+**Status**
 
 ## The Witch
 
@@ -2577,6 +2711,14 @@ Unconfirmed
 
 ## X-70B-Phantom
 
+**Created by Armalarde7895**
+
+Adds the X-70B Phantom from Star Wars
+
+[X-70B-Phantom](https://github.com/Armalarde7895/X-70B-Phantom)
+
+**Status**
+
 ## YEET
 
 ## Yokoyama
@@ -2586,6 +2728,16 @@ Unconfirmed
 -description-
 
 [Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)
+
+**Status**
+
+## ZES Global
+
+**Created by Zitchas**
+
+-description-
+
+[ZES Global](https://github.com/Zitchas/ZESglobal)
 
 **Status**
 
