@@ -11,12 +11,858 @@
 
 
 
-outfit "Secret Prototype"
-	category "Special"
-	cost 0
-	thumbnail "outfit/unknown"
-	"mass" 1
-	description "A secret prototype stolen from a merchant vessel. You have no idea how it works." 
+mission "Blue Ridge 1"
+	name "Auction: Blue Ridge"
+	description "The Blue Ridge is up for auction on <destination>. They are only accepting bids from pilots with a valid Militia License. You'll need several million credits to even consider placing a bid."
+	source
+		government "Free Worlds"
+		not planet "Longjump"
+	destination Longjump
+	to offer
+		month == 8
+	on offer
+		conversation
+			scene "ship/hipparion"
+			`You notice a crowd gathered around a bulletin board. Checking to see what has their interest, it's a posted flyer: "In order to raise funds, the Museum of Space Exploration on <destination> will be auctioning off the Blue Ridge, the ship Han Sizer used to explore the Southern Rim. Participation in this auction is limited to pilots with a valid Militia license.`
+			`	"Smart move," comments a freighter captain. "They can raise funds for the government while ensuring that the ship remains in the hands of someone loyal to the Free Worlds."`
+			`	A militia pilot adds, "They also made the announcement during Han Sizer month to maximize interest. Bidding will definitely reach several million credits."`
+			choice
+				`	(Remember this for later.)`
+				`	(Forget about it.)`
+					decline
+			scene "outfit/militia license"
+			branch "militia license"
+				has "license: Militia"
+			`	You'll need a Militia license. If you ever manage to get one, stop by <destination>.`
+				accept
+			label "militia license"
+			`	You have a Militia license. To place a bid, stop by <destination>.`
+				accept
+	to fail
+		has "main plot completed"
+		not "license: Militia"
+	to complete
+		has "license: Militia"
+		"credits" >= 6000000
+	on visit
+		dialog `You'll need a Militia license to bid on the Blue Ridge. The current bid is at 5,900,000 credits.`
+
+
+mission "Blue Ridge 2"
+	landing
+	invisible
+	source Longjump
+	to offer
+		has "license: Militia"
+		has "Blue Ridge 1: offered"
+		not "Blue Ridge 1: declined"
+		"credits" >= 6000000
+	on offer
+		conversation
+			scene "outfit/militia license"
+			`You visit the Museum of Space Exploration to place a bid on the Blue Ridge, the ship Han Sizer used to explore the Southern Rim. To prove your eligibility, you show the receptionist your Militia license.`
+			`	"Your license checks out," she says after looking you up in the computer system. "You have perfect timing Captain <last>! The auction ends today. Once bidding hit a million credits, we started only accepting bids in increments of 100,000 credits to help limit the auction to serious bidders only. The current bid is at 5,900,000 credits. Would you like to place a bid for 6,000,000 credits?"`
+			choice
+				`	(Bid 6,000,000 credits.)`
+					goto win
+				`	(Do not bid.)`
+			`	"I'm sorry to hear that," she says. "The 5,900,000 credit bid has been up for a while now and no one seems willing to go over that. With 6,000,000 credits, I'm certain you'd win."`
+			choice
+				`	(Bid 6,000,000 credits.)`
+					goto win
+				`	(Do not bid.)`
+					decline
+			label win
+			`	"I've placed your bid into the system," she says. "Come back once the Museum closes to learn the result."`
+			choice
+				`	(Return later.)`
+			scene "ship/hipparion"
+			`You stop by the museum as it is about to close. "Congratulations Captain <last>. You are the winner of the Blue Ridge," says the receptionist. "Let's process the payment and legal transfer of ownership."`
+			`	Once that gets taken care of, she shows you where the ship is stored. You look over the ship and notice that the weapons are archaic, but functional. More concerning is the lack of a Hyperdrive. You can drop by the outfitter later to buy one, but your curiosity has been piqued.`
+			choice
+				`	"Why isn't there a Hyperdrive?"`
+			scene "outfit/unknown"
+			`	She grins and answers, "It's for security, so thieves can't just take the ship and flee the system." It sounds like a reasonable explanation.`
+			`	But then she leans in and whispers conspiratorially, "There are rumors that Han Sizer got ahold of some alien device, like the ones the Quarg use instead of a Hyperdrive. Supposedly the government confiscated it after he died." She leans back, "But whether that's true or not, who can say?" She smiles mishieviously and you wonder if that's just a story they tell museum guests to enhance the legend of Han Sizer.`
+				decline
+	on decline
+		payment -6000000
+		give ship "Hipparion" "Blue Ridge"
+
+
+
+mission "Bounty Hunting: Angry Chicken"
+	job
+	name "Wanted Bandit near <system>"
+	description "A Modified Firebird named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "dirt belt" "south" "rim" "frontier"
+	to offer
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Modified Firebird" "Angry Chicken"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 100000
+		event "add energy cannon variants"
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Bounty Hunting: Tweedledee & Tweedledum"
+	job
+	name "Wanted Bandit near <system>"
+	description "A pair of old Berserkers named the Tweedledee & Tweedledum have been attacking merchants near <system>. Eliminate these ships, then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "dirt belt" "south" "rim" "frontier"
+	to offer
+		has "Bounty Hunting: Angry Chicken: done"
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Berserker (Energy Cannons)" "Tweedledee"
+		ship "Berserker (Energy Cannons)" "Tweedledum"
+		dialog `Tweedledee & Tweedledum have been eliminated. You can claim the bounty payment by returning to <destination>.`
+	on visit
+		dialog `You've landed on <planet>, but Tweedledee & Tweedledum have not been eliminated yet. Hunt them down and destroy them before returning.`
+	on complete
+		payment 125000
+		dialog `The government of <planet> gratefully pays you <payment> for eliminating Tweedledee & Tweedledum.`
+
+mission "Bounty Hunting: Mother Goose"
+	job
+	name "Wanted Bandit near <system>"
+	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Eliminate the fleet, then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "dirt belt" "south" "rim" "frontier"
+	to offer
+		has "Bounty Hunting: Tweedledee & Tweedledum: done"
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Aerie (Energy Cannons)" "Mother Goose"
+		ship "Dagger" "Jack"
+		ship "Dagger" "Jill"
+		dialog `The Mother Goose and their fleet have been eliminated. You can claim the bounty payment by returning to <destination>.`
+	on visit
+		dialog `You've landed on <planet>, but the Mother Goose has not been eliminated yet. Hunt it down and destroy it before returning.`
+	on complete
+		payment 150000
+		dialog `The government of <planet> gratefully pays you <payment> for eliminating the Mother Goose and their fleet.`
+
+mission "Bounty Hunting: Humpty Dumpty"
+	job
+	name "Wanted Bandit near <system>"
+	description "An old Hauler named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "dirt belt" "south" "rim" "frontier"
+	to offer
+		has "Bounty Hunting: Mother Goose: done"
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Hauler (Energy Cannons)" "Humpty Dumpty"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 175000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Bounty Hunting: Jabberwocky"
+	job
+	name "Wanted Bandit near <system>"
+	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "dirt belt" "south" "rim" "frontier"
+	to offer
+		has "Bounty Hunting: Humpty Dumpty: done"
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Modified Aerie" "Jabberwocky"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 200000
+		dialog phrase "generic bounty hunting payment dialog"
+
+
+
+mission "Corporate espionage [1]"
+	name "Corporate espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
+	job
+	repeat
+	to offer
+		random < 10
+	source
+		government "Free Worlds" Syndicate Neutral
+	destination
+		government Syndicate
+		attributes research
+		distance 3 12
+	npc "scan cargo"
+		government Merchant
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Blackbird"
+			variant
+				"Arrow"
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This will save us months!" you hear someone say in the background as you close the audio link.`
+		payment 50000
+
+mission "Corporate espionage [2]"
+	name "Corporate espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
+	job
+	repeat
+	to offer
+		random < 10
+	source
+		government Republic Syndicate Neutral
+	destination
+		government Syndicate
+		attributes research
+		distance 3 12
+	npc "scan cargo"
+		government Merchant
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Star Queen"
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This will save us months!" you hear someone say in the background as you close the audio link.`
+		payment 50000
+
+
+
+mission "Executive Guard: Syndicate Extremists"
+	landing
+	invisible
+	destination "Buccaneer Bay"
+	clearance
+	to offer
+		has "FW Syndicate Extremists 1A: done"
+		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 7
+	npc
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		ship "Executive Guard" "S.S. Longinus"
+		ship "Barb (Proton)" "F-001" 
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"
+	npc evade
+		to spawn
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 9
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Protector (Proton)" 2
+	npc evade
+		to spawn
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 11
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Vanguard" 2
+
+
+
+mission "Executive Guard: Syndicated Systems"
+	job
+	passengers 1
+	name "Ransom: Syndicated Systems"
+	description "Kidnap the president of Syndicated Systems, who usually rides on the S.S. Magnus at <waypoints>. Then return to <destination> with him, where he will be held for ransom. Payment is <payment>."
+	waypoint "Markab"
+	source
+		government "Pirate"
+	to offer
+		has "main plot completed"
+	on offer
+		require "Brig"
+	on accept
+		conversation
+			scene "ship/executive guard/executive guard"
+			`This is no small job. The CEO of Syndicated Systems will be riding an Executive Guard, a powerful warship the Syndicate reserves for use only by corporate VIPs.`
+				accept
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Shipyards: active"
+				has "Executive Guard: Syndicated Shipyards: done"
+				has "Executive Guard: Syndicated Shipyards: failed"
+		government "Syndicate"
+		system Achernar
+		personality entering nemesis heroic vindictive
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 2
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Shipyards: active"
+				has "Executive Guard: Syndicated Shipyards: done"
+				has "Executive Guard: Syndicated Shipyards: failed"
+		government "Syndicate"
+		system Markab
+		personality entering nemesis heroic vindictive
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 2
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Shipyards: active"
+				has "Executive Guard: Syndicated Shipyards: done"
+				has "Executive Guard: Syndicated Shipyards: failed"
+		government "Syndicate"
+		system Markab
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Vanguard (Proton Gun-CF8)"
+				"Vanguard"
+				"Protector (Proton)" 2
+		fleet
+			names "syndicate small"
+			variant
+				"Splinter (Proton)" 2
+				"Manta (Proton)" 4
+				"Quicksilver (Proton)" 5
+				"Wasp (Proton)" 5
+	npc board
+		government "Syndicate"
+		system Markab
+		personality waiting staying heroic
+		ship "Executive Guard" "S.S. Magnus"
+		ship "Barb (Proton)" "F-001" 
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"
+		dialog `You've captured the CEO of Syndicated Systems! Return to <destination> where he'll be held for ransom.`
+	on fail
+		"reputation: Pirate" --
+		"reputation: Syndicate" <?= -1000
+	on complete
+		payment 10000000
+		"reputation: Pirate" += 100
+		"reputation: Syndicate" <?= -1000
+		conversation
+			scene "outfit/brig"
+			`You present the CEO to the pirates. They are in awe of your accomplishment. A few warlords confide to you that this job was only intended as a joke and they never actually expected anyone to pull it off.`
+			`	Despite this, the pirates are able to negotiate with the Syndicate. The CEO is easily ransomed off for the requested amount. You claim your share of the ransom money, <payment>. Naturally, this stunt has made you an enemy of the Syndicate. Their security forces will be looking to collect bonus pay for your head.`
+
+mission "Executive Guard: Syndicated Shipyards"
+	job
+	passengers 1
+	name "Ransom: Syndicated Shipyards"
+	description "Kidnap the president of Syndicated Shipyards, who usually rides on the S.S. Decimus at <waypoints>. Then return to <destination> with him, where he will be held for ransom. Payment is <payment>."
+	waypoint "Achernar"
+	source
+		government "Pirate"
+	to offer
+		has "main plot completed"
+	on offer
+		require "Brig"
+	on accept
+		conversation
+			scene "ship/executive guard/executive guard"
+			`This is no small job. The CEO of Syndicated Systems will be riding an Executive Guard, a powerful warship the Syndicate reserves for use only by corporate VIPs.`
+				accept
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Systems: active"
+				has "Executive Guard: Syndicated Systems: done"
+				has "Executive Guard: Syndicated Systems: failed"
+		government "Syndicate"
+		system Markab
+		personality entering nemesis heroic vindictive
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 2
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Systems: active"
+				has "Executive Guard: Syndicated Systems: done"
+				has "Executive Guard: Syndicated Systems: failed"
+		government "Syndicate"
+		system Achernar
+		personality entering nemesis heroic vindictive
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 2
+	npc
+		to spawn
+			or
+				has "Executive Guard: Syndicated Systems: active"
+				has "Executive Guard: Syndicated Systems: done"
+				has "Executive Guard: Syndicated Systems: failed"
+		government "Syndicate"
+		system Achernar
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Vanguard (Proton Gun-CF8)"
+				"Vanguard"
+				"Protector (Proton)" 2
+		fleet
+			names "syndicate small"
+			variant
+				"Splinter (Proton)" 2
+				"Manta (Proton)" 4
+				"Quicksilver (Proton)" 5
+				"Wasp (Proton)" 5
+	npc board
+		government "Syndicate"
+		system Achernar
+		personality waiting staying heroic
+		ship "Executive Guard" "S.S. Decimus"
+		ship "Barb (Proton)" "F-001" 
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"	
+		dialog `You've captured the CEO of Syndicated Systems! Return to <destination> where he'll be held for ransom.`
+	on fail
+		"reputation: Pirate" --
+		"reputation: Syndicate" <?= -1000
+	on complete
+		payment 10000000
+		"reputation: Pirate" += 100
+		"reputation: Syndicate" <?= -1000
+		conversation
+			scene "outfit/brig"
+			`You present the CEO to the pirates. They are in awe of your accomplishment. A few warlords confide to you that this job was only intended as a joke and they never actually expected anyone to pull it off.`
+			`	Despite this, the pirates are able to negotiate with the Syndicate. The CEO is easily ransomed off for the requested amount. You claim your share of the ransom money, <payment>. Naturally, this stunt has made you an enemy of the Syndicate. Their security forces will be looking to collect bonus pay for your head.`
+
+
+
+mission "Free Worlds espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
+	job
+	repeat
+	to offer
+		random < 10
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		attributes spaceport
+		distance 3 12
+	npc "scan cargo"
+		government Merchant
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Scout"
+			variant
+				"Flivver"
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		"reputation: Free Worlds" ++
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This information changes everything!" you hear someone say in the background as you close the audio link.`
+		payment 40000
+
+
+
+mission "Free Worlds Infiltrator 1"
+	landing
+	deadline 7
+	name "Free Worlds Infiltrator"
+	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Catch the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		attributes urban
+		distance 3 12
+	to offer
+		random < 25
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+		has "fw first chapter done"
+		not "FW Pirates 4.1: offered"
+		not "event: navy occupying the south"
+	on offer
+		conversation
+			scene "thumbnail/infiltrator-thumb"
+			`You receive a message from JJ. "Sorry to bother you even though we were hoping to enoy a break, but a Republic spy ship was spotted near <origin>. Since you're in the area, keep an eye out for it and retrieve any secret data they might've gotten their hands on. If you haven't caught the ship by <date>, we'll assume it escaped.`
+				accept
+	npc "board"
+		government Republic
+		personality fleeing uninterested entering target marked
+		ship "Infiltrator" "Provocateur"
+		dialog "You've recovered the secret data. It doesn't look like they've had a chance to decrypt it. Time to head to <planet>."
+	on fail
+		event "navy plasma gunboats" 60
+	on complete
+		"reputation: Free Worlds" ++
+		payment 50000
+		dialog `The Free Worlds appreciates the retrieval of the stolen data and gives you <payment> in bonus pay.`
+
+mission "Free Worlds Infiltrator 1 failure"
+	landing
+	source
+		government "Free Worlds"
+	to offer
+		has "Free Worlds Infiltrator 1: failed"
+		has "event: navy plasma gunboats"
+	on offer
+		dialog "Eyewitness reports of Navy Gunboats armed with Plasma Cannnons indicate that designs for the Plasma Cannon was among the data stolen by that Republic Intelligence spy ship you were unable to catch."
+			decline
+	
+mission "Free Worlds Infiltrator 2"
+	landing
+	deadline 7
+	name "Free Worlds Infiltrator"
+	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Catch the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		attributes urban
+		distance 3 12
+	to offer
+		random < 25
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+		has "fw delivered prisoners"
+		not "event: fw occupying the north"
+	on offer
+		conversation
+			scene "thumbnail/infiltrator-thumb"
+			`You receive a message from Freya. "Sorry to bother you even though we were hoping to enoy a break, but a Republic spy ship was spotted near <origin>. Since you're in the area, keep an eye out for it and retrieve any secret data they might've gotten their hands on. If you haven't caught the ship by <date>, we'll assume it escaped.`
+				accept
+	npc "board"
+		government Republic
+		personality fleeing uninterested entering target marked
+		ship "Infiltrator" "Clandestine"
+		dialog "You've recovered the secret data. It doesn't look like they've had a chance to decrypt it. Time to head to <planet>."
+	on fail
+		event "navy flamethrower gunboats" 60
+	on complete
+		"reputation: Free Worlds" ++
+		payment 50000
+		dialog `The Free Worlds appreciates the retrieval of the stolen data and gives you <payment> in bonus pay.`
+
+mission "Free Worlds Infiltrator 2 failure"
+	landing
+	source
+		government "Free Worlds"
+	to offer
+		has "Free Worlds Infiltrator 2: failed"
+		has "event: navy flamethrower gunboats"
+	on offer
+		dialog "Eyewitness reports of Navy Gunboats armed with Flamethrowers indicate that designs for the Flamethrower was among the data stolen by that Republic Intelligence spy ship you were unable to catch."
+			decline
+
+
+mission "Mining: Silicon"
+	job
+	deadline 14
+	name "Mining: Silicon to <system>"
+	description "The shipyard on <destination> has a shortage of Silicon. Bring 20 tons of Silicon to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Silicon."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Silicon" -20
+		payment 12000
+		dialog `The shipyards on <planet> accept your delivery of Silicon and pay you <payment>.`
+
+mission "Mining: Lead"
+	job
+	deadline 14
+	name "Mining: Lead to <system>"
+	description "The shipyard on <destination> has a shortage of Lead. Bring 20 tons of Lead to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Lead."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Lead" -20
+		payment 27000
+		dialog `The shipyards on <planet> accept your delivery of Lead and pay you <payment>.`
+
+mission "Mining: Iron"
+	job
+	deadline 14
+	name "Mining: Iron to <system>"
+	description "The shipyard on <destination> has a shortage of Iron. Bring 20 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Iron."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Iron" -20
+		payment 36000
+		dialog `The shipyards on <planet> accept your delivery of Iron and pay you <payment>.`
+
+mission "Mining: Aluminum"
+	job
+	deadline 14
+	name "Mining: Aluminum to <system>"
+	description "The shipyard on <destination> has a shortage of Aluminum. Bring 20 tons of Aluminum to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Aluminum."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Aluminum" -20
+		payment 54000
+		dialog `The shipyards on <planet> accept your delivery of Aluminum and pay you <payment>.`
+
+mission "Mining: Titanium"
+	job
+	deadline 14
+	name "Mining: Titanium to <system>"
+	description "The shipyard on <destination> has a shortage of Titanium. Bring 20 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Titanium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Titanium" -20
+		payment 75000
+		dialog `The shipyards on <planet> accept your delivery of Titanium and pay you <payment>.`
+
+mission "Mining: Copper"
+	job
+	deadline 14
+	name "Mining: Copper to <system>"
+	description "The shipyard on <destination> has a shortage of Copper. Bring 20 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Copper" -20
+		payment 90000
+		dialog `The shipyards on <planet> accept your delivery of Copper and pay you <payment>.`
+
+mission "Mining: Neodymium"
+	job
+	deadline 14
+	name "Mining: Neodymium to <system>"
+	description "The shipyard on <destination> has a shortage of Neodymium. Bring 20 tons of Neodymium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Neodymium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Neodymium" -20
+		payment 114000
+		dialog `The shipyards on <planet> accept your delivery of Neodymium and pay you <payment>.`
+
+mission "Mining: Tungsten"
+	job
+	deadline 14
+	name "Mining: Tungsten to <system>"
+	description "The shipyard on <destination> has a shortage of Tungsten. Bring 20 tons of Tungsten to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Tungsten."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Tungsten" -20
+		payment 135000
+		dialog `The shipyards on <planet> accept your delivery of Tungsten and pay you <payment>.`
+
+mission "Mining: Uranium"
+	job
+	deadline 14
+	name "Mining: Uranium to <system>"
+	description "The shipyard on <destination> has a shortage of Uranium. Bring 20 tons of Uranium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		outfit "Uranium" -20
+		payment 150000
+		dialog `The shipyards on <planet> accept your delivery of Uranium and pay you <payment>.`
+
+mission "Mining: Silver"
+	job
+	deadline 7
+	name "Mining: Silver to <system>"
+	description "Market speculation on <destination> has created a run on Silver. Bring 10 tons of Silver to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Silver. Due to market volatility, this offer may be rescinded at any time."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes urban
+	to offer
+		random < 2
+	to fail
+		random < 1
+	on fail
+		dialog `The market rate for Silver has returned to normal on <destination>. Your Silver contract is cancelled.`
+	on complete
+		outfit "Silver" -10
+		payment 120000
+		dialog `The metals exchange on <planet> accepts your delivery of Silver and pays you <payment>.`
+
+mission "Mining: Gold"
+	job
+	deadline 7
+	name "Mining: Gold to <system>"
+	description "Market speculation on <destination> has created a run on Gold. Bring 10 tons of Gold to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Gold. Due to market volatility, this offer may be rescinded at any time."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes urban
+	to offer
+		random < 2
+	to fail
+		random < 1
+	on fail
+		dialog `The market rate for Gold has returned to normal on <destination>. Your Gold contract is cancelled.`
+	on complete
+		outfit "Gold" -10
+		payment 160000
+		dialog `The metals exchange on <planet> accepts your delivery of Gold and pays you <payment>.`
+
+mission "Mining: Platinum"
+	job
+	deadline 7
+	name "Mining: Platinum to <system>"
+	description "Market speculation on <destination> has created a run on Platinum. Bring 10 tons of Platinum to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Platinum. Due to market volatility, this offer may be rescinded at any time."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes urban
+	to offer
+		random < 2
+	to fail
+		random < 1
+	on fail
+		dialog `The market rate for Platinum has returned to normal on <destination>. Your Platinum contract is cancelled.`
+	on complete
+		outfit "Platinum" -10
+		payment 200000
+		dialog `The metals exchange on <planet> accepts your delivery of Platinum and pays you <payment>.`
+
+
+
+mission "Testing: Proton Gun-CF8"
+	name "Syndicate weapons test"
+	job
+	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		has "main plot completed"
+		random < 60
+		"combat rating" > 1000
+		"destroyed Syndicate target ship" < 3
+	npc save disable "scan outfits"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Vanguard Test-PGCF8" "Syndicate Test Vessel"
+		conversation
+			scene "outfit/proton gun-cf8"
+			"You scan the disabled craft and take careful measurements of the battle damage. While doing so, you notice the Proton Guns on this ship must be some new model they wanted to test. Time to deliver the results on <planet>."
+	on visit
+		dialog "You forgot to either disable or scan the target dummy ship in <system>! You'll need to head back there and do that before you can return here for payment."
+	on abort
+		# No penalty
+	on fail
+		dialog "The robotic target ship has been destroyed. You are hailed by an angry Syndicate official who fines you <payment> and warns you that further mistakes of this nature may remove you from eligibility for these jobs."
+		"destroyed Syndicate target ship" += 3
+		"reputation: Syndicate" -= 3
+		payment -2000000
+	on complete
+		payment 125000
+		event "Proton Gun-CF8 added to outfitters" 30
+		dialog "You transmit the scan results to a team of eager engineers and collect your payment of <payment>."
+
+event "Proton Gun-CF8 added to outfitters"
+	outfitter "Syndicate Advanced"
+		add "Proton Gun-CF8"
+
+ship "Vanguard" "Vanguard Test-PGCF8"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+	outfits
+		"Proton Gun-CF8" 7
+		"Anti-Missile Turret"
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"S-970 Regenerator"
+		"Liquid Nitrogen Cooler"
+		"Laser Rifle" 4
+		"X3700 Ion Thruster"
+		"X4200 Ion Steering"
+		"Hyperdrive"
+
+
+
+##########################
+# Jobs that repeat
+##########################
 
 mission "Bounty Hunting (Secret Prototype)"
 	name "Stolen prototype near <system>"
@@ -25,15 +871,15 @@ mission "Bounty Hunting (Secret Prototype)"
 	job
 	to offer
 		"combat rating" > 1000
-		random < 15
+		random < 10
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
 	npc board
 		government "Bounty (Disguised)"
-		personality heroic staying nemesis target
+		personality heroic staying marked target
 		system
-			distance 3 4
+			distance 2 3
 		fleet
 			names "pirate"
 			variant
@@ -44,13 +890,20 @@ mission "Bounty Hunting (Secret Prototype)"
 				"Marauder Protector (Secret Prototype)"
 			variant
 				"Marauder Vanguard (Secret Prototype)"
-		dialog phrase "generic hunted bounty eliminated dialog"
+		dialog `Retrieve the Secret Prototype and return it to <destination>.`
 	on visit
 		dialog phrase "generic bounty hunting on visit"
 	on complete
-		outfit "Secret Protoype" -1
+		outfit "Secret Prototype" -1
 		payment 1500000
-		dialog phrase "The authorities pay you <payment> for returning the secret protoype."
+		dialog "The authorities pay you <payment> for returning the Secret Prototype."
+
+outfit "Secret Prototype"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "A secret prototype stolen from a merchant vessel. You have no idea how it works." 
 		
 
 
@@ -68,10 +921,10 @@ mission "Protection: Heavy"
 		"ships: Heavy Warship" <= 1
 	on accept
 		payment -125000
-		dialog `You pay the <npc> 125,000 credits to escort your fleet until <date>."
+		dialog `You pay the <npc> 125,000 credits to escort your fleet until <date>.`
 	on fail
 		dialog `The protection contract with <npc> has expired.`
-	npc save
+	npc kill
 		government "Merchant"
 		personality heroic
 		fleet "Protection Heavy"
@@ -90,10 +943,10 @@ mission "Protection: Medium"
 		not "ships: Heavy Warship"
 	on accept
 		payment -100000
-		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>."
+		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>.`
 	on fail
 		dialog `The protection contract with <npc> has expired.`
-	npc save
+	npc kill
 		government "Merchant"
 		personality heroic
 		fleet "Protection Medium"
@@ -112,10 +965,10 @@ mission "Protection: Light"
 		not "ships: Medium Warship"
 	on accept
 		payment -80000
-		dialog `You pay the <npc> 80,000 credits to escort your fleet until <date>."
+		dialog `You pay the <npc> 80,000 credits to escort your fleet until <date>.`
 	on fail
 		dialog `The protection contract with <npc> has expired.`
-	npc save
+	npc kill
 		government "Merchant"
 		personality heroic
 		fleet "Protection Light"
@@ -132,10 +985,10 @@ mission "Protection: Marauder"
 		random < 30
 	on accept
 		payment -100000
-		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>."
+		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>.`
 	on fail
 		dialog `The protection contract with <npc> has expired.`
-	npc save
+	npc kill
 		government "Independent"
 		personality plunders heroic
 		fleet "Marauder Independent"

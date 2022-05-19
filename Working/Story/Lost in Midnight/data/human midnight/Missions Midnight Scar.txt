@@ -21,19 +21,9 @@ mission "Midnight Scar (non-Hai)"
 		fail
 
 event "midnight scar's hideout"
-	system Danoa
-		remove trade Clothing
-		remove trade Electronics
-		remove trade Equipment
-		remove trade Food
-		remove trade "Heavy Metals"
-		remove trade Industrial
-		remove trade "Luxury Goods"
-		remove trade Medical
-		remove trade Metal
-		remove trade Plastic
 	planet "Scar's Hideout"
 		attributes north pirate station
+		description "Scar's Hideout is a hollowed-out asteroid used by Scar's Legion as their main base of operations. From here they harass anyone making the journey through the uninhabited systems of the Far North. Recently the gang has reduced their activities due a change of leadership."
 		government "Pirate"
 		outfitter "Ammo North"
 		outfitter "Ammo South"
@@ -44,16 +34,17 @@ event "midnight scar's hideout"
 			threshold 625
 			fleet "Large Northern Pirates" 1
 			fleet "Small Northern Pirates" 8
+			fleet "Scar's Asteroid Defense" 8
 
 
 
-mission "Midnight Scar (Hai)"
+mission "Midnight Scar (Hai) patched"
 	landing
 	invisible
 	to offer
 		has "Pirate Troubles [4]: done"
 	on offer
-		event "midnight scar's hideout"
+		event "midnight scar's hideout (Hai)"
 		fail
 
 event "midnight scar's hideout (Hai)"
@@ -78,16 +69,6 @@ event "midnight scar's hideout (Hai)"
 		add fleet "Small Scar's Legion" 5000
 		add fleet "Large Scar's Legion" 15000
 		fleet "Scar's Asteroid Defense" 20000
-		remove trade Clothing
-		remove trade Electronics
-		remove trade Equipment
-		remove trade Food
-		remove trade "Heavy Metals"
-		remove trade Industrial
-		remove trade "Luxury Goods"
-		remove trade Medical
-		remove trade Metal
-		remove trade Plastic
 	planet "Scar's Hideout"
 		attributes north pirate station
 		outfitter "Ammo North"
@@ -145,8 +126,8 @@ mission "Midnight Scar: Bounty Hai"
 	name "Wanted Pirate"
 	description "The <npc> and it's fleet of pirate ships is raiding merchants in <waypoints>. Destroy the fleet, then return to <destination> for payment of <payment>."
 	source
-		near Allhome 0 2
-	waypoints Waypoint
+		near "Heia Due" 0 2
+	waypoint "Waypoint"
 	to offer
 		has "event: midnight scar's hideout (Hai)" 
 		random < 15
@@ -156,7 +137,7 @@ mission "Midnight Scar: Bounty Hai"
 		government "Merchant"
 		system Waypoint
 		personality derelict waiting coward
-		"Large Human Merchants (Hai)"
+		fleet "Large Human Merchants (Hai)"
 	npc kill
 		government "Scar's Legion"
 		system Waypoint
@@ -214,7 +195,7 @@ mission "Midnight Scar: Scar's Legion Raid"
 	npc
 		government "Merchant"
 		personality launching coward
-		"Small Human Merchants (Hai)" 2
+		fleet "Small Human Merchants (Hai)" 2
 	npc evade
 		government "Scar's Legion"
 		personality target plunders harvests coward

@@ -115,6 +115,361 @@ event "Grave Digger Betrayal"
 
 
 
+fleet "Nightingale"
+	government "Remnant"
+	names "remnant"
+	personality surveillance
+	cargo 0
+	variant
+		"Nightingale"
+
+mission "Grave Digger: Nightingale 1"
+	name "Nightingale Maintenance"
+	description "Escort the Starlit Journey Lost to the wormholes of the Ember Wastes to check on Remnant surveillance drones stationed there. Then report to <destination>."
+	source
+		government "Remnant"
+	waypoint Coluber
+	waypoint Convector
+	waypoint Edusa
+	waypoint Peragenor
+	waypoint Ossipago
+	waypoint Cardea
+	waypoint Insitor
+	waypoint Segesta
+	waypoint Aescolanus
+	to offer
+		has "event: Grave Digger Betrayal"
+		random < 40
+	on offer
+		conversation
+			scene "thumbnail/starling"
+			`	A team is loading the starling with equipment when their captain asks if you'd like to join them on their visit to the Nightingales.`
+			choice
+				`	"Nightingales?"`
+			scene "ship/nightingale"
+			`	"They're surveillance drones stationed at the various wormhole entrances in the Ember Wastes. It might be good to familiarize yourself with them."`
+			choice
+				`	(Join them to check on the Nightingales.)`
+				`	(Not right now.)`
+					defer
+			`	While the crew finishes loading their equipment, you also prepare for the journey ahead.`
+				accept
+	
+	on enter Ossipago
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Cardea
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Coluber
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Coluber
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Convector
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Convector
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Edusa
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Edusa
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Peragenor
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Peragenor
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Segesta
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Segesta
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Aescolanus
+		dialog `The Nightingale responds to the maintenance team. They download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Aescolanus
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Insitor
+		dialog `The Nightingale is damaged. Try to repair it.`
+	npc assist
+		government "Remnant"
+		system Insitor
+		personality target derelict surveillance
+		fleet "Nightingale"
+		dialog `The drone was badly damaged. All its recorded data has been wiped clean.`
+
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		ship "Starling" "Starlit Journey Lost"
+
+	on waypoint
+		dialog `You've invesigated all the systems where the Nightingales were stationed. Head back to <destination>.`
+	on complete
+		dialog `The captain of the Starlit Journey Lost thanks you for escorting them to check on the Nightingales. You'll be able to take these maintenance missions on the job boards too.`
+
+
+
+mission "Grave Digger: Nightingale 2"
+	name "Nightingale Maintenance"
+	description "Visit the wormholes of the Ember Wastes to check on Remnant surveillance drones stationed there. Then report to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	waypoint Coluber
+	waypoint Convector
+	waypoint Edusa
+	waypoint Peragenor
+	waypoint Ossipago
+	waypoint Cardea
+	waypoint Insitor
+	waypoint Segesta
+	waypoint Aescolanus
+	to offer
+		has "Grave Digger: Nightingale: done"
+		random < 10
+
+	on enter Ossipago
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Cardea
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Insitor
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Coluber
+		dialog `The Nightingale is damaged. Try to repair it.`
+	npc assist
+		government "Remnant"
+		system Coluber
+		personality target derelict surveillance
+		fleet "Nightingale"
+		dialog `The drone was badly damaged. All its recorded data has been wiped clean.`
+
+	on enter Convector
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Edusa
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Edusa
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Aescolanus
+		dialog `The Nightingale stationed in this system is not responding.`
+
+	on enter Peragenor
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Peragenor
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Segesta
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Segesta
+		personality target surveillance
+		fleet "Nightingale"
+
+	on waypoint
+		dialog `You've invesigated all the systems where the Nightingales were stationed. Head back to <destination>.`
+	on complete
+		payment 200000
+		dialog `You report on the status of the Nightingales and turn over the data you were able to retrieve. The Remnant reward you with <payment>.`
+
+
+
+mission "Grave Digger: Nightingale 3"
+	name "Nightingale Deployment"
+	description "Escort the Steadfast Pillar Reborn to the wormholes of the Ember Wastes to deploy new Remnant surveillance drones and check on existing drones stationed there. Then report to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	waypoint Convector
+	waypoint Cardea
+	waypoint Insitor
+	waypoint Aescolanus
+	waypoint Segesta
+	waypoint Peragenor
+	waypoint Edusa
+	to offer
+		has "Grave Digger: Nightingale 2: done"
+		random < 40
+
+	on enter Cardea
+		dialog `The Steadfast Pillar Reborn releases a Nightingale. The drone cloaks.`
+
+	on enter Insitor
+		dialog `The Steadfast Pillar Reborn releases a Nightingale. The drone cloaks.`
+
+	on enter Aescolanus
+		dialog `The Steadfast Pillar Reborn releases a Nightingale. The drone cloaks.`
+
+	on enter Convector
+		dialog `The Steadfast Pillar Reborn releases a Nightingale. The drone cloaks.`
+
+	on enter Peragenor
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Peragenor
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Segesta
+		dialog `The Nightingale is damaged. Try to repair it.`
+	npc	
+		government "Remnant"
+		system Segesta
+		personality target derelict surveillance
+		fleet "Nightingale"
+		dialog `The drone was badly damaged. All its recorded data has been wiped clean.`
+
+	on enter Edusa
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Edusa
+		personality target surveillance
+		fleet "Nightingale"
+
+	npc accompany save
+		government "Remnant"
+		personality target escort
+		ship "Ibis" "Steadfast Pillar Reborn"
+
+	on waypoint
+		dialog `You've checked all the systems where the remaining Nightingales were stationed and deployed four new ones. Head back to <destination>.`
+	on complete
+		payment 300000
+		dialog `You report on the status of the Nightingales. The Remnant reward you with <payment>.`
+
+
+
+mission "Grave Digger: Nightingale 4"
+	name "Nightingale Maintenance"
+	description "Visit the wormholes of the Ember Wastes to check on Remnant surveillance drones stationed there. Then report to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	waypoint Coluber
+	waypoint Convector
+	waypoint Edusa
+	waypoint Peragenor
+	waypoint Ossipago
+	waypoint Cardea
+	waypoint Insitor
+	waypoint Segesta
+	waypoint Aescolanus
+	to offer
+		has "Grave Digger: Nightingale 3: done"
+		has "event: Gravedigger defeated"
+		random < 10
+
+	on enter Ossipago
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Ossipago
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Cardea
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Cardea
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Insitor
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Insitor
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Coluber
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Coluber
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Convector
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Convector
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Edusa
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Edusa
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Aescolanus
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Aescolanus
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Peragenor
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Peragenor
+		personality target surveillance
+		fleet "Nightingale"
+
+	on enter Segesta
+		dialog `The Nightingale responds to your signal. You download its recorded data for later review.`
+	npc
+		government "Remnant"
+		system Segesta
+		personality target surveillance
+		fleet "Nightingale"
+
+	on waypoint
+		dialog `You've invesigated all the systems where the Nightingales are stationed. Head back to <destination>.`
+	on complete
+		payment 200000
+		dialog `You report on the status of the Nightingales and turn over the data retrieved. The Remnant reward you with <payment>.`
+
+
+
+
 mission "Grave Digger: Suspicious Ship"
 	landing
 	name "Scan Suspicious Ship"
@@ -155,7 +510,7 @@ mission "Grave Digger: Suspicious Ship"
 		clear "Grave Digger: Suspicious Ship: offered"
 	on complete
 		"reputation: Remnant" ++
-		Payment 100000
+		payment 100000
 		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts. More jobs like this one will be posted on the job boards.`
 
 
@@ -189,7 +544,7 @@ mission "Grave Digger: Suspicious Ship Job"
 				"Hawk (Remnant)"
 	on complete
 		"reputation: Remnant" ++
-		Payment 100000
+		payment 100000
 		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts.`
 
 
@@ -394,7 +749,7 @@ mission "Grave Digger: Graveyard Robbery Job A"
 	on complete
 		"Grave Digger: Graveyard Robbery Job A: offered" --
 		payment 200000
-		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude.`
+		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
 mission "Grave Digger: Graveyard Robbery Job B"
 	job
@@ -445,7 +800,7 @@ mission "Grave Digger: Graveyard Robbery Job B"
 	on complete
 		"Grave Digger: Graveyard Robbery Job B: offered" --
 		payment 200000
-		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude.`
+		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
 mission "Grave Digger: Graveyard Robbery Job C"
 	job
@@ -496,7 +851,7 @@ mission "Grave Digger: Graveyard Robbery Job C"
 	on complete
 		"Grave Digger: Graveyard Robbery Job C: offered" --
 		payment 200000
-		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude.`
+		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
 ship "Ibis" "Ibis (disarmed)"
 	outfits		
@@ -546,9 +901,9 @@ mission "Escort: Prefect's Albatross 1"
 	npc accompany save
 		government "Remnant"
 		personality target escort
-		cargo 0
 		fleet
 			names "remnant"
+			cargo 0
 			variant
 				"Prefect's Albatross"
 	on visit
@@ -589,9 +944,9 @@ mission "Escort: Prefect's Albatross 2"
 	npc accompany save
 		government "Remnant"
 		personality target escort
-		cargo 0
 		fleet
 			names "remnant"
+			cargo 0
 			variant
 				"Prefect's Albatross"
 	on visit
@@ -660,7 +1015,7 @@ mission "Grave Digger: Prefect's Albatross 2"
 	landing
 	name "Escort: Ember Waste Tour"
 	description "The prefect wants to go to <planet> to confer with other prefects about the suspicious fleets."
-	destinatition
+	destination
 		government "Remnant"
 		not attributes "uninhabited"
 	to offer
@@ -706,7 +1061,7 @@ mission "Grave Digger: Suspicious Ship Tracking"
 		fleet "Grave Digger Smugglers"
 	on complete
 		"reputation: Remnant" ++
-		Payment 100000
+		payment 100000
 		dialog `You share your scanner data with the Remnant authorities and receive <payment> for your efforts.`
 
 
@@ -1021,6 +1376,29 @@ event "Grave Digger Testimony"
 
 
 
+mission "Grave Digger: Bounty Job"
+	job
+	repeat
+	name "Shadow Warlord near <system>"
+	description "Dark warships with alien weapons are attacking merchant ships near <system>. Locate and destroy them. Then report to <destination>. Payment is <payment>."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	to offer
+		has "event: Grave Digger Testimony"
+		random < 10
+	npc kill
+		government "Bounty" 
+		system
+			distance 2 3
+		personality target waiting staying plunders harvests
+		fleet "Grave Digger Smugglers" 3
+	on complete
+		payment 800000
+		dialog `The government of <planet> thanks you for eliminating the <npc> and it's fleet of shadow warships. You are rewarded with <payment>.`
+
+
+
+
 # Nemesis: Grave Digger
 # This mission features variant NPCs, dependingi on the player's previous mission path choices.
 
@@ -1163,149 +1541,3 @@ event "Gravedigger defeated"
 
 
 
-fleet "Unuk Billboard"
-	government "Merchant"
-	names "civilian"
-	cargo 1
-	commodities "Food"
-	variant
-		"Container Transport (Billboard Unuk)"
-		
-mission "Grave Digger Epilogue: Omnipotence 0"
-	landing
-	invisible
-	source
-		government "Republic" "Syndicate" "Free Worlds"
-		not attributes "uninhabited"
-	to offer
-		has "event: Gravedigger defeated"
-	on offer
-		conversation
-			scene "scene/scene-unuk billboard"
-			`	You see an advertisement for chocolate covered acorn cookies from House Unuk. A new flavor? You're surprised they didn't already make those.`
-				accept
-	npc
-		government "Merchant"
-		personality waiting pacifist appeasing uninterested
-		fleet "Unuk Billboard"
-	on complete
-		event "unuk billboard"
-
-event "unuk billboard"
-	system Unukalhai
-		add fleet "Unuk Billboard" 20000
-
-	
-mission "Grave Digger Epilogue: Omnipotence 1"
-	name "Grave Digger Remnants"
-	description "There may be more Grave Diggers hiding in the Graveyard. Visit all of the Graveyard systems marked on your map to check for Grave Digger activity."
-	source
-		near "Tarazed" 0 10
-		not government "Pirate"
-		not attributes "uninhabited"
-	destination Kaeyin 
-	waypoint Delia
-	waypoint Dixere
-	waypoint Esix
-	waypoint Fearis
-	waypoint Feraticus
-	waypoint Fereti
-	waypoint Gerenus
-	waypoint Giribea
-	waypoint Nona
-	waypoint Paeli
-	waypoint Queri
-	waypoint Relifer
-	waypoint Ritilas
-	waypoint Polerius
-	stopover Retilie
-	to offer
-		has "Grave Digger Epilogue: Omnipotence 0: offered"
-	on offer
-		conversation
-			`You receive a message from Charles Atinoda: "Good news! They caught the thief. Well, one of them anyway. He admitted to being part of a pirate gang called 'The Grave Diggers'. He kept saying 'Tell <last> that the Grave Diggers will get their revenge with what we found in the Graveyard.'  I thought I should warn you."`
-			`	You thank Charles for the warning. Maybe it would be a good idea to check the Graveyard again for Grave Digger activity.`
-				accept
-	on accept
-		"reputation: Derelict (Killable)" <?= -1
-	on visit
-		dialog `The Grave Diggers had a base here, but it looks abandoned.`
-	on enter Polerius
-		dialog `A derelict Pelican is asking for assistance. They were attacked by Ka'het.`
-	on enter Esix
-		dialog `A derelict Ibis is asking for assistance. They were attacked by Ka'het.`
-	on enter Relifer
-		dialog `You find a derelict Ka'het. That's not so unusual. The Ka'het do fight amongst themselves.`
-	on enter Fearis
-		dialog `You find a derelict Ka'het. That's not so unusual. The Ka'het do fight amongst themselves.`
-	on enter Lire
-		dialog `You find a derelict Albatross. It appears abandoned. This might be something to investigate.`
-	on stopover
-		dialog `You find rusting salvaging equipment strewn across a beach on one of the tropical islands. Labels on the machines indicate they were manufactured on Millrace and sold by the Syndicate. From the markings in the sand, something big was dragged out of the ocean. Whatever it was is no longer here.`
-	on waypoint
-		dialog `You've checked all the systems in the Graveyard. You should do a thorough search of the Grave Digger's base on <destination> in case they left behind any clues.`
-	npc
-		government "Remnant"
-		system Polerius
-		personality derelict waiting staying
-		ship "Pelican" "Eternal Dream Yonder"
-	npc
-		government "Remnant"
-		system Esix
-		personality derelict waiting staying
-		ship "Ibis" "Ancient Memory Awakened"
-	npc
-		government "Ka'het"
-		system Relifer
-		personality derelict waiting staying
-		ship "Telis'het (Disable-able)" "Retilie-reati'het"
-	npc
-		government "Ka'het"
-		system Fearis
-		personality derelict waiting staying
-		ship "Telis'het (Disable-able)" "Retilie-maere'het"
-	npc board
-		government "Derelict (Killable)"
-		system Lire
-		personality target derelict waiting staying mute
-		ship "Derelict Albatross" "Midnight Graveyard"
-		dialog `The ship has been stripped of its outfits. There are no signs of violent conflict and no remains of the crew. When you check the logs, most of the data was erased, but from what remains it seems they were investigating something submerged under the waters of Retilie.`
-	on complete
-		conversation
-			`The Grave Digger base looks abandoned. But before you leave, something catches your eye: an empty box of House Unuk chocolate covered acorn cookies. You're certain those didn't exist back when you fought Lu Bu...`
-			
-ship "Derelict Albatross"
-	plural "Albatrosses"
-	sprite "ship/albatross"
-	attributes
-		category "Heavy Warship"
-		"hull" 2520
-		"mass" 610
-		"drag" 8.6
-		"heat dissipation" 0.6
-	explode "medium explosion" 60
-	explode "large explosion" 40
-
-
-
-
-mission "Grave Digger Epilogue: Omnipotence 2"
-	landing
-	invisible
-	source Kaeyin
-	to offer
-		has "Grave Digger Epilogue: Omnipotence 1: done"
-	on enter
-		conversation
-			scene "ship/veliante'exis"
-			`A Grave Digger fleet has entered the system! The lead ship, a model you have not seen before, hails you. "Captain <last>, welcome to your grave!"`
-				accept
-	npc
-		government "Grave Diggers"
-		personality waiting vindictive
-		fleet "Grave Digger raid" 10
-	npc kill
-		government "Grave Diggers"
-		personality waiting vindictive
-		ship "Veliante'exis" "Omnipotence"
-		dialog `The Builder ship Omnipotence is no longer a threat. Hopefully this is the last of the Grave Diggers.`

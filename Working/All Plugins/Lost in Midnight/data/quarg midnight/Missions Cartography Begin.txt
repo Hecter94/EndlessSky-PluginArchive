@@ -18,6 +18,7 @@ mission "Cartography: Quarg Hitchhiker 1"
 		government "Pirate"
 		not attributes "hidden"
 	destination Janus
+	waypoint Limen
 	waypoint Orbona
 	passengers 1
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
@@ -85,15 +86,15 @@ mission "Cartography: Quarg Hitchhiker 1"
 
 	on enter Limen
 		event "Archipelago reveal"
-	
-	on enter Terminus
-		event "Archipelago reveal"
-	
-	on enter Algieba
-		event "Archipelago reveal"
+		dialog `Some pirates have setup an ambush zone here. You wonder if they have a hidden base nearby.`
+	npc
+		government "Pirate"
+		system Limen
+		personality waiting staying plunders harvests
+		fleet "pirate raid"
 
 	on enter Orbona
-		dialog `When you arrive in Orbona, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a path to a new system has opened! "As promised, the path ahead is clear," says Quash.`
+		dialog `When you arrive in Orbona from Limen, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a hyperspace link to a new system has opened! "As promised, the path ahead is clear," says Quash.`
 
 	on enter Archipelago
 		conversation
@@ -119,8 +120,17 @@ mission "Cartography: Quarg Hitchhiker 2"
 	on offer
 		conversation
 			scene "thumbnail/carabao-thumb"
+			branch "curse of the carabao"
+				has "curse of the carabao"
+			
 			`When you arrive at landing pad Q, you are surprised to find it occupied by a city ship. While there are some similarities to a Bactrian, it seems to be a different model ship.`
-			`	"Welcome, Captain <first> <last>. Please, come aboard my new ship." A boarding ramp descends from an open entry hatch. It's dark inside.`
+				goto greeting
+				
+			label "curse of the carabao"
+			`When you arrive at landing pad Q, you a greeted by a dreadful sight. The Carabao, known as the "cursed" city ship featured in many horror stories where the colonists die off one by one as the ship's automated systems accidentally kill them in grisly and gruesome ways.`
+			
+			label greeting
+			`	"Welcome, Captain <first> <last>. Please, come aboard my new ship. It's called a Carabao." A boarding ramp descends from an open entry hatch. It's dark inside.`
 			choice
 				`	(Enter the ship.)`
 					goto enter
@@ -147,7 +157,7 @@ mission "Cartography: Quarg Hitchhiker 2"
 			`	You scoop up the pouch and begin heading for the exit. "Fare well, Captain <first> <last>. It was a pleasure doing business with you. I look forward to employing your services again someday."`
 				accept
 	on accept
-		log "People" "Quash" `An unusual Quarg hitchhiker I met on a pirate world. Quash needed transportation to Janus, another pirate world, in the Archipelago system. Quash has an unusual city ship, similar to a Bactrian, but different.`
+		log "People" "Quash" `An unusual Quarg hitchhiker I met on a pirate world. Quash needed transportation to Janus, another pirate world, in the Archipelago system. Quash has an unusual city ship, a Carabao. It is similar to a Bactrian, but different.`
 		payment 90000
 		fail
 
@@ -204,12 +214,12 @@ mission "Cartography: Poisonwood Trailblazer"
 	source Poisonwood
 	to offer
 		has "event: Poisonwood Trailblazer Excavation"
-		"credits" > 5400000
+		"credits" > 44000000
 	on offer
 		conversation
 			scene "scene/scene-trailblazerdesert"
 			`It's been a while since you last visited the archaeological dig site and you are curious at how they have progressed in excavating the hull of that crashed ship. When you arrive, you find that they have excavated what remains of the ship, but have left it to languish exposed to the elements.`
-			`	Millie arrives to greet you. "Welcome back, Captain <last>. We were hoping to find more buried beyond the ship, but this is all we've found for now. The local government has no plans to keep the wrecked hull. Things might've turned out differently if Foster had shown up, but all we have is you. Would you be interested in purchasing it? We estimate 4,400,000 credits is a fair price for an empty hull of this size and condition."`
+			`	Millie arrives to greet you. "Welcome back, Captain <last>. We were hoping to find more buried beyond the ship, but this is all we've found for now. The local government has no plans to keep the wrecked hull. Things might've turned out differently if Foster had shown up, but all we have is you. Would you be interested in purchasing it? We estimate 22,000,000 credits is a fair price for an empty hull of this size and condition."`
 			choice
 				`	"Sure, I enjoy restoring old ships to working condition."`
 					goto purchase
@@ -221,7 +231,7 @@ mission "Cartography: Poisonwood Trailblazer"
 			`(Remember to visit the outfitter and make sure your new ship is properly outfitted for flight! You may need to import outfits from other worlds in order to make the ship spaceworthy. If so, press "i" to open the info screen and park the ship until you return with the necessary outfits.)`
 				accept
 	on accept
-		payment -4400000
+		payment -22000000
 		give ship "Saryd Trailblazer" "Name Unknown"
 		log `Acquired the hull of an old Coalition war ship that was found on Poisonwood. Restoring it to working condition will take considerable resources and effort.`
 		fail

@@ -102,7 +102,7 @@ mission "Midnight Market: Hauler VI Prototype 0"
 	on offer
 		conversation
 			scene "thumbnail/hauler vi-thumb"
-			`As you settle in to enjoy your dinner at the bar, the news announces the theft of the Hauler VI prototype from Southbound Shipyards. You recall doing some work regarding the refrigeration system for that ship when an interview of Veronica Oxygenpocket, the woman who employed your for that job, begins to play.`
+			`As you settle in to enjoy your dinner at the bar, the news announces the theft of the Hauler VI prototype from Southbound Shipyards. You recall doing some work regarding the refrigeration system for that ship when an interview of Veronica Oxygenpocket, the woman who employed you for that job, begins to play.`
 			`	"Our team has been working very hard to make this ship a reality. I can't prove who is responsible for the theft. But our competitors should know that this is merely a minor setback. The Hauler VI will make it to market soon!"`
 				decline
 	on decline
@@ -112,7 +112,7 @@ event "stolen Hauler VI timer"
 
 mission "Midnight Market: Hauler VI Prototype 1"
 	name "Myserious Sales Pitch"
-	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a hangar on <planet> in the <system> system if you want to purchase it for seven million credits."
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a hangar on <planet> in the <system> system if you want to purchase it for 7,000,000 credits."
 	source
 		government "Republic"
 	destination Stormhold
@@ -122,11 +122,11 @@ mission "Midnight Market: Hauler VI Prototype 1"
 		"net worth" > 28000000
 		"credits" > 14000000
 	to complete
-		"credits" > 6999999
+		"credits" >= 7000000
 	on offer
 		conversation
 			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience with bulk cargo deliveries, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to pay seven million credits at the time of the transaction."`
+			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience with bulk cargo deliveries, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to pay 7,000,000 credits at the time of the transaction."`
 			`	The address listed is for a hangar on <planet> in the <system> system.`
 			choice
 				`	(Accept the invitation.)`
@@ -143,7 +143,7 @@ mission "Midnight Market: Hauler VI Prototype 2"
 	source Stormhold
 	to offer
 		has "Midnight Market: Hauler VI Prototype 1: done"
-		"credits" > 6999999
+		"credits" >= 7000000
 	on offer
 		conversation
 			`You locate the hangar that was indicated in the message and land near it. Idly, you wonder if they could have chosen a warmer location to hold this meeting. On the way down, the snow drifting across your field of vision almost obscures your view of several nearby hobos warming themselves by bonfires. It's difficult to see, but you are certain that they are armed with weapons.`
@@ -242,7 +242,7 @@ event "stolen THOR timer"
 
 mission "Midnight Market: Project THOR 1"
 	name "Myserious Sales Pitch"
-	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a village on <planet> in the <system> system if you want to purchase it for two million credits."
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a village on <planet> in the <system> system if you want to purchase it for 2,000,000 credits."
 	source
 		government "Syndicate"
 	destination "Mutiny"
@@ -252,11 +252,11 @@ mission "Midnight Market: Project THOR 1"
 		"net worth" > 8000000
 		"credits" > 4000000
 	to complete
-		"credits" > 1999999
+		"credits" >= 2000000
 	on offer
 		conversation
 			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has engaged in countless battles across the galaxy, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to pay two million credits at the time of the transaction."`
+			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has engaged in countless battles across the galaxy, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to pay 2,000,000 credits at the time of the transaction."`
 			`	The address listed is for a farm on <planet> in the <system> system.`
 			choice
 				`	(Accept the invitation.)`
@@ -264,7 +264,8 @@ mission "Midnight Market: Project THOR 1"
 				`	(Reject the invitation.)`
 					defer
 	on visit
-		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the necessary credits to complete the transaction.`
+		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the 2,000,000 credits needed to complete the transaction.`
+
 
 mission "Midnight Market: Project THOR 2"
 	landing
@@ -273,7 +274,7 @@ mission "Midnight Market: Project THOR 2"
 	destination "Rust"
 	to offer
 		has "Midnight Market: Project THOR 1: done"
-		"credits" > 1999999
+		"credits" >= 2000000
 	on offer
 		conversation
 			`You locate the farm that was indicated in the message and land near a large barn. On the way down, you notice several armed villagers attempting to stay hidden in a nearby corn field.`
@@ -372,7 +373,7 @@ event "Stolen Cloaking Device"
 
 mission "Midnight Market: Cloaking Device 1"
 	name "Myserious Sales Pitch"
-	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a pier on <planet> in the <system> system if you want to purchase it for four jump drives."
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a pier on <planet> in the <system> system if you want to purchase it for 4,000,000 credits and one jump drive."
 	source
 		government "Free Worlds"
 	destination Freedom
@@ -380,20 +381,44 @@ mission "Midnight Market: Cloaking Device 1"
 		"Midnight Market" > 4
 		"Corporate espionage: done" > 2
 		has "event: Stolen Cloaking Device"		
+		"net worth" > 8000000
+		"credits" >= 6000000
+		or
+			not "Randomize Midnight Market: Cloaking Device 1" 
+			and
+				has "Randomize Midnight Market: Cloaking Device 1" 
+				random < 10
+	to complete
+		"credits" >= 4000000
 	on offer
-		require "Jump Drive" 4
+		require "Jump Drive" 1
 		conversation
 			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience in acts of espionage, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to trade us four jump drives at the time of the transaction."`
+			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience in acts of espionage, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to trade us 4,000,000 credits and one jump drive at the time of the transaction."`
 			`	The address listed is for a pier on <planet> in the <system> system.`
 			choice
 				`	(Accept the invitation.)`
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "Randomize Midnight Market: Cloaking Device 1"
 	on visit
-		dialog `You've arrived at <planet> but you don't have the 4 jump drives that were requested! Return with 4 jump drives to negotiate with the mysterious seller.`
+		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the 4,000,000 credits needed to complete the transaction.`
 
+
+mission "Midnight Market: Cloaking Device 1B"
+	landing
+	invisible
+	repeat
+	source Freedom
+	to offer
+		has "Midnight Market: Cloaking Device 1: active"
+	on offer
+		require "Jump Drive" 0
+		dialog `You've arrived at <planet> but you don't have the jump drive that was requested! Return with the jump drive needed to complete the transaction.`
+	on accept
+		fail
 
 mission "Midnight Market: Cloaking Device 2"
 	landing
@@ -403,8 +428,9 @@ mission "Midnight Market: Cloaking Device 2"
 	to offer
 		has "Midnight Market: Cloaking Device 1: done"
 		"Midnight Market" > 3
+		"credits" >= 4000000
 	on offer
-		require "Jump Drive" 4
+		require "Jump Drive" 1
 		conversation
 			`You locate the pier that was indicated in the message and land near a bait shop. On the way down, you notice several fishermen are armed with weapons that are not suitable for regular fishing.`
 			choice
@@ -415,7 +441,7 @@ mission "Midnight Market: Cloaking Device 2"
 			`	You decide that the presence of the armed fishermen is a risk you're unwilling to bear and abort the landing.`
 				flee
 			label deal
-			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you. "Simply unload the four jump drives and it's all yours!"`
+			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you. "Simply unload the jump drive and confirm payment on this datapad. Then it's all yours!"`
 			`	"What, exactly, am I trading for?" you ask.`
 			`	"Behold!" he gestures towards the bait shop. As he speaks, the door to the bait shop swings open and the sales clerk is wheeling out a typical wooden crate. "A top secret experimental Cloaking Device recovered from a Syndicate facility on Hephaestus. After being passed around from one trader to another, it eventually found its way into our inventory."`
 			`	By the time he finishes his sales pitch, the shop clerk has pried open the crate. It appears to be empty. Reaching inside, however, you can definitely feel that there is some machinery there.`
@@ -431,10 +457,10 @@ mission "Midnight Market: Cloaking Device 2"
 			`	"Congratulations on your acquisition captain. I'm sure you won't regret it. We'll throw in a bonus of four hyperdrives in case you need them. You'll hear from us again if we happen to have an opportunity for you to put it to good use."`
 				accept
 	on accept
-		log `Traded four jump drives for a Cloaking Device on the Midnight Market. It works just like the one I sold back to the researchers on Hephaestus. I might swear that it's the same machine... if I could see it.`
-		outfit "Jump Drive" -4
+		log `Traded a jump drive and 4 million credits for a Cloaking Device on the Midnight Market. It works just like the one I sold back to the researchers on Hephaestus. I might swear that it's the same machine... if I could see it.`
+		outfit "Jump Drive" -1
 		outfit "Cloaking Device" 1
-		outfit "Hyperdrive" 4
+		outfit "Hyperdrive" 1
 		"Midnight Market" ++
 	on complete
 		conversation
@@ -460,9 +486,14 @@ mission "Midnight Market: Intrusion Countermeasures 1"
 		has "event: Diyu reveal"
 		"combat rating" > 1000
 		"net worth" > 1000000
-		"credits" > 499999
+		"credits" >= 500000
+		or
+			not "Randomize Midnight Market: Intrusion Countermeasures 1" 
+			and
+				has "Randomize Midnight Market: Intrusion Countermeasures 1" 
+				random < 10
 	to complete
-		"credits" > 499999
+		"credits" >= 500000
 	on offer
 		conversation
 			`You receive an anonymous message:`
@@ -473,8 +504,11 @@ mission "Midnight Market: Intrusion Countermeasures 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
-	on visit Mutiny
-		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the necessary credits to complete the transaction.`
+	on defer
+		set "Randomize Midnight Market: Intrusion Countermeasures 1" 
+	on visit
+		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the 500,000 credits needed to complete the transaction.`
+
 
 mission "Midnight Market: Intrusion Countermeasures 2"
 	landing
@@ -482,7 +516,7 @@ mission "Midnight Market: Intrusion Countermeasures 2"
 	source "Naihe Qiao"
 	to offer
 		has "Midnight Market: Intrusion Countermeasures 1: done"
-		"credits" > 499999
+		"credits" >= 500000
 	on offer
 		conversation
 			`After navigating through the underground caverns, you locate the meeting spot that was indicated in the message and land. On the way down, you notice another ship approaching.`

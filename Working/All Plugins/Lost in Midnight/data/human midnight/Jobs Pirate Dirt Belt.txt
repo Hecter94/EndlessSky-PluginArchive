@@ -56,6 +56,57 @@ mission "Archipelago Sketchy Passenger"
 		payment 2000 160
 		dialog "Your passengers ask that you land away from the busy spaceport center. They hand you <payment> and rush out of your ship and away from the spaceport with considerable speed."
 
+
+
+phrase "blackwing scan request"
+	word
+		`A mangy old `
+		`A young hotshot `
+		`A seasoned `
+	word
+		`pirate `
+		`bucanneer `
+		`rogue `
+		`mercenary `
+		`smuggler `
+		`information broker `
+	word
+		`with a cybernetic arm `
+		`with a prosthetic leg `
+		`with a data pad `
+		`wearing an eye patch `
+		`more brains than brawn `
+		`wearing a scruffy bandanna `
+		`wearing a mask `
+	word
+		`approaches you. "Are you familiar with the Blackwings? One is about to launch and I'll pay you 50,000 credits if you can get me a scan of their outfits."`
+
+mission "Blackwing Scan Request"
+	repeat
+	deadline 1
+	name "Blackwing Scan Request"
+	description "Scan the <npc> before it leaves the system, then bring the data to <destination>. Payment is 50,000 credits."
+	source
+		attributes "dirt belt"
+	to offer
+		or
+			and
+				"credits" < 500000
+				random < 15
+			and
+				"credits" >= 500000
+				random < 5
+	on offer
+		dialog phrase "blackwing scan request"
+	npc "scan outfits"
+		government "Independent"
+		personality target timid uninterested surveillance
+		ship "Modified Blackbird" "Black Wings"
+	on complete
+		payment 25000
+		dialog `They're not happy with the scanner data and only pay half of the reward...`
+
+
 mission "Vesta Tribute"
 	name "Vesta Tribute to <planet>"
 	job

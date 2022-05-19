@@ -43,31 +43,31 @@ mission "Midnight Market: Trailblazer Auction"
 			label auction
 			apply
 				set "trailblazer encountered"
-			`	"41 million!" yells one Saryd.`
-			`	"41 million!" recites another Saryd from behind a podium setup in front of the crowd. "Is a bid there for 42?"`
-			`	"42 million!" yells an Arachi.`
-			`	"42 million!" repeats the Saryd at the podium. "Will a bid of 43 anyone make?"`
+			`	"30 million!" yells one Saryd.`
+			`	"30 million!" recites another Saryd from behind a podium setup in front of the crowd. "Is a bid there for 31?"`
+			`	"31 million!" yells an Arachi.`
+			`	"31 million!" repeats the Saryd at the podium. "Will a bid of 32 anyone make?"`
 			`	From what you are seeing, it looks like the ship is being auctioned off...`
-			`	"43 million!" yells a Kimek.`
-			`	"43 million!" calls out the Saryd at the podium. "Is 44 a bid any proposes?"`
+			`	"32 million!" yells a Kimek.`
+			`	"32 million!" calls out the Saryd at the podium. "Is 33 a bid any proposes?"`
 			`	The crowd is silent.`
-			`	"43 million, a bid twice does stand."`
-			`	"43 million, thrice a bid goes unchallenged."`
+			`	"32 million, a bid twice does stand."`
+			`	"32 million, thrice a bid goes unchallenged."`
 			`	Do you bid?`
 			choice
-				`	"44 million!"`
+				`	"33 million!"`
 					goto finalbid
 				`	(Remain quiet.)`
 				
-			`	"43 million for the third time does stand!" proclaims the auctioneer. The Saryds stamp their hooves and hoot while the Arachi make celebratory clicking sounds with their mandibles and the Kimek buzz their wings. You realize this must be the Coalition equivalent of clapping. The Saryd auctioneer congratulates the Kimek on his purchase while a Heliarch official formalizes the transfer of ownership.`
+			`	"32 million for the third time does stand!" proclaims the auctioneer. The Saryds stamp their hooves and hoot while the Arachi make celebratory clicking sounds with their mandibles and the Kimek buzz their wings. You realize this must be the Coalition equivalent of clapping. The Saryd auctioneer congratulates the Kimek on his purchase while a Heliarch official formalizes the transfer of ownership.`
 				decline
 			
 			label finalbid
 			`	All eyes turn towards you.`
-			`	"F... f... forty four million, the human does bid! Will a challenge from anyone come forth?" stammers the auctioneer.`
+			`	"Th... th... thirty three million, the human does bid! Will a challenge from anyone come forth?" stammers the auctioneer.`
 			`	The crowd is silent.`
-			`	"44 million, twice a bid goes unopposed!"`
-			`	"44 million, thrice the bid does stand."`
+			`	"33 million, twice a bid goes unopposed!"`
+			`	"33 million, thrice the bid does stand."`
 			`	"Congratulations to the human! The Trailblazer, to you it does go!" the auctioneer gestures towards you.`
 			`	After a moment of silence, the Saryds stamp their hooves and hoot while the Arachi make audible clicking sounds with their mandibles and the Kimek buzz their wings. You hope this is the Coalition equivalent of clapping. The auctioneer and a Heliarch official make their way towards you and begin the formal ownership transfer process.`
 			label buyerquestions
@@ -102,10 +102,13 @@ mission "Midnight Market: Trailblazer Auction"
 			`	After signing off on the transfer forms, you look upon your new ship. You make a mental note to take it to an outfitter as soon as possible to get a closer look at those guns...`
 				accept
 	on decline
+		set "trailblazer encountered"
 		event "stolen trailblazer timer" 30
 		log `I saw a Saryd Trailblazer sold at a Coalition auction. I was amazed that the Heliarch allowed the ship to be sold with its guns installed. There is still much for me to learn about the Coalition's legal system regarding civilian weapon ownership.`
 	on accept
-		payment -44000000
+		set "trailblazer encountered"
+		event "Model Guns For Sale"
+		payment -33000000
 		give ship "Saryd Trailblazer (Antique)" "Exturebus Maglorumus"
 		log `Won a Saryd Trailblazer at auction. This is supposedly a rare antique from the time of the Coalition's rebellion against the Quarg. Since the Coalition does not allow citizens to arm their ships, the previous owner outfitted it with model guns to give it an authentic appearance.`
 
@@ -279,7 +282,7 @@ mission "Midnight Market: Coalition Smuggling 1"
 			not "Randomize Midnight Market: Coalition Smuggling 1"
 			and
 				has "Randomize Midnight Market: Coalition Smuggling 1"
-				random < 20
+				random < 10
 	on offer
 		conversation
 			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1,000,000`
@@ -338,7 +341,7 @@ mission "Midnight Market: Coalition Smuggling 2"
 	name "Coalition Smuggling"
 	description "Escort a ship carrying merchandise to <destination> by <date>. Payment is <payment>."
 	source "Poisonwood"
-	destinatiot
+	destination
 		government "Coalition"
 	to offer
 		has "Midnight Market: Coalition Smuggling 1: done"
@@ -504,9 +507,13 @@ mission "Midnight Market: Coalition Smuggler Patrols"
 	landing
 	invisible
 	to offer
-		has "Midnight Market: Coalition Smuggling 4: done"
+		or
+			has "Midnight Market: Coalition Smuggling 2: done"
+			has "Midnight Market: Coalition Smuggling 3: done"
+			has "Midnight Market: Coalition Smuggling 4: done"
 	on offer
 		event "Coalition Patrolling Southern Rim" 30
+		event "Model Guns For Sale"
 		fail
 
 fleet "Coalition Smuggler Patrol"
@@ -544,15 +551,22 @@ mission "Midnight Market: Coalition Smuggling Bounty (Kimek)"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		random < 25
+	on offer
+		require "Brig"
 	npc board
 		government "Independent"
 		system
 			distance 2 3
 		personality target waiting staying uninterested
 		fleet "Independent Kimek Smuggler"
-		dialog `You've captured one of the crew members. Bring them to <destination> for questioning.`
+		conversation
+			scene "outfit/brig"
+			`You've captured one of the crew members. Bring them to <destination> for questioning. You weren't ordered to kill the crew, and doing so may have consequences that aren't readily apparent.`
+	on fail
+		"reputation: Coalition" --
+		dialog `You were only supposed to bring one of the crew in for questioning, not kill the crew! There may be consequences from this that aren't readily apparent.`
 	on complete
-		"reputation: Coalition" ++
 		"reputation: Heliarch" ++
 		payment 150000
 		dialog `Your assistance with stopping the smugglers is appreciated by the Heliarchs. They pay you <payment> for your efforts.`
@@ -568,15 +582,22 @@ mission "Midnight Market: Coalition Smuggling Bounty (Saryd)"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		random < 25
+	on offer
+		require "Brig"
 	npc board
 		government "Independent"
 		system
 			distance 2 3
 		personality target waiting staying uninterested
 		fleet "Independent Saryd Smuggler"
-		dialog `You've captured one of the crew members. Bring them to <destination> for questioning.`
+		conversation
+			scene "outfit/brig"
+			`You've captured one of the crew members. Bring them to <destination> for questioning. You weren't ordered to kill the crew, and doing so may have consequences that aren't readily apparent.`
+	on fail
+		"reputation: Coalition" --
+		dialog `You were only supposed to bring one of the crew in for questioning, not kill the crew! There may be consequences from this that aren't readily apparent.`
 	on complete
-		"reputation: Coalition" ++
 		"reputation: Heliarch" ++
 		payment 150000
 		dialog `Your assistance with stopping the smugglers is appreciated by the Heliarchs. They pay you <payment> for your efforts.`
@@ -592,22 +613,26 @@ mission "Midnight Market: Coalition Smuggling Bounty (Arach)"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		random < 25
+	on offer
+		require "Brig"
 	npc board
 		government "Independent"
 		system
 			distance 2 3
 		personality target waiting staying uninterested
 		fleet "Independent Arach Smuggler"
-		dialog `You've captured one of the crew members. Bring them to <destination> for questioning.`
+		conversation
+			scene "outfit/brig"
+			`You've captured one of the crew members. Bring them to <destination> for questioning. You weren't ordered to kill the crew, and doing so may have consequences that aren't readily apparent.`
+	on fail
+		"reputation: Coalition" --
+		dialog `You were only supposed to bring one of the crew in for questioning, not kill the crew! There may be consequences from this that aren't readily apparent.`
 	on complete
-		"reputation: Coalition" ++
 		"reputation: Heliarch" ++
 		payment 150000
 		dialog `Your assistance with stopping the smugglers is appreciated by the Heliarchs. They pay you <payment> for your efforts.`
 
-		fleet "Independent Kimek Smuggler" 20000
-		fleet "Independent Saryd Smuggler" 20000
-		fleet "Independent Arach Smuggler" 20000
 
 mission "Midnight Market: Source of Coalition Smuggling 1"
 	name "Source of Coalition Smuggling"
@@ -616,8 +641,9 @@ mission "Midnight Market: Source of Coalition Smuggling 1"
 	to offer
 		has "Midnight Market: Coalition Smuggling 4: done"
 	on offer
-		scene "scene/scene-modelguns"
-		`You wonder where the Coalition Smugglers get their supplies from...`
+		conversation
+			scene "scene/scene-modelguns"
+			`You wonder where the Coalition Smugglers get their supplies from...`
 			accept
 	on fail
 		clear "Midnight Market: Source of Coalition Smuggling 1: offered"

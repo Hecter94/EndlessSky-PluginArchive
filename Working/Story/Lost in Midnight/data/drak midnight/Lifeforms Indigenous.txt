@@ -161,7 +161,7 @@ mission "Subsidurial Herding Job Easy"
 	destination Greenrock
 	to offer
 		has "First Contact: Subsidurials: offered"
-		random < 20 + "subsidurial herding"
+		random < 10
 	on accept
 		dialog "The Subsidurials are shackled with collars. If they stray too far from your ship, the collar inflicts pain on the creature."
 	npc accompany save
@@ -176,13 +176,11 @@ mission "Subsidurial Herding Job Easy"
 				"Subsidurial Tamed" 5
 	on abort
 		"reputation: Pirate" --
-		"subsidurial herding" -= 10
 		conversation
 			scene "thumbnail/subsidurial"
 			`You release the collars and set the Subsidurials free. This will probably ruin your reputation with the client, but at least these creatures won't suffer anymore. Perhaps it's just your imagination, but one of them seems to nod in thanks before departing.`
 	on fail
 		"reputation: Pirate" --
-		"subsidurial herding" -= 10
 		dialog "You failed to safely deliver the herd to your client."
 	on visit
 		dialog `You've arrived at <planet>, but some of the Subsidurials are missing! Return to orbit and search for them.`
@@ -203,7 +201,7 @@ mission "Subsidurial Herding Job Hard"
 	destination Greenrock
 	to offer
 		has "First Contact: Subsidurials: offered"
-		random < 20 + "subsidurial herding"
+		random < 10
 	on accept
 		dialog "The Subsidurials are shackled with collars. If they stray too far from your ship, the collar inflicts pain on the creature."
 	npc accompany save
@@ -218,13 +216,11 @@ mission "Subsidurial Herding Job Hard"
 				"Subsidurial Tamed" 5
 	on abort
 		"reputation: Pirate" --
-		"subsidurial herding" -= 10
 		conversation
 			scene "thumbnail/subsidurial"
 			`You release the collars and set the Subsidurials free. This will probably ruin your reputation with the client, but at least these creatures won't suffer anymore. Perhaps it's just your imagination, but one of them seems to nod in thanks before departing.`
 	on fail
 		"reputation: Pirate" --
-		"subsidurial herding" -= 10
 		dialog "You failed to safely deliver the herd to your client."
 	on visit
 		dialog `You've arrived at <planet>, but some of the Subsidurials are missing! Return to orbit and search for them.`
@@ -264,7 +260,8 @@ mission "Subsidurial Herding Mission Easy"
 	destination Greenrock
 	to offer
 		has "First Contact: Subsidurials: offered"
-		random < 15 + "subsidurial herding"
+		not "Day of Subsidurius: offered"
+		random < 5
 	on offer
 		dialog phrase "subsidurial herd offer"
 	on accept
@@ -279,6 +276,12 @@ mission "Subsidurial Herding Mission Easy"
 				"Subsidurial Tamed" 4
 			variant
 				"Subsidurial Tamed" 5
+	npc
+		government "Creature Hunter"
+		system
+			distance 1 2
+		personality vindictive harvests coward
+		fleet "Poachers"
 	on abort
 		conversation
 			scene "thumbnail/subsidurial"
@@ -289,7 +292,6 @@ mission "Subsidurial Herding Mission Easy"
 		dialog `You've arrived at <planet>, but some of the Subsidurials are missing! Return to orbit and search for them.`
 	on complete
 		"reputation: Pirate" ++
-		"subsidurial herding" ++
 		payment 200000
 		dialog "You deliver the herd to your client and are rewarded with <payment>. The Subsidurials are sedated in cages and carted away..."
 
@@ -304,7 +306,8 @@ mission "Subsidurial Herding Mission Hard"
 	destination Greenrock
 	to offer
 		has "First Contact: Subsidurials: offered"
-		random < 15 + "subsidurial herding"
+		not "Day of Subsidurius: offered"
+		random < 5
 	on offer
 		dialog phrase "subsidurial herd offer"
 	on accept
@@ -319,6 +322,12 @@ mission "Subsidurial Herding Mission Hard"
 				"Subsidurial Tamed" 4
 			variant
 				"Subsidurial Tamed" 5
+	npc
+		government "Creature Hunter"
+		system
+			distance 1 2
+		personality vindictive harvests coward
+		fleet "Poachers" 2
 	on abort
 		conversation
 			scene "thumbnail/subsidurial"
@@ -329,7 +338,6 @@ mission "Subsidurial Herding Mission Hard"
 		dialog `You've arrived at <planet>, but some of the Subsidurials are missing! Return to orbit and search for them.`
 	on complete
 		"reputation: Pirate" ++
-		"subsidurial herding" ++
 		payment 400000
 		dialog "You deliver the herd to your client and are rewarded with <payment>. The Subsidurials are sedated in cages and carted away..."
 
@@ -351,6 +359,23 @@ ship "Subsidurial" "Subsidurial Weaponized A"
 	turret "Heavy Laser Turret"
 
 ship "Subsidurial" "Subsidurial Weaponized B"
+	sprite "ship/subsidurial weaponized"
+	"never disabled"
+	"swizzle" 0
+	add attributes
+		"cargo space" -35
+		"outfit space" 80
+		"weapon capacity" 80
+	outfits
+		Mouthparts? 3
+		"Laser Turret" 2
+	gun Mouthparts?
+	gun Mouthparts?
+	gun Mouthparts?
+	turret "Laser Turret"
+	turret "Laser Turret"
+
+ship "Subsidurial" "Subsidurial Weaponized C"
 	sprite "ship/subsidurial weaponized"
 	"never disabled"
 	"swizzle" 0
@@ -393,35 +418,89 @@ mission "Day of Subsidurius"
 	on defer
 		"day of subsidurius" ++
 	on enter
-		"reputation: Independent (Killable)" <?= -1000
 		dialog `The defense fleet is hailed by a mysterious ship. "Pray for salvation! The Day of Subsidurius has arrived!"`
 	npc
 		government "Militia"
 		personality heroic disables
 		fleet "Small Militia"
 	npc evade
-		government "Independent (Killable)"
-		personality target vindictive coward mute
+		government "Pirate"
+		personality target waiting vindictive coward mute
 			confusion 120
 		fleet
 			variant
 				"Subsidurial Weaponized A" 4
 				"Subsidurial Weaponized B" 4
+				"Subsidurial Weaponized C" 8
 	npc kill
-		government "Independent (Killable)"
-		personality target vindictive coward
+		government "Pirate"
+		personality target waiting staying vindictive
 			confusion 20
 		ship "Subsidurius" "Subsidurius"
 		dialog `The Subsidurius has been defeated. Return to <planet> to collect your reward.`
 	on visit
 		dialog `Threats in orbit haven't been dealt with! Get back up there and defend the planet!`
-	on abort
-		"reputation: Independent (Killable)" >?= 10
 	on complete
-		"reputation: Independent (Killable)" >?= 10
-		payment 150000
+		payment 350000
 		log `A maniac planned to conquer the galaxy with a herd of weaponized Subsidurials. I managed to foil the diabolical scheme. Unfortunately, I can't claim that no Subsidurials were harmed during the battle.`
 		dialog `The government of <planet> pays you <payment> for helping defend against the Subsidurius.`
+
+
+
+mission "Weaponized Subsidurial Bounty"
+	name "Weaponized Subsidurials near <system>"
+	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy the <npc> and report to <destination>. Payment is payment." 
+	source
+		government "Free Worlds"
+	to offer
+		has "Day of Subsidurius: done"
+		random < 10
+	npc
+		government "Bounty"
+		personality target entering harvests mute
+			confusion 120
+		fleet
+			variant
+				"Subsidurial Weaponized A" 3
+				"Subsidurial Weaponized B" 4
+	npc kill
+		government "Bounty"
+		personality target entering staying vindictive
+			confusion 20
+		fleet "Poachers"
+		dialog `The <npc> has been defeated. Return to <planet> to collect your reward.`
+	on complete
+		payment 250000
+		dialog `The government of <planet> pays you <payment> for helping eliminate the <npc>.`
+
+
+
+mission "Weaponized Subsidurial Stray"
+	name "Stray Weaponized Subsidurial"
+	description "A stray weaponized Subsidurial is wandering near <system>. Find and herd it back to <destination> to be de-weaponized. Payment is <payment>."
+	source
+		government "Free Worlds"
+	to offer
+		has "Day of Subsidurius: done"
+		random < 5
+	npc accompany save
+		government "Indigenous Lifeform"
+		system
+			distance 10
+		personality target mining harvests mute
+			confusion 120
+		fleet
+			variant
+				"Subsidurial Weaponized A"
+			variant
+				"Subsidurial Weaponized B"
+			variant
+				"Subsidurial Weaponized C"
+	on complete
+		payment 100000
+		dialog `The government of <planet> pays you <payment> for helping de-weaponize the Subsidurial.`
+		
+
 
 mission "Midnight Market: Pet Subsidurial"
 	invisible
@@ -461,7 +540,7 @@ mission "Midnight Market: Pet Subsidurial"
 		payment -1000000
 	npc kill
 		government "Escort"
-		personality escort mute mining harvests
+		personality escort mute mining harvests marked
 		ship "Subsidurial Tamed"
 		dialog "Your pet Subsidurial has passed away..."
 	on complete
@@ -1401,8 +1480,8 @@ ship "Plasma Parasite"
 		"ramscoop" 2
 		weapon
 			"blast radius" 200
-			"shield damage" 6000
-			"hull damage" 3000
+			"shield damage" 12000
+			"hull damage" 6000
 			"hit force" 3000
 
 	leak "flame" 15 25
@@ -1422,8 +1501,8 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 		"thrust" -12
 		weapon
 			"blast radius" 400
-			"shield damage" 12000
-			"hull damage" 6000
+			"shield damage" 24000
+			"hull damage" 12000
 			"hit force" 6000
 	leak "flame" 15 25
 	explode "large explosion" 15
@@ -1540,140 +1619,209 @@ mission "First Contact: Plasma Parasite"
 event "Plasma Parasites Infest Coalition"
 	system "1 Axis"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "10 Pole" 
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "11 Autumn Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "11 Spring Below"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "12 Autumn Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "14 Pole"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "14 Summer Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "14 Winter Below"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "16 Autumn Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "3 Axis"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "3 Pole"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "3 Spring Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "4 Axis"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "4 Spring Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "4 Summer Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "4 Winter Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "5 Axis"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "5 Spring Below"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "5 Summer Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "5 Winter Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "7 Autumn Rising"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "8 Winter Below"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "9 Spring Above"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Ablodab
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Ablub
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Ancient Hope"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Answer
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Beginning
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Belonging
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Belug
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Belugt
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Bloptab
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Blubipad
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Blugtad
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Bright Void"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Broken Bowl"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Companion
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Dark Hills"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Debrugt
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Eblumab
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Fallen Leaf"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Far Horizon"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Fell Omen"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Flugbu
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Four Pillars"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Glubatub
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Good Omen"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Gupta
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Homeward
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Hunter
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Last Word"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Lone Cloud"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Mebla
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Meblumem
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Miblulub
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Pelubta
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Plort
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Remembrance
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Silver Bell"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Silver String"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Sol Arach"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Sol Kimek"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Sol Saryd"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Speloog
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system "Steep Roof"
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Tebuteb
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 	system Torbab
 		add fleet "Plasma Parasites" 40000
+		add fleet "Volatile Plasma Parasites" 40000
 
-mission "Coalition: Exterminate Plasma Parasites"
+
+
+mission "Coalition: Exterminate Plasma Parasites 1"
 	job
 	repeat
 	name "Exterminate Plasma Parasites"
@@ -1696,154 +1844,60 @@ mission "Coalition: Exterminate Plasma Parasites"
 		dialog `There are still Plasma Parasites infesting the system. Eliminate them.`
 	on complete
 		"coalition jobs" ++
-		payment
-		payment 40000
-		dialog `The Heliarchs are grateful for your assistance with eliminating the parasitic infestation and reward you with <payment>.`
+		payment 500000
+		dialog `While the collateral damage was severe, the Heliarchs are grateful for your assistance with eliminating the parasitic infestation and reward you with <payment>.`
 
-mission "Volatile Plasma Parasites"
-	landing
-	invisible
+mission "Coalition: Exterminate Plasma Parasites 2"
+	job
+	repeat
+	name "Exterminate Plasma Parasites"
+	description "Help the Heliarchs exterminate a large infestation of Plasma Parasites at <destination>. Payment is <payment>."
+	to offer
+		has "known to the heliarchs"
+		has "event: Plasma Parasites Infest Coalition"
+		random < 50
 	source
+		government "Heliarch"
+	destination
 		government "Coalition"
-	on offer
-		event "Volatile Plasma Parasites" 14
-		fail
-		
-event "Volatile Plasma Parasites" 14
-	system "1 Axis"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "10 Pole" 
-		add fleet "Volatile Plasma Parasites" 40000
-	system "11 Autumn Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "11 Spring Below"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "12 Autumn Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "14 Pole"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "14 Summer Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "14 Winter Below"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "16 Autumn Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "3 Axis"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "3 Pole"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "3 Spring Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "4 Axis"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "4 Spring Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "4 Summer Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "4 Winter Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "5 Axis"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "5 Spring Below"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "5 Summer Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "5 Winter Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "7 Autumn Rising"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "8 Winter Below"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "9 Spring Above"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Ablodab
-		add fleet "Volatile Plasma Parasites" 40000
-	system Ablub
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Ancient Hope"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Answer
-		add fleet "Volatile Plasma Parasites" 40000
-	system Beginning
-		add fleet "Volatile Plasma Parasites" 40000
-	system Belonging
-		add fleet "Volatile Plasma Parasites" 40000
-	system Belug
-		add fleet "Volatile Plasma Parasites" 40000
-	system Belugt
-		add fleet "Volatile Plasma Parasites" 40000
-	system Bloptab
-		add fleet "Volatile Plasma Parasites" 40000
-	system Blubipad
-		add fleet "Volatile Plasma Parasites" 40000
-	system Blugtad
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Bright Void"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Broken Bowl"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Companion
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Dark Hills"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Debrugt
-		add fleet "Volatile Plasma Parasites" 40000
-	system Eblumab
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Fallen Leaf"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Far Horizon"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Fell Omen"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Flugbu
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Four Pillars"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Glubatub
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Good Omen"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Gupta
-		add fleet "Volatile Plasma Parasites" 40000
-	system Homeward
-		add fleet "Volatile Plasma Parasites" 40000
-	system Hunter
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Last Word"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Lone Cloud"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Mebla
-		add fleet "Volatile Plasma Parasites" 40000
-	system Meblumem
-		add fleet "Volatile Plasma Parasites" 40000
-	system Miblulub
-		add fleet "Volatile Plasma Parasites" 40000
-	system Pelubta
-		add fleet "Volatile Plasma Parasites" 40000
-	system Plort
-		add fleet "Volatile Plasma Parasites" 40000
-	system Remembrance
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Silver Bell"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Silver String"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Sol Arach"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Sol Kimek"
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Sol Saryd"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Speloog
-		add fleet "Volatile Plasma Parasites" 40000
-	system "Steep Roof"
-		add fleet "Volatile Plasma Parasites" 40000
-	system Tebuteb
-		add fleet "Volatile Plasma Parasites" 40000
-	system Torbab
-		add fleet "Volatile Plasma Parasites" 40000
+	npc kill
+		government "Swarming Lifeform"
+		system destination
+		personality waiting staying swarming heroic unconstrained mute
+		fleet "Advanced Plasma Parasites" 3
+		fleet "Volatile Plasma Parasites"
+		dialog `You've cleared the infestation. Land on <planet> to claim your reward.`
+	on visit
+		dialog `There are still Plasma Parasites infesting the system. Eliminate them.`
+	on complete
+		"coalition jobs" ++
+		payment 750000
+		dialog `While the collateral damage was severe, the Heliarchs are grateful for your assistance with eliminating the parasitic infestation and reward you with <payment>.`
 
-
+mission "Coalition: Exterminate Plasma Parasites 3"
+	job
+	repeat
+	name "Exterminate Plasma Parasites"
+	description "Help the Heliarchs exterminate a large infestation of Plasma Parasites at <destination>. Payment is <payment>."
+	to offer
+		has "known to the heliarchs"
+		has "event: Plasma Parasites Infest Coalition"
+		random < 50
+	source
+		government "Heliarch"
+	destination
+		government "Coalition"
+	npc kill
+		government "Swarming Lifeform"
+		system destination
+		personality waiting staying swarming heroic unconstrained mute
+		fleet "Advanced Plasma Parasites" 3
+		fleet "Volatile Plasma Parasites" 2
+		dialog `You've cleared the infestation. Land on <planet> to claim your reward.`
+	on visit
+		dialog `There are still Plasma Parasites infesting the system. Eliminate them.`
+	on complete
+		"coalition jobs" ++
+		payment 1000000
+		dialog `While the collateral damage was severe, the Heliarchs are grateful for your assistance with eliminating the parasitic infestation and reward you with <payment>.`
 
