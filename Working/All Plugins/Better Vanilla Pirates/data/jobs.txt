@@ -1539,27 +1539,6 @@ phrase "generic big fleet bounty hunting payment dialog"
 	word
 		`The government of <planet> gratefully pays you <payment> for eliminating the Marauder fleet.`
 
-mission "Bounty Hunting (Marauder X)"
-	name "Hunt down the <npc>"
-	description "A pirate vessel named the <npc>, leading a large Marauder fleet, has been attacking merchants near the <system> system. Destroy the whole fleet and return to <planet> for payment (<payment>)."
-	repeat
-	job
-	to offer
-		"combat rating" > 8105
-		random < 30
-	source
-		government "Republic" "Free Worlds" "Syndicate" "Neutral"
-		attributes "rim" "south" "north" "dirt belt" "core" "frontier" "deep" "paradise"
-	npc kill
-		government "Bounty"
-		personality heroic unconstrained staying nemesis target
-		system
-			distance 1 3
-		fleet "Marauder fleet X"
-		dialog phrase "generic hunted bounty fleet eliminated dialog"
-	on complete
-		payment 1000000
-		dialog phrase "generic fleet bounty hunting payment dialog"
 
 mission "Bounty Hunting (Marauder XX)"
 	name "Hunt down the <npc>"
@@ -1669,18 +1648,16 @@ mission "Marauder Hunted Two"
 		"combat rating" > 59875
 		"combat rating" < 162755
 		not "Marauder Hunted Two: active"
-		random < 3
+		random < 2
 	to complete
 		never
 	npc save
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
 		system
-			distance 5 5
+			distance 3 3
 		fleet "Marauder fleet XX"
-		fleet "Large Northern Pirates"
-		fleet "Large Southern Pirates"
-		fleet "Large Core Pirates"
+
 
 mission "Marauder Hunted Three"
 	invisible
@@ -1691,45 +1668,21 @@ mission "Marauder Hunted Three"
 		government "Republic" "Syndicate" "Free Worlds" "Neutral"
 	to offer
 		"combat rating" > 162755
-		"combat rating" < 442414
 		not "Marauder Hunted Three: active"
 		not "Elite Marauder Hunted: active"
-		random < 3
+		random < 2
 	to complete
 		never
 	npc save
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
 		system
-			distance 5 5
+			distance 3 3
 		fleet "Marauder fleet XX" 2
-		fleet "Large Northern Pirates" 2
-		fleet "Large Southern Pirates" 2
-		fleet "Large Core Pirates" 2
+		fleet "Large Northern Pirates" 1
+		fleet "Large Southern Pirates" 1
+		fleet "Large Core Pirates" 1
 		
-mission "Marauder Hunted Four"
-	invisible
-	landing
-	repeat
-	destination "Earth"
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Neutral"
-	to offer
-		"combat rating" > 442414
-		not "Marauder Hunted Four: active"
-		not "Elite Marauder Hunted: active"
-		random < 3
-	to complete
-		never
-	npc save
-		government "Bounty Hunter"
-		personality heroic unconstrained waiting nemesis plunders harvests
-		system
-			distance 5 5
-		fleet "Marauder fleet XX" 3
-		fleet "Large Northern Pirates" 4
-		fleet "Large Southern Pirates" 4
-		fleet "Large Core Pirates" 4
 
 mission "Elite Marauder Hunted"
 	invisible
@@ -1742,13 +1695,12 @@ mission "Elite Marauder Hunted"
 		"combat rating" > 162755
 		not "Elite Marauder Hunted: active"
 		not "Marauder Hunted Three: active"
-		not "Marauder Hunted Four: active"
-		random < 3
+		random < 2
 	to complete
 		never
 	npc save
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
 		system
-			distance 5 5
+			distance 3 3
 		fleet "Elite Bounty Hunters"
