@@ -61,3 +61,18 @@ Github by default only allows the entire library to be downloaded as a single .z
 
 ***Edge of Endless***
 - Overrides Luxury Accommodations and give it much higher space, bunks, and crew requirement, might make some ships that comes with it appears to have negative space and/or bunks.
+
+***ES-Restock***
+- Gatling gun texture has empty space at 200px tall, resultuing in the outfit display being 10px lower than others
+
+***Akasha Chronicles***
+ - Ship "Seraphim" conflicts with a ship of the same name from AES Irm
+
+**AES Irm***
+ - Ship "Seraphim" conflicts with a ship of the same name from Akasha Chronicles
+
+***Mata***
+- Ship "Spectre" conflicts with a ship of the same name from Alterra
+
+***Alterra***
+- Ship "Spectre" conflicts with a ship of the same name from Mata
