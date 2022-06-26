@@ -2,21 +2,19 @@
 
 ## Do you love vanilla ES everything but wish that the human pirates, bounty hunters and related combat missions (spaceport + job board), were a little more interesting, and stayed challenging with worthwhile mission payouts even in the late game?
 
-## Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien tech. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle dreadnought or pulse cannon Firebird, etc.
+Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien tech. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle dreadnought or pulse cannon Firebird, etc.
 
-## This plugin attempts to add this sort of cool stuff.
+This plugin is designed to enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game. It does not contain any new weapons/ships/sprites, or any new or replacement storylines, nor does it make the early game any harder. It achieves all this by the adding the following (POTENTIAL SPOILERS BELOW!)
 
-## For those familiar with the earlier versions of this plugin, here's the major changes. Way more pirate variants added all using a wide array of weapon combinations, including many new Kestrel/Dreadnought/Bactrian/Falcon/Protector fits (these are all in addition to the old version). The super difficult bounty hunter fleets from last version have been toned down. Spaceport/job board missions remain unchanged, they are still crazy and designed for big freaking fleets. You can decline/abort them without penalty. Weapon Kestrel variants have been updated to use 12 guns instead of 18 (because it got changed in vanilla). Shield Kestrel variants now have the correct increased heat dissipation. Kestrels variants now carry fighters. No longer adds mule/aerie/vanguard pirates etc because they're in the base game now.
-
-## This plugin is designed to enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game. It does not contain any new weapons/ships/sprites, or any new or replacement storylines, nor does it make the early game any harder. It achieves all this by the adding the following (POTENTIAL SPOILERS BELOW!)
+- *NEW* Minor mission thread with three instalments unlocked at CR9, 10, 11, and more incoming soon (up to CR 13 or 14). These involve a shady NPC who offers you detailed information on unique bounty hunting groups coming to get you. The next few instalments will involve a longer mission finale and unlocking some powerful upgraded human weapons.
 
 - 30+ new combat missions (jobs and spaceport) with tonnes of variety and unusual low-chance variations in human space, complete with corresponding regional NPC assistance in many cases. These new missions include planetary defence, multiple wave planetary defence, nearby pirate blockade destruction and more. They range from 1mil to 20mil payouts, but the toughest jobs require extremely expensive fleets to complete without losses. Some of these involve very big fleet battles so take care!
 
-- Many new variations of the "Marauder Hunted" mission, the "invisible" mission present in vanilla, where Marauder Bounty Hunters will occasionally hunt you down without warning if your combat rating is high enough. These new variations scale with combat rating, and come in two distinct flavours; small, homogeneous fleets of elite heavy warships with expensive outfit combinations, and larger rag-tag fleets including all types of ships.
-
 - Note that no existing missions/jobs are altered, just new ones added. All new missions are repeating and can be declined with no penalty.
 
-- Way, WAY more varied pirate ship variants including 21 different Kestrel setups (7 for each of the Kestrel choices), military ships, more Marauder variants, some which are have low level alien tech.
+- Many new variations of the "Marauder Hunted" mission, the "invisible" mission present in vanilla, where Marauder Bounty Hunters will occasionally hunt you down without warning if your combat rating is high enough. These new variations scale with combat rating, and come in two distinct flavours; small, homogeneous fleets of elite heavy warships with expensive outfit combinations, and larger rag-tag fleets including all types of ships.
+
+- Dozens more pirate ship variants including 21 different Kestrel setups (7 for each of the Kestrel choices), like Proton Kestrels, Pulse cannon/Hai Tracker Bactrians and literally dozens of other combinations, military ships, more Marauder variants, some which have low level alien tech.
 
 - Introduces pirates with Hai+limited Korath exile outfits (heat shunts only), and the Kestrel, and then finally Hai/Korath fitted Kestrels, into ambient pirate/merchant fleets, mission targets (as described above), and the Marauder Bounty Hunted fleet (that Marauder fleet that hunts you down occasionally if your combat rating is high enough).
 
