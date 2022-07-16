@@ -220,28 +220,6 @@ event "add ka'het scouts"
 
 
 
-mission "Omnipotence Map patch"
-	landing
-	invisible
-	to offer
-		has "Omnipotence Map: Builder Anti-Missile 1: active"
-	on offer
-		fail "Omnipotence Map: Builder Ships 1"
-		fail "Omnipotence Map: Builder Ships 2"
-		fail "Omnipotence Map: Builder Ships 3"
-		fail "Omnipotence Map: Builder Ships 4"
-		fail "Omnipotence Map: Builder Anti-Missile 1"
-		fail "Omnipotence Map: Builder Anti-Missile 2"
-		fail "Omnipotence Map: Builder Drones 1"
-		fail "Omnipotence Map: Builder Drones 2"
-		fail "Omnipotence Map: Ka'het Outfitter 1"
-		fail "Omnipotence Map: Ka'het Outfitter 2"
-		fail "Omnipotence Map: Builder Negator 1"
-		fail "Omnipotence Map: Builder Negator 2"
-		fail
-
-
-
 mission "Omnipotence Map: Hint"
 	landing
 	to offer
@@ -312,7 +290,7 @@ mission "Omnipotence Map: Builder Ships part 3"
 				accept
 	on accept
 		outfit "Builder IFF Transmitter" 1
-		clear "Omnipotence Map: Builder Ships 3: offered"
+		clear "Omnipotence Map: Builder Ships 4: offered"
 		fail
 
 mission "Omnipotence Map: Builder Ships part 4"
@@ -353,7 +331,8 @@ mission "Omnipotence Map: Builder Ships part 5"
 	passengers 2
 	to offer
 		has "Omnipotence Map: Ka'het Outfitter part 2: failed"
-	on offer
+		random < 50
+	on accept
 		dialog "You've hired some crew members. Return to <destination> to salvage some ships."
 	
 mission "Omnipotence Map: Builder Ships part 6"
@@ -373,6 +352,73 @@ mission "Omnipotence Map: Builder Ships part 6"
 		give ship "Kai'xeris" "Builder Freighter"
 		give ship "Kai'teris" "Builder Transport"
 
+mission "Omnipotence Map: Builder Ships part 5 [B]"
+	job
+	repeat
+	name "Builder Ship Salvage"
+	description "Take some crew members to <destination> to salvage some Builder ships."
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+		attributes "spaceport"
+	destination "Palarei"
+	passengers 2
+	to offer
+		has "Omnipotence Map: Ka'het Outfitter part 2: failed"
+		random < 50
+	on accept
+		dialog "You've hired some crew members. Return to <destination> to salvage some ships."
+	
+mission "Omnipotence Map: Builder Ships part 6 [B]"
+	landing
+	repeat
+	source "Palarei"
+	to offer
+		has "Omnipotence Map: Builder Ships part 5 [B]: done"
+	on offer
+		conversation
+			scene "thumbnail/kai'xeris-thumb"
+			scene "thumbnail/kai'xeris-thumb"
+			`You salvage some ships with the help of your new crew members.`
+				decline
+	on decline
+		clear "Omnipotence Map: Builder Ships part 5 [B]: done"
+		give ship "Kai'xeris" "Builder Freighter"
+		give ship "Kai'xeris" "Builder Freighter"
+
+mission "Omnipotence Map: Builder Ships part 5 [C]"
+	job
+	repeat
+	name "Builder Ship Salvage"
+	description "Take some crew members to <destination> to salvage some Builder ships."
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+		attributes "spaceport"
+	destination "Palarei"
+	passengers 2
+	to offer
+		has "Omnipotence Map: Ka'het Outfitter part 2: failed"
+		random < 50
+	on accept
+		dialog "You've hired some crew members. Return to <destination> to salvage some ships."
+	
+mission "Omnipotence Map: Builder Ships part 6 [C]"
+	landing
+	repeat
+	source "Palarei"
+	to offer
+		has "Omnipotence Map: Builder Ships part 5 [C]: done"
+	on offer
+		conversation
+			scene "thumbnail/kai'teris-thumb"
+			scene "thumbnail/kai'teris-thumb"
+			`You salvage some ships with the help of your new crew members.`
+				decline
+	on decline
+		clear "Omnipotence Map: Builder Ships part 5 [C]: done"
+		give ship "Kai'teris" "Builder Transport"
+		give ship "Kai'teris" "Builder Transport"
 
 		
 mission "Omnipotence Map: Builder Anti-Missile part 1"
@@ -609,4 +655,110 @@ mission "Omnipotence Map: Builder Negator part 2"
 		set "Randomize Omnipotence Map: Builder Negator 2"
 	on accept
 		outfit "Builder Negator" 1
+		fail
+
+
+
+mission "Omnipotence Map patch"
+	landing
+	invisible
+	to offer
+		has "Omnipotence Map: Builder Anti-Missile 1: offered"
+	on offer
+		fail "Omnipotence Map: Builder Ships 1"
+		fail "Omnipotence Map: Builder Ships 2"
+		fail "Omnipotence Map: Builder Ships 3"
+		fail "Omnipotence Map: Builder Ships 4"
+		fail "Omnipotence Map: Builder Anti-Missile 1"
+		fail "Omnipotence Map: Builder Anti-Missile 2"
+		fail "Omnipotence Map: Builder Drones 1"
+		fail "Omnipotence Map: Builder Drones 2"
+		fail "Omnipotence Map: Ka'het Outfitter 1"
+		fail "Omnipotence Map: Ka'het Outfitter 2"
+		fail "Omnipotence Map: Builder Negator 1"
+		fail "Omnipotence Map: Builder Negator 2"
+
+
+mission "Omnipotence Map: Builder Anti-Missile 1"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Anti-Missile 2"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Drones 1"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Drones 2"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Negator 1"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Negator 2"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Ships 1"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Ships 2"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Ships 3"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Builder Ships 4"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Ka'het Outfitter 1"
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+mission "Omnipotence Map: Ka'het Outfitter 2"
+	invisible
+	to offer
+		never
+	on offer
 		fail

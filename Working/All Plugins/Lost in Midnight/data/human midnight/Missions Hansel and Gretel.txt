@@ -83,11 +83,13 @@ mission "Hansel & Gretel: Medical Supply Escort 1"
 		fleet "pirate raid"
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		fleet "Hansel Medical 1"
 		fleet "Gretel Medical 1"
 	on complete
 		payment 125000
+		log "People" "Hansel and Gretel" `A pair of siblings piloting some Syndicate heavy warships named after themselves. They often take jobs delivering medical supplies to frontier worlds.`
+		log `Helped Hansel and Gretel deliver needed medical supplies to a frontier world.`
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`The Hansel and Gretel made it to <planet>. The siblings thank you for escorting them safely past the pirates and give you <payment>, your share of the delivery fee.`
@@ -129,7 +131,7 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 		fleet "pirate raid"
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		fleet "Hansel Medical 1"
 		fleet "Gretel Medical 1"
 	on visit
@@ -174,7 +176,7 @@ mission "Hansel & Gretel: Return Escort"
 		fleet "pirate raid" 2
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		ship "Vanguard" "Hansel"
 		ship "Protector" "Gretel"
 	on visit
@@ -192,7 +194,6 @@ mission "Hansel & Gretel: Rescue Hansel"
 	description "Find and rescue the Hansel. Also keep Gretel safe."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
-		not attributes "frontier"
 	destination
 		attributes "pirate"
 		attributes "spaceport"
@@ -207,7 +208,7 @@ mission "Hansel & Gretel: Rescue Hansel"
 		not "Hansel & Gretel: Return Escort: failed"
 		"ships: Heavy Warship" >= 1
 		random < 50
-	on accept
+	on offer
 		conversation
 			scene "thumbnail/protector"
 			`You run into Gretel at the spaceport. She is panicked and distraught. "I need your help, captain <last>! Hansel and I got separated when we were ambushed by pirates! Please help me rescue him!"`
@@ -223,17 +224,18 @@ mission "Hansel & Gretel: Rescue Hansel"
 				decline
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		ship "Protector (Laser)" "Gretel"
 	npc assist accompany save
 		system destination
 		government "Merchant"
 		personality target derelict timid
 		ship "Vanguard (no hyperdrive)" "Hansel"
-		dialog `The Hansel has been plundered! It's Hyperdrive is among the missing outfits. Land on <planet> so they can repair the ship.`
+		dialog `The Hansel has been plundered! Its Hyperdrive is among the missing outfits. Land on <planet> so they can repair the ship.`
 	on visit
 		dialog `You've arrived ahead of the Hansel and Gretel! Return to space and wait for them to arrive.`
 	on complete
+		log `Helped rescue Hansel and reunited him with his sister, Gretel.`
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`Hansel and Gretel thank you for reuniting them. Give them time to repair the Hansel, then meet them at the spaceport.`
@@ -253,6 +255,9 @@ ship "Vanguard" "Vanguard (no hyperdrive)"
 mission "Hansel & Gretel: Pirate Escape"
 	name "Pirate Escape"
 	description "Protect the Hansel and Gretel while escorting them safely back to <destination>."
+	source
+		attributes "pirate"
+		attributes "spaceport"
 	destination
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "frontier"
@@ -275,13 +280,14 @@ mission "Hansel & Gretel: Pirate Escape"
 		fleet "pirate raid"
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		ship "Protector (Laser)" "Gretel"
 		ship "Vanguard (Unarmed Scram Drive)" "Hansel"
 	on visit
 		dialog `You've arrived ahead of the Hansel and Gretel! Return to space and wait for them to arrive.`
 	on complete
 		payment 300000
+		log `Safely escorted a handicapped Hansel and Gretel away from Pirate territory.`
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`Hansel and Gretel thank you for safely escorting them away from the pirates. They give you <payment> in gratitude.`
@@ -359,7 +365,7 @@ mission "Hansel & Gretel: Medical Supply Escort 3"
 		fleet "pirate raid" 2
 	npc accompany save
 		government "Merchant"
-		personality target timid
+		personality target timid escort
 		fleet "Hansel Medical 2"
 		fleet "Gretel Medical 2"
 	on visit
@@ -398,13 +404,15 @@ mission "Hansel & Gretel: Pug Resistance"
 					accept
 				`	"Sorry, you'll just slow me down."`
 					decline
+	on accept
+		log `Hansel and Gretel will join the fight against the Pug.`
 	npc accompany save
 		government "Escort"
-		personality heroic
+		personality heroic escort
 		ship "Marauder Vanguard" "Hansel"
 		ship "Marauder Protector" "Gretel"
 	on complete
-		dialog `Hansel and Gretel congratulate you on the victory, but will part ways with your fleet here."`
+		dialog `Hansel and Gretel congratulate you on defeating the Pug, but will part ways with your fleet here."`
 		
 					
 

@@ -31,13 +31,14 @@ mission "Oathbreaker Strategos Deployed"
 	to offer
 		has "main plot completed"
 	on offer
+		log "People" "Marcus Junius" `Captain of the Strategos class Navy super carrier "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 		conversation
 			scene "thumbnail/strategos-thumb"
 			`There's a broadcast playing at the bar. They're showing the deployment of the Strategos class Navy super carrier, "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 			`	There's a low whistle. A spectator in the crowd comments, "The war might've gone differently if the Navy had a few of those in their fleet."`
 			`	Another one quips, "I'll bet the real reason they're deploying to the Dirt Belt is to keep the Free Worlds in check."`
 			`	Someone else notes, "Even the name Poisonwood refers to that one southern planet that refused to leave the Republic."`
-			`	As the ceremonial wine bottle is about to break over the hull, the captain, Marcus Junius, is asked to comment. "I look forward to a successful campaign." The red wine splatters across the ship's printine hull.`
+			`	As the ceremonial wine bottle is about to break over the hull, the captain, Marcus Junius, is asked to comment. "I look forward to a successful campaign." The red wine splatters across the ship's pristine hull.`
 				accept
 	npc kill
 		government "Republic"
@@ -398,6 +399,8 @@ mission "Oathbreaker Pirate Gossip"
 			`	"What was he doing on <planet>?" asks a woman with a mohawk.`
 			`	"Repairs and maintenance. A wanted fugitive like him fits in on worlds like this," replies the scarred man.`
 			`	Another man, one wearing a stereotypical pirate eyepatch, asks, "Does he use a carrier or a cruiser?"`
+			choice
+				`	(Keep listening.)`
 			scene "scene/scene-shieldfortress"
 			`	"Neither," replies the scarred man. "He has some weird alien ship that was salvaged by Marauders before he confiscated it. One of their crew referred to it as a 'Shield Fortress'. They attached parts of a carrier to it, giving it a huge wing span. The thing is a beast of a ship. A real monster."`
 				decline
@@ -694,7 +697,7 @@ mission "Oathbreaker Alpine Larch"
 	landing
 	deadline 7
 	name "Oathbreaker warship near <system>"
-	description `Oathbreakers have hijacked the <npc> near <system>. Locate the ship and reclaim or destroy it before they escape. The ship will be considered lost if not recovered by <date>.`
+	description `Oathbreakers have hijacked the F.S. Alpine Larch near <system>. Locate the ship and reclaim or destroy it before they escape. The ship will be considered lost if not recovered by <date>.`
 	source
 		government "Free Worlds"
 		not attributes "uninhabited"
@@ -719,13 +722,17 @@ mission "Oathbreaker Alpine Larch"
 			`	"Don't give me that! You're still accepting your Militia salary. You could at least pretend to still be a hero."`
 				accept
 	on abort
+		log `After a brief chase, I allowed the F.S. Alpine Larch, a Skein that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
 		"reputation: Free Worlds" --
 		dialog `Word gets around that you are a quitter who gave up the search for the <npc> prior to the deadline...`
 
 	npc kill
 		government "Oathbreaker"
 		personality target entering fleeing uninterested timid
-		ship "Skein" "F.S. Alpine Larch"
+		ship "Skein (Catalytic)" "F.S. Alpine Larch"
+
+	on fail
+		log `After a brief chase, I allowed the F.S. Alpine Larch, a Skein that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
 
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Skein.`
@@ -734,6 +741,7 @@ mission "Oathbreaker Alpine Larch"
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
 		payment 250000
+		log `After a brief chase, I captured the F.S. Alpine Larch, a Skein that had been stolen by the Oathbreakers. The Oathbreakers have been denied the addition of a powerful warship to their fleets today.`
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
 
 
@@ -769,6 +777,7 @@ mission "Oathbreaker Escalation"
 				accept
 
 	on abort
+		log `After a brief chase, I allowed the Escalation, a Bactrian that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
 		"reputation: Free Worlds" --
 		dialog `Word gets around that you are a quitter who gave up the search for the <npc> prior to the deadline...`
 
@@ -777,12 +786,16 @@ mission "Oathbreaker Escalation"
 		personality target waiting fleeing uninterested timid
 		ship "Bactrian (Hai Weapons)" "Escalation"
 
+	on fail
+		log `After a brief chase, I allowed the Escalation, a Bactrian that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
+
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Bactrian.`
 	on complete
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
 		payment 350000
+		log `After a brief chase, I captured the Escalation, a Bactrian that had been stolen by the Oathbreakers. The Oathbreakers have been denied the addition of a powerful warship to their fleets today.`
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
 
 
@@ -818,13 +831,17 @@ mission "Oathbreaker Black Oak"
 				accept
 
 	on abort
+		log `After a brief chase, I allowed the F.S. Black Oak, a Dreadnought that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
 		"reputation: Free Worlds" --
 		dialog `Word gets around that you are a quitter who gave up the search for the <npc> prior to the deadline...`
 
 	npc kill
 		government "Oathbreaker"
 		personality target waiting fleeing uninterested timid
-		ship "Dreadnought" "F.S. Black Oak"
+		ship "Dreadnought (Flamethrower)" "F.S. Black Oak"
+
+	on fail
+		log `After a brief chase, I allowed the F.S. Black Oak, a Dreadnought that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
 
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Dreadnought.`
@@ -832,6 +849,7 @@ mission "Oathbreaker Black Oak"
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
 		payment 450000
+		log `After a brief chase, I captured the F.S. Black Oak, a Dreadnought that had been stolen by the Oathbreakers. The Oathbreakers have been denied the addition of a powerful warship to their fleets today.`
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the <npc> falling under Oathbreaker control.`
 
 
@@ -852,7 +870,7 @@ mission "Oathbreaker Poisonwood"
 		fail "Oathbreaker Strategos Deployed"
 		conversation
 			scene thumbnail/strategos-thumb
-			`You receive an urgent message from Alondo on Bourne. "Hello <first>! We've just got confirmation from the Republic that the Strategos class Navy super carrier "R.N.S. Poisonwood" has abandoned its mission in the Dirt Belt and is likely on it's way to the south to join the Oathbreakers. We are recruiting every pilot in the area to hunt down that ship and destroy it before that happens.`
+			`You receive an urgent message from Alondo on Bourne. "Hello <first>! We've just got confirmation from the Republic that the Strategos class Navy super carrier "R.N.S. Poisonwood" has abandoned its mission in the Dirt Belt and is likely on its way to the south to join the Oathbreakers. We are recruiting every pilot in the area to hunt down that ship and destroy it before that happens.`
 			choice
 				`	"I'll do my best to hunt them down."`
 					goto vigilant
@@ -868,6 +886,7 @@ mission "Oathbreaker Poisonwood"
 				accept
 
 	on abort
+		log `I gave up the search for the R.N.S. Poisonwood, the Strategos class Navy super carrier that captain Marcus Junius commands. The Oathbreakers may have added a powerful warship to their fleets today...`
 		"reputation: Free Worlds" --
 		dialog `Word gets around that you are a quitter who gave up the search for the <npc>...`
 
@@ -903,6 +922,7 @@ mission "Oathbreaker Poisonwood"
 		"reputation: Free Worlds" ++
 		"Oathbreaker escalation" ++
 		payment 550000
+		log `After an intense search, I neutralized the R.N.S. Poisonwood, the Strategos class Navy super carrier that captain Marcus Junius commands. The Oathbreakers have been denied the addition of a powerful warship to their fleets today.`
 		dialog `The Free Worlds government gratefully rewards you with <payment> for neutralizing the threat of the R.N.S. Poisonwood joining the Oathbreaker fleets.`
 
 
@@ -1045,18 +1065,11 @@ mission "Oathbreaker Thermopylae"
 		system "Wei"
 		government "Oathbreaker"
 		personality target plunders harvests staying 
-		ship "Skein" "F.S. Alpine Larch"
+		ship "Skein (Catalytic)" "F.S. Alpine Larch"
 		fleet
-			names "republic small"
-			fighters "republic fighter"
+			fighters "free worlds fighter"
 			variant
-				"Barb"
-				"Barb (Proton)"				
-				"Barb (Gatling)"
-				"Lance (Gatling)"
-				"Lance"
-				"Dagger" 				
-
+				"Finch (Flamethrower)" 6
 	npc kill
 		system "Wei"
 		government "Oathbreaker"
@@ -1082,8 +1095,7 @@ mission "Oathbreaker Thermopylae"
 				"Lance (Gatling)"
 				"Lance"
 				"Dagger" 2
-				"Finch"
-				"Korath Chaser"
+				"Finch" 2
 
 	npc
 		system "Gienah"
@@ -1156,10 +1168,11 @@ mission "Oathbreaker Fugitives Hideout Random"
 		personality waiting staying plunders harvests coward
 		fleet "Small Oathbreaker"
 		fleet "Fugitive Oathbreaker" 4
+		dialog `<planet> may be an Oathbreaker hideout. Check the surface to be certain.`
 	on complete
 		"Oathbreaker escalation" ++
 		"Oathbreaker Fugitives Hideout Random: offered" --
-
+		dialog `No other Oathbreaker ships rise up to challenge you.`
 
 
 
@@ -1190,7 +1203,7 @@ mission "Nemesis: Oath Breaker"
 					launch
 			label coward
 			scene "scene/scene-carriercrash"
-			`	You are the only pilot still on the ground as the battle rages overhead. "Want something to calm the nerves?" asks the bartender. He downs a shot before you have a chance to respond. A loud explosion goes off nearby and you swear to yourself as you look out the window. Your ship has just been hit by a stray missile! You rush outside to check the damage when a shadow falls over you... One of the Oathbreaker carriers is crashing into the spaceport. Flames are leaking from where you'd expect the fission reactor would be located. There's no escaping the impending explosion. As the rapidly descending carrier deteriorates into a ball of flaming death, you idly wonder why you didn't take your own destiny into your hands up in the sky rather than cowering here on the ground.`
+			`	You are the only pilot still on the ground as the battle rages overhead. "Want something to calm the nerves?" asks the bartender. He downs a shot before you have a chance to respond. A loud explosion goes off nearby and you swear to yourself as you look out the window. Your ship has just been hit by a stray missile! You rush outside to check the damage when a shadow falls over you... One of the Oathbreaker carriers is crashing into the spaceport. Flames are leaking from where you'd expect the fusion reactor would be located. There's no escaping the impending explosion. As the rapidly descending carrier deteriorates into a ball of fiery death, you idly wonder why you didn't take your own destiny into your hands up in the sky rather than cowering here on the ground.`
 				die
 
 	npc kill
@@ -1214,12 +1227,40 @@ mission "Nemesis: Oath Breaker"
 
 	npc kill
 		to spawn
+			has "Oathbreaker Poisonwood: aborted"
+		government "Oathbreaker"
+		system
+			government "Free Worlds"
+			distance 5 10
+		personality target waiting staying vindictive
+		ship "Strategos" "R.N.S. Poisonwood"
+		ship "Lance" "Gamma One"
+		ship "Lance" "Gamma Two"
+		ship "Lance" "Gamma Three"
+		ship "Lance" "Gamma Four"
+		ship "Lance" "Gamma Five"
+		ship "Lance" "Gamma Six"
+		ship "Enforcer Drone" "Delta One"
+		ship "Enforcer Drone" "Delta Two"
+		ship "Enforcer Drone" "Delta Three"
+		ship "Enforcer Drone" "Delta Four"
+		ship "Enforcer Drone" "Delta Five"
+		ship "Enforcer Drone" "Delta Six"
+		ship "Enforcer Drone" "Delta Seven"
+		ship "Enforcer Drone" "Delta Eight"
+		ship "Enforcer Drone" "Delta Nine"
+		ship "Enforcer Drone" "Delta Ten"
+		ship "Enforcer Drone" "Delta Eleven"
+		ship "Enforcer Drone" "Delta Twelve"
+
+	npc kill
+		to spawn
 			or
 				has "Oathbreaker Black Oak: aborted"
 				has "Oathbreaker Black Oak: failed"
 		government "Oathbreaker"
 		personality target waiting staying vindictive
-		ship "Dreadnought" "Black Oak"
+		ship "Dreadnought (Flamethrower)" "Black Oak"
 
 	npc kill
 		to spawn
@@ -1449,4 +1490,4 @@ mission "Oathbreaker expeditionary 2"
 		ship "Cruiser (Coalition)" "Yorktown"
 		ship "Gunboat (Coalition)" "Granicus River"
 	on complete
-		"Oathbreaker expeditionary 2: offered" --
+		clear "Oathbreaker expeditionary 2: offered"

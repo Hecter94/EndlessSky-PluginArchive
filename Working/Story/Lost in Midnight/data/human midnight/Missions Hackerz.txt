@@ -23,7 +23,7 @@ mission "Drone Hacking 1"
 	minor
 	source
 		category "Drone"
-		attributes "cargo scan power"
+		attributes "cargo scan power" "outfit scan power"
 		attributes "automaton"
 	to offer
 		random < 50
@@ -516,3 +516,107 @@ event "add science drones"
 		add fleet "Science Drone" 4000
 	system Umbral
 		add fleet "Science Drone" 4000
+
+
+
+mission "Hackerz: New Tibet Harmony Reparations"
+	landing
+	invisible
+	on offer
+		event "new tibet harmony reparations"
+		fail
+		
+event "new tibet harmony reparations"
+	planet Harmony
+		tribute -100
+			threshold 3500
+			fleet "Hackerz Dfens" 2
+	planet "New Tibet"
+		tribute -100
+			threshold 3500
+			fleet "Hackerz Dfens" 2
+
+phrase "hackerz ID"
+	word
+		"ID#"
+	phrase
+		"digit"
+	phrase
+		"digit"
+	phrase
+		"digit"
+	phrase
+		"digit"
+
+fleet "Hackerz Dfens"
+	government "Hackerz"
+	names "hackerz ID"
+	personality surveillance
+	cargo 0
+	variant 1
+		"Hacker Drone" 3
+	variant 2
+		"Hacker Drone" 4
+	variant 1
+		"Hacker Drone" 5
+
+mission "Hackerz: New Tibet Reparations"
+	landing
+	invisible
+	source "New Tibet"
+	to offer
+		"tribute: New Tibet" < 0
+	on offer
+		conversation
+			scene "ship/science drone"
+			`The message you received when the planet surrendered to your tribute demand was as strange as their defense fleet. Soon after landing, a delegation of monks approaches you. "Greetings <first> <last>, captain of the <ship>. We are grateful for your charitable donation to our planetary finances." The monks peacefully depart as you check your account transactions... Somehow, it has been set to pay New Tibet 100 credits per day in reparations. That's 36000 credits per year! Those Hacker Drones may be a more effective deterrent than a fleet of warships.`
+				decline
+
+mission "Hackerz: New Tibet Sentry"
+	landing
+	invisible
+	source "New Tibet"
+	to offer
+		"tribute: New Tibet" < 0
+	npc kill
+		government "Hackerz"
+		personality waiting surveillance
+		ship "Hacker Drone" "Hackerz"
+		conversation
+			apply
+				set "You've been hacked"
+			scene "ship/science drone"
+			`	Your ship's hyperspace network relay starts making unusual sounds. After a moment it returns to normal...`
+	on complete
+		clear "Hackerz: New Tibet Sentry: offered"
+
+
+mission "Hackerz: Harmony Reparations"
+	landing
+	invisible
+	source Harmony
+	to offer
+		"tribute: Harmony" < 0
+	on offer
+		conversation
+			scene "ship/science drone"
+			`The message you received when the planet surrendered to your tribute demand was as strange as their defense fleet. Soon after landing, a delegation of monks approaches you. "Greetings <first> <last>, captain of the <ship>. We are grateful for your charitable donation to our planetary finances." The monks peacefully depart as you check your account transactions... Somehow, it has been set to pay Harmony 100 credits per day in reparations. That's 36000 credits per year! Those Hacker Drones may be a more effective deterrent than a fleet of warships.`
+				decline
+
+mission "Hackerz: Harmony Sentry"
+	landing
+	invisible
+	source Harmony
+	to offer
+		"tribute: Harmony" < 0
+	npc kill
+		government "Hackerz"
+		personality waiting surveillance
+		ship "Hacker Drone" "Hackerz"
+		conversation
+			apply
+				set "You've been hacked"
+			scene "ship/science drone"
+			`	Your ship's hyperspace network relay starts making unusual sounds. After a moment it returns to normal...`
+	on complete
+		clear "Hackerz: Harmony Sentry: offered"

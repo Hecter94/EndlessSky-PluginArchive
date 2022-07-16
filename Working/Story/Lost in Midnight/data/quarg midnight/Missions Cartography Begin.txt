@@ -16,9 +16,9 @@ mission "Cartography: Quarg Hitchhiker 1"
 	description "Visit <waypoints> and the path forward will be revealed."
 	source
 		government "Pirate"
+		attributes "north pirate" "south pirate" "core pirate"
 		not attributes "hidden"
 	destination Janus
-	waypoint Limen
 	waypoint Orbona
 	passengers 1
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
@@ -78,23 +78,23 @@ mission "Cartography: Quarg Hitchhiker 1"
 			choice
 				`	"My name is <first> <last>. I'm not familiar with those locations."`
 
-			`	"Simply take me to Orbona. The path forward will become clear."`
+			`	"Simply take me to Orbona. Once there the path forward will become clear."`
 					accept
+
+	on accept
+		event "Archipelago reveal"
 
 	on defer
 		set "randomize Cartography: Quarg Hitchhiker 1"
 
-	on enter Limen
-		event "Archipelago reveal"
-		dialog `Some pirates have setup an ambush zone here. You wonder if they have a hidden base nearby.`
 	npc
 		government "Pirate"
-		system Limen
+		system Orbona
 		personality waiting staying plunders harvests
 		fleet "pirate raid"
 
 	on enter Orbona
-		dialog `When you arrive in Orbona from Limen, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a hyperspace link to a new system has opened! "As promised, the path ahead is clear," says Quash.`
+		dialog `When you arrive in Orbona, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a hyperspace link to a new system has opened! "As promised, the path ahead is clear," says Quash.`
 
 	on enter Archipelago
 		conversation
@@ -172,7 +172,6 @@ mission "Cartography: The Map Obtained"
 	destination Poisonwood
 	to offer
 		has "Rim Archaeology 6: declined"
-		has "FW Syndicate Diplomacy 1D: done"
 		has "Coalition: First Contact: done"
 	on offer
 		dialog
@@ -182,8 +181,16 @@ mission "Cartography: The Map Obtained"
 		event "Poisonwood Trailblazer Excavation" 30
 		log `Acquired an obsolete star map during an information exchange regarding a derelict Coalition war ship found on Poisonwood. Someone with more knowledge regarding the movements of the stars might be able to figure out where the systems on this map are currently located.`
 		conversation
-			`The invitation provided instructions to a landing site far from the usual spaceport. As you descend, you see that they have dug out a tunnel into the side of a mountain. A woman meets you at the landing site. She introduces herself,"I'm Millie. You met my aunt, the governor of Poisonwood, some time ago." Millie leads you towards the tunnel as she talks. "To be honest, we were hoping to lure Albert Foster out here by getting you involved. But it seems he is still busy with his work on Zug." Not far into the tunnel, you see what they are digging out of the earth.`
-			
+			branch "poisonwood diplomat"
+				has "FW Syndicate Diplomacy 1D: done"
+			`The invitation provided instructions to a landing site far from the usual spaceport. As you descend, you see that they have dug out a tunnel into the side of a mountain. A woman meets you at the landing site. She introduces herself,"My name is Millie. I'm in charge of this excavation." Millie leads you towards the tunnel as she talks. "To be honest, we were hoping to lure Albert Foster out here by getting you involved. But it seems he is still busy with his work on Zug." Not far into the tunnel, you see what they are digging out of the earth.`
+				goto trailblazer
+
+			label "poisonwood diplomat"
+			`The invitation provided instructions to a landing site far from the usual spaceport. As you descend, you see that they have dug out a tunnel into the side of a mountain. A woman meets you at the landing site. She introduces herself,"My name is Millie. I'm in charge of this excavation. You met my aunt, the governor of Poisonwood, some time ago." Millie leads you towards the tunnel as she talks. "To be honest, we were hoping to lure Albert Foster out here by getting you involved. But it seems he is still busy with his work on Zug." Not far into the tunnel, you see what they are digging out of the earth.`
+				goto trailblazer
+
+			label trailblazer
 			branch trailblazerXP
 				has "trailblazer encountered"
 			
@@ -471,7 +478,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 			`	"You should stay here. Keep the ship's weapons powered up, in case I need backup." Quash disembarks the ship and heads out to meet the pirates. Despite having a Hai ship, they look like ordinary humans. They talk for a bit and one of them hands Quash something which he pockets. They talk for a while more before going their separate ways.`
 			
 			branch "armament deterrence"
-				"armament deterrence" > 8
+				"armament deterrence" >= 8
 				"ships: Heavy Warship" >= 1
 			
 			`	Suddenly the pirate ship opens fire, shooting Quash in the back! The ship is reorienting its guns towards you. It looks like they've decided your ship is an easy target. You'd better get out of here fast.`
@@ -545,7 +552,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 	npc
 		system "Albireo"
 		government "Quarg"
-		personality heroic opportunistic disables
+		personality heroic opportunistic vindictive
 		fleet
 			names "quarg"
 			variant
@@ -573,15 +580,16 @@ mission "Cartography: Quarg Hitchhiker 5"
 		log "People" "Quash" `The Heliarch refer to Quash as 'The Outcast'. Apparently, Quash is some sort of criminal amongst the Quarg. Considering that the previous two times I've met Quash were on pirate worlds, I shouldn't be surprised.`
 		conversation
 			scene "scene/scene-heliarch ships"
-			`Surprisingly, the Heliarchs allow Quash to land. You land your own ship at the adjacent landing pad and watch as a delegation greets Quash. Three Heliarch translators greet him in a language you do not recognize. There is some argument and negotiation, then Quash boards his ship and begins to take off.`
+			`Surprisingly, the Heliarchs allow Quash to land. You land your own ship at the adjacent landing pad and watch as a delegation greets Quash. Three Heliarch translators greet it in a language you do not recognize. There is some argument and negotiation, then Quash boards his ship and begins to take off.`
 			`	Meanwhile, you have your own Heliarch delegation ready to welcome you. A Saryd addresses you. "Greetings human. Why The Outcast, do you travel with?"`
 			choice
 				`	"Outcast?"`
 					
 			`	"Yes," replies a Kimek. "Not welcome amongst its fellow Quarg, The Outcast is. Of many crimes, The Outcast is guilty."`
 			`	Upon reflection, you recall that both times you encountered Quash were on pirate worlds. Perhaps Quash wasn't so out of place there afterall.`
-			
+			``
 			`	An Arach speaks up. "Beware human. Though cast out from its own society The Outcast is, for good reason the Quarg must have."`
+			``
 			`	You thank the Heliarchs before boarding your ship to follow Quash. Before launching, you find that Quash has already sent you a message:`
 			`	"They've asked me for some assistance on the Ring of Wisdom. This may take a while. I'll contact you when I am finished. In the meantime, have you visited the Quarg ringworld to the west? I've attached the map data if you haven't. It's quite a sight!"`
 
@@ -704,7 +712,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 				accept
 	
 	on decline
-		log "People" "Quash" `Quash shared the data on the system it is looking for but will be completing the journey there on its own. Our travels together were short but interesting. Quash is certainly unlike any other Quarg I've encountered during my previous explorations of the galaxy.`
+		log "People" "Quash" `Quash shared the data on the system it is looking for but will be completing the journey there on its own. Our travels together were short but interesting. Quash is unlike any other Quarg I've encountered during my previous explorations of the galaxy.`
 
 	on accept
 		log `I will be accompanying Quash to the system which it has been searching for. I am not sure what we'll find there, but I have a feeling that whatever is there will be unusual.`
@@ -715,7 +723,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 	npc
 		system "Albireo"
 		government "Quarg"
-		personality waiting staying heroic opportunistic disables
+		personality waiting staying heroic opportunistic vindictive
 		fleet
 			names "quarg"
 			variant
@@ -726,7 +734,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 	npc
 		system "Dabih"
 		government "Quarg"
-		personality waiting staying heroic opportunistic disables
+		personality waiting staying heroic opportunistic vindictive
 		fleet
 			names "quarg"
 			variant
@@ -737,7 +745,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 	npc
 		system "Tarazed"
 		government "Quarg"
-		personality waiting staying heroic opportunistic disables
+		personality waiting staying heroic opportunistic vindictive
 		fleet
 			names "quarg"
 			variant
@@ -748,7 +756,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 	npc
 		system "Umbral"
 		government "Quarg"
-		personality waiting staying heroic opportunistic disables
+		personality waiting staying heroic opportunistic vindictive
 		fleet
 			names "quarg"
 			variant

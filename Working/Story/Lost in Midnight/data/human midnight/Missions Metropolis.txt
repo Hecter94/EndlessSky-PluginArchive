@@ -263,6 +263,9 @@ mission "Balthazar Delivery"
 		give ship "District" "Balthazar"
 		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the District ship Balthazar to your fleet instead.`
 
+	on enter
+		dialog `The launch was a success! Maria and her team did an excellent job fixing the Balthazar. Now you just have to safely escort it to Luna in the Sol system.`
+
 	npc
 		system Kugel
 		government "Pirate"
@@ -434,7 +437,7 @@ mission "Melchior 5"
 			label purchase
 			`	"Alright." He looks something up on a data pad. "6,000,000 credits. Don't bother haggling. I've already cut down the suggested price."`
 			`	You look at the data pad and see that he has given you a huge discount.`
-			`	"Do you have a crew setup for it?" he asks.`
+			`	"Do you have a crew set up for it?" he asks.`
 			choice
 				`	"I know someone who's able to help with that."`
 
@@ -495,7 +498,7 @@ mission "Melchior 7"
 	on visit Rust
 		dialog phrase "generic passenger on visit"
 	on complete
-		dialog `The Wigglebottoms constantly argued over minor inconsequential things during the trip. The sooner you head over to the spaceport, the sooner you can be rid of them... and have Melchior fly again. That's important too. Maybe.`
+		dialog `The Wigglebottoms constantly argued over minor inconsequential things during the trip. Head over to the spaceport when you are done with your preparations. The sooner you launch, the sooner you can be rid of them... and have Melchior fly again. That's important too. Maybe.`
 
 mission "Melchior Delivery"
 	name "Delivering Melchior"
@@ -517,6 +520,9 @@ mission "Melchior Delivery"
 			scene "ship/metro prefecture"
 			`	The Prefecture city ship Melchior is ready to fly. Barmy Edwards even scrubbed off the scorch marks from previous experiments. As you previously agreed, Cathleen Wigglebottom and her team will crew the ship while her brother Richard pilots it. Thankfully, you'll remain on your own ship, out of earshot from their constant bickering. The time has come to deliver Melchior to Joseph Welder on Luna.`
 				launch
+
+	on enter
+		dialog `The Melchior launches without any issues. Hopefully the journey to Luna in the Sol system will be a quiet and peaceful one.`
 
 	on abort
 		give ship "Prefecture" "Melchior"
@@ -588,7 +594,7 @@ mission "Caspar 1"
 			`	You thank the bartender for the story.`
 				accept
 	on accept
-		log `The Exodus was attacked by aliens during it's initial voyage beyond Earth's solar system. The ship used its separation feature to try outmaneuvering the aliens. Instead of working together, the three ships fled the battle.`
+		log `The Exodus was attacked by aliens during its initial voyage beyond Earth's solar system. The ship used its separation feature to try outmaneuvering the aliens. Instead of working together, the three ships fled the battle.`
 	on enter Alphard
 		dialog `The merchant ship Guiding Star is asking for assistance.`
 	npc
@@ -660,9 +666,10 @@ mission "Caspar Capture"
 	on accept
 		log `Found the Caspar in the Archipelago. The pirate crew mutinied against their captain and offered to join my fleet.`
 		log "People" "Tyler Maverick" `The newly appointed captain of the Caspar, after its crew of children mutinied against their pirate captain. He seems sincere in wanting to keep his crew together.`
+	on complete
+		dialog `Tyler and his crew safely land the Caspar on <planet>. Visit the spaceport when you've completed your preparations and are ready to launch.`
 
 mission "Caspar Delivery"
-	landing
 	name "Delivering Caspar"
 	description `Escort the Municipality city ship Caspar to the shipyards on <planet> in the <system> system.`
 	source Vesta
@@ -673,7 +680,11 @@ mission "Caspar Delivery"
 		conversation
 			scene "ship/metro municipality"
 			`Your ships are refueled. It's time to deliver Caspar to Luna and reassemble the Metropolis ship Exodus!`
-				accept
+				launch
+
+	on enter
+		dialog `The Caspar is flying good as new. Set your heading to Luna in the Sol system before you attract the attention of some pirates.`
+
 	on abort
 		give ship "Municipality" "Caspar"
 		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the Municipality ship Caspar to your fleet instead.`
@@ -944,7 +955,6 @@ mission "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model)"
 	source "Hai-home"
 	to offer
 		has "Metropolis Epilogue: Hiding in Plain Sight 1: done"
-		not "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model): declined"
 	on offer
 		require "Balthazar Model" 1
 		conversation
@@ -986,6 +996,7 @@ mission "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model)"
 			`	"Thanks for the offer. But I have to get going." You stand up and leave before they can recover from the shock.`
 				decline
 	on accept
+		log `Sold the Balthazar Model to Arthur and Kiru for one million credits. Apparently is was a limited production collectible.`
 		outfit "Balthazar Model" -1
 		payment 1000000
 		fail
@@ -996,6 +1007,7 @@ mission "Metropolis Epilogue: Hiding in Plain Sight 2 (no Balthazar model)"
 	to offer
 		has "Metropolis Epilogue: Hiding in Plain Sight 1: done"
 		or
+			not "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model): offered"
 			not "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model): failed"
 			not "Metropolis Epilogue: Hiding in Plain Sight 2 (Balthazar model): declined"
 	on offer
@@ -1064,7 +1076,8 @@ mission "Metropolis Epilogue: Arachi Cartoonist"
 		outfit "Melchior Post Card" -1
 		outfit "Leviathan Comic" 1
 		"coalition jobs" ++
-		event "Leviathan Comic Collectible" 3650
+		event "Leviathan Comic Collectible" 3600
+		log `Traded the Melchior Post Card to the Arach cartoonist for a Leviathan Comic.`
 
 event "Leviathan Comic Collectible"
 
@@ -1096,6 +1109,7 @@ mission "Metropolis Epilogue: Leviathan Comics"
 		outfit "Leviathan Comic" -1
 		outfit "Leviathan Comic #1" 1
 		payment 42000 200
+		log `Today I learned that my Leviathan Comic is a rare collectible worth a small fortune.`
 		conversation
 			scene "outfit/leviathan comic"
 			`As your Arach passenger pays you the <payment> you agreed upon, he says, "Volume One of Leviathan Comics, I noticed you have." He motions towards a small table nearby. The old comic book must have been left out by a previous passenger. "In good condition, it is. Worth 1,000,000, it may be. Enjoyed reading it again, I did. To inform you of its value, I decided. Until long after, the value of some things remains undiscovered." He disembarks from the ship.`

@@ -25,13 +25,13 @@ mission "Coalition Dissension: Model Guns Delivery (Arach)"
 		not attributes "uninhabited"
 	to offer
 		"coalition jobs" >= 15
-		not "Coalition Dissension: Model Guns Delivery (Kimek): done"
-		not "Coalition Dissension: Model Guns Delivery (Saryd): done"
+		not "Coalition Dissension: Model Guns Delivery (Kimek): active"
+		not "Coalition Dissension: Model Guns Delivery (Saryd): active"
 		or
-			not "Randomize Coalition Dissension: Model Guns Delivery"
+			not "Randomize Coalition Dissension: Model Guns Delivery (Arach)"
 			and
-				has "Randomize Coalition Dissension: Model Guns Delivery"
-				random < 20
+				has "Randomize Coalition Dissension: Model Guns Delivery (Arach)"
+				random < 10
 	on offer
 		conversation
 			scene "scene/scene-modelguns"
@@ -42,7 +42,7 @@ mission "Coalition Dissension: Model Guns Delivery (Arach)"
 				`	(Decline the job.)`
 					defer
 	on defer
-		set "Randomize Coalition Dissension: Model Guns Delivery"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Arach)"
 	on accept
 		outfit "Model Cannon" 1
 		outfit "Model Turret" 1
@@ -51,7 +51,9 @@ mission "Coalition Dissension: Model Guns Delivery (Arach)"
 		outfit "Model Turret" -1
 		event "Model Guns For Sale"
 		"coalition jobs" ++
-		payment 100000 
+		set "Randomize Coalition Dissension: Model Guns Delivery (Kimek)"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Saryd)"
+		payment 100000
 		conversation
 			scene "scene/scene-modelguns"
 			`The model guns are unloaded from your ship. They look very realistic... <payment> is added to your account upon confirmation of delivery.`
@@ -70,13 +72,13 @@ mission "Coalition Dissension: Model Guns Delivery (Kimek)"
 		not attributes "uninhabited"
 	to offer
 		"coalition jobs" >= 15
-		not "Coalition Dissension: Model Guns Delivery (Arach): done"
-		not "Coalition Dissension: Model Guns Delivery (Saryd): done"
+		not "Coalition Dissension: Model Guns Delivery (Arach): active"
+		not "Coalition Dissension: Model Guns Delivery (Saryd): active"
 		or
-			not "Randomize Coalition Dissension: Model Guns Delivery"
+			not "Randomize Coalition Dissension: Model Guns Delivery (Kimek)"
 			and
-				has "Randomize Coalition Dissension: Model Guns Delivery"
-				random < 20
+				has "Randomize Coalition Dissension: Model Guns Delivery (Kimek)"
+				random < 10
 	on offer
 		conversation
 			scene "scene/scene-modelguns"
@@ -87,7 +89,7 @@ mission "Coalition Dissension: Model Guns Delivery (Kimek)"
 				`	(Decline the job.)`
 					defer
 	on defer
-		set "Randomize Coalition Dissension: Model Guns Delivery"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Kimek)"
 	on accept
 		outfit "Model Cannon" 1
 		outfit "Model Turret" 1
@@ -96,7 +98,9 @@ mission "Coalition Dissension: Model Guns Delivery (Kimek)"
 		outfit "Model Turret" -1
 		event "Model Guns For Sale"
 		"coalition jobs" ++
-		payment 100000 
+		set "Randomize Coalition Dissension: Model Guns Delivery (Arach)"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Saryd)"
+		payment 100000
 		conversation
 			scene "scene/scene-modelguns"
 			`The model guns are unloaded from your ship. They look very realistic... <payment> is added to your account upon confirmation of delivery.`
@@ -115,13 +119,13 @@ mission "Coalition Dissension: Model Guns Delivery (Saryd)"
 		not attributes "uninhabited"
 	to offer
 		"coalition jobs" >= 15
-		not "Coalition Dissension: Model Guns Delivery (Kimek): done"
-		not "Coalition Dissension: Model Guns Delivery (Arach): done"
+		not "Coalition Dissension: Model Guns Delivery (Kimek): active"
+		not "Coalition Dissension: Model Guns Delivery (Arach): active"
 		or
-			not "Randomize Coalition Dissension: Model Guns Delivery"
+			not "Randomize Coalition Dissension: Model Guns Delivery (Saryd)"
 			and
-				has "Randomize Coalition Dissension: Model Guns Delivery"
-				random < 20
+				has "Randomize Coalition Dissension: Model Guns Delivery (Saryd)"
+				random < 10
 	on offer
 		conversation
 			scene "scene/scene-modelguns"
@@ -132,7 +136,7 @@ mission "Coalition Dissension: Model Guns Delivery (Saryd)"
 				`	(Decline the job.)`
 					defer
 	on defer
-		set "Randomize Coalition Dissension: Model Guns Delivery"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Saryd)"
 	on accept
 		outfit "Model Cannon" 1
 		outfit "Model Turret" 1
@@ -141,7 +145,9 @@ mission "Coalition Dissension: Model Guns Delivery (Saryd)"
 		outfit "Model Turret" -1
 		event "Model Guns For Sale"
 		"coalition jobs" ++
-		payment 100000 
+		set "Randomize Coalition Dissension: Model Guns Delivery (Arach)"
+		set "Randomize Coalition Dissension: Model Guns Delivery (Kimek)"
+		payment 100000
 		conversation
 			scene "scene/scene-modelguns"
 			`The model guns are unloaded from your ship. They look very realistic... <payment> is added to your account upon confirmation of delivery.`
@@ -150,8 +156,8 @@ mission "Coalition Dissension: Model Guns Delivery (Saryd)"
 
 event "Model Guns For Sale"
 	outfitter "Coalition Advanced"
-		"Model Cannon"
-		"Model Turret"
+		add "Model Cannon"
+		add "Model Turret"
 
 
 fleet "Arach Model Guns"
@@ -1854,7 +1860,7 @@ mission "Coalition Dissension: Temlamrem Bounty"
 	on stopover
 		conversation
 			scene "outfit/brig"
-			`After a long search, you find Temlamrem among the homeless population of the local spaceport. Tire, destitute, and in poor health, he is in no condition to resist being taken into your custody. With him securely locked in your brig, it's time to head for <destination>.`
+			`After a long search, you find Temlamrem among the homeless population of the local spaceport. Tired, destitute, and in poor health, he is in no condition to resist being taken into your custody. With him securely locked in your brig, it's time to head for <destination>.`
 	on complete
 		"reputation: Coalition" ++
 		"coalition dissension" ++

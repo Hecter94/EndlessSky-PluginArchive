@@ -239,8 +239,148 @@ mission "Angri Byrds: Peace Through Strength Patch"
 
 
 
-mission "Angri Byrds: Hai Millipede 1"
+mission "Angri Byrds: Plundered Ship [Autumn Leaf]"
 	job
+	repeat
+	name "Plundered Ship"
+	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
+	source
+		government "Wanderer"
+		not attributes "korath"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: eastern evacuation"
+		random < 25 + "millipede runs amok"
+	npc kill
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality target waiting staying plunders
+		fleet
+			names "hai"
+			variant
+				"Autumn Leaf (Hai Crew)"
+		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
+	on complete
+		payment 100000
+		"reputation: Wanderer" ++
+		conversation
+			scene "thumbnail/hai millipede-thumb"
+			`The Wanderers thank you for stopping the <npc> from being used against them. You are rewarded with <payment>.`
+
+mission "Angri Byrds: Plundered Ship [Strong Wind]"
+	job
+	repeat
+	name "Plundered Ship"
+	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
+	source
+		government "Wanderer"
+		not attributes "korath"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: eastern evacuation"
+		random < 20 + "millipede runs amok"
+	npc kill
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality target waiting staying plunders
+		fleet
+			names "hai"
+			variant
+				"Strong Wind (Hai Crew)"
+		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
+	on complete
+		payment 200000
+		"reputation: Wanderer" ++
+		conversation
+			scene "thumbnail/hai millipede-thumb"
+			`The Wanderers thank you for stopping the <npc> from being used against them. You are rewarded with <payment>.`
+
+mission "Angri Byrds: Plundered Ship [Tempest]"
+	job
+	repeat
+	name "Plundered Ship"
+	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
+	source
+		government "Wanderer"
+		not attributes "korath"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: wanderers: derecho mass production"
+		random < 15 + "millipede runs amok"
+	npc kill
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality target waiting staying plunders
+		fleet
+			names "hai"
+			variant
+				"Tempest (Hai Crew)"
+		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
+	on complete
+		payment 300000
+		"reputation: Wanderer" ++
+		conversation
+			scene "thumbnail/hai millipede-thumb"
+			`The Wanderers thank you for stopping the <npc> from being used against them. You are rewarded with <payment>.`
+
+mission "Angri Byrds: Plundered Ship [Derecho]"
+	job
+	repeat
+	name "Plundered Ship"
+	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
+	source
+		government "Wanderer"
+		not attributes "korath"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: wanderers: hurricane mass production"
+		random < 10 + "millipede runs amok"
+	npc kill
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality target waiting staying plunders
+		fleet
+			names "hai"
+			variant
+				"Derecho (Hai Crew)"
+		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
+	on complete
+		payment 400000
+		"reputation: Wanderer" ++
+		conversation
+			scene "thumbnail/hai millipede-thumb"
+			`The Wanderers thank you for stopping the <npc> from being used against them. You are rewarded with <payment>.`
+
+mission "Angri Byrds: Plundered Ship [Hurricane]"
+	job
+	repeat
+	name "Plundered Ship"
+	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
+	source
+		government "Wanderer"
+		not attributes "korath"
+	waypoint "Prakacha'a"
+	to offer
+		has "event: wanderers: desi seledrak"
+		random < 5 + "millipede runs amok"
+	npc kill
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality target waiting staying plunders
+		fleet
+			names "hai"
+			variant
+				"Hurricane (Hai Crew)"
+		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
+	on complete
+		payment 500000
+		"reputation: Wanderer" ++
+		conversation
+			scene "thumbnail/hai millipede-thumb"
+			`The Wanderers thank you for stopping the <npc> from being used against them. You are rewarded with <payment>.`
+
+
+mission "Angri Byrds: Hai Millipede 1"
 	name "Millipede Danger"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -248,12 +388,51 @@ mission "Angri Byrds: Hai Millipede 1"
 		not attributes "korath"
 	waypoint "Prakacha'a"
 	to offer
-		has "Wanderers: Alpha Surveillance J: done"
-	on accept
+		has "event: wanderers: sestor eliminated"
+		or
+			not "Randomize Angri Byrds: Hai Millipede 1"
+			and
+				has "Randomize Angri Byrds: Hai Millipede 1"
+				random < 15 + "millipede runs amok"
+	on offer
 		conversation
+			`The mood in the spaceport is grim. Several Wanderer ships are in need of repairs and wounded crew members are being taken away for treatment.`
+			choice
+				`	(Ask what's going on.)`
+				`	(Mind your own business.)`
+					defer
 			scene "thumbnail/hai millipede-thumb"
-			`The Unfettered have been using a large transport to board and capture several Wanderer ships. In addition to the regular Hai ships, you'll have to deal with the captured Wanderer vessels as well.`
+			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] a large transport named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>." It might be viewed by the Wanderers as an act of heroism if you hunted down the <npc>. On the other hand, attempting it might get you killed.`
+			choice
+				`	(Offer to hunt the Unfettered ship.)`
+				`	(Do nothing.)`
+					defer
+			`	The Wanderer captain warns you, "In addition to the regular Unfettered ships, you'll have to [deal? contend?] with captured Wanderer vessels as well."`
 				accept
+	on defer
+		set "Randomize Angri Byrds: Hai Millipede 1"
+		"millipede runs amok" ++
+
+	npc
+		to spawn
+			has "millipede runs amok"
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality waiting staying harvests plunders
+		fleet
+			names "hai"
+			variant
+				"Tempest (Hai Crew)"
+	npc
+		to spawn
+			"millipede runs amok" >= 2
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality waiting staying harvests plunders
+		fleet
+			names "hai"
+			variant
+				"Derecho (Hai Crew)"
 	npc
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -261,11 +440,11 @@ mission "Angri Byrds: Hai Millipede 1"
 		fleet
 			names "hai"
 			variant
-				"Hurricane"
-				"Derecho"
-				"Tempest"
-				"Strong Wind" 2
-				"Autumn Leaf" 4
+				"Hurricane (Hai Crew)"
+				"Derecho (Hai Crew)"
+				"Tempest (Hai Crew)"
+				"Strong Wind (Hai Crew)" 2
+				"Autumn Leaf (Hai Crew)" 4
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -276,14 +455,14 @@ mission "Angri Byrds: Hai Millipede 1"
 				"Millipede"
 		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
 	on complete
-		payment 300000
+		payment 1000000
 		"reputation: Wanderer" += 10
+		clear "millipede runs amok"
 		conversation
 			scene "thumbnail/hai millipede-thumb"
 			`The Wanderers thank you for the critical role you played in stopping the Millipede from stealing more of their ships. You are rewarded with <payment>.`
 
 mission "Angri Byrds: Hai Millipede 2"
-	job
 	name "Millipede Danger"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -292,11 +471,55 @@ mission "Angri Byrds: Hai Millipede 2"
 	waypoint "Prakacha'a"
 	to offer
 		has "Angri Byrds: Hai Millipede 1: done"
-	on accept
+		random < 15 + "millipede runs amok"
+	on offer
 		conversation
+			`The mood in the spaceport is grim. Several Wanderer ships are in need of repairs and wounded crew members are being taken away for treatment.`
+			choice
+				`	(Ask what's going on.)`
+				`	(Mind your own business.)`
+					defer
 			scene "thumbnail/hai millipede-thumb"
-			`The Unfettered have been using another large transport to board and capture several Wanderer ships. In addition to the regular Hai ships, you'll have to deal with the captured Wanderer vessels as well.`
+			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] a large transport named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>." It might be viewed by the Wanderers as an act of heroism if you hunted down the <npc>. On the other hand, attempting it might get you killed.`
+			choice
+				`	(Offer to hunt the Unfettered ship.)`
+				`	(Do nothing.)`
+					defer
+			`	The Wanderer captain warns you, "In addition to the regular Unfettered ships, you'll have to [deal? contend?] with captured Wanderer vessels as well."`
 				accept
+	on defer
+		"millipede runs amok" ++
+
+	npc
+		to spawn
+			has "millipede runs amok"
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality waiting staying harvests plunders
+		fleet
+			names "hai"
+			variant
+				"Tempest (Hai Crew)"
+	npc
+		to spawn
+			"millipede runs amok" >= 2
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality waiting staying harvests plunders
+		fleet
+			names "hai"
+			variant
+				"Derecho (Hai Crew)"
+	npc
+		to spawn
+			"millipede runs amok" >= 3
+		government "Hai (Unfettered)"
+		system "Prakacha'a"
+		personality waiting staying harvests plunders
+		fleet
+			names "hai"
+			variant
+				"Hurricane (Hai Crew)"
 	npc
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -304,12 +527,11 @@ mission "Angri Byrds: Hai Millipede 2"
 		fleet
 			names "hai"
 			variant
-				"Hurricane (Tough)"
-				"Derecho (Tough)"
-				"Derecho (Turret)"
-				"Tempest (Heavy)"
-				"Tempest"
-				"Strong Wind" 2
+				"Hurricane (Hai Crew)"
+				"Derecho (Hai Crew)" 2
+				"Tempest (Hai Crew)" 2
+				"Strong Wind (Hai Crew)" 2
+				"Autumn Leaf (Hai Crew)" 4
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -320,8 +542,9 @@ mission "Angri Byrds: Hai Millipede 2"
 				"Millipede"
 		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
 	on complete
-		payment 600000
+		payment 1000000
 		"reputation: Wanderer" += 20
+		clear "millipede runs amok"
 		conversation
 			scene "thumbnail/hai millipede-thumb"
 			`The Wanderers thank you for the critical role you played in stopping the Millipede from stealing more of their ships. You are rewarded with <payment>.`

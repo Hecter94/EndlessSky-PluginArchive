@@ -24,7 +24,13 @@ mission "Midnight Market: Jump Drives 1"
 		government "Free Worlds" "Republic" "Syndicate" "Neutral" "Independent"
 	destination Mars
 	to offer
-		random < 10
+		or
+			and
+				not "rejected midnight market jump drive offer"
+				random < 10
+			and
+				has "rejected midnight market jump drive offer"
+				random < 5
 	on offer
 		require "Jump Drive"
 		conversation
@@ -36,10 +42,13 @@ mission "Midnight Market: Jump Drives 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "rejected midnight market jump drive offer"
 	on abort
 		clear "Midnight Market Jump Drives 1: offered"
 	on complete
 		log "Factions" "Midnight Market" `A network of fencers, smugglers, and patrons forming an exclusive black market community. Not sure how I got on their list, but the deals look too good to pass up.`
+		clear "rejected midnight market jump drive offer"
 		"Midnight Market" ++
 		outfit "Jump Drive" -1
 		outfit "Hyperdrive" 1
@@ -56,8 +65,14 @@ mission "Midnight Market: Jump Drives 2"
 		government "Pirate"
 		not attributes "hidden"
 	to offer
-		random < 10
 		has "Midnight Market: Jump Drives 1: done"
+		or
+			and
+				not "rejected midnight market jump drive offer"
+				random < 5
+			and
+				has "rejected midnight market jump drive offer"
+				random < 1
 	on offer
 		require "Jump Drive"
 		conversation
@@ -69,10 +84,13 @@ mission "Midnight Market: Jump Drives 2"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "rejected midnight market jump drive offer"
 	on abort
 		clear "Midnight Market Jump Drives 2: offered"
 	on complete
 		clear "Midnight Market Jump Drives 2: offered"
+		clear "rejected midnight market jump drive offer"
 		"Midnight Market" ++
 		"reputation: Pirate" ++
 		outfit "Jump Drive" -1
@@ -118,9 +136,11 @@ mission "Midnight Market: Hauler VI Prototype 1"
 	destination Stormhold
 	to offer
 		has "event: stolen Hauler VI timer"
-		"Bulk Delivery [2]: done" > 2
 		"net worth" > 28000000
 		"credits" > 14000000
+		or
+			"Bulk Delivery [0]: done" + "Bulk Delivery [1]: done" + "Bulk Delivery [2]: done" + "Large Bulk Delivery [0]: done" + "Large Bulk Delivery [1]: done" + "Large Bulk Delivery [2]: done" + "Bulk Cargo Smuggling [0]: done" + "Bulk Cargo Smuggling [1]: done" + "Bulk Cargo Smuggling [2]: done" + "Bulk Drug Running [0]: done" + "Bulk Drug Running [1]: done" + "Bulk Drug Running [2]: done" >= 6
+			"Bulk Cargo Smuggling [0]: done" + "Bulk Cargo Smuggling [1]: done" + "Bulk Cargo Smuggling [2]: done" + "Bulk Drug Running [0]: done" + "Bulk Drug Running [1]: done" + "Bulk Drug Running [2]: done" >= 3
 	to complete
 		"credits" >= 7000000
 	on offer
@@ -184,6 +204,22 @@ mission "Midnight Market: Hauler VI Prototype 2"
 event "Hauler VI Market timer"
 	shipyard "Southbound Advanced"
 		"Hauler VI"
+	fleet "Small Southern Merchants"
+		add variant 1
+			"Hauler VI"
+	fleet "Large Southern Merchants"
+		add variant 1
+			"Hauler VI"
+			"Hauler III"
+			"Hauler II"
+			"Hauler"
+		add variant 1
+			"Hauler VI"
+			"Hauler" 2
+		add variant 1
+			"Hauler VI"
+			"Berserker" 2
+
 
 ship "Hauler VI" "Hauler VI (prototype)"
 	outfits
@@ -222,7 +258,7 @@ mission "Midnight Market: Project THOR 0"
 		government "Militia"
 		personality escort derelict timid waiting
 		system Ildaria
-		ship "Dreadnought" "Vigilant Guard"
+		ship "Dreadnought (Flamethrower)" "Vigilant Guard"
 		dialog `The crew is grateful for you assistance. They were attacked and plundered by marauders. The captain asks that you escort their ship to  <destination>.`
 
 	on complete
@@ -308,7 +344,7 @@ mission "Midnight Market: Project THOR 2"
 		outfit "T.H.O.R." 1
 		set "T.H.O.R"
 	on complete
-		log `Barmy seems to be alright with letting me hold onto T.H.O.R. so long as I send him combat data. Seems like a fair deal.`
+		log `Barmy seems to be alright with letting me hold onto T.H.O.R. so long as I send him combat data.`
 		conversation
 			`Barmy Edward greets you at the spaceport when you land. "Spaceport security detected T.H.O.R.'s systems in your cargo hold. I'm not going to ask how you got it. And it's probably safer in your hands than most others. But if you do use it, just be sure to record combat data and send it to me."`
 
@@ -379,7 +415,7 @@ mission "Midnight Market: Cloaking Device 1"
 	destination Freedom
 	to offer
 		"Midnight Market" > 4
-		"Corporate espionage: done" > 2
+		"Corporate espionage: done" + "Corporate espionage [1]: done" + "Corporate espionage [2]: done" + "Free Worlds espionage: done" >= 4
 		has "event: Stolen Cloaking Device"		
 		"net worth" > 8000000
 		"credits" >= 6000000
@@ -458,6 +494,7 @@ mission "Midnight Market: Cloaking Device 2"
 				accept
 	on accept
 		log `Traded a jump drive and 4 million credits for a Cloaking Device on the Midnight Market. It works just like the one I sold back to the researchers on Hephaestus. I might swear that it's the same machine... if I could see it.`
+		payment -4000000
 		outfit "Jump Drive" -1
 		outfit "Cloaking Device" 1
 		outfit "Hyperdrive" 1
@@ -527,7 +564,7 @@ mission "Midnight Market: Intrusion Countermeasures 2"
 			`	"What, exactly, am I buying?" you ask.`
 			scene "outfit/quarg countermeasures"
 			`	"Behold!" he gestures towards his ship's cargo bay. The doors swing open and a cargo lift drags out a pallet loaded with an alien device. "What we have here is a Quarg Intrusion Countermeasures device. The pinnacle of ship security technology. Scavengers salvaged it from a wrecked Quarg vessel. It eventually found its way into our inventory."`
-			`	You wonder how effective the device is, considering it failed to save it's original owner.`
+			`	You wonder how effective the device is, considering it failed to save its original owner.`
 			choice
 				`	(Purchase the Intrusion Countermeasures.)`
 					goto purchase

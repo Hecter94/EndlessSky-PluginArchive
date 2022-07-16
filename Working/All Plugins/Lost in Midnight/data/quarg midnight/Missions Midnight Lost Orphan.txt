@@ -29,11 +29,14 @@ mission "Midnight Lost Orphan: Abandoned Halcyon"
 			`You find an abandoned city ship parked on the surface. It looks familiar, but you can't quite remember why. The ship is in very good condition and is outfitted with a variety of alien weapons.`
 			choice
 				`	(Take the ship.)`
-					accept
 				`	(Leave the ship.)`
 					defer
+			`	The ship is fully automated once the Command Center is uninstalled.`
+				accept
 	on accept
-		give ship "Carabao (Quash)" "Halcyon"
+		set "curse of the carabao"
+		give ship "Carabao (Quash Abandoned)" "Halcyon"
+		outfit "Command Center" 1
 		
 	npc kill
 		government "Drak"
@@ -68,7 +71,8 @@ mission "Midnight Lost Orphan: Captain of Atrocity"
 		conversation
 			scene "outfit/midnight lost orphan"
 			`You enjoy a perverse pleasure while wielding the supernatural powers granted to you by Midnight's Lost Orphan. You anticipate slaughtering the defenders with unrestrained cruelty and malice.`
-				depart
+				decline
+	
 
 mission "Midnight Lost Orphan: Captain of Atrocity 2"
 	invisible
@@ -277,10 +281,10 @@ mission "Midnight Lost Orphan: Coalition Atrocity"
 
 mission "Midnight Lost Orphan: Chaos Hammer"
 	landing
-	invisible
+	name "Midnight Lost Orphan"
+	description "The Midnight Lost Orphan has defected to the captain of the Chaos Hammer. They're hiding somewhere in this vast galaxy..."
 	source
 		attributes "core" "core pirate"
-		not attributes "uninhabited"
 	to offer
 		has "Discovered Korath Space: offered"
 		not "Midnight Lost Orphan: Arctic Dragon: active"
@@ -296,12 +300,17 @@ mission "Midnight Lost Orphan: Chaos Hammer"
 				has "Midnight Lost Orphan: Remnant Atrocity: failed"
 				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
 				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+			and
+				"captain of atrocity" >= 16
+				or
+					has "Midnight Lost Orphan: Arctic Dragon: done"
+					has "Midnight Lost Orphan: Night Sword: done"
 
 	on offer
 		require "Midnight's Lost Orphan" 1
 		conversation
 			scene "outfit/midnight lost orphan"
-			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after arriving at this planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
 			choice
 				`	(Let it go.)`
 					goto release
@@ -320,7 +329,7 @@ mission "Midnight Lost Orphan: Chaos Hammer"
 			label release
 			scene thumbnail/raider
 			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
-				accept
+				launch
 
 	on defer
 		"captain of atrocity" += 2
@@ -333,9 +342,7 @@ mission "Midnight Lost Orphan: Chaos Hammer"
 		government "Pirate"
 		personality target waiting fleeing uninterested
 		ship "Korath Raider (Chaos Hammer)" "Chaos Hammer"
-		ship "Korath Chaser" "Malice"
-		ship "Korath Chaser" "Cruelty"
-		dialog `You find the ship's brig has been converted into a torure chamber. Most of the prisoners are dead. Those who are still alive are near death, their wounds too severe to treat.`
+		dialog `You find the ship's brig has been converted into a torture chamber. Most of the prisoners are dead. Those who are still alive are near death, their wounds too severe to treat.`
 
 	on complete
 		set "captain of atrocity"
@@ -408,10 +415,10 @@ mission "Midnight Lost Orphan: Chaos Hammer Patch"
 
 mission "Midnight Lost Orphan: Arctic Dragon"
 	landing
-	invisible
+	name "Midnight Lost Orphan"
+	description "The Midnight Lost Orphan has defected to the captain of the Arctic Dragon. They're hiding somewhere in this vast galaxy..."
 	source
 		attributes "north" "hai" "north pirate"
-		not attributes "uninhabited"
 	to offer
 		has "First Contact: Hai: Offered"
 		not "Midnight Lost Orphan: Chaos Hammer: active"
@@ -427,12 +434,17 @@ mission "Midnight Lost Orphan: Arctic Dragon"
 				has "Midnight Lost Orphan: Remnant Atrocity: failed"
 				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
 				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+			and
+				"captain of atrocity" >= 16
+				or
+					has "Midnight Lost Orphan: Chaos Hammer: done"
+					has "Midnight Lost Orphan: Night Sword: done"
 
 	on offer
 		require "Midnight's Lost Orphan" 1
 		conversation
 			scene "outfit/midnight lost orphan"
-			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after arriving at this planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
 			choice
 				`	(Let it go.)`
 					goto release
@@ -451,7 +463,7 @@ mission "Midnight Lost Orphan: Arctic Dragon"
 			label release
 			scene "thumbnail/hai shield beetle"
 			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
-				accept
+				launch
 
 	on defer
 		"captain of atrocity" += 2
@@ -463,7 +475,7 @@ mission "Midnight Lost Orphan: Arctic Dragon"
 	npc board
 		government "Pirate"
 		personality target waiting fleeing uninterested
-		ship "Shield Beetle (Jump, Pulse)" "Arctic Dragon"
+		ship "Shield Beetle (Arctic Dragon)" "Arctic Dragon"
 		conversation
 			`You are surprised to find a large muscular Unfettered amongst the ship's crew. He draws a large knife and screams a battle cry before charging at you!`
 			choice
@@ -547,10 +559,10 @@ mission "Midnight Lost Orphan: Arctic Dragon Patch"
 
 mission "Midnight Lost Orphan: Night Sword"
 	landing
-	invisible
+	name "Midnight Lost Orphan"
+	description "The Midnight Lost Orphan has defected to the captain of the Night Sword. They're hiding somewhere in this vast galaxy..."
 	source
 		attributes "dirt belt" "south" "south pirate"
-		not attributes "uninhabited"
 	to offer
 		has "event: Gravedigger defeated"
 		not "Midnight Lost Orphan: Chaos Hammer: active"
@@ -566,12 +578,17 @@ mission "Midnight Lost Orphan: Night Sword"
 				has "Midnight Lost Orphan: Remnant Atrocity: failed"
 				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
 				has "Midnight Lost Orphan: Coalition Atrocity: failed"
+			and
+				"captain of atrocity" >= 16
+				or
+					has "Midnight Lost Orphan: Chaos Hammer: done"
+					has "Midnight Lost Orphan: Arctic Dragon: done"
 
 	on offer
 		require "Midnight's Lost Orphan" 1
 		conversation
 			scene "outfit/midnight lost orphan"
-			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after arriving at this planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
 			choice
 				`	(Let it go.)`
 					goto release
@@ -590,7 +607,7 @@ mission "Midnight Lost Orphan: Night Sword"
 			label release
 			scene thumbnail/albatross
 			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
-				accept
+				launch
 
 	on defer
 		"captain of atrocity" += 2
@@ -599,11 +616,17 @@ mission "Midnight Lost Orphan: Night Sword"
 		clear "captain of atrocity"
 		outfit "Midnight's Lost Orphan"	-1
 
+
+	npc
+		government "Grave Diggers"
+		personality entering staying uninterested
+		fleet "Grave Digger Smugglers" 2
+	
 	npc board
 		government "Grave Diggers"
 		personality target waiting fleeing uninterested
 		ship "Albatross (Night Sword)" "Night Sword"
-		dialog `You pass through the ship's sick bay and find a corpse strapped onto the operating table. The clothing on the corpse suggests it was a Syndicate lab worker. Blood is leaking out from one of it's ears. A nearby monitor shows some sort of parasitic worm has settled inside the corpse's skull...`
+		dialog `You pass through the ship's sick bay and find a corpse strapped onto the operating table. The clothing on the corpse suggests it was a Syndicate lab worker. Blood is leaking out from one of its ears. A nearby monitor shows some sort of parasitic worm has settled inside the corpse's skull...`
 		
 	on complete
 		set "captain of atrocity"
@@ -620,31 +643,46 @@ mission "Midnight Lost Orphan: Night Sword"
 		clear "Midnight Lost Orphan: Wanderer Atrocity: offered"
 		clear "Midnight Lost Orphan: Coalition Atrocity: offered"
 
-ship "Albatross" "Albatross (Night Sword)"
+
+ship "Prefect's Albatross" "Albatross (Night Sword)"
 	outfits
-		"Inhibitor Cannon" 6
-		"Thrasher Turret" 2
+		"Thrasher Cannon" 2
+		"Inhibitor Cannon" 4
+		"Inhibitor Turret" 4
 		"Point Defense Turret"
 
 		"Aeon Cell"
-		"Epoch Cell"
 		"Crystal Capacitor"
-		"Thermoelectric Cooler" 3
+		"Epoch Cell"
+		"Outfits Expansion" 3
 		"Quantum Key Stone"
-		"Korath Repeater Rifle" 75
-		"Tuning Rifle" 75
+		"Thermoelectric Cooler" 3
+		"Fragmentation Grenades" 24
+		"Laser Rifle" 24
+		"Tuning Rifle" 48
+		"Medical Bay"
 		"Midnight's Lost Orphan"
 		"Almachian Brain Maggots"
 
-		"Smelter-Class Thruster"
+		"Anvil-Class Engine"
+		"Bellows-Class Afterburner"
 		"Smelter-Class Steering"
+		"Smelter-Class Thruster"
 		"Jump Drive"
 
-	turret "Thrasher Turret"
-	turret "Thrasher Turret"
-	turret
-	turret
+	gun 
+	gun "Thrasher Cannon"
+	gun "Thrasher Cannon"
+	gun "Inhibitor Cannon"
+	gun "Inhibitor Cannon"
+	gun "Inhibitor Cannon"
+	gun "Inhibitor Cannon"
+	turret "Inhibitor Turret"
+	turret "Inhibitor Turret"
+	turret "Inhibitor Turret"
+	turret "Inhibitor Turret"
 	turret "Point Defense Turret"
+
 
 
 mission "Midnight Lost Orphan: Night Sword Patch"
@@ -674,10 +712,10 @@ mission "Midnight Lost Orphan: Night Sword Patch"
 
 mission "Midnight Lost Orphan: Blood Wind"
 	landing
-	invisible
+	name "Midnight Lost Orphan"
+	description "The Midnight Lost Orphan has defected to the captain of the Blood Wind. They're hiding somewhere in this vast galaxy..."
 	source
 		attributes "frontier" "pirate"
-		not attributes "uninhabited"
 	to offer
 		has "Midnight Lost Orphan: Chaos Hammer: done"
 		has "Midnight Lost Orphan: Arctic Dragon: done"
@@ -686,11 +724,22 @@ mission "Midnight Lost Orphan: Blood Wind"
 			has "event: kestrel available: more engines"
 			has "event: kestrel available: more shields"
 			has "event: kestrel available: more weapons"
+		or
+			"captain of atrocity" >= 16
+			and			
+				has "Midnight Lost Orphan: Pirate Atrocity: failed"
+				has "Midnight Lost Orphan: Republic Atrocity: failed"
+				has "Midnight Lost Orphan: Syndicate Atrocity: failed"
+				has "Midnight Lost Orphan: Free Worlds Atrocity: failed"
+				has "Midnight Lost Orphan: Hai Atrocity: failed"
+				has "Midnight Lost Orphan: Remnant Atrocity: failed"
+				has "Midnight Lost Orphan: Wanderer Atrocity: failed"
+				has "Midnight Lost Orphan: Coalition Atrocity: failed"
 	on offer
 		require "Midnight's Lost Orphan" 1
 		conversation
 			scene "outfit/midnight lost orphan"
-			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after leaving the planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
+			`You are the Demon Captain of Atrocities, <first> <last>. The power of Midnight's Lost Orphan flows through you, granting you supernatural abilities that bend time and space. Soon after arriving at this planet you are overcome with sudden pain! This is a familiar feeling. You experienced something similar when you were first possessed by Midnight's Lost Orphan. The entity... is trying to leave!`
 			choice
 				`	(Let it go.)`
 					goto release
@@ -709,7 +758,7 @@ mission "Midnight Lost Orphan: Blood Wind"
 			label release
 			scene "scene/scene-bloodwind"
 			`	The creature separates itself from you then flies through the hull and away from your ship! There is another ship nearby that it enters...`
-				accept
+				launch
 
 	on defer
 		"captain of atrocity" += 10
@@ -745,81 +794,146 @@ mission "Midnight Lost Orphan: Blood Wind"
 				goto end
 
 			label end
-			scene "outfit/midnight lost orphan"
-			`	There's still a battle to take the ship. You spot Midnight's Lost Orphan observing the fight. Perhaps it is waiting to see who will win.`
+			`	There's still a battle to take the ship.`
 				accept
 
 	npc kill
 		to spawn
 			has "Blood Wind Trap"
 		government "Alpha"
-		system
-			distance 1
 		personality entering heroic vindictive
 		fleet "Marauder Parade"
 	npc kill
 		to spawn
 			has "event: Grudge Legacy"
 			has "Blood Wind Trap"
-		system
-			distance 1
 		government "Alpha"
 		personality entering heroic vindictive
 		fleet "Grudge Parade"
 
-
-		
-ship "Kestrel" "Kestrel (Bloodwind)"
+ship "Marauder Kestrel" "Kestrel (Bloodwind)"
 	sprite "ship/bloodwind"
 	thumbnail "thumbnail/bloodwind-thumb"
 	"swizzle" 0
-	add attributes
-		"shields" 3000
-		"hull" 1500
-		"heat dissipation" .06
-		"drag" -1.0
-		"fuel capacity" 100
-		"weapon capacity" 40
-		"engine capacity" 30
 	outfits
-		"Nuclear Missile" 6
-		"Typhoon Launcher" 6
-		"Typhoon Storage Tube" 4
-		"Typhoon Torpedo" 240
+		"Plasma Repeater" 6
 		"Anti-Missile Turret" 4
+		"Inferno Rocket" 120
+		"Inferno Rocket Launcher" 6
+
 		"Fusion Reactor"
 		"LP072a Battery Pack"
 		"D94-YV Shield Generator"
 		"S-270 Regenerator"
 		"S-970 Regenerator"
 		"Liquid Nitrogen Cooler"
-		"Outfits Expansion"
+		"Outfits Expansion" 3
 		Ramscoop
-		"Laser Rifle" 128
+		"Fragmentation Grenades" 64
+		"Laser Rifle" 64
+		"Sniper Rifle"
+		"Security Station"
+		"Medical Bay"
+		"Midnight's Lost Orphan"
+
 		"Ionic Afterburner"
+		"AR120 Reverse Thruster"
 		"A520 Atomic Thruster"
 		"A525 Atomic Steering"
 		"Jump Drive"
-
-	engine -14 177
+	engine -14 177 
 	engine 0 177
 	engine 14 177
-	gun -31 66 "Typhoon Launcher"
-	gun 31 66 "Typhoon Launcher"
-	gun -31 66 "Nuclear Missile"
-	gun 31 66  "Nuclear Missile"
-	gun -53 61 "Typhoon Launcher"
-	gun 53 61 "Typhoon Launcher"
-	gun -53 61 "Nuclear Missile"
-	gun 53 61 "Nuclear Missile"
-	gun -75 57 "Typhoon Launcher"
-	gun 75 57 "Typhoon Launcher"
-	gun -75 57 "Nuclear Missile"
-	gun 75 57 "Nuclear Missile"
-	turret -7 -4 "Anti-Missile Turret"
-	turret 7 -4 "Anti-Missile Turret"
-	turret -23 14 "Anti-Missile Turret"
-	turret 23 14 "Anti-Missile Turret"
+	"reverse engine" -101 64
+		zoom .2
+	"reverse engine" 101 64
+		zoom .2
+	"steering engine" -101 104
+		zoom .2
+		right
+	"steering engine" 101 104
+		zoom .2
+		left
+	gun "Plasma Repeater"
+	gun "Plasma Repeater"
+	gun "Inferno Rocket Launcher"
+	gun "Inferno Rocket Launcher"
+	gun "Plasma Repeater"
+	gun "Plasma Repeater"
+	gun "Inferno Rocket Launcher"
+	gun "Inferno Rocket Launcher"
+	gun "Plasma Repeater"
+	gun "Plasma Repeater"
+	gun "Inferno Rocket Launcher"
+	gun "Inferno Rocket Launcher"
+
+		
+ship "Marauder Kestrel"
+	sprite "ship/kestrel"
+	thumbnail "thumbnail/kestrel"
+	attributes
+		category "Heavy Warship"
+		"cost" 14700000
+		"shields" 22400
+		"hull" 8700
+		"required crew" 64
+		"bunks" 128
+		"mass" 740
+		"drag" 10
+		"heat dissipation" .66
+		"fuel capacity" 600
+		"cargo space" 120
+		"outfit space" 810
+		"weapon capacity" 430
+		"engine capacity" 240
+		weapon
+			"blast radius" 260
+			"shield damage" 2600
+			"hull damage" 1300
+			"hit force" 3900
+	outfits
+		"Particle Cannon" 4
+		"Torpedo Launcher" 2
+		"Torpedo" 60
+		"Heavy Laser Turret" 4
+		
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"D94-YV Shield Generator"
+		"Liquid Nitrogen Cooler"
+		"Tactical Scanner" 2
+		
+		"Orca Plasma Thruster"
+		"Orca Plasma Steering"
+		"Hyperdrive"
+
+	engine -14 177 
+	engine 0 177
+	engine 14 177
+	bay "Fighter" -46 106 under
+	bay "Fighter" 46 106 under
+	gun -31 66 "Particle Cannon"
+	gun 31 66 "Particle Cannon"
+	gun -31 66
+	gun 31 66
+	gun -53 61 "Particle Cannon"
+	gun 53 61 "Particle Cannon"
+	gun -53 61
+	gun 53 61
+	gun -75 57 "Torpedo Launcher"
+	gun 75 57 "Torpedo Launcher"
+	gun -75 57
+	gun 75 57
+	turret -7 -4 "Heavy Laser Turret"
+	turret 7 -4 "Heavy Laser Turret"
+	turret -23 14 "Heavy Laser Turret"
+	turret 23 14 "Heavy Laser Turret"
+	explode "small explosion" 25
+	explode "medium explosion" 35
+	explode "large explosion" 45
+	explode "huge explosion" 30
+	"final explode" "final explosion large"
+	description "Several years ago, while visiting a sweat lodge in search of spiritual renewal, Tarazed's chief ship designer fell into a trance and journeyed to a reality separate from our own. There he saw visions of a strange and elegant starship. Returning to his work with renewed purpose, he spent the next seven years making the Kestrel a reality."
 
 
 
@@ -899,7 +1013,7 @@ mission "Quash Lives!"
 				`	"T.H.O.R., respond!"`
 			`	Silence. What will you do?`
 			choice
-				`	(I don't like this. Abandon T.H.O.R. and head back to the ship.)`
+				`	(Abandon T.H.O.R. and head back to the ship.)`
 					goto abandon
 				`	(See what happened to T.H.O.R.)`
 			`	You draw your Quantum Key Blade and rush towards T.H.O.R.'s last known location. There, you find the mangled remains of the robot. Whatever did this should have made a lot of noise. Instead, there was nothing but the dead silence which surrounds you even now... Finally, the quiet is broken by the sound of something behind you! As you turn to look, the Quantum Key Blade is wrenched out of your hands. It flies towards the darkness, where a massive gray hand catches it. A familiar Quarg steps out into your field of vision.`
@@ -911,7 +1025,7 @@ mission "Quash Lives!"
 					
 			label QuashEnd
 			scene "scene/scene-station5blood"
-			`	"To answer your question, yes. As you can see, I am very much alive. Carabaos like the Halcyon have robust autopiloting systems." You feel intense pressure on your limbs as several bones snap. "Humans were wise to be distrustful of that technology." The pain spreads to your torso as several internal organs burst. "With it, I managed to trick those other Quarg into thinking I'd died." You feel intense pain building up in your head. "But that left me without a ship. Thank you Captain <first> <last>, for coming to my rescue." Like a puppet with its strings severed, your lifeless body crumples to the ground.`
+			`	"To answer your question, yes. As you can see, I am very much alive. Carabaos like the Halcyon have robust autopiloting systems." You feel intense pressure on your limbs as several bones snap. "Humans were wise to be distrustful of that technology." The pain spreads to your torso as several internal organs burst. "With it, I managed to trick those other Quarg into thinking I'd died." You feel intense pain building up in your head. "But that left me without a ship. Thank you Captain <first> <last>, for coming to my rescue." Like a puppet with its strings severed, your headless body crumples to the ground.`
 				die
 							
 	on defer

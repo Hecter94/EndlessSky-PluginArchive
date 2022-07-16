@@ -27,7 +27,7 @@ mission "First Contact: Subsidurials"
 			`To date, none have demonstrated any sign of sapience, and the few captains who have seen them basically consider them to be the bison of space.`
 		conversation
 			scene "thumbnail/subsidurial"
-			`As you land you notice a ship on a nearby landing pad is unloading some kind of huge creature bound to a hoverlift. It sort of looks like a giant hairy slug. Despite it's bindings, the creature manages to make the hoverlift bounce around on the landing pad. Several dock workers narrowly avoid being crushed by it.`
+			`As you land you notice a ship on a nearby landing pad is unloading some kind of huge creature bound to a hoverlift. It sort of looks like a giant hairy slug. Despite its bindings, the creature manages to make the hoverlift bounce around on the landing pad. Several dock workers narrowly avoid being crushed by it.`
 			`	When you disembark from your own ship, you can hear a representative from the port authority ordering the captain of the other ship to unbind the creature and let it go. Supposedly, the creature is called a "Subsidurial" and has no scientific, commercial, or nutritional value whatsoever.`
 			`	"At least once a month!" yells the representative. "A new inexperienced captain hauls one in thinking he's caught some rare valuable specimen that will put him in the history books. Idiots!"`
 				accept
@@ -154,8 +154,7 @@ mission "Subsidurial Herding Job Easy"
 	name "Subsidurial Herding"
 	description "Escort a herd of Subsidurials to <destination>. Payment is <payment>."
 	source
-		attributes "south"
-		attributes "frontier"
+		attributes "dirt belt" "rim"
 		not planet "Greenrock"
 		not attributes "uninhabited"
 	destination Greenrock
@@ -254,7 +253,7 @@ mission "Subsidurial Herding Mission Easy"
 	repeat
 	deadline
 	source
-		government "Free Worlds"
+		attributes "south"
 		not planet "Greenrock"
 		not attributes "uninhabited"
 	destination Greenrock
@@ -301,7 +300,7 @@ mission "Subsidurial Herding Mission Hard"
 	repeat
 	deadline
 	source
-		government "Republic" "Syndicate"
+		attributes "dirt belt"
 		not attributes "uninhabited"
 	destination Greenrock
 	to offer
@@ -406,6 +405,7 @@ mission "Day of Subsidurius"
 			has "Subsidurial Herding Mission Easy: done"
 			has "Subsidurial Herding Mission Hard: done"
 		random < 40 + "day of subsidurius"
+		"combat rating" > 300
 	on offer
 		conversation
 			`You're checking out the local cuisine when an announcement goes out over the spaceport. "Attention! The planet is under attack from... Is this correct?" You hear a muffled voice answering before the announcer continues,"From a herd of weaponized Subsidurials! We are looking for volunteers to assist with the planetary defense." Will you join the defense fleet? <planet>'s government will probably pay a good reward for helping.`
@@ -448,21 +448,32 @@ mission "Day of Subsidurius"
 
 
 mission "Weaponized Subsidurial Bounty"
+	job
+	repeat
 	name "Weaponized Subsidurials near <system>"
 	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy the <npc> and report to <destination>. Payment is payment." 
 	source
 		government "Free Worlds"
 	to offer
 		has "Day of Subsidurius: done"
-		random < 10
+		random < 5
 	npc
 		government "Bounty"
 		personality target entering harvests mute
 			confusion 120
 		fleet
 			variant
-				"Subsidurial Weaponized A" 3
-				"Subsidurial Weaponized B" 4
+				"Subsidurial Weaponized A" 1
+				"Subsidurial Weaponized B" 2
+				"Subsidurial Weaponized C" 4
+			variant
+				"Subsidurial Weaponized A" 2
+				"Subsidurial Weaponized B" 1
+				"Subsidurial Weaponized C" 4
+			variant
+				"Subsidurial Weaponized A" 2
+				"Subsidurial Weaponized B" 2
+				"Subsidurial Weaponized C" 3
 	npc kill
 		government "Bounty"
 		personality target entering staying vindictive
@@ -476,6 +487,8 @@ mission "Weaponized Subsidurial Bounty"
 
 
 mission "Weaponized Subsidurial Stray"
+	job
+	repeat
 	name "Stray Weaponized Subsidurial"
 	description "A stray weaponized Subsidurial is wandering near <system>. Find and herd it back to <destination> to be de-weaponized. Payment is <payment>."
 	source
@@ -499,7 +512,183 @@ mission "Weaponized Subsidurial Stray"
 	on complete
 		payment 100000
 		dialog `The government of <planet> pays you <payment> for helping de-weaponize the Subsidurial.`
-		
+
+
+
+ship "Subsidurial" "Subsidurial Porter"
+	sprite "ship/subsidurial porter"
+	"uncapturable"
+	"swizzle" 0
+	add attributes
+		"outfit space" 200
+		"threshold percentage" .75
+	outfits
+		"Cargo Expansion" 10
+
+mission "Subsidurial Porter"
+	job
+	name "Subsidurial Porter"
+	description "A merchant wants to see if Subsidurial porters are a viable business strategy. Herd the Subsidurial porter to <destination>. The client will ride along on your ship to observe. Payment is <payment>."
+	source
+		government "Syndicate"
+		attributes "frontier"
+	destination
+		government "Republic" "Free Worlds"
+		attributes "frontier"
+	passengers 1
+	to offer
+		has "Day of Subsidurius: done"
+		random < 5
+	npc evade
+		government "Pirate"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Core Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 600
+		government "Pirate"
+		system
+			distance 1 2
+		personality harvests plunders
+			confusion 10
+		fleet "Large Core Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality harvests plunders
+			confusion 20
+		fleet "Small Core Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 3 4
+		personality harvests plunders
+			confusion 20
+		fleet "Large Core Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 800
+		government "Pirate"
+		system
+			distance 4 5
+		personality harvests plunders
+			confusion 10
+		fleet "pirate raid"
+	npc evade
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 20
+		fleet "pirate raid" 3
+	npc evade
+		to spawn
+			"combat rating" > 1000
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 10
+		fleet "pirate raid" 2
+	npc accompany save
+		government "Merchant"
+		personality target escort mute
+		fleet
+			cargo 3
+			variant
+				"Subsidurial Porter"
+	on fail
+		dialog `Your client muses that perhaps Subsidurial porters aren't a viable business strategy afterall...`
+	on complete
+		clear "Subsidurial Porter: offered"
+		payment 500000
+		dialog `The owner of the Subsidurial porter pays you <payment> for safely herding the Subsidurial and its cargo to <planet>.`
+
+
+
+mission "Golden Subsidurials"
+	deadline 7
+	name "Golden Subsidurials"
+	description "Stray Subsidurial porters carrying precious Gold were last spotted near <system>. It's a race to find them before the pirates do!"
+	source
+		government "Pirate"
+	to offer
+		has "Subsidurial Porter: done"
+		random < 5
+	on offer
+		conversation
+			`The spaceport is in a flurry of activity as pirates are rushing to refuel their ships and take off. If this weren't a pirate world, you'd think the planet was being raided by pirates or something.`
+			choice
+				`	(Ask what's going on.)`
+				`	(Ignore them.)`
+					defer
+			scene "ship/subsidurial porter"
+			`One pirate answers your question while pouring fuel into his ship. "Someone plundered a merchant fleet that included Subsidurials with cargo containers on their backs. When they opened the container on one of the Subsidurials they found Gold. Now everone's in a rush to find the Subsidurials that ran when the fleet was attacked."`
+				accept
+	npc
+		government "Pirate"
+		system
+			distance 1 2
+		personality harvests plunders uninterested
+			confusion 20
+		fleet "pirate raid"
+	npc
+		government "Pirate"
+		system
+			distance 2 3
+		personality harvests plunders uninterested
+			confusion 20
+		fleet "pirate raid"
+	npc
+		government "Pirate"
+		system
+			distance 3 4
+		personality harvests plunders uninterested
+			confusion 20
+		fleet "pirate raid"
+	npc board
+		government "Merchant"
+		system
+			distance 1 2
+		personality target staying uninterested mute
+		fleet
+			cargo 1
+			outfitters "Gold"
+			variant 10
+				"Subsidurial Porter"
+			variant 2
+				"Subsidurial Porter" 2
+			variant 1
+				"Subsidurial Porter" 3
+	npc board
+		government "Merchant"
+		system
+			distance 2 3
+		personality target staying uninterested mute
+		fleet
+			cargo 1
+			outfitters "Gold"
+			variant 10
+				"Subsidurial Porter"
+			variant 2
+				"Subsidurial Porter" 2
+			variant 1
+				"Subsidurial Porter" 3
+	npc board
+		government "Merchant"
+		system
+			distance 3 4
+		personality target staying uninterested mute
+		fleet
+			cargo 1
+			outfitters "Gold"
+			variant 10
+				"Subsidurial Porter"
+			variant 2
+				"Subsidurial Porter" 2
+			variant 1
+				"Subsidurial Porter" 3
+
 
 
 mission "Midnight Market: Pet Subsidurial"
@@ -625,7 +814,6 @@ mission "Ayab's Revenge"
 	description "Captain Ayab is hunting an ancient subsidurial known as the Gray Eye. You're still not sure how you got roped into this..."
 	source
 		attributes "near earth"
-	destination "Earth"
 	to offer
 		has "First Contact: Subsidurials: active"
 		"combat rating" > 10
@@ -653,7 +841,7 @@ mission "Ayab's Revenge"
 			distance 1 2
 		personality target uninterested mining harvests mute unconstrained
 		fleet "Gray Eye"
-		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to Earth! Drink's on me!"`
+		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
 	npc save
 		government "Creature Hunter"
 		personality escort heroic vindictive
@@ -707,13 +895,14 @@ ship "Luminazoa"
 		"ion protection" 1
 		"ion resistance" 1
 		"energy capacity" 150
+		"energy generation" 2
 		"fuel capacity" 150
 		"inscrutable" 1
 		"gaslining" 1
 		"hyperdrive" 1
 		"scram drive" .2
 		"atmosphere scan" 100
-
+		
 	outfits
 		Mouthparts? 3
 		"Lightning Tendril?" 1
@@ -755,6 +944,7 @@ outfit "Lightning Tendril?"
 		"velocity" 320
 		"lifetime" 1
 		"reload" 1
+		"firing energy" 3.7
 		"shield damage" 7.4
 		"hull damage" 5.8
 		"ion damage" 5
@@ -810,6 +1000,8 @@ ship "Ionic Leech"
 		"cargo space" 16
 		"thrust" 24
 		"turn" 600
+		"afterburner thrust" 12
+		"afterburner energy" 6
 		"shield generation" 2
 		"hull repair rate" 1
 		"energy protection" 1
@@ -853,6 +1045,7 @@ outfit "Ionic Mouthparts?"
 		"burst reload" 35
 		"burst count" 3
 		"cluster"
+		"firing energy" -3
 		"shield damage" 400
 		"hull damage" 200
 		"ion damage" 10
@@ -1145,6 +1338,8 @@ fleet "Mutated Astero Nautilus"
 mission "First Contact: Astero Nautilus"
 	landing
 	invisible
+	to offer
+		has "event: reveal Pebble Beach"
 	on enter "Pebble Beach"
 		dialog `You have the eerie feeling that something is lurking among the asteroids...`
 	npc kill

@@ -66,17 +66,7 @@ mission "Harvesting: Mysterious Treasure 1"
 	repeat
 	source Alexandria
 	to offer
-		or
-			and
-				"Treasure Hunter" < 5
-				random < 20
-			and
-				"Treasure Hunter" >= 5
-				"Treasure Hunter" < 10
-				random < 10
-			and
-				"Treasure Hunter" >= 10
-				random < 5
+		random < 20
 	on offer
 		require "Mysterious Treasure"
 		conversation
@@ -90,12 +80,12 @@ mission "Harvesting: Mysterious Treasure 1"
 				random < 5
 			`	"Hmm... This appears to be a an artifact from Earth's distant past. It has some historical value and should fetch a decent sum."`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				decline
 			label "alien treasure"
 			`	"Hmm... Amazing! This appears to be an artifact from an unknown alien civilization that once occupied what is now human space! A rare find, it should fetch a significant sum!"`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				accept
 	on decline
 		payment -10000
@@ -129,12 +119,12 @@ mission "Harvesting: Mysterious Treasure 2"
 				random < 10
 			`	"Hmm... This appears to be a an artifact from Earth's distant past. It has some historical value and should fetch a decent sum."`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				decline
 			label "alien treasure"
 			`	"Hmm... Amazing! This appears to be an artifact from an unknown alien civilization that once occupied what is now human space! A rare find, it should fetch a significant sum!"`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				accept
 	on decline
 		payment -20000
@@ -168,12 +158,12 @@ mission "Harvesting: Mysterious Treasure 3"
 				random < 15
 			`	"Hmm... This appears to be a an artifact from Earth's distant past. It has some historical value and should fetch a decent sum."`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				decline
 			label "alien treasure"
 			`	"Hmm... Amazing! This appears to be an artifact from an unknown alien civilization that once occupied what is now human space! A rare find, it should fetch a significant sum!"`
 			``
-			`	You wonder if there are more crates of treasure buried in the asteroids where you found this.`
+			`	You wonder if there are more crates of treasure buried where you found this.`
 				accept
 	on decline
 		payment -30000
@@ -187,6 +177,168 @@ mission "Harvesting: Mysterious Treasure 3"
 
 
 
+mission "Harvesting: Mysterious Treasure Thief"
+	deadline 7
+	name "Artifact Thief"
+	description "The <npc> has stolen one of your Alien Artifacts. Pursue their ship and reclaim the stolen artifact! Then return to <destination>. If you haven't found them by <date>, they probably escaped."
+	repeat
+	source Zug
+	to offer
+		has "Rim Archaeology 6: declined"
+		"Treasure Hunter" >= 10
+		random < 35
+	on offer
+		require "Mysterious Treasure"
+		conversation
+			scene "outfit/treasure"
+			`You happen to know a archaeologist on Zug who might be willing to appraise one of your Mysterious Treasures.`
+			choice
+				`	(Consult Albert Foster.)`
+				`	(Not now.)`
+					defer
+			`	Foster Agrees to take a look at one of your Mysterious Treasures. "Hmm... Amazing! This appears to be an artifact from an unknown alien civilization that once occupied what is now human space! A rare find, it should fetch a significant sum!"`
+			``
+			branch "thief"
+				random < 50
+
+			`	While enjoying dinner with Foster and his team, you wonder if there are more crates of treasure buried where you found this.`
+				decline
+			label "thief"
+
+			`	While enjoying dinner with Foster and his team, you wonder if there are more crates of treasure buried where you found this.`
+			``
+			`	Suddenly, Albert receives a message. He informs you that there's been a break in at his facility and the Mysterious Treasure was stolen! If you hurry, you might be able to catch the thief. A ship named <npc> was spotted fleeing the area.`
+				launch
+	on decline
+		outfit "Mysterious Treasure" -1
+		outfit "Alien Artifact" 1
+	on accept
+		outfit "Mysterious Treasure" -1
+	npc board
+		government "Independent (Killable)"
+		personality target waiting fleeing
+			confusion 10
+		fleet
+			names "independent"
+			commodities "Luxury Goods"
+			variant
+				"Marauder Arrow (Alien Artifact)"
+			variant
+				"Marauder Bounder (Alien Artifact)"
+			variant
+				"Marauder Raven (Alien Artifact)"
+			variant
+				"Marauder Quicksilver (Alien Artifact)"
+		dialog "Your Alien Artifact is probably being kept in the ship's cargo hold."
+	on complete
+		dialog `Foster apologizes, "Thieves sometimes break in to steal an artifact. It's been a problem since the news broadcast our discovery of the Sheragi ruins."`
+
+mission "Harvesting: Mysterious Treasure Zug"
+	invisible
+	repeat
+	source Zug
+	to offer
+		has "Rim Archaeology 6: declined"
+		"Treasure Hunter" < 10
+		random < 50
+	on offer
+		require "Mysterious Treasure"
+		conversation
+			scene "outfit/treasure"
+			`You happen to know a archaeologist on Zug who might be willing to appraise one of your Mysterious Treasures. Unfortunately, he's unavailable.`
+			choice
+				`	(Ask Amelia for her appraisal.)`
+				`	(Look for an appraisal elsewhere.)`
+					defer
+			branch "mystery"
+				random < 20
+			`	After examining the Mysterious Treasure, Amelia says, "Hmm... This appears to be a an artifact from Earth's distant past. It has some historical value and should fetch a decent sum."`
+			``
+			`	You wonder if there are more crates of treasure buried where you found this.`
+				decline
+			label "mystery"
+			scene "outfit/unknown"
+			`	After examining the Mysterious Treasure, Amelia says, "Hmm... Nope. Sorry. This could be an alien artifact, but I'm not certain. You should ask someone more knowledgeable to be sure."`
+			``
+			`	It's too bad Foster wasn't here to do the appraisal.`
+				accept
+	on decline
+		outfit "Mysterious Treasure" -1
+		outfit "Earth Artifact" 1
+	on enter
+		dialog phrase "angry treasure pirates"
+	npc kill
+		government "Pirate"
+		personality plunders nemesis heroic
+			confusion 20
+		fleet "pirate raid" 3
+
+phrase "angry treasure pirates"
+	word
+		`You're hailed by some pirates: "You stole it! You stole `
+	word
+		`the precious!"`
+		`my family jewels!"`
+		`my treasure!"`
+		`our treasure!"`
+		`my grandmother's war trophies!"`
+		`my grandfather's war trophies!"`
+phrase "angry treasure pirates"
+	word
+		`You're hailed by some pirates: "You stole it! You stole `
+	word
+		`the treasure of `
+	phrase
+		"pirate"
+		
+
+mission "Harvesting: Mysterious Treasure Researcher"
+	invisible
+	repeat
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		attributes "research"
+		not planet "Alexandria" "Zug"
+	to offer
+		random < 40
+	on offer
+		require "Mysterious Treasure"
+		conversation
+			scene "outfit/treasure"
+			`<planet> has a noticeable scientific community present. After asking around for a bit, you finally find an archaeology expert who is willing to appraise your Mysterious Treasure for a modest donation of 10,000 credits.`
+			choice
+				`	(Make a donation.)`
+				`	(Do not make a donation.)`
+					defer
+			branch "alien treasure"
+				random < 5
+			`	"Hmm... This appears to be a an artifact from Earth's distant past. It has some historical value and should fetch a decent sum."`
+			``
+			`	You wonder if there are more crates of treasure buried where you found this.`
+				decline
+			label "alien treasure"
+			`	"Hmm... Amazing! This appears to be an artifact from an unknown alien civilization that once occupied what is now human space! A rare find, it should fetch a significant sum!"`
+			``
+			`	You wonder if there are more crates of treasure buried where you found this.`
+				accept
+	on decline
+		payment -10000
+		outfit "Mysterious Treasure" -1
+		outfit "Earth Artifact" 1
+	on accept
+		payment -10000
+		outfit "Mysterious Treasure" -1
+		outfit "Alien Artifact" 1
+	on enter
+		dialog `You're hailed by some bounty hunters: "We'll be taking that treasure... And the reward for your head!"`
+	npc kill
+		government "Bounty Hunter"
+		personality plunders nemesis heroic
+			confusion 10
+		fleet "Hired Guns"
+
+
+
 mission "Harvesting: Earth Exhibits [0]"
 	job
 	repeat
@@ -194,6 +346,7 @@ mission "Harvesting: Earth Exhibits [0]"
 	name "Earth Exhibits"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
+		not planet "Earth"
 		attributes "near earth"
 	destination Earth
 	to offer
@@ -201,6 +354,8 @@ mission "Harvesting: Earth Exhibits [0]"
 			has "Harvesting: Mysterious Treasure 1: declined"
 			has "Harvesting: Mysterious Treasure 2: declined"
 			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
 			month == 2
 			and
@@ -221,6 +376,7 @@ mission "Harvesting: Earth Exhibits [1]"
 	name "Earth Exhibits"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
+		not planet "Earth"
 		attributes "near earth"
 	destination Earth
 	to offer
@@ -228,6 +384,8 @@ mission "Harvesting: Earth Exhibits [1]"
 			has "Harvesting: Mysterious Treasure 1: declined"
 			has "Harvesting: Mysterious Treasure 2: declined"
 			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
 			month == 2
 			and
@@ -248,6 +406,7 @@ mission "Harvesting: Earth Exhibits [2]"
 	name "Earth Exhibits"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
+		not planet "Earth"
 		attributes "near earth"
 	destination Earth
 	to offer
@@ -255,6 +414,8 @@ mission "Harvesting: Earth Exhibits [2]"
 			has "Harvesting: Mysterious Treasure 1: declined"
 			has "Harvesting: Mysterious Treasure 2: declined"
 			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
 			month == 2
 			and
@@ -280,7 +441,7 @@ mission "Harvesting: Alien Exhibits"
 		government "Republic" "Free Worlds" "Syndicate"
 		not attributes "near earth"
 	destination
-		distance 0 2
+		distance 1 2
 		government "Republic" "Free Worlds" "Syndicate"
 		attributes "urban"
 		not attributes "near earth"
@@ -289,6 +450,9 @@ mission "Harvesting: Alien Exhibits"
 			has "Harvesting: Mysterious Treasure 1: failed"
 			has "Harvesting: Mysterious Treasure 2: failed"
 			has "Harvesting: Mysterious Treasure 3: failed"
+			has "Harvesting: Mysterious Treasure Thief: done"
+			has "Harvesting: Mysterious Treasure Researcher: done"
+			has "Harvesting: Mysterious Treasure Researcher: active"
 		random < 5
 	on complete
 		outfit "Alien Artifact" -1
@@ -301,7 +465,7 @@ mission "Harvesting: Alien Exhibits"
 
 mission "Treasure Map: Archipelago"
 	name "Treasure Map: Archipelago"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 		attributes "north" "south" "core"
@@ -319,9 +483,13 @@ mission "Treasure Map: Archipelago"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Archipelago system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Archipelago"			
@@ -331,6 +499,7 @@ mission "Treasure Map: Archipelago"
 		government "Independent"
 		system "Archipelago"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		ship "Mule (Hai Engines)" "Treasure Hunter"
 
 event "Treasure: Archipelago"
@@ -341,7 +510,7 @@ event "Treasure: Archipelago"
 
 mission "Treasure Map: Terminus"
 	name "Treasure Map: Terminus"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Terminus"
@@ -357,9 +526,13 @@ mission "Treasure Map: Terminus"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Terminus system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Terminus"
@@ -369,6 +542,7 @@ mission "Treasure Map: Terminus"
 		government "Independent"
 		system "Terminus"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Terminus"
@@ -379,7 +553,7 @@ event "Treasure: Terminus"
 
 mission "Treasure Map: Kugel"
 	name "Treasure Map: Kugel"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Kugel"
@@ -395,9 +569,13 @@ mission "Treasure Map: Kugel"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Kugel system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Kugel"
@@ -407,6 +585,7 @@ mission "Treasure Map: Kugel"
 		government "Independent"
 		system "Kugel"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Kugel"
@@ -417,7 +596,7 @@ event "Treasure: Kugel"
 
 mission "Treasure Map: Gamma Cassiopeiae"
 	name "Treasure Map: Gamma Cassiopeiae"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Gamma Cassiopeiae"
@@ -433,9 +612,13 @@ mission "Treasure Map: Gamma Cassiopeiae"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Gamma Cassiopeiae system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Gamma Cassiopeiae"
@@ -445,6 +628,7 @@ mission "Treasure Map: Gamma Cassiopeiae"
 		government "Independent"
 		system "Gamma Cassiopeiae"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Gamma Cassiopeiae"
@@ -455,7 +639,7 @@ event "Treasure: Gamma Cassiopeiae"
 
 mission "Treasure Map: Durax"
 	name "Treasure Map: Durax"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Durax"
@@ -471,9 +655,13 @@ mission "Treasure Map: Durax"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Durax system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Durax"
@@ -483,6 +671,7 @@ mission "Treasure Map: Durax"
 		government "Independent"
 		system "Durax"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Durax"
@@ -493,7 +682,7 @@ event "Treasure: Durax"
 
 mission "Treasure Map: Unagi"
 	name "Treasure Map: Unagi"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Unagi"
@@ -509,9 +698,13 @@ mission "Treasure Map: Unagi"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Unagi system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Unagi"
@@ -521,6 +714,7 @@ mission "Treasure Map: Unagi"
 		government "Independent"
 		system "Unagi"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Unagi"
@@ -531,7 +725,7 @@ event "Treasure: Unagi"
 
 mission "Treasure Map: Lolami"
 	name "Treasure Map: Lolami"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Lolami"
@@ -547,9 +741,13 @@ mission "Treasure Map: Lolami"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Lolami system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Lolami"
@@ -559,6 +757,7 @@ mission "Treasure Map: Lolami"
 		government "Independent"
 		system "Lolami"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Lolami"
@@ -569,7 +768,7 @@ event "Treasure: Lolami"
 
 mission "Treasure Map: Regulus"
 	name "Treasure Map: Regulus"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Regulus"
@@ -585,9 +784,13 @@ mission "Treasure Map: Regulus"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Regulus system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Regulus"
@@ -597,6 +800,7 @@ mission "Treasure Map: Regulus"
 		government "Independent"
 		system "Regulus"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Regulus"
@@ -607,7 +811,7 @@ event "Treasure: Regulus"
 
 mission "Treasure Map: Fingol"
 	name "Treasure Map: Fingol"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Fingol"
@@ -623,9 +827,13 @@ mission "Treasure Map: Fingol"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Fingol system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Fingol"
@@ -635,6 +843,7 @@ mission "Treasure Map: Fingol"
 		government "Independent"
 		system "Fingol"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Fingol"
@@ -645,7 +854,7 @@ event "Treasure: Fingol"
 
 mission "Treasure Map: Nocte"
 	name "Treasure Map: Nocte"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Nocte"
@@ -661,9 +870,13 @@ mission "Treasure Map: Nocte"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Nocte system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Nocte"
@@ -673,6 +886,7 @@ mission "Treasure Map: Nocte"
 		government "Independent"
 		system "Nocte"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Nocte"
@@ -683,7 +897,7 @@ event "Treasure: Nocte"
 
 mission "Treasure Map: Hintar"
 	name "Treasure Map: Hintar"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Hintar"
@@ -699,9 +913,13 @@ mission "Treasure Map: Hintar"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Hintar system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Hintar"
@@ -711,6 +929,7 @@ mission "Treasure Map: Hintar"
 		government "Independent"
 		system "Hintar"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Hintar"
@@ -721,7 +940,7 @@ event "Treasure: Hintar"
 
 mission "Treasure Map: Orvala"
 	name "Treasure Map: Orvala"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Orvala"
@@ -737,9 +956,13 @@ mission "Treasure Map: Orvala"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Orvala system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Orvala"
@@ -749,6 +972,7 @@ mission "Treasure Map: Orvala"
 		government "Independent"
 		system "Orvala"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Orvala"
@@ -759,7 +983,7 @@ event "Treasure: Orvala"
 
 mission "Treasure Map: Boral"
 	name "Treasure Map: Boral"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Boral"
@@ -775,9 +999,13 @@ mission "Treasure Map: Boral"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Boral system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Boral"
@@ -787,6 +1015,7 @@ mission "Treasure Map: Boral"
 		government "Independent"
 		system "Boral"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Boral"
@@ -797,7 +1026,7 @@ event "Treasure: Boral"
 
 mission "Treasure Map: Naper"
 	name "Treasure Map: Naper"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Naper"
@@ -813,9 +1042,13 @@ mission "Treasure Map: Naper"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Naper system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Naper"
@@ -825,6 +1058,7 @@ mission "Treasure Map: Naper"
 		government "Independent"
 		system "Naper"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Naper"
@@ -835,7 +1069,7 @@ event "Treasure: Naper"
 
 mission "Treasure Map: Umbral"
 	name "Treasure Map: Umbral"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Umbral"
@@ -851,9 +1085,13 @@ mission "Treasure Map: Umbral"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Umbral system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Umbral"
@@ -863,6 +1101,7 @@ mission "Treasure Map: Umbral"
 		government "Independent"
 		system "Umbral"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Umbral"
@@ -873,7 +1112,7 @@ event "Treasure: Umbral"
 
 mission "Treasure Map: Sadr"
 	name "Treasure Map: Sadr"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasure."
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasure. (The treasure will be there even after completing/aborting this mission)"
 	source
 		government "Pirate"
 	waypoint "Sadr"
@@ -889,9 +1128,13 @@ mission "Treasure Map: Sadr"
 				`	(Don't buy the map.)`
 					defer
 			scene "outfit/asteroid scanner"
-			`You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
 				accept
 	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Sadr system."
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Sadr"
@@ -901,11 +1144,9 @@ mission "Treasure Map: Sadr"
 		government "Independent"
 		system "Sadr"
 		personality waiting staying mining harvests uninterested
+			confusion 10
 		fleet "Treasure Hunters"
 
 event "Treasure: Sadr"
 	system Sadr
 		add minables treasure 1 3
-
-
-

@@ -35,7 +35,7 @@ mission "Sheragi Shenanigans: Sapphire Shield 1"
 	on complete
 		conversation
 			scene "ship/sapphire shield"
-			`The Sapphire Shield is on display at the <planet> Ship Expo. Unfortunately, the line to get in is so long, the expo will close before you'll reach the front. There must be some other way for you to get close to the ship. Maybe they're hiring escorts through the job board.`
+			`The Sapphire Shield is on display at the <planet> Ship Expo. Unfortunately, the line to get in is so long, the expo will close before you'll reach the front. There must be some other way for you to get close to the ship. Maybe they're hiring escorts through the job board. `
 
 mission "Sheragi Shenanigans: Sapphire Shield 2"
 	job
@@ -78,8 +78,6 @@ mission "Sheragi Shenanigans: Sapphire Shield 2"
 		payment 150000
 		dialog `The captain of the <npc> thanks you for escorting his ship and pays you <payment>.`
 
-
-
 mission "Sheragi Shenanigans: Sapphire Shield 3"
 	landing
 	name "Sheragi: Sapphire Shield"
@@ -95,8 +93,6 @@ mission "Sheragi Shenanigans: Sapphire Shield 3"
 	on complete
 		conversation
 			`Desyo, Rakei, and Eyama give you a warm welcome. Albert Foster's excavation has been going well, with several discoveries that are sure to interest Hai scholars once they return home. But for the matter at hand, you share your scanner data of the Sapphire Shield's outfits with Desyo. It will take some time to analyze, so meet her in the spaceport in a few hours.`
-
-
 
 mission "Sheragi Shenanigans: Sapphire Shield 4"
 	name "Sheragi: Sapphire Shield"
@@ -170,8 +166,6 @@ mission "Sheragi Shenanigans: Sapphire Shield 4"
 		
 event "sapphire shield financial ruin"
 
-
-
 mission "Sheragi Shenanigans: Sapphire Shield epilogue A"
 	invisible
 	source
@@ -236,11 +230,11 @@ mission "Sheragi Shenanigans: Sapphire Shield epilogue A"
 	on decline
 		"Midnight Market" ++
 		payment -80000000
-		give ship "Sapphire Shield"
+		give ship "Sapphire Shield" "Sapphire Shield"
 
 	on accept
 		"Midnight Market" -= 3
-		give ship "Sapphire Shield"
+		give ship "Sapphire Shield" "Sapphire Shield"
 		
 	on enter
 		dialog `Looks like the used ship dealer's friends were waiting to pay you back for stealing the Sapphire Shield.`
@@ -249,8 +243,6 @@ mission "Sheragi Shenanigans: Sapphire Shield epilogue A"
 		government "Bounty Hunter"
 		personality waiting staying vindictive coward
 		fleet "Hired Guns" 4
-
-
 
 mission "Sheragi Shenanigans: Sapphire Shield Epilogue B"
 	job
@@ -301,45 +293,7 @@ mission "Sheragi Shenanigans: Sapphire Shield Epilogue B"
 
 
 
-phrase "Ruby Dagger Clue"
-	word
-		`At the bar you overhear `
-	word
-		`some bounty hunters `
-		`some Syndicate security officers `
-		`some freighter captains `
-		`some mercenaries `
-	word
-		`talking about an alien ship `
-	word
-		`attacking `
-		`raiding `
-		`plundering `
-	word
-		`merchant ships in the area. They call it the Ruby Dagger. From the way they describe the vessel, it sounds like a smaller version of the Emerald Sword. Some planets are already offering bounties on it.`
-
-
-mission "Sheragi Shenanigans: Ruby Dagger Hint"
-	invisible
-	repeat
-	source
-		government "Syndicate"
-	to offer
-		has "Sheragi Archaeology: Epilogue: done"
-		not "Sheragi Shenanigans: Ruby Dagger 1: active"
-		not "Sheragi Shenanigans: Ruby Dagger 1: done"
-		random < 25 - "Ruby Dagger Rumors"
-	on offer
-		dialog phrase "Ruby Dagger Clue"
-	on decline
-		"Ruby Dagger Rumors" ++
-	on accept
-		"Ruby Dagger Rumors" ++
-		fail
-
-
 mission "Sheragi Shenanigans: Ruby Dagger 1"
-	job
 	name "Bounty: Ruby Dagger"
 	description "The Ruby Dagger is attacking merchants near <stopovers>. Destroy the ship then report to <destination>. Payment is 300,000 credits."
 	source
@@ -349,11 +303,14 @@ mission "Sheragi Shenanigans: Ruby Dagger 1"
 		attributes "core"
 	to offer
 		has "Sheragi Archaeology: Epilogue: done"
-		random < 25
-	on accept
+		random < 50
+	on offer
 		conversation
 			scene "ship/ruby dagger"
 			`You receive a message from Albert Foster. "Hello <first> <last>. Have you heard of the Ruby Dagger? Apparently, it's a Sheragi ship that pirates are using to attack merchants. If you manage to capture it, please bring it to Zug so we can analyze it.`
+			``
+			`After checking the job board, you see that there's a 300,000 credit bounty for the Ruby Dagger. <stopovers> would be a good place to start your search.`
+				accept
 	on stopover
 		payment -10000
 		conversation
@@ -367,21 +324,20 @@ mission "Sheragi Shenanigans: Ruby Dagger 1"
 				`	(No more questions.)`
 					accept
 			label where
-			`	"The Ruby Dagger headed north when the local Syndicate started putting bounties on it."`
+			`	"The Ruby Dagger headed north when the local Syndicate started putting bounties on it." From what they've said, you'd be better off continuing your search in the northern part of human space than sticking around the Core.`
 				goto questions
 			label from
-			`	"Bart One-eye, the current owner, won it in a poker game from some Quarg a while back... I think the Quarg was named 'Squash' or something like that."`
+			`	"Bart One-eye, the current owner, won it in a high stakes poker game from some Quarg a while back. Bart was lucky: If he hadn't won the game, there's no doubt the Quarg would have taken more than just Bart's ship... I think the Quarg was named 'Squash' or something like that." A Quarg that plays poker? You wonder how good they are at bluffing.`
 				goto questions
 	to complete
 		has "Sheragi Shenanigans: Ruby Dagger 4: done"
 	on complete
 		payment 300000
-		dialog `The government of planet rewards you with 300,000 credits for eliminating the Ruby Dagger.`
+		dialog `The government of <planet> rewards you with 300,000 credits for eliminating the Ruby Dagger.`
 		
 
 
 mission "Sheragi Shenanigans: Ruby Dagger 2"
-	job
 	name "Bounty: Ruby Dagger"
 	description "The Ruby Dagger is attacking merchants near <stopovers>. Destroy the ship then report to <destination>. Payment is 400,000 credits."
 	source
@@ -392,10 +348,13 @@ mission "Sheragi Shenanigans: Ruby Dagger 2"
 		attributes "north"
 	to offer
 		has "Sheragi Shenanigans: Ruby Dagger 1: active"
-	on accept
+	on offer
 		conversation
 			scene "ship/ruby dagger"
 			`You receive a message from Albert Foster. "Hello <first> <last>. The Ruby Dagger seems to be in the north now. Remember, if you manage to capture it, please bring it to Zug so we can analyze it.`
+			``
+			`After checking the job board, you see that there's a 400,000 credit bounty for the Ruby Dagger. <stopovers> would be a good place to start your search.`
+				accept
 	on stopover
 		payment -20000
 		conversation
@@ -409,21 +368,20 @@ mission "Sheragi Shenanigans: Ruby Dagger 2"
 				`	(No more questions.)`
 					accept
 			label where
-			`	"The Ruby Dagger headed south when the local Republic started putting bounties on it."`
+			`	"The Ruby Dagger headed south when the local Republic started putting bounties on it." From what they've said, you'd be better off continuing your search in the southern part of human space than sticking around the North.`
 				goto questions
 			label from
-			`	"Ulthark the Merciless, the current owner, captured it from Bart One-eye in a fierce pirate on pirate battle.`
+			`	"Ulthark the Merciless, the current owner, captured it from Bart One-eye in a fierce pirate on pirate battle. Bart barely managed to survive by hiding in a cargo container and dumping the cargo hold just before Ulthark boarded the Ruby Dagger." If Bart's still around, he may be out for revenge. There's a chance you might run into him while searching for Ulthark.`
 				goto questions
 	to complete
 		has "Sheragi Shenanigans: Ruby Dagger 4: done"
 	on complete
 		payment 400000
-		dialog `The government of planet rewards you with 400,000 credits for eliminating the Ruby Dagger.`
+		dialog `The government of <planet> rewards you with 400,000 credits for eliminating the Ruby Dagger.`
 
 
 
 mission "Sheragi Shenanigans: Ruby Dagger 3"
-	job
 	name "Bounty: Ruby Dagger"
 	description "The Ruby Dagger is attacking merchants near <stopovers>. Destroy the ship then report to <destination>. Payment is 500,000 credits."
 	source
@@ -431,10 +389,13 @@ mission "Sheragi Shenanigans: Ruby Dagger 3"
 	stopover Greenrock
 	to offer
 		has "Sheragi Shenanigans: Ruby Dagger 2: active"
-	on accept
+	on offer
 		conversation
 			scene "ship/ruby dagger"
 			`You receive a message from Albert Foster. "Hello <first> <last>. The Ruby Dagger seems to be in the south now. Remember, if you manage to capture it, please bring it to Zug so we can analyze it.`
+			``
+			`After checking the job board, you see that there's a 500,000 credit bounty for the Ruby Dagger. <stopovers> would be a good place to start your search.`
+				accept
 	on stopover
 		payment -30000
 		conversation
@@ -448,29 +409,32 @@ mission "Sheragi Shenanigans: Ruby Dagger 3"
 				`	(No more questions.)`
 					accept
 			label where
-			`	"The Ruby Dagger headed into the Dirt Belt when the local Free Worlds started putting bounties on it. Said there was a secret pirate base near Terminus."`
+			`	"The Ruby Dagger headed into the Dirt Belt when the local Free Worlds started putting bounties on it. Said there was a secret pirate base near Terminus." From what they've said, you'd be better off continuing your search in the western part of the Dirt Belt than sticking around the South.`
 				goto questions
 			label from
-			`	"Marak Swiftfingers, the current owner, stole it from Ulthark the Merciless when he was drunk.`
+			`	"Marak Swiftfingers, the current owner, stole it from Ulthark the Merciless when he was drunk." The Ruby Dagger changed hands again? So in addition to the possibility of running into Bart, who's probably chasing after Ulthark; you might run into Ulthark, who's probably chasing after Marak. This could get messy...`
 				goto questions
 	to complete
 		has "Sheragi Shenanigans: Ruby Dagger 4: done"
 	on complete
 		payment 500000
-		dialog `The government of planet rewards you with 500,000 credits for eliminating the Ruby Dagger.`
+		dialog `The government of <planet> rewards you with 500,000 credits for eliminating the Ruby Dagger.`
 
 
 
 mission "Sheragi Shenanigans: Ruby Dagger 4"
+	landing
 	name "Sheragi: Ruby Dagger"
 	description "The Ruby Dagger is attacking merchants near Terminus. Capture the ship then report to <destination>."
 	source Greenrock
 	destination Zug
 	to offer
 		has "Sheragi Shenanigans: Ruby Dagger 3: active"
+	on enter Orbona
+		dialog `It's a chaotic free for all... Hopefully the Ruby Dagger doesn't get caught in the crossfire.`
 	npc
-		government "Pirate"
-		system Limen
+		government "Team Blue"
+		system Orbona
 		personality
 			waiting staying plunders harvests
 		ship "Marauder Vanguard" "Bart One-eye"
@@ -479,8 +443,8 @@ mission "Sheragi Shenanigans: Ruby Dagger 4"
 		ship "Marauder Quicksilver (Weapons)" "Nart No-tongue"
 		ship "Marauder Quicksilver (Engines)" "Kenny"
 	npc
-		government "Pirate"
-		system Limen
+		government "Team Red"
+		system Orbona
 		personality
 			waiting staying plunders harvests
 		ship "Leviathan (Hai Weapons)" "Ulthark the Merciless"
@@ -490,15 +454,15 @@ mission "Sheragi Shenanigans: Ruby Dagger 4"
 		ship "Behemoth (Hai)" "Gruella the Indomitable"
 	npc
 		government "Pirate"
-		system Limen
+		system Orbona
 		personality
 			waiting staying plunders harvests
-		fleet "S. Advanced Independent (Killable)" 4
+		fleet "S. Advanced Independent (Killable)" 5
 	npc capture
 		government "Bounty"
 		system Orbona
 		personality
-			target waiting staying plunders harvests
+			target waiting staying plunders harvests marked
 		ship "Ruby Dagger" "Ruby Dagger"
 		dialog `You've finally captured the Ruby Dagger! Bring it to <destination> for analysis. The bounty payments can wait.`
 	on complete

@@ -62,9 +62,9 @@ mission "Grave Digger: Void Rifle"
 			
 			`	The name doesn't sound familiar at all.`
 			scene "scene/scene-gravediggerkorathbattle"
-			`	"He's a competent captain and has done good work fighting the Korath. His ship, the Grave Digger, is a prototype Kestrel outfitted with exotic devices. But I don't like his attitude. He recently returned from an expedition to visit the Void Sprites with one of their tentacles! Not only did he jeapardize our future research by risking the wrath of the Archons, he didn't even store the severed appendage properly! There are bloodstains on my desk that I haven't been able to clear out!" Plume shudders in disgust.`
+			`	"He is a competent captain and has done good work fighting the Korath. His ship, the Grave Digger, is a prototype Kestrel outfitted with exotic devices. But I do not like his attitude. He recently returned from an expedition to visit the Void Sprites with one of their tentacles! Not only did he jeapardize our future research by risking the wrath of the Archons, he did not even store the severed appendage properly! There are bloodstains on my desk that I have not been able to clear out!" Plume shudders in disgust.`
 			choice
-				`"Do you think he'll attack the Void Sprites again?"`
+				`"Do you think he will attack the Void Sprites again?"`
 				`"What kind of person would harm those magnificent creatures?"`
 
 			scene "scene/scene-voidspritesnasqueron"
@@ -97,14 +97,14 @@ mission "Grave Digger: Penguin"
 			
 			`	The name doesn't sound familiar at all.`
 			scene "scene/scene-gravediggerkorathbattle"
-			`	"He's a competent captain and has done good work fighting the Korath. His ship, the Grave Digger, is a prototype Kestrel outfitted with exotic devices. But I don't like his attitude.`
+			`	"He is a competent captain and has done good work fighting the Korath. His ship, the Grave Digger, is a prototype Kestrel outfitted with exotic devices. But I do not like his attitude.`
 			choice
 
 				`	"What about his attitude bothers you?"`
 
-			`	"Frankly, I'm starting to suspect the blood test was wrong. If not for those test results, I would assume he was descended from an Alpha."`
+			`	"Frankly, I am starting to suspect the blood test was wrong. If not for those test results, I would assume he was descended from an Alpha."`
 			scene "scene/scene-gravediggerpenguin"
-			`	"And now, I wonder if I made a mistake. He recently returned from an expedition to visit the Void Sprites with some fascinating genetic samples. This proved useful in finalizing development of a new ship. Yesterday I let him take the prototype out for a test flight. But something about his demeanor gives me the impression he won't be returning with it anytime soon."`
+			`	"And now, I wonder if I made a mistake. He recently returned from an expedition to visit the Void Sprites with some fascinating genetic samples. This proved useful in finalizing development of a new ship. Yesterday I let him take the prototype out for a test flight. But something about his demeanor gives me the impression he will not be returning with it anytime soon."`
 			`	A dock worker motions to Taely while pointing to a broken jump drive being unloaded at the adjoining landing pad. She gestures back. "Thank you for your time <first>. Beware of Lu Bu. That man will likely betray the trust of our people," she signs before running off to supervise their latest acquisition.`
 				decline
 	on decline
@@ -147,7 +147,7 @@ mission "Grave Digger: Nightingale 1"
 			choice
 				`	"Nightingales?"`
 			scene "ship/nightingale"
-			`	"They're surveillance drones stationed at the various wormhole entrances in the Ember Wastes. It might be good to familiarize yourself with them."`
+			`	"They are surveillance drones stationed at the various wormhole entrances in the Ember Wastes. It might be good to familiarize yourself with them."`
 			choice
 				`	(Join them to check on the Nightingales.)`
 				`	(Not right now.)`
@@ -231,6 +231,7 @@ mission "Grave Digger: Nightingale 1"
 
 
 mission "Grave Digger: Nightingale 2"
+	job
 	name "Nightingale Maintenance"
 	description "Visit the wormholes of the Ember Wastes to check on Remnant surveillance drones stationed there. Then report to <destination>. Payment is <payment>."
 	source
@@ -305,6 +306,7 @@ mission "Grave Digger: Nightingale 2"
 
 
 mission "Grave Digger: Nightingale 3"
+	job
 	name "Nightingale Deployment"
 	description "Escort the Steadfast Pillar Reborn to the wormholes of the Ember Wastes to deploy new Remnant surveillance drones and check on existing drones stationed there. Then report to <destination>. Payment is <payment>."
 	source
@@ -342,7 +344,7 @@ mission "Grave Digger: Nightingale 3"
 
 	on enter Segesta
 		dialog `The Nightingale is damaged. Try to repair it.`
-	npc	
+	npc	assist
 		government "Remnant"
 		system Segesta
 		personality target derelict surveillance
@@ -371,6 +373,8 @@ mission "Grave Digger: Nightingale 3"
 
 
 mission "Grave Digger: Nightingale 4"
+	job
+	repeat
 	name "Nightingale Maintenance"
 	description "Visit the wormholes of the Ember Wastes to check on Remnant surveillance drones stationed there. Then report to <destination>. Payment is <payment>."
 	source
@@ -481,14 +485,14 @@ mission "Grave Digger: Suspicious Ship"
 		random < 40
 	on offer
 		conversation
-			`	A messenger delivers an announcement: "A suspicious human ship ship has been spotted wanding in the Ember Waste. We are asking all pilots to look out for this ship and scan it." Ironically, you suspect that you were subjected to similar observation when you first entered the Ember Waste.`
+			`	A messenger delivers an announcement: "A suspicious human ship ship has been spotted wandering in the Ember Waste. We are asking all pilots to look out for this ship and scan its outfits and cargo." Ironically, you suspect that you were subjected to similar observation when you first entered the Ember Waste.`
 			choice
 				`	(Accept.)`
 					accept
 				`	(Ignore.)`
 					defer
-	npc scan
-		government "Independent"
+	npc "scan outfits" "scan cargo"
+		government "Independent (Killable)"
 		system
 			attributes "ember waste"
 		personality target waiting staying uninterested
@@ -526,7 +530,7 @@ mission "Grave Digger: Suspicious Ship Job"
 		has "Grave Digger: Suspicious Ship: done"
 		random < 15
 	npc "scan cargo" "scan outfits"
-		government "Independent"
+		government "Independent (Killable)"
 		system
 			attributes "ember waste"
 		personality target waiting staying uninterested
@@ -558,6 +562,7 @@ mission "Grave Digger: Graveyard Robbery A"
 		not "Grave Digger: Graveyard Robbery B: active"
 		not "Grave Digger: Graveyard Robbery C: active"
 		has "event: Grave Digger Betrayal"
+		random < 10 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" ) )
 	on offer
 		conversation
 			scene thumbnail/pelican
@@ -595,6 +600,7 @@ mission "Grave Digger: Graveyard Robbery B"
 		not "Grave Digger: Graveyard Robbery A: active"
 		not "Grave Digger: Graveyard Robbery C: active"
 		has "event: Grave Digger Betrayal"
+		random < 10 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery C: done" ) )
 	on offer
 		conversation
 			scene thumbnail/pelican
@@ -632,6 +638,7 @@ mission "Grave Digger: Graveyard Robbery C"
 		not "Grave Digger: Graveyard Robbery A: active"
 		not "Grave Digger: Graveyard Robbery B: active"
 		has "event: Grave Digger Betrayal"
+		random < 10 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" ) )
 	on offer
 		conversation
 			scene thumbnail/pelican
@@ -693,9 +700,9 @@ mission "Grave Digger: Lu Bu's Legend"
 			
 			`	"His name sounded familiar so I searched through the historical archive you brought us and found an entry about a fierce warrior in ancient mythology. I suspect that Lu Bu was born with a different name and is simply borrowing the name of that mythical warrior."`
 			choice
-				`	"Isn't it possible that his parents named him after a character from a myth?"`
+				`	"Is it not possible that his parents named him after a character from a myth?"`
 			
-			`	"Maybe. But it's strange. The character in the myth had a reputation for betraying the people he worked with." Dawn watches your face for any reaction. "Another reason I looked into his name is that there are some bad rumors about him. Be careful if you do meet him."`
+			`	"Maybe. But it is strange. The character in the myth had a reputation for betraying the people he worked with." Dawn watches your face for any reaction. "Another reason I looked into his name is that there are some bad rumors about him. Be careful if you do meet him."`
 				decline
 
 
@@ -720,7 +727,7 @@ mission "Grave Digger: Graveyard Robbery Job A"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 31 + ( 3 * ( "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" ) )
+		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -741,13 +748,13 @@ mission "Grave Digger: Graveyard Robbery Job A"
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on abort
-		"Grave Digger: Graveyard Robbery Job A: offered" --
+		clear "Grave Digger: Graveyard Robbery Job A: offered"
 	on decline
-		"Grave Digger: Graveyard Robbery Job A: offered" --
+		clear "Grave Digger: Graveyard Robbery Job A: offered"
 	on fail
-		"Grave Digger: Graveyard Robbery Job A: offered" --
+		clear "Grave Digger: Graveyard Robbery Job A: offered"
 	on complete
-		"Grave Digger: Graveyard Robbery Job A: offered" --
+		clear "Grave Digger: Graveyard Robbery Job A: offered"
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
@@ -771,7 +778,7 @@ mission "Grave Digger: Graveyard Robbery Job B"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 31 + ( 3 * ( "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" ) )
+		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -792,13 +799,13 @@ mission "Grave Digger: Graveyard Robbery Job B"
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on abort
-		"Grave Digger: Graveyard Robbery Job B: offered" --
+		clear "Grave Digger: Graveyard Robbery Job B: offered"
 	on decline
-		"Grave Digger: Graveyard Robbery Job B: offered" --
+		clear "Grave Digger: Graveyard Robbery Job B: offered"
 	on fail
-		"Grave Digger: Graveyard Robbery Job B: offered" --
+		clear "Grave Digger: Graveyard Robbery Job B: offered"
 	on complete
-		"Grave Digger: Graveyard Robbery Job B: offered" --
+		clear "Grave Digger: Graveyard Robbery Job B: offered"
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
@@ -822,7 +829,7 @@ mission "Grave Digger: Graveyard Robbery Job C"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 31 + ( 3 * ( "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" ) )
+		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -843,13 +850,13 @@ mission "Grave Digger: Graveyard Robbery Job C"
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on abort
-		"Grave Digger: Graveyard Robbery Job C: offered" --
+		clear "Grave Digger: Graveyard Robbery Job C: offered"
 	on decline
-		"Grave Digger: Graveyard Robbery Job C: offered" --
+		clear "Grave Digger: Graveyard Robbery Job C: offered"
 	on fail
-		"Grave Digger: Graveyard Robbery Job C: offered" --
+		clear "Grave Digger: Graveyard Robbery Job C: offered"
 	on complete
-		"Grave Digger: Graveyard Robbery Job C: offered" --
+		clear "Grave Digger: Graveyard Robbery Job C: offered"
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
@@ -938,6 +945,7 @@ mission "Escort: Prefect's Albatross 2"
 	to offer
 		"reputation: Remnant" >= 10
 		has "license: Remnant"
+		has "Escort: Prefect's Albatross 1: done"
 		random < 10
 	on waypoint
 		dialog `You've completed the tour. Escort the <npc> back to <destination>.`
@@ -974,12 +982,19 @@ mission "Grave Digger: Prefect's Albatross 1"
 	destination "Ceilia'sei"
 	to offer
 		"reputation: Remnant" >= 10
+		has "Escort: Prefect's Albatross 1: done"
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
 		or
-			has "Grave Digger: Graveyard Robbery Job A: done"
-			has "Grave Digger: Graveyard Robbery Job B: done"
-			has "Grave Digger: Graveyard Robbery Job C: done"
+			and
+				has "Grave Digger: Graveyard Robbery A: done"
+				has "Grave Digger: Graveyard Robbery B: done"
+			and
+				has "Grave Digger: Graveyard Robbery A: done"
+				has "Grave Digger: Graveyard Robbery C: done"
+			and
+				has "Grave Digger: Graveyard Robbery B: done"
+				has "Grave Digger: Graveyard Robbery C: done"
 	on enter Cardea
 		dialog `A suspicious looking fleet is near the Ember Waste Threshold.`
 	on enter Ossipago
@@ -1043,13 +1058,12 @@ mission "Grave Digger: Prefect's Albatross 2"
 
 mission "Grave Digger: Suspicious Ship Tracking"
 	job
-	repeat
 	name "Scan Suspicious Ship"
 	description "Locate and scan the cargo and outfits of a human ship that was spotted wandering in the Ember Waste. Then report to <destination>. Payment is <payment>."
 	source
 		government "Remnant"
 	to offer
-		has "Grave Digger: Suspicious Ship Job: done"
+		has "Grave Digger: Suspicious Ship: done"
 		has "Grave Digger: Prefect's Albatross 2: done"
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
@@ -1080,6 +1094,11 @@ mission "Grave Digger: Thrasher Turrets 1"
 		"combat rating" > 1000
 		"net worth" > 16000000
 		"credits" > 8000000
+		or
+			not "Randomize Grave Digger: Thrasher Turrets 1"
+			and
+				has "Randomize Grave Digger: Thrasher Turrets 1"
+				random < 25
 	to complete
 		"credits" > 3999999
 	on offer
@@ -1092,6 +1111,8 @@ mission "Grave Digger: Thrasher Turrets 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "Randomize Grave Digger: Thrasher Turrets 1"
 	on visit
 		dialog `You've arrived on <planet>, but you do not have enough credits to complete the transaction. Come back with the necessary credits.`
 
@@ -1157,6 +1178,9 @@ mission "Grave Digger: Thrasher Turrets 2"
 			`	"Congratulations on your purchase captain. I'm sure you won't regret it. You'll hear from us again if we happen to acquire any more unique  merchandise that might interest you."`
 				defer
 	on defer
+		set "Randomize Grave Digger: Thrasher Turrets 1"
+		clear "Grave Digger: Thrasher Turrets 1: done"
+		clear "Grave Digger: Thrasher Turrets 1: offered"
 		"Midnight Market" ++
 		payment -4000000
 		outfit "Thrasher Turret" 4
@@ -1182,6 +1206,11 @@ mission "Grave Digger: Point Defense Turrets 1"
 		"combat rating" > 1000
 		"net worth" > 20000000
 		"credits" > 10000000
+		or
+			not "Randomize Grave Digger: Point Defense Turrets 1"
+			and
+				has "Randomize Grave Digger: Point Defense Turrets 1"
+				random < 25
 	to complete
 		"credits" > 4999999
 	on offer
@@ -1194,6 +1223,8 @@ mission "Grave Digger: Point Defense Turrets 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "Randomize Grave Digger: Point Defense Turrets 1"
 	on visit
 		dialog `You've arrived on <planet>, but you do not have enough credits to complete the transaction. Come back with the necessary credits.`
 
@@ -1259,6 +1290,9 @@ mission "Grave Digger: Point Defense Turrets 2"
 			`	"Congratulations on your purchase captain. I'm sure you won't regret it. You'll hear from us again if we happen to acquire any more unique  merchandise that might interest you."`
 				defer
 	on defer
+		set "Randomize Grave Digger: Point Defense Turrets 1"
+		clear "Grave Digger: Point Defense Turrets 1: done"
+		clear "Grave Digger: Point Defense Turrets 1: offered"
 		"Midnight Market" ++
 		payment -5000000
 		outfit "Point Defense Turret" 4
@@ -1286,6 +1320,11 @@ mission "Grave Digger: Inhibitor Cannons 1"
 		"combat rating" > 1000
 		"net worth" > 8000000
 		"credits" > 4000000
+		or
+			not "Randomize Grave Digger: Inhibitor Cannons 1"
+			and
+				has "Randomize Grave Digger: Inhibitor Cannons 1"
+				random < 25
 	to complete
 		"credits" > 1999999
 	on offer
@@ -1298,6 +1337,8 @@ mission "Grave Digger: Inhibitor Cannons 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "Randomize Grave Digger: Inhibitor Cannons 1"
 	on visit
 		dialog `You've arrived on <planet>, but you do not have enough credits to complete the transaction. Come back with the necessary credits.`
 
@@ -1363,6 +1404,9 @@ mission "Grave Digger: Inhibitor Cannons 2"
 			`	"You made the right choice dood! I'm sure you won't regret it. We'll be messaging you again if we score any more merch that might interest you."`
 				defer
 	on defer
+		set "Randomize Grave Digger: Inhibitor Cannons 1"
+		clear "Grave Digger: Inhibitor Cannons 1: done"
+		clear "Grave Digger: Inhibitor Cannons 1: offered"
 		"Midnight Market" ++
 		payment -2000000
 		outfit "Inhibitor Cannon" 4
@@ -1394,7 +1438,7 @@ mission "Grave Digger: Bounty Job"
 		fleet "Grave Digger Smugglers" 3
 	on complete
 		payment 800000
-		dialog `The government of <planet> thanks you for eliminating the <npc> and it's fleet of shadow warships. You are rewarded with <payment>.`
+		dialog `The government of <planet> thanks you for eliminating the <npc> and its fleet of shadow warships. You are rewarded with <payment>.`
 
 
 
@@ -1428,7 +1472,7 @@ mission "Nemesis: Grave Digger"
 	on offer
 		conversation
 			scene "scene/scene-gravediggerember"
-			`	When you land, Prefect Torza approaches you and signs "Captain <last>, we have a mission we believe is suitable for your unique qualifications. Another human named Lu Bu, captain of the "Grave Digger", arrived in Remnant space some time ago. Unfortunately, it's become clear that he betrayed our trust. We ask that you hunt him down and eliminate his entire fleet. We trust that you are able and willing to carry out this duty. Return here and file a report once you've completed this mission." The space port is eerily quiet and you're certain that every Remnant there has stopped what they were working on to watch your reaction. Torza steps back and signs, "May the Embers burn bright for you," before striding off as you comprehend what you've just been asked to do.`
+			`	When you land, Prefect Torza approaches you and signs "Captain <last>, we have a mission we believe is suitable for your unique qualifications. Another human named Lu Bu, captain of the 'Grave Digger', arrived in Remnant space some time ago. Unfortunately, it has become clear that he betrayed our trust. We ask that you hunt him down and eliminate his entire fleet. We trust that you are able and willing to carry out this duty. Return here and file a report once you have completed this mission." The space port is eerily quiet and you are certain that every Remnant there has stopped what they were working on to watch your reaction. Torza steps back and signs, "May the Embers burn bright for you," before striding off as you comprehend what you've just been asked to do.`
 				accept
 	on enter Aki'il
 		dialog `You receive a message as soon as you enter the system. "Nothing personal, captain. I just don't feel like letting you catch me today."`
@@ -1496,6 +1540,7 @@ mission "Nemesis: Grave Digger"
 		payment 600000
 		dialog "A Remnant military leader thanks you for eliminating the Grave Digger fleet, and gives you a payment of <payment>. There is no special fanfare or celebration for your work on this mission. As you stand alone at the spaceport, Lu Bu's final message echoes in your memory."
 
+# Clearing fleets present in earlier versions of this mission chain.
 event "Gravedigger defeated"
 	system Aki'il
 		remove fleet "Grave Digger raid"

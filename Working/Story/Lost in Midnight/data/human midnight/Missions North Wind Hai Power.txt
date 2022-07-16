@@ -38,6 +38,7 @@ mission "North Wind 1: Syndicate"
 		"combat rating" > 100
 		random < 40
 	on accept
+		log "People" "Yuki Onna" `The president of North Wind Cooling, a designer of refrigeration and cooling systems.`
 		conversation
 			scene "thumbnail/behemoth"
 			`You meet the client, Yuki Onna of North Wind Cooling, a designer of refrigeration and cooling systems. "It is well known that I am seeking buyers for a new prototype cooling system that is installed on this ship. I hope you are prepared to fend off any pirates, or the bounty hunters hired by our competitors, that may try to steal it."`
@@ -333,7 +334,7 @@ outfitter "North Wind"
 
 mission "North Wind 6: Turner Inc."
 	name "North Wind Turner"
-	description "Go to <destination> to pickup Yuki Onna of North Wind Cooling."
+	description "Go to <destination> to pick up Yuki Onna of North Wind Cooling."
 	source
 		government "Free Worlds" "Syndicate"
 	destination Valhalla
@@ -428,6 +429,7 @@ mission "North Wind 8: Turner Inc."
 		dialog `The <npc> hasn't arrived! Return to space and find it.`
 	on complete
 		event "North Wind Turner" 30
+		log `Introduced Yuki Onna to David Turner.`
 		conversation
 			scene "outfit/cooling ducts hai"
 			`You finally introduce Yuki Onna to David Turner and he agrees to listen to her proposal regarding the North Wind Cooling systems. David asks that you wait for him at the spaceport. He needs you to make a special delivery that can't be entrusted to anyone else.`
@@ -449,7 +451,7 @@ mission "North Wind 9: Greenwater stocked"
 
 mission "Turner Inc.: Hai Power 1"
 	name "Hai Power: Gnome Core"
-	description "Escort the <npc> to <destination> and pickup a prototype Gnome Core for Turner Inc."
+	description "Escort the <npc> to <destination> and pick up a prototype Gnome Core for Turner Inc."
 	source Greenwater
 	destination Makerplace
 	to offer
@@ -587,6 +589,7 @@ mission "Turner Inc.: Hai Power 3"
 	on complete
 		outfit "Gnome Core" -1
 		event "Gnome Core Delivered" 60
+		log `Delivered a prototype "Gnome Core" to Deep Sky on behalf of Turner Inc.`
 		conversation
 			scene "outfit/dwarf core hai"
 			`You successfully deliver the prototype Gnome Core to Deep Sky. It should be available in outfitters after a few months.`
@@ -827,6 +830,7 @@ mission "Turner Inc.: Hai Power 7"
 	on complete
 		event "Fission S2 Reactor Delivered" 60
 		dialog `David thanks you for rescuing him and his crew.`
+		log `After a brief adventure rescuing David Turner from pirates, I delivered a prototype "Fission S2 Reactor" to Syndicated Systems.`
 		conversation
 			scene "outfit/fission hai"
 			`You've delivered the prototype reactor to Syndicated Systems. It may be a few months before they have it stocked in their outfitters.`
@@ -892,6 +896,8 @@ mission "Turner Inc.: Hai Power 9"
 				`	"No way, I'm done getting shot at for you."`
 			`David seems thoughtful for a moment. Perhaps being kidnapped by pirates has given him some perspective on the dangers of space travel. "I understand. Don't worry about your share of the profits. I won't increase them if I find some other way to make this venture work. But I won't decrease them either."`
 				decline
+	on accept
+		event "millipede clear imo dep"
 	on enter "Wah Ki"
 		dialog `There's no sign of the Unfettered ship that stole the prototype. Hopefully it wasn't destroyed in the crossfire and is hiding out in one of the nearby systems.`
 	on enter "Imo Dep"
@@ -910,11 +916,29 @@ mission "Turner Inc.: Hai Power 9"
 				"Millipede"
 		dialog `Once you take the back the Heavy Fusion Core, return to <destination>.`
 	on fail
+		event "millipede restore imo dep"
 		dialog `[MISSION FAILED] You've failed an essential part of the Hai Power mission chain. If life were a game, you could load a save file and try again.`
 	on complete
+		event "millipede restore imo dep"
+		outfit "Heavy Fusion Core" -1
 		dialog `You've returned the stolen prototype. David says he wants to run some tests to make sure it wasn't damaged. Head to the spaceport to check up on him and get started on the next step to increased profits.`
-		
-		
+
+event "millipede clear imo dep"
+	system "Imo Dep"
+		remove fleet "Small Hai" 1000
+		remove fleet "Large Hai" 2000
+		remove fleet "Small Human Merchants (Hai)" 10000
+		remove fleet "Large Human Merchants (Hai)" 14000
+		remove fleet "Hai Surveillance" 3000
+
+event "millipede restore imo dep"
+	system "Imo Dep"
+		add fleet "Small Hai" 1000
+		add fleet "Large Hai" 2000
+		add fleet "Small Human Merchants (Hai)" 10000
+		add fleet "Large Human Merchants (Hai)" 14000
+		add fleet "Hai Surveillance" 3000
+
 		
 mission "Turner Inc.: Hai Power 10"
 	landing
@@ -969,6 +993,8 @@ mission "Turner Inc.: Hai Power 10"
 	on complete
 		outfit "Heavy Fusion Core" -1
 		event "Heavy Fusion Core Delivered" 60
+		log `After a brief adventure recovering it from the Unfettered, I delivered a prototype "Heavy Fusion Core" to Lovelace Labs.`
+		conversation
 			scene "outfit/fusion hai"
 			`You successfully deliver the prototype Heavy Fusion Core to Lovelace Labs. It should be available in outfitters after a few months.`
 			

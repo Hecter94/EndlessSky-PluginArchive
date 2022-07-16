@@ -315,6 +315,12 @@ ship "Model 512" "Model 512 (dire omen)"
 		"Thruster (Lunar Class)"
 		"Steering (Planetary Class)"
 		Hyperdrive
+	engine -145 97
+	engine 145 97
+	"steering engine" -145 97
+		right
+	"steering engine" 145 97
+		left
 	gun -22 -143 "Korath Minelayer"
 	gun 22 -143 "Korath Minelayer"
 	turret -23 -134 "Korath Slicer Turret"
@@ -770,17 +776,19 @@ mission "Ghost Hunting: Zubenelgenubi Ghost Ship"
 
 	on enter Zubenelgenubi
 		conversation
+			scene "scene/scene-trailblazerzubenelgenubi"
 			branch "trailblazer encountered"
 				has "trailblazer encountered"
 
-			`	While you haven't seen this ship before, the derelict you've found strongly resembles a Coalition design. Perhaps it spent hundreds or even thousands of years floating through the empty void to get here. Unfortunately, it did not make the journey unscathed. A tiny asteroid has wedged itself into the hull. Also, it looks like you weren't the first one to find this derelict.`
-			scene "scene/scene-trailblazerzubenelgenubi"
-				accept
+			`	While you haven't seen this ship before, the derelict you've found strongly resembles a Coalition design. Perhaps it spent hundreds or even thousands of years floating through the empty void to get here. Unfortunately, it did not make the journey unscathed. A tiny asteroid has wedged itself into the hull.`
+				goto company
 			
 			label "trailblazer encountered"
-			`	You've seen this type of ship before. The derelict you've found is a rare Coalition design. Perhaps it spent hundreds or even thousands of years floating through the empty void to get here. Unfortunately, it did not make the journey unscathed. A tiny asteroid has wedged itself into the hull. Also, it looks like you weren't the first one to find this derelict.`
-			scene "scene/scene-trailblazerzubenelgenubi"
-				accept
+			`	You've seen this type of ship before. The derelict you've found is a rare Coalition design. Perhaps it spent hundreds or even thousands of years floating through the empty void to get here. Unfortunately, it did not make the journey unscathed. A tiny asteroid has wedged itself into the hull.`
+				goto company
+
+			label company
+			`Also, it looks like you weren't the first one to find this derelict.`
 
 	npc
 		system Zubenelgenubi
@@ -880,6 +888,7 @@ mission "Ghost Hunting: Zubenelgenubi Ghost Ship"
 		event "Ghost restore Zubenelgenubi"
 	on fail
 		event "Ghost restore Zubenelgenubi"
+		set "trailblazer encountered"
 	on complete
 		event "Ghost restore Zubenelgenubi"
 		log `Salvaged an old Saryd warship from the era of the Coalition's rebellion against the Quarg. After a tiny asteroid crashed into the ship, some sort of alien virus it contained had infected the crew and turned them into zombies. Fortunately, the virus doesn't seem to infect humans and I was able to sterilize the ship.`
@@ -978,12 +987,165 @@ mission "Ghost Hunting: Friendship 1"
 
 
 
+
+phrase "error test ship"
+	word
+		"_est Ship"
+		"T_st Ship"
+		"Te_t Ship"
+		"Tes_ Ship"
+		"Test _hip"
+		"Test S_ip"
+		"Test Sh_p"
+		"Test Shi_"
+	word
+		" ERROR:"
+	phrase
+		"digit"
+	phrase
+		"digit"
+	phrase
+		"digit"
+		
+phrase "ghost fleet test dummy offer"
+	word
+		"You overhear "
+	word
+		"some "
+		"a couple of "
+		"a group of "
+	word
+		"bounty hunters "
+	word
+		"talking about a fleet of ghost ships that has been attacking ships in nearby systems. It seems there's a reward for destroying it."
+
+
+mission "Ghost Hunting: Ghost Fleet"
+	name "Ghost Ship?"
+	description "There are rumors of fleet of ghost ships attacking ships near <destination>... The reward for destroying it is <payment>."
+	source
+		attributes "frontier"
+	to offer
+		"month" == 10
+		has "Ghost Hunting: Poltergeist King 2: done"
+		"Syndicate target practice [0]: done" + "Syndicate target practice [1]: done" + "Syndicate target practice [2]: done" + "Syndicate target practice [3]: done" + "Kestrel Testing: done" >= 1
+	on offer
+		clear "Ghost Hunting: Ghost Fleet Reset: offered"
+		dialog phrase "ghost fleet test dummy offer"
+	npc kill
+		government "Phenomenon (dangerous)"
+		system
+			distance 1 2
+		personality target waiting staying vindictive marked mute
+			confusion 60
+		ship "Hackerz Drone" "Poltergeist King"
+		fleet
+			names "error test ship"
+			variant
+				"Quicksilver Test Dummy2"
+				"Argosy Test Dummy"
+				"Splinter Test Dummy2"
+				"Vanguard Test Dummy2"
+			variant
+				"Berserker Test Dummy2"
+				"Argosy Test Dummy"
+				"Mule Test Dummy"
+				"Leviathan Test Dummy"
+			variant
+				"Hauler Test Dummy"
+				"Freighter Test Dummy"
+				"Argosy Test Dummy"
+				"Falcon Test Dummy"
+	on complete
+		payment 500000
+		dialog "The government of <planet> rewards you with <payment> for eliminating the fleet of ghost ships."
+
+ship "Leviathan" "Leviathan Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -43
+		"bunks" -64
+ship "Falcon" "Falcon Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -52
+		"bunks" -75
+ship "Berserker" "Berserker Test Dummy2"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -1
+		"bunks" -2
+ship "Quicksilver" "Quicksilver Test Dummy2"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -3
+		"bunks" -6
+ship "Splinter" "Splinter Test Dummy2"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -7
+		"bunks" -21
+ship "Vanguard" "Vanguard Test Dummy2"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -23
+		"bunks" -45
+ship "Mule" "Mule Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -14
+		"bunks" -43
+ship "Hauler" "Hauler Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -3
+		"bunks" -12
+ship "Freighter" "Freighter Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -2
+		"bunks" -7
+ship "Argosy" "Argosy Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"required crew" -4
+		"bunks" -14
+
+mission "Ghost Hunting: Ghost Fleet Reset"
+	landing
+	invisible
+	to offer
+		"month" == 9
+	on offer
+		clear "Ghost Hunting: Ghost Fleet: offered"
+		fail
+
+
+
+
+######################################################################
+
 mission "Ghost Hunting: Curse of the Carabao 1"
 	source
 		government "Republic"
 		attributes "deep"
 		not attributes "station" "uninhabited" "pirate" "shipyard"
 	to offer
+#
+# The game isn't detecting the "Carabao AI" from an escort. Deactivating this mission until this is fixed.
+#
+		has "curse of the carabao"
+#
 		"credits" >= 18000000
 		or
 			not "Randomize Ghost Hunting: Curse of the Carabao 1"

@@ -83,6 +83,9 @@ mission "Destroy Independence (North)"
 	
 	on fail
 		clear "Destroy Independence (North): offered"
+	on complete
+		log `Was lured to Mirzam with the promise of an easy way to capture the Mastodon city ship "Independence." It turned out to be a trap set up by the Republic.`
+
 
 mission "Destroy Independence (South)"
 	name "Mastodon Hunting"
@@ -152,6 +155,8 @@ mission "Destroy Independence (South)"
 	
 	on fail
 		clear "Destroy Independence (South): offered"
+	on complete
+		log `Was lured to Holeb with the promise of an easy way to capture the Mastodon city ship "Independence." It turned out to be a trap set up by the Republic.`
 
 
 mission "Escort Independence"
@@ -297,7 +302,7 @@ mission "Escort Independence"
 		dialog phrase "generic arrived-without-npc dialog"
 
 	on complete
-		"Escort Independence: offered" --
+		clear "Escort Independence: offered"
 		payment 15000
 		dialog phrase "generic safe escort completion dialog"
 
@@ -356,6 +361,10 @@ mission "Escort Requiem Alpha"
 		personality launching escort timid
 		ship "War Hauler" "Requiem Alpha"
 		dialog `The <npc> has been defeated. You make a mental note to check with the local authorities to see if there is any reward for your effort.`
+	on abort
+		"reputation: Independent (Killable)" >?= 10
+	on fail
+		"reputation: Independent (Killable)" >?= 10
 
 	on complete
 		payment 150000
@@ -381,176 +390,178 @@ mission "Protection: Marauder Double Cross"
 		payment -100000
 		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>.`
 	on fail
-		"reputation: Independent (Killable)" >?= 1	
+		"reputation: Bounty (Disguised)" >?= 1	
 		dialog `The protection contract with <npc> has expired.`
 	on abort
-		"reputation: Independent (Killable)" >?= 1	
-	npc kill
-		government "Independent (Killable)"
-		personality plunders heroic
-		fleet "Marauder Independent (Killable)"
+		"reputation: Bounty (Disguised)" >?= 1	
+	on complete
+		"reputation: Bounty (Disguised)" >?= 1	
+	npc save
+		government "Bounty (Disguised)"
+		personality harvests plunders heroic
+		fleet "Marauder Bounty (Disguised)"
 	on enter Mintaka
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Rigel
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Mirzam
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Hassaleh
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Sumar
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Rajak
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter "Ultima Thule"
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Cardax
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Orbona
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Terminus
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Limen
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Mora
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Fala
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Algieba
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Muphrid
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Mizar
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Gacrux
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Holeb
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Tais
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Wei
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Alnasl
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Eber
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter "Alpha Arae"
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Eltanin
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Moktar
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Oblate
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Eteron
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Persian
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Lurata
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Lesath
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter "Beta Lupi"
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Zubenelgenubi
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Minkar
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Volax
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Sospi
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Unagi
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Hatysa
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Gorvi
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Tortor
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Danoa
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Durax
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Kugel
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter "Gamma Cassiopeiae"
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Regulus
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Fingol
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Nocte
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Ipsing
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Hintar
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Orvala
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Boral
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Naper
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Ildaria
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Sadr
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Umbral
 		dialog `Treachery! The <npc> turns its weapons on you!`
-		"reputation: Independent (Killable)" <?= -1000
+		"reputation: Bounty (Disguised)" <?= -1000
 
 
 
@@ -748,13 +759,12 @@ mission "Peace Tour 1"
 	stopover
 		attributes "pirate" "independent"
 		attributes "spaceport"
-	destination
-		attributes "paradise"
-		attributes "spaceport"
+	destination Farseer
 	to offer
 		has "main plot completed"
 		random < 30
 	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 		conversation
 			scene "portrait/human59"
 			`A freighter captain approaches you from his ship. "Sorry to ask this of you, but my escort ditched me. I still have several more stops to spread the message of intergalactic peace. Won't you help me?"`
@@ -765,8 +775,9 @@ mission "Peace Tour 1"
 			`	"Awesome, we'll make the galaxy a better place. See you in orbit!"`
 				accept
 	on stopover
-		dialog `It was a long trip, but the <npc> finally finished spreading it's message of peace. It's time to take it home to <destination>.`
+		dialog `It was a long trip, but the <npc> finally finished spreading its message of peace. It's time to take it home to <destination>.`
 	on abort
+		"reputation: Bounty (Disguised)" >?= 1
 		conversation
 			scene "portrait/human59"
 			`"You're leaving me stranded here? Thanks for nothing."`
@@ -774,7 +785,10 @@ mission "Peace Tour 1"
 		government "Bounty (Disguised)"
 		personality target timid
 		fleet "TMBR Billboard"
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
 	on complete
+		"reputation: Bounty (Disguised)" >?= 1
 		event "add nukes of peace"
 		conversation
 			scene "portrait/human59"
@@ -829,7 +843,9 @@ event "add nukes of peace"
 
 
 mission "Peace Tour 2"
-	invisible
+	name "Bounty: <npc>"
+	description "The <npc> is proliferating nuclear weapons amongst the pirates. Stop this dangerous fugituve, then report to <destination>. The reward is <payment>."
+	source Farseer
 	to offer
 		has "Peace Tour 1: done"
 	on offer
@@ -857,6 +873,7 @@ mission "Peace Tour 2"
 			`	The government of <origin> is grateful for your assistance and rewards you with 1,000,000 credits. They have issued an additional 1,000,000 credit bounty on the person that left you the rigged nuclear device.`
 				accept
 	on accept
+		log `Disarmed a nuclear warhead! Hoping to collect the 1 million credit bounty on the fugitive that dropped in my lap.`
 		payment 1000000
 	npc kill
 		government "Bounty"
@@ -971,7 +988,7 @@ mission "Midnight Market: Nukes of Peace?"
 			
 			label legitimate
 			scene "outfit/nuke"
-			`	After a long walk you arrive at what looks like an abandoned store. The doors and windows are boarded up. Despite this, you notice someone move to hide behind a curtain on the upper floor. The stranger leads you to a side entrance. Inside are a pair of massive crates. The stranger opens one, saying "Behold! Nuclear missiles, a powerful addition to your arsenal. Just confirm payment of 2,000,000 credits on this datapad and they're yours.`
+			`	After a long walk you arrive at what looks like an abandoned store. The doors and windows are boarded up. Despite this, you notice someone move to hide behind a curtain on the upper floor. The stranger leads you to a side entrance. Inside are a pair of massive crates. The stranger opens one, saying "Behold! Nuclear missiles, a powerful addition to your arsenal. Just confirm payment of 2,000,000 credits on this datapad and they're yours."`
 			choice
 				`	(Buy the Nuclear Missiles.)`
 					goto purchase
@@ -1172,7 +1189,7 @@ mission "Pot-o'-honey"
 				"Arrow (Hai)"
 
 	npc kill
-		government Bounty (Disguised)
+		government "Bounty (Disguised)"
 		personality target marked launching harvests plunders
 			confusion 20
 		ship "Bulk Freighter (hai drones)" "Pot-o'-honey"
@@ -1185,7 +1202,12 @@ mission "Pot-o'-honey"
 				"reputation: Bounty (Disguised)" >?= 1
 			`The Pot-o'-honey and its drones have been defeated. You make a mental note to check with the authorities on <destination> to see if there is any reward for your effort.`
 
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
 	on complete
+		"reputation: Bounty (Disguised)" >?= 1
 		payment 150000
 		log `Took on a simple escort job that turned out to be a trap set by pirates. I can't believe they turned an ordinary Bulk Freighter into a drone carrier. If more pirates start using this trick, taking on escort jobs will be even more risky than they already are.`
 		conversation
