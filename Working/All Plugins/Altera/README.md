@@ -2,30 +2,25 @@
 
 <h1><p align=center>Endless Sky Plugin:<br />Altera</p></h1>
 
-This is a plugin for the free open source game: [Endless Sky][es]. This plugin
-is developed and tested against [Endless Sky continuous][continuous] build.
+This is a plugin for the free, open-source game [Endless Sky][es]. This plugin
+is developed and tested against the [Endless Sky continuous][continuous] build.
 Learn more [about Endless Sky][esweb].
 
-# About plugin
+# About Plugin:
 
 Adds a new civilization to the Ember Wastes: Alterans.  Alterans, like
 Heliarchs, are a Tier 2.5 civilization in the Endless Sky universe.  In total,
 there are about 80 systems related to Alteran territory.
 
-This plugin adds:
+This plugin:
 
-* Government and planets related to Altera.
-* Alteran ships and outfits purchasable on planetary shipyards and outfitters.
-* Adds onto existing map for exploration.
+* Adds Altera-related governments and planets.
+* Adds Alteran ships and outfits, which are purchasable on planetary shipyards and outfitters.
+* Expands upon the existing map for exploration.
 
-# Development status: Alpha
+# Development Status: Alpha
 
 * A highly WIP plugin.  Story is planned but not implemented.
-
-Currently only adding several clusters east of the Ember-Waste (about 80
-systems). The majority of these systems is inhabited by the Alterans, from which
-you can purchase high level ships and outfits, more or less matching the
-Heliarch tech level. There isn't really anything else to explore yet.
 
 [es]: https://github.com/endless-sky/endless-sky
 [continuous]: https://github.com/endless-sky/endless-sky/releases/tag/continuous
