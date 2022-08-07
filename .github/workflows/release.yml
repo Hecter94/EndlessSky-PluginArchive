@@ -1,0 +1,21 @@
+name: Zip and Release
+
+on:
+  push:
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd "Working/All Plugins"; for i in */; do zip -r "${i%/}.zip" "$i"; done
+      - uses: ncipollo/release-action@v1
+        with:
+          name: Downloads
+          tag: Latest
+          allowUpdates: true
+          removeArtifacts: true
+          artifacts: "Working/All Plugins/*.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
