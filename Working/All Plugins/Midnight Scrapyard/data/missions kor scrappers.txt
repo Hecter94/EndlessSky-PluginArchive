@@ -44,7 +44,12 @@ mission "Scrapyard Scrapper Siege (Faronektu)"
 			not "Randomize Scrapyard Scrapper Siege (Faronektu)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Faronektu)"
-				Random < 15
+				not "Scrapyard Damnation Epilogue: done"
+				random < 10
+			and
+				has "Randomize Scrapyard Scrapper Siege (Faronektu)"
+				has "Scrapyard Damnation Epilogue: done"
+				random < 2
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Fara Skaeruti in the Faronektu system. Can you assist in [defending, protecting] the Mereti?`
@@ -63,8 +68,9 @@ mission "Scrapyard Scrapper Siege (Faronektu)"
 		fleet "Large Korath Scrappers" 6
 		dialog `You've defeated the Kor Scrapper fleet. Return to <origin> and report the results to Meto Pa'aret.`
 	on complete
-		payment 500000
-		dialog `You update Meto Pa'aret on the result of the battle. The Wanderers offer you <payment> for your efforts.`
+		"reputation: Wanderer" ++
+		"reputation: Kor Mereti" += 8
+		dialog `You update Meto Pa'aret on the result of the battle. Your reputation with the Wanderers and Mereti has improved.`
 
 
 mission "Scrapyard Scrapper Siege (Mekislepti)"
@@ -83,7 +89,12 @@ mission "Scrapyard Scrapper Siege (Mekislepti)"
 			not "Randomize Scrapyard Scrapper Siege (Mekislepti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Mekislepti)"
-				Random < 15
+				not "Scrapyard Damnation Epilogue: done"
+				random < 10
+			and
+				has "Randomize Scrapyard Scrapper Siege (Mekislepti)"
+				has "Scrapyard Damnation Epilogue: done"
+				random < 2
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Aresepru Nat in the Mekislepti system. Can you assist in [defending, protecting] the Mereti?`
@@ -103,8 +114,9 @@ mission "Scrapyard Scrapper Siege (Mekislepti)"
 		dialog `You've defeated the Kor Scrapper fleet. Return to <origin> and report the results to Meto Pa'aret.`
 
 	on complete
-		payment 500000
-		dialog `You update Meto Pa'aret on the result of the battle. The Wanderers offer you <payment> for your efforts.`
+		"reputation: Wanderer" ++
+		"reputation: Kor Mereti" += 8
+		dialog `You update Meto Pa'aret on the result of the battle. Your reputation with the Wanderers and Mereti has improved.`
 		
 
 mission "Scrapyard Scrapper Siege (Similisti)"
@@ -123,7 +135,12 @@ mission "Scrapyard Scrapper Siege (Similisti)"
 			not "Randomize Scrapyard Scrapper Siege (Similisti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Similisti)"
-				Random < 15
+				not "Scrapyard Damnation Epilogue: done"
+				random < 10
+			and
+				has "Randomize Scrapyard Scrapper Siege (Similisti)"
+				has "Scrapyard Damnation Epilogue: done"
+				random < 2
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Mereti Station in the Similisti system. Can you assist in [defending, protecting] the Mereti?`
@@ -143,8 +160,9 @@ mission "Scrapyard Scrapper Siege (Similisti)"
 		dialog `You've defeated the Kor Scrapper fleet. Return to <origin> and report the results to Meto Pa'aret.`
 
 	on complete
-		payment 500000
-		dialog `You update Meto Pa'aret on the result of the battle. The Wanderers offer you <payment> for your efforts.`
+		"reputation: Wanderer" ++
+		"reputation: Kor Mereti" += 8
+		dialog `You update Meto Pa'aret on the result of the battle. Your reputation with the Wanderers and Mereti has improved.`
 
 
 
@@ -171,7 +189,7 @@ mission "Scrapyard Damnation 1"
 			not "Randomize Scrapyard Damnation 1"
 			and
 				has "Randomize Scrapyard Damnation 1"
-				Random < 25
+				random < 25
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Rekat Moraski in the Chimitarp system. Can you assist in [defending, protecting] the Mereti?`
@@ -189,7 +207,7 @@ mission "Scrapyard Damnation 1"
 		event "node 8 processor Activated"
 		conversation
 			scene "scene/scene-damnation1"
-			`You notice something wrong when you enter Chimitarp: There isn't any fighting. The Mereti are standing by, as if waiting for orders. Suddenly, the Korath Devourer hails you! You raise an eyebrow when you learn the ship's name: Damnation. You're fairly certain that isn't a Korath name.`
+			`You notice something wrong when you enter Chimitarp: There isn't any fighting. The Mereti are standing by, as if waiting for orders. Suddenly, a Korath Devourer hails you! You raise an eyebrow when you learn the ship's name: Damnation. You're fairly certain that isn't a Korath name.`
 			`	"Greetings <ship>. Captain <last>, was it? I've heard about you. While the Scrappers are content to collect scraps, I've taken posession of a far greater prize. Welcome to hell.`
 			choice
 				`	"What have you done?"`
@@ -422,7 +440,7 @@ mission "Scrapyard Damnation 3"
 	npc
 		government Alpha
 		system Feroteri
-		personality target waiting staying vindictive
+		personality waiting staying vindictive
 		ship "Far Osk 27" "Gehenna"
 		ship "Far Osk 27" "Purgatory "
 		ship "Far Osk 27" "Hades"
@@ -614,6 +632,7 @@ mission "Scrapyard Damnation Epilogue"
 	to offer
 		has "Scrapyard Damnation 3: done"
 	on enter
+		"reputation: Kor Mereti" >?= 1
 		dialog `The Mereti send a message of gratitude for [restoring, fixing] The Mind.`
 	npc
 		government "Invasive Predator"
@@ -656,9 +675,11 @@ mission "Scrapyard Devourer (Neutral) 2"
 		has "Scrapyard Damnation Epilogue: done"
 	npc kill
 		government "Kor Scrappers"
-		system " Eneremprukt"
+		system "Eneremprukt"
 		personality waiting staying mining harvests plunders uninterested
 		fleet "Korath Devourer (Neutral)"
+
+
 
 
 ####################
@@ -682,7 +703,7 @@ mission "Scrapyard Node 8 Hacking"
 				`	(Plug the Node 8 Jammer into the port.)`
 				`	(Do not plug the Node 8 Jammer into the port.)`
 					defer
-			`	The device blocks all communications from the ATM to the rest of the network. You attempt to withdraw 1000000000 credits, but the machine warns that it only contains 497635128 credits. You pocket the money and prepare to leave.`
+			`	The device blocks all communications from the ATM to the rest of the network. You attempt to withdraw 1,000,000,000 credits, but the machine warns that it only contains 497,635,128 credits. You pocket the money and prepare to leave.`
 			choice
 				`	(Remove the Node 8 Jammer and take it with you.)`
 					goto end

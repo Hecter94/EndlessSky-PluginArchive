@@ -31,7 +31,8 @@ mission "Scrapyard Sebra Skira TL5"
 
 mission "Scrapyard Eggs Pirate 1"
 	landing
-	invisible
+	name "Blight Shadow Eggs"
+	description "Take these eggs to a place known for dealing with exotic animals."
 	source "Sebra Skira"
 	destination "Greenrock"
 	to offer
@@ -142,8 +143,9 @@ mission "Scrapyard Pirate Eggs Hatch"
 	on offer
 		require "Blight Shadow Eggs"
 		fail "Scrapyard Eggs Pirate 1"
-		"Scrapyard Eggs Pirate 1: offered" --
-	on enter	
+		clear "Scrapyard Eggs Pirate 1: offered"
+		clear "event: Pirate Egg timer"
+	on enter
 		outfit "Blight Shadow Eggs" -1
 		conversation
 			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
@@ -151,8 +153,18 @@ mission "Scrapyard Pirate Eggs Hatch"
 	npc kill
 		government "Invasive Predator"
 		personality fleeing disables unconstrained mute
-		fleet "Small Blight Shadow" 3
+		fleet "Small Blight Hatchling" 3
 
+mission "Scrapyard Pirate Eggs Hatch Patch"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Pirate Eggs Hatch: offered"
+		has "event: Pirate Egg timer"
+		not "Scrapyard Eggs Pirate 2: offered"
+	on offer
+		clear "event: Pirate Egg timer"
+		fail
 
 
 mission "Scrapyard Devru Kaska TL15"
@@ -162,6 +174,7 @@ mission "Scrapyard Devru Kaska TL15"
 		has "event: remnant: return the samples timer"
 		"Scrapyard Threat Level" >= 15
 		or
+			has "Infected with Shadowblight"
 			has "Scrapyard Eggs Pirate 3: offered"
 			has "Scrapyard Pirate Eggs Hatch: offered"
 	on enter "Sobarati"
@@ -179,6 +192,7 @@ mission "Scrapyard Eggs Remnant 1"
 		has "event: remnant: return the samples timer"
 		"Scrapyard Threat Level" >= 15
 		or
+			has "Infected with Shadowblight"
 			has "Scrapyard Eggs Pirate 3: offered"
 			has "Scrapyard Pirate Eggs Hatch: offered"
 	on offer
@@ -194,10 +208,19 @@ mission "Scrapyard Eggs Remnant 1"
 
 			`	You decide to leave the eggs alone and get out of here before whatever laid them comes back.`
 				depart
+
 			label omelette
 			`	You violently smash the eggs and are splattered with black slime. It might be a good idea to decontaminate your environmental suit later...`
 				decline
+
 			label keep
+			branch pirates
+				has "Scrapyard Eggs Pirate 3: offered"
+
+			`	You carefully load the eggs into a crate and store them in your cargo hold. Maybe the Remnant might be interested in them...`
+				accept
+
+			label pirates
 			`	You carefully load the eggs into a crate and store them in your cargo hold. After your experience with the pirates, you wonder if taking them to the Remnant might yield better results...`
 				accept
 	on decline
@@ -210,7 +233,7 @@ mission "Scrapyard Eggs Remnant 1"
 		conversation
 			scene "outfit/blight egg"
 			`You take the eggs to Plume's lab and tell him everything you know about the Blight Shadows.`
-			`"Amazing..." He trills, "And they're not native to our galaxy?" You sign an affirmative. His hands move in gestures indicating that he and the other researchers will gladly accept the eggs for research and share their findings with you.`
+			`"Amazing..." He trills, "And they are not native to our galaxy?" You sign an affirmative. His hands move in gestures indicating that he and the other researchers will gladly accept the eggs for research and share their findings with you.`
 
 event "Remnant Egg timer"
 
@@ -278,7 +301,7 @@ mission "Scrapyard Blight Rifle 1"
 		not attributes "automaton"
 	destination "Caelian"
 	to offer
-		"Blight Rifle Testing" > 10
+		"Blight Rifle Testing" >= 10
 		random < 50
 	on offer
 		require "Blight Rifle" 1
@@ -299,19 +322,19 @@ mission "Scrapyard Blight Rifle 2"
 		has "Scrapyard Blight Rifle 1: done"
 	on offer
 		conversation
+			scene "outfit/blight rifle"
 			`You find Prefect Chilia at the weapons research lab and report what happened with the Blight Rifle.`
 			`"That is very unfortunate," he sings. "However we have another test model for you to try out, if you are interested. The new casing should be sturdier than before."`
 			choice
-				`	"Sure, I'm willing to try it out."`
-				`	"Sorry, I don't want to be slimed again."`
+				`	"Sure, I am willing to try it out."`
+				`	"Sorry, I do not want to be slimed again."`
 					decline
 
-			scene "outfit/blight rifle"
 			`	He hands the rifle to you. "May the Embers burn bright for you, Captain."`
 				accept
 	on accept
 		outfit "Blight Rifle" 1
-		"Blight Rifle Testing" <?= 0
+		"Blight Rifle Testing" <?= 1
 		fail
 
 mission "Scrapyard Blight Rifle 3"
@@ -329,28 +352,38 @@ mission "Scrapyard Blight Rifle 3"
 		require "Blight Rifle" 1
 		conversation
 			scene "outfit/blight rifle"
-			`The test model blight rifle starts shaking wildly. Then part of the casing shatters, splattering you with black slime! Unfortunately, the rifle is a complete wreck. You'll have to rely on some other weapon for now.`
+			`The test model Blight Rifle starts shaking wildly. Then part of the casing shatters, splattering you with black slime! Unfortunately, the rifle is a complete wreck. You'll have to rely on some other weapon for now.`
 				accept
 	on accept
 		outfit "Blight Rifle" -1
-		"Scrapyard Blight Rifle 2: offered" --
+		clear "Scrapyard Blight Rifle 2: offered"
 	on complete
-		"Scrapyard Blight Rifle 3: offered" --
+		clear "Scrapyard Blight Rifle 3: offered"
 		dialog `Head to the spaceport to report your Blight Rifle field test results to Prefect Chilia.`
-		
 
+mission "Scrapyard Blight Rifle testing patch"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Blight Rifle 2: failed"
+		"Blight Rifle Testing" < 1
+	on offer
+		set "Blight Rifle Testing"
+		fail
 
 mission "Scrapyard Remnant Eggs Hatch"
 	landing
 	invisible
+	repeat
 	to offer
 		has "event: Remnant Egg timer"
 		not "Scrapyard Eggs Remnant 1: done"
 	on offer
 		require "Blight Shadow Eggs"
 		fail "Scrapyard Eggs Remnant 1"
-		"Scrapyard Eggs Remnant 1: offered" --
-	on enter	
+		clear "Scrapyard Eggs Remnant 1: offered"
+		clear "event: Remnant Egg timer"
+	on enter
 		outfit "Blight Shadow Eggs" -1
 		conversation
 			`You hear a loud crunching sound coming from your cargo hold. When you check the security cameras, you see that the Blight Shadow eggs have hatched! The newborn Blight Shadows are tearing open the cargo hatch...`
@@ -358,7 +391,80 @@ mission "Scrapyard Remnant Eggs Hatch"
 	npc kill
 		government "Invasive Predator"
 		personality fleeing disables unconstrained mute
-		fleet "Small Blight Shadow" 3
+		fleet "Small Blight Hatchling" 3
+
+mission "Scrapyard Remnant Eggs Hatch Patch"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Remnant Eggs Hatch: offered"
+		has "event: Remnant Egg timer"
+		not "Scrapyard Eggs Remnant 1: done"
+	on offer
+		clear "event: Remnant Egg timer"
+		fail
+
+mission "Scrapyard Remnant Eggs Hatch Patch Patch"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Eggs Remnant 1: done"
+		has "Scrapyard Remnant Eggs Hatch Patch: failed"
+	on offer
+		event "Remnant Egg timer"
+		fail
+
+
+
+mission "Scrapyard Plume's Research"
+	landing
+	invisible
+	source "Aventine"
+	to offer
+		has "event: Blight Rifle Testing"
+		random < 25
+	on offer
+		conversation
+			scene "outfit/blight egg"
+			`It's been a while since you delivered Blight Shadow eggs to Plume. Do want to see what he's learned?`
+			choice
+				`	(Visit Plume's lab.)`
+				`	(Not now.)`
+					defer
+			scene "thumbnail/blightshadow-thumb"
+			`	You find Plume alone, hunched over an operating platform. A Blight Shadow lies sedated on it, its body sliced open for dissection. Judging from its relatively small size, this is probably a hatchling. As you step into the room Plume looks up in surprise. "Ah, <first>! You startled me," Plume chants quickly. "These creatures are incredibly dangerous! The first ones to hatch immediately attacked." He sets down his tools and starts cleaning his hands.`
+			choice
+				`	"Was anyone hurt?"`
+				`	"What have you learned?"`
+					goto research
+			apply
+				"reputation: Remnant" ++
+			`	"No, but the creatures escaped before we could study them." His notes trail off on a mournful tone. "We've put more vigorous safety protocols into practice with the remaining test subjects.`
+			choice
+				`	"What have you learned?"`
+			label research
+			`	"The creature absorbs energy. Both light and heat are absorbed through its skin. It can also absorb fuel, energy, and heat from ships through a beam emitted by a special organ hidden amongst its tentacles. As I said, it is very dangerous. However it does seem to have a weakness." He takes a breath then continues, "While hunting down the escaped specimens, an Ion storm swept through the system. Apparently, the Ionic energy was somewhat disruptive to several of their internal organs."`
+			`	That information could be useful. You thank Plume for his research and head out.`
+				accept
+	on enter
+		dialog `Plume mentioned that some of the Blight Shadows escaped. He never indicated if they were all caught...`
+	npc kill
+		government "Invasive Predator"
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Hatchling" 3
+	npc kill
+		government "Invasive Predator"
+		system
+			distance 1 2
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Hatchling" 2
+	npc kill
+		government "Invasive Predator"
+		system
+			distance 2 3
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Hatchling"
+		dialog `These Blight Shadows are weaker than the ones you've encountered in Sestor space. They could just be hatchlings. Or maybe the Ember Waste is somehow inhospitable to them.`
 
 
 
@@ -588,6 +694,7 @@ mission "Scrapyard Random Station Eggs"
 	landing
 	invisible
 	repeat
+	deadline 3
 	source
 		planet "Sebra Skira" "Devru Kaska" "Metwar Skaretar" "Makwar Pratarati"
 	to offer
@@ -601,7 +708,7 @@ mission "Scrapyard Random Station Eggs"
 	npc kill
 		government "Invasive Predator"
 		personality entering disables unconstrained mute
-		fleet "Large Blight Shadow"
+		fleet "Large Blight Hatchling"
 
 mission "Scrapyard Random Station Eggs cleanup"
 	landing
@@ -622,8 +729,10 @@ mission "Scrapyard Blight Mutation"
 	invisible
 	to offer
 		has "event: Infected with Shadowblight"
+		has "event: Blight Shadows Nest In Persitar"
 		"Scrapyard Threat Level" >= 25
 	on offer
+		"Scrapyard Threat Level" ++
 		event "scrapyard blight mutation"
 		fail
 		
@@ -639,3 +748,209 @@ event "scrapyard blight mutation"
 	system Sobarati
 		remove fleet "Small Blight Shadow" 800
 		add fleet "Small Blight Mutation" 800
+	system Persitar
+		add fleet "Small Blight Mutation" 1000
+
+
+
+mission "Scrapyard Blight Horror"
+	landing
+	invisible
+	to offer
+		has "event: scrapyard blight mutation"
+		"Scrapyard Threat Level" >= 30
+	on offer
+		"Scrapyard Threat Level" ++
+		event "scrapyard blight horrors"
+		fail
+		
+event "scrapyard blight horrors"
+	system Celeborim
+		add fleet "Small Blight Horror" 1200
+	system Makferuti
+		add fleet "Small Blight Horror" 1200
+	system Asikafarnut
+		remove fleet "Small Blight Shadow" 800
+		add fleet "Small Blight Horror" 1200
+	system Sobarati
+		add fleet "Small Blight Horror" 1200
+	system Persitar
+		add fleet "Small Blight Mutation" 1000
+		add fleet "Small Blight Horror" 1200
+	system Silikatakfar
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+	system Ferukistek
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+	system Eneremprukt
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+	system Mesuket
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+	system Similisti
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+	system Faronektu
+		add fleet "Small Blight Mutation" 5000
+		add fleet "Small Blight Horror" 8000
+
+
+
+mission "Scrapyard Blight Shadow Defense"
+	repeat
+	name "Defend <planet>!"
+	description "A large swarm of Blight Shadows has entered <system>. Eliminate them, then report to <destination>."
+	source
+		government "Wanderer"
+		not attributes "uninhabited"
+	destination
+		distance 1 2
+		government "Wanderer"
+		attributes "korath"
+		not attributes "uninhabited"
+	to offer
+		has "event: Blight Shadows vs Mereti"
+		random < 5
+	on offer
+		conversation
+			scene "scene/scene-blightshadowswarm"
+			`There's a lot panicked yelling as several pilots are rushing to get their ships ready for take off. When you ask what's going on, you are told that <destination> is under attack by "shadows [lurking, hiding] in the darkness." Join the defense fleet?`
+			choice
+				`	(Join the defense fleet.)`
+					accept
+				`	(Do not join the defense fleet.)`
+					decline
+	on decline
+		set "wanderer colony weak against blight"
+	npc
+		government "Wanderer"
+		personality heroic
+		fleet "Wanderer Defense" 2
+	npc kill
+		to spawn
+			has "wanderer colony weak against blight"
+		government "Invasive Predator"
+		system destination
+		personality target waiting staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+	npc kill
+		government "Invasive Predator"
+		system destination
+		personality target waiting staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+		fleet "Small Blight Shadow"
+	on complete
+		payment 1000000
+		"reputation: Wanderer" ++
+		clear "wanderer colony weak against blight"
+		dialog `The Wanderers thank for your assistance in repelling the shadows [lurking, hiding] in the darkness. A reward of <payment> is given to you.`
+
+
+
+mission "Scrapyard: Quarg Hunter"
+	deadline
+	deadline 2
+	name "Escort <npc>"
+	description "Escort the <npc> on a hunting trip through the systems marked on your map. Then return to <destination> by <date>."
+	source "Kuwaru Efreti"
+	waypoint "Asikafarnut"
+	waypoint "Celeborim"
+	waypoint "Makferuti"
+	waypoint "Sobarati"
+	to offer
+		"Scrapyard Threat Level" >= 5
+		or
+			and
+				not "Scrapyard: Quarg Hunter: done"
+				random < 50
+			and
+				has "Scrapyard: Quarg Hunter: done"
+				random < 5
+	on offer
+		conversation
+			scene "thumbnail/blightshadow-thumb"
+			branch "repeat"
+				has "Scrapyard: Quarg Hunter: done"
+			
+			branch "blood paint"
+				has "event: joined the free worlds"
+			
+			`A Quarg approaches you and asks "You are human who hunt Blight Shadows?"`
+			choice
+				`	"Yes, I've killed more than a few."`
+				`	"No, I don't intend to seek them out."`
+					decline
+			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hulls green with their blood! Is more fun than staying on ringworld, no?"`
+				goto decision
+
+			label "blood paint"
+			
+			`A Quarg approaches you and asks "You are human who hunt Blight Shadows?"`
+			choice
+				`	"Yes, I've killed more than a few."`
+				`	"No, I don't intend to seek them out."`
+					decline
+			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hull green with their blood as you have! Return by <date>. Is more fun than staying on ringworld, no?" The Quarg in this region of space might not follow the details of human political affairs and are probably unaware of the Free Worlds...`
+				goto decision
+			
+			label "repeat"
+
+			`A familiar Quarg yells out to you. "Human who hunts Blight Shadows! Is good to see again! You join me on hunt, yes? We be back by <date>." Quaelar-En seems eager to go on another hunting trip.`
+				goto decision
+			
+			label decision
+			choice
+				`	"Alright, let's go!"`
+					goto end
+				`	"... No, I'd rather not."`
+					decline
+			label end
+			scene "scene/scene-blue wardragon"
+			`	Quaelar-En said something about staining his hull with blood. As you board your ships, you note Quaelar-En's ship is blue...`
+				accept
+	npc kill
+		to despawn
+			has "event: scrapyard blight horrors"
+		government "Invasive Predator"
+		system "Asikafarnut"
+		personality waiting staying disables unconstrained mute
+		fleet "Small Blight Shadow"
+	npc kill
+		to spawn
+			has "event: scrapyard blight mutation"
+		government "Invasive Predator"
+		system "Asikafarnut"
+		personality waiting staying disables unconstrained mute
+		fleet "Small Blight Mutation"
+	npc kill
+		to spawn
+			has "event: scrapyard blight horrors"
+		government "Invasive Predator"
+		system "Asikafarnut"
+		personality waiting staying disables unconstrained mute
+		fleet "Small Blight Mutation"
+		fleet "Small Blight Horror"
+	npc accompany save
+		government "Quarg"
+		personality target escort launching heroic vindictive unconstrained
+		ship "Blue Wardragon" "Dar-Quelar"
+	on complete
+		"reputation: Quarg" ++
+		clear "Scrapyard: Quarg Hunter: offered"
+		dialog `Quaelar-En is pleased with the results of the hunt and hopes you'll have another one soon.`
+
+ship "Quarg Wardragon" "Blue Wardragon"
+	swizzle 5
+
+mission "Scrapyard: Quarg Hunter Patch"
+	landing
+	invisible
+	to offer
+		has "Scrapyard: Quarg Hunter: offered"
+		has "Scrapyard: Quarg Hunter: declined"
+	on offer
+		clear "Scrapyard: Quarg Hunter: offered"
+		clear "Scrapyard: Quarg Hunter: declined"
+		fail
