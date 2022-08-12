@@ -1029,6 +1029,7 @@ mission "Ghost Hunting: Ghost Fleet"
 		"month" == 10
 		has "Ghost Hunting: Poltergeist King 2: done"
 		"Syndicate target practice [0]: done" + "Syndicate target practice [1]: done" + "Syndicate target practice [2]: done" + "Syndicate target practice [3]: done" + "Kestrel Testing: done" >= 1
+		random < 10
 	on offer
 		clear "Ghost Hunting: Ghost Fleet Reset: offered"
 		dialog phrase "ghost fleet test dummy offer"
@@ -1130,6 +1131,43 @@ mission "Ghost Hunting: Ghost Fleet Reset"
 		clear "Ghost Hunting: Ghost Fleet: offered"
 		fail
 
+
+mission "Ghost Hunting: Sestor Remnant"
+	job
+	repeat
+	name "Alien Ghost Ships"
+	description "A fleet of alien ghost ships has been attacking ships near <system>. The <planet> Merchant's Association is offering <payment> to eliminate this threat."
+	source
+		government "Republic"
+		attributes "north"
+		attributes "frontier"
+	to offer
+		"month" = 10
+		has "Wanderers: Sestor: Scattered Remnant: done"
+		random < 5
+	npc kill
+		government "Kor Sestor"
+		system
+			distance 1 2
+		personality heroic staying target
+		fleet
+			names "kor sestor"
+			fighters "kor sestor fighter"
+			variant 2
+				"Far Lek 14" 9
+				"Far Osk 27" 7
+			variant 1
+				"Met Par Tek 53"
+				"Far Lek 14" 8
+				"Far Osk 27" 7
+			variant 1
+				"Met Par Tek 53"
+				"Far Lek 14" 9
+				"Far Osk 27" 6
+		dialog `Eliminated some left overs from when the Alphas brought a Sestor fleet into the north. Report back to <destination> to claim your reward for eliminating these "ghost ships".`
+	on complete
+		payment 100000
+		dialog `The <planet> Merchant's Association pays you <payment> for eliminating the fleet of "ghost ships".`
 
 
 

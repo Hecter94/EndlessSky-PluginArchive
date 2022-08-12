@@ -195,6 +195,144 @@ mission "Gremlin Protoype Escort"
 			`"Thanks for the escort. The Gremlin has an important meeting with some Betelgeuse agents. With any luck, you might see it show up in their shipyards soon!" Henrietta pays you <payment> and heads off to present her Gremlin to Betelgeuse.`
 
 
+
+mission "Free Worlds: Katya Surveillance Pod Sale (Pirate)"
+	invisible
+	source
+		attributes "pirate"
+	to offer
+		"credits" > 122500
+		has "FW Katya 3: active"
+		or
+			not "Free Worlds: Katya Surveillance Pod Sale (Trinket): active"
+			not "Free Worlds: Katya Surveillance Pod Sale (Trinket): declined"
+			not "Free Worlds: Katya Surveillance Pod Sale (Trinket): done"
+		or
+			not "Randomize Free Worlds: Katya Surveillance Pod Sale (Pirate)"
+			and
+				has "Randomize Free Worlds: Katya Surveillance Pod Sale (Pirate)"
+				random < 5
+	on offer
+		conversation
+			scene "outfit/surveillance pod"
+			`You notice someone trying to sell a Navy Surveillance Pod. It looks authentic, probably plundered off one of the Navy's drones.`
+			choice
+				`	"Tell me more about this pod."`
+				`	"Not interested in buying this right now."`
+					defer
+			`	The seller says "This is Navy technology, a collection of scanners designed to fit perfectly inside one of their surveillance drones. Since the outputs are fairly standard, you could connect it to your own ship's systems if you want. The price is 122,500."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label negotiate
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label shootout
+			branch "victory"
+				random < 50
+			`	You try to take the pod by force, but die during the shootout.`
+				die
+			label victory
+			`	You and your crew manage to overpower the owner's crew and steal the pod!`
+				accept
+	on defer
+		set "Randomize Free Worlds: Katya Surveillance Pod Sale (Pirate)"
+	on decline
+		"Midnight Market" ++
+		payment -122500
+		outfit "Surveillance Pod" 1
+	on accept
+		outfit "Surveillance Pod" 1
+	on enter
+		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`	
+	npc kill
+		government "Bounty Hunter"
+		personality waiting staying vindictive coward
+		fleet "Bounty Hunters"
+
+mission "Free Worlds: Katya Surveillance Pod Sale (Trinket)"
+	invisible
+	source Trinket
+	to offer
+		"credits" > 122500
+		has "FW Katya 3: active"
+		or
+			not "Free Worlds: Katya Surveillance Pod Sale (Pirate): active"
+			not "Free Worlds: Katya Surveillance Pod Sale (Pirate): declined"
+			not "Free Worlds: Katya Surveillance Pod Sale (Pirate): done"
+		or
+			not "Randomize Free Worlds: Katya Surveillance Pod Sale (Trinket)"
+			and
+				has "Randomize Free Worlds: Katya Surveillance Pod Sale (Trinket)"
+				random < 5
+	on offer
+		conversation
+			scene "outfit/surveillance pod"
+			`You notice someone trying to sell a Navy Surveillance Pod. It looks authentic, probably plundered off one of the Navy's drones.`
+			choice
+				`	"Tell me more about this pod."`
+				`	"Not interested in buying this right now."`
+					defer
+			`	The seller says "This is Navy technology, a collection of scanners designed to fit perfectly inside one of their surveillance drones. Since the outputs are fairly standard, you could connect it to your own ship's systems if you want. The price is 122,500."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label negotiate
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label shootout
+			branch "victory"
+				random < 50
+			`	You try to take the pod by force, but die during the shootout.`
+				die
+			label victory
+			`	You and your crew manage to overpower the owner's crew and steal the pod!`
+				accept
+	on defer
+		set "Randomize Free Worlds: Katya Surveillance Pod Sale (Trinket)"
+	on decline
+		"Midnight Market" ++
+		payment -122500
+		outfit "Surveillance Pod" 1
+	on accept
+		outfit "Surveillance Pod" 1
+	on enter
+		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`	
+	npc kill
+		government "Bounty Hunter"
+		personality waiting staying vindictive coward
+		fleet "Bounty Hunters"
+
+
+
 mission "Free Worlds Infiltrator 1"
 	landing
 	deadline 7
@@ -566,6 +704,7 @@ mission "Navy: Captured "Auxiliary""
 	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
 	source
 		government "Navy (Oathkeeper)" "Republic"
+		not attributes "automaton"
 	destination Farpoint
 	to offer
 		"combat rating" > 750
@@ -603,6 +742,7 @@ mission "Navy: Captured Carrier"
 	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
 	source
 		government "Navy (Oathkeeper)" "Republic"
+		not attributes "automaton"
 	destination Farpoint
 	to offer
 		"combat rating" > 1000
@@ -765,6 +905,8 @@ mission "Quash: Humanika Infiltration 2"
 		conversation
 			scene "outfit/sniper rifle"
 			`When you land, Commander hands over <payment>. "Sorry it's not what we agreed on, but the others were each responsible for paying a portion of it. Now that they're..." He hesitates a moment, then hands over the Sniper Rifle. "I guess you could also try selling this. That's the best I can offer." He departs, never explaining anything about what happened on Humanika or the mysterious Quarg he was cursing.`
+
+
 
 phrase "asteroid names"
 	phrase

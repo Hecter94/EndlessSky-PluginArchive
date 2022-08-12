@@ -14,7 +14,7 @@
 mission "Bounty Hunting: Tweedledee & Tweedledum"
 	job
 	name "Wanted Bandit near <system>"
-	description "A pair of old Berserkers named the Tweedledee & Tweedledum have been attacking merchants near <system>. Eliminate these ships, then report to <destination> for payment (<payment>)"
+	description "A pair of old Berserkers named the Tweedledee & Tweedledum have been attacking merchants near <system>. Eliminate these ships, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic" "Free Worlds"
 		attributes "dirt belt"
@@ -39,7 +39,7 @@ mission "Bounty Hunting: Tweedledee & Tweedledum"
 mission "Bounty Hunting: Angry Chicken"
 	job
 	name "Wanted Bandit near <system>"
-	description "A Modified Firebird named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)"
+	description "A Modified Firebird named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic" "Free Worlds"
 		attributes "south"
@@ -63,7 +63,7 @@ mission "Bounty Hunting: Angry Chicken"
 mission "Bounty Hunting: Mother Goose"
 	job
 	name "Wanted Bandit near <system>"
-	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Eliminate the fleet, then report to <destination> for payment (<payment>)"
+	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Eliminate the fleet, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic"
 		attributes "deep"
@@ -89,7 +89,7 @@ mission "Bounty Hunting: Mother Goose"
 mission "Bounty Hunting: Humpty Dumpty"
 	job
 	name "Wanted Bandit near <system>"
-	description "An old Hauler named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)"
+	description "An old Hauler named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
 	source
 		government "Syndicate"
 		attributes "frontier"
@@ -113,7 +113,7 @@ mission "Bounty Hunting: Humpty Dumpty"
 mission "Bounty Hunting: Jabberwocky"
 	job
 	name "Wanted Bandit near <system>"
-	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)"
+	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic"
 		attributes "frontier"
@@ -681,11 +681,113 @@ mission "Executive Guard: Syndicated Shipyards"
 
 
 
+phrase "Cupid's Arrow"
+	word
+		"Cupid's Arrow"
+
+mission "Holiday: Cupid's Arrow"
+	job
+	name "Cupid's Arrow"
+	description "Chocolate deliveries are being raided by a pirate ship known as Cupid's Arrow near <system>. Destroy the ship then return to <planet> for payment (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "uninhabited"
+		not attributes "station"
+	to offer
+		"month" == 2
+		"day" == 14
+	npc kill
+		government "Bounty (Disguised)"
+		system
+			distance 1 2
+		personality target waiting staying uninterested
+		fleet
+			names "Cupid's Arrow"
+			cargo 1
+			commodities "Food"
+			variant
+				"Cupid's Arrow"
+	on complete
+		payment 100000
+		dialog `The authorities on <planet> reward you with <payment> for putting a stop to the <npc> and its raids on chocolate deliveries.`
+
+ship "Marauder Arrow" "Cupid's Arrow"
+	sprite "ship/marrowscupid"
+	add attributes
+		"engine capacity" 20
+		"weapon capacity" 5
+
+phrase "Saint Nick"
+	word
+		"Saint Nick"
+
+mission "Holiday: Saint Nick"
+	job
+	deadline
+	name "Escort Saint Nick"
+	description "The captain of the <npc> wants an escort to <destination> in order to deliver toys donated to orphans rescued from a harsh life of piracy."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "frontier"
+		not attributes "uninhabited"
+		not attributes "station"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "frontier"
+		not attributes "uninhabited"
+		not attributes "station"
+	to offer
+		"month" == 12
+		random < 30 - "day"
+	npc
+		government "Pirate"
+		system destination
+		personality plunders harvests
+		ship "Fury (Bomber)" "Evil Elf"
+		ship "Fury (Bomber)" "Bah Humbug"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" > 1
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		ship "Marauder Falcon (Weapons)" "Krampus"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" > 2
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		ship "Marauder Leviathan (Weapons)" "Scrooge"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" > 3
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		ship "Bactrian" "Bad Santa"
+	npc accompany save
+		government "Merchant"
+		personality target escort pacifist
+		fleet
+			names "Saint Nick"
+			cargo 1
+			commodities "Luxury Goods"
+			variant
+				"Container Transport (Billboard Christmas)"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on complete
+		payment 200000
+		dialog `You safely delivered the <npc> and its cargo to <planet>! Hopefully the orphans will enjoy their holiday presents along with a happy new year. You are rewarded for your efforts with <payment>.`
+
+
+
 mission "Navy: Captured Ship"
 	job
 	repeat
 	name "Captured Navy"
-	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
+	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)."
 	source Farpoint
 	to offer
 		"combat rating" > 300
