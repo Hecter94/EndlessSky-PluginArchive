@@ -1,3 +1,136 @@
+### v0.10.14
+- Added the SPA Scan Blocker to block scans. Great for transporting nerve gas, and for hiding your secret plushie stash from the CSSF.
+- Removed Heliarch Scanning Modules from the SPA Kestrel to prevent them scanning you.
+- Fixed a planet in Deriie that had no distance specified, placing it at the center of the system.
+- Removed Renpaya's shipyard.
+- Added attributes to some Illumina Regions worlds.
+- Rebalanced payments for data transport missions (again)
+- Added Kor Mereti ships to SPA fleets (spawns very rarely)
+- Reworked SPA missions for CSSF patrol bounties.
+- Added variant of the SPA Kestrel with Proton Guns.
+- Added the Rosas-class ship (which is just a rebranded Arach Spindle)
+- Added illegal data transport
+- Stopped displaying failure dialog when rejecting a SPA mission.
+- Populated the rest of the Illumina Regions.
+- Significantly expanded the Pelitol Cluster.
+- Reworked SPA fleet naming.
+- Added merchant hails that insult Amber Heard and her lawyer Elaine Bredehoft.
+- Added new Amidala sprite, courtesy of Zoura.
+- Removed the data drives commodity.
+
+### v0.10.13
+- Didn't remove Orbona system (I made an error in commit 94a59c875f889cf36d13c94e6fb8253bca34269d, blame me for it.)
+- Removed Neistat system
+- Removed Leideete system
+- Rebalanced Orbona fleets
+- Moved Zarkxaa out of jump drive range of Gamma Corvi
+- Added Liz Cheney
+- Changed SPA government swizzle to 24 (pink). More similar to the Hai's color on the map.
+- Added SPA missions to retrieve CSSF intel
+- Added missions to transport SPA salespeople to various parts of human space
+- Added missions to transport SPA exports
+- Fixed payments for some missions being too low (really, 400 tons for only 64,000?)
+- Added Ship Sniper
+- Added new types of data to transport
+- Added stolen data transport missions (illegal), that you can get from pirate worlds
+- Replaced wormhole from Pelitol to Sedlai with a hyperlane, since wormholes currently break mission payment and deadline calculations.
+- Added missions to transport anime for the Anime Organization. Some missions may be illegal....
+- Rebalanced government attitudes towards each other
+- Added new SPA variants of the Navy Cruiser equipped with Electron Beams and Ion Cannons
+- Added new planets:
+   - Voreo
+   - Aylar
+   - Pondar
+- Star system changes
+   - Removed the entire Northwest Illumina Regions (there was nothing in there anyway)
+   - Moved Zarkxaa out of jump drive range of Gamma Corvi
+   - Removed many star systems to the west of the Deep, so there's nothing within jump drive range of them.
+   - Added:
+      - Vensur
+      - Darceas
+      - Orchao
+      - Starish
+      - Paricasa
+      - Telicasa
+      - Kolicasa
+      - Varfeticasa
+      - Lesokicasa
+      - Ourais
+      - Vourgat
+      - Erou
+      - Sprad
+      - Presad
+      - Sprooe
+      - Daxter
+      - Varisa
+   - Removed:
+      - Leideete
+      - Neistat
+      - Akkolie
+      - Julitius
+      - Litiedei
+      - Lekkoli
+      - Lorfreei
+      - Merulie
+      - Macali
+      - Pekora
+      - Ronsulka
+      - Zaxlai
+      - Arxal
+      - Acharop
+      - Amisali
+      - Aitsec
+      - Archil
+      - Burond
+      - Confop
+      - Domeri
+      - Daefel
+      - Doru
+      - Destri
+      - Erod
+      - Erysal
+      - Eltsik
+      - Erytol
+      - Epris
+      - Elsix
+      - Epstrel
+      - Eruf
+      - Fratap
+      - Fortur
+      - Felgah
+      - Forel
+      - Itycha
+      - Ilutep
+      - Jukil
+      - Karut
+      - Kestri
+      - Korilu
+      - Korutal
+      - Korusepti
+      - Merikali
+      - Orut
+      - Ordali
+      - Pelut
+      - Pyrau
+      - Qartalp
+      - Rutoli
+      - Saltyan
+      - Seriesh
+      - Satesai
+      - Sapeli
+      - Seliku
+      - Sennerik
+      - Selseik
+      - Soles
+      - Serut
+      - Slorsan
+      - Serfop
+      - Selaika a
+      - Selaika b
+      - Selaika c
+      - Terisch
+      - Vaughari
+      - Varug
 ### v0.10.12
 - Completely overhauled SPA fleets. Before this version, SPA fleets were distributed amongst many different fleet objects (specialized for a certain role). The old specialized SPA fleets will remain, for backwards compatibility, and for situations where they are needed (such as system-specific fleets.)
 - Overhauled CSSF fleets, similar to how the SPA fleets were overhauled.

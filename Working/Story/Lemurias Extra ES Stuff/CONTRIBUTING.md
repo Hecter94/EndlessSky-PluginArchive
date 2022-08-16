@@ -1,3 +1,6 @@
+# English variants
+* Use only American English spelling, consistent with vanilla.
+
 # Internal code conventions
 * Use camelCase.
 

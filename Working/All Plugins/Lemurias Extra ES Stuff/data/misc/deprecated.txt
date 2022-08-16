@@ -43,3 +43,33 @@ ship Berserker "Berserker Miner"
 		"X3200 Ion Steering"
 		"nGVF-CC Fuel Cell"
 	description "Once one of the most popular interceptor-class ships, the Berserker's popularity is now waning in favor of more modern and versatile ships like the Hawk. Although limited numbers are still produced by Betelgeuse Shipyards, most Berserkers that are in service today are more than half a century old. This Berserker clearly was built with mining in mind."
+
+mission fi.destroyCSSFpatrol.small.1.spa
+	name "Destroy small CSSF patrol"
+	description "A CSSF patrol has been sighted near <system> and must be destroyed. Anyone who destroys them will recieve a payment of <payment>. The Republic will not attack you as they currently turn a blind eye to the conflict between the CSSF and the SPA."
+	job
+	repeat
+	to offer
+		"random" > 80
+		"combat rating" > 300
+	source
+		government "Sayari Plushie"
+	on complete
+		dialog phrase spa.missionComp.general
+		payment 134000 10
+	on fail
+		dialog phrase spa.missionFail.general
+	npc kill
+		government "Yuyuko Saigyouji (Hostile)"
+		system
+			distance 1 3
+		fleet
+			names cssf
+			personality
+				nemesis heroic staying
+			variant
+				"Firebird" 2
+				"Bastion"
+			variant
+				"Vanguard"
+				"Sparrow" 5
