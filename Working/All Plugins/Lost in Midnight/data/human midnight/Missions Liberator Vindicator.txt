@@ -77,7 +77,7 @@ mission "SB-Labs Vindicator 3"
 		has "SB-Labs Vindicator 2: done"
 	on offer
 		conversation
-			scene "scene/scene-liberator"
+			scene "ship/liberator"
 			`You meet Barmy Edward overseeing repairs at the hangar. The Vindicator towers over you. What looked like a massive cannon from a distance is, in actuality, a cluster of what appear to be several modified plasma cannons crammed together into a single firing module.`
 			`	"It's your fault, you know." Barmy notices you eyeing the cannons. "From what I've been told, the entire forward section was originally supposed to be a fighter bay. But then you discovered that alien ship out past the edges of The Rim. Of course, word got out about the alien ship with the giant super gun mounted on it. After that, the Southbound Shipyard engineers became obsessed with putting together this monstrosity. They couldn't replicate the spinal mount of your Emerald Sword, so they improvised this concentrated firing mount instead."`
 			label questions
@@ -143,6 +143,7 @@ mission "SB-Labs Vindicator 4"
 	to offer
 		has "SB-Labs Vindicator 3: done"
 	on offer
+		log "People" "Ricardo Astillero" `An engineer who works at Southbound Shipyards R&D.`
 		conversation
 			`As you disembark, you see Barmy talking to a man wearing a Southbound Shipyards engineering uniform.`
 			`	Barmy waves you over. "Captain <last>, this is Ricardo Astillero from Southbound Shipyards R&D. He was just telling me the bad news."`
@@ -308,7 +309,7 @@ mission "Oathbreaker Liberator 3"
 		has "Oathbreaker Liberator 2: done"
 	on offer
 		conversation
-			scene "scene/scene-liberator"
+			scene "ship/liberator"
 			`You meet Barmy Edward overseeing repairs at the hangar. The Liberator towers over you. What looked like a massive cannon from a distance is, in actuality, a cluster of what appear to be several modified plasma cannons crammed together into a single firing module.`
 			`	"It's your fault, you know." Barmy notices you eyeing the cannons. "From what I've been told, the entire forward section was originally supposed to be a fighter bay. But then you discovered that alien ship out past the edges of The Rim. Of course, word got out about the alien ship with the giant super gun mounted on it. After that, the Southbound Shipyard engineers became obsessed with putting together this monstrosity. They couldn't replicate the spinal mount of your Emerald Sword, so they improvised this concentrated firing mount instead."`
 			label questions
@@ -374,6 +375,7 @@ mission "Oathbreaker Liberator 4"
 	to offer
 		has "Oathbreaker Liberator 3: done"
 	on offer
+		log "People" "Ricardo Astillero" `An engineer who works at Southbound Shipyards R&D.`
 		conversation
 			`As you disembark, you see Barmy talking to a man wearing a Southbound Shipyards engineering uniform.`
 			`	Barmy waves you over. "Captain <last>, this is Ricardo Astillero from Southbound Shipyards R&D. He was just telling me the bad news.`
@@ -501,3 +503,493 @@ mission "Plasma Cluster Cannons"
 		payment 1330000
 		outfit "Plasma Cluster Cannon" 7
 		fail
+		
+mission "Plasma Cluster Cannons 2"
+	invisible
+	source
+		government "Pirate"
+		attributes "core" "core pirate"
+	to offer
+		or
+			has "SB-Labs Vindicator 4: done"
+			has "Oathbreaker Liberator 4: done"
+	on offer
+		require "Plasma Cluster Cannon"
+		conversation
+			scene "outfit/plasma cluster cannon"
+			`After returning to your ship, you notice one of your Plasma Cluster Cannons is missing! The thieves managed the bypass your security systems.`
+				decline
+	on decline
+		log `One of my Plasma Cluster Cannons was stolen. The thieves managed the bypass your security systems.`
+		outfit "Plasma Cluster Cannon" -1
+		event "Plasma Cluster Cannon pirate development" 30
+
+event "Plasma Cluster Cannon pirate development"
+
+mission "Plasma Cluster Cannons 3"
+	name "Firebrand"
+	description "A heavy warship named the <npc> and its fleet is attacking Merchants near <destination>. Witnesses claim they are armed with what may be Plasma Cluster Cannons. Destroy the fleet, then return to <planet> for <payment>."
+	source
+		government "Syndicate"
+		attributes "core"
+		attributes "frontier"
+	to offer
+		has "event: Plasma Cluster Cannon pirate development"
+	on offer
+		conversation
+			scene "outfit/plasma cluster cannon"
+			`You overhear some bounty hunters mention that the <npc> is a vicious warship. It seems the ship is armed with Plasma Cluster Cannons. A bounty is offering a reward of <payment> for destroying it and its fleet.`
+			choice
+				`	(Pursue the <npc>.)`
+					accept
+				`	(Let it go.)`
+					decline
+	on decline
+		event "Plasma Cluster Cannons pirate core"
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders harvests
+		ship "Marauder Vanguard (Plasma Cluster)" "Firebrand"
+		ship "Marauder Vanguard (Plasma Cluster)" "Fire Staff"
+		ship "Marauder Vanguard (Plasma Cluster)" "Fire Spitter"
+		dialog `You've defeated the <npc> and it's fleet. Return to <destination> for payment.`
+	on complete
+		event "Plasma Cluster Cannons pirate core"
+		payment 600000
+		log `Pirates must have used the Plasma Cluster Cannon that was stolen from you to develop their own.`
+		conversation
+			scene "outfit/plasma cluster cannon"
+			`The government of <planet> rewards you with <payment> for eliminating the <npc> and its fleet. Unfortunately, those ships were armed with Plasma Cluster Cannons. Pirates must have used the one that was stolen from you to develop their own.`
+
+outfitter "Plasma Cluster Cannon"
+	"Plasma Cluster Cannon"
+			
+event "Plasma Cluster Cannons pirate core"
+	planet "Buccaneer Bay"
+		add outfitter "Plasma Cluster Cannon"
+	planet Covert
+		add outfitter "Plasma Cluster Cannon"
+	planet "Deadman's Cove"
+		add outfitter "Plasma Cluster Cannon"
+	planet Stormhold
+		add outfitter "Plasma Cluster Cannon"
+	fleet "Large Core Pirates"
+		add variant 1
+			"Vanguard (Plasma Cluster)"
+
+
+
+mission "Plexus Prototype 1"
+	name "Investigate Zug"
+	description "Something happened near <destination>, but Southbound Shipyards is keeping it a secret."
+	source "Glaze"
+	destination "Zug"
+	to offer
+		has "event: Oathbreaker diminish 2"
+		or
+			has "SB-Labs Vindicator 4: done"
+			has "Oathbreaker Liberator 4: done"
+	on offer
+		conversation
+			scene "thumbnail/dreadnought"
+			`A Dreadnought is getting ready to take off. As you watch it leave, you remember the first time you saw one long ago. As you reflect on events that have happened since then, someone calls out to you, interrupting your thoughts.`
+
+			branch "Liberator"
+				has "Oathbreaker Liberator 4: done"
+
+			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Vindicator. "I'd heard the <ship> arrived and decided I should welcome you back to Glaze. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Vindicator. Management is dead set on getting it into production as soon as possible."`
+				goto Plexus
+
+			label Liberator
+			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Liberator. "I'd heard the <ship> arrived and decided I should welcome you back to Glaze. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Liberator. Management is dead set on getting it into production as soon as possible."`
+
+			label Plexus
+			`	Before you can respond, Ricardo's communicator beeps loudly. "Sorry, I have to take this call." Ricardo takes the call. But after a minute of listening, he reacts in shock. "What! The Plexus? When did they find out? Mmmhmm. Near Zug? Alright, I'll be there."`
+			`	After putting the communicator away, Ricardo turns to you, "I have to get back to the office. Unfortunately, we won't be able to test the Plexus today."`
+			choice
+				`	"Did something happen to the Plexus?"`
+				`	"What's near Zug?"`
+			`	"I'm sorry," Ricardo apologizes, "but I was told not to discuss that. Management already grilled me for what happened the last time we met."`
+			`	After parting ways with Ricardo, you wonder if you should investigate Zug.`
+				accept
+	npc
+		government "Free Worlds"
+		personality launching fleeing
+		ship "Dreadnought" "F.S. Eucalyptus"
+
+	on complete
+		conversation
+			`After asking around Zug, you've learned that a pirate ship that resembles a Dreadnought attacked a few days ago then fled. Perhaps pirates stole the Plexis prototype. Unfortunately, no one here knows where they are now.`
+
+mission "Plexus Prototype 2"
+	name "Cat's Cradle"
+	description "The stolen Plexus, now possibly outfitted with a Jump Drive, left <origin> to setup a pirate base somewhere along the rim..."
+	source "Rum Cellar"
+	destination "Valley of the Damned"
+	to offer
+		has "Plexus Prototype 1: done"
+	on offer
+		conversation
+			scene "outfit/jump drive"
+			`Some rogues at the spaceport bar mention that the Cat's Cradle, supposedly a modified Dreadnought, has a way of Jumping like the Quarg do. Some of their crew members were bragging about finding a new planet somewhere along the rim to set up as a pirate base. This is the best clue you've found to a lead on the stolen Plexus.`
+				accept
+	on enter Zubenelhakrabi
+		conversation
+			scene "thumbnail/raider"
+			`You find some unexpected company when you arrive. They don't seem friendly.`
+	npc
+		government "Alpha"
+		system Zubenelhakrabi
+		personality target waiting staying vindictive
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Korath Chaser" 2
+				"Finch" 4
+				"Barb" 4
+				"Dagger" 4
+	npc kill
+		government "Alpha"
+		system Zubenelhakrabi
+		personality target waiting staying vindictive opportunistic
+		ship "Korath Raider (Plexus)" "Dark Citadel"
+		dialog `You've neutralized the Raider, but some fighters fled to the planet below...`
+
+
+ship "Korath Raider" "Korath Raider (Plexus)"
+	sprite "ship/raider"
+	outfits
+		"Korath Banisher" 5
+		"Korath Warder"
+		
+		"Triple Plasma Core"
+		"Systems Core (Medium)" 2
+		"Large Heat Shunt" 2
+		"Small Heat Shunt" 2
+		"Fuel Processor"
+		"Korath Repeater Rifle" 196
+		"Outfits Expansion"
+		
+		"Thruster (Planetary Class)"
+		"Steering (Planetary Class)"
+
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Banisher"
+	turret "Korath Warder"
+	turret "Korath Banisher"
+
+mission "Plexus Prototype 3"
+	landing
+	name "Cat's Cradle"
+	description "Go to <destination> after destroying the <npc>. The Free Worlds needs to know that Alphas have set up a base at Zubenelhakrabi."
+	source "Valley of the Damned"
+	destination "Bourne"
+	to offer
+		has "Plexus Prototype 2: done"
+	on offer
+		conversation
+			`You're not certain where those fighters fled. Storm clouds are covering half the planet's surface and Alphas can probably tolerate this world's harsh environment better than you can. Suddenly your ship is being hailed.`
+			`	"You'll -ay for wh-t -ou've done!" The message is somewhat garbled by electro magnetic interference from the storms and you can't tell if it originated from the surface or orbit.`
+				accept
+	on enter
+		conversation
+			scene "ship/plexus"
+			`The <npc> has arrived and it brought some backup!`
+	npc
+		government "Alpha"
+		system Zubenelhakrabi
+		personality target waiting staying vindictive
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Roost (Korath)"
+				"Aerie (Korath)"
+				"Nest (Korath)"
+				"Korath Chaser" 4
+				"Finch" 6
+				"Barb" 6
+				"Dagger" 6
+	npc kill
+		government "Alpha"
+		system Zubenelhakrabi
+		personality target waiting staying vindictive opportunistic
+		ship "Plexus (Korath)" "Cat's Cradle"
+		dialog `You've destroyed the <npc>. Report to <destination> to inform the Free Worlds about the Alphas on <origin>.`
+
+mission "Plexus Prototype 5"
+	landing
+	name "Jump Drives"
+	description "Bring a Jump Drive to the Free Worlds to help boost defense against threats from beyond human space."
+	source "Bourne"
+	to offer
+		has "Plexus Prototype 4: done"
+	on offer
+		conversation
+			scene "outfit/jump drive"
+			`You contact Alondo and inform him of the Alpha activity in Zubenelhakrabi. "It will be hard to deal with that unless we can acquire more Jump Drives. Do you suppose you could help with that?`
+			choice
+				`	"I'll see what I can do."`
+					goto support
+				`	"No! All the Jump Drives are belong to me!"`
+			`	Alondo looks at you incredulously. Get out.`
+				decline
+						
+			label support
+
+			scene "scene/scene-liberator"
+			
+			branch "liberator"
+				has "Oathbreaker Liberator 4: done"
+
+			`	"I'm confident you'll figure something out. Before you leave, tell me what you think of the Plexus. Is it a better ship than the Vindicator? I understand there's some internal dispute at Southbound Shipyards over which model to dedicate resources on. A large order from the Free Worlds could finally tip the scale in one direction or the other. Your experience with both ships makes your opinion invaluable. So how about it <first>? Which ship do you think Southbound Shipyards should produce?"`
+			choice
+				`	"The Plexis is the better ship."`
+					goto chooseplexus
+				`	"The Vindicator is the better ship."`
+					goto choosevindicator
+			
+			label liberator
+
+			`	"I'm confident you'll figure something out. Before you leave, tell me what you think of the Plexus. Is it a better ship than the Liberator? I understand there's some internal dispute at Southbound Shipyards over which model to dedicate resources on. A large order from the Free Worlds could finally tip the scale in one direction or the other. Your experience with both ships makes your opinion invaluable. So how about it <first>? Which ship do you think Southbound Shipyards should produce?"`
+			choice
+				`	"The Plexus is the better ship."`
+					goto chooseplexus
+				`	"The Liberator is the better ship."`
+					goto chooseliberator
+
+			label chooseplexus
+
+			scene "ship/plexus"
+			apply
+				set "Dreadnought Evolution: chose Plexus"
+			`	"The Plexus... I suppose a sturdier carrier would help bolster our fleets. Thanks <first>, I'll try my best to convince the senate to go along with that." Alondo bids you farewell as you exit his office.`
+				accept
+			
+			label choosevindicator
+
+			scene "ship/liberator"
+			apply
+				set "Dreadnought Evolution: chose Vindicator"
+			`	"The Vindicator... I suppose a stronger battleship would help bolster our fleets. Thanks <first>, I'll try my best to convince the senate to go along with that." Alondo bids you farewell as you exit his office.`
+				accept
+						
+			label chooseliberator
+			
+			scene "ship/liberator"
+			apply
+				set "Dreadnought Evolution: chose Liberator"
+			`	"The Liberator... I suppose a stronger battleship would help bolster our fleets. Thanks <first>, I'll try my best to convince the senate to go along with that." Alondo bids you farewell as you exit his office.`
+				accept
+	on complete
+		outfit "Jump Drive" -1
+		"Plexus Jump Drives" ++
+		payment 1000000
+		conversation
+			scene "outfit/jump drive"
+			`You are directed to deliver the Jump Drive to a Free Worlds military base and are compensated with <payment>. You can register to make more deliveries on the job board.`
+
+mission "Plasma Cluster Cannons: Rust"
+	landing
+	name "Weapon Delivery"
+	description "Deliver a set of Plasma Cluster Cannons to Southbound Shipyards on <destination>. Payment is <payment>."
+	cargo "Plasma Cluster Cannons" 175
+	source Rust
+	to offer
+		or
+			has "event: Dreadnought Evolution - Vindicator"
+			has "event: Dreadnought Evolution - Liberator"
+	on offer
+		conversation
+			scene "outfit/plasma cluster cannon"
+
+			branch "liberator"
+				has "event: Dreadnought Evolution - Liberator"
+			
+			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Vindicator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to Glaze. Would like to take on the delivery job? It pays <payment>."`
+				goto end
+			
+			label liberator
+			
+			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Liberator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to Glaze. Would like to take on the delivery job? It pays <payment>."`
+			
+			label end
+			
+			choice
+				`	"Sure, I'll make the delivery."`
+				`	"Sorry, I'm headed in a different direction."`
+					goto refuse
+
+			`	"Thanks <first>, I know they're in good hands! Remember to stop by the outfitter if you want to outfit your own ships with Plasma Cluster Cannons." Barmy wishes you farewell.`
+				accept
+			
+			label refuse
+			`	"No worries. Remember to stop by the outfitter if you want to outfit your own ships with Plasma Cluster Cannons." Barmy wishes you farewell.`
+				decline
+
+	npc evade
+		government "Alpha"
+		system destination
+		personality heroic vindictive harvests
+		ship "Dreadnought (Plasma Cluster)" "Gratuitous Violence"
+
+	on complete
+		payment 175000
+		conversation
+			scene "scene/scene-liberator"
+			
+			branch "liberator"
+				has "event: Dreadnought Evolution - Liberator"
+			
+			`You deliver the Plasma Cluster Cannons to Southbound Shipyards and are given your delivery fee of <payment>. The mechanics begin unloading and installing them on a Vindicator.`
+				goto end
+			
+			label liberator
+
+			`You deliver the Plasma Cluster Cannons to Southbound Shipyards and are given your delivery fee of <payment>. The mechanics begin unloading and installing them on a Liberator.`
+			
+			label end
+			
+			`	"Seeing it without the guns loaded, it could be mistaken for the Plexus." Ricardo greets you. "I heard you stopped pirates from using the prototype Plexus to set up a base near Zug. Thanks for that." You both watch as the ship's appearance shifts with the installation of the cannons.`
+
+
+mission "Plexus Jump Drives"
+	job
+	repeat
+	name "Jump Drives"
+	description "Bring a Jump Drive to the Free Worlds to help boost defense against threats from beyond human space."
+	source "Bourne"
+	to offer
+		has "Plexus Prototype 5: done"
+		random < 50
+	on complete
+		outfit "Jump Drive" -1
+		"Plexus Jump Drives" ++
+		payment 1000000
+		conversation
+			scene "outfit/jump drive"
+			`You are directed to deliver the Jump Drive to a Free Worlds military base and are compensated with <payment>.`
+
+mission "Plexus Alpha Raid"
+	name "Alien Raid"
+	description "An alien ship is attacking <planet>! Join the planetary defense, then land on planet for a reward."
+	source
+		near Zubenelhakrabi 0 2
+	to offer
+		has "Plexus Prototype 5: done"
+		random < 5
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! <planet> is under attack by alien raiders! We need every combat-worthy ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					decline
+				`	(Join the defense fleet.)`
+			`The local Militia are preparing to repel the alien attack. You join them, and take off together...`
+				launch
+	npc
+		government "Militia"
+		personality heroic
+		fleet "Small Militia"
+	npc kill
+		government "Alpha"
+		personality target waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 3
+			commodities "Food" "Industrial" "Medicine"
+			variant 1
+				"Korath Raider"
+				"Korath Chaser" 2
+			variant 1
+				"Shield Beetle (Jump, Pulse)"
+			variant 1
+				"Pug Maboro"
+		dialog `You've eliminated the raiders. Return to <planet> for a reward.`
+	on complete
+		payment 550000
+		dialog `The government of <planet> pays you <payment> for helping to drive off the raiders.`
+
+
+
+mission "Plexus Chose Plexus"
+	landing
+	invisible
+	to offer
+		has "Dreadnought Evolution: chose Plexus"
+	on offer
+		event "Dreadnought Evolution - Plexus" 180
+		fail
+
+mission "Plexus Chose Vindicator"
+	landing
+	invisible
+	to offer
+		has "Dreadnought Evolution: chose Vindicator"
+	on offer
+		event "Dreadnought Evolution - Vindicator" 180
+		fail
+
+mission "Plexus Chose Liberator"
+	landing
+	invisible
+	to offer
+		has "Dreadnought Evolution: chose Liberator"
+	on offer
+		event "Dreadnought Evolution - Liberator" 180
+		fail
+
+event "Dreadnought Evolution - Plexus"
+	shipyard "Southbound Advanced"
+		add "Plexus"
+	fleet "Large Free Worlds"
+		add variant 1
+			"Plexus"
+			"Finch" 4
+		add variant 1
+			"Plexus"
+			"Finch (Flamethrower)"
+	fleet "Large Militia"
+		add variant 1
+			"Plexus"
+			"Finch" 4
+		add variant 1
+			"Plexus"
+			"Finch (Flamethrower)"
+
+event "Dreadnought Evolution - Vindicator"
+	planet Rust
+		add outfitter "Plasma Cluster Cannon"
+	shipyard "Southbound Advanced"
+		add "Vindicator"
+	fleet "Large Free Worlds"
+		add variant 1
+			"Vindicator"
+		add variant 1
+			"Dreadnought (Plasma Cluster)"
+	fleet "Large Militia"
+		add variant 1
+			"Vindicator"
+		add variant 1
+			"Dreadnought (Plasma Cluster)"
+
+event "Dreadnought Evolution - Liberator"
+	planet Rust
+		add outfitter "Plasma Cluster Cannon"
+	shipyard "Southbound Advanced"
+		add "Liberator"
+	fleet "Large Free Worlds"
+		add variant 1
+			"Liberator"
+		add variant 1
+			"Dreadnought (Plasma Cluster)"
+	fleet "Large Militia"
+		add variant 1
+			"Liberator"
+		add variant 1
+			"Dreadnought (Plasma Cluster)"

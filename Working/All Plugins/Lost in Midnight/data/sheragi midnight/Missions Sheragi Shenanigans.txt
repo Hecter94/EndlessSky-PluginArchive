@@ -469,3 +469,230 @@ mission "Sheragi Shenanigans: Ruby Dagger 4"
 		conversation
 			scene "ship/ruby dagger"
 			`Albert Foster greets you warmly. "So you finally caught the Ruby Dagger. Thank you for bringing it here so that we can study it." He and his associates spend the better part of the day going over the ship with various tools and taking notes. Afterwards, you join them for a celebration dinner where you catch up on what they've been up to while you were away.`
+
+
+
+mission "Diamondback Sale"
+	name "Diamondback"
+	description "Buy an old interceptor called a Diamondback for 1,000,000 credits at <destination>."
+	source
+		attributes "rim"
+		attributes "shipyard"
+	to offer
+		random < 50
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`You notice a mechanic trying to pull a tarp over an old interceptor at the shipyard.`
+			choice
+				`	"What kind of ship is this?"`
+				`	(I'm not interested in this.)`
+					decline
+			`	"Just an old Diamondback." The mechanic looks at you. "You've never heard of them? Diamondbacks have been in use since explorers first settled the galactic rim. They've fought in various wars throughtout the centuries and few survive to this day. Those that have are so extensively customized that no two are alike." He hesitates a moment before adding, "Some southern legends claim the Diamondbacks were wrecked spacecraft created by extinct aliens and salvaged by early explorers such as Han Sizer. Of course, there's no evidence to support those claims."`
+			choice
+				`	"Is it for sale?"`
+			`	"We actually just bought it from another customer. Once we're done refurbishing the ship, it'll be available."`
+			choice
+				`	"I want it."`
+				`	"Good luck selling it."`
+					decline
+			`	The mechanic smiles. "How do you plan to use it?"`
+			choice
+				`	"Fighting pirates."`
+					goto pirate
+				`	"Asteroid mining."`
+					goto mining
+				`	"Ferrying passengers."`
+					goto passengers
+				`	"Hauling cargo."`
+					goto cargo
+				`	"I'm not sure..."`
+			apply
+				set "Diamondback: Stock"
+			`	The mechanic thinks for a bit...`
+				goto end
+
+			label pirate
+				set "Diamondback: Lasers"
+			`	The mechanic thinks for a bit...`
+				goto end
+
+			label mining
+				set "Diamondback: Mining"
+			`	The mechanic thinks for a bit...`
+				goto end
+
+			label passengers
+				set "Diamondback: Transport"
+			`	The mechanic thinks for a bit...`
+				goto end
+
+			label cargo
+				set "Diamondback: Freighter"
+			`	The mechanic thinks for a bit...`
+				goto end
+
+			label end
+			branch rich
+				"credits" >= 1000000
+			``
+			`	"I'll see what I can do. Come back when you have a million credits and if you're lucky it might still be here!"`
+				accept
+			label rich
+			``
+			`	"Come back tomorrow with a million credits and it'll be ready for you!"`
+				accept
+	to complete
+		"credits" > 1000000
+
+mission "Diamondback Stock"
+	landing
+	invisible
+	to offer
+		has "Diamondback Sale: done"
+		has "Diamondback: Stock"
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`The shipyard still has the Diamondback. Do you still want to buy it?`
+			choice
+				`	(Buy it.)`
+				`	(I'm no longer interested.)`
+					decline
+			`After paying them 1,000,000 credits, the Diamondback is yours!`
+				accept
+	on accept
+		payment 1000000
+		give ship "Diamondback" "Autumn Mist"
+	on enter
+		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
+	npc kill
+		government "Bounty Hunter"
+		personality target heroic vindictive
+		ship "Diamondback (Bounty)" "Diamond Jack"
+
+mission "Diamondback Lasers"
+	landing
+	invisible
+	to offer
+		has "Diamondback Sale: done"
+		has "Diamondback: Lasers"
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`The shipyard still has the Diamondback. Do you still want to buy it?`
+			choice
+				`	(Buy it.)`
+				`	(I'm no longer interested.)`
+					decline
+			`After paying them 1,000,000 credits, the Diamondback is yours!`
+				accept
+	on accept
+		payment 1000000
+		give ship "Diamondback (Lasers)" "Autumn Mist"
+	on enter
+		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
+	npc kill
+		government "Bounty Hunter"
+		personality target heroic vindictive
+		ship "Diamondback (Bounty)" "Diamond Jack"
+
+mission "Diamondback Mining"
+	landing
+	invisible
+	to offer
+		has "Diamondback Sale: done"
+		has "Diamondback: Mining"
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`The shipyard still has the Diamondback. Do you still want to buy it?`
+			choice
+				`	(Buy it.)`
+				`	(I'm no longer interested.)`
+					decline
+			`After paying them 1,000,000 credits, the Diamondback is yours!`
+				accept
+	on accept
+		payment 1000000
+		give ship "Diamondback (Mining)" "Autumn Mist"
+	on enter
+		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
+	npc kill
+		government "Bounty Hunter"
+		personality target heroic vindictive
+		ship "Diamondback (Bounty)" "Diamond Jack"
+
+mission "Diamondback Transport"
+	landing
+	invisible
+	to offer
+		has "Diamondback Sale: done"
+		has "Diamondback: Transport"
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`The shipyard still has the Diamondback. Do you still want to buy it?`
+			choice
+				`	(Buy it.)`
+				`	(I'm no longer interested.)`
+					decline
+			`After paying them 1,000,000 credits, the Diamondback is yours!`
+				accept
+	on accept
+		payment 1000000
+		give ship "Diamondback (Transport)" "Autumn Mist"
+	on enter
+		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
+	npc kill
+		government "Bounty Hunter"
+		personality target heroic vindictive
+		ship "Diamondback (Bounty)" "Diamond Jack"
+
+mission "Diamondback Freighter"
+	landing
+	invisible
+	to offer
+		has "Diamondback Sale: done"
+		has "Diamondback: Freighter"
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`The shipyard still has the Diamondback. Do you still want to buy it?`
+			choice
+				`	(Buy it.)`
+				`	(I'm no longer interested.)`
+					decline
+			`After paying them 1,000,000 credits, the Diamondback is yours!`
+				accept
+	on accept
+		payment 1000000
+		give ship "Diamondback (Freighter)" "Autumn Mist"
+	on enter
+		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
+	npc kill
+		government "Bounty Hunter"
+		personality target heroic vindictive
+		ship "Diamondback (Bounty)" "Diamond Jack"
+
+mission "Diamondback Pirate"
+	landing
+	invisible
+	destination Greenrock
+	to offer
+		or
+			has "Diamondback Sale: declined"
+			has "Diamondback Stock: declined"
+			has "Diamondback Lasers: declined"
+			has "Diamondback Mining: declined"
+			has "Diamondback Transport: declined"
+			has "Diamondback Freighter: declined"
+		random < 5
+	npc kill
+		government "Pirate"
+		system Shaula
+		personality waiting staying plunders harvests timid
+		ship "Diamondback (Pirate)" "Autumn Mist"
+
+
+

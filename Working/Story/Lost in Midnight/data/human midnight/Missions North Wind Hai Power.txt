@@ -61,7 +61,7 @@ mission "North Wind 1: Syndicate"
 	on fail
 		"reputation: Merchant" -= 10
 		dialog `The <npc> never reached its destination. There's a nasty rumor that you hijacked the ship yourself.`
-	on visit
+	on visit	
 		dialog `You need to land with the <npc> without dangerous bounty hunters trying to plunder it.`
 	on complete
 		payment 150000
@@ -84,8 +84,13 @@ mission "North Wind 2: Lovelace"
 		government "Syndicate"
 	destination Ada 
 	to offer
-		has "North Wind 1: Syndicate: done"
-		random < 40
+		or
+			and
+				has "North Wind 1: Syndicate: done"
+				random < 40
+			and
+				has "event: North Wind Syndicated"
+				random < 60
 	on accept
 		conversation
 			scene "thumbnail/behemoth"
@@ -133,8 +138,13 @@ mission "North Wind 3: Kraz"
 		attributes "paradise" "north" "near earth"
 	destination Rust 
 	to offer
-		has "North Wind 2: Lovelace: done"
-		random < 40
+		or
+			and
+				has "North Wind 2: Lovelace: done"
+				random < 40
+			and
+				has "event: North Wind Lovelace"
+				random < 60
 	on accept
 		conversation
 			scene "thumbnail/behemoth"
@@ -185,12 +195,17 @@ mission "North Wind 4: Delta V"
 	description "Escort the <npc> to <destination>. Pirates or Bounty Hunters may try to steal its cargo. Payment is <payment>."
 	source
 		government "Republic" "Free Worlds"
-		attributes "south"
+		attributes "south" "rim"
 		not attributes "frontier"
 	destination Solace
 	to offer
-		has "North Wind 3: Kraz: done"
-		random < 40
+		or
+			and
+				has "North Wind 3: Kraz: done"
+				random < 40
+			and
+				has "event: North Wind Kraz"
+				random < 60
 	on accept
 		conversation
 			scene "thumbnail/behemoth"
@@ -226,7 +241,7 @@ mission "North Wind 4: Delta V"
 	on visit
 		dialog `You need to land with the <npc> without dangerous pirates trying to plunder it.`
 	on complete
-		payment 150000
+		payment 250000
 		event "North Wind Delta V" 30
 		conversation
 			scene "outfit/cooling ducts hai"
@@ -245,11 +260,15 @@ mission "North Wind 5: Deep Sky"
 	source
 		government "Republic" "Free Worlds"
 		attributes "south"
-		not attributes "frontier"
 	destination Asgard
 	to offer
-		has "North Wind 4: Delta V: done"
-		random < 40
+		or
+			and
+				has "North Wind 4: Delta V: done"
+				random < 40
+			and
+				has "event: North Wind Delta V"
+				random < 60
 	on accept
 		conversation
 			scene "thumbnail/behemoth"
@@ -341,7 +360,6 @@ mission "North Wind 6: Turner Inc."
 	to offer
 		has "event: North Wind Deep Sky"
 		has "event: shipyard on greenwater"
-		random < 40
 	on offer
 		conversation
 			scene "outfit/cooling ducts hai"
@@ -504,7 +522,7 @@ ship "Behemoth" "Behemoth (Hai North Wind)"
 
 mission "Turner Inc.: Hai Power 2"
 	name "Hai Power: Gnome Core"
-	description "Escort the <npc> to <destination>. Then continue on to Asgard."
+	description "Escort the <npc> to <destination>. Then continue on to Asgard in the Naos system."
 	source Makerplace
 	destination Valhalla
 	to offer
@@ -561,7 +579,7 @@ mission "Turner Inc.: Hai Power 2"
 
 mission "Turner Inc.: Hai Power 3"
 	name "Hai Power: Gnome Core"
-	description "Escort the <npc> to <stopovers>. Then deliver the prototype Gnome Core to Deep Sky on <destination> for Turner Inc."
+	description "Deliver the prototype Gnome Core to Deep Sky on <destination> for Turner Inc."
 	source Valhalla
 	destination Asgard
 	to offer

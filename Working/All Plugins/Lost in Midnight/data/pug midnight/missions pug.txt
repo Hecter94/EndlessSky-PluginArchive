@@ -12,7 +12,7 @@
 
 
 outfit "Dream Crystal"
-	plural "Pug Peacekeeping Staves"
+	plural "Dream Crystals"
 	category "Hand to Hand"
 	cost 54321
 	thumbnail "outfit/dream crystal"
@@ -102,7 +102,7 @@ mission "Dream Crystal 3"
 		require "Pug Peacekeeping Staff"
 		conversation
 			scene "outfit/pug staff"
-			`After questioning the locals, you eventually find Mr. Sandman in a remote village. He appears to be some sort of cult leader and carries a Pug Peacekeeping Staff of his own. "Peace be with you. I heard another staff bearer was searching for me. I assume you came to exchange yours for a Dream Crystal?"`
+			`After questioning the locals, you eventually find Mr. Sandman in a remote village. He appears to be some sort of cult leader and carries a Pug Peacekeeping Staff of his own. "Peace be with you. I heard another staff bearer was searching for me. Have you come to exchange yours for a Dream Crystal?"`
 			label decision
 			choice
 				`	"What is a Dream Crystal?"`
@@ -141,7 +141,7 @@ mission "Dream Crystal 4"
 		not attributes "uninhabited"
 	to offer
 		has "Dream Crystal 3: failed"
-		random < 5
+		random < 5 - "deferred Dream Crystal 4"
 	on offer
 		conversation
 			scene "outfit/dream crystal"
@@ -151,6 +151,8 @@ mission "Dream Crystal 4"
 					accept
 				`	"Sorry, I'm not heading in that direction."`
 					defer
+	on defer
+		"deferred Dream Crystal 4" ++
 	npc save accompany
 		government "Independent (Killable)"
 		personality target escort pacifist
@@ -183,3 +185,89 @@ event "dream crystal outfitters"
 		add outfitter "Dream Crystal"
 	planet Freedom
 		add outfitter "Dream Crystal"
+
+
+
+ship "Hallucination" "Hallucination (hai)"
+	sprite "portrait/hai00"
+	"never disabled"
+	add attributes
+		"hull" 500
+	outfits
+		"Imaginary Weapon" 2
+	gun -5 0 "Imaginary Weapon"
+	gun 5 0 "Imaginary Weapon"
+
+ship "Hallucination" "Hallucination (korath)"
+	sprite "portrait/korath00"
+	"never disabled"
+	add attributes
+		"hull" 500
+	outfits
+		"Imaginary Weapon" 2
+	gun -5 0 "Imaginary Weapon"
+	gun 5 0 "Imaginary Weapon"
+
+ship "Hallucination" "Hallucination (quarg)"
+	sprite "portrait/quarg00"
+	"never disabled"
+	add attributes
+		"hull" 500
+	outfits
+		"Imaginary Weapon" 2
+	gun -5 0 "Imaginary Weapon"
+	gun 5 0 "Imaginary Weapon"
+
+ship "Hallucination" "Hallucination (wanderer)"
+	sprite "portrait/wanderer00"
+	"never disabled"
+	add attributes
+		"hull" 500
+	outfits
+		"Imaginary Weapon" 2
+	gun -5 0 "Imaginary Weapon"
+	gun 5 0 "Imaginary Weapon"
+
+
+mission "Dream Crystal Hallucination"
+	invisible
+	landing
+	to offer
+		has "Dream Crystal 3: failed"
+		random < 5
+	
+	on offer
+		require "Dream Crystal"
+		conversation
+			`During your brief stop on <origin>, it occurs to you that you haven't tried using the Dream Crystal to visit a "higher plane". Give it a try?`
+			choice
+				`	(No, I've seen what it does to others.)`
+					defer
+				`	(Sure, sounds like fun!)`
+			`	The room begins to spin, and strange things happen...`
+				launch
+	
+	npc kill
+		government "Bad Trip"
+		personality nemesis heroic
+		ship "Hallucination" "Love"
+		ship "Hallucination" "Peace"
+		ship "Hallucination" "Happy"
+		ship "Hallucination" "Shiny"
+		ship "Hallucination" "Whoopsie"
+		ship "Hallucination" "Daisy"
+		ship "Hallucination (hai)" "Nutty"
+		ship "Hallucination (hai)" "Fluffy"
+		ship "Hallucination (hai)" "Friendly"
+		ship "Hallucination (korath)" "Scaly"
+		ship "Hallucination (korath)" "Hissy"
+		ship "Hallucination (korath)" "Ouchie"
+		ship "Hallucination (quarg)" "Frownie"
+		ship "Hallucination (quarg)" "Sleepy"
+		ship "Hallucination (quarg)" "Clumsy"
+		ship "Hallucination (wanderer)" "Flighty"
+		ship "Hallucination (wanderer)" "Feathery"
+		ship "Hallucination (wanderer)" "Flappy"
+		
+	on complete
+		log `Tried using the Dream Crystal to visit a "higher plane". It wasn't a nice trip.`

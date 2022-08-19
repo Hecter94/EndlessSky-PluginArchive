@@ -91,6 +91,7 @@ mission "Blue Ridge 2"
 		log `Purchased the "Blue Ridge," the Hipparion once used by Han Sizer to explore the galactic rim. The ship was lacking a Hyperdrive. Supposedly, it was removed for security. But maybe there's more to it than that...`
 
 
+
 mission "Executive Guard: Syndicate Extremists"
 	landing
 	invisible
@@ -908,127 +909,115 @@ mission "Quash: Humanika Infiltration 2"
 
 
 
-phrase "asteroid names"
-	phrase
-		"digit"
-	phrase
-		"digit"
-	word
-		" "
-	phrase
-		"greek alphabet"
-	word
-		" "
-	phrase
-		"greek alphabet"
-		
-ship "Asteroid" "Rogue Asteroid"
-	noun "asteroid"
-	sprite "asteroid/fossil/spin"
-		"frame rate" 10
-	"never disabled"
+mission "Sunracer Afterburner 1"
+	name "Tag. You're it!"
+	description "Race the <npc> to <destination>."
+	source
+		near "Mirfak" 5 10
+	destination Sunracer
+	to offer
+		has "main plot completed"
+		month == 3
+		"credits" > 700000
+	on offer
+		conversation
+			scene "outfit/license"
+			`	A young man in a green flight suit approaches you. "You're a pilot too, right?"`
+			choice
+				`	"Yeah, I'm a pilot. Do you need something?"`
+					goto race
+				`	"Beat it kid. I don't have time to train you."`
+			`	"I'm not looking for training," he says.`
+			choice
+				`	"Then what do you want?"`
+			label race
+			scene "thumbnail/quicksilver"
+			`	"Are you up for a race to Sunracer? My name's Patrick. That's my Quicksilver over there. If you beat me, I'll give you some insider info on a new racing outfit. How about it?"`
+			`	Information on a new outfit might be useful. On the other hand, this may be a scam. What do you tell him?`
+			choice
+				`	"Last one to Sunracer is a rotten egg!"`
+					accept
+				`	"Sorry kid, I'm not interested."`
+					decline
+	on visit
+		dialog `This was too close to call. You and Patrick agree to another race. Try to evade the <npc> then return to <planet>.`
+	npc evade save
+		government "Merchant"
+		personality target escort pacifist
+		ship "Marauder Quicksilver (Shamrock)" "Shamrock"
+	on fail
+		dialog `[MISSION FAILED] The <npc> was destroyed! If life were a game, you could load a save file and try again.`
+
+ship "Marauder Quicksilver" "Marauder Quicksilver (Shamrock)"
+	sprite "ship/mquicksilvere"
+	thumbnail "thumbnail/mquicksilvere"
+	swizzle 3
 	add attributes
-		"hull" 10000
-		"cargo space" 20
+		"engine capacity" 40
+	outfits
+		"Anti-Missile Turret"
+		
+		"Fission Reactor"
+		"S-270 Regenerator"
+		"LP036a Battery Pack"
+		"Water Coolant System"
+		"Fuel Pod"
+		"Ramscoop"
+		"Laser Rifle" 5
+		
+		"Hybrid Afterburner"
+		`"Biroo" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
 	
+	engine -16 52
+	engine 0 52
+	engine 16 52
+	description "This Quicksilver has even more space available for engine use - and even another thruster port! It's also got a few extra shield projectors, more hull plating, and another bunk. This aftermarket model also features a turret mount, perhaps in response to Lionheart's Headhunter. Whoever modified this ship wanted to chase their prey down with vicious speed."
 
-mission "Rogue Asteroid (Rich World)"
-	deadline 2
-	repeat
-	name "Rogue Asteroid"
-	description "The rogue asteroid, <npc>, may collide with <destination>. Destroy it, then land on <planet> to clain the reward (<payment>)."
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "paradise" "urban" "rich" "tourist"
-		not attributes "uninhabited"
-		not attributes "station"
+mission "Sunracer Afterburner 2"
+	landing
+	invisible
+	source Sunracer
 	to offer
-		or
-			and
-				not "Rogue Asteroid (Rich World): done"
-				not "Rogue Asteroid (Rich World): declined"
-				not "Rogue Asteroid (Rich World): failed"
-				not "Rogue Asteroid (Poor World): done"
-				not "Rogue Asteroid (Poor World): declined"				
-				not "Rogue Asteroid (Poor World): failed"
-				random < 20
-			random < 1
+		has "Sunracer Afterburner 1: done"
 	on offer
 		conversation
-			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			scene "outfit/hybrid afterburner"
+			`	The Shamrock arrives soon after you finish landing the <ship>. Patrick congratulates you on winning the race. "I guess this still needs more work." He gestures at the Shamrock's afterburner. "It's a prototype, using both hyperspace fuel and battery power to give it a kick. But I don't think this is good enough for competitive racing. Would you be interested in buying it? 374,000 credits should cover it. I could use the funds to work on an upgraded model."`
+			`	Buying the Hybrid Afterburner now could help Patrick develop a superior version eventually. On the other hand, 374,000 credits is no small investment. What will you do?`
 			choice
-				`	"Are we under attack from pirates?"`
-				`	"Are we under attack from aliens?"`
-			scene "asteroid/fossil/spin"
-			`	One of the dockworkers answers, "<npc>, a rogue asteroid, looks like it might crash into <planet>. The local government is offering pilots a <payment> reward for destroying it."`
-			choice
-				`	(Try to destroy the asteroid.)`
-					launch
-				`	(Don't try to destroy the asteroid.)`
+				`	(Buy the Hybrid Afterburner.)`
+				`	(Do not buy the Hybrid Afterburner.)`
 					decline
-	npc kill
-		government "Uninhabited"
-		personality uninterested waiting pacifist mute
-		fleet
-			names "asteroid names"
-			cargo 3
-			outfitters "Iron" "Lead" "Silicon"
-			variant
-				"Rogue Asteroid"
-	on complete
-		payment 50000
-		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-	
-mission "Rogue Asteroid (Poor World)"
-	deadline 2
-	repeat
-	name "Rogue Asteroid"
-	description "The rogue asteroid, <npc>, may collide with <destination>. Destroy it, then land on <planet> to clain the reward (<payment>)."
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		not attributes "paradise" "urban" "rich" "tourist"
-		not attributes "uninhabited"
-		not attributes "station"
+			`	You agree to purchase the Hybrid Afterburner and wish Patrick luck on developing a superior version.`
+				accept
+	on accept
+		outfit "Hybrid Afterburner" 1
+		payment -374000
+		event "Sunracer Afterburner Development" 360
+		log "Minor People" "Patrick of Sunracer" `A young race pilot hoping to develop a superior Hybrid Afterburner.`
+		fail
+
+outfitter "Sunracer Afterburner"
+	"Sunracer Afterburner"
+
+event "Sunracer Afterburner Development"
+	planet Sunracer
+		add outfitter "Sunracer Afterburner"
+
+mission "Sunracer Afterburner 3"
+	landing
+	invisible
+	source Sunracer
 	to offer
-		or
-			and
-				not "Rogue Asteroid (Rich World): done"
-				not "Rogue Asteroid (Rich World): declined"
-				not "Rogue Asteroid (Rich World): failed"
-				not "Rogue Asteroid (Poor World): done"
-				not "Rogue Asteroid (Poor World): declined"				
-				not "Rogue Asteroid (Poor World): failed"
-				random < 20
-			random < 1
+		has "event: Sunracer Afterburner Development"
 	on offer
+		log `It seems Patrick succeeded in making a better version of the Hybrid Afterburner.`
 		conversation
-			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
-			choice
-				`	"Are we under attack from pirates?"`
-				`	"Are we under attack from aliens?"`
-			scene "asteroid/fossil/spin"
-			`	One of the dockworkers answers, "<npc>, a rogue asteroid, looks like it might crash into <planet>. The local government is offering pilots a <payment> reward for destroying it."`
-			choice
-				`	(Try to destroy the asteroid.)`
-					launch
-				`	(Don't try to destroy the asteroid.)`
-					decline
-	npc kill
-		government "Uninhabited"
-		personality uninterested waiting pacifist mute
-		fleet
-			names "asteroid names"
-			cargo 3
-			outfitters "Copper" "Gold" "Silver"
-			variant
-				"Rogue Asteroid"
-	on complete
-		payment 10000
-		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-	
-
-
-	
+			scene "outfit/sunracer afterburner"
+			`	You notice a new afterburner in the outfitter. It looks like Patrick suceeded in making a better version of the prototype Hybrid Afterburner.`
+				decline
 
 #########################
 # missions that repeat
@@ -1350,4 +1339,216 @@ mission "Mining: Iron Challenge"
 		conversation
 			scene "asteroid/iron/spin"
 			`As expected, after tallying up who mined more Iron, it's obvious you've won. It seems the other pilot didn't realize your ship had more cargo space than the <npc>. He begrudgingly hands over his harvest, but your cargo hold is already full. You end up selling both harvests for <payment>.`
+
+
+
+phrase "asteroid names"
+	phrase
+		"greek alphabet"
+	word
+		" "
+	phrase
+		"greek alphabet"
+	word
+		" "
+	phrase
+		"greek alphabet"
+		
+ship "Asteroid" "Mysterious Asteroid"
+	noun "asteroid"
+	sprite "asteroid/fossil/spin"
+		"frame rate" 10
+	"never disabled"
+	add attributes
+		"thrust" -5
+	bay "Fighter" 0 0 
+	bay "Fighter" 0 0 
+	bay "Fighter" 0 0 
+	bay "Fighter" 0 0 
+	bay "Fighter" 0 0 
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+
+ship "Asteroid" "Rogue Asteroid"
+	noun "asteroid"
+	sprite "asteroid/fossil/spin"
+		"frame rate" 10
+	"never disabled"
+	add attributes
+		"hull" 10000
+		"thrust" -5
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+mission "Rogue Asteroid (Poor World)"
+	deadline 2
+	repeat
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "paradise" "urban" "rich" "tourist"
+		not attributes "uninhabited"
+	to offer
+		"combat rating" >= 5
+		random < 20
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested waiting staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Copper" "Gold" "Silver"
+			variant
+				"Rogue Asteroid"
+		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
+
+	on complete
+		payment 10000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+
+mission "Rogue Asteroid (Pirate)"
+	deadline 2
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "frontier" "dirt belt"
+		not attributes "uninhabited"
+	to offer
+		"combat rating" > 100
+		or
+			has "Rogue Asteroid (Poor World): done"
+			has "Rogue Asteroid (Poor World): declined"				
+			has "Rogue Asteroid (Poor World): failed"
+			has "Rogue Asteroid (Poor World): aborted"
+		random < 20
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested forbearing waiting staying
+		fleet
+			names "asteroid names"
+			cargo 0
+			variant
+				"Mysterious Asteroid"
+				"Dagger" 5
+			variant
+				"Mysterious Asteroid"
+				"Dagger" 4
+		dialog `You've destroyed the rogue asteroid and the pirate ships that were hiding on it. Return to <planet> for your reward.`
+	on complete
+		payment 10000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+
+mission "Rogue Asteroid (Rich World)"
+	deadline 2
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "paradise" "urban" "rich" "tourist"
+		not attributes "uninhabited"
+	to offer
+		"combat rating" > 100
+		or
+			has "Rogue Asteroid (Pirate): done"
+			has "Rogue Asteroid (Pirate): declined"				
+			has "Rogue Asteroid (Pirate): failed"
+			has "Rogue Asteroid (Pirate): aborted"
+		random < 5
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested waiting staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Iron" "Lead" "Silicon"
+			variant
+				"Rogue Asteroid"
+		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
+
+	on complete
+		payment 20000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+	
+mission "Rogue Asteroid (Ambush)"
+	landing
+	invisible
+	source
+		attributes "pirate"
+	to offer
+		or
+			has "Rogue Asteroid (Pirate): done"
+			has "Rogue Asteroid (Pirate): declined"
+			has "Rogue Asteroid (Pirate): failed"
+			has "Rogue Asteroid (Pirate): aborted"
+		random < 5
+	npc kill
+		government "Phenomenon (dangerous)"
+		personality uninterested forbearing waiting staying mute
+		fleet
+			cargo 3
+			outfitters "Iron" "Lead" "Silicon"
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 5
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 4
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 3
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 2
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 1
+			variant 5
+				"Rogue Asteroid"
+	on complete
+		clear "Rogue Asteroid (Ambush): offered"
+
 

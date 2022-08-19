@@ -26,6 +26,7 @@ mission "Ghost Hunting: Dire Omen 1"
 	destination
 		planet "Stormhold"
 	to offer
+		"month" == 10
 		"combat rating" > 512
 		has "First Contact: Hai: declined"
 		or
@@ -940,6 +941,7 @@ mission "Ghost Hunting: Friendship 1"
 		government "Free Worlds"
 	to offer
 		has "main plot completed"
+		"month" == 10
 	on offer
 		conversation
 			`As you are leaving the spaceport, some kids approach you. The oldest one asks, "Excuse me, but are you a starship captain?"`
@@ -1057,9 +1059,32 @@ mission "Ghost Hunting: Ghost Fleet"
 				"Freighter Test Dummy"
 				"Argosy Test Dummy"
 				"Falcon Test Dummy"
+		conversation
+			scene "ship/poltergeist king"
+			branch one
+				random < 75
+				has "Ghost Hunting: Ghost Fleet: done"
+			`You receive a hail from the wreckage of one of the ghost ships that was destroyed. The angry voice of the Poltergeist King crackles on: "Curse you <first>! Do you have any idea how difficult it is to hack into those automated test ships? I (crackle) months of (crackle) you'll pay (crackle)."`
+				goto end
+			label one
+			branch two
+				random < 33
+			`You receive a hail from the wreckage of one of the ghost ships that was destroyed. The angry voice of the Poltergeist King crackles on: "Well, if it isn't <first> <last>! You'll regret (crackle) be certain (crackle) mark my words (crackle)."`
+				goto end
+			label two
+			branch three
+				random < 50
+			`You receive a hail from the wreckage of one of the ghost ships that was destroyed. The angry voice of the Poltergeist King crackles on: "Once again you've foiled my plans <first> <last>! I'll make sure (crackle) next time (crackle) my revenge (crackle)."`
+				goto end
+			label three
+			`You receive a hail from the wreckage of one of the ghost ships that was destroyed. The angry voice of the Poltergeist King crackles on: "Confound it <first> <last>! Stop interfering with (crackle) why must (crackle) plans in ruins (crackle)."`
+				goto end
+			label end
+			``
+			`The hail cuts off as the circuitry of the ghost ship dies out.`
 	on complete
 		payment 500000
-		dialog "The government of <planet> rewards you with <payment> for eliminating the fleet of ghost ships."
+		dialog `The government of <planet> rewards you with <payment> for eliminating the fleet of ghost ships.`
 
 ship "Leviathan" "Leviathan Test Dummy"
 	add attributes
@@ -1134,7 +1159,6 @@ mission "Ghost Hunting: Ghost Fleet Reset"
 
 mission "Ghost Hunting: Sestor Remnant"
 	job
-	repeat
 	name "Alien Ghost Ships"
 	description "A fleet of alien ghost ships has been attacking ships near <system>. The <planet> Merchant's Association is offering <payment> to eliminate this threat."
 	source
@@ -1153,17 +1177,9 @@ mission "Ghost Hunting: Sestor Remnant"
 		fleet
 			names "kor sestor"
 			fighters "kor sestor fighter"
-			variant 2
+			variant
 				"Far Lek 14" 9
 				"Far Osk 27" 7
-			variant 1
-				"Met Par Tek 53"
-				"Far Lek 14" 8
-				"Far Osk 27" 7
-			variant 1
-				"Met Par Tek 53"
-				"Far Lek 14" 9
-				"Far Osk 27" 6
 		dialog `Eliminated some left overs from when the Alphas brought a Sestor fleet into the north. Report back to <destination> to claim your reward for eliminating these "ghost ships".`
 	on complete
 		payment 100000

@@ -404,6 +404,32 @@ event "Diyu reveal"
 	system Diyu
 		remove hidden
 
+# For pilots who find Diyu before finding Archipelago.
+mission "Cartography: Diyu Link"
+	invisible
+	source "Wang Xiang Tai"
+	to offer
+		not "Cartography: Quarg Hitchhiker 1: offered"
+		random < 50
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Somone wearing a dragon mask approaches you. "You seem lost. Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			choice
+				`	"Hyperlink codes?"`
+			scene "planet/station0ver8"
+			`	"Yes, you'll need to transmit the codes to the device near the center of this system in order to ride the hyperspace links to nearby systems."`
+			choice
+				`	(Purchase the codes.)`
+				`	(Refuse to buy them.)`
+					decline
+			`	You exchange your credits for the codes and instructions on how to transmit them. Hopefully this isn't some scam.`
+	on accept
+		payment -100000
+		event "Diyu hyperlinks"
+	on enter
+		dialog `You transmit the codes and hyperspace links leading away from this system appear on your star map.`
+		fail
 
 
 mission "Cartography: Quarg Hitchhiker 3"
