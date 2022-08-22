@@ -1,3 +1,4 @@
+
 name: Zip Files
 on:
   push:
@@ -8,18 +9,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: Analyse changed plugins
         id: files
         uses: tj-actions/changed-files@v28.0.0
+        with:
+          separator: '%%%'
       - name: Zip changed plugins
         run: |
-          for file in ${{ steps.files.outputs.all_changed_files }}; do
-            if [[ $file == *"All Plugins"* ]]; then
-              local RELATIVE=${file#*/All Plugins/}
-              local NAME=${RELATIVE%%/*}
-              zip -r "${NAME}.zip" "Working/All Plugins/${NAME}"
-            fi
-          done
+          import os
+          import subprocess
+          changed = "${{ steps.files.outputs.all_changed_and_modified_files }}"
+          plugins = set()
+          for f in changed.split("%%%"):
+            if not "All Plugins" in f:
+              continue
+            path = f.split(os.sep)
+            index = path.index("All Plugins") + 1
+            if index >= len(path):
+              continue
+            plugins.add(path[index])
+          if plugins:
+            print("The following plugins have changed:")
+            for p in plugins:
+              print(p)
+              subprocess.run(["zip", "-r", p + ".zip", "Working/All Plugins/" + p],
+                stdout=subprocess.DEVNULL)
+          else:
+            print("No plugin changes have been detected.")
+        shell: python
       - name: Upload plugins to release
         uses: ncipollo/release-action@v1
         with:
