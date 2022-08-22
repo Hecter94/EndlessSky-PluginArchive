@@ -3,21 +3,28 @@ name: Zip Files
 on:
   push:
     paths:
-      - 'Working/All Plugins/**'
-
+    - 'Working/All Plugins/**'
 jobs:
   zip-files:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v2
-      - run: cd "Working/All Plugins"; for i in */; do zip -r "${i%/}.zip" "$i"; done
+      - uses: actions/checkout@v3
+      - name: Analyse changed plugins
+        id: files
+        uses: tj-actions/changed-files@v28.0.0
+      - name: Zip changed plugins
+        run: |
+          for file in ${{ steps.files.outputs.all_changed_files }}; do
+            if [[ $file == *"All Plugins"* ]]; then
+              local RELATIVE=${file#*/All Plugins/}
+              local NAME=${RELATIVE%%/*}
+              zip -r "${NAME}.zip" "Working/All Plugins/${NAME}"
+            fi
+          done
+      - name: Upload plugins to release
       - uses: ncipollo/release-action@v1
         with:
           name: Downloads
           tag: Latest
           allowUpdates: true
-          removeArtifacts: true
-          artifacts: "Working/All Plugins/*.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "*.zip"
