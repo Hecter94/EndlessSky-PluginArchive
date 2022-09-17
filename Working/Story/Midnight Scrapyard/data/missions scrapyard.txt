@@ -62,6 +62,7 @@ mission "Scrapyard: Meeting on Desi Seledrak"
 	description "Meto Pa'aret has asked you to meet him on <planet> in the <system> system."
 	source
 		government "Wanderer"
+		not planet "Desi Seledrak"
 	destination "Desi Seledrak"
 	to offer
 		has "event: Scrapyard Develops"
@@ -147,16 +148,27 @@ mission "First Contact: Blight Shadows"
 				accept
 	on accept
 		event "Blight Shadow Infestation"
-	npc kill
+	npc
 		system Asikafarnut
 		government "Invasive Predator"
 		personality waiting staying disables unconstrained mute
 		fleet "Large Blight Shadow" 2
-	npc kill
+	npc
 		system Asikafarnut
 		government "Kor Scrappers"
 		personality waiting staying vindictive
-		fleet "Shadow Hunters"
+		fleet
+			names "korath"
+			fighters "korath"
+			cargo 0
+			variant
+				"Korath Scrapper (shields)"
+				"Korath Scrapper (weapons)"
+				"Korath Scrapper (engines)"
+				"Korath Scrapper (carrier)"
+				"Korath Chaser" 3
+				"Far Osk 27" 6
+				"Far Lek 14" 1
 	npc kill
 		system Asikafarnut
 		government Drak
@@ -215,15 +227,17 @@ mission "Scrapyard Boarding A"
 	to offer
 		has "event: Scrapyard Develops"
 		random < 20
-	npc board
+	npc kill
 		government "Derelict (Killable)"
 		system
 			attributes "Scrapyard"
 		personality waiting derelict mute
 		fleet "Error Scrap"
+		conversation
+			apply
+				"Scrapyard Boarding A: offered" --
+			`You've eliminated some of the derelicts, but more are out there waiting to be exploited by Scrappers and Blight Shadows.`
 	on fail
-		"Scrapyard Boarding A: offered" --
-	on complete
 		"Scrapyard Boarding A: offered" --
 
 mission "Scrapyard Boarding B"
@@ -236,18 +250,19 @@ mission "Scrapyard Boarding B"
 	to offer
 		has "event: Blight Shadow Infestation"
 		random < 30
-	npc board
+	npc kill
 		government "Derelict (Killable)"
 		system
 			attributes "Scrapyard"
 		personality waiting derelict mute
 		fleet "Error Scrap"
+		conversation
+			apply
+				"Scrapyard Threat Level" ++
+				"Scrapyard Boarding B: offered" --
+			`You've eliminated some of the derelicts, but more are out there waiting to be exploited by Scrappers and Blight Shadows.`
 	on fail
 		"Scrapyard Boarding B: offered" --
-		"Scrapyard Threat Level" ++
-	on complete
-		"Scrapyard Boarding B: offered" --
-		"Scrapyard Threat Level" ++
 
 mission "Scrapyard Boarding A Clear"
 	landing
@@ -274,12 +289,179 @@ mission "Scrapyard Boarding B Clear"
 		fail
 
 
+mission "Mereti Automines Deployed"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		"Scrapyard Threat Level" >= 1
+	on offer
+		event "Mereti Automines Deployed"
+		fail
+
+event "Mereti Automines Deployed"
+	fleet "Small Kor Mereti"
+		add variant 3
+			"Model 128 (Carrier)"
+			"Mechanized Mine"
+	fleet "Large Kor Mereti"
+		add variant 5
+			"Model 512 (Carrier)"
+			"Mechanized Mine"
+			"Model 32"
+			"Model 16" 2
+		add variant 4
+			"Model 512 (Carrier)"
+			"Mechanized Mine"
+			"Model 8"
+		add variant 2
+			"Model 512 (Carrier)"
+			"Model 256 (Carrier)"
+			"Model 128 (Carrier)"
+			"Mechanized Mine" 2
+			"Mechanized Mine (SD)"
+			"Model 64"
+			"Model 32"
+			"Model 16"
+		add variant 3
+			"Model 512 (Carrier)"
+			"Model 256 (Carrier)" 2
+			"Mechanized Mine"
+		add variant 1
+			"Model 512 (Carrier)"
+			"Model 128 (Carrier)" 2
+			"Mechanized Mine" 3
+			"Model 64"
+			"Model 32" 2
+		add variant 1
+			"Model 512 (Carrier)"
+			"Mechanized Mine"
+			"Model 32" 5
+			"Model 16" 8
+		add variant 2
+			"Model 256 (Carrier)"
+			"Model 128 (Carrier)" 2
+			"Mechanized Mine" 3
+			"Model 64" 3
+			"Model 32" 5
+			"Model 16" 8
+		add variant 3
+			"Model 256 (Carrier)" 2
+			"Mechanized Mine" 2
+			"Model 64"
+			"Model 32" 3
+			"Model 16" 2
+		add variant 6
+			"Model 256 (Carrier)"
+			"Mechanized Mine"
+			"Model 64" 4
+		add variant 3
+			"Model 256" 3
+		add variant 8
+			"Model 256 (Carrier)"
+			"Model 128 (Carrier)"
+			"Mechanized Mine" 2
+			"Model 64"
+			"Model 32"
+			"Model 16"
+		add variant 7
+			"Model 256 (Carrier)" 2
+			"Model 128 (Carrier)"
+			"Mechanized Mine" 2
+			"Mechanized Mine (SD)"
+		add variant 14
+			"Model 256 (Carrier)"
+			"Mechanized Mine"
+			"Model 64" 2
+		add variant 5
+			"Model 128 (Carrier)" 3
+			"Mechanized Mine" 2
+			"Mechanized Mine (SD)"
+		add variant 2
+			"Model 256 (Carrier)"
+			"Model 128 (Carrier)"
+			"Mechanized Mine" 2
+			"Model 64"
+			"Model 32"
+			"Model 16"
+		add variant 4
+			"Model 256 (Carrier)" 2
+			"Mechanized Mine" 2
+		add variant 3
+			"Model 128 (Carrier)" 2
+			"Mechanized Mine" 2
+			"Model 64"
+			"Model 32" 2
+		add variant 4
+			"Model 128 (Carrier)" 2
+			"Mechanized Mine" 2
+			"Model 64" 3
+			"Model 32" 5
+			"Model 16" 8
+		add variant 5
+			"Model 256 (Carrier)"
+			"Mechanized Mine"
+			"Model 64"
+			"Model 32" 3
+			"Model 16" 2
+		add variant 9
+			"Model 256 (Carrier)"
+			"Mechanized Mine"
+			"Model 64" 2
+		add variant 3
+			"Model 256 (Carrier)" 2
+			"Mechanized Mine" 2
+		add variant 8
+			"Model 128 (Carrier)"
+			"Mechanized Mine"
+			"Model 64"
+			"Model 32"
+			"Model 16"
+		add variant 7
+			"Model 256 (Carrier)"
+			"Model 128 (Carrier)"
+			"Mechanized Mine" 2
+		add variant 14
+			"Model 256 (Carrier)"
+			"Mechanized Mine"
+			"Model 64"
+		add variant 5
+			"Model 128 (Carrier)" 2
+			"Mechanized Mine" 2
+
+mission "Mereti Automines Set"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		"Scrapyard Threat Level" >= 5
+	on offer
+		event "Mereti Automines Set"
+		fail
+
+event "Mereti Automines Set"
+	system Celeborim
+		add fleet "Mereti Automine" 2000
+	system Makferuti
+		add fleet "Mereti Automine" 2000
+	system Asikafarnut
+		add fleet "Mereti Automine" 1500
+	system Sobarati
+		add fleet "Mereti Automine" 2000
+	system Silikatakfar
+		add fleet "Mereti Automine" 2500
+	system Ferukistek
+		add fleet "Mereti Automine" 3000
+	system Eneremprukt
+		add fleet "Mereti Automine" 3000
+	system Mesuket
+		add fleet "Mereti Automine" 3500
 
 
 mission "Infested Scrap"
 	landing
 	invisible
-	destination "Spera Anatrusk"
+	destination "Laki Nemparu"
 	to offer
 		"Scrapyard Threat Level" >= 5
 	on offer
@@ -576,7 +758,7 @@ mission "Scrapyard Random Station Scrap Sestor"
 		planet "Sebra Skira" "Devru Kaska"
 	to offer
 		has "event: Scrapyard Develops"
-		random < 40
+		random < 20 - "Scrapyard Random Station Scrap harvested"
 	on offer
 		conversation
 			scene "outfit/control transceiver"
@@ -600,10 +782,13 @@ mission "Scrapyard Random Station Scrap Sestor"
 				accept
 	on defer
 		outfit "Control Transceiver" 1
+		"Scrapyard Random Station Scrap harvested" ++
 	on decline
 		outfit "Control Transceiver" 2
+		"Scrapyard Random Station Scrap harvested" ++
 	on accept
 		outfit "Control Transceiver" 3
+		"Scrapyard Random Station Scrap harvested" ++
 		fail
 
 
@@ -615,7 +800,7 @@ mission "Scrapyard Random Station Scrap Mereti"
 		planet "Metwar Skaretar" "Makwar Pratarati"
 	to offer
 		has "event: Scrapyard Develops"
-		random < 40
+		random < 20 - "Scrapyard Random Station Scrap harvested"
 	on offer
 		conversation
 			scene "outfit/reasoning node"
@@ -623,7 +808,30 @@ mission "Scrapyard Random Station Scrap Mereti"
 				accept
 	on accept
 		outfit "Reasoning Node" 1
+		"Scrapyard Random Station Scrap harvested" ++
 		fail
 
 
 
+mission "Scrapyard: Factory Sestor"
+	landing
+	invisible
+	source "Sestor Ikfar"
+	to offer
+		has "event: Scrapyard Develops"
+		random < 5
+	on offer
+		conversation
+			`While exploring the abandoned factories, you find some intact Sestor automata.`
+			choice
+				`	(Try activating them.)`
+				`	(Do not activate them.)`
+					defer
+			`	The automata hum with activity as their systems come to life. Unfortunately, you have no control over them and they fly off...`
+				accept
+	npc kill
+		government "Kor Sestor"
+		personality waiting uninterested
+		fleet "Large Kor Sestor"
+	on complete
+		clear "Scrapyard: Factory Sestor: offered"

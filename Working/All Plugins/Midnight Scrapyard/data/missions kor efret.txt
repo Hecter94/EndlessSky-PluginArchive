@@ -25,8 +25,11 @@ fleet "Kor Efret Miners"
 	cargo 0
 	variant 3
 		"Korath Explorer"
-		"Korath Chaser" 2
+		"Korath Chaser (Miner)" 2
 
+outfitter "Korath Basics"
+	"Korath Afterburner"
+	"Korath Scanner"
 
 
 mission "Scrapyard: Laki Nemparu Shipyard"
@@ -56,9 +59,6 @@ shipyard "Kor Efret Scrapyard"
 event "Laki Nemparu opens Shipyard"
 	planet "Laki Nemparu"
 		add shipyard "Kor Efret Scrapyard"
-	outfitter "Korath Basics"
-		add "Korath Afterburner"
-		add "Korath Scanner"
 	fleet "Kor Efret Home"
 		add variant
 			"Korath Transport"
@@ -107,6 +107,7 @@ mission "Scrapyard Derelict World Ship"
 	destination "Laki Nemparu"
 	to offer
 		"Scrapyard Threat Level" >= 25
+		"reputation: Kor Efret" >= 0
 	on enter "Celeborim"
 		"Scrapyard Threat Level" ++
 		conversation
@@ -209,6 +210,9 @@ ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	turret 27 134.5
 	turret -89 293
 	turret 87.5 292.5
+	bay "Fighter" -34 -70
+	bay "Fighter" 34 -70
+	bay "Fighter" 0 -70
 
 ship "Korath World-Ship" "Korath World-Ship D (Crippled)"
 	sprite "ship/world-ship scrapyard"
@@ -234,7 +238,6 @@ ship "Korath World-Ship" "Korath World-Ship D (Crippled)"
 	turret -89 293
 	turret 87.5 292.5
 
-
 mission "Scrapyard: Warmonger Construction"
 	landing
 	invisible
@@ -255,21 +258,19 @@ mission "Scrapyard: Warmonger Construction"
 event "Warmonger Construction Completed"
 	shipyard "Kor Efret Scrapyard"
 		add "Korath Warmonger"
-	outfitter "Korath Basics"
-		add "Korath Afterburner"
 	fleet "Kor Efret Home"
-		add variant 15
+		add variant 10
 			"Korath Warmonger"
 			"Korath Chaser" 2
-		add variant 10
+		add variant 5
 			"Korath World-Ship"
 			"Korath Warmonger" 2
 			"Korath Chaser" 4
-		add variant 10
+		add variant 5
 			"Korath World-Ship B"
 			"Korath Warmonger" 2
 			"Korath Chaser" 4
-		add variant 10
+		add variant 5
 			"Korath World-Ship C"
 			"Korath Warmonger" 2
 			"Korath Chaser" 4
@@ -279,7 +280,7 @@ event "Warmonger Construction Completed"
 			"Korath Transport B"
 		add variant 15
 			"Korath Transport C"
-			"Korath Chaser" 2
+			"Korath Chaser" 3
 
 
 
@@ -308,12 +309,14 @@ mission "Scrapyard: Efret Salvage License 1"
 		dialog `Visit the spaceport to look for Rek.`
 
 mission "Scrapyard: Efret Salvage License 2"
+	minor
 	name "Efret License"
 	description "Ask Rek to help you convince the Kor Efret to sell you weapons and other outfits installed on their ships."
 	source "Desi Seledrak"
 	destination "Setar Fort"
 	to offer
 		has "Scrapyard: Efret Salvage License 1: done"
+		random < 70
 	on offer
 		conversation
 			`When you ask to meet Rek, you are told that she as returned to Setar Fort.`
@@ -475,6 +478,35 @@ event "efret salvage grappler"
 	outfitter "Efret Salvage Advanced"
 		add "Korath Grappler"
 
+mission "Scrapyard: Efret Grappler Warmongers"
+	landing
+	invisible
+	to offer
+		has "event: efret salvage grappler"
+		has "event: Warmonger Construction Completed"
+	on offer
+		event "Efret Grappler Warmongers"
+		fail
+
+event "Efret Grappler Warmongers"
+	fleet "Kor Efret Home"
+		add variant 10
+			"Korath Warmonger (Grappler)"
+			"Korath Chaser" 2
+		add variant 5
+			"Korath World-Ship"
+			"Korath Warmonger (Grappler)" 2
+			"Korath Chaser" 4
+		add variant 5
+			"Korath World-Ship B"
+			"Korath Warmonger (Grappler)" 2
+			"Korath Chaser" 4
+		add variant 5
+			"Korath World-Ship C"
+			"Korath Warmonger (Grappler)" 2
+			"Korath Chaser" 4
+
+
 mission "Scrapyard: Efret Salvage Grappler 2"
 	landing
 	invisible
@@ -487,10 +519,112 @@ mission "Scrapyard: Efret Salvage Grappler 2"
 			`You notice a demonstration of the Grappler taking place at the outfitter. It appears they are available for purchase.`
 				decline
 
+mission "Scrapyard: Efret Salvage Scattermine 1"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "event: access efret salvage"
+		or
+			not "Randomize Scrapyard: Efret Salvage Scattermine"
+			and
+				has "Randomize Scrapyard: Efret Salvage Scattermine"
+				random < 5
+	on offer
+		require "Korath Scattermine"
+		conversation
+			scene "outfit/korath scattermine"
+			`Thanks to the local factories, the outfitter on Laki Nemparu is a bit more advanced than the other Kor Efret outfitters. Perhaps you can convince them to start manufacturing Korath Scattermine.`
+			choice
+				`	(Show the Korath Scattermine to the outfitter.)`
+				`	(Not now.)`
+					defer
+			`	The outfitter studies your Scattermine. It seems they want to buy it for 1,073,000 credits. Will you sell it?`
+			choice
+				`	(Sell the Korath Scattermine to the outfitter.)`
+				`	(Do not sell the Korath Scattermine.)`
+					defer
+			`	The outfitter gladly pays you 1,073,000 credits and some technicians cart the weapon away. Hopefully they'll use it as a prototype to manufacture more, but with the language barrier, you can't be certain what their plans for it are.`
+				decline
+	on defer
+		set "Randomize Scrapyard: Efret Salvage Scattermine"
+	on decline
+		payment 1073000
+		outfit "Korath Scattermine" -1
+		event "efret salvage scattermine" 14
+
+event "efret salvage scattermine"
+	outfitter "Efret Salvage Advanced"
+		add "Korath Scattermine"
+
+mission "Scrapyard: Efret Salvage Scattermine 2"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "event: efret salvage scattermine"
+	on offer
+		conversation
+			scene "outfit/korath scattermine"
+			`You notice a demonstration of the Scattermine taking place at the outfitter. It appears they are available for purchase.`
+				decline
+
+
+
+mission "Scrapyard: Efret Salvage Tractor 1"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "event: access efret salvage"
+		or
+			not "Randomize Scrapyard: Efret Salvage Tractor"
+			and
+				has "Randomize Scrapyard: Efret Salvage Tractor"
+				random < 5
+	on offer
+		require "Korath Tractor"
+		conversation
+			scene "outfit/korath tractor"
+			`Thanks to the local factories, the outfitter on Laki Nemparu is a bit more advanced than the other Kor Efret outfitters. Perhaps you can convince them to start manufacturing Korath Tractors.`
+			choice
+				`	(Show the Korath Tractor to the outfitter.)`
+				`	(Not now.)`
+					defer
+			`	The outfitter studies your Tractor. It seems they want to buy it for 986,000 credits. Will you sell it?`
+			choice
+				`	(Sell the Korath Tractor to the outfitter.)`
+				`	(Do not sell the Korath Tractor.)`
+					defer
+			`	The outfitter gladly pays you 986,000 credits and some technicians cart the weapon away. Hopefully they'll use it as a prototype to manufacture more, but with the language barrier, you can't be certain what their plans for it are.`
+				decline
+	on defer
+		set "Randomize Scrapyard: Efret Salvage Tractor"
+	on decline
+		payment 986000
+		outfit "Korath Tractor" -1
+		event "efret salvage tractor" 14
+
+event "efret salvage tractor"
+	outfitter "Efret Salvage Advanced"
+		add "Korath Tractor"
+
+mission "Scrapyard: Efret Salvage Tractor 2"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "event: efret salvage tractor"
+	on offer
+		conversation
+			scene "outfit/korath tractor"
+			`You notice a demonstration of the Tractor taking place at the outfitter. It appears they are available for purchase.`
+				decline
 
 
 
 mission "Scrapyard Mereti Efret Test Flight"
+	minor
 	name "Mereti Efret Escort"
 	description "Escort the Mereti Efret to <waypoints>. Then return to <destination>."
 	source "Laki Nemparu"
@@ -510,7 +644,9 @@ mission "Scrapyard Mereti Efret Test Flight"
 			not "Scrapyard Scrapper Siege (Similisti): done"
 			has "event: Node 8 Processor Returned"
 		or
-			not "Randomize Scrapyard Mereti Efret Test Flight"
+			and
+				not "Randomize Scrapyard Mereti Efret Test Flight"
+				random < 70
 			and
 				has "Randomize Scrapyard Mereti Efret Test Flight"
 				random < 20
@@ -539,6 +675,8 @@ mission "Scrapyard Mereti Efret Test Flight"
 					accept
 				`	(Decline.)`
 					decline
+	on defer
+		set "Randomize Scrapyard Mereti Efret Test Flight"
 	on enter Sumprast
 		dialog `You receive several hails from Kor Efret ships. You don't understand the words, but they sound happy.`
 	on enter Sevrelect

@@ -31,6 +31,7 @@ mission "Scrapyard Sestor Expedtionary Fleet"
 	landing
 	invisible
 	source "Avalon"
+	destination "Laki Nemparu"
 	to offer
 		has "Wanderers: Sestor: Final: done"
 	on offer
@@ -44,7 +45,7 @@ mission "Scrapyard Sestor Expedtionary Fleet"
 		conversation
 			scene "scene/scene-sestorexpedition"
 			`You notice another fleet in the system. Apparently not all of the Kor Sestor were deactivated. But these look different from the models normally seen amongst their fleets. Perhaps it would be worth your while to board the big one and have a closer look.`
-				accept
+
 	npc
 		system "Host"
 		government "Kor Sestor"
@@ -63,7 +64,9 @@ mission "Scrapyard Sestor Expedtionary Fleet"
 			commodities Equipment Electronics Construction
 		conversation
 			`Without a jump drive, it must have taken centuries for this ship to get here from Sestor space. The ship is loaded with equipment for construction. A colony ship? If this ship had established a base of operations on the planet below, the Sestor could rise again. The question is, how many other ships like this are out there?`
-		
+	on complete
+		log `The Kor Sestor sent expeditionary fleets beyond their space centuries ago. Without the limitations of old age, starvation, or anything else that would inhibit a normal crew, it is only a matter of time before these fleets eventually reach some place where they can establish a colony and begin a revival of the Kor Sestor automata.`
+
 event "Sestor Expeditionary Fleets"
 	system Host
 		add fleet "Kor Sestor Expedition" 80000
@@ -121,6 +124,7 @@ event "Kor Sestor Hostile to Hai"
 
 
 mission "Scrapyard Uwa Fahn Attack"
+	minor
 	name "Defend Icelake"
 	description "An alien fleet has attacked <destination>. Defend <planet> from this interstellar threat."
 	source
@@ -129,6 +133,7 @@ mission "Scrapyard Uwa Fahn Attack"
 	to offer
 		has "event: Sestor Expeditionary Fleets"
 		has "event: Kor Sestor Hostile to Hai"
+		random < 70
 	on offer
 		conversation
 			scene "scene/scene-sestorexpedition"
@@ -163,6 +168,7 @@ mission "Scrapyard Uwa Fahn Attack"
 
 
 mission "Scrapyard Bore Fah Attack"
+	minor
 	name "Defend Snowfeather"
 	description "An alien fleet has attacked <destination>. Defend <planet> from this interstellar threat."
 	source 
@@ -172,7 +178,7 @@ mission "Scrapyard Bore Fah Attack"
 		or
 			has "Scrapyard Uwa Fahn Attack: done"
 			has "Scrapyard Uwa Fahn Attack: declined"
-			
+		random < 70
 	on offer
 		conversation
 			scene "scene/scene-sestorexpedition"
@@ -241,6 +247,7 @@ mission "Scrapyard Persitar Wreck Hint"
 mission "Scrapyard Exploring the Persitar Wreck"
 	landing
 	invisible
+	deadline 3
 	source "Persitar Wreck"
 	on offer
 		"Scrapyard Threat Level" ++
@@ -283,6 +290,7 @@ event "Patch: Blight Shadows Nest In Persitar"
 
 
 mission "Scrapyard Stakoshstar 1"
+	minor
 	name "Sestor Expeditionary Fleet"
 	description "Scout <waypoints> for a Kor Sestor expeditionary fleet and eliminate it."
 	source
@@ -292,6 +300,7 @@ mission "Scrapyard Stakoshstar 1"
 	to offer
 		has "event: Sestor Expeditionary Fleets"
 		"Scrapyard Threat Level" >= 30
+		random < 70
 	on offer
 		event "stakoshtar in prakacha'a"
 		conversation
@@ -375,3 +384,20 @@ event "stakoshtar in prakacha'a"
 				sprite planet/dust3-b
 				distance 723
 				period 49.6561
+
+mission "Scrapyard Stakoshstar Expeditions"
+	landing
+	invisible
+	to offer
+		has "event: stakoshtar in prakacha'a"
+	on offer
+		event "Stakoshstar Expeditions"
+		fail
+
+event "Stakoshstar Expeditions"
+	fleet "Kor Sestor Expedition"
+		add variant 1
+			"Grakerat 572"
+			"Tercheldar 150" 2
+			"Skoretak 13" 8
+			"Stakoshtar 187(SD)"

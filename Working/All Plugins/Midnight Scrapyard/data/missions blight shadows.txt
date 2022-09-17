@@ -57,10 +57,12 @@ mission "Scrapyard Eggs Pirate 1"
 			`	You carefully load the eggs into a crate and store them in your cargo hold. Perhaps they will be worth something to the right buyer. Perhaps a place that deals with exotic animals would be interested...`
 				accept
 	on decline
-		event "Infected with Shadowblight" 
+		event "Infected with Shadowblight"
+		log `Destroyed some Blight Shadow eggs. The black slime that splattered me was disgusting. Washing it off wasn't easy.`
 	on accept
 		event "Pirate Egg timer" 180
 		outfit "Blight Shadow Eggs" 1
+		log `Found some Blight Shadow eggs. Maybe I can sell them to an exotic animal dealer...`
 	on complete
 		dialog `You carry one of the Blight Shadow eggs around port looking for a buyer. Eventually, you receive a tip on where to meet someone who might be interested in the eggs. Head to the spaceport when you are ready to make a deal.`
 
@@ -109,6 +111,8 @@ mission "Scrapyard Eggs Pirate 2"
 		payment 150000
 	on accept
 		outfit "Blight Shadow Eggs" -1
+		log "People" "Gemini Jack" `An exotic animal zoo keeper on Greenrock who has agreed to raise some Blight Shadow eggs for me.`
+		log `I've left the Blight Shadow eggs with Gemini Jack. I'm sure nothing will go wrong.`
 	to complete
 		has "event: Pirate Egg timer"
 
@@ -124,12 +128,15 @@ mission "Scrapyard Eggs Pirate 3"
 			`	He has some Blight Shadows locked up in a gigantic titanium holding tank. Anyone approaching the holding area carries a titanium shield large enough to hide behind. The shields look like they've taken quite a bit of abuse... "They're a dangerous lot, 'specially due to their intelligence. We have to keep repairing the tank because they can eat through the metal plating. Lead, iron, titanium... The type of metal doesn't matter if they're left alone long enough." He has them perform some tricks to demonstrate that they've been trained. "Go ahead and pick one."`
 			`	It takes all day, but you manage to determine which of the creatures is best suited for you. The zoo workers load it into your cargo bay. The plan is to release it once you're in orbit. This entire scheme sounds ridiculous, but it's too late to back out now.`
 				accept
+	on accept
+		log `I have a pet Blight Shadow. What could go wrong?`
 	npc kill
 		government "Escort"
 		personality launching escort disables mute
 		ship "Blight Shadow"
 		dialog `It was a crazy idea to try keeping one as a pet. But the Blight Shadow that you hatched from an egg served you well in the time you had together.`	
 	on complete
+		log `Gemini Jack's exotic animal zoo was wiped out. I won't be able to get a new Blight Shadow to replace the one I lost from them.`
 		conversation
 			`You wonder how Gemini Jack is doing with the rest of the Blight Shadows. Maybe he could sell you a new one to replace the one you lost.`
 			`When you arrive at the zoo's location, you find an abandoned ruin. There is no sign of Jack or the other zoo keepers. All the cages are destroyed or empty, the animals nowhere to be seen. The titanium holding tank that the Blight Shadows were kept in is a blasted wreck. Something terrible took place here, but there's no one around to tell you what happened.`
@@ -225,11 +232,13 @@ mission "Scrapyard Eggs Remnant 1"
 				accept
 	on decline
 		event "Infected with Shadowblight" 
+		log `Destroyed some Blight Shadow eggs. The black slime that splattered me was disgusting. Washing it off wasn't easy.`
 	on accept
 		event "Remnant Egg timer" 30
 		outfit "Blight Shadow Eggs" 1
 	on complete
 		outfit "Blight Shadow Eggs" -1
+		log `Gave the Remnant some Blight Shadow eggs for research. Hopefully they'll glean some useful knowledge from them.`
 		conversation
 			scene "outfit/blight egg"
 			`You take the eggs to Plume's lab and tell him everything you know about the Blight Shadows.`
@@ -273,6 +282,7 @@ mission "Scrapyard Eggs Remnant 2"
 	on accept
 		outfit "Blight Rifle" 1
 		event "Blight Rifle Testing"
+		log `I'll be testing a prototype Blight Rifle for the Remnant. This experimental weapon was developed as a result of their research on the Blight Shadow eggs I brought them.`
 		fail
 
 event "Blight Rifle Testing"
@@ -310,6 +320,7 @@ mission "Scrapyard Blight Rifle 1"
 			`The prototype blight rifle starts shaking wildly. Then part of the casing shatters, splattering you with black slime! Unfortunately, the rifle is a complete wreck. You'll have to rely on some other weapon for now.`
 				accept
 	on accept
+		log `The prototype Blight Rifle exploded during a boarding battle, splattering me with black slime. I wasn't injured, but the rifle was ruined.`
 		outfit "Blight Rifle" -1
 		event "Infected with Shadowblight" 
 	on complete
@@ -332,6 +343,9 @@ mission "Scrapyard Blight Rifle 2"
 
 			`	He hands the rifle to you. "May the Embers burn bright for you, Captain."`
 				accept
+	on decline
+		clear "event: Blight Rifle Testing"
+		clear "Blight Rifle Testing"
 	on accept
 		outfit "Blight Rifle" 1
 		"Blight Rifle Testing" <?= 1
@@ -443,9 +457,11 @@ mission "Scrapyard Plume's Research"
 			choice
 				`	"What have you learned?"`
 			label research
-			`	"The creature absorbs energy. Both light and heat are absorbed through its skin. It can also absorb fuel, energy, and heat from ships through a beam emitted by a special organ hidden amongst its tentacles. As I said, it is very dangerous. However it does seem to have a weakness." He takes a breath then continues, "While hunting down the escaped specimens, an Ion storm swept through the system. Apparently, the Ionic energy was somewhat disruptive to several of their internal organs."`
+			`	"The creature absorbs energy. Both light and heat are absorbed through its skin. It can also absorb fuel, energy, and heat from ships through a beam emitted by a special organ hidden amongst its tentacles. As I said, it is very dangerous. However it does seem to have a weakness." He takes a breath then continues, "While hunting down the escaped specimens, an ion storm swept through the system. Apparently, the ionic energy was somewhat disruptive to several of their internal organs."`
 			`	That information could be useful. You thank Plume for his research and head out.`
 				accept
+	on accept
+		log `Plume's research on the Blight Shadows revealed that the ion storms native to the Ember Wastes are disruptive to some of their internal organs.`
 	on enter
 		dialog `Plume mentioned that some of the Blight Shadows escaped. He never indicated if they were all caught...`
 	npc kill
@@ -508,11 +524,6 @@ mission "Scrapyard Shadowblight Wanderer"
 event "Shadowblight Wanderer"
 	system "Prakacha'a"
 		add fleet "Large Blight Shadow" 50000
-	system Eshkoshtar
-		add fleet "Large Blight Shadow" 50000
-	system Salipastart
-		add fleet "Large Blight Shadow" 50000
-
 
 mission "Scrapyard Adjust Shadowblight Wanderer"
 	landing
@@ -525,9 +536,9 @@ mission "Scrapyard Adjust Shadowblight Wanderer"
 		
 event "Adjust Shadowblight Wanderer"
 	system Eshkoshtar
-		remove fleet "Large Blight Shadow" 50000
+		remove fleet "Large Blight Shadow"
 	system Salipastart
-		remove fleet "Large Blight Shadow" 50000
+		remove fleet "Large Blight Shadow"
 
 
 mission "Scrapyard Shadowblight Coalition"
@@ -545,7 +556,7 @@ mission "Scrapyard Shadowblight Coalition"
 		fleet "Small Blight Shadow"
 
 
-		
+
 mission "Scrapyard Shadowblight Remnant"
 	landing
 	invisible
@@ -738,15 +749,15 @@ mission "Scrapyard Blight Mutation"
 		
 event "scrapyard blight mutation"
 	system Celeborim
-		remove fleet "Small Blight Shadow" 800
+		remove fleet "Small Blight Shadow"
 		add fleet "Small Blight Mutation" 800
 	system Makferuti
-		remove fleet "Small Blight Shadow" 800
+		remove fleet "Small Blight Shadow"
 		add fleet "Small Blight Mutation" 800
 	system Asikafarnut
 		add fleet "Small Blight Mutation" 800
 	system Sobarati
-		remove fleet "Small Blight Shadow" 800
+		remove fleet "Small Blight Shadow"
 		add fleet "Small Blight Mutation" 800
 	system Persitar
 		add fleet "Small Blight Mutation" 1000
@@ -770,7 +781,7 @@ event "scrapyard blight horrors"
 	system Makferuti
 		add fleet "Small Blight Horror" 1200
 	system Asikafarnut
-		remove fleet "Small Blight Shadow" 800
+		remove fleet "Small Blight Shadow" 
 		add fleet "Small Blight Horror" 1200
 	system Sobarati
 		add fleet "Small Blight Horror" 1200
@@ -800,6 +811,7 @@ event "scrapyard blight horrors"
 
 mission "Scrapyard Blight Shadow Defense"
 	repeat
+	minor
 	name "Defend <planet>!"
 	description "A large swarm of Blight Shadows has entered <system>. Eliminate them, then report to <destination>."
 	source
@@ -852,6 +864,7 @@ mission "Scrapyard Blight Shadow Defense"
 mission "Scrapyard: Quarg Hunter"
 	deadline
 	deadline 2
+	minor
 	name "Escort <npc>"
 	description "Escort the <npc> on a hunting trip through the systems marked on your map. Then return to <destination> by <date>."
 	source "Kuwaru Efreti"
@@ -871,28 +884,25 @@ mission "Scrapyard: Quarg Hunter"
 	on offer
 		conversation
 			scene "thumbnail/blightshadow-thumb"
+
 			branch "repeat"
 				has "Scrapyard: Quarg Hunter: done"
 			
-			branch "blood paint"
-				has "event: joined the free worlds"
-			
 			`A Quarg approaches you and asks "You are human who hunt Blight Shadows?"`
 			choice
 				`	"Yes, I've killed more than a few."`
 				`	"No, I don't intend to seek them out."`
 					decline
-			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hulls green with their blood! Is more fun than staying on ringworld, no?"`
+
+			branch "blood paint"
+				has "event: joined the free worlds"
+
+			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos Maharim! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hulls green with their blood! Return by <date>. Is more fun than staying on ringworld, no?"`
 				goto decision
 
 			label "blood paint"
-			
-			`A Quarg approaches you and asks "You are human who hunt Blight Shadows?"`
-			choice
-				`	"Yes, I've killed more than a few."`
-				`	"No, I don't intend to seek them out."`
-					decline
-			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hull green with their blood as you have! Return by <date>. Is more fun than staying on ringworld, no?" The Quarg in this region of space might not follow the details of human political affairs and are probably unaware of the Free Worlds...`
+
+			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos Maharim! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hull green with their blood as you have! Return by <date>. Is more fun than staying on ringworld, no?" The Quarg in this region of space might not follow the details of human political affairs and are probably unaware of the Free Worlds...`
 				goto decision
 			
 			label "repeat"
@@ -908,8 +918,12 @@ mission "Scrapyard: Quarg Hunter"
 					decline
 			label end
 			scene "scene/scene-blue wardragon"
-			`	Quaelar-En said something about staining his hull with blood. As you board your ships, you note Quaelar-En's ship is blue...`
+			branch "again"
+				has "Scrapyard: Quarg Hunter: done"
+			`	Quaelar-En said something about staining its hull with blood. As you board your ships, you note Quaelar-En's ship is blue...`
 				accept
+			label "again"
+			`	As you board your ships, you note Quaelar-En's ship is still blue...`
 	npc kill
 		to despawn
 			has "event: scrapyard blight horrors"
@@ -930,7 +944,6 @@ mission "Scrapyard: Quarg Hunter"
 		government "Invasive Predator"
 		system "Asikafarnut"
 		personality waiting staying disables unconstrained mute
-		fleet "Small Blight Mutation"
 		fleet "Small Blight Horror"
 	npc accompany save
 		government "Quarg"
@@ -953,4 +966,14 @@ mission "Scrapyard: Quarg Hunter Patch"
 	on offer
 		clear "Scrapyard: Quarg Hunter: offered"
 		clear "Scrapyard: Quarg Hunter: declined"
+		fail
+		
+mission "Scrapyard: Quarg Hunter Log"
+	landing
+	invisible
+	to offer
+		has "Scrapyard: Quarg Hunter: done"
+	on offer
+		log "People" "Quaelar-En" `A Quarg who enjoys the thrill of the hunt, Quaelar-En has mentioned that the hull of one's ship should be stained with the blood of one's enemies. The hull of its ship is blue...`
+		log `Hunted Blight Shadows with the Quarg, Quaelar-En, who hoped to stain its hull green with their blood. While many Blight Shadows were slain, the hull of its ship is still unmistakably blue...`
 		fail

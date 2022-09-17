@@ -17,11 +17,196 @@
 ######################
 
 
+
+mission "Scrapyard Random Station Scrappers"
+	landing
+	invisible
+	repeat
+	deadline 3
+	source
+		planet "Sebra Skira" "Devru Kaska" "Metwar Skaretar" "Makwar Pratarati"
+	to offer
+		has "event: Blight Shadow Infestation"
+		random < 5
+	on offer
+		conversation
+			`A large fleet of Scrappers has entered the system and is heading for the station. You're vulnerable while docked here!`
+				accept
+	npc kill
+		government "Kor Scrappers (Hostile)"
+		personality waiting staying mining harvests plunders
+		fleet "Large Korath Scrappers"
+
+
+
+mission "Scrapyard: Factory Scrapper"
+	landing
+	invisible
+	source "Sestor Ikfar"
+	to offer
+		has "event: Blight Shadow Infestation"
+		random < 5
+	on offer
+		conversation
+			`While exploring the abandoned factories, the silence is broken by the roar of plasma engines! It seems a group of scrappers have activated some Sestor automata.`
+				accept
+	npc
+		government "Kor Scrappers"
+		personality waiting staying
+		fleet
+			names "korath"
+			fighters "korath"
+			cargo 0
+			variant
+				"Korath Scrapper (shields)"
+				"Korath Chaser" 2
+			variant
+				"Korath Scrapper (weapons)"
+				"Korath Chaser" 2
+			variant
+				"Korath Scrapper (engines)"
+				"Korath Chaser" 2
+			variant
+				"Korath Scrapper (carrier)"
+				"Korath Chaser" 2
+				"Far Lek 14"
+				"Far Osk 27"
+
+	npc kill
+		government "Kor Sestor"
+		personality waiting uninterested
+		fleet "Large Kor Sestor"
+	on complete
+		clear "Scrapyard: Factory Scrapper: offered"
+
+
+
+mission "Scrapyard Korath Tractor 1"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		"Scrapyard Threat Level" >= 8
+	on enter Sobarati
+		dialog `There is a heavily damaged Korath ship here.`
+	npc
+		government "Invasive Predator"
+		system "Sobarati"
+		personality waiting staying heroic mute
+		fleet
+			variant
+				"Blight Hatchling" 12
+	npc board
+		government "Kor Scrappers (Hostile)"
+		system "Sobarati"
+		personality waiting staying heroic mute
+			confusion 60
+		fleet
+			names "korath"
+			cargo 10
+			commodities "Metal" "Heavy Metals"
+			outfitters "Korath Basics"
+			variant
+				"Korath Devourer (Infested)"
+		conversation
+			scene "effect/explosion/small"
+			`The fire is raging out of control! This ship doesn't have long before it blows...`
+			choice
+				`	(Search the ship.)`
+				`	(Abandon the ship.)`
+					flee
+			scene "effect/explosion/medium"
+			``
+			`	Your fail to find anything. The fire is intensifying...`
+			choice
+				`	(Continue searching.)`
+				`	(Abandon the ship.)`
+					flee
+			scene "effect/explosion/large"
+			``
+			`	You find a data storage device. Perhaps it can be analyzed at <destination>. The heat from the fire is becoming unbearable...`
+			choice
+				`	(Continue searching.)`
+				`	(Abandon the ship.)`
+					launch
+			scene "effect/explosion/huge"
+			``
+			`	As you search, the heat intensifies. Suddenly, the bulkhead next to you explodes! This ship has begun its final death throes. But your burning corpse is unable to witness it.`
+				die
+
+mission "Scrapyard Korath Tractor 2"
+	landing
+	name "Keneska Fek"
+	description "Korath scrappers were looking for something on <destination>. Visit the station and find what they were searching for."
+	source "Laki Nemparu"
+	destination "Devru Kaska"
+	to offer
+		has "Scrapyard Korath Tractor 1: done"
+	on offer
+		conversation
+			scene "planet/station1k"
+			`You manage to convince one of the Kor Efret to help you read the data file. While you don't understand the words, this is clearly a map. The destination: <destination>, the same system you found the map. The scrappers were almost there. There must be something on the station that they wanted to salvage.`
+				accept
+	npc
+		government "Kor Scrappers (Hostile)"
+		system "Mesuket"
+		personality waiting staying mining harvests plunders
+		fleet "Large Korath Scrappers"
+	npc
+		government "Kor Scrappers (Hostile)"
+		system "Eneremprukt"
+		personality waiting staying mining harvests plunders
+		fleet "Large Korath Scrappers"
+	npc
+		government "Kor Scrappers (Hostile)"
+		system "Silikatakfar"
+		personality waiting staying mining harvests plunders
+		fleet "Large Korath Scrappers"
+	npc
+		government "Kor Scrappers (Hostile)"
+		system "Ferukistek"
+		personality waiting staying mining harvests plunders
+		fleet "Large Korath Scrappers"
+	npc
+		government "Invasive Predator"
+		system "Sobarati"
+		personality waiting staying heroic mute
+		fleet
+			variant
+				"Korath Dredger (Infested)"
+				"Blight Hatchling" 8
+	on complete
+		outfit "Korath Tractor" 1
+		conversation
+			scene "outfit/korath tractor"
+			`You land on <planet> as indicated on the map. Searching the area, you find an intact turret of some sort. Maybe this is what they were looking for. You'll be able to get a closer look at it when you get it to an outfitter.`
+
+
+
+mission "Scrapyard Devourer (Infested) 1"
+	landing
+	invisible
+	to offer
+		"Scrapyard Threat Level" >= 16
+	npc kill
+		government "Kor Scrappers (Hostile)"
+		system "Makferuti"
+		personality waiting staying opportunistic uninterested
+			confusion 60
+		fleet
+			names "korath"
+			cargo 10
+			commodities "Metal" "Heavy Metals"
+			outfitters "Korath Basics"
+			variant
+				"Korath Devourer (Infested)"
+				"Blight Hatchling" 12
+
 mission "Scrapyard Devourer (Neutral) 1"
 	landing
 	invisible
 	to offer
-		( "Scrapyard Boarding A: active" + "Scrapyard Boarding B: active" ) >= 2
+		"Scrapyard Threat Level" >= 24
 	npc kill
 		government "Kor Scrappers"
 		system "Silikatakfar"
@@ -49,7 +234,7 @@ mission "Scrapyard Scrapper Siege (Faronektu)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Faronektu)"
 				has "Scrapyard Damnation Epilogue: done"
-				random < 2
+				random < 1
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Fara Skaeruti in the Faronektu system. Can you assist in [defending, protecting] the Mereti?`
@@ -94,7 +279,7 @@ mission "Scrapyard Scrapper Siege (Mekislepti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Mekislepti)"
 				has "Scrapyard Damnation Epilogue: done"
-				random < 2
+				random < 1
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Aresepru Nat in the Mekislepti system. Can you assist in [defending, protecting] the Mereti?`
@@ -140,7 +325,7 @@ mission "Scrapyard Scrapper Siege (Similisti)"
 			and
 				has "Randomize Scrapyard Scrapper Siege (Similisti)"
 				has "Scrapyard Damnation Epilogue: done"
-				random < 2
+				random < 1
 	on offer
 		conversation
 			`You receive a message from Meto Pa'aret: "A large fleet of Kor Scrappers have [attacked, occupied] Mereti Station in the Similisti system. Can you assist in [defending, protecting] the Mereti?`
