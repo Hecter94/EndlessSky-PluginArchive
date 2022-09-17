@@ -12,6 +12,7 @@
 
 
 mission "Blue Ridge 1"
+	minor
 	name "Auction: Blue Ridge"
 	description "The Blue Ridge is up for auction on <destination>. They are only accepting bids from pilots with a valid Militia License. You'll need several million credits to even consider placing a bid."
 	source
@@ -20,6 +21,7 @@ mission "Blue Ridge 1"
 	destination Longjump
 	to offer
 		month == 8
+		random < 80
 	on offer
 		conversation
 			scene "ship/hipparion"
@@ -137,6 +139,7 @@ mission "Executive Guard: Syndicate Extremists"
 
 mission "Gremlin Protoype Escort"
 	deadline
+	minor
 	name "Escort to <planet>"
 	description "Escort the prototype Gremlin to <destination> by <date>. Payment is <payment>."
 	source
@@ -487,9 +490,130 @@ mission "Infiltrator: War Begins"
 		personality staying waiting surveillance timid mute
 		ship "Infiltrator" "Discretion"
 
-		
+
+
+mission "Pandora's Problems 1"
+	invisible
+	minor
+	source
+		government "Syndicate"
+	to offer
+		random < 50
+	on offer
+		log "The Syndicate has supposedly been secretly keeping an alien ship for their experiments at a facility named Pandora's Box. When a reporter tried to reveal the contents of this facility, it was empty."
+		conversation
+			scene "outfit/security station"
+			`A crowd has gathered at the bar watching a special news program:`
+			`	"This is Harold Riviere reporting live from the hangar rumored to be Pandora's Box, a facility where the Syndicate supposedly has been secretly keeping an alien ship for their experiments. After months of investigating we've finally located this place and are here to give you an inside look into what the Syndicate is hiding within." Harold pushes his way through a door and the cameraman follows. Alarms can be heard in the distance. "Our operatives are keeping the security guards distracted so that we can bring you this exclusive video." Harold passes by an abandoned security checkpoint. The camera zooms in on a laser rifle sitting on a tripod, then shifts to a heavily fortified doorway. "We managed to get the entry password for this doorway from an informant. This information didn't come cheap." Some beeping sounds can be heard as Harold enters the password, but the camera is focused on Harold's determined facial expression rather than the number pad. There is a click and the doorway starts to open. "This is it folks! The contents of Pandora's Box lies beyond this door..."`
+			`	The crowd in the bar waits with baited breath as the camera zooms past Harold's shoulder to the opening doorway beyond. The room is dark, but soon lights from above begin to illuminate the area. The lights reveal...`
+			`	"It's... empty?" The camera catches a glimpse of Harold looking around in confusion before being knocked violently to the floor as the video feed is cut off!`
+			`	The display switches to a nervous anchorwoman who apologizes for "technical difficulties" then cuts to a commercial break.`
+			`	The crowd bursts into a cacophony as suddenly everyone has an opinion on what was just witnessed.`
+			`	"I knew it was a trap."`
+			`	"This was probably just a publicity stunt."`
+			`	"Pandora's Box? It's a hoax if you ask me."`
+			`	"I'd bet Harold is being arrested right now."`
+			`	When the commercial break is over, the news program has moved on to another topic. No mention is made of what happened to Harold or Pandora's Box...`
+				decline
+				
+mission "Pandora's Problems 2"
+	minor
+	name "Pandora"
+	description "Pirates are using an alien pirate ship named the <npc> to ambush merchants in uninhabited systems near the core. Find the ship and eliminate it. Then report to <destination> for payment (<payment>)."
+	source
+		government "Syndicate"
+	destination "Shangri-La"
+	to offer
+		has "Pandora's Problems 1: declined"
+		or
+			and
+				not "Randomize Pandora's Problems 2"
+				random < 70
+			and
+				has "Randomize Pandora's Problems 2"
+				random < 5
+	on offer
+		conversation
+			`You overhear some bounty hunters discussing something called "Pandora" at the bar.`
+			choice
+				`	(Listen in.)`
+				`	(Ignore them.)`
+					defer
+			`	"Isn't that the alien ship that the Syndicate was rumored to be doing experiments on?"`
+			`	"I'll bet they're just using the name for the notoriety."`
+			`	"Any leads?"`
+			`	"Only that they ambush merchants in uninhabited systems near the core."`
+			`	"I heard Shangri-La is offering <payment> for this one."`
+			`	"Maybe it really is the ship from Pandora's Box."`
+			``
+			`	It seems like a lucrative, but dangerous, bounty job. What will you do?`
+			choice
+				`	(Hunt down the <npc>).`
+					accept
+				`	(Let the bounty hunters handle it.)`
+					decline
+	on defer
+		set "Randomize Pandora's Problems 2"
+	on enter "Gamma Cassiopeiae"
+		conversation
+			scene "ship/raider ancient"
+			`The Pandora is here! The alien ship is targeting your ship with its weapon systems!`
+	npc
+		government "Bounty"
+		system "Gamma Cassiopeiae"
+		personality waiting staying plunders
+		ship "Dagger" "Doom Blade"
+		ship "Dagger" "Black Heart"
+	npc kill
+		government "Bounty"
+		system "Gamma Cassiopeiae"
+		personality target waiting staying plunders
+		ship "Ancient Raider" "Pandora"
+		dialog `The <npc> has been eliminated. You can claim the bounty payment by returning to <destination>.`
+	on complete
+		payment 1000000
+		log "Eliminated the pirate threat caused by the Pandora, an ancient alien ship that may have been the same ship which the Syndicate was keeping in Pandora's Box for their experiments."
+		conversation
+			`The government of <planet> gratefully pays you <payment> for eliminating the <npc>. As you leave the payment processing office, you notice some other bounty hunters sizing you up...`
+
+mission "Pandora's Problems 3"
+	landing
+	invisible
+	repeat
+	source
+		government "Syndicate" "Pirate"
+		attributes "core"
+	to offer
+		"Pandora's Problems 3: offered" < 3
+		has "Pandora's Problems 2: done"
+		random < 25
+	npc kill
+		government "Bounty Hunter"
+		system
+			distance 3 4
+		personality heroic vindictive
+		fleet "Bounty Hunters"
+	npc kill
+		to spawn
+			"Pandora's Problems 3: offered" >= 2
+		government "Bounty Hunter"
+		system
+			distance 2 3
+		personality heroic vindictive
+		fleet "Bounty Hunters"
+	npc kill
+		to spawn
+			"Pandora's Problems 3: offered" >= 3
+		government "Bounty Hunter"
+		system
+			distance 1 2
+		personality heroic vindictive
+		fleet "Bounty Hunters"
+
+
 
 mission "Star Explorer Fan Tour"
+	minor
 	name "Star Explorer Fan Tour"
 	description "Escort the <npc> through the systems marked on your map. Be prepared to engage in mock battles with 'aliens'. Once all of the systems have been visited, return them safely to <destination> for <payment>."
 	source
@@ -500,10 +624,12 @@ mission "Star Explorer Fan Tour"
 	to offer
 		"combat rating" > 200
 		or
-			not "Randomize Star Explorer Fan Tour"
+			and
+				not "Randomize Star Explorer Fan Tour"
+				random < 70
 			and
 				has "Randomize Star Explorer Fan Tour"
-				random < 5			
+				random < 5
 	on offer
 		conversation
 			scene "ship/star explorer"
@@ -807,6 +933,7 @@ mission "Navy: Captured Cruiser"
 
 
 mission "Quash: Humanika Infiltration 1"
+	minor
 	infiltrating
 	passengers 4
 	name "Humanika Infiltration"
@@ -860,6 +987,7 @@ mission "Quash: Humanika Infiltration 1"
 			`As you approach <planet>, your passengers start unpacking and equipping some gear. They're all armed now. One of the men even has a sniper rifle. It's obvious they're up to no good. But it's too late to back out. Their leader, the one they refer to as "Commander," tells you to land at a specific site. You notice that this location is nowhere near the spaceport...`
 
 mission "Quash: Humanika Infiltration 2"
+	landing
 	passengers 1
 	name "Humanika Infiltration"
 	description "Take your passenger to <destination>. Payment is 400,000 credits."
@@ -912,6 +1040,7 @@ mission "Quash: Humanika Infiltration 2"
 
 
 mission "Sunracer Afterburner 1"
+	minor
 	name "Tag. You're it!"
 	description "Race the <npc> to <destination>."
 	source
@@ -921,6 +1050,7 @@ mission "Sunracer Afterburner 1"
 		has "main plot completed"
 		month == 3
 		"credits" > 700000
+		random < 70
 	on offer
 		conversation
 			scene "outfit/license"
@@ -1388,6 +1518,7 @@ ship "Asteroid" "Rogue Asteroid"
 mission "Rogue Asteroid (Poor World)"
 	deadline 2
 	repeat
+	minor
 	name "Rogue Asteroid"
 	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
 	source
@@ -1427,6 +1558,7 @@ mission "Rogue Asteroid (Poor World)"
 
 mission "Rogue Asteroid (Pirate)"
 	deadline 2
+	minor
 	name "Rogue Asteroid"
 	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
 	source
@@ -1440,7 +1572,7 @@ mission "Rogue Asteroid (Pirate)"
 			has "Rogue Asteroid (Poor World): declined"				
 			has "Rogue Asteroid (Poor World): failed"
 			has "Rogue Asteroid (Poor World): aborted"
-		random < 20
+		random < 3
 	on offer
 		conversation
 			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
@@ -1473,6 +1605,7 @@ mission "Rogue Asteroid (Pirate)"
 
 mission "Rogue Asteroid (Rich World)"
 	deadline 2
+	minor
 	name "Rogue Asteroid"
 	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
 	source
@@ -1482,11 +1615,11 @@ mission "Rogue Asteroid (Rich World)"
 	to offer
 		"combat rating" > 100
 		or
-			has "Rogue Asteroid (Pirate): done"
-			has "Rogue Asteroid (Pirate): declined"				
-			has "Rogue Asteroid (Pirate): failed"
-			has "Rogue Asteroid (Pirate): aborted"
-		random < 5
+			has "Rogue Asteroid (Poor World): done"
+			has "Rogue Asteroid (Poor World): declined"				
+			has "Rogue Asteroid (Poor World): failed"
+			has "Rogue Asteroid (Poor World): aborted"
+		random < 3
 	on offer
 		conversation
 			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
@@ -1522,10 +1655,10 @@ mission "Rogue Asteroid (Ambush)"
 		attributes "pirate"
 	to offer
 		or
-			has "Rogue Asteroid (Pirate): done"
-			has "Rogue Asteroid (Pirate): declined"
-			has "Rogue Asteroid (Pirate): failed"
-			has "Rogue Asteroid (Pirate): aborted"
+			has "Rogue Asteroid (Poor World): done"
+			has "Rogue Asteroid (Poor World): declined"				
+			has "Rogue Asteroid (Poor World): failed"
+			has "Rogue Asteroid (Poor World): aborted"
 		random < 5
 	npc kill
 		government "Phenomenon (dangerous)"

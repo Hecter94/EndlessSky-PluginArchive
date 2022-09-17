@@ -37,8 +37,10 @@ fleet "Gretel Medical 1"
 
 mission "Hansel & Gretel: Medical Supply Escort 1"
 	deadline
+	deadline 3
+	minor
 	name "Escort to <system>"
-	description "Escort the Hansel & Gretel to <destination> where they will deliver some much needed medical supplies. Payment is <payment>."
+	description "Escort the Hansel & Gretel to <destination> by <date> where they will deliver some much needed medical supplies. Payment is <payment>."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "frontier"
@@ -48,7 +50,7 @@ mission "Hansel & Gretel: Medical Supply Escort 1"
 		distance 3 10
 	to offer
 		"ships: Heavy Warship" >= 1
-		random < 45 - ( 5 * "Hansel & Gretel: Medical Supply Escort 1: defered" )
+		random < 50 - ( 5 * "Hansel & Gretel: Medical Supply Escort 1: defered" )
 	on offer
 		conversation
 			scene "scene/scene-hanselandgretel 1"
@@ -101,7 +103,7 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 	deadline
 	repeat
 	name "Escort to <system>"
-	description "Escort the Hansel & Gretel to <destination> where they will deliver some much needed medical supplies. Payment is <payment>."
+	description "Escort the Hansel & Gretel to <destination> by <date> where they will deliver some much needed medical supplies. Payment is <payment>."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "frontier"
@@ -146,8 +148,10 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 
 mission "Hansel & Gretel: Return Escort"
 	deadline
+	deadline 2
+	minor
 	name "Escort to <system>"
-	description "Escort the Hansel & Gretel safely back to <destination>. Payment is <payment>."
+	description "Escort the Hansel & Gretel safely back to <destination> by <date>. Payment is <payment>."
 	source
 		attributes "frontier"
 		not attributes "uninhabited"
@@ -164,7 +168,7 @@ mission "Hansel & Gretel: Return Escort"
 	on offer
 		conversation
 			scene "scene/scene-hanselandgretel 1"
-			`You find a pair of familiar siblings at the spaceport. "Finally, some good luck," exclaims Hansel. Gretel explains, "We were ambushed by pirates and our escort abandoned us. Could you escort us back to <destination>? We can pay you <payment>."`
+			`You find a pair of familiar siblings at the spaceport. "Finally, some good luck," exclaims Hansel. Gretel explains, "We were ambushed by pirates and our escort abandoned us. Could you escort us back to <destination> by <date>? We can pay you <payment>."`
 			choice
 				`	(Escort them back.)`
 					accept
@@ -190,6 +194,7 @@ mission "Hansel & Gretel: Return Escort"
 	
 
 mission "Hansel & Gretel: Rescue Hansel"
+	minor
 	name "Rescue Hansel"
 	description "Find and rescue the Hansel. Also keep Gretel safe."
 	source
@@ -207,7 +212,7 @@ mission "Hansel & Gretel: Rescue Hansel"
 		not "Hansel & Gretel: Medical Supply Escort 2: failed"
 		not "Hansel & Gretel: Return Escort: failed"
 		"ships: Heavy Warship" >= 1
-		random < 50
+		random < 70
 	on offer
 		conversation
 			scene "thumbnail/protector"
@@ -236,9 +241,6 @@ mission "Hansel & Gretel: Rescue Hansel"
 		dialog `You've arrived ahead of the Hansel and Gretel! Return to space and wait for them to arrive.`
 	on complete
 		log `Helped rescue Hansel and reunited him with his sister, Gretel.`
-		conversation
-			scene "scene/scene-hanselandgretel 1"
-			`Hansel and Gretel thank you for reuniting them. Give them time to repair the Hansel, then meet them at the spaceport.`
 
 ship "Vanguard" "Vanguard (no hyperdrive)"
 	outfits
@@ -249,15 +251,13 @@ ship "Vanguard" "Vanguard (no hyperdrive)"
 		"Laser Rifle" 6
 		"X3700 Ion Thruster"
 		"X4200 Ion Steering"
-		
+
 
 
 mission "Hansel & Gretel: Pirate Escape"
+	landing
 	name "Pirate Escape"
 	description "Protect the Hansel and Gretel while escorting them safely back to <destination>."
-	source
-		attributes "pirate"
-		attributes "spaceport"
 	destination
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "frontier"
@@ -266,6 +266,10 @@ mission "Hansel & Gretel: Pirate Escape"
 		has "Hansel & Gretel: Rescue Hansel: done"
 	on offer
 		conversation
+			scene "scene/scene-hanselandgretel 1"
+			`Hansel and Gretel thank you for reuniting them. But the Hansel is in need of repairs.`
+			choice
+				`	(Gather parts to repair the Hansel.)`
 			scene "outfit/scram drive"
 			`The siblings actually managed to get a Scram Drive, but the Hansel still has no weapons. They'll be relying on you for security as they head back to <destination>.`
 				accept
@@ -325,9 +329,10 @@ fleet "Gretel Medical 2"
 mission "Hansel & Gretel: Medical Supply Escort 3"
 	job
 	deadline
+	deadline 5
 	repeat
 	name "Escort to <stopovers>"
-	description "Escort the Hansel & Gretel to <stopovers> where they will deliver some much needed medical supplies. Then escort them back to <destination>. Payment is <payment>."
+	description "Escort the Hansel & Gretel to <stopovers> where they will deliver some much needed medical supplies. Then escort them back to <destination> by <date>. Payment is <payment>."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "frontier"
@@ -388,6 +393,7 @@ mission "Hansel & Gretel: Pug Resistance"
 	to offer
 		has "Hansel & Gretel: Pirate Escape: done"
 		not "Hansel & Gretel: Medical Supply Escort 3: failed"
+		not "main plot completed"
 		or
 			has "FW Pug 5B: done"
 			has "FWC Pug 5C: done"
@@ -452,6 +458,7 @@ mission "Hansel & Gretel: Protection (Normal)"
 		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
 	to offer
 		has "main plot completed"
+		has "Hansel & Gretel: Pirate Escape: done"
 		not "Hansel & Gretel: Pug Resistance: offered"
 		random < 20
 	npc kill

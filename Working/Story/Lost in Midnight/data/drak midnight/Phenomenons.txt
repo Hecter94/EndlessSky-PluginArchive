@@ -1132,6 +1132,7 @@ fleet "Mysterious Comet"
 
 
 mission "Unknown Element: Sundive 1"
+	minor
 	name "Mysterious Comet"
 	description "Find a mysterious comet that appeared in Deneb and gather data using both outfit and cargo scans. Then bring that information to <destination> for payment of <payment>."
 	source
@@ -1162,9 +1163,11 @@ mission "Unknown Element: Sundive 1"
 	npc "scan outfits" "scan cargo"
 		government "Uninhabited"
 		system "Deneb"
-		personality target entering staying mining surveillance mute
+		personality target waiting staying mining surveillance mute
 		ship "Mysterious Comet"
 		dialog `You've completed your scans of the comet. Head for <destination> to deliver the data.`
+	on abort
+		dialog `You abandon the search for the Mysterious Comet.`
 	on fail
 		dialog `[MISSION FAILED] You were supposed to scan the comet, not destroy it! It's too bad this isn't a game. Otherwise you could load a save file and try again.`
 	on complete
@@ -1196,9 +1199,11 @@ mission "Unknown Element: Sundive 2"
 	npc kill
 		government "Uninhabited"
 		system "Deneb"
-		personality target entering staying mining surveillance mute
+		personality target waiting staying mining surveillance mute
 		fleet "Mysterious Comet"
 		dialog `You've destroyed the mysterious comet. Collect any pieces that surived and head for <destination> to deliver the Unknown Element.`
+	on abort
+		dialog `You abandon the search for the Mysterious Comet.`
 	on complete
 		payment 100000
 		outfit "Unknown Element" -1
@@ -1310,7 +1315,7 @@ mission "Unknown Element: Cargo Bay 3"
 				accept
 	on enter
 		conversation
-			`The cargo bay alarms start going off! You upgraded the security systems there. Time to see if it was worth it.`
+			`The cargo bay alarms start going off! You've upgraded the security systems there. Time to see if it was worth it.`
 			choice
 				`	(Check the security camera.)`
 			scene "scene/scene-baxter"

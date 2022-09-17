@@ -22,9 +22,15 @@ mission "Angri Byrds"
 	landing
 	invisible
 	to offer
-		has "Wanderers Ap'arak 3: Pug: done"
+		or
+			has "Wanderers Ap'arak 3: Pug: done"
+			and
+				has "Wanderers Ap'arak 3: Pug 1: failed"
+				has "Wanderers Ap'arak 3: Pug 2: failed"
+				"reputation: Wanderer" < 0
 	on offer
 		event "angri byrds"
+		fail
 
 event "angri byrds"
 	planet "Varu Tev'kei"
@@ -85,7 +91,9 @@ mission "Angri Byrds 2"
 	invisible
 	to offer
 		has "Wanderers Ap'arak 3: done"
-		has "Wanderers Ap'arak 3: Pug: done"
+		or
+			has "event: angri byrds"
+			has "Wanderers Ap'arak 3: Pug: done"
 	on offer
 		event "Wanderers tribute Spera Anatrusk"
 event "Wanderers tribute Spera Anatrusk"
@@ -101,7 +109,9 @@ mission "Angri Byrds 3"
 	invisible
 	to offer
 		has "Wanderers: Mentors 3: done"
-		has "Wanderers Ap'arak 3: Pug: done"
+		or
+			has "event: angri byrds"
+			has "Wanderers Ap'arak 3: Pug: done"
 	on offer
 		event "Wanderer tribute Desi Seledrak" 24
 
@@ -119,7 +129,9 @@ event "Wanderer tribute Desi Seledrak"
 #	invisible
 #	to offer
 #		has "event: wanderers: sabira eseskrai colony"
-#		has "Wanderers Ap'arak 3: Pug: done"
+#		or
+#			has "event: angri byrds"
+#			has "Wanderers Ap'arak 3: Pug: done"
 #	on offer
 #		event "Wanderer tribute Sabira Eseskrai"
 #
@@ -381,16 +393,19 @@ mission "Angri Byrds: Plundered Ship [Hurricane]"
 
 
 mission "Angri Byrds: Hai Millipede 1"
+	minor
 	name "Millipede Danger"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
 		not attributes "korath"
-	waypoint "Prakacha'a"
+	waypoint "Chirr'ay'akai"
 	to offer
 		has "event: wanderers: sestor eliminated"
 		or
-			not "Randomize Angri Byrds: Hai Millipede 1"
+			and
+				not "Randomize Angri Byrds: Hai Millipede 1"
+				random < 70
 			and
 				has "Randomize Angri Byrds: Hai Millipede 1"
 				random < 15 + "millipede runs amok"
@@ -417,7 +432,7 @@ mission "Angri Byrds: Hai Millipede 1"
 		to spawn
 			has "millipede runs amok"
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Chirr'ay'akai"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -427,7 +442,7 @@ mission "Angri Byrds: Hai Millipede 1"
 		to spawn
 			"millipede runs amok" >= 2
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Chirr'ay'akai"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -435,7 +450,7 @@ mission "Angri Byrds: Hai Millipede 1"
 				"Derecho (Hai Crew)"
 	npc
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Chirr'ay'akai"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -447,7 +462,7 @@ mission "Angri Byrds: Hai Millipede 1"
 				"Autumn Leaf (Hai Crew)" 4
 	npc kill
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Chirr'ay'akai"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -463,12 +478,13 @@ mission "Angri Byrds: Hai Millipede 1"
 			`The Wanderers thank you for the critical role you played in stopping the Millipede from stealing more of their ships. You are rewarded with <payment>.`
 
 mission "Angri Byrds: Hai Millipede 2"
+	minor
 	name "Millipede Danger"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
 		not attributes "korath"
-	waypoint "Prakacha'a"
+	waypoint "Sich'ka'ara"
 	to offer
 		has "Angri Byrds: Hai Millipede 1: done"
 		random < 15 + "millipede runs amok"
@@ -480,7 +496,7 @@ mission "Angri Byrds: Hai Millipede 2"
 				`	(Mind your own business.)`
 					defer
 			scene "thumbnail/hai millipede-thumb"
-			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] a large transport named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>." It might be viewed by the Wanderers as an act of heroism if you hunted down the <npc>. On the other hand, attempting it might get you killed.`
+			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] another Millipede named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>."`
 			choice
 				`	(Offer to hunt the Unfettered ship.)`
 				`	(Do nothing.)`
@@ -494,7 +510,7 @@ mission "Angri Byrds: Hai Millipede 2"
 		to spawn
 			has "millipede runs amok"
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Sich'ka'ara"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -504,7 +520,7 @@ mission "Angri Byrds: Hai Millipede 2"
 		to spawn
 			"millipede runs amok" >= 2
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Sich'ka'ara"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -514,7 +530,7 @@ mission "Angri Byrds: Hai Millipede 2"
 		to spawn
 			"millipede runs amok" >= 3
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Sich'ka'ara"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -522,19 +538,19 @@ mission "Angri Byrds: Hai Millipede 2"
 				"Hurricane (Hai Crew)"
 	npc
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Sich'ka'ara"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
 			variant
-				"Hurricane (Hai Crew)"
+				"Hurricane (Hai Crew)" 2
 				"Derecho (Hai Crew)" 2
 				"Tempest (Hai Crew)" 2
-				"Strong Wind (Hai Crew)" 2
-				"Autumn Leaf (Hai Crew)" 4
+				"Strong Wind (Hai Crew)" 4
+				"Autumn Leaf (Hai Crew)" 8
 	npc kill
 		government "Hai (Unfettered)"
-		system "Prakacha'a"
+		system "Sich'ka'ara"
 		personality waiting staying harvests plunders
 		fleet
 			names "hai"
@@ -542,7 +558,7 @@ mission "Angri Byrds: Hai Millipede 2"
 				"Millipede"
 		dialog `You've eliminated the <npc>. Report to <destination> for payment.`
 	on complete
-		payment 1000000
+		payment 2000000
 		"reputation: Wanderer" += 20
 		clear "millipede runs amok"
 		conversation

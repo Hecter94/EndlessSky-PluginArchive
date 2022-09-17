@@ -17,11 +17,13 @@
 
 mission "Midnight Market: Trailblazer Auction"
 	invisible
+	minor
 	source
 		government "Coalition"
 	to offer
 		has "Coalition: Contributor: done"
 		credits > 45000000
+		random < 70
 	on offer
 		conversation
 			branch "trailblazer encountered"
@@ -266,6 +268,7 @@ outfitter "Coalition Smuggling"
 	"Fragmentation Grenades"
 
 mission "Midnight Market: Coalition Smuggling 1"
+	minor
 	name "Mystery Job"
 	description "Escort a ship from <destination> to somewhere outside human space..."
 	source
@@ -277,10 +280,12 @@ mission "Midnight Market: Coalition Smuggling 1"
 		"Midnight Market: Coalition Smuggling 1: done" < 3
 		"Midnight Market" >= 20
 		or
-			not "Randomize Midnight Market: Coalition Smuggling 1"
+			and
+				not "Randomize Midnight Market: Coalition Smuggling 1"
+				random < 50
 			and
 				has "Randomize Midnight Market: Coalition Smuggling 1"
-				random < 10
+				random < 5
 	on offer
 		conversation
 			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1,000,000`
@@ -335,7 +340,7 @@ fleet "Independent Kimek Smuggler"
 
 
 mission "Midnight Market: Coalition Smuggling 2"
-	deadline 15
+	deadline 18
 	name "Coalition Smuggling"
 	description "Escort a ship carrying merchandise to <destination> by <date>. Payment is <payment>."
 	source "Poisonwood"
@@ -435,10 +440,12 @@ mission "Midnight Market: Coalition Smuggling 3"
 		"Midnight Market: Coalition Smuggling 2: done" >= 3
 		"Midnight Market" >= 20
 		or
-			not "Randomize Midnight Market: Coalition Smuggling 3"
+			and
+				not "Randomize Midnight Market: Coalition Smuggling 3"
+				random < 50
 			and
 				has "Randomize Midnight Market: Coalition Smuggling 3"
-				random < 20
+				random < 10
 	on offer
 		conversation
 			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1000000`
@@ -460,7 +467,7 @@ mission "Midnight Market: Coalition Smuggling 3"
 		dialog "Head to the spaceport learn more about the escort job."
 
 mission "Midnight Market: Coalition Smuggling 4"
-	deadline 15
+	deadline 18
 	name "Coalition Smuggling"
 	description "This time you're delivering merchandise to <destination> by <date>. Payment is <payment>. If the Heliarch catch you with this merchandise, it could be trouble."
 	source "Poisonwood"
@@ -645,6 +652,8 @@ mission "Midnight Market: Source of Coalition Smuggling 1"
 			accept
 	on fail
 		clear "Midnight Market: Source of Coalition Smuggling 1: offered"
+	on enter "Men"
+		dialog `That Hauler III looks suspicious. What kind of cargo is it carrying?`
 	npc "scan outfits"
 		government "Independent"
 		system "Men"

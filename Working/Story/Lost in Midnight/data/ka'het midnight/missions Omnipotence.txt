@@ -22,6 +22,7 @@ fleet "Unuk Billboard"
 mission "Omnipotence: Grave Digger Epilogue 0"
 	landing
 	invisible
+	deadline 3
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "uninhabited"
@@ -32,12 +33,12 @@ mission "Omnipotence: Grave Digger Epilogue 0"
 			scene "scene/scene-unuk billboard"
 			`	You see an advertisement for chocolate covered acorn cookies from House Unuk. A new flavor? You're surprised they didn't already make those.`
 				accept
+	on accept
+		event "unuk billboard"
 	npc
 		government "Merchant"
 		personality waiting pacifist appeasing uninterested
 		fleet "Unuk Billboard"
-	on complete
-		event "unuk billboard"
 
 event "unuk billboard"
 	system Unukalhai
@@ -45,6 +46,7 @@ event "unuk billboard"
 
 	
 mission "Omnipotence: Grave Digger Epilogue 1"
+	landing
 	name "Grave Digger Remnants"
 	description "There may be more Grave Diggers hiding in the Graveyard. Visit all of the Graveyard systems marked on your map to check for Grave Digger activity."
 	source
@@ -482,10 +484,16 @@ mission "Omnipotence Map: Builder Anti-Missile part 3"
 	on decline
 		event "add Builder Anti-Missile to Remnant Salvage"
 
-event "add Builder Anti-Missile to Remnant Salvage"
-	outfitter "Remnant Salvage"
-		add "Builder Anti-Missile"
+outfitter "Builder Anti-Missile"
+	"Builder Anti-Missile"
 
+event "add Builder Anti-Missile to Remnant Salvage"
+	planet Viminal
+		add outfitter "Builder Anti-Missile"
+	planet Aventine
+		add outfitter "Builder Anti-Missile"
+	planet Caelian
+		add outfitter "Builder Anti-Missile"
 
 mission "Omnipotence Map: Builder Drones part 1"
 	landing
@@ -658,6 +666,10 @@ mission "Omnipotence Map: Builder Negator part 2"
 		fail
 
 
+
+##############
+# Patch
+##############
 
 mission "Omnipotence Map patch"
 	landing

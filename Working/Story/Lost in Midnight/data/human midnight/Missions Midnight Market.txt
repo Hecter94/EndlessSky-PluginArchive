@@ -18,6 +18,7 @@
 
 
 mission "Midnight Market: Jump Drives 1"
+	minor
 	name "Mysterious Buyer"
 	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
 	source
@@ -57,6 +58,7 @@ mission "Midnight Market: Jump Drives 1"
 			`You easily find the warehouse indicated by your mysterious buyer. The dockworkers take the jump drive and provide you with a hyperdrive and <payment> in exchange. There is no paperwork to fill out and no receipts are given, leaving you with no record that this transaction ever took place.`
 
 mission "Midnight Market: Jump Drives 2"
+	minor
 	name "Mysterious Buyer"
 	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
 	source
@@ -113,10 +115,12 @@ event "Hauler VI R&D timer"
 
 mission "Midnight Market: Hauler VI Prototype 0"
 	invisible
+	minor
 	source
 		government "Free Worlds" "Republic"
 	to offer
 		has "event: Hauler VI R&D timer"
+		random < 70
 	on offer
 		conversation
 			scene "thumbnail/hauler vi-thumb"
@@ -129,6 +133,7 @@ mission "Midnight Market: Hauler VI Prototype 0"
 event "stolen Hauler VI timer"
 
 mission "Midnight Market: Hauler VI Prototype 1"
+	minor
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a hangar on <planet> in the <system> system if you want to purchase it for 7,000,000 credits."
 	source
@@ -141,6 +146,15 @@ mission "Midnight Market: Hauler VI Prototype 1"
 		or
 			"Bulk Delivery [0]: done" + "Bulk Delivery [1]: done" + "Bulk Delivery [2]: done" + "Large Bulk Delivery [0]: done" + "Large Bulk Delivery [1]: done" + "Large Bulk Delivery [2]: done" + "Bulk Cargo Smuggling [0]: done" + "Bulk Cargo Smuggling [1]: done" + "Bulk Cargo Smuggling [2]: done" + "Bulk Drug Running [0]: done" + "Bulk Drug Running [1]: done" + "Bulk Drug Running [2]: done" >= 6
 			"Bulk Cargo Smuggling [0]: done" + "Bulk Cargo Smuggling [1]: done" + "Bulk Cargo Smuggling [2]: done" + "Bulk Drug Running [0]: done" + "Bulk Drug Running [1]: done" + "Bulk Drug Running [2]: done" >= 3
+		or
+			and
+				not "Randomize Midnight Market: Hauler VI Prototype 1"
+				random < 70
+			and
+				has "Randomize Midnight Market: Hauler VI Prototype 1"
+				random < 5
+	on defer
+		set "Randomize Midnight Market: Hauler VI Prototype 1"
 	to complete
 		"credits" >= 7000000
 	on offer
@@ -153,7 +167,6 @@ mission "Midnight Market: Hauler VI Prototype 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
-
 	on visit 
 		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the necessary credits to complete the transaction.`
 
@@ -256,7 +269,7 @@ mission "Midnight Market: Project THOR 0"
 
 	npc assist accompany save
 		government "Militia"
-		personality escort derelict timid waiting
+		personality target derelict timid waiting
 		system Ildaria
 		ship "Dreadnought (Flamethrower)" "Vigilant Guard"
 		dialog `The crew is grateful for you assistance. They were attacked and plundered by marauders. The captain asks that you escort their ship to  <destination>.`
@@ -277,6 +290,7 @@ event "stolen THOR timer"
 
 
 mission "Midnight Market: Project THOR 1"
+	minor
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a village on <planet> in the <system> system if you want to purchase it for 2,000,000 credits."
 	source
@@ -287,6 +301,13 @@ mission "Midnight Market: Project THOR 1"
 		"combat rating" > 1000
 		"net worth" > 8000000
 		"credits" > 4000000
+		or
+			and
+				not "Randomize Midnight Market: Project THOR 1"
+				random < 70
+			and
+				has "Randomize Midnight Market: Project THOR 1"
+				random < 5
 	to complete
 		"credits" >= 2000000
 	on offer
@@ -299,6 +320,8 @@ mission "Midnight Market: Project THOR 1"
 					accept
 				`	(Reject the invitation.)`
 					defer
+	on defer
+		set "Randomize Midnight Market: Project THOR 1"
 	on visit
 		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the 2,000,000 credits needed to complete the transaction.`
 
@@ -373,6 +396,7 @@ mission "Midnight Market: Cloaking Device 0"
 	to offer
 		has "FW Syndicate Extremists 1B: done"
 		has "main plot completed"
+		random < 70
 	on offer
 		require "Cloaking Device"
 		conversation 
@@ -408,6 +432,7 @@ event "Stolen Cloaking Device"
 
 
 mission "Midnight Market: Cloaking Device 1"
+	minor
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a pier on <planet> in the <system> system if you want to purchase it for 4,000,000 credits and one jump drive."
 	source
@@ -420,10 +445,12 @@ mission "Midnight Market: Cloaking Device 1"
 		"net worth" > 8000000
 		"credits" >= 6000000
 		or
-			not "Randomize Midnight Market: Cloaking Device 1" 
+			and
+				not "Randomize Midnight Market: Cloaking Device 1" 
+				random < 70
 			and
 				has "Randomize Midnight Market: Cloaking Device 1" 
-				random < 10
+				random < 5
 	to complete
 		"credits" >= 4000000
 	on offer
@@ -513,6 +540,7 @@ mission "Midnight Market: Cloaking Device 2"
 
 
 mission "Midnight Market: Intrusion Countermeasures 1"
+	minor
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a rare item that would supposedly appeal to you. You must go to a village on <planet> in the <system> system if you want to purchase it for 500,000 credits."
 	source
@@ -525,10 +553,12 @@ mission "Midnight Market: Intrusion Countermeasures 1"
 		"net worth" > 1000000
 		"credits" >= 500000
 		or
-			not "Randomize Midnight Market: Intrusion Countermeasures 1" 
+			and
+				not "Randomize Midnight Market: Intrusion Countermeasures 1" 
+				random < 70
 			and
 				has "Randomize Midnight Market: Intrusion Countermeasures 1" 
-				random < 10
+				random < 5
 	to complete
 		"credits" >= 500000
 	on offer
@@ -580,6 +610,5 @@ mission "Midnight Market: Intrusion Countermeasures 2"
 		payment -500000
 		outfit "Intrusion Countermeasures" 1
 		fail
-
 
 

@@ -13,6 +13,7 @@
 
 mission "Storm Seeker Raider 1"
 	invisible
+	minor
 	source "Season's End"
 	on offer
 		conversation
@@ -28,20 +29,24 @@ mission "Storm Seeker Raider 1"
 		fail
 		
 mission "Storm Seeker Raider 2"
+	minor
 	name "Salvage: Raider"
 	description "Bring 145 crew and a Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source
 		not planet "Season's End"
 		not attributes "uninhabited"
+		attributes "dirt belt" "south"
 	destination "Season's End"
 	passengers 145
 	to offer
 		has "Storm Seeker Raider 1: failed"
 		or
-			not "Randomize Storm Seeker Raider 2"
+			and
+				not "Randomize Storm Seeker Raider 2"
+				random < 70
 			and
 				has "Randomize Storm Seeker Raider 2"
-				random < 40
+				random < 20
 	on offer
 		require "Jump Drive" 2
 		conversation
@@ -61,7 +66,6 @@ mission "Storm Seeker Raider 2"
 			scene "thumbnail/raider"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	on complete
-		require "Jump Drive" 2
 		give ship "Korath Raider" "Bloody End"
 		outfit "Jump Drive" -1
 		conversation
@@ -71,6 +75,7 @@ mission "Storm Seeker Raider 2"
 
 
 mission "Storm Seeker Shallow Pond"
+	minor
 	name "Salvage: Shallow Pond"
 	description "Bring 1 new crewmember and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	repeat
@@ -80,7 +85,9 @@ mission "Storm Seeker Shallow Pond"
 			has "Storm Seeker Raider 2: done"
 			has "Storm Seeker Raider 2: declined"
 		or
-			not "randomize Storm Seeker Shallow Pond"
+			and
+				not "randomize Storm Seeker Shallow Pond"
+				random < 70
 			and
 				has "randomize Storm Seeker Shallow Pond"
 				random < 30 - ( 3 * "Storm Seeker Shallow Pond: done" )
@@ -137,6 +144,7 @@ mission "Storm Seeker Shallow Pond Crew"
 	
 mission "Storm Seeker Skulduggery"
 	invisible
+	minor
 	source "Season's End"
 	destination "Earth"
 	to offer
@@ -167,10 +175,12 @@ mission "Storm Seeker Skulduggery"
 		
 mission "Storm Seeker Raid: Free Worlds"
 	invisible
+	minor
 	source
 		government "Free Worlds"
 	to offer
 		has "Storm Seeker Skulduggery: failed"
+		random < 50
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
@@ -206,17 +216,19 @@ mission "Storm Seeker Raid: Free Worlds"
 	on visit
 		dialog `There are still pirate ships in orbit. Rejoin the battle.`
 	on complete
-		"Storm Seeker Raid: Paradise: offered" --
+		clear "Storm Seeker Raid: Paradise: offered"
 		payment 100000
 		conversation
 			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
 
 mission "Storm Seeker Raid: Syndicate"
 	invisible
+	minor
 	source
 		government "Syndicate"
 	to offer
 		has "Storm Seeker Skulduggery: failed"
+		random < 50
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
@@ -266,18 +278,20 @@ mission "Storm Seeker Raid: Syndicate"
 	on visit
 		dialog `There are still pirate ships in orbit. Rejoin the battle.`
 	on complete
-		"Storm Seeker Raid: Deep: offered" --
+		clear "Storm Seeker Raid: Deep: offered"
 		payment 100000
 		conversation
 			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
 
 mission "Storm Seeker Raid: Deep"
 	invisible
+	minor
 	source
 		government "Republic"
 		attributes "deep"
 	to offer
 		has "Storm Seeker Skulduggery: failed"
+		random < 50
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
@@ -318,18 +332,20 @@ mission "Storm Seeker Raid: Deep"
 	on visit
 		dialog `There are still pirate ships in orbit. Rejoin the battle.`
 	on complete
-		"Storm Seeker Raid: North: offered" --
+		clear "Storm Seeker Raid: North: offered"
 		payment 100000
 		conversation
 			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
 			
 mission "Storm Seeker Raid: Paradise"
 	invisible
+	minor
 	source
 		government "Republic"
 		attributes "paradise"
 	to offer
 		has "Storm Seeker Skulduggery: failed"
+		random < 50
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
@@ -371,18 +387,20 @@ mission "Storm Seeker Raid: Paradise"
 	on visit
 		dialog `There are still pirate ships in orbit. Rejoin the battle.`
 	on complete
-		"Storm Seeker Raid: Syndicate: offered" --
+		clear "Storm Seeker Raid: Syndicate: offered"
 		payment 100000
 		conversation
 			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
 			
 mission "Storm Seeker Raid: North"
 	invisible
+	minor
 	source
 		government "Republic"
 		attributes "north"
 	to offer
 		has "Storm Seeker Skulduggery: failed"
+		random < 50
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<origin> is being raided by a pirate fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!" The authorities of <origin> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
@@ -439,7 +457,7 @@ mission "Storm Seeker Raid: North"
 	on visit
 		dialog `There are still pirate ships in orbit. Rejoin the battle.`
 	on complete
-		"Storm Seeker Raid: Free Worlds: offered" --
+		clear "Storm Seeker Raid: Free Worlds: offered"
 		payment 100000
 		conversation
 			`The government of <origin> pays you <payment> for eliminating the pirate threat. Unfortunately, you suspect the ringleader escaped. In fact you're certain that Alphas are behind this attack.`
@@ -475,12 +493,12 @@ mission "Storm Seeker Counter Attack 2"
 			`As soon as you arrive on Luna, Navy Intelligence escorts you to the meeting. There, you and a small group of other elite captains are given a debriefing regarding the raids which have taken place and the Alpha ship, "Rolling Thunder," which was present during all of these attacks. Each of the captains present assisted in defending against these raids. While you feel a sense of pride in defending more planets than the other captains, you note that there were more planets attacked that you were not involved in defending. The captain who succesfully eliminates this threat will be granted an honorary Navy License. You are all dismissed.`
 				accept
 	on accept
-		"Storm Seeker Raid: North: offered" --
-		"Storm Seeker Raid: Paradise: offered" --
-		"Storm Seeker Raid: Deep: offered" --
-		"Storm Seeker Raid: Syndicate: offered" --
-		"Storm Seeker Raid: Free Worlds: offered" --
-	
+		clear "Storm Seeker Raid: North: offered"
+		clear "Storm Seeker Raid: Paradise: offered"
+		clear "Storm Seeker Raid: Deep: offered"
+		clear "Storm Seeker Raid: Syndicate: offered"
+		clear "Storm Seeker Raid: Free Worlds: offered"
+
 	npc kill
 		government "Storm Seekers"
 		system "Almaaz"
@@ -505,7 +523,7 @@ mission "Storm Seeker Counter Attack 2"
 		government "Storm Seekers"
 		system "Alcyone"
 		personality marked disables staying waiting surveillance
-		ship "Korath Raider" "Berserker"
+		ship "Korath Raider" "Berserker Rage"
 	npc kill
 		government "Storm Seekers"
 		system "Algenib"
@@ -736,6 +754,7 @@ mission "Storm Seeker Reward Expires"
 
 
 mission "Storm Seeker Epilogue: Spring Leaf"
+	minor
 	name "Salvage: Spring Leaf"
 	description "Bring 4 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
@@ -808,6 +827,7 @@ mission "Storm Seeker Epilogue: Spring Leaf Crew"
 
 
 mission "Storm Seeker Epilogue: Winter Leaf"
+	minor
 	name "Salvage: Winter Leaf"
 	description "Bring 12 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
@@ -875,6 +895,7 @@ mission "Storm Seeker Epilogue: Winter Leaf Crew"
 
 
 mission "Storm Seeker Epilogue: Storm Seeker"
+	minor
 	name "Salvage: Storm Seeker"
 	description "Bring 18 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
@@ -930,6 +951,7 @@ mission "Storm Seeker Epilogue: Storm Seeker Crew"
 
 
 mission "Storm Seeker Epilogue: Tornado"
+	minor
 	name "Salvage: Tornado"
 	description "Bring 41 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
@@ -999,6 +1021,7 @@ mission "Storm Seeker Epilogue: Tornado Crew"
 
 
 mission "Storm Seeker Epilogue: Tsunami"
+	minor
 	name "Salvage: Tsunami"
 	description "Bring 152 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
@@ -1071,6 +1094,7 @@ mission "Storm Seeker Epilogue: Tsunami Crew"
 
 mission "Storm Seeker Epilogue: Season's End"
 	invisible
+	minor
 	source "Season's End"
 	repeat
 	to offer
@@ -1085,13 +1109,16 @@ mission "Storm Seeker Epilogue: Season's End"
 
 mission "Storm Seeker Epilogue: Wanderer Shipyards"
 	invisible
+	minor
 	source
 		government "Wanderer"
 	to offer
 		not "Cartography: Wanderer Shipyards: done"
 		has "Storm Seeker Epilogue: Season's End: failed"
 		or
-			not "Randomize Storm Seeker Epilogue: Wanderer Shipyards"
+			and
+				not "Randomize Storm Seeker Epilogue: Wanderer Shipyards"
+				random < 70
 			and
 				has "Randomize Storm Seeker Epilogue: Wanderer Shipyards"
 				random < 20

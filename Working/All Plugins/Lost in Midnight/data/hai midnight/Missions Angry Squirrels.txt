@@ -25,6 +25,7 @@
 
 
 mission "Angry Squirrels: Laser Rifle Deal"
+	minor
 	name "Unfettered Laser Rifles"
 	description "Deliver 100 Laser Rifles to your client on <planet>. Payment is <payment>." 
 	source
@@ -52,7 +53,7 @@ mission "Angry Squirrels: Laser Rifle Deal"
 		dialog `The Unfettered are grateful for your delivery of 100 Laser Rifles and pay you the agreed amount of <payment>.`
 		
 mission "Angry Squirrels: Tuning Rifle Deal"
-	repeat
+	minor
 	name "Unfettered Tuning Rifles"
 	description "Deliver 100 Tuning Rifles to your client on <planet>. Payment is <payment>." 
 	source
@@ -81,7 +82,7 @@ mission "Angry Squirrels: Tuning Rifle Deal"
 		dialog `The Unfettered are grateful for your delivery of 100 Tuning Rifles and pay you the agreed amount of <payment>.`
 
 mission "Angry Squirrels: Korath Rifle Deal"
-	repeat
+	minor
 	name "Unfettered Korath Rifles"
 	description "Deliver 100 Korath Repeater Rifles to your client on <planet>. Payment is <payment>." 
 	source
@@ -110,6 +111,7 @@ mission "Angry Squirrels: Korath Rifle Deal"
 		dialog `The Unfettered are grateful for your delivery of 100 Korath Repeater Rifles and pay you the agreed amount of <payment>.`
 
 mission "Angry Squirrels: Confrontation Gear Deal"
+	minor
 	name "Unfettered Confrontation Gear"
 	description "Deliver 10 sets of Enforcer Confrontation Gear to your client on <planet>. Payment is <payment>." 
 	source
@@ -138,6 +140,7 @@ mission "Angry Squirrels: Confrontation Gear Deal"
 		dialog `The Unfettered are grateful for your delivery of 20 sets of Enforcer Confrontation Gear and pay you the agreed amount of <payment>.`
 
 mission "Angry Squirrels: Fragmentation Grenade Deal"
+	minor
 	name "Unfettered Fragmentation Grenades"
 	description "Deliver 100 sets of Fragmentation Grenades to your client on <planet>. Payment is <payment>." 
 	source
@@ -205,6 +208,7 @@ event "unfettered weapon collectors"
 
 
 mission "Angry Squirrels: Nerve Gas Smuggling"
+	minor
 	name "Unfettered Nerve Gas Smuggling"
 	description "Deliver 100 sets of illegal Nerve Gas to your client on <planet>. Payment is <payment>." 
 	source
@@ -248,6 +252,7 @@ mission "Angry Squirrels: Nerve Gas Exposed"
 	to offer
 		has "Unfettered Arms Dealer" > 29
 		has "Unfettered Nerve Gas Smuggling: done"
+		not "event: angry squirrels"
 		random < 5
 	on offer
 		conversation
@@ -269,6 +274,7 @@ mission "Angry Squirrels: Mass Smuggling Exposed"
 		not planet "Darkwaste"
 	to offer
 		has "Unfettered Arms Dealer" > 99
+		not "event: angry squirrels"
 		random < 10
 	on offer
 		conversation
@@ -563,6 +569,7 @@ mission "Angry Squirrels: The Monkey King"
 
 
 mission "Angry Squirrels: Journey to the Southwest"
+	minor
 	name "Journey to the Southwest"
 	description "Guide the Unfettered pilgrims to <destination>. Try to avoid battles along the way."
 	source
@@ -574,10 +581,12 @@ mission "Angry Squirrels: Journey to the Southwest"
 		"combat rating" > 2981
 		"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" >= 10
 		or
-			not "Randomize Angry Squirrels: Journey to the Southwest"
+			and
+				not "Randomize Angry Squirrels: Journey to the Southwest"
+				random < 70
 			and
 				has "Randomize Angry Squirrels: Journey to the Southwest"
-				random < 20
+				random < 15
 	on offer
 		conversation
 			`When you get back to your ship, you find that a crowd has formed at the landing pad. Before you can ask what is going on, one of the Unfettered points at you and proclaims, "The Monkey King has arrived!"`
@@ -1256,6 +1265,7 @@ mission "Ancestral Lands: Independent Raid"
 
 mission "Ancestral Lands: Nova Firefly Swarm"
 	repeat
+	minor
 	name "Nova Firefly Swarm"
 	description "A large swarm of Nova Fireflies has entered <system>. Drive them off then land on <planet> for payment."
 	source
@@ -1264,10 +1274,12 @@ mission "Ancestral Lands: Nova Firefly Swarm"
 	to offer
 		has "event: Completed Journey to the Southwest"
 		or
-			not "Randomize Ancestral Lands: Nova Firefly Swarm"
+			and
+				not "Randomize Ancestral Lands: Nova Firefly Swarm"
+				random < 70
 			and
 				has "Randomize Ancestral Lands: Nova Firefly Swarm"
-				random < 20
+				random < 5
 	on offer
 		conversation
 			`Suddenly you hear raised voices and shouting outside: "We are under attack! A swarm of Nova Fireflies has entered the system! We need every combat-worthy ship to join the defenses!" The Unfettered will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`

@@ -441,6 +441,7 @@ mission "Gathering Specimens: Star Gazer Lost"
 
 
 mission "Gathering Specimens: Alexandria"
+	minor
 	name "Gathering Specimens: Alexandria"
 	description "Search the galaxy for interstellar life. Bring tissue samples back to <origin>."
 	source Alexandria
@@ -449,7 +450,9 @@ mission "Gathering Specimens: Alexandria"
 			"Transport scientists: done" > 5
 			has "Deep: Project Hawking: done"
 		or
-			not "Randomize Gathering Specimens: Alexandria"
+			and
+				not "Randomize Gathering Specimens: Alexandria"
+				random < 70
 			and
 				has "Randomize Gathering Specimens: Alexandria"
 				random < 25
@@ -459,13 +462,13 @@ mission "Gathering Specimens: Alexandria"
 		conversation
 			branch repeat
 				has "Gathering Specimens: Alexandria: failed"
-				
+
 			`A group of scientists approach you. "Captain <first> <last>? We've been told that you're a reliable captain who travels beyond The Deep. If that's true, would be interested in helping us with our research?"`
 			choice
 				`	"What sort of help do you need?"`
 			`	"Nothing too hard. Just keep an eye out for any interstellar life forms. If you find one, bring us back a tissue sample. We'll make sure you are compensated."`
 				goto end
-				
+
 			label repeat
 			`	The scientists you previously delivered specimens to are requesting more.`
 
@@ -680,12 +683,14 @@ mission "Gathering Specimens: Alexandria Star Gazer"
 
 
 mission "Gathering Specimens: Conservatory"
+	minor
 	name "Gathering Specimens: Conservatory"
 	description "Search the galaxy for interstellar life. Bring tissue samples back to <origin>."
 	source Winter
 	to offer
 		has "event: fw conservatory founded"
 		has "free worlds plot completed"
+		random < 70
 	to complete
 		never
 	on offer
@@ -1004,11 +1009,13 @@ mission "Gathering Specimens: Conservatory Conclusion 4"
 
 
 mission "Gathering Specimens: Remnant"
+	minor
 	name "Gathering Specimens: Remnant"
 	description "Search the galaxy for interstellar life. Bring tissue samples back to <origin>."
 	source "Viminal"
 	to offer
 		has "Remnant: Face to Maw 2: done"
+		random < 70
 	to complete
 		never
 	on offer
@@ -1222,11 +1229,13 @@ mission "Gathering Specimens: Remnant Research"
 
 
 mission "Gathering Specimens: Remnant B"
+	minor
 	name "Gathering Specimens: Remnant"
 	description "Search the galaxy for interstellar life. Bring tissue samples back to <origin>."
 	source "Caelian"
 	to offer
 		has "Remnant: Face to Maw 2B: done"
+		random < 70
 	to complete
 		never
 	on offer
@@ -1500,6 +1509,7 @@ ship "Raptor Prototype" "Raptor Prototype (unarmed)"
 
 
 mission "Gathering Specimens: Wanderer Ionic Research 1"
+	minor
 	name "Gathering Specimens: Vara K'chrai"
 	description "The Wanderers need a tissue sample from an Ionic Leech. Once you have it, bring it back to <destination>."
 	source
@@ -1509,6 +1519,7 @@ mission "Gathering Specimens: Wanderer Ionic Research 1"
 		has "Gathering Specimens: Ionic Leech: active"
 		has "event: wanderers: tempest mass production"
 		"reputation: Wanderer" >= 0.01
+		random < 70
 	on offer
 		conversation
 			`You receive a message from Sobari Tele'ek, the Wanderer military commander. "Captain <first> <last>, are you familiar with a [creature, animal] called an 'Ionic [Leech, Bloodworm]'? Ambassador Sayari mentioned them during a [meeting, gathering] the other day."`
@@ -1517,7 +1528,7 @@ mission "Gathering Specimens: Wanderer Ionic Research 1"
 			`	"If you find one again, bring us back a [tissue, meat] sample. We hope that [studying, investigating] it will give us a [better, improved] [idea, understanding] of the Hai's ionic weapons."`
 				accept
 	on complete
-		log "Submitted a Gazer Specimen to Wanderer researchers."
+		log "Submitted a Leech Specimen to Wanderer researchers."
 		outfit "Leech Specimen" -1
 		clear "Gathering Specimens: Ionic Leech: offered"
 		event "Storm Seeker Reborn" 30

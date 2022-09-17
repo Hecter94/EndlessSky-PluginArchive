@@ -27,6 +27,7 @@ outfit "Dream Crystal"
 
 mission "Dream Crystal 1A"
 	invisible
+	minor
 	source
 		attributes "pirate"
 		attributes "south pirate" "south"
@@ -42,6 +43,7 @@ mission "Dream Crystal 1A"
 
 mission "Dream Crystal 1B"
 	invisible
+	minor
 	source
 		attributes "pirate"
 		attributes "core pirate" "core"
@@ -57,6 +59,7 @@ mission "Dream Crystal 1B"
 
 mission "Dream Crystal 1C"
 	invisible
+	minor
 	source
 		attributes "pirate"
 		attributes "north pirate" "north"
@@ -71,6 +74,7 @@ mission "Dream Crystal 1C"
 				decline
 
 mission "Dream Crystal 2"
+	minor
 	name "Mr. Sandman"
 	description "Take a Pug Peacekeeping Staff to <destination>. Someone there named Mr. Sandman will exchange a Dream Crystal for it."
 	source
@@ -81,6 +85,7 @@ mission "Dream Crystal 2"
 		has "Dream Crystal 1A: declined"
 		has "Dream Crystal 1B: declined"
 		has "Dream Crystal 1C: declined"
+		random < 70
 	on offer
 		require "Pug Peacekeeping Staff"
 		conversation
@@ -130,6 +135,7 @@ outfitter "Dream Crystal"
 	"Dream Crystal"
 	
 mission "Dream Crystal 4"
+	minor
 	name "Escort Mr. Sandman"
 	description "Escort the <npc> to <destination>."
 	source
@@ -164,6 +170,7 @@ mission "Dream Crystal 4"
 				"Pug Zibruka"
 	on complete
 		clear "Dream Crystal 4: offered"
+		clear "deferred Dream Crystal 4"
 		outfit "Dream Crystal" 1
 		conversation
 			scene "outfit/dream crystal"
@@ -231,7 +238,7 @@ ship "Hallucination" "Hallucination (wanderer)"
 
 mission "Dream Crystal Hallucination"
 	invisible
-	landing
+	minor
 	to offer
 		has "Dream Crystal 3: failed"
 		random < 5
@@ -239,10 +246,10 @@ mission "Dream Crystal Hallucination"
 	on offer
 		require "Dream Crystal"
 		conversation
-			`During your brief stop on <origin>, it occurs to you that you haven't tried using the Dream Crystal to visit a "higher plane". Give it a try?`
+			`It occurs to you that you haven't tried using the Dream Crystal to visit a "higher plane". Give it a try?`
 			choice
 				`	(No, I've seen what it does to others.)`
-					defer
+					decline
 				`	(Sure, sounds like fun!)`
 			`	The room begins to spin, and strange things happen...`
 				launch

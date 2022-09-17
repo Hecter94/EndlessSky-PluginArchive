@@ -13,6 +13,7 @@
 
 mission "Hunting Beelzebub: Modified Kestrel 1"
 	passengers 1
+	minor
 	name "Beelzebub: Modified Kestrel"
 	description "Lieutenant Paris believes the Dreams of Darkness may be one of Beelzebub's ships. Search for the ship near <system>. Then transport Paris to <destination>."
 	source
@@ -44,7 +45,7 @@ mission "Hunting Beelzebub: Modified Kestrel 1"
 			has "event: kestrel available: more weapons"
 			has "event: kestrel available: more engines"
 			has "event: kestrel available: more shields"
-		random < 25 - "ignored paris"
+		random < 30 - "ignored paris"
 	on offer
 		conversation
 			`While walking through the spaceport, you spot someone who looks like Liutenant Paris of Deep Security. But he's not wearing a Deep Security uniform. The man hasn't noticed you and dips into a bar.`
@@ -185,6 +186,7 @@ mission "Hunting Beelzebub: Modified Kestrel 2"
 
 
 mission "Hunting Beelzebub: Modified Bactrian 1"
+	minor
 	name "Beelzebub: Modified Bactrian"
 	description "Lieutenant Paris believes the Cosmic Horror may be one of Beelzebub's ships. Search for the ship near Ultima Thule. Then transport Paris to <planet>."
 	passengers 1
@@ -208,7 +210,7 @@ mission "Hunting Beelzebub: Modified Bactrian 1"
 		or
 			has "defeated scar's legion"
 			has "Pirate Troubles [4]: done"
-		random < 25 - "ignored paris"
+		random < 30 - "ignored paris"
 	on offer
 		conversation
 			`While walking through the spaceport, you spot someone who looks like Liutenant Paris of Deep Security. But he's not wearing a Deep Security uniform. The man hasn't noticed you and dips into a bar.`
@@ -491,16 +493,10 @@ phrase "core pirate beelzebub rumor"
 	
 mission "Hunting Beelzebub: Deadman's Cove Rumors"
 	invisible
-	repeat
 	source "Deadman's Cove"
 	to offer
 		has "Hunting Beelzebub: Paris Resignation: declined"
 		not "Hunting Beelzebub: Stormhold Message: done"
-		or
-			not "Hunting Beelzebub: Deadman's Cove Rumors: offered"
-			and
-				has "Hunting Beelzebub: Deadman's Cove Rumors: offered"
-				random < 5
 	on offer
 		dialog phrase "core pirate beelzebub rumor"
 	npc
@@ -511,16 +507,10 @@ mission "Hunting Beelzebub: Deadman's Cove Rumors"
 
 mission "Hunting Beelzebub: Buccaneer Bay Rumors"
 	invisible
-	repeat
 	source "Buccaneer Bay"
 	to offer
 		has "Hunting Beelzebub: Paris Resignation: declined"
 		not "Hunting Beelzebub: Stormhold Message: done"
-		or
-			not "Hunting Beelzebub: Buccaneer Bay Rumors: offered"
-			and
-				has "Hunting Beelzebub: Buccaneer Bay Rumors: offered"
-				random < 5
 	on offer
 		dialog phrase "core pirate beelzebub rumor"
 	npc
@@ -531,16 +521,10 @@ mission "Hunting Beelzebub: Buccaneer Bay Rumors"
 
 mission "Hunting Beelzebub: Covert Rumors"
 	invisible
-	repeat
 	source "Covert"
 	to offer
 		has "Hunting Beelzebub: Paris Resignation: declined"
 		not "Hunting Beelzebub: Stormhold Message: done"
-		or
-			not "Hunting Beelzebub: Covert Rumors: offered"
-			and
-				has "Hunting Beelzebub: Covert Rumors: offered"
-				random < 5
 	on offer
 		dialog phrase "core pirate beelzebub rumor"
 	npc
@@ -558,6 +542,12 @@ mission "Hunting Beelzebub: Stormhold Message"
 		has "Hunting Beelzebub: Deadman's Cove Rumors: offered"
 		has "Hunting Beelzebub: Buccaneer Bay Rumors: offered"
 		has "Hunting Beelzebub: Covert Rumors: offered"
+		or
+			and
+				not "Randomize Hunting Beelzebub: Stormhold Message"
+			and
+				has "Randomize Hunting Beelzebub: Stormhold Message"
+				random < 25
 	on offer
 		payment -100
 		fail "Hunting Beelzebub: Deadman's Cove Rumors"
@@ -572,6 +562,8 @@ mission "Hunting Beelzebub: Stormhold Message"
 			scene "outfit/brig"
 			`	The note says, "We caught your friend from The Deep snooping around on the wrong side of the galaxy. He's on <destination> if you want him back. Convince him to head west if he truly seeks Beelzebub. This information is free of charge: consider it payment for a job to  eliminate a potential rival." The note gives some details about where to go after landing. It is signed only with a stylized image of a reptilian eye logo.`
 				accept
+	on defer
+		set "Randomize Hunting Beelzebub: Stormhold Message"
 	npc
 		government "Korath"
 		system "Alcyone"
@@ -655,6 +647,7 @@ phrase "dirt belt rumors of beelzebub"
 mission "Hunting Beelzebub: Dirt Belt Rumors"
 	invisible
 	repeat
+	minor
 	source
 		government "Pirate"
 		attributes "dirt belt pirate" "dirt belt"
@@ -666,7 +659,9 @@ mission "Hunting Beelzebub: Dirt Belt Rumors"
 		has "Hunting Beelzebub: Rescue Paris: done"
 		not "Hunting Beelzebub: Lares Camping 1: done"
 		or
-			not "dirt belt beelzebub rumors"
+			and
+				not "dirt belt beelzebub rumors"
+				random < 70
 			and
 				has "dirt belt beelzebub rumors"
 				random < 20 - "dirt belt beelzebub rumors"
@@ -678,6 +673,7 @@ mission "Hunting Beelzebub: Dirt Belt Rumors"
 
 
 mission "Hunting Beelzebub: Lares Camping 1"
+	minor
 	name "Hunting Beelzebub: Lares"
 	description "Beelzebub might show up on <destination>. Go there and wait for him."
 	source
@@ -709,7 +705,7 @@ mission "Hunting Beelzebub: Lares Camping 2"
 	to offer
 		has "Hunting Beelzebub: Lares Camping 1: done"
 	on offer
-		dialog `You've set up camp on Lares but see no sign of Beelzebub.`
+		dialog `You've set up camp on Lares but see no sign of Beelzebub...`
 	on accept
 		fail
 		

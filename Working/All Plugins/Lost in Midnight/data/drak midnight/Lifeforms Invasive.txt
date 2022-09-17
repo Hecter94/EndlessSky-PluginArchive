@@ -316,6 +316,8 @@ mission "First Contact: Star Gazer"
 	landing
 	name "???"
 	description "???"
+	source
+		government "Wanderer" "Pug (Wanderer)"
 	waypoint "Watcher's Nest"
 	to offer
 		has "event: wanderers: the eye opens"
@@ -324,13 +326,13 @@ mission "First Contact: Star Gazer"
 	on enter "Watcher's Nest"
 		event "Star Gazers In Wanderer Space"
 		dialog `A strange creature is lurking in this system. It watches you silently with multiple eyes.`
-	
+
 	npc
 		government "Invasive Lifeform (Passive)"
 		system "Watcher's Nest"
 		personality waiting staying opportunistic surveillance mute
 		ship "Star Gazer"
-	
+
 event "Reveal Watcher's Nest"
 	system "Watcher's Nest"
 		remove hidden
@@ -339,7 +341,7 @@ event "Star Gazers In Wanderer Space"
 	system "Watcher's Nest"
 		add fleet "Star Gazer Passive" 8000
 	system "Pug Iyik"
-		add fleet "Star Gazer Passive" 16000	
+		add fleet "Star Gazer Passive" 16000
 	system Ap'arak
 		add fleet "Star Gazer Passive" 20000
 	system Aya'k'k
@@ -383,3 +385,26 @@ event "Star Gazers In Wanderer Space"
 
 
 
+mission "Gaze Through The Eye"
+	landing
+	invisible
+	source
+		government "Wanderer"
+	waypoint "Sko'karak"
+	waypoint "Sabriset"
+	to offer
+		has "event: Star Gazers In Wanderer Space"
+	on waypoint
+		conversation
+			scene "ship/star gazer/star gazer"
+			`From within the swirling vortex of the Eye, something gazes back. It is silently watching. It is quietly observing. The Star Gazer studies you with its eyes and other senses...`
+	npc
+		government "Invasive Lifeform (Passive)"
+		system "Sko'karak"
+		personality waiting staying surveillance mute
+		ship "Star Gazer"
+	npc
+		government "Invasive Lifeform (Passive)"
+		system "Sabriset"
+		personality waiting staying surveillance mute
+		ship "Star Gazer"

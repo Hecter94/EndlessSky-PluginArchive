@@ -18,6 +18,7 @@
 
 
 mission "Grudge Fight 1"
+	minor
 	name "Fight at Hintar"
 	description `Head as quickly as you can to the Hintar system, where you will duel with a small Navy vessel named the Majestic. After fighting, go to <destination> to follow up.`
 	deadline 5 1
@@ -26,7 +27,6 @@ mission "Grudge Fight 1"
 		government "Republic" "Free Worlds" "Syndicate"
 	waypoint "Hintar"
 	destination "Tundra"
-	
 	to offer
 		"combat rating" > 20
 		"combat rating" <= 400
@@ -34,7 +34,7 @@ mission "Grudge Fight 1"
 		not "ships: Heavy Warship"
 		not "ships: Heavy Freighter"
 		"ships: Light Warship" + "ships: Light Freighter" + "ships: Transport" + "ships: Interceptor" == 1
-	
+		random < 70
 	on offer
 		conversation
 			`While you are walking around the spaceport, you notice a woman in rugged clothing looking intently at you. "Oh, I'm sorry," she responds in a apologetic voice. After a moment of hesitation, she asks, "Are you Captain <last>?"`
@@ -100,6 +100,7 @@ mission "Grudge Fight 1"
 			`	You head to the local authorities, and show them your combat logs of your fight against the Mockingbird. They pay you <payment> for your effort.`
 			
 mission "Grudge Fight 2"
+	minor
 	name "Arcturus Disaster"
 	description `<destination> is under attack by pirates. Assist the locals by delivering <commodity> to the planet as soon as possible.`
 	source
@@ -109,6 +110,7 @@ mission "Grudge Fight 2"
 	cargo "relief supplies" 1
 	to offer
 		has "Grudge Fight 1: done"
+		random < 70
 	on offer
 		conversation
 			`You are approached by a dock worker. "Are you Captain <last>?" You nod. "Would you be able to assist us? A sizable gang of pirates has occupied <system> and raided the spaceport. A fleet is on its way to eliminate the pirates, but reports from the planet indicate that the spaceport of <planet> is in dire need of supplies. Several spaceport buildings were badly damaged and everything in the storehouses was either stolen or destroyed. We need a ship to bring <cargo> to them as soon as possible, but I have yet to find any available ships willing to do the job. Would you deliver the supplies for us, Captain?"`
@@ -117,7 +119,6 @@ mission "Grudge Fight 2"
 					accept
 				`	"Sorry, but I'm not traveling in that direction."`
 					decline
-
 	on abort
 		"reputation: Independent (Killable)" >?= 10
 	on fail
@@ -158,6 +159,7 @@ mission "Grudge Fight 2"
 			`	You head to the local authorities, and show them your combat logs of your fight against the Swift Vengeance. They pay you <payment> for your effort.`
 
 mission "Grudge Fight 3"
+	minor
 	name "Espionage"
 	description "The Goldstrike is scheduled to pass through the <waypoints> system. Locate it and make detailed scans of its cargo, which are of considerable interest to your employer on origin; proceed there for payment after retrieving the data."
 	source
@@ -167,6 +169,7 @@ mission "Grudge Fight 3"
 	waypoint Muphrid
 	to offer
 		has "Grudge Fight 1: done"
+		random < 70
 	on offer
 		conversation
 			`A nervous man in a suit approaches you as you disembark from your ship. "Excuse me, are you Captain <last>?."`
@@ -283,6 +286,7 @@ ship "Marauder Hauler" "Relentless Grudge"
 
 
 mission "Grudge Fight 4"
+	minor
 	name "Wanted pirate near Ascella"
 	description "A light pirate warship named the Ecstasy has been attacking merchants near the Ascella system. Destroy it and visit <planet> for payment."
 	source
@@ -294,6 +298,7 @@ mission "Grudge Fight 4"
 		or
 			has "Grudge Fight 2: done"
 			has "Grudge Fight 3: done"
+		random < 70
 	on offer
 		conversation
 			`A small group of bounty hunters is waiting for you when you disembark. One of them speaks, "Captain <first> <last>, right? According to the register, this is the <ship>. Looks good enough." The others nod in agreement.`
@@ -354,6 +359,7 @@ mission "Grudge Fight 4"
 
 
 mission "Grudge Fight 5"
+	minor
 	name "Prototype Ship Testing"
 	description "Disable the prototype ship in Nocte, collect test data for Luna engineers by scanning its cargo, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation."
 	source
@@ -368,7 +374,9 @@ mission "Grudge Fight 5"
 			has "Grudge Bounty Hunting: done"
 			has "Grudge Brothers: done"
 		or
-			not "randomize Grudge Fight 5"
+			and
+				not "randomize Grudge Fight 5"
+				random < 70
 			and
 				has "randomize Grudge Fight 5"
 				random < 40
@@ -551,7 +559,17 @@ event "Grudge Legacy"
 			"Marauder Hauler (weapons)"
 			"Marauder Raven"
 			"Marauder Quicksilver"
-
+	fleet "Poachers"
+		add variant 1
+			"Marauder Hauler"
+		add variant 1
+			"Marauder Hauler B"
+		add variant 1
+			"Marauder Hauler C"
+		add variant 1
+			"Marauder Hauler (engines)"
+		add variant 1
+			"Marauder Hauler (weapons)"
 
 
 # Alternate paths to the main Grudge Fight mission chain:
@@ -592,8 +610,9 @@ mission "Grudge Bounty Hunting"
 
 
 mission "Grudge Brothers"
-	name "Package to <planet>"
+	minor
 	deadline
+	name "Package to <planet>"
 	description "Deliver a package to <destination>."
 	source
 		near "Rutilicus" 1 5
@@ -611,7 +630,9 @@ mission "Grudge Brothers"
 				has "Grudge Fight 2: done"
 				has "Grudge Fight 3: declined"
 		or
-			not "event: randomize Grudge Brothers"
+			and
+				not "event: randomize Grudge Brothers"
+				random < 70
 			and
 				has "randomize Grudge Brothers"
 				random < 20
@@ -619,8 +640,8 @@ mission "Grudge Brothers"
 		"reputation: Independent (Killable)" >?= 10
 		dialog phrase "fake human package offer"
 	on decline
-		"Grudge Brothers: offered" --
-		"randomize Grudge Brothers" ++
+		clear "Grudge Brothers: offered"
+		set "randomize Grudge Brothers"
 	on enter "Rutilicus"
 		"reputation: Independent (Killable)" <?= -1000
 		conversation
@@ -731,7 +752,7 @@ mission "Grudge Brothers"
 mission "Grudge Hunters"
 	landing
 	invisible
-	repeat 3
+	repeat
 	source
 		attributes "dirt belt"
 	to offer
@@ -813,7 +834,7 @@ mission "Grudge Hammer"
 	npc
 		system Hintar
 		government "Independent (Killable)"
-		personality plunders entering staying
+		personality plunders waiting staying unconstrained
 			confusion 20
 		fleet
 			names "pirate"
@@ -843,68 +864,30 @@ mission "Grudge Hammer"
 
 
 mission "Grudge Smuggler"
+	job
 	name "Disguised smuggler near <system>"
 	description "A low-end drug smuggler named the Ecstasy is posing as a merchant ship near the <system> system. Select merchant ships until you find a ship with a matching name and scan its cargo for illegal substances. Once you have confirmed the target, destroy it and return to <planet>. Payment is 250,000 credits."
-	job
 	to offer
 		has "Grudge Fight 4: declined"
 		or
 			has "Grudge Fight 5: done"
 			has "Grudge Hammer: done"
+		random < 70
 	source
 		government "Republic"
 		attributes "paradise"
+	on enter
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	on enter Castor
-		conversation
-			`You receive an encrypted message from the Ecstasy:`
-			`	"Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please accept this token of goodwill and cease your pursuit."`
-			choice
-				`	(Accept the bribe.)`
-				`	(Refuse the bribe.)`
-					accept
-			`	25,000 credits is deposited to your account.`
-				decline
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	on enter Miaplacidus
-		conversation
-			`You receive an encrypted message from the Ecstasy:`
-			`	"Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please accept this token of goodwill and cease your pursuit."`
-			choice
-				`	(Accept the bribe.)`
-				`	(Refuse the bribe.)`
-					accept
-			`	25,000 credits is deposited to your account.`
-				decline
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	on enter Phurad
-		conversation
-			`You receive an encrypted message from the Ecstasy:`
-			`	"Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please accept this token of goodwill and cease your pursuit."`
-			choice
-				`	(Accept the bribe.)`
-				`	(Refuse the bribe.)`
-					accept
-			`	25,000 credits is deposited to your account.`
-				decline
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	on enter Talita
-		conversation
-			`You receive an encrypted message from the Ecstasy:`
-			`	"Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please accept this token of goodwill and cease your pursuit."`
-			choice
-				`	(Accept the bribe.)`
-				`	(Refuse the bribe.)`
-					accept
-			`	25,000 credits is deposited to your account.`
-				decline
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	on enter Wazn
-		conversation
-			`You receive an encrypted message from the Ecstasy:`
-			`	"Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please accept this token of goodwill and cease your pursuit."`
-			choice
-				`	(Accept the bribe.)`
-				`	(Refuse the bribe.)`
-					accept
-			`	25,000 credits is deposited to your account.`
-				decline
-
+		dialog `You receive an encrypted message from the Ecstasy: "Greetings Captain <last>. I am Dandy Grudge. With my uncle gone, I no longer have any interest in pursuing the Grudge family's revenge order. Please abort your pursuit and I will reward you with a token of goodwill."`
 	npc save
 		government "Merchant"
 		personality launching marked uninterested appeasing
@@ -915,27 +898,33 @@ mission "Grudge Smuggler"
 		ship "Argosy" "Ecstisy"
 	npc save
 		government "Merchant"
-		personality entering marked uninterested appeasing
+		personality waiting marked uninterested appeasing
 		ship "Argosy" "Ecstosy"
 	npc save
 		government "Merchant"
-		personality entering marked uninterested appeasing
+		personality waiting marked uninterested appeasing
 		ship "Argosy" "Ecstusy"
+	npc save
+		government "Merchant"
+		personality entering marked uninterested appeasing
+		ship "Argosy" "Ecstysy"
 	on visit
 		dialog phrase "generic bounty hunting on visit"
 	npc "scan cargo" kill
 		government "Bounty (Disguised)"
-		personality waiting fleeing marked uninterested
+		personality entering fleeing marked uninterested
 			confusion 20
 		fleet "Ecstasy"
 		dialog "You managed to scan the <npc>'s cargo and confirmed the presence of illegal substances before eliminating it. You can claim the bounty payment by returning to <destination>."
-	on decline
+	on abort
 		payment 25000
 		"reputation: Pirate" ++
+		dialog `A payment of 25,000 credits is deposited into your account.`
 	on fail
 		dialog "MISSION FAILED: You either failed to scan the target to confirm the presence of illegal substances or you destroyed the wrong ship with a similar name. If life were a game, you could load a previous save file and try again."
 	on complete
 		payment 250000
+		log `Collected the bounty on Dandy Grudge, captain of a low-end drug smuggler called the Ecstasy. Dandy tried to bribe me to abort my hunt, but I refused his offer.`
 		dialog phrase "generic bounty hunting payment dialog"
 
 ship "Modified Argosy" "Modified Argosy (Drug Smuggler)"
@@ -961,8 +950,8 @@ phrase "ecstasy"
 fleet "Ecstasy"
 	government "Bounty (Disguised)"
 	names "ecstasy"
-	cargo 3
-	commodities "hallucinogens" "narcotics" "space weed"
+	cargo 2
+	commodities "Illegal Substances" "Highly Illegal Substances"
 	personality
 		waiting fleeing marked uninterested 
 		confusion 20
@@ -972,6 +961,7 @@ fleet "Ecstasy"
 
 
 mission "Grudge Mama"
+	minor
 	name "Passenger transport to <planet>"
 	description "Bring <fare> to <destination>. Payment is <payment>."
 	source
@@ -981,7 +971,9 @@ mission "Grudge Mama"
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
 	to offer
 		or
-			not "randomize Grudge Mama"
+			and
+				not "randomize Grudge Mama"
+				random < 70
 			and
 				has "randomize Grudge Mama"
 				random < 20
@@ -1019,27 +1011,30 @@ mission "Grudge Mama"
 				`	(Eat the soup.)`
 					goto dinner
 				`	(Jettison the soup.)`
-			`	You dump the soup out into space.`
-			`	"My goodness," she gasps. "In my day we didn't waste food." She retreats to her bunk area.`
-				accept
+					goto jettison
 			label dinner
 			`	You carefully take the bowl of soup and sample a sip. It's not bad. Soon you've slurped down the entire bowl. Mara watches you with a satisfied look on her face.`
 			`	"Did you enjoy your final meal?" she asks.`
 			choice
 				`	(???)`
-			`	Something seems wrong about that question. Before you can reply you notice your vision becoming blurry and feel light headed. Soon the room is spinning and you slump from your seat to the floor.`
 			scene "scene/scene-airlock"
+			`	Something seems wrong about that question. Before you can reply you notice your vision becoming blurry and feel light headed. Soon the room is spinning and you slump from your seat to the floor.`
+			``
 			`	"My trade name is Mama Grudge. This is payback for killing my family." You have a vague sense of being dragged somewhere on the floor. Suddenly, you hear a warning alarm. You must be in the air lock. The hatch is opening. You realize that she's jettisoning you out into space...`
 				die
-	
+			label jettison
+			`	You dump the soup out into space.`
+			`	"My goodness," she gasps. "In my day we didn't waste food." She retreats to her bunk area.`
+			`	Shaking your head, you settle in for the long flight...`
+
 	on enter "Arcturus"
 		conversation
-			`Mara seemed upset when you dumped the soup out into space. She's been quiet since then and you realize that maybe you did over react. When you check on her, she appears to be fast asleep. Perhaps this would be a good time to set the ship on auto pilot and get some shut-eye.`
+			`Mara seemed upset when you dumped the soup out into space. She's been quiet since then and you realize that maybe you did over react. When you check on her, she appears to be fast asleep. Perhaps this would be a good time to set the ship on auto pilot and get some shut-eye yourself.`
 			choice
 				`	(Go to sleep.)`
 					goto sleep
 				`	(Stay awake.)`
-					accept
+					goto awake
 			label sleep
 			`	You set the ship to auto pilot and settle in for a quick nap in the pilot's seat. If any pirates come along, the alarm should wake you.`
 			choice
@@ -1049,6 +1044,9 @@ mission "Grudge Mama"
 			scene "scene/scene-airlock"
 			`	"My trade name is Mama Grudge. This is payback for killing my family." You have a vague sense of being dragged somewhere on the floor. Suddenly, you hear a warning alarm. You must be in the air lock. The hatch is opening. You realize that she's jettisoning you out into space...`
 				die
+			label awake
+			`	Even though a nap is tempting, you decide to remain awake.`
+
 	on enter "Cebalrai"
 		conversation
 			`Mara seemed upset when you dumped the soup out into space. She's been quiet since then and you realize that maybe you did over react. When you check on her, she appears to be fast asleep. Perhaps this would be a good time to set the ship on auto pilot and get some shut-eye.`
@@ -1056,7 +1054,7 @@ mission "Grudge Mama"
 				`	(Go to sleep.)`
 					goto sleep
 				`	(Stay awake.)`
-					accept
+					goto awake
 			label sleep
 			`	You set the ship to auto pilot and settle in for a quick nap in the pilot's seat. If any pirates come along, the alarm should wake you.`
 			choice
@@ -1066,6 +1064,9 @@ mission "Grudge Mama"
 			`	"My trade name is Mama Grudge. This is payback for killing my family." She drops the can onto the floor. "Nerve gas," she says. "Soon, I'll get to see my family again."`
 			`	Both of you quickly succumb to the gas and die in agony.`
 				die
+			label awake
+			`	Even though a nap is tempting, you decide to remain awake.`
+
 	on enter "Holeb"
 		conversation
 			`Mara seemed upset when you dumped the soup out into space. She's been quiet since then and you realize that maybe you did over react. When you check on her, she appears to be fast asleep. Perhaps this would be a good time to set the ship on auto pilot and get some shut-eye.`
@@ -1073,7 +1074,7 @@ mission "Grudge Mama"
 				`	(Go to sleep.)`
 					goto sleep
 				`	(Stay awake.)`
-					accept
+					goto awake
 			label sleep
 			`	You set the ship to auto pilot and settle in for a quick nap in the pilot's seat. If any pirates come along, the alarm should wake you.`
 			choice
@@ -1082,6 +1083,9 @@ mission "Grudge Mama"
 			`	You are startled awake by a loud explosion. You open your eyes to see Mara standing next to you with what appears to be a remote detonator in her hand! You try to move but your hands and feet are bound together in thick coils of duct tape!`
 			`	"My trade name is Mama Grudge. This is payback for killing my family." According to the ship status readouts, half the hull is gone and the rest is rapidly disintegrating. Mara laughs maniacally. "Soon, I'll get to see my family again!" The cockpit collapses and you are engulfed in a scorching fireball.`
 				explode
+			label awake
+			`	Even though a nap is tempting, you decide to remain awake.`
+
 	on enter "Menkent"
 		conversation
 			`Mara seemed upset when you dumped the soup out into space. She's been quiet since then and you realize that maybe you did over react. When you check on her, she appears to be fast asleep. Perhaps this would be a good time to set the ship on auto pilot and get some shut-eye.`
@@ -1089,7 +1093,7 @@ mission "Grudge Mama"
 				`	(Go to sleep.)`
 					goto sleep
 				`	(Stay awake.)`
-					accept
+					goto awake
 			label sleep
 			`	You set the ship to auto pilot and settle in for a quick nap in the pilot's seat. If any pirates come along, the alarm should wake you.`
 			choice
@@ -1098,6 +1102,9 @@ mission "Grudge Mama"
 			`	You are startled awake by a sharp pain in your ear. You open your eyes to see Mara standing next to you with a jar full of some strange worm-like creatures in her hand! Warm blood is gushing out of your ear and your head is throbbing in pain. You try to move but your body stumbles and you collapse onto the floor.`
 			`	"My trade name is Mama Grudge. This is payback for killing my family." She jiggles the jar of creatures in front of your face. "Almachian Brain Maggots. I'm told that death from these is slow and painful." Soon the pain overwhelms you...`
 				die
+			label awake
+			`	Even though a nap is tempting, you decide to remain awake.`
+
 	on enter "Rutilicus"
 		conversation
 			`Soon after entering the system, Mara visits you in the cockpit.`
@@ -1106,16 +1113,17 @@ mission "Grudge Mama"
 				`	"Hmm... Let's see..."`
 					goto distraction
 				`	"Would you get out of here?"`
-			
-			`	"We'll be landing soon." You turn towards her. "I need you to get out of the cockpit so that I can focus on getting us safely to the ground."`
-			`	"Well!" Mara says in indignation. "You are the rudest starship captain I have ever had the displeasure of traveling with." She leaves in a huff.`
-			`	You shake your head and begin preparations to land.`
-				accept
+					goto landing
 			label distraction
 			scene "scene/scene-bloodyknife"
 			`	You feel her let go of your shoulder as you try to figure out which ship she's pointing to. But from the angle of her finger, it doesn't look like she's pointing at any ship in particular. Suddenly, you feel a sharp pain in your back! Then another! And another! You slump to the floor and see her standing over you grinning with a bloody knife in her hands.`
 			`	"My trade name is Mama Grudge. This is payback for killing my family." She drags you away from the cockpit and leaves you to bleed out on the floor while she takes control of your ship...`
 				die
+			label landing
+			`	"We'll be landing soon." You turn towards her. "I need you to get out of the cockpit so that I can focus on getting us safely to the ground."`
+			`	"Well!" Mara says in indignation. "You are the rudest starship captain I have ever had the displeasure of traveling with." She leaves in a huff.`
+			`	You shake your head and begin preparations to land.`
+
 	on complete
 		payment 2000
 		log `Had a near death experience transporting a dangerous criminal aboard my ship. I had no idea my life was on the line as Mama Grudge rigged my ship with a variety of death traps. Fortunately, the port authority managed to catch her and clear the ship of these hazards.`

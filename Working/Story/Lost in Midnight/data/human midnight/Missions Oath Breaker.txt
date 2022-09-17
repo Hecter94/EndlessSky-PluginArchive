@@ -25,11 +25,13 @@
 
 mission "Oathbreaker Strategos Deployed"
 	invisible
+	minor
 	source
 		attributes "deep" "north" "paradise" "core" "dirtbelt"
 		not attributes "uninhabited"
 	to offer
 		has "main plot completed"
+		random < 70
 	on offer
 		log "People" "Marcus Junius" `Captain of the Strategos class Navy super carrier "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 		conversation
@@ -79,6 +81,7 @@ mission "Oathbreaker Siege 1"
 	to offer
 		has "First Contact: Hai: declined"
 		has "free worlds plot completed"
+		random < 70
 	on offer
 		conversation
 			scene "scene/scene-navyfleet"
@@ -131,6 +134,7 @@ event "Oathbreaker planning"
 
 
 mission "Oathbreaker Siege 2"
+	minor
 	name "Oathbreaker Siege"
 	description "Oathbreakers, former war prisoners who now break their oath to never attack the Free Worlds again, have started a siege in the <system> system. Break the siege, then land on <planet>."
 	source
@@ -142,6 +146,7 @@ mission "Oathbreaker Siege 2"
 		not attributes "uninhabited"
 	to offer
 		has "event: Oathbreaker planning"
+		random < 70
 	on offer
 		conversation
 			`You're trying to relax at the bar when the holovideos are interrupted. A familiar image of a gruff man in a disheveled navy uniform appears. "Greetings, people of 'The Free Worlds'. You may have driven off our fleet previously. But know this: We fight on."`
@@ -282,6 +287,7 @@ event "Oathbreaker Random"
 
 
 mission "Oathbreakers: Rum Cellar Fight"
+	minor
 	name "Medicine from Chasm"
 	description "Visit <stopovers> to purchase a dose of stolen medicine for Magdalena's orphanage. Payment is <payment>."
 	source
@@ -291,6 +297,7 @@ mission "Oathbreakers: Rum Cellar Fight"
 		has "event: reveal Chasm"
 		has "event: Oathbreaker Random"
 		not "event: Oathbreaker diminish 3"
+		random < 70
 	on offer
 		conversation
 			`When you return to your ship, you find a nun waiting for you by the landing area.`
@@ -387,10 +394,12 @@ event "Oathbreakers in Rum Cellar"
 
 mission "Oathbreaker Pirate Gossip"
 	invisible
+	minor
 	source
 		government "Pirate"
 	to offer
 		has "event: Oathbreaker Random"
+		random < 70
 	on offer
 		log `Among the pirates there are rumors that Captain Arnold Benedict's flagship is of alien origin. A "Shield Fortress" that is described as having a huge wing span.`
 		conversation
@@ -492,6 +501,7 @@ mission "Oathbreaker Fugitives Hideout Job 1"
 		government "Free Worlds"
 	destination
 		government "Pirate"
+		neighbor near "Sol" 200
 	to offer
 		has "event: Oathbreaker Random"
 		not "Oathbreaker Thermopylae: done"
@@ -704,6 +714,7 @@ mission "Oathbreaker Alpine Larch"
 	to offer
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
+		random < 70
 	on offer
 		conversation
 			scene thumbnail/skein
@@ -758,6 +769,7 @@ mission "Oathbreaker Escalation"
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
 		"Oathbreaker escalation" >= 2
+		random < 70
 	on offer
 		conversation
 			scene thumbnail/bactrian
@@ -812,6 +824,7 @@ mission "Oathbreaker Black Oak"
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
 		"Oathbreaker escalation" >= 4
+		random < 70
 	on offer
 		conversation
 			scene thumbnail/dreadnought
@@ -855,6 +868,7 @@ mission "Oathbreaker Black Oak"
 
 
 mission "Oathbreaker Poisonwood"
+	landing
 	name `Oathbreaker warship "R.N.S. Poisonwood"`
 	description `The Strategos class Navy super carrier "R.N.S. Poisonwood" is joining the Oathbreakers. Find the ship and eliminate it.`
 	source
@@ -941,6 +955,7 @@ mission "Oathbreaker Hijacked Warship"
 			has "Oathbreaker Escalation: offered"
 			has "Oathbreaker Black Oak: offered"
 		not "event: Oathbreaker diminish"
+		random < 50
 	npc kill
 		government "Oathbreaker"
 		personality target waiting fleeing uninterested timid
@@ -1020,7 +1035,7 @@ mission "Oathbreaker Thermopylae"
 	to offer
 		has "event: Oathbreaker Random"
 		"Oathbreaker escalation" >= 8
-
+		random < 70
 	on offer
 		conversation
 			`You receive an urgent message from Alondo on Bourne. "Hello <first>! After careful analysis of Oathbreaker activities, the Free Worlds has determined that there may be an Oathbreaker base on Hope in the Wei system. We are asking our most competent captains to investigate.`
@@ -1159,6 +1174,7 @@ mission "Oathbreaker Fugitives Hideout Random"
 		government "Free Worlds"
 	destination
 		government "Pirate"
+		neighbor near "Sol" 200
 	to offer
 		has "event: Oathbreaker diminish"
 		not "event: Oathbreaker diminish 3"
@@ -1169,6 +1185,10 @@ mission "Oathbreaker Fugitives Hideout Random"
 		fleet "Small Oathbreaker"
 		fleet "Fugitive Oathbreaker" 4
 		dialog `<planet> may be an Oathbreaker hideout. Check the surface to be certain.`
+	on abort
+		"Oathbreaker Fugitives Hideout Random: offered" --	
+	on fail
+		"Oathbreaker Fugitives Hideout Random: offered" --
 	on complete
 		"Oathbreaker escalation" ++
 		"Oathbreaker Fugitives Hideout Random: offered" --
@@ -1478,9 +1498,12 @@ mission "Oathbreaker expeditionary 1"
 mission "Oathbreaker expeditionary 2"
 	landing
 	invisible
+	source
+		government "Coalition"
 	destination "Ring of Friendship"
 	to offer
 		has "Oathbreaker expeditionary 1: done"
+		random < 50
 	npc save
 		system
 			neighbor near "Quaru" 10

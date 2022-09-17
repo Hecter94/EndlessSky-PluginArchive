@@ -28,8 +28,10 @@ mission "QKBlade: House Unuk Pickup"
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes "urban"
 		near "Unukalhai" 1 20
+		not attributes "uninhabited"
 	stopover
 		planet "Flood"
 	on stopover
@@ -54,8 +56,10 @@ mission "QKBlade: House Unuk Imports"
 	source
 		planet "Flood"
 	stopover
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		distance 1 20
 		attributes "farming"
+		not attributes "uninhabited"
 	on stopover
 		dialog "You pick up <cargo>. Deliver them to <destination> to get your payment."
 	on visit
@@ -78,8 +82,10 @@ mission "QKBlade: House Unuk Exports"
 	source
 		planet "Flood"
 	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		distance 1 20
 		attributes "urban"
+		not attributes "uninhabited"
 	on visit
 		dialog phrase "generic missing stopover or cargo"
 	on complete
@@ -98,8 +104,10 @@ mission "QKBlade: House Unuk Delivery"
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		near "Unukalhai" 1 20
 		attributes "farming"
+		not attributes "uninhabited"
 	destination
 		planet "Flood"
 	on visit
@@ -113,7 +121,9 @@ mission "QKBlade: House Unuk Door Delivery"
 	name "House Unuk Package"
 	description "Deliver a small package to House Unuk on <destination>."
 	source
-		neighbor near "Unukalhai" 1 5
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		near "Unukalhai" 1 5
+		not attributes "uninhabited"
 	destination "Flood"
 	to offer
 		or
@@ -661,17 +671,23 @@ mission "QKBlade: Bearer of The Blade 2"
 event "Stolen Snake Blade"
 
 
-		
+
 mission "QKBlade: Bearer of The Blade 3A"
 	invisible
 	minor
 	repeat
 	source
-		government "Hai" "Hai (Unfettered)"
+		government "Hai"
 		not planet "Darkwaste"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		random < 17
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 15
+			and
+				"QKBlade: duels won" >= 3
+				random < 2
 	on offer
 		require "Quantum Dragon Blade"
 		conversation
@@ -724,11 +740,17 @@ mission "QKBlade: Bearer of The Blade 3B"
 	minor
 	repeat
 	source
-		government "Hai" "Hai (Unfettered)"
+		government "Hai"
 		not planet "Darkwaste"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		random < 17
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 15
+			and
+				"QKBlade: duels won" >= 3
+				random < 2
 	on offer
 		require "Quantum Dragon Blade"
 		conversation
@@ -781,11 +803,17 @@ mission "QKBlade: Bearer of The Blade 3C"
 	minor
 	repeat
 	source
-		government "Hai" "Hai (Unfettered)"
+		government "Hai"
 		not planet "Darkwaste"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		random < 17
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 15
+			and
+				"QKBlade: duels won" >= 3
+				random < 2
 	on offer
 		require "Quantum Dragon Blade"
 		conversation
@@ -833,13 +861,205 @@ mission "QKBlade: Bearer of The Blade 3C"
 		"QKBlade: duels won" ++
 		fail
 
+mission "QKBlade: Bearer of The Blade 3D"
+	invisible
+	minor
+	repeat
+	source
+		government "Hai (Unfettered)"
+		not attributes "uninhabited"
+	to offer
+		has "event: stolen Quantum Key Blade timer"
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 20
+			and
+				"QKBlade: duels won" >= 3
+				random < 15
+	on offer
+		require "Quantum Dragon Blade"
+		conversation
+			scene "outfit/quantum dragon blade"
+			`It's after midnight by the time you head back to your ship. The area is deserted when a short figure in a hooded cloak steps out of a nearby alley. It pulls out a long knife and charges at you! You scarcely have time to draw the Quantum Key Blade to defend yourself. What will you do?`
+
+			branch "Midnight's Lost Orphan"
+				has "captain of atrocity"
+
+			choice
+				`	(Feint.)`
+					goto success
+				`	(Parry.)`
+					goto draw
+				`	(Strike.)`
+					goto strike
+
+			label strike
+			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+			
+			label draw
+			`	You and your assailant both take up a defensive stance, neither willing to commit to an attack. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
+
+			label success
+			`	You bait your assailant with a feint and follow up with an attack through the opening in his defense. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				accept
+
+			label "Midnight's Lost Orphan"
+			choice
+				`	(Feint.)`
+					goto success
+				`	(Parry.)`
+					goto draw
+				`	(Strike.)`
+					goto strike
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+			scene "outfit/midnight lost orphan"
+			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
+				decline
+	on decline
+		"captain of atrocity" ++
+	on accept
+		"QKBlade: duels won" ++
+		fail
+
+mission "QKBlade: Bearer of The Blade 3E"
+	invisible
+	minor
+	repeat
+	source
+		government "Hai (Unfettered)"
+		not attributes "uninhabited"
+	to offer
+		has "event: stolen Quantum Key Blade timer"
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 20
+			and
+				"QKBlade: duels won" >= 3
+				random < 15
+	on offer
+		require "Quantum Dragon Blade"
+		conversation
+			scene "outfit/quantum dragon blade"
+			`It's after midnight by the time you head back to your ship. The area is deserted when a short figure in a hooded cloak steps out of a nearby alley. It pulls out a long knife and charges at you! You scarcely have time to draw the Quantum Key Blade to defend yourself. What will you do?`
+
+			branch "Midnight's Lost Orphan"
+				has "captain of atrocity"
+
+			choice
+				`	(Feint.)`
+					goto feint
+				`	(Parry.)`
+					goto success
+				`	(Strike.)`
+					goto draw
+
+			label feint
+			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+			
+			label draw
+			`	You and your assailant both attack, barely managing to avoid each other's blow. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
+
+			label success
+			`	You parry the attack and counter with one of your own. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				accept
+
+			label "Midnight's Lost Orphan"
+			choice
+				`	(Feint.)`
+					goto feint
+				`	(Parry.)`
+					goto success
+				`	(Strike.)`
+					goto draw
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+			scene "outfit/midnight lost orphan"
+			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
+				decline
+	on decline
+		"captain of atrocity" ++
+	on accept
+		"QKBlade: duels won" ++
+		fail
+
+mission "QKBlade: Bearer of The Blade 3F"
+	invisible
+	minor
+	repeat
+	source
+		government "Hai (Unfettered)"
+		not attributes "uninhabited"
+	to offer
+		has "event: stolen Quantum Key Blade timer"
+		or
+			and
+				"QKBlade: duels won" <= 2
+				random < 20
+			and
+				"QKBlade: duels won" >= 3
+				random < 15
+	on offer
+		require "Quantum Dragon Blade"
+		conversation
+			scene "outfit/quantum dragon blade"
+			`It's after midnight by the time you head back to your ship. The area is deserted when a short figure in a hooded cloak steps out of a nearby alley. It pulls out a long knife and charges at you! You scarcely have time to draw the Quantum Key Blade to defend yourself. What will you do?`
+
+			branch "Midnight's Lost Orphan"
+				has "captain of atrocity"
+
+			choice
+				`	(Feint.)`
+					goto draw
+				`	(Parry.)`
+					goto parry
+				`	(Strike.)`
+					goto success
+
+			label parry
+			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+
+			label draw
+			`	You and your assailant both attempt a feint, to no avail. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
+
+			label success
+			`	You see through your attacker's feint and strike when an opportunity presents itself. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				accept
+
+			label "Midnight's Lost Orphan"
+			choice
+				`	(Feint.)`
+					goto draw
+				`	(Parry.)`
+					goto parry
+				`	(Strike.)`
+					goto success
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+			scene "outfit/midnight lost orphan"
+			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
+				decline
+	on decline
+		"captain of atrocity" ++
+	on accept
+		"QKBlade: duels won" ++
+		fail
+
+
+
 mission "QKBlade: Bearer of The Blade 4"
 	landing
 	invisible
 	source
 		government "Pirate"
 	to offer
-		has "QKBlade: duels won" > 0
+		"QKBlade: duels won" >= 1
+		random < 70
 	on offer
 		require "Quantum Dragon Blade"
 		conversation
@@ -857,6 +1077,7 @@ mission "QKBlade: Bearer of The Blade 4"
 			
 
 mission "QKBlade: Bearer of The Blade 5"
+	minor
 	name "Return the Snake"
 	description "Return the stolen Quantum Key Blade with the snake carved hand guard to the council of elders on Hai-home."
 	source
@@ -865,7 +1086,8 @@ mission "QKBlade: Bearer of The Blade 5"
 	to offer
 		has "event: Stolen Snake Blade"
 		has "QKBlade: Bearer of The Blade 4: declined"
-		has "QKBlade: duels won" > 2
+		"QKBlade: duels won" >= 3
+		random < 70
 	on offer
 		require "Quantum Dragon Blade"
 		conversation
@@ -982,6 +1204,7 @@ mission "QKBlade: Bearer of The Blade 5"
 mission "QKBlade: Thief of Blades"
 	invisible
 	infiltrating
+	minor
 	source "Mirrorlake"
 	to offer
 		has "Sheragi Archaeology: Epilogue: done"
@@ -1061,6 +1284,7 @@ event "thief of blades"
 mission "QKBlade: Honor of the Blade Bearer - Courier (Hai)"
 	deadline
 	repeat
+	minor
 	name "Message to <planet>"
 	description "The Hai Council of Elders requests you deliver an encrypted message to <destination>. Your service will reinforce your relationship with the Hai."
 	source "Hai-home"
@@ -1094,6 +1318,7 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Unfettered)"
 	deadline
 	repeat
 	clearance
+	minor
 	name "Message to <planet>"
 	description "The Hai Council of Elders requests you deliver an encrypted message to <destination>. Your service will reinforce your relationship with the Hai."
 	source "Hai-home"
@@ -1105,7 +1330,7 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Unfettered)"
 	to offer
 		has "Honor of the Blade Bearer"
 		"reputation: Hai" >= 100
-		random < 2
+		random < 3
 	on offer
 		require "Quantum Dragon Blade"
 		conversation

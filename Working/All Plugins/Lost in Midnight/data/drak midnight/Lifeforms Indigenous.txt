@@ -17,6 +17,7 @@
 mission "First Contact: Subsidurials"
 	landing
 	invisible
+	deadline 15
 	source
 		attributes "near earth"
 		not attributes "uninhabited" "station"
@@ -248,10 +249,10 @@ phrase "subsidurial herd offer"
 		`payment would be <payment> upon delivery."`
 
 mission "Subsidurial Herding Mission Easy"
+	minor
+	deadline
 	name "Subsidurial Herding"
 	description "Escort a herd of Subsidurials to <destination> by <date>. Payment is <payment>."
-	repeat
-	deadline
 	source
 		attributes "south"
 		not planet "Greenrock"
@@ -259,7 +260,6 @@ mission "Subsidurial Herding Mission Easy"
 	destination Greenrock
 	to offer
 		has "First Contact: Subsidurials: offered"
-		not "Day of Subsidurius: offered"
 		random < 5
 	on offer
 		dialog phrase "subsidurial herd offer"
@@ -282,6 +282,7 @@ mission "Subsidurial Herding Mission Easy"
 		personality vindictive harvests coward
 		fleet "Poachers"
 	on abort
+		"reputation: Pirate" --
 		conversation
 			scene "thumbnail/subsidurial"
 			`You release the collars and set the Subsidurials free. These creatures won't suffer anymore. Perhaps it's just your imagination, but one of them seems to nod in thanks before departing.`
@@ -295,17 +296,19 @@ mission "Subsidurial Herding Mission Easy"
 		dialog "You deliver the herd to your client and are rewarded with <payment>. The Subsidurials are sedated in cages and carted away..."
 
 mission "Subsidurial Herding Mission Hard"
+	minor
+	deadline
 	name "Subsidurial Herding"
 	description "Escort a herd of Subsidurials to <destination> by <date>. Payment is <payment>."
-	repeat
-	deadline
 	source
 		attributes "dirt belt"
 		not attributes "uninhabited"
 	destination Greenrock
 	to offer
-		has "First Contact: Subsidurials: offered"
-		not "Day of Subsidurius: offered"
+		or
+			has "Subsidurial Herding Mission Easy: done"
+			has "Subsidurial Herding Mission Easy: failed"
+			has "Subsidurial Herding Mission Easy: aborted"
 		random < 5
 	on offer
 		dialog phrase "subsidurial herd offer"
@@ -328,6 +331,7 @@ mission "Subsidurial Herding Mission Hard"
 		personality vindictive harvests coward
 		fleet "Poachers" 2
 	on abort
+		"reputation: Pirate" --
 		conversation
 			scene "thumbnail/subsidurial"
 			`You release the collars and set the Subsidurials free. These creatures won't suffer anymore. Perhaps it's just your imagination, but one of them seems to nod in thanks before departing.`
@@ -392,6 +396,7 @@ ship "Subsidurial" "Subsidurial Weaponized C"
 	turret "Modified Blaster Turret"
 
 mission "Day of Subsidurius"
+	minor
 	name "Day of Subsidurius"
 	description "Defend <origin> from the Subsidurius and its herd of weaponized Subsidurials!" 
 	source
@@ -408,6 +413,7 @@ mission "Day of Subsidurius"
 		"combat rating" > 300
 	on offer
 		conversation
+			scene "thumbnail/subsidurial"
 			`You're checking out the local cuisine when an announcement goes out over the spaceport. "Attention! The planet is under attack from... Is this correct?" You hear a muffled voice answering before the announcer continues,"From a herd of weaponized Subsidurials! We are looking for volunteers to assist with the planetary defense." Will you join the defense fleet? <planet>'s government will probably pay a good reward for helping.`
 			choice
 				`	(Join the defense fleet.)`
@@ -451,7 +457,7 @@ mission "Weaponized Subsidurial Bounty"
 	job
 	repeat
 	name "Weaponized Subsidurials near <system>"
-	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy the <npc> and report to <destination>. Payment is payment." 
+	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy the <npc> and report to <destination>. Payment is <payment>." 
 	source
 		government "Free Worlds"
 	to offer
@@ -521,7 +527,8 @@ ship "Subsidurial" "Subsidurial Porter"
 	"swizzle" 0
 	add attributes
 		"outfit space" 200
-		"threshold percentage" .75
+		"threshold percentage" .50
+		"inscrutable" -1
 	outfits
 		"Cargo Expansion" 10
 
@@ -581,7 +588,7 @@ mission "Subsidurial Porter"
 		system destination
 		personality staying harvests plunders
 			confusion 20
-		fleet "pirate raid" 3
+		fleet "pirate raid" 2
 	npc evade
 		to spawn
 			"combat rating" > 1000
@@ -589,7 +596,7 @@ mission "Subsidurial Porter"
 		system destination
 		personality staying harvests plunders
 			confusion 10
-		fleet "pirate raid" 2
+		fleet "pirate raid"
 	npc accompany save
 		government "Merchant"
 		personality target escort mute
@@ -604,16 +611,178 @@ mission "Subsidurial Porter"
 		payment 500000
 		dialog `The owner of the Subsidurial porter pays you <payment> for safely herding the Subsidurial and its cargo to <planet>.`
 
+mission "Subsidurial Porter (North)"
+	job
+	name "Subsidurial Porter"
+	description "A merchant wants to see if Subsidurial porters are a viable business strategy. Herd the Subsidurial porter to <destination>. The client will ride along on your ship to observe. Payment is <payment>."
+	source
+		government "Republic"
+		attributes "frontier"
+	destination
+		government "Syndicate" "Free Worlds"
+		attributes "frontier"
+	passengers 1
+	to offer
+		has "Day of Subsidurius: done"
+		random < 5
+	npc evade
+		government "Pirate"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Northern Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 600
+		government "Pirate"
+		system
+			distance 1 2
+		personality harvests plunders
+			confusion 10
+		fleet "Large Northern Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality harvests plunders
+			confusion 20
+		fleet "Small Northern Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 3 4
+		personality harvests plunders
+			confusion 20
+		fleet "Large Northern Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 800
+		government "Pirate"
+		system
+			distance 4 5
+		personality harvests plunders
+			confusion 10
+		fleet "pirate raid"
+	npc evade
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc evade
+		to spawn
+			"combat rating" > 1000
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 10
+		fleet "pirate raid"
+	npc accompany save
+		government "Merchant"
+		personality target escort mute
+		fleet
+			cargo 3
+			variant
+				"Subsidurial Porter"
+	on fail
+		dialog `Your client muses that perhaps Subsidurial porters aren't a viable business strategy afterall...`
+	on complete
+		clear "Subsidurial Porter (North): offered"
+		payment 500000
+		dialog `The owner of the Subsidurial porter pays you <payment> for safely herding the Subsidurial and its cargo to <planet>.`
+
+mission "Subsidurial Porter (South)"
+	job
+	name "Subsidurial Porter"
+	description "A merchant wants to see if Subsidurial porters are a viable business strategy. Herd the Subsidurial porter to <destination>. The client will ride along on your ship to observe. Payment is <payment>."
+	source
+		government "Free Worlds"
+		attributes "frontier"
+	destination
+		government "Republic" "Syndicate" 
+		attributes "frontier"
+	passengers 1
+	to offer
+		has "Day of Subsidurius: done"
+		random < 5
+	npc evade
+		government "Pirate"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 600
+		government "Pirate"
+		system
+			distance 1 2
+		personality harvests plunders
+			confusion 10
+		fleet "Large Southern Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc evade
+		government "Pirate"
+		system
+			distance 3 4
+		personality harvests plunders
+			confusion 20
+		fleet "Large Southern Pirates"
+	npc evade
+		to spawn
+			"combat rating" > 800
+		government "Pirate"
+		system
+			distance 4 5
+		personality harvests plunders
+			confusion 10
+		fleet "pirate raid"
+	npc evade
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc evade
+		to spawn
+			"combat rating" > 1000
+		government "Pirate"
+		system destination
+		personality staying harvests plunders
+			confusion 10
+		fleet "pirate raid"
+	npc accompany save
+		government "Merchant"
+		personality target escort mute
+		fleet
+			cargo 3
+			variant
+				"Subsidurial Porter"
+	on fail
+		dialog `Your client muses that perhaps Subsidurial porters aren't a viable business strategy afterall...`
+	on complete
+		clear "Subsidurial Porter (South): offered"
+		payment 500000
+		dialog `The owner of the Subsidurial porter pays you <payment> for safely herding the Subsidurial and its cargo to <planet>.`
+
 
 
 mission "Golden Subsidurials"
 	deadline 7
+	minor
 	name "Golden Subsidurials"
 	description "Stray Subsidurial porters carrying precious Gold were last spotted near <system>. It's a race to find them before the pirates do!"
 	source
 		government "Pirate"
 	to offer
-		has "Subsidurial Porter: done"
+		or
+			has "Subsidurial Porter: done"
+			has "Subsidurial Porter (North): done"
+			has "Subsidurial Porter (South): done"
 		random < 5
 	on offer
 		conversation
@@ -627,25 +796,16 @@ mission "Golden Subsidurials"
 				accept
 	npc
 		government "Pirate"
-		system
-			distance 1 2
-		personality harvests plunders uninterested
+		personality waiting harvests plunders uninterested
 			confusion 20
 		fleet "pirate raid"
-	npc
-		government "Pirate"
-		system
-			distance 2 3
-		personality harvests plunders uninterested
-			confusion 20
-		fleet "pirate raid"
-	npc
-		government "Pirate"
-		system
-			distance 3 4
-		personality harvests plunders uninterested
-			confusion 20
-		fleet "pirate raid"
+	npc board
+		government "Merchant"
+		personality target derelict staying uninterested mute
+		fleet
+			cargo 0
+			variant 1
+				"Subsidurial Porter"
 	npc board
 		government "Merchant"
 		system
@@ -700,8 +860,14 @@ mission "Midnight Market: Pet Subsidurial"
 			has "Subsidurial Herding Job Hard: done"
 			has "Subsidurial Herding Mission Easy: done"
 			has "Subsidurial Herding Mission Hard: done"
-		random < 20 + "Midnight Market"
 		"credits" > 2000000
+		or
+			and
+				"Midnight Market" < 30
+				random < 20 + "Midnight Market"
+			and
+				"Midnight Market" > 30
+				random < 50
 	on offer
 		require "Subsidurial Plushie"
 		conversation
@@ -810,13 +976,15 @@ fleet "Gray Eye"
 		"Gray Eyed"
 
 mission "Ayab's Revenge"
+	minor
 	name "Hunting Gray Eye"
 	description "Captain Ayab is hunting an ancient subsidurial known as the Gray Eye. You're still not sure how you got roped into this..."
 	source
 		attributes "near earth"
 	to offer
-		has "First Contact: Subsidurials: active"
+		has "First Contact: Subsidurials: offered"
 		"combat rating" > 10
+		random < 25
 	on offer
 		conversation
 			`You're at a spaceport bar when a grizzeled old starship captain with a crazed expression on his face approaches your table.`
@@ -846,6 +1014,8 @@ mission "Ayab's Revenge"
 		government "Creature Hunter"
 		personality escort heroic vindictive
 		ship "Modified Argosy (Missile)" "Ayab's Revenge"
+	on abort
+		dialog `You quietly ditch captain Ayab and his hunt for the Gray Eye...`
 	on fail
 		dialog `Captain Ayab passed away while spending his life on a fruitless quest for revenge. Sometimes it's best to let things go.`
 	on complete
@@ -857,7 +1027,9 @@ mission "Ayab's Revenge Epilogue1"
 	landing
 	invisible
 	to offer
-		has "Ayab's Revenge: done"
+		or
+			has "Ayab's Revenge: done"
+			has "Ayab's Revenge: aborted"
 	npc
 		government "Indigenous Lifeform"
 		personality waiting uninterested mining harvests mute unconstrained
@@ -1021,8 +1193,6 @@ ship "Ionic Leech"
 			"hit force" 3000
 	outfits
 		"Ionic Mouthparts?" 1
-	cargo
-		"Ion Leech Sample" 1
 	gun 0 -37 "Ionic Mouthparts?"
 	leak "blood" 15 25
 	explode "blood" 25
@@ -1429,7 +1599,13 @@ mission "Investigate Missing Shipment 1"
 	waypoint "Alpha Arae"
 	to offer
 		has "event: Astero Nautilus Cross Chasm"
-		random < 30
+		or
+			and
+				not "Investigate Missing Shipment 1: done"
+				random < 30
+			and
+				has "Investigate Missing Shipment 1: done"
+				random < 15
 	on waypoint
 		dialog `You've found the missing fleet! But the ships look strange...`
 	npc
@@ -1463,7 +1639,13 @@ mission "Investigate Missing Shipment 2"
 	waypoint Eber
 	to offer
 		has "Investigate Missing Shipment 1: done"
-		random < 25
+		or
+			and
+				not "Investigate Missing Shipment 2: done"
+				random < 25
+			and
+				has "Investigate Missing Shipment 2: done"
+				random < 10
 	on waypoint
 		dialog `You've found the missing fleet! But the ships look strange...`
 	npc
@@ -1497,7 +1679,13 @@ mission "Investigate Missing Shipment 3"
 	waypoint Alnasl
 	to offer
 		has "Investigate Missing Shipment 2: done"
-		random < 20
+		or
+			and
+				not "Investigate Missing Shipment 3: done"
+				random < 20
+			and
+				has "Investigate Missing Shipment 3: done"
+				random < 5
 	on waypoint
 		dialog `You've found the missing fleet! But the ships look strange...`
 	npc
@@ -1654,6 +1842,7 @@ event "Rock Scavengers Flee Astero Nautilus"
 mission "Rock Scavenger: Kitchen Delivery"
 	invisible
 	repeat
+	minor
 	source
 		attributes "paradise"
 	to offer
@@ -1734,7 +1923,7 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 		"hull" 100
 		"mass" 130
 		"drag" .4
-		"heat dissipation" -.4		
+		"heat dissipation" -.4
 		"thrust" -12
 		weapon
 			"blast radius" 400
@@ -2066,7 +2255,7 @@ mission "Coalition: Exterminate Plasma Parasites 1"
 	to offer
 		has "known to the heliarchs"
 		has "event: Plasma Parasites Infest Coalition"
-		random < 50
+		random < 20
 	source
 		government "Heliarch"
 	destination
@@ -2092,7 +2281,7 @@ mission "Coalition: Exterminate Plasma Parasites 2"
 	to offer
 		has "known to the heliarchs"
 		has "event: Plasma Parasites Infest Coalition"
-		random < 50
+		random < 20
 	source
 		government "Heliarch"
 	destination
@@ -2119,7 +2308,7 @@ mission "Coalition: Exterminate Plasma Parasites 3"
 	to offer
 		has "known to the heliarchs"
 		has "event: Plasma Parasites Infest Coalition"
-		random < 50
+		random < 20
 	source
 		government "Heliarch"
 	destination

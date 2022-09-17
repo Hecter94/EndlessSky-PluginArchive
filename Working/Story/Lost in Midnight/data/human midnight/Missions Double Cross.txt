@@ -16,6 +16,7 @@
 
 
 mission "Destroy Independence (North)"
+	minor
 	name "Mastodon Hunting"
 	description "The Independence is the last Mastodon city ship still in service. You've received a tip that it will pass through <waypoints>. Capture this rare ship and add it to your fleet!"
 	deadline 8
@@ -88,6 +89,7 @@ mission "Destroy Independence (North)"
 
 
 mission "Destroy Independence (South)"
+	minor
 	name "Mastodon Hunting"
 	description "The Independence is the last Mastodon city ship still in service. You've received a tip that it will pass through <waypoints>. Capture this rare ship and add it to your fleet!"
 	deadline 9
@@ -737,6 +739,7 @@ fleet "TMBR Billboard"
 		"Container Transport (Billboard TMBR)"
 
 mission "Peace Tour 1"
+	minor
 	name "Promotion Tour"
 	description "Escort the <npc> to the planets marked on the map. Then return them to <destination>. Payment is 1,000,000 credits."
 	source
@@ -830,16 +833,10 @@ event "add nukes of peace"
 		add fleet NukeSouth 20000
 	system Archipelago
 		add fleet NukeNorth 20000
-		add fleet NukeCore 20000
-		add fleet NukeSouth 20000
 	system Chasm
-		add fleet NukeNorth 20000
-		add fleet NukeCore 20000
 		add fleet NukeSouth 20000
 	system Diyu
-		add fleet NukeNorth 20000
 		add fleet NukeCore 20000
-		add fleet NukeSouth 20000
 
 
 mission "Peace Tour 2"
@@ -895,57 +892,64 @@ mission "Peace Tour 2"
 
 event "remove nukes of peace"
 	system Almaaz
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Alnilam
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Arneb
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Hatysa
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Unagi
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Danoa 
-		remove fleet NukeNorth 20000
+		remove fleet NukeNorth
 	system Alcyone
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Algenib
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Almach
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Durax
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Gienah
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Oblate
-		remove fleet NukeCore 20000
+		remove fleet NukeCore
 	system Antares
-		remove fleet NukeSouth 20000
+		remove fleet NukeSouth
 	system Men
-		remove fleet NukeSouth 20000
+		remove fleet NukeSouth
 	system Nunki
-		remove fleet NukeSouth 20000
+		remove fleet NukeSouth
 	system Shaula
-		remove fleet NukeSouth 20000
+		remove fleet NukeSouth
 	system Archipelago
-		remove fleet NukeNorth 20000
-		remove fleet NukeCore 20000
-		remove fleet NukeSouth 20000
+		remove fleet NukeNorth
+		remove fleet NukeCore
+		remove fleet NukeSouth
 	system Chasm
-		remove fleet NukeNorth 20000
-		remove fleet NukeCore 20000
-		remove fleet NukeSouth 20000
+		remove fleet NukeNorth
+		remove fleet NukeCore
+		remove fleet NukeSouth
 	system Diyu
-		remove fleet NukeNorth 20000
-		remove fleet NukeCore 20000
-		remove fleet NukeSouth 20000
+		remove fleet NukeNorth
+		remove fleet NukeCore
+		remove fleet NukeSouth
 
 mission "Midnight Market: Nukes of Peace?"
 	invisible
+	minor
 	source
 		government "Pirate" "Independent"
 		not attributes "uninhabited"
 	to offer
-		random < 20 + "Midnight Market"
+		or
+			and
+				"Midnight Market" < 5
+				random < 5 + "Midnight Market"
+			and
+				"Midnight Market" >= 5
+				random < 10
 		has "event: add nukes of peace"
 		not "event: remove nukes of peace"
 		"credits" > 4000000
@@ -1084,7 +1088,13 @@ mission "Promotion Tour: Subsi"
 		attributes "paradise"
 		attributes "spaceport"
 	to offer
-		random < 60
+		or
+			and
+				not "Promotion Tour: Subsi: done"
+				random < 60
+			and
+				has "Promotion Tour: Subsi: done"
+				random < 5
 		"reputation: Merchant" > 20
 		"combat rating" > 20
 	on accept
@@ -1146,6 +1156,7 @@ mission "Promotion Tour: Subsi"
 
 
 mission "Pot-o'-honey"
+	minor
 	name "Escort to <planet>"
 	description "The captain of the Pot-o'-honey will pay you <payment> to escort them safely into a dangerous region of space to reach <destination>."
 	source
@@ -1153,7 +1164,13 @@ mission "Pot-o'-honey"
 		not planet "Darkwaste"
 	destination "Farpoint"
 	to offer
-		random < 60
+		or
+			and
+				not "Randomize Pot-o'-honey"
+				random < 60
+			and
+				has "Randomize Pot-o'-honey"
+				random < 5
 		"combat rating" > 10
 		"pirate attraction" > 0
 	on offer
@@ -1170,7 +1187,8 @@ mission "Pot-o'-honey"
 			
 			`	"May we have a safe journey, Captain <last>."`
 				accept
-			
+	on defer
+		set "Randomize Pot-o'-honey"
 	on accept
 		"reputation: Bounty (Disguised)" >?= 1
 	on enter "Waypoint"

@@ -18,13 +18,12 @@
 
 
 mission "Ghost Hunting: Dire Omen 1"
+	minor
 	name "The Ghost Ship: Dire Omen"
 	description "An old pirate told a tale of a ghost ship haunting the area near <system>. It might be interesting subject to ask the locals about if you ever visit <planet>, the pirate planet in that system."
 	source
-		government "Pirate" "Free Worlds" "Neutral" "Independent"
-		attributes "south pirate"
-	destination
-		planet "Stormhold"
+		planet "Trinket" "Greenrock" "Thule" "Smuggler's Den" "Albatross" "Bloodsea"
+	destination "Stormhold"
 	to offer
 		"month" == 10
 		"combat rating" > 512
@@ -32,9 +31,10 @@ mission "Ghost Hunting: Dire Omen 1"
 		or
 			has "main plot completed"
 			and
-				"year" >= 3016
+				"year" >= 3015
 				"month" >= 7
 				"day" >= 4
+		random < 70
 	on offer
 		conversation
 			`You wander into one of several dimly lit, smoke-filled bars near your docking bay and notice a large crowd has gathered to listen as an old pirate tells a tale.`
@@ -341,6 +341,7 @@ mission "Ghost Hunting: Derelict Killable Patch"
 		fail
 
 mission "Ghost Hunting: Poltergeist King 1"
+	minor
 	name "Trick or Treat"
 	description "A madman calling himself Poltergeist King is holding three children hostage in Menkalinan. Search for the perpetrator, rescue the children, and return them to <planet> in the <system> system."
 	passengers 3
@@ -349,7 +350,7 @@ mission "Ghost Hunting: Poltergeist King 1"
 		attributes "paradise"
 	to offer
 		"month" == 10
-
+		random < 70
 	on offer
 		conversation
 			`It's just about closing time at the bar and you're the only customer left. The bartender is almost done cleaning up. As he reaches for the power button on the holoprojector the program that was playing is suddenly replaced by a live feed showing some derelict ships floating in space.`
@@ -499,6 +500,8 @@ mission "Ghost Hunting: Poltergeist King Trick A"
 	to offer
 		"month" == 10
 		not "Ghost Hunting: Poltergeist King 1: done"
+		not "Ghost Hunting: Poltergeist King 1: failed"
+		not "Ghost Hunting: Poltergeist King 1: aborted"
 	to fail
 		"month" == 11
 		not "Ghost Hunting: Poltergeist King 1: active"
@@ -523,6 +526,8 @@ mission "Ghost Hunting: Poltergeist King Trick B"
 	to offer
 		"month" == 10
 		not "Ghost Hunting: Poltergeist King 1: done"
+		not "Ghost Hunting: Poltergeist King 1: failed"
+		not "Ghost Hunting: Poltergeist King 1: aborted"
 	to fail
 		"month" == 11
 		not "Ghost Hunting: Poltergeist King 1: active"
@@ -547,6 +552,8 @@ mission "Ghost Hunting: Poltergeist King Trick C"
 	to offer
 		"month" == 10
 		not "Ghost Hunting: Poltergeist King 1: done"
+		not "Ghost Hunting: Poltergeist King 1: failed"
+		not "Ghost Hunting: Poltergeist King 1: aborted"
 	to fail
 		"month" == 11
 		not "Ghost Hunting: Poltergeist King 1: active"
@@ -615,6 +622,7 @@ conversation "Funhouse in Flames"
 
 
 mission "Ghost Hunting: Poltergeist King 2"
+	minor
 	name "Derelict Raider"
 	description "A derelict Korath Raider just entered the <system> system. Salvage it before anyone else does, then land on <planet>."
 	source
@@ -623,6 +631,7 @@ mission "Ghost Hunting: Poltergeist King 2"
 		has "Ghost Hunting: Dire Omen 5: done"
 		has "event: Poltergeist King Prepares"
 		"month" == 10
+		random < 70
 	on offer
 		conversation
 			`While walking through the space port you recognize a familiar looking cowgirl studying the sky with a telescope. This time, however, Cali is surrounded by some rough looking men.`
@@ -678,9 +687,9 @@ mission "Ghost Hunting: Poltergeist King 2"
 		personality derelict target waiting staying pacifist mute marked
 		ship "Explosive Derelict Korath Raider" "Toy Box"
 		conversation
-			`You board the ship and soon realize that anything of value has already been ripped out. The ship does appear to be outfitted with a Jump Drive, but it is clearly broken.`
-
 			scene "scene/scene-sivael6cropred"
+			`You board the ship and soon realize that anything of value has already been ripped out. The ship does appear to be outfitted with a Jump Drive, but it is clearly broken.`
+			``
 			`	Before you do anything else, the doors slam shut! The sound of static fills the air as some speakers crackle on. A familiar voice begins to speak...`
 			`	"Testing. Testing! One, two, three! Ahem, well well well! Lookie who I've caught here! If it isn't my old friend <first> <last>! You DO remember me, don't you!?!`
 			choice
@@ -748,6 +757,7 @@ ship "Explosive Derelict Korath Raider"
 		
 
 mission "Ghost Hunting: Zubenelgenubi Ghost Ship"
+	minor
 	name "Zubenelgenubi Ghost Ship"
 	description "An alien ghost ship is projected to pass through the Zubenelgenubi system. Head over there if you want to investigate. Return to <planet> afterwards and tell Cali what you found."
 	source
@@ -757,6 +767,7 @@ mission "Ghost Hunting: Zubenelgenubi Ghost Ship"
 		"month" == 10
 		has "Coalition: First Contact: done"
 		has "Ghost Hunting: Poltergeist King 2: done"
+		random < 70
 	on offer
 		conversation
 			`When you enter the bar a familiar voice calls out your name. "Howdy <first>! Don't be a stranger! Pull up a chair!" Cali waves you over to where she and her crew are seated. "How have you been since that incident with the exploding derelict?"`
@@ -942,6 +953,7 @@ mission "Ghost Hunting: Friendship 1"
 	to offer
 		has "main plot completed"
 		"month" == 10
+		random < 70
 	on offer
 		conversation
 			`As you are leaving the spaceport, some kids approach you. The oldest one asks, "Excuse me, but are you a starship captain?"`
@@ -1023,6 +1035,7 @@ phrase "ghost fleet test dummy offer"
 
 
 mission "Ghost Hunting: Ghost Fleet"
+	minor
 	name "Ghost Ship?"
 	description "There are rumors of fleet of ghost ships attacking ships near <destination>... The reward for destroying it is <payment>."
 	source
@@ -1190,6 +1203,7 @@ mission "Ghost Hunting: Sestor Remnant"
 ######################################################################
 
 mission "Ghost Hunting: Curse of the Carabao 1"
+	minor
 	source
 		government "Republic"
 		attributes "deep"
@@ -1198,14 +1212,17 @@ mission "Ghost Hunting: Curse of the Carabao 1"
 #
 # The game isn't detecting the "Carabao AI" from an escort. Deactivating this mission until this is fixed.
 #
-		has "curse of the carabao"
+		has "Ghost Hunting: Curse of the Carabao 1: done"
+		has "Ghost Hunting: Curse of the Carabao 1: failed"
+		has "Ghost Hunting: Curse of the Carabao 1: aborted"
+		has "Ghost Hunting: Curse of the Carabao 1: declined"
 #
-		"credits" >= 18000000
-		or
-			not "Randomize Ghost Hunting: Curse of the Carabao 1"
-			and
-				has "Randomize Ghost Hunting: Curse of the Carabao 1"
-				random < 5
+#		"credits" >= 18000000
+#		or
+#			not "Randomize Ghost Hunting: Curse of the Carabao 1"
+#			and
+#				has "Randomize Ghost Hunting: Curse of the Carabao 1"
+#				random < 5
 	on offer
 		conversation
 			scene "thumbnail/carabao-thumb"
