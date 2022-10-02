@@ -59,8 +59,7 @@ mission "House Unuk Business"
 
 mission "House Unuk Business Kor Efret 1"
 	landing
-	name "House Unuk Kor Efret"
-	description "The Wanderers had some criticisms for House Unuk's acorn cookies. Visit <destination> and share this knowledge with House Unuk."
+	invisible
 	source "Setar Fort"
 	destination "Flood"
 	to offer
@@ -162,7 +161,7 @@ mission "House Unuk Business Kor Efret 4"
 mission "House Unuk Business Kor Efret 5"
 	landing
 	name "House Unuk Kor Efret"
-	description "Guide the <npc> to <destination>. This will establish a delivery route for House Unuk's acorn crackers."
+	description "Guide the <npc> to <destination>. This will establish a delivery route for House Unuk's acorn cookies."
 	source Flood
 	destination "Setar Fort"
 	to offer
@@ -183,7 +182,7 @@ mission "House Unuk Business Kor Efret 5"
 		fleet "Acorn Efret"
 	on complete
 		"salary: House Unuk Kor Efret" = 10000
-		event "House Unuk Ka'ch'chrai"
+		event "House Unuk Sevrelect"
 		conversation
 			scene "thumbnail/behemoth"
 			`The Acorn Efret lands and the crew unloads the cargo. The Kor Efret market vendors accept the delivery and place orders for more. A trade route has been established. Congratulations!`
@@ -621,3 +620,104 @@ fleet "Acorn Efret"
 	commodities "Food"
 	variant
 		"Behemoth (Jumper)"
+
+
+###############
+#
+# Side missions
+#
+###############
+
+mission "House Unuk Cookie Crook 1"
+	minor
+	name "Acorn Cookie Request"
+	description "Your client wants a taste of House Unuk's acorn cookies. <destination> is an urban planet. If there's any place nearby that's sure to have some, it would be there..."
+	source
+		government "Hai"
+	stopover "Prime"
+	to offer
+		has "QKBlade: House Unuk Door Delivery: done"
+		random < 70
+	on offer
+		conversation
+			`A group of kids, both Hai and human, gather around you. One of them is bouncing a ball while some others are looking at your ship. One of them asks, "Are you from human space?"`
+			choice
+				`	"Beat it brats. I'm busy."`
+					goto busy
+				`	"Yes. Did you need something from me?"`
+			`	"Is it true that there are acorn cookies in human space?" asks one kid. That brings back memories of House Unuk...`
+			choice
+				`	"Yeah, I've had some."`
+					goto some
+				`	"Not anymore..."`
+			`	"Aww..."`
+			`	"What happened?"`
+			choice
+				`	"Some mean Unfettered ate them all."`
+			`	"That's too bad..."`
+			`	The kids walk away, disappointed.`
+				decline
+			label some
+			`	"I want to try some!" Soon all the kids are clamoring to try some. "Bring us some! We'll buy them! Will 5 credits be enough?" The kids empty out their pockets and pool the money together. You can probably pick up some from Republic space. On the other hand, this job is probably not worth the time and effort.`
+			`	The kids look at you expectantly...`
+			choice
+				`	"Sure, I'll bring you some acorn cookies from human space."`
+				`	"Sorry, I'm too busy to get you acorn cookies."`
+					goto busy
+			`	"Yay!" The kids are cheering and dancing. Hopefully you won't have to go too far out of your way to get them those cookies.`
+				accept
+			label busy
+			`	Another kid shrieks, "Unfettered human!" Soon, they're all yelling and screaming "Unfettered human! Unfettered human!" The kids run away while laughing at you.`
+				decline
+	to complete
+		has "House Unuk Cookie Crook 2: done"
+	on complete
+		payment 5
+		dialog `You deliver a package of acorn cookies to the kids and collect your payment of <payment>. It's not much, but at least you made some kids happy.`
+
+mission "House Unuk Cookie Crook 2"
+	landing
+	name "Acorn Cookie Crook"
+	description "Find the <npc> near <waypoints> and retrieve the stolen acorn cookies. Then return to <origin>."
+	source "Prime"
+	waypoint "Rigel"
+	cargo "Stolen Acorn Cookies" 50
+	blocked "Cargo: You need <capacity> to accept the next mission."
+	to offer
+		has "House Unuk Cookie Crook 1: active"
+	on offer
+		conversation
+			`You check the spaceport convenience store for acorn cookies but they're out of stock. The manager tells you that none of the markets or supermarkets on <origin> have them available! A pirate ship called the <npc> stole the most recent shipment of acorn cookies near <waypoint>. The prices on the cookies are skyrocketing, so it may be worthwhile to track down that shipment.`
+				accept
+	on enter Rigel
+		dialog `The ship that stole the acorn cookies fled here...`
+	npc
+		government "Bounty"
+		system Rigel
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 1
+			commodities "Food"
+			variant
+				"Marauder Firebird (Hai)" 2
+				Dagger 2
+	npc board
+		government "Bounty"
+		system Rigel
+		personality target waiting staying plunders harvests
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			commodities "Food"
+			variant
+				"Marauder Behemoth (Hai)"
+		dialog `You've managed to retrieve the stolen acorn cookies! Bring them back to <destination>.`
+	on fail
+		fail "House Unuk Cookie Crook 1"
+		dialog `[MISSION FAILED]: Looks like you won't be able to deliver those cookies anytime soon. If this were a game, you could load a save file and try again.`
+	on complete
+		payment 1000000
+		conversation
+			`You offer 50 tons of acorn cookies to the spaceport convenience store. The manager quietly pays you <payment> for them. The people here must really like these acorn cookies. You make sure to keep a package for that other client you originally needed cookies for.`

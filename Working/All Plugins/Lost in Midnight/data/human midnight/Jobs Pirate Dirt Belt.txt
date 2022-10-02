@@ -257,7 +257,6 @@ mission "Escort Core Pirate to Dirt Belt"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
-		
 
 
 mission "Escort North Pirate Home"
@@ -519,26 +518,35 @@ mission "Jail Break A"
 	job
 	repeat
 	name "Jail Break"
-	description "A pirate warlord has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station. Disable and board the <npc>, set the warlord free, and bring him to <destination>. The reward for completing this jail break is <payment>."
+	description "A pirate warlord has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station in the <waypoints> system. Disable and board the <npc>, set the warlord free, and bring him to <destination>. The reward for completing this jail break is <payment>."
 	passengers 1
 	source
 		government "Pirate"
 		attributes "dirt belt pirate"
+	waypoint "Zosma"
 	to offer
 		"reputation: Pirate" > 0
 		random < 10
 		"combat rating" > 1000
+	on waypoint
+		dialog `The <npc> is here! Board the ship and release the pirate warlord.`
+	npc
+		government "Republic"
+		personality target waiting timid uninterested
+		system "Zosma"
+		fleet
+			fighters "republic fighter"
+			variant
+				"Lance" 4
+				"Combat Drone" 6
 	npc board
 		government "Republic"
-		personality target entering timid uninterested
+		personality target waiting timid uninterested
 		system "Zosma"
 		fleet
 			names "republic capital"
-			fighters "republic fighter"
-			variant 2
+			variant
 				"Carrier"
-			variant 1
-				"Carrier (Mark II)"
 		dialog "You find the captured warlord in the brig and take him back to your ship. Time to deliver him to <planet>."
 	on visit
 		dialog phrase "generic bounty hunting boarding on visit"
@@ -553,15 +561,16 @@ mission "Jail Break B"
 	repeat
 	minor
 	name "Jail Break"
-	description "A pirate captain has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station. Disable and board the <npc>, set the warlord free, and bring her to <destination>. The reward for completing this jail break is <payment>."
+	description "A pirate captain has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station in the <waypoints> system. Disable and board the <npc>, set the warlord free, and bring her to <destination>. The reward for completing this jail break is <payment>."
 	passengers 1
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
 	source
 		government "Pirate"
 		attributes "dirt belt pirate"
+	waypoint "Zosma"
 	to offer
 		"reputation: Pirate" > 0
-		random < 5
+		random < 5 - "Jail Break B: done"
 		"combat rating" > 1000
 	on offer
 		conversation
@@ -571,6 +580,8 @@ mission "Jail Break B"
 					accept
 				`	(Refuse to help them.)`
 					decline
+	on waypoint
+		dialog `The <npc> is here! Board the ship and release the pirate warlord.`
 	npc
 		government "Pirate"
 		personality escort launching timid
@@ -588,17 +599,23 @@ mission "Jail Break B"
 				"Marauder Leviathan (Weapons)"
 			variant
 				"Marauder Leviathan (Engines)"
+	npc
+		government "Republic"
+		personality target waiting timid uninterested
+		system "Zosma"
+		fleet
+			fighters "republic fighter"
+			variant
+				"Lance" 4
+				"Combat Drone" 6
 	npc board
 		government "Republic"
 		personality target entering timid uninterested
 		system "Zosma"
 		fleet
 			names "republic capital"
-			fighters "republic fighter"
-			variant 2
+			variant
 				"Carrier"
-			variant 1
-				"Carrier (Mark II)"
 		dialog "You find the captured warlord in the brig and take her back to your ship. Time to deliver her to <planet>."
 	on visit
 		dialog phrase "generic bounty hunting boarding on visit"
@@ -612,26 +629,35 @@ mission "Jail Break B"
 mission "Jail Break C"
 	job
 	name "Jail Break"
-	description "A pirate warlord has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station. Disable and board the <npc>, set the warlord free, and bring him to <destination>. The reward for completing this jail break is 400,000 credits."
+	description "A pirate warlord has been taken captive aboard the <npc> and is being transported to the prison on Huginn Station in the <waypoints> system. Disable and board the <npc>, set the warlord free, and bring him to <destination>. The reward for completing this jail break is <payment>."
 	passengers 1
 	source
 		government "Pirate"
 		attributes "dirt belt pirate"
+	waypoint "Zosma"
 	to offer
 		"reputation: Pirate" < 0
 		random < 5
 		"combat rating" > 1000
+	on waypoint
+		dialog `The <npc> is here! Board the ship and release the pirate warlord.`
+	npc
+		government "Republic"
+		personality target waiting timid uninterested
+		system "Zosma"
+		fleet
+			fighters "republic fighter"
+			variant
+				"Lance" 4
+				"Combat Drone" 6
 	npc board
 		government "Republic"
 		personality target entering timid uninterested
 		system "Zosma"
 		fleet
 			names "republic capital"
-			fighters "republic fighter"
-			variant 2
+			variant
 				"Carrier"
-			variant 1
-				"Carrier (Mark II)"
 		dialog "You find the captured warlord in the brig and take him back to your ship. Time to deliver him to <planet>."
 	on visit
 		dialog phrase "generic bounty hunting boarding on visit"
@@ -833,7 +859,13 @@ mission "Lares Exploring"
 	repeat
 	source "Lares"
 	to offer
-		random < 15
+		or
+			and
+				not "Lares Exploring: failed"
+				random < 15
+			and
+				has "Lares Exploring: failed"
+				random < 10
 	on offer
 		conversation
 			`It's a beautiful day for a hike...`
@@ -1777,7 +1809,8 @@ mission "Dirt Belt Assassination [3]"
 		system
 			distance 1 2
 		fleet
-			names "republic small"
+			names "republic capital"
+			fighters "republic fighter"
 			variant
 				"Cruiser"
 				"Combat Drone" 4

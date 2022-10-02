@@ -24,6 +24,7 @@ mission "Sheragi Shenanigans: Sapphire Shield 1"
 		has "Sheragi Archaeology: Epilogue: done"
 		random < 25
 	on offer
+		log "People" "Dr. Wesley Stumpernickle" `An associate archaologist at Alexandria, he discovered the Sheragi ship "Sapphire Shield".`
 		conversation
 			scene "ship/sapphire shield"
 			`While relaxing at the spaceport bar, the news broadcast reports on the Sheragi ship "Sapphire Shield." Discovered by Dr. Wesley Stumpernickle, associate archaologist at Alexandria. The ship is now on tour in the Paradise worlds, giving many people their first opportunity to see an alien vessel up close.`
@@ -151,6 +152,7 @@ mission "Sheragi Shenanigans: Sapphire Shield 4"
 				accept
 	
 	on decline
+		log `I learned that the "Sapphire Shield" is a fake Sheragi ship and exposed Dr. Stumpernickle's trickery.`
 		event "sapphire shield financial ruin"
 	
 	npc accompany save
@@ -159,9 +161,11 @@ mission "Sheragi Shenanigans: Sapphire Shield 4"
 			target launching escort
 		ship "Sapphire Shield" "Sapphire Shield"
 	on fail
+		log `I learned that the "Sapphire Shield" is a fake Sheragi ship. I agreed to accept Dr. Stumpernickle's bribery, but he never reached the Alexandria to arrange payment.`
 		"reputation: Merchant" -= 100
 		dialog `The <npc> never reached its destination. Rumors spread that you hijacked the ship yourself.`
 	on complete
+		log `I learned that the "Sapphire Shield" is a fake Sheragi ship and accepted Dr. Stumpernickle's bribery.`
 		"salary: Sapphire Shield" = 100
 		dialog "Dr. Stumpernickle sets up an account to pay you 100 credits per day (3000 per month), as agreed."
 		
@@ -232,17 +236,19 @@ mission "Sheragi Shenanigans: Sapphire Shield epilogue A"
 		set "Randomize Sheragi Shenanigans: Sapphire Shield epilogue"
 
 	on decline
+		log `I purchased the "Sapphire Shield" from a used ship market on a pirate planet.`
 		"Midnight Market" ++
 		payment -80000000
 		give ship "Sapphire Shield" "Sapphire Shield"
 
 	on accept
+		log `I stole the "Sapphire Shield" from a used ship market on a pirate planet.`
 		"Midnight Market" -= 3
 		give ship "Sapphire Shield" "Sapphire Shield"
-		
+
 	on enter
 		dialog `Looks like the used ship dealer's friends were waiting to pay you back for stealing the Sapphire Shield.`
-	
+
 	npc kill
 		government "Bounty Hunter"
 		personality waiting staying vindictive coward
@@ -283,10 +289,12 @@ mission "Sheragi Shenanigans: Sapphire Shield Epilogue B"
 			target launching escort
 		ship "Sapphire Shield" "Sapphire Shield"
 	on abort
+		log `I agreed to escort the "Sapphire Shield". It never reached it's destination...`
 		"reputation: Merchant" -= 100
 		clear "salary: Sapphire Shield"
 		dialog `The <npc> never reached its destination. Rumors spread that you hijacked the ship yourself.`
 	on fail
+		log `I agreed to escort the "Sapphire Shield". It never reached it's destination...`
 		"reputation: Merchant" -= 100
 		clear "salary: Sapphire Shield"
 		dialog `The <npc> never reached its destination. Rumors spread that you hijacked the ship yourself.`
@@ -708,3 +716,662 @@ mission "Diamondback Pirate"
 
 
 
+mission "Sheragi Shenanigans: Counterfeits"
+	minor
+	name "Sheragi: Counterfeits"
+	description "Search the pirate worlds to track down the origins of the fake Sheragi outfits and stop their production. Once you have completed your investigation, report to <destination>."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		attributes "station"
+	destination "Lagrange"
+	to offer
+		or
+			has "Sheragi Shenanigans: Sapphire Shield 4: aborted"
+			has "Sheragi Shenanigans: Sapphire Shield 4: failed"
+			has "Sheragi Shenanigans: Sapphire Shield epilogue A: offered"
+			has "Sheragi Shenanigans: Sapphire Shield Epilogue B: aborted"
+			has "Sheragi Shenanigans: Sapphire Shield Epilogue B: failed"
+		random < 70
+	on offer
+		log `Yarthis, the Quarg who watched over Albert Foster's excavation of the Sheragi ruins, has informed me that counterfeiters are distributing fake Sheragi outfits to pirates. If something isn't done to stop this, the Quarg will take action.`
+		conversation
+			scene "thumbnail/wardragon"
+			`While looking out a view port, you notice a Quarg Wardragon docking at the station. A short while later, one of them visits you. "Captain <first> <last>, I have been searching for you."`
+			choice
+				`	"Do I know you?"`
+				`	"You have the wrong human."`
+					goto wrong
+			`	"I am Yarthis Amorthee Dek-Farsook Nai," it says. "I accompanied the xenobiologist, Amelia Lee, to the archaeologist Albert Foster's Sheragi exhumation site on Zug in the Zubeneschamali system. I trust you can recollect these events?"`
+			choice
+				`	"Why were you looking for me?"`
+					goto counterfeit
+			label wrong
+			`	"Do not play games with me, human!"`
+			``
+			label counterfeit
+			scene "outfit/fake pwave cannon"
+			``
+			`	Some other Quarg bring forth a Fake Sheragi Particle Waveform Cannon. It reminds you of the fake Sheragi outfits that were on the Sapphire Shield.`
+			`	"I warned you," Yarthis begins to speak, "You were digging in a graveyard, Captain. The dead must be given their due respect. And yet this abomination was found on one of your pirate vessels."`
+			`	Something about Yarthis' wording seems disturbing.`
+			`	"Find and stop the production of these counterfeits, or there will be repercussions."`
+			`	As Yarthis and the other Quarg begin hauling the Sheragi Particle Waveform Cannon away, a thought occurs to you:`
+			choice
+				`	"Wait, are you holding all of humanity accountable for this?"`
+				`	"Wait, aren't you going to leave the fake cannon behind?"`
+			`	Yarthis says, "I will wait to hear the results of your investigation on <planet>. Do not disappoint me, Captain <first> <last>." The Quarg leaves without acknowledging your question.`
+				accept
+	to complete
+		has "Sheragi Shenanigans: Counterfeits Infiltration: done"
+
+
+mission "Sheragi Shenanigans: Counterfeits (North)"
+	minor
+	name "Sheragi: Counterfeiter"
+	description "Find the <npc> near <system> and board it to question the captain about their counterfeit Sheragi weapons. Return to <destination> to collect the bounty, <payment>."
+	source
+		government "Republic"
+		attributes "frontier"
+	to offer
+		has "Sheragi Shenanigans: Counterfeits: active"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/fake pwave cannon"
+			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship sweetens the deal.`
+				accept
+	npc
+		government "Pirate"
+		system
+			distance 4 5
+		personality plunders harvests
+			confusion 20
+		fleet "Large Northern Pirates"
+	npc board
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders
+		ship "Marauder Leviathan (Sheragi Counterfeit)" "Storm Kraken"
+		dialog `The captain says the Particle Waveform Cannons were already installed on the ship when he stole it. You aren't going to learn anything useful from him.`
+	on fail
+		dialog `[MISSION FAILED]: You failed to board the target before it was destroyed. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 250000
+		conversation
+			scene "outfit/fake pwave cannon"
+			`The government of <planet> rewards you with <payment> for eliminating the <npc>. However, you are no closer to tracking down the source of the counterfeit Sheragi weapons.`
+
+
+mission "Sheragi Shenanigans: Counterfeits (Core)"
+	minor
+	name "Sheragi: Counterfeiter"
+	description "Find the <npc> near <system> and board it to question the captain about their counterfeit Sheragi weapons. Return to <destination> to collect the bounty, <payment>."
+	source
+		government "Syndicate"
+		attributes "frontier"
+	to offer
+		has "Sheragi Shenanigans: Counterfeits: active"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/fake pwave cannon"
+			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship is icing on the cake.`
+				accept
+	npc
+		government "Pirate"
+		system
+			distance 4 5
+		personality plunders harvests
+			confusion 20
+		fleet "Large Core Pirates"
+	npc board
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders
+		ship "Marauder Vanguard (Sheragi Counterfeit)" "Lightning Rod"
+		dialog `The captain says the Particle Waveform Cannons were salvaged from a derelict ship. You aren't going to learn anything useful from him.`
+	on fail
+		dialog `[MISSION FAILED]: You failed to board the target before it was destroyed. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 250000
+		conversation
+			scene "outfit/fake pwave cannon"
+			`The government of <planet> rewards you with <payment> for eliminating the <npc>. However, you are no closer to tracking down the source of the counterfeit Sheragi weapons.`
+
+
+mission "Sheragi Shenanigans: Counterfeits (South)"
+	minor
+	name "Sheragi: Counterfeiter"
+	description "Find the <npc> near <system> and board it to question the captain about their counterfeit Sheragi weapons. Return to <destination> to collect the bounty, <payment>."
+	source
+		government "Free Worlds"
+		attributes "frontier"
+	to offer
+		has "Sheragi Shenanigans: Counterfeits: active"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/fake pwave cannon"
+			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship is gravy.`
+				accept
+	npc
+		government "Pirate"
+		system
+			distance 4 5
+		personality plunders harvests
+			confusion 20
+		fleet "Large Southern Pirates"
+	npc board
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying plunders
+		ship "Marauder Falcon (Sheragi Counterfeit)" "Thunder Bird"
+		dialog `The captain says the Particle Waveform Cannons were plundered from another pirate ship. You aren't going to learn anything useful from him.`
+	on fail
+		dialog `[MISSION FAILED]: You failed to board the target before it was destroyed. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 250000
+		conversation
+			scene "outfit/fake pwave cannon"
+			`The government of <planet> rewards you with <payment> for eliminating the <npc>. However, you are no closer to tracking down the source of the counterfeit Sheragi weapons.`
+
+
+mission "Sheragi Shenanigans: Counterfeits (Mammon)"
+	minor
+	autosave
+	name "Sheragi: Counterfeiter"
+	description "Infiltrate the counterfeiter's manufacturing facility on <planet> to steal their prototype and computer data."
+	source
+		attributes "spaceport"
+	destination "Smuggler's Den"
+	to offer
+		has "Sheragi Shenanigans: Counterfeits (North): done"
+		has "Sheragi Shenanigans: Counterfeits (Core): done"
+		has "Sheragi Shenanigans: Counterfeits (South): done"
+		"credits" > 10000000
+		random < 70
+	on offer
+		conversation
+			scene "outfit/fake pwave cannon"
+			`You receive a message bearing the symbol of familiar stylized reptilian eye. "You seem to be hunting pirates armed with a certain type of weapon. Information on where those weapons are coming from can be yours, for a mere five million credits."`
+			`	You remember the last time you dealt with this information broker. The information you purchased was expensive, but accurate. What will you do?`
+			choice
+				`	"I'll pay your price."`
+					goto deal
+				`	"Can't you lower the price?"`
+			`	"Do you not recall my policy on the price? It is non-negotiable. You will pay my price or I will rescind my offer. The choice is yours."`
+			choice
+				`	"Alright, I'll pay your price."`
+					goto deal
+				`	"No deal."`
+			`	You hear laughter. "I shall enjoy watching you stumble blindly about the galaxy in search of what could have been handed to you." The communication cuts off, leaving only the slowly fading afterimage of the stylized reptilian eye.`
+				decline
+			label deal
+			scene "outfit/map"
+			`	The image of the reptilian eye is replaced with a map of the galaxy. It slowly zooms in to the south, then the Men system, and finally Smuggler's Den. "You'll find what you're looking for in one of the manufacturing facilities." The map zooms in to a specific part of the old space station. "Their Particle Waveform Cannons are made to order. If you steal their prototype and data file, they will not be able to manufacture more. The facility is lightly defended, but the station is not. Oh, I would advise against informing your Quarg friend, unless you want to see everyone on the station die."`
+			`	You remember your meeting with Yarthis. From its demeanor, the Quarg probably would destroy the station just to stop the counterfeiter.`
+			`	"See you, Captain <last>. Remember I always do." The communication cuts off, leaving only the slowly fading afterimage of the stylized reptilian eye. You notice that no money has been withdrawn from your account... yet.`
+				accept
+	on accept
+		log `Mammon has sold me information regarding the counterfeiters distributing fake Sheragi outfits. I'll have to pay the information broker back eventually for this valuable lead.`
+		set "sheragi shenanigans paid mammon"
+	on decline
+		log `Mammon offered me information regarding the counterfeiters distributing fake Sheragi outfits. I declined the offer. Hopefully I can track down the source on my own before the Quarg get involved.`
+	npc
+		government "Pirate"
+		system Men
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Modified Argosy (Sheragi Counterfeit)" "Zeus"
+		ship "Marauder Quicksilver (Sheragi Counterfeit)" "Raiden"
+		ship "Marauder Raven (Sheragi Counterfeit)" "Thor"
+	on complete
+		dialog `You've arrived at <planet>. Head for the spaceport at night when you're ready to infiltrate the counterfeiters facility.`
+
+mission "Sheragi Shenanigans: Mammon Payment"
+	landing
+	invisible
+	to offer
+		random < 10
+		has "Sheragi Shenanigans: Counterfeits: done"
+		has "sheragi shenanigans paid mammon"
+		"credits" >= 6000000
+	on offer
+		payment -5000000
+		conversation
+			`You receive a message informing you of a large transaction: 5 million credits. With it, a message containing only the image of a reptilian eye logo. It seems Mammon's crew have withdrawn the money you agreed to pay for the information about the Sheragi counterfeiters.`
+				decline
+
+
+mission "Sheragi Shenanigans: Counterfeits Infiltration"
+	name "Sheragi: Counterfeiter"
+	description "Destroy any counterfeiters armed with the Fake Sheragi Cannons and deliver the prototype and data files to <destination>."
+	source "Smuggler's Den"
+	destination "Lagrange"
+	cargo "Fake Sheragi Prototype" 35
+	blocked "Cargo: You need <capacity> to steal the Fake Sheragi Cannon."
+	to offer
+		has "Sheragi Shenanigans: Counterfeits (Mammon): done"
+	on offer
+		conversation
+			`You observe the entrance to the the manufacturing facility indicated by your information broker. As the evening hours roll in, you see a man lock up the facility. You remember him from Dr. Stumpernickle's entourage. Perhaps he was the source for the Sapphire Shield's outfits as well. After a moment, he's gone and the area is deserted.`
+			branch "Quantum Key Blade"
+				has "Bearer of The Blade"
+			label padlock
+			``
+			`There's a chain with a combination padlock. Very low tech.`
+			choice
+				`	(Try to crack the code.)`
+				`	(Just use your trusty pocket laser razor.)`
+					goto laserrazor
+			branch laserrazor
+				random < 50
+			`	You try to figure out the combination, but fail...`
+				goto padlock
+			label laserrazor
+			`	The chain falls away, rattling loudly through the silence of the deserted sector...`
+			label seal
+			``
+			`	The door itself has an electronic security seal. Far more challenging than the padlock.`
+			choice
+				`	(Try to hack the electronic seal.)`
+				`	(Just blow the door open.)`
+					goto blow
+			branch unseal
+				random < 20 + "How to Hack a Science Drone For Fun and Profit"
+			`	You try to hack the electronic seal, but fail...`
+				goto seal
+			label unseal
+			`	There is a loud clang as the electronic seal unlocks. The door slowly slides open, granting you access to the facility.`
+			label enter
+			choice
+				`	(Enter the facility.)`
+			scene "outfit/fake pwave cannon"
+			``
+			`	The "manufacturing facility" is little more than a workshop. A Fake Sheragi Cannon dominates one side of the room, while an unfinished cannon occupies the opposite side of the chamber. The complete cannon is probably the prototype.`
+			label computer
+			``
+			`	Looking around the room, you see a There May Be Riots poster, a digital magazine with the Sapphire Shield pictured on the cover, a print out of Albert Foster's interview on the Emerald Sword, and a Subsi Subsidurial Plushie.`
+			`	You find a computer. When you turn it on, it asks for a password...`
+			choice
+				`	T H E R E M A Y B E R I O T S`
+				`	S A P P H I R E S H I E L D`
+				`	A L B E R T F O S T E R`
+				`	E M E R A L D S W O R D`
+				`	S U B S I`
+					goto data
+			``
+			`	The password you entered didn't work...`
+				goto computer
+			label data
+			``
+			`	You get into the computer's data files. After searching, you find the prototype blueprints for all the fake Sheragi outfits. You download a copy and delete the originals. It's time to leave.`
+				accept
+			label blow
+			scene "outfit/fragmentation grenades"
+			`	You decide to brute force your way in. A box of grenades does the job, but you're certain someone must have heard the blast. The remains of the door lie open before you...`
+				goto enter
+			label "Quantum Key Blade"
+			`	You have the Quantum Key Blade...`
+			choice
+				`	(Use the Quantum Key Blade.)`
+				`	(Don't use the Quantum Key Blade.)`
+					goto padlock
+			scene "outfit/quantum key blade"
+			`	Taking the orbital direction of the space station into account, you activate the Quantum Key Blade and put yourself out of phase with the rest of reality.`
+				goto enter
+	on enter
+		dialog `A fleet of pirate ships is heading right for you. You might have done something to attract the counterfeiter's attention while you were in their workshop.`
+	npc
+		government "Pirate"
+		system Men
+		personality waiting plunders unconstrained nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Berserker (Afterburner)"
+				"Hawk (Rocket)"
+				"Fury (Bomber)"
+				"Wasp (Meteor)"
+				"Sparrow" 2
+	npc kill
+		government "Pirate"
+		system Men
+		personality target waiting plunders unconstrained nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Marauder Firebird (Sheragi Counterfeit)"
+				"Marauder Manta (Sheragi Counterfeit)"
+				"Marauder Splinter (Sheragi Counterfeit)"
+	on visit
+		dialog `There may still be counterfeiters armed with Fake Sheragi Cannons or the prototype is on one of your escorts that hasn't arrived in the system.`
+	on complete
+		conversation
+			scene "outfit/fake pwave cannon"
+			`You present Yarthis with the prototype of the Fake Sheragi Cannon and the blueprints used by the counterfeiters. With this, the counterfeiters should no longer be able to manufacture these fake Sheragi outfits. The Quarg is satisfied with the results of your investigation.`
+
+mission "Sheragi Shenanigans: Counterfeits (Mammon Declined)"
+	minor
+	invisible
+	deadline 2
+	source
+		attributes "frontier"
+	to offer
+		has "Sheragi Shenanigans: Counterfeits (Mammon): declined"
+		random < 5
+	on offer
+		"reputation: Quarg" --
+	npc
+		government "Quarg"
+		system
+			distance 1 2
+		personality waiting vindictive
+		fleet
+			names "quarg"
+			cargo 3
+			variant
+				"Quarg Wardragon"
+	npc
+		government "Pirate"
+		personality waiting plunders harvests
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Sparrow" 4
+			variant
+				"Sparrow (Gatling)" 3
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant 12
+				"Modified Argosy (Sheragi Counterfeit)"
+			variant 3
+				"Marauder Quicksilver (Sheragi Counterfeit)"
+				"Wasp" 2
+			variant 3
+				"Marauder Raven (Sheragi Counterfeit)"
+				"Hawk" 2
+			variant 2
+				"Marauder Firebird (Sheragi Counterfeit)"
+				"Fury" 2
+			variant 2
+				"Marauder Manta (Sheragi Counterfeit)"
+				"Wasp (Proton)" 2
+			variant 2
+				"Marauder Splinter (Sheragi Counterfeit)"
+				"Berserker" 2
+			variant 1
+				"Marauder Falcon (Sheragi Counterfeit)"
+				"Fury (Bomber)" 2
+			variant 1
+				"Marauder Leviathan (Sheragi Counterfeit)"
+				"Berserker (Afterburner)" 2
+			variant 1
+				"Marauder Vanguard (Sheragi Counterfeit)"
+				"Hawk (Rocket)" 2
+
+
+
+ship "Modified Argosy" "Modified Argosy (Sheragi Counterfeit)"
+	outfits
+		"A250 Atomic Thruster"
+		"A255 Atomic Steering"
+		"Anti-Missile Turret"
+		"Fake Sheragi Cannon" 2
+		"Fragmentation Grenades" 5
+		Hyperdrive
+		"KP-6 Photovoltaic Panel" 2
+		"LP072a Battery Pack"
+		"Laser Rifle" 10
+		"Laser Turret"
+		"Meteor Missile" 60
+		"Meteor Missile Launcher" 2
+		"NT-200 Nucleovoltaic"
+		"S-970 Regenerator"
+		"Security Station"
+		"Small Radar Jammer"
+
+
+ship "Marauder Falcon" "Marauder Falcon (Sheragi Counterfeit)"
+	sprite "ship/mfalconw"
+	thumbnail "thumbnail/mfalconw"
+	add attributes
+		"weapon capacity" 35
+	outfits
+		"Fake Sheragi Cannon" 6
+		"Heavy Anti-Missile Turret" 2
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"S-970 Regenerator"
+		"Liquid Helium Cooler"
+		"Outfits Expansion" 3
+		"Security Station" 2
+		"Laser Rifle" 80
+		"A370 Atomic Thruster"
+		"A525 Atomic Steering"
+		Hyperdrive
+	engine -16.5 143
+	engine 16.5 143
+	gun -16 -86.5 "Fake Sheragi Cannon"
+	gun 16 -86.5 "Fake Sheragi Cannon"
+	gun -19 -76.5 "Fake Sheragi Cannon"
+	gun 19 -76.5 "Fake Sheragi Cannon"
+	gun -24.5 -66.5 "Fake Sheragi Cannon"
+	gun 24.5 -66.5 "Fake Sheragi Cannon"
+	turret -16 -29
+	turret 16 -29
+	turret -50 39.5 "Heavy Anti-Missile Turret"
+	turret 50 39.5 "Heavy Anti-Missile Turret"
+
+
+ship "Marauder Firebird" "Marauder Firebird (Sheragi Counterfeit)"
+	sprite "ship/mfirebirdw"
+	thumbnail "thumbnail/mfirebirdw"
+	add attributes
+		"weapon capacity" 35
+	outfits
+		"A250 Atomic Thruster"
+		"A525 Atomic Steering"
+		"Anti-Missile Turret"
+		"Fake Sheragi Cannon" 2
+		"Fragmentation Grenades" 5
+		"Fusion Reactor"
+		"Heavy Laser Turret"
+		Hyperdrive
+		"LP072a Battery Pack"
+		"Laser Rifle" 25
+		"Liquid Helium Cooler"
+		"Meteor Missile" 60
+		"Meteor Missile Launcher" 2
+		"Outfits Expansion"
+		"S-970 Regenerator"
+		"Security Station"
+		"Small Radar Jammer"
+		Supercapacitor
+	gun -27.5 -33.5 "Fake Sheragi Cannon"
+	gun 27.5 -33.5 "Fake Sheragi Cannon"
+	gun -38.5 -18.5 "Meteor Missile Launcher"
+	gun 38.5 -18.5 "Meteor Missile Launcher"
+	turret 0 -44 "Heavy Laser Turret"
+	turret 0 -2.5 "Anti-Missile Turret"
+
+
+ship "Marauder Leviathan" "Marauder Leviathan (Sheragi Counterfeit)"
+	sprite "ship/mleviathanw"
+	thumbnail "thumbnail/mleviathanw"
+	add attributes
+		"weapon capacity" 35
+	outfits
+		"Fake Sheragi Cannon" 4
+		"Heavy Laser Turret" 2
+		"Heavy Anti-Missile Turret" 2
+		"Fusion Reactor"
+		"KP-6 Photovoltaic Array"
+		"LP144a Battery Pack"
+		"S-270 Regenerator"
+		"S-970 Regenerator"
+		"Large Radar Jammer"
+		"Liquid Helium Cooler"
+		"Outfits Expansion" 2
+		Ramscoop
+		"Security Station" 2
+		"Laser Rifle" 69
+		"Ionic Afterburner"
+		"A370 Atomic Thruster"
+		"A525 Atomic Steering"
+		Hyperdrive
+	gun -37.5 -41.5 "Fake Sheragi Cannon"
+	gun 37.5 -41.5 "Fake Sheragi Cannon"
+	gun -49.5 -29.5 "Fake Sheragi Cannon"
+	gun 49.5 -29.5 "Fake Sheragi Cannon"
+	turret -14.5 -11.5 "Heavy Laser Turret"
+	turret 14.5 -11.5 "Heavy Laser Turret"
+	turret -26 11.5 "Heavy Anti-Missile Turret"
+	turret 26 11.5 "Heavy Anti-Missile Turret"
+
+
+ship "Marauder Manta" "Marauder Manta (Sheragi Counterfeit)"
+	sprite "ship/mmantaw"
+	thumbnail "thumbnail/mmantaw"
+	add attributes
+		"weapon capacity" 20
+	outfits
+		"A250 Atomic Thruster"
+		"A375 Atomic Steering"
+		"Anti-Missile Turret"
+		"Fake Sheragi Cannon" 2
+		"Fission Reactor"
+		"Fragmentation Grenades" 5
+		Hyperdrive
+		"LP144a Battery Pack"
+		"Laser Rifle" 11
+		"Liquid Nitrogen Cooler"
+		"Meteor Missile" 120
+		"Meteor Missile Launcher" 4
+		"S-970 Regenerator"
+		"Water Coolant System"
+	engine -33.5 38
+	engine 33.5 38
+	gun -66 -34 "Fake Sheragi Cannon"
+	gun 66 -34 "Fake Sheragi Cannon"
+	gun -27 -35 "Meteor Missile Launcher"
+	gun 27 -35 "Meteor Missile Launcher"
+	gun -20 -35 "Meteor Missile Launcher"
+	gun 20 -35 "Meteor Missile Launcher"
+	turret 0 -29 "Anti-Missile Turret"
+
+
+ship "Marauder Quicksilver" "Marauder Quicksilver (Sheragi Counterfeit)"
+	sprite "ship/mquicksilverw"
+	thumbnail "thumbnail/mquicksilverw"
+	add attributes
+		"weapon capacity" 15
+	outfits
+		"A250 Atomic Thruster"
+		"A255 Atomic Steering"
+		"Fake Sheragi Cannon" 2
+		"Fission Reactor"
+		Hyperdrive
+		"LP036a Battery Pack"
+		"Laser Rifle"
+		"Liquid Nitrogen Cooler"
+		"S-270 Regenerator"
+		"Security Station" 4
+	engine -17 54
+	engine 17 54
+
+
+ship "Marauder Raven" "Marauder Raven (Sheragi Counterfeit)"
+	sprite "ship/mravenw"
+	thumbnail "thumbnail/mravenw"
+	add attributes
+		"weapon capacity" 30
+	outfits
+		"A250 Atomic Thruster"
+		"A375 Atomic Steering"
+		"Anti-Missile Turret"
+		"Breeder Reactor"
+		"Fake Sheragi Cannon" 2
+		"Fragmentation Grenades" 5
+		Hyperdrive
+		Javelin 400
+		"Javelin Pod" 2
+		"Laser Rifle" 7
+		"Liquid Nitrogen Cooler"
+		"Outfits Expansion"
+		"S-270 Regenerator"
+		"Security Station"
+		Supercapacitor 4
+	gun -11 -33 "Fake Sheragi Cannon"
+	gun 11 -33 "Fake Sheragi Cannon"
+	gun -17 -28 "Javelin Pod"
+	gun 17 -28 "Javelin Pod"
+	turret 0 -19 "Anti-Missile Turret"
+
+
+ship "Marauder Splinter" "Marauder Splinter (Sheragi Counterfeit)"
+	sprite "ship/msplinterw"
+	thumbnail "thumbnail/msplinterw"
+	add attributes
+		"weapon capacity" 15
+	outfits
+		"A250 Atomic Thruster"
+		"A525 Atomic Steering"
+		"Anti-Missile Turret"
+		"Cooling Ducts"
+		"Fake Sheragi Cannon" 2
+		"Fragmentation Grenades" 10
+		"Fusion Reactor"
+		Hyperdrive
+		"LP072a Battery Pack"
+		"Laser Rifle" 22
+		"Liquid Nitrogen Cooler"
+		"Meteor Missile" 60
+		"Meteor Missile Launcher" 2
+		"Modified Blaster Turret" 2
+		"S-970 Regenerator"
+		"Security Station"
+		"Water Coolant System"
+	gun -7.5 -98 "Fake Sheragi Cannon"
+	gun 7.5 -98 "Fake Sheragi Cannon"
+	gun -15 -82 "Meteor Missile Launcher"
+	gun 15 -82 "Meteor Missile Launcher"
+	turret -17 -28 "Modified Blaster Turret"
+	turret 0 -28 "Anti-Missile Turret"
+	turret 17 -28 "Modified Blaster Turret"
+
+
+ship "Marauder Vanguard" "Marauder Vanguard (Sheragi Counterfeit)"
+	sprite "ship/marauder vanguardw"
+	add attributes
+		"weapon capacity" 35
+	outfits
+		"Fake Sheragi Cannon" 7
+		"Anti-Missile Turret"
+		"Fusion Reactor"
+		"LP144a Battery Pack"
+		"S-970 Regenerator"
+		"Liquid Helium Cooler"
+		"Cooling Ducts"
+		"Outfits Expansion" 2
+		Ramscoop
+		"Security Station"
+		"Laser Rifle" 25
+		"Small Radar Jammer"
+		"A370 Atomic Thruster"
+		"A375 Atomic Steering"
+		Hyperdrive

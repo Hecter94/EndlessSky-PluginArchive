@@ -42,7 +42,7 @@ mission "Drone Hacking 1"
 mission "Drone Hacking 10"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 10
+		has "How to Hack a Science Drone For Fun and Profit" >= 8
 	on offer
 		"salary: Hackerz" = 10
 		conversation
@@ -53,7 +53,7 @@ mission "Drone Hacking 10"
 mission "Drone Hacking 100"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 20
+		has "How to Hack a Science Drone For Fun and Profit" >= 16
 	on offer
 		"salary: Hackerz" = 100
 		conversation
@@ -64,7 +64,7 @@ mission "Drone Hacking 100"
 mission "Drone Hacking 1000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 40
+		has "How to Hack a Science Drone For Fun and Profit" >= 32
 	on offer
 		"salary: Hackerz" = 1000
 		conversation
@@ -75,7 +75,7 @@ mission "Drone Hacking 1000"
 mission "Drone Hacking 2000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 80
+		has "How to Hack a Science Drone For Fun and Profit" >= 64
 	on offer
 		"salary: Hackerz" = 2000
 		conversation
@@ -86,7 +86,7 @@ mission "Drone Hacking 2000"
 mission "Drone Hacking 3000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 160
+		has "How to Hack a Science Drone For Fun and Profit" >= 128
 	on offer
 		"salary: Hackerz" = 3000
 		conversation
@@ -97,7 +97,7 @@ mission "Drone Hacking 3000"
 mission "Drone Hacking 4000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 320
+		has "How to Hack a Science Drone For Fun and Profit" >= 256
 	on offer
 		"salary: Hackerz" = 4000
 		conversation
@@ -108,7 +108,7 @@ mission "Drone Hacking 4000"
 mission "Drone Hacking 5000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 640
+		has "How to Hack a Science Drone For Fun and Profit" >= 512
 	on offer
 		"salary: Hackerz" = 5000
 		conversation
@@ -119,7 +119,7 @@ mission "Drone Hacking 5000"
 mission "Drone Hacking 6000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 1280
+		has "How to Hack a Science Drone For Fun and Profit" >= 1024
 	on offer
 		"salary: Hackerz" = 6000
 		conversation
@@ -130,7 +130,7 @@ mission "Drone Hacking 6000"
 mission "Drone Hacking 7000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 2560
+		has "How to Hack a Science Drone For Fun and Profit" >= 2048
 	on offer
 		"salary: Hackerz" = 7000
 		conversation
@@ -141,13 +141,43 @@ mission "Drone Hacking 7000"
 mission "Drone Hacking 8000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 5120
+		has "How to Hack a Science Drone For Fun and Profit" >= 4096
 	on offer
 		"salary: Hackerz" = 8000
 		conversation
 			scene "outfit/data pad"
 			`Your efforts hacking drone scanning systems has paid off. You're earning 8000 credits per day from hacked drones.`
 				decline
+
+mission "Drone Hacking 9000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 8198
+	on offer
+		"salary: Hackerz" = 9000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 9000 credits per day from hacked drones.`
+				decline
+
+mission "Drone Hacking 10000"
+	landing
+	to offer
+		has "How to Hack a Science Drone For Fun and Profit" >= 16396
+	on offer
+		"salary: Hackerz" = 10000
+		conversation
+			scene "outfit/data pad"
+			`Your efforts hacking drone scanning systems has paid off. You're earning 10000 credits per day from hacked drones.`
+				decline
+
+
+
+########################
+# Hackerz main
+########################
+
+
 
 mission "Hackerz"
 	landing
@@ -159,7 +189,50 @@ mission "Hackerz"
 		not attributes "uninhabited"
 	to offer
 		has "credits" > 1000000
-		random < 25
+		or
+			and
+				not "Hackerz 2B: declined"
+				or
+					and
+						"Hackerz: You've Been Hacked: failed" < 20
+						random < 25 - "Hackerz: You've Been Hacked: failed"
+					and
+						"Hackerz: You've Been Hacked: failed" >= 20
+						random < 5
+			and
+				has "Hackerz 2B: declined"
+				not "Hackerz 3: failed"
+				or
+					and
+						"Hackerz: You've Been Hacked: failed" < 15
+						random < 20 - "Hackerz: You've Been Hacked: failed"
+					and
+						"Hackerz: You've Been Hacked: failed" >= 15
+						random < 5
+			and
+				has "Hackerz 3: failed"
+				not "Hackerz 4: failed"
+				or
+					and
+						"Hackerz: You've Been Hacked: failed" < 10
+						random < 15 - "Hackerz: You've Been Hacked: failed"
+					and
+						"Hackerz: You've Been Hacked: failed" >= 10
+						random < 5
+			and
+				has "Hackerz 4: failed"
+				not "Hackerz 5: failed"
+				or
+					and
+						"Hackerz: You've Been Hacked: failed" < 5
+						random < 10 - "Hackerz: You've Been Hacked: failed"
+					and
+						"Hackerz: You've Been Hacked: failed" >= 5
+						random < 5
+			and
+				has "Hackerz 5: failed"
+				random < 5
+
 	npc kill
 		government "Hackerz"
 		personality waiting surveillance
@@ -215,8 +288,11 @@ mission "Patch Drone Hacking"
 		event "How to Hack a Science Drone"
 		fail
 
-# The following mission chain is the Hackerz trolling the Bounty Hunters.
 
+########################
+# The following mission chain is the Hackerz trolling the Bounty Hunters.
+# While there is no monetary reward, doing these jobs can reduce how often Hackerz harass the player.
+########################
 
 
 mission "Hackerz 2A"
@@ -229,7 +305,8 @@ mission "Hackerz 2A"
 		government "Pirate"
 	to offer
 		has "Hackerz 1: declined"
-		
+		random < 25
+
 mission "Hackerz 2B"
 	landing
 	name "Trace Hackerz"
@@ -284,26 +361,34 @@ mission "Hackerz 2B"
 mission "Hackerz 3"
 	job
 	name "Trace Hackerz"
-	description "The source of the mysterious Hackerz has been traced back to a derelict in orbit around <destination> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	description "The source of the mysterious Hackerz has been traced back to a derelict ship, <npc>, in the <system> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
-	destination
-		government "Pirate"
+	destination "Chiron"
 	to offer
 		has "Hackerz 2B: declined"
+		random < 25
 	on offer
 		"reputation: Derelict" >?= 0
+	to complete
+		never
+	on enter "Alpha Centauri"
+		dialog `You've found the <npc>! Board the ship to catch the Hackerz.`
 	npc assist save
 		government "Derelict"
-		system destination
-		personality derelict target waiting staying pacifist mute
+		system "Alpha Centauri"
+		personality derelict target waiting staying mute marked
 		ship "Explosive Derelict Bactrian" "P.K.'s Party Palace"
 		conversation
-			`When the airlock opens your senses are overwhelmed by the sound of loud music and the scent of burnt recreational herbs. Hundreds of partygoers are too busy enjoying themselves to take notice of your entrance. After searching around for a bit, you find that the ship has power for life support, lighting, and music. But no weapons, navigation, or propulsion. You also haven't found any networking equipment. Suddenly, you hear panicked screaming coming from the partygoers. When you investigate what's going on, you see that everyone is rushing to abandon ship. You ask one of them what's going on. They yell "Bomb!" while still fleeing. Now would be a good time to run back to your ship.`
+			scene "thumbnail/bactrian"
+			`When the airlock opens your senses are overwhelmed by the sound of loud music and the scent of burnt recreational herbs. Hundreds of partygoers are too busy enjoying themselves to take notice of your entrance. After searching around for a bit, you find that the ship has power for life support, lighting, and music. But no weapons, navigation, or propulsion. You also haven't found any networking equipment.`
+			``
+			`Suddenly, you hear panicked screaming coming from the partygoers. When you investigate what's going on, you see that everyone is rushing to abandon ship. You ask one of them what's going on. They yell "Bomb!" while still fleeing. Now would be a good time to run back to your ship.`
 				flee
 	on fail
 		"reputation: Derelict" >?= 0
 		log `Took on a job to locate the Hackerz. The information lead me to a rave on a derelict space ship instead. While searching the ship, a bomb was set to explode. I barely escaped. Trying to track down the Hackerz is getting dangerous.`
+		dialog `Trying to track down the Hackerz is getting dangerous.`
 
 ship "Explosive Derelict Bactrian"
 	sprite "ship/bactrian"
@@ -349,19 +434,28 @@ mission "Hackerz 3: Derelict Patch"
 mission "Hackerz 4"
 	job
 	name "Trace Hackerz"
-	description "The source of the mysterious Hackerz has been traced back to <planet> in the <system> system. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	description "The source of the mysterious Hackerz has been traced back to <destination>. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 	destination
 		government "Republic" "Syndicate" "Free Worlds"
+		distance 4 5
 	to offer
 		has "Hackerz 3: failed"
+		random < 25
+	on accept
+		conversation
+			scene "thumbnail/bactrian"
+			`Trying to track down the Hackerz is getting dangerous.`
+			``
+			`The last time you tried, you were lured onto an exploding Bactrian...`
 	to complete
 		never
 	on visit
-		set "Hackerz Angry Bounty Hunter"
 		conversation
-			`Your information has lead you to an abandoned warehouse some distance from the space port. There don't appear to be any guards or traps. Carefully, you make your way inside the building.`
+			branch revisit
+				has "Hackerz Angry Bounty Hunter"
+			`Your information has lead you to an abandoned warehouse. There don't appear to be any guards or traps. Carefully, you make your way inside the building.`
 			choice
 				`	(Continue your search.)`
 
@@ -375,7 +469,12 @@ mission "Hackerz 4"
 			`	You hold your hands up and try to reason with him. But he is too crazed to have a discussion with. You are hit by a shotgun slug and your headless corpse falls to the floor.`
 				die
 			label dodge
+			apply
+				set "Hackerz Angry Bounty Hunter"
 			`	You narrowly avoid a shotgun slug and jump out the nearest window. Fortunately, the window was already broken, but you still get some minor scrapes from the few shards of glass remaining in the frame. "Better than a shotgun slug to the head," you exclaim to yourself as you run for your ship.`
+				launch
+			label revisit
+			`The angry bountry hunter is still pursuing you in his Headhunter.`
 				launch
 	npc save
 		to spawn
@@ -383,10 +482,14 @@ mission "Hackerz 4"
 		government "Bounty Hunter"
 		system destination
 		personality launching heroic vindictive unconstrained nemesis
-		ship "Headhunter" "Payback"
+		ship "Headhunter (Berserk)" "Payback"
 	on fail
 		clear "Hackerz Angry Bounty Hunter"
-		log `The latest Hackerz job was a dud. Another bounty hunter mistook me for one of them. I'm lucky I didn't lose my head. If I hadn't been interrupted, the abandoned warehouse I was searching would've probably turned out to become another dud. I'm starting to suspect that the job board system itself has been hacked and all of the jobs for tracing the Hackerz is another one of their sick jokes.`
+		log `The latest Hackerz job was a dud. Another bounty hunter mistook me for one of them. I'm lucky I didn't lose my head. If I hadn't been interrupted, the abandoned warehouse I was searching would've probably turned out to become another dud. I'm starting to suspect that the job board system itself has been hacked and all of the jobs for tracing the Hackerz are another one of their sick jokes.`
+		dialog `Trying to track down the Hackerz is dangerous.`
+
+ship "Headhunter" "Headhunter (Berserk)"
+	"never disabled"
 
 mission "Hackerz 4B"
 	landing
@@ -398,6 +501,333 @@ mission "Hackerz 4B"
 		fail "Hackerz 4"
 		clear "Hackerz Angry Bounty Hunter"
 		fail
+
+mission "Hackerz 5"
+	job
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <destination>. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination "Hope"
+	to offer
+		has "Hackerz 4: failed"
+		random < 25
+	to complete
+		never
+	on accept
+		conversation
+			scene "planet/ice2"
+			`Hope is an uninhabited frozen wasteland. You know this is probably a trap...`
+			``
+			`But you've chosen to go anyway.`
+	on visit
+		conversation
+			branch revisit
+				has "Trace Hackerz Hope Ambush"
+			scene "thumbnail/subsidurial"
+			`According to the job posting, the Hackerz are operating out of the abandoned "Subsi Land" amusement park. It's supposed to be buried beneath a ton of ice and snow, but someone must have recently excavated it. A statue of Subsi, the park's mascot character, stands at the entrance, its faded colors almost resembling an actual Subsidurial. The park's rides and attractions are covered in rust, the result from years of being encased in frozen water.`
+			``
+			`	Suddenly, loud carnival music starts playing and the machines begin reactivating. The Hackerz seem to be rolling out a welcome for you.`
+			label navigation
+			choice
+				`	(Investigate the rides.)`
+					goto rides
+				`	(Investigate the theater.)`
+					goto theater
+				`	(Investigate the gift shop.)`
+					goto giftshop
+
+			label rides
+			`	The nearest ride is a small rail car that goes into a tunnel. Take a seat?`
+			choice
+				`	(Look somewhere else.)`
+					goto navigation
+				`	(Get in.)`
+			`	As you take a seat, a safety bar secures you in place and the car slowly moves into the tunnel. It's dark at first, but then the tunnel lights up, revealing a variety of colorful Subsidurial shaped robots singing a happy song.`
+			choice
+				`	(Remain calm.)`
+				`	(Duck!)`
+					goto ridesavoid
+			scene "scene/scene-gatlingsubsi"
+			`	A robotic Subsi outfitted with a gatling gun pops up and sprays the rail car with gun fire! The Subsidurial shaped robots continue singing their happy song as the damaged rail car carries your bloody corpse out of the chamber.`
+				die
+			label ridesavoid
+			scene "scene/scene-gatlingsubsi"
+			`	You duck just in time as a robotic Subsi outfitted with a gatling gun sprays the rail car with gun fire! The safety bar shakes loose and you are able to flee the amusement ride once the damaged rail car exits the chamber.`
+				goto ship
+
+			label theater
+			`	The theater seems to be showing the "Subsi and Friends Music Show". Check it out?`
+			choice
+				`	(Look somewhere else.)`
+					goto navigation
+				`	(Get in.)`
+			`	You take a seat in the theater and the lights fade out. Once it's dark, the stage lights up and the curtain pulls back to reveal several Subsidurial shaped robots singing a happy song.`
+			choice
+				`	(Remain calm.)`
+				`	(Duck!)`
+					goto theateravoid
+			scene "scene/scene-gatlingsubsi"
+			`	A robotic Subsi outfitted with a gatling gun pops up and sprays the theater with gun fire! The Subsidurial shaped robots continue singing their happy song as your bloody corpse slumps onto the theater floor.`
+				die
+			label theateravoid
+			scene "scene/scene-gatlingsubsi"
+			`	You duck just in time as a robotic Subsi outfitted with a gatling gun sprays the theater with gun fire! Eventually it runs out of bullets and you are able to escape the theater.`
+				goto ship
+
+			label giftshop
+			`	The gift shop has "Subsi and Friends" merchandise on display. Go inside?`
+			choice
+				`	(Look somewhere else.)`
+					goto navigation
+				`	(Get in.)`
+			scene "outfit/subsidurial plushie"
+			`	The inside of the store is in much better condition than the outside. The Subsidurial plushies even look good as new. As you walk near a display, a giant Subsi robot pops out of a nearby wall panel.`
+			choice
+				`	(Remain calm.)`
+				`	(Duck!)`
+					goto giftshopavoid
+			scene "scene/scene-gatlingsubsi"
+			`	A hidden gatling gun extends from the robot's mouth and sprays the gift shop with gun fire! Eventually it stops firing and the robot retracts back into the wall. The lifeless eyes of the Subsidurial plushies silently watch over your bloody corpse.`
+				die
+			label giftshopavoid
+			scene "scene/scene-gatlingsubsi"
+			`	You duck behind some cover as a hidden gatling gun extends from the robot's mouth and sprays the gift shop with gun fire! Eventually it stops firing and the robot retracts back into the wall, allowing you to escape the gift shop.`
+				goto ship
+
+			label ship
+			apply
+				set "Trace Hackerz Hope Ambush"
+			``
+			`	As you run, several more Subsidurial shaped robots armed with gatling guns appear and open fire. By now, it's obvious that the whole amusement park is rigged with these robots. Once you are safely aboard your ship, you fire up the engines and begin to lift off. As you clear the atmosphere, the warning alarms start blaring. A swarm of drones is headed for you.`
+				launch
+			label revisit
+			`The hostile drones are still targetting you.`
+				launch
+	npc save
+		to spawn
+			has "Trace Hackerz Hope Ambush"
+			"How to Hack a Science Drone For Fun and Profit" <= 0
+		government "Phenomenon (dangerous)"
+		system destination
+		personality target waiting staying vindictive marked mute
+			confusion 60
+		fleet
+			variant
+				"Combat Drone (ExplosiveSD)" 35
+				"Pirate Drone (ExplosiveSD)" 35
+	npc save
+		to spawn
+			has "Trace Hackerz Hope Ambush"
+			"How to Hack a Science Drone For Fun and Profit" > 0
+		government "Phenomenon (dangerous)"
+		system destination
+		personality target waiting staying vindictive marked mute
+			confusion 60
+		fleet
+			variant
+				"Combat Drone (Explosive)" 35
+				"Pirate Drone (Explosive)" 35
+	on fail
+		clear "Trace Hackerz Hope Ambush"
+		log `The Hackerz set up a trap at the abandoned "Subsi Land" amusement park on Hope. I was able to avoid being killed by robots armed with gatling guns and drones rigged with explosives.`
+		dialog `These drones must be rigged with explosives.`
+
+ship "Combat Drone" "Combat Drone (ExplosiveSD)"
+	add attributes
+		"self destruct" 1
+		weapon
+			"blast radius" 45
+			"shield damage" 450
+			"hull damage" 225
+			"hit force" 675
+	explode "large explosion" 5
+	"final explode" "final explosion large"
+
+ship "Combat Drone" "Combat Drone (Explosive)"
+	add attributes
+		"self destruct" .50
+		weapon
+			"blast radius" 45
+			"shield damage" 450
+			"hull damage" 225
+			"hit force" 675
+	explode "large explosion" 5
+	"final explode" "final explosion large"
+
+ship "Pirate Drone" "Pirate Drone (ExplosiveSD)"
+	add attributes
+		"self destruct" 1
+		weapon
+			"blast radius" 45
+			"shield damage" 450
+			"hull damage" 225
+			"hit force" 675
+	explode "large explosion" 5
+	"final explode" "final explosion large"
+
+ship "Pirate Drone" "Pirate Drone (Explosive)"
+	add attributes
+		"self destruct" .50
+		weapon
+			"blast radius" 45
+			"shield damage" 450
+			"hull damage" 225
+			"hit force" 675
+	explode "large explosion" 5
+	"final explode" "final explosion large"
+
+mission "Hackerz 6"
+	job
+	clearance `Odd... There is no response to your hail.`
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <destination>. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination "Huginn Station"
+	to offer
+		has "Hackerz 5: failed"
+		random < 25
+	to complete
+		never
+	on accept
+		conversation
+			scene "planet/station16"
+			`Huginn Station is a high security prison. With your previous experiences tracking down the Hackerz, this is almost certain to be a trap...`
+			``
+			`But you've chosen to go anyway.`
+	on visit
+		conversation
+			branch revisit
+				has "Trace Hackerz Prison Break"
+			scene "outfit/security station"
+			`No one greets you at the air lock and the <planet> port authority isn't responding to your hails. The security station is abandoned, allowing you access to restricted areas of the station. It could be a problem if security catches you inside armed with anything more significant than your side arm.`
+			choice
+				`	(Check the command station.)`
+					goto command
+				`	(Check the prison cells.)`
+					goto prison
+				`	(Check the cargo bay.)`
+					goto cargo
+
+			label command
+			scene "outfit/command center"
+			apply
+				set "Trace Hackerz Prison Break"
+				"reputation: Republic" <?= -1000
+			`	You head for the station's command center to get answers. Along the way, you notice blood stains on the floors and walls. Something is definitely wrong here. When you finally arrive, the area is deserted. The communications equipment is damaged, allowing incoming transmissions to be received, but none to be sent. As you take all this in, someone hails the station: "Attention escaped prisoners and their allies. The Republic will not tolerate a prison break of this magnitude. You have all been sentenced to death."`
+			`	Allies? Could the Navy be referring to you? Looking around the blood splattered consoles, you realize it may not be a good idea to be here when they arrive. Getting back to your ship and fleeing the station may be your only shot at survival.`
+				launch
+
+			label prison
+			scene "outfit/brig"
+			`	You head for the prison cells to make sure the convicts are still locked away. The blood stains in the hallways aren't a good sign. When you look into the first prison cell, you find the dead bodies of uniformed prison guards.`
+			`	"You! You're responsible for this!" A man enters the cell block with a rifle pointed at you. It appears to be another bounty hunter. "I finally caught the Hackerz mastermind. Must be my lucky day!"`
+			choice
+				`	"It wasn't me!"`
+				`	"I'm not going to let you frame me for this."`
+			scene "outfit/sniper rifle"
+			`	"Just what I'd expect from the Hackerz mastermind!" The man charges at you. What do you do?`
+			choice
+				`	(Try to knock him out.)`
+					goto bounty1
+				`	(Shoot him.)`
+					goto bounty2
+				`	(Talk some sense into him.)`
+					goto bounty3
+			label bounty1
+			scene "outfit/brig"
+			`	He raises the rifle overhead to try and knock you out, but you quickly step in with a series of punches that knock him off balance. As he falls, you leap in and pummel him into submission. Rather than haul him around the station, it is probably safer to keep him locked up in one of the empty cells.`
+			choice
+				`	(Check the command station.)`
+					goto command
+			label bounty2
+			scene "outfit/sniper rifle"
+			`	You decide to go for the kill. As you draw your weapon, the man levels the muzzle of his rifle to aim for your chest.`
+			branch bounty2hit
+				random < 50
+			`	He pulls the trigger first, blasting a hole into your chest. "Damn," he exclaims. "I wonder if I can still get the reward." Those would be the last words you hear before you die.`
+				die
+			label bounty2hit
+			`	You pull the trigger first and put him down. As you stand over the dead man, you wonder if this situation can still be salvaged with the station authorities.`
+			choice
+				`	(Check the command station.)`
+					goto command
+			label bounty3
+			scene "outfit/brig"
+			`	He raises the rifle overhead and knocks you out. You awaken some time later locked in a prison cell. Apparently, you've been found guilty of hacking into the prison security system and orchestrating this prison break. Due to the especially violent and gruesome nature of this particular prison break, you've been sentenced to death. The execution is set to take place immediately.`
+				die
+
+			label cargo
+			scene "outfit/cargo expansion"
+			`	For some reason, you've decided to check out the cargo bay. With the security station abandoned, perhaps you'll be able to help yourself to some unattended cargo...`
+			choice
+				`	(Nah, check the command center.)`
+					goto command
+				`	(Nah, check the prison cells.)`
+					goto prison
+				`	(Time to pick up some sweet loot!)`
+			scene "scene/scene-bloodyknife"
+				Unfortunately, you run into some escaped prisoners! The noise from your scuffle attracts more escaped prisoners. There must be a major prison break in progress. Did the Hackerz compromise the prison security system? You'll never know. One of the prisoners stabbed you in the back with an improvised knife and you die from the blood loss.`
+					die
+
+			label revisit
+			`	When you return your airlock is overrun by hundreds of rioting prisoners armed with weapons stolen from the station's armory! You are killed as the <ship> is quickly overtaken.`
+				die
+	npc save
+		to spawn
+			has "Trace Hackerz Prison Break"
+			"ships: Heavy Warship" + "ships: Medium Warship" + "ships: Heavy Freighter" >= 7
+		government "Republic"
+		system destination
+		personality target waiting vindictive nemesis
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			cargo 3
+			outfitters "Ammo North"
+			variant
+				"Carrier"
+				"Lance" 4
+				"Combat Drone" 6
+	npc save
+		to spawn
+			has "Trace Hackerz Prison Break"
+			"ships: Heavy Warship" + "ships: Medium Warship" + "ships: Heavy Freighter" >= 5
+		government "Republic"
+		system destination
+		personality target waiting vindictive nemesis
+		fleet
+			names "republic small"
+			cargo 3
+			outfitters "Ammo North"
+			variant
+				"Frigate" 2
+				"Gunboat" 2
+				"Rainmaker" 2
+	npc save
+		to spawn
+			has "Trace Hackerz Prison Break"
+		government "Republic"
+		system destination
+		personality target waiting vindictive nemesis
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			cargo 3
+			outfitters "Ammo North"
+			variant
+				"Cruiser"
+				"Gunboat" 2
+				"Rainmaker" 2
+				"Combat Drone" 4
+
+
+
+########################
+# Random Science Drones to hack
+########################
+
 
 
 mission "Hackerz: Add Science Drones"
@@ -519,9 +949,17 @@ event "add science drones"
 
 
 
+########################
+# Harmony & New Tibet get a Hackerz defense
+########################
+
+
+
 mission "Hackerz: New Tibet Harmony Reparations"
 	landing
 	invisible
+	to offer
+		"combat rating" > 3500
 	on offer
 		event "new tibet harmony reparations"
 		fail

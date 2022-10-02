@@ -612,6 +612,49 @@ mission "Pandora's Problems 3"
 
 
 
+mission "Raider Attack (Pirates)"
+	minor
+	repeat
+	name "Defend <planet>"
+	description "Defeat a pirate raid on <destination>. The pirate fleet is lead an alien flagship."
+	source
+		planet "Sundive"
+		planet "Shangri-La"
+		planet "Nimbus"
+	to offer
+		"combat rating" > 300
+		random < 10
+		has "main plot completed"
+	npc evade
+		government "Pirate"
+		personality target uninterested harvests plunders
+		fleet "pirate raid" 2
+		fleet
+			names "pirate"
+			variant
+				"Korath Raider (Torpedo)"
+				"Korath Chaser" 2
+	npc
+		government "Syndicate"
+		personality heroic staying vindictive
+		fleet "Large Syndicate"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! <planet> is under attack by alien raiders! We need every combat-worthy ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					decline
+				`	(Join the defense fleet.)`
+			`The local Syndicate defense forces are preparing to repel the alien attack. You join them, and take off together...`
+				launch
+	on visit
+		dialog `You've landed on <planet>, but there are still pirates circling overhead. You should take off and help finish them off.`
+	on complete
+		payment 300000
+		dialog `The government of <planet> pays you <payment> for helping to drive off the raiders.`
+
+
+
 mission "Star Explorer Fan Tour"
 	minor
 	name "Star Explorer Fan Tour"
@@ -721,7 +764,7 @@ mission "Star Explorer Fan Tour"
 	npc accompany save
 		government "Merchant"
 		personality target escort disables timid
-		ship "Star Explorer" "Last Frontier"
+		ship "Star Explorer (Transport)" "Last Frontier"
 
 	on fail
 		dialog `[MISSION FAILED]: Either you destroyed one of the mock battle ships or you failed to protect the Last Frontier from a real threat. If life were a game, you could load a save file and try again.`
@@ -771,7 +814,7 @@ mission "Star Explorer Korath Raid"
 		government "Korath"
 		system "Kor Ak'Mari"
 		personality waiting staying disables plunders opportunistic harvests
-		ship "Korath Raider" "Bar Ertakoshtar"
+		ship "Korath Raider (Fireswarm)" "Bar Ertakoshtar"
 	npc
 		government "Korath"
 		system "Kor Ak'Mari"
@@ -827,6 +870,19 @@ ship "Star Explorer" "Star Explorer (Korath)"
 
 mission "Navy: Captured "Auxiliary""
 	assisting
+	invisible
+	source
+		government "Navy (Oathkeeper)" "Republic"
+		not attributes "automaton"
+	destination Farpoint
+	to offer
+		never
+	on offer
+		fail
+
+mission "Navy: Captured Auxiliary"
+	assisting
+	minor
 	name "Captured Auxiliary"
 	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
 	source
@@ -835,6 +891,7 @@ mission "Navy: Captured "Auxiliary""
 	destination Farpoint
 	to offer
 		"combat rating" > 750
+		"reputation: Republic" > 0
 		random < 5
 	on offer
 		conversation
@@ -848,7 +905,7 @@ mission "Navy: Captured "Auxiliary""
 	npc kill
 		government "Pirate"
 		system
-			neighbor near "Hatysa" 0 1
+			neighbor near "Arneb" 0 3
 		personality waiting staying plunders heroic
 		fleet
 			names "republic capital"
@@ -865,6 +922,7 @@ mission "Navy: Captured "Auxiliary""
 
 mission "Navy: Captured Carrier"
 	assisting
+	minor
 	name "Captured Carrier"
 	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
 	source
@@ -873,6 +931,7 @@ mission "Navy: Captured Carrier"
 	destination Farpoint
 	to offer
 		"combat rating" > 1000
+		"reputation: Republic" > 0
 		random < 5
 	on offer
 		conversation
@@ -886,7 +945,7 @@ mission "Navy: Captured Carrier"
 	npc kill
 		government "Pirate"
 		system
-			neighbor near "Hatysa" 0 1
+			neighbor near "Arneb" 0 3
 		personality waiting staying plunders heroic
 		fleet
 			names "republic capital"
@@ -899,6 +958,7 @@ mission "Navy: Captured Carrier"
 
 mission "Navy: Captured Cruiser"
 	assisting
+	minor
 	name "Captured Cruiser"
 	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)"
 	source
@@ -906,6 +966,7 @@ mission "Navy: Captured Cruiser"
 	destination Farpoint
 	to offer
 		"combat rating" > 600
+		"reputation: Republic" > 0
 		random < 5
 	on offer
 		conversation
@@ -919,7 +980,7 @@ mission "Navy: Captured Cruiser"
 	npc kill
 		government "Pirate"
 		system
-			neighbor near "Hatysa" 0 1
+			neighbor near "Arneb" 0 3
 		personality waiting staying plunders heroic
 		fleet
 			names "republic capital"
@@ -929,6 +990,280 @@ mission "Navy: Captured Cruiser"
 	on complete
 		payment 600000
 		dialog `The Navy administrators reward you with <payment> for stopping the <npc>.`
+
+
+
+mission "Pirate FW invite 1"
+	minor
+	name "Raid: Navy Frigate"
+	description "Lead a pirate raid on the <npc>. It usually runs ammunition through the <waypoints> system. After you're done, return to <destination> for your reward, <payment>."
+	source
+		government "Pirate"
+		attributes "south" "south pirate"
+	waypoint "Wei"
+	to offer
+		"combat rating" > 300
+		"reputation: Pirate" > 0
+		has "event: war begins"
+		not "chosen sides"
+		random < 20
+	to fail
+		has "chosen sides"
+	on offer
+		conversation
+			`A man in non-descript clothing approaches you. "I'm recruiting combat pilots for a raid on the Navy. I hear you have some skill."`
+			choice
+				`	"Go on."`
+					goto salespitch
+				`	"The Navy? Not interested."`
+			`	"Why not?"`
+			choice
+				`	"Too risky."`
+				`	"Because I don't take orders from agents of the Free Worlds!"`
+					goto fight
+			`	"Fair enough. I guess the rumors of your battle prowess was over stated." The man leaves.`
+				decline
+			label fight
+			``
+			branch lucky
+				random < 50
+			`	You draw your sidearm, but he's quicker. Before you realize what happened, you're lying on the ground with a bloody hole in your chest. "Sorry <last>, but I can't let you blow my cover. We're at war with the Republic and too many lives are at stake."`
+				die
+			label lucky
+			`	He tenses up as you draw your sidearm. He tries to draw his weapon a split second after you. Big mistake. As he lies on the ground dying, he mutters "F... For freedom..."`
+				decline
+			label salespitch
+			`	"I'll pay <payment> and you can keep what you plunder. Good deal, right?" He smiles.`
+			choice
+				`	"What's in it for you?"`
+			`	"I just hate the Navy."`
+			choice
+				`	"Alright, I'm in!"`
+					goto end
+				`	"It's almost like you're an agent of the Free Worlds..."`
+			`	He stares at you in shocked silence.`
+				goto fight
+			label end
+			scene "thumbnail/frigate"
+			`	"Glad to hear it! Our target is a Frigate named the <npc>. It tends to haul ammunition through the Wei system."`
+				accept
+	on decline
+		"reputation: Free Worlds" --
+	on enter
+		dialog `It looks like the other pilots the mystery man hired are piloting interceptors.`
+	npc
+		government "Pirate"
+		personality plunders harvests coward
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Berserker"
+				"Fury"
+				"Sparrow" 2
+	npc kill
+		government "Republic"
+		system "Wei"
+		personality target heroic opportunistic
+		fleet
+			names "republic capital"
+			cargo 3
+			outfitters "Ammo North"
+			variant
+				"Frigate"
+		dialog `You've eliminated the <npc>. Return to <destination> and collect your reward.`
+	on complete
+		log `A mysterious man hired me to lead a pirate raid on the Navy. I got some bonus pay in addition to whatever I plundered.`
+		payment 150000
+		"assisted free worlds" ++
+		"reputation: Free Worlds" += 5
+		"reputation: Militia" += 5
+		dialog `The mystery man congratulates you on completing the raid and rewards you with <payment>.`
+
+mission "Pirate FW invite 2"
+	minor
+	name "Raid: Navy Auxiliary"
+	description "Conduct a pirate raid on the <npc>. It usually runs ammunition through the <waypoints> system. After you're done, return to <destination> for your reward, <payment>."
+	source
+		government "Pirate"
+		attributes "south" "south pirate"
+	waypoint "Alpha Arae"
+	to offer
+		has "Pirate FW invite 1: done"
+		"reputation: Pirate" > 0
+		not "chosen sides"
+		random < 25
+	to fail
+		has "chosen sides"
+	on offer
+		conversation
+			`The mysterious man who previously hired you to attack a Navy Frigate approaches you again. "Ready for another job? It's a bigger target with a better haul."`
+			choice
+				`	"What is it this time?"`
+					goto target
+				`	"Not interested."`
+			label uninterested
+			`	"Why not? Last time you were spectacular."`
+			choice
+				`	"Too risky."`
+				`	"Because I don't take orders from agents of the Free Worlds!"`
+					goto fight
+			`	"Fair enough. I guess you're just not up to the job." The man leaves.`
+				decline
+			label fight
+			``
+			branch lucky
+				random < 50
+			`	You draw your sidearm, but he's quicker. Before you realize what happened, you're lying on the ground with a bloody hole in your chest. "Sorry <last>, but I can't let you blow my cover. We're at war with the Republic and too many lives are at stake."`
+				die
+			label lucky
+			`	He tenses up as you draw your sidearm. He tries to draw his weapon a split second after you. Big mistake. As he lies on the ground dying, he mutters "F... For freedom..."`
+				decline
+			label target
+			scene "thumbnail/auxiliaryc"
+			`	"A Navy Auxiliary, the <npc>, runs ammunition though <waypoints>. I'd like you to attack it. You can keep whatever you plunder and I'll reward you with an additional <payment>."`
+			choice
+				`	"Sounds good, I'm in!"`
+					goto acceptance
+				`	"Wait, am I doing this job alone?"`
+			`	"You did much better than the others on that last job. I don't want to entrust this task to lesser pilots."`
+			choice
+				`	"Alright, I'm in!"`
+				`	"Forget it, I'm not interested."`
+					goto uninterested
+			label acceptance
+			`	"Good luck <last>."`
+				accept
+	on decline
+		"reputation: Free Worlds" -= 5
+	npc
+		government "Republic"
+		system "Alpha Arae"
+		personality target heroic opportunistic
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			cargo 0
+			variant
+				"Dropship (Troops)" 4
+	npc kill
+		government "Republic"
+		system "Alpha Arae"
+		personality target heroic opportunistic
+		fleet
+			names "republic capital"
+			cargo 5
+			outfitters "Ammo North" "Ammo South"
+			variant
+				"Auxiliary (Cargo)"
+		dialog `You've eliminated the <npc>. Return to <destination> and collect your reward.`
+	on complete
+		log `The mysterious man who hired me to attack the Navy before had me conduct another raid on my own.`
+		payment 300000
+		"reputation: Free Worlds" += 10
+		"reputation: Militia" += 10
+		"assisted free worlds" ++
+		dialog `The mystery man congratulates you on completing the raid and rewards you with <payment>.`
+
+mission "Pirate FW invite 3"
+	minor
+	name "Raid: Navy Cruiser"
+	description "Conduct a pirate raid on the <npc>. It has been hunting pirates in the <waypoints> system. After you're done, return to <destination> for your reward, <payment>."
+	source
+		government "Pirate"
+		attributes "south" "south pirate"
+	waypoint "Lesath"
+	to offer
+		has "Pirate FW invite 2: done"
+		"reputation: Pirate" > 0
+		not "chosen sides"
+		random < 30
+	to fail
+		has "chosen sides"
+	on offer
+		conversation
+			`You're walking alone at the spaceport when the mysterious man who's been hiring you to attack the Navy appears next to you. "I have something for you."`
+			choice
+				`	"What do have?"`
+					goto offer
+				`	"Get lost."`
+			`	"What's with the cold attitude? We seemed to get along before."`
+			choice
+				`	"I don't even know your name."`
+				`	"Because I don't take orders from agents of the Free Worlds!"`
+					goto fight
+			`	"Fair enough." Before leaving he says, "I won't contact you again."`
+				decline
+			label fight
+			``
+			branch lucky
+				random < 50
+			`	You draw your sidearm, but he's quicker. Before you realize what happened, you're lying on the ground with a bloody hole in your chest. "Sorry <last>, but I can't let you blow my cover. We're at war with the Republic and too many lives are at stake."`
+				die
+			label lucky
+			`	He tenses up as you draw your sidearm. He tries to draw his weapon a split second after you. Big mistake. As he lies on the ground dying, he mutters "F... For freedom..."`
+				decline
+			label offer
+			scene "thumbnail/cruiser"
+			`	"The <npc>, a Navy Cruiser, has been hunting pirates in the <waypoints> system. I want you to eliminate it."`
+			choice
+				`	"Okay, I'm in!"`
+					goto acceptance
+				`	"Are you crazy?"`
+			`	"What's wrong?"`
+			`	You respond, "This isn't an old Frigate or one of the Navy's glorified cargo freighters. A Cruiser is a real warship. There's no money in this. It's almost like you're working for the Free Worlds!"`
+			`	He stares at you in shocked silence.`
+				goto fight
+			label acceptance
+			`	"I'm glad to hear it! As usual, you can keep whatever you plunder and there'll be an additional reward of <payment> when you report back."`
+				accept
+	on decline
+		"reputation: Free Worlds" -= 10
+	npc
+		government "Free Worlds"
+		system "Lesath"
+		personality derelict coward marked
+		fleet
+			names "free worlds small"
+			cargo 1
+			variant
+				"Hawk"
+				"Sparrow" 2
+	npc
+		government "Republic"
+		system "Lesath"
+		personality target heroic opportunistic
+		fleet
+			names "republic capital"
+			cargo 0
+			fighters "republic fighter"
+			variant
+				"Combat Drone" 4
+	npc kill
+		government "Republic"
+		system "Lesath"
+		personality target heroic opportunistic
+		fleet
+			names "republic capital"
+			cargo 3
+			outfitters "Ammo North"
+			variant
+				"Cruiser"
+		dialog `You've eliminated the <npc>. Return to <destination> and collect your reward.`
+	on complete
+		log `It turns out the mystery man who has been hiring me to raid the Navy was a Militia agent working for the Free Worlds. His cover was blown and pirates killed him. Before he died, he suggested I continue raiding the Navy and that if I searched spaceports in the Free Worlds someone would find me.`
+		payment 450000
+		"reputation: Free Worlds" += 20
+		"reputation: Militia" += 20
+		"assisted free worlds" ++
+		conversation
+			`The mystery man congratulates you on completing the raid and rewards you with <payment>. "You're really good at this. Have you considered going legit and working for the Free Worlds?"`
+			choice
+				`	"Why, are you one of their agents?"`
+			scene "outfit/sniper rifle"
+			`	Before he can answer, a sniper attacks! You aren't hurt and manage to take cover, but the mystery man has a lethal chest wound. You can hear shouts of "got the militia man" and "the militia man is going to die" from the direction of the attack. Then someone shouts "Wasn't there someone else with him?"`
+			`	As the man lays dying, he mutters to you, "Keep hunting the Navy. Go to spaceports in the Free Worlds. Someone... should... find..." But then he's gone. With nothing else for you here, you flee before the attackers close the distance.`
 
 
 
@@ -1088,7 +1423,6 @@ ship "Marauder Quicksilver" "Marauder Quicksilver (Shamrock)"
 		"engine capacity" 40
 	outfits
 		"Anti-Missile Turret"
-		
 		"Fission Reactor"
 		"S-270 Regenerator"
 		"LP036a Battery Pack"
@@ -1096,12 +1430,10 @@ ship "Marauder Quicksilver" "Marauder Quicksilver (Shamrock)"
 		"Fuel Pod"
 		"Ramscoop"
 		"Laser Rifle" 5
-		
 		"Hybrid Afterburner"
 		`"Biroo" Atomic Thruster`
 		`"Biroo" Atomic Steering`
 		"Hyperdrive"
-	
 	engine -16 52
 	engine 0 52
 	engine 16 52
@@ -1151,6 +1483,8 @@ mission "Sunracer Afterburner 3"
 			`	You notice a new afterburner in the outfitter. It looks like Patrick suceeded in making a better version of the prototype Hybrid Afterburner.`
 				decline
 
+
+
 #########################
 # missions that repeat
 #########################
@@ -1161,12 +1495,19 @@ mission "Engineering Room: Salvaged Supercapacitor"
 	boarding
 	repeat
 	invisible
+	minor
 	source
 		not category "Drone"
 		attributes "automaton"
 	destination Earth
 	to offer
-		random < 10 + "engineer salvaged supercapacitor"
+		or
+			and
+				"engineer salvaged supercapacitor" < 40
+				random < 10 + "engineer salvaged supercapacitor"
+			and
+				"engineer salvaged supercapacitor" >= 40
+				random < 50
 	on offer
 		require "Engineering Room"
 		conversation
@@ -1190,6 +1531,7 @@ mission "Medical Bay: Injured Crewmember (Coalition)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1209,6 +1551,7 @@ mission "Medical Bay: Injured Crewmember (Coalition)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1222,6 +1565,7 @@ mission "Medical Bay: Injured Crewmember (Hai)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1241,6 +1585,7 @@ mission "Medical Bay: Injured Crewmember (Hai)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1253,6 +1598,7 @@ mission "Medical Bay: Injured Crewmember (Human)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1271,6 +1617,7 @@ mission "Medical Bay: Injured Crewmember (Human)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1283,6 +1630,7 @@ mission "Medical Bay: Injured Crewmember (Kor Efret)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1305,6 +1653,7 @@ mission "Medical Bay: Injured Crewmember (Kor Efret)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1317,6 +1666,7 @@ mission "Medical Bay: Injured Crewmember (Remnant)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1335,6 +1685,7 @@ mission "Medical Bay: Injured Crewmember (Remnant)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1347,6 +1698,7 @@ mission "Medical Bay: Injured Crewmember (Wanderer)"
 	assisting
 	deadline
 	repeat
+	minor
 	name "Injured Crewmember"
 	description "Bring an injured crewmember to <destination>."
 	passengers 1
@@ -1366,6 +1718,7 @@ mission "Medical Bay: Injured Crewmember (Wanderer)"
 		conversation
 			scene "outfit/medical bay"
 			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
 	on fail
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
@@ -1517,7 +1870,6 @@ ship "Asteroid" "Rogue Asteroid"
 
 mission "Rogue Asteroid (Poor World)"
 	deadline 2
-	repeat
 	minor
 	name "Rogue Asteroid"
 	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
@@ -1569,10 +1921,10 @@ mission "Rogue Asteroid (Pirate)"
 		"combat rating" > 100
 		or
 			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"				
+			has "Rogue Asteroid (Poor World): declined"
 			has "Rogue Asteroid (Poor World): failed"
 			has "Rogue Asteroid (Poor World): aborted"
-		random < 3
+		random < 5
 	on offer
 		conversation
 			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
@@ -1616,10 +1968,10 @@ mission "Rogue Asteroid (Rich World)"
 		"combat rating" > 100
 		or
 			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"				
+			has "Rogue Asteroid (Poor World): declined"
 			has "Rogue Asteroid (Poor World): failed"
 			has "Rogue Asteroid (Poor World): aborted"
-		random < 3
+		random < 5
 	on offer
 		conversation
 			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
@@ -1647,7 +1999,7 @@ mission "Rogue Asteroid (Rich World)"
 	on complete
 		payment 20000
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-	
+
 mission "Rogue Asteroid (Ambush)"
 	landing
 	invisible
@@ -1655,15 +2007,16 @@ mission "Rogue Asteroid (Ambush)"
 		attributes "pirate"
 	to offer
 		or
-			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"				
-			has "Rogue Asteroid (Poor World): failed"
-			has "Rogue Asteroid (Poor World): aborted"
-		random < 5
+			has "Rogue Asteroid (Pirate): done"
+			has "Rogue Asteroid (Pirate): declined"
+			has "Rogue Asteroid (Pirate): failed"
+			has "Rogue Asteroid (Pirate): aborted"
+		random < 1
 	npc kill
-		government "Phenomenon (dangerous)"
+		government "Pirate"
 		personality uninterested forbearing waiting staying mute
 		fleet
+			names "pirate"
 			cargo 3
 			outfitters "Iron" "Lead" "Silicon"
 			variant 1
@@ -1672,17 +2025,6 @@ mission "Rogue Asteroid (Ambush)"
 			variant 1
 				"Mysterious Asteroid"
 				"Dagger" 4
-			variant 1
-				"Mysterious Asteroid"
-				"Dagger" 3
-			variant 1
-				"Mysterious Asteroid"
-				"Dagger" 2
-			variant 1
-				"Mysterious Asteroid"
-				"Dagger" 1
-			variant 5
-				"Rogue Asteroid"
 	on complete
 		clear "Rogue Asteroid (Ambush): offered"
 

@@ -768,6 +768,10 @@ mission "Bounty Hunting (Secret Prototype)"
 			distance 2 3
 		fleet
 			names "pirate"
+			cargo 3
+			commodities "Electronics" "Equipment" "Industrial"
+			variant
+				"Marauder Behemoth (Secret Prototype)"
 			variant
 				"Marauder Falcon (Secret Prototype)"
 			variant
@@ -778,7 +782,7 @@ mission "Bounty Hunting (Secret Prototype)"
 				"Marauder Vanguard (Secret Prototype)"
 		dialog `Retrieve the Secret Prototype and return it to <destination>.`
 	on fail
-		dialog `You failed to recover the Secret Prototype before destroying the <npc>.`
+		dialog `[MISSION FAILED]: You failed to recover the Secret Prototype before destroying the <npc>.`
 	on visit
 		dialog phrase "generic bounty hunting on visit"
 	on complete
@@ -1212,15 +1216,16 @@ mission "Navy: Captured Ship"
 	job
 	repeat
 	name "Captured Navy"
-	description "Search for the <npc> near the northern pirate systems. The ship has been taken over by a pirate crew. Destroy it, then report to <destination> for payment (<payment>)."
+	description "Search for a stolen Navy ship, the <npc>, near the northern pirate systems. Destroy it, then report to <destination> for payment (<payment>)."
 	source Farpoint
 	to offer
 		"combat rating" > 300
+		"reputation: Republic" > 0
 		random < 5
 	npc kill
 		government "Pirate"
 		system
-			neighbor near "Hatysa" 0 1
+			neighbor near "Arneb" 0 3
 		personality waiting staying plunders heroic
 		fleet
 			names "republic capital"
@@ -1234,6 +1239,36 @@ mission "Navy: Captured Ship"
 	on complete
 		payment 200000
 		dialog `The Navy administrators reward you with <payment> for stopping the <npc>.`
+
+
+
+mission "Raider Bounty"
+	job
+	repeat
+	name "Alien Raider near <system>"
+	description "An alien ship has been attacking merchants near <system>. Destroy the ship then return to <planet> for payment [<payment>]."
+	source
+		planet "Sundive"
+		planet "Shangri-La"
+		planet "Nimbus"
+	to offer
+		"combat rating" > 300
+		random < 5
+		has "main plot completed"
+	npc kill
+		government "Korath"
+		system
+			distance 1 2
+		personality target waiting staying plunders
+		fleet
+			names "pirate"
+			variant
+				"Korath Raider (Fireswarm)"
+				"Korath Chaser" 2
+	on complete
+		payment 300000
+		dialog `The government of <planet> pays you <payment> for eliminating the alien raider threat.`
+
 
 
 
@@ -1434,7 +1469,8 @@ mission "Cryostasis Prisoner (source)"
 	source
 		government "Republic" "Free Worlds" "Syndicate"
 		not attributes "uninhabited" "deep"
-	destination "Huginn Station"
+	destination
+		attributes "military"
 	to offer
 		random < 25
 	on offer
@@ -1460,7 +1496,7 @@ mission "Cryostasis Prisoner (source)"
 		payment 25000 175
 		payment 100000
 		dialog `The cryostasis pod opens with a hiss. Your passenger wakes up and, before she's fully conscious, a team of well-armed guards takes her away. You collect your payment of <payment>.`
-		
+
 mission "Cryostasis Prisoner (destination)"
 	job
 	repeat
@@ -1471,7 +1507,8 @@ mission "Cryostasis Prisoner (destination)"
 	source
 		government "Republic" "Free Worlds" "Syndicate"
 		not attributes "uninhabited" "deep"
-	destination "Huginn Station"
+	destination
+		attributes "military"
 	to offer
 		random < 25
 	on offer
@@ -1496,7 +1533,7 @@ mission "Cryostasis Prisoner (destination)"
 		payment 25000 175
 		payment 100000
 		dialog `The cryostasis pod opens with a hiss. Your passenger wakes up and, before he's fully conscious, a team of well-armed guards takes him away. You collect your payment of <payment>.`
-		
+
 mission "Cryostasis Organ Transplant (easy)"
 	job
 	repeat
@@ -1517,7 +1554,7 @@ mission "Cryostasis Organ Transplant (easy)"
 	on complete
 		payment 25000 175
 		dialog `The cryostasis pod opens with a hiss and you retrieve the donated organ. A medical team rushes it to the intended recipient. You may have saved a life. Your payment of <payment> is just a bonus.`
-		
+
 mission "Cryostasis Organ Transplant (medium)"
 	job
 	repeat
@@ -1546,7 +1583,7 @@ mission "Cryostasis Organ Transplant (medium)"
 	on complete
 		payment 25000 175
 		dialog `The cryostasis pod opens with a hiss and you retrieve the last of the donated organs. A medical team rushes it to the intended recipient. Three lives may have been saved with your help. Compared to that, your payment of <payment> is just a bonus.`
-		
+
 mission "Cryostasis Organ Transplant (hard)"
 	job
 	repeat

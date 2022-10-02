@@ -16,6 +16,8 @@
 # - One Scorpion can be captured during these missions.
 # Most of the swordfighting works like rock, paper, scissors.
 
+
+
 mission "QKBlade: House Unuk Pickup"
 	job
 	repeat
@@ -162,86 +164,6 @@ mission "QKBlade: House Unuk Door Delivery"
 
 
 
-mission "Ion Pulse Cannons"
-	landing
-	invisible
-	to offer
-		has "event: wanderers: unfettered invasion starts"
-	on offer
-		event "ion pulse cannons"
-		fail
-		
-event "ion pulse cannons"
-	outfitter "Unfettered Basics"
-		add "Ion Pulse Cannon"
-	fleet "Unfettered Tribute"
-		add variant 1
-			"Water Bug (Jump, Ion Pulse)"
-	fleet "Unfettered Raid"
-		add variant 1
-			"Shield Beetle (Jump, Ion Pulse)" 3
-		add variant 1
-			"Shield Beetle (Jump, Ion Pulse)" 2
-			"Shield Beetle (Jump)" 1
-		add variant 1
-			"Shield Beetle (Jump, Ion Pulse)" 2
-			"Shield Beetle (Jump, Tracker)" 1
-	fleet "Large Unfettered"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"	2
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Lightning Bug"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Lightning Bug (Pulse)"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Lightning Bug" 2
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Lightning Bug (Pulse)" 2
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle (Tracker)"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle"
-			"Lightning Bug (Pulse)" 2
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle (Tracker)"
-			"Lightning Bug" 2
-
-
-
-mission "Ion Pulse Support"
-	landing
-	invisible
-	to offer
-		has "Wanderers Defend Sich'ka'ara: done"
-	on offer
-		event "ion pulse support"
-		fail
-		
-event "ion pulse support"
-	fleet "Large Unfettered"
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Solifuge"
-			"Violin Spider" 3
-			"Violin Spider (Pulse)" 3
-		add variant 1
-			"Shield Beetle (Ion Pulse)"
-			"Solifuge (Tracker)"
-			"Violin Spider" 2
-			"Violin Spider (Pulse)" 4
-
-
-
 mission "QKBlade: Quantum Key Blade 1"
 	landing
 	name "Visit the Hai Council of Elders"
@@ -249,6 +171,7 @@ mission "QKBlade: Quantum Key Blade 1"
 	source
 		government "Hai"
 		not planet "Darkwaste"
+		not planet "Hai-home"
 	destination
 		planet "Hai-home"
 	to offer
@@ -297,19 +220,23 @@ mission "QKBlade: Quantum Key Blade 2"
 mission "QKBlade: Quantum Key Blade 2 clue"
 	landing
 	invisible
-	source "Vara K'chrai"
+	source
+		planet "Vara K'chrai" "Varu Tev'kei" "Kort Kehai" "Vara Rakak" "Tik Klai" "Vara Kehi'ki" "Varu Ek'lak'lai" "Var' Kayi" "Var' Roi" "Varu Tek'kai"
+		government "Wanderer"
 	to offer
 		has "QKBlade: Quantum Key Blade 2: active"
 		not "QKBlade: Quantum Key Blade 3: active"
 		not "QKBlade: Quantum Key Blade 3: done"
 	on offer
 		log `The Wanderers have not witnessed the Kotetsu in Wanderer space. If Gai hasn't passed through either Hai space or Wanderer space, then he must have traveled east...`
-		dialog `You ask the Wanderers if a protoype Unfettered ship matching the Kotetsu's description has passed through the system. They tell you that such a ship has not been seen amongst the Unfettered fleets in their space. If Gai hasn't passed through either Hai space or Wanderer space, then he must have traveled east...`
+		conversation
+			scene "scene/scene-scorpion"
+			`You ask the Wanderers if a protoype Unfettered ship matching the Kotetsu's description has passed through the system. They tell you that such a ship has not been seen amongst the Unfettered fleets in their space. If Gai hasn't passed through either Hai space or Wanderer space, then he must have traveled east...`
 	on accept
 		fail
 
 
-				
+
 mission "QKBlade: Quantum Key Blade 3"
 	landing
 	name "Big Trouble in Unukalhai"
@@ -318,6 +245,11 @@ mission "QKBlade: Quantum Key Blade 3"
 	destination "Flood"
 	to offer
 		has "QKBlade: Quantum Key Blade 2: active"
+		or
+			has "First Contact: Korati Efreti: declined"
+			has "First Contact: Laki Nemparu: declined"
+			has "First Contact: Karek Fornati: declined"
+			has "First Contact: Setar Fort: declined"
 	on offer
 		conversation
 			scene "outfit/hai rifle"
@@ -359,9 +291,9 @@ mission "QKBlade: Quantum Key Blade 3"
 		fleet
 			names "hai"
 			variant
-				"Shield Beetle (Jump, Pulse)"
+				"Armor Beetle (Jump)"
 				"Water Bug (Jump, Ion Pulse)" 4
-
+				"Lightning Bug (Jump)" 4
 
 
 mission "QKBlade: Quantum Key Blade 4"
@@ -409,8 +341,9 @@ mission "Nemesis: Quantum Key Blade"
 			names "hai"
 			variant
 				"Solifuge (Jump, Pulse)"
+				"Armor Beetle (Jump)"
 				"Shield Beetle (Jump, Pulse)" 2
-				"Shield Beetle (Jump, Ion Pulse)" 3
+				"Shield Beetle (Jump, Ion Pulse)" 2
 				"Violin Spider" 3
 				"Violin Spider (Pulse)" 3
 	npc board
@@ -1346,6 +1279,5 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Unfettered)"
 		"reputation: Hai (Unfettered)" += 5
 		"Honor of the Blade Bearer" ++
 		dialog `The Unfettered leaders on <planet> accepts the encrypted chip. Your status as the Bearer of the Blade is noted with awe and perhaps a bit of contempt.`
-
 
 

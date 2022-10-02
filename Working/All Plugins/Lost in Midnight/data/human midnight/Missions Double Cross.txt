@@ -1157,11 +1157,11 @@ mission "Promotion Tour: Subsi"
 
 mission "Pot-o'-honey"
 	minor
-	name "Escort to <planet>"
+	name "Special Escort to <planet>"
 	description "The captain of the Pot-o'-honey will pay you <payment> to escort them safely into a dangerous region of space to reach <destination>."
 	source
 		government "Hai"
-		not planet "Darkwaste"
+		not planet "Darkwaste" "Cloudfire"
 	destination "Farpoint"
 	to offer
 		or
@@ -1175,7 +1175,7 @@ mission "Pot-o'-honey"
 		"pirate attraction" > 0
 	on offer
 		conversation
-			`A human merchant captain approaches you. "Greetings captain. I am looking for an escort through the northern passage to <destination>. Would you help me get there for <payment>?`
+			`A human merchant captain approaches you. "Greetings captain. I am looking for an escort through the northern passage to <destination>. I'm especially worried about Ionic Leeches at <waypoints>. A swarm of the little buggers attacked me the last time I passed through the wormhole. Would you help me get through there for <payment>?`
 			choice
 				`	(Accept this job offer.)`
 				`	(Decline this job offer.)`
@@ -1209,6 +1209,65 @@ mission "Pot-o'-honey"
 				"Bounder (Hai)"
 				"Flivver (Hai)"
 				"Arrow (Hai)"
+				"Scout (Hai)"
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" < 2
+		government "Pirate"
+		system "Waypoint"
+		personality waiting staying harvests plunders nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			variant
+				"Headhunter (Hai)"
+				"Raven (Hai)"
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" < 3
+		government "Pirate"
+		system "Waypoint"
+		personality waiting staying harvests plunders nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			variant
+				"Corvette (Hai)"
+				"Aerie (Hai)"
+				"Firebird (Hai Weapons)"
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" < 4
+		government "Pirate"
+		system "Waypoint"
+		personality waiting staying harvests plunders nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			variant
+				"Mule (Hai Weapons)"
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" < 5
+		government "Pirate"
+		system "Waypoint"
+		personality waiting staying harvests plunders nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Hai Weapons)"
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" < 6
+		government "Pirate"
+		system "Waypoint"
+		personality waiting staying harvests plunders nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			variant
+				"Bactrian (Hai Weapons)"
 
 	npc kill
 		government "Bounty (Disguised)"
@@ -1236,46 +1295,108 @@ mission "Pot-o'-honey"
 			`When you land on <destination> you look up bounties and wanted pirate documents, searching for any mention of the <npc>. Eventually, you find a bounty for the destruction of the <npc>. It appears that Chris was a pirate who became so fascinated with conspiracy theories about a stealth carrier designed to trap pirates that he decided to make his own version of such a ship. It turned out to be a successful operation, with many escort pilots falling into his trap.`
 			`	You head to the local authorities, and show them your combat logs of your fight against the <npc>. They pay you <payment> for your effort.`
 
-ship "Bulk Freighter" "Bulk Freighter (hai drones)"
-	attributes
-		category "Heavy Warship"
-	add attributes
-		"cost" 2000000
-		"required crew" 10
-		"bunks" 4
-		"drag" .6
-		"cargo space" -510
-		"outfit space" -10
-		"weapon capacity" -40
-		
-	outfits
-		"Pulse Turret" 3
-		"Bullfrog Anti-Missile" 2
-		"Geode Reactor"
-		"Hai Gorge Batteries"
-		"Hai Diamond Regenerator"
-		"Hai Williwaw Cooling"
-		"Interference Plating" 6
-		"Dual Pulse Pistols"
-		"Pulse Rifle" 18		
-		`"Biroo" Atomic Thruster`
-		`"Biroo" Atomic Steering`
-		"Scram Drive"
-	
-	turret "Pulse Turret"
-	turret "Bullfrog Anti-Missile"
-	turret "Pulse Turret"
-	turret "Bullfrog Anti-Missile"
-	turret "Pulse Turret"
-	bay "Drone" -66 -115 left
-	bay "Drone" -66 -65 left
-	bay "Drone" -66 -15 left
-	bay "Drone" -66 35 left
-	bay "Drone" -66 85 left
-	bay "Drone" 66 -115 right
-	bay "Drone" 66 -65 right
-	bay "Drone" 66 -15 right
-	bay "Drone" 66 35 right
-	bay "Drone" 66 85 right
+mission "Escort Trap Freighter (Hai)"
+	job
+	repeat
+	deadline
+	name "Special Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> for an escort to reach <destination> in human space by <date>."
+	source
+		government "Hai"
+		near "Heia Due" 2
+	destination
+		attributes "north"
+	to offer
+		has "Pot-o'-honey: done"
+		random < 5
+	on accept
+		"reputation: Bounty (Disguised)" >?= 1
+	on enter
+# 0 jumps
+	on enter
+# 1 jumps
+	on enter
+# 2 jumps
+	on enter
+# 3 jumps
+	on enter
+# 4 jumps
+		"reputation: Bounty (Disguised)" <?= -1000
+		dialog `The <npc> hails you: "I think we've traveled far enough. Let's see what you've got in your cargo hold!"`
+	npc
+		government "Pirate"
+		system destination
+		personality nemesis entering harvests plunders
+		fleet "Small Northern Pirates" 4
+	npc kill
+		government "Bounty (Disguised)"
+		personality target marked launching harvests plunders
+			confusion 20
+		fleet
+			names "civilian"
+			fighters "republic fighter"
+			variant
+				"Bulk Freighter (hai drones)"
+				"Pirate Drone" 10
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
+	on complete
+		"reputation: Bounty (Disguised)" >?= 1
+		payment 180000
+		dialog `You research the <npc> and find an outstanding bounty for <payment>. With a video recording of your battle in hand, you head for the job board office to claim your reward.`
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
 
-		
+mission "Escort Trap Freighter (Human)"
+	job
+	repeat
+	deadline
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely out of this dangerous region of space to reach <destination> by <date>."
+	source
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier"
+	destination
+		distance 3 4
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "frontier"
+	to offer
+		has "Pot-o'-honey: done"
+		random < 5
+	on accept
+		"reputation: Bounty (Disguised)" >?= 1
+	on enter
+# 0 jumps
+	on enter
+# 1 jumps
+		"reputation: Bounty (Disguised)" <?= -1000
+		dialog `The <npc> hails you: "I think we've traveled far enough. Let's see what you've got in your cargo hold!"`
+	npc
+		government "Pirate"
+		system destination
+		personality nemesis waiting harvests plunders
+		fleet "pirate raid" 5
+	npc kill
+		government "Bounty (Disguised)"
+		personality target marked launching harvests plunders
+			confusion 20
+		fleet
+			names "civilian"
+			fighters "pirate"
+			variant
+				"Bulk Freighter (hai drones)"
+				"Pirate Drone" 10
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
+	on complete
+		"reputation: Bounty (Disguised)" >?= 1
+		payment 150000
+		dialog `You research the <npc> and find an outstanding bounty for <payment>. With a video recording of your battle in hand, you head for the job board office to claim your reward.`
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
