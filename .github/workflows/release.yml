@@ -39,10 +39,11 @@ jobs:
           else:
             print("No plugin changes have been detected.")
         shell: python
-        
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
+      - name: Upload plugins to release
+        uses: ncipollo/release-action@v1
         with:
-          asset_path: "*.zip"
+          name: Downloads
+          tag: Latest
+          allowUpdates: true
+          replacesArtifacts: true
+          artifacts: "*.zip"
