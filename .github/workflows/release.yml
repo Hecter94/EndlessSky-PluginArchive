@@ -39,11 +39,14 @@ jobs:
           else:
             print("No plugin changes have been detected.")
         shell: python
-      - name: Upload plugins to release
-        uses: ncipollo/release-action@v1
+        
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Downloads
-          tag: Latest
-          allowUpdates: true
-          replacesArtifacts: true
-          artifacts: "*.zip"
+          tag_name: Latest
+          release_name: Downloads
+          draft: false
+          prerelease: false
