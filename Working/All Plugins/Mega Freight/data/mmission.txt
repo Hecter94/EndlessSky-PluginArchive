@@ -1,3 +1,5 @@
+
+		
 mission "MGF: Order Alcazar"
 	landing
 	source "Shangri-La"
@@ -13,7 +15,7 @@ mission "MGF: Order Alcazar"
 					decline
 				`	(Maybe next time.)`
 					defer
-			branch `war hero`
+			branch `warhero`
 				has "main plot completed"
 			`	You eventually find your way to order the battlestation for yourself. While they won't allow private ownership of the battlestation maybe you can bribe your way to it with enough money, which will set you back about 800,000,000 credits`
 			choice
@@ -24,7 +26,7 @@ mission "MGF: Order Alcazar"
 				payment -800000000
 			`	When dealing with the Syndicates money is always the solution, you managed to bribe the authorities to build it for you. The station will take about a year to build, they'll message you when it's ready.`
 				accept
-			label `war hero`
+			label `warhero`
 			`	You eventually find your way to order the battlestation for yourself. Though while they normally won't allow private ownership of the battlestation, being a war hero you can get a pass. You still have to pay for it however, the price will be 400,000,000 credits.`
 			choice
 				`	(Place the order.)`
@@ -61,9 +63,532 @@ mission `MGF: Pickup Alcazar`
 	on offer
 		conversation
 			`	You arrived at the <origin> to pick up your SC-1 Alcazar battlestation which awaits for you at low orbit.`
-		give ship "SC-1 Alcazar"
+		give ship "SC-1 Alcazar" "N-005"
 		
-#=====================FW Addition
+#============CANAVERAL NAVAL YARD
+		
+mission `MGF: Canaveral Naval Yard Trigger`
+	invisible
+	landing
+	to offer
+		has "main plot completed"
+	on offer
+		event "mgf: canaveral naval yard begin" 30
+	on accept
+		fail
+		
+mission `MGF: Canaveral Naval Yard Begin`
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+	on offer
+		event "mgf: canaveral naval yard 50 trigger" 120
+	on accept
+		fail
+		
+event "mgf: canaveral naval yard begin"
+	system Sol
+		add object "MGF Fake Mars"
+			sprite planet/mars
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard10"
+				distance 150.24
+				period 27.3
+
+planet "MGF Fake Mars"
+	attributes "requires: unlandable"
+
+planet "Canaveral Naval Yard"
+	landscape land/space0
+	attributes station
+	description `To further advance the Republic Navy and secure humanity's future, the government is building a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion.`
+	spaceport `The spaceport have few basic accommodations, mostly as resting area for construction workers.`
+	security .8
+
+event "mgf: canaveral naval yard 50 trigger"
+
+mission `MGF: Canaveral Naval Yard 50 Early`
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+		not "event: mgf: canaveral naval yard 50"
+		"mgf: canaveral construction assist" >= 12
+	on offer
+		event "mgf: canaveral naval yard 50"
+		event "mgf: canaveral naval yard compt trig" 120
+	on accept
+		fail
+
+mission `MGF: Canaveral Naval Yard 50Auto`
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+		has "event: mgf: canaveral naval yard 50 trigger"
+		not "event: mgf: canaveral naval yard 50"
+	on offer
+		event "mgf: canaveral naval yard 50"
+		event "mgf: canaveral naval yard compt trig" 120
+	on accept
+		fail
+event "mgf: canaveral naval yard compt trig"
+
+event "mgf: canaveral naval yard 50"
+	system Sol
+		remove object "MGF Fake Mars"
+			sprite planet/mars
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard10"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			sprite planet/mars
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard50"
+				distance 150.24
+				period 27.3
+		
+mission `MGF: Canaveral Naval Yard Complete Early`
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard 50"
+		not "event: mgf: canaveral naval yard done"
+		"mgf: canaveral construction assist" >= 30
+	on offer
+		event "mgf: canaveral naval yard done"
+		event "mgf: developed Lucerne" 360
+	on accept
+		fail
+		
+mission `MGF: Canaveral Naval Yard Complete Auto`
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard 50"
+		not "event: mgf: canaveral naval yard done"
+		has "event: mgf: canaveral naval yard compt trig"
+	on offer
+		event "mgf: canaveral naval yard done"
+		event "mgf: developed Lucerne" 360
+	on accept
+		fail
+		
+event "mgf: canaveral naval yard done"
+	system Sol
+		remove object "MGF Fake Mars"
+			sprite planet/mars
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard50"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			sprite planet/mars
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		landscape land/space0
+		attributes station
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is very heavily armed with countless of artillery turrets and advanced anti-missile system spread across the surface. There's also always a fleet carrier in nearby orbit, always within clear visual range.`
+		spaceport `The spaceport have few basic accommodations, mostly as resting area for shipyard workers.`
+		bribe 1.9
+		security .9
+		shipyard "Basic Ships"
+		shipyard "Navy Basic"
+		shipyard "Navy Advanced"
+		outfitter "Common Outfits"
+		outfitter "Navy Basic"
+		outfitter "Navy Advanced"
+		outfitter "Lovelace Advanced"
+		
+event "mgf: developed Lucerne"
+	
+mission "MGF: Lucerne Deployment"
+	invisible
+	landing
+	to offer
+		has "event: mgf: canaveral naval yard done"
+		has "event: mgf: developed Lucerne"
+	on offer
+		event "mgf: Lucerne Deployment" 120
+		
+event "mgf: Lucerne Deployment" 
+	planet "Canaveral Naval Yard"
+		add shipyard "Navy Advanced EX"
+		add outfitter "Navy Advanced EX"
+	fleet "Large Republic"
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 4
+			"Frigate (Mark II)" 2
+			"Rainmaker (Mark II)" 2
+			"Gunboat (Mark II)" 2
+			"Culverin Class (Mark II)"
+			"Lance" 2
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Lucerne Class"
+			"Lance" 216
+			"Combat Drone" 64
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+			"Frigate (Mark II)" 12
+			"Rainmaker (Mark II)" 8
+			"Gunboat (Mark II)" 12
+		
+mission "MGF: CNY Outfitter patch"
+		
+mission "MGF: Claymore development begin"
+	invisible
+	landing
+	to offer
+		or
+			has "Wanderers: Sestor: Farpoint Attack 2: done"
+			has "Wanderers: Sestor: Bomb Zenith 1: done"
+	on offer
+		event "mgf: developed Claymore" 720
+		event "mgf: Claymore Deployment" 840
+
+event "mgf: developed Claymore"
+
+mission "MGF: Claymore test run"
+	invisible
+	landing
+	deadline 14
+	to offer
+		has "event: mgf: developed Claymore"
+	
+	npc 
+		government "MGF: Republic (Test Run)"
+		personality staying heroic disables
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Claymore Class"
+				
+	npc
+		government "MGF: NPC Target"
+		personality staying heroic disables
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Falcon" 8
+				"Leviathan" 8
+				"Culverin Class" 4
+				
+	
+				
+event "mgf: Claymore Deployment"
+	shipyard "Navy Advanced EX"
+		add "Claymore Class"
+	outfitter "Navy Advanced EX"
+		add "AH-5 Eteron Launch System"
+		add "AH-5 Eteron Torpedo"
+		add "V47 Plasma-Railgun"
+		add "V47 Plasma-Railgun Turret"
+	outfitter "Navy Advanced"
+		add "AH-5 Eteron Torpedo"
+	fleet "Large Republic"
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Frigate (Mark II)" 6
+			"Rainmaker (Mark II)" 4
+			"Gunboat (Mark II)" 2
+			"Culverin Class (Mark II)"
+			"Lance" 2
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Spetum Class (Mark II)" 2
+			"Lance" 160
+			"Combat Drone" 48
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Claymore Class"
+			"Lucerne Class"
+			"Lance" 216
+			"Combat Drone" 64
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+			"Frigate (Mark II)" 12
+			"Rainmaker (Mark II)" 8
+			"Gunboat (Mark II)" 12
+		add variant 1
+			"Claymore Class"
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+			"Rainmaker (Mark II)" 8
+			"Gunboat (Mark II)" 6
+			
+mission "MGF: Espion co. job ad"
+	job
+	name "Asteroid Miner Wanted"
+	description "Espion Mining co. is looking for aspiring asteroid miner to join the company. No experience required."
+	destination "New Sahara"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes uninhabited
+	to offer
+		not "license: Espion Employee"
+		random < 30
+	on complete
+		dialog
+			`You landed at the planet where Espion headquarter is located, you can find it at the spaceport to apply for the job.`
+	
+	
+mission "MGF: Join Espion co."
+	repeat 
+	source "New Sahara"
+	to offer
+		has "MGF: Espion co. job ad: done"
+		not "MGF: Join Espion co.: done"
+		not "license: Espion Employee"
+	on offer
+		conversation
+			branch nolicense
+				not "license: Pilot's"
+			`You find Espion headquarter along with its own private spaceport some distance away from the main spaceport. At the reception you asked about joining as a miner, to which they asked for your pilot license then tell you to wait while they call for an assessment staff.`
+				goto wait
+		
+			label nolicense
+			`You landed at Espion co. private spaceport some distance away from the main spaceport. Finding the reception you asked about joining as a miner, to which they asked for your pilot license which you realize you didn't have.`
+			choice
+				`	(Tell them you don't have one.)`
+				`	(Leave)`
+					defer
+			`	They said they can help you get one if you want, you only have to wait for their assessment staff.`
+			label wait
+			`	After a while a man enter the room and introduce as the person who will be checking your pilot skill. He tells you to depart and 15 Titanium in this system as fast as you can, he'll be observing your performance in orbit. Once that's done it'll be continued back here.`
+				accept
+				
+	npc accompany save
+		government "MGF: Espion Mining Co."
+		personality timid staying
+		fleet
+			names "civilian"
+			variant
+				"Armadillo (Weapon)"
+				
+	# Was gonna do an actual timer npc here but lazy.
+				
+	on enter Algorel
+		fail
+		conversation
+			`You left the assessment area for job at Espion Mining Co. The test is suspended and need to be restarted at <origin>`
+	on enter Merak
+		fail
+		conversation
+			`You left the assessment area for job at Espion Mining Co. The test is suspended and need to be restarted at <origin>`
+	on enter "Tania Australis"
+		fail
+		conversation
+			`You left the assessment area for job at Espion Mining Co. The test is suspended and need to be restarted at <origin>`
+			
+	on complete
+		outfit "Titanium" -15
+		conversation
+			branch nolicense #too lazy to test for nolicense and fleet.
+				not "license: Pilot's"
+			branch fleet
+				or
+					and
+						"ships: Heavy Warship" >= 1
+						or
+							"ships: Fighter" >= 2
+							"ships: Drone" >= 2
+							"ships: Screener" >= 2
+							"ships: Caravan" >= 2
+							"ships: Pocket Warship" >= 2
+					and
+						"ships: Heavy Freighter" >= 1
+						or
+							"ships: Fighter" >= 2
+							"ships: Drone" >= 2
+							"ships: Screener" >= 2
+							"ships: Caravan" >= 2
+							"ships: Pocket Warship" >= 2
+					and
+						"ships: Superheavy" >= 1
+						or
+							"ships: Fighter" >= 2
+							"ships: Drone" >= 2
+							"ships: Screener" >= 2
+							"ships: Caravan" >= 2
+							"ships: Pocket Warship" >= 2
+					and
+						or
+							"ships: Interceptor" >= 8
+							"ships: Light Warship" >= 5
+							and
+								"ships: Heavy Freighter" >= 1
+								or
+									"ships: Interceptor" >= 5
+									"ships: Light Warship" >= 3
+				
+			`You landed back at Espion private spaceport for the ground crew to unload the cargo. Your examiner meet you back at the reception and approves your recruitment. Payment worth of what you mined is transferred to you, and from now you will receive a daily salary of 500, you'll also have the license to buy proprietary technology available only to the employee of the company and offered special jobs. He also mentioned that tomorrow a fleet will be heading out to Delta Velorum to mine Neodymium, you can join them at the spaceport to get some experience while also being covered from pirates.`
+			action
+				set "license: Espion Employee"
+				payment 35500
+				"salary: Espion Co." = 500
+				"reputation: MGF: Black Death" = 0
+			``
+				decline
+			label nolicense
+			`You landed back at Espion private spaceport for the ground crew to unload the cargo. Your examiner meet you back at the reception and approves your recruitment. The money from the mined materials will be used to cover for your pilot license and from now you will receive a daily salary of 500, you'll also have the license to buy proprietary technology available only to the employee of the company and offered special jobs. He also mentioned that tomorrow a fleet will be heading out to Delta Velorum to mine Neodymium, you can join them at the spaceport to get some experience while also being covered from pirates.`
+			action
+				set "license: Espion Employee"
+				set "license: Pilot's"
+				"salary: Espion Co." = 500
+				"reputation: MGF: Black Death" = 0
+			``
+				decline
+			
+			label fleet
+			`You landed back at Espion private spaceport for the ground crew to unload the cargo. Your examiner meet you back at the reception and approves your recruitment. The money from the mined materials will be used to cover for your pilot license and from now you will receive a daily salary of 500, you'll also have the license to buy proprietary technology available only to the employee of the company and offered special jobs. He also mentioned that tomorrow a fleet will be heading out to Delta Velorum to mine Neodymium, you can join them to get some experience but since you already got a sizeable fleet you can also look for other jobs.`
+			action
+				set "license: Espion Employee"
+				payment 35500
+				"salary: Espion Co." = 500
+				"reputation: MGF: Black Death" = 0
+			``
+				decline
+				
+mission "MGF: Espion: Neodymium at Delta Velorum"
+	name `Mine Neodymium`
+	description `Mine at least 15 tons of Neodymium at Delta Velorum then return to <destination>.`
+	source "New Sahara"
+	destination "New Sahara"
+	to offer
+		has "MGF: Join Espion co.: done"
+	on offer
+		conversation
+			`You arrived at the spaceport looking for the Espion mining fleet heading for Delta Velorum, which didn't take too long as Espion captains often use ships manufactured by their own company and distinct paint. After meeting with the leader of the fleet they agreed to let you join them for this occasion. They also suggested that you grab yourself an asteroid scanner or Espion value detector from the outfitter if you haven't already.`
+				accept
+				
+	npc accompany
+		government "MGF: Espion Mining Co."
+		personality timid staying mining harvests
+		fleet
+			names "civilian"
+			variant
+				"Armadillo (Weapon)"
+				"EP-2 Marmot" 4
+				"EP-1 Mole" 5
+				"Sparrow" 2
+						
+	waypoint "Delta Velorum"
+						
+	on visit
+		dialog
+			`You arrived at <destination> but either not all of the fleet are here yet or you didn't collect enough Neodymium.`
+	
+	on complete
+		outfit "Neodymium" -15
+		payment 73000
+		conversation
+			`The ground crew unloads 15 tons of the material and pays you <payment>. You bid farewell to the other captains and head on your own way.`
+			
+mission "MGF: Syndi Platinum License Upkeep"
+	landing
+	invisible
+	to offer
+		has "license: Syndicate Platinum"
+		not "MGF: Syndi Platinum License Upkeep: offered"
+	on offer
+		"salary: Syndicate Platinum" = -5000
+		"MGF: Splatinum member regis year" = "year"
+		"MGF: Splatinum member regis month" = "month"
+	on accept
+		fail
+		
+mission "MGF: Syndi Platinum License Cancel (bfr 1yr)"
+	job
+	repeat
+	name "Cancel Platinum License"
+	description "Cancel Syndicate Platinum License for a fee of <payment>."
+	to offer
+		has "license: Syndicate Platinum"
+		has "MGF: Syndi Platinum License Upkeep: offered"
+		#Convert years to month and count from there. This check if a year passes or not.
+		"MGF: Splatinum member regis year"  * 12 + "MGF: Splatinum member regis month" >= "year" * 12 + "month" - 12
+	on accept
+		"payment" -1820000
+		clear "salary: Syndicate Platinum"
+		clear "MGF: Syndi Platinum License Upkeep: offered"
+		clear "license: Syndicate Platinum"
+		fail
+		
+mission "MGF: Syndi Platinum License Cancel (afr 1yr)"
+	job
+	repeat
+	name "Cancel Platinum License"
+	description "Cancel Syndicate Platinum License for a fee of <payment>."
+	to offer
+		has "license: Syndicate Platinum"
+		has "MGF: Syndi Platinum License Upkeep: offered"
+		#Convert years to month and count from there. This check if a year passes or not.
+		"MGF: Splatinum member regis year"  * 12 + "MGF: Splatinum member regis month" < "year" * 12 + "month" - 12
+	on accept
+		"payment" -910000
+		clear "salary: Syndicate Platinum"
+		clear "MGF: Syndi Platinum License Upkeep: offered"
+		clear "license: Syndicate Platinum"
+		fail
+		
+
+		
+#=====================Story Mission Addition
 
 mission "MGF Addition: FW Southern Battle 2"
 	invisible
@@ -72,6 +597,7 @@ mission "MGF Addition: FW Southern Battle 2"
 	clearance
 	to offer
 		has "FW Southern Battle 1B: done"
+		not "FW Southern Battle 2: done"
 	deadline 3
 	npc evade
 		system Rastaban
@@ -100,7 +626,7 @@ mission "MGF Addition: FW Pug 5B"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 56
+				"Lance" 80
 				"Combat Drone" 24
 				"Culverin Class (Mark II)"
 				"Lance" 2
@@ -193,7 +719,7 @@ mission "MGF Addition: FWC Pug 4C"
 		personality disables heroic staying
 		government Pug
 		system "Zeta Aquilae"
-		fleet 6
+		fleet 3
 			names "pug"
 			variant
 				"Pug Maboro"
@@ -207,7 +733,7 @@ mission "MGF Addition: FWC Pug 4C"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 56
+				"Lance" 80
 				"Combat Drone" 24
 				
 mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
@@ -216,6 +742,8 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
 	source "Farpoint"
 	to offer
 		has "wanderers: found the sestor fleet"
+	to complete
+		has "Wanderers: Sestor: Farpoint Attack 1: done"
 	npc
 		government "Navy (Oathkeeper)"
 		personality heroic
@@ -224,7 +752,7 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 56
+				"Lance" 80
 				"Combat Drone" 24
 				"Culverin Class (Mark II)"
 				"Lance" 2
@@ -235,6 +763,10 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2"
 	source "Farpoint"
 	to offer
 		has "Wanderers: Sestor: Quarg Help 2: done"
+	to complete
+		or
+			has "Wanderers: Sestor: Farpoint Attack 2: done"
+			has "Wanderers: Sestor: Bomb Zenith 1: done"
 	npc
 		government "Navy (Oathkeeper)"
 		personality heroic staying
@@ -243,8 +775,47 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 56
+				"Lance" 80
 				"Combat Drone" 24
 				"Culverin Class (Mark II)" 3
 				"Lance" 6
 				"Frigate (Mark II)" 2
+				
+mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
+	landing
+	invisible
+	source "Farpoint"
+	to offer
+		has "Wanderers: Sestor: Quarg Help 2: done"
+		has "event: mgf: developed Lucerne"
+	to complete
+		or
+			has "Wanderers: Sestor: Farpoint Attack 2: done"
+			has "Wanderers: Sestor: Bomb Zenith 1: done"
+	npc
+		government "Navy (Oathkeeper)"
+		personality heroic staying entering
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Lucerne Class"
+				"Lance" 216
+				"Combat Drone" 64
+				"Spetum Class (Mark II)"
+				"Lance" 80
+				"Combat Drone" 24
+				"Culverin Class (Mark II)" 2
+				"Lance" 4
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 16
+				"Rainmaker (Mark II)" 8
+				"Gunboat (Mark II)" 12
+				
+				"Spetum Class (Mark II)"
+				"Lance" 80
+				"Combat Drone" 24
+				"Culverin Class (Mark II)" 3
+				"Lance" 6
+				"Frigate (Mark II)" 2
+				

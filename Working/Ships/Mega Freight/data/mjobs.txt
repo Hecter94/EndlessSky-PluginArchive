@@ -352,3 +352,406 @@ mission "MGF: Escort (Huge Fleet 3, Dangerous Destination)"
 		dialog phrase "generic safe escort completion dialog"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
+		
+		
+mission "MGF CNY: Large Construction Supplies [0]"
+	name "Large rush delivery to <planet>"
+	job
+	repeat
+	deadline 30
+	description "A large construction project at <destination> requires a lot of materials, deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction Supplies" 200 600
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+		not "event: mgf: canaveral naval yard done"
+		random < 40
+	source
+		attributes "factory" "manufacturing"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 16
+		planet "Canaveral Naval Yard"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 600000
+		"mgf: canaveral construction assist" += 1
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF CNY: Very Large Construction Supplies [0]"
+	name "Large rush delivery to <planet>"
+	job
+	repeat
+	deadline 30
+	description "A large construction project at <destination> requires a lot of materials, deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction Supplies" 700 2100
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+		not "event: mgf: canaveral naval yard done"
+		random < 30
+	source
+		attributes "factory" "manufacturing"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 16
+		planet "Canaveral Naval Yard"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 1400000
+		"mgf: canaveral construction assist" += 2
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF CNY: Mega Construction Supplies [0]"
+	name "Large rush delivery to <planet>"
+	job
+	repeat
+	deadline 30
+	description "A large construction project at <destination> requires a lot of materials, deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction Supplies" 2500 7500
+	to offer
+		has "event: mgf: canaveral naval yard begin"
+		not "event: mgf: canaveral naval yard done"
+		random < 20
+	source
+		attributes "factory" "manufacturing"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 16
+		planet "Canaveral Naval Yard"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4500000
+		"mgf: canaveral construction assist" += 3
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF CNY: Escort (Huge 1, Dangerous Origin)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely out of this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 30
+	to offer
+		random < 15
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier"
+	destination
+		planet "Canaveral Naval Yard"
+		distance 3 20
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 1
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"FG-7 Conveyor" 2
+	on complete
+		payment 860000
+		"mgf: canaveral construction assist" += 2
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "MGF: Mine Titanium Small"
+	name "Mine Titanium"
+	description "Someone wants a delivery of 30 tons of raw Titanium, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	to offer
+		random < 15
+
+	on complete
+		outfit "Titanium" -30
+		payment 84000
+		dialog `You delivered 30 tons of Titanium and received a payment of <payment>`
+
+mission "MGF: Mine Neodymium Small"
+	name "Mine Neodymium"
+	description "Someone wants a delivery of 30 tons of raw Neodymium, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 15
+
+	on complete
+		outfit "Neodymium" -30
+		payment 160000
+		dialog `You delivered 30 tons of Neodymium and received a payment of <payment>`
+
+mission "MGF: Mine Silicon Small"
+	name "Mine Silicon"
+	description "Someone wants a delivery of 30 tons of raw Silicon, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 15
+
+	on complete
+		outfit "Silicon" -30
+		payment 13200
+		dialog `You delivered 30 tons of Silicon and received a payment of <payment>`
+
+mission "MGF: Mine Tungsten Small"
+	name "Mine Tungsten"
+	description "Someone wants a delivery of 30 tons of raw Tungsten, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 15
+
+	on complete
+		outfit "Tungsten" -30
+		payment 162000
+		dialog `You delivered 30 tons of Tungsten and received a payment of <payment>`
+
+mission "MGF: Mine Lead Small"
+	name "Mine Lead"
+	description "Someone wants a delivery of 30 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 15
+
+	on complete
+		outfit "Lead" -30
+		payment 30000
+		dialog `You delivered 30 tons of Lead and received a payment of <payment>`
+
+mission "MGF: Mine Lead Medium"
+	name "Mine Lead"
+	description "Someone wants a delivery of 90 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 10
+
+	on complete
+		outfit "Lead" -90
+		payment 89100
+		dialog `You delivered 90 tons of Lead and received a payment of <payment>`
+
+mission "MGF: Mine Lead Large"
+	name "Mine Lead"
+	description "Someone wants a delivery of 180 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 7
+
+	on complete
+		outfit "Lead" -180
+		payment 182400
+		dialog `You delivered 180 tons of Lead and received a payment of <payment>`
+
+mission "MGF: Mine Lead Huge"
+	name "Mine Lead"
+	description "Someone wants a delivery of 400 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 5
+
+	on complete
+		outfit "Lead" -400
+		payment 422000
+		dialog `You delivered 400 tons of Lead and received a payment of <payment>`
+
+mission "MGF EPN: Mine Lead Small"
+	name "Mine Lead"
+	description "A contract requires a delivery of 30 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 10
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Lead" -30
+		payment 39100
+		dialog `You delivered 30 tons of Lead and received a payment of <payment>`
+
+mission "MGF EPN: Mine Lead Medium"
+	name "Mine Lead"
+	description "A contract requires a delivery of 90 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 7
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Lead" -90
+		payment 129330
+		dialog `You delivered 90 tons of Lead and received a payment of <payment>`
+
+mission "MGF EPN: Mine Lead Large"
+	name "Mine Lead"
+	description "A contract requires a delivery of 180 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 6
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Lead" -180
+		payment 246800
+		dialog `You delivered 180 tons of Lead and received a payment of <payment>`
+
+mission "MGF EPN: Mine Lead Huge"
+	name "Mine Lead"
+	description "A contract requires a delivery of 400 tons of raw Lead, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 3
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Lead" -400
+		payment 582000
+		dialog `You delivered 400 tons of Lead and received a payment of <payment>`
+
+mission "MGF EPN: Mine Copper Small"
+	name "Mine Copper"
+	description "A contract requires a delivery of 30 tons of raw Copper, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 10
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Copper" -30
+		payment 121500
+		dialog `You delivered 30 tons of Copper and received a payment of <payment>`
+
+mission "MGF EPN: Mine Copper Medium"
+	name "Mine Copper"
+	description "A contract requires a delivery of 90 tons of raw Copper, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 7
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Copper" -90
+		payment 378000
+		dialog `You delivered 90 tons of Copper and received a payment of <payment>`
+
+mission "MGF EPN: Mine Copper Large"
+	name "Mine Copper"
+	description "A contract requires a delivery of 180 tons of raw Copper, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 6
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Copper" -180
+		payment 783000
+		dialog `You delivered 180 tons of Copper and received a payment of <payment>`
+
+mission "MGF EPN: Mine Copper Huge"
+	name "Mine Copper"
+	description "A contract requires a delivery of 400 tons of raw Copper, mine it and return to <origin> before <date> for payment of <payment>."
+	repeat
+	job
+	deadline 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited"
+	to offer
+		random < 3
+		has "license: Espion Employee"
+
+	on complete
+		outfit "Copper" -400
+		payment 1800000
+		dialog `You delivered 400 tons of Copper and received a payment of <payment>`
