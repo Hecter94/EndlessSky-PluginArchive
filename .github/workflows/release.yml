@@ -40,13 +40,9 @@ jobs:
             print("No plugin changes have been detected.")
         shell: python
         
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
-          tag_name: Latest
-          release_name: Downloads
-          draft: false
-          prerelease: false
+          asset_path: "*.zip"
