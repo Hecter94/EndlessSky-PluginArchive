@@ -4,7 +4,10 @@
 A comprehensive library of ~400 ancient and new plugins for the open-source game Endless Sky. 
 
 ## Downloading: 
- 
+
+All download links are available on the [Releases](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/tag/Latest) page as zipped files.
+
+## Downloading Alternative:
 Third party tool such as [this](https://download-directory.github.io/) can download a single folder/plugin. 
 Paste the url to the folder url into that tool and you will be given a .zip for that folder. 
 - For example, for the "50 cal" plugin, enter: https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/50%20cal
