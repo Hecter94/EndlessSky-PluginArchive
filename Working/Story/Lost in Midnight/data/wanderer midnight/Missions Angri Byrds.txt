@@ -11,8 +11,10 @@
 
 
 
-# Contents: If the player angers the Wanderers by fighting the Pug, these missions open the Wanderer worlds to demands for tribute.
-# Reconciliation missions are at the end.
+# Contents: 
+# - Missions open the Wanderer worlds to demands for tribute if the player angers the Wanderers by fighting the Pug, 
+# - Angri Byrds vs Angry Squirrels missions and jobs
+
 
 
 
@@ -648,9 +650,11 @@ mission "Angri Byrds: Unfettered Strikers"
 	job
 	repeat
 	name "Unfettered Strikers"
-	description "An Unfettered fleet lead by a warship named the <npc> was spotted near <system>. Eliminate the fleet, then return to <planet> to claim your payment [<payment>]."
+	description "An Unfettered fleet lead by a warship named the <npc> was spotted near <origin>. Eliminate the fleet, then report to <destination> to claim your payment [<payment>]."
 	source
 		government "Wanderer"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	to offer
 		"combat rating" > 8000
 		has "event: wanderers: unfettered invasion starts"
@@ -666,8 +670,11 @@ mission "Angri Byrds: Unfettered Strikers"
 			commodities "Food" "Medical"
 			variant
 				"Armor Beetle"
+				"Solifuge (Ion Flash)"
+				"Violin Spider" 3
+				"Violin Spider (Pulse)" 3
 				"Shield Beetle (Ion Pulse)" 2
-				"Lightning Bug" 6
+				"Lightning Bug" 4
 	on complete
 		payment 1000000
 		dialog `The Wanderers thank you for stopping the <npc> and its fleet. You are rewarded with <payment> for your efforts.`
@@ -681,7 +688,8 @@ mission "Angri Byrds: Plundered Ship [Autumn Leaf]"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: eastern evacuation"
@@ -709,7 +717,8 @@ mission "Angri Byrds: Plundered Ship [Strong Wind]"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: eastern evacuation"
@@ -737,7 +746,8 @@ mission "Angri Byrds: Plundered Ship [Tempest]"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: derecho mass production"
@@ -765,7 +775,8 @@ mission "Angri Byrds: Plundered Ship [Derecho]"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: hurricane mass production"
@@ -793,7 +804,8 @@ mission "Angri Byrds: Plundered Ship [Hurricane]"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: desi seledrak"
@@ -821,7 +833,8 @@ mission "Angri Byrds: Hai Millipede 1"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Chirr'ay'akai"
 	to offer
 		has "event: wanderers: sestor eliminated"
@@ -906,7 +919,8 @@ mission "Angri Byrds: Hai Millipede 2"
 	description "The <npc> and its fleet is a growing threat. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
 		government "Wanderer"
-		not attributes "korath"
+		neighbor near "Ka'ch'chrai" 0 4
+	destination "Vara K'chrai"
 	waypoint "Sich'ka'ara"
 	to offer
 		has "Angri Byrds: Hai Millipede 1: done"
@@ -1133,3 +1147,197 @@ event "add Deep River Carriers"
 			"Deep River Carrier"
 			"Flycatcher" 4
 			"Summer Leaf (Missile)" 2
+
+
+
+mission "Angri Byrds Surveillance 1"
+	minor
+	deadline 15
+	name "Unfettered Surveillance"
+	description "Drop off surveillance micro-satellites at Prakacha'a and the four Unfettered systems, then return to <destination>."
+	source "Vara K'chrai"
+	waypoint "Prakacha'a"
+	on enter "Prakacha'a"
+		dialog "You cycle the airlock and dump a handful of the tiny Wanderer surveillance cubes into space. By the time they've drifted a few meters away, your ship's sensors are unable to detect them."
+	waypoint "Chy'chra"
+	on enter "Chy'chra"
+		conversation
+			scene "thumbnail/hai armor beetle-thumb"
+			`"You cycle the airlock and dump a handful of the tiny Wanderer surveillance cubes into space. By the time they've drifted a few meters away, your ship's sensors are unable to detect them. As you close the airlock, an Armor Beetle patrolling the system seems to take notice of your ship and changes course to head in your direction."`
+	waypoint "Ehma Ti"
+	on enter "Ehma Ti"
+		dialog "You cycle the airlock and dump a handful of the tiny Wanderer surveillance cubes into space. By the time they've drifted a few meters away, your ship's sensors are unable to detect them."
+	waypoint "Wah Yoot"
+	on enter "Wah Yoot"
+		conversation
+			scene "thumbnail/hai armor beetle-thumb"
+			`"You cycle the airlock and dump a handful of the tiny Wanderer surveillance cubes into space. By the time they've drifted a few meters away, your ship's sensors are unable to detect them. As you close the airlock, an Armor Beetle patrolling the system seems to take notice of your ship and changes course to head in your direction."`
+	waypoint "Hi Yahr"
+	on enter "Hi Yahr"
+		dialog "You cycle the airlock and dump a handful of the tiny Wanderer surveillance cubes into space. By the time they've drifted a few meters away, your ship's sensors are unable to detect them."
+	to offer
+		"reputation: Wanderer" > 1
+		has "event: wanderers: first tech increase"
+		not "event: wanderers: unfettered invasion starts"
+		or
+			and
+				not "Randomize Angri Byrds Surveillance 1"
+				random < 70
+			and
+				has "Randomize Angri Byrds Surveillance 1"
+				random < 10
+	on offer
+		conversation
+			`Do you want to learn if there's been any change in the activities of the Unfettered?`
+			choice
+				`	(Visit Iktat Rek.)`
+				`	(Not now.)`
+					defer
+			`	After searching the spaceport, you find Iktat Rek resting in the shade and applying some sort of ointment to his wings. When you ask about the Unfettered, he says, "We have been [observing, watching] them with no change. But yesterday our [eyes, sensors] in Prakacha'a and Chy'chra suddenly stopped [communicating, transmitting] data. Would you be willing to [sow, scatter, deploy] a new set of [eyes, sensors] in those systems?" You've done this before, so it shouldn't be too difficult. Before you've had a chance to think it over, he hands you a large box containing several familiar small, charcoal black cubes. "We also want additional [eyes, sensors] in each Unfettered system. Please have this done by <date>. The longer we remain [blind, ignorant] to the Unfettered's activities, the greater the danger of a surprise attack."`
+			`	You bring the surveillance devices back to your ship and split them up into five groups to launch out your airlock in the systems Rek indicated. Hopefully the Unfettered will not notice what you are doing.`
+				accept
+	on defer
+		set "Randomize Angri Byrds Surveillance 1"
+	on visit
+		dialog phrase "generic waypoint on visit"
+	npc
+		government "Hai (Unfettered)"
+		system "Chy'chra"
+		personality waiting staying surveillance vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle (Cargo Scan)"
+	npc
+		government "Hai (Unfettered)"
+		system "Wah Yoot"
+		personality waiting staying surveillance vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle (Cargo Scan)"
+	on complete
+		"reputation: Wanderer" += 5
+		log "Planted more surveillance devices, designed by the Wanderers, in Unfettered Hai space as well as the Prakacha'a system."
+		conversation
+			`The surveillance cubes have all been deployed. You inform Rek and inform him of the increased patrols by some of the Unfettered's stronger ships. "Thank you," he says. "It appears their [garrison, war fleet] is gaining [strength, power] to eventually attack us." You talk for a while longer, and with the new surveillance cubes in place, Rek asks you to check back often in case the Wanderers need more from you.`
+
+mission "Angri Byrds Surveillance 2"
+	landing
+	deadline 15
+	name "Unfettered Surveillance"
+	description "Travel through the three Unfettered home systems to retrieve the surveillance recordings, then report back to Iktat Rek on <destination>."
+	source "Vara K'chrai"
+	waypoint "Ehma Ti"
+	on enter "Ehma Ti"
+		"reputation: Hai (Unfettered)" <?= -1
+		conversation
+			scene "outfit/ion pulse cannon"
+			`Using the transmitter provided by Rek, you send out the signal and receive back the encrypted fleet activity recordings. As you finish downloading the data, an Armor Beetle patrolling the system seems to take notice of your ship and changes course to head in your direction. The Shield Beetles escorting it seem to be armed with a new type of gun.`
+	waypoint "Wah Yoot"
+	on enter "Wah Yoot"
+		"reputation: Hai (Unfettered)" <?= -1
+		conversation
+			scene "outfit/ion pulse cannon"
+			`Using the transmitter provided by Rek, you send out the signal and receive back the encrypted fleet activity recordings. As you finish downloading the data, an Armor Beetle patrolling the system seems to take notice of your ship and changes course to head in your direction. The Shield Beetles escorting it seem to be armed with a new type of gun.`
+	waypoint "Hi Yahr"
+	on enter "Hi Yahr"
+		"reputation: Hai (Unfettered)" <?= -1
+		conversation
+			scene "outfit/ion pulse cannon"
+			`Using the transmitter provided by Rek, you send out the signal and receive back the encrypted fleet activity recordings. As you finish downloading the data, an Armor Beetle patrolling the system seems to take notice of your ship and changes course to head in your direction. The Shield Beetles escorting it seem to be armed with a new type of gun.`
+	to offer
+		"reputation: Wanderer" > 1
+		has "Angri Byrds Surveillance 1: done"
+		not "event: wanderers: unfettered invasion starts"
+	on offer
+		conversation
+			scene "scene/scene-black cube"
+			`	As soon as you arrive, Iktat Rek approaches. "The [eyes, sensors] are working, but we have learned nothing new. Unfortunately, we cannot [reach, access] the Unfettered home systems. Please [explore, investigate] those systems and bring us back the data." There is a sense of urgency to his request. Without a Jump Drive, the Wanderers are unable to retrieve that data on their own.`
+				accept
+	on visit
+		dialog phrase "generic waypoint on visit"
+	npc
+		government "Hai (Unfettered)"
+		system "Ehma Ti"
+		personality waiting staying surveillance vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle (Cargo Scan)"
+				"Shield Beetle (Ion Pulse)" 2
+	npc
+		government "Hai (Unfettered)"
+		system "Wah Yoot"
+		personality waiting staying surveillance vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle (Cargo Scan)"
+				"Shield Beetle (Ion Pulse)" 2
+	npc
+		government "Hai (Unfettered)"
+		system "Hi Yahr"
+		personality waiting staying surveillance vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle (Cargo Scan)"
+				"Shield Beetle (Ion Pulse)" 2
+	on complete
+		"reputation: Wanderer" += 10
+		log "Retrieved surveillance data for the Wanderers, and learned that the Unfettered have developed Ion Pulse Cannons."
+		conversation
+			scene "outfit/ion pulse cannon"
+			`You deliver the data to Rek and report on the new weapons you witnessed. "It sounds like a [fusion, combination] of their Ion Cannon and Pulse Cannon. Thank you for [telling, informing] me of this development." You talk for a while longer and Rek asks you to check back often in case the Wanderers need more from you.`
+
+mission "Angri Byrds Surveillance Job"
+	job
+	deadline 15
+	name "Unfettered Surveillance"
+	description "Travel to <waypoints> to retrieve surveillance recordings of Unfettered fleet activity, then report back to <destination>. Payment is <payment>."
+	source "Vara K'chrai"
+	waypoint
+		government "Hai (Unfettered)"
+		neighbor near "Sich'ka'ara" 0 2
+	on waypoint
+		"reputation: Hai (Unfettered)" <?= -1
+		conversation
+			scene "outfit/ion pulse cannon"
+			`Using the transmitter provided by the Wanderers, you send out the signal and receive back the encrypted fleet activity recordings.`
+	to offer
+		"reputation: Wanderer" > 1
+		has "event: battle for sich'ka'ara ends"
+		random < 50
+	on visit
+		dialog phrase "generic waypoint on visit"
+	npc
+		government "Hai (Unfettered)"
+		system "Ka'pru"
+		personality waiting heroic nemesis vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Armor Beetle"
+				"Shield Beetle (Ion Pulse)" 2
+	npc
+		government "Hai (Unfettered)"
+		system "Chy'chra"
+		personality waiting heroic nemesis vindictive
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Shield Beetle (Ion Pulse)" 2
+				"Solifuge (Tracker)"
+				"Violin Spider" 4
+				"Violin Spider (Pulse)" 2
+	on complete
+		payment 100000
+		dialog `The Wanderers thank you for retrieving the data and reward you with <payment>.`

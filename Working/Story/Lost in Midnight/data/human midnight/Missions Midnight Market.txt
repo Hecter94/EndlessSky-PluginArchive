@@ -612,3 +612,93 @@ mission "Midnight Market: Intrusion Countermeasures 2"
 		fail
 
 
+
+mission "Midnight Market: Wanderer Micro-sat"
+	minor
+	source
+		government "Pirate"
+		attributes "spaceport"
+	to offer
+		has "stole a wanderer micro-sat"
+		not "Wanderers: Alpha Surveillance B: done"
+	on offer
+		conversation
+			scene "scene/scene-black cube"
+			`You've stolen a Wanderer micro-satellite. If you were searching for a place to convert it into some quick credits, you could do worse than the spaceport on <origin>.`
+			label try
+			choice
+				`	(Try to sell it at the spaceport.)`
+				`	(Keep it for yourself.)`
+					goto keep
+
+			branch equipment
+				random < 33
+			`	You find a street vendor selling electronics. Most of it was probably plundered off of merchant vessels.`
+			choice
+				`	(Haggle.)`
+			branch sale
+				random < 50
+			`	You try to get at least a million credits for the micro-satellite, but he is having none of it. Perhaps you'll have better luck with a different vendor.`
+				goto try
+
+			label equipment
+			branch industrial
+				random < 50
+			`	You find a street vendor selling equipment. Most of it was probably plundered off of merchant vessels.`
+			choice
+				`	(Haggle.)`
+			branch sale
+				random < 50
+			`	You try to get at least a million credits for the micro-satellite, but he is having none of it. Perhaps you'll have better luck with a different vendor.`
+				goto try
+
+			label industrial
+			`	You find a street vendor selling industrial devices. Most of it was probably plundered off of merchant vessels.`
+			choice
+				`	(Haggle.)`
+			branch sale
+				random < 50
+			`	You try to get at least a million credits for the micro-satellite, but he is having none of it. Perhaps you'll have better luck with a different vendor.`
+				goto try
+
+			label sale
+			`	After some negotiating, you both manage to agree on a price. You hand over the Wanderer micro-satellite and are 1,000,000 credits richer. The vendor immediately begins tinkering with the micro-satellite.`
+			choice
+				`	(Stay and watch.)`
+				`	(Leave.)`
+					goto end
+			scene "scene/scene-explosion"
+			`	He is poking at one corner of the cube with one of this tools when there is an audible 'click'. The micro-satellite begins to glow red while emmitting a high pitched whine. The last thing you see before you die is the explosion...`
+				die
+
+			label keep
+			scene "outfit/unknown"
+			`You've decided to keep this valuable piece of alien technology for yourself. Perhaps you'll even figure out how it works someday. After returning to your ship you hide it in a safe place.`
+				decline
+
+			label end
+			`	You're about to get on your ship when there is a sudden explosion back where the vendor who bought the Wanderer micro-satellite was located. Maybe he did something with the device he shouldn't have. Regardless of whether you were involved or not, it probably wouldn't be a good idea to stay here. You quickly board your ship and get ready to take off.`
+				launch
+	on accept
+		payment 1000000
+		clear "stole a wanderer micro-sat"
+		set "sold a wanderer micro-sat"
+	npc kill
+		government "Pirate"
+		personality waiting harvests plunders coward
+			confusion 20
+		fleet
+			names "pirate"
+			outfitters "Pirate Outfits"
+			variant
+				"Marauder Behemoth"
+				"Modified Firebird"
+				"Modified Argosy"
+				"Modified Roost"
+				"Modified Nest" 2
+				"Pirate Drone" 16
+				"Dagger" 2
+	on visit
+		dialog `The spaceport still hasn't cleaned up the mess from the explosion that killed the vendor you sold the Wanderer micro-satellite to. The crowds avoid going near the charred and burnt remains of his market stall.`
+	on complete
+		dialog `The spaceport cleaned up the mess from the explosion that killed the vendor you sold the Wanderer micro-satellite to. A new market stall with a different vendor has been set up in its place. This vendor is selling exotic fruits and vegetables. The only trace of the previous vendor are some scorch marks on the ground.`

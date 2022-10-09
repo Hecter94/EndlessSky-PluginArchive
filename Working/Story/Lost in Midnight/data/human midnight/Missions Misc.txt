@@ -94,6 +94,66 @@ mission "Blue Ridge 2"
 
 
 
+mission "Drunk Pilot"
+	minor
+	name "Drunk Pilot"
+	description "The captain, and possibly the crew, of the <npc> is drunk. There's a small bounty of <payment> to disable their ship. Return to <planet> for payment."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		attributes "spaceport"
+		attributes "dirt belt"
+	to offer
+		random < 5
+	on offer
+		conversation
+			`While at the spaceport bar, a drunk freighter captain is loudly complaining about something called the "New China Supply Run" to anyone who will listen.`
+			choice
+				`	(Listen.)`
+				`	(Ignore him.)`
+					defer
+			`	"Eight days! How the hell is anyone supposed to get that done in eight days?" He chugs down his beer and orders another.`
+			`	One of his crew mates responds, "Even with extra Fuel Pods, it takes ten days with no stops to refuel. I don't see how it can be done any faster." He finishes off his beer and orders another.`
+			`	"It must be a scam. A scam!" The captain accepts his fresh beer from the waitress and immediately chugs it down. "I'll bet Wang Xiang Tai is just awarding the Special Supply Run jobs to their friends and claiming that they completed the New China Supply Run." The waitress comes to collect his empty mug and he orders another.`
+			`	"Yeah, that must be it." A third man with a whisky bottle downs a shot and refills his glass.`
+			branch "diyu"
+				has "event: Diyu reveal"
+			`	They keep going on about how unfair it is. By the time they leave, you've learned that their ship is named the <npc> and they've been trying and failing to complete something called the New China Supply Run. Supposedly, its a job given out at some place called "Wang Xiang Tai". It seems completing the job gives a pilot access to better quality jobs there.`
+			choice
+				`	(Head back to your ship.)`
+					goto end
+			label "diyu"
+			`	They keep going on about how unfair it is. By the time they leave, you've learned that their ship is named the <npc> and they've been trying and failing to complete the New China Supply Run job given out at "Wang Xiang Tai". It seems completing the job gives a pilot access to better quality jobs there.`
+			choice
+				`	(Head back to your ship.)`
+					goto end
+			label end
+			``
+			`	As you are walking back you hear some spaceport security officers talking about a drunk crew causing mischief. The <npc> took off without clearance, almost colliding with a Bulk Freighter that was trying to land. From what you've witnessed earlier and their behavior now, it's almost certain that the crew is drunk. Spaceport security is issuing a bounty of <payment> to disable their ship. It's an easy job for some petty cash.`
+			choice
+				`	(Knock out the <npc>.)`
+				`	(Don't get involved.)`
+					decline
+			`	You get ready to take off.`
+				accept
+	on enter
+		dialog `The <npc> is flying erratically. They aren't responding to hails. If they aren't stopped, people might get hurt.`
+	npc disable save
+		government "Bounty"
+		personality target waiting uninterested forbearing coward appeasing mute
+			confusion 120
+		fleet
+			names "civilian"
+			variant
+				"Modified Clipper (Smuggler)"
+		dialog `You've disabled the <npc>. Leave them to sober up. Return to <destination> to collect your reward.`
+	on fail
+		dialog `[MISSION FAILED]: You failed to disable the <npc> without destroying it.`
+	on complete
+		payment 10000
+		dialog `The spaceport authorities reward you with <payment> for helping to stop the <npc>. That captain will probably have to pay a fine and take a pilot safety class or have his license revoked.`
+
+
+
 mission "Executive Guard: Syndicate Extremists"
 	landing
 	invisible

@@ -64,6 +64,7 @@ mission "Harvesting Quantumium Research"
 
 mission "Collect Void Sprites"
 	job
+	deadline 20
 	name "Collect void sprites"
 	description "Escort the <npc> to <waypoints> and rescue more Void Sprites. Then escort the <npc> back to <planet> for payment [<payment>]."
 	source
@@ -75,8 +76,10 @@ mission "Collect Void Sprites"
 		has "event: remnant: pantica void sprites"
 		random < 40
 	on enter "Nenia"
-		dialog `A Korath ship was waiting for you and moves to attack. As the ship and its fighters converge on you, the Pelican immediately set to work collecting void sprites. After filling its hold, the confirmation codes flash across your tactical screen. "Good to go."`
+		dialog `Korath huntere were waiting for you and move to attack. As the Korath converge on you, the Pelican immediately works on collecting void sprites. After filling its hold, the confirmation codes flash across your tactical screen. "Good to go."`
 	npc
+		to spawn
+			not "event: Korath Scouter deployments"
 		government "Korath"
 		personality heroic disables plunders harvests entering staying
 		system "Nenia"
@@ -88,6 +91,24 @@ mission "Collect Void Sprites"
 			variant 4
 				"Korath Raider (Fireswarm Ember)"
 				"Korath Chaser" 2
+	npc
+		to spawn
+			has "event: Korath Scouter deployments"
+		government "Korath"
+		personality heroic disables plunders harvests entering staying
+		system "Nenia"
+		fleet
+			names "korath"
+			variant 1
+				"Korath Dredger"
+				"Korath Chaser" 4
+			variant 2
+				"Korath Scouter (Fire-Lance)" 3
+				"Korath Chaser" 3
+			variant 3
+				"Korath Raider (Fireswarm Ember)"
+				"Korath Chaser" 2
+
 	npc save accompany
 		government "Remnant"
 		personality pacifist coward launching escort
@@ -98,7 +119,7 @@ mission "Collect Void Sprites"
 	on enter "Pantica"
 		dialog `You watch as the Pelican dips low into Esquiline's atmosphere and opens its bay doors. The void sprites emerge tentatively, then confidently launch themselves into the clouds. Return to <planet> for your payment.`
 	on complete
-		payment 200000
+		payment 1000000
 		dialog `The captain of the <npc> thanks you for assisting with rescuing the Void Sprites and rewards you with <payment>.`
 
 
@@ -132,7 +153,7 @@ mission "Salvage Raider"
 	on fail
 		dialog `You have failed to disable the Korath ship so that the Remnant can salvage it for technology...`
 	on complete
-		payment 700000
+		payment 750000
 		"reputation: Remnant" ++
 		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
 
@@ -166,3 +187,24 @@ mission "Salvage Dredger"
 		payment 1000000
 		"reputation: Remnant" += 2
 		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
+
+
+mission "Remnant Atmospheric Samples"
+	job
+	repeat
+	name "Harvest atmosphere from <system>"
+	description "Use a ship that can land on gas giants to visit <stopovers> and use the provided equipment to pick up a sample of its atmosphere. Then deliver it to <destination>."
+	cargo equipment 1
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		has "Remnant: Cognizance 12: done"
+	stopover
+		attributes "requires: gaslining"
+	on stopover
+		dialog `You cruise through the atmosphere at a relaxed pace, waiting while the collection equipment does its work. After a moment, the storage tank indicates that it has reached capacity. Take the gas sample to <destination>.`
+	on complete
+		payment
+		payment 150000
+		dialog `You arrive back on <planet> and offload the atmospheric gas sample. A logistics adjustment of <payment> has been applied to your account.`
