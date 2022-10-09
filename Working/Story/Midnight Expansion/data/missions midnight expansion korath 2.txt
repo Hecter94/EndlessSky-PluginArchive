@@ -25,9 +25,6 @@ fleet "Korath Scouter"
 mission "Midnight Expansion: Korath Scouter deployments."
 	landing
 	invisible
-	source
-		attributes "korath"
-		attributes "uninhabited"
 	on offer
 		event "Korath Scouter deployments"
 		fail
@@ -80,9 +77,89 @@ event "Korath Scouter deployments"
 	system Farinus
 		add fleet "Korath Scouter" 35000
 
+fleet "Korath Scouter (Ember)"
+	government "Korath"
+	names "korath"
+	fighters "korath"
+	cargo 1
+	personality
+		timid surveillance fleeing uninterested
+	variant 1
+		"Korath Scouter (Fire-Lance)"
+		"Korath Chaser"
+	variant 1
+		"Korath Scouter"
+		"Korath Chaser"
 
+mission "Midnight Expansion: Korath Scouter Ember Waste"
+	landing
+	invisible
+	to offer
+		has "Remnant: Cognizance 1: done"
+	on offer
+		event "Korath Scouter ember waste"
+		fail
 
+event "Korath Scouter ember waste"
+	system "Lucina"
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 10000
+	system "Parca"
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 5000
+	system "Coluber"
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 5000
+	system "Levana"
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 5000
+	system Caeculus
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 15000
+	system Segesta
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Stercutus
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 15000
+	system Peragenor
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Arculus
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Edusa
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Cinxia
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 25000
+	system Pantica
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Perfica
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 25000
+	system Farinus
+		remove fleet "Korath Scouter"
+		add fleet "Korath Scouter (Ember)" 35000
+	system Paeli
+		add fleet "Korath Scouter (Ember)" 45000
+	system Gerenus
+		add fleet "Korath Scouter (Ember)" 45000
+
+# phasing this version of the job out for a renamed version
 mission "Remnant: Bounty-Korath Scouter"
+	minor
+	invisible
+	source
+		government "Remnant"
+	to offer
+		never
+	on offer
+		fail
+
+mission "Midnight Expansion: Bounty-Korath Scouter"
 	job
 	repeat
 	name "Remnant bounty"
@@ -95,6 +172,7 @@ mission "Remnant: Bounty-Korath Scouter"
 	npc kill
 		government "Korath"
 		personality target entering fleeing uninterested marked
+			confusion 20
 		fleet
 			names "korath"
 			cargo 3
@@ -106,8 +184,95 @@ mission "Remnant: Bounty-Korath Scouter"
 		dialog phrase "generic bounty hunting on visit"
 	on complete
 		payment 150000
-		dialog "A Remnant military leader thanks you for hunting down the <npc>, and gives you the agreed-upon payment of <payment>."
+		dialog "A Remnant military leader thanks you for hunting down the <npc> and hands you a credit chip for <payment>."
 
+mission "Midnight Expansion: Salvage Scouter"
+	job
+	repeat
+	name "Track down the <npc>"
+	description "Track down and disable a Korath ship so that the Remnant may salvage it for technology. Then return to <planet> for payment [<payment>]."
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		has "Remnant: Salvage 4: done"
+		has "Remnant: Salvage 4: failed"
+		random < 20
+	npc save disable
+		government "Korath"
+		personality target waiting plunders timid marked
+		system
+			distance 1 2
+		fleet
+			names "korath"
+			cargo 3
+			commodities "Food" "Medical"
+			variant
+				"Korath Scouter"
+			variant
+				"Korath Scouter (Fire-Lance)"
+		dialog "You have disabled the Korath ship that the Remnant want to plunder. You can now return to <planet> and collect your payment."
+	on fail
+		dialog `You have failed to disable the Korath ship so that the Remnant can salvage it for technology...`
+	on complete
+		payment 500000
+		"reputation: Remnant" ++
+		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
+
+
+mission "Midnight Expansion: Nenia Gas Harvest"
+	job
+	repeat
+	name "Harvest atmosphere from <system>"
+	description "Use a ship that can land on gas giants to travel with the <npc> to pick up another shipment of atmosphere from <stopovers>, and deliver it to <destination>."
+	cargo equipment 8
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	destination "Esquiline"
+	to offer
+		has "Remnant: Cognizance 12: done"
+	stopover
+		planet "Nasqueron" "Slylandro"
+	on stopover
+		set "nenia gas scouter hunts you"
+		dialog `You cruise through the atmosphere at a relaxed pace, waiting while the equipment does its work. Once the equipment indicates that it has reached capacity, you climb up to where the Pelican is waiting in the high atmosphere, hook up the connections to offload the gas, and then head back down into the depths of the planet. After several hours, the captain of the Pelican informs you that the tanks are full, and it is time to head to <planet>.`
+	npc evade
+		to spawn
+			has "nenia gas scouter hunts you"
+		government "Korath"
+		system "Nenia"
+		personality entering heroic harvests plunders
+		fleet
+			names "korath"
+			variant
+				"Korath Scouter (Fire-Lance)"
+				"Korath Chaser"
+	npc accompany
+		government "Remnant"
+		personality target timid launching escort
+		fleet
+			names "remnant"
+			cargo 8 equipment
+			variant
+				Puffin 4
+	npc accompany save
+		government "Remnant"
+		personality target timid launching escort
+		fleet
+			names "remnant"
+			cargo 8 equipment
+			variant
+				Pelican
+	on abort
+		clear "nenia gas scouter hunts you"
+	on fail
+		clear "nenia gas scouter hunts you"
+	on complete
+		clear "nenia gas scouter hunts you"
+		payment 150000
+		conversation
+			`You arrive at the hidden station on <planet> to offload the atmospheric gases. A logistics adjustment of <payment> has been applied to your account.`
 
 
 
@@ -273,10 +438,10 @@ fleet "Korath Scrapper Raid"
 		"Korath Raider (Scrapyard)"
 		"Far Osk 27" 2
 	variant 1
-		"Korath Dredger"
+		"Korath Dredger (Scrapyard)"
 		"Korath Chaser" 4
 	variant 1
-		"Korath Dredger"
+		"Korath Dredger (Scrapyard)"
 		"Far Osk 27" 4
 
 mission "Midnight Expansion: Scrapper World Forger"
@@ -418,12 +583,12 @@ mission "Midnight Expansion: Ember World Crafter"
 		event "ember world crafter begin"
 		conversation
 			scene "thumbnail/PR4987 korath refuge"
-			`The space port is active with Remant military personnel on high alert. When you ask one what is going on, you are informed that a World Crafter, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, one could mistake it for a space station. No doubt the Remnant leadership is debating how best to deal with it.`
+			`The space port is active with Remnant military personnel on high alert. When you ask one what is going on, you are informed that a World Crafter, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, one could mistake it for a space station. No doubt the Remnant leadership is debating how best to deal with it.`
 				accept
 	on enter Lucina
 		conversation
 			scene "thumbnail/PR4987 korath refuge"
-			`There it is: massive world ship so large the Korath can use it as a star base. It would quite the catch to take it for yourself... if you can. But the Remnant will be happy enough to just see it destroyed.`
+			`There it is: a massive world ship so large the Korath can use it as a star base. It would be quite the catch to take it for yourself... if you can. But the Remnant will be happy enough to just see it destroyed.`
 	npc
 		government "Korath"
 		system Lucina
@@ -435,7 +600,7 @@ mission "Midnight Expansion: Ember World Crafter"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Korath Scouter (Repeater)" 4
+				"Korath Scouter (Fire-Lance)" 4
 				"Korath Chaser" 8
 	npc kill
 		government "Korath"
@@ -490,12 +655,12 @@ mission "Midnight Expansion: Ember World Forger"
 		event "ember world forger begin"
 		conversation
 			scene "thumbnail/PR4987 korath refabricator"
-			`The space port is active with Remant military personnel on high alert. When you ask one what is going on, you are informed that a World Forger, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, it's even larger than the previous one.`
+			`The space port is active with Remnant military personnel on high alert. When you ask one what is going on, you are informed that a World Forger, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, it's even larger than the previous one.`
 				accept
 	on enter Lucina
 		conversation
 			scene "thumbnail/PR4987 korath refabricator"
-			`There it is: a massive world ship so large the Korath can use it as a star base. This one is larger than the last. It would quite the catch to take it for yourself... if you can. But the Remnant will be happy enough to just see it destroyed.`
+			`Once again you find yourself facing off against a massive world ship so large the Korath can use it as a star base. This one is larger than the last. It would be quite the catch to take it for yourself... if you can. But the Remnant will be happy enough to just see it destroyed.`
 	npc
 		government "Korath"
 		system Lucina
@@ -507,7 +672,7 @@ mission "Midnight Expansion: Ember World Forger"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Korath Scouter (Repeater)" 4
+				"Korath Scouter (Fire-Lance)" 4
 				"Korath Chaser" 10
 	npc kill
 		government "Korath"
@@ -562,12 +727,12 @@ mission "Midnight Expansion: Ember World Shaper"
 		event "ember world shaper begin"
 		conversation
 			scene "thumbnail/PR4987 korath haven"
-			`The space port is active with Remant military personnel on high alert. When you ask one what is going on, you are informed that a World Shaper, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, this one dwarfs the previous two.`
+			`The space port is active with Remnant military personnel on high alert. When you ask one what is going on, you are informed that a World Shaper, one of the largest Korath world ships, has entered <waypoints>. Looking at the scans, this one dwarfs the previous two.`
 				accept
 	on enter Lucina
 		conversation
 			scene "thumbnail/PR4987 korath haven"
-			`There it is: a massive world ship so large the Korath can use it as a star base. It would quite the catch to take it for yourself... if you can. This thing is immensely huge compared to the previous world ships you've fought here. But the Remnant will be happy enough to just see it destroyed.`
+			`This time the massive world ship is so large it does look like the Korath simply took a star base and jammed their largest ship engines onto it. This thing is immensely huge compared to the previous world ships you've fought here. Trying to capture it would be a difficult endeavor. But the Remnant will be happy enough to just see it destroyed.`
 	npc
 		government "Korath"
 		system Lucina
@@ -579,7 +744,7 @@ mission "Midnight Expansion: Ember World Shaper"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Korath Scouter (Repeater)" 6
+				"Korath Scouter (Fire-Lance)" 6
 				"Korath Chaser" 18
 	npc kill
 		government "Korath"
@@ -652,5 +817,7 @@ mission "Korath Waste Generation"
 	on offer
 		require "Korath Waste Launcher"
 		require "Korath Waste" 0
+		dialog `Your ship has created 96 tons of waste. Keep it for the Korath Waste Launcher?`
+	on accept
 		outfit "Korath Waste" 96
 		fail
