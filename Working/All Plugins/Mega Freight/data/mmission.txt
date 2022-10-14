@@ -73,6 +73,7 @@ mission `MGF: Canaveral Naval Yard Trigger`
 	to offer
 		has "main plot completed"
 	on offer
+		"mgf: canaveral post 07102022 patch" = 1
 		event "mgf: canaveral naval yard begin" 30
 	on accept
 		fail
@@ -90,7 +91,6 @@ mission `MGF: Canaveral Naval Yard Begin`
 event "mgf: canaveral naval yard begin"
 	system Sol
 		add object "MGF Fake Mars"
-			sprite planet/mars
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
@@ -140,7 +140,6 @@ event "mgf: canaveral naval yard compt trig"
 event "mgf: canaveral naval yard 50"
 	system Sol
 		remove object "MGF Fake Mars"
-			sprite planet/mars
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
@@ -148,7 +147,6 @@ event "mgf: canaveral naval yard 50"
 				distance 150.24
 				period 27.3
 		add object "MGF Fake Mars"
-			sprite planet/mars
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
@@ -185,7 +183,6 @@ mission `MGF: Canaveral Naval Yard Complete Auto`
 event "mgf: canaveral naval yard done"
 	system Sol
 		remove object "MGF Fake Mars"
-			sprite planet/mars
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
@@ -193,7 +190,6 @@ event "mgf: canaveral naval yard done"
 				distance 150.24
 				period 27.3
 		add object "MGF Fake Mars"
-			sprite planet/mars
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
@@ -215,6 +211,38 @@ event "mgf: canaveral naval yard done"
 		outfitter "Navy Advanced"
 		outfitter "Lovelace Advanced"
 		
+mission "MGF: Mars-fix"
+	landing
+	invisible
+	to offer
+		not "mgf: canaveral post 07102022 patch"
+		has "event: mgf: canaveral naval yard done"
+	on offer
+		event "mgf: mars-fix"
+	on accept
+		fail
+		
+event "mgf: mars-fix"
+	system Sol
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard50"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard50"
+				distance 150.24
+				period 27.3
+		add object "Mars"
+			sprite "planet/mars"
+			distance 1471.43
+			period 687.001
+		
 event "mgf: developed Lucerne"
 	
 mission "MGF: Lucerne Deployment"
@@ -224,6 +252,7 @@ mission "MGF: Lucerne Deployment"
 		has "event: mgf: canaveral naval yard done"
 		has "event: mgf: developed Lucerne"
 	on offer
+		"mgf: Lucerne post 08102022 patch" = 1
 		event "mgf: Lucerne Deployment" 120
 		
 event "mgf: Lucerne Deployment" 
@@ -233,7 +262,8 @@ event "mgf: Lucerne Deployment"
 	fleet "Large Republic"
 		add variant 2
 			"Spetum Class (Mark II)"
-			"Lance" 80
+			"Lance" 40
+			"A-14F Rondel" 40
 			"Combat Drone" 24
 			"Cruiser (Mark II)" 2
 			"Combat Drone" 4
@@ -244,13 +274,81 @@ event "mgf: Lucerne Deployment"
 			"Lance" 2
 		add variant 2
 			"Spetum Class (Mark II)"
-			"Lance" 80
+			"Lance" 40
+			"A-14F Rondel" 40
 			"Combat Drone" 24
 			"Cruiser (Mark II)" 2
 			"Combat Drone" 8
 			"Culverin Class (Mark II)" 2
 			"Lance" 2
 		add variant 1
+			"Lucerne Class"
+			"Lance" 116
+			"A-14F Rondel" 100
+			"Combat Drone" 64
+			"Spetum Class (Mark II)"
+			"Lance" 40
+			"A-14F Rondel" 40
+			"Combat Drone" 24
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+			"Frigate (Mark II)" 12
+			"Rainmaker (Mark II)" 8
+			"Gunboat (Mark II)" 12
+		
+mission "MGF: CNY Outfitter patch"
+	landing
+	invisible
+	repeat 2 # I left empty mission here before and it might've been offered once.
+	deadline 1
+	to offer
+		has "event: mgf: Lucerne Deployment" 
+	on offer
+		event "mgf: cny outfitter patch"
+	on accept
+		fail
+		
+event "mgf: cny outfitter patch"
+	planet "Canaveral Naval Yard"
+		add outfitter "Navy Advanced EX"
+		
+mission "MGF: Add Rondel patch"
+	landing
+	invisible
+	repeat 2
+	deadline 1
+	to offer
+		not "mgf: Lucerne post 08102022 patch"
+		has "event: mgf: Lucerne Deployment" 
+	on offer
+		event "mgf: add Rondel to lucerne fleets"
+	on accept
+		fail
+		
+event "mgf: add Rondel to lucerne fleets"
+	fleet "Large Republic"
+		remove variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 4
+			"Frigate (Mark II)" 2
+			"Rainmaker (Mark II)" 2
+			"Gunboat (Mark II)" 2
+			"Culverin Class (Mark II)"
+			"Lance" 2
+		remove variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 80
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		remove variant 1
 			"Lucerne Class"
 			"Lance" 216
 			"Combat Drone" 64
@@ -264,8 +362,44 @@ event "mgf: Lucerne Deployment"
 			"Frigate (Mark II)" 12
 			"Rainmaker (Mark II)" 8
 			"Gunboat (Mark II)" 12
-		
-mission "MGF: CNY Outfitter patch"
+			
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 40
+			"A-14F Rondel" 40
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 4
+			"Frigate (Mark II)" 2
+			"Rainmaker (Mark II)" 2
+			"Gunboat (Mark II)" 2
+			"Culverin Class (Mark II)"
+			"Lance" 2
+		add variant 2
+			"Spetum Class (Mark II)"
+			"Lance" 40
+			"A-14F Rondel" 40
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Lucerne Class"
+			"Lance" 116
+			"A-14F Rondel" 100
+			"Combat Drone" 64
+			"Spetum Class (Mark II)"
+			"Lance" 40
+			"A-14F Rondel" 40
+			"Combat Drone" 24
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+			"Frigate (Mark II)" 12
+			"Rainmaker (Mark II)" 8
+			"Gunboat (Mark II)" 12
 		
 mission "MGF: Claymore development begin"
 	invisible
@@ -307,7 +441,6 @@ mission "MGF: Claymore test run"
 				"Leviathan" 8
 				"Culverin Class" 4
 				
-	
 				
 event "mgf: Claymore Deployment"
 	shipyard "Navy Advanced EX"
@@ -322,7 +455,8 @@ event "mgf: Claymore Deployment"
 	fleet "Large Republic"
 		add variant 2
 			"Spetum Class (Mark II)"
-			"Lance" 80
+			"Lance" 30
+			"A-14F Rondel" 50
 			"Combat Drone" 24
 			"Cruiser (Mark II)" 4
 			"Combat Drone" 16
@@ -333,7 +467,8 @@ event "mgf: Claymore Deployment"
 			"Lance" 2
 		add variant 2
 			"Spetum Class (Mark II)"
-			"Lance" 80
+			"Lance" 30
+			"A-14F Rondel" 50
 			"Combat Drone" 24
 			"Cruiser (Mark II)" 4
 			"Combat Drone" 16
@@ -341,16 +476,18 @@ event "mgf: Claymore Deployment"
 			"Lance" 2
 		add variant 1
 			"Spetum Class (Mark II)" 2
-			"Lance" 160
+			"Lance" 60
+			"A-14F Rondel" 100
 			"Combat Drone" 48
 			"Cruiser (Mark II)" 4
 			"Combat Drone" 16
 			"Culverin Class (Mark II)" 2
-			"Lance" 2
+			"Lance" 4
 		add variant 1
 			"Claymore Class"
 			"Lucerne Class"
-			"Lance" 216
+			"Lance" 116
+			"A-14F Rondel" 100
 			"Combat Drone" 64
 			"Culverin Class (Mark II)" 4
 			"Lance" 6
@@ -362,7 +499,8 @@ event "mgf: Claymore Deployment"
 		add variant 1
 			"Claymore Class"
 			"Spetum Class (Mark II)"
-			"Lance" 80
+			"Lance" 40
+			"A-14F Rondel" 40
 			"Combat Drone" 24
 			"Culverin Class (Mark II)" 4
 			"Lance" 6
@@ -409,7 +547,7 @@ mission "MGF: Join Espion co."
 					defer
 			`	They said they can help you get one if you want, you only have to wait for their assessment staff.`
 			label wait
-			`	After a while a man enter the room and introduce as the person who will be checking your pilot skill. He tells you to depart and 15 Titanium in this system as fast as you can, he'll be observing your performance in orbit. Once that's done it'll be continued back here.`
+			`	After a while a man enter the room and introduce as the person who will be checking your pilot skill. He tells you to depart and mine 15 Titanium in this system as fast as you can, he'll be observing your performance in orbit. Once that's done it'll be continued back here.`
 				accept
 				
 	npc accompany save
@@ -437,6 +575,9 @@ mission "MGF: Join Espion co."
 			
 	on complete
 		outfit "Titanium" -15
+		"MGF: epn join day" = "day"
+		"MGF: epn join month" = "month"
+		"MGF: epn join year" = "year"
 		conversation
 			branch nolicense #too lazy to test for nolicense and fleet.
 				not "license: Pilot's"
@@ -510,15 +651,19 @@ mission "MGF: Espion: Neodymium at Delta Velorum"
 	source "New Sahara"
 	destination "New Sahara"
 	to offer
+		"MGF: epn join day" == "day"
+		"MGF: epn join month" == "month"
+		"MGF: epn join year" == "year"
 		has "MGF: Join Espion co.: done"
 	on offer
 		conversation
 			`You arrived at the spaceport looking for the Espion mining fleet heading for Delta Velorum, which didn't take too long as Espion captains often use ships manufactured by their own company and distinct paint. After meeting with the leader of the fleet they agreed to let you join them for this occasion. They also suggested that you grab yourself an asteroid scanner or Espion value detector from the outfitter if you haven't already.`
 				accept
 				
-	npc accompany save
+	npc accompany
 		government "MGF: Espion Mining Co."
-		personality timid staying mining harvests
+		personality 
+			mining harvests escort launching
 		fleet
 			names "civilian"
 			variant
@@ -556,14 +701,14 @@ mission "MGF: Syndi Platinum License Cancel (bfr 1yr)"
 	job
 	repeat
 	name "Cancel Platinum License"
-	description "Cancel Syndicate Platinum License for a fee of <payment>."
+	description "Cancel Syndicate Platinum License for a fee of <fine>."
 	to offer
 		has "license: Syndicate Platinum"
 		has "MGF: Syndi Platinum License Upkeep: offered"
 		#Convert years to month and count from there. This check if a year passes or not.
 		"MGF: Splatinum member regis year"  * 12 + "MGF: Splatinum member regis month" >= "year" * 12 + "month" - 12
 	on accept
-		"payment" -1820000
+		"fine" 1820000
 		clear "salary: Syndicate Platinum"
 		clear "MGF: Syndi Platinum License Upkeep: offered"
 		clear "license: Syndicate Platinum"
@@ -573,20 +718,62 @@ mission "MGF: Syndi Platinum License Cancel (afr 1yr)"
 	job
 	repeat
 	name "Cancel Platinum License"
-	description "Cancel Syndicate Platinum License for a fee of <payment>."
+	description "Cancel Syndicate Platinum License for a fee of <fine>."
 	to offer
 		has "license: Syndicate Platinum"
 		has "MGF: Syndi Platinum License Upkeep: offered"
 		#Convert years to month and count from there. This check if a year passes or not.
 		"MGF: Splatinum member regis year"  * 12 + "MGF: Splatinum member regis month" < "year" * 12 + "month" - 12
 	on accept
-		"payment" -910000
+		"fine" 910000
 		clear "salary: Syndicate Platinum"
 		clear "MGF: Syndi Platinum License Upkeep: offered"
 		clear "license: Syndicate Platinum"
 		fail
 		
-
+mission "MGF: Mieusbar Release Announcement"
+	landing
+	name `Check out new ship`
+	description `You marked <destination> for visiting later to check out the new space liner "TS-1L260 Mieusbar" they just released. (NOTE: Marker will be removed when you visit.)`
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination Zug
+	to offer
+		has "event: mgf: mieusbar released"
+		#not "month" >= 5
+		#"year" == 3014
+	on offer
+		conversation
+			scene "thumbnail/mgf mieusbar thumb"
+			`You see a few people gathered around the TV screen and join in to see what's going on; the news show live video of a release ceremony of a new transport ship produced in cooperation between Vessa Shipworks and Southbound Shipyard funded by the southern worlds. The TS-1L260 Mieusbar was designed to transport nearly 700 passengers across vast distance with its large fuel storage and could be armed with up to 17 turrets. It is currently the largest transport available, carrying more than twice of the so-called city-ship of the Deep. It is said to help drive the economy in the south by providing economic transport for migrating workers and low-budget tourists.`
+			`	The ship is now available for purchase at Southbound Shipyard in Zug and Rust in Zubeneschamali system and Kraz system respectively.`
+			choice
+				`	(Mark the planet for visit)`
+					accept
+				`	(Leave)`
+					decline
+					
+mission "MGF: Ialmuslati Release Announcement"
+	landing
+	name `Check out new ship`
+	description `You marked <destination> for visiting later to check out the new transport "AD-0032 Ialmuslati" they just released. (NOTE: Marker will be removed when you visit.)`
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination Follower
+	to offer
+		has "event: mgf: ialmuslati released"
+		#not "month" >= 10
+		#"year" == 3014
+	on offer
+		conversation
+			scene "thumbnail/mgf ialmuslati thumb"
+			`You noticed the TV screen seems to be broadcasting something that attracts some eyes on it, especially the richer-looking captains; the screen shows live feed of a new ship being launched by Najrmalas Shipworks at Follower in Alphard system. There's not much detail available about it except having more spacious interior for potentially more-paying passengers.`
+			`	The ship is now available for purchase at Follower in Alphard system.`
+			choice
+				`	(Mark the planet for visit)`
+					accept
+				`	(Leave)`
+					decline
 		
 #=====================Story Mission Addition
 
@@ -819,3 +1006,85 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
 				"Lance" 6
 				"Frigate (Mark II)" 2
 				
+#==================================Plugin Addition
+# Adding additional fleets to plugin missions.
+mission "MGF Addition: ATHI: NI Quarg Assistance 2"
+	landing
+	invisible
+	source "Alta Hai"
+	destination Farpoint
+	to offer
+		has "ATHI: NI Quarg Assistance: done"
+		
+	npc
+		government "Navy (Oathkeeper)"
+		personality heroic staying
+		system Alnitak
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Spetum Class (Mark II)"
+				"Lance" 20
+				"A-14F Rondel" 60
+				"Combat Drone" 24
+				"Culverin Class (Mark II)"
+				"Lance" 2
+				"Carrier (Mark II)" 2
+				"Lance" 8
+				"Combat Drone" 12
+				"Cruiser (Mark II)" 2
+				"Combat Drone" 8
+				"Frigate (Mark II)" 4
+				"Rainmaker (Mark II)" 2
+				"Gunboat (Mark II)" 4
+	npc
+		to despawn
+			has "event: mgf: Lucerne Deployment" 
+		government "Republic"
+		personality heroic staying entering
+		system Alnitak
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Spetum Class (Mark II)"
+				"Lance" 20
+				"A-14F Rondel" 60
+				"Combat Drone" 24
+				"Culverin Class (Mark II)"
+				"Lance" 2
+				"Carrier (Mark II)" 2
+				"Lance" 8
+				"Combat Drone" 12
+				"Cruiser (Mark II)" 2
+				"Combat Drone" 8
+				"Frigate (Mark II)" 4
+				"Rainmaker (Mark II)" 2
+				"Gunboat (Mark II)" 4
+				
+	npc
+		to spawn
+			has "event: mgf: Lucerne Deployment" 
+		government "Republic"
+		personality heroic staying entering
+		system Alnitak
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Lucerne Class"
+				"Lance" 116
+				"A-14F Rondel" 100
+				"Combat Drone" 64
+				"Spetum Class (Mark II)"
+				"Lance" 40
+				"A-14F Rondel" 40
+				"Combat Drone" 24
+				"Culverin Class (Mark II)" 4
+				"Lance" 6
+				"Cruiser (Mark II)" 6
+				"Combat Drone" 24
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 8
+				"Gunboat (Mark II)" 12

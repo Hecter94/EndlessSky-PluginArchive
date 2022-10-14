@@ -3,21 +3,24 @@
 
 ![1](https://user-images.githubusercontent.com/19187937/176770486-96d0ba66-0464-4557-ab3b-ef5c43d44505.PNG)
 
-Adds several civilian ships for you and NPC fleets to use adding more variety to the galaxy.
+Adds several civilian ships for you and NPC fleets to use adding more variety to the galaxy(mostly just human space for now).
 
 This plugin adds:
 
-* 16 Freighters
+* 18+ Freighters
 * 3 Transports
-* 13 Warships
+* 1 Space Liner
+* 5 Utility
+* 10 Warships + 2 Superheavy
 * 1 Battlestation
-* 5 Fighters and Drones (Uility and Combat)
+* 8 Fighters, Drones, and other carried ships (Utility and Combat)
+* A few weapons and outfits.
 
-Requires Continuous/0.9.15+
+Requires 0.9.15+/Continuous
 
 # Recommended 
 
-To fully utilize mining fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you command your ships to target mineable asteroids. The fork also provides other gameplay improvements and bug fixes.
+To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you command your ships to target mineable asteroids. The fork also provides other gameplay improvements and bug fixes.
 
 Link: https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins
 
