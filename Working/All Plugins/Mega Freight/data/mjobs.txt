@@ -1,3 +1,6 @@
+
+#=========================ESCORT
+
 mission "MGF: Escort (Huge 1, Dangerous Destination)"
 	name "Escort to <planet>"
 	description "The captain of the <npc> will pay you <payment> to escort them safely into a dangerous region of space to reach <destination> by <date>."
@@ -68,8 +71,6 @@ mission "MGF: Escort (Huge 2, Dangerous Destination)"
 		system destination
 		fleet "Small Northern Pirates"
 		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
 	npc
 		government "Pirate"
@@ -271,7 +272,6 @@ mission "MGF: Escort (Huge Fleet 2, Dangerous Destination)"
 		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
 	npc
 		government "Pirate"
 		personality nemesis entering harvests plunders
@@ -282,7 +282,6 @@ mission "MGF: Escort (Huge Fleet 2, Dangerous Destination)"
 		personality nemesis staying harvests plunders
 		system destination
 		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
 	
@@ -323,8 +322,6 @@ mission "MGF: Escort (Huge Fleet 3, Dangerous Destination)"
 		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
 		fleet "Large Core Pirates"
 	npc
 		government "Pirate"
@@ -336,7 +333,7 @@ mission "MGF: Escort (Huge Fleet 3, Dangerous Destination)"
 		personality nemesis staying harvests plunders
 		system destination
 		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
+		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
 	
@@ -377,20 +374,19 @@ mission "MGF: Escort (Huge Fleet 4, Dangerous Destination)"
 		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
-		fleet "Large Northern Pirates"
 		fleet "Large Core Pirates"
 	npc
 		government "Pirate"
 		personality nemesis entering harvests plunders
 		system destination
+		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 	npc
 		government "Pirate"
 		personality nemesis staying harvests plunders
 		system destination
 		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
+		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 		fleet "Large Northern Pirates"
 	
@@ -407,6 +403,57 @@ mission "MGF: Escort (Huge Fleet 4, Dangerous Destination)"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 		
+mission "MGF: Escort (Terrestrial Miner, Dangerous Destination)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort their terrestrial mining vessel safely into a dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 10
+		"combat rating" > 5000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier"
+		distance 3 8
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Core Pirates"
+		fleet "Small Core Pirates"
+		fleet "Large Core Pirates"
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Small Core Pirates"
+		fleet "Small Core Pirates"
+		fleet "Small Core Pirates"
+		fleet "Large Core Pirates"
+		fleet "Large Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"HMM-190 Kotroger"
+	on complete
+		payment 4000000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
 		
 mission "MGF CNY: Large Construction Supplies [0]"
 	name "Large rush delivery to <planet>"
@@ -533,6 +580,113 @@ mission "MGF CNY: Escort (Huge 1, Dangerous Origin)"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
+mission "MGF: Large Bulk Delivery [0]"
+	name "Large bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 100 250 .7
+	to offer
+		random < 70
+		"cargo space" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF: Large Bulk Delivery [1]"
+	name "Large bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 100 300 .7
+	to offer
+		random < 70
+		"cargo space" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF: Huge Bulk Delivery [0]"
+	name "Huge bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 400 900 .85
+	to offer
+		random < 65
+		"cargo space" > 120
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF: Huge Bulk Delivery [1]"
+	name "Huge bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 400 900 .85
+	to offer
+		random < 65
+		"cargo space" > 120
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic cargo delivery payment"
+		
+mission "MGF: Huge Bulk Delivery [2]"
+	name "Huge bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 400 900 .7
+	to offer
+		random < 60
+		"cargo space" > 150
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000
+		dialog phrase "generic cargo delivery payment"
+		
+#=======================================GAS
+
 mission "MGF: Gas Transport (LNG 1)"
 	name "Gas Transport"
 	description "4000 tons of Liquid Natural Gas required to be shipped to <destination>. Payment is <payment>."
@@ -581,6 +735,131 @@ mission "MGF: Gas Transport (LNG 2)"
 		payment
 		payment 2000000
 		
+mission "MGF: Rush Gas Transport (LNG 1)"
+	name "Rush Gas Transport"
+	deadline
+	description "4000 tons of Liquid Natural Gas required to be shipped to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	to offer
+		random < 90
+	source
+		attributes "factory" "manufacturing" "oil"
+	destination
+		attributes "factory" "manufacturing"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	on accept
+		outfit "Liquid Natural Gas" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		outfit "Liquid Natural Gas" -4000
+		dialog "You discharge the gas at a special port near the industrial site and receive your payment of <payment>"
+		payment
+		payment 3500000
+		
+mission "MGF: Gas Transport (Ethane 1)"
+	name "Gas Transport"
+	description "4000 tons of Liquid Ethane required to be shipped to <destination>. Payment is <payment>."
+	job
+	repeat
+	to offer
+		random < 80
+	source
+		attributes "factory" "manufacturing" "oil"
+	destination
+		attributes "factory" "manufacturing"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	on accept
+		outfit "Liquid Ethane" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		outfit "Liquid Ethane" -4000
+		dialog "You discharge the gas at a special port near the industrial site and receive your payment of <payment>"
+		payment
+		payment 3000000
+		
+mission "MGF: Rush Gas Transport (Ethane 1)"
+	name "Rush Gas Transport"
+	description "4000 tons of Liquid Ethane required to be shipped to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	deadline
+	to offer
+		random < 70
+	source
+		attributes "factory" "manufacturing" "oil"
+	destination
+		attributes "factory" "manufacturing"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	on accept
+		outfit "Liquid Ethane" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		outfit "Liquid Ethane" -4000
+		dialog "You discharge the gas at a special port near the industrial site and receive your payment of <payment>"
+		payment
+		payment 5250000
+		
+mission "MGF: Gas Transport (Hydrogen 1)"
+	name "Gas Transport"
+	description "4000 tons of Liquid Hydrogen required to be shipped to <destination>. Payment is <payment>."
+	job
+	repeat
+	to offer
+		random < 85
+	source
+		attributes "factory" "manufacturing" "oil"
+	destination
+		attributes "factory" "manufacturing"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	on accept
+		outfit "Liquid Hydrogen" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		outfit "Liquid Hydrogen" -4000
+		dialog "You discharge the gas at a special port near the industrial site and receive your payment of <payment>"
+		payment
+		payment 2500000
+		
+mission "MGF: Rush Gas Transport (Hydrogen 1)"
+	name "Rush Gas Transport"
+	description "4000 tons of Liquid Hydrogen required to be shipped to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	deadline
+	to offer
+		random < 80
+	source
+		attributes "factory" "manufacturing" "oil"
+	destination
+		attributes "factory" "manufacturing"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	on accept
+		outfit "Liquid Hydrogen" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		outfit "Liquid Hydrogen" -4000
+		dialog "You discharge the gas at a special port near the industrial site and receive your payment of <payment>"
+		payment
+		payment 4375000
+		
+#==============================Passenger
+		
 mission "MGF: Huge Passengers [0]"
 	name "Passenger transport to <planet>"
 	job
@@ -598,7 +877,7 @@ mission "MGF: Huge Passengers [0]"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
-		payment 8000 100
+		payment 4500 70
 		dialog phrase "generic passenger dropoff payment"
 
 mission "MGF: Huge Passengers [1]"
@@ -618,14 +897,14 @@ mission "MGF: Huge Passengers [1]"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
-		payment 9000 120
+		payment 4500 85
 		dialog phrase "generic passenger dropoff payment"
 
 mission "MGF: Huge Syndi Workers [0]"
 	name "Workers to <planet>"
 	job
 	repeat
-	description "This transport agency is looking for ships to transport <bunks> of workers to <destination>. Payment is <payment>."
+	description "This transport agency is looking for ships to transport <bunks> workers to <destination>. Payment is <payment>."
 	passengers 200 700 .8
 	to offer
 		has "event: mgf: mieusbar released"
@@ -640,7 +919,7 @@ mission "MGF: Huge Syndi Workers [0]"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
-		payment 6000 50
+		payment 5000 50
 		dialog phrase "generic passenger dropoff payment"
 
 mission "MGF: Landed Rollercoaster (rich urban) [0]"
@@ -974,7 +1253,7 @@ mission "MGF: Extra Wealthy Tourist Designer Rollercoaster [4]"
 
 #========================Small Pool
 
-mission "MGF: Extra Tourists out [0]"
+mission "MGF: Extra Tourists out Compact Pool [0]"
 	name "Bring a tourist to <planet>"
 	job
 	repeat
@@ -997,7 +1276,7 @@ mission "MGF: Extra Tourists out [0]"
 		payment 7000
 		dialog phrase "generic passenger dropoff payment"
 
-mission "MGF: Extra Tourists out [1]"
+mission "MGF: Extra Tourists out Compact Pool [1]"
 	name "Bring a tourist to <planet>"
 	job
 	repeat
@@ -1022,7 +1301,7 @@ mission "MGF: Extra Tourists out [1]"
 		
 #=========================Medium Pool
 
-mission "MGF: Extra Tourists out [0]"
+mission "MGF: Extra Tourists out Medium Pool [0]"
 	name "Bring a tourist to <planet>"
 	job
 	repeat
@@ -1045,7 +1324,7 @@ mission "MGF: Extra Tourists out [0]"
 		payment 8000
 		dialog phrase "generic passenger dropoff payment"
 
-mission "MGF: Extra Tourists out [1]"
+mission "MGF: Extra Tourists out Medium Pool [1]"
 	name "Bring a tourist to <planet>"
 	job
 	repeat
@@ -1730,7 +2009,7 @@ mission "MGF: Extra Transport Large Exotic Pool [1]"
 
 #=============================================Casino
 
-mission "MGF: Extra Wealthy Tourist Large Exotic Pool [0]"
+mission "MGF: Extra Wealthy Tourist Large Casino [0]"
 	name "Bring wealthy tourists to <planet>"
 	job
 	repeat
@@ -1756,7 +2035,7 @@ mission "MGF: Extra Wealthy Tourist Large Exotic Pool [0]"
 		payment 10000 200
 		dialog phrase "generic passenger dropoff payment"
 
-mission "MGF: Extra Wealthy Tourist Large Exotic Pool [1]"
+mission "MGF: Extra Wealthy Tourist Large Casino [1]"
 	name "Bring wealthy tourists to <planet>"
 	job
 	repeat

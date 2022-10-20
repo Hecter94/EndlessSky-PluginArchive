@@ -423,7 +423,8 @@ mission "MGF: Claymore test run"
 	
 	npc 
 		government "MGF: Republic (Test Run)"
-		personality staying heroic disables
+		personality staying heroic disables uninterested
+		system Sol
 		fleet
 			names "republic capital"
 			fighters "republic fighter"
@@ -432,14 +433,15 @@ mission "MGF: Claymore test run"
 				
 	npc
 		government "MGF: NPC Target"
-		personality staying heroic disables
+		personality staying heroic disables uninterested
+		system Sol
 		fleet
 			names "republic capital"
 			fighters "republic fighter"
 			variant
-				"Falcon" 8
-				"Leviathan" 8
-				"Culverin Class" 4
+				"Falcon (Automaton)" 8
+				"Leviathan (Automaton)" 8
+				"Culverin Class (Automaton)" 4
 				
 				
 event "mgf: Claymore Deployment"
@@ -805,6 +807,12 @@ mission "MGF Addition: FW Pug 5B"
 	clearance
 	to offer
 		has "FW Pug 5A: done"
+		not "FW Pug 5B: done"
+		not "FW Pug 5B: failed"
+	to fail
+		or
+			has "FW Pug 5B: done"
+			has "FW Pug 5B: failed"
 	npc
 		government Republic
 		personality escort disables waiting
@@ -813,7 +821,8 @@ mission "MGF Addition: FW Pug 5B"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				"Culverin Class (Mark II)"
 				"Lance" 2
@@ -826,6 +835,8 @@ mission "MGF Addition: FW Syndicate Extremists 1B"
 	clearance
 	to offer
 		has "FW Syndicate Extremists 1A: done"
+	to fail
+		has "FW Syndicate Extremists 1B: done"
 	npc
 		government "Navy (Oathkeeper)"
 		system Deneb
@@ -835,7 +846,8 @@ mission "MGF Addition: FW Syndicate Extremists 1B"
 			fighters "republic fighter"
 			variant
 				"Culverin Class (Mark II)" 2
-				"Lance" 4
+				"Lance" 2
+				"A-14F Rondel" 2
 				
 mission "MGF Addition: FWC Attack Kaus Borealis"
 	landing
@@ -845,6 +857,9 @@ mission "MGF Addition: FWC Attack Kaus Borealis"
 	clearance
 	to offer
 		has "FWC Scouting 1: done"
+		not "FWC Attack Kaus Borealis: done"
+	to fail
+		has "FWC Attack Kaus Borealis: done"
 	npc evade
 		personality staying heroic
 		system "Kaus Borealis"
@@ -863,7 +878,9 @@ mission "MGF Addition: FWC Checkmate 1B"
 	clearance
 	to offer
 		has "FWC Checkmate 1: done"
-	
+		not "FWC Checkmate 1B: done"
+	to fail
+		has "FWC Checkmate 1B: done"
 	npc evade
 		personality heroic staying
 		government "Republic"
@@ -902,6 +919,8 @@ mission "MGF Addition: FWC Pug 4C"
 	clearance
 	to offer
 		has "FWC Pug 4B: done"
+	to fail
+		has "FWC Pug 4C: done"
 	npc evade
 		personality disables heroic staying
 		government Pug
@@ -920,7 +939,8 @@ mission "MGF Addition: FWC Pug 4C"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				
 mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
@@ -939,7 +959,8 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				"Culverin Class (Mark II)"
 				"Lance" 2
@@ -950,6 +971,9 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2"
 	source "Farpoint"
 	to offer
 		has "Wanderers: Sestor: Quarg Help 2: done"
+		or
+			not "Wanderers: Sestor: Farpoint Attack 2: done"
+			not "Wanderers: Sestor: Bomb Zenith 1: done"
 	to complete
 		or
 			has "Wanderers: Sestor: Farpoint Attack 2: done"
@@ -962,7 +986,8 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2"
 			fighters "republic fighter"
 			variant
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				"Culverin Class (Mark II)" 3
 				"Lance" 6
@@ -975,6 +1000,9 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
 	to offer
 		has "Wanderers: Sestor: Quarg Help 2: done"
 		has "event: mgf: developed Lucerne"
+		or
+			not "Wanderers: Sestor: Farpoint Attack 2: done"
+			not "Wanderers: Sestor: Bomb Zenith 1: done"
 	to complete
 		or
 			has "Wanderers: Sestor: Farpoint Attack 2: done"
@@ -987,10 +1015,12 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
 			fighters "republic fighter"
 			variant
 				"Lucerne Class"
-				"Lance" 216
+				"Lance" 116
+				"A-14F Rondel" 100
 				"Combat Drone" 64
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				"Culverin Class (Mark II)" 2
 				"Lance" 4
@@ -1000,7 +1030,8 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
 				"Gunboat (Mark II)" 12
 				
 				"Spetum Class (Mark II)"
-				"Lance" 80
+				"Lance" 40
+				"A-14F Rondel" 40
 				"Combat Drone" 24
 				"Culverin Class (Mark II)" 3
 				"Lance" 6

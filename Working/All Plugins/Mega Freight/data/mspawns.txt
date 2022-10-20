@@ -4,38 +4,82 @@
 mission "MGF: Polaris Alcazar"
 	invisible
 	landing
-	npc kill
+	npc save
 		government Syndicate
 		personality heroic staying opportunistic
 		system Polaris
 		ship "SC-1 Alcazar" "S.S. Asiaius"
+	npc
+		government Syndicate
+		personality heroic staying
+		system Polaris
 		fleet
 			names "syndicate small"
 			variant
 				"Barb" 120
-	on complete
-		"reputation: Syndicate" -= 1000
+
+mission "MGF: Polaris Alcazar Respawn Delay"
+	invisible
+	landing
+	to offer
+		has "MGF: Polaris Alcazar: failed"
+	on offer
+		"MGF: Polaris Alcazar Destruction Date" = ("year" * "months") + "months"
+	on accept
+		fail
 		
+mission "MGF: Polaris Alcazar Respawn"
+	invisible
+	landing
+	to offer
+		"MGF: Polaris Alcazar Destruction Date" + 12 == ("year" * "months") + "months"
+	on offer
+		clear "MGF: Polaris Alcazar: offered"
+		clear "MGF: Polaris Alcazar: failed"
+		clear "MGF: Polaris Alcazar: done"
+
 mission "MGF: Sol Alcazar"
 	invisible
 	landing
-	npc kill
+	npc save
 		government Republic
 		personality heroic staying opportunistic
 		system Sol
 		ship "SC-1 Alcazar" "Guardian of Gaia"
+	npc
+		government Republic
+		personality heroic staying
+		system Sol
 		fleet
 			names "republic fighter"
 			variant
 				"Lance" 90
 				"A-14F Rondel" 30
-	on complete
-		"reputation: Republic" -= 1000
+
+mission "MGF: Sol Alcazar Respawn Delay"
+	invisible
+	landing
+	to offer
+		has "MGF: Sol Alcazar: failed"
+	on offer
+		"MGF: Sol Alcazar Destruction Date" = ("year" * "months") + "months"
+	on accept
+		fail
+		
+mission "MGF: Sol Alcazar Respawn"
+	invisible
+	landing
+	to offer
+		"MGF: Sol Alcazar Destruction Date" + 12 == ("year" * "months") + "months"
+	on offer
+		clear "MGF: Sol Alcazar: offered"
+		clear "MGF: Sol Alcazar: failed"
+		clear "MGF: Sol Alcazar: done"
 		
 mission "MGF: Almaaz Alcazar"
 	invisible
 	landing
-	npc kill
+	npc save
 		government Pirate
 		personality heroic staying opportunistic
 		system Almaaz
@@ -44,9 +88,6 @@ mission "MGF: Almaaz Alcazar"
 			names "pirate"
 			variant
 				"Dagger" 120
-	on complete
-		"reputation: Pirate" -= 1000
-		
 		
 event "MGF: Pirate Advancement I"
 	date 16 12 3014
@@ -751,6 +792,159 @@ event "mgf: fw converted supercarrier"
 			"SWV4 Ravelin" 2
 			"Eleonorae" 2
 			"PAS-2 Bulwark" 2
+			"Bastion" 4
+			
+mission "MGF: FW plasma turret available"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: plasma turret available"
+	on offer
+		event "mgf: fw plasma turret"
+
+event "mgf: fw plasma turret"
+	fleet "Large Free Worlds"
+		add variant 1
+			"PAS-2 Bulwark (Plasma)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"Falcon (Laser)"
+			"PAS-2 Bulwark (Plasma)"
+		add variant 1
+			"Falcon (Heavy)"
+			"PAS-2 Bulwark (Plasma)"
+			"CS-24 Garrison"
+			"Finch" 18
+			
+mission "MGF: FW Develop Parapet AM Trigger"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "Liberate Kornephoros: done"
+	on offer
+		event "mgf: fw parapet am available" 180
+		
+event "mgf: fw parapet am available"
+	outfitter "Kraz Advanced"
+		"KC-421 Parapet Anti-Missile"
+	fleet "Large Free Worlds"
+		add variant 2
+			"Falcon (Parapet)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"Falcon (Parapet)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 2
+			"Falcon (Parapet)"
+			"Falcon"
+			"CS-24 Garrison" 2
+			"Finch" 36
+		add variant 1
+			"Falcon (Heavy)" 2
+			"Falcon (Parapet)" 2
+			"CS-24 Garrison" 5
+			"Finch" 54
+			"AGT-31 Xencar" 36
+		add variant 5
+			"Bastion"
+			"Falcon (Parapet)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+			
+		add variant 5
+			"Eleonorae (Parapet)"
+			"Falcon (Heavy)"
+		add variant 1
+			"Eleonorae (Parapet)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 2
+			"Eleonorae (Parapet)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"Eleonorae"
+			"Falcon (Parapet)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 2
+			"Eleonorae"
+			"Eleonorae (Parapet)"
+			
+	fleet "Large Southern Merchants"
+		add variant 5
+			"LCC-3 Sierra"
+			"Falcon (Parapet)"
+		add variant 6
+			"FG-7 Conveyor"
+			"Eleonorae (Parapet)"
+			"CSE-6 Steward" #6
+			"Lance" 14
+		add variant 4
+			"Hauler III" 5
+			"Falcon (Parapet)"
+			"CS-24 Garrison" #18
+			"Lance" 18
+			
+mission "MGF: FW Dreadnought Parapet"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: dreadnought deployment"
+		has "event: mgf: fw parapet am available"
+	on offer
+		event "mgf: dreadnought w parapet"
+			
+event "mgf: dreadnought w parapet"
+	fleet "Large Free Worlds"
+		add variant 2
+			"Dreadnought (Parapet)"
+		add variant 2
+			"Dreadnought (Parapet)"
+			"Bastion"
+			
+mission "MGF: FW Converted Warship w Parapet"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: mgf: fw parapet am available"
+		has "event: mgf: fw converted warships"
+	on offer
+		event "mgf: fw converted warships w parapet"
+		
+event "mgf: fw converted warships w parapet"
+	fleet "Large Free Worlds"
+		add variant 4
+			"PAS-2 Bulwark (Parapets)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 1
+			"Eleonorae"
+			"PAS-2 Bulwark (Parapets)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"Falcon (Parapet)"
+			"Eleonorae"
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+		add variant 1
+			"PCS-5 Citadel"
+			"Finch" 44
+			"AGT-31 Xencar" 100
+			"SWV4 Ravelin" 2
+			"Eleonorae" 2
+			"PAS-2 Bulwark (Parapets)" 2
 			"Bastion" 4
 			
 mission "MGF: Add Navy Mark II"
@@ -1980,6 +2174,213 @@ event "mgf: readd fleets recapture of Kornephoros"
 		add fleet "Large Black Death" 13000
 		add fleet "Small Crossguard Patrol" 2700
 		add fleet "Large Crossguard Patrol" 5800
+		
+mission "MGF: readd fleet normal in Alnasl"
+	invisible
+	landing
+	to offer
+		has "event: normal in Alnasl"
+	on offer
+		event "mgf: readd fleets normal in Alnasl"
+	on accept
+		fail
+		
+event "mgf: readd fleets normal in Alnasl"
+	system Alnasl
+		add fleet "Jacks Gang" 9600
+		add fleet "Small Crossguard Patrol" 2900
+		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Rangphenn Transport" 6100
+		add fleet "Small Black Death" 7900
+		add fleet "Large Black Death" 11800
+		
+mission "MGF: quick readd fleet fw southern expansion"
+	invisible
+	landing
+	to offer
+		has "event: fw southern expansion"
+	on offer
+		event "mgf: quick readd fleets fw southern expansion"
+	on accept
+		fail
+		
+event "mgf: readd fleets fw southern expansion"
+	system "Lesath"
+		add fleet "Small Crossguard Patrol" 3400
+		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 10900
+		add fleet "Rangphenn Transport" 5700
+		add fleet "Jacks Gang" 10900
+	system "Sargas"
+		add fleet "Small Crossguard Patrol" 2500
+		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Black Death" 7700
+		add fleet "Large Black Death" 10300
+		add fleet "Rangphenn Transport" 6100
+		add fleet "Jacks Gang" 11600
+	system "Rastaban"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Girtab"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Albaldah"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Delta Sagittarii"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Kaus Borealis"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+		
+mission "MGF: quick readd fleet fw occupying the north"
+	invisible
+	landing
+	to offer
+		has "event: fw southern expansion"
+	on offer
+		event "mgf: quick readd fleets fw occupying the north"
+	on accept
+		fail
+		
+event "mgf: quick readd fleets fw occupying the north"
+	system "Alioth"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Alphecca"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Boral"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Seginus"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Wei"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+		
+mission "MGF: quick readd fleet fw expanded and cut"
+	invisible
+	landing
+	to offer
+		has "event: fw expanded and cut"
+	on offer
+		event "mgf: quick readd fleets fw expanded and cut"
+	on accept
+		fail
+	
+event "mgf: quick readd fleets fw expanded and cut"
+	system "Delta Sagittarii"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Rastaban"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Girtab"
+		add fleet "Small Crossguard Patrol" 2300
+		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 16800
+		add fleet "Rangphenn Transport" 5000
+		add fleet "Jacks Gang" 11800
+	system "Lesath"
+		add fleet "Small Crossguard Patrol" 3400
+		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 10900
+		add fleet "Rangphenn Transport" 5700
+		add fleet "Jacks Gang" 10900
+	system "Alpha Arae"
+		add fleet "Jacks Gang" 9000
+		add fleet "Rangphenn Transport" 5100
+		add fleet "Small Black Death" 7900
+		add fleet "Large Black Death" 16100
+		add fleet "Small Crossguard Patrol" 2000
+		add fleet "Large Crossguard Patrol" 6300
+		
+mission "MGF: quick readd fleet fw armistice"
+	invisible
+	landing
+	to offer
+		has "event: fw armistice"
+	on offer
+		event "mgf: quick readd fleets fw armistice"
+	on accept
+		fail
+		
+event "mgf: quick readd fleets fw armistice"
+	system "Rutilicus"
+		add fleet "Small Crossguard Patrol" 2500
+		add fleet "Large Crossguard Patrol" 5300
+		add fleet "Small Black Death" 7700
+		add fleet "Large Black Death" 14800
+		add fleet "Rangphenn Transport" 6000
+		add fleet "Jacks Gang" 13400
+	system "Cebalrai"
+		add fleet "Small Crossguard Patrol" 2900
+		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 12600
+		add fleet "Rangphenn Transport" 6400
+		add fleet "Jacks Gang" 11100
+	system "Holeb"
+		add fleet "Small Crossguard Patrol" 3100
+		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Black Death" 7700
+		add fleet "Large Black Death" 11400
+		add fleet "Rangphenn Transport" 4600
+		add fleet "Jacks Gang" 12200
 		
 #Lost in Midnight Compatibility Support
 
