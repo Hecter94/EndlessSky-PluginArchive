@@ -390,6 +390,14 @@ Enhance/improve/fill gaps in many aspects of pirate combat in Human space, espec
 
 **Status**
 
+## Better Vanilla Weapons
+
+**Created by ZBok**
+
+Add new weapons.
+
+**Status**
+
 ## Beyond the Sky
 
 ![Beyond the Sky](https://raw.githubusercontent.com/1010todd/Beyond-the-Sky/main/images/thumbnail/quarg%20psuchawrl%20thumb.png)
