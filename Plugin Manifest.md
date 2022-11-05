@@ -290,6 +290,18 @@ Add a ship.
 
 **Status**
 
+## Arion
+
+**Created by  Spectre907YT**
+
+Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
+
+[Airon](https://github.com/Spectre907YT/Endless-Sky---Arion)
+
+**Status**
+
+Should work in Continuous/0.9.15/0.9.16
+
 ## Arrival Distance Override
 
 ## Arr Mateys
