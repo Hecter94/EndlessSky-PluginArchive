@@ -827,9 +827,11 @@ Abandoned.
 
 Python scripts to generate new procedurally generated galaxy. Comes with pre-generated data for instant playing.
 
+[Endless Endless Sky](https://github.com/1010todd/Endless-Endless-Sky)
+
 **Status**
 
-Playable on 0.9.15/0.9.16/Continuous
+Playable on 0.9.15/0.9.16/Continuous.
 
 ## Endless-Sky-Ship
 
