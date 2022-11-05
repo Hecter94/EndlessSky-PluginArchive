@@ -2120,6 +2120,12 @@ New Republic heavy warship for a competition.
 
 ## Riley's Plugin
 
+## Salvaging
+
+**Created by Hecter94**
+
+Salvaging proof of concept.
+
 ## Sarcina
 
 **Created by Darcy Manoel**
