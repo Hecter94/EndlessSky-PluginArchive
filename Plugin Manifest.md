@@ -1209,6 +1209,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Human Ship Expansion
 
+## Human Space Overhaul
+
+**Created by Zoura (AvianGeneticist)**
+
+Add new unique outfits for each human governments (FW, Navy, Syndicate).
+
+**Status**
+
+Playable on 0.9.15/0.9.16/Continuous.
+
 ## Human Steering Flares
 
 **Created by Ferociousfeind**
