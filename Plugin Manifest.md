@@ -406,6 +406,16 @@ Playable on 0.9.15 Continuous.
 
 ## Binary reOrder
 
+**Concept by Vaelophis Nyx**
+
+**Created by Kezethun**
+
+**Ship Sprite by 1010Todd**
+
+Add new faction of AI flying sailship-inspired ships.
+
+**Status**
+
 ## Bits and Bobs
 
 ## BiteOfTheAnt
