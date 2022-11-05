@@ -2289,6 +2289,16 @@ Playable on 0.9.15 Continuous.
 
 ## StarSector
 
+## Stat Reworks
+
+**Created by Saturnalia9**
+
+Reworked vanilla weapon stats and add new weapons for more diversity. 
+
+**Status**
+
+Should work on 0.9.15, 0.9.16, Continuous.
+
 ## Starbridge Pack
 
 ![Starbridge Pack](https://raw.githubusercontent.com/Autohummer/Endless-Sky-Starbridge-Pack/main/icon.png)
