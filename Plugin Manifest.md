@@ -1923,6 +1923,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Plasma Mine
 
+## Play As Sestor
+
+**Created by Zoura (AvianGeneticist)**
+
+Kor Sestor alternate start.
+
+**Status**
+
+Playable on 0.9.15/0.9.16.
+
 ## PlayerRewards
 
 **Created by Beanzilla**
