@@ -468,6 +468,18 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Unknown
 
+## Crisis in Management
+
+**Created by lekachu**
+
+This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
+
+[Crisis in Management](https://github.com/leklachu/endless-sky-syndicate)
+
+**Status**
+
+Playable on 0.9.15, 0.9.16, Continuous.
+
 ## Cannon Friendly Weapon Pack
 
 ## Captain Last and the Timeship
