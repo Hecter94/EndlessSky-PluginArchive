@@ -1599,7 +1599,18 @@ Add various ships to human space.
 
 **Status**
 
-Playable on 0.9.15 Continuous.
+Playable on 0.9.15/0.9.16/Continuous.
+
+## Mega Freight ZHO
+
+**Created by 1010Todd**
+
+Compatibility bridge for Mega Freight and Zoura's Human Space Overhaul.
+
+**Status**
+
+Playable on 0.9.15/0.9.16/Continuous.
+
 
 ## Merchant Marine
 
