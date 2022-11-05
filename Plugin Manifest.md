@@ -1345,6 +1345,18 @@ Make Kestrel a much better ship, and increased requirements.
 
 **Created by mdsmestad**
 
+## Kinetic Weaponry
+
+**Created by Bereskatuket (kestrel1110)**
+
+A plugin adding modern realistic weapons to Endless-Sky, including a cannon and two shell types, APFSDS & HEATFS. They are tier 1 human weapons, already balanced to work as anti-capital ship weapons.
+
+[Kinetic Weaponry](https://github.com/kestrel1110/KineticWeaponry)
+
+**Status**
+
+Playable on 0.9.15, 0.9.16, Continuous.
+
 ## KorExiles-PA
 
 **Created by Ejothims**
