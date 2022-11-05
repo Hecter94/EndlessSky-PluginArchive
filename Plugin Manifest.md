@@ -1311,6 +1311,16 @@ Jaling Expansion adds another human civilization which not connected to human sp
 
 Unknown
 
+## Jenkins My Beloved
+
+**Created by Zoura (AvianGeneticist)**
+
+Add new types of fighter which is literally a guy with a gun flying around shooting things.
+
+**Status**
+
+Should be playable on 0.9.15/0.9.16
+
 ## Join the Navy
 
 ## Jojo's Galactic Adventure
