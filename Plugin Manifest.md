@@ -316,6 +316,18 @@ Adds some missions for the pirate worlds.
 
 ## Assault Cruiser
 
+## Athmagr Invasion
+
+**Created by 1010Todd**
+
+Add new alien invader to Milky Way. Triggered 3 months after the current end of Wanderer Storyline.
+
+[Athmagr Invasion](https://github.com/1010todd/Athmagr-Invasion)
+
+**Status**
+
+Playable on 0.9.15, 0.9.16, Continuous
+
 ## Automation and PlanetSideStorage
 
 ## Automation
