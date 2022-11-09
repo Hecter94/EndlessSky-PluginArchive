@@ -877,6 +877,18 @@ Abandoned.
 
 ## Endless Sky except ships make that weird Tim Allen sound when they die
 
+## Endless Endless Sky
+
+**Created by 1010Todd**
+
+Python scripts to generate new procedurally generated galaxy. Comes with pre-generated data for instant playing.
+
+[Endless Endless Sky](https://github.com/1010todd/Endless-Endless-Sky)
+
+**Status**
+
+Playable on 0.9.15/0.9.16/Continuous.
+
 ## Endless-Sky-Ship
 
 **Created by The-Borg-Captain**
