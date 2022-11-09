@@ -290,6 +290,20 @@ Add a ship.
 
 **Status**
 
+
+## Arena of the Worthy
+
+**Created by RisingLeaf**
+
+This plugin adds a new species, the Impeti. They are even more advanced than the Drak and they found no happiness in scientific progress. Instead they started searching for the most capable person in the galaxy and find out how they achieve happiness. Therefore they started the Arena of the Worthy, where a few individuum of each species battle for honor and very special gifts.
+
+[Arena of the Worthy](https://github.com/RisingLeaf/Arena-of-the-Worthy/tree/main)
+
+**Status**
+
+REQUIRES PR #[7348](https://github.com/endless-sky/endless-sky/pull/7348). Either wait for it to be merged or use ESLauncher2 to download the PR.
+
+
 ## Arion
 
 **Created by  Spectre907YT**
