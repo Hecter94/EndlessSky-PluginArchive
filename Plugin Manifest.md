@@ -1964,6 +1964,16 @@ Playable on 0.9.15 Continuous.
 
 ## Pheonix
 
+## Pi game mods
+
+**Created by Pilover100**
+
+Pilover100's personal modifications. (Change UI colors to make things more visible. Alternate Wanderer Reactor graphic.)
+
+**Status**
+
+Playable on 0.9.15/0.9.16.
+
 ## Pilots License
 
 **Created by tmbutterworth**
