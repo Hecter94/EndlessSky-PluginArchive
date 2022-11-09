@@ -290,6 +290,7 @@ Add a ship.
 
 **Status**
 
+
 ## Arena of the Worthy
 
 **Created by RisingLeaf**
@@ -301,6 +302,19 @@ This plugin adds a new species, the Impeti. They are even more advanced than the
 **Status**
 
 REQUIRES PR #[7348](https://github.com/endless-sky/endless-sky/pull/7348). Either wait for it to be merged or use ESLauncher2 to download the PR.
+
+
+## Arion
+
+**Created by  Spectre907YT**
+
+Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
+
+[Airon](https://github.com/Spectre907YT/Endless-Sky---Arion)
+
+**Status**
+
+Should work in Continuous/0.9.15/0.9.16
 
 ## Arrival Distance Override
 
@@ -315,6 +329,18 @@ Adds some missions for the pirate worlds.
 **Status**
 
 ## Assault Cruiser
+
+## Athmagr Invasion
+
+**Created by 1010Todd**
+
+Add new alien invader to Milky Way. Triggered 3 months after the current end of Wanderer Storyline.
+
+[Athmagr Invasion](https://github.com/1010todd/Athmagr-Invasion)
+
+**Status**
+
+Playable on 0.9.15, 0.9.16, Continuous
 
 ## Automation and PlanetSideStorage
 
@@ -402,6 +428,14 @@ Enhance/improve/fill gaps in many aspects of pirate combat in Human space, espec
 
 **Status**
 
+## Better Vanilla Weapons
+
+**Created by ZBok**
+
+Add new weapons.
+
+**Status**
+
 ## Beyond the Sky
 
 ![Beyond the Sky](https://raw.githubusercontent.com/1010todd/Beyond-the-Sky/main/images/thumbnail/quarg%20psuchawrl%20thumb.png)
@@ -417,6 +451,16 @@ Additional ships and reaction to being farmed for high tier alien(Pug, Quarg).
 Playable on 0.9.15 Continuous.
 
 ## Binary reOrder
+
+**Concept by Vaelophis Nyx**
+
+**Created by Kezethun**
+
+**Ship Sprite by 1010Todd**
+
+Add new faction of AI flying sailship-inspired ships.
+
+**Status**
 
 ## Bits and Bobs
 
@@ -1221,6 +1265,16 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Human Ship Expansion
 
+## Human Space Overhaul
+
+**Created by Zoura (AvianGeneticist)**
+
+Add new unique outfits for each human governments (FW, Navy, Syndicate).
+
+**Status**
+
+Playable on 0.9.15/0.9.16/Continuous.
+
 ## Human Steering Flares
 
 **Created by Ferociousfeind**
@@ -1313,6 +1367,16 @@ Jaling Expansion adds another human civilization which not connected to human sp
 
 Unknown
 
+## Jenkins My Beloved
+
+**Created by Zoura (AvianGeneticist)**
+
+Add new types of fighter which is literally a guy with a gun flying around shooting things.
+
+**Status**
+
+Should be playable on 0.9.15/0.9.16
+
 ## Join the Navy
 
 ## Jojo's Galactic Adventure
@@ -1356,6 +1420,18 @@ Make Kestrel a much better ship, and increased requirements.
 ## Kestrel-M
 
 **Created by mdsmestad**
+
+## Kinetic Weaponry
+
+**Created by Bereskatuket (kestrel1110)**
+
+A plugin adding modern realistic weapons to Endless-Sky, including a cannon and two shell types, APFSDS & HEATFS. They are tier 1 human weapons, already balanced to work as anti-capital ship weapons.
+
+[Kinetic Weaponry](https://github.com/kestrel1110/KineticWeaponry)
+
+**Status**
+
+Playable on 0.9.15, 0.9.16, Continuous.
 
 ## KorExiles-PA
 
@@ -1611,7 +1687,18 @@ Add various ships to human space.
 
 **Status**
 
-Playable on 0.9.15 Continuous.
+Playable on 0.9.15/0.9.16/Continuous.
+
+## Mega Freight ZHO
+
+**Created by 1010Todd**
+
+Compatibility bridge for Mega Freight and Zoura's Human Space Overhaul.
+
+**Status**
+
+Playable on 0.9.15/0.9.16/Continuous.
+
 
 ## Merchant Marine
 
@@ -1901,6 +1988,16 @@ Playable on 0.9.15 Continuous.
 
 ## Pheonix
 
+## Pi game mods
+
+**Created by Pilover100**
+
+Pilover100's personal modifications. (Change UI colors to make things more visible. Alternate Wanderer Reactor graphic.)
+
+**Status**
+
+Playable on 0.9.15/0.9.16.
+
 ## Pilots License
 
 **Created by tmbutterworth**
@@ -1934,6 +2031,16 @@ Get money from killing pirates.
 Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Plasma Mine
+
+## Play As Sestor
+
+**Created by Zoura (AvianGeneticist)**
+
+Kor Sestor alternate start.
+
+**Status**
+
+Playable on 0.9.15/0.9.16.
 
 ## PlayerRewards
 
@@ -1970,6 +2077,18 @@ Re-adds news portraits.
 [Project Technovirus](https://github.com/czartrak/Project-Technovirus)
 
 **Status**
+
+## Prometeus Flame
+
+**Created by Delta-Zero**
+
+Prometeus Flame is a campaign expansion plugin that introduces a new corporation: “Prometeus AT Group” which become vital to the Free worlds war effort. The company provides over eight new ships added to the campaign that will be operated exclusively by the FW giving the faction some serious new firepower as well as new missions integrating the Lyria System and its corporation Prometeus into the universe of Endless Sky and lore.
+
+[Prometeus Flame](https://github.com/Delta-Zero/Endless-Sky-Prometeus-Flame-Plugin)
+
+**Status**
+
+WIP, Map Only
 
 ## Pug Defense
 
@@ -2108,6 +2227,12 @@ New Republic heavy warship for a competition.
 ## Reverse Engineering
 
 ## Riley's Plugin
+
+## Salvaging
+
+**Created by Hecter94**
+
+Salvaging proof of concept.
 
 ## Sarcina
 

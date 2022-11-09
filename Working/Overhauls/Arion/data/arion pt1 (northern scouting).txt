@@ -1,0 +1,130 @@
+mission "Arion:North Scout 1"
+	landing
+	description "Head over to <destination> and go to the spaceport to begin your mission with the 7th scouting squadron"
+	source Luna
+	destination Farpoint
+	to offer
+		has "Arion:North Supply 3: done"
+	on offer
+		conversation
+			`"Good job helping the 11th Transport Squadron. While they probably didn't need help, its good to have backup. Besides, you helped us neutralize the pirate gang, for now. We will need to check on them. You will be joining the 7th Scouting Squadron on Farpoint, and help find their base to determine their strength, meet them in the spaceport," the base commander tells you.`
+				accept
+
+mission "Arion:North Scout 2"
+	spaceport
+	description "Scout Haven for the precense of the pirate who you fought previously."
+	clearance
+	source "Farpoint"
+	destination "Haven"
+	to offer
+		has "Arion:North Scout 1: offered"
+	on offer
+		conversation
+			`After landing, you head straight to the spaceport. When you enter the spaceport, you see a man in uniform, not to different from Tod's. You have a feeling that he is your man.`
+			`"Hello Captain <first> <last>, my name is Midnight and before you ask, yes that is my codename, not my real name. I am the commander of the 7th scouting squadron. Usually there would be another ship accompanying us but the captain got injured in a recent battle, so you will be my temporary squadmate. Our first task is to scout Haven, a pirate system where the main base of the pirates you recently fight resides. We need to check their strength and how much ships they have left. It will not be easy since we will be the only 2 ships available. But hey, we are only there to scout, not fight."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+
+mission "Arion:North Scout 3"
+	landing
+	description "Return to Farpoint. Evade or kill the enemies pursuing you."
+	source "Haven"
+	destination "Farpoint"
+	to offer 
+		has "Arion:North Scout 2: offered"
+	on offer
+		conversation
+			`The SFF Overseer approaches the enemy base as you remain higher up to defend the Overseer in case enemy reinforcements came in.`
+			`	"It appears that the amount of larger warships in their arsenal has been reduced. Wether they have been destroyed or out hunting, i don't know. However, seeing as they usually have a few medium and heavy warships in their base, i suspect the former. Anyways, wait a minute......... a few light warships are preparing to take off, we have to go. I'll launch a few missile shots while they're still on the ground, but expect a few enemies to still be able to pursue. Wether we fight or flee, up to you <first>."`
+				launch
+	npc save accompany 
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 2
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+	npc
+		personality heroic
+		government "Pirate"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 1"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 2"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 4"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 5"
+	on complete
+		payment "750000"
+		conversation
+			`You quickly land near the spaceport, the SFF Overseer following quickly behind you. Hopefully, you were able to get some important information.`
+			`	"Well <first>, looks like we got some interesting intel, hopefully we get something useful out of it. Like i said while at Haven, it appears we hit em quite hard. While the 11th Transport Squadron sent some reports of pirates attacking their convoys, it appears that they are using less and less Heavy Warships, instead relying more on their Splinters and Ravens. How ever, there are rumors of their second in command beginning to raid again. I'll look over this data for now. You can meet in the spaceport later, maybe i'll have some information by then."`
+
+mission "Arion:North Scout 4"
+	spaceport
+	description "Investigate rumors of the pirate gang's second in command chasing after you."
+	clearance
+	source "Farpoint"
+	destination "Haven"
+	to offer
+		has "Arion:North Scout 3: offered"
+	on offer
+		conversation
+			`When you enter the spaceport, you can see that Midnight is not happy with what he has discovered.`
+			`	"Looks like the second in command of the pirate gang you took out with the 11th is out for your blood. We'll probably have to confront him soon, especially since we have to scout Haven again. Lets hope that the amount of the Heavy Warships they have has been reduced. Although, i have a feeling that we will have a tough fight soon. Luckily however, i was able to convince the higher ups to send over the 11th transport squadron."`
+			`"Hello again Captain <first> <last>, i look forward to assisting you in this battle," captain Tod treasures you.`
+ 			`Bring your strongest ship, just in case."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+
+mission "Arion:North Scout 5"
+	landing
+	description "Eliminate the warlord and then capture his ship, good luck"
+	source "Haven"
+	destination "Farpoint"
+	to offer
+		has "Arion:North Scout 4: offered"
+	on offer
+		conversation
+			`When you are just about to approach their base, someone hails you.`
+			`"Head out to space, i will test you in 1 to 1 combat. You're 'friend' will also be tested. Its time to see how strong you really are."`
+			`"Well that doesn't sound good," Midnight says to you. "Its the 2 of us against god knows how many of em. Looks like they aren't happy with us blowing up their leader. Well, wish us luck captain. No back up, just the 2 of us."`
+				launch
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc capture
+		government Pirate
+		personality nemesis target
+		ship "Marauder Falcon (Northern Pirate Leader Arion)" "Nemesis"
+	npc 
+		government Pirate
+		personality target
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Revenge"
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Vengeance"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 1"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 2"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 1"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 2"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 4"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 5"
+	on complete
+		payment "1250000"
+		"salary: Arion" = 1500
+		conversation
+			`The 4 of you land near the spaceport, lucky to be alive. While Arion's tech is powerful, being that outnumber is tense, although the addition of the 11th helping you and Midnight probably meant that as long as you didn't do anything stupid, you would win.`
+			`	"Well, looks like the 4 of us make a good team, Captain Tod says."`
+			`	"I agree," Captain Midnight replies.`
+			`	"Well then Captain <first> <last>, looks like we did a hell of a good job, those pirates should be down and out for now. Well, me and the boys in the 11th Squadron have to return to our duties, maybe the boys in Luna have a new job for you. Good luck Captain, and may your journey be full of good luck," Midnight says to you as he and Tod return to their duties."`

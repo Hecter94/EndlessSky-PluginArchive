@@ -1,0 +1,75 @@
+mission "Arion:North Supply 1"
+	landing
+	description "Head over to <destination> and go to the spaceport to start your mission with the 11th Transport Squadron"
+	source "Luna"
+	destination "Sunracer"
+	to offer
+		has "Arion:First Contact=done"
+	on offer 
+		conversation
+			`"Alright, for your first mission, you will need to meet up with the 11th Transport Squadron in <destination> and head to the spaceport to do a supply run in the north, so you can be more familiar with how we do things. You can do this mission anytime you are available,"the base commander tells you.`
+				accept
+
+mission "Arion:North Supply 2"
+	description "Escort the the 11th Transport Squadron to <destination> and clear the northern passage from pirates. Remember to board them to take their captains."
+	source "Sunracer"
+	destination "Farpoint"
+	to offer 
+		has "Arion:North Supply 1: offered"
+	on offer
+		conversation
+			`As soon as you enter the Spaceport, as instructed, a man in a uniform greet you. He is armed with a sidearm.`
+			`	"Hello Captain <first> <last>! This is Captain Tod of the SFF Amazon. You will be joining our squadron, the 11th Transport Squadron, for our transport operation. We will be supporting the navy base in Farpoint by bringing in needed supplies while hopefully clearing up some piracy in our way. There is a pirate gang patrolling the area we will be passing through and if they attack, we should disable and board their ships to capture their captain for interrogation. You should definitely capture them if you can since they will definitely have some goodies. Also, remember to take the hyperlane route, we want to make sure that the route is clear! The SFF Wish will also be accompanying us."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc board
+		government Pirate
+		personality staying waiting target
+		system Sumar
+		ship "Marauder Falcon (Northern Pirate Arion)" "Hunter"
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Seeker"
+	on complete
+		payment "500000"
+		conversation 
+			`You follow the SFF Amazon and Wish, landing at the Navy Base. When you land, you are greeted by Navy soldiers and an interrogator from Navy Intelligence. Tod tells you to hand the pirate captain over to the Navy for interrogation. You oblige.`
+			`"Good job capturing that captain ,<first>!" Tod says to you. "The Navy will be pleased that they will not only be receiving supplies, but also a prisoner to interrogate. Anyways we probably attracted the attention of their leader, so we should be careful when we head back later on."`
+
+mission "Arion:North Supply 3"
+	description "Escort the 11th Transport Squadron back to <destination>. Be wary, the pirate gang who you recently just attacked will probably want revenge. Capture their leaders ship."
+	source "Farpoint"
+	destination "Sunracer"
+	to offer 
+		has "Arion:North Supply 2: offered"
+	on offer
+		conversation
+			`"Anyways, we should return to Sunracer. Like i said before, capture their leaders ship if we encounter them. Good luck Captain," Tod said to you.`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc capture
+		government Pirate
+		personality staying waiting target
+		system Sumar
+		ship "Marauder Leviathan (Northern Pirate Leader Arion)" "Chieftain"
+	npc 
+		government Pirate
+		personality staying waiting
+		system Sumar
+		ship "Marauder Splinter (Northern Pirate Arion)" "Savage"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Ravager"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Striker"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Ripper"
+	on complete
+		payment "1000000"
+		"salary: Arion" = 1000
+		conversation
+			`"Good job taking out their leader <first> <last>! You should definitely check their leaders ship for anything interesting. The northern passage should be safer, for now. Anyways, you should head back to Luna, maybe they have something for you to do. Good luck and goodbye Captain, may our paths cross again," Tod says to you while he returns to his ship.`
