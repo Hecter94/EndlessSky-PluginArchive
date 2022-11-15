@@ -79,3 +79,7 @@ Github by default only allows the entire library to be downloaded as a single .z
 
 ***Alterra***
 - Ship "Spectre" conflicts with a ship of the same name from Mata
+- Ship "Gladius" conflicts with a ship of the same name from Eternals
+
+***Eternals***
+- Ship "Gladius" conflicts with a ship of the same name from Alterra
