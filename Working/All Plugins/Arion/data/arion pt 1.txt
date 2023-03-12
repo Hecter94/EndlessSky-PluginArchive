@@ -1,0 +1,656 @@
+mission "Arion:North Supply 1"
+	name "Your first mission"
+	landing
+	description "Head over to <destination> to start your mission with the 11th Transport Squadron"
+	source "Luna"
+	destination "Sunracer"
+	to offer
+		has "Arion:First Contact=done"
+	on offer 
+		conversation
+			`	After concluding the base tour, the Handler approaches you. "Well i guess it's time for your first mission. You will be escorting the 11th transport squadron of the SFF and help deliver some needed supplies. You can accept this mission whenever you're ready, although i recommend that you use a Heavy Warship or something that can capture Heavy Warships, although its not really necessary, since that's only needed if you want some bonus rewards. After all we might not even need backup since our ships should be able to handle themselves."`
+			choice
+				`	Accept the mission`
+					accept
+				`	Maybe Later`
+					defer
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Supply 2"
+	name "Operation Shield"
+	description "Escort the the 11th Transport Squadron to <destination> and clear the northern passage from pirates. Remember to board them to capture their captains."
+	landing
+	source "Sunracer"
+	waypoint "Sumar"
+	destination "Farpoint"
+	to offer 
+		has "Arion:North Supply 1: offered"
+	on offer
+		conversation
+			`As soon as you enter the Spaceport, as instructed, a man in a uniform greets you. Unlike everyone else in the spaceport, he is armed with a conventional sidearm, a suppressed Glock. When he sees you, he immediately approaches you. You make a mental note to remember the Arion uniform.`
+			`	"Hello Captain <first> <last>! I am Captain Sam of the SFF Amazon. You will be joining our squadron, the 11th Transport Squadron, for our transport operation. We will be supporting the navy base in Farpoint by bringing in needed supplies while hopefully clearing up some pirates in the northern passage. There is a pirate gang patrolling the area we will be passing through and if they attack, we should disable and board their ships to capture their captain for interrogation. You should definitely capture them if you can since they will definitely have some goodies."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc board
+		government Pirate
+		personality staying waiting target
+		system Sumar
+		ship "Marauder Falcon (Northern Pirate Arion)" "Hunter"
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Seeker"
+	on complete
+		payment "500000"
+		conversation 
+			`You follow the SFF Amazon and Wish, landing at the Navy Base. When you land, you are greeted by Navy soldiers and an interrogator from Navy Intelligence. Sam tells you to hand the pirate captain over to the Navy for interrogation.`
+			choice
+				`	(Hand over the prisoner)`
+			`"Good job capturing the enemy captain, <first>!" Sam tells you. "The Navy will be pleased that they will not only be receiving supplies, but also a prisoner to interrogate. Anyways we probably attracted the attention of their leader, so we should be careful when we head back later on."`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Supply 3"
+	name "Operation Shield"
+	description "Escort the 11th Transport Squadron back to <destination>. Be wary, the pirate gang who you recently just attacked will probably want revenge."
+	source "Farpoint"
+	waypoint "Sumar"
+	destination "Sunracer"
+	to offer 
+		has "Arion:North Supply 2: offered"
+	on offer
+		conversation
+			`"Alright <first>, we have confirmation from Navy personnel, the captain you captured is an important member of this gang. We will have to watch our backs since their leader will be out for our blood. If we do find them, capture their ship, it's called the Chieftain, we might find something interesting."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc
+		government Pirate
+		personality staying waiting target
+		system Sumar
+		ship "Marauder Leviathan (Northern Pirate Leader Arion)" "Chieftain"
+	npc 
+		government Pirate
+		personality staying waiting
+		system Sumar
+		ship "Marauder Splinter (Northern Pirate Arion)" "Savage"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Ravager"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Striker"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Ripper"
+	on complete
+		payment "1000000"
+		"salary: Arion" = 11000
+		log "People" "Captain Sam" "The leader of the 11th Transport Squadron."
+		conversation
+			`"Great work dealing with the pirate leader Captain. Although, we should both watch our backs since we have probably enraged their gang. That is however a problem for later. You should check their leaders ship, i heard they keep a trophy gun. Think of it as a trophy. Anyways Captain, I'm sure we both have tasks to return to. Good luck and goodbye, may our paths cross again," Tod says to you as he returns to his ship.`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+
+mission "Arion:North Scout 1"
+	name "Your second mission"
+	landing
+	description "Head over to <destination> and go to the spaceport to begin your mission with the 7th scouting squadron"
+	source Luna
+	destination Farpoint
+	to offer
+		has "Arion:North Supply 3: done"
+	on offer
+		conversation
+			`	When you return to the base, the Handler happily approaches you. "Good job completing your first assignment Captain! Its good to know that we can count on you. For your next mission you will be scouting out the pirate's base to determine their strength. As usual, you can do this mission whenever you are ready."`
+			choice
+				`	Accept the mission`
+					accept
+				`	Maybe Later`
+					defer
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Scout 2"
+	name "Operation Sword"
+	landing
+	description "Scout Haven for the precense of the pirate who you fought previously."
+	clearance
+	source "Farpoint"
+	destination "Haven"
+	to offer
+		has "Arion:North Scout 1: offered"
+	on offer
+		conversation
+			`After landing, you head straight to the spaceport. When you enter the spaceport, you see a man in a familiar uniform, not too different from Sam's. You have a feeling that he is your man.`
+			choice
+				`	(Approach the man)`
+			`	When you walk over to him, he looks surprised to see you in immediately stands up to greet you. "Oh hello their Captain <first> <last>, my name is Tom. I am the commander of the 7th scouting squadron. Usually there would be another ship accompanying us but my squadmate got injured in a recent battle, so you will be my temporary squadmate. Our first task is to scout Haven, a pirate system where the main base of the pirates you recently fought resides. We need to check their strength and how much ships they have left. It will not be easy since it will only be the 2 of us. But hey, we are only there to scout, not fight."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Scout 3"
+	name "Operation Sword"
+	landing
+	description "Return to Farpoint. Evade or kill the enemies pursuing you."
+	source "Haven"
+	destination "Farpoint"
+	to offer 
+		has "Arion:North Scout 2: offered"
+	on offer
+		conversation
+			`The SFF Overseer approaches the enemy base as you remain higher up to defend the Overseer in case enemy reinforcements came in.`
+			`	"It appears that the amount of larger warships in their arsenal has been reduced. Wether they have been destroyed or out hunting, i don't know. However, seeing as they usually have a few medium and heavy warships in their base, i suspect the former. Anyways, wait a minute......... a few light warships are preparing to take off, we have to go. I'll launch a few missile shots while they're still on the ground, but expect a few enemies to still be able to pursue. Wether we fight or flee, up to you <first>."`
+				launch
+	npc save accompany 
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+	npc
+		personality heroic
+		government "Pirate"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 1"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 2"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 4"
+		ship "Marauder Raven (Northern Pirate Arion)" "Defender 5"
+	on complete
+		payment "750000"
+		conversation
+			`You quickly land near the spaceport, the SFF Overseer following quickly behind you. Hopefully, you were able to get some important information.`
+			`	"Well <first>, looks like we got some interesting intel, hopefully we get something useful out of it. Like i said while at Haven, it appears we hit em quite hard. While the 11th Transport Squadron sent some reports of pirates attacking their convoys, it appears that they are using less and less Heavy Warships, instead relying more on their Splinters and Ravens. How ever, there are rumors of their second in command beginning to raid again. I'll look over this data for now. You can meet in the spaceport later, maybe i'll have some information by then."`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Scout 4"
+	name "Operation Sword"
+	spaceport
+	description "Investigate rumors of the pirate gang's second in command chasing after you."
+	clearance
+	source "Farpoint"
+	destination "Haven"
+	to offer
+		has "Arion:North Scout 3: offered"
+	on offer
+		conversation
+			`When you enter the spaceport, you can see that Tom is not happy with what he has discovered.`
+			`	"Looks like the second in command of the pirate gang you took out with the 11th is out for your blood. We'll probably have to confront him soon, especially since we have to scout Haven again. Let's hope that the amount of the Heavy Warships they have has been reduced. Although, i have a feeling that we will have a tough fight soon. Luckily however, i was able to convince the higher ups to send over the 11th transport squadron."`
+			`	"Hello again Captain <first> <last>, i look forward to assisting you in this battle," Captain Sam greets you.`
+			choice
+				`	Good to see you Sam. Lets do this.`
+				`	Are you allowed to help us?`
+					goto taskstructure
+			`	Bring your strongest ship, just in case.`
+			label taskstructure
+			`	Sam looks at you with confusion and then says to you, "I mean, i already did all my tasks so now i have free time to help you guys. Here in Arion, we are allowed to improvise a lot if the mission calls for it. Anyways, lets do this."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:North Scout 5"
+	name "Operation Sword"
+	landing
+	description "Eliminate the warlord, good luck"
+	source "Haven"
+	destination "Farpoint"
+	to offer
+		has "Arion:North Scout 4: offered"
+	on offer
+		conversation
+			`When you are just about to approach their base, someone hails you.`
+			`"Head out to space, i will test you in 1 to 1 combat. Your 'friends' will also be tested. It's time to see how strong you really are."`
+			`"Well that doesn't sound good," Tom says to you. "Looks like they aren't happy with us taking out their leader. Its the 4 of us against god knows how many of em. Target the nemesis, that's their leaders ship. Well, wish us luck captain."`
+				accept
+	npc save accompany
+		government "Arion (SFF)"
+		personality escort disables
+			confusion 1
+		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+		ship "Arion Argosy Block IIIA" "SFF Amazon"
+		ship "Arion Argosy Block IIIA" "SFF Wish"
+	npc
+		government Pirate
+		personality nemesis target
+		ship "Marauder Falcon (Northern Pirate Leader Arion)" "Nemesis"
+	npc 
+		government Pirate
+		personality target
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Revenge"
+		ship "Marauder Leviathan (Northern Pirate Arion)" "Vengeance"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 1"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 2"
+		ship "Marauder Splinter (Northern Pirate Arion)" "Vampire 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 1"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 2"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 3"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 4"
+		ship "Marauder Raven (Northern Pirate Arion)" "Opressor 5"
+	on complete
+		payment "1250000"
+		"salary: Arion" = 12500
+		log "People" "Captain Tom" "The leader of the 7th Scouting Squadron."
+		conversation
+			`The 4 of you land near the spaceport, lucky to be alive. While Arion's tech is powerful, being outnumbered is tense, even though Arion is used to fighting large amounts of enemies with few troops.`
+			`	"Well, looks like the 4 of us make a good team, Captain Sam says."`
+			`	"I agree," Captain Tom replies.`
+			`	"Well then Captain <first> <last>, looks like we did a hell of a good job, those pirates should be down and out for now. Just like with their leader, i heard that their 2nd in command also keeps a trophy gun. Well, me and the boys in the 11th Squadron have to return to our duties, maybe the boys in Luna have a new job for you. Good luck Captain, and may your journey be full of good luck," Tom says to you as he and Sam return to their duties.`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+
+mission "Arion:Exile Defense 1"
+	name "Your Third Mission"
+	landing
+	description "Head over to <destination> to start your mission with the Foreign Legion's 2nd Strike Group"
+	source "Luna"
+	destination "Shangri-La"
+	to offer
+		has "Arion:North Supply 3: done"
+		has "Arion:North Scout 5: done"
+	on offer 
+		conversation
+			`	The Handler approaches you once more, it looks like he has another task for you. "Good job helping the 11th transport and 7th scouting squadron. You have proofed yourself to be highly competent and reliable. We have another mission for you. This time instead of helping the SFF and only operating with small squadrons, you will be working the Arion Foreign Legion and work with a full sized Strike Group."`
+			choice
+				`	Accept the mission`
+					accept
+				`	Maybe Later`
+					defer
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:Exile Defense 2"
+	name "Operation Shield II"
+	landing
+	description "Disable, Capture or Destroy the weakened Korath ships in <waypoint>."
+	source "Shangri-La"
+	waypoint "Gamma Cassiopeiae"
+	destination "Shangri-La"
+	to offer 
+		has "Arion:Exile Defense 1: offered"
+	on offer
+		conversation
+			`	When you approach the Landing Pads, you see a modified Bactrian, Auxiliary, Leviathan and Falcon. It appears that these are the ships of the 2nd Strike Group.`
+			`	As soon as you enter the Spaceport, as instructed, a woman in the Arion Captain's Uniform greets you. Unlike everyone else in the spaceport, he is armed with a 44 Magnum. When he sees you, he immediately approaches you.`
+			`	"Greetings Captain <first> <last>! I am Captain Jean of the AFLS Enchanter and leader of 2nd Expeditionary Fleet. Today you will be helping us seek and eliminate some crippled Korath ships. They should be eliminated ASAP due to the threat they pose to civilians. How you choose to eliminate this threat is up to you. If any korath ship is left alive we will 'clean them up' later. I do highly recommend you board them and strip them of parts since some of the outfits sell for a lot of money."`
+			choice
+				`	Why are there so few ships in the 'Strike group'`
+			`	Well, the 2nd Strike Group used to consist of 3 squadrons, the 3rd Support Squadron, 2nd Heavy Warship Squadron and the 2nd Medium Warship Squadron. However, due to the 'Intergalactic War' in the 'Outside', the personal and ships have been reassigned to duty guarding our 'homeworlds.' It's really annoying that this expedition's members keep getting reassigned, but i guess times have been quite tough. Anyways, we should really start this mission.`
+				accept
+	npc save accompany
+		government "Arion (AFLS)"
+		personality escort disables
+			confusion 1
+		ship "Arion Bactrian H.A.T Block IIIA" "AFLS Enchanter" 
+		ship "Arion Marauder Leviathan Block IIIA" "AFLS Sorcerer"
+		ship "Arion Marauder Falcon Block IIIA" "AFLS Wizard"
+		ship "Arion Auxiliary Block IIIA" "AFLS Mage"
+	npc disable
+		government "Korath"
+		personality staying waiting
+		system "Gamma Cassiopeiae"
+		fleet
+			names "korath"
+			variant
+				"Rano'erek (Crippled)"
+				"Palavret (Crippled)"
+				"Palavret (Crippled)"
+				"Palavret (Crippled)"
+				"Palavret (Crippled)"
+	on complete
+		payment "800000"
+		conversation
+			`	"Good job with helping us eliminate the Korath ships. I will inform you later if we have any further tasks."`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:Exile Defense 3"
+	name "Operation Shield II"
+	landing
+	description "Disable, Capture or Destroy the Korath ships in <waypoint>."
+	source "Shangri-La"
+	waypoint "Persian"
+	destination "Shangri-La"
+	to offer 
+		has "Arion:Exile Defense 2: offered"
+	on offer
+		conversation
+			`	"This time, we will be facing a Korath fleet at full strength. Apparently, they strayed too far and are currently stuck in Persian. We should eliminate this threat before they threaten Syndicate and Merchant Ships. I highly recommend taking their jump drives since you will need them in the future."`
+				accept
+	npc save accompany
+		government "Arion (AFLS)"
+		personality escort disables
+			confusion 1
+		ship "Arion Bactrian H.A.T Block IIIA" "AFLS Enchanter" 
+		ship "Arion Marauder Leviathan Block IIIA" "AFLS Sorcerer"
+		ship "Arion Marauder Falcon Block IIIA" "AFLS Wizard"
+		ship "Arion Auxiliary Block IIIA" "AFLS Mage"
+	npc disable
+		government "Korath"
+		personality staying waiting
+		system "Persian"
+		fleet
+			names "korath"
+			variant
+				"Ra'gru Ik 618 (Ember)"
+				"Rano'erek (Heaver)"
+				"Palavret (Ember Blaze)"
+				"Palavret (Ember Blaze)"
+				"Palavret (Ember Blaze)"
+				"Palavret (Ember Blaze)"
+	on complete
+		payment "1500000"
+		"salary: Arion" = 13500
+		log "People" "Captain Jean" "The leader of the 2nd Strike Group."
+		conversation
+			`	"Alright, that should be it for now. We have cleared out the Korath stragglers and Syndicate shipping lanes should be safe for now. I guess you can head back to the Luna FOB and see if we have anymore tasks for you, though you probably need a Jump Drive for the next part. Perhaps we will meet again Captain. Goodbye."`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+
+mission "Arion:Exile Strike 1"
+	name "Your Fourth Mission"
+	landing
+	description "Head over to <destination> to start your mission with the Main Force's 3rd Strike Group"
+	source "Luna"
+	destination "Shangri-La"
+	to offer
+		has "Arion:North Supply 3: done"
+		has "Arion:North Scout 5: done"
+		has "Arion:Exile Defense 3: done"
+	on offer 
+		require "Jump Drive"
+		conversation
+			`	When you are doing some maintenance work on your ship, the Handler approaches you once more. "It appears you have the required Jump Drive for the next mission. This time, you will get to know Arion's Main Force. The 3rd Carrier Strike Group requires help with incursions into Korath space. Keep up the good work you have been doing and make sure both you and all ships come home safely."`
+			choice
+				`	Accept the mission`
+					accept
+				`	Maybe Later`
+					defer
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:Exile Strike 2"
+	name "Operation Catapult I"
+	landing
+	description "Disable, Capture or Destroy the weakened Korath ships in <waypoint>."
+	source "Shangri-La"
+	waypoint "Kor Ak'Mari"
+	destination "Shangri-La"
+	to offer 
+		has "Arion:Exile Strike 1: offered"
+	on offer
+		conversation
+			`	When you approach the Landing Pads, you see the 2nd Strike Group and some other ships. There is a Bactrian and an Auxiliary, as usual and 2 cruisers plus a carrier.`
+			`	When you enter the Spaceport, you see Captain Jean and another man in the spaceport wearing the familiar Arion Captain Uniform.`
+			choice
+				`	(Approach them)`
+			`	When you approach them, you hear them discuss something. As you get closer, you can hear Jean saying things like calm down and the 3rd Strike Group's captain saying things like we're screwed. They then notice your presence and greets you. "Ah greetings Captain <first> <last>," i suppose your next mission is with Captain Williams. Well i wish you both good luck," she says as she leaves.`
+			`	"Well i guess you are my new temporary teammate," Captain Williams says to you. "Alright, this time we will be striking a group of Korath ships at full strength. You will need a Jump Drive to reach the location so i hope that you came prepared."`
+				accept
+	npc save accompany
+		government "Arion (AMFS)"
+		personality escort disables
+			confusion 1
+		ship "Arion Carrier Block IIIA" "AMFS Endless"
+		ship "Arion Bactrian H.A.T Block IIIA" "AMFS Salvation" 
+		ship "Arion Auxiliary Block IIIA" "AMFS Saviour"
+		ship "Arion Cruiser Block IIIA" "AMFS Pioneer"
+		ship "Arion Cruiser Block IIIA" "AMFS Trailblazer"
+	npc
+		government "Arion (AMFS)"
+		personality escort disables
+			confusion 1
+		ship "Arion FQ/S-101x Block IIIA" "Ender I"
+		ship "Arion FQ/S-101x Block IIIA" "Ender II"
+		ship "Arion FQ/S-101x Block IIIA" "Ender III"
+		ship "Arion FQ/S-101x Block IIIA" "Ender IV"
+		ship "Arion FQ/S-101x Block IIIA" "Ender V"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VI"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VII"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VIII"
+		ship "Arion FQ/S-101x Block IIIA" "Ender IX"
+		ship "Arion FQ/S-101x Block IIIA" "Ender X"
+		ship "Arion FQ/S-101x Block IIIA" "Ender XI"
+		ship "Arion FQ/S-101x Block IIIA" "Ender XII"
+	npc disable
+		government "Korath"
+		personality staying waiting
+		system "Kor Ak'Mari"
+		fleet
+			names "korath"
+			variant
+				"Ra'gru Ik 618 (Ember)"
+				"Rano'erek (Heaver)" 2
+				"Palavret (Ember Blaze)" 4
+				"'olofez" 16
+	on complete
+		payment "1000000"
+		conversation
+			`	"Good job with helping us eliminate the Korath ships. I will inform you later if we have any further tasks."`
+			choice
+				`	Why did the carriers not carry an fighters?`
+			`	"Well, practically all fighters pilots got reassigned so until we can make enough fighter sized drones, we can only rely on smaller drones, so our carriers are currently kind off useless. Anyways, you should get ready for the next mission.`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Arion:Exile Strike 3"
+	name "Operation Catapult II"
+	landing
+	description "Disable, Capture or Destroy the weakened Korath ships in <waypoint>."
+	source "Shangri-La"
+	waypoint "Kor Ak'Mari"
+	destination "Shangri-La"
+	to offer 
+		has "Arion:Exile Strike 2: offered"
+	on offer
+		conversation
+			`	"Alright, we will be striking the Exiles one more time to hopefully cripple them for a while. This should be the final step before you.... well you'll see.`
+				accept
+	npc save accompany
+		government "Arion (AMFS)"
+		personality escort disables
+			confusion 1
+		ship "Arion Carrier Block IIIA" "AMFS Endless"
+		ship "Arion Bactrian H.A.T Block IIIA" "AMFS Salvation" 
+		ship "Arion Auxiliary Block IIIA" "AMFS Saviour"
+		ship "Arion Cruiser Block IIIA" "AMFS Pioneer"
+		ship "Arion Cruiser Block IIIA" "AMFS Trailblazer"
+		ship "Arion FQ/S-101x Block IIIA" "Ender I"
+		ship "Arion FQ/S-101x Block IIIA" "Ender II"
+		ship "Arion FQ/S-101x Block IIIA" "Ender III"
+		ship "Arion FQ/S-101x Block IIIA" "Ender IV"
+		ship "Arion FQ/S-101x Block IIIA" "Ender V"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VI"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VII"
+		ship "Arion FQ/S-101x Block IIIA" "Ender VIII"
+		ship "Arion FQ/S-101x Block IIIA" "Ender IX"
+		ship "Arion FQ/S-101x Block IIIA" "Ender X"
+		ship "Arion FQ/S-101x Block IIIA" "Ender XI"
+		ship "Arion FQ/S-101x Block IIIA" "Ender XII"
+	npc disable
+		government "Korath"
+		personality staying waiting
+		system "Kor Ak'Mari"
+		fleet
+			names "korath"
+			variant
+				"Ra'gru Ik 618 (Ember)"
+				"Rano'erek (Heaver)" 3
+				"Palavret (Ember Blaze)" 5
+				"'olofez" 22
+	on complete
+		payment "1800000"
+		"salary: Arion" = 15000
+		log "People" "Captain Williams" "The leader of the 3rd Strike Group."
+		conversation
+			`	When you approach to land, you see that the 2nd Strike Group has returned once more. Entering the spaceport, you can see Captain Jean waiting for the both of you.`
+			`	"Well looks like the both of you have done a good job," Jean says to the both of you.`
+			`	"Captain <first> <last> did a really good job out there," Captain Williams replies. "I guess i understand why we decided to stay here after all. Anyways, you should probably head back to the Luna base. Maybe the Handler has something for you.`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+
+mission "Arion:FOB Bravo Reveal"
+	name "The Reveal"
+	landing
+	description "Head over to <destination>"
+	source "Luna"
+	destination "FOB-Bravo"
+	passengers 1
+	to offer
+		has "Arion:North Supply 3: done"
+		has "Arion:North Scout 5: done"
+		has "Arion:Exile Defense 3: done"
+		has "Arion:Exile Strike 3: done"
+	on offer
+		conversation
+			`	As you land in the FOB, the Handler approaches once again. "Hello <first>, it appears that you have successfully done the missions we have given you. You have proven yourself to be a very useful asset. As such, i have been authorized to bring you to our main base. We can go now but if you want you can do it later."`
+			choice
+				`	Accept the mission`
+					accept
+				`	Maybe Later`
+					defer
+	on accept
+		event "reveal FOB Bravo"
+	on complete
+		set "Arion:First Contact=done"
+		"salary: Arion" = 20000
+		payment 10000000
+		log "People" "Expedition Commander Eliza" "Commander of the FOB Bravo and manager of most of Arion operations in this expedition."
+		log "Was given access to the secret FOB Bravo. Met some aliens in Arion's ranks."
+		log "Factions" "Arion" " "
+		conversation
+			`	When you jumped in, you saw a station in a see of nothingness. There is nothing in this 'system' besides this station, which is probably why it was able to stay so near to Sol without being detected. It is a large station, you can see multiple places for your ship to dock and you can also see multiple lasers, railgun and missiles batteries all over the station. The Handler directed you to dock at Docking station 10.`
+			`	When you dock, you can see a group of people waiting to greet you and all of them are armed. The ones that look like guards are wielding the standard Arion assault rifles while their leader has a 'hand cannon' on their hip. However weirdly enough, not all of them human. There are some aliens among them. The Handler notices your confusion and says to you, "Well, Arion is mostly comprised of Humans, but there are multiple species that are a part of Arion."`
+			`	Their leader approaches you. It is an alien, standing at 3 meters tall. Their appearance is similar to a dragon but without wings and bipedal.`
+			`	"Hello Captain <first> <last>," the alien speaks to you. "My name is Eliza. I am the Expedition Commander."`
+			choice
+				`	Hello.`
+				`	You're an alien!`
+					goto alien
+				`	What is an expedition commander?`
+					goto expeditioncommander
+			`	She smiles. "Good, you aren't surprised to see an alien. But why am i surprised, you should have at least seen one alien species during your adventures or seen an alien during on the missions we assigned to you."`
+				goto continue
+			label alien
+			`	She looks at you with confusion and then giggles. "Haven't you explored the galaxy? Even if you stick within human space, you should have at least seen a Quarg before. I'm not quite sure why you are surprised to see me."`
+				goto continue
+			label expeditioncommander
+			`	"Alright so, our rank system is a combination of the US, UK and NATO rank system. However, we also have a few special ranks that are in kind of a weird position. 2 examples of this are you Handler's rank and mine. My rank is higher than pretty much higher than anyone in this expedition but it is maybe only an 0-7 to anyone outside of this expedition."`
+				goto continue
+			label continue
+			`	"Anyways, we really should continue with the base tour. In this base you will have further access to the technologies we have." The Handler and Eliza then brings you first brings you to the shipyards. "This is the best part of getting access to this base," The Handler tells you. "You get access to the better ships we own." "Not only that Captain," Eliza also tells you. "After this we will be bringing you to the outfitter, there you can get some of the best equipment we have, including our specialty, the Railgun." At the Shipyard, you can see multiple ships available for you to purchase on a data pad. You can see that some new ships available to purchase include Superplanes and Heavy Warships.`
+			`	You are then brought to the Outfitter. At the outfitter, the Handler and Eliza shows you the advanced lasers, E.M.Ls and nuclear weapons that are now available to be purchased by you. There are also improved cloaking, electronic warfare and repair systems that are available.`
+			`	After that you are brought to the armory and shooting range. When you reach the firing range, Eliza asks you a question. "Did the Handler already teach you about basic firearm handling." Before you can respond however, the Handler responds for you. "Damn, i forgot to teach em that. I sure hope you read the guide book if you purchased any of our h2h outfits. But just in case we should at least teach you basic firearm handling." Eliza than picks out 2 guns from the Armory. "Alright, i have 2 choices for you here, you can try out this AKs 74u or this AK 74."`
+			choice
+				`	AKs 74u`
+				`	AK 74`
+					goto ak74
+			action
+				outfit "AKs 74u"
+			scene "outfit/pirateak74"
+			`	"Alright here is your Aks 74u, it is a carbine firing the 5.45 by 39mm ammunition. This gun is basically the smaller more compact brother of the Ak 74."`
+				goto gun
+			label ak74
+			action
+				outfit "AK 74"
+			scene "outfit/pirateak74"
+			`	"Alright here is your Ak 74, it is an assault rifle firing the 5.45 by 39mm ammunition. This one is an older model with a wooden grip and buttstock."`
+				goto gun
+			label gun
+			`	The Handler then gives you your new gun.`
+			choice
+				`	Point the gun in a safe direction and put your finger off the trigger.`
+				`	Play around with the gun and point it at the targets.`
+					goto safety
+			`	Seing that you handled the firearm carefully, the Handler congratulates you. "Good, it appears that you are at least familiar with basic firearm safety."`
+				goto firing
+			label safety
+			`	Before you are able to play around too much and harm yourself, Eliza takes the gun away from you and scolds you. "Damnit, we didn't load the damn gun but you really shouldn't treat that like a toy! Finger off the trigger and point it to a safe direction."`
+				goto firing
+			label firing
+			`	You are then given a full magazine and are then presented with targets to shoot down range. "Fire at the targets downrange Captain," the Handler tells you. You then fire a few shots at the targets. "Not bad," says the Handler. "You hit most of your shots so i guess you are somewhat competent with a firearm. Alright i guess now we will go to the Spaceport."`
+			`	When you enter the spaceport, you can see a lot of entertainment devices. The spaceport looks less like a spaceport and more like an arcade. There are multiple VR setups that can be used to train infantry, multiple tank simulators and multiple flight simulators. There is also a canteen in the spaceport serving a lot of different kinds of food. You can see a few Captains, Pilots and Soldiers enjoying themselves. "Since you now have access to this base, you are now allowed to use all this equipment too Captain," Eliza tells you. "Just, don't break anything, these setups are expensive and you are probably gonna pay for any broken devices."`
+			`	"Well that concludes the tour for now, I'm sure that all of us have places to be right about now. Hopefully you will enjoy all the new equipment that you now have access to Captain."`
+	on fail
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on abort
+		event "Arion leaves"
+		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
