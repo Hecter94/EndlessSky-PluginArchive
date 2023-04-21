@@ -34,8 +34,10 @@ jobs:
             print("The following plugins have changed:")
             for p in plugins:
               print(p)
-              subprocess.run(["zip", "-r", p + ".zip", "Working/All Plugins/" + p],
+              os.chdir('Working/All Plugins/')
+              subprocess.run(["zip", "-r", "../../" + p + ".zip", p],
                 stdout=subprocess.DEVNULL)
+              os.chdir('../../')
           else:
             print("No plugin changes have been detected.")
         shell: python
