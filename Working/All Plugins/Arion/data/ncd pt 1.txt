@@ -3,6 +3,9 @@ mission "NCD=First Contact"
 	landing
 	source 
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
+	to offer
+		not "Arion=First Contact: done"
+		not "Arion leaves"
 	on offer
 		conversation
 			`	While on approach to the landing zone, you see a unique building complex in the distance. It has a landing pad, 2 runways and hangars that looks like an outfitter and a small shipyard. You could probably try to get a closer look.`
@@ -31,8 +34,8 @@ mission "NCD=First Contact"
 				decline
 	on decline
 		event "NCD stores access"
-		log "Gained access to a National Combined Defense corparation facility. They have weapons, outfits, ships and bounties. Maybe you should do some of these contracts."
-		log "Factions" "National Combined Defense corparation" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks 21st century hardware, but is actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board."
+		log "Gained access to a National Combined Defense corporation facility. They have weapons, outfits, ships and bounties. Maybe you should do some of these contracts."
+		log "Factions" "National Combined Defense corporation" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks 21st century hardware, but is actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board."
 
 
 
@@ -478,3 +481,31 @@ mission "NCD: Large Threat Fleet Contract"
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+
+mission "NCD=Alternate First Contact"
+	name "An interesting complex"
+	landing
+	source 
+		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
+	to offer
+		has "Arion=First Contact: done"
+		not "Arion leaves"
+	on offer
+		conversation
+			`	While on approach to the landing zone, you see a unique building complex in the distance. It has a landing pad, 2 runways and hangars that looks like an outfitter and a small shipyard. You could probably try to get a closer look.`
+			choice
+				`	(Visit the complex)`
+				`	(Maybe next time)`
+					defer
+			`	You proceed to approach the landing site. When you get closer, you can see that there are fighters on the airbase and anti air installments. You can continue approaching, it doesn't look like they are hostile.`
+			`	However, before you can react further, you are hailed by the complex. `
+			`	"Hello Captain <first> <last>, and welcome to the National Combined Defense corporation facility. But i think you are more familiar of who we belong to. We are a sort of 'civilian' surplus store that sells some downgraded equipment. You are more than welcome to tour the facility and purchase the items within Captain."`
+			`	The broadcast then cuts off.`
+				decline
+	on decline
+		event "NCD stores access"
+		event "NCD Contractor Access"
+		log "Gained access to a National Combined Defense corporation facility. They have weapons, outfits, ships and bounties. Maybe you should do some of these contracts."
+		log "Factions" "National Combined Defense corporation" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks 21st century hardware, but is actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board."
