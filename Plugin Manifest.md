@@ -314,7 +314,7 @@ Adds a bunch of h2h weapons, outfits, weapons and ships, including a bunch of rl
 
 **Status**
 
-Should work in Continuous/0.9.15/0.9.16
+Should work in Continuous/0.10.0
 
 ## Arrival Distance Override
 
