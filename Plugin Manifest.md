@@ -308,13 +308,13 @@ REQUIRES PR #[7348](https://github.com/endless-sky/endless-sky/pull/7348). Eithe
 
 **Created by  Spectre907YT**
 
-Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
+Adds a bunch of h2h weapons, outfits, weapons and ships, including a bunch of rl fighters and bombers, ace combat and xenonauts superplanes, modified vanilla ships and 7 custom ships.
 
-[Airon](https://github.com/Spectre907YT/Endless-Sky---Arion)
+[Arion](https://github.com/Spectre907YT/Endless-Sky---Arion)
 
 **Status**
 
-Should work in Continuous/0.9.15/0.9.16
+Should work in Continuous/0.10.0
 
 ## Arrival Distance Override
 
