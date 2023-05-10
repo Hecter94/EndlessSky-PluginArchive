@@ -38,17 +38,36 @@ A mod designed to replicate Star Wars in Endless Sky.
 
 Unfinished but playable.
 
+## Additional Command Buttons
+
+**Created by zuckung**
+
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)
+
+(interface changed)
+
+Made for the mobile version and 
+adds the following buttons: full stop / board ship / land on planet / fire afterburner / fleet: hold position / fleet: gather around me / view player info.
+Adjusts the message box to not overlap.
+(inspired by theweirednut)
+
+**Status**
+
+mobile 0.10.0
+
 ## AES Aben
 
 ![aben](https://raw.githubusercontent.com/Hecter94/EndlessSky-PluginArchive/main/Working/All%20Plugins/AES%20Aben/icon.png)
 
 **Created by Darcy Manoel**
 
--description-
+New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 
 [AES Aben](https://github.com/Adde-Endless-Sky/AES-Aben)
 
 **Status**
+
+Unknown
 
 ## AES Fallen
 
@@ -56,13 +75,13 @@ Unfinished but playable.
 
 **Created by Darcy Manoel**
 
--description-
+Inspired by an old and unfortunately unfinished fan favourite plugin that offered truly unique content. While this might not mimic the original in design, hopefully it can stoke a similarly unique experience.
 
 [AES Fallen](https://github.com/Adde-Endless-Sky/AES-Fallen)
 
 **Status**
 
--status-
+Unknown
 
 ## AES Irm
 
@@ -70,23 +89,25 @@ Unfinished but playable.
 
 **Created by Darcy Manoel**
 
--description-
+New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 
 [AES Irm](https://github.com/Adde-Endless-Sky/AES-Irm)
 
 **Status**
 
--status-
+Unknown
 
 ## AES Korath
 
 **Created by Darcy Manoel**
 
--description-
+A collection of changes and additions to Endless Sky regarding the fallen empire: The Korath.
 
 [AES Korath](https://github.com/Adde-Endless-Sky/AES-Korath)
 
 **Status**
+
+Unknown
 
 ## AES Misc
 
@@ -94,11 +115,13 @@ Unfinished but playable.
 
 **Created by Darcy Manoel**
 
--description-
+Any Adde content that doesn't fit in another or deserve it's own repository. This includes many new outfits and ships for various aspects of the vanilla game, even new missions here and there.
 
 [AES Misc](https://github.com/Adde-Endless-Sky/AES-Misc)
 
 **Status**
+
+Unknown
 
 ## AES Omnis
 
@@ -106,21 +129,25 @@ Unfinished but playable.
 
 **Created by Darcy Manoel**
 
--description-
+The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 
 [AES Omnis](https://github.com/Adde-Endless-Sky/AES-Omnis)
 
 **Status**
 
+Unknown
+
 ## AES Quarg
 
 **Created by Darcy Manoel**
 
--description-
+A collection of changes and additions to Endless Sky regarding the advanced alien species: The Quarg. 
 
 [AES Quarg](https://github.com/Adde-Endless-Sky/AES-Quarg)
 
 **Status**
+
+Unknown
 
 ## Adamas Project
 
@@ -130,15 +157,23 @@ Unfinished but playable.
 
 **Continued development by Bereskatuket (Kestrel1110)**
 
--description-
+The Adamas Project is a medium-sized plugin introducing two alien species and their regions of space, as well as some storyline involving the two.
 
 [Adamas Project](https://github.com/toilethinges/Adamas-Project)
 
 **Status**
 
--status-
+Unknown
 
 ## Adjusted Hyperdrive
+
+**Created by ?**
+
+Increases fuel capacity of many ships and modifies the three drives.
+
+**Status**
+
+Unknown
 
 ## Advanced Starts
 
@@ -152,7 +187,7 @@ Adds several new starting options to the game.
 
 **Status**
 
--status-
+Unknown
 
 ## Akasha Chronicles
 
@@ -162,27 +197,41 @@ Adds several new starting options to the game.
 
 **Current author: jchamlin**
 
--description-
+Akasha Chronicles is a progressive storyline giving you access to new technology and ships over time. You can start the storyline in the Kor Efret Space (the nice Koraths) after you finish the Wanderers storyline. 
 
 [Akasha Chronicles](https://github.com/jchamlin/akasha-chronicles)
 
 **Status**
 
--status-
+Unknown
 
 ## Akashic War
 
+**Created by Gillax**
+
+-description-
+
+**Status**
+
+Unknown
+
 ## Alien Ship
+
+**Status**
+
+Nonfunctional
 
 ## All Content Plugin
 
 **Created by Michael Zahniser (Maintained by the ES Community)**
 
--description-
-
 [All Content Plugin](https://github.com/endless-sky/all-content-plugin)
 
+This plugin was made to allow content creators to have access to all outfits in a single place, for the purpose of designing and testing outfit loadouts for new ships. Of course, it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it.
+
 **Status**
+
+Unknown
 
 ## Alpha Wars
 
@@ -194,9 +243,19 @@ Adds some outfits and ships for a planned Alpha Wars overhaul.
 
 **Status**
 
-Abandoned.
+Abandoned
 
 ## Alphean Boolean's Expansion
+
+**Created by Alphean Boolean**
+
+[Alphean Boolean's Expansion](https://github.com/Disiuze/alphean-expansion)
+
+This mod by Alphean Boolean adds more ships, outfits, missions and governments to the game.
+
+**Status**
+
+Unknown
 
 ## Altera
 
@@ -224,17 +283,37 @@ Playable on 0.9.15 Continuous.
 
 ## Amalgamation
 
+**Created by demolish238**
+
+A large collection of older plugins that have been edited and modified to work together with the newer versions of Endless Sky and be overall more balanced and lore friendly, along with many unique Amalgamation additions to fill out previous placeholders in these plugins.
+
+The plugins included are: Shields Up, Enclave, Quarg Military Retaliation, ZRemnantX's ships, Tribute Plus, Space Conversion, Businessman, Inheritance ships, KorNewShips, Korath Automation Upgrade, Enigma Corps outfits, Cultures of the Southern Arm ships, Flamethrower Turret and The Machines are Taking Over.
+
+**Status**
+
+Unknown
+
 ## Ambriel
+
+**Created by ?**
+
+Adds a new ship.
+
+**Status**
+
+Should work
 
 ## Androids Rebalanced
 
 **Created by czartrak**
 
--description-
+Adds androids and several outfits for charging them.
 
 [Androids Rebalanced](https://github.com/czartrak/Androids-Rebalanced)
 
 **Status**
+
+Unknown
 
 ## Androids
 
@@ -250,6 +329,14 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Andromeda Torpedo
 
+**Created by ?**
+
+Adds a torpedo and launcher to the game.
+
+**Status**
+
+Unknown
+
 ## Animated Ships
 
 **Created by beccabunny**
@@ -260,36 +347,63 @@ Adds animations to many ships.
 
 **Status**
 
+Unknown
+
 ## Animated Stars
 
+**Created by
+
+Replaces many stars with animated stars.
+
+**Status**
+
+Unknown
+
 ## Antiquity
+
+**Created by ?**
+
+A few antique outfits and weapons scattered across human space. Plunder them from pirates and sell them for a lot of money! Or keep them for yourself, to remind yourself that you have antique stuff!
+
+**Status**
+
+Unknown
 
 ## Arbiter
 
 **Created by czartrak**
 
--description-
+This mod adds another civilization called "Arbiter" into the game.
+To start the storyline, one has to complete the main story as well as make contact with the Quarg, Wanderers, Hai, Korath, Coalition, and has to be equipped with a jump drive. Then find a system called "Wolf" somewhear around the Free Worlds space.
+When you get to the Wolf system, the story will be pretty much self-explanatory.
 
 [Arbiter](https://github.com/czartrak/es-arbiter)
 
 **Status**
 
+Unknown
+
 ## Archetto
 
 **Created by Hilokiyz**
 
-Add a ship.
+Adds a ship.
+
+**Status**
+
+Unknown
 
 ## Arena
 
 **Created by 10010101001**
 
--description-
+This plugin adds two arenas with diffrent combat styles for the player to enjoy in-game and for testing purposes (near Sagittarius A). 
 
 [Arena](https://github.com/10010101001/Arena)
 
 **Status**
 
+Unknown
 
 ## Arena of the Worthy
 
@@ -303,20 +417,28 @@ This plugin adds a new species, the Impeti. They are even more advanced than the
 
 REQUIRES PR #[7348](https://github.com/endless-sky/endless-sky/pull/7348). Either wait for it to be merged or use ESLauncher2 to download the PR.
 
-
 ## Arion
 
 **Created by  Spectre907YT**
 
-Adds a bunch of h2h weapons, outfits, weapons and ships, including a bunch of rl fighters and bombers, ace combat and xenonauts superplanes, modified vanilla ships and 7 custom ships.
+Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
 
-[Arion](https://github.com/Spectre907YT/Endless-Sky---Arion)
+[Airon](https://github.com/Spectre907YT/Endless-Sky---Arion)
 
 **Status**
 
-Should work in Continuous/0.10.0
+Should work in Continuous/0.9.15/0.9.16
 
 ## Arrival Distance Override
+
+**Created by ?**
+
+Add system arrival depending on habitable or belt distance.
+Can get overridden by other plugins.
+
+**Status**
+
+Unknown
 
 ## Arr Mateys
 
@@ -328,7 +450,17 @@ Adds some missions for the pirate worlds.
 
 **Status**
 
+Unknown
+
 ## Assault Cruiser
+
+**Created by ?**
+
+Adds 2 Navy ships.
+
+**Status**
+
+Unknown
 
 ## Athmagr Invasion
 
@@ -344,6 +476,10 @@ Playable on 0.9.15, 0.9.16, Continuous
 
 ## Automation and PlanetSideStorage
 
+**Status**
+
+Nonfunctional
+
 ## Automation
 
 **Created by Disiuze**
@@ -358,13 +494,45 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 ## Bacterian T2
 
+**Created by ?**
+
+Adds a new ship.
+
+**Status**
+
+Unknown
+
 ## Bactrian Mission
 
+**Created by ?**
+
+This plugin was built to provide some satisfaction to acquiring the mighty Bactrian. Hopefully the short mission sequence will also be enjoyable.
+There is some non-linearity to the story so depending on your choices two of three large ships (i.e. flagships) can be made available for purchase.
+Two large ships, one bounty mission and one transport mission were added.
+
+**Status**
+
+Unknown
+
 ## Bailiff
+
+**Created by ?**
+
+Adds a ship.
+
+**Status**
+
+Unknown
 
 ## Ballistic Mayhem
 
 **Created by SpiralCat**
+
+Adds a ship and several outfits.
+
+**Status**
+
+Ship and outfits are nowhere for sale.
 
 ## Bardagh's Ship Variants
 
@@ -388,7 +556,17 @@ Shipyards now sell bare hulls with no outfits.
 
 **Status**
 
+Unknown
+
 ## Battle Carrier
+
+**Created by ?**
+
+Adds 2 ships and an outfit.
+
+**Status**
+
+Ships and outfit are nowhere for sale.
 
 ## Battleship Test
 
@@ -406,6 +584,8 @@ Add several new ships for various vanilla races with very vanilla-looking sprite
 
 **Status**
 
+Unknown
+
 ## Better Korath
 
 **Created by superdragon322**
@@ -416,7 +596,17 @@ Add several new ships for various vanilla races with very vanilla-looking sprite
 
 **Status**
 
+Unknown
+
 ## Better Thunderhead Lance
+
+**Created by BCPowerhouse**
+
+Modifies this outfit.
+
+**Status**
+
+Unknown
 
 ## Better Vanilla Pirates
 
@@ -428,6 +618,8 @@ Enhance/improve/fill gaps in many aspects of pirate combat in Human space, espec
 
 **Status**
 
+Unknown
+
 ## Better Vanilla Weapons
 
 **Created by ZBok**
@@ -435,6 +627,8 @@ Enhance/improve/fill gaps in many aspects of pirate combat in Human space, espec
 Add new weapons.
 
 **Status**
+
+Unknown
 
 ## Beyond the Sky
 
@@ -462,27 +656,42 @@ Add new faction of AI flying sailship-inspired ships.
 
 **Status**
 
+Unknown
+
 ## Bits and Bobs
+
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
 
 ## BiteOfTheAnt
 
 **Created by TayganPhilglas**
 
--description-
+This mod currently assumes that the Player has completed the main plot of the game. In this mod, the Player discovers the first race to actually be younger than Humanity and is tasked with helping them grow up a little bit and in the process learn how to help the Human race grow up more themselves.
 
 [BiteOfTheAnt](https://github.com/TayganPhilglas/EndlessSky-BiteOfTheAnt-Mod)
 
 **Status**
 
+Unknown
+
 ## Boarding Licenses
 
 **Created by An-archist**
 
--description-
+Adds licenses that allow the player to capture ships. Currently in alpha
+The better the license, the more ships you can cap
 
 [Boarding License](https://github.com/An-archist/boarding-licenses)
 
 **Status**
+
+Unknown
 
 ## Boarding Missions
 
@@ -494,6 +703,8 @@ Adds more boarding missions to the game.
 
 **Status**
 
+Unknown
+
 ## Bounty Hunters
 
 **Created by WarlordMike**
@@ -504,13 +715,24 @@ Adds a storyline where you can become a bounty hunter.
 
 **Status**
 
+Unknown
+
 ## Burst Anti-Missile
 
 **Created by mdsmestad**
 
+Adds 6 new outfits.
+
+**Status**
+
+Unknown
+
 ## Businessman Mod
 
 **Created by Evan**
+
+Become a ruler of the galaxy through money. Buy trade routes, stocks, set up shops and entertainment centers, buy planets, hire a mercenary army, hunt down people who didn't pay back their loans....and more..
+Also includes an optional alternate pirate start, and additons to make piracy much more viable and fun.
 
 **Status**
 
@@ -520,27 +742,54 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 **Created by mdsmestad**
 
+-description-
+
 **Status**
 
 Unknown
 
 ## Cannon Friendly Weapon Pack
 
+**Created by ?**
+
+The Cannon Friendly Weapon Pack (pun intended) is a selection of guns and lasers that aims to add more versatility to the range of weapons in Endless Sky. It attempts to blend itself into the canon where possible.
+The Cannon Friendly Weapon Pack has a number of weapons and weapon additions, such as ammunition storage for most vanilla weapons, all the ammunition-consuming weapons in the CFWP, and more.
+
+**Status**
+
+Unknown
+
 ## Captain Last and the Timeship
+
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
 
 ## Carriers
 
 **Created by Arkhne**
 
+Adds 6 ships.
+
+**Status**
+
+Should work
+
 ## Casual Mod
 
 **Created by pphotography**
 
--description-
+Makes gameplay more casual. Ships are heavier making navigation and combat slower. Higher range for some cannons to compensate ship speed. Less, slower and weaker asteroids to increase clarity, FPS and easier mining.
 
 [Casual Mod](https://github.com/pphotography/EndlessSky_CasualMod)
 
 **Status**
+
+Unknown
 
 ## Checkmatemate
 
@@ -578,6 +827,14 @@ Total conversion mod, will likely function but is outdated, expect issues.
 
 ## Cloaking Device Unlocked
 
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
+
 ## Cobbled Ships
 
 **Created by Zoura**
@@ -592,21 +849,27 @@ Playable on 0.9.15 Continuous.
 
 **Created by professorlust**
 
--description-
+Cognitive Subdivision introduces a new difficult story taking place after the first part of the Wanderer Campaign
+as well as several new maps, 2 new tier 3 factions with various unique outfits and ships of their own for you to unlock
+...and some suprises for you to find!
 
 [Cognitive Subdivision](https://github.com/professorlust/cognitive-subdivision)
 
 **Status**
 
+Unknown
+
 ## Colorado
 
 **Created by clintmoyer**
 
--description-
+Adds a new system and some missions.
 
 [Colorado](https://github.com/clintmoyer/endless-sky-plugins/tree/master/colorado)
 
 **Status**
+
+Unknown
 
 ## Colorful Void Sprites
 
@@ -644,21 +907,29 @@ Increased the cost of drives
 
 **Status**
 
-## Custom Landscapes
+Unknown
 
 ## Custom Outfitting (Chop Shop)
 
-## Custom Portraits
+**Created by Jareth (Dr. Anthrax)**
+
+Lets the player swap excess weapon and engine space for outfit space also alows the spending of outfit space to have more weapon and engine space.
+
+**Status**
+
+Unknown
 
 ## Czartracks Ship Pack
 
 **Created by czartrak**
 
--description-
+This mod adds various new ships to Endless Sky.
 
 [Czartraks Ship Pack](https://github.com/czartrak/Czartraks-Ship-Pack)
 
 **Status**
+
+Unknown
 
 ## DaBestShipEver
 
@@ -674,15 +945,33 @@ Unknown
 
 **Created by davidwhitman**
 
--description-
+This is a mission available from the planet Clark that takes you an a short adventure with the dragons of Skymoot.
 
 [Dangerous Games](https://github.com/davidwhitman/endless-sky-dangerous-games)
 
 **Status**
 
+Allready ingame
+
 ## Dark Ships
 
+**Created by ?**
+
+This plugin contains ships rendered with a sharper illumination angle to get more dramatic shadows and less "flat" appearances.
+
+**Status**
+
+Should work
+
 ## Death Pancake
+
+**Created by ?**
+
+Adds a ship.
+
+**Status**
+
+Should work
 
 ## Defense Drone Plugin
 
@@ -710,7 +999,23 @@ Functional
 
 ## Derp Ship
 
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
+
 ## Destination Sol
+
+**Created by ?**
+
+Various components from the game Destination Sol, including weapons, hulls, and abilities(?).
+
+**Status**
+
+Unknown
 
 ## Destiny
 
@@ -736,6 +1041,12 @@ Unknown
 
 **Created by Dr. Z**
 
+Adds several new outfits, mostly for boarding.
+
+**Status**
+
+Should work
+
 ## Dragonflame-Fabrication
 
 **Created by Lake (Galaucus)**
@@ -746,11 +1057,27 @@ A post-Emerald Sword mission chain that allows Kraz to manufacture a replacement
 
 **Status**
 
+Unknown
+
 ## Dragoon Industries
+
+**Created by Hayden Plishka**
+
+Adds several ships and outfits.
+
+**Status**
+
+Should work
 
 ## Dragoon
 
 **Created by mdsmestad**
+
+Adds a ship.
+
+**Status**
+
+Should work
 
 ## Dreadnought
 
@@ -762,11 +1089,21 @@ Nonfunctional
 
 **Created by Nathan**
 
+Adds a weapon.
+
 **Status**
 
-Unknown
+Should work
 
 ## EMP Weapons
+
+**Created by ?**
+
+Adds some outfits and a ship.
+
+**Status**
+
+Ship and outfits are nowhere for sale.
 
 ## ES Ships
 
@@ -782,11 +1119,13 @@ Playable on 0.9.15 Continuous.
 
 **Created by Bereskatuket (Kestrel1110)**
 
--description-
+Makes capturing the Kor Sestor and Kor Mereti a little bit easier.
 
 [Easier Korath Automatons](https://github.com/kestrel1110/Easier-Korath-Automatons)
 
 **Status**
+
+Should work
 
 ## Edge of Endless
 
@@ -799,6 +1138,14 @@ Large plugin that adds a bunch of stuffs to the galaxy. And lots of big ships.
 Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 
 ## Elite Sky
+
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
 
 ## Elystian Plugin
 
@@ -814,11 +1161,13 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 **Created by rymeilema**
 
--description-
+this plugin adds an upgraded skylark purchasable in tarazed, with a special animation.
 
 [Ema Skylark](https://github.com/rymeilema/rymeilema-skylark)
 
 **Status**
+
+Unknown
 
 ## Endless Addon
 
@@ -829,6 +1178,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 [Endless Addon](https://github.com/IModThings/I_M_T-Endless-Sky-Mods/tree/master/Endless%20Addon)
 
 **Status**
+
+Unknown
 
 ## Endless Cargo
 
@@ -844,7 +1195,23 @@ Functional
 
 ## Endless Depth Mod
 
+**Created by Kryes Omega**
+
+"Endless Depth is a assortion of my random ideas that I thought might give the game a bit more depth. Hence the name. Rather than focusing on outfits, ships, and other things to blow up, I'm trying to get a little more creative, with things such as planetary flight areas, pirate gangs, and a few other small details I added."
+
+**Status**
+
+Unknown
+
 ## Endless Fortress 2
+
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
 
 ## Endless Gauntlet
 
@@ -875,7 +1242,23 @@ Abandoned.
 
 ## Endless Sky except everything makes that weird Tim Allen noise
 
+**Created by ?**
+
+Replaces sounds.
+
+**Status**
+
+Should work
+
 ## Endless Sky except ships make that weird Tim Allen sound when they die
+
+**Created by ?**
+
+Replaces sounds.
+
+**Status**
+
+Should work
 
 ## Endless Endless Sky
 
@@ -893,11 +1276,13 @@ Playable on 0.9.15/0.9.16/Continuous.
 
 **Created by The-Borg-Captain**
 
--description-
+Adds an overpowered ship.
 
 [Endless-Sky-Ship](https://github.com/The-Borg-Captain/Endless-Sky-Ship)
 
 **Status**
+
+Unknown
 
 ## Enigma Corp High DPI
 
@@ -909,6 +1294,8 @@ Playable on 0.9.15/0.9.16/Continuous.
 
 **Status**
 
+Unknown
+
 ## Enigma Corp Legacy
 
 **Created by Amazinite**
@@ -918,6 +1305,8 @@ Playable on 0.9.15/0.9.16/Continuous.
 [Enigma Corp Legacy](https://github.com/Amazinite/Enigma-Corp-Legacy)
 
 **Status**
+
+Unknown
 
 ## Enigma Corp
 
@@ -929,6 +1318,8 @@ Playable on 0.9.15/0.9.16/Continuous.
 
 **Status**
 
+Unknown
+
 ## Enki-Station
 
 **Created by Nergal8617**
@@ -939,7 +1330,17 @@ Playable on 0.9.15/0.9.16/Continuous.
 
 **Status**
 
+Unknown
+
 ## Epic Outfits
+
+**Created by TheronEpic**
+
+Several new outfits.
+
+**Status**
+
+Should work
 
 ## Epic Trucker
 
@@ -961,6 +1362,10 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Add a race.
 
+**Status**
+
+Unknown
+
 ## Eternals
 
 **Created by comnom**
@@ -971,9 +1376,17 @@ Add a race.
 
 **Status**
 
+Unknown
+
 ## Evasion Bomb
 
 **Created by Vilhelm**
+
+Adds 2 outfits.
+
+**Status**
+
+Outfits are nowhere for sale.
 
 ## Everything-n-more
 
@@ -985,6 +1398,8 @@ Add a race.
 
 **Status**
 
+Unknown
+
 ## Exotic Matter
 
 **Created by CristopherZhong**
@@ -995,17 +1410,30 @@ Add a race.
 
 **Status**
 
+Unknown
+
 ## Expanded Territory
 
 **Created by virmitio**
 
--description-
+This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
+At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
 
 [Expanded Territory](https://github.com/virmitio/ES_ExpandedTerritory)
 
 **Status**
 
+Unknown
+
 ## Experimental
+
+**Created by ?**
+
+-description-
+
+**Status**
+
+Unknown
 
 ## Exporianes
 
@@ -1035,6 +1463,14 @@ Playable on 0.9.15 Continuous.
 
 ## Extra Missiles Outfit
 
+**Created by ?**
+
+Adds some missile outfits.
+
+**Status**
+
+Should work
+
 ## Fancy Weapons
 
 **Created by 1010Todd**
@@ -1047,11 +1483,23 @@ Requires AES Omnis to access.
 
 ## Flak Weapons
 
+**Created by tehhowch**
+
+Adds some weapon outfits.
+
+**Status**
+
+Unknown
+
 ## Flak&Snare
 
 **Created by Tehhowch**
 
 Add a few new weapons.
+
+**Status**
+
+Unknown
 
 ## Flamethrower Turret
 
@@ -1062,6 +1510,8 @@ Adds a turret variant of the flamethrower
 [Flamethrower Turret](https://github.com/ItsNickBarry/endless-sky-flamethrower-turret)
 
 **Status**
+
+Unknown
 
 ## Flavour Text
 
@@ -1090,6 +1540,20 @@ Adds a mission that pays you with a kitten.
 [Free Kitten](https://github.com/Epchk/ES-free-kitten)
 
 **Status**
+
+## Galactic Capital Investment
+
+**Created by zuckung**
+
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)
+
+(story, repeatable mission)
+
+Implements a two mission chain that enables regular spaceport investment opportunities which result in small daily income. Available in human, quarg and hai space with 2 million credits cash. (inspired by a-alhusaini's investment bank plugin)
+
+**Status**
+
+0.10.0
 
 ## Galactic Conquest (Fallen)
 
@@ -2352,6 +2816,21 @@ Add a few new ships and weapons.
 
 Playable on 0.9.14, 0.9.15 Continuous.
 
+## Snowfeather Robotics
+
+**Created by zuckung**
+
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)
+
+(story, 1 new outfit)
+
+Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space). 
+Starts on Snowfeather(Bore Fah) after completing mission "remnant: shattered light 4" and have at least one android installed. 
+
+**Status**
+
+0.10.0
+
 ## Solar Sails
 
 **Created by TheronEpic**
@@ -2685,6 +3164,20 @@ Adds mechs and some other customization options.
 ## Tiny Ships
 
 ## Titans
+
+## Too Many Asteroids
+
+**Created by zuckung**
+
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)
+
+(1-6 system attributes changed, in 540 systems)
+
+Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched.
+
+**Status**
+
+0.10.0
 
 ## TooManyBlasters
 
