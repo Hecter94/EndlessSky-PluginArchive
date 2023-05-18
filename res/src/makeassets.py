@@ -35,6 +35,10 @@ fchecked = fmiss = 0
 for entry in entries: # for all plugin folders
 	fchecked += 1
 	withdots = entry.replace(" ",".")
+	withdots = withdots.replace("'", ".") 
+	withdots = withdots.replace("(", ".") 
+	withdots = withdots.replace(")", ".") 
+	withdots = withdots.replace("&", ".") 
 	try:
 		response = requests.head(assetfullpath + withdots + ".zip") # check if asset zip is there
 		response.raise_for_status()
