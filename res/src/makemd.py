@@ -213,6 +213,10 @@ with open(indexfile, "w") as file1:
 				
 				# get last modified date from the assetfiles
 				withdots = pluginname.replace(" ", ".") 
+				withdots = withdots.replace("'", ".") 
+				withdots = withdots.replace("(", ".") 
+				withdots = withdots.replace(")", ".") 
+				withdots = withdots.replace("&", ".") 
 				try:
 					response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True)
 					response.raise_for_status()
@@ -237,6 +241,11 @@ with open(indexfile, "w") as file1:
 						form = " mb"
 					size = str(round(assetsize, 2)) + form
 					print("requesting header " + assetfullpath + withdots + ".zip DONE")
-				assetfile = pluginname.replace(" ", ".") + ".zip"
+				withdots = pluginname.replace(" ", ".")
+				withdots = withdots.replace("'", ".") 
+				withdots = withdots.replace("(", ".") 
+				withdots = withdots.replace(")", ".") 
+				withdots = withdots.replace("&", ".") 
+				assetfile =  withdots + ".zip"
 				file1.writelines(replacevarp(tempplug))
 		file1.writelines(tempcatdownt) # write lower category template
