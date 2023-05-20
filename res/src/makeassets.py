@@ -42,6 +42,8 @@ for entry in entries: # for all plugin folders
 	withdots = withdots.replace(",", ".")
 	withdots = withdots.replace("...", ".")
 	withdots = withdots.replace("..", ".")
+	if withdots[len(withdots)-1] == ".":
+		withdots = withdots[:len(withdots)-1]
 	try:
 		response = requests.head(assetfullpath + withdots + ".zip") # check if asset zip is there
 		response.raise_for_status()
