@@ -31,7 +31,7 @@
 
 # Introduction
 
-A comprehensive library of 466 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 473 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -162,11 +162,11 @@ For Pull Requests... the folder structure has changed with this update. There ar
 
 # Plugin Download
 
-All Plugins (466)
+All Plugins (473)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (36) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (34) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (17) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (35)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (38) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (1) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (63)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (116) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (60) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (23)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (116) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (60) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (30)<br>
 
 
 
@@ -2532,7 +2532,7 @@ Status: N/A
 ### Fallen
 
 
-[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fallen/)  
+[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fallen/)  
 Author: Michael Feather | N/A[]()  
 Category: Overhauls  
 
@@ -4407,11 +4407,11 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/All Plugins/Derogam/icon.png' width='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Derogam/)  
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.66 mb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Derogam/)  
 Author: Lorantine | [https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam)  
 Category: Ships  
 
->A big WIP project of dragon aliens.
+>A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
 
 
@@ -7732,7 +7732,7 @@ Status: N/A
 
 ## Uncategorized
 
-<p>23 plugins in this category.<p>
+<p>30 plugins in this category.<p>
 
 <details>
 
@@ -7775,6 +7775,38 @@ Status: N/A
 
 ---
 
+### Amphibious-Ships
+
+
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
+
+
+---
+
+### Ancient Saryds
+
+
+[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
+
+
+---
+
 ### Arena of the worthy
 
 
@@ -7787,6 +7819,22 @@ Category: N/A
 
 
 Status: REQUIRES PR #7348. Either wait for it to be merged or use ESLauncher2 to download the PR.  
+
+
+---
+
+### Bulkheads-and-Battleships
+
+
+[Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bulkheads-and-Battleships/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
 
 
 ---
@@ -7937,6 +7985,22 @@ Status: N/A
 
 ---
 
+### Kor-Fighter-Additions
+
+
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
+
+
+---
+
 ### Logbook Help
 <img src='Working/All Plugins/Logbook Help/icon.png' height='100'></img><br>
 
@@ -7950,6 +8014,22 @@ Category: N/A
 
 
 Status: Compatible with ES 0.9.14  
+
+
+---
+
+### MechSummoner
+
+
+[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MechSummoner/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
 
 
 ---
@@ -8015,6 +8095,22 @@ Category: N/A
 
 
 Status: Playable on 0.9.15/0.9.16.  
+
+
+---
+
+### Sestor-Expansion
+
+
+[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
 
 
 ---
@@ -8088,6 +8184,22 @@ Category: N/A
 
 
 Status: story  
+
+
+---
+
+### StarProtector-Endless-Sky
+
+
+[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
+
+>N/A
+>
+
+
+Status: N/A  
 
 
 ---
