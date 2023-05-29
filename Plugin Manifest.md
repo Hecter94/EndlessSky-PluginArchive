@@ -1939,6 +1939,16 @@ Addition for Korath Exiles Post-Automata.
 
 Playable on 0.9.15 Continuous.
 
+## Kor-Fighter-Additions
+
+**Created by Ejothims**
+
+Additional fighters for Korath Exiles
+
+**Status**
+
+Playable on 0.10.0 Continuous.
+
 ## Korath Automation Upgrade
 
 **Created by Kriegstofu**
