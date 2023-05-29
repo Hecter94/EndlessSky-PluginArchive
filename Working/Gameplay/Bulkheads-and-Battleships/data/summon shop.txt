@@ -1,0 +1,43 @@
+mission "bnb minions 1"
+	landing
+	repeat
+	to offer
+		has "bnb game"
+		"outfit (flagship installed): Minion Token" >= 1
+	on fail
+		dialog `Remember to take off and land to get your upgrades!`
+	on offer
+		conversation
+			`You have unused minion tokens! Do you want to invest in a minion?`
+			choice
+				`	Yes.`
+					goto minion
+				`	Not right now.`
+					defer
+					
+			label minion
+			`What minion would you like?`
+			choice
+				`	(1 Token) Lesser Bonion`
+					goto lesserbonion
+				`	Nevermind.`
+					defer
+					
+			label lesserbonion
+			branch "lesserbonionget" "failminionget"
+				"outfit (flagship installed): Minion Token" >= 1
+				"flagship attribute: lesser bonion" <= 10000
+			
+			label lesserbonionget
+			action
+				outfit "Lesser Bonion"
+				outfit "Minion Token" -1
+			`You have summoned a new Lesser Bonion.`
+				goto finish
+				
+			label failminionget
+			`You've either hit the maximum cap for this type of minion or lack the tokens to purchase it.`
+				goto minion
+				
+			label finish
+				defer

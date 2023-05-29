@@ -303,6 +303,18 @@ Adds a new ship.
 
 Should work
 
+## Amphibious-Ships
+
+**Created by Zoura**
+
+Adds sea-to-space ships to Endless Sky.
+
+[Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)
+
+**Status**
+
+Playable on 0.10.0/Continuous
+
 ## Androids Rebalanced
 
 **Created by czartrak**
@@ -336,6 +348,16 @@ Adds a torpedo and launcher to the game.
 **Status**
 
 Unknown
+
+## Ancient Saryds
+
+**Created by Zoura**
+
+This is a plugin that adds a historic sect of the Saryd species, divorced from the Coalition and the Heliarchs that govern it. Discover their steam engines and great "Trainships" in this somewhat story-driven plugin.
+
+**Status**
+
+Playable on 0.10.0 Continuous
 
 ## Animated Ships
 
@@ -717,6 +739,19 @@ Adds a storyline where you can become a bounty hunter.
 
 Unknown
 
+## Bulkheads-and-Battleships
+
+
+**Created by Zoura**
+
+Turn Endless Sky into DnD-style RPG
+
+[Bulkheads-and-Battleships](https://github.com/AvianGeneticist/Bulkheads-and-Battleships)
+
+**Status**
+
+Playable on 0.10.0/Continuous
+
 ## Burst Anti-Missile
 
 **Created by mdsmestad**
@@ -840,6 +875,8 @@ Unknown
 **Created by Zoura**
 
 Add several new ships.
+
+[Cobbled Ships](https://github.com/AvianGeneticist/CobbleShipModES)
 
 **Status**
 
@@ -1747,6 +1784,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Add new unique outfits for each human governments (FW, Navy, Syndicate).
 
+[Human Space Overhaul](https://github.com/AvianGeneticist/Human-Space-Overhaul)
+
 **Status**
 
 Playable on 0.9.15/0.9.16/Continuous.
@@ -1918,6 +1957,16 @@ Addition for Korath Exiles Post-Automata.
 **Status**
 
 Playable on 0.9.15 Continuous.
+
+## Kor-Fighter-Additions
+
+**Created by Ejothims**
+
+Additional fighters for Korath Exiles
+
+**Status**
+
+Playable on 0.10.0 Continuous.
 
 ## Korath Automation Upgrade
 
@@ -2151,15 +2200,29 @@ Nonfunctional
 
 ## Maurader Corvette
 
+## Mech Summoner
+
+**Created by Zoura**
+
+A plugin that aims to add self-maintaining allies to endless sky.
+
+**Status**
+
+Playable on 0.10.0/Continuous.
+
 ## Mega Bactrian
 
 **Created by mdsmestad**
+
+Add Mega Bactrian ship.
 
 ## Mega Freight
 
 **Created by 1010Todd**
 
 Add various ships to human space.
+
+[Mega Freight](https://github.com/1010todd/Mega-Freight)
 
 **Status**
 
@@ -2189,6 +2252,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Mercury
 
 ## Mereti
+
+Allow Mereti ships to be purchased after they become friendly.
 
 ## Mess
 
@@ -2514,6 +2579,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Kor Sestor alternate start.
 
+[Play As Sestor](https://github.com/AvianGeneticist/Play-As-Sestor)
+
 **Status**
 
 Playable on 0.9.15/0.9.16.
@@ -2605,6 +2672,8 @@ Playable on 0.9.15 Continuous.
 **Created by Zoura**
 
 Add Quaernan, a human worldship from alternate universe along with its complement.
+
+[QuaernanHardpointsCarries](https://github.com/AvianGeneticist/QuaernanHardpointsCarries)
 
 **Status**
 
@@ -2715,6 +2784,18 @@ Salvaging proof of concept.
 **Created by Darcy Manoel**
 
 Add a few ships across a few races. Add a new race Irm. Renamed and updated to AES Misc
+
+## Sestor Expansion
+
+[Sestor Expansion](https://github.com/AvianGeneticist/Sestor-Expansion)
+
+**Created by Zoura**
+
+Greatly increases the variety in Kor Sestor ships and fleets.'
+
+**Status**
+
+Playable on 0.9.16
 
 ## Sci-Fi Flavours
 
@@ -2914,6 +2995,18 @@ Playable on 0.9.15 Continuous.
 ## Star Destroyer
 
 ## Star Wars
+
+## StarProtector
+
+[StarProtector](https://github.com/BawSaqS/StarProtector-Endless-Sky)
+
+**Created by BawSaqS (Controller#2312)**
+
+Add a ship called StarProtector.
+
+**Status**
+
+Playable on 0.9.16.
 
 ## StarSector
 

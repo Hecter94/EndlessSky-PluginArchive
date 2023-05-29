@@ -1,0 +1,376 @@
+mission "Ancient Saryd Engines 1"
+	name "Request of the Ancients"
+	landing
+	source "Old Saros"
+	destination "Old Secret Sky"
+	passengers 1
+	to offer
+		has "event: ancient saryd part 1 break"
+	on offer
+		conversation
+			`As you land on Old Saros, you receive a message from Omaba, telling you that you're needed by the Ancient Saryds. Want to see what it's about?`
+			choice
+				`	Yes.`
+					goto mission
+				`	Not yet.`
+					defer
+					
+			label mission
+			`You tell Omaba you're ready to help the Ancient Saryds however possible, and head over to the lodging she's been put up in. She smiles at you as you enter, "Nice to see you again, Captain," She says. It still catches you off-guard that she can speak proper human language.`
+			`	"You're being requested on Secret Sky; in this time, it is not the medical research haven we are used to; it is a military research facility, guarded tighter than the homeworld. Expect some poking and prodding," Omaba explains calmly.`
+			`	You nod a bit, not particularly looking forward to being pushed around by a bunch of large Saryds, but at least you won't be alone.`
+				accept
+
+mission "Ancient Saryd Engines 2"
+	name "Protect the engines"
+	landing
+	source "Old Secret Sky"
+	destination "Old Diligent Hand"
+	cargo "Prototype Engines" 32
+	passengers 1
+	stopover "Secret Sky"
+	to offer
+		has "Ancient Saryd Engines 1: done"
+	on offer
+		conversation
+			`As you close in on Old Secret Sky, Omaba directs you not to the usual spaceport, but to a more secluded location, being heavily patrolled by a screen of fighters and turrets on the ground below. You can't help but feel a bit nervous, as if you're about to be blown to bits by a stronghold's defenses, but then a translated voice comes through the radio: "You are cleared to land, outsiders," It says, as the fighters briefly part just enough to allow your ship through.`
+			`	When you land, your ship is approached by a number of heavily armed and armored Saryds, and are subject to a thorough patdown; Omaba is subject to the same. Walking inside the spaceport once you're clear, you come face to face with a Saryd in what appears to be a body plan-adapted labcoat; she's visibly younger than Omaba.`
+			`	"So, arrived the outsider finally has," The Saryd says, "Papilana am I, doctor of engines." The translator seems to be having some trouble with her speech, as Omaba gives the device around your neck a perplexed look, but the other Saryd keeps speaking.`
+			`	"A request of you I have, one of very vast importance. My greatest triumph is on my eve..." Papilana keeps speaking, but the translator stops for a moment, eventually cutting back on, "...Need a courier, I do," She finishes, leaving you a little lost without the translation.`
+			`	"She's on the eve of a great advancement for their steam powered engines, however, many prototypes get smashed before they can be shipped out for production," Omaba fills in, taking a moment to inspect your translator for damage.`
+			`	"Out of space and time I need these plans and prototypes; may complete the goal only the outsider may. Sense, does this make?" She asks.`
+			choice
+				`	"You want me to take these plans through the wormhole?"`
+					goto destination
+				`	"If you need them gone, why not smash them?"`
+					goto notfunny
+					
+			label notfunny
+			`Neither Papilana nor Omaba seem to think your attempt at a joke was funny, judging by their expressions. You look very stupid right now.`
+			`	"Moving on," Omaba says, finally breaking the silence, "Gone to be, how long do you want them?"`
+				goto destination
+				
+			label destination
+			`"Some time. Days numbering in several, perhaps," She says, "Enough time to call about manufacturing I must have. Careful we must be; in my mind no doubt you will be stopped there is. Fleeing your only respite may be," Papilana warns, "Beyond time, plans and prototypes end up on Diligent Hand for manufacturing they must. Go there directly you will, for of the greatest essence time is," She says sternly, going so far as to grab you by the collar of the shirt to look you eye-to-eye, "Communicate with me you will not. Go directly you will to Diligent Hand.`
+			`	Omaba looks at you for a moment. "Hmm... Perhaps we could do a round trip of sorts; to Secret Sky in the present, then back to the past," She says, turning to Papilana, "That should give you a week."`
+			`	Papilana nods, "Time enough that should be, for your help I thank you. Five million credits up front, yours will be; come when the engines are put in service more payment will," She says.`
+			`	You and Omaba thank her for her generosity, and return to your ship, where the prototype engines are already being loaded.`
+				accept
+				
+	on accept
+		payment 5000000
+
+	on complete
+		payment 3000000
+		event "pressure engines released" 12
+		event "reboilers available" 20
+		event "ancient saryd engines payment" 24
+		conversation
+			`As you touch down on Diligent Hand, the engine prototype is quickly offloaded, and you hand off the plans to the site director. "A great service, you have done us," They say, "Understand you are being paid by Doctor Papilana, I do, but my own contribution to your cause, I make," He says, handing you what seems to be a check for something along the lines of 3 million credits.`
+			`	"Expect them in outfitters by, when can we?" Omaba asks. The director thinks for a moment, "Long it will be not," He says, "Well-organized lines, I run. First copies in a couple days, we will make."`
+			`	Omaba nods and looks at you. "I will find my own way back to Saros. Thank you for your help," She says, giving you a small smile as you prepare to take off.`
+			`	You can't help but wonder why you weren't stopped on your way in or out. Perhaps you just got lucky, or perhaps nobody suspected an outsider to be moving technology around.`
+			
+event "pressure engines released"
+	outfitter "Ancient Saryd Basics"
+		"Ancillary Pressure Thruster"
+		"Ancillary Pressure Steering"
+	outfitter "Ancient Saryd Advanced"
+		"Primary Pressure Thruster"
+		"Primary Pressure Steering"
+		
+event "reboilers available"
+	outfitter "Ancient Saryd Basics"
+		"Modular Reboiler"
+	outfitter "Ancient Saryd Advanced"
+		"Prefabricated Reboiler"
+		
+event "ancient saryd engines payment"
+	
+mission "Ancient Saryd Engines Payment"
+	landing
+	source
+		government "Ancient Saryd"
+	to offer
+		has "event: ancient saryd engines payment"
+	on offer
+		conversation
+			`As you land on <planet>, you receive a message from Papilana, the researcher you aided. "Greetings, Outsider <last>. With great joy and pride it is I have, giving you this note for ten credits in order of millions. Keep in touch for my research fellows I will; your use I will inform them of.`
+			`	The message includes a scan of a handwritten check in the order of 10 million credits. Not a half bad payment for a job that only took a few jumps; perhaps you'll have to keep an eye out for more jobs like it.`
+				decline
+	on decline
+		payment 10000000
+		
+mission "Ancient Saryd CSE Turbines 1"
+	name "Protect the turbines"
+	landing
+	source "Old Secret Sky"
+	destination "Old Diligent Hand"
+	cargo "Prototype Turbines" 27
+	stopover "Secret Sky"
+	npc evade
+		government "Pug Extremists"
+		personality staying heroic
+		system " Tattered Clock "
+		fleet
+			names "pug"
+			variant
+				"Extreme Pug Zibruka" 2
+				" Extreme Pug Zibruka " 6
+				"Extreme Pug Enfolta" 3
+				"Extreme Pug Maboro" 1
+	to offer
+		has "Ancient Saryd Engines 2: done"
+	on offer
+		conversation
+			`You're on Secret Sky again. Would you like to go talk to Papilana and see if she needs anymore jobs done?`
+			choice
+				`	Yes.`
+					goto mission
+				`	No.`
+					defer
+			
+			label mission
+			`After the expected fun of being carefully screened and searched by guards probably 50% taller than you and 3-5 times your weight, you are permitted to enter the research facility, heading towards Papilana's office. You give your translator a few pre-emptive disciplinary taps, since it seems to struggle with Papilana's particular brand of Saryd.`
+			`	Speaking of, Papilana smiles as she sees you. "Ah, welcome back here you are, Outsider. At home do make yourself, please," She says, gesturing to a chair that's clearly meant for Saryds and not people. You opt to stand politely, and Papilana accepts this (if begrudgingly, judging by her expression).`
+			`	"What to this visit do I owe from our celebrated guest?" She asks.`
+			choice
+				`	"I just wanted to see your smiling face again."`
+					goto smile
+				`	"Got anything that needs doing?"`
+					goto job
+					
+			label smile
+			`Papilana seems to blush slightly. "Ah! Flattered, I am..." She says, pulling a drawer out from her desk, looking in it, then up at you, "Tea, may I interest you in? Some time I can spare," She offers. Is this a date?`
+			choice
+				`	"Absolutely."`
+					goto tea
+				`	"I appreciate the offer, but I wanted to help you folks out some more."`
+					goto deny
+					
+			label tea
+			`Papilana stands up and puts on a kettle, taking a seat on the chair she once offered you, smiling at you. "Some time until the kettle boils we have," She says, "About my work, questions do you have?"`
+				goto questions
+				
+			label questions
+			`	Seems you have some extra time to ask her about things. Any questions?`
+			choice
+				`	"What sort of research do you do?"`
+					goto research
+				`	"Why haven't you moved on from steam?"`
+					goto steam
+				`	"What do you do in your off-time?"`
+					goto hobbies
+				`	"How much do you make?"`
+					goto salary
+				`	"Do you have any lovers?"`
+					goto lovers
+				`	"I can't think of anything."`
+					goto tea2
+					
+			label research
+			`Papilana smiles, "Ah, much research do I do; head of this facility that I am," She explains, "In propulsion technologies a doctorate I do hold, but studies into other fields I do as support: Boilers, turbines, and even weapons of advanced quality. Alas, secrets I cannot divulge; too sensitive, even for the outsider that is our most trusted," She says.`
+			`	She thinks for a moment, "The latest generation of standard steam thrusters was of my research; emerged as an experimental offshoot, pressurized engines did. Great success they are seeing; glad I am, and grateful to you I am doubly so. Without you, never be completed my research would."`
+			`	You thank her for the opportunity (and the generous payment). She smiles at you, "Anything further, ask would you like to?" She asks.`
+				goto questions
+			
+			label steam
+			`Papilana thinks for a long moment, "Many factors contribute," She says, "Reliable, steam is, and much do we have to explore before we hit the ceiling. Just with the pressure engine release, did a comeback of reboilers did we see. Endless possibilities, there are not, but plenty for years to come there are," She explains.`
+			`	"Plus... On a less lighter note, disappear do many researchers who go beyond steam," She explains, looking around a bit, paranoid, "Why I had you safeguard the engines, that is," She explains. You nod a bit, promising her that you'll aid her however you can, and she thanks you.`
+			`	"Anything else, did you want to ask?" She asks.`
+				goto questions
+				
+			label hobbies
+			`Papilana chuckles softly, "Ah, a workaholic I am," She admits, "Love my job and what it entails, I do greatly. But, when forced out of the office by worried colleagues I am, Alothikwatching I do greatly enjoy. Away it gets me from the stiff pace of research," She explains. You have no idea what an "Alothik" is, but considering the context, you assume they're allegorical to terrestrial birds.`
+			`	Papilana continues, "Occasionally, clear my head I must. Stormy ocean worlds I visit, where the turmoil in waves matches the turmoil of my mind," She explains, "Good for the mind, ambient change is. How I retain my mental youth, it is."`
+			`	You nod. "Anything else, would you like to ask?" She asks.`
+				goto questions
+			
+			label salary
+			`Papilana chuckles, "Rare it is that I am paid directly; a budget, I must follow. Covers work, personal, and other expenses, it does. However, rest assured, pay you well for your services, I may," She promises, giving you a wink that you have a hard time reading the meaning of. If only the funny box around your neck could tell you expressions, too.`
+				goto questions
+				
+			label lovers
+			`It's a good thing you asked this question before the tea was served, because judging by the shocked expression on her face, she would've ended up spitting it at you. After a brief pause, she laughs somewhat awkwardly, "Oh, goodness me, Outsider. No lovers do I have; only family and close colleagues. Cherish my work relationships, I do very much, haha..." She wipes some laughter induced tears from her eyes, "Not so old, you know I am. Much time do I have before worrying about what or who I leave behind," She says, seemingly trying to play off your question.`
+			`	"Please, take this not as rejection, but, of me to begin a 'private relationship' with our first outsider would look very abusive," She attempts to explain, seeming almost... A little disappointed.`
+			`	"Anything to ask, would you like else?" She asks.`
+				goto questions
+			
+			label tea2
+			`She nods a bit, perking up as the kettle begins whistling. She gets up, pouring you each a cup of boiling water, "A favourite of mine, this tea is. Sweet without additives, and light on the tongue," She explains, gingerly handing you a cup. You take a sip of the tea... It's sweeter than soda, as if a child had gone and dumped a liter of sugar in what can't be more than half that volume of tea.`
+			choice
+				`	You try to suppress a grimace at the aggressive sweetness.`
+					goto toosweet
+				`	You appreciate the sweetness, and take a larger sip.`
+					goto sweetenough
+			
+			label toosweet
+			`Papilana looks at you concernedly, "Ah... Too sweet for the human palatte, it must be. Understand if you don't drink it, I will," She expresses. You thank her for understanding, and set your tea aside.`
+				goto tea3
+				
+			label sweetenough
+			`You smile at Papilana, thanking her for the lovely tea, "Glad you like it, very much I am," She expresses, "Worried too sweet for you it might be." You promise her it's perfect, and continue to drink contently.`
+				goto tea3
+				
+			label tea3
+			`What was perhaps supposed to just be a short visit ends up lasting close to two hours as you and Papilana share stories of your early lives with one another. As it turns out, she grew up during a major technological revolution, when the Ancient Saryds went through a major update to their core boiler systems. This fostered her early love of science, and - in her excitement - ends up letting it slip that the Ancient Saryds (emboldened by the successful deployment of her new engines) are planning several new technological expansions in the coming months or years.`
+			`	In turn, you tell her about your humble beginnings working in the dirt belt; a backstory she is surprisingly empathetic to, despite her much richer upbringing. It's a very relaxing afternoon; the most relaxed you've felt in years. For just an afternoon, it feels like the real world has backed off to let you breathe.`
+			`	Eventually Papilana checks the time, eyes widening slightly, "Ah! Late it has gotten; away from me, time has become," She expresses, standing up, "Appreciated this greatly I have, Outsider, but duties I must attend to I have," She expresses.`
+			`	You thank her for your time, before remembering why you came here in the first place. You ask her if you can help any of her fellow researchers out.`
+				goto job
+			
+			label deny
+			`She seems slightly disappointed, but nods.`
+				goto job
+				
+			label job
+			`"Hmm... Actually, something to smuggle, I have for you," She explains, "A new electric turbine, we have... Larger than single turbines, it is, but much more powerful. Smuggle it out of harm's way, you could, though plan to pay you more than once budget for I did not," She explains, "Only a small reward, I may offer. Perhaps credits to the order of 1 million," She explains, looking away slightly.`
+			choice
+				`	"Money is no object if it means helping you guys get more cool stuff."`
+					goto noproblem
+				`	"Money, shmoney. I just want to see the spinny thingy spin around."`
+					goto noproblem
+				`	"Your generosity the first time more than makes up for lesser pay now."`
+					goto noproblem
+					
+			label noproblem
+			`Papilana sighs in relief, "Ah, thank you, Outsider. Your geneorsity no bounds it knows... Attempt some better payment, I will," She expresses, "Loaded onto your ship, I will have the turbines. Safe travels," She says.`
+			choice
+				`	"I'll return soon, don't worry."`
+					accept
+				`	(Hug Papilana before you leave.)`
+					goto hug
+					
+			label hug
+			`Papilana is caught off-guard as you hug her, but she just smiles, firmly hugging you back and thanking you quietly. You promise her you'll return safely, and leave for your ship.`
+				accept
+				
+	on accept
+		payment 1000000
+		"reputation: Pug Extremists" = -1000
+		
+	on complete
+		payment 2000000
+		event "CSEs available" 26
+		conversation
+			`You arrive on Diligent Hand, thoroughly rattled by the blockade you've had to run through. You hand over the plans and prototypes to the site director, but can't shake the nerves brought on by the encounter. The director notices this and looks at you, "Something wrong, is there Outsider?" He asks.`
+			choice
+				`	"I was attacked by alien ships, more powerful than ones I've ever seen before.`
+					goto attacked
+				`	"I had a run-in with some really powerful alien ships; some of them multiplied before my eyes."`
+					goto attacked
+					
+			label attacked
+			`The director nods a bit. "Ah... Perhaps related to prototype smashers of ours they are," He says, "Hear this from me, you did not, but years ago, found an alien usurper we did, mid-smash. Had incapacitated guards, and diguised himself as Saryd, he had," He explains.`
+			`	You nod slowly, and thank him for the information. He then pulls out a cheque, and fills it out, approving an extra million-credit payment for your job. "Great services, done for us you have. Friends in our space, you will find many," He says.`
+			choice
+				`	"So when can I see these turbines up for sale?"`
+					goto whensold
+				`	"Stay safe out there, friend."`
+					goto farewell
+					
+			label whensold
+			`The site director thinks, "Longer it may take; finicky, turbines are. Optimizing production for quality, a month may take," He attempts to estimate. You thank him for the estimate and prepare to leave.`
+				goto farewell
+					
+			label farewell
+			`The site director bids you safe travels, telling you to fly carefully before returning to directing. Despite your harrowing experience, you still feel good about your service.`
+			
+event "CSEs available"
+	outfitter "Ancient Saryd Basics"
+		"Small CSE Turbine"
+	outfitter "Ancient Saryd Advanced"
+		"Medium CSE Turbine"
+		"Large CSE Turbine"
+		
+mission "Ancient Saryd Latheweapons"
+	name "Escort the warships"
+	landing
+	source "Old Secret Sky"
+	destination "Old Diligent Hand"
+	npc accompany save escort launching
+		government "Escort"
+		personality vindictive
+		system " Far Horizon "
+		fleet
+			names "saryd"
+			variant
+				"Short Combat Trainship (Stormcutters)" 3
+	npc escort launching
+		government "Escort"
+		personality vindictive heroic
+		system " Far Horizon "
+		fleet
+			names "saryd"
+			variant
+				"Short Combat Trainship"
+				"Full Combat Trainship"
+				"Short Battlecarrier Trainship"
+				"Ancient Hitchhiker" 2
+				"Ancient Hitchhiker (Geyser Flux)" 2
+	npc
+		government "Pug Extremists"
+		personality staying heroic vindictive
+		system " Belonging "
+		fleet
+			names "pug"
+			variant
+				"Extreme Pug Zibruka" 2
+				" Extreme Pug Zibruka " 6
+				"Extreme Pug Enfolta" 2
+				"Extreme Pug Maboro" 2
+	to offer
+		has "event: CSEs available"
+	on offer
+		conversation
+			`There's a bit of a commotion going on on Secret Sky. Want to check it out?`
+			choice
+			`	Yes.`
+				goto mission
+			`	Not this time.`
+				defer
+			
+			label mission
+			`You opt to fly over to the research base, where a number of trainships, configured for combat, are waiting beneath the usual fighter screen. As you land, a short researcher Saryd whom you don't recognize approaches you. "Outsider!" He greets, "Perfect your timing is; otherworldly perhaps, even! To Diligent Hand these ships are going; weapons of brand newness delivering they are," He explains, his face a mix of anxiousness and glee.`
+			choice
+				`	"New weapons? Just point me to the assembly line."`
+					goto job
+				`	"Aren't you worried about being attacked?"`
+					goto concerns
+					
+			label concerns
+			`The researcher gives a slightly wily smile; were it not established that these folks liked you, you'd be worried. "Worried? Absolutely I am not," He says, "For heavy battle, these ships are designed; optimized thanks to your earlier exploits, they are," He explains. "Now, my excitement I can barely keep under wraps! Tell you the job, allow me to," He says.`
+				goto job
+				
+			label job
+			`"To diligent hand, you will escort this convoy," He states, "Accompanied by an escort of militia ships, will you be. A trial for our pilots, this is; with redoubled gusto, we progress, emboldened by our Outsider!" His voice swells dramatically after 'gusto', to the point where several other Saryds loudly cheer in agreement; the sudden breakout of the crowd briefly overwhelms your translator.`
+			`	You can't help but appreciate the indomitable spirit of the Ancient Saryds, despite their past losses. With redoubled confidence, you approach your ship, readying it for the task at hand. You just hope those aliens you met earlier don't come in to ruin your day...`
+				accept
+	on complete
+		event "stormcutters available" 16
+		event "tempestrazors available" 60
+		conversation
+			`Despite the alien interference, the convoy has made it more or less safely to Diligent hand, where workers are already extracting the new turrets from the allied ships to begin reproducing them. A few of the ship jocks approach you; one offers a firm handshake, "A job good done, Outsider," He says as you accept the handshake, "To call you our ally, proud we are. Serving with you more, I look forward to," He says, giving you a slightly gruff smile.`
+			choice
+				`	"The pleasure was all mine."`
+					goto closing
+				`	"You guys did all the work, I just ran away until you shot the bad dudes."`
+					goto runaway
+				`	"Thank you for your service, soldier."`
+					goto closing
+					
+			label runaway
+			`The Saryd laughs loudly, "All a part we must play in war!" He expresses, "Fought you may not have, but served us greatly nonetheless," He says.`
+				goto closing
+			
+			label closing
+			`Suddenly, he takes your hand and raises it, nearly yarding you off the ground, "To the Outsider!" He bellows loudly, his fellows standing at attention, "Of new light and fire, the bearer!"`
+			`	The group cheers back a loud chant, which you assume means something similar to the human expression 'hooah'. The Saryd puts you down, leaving you to gingerly rub your now very sore arm. Still, it's hard to focus on the pain with the spaceport's mood being so intensely positive.`
+			
+event "stormcutters available"
+	outfitter "Ancient Saryd Basics"
+		"Stormcutter Lathe"
+		
+event "tempestrazors available"
+	outfitter "Ancient Saryd Advanced"
+		"Tempestrazor Lathe"

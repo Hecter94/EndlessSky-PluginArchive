@@ -135,6 +135,10 @@ Ship "Gladius" conflicts with a ship of the same name from Eternals
 
 Ship "Gladius" conflicts with a ship of the same name from Alterra
 
+### Cobbled Ships
+
+Ship "Mammoth" conflicts with a ship of the same name in vanilla version 0.9.15 and later.
+
 </details>
 
 ---

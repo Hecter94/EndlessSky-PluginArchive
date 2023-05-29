@@ -1,0 +1,21 @@
+mission "Ferukistek Mining"
+	name "Initialize Space Mining Operations in Ferukistek"
+	description "Sponsor a mining operation in Ferukistek for 25 million credits. A flow of raw resources will provide a modest source of income."
+	job
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 25000001
+		has "visited system: Ferukistek"
+	on accept
+		payment -25000000
+		event "ferukistek miners" 3
+			
+event "ferukistek miners"
+	"salary: Mining Income" += 12500
+	system Ferukistek
+		add minables aluminum 9 1.59162
+		add minables iron 26 1.79257
+		add minables titanium 12 1.86087
+		add fleet "Kor Sestor Miner" 5000
+	
