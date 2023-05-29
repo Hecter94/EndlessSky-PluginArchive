@@ -2945,6 +2945,18 @@ Playable on 0.9.15 Continuous.
 
 ## Star Wars
 
+## StarProtector
+
+[StarProtector](https://github.com/BawSaqS/StarProtector-Endless-Sky)
+
+**Created by BawSaqS (Controller#2312)**
+
+Add a ship called StarProtector.
+
+**Status**
+
+Playable on 0.9.16.
+
 ## StarSector
 
 ## Stat Reworks

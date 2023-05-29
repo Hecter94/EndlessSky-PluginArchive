@@ -1,0 +1,92 @@
+# Copyright (c) 2015 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+# Note: the above copyright statement is suggested in any plugins you create.
+# Of course, instead of my name you would fill in your own.
+
+# If you are creating a new ship, the easiest way to do that is to copy one of
+# the existing ships and modify it. There is also documentation on creating
+# ships at: https://github.com/endless-sky/endless-sky/wiki/CreatingShips
+ship Exemplar
+	# The sprite path is relative to the "images" directory, and does not
+	# include the file extension, animation frame, etc. For example, if the
+	# sprite uses ships/exemplar-0.png and ships/exemplar-1.png, just put this:
+	sprite "ship/StarProtector”
+	thumbnail “thumbnail/StarProtector”
+	attributes
+		category “Interceptor”
+		"cost" 100
+		"shields" 75000
+		"hull" 75000
+		"required crew" 3
+		"bunks" 10000
+		"mass" 10000
+		"drag" 2.4
+		"heat dissipation" .7
+		"fuel capacity" 1000
+		"cargo space" 50000
+		"outfit space" 20000
+		"weapon capacity" 40
+		"engine capacity" 80
+		weapon
+			# Rule of thumb for explosion strength:
+			# shield damage = (shields + hull) / 10.
+			# hull damage = shield damage / 2.
+			# hit force = shield damage + hull damage.
+			# blast radius = shield damage / 10.
+			"blast radius" 1500
+			"shield damage" 15000
+			"hull damage" 7500
+			"hit force" 22500
+	outfits
+		“Meteor Missile Launcher” 2
+		“Pug Gridfire Turret” 7
+		"RT-I Radiothermal"
+		"Supercapacitor"
+		"D23-QP Shield Generator"
+		"Greyhound Plasma Thruster"
+		"Impala Plasma Steering"
+		"Hyperdrive"
+	# These coordinates are relative to the center of the image, and are in
+	# image pixels (which are scaled down to half a screen pixel when drawing).
+	gun -17.5 -101 "Meteor Missile Launcher"
+		under
+	gun 17.5 -101 "Meteor Missile Launcher"
+		under
+	turret 0 -28.5 "Heavy Anti-Missile Turret"
+		over
+	turret -48.5 -48.5 "Pug Gridfire Turret"
+		over
+	turret 48.5 -48.5 "Pug Gridfire Turret"
+		over
+	turret -68.5 0 "Pug Gridfire Turret"
+		over
+	turret 68.5 0 "Pug Gridfire Turret"
+		over
+	turret -48.5 48.5 "Pug Gridfire Turret"
+		over
+	turret 48.5 48.5 "Pug Gridfire Turret"
+		over
+	turret 0 30 "Pug Gridfire Turret"
+		over
+	leak leak 60 50
+	leak flame 20 80
+	explode “huge explosion" 150
+	explode “huge explosion" 250
+	description "The StarProtector is an example ship created to test if the plugin system is working."
+
+
+
+# This line expands the "Basic Ships" shipyard to also include the Exemplar. If
+# instead you want to replace all the existing ships, the first line of your new
+# shipyard definition should be the keyword "clear".
+shipyard "Basic Ships"
+	“StarProtector”
