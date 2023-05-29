@@ -1,0 +1,208 @@
+mission "Temporal Keystone Offer"
+	outfitter
+	source
+		government "Hai"
+		not attributes "uninhabited"
+	to offer
+		"credits" > 30001
+		"random" > 50
+	on offer
+		conversation
+			`As you walk out of the outfitter, you notice a small group of Hai haggling over what seems to be an off-coloured quantum keystone. Want to see what the commotion is about?`
+			choice
+				`	Head over to investigate.`
+					goto argument
+				`	Not right now.`
+					defer
+					
+			label argument
+			`You walk over to the Hai and ask them what's wrong. A snappily dressed Hai, standing next to the stone, smiles at you. "Ah, nothing's the matter! Just a good few sticklers trying to drive my bargain down," He explains.`
+			`	One of the other Hai - likely trying to purchase the stone - looks up at you, "He wants 30,000 credits just because it's a different colour. Doesn't that seem unfair to you?" They ask.`
+			`	You ask the shopkeep why he's charging so much. He smiles a you, "It's very simple," He says, "These stones are rare, and far more special than a common keystone; they'll keep you happy and healthful into your twilight years."`
+			choice
+				`	"Thirty thousand credits seems a bit steep."`
+					goto price
+				`	"Would you be willing to sell one to a human?"`
+					goto purchase
+						
+			label price
+			`The shopkeep shakes his head, "I've cut the cost down as much as I can. They're not easy to find, you know; to think such a small difference could cost so much..." His tone is slightly disappointed, most likely in himself.`
+			`	"You seem honest enough. Would you sell to a human?" You ask.`
+				goto purchase
+			
+			label purchase
+			`His face immediately lights up when you say the word "sell". It seems some things are universal, beyond kind or language. "Well, of course! Any human is free to take one; your short lifespans could use all the help they can get," He says.`
+			`The other Hai looks at him, "If this human buys one, will you give us one for 25,000 credits?" They ask.`
+			`The shopkeeper flinches slightly, "I told you, I can't go lower than 30,000," He says firmly, before briefly turning to you, "I'll ensure the stone ends up on your ship; I'll also tell my business partners you're in the market for these special keystones. You should be able to find them in any outfitter.`
+				decline
+				
+	on decline
+		payment -30000
+		outfit "Temporal Keystone" 1
+		event "temporal keystone available"
+		
+event "temporal keystone available"
+	outfitter "Hai Basics"
+		"Temporal Keystone"
+	outfitter "Hai Intermediate"
+		"Temporal Keystone"
+	outfitter "Hai Intermediate"
+		"Temporal Keystone"
+	
+mission "Reveal Wormhole System"
+	invisible
+	landing
+	to offer
+		has "Coalition: First Contact: done"
+	on offer
+		event "Reveal Tattered Clock"
+		
+event "Reveal Tattered Clock"
+	system "Tattered Clock"
+		remove hidden
+		
+mission "First Contact: Ancient Saryds"
+	landing
+	source
+		government "Ancient Saryd"
+	on offer
+		conversation
+			`As you land, many dozens of Saryds cautiously approach your ship, eyeing with with what seems to be a mix of awe, skepticism, and curiousity. The Saryds here don't seem to be any different than the others, however, their clothing is different, and other styles such as hair seem to have changed as well.`
+			choice
+				`	"Can you refuel my ship?"`
+				`	"Where's all the bugs?"`
+				`	"Hello!"`
+			
+			`Your words are answered by puzzled looks, with only a couple Saryds stepping forward. One of them begins to speak in a language completely unfamiliar to you; an exaggerated tongue, accented with lots of huff-like noises.`
+			`	You and the Saryd who tried to speak stare blankly at one another for a long moment. Its expression is curious, but not discomforting.`
+			choice
+				`	Offer your hand for a handshake.`
+					goto handshake
+				`	Bow respectfully.`
+					goto bow
+					
+			label handshake
+			`You offer your hand for a handshake in a slow, calm way. The Saryd stares at your outstretched hand for a moment, and a couple can be seen drawing what seem to be firearms behind them, but the crowd relaxes as the Saryd you're speaking to meets your hand with their own; they meet it not palm-to-palm, however, with their palm resting against the back of your hand.`
+			`	You give the Saryd's hand a little shake, trying to downplay how incorrect this feels, and smile at them. The Saryd returns the smile, turning and speaking in their loud, huffy language to a few dockworkers.`
+			`	They move towards the ship, and - with some help - begin the process of refuelling your ship.`
+				goto resolution
+				
+			label bow
+			`You bow respectfully to the Saryd, not maintaining eye contact, as is human custom. The Saryd seems puzzled, but simply nods to you, giving a small smile. You smile back, thankful that some gestures seem to have parity between you and these aliens.`
+			`	It then turns to a few of what seem to be dockworkers, and - with some help - they begin refuelling your ship.`
+				goto resolution
+			
+			label resolution
+			`With your ship refuelled, you give a small bow as thanks. The Saryd you've been interacting with says something to you, gesturing to the many lots with parked ships and outfits under large tents. It seems you're welcome to browse, and perhaps even buy what's available here.`
+			`	Perhaps the Saryds in the Coalition might know how to communicate with these free-roamers. Your best bet is likely their homeworld, Saros.`
+				decline
+		
+mission "Saryd Translator"
+	landing
+	source Saros
+	destination "Old Saros"
+	passengers 1
+	to offer
+		has "First Contact: Ancient Saryds: declined"
+	on offer
+		conversation
+			`You're on Saros. Would you like to attempt to look for a translator for the free-roaming Saryds?`
+			choice
+				`	Yes.`
+					goto begin
+				`	Not right now.`
+					defer
+					
+			label begin
+			`You begin asking around for some help with translating Saryd language; eventually, you're told about a college that apparently specializes in language archival, so you head there.`
+			`	Once you enter the college, several Saryds come to greet you. Out of the ten or so in the group, all but one of them have translators; one speaks up, "What are you here for, human? It is not often we get visitors, nevermind of your sort," They ask, in a notably more fluent strain of english than you're used to.`
+			choice
+				`	"I need someone who can speak Saryd."`
+					goto saryd
+				`	"Do you have a translator I could speak to?"`
+					goto translator
+					
+			label translator
+			`The Saryds all nod collectively, "Our collegiate's specialty is translating. What language is of your needingness?" One asks, before giving a slightly irked look, harshly tapping their translator a few times. Seems their translators are still a work in progress.`
+			`	You explain you need someone who can speak the Saryd language.`
+				goto saryd
+					
+			label saryd
+			`"Many Saryd speakers are here," The Saryd says, "Is there a certain dialect that you are looking at?" They ask.`
+			choice
+				`	"There's a group of Saryds that sound very huffy."`
+					goto huffy
+				`	"There are Saryds that don't seem to speak your version of Saryd, are there others?"`
+					goto others
+					
+			label huffy
+			`The group of Saryds share some odd looks, then turn to you, "That sounds like marvelously old Saryd tongue. It has been long since our lips huffed and puffed much in speech; most of us do not research it regularly," The one says, "Go speak with Chaperone Omaba; she knows much of ancient tongues."`
+			`	You nod, thanking them for the help as they direct you down the hallway.`
+				goto omaba
+			
+			label others
+			`The Saryds stare at you as if you're crazy, then they share the same confused look with eachother, as if they're all trying figure out what exactly your inquiry means.`
+			`	"It is true that Saryd tongue has evolved over many times, but all of Saryds have been together forever," The Saryd says.`
+			`	Another Saryd perks up, "Go speak with Chaperone Omaba; she is very wise to the unmore common tongues of our kind," He says, before giving his translator an annoyed slap.`
+				goto omaba
+				
+			label omaba
+			`You approach the office, knocking quietly on the doorframe. A Saryd turns to face you; she's not notably taller than most Saryds, but she's markedly on the heavy side, and has evidence of some aging. Despite not having a translator on her person, she begins speaking to you in english, "Greetings, human," She says with a soft smile, "To what do I owe the pleasure of such an unusual visitor?"`
+			choice
+				`	"How do you know english?"`
+					goto english
+				`	"I'm looking for someone who can translate Saryd."`
+					goto saryd2
+			
+			label english
+			`The Saryd chuckles softly, "If machines can learn your language, why not myself?" She asks, "I'm a language professor, it is my duty to know as many tongues as I can," She says, "Now, how may I help you?" She asks.`
+			choice
+				`	"I'm looking for Chaperone Omaba."`
+					goto introduction
+				`	"I'm looking for someone who can translate Saryd."`
+					goto saryd2
+						
+			label introduction
+			`"I am Professor Omaba; the translators have troubles with the many similar words in your language. For what am I being called upon by our most interesting of visitors?" She asks.`
+			`	"I need someone who can translate Saryd," You explain.`
+				goto conclusion
+				
+			label saryd2
+			`	"Well," She huffs, "There's no need to be so rushed. I am Professor Omaba; what is your name?" She asks.`
+			`	"I'm <first> <last>," You introduce yourself.`
+			`	Omaba smiles, "Now, isn't that much better? So, what did you need help with?" She asks.`
+			`	"I need someone who can translate Saryd," You explain.`
+				goto conclusion
+			
+			label conclusion
+			`	Omaba smiles, "Well, if you came to me, it's not just your standard Saryd you need translated... Hm. Allow me to give you some samples," She says. She begins saying some things in different dialects, until eventually speaking in a very huffy dialect, somewhat similar to the language used by the Saryds through the wormhole.`
+			`	"That's the one," You say, "Or, close to it."`
+			`	"You met Saryds who use old tongue?" She asks, in some disbelief, "The only others I know who speak such language are my fellow professors..." She says, "Very well. As this is a very rare occurence, and I'm working on my own studies... You will bring me to these Saryds. In exchange, I will do my best to translate for you," She says.`
+			`	You think over the offer for a moment, before she interrupts you, already grabbing a few spare translators from a box beside her desk. "That was not a request, it was a statement. Prepare your ship; I'm used to travelling light," She states.`
+			`	You just nod, preparing to make accomodation for her in your ship.`
+				accept
+			
+	on complete
+		set "license: Ancient Saryd"
+		set "language: Old Saryd"
+		log "People" "Omaba" `A proud and somewhat demanding Saryd Linguistics Professor. She was instrumental in allowing you to make proper contact with the Ancient Saryds, and configured the translation device that permits you to speak with them.`
+		log "Minor People" "Vatir" `An Ancient Saryd who works as the head of a refuelling team on Ancient Saros. Gifted you with the token that permits you to purchase their fighters and trainships.`
+		log "Factions" "Ancient Saryds" `A faction of Saryds who seem to be either stuck or reverted back to the early days of their spaceflight, back when they still relied heavily on steam for power. Their mighty "trainships" are impressive in scope, but even compared to human ships, they are surprisingly clunky and frail.`
+		event "ancient saryd part 1 break" 30
+		conversation
+			`As you land on the planet, several Saryds approach your ship, once again looking on in somesort of nervous awe. You and Omaba make your way out of the ship, coming face to face with a small group of Saryds.`
+			`	They begin saying something to Omaba in old Saryd, and even Omaba seems slightly caught off-guard by just how flamboyant their speech pattern is. By contrast, her own speech seems extremely restrained. However, she is able to begin speaking, fiddling with a translator all the while.`
+			`	Eventually, human language begins coming through the box; however, it is in standard coalition translated english, not the fluent english used by the college.`
+			`	"...That small box, what is?" The other Saryd asks, just as caught off-guard as you when the box starts translating.`
+			`	"A translator, it is," Omaba answers, the device translating her own dialect of the language, "Understand our tongue alone, my human friend cannot. Allow them to understand, this machine does."`
+			`	Omaba hands the translator to you before the other Saryd continues the conversation, "Human friend, greetings to you," They say, respectfully nodding to you, "Welcome you both, we wish to. Been ages since we've had visitors, it has," They add.`
+			`	Omaba then looks at them, "Get out here, how did you?" She asks the Saryd.`
+			`	The Saryd blinks, "Left, we never have. Home planet Saros, this is," They explain.`
+			`	Omaba and you both share a confused look. "We had to traverse a wormhole to get here, how is this Saros?" You ask.`
+			`	The Saryd pauses, "Magic, it sounds you speak of. Just discovered travel to other stars, we have," They express, "But Saros, this is. Home to all Saryds... But for Omaba, not."`
+			`	The three of you share puzzled looks, and continue to attempt to reason with each other for several minutes, making no significant headway.`
+			``
+			`	"I am going to stay here for the time being," Omaba says, "There is too much to see and learn in this odd part of Saryd space... Come visit me here on this planet in some time," She says.`
+			`	The other Saryd, who has long-since introduced himself as Vatir, produces a large coin made of intricately burnt and varnished wood, "To the others, show this," He says, "To purchase our ships and use our turntables, it will allow you."`
+			
+event "ancient saryd part 1 break"

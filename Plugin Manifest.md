@@ -349,6 +349,16 @@ Adds a torpedo and launcher to the game.
 
 Unknown
 
+## Ancient Saryds
+
+**Created by Zoura**
+
+This is a plugin that adds a historic sect of the Saryd species, divorced from the Coalition and the Heliarchs that govern it. Discover their steam engines and great "Trainships" in this somewhat story-driven plugin.
+
+**Status**
+
+Playable on 0.10.0 Continuous
+
 ## Animated Ships
 
 **Created by beccabunny**
@@ -862,11 +872,11 @@ Unknown
 
 ## Cobbled Ships
 
-[Cobbled Ships](https://github.com/AvianGeneticist/CobbleShipModES)
-
 **Created by Zoura**
 
 Add several new ships.
+
+[Cobbled Ships](https://github.com/AvianGeneticist/CobbleShipModES)
 
 **Status**
 
@@ -1774,6 +1784,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Add new unique outfits for each human governments (FW, Navy, Syndicate).
 
+[Human Space Overhaul](https://github.com/AvianGeneticist/Human-Space-Overhaul)
+
 **Status**
 
 Playable on 0.9.15/0.9.16/Continuous.
@@ -2188,15 +2200,29 @@ Nonfunctional
 
 ## Maurader Corvette
 
+## Mech Summoner
+
+**Created by Zoura**
+
+A plugin that aims to add self-maintaining allies to endless sky.
+
+**Status**
+
+Playable on 0.10.0/Continuous.
+
 ## Mega Bactrian
 
 **Created by mdsmestad**
+
+Add Mega Bactrian ship.
 
 ## Mega Freight
 
 **Created by 1010Todd**
 
 Add various ships to human space.
+
+[Mega Freight](https://github.com/1010todd/Mega-Freight)
 
 **Status**
 
@@ -2226,6 +2252,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 ## Mercury
 
 ## Mereti
+
+Allow Mereti ships to be purchased after they become friendly.
 
 ## Mess
 
