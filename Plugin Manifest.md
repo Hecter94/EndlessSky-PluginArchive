@@ -303,6 +303,16 @@ Adds a new ship.
 
 Should work
 
+## Amphibious-Ships
+
+**Created by Zoura**
+
+Adds sea-to-space ships to Endless Sky.
+
+**Status**
+
+Playable on 0.10.0/Continuous
+
 ## Androids Rebalanced
 
 **Created by czartrak**
