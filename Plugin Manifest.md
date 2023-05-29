@@ -309,6 +309,8 @@ Should work
 
 Adds sea-to-space ships to Endless Sky.
 
+[Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)
+
 **Status**
 
 Playable on 0.10.0/Continuous
@@ -729,9 +731,12 @@ Unknown
 
 ## Bulkheads-and-Battleships
 
+
 **Created by Zoura**
 
 Turn Endless Sky into DnD-style RPG
+
+[Bulkheads-and-Battleships](https://github.com/AvianGeneticist/Bulkheads-and-Battleships)
 
 **Status**
 
@@ -856,6 +861,8 @@ Total conversion mod, will likely function but is outdated, expect issues.
 Unknown
 
 ## Cobbled Ships
+
+[Cobbled Ships](https://github.com/AvianGeneticist/CobbleShipModES)
 
 **Created by Zoura**
 
@@ -2544,6 +2551,8 @@ Playable on 0.9.14, 0.9.15 Continuous.
 
 Kor Sestor alternate start.
 
+[Play As Sestor](https://github.com/AvianGeneticist/Play-As-Sestor)
+
 **Status**
 
 Playable on 0.9.15/0.9.16.
@@ -2635,6 +2644,8 @@ Playable on 0.9.15 Continuous.
 **Created by Zoura**
 
 Add Quaernan, a human worldship from alternate universe along with its complement.
+
+[QuaernanHardpointsCarries](https://github.com/AvianGeneticist/QuaernanHardpointsCarries)
 
 **Status**
 
@@ -2745,6 +2756,18 @@ Salvaging proof of concept.
 **Created by Darcy Manoel**
 
 Add a few ships across a few races. Add a new race Irm. Renamed and updated to AES Misc
+
+## Sestor Expansion
+
+[Sestor Expansion](https://github.com/AvianGeneticist/Sestor-Expansion)
+
+**Created by Zoura**
+
+Greatly increases the variety in Kor Sestor ships and fleets.'
+
+**Status**
+
+Playable on 0.9.16
 
 ## Sci-Fi Flavours
 

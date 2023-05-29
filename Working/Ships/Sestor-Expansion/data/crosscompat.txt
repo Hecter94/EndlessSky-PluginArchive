@@ -1,0 +1,203 @@
+# For use with Play as Sestor. Unlocks upgraded ships associated with PAS's research.
+
+mission "Fighter Hull Adaptation"
+	description "Adds the upgraded Pai Lek 36 to Sestor Shipyards."
+	landing
+	invisible
+	to offer
+		has "event: sestor fighter research concluded"
+	on offer
+		event "crosscompat fighter research"
+		
+event "crosscompat fighter research"
+	shipyard "Sestor Basics"
+		add "Uplifted Pai Lek 36"
+	fleet "Small Kor Sestor"
+		add variant 4
+			"Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 5
+		add variant 3
+			"Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 5
+			"Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 10
+	fleet "Large Kor Sestor"
+		add variant 3
+			"Kar Ik Vot 349 (Offense)"
+			"Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 5
+			"Met Par Tek 53"
+			"Met Par Tek 53 (Sniper)"
+			
+mission "Light Warship Hull Adaptation"
+	description "Adds the upgraded Pai Osk 45 to Sestor Shipyards."
+	landing
+	invisible
+	to offer
+		has "event: sestor light warship research concluded"
+	on offer
+		event "crosscompat light warship research"
+		
+event "crosscompat light warship research"
+	shipyard "Sestor Basics"
+		add "Uplifted Pai Osk 45"
+	fleet "Large Kor Sestor"
+		add variant 4
+			"Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 6
+		add variant 3
+			"Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 6
+			"Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 7
+		add variant 4
+			"Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 7
+			"Tek Far 78 - Osk"
+			"Uplifted Far Osk 27" 9
+			"Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 10
+
+mission "Heavy Carrier Hull Adaptation"
+	description "Adds the upgraded Tek Far 87 - Lek to Sestor Shipyards."
+	landing
+	invisible
+	to offer
+		has "event: sestor heavy carrier research concluded"
+	on offer
+		event "crosscompat heavy carrier research"
+		
+event "crosscompat heavy carrier research"
+	shipyard "Sestor Advanced"
+		add "Uplifted Tek Far 87 - Lek"
+	fleet "Small Kor Sestor"
+		add variant 4
+			"Uplifted Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 10
+		add variant 3
+			"Uplifted Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 10
+			"Uplifted Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 16
+	fleet "Large Kor Sestor"
+		add variant 4
+			"Uplifted Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 10
+			"Uplifted Tek Far 78 - Osk"
+			"Uplifted Far Osk 27" 14
+			"Uplifted Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 16
+
+# These missions are really crappy and janky, but it's the only way I know to effectively "update" a player's save whenever I add new ships. Sorry folks.
+			
+mission "Heavy Carrier Hull Patch - TF98"
+	description "Adds the upgraded Tek Far 98 - Osk to Sestor Shipyards."
+	landing
+	invisible
+	to offer
+		has "event: crosscompat heavy carrier research"
+	on offer
+		event "crosscompat tf98 research"
+		
+event "crosscompat tf98 research"
+	shipyard "Sestor Advanced"
+		add "Uplifted Tek Far 98 - Osk"
+	fleet "Large Kor Sestor"
+		add variant 4
+			"Uplifted Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 8
+		add variant 4
+			"Uplifted Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 8
+			"Uplifted Tek Far 78 - Osk"
+			"Uplifted Far Osk 27" 14
+		add variant 3
+			"Uplifted Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 8
+			"Uplifted Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 10
+		add variant 2
+			"Uplifted Tek Far 98 - Osk"
+			"Uplifted Pai Osk 45" 9
+			"Uplifted Tek Far 87 - Lek"
+			"Uplifted Pai Lek 36" 10
+			"Uplifted Tek Far 78 - Osk"
+			"Uplifted Far Osk 27" 14
+			"Uplifted Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 16
+
+# There's no superheavies or logistics ships in vanilla so the expansion research is added here instead.
+
+mission "Ship Research - Heavy Logistics Hulls"
+	description "Start a 45 million credit research initiative to improve Sestor Heavy Logistics. Expected timespan is 100 days."
+	job
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 45000001
+		has "event: sestor light carrier research concluded"
+	on accept
+		payment -45000000
+		event "sestor heavy logistics research concluded" 100
+		
+event "sestor heavy logistics research concluded"
+	shipyard "Sestor Advanced"
+		add "Uplifted Set Ru Ket 112"
+	fleet "Small Kor Sestor"
+		add variant 4
+			"Uplifted Set Ru Ket 112"	
+		add variant 2
+			"Uplifted Set Ru Ket 112"
+			"Uplifted Tek Far 78 - Osk"
+			"Uplifted Far Osk 27" 14
+		add variant 2
+			"Uplifted Set Ru Ket 112"
+			"Uplifted Tek Far 71 - Lek"
+			"Uplifted Far Lek 14" 16
+	fleet "Large Kor Sestor"
+		add variant 2
+			"Uplifted Set Ru Ket 112" 2
+		add variant 2
+			"Uplifted Set Ru Ket 112"
+			"Uplifted Met Par Tek 53" 2
+		add variant 2
+			"Uplifted Set Ru Ket 112"
+			"Kar Ik Vot 349"
+	fleet "Kor Sestor Miner"
+		add variant 4
+			"Uplifted Set Ru Ket 112"
+		add variant 2
+			"Uplifted Set Ru Ket 112"
+			"Uplifted Met Par Tek 53"
+
+mission "Ship Research - Superheavy Hulls"
+	description "Start a 100 million credit research initiative to improve Sestor Superheavy Ships. Expected timespan is 200 days."
+	job
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 100000001
+		has "event: sestor heavy battleship research concluded"
+	on accept
+		payment -100000000
+		event "sestor superheavy ship research concluded" 200
+		
+event "sestor superheavy ship research concluded"
+	shipyard "Sestor Advanced"
+		add "Uplifted Tak Kor Pei 412"
+	fleet "Large Kor Sestor"
+		add variant 4
+			"Uplifted Tak Kor Pei 412"
+			"Uplifted Far Osk 27" 38
+		add variant 3
+			"Uplifted Tak Kor Pei 412"
+			"Uplifted Far Osk 27" 27
+		add variant 2
+			"Uplifted Tak Kor Pei 412"
+			"Uplifted Far Osk 27" 38
+			"Uplifted Kar Ik Vot 349"
+		add variant 1
+			"Uplifted Tak Kor Pei 412"
+			"Uplifted Far Osk 27" 38
+			"Uplifted Kar Ik Vot 349" 2
+			
