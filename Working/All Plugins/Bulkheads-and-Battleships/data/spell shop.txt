@@ -1,0 +1,74 @@
+mission "bnb spells 1"
+	landing
+	repeat
+	to offer
+		has "bnb game"
+		"outfit (flagship installed): Spell Token" >= 1
+	on fail
+		dialog `Remember to take off and land to get your upgrades!`
+	on offer
+		conversation
+			`You have unused spell tokens! Do you want to invest in a spell?`
+			choice
+				`	Yes.`
+					goto spelllist
+				`	Not right now.`
+					defer
+					
+			label spelllist
+			`What spell would you like?`
+			choice
+				`	(1 Token) Fireball I`
+					goto fireballI
+				`	(2 Tokens) Fireball II`
+					goto fireballII
+				`	(2 Tokens) Boltstrike I`
+					goto boltstrikeI
+				`	Nevermind.`
+					defer
+			
+			label fireballI
+			branch "learnFBI" "failspelllearn"
+				"outfit (flagship installed): Spell Token" >= 1
+				"outfit (flagship installed): Fireball I" == 0
+				"outfit (flagship installed): Fireball II" == 0
+			
+			label learnFBI
+			action
+				outfit "Fireball I"
+				outfit "Spell Token" -1
+			`You have learned Fireball I.`
+				goto finish
+				
+			label fireballII
+			branch "learnFBII" "failspelllearn"
+				"outfit (flagship installed): Spell Token" >= 2
+				"outfit (flagship installed): Fireball I" == 1
+				"outfit (flagship installed): Fireball II" == 0
+			
+			label learnFBII
+			action
+				outfit "Fireball I" -1
+				outfit "Fireball II"
+				outfit "Spell Token" -2
+			`You have learned Fireball II.`
+				goto finish
+				
+			label boltstrikeI
+			branch "learnBSI" "failspelllearn"
+				"outfit (flagship installed): Spell Token" >= 2
+				"outfit (flagship installed): Boltstrike I" == 0
+			
+			label learnBSI
+			action
+				outfit "Boltstrike I"
+				outfit "Spell Token" -2
+			`You have learned Fireball I.`
+				goto finish
+				
+			label failspelllearn
+			`You've either already learned this spell, lack its prerequisite, or don't have enough spell tokens.`
+				goto spelllist
+				
+			label finish
+				defer

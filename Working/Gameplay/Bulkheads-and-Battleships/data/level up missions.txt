@@ -1,0 +1,54 @@
+mission "bnb core level"
+	landing
+	name "Level Up"
+	description "You've leveled up!"
+	repeat 29
+	to offer
+		has "bnb game"
+		"combat rating" > "bnb level threshhold"
+	on fail
+		dialog `Remember to take off and land to get your upgrades!`
+	on offer
+		conversation
+			`You've leveled up! How do you want to invest your new level?`
+			choice
+				`	Invest in the Berserker class. (Berserker Level: <berserker level>)`
+					goto berserker
+				`	Invest in the Hunter class. (Hunter Level: <hunter level>)`
+					goto hunter
+				`	Invest in the Caster class. (Caster Level: <caster level>)`
+					goto caster
+				`	Invest in the Necromancer class. (Necromancer Level: <necromancer level>)`
+					goto necromancer
+				`	I don't.`
+					defer
+					
+			label berserker
+			action
+				"berserker level" += 1
+			`You've invested another point into the Berserker class.`
+				goto finish
+				
+			label hunter
+			action
+				"hunter level" += 1
+			`You've invested another point into the Hunter class.`
+				goto finish
+			
+			label caster
+			action
+				"caster level" += 1
+			`You've invested another point into the Caster class.`
+				goto finish
+				
+			label necromancer
+			action
+				"necromancer level" += 1
+			`You've invested another point into the Necromancer class.`
+				goto finish
+				
+			label finish
+			action
+				"bnb level threshhold" *= 2.4
+				outfit "Base HP"
+				fail

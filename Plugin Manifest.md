@@ -717,6 +717,16 @@ Adds a storyline where you can become a bounty hunter.
 
 Unknown
 
+## Bulkheads-and-Battleships
+
+**Created by Zoura**
+
+Turn Endless Sky into DnD-style RPG
+
+**Status**
+
+Playable on 0.10.0/Continuous
+
 ## Burst Anti-Missile
 
 **Created by mdsmestad**
