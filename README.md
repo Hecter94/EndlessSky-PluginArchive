@@ -2532,7 +2532,7 @@ Status: N/A
 ### Fallen
 
 
-[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fallen/)  
+[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fallen/)  
 Author: Michael Feather | N/A[]()  
 Category: Overhauls  
 
@@ -7778,9 +7778,9 @@ Status: N/A
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -7794,9 +7794,9 @@ Status: N/A
 ### Ancient Saryds
 
 
-[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
+[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | 3.76 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -7826,9 +7826,9 @@ Status: REQUIRES PR #7348. Either wait for it to be merged or use ESLauncher2 to
 ### Bulkheads-and-Battleships
 
 
-[Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bulkheads-and-Battleships/)  
+[Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | 41.28 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bulkheads-and-Battleships/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -7988,9 +7988,9 @@ Status: N/A
 ### Kor-Fighter-Additions
 
 
-[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -8021,9 +8021,9 @@ Status: Compatible with ES 0.9.14
 ### MechSummoner
 
 
-[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MechSummoner/)  
+[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 477.01 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MechSummoner/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -8102,9 +8102,9 @@ Status: Playable on 0.9.15/0.9.16.
 ### Sestor-Expansion
 
 
-[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
+[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | 768.37 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -8191,9 +8191,9 @@ Status: story
 ### StarProtector-Endless-Sky
 
 
-[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
+[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | 411.38 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
