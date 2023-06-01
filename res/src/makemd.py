@@ -112,7 +112,7 @@ for entry in entries:
 		with open(listfolder + entry + ".txt", "r") as file1:
 			cat = file1.readline()
 			cat = file1.readline()
-			cat = file1.readline()
+			# cat = file1.readline()
 			cat = file1.readline().split("=")[1].replace("\n", "")
 			if cat == "cheats":
 				cheats += 1
@@ -201,7 +201,7 @@ with open(indexfile, "w") as file1:
 				pluginnameurl = pluginname.replace(" ", "%20")
 				author = description[2][7:] 
 				website = description[3][8:] 
-				directlink = description[4][11:]
+				# directlink = description[4][11:]
 				status = description[6][7:]
 				for x in range(0, 7):
 					description.pop(0)
