@@ -4,7 +4,7 @@ from datetime import datetime
 import PIL
 from PIL import Image
 
-iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = ""
+iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = ""
 allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
 categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
 plist = []
@@ -85,6 +85,8 @@ def replacevarp(string):
 	string = string.replace("%author%", author)
 	string = string.replace("%webroot%", webroot)
 	string = string.replace("%indexfile%", indexfile)
+	string = string.replace("%news%", news)
+	
 	if website == "N/A": # for prevent [N/A](N/A) links
 		websitecheck = "N/A"
 		websitelink = ""
@@ -108,6 +110,7 @@ for entry in entries:
 	# if pluginlist file exists, read it
 	if os.path.exists(listfolder + entry + ".txt") == True:
 		with open(listfolder + entry + ".txt", "r") as file1:
+			cat = file1.readline()
 			cat = file1.readline()
 			cat = file1.readline()
 			cat = file1.readline().split("=")[1].replace("\n", "")
@@ -140,7 +143,7 @@ for entry in entries:
 		cat = "uncategorized"
 		# if no pluginlist file exists, create an empty one	
 		with open(listfolder + entry + ".txt" , "w") as file1:
-			file1.writelines("author=N/A\nwebsite=N/A\ncategory=N/A\nstatus=N/A\ndescription=N/A\n")
+			file1.writelines("author=N/A\nwebsite=N/A\ndirectlink=N/A\ncategory=N/A\nstatus=N/A\ndescription=N/A\n")
 		print(entry + ".txt CREATED! because plugin was there, but no listfile!")
 	with open(listfolder + entry + ".txt", "r") as file1:
 		text = file1.read()
@@ -158,6 +161,12 @@ tempplug = foot[pos + 50:] # set plugin string
 pos = temptempcat.find("%pluginhere%")
 tempcatup = temptempcat[:pos] # upper half of template category
 tempcatdown = temptempcat[pos +12:] # lower half of template string
+
+
+with open("res/news.txt", "r") as file1: # reading and formating lines
+	newslist = file1.readlines()
+for lines in newslist:
+	news =  news + lines + " \n"
 
 # writing the md file
 filerr = open("res/errorlog.txt", "w")
@@ -192,8 +201,9 @@ with open(indexfile, "w") as file1:
 				pluginnameurl = pluginname.replace(" ", "%20")
 				author = description[2][7:] 
 				website = description[3][8:] 
-				status = description[5][7:]
-				for x in range(1, 7):
+				directlink = description[4][11:]
+				status = description[6][7:]
+				for x in range(0, 7):
 					description.pop(0)
 				description[0] = description[0].replace("description=", "")
 				alllines = ""
@@ -204,16 +214,23 @@ with open(indexfile, "w") as file1:
 				if os.path.exists(pathtoplugins + pluginname + "/icon.png") == True: # check for icon.png, resize it, or hide it
 					im = Image.open(pathtoplugins + pluginname + "/icon.png")
 					w, h = im.size
+					iconpath = pathtoplugins + pluginname
+					iconpath = iconpath.replace("&", "%26")
+					iconpath = iconpath.replace("'", "%27")
+					iconpath = iconpath.replace("(", "%28")
+					iconpath = iconpath.replace(")", "%29")
+					iconpath = iconpath.replace(",", "%2C")
 					if h > w:
-						iconpng = "<img src='"+ pathtoplugins + pluginname + "/icon.png' height='100'></img><br>\n"
+						iconpng = "<img src='"+ iconpath + "/icon.png' height='100'></img><br>\n"
 					else:
-						iconpng = "<img src='"+ pathtoplugins + pluginname + "/icon.png' width='100'></img><br>\n"
+						iconpng = "<img src='"+ iconpath + "/icon.png' width='100'></img><br>\n"
 				else:
 					iconpng = ""
 				
 				# get last modified date from the assetfiles
 				withdots = pluginname.replace(" ", ".") 
-				withdots = withdots.replace("'", ".") 
+				withdots = withdots.replace("'", ".")
+				withdots = withdots.replace(",", ".") 
 				withdots = withdots.replace("(", ".") 
 				withdots = withdots.replace(")", ".") 
 				withdots = withdots.replace("&", ".") 
@@ -244,7 +261,6 @@ with open(indexfile, "w") as file1:
 						assetsize = assetsize / 1024
 						form = " mb"
 					size = str(round(assetsize, 2)) + form
-					print("requesting header " + assetfullpath + withdots + ".zip DONE")
 				assetfile =  withdots + ".zip"
 				file1.writelines(replacevarp(tempplug))
 		file1.writelines(tempcatdownt) # write lower category template
