@@ -31,7 +31,7 @@
 
 # Introduction
 
-A comprehensive library of 473 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 474 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -162,11 +162,11 @@ For Pull Requests... the folder structure has changed with this update. There ar
 
 # Plugin Download
 
-All Plugins (473)
+All Plugins (474)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (36) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (34) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (17) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (35)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (38) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (1) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (63)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (116) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (60) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (30)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (38) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (1) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (64)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (120) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (61) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (25)<br>
 
 
 
@@ -1945,7 +1945,7 @@ Status: N/A
 
 
 [Human.Space.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Space.Overhaul.zip) | 34.54 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Human%20Space%20Overhaul/)  
-Author: Zoura (AvianGeneticist) | N/A[]()  
+Author: Zoura (AvianGeneticist) | [https://github.com/AvianGeneticist/Human-Space-Overhaul](https://github.com/AvianGeneticist/Human-Space-Overhaul)  
 Category: Outfits  
 
 >Add new unique outfits for each human governments (FW, Navy, Syndicate).
@@ -2736,7 +2736,7 @@ Status: N/A
 ---
 
 ### ShieldsUp Derpy's Expansion
-<img src='Working/All Plugins/ShieldsUp Derpy's Expansion/icon.png' width='100'></img><br>
+<img src='Working/All Plugins/ShieldsUp Derpy%27s Expansion/icon.png' width='100'></img><br>
 
 
 [ShieldsUp.Derpy.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Derpy.s.Expansion.zip) | 266.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Derpy's%20Expansion/)  
@@ -3064,7 +3064,7 @@ Status: N/A
 
 ## Races
 
-<p>63 plugins in this category.<p>
+<p>64 plugins in this category.<p>
 
 <details>
 
@@ -3238,6 +3238,22 @@ Category: Races
 
 
 Status: abandoned  
+
+
+---
+
+### Ancient Saryds
+
+
+[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | 3.76 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
+Author: Zoura | N/A[]()  
+Category: Races  
+
+>This is a plugin that adds a historic sect of the Saryd species, divorced from the Coalition and the Heliarchs that govern it. Discover their steam engines and great "Trainships" in this somewhat story-driven plugin.
+>
+
+
+Status: Playable on 0.10.0 continuous  
 
 
 ---
@@ -4121,7 +4137,7 @@ Status: N/A
 
 ## Ships
 
-<p>116 plugins in this category.<p>
+<p>120 plugins in this category.<p>
 
 <details>
 
@@ -4141,6 +4157,22 @@ Category: Ships
 
 
 Status: should work  
+
+
+---
+
+### Amphibious-Ships
+
+
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)  
+Category: Ships  
+
+>Adds sea-to-space ships to Endless Sky.
+>
+
+
+Status: Playable on 0.10.0/Continuous  
 
 
 ---
@@ -4326,7 +4358,7 @@ Status: Should work
 
 
 [Cobbled.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cobbled.Ships.zip) | 4.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Cobbled%20Ships/)  
-Author: Zoura3025 | N/A[]()  
+Author: Zoura3025 | [https://github.com/AvianGeneticist/CobbleShipModES](https://github.com/AvianGeneticist/CobbleShipModES)  
 Category: Ships  
 
 >Add several new ships.
@@ -4813,6 +4845,22 @@ Status: N/A
 
 ---
 
+### Kor-Fighter-Additions
+
+
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
+Author: EjoThims | N/A[]()  
+Category: Ships  
+
+>Additional fighters for Korath Exiles.
+>
+
+
+Status: Playable on 0.10.0 continuous  
+
+
+---
+
 ### Lampyrid Start
 <img src='Working/All Plugins/Lampyrid Start/icon.png' width='100'></img><br>
 
@@ -5020,7 +5068,7 @@ Status: N/A
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>Adds mega Bactrian ship
 >
 
 
@@ -5034,7 +5082,7 @@ Status: N/A
 
 
 [Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 32.05 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mega%20Freight/)  
-Author: 1010todd | N/A[]()  
+Author: 1010todd | [https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight)  
 Category: Ships  
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
@@ -5365,7 +5413,7 @@ Status: Playable on 0.9.15 Continuous.
 
 
 [QuaernanHardpointsCarries.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanHardpointsCarries.zip) | 1.03 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/QuaernanHardpointsCarries/)  
-Author: Zoura3025 | N/A[]()  
+Author: Zoura3025 | [https://github.com/AvianGeneticist/QuaernanHardpointsCarries](https://github.com/AvianGeneticist/QuaernanHardpointsCarries)  
 Category: Ships  
 
 >Add Quaernan, a human worldship from alternate universe.
@@ -5617,6 +5665,22 @@ Status: N/A
 
 ---
 
+### Sestor-Expansion
+
+
+[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | 768.37 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Sestor-Expansion](https://github.com/AvianGeneticist/Sestor-Expansion)  
+Category: Ships  
+
+>Greatly increases the variety in Kor Sestor ships and fleets.
+>
+
+
+Status: Playable on 0.9.16  
+
+
+---
+
 ### Shadow's Expansion
 
 
@@ -5710,6 +5774,22 @@ Category: Ships
 
 
 Status: N/A  
+
+
+---
+
+### StarProtector-Endless-Sky
+
+
+[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | 411.38 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
+Author: BawSaqS | [https://github.com/BawSaqS/StarProtector-Endless-Sky](https://github.com/BawSaqS/StarProtector-Endless-Sky)  
+Category: Ships  
+
+>Add a ship called StrProtector.
+>
+
+
+Status: Playable on 0.9.16  
 
 
 ---
@@ -6032,7 +6112,7 @@ Status: N/A
 
 ## Story
 
-<p>60 plugins in this category.<p>
+<p>61 plugins in this category.<p>
 
 <details>
 
@@ -6771,7 +6851,7 @@ Status: N/A
 ### Smugglers, Corporations, and Other Thieves
 
 
-[Smugglers,.Corporations,.and.Other.Thieves.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Smugglers,.Corporations,.and.Other.Thieves.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Smugglers,%20Corporations,%20and%20Other%20Thieves/)  
+[Smugglers.Corporations.and.Other.Thieves.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Smugglers.Corporations.and.Other.Thieves.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Smugglers,%20Corporations,%20and%20Other%20Thieves/)  
 Author: pootthedestroyer | N/A[]()  
 Category: Story  
 
@@ -6780,6 +6860,28 @@ Category: Story
 
 
 Status: Playable on 0.9.14, 0.9.15 Continuous.  
+
+
+---
+
+### Space Shuttle Start
+<img src='Working/All Plugins/Space Shuttle Start/icon.png' height='100'></img><br>
+
+
+[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 488.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Shuttle%20Start/)  
+Author: MidnightPlugins | [https://github.com/MidnightPlugins/Space-Shuttle-Start/releases](https://github.com/MidnightPlugins/Space-Shuttle-Start/releases)  
+Category: Story  
+
+>Start in the Sol system with an old Earth relic for your ship.
+>
+>The space shuttle has no weapons, but lots of cargo space.
+>
+>It has an Afterburner.
+>
+>
+
+
+Status: N/A  
 
 
 ---
@@ -7732,7 +7834,7 @@ Status: N/A
 
 ## Uncategorized
 
-<p>30 plugins in this category.<p>
+<p>25 plugins in this category.<p>
 
 <details>
 
@@ -7775,38 +7877,6 @@ Status: N/A
 
 ---
 
-### Amphibious-Ships
-
-
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
-### Ancient Saryds
-
-
-[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | 3.76 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
 ### Arena of the worthy
 
 
@@ -7827,8 +7897,24 @@ Status: REQUIRES PR #7348. Either wait for it to be merged or use ESLauncher2 to
 
 
 [Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | 41.28 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bulkheads-and-Battleships/)  
-Author: N/A | N/A[]()  
+Author: Zoura | [https://github.com/AvianGeneticist/Bulkheads-and-Battleships](https://github.com/AvianGeneticist/Bulkheads-and-Battleships)  
 Category: N/A  
+
+>Turn Endless Sky into DnD-style RPG.
+>
+
+
+Status: Playable on 0.10.0 continuous  
+
+
+---
+
+### Custom Portraits
+
+
+[Custom.Portraits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Portraits.zip) | 2.75 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Custom%20Portraits/)  
+Author: N/A | N/A[]()  
+Category: Uncategorized  
 
 >N/A
 >
@@ -7985,22 +8071,6 @@ Status: N/A
 
 ---
 
-### Kor-Fighter-Additions
-
-
-[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
 ### Logbook Help
 <img src='Working/All Plugins/Logbook Help/icon.png' height='100'></img><br>
 
@@ -8022,14 +8092,14 @@ Status: Compatible with ES 0.9.14
 
 
 [MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 477.01 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MechSummoner/)  
-Author: N/A | N/A[]()  
+Author: Zoura | N/A[]()  
 Category: N/A  
 
->N/A
+>A plugin that aims to add self-maintaining allies to endless sky.
 >
 
 
-Status: N/A  
+Status: Playable on 0.10.0 continuous  
 
 
 ---
@@ -8086,7 +8156,7 @@ Status: N/A
 
 
 [Play.As.Sestor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Play.As.Sestor.zip) | 5.69 kb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Play%20As%20Sestor/)  
-Author: Zoura (AvianGeneticist) | N/A[]()  
+Author: Zoura (AvianGeneticist) | [https://github.com/AvianGeneticist/Play-As-Sestor](https://github.com/AvianGeneticist/Play-As-Sestor)  
 Category: N/A  
 
 >Play as Sestor does what it says on the tin! Start a new life (pilot) as a kiloton-rated metal death machine! Patrol space, amass a fleet, and conquer the galaxy!
@@ -8095,22 +8165,6 @@ Category: N/A
 
 
 Status: Playable on 0.9.15/0.9.16.  
-
-
----
-
-### Sestor-Expansion
-
-
-[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | 768.37 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
 
 
 ---
@@ -8133,7 +8187,7 @@ Status: N/A
 ---
 
 ### ShieldsUp Pompano's Ever Expanding Galaxy
-<img src='Working/All Plugins/ShieldsUp Pompano's Ever Expanding Galaxy/icon.png' height='100'></img><br>
+<img src='Working/All Plugins/ShieldsUp Pompano%27s Ever Expanding Galaxy/icon.png' height='100'></img><br>
 
 
 [ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip) | 1.41 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Pompano's%20Ever%20Expanding%20Galaxy/)  
@@ -8158,44 +8212,6 @@ Category: N/A
 
 >This is a plugin aiming to provide music for Endless Sky as well as remaster the audio to balance it.
 >
->
-
-
-Status: N/A  
-
-
----
-
-### Space Shuttle Start
-<img src='Working/All Plugins/Space Shuttle Start/icon.png' height='100'></img><br>
-
-
-[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 488.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Shuttle%20Start/)  
-Author: MidnightPlugins | [https://github.com/MidnightPlugins/Space-Shuttle-Start/releases](https://github.com/MidnightPlugins/Space-Shuttle-Start/releases)  
-Category: N/A  
-
->Start in the Sol system with an old Earth relic for your ship.
->
->The space shuttle has no weapons, but lots of cargo space.
->
->It has an Afterburner.
->
->
-
-
-Status: story  
-
-
----
-
-### StarProtector-Endless-Sky
-
-
-[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | 411.38 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
 >
 
 
