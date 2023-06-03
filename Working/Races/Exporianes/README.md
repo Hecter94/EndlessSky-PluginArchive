@@ -1,1 +1,0 @@
-Exporianes is a plugin for the space-trading game Endless-Sky. It adds a new race of T5 aliens to the Milky-Way galaxy. They can be reached after completing the Emerald Sword missions and having a combat rating of 13.
