@@ -1,0 +1,298 @@
+# Copyright (c) 2022 by pilover100
+#
+# Starlus Plugin is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Starlus Plugin is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+# First contact missions
+
+mission "Starlus All Groups [0]"
+	name "Unknown Species First Contact"
+	description "Find someone who can help you understand the new oceanic species you have met."
+	landing
+	source "Amnis Starlus Vita"
+	on offer
+		log `Found an odd species to the south of human space that live underwater, communicating with them is going to be interesting to say the least.`
+		conversation
+			`When you land on this world your ship detects multiple energy signatures floating in the oceans of <origin>. Do you investigate?`
+			choice
+				`	Naturally!`
+					goto land
+				`	Yes, but be armed just in case...`
+					goto armed
+				`	No, this looks pretty weird...`
+					depart
+			label armed
+			`	Deciding to be cautious you arm yourself before preparing to land.`
+			label land
+			`	Just as you were about to try locating a suitable place to land near one of the settlements below, you notice a small ship is hovering near by the <ship>. Evidently it wants you to follow it to where the locals want you to land.`
+			`	As you follow the mysterious craft down into the lower atmosphere, you notice that almost every settlement on <origin> is floating just below the surface of the ocean. You wonder how you're expected to land when you're presented with perhaps the largest sea-going structure you've ever seen.`
+			scene "scene/Starlus_city"
+			`	The ship that you were following hovers expectantly above a landing platform upon one of these giant rafts, cautiously you set down on the pad.`
+			choice
+				`	(Leave the <ship>)`
+					goto outside
+				`	(Leave the planet whilst you still can)`
+					depart
+				`	(Wait in the <ship>)`
+					goto wait
+			label wait
+			`	You wait in your ship for several minutes but no one approaches your ship.`
+			choice
+				`	(Leave the <ship>)`
+					goto outside
+				`	(Leave the planet whilst you still can)`
+					depart
+			label outside
+			`	As you step out of your ship, you notice that you've landed in water that is about waist deep. Given how all the settlements on this planet are in the oceans you suspect that life here is aquatic.`
+			choice
+				`	(Look around your ship)`
+					goto pad
+				`	(Explore the area)`
+			label area
+			`	As you prepare to explore the raft city you've landed upon and wade out away from your ship you notice several eel-like lifeforms approaching you under the water. As they come closer you notice the water vibrating above these aliens, they appear to be trying to speak to you.`
+				goto listen
+			label pad
+			`	As you wade around your ship you notice several eel-like lifeforms approaching you under the water. As they come closer you notice the water vibrating above these aliens, they appear to be trying to speak to you.`
+			label listen
+			choice
+				`	(Stick your head under the water)`
+				`	(Try and find an underwater mic and use that)`
+					goto mic
+			`	You stick your head under water and notice an odd tasting tang. But you have no time to worry about that as the aliens start speaking in earnest.`
+				goto speak
+			label mic
+			`	You eventually find an underwater mic in your ground kit and drop it into the water by your feet and place the headphones into your ears. The aliens immediately start speaking in earnest.`
+			label speak
+			`	One of the eels hums "Ips fah da Starlus, ouka iud lakx ois.", their language is quite unlike anything you've ever heard before.`
+			choice
+				`	"Greetings, my name is <first> <last>."`
+				`	"Hi, I'm Captain <first> <last> of the <ship>."`
+				`	"I'm here representing humanity, my name is <first>."`
+			`	Your choice of words is completely lost upon them but they seem to have made a good indication of hearing you even underwater. After a moment of thought you conclude that you need help to establish communication with them and try an communicate using gestures that you'll come back here in a short while when you will try and communicate with them.`
+			`	(Come back here after finding someone who is willing to help you)`
+				accept
+	to complete
+		never
+
+# Remnant String - because I want to get started with the main mission arc for the starlus this will be the only one for now until I write some others
+
+mission "Starlus Remnant [1]"
+	name "Prepare First Contact Team"
+	description "Head to <planet> in order to prepare a team to investigate the species you've found."
+	source
+		government "Remnant"
+		not planet "Viminal"
+	destination "Viminal"
+	to offer
+		has "Starlus All Groups [0]: active"
+	on offer
+		conversation
+			`Do you want to tell the Remnant about the new species you recently found south of human space?`
+			choice
+				`	(Yes)`
+				`	(No, not now)`
+					defer
+			`	You make your way the spaceport on <origin> to what appears to be an information desk and inform the person sat behind it about the new species you've found.`
+			branch sign
+				has "remnant: sign studies complete"
+			`	The attendant behind the desk chants her reply to you, "This discovery of yours is most certainly of interest to our communities, and whilst we may not be able to invest a large amount of resources to this venture we can almost certainly take steps to establish communication with this species."`
+				goto continue
+			label sign
+			`	The attendant behind the desk briskly signs her reply, "This discovery of yours is most certainly of interest to our communities, and whilst we may not be able to invest a large amount of resources to this venture we can almost certainly take steps to establish communication with this species."`
+			label continue
+			`	"I believe that Xeno-engineering prefect Taely on <planet> will be best qualified to help you and organize an expeditionary team, I will send a message to her to expect you." the attendant concludes.`
+			choice
+				`	"Ok, I'm on my way!"`
+					accept
+				`	"I'd rather not, sorry."`
+					decline
+	on accept
+		fail "Starlus All Groups [0]"
+
+mission "Starlus Remnant [2]"
+	name "Bring on the Remnant!"
+	description "Head to <planet> with the team of Remnant researchers to meet the new species you've found."
+	source "Viminal"
+	destination "Amnis Starlus Vita"
+	blocked "You need <bunks> of passenger and <tons> of cargo space to continue, return when you have space!"
+	cargo "Research Equipment" 25
+	passengers 15
+	to offer
+		has "Starlus Remnant [1]: done"
+	on offer
+		conversation
+			`As the <ship> settles on its pad you spot Taely walking up to your ship and head out to meet her.`
+			`	"I've heard you've found a new species that we might be interested in <first>?" she enquires`
+			choice
+				`	"Yes I have"`
+			`	"Excellent! This is definitely of great interest to us and I have assembled a team to meet them in their own environment on <planet>.", Taely continues.`
+			`	"Our Current plan is to visit these beings and attempt to create a dialog with them and compile a dictionary of their language so that we can talk with each other.`
+			`	"Once we've set up our research outpost though I'll need to come back here, our shipyards won't do well if I'm gone too long. Given that though, I'll definitely be interested in meeting these new aliens!" she trills.`
+			choice
+				`	"Sure, let's do this!"`
+					goto load_up
+				`	"Ok, tell your team to prepare for the trip."`
+					goto load_up
+				`	"Actually, I've go better things to do."`
+					decline
+			label load_up
+			`	"Excellent! We'll begin loading up immediately. Let the Embers guide your path <first>" Taely finishes.`
+				accept
+	on complete
+		conversation
+			`You land the <ship> at the same aquatic mega-city you landed the first time you visited <planet> and the Remnant prepare to disembark.`
+			`	"Any advice before we first meet these people <first>?" ask Taely.`
+			choice
+				`	"Just watch your step, you don't want to tread on one"`
+					goto tread
+				`	"Make sure you've got some good underwater equipment"`
+					goto kit
+				`	"No not really, good luck!"`
+			`	"Ok, meet us outside in the spaceport when you're ready and we'll get started" signs Taely.`
+				decline
+			label tread
+			`	"No, we certainly wouldn't want that would we?", Taely signs amusingly, "I suppose we should be should be careful, we don't want to have come to start a war here."`
+				goto end
+			label kit
+			`	"Yes, our underwater mics will be invaluable here, given what you've told us about this species they'll be essential to any communication here." Taely signs.`
+				goto end
+			label end
+			`	"Well I suppose we better get a move on and try communicating with them, meet us outside in the spaceport when you're ready." finishes Taley.`
+	on visit
+		dialog "You've arrived at <planet> but you've left some of your passengers or cargo behind! You better depart and wait for them to arrive."
+
+mission "Starlus Remnant [3]"
+	name "Supply Run to <origin>"
+	description "Head to <planet> to return Taley to the ship yards and to pick up supplies for the Remnant outpost on <origin>."
+	source "Amnis Starlus Vita"
+	destination "Viminal"
+	passengers 1
+	to offer
+		has "Starlus Remnant [2]: done"
+	on offer
+		conversation
+			`"Ready to start our official first contact <first>?" signs Taley.`
+			choice
+				`	"Ready and raring to go!"`
+					goto start
+				`	"Give me a moment I've got something to do."`
+					defer
+			label start
+			`	"Excellent! We'll get started right away, can you please lead us to where you interacted with them last?" Taely replies.`
+			`	You show Taely and her team to the point where you first met the new species, it doesn't take long for a few of the eel like aliens to arrive ready to talk to you. You quickly drop your mic into the water so that you can all hear what is being said.`
+			`	"Ips fah da Starlus, ouka iud lakx hre ois." one eel hums cryptically`
+			`	"Ips da Starlus ji iud ouka pio ois msd" it continues, you have no idea what it's saying but they seem to be welcoming and ready to try interacting with you and the Remnant.`
+			choice
+				`	(Work with the Remnant to start understanding them)`
+			`	After several hours the sweltering heat of this planet starts dying down as the sun sets and you and the team of Remnant are still hard at work building a dialog with these aliens when Taley pulls you aside.`
+			`	"<first>, as much as it has been enjoyable to interact with these aliens I need to be getting back to our shipyards on <planet>. Additionally the team will need further supplies that you'll need to pick up as well."`
+			choice
+				`	"Of course. Have you learnt much about these aliens yet?"`
+					goto starlus
+				`	"Of course, we can depart immediately."`
+					goto leave
+			label starlus
+			`	"We haven't learnt much yet, but from what we've gathered we know that they are organic in nature and rely upon an oxygen supply just like we do." Taely replies, " These oceans are saturated with oxygen and other organic molecules, it's possible that these organic molecules are these eel's food supply. Other than that we've only just got started with their language really. It'll be a while before we fully understand even fairly basic phrases but by the time you get back we should have managed to develop a dialog."`
+			label leave
+			`	"Of course, we ought to get going. The shipyards can't go too long without expert guidance. lead the way <first>."`
+				accept
+
+mission "Starlus Remnant [4]"
+	name "Supply Run to <planet>"
+	description "Head to <planet> to drop off the supplies you've picked up and see how the Remnant are doing."
+	landing
+	source "Viminal"
+	destination "Amnis Starlus Vita"
+	cargo "Outpost Supplies" 25
+	to offer
+		has "Starlus Remnant [3]: done"
+	on offer
+		conversation
+			`As you pilot the <ship> on approach Taley appears on bridge beside you.`
+			`	"Hello <first>, I've just received word that the <tons> of supplies that we need are ready for you to take back to <planet>. I also have heard from the research outpost that they believe that they are making excellent progress!" Taley signs.`
+			choice
+				`	"That's great! When do I leave?"`
+					goto eager
+				`	"Got anything of note?"`
+					goto details
+				`	"I'm not sure I want to do this anymore."`
+					decline
+			label details
+			`	"Well they have managed to establish a basic dialogue and 2 way verbal communication.", she says, "Whilst it is not much it is enough that we can start to rapidly develop our understanding of their language, and them ours."`
+			`	"Ok, well I better prep the <ship> for departure", you say.`
+			label eager
+			`	"You may leave when ready then Captain <first>, may the Embers guide your path." says Taley as she leaves for the shipyards once more.`
+				accept
+	on visit
+		dialog
+			`You have reached <planet>, but your escorts carrying the supplies haven't got here yet! Launch back into orbit and wait for them to arrive.`
+	on complete
+		event "label starlus space"
+		conversation
+			`"Greetings Captain" signs the lead researcher, "We see that you have bought us the supplies that we have requested to maintain long term operations here until we manage our own routine logistics route, in return would you like to look at anything in particular in our progress with the Starlus?"`
+			`	"Wait, 'Starlus'?" you ask.`
+			`	"Yes, that is always how they refer to themselves, either as a species or their government so we thought it apt and polite to use it when we refer to them.`
+			`	"Is there anything else you'd like to know?"`
+			choice
+				`	"Not really, no."`
+					goto skip
+				`	"I'd like to know more about their technology"`
+					goto tech
+				`	"Tell me more about their society."`
+					goto social
+				` "Tell me more about their species."`
+					goto form
+			label askAgain
+			`	"Then please ask it." she signs`
+			label infoLoop
+			choice
+				`	"I'd like to know more about their technology"`
+					goto tech
+				`	"Tell me more about their society."`
+					goto social
+				` "Tell me more about their species."`
+					goto form
+				`	"That's enough detail for me."`
+					goto overview
+			label tech
+			`	She begins her reply rather excitedly, "Well their technology is, on the whole, not particularly advanced in most areas. That being said though, our scans indicate they do have relatively advanced long range weapons and massive ships capable of withstanding almost anything the natural environment can throw at them.`
+			`	"They also have mastered the art of creating productive semi-aquatic planet-side facilities."`
+			`	"What do you mean by 'semi-aquatic'?" you ask.`
+			`	"Well producing large space ships is difficult in viscous fluids, even many of our own, more specialized components have to created in a near vacuum to achieve perfect results. Producing these components underwater is even more difficult, so their structures have to have their shipyards as massive areas which have been drained of any water before production can commence.", she explains, "Their tour of their city has been rather illuminating in regards to their technological progress."`
+				goto infoLoop
+			label social
+			`	She briskly signs her reply, "Their society is remarkable, the form of government they appear to follow is a technocracy, not too dissimilar to our own form of governance in fact.`
+			`	"The individuals who run various 'projects' or departments, are randomly drawn specialists in their fields who may manage their work for just a few months at a time, before reporting to their 'specialism board'. These boards are comprised of their peers who then deliberate the best course of action and report to the government board who represent the best interests of their species as a whole."`
+			`	"Fascinating" you respond.`
+			`	"Indeed, and their form of governance is remarkably stable and has been around from around the 17th century by our estimates."`
+				goto infoLoop
+			label form
+			`	She thinks for a moment then briskly signs her reply, "Well, that is perhaps the biggest mystery we have. Whilst their manipulation skills are sufficient to develop technology that is about as advanced as humanity's, they are remarkable uninterested in medical applications of any technology."`
+			`	"How so?" you ask.`
+			`	"We current theory is that it is to do with their habitat. Here food is plentiful so there is little competition for resources and as a result they have thrived here. This combined with their naturally long lifespan means that from a group perspective, most individuals are relatively replaceable. This combined with low rates of infection and disease means that they haven't had much need to learn about their anatomy.`
+			`	"However, from our observations, we have deduced that they are filter feeders with a relatively simple internal structure compared to humans. They are comprised of an external exo-skeleton and rely on constant filter feeding to allow nutrients to enter their bodies and waste to leave."`
+				goto infoLoop
+			label skip
+			`	"Ok, I will just give you a brief overview of our progress then, is that alright?"`
+			choice
+				`	"Yes"`
+					goto overview
+				`	"Actually I have a question."`
+					goto askAgain
+			label overview
+			`	"Very well" she says, "We have learnt a good deal about their language and we have managed to start compiling a dictionary of their 'words' and an understanding of their syntax. As such, we have made several translators that can pick-up and learn more of their language with exposure and can be updated to expand their databases of words we know"`
+			`	"That is good news, anything else you need from me?" you ask.`
+			`	"Not for the time being, but you should take one of the translators and learn more of their culture, after all, you were the one who found them."`
+			`	You thank the researcher for her time and take one of the translators, now that you can talk to them directly you should be able to learn more about their culture.`
+			action
+				set "language: Starlus"  # This opens up the start of the starlus mission chain proper where the player cuts out the remnant and talks to them direct
+				log "Species" "Starlus" "A group of aquatic eels run by a technocratic government."
+
+event "label starlus space"
+	galaxy "label starlus"
+		sprite "label/starlus"
