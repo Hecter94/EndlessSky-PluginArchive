@@ -1,5 +1,5 @@
 
-name: Zip Release Readme
+name: on push in working dir 
 on:
   push:
     paths:
@@ -61,7 +61,16 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           updateOnlyUnreleased: false
-          artifacts: "*.zip"
+          artifacts: "*.zip"      
+      - name: delete zips in root
+        run: |
+          import os
+          import glob
+          listing = glob.glob('*.zip')
+          for entry in listing:
+            os.remove(entry)
+            print("removed: " + entry)
+        shell: python
       - name: Install beautifulsoup4 and Pillow
         run: |
           python3 -m pip install bs4
