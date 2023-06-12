@@ -1,0 +1,62 @@
+name: Automatic check updated plugins
+on: 
+  schedule: 
+    - cron: '30 3 * * *' 
+    # runs at 03:30 am utc every day
+    # minute(0-59) / hour(0-23) / day of month(1-31) / month(1-12) / day of week(0-6)
+jobs:
+  First:
+    name: First job
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Install beautifulsoup4 and Pillow
+        run: |
+          python3 -m pip install bs4
+          python3 -m pip install lxml
+          python3 -m pip install Pillow
+      - name: Check directlinks for updates
+        run: python res/src/checkdirectlinks.py
+      - name: Commit file
+        run: |
+          git config user.name "script" 
+          git config user.email "<>"
+          git add .
+          git commit -m "Plugins updated" || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+      - name: Upload plugins to release
+        uses: ncipollo/release-action@v1.11.1
+        with:
+          name: Downloads
+          tag: Latest
+          allowUpdates: true
+          replacesArtifacts: true
+          updateOnlyUnreleased: false
+          artifacts: "temp/*.zip"
+      - name: Delete zips
+        run: |
+          import shutil
+          import os
+          if os.path.isdir("temp"):
+            shutil.rmtree("temp")
+        shell: python
+      - name: Make README.md
+        run: python res/src/makemd.py
+      - name: Commit file
+        run: |
+          git config user.name "script" 
+          git config user.email "<>"
+          git add .
+          git commit -m "Plugin md generated" || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
