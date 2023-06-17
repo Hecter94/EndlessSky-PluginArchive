@@ -1,2 +1,0 @@
-
-This is a small endgame QoL plugin that gives a mission which will unlock Kor Mereti shipyards and outfiters after the point in the story where they become friendly to the player.  The mission can be picked up in the shipyard of Spera Anatrusk.

@@ -1,2 +1,0 @@
-# Adde Fallen
-> Inspired by an old and unfortunately unfinished fan favourite plugin that offered truly unique content. While this might not mimic the original in design, hopefully it can stoke a similarly unique experience.
