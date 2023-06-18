@@ -165,8 +165,9 @@ tempcatdown = temptempcat[pos +12:] # lower half of template string
 
 with open("res/news.txt", "r") as file1: # reading and formating lines
 	newslist = file1.readlines()
-for lines in newslist:
-	news =  news + lines + " \n"
+for i in range(15):
+	if i <= len(newslist)-1:
+		news = news + newslist[i] + "\n"
 
 # writing the md file
 filerr = open("res/errorlog.txt", "w")
