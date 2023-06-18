@@ -3,7 +3,7 @@ name: on push in working dir
 on:
   push:
     paths:
-      - 'Working/All Plugins/**'
+      - 'Working/**'
 jobs:
   zip-files:
     runs-on: ubuntu-latest
@@ -24,10 +24,10 @@ jobs:
           changed = "${{ steps.files.outputs.all_changed_and_modified_files }}"
           plugins = set()
           for f in changed.split("%%%"):
-            if not "All Plugins" in f:
+            if not "Working" in f:
               continue
             path = f.split(os.sep)
-            index = path.index("All Plugins") + 1
+            index = path.index("Working") + 1
             if index >= len(path):
               continue
             plugins.add(path[index])
@@ -35,7 +35,7 @@ jobs:
             print("The following plugins have changed:")
             for p in plugins:
               print(p)
-              os.chdir('Working/All Plugins/')
+              os.chdir('Working')
               corrected = p.replace(" ", ".")
               corrected = corrected.replace("'", ".") 
               corrected = corrected.replace(",", ".") 
@@ -47,9 +47,9 @@ jobs:
               corrected = corrected.replace("..", ".") 
               if corrected[len(corrected)-1] == ".":
                 corrected = corrected[:len(corrected)-1]
-              subprocess.run(["zip", "-r", "../../" + corrected + ".zip", p],
+              subprocess.run(["zip", "-r", "../" + corrected + ".zip", p],
                 stdout=subprocess.DEVNULL)
-              os.chdir('../../')
+              os.chdir('../')
           else:
             print("No plugin changes have been detected.")
         shell: python

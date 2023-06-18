@@ -1,6 +1,0 @@
-# ZESglobal
-Zitchas's Endless Sky Global mod. This is a collection of files intended to change the general feel of the game. These files and changes are intended to be complimentary and used together, but you are welcome to pick and choose which changes you want.
-
-ZOutfitSpace
-The first mod in this set is ZOutfitSpace. This file expands the outfit space of all ships by 5%. Ships for whom 5% would be less than 5 extra space instead are straight up given 5 extra space. One of the central aspects of Endless Sky is outfitting, and while the challenge of making effective and useful ships in limited space is fun; On the flip side, I dislike having to *always* be focused on min-maxing the combat capabilities of my ship. I *enjoy* putting "non-combat" outfits on my ships; things like research laboratories, or salvage scanners. Even if I get almost no combat advantage from it, I enjoy being able to see the tactical scanner info on my GUI. 
-This file does not change the Bactrian, Puffin, or Indigenous ships. 
