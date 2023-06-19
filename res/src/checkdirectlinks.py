@@ -121,7 +121,8 @@ for entry in listing:
 			print("ERROR: mismatch between zipname and in-zip folder!")
 			shutil.move(firstfolder, stripped)
 			print("temp/" + firstfolder + " | renamed to: temp/" + stripped)
-		shutil.rmtree(pathtoplugins + stripped) # delete old plugin
+		if os.path.isdir(pathtoplugins + stripped):
+			shutil.rmtree(pathtoplugins + stripped) # delete old plugin
 		shutil.move("temp/" + stripped, pathtoplugins + stripped)
 	with open("res/news.txt", "r") as file1: 
 		news = file1.readlines()
