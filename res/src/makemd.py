@@ -167,7 +167,7 @@ with open("res/news.txt", "r") as file1: # reading and formating lines
 	newslist = file1.readlines()
 for i in range(15):
 	if i <= len(newslist)-1:
-		news = news + newslist[i] + "\n"
+		news = news + newslist[i] + "<br>"
 
 # writing the md file
 filerr = open("res/errorlog.txt", "w")
