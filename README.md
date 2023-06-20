@@ -4,7 +4,35 @@
 News(latest 15 entries):
 <table><tr><td width=800>
 
-2023-06-17 repo update: directlink and news
+2023-06-20 'galactic.capital.investment' updated
+
+2023-06-20 'automata.destruction.75percent' updated
+
+2023-06-20 'automata.destruction.0percent' updated
+
+2023-06-20 'kor.efret.shipyard' updated
+
+2023-06-20 'unique.fix' updated
+
+2023-06-20 'more.boarding.missions' updated
+
+2023-06-20 'automata.destruction.51percent' updated
+
+2023-06-20 'automata.in.human.space' updated
+
+2023-06-20 'automata.destruction.23percent' updated
+
+2023-06-19 'galactic.capital.investment' updated
+
+2023-06-19 'automata.destruction.75percent' updated
+
+2023-06-19 'automata.destruction.0percent' updated
+
+2023-06-19 'kor.efret.shipyard' updated
+
+2023-06-19 'unique.fix' updated
+
+2023-06-19 'more.boarding.missions' updated
 
 
 
@@ -47,7 +75,7 @@ Provide a directlink to your zipped plugin and we do a daily check if it is newe
 
 # Introduction
 
-A comprehensive library of 476 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 475 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -194,11 +222,11 @@ To keep these files related together, you have to give them the same name.
 
 # Plugin Download
 
-All Plugins (476)
+All Plugins (475)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (36) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (33) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (16) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (34)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (37) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (1) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (64)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (120) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (61) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (31)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (36) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (34) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (17) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (35)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (38) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (1) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (64)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (120) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (61) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (40) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (26)<br>
 
 
 
@@ -218,7 +246,7 @@ All Plugins (476)
 <img src='Working/AES Omnis/icon.png' width='100'></img><br>
 
 
-[AES.Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Omnis.zip) | 1.08 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Omnis/)  
+[AES.Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Omnis.zip) | 1.08 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Omnis/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Cheats  
 
@@ -235,7 +263,7 @@ Status: N/A
 <img src='Working/All Content Plugin/icon.png' width='100'></img><br>
 
 
-[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 146.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/All%20Content%20Plugin/)  
+[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 146.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/)  
 Author: Michael Zahniser | [https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin)  
 Category: Cheats  
 
@@ -252,7 +280,7 @@ Status: N/A
 <img src='Working/Arena/icon.png' width='100'></img><br>
 
 
-[Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arena.zip) | 29.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arena/)  
+[Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arena.zip) | 29.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arena/)  
 Author: 10010101001 | [https://github.com/10010101001/Arena](https://github.com/10010101001/Arena)  
 Category: Cheats  
 
@@ -269,7 +297,7 @@ Status: N/A
 <img src='Working/automata.destruction.0percent/icon.png' width='100'></img><br>
 
 
-[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 52.27 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/automata.destruction.0percent/)  
+[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Cheats  
 
@@ -288,7 +316,7 @@ Status: tested with 0.10.1
 <img src='Working/automata.destruction.23percent/icon.png' width='100'></img><br>
 
 
-[automata.destruction.23percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.23percent.zip) | 52.29 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/automata.destruction.23percent/)  
+[automata.destruction.23percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.23percent.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.23percent/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Cheats  
 
@@ -307,7 +335,7 @@ Status: tested with 0.10.1
 <img src='Working/automata.destruction.51percent/icon.png' width='100'></img><br>
 
 
-[automata.destruction.51percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.51percent.zip) | 52.29 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/automata.destruction.51percent/)  
+[automata.destruction.51percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.51percent.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.51percent/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Cheats  
 
@@ -326,7 +354,7 @@ Status: tested with 0.10.1
 <img src='Working/automata.destruction.75percent/icon.png' width='100'></img><br>
 
 
-[automata.destruction.75percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.75percent.zip) | 52.29 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/automata.destruction.75percent/)  
+[automata.destruction.75percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.75percent.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.75percent/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Cheats  
 
@@ -344,7 +372,7 @@ Status: tested with 0.10.1
 ### Bit and Bobs
 
 
-[Bit.and.Bobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bit.and.Bobs.zip) | 1.14 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bit%20and%20Bobs/)  
+[Bit.and.Bobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bit.and.Bobs.zip) | 1.14 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bit%20and%20Bobs/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -360,7 +388,7 @@ Status: N/A
 ### Casual Mod
 
 
-[Casual.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Casual.Mod.zip) | 401.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Casual%20Mod/)  
+[Casual.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Casual.Mod.zip) | 401.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Casual%20Mod/)  
 Author: PPhoto  | [https://github.com/pphotography/EndlessSky_CasualMod](https://github.com/pphotography/EndlessSky_CasualMod)  
 Category: Cheats  
 
@@ -379,7 +407,7 @@ Status: N/A
 ### Checkmatemate
 
 
-[Checkmatemate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Checkmatemate.zip) | 0.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Checkmatemate/)  
+[Checkmatemate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Checkmatemate.zip) | 0.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Checkmatemate/)  
 Author: Zoura | N/A[]()  
 Category: Cheats  
 
@@ -396,7 +424,7 @@ Status: Playable on 0.9.15 Continuous.
 <img src='Working/Ciu Kreo/icon.png' height='100'></img><br>
 
 
-[Ciu.Kreo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ciu.Kreo.zip) | 455.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ciu%20Kreo/)  
+[Ciu.Kreo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ciu.Kreo.zip) | 455.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ciu%20Kreo/)  
 Author: Luna | [https://github.com/RestingImmortal/Ciu-Kreo](https://github.com/RestingImmortal/Ciu-Kreo)  
 Category: Cheats  
 
@@ -412,7 +440,7 @@ Status: Playable on 0.9.14
 ### Cloaking Device Unlocked
 
 
-[Cloaking.Device.Unlocked.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cloaking.Device.Unlocked.zip) | 2.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Cloaking%20Device%20Unlocked/)  
+[Cloaking.Device.Unlocked.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cloaking.Device.Unlocked.zip) | 2.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cloaking%20Device%20Unlocked/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -428,7 +456,7 @@ Status: N/A
 ### Custom Outfitting (Chop Shop)
 
 
-[Custom.Outfitting.Chop.Shop.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Outfitting.Chop.Shop.zip) | 4.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Custom%20Outfitting%20(Chop%20Shop)/)  
+[Custom.Outfitting.Chop.Shop.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Outfitting.Chop.Shop.zip) | 4.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Custom%20Outfitting%20(Chop%20Shop)/)  
 Author: Jareth (Dr. Anthrax) | [http://steamcommunity.com/id/DrAnthraxCrux/](http://steamcommunity.com/id/DrAnthraxCrux/)  
 Category: Cheats  
 
@@ -444,7 +472,7 @@ Status: N/A
 ### Dragonflame Fabrication
 
 
-[Dragonflame.Fabrication.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragonflame.Fabrication.zip) | 1.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dragonflame%20Fabrication/)  
+[Dragonflame.Fabrication.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragonflame.Fabrication.zip) | 1.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dragonflame%20Fabrication/)  
 Author: Lake (Galaucus) | [https://github.com/Galaucus/Dragonflame-Fabrication](https://github.com/Galaucus/Dragonflame-Fabrication)  
 Category: Cheats  
 
@@ -460,7 +488,7 @@ Status: N/A
 ### easier harvesting
 
 
-[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | 92.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/easier%20harvesting/)  
+[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | 92.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/easier%20harvesting/)  
 Author: Endros Gunderberg | N/A[]()  
 Category: Cheats  
 
@@ -477,7 +505,7 @@ Status: N/A
 <img src='Working/Easier Korath Automatons/icon.png' width='100'></img><br>
 
 
-[Easier.Korath.Automatons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Easier.Korath.Automatons.zip) | 73.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Easier%20Korath%20Automatons/)  
+[Easier.Korath.Automatons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Easier.Korath.Automatons.zip) | 73.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Easier%20Korath%20Automatons/)  
 Author: Bereskatuket (Kestrel1110) | [https://github.com/kestrel1110/Easier-Korath-Automatons](https://github.com/kestrel1110/Easier-Korath-Automatons)  
 Category: Cheats  
 
@@ -494,7 +522,7 @@ Status: Should work
 ### Generic Plugin
 
 
-[Generic.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Generic.Plugin.zip) | 7.27 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Generic%20Plugin/)  
+[Generic.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Generic.Plugin.zip) | 7.27 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Generic%20Plugin/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -510,7 +538,7 @@ Status: N/A
 ### Gray Box
 
 
-[Gray.Box.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gray.Box.zip) | 18.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Gray%20Box/)  
+[Gray.Box.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gray.Box.zip) | 18.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gray%20Box/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -526,7 +554,7 @@ Status: N/A
 ### Heliarch Shopping & Korath Konvenience
 
 
-[Heliarch.Shopping.Korath.Konvenience.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Heliarch.Shopping.Korath.Konvenience.zip) | 3.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Heliarch%20Shopping%20&%20Korath%20Konvenience/)  
+[Heliarch.Shopping.Korath.Konvenience.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Heliarch.Shopping.Korath.Konvenience.zip) | 3.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Heliarch%20Shopping%20&%20Korath%20Konvenience/)  
 Author: Waladil | N/A[]()  
 Category: Cheats  
 
@@ -543,7 +571,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Hilo2000 Arena/icon.png' width='100'></img><br>
 
 
-[Hilo2000.Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hilo2000.Arena.zip) | 28.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Hilo2000%20Arena/)  
+[Hilo2000.Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hilo2000.Arena.zip) | 28.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hilo2000%20Arena/)  
 Author: Mielo Symeonidis | [https://github.com/Hilo2000/arena/blob/main/](https://github.com/Hilo2000/arena/blob/main/)  
 Category: Cheats  
 
@@ -559,7 +587,7 @@ Status: N/A
 ### Improved Ship Integrity
 
 
-[Improved.Ship.Integrity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Improved.Ship.Integrity.zip) | 54.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Improved%20Ship%20Integrity/)  
+[Improved.Ship.Integrity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Improved.Ship.Integrity.zip) | 54.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Improved%20Ship%20Integrity/)  
 Author: Xolarix | [https://github.com/Xolarix/Improved-Ship-Integrity](https://github.com/Xolarix/Improved-Ship-Integrity)  
 Category: Cheats  
 
@@ -575,7 +603,7 @@ Status: N/A
 ### Kestrel Rework
 
 
-[Kestrel.Rework.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kestrel.Rework.zip) | 6.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kestrel%20Rework/)  
+[Kestrel.Rework.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kestrel.Rework.zip) | 6.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kestrel%20Rework/)  
 Author: MinneIceCube | [https://github.com/MinneIceCube/KestrelRework](https://github.com/MinneIceCube/KestrelRework)  
 Category: Cheats  
 
@@ -591,7 +619,7 @@ Status: N/A
 ### No Bactrian
 
 
-[No.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/No.Bactrian.zip) | 2.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/No%20Bactrian/)  
+[No.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/No.Bactrian.zip) | 2.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/No%20Bactrian/)  
 Author: Disiuze | [https://github.com/Disiuze/misc-projects](https://github.com/Disiuze/misc-projects)  
 Category: Cheats  
 
@@ -609,7 +637,7 @@ Status: Should be playable on 0.9.14, 0.9.15.
 ### No Drag Mod
 
 
-[No.Drag.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/No.Drag.Mod.zip) | 1.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/No%20Drag%20Mod/)  
+[No.Drag.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/No.Drag.Mod.zip) | 1.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/No%20Drag%20Mod/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -625,7 +653,7 @@ Status: N/A
 ### Nuclear War
 
 
-[Nuclear.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.War.zip) | 0.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nuclear%20War/)  
+[Nuclear.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.War.zip) | 0.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nuclear%20War/)  
 Author: House Kitty | N/A[]()  
 Category: Cheats  
 
@@ -641,7 +669,7 @@ Status: Should be playable on 0.9.14, 0.9.15 Continuous.
 ### Overkill
 
 
-[Overkill.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Overkill.zip) | 3.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Overkill/)  
+[Overkill.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Overkill.zip) | 3.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Overkill/)  
 Author: Carter-M-II | [https://github.com/Carter-M-II/ES-Overkill](https://github.com/Carter-M-II/ES-Overkill)  
 Category: Cheats  
 
@@ -657,7 +685,7 @@ Status: N/A
 ### Reverse Engineering
 
 
-[Reverse.Engineering.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Reverse.Engineering.zip) | 1.48 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Reverse%20Engineering/)  
+[Reverse.Engineering.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Reverse.Engineering.zip) | 1.48 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Reverse%20Engineering/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -673,7 +701,7 @@ Status: N/A
 ### Shipmod
 
 
-[Shipmod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shipmod.zip) | 6.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Shipmod/)  
+[Shipmod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shipmod.zip) | 6.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Shipmod/)  
 Author: Lake (Galaucus) | [https://github.com/Galaucus/Shipmod](https://github.com/Galaucus/Shipmod)  
 Category: Cheats  
 
@@ -689,7 +717,7 @@ Status: N/A
 ### Slightly Less Self-Destructive Korath Automa
 
 
-[Slightly.Less.Self-Destructive.Korath.Automa.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Slightly.Less.Self-Destructive.Korath.Automa.zip) | 1.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Slightly%20Less%20Self-Destructive%20Korath%20Automa/)  
+[Slightly.Less.Self-Destructive.Korath.Automa.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Slightly.Less.Self-Destructive.Korath.Automa.zip) | 1.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Slightly%20Less%20Self-Destructive%20Korath%20Automa/)  
 Author: N/A | N/A[]()  
 Category: Cheats  
 
@@ -705,7 +733,7 @@ Status: N/A
 ### Space Conversion
 
 
-[Space.Conversion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Conversion.zip) | 23.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Conversion/)  
+[Space.Conversion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Conversion.zip) | 23.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Conversion/)  
 Author: whismerhill | [https://www.nexusmods.com/endlesssky/mods/1](https://www.nexusmods.com/endlesssky/mods/1)  
 Category: Cheats  
 
@@ -721,7 +749,7 @@ Status: N/A
 ### Trollship
 
 
-[Trollship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Trollship.zip) | 2.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Trollship/)  
+[Trollship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Trollship.zip) | 2.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Trollship/)  
 Author: House Kitty | N/A[]()  
 Category: Cheats  
 
@@ -738,7 +766,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Ultimate Cheater Plugin/icon.png' width='100'></img><br>
 
 
-[Ultimate.Cheater.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultimate.Cheater.Plugin.zip) | 2.4 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ultimate%20Cheater%20Plugin/)  
+[Ultimate.Cheater.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultimate.Cheater.Plugin.zip) | 2.4 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ultimate%20Cheater%20Plugin/)  
 Author: mdsmestad | [https://github.com/Hondolor/mdsmestad-Ultimate-Cheater-Pluggin](https://github.com/Hondolor/mdsmestad-Ultimate-Cheater-Pluggin)  
 Category: Cheats  
 
@@ -756,7 +784,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Ursa Polaris/icon.png' width='100'></img><br>
 
 
-[Ursa.Polaris.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ursa.Polaris.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ursa%20Polaris/)  
+[Ursa.Polaris.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ursa.Polaris.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ursa%20Polaris/)  
 Author: Local God | [https://github.com/LocalGod79/UrsaPolaris](https://github.com/LocalGod79/UrsaPolaris)  
 Category: Cheats  
 
@@ -772,7 +800,7 @@ Status: Playable on 0.10.0
 ### Visible Minable Asteroids
 
 
-[Visible.Minable.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Visible.Minable.Asteroids.zip) | 7.17 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Visible%20Minable%20Asteroids/)  
+[Visible.Minable.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Visible.Minable.Asteroids.zip) | 7.17 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Visible%20Minable%20Asteroids/)  
 Author: hellminister | [https://steamcommunity.com/sharedfiles/filedetails/?id=1199797331](https://steamcommunity.com/sharedfiles/filedetails/?id=1199797331)  
 Category: Cheats  
 
@@ -789,7 +817,7 @@ Status: N/A
 <img src='Working/World Forge/icon.png' width='100'></img><br>
 
 
-[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 559.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/World%20Forge/)  
+[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 559.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/)  
 Author: N/A | [https://github.com/Amazinite/world-forge](https://github.com/Amazinite/world-forge)  
 Category: Cheats  
 
@@ -805,7 +833,7 @@ Status: N/A
 ### ZES Global
 
 
-[ZES.Global.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ZES.Global.zip) | 926.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ZES%20Global/)  
+[ZES.Global.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ZES.Global.zip) | 926.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ZES%20Global/)  
 Author: Zichas | [https://github.com/Zitchas/ZESglobal](https://github.com/Zitchas/ZESglobal)  
 Category: Cheats  
 
@@ -832,7 +860,7 @@ Status: N/A
 
 ## Gameplay
 
-<p>33 plugins in this category.<p>
+<p>34 plugins in this category.<p>
 
 <details>
 
@@ -843,7 +871,7 @@ Status: N/A
 ### Adjusted Hyperdrive
 
 
-[Adjusted.Hyperdrive.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adjusted.Hyperdrive.zip) | 2.87 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Adjusted%20Hyperdrive/)  
+[Adjusted.Hyperdrive.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adjusted.Hyperdrive.zip) | 2.87 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Adjusted%20Hyperdrive/)  
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
@@ -859,7 +887,7 @@ Status: N/A
 ### Arrival Distance Override
 
 
-[Arrival.Distance.Override.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arrival.Distance.Override.zip) | 217.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arrival%20Distance%20Override/)  
+[Arrival.Distance.Override.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arrival.Distance.Override.zip) | 217.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arrival%20Distance%20Override/)  
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
@@ -877,7 +905,7 @@ Status: N/A
 <img src='Working/automata.in.human.space/icon.png' width='100'></img><br>
 
 
-[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | 53.41 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/automata.in.human.space/)  
+[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.in.human.space/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Gameplay  
 
@@ -896,7 +924,7 @@ Status: tested with 0.10.1
 ### Bare Ships
 
 
-[Bare.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bare.Ships.zip) | 2.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bare%20Ships/)  
+[Bare.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bare.Ships.zip) | 2.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bare%20Ships/)  
 Author: lifeyouristhis | [https://github.com/lifeyouristhis/bare-ships-plugin](https://github.com/lifeyouristhis/bare-ships-plugin)  
 Category: Gameplay  
 
@@ -912,7 +940,7 @@ Status: N/A
 ### Boarding Licenses
 
 
-[Boarding.Licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Boarding.Licenses.zip) | 17.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Boarding%20Licenses/)  
+[Boarding.Licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Boarding.Licenses.zip) | 17.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Boarding%20Licenses/)  
 Author: An-archist | [https://github.com/An-archist/boarding-licenses](https://github.com/An-archist/boarding-licenses)  
 Category: Gameplay  
 
@@ -928,7 +956,7 @@ Status: N/A
 ### Bounty Hunters
 
 
-[Bounty.Hunters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bounty.Hunters.zip) | 11.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bounty%20Hunters/)  
+[Bounty.Hunters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bounty.Hunters.zip) | 11.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bounty%20Hunters/)  
 Author: WarlordMike | [https://github.com/WarlordMike/es-bounty-hunters](https://github.com/WarlordMike/es-bounty-hunters)  
 Category: Gameplay  
 
@@ -944,7 +972,7 @@ Status: N/A
 ### Businessman Mod
 
 
-[Businessman.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Businessman.Mod.zip) | 783.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Businessman%20Mod/)  
+[Businessman.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Businessman.Mod.zip) | 783.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Businessman%20Mod/)  
 Author: Evan | [http://steamcommunity.com/id/01001001011001011/](http://steamcommunity.com/id/01001001011001011/)  
 Category: Gameplay  
 
@@ -961,7 +989,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Costly Drives/icon.png' width='100'></img><br>
 
 
-[Costly.Drives.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Costly.Drives.zip) | 111.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Costly%20Drives/)  
+[Costly.Drives.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Costly.Drives.zip) | 111.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Costly%20Drives/)  
 Author: Anarchist2 | [https://github.com/Anarchist2/costly-drives](https://github.com/Anarchist2/costly-drives)  
 Category: Gameplay  
 
@@ -977,7 +1005,7 @@ Status: N/A
 ### Crowded Sky
 
 
-[Crowded.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Crowded.Sky.zip) | 8.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Crowded%20Sky/)  
+[Crowded.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Crowded.Sky.zip) | 8.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Crowded%20Sky/)  
 Author: 1010todd | N/A[]()  
 Category: Gameplay  
 
@@ -995,7 +1023,7 @@ Status: N/A
 <img src='Working/Difficulties/icon.png' width='100'></img><br>
 
 
-[Difficulties.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Difficulties.zip) | 25.37 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Difficulties/)  
+[Difficulties.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Difficulties.zip) | 25.37 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Difficulties/)  
 Author: Mielo Symeonidis | N/A[]()  
 Category: Gameplay  
 
@@ -1011,7 +1039,7 @@ Status: N/A
 ### Drop Loot
 
 
-[Drop.Loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Drop.Loot.zip) | 89.72 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Drop%20Loot/)  
+[Drop.Loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Drop.Loot.zip) | 89.72 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Drop%20Loot/)  
 Author: 1010todd | N/A[]()  
 Category: Gameplay  
 
@@ -1027,7 +1055,7 @@ Status: N/A
 ### Extra Large Jobs
 
 
-[Extra.Large.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Extra.Large.Jobs.zip) | 6.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Extra%20Large%20Jobs/)  
+[Extra.Large.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Extra.Large.Jobs.zip) | 6.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Extra%20Large%20Jobs/)  
 Author: 1010todd | N/A[]()  
 Category: Gameplay  
 
@@ -1045,7 +1073,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Galactic Hazards
 
 
-[Galactic.Hazards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Hazards.zip) | 5.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galactic%20Hazards/)  
+[Galactic.Hazards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Hazards.zip) | 5.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Hazards/)  
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
@@ -1062,7 +1090,7 @@ Status: N/A
 <img src='Working/galactic.capital.investment/icon.png' width='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 53.96 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/galactic.capital.investment/)  
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Gameplay  
 
@@ -1081,7 +1109,7 @@ Status: tested with 0.10.1
 <img src='Working/Gatling Ammo Fix/icon.png' width='100'></img><br>
 
 
-[Gatling.Ammo.Fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gatling.Ammo.Fix.zip) | 92.99 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Gatling%20Ammo%20Fix/)  
+[Gatling.Ammo.Fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gatling.Ammo.Fix.zip) | 92.99 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gatling%20Ammo%20Fix/)  
 Author: Cat-Lady | [https://github.com/Cat-Lady/](https://github.com/Cat-Lady/)  
 Category: Gameplay  
 
@@ -1099,7 +1127,7 @@ Status: N/A
 ### GreyShipVolume
 
 
-[GreyShipVolume.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/GreyShipVolume.zip) | 62.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/GreyShipVolume/)  
+[GreyShipVolume.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/GreyShipVolume.zip) | 62.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/GreyShipVolume/)  
 Author: 1010Todd | N/A[]()  
 Category: Gameplay  
 
@@ -1117,7 +1145,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### HW Rebalance Test
 
 
-[HW.Rebalance.Test.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HW.Rebalance.Test.zip) | 18.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/HW%20Rebalance%20Test/)  
+[HW.Rebalance.Test.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HW.Rebalance.Test.zip) | 18.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/HW%20Rebalance%20Test/)  
 Author: 1010Todd | N/A[]()  
 Category: Gameplay  
 
@@ -1133,7 +1161,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Investment Bank
 
 
-[Investment.Bank.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Investment.Bank.zip) | 1.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Investment%20Bank/)  
+[Investment.Bank.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Investment.Bank.zip) | 1.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Investment%20Bank/)  
 Author: a-alhusain | [https://github.com/appdevland/investment-bank-es-plugin](https://github.com/appdevland/investment-bank-es-plugin)  
 Category: Gameplay  
 
@@ -1150,7 +1178,7 @@ Status: Playable on 0.9.14, 0.10.0 Continuous.
 <img src='Working/kor.efret.shipyard/icon.png' width='100'></img><br>
 
 
-[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 52.28 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/kor.efret.shipyard/)  
+[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Gameplay  
 
@@ -1167,7 +1195,7 @@ Status: tested with 0.10.1
 ### Korath Domination
 
 
-[Korath.Domination.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Domination.zip) | 3.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Korath%20Domination/)  
+[Korath.Domination.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Domination.zip) | 3.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Domination/)  
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
@@ -1183,7 +1211,7 @@ Status: N/A
 ### Landing Fees and Tax
 
 
-[Landing.Fees.and.Tax.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Landing.Fees.and.Tax.zip) | 1.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Landing%20Fees%20and%20Tax/)  
+[Landing.Fees.and.Tax.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Landing.Fees.and.Tax.zip) | 1.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Landing%20Fees%20and%20Tax/)  
 Author: Disiuze | [https://github.com/Disiuze/misc-projects](https://github.com/Disiuze/misc-projects)  
 Category: Gameplay  
 
@@ -1200,7 +1228,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Mass-ive Fix/icon.png' width='100'></img><br>
 
 
-[Mass-ive.Fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mass-ive.Fix.zip) | 98.79 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mass-ive%20Fix/)  
+[Mass-ive.Fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mass-ive.Fix.zip) | 98.79 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mass-ive%20Fix/)  
 Author: Anarchist2 | [https://github.com/Anarchist2/Mass-ive-fix](https://github.com/Anarchist2/Mass-ive-fix)  
 Category: Gameplay  
 
@@ -1216,7 +1244,7 @@ Status: N/A
 ### Mess
 
 
-[Mess.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mess.zip) | 5.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mess/)  
+[Mess.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mess.zip) | 5.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mess/)  
 Author: FranchuFranchu | [https://github.com/FranchuFranchu/endless-sky-mess-plugin](https://github.com/FranchuFranchu/endless-sky-mess-plugin)  
 Category: Gameplay  
 
@@ -1235,7 +1263,7 @@ Status: N/A
 <img src='Working/more.boarding.missions/icon.png' width='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 52.6 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/more.boarding.missions/)  
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Gameplay  
 
@@ -1252,7 +1280,7 @@ Status: tested with 0.10.1
 ### Persistent NPC
 
 
-[Persistent.NPC.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Persistent.NPC.zip) | 1.15 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Persistent%20NPC/)  
+[Persistent.NPC.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Persistent.NPC.zip) | 1.15 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Persistent%20NPC/)  
 Author: 1010todd | N/A[]()  
 Category: Gameplay  
 
@@ -1269,7 +1297,7 @@ Status: Playable on 0.9.15 Continuous.
 <img src='Working/Pirate Hunter/icon.png' height='100'></img><br>
 
 
-[Pirate.Hunter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Hunter.zip) | 425.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pirate%20Hunter/)  
+[Pirate.Hunter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Hunter.zip) | 425.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pirate%20Hunter/)  
 Author: Zavindur | N/A[]()  
 Category: Gameplay  
 
@@ -1285,7 +1313,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### PlayerRewards
 
 
-[PlayerRewards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PlayerRewards.zip) | 1.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/PlayerRewards/)  
+[PlayerRewards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PlayerRewards.zip) | 1.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PlayerRewards/)  
 Author: Beanzilla | [https://github.com/Beanzilla/PlayerRewards](https://github.com/Beanzilla/PlayerRewards)  
 Category: Gameplay  
 
@@ -1303,7 +1331,7 @@ Status: N/A
 ### Salvaging
 
 
-[Salvaging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Salvaging.zip) | 5.44 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Salvaging/)  
+[Salvaging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Salvaging.zip) | 5.44 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Salvaging/)  
 Author: Hecter94 | N/A[]()  
 Category: Gameplay  
 
@@ -1319,7 +1347,7 @@ Status: N/A
 ### Ship Overhaul
 
 
-[Ship.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Overhaul.zip) | 235.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ship%20Overhaul/)  
+[Ship.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Overhaul.zip) | 235.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ship%20Overhaul/)  
 Author: Vrok-Kronos | [https://github.com/Vrok-Kronos/endless-sky-ship-overhaul](https://github.com/Vrok-Kronos/endless-sky-ship-overhaul)  
 Category: Gameplay  
 
@@ -1338,7 +1366,7 @@ Status: N/A
 <img src='Working/Spacefarer/icon.png' width='100'></img><br>
 
 
-[Spacefarer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacefarer.zip) | 219.26 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Spacefarer/)  
+[Spacefarer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacefarer.zip) | 219.26 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Spacefarer/)  
 Author: samrocketman and Airhead | [https://github.com/samrocketman/Spacefarer](https://github.com/samrocketman/Spacefarer)  
 Category: Gameplay  
 
@@ -1354,7 +1382,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Stronger Hulls
 
 
-[Stronger.Hulls.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stronger.Hulls.zip) | 34.66 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Stronger%20Hulls/)  
+[Stronger.Hulls.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stronger.Hulls.zip) | 34.66 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Stronger%20Hulls/)  
 Author: Connor Waterbanks | N/A[]()  
 Category: Gameplay  
 
@@ -1368,10 +1396,26 @@ Status: Playable on 0.9.14, 0.9.15 Continuous
 
 ---
 
+### Tale Of Apoxys
+
+
+[Tale.Of.Apoxys.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tale.Of.Apoxys.zip) | 151.33 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tale%20Of%20Apoxys/)  
+Author: N/A | N/A[]()  
+Category: Gameplay  
+
+>Turns endless sky into a "character-driven" RPG, featuring a special ship known as the Apoxys. Take the helm of the black and red beauty and play your way through the whole game in just one ship; a ship that just so happens to grow along with you!
+>
+
+
+Status: N/A  
+
+
+---
+
 ### Weapon Ranges
 
 
-[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 2.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Weapon%20Ranges/)  
+[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 2.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Weapon%20Ranges/)  
 Author: EjoThims | [https://github.com/EjoThims/Weapon-Ranges](https://github.com/EjoThims/Weapon-Ranges)  
 Category: Gameplay  
 
@@ -1394,7 +1438,7 @@ Status: N/A
 ### zLarge Asteroid
 
 
-[zLarge.Asteroid.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zLarge.Asteroid.zip) | 48.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/zLarge%20Asteroid/)  
+[zLarge.Asteroid.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zLarge.Asteroid.zip) | 48.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/zLarge%20Asteroid/)  
 Author: 1010Todd | N/A[]()  
 Category: Gameplay  
 
@@ -1416,7 +1460,7 @@ Status: N/A
 
 ## Graphics
 
-<p>16 plugins in this category.<p>
+<p>17 plugins in this category.<p>
 
 <details>
 
@@ -1424,10 +1468,31 @@ Status: N/A
 
 ---
 
+### additional.command.buttons
+<img src='Working/additional.command.buttons/icon.png' width='100'></img><br>
+
+
+[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 54.8 kb | 2023-06-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/)  
+Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
+Category: Graphics  
+
+>(interface changed)
+>
+>Made for the mobile version and  
+>adds the following buttons: full stop / board ship / land on planet / fire afterburner / fleet: hold position / fleet: gather around me / view player info
+>adjusts the message box to not overlap
+>(inspired by theweirednut)
+
+
+Status: tested with 0.10.1  
+
+
+---
+
 ### Animated Ships
 
 
-[Animated.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Animated.Ships.zip) | 30.3 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Animated%20Ships/)  
+[Animated.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Animated.Ships.zip) | 30.3 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Animated%20Ships/)  
 Author: beccabunny | [https://github.com/beccabunny/Animated-ships](https://github.com/beccabunny/Animated-ships)  
 Category: Graphics  
 
@@ -1443,7 +1508,7 @@ Status: N/A
 ### Animated Stars
 
 
-[Animated.Stars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Animated.Stars.zip) | 6.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Animated%20Stars/)  
+[Animated.Stars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Animated.Stars.zip) | 6.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Animated%20Stars/)  
 Author: N/A | N/A[]()  
 Category: Graphics  
 
@@ -1459,7 +1524,7 @@ Status: N/A
 ### Colorful Void Sprites
 
 
-[Colorful.Void.Sprites.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Colorful.Void.Sprites.zip) | 4.44 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Colorful%20Void%20Sprites/)  
+[Colorful.Void.Sprites.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Colorful.Void.Sprites.zip) | 4.44 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Colorful%20Void%20Sprites/)  
 Author: rob59er | [https://github.com/Rob59er/Colorful-Void-Sprites](https://github.com/Rob59er/Colorful-Void-Sprites)  
 Category: Graphics  
 
@@ -1476,7 +1541,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Dark Ships/icon.png' width='100'></img><br>
 
 
-[Dark.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dark.Ships.zip) | 8.73 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dark%20Ships/)  
+[Dark.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dark.Ships.zip) | 8.73 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dark%20Ships/)  
 Author: N/A | N/A[]()  
 Category: Graphics  
 
@@ -1492,7 +1557,7 @@ Status: Should work
 ### ES Ships
 
 
-[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | 8.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ES%20Ships/)  
+[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | 8.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/)  
 Author: Yann | N/A[]()  
 Category: Graphics  
 
@@ -1509,7 +1574,7 @@ Status: Playable on 0.9.15 Continuous.
 <img src='Working/High DPI/icon.png' width='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 259.66 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/High%20DPI/)  
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 259.66 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/)  
 Author: Michael Zahniser (Maintained by the ES Community) | [https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi)  
 Category: Graphics  
 
@@ -1525,7 +1590,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Human Steering Flares
 
 
-[Human.Steering.Flares.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Steering.Flares.zip) | 2.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Human%20Steering%20Flares/)  
+[Human.Steering.Flares.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Steering.Flares.zip) | 2.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Human%20Steering%20Flares/)  
 Author: Ferociousfeind | N/A[]()  
 Category: Graphics  
 
@@ -1541,7 +1606,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Low Quality
 
 
-[Low.Quality.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Low.Quality.zip) | 359.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Low%20Quality/)  
+[Low.Quality.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Low.Quality.zip) | 359.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Low%20Quality/)  
 Author: N/A | N/A[]()  
 Category: Graphics  
 
@@ -1558,7 +1623,7 @@ Status: N/A
 <img src='Working/New Galaxy/icon.png' width='100'></img><br>
 
 
-[New.Galaxy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Galaxy.zip) | 7.28 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/New%20Galaxy/)  
+[New.Galaxy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Galaxy.zip) | 7.28 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Galaxy/)  
 Author: Lia Gerty | [https://github.com/ravenshining](https://github.com/ravenshining)  
 Category: Graphics  
 
@@ -1576,7 +1641,7 @@ Status: N/A
 <img src='Working/Outfit Highlighter/icon.png' height='100'></img><br>
 
 
-[Outfit.Highlighter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Outfit.Highlighter.zip) | 20.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Outfit%20Highlighter/)  
+[Outfit.Highlighter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Outfit.Highlighter.zip) | 20.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Outfit%20Highlighter/)  
 Author: Michael Arsollon | [https://github.com/MidnightPlugins/Outfit-Highlighter](https://github.com/MidnightPlugins/Outfit-Highlighter)  
 Category: Graphics  
 
@@ -1592,7 +1657,7 @@ Status: N/A
 ### Pi game mods
 
 
-[Pi.game.mods.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pi.game.mods.zip) | 158.06 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pi%20game%20mods/)  
+[Pi.game.mods.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pi.game.mods.zip) | 158.06 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pi%20game%20mods/)  
 Author: Pilover100 | N/A[]()  
 Category: Graphics  
 
@@ -1608,7 +1673,7 @@ Status: Playable on 0.9.15/0.9.16.
 ### Realistic Solar System
 
 
-[Realistic.Solar.System.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Realistic.Solar.System.zip) | 9.08 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Realistic%20Solar%20System/)  
+[Realistic.Solar.System.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Realistic.Solar.System.zip) | 9.08 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Realistic%20Solar%20System/)  
 Author: beccabunny | [https://github.com/beccabunny/Realistic-Solar-System](https://github.com/beccabunny/Realistic-Solar-System)  
 Category: Graphics  
 
@@ -1624,7 +1689,7 @@ Status: N/A
 ### Restock
 
 
-[Restock.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Restock.zip) | 9.67 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Restock/)  
+[Restock.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Restock.zip) | 9.67 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Restock/)  
 Author: Tommaso Becca | N/A[]()  
 Category: Graphics  
 
@@ -1640,7 +1705,7 @@ Status: N/A
 ### Swizzle Player
 
 
-[Swizzle.Player.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Swizzle.Player.zip) | 61.81 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Swizzle%20Player/)  
+[Swizzle.Player.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Swizzle.Player.zip) | 61.81 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Swizzle%20Player/)  
 Author: Cat-Lady | [https://github.com/Cat-Lady/swizzle-player/releases](https://github.com/Cat-Lady/swizzle-player/releases)  
 Category: Graphics  
 
@@ -1660,7 +1725,7 @@ Status: N/A
 <img src='Working/Wanderer Suns/icon.png' width='100'></img><br>
 
 
-[Wanderer.Suns.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wanderer.Suns.zip) | 291.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Wanderer%20Suns/)  
+[Wanderer.Suns.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wanderer.Suns.zip) | 291.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Wanderer%20Suns/)  
 Author: Gefüllte Taubenbrust | N/A[]()  
 Category: Graphics  
 
@@ -1676,7 +1741,7 @@ Status: N/A
 ### What a Wonderful World-Ship
 
 
-[What.a.Wonderful.World-Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/What.a.Wonderful.World-Ship.zip) | 3.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/What%20a%20Wonderful%20World-Ship/)  
+[What.a.Wonderful.World-Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/What.a.Wonderful.World-Ship.zip) | 3.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/What%20a%20Wonderful%20World-Ship/)  
 Author: N/A | N/A[]()  
 Category: Graphics  
 
@@ -1698,7 +1763,7 @@ Status: N/A
 
 ## Outfits
 
-<p>34 plugins in this category.<p>
+<p>35 plugins in this category.<p>
 
 <details>
 
@@ -1709,7 +1774,7 @@ Status: N/A
 ### Alternate Human Shields
 
 
-[Alternate.Human.Shields.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alternate.Human.Shields.zip) | 2.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Alternate%20Human%20Shields/)  
+[Alternate.Human.Shields.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alternate.Human.Shields.zip) | 2.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alternate%20Human%20Shields/)  
 Author: 1010todd | N/A[]()  
 Category: Outfits  
 
@@ -1725,7 +1790,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Androids
 
 
-[Androids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Androids.zip) | 1.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Androids/)  
+[Androids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Androids.zip) | 1.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Androids/)  
 Author: Disiuze | [https://github.com/Disiuze/misc-projects](https://github.com/Disiuze/misc-projects)  
 Category: Outfits  
 
@@ -1741,7 +1806,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Androids Rebalanced
 
 
-[Androids.Rebalanced.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Androids.Rebalanced.zip) | 27.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Androids%20Rebalanced/)  
+[Androids.Rebalanced.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Androids.Rebalanced.zip) | 27.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Androids%20Rebalanced/)  
 Author: czartrak | [https://github.com/czartrak/Androids-Rebalanced](https://github.com/czartrak/Androids-Rebalanced)  
 Category: Outfits  
 
@@ -1757,7 +1822,7 @@ Status: N/A
 ### Antiquity
 
 
-[Antiquity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Antiquity.zip) | 125.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Antiquity/)  
+[Antiquity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Antiquity.zip) | 125.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Antiquity/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -1773,7 +1838,7 @@ Status: N/A
 ### Assorted Outfits
 
 
-[Assorted.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assorted.Outfits.zip) | 96.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Assorted%20Outfits/)  
+[Assorted.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assorted.Outfits.zip) | 96.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Assorted%20Outfits/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -1789,7 +1854,7 @@ Status: N/A
 ### Automation
 
 
-[Automation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Automation.zip) | 1.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Automation/)  
+[Automation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Automation.zip) | 1.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Automation/)  
 Author: Disiuze | [https://github.com/Disiuze/misc-projects](https://github.com/Disiuze/misc-projects)  
 Category: Outfits  
 
@@ -1805,7 +1870,7 @@ Status: N/A
 ### Better Vanilla Weapons
 
 
-[Better.Vanilla.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Weapons.zip) | 228.91 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Better%20Vanilla%20Weapons/)  
+[Better.Vanilla.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Weapons.zip) | 228.91 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Weapons/)  
 Author: ZBok | N/A[]()  
 Category: Outfits  
 
@@ -1821,7 +1886,7 @@ Status: N/A
 ### Dr_Z
 
 
-[Dr_Z.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dr_Z.zip) | 2.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dr_Z/)  
+[Dr_Z.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dr_Z.zip) | 2.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dr_Z/)  
 Author: Dr. Z | N/A[]()  
 Category: Outfits  
 
@@ -1837,7 +1902,7 @@ Status: Should work.
 ### Endless Cargo
 
 
-[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | 57.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Cargo/)  
+[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | 57.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Cargo/)  
 Author: Ryan S. Northrup | [https://bitbucket.org/YellowApple/endless-cargo/downloads/](https://bitbucket.org/YellowApple/endless-cargo/downloads/)  
 Category: Outfits  
 
@@ -1853,7 +1918,7 @@ Status: Functional
 ### Epic Outfits
 
 
-[Epic.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Epic.Outfits.zip) | 263.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Epic%20Outfits/)  
+[Epic.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Epic.Outfits.zip) | 263.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Epic%20Outfits/)  
 Author: TheronEpic | N/A[]()  
 Category: Outfits  
 
@@ -1869,7 +1934,7 @@ Status: Should work
 ### Fighter Factory
 
 
-[Fighter.Factory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fighter.Factory.zip) | 3.36 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fighter%20Factory/)  
+[Fighter.Factory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fighter.Factory.zip) | 3.36 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fighter%20Factory/)  
 Author: 1010todd | N/A[]()  
 Category: Outfits  
 
@@ -1886,7 +1951,7 @@ Status: 0.9.17/Continuous
 ### Gyroscopes
 
 
-[Gyroscopes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gyroscopes.zip) | 556.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Gyroscopes/)  
+[Gyroscopes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gyroscopes.zip) | 556.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gyroscopes/)  
 Author: TheronEpic | [Playable on 0.9.14, 0.9.15 Continuous.](Playable on 0.9.14, 0.9.15 Continuous.)  
 Category: Outfits  
 
@@ -1905,7 +1970,7 @@ Status: N/A
 <img src='Working/H2H Outfits/icon.png' width='100'></img><br>
 
 
-[H2H.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/H2H.Outfits.zip) | 207.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/H2H%20Outfits/)  
+[H2H.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/H2H.Outfits.zip) | 207.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/H2H%20Outfits/)  
 Author: Timothy Butterworth | [https://github.com/tmbutterworth/hand-to-hand-outfits](https://github.com/tmbutterworth/hand-to-hand-outfits)  
 Category: Outfits  
 
@@ -1923,7 +1988,7 @@ Status: N/A
 ### Hai Engine
 
 
-[Hai.Engine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hai.Engine.zip) | 3.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Hai%20Engine/)  
+[Hai.Engine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hai.Engine.zip) | 3.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hai%20Engine/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -1939,7 +2004,7 @@ Status: N/A
 ### Human Space Overhaul
 
 
-[Human.Space.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Space.Overhaul.zip) | 34.54 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Human%20Space%20Overhaul/)  
+[Human.Space.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Space.Overhaul.zip) | 34.54 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Human%20Space%20Overhaul/)  
 Author: Zoura (AvianGeneticist) | [https://github.com/AvianGeneticist/Human-Space-Overhaul](https://github.com/AvianGeneticist/Human-Space-Overhaul)  
 Category: Outfits  
 
@@ -1955,7 +2020,7 @@ Status: Playable on 0.9.15/0.9.16/Continuous.
 ### Hyperdrive Boosters
 
 
-[Hyperdrive.Boosters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hyperdrive.Boosters.zip) | 32.52 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Hyperdrive%20Boosters/)  
+[Hyperdrive.Boosters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hyperdrive.Boosters.zip) | 32.52 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hyperdrive%20Boosters/)  
 Author: Jafdy | N/A[]()  
 Category: Outfits  
 
@@ -1971,7 +2036,7 @@ Status: N/A
 ### Korath Automation Upgrade
 
 
-[Korath.Automation.Upgrade.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Automation.Upgrade.zip) | 149.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Korath%20Automation%20Upgrade/)  
+[Korath.Automation.Upgrade.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Automation.Upgrade.zip) | 149.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Automation%20Upgrade/)  
 Author: Kriegstofu | [https://github.com/Kriegstofu/Korath-Automation-Upgrade](https://github.com/Kriegstofu/Korath-Automation-Upgrade)  
 Category: Outfits  
 
@@ -1995,7 +2060,7 @@ Status: N/A
 ### Kraz Cybernetics Evolution
 
 
-[Kraz.Cybernetics.Evolution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Cybernetics.Evolution.zip) | 116.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kraz%20Cybernetics%20Evolution/)  
+[Kraz.Cybernetics.Evolution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Cybernetics.Evolution.zip) | 116.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Cybernetics%20Evolution/)  
 Author: MCOfficer | [https://github.com/MCOfficer/Kraz-Cybernetics-Evolution](https://github.com/MCOfficer/Kraz-Cybernetics-Evolution)  
 Category: Outfits  
 
@@ -2011,7 +2076,7 @@ Status: N/A
 ### MaddreMod
 
 
-[MaddreMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MaddreMod.zip) | 54.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MaddreMod/)  
+[MaddreMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MaddreMod.zip) | 54.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MaddreMod/)  
 Author: Maddremor | [https://github.com/Maddremor/ES-MaddreMod](https://github.com/Maddremor/ES-MaddreMod)  
 Category: Outfits  
 
@@ -2027,7 +2092,7 @@ Status: N/A
 ### Maurader Pieces
 
 
-[Maurader.Pieces.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurader.Pieces.zip) | 7.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Maurader%20Pieces/)  
+[Maurader.Pieces.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurader.Pieces.zip) | 7.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Maurader%20Pieces/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2043,7 +2108,7 @@ Status: N/A
 ### Mereti
 
 
-[Mereti.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mereti.zip) | 2.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mereti/)  
+[Mereti.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mereti.zip) | 2.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mereti/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2059,7 +2124,7 @@ Status: works on 0.10.0
 ### Missile Expansion
 
 
-[Missile.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Missile.Expansion.zip) | 6.52 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Missile%20Expansion/)  
+[Missile.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Missile.Expansion.zip) | 6.52 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Missile%20Expansion/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2075,7 +2140,7 @@ Status: N/A
 ### New Droid Regime
 
 
-[New.Droid.Regime.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Droid.Regime.zip) | 20.15 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/New%20Droid%20Regime/)  
+[New.Droid.Regime.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Droid.Regime.zip) | 20.15 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Droid%20Regime/)  
 Author: czartrak | [https://github.com/czartrak/New-Droid-Regime](https://github.com/czartrak/New-Droid-Regime)  
 Category: Outfits  
 
@@ -2092,7 +2157,7 @@ Status: N/A
 <img src='Working/Pilots License/icon.png' height='100'></img><br>
 
 
-[Pilots.License.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pilots.License.zip) | 75.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pilots%20License/)  
+[Pilots.License.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pilots.License.zip) | 75.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pilots%20License/)  
 Author: Timothy Butterworth | [https://github.com/tmbutterworth/pilots-license](https://github.com/tmbutterworth/pilots-license)  
 Category: Outfits  
 
@@ -2108,7 +2173,7 @@ Status: N/A
 ### Quarg Outfit Overhaul
 
 
-[Quarg.Outfit.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Outfit.Overhaul.zip) | 861.17 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quarg%20Outfit%20Overhaul/)  
+[Quarg.Outfit.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Outfit.Overhaul.zip) | 861.17 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20Outfit%20Overhaul/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2124,7 +2189,7 @@ Status: N/A
 ### Science Stuff
 
 
-[Science.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Science.Stuff.zip) | 2.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Science%20Stuff/)  
+[Science.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Science.Stuff.zip) | 2.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Science%20Stuff/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2140,7 +2205,7 @@ Status: N/A
 ### Ship Modded
 
 
-[Ship.Modded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Modded.zip) | 793.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ship%20Modded/)  
+[Ship.Modded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Modded.zip) | 793.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ship%20Modded/)  
 Author: Beanzilla | [https://github.com/Beanzilla/ShipModded](https://github.com/Beanzilla/ShipModded)  
 Category: Outfits  
 
@@ -2153,11 +2218,30 @@ Status: N/A
 
 ---
 
+### snowfeather.robotics
+<img src='Working/snowfeather.robotics/icon.png' width='100'></img><br>
+
+
+[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 55.25 kb | 2023-06-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/)  
+Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
+Category: Outfits  
+
+>(story, 1 new outfit)
+>
+>Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
+>Starts on Snowfeather(Bore Fah) after completing mission "remnant: shattered light 4" and have at least one android installed.
+
+
+Status: tested with 0.10.1  
+
+
+---
+
 ### Solar Sails
 <img src='Working/Solar Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 947.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Solar%20Sails/)  
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 947.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/)  
 Author: TheronEpic | [https://github.com/TheronEpic/theronepic-solar-sails](https://github.com/TheronEpic/theronepic-solar-sails)  
 Category: Outfits  
 
@@ -2173,7 +2257,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Speed Stabilisers
 
 
-[Speed.Stabilisers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Speed.Stabilisers.zip) | 0.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Speed%20Stabilisers/)  
+[Speed.Stabilisers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Speed.Stabilisers.zip) | 0.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Speed%20Stabilisers/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2189,7 +2273,7 @@ Status: N/A
 ### The Machines are Taking Over
 
 
-[The.Machines.are.Taking.Over.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Machines.are.Taking.Over.zip) | 225.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Machines%20are%20Taking%20Over/)  
+[The.Machines.are.Taking.Over.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Machines.are.Taking.Over.zip) | 225.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Machines%20are%20Taking%20Over/)  
 Author: SpiralCat | [https://www.moddb.com/mods/the-machines-are-taking-over](https://www.moddb.com/mods/the-machines-are-taking-over)  
 Category: Outfits  
 
@@ -2205,7 +2289,7 @@ Status: N/A
 ### Utili-Pak
 
 
-[Utili-Pak.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Utili-Pak.zip) | 393.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Utili-Pak/)  
+[Utili-Pak.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Utili-Pak.zip) | 393.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Utili-Pak/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2221,7 +2305,7 @@ Status: N/A
 ### wanderer engines
 
 
-[wanderer.engines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/wanderer.engines.zip) | 77.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/wanderer%20engines/)  
+[wanderer.engines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/wanderer.engines.zip) | 77.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/wanderer%20engines/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2237,7 +2321,7 @@ Status: N/A
 ### worker bot
 
 
-[worker.bot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/worker.bot.zip) | 17.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/worker%20bot/)  
+[worker.bot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/worker.bot.zip) | 17.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/worker%20bot/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
@@ -2253,7 +2337,7 @@ Status: N/A
 ### Zweihander
 
 
-[Zweihander.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zweihander.zip) | 4.37 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Zweihander/)  
+[Zweihander.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zweihander.zip) | 4.37 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zweihander/)  
 Author: 1010Todd | N/A[]()  
 Category: Outfits  
 
@@ -2275,7 +2359,7 @@ Status: outfit is nowhere for sale
 
 ## Overhauls
 
-<p>37 plugins in this category.<p>
+<p>38 plugins in this category.<p>
 
 <details>
 
@@ -2286,7 +2370,7 @@ Status: outfit is nowhere for sale
 ### 3ndless March
 
 
-[3ndless.March.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/3ndless.March.zip) | 1.99 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/3ndless%20March/)  
+[3ndless.March.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/3ndless.March.zip) | 1.99 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/3ndless%20March/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2305,7 +2389,7 @@ Status: N/A
 <img src='Working/40k Pack/icon.png' width='100'></img><br>
 
 
-[40k.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/40k.Pack.zip) | 109.05 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/40k%20Pack/)  
+[40k.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/40k.Pack.zip) | 109.05 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/40k%20Pack/)  
 Author:  1010Todd | [ https//github.com/1010todd/Endless-Sky-40k]( https//github.com/1010todd/Endless-Sky-40k)  
 Category: Overhauls  
 
@@ -2326,7 +2410,7 @@ Status: in development and playable 0.9.15 continous
 <img src='Working/A Galaxy Far Far Away/icon.png' width='100'></img><br>
 
 
-[A.Galaxy.Far.Far.Away.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/A.Galaxy.Far.Far.Away.zip) | 642.52 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/A%20Galaxy%20Far%20Far%20Away/)  
+[A.Galaxy.Far.Far.Away.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/A.Galaxy.Far.Far.Away.zip) | 642.52 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/A%20Galaxy%20Far%20Far%20Away/)  
 Author: Ember369 | [https//github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away](https//github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away)  
 Category: Overhauls  
 
@@ -2342,7 +2426,7 @@ Status: unfinished but playable
 ### Alphean Boolean's Expansion
 
 
-[Alphean.Boolean.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alphean.Boolean.s.Expansion.zip) | 11.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Alphean%20Boolean's%20Expansion/)  
+[Alphean.Boolean.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alphean.Boolean.s.Expansion.zip) | 11.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alphean%20Boolean's%20Expansion/)  
 Author: Alphean Boolean | [https://github.com/Disiuze/alphean-expansion](https://github.com/Disiuze/alphean-expansion)  
 Category: Overhauls  
 
@@ -2359,7 +2443,7 @@ Status: N/A
 <img src='Working/Altera/icon.png' width='100'></img><br>
 
 
-[Altera.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Altera.zip) | 15.74 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Altera/)  
+[Altera.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Altera.zip) | 15.74 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Altera/)  
 Author: EricD112 | [https://github.com/EricD112/Altera](https://github.com/EricD112/Altera)  
 Category: Overhauls  
 
@@ -2377,7 +2461,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Beccas Endless Expansion
 
 
-[Beccas.Endless.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beccas.Endless.Expansion.zip) | 6.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Beccas%20Endless%20Expansion/)  
+[Beccas.Endless.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beccas.Endless.Expansion.zip) | 6.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Beccas%20Endless%20Expansion/)  
 Author: Becca Tommaso | [https://github.com/beccabunny/Beccas-Endless-Expansion](https://github.com/beccabunny/Beccas-Endless-Expansion)  
 Category: Overhauls  
 
@@ -2394,7 +2478,7 @@ Status: N/A
 <img src='Working/Better Vanilla Pirates/icon.png' width='100'></img><br>
 
 
-[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 72.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Better%20Vanilla%20Pirates/)  
+[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 72.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Pirates/)  
 Author: ZBok | [https://github.com/ZBok/BetterVanillaPirates](https://github.com/ZBok/BetterVanillaPirates)  
 Category: Overhauls  
 
@@ -2410,7 +2494,7 @@ Status: N/A
 ### Beyond the Sky
 
 
-[Beyond.the.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beyond.the.Sky.zip) | 12.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Beyond%20the%20Sky/)  
+[Beyond.the.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beyond.the.Sky.zip) | 12.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Beyond%20the%20Sky/)  
 Author: 1010todd | [https://github.com/1010todd/Beyond-the-Sky](https://github.com/1010todd/Beyond-the-Sky)  
 Category: Overhauls  
 
@@ -2427,7 +2511,7 @@ Status: Continuous/0.9.15+
 ### Civil War
 
 
-[Civil.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Civil.War.zip) | 57.95 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Civil%20War/)  
+[Civil.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Civil.War.zip) | 57.95 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Civil%20War/)  
 Author: kikotheexile | [https://github.com/kikotheexile/Endless-Sky-Civil-War](https://github.com/kikotheexile/Endless-Sky-Civil-War)  
 Category: Overhauls  
 
@@ -2443,7 +2527,7 @@ Status: Total conversion mod, will likely function but is outdated, expect issue
 ### Disable Pack
 
 
-[Disable.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Disable.Pack.zip) | 4.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Disable%20Pack/)  
+[Disable.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Disable.Pack.zip) | 4.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Disable%20Pack/)  
 Author: "That Guy" | N/A[]()  
 Category: Overhauls  
 
@@ -2459,7 +2543,7 @@ Status: N/A
 ### Edge of Endless
 
 
-[Edge.of.Endless.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Edge.of.Endless.zip) | 231.07 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Edge%20of%20Endless/)  
+[Edge.of.Endless.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Edge.of.Endless.zip) | 231.07 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Edge%20of%20Endless/)  
 Author: Zach Farmer | N/A[]()  
 Category: Overhauls  
 
@@ -2476,7 +2560,7 @@ Status: Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Endless-Endless-Sky/icon.png' width='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 14.07 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless-Endless-Sky/)  
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 14.07 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
 Author: 1010Todd | [https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky)  
 Category: Overhauls  
 
@@ -2492,7 +2576,7 @@ Status: Playable on 0.9.15/0.9.16/Continuous.
 ### Enigma Corp Legacy
 
 
-[Enigma.Corp.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enigma.Corp.Legacy.zip) | 13.89 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Enigma%20Corp%20Legacy/)  
+[Enigma.Corp.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enigma.Corp.Legacy.zip) | 13.89 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Enigma%20Corp%20Legacy/)  
 Author: Amazinite | [https://github.com/Amazinite/Enigma-Corp-Legacy](https://github.com/Amazinite/Enigma-Corp-Legacy)  
 Category: Overhauls  
 
@@ -2508,7 +2592,7 @@ Status: N/A
 ### Fallen
 
 
-[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fallen/)  
+[Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fallen/)  
 Author: Michael Feather | N/A[]()  
 Category: Overhauls  
 
@@ -2525,7 +2609,7 @@ Status: N/A
 <img src='Working/Galactic War/icon.png' width='100'></img><br>
 
 
-[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 130.78 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galactic%20War/)  
+[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 130.78 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/)  
 Author: 1010todd | [https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War)  
 Category: Overhauls  
 
@@ -2541,7 +2625,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Humans Alternate Universe
 
 
-[Humans.Alternate.Universe.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Humans.Alternate.Universe.zip) | 2.71 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Humans%20Alternate%20Universe/)  
+[Humans.Alternate.Universe.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Humans.Alternate.Universe.zip) | 2.71 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Humans%20Alternate%20Universe/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2557,7 +2641,7 @@ Status: N/A
 ### Jump to Lightspeed
 
 
-[Jump.to.Lightspeed.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jump.to.Lightspeed.zip) | 1.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Jump%20to%20Lightspeed/)  
+[Jump.to.Lightspeed.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jump.to.Lightspeed.zip) | 1.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jump%20to%20Lightspeed/)  
 Author: Krayt Dragon Moddding | [https://www.moddb.com/mods/endless-sky-jump-to-lightspeed](https://www.moddb.com/mods/endless-sky-jump-to-lightspeed)  
 Category: Overhauls  
 
@@ -2574,7 +2658,7 @@ Status: Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 ### New Sky
 
 
-[New.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Sky.zip) | 11.42 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/New%20Sky/)  
+[New.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Sky.zip) | 11.42 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Sky/)  
 Author: 1010Todd | [https://github.com/1010todd/ES-New_Sky](https://github.com/1010todd/ES-New_Sky)  
 Category: Overhauls  
 
@@ -2590,7 +2674,7 @@ Status: No longer developed. Playable on 0.9.14, 0.9.15 Continuous.
 ### PipMod
 
 
-[PipMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PipMod.zip) | 24.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/PipMod/)  
+[PipMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PipMod.zip) | 24.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PipMod/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2606,7 +2690,7 @@ Status: N/A
 ### Pirate Expansion
 
 
-[Pirate.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Expansion.zip) | 4.94 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pirate%20Expansion/)  
+[Pirate.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Expansion.zip) | 4.94 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pirate%20Expansion/)  
 Author: Becca Tommaso | [https://github.com/beccabunny/Pirate-Expansion](https://github.com/beccabunny/Pirate-Expansion)  
 Category: Overhauls  
 
@@ -2624,7 +2708,7 @@ Status: N/A
 <img src='Working/Prometeus Flame/icon.png' width='100'></img><br>
 
 
-[Prometeus.Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometeus.Flame.zip) | 38.54 mb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Prometeus%20Flame/)  
+[Prometeus.Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometeus.Flame.zip) | 38.54 mb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometeus%20Flame/)  
 Author: Delta-Zero | [https://github.com/Delta-Zero/Endless-Sky-Prometeus-Flame-Plugin](https://github.com/Delta-Zero/Endless-Sky-Prometeus-Flame-Plugin)  
 Category: Overhauls  
 
@@ -2642,7 +2726,7 @@ Status: WIP, Map Only
 <img src='Working/Pug Defense/icon.png' height='100'></img><br>
 
 
-[Pug.Defense.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug.Defense.zip) | 1.11 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pug%20Defense/)  
+[Pug.Defense.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug.Defense.zip) | 1.11 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pug%20Defense/)  
 Author: Wyrdean | [https://github.com/Wyrdean/Pug-Defense](https://github.com/Wyrdean/Pug-Defense)  
 Category: Overhauls  
 
@@ -2660,7 +2744,7 @@ Status: works on 0.10.0
 ### Random Expansion
 
 
-[Random.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Random.Expansion.zip) | 2.42 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Random%20Expansion/)  
+[Random.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Random.Expansion.zip) | 2.42 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Random%20Expansion/)  
 Author: Alphean Boolean | [https://github.com/Disiuze/alphean-expansion](https://github.com/Disiuze/alphean-expansion)  
 Category: Overhauls  
 
@@ -2676,7 +2760,7 @@ Status: N/A
 ### Sci-Fi Flavours
 
 
-[Sci-Fi.Flavours.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sci-Fi.Flavours.zip) | 42.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sci-Fi%20Flavours/)  
+[Sci-Fi.Flavours.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sci-Fi.Flavours.zip) | 42.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sci-Fi%20Flavours/)  
 Author: Linear Perk | [https://github.com/LinearPerk/Sci-Fi-Flavours](https://github.com/LinearPerk/Sci-Fi-Flavours)  
 Category: Overhauls  
 
@@ -2697,7 +2781,7 @@ Status: N/A
 <img src='Working/Shields Up/icon.png' width='100'></img><br>
 
 
-[Shields.Up.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shields.Up.zip) | 12.72 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Shields%20Up/)  
+[Shields.Up.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shields.Up.zip) | 12.72 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Shields%20Up/)  
 Author: Alphean Boolean | [https://github.com/Disiuze/alphean-expansion](https://github.com/Disiuze/alphean-expansion)  
 Category: Overhauls  
 
@@ -2715,7 +2799,7 @@ Status: N/A
 <img src='Working/ShieldsUp Derpy%27s Expansion/icon.png' width='100'></img><br>
 
 
-[ShieldsUp.Derpy.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Derpy.s.Expansion.zip) | 266.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Derpy's%20Expansion/)  
+[ShieldsUp.Derpy.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Derpy.s.Expansion.zip) | 266.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Derpy's%20Expansion/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2732,7 +2816,7 @@ Status: N/A
 <img src='Working/ShieldsUp Housekeeping/icon.png' width='100'></img><br>
 
 
-[ShieldsUp.Housekeeping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Housekeeping.zip) | 5.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Housekeeping/)  
+[ShieldsUp.Housekeeping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Housekeeping.zip) | 5.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Housekeeping/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2748,7 +2832,7 @@ Status: N/A
 ### ShieldsUp Legacy
 
 
-[ShieldsUp.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Legacy.zip) | 757.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Legacy/)  
+[ShieldsUp.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Legacy.zip) | 757.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Legacy/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2766,7 +2850,7 @@ Status: N/A
 ### ShieldsUp Override
 
 
-[ShieldsUp.Override.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Override.zip) | 1.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Override/)  
+[ShieldsUp.Override.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Override.zip) | 1.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Override/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2782,7 +2866,7 @@ Status: N/A
 ### ShieldsUp_ZZOverride
 
 
-[ShieldsUp_ZZOverride.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp_ZZOverride.zip) | 1.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp_ZZOverride/)  
+[ShieldsUp_ZZOverride.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp_ZZOverride.zip) | 1.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp_ZZOverride/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2798,7 +2882,7 @@ Status: N/A
 ### Star Wars
 
 
-[Star.Wars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Wars.zip) | 18.64 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Star%20Wars/)  
+[Star.Wars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Wars.zip) | 18.64 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Star%20Wars/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2814,7 +2898,7 @@ Status: N/A
 ### The Empire's March
 
 
-[The.Empire.s.March.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Empire.s.March.zip) | 170.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Empire's%20March/)  
+[The.Empire.s.March.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Empire.s.March.zip) | 170.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Empire's%20March/)  
 Author: Rushin Neighbour | N/A[]()  
 Category: Overhauls  
 
@@ -2833,7 +2917,7 @@ Status: N/A
 <img src='Working/The Enclave/icon.png' width='100'></img><br>
 
 
-[The.Enclave.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Enclave.zip) | 6.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Enclave/)  
+[The.Enclave.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Enclave.zip) | 6.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Enclave/)  
 Author: Storm Crow | [https://github.com/1010todd/The-Enclave](https://github.com/1010todd/The-Enclave)  
 Category: Overhauls  
 
@@ -2849,7 +2933,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### The Final Frontier
 
 
-[The.Final.Frontier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Final.Frontier.zip) | 27.66 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Final%20Frontier/)  
+[The.Final.Frontier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Final.Frontier.zip) | 27.66 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Final%20Frontier/)  
 Author: William 'Swingfire' | [https://www.indiedb.com/mods/endless-sky-the-final-frontier](https://www.indiedb.com/mods/endless-sky-the-final-frontier)  
 Category: Overhauls  
 
@@ -2865,7 +2949,7 @@ Status: N/A
 ### Titans
 
 
-[Titans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Titans.zip) | 10.43 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Titans/)  
+[Titans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Titans.zip) | 10.43 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Titans/)  
 Author: N/A | N/A[]()  
 Category: Overhauls  
 
@@ -2878,10 +2962,28 @@ Status: N/A
 
 ---
 
+### too.many.asteroids
+<img src='Working/too.many.asteroids/icon.png' width='100'></img><br>
+
+
+[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 56.88 kb | 2023-06-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/)  
+Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
+Category: Overhauls  
+
+>(2654 system attributes changed, in 552 systems)
+>
+>Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched.
+
+
+Status: tested with 0.10.1  
+
+
+---
+
 ### Undisclosed Plugin
 
 
-[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.13 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Undisclosed%20Plugin/)  
+[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.13 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Undisclosed%20Plugin/)  
 Author: petervdmeer | [https://github.com/petervdmeer/endless-sky-undisclosed-plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin)  
 Category: Overhauls  
 
@@ -2898,7 +3000,7 @@ Status: N/A
 <img src='Working/unique.fix/icon.png' width='100'></img><br>
 
 
-[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | 96.29 kb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/unique.fix/)  
+[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/unique.fix/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Overhauls  
 
@@ -2934,7 +3036,7 @@ Status: tested with 0.10.1
 ### Nerf This Sound Replacer
 
 
-[Nerf.This.Sound.Replacer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nerf.This.Sound.Replacer.zip) | 10.32 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nerf%20This%20Sound%20Replacer/)  
+[Nerf.This.Sound.Replacer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nerf.This.Sound.Replacer.zip) | 10.32 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nerf%20This%20Sound%20Replacer/)  
 Author: N/A | N/A[]()  
 Category: Overwrites  
 
@@ -2967,7 +3069,7 @@ Status: N/A
 ### Mega Freight ZHO
 
 
-[Mega.Freight.ZHO.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.ZHO.zip) | 2.69 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mega%20Freight%20ZHO/)  
+[Mega.Freight.ZHO.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.ZHO.zip) | 2.69 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight%20ZHO/)  
 Author: 1010Todd | N/A[]()  
 Category: Patches  
 
@@ -2983,7 +3085,7 @@ Status: N/A
 ### zFleet Patch
 
 
-[zFleet.Patch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zFleet.Patch.zip) | 7.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/zFleet%20Patch/)  
+[zFleet.Patch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zFleet.Patch.zip) | 7.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/zFleet%20Patch/)  
 Author: 1010Todd | N/A[]()  
 Category: Patches  
 
@@ -3000,7 +3102,7 @@ Status: N/A
 ### zFW Patch
 
 
-[zFW.Patch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zFW.Patch.zip) | 6.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/zFW%20Patch/)  
+[zFW.Patch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/zFW.Patch.zip) | 6.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/zFW%20Patch/)  
 Author: N/A | N/A[]()  
 Category: Patches  
 
@@ -3034,7 +3136,7 @@ Status: N/A
 <img src='Working/Adamas Project/icon.png' width='100'></img><br>
 
 
-[Adamas.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adamas.Project.zip) | 17.87 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Adamas%20Project/)  
+[Adamas.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adamas.Project.zip) | 17.87 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Adamas%20Project/)  
 Author: toiletthings | [https://github.com/kestrel1110/Adamas-Project](https://github.com/kestrel1110/Adamas-Project)  
 Category: Races  
 
@@ -3051,7 +3153,7 @@ Status: N/A
 <img src='Working/AES Aben/icon.png' width='100'></img><br>
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 73.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Aben/)  
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 73.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3068,7 +3170,7 @@ Status: N/A
 <img src='Working/AES Fallen/icon.png' width='100'></img><br>
 
 
-[AES.Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fallen.zip) | 895.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Fallen/)  
+[AES.Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fallen.zip) | 895.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fallen/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3085,7 +3187,7 @@ Status: N/A
 <img src='Working/AES Irm/icon.png' width='100'></img><br>
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 8.15 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Irm/)  
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 8.15 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3102,7 +3204,7 @@ Status: N/A
 <img src='Working/AES Korath/icon.png' width='100'></img><br>
 
 
-[AES.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Korath.zip) | 3.98 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Korath/)  
+[AES.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Korath.zip) | 3.98 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Korath/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3119,7 +3221,7 @@ Status: N/A
 <img src='Working/AES Misc/icon.png' width='100'></img><br>
 
 
-[AES.Misc.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Misc.zip) | 16.6 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Misc/)  
+[AES.Misc.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Misc.zip) | 16.6 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Misc/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3137,7 +3239,7 @@ Status: N/A
 <img src='Working/AES Quarg/icon.png' width='100'></img><br>
 
 
-[AES.Quarg.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Quarg.zip) | 7.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/AES%20Quarg/)  
+[AES.Quarg.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Quarg.zip) | 7.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Quarg/)  
 Author: Darcy Manoel | [https://github.com/Darcman99/Adde-Endless-Sky](https://github.com/Darcman99/Adde-Endless-Sky)  
 Category: Races  
 
@@ -3154,7 +3256,7 @@ Status: N/A
 <img src='Working/Akasha Chronicles/icon.png' width='100'></img><br>
 
 
-[Akasha.Chronicles.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Akasha.Chronicles.zip) | 8.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Akasha%20Chronicles/)  
+[Akasha.Chronicles.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Akasha.Chronicles.zip) | 8.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Akasha%20Chronicles/)  
 Author: Gillax / jchamlin | [https://github.com/jchamlin/akasha-chronicles](https://github.com/jchamlin/akasha-chronicles)  
 Category: Races  
 
@@ -3171,7 +3273,7 @@ Status: N/A
 ### Akashic War
 
 
-[Akashic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Akashic.War.zip) | 9.78 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Akashic%20War/)  
+[Akashic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Akashic.War.zip) | 9.78 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Akashic%20War/)  
 Author: Gillax | N/A[]()  
 Category: Races  
 
@@ -3187,7 +3289,7 @@ Status: N/A
 ### Alpha Wars
 
 
-[Alpha.Wars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alpha.Wars.zip) | 19.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Alpha%20Wars/)  
+[Alpha.Wars.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alpha.Wars.zip) | 19.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alpha%20Wars/)  
 Author: Makuta-Miras (Storm Crow) and warp-core | [https://github.com/Makuta-Miras/ES-Alpha-Wars](https://github.com/Makuta-Miras/ES-Alpha-Wars)  
 Category: Races  
 
@@ -3203,7 +3305,7 @@ Status: abandoned
 ### Ancient Saryds
 
 
-[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | 3.76 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ancient%20Saryds/)  
+[Ancient.Saryds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ancient.Saryds.zip) | 3.76 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ancient%20Saryds/)  
 Author: Zoura | N/A[]()  
 Category: Races  
 
@@ -3219,7 +3321,7 @@ Status: Playable on 0.10.0 continuous
 ### Arbiter
 
 
-[Arbiter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arbiter.zip) | 92.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arbiter/)  
+[Arbiter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arbiter.zip) | 92.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arbiter/)  
 Author: czartrak | [https://github.com/czartrak/es-arbiter](https://github.com/czartrak/es-arbiter)  
 Category: Races  
 
@@ -3236,7 +3338,7 @@ Status: N/A
 <img src='Working/Arion/icon.png' width='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.03 mb | 2023-05-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arion/)  
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.03 mb | 2023-05-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/)  
 Author: Spectre907YT | [https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion)  
 Category: Races  
 
@@ -3252,7 +3354,7 @@ Status: Should work in Continuous/0.9.15/0.9.16
 ### Athmagr Invasion
 
 
-[Athmagr.Invasion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Athmagr.Invasion.zip) | 11.76 mb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Athmagr%20Invasion/)  
+[Athmagr.Invasion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Athmagr.Invasion.zip) | 11.76 mb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Athmagr%20Invasion/)  
 Author: 1010todd | [https://github.com/1010todd/Athmagr-Invasion](https://github.com/1010todd/Athmagr-Invasion)  
 Category: Races  
 
@@ -3268,7 +3370,7 @@ Status: Playable on 0.9.15, 0.9.16, Continuous
 ### Better Korath
 
 
-[Better.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Korath.zip) | 276.84 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Better%20Korath/)  
+[Better.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Korath.zip) | 276.84 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Korath/)  
 Author: superdragon322 | [https://github.com/superdragon322/Better-Korath-](https://github.com/superdragon322/Better-Korath-)  
 Category: Races  
 
@@ -3284,7 +3386,7 @@ Status: N/A
 ### BiteOfTheAnt
 
 
-[BiteOfTheAnt.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BiteOfTheAnt.zip) | 887.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/BiteOfTheAnt/)  
+[BiteOfTheAnt.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BiteOfTheAnt.zip) | 887.06 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/BiteOfTheAnt/)  
 Author: TayganPhilglas | [https://github.com/TayganPhilglas/EndlessSky-BiteOfTheAnt-Mod](https://github.com/TayganPhilglas/EndlessSky-BiteOfTheAnt-Mod)  
 Category: Races  
 
@@ -3301,7 +3403,7 @@ Status: N/A
 <img src='Working/Core Mining Inc/icon.png' width='100'></img><br>
 
 
-[Core.Mining.Inc.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Core.Mining.Inc.zip) | 373.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Core%20Mining%20Inc/)  
+[Core.Mining.Inc.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Core.Mining.Inc.zip) | 373.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Core%20Mining%20Inc/)  
 Author: DJF113 | [https://github.com/DJF113/Core-Mining-Inc](https://github.com/DJF113/Core-Mining-Inc)  
 Category: Races  
 
@@ -3317,7 +3419,7 @@ Status: playable on 0.9.15 Continuous.
 ### COTSA
 
 
-[COTSA.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/COTSA.zip) | 1.2 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/COTSA/)  
+[COTSA.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/COTSA.zip) | 1.2 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/COTSA/)  
 Author: mdsmestad | N/A[]()  
 Category: Races  
 
@@ -3333,7 +3435,7 @@ Status: N/A
 ### Destination Sol
 
 
-[Destination.Sol.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Destination.Sol.zip) | 151.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Destination%20Sol/)  
+[Destination.Sol.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Destination.Sol.zip) | 151.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Destination%20Sol/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3349,7 +3451,7 @@ Status: N/A
 ### Eireen
 
 
-[Eireen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eireen.zip) | 3.97 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Eireen/)  
+[Eireen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eireen.zip) | 3.97 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Eireen/)  
 Author: Endros Gunderberg | N/A[]()  
 Category: Races  
 
@@ -3367,7 +3469,7 @@ Status: N/A
 ### Elystian Plugin
 
 
-[Elystian.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Elystian.Plugin.zip) | 855.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Elystian%20Plugin/)  
+[Elystian.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Elystian.Plugin.zip) | 855.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Elystian%20Plugin/)  
 Author: Ferociousfeind | N/A[]()  
 Category: Races  
 
@@ -3384,7 +3486,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Endless Depth Mod/icon.png' width='100'></img><br>
 
 
-[Endless.Depth.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Depth.Mod.zip) | 3.5 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Depth%20Mod/)  
+[Endless.Depth.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Depth.Mod.zip) | 3.5 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Depth%20Mod/)  
 Author: Kryes Omega | N/A[]()  
 Category: Races  
 
@@ -3401,7 +3503,7 @@ Status: N/A
 <img src='Working/Endless Fortress 2/icon.png' width='100'></img><br>
 
 
-[Endless.Fortress.2.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Fortress.2.zip) | 1.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Fortress%202/)  
+[Endless.Fortress.2.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Fortress.2.zip) | 1.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Fortress%202/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3417,7 +3519,7 @@ Status: N/A
 ### Endless Horizon
 
 
-[Endless.Horizon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Horizon.zip) | 2.61 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Horizon/)  
+[Endless.Horizon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Horizon.zip) | 2.61 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Horizon/)  
 Author: CTheta | [https://www.moddb.com/games/endless-sky-endless-horizon](https://www.moddb.com/games/endless-sky-endless-horizon)  
 Category: Races  
 
@@ -3433,7 +3535,7 @@ Status: Abandoned
 ### Ertluk
 
 
-[Ertluk.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ertluk.zip) | 18.92 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ertluk/)  
+[Ertluk.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ertluk.zip) | 18.92 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ertluk/)  
 Author: ZBok | N/A[]()  
 Category: Races  
 
@@ -3450,7 +3552,7 @@ Status: N/A
 <img src='Working/Eternals/icon.png' width='100'></img><br>
 
 
-[Eternals.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eternals.zip) | 16.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Eternals/)  
+[Eternals.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eternals.zip) | 16.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Eternals/)  
 Author: comnom | [https://github.com/comnom/Eternals](https://github.com/comnom/Eternals)  
 Category: Races  
 
@@ -3466,7 +3568,7 @@ Status: N/A
 ### Exotic Matter
 
 
-[Exotic.Matter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Exotic.Matter.zip) | 4.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Exotic%20Matter/)  
+[Exotic.Matter.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Exotic.Matter.zip) | 4.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Exotic%20Matter/)  
 Author: CristopherZhong | [https://github.com/ChristopherZhong/endless-sky-exotic-matter-plugin](https://github.com/ChristopherZhong/endless-sky-exotic-matter-plugin)  
 Category: Races  
 
@@ -3483,7 +3585,7 @@ Status: N/A
 <img src='Working/Exporianes/icon.png' width='100'></img><br>
 
 
-[Exporianes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Exporianes.zip) | 53.93 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Exporianes/)  
+[Exporianes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Exporianes.zip) | 53.93 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Exporianes/)  
 Author: Bereskatuket(Kestrel1110) | [https://github.com/kestrel1110/Exporianes](https://github.com/kestrel1110/Exporianes)  
 Category: Races  
 
@@ -3499,7 +3601,7 @@ Status: In development, Playable on 0.9.15 Continuous.
 ### Galactic Invaders
 
 
-[Galactic.Invaders.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Invaders.zip) | 825.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galactic%20Invaders/)  
+[Galactic.Invaders.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Invaders.zip) | 825.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Invaders/)  
 Author: Matthew Murray | N/A[]()  
 Category: Races  
 
@@ -3515,7 +3617,7 @@ Status: N/A
 ### Ironclad
 
 
-[Ironclad.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ironclad.zip) | 2.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ironclad/)  
+[Ironclad.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ironclad.zip) | 2.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ironclad/)  
 Author: 1010todd | N/A[]()  
 Category: Races  
 
@@ -3532,7 +3634,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Jaling Expansion
 
 
-[Jaling.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaling.Expansion.zip) | 4.27 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Jaling%20Expansion/)  
+[Jaling.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaling.Expansion.zip) | 4.27 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaling%20Expansion/)  
 Author: RizkyPramudyaCJ | [https://github.com/RizkyPramudyaCJ/Jaling-Expansion](https://github.com/RizkyPramudyaCJ/Jaling-Expansion)  
 Category: Races  
 
@@ -3548,7 +3650,7 @@ Status: N/A
 ### KorExiles PA
 
 
-[KorExiles.PA.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/KorExiles.PA.zip) | 21.74 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/KorExiles%20PA/)  
+[KorExiles.PA.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/KorExiles.PA.zip) | 21.74 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/KorExiles%20PA/)  
 Author: Ejothims | N/A[]()  
 Category: Races  
 
@@ -3564,7 +3666,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Low Tech Worlds
 
 
-[Low.Tech.Worlds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Low.Tech.Worlds.zip) | 56.04 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Low%20Tech%20Worlds/)  
+[Low.Tech.Worlds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Low.Tech.Worlds.zip) | 56.04 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Low%20Tech%20Worlds/)  
 Author: Samuel Dennis | N/A[]()  
 Category: Races  
 
@@ -3580,7 +3682,7 @@ Status: N/A
 ### Make Communism Great Again
 
 
-[Make.Communism.Great.Again.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Make.Communism.Great.Again.zip) | 1.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Make%20Communism%20Great%20Again/)  
+[Make.Communism.Great.Again.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Make.Communism.Great.Again.zip) | 1.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Make%20Communism%20Great%20Again/)  
 Author: JonathanZhang1 | [https://github.com/JonathanZhang1/Make-communism-great-again-endless-sky](https://github.com/JonathanZhang1/Make-communism-great-again-endless-sky)  
 Category: Races  
 
@@ -3596,7 +3698,7 @@ Status: N/A
 ### Mark 2 Pug
 
 
-[Mark.2.Pug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mark.2.Pug.zip) | 1021.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mark%202%20Pug/)  
+[Mark.2.Pug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mark.2.Pug.zip) | 1021.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mark%202%20Pug/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3612,7 +3714,7 @@ Status: N/A
 ### Marsian Ancestors
 
 
-[Marsian.Ancestors.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marsian.Ancestors.zip) | 32.54 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Marsian%20Ancestors/)  
+[Marsian.Ancestors.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marsian.Ancestors.zip) | 32.54 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Marsian%20Ancestors/)  
 Author: Endros Gunderberg | N/A[]()  
 Category: Races  
 
@@ -3628,7 +3730,7 @@ Status: N/A
 ### Mata
 
 
-[Mata.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mata.zip) | 21.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mata/)  
+[Mata.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mata.zip) | 21.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mata/)  
 Author: Karimi(Karirawri) | N/A[]()  
 Category: Races  
 
@@ -3644,7 +3746,7 @@ Status: N/A
 ### Military Plugin
 
 
-[Military.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Military.Plugin.zip) | 314.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Military%20Plugin/)  
+[Military.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Military.Plugin.zip) | 314.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Military%20Plugin/)  
 Author: JPG7D | [https://github.com/JPG7D/endless-sky-military-plugin](https://github.com/JPG7D/endless-sky-military-plugin)  
 Category: Races  
 
@@ -3660,7 +3762,7 @@ Status: N/A
 ### nomads
 
 
-[nomads.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/nomads.zip) | 2.0 mb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/nomads/)  
+[nomads.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/nomads.zip) | 2.0 mb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/nomads/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3676,7 +3778,7 @@ Status: N/A
 ### Octyl
 
 
-[Octyl.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Octyl.zip) | 5.54 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Octyl/)  
+[Octyl.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Octyl.zip) | 5.54 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Octyl/)  
 Author: Ferociousfeind | [https://github.com/Ferociousfeind/Octyl-Emergence](https://github.com/Ferociousfeind/Octyl-Emergence)  
 Category: Races  
 
@@ -3692,7 +3794,7 @@ Status: Should be playable on 0.9.14, 0.9.15 Continuous.
 ### Overseers
 
 
-[Overseers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Overseers.zip) | 980.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Overseers/)  
+[Overseers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Overseers.zip) | 980.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Overseers/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3708,7 +3810,7 @@ Status: N/A
 ### Project Technovirus
 
 
-[Project.Technovirus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Technovirus.zip) | 694.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Project%20Technovirus/)  
+[Project.Technovirus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Technovirus.zip) | 694.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Technovirus/)  
 Author: czartrak | [https://github.com/czartrak/Project-Technovirus](https://github.com/czartrak/Project-Technovirus)  
 Category: Races  
 
@@ -3724,7 +3826,7 @@ Status: N/A
 ### Remnant
 
 
-[Remnant.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Remnant.zip) | 5.37 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Remnant/)  
+[Remnant.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Remnant.zip) | 5.37 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Remnant/)  
 Author: Zitchas | N/A[]()  
 Category: Races  
 
@@ -3740,7 +3842,7 @@ Status: N/A
 ### Sarcina
 
 
-[Sarcina.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sarcina.zip) | 6.31 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sarcina/)  
+[Sarcina.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sarcina.zip) | 6.31 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sarcina/)  
 Author: Darcy Manoel | N/A[]()  
 Category: Races  
 
@@ -3756,7 +3858,7 @@ Status: N/A
 ### Shirni
 
 
-[Shirni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shirni.zip) | 272.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Shirni/)  
+[Shirni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shirni.zip) | 272.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Shirni/)  
 Author: Quantumshark | [https://github.com/Quantumshark/ES-Shirni](https://github.com/Quantumshark/ES-Shirni)  
 Category: Races  
 
@@ -3773,7 +3875,7 @@ Status: N/A
 <img src='Working/Space Invaders/icon.png' width='100'></img><br>
 
 
-[Space.Invaders.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Invaders.zip) | 76.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Invaders/)  
+[Space.Invaders.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Invaders.zip) | 76.58 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Invaders/)  
 Author: mdsmestad | N/A[]()  
 Category: Races  
 
@@ -3791,7 +3893,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Space Things
 
 
-[Space.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Things.zip) | 5.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Things/)  
+[Space.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Things.zip) | 5.62 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Things/)  
 Author: Michael Arsollon | N/A[]()  
 Category: Races  
 
@@ -3809,7 +3911,7 @@ Status: N/A
 ### Star Wars Map
 
 
-[Star.Wars.Map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Wars.Map.zip) | 10.33 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Star%20Wars%20Map/)  
+[Star.Wars.Map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Wars.Map.zip) | 10.33 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Star%20Wars%20Map/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3827,7 +3929,7 @@ Status: N/A
 ### Stargate Mod
 
 
-[Stargate.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stargate.Mod.zip) | 29.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Stargate%20Mod/)  
+[Stargate.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stargate.Mod.zip) | 29.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Stargate%20Mod/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3843,7 +3945,7 @@ Status: N/A
 ### Starlus
 
 
-[Starlus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starlus.zip) | 1.9 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Starlus/)  
+[Starlus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starlus.zip) | 1.9 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Starlus/)  
 Author: pilover100 | [https://github.com/pilover100/starlus-plugin](https://github.com/pilover100/starlus-plugin)  
 Category: Races  
 
@@ -3861,7 +3963,7 @@ Status: N/A
 ### StarSector
 
 
-[StarSector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarSector.zip) | 478.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarSector/)  
+[StarSector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarSector.zip) | 478.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/StarSector/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3877,7 +3979,7 @@ Status: N/A
 ### synchrony
 
 
-[synchrony.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/synchrony.zip) | 901.28 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/synchrony/)  
+[synchrony.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/synchrony.zip) | 901.28 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/synchrony/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3893,7 +3995,7 @@ Status: N/A
 ### Terrans
 
 
-[Terrans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Terrans.zip) | 5.83 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Terrans/)  
+[Terrans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Terrans.zip) | 5.83 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Terrans/)  
 Author: TimCabbage | [https://github.com/sivael/EndlessSkyTerrans/](https://github.com/sivael/EndlessSkyTerrans/)  
 Category: Races  
 
@@ -3909,7 +4011,7 @@ Status: N/A
 ### The Arion Campaign
 
 
-[The.Arion.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Arion.Campaign.zip) | 8.84 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Arion%20Campaign/)  
+[The.Arion.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Arion.Campaign.zip) | 8.84 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Arion%20Campaign/)  
 Author: Red-57 | [https://github.com/Red-57/The-Arion-Campaign](https://github.com/Red-57/The-Arion-Campaign)  
 Category: Races  
 
@@ -3925,7 +4027,7 @@ Status: N/A
 ### The Evora Navaiya
 
 
-[The.Evora.Navaiya.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Evora.Navaiya.zip) | 6.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Evora%20Navaiya/)  
+[The.Evora.Navaiya.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Evora.Navaiya.zip) | 6.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Evora%20Navaiya/)  
 Author: Polaria1 | [https://github.com/Polaria1/The-Evora-Navaiya](https://github.com/Polaria1/The-Evora-Navaiya)  
 Category: Races  
 
@@ -3941,7 +4043,7 @@ Status: N/A
 ### The Forgotten
 
 
-[The.Forgotten.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Forgotten.zip) | 2.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Forgotten/)  
+[The.Forgotten.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Forgotten.zip) | 2.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Forgotten/)  
 Author: Startome | [https://github.com/Startome/TheForgotten](https://github.com/Startome/TheForgotten)  
 Category: Races  
 
@@ -3957,7 +4059,7 @@ Status: N/A
 ### The Great Journey
 
 
-[The.Great.Journey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Great.Journey.zip) | 4.17 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Great%20Journey/)  
+[The.Great.Journey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Great.Journey.zip) | 4.17 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Great%20Journey/)  
 Author: Mr.Guineo | N/A[]()  
 Category: Races  
 
@@ -3975,7 +4077,7 @@ Status: N/A
 ### The Jump Gate Project
 
 
-[The.Jump.Gate.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Jump.Gate.Project.zip) | 3.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Jump%20Gate%20Project/)  
+[The.Jump.Gate.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Jump.Gate.Project.zip) | 3.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Jump%20Gate%20Project/)  
 Author: N/A | N/A[]()  
 Category: Races  
 
@@ -3991,7 +4093,7 @@ Status: N/A
 ### The Swarm Project
 
 
-[The.Swarm.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Swarm.Project.zip) | 1.54 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Swarm%20Project/)  
+[The.Swarm.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Swarm.Project.zip) | 1.54 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Swarm%20Project/)  
 Author: jafdy | [https://github.com/jafdy/the-swarm-project](https://github.com/jafdy/the-swarm-project)  
 Category: Races  
 
@@ -4007,7 +4109,7 @@ Status: N/A
 ### Trin
 
 
-[Trin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Trin.zip) | 14.79 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Trin/)  
+[Trin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Trin.zip) | 14.79 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Trin/)  
 Author: Elyssaen | [https://github.com/Elyssaen/trin](https://github.com/Elyssaen/trin)  
 Category: Races  
 
@@ -4023,7 +4125,7 @@ Status: N/A
 ### Ultaka Invasion of Milky Way
 
 
-[Ultaka.Invasion.of.Milky.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultaka.Invasion.of.Milky.Way.zip) | 7.91 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ultaka%20Invasion%20of%20Milky%20Way/)  
+[Ultaka.Invasion.of.Milky.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultaka.Invasion.of.Milky.Way.zip) | 7.91 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ultaka%20Invasion%20of%20Milky%20Way/)  
 Author: 1010Todd | N/A[]()  
 Category: Races  
 
@@ -4041,7 +4143,7 @@ Status: N/A
 ### Vile Corp
 
 
-[Vile.Corp.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Vile.Corp.zip) | 836.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Vile%20Corp/)  
+[Vile.Corp.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Vile.Corp.zip) | 836.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Vile%20Corp/)  
 Author: janitor | N/A[]()  
 Category: Races  
 
@@ -4057,7 +4159,7 @@ Status: N/A
 ### West Iron
 
 
-[West.Iron.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/West.Iron.zip) | 2.47 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/West%20Iron/)  
+[West.Iron.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/West.Iron.zip) | 2.47 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/West%20Iron/)  
 Author: Kryes-Omega | [https://github.com/Kryes-Omega/endless-sky-WestIron](https://github.com/Kryes-Omega/endless-sky-WestIron)  
 Category: Races  
 
@@ -4073,7 +4175,7 @@ Status: N/A
 ### Yokoyama
 
 
-[Yokoyama.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Yokoyama.zip) | 361.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Yokoyama/)  
+[Yokoyama.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Yokoyama.zip) | 361.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Yokoyama/)  
 Author: dilydaly | [https://github.com/dilydaly/Endless-Sky---Yokoyama](https://github.com/dilydaly/Endless-Sky---Yokoyama)  
 Category: Races  
 
@@ -4106,7 +4208,7 @@ Status: N/A
 ### Ambriel
 
 
-[Ambriel.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ambriel.zip) | 386.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ambriel/)  
+[Ambriel.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ambriel.zip) | 386.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ambriel/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4122,7 +4224,7 @@ Status: should work
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amphibious-Ships/)  
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 921.67 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/)  
 Author: Zoura | [https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)  
 Category: Ships  
 
@@ -4138,7 +4240,7 @@ Status: Playable on 0.10.0/Continuous
 ### Archetto
 
 
-[Archetto.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Archetto.zip) | 93.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Archetto/)  
+[Archetto.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Archetto.zip) | 93.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Archetto/)  
 Author: Hilokiyz | N/A[]()  
 Category: Ships  
 
@@ -4154,7 +4256,7 @@ Status: N/A
 ### Assault Cruiser
 
 
-[Assault.Cruiser.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assault.Cruiser.zip) | 995.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Assault%20Cruiser/)  
+[Assault.Cruiser.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assault.Cruiser.zip) | 995.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Assault%20Cruiser/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4170,7 +4272,7 @@ Status: N/A
 ### B-25
 
 
-[B-25.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/B-25.zip) | 21.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/B-25/)  
+[B-25.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/B-25.zip) | 21.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/B-25/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4186,7 +4288,7 @@ Status: N/A
 ### Bacterian T2
 
 
-[Bacterian.T2.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bacterian.T2.zip) | 142.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bacterian%20T2/)  
+[Bacterian.T2.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bacterian.T2.zip) | 142.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bacterian%20T2/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4202,7 +4304,7 @@ Status: N/A
 ### Bailiff
 
 
-[Bailiff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bailiff.zip) | 5.99 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bailiff/)  
+[Bailiff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bailiff.zip) | 5.99 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bailiff/)  
 Author: GeoNeil | N/A[]()  
 Category: Ships  
 
@@ -4218,7 +4320,7 @@ Status: N/A
 ### Bardagh's Ship Variants
 
 
-[Bardagh.s.Ship.Variants.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bardagh.s.Ship.Variants.zip) | 16.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bardagh's%20Ship%20Variants/)  
+[Bardagh.s.Ship.Variants.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bardagh.s.Ship.Variants.zip) | 16.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bardagh's%20Ship%20Variants/)  
 Author: Bardagh | [https://github.com/Bardagh/ship-variants/](https://github.com/Bardagh/ship-variants/)  
 Category: Ships  
 
@@ -4234,7 +4336,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Battle Carrier
 
 
-[Battle.Carrier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Battle.Carrier.zip) | 128.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Battle%20Carrier/)  
+[Battle.Carrier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Battle.Carrier.zip) | 128.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Battle%20Carrier/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4250,7 +4352,7 @@ Status: Ships and outfit are nowhere for sale.
 ### Battleship Test
 
 
-[Battleship.Test.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Battleship.Test.zip) | 2.8 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Battleship%20Test/)  
+[Battleship.Test.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Battleship.Test.zip) | 2.8 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Battleship%20Test/)  
 Author: Quarg Block(Brick) | N/A[]()  
 Category: Ships  
 
@@ -4266,7 +4368,7 @@ Status: N/A
 ### Binary reOrder
 
 
-[Binary.reOrder.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Binary.reOrder.zip) | 1.83 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Binary%20reOrder/)  
+[Binary.reOrder.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Binary.reOrder.zip) | 1.83 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Binary%20reOrder/)  
 Author: Vaelophis Nyx & Kezethun | N/A[]()  
 Category: Ships  
 
@@ -4283,7 +4385,7 @@ Status: N/A
 <img src='Working/Blended Ships/icon.png' width='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 1.82 mb | 2022-11-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Blended%20Ships/)  
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 1.82 mb | 2022-11-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/)  
 Author: mOctave | [https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships)  
 Category: Ships  
 
@@ -4299,7 +4401,7 @@ Status: N/A
 ### Carriers
 
 
-[Carriers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Carriers.zip) | 2.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Carriers/)  
+[Carriers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Carriers.zip) | 2.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Carriers/)  
 Author: Arkhne | N/A[]()  
 Category: Ships  
 
@@ -4315,7 +4417,7 @@ Status: Should work
 ### Cobbled Ships
 
 
-[Cobbled.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cobbled.Ships.zip) | 4.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Cobbled%20Ships/)  
+[Cobbled.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cobbled.Ships.zip) | 4.44 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cobbled%20Ships/)  
 Author: Zoura3025 | [https://github.com/AvianGeneticist/CobbleShipModES](https://github.com/AvianGeneticist/CobbleShipModES)  
 Category: Ships  
 
@@ -4331,7 +4433,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Czartraks Ship Pack
 
 
-[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | 12.94 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Czartraks%20Ship%20Pack/)  
+[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | 12.94 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Czartraks%20Ship%20Pack/)  
 Author: Czartrak | [https://github.com/czartrak/Czartraks-Ship-Pack](https://github.com/czartrak/Czartraks-Ship-Pack)  
 Category: Ships  
 
@@ -4347,7 +4449,7 @@ Status: N/A
 ### DaBestShipEver
 
 
-[DaBestShipEver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/DaBestShipEver.zip) | 342.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/DaBestShipEver/)  
+[DaBestShipEver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/DaBestShipEver.zip) | 342.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/DaBestShipEver/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -4363,7 +4465,7 @@ Status: N/A
 ### Death Pancake v1.0.0
 
 
-[Death.Pancake.v1.0.0.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Death.Pancake.v1.0.0.zip) | 289.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Death%20Pancake%20v1.0.0/)  
+[Death.Pancake.v1.0.0.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Death.Pancake.v1.0.0.zip) | 289.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Death%20Pancake%20v1.0.0/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4380,7 +4482,7 @@ Status: Should work
 <img src='Working/Defense Drone Plugin/icon.png' width='100'></img><br>
 
 
-[Defense.Drone.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Defense.Drone.Plugin.zip) | 122.32 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Defense%20Drone%20Plugin/)  
+[Defense.Drone.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Defense.Drone.Plugin.zip) | 122.32 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Defense%20Drone%20Plugin/)  
 Author: starmlerp | [https://github.com/starmlerp/ESDefenseDronePlugin](https://github.com/starmlerp/ESDefenseDronePlugin)  
 Category: Ships  
 
@@ -4397,7 +4499,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Derogam/icon.png' width='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.66 mb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Derogam/)  
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.66 mb | 2023-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/)  
 Author: Lorantine | [https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam)  
 Category: Ships  
 
@@ -4413,7 +4515,7 @@ Status: Functional
 ### Derp Ship
 
 
-[Derp.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derp.Ship.zip) | 943.79 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Derp%20Ship/)  
+[Derp.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derp.Ship.zip) | 943.79 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derp%20Ship/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4429,7 +4531,7 @@ Status: N/A
 ### Destiny
 
 
-[Destiny.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Destiny.zip) | 148.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Destiny/)  
+[Destiny.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Destiny.zip) | 148.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Destiny/)  
 Author: Dantoys | N/A[]()  
 Category: Ships  
 
@@ -4445,7 +4547,7 @@ Status: N/A
 ### Dragoon
 
 
-[Dragoon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragoon.zip) | 246.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dragoon/)  
+[Dragoon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragoon.zip) | 246.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dragoon/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -4461,7 +4563,7 @@ Status: Should work.
 ### Dragoon Industries
 
 
-[Dragoon.Industries.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragoon.Industries.zip) | 37.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dragoon%20Industries/)  
+[Dragoon.Industries.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dragoon.Industries.zip) | 37.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dragoon%20Industries/)  
 Author: Hayden Plishka | N/A[]()  
 Category: Ships  
 
@@ -4478,7 +4580,7 @@ Status: Should work
 <img src='Working/Elite Sky/icon.png' width='100'></img><br>
 
 
-[Elite.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Elite.Sky.zip) | 201.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Elite%20Sky/)  
+[Elite.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Elite.Sky.zip) | 201.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Elite%20Sky/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4495,7 +4597,7 @@ Status: N/A
 <img src='Working/Ema Skylark/icon.png' width='100'></img><br>
 
 
-[Ema.Skylark.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ema.Skylark.zip) | 43.91 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ema%20Skylark/)  
+[Ema.Skylark.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ema.Skylark.zip) | 43.91 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ema%20Skylark/)  
 Author: rymeilema | [https://github.com/rymeilema/rymeilema-skylark](https://github.com/rymeilema/rymeilema-skylark)  
 Category: Ships  
 
@@ -4511,7 +4613,7 @@ Status: N/A
 ### Endless-Sky-Ship
 
 
-[Endless-Sky-Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Sky-Ship.zip) | 1.24 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless-Sky-Ship/)  
+[Endless-Sky-Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Sky-Ship.zip) | 1.24 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Sky-Ship/)  
 Author: The-Borg-Captain | [https://github.com/The-Borg-Captain/Endless-Sky-Ship](https://github.com/The-Borg-Captain/Endless-Sky-Ship)  
 Category: Ships  
 
@@ -4527,7 +4629,7 @@ Status: N/A
 ### Endros human basic ships
 
 
-[Endros.human.basic.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endros.human.basic.ships.zip) | 189.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endros%20human%20basic%20ships/)  
+[Endros.human.basic.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endros.human.basic.ships.zip) | 189.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endros%20human%20basic%20ships/)  
 Author: Endros Gunderberg  | N/A[]()  
 Category: Ships  
 
@@ -4546,7 +4648,7 @@ Status: N/A
 ### Everything-n-More
 
 
-[Everything-n-More.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Everything-n-More.zip) | 148.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Everything-n-More/)  
+[Everything-n-More.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Everything-n-More.zip) | 148.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Everything-n-More/)  
 Author: Please-Close-This-Issue | [https://github.com/Please-Close-This-Issue/everything-n-more-mod-](https://github.com/Please-Close-This-Issue/everything-n-more-mod-)  
 Category: Ships  
 
@@ -4562,7 +4664,7 @@ Status: N/A
 ### Fauxwing
 
 
-[Fauxwing.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fauxwing.zip) | 1.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fauxwing/)  
+[Fauxwing.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fauxwing.zip) | 1.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fauxwing/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4579,7 +4681,7 @@ Status: N/A
 <img src='Working/Flip Those Ships/icon.png' height='100'></img><br>
 
 
-[Flip.Those.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flip.Those.Ships.zip) | 882.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flip%20Those%20Ships/)  
+[Flip.Those.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flip.Those.Ships.zip) | 882.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flip%20Those%20Ships/)  
 Author: TheronEpic | [https://github.com/TheronEpic/Flip-Those-Ships](https://github.com/TheronEpic/Flip-Those-Ships)  
 Category: Ships  
 
@@ -4595,7 +4697,7 @@ Status: N/A
 ### Flying Saucer
 
 
-[Flying.Saucer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flying.Saucer.zip) | 121.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flying%20Saucer/)  
+[Flying.Saucer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flying.Saucer.zip) | 121.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flying%20Saucer/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4611,7 +4713,7 @@ Status: N/A
 ### Galaxias
 
 
-[Galaxias.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galaxias.zip) | 80.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galaxias/)  
+[Galaxias.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galaxias.zip) | 80.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galaxias/)  
 Author: mdpiper | [https://github.com/mdpiper/galaxias](https://github.com/mdpiper/galaxias)  
 Category: Ships  
 
@@ -4627,7 +4729,7 @@ Status: N/A
 ### Gulliver
 
 
-[Gulliver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gulliver.zip) | 30.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Gulliver/)  
+[Gulliver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gulliver.zip) | 30.19 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gulliver/)  
 Author: Danzig Or War(Test-711) | N/A[]()  
 Category: Ships  
 
@@ -4643,7 +4745,7 @@ Status: N/A
 ### Hauler Expansion
 
 
-[Hauler.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hauler.Expansion.zip) | 1.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Hauler%20Expansion/)  
+[Hauler.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hauler.Expansion.zip) | 1.29 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hauler%20Expansion/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4660,7 +4762,7 @@ Status: N/A
 ### Heliarch Avenger
 
 
-[Heliarch.Avenger.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Heliarch.Avenger.zip) | 462.23 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Heliarch%20Avenger/)  
+[Heliarch.Avenger.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Heliarch.Avenger.zip) | 462.23 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Heliarch%20Avenger/)  
 Author: Arachi(Arachi-lover) | N/A[]()  
 Category: Ships  
 
@@ -4676,7 +4778,7 @@ Status: N/A
 ### High Tier Warships
 
 
-[High.Tier.Warships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.Tier.Warships.zip) | 14.35 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/High%20Tier%20Warships/)  
+[High.Tier.Warships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.Tier.Warships.zip) | 14.35 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20Tier%20Warships/)  
 Author: 1010todd | N/A[]()  
 Category: Ships  
 
@@ -4692,7 +4794,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### HONK
 
 
-[HONK.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HONK.zip) | 2.28 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/HONK/)  
+[HONK.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HONK.zip) | 2.28 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/HONK/)  
 Author: Hurtz | [https://github.com/Killerhurtz/ES-HONK](https://github.com/Killerhurtz/ES-HONK)  
 Category: Ships  
 
@@ -4709,7 +4811,7 @@ Status: N/A
 <img src='Working/Human Ship Expansion/icon.png' width='100'></img><br>
 
 
-[Human.Ship.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Ship.Expansion.zip) | 546.22 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Human%20Ship%20Expansion/)  
+[Human.Ship.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Human.Ship.Expansion.zip) | 546.22 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Human%20Ship%20Expansion/)  
 Author: loyse | N/A[]()  
 Category: Ships  
 
@@ -4725,7 +4827,7 @@ Status: N/A
 ### IJN Yamato
 
 
-[IJN.Yamato.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/IJN.Yamato.zip) | 983.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/IJN%20Yamato/)  
+[IJN.Yamato.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/IJN.Yamato.zip) | 983.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/IJN%20Yamato/)  
 Author: Hiloki Zheng | [https://github.com/hilokiyz/IJN-Yamato-Endless-Sky](https://github.com/hilokiyz/IJN-Yamato-Endless-Sky)  
 Category: Ships  
 
@@ -4741,7 +4843,7 @@ Status: N/A
 ### Jenkins My Beloved
 
 
-[Jenkins.My.Beloved.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jenkins.My.Beloved.zip) | 8.75 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Jenkins%20My%20Beloved/)  
+[Jenkins.My.Beloved.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jenkins.My.Beloved.zip) | 8.75 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jenkins%20My%20Beloved/)  
 Author: Zoura (AvianGeneticist) | N/A[]()  
 Category: Ships  
 
@@ -4757,7 +4859,7 @@ Status: Should be playable on 0.9.15/0.9.16
 ### Just a ship
 
 
-[Just.a.ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Just.a.ship.zip) | 87.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Just%20a%20ship/)  
+[Just.a.ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Just.a.ship.zip) | 87.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Just%20a%20ship/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4774,7 +4876,7 @@ Status: N/A
 ### Kaynz
 
 
-[Kaynz.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kaynz.zip) | 7.07 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kaynz/)  
+[Kaynz.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kaynz.zip) | 7.07 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kaynz/)  
 Author: Mcgode | [https://github.com/Mcgode/Kaynz](https://github.com/Mcgode/Kaynz)  
 Category: Ships  
 
@@ -4790,7 +4892,7 @@ Status: N/A
 ### Kestrel-M
 
 
-[Kestrel-M.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kestrel-M.zip) | 54.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kestrel-M/)  
+[Kestrel-M.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kestrel-M.zip) | 54.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kestrel-M/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -4806,7 +4908,7 @@ Status: N/A
 ### Kor-Fighter-Additions
 
 
-[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kor-Fighter-Additions/)  
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor-Fighter-Additions/)  
 Author: EjoThims | N/A[]()  
 Category: Ships  
 
@@ -4823,7 +4925,7 @@ Status: Playable on 0.10.0 continuous
 <img src='Working/Lampyrid Start/icon.png' width='100'></img><br>
 
 
-[Lampyrid.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lampyrid.Start.zip) | 53.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Lampyrid%20Start/)  
+[Lampyrid.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lampyrid.Start.zip) | 53.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lampyrid%20Start/)  
 Author: Zitchas | [https://github.com/Zitchas/ES_Lampyrid_Start](https://github.com/Zitchas/ES_Lampyrid_Start)  
 Category: Ships  
 
@@ -4839,7 +4941,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Legendary Pirates
 
 
-[Legendary.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Legendary.Pirates.zip) | 4.0 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Legendary%20Pirates/)  
+[Legendary.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Legendary.Pirates.zip) | 4.0 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Legendary%20Pirates/)  
 Author: Lake(Galaucus) | [https://github.com/Galaucus/Endless-Sky-Legendary-Pirates](https://github.com/Galaucus/Endless-Sky-Legendary-Pirates)  
 Category: Ships  
 
@@ -4856,7 +4958,7 @@ Status: N/A
 <img src='Working/Lertsek/icon.png' height='100'></img><br>
 
 
-[Lertsek.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lertsek.zip) | 300.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Lertsek/)  
+[Lertsek.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lertsek.zip) | 300.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lertsek/)  
 Author: TheronEpic | [https://github.com/TheronEpic/lertsek](https://github.com/TheronEpic/lertsek)  
 Category: Ships  
 
@@ -4872,7 +4974,7 @@ Status: N/A
 ### Lleytons ES Starships
 
 
-[Lleytons.ES.Starships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lleytons.ES.Starships.zip) | 31.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Lleytons%20ES%20Starships/)  
+[Lleytons.ES.Starships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lleytons.ES.Starships.zip) | 31.91 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lleytons%20ES%20Starships/)  
 Author: Lleyton | N/A[]()  
 Category: Ships  
 
@@ -4888,7 +4990,7 @@ Status: N/A
 ### Loronar Transport
 
 
-[Loronar.Transport.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Loronar.Transport.zip) | 284.73 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Loronar%20Transport/)  
+[Loronar.Transport.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Loronar.Transport.zip) | 284.73 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Loronar%20Transport/)  
 Author: Armalarde7895 | [https://github.com/Armalarde7895/Loronar-transport](https://github.com/Armalarde7895/Loronar-transport)  
 Category: Ships  
 
@@ -4905,7 +5007,7 @@ Status: N/A
 <img src='Working/Marauder Bactrian/icon.png' width='100'></img><br>
 
 
-[Marauder.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marauder.Bactrian.zip) | 3.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Marauder%20Bactrian/)  
+[Marauder.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marauder.Bactrian.zip) | 3.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Marauder%20Bactrian/)  
 Author: J.C. Hamlin | [https://github.com/jchamlin/marauder-bactrian](https://github.com/jchamlin/marauder-bactrian)  
 Category: Ships  
 
@@ -4922,7 +5024,7 @@ Status: N/A
 <img src='Working/Marauder Swarmer/icon.png' height='100'></img><br>
 
 
-[Marauder.Swarmer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marauder.Swarmer.zip) | 117.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Marauder%20Swarmer/)  
+[Marauder.Swarmer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marauder.Swarmer.zip) | 117.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Marauder%20Swarmer/)  
 Author: Tadrix | [https://github.com/Tadrix/es-mswarmer](https://github.com/Tadrix/es-mswarmer)  
 Category: Ships  
 
@@ -4940,7 +5042,7 @@ Status: N/A
 <img src='Working/Marausprey/icon.png' height='100'></img><br>
 
 
-[Marausprey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marausprey.zip) | 792.2 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Marausprey/)  
+[Marausprey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marausprey.zip) | 792.2 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Marausprey/)  
 Author: TheronEpic | [https://github.com/TheronEpic/marausprey](https://github.com/TheronEpic/marausprey)  
 Category: Ships  
 
@@ -4956,7 +5058,7 @@ Status: N/A
 ### Matthews Alien Ship
 
 
-[Matthews.Alien.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Matthews.Alien.Ship.zip) | 86.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Matthews%20Alien%20Ship/)  
+[Matthews.Alien.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Matthews.Alien.Ship.zip) | 86.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Matthews%20Alien%20Ship/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4973,7 +5075,7 @@ Status: N/A
 <img src='Working/Maurader Osprey/icon.png' height='100'></img><br>
 
 
-[Maurader.Osprey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurader.Osprey.zip) | 486.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Maurader%20Osprey/)  
+[Maurader.Osprey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurader.Osprey.zip) | 486.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Maurader%20Osprey/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -4990,7 +5092,7 @@ Status: N/A
 <img src='Working/Maurder Covette/icon.png' height='100'></img><br>
 
 
-[Maurder.Covette.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurder.Covette.zip) | 379.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Maurder%20Covette/)  
+[Maurder.Covette.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurder.Covette.zip) | 379.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Maurder%20Covette/)  
 Author: TheronEpic | N/A[]()  
 Category: Ships  
 
@@ -5006,7 +5108,7 @@ Status: N/A
 ### MAY
 
 
-[MAY.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MAY.zip) | 30.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MAY/)  
+[MAY.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MAY.zip) | 30.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MAY/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5022,7 +5124,7 @@ Status: N/A
 ### Mega Bactrian
 
 
-[Mega.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Bactrian.zip) | 363.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mega%20Bactrian/)  
+[Mega.Bactrian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Bactrian.zip) | 363.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Bactrian/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -5039,7 +5141,7 @@ Status: N/A
 <img src='Working/Mega Freight/icon.png' width='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 32.05 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mega%20Freight/)  
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 32.05 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/)  
 Author: 1010todd | [https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight)  
 Category: Ships  
 
@@ -5055,7 +5157,7 @@ Status: Requires Continuous/0.9.15+
 ### Merchant Marine
 
 
-[Merchant.Marine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Merchant.Marine.zip) | 79.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Merchant%20Marine/)  
+[Merchant.Marine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Merchant.Marine.zip) | 79.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Merchant%20Marine/)  
 Author: AnotherMonkey | N/A[]()  
 Category: Ships  
 
@@ -5071,7 +5173,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Mercury
 
 
-[Mercury.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mercury.zip) | 258.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mercury/)  
+[Mercury.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mercury.zip) | 258.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mercury/)  
 Author: Orlando Peñarubia | N/A[]()  
 Category: Ships  
 
@@ -5091,7 +5193,7 @@ Status: N/A
 ### Mining Pinger
 
 
-[Mining.Pinger.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.Pinger.zip) | 13.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mining%20Pinger/)  
+[Mining.Pinger.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.Pinger.zip) | 13.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mining%20Pinger/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5108,7 +5210,7 @@ Status: N/A
 <img src='Working/Mining ships/icon.png' width='100'></img><br>
 
 
-[Mining.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.ships.zip) | 1017.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mining%20ships/)  
+[Mining.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.ships.zip) | 1017.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mining%20ships/)  
 Author: 1010todd | N/A[]()  
 Category: Ships  
 
@@ -5124,7 +5226,7 @@ Status: Playable since the version that adds minable asteroid (0.9.3).
 ### Modified Falcon
 
 
-[Modified.Falcon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Modified.Falcon.zip) | 295.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Modified%20Falcon/)  
+[Modified.Falcon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Modified.Falcon.zip) | 295.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Modified%20Falcon/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5140,7 +5242,7 @@ Status: N/A
 ### Modular Haulers
 
 
-[Modular.Haulers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Modular.Haulers.zip) | 586.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Modular%20Haulers/)  
+[Modular.Haulers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Modular.Haulers.zip) | 586.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Modular%20Haulers/)  
 Author: PhantomBerserker | [https://github.com/PhantomBerserker/ES-Modular-Haulers](https://github.com/PhantomBerserker/ES-Modular-Haulers)  
 Category: Ships  
 
@@ -5157,7 +5259,7 @@ Status: N/A
 ### Monitor
 
 
-[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | 23.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Monitor/)  
+[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | 23.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Monitor/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5174,7 +5276,7 @@ Status: N/A
 <img src='Working/More Ships Plugin/icon.png' width='100'></img><br>
 
 
-[More.Ships.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/More.Ships.Plugin.zip) | 546.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/More%20Ships%20Plugin/)  
+[More.Ships.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/More.Ships.Plugin.zip) | 546.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/More%20Ships%20Plugin/)  
 Author: Loyser(Loiseeer) | [https://github.com/loiseeer/The-more-ships-plugin](https://github.com/loiseeer/The-more-ships-plugin)  
 Category: Ships  
 
@@ -5191,7 +5293,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Nemesis/icon.png' height='100'></img><br>
 
 
-[Nemesis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nemesis.zip) | 155.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nemesis/)  
+[Nemesis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nemesis.zip) | 155.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nemesis/)  
 Author: Zavindur | N/A[]()  
 Category: Ships  
 
@@ -5207,7 +5309,7 @@ Status: N/A
 ### Normandy
 
 
-[Normandy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Normandy.zip) | 355.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Normandy/)  
+[Normandy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Normandy.zip) | 355.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Normandy/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5224,7 +5326,7 @@ Status: N/A
 ### Penthrower
 
 
-[Penthrower.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Penthrower.zip) | 226.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Penthrower/)  
+[Penthrower.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Penthrower.zip) | 226.43 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Penthrower/)  
 Author: 1010Todd | N/A[]()  
 Category: Ships  
 
@@ -5240,7 +5342,7 @@ Status: N/A
 ### Pheonix
 
 
-[Pheonix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pheonix.zip) | 267.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pheonix/)  
+[Pheonix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pheonix.zip) | 267.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pheonix/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5256,7 +5358,7 @@ Status: N/A
 ### Poseidon
 
 
-[Poseidon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Poseidon.zip) | 272.15 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Poseidon/)  
+[Poseidon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Poseidon.zip) | 272.15 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Poseidon/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5272,7 +5374,7 @@ Status: N/A
 ### Project Olympus
 
 
-[Project.Olympus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Olympus.zip) | 5.79 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Project%20Olympus/)  
+[Project.Olympus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Olympus.zip) | 5.79 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Olympus/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5288,7 +5390,7 @@ Status: N/A
 ### Project Runabout
 
 
-[Project.Runabout.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Runabout.zip) | 213.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Project%20Runabout/)  
+[Project.Runabout.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Runabout.zip) | 213.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Runabout/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5305,7 +5407,7 @@ Status: N/A
 <img src='Working/Prong/icon.png' width='100'></img><br>
 
 
-[Prong.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prong.zip) | 195.89 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Prong/)  
+[Prong.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prong.zip) | 195.89 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prong/)  
 Author: 1010todd | N/A[]()  
 Category: Ships  
 
@@ -5322,7 +5424,7 @@ Status: N/A
 <img src='Working/prototype D/icon.png' width='100'></img><br>
 
 
-[prototype.D.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/prototype.D.zip) | 1.41 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/prototype%20D/)  
+[prototype.D.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/prototype.D.zip) | 1.41 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/prototype%20D/)  
 Author: 1010todd | N/A[]()  
 Category: Ships  
 
@@ -5338,7 +5440,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Quaernan
 
 
-[Quaernan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quaernan.zip) | 842.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quaernan/)  
+[Quaernan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quaernan.zip) | 842.46 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quaernan/)  
 Author: Zoura3025 | N/A[]()  
 Category: Ships  
 
@@ -5354,7 +5456,7 @@ Status: Playable on 0.9.15 Continuous.
 ### QuaernanHardpoints
 
 
-[QuaernanHardpoints.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanHardpoints.zip) | 915.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/QuaernanHardpoints/)  
+[QuaernanHardpoints.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanHardpoints.zip) | 915.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QuaernanHardpoints/)  
 Author: Zoura3025 | N/A[]()  
 Category: Ships  
 
@@ -5370,7 +5472,7 @@ Status: Playable on 0.9.15 Continuous.
 ### QuaernanHardpointsCarries
 
 
-[QuaernanHardpointsCarries.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanHardpointsCarries.zip) | 1.03 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/QuaernanHardpointsCarries/)  
+[QuaernanHardpointsCarries.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanHardpointsCarries.zip) | 1.03 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QuaernanHardpointsCarries/)  
 Author: Zoura3025 | [https://github.com/AvianGeneticist/QuaernanHardpointsCarries](https://github.com/AvianGeneticist/QuaernanHardpointsCarries)  
 Category: Ships  
 
@@ -5386,7 +5488,7 @@ Status: Playable on 0.9.15 Continuous.
 ### QuaernanV2 Lian
 
 
-[QuaernanV2.Lian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanV2.Lian.zip) | 6.73 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/QuaernanV2%20Lian/)  
+[QuaernanV2.Lian.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QuaernanV2.Lian.zip) | 6.73 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QuaernanV2%20Lian/)  
 Author: Zoura3025 | N/A[]()  
 Category: Ships  
 
@@ -5402,7 +5504,7 @@ Status: N/A
 ### Quarg Elder Dragon
 
 
-[Quarg.Elder.Dragon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Elder.Dragon.zip) | 38.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quarg%20Elder%20Dragon/)  
+[Quarg.Elder.Dragon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Elder.Dragon.zip) | 38.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20Elder%20Dragon/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -5418,7 +5520,7 @@ Status: N/A
 ### Quargarriffic
 
 
-[Quargarriffic.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quargarriffic.zip) | 7.4 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quargarriffic/)  
+[Quargarriffic.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quargarriffic.zip) | 7.4 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quargarriffic/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5434,7 +5536,7 @@ Status: N/A
 ### Raptor
 
 
-[Raptor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Raptor.zip) | 57.41 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Raptor/)  
+[Raptor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Raptor.zip) | 57.41 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Raptor/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5450,7 +5552,7 @@ Status: N/A
 ### Ravens Aerie
 
 
-[Ravens.Aerie.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ravens.Aerie.zip) | 568.38 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ravens%20Aerie/)  
+[Ravens.Aerie.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ravens.Aerie.zip) | 568.38 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ravens%20Aerie/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5466,7 +5568,7 @@ Status: N/A
 ### Recluse
 
 
-[Recluse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recluse.zip) | 28.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Recluse/)  
+[Recluse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recluse.zip) | 28.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Recluse/)  
 Author: David Reynolds | [https://groups.google.com/forum/#!categories/endless-sky/content-creation](https://groups.google.com/forum/#!categories/endless-sky/content-creation)  
 Category: Ships  
 
@@ -5482,7 +5584,7 @@ Status: N/A
 ### Recovery Ships
 
 
-[Recovery.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.zip) | 777.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Recovery%20Ships/)  
+[Recovery.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.zip) | 777.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Recovery%20Ships/)  
 Author: 1010Todd | N/A[]()  
 Category: Ships  
 
@@ -5498,7 +5600,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Recovery Ships Safemode
 
 
-[Recovery.Ships.Safemode.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.Safemode.zip) | 1.96 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Recovery%20Ships%20Safemode/)  
+[Recovery.Ships.Safemode.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.Safemode.zip) | 1.96 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Recovery%20Ships%20Safemode/)  
 Author: 1010Todd | N/A[]()  
 Category: Ships  
 
@@ -5514,7 +5616,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Red's Star Trek Prime Ship Pack Plugin 0.4
 
 
-[Red.s.Star.Trek.Prime.Ship.Pack.Plugin.0.4.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.s.Star.Trek.Prime.Ship.Pack.Plugin.0.4.zip) | 1.72 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Red's%20Star%20Trek%20Prime%20Ship%20Pack%20Plugin%200.4/)  
+[Red.s.Star.Trek.Prime.Ship.Pack.Plugin.0.4.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.s.Star.Trek.Prime.Ship.Pack.Plugin.0.4.zip) | 1.72 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Red's%20Star%20Trek%20Prime%20Ship%20Pack%20Plugin%200.4/)  
 Author: William 'Swingfire' | N/A[]()  
 Category: Ships  
 
@@ -5530,7 +5632,7 @@ Status: N/A
 ### Red's The Final Frontier 0.0.1a
 
 
-[Red.s.The.Final.Frontier.0.0.1a.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.s.The.Final.Frontier.0.0.1a.zip) | 25.8 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Red's%20The%20Final%20Frontier%200.0.1a/)  
+[Red.s.The.Final.Frontier.0.0.1a.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.s.The.Final.Frontier.0.0.1a.zip) | 25.8 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Red's%20The%20Final%20Frontier%200.0.1a/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5546,7 +5648,7 @@ Status: N/A
 ### Republic Battlecruiser
 
 
-[Republic.Battlecruiser.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Battlecruiser.zip) | 528.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Republic%20Battlecruiser/)  
+[Republic.Battlecruiser.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Battlecruiser.zip) | 528.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Republic%20Battlecruiser/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5562,7 +5664,7 @@ Status: N/A
 ### Republic Destroyer
 
 
-[Republic.Destroyer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Destroyer.zip) | 225.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Republic%20Destroyer/)  
+[Republic.Destroyer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Destroyer.zip) | 225.68 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Republic%20Destroyer/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5578,7 +5680,7 @@ Status: N/A
 ### Republic Juggernaut
 
 
-[Republic.Juggernaut.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Juggernaut.zip) | 57.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Republic%20Juggernaut/)  
+[Republic.Juggernaut.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Juggernaut.zip) | 57.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Republic%20Juggernaut/)  
 Author: 1010Todd | N/A[]()  
 Category: Ships  
 
@@ -5594,7 +5696,7 @@ Status: N/A
 ### Riley's Plugin
 
 
-[Riley.s.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Riley.s.Plugin.zip) | 1.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Riley's%20Plugin/)  
+[Riley.s.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Riley.s.Plugin.zip) | 1.18 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Riley's%20Plugin/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5610,7 +5712,7 @@ Status: N/A
 ### Scrapper Extras
 
 
-[Scrapper.Extras.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Scrapper.Extras.zip) | 94.93 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Scrapper%20Extras/)  
+[Scrapper.Extras.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Scrapper.Extras.zip) | 94.93 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Scrapper%20Extras/)  
 Author: 1010todd | N/A[]()  
 Category: Ships  
 
@@ -5626,7 +5728,7 @@ Status: N/A
 ### Sestor-Expansion
 
 
-[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | 768.37 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sestor-Expansion/)  
+[Sestor-Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sestor-Expansion.zip) | 768.37 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sestor-Expansion/)  
 Author: Zoura | [https://github.com/AvianGeneticist/Sestor-Expansion](https://github.com/AvianGeneticist/Sestor-Expansion)  
 Category: Ships  
 
@@ -5642,7 +5744,7 @@ Status: Playable on 0.9.16
 ### Shadow's Expansion
 
 
-[Shadow.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shadow.s.Expansion.zip) | 253.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Shadow's%20Expansion/)  
+[Shadow.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Shadow.s.Expansion.zip) | 253.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Shadow's%20Expansion/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5659,7 +5761,7 @@ Status: N/A
 <img src='Working/Ship Testing/icon.png' width='100'></img><br>
 
 
-[Ship.Testing.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Testing.zip) | 1.52 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ship%20Testing/)  
+[Ship.Testing.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Testing.zip) | 1.52 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ship%20Testing/)  
 Author: loiseeer | [https://github.com/loiseeer/Ship-testing](https://github.com/loiseeer/Ship-testing)  
 Category: Ships  
 
@@ -5675,7 +5777,7 @@ Status: N/A
 ### Squid Ship
 
 
-[Squid.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Squid.Ship.zip) | 899.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Squid%20Ship/)  
+[Squid.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Squid.Ship.zip) | 899.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Squid%20Ship/)  
 Author: seanpuller | N/A[]()  
 Category: Ships  
 
@@ -5691,7 +5793,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Star Destroyer
 
 
-[Star.Destroyer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Destroyer.zip) | 207.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Star%20Destroyer/)  
+[Star.Destroyer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Star.Destroyer.zip) | 207.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Star%20Destroyer/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5708,7 +5810,7 @@ Status: N/A
 <img src='Working/Starbridge Pack/icon.png' width='100'></img><br>
 
 
-[Starbridge.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starbridge.Pack.zip) | 628.84 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Starbridge%20Pack/)  
+[Starbridge.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starbridge.Pack.zip) | 628.84 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Starbridge%20Pack/)  
 Author: autohummer | [https://github.com/Autohummer/Endless-Sky-Starbridge-Pack](https://github.com/Autohummer/Endless-Sky-Starbridge-Pack)  
 Category: Ships  
 
@@ -5723,7 +5825,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Starhopper
 
 
-[Starhopper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starhopper.zip) | 33.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Starhopper/)  
+[Starhopper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starhopper.zip) | 33.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Starhopper/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5739,7 +5841,7 @@ Status: N/A
 ### StarProtector-Endless-Sky
 
 
-[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | 411.38 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/StarProtector-Endless-Sky/)  
+[StarProtector-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarProtector-Endless-Sky.zip) | 411.38 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/StarProtector-Endless-Sky/)  
 Author: BawSaqS | [https://github.com/BawSaqS/StarProtector-Endless-Sky](https://github.com/BawSaqS/StarProtector-Endless-Sky)  
 Category: Ships  
 
@@ -5755,7 +5857,7 @@ Status: Playable on 0.9.16
 ### Subsidurial Petting Zoo
 
 
-[Subsidurial.Petting.Zoo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Subsidurial.Petting.Zoo.zip) | 2.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Subsidurial%20Petting%20Zoo/)  
+[Subsidurial.Petting.Zoo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Subsidurial.Petting.Zoo.zip) | 2.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Subsidurial%20Petting%20Zoo/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5773,7 +5875,7 @@ Status: N/A
 ### Super Carrier
 
 
-[Super.Carrier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Carrier.zip) | 176.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Super%20Carrier/)  
+[Super.Carrier.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Carrier.zip) | 176.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Super%20Carrier/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5789,7 +5891,7 @@ Status: N/A
 ### Super Kestrel
 
 
-[Super.Kestrel.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Kestrel.zip) | 83.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Super%20Kestrel/)  
+[Super.Kestrel.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Kestrel.zip) | 83.02 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Super%20Kestrel/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -5805,7 +5907,7 @@ Status: N/A
 ### Super Ships
 
 
-[Super.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Ships.zip) | 93.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Super%20Ships/)  
+[Super.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Super.Ships.zip) | 93.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Super%20Ships/)  
 Author: taldarus | [https://www.moddb.com/mods/super-ships](https://www.moddb.com/mods/super-ships)  
 Category: Ships  
 
@@ -5821,7 +5923,7 @@ Status: N/A
 ### Swarm Ship
 
 
-[Swarm.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Swarm.Ship.zip) | 4.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Swarm%20Ship/)  
+[Swarm.Ship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Swarm.Ship.zip) | 4.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Swarm%20Ship/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -5837,7 +5939,7 @@ Status: N/A
 ### Syndicate Capital Ships
 
 
-[Syndicate.Capital.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Capital.Ships.zip) | 2.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Syndicate%20Capital%20Ships/)  
+[Syndicate.Capital.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Capital.Ships.zip) | 2.1 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Capital%20Ships/)  
 Author: Ejothims | [https://github.com/EjoThims/Syndicate-Capital-Ships](https://github.com/EjoThims/Syndicate-Capital-Ships)  
 Category: Ships  
 
@@ -5854,7 +5956,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Tachyon
 
 
-[Tachyon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tachyon.zip) | 55.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tachyon/)  
+[Tachyon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tachyon.zip) | 55.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tachyon/)  
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
@@ -5870,7 +5972,7 @@ Status: N/A
 ### The Borg Captain
 
 
-[The.Borg.Captain.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Borg.Captain.zip) | 1.81 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Borg%20Captain/)  
+[The.Borg.Captain.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Borg.Captain.zip) | 1.81 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Borg%20Captain/)  
 Author: The Borg Captain | [https://github.com/The-Borg-Captain/TheBorgCaptain-s-Shipyard](https://github.com/The-Borg-Captain/TheBorgCaptain-s-Shipyard)  
 Category: Ships  
 
@@ -5885,7 +5987,7 @@ Status: N/A
 ### The Heroes
 
 
-[The.Heroes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Heroes.zip) | 1.99 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Heroes/)  
+[The.Heroes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Heroes.zip) | 1.99 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Heroes/)  
 Author: mdsmestad | [https://github.com/Hondolor/The-Heroes-ES-Pluggin](https://github.com/Hondolor/The-Heroes-ES-Pluggin)  
 Category: Ships  
 
@@ -5901,7 +6003,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### The Ships of the Internet
 
 
-[The.Ships.of.the.Internet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Ships.of.the.Internet.zip) | 846.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Ships%20of%20the%20Internet/)  
+[The.Ships.of.the.Internet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Ships.of.the.Internet.zip) | 846.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Ships%20of%20the%20Internet/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5917,7 +6019,7 @@ Status: N/A
 ### Tiny Ships
 
 
-[Tiny.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tiny.Ships.zip) | 60.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tiny%20Ships/)  
+[Tiny.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tiny.Ships.zip) | 60.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tiny%20Ships/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5934,7 +6036,7 @@ Status: N/A
 <img src='Working/Tremor Gunship/icon.png' width='100'></img><br>
 
 
-[Tremor.Gunship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tremor.Gunship.zip) | 672.52 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tremor%20Gunship/)  
+[Tremor.Gunship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tremor.Gunship.zip) | 672.52 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tremor%20Gunship/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5950,7 +6052,7 @@ Status: N/A
 ### Tufton Plugin
 
 
-[Tufton.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tufton.Plugin.zip) | 680.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tufton%20Plugin/)  
+[Tufton.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tufton.Plugin.zip) | 680.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tufton%20Plugin/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5966,7 +6068,7 @@ Status: N/A
 ### Tuftons Stuffs
 
 
-[Tuftons.Stuffs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tuftons.Stuffs.zip) | 681.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tuftons%20Stuffs/)  
+[Tuftons.Stuffs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tuftons.Stuffs.zip) | 681.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tuftons%20Stuffs/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -5982,7 +6084,7 @@ Status: N/A
 ### Twinargosy
 
 
-[Twinargosy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Twinargosy.zip) | 45.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Twinargosy/)  
+[Twinargosy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Twinargosy.zip) | 45.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Twinargosy/)  
 Author: Zoura | N/A[]()  
 Category: Ships  
 
@@ -5999,7 +6101,7 @@ Status: playable on 0.9.15 Continuous.
 <img src='Working/Ultra Protector/icon.png' width='100'></img><br>
 
 
-[Ultra.Protector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultra.Protector.zip) | 675.92 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ultra%20Protector/)  
+[Ultra.Protector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultra.Protector.zip) | 675.92 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ultra%20Protector/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -6015,7 +6117,7 @@ Status: N/A
 ### War of Worlds
 
 
-[War.of.Worlds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/War.of.Worlds.zip) | 182.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/War%20of%20Worlds/)  
+[War.of.Worlds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/War.of.Worlds.zip) | 182.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/War%20of%20Worlds/)  
 Author: fjc130 | [https://www.moddb.com/mods/war-of-worlds-v01](https://www.moddb.com/mods/war-of-worlds-v01)  
 Category: Ships  
 
@@ -6031,7 +6133,7 @@ Status: N/A
 ### Winners Arrow
 
 
-[Winners.Arrow.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Winners.Arrow.zip) | 42.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Winners%20Arrow/)  
+[Winners.Arrow.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Winners.Arrow.zip) | 42.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Winners%20Arrow/)  
 Author: N/A | N/A[]()  
 Category: Ships  
 
@@ -6047,7 +6149,7 @@ Status: N/A
 ### X-70B Phantom
 
 
-[X-70B.Phantom.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/X-70B.Phantom.zip) | 293.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/X-70B%20Phantom/)  
+[X-70B.Phantom.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/X-70B.Phantom.zip) | 293.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/X-70B%20Phantom/)  
 Author: Armalarde7895 | [https://github.com/Armalarde7895/X-70B-Phantom](https://github.com/Armalarde7895/X-70B-Phantom)  
 Category: Ships  
 
@@ -6081,7 +6183,7 @@ Status: N/A
 ### Advanced Starts
 
 
-[Advanced.Starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Advanced.Starts.zip) | 23.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Advanced%20Starts/)  
+[Advanced.Starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Advanced.Starts.zip) | 23.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Advanced%20Starts/)  
 Author: Bereskatuket (Kestrel1110) | [https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts)  
 Category: Story  
 
@@ -6097,7 +6199,7 @@ Status: N/A
 ### Alexandria
 
 
-[Alexandria.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alexandria.zip) | 3.23 kb | 2022-12-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Alexandria/)  
+[Alexandria.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alexandria.zip) | 3.23 kb | 2022-12-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alexandria/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6113,7 +6215,7 @@ Status: N/A
 ### Alternate Start Luna
 
 
-[Alternate.Start.Luna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alternate.Start.Luna.zip) | 2.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Alternate%20Start%20Luna/)  
+[Alternate.Start.Luna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alternate.Start.Luna.zip) | 2.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alternate%20Start%20Luna/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6129,7 +6231,7 @@ Status: N/A
 ### Arrr Mateys
 
 
-[Arrr.Mateys.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arrr.Mateys.zip) | 26.88 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arrr%20Mateys/)  
+[Arrr.Mateys.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arrr.Mateys.zip) | 26.88 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arrr%20Mateys/)  
 Author: Ryan S. Northrup | [https://bitbucket.org/YellowApple/arrr-mateys/src/master/](https://bitbucket.org/YellowApple/arrr-mateys/src/master/)  
 Category: Story  
 
@@ -6145,7 +6247,7 @@ Status: N/A
 ### Bactrian Mission
 
 
-[Bactrian.Mission.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bactrian.Mission.zip) | 714.95 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bactrian%20Mission/)  
+[Bactrian.Mission.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bactrian.Mission.zip) | 714.95 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bactrian%20Mission/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6163,7 +6265,7 @@ Status: N/A
 ### Boarding Missions
 
 
-[Boarding.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Boarding.Missions.zip) | 14.77 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Boarding%20Missions/)  
+[Boarding.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Boarding.Missions.zip) | 14.77 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Boarding%20Missions/)  
 Author: Timothy Butterworth | [https://github.com/tmbutterworth/boarding-missions](https://github.com/tmbutterworth/boarding-missions)  
 Category: Story  
 
@@ -6179,7 +6281,7 @@ Status: N/A
 ### Captain Last and the Timeship
 
 
-[Captain.Last.and.the.Timeship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Captain.Last.and.the.Timeship.zip) | 40.77 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Captain%20Last%20and%20the%20Timeship/)  
+[Captain.Last.and.the.Timeship.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Captain.Last.and.the.Timeship.zip) | 40.77 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Captain%20Last%20and%20the%20Timeship/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6195,7 +6297,7 @@ Status: N/A
 ### Coalition-At-War
 
 
-[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 46.02 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Coalition-At-War/)  
+[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 46.02 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/)  
 Author: Josh Mudge | [https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War)  
 Category: Story  
 
@@ -6214,7 +6316,7 @@ Status: N/A
 <img src='Working/Cognitive Subdivision/icon.png' width='100'></img><br>
 
 
-[Cognitive.Subdivision.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cognitive.Subdivision.zip) | 13.46 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Cognitive%20Subdivision/)  
+[Cognitive.Subdivision.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cognitive.Subdivision.zip) | 13.46 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cognitive%20Subdivision/)  
 Author: professorlust | [https://github.com/Variance-Moment/cognitive-subdivision](https://github.com/Variance-Moment/cognitive-subdivision)  
 Category: Story  
 
@@ -6232,7 +6334,7 @@ Status: N/A
 ### Colorado
 
 
-[Colorado.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Colorado.zip) | 74.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Colorado/)  
+[Colorado.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Colorado.zip) | 74.94 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Colorado/)  
 Author: Clint Moyer | [https://github.com/clintmoyer/endless-sky-plugins](https://github.com/clintmoyer/endless-sky-plugins)  
 Category: Story  
 
@@ -6248,7 +6350,7 @@ Status: N/A
 ### Dangerous Games
 
 
-[Dangerous.Games.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dangerous.Games.zip) | 16.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dangerous%20Games/)  
+[Dangerous.Games.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dangerous.Games.zip) | 16.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dangerous%20Games/)  
 Author: davidwhitman | [https://github.com/davidwhitman/endless-sky-dangerous-games](https://github.com/davidwhitman/endless-sky-dangerous-games)  
 Category: Story  
 
@@ -6264,7 +6366,7 @@ Status: Allready ingame
 ### Endless Romances
 
 
-[Endless.Romances.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Romances.zip) | 3.57 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Romances/)  
+[Endless.Romances.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Romances.zip) | 3.57 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Romances/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6280,7 +6382,7 @@ Status: N/A
 ### Enki-Station
 
 
-[Enki-Station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enki-Station.zip) | 15.08 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Enki-Station/)  
+[Enki-Station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enki-Station.zip) | 15.08 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Enki-Station/)  
 Author: Nergal8617 | [https://github.com/Nergal8617/Enki-Station](https://github.com/Nergal8617/Enki-Station)  
 Category: Story  
 
@@ -6297,7 +6399,7 @@ Status: N/A
 <img src='Working/Epic Trucker/icon.png' width='100'></img><br>
 
 
-[Epic.Trucker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Epic.Trucker.zip) | 162.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Epic%20Trucker/)  
+[Epic.Trucker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Epic.Trucker.zip) | 162.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Epic%20Trucker/)  
 Author: KelvallRogers | [https://github.com/kelvallrogers/epic-trucker](https://github.com/kelvallrogers/epic-trucker)  
 Category: Story  
 
@@ -6313,7 +6415,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### ES Dawn
 
 
-[ES.Dawn.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Dawn.zip) | 342.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ES%20Dawn/)  
+[ES.Dawn.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Dawn.zip) | 342.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Dawn/)  
 Author: mOctave | [https://github.com/mOctave/es-dawn/](https://github.com/mOctave/es-dawn/)  
 Category: Story  
 
@@ -6329,7 +6431,7 @@ Status: N/A
 ### Flavour Text
 
 
-[Flavour.Text.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flavour.Text.zip) | 4.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flavour%20Text/)  
+[Flavour.Text.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flavour.Text.zip) | 4.24 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flavour%20Text/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6345,7 +6447,7 @@ Status: N/A
 ### Free Kitten
 
 
-[Free.Kitten.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Free.Kitten.zip) | 450.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Free%20Kitten/)  
+[Free.Kitten.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Free.Kitten.zip) | 450.72 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Free%20Kitten/)  
 Author: Epchk | [https://github.com/Epchk/ES-free-kitten](https://github.com/Epchk/ES-free-kitten)  
 Category: Story  
 
@@ -6361,7 +6463,7 @@ Status: N/A
 ### Free Worlds Saga
 
 
-[Free.Worlds.Saga.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Free.Worlds.Saga.zip) | 45.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Free%20Worlds%20Saga/)  
+[Free.Worlds.Saga.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Free.Worlds.Saga.zip) | 45.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Free%20Worlds%20Saga/)  
 Author: Ian | N/A[]()  
 Category: Story  
 
@@ -6377,7 +6479,7 @@ Status: N/A
 ### Galactic Conquest
 
 
-[Galactic.Conquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Conquest.zip) | 1.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galactic%20Conquest/)  
+[Galactic.Conquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Conquest.zip) | 1.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Conquest/)  
 Author: SpiralCat | [https://www.moddb.com/mods/galactic-conquest](https://www.moddb.com/mods/galactic-conquest)  
 Category: Story  
 
@@ -6394,7 +6496,7 @@ Status: Abandoned. An updated version appears to have been made by 1010Todd. AES
 <img src='Working/Galactic Couriers/icon.png' width='100'></img><br>
 
 
-[Galactic.Couriers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Couriers.zip) | 10.13 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Galactic%20Couriers/)  
+[Galactic.Couriers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Couriers.zip) | 10.13 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Couriers/)  
 Author: Derekcz | [https://github.com/Derekcz/galactic-couriers](https://github.com/Derekcz/galactic-couriers)  
 Category: Story  
 
@@ -6411,7 +6513,7 @@ Status: N/A
 ### Inheritance
 
 
-[Inheritance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Inheritance.zip) | 304.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Inheritance/)  
+[Inheritance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Inheritance.zip) | 304.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Inheritance/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6427,7 +6529,7 @@ Status: N/A
 ### Join the Navy
 
 
-[Join.the.Navy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Join.the.Navy.zip) | 59.26 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Join%20the%20Navy/)  
+[Join.the.Navy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Join.the.Navy.zip) | 59.26 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Join%20the%20Navy/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6443,7 +6545,7 @@ Status: N/A
 ### Jojo's Galactic Adventure
 
 
-[Jojo.s.Galactic.Adventure.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jojo.s.Galactic.Adventure.zip) | 16.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Jojo's%20Galactic%20Adventure/)  
+[Jojo.s.Galactic.Adventure.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jojo.s.Galactic.Adventure.zip) | 16.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jojo's%20Galactic%20Adventure/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6459,7 +6561,7 @@ Status: N/A
 ### Korath Remnant War
 
 
-[Korath.Remnant.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Remnant.War.zip) | 7.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Korath%20Remnant%20War/)  
+[Korath.Remnant.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Remnant.War.zip) | 7.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Remnant%20War/)  
 Author: Rafael Ramawadh | [https://github.com/Disiuze/tributeplus](https://github.com/Disiuze/tributeplus)  
 Category: Story  
 
@@ -6476,7 +6578,7 @@ Status: N/A
 <img src='Working/Lemurias Extra ES Stuff/icon.png' width='100'></img><br>
 
 
-[Lemurias.Extra.ES.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lemurias.Extra.ES.Stuff.zip) | 9.33 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Lemurias%20Extra%20ES%20Stuff/)  
+[Lemurias.Extra.ES.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lemurias.Extra.ES.Stuff.zip) | 9.33 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lemurias%20Extra%20ES%20Stuff/)  
 Author: a-random-lemurian | [https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff](https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff)  
 Category: Story  
 
@@ -6492,7 +6594,7 @@ Status: N/A
 ### Little Addon
 
 
-[Little.Addon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Little.Addon.zip) | 12.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Little%20Addon/)  
+[Little.Addon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Little.Addon.zip) | 12.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Little%20Addon/)  
 Author: HorusX5 | [http://steamcommunity.com/id/HorusX5](http://steamcommunity.com/id/HorusX5)  
 Category: Story  
 
@@ -6509,7 +6611,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Lost in Midnight/icon.png' width='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 35.24 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Lost%20in%20Midnight/)  
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 35.24 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Lost-in-Midnight/releases](https://github.com/MidnightPlugins/Lost-in-Midnight/releases)  
 Category: Story  
 
@@ -6525,7 +6627,7 @@ Status: In development, Playable on 0.9.14, 0.9.15 Continuous.
 ### Mad Quest
 
 
-[Mad.Quest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mad.Quest.zip) | 43.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mad%20Quest/)  
+[Mad.Quest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mad.Quest.zip) | 43.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mad%20Quest/)  
 Author: czartrak | [https://github.com/czartrak/Mad-Quest](https://github.com/czartrak/Mad-Quest)  
 Category: Story  
 
@@ -6542,7 +6644,7 @@ Status: N/A
 <img src='Working/Midnight Expansion/icon.png' width='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 9.32 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Midnight%20Expansion/)  
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 9.32 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
 Author: Michael Arsollon | N/A[]()  
 Category: Story  
 
@@ -6559,7 +6661,7 @@ Status: N/A
 <img src='Working/Midnight Scrapyard/icon.png' width='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 8.71 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Midnight%20Scrapyard/)  
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 8.71 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Midnight-Scrapyard/releases](https://github.com/MidnightPlugins/Midnight-Scrapyard/releases)  
 Category: Story  
 
@@ -6577,7 +6679,7 @@ Status: In development, Playable on 0.9.14, 0.9.15 Continuous.
 ### Moar Jobs
 
 
-[Moar.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Jobs.zip) | 3.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Moar%20Jobs/)  
+[Moar.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Jobs.zip) | 3.18 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Moar%20Jobs/)  
 Author: appdevland | [https://github.com/appdevland/moarjobs-es-plugin](https://github.com/appdevland/moarjobs-es-plugin)  
 Category: Story  
 
@@ -6593,7 +6695,7 @@ Status: N/A
 ### More Missions
 
 
-[More.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/More.Missions.zip) | 0.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/More%20Missions/)  
+[More.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/More.Missions.zip) | 0.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/More%20Missions/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6609,7 +6711,7 @@ Status: N/A
 ### Nanachi Missions
 
 
-[Nanachi.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nanachi.Missions.zip) | 52.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nanachi%20Missions/)  
+[Nanachi.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nanachi.Missions.zip) | 52.78 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nanachi%20Missions/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6625,7 +6727,7 @@ Status: N/A
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 2.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Navy%20Campaign/)  
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 2.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6642,7 +6744,7 @@ Status: N/A
 <img src='Working/Navy Conscript/icon.png' height='100'></img><br>
 
 
-[Navy.Conscript.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Conscript.zip) | 98.49 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Navy%20Conscript/)  
+[Navy.Conscript.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Conscript.zip) | 98.49 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Conscript/)  
 Author: Timothy Butterworth | [https://github.com/tmbutterworth/navy-conscript](https://github.com/tmbutterworth/navy-conscript)  
 Category: Story  
 
@@ -6661,7 +6763,7 @@ Status: N/A
 <img src='Working/News Plugin/icon.png' width='100'></img><br>
 
 
-[News.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/News.Plugin.zip) | 21.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/News%20Plugin/)  
+[News.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/News.Plugin.zip) | 21.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/News%20Plugin/)  
 Author: Lars Rune "SeaLiteral" Præstmark | [https://github.com/SeaLiteral/endless-sky-news-plugin](https://github.com/SeaLiteral/endless-sky-news-plugin)  
 Category: Story  
 
@@ -6679,7 +6781,7 @@ Status: Playable on 0.9.14, 0.9.15.
 ### Outfits Expansion
 
 
-[Outfits.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Outfits.Expansion.zip) | 213.74 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Outfits%20Expansion/)  
+[Outfits.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Outfits.Expansion.zip) | 213.74 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Outfits%20Expansion/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6695,7 +6797,7 @@ Status: N/A
 ### Paradigm Shift
 
 
-[Paradigm.Shift.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Paradigm.Shift.zip) | 22.22 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Paradigm%20Shift/)  
+[Paradigm.Shift.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Paradigm.Shift.zip) | 22.22 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Paradigm%20Shift/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6711,7 +6813,7 @@ Status: N/A
 ### Paradise World Jobs
 
 
-[Paradise.World.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Paradise.World.Jobs.zip) | 15.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Paradise%20World%20Jobs/)  
+[Paradise.World.Jobs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Paradise.World.Jobs.zip) | 15.45 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Paradise%20World%20Jobs/)  
 Author: Timothy Butterworth | [https://github.com/tmbutterworth/paradise-world-jobs](https://github.com/tmbutterworth/paradise-world-jobs)  
 Category: Story  
 
@@ -6727,7 +6829,7 @@ Status: N/A
 ### Pathmakers Way
 
 
-[Pathmakers.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pathmakers.Way.zip) | 5.21 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pathmakers%20Way/)  
+[Pathmakers.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pathmakers.Way.zip) | 5.21 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pathmakers%20Way/)  
 Author: Zachary Chupinsky | N/A[]()  
 Category: Story  
 
@@ -6744,7 +6846,7 @@ Status: N/A
 <img src='Working/Portraits for News/icon.png' width='100'></img><br>
 
 
-[Portraits.for.News.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Portraits.for.News.zip) | 1.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Portraits%20for%20News/)  
+[Portraits.for.News.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Portraits.for.News.zip) | 1.09 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Portraits%20for%20News/)  
 Author: Anarchist2 | [https://github.com/Anarchist2/ES-news-portraits](https://github.com/Anarchist2/ES-news-portraits)  
 Category: Story  
 
@@ -6760,7 +6862,7 @@ Status: made for 0.9.13
 ### Quarg Military Retalition
 
 
-[Quarg.Military.Retalition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Military.Retalition.zip) | 2.75 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quarg%20Military%20Retalition/)  
+[Quarg.Military.Retalition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Military.Retalition.zip) | 2.75 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20Military%20Retalition/)  
 Author: Issacssv | N/A[]()  
 Category: Story  
 
@@ -6776,7 +6878,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Red Cross
 
 
-[Red.Cross.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.Cross.zip) | 9.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Red%20Cross/)  
+[Red.Cross.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.Cross.zip) | 9.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Red%20Cross/)  
 Author: SirRailOfGun | [https://github.com/SirRailOfGun/ES-Red-Cross](https://github.com/SirRailOfGun/ES-Red-Cross)  
 Category: Story  
 
@@ -6793,7 +6895,7 @@ Status: N/A
 <img src='Working/sheragi-rebirth-0.9.16.1.1/icon.png' width='100'></img><br>
 
 
-[sheragi-rebirth-0.9.16.1.1.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sheragi-rebirth-0.9.16.1.1.zip) | 1.1 mb | 2022-12-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/sheragi-rebirth-0.9.16.1.1/)  
+[sheragi-rebirth-0.9.16.1.1.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sheragi-rebirth-0.9.16.1.1.zip) | 1.1 mb | 2022-12-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sheragi-rebirth-0.9.16.1.1/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6809,7 +6911,7 @@ Status: N/A
 ### Smugglers, Corporations, and Other Thieves
 
 
-[Smugglers.Corporations.and.Other.Thieves.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Smugglers.Corporations.and.Other.Thieves.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Smugglers,%20Corporations,%20and%20Other%20Thieves/)  
+[Smugglers.Corporations.and.Other.Thieves.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Smugglers.Corporations.and.Other.Thieves.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Smugglers,%20Corporations,%20and%20Other%20Thieves/)  
 Author: pootthedestroyer | N/A[]()  
 Category: Story  
 
@@ -6826,7 +6928,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Space Shuttle Start/icon.png' height='100'></img><br>
 
 
-[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 488.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Space%20Shuttle%20Start/)  
+[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 488.11 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Shuttle%20Start/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Space-Shuttle-Start/releases](https://github.com/MidnightPlugins/Space-Shuttle-Start/releases)  
 Category: Story  
 
@@ -6848,7 +6950,7 @@ Status: N/A
 <img src='Working/SpaceCrate-0.1/icon.png' width='100'></img><br>
 
 
-[SpaceCrate-0.1.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SpaceCrate-0.1.zip) | 126.77 kb | 2022-12-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/SpaceCrate-0.1/)  
+[SpaceCrate-0.1.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SpaceCrate-0.1.zip) | 126.77 kb | 2022-12-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/SpaceCrate-0.1/)  
 Author: Arnan de Gans | [www.arnan.me](www.arnan.me)  
 Category: Story  
 
@@ -6867,7 +6969,7 @@ Status: Tested on: ES 0.9.16.1 (macOS)
 ### Superquest
 
 
-[Superquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Superquest.zip) | 12.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Superquest/)  
+[Superquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Superquest.zip) | 12.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Superquest/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6884,7 +6986,7 @@ Status: N/A
 <img src='Working/Syndicate/icon.png' width='100'></img><br>
 
 
-[Syndicate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.zip) | 161.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Syndicate/)  
+[Syndicate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.zip) | 161.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6900,7 +7002,7 @@ Status: N/A
 ### Syndicate Consultancy
 
 
-[Syndicate.Consultancy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Consultancy.zip) | 12.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Syndicate%20Consultancy/)  
+[Syndicate.Consultancy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Consultancy.zip) | 12.42 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Consultancy/)  
 Author: Elyssaen | [https://github.com/Elyssaen/syndicate-consultancy](https://github.com/Elyssaen/syndicate-consultancy)  
 Category: Story  
 
@@ -6917,7 +7019,7 @@ Status: N/A
 <img src='Working/Syndicate Story/icon.png' width='100'></img><br>
 
 
-[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 257.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Syndicate%20Story/)  
+[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 257.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Story/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6941,7 +7043,7 @@ Status: N/A
 ### test convo
 
 
-[test.convo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/test.convo.zip) | 3.8 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/test%20convo/)  
+[test.convo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/test.convo.zip) | 3.8 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/test%20convo/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6957,7 +7059,7 @@ Status: N/A
 ### That Someone
 
 
-[That.Someone.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/That.Someone.zip) | 451.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/That%20Someone/)  
+[That.Someone.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/That.Someone.zip) | 451.29 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/That%20Someone/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -6974,7 +7076,7 @@ Status: N/A
 <img src='Working/The Legacy/icon.png' width='100'></img><br>
 
 
-[The.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Legacy.zip) | 633.44 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Legacy/)  
+[The.Legacy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Legacy.zip) | 633.44 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Legacy/)  
 Author: pega3 | [https://github.com/pega3/endless-sky-the-legacy-plugin](https://github.com/pega3/endless-sky-the-legacy-plugin)  
 Category: Story  
 
@@ -6992,7 +7094,7 @@ Status: N/A
 ### The Mysterious Baby
 
 
-[The.Mysterious.Baby.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Mysterious.Baby.zip) | 0.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Mysterious%20Baby/)  
+[The.Mysterious.Baby.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Mysterious.Baby.zip) | 0.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Mysterious%20Baby/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -7008,7 +7110,7 @@ Status: N/A
 ### The Station of Dr. Rousseau
 
 
-[The.Station.of.Dr.Rousseau.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Station.of.Dr.Rousseau.zip) | 2.5 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Station%20of%20Dr.%20Rousseau/)  
+[The.Station.of.Dr.Rousseau.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Station.of.Dr.Rousseau.zip) | 2.5 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Station%20of%20Dr.%20Rousseau/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -7024,7 +7126,7 @@ Status: N/A
 ### Tribute and Domination
 
 
-[Tribute.and.Domination.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tribute.and.Domination.zip) | 39.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tribute%20and%20Domination/)  
+[Tribute.and.Domination.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tribute.and.Domination.zip) | 39.96 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tribute%20and%20Domination/)  
 Author: Legolas | N/A[]()  
 Category: Story  
 
@@ -7040,7 +7142,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Unfettered Conquest
 
 
-[Unfettered.Conquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Conquest.zip) | 1.65 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Unfettered%20Conquest/)  
+[Unfettered.Conquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Conquest.zip) | 1.65 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Conquest/)  
 Author: N/A | N/A[]()  
 Category: Story  
 
@@ -7056,7 +7158,7 @@ Status: N/A
 ### Wanderers Storyline
 
 
-[Wanderers.Storyline.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wanderers.Storyline.zip) | 380.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Wanderers%20Storyline/)  
+[Wanderers.Storyline.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wanderers.Storyline.zip) | 380.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Wanderers%20Storyline/)  
 Author: beccabunny | [https://github.com/beccabunny/Wanderer-Storyline](https://github.com/beccabunny/Wanderer-Storyline)  
 Category: Story  
 
@@ -7071,7 +7173,7 @@ Status: N/A
 ### Warm Start
 
 
-[Warm.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warm.Start.zip) | 38.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Warm%20Start/)  
+[Warm.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warm.Start.zip) | 38.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Warm%20Start/)  
 Author: David Elworthy | N/A[]()  
 Category: Story  
 
@@ -7094,7 +7196,7 @@ Status: N/A
 ### Watcher
 
 
-[Watcher.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Watcher.zip) | 11.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Watcher/)  
+[Watcher.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Watcher.zip) | 11.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Watcher/)  
 Author: Natan Gold | N/A[]()  
 Category: Story  
 
@@ -7134,7 +7236,7 @@ Status: N/A
 ### 50 cal
 
 
-[50.cal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/50.cal.zip) | 57.81 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/50%20cal/)  
+[50.cal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/50.cal.zip) | 57.81 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/50%20cal/)  
 Author: 1010Todd | N/A[]()  
 Category: Weapons  
 
@@ -7150,7 +7252,7 @@ Status: complete and playable on 0.9.15 continous
 ### Andromeda Torpedo
 
 
-[Andromeda.Torpedo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Andromeda.Torpedo.zip) | 6.87 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Andromeda%20Torpedo/)  
+[Andromeda.Torpedo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Andromeda.Torpedo.zip) | 6.87 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Andromeda%20Torpedo/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7166,7 +7268,7 @@ Status: N/A
 ### Ballistic Mayhem
 
 
-[Ballistic.Mayhem.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ballistic.Mayhem.zip) | 106.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Ballistic%20Mayhem/)  
+[Ballistic.Mayhem.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ballistic.Mayhem.zip) | 106.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ballistic%20Mayhem/)  
 Author: SpiralCat | N/A[]()  
 Category: Weapons  
 
@@ -7182,7 +7284,7 @@ Status: Ship and outfits are nowhere for sale.
 ### Better Thunderhead Lance
 
 
-[Better.Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Thunderhead.Lance.zip) | 281.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Better%20Thunderhead%20Lance/)  
+[Better.Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Thunderhead.Lance.zip) | 281.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Thunderhead%20Lance/)  
 Author: BCPowerhouse | N/A[]()  
 Category: Weapons  
 
@@ -7198,7 +7300,7 @@ Status: N/A
 ### Burst Anti-Missile
 
 
-[Burst.Anti-Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Burst.Anti-Missile.zip) | 2.89 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Burst%20Anti-Missile/)  
+[Burst.Anti-Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Burst.Anti-Missile.zip) | 2.89 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Burst%20Anti-Missile/)  
 Author: mdsmestad | N/A[]()  
 Category: Weapons  
 
@@ -7214,7 +7316,7 @@ Status: N/A
 ### Cannon Friendly Weapon Pack
 
 
-[Cannon.Friendly.Weapon.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cannon.Friendly.Weapon.Pack.zip) | 214.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Cannon%20Friendly%20Weapon%20Pack/)  
+[Cannon.Friendly.Weapon.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cannon.Friendly.Weapon.Pack.zip) | 214.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cannon%20Friendly%20Weapon%20Pack/)  
 Author: Kyle Willey | N/A[]()  
 Category: Weapons  
 
@@ -7232,7 +7334,7 @@ Status: N/A
 ### Dual Blaster
 
 
-[Dual.Blaster.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dual.Blaster.zip) | 69.92 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Dual%20Blaster/)  
+[Dual.Blaster.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dual.Blaster.zip) | 69.92 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dual%20Blaster/)  
 Author: Nathan | N/A[]()  
 Category: Weapons  
 
@@ -7248,7 +7350,7 @@ Status: Should work
 ### EMP Weapons
 
 
-[EMP.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EMP.Weapons.zip) | 2.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/EMP%20Weapons/)  
+[EMP.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EMP.Weapons.zip) | 2.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EMP%20Weapons/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7264,7 +7366,7 @@ Status: Ship and outfits are nowhere for sale.
 ### Evasion Bomb
 
 
-[Evasion.Bomb.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Evasion.Bomb.zip) | 1.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Evasion%20Bomb/)  
+[Evasion.Bomb.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Evasion.Bomb.zip) | 1.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Evasion%20Bomb/)  
 Author: Vilhelm | N/A[]()  
 Category: Weapons  
 
@@ -7280,7 +7382,7 @@ Status: Outfits are nowhere for sale.
 ### Extra Missiles Outfit
 
 
-[Extra.Missiles.Outfit.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Extra.Missiles.Outfit.zip) | 2.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Extra%20Missiles%20Outfit/)  
+[Extra.Missiles.Outfit.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Extra.Missiles.Outfit.zip) | 2.53 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Extra%20Missiles%20Outfit/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7296,7 +7398,7 @@ Status: Should work
 ### Fancy Weapons
 
 
-[Fancy.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fancy.Weapons.zip) | 1.85 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Fancy%20Weapons/)  
+[Fancy.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fancy.Weapons.zip) | 1.85 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fancy%20Weapons/)  
 Author: 1010todd | N/A[]()  
 Category: Weapons  
 
@@ -7311,7 +7413,7 @@ Status: Requires AES Omnis to access.
 ### Flak Weapons
 
 
-[Flak.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flak.Weapons.zip) | 86.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flak%20Weapons/)  
+[Flak.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flak.Weapons.zip) | 86.27 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flak%20Weapons/)  
 Author: tehhowch | [https://github.com/tehhowch/es-modding](https://github.com/tehhowch/es-modding)  
 Category: Weapons  
 
@@ -7327,7 +7429,7 @@ Status: N/A
 ### Flak&Snare
 
 
-[Flak.Snare.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flak.Snare.zip) | 85.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flak&Snare/)  
+[Flak.Snare.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flak.Snare.zip) | 85.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flak&Snare/)  
 Author: tehhowch | [https://github.com/tehhowch/es-modding](https://github.com/tehhowch/es-modding)  
 Category: Weapons  
 
@@ -7343,7 +7445,7 @@ Status: N/A
 ### Flamethrower Turret
 
 
-[Flamethrower.Turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flamethrower.Turret.zip) | 79.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Flamethrower%20Turret/)  
+[Flamethrower.Turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Flamethrower.Turret.zip) | 79.93 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Flamethrower%20Turret/)  
 Author: ItsNickBarry | [https://github.com/ItsNickBarry/endless-sky-flamethrower-turret](https://github.com/ItsNickBarry/endless-sky-flamethrower-turret)  
 Category: Weapons  
 
@@ -7359,7 +7461,7 @@ Status: N/A
 ### Gungnir
 
 
-[Gungnir.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gungnir.zip) | 472.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Gungnir/)  
+[Gungnir.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gungnir.zip) | 472.33 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gungnir/)  
 Author: jschiav | [https://github.com/jschiav/Gungnir](https://github.com/jschiav/Gungnir)  
 Category: Weapons  
 
@@ -7375,7 +7477,7 @@ Status: N/A
 ### HellFire Missile
 
 
-[HellFire.Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HellFire.Missile.zip) | 41.35 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/HellFire%20Missile/)  
+[HellFire.Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HellFire.Missile.zip) | 41.35 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/HellFire%20Missile/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7391,7 +7493,7 @@ Status: N/A
 ### Incendiary Grenades
 
 
-[Incendiary.Grenades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Incendiary.Grenades.zip) | 84.38 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Incendiary%20Grenades/)  
+[Incendiary.Grenades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Incendiary.Grenades.zip) | 84.38 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Incendiary%20Grenades/)  
 Author: czartrak | [https://github.com/czartrak/Incendiary-Grenades-ES](https://github.com/czartrak/Incendiary-Grenades-ES)  
 Category: Weapons  
 
@@ -7407,7 +7509,7 @@ Status: N/A
 ### Interdictor
 
 
-[Interdictor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Interdictor.zip) | 0.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Interdictor/)  
+[Interdictor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Interdictor.zip) | 0.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Interdictor/)  
 Author: Nechochwen | N/A[]()  
 Category: Weapons  
 
@@ -7424,7 +7526,7 @@ Status: N/A
 <img src='Working/Kinetic Weaponry/icon.png' width='100'></img><br>
 
 
-[Kinetic.Weaponry.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kinetic.Weaponry.zip) | 132.24 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Kinetic%20Weaponry/)  
+[Kinetic.Weaponry.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kinetic.Weaponry.zip) | 132.24 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kinetic%20Weaponry/)  
 Author: Bereskatuket (kestrel1110) | [https://github.com/kestrel1110/KineticWeaponry](https://github.com/kestrel1110/KineticWeaponry)  
 Category: Weapons  
 
@@ -7441,7 +7543,7 @@ Status: Playable on 0.9.15, 0.9.16, Continuous.
 ### M.A.C. cannon
 
 
-[M.A.C.cannon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/M.A.C.cannon.zip) | 37.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/M.A.C.%20cannon/)  
+[M.A.C.cannon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/M.A.C.cannon.zip) | 37.98 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/M.A.C.%20cannon/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7457,7 +7559,7 @@ Status: N/A
 ### Mass Driver
 
 
-[Mass.Driver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mass.Driver.zip) | 1.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Mass%20Driver/)  
+[Mass.Driver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mass.Driver.zip) | 1.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mass%20Driver/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7473,7 +7575,7 @@ Status: N/A
 ### Missile Turrets
 
 
-[Missile.Turrets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Missile.Turrets.zip) | 3.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Missile%20Turrets/)  
+[Missile.Turrets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Missile.Turrets.zip) | 3.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Missile%20Turrets/)  
 Author: Dalrethliant | N/A[]()  
 Category: Weapons  
 
@@ -7489,7 +7591,7 @@ Status: N/A
 ### Non Lethal
 
 
-[Non.Lethal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Non.Lethal.zip) | 52.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Non%20Lethal/)  
+[Non.Lethal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Non.Lethal.zip) | 52.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Non%20Lethal/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7505,7 +7607,7 @@ Status: N/A
 ### Nuclear Launcher
 
 
-[Nuclear.Launcher.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.Launcher.zip) | 35.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nuclear%20Launcher/)  
+[Nuclear.Launcher.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.Launcher.zip) | 35.82 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nuclear%20Launcher/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7521,7 +7623,7 @@ Status: N/A
 ### Nuke turret
 
 
-[Nuke.turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuke.turret.zip) | 35.66 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Nuke%20turret/)  
+[Nuke.turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuke.turret.zip) | 35.66 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nuke%20turret/)  
 Author: 1010todd | N/A[]()  
 Category: Weapons  
 
@@ -7539,7 +7641,7 @@ Status: N/A
 ### OP Thunderhead Lance
 
 
-[OP.Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/OP.Thunderhead.Lance.zip) | 281.17 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/OP%20Thunderhead%20Lance/)  
+[OP.Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/OP.Thunderhead.Lance.zip) | 281.17 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/OP%20Thunderhead%20Lance/)  
 Author: BCPowerhouse | N/A[]()  
 Category: Weapons  
 
@@ -7555,7 +7657,7 @@ Status: N/A
 ### Orion Missile
 
 
-[Orion.Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Orion.Missile.zip) | 2.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Orion%20Missile/)  
+[Orion.Missile.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Orion.Missile.zip) | 2.13 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Orion%20Missile/)  
 Author: Marksman-ES | [https://github.com/TheMarksman-ES/Orion-Missile](https://github.com/TheMarksman-ES/Orion-Missile)  
 Category: Weapons  
 
@@ -7571,7 +7673,7 @@ Status: Playable on 0.9.15 Continuous.
 ### Particle Turret
 
 
-[Particle.Turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Particle.Turret.zip) | 363.74 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Particle%20Turret/)  
+[Particle.Turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Particle.Turret.zip) | 363.74 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Particle%20Turret/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7587,7 +7689,7 @@ Status: N/A
 ### Plasma Mine
 
 
-[Plasma.Mine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Plasma.Mine.zip) | 42.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Plasma%20Mine/)  
+[Plasma.Mine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Plasma.Mine.zip) | 42.65 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Plasma%20Mine/)  
 Author: John Abbe | N/A[]()  
 Category: Weapons  
 
@@ -7603,7 +7705,7 @@ Status: N/A
 ### Pulse
 
 
-[Pulse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pulse.zip) | 20.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Pulse/)  
+[Pulse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pulse.zip) | 20.7 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pulse/)  
 Author: Jesse Dickens | N/A[]()  
 Category: Weapons  
 
@@ -7620,7 +7722,7 @@ Status: N/A
 <img src='Working/Punt Gun/icon.png' width='100'></img><br>
 
 
-[Punt.Gun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Punt.Gun.zip) | 133.53 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Punt%20Gun/)  
+[Punt.Gun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Punt.Gun.zip) | 133.53 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Punt%20Gun/)  
 Author: 1010todd | N/A[]()  
 Category: Weapons  
 
@@ -7636,7 +7738,7 @@ Status: N/A
 ### Quarg AM
 
 
-[Quarg.AM.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.AM.zip) | 189.2 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Quarg%20AM/)  
+[Quarg.AM.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.AM.zip) | 189.2 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20AM/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7653,7 +7755,7 @@ Status: N/A
 <img src='Working/sensor/icon.png' width='100'></img><br>
 
 
-[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 9.5 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/sensor/)  
+[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 9.5 kb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sensor/)  
 Author: orbitalsupershell | [https://github.com/orbitalsupershell/sensor](https://github.com/orbitalsupershell/sensor)  
 Category: Weapons  
 
@@ -7671,7 +7773,7 @@ Status: N/A
 ### Spacetime Ripper Warhead
 
 
-[Spacetime.Ripper.Warhead.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacetime.Ripper.Warhead.zip) | 2.98 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Spacetime%20Ripper%20Warhead/)  
+[Spacetime.Ripper.Warhead.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacetime.Ripper.Warhead.zip) | 2.98 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Spacetime%20Ripper%20Warhead/)  
 Author: Karirawri | [https://github.com/Karirawri/Spacetime-Ripper-Warhead](https://github.com/Karirawri/Spacetime-Ripper-Warhead)  
 Category: Weapons  
 
@@ -7688,7 +7790,7 @@ Status: N/A
 ### Stat Reworks
 
 
-[Stat.Reworks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stat.Reworks.zip) | 9.65 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Stat%20Reworks/)  
+[Stat.Reworks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stat.Reworks.zip) | 9.65 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Stat%20Reworks/)  
 Author: Saturnalia9 | N/A[]()  
 Category: Weapons  
 
@@ -7704,7 +7806,7 @@ Status: Should work on 0.9.15, 0.9.16, Continuous.
 ### Support Beams
 
 
-[Support.Beams.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Support.Beams.zip) | 138.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Support%20Beams/)  
+[Support.Beams.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Support.Beams.zip) | 138.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Support%20Beams/)  
 Author: 1010Todd | N/A[]()  
 Category: Weapons  
 
@@ -7720,7 +7822,7 @@ Status: N/A
 ### The Witch
 
 
-[The.Witch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Witch.zip) | 6.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/The%20Witch/)  
+[The.Witch.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Witch.zip) | 6.4 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Witch/)  
 Author: 1010todd | N/A[]()  
 Category: Weapons  
 
@@ -7738,7 +7840,7 @@ Status: N/A
 ### Thunderhead Lance
 
 
-[Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Thunderhead.Lance.zip) | 281.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Thunderhead%20Lance/)  
+[Thunderhead.Lance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Thunderhead.Lance.zip) | 281.09 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Thunderhead%20Lance/)  
 Author: BCPowerhouse | N/A[]()  
 Category: Weapons  
 
@@ -7754,7 +7856,7 @@ Status: N/A
 ### TooManyBlasters
 
 
-[TooManyBlasters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/TooManyBlasters.zip) | 2.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/TooManyBlasters/)  
+[TooManyBlasters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/TooManyBlasters.zip) | 2.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/TooManyBlasters/)  
 Author: N/A | N/A[]()  
 Category: Weapons  
 
@@ -7770,7 +7872,7 @@ Status: N/A
 ### YEET
 
 
-[YEET.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/YEET.zip) | 280.77 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/YEET/)  
+[YEET.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/YEET.zip) | 280.77 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/YEET/)  
 Author: BCPowerhouse | N/A[]()  
 Category: Weapons  
 
@@ -7792,7 +7894,7 @@ Status: N/A
 
 ## Uncategorized
 
-<p>31 plugins in this category.<p>
+<p>26 plugins in this category.<p>
 
 <details>
 
@@ -7804,26 +7906,9 @@ Status: N/A
 <img src='Working/-Omnis/icon.png' width='100'></img><br>
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.24 mb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/-Omnis/)  
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.24 mb | 2023-05-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/)  
 Author: N/A | N/A[]()  
 Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
-### additional command buttons
-<img src='Working/additional command buttons/icon.png' width='100'></img><br>
-
-
-[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 54.8 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/additional%20command%20buttons/)  
-Author: N/A | N/A[]()  
-Category: Uncategorized  
 
 >N/A
 >
@@ -7837,7 +7922,7 @@ Status: N/A
 ### Amalgamation
 
 
-[Amalgamation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amalgamation.zip) | 42.7 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Amalgamation/)  
+[Amalgamation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amalgamation.zip) | 42.7 mb | 2022-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amalgamation/)  
 Author: demolish238 | N/A[]()  
 Category: N/A  
 
@@ -7855,7 +7940,7 @@ Status: N/A
 ### Arena of the worthy
 
 
-[Arena.of.the.worthy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arena.of.the.worthy.zip) | 1.86 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Arena%20of%20the%20worthy/)  
+[Arena.of.the.worthy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arena.of.the.worthy.zip) | 1.86 mb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arena%20of%20the%20worthy/)  
 Author: RisingLeaf | [https://github.com/RisingLeaf/Arena-of-the-Worthy/tree/main](https://github.com/RisingLeaf/Arena-of-the-Worthy/tree/main)  
 Category: N/A  
 
@@ -7871,7 +7956,7 @@ Status: REQUIRES PR #7348. Either wait for it to be merged or use ESLauncher2 to
 ### Bulkheads-and-Battleships
 
 
-[Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | 41.28 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Bulkheads-and-Battleships/)  
+[Bulkheads-and-Battleships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bulkheads-and-Battleships.zip) | 41.28 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bulkheads-and-Battleships/)  
 Author: Zoura | [https://github.com/AvianGeneticist/Bulkheads-and-Battleships](https://github.com/AvianGeneticist/Bulkheads-and-Battleships)  
 Category: N/A  
 
@@ -7887,9 +7972,9 @@ Status: Playable on 0.10.0 continuous
 ### Custom Landscapes
 
 
-[Custom.Landscapes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Landscapes.zip) | 52.0 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Custom%20Landscapes/)  
+[Custom.Landscapes.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Landscapes.zip) | 52.0 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Custom%20Landscapes/)  
 Author: N/A | N/A[]()  
-Category: Uncategorized  
+Category: N/A  
 
 >N/A
 >
@@ -7903,7 +7988,7 @@ Status: N/A
 ### Custom Portraits
 
 
-[Custom.Portraits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Portraits.zip) | 2.75 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Custom%20Portraits/)  
+[Custom.Portraits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Custom.Portraits.zip) | 2.75 mb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Custom%20Portraits/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -7919,7 +8004,7 @@ Status: N/A
 ### Endless Addon
 
 
-[Endless.Addon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Addon.zip) | 8.47 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Addon/)  
+[Endless.Addon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Addon.zip) | 8.47 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Addon/)  
 Author: IModThings | [https://github.com/IModThings/I_M_T-Endless-Sky-Mods](https://github.com/IModThings/I_M_T-Endless-Sky-Mods)  
 Category: N/A  
 
@@ -7936,7 +8021,7 @@ Status: N/A
 <img src='Working/Endless Gauntlet/icon.png' width='100'></img><br>
 
 
-[Endless.Gauntlet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Gauntlet.zip) | 784.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Gauntlet/)  
+[Endless.Gauntlet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Gauntlet.zip) | 784.14 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Gauntlet/)  
 Author: comnom(maintained by samrocketman) | [https://github.com/EndlessSkyPlugins/Endless-Gauntlet](https://github.com/EndlessSkyPlugins/Endless-Gauntlet)  
 Category: N/A  
 
@@ -7952,7 +8037,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 ### Endless Sky except everything makes that werid Tim Allen noise
 
 
-[Endless.Sky.except.everything.makes.that.werid.Tim.Allen.noise.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.except.everything.makes.that.werid.Tim.Allen.noise.zip) | 5.65 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Sky%20except%20everything%20makes%20that%20werid%20Tim%20Allen%20noise/)  
+[Endless.Sky.except.everything.makes.that.werid.Tim.Allen.noise.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.except.everything.makes.that.werid.Tim.Allen.noise.zip) | 5.65 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Sky%20except%20everything%20makes%20that%20werid%20Tim%20Allen%20noise/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -7968,7 +8053,7 @@ Status: Should work
 ### Endless Sky except ships make that weird Tim Allen sound when they die
 
 
-[Endless.Sky.except.ships.make.that.weird.Tim.Allen.sound.when.they.die.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.except.ships.make.that.weird.Tim.Allen.sound.when.they.die.zip) | 85.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Endless%20Sky%20except%20ships%20make%20that%20weird%20Tim%20Allen%20sound%20when%20they%20die/)  
+[Endless.Sky.except.ships.make.that.weird.Tim.Allen.sound.when.they.die.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.except.ships.make.that.weird.Tim.Allen.sound.when.they.die.zip) | 85.63 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Sky%20except%20ships%20make%20that%20weird%20Tim%20Allen%20sound%20when%20they%20die/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -7985,7 +8070,7 @@ Status: Should work
 <img src='Working/Enigma Corp/icon.png' width='100'></img><br>
 
 
-[Enigma.Corp.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enigma.Corp.zip) | 39.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Enigma%20Corp/)  
+[Enigma.Corp.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Enigma.Corp.zip) | 39.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Enigma%20Corp/)  
 Author: Amazinite | [https://github.com/amazinite/enigma-corp](https://github.com/amazinite/enigma-corp)  
 Category: N/A  
 
@@ -8001,7 +8086,7 @@ Status: N/A
 ### Expanded Territory
 
 
-[Expanded.Territory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Expanded.Territory.zip) | 983.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Expanded%20Territory/)  
+[Expanded.Territory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Expanded.Territory.zip) | 983.19 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Expanded%20Territory/)  
 Author: virmitio | [https://github.com/virmitio/ES_ExpandedTerritory](https://github.com/virmitio/ES_ExpandedTerritory)  
 Category: N/A  
 
@@ -8017,26 +8102,9 @@ Status: N/A
 ### Experimental
 
 
-[Experimental.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Experimental.zip) | 6.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Experimental/)  
+[Experimental.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Experimental.zip) | 6.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Experimental/)  
 Author: N/A | N/A[]()  
 Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
-### galactic capital investment
-<img src='Working/galactic capital investment/icon.png' width='100'></img><br>
-
-
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 53.96 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/galactic%20capital%20investment/)  
-Author: N/A | N/A[]()  
-Category: Uncategorized  
 
 >N/A
 >
@@ -8050,7 +8118,7 @@ Status: N/A
 ### Hi Quality Stainless Steel Nonstick Pan
 
 
-[Hi.Quality.Stainless.Steel.Nonstick.Pan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hi.Quality.Stainless.Steel.Nonstick.Pan.zip) | 212.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Hi%20Quality%20Stainless%20Steel%20Nonstick%20Pan/)  
+[Hi.Quality.Stainless.Steel.Nonstick.Pan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hi.Quality.Stainless.Steel.Nonstick.Pan.zip) | 212.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hi%20Quality%20Stainless%20Steel%20Nonstick%20Pan/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -8066,7 +8134,7 @@ Status: N/A
 ### Improvisatory
 
 
-[Improvisatory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Improvisatory.zip) | 1.82 mb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Improvisatory/)  
+[Improvisatory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Improvisatory.zip) | 1.82 mb | 2023-03-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Improvisatory/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -8083,7 +8151,7 @@ Status: N/A
 <img src='Working/Logbook Help/icon.png' height='100'></img><br>
 
 
-[Logbook.Help.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Logbook.Help.zip) | 15.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Logbook%20Help/)  
+[Logbook.Help.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Logbook.Help.zip) | 15.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Logbook%20Help/)  
 Author: Michael Arsollon | [https://github.com/MidnightPlugins/Logbook-Help](https://github.com/MidnightPlugins/Logbook-Help)  
 Category: N/A  
 
@@ -8099,7 +8167,7 @@ Status: Compatible with ES 0.9.14
 ### MechSummoner
 
 
-[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 477.01 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MechSummoner/)  
+[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 477.01 kb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MechSummoner/)  
 Author: Zoura | N/A[]()  
 Category: N/A  
 
@@ -8115,7 +8183,7 @@ Status: Playable on 0.10.0 continuous
 ### multiplayer map
 
 
-[multiplayer.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/multiplayer.map.zip) | 3.51 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/multiplayer%20map/)  
+[multiplayer.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/multiplayer.map.zip) | 3.51 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/multiplayer%20map/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -8131,7 +8199,7 @@ Status: N/A
 ### MultiTech Extra Light
 
 
-[MultiTech.Extra.Light.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MultiTech.Extra.Light.zip) | 862.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/MultiTech%20Extra%20Light/)  
+[MultiTech.Extra.Light.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MultiTech.Extra.Light.zip) | 862.21 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MultiTech%20Extra%20Light/)  
 Author: sgtdrew720 | [https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-](https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-)  
 Category: N/A  
 
@@ -8147,7 +8215,7 @@ Status: N/A
 ### Newscasts
 
 
-[Newscasts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Newscasts.zip) | 1.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Newscasts/)  
+[Newscasts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Newscasts.zip) | 1.86 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Newscasts/)  
 Author: czartrak | [https://github.com/czartrak/ES-newscasts](https://github.com/czartrak/ES-newscasts)  
 Category: N/A  
 
@@ -8163,7 +8231,7 @@ Status: N/A
 ### Play As Sestor
 
 
-[Play.As.Sestor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Play.As.Sestor.zip) | 5.69 kb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Play%20As%20Sestor/)  
+[Play.As.Sestor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Play.As.Sestor.zip) | 5.69 kb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Play%20As%20Sestor/)  
 Author: Zoura (AvianGeneticist) | [https://github.com/AvianGeneticist/Play-As-Sestor](https://github.com/AvianGeneticist/Play-As-Sestor)  
 Category: N/A  
 
@@ -8181,7 +8249,7 @@ Status: Playable on 0.9.15/0.9.16.
 <img src='Working/ShieldsUp Phils Flavours/icon.png' width='100'></img><br>
 
 
-[ShieldsUp.Phils.Flavours.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Phils.Flavours.zip) | 13.93 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Phils%20Flavours/)  
+[ShieldsUp.Phils.Flavours.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Phils.Flavours.zip) | 13.93 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Phils%20Flavours/)  
 Author: Phil Morley | N/A[]()  
 Category: N/A  
 
@@ -8198,26 +8266,9 @@ Status: N/A
 <img src='Working/ShieldsUp Pompano%27s Ever Expanding Galaxy/icon.png' height='100'></img><br>
 
 
-[ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip) | 1.41 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/ShieldsUp%20Pompano's%20Ever%20Expanding%20Galaxy/)  
+[ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ShieldsUp.Pompano.s.Ever.Expanding.Galaxy.zip) | 1.41 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ShieldsUp%20Pompano's%20Ever%20Expanding%20Galaxy/)  
 Author: N/A | N/A[]()  
 Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
-### snowfeather robotics
-<img src='Working/snowfeather robotics/icon.png' width='100'></img><br>
-
-
-[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 55.25 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/snowfeather%20robotics/)  
-Author: N/A | N/A[]()  
-Category: Uncategorized  
 
 >N/A
 >
@@ -8231,7 +8282,7 @@ Status: N/A
 ### Sounds Of Endless Sky
 
 
-[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 46.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Sounds%20Of%20Endless%20Sky/)  
+[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 46.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sounds%20Of%20Endless%20Sky/)  
 Author: Sam Gleske | [https://github.com/samrocketman/sounds-of-endless-sky](https://github.com/samrocketman/sounds-of-endless-sky)  
 Category: N/A  
 
@@ -8249,7 +8300,7 @@ Status: N/A
 <img src='Working/Syndicate Campaign/icon.png' width='100'></img><br>
 
 
-[Syndicate.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Campaign.zip) | 699.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Syndicate%20Campaign/)  
+[Syndicate.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Campaign.zip) | 699.31 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Campaign/)  
 Author: N/A | N/A[]()  
 Category: N/A  
 
@@ -8268,43 +8319,10 @@ Status: story
 
 ---
 
-### Tale Of Apoxys
-
-
-[Tale.Of.Apoxys.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tale.Of.Apoxys.zip) | 151.33 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Tale%20Of%20Apoxys/)  
-Author: N/A | N/A[]()  
-Category: Uncategorized  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
-### too many asteroids
-<img src='Working/too many asteroids/icon.png' width='100'></img><br>
-
-
-[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 56.88 kb | 2023-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/too%20many%20asteroids/)  
-Author: N/A | N/A[]()  
-Category: Uncategorized  
-
->N/A
->
-
-
-Status: N/A  
-
-
----
-
 ### Warehouse
 
 
-[Warehouse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warehouse.zip) | 1.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Plugins/Warehouse/)  
+[Warehouse.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warehouse.zip) | 1.57 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Warehouse/)  
 Author: Wanderer | [https://www.nexusmods.com/endlesssky/mods/2](https://www.nexusmods.com/endlesssky/mods/2)  
 Category: N/A  
 
