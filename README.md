@@ -1,46 +1,27 @@
 <img src='res/logo.png' width='500'></img>
 
 
-News(latest 15 entries):
+News(latest 10 entries):
 <table><tr><td width=800>
 
 2023-06-23 'galactic.capital.investment' updated
-
-2023-06-22 'galactic.capital.investment' updated
-
-2023-06-21 'too.many.asteroids' updated
-
-2023-06-21 'additional.command.buttons' updated
-
-2023-06-21 'snowfeather.robotics' updated
-
-2023-06-20 'galactic.capital.investment' updated
-
-2023-06-20 'automata.destruction.75percent' updated
-
-2023-06-20 'automata.destruction.0percent' updated
-
-2023-06-20 'kor.efret.shipyard' updated
-
-2023-06-20 'unique.fix' updated
-
-2023-06-20 'more.boarding.missions' updated
-
-2023-06-20 'automata.destruction.51percent' updated
-
-2023-06-20 'automata.in.human.space' updated
-
-2023-06-20 'automata.destruction.23percent' updated
-
-2023-06-19 'galactic.capital.investment' updated
-
-
+<br>2023-06-22 'galactic.capital.investment' updated
+<br>2023-06-21 'too.many.asteroids' updated
+<br>2023-06-21 'additional.command.buttons' updated
+<br>2023-06-21 'snowfeather.robotics' updated
+<br>2023-06-20 'galactic.capital.investment' updated
+<br>2023-06-20 'automata.destruction.75percent' updated
+<br>2023-06-20 'automata.destruction.0percent' updated
+<br>2023-06-20 'kor.efret.shipyard' updated
+<br>2023-06-20 'unique.fix' updated
+<br>
 
 </td></tr></table>
 Provide a directlink to your zipped plugin and we do a daily check if it is newer than the one we host here.<br>
 
 [howto](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#automatic-updating)
 
+---
 
 # Table of Contents
 
@@ -5149,7 +5130,7 @@ Category: Ships
 >
 
 
-Status: Requires Continuous/0.9.15+  
+Status: Requires Continuous/0.10.1+  
 
 
 ---
