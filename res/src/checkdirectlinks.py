@@ -128,7 +128,17 @@ for entry in listing:
 		news = file1.readlines()
 	with open("res/news.txt", "w") as file1: # write to news file, newest on top, keep old contents
 		today = datetime.today().strftime('%Y-%m-%d')
-		news = [today + " '" + stripped + "' updated\n"] + news
+		with open("res/pluginlist/" + stripped + ".txt") as file2:
+			c = file2.readline()
+			c = file2.readline()
+			c = file2.readline()
+			c = file2.readline()
+			c = c.replace("category=", "")
+			c = c.strip()
+			if c == "N/A":
+				c = "uncategorized"
+			c = "[" + c + "](" + webroot + indexfile + "#" + c + ")\n" # anchor link to category
+		news = [today + " '" + stripped + "' updated | category: " + c] + news
 		file1.writelines(news)
 	# renaming zips to asset convention
 	withdots = stripped.replace(" ", ".") 
