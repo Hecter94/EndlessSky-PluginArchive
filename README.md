@@ -4,7 +4,8 @@
 News(latest 10 entries):
 <table><tr><td width=800>
 
-2023-06-23 'galactic.capital.investment' updated
+2023-06-28 'galactic.capital.investment' updated | category: [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay)
+<br>2023-06-23 'galactic.capital.investment' updated
 <br>2023-06-22 'galactic.capital.investment' updated
 <br>2023-06-21 'too.many.asteroids' updated
 <br>2023-06-21 'additional.command.buttons' updated
@@ -13,7 +14,6 @@ News(latest 10 entries):
 <br>2023-06-20 'automata.destruction.75percent' updated
 <br>2023-06-20 'automata.destruction.0percent' updated
 <br>2023-06-20 'kor.efret.shipyard' updated
-<br>2023-06-20 'unique.fix' updated
 <br>
 
 </td></tr></table>
@@ -1071,7 +1071,7 @@ Status: N/A
 <img src='Working/galactic.capital.investment/icon.png' width='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 54.79 kb | 2023-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/)  
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 54.81 kb | 2023-06-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/)  
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  
 Category: Gameplay  
 
