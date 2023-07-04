@@ -28,107 +28,109 @@ with open("res/config.txt") as f:
 			pluginurl = line.split(" = ")[1]
 		if line.find("assetfullpath") == 0:	# i.e. assetfullpath = https://github.com/zuckung/test3/releases/download/Latest/
 			assetfullpath = line.split(" = ")[1]
+
 			
+if os.path.isdir("temp") == False: # creating temp directory
+	os.mkdir("temp")						
+
+
+username = os.getenv("GITHUB_ACTOR")
+token = os.getenv("github_token")
+
+
+
 entries = os.listdir(listfolder) # for all listfiles
-entries.sort(key=str.lower)
+entries.sort(key=str.lower)		
 for entry in entries:
 	with open(listfolder + entry, "r") as file1:
 		x = file1.readline()
 		x = file1.readline()
 		x = file1.readline()
 		directlink = x.replace("directlink=","")
-		if directlink != "N/A\n": # when there is a direct link
-			directlink = directlink.strip()
-			pluginname = entry[:len(entry) -4]
-			print("\ndirectlink found for: " + pluginname)
-			withdots = pluginname.replace(" ", ".") 
-			withdots = withdots.replace("'", ".")
-			withdots = withdots.replace(",", ".") 
-			withdots = withdots.replace("(", ".") 
-			withdots = withdots.replace(")", ".") 
-			withdots = withdots.replace("&", ".")  
-			withdots = withdots.replace("...", ".")
-			withdots = withdots.replace("..", ".")
-			if withdots[len(withdots)-1] == ".":
-				withdots = withdots[:len(withdots)-1]
-			directzip = directlink.split(os.sep)
-			directzip = str(directzip[len(directzip)-1])
-						
-			try: # check asset file
-				response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True)
-				response.raise_for_status()
-			except requests.exceptions.HTTPError as err:
-				print(err)
-			else:
-				response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True)
-				response.raise_for_status()
+	if directlink == "N/A\n": # when there is a direct link
+		continue
+	else:
+		directlink = directlink.strip()
+		pluginname = entry[:len(entry) -4] # removes '.txt'
+		print("\ndirectlink found for: " + pluginname)
+		withdots = pluginname.replace(" ", ".") # getting asset file name
+		withdots = withdots.replace("'", ".")
+		withdots = withdots.replace(",", ".") 
+		withdots = withdots.replace("(", ".") 
+		withdots = withdots.replace(")", ".") 
+		withdots = withdots.replace("&", ".")  
+		withdots = withdots.replace("...", ".")
+		withdots = withdots.replace("..", ".")
+		if withdots[len(withdots)-1] == ".":
+			withdots = withdots[:len(withdots)-1]
+		directzip = directlink.split(os.sep)
+		directzip = str(directzip[len(directzip)-1])
+		
+		try: # check if asset file is there, and get assetlastmodified
+			response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True)
+			response.raise_for_status()
+		except requests.exceptions.HTTPError as err:
+			print(err)
+			assetlastmodified = "FALSE"
+		else:
+			modif = response.headers['Last-Modified']
+			datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
+			assetlastmodified = datetime_object.date()
+		
+		try: # check directlink
+			response = requests.head(directlink, allow_redirects=True)
+			response.raise_for_status()
+		except requests.exceptions.HTTPError as err:
+			print("ABORTING: directlink not reachable")
+			print(err)
+			continue
+		else: 
+			try: # checking if last-modified/content-length tags are there
 				modif = response.headers['Last-Modified']
 				datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
-				assetlastmodified = datetime_object.date()
-				try: # check directlink
-					response = requests.head(directlink, allow_redirects=True)
-					response.raise_for_status()
-				except requests.exceptions.HTTPError as err:
-					print(err)
-				else:
-					response = requests.head(directlink, allow_redirects=True)
-					response.raise_for_status()
-					try: # checking if last-modicied tag is there
-						modif = response.headers['Last-Modified']
+				linklastmodified = datetime_object.date()
+				linksize = int(response.headers['Content-Length']) / 1024 # get size in kb
+			except:
+				if directlink[:18] == "https://github.com": # check if github repo
+					urllist = directlink.split(os.sep)
+					author = urllist[3]
+					plug = urllist[4]
+					linksize = "FALSE"
+					try: # check gifhub api for last commit
+						params = {'page': '1', 'per_page': '1'}
+						response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
 					except:
-						if directlink[:18] == "https://github.com": # if github repo, get last commit
-							print("no Last-Modified tag in header, but found github")
-							urllist = directlink.split(os.sep)
-							author = urllist[3]
-							plug = urllist[4]
-							params = {'page': '1', 'per_page': '1'}
-							response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params)
-							cont = str(response.content)
-							dateandtime = cont.split(",")[4]
-							commitdate = dateandtime[8:18] 
-							committime = dateandtime[19:27]
-							linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d').date()
-							datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
-							if datediff.days < 1: 
-								print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
-							else:	
-								print("SUCCESS: linkfile is newer")				
-								assetsize = int(response.headers['Content-Length']) / 1024 # get size in kb
-								if assetsize >= 102400:
-									print(assetsize)
-									print("ABORTING: directlink is bigger than 100 mb")
-								else:
-									print("SUCCESS: file is smaller than 100 mb")
-									if os.path.isdir("temp") == False:
-										os.mkdir("temp")
-									with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
-										r = requests.get(directlink, allow_redirects=True)
-										file2.write(r.content)
-										print("SUCCESS: downloaded zip")
-						else:
-							print("ABORTING: no Last-Modified tag in header")
-					else:
-						modif = response.headers['Last-Modified']
-						datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
-						linklastmodified = datetime_object.date()
-						datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
-						if datediff.days < 1: 
-							print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
-						else:	
-							print("SUCCESS: linkfile is newer")				
-							assetsize = int(response.headers['Content-Length']) / 1024 # get size in kb
-							if assetsize >= 102400:
-								print(assetsize)
-								print("ABORTING: directlink is bigger than 100 mb")
-							else:
-								print("SUCCESS: file is smaller than 100 mb")
-								if os.path.isdir("temp") == False:
-									os.mkdir("temp")
-								with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
-									r = requests.get(directlink, allow_redirects=True)
-									file2.write(r.content)
-									print("SUCCESS: downloaded zip")						
-
+						print("ABORTING: github api not reachable")
+						linklastmodified = "FALSE"
+						continue
+					else: # get last commit date and time
+						cont = str(response.content)
+						dateandtime = cont.split(",")[4]
+						commitdate = dateandtime[8:18] 
+						committime = dateandtime[19:27]
+						linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d').date()
+		if linksize != "FALSE":
+			if linksize >= 102400:
+				print("ABORTING: directlink is bigger than 100 mb")
+				continue
+		if linklastmodified != "FALSE":
+			if assetlastmodified != "FALSE":
+				datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
+				if datediff.days < 1: 
+					print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
+				else:	
+					print("SUCCESS: linkfile is newer")
+					with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
+						r = requests.get(directlink, allow_redirects=True)
+						file2.write(r.content)
+						print("SUCCESS: downloaded zip")
+			else:
+				print("no assetfile, must be a new plugin")
+				with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
+					r = requests.get(directlink, allow_redirects=True)
+					file2.write(r.content)
+					print("SUCCESS: downloaded zip")
+				
 # extracting zips
 listing = glob.glob("temp/*.zip")
 print("\nlast modified checks DONE, extracting zips now")
@@ -178,4 +180,3 @@ for entry in listing:
 	if withdots[len(withdots)-1] == ".":
 		withdots = withdots[:len(withdots)-1]
 	shutil.move(entry, "temp/" + withdots + ".zip")
-					
