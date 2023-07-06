@@ -158,6 +158,7 @@ for entry in listing:
 		today = datetime.today().strftime('%Y-%m-%d')
 		with open("res/pluginlist/" + stripped + ".txt") as file2:
 			author = file2.readline()
+			author = author.replace("author=", "")
 			c = file2.readline()
 			c = file2.readline()
 			c = file2.readline()
