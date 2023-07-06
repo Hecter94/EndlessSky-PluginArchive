@@ -159,6 +159,7 @@ for entry in listing:
 		with open("res/pluginlist/" + stripped + ".txt") as file2:
 			author = file2.readline()
 			author = author.replace("author=", "")
+			author = author.strip()
 			c = file2.readline()
 			c = file2.readline()
 			c = file2.readline()
