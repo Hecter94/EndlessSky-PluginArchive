@@ -9,11 +9,36 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+# Contents:
+#	- Time Skip
+#	- Blood Rage
+#	- Mata Hari
+#	- Gremlin
+#	- Kamikaze
+#	- Guncraft
+
+mission "Global: main plot completed"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+		not "global: main plot completed"
+	on offer
+		"global: main plot completed" ++
+		fail
 
 start
 	name "Time Skip"
-	description `For experienced pilots who've already flown the Endless Skies. No intro missions here!`
-	description `There's no starting loan to pay off, but you have less time to prepare before the main events of the game start happening.`
+	to unlock
+		has "main plot completed"
+	on reveal
+		description `Unlocked after completion of the main plot.`
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: ?`
+	description `	For experienced pilots who've already flown the Endless Skies. No intro missions here!`
+	description `	There's no starting loan to pay off, but you have less time to prepare before the main events of the game start happening.`
+	description `	As you travel the galaxy, your memories of the local systems may be restored.`
 	thumbnail "planet/wormhole"
 	date 2 2 3014
 	system "Rutilicus"
@@ -23,7 +48,7 @@ start
 		credits 450000
 		score 400
 	set "license: Pilot's"
-	set "Time Skip"
+	set "Time Skip start"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
 	set "Intro Cargo [0]: offered"
@@ -31,19 +56,41 @@ start
 
 conversation "Time Skip intro"
 	scene "planet/wormhole"
-	`You wake up in your old home on New Boston, your head reeling from a pounding headache. The last thing you remember was traveling through a  wormhole. The rest of your memories are fuzzy. As the pain and dizzyness fade away, you check the date and realize you've traveled back in time! It's a few months after you recall buying your first ship. Checking your possessions, the only noteworthy item you have right now is your pilot's license. The bank indicates you have no outstanding loans, but as far as you can tell, you don't have a single ship to your name. It seems this is an alternate time line.`
-	`	With no clue how you got here and no guidance for returning to your original time line, you set out for the shipyard.`	
+	`You wake up in your old home on New Boston, your head reeling from a pounding headache. The last thing you remember was traveling through a  wormhole. The rest of your memories are fuzzy. As the pain and dizzyness fade away, you check the date and realize you've traveled back in time! It's a few months after you recall buying your first ship. Checking your possessions, the only noteworthy item you have right now is your pilot's license. The bank indicates you have 450,000 credits and no outstanding loans. But as far as you can tell, you don't have a single ship to your name. It seems this is an alternate time line.`
+	`	With no clue how you got here and no guidance for returning to your original time line, you set out for the shipyard.`
 	`	A sales clerk approaches you and offers her assistance. You ask to see the ships available for sale and introduce yourself:`
 	name
 	scene "scene/scene-basic ships"
 	`	Walking among the rusted out hulks and newer ships that gleam in the sunlight, you smell grease and dirt and rocket fuel; nostalgic smells. There are three ship models within your price range. Will you choose the same one you chose before?`
+	choice
+		`	(Choose from among the three new models.)`
+			decline
+		`	(Ask if any used ships are available.)`
+	scene "scene/scene-basic ships"
+	scene "thumbnail/pirate scrapper"
+	action
+		event "add scrapper to basic shipyard"
+	`	The sales clerk leads you to an old Scrapper parked far from the newer model ships. At a mere 231,000 credits, this rust bucket is definitely within your price range. But the hull may not hold up against a pirate attack. Are you willing to risk your life just to save some credits?`
+	choice
+		`	(Choose from among the three new models.)`
+			decline
+		`	(Buy the Scrapper.)`
+	scene "thumbnail/pirate scrapper"
+	`	You purchase the Scrapper for 231,000 credits.`
+	action
+		give ship "Scrapper" "Yesterday's Tomorrow"
+		payment -231000
+
+event "add scrapper to basic shipyard"
+	shipyard "Basic Ships"
+		add "Scrapper"
 
 mission "Intro [Time Skip]"
 	invisible
 	landing
 	source "New Boston"
 	to offer
-		has "Time Skip"
+		has "Time Skip start"
 	on offer
 		log "I'm certain I've traveled back to an alternate past. I should probably keep that to myself if I want to stay out of an insane asylum."
 		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
@@ -73,10 +120,42 @@ mission "Intro [Time Skip]"
 			label end
 			`	You stand alone on the landing pad. It seems a familiar old man in grease-stained coveralls isn't going to appear and ask for a ride. You're on your own this time...`
 				accept
+	on enter
+		dialog `You've attracted the attention of a pirate. Some things never change...`
 	npc kill
 		government "Pirate"
-		personality entering plunders harvests
-		ship "Fury" "Punxsutawney"
+		personality target entering plunders harvests nemesis
+		ship "Fury (Bomber Limit Break)" "Punxsutawney"
+
+mission "Time Skip Map"
+	landing
+	invisible
+	to offer
+		has "Time Skip start"
+		not "global: "
+	on offer
+		outfit "Local Map"
+		conversation
+			scene "outfit/map"
+			`There won't be a need to buy a fresh map from the outfitter. Your memory of the rest of the galaxy may be a bit fuzzy, but at least the details regarding the local systems are still clear in your mind. Traveling the galaxy may restore more of your memories.`
+				decline
+
+mission "Time Skip Mapping"
+	landing
+	invisible
+	repeat
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent" "Neutral"
+	to offer
+		has "Time Skip start"
+		random < 10
+	on offer
+		require "Local Map" 0
+		outfit "Local Map"
+		conversation
+			scene "outfit/map"
+			`Some of your memories of this galactic region return to you. Continuing your travels of the galaxy may restore more of your memories.`
+				decline
 
 
 
@@ -86,8 +165,10 @@ mission "Intro [Time Skip]"
 
 start
 	name "Blood Rage"
-	description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. After many long years of working at a textile mill, you've finally saved enough credits to apply for a pilot's license from the Republic.`
-	description `	(This starter ship is outfitted for mining.)`
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: Modified Berserker`
+	description `	This interceptor is outfitted for mining and has a weapon more powerful at close range.`
 	thumbnail "thumbnail/berserker"
 	date 16 11 3013
 	system "Rutilicus"
@@ -118,7 +199,7 @@ start
 			"hull" 550
 			"required crew" 1
 			"bunks" 2
-			"mass" 130
+			"mass" 90
 			"drag" 2.2
 			"heat dissipation" .85
 			"fuel capacity" 400
@@ -126,6 +207,7 @@ start
 			"outfit space" 190
 			"weapon capacity" 25
 			"engine capacity" 65
+			"fused circuits" -1
 			weapon
 				"blast radius" 30
 				"shield damage" 300
@@ -134,10 +216,13 @@ start
 		outfits
 			"Energy Cannon" 1
 			"Energy Blaster" 2
-			"nGVF-DD Fuel Cell"
-			"LP036a Battery Pack"
-			"D14-RN Shield Generator"
-			"X2700 Ion Thruster"
+			"nGVF-CC Fuel Cell"
+			"LP072a Battery Pack"
+			"D23-QP Shield Generator"
+			"Rusty Asteroid Scanner"
+			"Limit Breaker"
+			"Volcano Afterburner"
+			"X1700 Ion Thruster"
 			"X3200 Ion Steering"
 			"Hyperdrive"
 			
@@ -172,8 +257,10 @@ conversation "blood rage intro"
 	`	The elevator is so well-tuned that you do not even realize it is moving until it has deposited you back in the lobby. But as you step outside the law offices, you forget your troubles and start smiling. Parked before you is the Blood Rage, your ticket to getting off this planet.`
 	choice
 		`	(Inspect the ship.)`
+	scene "outfit/rusty asteroid scanner"
+	`	You smell grease and dirt and rocket fuel; wonderful smells. As you understand it, your uncle bought this used Berserker for asteroid mining. You're not sure if the rusty old asteroid scanner installed on it is worth keeping, but it does still work. Unfortunately the effective range is so low you might not realize an asteroid is minable until you're practically on top of it.`
 	scene "outfit/energy cannon"
-	`	You smell grease and dirt and rocket fuel; wonderful smells. As you understand it, your uncle bought this Berserker used. The previous owner  salvaged it from a war zone. Its weapons layout is different from the standard Berserker. The weapons pods on the wingtips have been converted into cargo pods while a gun has been installed in the ship's foreward section. You note the guns mounted on the ship are two different sizes. The larger one is an Energy Cannon, a brutal relic from a war that occured long ago. Hopefully you won't have to actually kill someone with this...`
+	`	The one who sold this ship to your uncle salvaged it from a war zone. Its weapons layout is different from the standard Berserker. The weapons pods on the wingtips have been converted into cargo pods while a gun has been installed in the ship's foreward section. You note the guns mounted on the ship are two different sizes. The larger one is an Energy Cannon, a brutal relic from a war that occured long ago. Hopefully you won't have to actually kill someone with this...`
 
 
 
@@ -196,7 +283,7 @@ mission "Intro [Blood Rage]"
 		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
 		conversation
 			`You take your new ship for a test drive, piloting it out onto a spare landing pad by the spaceport. Then you get out and look the ship over a bit more closely. You are busy polishing out a few rust spots with a piece of steel wool when an old man in grease-stained coveralls walks up.`
-			`	"Nothing quite like flying your very first starship," he says.`
+			`	"Nothing quite like flying your very first starship," he says. "That's a vintage antique, if I remember correctly.`
 			choice
 				`	"Well, I don't plan to get too attached to this one. I'll be flying something much nicer before long."`
 					goto bigger
@@ -245,6 +332,148 @@ mission "Intro [Blood Rage]"
 			``
 			`	(Click the "Spaceport" button to continue this mission.)`
 
+mission "Intro Mining [Blood Rage]"
+	job
+	deadline 7
+	name "Mining: Copper to <system>"
+	description "The shipyard on <destination> has a shortage of Copper. Bring 20 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
+		attributes "shipyard"
+		not attributes "uninhabited"
+	to offer
+		has "Blood Rage start"
+		or
+			has "Intro [Blood Rage]: declined"
+			has "Intro [1 Interceptor]: declined"
+			has "Intro [2 Interceptor]: declined"
+			has "Intro [3 Interceptor]: declined"
+			has "Intro [3 Interceptor]: done"
+		or
+			not "Intro Mining [Blood Rage]: done"
+			and
+				has "Intro Mining [Blood Rage]: done"
+				random < 25
+	on offer
+		require "Rusty Asteroid Scanner"
+	on accept
+		conversation
+			scene "asteroid/gold/spin"
+			`Valuable ore can be mined from certain asteroids if you shoot at them enough. These asteroids look slightly different from the common metal and rock asteroids. If you are having trouble telling them apart, an Asteroid Scanner will highlight these asteroids for you.`
+	on complete
+		outfit "Copper" -20
+		payment 90000
+		dialog `The shipyards on <planet> accept your delivery of Copper and pay you <payment>.`
+
+mission "Mining: Iron Challenge [Blood Rage]"
+	deadline 7
+	repeat
+	name "Iron Challenge"
+	description "The captain of the <npc> has challenged you to a mining duel! Harvest 20 tons of Iron and return to <destination> by <date>. Whoever loses the duel gives their harvest to the winner."
+	source
+		planet Hestia Helheim Icefall Canyon Memory Calda Vail Vinci Hermes Earth Luna Mars Foundry Burthen Hephaestus Maker Oblivion "New Portland" Glaze Sundrinker Humanika "New India" Poisonwood Lichen
+	to offer
+		has "Blood Rage start"
+		or
+			has "Intro [Blood Rage]: declined"
+			has "Intro [1 Interceptor]: declined"
+			has "Intro [2 Interceptor]: declined"
+			has "Intro [3 Interceptor]: declined"
+			has "Intro [3 Interceptor]: done"
+		or
+			and
+				not "Mining: Iron Challenge [Blood Rage]: declined"
+				random < 25
+			and
+				has "Mining: Iron Challenge [Blood Rage]: declined"
+				random < 5
+	on offer
+		require "Rusty Asteroid Scanner"
+		conversation
+			`Another pilot approaches you. "Nice ship. Are you a miner?`
+			choice
+				`	"I've harvested a few asteroids."`
+				`	"I don't mine."`
+					decline
+			scene "asteroid/iron/spin"
+			`	"How about a challenge then? It'll be my ship, the <npc>, versus yours. Whoever mines the most Iron by <date> wins. The loser gives their harvest to the winner. How about it?" The <npc> looks like a capable mining ship. But unless it's been significantly modified, its pilot seems to have forgotten an important detail..."`
+			choice
+				`	(Accept the challenge.)`
+				`	(Reject the challenge.)`
+					decline
+			`	"That's the spirit! We meet back here by <date>!"`
+				accept
+	on enter
+		conversation
+			scene "asteroid/iron/spin"
+			`There's Iron in this system. The pilot of the <npc> probably makes this type of challenge regularly. Time to find out who's the better miner!`
+	npc accompany save
+		government "Merchant"
+		personality target mining harvests marked
+		fleet
+			names "civilian"
+			cargo 0
+			variant 1
+				"Sparrow"
+			variant 1
+				"Fury (Miner)"
+	on complete
+		outfit "Iron" -20
+		payment 42000
+		conversation
+			scene "asteroid/iron/spin"
+			`As expected, after tallying up who mined more Iron, it's obvious you've won. It seems the other pilot didn't realize your ship had more cargo space than the <npc>. He begrudgingly hands over his harvest, but your cargo hold is already full. You end up selling both harvests for <payment>.`
+
+mission "Rogue Asteroid [Blood Rage]"
+	deadline 14
+	minor
+	name "Rogue Asteroid in <system>"
+	description "A rogue asteroid may collide with <destination>. Destroy it by <date>, then land on <planet> to claim the reward (<payment>)."
+	source
+		attributes "dirt belt"
+		not attributes "uninhabited"
+	destination "Gemstone"
+	to offer
+		has "Blood Rage start"
+		or
+			has "Intro [Blood Rage]: declined"
+			has "Intro [1 Interceptor]: declined"
+			has "Intro [2 Interceptor]: declined"
+			has "Intro [3 Interceptor]: declined"
+			has "Intro [3 Interceptor]: done"
+		random < 50
+	on offer
+		require "Rusty Asteroid Scanner"
+		conversation
+			scene "asteroid/fossil/spin"
+			`	The holovideo at the spaceport bar announces: "A rogue asteroid has shifted into an erratic orbital path over <destination>. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to their planet."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested waiting staying mute
+		fleet
+			names "asteroid names"
+			cargo 2
+			outfitters "Copper" "Gold"
+			variant
+				"Rogue Asteroid"
+		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
+
+	on complete
+		payment 10000
+		event "midnight mining at turais"
+		conversation
+			scene "outfit/harvested gold"
+			`As the government of <planet> rewards you with <payment> for destroying the asteroid threat, a meteorologist announces that traces of copper and gold were found in fragments recovered from the asteroid. Mining in <system> may have become even more lucrative if more fragments are out there...`
+
+event "midnight mining at turais"
+	system Turais
+		add minables "copper" 9 6.91427
+		add minables "gold" 3 8.10341
 
 
 #############################
@@ -253,8 +482,10 @@ mission "Intro [Blood Rage]"
 
 start
 	name "Mata Hari"
-	description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. After many long years of working at a textile mill, you've finally saved enough credits to apply for a pilot's license from the Republic.`
-	description `	(This starter ship is outfitted for espionage and smuggling.)`
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: Infiltrator`
+	description `	This transport is outfitted for espionage and smuggling missions.`
 	thumbnail "thumbnail/infiltrator-thumb"
 	date 16 11 3013
 	system "Rutilicus"
@@ -308,6 +539,7 @@ start
 			"LP036a Battery Pack"
 			"D14-RN Shield Generator"
 			"Brig"
+			"Broadband Amplifier"
 			"Cargo Scanner"
 			"Outfit Scanner"
 			"Infiltrator Tech"
@@ -371,7 +603,7 @@ mission "Intro [Mata Hari]"
 	source "New Boston"
 	destination "New Greenland"
 	to offer
-		has "Mata Hari start"	
+		has "Mata Hari start"
 	on offer
 		log "Got into massive debt due to a credit scam. Using my uncle's old ship and my pilot's license to earn money."
 		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
@@ -381,14 +613,14 @@ mission "Intro [Mata Hari]"
 		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
 		conversation
 			`You take your new ship for a test drive, piloting it out onto a spare landing pad by the spaceport. Then you get out and look the ship over a bit more closely. You are busy polishing out a few rust spots with a piece of steel wool when an old man in grease-stained coveralls walks up.`
-			`	"Nothing quite like flying your very first starship," he says.`
+			`	"Nothing quite like flying your very first starship," he says. "That's an interesting design. Did you build it yourself?"`
 			choice
-				`	"Well, I don't plan to get too attached to this one. I'll be flying something much nicer before long."`
+				`	"Uh, no... it was my uncle's. Are you familiar with this design?"`
 					goto bigger
 				`	"Beat it, old-timer, I've got more important things to do than chat with you."`
 					decline
 			label bigger
-			`	He smiles. "I'm sure you will. But there's something nice to having a ship you can pilot all by yourself. Believe me, once you have to start managing crew and paying salaries, or keeping track of a whole fleet, you'll miss these days when everything was simple."`
+			`	He smiles. "I'm afraid not. But there's something nice to having a ship you can pilot all by yourself. Believe me, once you have to start managing crew and paying salaries, or keeping track of a whole fleet, you'll miss these days when everything was simple."`
 				goto captain
 			label captain
 			`	"You're a captain?" you ask.`
@@ -430,6 +662,339 @@ mission "Intro [Mata Hari]"
 			``
 			`	(Click the "Spaceport" button to continue this mission.)`
 
+mission "Intro Corporate espionage [Mata Hari]"
+	job
+	deadline 1 3
+	name "Corporate espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of researchers on <destination>; proceed there for <payment> after retrieving the data."
+	to offer
+		has "Mata Hari start"
+		or
+			has "Intro [Mata Hari]: declined"
+			has "Intro [1 Transport]: declined"
+			has "Intro [2 Transport]: declined"
+			has "Intro [3 Transport]: declined"
+			has "Intro [3 Transport]: done"
+	source
+		government Republic Syndicate Neutral
+		not attributes "uninhabited"
+	destination
+		government Syndicate
+		attributes research
+		distance 3 12
+	on accept
+		conversation
+			scene "ship/bounder"
+			`The target should arrive soon after you launch. Use a Cargo Scanner to scan the ship before it leaves! Then head to <destination> to complete this mission.`
+	npc "scan cargo"
+		government Merchant
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Bounder"
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		"reputation: Syndicate" ++
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This will save us months!" you hear someone say in the background as you close the audio link.`
+		payment 55000
+
+mission "Corporate espionage [Mata Hari]"
+	job
+	repeat
+	deadline 1 3
+	name "Corporate espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
+	to offer
+		or
+			has "Intro Corporate espionage [Mata Hari]: done"
+			has "Intro Corporate espionage [Mata Hari]: failed"
+			has "Intro Corporate espionage [Mata Hari]: aborted"
+		random < 5
+	source
+		government Republic Syndicate Neutral
+		not attributes "uninhabited"
+	destination
+		government Syndicate
+		attributes research
+		distance 3 12
+	npc "scan cargo"
+		government "Independent (Killable)"
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant 6
+				"Marauder Arrow (Shields)"
+			variant 1
+				"Marauder Arrow (Weapons)"
+			variant 1
+				"Marauder Arrow (Engines)"
+			variant 6
+				"Marauder Bounder"
+			variant 1
+				"Marauder Bounder (Weapons)"
+			variant 1
+				"Marauder Bounder (Engines)"
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		"reputation: Syndicate" += 2
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This will save us months!" you hear someone say in the background as you close the audio link.`
+		payment 75000
+
+
+mission "Drug Running [Mata Hari]"
+	minor
+	name "Drug Running"
+	description "Bring a shipment of illegal drugs to <destination>. If you are caught with this cargo, you may be fined."
+	repeat
+	source
+		attributes "near earth" "dirt belt" "north"
+	destination
+		attributes "paradise" "rich" "urban"
+		distance 1 100
+	cargo "illegal drugs" 4 2 .1
+	illegal 35000 `In addition to the fine, the illegal drugs are confiscated from your cargo hold.`
+	stealth
+	to offer
+		has "Mata Hari start"
+		or
+			and
+				not "Drug Running [Mata Hari]: declined"
+				random < 25
+			and
+				has "Drug Running [Mata Hari]: declined"
+				random < 5
+	
+	on offer
+		dialog `As you are walking through the spaceport, a woman beckons you to her and asks if you would like to help transport some "recreational pharmaceuticals" to <planet>. (This sounds like an illegal mission, so you'll need to avoid getting scanned or landing on planets with high security.)`
+	
+	on accept
+		"said no to drugs" --
+	on decline
+		"drug smuggler" --
+	
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 66000
+		"reputation: Pirate" += 2
+		"reputation: Independent" ++
+		"drug smuggler" ++
+		dialog `Some disreputable-looking locals unload the illegal drugs from your cargo bay, and hand you your payment of <payment>.`
+
+mission "Shady passenger transport [Mata Hari]"
+	minor
+	name "Shady passenger transport"
+	description "Discreetly transport a passenger to <destination>. If you are caught with him, you may be fined."
+	repeat
+	source
+		attributes "near earth" "core" "urban"
+	destination
+		attributes "frontier" "dirt belt" "rim" "north" "south" "pirate"
+		distance 2 3
+	passengers 1
+	illegal 75000 `Your passenger turns out to be a wanted criminal. As he is hauled off in chains, you vehemently protest that you knew nothing of his shady history. You wind up quite a bit poorer through a combination of fines and bribes (the breakdown remains somewhat unclear).`
+	stealth
+
+	to offer
+		has "Mata Hari start"
+		or
+			and
+				not "Shady passenger transport [Mata Hari]: declined"
+				random < 25
+			and
+				has "Shady passenger transport [Mata Hari]: declined"
+				random < 5
+
+	on offer
+		require "Infiltrator Tech"
+		dialog `As you are walking through the spaceport, a man in nondescript clothing appears out of nowhere and offers <payment> for discreet, no-questions-asked passage to <destination>. Though he says very little, you get the distinct sense that his presence on this planet and motivation to be elsewhere may not be entirely legal.`
+
+	on accept
+		"rejected illegal jobs" --
+
+	on decline
+		"getaway driver" --
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"reputation: Pirate" += 2
+		"reputation: Independent" ++
+		"getaway driver" ++
+		payment 55000
+		dialog `Your mysterious passenger has spoken hardly a word during the entire trip. As soon as you land, he hands you your payment of <payment> and disappears into a crowd.`
+
+mission "Matahari Sabotage: Shield Suppressor (Independent)"
+	minor
+	repeat
+	name "Infiltrator Sabotage"
+	description "You've been hired to sabotage the <npc> which operates in the vicinity of the <system> system. Sneak a Shield Suppressor onto the ship. Return to <planet> for payment. (<payment>)."
+	cargo "shield suppressor" 1
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
+		attributes "urban"
+		not attributes uninhabited
+	to offer
+		"reputation: Merchant" > 0
+		has "Mata Hari start"
+		or
+			has "Intro [Mata Hari]: declined"
+			has "Intro [1 Transport]: declined"
+			has "Intro [2 Transport]: declined"
+			has "Intro [3 Transport]: declined"
+			has "Intro [3 Transport]: done"
+		or
+				not "Matahari Sabotage: Shield Suppressor (Indepentdent): declined"
+				random < 25
+			and
+				has "Matahari Sabotage: Shield Suppressor (Indepentdent): declined"
+				random < 5
+	on offer
+		require "Infiltrator Tech"
+		conversation
+			scene "thumbnail/infiltrator-thumb"
+			branch sabotage1
+				random < 75
+			`A woman approaches you at the spaceport bar. "You're the captain of the <ship>, right? I have a job well suited for you if you're interested"`
+				goto decision
+			label sabotage1
+			branch sabotage2
+				random < 66
+			`A man steps out of a nearby alley. "Captain <last>. The <ship> is your ship, isn't it? I have a job well suited for you if you're interested"`
+				goto decision
+			label sabotage2
+			branch sabotage3
+				random < 50
+			`A man stops you at the spaceport entrance. "The <ship> is a very rare ship. I have a job well suited for you if you're interested"`
+				goto decision
+			label sabotage3
+			`There's a man waiting for you at your ship's landing pad. "The <ship> belongs to you, doesn't it? I have a job well suited for you if you're interested"`
+			label decision
+			choice
+				`	"What do you have in mind?"`
+				`	"I'm not interested."`
+					decline
+			scene "outfit/shield suppressor"
+			`	"A ship named <npc> is operating near this system. Get on board and discreetly attach this Shield Suppressor to their systems. Then return here to confirm that the job is done."`
+			choice
+				`	"I accept."`
+					accept
+				`	"Are you planning to attack them?"`
+			branch questions1
+				random < 66
+			`	"Maybe it was a mistake to consider you. I need someone who won't ask too many questions. Forget it."`
+				decline
+			label questions1
+			branch questions2
+				random < 50
+			`	"Does that present a moral or ethical dilemma for you? That won't do! I'll find someone else for this job."`
+				decline
+			label questions2
+			`	"Attack who? We never had this conversation. Enjoy the rest of your day."`
+				decline
+	npc assist
+		government "Merchant"
+		system
+			distance 1 2
+		personality target derelict waiting staying timid
+		fleet
+			names "civilian"
+			outfitters "Ammo North"
+			variant 1
+				"Bactrian"
+			variant 2
+				"Behemoth"
+			variant 2
+				"Protector"
+			variant 2
+				"Vanguard"
+			variant 3
+				"Falcon"
+			variant 3
+				"Leviathan"
+		conversation
+			action
+				"reputation: Merchant" -= 15
+			scene "outfit/shield suppressor"
+			`While assisting in the repairs of the <npc>, you discreetly attach the Shield Suppressor to their systems. Return to <destination> for your reward.`
+	on abort
+		set "Matahari Sabotage: Shield Suppressor (Indepentdent): declined"
+		dialog `Your employer wasn't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
+	on complete
+		"reputation: Pirate" += 2
+		"reputation: Independent" ++
+		payment 55000
+		dialog `You are rewarded <payment> for installing the Shield Suppressor onto the <npc>.`
+
+
+
+mission "Free Worlds Espionage [Mata Hari]"
+	minor
+	deadline 1 3
+	name "Free Worlds espionage"
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its outfits, which are of considerable interest to a team of Free Worlds researchers on <destination>; proceed there for <payment> after retrieving the data."
+	to offer
+		or
+			has "Intro Corporate espionage [Mata Hari]: done"
+			has "Corporate espionage [Mata Hari]: done"
+			has "Corporate espionage: done"
+			has "Corporate espionage [1]: done"
+			has "Corporate espionage [2]: done"
+		"reputation: Free Worlds" >= 0
+		has "war begins"
+		not "chosen sides"
+		random < 70
+	source
+		outfits "Outfit Scanner"
+		government Republic Neutral
+		not attributes "uninhabited"
+	destination
+		government "Free Worlds"
+		attributes research
+		distance 3 12
+	on offer
+		conversation
+			scene "outfit/cargo scanner"
+			`A man in non-descript clothing approaches you at the <ship>'s landing pad. "You're <first> <last>. I understand you've got experience doing Corporate Espionage jobs. Would you be willing to do something a bit similar?`
+			choice
+				`	"What do have in mind?"`
+				`	"Sorry, not interested."`
+					defer
+			scene "outfit/outfit scanner"
+			`	"The <npc> is about to enter this system. Locate it and make detailed scans of its outfits, which are of considerable interest to a team of Free Worlds researchers on <destination>; proceed there for <payment> after retrieving the data. See? It's just like those corporate jobs, except we want you to scan the ship's outfits instead of its cargo."`
+			choice
+				`	"Sounds easy enough. I'll do it."`
+					goto end
+				`	"The <npc>? Isn't that a Navy ship?"`
+			scene "thumbnail/gunboat"
+			`	"Yes it is. To be precise, it's a Navy Gunboat. Are you not willing to do the job?"`
+			choice
+				`	"Sure, why not? They're always trying to scan my ship."`
+				`	"No. I don't want to risk antagonizing the Navy."`
+					decline
+			label end
+			scene "outfit/outfit scanner"
+			`	"Glad to hear it! Remember, we specifically want data on their outfits, not their cargo."`
+			``
+			`	(You can buy an Outfit Scanner at the Outfitter if you need one.)`
+				accept
+
+	npc "scan outfits"
+		government "Republic"
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Gunboat (Test II)"
+		dialog "You manage to make the requested scans of the <npc>'s outfits. Time to head to <planet>."
+	on complete
+		"reputation: Free Worlds" ++
+		"assisted free worlds" ++
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This is critical data!" you hear someone say in the background as you close the audio link.`
+		payment 50000
+
 
 
 ############################
@@ -438,8 +1003,10 @@ mission "Intro [Mata Hari]"
 
 start
 	name "Gremlin"
-	description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. After many long years of working at a textile mill, you've finally saved enough credits to apply for a pilot's license from the Republic.`
-	description `	(This starter ship may be more challenging than normal.)`
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: Gremlin`
+	description `	This freighter has some flaws, but may lead to a profitable business venture.`
 	thumbnail "thumbnail/gremlin-thumb"
 	date 16 11 3013
 	system "Rutilicus"
@@ -511,6 +1078,7 @@ start
 		description "Betelgeuse Shipyards Gremlin has seen limited adoption among merchant fleets. It has become especially popular among smugglers, who've created alternative configurations using Interference Plating."
 
 outfit "Gremlin Circuits"
+	plural "Gremlin Circuits"
 	category "Systems"
 	thumbnail "outfit/damaged capacitor"
 	"fused circuits" 1
@@ -601,7 +1169,7 @@ mission "Gremlin: Burst Fuel Pod (spaceport)"
 	landing
 	repeat
 	source
-		attributes "spaceport"
+		attributes spaceport
 	to offer
 		has "Gremlin start"
 		not "Betelgeuse offer [Gremlin 3]: failed"
@@ -741,3 +1309,1036 @@ event "Gremlin Betelgeuse Production"
 			"Behemoth" 2
 			"Firebird (Hai Weapons)" 1
 
+
+
+mission "Betelgeuse offer [Gremlin 1]"
+	deadline
+	passengers 1
+	name "Henrietta to <planet>"
+	description "Transport Henrietta to <destination> by <date>. Payment is <payment>."
+	source
+		attributes "paradise" "near earth"
+	destination "Prime"
+	to offer
+		has "Gremlin start"
+		or
+			has "Intro [Gremlin]: declined"
+			has "Intro [1 Freighter]: declined"
+			has "Intro [2 Freighter]: declined"
+			has "Intro [3 Freighter]: declined"
+			has "Intro [3 Freighter]: done"
+	on offer
+		require "Gremlin Circuits"
+		conversation
+			scene "thumbnail/gremlin-thumb"
+			`When you return to your ship you notice a woman in a business suit studying it.`
+			choice
+				`	"What are you doing?"`
+				`	"Like what you see?"`
+			`	"I couldn't help but admire the craftsmanship that went into this ship," she answers. "Did you make this yourself?"`
+			choice
+				`	"Yes, I did."`
+					goto made
+				`	"Nope. Stole it off a pirate."`
+
+			`	"Wow, that sounds dangerous!"`
+			choice
+				`	"I was joking. Yeah, I made it myself."`
+
+			label made
+			`	"That's amazing! I'm looking for a lift to <destination>. Can you take me there by <date>?"`
+			choice
+				`	"Sure, for <payment>."`
+				`	"Sorry, I'm headed in a different direction."`
+					decline
+			`	"Thanks! That's no problem!" You let her onto your ship.`
+				accept
+	on complete
+		event "Gremlin Betelgeuse Reminder" 360
+		payment
+		payment 5000
+		conversation
+			scene "thumbnail/gremlin-thumb"
+			`When you land, Henrietta pays you <payment> and confesses,"I'm actually a designer for Betelgeuse Shipyards. We might be interested in this 'Gremlin' you've put together. If you're interested in selling the rights, bring it back here in a year."`
+			`	A year is a long time to hold onto this ship. Maybe they want to make sure you don't get yourself killed while flying it...`
+
+event "Gremlin Betelgeuse Reminder"
+
+mission "Betelgeuse offer [Gremlin 2]"
+	landing
+	name "Betelgeuse offer"
+	description "Betelgeuse has offered to pay you for the rights to use your design. Make the Gremlin your flagship and take it to <destination>."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination "Prime"
+	to offer
+		has "event: Gremlin Betelgeuse Reminder"
+	on offer
+		conversation
+			scene "thumbnail/gremlin-thumb"
+			`It's been a year since Henrietta made the offer to buy your design for Betelgeuse. If you still have the Gremlin, you can set it as your flagship and take it to <destination>.`
+			choice
+				`	(I still have the Gremlin.)`
+					accept
+				`	(I got rid of the Gremlin.)`
+					decline
+
+mission "Betelgeuse offer [Gremlin 3]"
+	landing
+	invisible
+	source "Prime"
+	to offer
+		has "Betelgeuse offer [Gremlin 2]: done"
+	on offer
+		require "Gremlin Circuits"
+		conversation
+			scene "thumbnail/gremlin-thumb"
+			`You find Henrietta after checking with the receptionist at Betelgeuse headquarters. "<first> <last>, you're still al- I mean, has it been a year already? Time flies. Did you bring it?"`
+			choice
+				`	"Yeah. So how much is Betelgeuse offering?"`
+				`	"I've changed my mind. I'm not interested afterall."`
+					decline
+			`	"Betelgeuse will pay you 72,000 credits per year. Deal?" That comes out to 200 credits per day. It's not much, but it's better than nothing.`
+			choice
+				`	(Accept the offer.)`
+				`	(Reject the offer.)`
+					decline
+			`	After filling out some legal paperwork, you lead her and her entourage to the hangar where the Gremlin is parked. Several technicians unpack tools and equipment and begin the process of taking apart the ship to study its construction and make blueprints. Eventually, they begin putting the ship back together.`
+			`	It's midnight by the time they're done. Henrietta tells you that you'll start receiving payments once the Gremlin makes it into shipyards.`
+				accept
+	on accept
+		event "Gremlin Betelgeuse Production" 60
+		fail
+
+mission "Betelgeuse offer [Gremlin 4]"
+	landing
+	invisible
+	to offer
+		has "Betelgeuse offer [Gremlin 3]: failed"
+		has "event: Gremlin Betelgeuse Production"
+	on offer
+		"salary: Betelgeuse" += 200
+		conversation
+			scene "thumbnail/gremlin-thumb"
+			`You receive a message from Henrietta: "The Gremlin is now available at Betelgeuse shipyards!" You should start receiving your payments soon.`
+				decline
+
+
+
+#########################################
+
+
+start
+	name "Kamikaze"
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: Marauder Sparrow`
+	description `	This interceptor has an explosive secret! Features early game duels with other Marauder Sparrows and more opportunities for early bounty hunting jobs.`
+	thumbnail "thumbnail/marauder sparrow-thumb"
+	date 16 11 3013
+	system "Rutilicus"
+	planet "New Boston"
+	conversation "kamikaze intro"
+	account
+		credits 25000
+		score 400
+		mortgage Mortgage
+			principal 800000
+			interest 0.004
+			term 365
+	set "Kamikaze start"
+	set "license: Pilot's"
+	set "Intro [0]: offered"
+	set "Intro [0]: declined"
+	ship "Marauder Sparrow"
+		name "Kamikaze"
+		sprite "ship/marauder sparrow"
+		thumbnail "thumbnail/marauder sparrow-thumb"
+		attributes
+			category "Interceptor"
+			"cost" 450000
+			"shields" 1400
+			"hull" 300
+			"required crew" 1
+			"bunks" 1
+			"mass" 45
+			"drag" .85
+			"heat dissipation" .8
+			"fuel capacity" 200
+			"cargo space" 0
+			"outfit space" 170
+			"weapon capacity" 30
+			"engine capacity" 45
+			"self destruct" .25
+			"integrated systems" -1
+			weapon
+				"blast radius" 75
+				"shield damage" 4500
+				"hull damage" 3500
+				"hit force" 2000
+		outfits
+			"Beam Laser" 2
+			"Thermo Detonator"
+			
+			Supercapacitor
+			"nGVF-BB Fuel Cell"
+			"Modified D23-QP Shielding"
+			"Cargo Expansion"
+			"Fuel Pod"
+			"Small Bunk Room"
+			"Laser Rifle"
+			
+			"A120 Atomic Thruster"
+			"A125 Atomic Steering"
+			Hyperdrive
+			
+		engine -5 35
+		engine 5 35
+		gun -7 -10 "Beam Laser"
+		gun 7 -10 "Beam Laser"
+		gun -10.5 -8.5
+		gun 10.5 -8.5
+		turret 0 0 "Thermo Detonator"
+		"explode" "nuke explosion (small)"
+		"explode" "nuke residue fast" 10
+		"explode" "nuke residue slow" 10
+		description "At first glance this ship doesn't seem to be much different from a normal Sparrow. But the smooth exterior hides an explosive secret within."
+
+
+conversation "kamikaze intro"
+	scene "outfit/license"
+	`It wasn't cheap, but you finally got your pilot's license! You look over the license with pride and examine the lettering that spells out your name:`
+	name
+	scene "thumbnail/marauder sparrow-thumb"
+	`	Now you need to figure out what you're going to do about the mountain of debt that got you here. As you approach the door to the Bank of New Boston, you notice an illegally parked Sparrow out front.`
+	choice
+		`	(Look more closely.)`
+		`	(Move on towards the bank.)`
+			goto bank
+	scene "outfit/mod small shield"
+	`	It's name is the Kamikaze. At first glance, this ship doesn't seem to be much different from a normal Sparrow. But upon closer inspection, you notice it has a lot of fancy equipment installed on it. It occurs to you that this might be one of those Marauder variants you've heard about.`
+	choice
+		`(Move on towards the bank.)`
+	label bank
+	`	As you step towards the bank, a woman runs out in a panic, yelling "Don't go in there! Pirates are robbing the bank!" The Sparrow must be their getaway vehicle.`
+	choice
+		`	(Steal the Sparrow)`
+	scene "outfit/thermo detonator"
+	`	Looks like the pilot forgot to set the security system on. You easily start the engines and begin preflight procedures. As you look over the controls, you notice one in particular that is unfamiliar to you. Before you can figure it out, three masked ruffians burst out of the bank entrance. "My ship!" One of them is yelling and pointing at you. You set the engines to full throttle as the Sparrow screams into the atmosphere, leaving the robbers behind.`
+	``
+	`	With no plan for what to do next, the Spaceport seems like a good place to stop and think. You could use this ship to take jobs that would help pay off your debt. And there's one lingering question that needs to be answered: maybe you should stop at an outfitter to learn more about that unknown device installed on this ship...`
+
+mission "Intro [Kamikaze]"
+	name "Passenger to <planet>"
+	description "This old-timer captain offered to ride along with you to <destination>, and to give you some tips along the way."
+	landing
+	passengers 1
+	source "New Boston"
+	destination "New Greenland"
+	to offer
+		has "Kamikaze start"
+	on offer
+		log "Got into massive debt working towards my pilot's license. Happened upon a bank robbery and stole their getaway vehicle. Plan to use it to earn money to pay off the debt."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`Representation in the Republic Parliament is based on population. That means that some individual "Paradise Worlds" have more representatives than entire regions of space like the Dirt Belt that are more sparsely settled.`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`The Syndicate is a central part of the Republic's economy, but they are also well known for selling shoddy products and for doing damage to the environment on the worlds they control. Their treatment of workers is questionable, and their opposition to organized labor is legendary. Some Syndicate factory towns have even been accused of human rights abuses.`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+		conversation
+			`You take your new ship for a test drive, piloting it out onto a spare landing pad by the spaceport. Then you get out and look the ship over a bit more closely. You are busy polishing out a few rust spots with a piece of steel wool when an old man in grease-stained coveralls walks up.`
+			`	"Nothing quite like flying your very first starship," he says. "That's an interesting design. Did you build it yourself?`
+			choice
+				`	"Yeah, sure... But I don't plan to get too attached to this one. I'll be flying something much nicer before long."`
+					goto bigger
+				`	"Beat it, old-timer, I've got more important things to do than chat with you."`
+					decline
+			label bigger
+			`	He smiles. "I'm sure you will. But there's something nice to having a ship you can pilot all by yourself. Believe me, once you have to start managing crew and paying salaries, or keeping track of a whole fleet, you'll miss these days when everything was simple."`
+				goto captain
+			label captain
+			`	"You're a captain?" you ask.`
+			`	"Was," he says. "Sold off my fleet a few days ago, and I already miss it. But it was time. Time for me to retire." His voice trails off, then his face lights up. "Say, any chance I could hitch a ride with you, maybe show you the ropes, give you some pointers? I could pay you, of course."`
+			choice
+				`	"Sure, where are you trying to get to?"`
+				`	"Sorry, I'd rather figure things out on my own."`
+					decline
+			`	"Well," he says, "I've got a spot reserved in a retirement home, but I don't mind taking a roundabout way to get there. For starters, how about you give me a lift to <planet>? It's just one jump away from here; I can mark it on your map."`
+			choice
+				`	"Sounds good!"`
+					goto end
+				`	"How much will you pay me?"`
+			`	"That's kind of a rude question," he says, "but I'll pay you ten thousand credits. I guarantee you that's more than any captain ever gets for carrying one passenger for one day."`
+			choice
+				`	"That's really generous. Thank you."`
+					goto end
+				`	"You're treating me like a charity case? No thanks, I'll earn my money legitimately."`
+					decline
+			label end
+			`	"Great," he says. "My name is James, by the way."`
+			`	"<first> <last>," you say.`
+			`	"I'm looking forward to traveling with you, Captain <last>," says James.`
+			`	As you're helping him wheel his luggage aboard and showing him his bunk, he says, "Before we take off, you might head on over to the trading center and stock up on medical goods; we can sell those for a good profit on <planet>. Or take a look at the outfitter if you like, but they don't sell much here compared to on the big manufacturing worlds."`
+				accept
+
+	on accept
+		clear "Intro [0]: declined"
+		set "Intro [0]: done"
+		log "Getting some basic instructions on making a living as a merchant from an old captain named James."
+	
+	on complete
+		payment 10000
+		conversation
+			`As you land on <planet>, James says, "Congrats on your first trip through hyperspace! I'm impressed that you didn't throw up; most folks do, the first time."`
+			`	"Including you?" you ask.`
+			`	"Yeah, and then spent half an hour in orbit cleaning my cabin while hoping the passengers wouldn't come out of their bunk room and see the mess. Not my proudest moment. Anyway, here's your pay." He hands you <payment>.`
+			`	Then he adds, "If you're okay with giving me a lift for a while longer, sell off any of that cargo you bought and then meet me in the spaceport. I'll see if I can rustle up any interesting work for you to do."`
+			``
+			`	(Click the "Spaceport" button to continue this mission.)`
+
+mission "Kamikaze Chaser"
+	landing
+	invisible
+	source "New Boston"
+	to offer
+		has "Kamikaze start"
+	on offer
+		require "Thermo Detonator"
+	on enter
+		conversation
+			scene "thumbnail/marauder sparrow-thumb"
+			`As you leave the atmosphere, you notice another interceptor approach. It hails you: "You'll regret taking the Kamikaze!" It targets you without waiting for a response.`
+			scene "outfit/thermo detonator"
+			`If it has the same device as yours, it may not be wise to approach it.`
+	npc disable
+		government "Bounty Hunter"
+		personality target waiting vindictive nemesis
+			confusion 20
+		ship "Marauder Sparrow (Blaster)" "Robber's Revenge"
+		dialog `The bank robbers must have had plans for the strange device you found aboard their Marauder Sparrow. You should check if the authorities on  <origin> have placed a price on their heads.`
+	on complete
+		payment 25000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Kamikaze Ambush"
+	landing
+	invisible
+	repeat
+	deadline 3
+	source
+		attributes "dirt belt"
+	to offer
+		or
+			has "Kamikaze Chaser: done"
+			has "Kamikaze Chaser: failed"
+		not "Kamikaze Ambush: active"
+		random < 100 - ( "Kamikaze Ambush: offered" * 10 )
+	on offer
+		require "Thermo Detonator"
+	npc disable
+		government "Bounty Hunter"
+		personality target waiting vindictive nemesis
+			confusion 20
+		fleet
+			names "pirate subphrase 6"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+			variant 2
+				"Marauder Sparrow"
+			variant 1
+				"Marauder Sparrow (Gatling)"
+			variant 1
+				"Marauder Sparrow (Mod Blaster)"
+			variant 1
+				"Marauder Sparrow (Meteor Missile)"
+			variant 1
+				"Marauder Sparrow (Turbo Blaster)"
+		dialog `If this Marauder Sparrow has the same device as yours, it may not be wise to approach it. You should check if the authorities on  <origin> have placed a price on their heads.`
+	on complete
+		payment 25000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Bounty Hunting (Kamikaze Very Tiny)"
+	name "Wanted corsair near <system>"
+	description "A small pirate fighter named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	repeat
+	job
+	deadline 14
+	to offer
+		has "Kamikaze start"
+		or
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" > 1
+		"combat rating" < 200
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+		system
+			distance 1 1
+		fleet
+			names "pirate"
+			variant 3
+				"Scrapper"
+			variant 6
+				"Sparrow"
+			variant
+				"Wasp"
+			variant
+				"Wasp (Gatling)"
+			variant
+				"Wasp (Javelin)"
+			variant
+				"Wasp (Meteor)"
+			variant
+				"Wasp (Plasma)"
+			variant
+				"Wasp (Proton)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 25000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Bounty Hunting (Kamikaze Tiny)"
+	name "Wanted outlaw near <system>"
+	description "A well armed pirate fighter named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	repeat
+	job
+	deadline 14
+	to offer
+		has "Kamikaze start"
+		or
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" > 15
+		"combat rating" < 200
+		random < 45
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+		system
+			distance 1 1
+		fleet
+			names "pirate"
+			variant
+				"Hawk"
+			variant
+				"Hawk (Rocket)"
+			variant
+				"Hawk (Speedy)"
+			variant
+				"Hawk (Bomber)"
+			variant
+				"Berserker"
+			variant
+				"Berserker (Afterburner)"
+			variant
+				"Berserker (Strike)"
+			variant
+				"Fury"
+			variant
+				"Fury (Missile)"
+			variant
+				"Fury (Heavy)"
+			variant
+				"Fury (Laser)"
+			variant
+				"Fury (Bomber)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 50000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Bounty Hunting (Kamikaze Marauder I)"
+	name "Marauder interceptor near <system>"
+	description "A Marauder interceptor named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	repeat
+	job
+	deadline 14
+	to offer
+		has "Kamikaze start"
+		or
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" > 25
+		"combat rating" < 200
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+		system
+			distance 1 1
+		fleet "Marauder I"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 130000
+		dialog phrase "generic bounty hunting payment dialog"
+
+
+####################################
+
+
+
+start
+	name "Guncraft"
+	description `Home Planet: New Boston`
+	description `Job History: textile mill`
+	description `Ship: default`
+	description `	`
+	description `	It's dangerous to go alone... Take this!`
+	description `	`
+	description `	The Guncraft I is in perfect condition and can be upgraded by gunsmiths with the skills to do so.`
+	thumbnail "outfit/handgun black"
+	date 16 11 3013
+	system "Rutilicus"
+	planet "New Boston"
+	conversation "default intro" 
+	account
+		credits 450000
+		score 400
+		mortgage Mortgage
+			principal 480000
+			interest 0.004
+			term 365
+	set "license: Pilot's"
+	set "Guncraft start"
+
+mission "Guncraft I"
+	landing
+	name "Guncraft"
+	description "Visit <destination> to see if the rumors of gunsmiths who have the skills to improve upon the Guncraft are true."
+	source "New Boston"
+	to offer
+		has "Guncraft start"
+	on offer
+		log `Interstellar travel can be dangerous. Ship to ship boarding battles aren't uncommon, so it's best not to be caught unarmed. Before leaving, I retrieved my trusty sidearm from storage: the Guncraft, an heirloom that's been passed down my family for generations and carefully kept in perfect working order. An old relic from the early turf wars, the Guncraft is considered by many to be the pinnacle of handgun design. This basic model has a well balanced grip and precision sigting, but I've heard tales of gunsmiths who posess the knowledge and skill to perform parts modifications that could transform it into a terrifying weapon...`
+		outfit "Guncraft I" 1
+		conversation
+			scene "outfit/handgun black"
+			`Interstellar travel can be dangerous. Ship to ship boarding battles aren't uncommon, so it's best not to be caught unarmed. Before leaving, you retrieve your trusty sidearm from storage: the Guncraft, an heirloom that's been passed down your family for generations and carefully kept in perfect working order. An old relic from the early turf wars, the Guncraft is considered by many to be the pinnacle of handgun design.` 
+			`	This basic model has a well balanced grip and precision sigting, but you've heard tales of gunsmiths who posess the knowledge and skill to perform parts modifications that could transform it into a terrifying weapon. One rumor is that <destination> might be a place to find exotic weapons. Perhaps a gunsmith with the skills you need could be found there.`
+				accept
+
+mission "Guncraft II"
+	name "Guncraft"
+	description "A gunsmith wants you to retrieve <cargo> from <stopovers>. After loading the cargo, return to <destination> for an upgrade to your Guncraft."
+	source Trinket
+	stopover
+		government "Republic" "Free Worlds"
+		distance 2 5
+		attributes "outfitter"
+		not attributes "uninhabited"
+	to offer
+		has "Guncraft I: done"
+		or
+			and
+				not "Randomize Guncraft II"
+			and
+				has "Randomize Guncraft II"
+				random < 5
+	cargo "gun parts" 5
+	on offer
+		require "Guncraft I"
+		conversation
+			scene "outfit/handgun black"
+			`While you are stocking up on bullets, the shopkeep comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"Then how about retrieving some supplies from <stopovers> for me? When you get back, I'll make some mods for your Guncraft that I think you'll be impressed with!" This could be a chance to upgrade your Guncraft...`
+			choice
+				`	"Okay, I'll get your supplies."`
+				`	"Sorry, not interested."`
+					defer
+			scene "scene/scene-wooden crates"
+			`	The shopkeep gives you the order details...`
+				accept
+	on defer
+		set "Randomize Guncraft II"
+	on stopover
+		dialog `You pickup the <cargo> from a local outfitter and prepare to return to <destination>. Hopefully the upgrades to your Guncraft will be worth the effort.`
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on complete
+		outfit "Guncraft I" -1
+		outfit "Guncraft II" 1
+		log `Was able to get an upgrade to the Guncraft from Trinket in the Sargas system. There may be gunsmiths on other worlds who can perform similar modifications.`
+		conversation
+			scene "outfit/handgun gray"
+			`After you deliver the <cargo>, the shopkeep works through the night. The following day she presents you with the modified Guncraft II!  It features an improved rifled barrel, increasing the weapon's range. You can't argue that increasing the range on a gun isn't a useful upgrade. But not as exciting as the rumors suggested. You thank the shopkeeper and leave, hoping an even better upgrade for your Guncraft can be found elsewhere.`
+
+mission "Guncraft III"
+	name "Guncraft"
+	description "A gunsmith wants you to deliver <cargo> to <stopovers>. After making the delivery, return to <destination> for an upgrade to your Guncraft."
+	source
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited"
+	stopover
+		distance 2 5
+		attributes "outfitter"
+		not attributes "uninhabited" "pirate"
+	to offer
+		has "Guncraft II: done"
+		or
+			and
+				not "Randomize Guncraft III"
+			and
+				has "Randomize Guncraft III"
+				random < 5
+	cargo "firearms" 5
+	on offer
+		require "Guncraft II"
+		conversation
+			scene "outfit/handgun gray"
+			`You visit the gunshop to stock up on bullets. The shopkeep notices your sidearm and comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"Then how about delivering some merchandise to <stopovers> for me? When you get back, I'll make some mods for your Guncraft that I think you'll be surpised with!" This could be a chance to upgrade your Guncraft...`
+			choice
+				`	"Okay, I'll make the delivery."`
+				`	"Sorry, not interested."`
+					defer
+			scene "scene/scene-wooden crates"
+			`	The shopkeep has assistants deliver several crates of firearms to your ship...`
+				accept
+	on defer
+		set "Randomize Guncraft III"
+	on stopover
+		dialog `You deliver the <cargo> to a local outfitter and prepare to return to <destination>. Hopefully the upgrades to your Guncraft will be worth the effort.`
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on complete
+		outfit "Guncraft II" -1
+		outfit "Guncraft III" 1
+		conversation
+			scene "outfit/handgun red"
+			`After confirming with the shopkeep that you delivered the <cargo>, he works through the night. The following day he presents you with the modified Guncraft III! It has a larger magazine for more ammo, which is certainly useful. But not as exciting as the rumors suggested. You thank the shopkeeper and leave, hoping to find an even better upgrade for your Guncraft in the future.`
+
+mission "Guncraft IV"
+	minor
+	name "Guncraft"
+	description "A gunsmith wants you to recover a shipment of supplies which was stolen by the <npc> before it could be delivered. After recovering the cargo, bring it to <destination> for an upgrade to your Guncraft."
+	source
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited"
+	to offer
+		has "Guncraft III: done"
+		or
+			"combat rating" >= 2981
+			and
+				"combat rating" >= 148
+				has "global: unlocked kestrel"
+		or
+			and
+				not "Randomize Guncraft IV"
+			and
+				has "Randomize Guncraft IV"
+				random < 5
+	on offer
+		require "Guncraft III"
+		conversation
+			scene "outfit/handgun red"
+			`You're getting some gun cleaning supplies from a gunshop when the shopkeep notices your sidearm and comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"Maybe we can help each other out. I was expecting a shipment of supplies but they never arrived. The <npc> is a warship that has been plundering shipments near <system>. If you can retrieve my missing shipment, I'll make some mods to your Guncraft. How about it?" This sounds like it could get dangerous, but at least you'll have the Guncraft at your disposal.`
+			choice
+				`	"Okay, I'll help you."`
+				`	"Sorry, not interested."`
+					defer
+			scene "scene/scene-wooden crates"
+			`	You assure the shopkeep that you'll retrieve the cargo. He provides you with the shipment manifest...`
+				accept
+	on defer
+		set "Randomize Guncraft IV"
+	npc board
+		government "Pirate (Rival)"
+		system
+			distance 2 3
+		personality target waiting staying plunders
+		ship "Marauder Osprey" "Desert Eagle"
+		dialog `You've retrieved the stolen cargo! Return to <destination>, where you expect to receive an upgraded Guncraft.`
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on complete
+		outfit "Guncraft III" -1
+		outfit "Guncraft IV" 1
+		conversation
+			scene "outfit/handgun green"
+			`After delivering the stolen cargo, the shopkeep accepts the Guncraft III. The following day, he presents you with the modified Guncraft IV! It features a laser guided tactical aim assist system, displaying range data while also marking the target. A useful modification indeed. But not as exciting as the rumors suggested. You thank the shopkeeper and leave, hoping to find an even better upgrade for your Guncraft in the future.`
+
+mission "Guncraft V"
+	minor
+	name "Guncraft"
+	description "A gunsmith wants you to rescue his daughter, who is being held ransom aboard the <npc> at <Sargas>. After making the rescue, bring her back to <destination> for an upgrade to your Guncraft."
+	source
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited"
+	waypoint "Sargas"
+	to offer
+		has "Guncraft IV: done"
+		or
+			"combat rating" >= 8000
+			and
+				"combat rating" >= 403
+				has "global: unlocked kestrel"
+		or
+			and
+				not "Randomize Guncraft V"
+			and
+				has "Randomize Guncraft V"
+				random < 5
+	on offer
+		require "Guncraft IV"
+		conversation
+			scene "outfit/handgun green"
+			`You visit a gunshop to browse your inventory when the shopkeep notices your sidearm and comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"Maybe we could help each other out. My daughter is being held hostage aboard the <npc>, a warship in the <waypoints> system! The pirate gang who kidnapped her are forcing me to supply them with free firearms to ensure her safety! Would you be willing to to rescue her? I can mod your Guncraft once you get back." This sounds like it could get dangerous, but at least you'll have the Guncraft at your disposal.`
+			choice
+				`	"Okay, I'll save the princess."`
+				`	"Sorry, not interested."`
+					defer
+			scene "outfit/bullet storage"
+			`	You assure the shopkeep that you'll rescue his daughter. He is grateful and gives you some free ammo to help...`
+				accept
+	on accept
+		outfit "Bullet Boxes" 1
+		outfit "Gatling Gun Ammo" 1500
+	on defer
+		set "Randomize Guncraft V"
+	on enter "Sargas"
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`You spot the <npc>, but it's not alone. The shopkeep did say the kidnappers were a pirate gang. There's a decent number of support ships protecting the one his daughter is on...`
+	npc
+		government "Pirate (Rival)"
+		system "Sargas"
+		personality target waiting staying plunders
+		ship "Marauder Bastion" "Walther"
+		ship "Marauder Quicksilver" "Zastava"
+		ship "Marauder Raven" "Prilutsky"
+		ship "Marauder Arrow (Shields)" "Tanfoglio"
+		ship "Marauder Sparrow" "Steyr"
+		ship "Dagger" "Smith"
+		ship "Dagger" "Wesson"
+	npc board
+		government "Pirate (Rival)"
+		system "Sargas"
+		personality target waiting staying plunders
+		ship "Marauder Behemoth" "Beretta"
+		dialog `You rescue the shopkeep's daughter. Return her to <destination>, where you expect to receive an upgraded Guncraft for your efforts!`
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on complete
+		outfit "Guncraft IV" -1
+		outfit "Guncraft V" 1
+		conversation
+			scene "outfit/handgun blue"
+			`The shopkeeper is overjoyed to be reunited with his daughter. After working all night, he presents you with the upgraded Guncraft V! It features a magnetic rail launching system, eliminating the need for gunpowder. If that sounds like a major upgrade, it's because it is. This requires the gun to be charged by your ship's systems regularly. And the ammunition isn't available at most shops, so there'll be an additional operating cost to keep a steady supply available. You thank the shopkeeper and leave, wondering if even better upgrades for your Guncraft are possible.`
+
+outfitter "antique rifle"
+	"Antique Rifle"
+
+phrase "glock"
+	word
+		"Glock"
+
+mission "Guncraft VI"
+	minor
+	name "Guncraft"
+	description "A gunsmith wants you to scan the cargo on the <npc>, which will pass through the <system> system. Deliver the scanner data to <destination> for an upgrade to the Guncraft."
+	source
+		outfits "Cargo Scanner" "Surveillance Pod"
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited"
+	to offer
+		has "Guncraft V: done"
+		or
+			"combat rating" >= 10000
+			and
+				"combat rating" >= 1097
+				has "global: unlocked kestrel"
+				has "global: main plot completed"
+		or
+			and
+				not "Randomize Guncraft VI"
+			and
+				has "Randomize Guncraft VI"
+				random < 5
+	on offer
+		require "Guncraft V"
+		conversation
+			scene "outfit/handgun blue"
+			`You finish purchasing some ammunition when the shopkeep notices your sidearm and comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"I was hoping you could do a job for me. A rival gun shop is selling what they claim are 'authentic antique rifles'. One of their shipments will be passing through <system> aboard the <npc>, and I'd like you to scan it with a cargo scanner. Share the data with me and I'll mod your Guncraft with some adjustments." If you take this job, you'll have to make sure your flagship has some sort of cargo scanner before taking off.`
+			choice
+				`	"Okay, I'll get that data."`
+				`	"Sorry, not interested."`
+					defer
+			scene "outfit/cargo scanner"
+			`	You assure the shopkeep that you'll get the data. She wishes you luck...`
+			``
+			`	(You should be able to buy something to scan cargo at the Outfitter if you need it.)`
+				accept
+	on defer
+		set "Randomize Guncraft VI"
+	on enter
+		conversation
+			scene "ship/marrows"
+			`The <npc> is a Marauder Arrow. You'll have to be quick to catch it while it passes through!`
+	npc "scan cargo"
+		government "Independent (Killable)"
+		personality target entering fleeing uninterested
+		fleet
+			names "glock"
+			cargo 1
+			outfitters "antique rifle"
+			variant
+				"Marauder Arrow (Shields)"
+		dialog `You've got the scanner data. Return to <planet> for an upgrade to the Guncraft!`
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on complete
+		outfit "Guncraft V" -1
+		outfit "Guncraft VI" 1
+		conversation
+			scene "outfit/handgun orange"
+			`The shopkeeper eagerly accepts the data. The next day, she presents you with the upgraded Guncraft VI! It features heat resistant magazines as a safety precaution for a new type of ammunition: explosive Detonator Rounds. Like before, this ammunition isn't available at most shops, so there'll be an additional operating cost to keep a steady supply available. You thank the shopkeeper and leave, wondering if even better upgrades for your Guncraft are possible.`
+
+mission "Guncraft VII"
+	minor
+	name "Guncraft"
+	description "A gunsmith wants you smuggle illegal firearms to <stopovers>. Once there, pick up a separate shipment of illegal gun parts and return to <destination> for an upgrade to your Guncraft."
+	source
+		outfits "Interference Plating"
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited"
+	stopover
+		distance 3 5
+		attributes "outfitter"
+		not attributes "uninhabited" "pirate"
+	to offer
+		has "Guncraft VI: done"
+		or
+			"combat rating" >= 12000
+			and
+				"combat rating" >= 2981
+				has "global: unlocked kestrel"
+				has "global: main plot completed"
+		or
+			and
+				not "Randomize Guncraft VII"
+			and
+				has "Randomize Guncraft VII"
+				random < 5
+	cargo "illegal cargo" 5
+	illegal 1000000 `In addition to the fine, the illegal cargo is confiscated from your cargo hold.`
+	stealth
+	on offer
+		require "Guncraft VI"
+		conversation
+			scene "outfit/handgun orange"
+			`You are browsing different types of ammunition when the shopkeep notices your sidearm and comments, "I see you wield a Guncraft. Are you from offworld?"`
+			choice
+				`	"Yeah, captain of my own ship even."`
+					goto guncraft
+				`	"No, just visiting from overseas."`
+				`	"I'd rather not say."`
+				`	"That's none of your business."`
+			`	"Too bad..." The shopkeep heads into the backroom and an assistant helps you with the rest of your transaction.`
+				defer
+			label guncraft
+			scene "outfit/blue screwdriver"
+			`	"Perhaps we can make a deal. I have a shipment of illegal firearms that need to be delivered to <stopovers>. Deliver it there and pick up a separate shipment of illegal gun parts. Return here with that shipment and I'll give your Guncraft a 'high' tech mod." He smirks oddly when he says that last bit, as though there's an in-joke you're not privy to. If you're going to do this, you'll need to avoid being scanned in order to succeed at this mission.`
+			choice
+				`	"Okay, I'll smuggle the goods."`
+				`	"Sorry, not interested."`
+					defer
+			scene "outfit/interference plating"
+			`	The shopkeep wishes you luck, reminding you that Interference Plating is a smuggler's best friend...`
+			``
+			`	(You should be able to buy Interference Plating at the Outfitter if you need it.)`
+				accept
+	on defer
+		set "Randomize Guncraft VII"
+	npc
+		government "Republic"
+		system
+			distance 9 10
+		personality target entering
+		ship "Gunboat" "R.N.S. Remington"
+	on fail
+		dialog `[MISSION FAILED]: If life were a game, you could load a save file and try again...`
+	on stopover
+		dialog `You unload the illegal firearms and take the illegal gun parts. Time to return to <destination> and receive an upgrade to your Guncraft!`
+	on complete
+		outfit "Guncraft VI" -1
+		outfit "Guncraft VII" 1
+		conversation
+			scene "outfit/handgun cyan"
+			`The shopkeeper welcomes you back. The next day, he presents you with the upgraded Guncraft VII! It features an ionic resistant firing mechanism to prevent it from being affected by its own ammunition: Ionic Rounds. That is some high technology. Like before, this ammunition isn't available at most shops, so there'll be an additional operating cost to keep a steady supply available. You thank the shopkeeper and leave, wondering if even better upgrades for your Guncraft are possible.`
+
+mission "Guncraft VIII"
+	minor
+	name "Guncraft"
+	description "The captain of the <npc> murdered Ceska and stole your Guncraft. Find that ship somewhere in Syndicate space and take back what's yours! Return to <destination> afterwards."
+	source
+		attributes "pirate"
+		attributes "outfitter"
+		not attributes "uninhabited" "core pirate"
+	to offer
+		has "Guncraft VII: done"
+		or
+			"combat rating" >= 14000
+			and
+				"combat rating" >= 8103
+				has "global: unlocked kestrel"
+				has "global: main plot completed"
+		or
+			and
+				not "Randomize Guncraft VIII"
+			and
+				has "Randomize Guncraft VIII"
+				random < 5
+	on offer
+		require "Guncraft VII"
+		conversation
+			scene "outfit/handgun cyan"
+			`As you enter a gun shop the shop keeper squeals, "Oh my gosh, Captain <first> <last> is in my shop! Word's gotten around that you not only have a fully functional Guncraft, but you've been letting gunsmiths make mods for it." She seems genuinely delighted to see you, or at least see your Guncraft. She stares at the weapon longingly...`
+			choice
+				`	"Did you want to try making a modification to it?"`
+					goto guncraft
+				`	"Before you ask, no. You can't touch it."`
+			scene "outfit/blue screwdriver"
+			`	She pouts. "I'll do it for free! Please let me have a stab at it!" She seems genuinely interested in making a mod for the Guncraft. But gives you the impression that she might not be as experienced as the previous gunsmiths you've worked with...`
+			choice
+				`	"Alright, you can make a mod for it."`
+					goto guncraft
+				`	"Sorry, but no."`
+			`	"Too bad..." She sulks at the counter and you leave to look for a different store.`
+				defer
+			label guncraft
+			scene "outfit/unknown"
+			`	"Wait, for realz?" She's astonished. "I should warn you, I have some radical ideas in mind that be like totally illegal. Like, yeah this is a pirate world, but not just kinda illegal but like really really illegal. For realz would totes blow your mind illegal. You know?" Words seemed to have finally stopped flowing from her mouth and she is waiting for a response.`
+			choice
+				`	"Illegal... Okay..."`
+					goto confirm
+				`	"Uh... What?"`
+			scene "outfit/attention"
+			`	"I'm saying that the mod I have in mind would totally make your Guncraft an illegal item. Like, you could get fined and stuff if the authorities catch you with it. Are you okay with that?" That's a little more clear than what she said earlier.`
+			choice
+				`	"I'm okay with that. Do your best to bring out its potential."`
+					goto confirm
+				`	"I changed my mind. I don't want to make my Guncraft illegal. That's final."`
+			scene "outfit/handgun cyan"
+			`	She nods, a bit more somber this time. Adjustments to your Guncraft have probably gotten as far as they can possibly go without crossing the line into making it a weapon to draw the ire of law enforcement. You finish the business you originally came here for and leave.`
+				decline
+			label confirm
+			scene "outfit/red screwdriver"
+			`	"Alright!" She whoops and hollars while jumping up and down. She holds out her hands and you carefully hand over the Guncraft...`
+			`	Before handing it over, you ask for her name.`
+			`	"Ceska," she replies. "Named after my mother's fave gun, the CZ75. If you thought the Guncraft was rare... Anyway, I should totes have this ready for you by tomorrow afternoon."`
+			choice
+				`	(Return the next day...)`
+			scene "effect/blood"
+			`	Impatient to wait for the afternoon, you return the following morning to find the door to Ceska's shop slightly ajar. Looking inside, you see her lying in a pool of her own blood, a gunshot wound to the chest area being the source.`
+			`	"Oh... <first>... Sorry, I... I had planned to sell your Guncraft to the captain of... of the Silent Assassin... But he betrayed..." Her breathing is shallow. You notice the flesh around the gunshot wound necrotizing rapidly. "My mod at work... Atomic Bullets... If the wound doesn't get you... the radioactive poisoning will..." Tears well up in her eyes. "For realz..." She dies right there, sobbing quietly until she takes her final breath. Whether you feel sorry for her or angry at her, one thing is certain: You need to get your gun back.`
+			``
+			`	After snooping around <planet>'s spaceport, you get a lead: the <npc> usually operates in Syndicate space. It's not much, but it's a start.`
+				accept
+	on accept
+		log "People" "Ceska" `A gunsmith named after her mother's favorite gun. She was killed by the captain of the Silent Assassin after she modified the Guncraft VIII to fire Atomic Bullets.`
+		outfit "Guncraft VII" -1
+	on defer
+		set "Randomize Guncraft VIII"
+	npc
+		government "Independent (Killable)"
+		system Gienah
+		personality target waiting staying uninterested
+		ship "Marauder Vanguard" "Ruger"
+		ship "Vanguard (Particle)" "Browning"
+		ship "Vanguard (Missile)" "Colt"
+		ship "Vanguard" "Sauer"
+		
+	npc capture
+		government "Independent (Killable)"
+		system Gienah
+		personality target waiting staying uninterested
+		ship "Marauder Falcon (Boarding)" "Silent Assassin"
+		conversation
+			action
+				log `Recovered the Guncraft VIII from the Silent Assassin. With Ceska's modifications, it has become a terrifying weapon. One that is unlikely to go unnoticed by governments across the galaxy.`
+				outfit "Guncraft VIII" 1
+				set "guncraft: captured silent assassin"
+			scene "outfit/handgun purple"
+			`After a fierce battle, you take possession of the Guncraft VIII. With Ceska's modifications, it has become a terrifying weapon. One that is unlikely to go unnoticed by governments across the galaxy. Its power is yours to wield, if you dare.`
+	on complete
+		outfit "Bullet Boxes" 1
+		outfit "Gatling Gun Ammo" 1500
+		conversation
+			scene "outfit/bullet storage"
+			`You visit Ceska's shop and find a man behind the counter. "Oh! The Guncraft wielder! I heard you were here the day my assistant was killed. Thanks for not robbing me blind while I was away. That was some messy business though. You can't be too careful about who you deal with in this line of work.`
+			`	He offers you some free ammo for your trouble...`

@@ -34,7 +34,7 @@ Land on Tebuteb's Table or Forpelog and you will be asked to investigate an anom
 
 [Feature Requests](https://github.com/mathwhiz1212/A-Coalition-At-War/issues/new?template=feature_request.md)
 
-[Current Objectives](https://github.com/mathwhiz1212/A-Coalition-At-War/issues/1)
+[Current Objectives](https://docs.google.com/document/d/1IeBmp9kmmM7WnmgqslpIvvAnddImp_nccEt_qGWagAc/edit?usp=drivesdk)
 
 [Bug Reports](https://github.com/mathwhiz1212/A-Coalition-At-War/issues/new?template=bug_report.md)
 

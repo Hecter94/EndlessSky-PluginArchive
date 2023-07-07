@@ -1,0 +1,80 @@
+# Copyright (c) 2023 by mOctave
+#
+# Blended Ships is free software: you can redistribute it and/or modify it under the
+# terms of the GNU Affero General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Blended Ships is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+disable mission "FW Embassy 1B"
+
+mission "FW Embassy 1B (Star General)"
+	landing
+	name "Ambassadors to Bourne"
+	description "Escort this luxury vessel carrying Republic ambassadors to the Free Worlds capital of <destination>."
+	autosave
+	source Earth
+	destination Bourne
+	passengers 2
+	to offer
+		has "FW Embassy 1: done"
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+		set "FW Embassy 1B: failed"
+		clear "FW Embassy 1B: active"
+	
+	on offer
+		set "FW Embassy 1B: offered"
+		set "FW Embassy 1B: active"
+		conversation
+			`Unfortunately, the Republic ambassadors turn out to match all your worst stereotypes of Republic diplomats: dressed in gaudy, impractical clothing, and carrying an absurd amount of luggage. At first you are worried about whether you have enough space for them, but one of them explains that they would not dream of traveling in your dirty old ship; they will be traveling in style, in a Star General luxury liner, and your only duty is to ensure their safety. You have little choice but to acquiesce: at least they aren't flying in something as insecure as a traditional Star Queen!`
+				accept
+	
+	npc accompany save
+		personality escort timid
+		government Republic
+		ship "Star General" "Lady of the Lake"
+	
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	
+	on complete
+		set "FW Embassy 1B: done"
+		clear "FW Embassy 1B: active"
+
+mission "Republic Assassination (Star General)"
+	name "Assassinate a political target"
+	description "An aggressive Republic politician with an unhealthy contempt for pirates is currently onboard <npc>, in a nearby system. Assassinate them by <day> to send a message to the Republic. Payment is <payment>. Be advised that <npc> is a Star General, and so is heavily armed."
+	repeat
+	job
+	deadline 20
+	to offer
+		"combat rating" > 800
+		random < 5
+		"reputation: Pirate" > -50
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Republic"
+		personality staying target
+		system
+			government "Republic"
+			distance 3 6
+			not near "Cardax" 3
+		fleet
+			names civilian
+			variant
+				"Star General"
+		dialog "The target has been destroyed. Return to <destination> for payment."
+	on complete
+		payment 800000
+		dialog "A local warlord thanks you for eliminating the politician and pay you <payment>."
+		"reputation: Republic" -= 15
+		"reputation: Navy (Oathkeeper)" -= 15
+		"reputation: Pirate" += 5

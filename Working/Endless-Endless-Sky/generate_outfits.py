@@ -2,7 +2,7 @@
 
 #Imports
 import math
-from math import sqrt
+from math import ceil, sqrt
 #import time
 import glob
 import random
@@ -130,7 +130,7 @@ def create_battery(faction,fileout=''):
 
         #Calculates new values
         battery_outfit = random.randint(5, 10)
-        battery_energy = roundup10(random.randint(int(2000*random.uniform(1.1*faction.tier,2*faction.tier)), int(5000*random.uniform(1.1*faction.tier,2*faction.tier))))
+        battery_energy = roundup10(random.randint(int(1000*random.uniform(1.1*faction.tier,2*faction.tier)), int(2500*random.uniform(1.1*faction.tier,2*faction.tier))))
         battery_cost = roundup100(random.randint(round((battery_energy/battery_outfit)*500),round((battery_energy/battery_outfit)*600)))
 
         battery_cost_curve = .9
@@ -844,14 +844,14 @@ def create_h2h(faction,fileout='',max_outfit_count=4,h2hmin=1):
         h2h_takespace = False
         h2h_tradeoff = ''
         h2h_tradeoff_value = 0
-        h2h_total = round(random.randrange(int(faction.tier*1.5), int(faction.tier*2)+1), 1)
+        h2h_total = round(random.uniform(float(faction.tier*1.5), float(faction.tier*2)+1), 1)
         if random.random() < .3:
-            h2h_total = round(random.randrange(int(faction.tier*3), int(faction.tier*4.5)), 1)
+            h2h_total = round(random.uniform(float(faction.tier*3), float(faction.tier*4.5)), 1)
             h2h_have_tradeoff = True
             if random.random() < .3: #Todo Multi-tradeoff
                 h2h_tradeoff = random.choice(list(h2h_tradeoff_drain_dict.keys()))
                 h2h_tradeoff_value = random.random()
-                h2h_total = round(random.randrange(int(faction.tier*3.5), int(faction.tier*5.5)), 1)
+                h2h_total = round(random.uniform(float(faction.tier*3.5), float(faction.tier*5.5)), 2)
             else:
                 h2h_tradeoff = random.choice(list(h2h_tradeoff_capa_dict.keys()))
                 h2h_takespace = True

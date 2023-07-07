@@ -43,10 +43,15 @@ mission "Dels: Kakaima Attack"
 			`Thankfully they're too few to break through the planetary defenses and all were destroyed.`
 				decline
 	on visit
-		dialog phrase "generic pirate fleet battle on visit"
+		dialog phrase "generic kroom fleet battle on visit"
 	on complete
+		"assisted dardornai" += 2
 		payment 220000
 		dialog phrase "generic kroom attack payment dialog"
+
+phrase "generic kroom fleet battle on visit"
+	word
+		`You've landed on <planet>, but there are still Kroom circling overhead. You should take off and help finish them off.`
 
 phrase "generic kroom attack payment dialog"
 	word
@@ -65,6 +70,49 @@ phrase "generic kroom attack payment dialog"
 		`Kroom.`
 		`raiders.`
 		`attackers.`
+		`invaders.`
+
+mission "Dels Dardornai: BB License Unlock"
+	landing
+	to offer
+		"assisted dardornai" >= 4
+		"reputation: Dels Dardornai" >= 500
+		"reputation: Kroom Kakaima" <= -500
+	on offer
+		event "Dels Dardornai: BB License Unlock"
+		
+event "Dels Dardornai: BB License Unlock"
+	outfitter "Dardornai Basic"
+		add "Dardornai Battleship License"
+	outfitter "Dardornai Advanced"
+		add "Dardornai Battleship License"
+		
+# Hint when license is available
+mission "Dels Dardornai: BB License Unlock hint"
+	landing
+	source
+		government "Dels Dardornai"
+	to offer
+		"assisted dardornai" >= 4
+		"reputation: Dels Dardornai" >= 500
+		"reputation: Kroom Kakaima" <= -500
+	on offer
+		require "Dardornai Battleship License" 0
+		conversation
+			`When you leave your ship, one of the local noticed you and walks over. He tells you that you've been on the news recently for helping them fight the Kroom and you might be able to get yourself a license for one of their battleships. (You can buy Dardornai Battleship License at some outfitter)`
+				decline
+
+# Hint on how to unlock the license
+mission "Dels Dardornai: BB License Unlock rumour"
+	source
+		government "Dels Dardornai"
+	to offer
+		not "Dels Dardornai: BB License Unlock: done"
+		random > 45
+	on offer
+		conversation
+			`While drinking at the bar you overheard some conversation, it's about the Dardornai Battleship License. They say that while it's mostly handed out only to those within the Dardornai Navy a private merchant also managed to get one from helping the Dardornai fight against the Kroom, a lot.`
+				decline
 
 mission "Panmur Kaul Warning" #To warn players before going into Panmur Kaul which can mysteriously kill them.
 	landing
@@ -97,7 +145,7 @@ mission "Panmur Kaul Warning Repeat 1"
 		government "Dels Kaote"
 		personality heroic unconstrained staying
 		system Prudeiko
-		fleet "Dels Kaote"
+		fleet #"Dels Kaote"
 			names "Dels Guard"
 			fighters "Dels Fighter"
 			variant
@@ -116,7 +164,7 @@ mission "Panmur Kaul Warning Repeat 2"
 		government "Dels Kaote"
 		personality heroic unconstrained staying
 		system Prudeiko
-		fleet "Dels Kaote"
+		fleet #"Dels Kaote"
 			names "Dels Guard"
 			fighters "Dels Fighter"
 			variant
@@ -130,26 +178,35 @@ mission "Dels officer: crossed Panmur Kaul check"
 		set "Dels: crossed Panmur Kaul"
 	on enter "Panmur Kaul"
 		set "Dels: entered Panmur Kaul"
+	to fail
+		#to clear it from active list
+		has "Dels: crossed Panmur Kaul"
+		has "Dels: entered Panmur Kaul"
 
 mission "Dels: Scout beyond Panmur Kaul"
 	name "Explore beyond Panmur Kaul"
-	destination "Vobeelee"
+	description "The Kaote wants you to explore space beyond Panmur Kaul then return to <destination>"
+	source 
+		government "Dels Kaote"
+	destination "Delro"
 	waypoint "Mitura"
 	waypoint "Kuvynra"
 	waypoint "Hsiorul"
-	description "The Kaote wants you to explore space beyond Panmur Kaul then return to <destination>"
 	to offer
 		has "Dels: crossed Panmur Kaul"
 		has "language: Dels"
-		random < 30
-		has "never offer"
+		random < 50
+		never
 	on offer
 		conversation
 			branch "Dels officer"
 				has "license: Dels Officer"
-			`	As you were wandering the spaceport you notice a Dels officer walking towards you`
+			`	As you were wandering the spaceport you notice a Dels officer walking towards you, "Captain, we have recieved reports that you've went into Panmur Kaul and survived. We want you to write a report to defense research division and conduct further exploration if possible."`
+			goto startChoice
+
 			label "Dels officer"
 			`	As you were wandering the spaceport you notice a Dels lieutenant walking towards you, "Officer <first>, we have recieved reports that you've went into Panmur Kaul and survived. We want you to write a report to defense research division and conduct further exploration if possible."`
+			label startChoice
 			choice
 				`	"How far do I have to go?"`
 					goto howfar
@@ -203,7 +260,8 @@ mission "Dels: Scout beyond Panmur Kaul"
 	on enter "Behsr Ler"
 		"Dels: Found Tehru Miitr" += 1
 	on enter "Ukcelarii"
-		"Dels: Found Insker Southern boarder" +=1
+		"Dels: Found Insker South boarder" += 1
+	#todo, find; Ceasrilis, Tehru Miitr, Vareen
 	on complete
 		payment 2500000
 		conversation 
@@ -218,24 +276,61 @@ mission "Dels: Scout beyond Panmur Kaul"
 			label check3
 			branch "Found Miitr"
 				"Dels: Found Tehru Miitr" >= 1
-			`You write a report of what you found exploring beyond Panmur Kaul and send it to the headquarter along with your sensor data. It didn't took long before you recieve your payment of <payment>.`
+
+			`You write a report of what you found exploring a few systems beyond Panmur Kaul and send it to the headquarter along with your sensor data. It didn't took long before you recieve your payment of <payment>.`
 				decline
+
 			label "Found All Boarder"
 			action
-				payment 3500000 #Need 0.9.15
-			``
-				goto check2
+				payment 8500000 #Need 0.9.15
+			`You write a report of what you found exploring beyond Panmur Kaul and send it to the headquarter along with your sensor data. Your effort went beyond what was expected and you received extra payment and got in total <payment>. In addition to that you also recieved a message asking you to go to the headquarter.`
+			`	Arriving at the headquarter you're brought to a meeting room immediately and meet general <delsgeneralname> along with a few other officers. "So from the report it seems like you've covered a significant amount of their territory and they seems to be more developed than us. This is a significant safety threat, though not beyond what we expected so far but doesn't mean we are sure. To reward for your great effort we decided to promote you to the rank of Admiral and permit you to purchase our Darca Class Carriers to assist you with future orders. We'll also ask you to stay on high alert for more orders in near future. For now I can foresee the engineering department requesting for samples of the alien tech so if you can you may want to prepare some of it."`
+			action 
+				set "license: Dels Commander"
+				set "license: Dels Admiral"
+			`	"Anyway, for the real reason we called you here is I want you to give us more details on what would you suggest for future scouts. We'd need more scouts to keep an eye on their movement so we need the details to find right candinates for you to instruct and proper equipment to support them."`
+			choice
+				`	"You need speed. I slip through their fleets before they their bullets hit me."`
+					goto speed
+				# Wait for more granular stealth system
+				#`	"Stealth is the key. You need to avoid their detection."`
+				#	goto stealth 
+				`	"Defense, you need something that can take hits."`
+					goto defense
+				`	"Better weapons, just take the nearest ones out then escape."`
+					goto weapon
+
+			label speed
+			action
+				set "dels scout: speed"
+			`	"Got it, thanks. We'll get the best engine we can find for them."`
+
+			label defense
+			action
+				set "dels scout: defense"
+			`	"Got it, thanks. We'll get the best defense we can find for them."`
+
+			label weapon
+			action
+				set "dels scout: weapon"
+			
+			label end
+			`	"Also, if you have any of the alien equipment with you, you can head to the engineering department to hand it to them." (Click Spaceport to hand in some alien outfits.)`
+				decline
+
 			label "Found Akralva Boarder"
 			action
-				payment 1250000 #Need 0.9.15
+				payment 4250000 #Need 0.9.15
+			goto check3
 			label "Found Miitr"
 			action
-				payment 1250000 #Need 0.9.15
+				payment 4250000 #Need 0.9.15
 
 
 	
 
 #================There's still problems that we can't really check player's ship/attribute or manage the crew with missions
+# Can check flagship attribute on 0.10.0 now. 
 
 mission "Dels officer: Made Dels Kaote angry notif"
 	landing
@@ -354,7 +449,7 @@ mission "Dels officer: arrested generic"
 
 			branch "runbacktoughship" #Checked if you're well armed enough to survive the ambush
 				"armament deterrence" >= 20
-			`	You quickly make for your control room and prepare to launch. You took a quick glance at your radar as your engines begins to fire up and noticed you're somehow surronded by at least 5 warships before hearing series of explosions coming from your ship... Unfortunately for you, the Dels Kaote is well prepared.
+			`	You quickly make for your control room and prepare to launch. You took a quick glance at your radar as your engines begins to fire up and noticed you're somehow surronded by at least 5 warships before hearing series of explosions coming from your ship... Unfortunately for you, the Dels Kaote is well prepared.`
 				die
 
 			label runbacktoughship # Todo : When missions can check ship's durability in someway, also use that.
@@ -381,7 +476,7 @@ mission "Dels officer: arrested generic"
 				or
 					"armament deterrence" >= 15 # Requires less value than "runbacktoughship" check as you have more time to launch.
 					and
-						"armament deterrence" >=10
+						"armament deterrence" >= 10
 						random > 50
 
 			branch "Fastenough"			#Check if you're in a small ship, not perfect but will work for most of the cases.
@@ -498,7 +593,7 @@ mission "Dels officer: arrested Delro" #A variant of generic ambush but since it
 			branch "runbacktoughship" #Checked if you're well armed enough to survive the ambush
 				"armament deterrence" >= 230
 
-			`	You quickly make for your control room and prepare to launch. You took a quick glance at your radar as your engines begins to fire up and noticed you're somehow surronded by at least 5 warships before hearing series of explosions coming from your ship... Unfortunately for you, the Dels Kaote is well prepared.
+			`	You quickly make for your control room and prepare to launch. You took a quick glance at your radar as your engines begins to fire up and noticed you're somehow surronded by at least 5 warships before hearing series of explosions coming from your ship... Unfortunately for you, the Dels Kaote is well prepared.`
 				die
 
 			label runbacktoughship # Todo : When missions can check ship's durability in someway, also use that.
@@ -525,7 +620,7 @@ mission "Dels officer: arrested Delro" #A variant of generic ambush but since it
 				or
 					"armament deterrence" >= 170 # Requires less value than "runbacktoughship" check as you have more time to launch.
 					and
-						"armament deterrence" >=150
+						"armament deterrence" >= 150
 						random > 50
 
 			branch "Fastenough"			#Check if you're in a small ship, not perfect but will work for most of the cases.
@@ -602,6 +697,233 @@ mission "First Contact: Dels Ufulre"
 	on offer
 		conversation
 			`(First Contact: Dels Ufulre) (Under construction)`
+
+# Dels Officer: Missions
+
+mission "Dels Officer: Report to Delro"
+	name "Report to <destination>"
+	repeat
+	landing
+	deadline
+	description `You have been ordered to go to <destination> for an assignment. You must reach <planet> by <date>.`
+
+	destination Delro # maybe have different important systems to report to
+	source
+		near Vobeelee 1 10
+	to offer
+		"random" < 30 - "Dels Officer: report complete"  # You get called less frequently over time
+		has "GW Dels start: officer"
+		or
+			"ships: Interceptor" > 0
+			"ships: Light Warship" > 0
+			"ships: Medium Warship" > 0
+			"ships: Heavy Warship" > 0
+		not "Dels Officer: Report to Delro: active"
+		not "Dels Officer: Patrol Systems: active"
+		not "Dels Officer: Escort Convoy: active"
+
+	on offer
+		conversation
+			`As your ship sinks through the atmosphere of <planet>, your communicator buzzes notifying you there's a message from the navy command. You open it.`
+			`	The message reads, "Officer <first>, you are required to go to <destination> by <date>. There you will receive further orders."`
+
+			choice
+				`	(Accept)`
+					goto accept
+				`	"I don't care what consequences you give me, I'm not going!"`
+					goto decline
+
+			label decline
+			action
+				"dels officer: bad officer" ++
+			``
+				decline
+
+			
+			label accept
+			branch escort
+				random < 50
+			label patrol
+			action
+				"Dels Officer: Patrol Mission" ++
+			``
+				goto end
+
+
+
+			label escort
+			action
+				"Dels Officer: Escort Mission" ++
+			``
+				goto end
+
+			label end
+			`	You key in the destination and prepare your ship for the mission.`
+				accept
+
+	on fail
+		"dels officer: bad officer" ++
+	on abort
+		"dels officer: bad officer" ++
+	on complete
+		"dels officer: report mission available" = 1
+		"Dels Officer: report complete" += 1
+		#Cap the factor to 25 to avoid mission not offering again if done for 30 times.
+		#So minimal chance of offering is 5%
+		"Dels Officer: report complete" <?= 25
+
+#mission "Dels Officer: Participate in defense"
+#	landing
+#	repeat
+#	priority
+#	name `Drive off the Ufulre`
+#	source Delro
+#	destination
+#		government "Dels Kaote" Dels
+#		near Alkurud 0 2
+#	description `There is an Ufulre attack on <destination>. You must participate in driving it off.`
+#	to offer
+#		has "dels officer: report mission available"
+#	on offer
+#		clear "dels officer: report mission available"
+#		conversation
+#			`One you have landed, a Dels commander comes and gives you a data pad with instructions. It reads, "Officer <first>, you are requested for defense at <destination>. There is an Ufulre attack there."`
+#			`	You prepare to launch.`
+#				accept
+#	on abort
+#		"reputation: Dels Kaote" -= 1
+#		fine 10000
+#		dialog `Officer <first>, the Kaote Navy does not tolerate cowards. You will be fined 10,000 credits for this.`
+#
+#	npc evade
+#		government "Dels Ufulre"
+#		personality
+#			confusion 30
+#			plunders harvests target # no staying so they can flee
+#		fleet "Dels Ufulre Raid" 2
+#		system destination
+#
+#	npc
+#		government "Dels Kaote"
+#		personaility
+#			confusion 10
+#			heroic opportunistic frugal staying
+#		fleet "Dels Kaote"
+#		system destination
+#	on complete
+#		payment 100000
+#		dialog `Officer <first>, thank you for realizing your role in the Kaote Navy. The commander have authorized <payment> bonus for completing this mission.`
+
+mission "Dels Officer: Patrol Systems"
+	landing
+	repeat
+	name `Patrol systems`
+	source Delro
+	waypoint
+		government "Dels Kaote" Dels
+		near Alkurud 0 2
+	waypoint
+		government "Dels Kaote" Dels
+		near Alkurud 0 2
+	waypoint
+		government "Dels Kaote" Dels
+		near Alkurud 0 2
+	description `You must patrol <stopovers> to check for Ufulre activity then return to <origin> to report.`
+
+	to offer
+		has "dels officer: report mission available"
+		has "Dels Officer: Patrol Mission" # In testing, I had a stack of these but it only offered once.
+		not "Dels Officer: Escort Mission"
+	on offer
+		clear "dels officer: report mission available"
+		clear "Dels Officer: Patrol Mission"
+		conversation
+			`One you have landed, a Dels commander comes up and says, "Officer <first>, you must patrol <waypoints> to check on Ufulre activity. After you're done return to <origin>."`
+
+			`	You get back to your ship and prepare for the mission.`
+				accept
+
+	on abort
+		"dels officer: bad officer" ++
+	on complete
+		payment 50000
+		dialog `You receive a message reading, "Officer <first>, thank you for realizing your role in the Kaote Navy. The commander have authorized <payment> bonus for completing this mission."`
+
+mission "Dels Officer: Escort Convoy"
+	landing
+	repeat
+	name `Escort convoy`
+	source Delro
+	destination
+		government "Dels Kaote" Dels
+		near Alkurud 0 2
+	description `In order to assist the planets near Ufulre space, you must escort a convoy to <destination>.`
+	to offer
+		has "dels officer: report mission available"
+		has "Dels Officer: Escort Mission"
+	on offer
+		clear "dels officer: report mission available"
+		clear "Dels Officer: Escort Mission"
+		not "Dels Officer: Patrol Mission"
+		conversation
+			`Once you have landed, a Dels commander comes up to you and says, "Officer <first>, you must escort a small convoy of three Manoons to <destination> in order to help the people there recover from a recent raid. The ships are currently parked inside navy hangar 5 and will be ready to launch in an hour."`
+
+			`	You went to check the freighters you're escorting and agree on the time to launch with the captains then back to your ship and prepare for the mission.`
+
+				accept
+	on abort
+		"dels officer: bad officer" ++
+
+	npc
+		government "Dels Ufulre"
+		to spawn
+			"random" < 50
+			"armament deterrence" > 5
+		personality
+			confusion 30
+			plunders harvests
+		fleet "Dels Ufulre Patrol"
+		system
+			near Alkurud 0 1
+
+	npc
+		government "Dels Ufulre"
+		to spawn
+			"random" < 20
+			"armament deterrence" > 12
+		personality
+			confusion 30
+			plunders harvests
+		fleet "Dels Ufulre Patrol"
+		system
+			near Alkurud 0 1
+
+	npc
+		government "Dels Ufulre"
+		to spawn
+			"random" < 40
+		personality
+			confusion 30
+			plunders harvests
+		fleet "Dels Ufulre Patrol"
+		system destination
+
+	npc accompany save
+		government "Dels Kaote"
+		personality
+
+			confusion 10
+			opportunistic frugal escort
+		fleet
+ 			names "Dels civillian"
+ 			cargo 3
+ 			variant
+ 				"Dels Manoon" 3
+	on complete
+		payment 80000
+		dialog `You receive a message reading, "Officer <first>, thank you for realizing your role in the Kaote Navy. The commander have authorized <payment> bonus for completing this mission."`
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
 
 
 #

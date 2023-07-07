@@ -3,9 +3,9 @@ mission "level 1"
 	landing
 	repeat
 	to offer
-		and
-			has "level one"
-			not "completed"
+		has "level one"
+		not "completed"
+		not "level 1: active"
 	on offer
 		"reputation: Impetus" = -1
 	npc kill
@@ -21,16 +21,18 @@ mission "level 1"
 	on complete
 		set "completed"
 		relocate
-			planet "Porta Arenae"
+			location
+	location
+	planet "Porta Arenae"
 
 mission "level 2"
 	invisible
 	landing
 	repeat
 	to offer
-		and
-			has "level two"
-			not "completed"
+		has "level two"
+		not "completed"
+		not "level 2: active"
 	on offer
 		"reputation: Impetus" = -1
 	npc kill
@@ -46,16 +48,17 @@ mission "level 2"
 	on complete
 		set "completed"
 		relocate
-			planet "Porta Arenae"
+			location
+	planet "Porta Arenae"
 
 mission "level 3"
 	invisible
 	landing
 	repeat
 	to offer
-		and
-			has "level three"
-			not "completed"
+		has "level three"
+		not "completed"
+		not "level 3: active"
 	on offer
 		"reputation: Impetus" = -1
 	npc kill
@@ -71,16 +74,17 @@ mission "level 3"
 	on complete
 		set "completed"
 		relocate
-			planet "Porta Arenae"
+			location
+	planet "Porta Arenae"
 
 mission "level 4"
 	invisible
 	landing
 	repeat
 	to offer
-		and
-			has "level four"
-			not "completed"
+		has "level four"
+		not "completed"
+		not "level 4: active"
 	on offer
 		"reputation: Impetus" = -1
 	npc kill
@@ -96,16 +100,17 @@ mission "level 4"
 	on complete
 		set "completed"
 		relocate
-			planet "Porta Arenae"
+			location
+	planet "Porta Arenae"
 
 mission "level 5"
 	invisible
 	landing
 	repeat
 	to offer
-		and
-			has "level five"
-			not "completed"
+		has "level five"
+		not "completed"
+		not "level 5: active"
 	on offer
 		"reputation: Impetus" = -1
 	npc kill
@@ -121,8 +126,8 @@ mission "level 5"
 	on complete
 		set "completed"
 		relocate
-			planet "Porta Arenae"
-
+			location
+	planet "Porta Arenae"
 
 event "level five outfitter"
 	outfitter "ImpetusAll"
@@ -135,3 +140,43 @@ mission "level 5 first time"
 		has "level 5: done"
 	on offer
 		event "level five outfitter"
+		conversation
+			`"Now that you have defeated stage five, the next time you land here we will have an outfit for sale for you.`
+
+mission "level 6"
+	invisible
+	landing
+	repeat
+	to offer
+		has "level six"
+		not "completed"
+		not "level 6: active"
+	on offer
+		"reputation: Impetus" = -1
+	npc kill
+		personality target marked
+			confusion 0
+		ship "Albatross" "Remnants Strike"
+		government "Enemy"
+		system "Stage One"
+		conversation
+			`As soon as you defeated the enemies, the Impetus open the station for you.`
+			action
+				"reputation: Impetus" = 1
+	on complete
+		set "completed"
+		relocate
+			location
+	planet "Porta Arenae"
+
+event "level ten outfitter"
+	outfitter "ImpetusAll"
+		add "Crystal Turret"
+
+mission "level 10 first time"
+	invisible
+	landing
+	to offer
+		has "level 10: done"
+	on offer
+		event "level ten outfitter"

@@ -18,8 +18,9 @@
 mission "Unfettered Raiders (Hai)"
 	job
 	repeat
+	deadline 14
 	name "Unfettered Raiders"
-	description "An Unfettered fleet lead by a warship named the <npc> has destroyed several Hai patrols near <system>. Locate the fleet and destroy it. Then report to <destination> for payment [<payment>]."
+	description "An Unfettered fleet lead by a warship named the <npc> has fought several Hai patrols near <system>. Locate the fleet and disable it. Then report to <destination> by <date> for payment [<payment>]."
 	source
 		government "Hai"
 		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
@@ -33,7 +34,7 @@ mission "Unfettered Raiders (Hai)"
 			and
 				has "event: wanderers: unfettered invasion starts"
 				random < 10
-	npc kill
+	npc disable
 		government "Bounty"
 		system
 			distance 1 2
@@ -45,17 +46,18 @@ mission "Unfettered Raiders (Hai)"
 			variant
 				"Armor Beetle"
 				"Lightning Bug" 4
-
-		dialog `You've destroyed the <npc> and its fleet. Return to <destination> to collect your reward.`
+		dialog `You've disabled the <npc> and its fleet. Return to <destination> to collect your reward.`
 	on complete
 		payment 800000
+		"reputation: Hai" += 5
 		dialog phrase "generic bounty hunting payment dialog"
 
 mission "Unfettered Raiders (Hai Disguised)"
 	job
 	repeat
+	deadline 30
 	name "Unfettered Elusive"
-	description "A specialized Unfettered warship named the <npc> has eluded Hai patrols and attacked several Merchant ships near <system>. Locate the ship and destroy it. Then report to <destination> for payment [<payment>]."
+	description "A specialized Unfettered warship named the <npc> has eluded Hai patrols near <system>. Locate the ship and disable it. Then report to <destination> by <date> for payment [<payment>]."
 	source
 		government "Hai"
 		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
@@ -69,7 +71,7 @@ mission "Unfettered Raiders (Hai Disguised)"
 			and
 				has "event: wanderers: unfettered invasion starts"
 				random < 5
-	npc kill
+	npc disable
 		government "Bounty (Disguised)"
 		system
 			distance 1 2
@@ -80,9 +82,10 @@ mission "Unfettered Raiders (Hai Disguised)"
 			commodities "Food" "Medical"
 			variant
 				"Armor Beetle"
-		dialog `You've destroyed the <npc>. Return to <destination> to collect your reward.`
+		dialog `You've disabled the <npc>. Return to <destination> to collect your reward.`
 	on complete
 		payment 600000
+		"reputation: Hai" += 5
 		dialog phrase "generic bounty hunting payment dialog"
 
 mission "Cloudfire Escort (medium)"
@@ -138,6 +141,10 @@ mission "Cloudfire Escort (medium)"
 		dialog phrase "generic arrived-without-npc dialog"
 	on complete
 		payment 120000
+		"reputation: Hai" += 5
+		"reputation: Hai Merchant" += 5
+		"reputation: Hai Merchant (Human)" += 5
+		"reputation: Hai Merchant (Sympathizers)" += 5
 		dialog phrase "generic safe escort completion dialog"
 
 mission "Cloudfire Escort (large)"
@@ -200,6 +207,10 @@ mission "Cloudfire Escort (large)"
 		dialog phrase "generic arrived-without-npc dialog"
 	on complete
 		payment 180000
+		"reputation: Hai" += 5
+		"reputation: Hai Merchant" += 5
+		"reputation: Hai Merchant (Human)" += 5
+		"reputation: Hai Merchant (Sympathizers)" += 5
 		dialog phrase "generic safe escort completion dialog"
 
 
@@ -234,6 +245,12 @@ event "ion pulse cannons"
 		add variant 1
 			"Shield Beetle (Jump, Ion Pulse)" 2
 			"Shield Beetle (Jump, Tracker)" 1
+	fleet "Small Unfettered"
+		add variant 1
+			"Sea Scorpion (Ion Pulse)"
+		add variant 1
+			"Sea Scorpion (Ion Pulse)"
+			"Lightning Bug"
 	fleet "Large Unfettered"
 		add variant 1
 			"Shield Beetle (Ion Pulse)"	2
@@ -251,18 +268,49 @@ event "ion pulse cannons"
 			"Lightning Bug (Pulse)" 2
 		add variant 1
 			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle"
+			"Shield Beetle (Unfettered)"
 		add variant 1
 			"Shield Beetle (Ion Pulse)"
 			"Shield Beetle (Tracker)"
 		add variant 1
 			"Shield Beetle (Ion Pulse)"
-			"Shield Beetle"
+			"Shield Beetle (Unfettered)"
 			"Lightning Bug (Pulse)" 2
 		add variant 1
 			"Shield Beetle (Ion Pulse)"
 			"Shield Beetle (Tracker)"
 			"Lightning Bug" 2
+		add variant 1
+			"Sea Scorpion (Ion Pulse)" 3
+		add variant 1
+			"Sea Scorpion (Ion Pulse)" 2
+			"Sea Scorpion (Tracker)"
+			"Sea Scorpion (Ion Flash)"
+		add variant 1
+			"Sea Scorpion (Ion Pulse)" 2
+			"Shield Beetle (Unfettered)"
+		add variant 1
+			"Sea Scorpion (Ion)"
+			"Sea Scorpion (Ion Pulse)"
+			"Shield Beetle (Unfettered)"
+		add variant 1
+			"Sea Scorpion (Ion Pulse)" 2
+			"Shield Beetle (Ion Pulse)"
+		add variant 1
+			"Sea Scorpion (Ion Flash)" 2
+			"Shield Beetle (Ion Pulse)"
+		add variant 1
+			"Lightning Bug"
+			"Sea Scorpion (Ion Flash)"
+			"Shield Beetle (Ion Pulse)"
+		add variant 1
+			"Lightning Bug"
+			"Sea Scorpion (Ion)"
+			"Shield Beetle (Ion Pulse)"
+		add variant 1
+			"Lightning Bug (Pulse)"
+			"Sea Scorpion (Ion Pulse)"
+			"Shield Beetle (Ion Pulse)"
 
 mission "Ion Pulse Support"
 	landing
@@ -277,7 +325,7 @@ event "ion pulse support"
 	fleet "Large Unfettered"
 		add variant 1
 			"Shield Beetle (Ion Pulse)"
-			"Solifuge"
+			"Solifuge (Ion Flash)"
 			"Violin Spider" 3
 			"Violin Spider (Pulse)" 3
 		add variant 1
@@ -285,8 +333,11 @@ event "ion pulse support"
 			"Solifuge (Tracker)"
 			"Violin Spider" 2
 			"Violin Spider (Pulse)" 4
-
-
+		add variant 1
+			"Shield Beetle (Pulse)"
+			"Solifuge (Ion Flash)"
+			"Violin Spider" 3
+			"Violin Spider (Pulse)" 3
 
 mission "Ion Flash Bang"
 	landing
@@ -305,7 +356,7 @@ event "ion flash bang"
 			"Shield Beetle (Ion Flash)"
 			"Lightning Bug (Pulse)" 2
 		add variant 1
-			"Shield Beetle(Ion Flash)"
+			"Shield Beetle (Ion Flash)"
 			"Lightning Bug (Pulse)"
 			"Aphid (Armed)" 4
 		add variant 1
@@ -332,7 +383,7 @@ event "ion flash bang"
 	fleet "Hai Surveillance"
 		add variant 1
 			"Shield Beetle (Police, Ion Flash)"
-	fleet "Large Unfettered"
+	fleet "Large Plundering Unfettered"
 		add variant 1
 			"Shield Beetle (Ion Flash)"
 			"Lightning Bug (Pulse)" 2
@@ -351,24 +402,51 @@ event "ion flash bang"
 			"Shield Beetle (Pulse)"
 			"Shield Beetle (Ion Flash)"
 			"Lightning Bug (Pulse)" 2
+		add variant 1
+			"Sea Scorpion (Pulse)" 2
+			"Sea Scorpion (Ion Flash)" 2
+		add variant 1
+			"Sea Scorpion (Ion Flash)" 3
+		add variant 1
+			"Sea Scorpion (Ion Flash)" 4
+		add variant 1
+			"Sea Scorpion (Ion Flash)" 2
+			"Shield Beetle"
+		add variant 1
+			"Sea Scorpion (Ion Flash)" 2
+			"Shield Beetle (Pulse)"
+		add variant 1
+			"Lightning Bug"
+			"Sea Scorpion (Ion Flash)"
+			"Shield Beetle (Pulse)"
 
+event "add quantum bloodstones"
+	fleet "Small Hai Merchant (Sympathizers)"
+		add variant 1
+			"Water Bug (Bloodstone)"
+		add variant 1
+			"Lightning Bug (Bloodstone)"
+		add variant 1
+			"Centipede (Bloodstone)"
+		add variant 1
+			"Cicada (Bloodstone)"
+		add variant 1
+			"Scarab (Bloodstone)"
+	fleet "Large Hai Merchant (Sympathizers)"
+		add variant 1
+			"Shield Beetle (Bloodstone)"
+
+############
+# deprecated
+############
+
+# merged with Ion Pulse Support
 mission "Ion Flash Bang Support"
 	landing
 	invisible
 	to offer
-		has "Wanderers Defend Sich'ka'ara: done"
+		never
 	on offer
 		event "ion flash bang support"
 		fail
-
 event "ion flash bang support"
-	fleet "Large Unfettered"
-		add variant 1
-			"Solifuge (Ion Flash)"
-			"Violin Spider" 3
-			"Violin Spider (Pulse)" 3
-		add variant 1
-			"Shield Beetle (Pulse)"
-			"Solifuge (Ion Flash)"
-			"Violin Spider" 3
-			"Violin Spider (Pulse)" 3

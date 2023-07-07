@@ -1,0 +1,131 @@
+
+mission "First Contact: Revos"
+	landing
+	source
+		government "Revos"
+	to offer
+		never
+	on offer
+		conversation
+			branch "delslang"
+				has "language: Dels"
+			`Your approach to land was uninterrupted except for constant bombardment of what seems like noise in various frequency aimed at your ship that seems to be an attempt at communicating with you. Eventually it seems like they've figured out and sent what you think it voice messages in several languages, none that you recognize.`
+			`	You eventually landed at what you think is the main spaceport and find a few grey-skinned aliens with a single black large almond-shaped eye taking over half of the area on their head and sloped "face" that raise slightly as it goes back before cutting down into their neck and down to their body, which is mostly hidden by silver-scaled clothes that covers down to upper half of their large strange legs that are that reminds you of coilsprings with a mix of some insect legs without the hard shell standing no more than half a meter in height waiting for you close by accompanied by a few small H and C shaped drones. None of the alien or drones appear to be armed to you. On board sensors show that the atmosphere is too thin and lack of oxygen so you put on your spacesuit before going out to meet them. As you approach the C-shaped drones slowly begin to swarm around you at some distance making occasional quiet clicks and low humming noise that somehow block out most of the sound of the traffic around you. Though, after no more than a few seconds they disperse and go back to the aliens. The alien take something out and hand it to the H-shaped drone, which it holds floating between its front two prongs then fly towards you and stop right in front of you.`
+			`	The object is a shiny indigo sphere no larger than a marble with runic-like inscriptions on it.`
+			choice
+				`	(Reach your hand out and take it.)`
+					goto take
+				`	(Do nothing.)`
+			`	The drone then move aside and a hologram shows up in the space between you and the alien displaying you and them trying to talk but don't understand each other, then shows the marble that once in your hand you can suddenly talk to them.`
+			label take
+			`	You pick the marble off from the drone and hold it in your palm. It doesn't seems to do anything yet so you look at the alien again. To which they show another hologram displaying a zoomed in version of your hand. It seems like the marble have to be contacting your skin directly to work.`
+			choice
+				`	(Go back to your ship to try it.)`
+			action
+				set "language: Revos"
+			`	You head back inside your ship to take your spacesuit glove off and put the marble directly on your palm. As soon as it touches your skin the marble glows slightly and feels a little cold but otherwise you don't feel much different at first but suddenly you got a headache which phase away as fast as it appears. You put your equipment back on and head outside to meet the alien again.`
+			`	Meeting the aliens again you can hear them say something but it doesn't sounds right, you feel like you recognize some word as your own language but you don't quite understand what they're saying. You tried replying to them in your own langauge and they seems to be confused as well.`
+			`	They replied again and this time you feel like it's getting better. After some back and forth you slowly understand more and more of their language somehow. Eventually as both sides begins to understand each other enough the alien introduces their civlization as the Revos, they considered themselves one of the oldest among the stars still alive, a neutral power and negotiator of peace who path ways between the advanced civilizations to prevent the Great Catastrophe from happening again.`
+			choice
+				`	"The Great Catastrophe?"`
+				`	"Who were the other oldest living?"`
+					goto advaliens
+			label greatcatastrophe
+			action
+				set "gw: know about great catastrophe"
+			`	"Product of war" it replied, "Many countless cycles ago there were wars between the great powers of the galaxy. Thousands of cycles it lasted, infinite last the wounds. We born and see the wounds new before us and make effort for none will be like us."`
+			#branch toadvaliens
+			#	not "gw: know about great powers"
+			#label toadvaliens
+			#`	`
+			label choice1
+			choice
+				`	"Who were the great powers?"`
+				`	"What were the wounds?"`
+					goto galwound
+			label advaliens
+			action
+				set "gw: know about great powers"
+			`	"Taroun." they say "And those they called Isschi who no longer lives devastated half galaxy in their war. Not many cycles more four more rise to power and those four destroyed the other half. All but Isgeda is left here."`
+			`	"Never again it will happen, both learned to limit their ambition and we pathed way to form the Galactic Concil to keep watch for power out of control and teach the inexperienced."`
+			choice
+				`	"Who are the member of this concil?"`
+			``
+			label galwound
+			`	"You will see as you travel. Many have been cleaned, yet some still remains. So be careful when you explore as these wounds still kill."`
+			choice
+				`	"What exactly is the cause?"`
+				`	"Can you give me some example?"`
+					goto examplehazard
+			`	"Their weapons." the alien replied. "Taroun and Isschi both were highly advanced and own multiple weapon capable to damage entire system cluster and their effect still lingers."`
+
+			label examplehazard
+			`	"There were weapon that eat stellar objects, other that accelerate their decay, another that warp them into unnatural. Even if it fade over time it is more than capable of harming less massive objects, such as your vehicle."`
+			label aboutRevos
+			``
+
+mission "Revos Threatened by Player"
+	landing
+	invisible
+	to offer
+		"reputation: Revos" <= -100
+	on offer
+		event "Revos Deployment I"
+		event "Revos Defenses Deployment I"
+	on accept
+		fail
+
+event "Revos Deployment I"
+	fleet "Revos small"
+		add variant 7
+			"Revos Mokla"
+			"Revos Rova" 3
+			"Rova (Fast)" 2
+		add variant 6
+			"Mokla (Botavu)"
+			"Revos Rova" 3
+			"Rova (Fast)" 2
+		add variant 6
+			"Mokla (Barviska)"
+			"Revos Rova" 3
+			"Rova (Fast)" 2
+	fleet "Revos big"
+		add variant 8
+			"Revos Mokla" 2
+			"Mokla (Botavu)" 2
+			"Mokla (Barviska)"
+			"Revos Rova" 3
+			"Rova (Fast)" 3
+
+event "Revos Defenses Deployment I"
+	system "Molta"
+		add fleet "Revos defense" 1400
+	system "Norva"
+		add fleet "Revos defense" 1400
+	system "Aulura"
+		add fleet "Revos defense" 1400
+	system "Bustar"
+		add fleet "Revos defense" 1400
+	system "Mrulevor"
+		add fleet "Revos defense" 1400
+	system "Leuranu"
+		add fleet "Revos defense" 1400
+	system "Alnor"
+		add fleet "Revos defense" 1400
+	system "Lelerno"
+		add fleet "Revos defense" 1400
+	system "Kotai"
+		add fleet "Revos defense" 1400
+	system "Nesoral"
+		add fleet "Revos defense" 1400
+	system "Soarel"
+		add fleet "Revos defense" 1400
+
+	system "Morolmi"
+		add fleet "Revos defense" 1400
+	system "Ruvulko"
+		add fleet "Revos defense" 1400
+	system "Relculo"
+		add fleet "Revos defense" 1400
+	system "Borsila"
+		add fleet "Revos defense" 1400

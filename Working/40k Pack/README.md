@@ -1,11 +1,17 @@
 # Endless-Sky-40K
  Warhammer 40k mod for Endless Sky
  
+ REQUIRES: Endless Sky continuous version after 27 Feb 2022 to work. (Specifically commit dd7c20314c4a35d4017583bf1654891d06f11377)
+ 
 ![retribution](https://user-images.githubusercontent.com/19187937/140309820-abd6123c-cb61-4b81-9495-9ece214b55fa.PNG)
 
 Currently have:
+
 -15 Imperial Navy ships + outfits
+
 -2 Tau ships + outfits
+
+-1 Necron ship + outfits
 
 Currently only Imperial ships and outfits can be purchased at forge world Pifitus at system Pyherrus south of Syndicate space. To access Tau ships and outfits AES Omnis is required.
 

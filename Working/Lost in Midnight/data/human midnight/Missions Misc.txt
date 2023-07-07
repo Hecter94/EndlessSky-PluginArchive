@@ -11,6 +11,78 @@
 
 
 
+mission "Biohazard 1: Star Explorer"
+	minor
+	name "Biohazard-031"
+	description "A ship named Biohazard-031 seems to be kidnapping the crews of merchant ships in the north. Find the ship and rescue any captives that you can. Then return to <planet> for payment (<payment>)."
+	source
+		attributes "north"
+		not attributes "uninhabited"
+	to offer
+		has "event: star explorer fleet update"
+		"combat rating" > 300
+		or
+			and
+				not "Randomize Star Explorer Biohazard"
+				random < 70
+			and
+				has "Randomize Star Explorer Biohazard"
+				random < 5
+	on offer
+		conversation
+			scene "ship/star explorer"
+			`A navy officer approaches you. "Do you have combat experience? We are offering <payment> to any pilots that can fight to help track down the ship known as Biohazard and rescue any people they have kidnapped. The Biohazard has raided several merchant ships in the north over the last few days. The victims could be sold into slavery or suffer some other horrible fate."`
+			`	What will you do?`
+			choice
+				`	(Search for the Biohazard.)`
+				`	(Ignore this.)`
+					defer
+			`	The Biohazard has attacked ships in the north. It may be in one of the many uninhabited systems scattered across this region.`
+					accept
+	on defer
+		set "Randomize Star Explorer Biohazard"
+	on enter "Gorvi"
+		dialog `The Biohazard emerges from the luminescent clouds surrounding the star and hails you: "New test subjects! Excellent! The last batch didn't fare so well..."`
+	npc
+		government "Bounty"
+		system "Gorvi"
+		personality waiting staying
+			confusion 20
+		ship "Scout (Bounty Hunter)" "Jekyll"
+		ship "Scout (Bounty Hunter)" "Hyde"
+		ship "Shuttle Pod (Pirate)" "Igor"
+		ship "Pirate Drone" "1337"
+	npc board
+		government "Bounty"
+		system "Gorvi"
+		personality target waiting staying mute
+			confusion 10
+		ship "Star Explorer (Biohazard)" "Biohazard-031"
+		conversation
+			scene "outfit/brig"
+			`When you board the ship, no defenders challenge you. Occasional screams can be heard in the distance. Your search for the kidnapped victims leads you to the ships brig. But the prisoners have escaped! A few dead bodies of the prisoners remain. Each has the alphanumeric sequence "BH-031" tatooed onto the back of their neck. You also notice their skin is mottled with greenish patches...`
+			choice
+				`	(Continue your search.)`
+			scene "outfit/medical bay"
+			`	You find the Biohazard's medical bay. Strapped to the operating table is a man's body. His skin is more greenish than the ones you saw previously. Suddenly, he opens his eyes and moans in pain. "Scientists... turning... us... into... alphas." The man falls unconscious and his breathing slows to a stop. He's dead.`
+			choice
+				`	(Continue your search.)`
+			scene "outfit/purger rifle"
+			`	You find several more dead bodies as you explore the ship. Some appear to be escaped prisoners with the strange green patches on their skin while others are normal humans in lab coats or tactical gear. The ones in uniforms bear a patch with "BH-031" printed on them. The humans are carrying rifles loaded with some sort of injection round. A bayonet style needle protrudes from under the barrel.`
+			`	As you take all this in, a door at the far end of the hall opens and an escaped prisoner emerges from it before running in your direction! Green splotches mar her arms and face. She yells out, "Help! They're killing us!" One of the Biohazard crew members appears from behind her, shooting her in the back of the leg with a single injection round. She falls, seemingly dead before she even hits the floor. More Biohazard crew arrive and they turn these weapons towards you...`
+	on fail
+		dialog "[MISSION FAILED]: You were supposed to rescue the kidnapped victims before destroying the Biohazard-031. If life were a game, you could reload a save file and try again."
+	on complete
+		payment 200000
+		event "independent star explorers"
+		log `Encountered a ship named "Biohazard". The crew were kidnapping humans and performing experiments to turn them into Alphas. None of the victims could be saved. The crew wore uniforms with the tag "BH-031" and their prisoners had a similar mark on their necks. This ship was "Biohazard-031". There could be other "Biohazard" ships performing similar experiments.`
+		conversation
+			scene "scene/scene-biohazard031"
+			`Although you failed to rescue any of the victims, the government of <planet> pays you <payment>. You managed to stop the Biohazard from kidnapping any more people for their twisted experiments. But some details about this mission linger. The crew of the Biohazard didn't seem like normal pirates. The uniforms were too professional. And the antipersonnel weapons they carried require specialized ammunition. But most concerning of all was the "031" appended to the ship's name. It seems to suggest that there are other Biohazard ships out there...`
+
+
+
+
 mission "Blue Ridge 1"
 	minor
 	name "Auction: Blue Ridge"
@@ -94,13 +166,77 @@ mission "Blue Ridge 2"
 
 
 
+mission "Bounty Hunting: Angry Chicken"
+	minor
+	name "Wanted Bandit near <system>"
+	description "Help the Sunriser eleminate a Modified Firebird named the <npc> which has been attacking merchants near <system>. Then report to <destination> for payment (<payment>)."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	to offer
+		"combat rating" >= 300
+		random < 70
+	on offer
+		conversation
+			`You notice a young pilot staring intently at the job board.`
+			choice
+				`	"Find anything interesting?"`
+				`	(Ignore him.)`
+					decline
+			`	He looks at you and shrugs. "It's a bounty hunting job. The pay is good, but I've never done this kind of work before."`
+			choice
+				`	"I could lend a hand for a share of the reward."`
+					goto share
+				`	"You should stick to safer jobs like hauling garbage."`
+			label scowl
+				`	The man scowls at you. "I didn't ask for your advice." He walks away.`
+				decline
+			label share
+			`	He gives you a skeptical look. "What do you know about bounty hunting?"`
+			choice
+				`	"It's dangerous work."`
+			scene "ship/rancor"
+			`	"That's okay. I have a tough ship, a Rancor."`
+			`	You've heard stories about them. The Rancor was originally a pirate vessel, and many were used in the early turf wars. The Alpha War was the beginning of the Rancor's decline as faster interceptors quickly outpaced and outmaneuvered this relatively slower ship. Today it is seen as a relic of the past, most noteworthy for influencing the design of the Fury.`
+			choice
+				`	"Look kid, I'm willing to help out. Just don't die out there."`
+				`	"On second thought, I don't want to be involved in this."`
+					goto scowl
+			`	"Alright, I'll let you tag along. Just don't get in my way old timer."`
+			choice
+				`	"The name's <first>. My ship is the <ship>."`
+			`	"I'm Rocky. My Rancor is named Sunriser."`
+				accept
+	on enter
+		dialog `Rocky hails you: "Where should we look first? Is one jump away far enough? Should we try two?"`
+	on enter
+		dialog `Rocky hails you: "If it's not here, do we just keep searching?"`
+	npc accompany save
+		government "Bounty Hunter (licensed)"
+		personality escort timid vindictive
+		ship "Rancor" "Sunriser"
+	npc kill
+		government "Bounty"
+		system
+			distance 1 2
+		personality target waiting staying disables harvests
+			confusion 20
+		ship "Modified Firebird" "Angry Chicken"
+		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <destination> and claim our reward."`
+	on fail
+		dialog `[MISSION FAILED]: The Sunriser was destroyed. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 60000
+		dialog `The government of <planet> gratefully pays you 120,000 credits for eliminating the Angry Chicken. Rocky claims half for himself and wishes you farewell.`
+
+
+
 mission "Drunk Pilot"
 	minor
 	name "Drunk Pilot"
 	description "The captain, and possibly the crew, of the <npc> is drunk. There's a small bounty of <payment> to disable their ship. Return to <planet> for payment."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
-		attributes "spaceport"
+		attributes spaceport
 		attributes "dirt belt"
 	to offer
 		random < 5
@@ -161,7 +297,7 @@ mission "Executive Guard: Syndicate Extremists"
 	clearance
 	to offer
 		has "FW Syndicate Extremists 1A: done"
-		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 7
+		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 7
 	npc
 		government "Syndicate (Extremist)"
 		system Algenib
@@ -175,7 +311,7 @@ mission "Executive Guard: Syndicate Extremists"
 		ship "Barb (Proton)" "F-006"
 	npc evade
 		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 9
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 9
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
@@ -185,7 +321,7 @@ mission "Executive Guard: Syndicate Extremists"
 				"Protector (Proton)" 2
 	npc evade
 		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" > 11
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 11
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
@@ -208,7 +344,7 @@ mission "Gremlin Protoype Escort"
 	destination "Prime"
 	to offer
 		not "Gremlin start"
-		"ships: Interceptor" + "ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" >= 1
+		"ships: Interceptor" + "ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" >= 1
 		random < 50
 	on offer
 		conversation
@@ -401,7 +537,7 @@ mission "Free Worlds Infiltrator 1"
 	landing
 	deadline 7
 	name "Free Worlds Infiltrator"
-	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Catch the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
+	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Capture the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
 	source
 		government "Free Worlds"
 	destination
@@ -449,7 +585,7 @@ mission "Free Worlds Infiltrator 2"
 	landing
 	deadline 7
 	name "Free Worlds Infiltrator"
-	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Catch the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
+	description "A Republic Intelligence spy ship named the <npc> was spotted near <origin>. Capture the fleeing ship before <date> and retrieve whatever data they've acquired. Then deliver it to <destination>."
 	source
 		government "Free Worlds"
 	destination
@@ -539,11 +675,29 @@ mission "Infiltrator: War Begins"
 	deadline 30
 	to offer
 		has "event: war begins"
+	npc
+		government "Republic"
+		system Castor
+		personality staying waiting surveillance timid mute
+		fleet
+			fighters "republic fighter"
+			cargo 0
+			variant
+				"Surveillance Drone" 4
 	npc kill
 		government "Republic"
 		system Castor
 		personality staying waiting surveillance timid mute
 		ship "Infiltrator" "Subterfuge"
+	npc
+		government "Republic"
+		system Pollux
+		personality staying waiting surveillance timid mute
+		fleet
+			fighters "republic fighter"
+			cargo 0
+			variant
+				"Surveillance Drone" 4
 	npc kill
 		government "Republic"
 		system Pollux
@@ -551,6 +705,270 @@ mission "Infiltrator: War Begins"
 		ship "Infiltrator" "Discretion"
 
 
+
+mission "Limit Breaker Intro"
+	outfitter
+	minor
+	source
+		attributes "pirate"
+	to offer
+		random < 70
+	on offer
+		conversation
+			``
+			`While browsing the inventory at the outfitter, you notice a flyer prominently displayed on the wall:`
+			``
+			scene "outfit/limit breaker"
+			`	-----UNLEASH YOUR POTENTIAL-----`
+			``
+			`	Take your ship to the next level by installing a Limit Breaker. Guaranteed to keep your ship operational long past the point it would normally be disabled by excessive damage. Break your limits and buy a Limit Breaker today!`
+			``
+			`	All sales final. Seller is not responsible for injury, death, or other losses related to the use of this product.`
+			`	--------------------------------`
+				decline
+
+
+mission "Limit Breaker Syndicate Patrol"
+	minor
+	name "Syndicate Patrol"
+	description "Accompany the <npc> on its patrol of Core pirate systems. Return to <destination> once the patrol is complete... if the <npc> survives, that is."
+	source
+		government "Syndicate"
+		attributes "frontier"
+	waypoint "Alcyone"
+	waypoint "Almach"
+	waypoint "Gienah"
+	waypoint "Algenib"
+	waypoint "Misam"
+	to offer
+		random < 60 - ( 20 * "ignored limit breaker syndicate patrol" )
+	on offer
+		conversation
+			scene "outfit/red screwdriver"
+			`You notice a pilot wearing a Syndicate flight suit opening a maintenance panel on his Wasp."`
+			choice
+				`	(Observe his work.)`
+				`	(Ignore him.)`
+					defer
+			scene "outfit/limit breaker"
+			`	You see him installing a Limit Breaker onto the Wasp. These are notoriously dangerous, an outfit that bypasses the internal safey mechanisms to keep a ship operational beyond the point it would normally be disabled.`
+			choice
+				`	"Isn't that dangerous?"`
+				`	"I thought only pirates used those."`
+			scene "ship/wasp"
+			`	He look at you, thoughtful. Then he nods, "I suppose so. But I'm not on salary. And the Syndicate doesn't pay me for time spent adrift while disabled. So this should allow me to keep operating and earning money to send home to my family." Seems risky. He must really need the money. Perhaps he owes a debt to the bank to pay for that Wasp...`
+			choice
+				`	"Well, good luck with that..."`
+				`	"Would you mind if I tagged along?"`
+					goto end
+			scene "thumbnail/wasp"
+			`	He smiles ruefully. "I get you. But at least the insurance pays well if I die on the job." He gets back to work, the conversation over. Life must be tough for a company man.`
+				decline
+			label end
+			scene "thumbnail/wasp"
+			`	He looks at you with skepticism. "I won't stop you, but I can't afford to pay an escort. At best, I can share map data for some of the nearby systems if you don't already have it. The name's Syphus. And this..." He extends his hand towards the Wasp, "is the S-13X9. Technically, the Syndicate still retains ownership of it until I exceed 50% of the loan payments.`
+			choice
+				`	"<first> <last>, of the <ship>."`
+					accept
+	on defer
+		"ignored limit breaker syndicate patrol" ++
+	on decline
+		event "limit breaker syndicate patrols"
+	on accept
+		outfit "Local Map" 1
+	on enter "Alcyone"
+		dialog `Syphus sends a warning, "There are runors of debris from wrecked ships floating in from beyond the system edges here. Take care that your own ship doesn't turn out that way."`
+	on enter "Almach"
+		outfit "Local Map" 1
+		dialog `"I've heard other pilots talk about aliens showing up in this system." Syphus pauses as something briefly registers on the radar. "But I've never seen them myself..."`
+	on enter "Gienah"
+		dialog `Syphus sends a hail, "In my experience, Mutiny doesn't cause much trouble. It's the other planet you have to watch out for."`
+	on enter "Algenib"
+		outfit "Local Map" 1
+		dialog `"I usually don't get out past Gienah." Syphus seems nervous. "If you get disabled this deep in pirate territory, the rest of the galaxy probably won't come rescue you."`
+	on enter "Misam"
+		outfit "Local Map" 1
+		dialog `"Woohah!" Syphus exclaims. "I've never actually made it into Misam before. Some patrol pilots think this system is just a myth that doesn't actually exist..."`
+	on waypoint
+		dialog `"That should be good enough. Patrol's over. Let's to head back to <destination>."`
+	npc accompany save
+		government "Syndicate"
+		personality heroic unconstrained
+			confusion 20
+		ship "Wasp (Limit Break)" "S-13X9"
+	on fail
+		event "limit breaker syndicate patrols"
+		dialog `The <npc> was destroyed. Life is hard for Syndicate wage slaves.`
+	on visit
+		event "limit breaker syndicate patrols"
+		dialog `Syphus hails you: "I'll wait in orbit. If the supervisor catches me loitering down there my pay will get docked!"`
+	on complete
+		event "limit breaker syndicate patrols"
+		conversation
+			scene "thumbnail/wasp"
+			`As you part ways with Syphus he says, "Any patrol you return alive from is a good one. Thanks for the escort."`
+
+
+
+mission "Midnight Paradise Fortune 1"
+	minor
+	name "Bring Diana to <planet>"
+	description "Diana Howl says she has some pirate treasure she's willing to share if you take her to <destination>."
+	passengers 1
+	source
+		attributes "south pirate"
+	destination "Haven"
+	to offer
+		or
+			has "Paradise Fortune 4: done"
+			has "Paradise Fortune 4: declined"
+		random < 50
+	on offer
+		conversation
+			scene "planet/forest6"
+			`You are trying to get through the crowds at the spaceport when you bump into a familiar face: Diana Howl, the daughter of wealthy Paradise Planet family who stole half a billion credits from her family's wealth only to abandon it for a new life away from home.`
+			`	<first>! I never thought I'd run into you again! Good timing though, I need a lift to <destination>. Have you ever been there?`
+			choice
+				`	"I could take you there. But what's in it for me?"`
+					goto barter
+				`	"That's awfully far away. And I'm heading in a different direction."`
+			`	"Too bad. I would have liked to travel together again." You say your farewell to Diana. She seems to be doing alright, but <origin> isn't the safest world to be scraping a living off of. Who knows what kind of trouble she's been getting into...`
+				defer
+			label barter
+			`	She spins around and you can see she has a new backpack. It's crammed full of something... "I managed to score some loot. I'll share some if you'll help me." Diana wants to hitch a ride while carrying a bag of stolen loot. This seems familiar. You instinctively look around, but there don't appear to be any angry security guards chasing her.`
+			choice
+				`	"OK, I'll take you."`
+					goto end
+				`	"Not again. No, I'm not doing this."`
+			`	"That's too bad. I was hoping we could travel together, like before." You say goodbye to Diana. She seems to be doing well, but <origin> isn't the safest world to be scraping a living off of. And who knows what kind of trouble she's got in mind for <planet>. Whatever it is, you've decided to stay as far away as possible from it.`
+				decline
+			label end
+			`	"Yay!" She jumps then hugs you. "This will be fun!"`
+				accept
+	on enter
+		dialog `Some pirates hail you: "We know you have the girl. Surrender her and maybe we'll just take your credits." This is already starting to feel familiar.`
+	npc evade
+		government "Pirate"
+		personality entering plunders unconstrained
+			confusion 20
+		fleet "Small Southern Pirates" 3
+	on fail
+		dialog `[MISSION FAILED] You failed to bring Diana Howl to <planet>. If life were a game, you could load a save file and try again.`
+
+mission "Midnight Paradise Fortune 2"
+	landing
+	name "Rescue Diana"
+	description "A pirates kidnapped Diana and are holding her captive on the <npc>. Meet them at <waypoints> if you want her back. Take her to destination once she's safe."
+	passengers 1
+	waypoint "Tortor"
+	destination "Farpoint"
+	to offer
+		has "Midnight Paradise Fortune 1: done"
+	on offer
+		conversation
+			`You finally arrive at <planet>. Diana opens her bag and pulls out something dangerous...`
+			choice
+				`	"Isn't that a Shield Suppressor?"`
+			scene "outfit/shield suppressor"
+			`	"Shield Suppressor?" She looks at the outfit in her hands. "I thought these were some kind of modified shield generator..." It figures she wouldn't know the difference.`
+			`	"These devices are used for sabotaging a shield generator. Every outfitter has a sign warning new pilots to get rid of it if they find one installed on their ship." Is this really the loot she wanted to share?`
+			choice
+				`	"You can keep them. All of them."`
+				`	"Get these off my ship right now."`
+			scene "outfit/shield suppressor"
+			`	"I'm sorry first, I really didn't know..." Diana seems to be holding back tears as she stuffs the Shield Suppressor back into her bag, then leaves. It might be a good idea to check your ship in the outfitter, just in case one got left behind.`
+			``
+			choice
+				`	(...)`
+			``
+			`	A short while later you receive a video message from Diana: "So, <first>, the people I was supposed to meet turned out to be pirates..."`
+			``
+			`	That's no surprise.`
+			``
+			`	"And I ended up being kidnapped..."`
+			``
+			`	Oh, really?`
+			``
+			`	"While talking with them your name came up..."`
+			``
+			`	This can't be good.`
+			``
+			`	"And now they want you to pay them the half billion credits I left you or they'll make me a slave..."`
+			``
+			label seriouschoice
+			choice
+				`	"Alright. Just tell me where to meet them and I'll be there."`
+					goto details
+				`	"You got into this yourself, so deal with it yourself."`
+				`	"Sorry, you're on your own."`
+			branch serious1
+				random < 75
+			`	"What? Are you serious? Come on <first>! I really need your help here! These pirates aren't playing around!"`
+				goto seriouschoice
+			label serious1
+			branch serious2
+				random < 66
+			`	"You can't be serious! Come on <first>! I really need your help here! These pirates aren't playing around!"`
+				goto seriouschoice
+			label serious2
+			branch serious3
+				random < 50
+			`	"What? Are you serious? Come on <first>! These pirates are no joke! I really need your help!"`
+				goto seriouschoice
+			label serious3
+			`	"You can't be serious! Come on <first>! These pirates are no joke! I really need your help!"`
+				goto seriouschoice
+			label details
+			scene "thumbnail/bactrian"
+			`	"You'll save me? Thanks <first>! I'm being held aboard an old city ship called the <npc>. They want you to meet them at <waypoints>." She never asks if you actually have the credits. This is definitely a trap. You won't need to have half a billion credits, but being prepared for a fight is essential.`
+				accept
+	on enter "Tortor"
+		conversation
+			scene "thumbnail/bactrian"
+			`The <npc> is waiting for you, as indicated. It sends a hail, "Greeting Captain <last>. Did you bring the half billion credits?"`
+			choice
+				`	"No, I'm hoping to collect a bounty on you instead."`
+				`	"Get real. She's not worth that much."`
+			`	You cut them off and prepare to fight. To rescue Diane, you'll have to board the <npc> and defeat its crew without destroying it first.`
+	npc
+		government "Bounty"
+		system "Tortor"
+		personality target waiting staying plunders heroic
+		fleet
+			names "pirate"
+			variant
+				Dagger
+				Barb
+				Lance
+	npc capture
+		government "Bounty"
+		system "Tortor"
+		personality target waiting staying plunders timid
+		"cargo settings"
+			cargo 1
+			commodities "Luxury Goods"
+		ship "Bactrian (Shield Suppressor)" "Vicious Rain"
+		conversation
+			scene "outfit/shield suppressor"
+			`The battle was suspiciously easier than you expected and it isn't long before Diane runs up to you. Her backpack is noticeably empty. She grins and says, "Thanks for coming to rescue me <first>! I managed to stick those suppressor thingies all over the ship while they were distracted by you. When the shields stopped working, they started blaming each other..." With Diana safely in your custody, you should head to <destination>. With luck there may actually be a bounty worth collecting on the <npc>.`
+	on fail
+		dialog `[MISSION FAILED] You failed to bring Diana Howl to safety. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 1000000
+		log "People" "Diana Howl" `	After reuniting with Diana on a southern pirate world, I transported her to Haven where she was kidnapped. After being rescued, she decided to remain at the military outpost on Farpoint.`
+		conversation
+			`	On <planet> you find an outstanding bounty of <payment> for the <npc>. After collecting your pay, you find a note from Diana: "Thank you for rescuing me <first>. I've decided to stay on <planet> for a while and see what opportunities I can find." Other than the military, there isn't much on <planet>. But maybe being here will be a good experience for her.`
+
+mission "Midnight Paradise Fortune Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Paradise Fortune 2: offered"
+		not "Midnight Paradise Fortune 1: done"
+	on offer
+		clear "Midnight Paradise Fortune 2: offered"
+		fail "Midnight Paradise Fortune 2"
+		fail
 
 mission "Pandora's Problems 1"
 	invisible
@@ -579,10 +997,10 @@ mission "Pandora's Problems 1"
 mission "Pandora's Problems 2"
 	minor
 	name "Pandora"
-	description "Pirates are using an alien pirate ship named the <npc> to ambush merchants in uninhabited systems near the core. Find the ship and eliminate it. Then report to <destination> for payment (<payment>)."
+	description "Pirates are using an alien pirate ship named the <npc> to ambush merchants in uninhabited systems near Scheat. Find the ship and eliminate it. Then report to <destination> for payment (<payment>)."
 	source
 		government "Syndicate"
-	destination "Shangri-La"
+	destination "Foundry"
 	to offer
 		has "Pandora's Problems 1: declined"
 		or
@@ -602,8 +1020,8 @@ mission "Pandora's Problems 2"
 			`	"Isn't that the alien ship that the Syndicate was rumored to be doing experiments on?"`
 			`	"I'll bet they're just using the name for the notoriety."`
 			`	"Any leads?"`
-			`	"Only that they ambush merchants in uninhabited systems near the core."`
-			`	"I heard Shangri-La is offering <payment> for this one."`
+			`	"Only that they ambush merchants in uninhabited systems near Scheat."`
+			`	"I heard <planet> is offering <payment> for this one."`
 			`	"Maybe it really is the ship from Pandora's Box."`
 			``
 			`	It seems like a lucrative, but dangerous, bounty job. What will you do?`
@@ -616,7 +1034,7 @@ mission "Pandora's Problems 2"
 		set "Randomize Pandora's Problems 2"
 	on enter "Gamma Cassiopeiae"
 		conversation
-			scene "ship/raider ancient"
+			scene "thumbnail/raider ancient-thumb"
 			`The Pandora is here! The alien ship is targeting your ship with its weapon systems!`
 	npc
 		government "Bounty"
@@ -676,7 +1094,7 @@ mission "Raider Attack (Pirates)"
 	minor
 	repeat
 	name "Defend <planet>"
-	description "Defeat a pirate raid on <destination>. The pirate fleet is lead an alien flagship."
+	description "Defeat a pirate raid on <destination>. The pirate fleet is lead by an alien flagship."
 	source
 		planet "Sundive"
 		planet "Shangri-La"
@@ -693,7 +1111,7 @@ mission "Raider Attack (Pirates)"
 			names "pirate"
 			variant
 				"Korath Raider (Torpedo)"
-				"Korath Chaser" 2
+				"'olofez" 2
 	npc
 		government "Syndicate"
 		personality heroic staying vindictive
@@ -712,6 +1130,52 @@ mission "Raider Attack (Pirates)"
 	on complete
 		payment 300000
 		dialog `The government of <planet> pays you <payment> for helping to drive off the raiders.`
+
+
+
+mission "Shield Suppressor Intro"
+	outfitter
+	minor
+	source
+		attributes "frontier"
+	on offer
+		conversation
+			``
+			`While browsing the inventory at the outfitter, you notice a flyer prominently displayed on the wall:`
+			``
+			scene "outfit/shield suppressor"
+			`	-----WARNING-----`
+			``
+			`	Pirates, anarchists, and terrorists have been known to attach Shield Suppressors onto ships without the owner's knowledge. Doing so sabotages their ability to regenerate shielding. This makes the victim an easier target for future attacks. If you find such a device installed on your vessel, remove it as soon as possible!`
+			``
+			`	-----WARNING-----`
+				decline
+
+mission "Smuggler's Den Advanced Shields"
+	landing
+	invisible
+	deadline 2
+	source "Smuggler's Den"
+	to offer
+		has "event: add advanced modified shields"
+	on offer
+		conversation
+			scene "outfit/mod huge shield"
+			`The outfitters here have modified versions of the more advanced shield generators in stock.`
+				accept
+	npc
+		government "Pirate"
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 1
+			commodities "Electronics" "Equipment" "Industrial"
+			variant
+				"Marauder Arrow (Shields)"
+				"Marauder Falcon (Shields)"
+				"Marauder Leviathan (Shields)"
+				"Marauder Manta (Shields)"
+				"Marauder Splinter (Shields)"
 
 
 
@@ -759,9 +1223,9 @@ mission "Star Explorer Fan Tour"
 		set "Randomize Star Explorer Fan Tour"
 	on accept
 		clear "star explorer pirate raid activated"
-		event "star explorer added to merchant fleets"
+		event "star explorer update"
 	on decline
-		event "star explorer added to merchant fleets"
+		event "star explorer update"
 	on enter
 		conversation
 			scene "ship/star explorer"
@@ -778,7 +1242,7 @@ mission "Star Explorer Fan Tour"
 		dialog `Captain Smirk sends out a message, "The Grabons have stopped attacking thanks to the help of our escort! To celebrate, drinks and snacks are 10% off for the next hour at the ship lounge."`
 		
 	on enter "Sospi"
-		dialog `Captain Smirk sends out a message, "You are seeing a rare site folks. This is a Wolf-Rayet star. The galaxy is filled with awesome wonders like this. You just have to search for them."`
+		dialog `Captain Smirk sends out a message, "You are seeing a rare sight folks. This is a Wolf-Rayet star. The galaxy is filled with awesome wonders like this. You just have to search for them."`
 
 	on enter "Acamar"
 		dialog `Captain Smirk sends out a message, "Red Alert! Hostile Grabons are attacking!" This must be one of the mock battles. You're only supposed to disable them, but those lasers are real...`
@@ -865,7 +1329,7 @@ mission "Star Explorer Korath Raid"
 		attributes "core"
 	destination Earth
 	to offer
-		has "event: star explorer added to merchant fleets"
+		has "event: star explorer fleet update"
 	on offer
 		require "Jump Drive"
 	on enter "Kor Ak'Mari"
@@ -874,19 +1338,21 @@ mission "Star Explorer Korath Raid"
 		government "Korath"
 		system "Kor Ak'Mari"
 		personality waiting staying disables plunders opportunistic harvests
-		ship "Korath Raider (Fireswarm)" "Bar Ertakoshtar"
+		ship "Palavret (Blaze)" "Bar Ertakoshtar"
 	npc
 		government "Korath"
 		system "Kor Ak'Mari"
 		personality derelict waiting staying disables plunders opportunistic harvests
-		ship "Korath Chaser" "Grakprukat"
-		ship "Korath Chaser" "Artefaristek"
+		ship "'olofez" "Grakprukat"
+		ship "'olofez" "Artefaristek"
 	npc capture
 		government "Korath"
 		system "Kor Ak'Mari"
 		personality target derelict waiting staying disables plunders opportunistic harvests
 		ship "Star Explorer (Korath)" "Icarus"
 		conversation
+			action
+				log `Salvaged the "Icarus," a Star Explorer that had wandered into Korath territory and was being ransacked by one of their Raiders. Sadly, the original crew was lost.`
 			scene "outfit/data pad"
 			`The original crew was killed by the Korath. You find the captain's log. Read it?"`
 			choice
@@ -895,36 +1361,6 @@ mission "Star Explorer Korath Raid"
 					decline
 			scene "outfit/jump drive"
 			`	Only the final entry survived. "We landed on Sundive after testing out the strange device. It was only by chance we had the opportunity to acquire it from an alien vessel which pirates had disabled. Our journey from Polaris took but a single day! But this device, amazing as it is, consumes double the fuel of a Hyperdrive. Despite this, I have decided to set course for the systems to the east. We finally have the opportunity to explore a region of space that is truly unknown. Perhaps we may even reach the center of the galaxy! As we boldly set forth to where no human has gone before, we carry the hopes and dreams of those who precede us: to search for new life and peaceful civilizations as we explore the last frontier."`
-	on complete
-		log `Salvaged the "Icarus," a Star Explorer that had wandered into Korath territory and was being ransacked by one of their Raiders. Sadly, the original crew was lost.`
-
-ship "Star Explorer" "Star Explorer (Korath)"
-	outfits
-		"Laser Turret" 6
-		"Torpedo Launcher"
-		Torpedo 5
-		"Fission Reactor"
-		"Systems Core (Medium)"
-		"D94-YV Shield Generator"
-		"Outfits Expansion"
-		"Brig"
-		"Large Radar Jammer"
-		"Luxury Accommodations"
-		"Engineering Room"
-		"Fuel Processor"
-		"Small Heat Shunt"
-		"Asteroid Scanner"
-		"Cargo Scanner"
-		"Outfit Scanner"
-		"Tactical Scanner"
-		"Medical Bay"
-		"Laser Rifle" 60
-		"Korath Repeater Rifle" 60
-		Afterburner
-		"AR120 Reverse Thruster"
-		"A250 Atomic Thruster"
-		"A375 Atomic Steering"
-		"Jump Drive"
 
 
 
@@ -1119,9 +1555,11 @@ mission "Pirate FW invite 1"
 			names "pirate"
 			cargo 0
 			variant
-				"Berserker"
+				"Berserker (Limit Break)"
 				"Fury"
-				"Sparrow" 2
+				"Sparrow (Limit Break)"
+				"Hawk"
+				"Rancor"
 	npc kill
 		government "Republic"
 		system "Wei"
@@ -1289,7 +1727,8 @@ mission "Pirate FW invite 3"
 			cargo 1
 			variant
 				"Hawk"
-				"Sparrow" 2
+				"Sparrow"
+				"Sparrow (Limit Break)"
 	npc
 		government "Republic"
 		system "Lesath"
@@ -1327,6 +1766,237 @@ mission "Pirate FW invite 3"
 
 
 
+mission "Stranded Dirtbelt Merchant"
+	landing
+	name "Passenger to <planet>"
+	description "<bunks> freighter crew you found stranded on <origin> have offered a reward of <payment> for transporting them to <destination>."
+	passengers 2 3
+	source
+		attributes "uninhabited"
+		attributes "dirt belt"
+	destination
+		distance 3 6
+		not attributes "uninhabited"
+	to offer
+		has "event: midnight: reveal cadrelock rock in eber"
+		random < 3
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`A man in shabby clothing approaches your ship. "Please help! Pirates stole our ship! We've been stranded here for days!" There are <bunks> of them. "We can get you <payment> if you transport us to <destination>." What will you do?`
+			choice
+				`	(Rescue them.)`
+				`	(Leave them.)`
+					decline
+			scene "outfit/bunk room"
+			`	The <bunks> of them thank you and board your ship...`
+				accept
+	npc evade
+		government "Pirate"
+		personality plunders harvests
+			confusion 20
+		fleet "Large Dirt Belt Pirates"
+	on complete
+		payment 50000
+		dialog `The rescued crew thank you for bringing them to planet. As promised, they pay you <payment> for your efforts.`
+
+
+
+mission "Testing: Proton Gun-CF8"
+	minor
+	name "Syndicate product test"
+	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		"reputation: Syndicate" > 10
+		has "main plot completed"
+		"combat rating" > 1000
+		"destroyed Syndicate target ship" < 3
+		not "Testing: Proton Turret-ATS: active"
+		or
+			and
+				not "Randomize Testing: Proton Gun-CF8"
+				random < 50
+			and
+				has "Randomize Testing: Proton Gun-CF8"
+				random < 5
+	on offer
+		conversation
+			`	You receive a message from the Syndicate. "<first> <last>, due to your combat experience and reputation after the war, we are extending an invitation for you to participate in an important product test.`
+			choice
+				`	(Sounds interesting. Read the rest.)`
+				`	(Looks like junk mail. Delete it.)`
+					defer
+			scene "thumbnail/vanguard"
+			`	We simply request that you disable the <npc>, a robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. The target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>. Return your agreement to the attached non-disclosure form to accept this mission." The data from this test could help them release a new product...`
+			choice
+				`	(Accept this mission.)`
+					accept
+				`	(Decline this mission.)`
+					defer
+	on defer
+		set "Randomize Testing: Proton Gun-CF8"
+	npc save disable "scan outfits"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Vanguard Test-PGCF8" "Syndicate Test Vessel"
+		conversation
+			scene "outfit/proton gun-cf8"
+			"You scan the disabled craft and take careful measurements of the battle damage. While doing so, you notice the Proton Guns on this ship must be some new model they wanted to test. Time to deliver the results on <planet>."
+	on visit
+		dialog "You forgot to either disable or scan the target dummy ship in <system>! You'll need to head back there and do that before you can return here for payment."
+	on abort
+		# No penalty
+	on fail
+		dialog "The robotic target ship has been destroyed. You are hailed by an angry Syndicate official who fines you <payment> and warns you that further mistakes of this nature may remove you from eligibility for these jobs."
+		"destroyed Syndicate target ship" += 3
+		"reputation: Syndicate" -= 3
+		payment -2000000
+	on complete
+		payment 125000
+		event "Proton Gun-CF8 added to outfitters" 30
+		conversation
+			`You transmit the scan results to a team of eager engineers and collect your payment of <payment>.`
+			choice
+				`	(Ask about the new gun.)`
+				`	(Don't ask about the new gun.)`
+					accept
+			scene "outfit/proton gun-cf8"
+			`	"We're not allowed to discuss it. But keep checking for new inventory at Syndicated Systems outfitters and you may see it in stock someday!"`
+				accept
+
+event "Proton Gun-CF8 added to outfitters"
+	outfitter "Syndicate Advanced"
+		add "Proton Gun-CF8"
+
+ship "Vanguard" "Vanguard Test-PGCF8"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"bunks" -45
+	outfits
+		"Anti-Missile Turret"
+		"D41-HY Shield Generator"
+		"D67-TM Shield Generator"
+		"Fusion Reactor"
+		Hyperdrive
+		"LP072a Battery Pack"
+		"Liquid Nitrogen Cooler"
+		"Proton Gun-CF8" 7
+		"X3700 Ion Thruster"
+		"X4200 Ion Steering"
+
+
+mission "Testing: Proton Turret-ATS"
+	minor
+	name "Syndicate product test"
+	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		"reputation: Syndicate" > 10
+		has "main plot completed"
+		"combat rating" > 1000
+		"destroyed Syndicate target ship" < 3
+		not "Testing: Proton Gun-CF8: active"
+		or
+			and
+				not "Randomize Testing: Proton Turret-ATS"
+				random < 50
+			and
+				has "Randomize Testing: Proton Turret-ATS"
+				random < 5
+	on offer
+		conversation
+			`	You receive a message from the Syndicate. "<first> <last>, due to your combat experience and reputation after the war, we are extending an invitation for you to participate in an important product test.`
+			choice
+				`	(Sounds interesting. Read the rest.)`
+				`	(Looks like junk mail. Delete it.)`
+					defer
+			scene "thumbnail/protector"
+			`	We simply request that you disable the <npc>, a robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. The target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>. Return your agreement to the attached non-disclosure form to accept this mission." The data from this test could help them release a new product...`
+			choice
+				`	(Accept this mission.)`
+					accept
+				`	(Decline this mission.)`
+					defer
+	on defer
+		set "Randomize Testing: Proton Turret-ATS"
+	npc save disable "scan outfits"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Protector Test-PTATS" "Syndicate Test Vessel"
+		conversation
+			scene "outfit/proton turret-ats"
+			"You scan the disabled craft and take careful measurements of the battle damage. While doing so, you notice the Proton Turrets on this ship must be some new model they wanted to test. Time to deliver the results on <planet>."
+	on visit
+		dialog "You forgot to either disable or scan the target dummy ship in <system>! You'll need to head back there and do that before you can return here for payment."
+	on abort
+		# No penalty
+	on fail
+		dialog "The robotic target ship has been destroyed. You are hailed by an angry Syndicate official who fines you <payment> and warns you that further mistakes of this nature may remove you from eligibility for these jobs."
+		"destroyed Syndicate target ship" += 3
+		"reputation: Syndicate" -= 3
+		payment -2000000
+	on complete
+		payment 125000
+		event "Proton Turret-ATS added to outfitters" 30
+		conversation
+			`You transmit the scan results to a team of eager engineers and collect your payment of <payment>.`
+			choice
+				`	(Ask about the new turret.)`
+				`	(Don't ask about the new turret.)`
+					accept
+			scene "outfit/proton turret-ats"
+			`	"We're not allowed to discuss it. But keep checking for new inventory at Syndicated Systems outfitters and you may see it in stock someday!"`
+				accept
+
+event "Proton Turret-ATS added to outfitters"
+	outfitter "Syndicate Advanced"
+		add "Proton Turret-ATS"
+
+ship "Protector" "Protector Test-PTATS"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"bunks" -69
+	outfits
+		"Anti-Missile Turret" 3
+		"D41-HY Shield Generator"
+		"D67-TM Shield Generator"
+		"Fusion Reactor"
+		Hyperdrive
+		"LP144a Battery Pack"
+		"Liquid Nitrogen Cooler"
+		"Meteor Missile" 44
+		"Meteor Missile Box" 2
+		"Meteor Missile Pod" 2
+		"Proton Turret-ATS" 5
+		"Small Radar Jammer" 3
+		"X3200 Ion Steering"
+		"X3700 Ion Thruster"
+	turret "Proton Turret-ATS"
+	turret "Proton Turret-ATS"
+	turret "Proton Turret-ATS"
+	turret "Anti-Missile Turret"
+	turret "Anti-Missile Turret"
+	turret "Proton Turret-ATS"
+	turret "Proton Turret-ATS"
+	turret "Anti-Missile Turret"
+
+
+
 mission "Quash: Humanika Infiltration 1"
 	minor
 	infiltrating
@@ -1334,7 +2004,7 @@ mission "Quash: Humanika Infiltration 1"
 	name "Humanika Infiltration"
 	description "Take your passengers to <destination>. Then transport them to Trinket in the Sargas system. Payment is 400,000 credits."
 	source
-		attributes "south pirate"
+		attributes "pirate"
 	destination "Humanika"
 	to offer
 		has "First Contact: Quarg: offered"
@@ -1360,15 +2030,17 @@ mission "Quash: Humanika Infiltration 1"
 			not "tribute: Haven"
 			not "tribute: Stormhold"
 			not "tribute: Zenith"
-		random < 5
+			not "tribute: New Tortuga"
+		random < 10
 	on offer
 		conversation
-			`As you are walking through the spaceport, three men and a woman all wearing nondescript clothing appear out of nowhere and offer <payment> for discreet passage to <destination>. After they complete some business there, they'll need transportation to Trinket in the Sargas system.`
+			scene "outfit/map"
+			`As you are walking through the spaceport, three men and a woman all wearing nondescript clothing appear out of nowhere and offer you 400,000 credits for discreet passage to <destination>. After they complete some business there, they'll need transportation to Trinket in the Sargas system.`
 			choice
 				`	"Sure, I can do that."`
 					accept
 				`	(Think it over.)`
-			`Seeing you hesitate, they explain that their previous pilot was caught smuggling ringworld shavings, an illegal drug, and they need a replacement pilot for a job they couldn't refuse. They're willing to pay 400,000 credits. Transporting them might be very dangerous. On the other hand, they're offering a small fortune...`
+			`Seeing you hesitate, they explain that their previous pilot was caught smuggling ringworld shavings, an illegal drug, and they need a replacement pilot for a job they couldn't refuse. Transporting them might be very dangerous. On the other hand, they're offering a small fortune...`
 			choice
 				`	"Sure, I can do that."`
 					accept
@@ -1378,7 +2050,7 @@ mission "Quash: Humanika Infiltration 1"
 		"rejected illegal jobs" ++
 	on enter "Sadalmelik"
 		conversation
-			scene "outfit/sniper rifle"
+			scene "planet/ocean7"
 			`As you approach <planet>, your passengers start unpacking and equipping some gear. They're all armed now. One of the men even has a sniper rifle. It's obvious they're up to no good. But it's too late to back out. Their leader, the one they refer to as "Commander," tells you to land at a specific site. You notice that this location is nowhere near the spaceport...`
 
 mission "Quash: Humanika Infiltration 2"
@@ -1392,6 +2064,7 @@ mission "Quash: Humanika Infiltration 2"
 		has "Quash: Humanika Infiltration 1: done"
 	on offer
 		conversation
+			scene "outfit/sniper rifle"
 			`You land at the designated site, a parking lot of what appears to be a ruined building abandoned long ago. Commander tells you to wait for them. He promises that you'll get your 400,000 credits once you've safely delivered them to Trinket in the Sargas system. The four well armed passengers disembark from your ship, off to do whatever it is they came here for.`
 			choice
 				`	(Wait for them.)`
@@ -1416,10 +2089,10 @@ mission "Quash: Humanika Infiltration 2"
 			`	"Nevermind that! There's a Wardragon on our tail! Just focus on getting us to Trinket in one piece."`
 	npc evade
 		government "Quarg"
-		personality waiting staying opportunistic
+		personality entering opportunistic
 		fleet
 			names "quarg"
-			cargo 0
+			cargo 10
 			variant
 				"Quarg Wardragon"
 	on complete
@@ -1542,550 +2215,4 @@ mission "Sunracer Afterburner 3"
 			scene "outfit/sunracer afterburner"
 			`	You notice a new afterburner in the outfitter. It looks like Patrick suceeded in making a better version of the prototype Hybrid Afterburner.`
 				decline
-
-
-
-#########################
-# missions that repeat
-#########################
-
-
-
-mission "Engineering Room: Salvaged Supercapacitor"
-	boarding
-	repeat
-	invisible
-	minor
-	source
-		not category "Drone"
-		attributes "automaton"
-	destination Earth
-	to offer
-		or
-			and
-				"engineer salvaged supercapacitor" < 40
-				random < 10 + "engineer salvaged supercapacitor"
-			and
-				"engineer salvaged supercapacitor" >= 40
-				random < 50
-	on offer
-		require "Engineering Room"
-		conversation
-			scene "outfit/supercapacitor"
-			`While searching the derelict, your engineer finds a loose component that is the equivalent of a Supercapacitor. Take it?`
-			choice
-				`	(Take it.)`
-					accept
-				`	(Leave it.)`
-					decline
-	on accept
-		outfit "Supercapacitor" 1
-		"engineer salvaged supercapacitor" ++
-		fail
-	on decline
-		"engineer salvaged supercapacitor" --
-
-
-
-mission "Medical Bay: Injured Crewmember (Coalition)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Coalition" "Heliarch"
-		not attributes "automaton"
-	destination
-		government "Coalition" "Heliarch"
-		attributes "spaceport"
-		not attributes "uninhabited"
-		distance 1 3
-	to offer
-		has "known to the heliarchs"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		"reputation: Coalition" ++
-		"reputation: Heliarch" ++
-		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Hai)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Hai"
-		not attributes "automaton"
-	destination
-		government "Hai"
-		attributes "spaceport"
-		not attributes "uninhabited"
-		distance 1 3
-	to offer
-		has "First Contact: Hai: declined"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		"reputation: Hai" ++
-		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Human)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Republic" "Syndicate" "Free Worlds"
-		not attributes "automaton"
-	destination
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "spaceport"
-		not attributes "uninhabited"
-		distance 1 3
-	to offer
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		payment
-		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away. An insurance company deposits <payment> into your account.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Kor Efret)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Kor Efret"
-		not attributes "automaton"
-	destination
-		government "Kor Efret"
-		attributes "spaceport"
-		not attributes "uninhabited"
-	to offer
-		or
-			has "First Contact: Korati Efreti: declined"
-			has "First Contact: Laki Nemparu: declined"
-			has "First Contact: Karek Fornati: declined"
-			has "First Contact: Setar Fort: declined"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		"reputation: Kor Efret" ++
-		dialog `Despite the language barrier, you manage to inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Remnant)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Remnant"
-		not attributes "automaton"
-	destination
-		government "Remnant"
-		attributes "spaceport"
-		not attributes "uninhabited"
-	to offer
-		has "remnant blood test pure"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		"reputation: Remnant" ++
-		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Wanderer)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Wanderer"
-		not attributes "automaton"
-	destination
-		government "Wanderer"
-		attributes "spaceport"
-		not attributes "uninhabited"
-		distance 1 3
-	to offer
-		has "language: Wanderer"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember to a hospital in time...`
-	on complete
-		"reputation: Wanderer" ++
-		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Mining: Claim Jumpers"
-	minor
-	invisible
-	deadline 4
-	repeat
-	source
-		government "Republic" "Syndicate" "Free Worlds"
-	to offer
-		or
-			has "Mining: Iron Challenge: done"
-			has "Mining: Silicon: done"
-			has "Mining: Lead: done"
-			has "Mining: Iron: done"
-			has "Mining: Aluminum: done"
-			has "Mining: Titanium: done"
-			has "Mining: Copper: done"
-			has "Mining: Neodymium: done"
-			has "Mining: Tungsten: done"
-			has "Mining: Uranium: done"
-			has "Mining: Silver: done"
-			has "Mining: Gold: done"
-			has "Mining: Platinum: done"
-		random < 5
-	on offer
-		require "Asteroid Scanner"
-	npc
-		government "Merchant"
-		personality launching mining harvests timid
-		fleet
-			names "civilian"
-			cargo 0
-			variant
-				"Sparrow" 3
-			variant
-				"Fury (Miner)"
-				"Sparrow" 2
-			variant
-				"Modified Berserker"
-				"Sparrow" 2
-			variant
-				"Hawk (Miner)"
-				"Sparrow" 2
-			variant
-				"Headhunter (Miner)"
-				"Sparrow" 2
-
-mission "Mining: Iron Challenge"
-	deadline 7
-	minor
-	repeat
-	name "Iron Challenge"
-	description "The captain of the <npc> has challenged you to a mining duel! Harvest 15 tons of Iron and return to <destination> by <date>. Whoever loses the duel gives their harvest to the winner."
-	source
-		planet Hestia Helheim Icefall Canyon Memory Calda Vail Vinci Hermes Earth Luna Mars Foundry Burthen Hephaestus Maker Oblivion "New Portland" Glaze Sundrinker Humanika "New India" Poisonwood Lichen
-	to offer
-		not "ships: Transport"
-		not "ships: Light Warship"
-		not "ships: Medium Warship"
-		not "ships: Heavy Warship"
-		not "ships: Light Freighter"
-		not "ships: Heavy Freighter"
-		"ships: Interceptor" == 1
-		random < 10
-	on offer
-		conversation
-			`Another pilot approaches you. "Nice ship. Are you a miner?`
-			choice
-				`	"I've harvested a few asteroids."`
-				`	"I don't mine."`
-					decline
-			scene "asteroid/iron/spin"
-			`	"How about a challenge then? It'll be my ship, the <npc>, versus yours. Whoever mines the most Iron by <date> wins. The loser gives their harvest to the winner. How about it?" The <npc> looks like a capable mining ship. But unless its been significantly modified, its pilot seems to have forgotten an important detail..."`
-			choice
-				`	(Accept the challenge.)`
-				`	(Reject the challenge.)`
-					decline
-			`	"That's the spirit! We meet back here by <date>!"`
-				accept
-	on enter
-		conversation
-			scene "asteroid/iron/spin"
-			`There's Iron in this system. The pilot of the <npc> probably makes this type of challenge regularly. Time to find out who's the better miner!`
-	npc accompany save
-		government "Merchant"
-		personality target mining harvests marked
-		fleet
-			names "civilian"
-			cargo 0
-			variant 1
-				"Berserker (Energy Cannons)"
-			
-	on complete
-		outfit "Iron" -15
-		payment 30000
-		conversation
-			scene "asteroid/iron/spin"
-			`As expected, after tallying up who mined more Iron, it's obvious you've won. It seems the other pilot didn't realize your ship had more cargo space than the <npc>. He begrudgingly hands over his harvest, but your cargo hold is already full. You end up selling both harvests for <payment>.`
-
-
-
-phrase "asteroid names"
-	phrase
-		"greek alphabet"
-	word
-		" "
-	phrase
-		"greek alphabet"
-	word
-		" "
-	phrase
-		"greek alphabet"
-		
-ship "Asteroid" "Mysterious Asteroid"
-	noun "asteroid"
-	sprite "asteroid/fossil/spin"
-		"frame rate" 10
-	"never disabled"
-	add attributes
-		"thrust" -5
-	bay "Fighter" 0 0 
-	bay "Fighter" 0 0 
-	bay "Fighter" 0 0 
-	bay "Fighter" 0 0 
-	bay "Fighter" 0 0 
-	explode "smoke" 40
-	explode "bolide" 40
-	explode "asteroid crunch large"
-
-
-ship "Asteroid" "Rogue Asteroid"
-	noun "asteroid"
-	sprite "asteroid/fossil/spin"
-		"frame rate" 10
-	"never disabled"
-	add attributes
-		"hull" 10000
-		"thrust" -5
-	explode "smoke" 40
-	explode "bolide" 40
-	explode "asteroid crunch large"
-
-mission "Rogue Asteroid (Poor World)"
-	deadline 2
-	minor
-	name "Rogue Asteroid"
-	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		not attributes "paradise" "urban" "rich" "tourist"
-		not attributes "uninhabited"
-	to offer
-		"combat rating" >= 5
-		random < 20
-	on offer
-		conversation
-			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
-			choice
-				`	"Are we under attack from pirates?"`
-				`	"Are we under attack from aliens?"`
-			scene "asteroid/fossil/spin"
-			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
-			choice
-				`	(Try to destroy the asteroid.)`
-					launch
-				`	(Don't try to destroy the asteroid.)`
-					decline
-	npc kill
-		government "Bounty"
-		personality target uninterested waiting staying mute
-		fleet
-			names "asteroid names"
-			cargo 3
-			outfitters "Copper" "Gold" "Silver"
-			variant
-				"Rogue Asteroid"
-		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
-
-	on complete
-		payment 10000
-		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-
-mission "Rogue Asteroid (Pirate)"
-	deadline 2
-	minor
-	name "Rogue Asteroid"
-	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "frontier" "dirt belt"
-		not attributes "uninhabited"
-	to offer
-		"combat rating" > 100
-		or
-			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"
-			has "Rogue Asteroid (Poor World): failed"
-			has "Rogue Asteroid (Poor World): aborted"
-		random < 5
-	on offer
-		conversation
-			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
-			choice
-				`	"Are we under attack from pirates?"`
-				`	"Are we under attack from aliens?"`
-			scene "asteroid/fossil/spin"
-			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
-			choice
-				`	(Try to destroy the asteroid.)`
-					launch
-				`	(Don't try to destroy the asteroid.)`
-					decline
-	npc kill
-		government "Bounty"
-		personality target uninterested forbearing waiting staying
-		fleet
-			names "asteroid names"
-			cargo 0
-			variant
-				"Mysterious Asteroid"
-				"Dagger" 5
-			variant
-				"Mysterious Asteroid"
-				"Dagger" 4
-		dialog `You've destroyed the rogue asteroid and the pirate ships that were hiding on it. Return to <planet> for your reward.`
-	on complete
-		payment 10000
-		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-
-mission "Rogue Asteroid (Rich World)"
-	deadline 2
-	minor
-	name "Rogue Asteroid"
-	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
-	source
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "paradise" "urban" "rich" "tourist"
-		not attributes "uninhabited"
-	to offer
-		"combat rating" > 100
-		or
-			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"
-			has "Rogue Asteroid (Poor World): failed"
-			has "Rogue Asteroid (Poor World): aborted"
-		random < 5
-	on offer
-		conversation
-			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
-			choice
-				`	"Are we under attack from pirates?"`
-				`	"Are we under attack from aliens?"`
-			scene "asteroid/fossil/spin"
-			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
-			choice
-				`	(Try to destroy the asteroid.)`
-					launch
-				`	(Don't try to destroy the asteroid.)`
-					decline
-	npc kill
-		government "Bounty"
-		personality target uninterested waiting staying mute
-		fleet
-			names "asteroid names"
-			cargo 3
-			outfitters "Iron" "Lead" "Silicon"
-			variant
-				"Rogue Asteroid"
-		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
-
-	on complete
-		payment 20000
-		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
-
-mission "Rogue Asteroid (Ambush)"
-	landing
-	invisible
-	source
-		attributes "pirate"
-	to offer
-		or
-			has "Rogue Asteroid (Pirate): done"
-			has "Rogue Asteroid (Pirate): declined"
-			has "Rogue Asteroid (Pirate): failed"
-			has "Rogue Asteroid (Pirate): aborted"
-		random < 1
-	npc kill
-		government "Pirate"
-		personality uninterested forbearing waiting staying mute
-		fleet
-			names "pirate"
-			cargo 3
-			outfitters "Iron" "Lead" "Silicon"
-			variant 1
-				"Mysterious Asteroid"
-				"Dagger" 5
-			variant 1
-				"Mysterious Asteroid"
-				"Dagger" 4
-	on complete
-		clear "Rogue Asteroid (Ambush): offered"
-
 

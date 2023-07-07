@@ -1,0 +1,120 @@
+
+mission "Geeva: Kakaima Raid"
+	landing
+	minor
+	repeat
+	name "Defend <destination>"
+	description `Defend <destination> from Kroom Kakaima raid and make sure none of them are left in the system.`
+	source
+		government Geeva
+		attributes "geeva frontier"
+	to offer
+		or
+			random < 30 * ( 1 / 1 + "Geeva: Kakaima Raid: done" ) #Bump up chances for first few missions.
+			random < 10
+	on offer
+		conversation
+			branch understand
+				has "language: Geeva"
+			`Soon after you landed you hear some sort of alarm followed by an announcement in language you don't understand but you can see several warships and planetary defenses powering up. You looked at one of the screen and several Kroom warships exiting hyperspace. It seems like this planet is underattack. You could help them defend and they'll probably appreciate it.`
+				goto choice
+			label understand
+			`Soon after you landed you hear some sort of alarm followed by an announcement that the planet is currently underattack by a Kroom Kakaima raid, along with that several warships and planetary defenses begins to power up for the defense. You could help them defend and they'll probably appreciate it.`
+			label choice
+			choice
+				`	(Assist the defenders.)`
+					goto accept
+				`	(Stay here.)`
+			`	You waited on the planet as the sky lights up from planetary defenses firing. After a while the gun fire stops and everything returns to normal.`
+				decline
+			label accept
+			`	You go back to your ship and prepare to take off.`
+				accept
+	npc evade
+		government "Kroom Kakaima"
+		personality entering heroic staying target harvests plunders
+		fleet "Kakaima Attack" 6
+	
+	npc
+		government "Geeva"
+		personality heroic staying uninterested launching
+		fleet "Geeva Battle Fleet" 4
+	npc
+		government "Geeva"
+		personality heroic staying uninterested launching
+		fleet "Geeva Planetary Turrets"
+
+	on visit
+		dialog phrase "generic kroom fleet battle on visit"
+
+	on complete 
+		"geeva job done" += 1
+		payment 350000
+		dialog
+			`The local commander was glad you assisted them and reward you with <payment> for the assistance.`
+
+mission "Geeva: Unlock Star Drive"
+	landing
+	invisible
+	source
+		government Geeva
+		not attributes uninhabited
+	to offer
+		has "Geeva: Kakaima Raid: done"
+		"reputation: Geeva" > 5000
+		"geeva job done" >= 12
+	on offer
+		payment 800000
+		set "license: Geeva Advanced"
+		conversation
+			`Upon exiting your ship you're met by a few Geeva officials who said they appreciate your contribution to their society including your assistance repelling the Kroom. They offers <payment> and Geeva Advanced license as reward permitting you to buy one of their Star Drive which allow ships to travel between systems without hyperlane as well as a few other advanced technologies they made.`
+				decline
+	on accept
+		fail
+
+mission "Geeva: license swap"
+	landing
+	invisible
+	to offer
+		has "license: Geeva Star Drive"
+	on offer
+		set "license: Geeva Advanced"
+		clear "license: Geeva Star Drive"
+	on accept
+		fail
+
+mission "Geeva: Unlock Star Drive Hint"
+	source
+		government "Geeva"
+		attributes outfitter
+	to offer
+		not "license: Geeva Advanced"
+		random < 40
+		or
+			has "language: Geeva"
+			has "language: Dels"
+	substitutions
+		"<jumpDriveDesc>" "a Jump Drive-like device"
+		"<jumpDriveDesc>" "a strange device unlike anything else you've seen"
+			has "GW Dels start"
+
+		"<jumpDriveDesc2>" " and the drive is clearly different from Jump Drive you know"
+		"<jumpDriveDesc2>" ""
+			has "GW Dels start"
+	on offer
+		conversation
+			scene "outfit/geeva star drive"
+			`While at the spaceport you decided to visit the local outfitter to look at what they got. While you're there you noticed the outfitter staff checking on <jumpDriveDesc>. You walked over to take a look, the staff seems to be quite proficient at working with it<jumpDriveDesc2>.`
+			choice
+				`	(Ask them about it.)`
+				`	(Look quietly.)`
+			`	The owner of the drive looks at you and explain that this is a drive they (the Geeva) made, though only in small number so it's sold only to few people like special forces and individuals who made exceptional contribution to their society. For his case he helped defended many frontier planets against Kroom raids as well as multiple preemptive strike against the Kroom to prevent such raids before the government noticed him and allowed him to buy one the more advanced techs. He explained that he wasn't really aware of this policy at first and was doing it on his own because he was born in one of the world that was constantly raided and have first hand experience dealing with it and he doesn't want that to happen again.`
+			choice
+				`	(Thank him for the explanation.)`
+					goto done
+				`	(Ask him why he didn't join the military.)`
+			`	He said he just didn't thought of it, he just happens to find a Kroom warship crash landed in decent condition one day so after some repairs and figuring out he joined the local defense fleet with the refurbished Kroom warship. Though that was during the days where the Kroom are still focused on just the Geeva and they -the Geeva- was still setting up their military infrastructure and did not have enough ships and supplies to completely blockade the frontlines, while the Geeva ships were better they could keep up with what seems like endless swarm of Kroom ships. Now that their navy is much more structed and stable along with the Kroom getting caught up in other fronts they could hold the front on their own now, but any extra help is still appreciated.`
+			label done
+			`	The outfitter technician happens to finish doing whatever with the drive the same time at the guy finish telling his story, he bids you farewell and return to his ship along with the technician to reinstall the drive.`
+				decline
+				

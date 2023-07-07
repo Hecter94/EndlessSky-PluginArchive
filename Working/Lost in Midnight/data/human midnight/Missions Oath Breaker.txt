@@ -20,7 +20,6 @@
 
 
 
-
 phrase "R.N.S. Poisonwood"
 	word
 		"R.N.S. Poisonwood"
@@ -32,7 +31,7 @@ mission "Oathbreaker Strategos Deployed"
 		attributes "deep" "north" "paradise" "core" "dirtbelt"
 		not attributes "uninhabited"
 	to offer
-		has "main plot completed"
+		has "event: geminus rebuilt"
 		random < 70
 	on offer
 		log "People" "Marcus Junius" `Captain of the Strategos class Navy super carrier "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
@@ -44,11 +43,7 @@ mission "Oathbreaker Strategos Deployed"
 			`	Someone else notes, "Even the name Poisonwood refers to that one southern planet that refused to leave the Republic."`
 			`	As the ceremonial wine bottle is about to break over the hull, the captain, Marcus Junius, is asked to comment. "I look forward to a successful campaign." The red wine splatters across the ship's pristine hull.`
 				accept
-	npc kill
-		government "Republic"
-		system "Delta Velorum"
-		personality waiting staying vindictive
-		ship "Strategos" "R.N.S. Poisonwood"
+
 	npc
 		government "Republic"
 		system "Delta Velorum"
@@ -71,6 +66,15 @@ mission "Oathbreaker Strategos Deployed"
 		ship "Enforcer Drone" "Delta Ten"
 		ship "Enforcer Drone" "Delta Eleven"
 		ship "Enforcer Drone" "Delta Twelve"
+		ship "Outrider (Mark II)" "Alpha One"
+		ship "Outrider (Mark II)" "Alpha Two"
+		ship "Outrider (Mark II)" "Alpha Three"
+		ship "Outrider (Mark II)" "Alpha Four"
+	npc save
+		government "Republic"
+		system "Delta Velorum"
+		personality waiting staying vindictive
+		ship "Strategos" "R.N.S. Poisonwood"
 
 
 
@@ -84,6 +88,8 @@ mission "Oathbreaker Siege 1"
 	destination
 		government "Free Worlds"
 		distance 2 3
+		not attributes "station"
+		not attributes "uninhabited"
 	to offer
 		has "First Contact: Hai: declined"
 		has "free worlds plot completed"
@@ -150,6 +156,7 @@ mission "Oathbreaker Siege 2"
 		government "Free Worlds"
 		distance 3 4
 		not attributes "uninhabited"
+		not attributes "station"
 	to offer
 		has "event: Oathbreaker planning"
 		random < 70
@@ -218,16 +225,17 @@ mission "Oathbreaker Siege (Random)"
 		government "Free Worlds"
 		distance 3 4
 		not attributes "uninhabited"
+		not attributes "station"
 	to offer
 		has "Oathbreaker Siege 2: done"
 		not "event: Oathbreaker diminish"
 		or
 			and
 				not "event: Oathbreaker Random"
-				random < 10
+				random < 7
 			and
 				has "event: Oathbreaker Random"
-				random < 5
+				random < 3
 	on offer
 		conversation
 			`You're trying to relax at the bar when the holovideos are interrupted. A familiar image of a gruff man in a disheveled navy uniform appears. "Greetings, people of 'The Free Worlds'. You may have driven off our fleet previously. But know this: We fight on."`
@@ -256,11 +264,22 @@ mission "Oathbreaker Siege (Random)"
 		system destination
 		fleet "Small Militia"
 	npc evade
+		to spawn
+			not "event: Oathbreaker Random" 
 		government "Oathbreaker"
 		personality heroic staying target harvests plunders coward
 		system destination
 		fleet "Large Oathbreaker"
 		fleet "Small Oathbreaker" 2
+	npc evade
+		to spawn
+			has "event: Oathbreaker Random" 
+		government "Oathbreaker"
+		personality heroic staying target harvests plunders coward
+		system destination
+		fleet "Large Oathbreaker"
+		fleet "Small Oathbreaker"
+		fleet "Fugitive Oathbreaker"
 
 	on visit
 		dialog `You've landed on <planet>, but the battle is still raging overhead. You should take off and help drive off the invaders.`
@@ -278,6 +297,8 @@ mission "Oathbreaker Supply Run"
 	description "You've stumbled across an Oathbreaker fleet on <planet>. Fight or flight time."
 	source
 		government "Pirate"
+		not attributes "uninhabited"
+		not attributes "station"
 	to offer
 		has "Oathbreaker Siege 2: done"
 		random < 50
@@ -343,12 +364,69 @@ event "Oathbreaker Random"
 
 
 
+mission "Oathbreaker Sabotage: Shield Suppressor"
+	minor
+	invisible
+	deadline 7
+	source
+		attributes "pirate"
+		attributes "outfitter"
+	to offer
+		has "event: Oathbreaker Random"
+		not "event: Oathbreaker diminish 2"
+		random < 20 + "Oathbreaker escalation"
+	on offer
+		require "Shield Suppressor" 0
+		outfit "Shield Suppressor" 1
+	on enter
+		conversation
+			scene "outfit/shield suppressor"
+			`As you leave the atmosphere of <origin> an Oathbreaker fleet ambushes you! One of the ships hails to taunt you: "Captain <last>, you won't be so tough with your shields compromised!" A saboteur must have planted a Shield Suppressor somewhere on your ship...`
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" >= 4
+		government "Oathbreaker"
+		personality waiting heroic vindictive
+		fleet "Fugitive Oathbreaker" 2
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" >= 5
+		government "Oathbreaker"
+		system
+			distance 1
+		personality waiting heroic vindictive
+		fleet "Fugitive Oathbreaker" 2
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" >= 6
+		government "Oathbreaker"
+		system
+			distance 2
+		personality waiting heroic vindictive
+		fleet "Small Oathbreaker"
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" >= 7
+		government "Oathbreaker"
+		system
+			distance 3
+		personality waiting heroic vindictive
+		fleet "Small Oathbreaker"
+	npc evade
+		government "Oathbreaker"
+		personality waiting heroic vindictive
+		fleet "Large Oathbreaker"
+	on visit
+		dialog "The Oathbreaker fleet is in pursuit! You'll need to evade them if you don't want to be an easy target for bombing or strafing!"
+
+
 mission "Oathbreakers: Rum Cellar Fight"
 	minor
 	name "Medicine from Chasm"
 	description "Visit <stopovers> to purchase a dose of stolen medicine for Magdalena's orphanage. Payment is <payment>."
 	source
 		attributes "pirate"
+		not attributes "station"
 	stopover "Rum Cellar"
 	to offer
 		has "event: reveal Chasm"
@@ -405,27 +483,30 @@ mission "Oathbreakers: Rum Cellar Fight"
 				die
 				
 			label "not alone"
-			branch "intimidation" "fight"
-				"flagship required crew" > 7
-			
+
+			branch "fight"
+				"flagship required crew" < 14
+
+			`	Before things turn violent, their captain orders them to stand down. He must have noticed that you have a crew of your own to back you up. The Oathbreakers glare at you as they stand aside.`
+			choice
+				`	(Shove one of them.)`
+					goto fight
+				`	(Board your ship.)`
+					launch
+
 			label fight
+			scene "outfit/laser rifle"
+
 			branch "victory"
 				random < ( "flagship required crew" - 7 )
 
 			`	There's no avoiding this fight. Your own crew tries to back you up, but a stray shot still finds its way into your vital organs.`
 				die
-			
+
 			label victory
 			`	There's no avoiding this fight. Your crew acts heroically, killing a couple of the Oathbreakers in the shootout while the rest flee. Not knowing if they've got reinforcements to back them up, you quickly board your ship.`
 				launch
-			
-			label intimidation
-			`	Before things turn violent, their captain orders them to stand down. He must have noticed that you have a crew of your own to back you up. The Oathbreakers glare at you as they stand aside.`
-			choice
-				`	(Shove one of them aside.)`
-					goto fight
-				`	(Board your ship.)`
-					launch
+
 
 	npc
 		to spawn
@@ -658,13 +739,15 @@ mission "Escort Memoria Alpha"
 	npc accompany save
 		government "Merchant"
 		personality launching escort timid
-		ship "War Hauler" "Memoria Alpha"
+		ship "Memoria Alpha" "Memoria Alpha"
 
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
 	on fail
 		set "Memoria Alpha Repeat: offered"
+		"reputation: Merchant" -= 2
+		dialog `The Memoria Alpha, a rare relic from the Alpha war, was destroyed. Your employer blames you for failing to protect it.`
 
 	on complete
 		clear "Memoria Alpha Repeat: offered"
@@ -728,13 +811,15 @@ mission "Oathbreaker Memoria Alpha"
 	npc accompany save
 		government "Merchant"
 		personality launching escort timid
-		ship "War Hauler" "Memoria Alpha"
+		ship "Memoria Alpha" "Memoria Alpha"
 
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
 	on fail
 		set "Memoria Alpha Repeat: offered"
+		"reputation: Merchant" -= 2
+		dialog `The Memoria Alpha, a rare relic from the Alpha war, was destroyed. Your employer blames you for failing to protect it.`
 
 	on complete
 		clear "Memoria Alpha Repeat: offered"
@@ -802,6 +887,7 @@ mission "Oathbreaker Alpine Larch"
 
 	on fail
 		log `After a brief chase, I allowed the F.S. Alpine Larch, a Skein that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
+		dialog `The F.S. Alpine Larch escaped. You'll probably see it again: the Oathbreakers have added a powerful warship to their fleets today...`
 
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Skein.`
@@ -858,6 +944,7 @@ mission "Oathbreaker Escalation"
 
 	on fail
 		log `After a brief chase, I allowed the Escalation, a Bactrian that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
+		dialog `The Escalation escaped. You'll probably see it again: the Oathbreakers have added a powerful warship to their fleets today...`
 
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Bactrian.`
@@ -913,6 +1000,7 @@ mission "Oathbreaker Black Oak"
 
 	on fail
 		log `After a brief chase, I allowed the F.S. Black Oak, a Dreadnought that had been stolen by the Oathbreakers, to escape. The Oathbreakers have added a powerful warship to their fleets today...`
+		dialog `The F.S. Black Oak escaped. You'll probably see it again: the Oathbreakers have added a powerful warship to their fleets today...`
 
 	on visit
 		dialog `You have yet to track down the <npc>. Report back here once you've captured or destroyed the stolen Dreadnought.`
@@ -1009,6 +1097,8 @@ mission "Oathbreaker Poisonwood"
 				"Rainmaker (Mark II)"
 				"Lance" 6
 				"Enforcer Drone" 12
+				"Outrider (Mark II)"
+
 
 	on enter Tais
 		conversation
@@ -1257,15 +1347,19 @@ mission "Oathbreaker Thermopylae"
 			variant
 				"Dropship (Troops)" 12
 				"Combat Drone" 12
+
 	npc kill
 		system "Wei"
 		government "Oathbreaker"
 		personality target waiting staying timid opportunistic
 		ship "Thermopylae Station" "Thermopylae"
-		dialog `The space battle station Thermopylae has been destroyed. Search planet Hope for any additional fortifications. Then report back to <origin>.`
+		dialog `The space battle station Thermopylae is about to explode. Retreat to a safe distance before it does. Also, if you haven't already searched planet Hope for any additional fortifications, make sure to do so before reporting back to <origin>.`
 
 	on stopover
 		dialog `Hope seems as desolate and uninhabited as usual. That space battle station is probably the target you're looking for.`
+
+	on visit
+		dialog `Stop the Oathbreakers from setting up a base in the Wei system, a critical choke point between the Free Worlds and the rest of the galaxy.`
 
 	on complete
 		payment 250000
@@ -1346,7 +1440,7 @@ mission "Nemesis: Oath Breaker"
 	invisible
 	source
 		government "Free Worlds"
-		attributes "spaceport"
+		attributes spaceport
 		not attributes "uninhabited"
 	to offer
 		has "Oathbreaker Pirate Gossip: declined"
@@ -1382,7 +1476,8 @@ mission "Nemesis: Oath Breaker"
 			has "oathbreaker nemesis reinforcements"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
-		system destination
+		system
+			distance 1 2
 		fleet "Fugitive Oathbreaker"
 	npc
 		to spawn
@@ -1401,7 +1496,7 @@ mission "Nemesis: Oath Breaker"
 
 	npc
 		government "Oathbreaker"
-		personality waiting staying
+		personality waiting
 		system destination
 		fleet
 			names "Oathbreaker"
@@ -1410,6 +1505,7 @@ mission "Nemesis: Oath Breaker"
 				"Lance" 6
 				"Combat Drone" 14
 				"Dropship (Troops)" 4
+				"Outrider (Mark II)" 8
 
 	npc
 		government "Oathbreaker"
@@ -1428,7 +1524,7 @@ mission "Nemesis: Oath Breaker"
 
 	npc
 		to spawn
-			has "Stolen Trailblazer 2: declined"			
+			has "Stolen Trailblazer 2: declined"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
 		system destination
@@ -1439,6 +1535,7 @@ mission "Nemesis: Oath Breaker"
 			has "Oathbreaker Poisonwood: aborted"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
+		system destination
 		ship "Strategos" 
 		fleet
 			names "Oathbreaker"
@@ -1446,6 +1543,7 @@ mission "Nemesis: Oath Breaker"
 			variant
 				"Lance" 6
 				"Enforcer Drone" 12
+				"Outrider (Mark II)" 4
 
 	npc
 		to spawn
@@ -1453,6 +1551,7 @@ mission "Nemesis: Oath Breaker"
 				has "Oathbreaker Black Oak: aborted"
 				has "Oathbreaker Black Oak: failed"
 		government "Oathbreaker"
+		system destination
 		personality target waiting heroic vindictive
 		ship "Dreadnought (Flamethrower)" "Black Oak"
 
@@ -1463,6 +1562,7 @@ mission "Nemesis: Oath Breaker"
 				has "Oathbreaker Escalation: failed"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
+		system destination
 		ship "Bactrian (Hai Weapons)" "Escalation"
 		fleet
 			fighters "Oathbreaker fighter"
@@ -1490,7 +1590,7 @@ mission "Nemesis: Oath Breaker"
 	on complete
 		payment 4321
 		event "Oathbreaker diminish 2"
-		event "Oathbreaker diminish 3" 350 380
+		event "Oathbreaker diminish 3" 180 240
 		dialog `The government of <planet> thanks you for eliminating the Oathbreaker threat and rewards you with <payment>, the last of the reward money. With their leader gone, the remaining Oathbreakers will eventually fall apart.`
 		log `Fought the main Oathbreaker fleet today. Arnold Benedict will no longer terrorize the Free Worlds. Some of his surviving followers will still need to be hunted down. I was rewarded with the last of the reward money, a meager 4,321 credits.`
 
@@ -1535,7 +1635,7 @@ ship "Auxiliary" "Auxiliary (Oathbreaker)"
 	"crew" 250
 	outfits
 		"Sidewinder Missile Launcher" 2
-		"Sidewinder Missile" 100
+		"Sidewinder Missile" 90
 		"Quad Blaster Turret" 2
 		"Heavy Anti-Missile Turret" 2
 		"Fusion Reactor"
@@ -1544,7 +1644,7 @@ ship "Auxiliary" "Auxiliary (Oathbreaker)"
 		"D67-TM Shield Generator"
 		"Water Coolant System"
 		"Large Radar Jammer"
-		"Ramscoop"		
+		"Ramscoop"
 		"X4700 Ion Thruster"
 		"X1700 Ion Thruster"
 		"X5200 Ion Steering"
@@ -1553,7 +1653,6 @@ ship "Auxiliary" "Auxiliary (Oathbreaker)"
 		"Sniper Rifle" 5
 		"Fragmentation Grenades" 45
 		"Laser Rifle" 200
-
 	turret "Heavy Anti-Missile Turret"
 	turret "Quad Blaster Turret"
 	turret "Quad Blaster Turret"
@@ -1674,6 +1773,7 @@ mission "Oathbreaker Legacy"
 	minor
 	source
 		government "Pirate"
+		category "Utility" "Medium Warship" "Heavy Warship"
 		not attributes "automaton"
 	destination "Earth"
 	to offer

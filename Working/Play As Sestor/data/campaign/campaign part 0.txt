@@ -1,0 +1,325 @@
+# Part 0 of the campaign is all about clearing the Mereti out of Sestor space, culminating in a final, large-scale takeover of Mesuket, which kickstarts part 1.
+
+mission "mereti removal 1"
+	name "Clear the Mereti from Asikafarnut"
+	description "Join the effort to remove Mereti patrols from <system>."
+	source "Sestor Ikfar"
+	to offer
+		"combat rating" > 2000
+		has "sestor creation"
+	on offer
+		conversation
+			`As you settle in the dock at Sestor Ikfar, you receive a message. "Imperator," It begins, "You have performed your duties as a force within the fleet admirably so far. However, we have recently detected a very large fleet of Mereti activity; centered on <system>, where you currently are located. Join our force and repel the Mereti invasion; if all goes well, we will be able to remove them from the deepest reaches of our space.`
+			`Though you are a subhive, you still must obey the collective's direct orders. You prepare yourself for the coming battle.`
+				accept
+	npc
+		personality heroic staying
+		government "Kor Sestor"
+		system "Asikafarnut"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349" 2
+				"Met Par Tek 53" 3
+				"Met Par Tek 53 (Sniper)" 2
+				"Tek Far 71 - Lek" 2
+				"Tek Far 78 - Osk" 1
+				"Tek Far 109"
+				"Far Lek 14" 29
+				"Far Osk 27" 16
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying target
+		system "Asikafarnut"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 32" 3
+				"Model 64" 2
+				"Model 128" 3
+				"Model 256" 2
+				"Model 512"
+		dialog "You have cleared the large Mereti fleet from Asikafarnut. Land on Sestor Ikfar to communicate your success."
+	on visit
+		dialog "There are still Mereti ships above! Take off and finish the job."
+	on complete
+		payment 10000000
+		"salary: Resource Allowance" += 10000
+		event "mereti cleared from asikafarnut"
+		conversation
+			`You receive a message and a large resource allocation as you pull into the hangar. "Thank you for your service, Imperator," It reads, "Your service to the collective will not be forgotten. Starting today you will receive 10000 credits per day to maintain your fleet's fighters or other needs."`
+		
+event "mereti cleared from asikafarnut"
+	system Asikafarnut
+		remove fleet "Large Kor Mereti"
+		add fleet "Small Kor Mereti" 5000
+		
+mission "mereti removal 2"
+	name "Clear the Mereti from Ferukistek"
+	description "Join the effort to remove Mereti patrols from <system>."
+	source "Keneska Fek"
+	to offer
+		"combat rating" > 4000
+		has "event: mereti cleared from asikafarnut"
+	on offer
+		conversation
+			`You can see the shadows of Mereti ships above the spaceport as you observe the state of the spaceport; already a minefield is being set up in orbit. If you don't act quickly, the entire planet will become locked down by the Mereti swarm's mines. Using your executive authority as a subhive, you rally the ships on-world to prepare a defense, and broadcast a message to broader Sestor space requesting for aid.`
+				accept
+	npc
+		personality heroic staying entering
+		government "Kor Sestor"
+		system "Ferukistek"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349 (Defense)"
+				"Met Par Tek 53 (Sniper)" 2
+				"Tek Far 71 - Lek"
+				"Tek Far 78 - Osk"
+				"Far Lek 14" 10
+				"Far Osk 27" 9
+	npc
+		personality heroic staying launching
+		government "Kor Sestor"
+		system "Ferukistek"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349"
+				"Kar Ik Vot 349 (Defense)"
+				"Kar Ik Vot 349 (Trapper)"
+				"Met Par Tek 53" 4
+				"Met Par Tek 53 (Sniper)" 2
+				"Tek Far 71 - Lek"
+				"Tek Far 71 - Lek (Close Quarters)"
+				"Tek Far 109" 2
+				"Far Lek 14" 38
+				"Far Osk 27" 14
+	npc
+		personality heroic staying
+		government "Kor Sestor"
+		system "Ferukistek"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349"
+				"Met Par Tek 53" 3
+				"Tek Far 71 - Lek (Close Quarters)" 2
+				"Far Lek 14" 20
+				"Tek Far 78 - Osk"
+				"Far Osk 27" 9
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying target
+		system "Ferukistek"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 32" 5
+				"Model 64" 2
+				"Model 128" 2
+				"Model 256" 2
+				"Model 512" 1
+		dialog "You have cleared the large Mereti fleet from Ferukistek. Land on Keneska Fek to communicate your success."
+	on visit
+		dialog "There are still Mereti ships above! Take off and finish the job."
+	on complete
+		payment 20000000
+		"salary: Resource Allowance" += 15000
+		event "mereti cleared from ferukistek"
+		conversation
+			`You receive a message as you land back on Keneska Fek. The main Sestor hive greets you, "Well, Imperator, we must commend you on your quick thinking. Were it not for your fast actions, we may have faced a Mereti blockade the likes of which we have never dealt with before. Please accept a large resource allocation as well as an increment to your daily allowance; it seems your actions have had a crippling effect on not just the Mereti presence in Ferukistek, but in Eneremprukt as well."`
+			`	With a job well done, you prepare to return to your normal activities.`
+		
+event "mereti cleared from ferukistek"
+	system Ferukistek
+		remove fleet "Large Kor Mereti"
+		add fleet "Small Kor Mereti" 6000
+	system Eneremprukt
+		remove fleet "Large Kor Mereti"
+		add fleet "Large Kor Mereti" 4500
+		add fleet "Small Kor Mereti" 9000
+		
+mission "mereti removal 3"
+	name "Clear the Mereti from Eneremprukt"
+	description "Join the effort to remove Mereti patrols from <system>."
+	source "Sopi Lefarkata"
+	to offer
+		"combat rating" > 4500
+		has "event: mereti cleared from ferukistek"
+	on offer
+		conversation
+			`You receive a hail from the Sestor Hive: "Greetings, Subhive. Your recent clearing of Ferukistek has destabilized the Mereti's presence in our sectors. We must act upon this: We have organized a warfleet to aid you in the clearing of the remaining Mereti from Eneremprukt, take flight and ensure the Mereti are removed.`
+				accept
+	npc
+		personality heroic staying launching
+		government "Kor Sestor"
+		system "Eneremprukt"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349"
+				"Kar Ik Vot 349 (Trapper)"
+				"Met Par Tek 53" 4
+				"Met Par Tek 53 (Sniper)" 2
+				"Tek Far 71 - Lek"
+				"Tek Far 71 - Lek (Close Quarters)"
+				"Tek Far 78 - Osk" 2
+				"Tek Far 109" 2
+				"Far Lek 14" 38
+				"Far Osk 27" 32
+	npc
+		personality heroic staying
+		government "Kor Sestor"
+		system "Eneremprukt"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349 (Defense)"
+				"Met Par Tek 53" 2
+				"Tek Far 71 - Lek (Close Quarters)"
+				"Far Lek 14" 10
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying target
+		system "Eneremprukt"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 32" 7
+				"Model 64" 1
+				"Model 128" 2
+				"Model 256" 2
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying entering target
+		system "Eneremprukt"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 64" 1
+				"Model 128" 2
+				"Model 256" 4
+				"Model 512" 3
+	
+		dialog "You have cleared the large Mereti fleet from Eneremprukt. Land on Sopi Lefarkata to communicate your success."
+	on visit
+		dialog "There are still Mereti ships above! Take off and finish the job."
+	on complete
+		payment 15000000
+		"salary: Resource Allowance" += 10000
+		event "mereti cleared from eneremprukt"
+		conversation
+			`You receive a message as you land back on Sopi Lefarkata. The main Sestor hive greets you, "It seems our intuition was right; the Mereti were much more easily cleared out than expected. Additionally, our scouts have reported that the Mereti's grasp on Mesuket is slipping; thanks to your leadership, we are closer than ever to turning the tide of the war. Proceed to Sebra Skira in the Silikatakfar system when you're ready to another large battle: If all goes well, we will be able to push the Mereti back to Mesuket, where we may then begin to overtake their space."`
+			`	It seems you have a choice for once; you can either head directly to the next battle, or spend some time gathering more resources and fleet strength.`
+		
+event "mereti cleared from eneremprukt"
+	system Asikafarnut
+		remove fleet "Small Kor Mereti"
+	system Ferukistek
+		remove fleet "Small Kor Mereti"
+	system Eneremprukt
+		remove fleet "Large Kor Mereti"
+		remove fleet "Small Kor Mereti"
+		add fleet "Small Kor Mereti" 12000
+	system Silikatakfar
+		remove fleet "Large Kor Mereti"
+		remove fleet "Small Kor Mereti"
+		add fleet "Large Kor Mereti" 3400
+		add fleet "Small Kor Mereti" 2800
+	system Mesuket
+		remove fleet "Large Kor Mereti"
+		remove fleet "Large Kor Sestor"
+		add fleet "Large Kor Mereti" 900
+		add fleet "Large Kor Sestor" 500
+		add fleet "Small Kor Sestor" 1200
+		
+mission "mereti removal 4"
+	name "Clear the Mereti from Silikatakfar"
+	description "Join the effort to remove Mereti patrols from <system>."
+	source "Sebra Skira"
+	to offer
+		has "event: mereti cleared from eneremprukt"
+	on offer
+		conversation
+			`A large warfleet is already parked in the many hangars of Sebra Skira. It seems the hive has been preparing for this moment just like you have; sure enough, you receive a hail: "It seems it's time, Imperator. A large mereti presence is beginning to encroach on Silikatakfar. Depart from the station after making your final preparations and prepare for a large fight."`
+				accept
+	npc
+		personality heroic staying launching
+		government "Kor Sestor"
+		system "Silikatakfar"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349" 2
+				"Kar Ik Vot 349 (Trapper)"
+				"Met Par Tek 53" 3
+				"Met Par Tek 53 (Sniper)"
+				"Tek Far 71 - Lek (Close Quarters)"
+				"Tek Far 78 - Osk" 2
+				"Tek Far 109" 2
+				"Far Lek 14" 28
+				"Far Osk 27" 32
+	npc
+		personality heroic staying
+		government "Kor Sestor"
+		system "Silikatakfar"
+		fleet
+			names "kor sestor"
+			variant
+				"Kar Ik Vot 349 (Defense)"
+				"Met Par Tek 53" 2
+				"Met Par Tek 53 (Sniper)" 3
+				"Tek Far 71 - Lek (Close Quarters)"
+				"Tek Far 109"
+				"Far Lek 14" 19
+				"Far Osk 27" 7
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying target
+		system "Silikatakfar"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 32" 2
+				"Model 64" 3
+				"Model 128" 3
+				"Model 256" 1
+				"Model 512" 2
+	npc kill
+		government "Kor Mereti"
+		personality heroic staying entering target
+		system "Silikatakfar"
+		fleet
+			names "kor mereti"
+			variant
+				"Model 64" 5
+				"Model 128" 3
+				"Model 256" 5
+				"Model 512" 6
+	
+		dialog "You have cleared the large Mereti fleet from Silikatakfar. Land on Sebra Skira to communicate your success."
+	on visit
+		dialog "There are still Mereti ships above! Take off and finish the job."
+	on complete
+		payment 15000000
+		"salary: Resource Allowance" += 15000
+		event "mereti cleared from silikatakfar"
+		event "sestor campaign break one" 60
+		conversation
+			`With the Mereti warfleet destroyed, you receive a hail from the Hive: "Excellent work, <first> <last>. With the Mereti cleared from our territory, we can begin planning the invasion of their space. Take some time to accrue some extra materials and refine your fleet during this time."`
+		
+event "mereti cleared from silikatakfar"
+	system Silikatakfar
+		remove fleet "Large Kor Mereti"
+		remove fleet "Small Kor Mereti"
+		add fleet "Small Kor Mereti" 8000
+	system Mesuket
+		remove fleet "Large Kor Mereti"
+		remove fleet "Large Kor Sestor"
+		remove fleet "Small Kor Sestor"
+		add fleet "Large Kor Mereti" 1200
+		add fleet "Large Kor Sestor" 400
+		add fleet "Small Kor Sestor" 900
+		
+event "sestor campaign break one"

@@ -253,10 +253,12 @@ mission "MGF: Lucerne Deployment"
 		has "event: mgf: developed Lucerne"
 	on offer
 		"mgf: Lucerne post 08102022 patch" = 1
+		"mgf: CNY post 05052023 patch" = 1
 		event "mgf: Lucerne Deployment" 120
 		
 event "mgf: Lucerne Deployment" 
 	planet "Canaveral Naval Yard"
+		landscape `land/mgf canaveral landscape b`
 		add shipyard "Navy Advanced EX"
 		add outfitter "Navy Advanced EX"
 	fleet "Large Republic"
@@ -298,12 +300,28 @@ event "mgf: Lucerne Deployment"
 			"Rainmaker (Mark II)" 8
 			"Gunboat (Mark II)" 12
 		
+mission "MGF: CNY Landscape Image Patch-1"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: mgf: Lucerne Deployment"
+		not "mgf: CNY post 05052023 patch"
+	on offer
+		event "mgf: CNY Landscape Image Patch-1"
+		fail
+
+event "mgf: CNY Landscape Image Patch-1"
+	planet "Canaveral Naval Yard"
+		landscape `land/mgf canaveral landscape b`
+
 mission "MGF: CNY Outfitter patch"
 	landing
 	invisible
 	repeat 2 # I left empty mission here before and it might've been offered once.
 	deadline 1
 	to offer
+		not "mgf: Lucerne post 08102022 patch"
 		has "event: mgf: Lucerne Deployment" 
 	on offer
 		event "mgf: cny outfitter patch"
@@ -511,6 +529,775 @@ event "mgf: Claymore Deployment"
 			"Rainmaker (Mark II)" 8
 			"Gunboat (Mark II)" 6
 			
+mission "MGF: Lucerne MkII development begins"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Claymore Deployment"
+	on offer
+		event "mgf: Lucerne MkII development" 360
+		event "mgf: Lucerne MkII deployment" 420
+		
+event "mgf: Lucerne MkII development"
+
+event "mgf: Lucerne MkII deployment"
+	shipyard "Navy Advanced EX"
+		add "Lucerne Class MkII"
+	shipyard "Navy Advanced"
+		"Frigate (Mark II, Pocket)"
+		"Gunboat (Mark II, Pocket)"
+		"Rainmaker (Mark II, Pocket)"
+	shipyard "Navy Basics"
+		"Gunboat (Mark II, Pocket)"
+		"Rainmaker (Mark II, Pocket)"
+	outfitter "Navy Advanced"
+		"MH-4 Typhoon Bomb Pod"
+		"CMX-12 Anti-Missile"
+	fleet "Large Republic"
+		add variant 2
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Spetum Class (Mark II)"
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 60
+			"A-14F Rondel" 50
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 48
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Culverin Class (Mark II)" 2
+			"Lance" 4
+		add variant 1
+			"Claymore Class"
+			"Lucerne Class MkII"
+			"Lance" 116
+			"Rondel (Typhoon Bomb)" 100
+			"Frigate (Mark II, Pocket)" 4
+			"Gunboat (Mark II, Pocket)" 4
+			"Rainmaker (Mark II, Pocket)" 4
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+			"Frigate (Mark II)" 8
+			"Rainmaker (Mark II)" 6
+			"Gunboat (Mark II)" 10
+		add variant 1
+			"Lucerne Class MkII"
+			"Lance" 116
+			"Rondel (Typhoon Bomb)" 100
+			"Frigate (Mark II, Pocket)" 4
+			"Gunboat (Mark II, Pocket)" 4
+			"Rainmaker (Mark II, Pocket)" 4
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+
+mission "MGF: Dulle Griet development begins"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Lucerne MkII development"
+	on offer
+		event "mgf: Dulle Griet development" 660
+		#event "mgf: Grose Bochse development" 720
+	on accept
+		fail
+		
+event "mgf: Dulle Griet development"
+	shipyard "Navy Advanced"
+		#early variant is heavily reliant on battery.
+		"Dulle Griet Class (Early)"
+	outfitter "Navy Advanced"
+		"F120 Mars Core"
+		"F230 Venus Core"
+		"BPl-5 Pulsor Turret"
+		"V85d Dual Railgun Turret"
+	fleet "Large Republic"
+		add variant 10
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 2
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 2
+			"Dulle Griet Class (Early)" 2
+			"Gunboat (Mark II, Pocket)" 4
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 2
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Frigate (Mark II)" 4
+			"Cruiser (Mark II)" 1
+			"Combat Drone" 4
+		add variant 2
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 24
+			"Cruiser (Mark II)" 4
+			"Combat Drone" 16
+			"Culverin Class (Mark II)" 2
+			"Lance" 2
+		add variant 1
+			"Lucerne Class MkII"
+			"Lance" 116
+			"Rondel (Typhoon Bomb)" 100
+			"Frigate (Mark II, Pocket)" 4
+			"Gunboat (Mark II, Pocket)" 4
+			"Rainmaker (Mark II, Pocket)" 4
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+
+mission "MGF: Grose Bochse development begins"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Dulle Griet development"
+	on offer
+		event "mgf: Grose Bochse development" 360
+	on accept
+		fail
+
+#Todo Grose Bochse full deployment (in pairs accompanying carriers)
+event "mgf: Grose Bochse development"
+	shipyard "Navy Advanced"
+		"Grose Bochse Class"
+	fleet "Large Republic"
+		add variant 2
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 2
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 3
+			"Combat Drone" 12
+		add variant 2
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 24
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+
+mission "MGF: Grose Bochse deployment"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Grose Bochse development"
+	on offer
+		event "mgf: Grose Bochse development deployment" 780
+	on accept
+		fail
+
+#info: In war time they probably want to field maybe 4~5 Grose Bochse together to be effective and likely more in battle. For regular patrol 2~3 is probably max
+event "mgf: Grose Bochse development deployment"
+	fleet "Large Republic"
+		remove variant 2
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		remove variant 2
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 3
+			"Combat Drone" 12
+		remove variant 2
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 24
+			"Grose Bochse Class"
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		
+		add variant 3
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Grose Bochse Class" 2
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 3
+			"Grose Bochse Class" 2
+			"Cruiser (Mark II)" 3
+			"Combat Drone" 12
+		add variant 3
+			"Grose Bochse Class" 2
+			"Carrier (Mark II)" 2
+			"Lance" 4
+			"A-14F Rondel" 4
+			"Combat Drone" 12
+			"Cruiser (Mark II)"
+			"Combat Drone" 4
+		add variant 3
+			"Grose Bochse Class" 2
+			"Cruiser (Mark II)"
+			"Combat Drone" 4
+			"Frigate (Mark II)" 2
+		add variant 2
+			"Spetum Class (Mark II, Typhoon Storage)"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 24
+			"Grose Bochse Class" 2
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 1
+			"Lucerne Class MkII"
+			"Lance" 116
+			"Rondel (Typhoon Bomb)" 100
+			"Frigate (Mark II, Pocket)" 4
+			"Gunboat (Mark II, Pocket)" 4
+			"Rainmaker (Mark II, Pocket)" 4
+			"Dulle Griet Class (Early)"
+			"Gunboat (Mark II, Pocket)" 2
+			"Culverin Class (Mark II)" 4
+			"Lance" 6
+			"Grose Bochse Class" 3
+			"Cruiser (Mark II)" 6
+			"Combat Drone" 24
+
+mission "MGF: Canaveral Naval Yard expansion 1"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Grose Bochse development"
+	on offer
+		event "mgf: canaveral naval yard expansion 1 begin" 2880 #~8 years
+		event "mgf: canaveral naval yard expansion 1 auto" 3660 #~10 years
+	on accept
+		fail
+
+event "mgf: canaveral naval yard expansion 1 begin"
+
+mission "MGF: Canaveral Naval Yard Expansion Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: canaveral naval yard expansion 1 auto"
+	on offer
+		event "mgf: canaveral naval yard expansion 1 done"
+	on accept
+		fail
+
+event "mgf: canaveral naval yard expansion 1 done"
+	system Sol
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard v5 50"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		landscape land/space0
+		attributes station
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is very heavily armed with countless of artillery turrets and advanced anti-missile system spread across the surface. There's also always a fleet carrier in nearby orbit, always within clear visual range.`
+		description `The shipyard was recently expanded with 4 additional building docks for additional construction capacity giving the Navy more capacity to build the large superheavy warships in times of need. When not building a superheavy vessel each of these building docks can handle up to a dozen ship construction in parallel.`
+		spaceport `With the recent expansion the spaceport is now larger and contain more facilites almost comparable to urban planets.`
+
+
+mission "MGF: Ranseur Class Development"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Grose Bochse development"
+	on offer
+		event "mgf: ranseur development" 1800 #~5years
+	on accept
+		fail
+
+event "mgf: ranseur development"
+	shipyard "Navy Advanced"
+		"Ranseur Class"
+	fleet "Large Republic"
+		remove variant 1
+			"Spetum Class"
+			"Lance" 40
+			"A-14F Rondel" 40
+			"Combat Drone" 24
+			"Cruiser" 2
+			"Combat Drone" 8
+
+		add variant 1
+			"Ranseur Class"
+			"Lance" 30
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 20
+			"Grose Bochse Class" 2
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+		add variant 1
+			"Ranseur Class"
+			"Lance" 40
+			"Rondel (Typhoon Bomb)" 50
+			"Combat Drone" 20
+			"Cruiser (Mark II)" 2
+			"Combat Drone" 8
+
+#===========================Nordlin
+
+mission "MGF: Navy Nordlin Navy Yard Upgrade"
+	landing
+	invisible
+	to offer
+		has "war begins"
+	on offer
+		event "mgf: nordlin navy yard upgrade begin" 60
+		event "mgf: nordlin navy yard upgrade done" 105
+	on accept
+		fail
+
+event "mgf: nordlin navy yard upgrade begin"
+	planet "Nordlin Navy Yard"
+		description `This station started off as a regular refinery station like many others until it eventually got shipyard function attached to it as the paradise worlds joins the Republic and a lot of new ships are required to be built for the navy. Though the larger Geminus shipyard have phased out the need for this station it remains producing some amount of navy and civilian crafts as well as maintain ships for nearby navy patrols.`
+		description `With the Navy Shipyard on Geminus destroyed the Nordlin station is now filled with traffic as the Navy is putting the station back into full service as well as upgrading it to allow the shipyard to build the larger, more modern ships.`
+		security .9
+
+event "mgf: nordlin navy yard upgrade done"
+	planet "Nordlin Navy Yard"
+		description `This station started off as a regular refinery station like many others until it eventually got shipyard function attached to it as the paradise worlds joins the Republic and a lot of new ships are required to be built for the navy. With the shipyard on Geminus destroyed the Navy now return this station to full service and upgrade the capacity to allow the station to build larger navy warships.`
+		add shipyard "Navy Advanced"
+
+	system Capella
+		remove object "MGF: Fake Capella f"
+			distance 1985.85
+			period 1668.68
+			remove object "Nordlin Navy Yard"
+				sprite `planet/mgf nordlin shipyard v1`
+				distance 266
+				offset 180
+				period 13.5253
+		add object "MGF: Fake Capella f"
+			distance 1985.85
+			period 1668.68
+			add object "Nordlin Navy Yard"
+				sprite `planet/mgf nordlin shipyard v2`
+				distance 266
+				offset 180
+				period 13.5253
+
+mission "MGF: MHL Combat Fleet"
+	landing
+	invisible
+	to offer
+		has "event: mgf: h-class on sale"
+	on offer
+		event "mgf: mhl combat response fleet" 14
+
+event "mgf: mhl combat response fleet"
+	fleet "Maryhal Logistic ArteryLine"
+		add variant 20
+			"FG-7 Conveyor-A" 4
+			"Xencar (EPB3-2)" 24
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		add variant 10
+			"CDB-6K Jupiter" 4
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		add variant 30
+			"FG-5 Bluewhale-A" 3
+			"Stahbar (MHL Combat)" 
+			"Steward (Long Range)" 2
+			"Xencar (EPB3-2)" 12
+		add variant 10
+			"CDB-12K Saturn" 2
+			"FG-5 Bluewhale-A" 3
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+	system Menkent
+		add fleet "Maryhal Logistic Defense" 17000
+	system Zubeneschamali
+		add fleet "Maryhal Logistic Defense" 17000
+	system Zubenelgenubi
+		add fleet "Maryhal Logistic Defense" 17000
+	system Sabik
+		add fleet "Maryhal Logistic Defense" 17000
+	system Kornephoros
+		add fleet "Maryhal Logistic Defense" 17000
+	system Wei
+		add fleet "Maryhal Logistic Defense" 17000
+	system Alioth
+		add fleet "Maryhal Logistic Defense" 17000
+	system Holeb
+		add fleet "Maryhal Logistic Defense" 17000
+	system Rutilicus
+		add fleet "Maryhal Logistic Defense" 17000
+	system Tarazed
+		add fleet "Maryhal Logistic Defense" 17000
+	system Dabih
+		add fleet "Maryhal Logistic Defense" 17000
+	system "Kaus Australis"
+		add fleet "Maryhal Logistic Defense" 17000
+	system Peacock
+		add fleet "Maryhal Logistic Defense" 17000
+	system Ascella
+		add fleet "Maryhal Logistic Defense" 17000
+	system Rasalhague
+		add fleet "Maryhal Logistic Defense" 17000
+	system Cebalrai
+		add fleet "Maryhal Logistic Defense" 17000
+
+mission "MGF: Navy Respond to AntiMHL Bounty Hunter"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station done"
+	on offer
+		event "mgf: navy attack antimhl bountyhunter"
+		fail
+
+event "mgf: navy attack antimhl bountyhunter"
+	government "Republic"
+		"attitude toward"
+			"MGF: Bounty Hunter (AntiMHL)" -.1
+
+
+#===========================NGK
+
+mission "MGF: NGK Exclusive Shipyard Unlock"
+	landing
+	name `MJK Exlusive Warehouse`
+	description `MJK Group has allowed you to visit and purchase items from their exclusive store.`
+	destination "Yokosuka Naval Arsenal"
+	deadline 2
+	source
+		near "Sol" 0 200
+	to offer
+		#todo other ways to help them.
+		"MGF: NGK saboteur arrest job done" >= 12
+		"reputation: MGF: NGK Security" >= 500
+	on offer
+		event "mgf: ngk exclusive unlock"
+		conversation
+			`Upon landing you recieved a mail fron MJK Group stating that in reward for your assistance they give you permission to purchase exclusive high performace ships and cuttingedge weapons the same as their security force at Yokosuka Naval Arsenal.`
+				decline
+
+event "mgf: ngk exclusive unlock"
+	planet "Yokosuka Naval Arsenal"
+		add shipyard "MJK Heavy Industries Advanced Exclusive"
+		add outfitter "MJK Heavy Industries Advanced Exclusive"
+
+mission `MGF: Reisen Development Trigger`
+	invisible
+	landing
+	to offer
+		has "main plot completed"
+	on offer
+		event "mgf: experimental reisen deployed" 1800
+		event "mgf: early reisen deployed" 2520 #~7 years
+	on accept
+		fail
+
+event "mgf: experimental reisen deployed"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"Xencar (NGK)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"Xencar (NGK)" 40
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"Xencar (NGK)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen" 40
+
+event "mgf: early reisen deployed"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"S-FS06 Reisen"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"Xencar (NGK)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen" 40
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"S-FS06 Reisen" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen" 40
+
+	fleet "MJK Defense Fleet"
+		add variant 50
+			"Leviathan (NGK Escort)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho" 4
+			"Xencar (NGK)" 40
+			"L-VC28 Zuikaku" 2
+			"S-FS06 Reisen" 40
+
+	fleet "NGK Hauling RORO"
+		remove variant 50 #phasing out Steward for Zuiho.
+			"LVC-2 Sandura"
+			"AP-7 Sentinel (NGK Escort)"
+			"Steward (NGK Long Range)"
+			"Xencar (NGK)" 6
+		
+		add variant 50
+			"LVC-2 Sandura (NGK, Turret Upgrade)" 
+			"Leviathan (NGK Escort)"
+			"E-VC14 Zuiho"
+			"S-FS06 Reisen" 10
+
+	fleet "NGK Hauling HeavyFreight"
+		add variant 10 #Because of the price Reisen still see very limited deployment early on.
+			"FG-5 Bluewhale-A (NGK, Turret Upgrade)" 3
+			"CDB-6K Jupiter (NGK, Partial Turret Upgrade)" 2
+			"Leviathan (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"S-FS06 Reisen" 20
+
+mission `MGF: Reisen Refinement Trigger`
+	invisible
+	landing
+	to offer
+		has "event: mgf: early reisen deployed"
+	on offer
+		event "mgf: reisen refinement 1" 660
+	on accept
+		fail
+
+event "mgf: reisen refinement 1"
+	outfitter "MJK Heavy Industries Advanced Exclusive"
+		"GS20-Ak Fusion Engine"
+		"K4-Mn Particle Cannon"
+		"CN-6 Supercapacitor"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"S-FS06 Reisen (Refined I)"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"Xencar (NGK)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen" 40
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+
+	fleet "NGK Hauling HeavyFreight"
+		add variant 10
+			"FG-5 Bluewhale-A (NGK, Turret Upgrade)" 3
+			"CDB-6K Jupiter (NGK, Partial Turret Upgrade)" 2
+			"Leviathan (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"S-FS06 Reisen (Refined I)" 20
+
+	fleet "NGK Hauling RORO"
+		remove variant 50
+			"LVC-2 Sandura"
+			"Leviathan (NGK Escort)"
+			"E-VC14 Zuiho"
+			"Xencar (NGK)" 10
+		add variant 50
+			"LVC-2 Sandura (NGK, Turret Upgrade)" 
+			"Leviathan (NGK Escort)"
+			"E-VC14 Zuiho"
+			"S-FS06 Reisen (Refined I)" 10
+
+mission `MGF: Kaga Development Trigger`
+	invisible
+	landing
+	to offer
+		has "event: mgf: early reisen deployed"
+	on offer
+		event "mgf: early kaga deployed" 720 #~2 years
+		set "mgf: early kaga deployed post 31052023"
+	on accept
+		fail
+
+event "mgf: early kaga deployed"
+	outfitter "Syndicate Basics"
+		"Itano Missile"
+	outfitter "Syndicate Advanced"
+		"Itano SMLS"
+		"Itano Missile Rack"
+		"Itano Missile"
+	outfitter "MJK Heavy Industries Basic"
+		"Itano Missile"
+	outfitter "MJK Heavy Industries Advanced"
+		"Itano SMLS"
+		"Itano Missile Rack"
+	outfitter "MJK Heavy Industries Advanced Exclusive"
+		"Itano SMLS"
+		"Itano Missile Rack"
+		"Itano Missile"
+		"K4-H Particle Turret"
+		"K4-Ms-S Particle Turret"
+		"Kiirotaiyo Fusion Reactor"
+		"S-1670 Regenerator"
+		"S-2370y Regenerator"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"F-VC56 Kaga (Early)"
+
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga (Early)"
+			"S-FS06 Reisen (Refined I)" 90
+
+mission "MGF: Itano Sales Patch"
+	invisible
+	landing
+	to offer
+		has "event: mgf: early kaga deployed"
+		not "mgf: early kaga deployed post 31052023"
+	on offer
+		event "mgf: itano sales patch"
+		fail
+
+event "mgf: itano sales patch"
+	outfitter "MJK Heavy Industries Advanced"
+		"Itano SMLS"
+		"Itano Missile Rack"
+
+mission `MGF: Zuiho Itano Upgrade`
+	invisible
+	landing
+	to offer
+		has "event: mgf: early kaga deployed"
+	on offer
+		event "mgf: zuiho itano upgrade" 60
+	on accept
+		fail
+
+event "mgf: zuiho itano upgrade"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced, Itano)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga (Early)"
+			"S-FS06 Reisen (Refined I)" 90
+
+	fleet "NGK Hauling RORO"
+		add variant 10
+			"LVC-2 Sandura (NGK, Turret Upgrade)" 
+			"Leviathan (NGK Escort)"
+			"E-VC14 Zuiho (Advanced, Itano)"
+			"Xencar (NGK)" 10
+			
+mission "MGF: Kaga Refinement"
+	landing
+	invisible
+	to offer
+		has "event: mgf: early kaga deployed"
+	on offer
+		event "mgf: full kaga deployed" 720
+
+event "mgf: full kaga deployed"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		remove "F-VC56 Kaga (Early)"
+		add "F-VC56 Kaga"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced, Itano)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga (Early)"
+			"S-FS06 Reisen (Refined I)" 90
+
+		add variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced, Itano)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga"
+			"S-FS06 Reisen (Refined I)" 90
+
+	system Polaris
+		add fleet "Large NGK-Syndicate Border Patrol" 40000
+	system Sheratan
+		add fleet "Large NGK-Syndicate Border Patrol" 60000
+	system "Alpha Hydri"
+		add fleet "Large NGK-Syndicate Border Patrol" 45000
+	system Zaurak
+		add fleet "Large NGK-Syndicate Border Patrol" 60000
+	system Polaris
+		add fleet "Large NGK-Syndicate Border Patrol" 60000
+
+#=============================ESPION
+
 mission "MGF: Espion co. job ad"
 	job
 	name "Asteroid Miner Wanted"
@@ -703,7 +1490,7 @@ mission "MGF: Syndi Platinum License Cancel (bfr 1yr)"
 	job
 	repeat
 	name "Cancel Platinum License"
-	description "Cancel Syndicate Platinum License for a fee of <fine>."
+	description "Cancel Syndicate Platinum License for a fee of 1820000."
 	to offer
 		has "license: Syndicate Platinum"
 		has "MGF: Syndi Platinum License Upkeep: offered"
@@ -720,7 +1507,7 @@ mission "MGF: Syndi Platinum License Cancel (afr 1yr)"
 	job
 	repeat
 	name "Cancel Platinum License"
-	description "Cancel Syndicate Platinum License for a fee of <fine>."
+	description "Cancel Syndicate Platinum License for a fee of 910000."
 	to offer
 		has "license: Syndicate Platinum"
 		has "MGF: Syndi Platinum License Upkeep: offered"
@@ -732,6 +1519,58 @@ mission "MGF: Syndi Platinum License Cancel (afr 1yr)"
 		clear "MGF: Syndi Platinum License Upkeep: offered"
 		clear "license: Syndicate Platinum"
 		fail
+
+# A job to be more interactive and make player more aware of which planet they can earn money at instead of invisible payment that player may or may not notice or annoying pop ups on every other planet they land.
+#TODO: More sophisticated system, allowing player to select some option like techniques they'll use and possibly area. With consequence, e.g. if player used the skimming maneuver too often on a planet that planet might restrict player from doing it or demand fees. Also maybe gain experience which can lead to better pay.
+#Todo make multiple ships stack abit
+mission "MGF: Trawler Fishing"
+	job
+	name "Go Fishing"
+	description `Go fishing on this planet with your trawler ship. You estimated you can make at very least 62,400 credits from selling the fish.`
+	deadline 1
+	source
+		attributes `fishing`
+	to offer	
+		has "outfit (installed): FV-8 Trawler System"
+	on accept
+		"mgf: fishing experience" += 1
+		conversation
+			`You liftoff and fly your ship to the ocean of the <origin> and land your ship at some common fishing area and begin using fishfinder sonar to scan for large group of fish.`
+			branch high
+				# 30+(experience/20)+planet bonus
+				# planet bonus is higher on world with plentiful supply or less developed/less over-fished worlds, world with mention industrialization or large fishing business will have multiplier.
+				random < 30 + ( "mgf: fishing experience" / 20 ) + ( "flagship planet: Deep" * 10 ) + ( "flagship planet: Greenwater" * 3 ) + ( "flagship planet: Nimbus" * 10 ) + ( "flagship planet: Poseidos" * 15 ) + ( "flagship planet: Vara Ke'sok" * 7 ) + ( "flagship planet: Amazon" * 5 ) + ( "flagship planet: Deadman's Cove" * 6 )
+
+			branch mid
+				random < 50 + ( "mgf: fishing experience" / 20 ) + ( "flagship planet: Deep" * 10 ) + ( "flagship planet: Greenwater" * 3 ) + ( "flagship planet: Nimbus" * 10 ) + ( "flagship planet: Poseidos" * 15 ) + ( "flagship planet: Vara Ke'sok" * 7 ) + ( "flagship planet: Amazon" * 5 ) + ( "flagship planet: Deadman's Cove" * 6 )
+
+			`	Finding one of decent size you set your ship's course toward it and deploy the trawling net. Fishes caught were then sorted and processed as you sail to a nearby port.`
+			action
+				#65% of max food commodity price * cargo of current and only trawler.
+				payment 62400
+			``
+				goto end
+
+			label high
+			`	You found a rather large group so you set your ship's course toward it and deploy the trawling net. Fishes caught were then sorted and processed as you sail to a nearby port.`
+			action
+				payment 124800
+			``
+				goto end
+
+			label mid
+			`	Finding one of good size you set your ship's course toward it and deploy the trawling net. Fishes caught were then sorted and processed as you sail to a nearby port.`
+			action
+				payment 93600
+			``
+				goto end
+
+			label end
+			`Arriving at the port you made <payment> from selling your cargo.`
+				decline
+	
+
+#==================Ship releases and fleet upgrades
 		
 mission "MGF: Mieusbar Release Announcement"
 	landing
@@ -777,7 +1616,236 @@ mission "MGF: Ialmuslati Release Announcement"
 				`	(Leave)`
 					decline
 		
+mission "MGF: Celestine Available for player"
+	landing
+	name "Celestine Available"
+	to offer
+		"reputation: Luna Winery" >= 250
+	on offer
+		event "mgf: celestine available for player"
+		conversation
+			`As you land you got a mail from Luna Winery thanking you for your help escorting their tankers. They have decided to allow you to purchase their surplus tankers on Luna, Thrall, and Shroud.`
+				decline
+				
+event "mgf: celestine available for player"
+	planet Luna
+		add shipyard "Luna Winery Custom"
+	planet Thrall
+		add shipyard "Luna Winery Custom"
+	planet Shroud
+		add shipyard "Luna Winery Custom"
+		
+mission "MGF: Citrus Available for player"
+	landing
+	name "Citrus Available"
+	to offer
+		"MGF: Juice Distribution Done" >= 30
+		"reputation: Solacer Group" >= 1
+	on offer
+		event "mgf: citrus available for player"
+		conversation
+			`You got a message from Solacer Group. "Greeting captain <last>. We have noticed your great assistance with distributing juice from our packaging facility. We would like to offer you opportunity to work with us deeper in the chain distributing juice in bulk with our custom built Citrus-class juice tanker which will be made available for you at following planets: Solace, Zug, Skymoot. We look forward working with you."`
+				decline
+		
+event "mgf: citrus available for player"
+	planet Solace
+		add shipyard "Solacer Group Custom"
+	planet Zug
+		add shipyard "Solacer Group Custom"
+	planet Skymoot
+		add shipyard "Solacer Group Custom"
+		
+mission "MGF: Hunt Death Harmonica"
+	name "Hunt Death Harmonica"
+	description `Find and destroy a heavily modified TK80C Tileart, Death Harmonica. It is reported to be in Lesath.`
+	source
+		attributes "rim" "south" "dirt belt"
+	destination 
+		attributes "rim" "south" "dirt belt"
+	waypoint Lesath
+	to offer
+		has "MGF: Hunt Death Harmonica Spawn: active"
+	on offer
+		event "MGF: Death Harmonica despawn" 60
+		conversation
+			`While drinking at the bar you took a glance at the news and something caught your eyes. It shows an image of a ship modified from a TK80C Tileart with six gigantic cannons in place of the cargo pods called Death Harmonica. The report say it is owned by the mad pirate Hawksparrow. No one knew how it came to be but it seems to pack as much firepower as the size suggest capable of taking down warships in few shots. It is reported that the ship along with a pair of modified Clipper escorts are currently terrorizing the merchants near Lesath. The Free Worlds is currently gathering ships to hunt it down but due to shortage of warships it can take months before they can properly respond. The local government have posted a bounty of 20M for whoever destroys the ship. The reward can be claimed on <destination>.`
+			choice
+				`	(Take the bounty)`
+					accept
+				`	(Ignore it)`
+					decline
+				
+	on complete
+		payment 20000000
+		dialog phrase "generic bounty hunting payment dialog"
+
+event "MGF: Death Harmonica despawn"
+
+mission "MGF: Hunt Death Harmonica Job"
+	job
+	repeat
+	name "Hunt Death Harmonica"
+	description `Find and destroy a heavily modified TK80C Tileart, Death Harmonica. It is reported to be in Lesath.`
+	source
+		attributes "rim" "south" "dirt belt"
+	waypoint Lesath
+	to offer
+		has "MGF: Hunt Death Harmonica: declined"
+		has "MGF: Hunt Death Harmonica Spawn: active"
+	
+	to complete
+		has "MGF: Hunt Death Harmonica Spawn: failed"
+		
+	on complete
+		payment 20000000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "MGF: Hunt Death Harmonica Spawn"
+	landing
+	invisible
+	to offer
+		random < 2
+		has "event: war begins"
+		"combat rating" > 8000
+	
+	npc save
+		to despawn
+			has "event: MGF: Death Harmonica despawn"
+		government "Pirate"
+		personality heroic staying
+		system Lesath
+		fleet
+			names "pirate"
+			fighters "pirate"
+			variant
+				"CK80Tp Death Harmonica"
+		dialog
+			`As you see the ship blow up you notice escape pod launched from the ship and disappear from your sensor shortly after. If you took a bounty you can return to the planet to claim your reward.`
+				
+	npc
+		to despawn
+			has "event: MGF: Death Harmonica despawn"
+		government "Pirate"
+		personality heroic staying
+		system Lesath
+		fleet
+			names "pirate"
+			fighters "pirate"
+			variant
+				"Cutthroat" 2
+
+mission "MGF: Death Harmonica destroyed by FW."
+	landing
+	source
+		attributes "rim" "south" "dirt belt"
+	to offer
+		has "event: MGF: Death Harmonica despawn"
+		not "MGF: Hunt Death Harmonica Spawn: failed"
+	on offer
+		conversation
+			`On the news screen you see a picture of a heavily modified TK80C Tileart cargo ship with cargo pods replaced by 6 huge cannons heavily damaged and surrouned by Free World ships, active and as wreckage. The news reported that the Free Worlds successfully defeated the pirate warship although at great cost. Though when boarding the ship they were unable to find the captain nor the crew of it, though they reported strange glowing red wires covering nearly every surface of the ship and found several outfits of unidentified origins. The ship is now under custody of the Free Worlds and is being brought back to Zug for further research about its construction and the mysterious outfits abroad it.`
+				decline
+
+mission "MGF: Core Nuclear Transport Upgrade I"
+	landing
+	invisible
+	to offer
+		#random condition that's almost always 1 because ES can't handle literal number on the left side.
+		"MGF: Polaris Alcazar: offered" <= ( "Raid on Nuclear Transport: done" + "Nuclear Cargo Theft (Core): done" ) / 12
+	on offer
+		event "MGF: Core Nuclear Transport Upgrade I"
+	on accept
+		fail
+		
+event "MGF: Core Nuclear Transport Upgrade I"
+	fleet "MGF: Small Core Nuclear Transport (Cask Job)"
+		remove variant
+			"SRC-41C Curie (Downgraded, Cask 1)"
+			"Quicksilver" 3
+			"Splinter"
+		remove variant
+			"SRC-41C Curie (Downgraded, Cask 1)"
+			"Splinter"
+			"Splinter (Proton)" 2
+		remove variant
+			"SRC-41C Curie (Cask 1)"
+			"Splinter (Proton)" 2
+			"Vanguard"
+
+		add variant
+			"SRC-41C Curie (Downgraded, Cask 1)"
+			"Quicksilver" 2
+			"Quicksilver (Mark II)" 2
+			"Splinter"
+		add variant
+			"SRC-41C Curie (Downgraded, Cask 1)"
+			"Splinter (Proton)"
+			"Splinter (Mark II)" 2
+		add variant
+			"SRC-41C Curie (Cask 1)"
+			"Splinter (Proton)"
+			"Splinter (Mark II)"
+			"Vanguard (MGF CoreNucMKII)"
+		
+	fleet "MGF: Small Core Nuclear Transport"
+		remove variant 40
+			"SRC-41C Curie (Downgraded)"
+			"Splinter"
+			"Splinter (Proton)" 2
+		remove variant 40
+			"SRC-41C Curie (Downgraded)"
+			"Manta"
+			"Manta (Proton)" 2
+		remove variant 20
+			"SRC-41C Curie"
+			"Splinter (Proton)" 2
+			"Vanguard"
+
+		add variant 40
+			"SRC-41C Curie (Downgraded)"
+			"Splinter (Proton)"
+			"Splinter (Mark II)" 2
+		add variant 40
+			"SRC-41C Curie (Downgraded)"
+			"Manta (Proton)"
+			"Manta (Mark II)" 2
+		add variant 20
+			"SRC-41C Curie"
+			"Splinter (Proton)"
+			"Splinter (Mark II)"
+			"Vanguard (MGF CoreNucMKII)"
+		
 #=====================Story Mission Addition
+
+mission "MGF: Ankulah Neutrality"
+	landing
+	invisible
+	to offer
+		has "event: Tarazed neutrality"
+	on offer
+		event "mgf: ankulah neutrality"
+		fail
+
+event "mgf: ankulah neutrality"
+	system "Lurata"
+		government "Neutral"
+	planet "Ankulah Ship Breaking Station"
+		government "Neutral"
+
+mission "MGF: Ankulah Join FW"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+	on offer
+		event "mgf: ankulah fw"
+		fail
+
+event "mgf: ankulah fw"
+	system "Lurata"
+		government "Free Worlds"
+	planet "Ankulah Ship Breaking Station"
+		government "Free Worlds"
 
 mission "MGF Addition: FW Southern Battle 2"
 	invisible
@@ -919,6 +1987,7 @@ mission "MGF Addition: FWC Pug 4C"
 	clearance
 	to offer
 		has "FWC Pug 4B: done"
+		not "FWC Pug 4C: done"
 	to fail
 		has "FWC Pug 4C: done"
 	npc evade
@@ -942,6 +2011,103 @@ mission "MGF Addition: FWC Pug 4C"
 				"Lance" 40
 				"A-14F Rondel" 40
 				"Combat Drone" 24
+				
+mission "MGF Addition: FWC Pug 5"
+	landing
+	invisible
+	source Rand
+	destination Silver
+	to offer
+		has "FWC Pug 4C: done"
+		not "FWC Pug 5: done"
+	to fail
+		has "FWC Pug 5: done"
+	npc
+		government Republic
+		personality heroic escort
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Culverin Class (Mark II, Jump)"
+				"Lance"
+				"A-14F Rondel"
+				
+	npc
+		personality disables heroic staying
+		government Pug
+		system Vega
+		fleet
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+				
+mission "MGF Addition: FWC Pug 5B"
+	landing
+	invisible
+	source Silver
+	destination Mars
+	to offer
+		has "FWC Pug 5: done"
+		not "FWC Pug 5B: done"
+	to fail
+		has "FWC Pug 5B: done"
+	npc
+		government Republic
+		system Sol
+		personality heroic staying uninterested launching
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Spetum Class (Mark II)"
+				"Lance" 20
+				"A-14F Rondel" 60
+				"Combat Drone" 24
+				"Culverin Class (Mark II)" 2
+				"Lance" 4
+				"Carrier (Mark II)" 2
+				"Lance" 8
+				"Combat Drone" 12
+				"Cruiser (Mark II)" 2
+				"Combat Drone" 8
+				"Frigate (Mark II)" 4
+				"Rainmaker (Mark II)" 2
+				"Gunboat (Mark II)" 4
+				
+mission "MGF Addition: FWC Pug 6"
+	landing
+	invisible
+	source Silver
+	destination Pugglemug
+	to offer
+		has "FWC Pug 5C: done"
+		not "FWC Pug 6: done"
+	to fail
+		has "FWC Pug 6: done"
+	npc
+		government Republic
+		system Sol
+		personality heroic
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Spetum Class (Mark II)"
+				"Lance" 20
+				"A-14F Rondel" 60
+				"Combat Drone" 24
+				"Culverin Class (Mark II)" 2
+				"Lance" 4
+				"Carrier (Mark II)" 2
+				"Lance" 8
+				"Combat Drone" 12
+				"Cruiser (Mark II)" 2
+				"Combat Drone" 8
+				"Frigate (Mark II)" 4
+				"Rainmaker (Mark II)" 2
+				"Gunboat (Mark II)" 4
 				
 mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 1"
 	landing
@@ -1036,6 +2202,7 @@ mission "MGF Addition: Wanderers: Sestor: Farpoint Attack 2 (Lucerne)"
 				"Culverin Class (Mark II)" 3
 				"Lance" 6
 				"Frigate (Mark II)" 2
+
 				
 #==================================Plugin Addition
 # Adding additional fleets to plugin missions.
@@ -1119,3 +2286,4 @@ mission "MGF Addition: ATHI: NI Quarg Assistance 2"
 				"Frigate (Mark II)" 12
 				"Rainmaker (Mark II)" 8
 				"Gunboat (Mark II)" 12
+				

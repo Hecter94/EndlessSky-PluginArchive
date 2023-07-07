@@ -1,3 +1,6 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
 # Endless Sky is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
 # Foundation, either version 3 of the License, or (at your option) any later version.
@@ -5,7 +8,6 @@
 # Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
 
 
 # Contents: Missions involving the thief Lu Bu and his stolen Kestrel, the Grave Digger.
@@ -30,7 +32,7 @@ mission "Grave Digger: Stolen Kestrel"
 			`After the guards are done with him, he notices you and waves as he approaches. "Captain <last>, welcome back! Too bad it isn't under better circumstances."`
 			choice
 				`	"What's with the tight security?"`
-			scene thumbnail/kestrel
+			scene "thumbnail/kestreloriginal"
 			`"Someone stole the prototype Kestrel from its storage hangar last night. The same one you previously fought against, with some minor upgrades. The hangar security systems were damaged and the entire squad of guards who had been assigned to protect the ship were killed by the thieves. Whoever did this must be highly skilled professionals."`
 			choice
 				`	"Why were the guards questioning you?"`
@@ -142,7 +144,13 @@ mission "Grave Digger: Nightingale 1"
 	waypoint Aescolanus
 	to offer
 		has "event: Grave Digger Betrayal"
-		random < 40
+		or
+			and
+				not "Randomize Grave Digger: Nightingale 1"
+				random < 70
+			and
+				has "Randomize Grave Digger: Nightingale 1"
+				random < 10
 	on offer
 		conversation
 			scene "thumbnail/starling"
@@ -157,7 +165,10 @@ mission "Grave Digger: Nightingale 1"
 					defer
 			`	While the crew finishes loading their equipment, you also prepare for the journey ahead.`
 				accept
-	
+
+	on defer
+		set "Randomize Grave Digger: Nightingale 1"
+
 	on enter Ossipago
 		dialog `The Nightingale stationed in this system is not responding.`
 
@@ -249,7 +260,7 @@ mission "Grave Digger: Nightingale 2"
 	waypoint Segesta
 	waypoint Aescolanus
 	to offer
-		has "Grave Digger: Nightingale: done"
+		has "Grave Digger: Nightingale 1: done"
 		random < 10
 
 	on enter Ossipago
@@ -485,33 +496,47 @@ mission "Grave Digger: Suspicious Ship"
 		government "Remnant"
 	to offer
 		has "event: Grave Digger Betrayal"
-		random < 40
+		or
+			and
+				not "Randomize Grave Digger: Suspicious Ship"
+				random < 70
+			and
+				has "Randomize Grave Digger: Suspicious Ship"
+				random < 10
 	on offer
 		conversation
-			`	A messenger delivers an announcement: "A suspicious human ship has been spotted wandering in the Ember Waste. We are asking all pilots to look out for this ship and scan its outfits and cargo." Ironically, you suspect that you were subjected to similar observation when you first entered the Ember Waste.`
+			`	A messenger delivers an announcement: "A suspicious human ship has been spotted wandering in the Ember Waste. We are asking all pilots to look out for this ship and scan its outfits and cargo." What will you do?`
 			choice
-				`	(Accept.)`
-					accept
-				`	(Ignore.)`
+				`	(Search for the suspicious ship.)`
+				`	(Ignore the message.)`
 					defer
+			`	Ironically, you suspect that you were subjected to similar observation when you first entered the Ember Waste.`
+				accept
+
+	on defer
+		set "Randomize Grave Digger: Suspicious Ship"
+
 	npc "scan outfits" "scan cargo"
 		government "Independent (Killable)"
 		system
+			near Arculus 3 7
 			attributes "ember waste"
+			not government "Remnant"
 			not attributes "inaccessible"
-		personality target waiting staying uninterested
+			not system Aki'il Patir
+		personality target waiting staying uninterested secretive
 		fleet
 			names "independent"
-			cargo 3
-			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			outfitters "Contraband"
 			variant
-				"Falcon (Remnant)"
+				"Shadow Falcon"
 			variant
-				"Osprey (Remnant)"
+				"Shadow Osprey"
 			variant
-				"Raven (Remnant)"
+				"Shadow Raven"
 			variant
-				"Hawk (Remnant)"
+				"Shadow Hawk"
+		dialog `You've scanned the <npc>. Bring the data back to <destination>.`
 	on abort
 		clear "Grave Digger: Suspicious Ship: offered"
 	on fail
@@ -536,21 +561,23 @@ mission "Grave Digger: Suspicious Ship Job"
 	npc "scan cargo" "scan outfits"
 		government "Independent (Killable)"
 		system
+			near Arculus 3 7
 			attributes "ember waste"
+			not government "Remnant"
 			not attributes "inaccessible"
-		personality target waiting staying uninterested
+			not system Aki'il Patir
+		personality target waiting staying uninterested secretive
 		fleet
 			names "independent"
-			cargo 3
-			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			outfitters "Contraband"
 			variant
-				"Falcon (Remnant)"
+				"Shadow Falcon"
 			variant
-				"Osprey (Remnant)"
+				"Shadow Osprey"
 			variant
-				"Raven (Remnant)"
+				"Shadow Raven"
 			variant
-				"Hawk (Remnant)"
+				"Shadow Hawk"
 	on complete
 		"reputation: Remnant" ++
 		payment 100000
@@ -593,6 +620,8 @@ mission "Grave Digger: Graveyard Robbery A"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
+	on fail
+		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons is piloting a ship outfitted with a jump drive."`
@@ -632,6 +661,8 @@ mission "Grave Digger: Graveyard Robbery B"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
+	on fail
+		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons is piloting a ship outfitted with a cloaking device."`
@@ -671,6 +702,8 @@ mission "Grave Digger: Graveyard Robbery C"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
+	on fail
+		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
 		payment 200000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons was not piloting a Korath ship."`
@@ -741,7 +774,7 @@ mission "Grave Digger: Graveyard Robbery Job A"
 
 	npc
 		government "Grave Diggers"
-		personality waiting uninterested unconstrained mute
+		personality waiting uninterested unconstrained mute secretive
 		system Relifer
 		fleet "Grave Digger Lurker"
 
@@ -792,7 +825,7 @@ mission "Grave Digger: Graveyard Robbery Job B"
 
 	npc
 		government "Grave Diggers"
-		personality waiting uninterested unconstrained mute
+		personality waiting uninterested unconstrained mute secretive
 		system Fearis
 		fleet "Grave Digger Lurker"
 
@@ -843,7 +876,7 @@ mission "Grave Digger: Graveyard Robbery Job C"
 
 	npc
 		government "Grave Diggers"
-		personality waiting uninterested unconstrained mute
+		personality waiting uninterested unconstrained mute secretive
 		system Delia
 		fleet "Grave Digger Lurker"
 
@@ -897,19 +930,34 @@ mission "Escort: Prefect's Albatross 1"
 		government "Remnant"
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	to offer
 		"reputation: Remnant" >= 10
 		has "license: Remnant"
@@ -934,7 +982,7 @@ mission "Escort: Prefect's Albatross 1"
 		"reputation: Remnant" --
 	on fail
 		"reputation: Remnant" <?= -1000
-		dialog `Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
+		dialog `[MISSION FAILED]: Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
 	on complete
 		payment 1000000
 		"reputation: Remnant" ++
@@ -949,23 +997,40 @@ mission "Escort: Prefect's Albatross 2"
 		government "Remnant"
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	waypoint
 		attributes "ember waste"
+		near Arculus 3 7
+		not government "Remnant"
 		not attributes "inaccessible"
+		not system Aki'il Patir
 	to offer
-		"reputation: Remnant" >= 10
 		has "license: Remnant"
-		has "Escort: Prefect's Albatross 1: done"
+		"reputation: Remnant" >= 10
+		or
+			has "Escort: Prefect's Albatross 1: done"
+			has "Escort: Prefect's Albatross 1: aborted"
 		random < 10
 	on waypoint
 		dialog `You've completed the tour. Escort the <npc> back to <destination>.`
@@ -991,20 +1056,21 @@ mission "Escort: Prefect's Albatross 2"
 	
 
 mission "Grave Digger: Prefect's Albatross 1"
-	job
+	minor
 	name "Escort: Ember Waste Tour"
-	description "A prefect wants to tour the Ember Waste. Visit the marked systems, then escort the Prefect's Albatross back to <origin>. Payment is 1,000,000 credits."
+	description "Prefect Torza wants to tour the Ember Waste. Visit the marked systems, then escort the Prefect's Albatross back to <origin>. Payment is 1,000,000 credits."
 	source
 		government "Remnant"
+		not attributes "uninhabited"
 	waypoint Cardea
 	waypoint Ossipago
 	waypoint Polerius
 	destination "Ceilia'sei"
 	to offer
 		"reputation: Remnant" >= 10
-		has "Escort: Prefect's Albatross 1: done"
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
+		has "Grave Digger: Suspicious Ship: done"
 		or
 			and
 				has "Grave Digger: Graveyard Robbery A: done"
@@ -1015,6 +1081,12 @@ mission "Grave Digger: Prefect's Albatross 1"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
+		random < 70
+	on offer
+		conversation
+			scene "ship/prefect's albatross"
+			`	You receive a hail from the <npc>. It's Prefect Torza: "Captain, I've decided to tour the Ember Waste. I would have you escort my ship." He sends data indicating which systems he wants to visit. Refusing doesn't seem to be an option.`
+				accept
 	on enter Cardea
 		dialog `A suspicious looking fleet is near the Ember Waste Threshold.`
 	on enter Ossipago
@@ -1027,20 +1099,19 @@ mission "Grave Digger: Prefect's Albatross 1"
 		"reputation: Remnant" --
 	on fail
 		"reputation: Remnant" <?= -1000
-		dialog `Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
+		dialog `[MISSION FAILED]: Prefect Torza managed to escape. Your failure to protect him is not without consequences and your reputation with the Remnant has suffered as a result.`
 	npc
 		system Cardea
 		government "Independent"
-		personality waiting staying mute
+		personality waiting staying mute secretive
 		fleet
 			names "independent"
-			cargo 3
-			commodities "Illegal Substances" "Illegal Cargo" "Illegal Cargo" "Highly Illegal Cargo"
+			cargo 0
 			variant
-				"Falcon (Remnant)"
-				"Osprey (Remnant)"
-				"Raven (Remnant)"
-				"Hawk (Remnant)" 2
+				"Shadow Falcon"
+				"Shadow Osprey"
+				"Shadow Raven"
+				"Shadow Hawk" 2
 	npc accompany save
 		government "Remnant"
 		personality target escort
@@ -1058,15 +1129,13 @@ mission "Grave Digger: Prefect's Albatross 2"
 		has "Grave Digger: Prefect's Albatross 1: done"
 	on offer
 		conversation
-			`	A search of the station doesn't reveal much. You find discarded food and beverage containers littered about but not much else. While it's obvious that someone was here, they left no evidence of what they did other than eat lunch.`
+			`	A search of the station doesn't reveal much. You find discarded food and beverage packaging littered about but not much else. While it's obvious that someone was here, they left no evidence of what they did other than eat lunch. After seeing this, Torza signals that he  wants to go to <planet> to confer with other prefects about the suspicious fleets.`
 				accept
 	on abort
 		"reputation: Remnant" --
 	on fail
 		"reputation: Remnant" <?= -1000
-		dialog `Your failure to protect a Prefect is not without consequences and your reputation with the Remnant has suffered as a result.`
-	on enter
-		dialog `The prefect wants to go to <planet> to confer with other prefects about the suspicious fleets.`
+		dialog `[MISSION FAILED]: Prefect Torza managed to escape. Your failure to protect him is not without consequences and your reputation with the Remnant has suffered as a result.`
 	npc accompany save
 		government "Remnant"
 		personality target escort
@@ -1093,7 +1162,8 @@ mission "Grave Digger: Suspicious Ship Tracking"
 	npc "scan cargo" "scan outfits"
 		government "Independent (Killable)" 
 		system Terminus
-		personality target waiting staying uninterested mute
+		personality target waiting staying uninterested mute secretive
+			confusion 20
 		fleet "Grave Digger Smugglers"
 	on complete
 		"reputation: Remnant" ++
@@ -1102,19 +1172,49 @@ mission "Grave Digger: Suspicious Ship Tracking"
 
 
 
+mission "Grave Digger: Midnight Market Clue"
+	landing
+	name "Remnant Fencing"
+	description "The Graveyard robbers might be trying to sell their plunder in human space. It may be worthwhile to search for clues there."
+	source
+		government Remnant
+	to offer
+		not "event: Grave Digger Testimony"
+		or
+			has "Grave Digger: Prefect's Albatross 2: done"
+			and
+				has "Grave Digger: Graveyard Robbery A: done"
+				has "Grave Digger: Graveyard Robbery B: done"
+				random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Graveyard Robbery Job A: done" + "Grave Digger: Graveyard Robbery Job B: done" + "Grave Digger: Graveyard Robbery Job C: done") )
+			and
+				has "Grave Digger: Graveyard Robbery A: done"
+				has "Grave Digger: Graveyard Robbery C: done"
+				random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Graveyard Robbery Job A: done" + "Grave Digger: Graveyard Robbery Job B: done" + "Grave Digger: Graveyard Robbery Job C: done") )
+			and
+				has "Grave Digger: Graveyard Robbery B: done"
+				has "Grave Digger: Graveyard Robbery C: done"
+				random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Graveyard Robbery Job A: done" + "Grave Digger: Graveyard Robbery Job B: done" + "Grave Digger: Graveyard Robbery Job C: done") )
+	on offer
+		payment 1
+		dialog `After landing, you find a loose credit chip in the cushions of your pilot seat. If the perpetrators of the Graveyard robberies are humans motivated by profit, they would be trying to sell their plunder back in human space...`
+	to fail
+		has "event: Grave Digger Testimony"
+
+
+
 mission "Grave Digger: Thrasher Turrets 1"
 	minor
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a rare item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for four million credits."
 	source
-		government "Syndicate"
+		government "Syndicate" "Republic" "Free Worlds" "Independent" "Neutral"
+		not attributes "uninhabited"
 	destination "Covert"
 	to offer
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
 		has "Grave Digger: Graveyard Robbery A: done"
 		has "Grave Digger: Graveyard Robbery B: done"
-		"combat rating" > 1000
 		"net worth" > 16000000
 		"credits" > 8000000
 		or
@@ -1162,7 +1262,7 @@ mission "Grave Digger: Thrasher Turrets 2"
 			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. An old man wearing a formal business suit waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
 			`	"What, exactly, am I buying?" you ask.`
 			scene "outfit/thrasher turret"
-			`	"Behold!" he gestures towards the warehouse. As he speaks, the door to the warehouse swings open and the dock workers are wheeling out several shipping crates. "Gun turrets of an alien origin from beyond human space! Our supplier refers to them as 'Thrasher Turrets'. We are selling them as a lot of four units. They make a truly exotic addition to anyone's arsenal.`
+			`	"Behold!" he gestures towards the warehouse. As he speaks, the door to the warehouse swings open and the dock workers are wheeling out several shipping crates. "Gun turrets of an alien origin from beyond human space! Our supplier refers to them as 'Thrasher Turrets'. We are selling them as a lot of four units. They make a fearsome addition to anyone's arsenal.`
 			`	By the time he finishes his sales pitch, the dock workers have pried open one of the crates. The crate contains one of the turrets that was described.`
 			`	The salesman holds the data pad out expectantly.`
 			choice
@@ -1174,8 +1274,8 @@ mission "Grave Digger: Thrasher Turrets 2"
 					goto investigate
 
 			label investigate
-			`	"Nice merchandise. Where did you steal it?" you ask.`
-			`	"I don't know what you're talking about. If you don't want to make a pur..."`
+			`	"Nice merchandise. Where did you acquire it?" you ask.`
+			`	"I can't disclose my source. If you don't want to make a pur..."`
 			choice
 				`	(Threaten him.)`
 					goto strongarm
@@ -1222,14 +1322,14 @@ mission "Grave Digger: Point Defense Turrets 1"
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a rare item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for five million credits."
 	source
-		government "Syndicate"
+		government "Syndicate" "Republic" "Free Worlds" "Independent" "Neutral"
+		not attributes "uninhabited"
 	destination "Buccaneer Bay"
 	to offer
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
 		has "Grave Digger: Graveyard Robbery A: done"
 		has "Grave Digger: Graveyard Robbery C: done"
-		"combat rating" > 1000
 		"net worth" > 20000000
 		"credits" > 10000000
 		or
@@ -1277,7 +1377,7 @@ mission "Grave Digger: Point Defense Turrets 2"
 			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A middle aged woman wearing shorts and a shirt with tropical designs on it waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
 			`	"What, exactly, am I buying?" you ask.`
 			scene "outfit/point defense"
-			`	"Behold!" she gestures towards the warehouse. As she speaks, the door to the warehouse swings open and the dock workers are wheeling out several shipping crates. "Gun turrets of an alien origin from beyond human space! Our supplier refers to them as 'Point Defense Turrets'. We are selling them as a lot of four units. They make a truly exotic addition to anyone's arsenal.`
+			`	"A special rarity!" she gestures towards the warehouse. As she speaks, the door to the warehouse swings open and the dock workers are wheeling out several shipping crates. "Gun turrets from an alien civilization beyond human space! Our supplier refers to them as 'Point Defense Turrets'. We are selling them together as a lot of four units. These will make a truly exotic addition to anyone's arsenal.`
 			`	By the time she finishes her sales pitch, the dock workers have pried open one of the crates. The crate contains one of the turrets that was described.`
 			`	The saleswoman holds the data pad out expectantly.`
 			choice
@@ -1289,8 +1389,8 @@ mission "Grave Digger: Point Defense Turrets 2"
 					goto investigate
 
 			label investigate
-			`	"Nice merchandise. Where did you steal it?" you ask.`
-			`	"I don't know what you're talking about. If you don't want to make a pur..."`
+			`	"Nice merchandise. Where did you acquire it?" you ask.`
+			`	"I can't reveal my supplier. If you don't want to make a pur..."`
 			choice
 				`	(Threaten her.)`
 					goto strongarm
@@ -1299,9 +1399,9 @@ mission "Grave Digger: Point Defense Turrets 2"
 					
 			label strongarm
 			`	You grab her and point your gun at her head. "Sorry, but I really need to know who you got these from." The security guards who were approaching you back off to calm you down.`
-			`	"All right! All right. We acquired this merchandise from Captain Lu Bu of the Grave Digger. He is a prolific trader in exotic merchandise. I've told you what you want. Would you please let me go?"`
+			`	"Hey, no need for violence! I... I'll talk." She hesitates, perhaps hoping someone will come to her rescue, but a nudge from your gun is enough to force her to continue. "We acquired this merchandise from Captain Lu Bu of the Grave Digger. He is a prolific trader in exotic merchandise. I've told you what you want. Would you please let me go?"`
 			`	"No hard feelings I hope," you state as you release her.`
-			`	She puts away the data pad. "Unfortunately, it appears we were unable to reach an agreement. Thank you for your time. However, I suggest you depart immediately." The security guards are starting to return with reinforcements and you decide to follow the woman's suggestion.`
+			`	She puts away the data pad. "It appears we were unable to reach an agreement." She adjusts her clothing, smoothing out some wrinkles. "I suggest you depart immediately." The security guards are starting to return with reinforcements and you decide to follow the woman's suggestion.`
 				launch
 
 			label turnabout
@@ -1337,14 +1437,14 @@ mission "Grave Digger: Inhibitor Cannons 1"
 	name "Myserious Sales Pitch"
 	description "An anonymous seller is offering a rare item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for two million credits."
 	source
-		government "Syndicate"
+		government "Syndicate" "Republic" "Free Worlds" "Independent" "Neutral"
+		not attributes "uninhabited"
 	destination "Deadman's Cove"
 	to offer
 		not "event: Grave Digger Testimony"
 		not "event: Gravedigger defeated"
 		has "Grave Digger: Graveyard Robbery B: done"
 		has "Grave Digger: Graveyard Robbery C: done"
-		"combat rating" > 1000
 		"net worth" > 8000000
 		"credits" > 4000000
 		or
@@ -1404,8 +1504,8 @@ mission "Grave Digger: Inhibitor Cannons 2"
 					goto investigate
 
 			label investigate
-			`	"Nice merchandise. Where did you steal it?" you ask.`
-			`	"I don't know what you're talking about. If you don't want to make a pur..."`
+			`	"Nice merchandise. Where did you acquire it?" you ask.`
+			`	"I can't give out the recipe for the secret sauce. If you don't want to make a pur..."`
 			choice
 				`	(Threaten him.)`
 					goto strongarm
@@ -1452,6 +1552,7 @@ event "Grave Digger Testimony"
 mission "Grave Digger: Bounty Job"
 	job
 	repeat
+	deadline 30
 	name "Shadow Warlord near <system>"
 	description "Dark warships with alien weapons are attacking merchant ships near <system>. Locate and destroy them. Then report to <destination>. Payment is <payment>."
 	source
@@ -1459,13 +1560,27 @@ mission "Grave Digger: Bounty Job"
 		not attributes "paradise" "near earth"
 	to offer
 		has "event: Grave Digger Testimony"
-		random < 10
+		random < 5
 	npc kill
 		government "Bounty" 
 		system
-			distance 2 3
+			distance 1 2
 		personality target waiting staying plunders harvests
-		fleet "Grave Digger Smugglers" 3
+		fleet
+			names "grave diggers"
+			cargo 1
+			commodities "Luxury Goods"
+			variant 1
+				"Shadow Falcon"
+				"Shadow Osprey" 2
+			variant 1
+				"Shadow Falcon"
+				"Shadow Raven" 4
+			variant 1
+				"Shadow Falcon"
+				"Shadow Hawk" 8
+
+
 	on complete
 		payment 800000
 		dialog `The government of <planet> thanks you for eliminating the <npc> and its fleet of shadow warships. You are rewarded with <payment>.`
@@ -1496,9 +1611,8 @@ mission "Nemesis: Grave Digger"
 		or
 			has "event: Grave Digger Testimony"
 			and
-				has "Grave Digger: Graveyard Robbery Job A: done"
-				has "Grave Digger: Graveyard Robbery Job B: done"
-				has "Grave Digger: Graveyard Robbery Job C: done"
+				has "Grave Digger: Midnight Market Clue: declined"
+				random < 0 + ( 2 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" + "Grave Digger: Graveyard Robbery Job A: done" + "Grave Digger: Graveyard Robbery Job B: done" + "Grave Digger: Graveyard Robbery Job C: done" + "Grave Digger: Suspicious Ship Tracking: done") )
 	on offer
 		conversation
 			scene "scene/scene-gravediggerember"
@@ -1511,8 +1625,11 @@ mission "Nemesis: Grave Digger"
 		to spawn
 			has "Grave Digger: Void Rifle: declined"
 		government "Nemesis"
-		personality target waiting staying plunders marked unconstrained vindictive
+		personality target waiting staying unconstrained vindictive timid
 		system Aki'il
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
 		ship "Kestrel Prototype (Void Rifle)" "Grave Digger"
 		dialog `Lu Bu makes one final taunt. "You think the Remnant didn't have me run scans on you!?! Remnant only look out for Remnant. After I'm gone, you are next!"`
 
@@ -1520,8 +1637,11 @@ mission "Nemesis: Grave Digger"
 		to spawn
 			has "Grave Digger: Penguin: declined"
 		government "Nemesis"
-		personality target waiting staying plunders marked unconstrained vindictive
+		personality target waiting staying unconstrained vindictive timid
 		system Aki'il
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
 		ship "Kestrel Prototype" "Grave Digger"
 		dialog `Lu Bu makes one final taunt. "You think the Remnant didn't have me run scans on you!?! Remnant only look out for Remnant. After I'm gone, you are next!"`
 
@@ -1529,14 +1649,22 @@ mission "Nemesis: Grave Digger"
 		to spawn
 			has "Grave Digger: Penguin: declined"
 		government "Grave Diggers"
-		personality target waiting staying plunders marked unconstrained harvests mute
+		personality waiting staying plunders harvests unconstrained
+			confusion 10
 		system Aki'il
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
 		ship "Penguin (Gravedigger)" "Black Lotus"
 
 	npc
 		government "Grave Diggers"
-		personality target waiting staying plunders marked unconstrained harvests mute
+		personality waiting staying plunders harvests unconstrained
+			confusion 10
 		system Aki'il
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
 		ship "Starling (Gravedigger)" "Nightshade Assassin"
 		ship "Starling (Gravedigger)" "Reaper of Nightmares"
 		ship "Starling (Gravedigger)" "Shadow Skulker"
@@ -1550,11 +1678,12 @@ mission "Nemesis: Grave Digger"
 
 	npc
 		government "Grave Diggers"
-		personality target waiting coward plunders marked unconstrained harvests mute
+		personality target waiting plunders harvests daring
+			confusion 10
 		system Aki'il
 		fleet
 			names "grave diggers"
-			outfitters "Ka'het Weapons Salvage"
+			outfitters "Ka'het Weapons Salvage" "Remnant Weapons"
 			variant
 				"Albatross (Gravedigger)"
 				"Pelican (Gravedigger)"
@@ -1616,3 +1745,12 @@ event "Gravedigger defeated"
 
 
 
+mission "Grave Digger Defeated Patch"
+	landing
+	invisible
+	to offer
+		has "Nemesis: Grave Digger: done"
+		not "event: Gravedigger defeated"
+	on offer
+		event "Gravedigger defeated"
+		fail

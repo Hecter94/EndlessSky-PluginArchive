@@ -8,12 +8,13 @@
 # Todo : Mission marker, for those who don't read.
 # Todo : Move to job board to avoid clogging spaceport and avoid accidentally selling critical outfits?
 
-mission "Nuru: Outfit Delivery[template]" #Job board mode, might be cleaner..? But no dialog for blackbox and outfit info
+mission "Nuru: Outfit Delivery[template]" #Job board mode, might be cleaner..? 
 	name "Sell Outfit"
 	description `The Nuru wants to buy your Electron Beam.`
 	job
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -23,6 +24,15 @@ mission "Nuru: Outfit Delivery[template]" #Job board mode, might be cleaner..? B
 		payment 250000
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 23
+		conversation
+			branch "firstpay"
+				"Nuru: Outfit Delivery Counter" <= 0
+			`	The Nuru thanks you for the delivery and send a vehicle to pick it up and pay you <payment>.`
+			#`	When they arrived one of the Nuru said something.`
+				accept
+			label firstpay
+			`		The Nuru thanks you for the delivery and send a vehicle to pick it up. While doing that one of the Nuru move toward you handing you some credit chips worth about <payment>, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
 		fail
 
 		#==============================WEAPON
@@ -323,6 +333,35 @@ mission "Nuru: Outfit Delivery[Korath Disruptor]"
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 36
 		
+mission "Nuru: Outfit Delivery[Shield Disruptor Turret]"
+	
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Shield Disruptor Turret. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			#`	When they arrived one of the Nuru said something, ""`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Shield Disruptor Turret" -1
+		payment 1143000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 36
+		
 mission "Nuru: Outfit Delivery[Korath Detainer]"
 	
 	source
@@ -379,13 +418,98 @@ mission "Nuru: Outfit Delivery[Vokkar Gun]"
 		payment 180000
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 22
+
+mission "Nuru: Outfit Delivery[J2 MES Gun]"
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your J2 MES Gun. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			#`	When they arrived one of the Nuru said something, ""`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "J2 MES Gun" -1
+		payment 1800000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 23
 		
+mission "Nuru: Outfit Delivery[Kuakuran Energy Cannon]"
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Kuakuran Energy Cannon. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			`	When they begins disassembling it right on the spot with confidence as if they've handled the exact piece hundreds of times before. You watch as they do and one of them explained that the casing appears to be build similarly to their neighbour the Zorcn except the inner working was apparently invisible to several of the quick scanning technology they have and they were curious about it, both the property of the casing and what's inside. To your luck it doesn't appears to contain anything that is an immediate danger to you, but for sure you want to stay out of this next time they do it.`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Kuakuran Energy Cannon" -1
+		payment 30000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 10
+
+mission "Nuru: Outfit Delivery[Zilnor-03 Energy Tracer]"
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Zilnor-03 Energy Tracer. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			`	When they arrived one of the Nuru noted how the weapon internal is mismatched with the technology used to build the case and how it's a new technology they never figured out yet and are very interested to learn how it works.`
+			branch "firstpay" "next"
+				"Nuru: Outfit Delivery Counter" <= 0
+			label "next"
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Zilnor-03 Energy Tracer" -1
+		payment 240000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 13
+
 		#=================================================ENGINES
 		
 mission "Nuru: Outfit Delivery[Maon Ion Engines]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -413,6 +537,7 @@ mission "Nuru: Outfit Delivery[Tyrant Plasma Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -440,6 +565,7 @@ mission `Nuru: Outfit Delivery["Bufaer" Atomic Thruster]`
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -467,6 +593,7 @@ mission "Nuru: Outfit Delivery[Large Thrust Module]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -494,6 +621,7 @@ mission "Nuru: Outfit Delivery[X5700 Ion Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -521,6 +649,7 @@ mission "Nuru: Outfit Delivery[A860 Atomic Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -548,6 +677,7 @@ mission "Nuru: Outfit Delivery[Thruster (Stellar Class)]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -575,6 +705,7 @@ mission "Nuru: Outfit Delivery[Type 4 Radiant Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -602,6 +733,7 @@ mission "Nuru: Outfit Delivery[Vikuan Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -629,6 +761,7 @@ mission "Nuru: Outfit Delivery[A865 Atomic Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -656,6 +789,7 @@ mission "Nuru: Outfit Delivery[Vikuan Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -683,6 +817,7 @@ mission "Nuru: Outfit Delivery[X5200 Ion Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -710,6 +845,7 @@ mission "Nuru: Outfit Delivery[Tyrant Plasma Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -720,6 +856,8 @@ mission "Nuru: Outfit Delivery[Tyrant Plasma Steering]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -737,16 +875,20 @@ mission "Nuru: Outfit Delivery[Vareti Engine Block]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
 	on offer
 		conversation
+			scene `outfit/ka'het vareti engine`
 			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Vareti Engine Block. Will you sell it to us."`
 			choice
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -764,16 +906,20 @@ mission "Nuru: Outfit Delivery[Steering (Stellar Class)]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
 	on offer
 		conversation
+			scene `outfit/huge korath steering`
 			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Steering (Stellar Class). Will you sell it to us."`
 			choice
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -791,6 +937,7 @@ mission `Nuru: Outfit Delivery["Bufaer" Atomic Steering]`
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -801,6 +948,8 @@ mission `Nuru: Outfit Delivery["Bufaer" Atomic Steering]`
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -818,6 +967,7 @@ mission "Nuru: Outfit Delivery[Smelter-Class Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -828,6 +978,8 @@ mission "Nuru: Outfit Delivery[Smelter-Class Steering]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -845,6 +997,7 @@ mission "Nuru: Outfit Delivery[Smelter-Class Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -855,6 +1008,8 @@ mission "Nuru: Outfit Delivery[Smelter-Class Thruster]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never."`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -872,6 +1027,7 @@ mission "Nuru: Outfit Delivery[Type 4 Radiant Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -899,6 +1055,7 @@ mission "Nuru: Outfit Delivery[Medium Graviton Thruster]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -926,6 +1083,7 @@ mission "Nuru: Outfit Delivery[Medium Graviton Steering]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -953,6 +1111,7 @@ mission "Nuru: Outfit Delivery[System Core (Large)]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -982,16 +1141,20 @@ mission "Nuru: Outfit Delivery[Blue Sun Reactor]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
-		has "Nuru: Player asked to deliver outfits"r outfits" >= 1
+		has "Nuru: Player asked to deliver outfits"
 	on offer
 		conversation
+			scene `outfit/blue sun`
 			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Blue Sun Reactor. Will you sell it to us."`
 			choice
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1009,6 +1172,7 @@ mission "Nuru: Outfit Delivery[Aeon Cell]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1019,6 +1183,8 @@ mission "Nuru: Outfit Delivery[Aeon Cell]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
 			branch "firstpay" "next"
 				"Nuru: Outfit Delivery Counter" <= 0
@@ -1037,6 +1203,7 @@ mission "Nuru: Outfit Delivery[Antimatter Core]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1047,6 +1214,8 @@ mission "Nuru: Outfit Delivery[Antimatter Core]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1064,6 +1233,7 @@ mission "Nuru: Outfit Delivery[Triple Plasma Core]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1074,6 +1244,8 @@ mission "Nuru: Outfit Delivery[Triple Plasma Core]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1091,6 +1263,7 @@ mission "Nuru: Outfit Delivery[Large Biochemical Cell]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1101,6 +1274,8 @@ mission "Nuru: Outfit Delivery[Large Biochemical Cell]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
 			`	When they arrived, one of the Nuru approaches you "This is the first time we see a working and useable example of biological generator, this is very interesting as many of such idea were never even considered by many. This knowledge will be very useful."`
 			branch "firstpay" "next"
@@ -1121,6 +1296,7 @@ mission "Nuru: Outfit Delivery[Telour Generator]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1131,6 +1307,8 @@ mission "Nuru: Outfit Delivery[Telour Generator]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1149,6 +1327,7 @@ mission "Nuru: Outfit Delivery[Large Reactor Module]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1159,6 +1338,8 @@ mission "Nuru: Outfit Delivery[Large Reactor Module]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1176,6 +1357,7 @@ mission "Nuru: Outfit Delivery[Boulder Reactor]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1186,6 +1368,8 @@ mission "Nuru: Outfit Delivery[Boulder Reactor]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1203,6 +1387,7 @@ mission "Nuru: Outfit Delivery[NT-200 Nucleovoltaic]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1213,6 +1398,8 @@ mission "Nuru: Outfit Delivery[NT-200 Nucleovoltaic]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1231,16 +1418,20 @@ mission "Nuru: Outfit Delivery[Armageddon Core]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
 	on offer
 		conversation
+			scene `outfit/core`
 			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're interested in your Armageddon Core. Will you sell it to us."`
 			choice
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."` #In the future maybe the Nuru can tell you something more about the item you delivered.
@@ -1258,6 +1449,7 @@ mission "Nuru: Outfit Delivery[Crystal Capacitor]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1268,6 +1460,8 @@ mission "Nuru: Outfit Delivery[Crystal Capacitor]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
 			`	When they arrived one of the Nuru said something. "This is very interesting, these crystals are functionally similar to some crystals found around here yet the inner working appear to be different."`
 			branch "firstpay" "next"
@@ -1300,6 +1494,8 @@ mission "Nuru: Outfit Delivery[Gelaf Shield Generator]"
 				`	"Yes."`
 				`	"No."`
 					defer
+				`	"Never"`
+					decline
 			branch "firstpay"
 				"Nuru: Outfit Delivery Counter" <= 0
 			`	"Thank you for your help. We will send vehicle to unload the cargo."`
@@ -1618,12 +1814,52 @@ mission "Nuru: Outfit Delivery[Quantum Key Stone]"
 		payment 300000
 		"reputation: Nuru" += 1
 		"Nuru: Outfit Delivery Counter" += 5
+
+mission "Nuru: Outfit Delivery[Nurbote]"
+	
+	source
+		government "Nuru"
+		not attributes uninhabited
+	to offer
+		has "Nuru: Player asked to deliver outfits"
+	on offer
+		conversation
+			`You contact the spaceport and inform them you have some outfit to sell. "We notice you have outsider outfit on board, we're very interested in your Nurbote. Will you sell it to us."`
+			choice
+				`	"Yes."`
+				`	"No."`
+					defer
+				`	"Never"`
+					decline
+			`	"Thank you for your help. We will send vehicle to unload the cargo."`
+			`	When they arrived one of the Nuru said about how this material you brought here is new to them and they want to take a look at it.`
+			choice
+				`	(Tell them where you picked it up)`
+				`	(Tell them where you forgot)`
+					goto donttell
+			action
+				set "Nuru know Nurbote source"
+			label donttell
+			`	They say that they see hints of microorganisms on the surface of these crystals and perhaps even inside.`
+			branch "firstpay"
+				"Nuru: Outfit Delivery Counter" <= 0
+			``
+				accept
+			label firstpay
+			`	One of the Nuru moves towards you handing you credit chips, to your surprise it's just like the ones you use. You asked where did they got it from. They said they have a converter which they found on one of the planet they discovered, they're not certain of its origin nor how it works.`
+				accept
+	on accept
+		outfit "Nurbote" -1
+		payment 100000
+		"reputation: Nuru" += 1
+		"Nuru: Outfit Delivery Counter" += 3
 	
 	
 mission "Nuru: Outfit Delivery[Liquid Helium Cooler]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1653,6 +1889,7 @@ mission "Nuru: Outfit Delivery[Jump Drive]"
 	
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"
@@ -1673,7 +1910,7 @@ mission "Nuru: Outfit Delivery[Jump Drive]"
 				`	"I forgot."`
 				`	"I bought it."`
 					goto bought
-			apply
+			action
 				set "Nuru: To ask for Jump Drive source"
 			`	"We hope you will remember it sometime. We want to know the source for it."`
 				goto payandleave
@@ -1684,20 +1921,20 @@ mission "Nuru: Outfit Delivery[Jump Drive]"
 				`	"Yes."`
 					goto yes
 				`	"No, I just found the place."`
-			apply
+			action
 				set "Nuru: To ask for Jump Drive shop"
 			`	"Interesting. But I must go now, we will ask you details later."`
 				goto payandleave
 				
 			label yes
-			apply
+			action
 				set "Nuru: To ask for Jump Drive manufacturing world"
 			`	"Interesting. But I must go now, we will ask you details later."`
 				goto payandleave
 				
 			label alien
 			`	"We are very interested to investigate the alien further. We will contact you when need your help."`
-			apply
+			action
 				set "Nuru: To ask for Jump Drive alien"
 			label payandleave
 			branch "firstpay"
@@ -1722,6 +1959,7 @@ mission "Nuru: Sell Outfit[Jump Drive]"
 	deadline 1 1
 	source
 		government "Nuru"
+		attributes outfitter
 		not attributes uninhabited
 	to offer
 		has "Nuru: Player asked to deliver outfits"

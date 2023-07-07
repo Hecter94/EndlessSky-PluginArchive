@@ -1,0 +1,80 @@
+# LEESt: The world's greatest Endless Sky plugin.
+# Copyright (C) 2021-2023 Lemuria
+
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+# General Public License as published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along with this program.
+# If not, see <https://www.gnu.org/licenses/>.
+
+# Lemuria is contactable in the Endless Sky discord server
+# as Lemuria#0685. Invite: https://discord.gg/ZeuASSx
+
+mission "Person ranting about date format"
+	to offer
+		random > 99
+	source
+		government "Anime Organization" "Republic" "Free Worlds" "Sayari Plushie" "Hai" "Syndicate"
+	on offer
+		conversation
+			"As you walk through the spaceport, a person approaches you."
+			`	"Hey Captain, I'm having trouble reading this date. Can you help me?"`
+			`You approach the person and read the date that has been displayed. It says '04/07/3027'.`
+			choice
+				`	"That's April 7th."`
+					goto mdy
+				`	"That's the 4th of July."`
+					goto dmy
+
+			label mdy
+			`	"It could also be the 4th of July", says the person.`
+				goto ymdRant
+
+			label dmy
+			`	"It could also be April 7th", says the person.`
+
+			label ymdRant
+			`	After a slight pause of a few seconds, the person pulls out a loudspeaker and begins speaking through it, broadcasting their opinions about the date format for the whole spaceport to hear.`
+			`	"It's all so confusing! At least spell out the date or use year-month-day! But seriously, year-month-day is so much better because it's just so logical! It goes largest to smallest, it's still logical when you add the time to it, and it's been an international standard for so long!", rants the person.`
+			`	They continue their rant. "It's always clear, and if everybody was using it we wouldn't have to be so confused about wheter a date like 04/07 is April 7th or the 4th of July! I've already sent so many emails to shipyards everywhere requesting they change their date format to year-month-day and they all keep saying no!"`
+			`	"Year-month-day is the way to keep our society running without the evils of unclear date formats! Down with all other formats!"`
+			choice
+				"	(Continue listening.)"
+					goto ymdRant2
+				"	(Leave.)"
+					decline
+
+			label ymdRant2
+			`	"But make sure to write only 4-digit years and never 2-digit years because then it's just much worse! 22-12-14 is a terrible date format! Is it 3022-12-14, or is it 3014-12-22? It's so confusing!"`
+			`	"If you have a computer, you should always use year-month-day for your computer files because they sort well! No need to sort by filesystem date, because it just sorts well! No special code to parse the date is needed!"`
+			`	"It's also consistent with the way we write numbers! Consistent with the Hindu-Arabic numeral system we all use! Largest to smallest!"`
+			choice
+				"	(Leave.)"
+					decline
+
+mission "Person ranting about date format on clipboard"
+	to offer
+		random > 99
+	source
+		government "Anime Organization" "Republic" "Free Worlds" "Sayari Plushie" "Hai" "Syndicate"
+	on offer
+		conversation
+			"	As you walk through the spaceport, you overhear an argument between a captain and a bunch of dockworkers."
+			`	"No, this cargo was loaded on December 4th, not April 12th!", says the captain in an angry voice, holding a clipboard of some sort.`
+			`	"Sir, the clipboard uses day-month-year, not month-day-year.", replies the dockworker, in a calm tone.`
+			choice
+				"	(Ignore them.)"
+					decline
+				`	"Just use year-month-day already!"`
+					goto ymd
+
+			label ymd
+			`	After your interjection, both parties look at you. "I guess we can do that.", says the dockworker. "Year-month-day is better anyway.".`
+			`	The dockworker takes a new clipboard and starts redoing the paperwork, this time in year-month-day format.`
+			`	You leave.`
+				decline

@@ -161,12 +161,12 @@ mission "Sheragi Shenanigans: Sapphire Shield 4"
 			target launching escort
 		ship "Sapphire Shield" "Sapphire Shield"
 	on fail
-		log `I learned that the "Sapphire Shield" is a fake Sheragi ship. I agreed to accept Dr. Stumpernickle's bribery, but he never reached the Alexandria to arrange payment.`
+		log `I learned that the "Sapphire Shield" is a fake Sheragi ship. I agreed to accept Dr. Stumpernickle's bribery, but he never reached Alexandria to arrange payment.`
 		"reputation: Merchant" -= 100
 		dialog `The <npc> never reached its destination. Rumors spread that you hijacked the ship yourself.`
 	on complete
 		log `I learned that the "Sapphire Shield" is a fake Sheragi ship and accepted Dr. Stumpernickle's bribery.`
-		"salary: Sapphire Shield" = 100
+		"salary: Sapphire Shield" += 100
 		dialog "Dr. Stumpernickle sets up an account to pay you 100 credits per day (3000 per month), as agreed."
 		
 event "sapphire shield financial ruin"
@@ -311,9 +311,7 @@ mission "Sheragi Shenanigans: Ruby Dagger 1"
 	description "The Ruby Dagger is attacking merchants near <stopovers>. Destroy the ship then report to <destination>. Payment is 300,000 credits."
 	source
 		government "Syndicate"
-	stopover
-		attributes "pirate"
-		attributes "core"
+	stopover "Deadman's Cove"
 	to offer
 		has "Sheragi Archaeology: Epilogue: done"
 		random < 50
@@ -357,9 +355,7 @@ mission "Sheragi Shenanigans: Ruby Dagger 2"
 	source
 		government "Republic"
 		attributes "north"
-	stopover
-		attributes "pirate"
-		attributes "north"
+	stopover Freedom
 	to offer
 		has "Sheragi Shenanigans: Ruby Dagger 1: active"
 	on offer
@@ -523,31 +519,31 @@ mission "Diamondback Sale"
 				`	"Hauling cargo."`
 					goto cargo
 				`	"I'm not sure..."`
-			apply
+			action
 				set "Diamondback: Stock"
 			`	The mechanic thinks for a bit...`
 				goto end
 
 			label pirate
-			apply
+			action
 				set "Diamondback: Lasers"
 			`	The mechanic thinks for a bit...`
 				goto end
 
 			label mining
-			apply
+			action
 				set "Diamondback: Mining"
 			`	The mechanic thinks for a bit...`
 				goto end
 
 			label passengers
-			apply
+			action
 				set "Diamondback: Transport"
 			`	The mechanic thinks for a bit...`
 				goto end
 
 			label cargo
-			apply
+			action
 				set "Diamondback: Freighter"
 			`	The mechanic thinks for a bit...`
 				goto end
@@ -582,7 +578,7 @@ mission "Diamondback Stock"
 			`After paying them 1,000,000 credits, the Diamondback is yours!`
 				accept
 	on accept
-		payment 1000000
+		payment -1000000
 		give ship "Diamondback" "Autumn Mist"
 	on enter
 		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
@@ -608,7 +604,7 @@ mission "Diamondback Lasers"
 			`After paying them 1,000,000 credits, the Diamondback is yours!`
 				accept
 	on accept
-		payment 1000000
+		payment -1000000
 		give ship "Diamondback (Lasers)" "Autumn Mist"
 	on enter
 		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
@@ -634,7 +630,7 @@ mission "Diamondback Mining"
 			`After paying them 1,000,000 credits, the Diamondback is yours!`
 				accept
 	on accept
-		payment 1000000
+		payment -1000000
 		give ship "Diamondback (Mining)" "Autumn Mist"
 	on enter
 		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
@@ -660,7 +656,7 @@ mission "Diamondback Transport"
 			`After paying them 1,000,000 credits, the Diamondback is yours!`
 				accept
 	on accept
-		payment 1000000
+		payment -1000000
 		give ship "Diamondback (Transport)" "Autumn Mist"
 	on enter
 		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
@@ -686,7 +682,7 @@ mission "Diamondback Freighter"
 			`After paying them 1,000,000 credits, the Diamondback is yours!`
 				accept
 	on accept
-		payment 1000000
+		payment -1000000
 		give ship "Diamondback (Freighter)" "Autumn Mist"
 	on enter
 		dialog `You are being hailed: "I'd heard another Diamondback turned up here. I've been destroying them. The only pilot remaining with a Diamondback will be me!"`
@@ -715,6 +711,109 @@ mission "Diamondback Pirate"
 		ship "Diamondback (Pirate)" "Autumn Mist"
 
 
+
+mission "Diamondback Jamboree"
+	minor
+	name "Diamondback Jamboree"
+	description "Escort a group of Diamondback enthusiasts to the Diamondback Jamboree hosted on <destination>."
+	source
+		attributes "dirt belt" "near earth"
+	destination "Zug"
+	to offer
+		has "Diamondback Sale: done"
+		or
+			and
+				not "Randomize Diamondback Jamboree"
+				random < 70
+			and
+				has "Randomize Diamondback Jamboree"
+				random < 5
+	on offer
+		conversation
+			scene "ship/diamondback"
+			`There's a rare sight: several Diamondbacks are parked at the spaceport. The pilots all seem to be in a good mood.`
+			choice
+				`	(Introduce yourself.)`
+				`	(Ignore them.)`
+					defer
+			`	"You own a Diamondback too?" Several of the pilots gather around you.`
+			choice
+				`	"Of course, it's a great ship."`
+				`	"I used to own one. It was a great ship."`
+				`	"I had a chance to own one. I regret not getting it."`
+			`	Another pilot asks, "Are you familiar with the Diamondback Jamboree? It's an annual festival where Diamondback owners gather to show off their ships."`
+			`	"You're welcome to join us," a third pilot offers. "The more the merrier. And there's safety in numbers."`
+			`	The first pilot elaborates, "This year, the organizers are holding the festival in <destination>. The Rim can be a dangerous place from what I've heard."`
+			`	This is a rare opportunity to see several Diamondbacks. On the other hand, it's a long journey to <system>..."`
+			choice
+				`	"I'll be glad to join you."`
+				`	"Sorry, I have other things to do."`
+					decline
+			`	"Great! I'm Peter. The others are Paul, Mary, and Leonard." The other pilots welcome you into their group. Leonard has an old recording of a song about a magical dragon playing on some loudspeakers. It's a catchy tune.`
+				accept
+	on defer
+		set "Randomize Diamondback Jamboree"
+	on enter "Zubeneschamali"
+		dialog `You receive a hail: "Har, har! More Diamondbacks have arrived to add to my fleet! It's a good thing I happened to find out about this Jamboree!"`
+	npc evade
+		government "Pirate"
+		system destination
+		personality waiting staying nemesis plunders harvests
+		ship "Marauder Bastion" "Dragon Slayer"
+	npc
+		government "Pirate"
+		system destination
+		personality waiting staying nemesis plunders harvests
+		ship "Diamondback (Bounty)" "Crimson Sunset"
+		ship "Diamondback (Berserker)" "Relentless One"
+		ship "Diamondback (Pirate)" "Lost Innocence"
+	npc
+		government "Pirate"
+		system
+			distance 1 2
+		personality heroic nemesis plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Sparrow (Afterburner)"
+				"Hawk"
+				"Fury"
+				"Berserker (Limit Break)"
+				"Rancor"
+				"Outrider (Pirate)"
+	npc
+		government "Pirate"
+		system destination
+		personality heroic nemesis plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Modified Argosy (Shields)"
+	npc accompany save
+		government "Merchant"
+		personality target escort timid
+		ship "Diamondback (Freighter)" "Hannah Lee"
+		ship "Diamondback (Mining)" "Sea Shore"
+		ship "Diamondback (Transport)" "Summer Mist"
+		ship "Diamondback (Lasers)" "Puff Magic"
+	on visit
+		dialog `The Diamondbacks haven't arrived. You should get back in orbit and make sure they're safe.`
+	on complete
+		payment 300000
+		clear "Randomize Diamondback Jamboree"
+		dialog `You've cleared the pirate blockade. The festival organizers reward you with <payment> for your assistance. The rest of the Diamondback Jamboree is an enjoyable experience.`
+
+mission "Diamondback Jamboree Patch"
+	landing
+	invisible
+	to offer
+		has "Diamondback Jamboree: declined"
+	on offer
+		clear "Diamondback Jamboree: offered"
+		clear "Diamondback Jamboree: declined"
+		fail
 
 mission "Sheragi Shenanigans: Counterfeits"
 	minor
@@ -778,7 +877,7 @@ mission "Sheragi Shenanigans: Counterfeits (North)"
 	on offer
 		conversation
 			scene "outfit/fake pwave cannon"
-			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship sweetens the deal.`
+			`A job board posting indicates that a warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. You've got a lead on the counterfeit Sheragi weapons!  Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship sweetens the deal.`
 				accept
 	npc
 		government "Pirate"
@@ -793,7 +892,7 @@ mission "Sheragi Shenanigans: Counterfeits (North)"
 			distance 1 2
 		personality target waiting staying plunders
 		ship "Marauder Leviathan (Sheragi Counterfeit)" "Storm Kraken"
-		dialog `The captain says the Particle Waveform Cannons were already installed on the ship when he stole it. You aren't going to learn anything useful from him.`
+		dialog `The captain says the Particle Waveform Cannons were already installed on this ship when he stole it. You aren't going to learn anything useful from him.`
 	on fail
 		dialog `[MISSION FAILED]: You failed to board the target before it was destroyed. If life were a game, you could load a save file and try again.`
 	on complete
@@ -816,7 +915,7 @@ mission "Sheragi Shenanigans: Counterfeits (Core)"
 	on offer
 		conversation
 			scene "outfit/fake pwave cannon"
-			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship is icing on the cake.`
+			`A job board posting indicates that a warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. You've got a lead on the counterfeit Sheragi weapons!  Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship sweetens the deal.`
 				accept
 	npc
 		government "Pirate"
@@ -854,7 +953,7 @@ mission "Sheragi Shenanigans: Counterfeits (South)"
 	on offer
 		conversation
 			scene "outfit/fake pwave cannon"
-			`You've got a lead on the counterfeit Sheragi weapons! A warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship is gravy.`
+			`A job board posting indicates that a warship called the <npc> is supposedly armed with Particle Waveform Cannons and is attacking Merchant ships near <system>. You've got a lead on the counterfeit Sheragi weapons!  Hunt the fugitive down and get some answers from its captain. The <payment> bounty being offered for eliminating the ship sweetens the deal.`
 				accept
 	npc
 		government "Pirate"
@@ -885,7 +984,7 @@ mission "Sheragi Shenanigans: Counterfeits (Mammon)"
 	name "Sheragi: Counterfeiter"
 	description "Infiltrate the counterfeiter's manufacturing facility on <planet> to steal their prototype and computer data."
 	source
-		attributes "spaceport"
+		attributes spaceport
 	destination "Smuggler's Den"
 	to offer
 		has "Sheragi Shenanigans: Counterfeits (North): done"
@@ -994,8 +1093,8 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 			`	The "manufacturing facility" is little more than a workshop. A Fake Sheragi Cannon dominates one side of the room, while an unfinished cannon occupies the opposite side of the chamber. The complete cannon is probably the prototype.`
 			label computer
 			``
-			`	Looking around the room, you see a There May Be Riots poster, a digital magazine with the Sapphire Shield pictured on the cover, a print out of Albert Foster's interview on the Emerald Sword, and a Subsi Subsidurial Plushie.`
-			`	You find a computer. When you turn it on, it asks for a password...`
+			`	Looking around the room, you see a computer, a There May Be Riots poster, a magazine with the Sapphire Shield pictured on the cover, a print out of Albert Foster's interview on the Emerald Sword, and a Subsi Subsidurial Plushie.`
+			`	When you try using the computer, it asks for a password...`
 			choice
 				`	T H E R E M A Y B E R I O T S`
 				`	S A P P H I R E S H I E L D`
@@ -1004,6 +1103,8 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 				`	S U B S I`
 					goto data
 			``
+			action
+				"sheragi counterfeiter password rejected" ++
 			`	The password you entered didn't work...`
 				goto computer
 			label data
@@ -1025,7 +1126,10 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 				goto enter
 	on enter
 		dialog `A fleet of pirate ships is heading right for you. You might have done something to attract the counterfeiter's attention while you were in their workshop.`
+
 	npc
+		to spawn
+			has "sheragi counterfeiter password rejected"
 		government "Pirate"
 		system Men
 		personality waiting plunders unconstrained nemesis
@@ -1034,11 +1138,51 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 			names "pirate"
 			cargo 0
 			variant
-				"Berserker (Afterburner)"
+				"Berserker (Afterburner Limit Break)"
 				"Hawk (Rocket)"
 				"Fury (Bomber)"
 				"Wasp (Meteor)"
-				"Sparrow" 2
+	npc
+		to spawn
+			"sheragi counterfeiter password rejected" > 1
+		government "Pirate"
+		system Men
+		personality waiting plunders unconstrained nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Marauder Sparrow (Meteor Missile)"
+	npc
+		to spawn
+			"sheragi counterfeiter password rejected" > 2
+		government "Pirate"
+		system Men
+		personality waiting plunders unconstrained nemesis
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Marauder Sparrow"
+				"Berserker (Strike Limit Break)"
+	npc
+		to spawn
+			"sheragi counterfeiter password rejected" > 3
+		government "Pirate"
+		system Men
+		personality waiting plunders unconstrained nemesis
+			confusion 20
+		ship "Diamondback (Bounty)" "Tales of Misfortune"
+	npc
+		to spawn
+			not "sheragi counterfeiter password rejected"
+		government "Pirate"
+		system Men
+		personality waiting plunders unconstrained nemesis
+			confusion 20
+		ship "Diamondback (Berserker)" "Lucky Strike"
 	npc kill
 		government "Pirate"
 		system Men
@@ -1062,6 +1206,7 @@ mission "Sheragi Shenanigans: Counterfeits (Mammon Declined)"
 	minor
 	invisible
 	deadline 2
+	repeat
 	source
 		attributes "frontier"
 	to offer
@@ -1087,9 +1232,23 @@ mission "Sheragi Shenanigans: Counterfeits (Mammon Declined)"
 			names "pirate"
 			cargo 0
 			variant
-				"Sparrow" 4
+				"Marauder Sparrow (Meteor Missile)"
+				"Sparrow"
+				"Sparrow (Limit Break)"
 			variant
-				"Sparrow (Gatling)" 3
+				"Marauder Sparrow (Meteor Missile)"
+				"Sparrow (Gatling)"
+				"Sparrow (Gatling Limit Break)"
+			variant
+				"Marauder Sparrow (Meteor Missile)"
+				"Sparrow (Gatling Limit Break)"
+				"Sparrow (Limit Break)"
+			variant
+				"Marauder Sparrow (Meteor Missile)"
+				"Sparrow (Afterburner)" 2
+			variant
+				"Marauder Sparrow (Meteor Missile)"
+				"Sparrow (Meteor Missile)"
 	npc
 		government "Pirate"
 		personality entering plunders harvests
@@ -1113,13 +1272,15 @@ mission "Sheragi Shenanigans: Counterfeits (Mammon Declined)"
 				"Wasp (Proton)" 2
 			variant 2
 				"Marauder Splinter (Sheragi Counterfeit)"
-				"Berserker" 2
+				"Berserker"
+				"Berserker (Limit Break)"
 			variant 1
 				"Marauder Falcon (Sheragi Counterfeit)"
 				"Fury (Bomber)" 2
 			variant 1
 				"Marauder Leviathan (Sheragi Counterfeit)"
-				"Berserker (Afterburner)" 2
+				"Berserker (Afterburner)"
+				"Berserker (Afterburner Limit Break)"
 			variant 1
 				"Marauder Vanguard (Sheragi Counterfeit)"
 				"Hawk (Rocket)" 2
@@ -1138,13 +1299,17 @@ ship "Modified Argosy" "Modified Argosy (Sheragi Counterfeit)"
 		"LP072a Battery Pack"
 		"Laser Rifle" 10
 		"Laser Turret"
-		"Meteor Missile" 60
-		"Meteor Missile Launcher" 2
+		"Meteor Missile Pod" 2
+		"Meteor Missile Box" 2
+		"Meteor Missile" 44
 		"NT-200 Nucleovoltaic"
 		"S-970 Regenerator"
 		"Security Station"
 		"Small Radar Jammer"
-
+	gun "Fake Sheragi Cannon"
+	gun "Fake Sheragi Cannon"
+	gun 
+	gun 
 
 ship "Marauder Falcon" "Marauder Falcon (Sheragi Counterfeit)"
 	sprite "ship/mfalconw"
@@ -1195,8 +1360,9 @@ ship "Marauder Firebird" "Marauder Firebird (Sheragi Counterfeit)"
 		"LP072a Battery Pack"
 		"Laser Rifle" 25
 		"Liquid Helium Cooler"
-		"Meteor Missile" 60
-		"Meteor Missile Launcher" 2
+		"Meteor Missile" 44
+		"Meteor Missile Pod" 2
+		"Meteor Missile Box" 2
 		"Outfits Expansion"
 		"S-970 Regenerator"
 		"Security Station"
@@ -1204,8 +1370,8 @@ ship "Marauder Firebird" "Marauder Firebird (Sheragi Counterfeit)"
 		Supercapacitor
 	gun -27.5 -33.5 "Fake Sheragi Cannon"
 	gun 27.5 -33.5 "Fake Sheragi Cannon"
-	gun -38.5 -18.5 "Meteor Missile Launcher"
-	gun 38.5 -18.5 "Meteor Missile Launcher"
+	gun -38.5 -18.5 "Meteor Missile Pod"
+	gun 38.5 -18.5 "Meteor Missile Pod"
 	turret 0 -44 "Heavy Laser Turret"
 	turret 0 -2.5 "Anti-Missile Turret"
 
@@ -1260,18 +1426,19 @@ ship "Marauder Manta" "Marauder Manta (Sheragi Counterfeit)"
 		"LP144a Battery Pack"
 		"Laser Rifle" 11
 		"Liquid Nitrogen Cooler"
-		"Meteor Missile" 120
-		"Meteor Missile Launcher" 4
+		"Meteor Missile" 133
+		"Meteor Missile Pod" 4
+		"Meteor Missile Box" 7
 		"S-970 Regenerator"
 		"Water Coolant System"
 	engine -33.5 38
 	engine 33.5 38
 	gun -66 -34 "Fake Sheragi Cannon"
 	gun 66 -34 "Fake Sheragi Cannon"
-	gun -27 -35 "Meteor Missile Launcher"
-	gun 27 -35 "Meteor Missile Launcher"
-	gun -20 -35 "Meteor Missile Launcher"
-	gun 20 -35 "Meteor Missile Launcher"
+	gun -27 -35 "Meteor Missile Pod"
+	gun 27 -35 "Meteor Missile Pod"
+	gun -20 -35 "Meteor Missile Pod"
+	gun 20 -35 "Meteor Missile Pod"
 	turret 0 -29 "Anti-Missile Turret"
 
 
@@ -1340,16 +1507,17 @@ ship "Marauder Splinter" "Marauder Splinter (Sheragi Counterfeit)"
 		"LP072a Battery Pack"
 		"Laser Rifle" 22
 		"Liquid Nitrogen Cooler"
-		"Meteor Missile" 60
-		"Meteor Missile Launcher" 2
+		"Meteor Missile" 44
+		"Meteor Missile Pod" 2
+		"Meteor Missile Box" 2
 		"Modified Blaster Turret" 2
 		"S-970 Regenerator"
 		"Security Station"
 		"Water Coolant System"
 	gun -7.5 -98 "Fake Sheragi Cannon"
 	gun 7.5 -98 "Fake Sheragi Cannon"
-	gun -15 -82 "Meteor Missile Launcher"
-	gun 15 -82 "Meteor Missile Launcher"
+	gun -15 -82 "Meteor Missile Pod"
+	gun 15 -82 "Meteor Missile Pod"
 	turret -17 -28 "Modified Blaster Turret"
 	turret 0 -28 "Anti-Missile Turret"
 	turret 17 -28 "Modified Blaster Turret"

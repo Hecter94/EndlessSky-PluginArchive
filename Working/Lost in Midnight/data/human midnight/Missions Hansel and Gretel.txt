@@ -49,7 +49,7 @@ mission "Hansel & Gretel: Medical Supply Escort 1"
 		not attributes "uninhabited"
 		distance 3 10
 	to offer
-		"ships: Heavy Warship" >= 1
+		"ships: Heavy Warship" + "ships: Utility" >= 1
 		random < 50 - ( 5 * "Hansel & Gretel: Medical Supply Escort 1: defered" )
 	on offer
 		conversation
@@ -113,7 +113,7 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 		distance 5 10
 	to offer
 		has "Hansel & Gretel: Medical Supply Escort 1: done"
-		"ships: Heavy Warship" >= 1
+		"ships: Heavy Warship" + "ships: Utility" >= 1
 		not "fw first chapter done"
 		not "Hansel & Gretel: Return Escort: active"
 		random < 40 - ( 5 * "Hansel & Gretel: Medical Supply Escort 2: done" )
@@ -161,7 +161,7 @@ mission "Hansel & Gretel: Return Escort"
 		distance 1 5
 	to offer
 		has "Hansel & Gretel: Medical Supply Escort: done"
-		"ships: Heavy Warship" >= 1
+		"ships: Heavy Warship" + "ships: Utility" >= 1
 		not "Hansel & Gretel: Medical Supply Escort 2: active"
 		not "Hansel & Gretel: Medical Supply Escort 2: failed"
 		random < 40
@@ -195,13 +195,14 @@ mission "Hansel & Gretel: Return Escort"
 
 mission "Hansel & Gretel: Rescue Hansel"
 	minor
+	clearance
 	name "Rescue Hansel"
 	description "Find and rescue the Hansel. Also keep Gretel safe."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 	destination
 		attributes "pirate"
-		attributes "spaceport"
+		attributes spaceport
 		not attributes "uninhabited"
 		distance 1 5
 	to offer
@@ -211,7 +212,7 @@ mission "Hansel & Gretel: Rescue Hansel"
 			has "Hansel & Gretel: Return Escort: done"
 		not "Hansel & Gretel: Medical Supply Escort 2: failed"
 		not "Hansel & Gretel: Return Escort: failed"
-		"ships: Heavy Warship" >= 1
+		"ships: Heavy Warship" + "ships: Utility" >= 1
 		random < 70
 	on offer
 		conversation
@@ -342,7 +343,7 @@ mission "Hansel & Gretel: Medical Supply Escort 3"
 		distance 5 10
 	to offer
 		has "Hansel & Gretel: Pirate Escape: done"
-		"ships: Heavy Warship" >= 1
+		"ships: Heavy Warship" + "ships: Utility" >= 1
 		not "event: pug invasion"
 		not "event: fwc pug invasion"
 		random < 20
@@ -384,6 +385,7 @@ mission "Hansel & Gretel: Medical Supply Escort 3"
 
 
 mission "Hansel & Gretel: Pug Resistance"
+	landing
 	name "Hansel & Gretel"
 	description "Hansel & Gretel will fight by your side until they or the Pug have been defeated."
 	source
@@ -395,15 +397,15 @@ mission "Hansel & Gretel: Pug Resistance"
 		not "Hansel & Gretel: Medical Supply Escort 3: failed"
 		not "main plot completed"
 		or
-			has "FW Pug 5B: done"
-			has "FWC Pug 5C: done"
+			has "FW Pug 3C: done"
+			has "FWC Pug 3D: done"
 	on offer
 		conversation
 			scene "scene/scene-hanselandgretel 2"
 			`You find a familiar pair of siblings at the spaceport. But their ships look very different from the last time you saw them. "We've been making small upgrades over time to help ward off pirates," explains Gretel.`
 			`	"The big upgrade came when I decided to plunder the plunderers," adds Hansel. "Turns out they had some experimental prototypes they stole from somewhere."`
 			`	"From then on, we've been doing more to help other merchant ships fight off pirates," continues Gretel.`
-			`	"And when we heard that planets here were under attack from aliens, we decided to join the defenders," concludes Hansel.`
+			`	"And when we heard that planets here were under attack from aliens, we decided to help them," concludes Hansel.`
 			`	Gretel asks, "If you're going to resist the Pug, can we join you?"`
 			choice
 				`	"Of course, I'd be glad to have you along!"`

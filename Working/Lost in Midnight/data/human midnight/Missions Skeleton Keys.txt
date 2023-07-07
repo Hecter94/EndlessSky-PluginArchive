@@ -1,0 +1,1134 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Skeleton Key North 1"
+	minor
+	name "Search for Tod"
+	description "Follow the pirates that took Tod to <destination>."
+	source "Placer"
+	destination "Mutiny"
+	to offer
+		has "Lost Boy 3: done"
+		or
+			and
+				not "Randomize Skeleton Key North 1"
+				random < 50 + ( 20 * "skeleton key south" ) + ( 20 * "skeleton key core")
+			and
+				has "Randomize Skeleton Key North 1"
+				random < 10
+	on offer
+		conversation
+			`This is the planet where you left Tod, the boy you rescued from pirates, to start his new job as a miner. Check to see how he is doing?`
+			choice
+				`	(Search for Tod.)`
+				`	(Not now.)`
+					defer
+			`The labor department isn't very helpful. Citing employee privacy, they refuse to give you any information. As you head back to your ship, it seems someone who was also at the office is following you.`
+			choice
+				`	"Do you need something from me?"`
+					goto talk
+				`	(Shake them off your trail.)`
+			`	After turning a corner you break into a run, taking a roundabout course to get back to your ship. You managed to give them the slip. Whatever it is they were after shall remain unknown to you.`
+				decline
+			label talk
+			`	Your pursuer appears to be a miner. "You're a friend of Tod Copper, aren't you?" He stares at you with an uncertain expression.`
+			choice
+				`	"Yes, I'm his friend. Can you tell me where Tod is?"`
+			scene "planet/ice4"
+			`	With a look of relief he says, "We were ambushed by some thugs while on our way back to the dorms after our shift yesterday. From the sound of it, they were pirates who knew Tod. He bargained for them to spare us in exchange for guiding them to something they are seeking on <destination>. We reported this to our employer, but they aren't doing anything about it!" Thanking him for information, you are left with the decision of whether to rescue Tod once again.`
+			choice
+				`	(Rescue Tod.)`
+				`	(Abandon Tod.)`
+					decline
+			scene "outfit/small bunk room"
+			`	You prepare for the journey to <planet>. Make sure to keep an empty bunk for Tod.`
+					accept
+	on defer
+		set "Randomize Skeleton Key North 1"
+	on enter Gienah
+		dialog `A battle between rival pirate gangs is taking place over Mutiny. Land on the planet and find Tod!`
+	npc
+		government "Pirate"
+		system Gienah
+		personality waiting vindictive harvests
+			confusion 20
+		fleet "Small Core Pirates" 3
+	npc
+		government "Pirate (Rivals)"
+		system Gienah
+		personality waiting vindictive harvests
+			confusion 20
+		fleet "Small Northern Pirates" 3
+		fleet "Small Southern Pirates" 3
+		fleet "Small Dirt Belt Pirates" 3
+	on complete
+		clear "Randomize Skeleton Key North 1"
+
+mission "Skeleton Key North 2"
+	landing
+	name "Return Tod Home"
+	description "Search for the pirate treasure at <waypoints>. Then take Tod back to his home on <destination>."
+	passengers 1
+	blocked "You don't have space for Tod!"
+	source "Mutiny"
+	waypoint "Gorvi"
+	destination "Moonshake"
+	to offer
+		has "Skeleton Key North 1: done"
+	on offer
+		conversation
+			`As you descend through the atmosphere, you notice a group of pirate ships has converged around a canyon near the equator. With no other leads, you set the <ship> to land nearby. Preparing for the worst, you open the hatch and walk into what could be an ambush.`
+			choice
+				`	(Confindently stride into the viper's nest.)`
+				`	(Sneak up on them by creeping among the rocks.)`
+					goto sneak
+			`	You boldly walk through the canyon and find the pirates deliberating over a sealed crate. Despite your bravado, none notice you. Everyone is focused on the argument taking place between the captains of two different factions or too busy looting the dead corpses of a third faction.`
+				goto foundTod
+			label sneak
+			`	You creep among the rocks, trying to stay hidden. As you slowly make progress, you can hear two men arguing. Risking a glance, you see all the pirates are gathered around a sealed crate. Any pirates not focused on the spectacle of the argument between the captains of their factions is too busy looting the corpses of a third faction.`
+			label foundTod
+			`	Tod quietly approaches you and mouths, "Let's leave before they notice us."`
+			choice
+				`	(Take Tod back to the <ship>.)`
+					goto escape
+				`	(Stay and watch what happens.)`
+			`	One of the pirate captain yells, "How do we even know the treasure is in there?"`
+			`	Tod tugs at your sleeve. He seems eager to leave.`
+			choice
+				`	(Take Tod back to the <ship>.)`
+					goto escape
+				`	(Stay and watch what happens.)`
+			`	The other responds, "This do be the crate what the boy done lead us to."`
+			`	Tod tugs at your sleeve. He seems eager to leave.`
+			choice
+				`	(Take Tod back to the <ship>.)`
+					goto escape
+				`	(Stay and watch what happens.)`
+			scene "scene/scene-empty box"
+			`	"And where's that boy now?" asks the first pirate captain, looking around."`
+			`	The other captain, suddenly aware of Tod's absence, yanks the lid of the crate open. "Empty!" The pirates all draw their weapons. "Find the boy! Find the treasure!" Turning to Tod, you notice he's already running off, in the wrong direction of your ship! As you move to follow, someone shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and scream of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
+				die
+			label escape
+			`	You lead Tod through the canyon back to your ship. "The crate's a decoy setup by the pirate captain you rescued me from. What they're really looking for is in my head."`
+			choice
+				`	"What's that supposed to mean?"`
+			scene "outfit/asteroid scanner"
+			`	He recites a string of numbers. It sounds like the scan setting for an Asteroid Scanner. "I didn't realize it before, but now I think it's some kind of mapping code. The pirate that took me off Placer said he wants the map to a treasure in <waypoints>."`
+			`	Closing the hatch to your ship, you start up the engines. <waypoints> is on the other side of the galaxy.`
+			choice
+				`	"I could take you to <waypoints>, but the ride won't be cheap."`
+			`	"I'll split the treasure with you. Once we have that, I'd like to return to my mom on <planet>." With that settled, you activate the engines and head for the stars.`
+				accept
+	on accept
+		event "Treasure: Gorvi"
+		log "Treasure Maps" "Received a treasure map for the Gorvi system."
+	npc
+		government "Pirate"
+		system Gienah
+		personality waiting vindictive harvests
+			confusion 20
+		fleet "Small Core Pirates" 3
+	npc
+		government "Pirate (Rivals)"
+		system Gienah
+		personality waiting vindictive harvests
+			confusion 20
+		fleet "Small Northern Pirates" 3
+		fleet "Small Southern Pirates" 3
+		fleet "Small Dirt Belt Pirates" 3
+
+	on enter "Gorvi"
+		conversation
+			action
+				outfit "Skeleton Key" 1
+				set "skeleton key north"
+				payment 2000000
+			scene "asteroid/small rock/spin"
+			`After scanning the frequency indicated by Tod's code, a non-descript chunk of rock lights up. Digging into the asteroid, you find a crate containing 10,000 credit chips and a small object that resembles a key. As you are studying the strange artifact, the scanner highlights another rock. Pocketing the key, you maneuver the <ship> towards the new asteroid. This one has 30,000 credit chips in it. Several more rocks are highlighted. After salvaging a few more, you've managed to collect 2,000,000 credit chips.`
+			`	"We're rich <first>!" Tod raises his hand in the air expectantly.`
+			choice
+				`	(Give him a thumbs up.)`
+				`	(Give him a high five.)`
+					goto fiver
+				`	(Raise your hand in response.)`
+					goto spork
+			`	You give him a thumbs up. Tod looks at you awkwardly. "Didn't they do high five's where you're from?"`
+			label history
+			choice
+				`	"Oh, I remember seeing that in a movie once."`
+				`	"I remember my teacher mentioned that in a lecture about old Earth customs."`
+			`	"Well then, gimme five!" Tod stretches his hand higher up.`
+				goto fiver
+			label spork
+			`	You raise your hand similarly and say, "Live strong in prosperity."`
+			`	Tod looks at you awkwardly. As you start to wonder if you got Mr. Spork's catchphrase wrong, he asks, "Didn't they do high five's where you're from?"`
+				goto history
+			label fiver
+			`	You raise your open hand and Tod smacks your palm with his. Grinning, he lowers his palm and says, "Down low!" Before you can respond, the warning system goes off. A hostile ship is targeting the <ship>!`
+			``
+			scene "ship/battle barge"
+			``
+			`	"Why is a bulk freighter attacking us?" Tod stares at the ship wide eyed.`
+			choice
+				`	"That's no Bulk Freighter!"`
+			``
+			scene "thumbnail/battle barge-thumb"
+			``
+			`	"That's a Battle Barge, a heavy war ship used by pirates in the Dirt Belt." As you finish your explanation, the enemy hails you and a familiar voice speaks.`
+			`	"You thought you done gave me and my boys the slip on Mutiny, did you? You done thought wrong."`
+			`	Closing the communications channel, you get ready to fight when Tod asks, "Can't we just run? We've got enough treasure." Even if you escape, there's no guarantee these pirates will leave Tod alone in the future. Stopping them here is the best course of action.`
+
+	npc
+		government "Pirate"
+		system "Gorvi"
+		personality waiting staying plunders unconstrained heroic
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Outrider (Turbo Blaster)" 2
+	npc
+		to spawn
+			"combat rating" > 500
+		government "Pirate"
+		system "Gorvi"
+		personality waiting staying plunders unconstrained heroic
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Patrolboat (Turbo Blaster)"
+				"Missileboat (Turbo Blaster)"
+	npc
+		to spawn
+			"combat rating" > 800
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" > 1
+		government "Pirate"
+		system "Gorvi"
+		personality waiting staying plunders unconstrained heroic
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Modified Hauler III (Turbo Blaster)"
+				"Modified Hauler II (Turbo Blaster)"
+				"Modified Hauler (Turbo Blaster)"
+				"Shuttle Pod (Turbo Blaster)" 6
+	npc kill
+		government "Pirate"
+		system "Gorvi"
+		personality target waiting staying plunders timid
+		"cargo settings"
+			cargo 0
+		ship "Battle Barge (Turbo Blaster)" "Hell's Armory"
+		dialog "You've eliminated the pirate flag ship. Hopefully that was enough to deter the rest from chasing Tod. Make sure he gets to <destination> safely!"
+
+	on fail
+		dialog `[MISSION FAILED] You lost track of Tod! If life were a game, you could load a save file and try again.`
+	on complete
+		payment -1000000
+		log "People" "Tod Copper" `The boy you rescued from slavers recalled a secret code that revealed the location of a pirate's treasure.`
+		log `Found a strange key amongst some pirate treasure hidden in the asteroids of Gorvi. I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
+		conversation
+			scene "outfit/treasure"
+			`You were able to get in touch with Tod's mother before landing. As the <ship> touched down on the landing pad, Tod wastes no time opening the hatch and running out to greet her. You hand him his share of the treasure, giving them a million credits to make a better life for themselves. Despite the incredible haul, it's not entirely certain that you and Tod found all of the hidden treasure at Gorvi before the pirates interrupted your search. Perhaps it might be worthwhile to visit the system again with an Asteroid Scanner the next time you head north. After bidding them farewell, you stick your hands into your pockets and feel your fingertips brush against a rough hewn object.`
+			choice
+				`	(Study the key.)`
+			scene "outfit/skeleton key"
+			`	The key found in the first crate at Gorvi... You've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday you'll eventually find the treasure it unlocks...`
+
+event "Treasure: Gorvi"
+	system Gorvi
+		add minables treasure 1 3
+
+
+mission "Skeleton Key South 1"
+	minor
+	name "The Deadly Wager"
+	description "Visit <destination> and find out what happened to the Deadly Wager."
+	source
+		government "Syndicate"
+		attributes spaceport
+		not attributes "uninhabited"
+	destination "Smuggler's Den"
+	to offer
+		has "Smuggler's Den: Follow Up: failed"
+		has "main plot completed"
+		random < 50 + ( 20 * "skeleton key north" ) + ( 20 * "skeleton key core")
+	on offer
+		conversation
+			scene "planet/station15"
+			`When you land, you are surprised to receive a message from Joe, the young man you transported from Smuggler's Den to Millrace to help his family escape their lives as pirate crew members. "Dear Captain <last>," he writes, "I didn't want to worry Maria, so she doesn't know I've written this letter. But I've learned that there may have been some kind of pirate rebellion on Smuggler's Den. While I don't regret leaving the pirates, I can't say we didn't have some friends among them. If you happen to visit Smuggler's Den again, could you please look up the crew of the Deadly Wager? It's the ship Maria and I were on. The captain and his officers were scum, but some of the regular crew weren't so bad. I don't know who else to ask, so I've decided to reach out to you."`
+			choice
+				`	(Honor Joe's request.)`
+					accept
+				`	(Ignore Joe's request.)`
+					decline
+	on accept
+		event "smuggler's den pirate rebellion"
+	on enter Men
+		dialog `The system is in chaos...`
+	npc
+		government "Pirate"
+		system Men
+		personality waiting staying plunders
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Ammo South"
+			variant
+				"Falcon"
+				"Osprey"
+				"Modified Argosy"
+				"Argosy"
+				"Clipper"
+				"Fury"
+				"Hawk"
+	npc
+		government "Pirate (Rivals)"
+		system Men
+		personality waiting staying plunders
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Ammo North"
+			variant
+				"Aerie"
+				"Leviathan"
+				"Mule"
+				"Berserker"
+				"Dagger" 2
+				"Firebird"
+				"Headhunter"
+	on complete
+		conversation
+			scene "planet/station15"
+			`This is where you met Joe and Maria. Most of the station occupants have either fled or are in hiding. Check the spaceport to see if you can find someone who has information on the Deadly Wager.`
+
+event "smuggler's den pirate rebellion"
+	system "Men"
+		government Pirate
+		fleet "pirate raid" 400
+		fleet "pirate raid (rivals)" 600
+
+mission "Skeleton Key South 2"
+	name "The Deadly Wager"
+	description "Find the <npc> near <waypoints>. Once you've learned the fate of its crew, return to <destination>."
+	source "Smuggler's Den"
+	waypoint Men
+	destination "Millrace"
+	to offer
+		has "Skeleton Key South 1: done"
+	on offer
+		conversation
+			scene "planet/station15"
+			`The spaceport seems like a ghost town. Hardly any ships are docked and you don't see anyone around. The silence is broken by the sound of glass being smashed.`
+			choice
+				`	(Investigate the sound.)`
+					goto looter
+				`	(Flee.)`
+			`	Fearing rioters, you return to your ship and depart.`
+				depart
+			label looter
+			`	Rushing towards the sound of the broken glass, you find a vagrant looting a vending machine. As he gathers up candy bars and bags of chips, he eyes you warily.`
+			choice
+				`	"Easy now, I just want to talk."`
+					goto talk
+				`	"Can I have some?"`
+					goto share
+				`	"Halt, in the name of justice!"`
+			scene "scene/scene-bloodyknife"
+			`	The man immediately leaps towards you like a cornered animal. As the candy bars and bags of chips he was holding in his arms fall away, you see that he was holding a knife the whole time. You are impaled before both of you crash to the floor. "There's no justice here," he yells. The overwhelming stench emanating from him is the last thing to register in your mind as you lay there dying...`
+				die
+			label talk
+			`	The man thinks a moment... then starts running!"`
+			choice
+				`	"Wait!"`
+				`	"Stop!"`
+			`	But the passages on the station are a labyrinth outsiders like you can easily get lost in. He easily slips away in the dark tunnels...`
+				defer
+			label share
+			`	The man thinks a moment... then tosses you a pack of Chocolate Num Nums. You catch it and rip open the wrapper. As you reach in, you say:`
+			choice
+				`	"Thanks. I'm looking for a the <npc>. Do you know it?"`
+				`	"I love Chocolate Num Nums! By the way, are you from around here?"`
+					goto talk
+			`	He spits. "That damned Marauder Falcon! It's all their fault this is happening!" He nods towards a nearby viewport and a Hawk being chased by two Sparrows fly by, their red lasers briefly filling the chamber with a warm glow. "They lead the fleet that started this whole mess. Got heavily damaged in that first battle and ran away. But the fightin' didn't stop after they left." He grabs a few more things from the machine then runs off.`
+			``
+			scene "thumbnail/mfalcons"
+			``
+			`	If they're heavily damaged, the <npc> might still be nearby...`
+				accept
+	on enter "Beta Lupi"
+		conversation
+			scene "thumbnail/mfalcons"
+			`You've found the <npc>. It is adrift and not responding to hails. You'll have to board it to get answers.`
+	npc board
+		government "Derelict (Killable)"
+		system "Beta Lupi"
+		personality target waiting derelict marked mute
+		ship "Derelict Marauder Falcon" "Deadly Wager"
+		conversation
+			action
+				outfit "Skeleton Key" 1
+				set "skeleton key south"
+			scene "outfit/skeleton key"
+			`The crew aboard the <npc> are dead. Some escape pods are missing, so there may be survivors. But the captain isn't among them. Clutched in his hand with a death grip is some sort of key... You've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? You pocket the key.`
+			``
+			`	Visit Joe on <destination> and let him know the final fate of the <npc>.`
+				launch
+	on complete
+		log "Minor People" "Joe and Maria" `	Joe used to be part of the crew aboard a pirate ship named the "Deadly Wager". While they didn't get along with the captain and his officers, Joe admits to having had some friends among the regular crew. Long after you helped Joe and Maria to freedom, the Deadly Wager started a pirate rebellion on Smuggler's Den. While some escaped, most of the crew died along with their captain.`
+		log `After tracking down Joe's former pirate ship, the Deadly Wager, I found some sort of key... I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
+		conversation
+			scene "outfit/skeleton key"
+			`You find Joe and tell him what you found on the <npc>. "Hopefully, our friends are among the ones who got out alive." He looks at the key. "The captain once mentioned that this was the key to something hidden on an abandoned outpost in the Dirt Belt. But two other keys were also needed to unlock it. You keep it, <first>. You're more likely to find them than I am."`
+
+mission "Skeleton Key Core 1"
+	minor
+	name "Rescue Pookie!"
+	description "Locate a pirate raider named the <npc> in the uninhabited systems of the Northern Passage and board it to rescue Pookie. Then return her to <destination>."
+	source
+		government Republic
+		attributes "north"
+		not attributes "uninhabited"
+		not planet "Shroud"
+	destination "Shroud"
+	to offer
+		or
+			has "Pookie, Part 3: declined"
+			has "Pookie, Part 5: declined"
+		has "main plot completed"
+		random < 50 + ( 20 * "skeleton key north" ) + ( 20 * "skeleton key south")
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`While walking through the spaceport you bump into a tall woman in a suit carrying a leash. Her face brightens up upon recognizing you. "I remember you! You're that transporter who took Pookie home that one time! Please, I need your help!" This woman is the "aunt" of Pookie the dog, one of your more memorable passengers.`
+			choice
+				`	"How can I help?"`
+					goto help
+				`	"Nope. You must have me confused with someone else."`
+			`	"Really? I could have sworn it was you..." The woman looks downtrodden as you walk away.`
+				decline
+			label help
+			`	"Pookie's been kidnapped!"`
+			``
+			choice
+				`	"The dog?"`
+			``
+			`	"Yes!"`
+			``
+			choice
+				`	"The dog's been kidnapped?"`
+			``
+			`	"Yes!"`
+			``
+			choice
+				`	"Did this happen recently?"`
+					to display
+						has "Pookie, Part 5: declined"
+				`	"So what do you want me to do about it?"`
+					goto whyme
+			``
+			`	"Just yesterday!" That means Pookie was found sometime after you presented Puny to Pookie's owner.`
+			``
+			choice
+				`	"So what do you want me to do about it?"`
+			label whyme
+			``
+			`	"The kidnappers were on a pirate ship named the <npc>. They fled to the uninhabited systems of the Northern Passage, those empty systems stretching south from Alnitak. I've reported this to the authorities, but they won't devote resources to rescuing a dog. Please help!"`
+			choice
+				`	"I don't work for free."`
+				`	"Sorry, not interested."`
+					decline
+			`	"I can pay 160,000 credits." That's not unreasonable...`
+			choice
+				`	"Alright, I'll track down Pookie."`
+					goto agree
+				`	"Wouldn't it be cheaper to just buy a new dog?"`
+			branch Puny
+				has "Pookie, Part 5: declined"
+			`	"I tried looking, but none of the ones for sale look remotely like Pookie..." That's right, Pookie belongs to a different woman on Hestia. This one was just taking care of her.`
+				goto end
+			label Puny
+			`	"I tried looking, but none of the ones for sale look remotely like Pookie..." That's right, Pookie's owner rejected Puny based on the dog's appearance.`
+			label end
+			choice
+				`	"Alright, I'll track down Pookie."`
+				`	"Sorry, not interested."`
+					decline
+			label agree
+			`	"Thank you so much!" She hands you the leash and starts reminding you about feeding schedules and other details that turned out to be irrelevant the last time you dealt with Pookie. "I'll be waiting for you on <destination>."`
+				accept
+	on enter Hassaleh
+		conversation
+			scene "thumbnail/mule"
+			`You've located the <npc>! Board the ship and find Pookie!`
+	npc board
+		government "Bounty"
+		system Hassaleh
+		personality target waiting staying plunders
+		ship "Mule" "Bone Cruncher"
+		conversation
+			scene "outfit/map"
+			`You demand to know what the pirates did with the dog they captured. One confesses that they sold it to a kennel on Stormhold in the Alcyone system. "Lots of cold hungry people there you know," he taunts you. "Maybe they already turned it into a nice warm stew..." The pirate rubs his belly and grins.`
+	to fail
+		has "Skeleton Key Core 2: offered"
+	on visit
+		dialog `You have to rescue Pookie! Track down the <npc> and board the ship!`
+	on complete
+		conversation
+			scene "outfit/attention"
+			`	The crew of the <npc> sold Pookie to someone on Stormhold in the Alcyone system! Visit that world and rescue her!`
+
+mission "Skeleton Key Core 1B"
+	minor
+	name "Rescue Pookie!"
+	description "The crew of the <npc> sold Pookie to someone on <destination>! Visit that world and rescue her!"
+	source "Shroud"
+	destination "Stormhold"
+	to offer
+		has "Skeleton Key Core 1: done"
+		not "Skeleton Key Core 2: offered"
+
+mission "Skeleton Key Core 2"
+	landing
+	name "Rescue Pookie!"
+	description "Return Pookie to <destination>."
+	passengers 1
+	blocked `You don't have a spare bunk for Pookie! Return when you do.`
+	source Stormhold
+	destination "Shroud"
+	to offer
+		or
+			has "Skeleton Key Core 1: active"
+			has "Skeleton Key Core 1B: done"
+	on offer
+		outfit "Skeleton Key"
+		set "skeleton key core"
+		conversation
+			scene "outfit/unknown"
+			`Although most of it is uninhabited frosty wilderness, Stormhold is still a big world. Even if Pookie hasn't been eaten, there's no guarantee you'll be able to find her. As these thoughts go through your head, you find the kennel nearest to the spaceport and try your luck. As you open the door, your senses are assaulted by the smell of dogs kept indoors for too long and a chorus of random barking. Looking at the poor animals in cages, you see no sign of Pookie. It looks like you'll have to try somewhere else. You exit the kennel and begin trudging through the cold to the next one. How many kennels will you have to search through anyway?`
+			`	Before you can dwell on that question for too long, a dog resembling Pookie runs up towards you! It wags its tail and rubs against your leg. You notice there's something in its mouth.`
+			choice
+				`	"What have you got there?"`
+			scene "outfit/skeleton key"
+			`	It's a human arm, severed at the elbow... It looks half frozen, as if Pookie dug it up from beneath the snow. Gripped in its hand is some sort of key. You've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them?`
+			``
+			`	As you're thinking about this, Pookie decides to pee on your leg... Any doubts you may have had about whether or not this is really Pookie just got washed away. You quickly pocket the key and put her on the leash. Better get her back to <destination> before she vomits on anything.`
+				accept
+	on fail
+		dialog `[MISSION FAILED] You failed to bring Pookie to <planet>. If life were a game, you could load a save file and try again.`
+	on complete
+		payment 160000
+		log "Minor People" "Pocahontas (Pookie)" `	Pookie was kidnapped while being looked after by her "aunt". The pirates who took her had sold the dog to a kennel on Stormhold. Found Pookie wandering in the snow and brought her back to her "aunt" on Shroud.`
+		log `Rescued Pookie on the dog Stormhold after she was kidnapped by pirates. When I found her she had retrieved a severed arm that had been buried in the snow. In the arm's clenched fist was some sort of key... I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
+		dialog `The journey with Pookie was just as it was the last time you took her aboard your ship. Pookie's aunt pays you <payment> and thanks you for rescuing the dog. "I know she's a pain to handle, but her owner would be really sad if we lost her."`
+
+mission "Skeleton Keys, Three 1"
+	landing
+	name "Three Skeleton Keys"
+	description "Visit Joe on <destination> and ask about the abandoned outpost his captain referred to."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent" "Neutral"
+		not planet "Millrace"
+	destination "Millrace"
+	to offer
+		or
+			and
+				has "skeleton key north"
+				has "skeleton key core"
+				has "skeleton key south"
+			and
+				has "Skeleton Key Core 2: done"
+				has "Skeleton Key North 2: done"
+		has "Skeleton Key South 2: done"
+	on offer
+		clear "skeleton key north"
+		clear "skeleton key core"
+		clear "skeleton key south"
+		require "Skeleton Key" 3
+		conversation
+			scene "outfit/map"
+			`You have three Skeleton Keys, but are uncertain where to find the treasure they are meant to unseal. It's time you consulted with a former pirate. While Tod was enslaved by them for a time, Joe on <destination> had more experience and may have more information that could help you.`
+				accept
+	on enter "Fomalhaut"
+		event "midnight: reveal cadrelock rock in eber"
+
+event "midnight: reveal cadrelock rock in eber"
+	system Eber
+		remove object
+			sprite "planet/asteroid base2"
+			distance 950
+			period 360
+		add object "Cadrelock Rock"
+			sprite "planet/asteroid base2"
+			distance 950
+			period 360
+
+
+mission "Skeleton Keys, Three 2"
+	landing
+	name "Three Skeleton Keys"
+	description "The treasure of the three Skeleton Keys may be hidden in one of the systems marked on your map. Visit <stopovers> to search for it."
+	source "Millrace"
+	to offer
+		has "Skeleton Keys, Three 1: done"
+	on offer
+		require "Skeleton Key" 3
+		conversation
+			scene "outfit/skeleton key"
+			`You send a message to Joe informing him that you'd like his insight on where the abandoned outpost could be located in the Dirt Belt. He agrees to meet at a spaceport cafe. Perhaps he still hasn't told Maria about his request to look into the Deadly Wager.`
+			scene "planet/ice2"
+			`	After you settle in at a corner booth, Joe gets down to business. "Hope, in the Wei system is one possibility. But storing things there can be risky due to scavengers. My old captain tried to stash some gold there once. But when he went back later to retrieve some, it had already been pilfered.`
+			choice
+				`	"What else?"`
+			scene "planet/tethys"
+			`	Then there's Watcher, in Algieba. I've never been that far north myself, but from what I've heard the smugglers who use that moon to do their exchanges occasionally run into scientists doing research on the moon's wildlife. Finally, there are the two abandoned stations."`
+			choice
+				`	"Two abandoned stations?"`
+			scene "planet/nasa derelict station1"
+			`	Joe nods. "Eureka Station in the Ipsing system gets a lot of smugglers too. The Deadly Wager would sometimes go there to provide backup if a client's trade went bad or to pick off an easy mark after they had finished their exchange."`
+			choice
+				`	"And the other one?"`
+			scene "planet/asteroid base2"
+			`	"That would be Cadrelock Rock, a fuel waystation at Eber. Some pirates who don't have enough fuel tanks use it to get through the Dirt Tunnel." He sees your reaction to the term and clarifies, "That's pirate slang for the string of uninhabited systems stretching east of Wei. There's nothing special about it other than being an out of the way place to refuel. It's basically just a small docking bay with some fuel tanks and a ramscoop bolted to an asteroid. The Deadly Wager used it plenty of times."`
+			`	Before Joe can say more, he receives a message. "Sorry <first>, I have to go. Maria needs me to pick up some things from the market for tonight's dinner. Good luck with your search." As he gets up he adds, "You've done a lot for us. I hope this information was able to help you."`
+			choice
+				`	"Thanks for your help Joe."`
+			scene "outfit/map"
+			`	Hope, Watcher, Eureka Station, and Cadrelock Rock. Joe has given you four leads. One of them could contain the treasure locked away by the three Skeleton Keys...`
+				accept
+	on accept
+		log `Joe suggested I search Hope, Watcher, Eureka Station, and Cadrelock Rock for the treasure that can be unlocked by the three Skeleton Keys.`
+
+	stopover Hope
+	stopover Watcher
+	stopover "Eureka Station"
+	stopover "Cadrelock Rock"
+	waypoint Eber
+	to complete
+		never
+
+	npc
+		government "Pirate"
+		system Wei
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Falcon (Inferno Rockets)" "Burning Rain"
+
+	on enter Algieba
+		dialog `You receive a distress call from the science vessel Copernicus: "Help! We are being attacked by pirates!"`
+	npc
+		government "Merchant"
+		system Algieba
+		personality waiting staying derelict timid
+			confusion 30
+		ship "Star Explorer" "Copernicus"
+	npc
+		government "Pirate"
+		system Algieba
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Leviathan (Turbo Blaster)" "Red Death"
+	npc
+		government "Pirate"
+		system Ipsing
+		personality waiting staying timid uninterested unconstrained
+			confusion 20
+		ship "Patrolboat (Turbo Blaster)" "Crimson Dawn"
+		ship "Modified Clipper (Turbo Blaster)" "Scarlet Dusk"
+	npc
+		government "Pirate"
+		system Alnasl
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Osprey (Flamethrower)" "Heat Wave"
+	npc
+		government "Pirate"
+		system "Alpha Arae"
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Modified Argosy (Turbo Blaster)" "Red Rum"
+	npc
+		government "Pirate"
+		system Eber
+		personality waiting staying plunders harvests
+			confusion 20
+		ship "Bastion (Inferno Rockets)" "Magma Flow"
+
+
+mission "Skeleton Keys, Three 3 (Hope)"
+	landing
+	invisible
+	repeat
+	source "Hope"
+	to offer
+		has "Skeleton Keys, Three 2: active"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`After searching for a few hours you find nothing that could be related to the three Skeleton Keys. Your search continues...`
+				decline
+
+mission "Skeleton Keys, Three 3 (Watcher)"
+	landing
+	invisible
+	repeat
+	source "Watcher"
+	to offer
+		has "Skeleton Keys, Three 2: active"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`After searching for a few hours you find nothing that could be related to the three Skeleton Keys. Your search continues...`
+				decline
+
+mission "Skeleton Keys, Three 3 (Eureka)"
+	landing
+	invisible
+	repeat
+	source "Eureka Station"
+	to offer
+		has "Skeleton Keys, Three 2: active"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`After searching for a few hours you find nothing that could be related to the three Skeleton Keys. Your search continues...`
+				decline
+
+
+mission "Skeleton Keys, Three 3 (Cadrelock Rock)"
+	landing
+	invisible
+	source "Cadrelock Rock"
+	to offer
+		or
+			has "Skeleton Keys, Three 2: active"
+			has "Skeleton Keys, Three 4: declined"
+	on offer
+		require "Skeleton Key" 3
+		fail "Skeleton Keys, Three 2"
+		conversation
+			scene "outfit/skeleton key"
+			branch "revisit"
+				has "Skeleton Keys, Three 4: declined"
+			`As Joe described, Cadrelock Rock is a small docking bay attached to some fuel tanks and a ramscoop. But he didn't specify how huge these fuel tanks are. Most of it all is buried beneath the surface of the asteroid, making the waystation inconspicuous to anyone looking at it from a distance. Searching the area, you find three places to plug in the Skeleton Keys.`
+			choice
+				`	(Plug in one of the keys.)`
+				`	(Maybe another time...)`
+					goto delay
+			`	You hear the sounds of old machinery activating deep within the asteroid...`
+			choice
+				`	(Plug in a second key.)`
+				`	(Maybe another time...)`
+					goto delay
+			`	You hear the sounds of heavy metal sliding against metal deep within the asteroid...`
+			choice
+				`	(Plug in the third key.)`
+				`	(Maybe another time...)`
+					goto delay
+			scene "thumbnail/starcadia-thumb"
+			`	A section of the wall retracts, revealing a passage leading farther into the rock. It leads to a concealed hangar, where a ship you're unfamiliar with is parked. The entry hatch is open.`
+			choice
+				`	(Have a look inside.)`
+				`	(Maybe another time...)`
+					goto delay
+			scene "scene/scene-sivael3cropdark"
+			`	Looking through the halls and rooms, it appears that no one is aboard. While searching the ship's computers, you find data files about it. This is the Starcadia, a Deep Security prototype that was in development near the end of the Alpha War. The Starcadia was stolen before the design could be finalized for mass production. The blueprints are on file and you can see that the technology on it is a bit dated. However, this was a cutting edge ship for its time, easily surpassing the Navy Frigate.`
+				goto end
+			label delay
+			`	You put away the Skeleton Keys. You've decided that the secrets of Cadrelock Rock will have to wait for another day...`
+				defer
+			label revisit
+			`	Do you want to see the Starcadia again?`
+			choice
+				`	(Check on the ship.)`
+				`	(Keep it secret. Keep it safe.)`
+					defer
+			scene "thumbnail/starcadia-thumb"
+			`	It's still here.`
+			label end
+			``
+			`	To claim the Starcadia, you'll have to return with 48 crew members (Land on an inhabited planet with 48 empty bunks to recruit them).`
+				decline
+	on decline
+		clear "Skeleton Keys, Three 4: offered"
+
+mission "Skeleton Keys, Three 4"
+	landing
+	name "Starcadia"
+	description "Bring 48 crew to <destination> and retrieve the Starcadia."
+	passengers 48
+	blocked "Even if you found a dedicated crew for the Starcadia, you don't have 48 empty bunks to carry them."
+	source
+		not attributes "uninhabited"
+	destination "Cadrelock Rock"
+	to offer
+		has "Skeleton Keys, Three 3 (Cadrelock Rock): declined"
+	on offer
+		conversation
+			scene "thumbnail/starcadia-thumb"
+			`Do you want to recruit a crew for the Starcadia?`
+			choice
+				`	(Recruit a crew for the Starcadia.)`
+				`	(Abandon the Starcadia.)`
+					goto abandon
+			`	You recruit 48 crew members for the Starcadia. Return to <destination> and retrieve the ship.`
+				accept
+			label abandon
+			`	You've decided to abandon the Starcadia for now.`
+				decline
+	on decline
+		clear "Skeleton Keys, Three 3 (Cadrelock Rock): offered"
+	on abort
+		clear "Skeleton Keys, Three 4: offered"
+		dialog `You've decided to abandon the Starcadia for now.`
+	on fail
+		clear "Skeleton Keys, Three 4: offered"
+		dialog `You no longer have enough crew for the Starcadia! You'll have to try recruiting more.`
+	on complete
+		give ship "Starcadia (Prototype)" "Starcadia"
+		log `Used the three "Skeleton Keys" to recover the Deep Security prototype ship "Starcadia" from a hidden vault on "Cadrelock Rock". The ship was stolen near the end of the Alpha War. Who stole it and hid it there is a mystery.`
+		conversation
+			scene "thumbnail/starcadia-thumb"
+			`The new crew members board the Starcadia and prepare to launch. The camoflaged entrance to the hangar bay slides open and the latest addition to your fleet is ready to depart.`
+
+mission "Skeleton Key Observer"
+	landing
+	invisible
+	deadline 7
+	source "Cadrelock Rock"
+	to offer
+		has "Skeleton Keys, Three 4: done"
+	npc save
+		government "Independent (Killable)"
+		personality entering mute coward
+		ship "Marauder Raven (Engines)" "Bone Scavenger"
+
+mission "Smuggler's Den Independent Again"
+	landing
+	invisible
+	source
+		attributes "south" "rim" "pirate"
+		not attributes "south pirate"
+	destination "Smuggler's Den"
+	to offer
+		has "Skeleton Key South 2: done"
+		has "event: Thule becomes independent"
+	on offer
+		event "smuggler's den independent restored"
+	npc
+		government "Free Worlds"
+		system Men
+		personality waiting staying
+			confusion 10
+		fleet
+			names "free worlds capital"
+			fighters "free worlds fighters"
+			cargo 2
+			commodities "Food" "Medical"
+			variant
+				"Dreadnought"
+				"Falcon"
+				"Bastion"
+				"Osprey"
+				"Argosy"
+				"Skein"
+				"Roost"
+				"Nest"
+				"Finch" 12
+				"Hawk"
+				"Fury"
+				"Sparrow"
+	on complete
+		conversation
+			scene "planet/station15"
+			`The Free Worlds has cleared out the pirates fighting over this system and a semblance of order has been restored on the station.`
+
+event "smuggler's den independent restored"
+	system "Men"
+		government "Independent"
+		fleet "Small Independent" 400
+		fleet "Large Independent" 600
+		fleet "Small Southern Merchants" 2000
+		fleet "Large Southern Merchants" 4000
+		fleet "Small Southern Pirates" 2500
+		fleet "Large Southern Pirates" 5000
+		fleet "Large Free Worlds" 1500
+
+mission "Smuggler's Den Rebellion Ends"
+	landing
+	invisible
+	source
+		attributes "south" "rim" "pirate"
+		not attributes "south pirate"
+	destination "Smuggler's Den"
+	to offer
+		has "Skeleton Key South 2: done"
+		not "event: Thule becomes independent"
+		random < 5
+	on offer
+		event "smuggler's den rebellion ends"
+	on complete
+		conversation
+			scene "planet/station15"
+			`One of the pirate factions finally took over this system and a semblance of order has been restored on the station.`
+
+event "smuggler's den rebellion ends"
+	system "Men"
+		government Pirate
+		fleet "Small Southern Pirates" 400
+		fleet "Large Southern Pirates" 600
+		fleet "Small Northern Pirates" 2000
+		fleet "Large Northern Pirates" 4000
+
+
+
+mission "Skeleton Keys Starcadia Deep Epilogue"
+	landing
+	invisible
+	deadline 7
+	source
+		attributes "deep"
+		attributes "shipyard"
+		not attributes "uninhabited"
+	to offer
+		has "Skeleton Keys, Three 4: done"
+		has "flagship model: Starcadia"
+		not "captain of atrocity"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you exit your ship, you are greeted by officers from Deep Security. A man steps forward and addresses you. "<first> <last>, wecome to <origin>. We couldn't help but notice that you've arrived flying a stolen ship."`
+			choice
+				`	"I didn't steal it. I found it abandoned."`
+				`	"Don't you have a statute of limitations for that?"`
+					goto statute
+				`	(Run.)`
+					goto run
+			scene "thumbnail/starcadia-thumb"
+			`	"Of course you didn't steal it. The Starcadia was stolen long before you were even born. Most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, afterall."`
+				goto blueprints
+			label statute
+			scene "thumbnail/starcadia-thumb"
+			`	"You have a point. The Starcadia was stolen long enough ago that most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, afterall."`
+			label blueprints
+			choice
+				`	"Don't you have the original blue prints?"`
+				`	(Run.)`
+					goto run
+			scene "thumbnail/dagger"
+			`	"The only copy is in that ship's computer and was lost when the Starcadia was stolen. Don't worry, we'll let you keep this ship. We are only interested in regaining the blue prints and checking if any modifications were done since it was stolen." While the officer is talking, a pair of Daggers pass overhead...`
+			choice
+				`	"Alright, you can study the <ship>."`
+				`	(Run.)`
+			scene "thumbnail/starcadia-thumb"
+			`	"Thank you for your cooperation Captain <last>." The officers call in a tech team and they retrieve the blue prints. While doing so, they make additional scans of the <ship>. Satisfied with their data, they release you.`
+				decline
+			label run
+			scene "thumbnail/raven"
+			`	You slam the entry hatch shut and begin preparations for lift off. Most of the officers are clearing away from the landing pad, but the one you were talking to is calmly speaking into his communicator... Your radar shows a pair of Ravens is targetting you.`
+				launch
+	npc evade
+		government "Deep"
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Aerie"
+				"Dagger" 2
+				"Raven" 2
+	npc evade
+		government "Deep"
+		system
+			distance 1
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Raven (Heavy)" 2
+	npc evade
+		government "Deep"
+		system
+			distance 2
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Raven (Afterburner)" 2
+	npc evade
+		government "Deep"
+		system
+			distance 3
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Marauder Raven"
+	npc evade
+		government "Deep"
+		system
+			distance 3
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Marauder Raven (Engines)"
+	npc evade
+		government "Deep"
+		system
+			distance 3
+		personality waiting heroic vindictive unconstrained
+		fleet
+			names "deep"
+			fighters "deep fighter"
+			cargo 0
+			variant
+				"Marauder Raven (Weapons)"
+	on decline
+		event "starcadia added to deep security" 60
+
+
+# Alternate reveal for Cadrelock Rock
+mission "Skeletons Declined: Cadrelock Rock Reveal"
+	minor
+	invisible
+	source
+		attributes "dirt belt" "south"
+		not government "Pirate"
+	to offer
+		or
+			has "Paradise Fortune 1: declined"
+			has "Paradise Fortune 1: failed"
+			has "Paradise Fortune 1: aborted"
+			has "Paradise Fortune 2: declined"
+			has "Paradise Fortune 2: failed"
+			has "Paradise Fortune 2: aborted"
+			has "Paradise Fortune 3: declined"
+			has "Paradise Fortune 3: failed"
+			has "Paradise Fortune 3: aborted"
+			has "Pookie, Part 1: declined"
+			has "Pookie, Part 1: failed"
+			has "Pookie, Part 1: aborted"
+			has "Pookie, Part 2: failed"
+			has "Pookie, Part 2: aborted"
+			has "Pookie, Part 3: failed"
+			has "Pookie, Part 3: aborted"
+			has "Pookie, Part 4: failed"
+			has "Pookie, Part 4: aborted"
+			has "Pookie, Part 5: failed"
+			has "Pookie, Part 5: aborted"
+			has "Smuggler's Den, Part 1: declined"
+			has "Smuggler's Den, Part 1: failed"
+			has "Smuggler's Den, Part 1: aborted"
+			has "Smuggler's Den, Part 2: declined"
+			has "Smuggler's Den, Part 2: failed"
+			has "Smuggler's Den, Part 2: aborted"
+			has "Smuggler's Den: Follow Up: declined"
+			has "Skeleton Key North 1: declined"
+			has "Skeleton Key North 1: failed"
+			has "Skeleton Key North 1: aborted"
+			has "Skeleton Key North 2: failed"
+			has "Skeleton Key North 2: aborted"
+			has "Skeleton Key South 1: declined"
+			has "Skeleton Key South 1: aborted"
+			has "Skeleton Key South 2: failed"
+			has "Skeleton Key South 2: aborted"
+			has "Skeleton Key Core 1: declined"
+			and
+				has "Skeleton Key Core 1: failed"
+				not "Skeleton Key Core 2: offered"
+			has "Skeleton Key Core 1: aborted"
+			has "Skeleton Key Core 1B: aborted"
+			has "Skeleton Key Core 2: failed"
+			has "Skeleton Key Core 2: aborted"
+		or
+			and
+				not "Randomize Skeletons Declined: Cadrelock Rock Reveal"
+				random < 70
+			and
+				has "Randomize Skeletons Declined: Cadrelock Rock Reveal"
+				random < 10
+	on offer
+		conversation
+			branch one
+				random < 75
+			scene "thumbnail/argosy"
+			`You see a severely damaged Argosy being repaired.`
+			choice
+				`	(Ask what happened.)`
+					goto ask
+				`	(Ignore it.)`
+					defer
+			label one
+			branch two
+				random < 66
+			scene "thumbnail/clipper"
+			`You see a severely damaged Clipper being repaired.`
+			choice
+				`	(Ask what happened.)`
+					goto ask
+				`	(Ignore it.)`
+					defer
+			label two
+			branch three
+				random < 50
+			scene "thumbnail/hauler i"
+			`You see a severely damaged Hauler being repaired.`
+			choice
+				`	(Ask what happened.)`
+					goto ask
+				`	(Ignore it.)`
+					defer
+			label three
+			scene "thumbnail/freighter"
+			`You see a severely damaged Freighter being repaired.`
+			choice
+				`	(Ask what happened.)`
+					goto ask
+				`	(Ignore it.)`
+					defer
+			label ask
+			scene "outfit/fuel pod"
+			`	"We were trying to get through the Dirt Tunnel, that string of uninhabited systems on the southern edge of the Dirt Belt. But we got low on fuel. It seemed that we'd be stranded for a while, but one of the crew spotted some sort of structure built into an asteroid. After getting a closer look, we realized it was a hidden refueling station! We docked and started filling our fuel tanks."`
+			choice
+				`	"Did a malfunction cause the fuel to explode?"`
+				`	"Did one of the crew light a cigarette near the fuel?"`
+			scene "thumbnail/sparrow"
+			`	"No, the damage wasn't caused by a fuel explosion. Just as we were finishing up, a pirate Sparrow found us!" The damage to their ship seems more severe than you'd expect from a single Sparrow.`
+			choice
+				`	"A Sparrow did all this?"`
+			scene "outfit/red screwdriver"
+			`	"We could have handled a single Sparrow. But this one had friends. It turns out that the station is maintained by pirates! They called it 'Cadrelock Rock' and said we had invaded their turf. They wanted a bribe, but we didn't have enough credits. It was a miracle we were able to get out of there in one piece."`
+			choice
+				`	"What system is it in?"`
+			scene "planet/asteroid base2"
+			`	"We were more focused on getting out alive than maintaining our maps... But I'm fairly sure it was in Eber."`
+				decline
+	on defer
+		set "Randomize Skeletons Declined: Cadrelock Rock Reveal"
+	on decline
+		event "midnight: reveal cadrelock rock in eber"

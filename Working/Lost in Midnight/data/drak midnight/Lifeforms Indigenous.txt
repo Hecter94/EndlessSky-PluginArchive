@@ -43,7 +43,7 @@ mission "First Contact: Subsidurials"
 		event "Subsidurial Ember Waste"
 		event "Subsidurial Coalition"
 		event "Subsidurial Korath"
-	npc kill
+	npc
 		government "Indigenous Lifeform"
 		personality waiting staying timid mining harvests mute unconstrained
 		fleet "Subsidurial"
@@ -141,7 +141,9 @@ event "Subsidurial Korath"
 	system Solifar
 		add fleet "Subsidurial" 40000
 
-
+phrase subsidurial
+	word
+		Subsidurial
 
 ship "Subsidurial" "Subsidurial Tamed"
 	sprite "ship/subsidurial tamed"
@@ -168,6 +170,8 @@ mission "Subsidurial Herding Job Easy"
 		government "Indigenous Lifeform"
 		personality escort mute mining harvests
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Tamed" 3
 			variant
@@ -208,6 +212,8 @@ mission "Subsidurial Herding Job Hard"
 		government "Indigenous Lifeform"
 		personality escort mute mining harvests
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Tamed" 3
 			variant
@@ -269,6 +275,8 @@ mission "Subsidurial Herding Mission Easy"
 		government "Indigenous Lifeform"
 		personality escort mute mining harvests
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Tamed" 3
 			variant
@@ -318,6 +326,8 @@ mission "Subsidurial Herding Mission Hard"
 		government "Indigenous Lifeform"
 		personality escort mute mining harvests
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Tamed" 3
 			variant
@@ -388,12 +398,12 @@ ship "Subsidurial" "Subsidurial Weaponized C"
 		"weapon capacity" 80
 	outfits
 		Mouthparts? 3
-		"Modified Blaster Turret" 2
+		"Quad Mod Blaster Turret" 2
 	gun Mouthparts?
 	gun Mouthparts?
 	gun Mouthparts?
-	turret "Modified Blaster Turret"
-	turret "Modified Blaster Turret"
+	turret "Quad Mod Blaster Turret"
+	turret "Quad Mod Blaster Turret"
 
 mission "Day of Subsidurius"
 	minor
@@ -434,6 +444,8 @@ mission "Day of Subsidurius"
 		personality target waiting vindictive coward mute
 			confusion 120
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Weaponized A" 4
 				"Subsidurial Weaponized B" 4
@@ -468,6 +480,8 @@ mission "Weaponized Subsidurial Bounty"
 		personality target entering harvests mute
 			confusion 120
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Weaponized A" 1
 				"Subsidurial Weaponized B" 2
@@ -509,6 +523,8 @@ mission "Weaponized Subsidurial Stray"
 		personality target mining harvests mute
 			confusion 120
 		fleet
+			names subsidurial
+			cargo 0
 			variant
 				"Subsidurial Weaponized A"
 			variant
@@ -680,6 +696,7 @@ mission "Subsidurial Porter (North)"
 		government "Merchant"
 		personality target escort mute
 		fleet
+			names subsidurial
 			cargo 3
 			variant
 				"Subsidurial Porter"
@@ -759,6 +776,7 @@ mission "Subsidurial Porter (South)"
 		government "Merchant"
 		personality target escort mute
 		fleet
+			names subsidurial
 			cargo 3
 			variant
 				"Subsidurial Porter"
@@ -812,6 +830,7 @@ mission "Golden Subsidurials"
 			distance 1 2
 		personality target staying uninterested mute
 		fleet
+			names subsidurial
 			cargo 1
 			outfitters "Gold"
 			variant 10
@@ -826,6 +845,7 @@ mission "Golden Subsidurials"
 			distance 2 3
 		personality target staying uninterested mute
 		fleet
+			names subsidurial
 			cargo 1
 			outfitters "Gold"
 			variant 10
@@ -840,6 +860,7 @@ mission "Golden Subsidurials"
 			distance 3 4
 		personality target staying uninterested mute
 		fleet
+			names subsidurial
 			cargo 1
 			outfitters "Gold"
 			variant 10
@@ -896,16 +917,169 @@ mission "Midnight Market: Pet Subsidurial"
 	npc kill
 		government "Escort"
 		personality escort mute mining harvests marked
-		ship "Subsidurial Tamed"
+		ship "Subsidurial Tamed" "Subsidurial"
 		dialog "Your pet Subsidurial has passed away..."
 	on complete
 		clear "Midnight Market: Pet Subsidurial: offered"
 
 
 
+ship "Subsidurial" "Subsidurial (Infant)"
+	noun "creature"
+	sprite "ship/subsidurial"
+		"scale" .5
+	thumbnail "thumbnail/subsidurial"
+	"never disabled"
+	attributes
+		category "Light Freighter"
+		"hull" 5800
+		"automaton" 1
+		"mass" 350
+		"cargo space" 35
+		"drag" 4.1
+		"heat dissipation" .4
+		"fuel capacity" 100
+		"thrust" 6
+		"turn" 450
+		"hull repair rate" 1
+		"ion protection" 1
+		"ion resistance" .5
+		"energy capacity" .5
+		"inscrutable" 1
+		"gaslining" 1
+		"hyperdrive" 1
+		"jump speed" .1
+	leak "blood" 15 25
+	explode "blood" 25
+	"final explode" "blood"
+	"final explode" "subsidurial death"
+	description "Due to their tiny mouths, young Subsidurials rely on their parents to break down asteroids during the early developmental years and are likely to die from starvation if orphaned."
+
+mission "A Subsidurial Gives Birth"
+	landing
+	invisible
+	destination "Pugglemug"
+	to offer
+		has "main plot completed"
+		random < 20
+	on enter "Deneb"
+		event "add subsidurial infants"
+		conversation
+			scene "thumbnail/subsidurial"
+			`A rare scene is playing out as a Subsidurial gives birth. Several other ship captains have paused to observe the spectacle. With one last push, the infant is free. If floats about, uncertain of the new universe surrounding it, then flies to join its parents.`
+	npc
+		government "Indigenous Lifeform"
+		system "Deneb"
+		personality waiting staying timid mining harvests mute uninterested
+		fleet
+			names subsidurial
+			cargo 0
+			variant
+				"Subsidurial" 2
+				"Subsidurial (Infant)"
+
+event "add subsidurial infants"
+	fleet "Subsidurial"
+		add variant 1
+			"Subsidurial" 2
+			"Subsidurial (Infant)"
+	fleet "Subsidurial (Ember Waste)"
+		add variant 1
+			"Subsidurial" 2
+			"Subsidurial (Infant)"
+
+mission "A Subsidurial Gives Birth Cleanup"
+	landing
+	invisible
+	source
+		not planet "Pugglemug"
+	to offer
+		has "event: add subsidurial infants"
+		has "A Subsidurial Gives Birth: active"
+	on offer
+		fail "A Subsidurial Gives Birth"
+		fail
+
+ship "Subsidurial Titan"
+	noun "creature"
+	sprite "ship/subsidurial"
+		"scale" 2
+	thumbnail "thumbnail/subsidurial"
+	"never disabled"
+	attributes
+		category "Heavy Freighter"
+		"hull" 23200
+		"automaton" 1
+		"mass" 1400
+		"cargo space" 140
+		"drag" 16.4
+		"heat dissipation" 1.6
+		"fuel capacity" 200
+		"thrust" 20
+		"turn" 1600
+		"hull repair rate" 6
+		"ion protection" 3
+		"ion resistance" 1
+		"energy capacity" 2
+		"inscrutable" 1
+		"gaslining" 1
+		"hyperdrive" 1
+		"jump speed" .2
+	outfits
+		Mouthparts? 6
+	gun 0 -194 Mouthparts?
+	gun 0 -194 Mouthparts?
+	gun -45 -182 Mouthparts?
+	gun -45 -182 Mouthparts?
+	gun 45 -182 Mouthparts?
+	gun 45 -182 Mouthparts?
+	turret -40 -10
+	turret 40 -10
+	leak "blood" 60 100
+	explode "blood" 90
+	"final explode" "subsidurial death"
+	description "Some Subsidurials can grow to titanic sizes if given abundant food and a lack of predators."
+
+mission "Midnight Remnant: Cognizance 35 plus"
+	landing
+	invisible
+	source "Ssil Vida"
+	waypoint "Diespiter"
+	waypoint "Statina"
+	waypoint "Vaticanus"
+	waypoint "Egeria"
+	waypoint "Prosa"
+	to offer
+		has "Remnant: Cognizance 34: done"
+	npc
+		government "Ember Waste"
+		system "Vaticanus"
+		personality timid mining harvests mute unconstrained uninterested
+		ship "Subsidurial Titan" "Subsidurial"
+
+mission "Midnight Remnant: Cognizance 37 plus"
+	landing
+	invisible
+	repeat
+	destination "Ssil Vida"
+	to offer
+		has "Remnant: Cognizance 35: done"
+		has "remnant: ssil vida active"
+		random < 5
+	npc
+		government "Ember Waste"
+		system Postverta
+		personality timid mining harvests mute unconstrained uninterested
+		ship "Subsidurial Titan" "Subsidurial"
+	to fail
+		not "remnant: ssil vida active" 
+
+
+
 ship "Gray Eye"
 	noun "creature"
 	sprite "ship/grayeye"
+	thumbnail "thumbnail/gray eye-thumb"
 	"never disabled"
 	attributes
 		category "Light Warship"
@@ -920,7 +1094,9 @@ ship "Gray Eye"
 		"turn" 800
 		"hull repair rate" 3
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 1
 		"inscrutable" 1
 		"gaslining" 1
@@ -944,8 +1120,7 @@ ship "Gray Eye"
 ship "Gray Eye" "Gray Eyed"
 	sprite "ship/grayeye flip"
 	"never disabled"
-	
-	
+
 outfit Tail?
 	category "Guns"
 	thumbnail "outfit/unknown"
@@ -964,8 +1139,12 @@ outfit Tail?
 		"hull damage" 400
 		"hit force" 40
 
+phrase "gray eye"
+	word
+		"Gray Eye"
 
 fleet "Gray Eye"
+	names "gray eye"
 	government "Indigenous Lifeform"
 	cargo 0
 	personality
@@ -986,6 +1165,8 @@ mission "Ayab's Revenge"
 		"combat rating" > 10
 		random < 25
 	on offer
+		log "People" "Captain Ayab" `A starship captain seeking revenge against the Gray Eye that destroyed his previous ship. With his new ship, the Ayab's Revenge, he is recruiting other starship captains to join his fleet.`
+		log "Factions" "Subsidurials" `Very old Subsidurials are known as Gray Eyes. They have thicker hides and can be temperamental, having learned how to deliver a powerful slap with their tail.`
 		conversation
 			`You're at a spaceport bar when a grizzeled old starship captain with a crazed expression on his face approaches your table.`
 			`"You that new hotshot, <last>?"`
@@ -997,6 +1178,7 @@ mission "Ayab's Revenge"
 			choice
 				`	"Hunt? What..."`
 				`	"Wait, I'm not..."`
+			scene "thumbnail/gray eye-thumb"
 			`"Gray Eye!" The man screams loudly. "The accursed creature destroyed my first ship! But now I finally have a new ship and am building up my fleet! Soon it will know my revenge!"`
 			choice
 				`	"But I have my own..."`
@@ -1013,7 +1195,7 @@ mission "Ayab's Revenge"
 	npc save
 		government "Creature Hunter"
 		personality escort heroic vindictive
-		ship "Modified Argosy (Missile)" "Ayab's Revenge"
+		ship "Modified Argosy (Shields Missile)" "Ayab's Revenge"
 	on abort
 		dialog `You quietly ditch captain Ayab and his hunt for the Gray Eye...`
 	on fail
@@ -1021,20 +1203,20 @@ mission "Ayab's Revenge"
 	on complete
 		dialog `"You did good kid. Someday, you might have a fleet of your own!" True to his word, Captain Ayab treats you and you crew to a drink at the same bar you met him. After a having a few, he passes out. He looks content. As he snores on the bar counter, you quietly leave.`
 
-
-
 mission "Ayab's Revenge Epilogue1"
 	landing
 	invisible
+	deadline 2
 	to offer
 		or
 			has "Ayab's Revenge: done"
 			has "Ayab's Revenge: aborted"
+			has "Ayab's Revenge: failed"
 	npc
 		government "Indigenous Lifeform"
 		personality waiting uninterested mining harvests mute unconstrained
 		fleet "Gray Eye"
-		
+
 mission "Ayab's Revenge Epilogue2"
 	landing
 	invisible
@@ -1044,11 +1226,59 @@ mission "Ayab's Revenge Epilogue2"
 		fail "Ayab's Revenge Epilogue1"
 		fail
 
+mission "Ayab's Space Squid"
+	landing
+	name "Captain Ayab"
+	description "Captain Ayab will fight by your side until the horrible squid monsters have been defeated."
+	source
+		government "Pug"
+		attributes "core" "dirt belt" "near earth"
+	destination Pugglemug
+	to offer
+		has "Ayab's Revenge: done"
+		or
+			has "FW Pug 3C: done"
+			has "FWC Pug 3D: done"
+		not "main plot completed"
+	on offer
+		conversation
+			scene "thumbnail/gray eye-thumb"
+			`A grizzled old starship captain stumbles out of a spaceport bar and calls out to you. "Hey kid! Remember me? Captain Ayab!" This was the man who insisted on recruiting you into his fleet to hunt down a Gray Eye. His mood saddens. "It's terrible <first>! Terrible!"`
+			choice
+				`	"Terrible?"`
+				`	"What's terrible?"`
+			scene "thumbnail/pug zibruka"
+			`	"It's the squid, <first>! The squid!" He's shouting uncontrollably as other people back away in fear. "I got stuck in this space swarming with them! We have to kill them! All of them!"`
+			choice
+				`	"Calm down, they're not..."`
+				`	"These squid are actually..."`
+			scene "thumbnail/pug enfolta"
+			`	"Space squid!" He shouts "Those tentacled monsters are a menace!". By now, the streets around you are abandoned, the locals having been scared off by his tirade. "But I'm glad you're here to join me, <first>."`
+			choice
+				`	"Join you?"`
+				`	"Wait a minute..."`
+			scene "thumbnail/pug maboro"
+			`	"As part of my fleet you'll assist me in exterminating this wretched threat to humanity! It'll be more dangerous than our hunt for the Gray Eye, but I'm sure you're up to the task. See you in orbit!"`
+			choice
+				`	"But I have my own..."`
+				`	"I never agreed..."`
+			scene "thumbnail/marauder argosy-thumb"
+			`	 He's already rushing off to the spaceport before you can respond. You watch him board what appears to be an Argosy so heavily modified that it could be classified a Marauder. Maybe he'll be useful in the fight against the Pug...`
+				accept
+	npc accompany save
+		government "Escort"
+		personality heroic escort
+		ship "Marauder Argosy (Sniper)" "Ayab's Revenge"
+	on complete
+		dialog `Ayab congratulates you on assisting him to defeat the space squid, but will part ways with your fleet here."`
+
 
 
 ship "Luminazoa"
 	noun "creature"
 	sprite "ship/luminazoa/luminazoa"
+		rewind
+		"frame rate" 4
 	"never disabled"
 	attributes
 		category "Interceptor"
@@ -1059,13 +1289,17 @@ ship "Luminazoa"
 		"drag" 4.8
 		"heat dissipation" 1.2
 		"cargo space" 18
-		"thrust" 22
-		"turn" 800
+		"thrust" 4.4
+		"afterburner thrust" 22
+		"afterburner energy" 4.4
+		"turn" 150
 		"shield generation" 1.5
 		"hull repair rate" 1
 		"heat protection" 1
-		"ion protection" 1
-		"ion resistance" 1
+		"ion protection" 3
+		"scramble protection" 3
+		"ion resistance" 2
+		"scramble resistance" 2
 		"energy capacity" 150
 		"energy generation" 2
 		"fuel capacity" 150
@@ -1074,14 +1308,18 @@ ship "Luminazoa"
 		"hyperdrive" 1
 		"scram drive" .2
 		"atmosphere scan" 100
-		
+		"asteroid scan power" 50
+		weapon
+			"hit force" 30
+			"blast radius" 160
+			"corrosion damage" 480
 	outfits
-		Mouthparts? 3
+		Digester? 3
 		"Lightning Tendril?" 1
-	gun 0 -37 Mouthparts?
-	gun -5 32 Mouthparts?
-	gun 5 32 Mouthparts?
-	turret 0 57 "Lightning Tendril?"
+	gun 0 -30 Digester?
+	gun -5 -32 Digester?
+	gun 5 -32 Digester?
+	turret 0 7 "Lightning Tendril?"
 	leak "blue blood" 15 25
 	explode "blue blood" 25
 	"final explode" "blue blood"
@@ -1101,7 +1339,7 @@ effect "blue blood"
 
 
 outfit "Lightning Tendril?"
-	category "Turrets"
+	category "Secondary Weapons"
 	thumbnail "outfit/unknown"
 	"turret mounts" -1
 	"unplunderable" 1
@@ -1110,23 +1348,51 @@ outfit "Lightning Tendril?"
 			"frame rate" 60
 			"random start frame"
 		sound "zapper"
+		icon "icon/lightning"
 		"hit effect" "ion impact" 2
 		"inaccuracy" 3
 		"turret turn" 1
 		"velocity" 320
 		"lifetime" 1
 		"reload" 1
-		"firing energy" 3.7
+		"firing energy" 2.7
 		"shield damage" 7.4
 		"hull damage" 5.8
-		"ion damage" 5
+		"ion damage" .4
 
+outfit Digester?
+	category "Guns"
+	thumbnail "outfit/unknown"
+	"gun ports" -1
+	weapon
+		"hit effect" "digester splatter"
+		"inaccuracy" 180
+		"velocity" 10
+		"lifetime" 1
+		"reload" 70
+		"burst reload" 35
+		"burst count" 3
+		"cluster"
+		"discharge damage" 3
+		"minable damage" 300
+		"corrosion damage" 6
+		"blast radius" 10
+		"safe"
+
+effect "digester splatter"
+	sound "medium_explosion-ver8"
+
+
+phrase luminazoa
+	word
+		Luminazoa
 
 fleet "Luminazoa"
+	names luminazoa
 	government "Indigenous Lifeform"
 	cargo 0
 	personality
-		mining harvests unconstrained mute
+		mining harvests unconstrained mute ramming lingering
 	variant 90
 		"Luminazoa"
 	variant 10
@@ -1137,6 +1403,7 @@ fleet "Luminazoa"
 mission "First Contact: Luminazoa"
 	landing
 	invisible
+	deadline 2
 	source "Hell's Maw"
 	on offer
 		log "Factions" "Luminazoa"
@@ -1148,7 +1415,7 @@ mission "First Contact: Luminazoa"
 		event "Luminazoa Hell's Maw"
 	npc kill
 		government "Indigenous Lifeform"
-		personality waiting staying timid mining harvests unconstrained mute
+		personality waiting staying timid mining harvests unconstrained mute ramming
 		fleet "Luminazoa"
 
 event "Luminazoa Hell's Maw"
@@ -1178,7 +1445,9 @@ ship "Ionic Leech"
 		"hull repair rate" 1
 		"energy protection" 1
 		"ion protection" 3
-		"ion resistance" 1
+		"scramble protection" 3
+		"ion resistance" 3
+		"scramble resistance" 3
 		"energy capacity" 150
 		"fuel capacity" 150
 		"inscrutable" 1
@@ -1187,10 +1456,10 @@ ship "Ionic Leech"
 		"scram drive" .2
 		"ramscoop" 1
 		weapon
-			"blast radius" 200
-			"shield damage" 2000
-			"hull damage" 1000
-			"hit force" 3000
+			"blast radius" 30
+			"ion damage" 300
+			"hit force" 150
+			"scrambling damage" 450
 	outfits
 		"Ionic Mouthparts?" 1
 	gun 0 -37 "Ionic Mouthparts?"
@@ -1231,11 +1500,15 @@ effect "ionic leeching"
 	"random frame rate" 5
 	"velocity scale" .0001
 
-		
+phrase "ionic leech"
+	word
+		"Ionic Leech"
+
 fleet "Small Ionic Leech"
+	names "ionic leech"
 	government "Indigenous Predator"
 	cargo 0
-	personality heroic disables unconstrained mute
+	personality heroic disables unconstrained mute ramming
 	variant 3
 		"Ionic Leech" 5
 	variant 2
@@ -1246,9 +1519,10 @@ fleet "Small Ionic Leech"
 		"Ionic Leech" 11
 
 fleet "Large Ionic Leech"
+	names "ionic leech"
 	government "Indigenous Predator"
 	cargo 0
-	personality heroic disables unconstrained mute
+	personality heroic disables unconstrained mute ramming
 	variant 3
 		"Ionic Leech" 7
 	variant 2
@@ -1259,6 +1533,7 @@ fleet "Large Ionic Leech"
 mission "First Contact: Ionic Leech"
 	landing
 	invisible
+	deadline 2
 	source 
 		planet "Farpoint" "Maelstrom" "Sunracer" "Skillet" "Prime" "Stormhold"
 	on offer
@@ -1273,8 +1548,8 @@ mission "First Contact: Ionic Leech"
 		event "Ionic Leech North"
 	npc kill
 		government "Indigenous Predator"
-		personality waiting staying uninterested disables unconstrained mute
-		ship "Ionic Leech"
+		personality waiting staying uninterested disables unconstrained mute ramming
+		ship "Ionic Leech" "Ionic Leech"
 
 event "Ionic Leech North"
 	system Rigel
@@ -1305,6 +1580,7 @@ event "Ionic Leech North"
 
 
 ship "Astero Nautilus"
+	plural "Astero Nautiluses"
 	noun "creature"
 	sprite "ship/asteronautilus a"
 	"never disabled"
@@ -1319,9 +1595,14 @@ ship "Astero Nautilus"
 		"fuel capacity" 150
 		"thrust" 10
 		"turn" 800
-		"hull repair rate" 3
+		"hull repair rate" 1
+		"hull protection" 1
+		"corrosion protection" 2
+		"corrosion resistance" 1
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 1
 		"inscrutable" 1
 		"gaslining" 1
@@ -1336,11 +1617,61 @@ ship "Astero Nautilus"
 	"final explode" "blood"
 	description "The Astero Nautilus lurk amongst the asteroids of Pebble Beach. Their rock-like shells are hardened from centuries of consuming the minerals in the surrounding asteroids."
 
+ship "Astero Nautilus" "Astero Nautilus AA"
+	noun "creature"
+	sprite "ship/asteronautilus aa"
+	"never disabled"
+	gun -2 -39
+
+ship "Astero Nautilus" "Astero Nautilus AAA"
+	noun "creature"
+	sprite "ship/asteronautilus aaa"
+	"never disabled"
+	gun -5 -43
+
 ship "Astero Nautilus" "Astero Nautilus B"
 	noun "creature"
 	sprite "ship/asteronautilus b"
 	"never disabled"
+	add attributes
+		"mass" 25
+		"hull protection" 1
+		"corrosion protection" -2
 	gun -7.5 -47
+
+ship "Astero Nautilus" "Astero Nautilus BB"
+	noun "creature"
+	sprite "ship/asteronautilus bb"
+	"never disabled"
+	add attributes
+		"mass" 25
+		"hull protection" 1
+		"corrosion protection" -2
+	gun -4.5 -40
+	
+ship "Astero Nautilus" "Astero Nautilus BBB"
+	noun "creature"
+	sprite "ship/asteronautilus bbb"
+	"never disabled"
+	add attributes
+		"mass" 25
+		"hull protection" 1
+		"corrosion protection" -2
+	gun -12.5 -42
+
+ship "Astero Nautilus" "Astero Nautilus D"
+	noun "creature"
+	sprite "ship/asteronautilus d"
+	"never disabled"
+	add attributes
+		"hull" 2000
+		"mass" 25
+		"drag" .4
+		"hull protection" 1
+	outfits
+		Tentacles? 2
+	gun -2 -45
+	gun 0 -45
 
 ship "Astero Nautilus" "Bulk Freighter?"
 	noun "creature"
@@ -1348,10 +1679,14 @@ ship "Astero Nautilus" "Bulk Freighter?"
 	"never disabled"
 	add attributes
 		"shields" 13500
+		"hull" 3800
 		"shield generation" .82
+		"hull protection" -1
+		"corrosion protection" -2
 	outfits
-		Tentacles? 2
+		Tentacles? 3
 	gun -4 -205
+	gun 0 -205
 	gun 4 -205
 	leak "blood" 30 50
 	leak "flame" 50 80
@@ -1366,13 +1701,29 @@ ship "Astero Nautilus" "Freighter?"
 	noun "creature"
 	sprite "ship/asteronautilus f1"
 	"never disabled"
+	add attributes
+		"hull" 500
+		"hull protection" -1
+		"corrosion protection" -2
 	gun 1 -66
+	explode "tiny explosion" 5
+	explode "small explosion" 15
+	explode "medium explosion" 10
+	"final explode" "final explosion small"
 
 ship "Astero Nautilus" "Freighter??"
 	noun "creature"
 	sprite "ship/asteronautilus f2"
 	"never disabled"
+	add attributes
+		"hull" 500
+		"hull protection" -1
+		"corrosion protection" -2
 	gun -0.5 -61.5
+	explode "tiny explosion" 5
+	explode "small explosion" 15
+	explode "medium explosion" 10
+	"final explode" "final explosion small"
 
 ship "Astero Nautilus" "Freighter???"
 	noun "creature"
@@ -1380,6 +1731,9 @@ ship "Astero Nautilus" "Freighter???"
 	"never disabled"
 	add attributes
 		"shields" 2000
+		"hull" 1000
+		"hull protection" -1
+		"corrosion protection" -2
 	outfits
 		Tentacles? 2
 	gun -4 -46
@@ -1397,8 +1751,11 @@ ship "Astero Nautilus" "Protector?"
 	sprite "ship/asteronautilus p"
 	"never disabled"
 	add attributes
-		"shields" 9500
+		"shields" 10000
+		"hull" 3900
 		"shield generation" .51
+		"hull protection" -1
+		"corrosion protection" -2
 	outfits
 		Tentacles? 2
 	gun -4 -94.5
@@ -1417,7 +1774,10 @@ ship "Astero Nautilus" "Splinter?"
 	"never disabled"
 	add attributes
 		"shields" 5200
+		"hull" 900
 		"shield generation" .51
+		"hull protection" -1
+		"corrosion protection" -2
 	outfits
 		Tentacles? 2
 	gun 16 -33.5
@@ -1437,7 +1797,10 @@ ship "Astero Nautilus" "Vanguard?"
 	"never disabled"
 	add attributes
 		"shields" 9800
+		"hull" 3000
 		"shield generation" .51
+		"hull protection" -1
+		"corrosion protection" -2
 	outfits
 		Tentacles? 2
 	gun -4 -64.5
@@ -1461,41 +1824,116 @@ outfit "Tentacles?"
 		sprite "projectile/tentacles"
 			"frame rate" 1
 			"random start frame"
-		sound "asteroid crunch small"
+		"hit effect" "tentacle slap"
 		"inaccuracy" .4
 		"velocity" 20
 		"lifetime" 1
 		"reload" 1
 		"hit force" 1
 		"shield damage" 6
-		"hull damage" 14
+		"hull damage" 13
+		"corrosion damage" .2
 		"piercing" .2
 
+effect "tentacle slap"
+	sprite "effect/corrosion spark"
+		"no repeat"
+		"frame rate" 15
+	sound "hull impact"
+	"lifetime" 7
+	"random angle" 120
+	"random spin" 5
+	"random velocity" -2
+	"velocity scale" -.05
+
+
+
+phrase "astero nautilus"
+	word
+		"Astero Nautilus"
 
 fleet "Small Astero Nautilus"
+	names "astero nautilus"
 	government "Indigenous Predator"
 	cargo 0
 	personality
-		mining harvests plunders unconstrained mute
-	variant 6
+		mining harvests plunders unconstrained mute ramming
+	variant 1
 		"Astero Nautilus"
-	variant 6
+	variant 1
 		"Astero Nautilus B"
+	variant 1
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+	variant 1
+		"Astero Nautilus BB"
+		"Astero Nautilus BBB"
 	variant 1
 		"Astero Nautilus"
 		"Astero Nautilus B"
 	variant 1
-		"Astero Nautilus" 2
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
 		"Astero Nautilus B"
 	variant 1
 		"Astero Nautilus"
-		"Astero Nautilus B" 2
+		"Astero Nautilus BB"
+		"Astero Nautilus BBB"
+	variant 1
+		"Astero Nautilus D"
+
+fleet "Large Astero Nautilus"
+	names "astero nautilus"
+	government "Indigenous Predator"
+	cargo 0
+	personality
+		mining harvests plunders unconstrained mute ramming
+	variant 1
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+	variant 1
+		"Astero Nautilus"
+		"Astero Nautilus AA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+		"Astero Nautilus D"
+	variant 1
+		"Astero Nautilus"
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+	variant 1
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+		"Astero Nautilus BBB"
+	variant 1
+		"Astero Nautilus"
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+		"Astero Nautilus BBB"
+	variant 1
+		"Astero Nautilus"
+		"Astero Nautilus AA"
+		"Astero Nautilus AAA"
+		"Astero Nautilus B"
+		"Astero Nautilus BB"
+		"Astero Nautilus BBB"
+		"Astero Nautilus D"
+
 
 fleet "Mutated Astero Nautilus"
+	names "astero nautilus"
 	government "Indigenous Predator"
 	cargo 0
 	personality
-		mining harvests plunders unconstrained mute
+		mining harvests plunders unconstrained mute ramming
 	variant
 		"Bulk Freighter?"
 		"Freighter?"
@@ -1516,15 +1954,15 @@ mission "First Contact: Astero Nautilus"
 		government "Indigenous Lifeform"
 		system "Pebble Beach"
 		personality waiting staying marked mining harvests plunders unconstrained mute
-		ship "Astero Nautilus"
-		ship "Astero Nautilus B"
+		ship "Astero Nautilus" "Astero Nautilus"
+		ship "Astero Nautilus B" "Astero Nautilus"
 	on complete
 		event "Astero Nautilus Provoked"
-		
+
 event "Astero Nautilus Provoked"
 	system "Pebble Beach"
-		add fleet "Small Astero Nautilus" 5000
-		
+		add fleet "Small Astero Nautilus" 7500
+
 mission "Astero Nautilus Discovered"
 	landing
 	invisible
@@ -1538,12 +1976,11 @@ mission "Astero Nautilus Discovered"
 
 event "Astero Nautilus Discovered"
 	system "Pebble Beach"
-		remove fleet "Small Astero Nautilus" 5000
-		add fleet "Small Astero Nautilus" 10000
+		add fleet "Large Astero Nautilus" 10000
 	system "Minkar"
-		add fleet "Small Astero Nautilus" 20000
+		add fleet "Small Astero Nautilus" 10000
 	planet "Rock Cluster"
-		add description `You suspect several of these asteroids are actually sleeping Astero Nautiluses...`
+		add description `You suspect several of these rock formations are actually sleeping Astero Nautiluses...`
 
 mission "Astero Nautilus Cross Chasm"
 	landing
@@ -1565,25 +2002,25 @@ event "Astero Nautilus Cross Chasm"
 	system "Alpha Arae"
 		add fleet "Small Astero Nautilus" 10000
 	system "Holeb"
-		add fleet "Small Astero Nautilus" 20000
+		add fleet "Small Astero Nautilus" 15000
 	system "Lesath"
-		add fleet "Small Astero Nautilus" 20000
+		add fleet "Small Astero Nautilus" 15000
 	system "Tais"
-		add fleet "Small Astero Nautilus" 20000
+		add fleet "Small Astero Nautilus" 15000
 	system "Eltanin"
-		add fleet "Small Astero Nautilus" 20000
+		add fleet "Small Astero Nautilus" 15000
 	system "Mizar"
-		add fleet "Small Astero Nautilus" 30000
+		add fleet "Small Astero Nautilus" 20000
 	system "Ipsing"
-		add fleet "Small Astero Nautilus" 30000
+		add fleet "Small Astero Nautilus" 20000
 	system "Wei"
-		add fleet "Small Astero Nautilus" 30000
+		add fleet "Small Astero Nautilus" 20000
 	system "Naper"
-		add fleet "Small Astero Nautilus" 40000
+		add fleet "Small Astero Nautilus" 25000
 	system "Lurata"
-		add fleet "Small Astero Nautilus" 40000
+		add fleet "Small Astero Nautilus" 25000
 	system "Sadr"
-		add fleet "Small Astero Nautilus" 50000
+		add fleet "Small Astero Nautilus" 30000
 
 
 
@@ -1611,12 +2048,12 @@ mission "Investigate Missing Shipment 1"
 	npc
 		government "Indigenous Predator"
 		system "Alpha Arae"
-		personality staying mining harvests plunders unconstrained mute
-		fleet "Small Astero Nautilus" 5
+		personality staying mining harvests plunders unconstrained mute ramming
+		fleet "Large Astero Nautilus" 2
 	npc kill
 		government "Indigenous Predator"
 		system "Alpha Arae"
-		personality target staying mining harvests plunders unconstrained mute
+		personality target staying mining harvests plunders unconstrained mute ramming
 		fleet "Mutated Astero Nautilus"
 	on visit
 		dialog `You haven't confirmed the fate of all the missing cargo. Visit <waypoints> and keep searching.`
@@ -1651,12 +2088,12 @@ mission "Investigate Missing Shipment 2"
 	npc
 		government "Indigenous Predator"
 		system Eber
-		personality staying mining harvests plunders unconstrained mute
-		fleet "Small Astero Nautilus" 7
+		personality staying mining harvests plunders unconstrained mute ramming
+		fleet "Large Astero Nautilus" 3
 	npc kill
 		government "Indigenous Predator"
 		system Eber
-		personality target staying mining harvests plunders unconstrained mute
+		personality target staying mining harvests plunders unconstrained mute ramming
 		fleet "Mutated Astero Nautilus"
 	on visit
 		dialog `You haven't confirmed the fate of all the missing cargo. Visit <waypoints> and keep searching.`
@@ -1691,12 +2128,12 @@ mission "Investigate Missing Shipment 3"
 	npc
 		government "Indigenous Predator"
 		system Alnasl
-		personality staying mining harvests plunders unconstrained mute
-		fleet "Small Astero Nautilus" 9
+		personality staying mining harvests plunders unconstrained mute ramming
+		fleet "Large Astero Nautilus" 4
 	npc kill
 		government "Indigenous Predator"
 		system Alnasl
-		personality target staying mining harvests plunders unconstrained mute
+		personality target staying mining harvests plunders unconstrained mute ramming
 		fleet "Mutated Astero Nautilus"
 	on visit
 		dialog `You haven't confirmed the fate of all the missing cargo. Visit <waypoints> and keep searching.`
@@ -1727,13 +2164,13 @@ ship "Rock Scavenger"
 		"turn" 800
 		"hull repair rate" 3
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 1
 		"inscrutable" 1
 		"gaslining" 1
 		"hyperdrive" 1
-
-
 	outfits
 		Mandibles? 3
 		Tail? 1
@@ -1773,11 +2210,16 @@ outfit "Rock Scavenger Meat"
 	"mass" 1
 	description "Although it looks disgusting, rock scavenger meat is considered a delicacy in the Paradise Planets. Restaurants will pay large sums of money for it."
 
+phrase "rock scavenger"
+	word
+		"Rock Scavenger"
+
 fleet "Rock Scavenger"
+	names "rock scavenger"
 	government "Indigenous Lifeform"
 	cargo 0
 	personality
-		mining harvests timid uninterested mute
+		mining harvests timid uninterested mute ramming
 	variant
 		"Rock Scavenger" 1
 
@@ -1790,7 +2232,7 @@ mission "First Contact: Rock Scavenger"
 	npc board
 		government "Indigenous Lifeform"
 		system "Eber"
-		personality waiting staying mining harvests uninterested mute
+		personality waiting staying mining harvests uninterested mute ramming
 		fleet "Rock Scavenger"
 
 		
@@ -1814,7 +2256,7 @@ mission "Rock Scavengers Flee Astero Nautilus"
 		event "Rock Scavengers Flee Astero Nautilus"
 		fail
 
-event "Rock Scavengers Flee Astero Nautilus"	
+event "Rock Scavengers Flee Astero Nautilus"
 	system Wei
 		remove fleet "Rock Scavenger" 30000
 		add fleet  "Rock Scavenger" 20000
@@ -1897,6 +2339,10 @@ ship "Plasma Parasite"
 		"cargo space" 0
 		"thrust" 24
 		"turn" 600
+		"ion protection" 3
+		"scramble protection" 3
+		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 150
 		"fuel capacity" 150
 		"inscrutable" 1
@@ -1908,8 +2354,9 @@ ship "Plasma Parasite"
 			"blast radius" 200
 			"shield damage" 12000
 			"hull damage" 6000
+			"heat damage" 3000
 			"hit force" 3000
-
+	gun 0 0
 	leak "flame" 15 25
 	explode "medium explosion" 5
 	explode "large explosion" 15
@@ -1929,6 +2376,7 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 			"blast radius" 400
 			"shield damage" 24000
 			"hull damage" 12000
+			"heat damage" 6000
 			"hit force" 6000
 	leak "flame" 15 25
 	explode "large explosion" 15
@@ -1962,8 +2410,12 @@ ship "Plasma Parasite" "Plasma Parasite (Time Bomb 3)"
 		"Timer Weapon"
 	gun 0 0
 
+phrase "plasma parasite"
+	word
+		"Plasma Parasite"
 
 fleet "Plasma Parasites"
+	names "plasma parasite"
 	government "Swarming Lifeform"
 	cargo 0
 	personality
@@ -1976,6 +2428,7 @@ fleet "Plasma Parasites"
 		"Plasma Parasite" 36
 
 fleet "Volatile Plasma Parasites"
+	names "plasma parasite"
 	government "Indigenous Lifeform (Hostile)"
 	cargo 0
 	personality
@@ -1997,6 +2450,7 @@ fleet "Volatile Plasma Parasites"
 		"Plasma Parasite (Time Bomb 3)" 4
 		
 fleet "Advanced Plasma Parasites"
+	names "plasma parasite"
 	government "Swarming Lifeform"
 	cargo 0
 	personality
@@ -2012,6 +2466,7 @@ fleet "Advanced Plasma Parasites"
 		"Plasma Parasite (Large)" 18
 		
 fleet "Nesting Plasma Parasites"
+	names "plasma parasite"
 	government "Indigenous Lifeform"
 	cargo 0
 	personality
@@ -2290,8 +2745,7 @@ mission "Coalition: Exterminate Plasma Parasites 2"
 		government "Swarming Lifeform"
 		system destination
 		personality waiting staying swarming heroic unconstrained mute
-		fleet "Advanced Plasma Parasites" 3
-		fleet "Volatile Plasma Parasites"
+		fleet "Advanced Plasma Parasites" 4
 		dialog `You've cleared the infestation. Land on <planet> to claim your reward.`
 	on visit
 		dialog `There are still Plasma Parasites infesting the system. Eliminate them.`
@@ -2317,8 +2771,7 @@ mission "Coalition: Exterminate Plasma Parasites 3"
 		government "Swarming Lifeform"
 		system destination
 		personality waiting staying swarming heroic unconstrained mute
-		fleet "Advanced Plasma Parasites" 3
-		fleet "Volatile Plasma Parasites" 2
+		fleet "Advanced Plasma Parasites" 5
 		dialog `You've cleared the infestation. Land on <planet> to claim your reward.`
 	on visit
 		dialog `There are still Plasma Parasites infesting the system. Eliminate them.`

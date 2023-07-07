@@ -1,0 +1,758 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+########################################
+#
+# Weapons
+#
+########################################
+
+
+
+outfit "Genesis Anti-Missile"
+	category "Turrets"
+	cost 60000
+	thumbnail "outfit/genesis anti-missile"
+	"mass" 15
+	"outfit space" -15
+	"weapon capacity" -15
+	"turret mounts" -1
+	"required crew" 1
+	"scramble resistance" .05
+	weapon
+		"hardpoint sprite" "hardpoint/anti-missile"
+		"hardpoint offset" 4.
+		"hit effect" "small anti-missile"
+		"anti-missile" 5
+		"velocity" 150
+		"lifetime" 1
+		"reload" 9
+		"firing energy" 5
+		"firing heat" 2
+	description "Genesis Anti-Missile turrets require a crew member to operate and take slightly longer to reload than the similarly sized Anti-Missile Turrets used by humans."
+	description "	Genesis mechanical weapons technology is far ahead of their energy weapons development. The loading systems on them are less likely to jam compared to species that put more resources on developing their energy weapons."
+
+
+
+outfit "Genesis Flak Shell"
+	category "Ammunition"
+	cost 4000
+	thumbnail "outfit/genesis flak shell"
+	"mass" .5
+	"flak capacity" -1
+	"scramble protection" .001
+	description "Genesis Flak Shells are ammunition for the Genesis Flak Turret. Each turret holds up to 40 shells."
+	description "	Genesis ammunition, professionally manufactured by their industrial mass production factories, is a critical element to many of their weapons. Quality control measures at these facilities make them less likely to jam."
+
+outfit "Genesis Flak Shell Crate"
+	category "Ammunition"
+	cost 40000
+	thumbnail "outfit/genesis flak shell storage"
+	"mass" 2
+	"outfit space" -14
+	"flak capacity" 20
+	ammo "Genesis Flak Shell"
+	description "The Genesis Flak Shell Crate is used to store extra ammunition for Genesis Flak Turrets."
+
+outfit "Genesis Flak Turret"
+	category "Secondary Weapons"
+	cost 350000
+	thumbnail "outfit/genesis flak cannon"
+	"mass" 40
+	"outfit space" -40
+	"weapon capacity" -40
+	"turret mounts" -1
+	"required crew" 1
+	"flak capacity" 40
+	"scramble resistance" .05
+	weapon
+		"hardpoint sprite" "hardpoint/genesis flak cannon"
+		"hardpoint offset" 20
+		sprite "projectile/rail slug"
+			"frame rate" 3
+				"hardpoint offset" 15.
+		sound "explosion small"
+		"hit effect" "flak explosion"
+		"hit effect" "flak smoke slow" 10
+		"hit effect" "flak smoke fast" 5
+		"fire effect" "flak muzzle flash"
+		"fire effect" "flak muzzle smoke" 2
+		"die effect" "flak die"
+		ammo "Genesis Flak Shell"
+		icon "icon/flak shell"
+		"inaccuracy" 1
+		"turret turn" 5
+		"velocity" 18
+		"lifetime" 35
+		"reload" 60
+		"blast radius" 150
+		"firing energy" 5
+		"firing heat" 10
+		"hit force" 200
+		"shield damage" 224
+		"hull damage" 296
+	description `This is a turret mounted anti-spacecraft weapon that fires Genesis Flak Shells. The blast caused from their impact can affect friend and foe alike.`
+	description "	Genesis mechanical weapons technology is far ahead of their energy weapons development. The loading systems on them are less likely to jam compared to species that put more resources on developing their energy weapons."
+
+effect "flak explosion"
+	sprite "effect/explosion/large"
+		"no repeat"
+		"frame rate" 20
+	sound "explosion medium"
+	"lifetime" 120
+	"random angle" 360
+	"random velocity" .5
+	"random spin" 1
+	"random frame rate" 5
+	"velocity scale" .01
+
+effect "flak smoke slow"
+	sprite "effect/smoke"
+		"no repeat"
+		"random start frame"
+		"frame rate" 8
+	"lifetime" 50
+	"random angle" 360
+	"random spin" 5
+	"velocity scale" .01
+	"random velocity" 1
+
+effect "flak smoke fast"
+	sprite "effect/smoke"
+		"no repeat"
+		"random start frame"
+		"frame rate" 8
+	"lifetime" 30
+	"random angle" 360
+	"random spin" 5
+	"velocity scale" .01
+	"random velocity" 2
+
+effect "flak muzzle flash"
+	sprite "effect/explosion/tiny"
+		"no repeat"
+		"frame rate" 25
+	sound "explosion tiny"
+	"lifetime" 15
+	"random angle" 360
+	"random velocity" 0
+	"random spin" 1
+	"random frame rate" 5
+	"velocity scale" 1
+
+effect "flak muzzle smoke"
+	sprite "effect/smoke"
+		"no repeat"
+		"random start frame"
+		"frame rate" 8
+	"lifetime" 30
+	"random angle" 5
+	"random spin" 5
+	"random velocity" 13
+	"velocity scale" 1
+	"random velocity" 1
+
+effect "flak die"
+	sprite "effect/sidewinder fire"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 9
+	"velocity scale" .75
+	"random velocity" .25
+
+
+
+outfit "Genesis Mining Laser"
+	category "Guns"
+	cost 648000
+	thumbnail "outfit/genesis laser"
+	"mass" 24
+	"outfit space" -24
+	"weapon capacity" -24
+	"gun ports" -1
+	weapon
+		sprite "projectile/genesis laser"
+			"frame rate" 1
+		sound "genesis laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .5
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.5
+		"firing heat" 2.6
+		"shield damage" 1.7
+		"hull damage" 3.9
+		"minable damage" 5.8
+	description "This is bulky laser isn't very effective against shields. Despite this, the inhabitants of Genesis have put it to use as a mining tool, allowing their ships to save ammunition for threats more dangerous than asteroids."
+
+
+
+outfit "High Calibur Ammo"
+	plural "High Calibur Ammo"
+	category "Ammunition"
+	cost 5
+	thumbnail "outfit/high calibur"
+	"mass" .003
+	"high calibur capacity" -1
+	"scramble protection" .00001
+	description `In simple terms, "calibur" refers to the diameter of a gun's barrel. Guns are meant to be loaded with bullets that match their calibur. This ammunition is appropriately sized to be used with the High Calibur Gun. Attempting to load it with lower calibur ammunition can result in jamming or other firing mishaps.`
+	description "	Genesis ammunition, professionally manufactured by their industrial mass production factories, is a critical element to many of their weapons. Quality control measures at these facilities make them less likely to jam."
+
+outfit "High Calibur Boxes"
+	plural "High Calibur Boxes"
+	category "Ammunition"
+	cost 3300
+	thumbnail "outfit/high calibur storage"
+	"mass" 3
+	"outfit space" -6
+	"high calibur capacity" 1500
+	ammo "High Calibur Ammo"
+	description "High Calibur Ammo Boxes are used to store extra ammunition for High Calibur Guns."
+
+outfit "High Calibur Gun"
+	category "Secondary Weapons"
+	cost 22000
+	thumbnail "outfit/genesis gat"
+	"mass" 3
+	"outfit space" -9
+	"weapon capacity" -9
+	"gun ports" -1
+	"high calibur capacity" 3000
+	"scramble resistance" .05
+	weapon
+		sprite "projectile/tinyflare"
+			"random start frame"
+		sound "gatling"
+		ammo "High Calibur Ammo"
+		icon "icon/gat"
+		"inaccuracy" 1
+		"velocity" 16
+		"lifetime" 1
+		"reload" 3
+		"burst count" 180
+		"burst reload" 1
+		"firing energy" .03
+		"firing heat" 2.5
+		"submunition" "hcgbullet"
+		"cluster"
+		"hit effect" "bullet impact"
+	description "The bullets used to load this weapon are of a higher calibur than the ones used in pirate Gatling Guns. The High Calibur Gun does more damage while having a higher rate of accuracy and consistency with every shot."
+	description "	Genesis mechanical weapons technology is far ahead of their energy weapons development. The loading systems on them are less likely to jam compared to species that put more resources on developing their energy weapons."
+
+outfit "hcgbullet"
+	weapon
+		sprite "projectile/bullet"
+			"delay" 5
+			"random start frame"
+			"frame rate" 0
+		"random velocity" 2
+		"lifetime" 22
+		"random lifetime" 1
+		"shield damage" 4
+		"hull damage" 8
+		"hit force" 2
+		"hit effect" "bullet impact"
+
+
+
+outfit "Hydrogen Missile"
+	category "Secondary Weapons"
+	cost 800000
+	thumbnail "outfit/hydrogen missile"
+	"mass" 8
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	"scramble protection" .01
+	weapon
+		sprite "projectile/hydrogen missile"
+			"no repeat"
+			"frame rate" .25
+		sound "nuke"
+		ammo "Hydrogen Missile"
+		stream
+		icon "icon/atom"
+		"hit effect" "nuke explosion"
+		"hit effect" "nuke residue fast" 8
+		"hit effect" "nuke residue slow" 8
+		"die effect" "missile death"
+		"inaccuracy" 1
+		"velocity" 6
+		"lifetime" 800
+		"reload" 400
+		"firing energy" 10
+		"firing heat" 400
+		"acceleration" .8
+		"drag" .1
+		"turn" 4
+		"homing" 4
+		"radar tracking" .5
+		"optical tracking" 1
+		"trigger radius" 30
+		"blast radius" 150
+		"shield damage" 7200
+		"hull damage" 5600
+		"hit force" 3200
+		"missile strength" 200
+	description "While not quite as powerful as the Nuclear Missiles you are familiar with, the inhabitants of Genesis don't appear to have any aversion to the use of this technology."
+	description "	Genesis ammunition, professionally manufactured by their industrial mass production factories, is a critical element to many of their weapons. Quality control measures at these facilities make them less likely to jam."
+	description "	[Hydrogen Missiles are a one-shot weapon: each missile occupies a gun slot, and after it is fired, the slot it was in is left empty.]"
+
+
+
+outfit "Icicle Gun"
+	category "Secondary Weapons"
+	cost 200000
+	thumbnail "outfit/icicle gun"
+	"mass" 9
+	"cooling" -2
+	"cryogenic slots" -9
+	"weapon capacity" -9
+	"gun ports" -1
+	"scramble resistance" .05
+	weapon
+		sprite "projectile/icicle flare"
+			"random start frame"
+		sound "explosion tiny"
+		icon "icon/icicle"
+		"inaccuracy" 2
+		"velocity" 16
+		"lifetime" 1
+		"reload" 3
+		"burst count" 180
+		"burst reload" 1
+		"firing energy" .01
+		"firing fuel" .25
+		"submunition" "icicle"
+		"cluster"
+		"hit effect" "icicle impact"
+	description "This weapon utilizes cryogenic technology to convert hyperspace fuel into frozen deuterium bullets. While capable of a high fire rate, the time it takes to freeze more bullets can take twice as long as it does to expend them. At most, it can only sustain a maximum of three seconds of continuous fire."
+	description "	Genesis mechanical weapons technology is far ahead of their energy weapons development. The loading systems on them are less likely to jam compared to species that put more resources on developing their energy weapons."
+
+outfit "icicle"
+	weapon
+		sprite "projectile/icicle bullet"
+			"delay" 5
+			"random start frame"
+			"frame rate" 0
+		"random velocity" 8
+		"lifetime" 20
+		"random lifetime" 5
+		"shield damage" 3
+		"hull damage" 6
+		"heat damage" -15
+		"hit force" 2
+		"hit effect" "icicle impact"
+
+effect "icicle impact"
+	sprite "effect/icicle impact"
+		"no repeat"
+		"frame rate" 12
+	"lifetime" 30
+	"velocity scale" 0.05
+	sound "icicle"
+
+
+
+########################################
+#
+# Systems
+#
+########################################
+
+
+
+outfit "Cryogenic Cooler"
+	category "Systems"
+	"cost" 55000
+	thumbnail "outfit/cryogenic cooler"
+	"mass" 2
+	"cooling" -1
+	"cryogenic slots" -2
+	"cooling energy" 0.2
+	"active cooling" 4
+	description "A Cryogenic Cooler applies cryogenic technology to efficiently maintain the internal temperature of your ship."
+
+outfit "Cryogenic Hub"
+	category "Systems"
+	"cost" 65000
+	thumbnail "outfit/cryogenic hub"
+	"mass" 10
+	"outfit space" -20
+	"cooling" 5
+	"cryogenic slots" 20
+	description "By itself, a Cryogenic Hub merely adds some cooling to your ship. Its actual purpose is to allow Cryogenic Coolers or other cryogenic technologies to be attached into its slots."
+
+outfit "Cryostasis Pod"
+	category "Systems"
+	"cost" 10000
+	thumbnail "outfit/cryostasis pod"
+	"mass" 1
+	"cryogenic slots" -1
+	"cargo space" -1
+	"cooling" -.2
+	"bunks" 1
+	"energy consumption" 0.02
+	"cooling energy" 0.02
+	"active cooling" 0.0001
+	"unplunderable" 1
+	description `Most travelers will balk at the notion of riding in one of these. But there may be opportunities to transport dangerous prisoners or sensitive cargo that would otherwise be unavailable without one.`
+	description `	A Cryostasis Pod continuously draws on a modest amount of power to maintain a temperature controlled environment within. If the external temperature becomes excessive, it will pull on additional power to compensate.`
+
+outfit "Genesis Repair Bot"
+	category "Turrets"
+	cost 612000
+	thumbnail "outfit/genesis repair bot"
+	"mass" 24
+	"outfit space" -24
+	"hull repair rate" .72
+	"hull energy" .72
+	"hull heat" .6
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/genesis repair bot/genesis repair bot"
+			delay 5
+		"turret turn" 5
+	description "This large robot is able to patch holes in the hull of a ship that is still in flight. When not in use, it uses a turret mount to recharge."
+
+outfit "Genesis Narrowband Scanner"
+	category "Systems"
+	cost 26400
+	thumbnail "outfit/genesis scanner"
+	"mass" 3
+	"outfit space" -3
+	"cargo scan power" 4
+	"cargo scan efficiency" 10
+	"outfit scan power" 12
+	"outfit scan efficiency" 30
+	description "Genesis Narrowband Scanners are incredibly efficient once locked onto a target, but have a very short range."
+
+outfit "Hydrogen Collector"
+	category "Systems"
+	cost 45000
+	thumbnail "outfit/genesis ramscoop"
+	"mass" 3
+	"outfit space" -3
+	"ramscoop" .5
+	description "This ramscoop is a necessary component in keeping fuel hungry ships from Genesis operational."
+
+outfit "Genesis Engines"
+	plural "Engines"
+	category "Engines"
+	"cost" 20000
+	thumbnail "outfit/genesis engines"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"thrust" 6.0
+	"thrusting fuel" .01
+	"thrusting energy" .4
+	"thrusting heat" .6
+	"turn" 128
+	"turning fuel" .01
+	"turning energy" .25
+	"turning heat" .5
+	"flare sprite" "effect/genesis flare/tiny"
+		"frame rate" 1.2
+	"flare sound" "ion tiny"
+	"steering flare sprite" "effect/genesis flare/tiny"
+		"frame rate" 1.2
+	"steering flare sound" "ion tiny"
+	description `Genesis Engines burn a small amount of hyperspace fuel to provide turning and thrusting to their ships.`
+
+
+
+########################################
+#
+# Power
+#
+########################################
+
+
+
+outfit "Genesis Battery"
+	category "Power"
+	cost 6600
+	thumbnail "outfit/genesis battery"
+	"mass" 10
+	"outfit space" -10
+	"energy capacity" 4400
+	"energy protection" -.2
+	description "While Genesis Batteries feature a high capacity for their size, they are more vulnerable to energy draining attacks than batteries of other species."
+
+outfit "Genesis Fission"
+	category "Power"
+	cost 2750000
+	thumbnail "outfit/genesis fission"
+	"mass" 80
+	"outfit space" -80
+	"energy generation" 14.08
+	"heat generation" 35
+	"ion protection" -.2
+	description "Fission Reactors used by the inhabitants of Genesis are very efficient at generating energy, but the methods used to make this possible leave them vulnerable against ionization."
+
+outfit "Genesis Radiothermal"
+	category "Power"
+	cost 330000
+	thumbnail "outfit/genesis radiothermal"
+	"mass" 45
+	"outfit space" -45
+	"energy generation" 4.84
+	"heat generation" 18
+	"ion protection" -.2
+	description "Radiothermal generators used by the inhabitants of Genesis are very efficient at generating energy, but the methods used to make this possible leave them vulnerable against ionization."
+
+outfit "Genesis Photovoltaic Array"
+	category "Power"
+	cost 80000
+	thumbnail "outfit/genesis photovoltaic array"
+	"mass" 16
+	"outfit space" -16
+	"solar collection" 1
+	description "This solar collection array is more space efficient than the one commonly found in human space, but is also less sophisticated."
+
+outfit "Genesis Photovoltaic Panel"
+	category "Power"
+	cost 9000
+	thumbnail "outfit/genesis photovoltaic panel"
+	"mass" 2
+	"outfit space" -2
+	"solar collection" .09
+	description "The inhabitants of Genesis have solar collection technology that is less developed than other space faring species."
+
+outfit "Genesis Thermionic"
+	category "Power"
+	cost 396000
+	thumbnail "outfit/genesis thermionic"
+	"mass" 55
+	"outfit space" -55
+	"energy generation" 5.5
+	"heat generation" 12
+	"ion protection" -.2
+	description "Thermionic radioisotopic generators used by the inhabitants of Genesis are very efficient at generating energy, but the methods used to make this possible leave them vulnerable against ionization."
+
+outfit "Genesis Fuel Cell"
+	category "Power"
+	cost 35000
+	thumbnail "outfit/genesis fuel cell"
+	"mass" 20
+	"outfit space" -20
+	"energy generation" 1.32
+	"heat generation" 1.9
+	"ion protection" -.2
+	description "This fuel cells used by the inhabitants of Genesis are very efficient at generating energy, but the methods used to make this possible leave them vulnerable against ionization."
+
+
+
+##################
+#
+# Deprecated
+#
+##################
+
+outfit "Anti-Missile"
+	category "Turrets"
+	cost 60000
+	thumbnail "outfit/genesis anti-missile"
+	"mass" 16
+	"outfit space" -16
+	"weapon capacity" -16
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/anti-missile"
+		"hardpoint offset" 4.
+		"hit effect" "small anti-missile"
+		"anti-missile" 5
+		"velocity" 150
+		"lifetime" 1
+		"reload" 8
+		"firing energy" 5
+		"firing heat" 3
+	description "This is similar to the Anti-Missile Turret you're familiar with."
+
+outfit "Laser"
+	category "Guns"
+	cost 29000
+	thumbnail "outfit/laser"
+	"mass" 8
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	weapon
+		sprite "projectile/laser"
+			"frame rate" 1
+		sound "laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .5
+		"velocity" 300
+		"lifetime" 1
+		"reload" 1
+		"firing energy" .5
+		"firing heat" 1.2
+		"shield damage" 1
+		"hull damage" 1.3
+	description "This is similar to the Beam Laser you're familiar with."
+
+outfit "Gat"
+	category "Secondary Weapons"
+	cost 20000
+	thumbnail "outfit/gat"
+	"mass" 2
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	"gatling round capacity" 3000
+	weapon
+		sprite "projectile/tinyflare"
+			"random start frame"
+		sound "gatling"
+		ammo "Gatling Gun Ammo"
+		icon "icon/gat"
+		"inaccuracy" 2
+		"velocity" 16
+		"lifetime" 1
+		"reload" 3
+		"burst count" 180
+		"burst reload" 1
+		"firing energy" .03
+		"firing heat" 2.5
+		"submunition" "gbullet"
+		"cluster"
+		"hit effect" "bullet impact"
+	description "This is similar to the Gatling Gun you're familiar with."
+
+
+outfit "Tiny Battery"
+	category "Power"
+	cost 12000
+	thumbnail "outfit/tiny battery"
+	"mass" 10
+	"outfit space" -10
+	"energy capacity" 1000
+	description "This is a tiny battery."
+
+outfit "Small Battery"
+	category "Power"
+	cost 30000
+	thumbnail "outfit/small battery"
+	"mass" 20
+	"outfit space" -20
+	"energy capacity" 2200
+	description "This is a small battery."
+
+outfit "Medium Battery"
+	category "Power"
+	cost 67000
+	thumbnail "outfit/medium battery"
+	"mass" 40
+	"outfit space" -40
+	"energy capacity" 4800
+	description "This is a medium battery."
+
+outfit "Engines"
+	plural "Engines"
+	category "Engines"
+	"cost" 20000
+	thumbnail "outfit/tiny ion engines"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"thrust" 4.0
+	"thrusting fuel" .01
+	"thrusting energy" .4
+	"thrusting heat" .6
+	"turn" 110
+	"turning fuel" .01
+	"turning energy" .25
+	"turning heat" .5
+	"flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"flare sound" "ion tiny"
+	"steering flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"steering flare sound" "ion tiny"
+	description `This is a compact steering and thrusting engine.`
+
+outfit "Battery"
+	category "Power"
+	cost 6000
+	thumbnail "outfit/genesis battery"
+	"mass" 10
+	"outfit space" -10
+	"energy capacity" 4000
+	description "This is a battery."
+
+outfit "Fusion"
+	category "Power"
+	cost 5000000
+	thumbnail "outfit/genesis fusion"
+	"mass" 100
+	"outfit space" -100
+	"energy generation" 18.2
+	"heat generation" 40
+	description "This is a fusion reactor."
+
+outfit "Radiothermal"
+	category "Power"
+	cost 300000
+	thumbnail "outfit/genesis radiothermal"
+	"mass" 45
+	"outfit space" -45
+	"energy generation" 4.4
+	"heat generation" 18
+	description "Radiothermal generators harvest heat from radioactive isotopes and convert it into electricity."
+
+outfit "Scanner"
+	category "Systems"
+	cost 24000
+	thumbnail "outfit/genesis scanner"
+	"mass" 3
+	"outfit space" -3
+	"cargo scan power" 9
+	"cargo scan efficiency" 5
+	"outfit scan power" 25
+	"outfit scan efficiency" 15
+	description "This scanner allows you to determine what outfits are installed in the ship you are currently targeting, as well as scan the cargo holds. Installing more than one increases the scan range and speed."
+	
+outfit "Small Photovoltaic"
+	category "Power"
+	cost 60000
+	thumbnail "outfit/genesis photovoltaic panel"
+	"mass" 24
+	"outfit space" -16
+	"solar collection" 1.1
+	description "This generates power when near a star."
+
+outfit "Thermionic"
+	category "Power"
+	cost 360000
+	thumbnail "outfit/genesis thermionic"
+	"mass" 55
+	"outfit space" -55
+	"energy generation" 5.0
+	"heat generation" 12
+	description "Thermionic radioisotopic generators are a cooler-running alternative to other generators."
+
+outfit "Tiny Fuel Cell"
+	category "Power"
+	cost 40000
+	thumbnail "outfit/genesis fuel cell"
+	"mass" 20
+	"outfit space" -20
+	"energy generation" 1.2
+	"heat generation" 1.9
+	description "This tiny fuel cell generates power when installed on a ship."
+
+
+

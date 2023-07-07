@@ -29,6 +29,16 @@ effect "pug flamethrower die"
 	"random velocity" .4
 	"velocity scale" .4
 
+effect "glow blood"
+	sprite "effect/glow blood"
+		"no repeat"
+		"frame rate" 10
+		"random start frame"
+	"lifetime" 61
+	"random angle" 20
+	"random velocity" 1
+	"random spin" 5
+
 
 
 ship "Nova Firefly"
@@ -41,41 +51,46 @@ ship "Nova Firefly"
 		"hull" 3500
 		"mass" 220
 		"drag" 5.3
-		"heat dissipation" .9
+		"heat dissipation" 1.8
 		"cargo space" 32
 		"thrust" 22
 		"turn" 500
 		"hull repair rate" 2
-		"heat protection" 6
 		"hull protection" 1
 		"burn protection" 3
+		"heat protection" 3
+		"burn resistance" 3
 		"energy protection" 1
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 200
 		"fuel capacity" 399
 		"inscrutable" 1
 		"gaslining" 1
 		"jump drive" 1
 		"jump speed" 1
-		"jump effect" "pug flamethrower die"
-		"jump in sound" "nuke"
-		"jump out sound" "nuke"
+		"jump effect" "flare belcher die"
+		"jump in sound" "hyperspace-ver8"
+		"jump out sound" "hyperspace-ver8"
 		"ramscoop" 2
 		"solar collection" 2
 		weapon
-			"blast radius" 200
-			"shield damage" 2000
-			"hull damage" 2000
-			"hit force" 3000
+			"blast radius" 350
+			"shield damage" 3500
+			"hull damage" 1800
+			"burn damage" 18
+			"hit force" 900
 	outfits
 		Mouthparts? 1
 		"Flare Belcher?" 1
 
 	gun 0 -40 "Flare Belcher?"
 	gun 0 -40 Mouthparts?
-	leak "blood" 15 25
-	explode "blood" 25
+	leak "glow blood" 15 25
+	explode "glow blood" 35
+	explode "small explosion" 45
 	"final explode" "final explosion large"
 	description "An invasive species from beyond our galaxy. These creatures thrive in the super heated gasses of dissipating supernovas. Through an unknown process, they are able to produce a fiery burst of their own flames."
 
@@ -86,11 +101,11 @@ outfit "Flare Belcher?"
 	"gun ports" -1
 	"unplunderable" 1
 	weapon
-		sprite "effect/explosion/small"
+		sprite "effect/explosion/pug/small"
 			"frame rate" 60
 			"no repeat"
 		sound "flamethrower"
-		"submunition" "Flamethrower Projectile"
+		"submunition" "Flare Belcher Projectile"
 		"inaccuracy" 12
 		"velocity" 9
 		"lifetime" 5
@@ -98,7 +113,42 @@ outfit "Flare Belcher?"
 		"firing energy" .1
 		"firing fuel" .1
 
+outfit "Flare Belcher Projectile"
+	weapon
+		sprite "projectile/flamethrower"
+			"frame rate" 17
+			"random start frame"
+		"hit effect" "flare belcher hit"
+		"die effect" "flare belcher die"
+		"inaccuracy" 20
+		"lifetime" 22
+		"shield damage" .8
+		"hull damage" .7
+		"heat damage" 200
 
+effect "flare belcher die"
+	sprite "effect/explosion/pug/small"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 24
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" .4
+	"velocity scale" .4
+
+effect "flare belcher hit"
+	sprite "effect/explosion/pug/medium"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 28
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 3
+	"random velocity" .6
+	"velocity scale" .4
 
 ship "Egg Pouch"
 	noun "creature"
@@ -114,27 +164,32 @@ ship "Egg Pouch"
 		"energy capacity" 100
 		"fuel capacity" 99
 		"hull repair rate" 1
-		"heat protection" 3
 		"hull protection" 1
 		"energy protection" 3
+		"burn protection" 3
+		"heat protection" 3
+		"burn resistance" 3
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"inscrutable" 1
 		"ramscoop" 1
 		"solar collection" 1
 		"youngfirefly" 1
 		weapon
-			"blast radius" 200
-			"shield damage" 2000
-			"hull damage" 2000
-			"hit force" 3000
+			"blast radius" 700
+			"shield damage" 7000
+			"hull damage" 3600
+			"burn damage" 36
+			"hit force" 1800
 	bay "Drone" 0 -31.5 
 	bay "Drone" 0 -31.5 
 	bay "Drone" 0 -31.5 
-	leak "blood" 25 35
-	explode "small explosion" 25
-	explode "medium explosion" 35
-	explode "large explosion" 45
+	leak "glow blood" 25 35
+	explode "glow blood" 25
+	explode "glow blood" 35
+	explode "small explosion" 45
 	"final explode" "final explosion large"
 	description "A fleshy pouch containing Nova Firefly eggs. The pouch protects and nourishes the eggs while they float through the void between galaxies."
 	
@@ -153,7 +208,13 @@ ship "Firefly Young"
 		"thrust" 18
 		"turn" 400
 		"hull repair rate" 1
+		"burn protection" 2
 		"heat protection" 2
+		"burn resistance" 2
+		"ion protection" 3
+		"scramble protection" 3
+		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 20
 		"inscrutable" 1
 		"gaslining" 1
@@ -162,15 +223,21 @@ ship "Firefly Young"
 	outfits
 		Mouthparts? 1
 	gun 0 22 Mouthparts?
-	leak "blood" 5 15
-	explode "blood" 15
-	"final explode" "blood"
+	leak "glow blood" 5 15
+	explode "glow blood" 15
+	"final explode" "glow blood"
 	description "A freshly hatched Nova Firely. They have not yet developed their parent's territorial hostility or their ability to vomit bursts of flame."
-	
+
+
+phrase "nova firefly"
+	word
+		"Nova Firefly"
+
 fleet "Nova Firefly"
+	names "nova firefly"
 	government "Invasive Lifeform"
 	cargo 0
-	personality vindictive mining mute
+	personality vindictive mining harvests mute
 	variant 1
 		"Nova Firefly"
 	variant 2
@@ -179,21 +246,47 @@ fleet "Nova Firefly"
 		"Nova Firefly" 3
 
 fleet "Nova Firefly Hatchery"
+	names "nova firefly"
 	government "Invasive Lifeform (Passive)"
 	cargo 0
-	personality waiting mining harvests mute
+	personality mining harvests mute
 	variant 1
 		"Egg Pouch" 1
 		"Firefly Young" 4
+
+fleet "Nova Firefly Scout"
+	names "nova firefly"
+	government "Invasive Lifeform (Passive)"
+	cargo 0
+	personality vindictive mining harvests mute
+	variant 1
+		"Nova Firefly"
+
+mission "Nova Firefly Scouts"
+	landing
+	invisible
+	on offer
+		event "nova firefly scouts"
+		fail
+
+event "nova firefly scouts"
+	system Limen
+		add fleet "Nova Firefly Scout" 20000
+	system Orbona
+		add fleet "Nova Firefly Scout" 30000
+
 
 
 # For the event trigger, see Missions Cartography Compass
 event "Nova Firefly Invasion"
 	system Zubahai
+		remove fleet "Nova Firefly Scout"
 		add fleet "Nova Firefly" 6000
 	system Limen
+		remove fleet "Nova Firefly Scout"
 		add fleet "Nova Firefly" 3000
 	system Orbona
+		remove fleet "Nova Firefly Scout"
 		add fleet "Nova Firefly" 6000
 	system Terminus
 		add fleet "Nova Firefly" 12000
@@ -223,7 +316,9 @@ ship "Star Gazer"
 		"hull repair rate" 3
 		"hull protection" 1
 		"ion protection" 3
+		"scramble protection" 3
 		"ion resistance" 1
+		"scramble resistance" 1
 		"energy capacity" 100
 		"solar collection" .2
 		"inscrutable" 1
@@ -237,10 +332,11 @@ ship "Star Gazer"
 		"jump out sound" "jump_drive-ver8"
 		"ramscoop" 1
 		"outfit scan power" 32
-		"outfit scan speed" 4
+		"outfit scan efficiency" 40
 		"cargo scan power" 8
-		"cargo scan speed" 4
+		"cargo scan efficiency" 20
 		"atmosphere scan" 100
+		"asteroid scan power" 50
 	outfits
 		"Quill Launcher?" 8
 
@@ -255,7 +351,7 @@ ship "Star Gazer"
 	leak "blood" 30 50
 	explode "blood" 45
 	"final explode" "blood"
-	description "An invasive species from beyond our galaxy. While not particularly aggressive, they can be dangerous if provoked. Their bodies generate replacement quills quickly, allowing them to maintain a constant stream of fire. These projectiles are made of a material that evades detection by anti-missile systems and may have other unknown properties."
+	description "An invasive species from beyond our galaxy. They seem possessed by an insatiable curiosity, observing everything they encounter with multiple eyes and other, more alien, sensory organs. While not particularly aggressive, Stargazers can be dangerous if provoked. Their bodies are covered with sharp quills that can be flung towards predators. They regenerate quickly, allowing them to maintain a constant stream of fire. These projectiles are made of a material that evades detection by anti-missile systems and may have other unknown properties."
 
 effect "jump drive wisp"
 	sprite "effect/jump drive wisp"
@@ -289,7 +385,12 @@ outfit "Quill Launcher?"
 		"firing energy" .1
 		"phasing"
 
+phrase "star gazer"
+	word
+		"Star Gazer"
+
 fleet "Star Gazer Passive"
+	names "star gazer"
 	government "Invasive Lifeform (Passive)"
 	cargo 0
 	personality surveillance opportunistic mute
@@ -301,9 +402,10 @@ fleet "Star Gazer Passive"
 		"Star Gazer" 5
 
 fleet "Star Gazer Aggressive"
+	names "star gazer"
 	government "Invasive Lifeform"
 	cargo 0
-	personality heroic vindictive opportunistic unconstrained mute
+	personality vindictive opportunistic unconstrained mute
 	variant 5
 		"Star Gazer" 3
 	variant 3
@@ -330,7 +432,7 @@ mission "First Contact: Star Gazer"
 		government "Invasive Lifeform (Passive)"
 		system "Watcher's Nest"
 		personality waiting staying opportunistic surveillance mute
-		ship "Star Gazer"
+		ship "Star Gazer" "Star Gazer"
 
 event "Reveal Watcher's Nest"
 	system "Watcher's Nest"
@@ -401,9 +503,9 @@ mission "Gaze Through The Eye"
 		government "Invasive Lifeform (Passive)"
 		system "Sko'karak"
 		personality waiting staying surveillance mute
-		ship "Star Gazer"
+		ship "Star Gazer" "Star Gazer"
 	npc
 		government "Invasive Lifeform (Passive)"
 		system "Sabriset"
 		personality waiting staying surveillance mute
-		ship "Star Gazer"
+		ship "Star Gazer" "Star Gazer"

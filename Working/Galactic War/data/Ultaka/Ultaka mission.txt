@@ -33,6 +33,25 @@ event "Ultaka Saska: Mega Deployment"
 		
 event "Ultaka Saska: Security Timer"
 
+mission "Ultaka Saska: Increase Security I"
+	landing
+	invisible
+	to offer
+		or
+			has "Ultaka Saska Lape Weapon: done" >= 2
+			"reputation: Ultaka" <= -7000
+	on offer
+		event "Ultaka upgrade 1"
+		event "Ultaka Saska: Lvoris Deployment"
+		event "Ultaka Saska: Security Timer I" 14
+		
+event "Ultaka Saska: Lvoris Deployment"
+	system Saska
+		#add fleet "Ultaka Lvoris Big" 700
+		add fleet "Ultaka Lvoris Small" 700
+		
+event "Ultaka Saska: Security Timer I"
+
 mission "Ultaka Saska: Increase Security II"
 	landing
 	invisible
@@ -41,7 +60,7 @@ mission "Ultaka Saska: Increase Security II"
 			"reputation: Ultaka" <= -10000
 			and
 				"armament deterrence" >= 20000
-				"reputation: Ultaka" <= -7000
+				"reputation: Ultaka" <= -20000
 	on offer
 		event "Ultaka Saska: Alrul Deployment"
 		event "Ultaka Saska: Security Timer II" 14
@@ -57,10 +76,19 @@ mission "Ultaka Saska: Provoked"
 	landing
 	invisible
 	to offer
-		not "Ultaka Saska: Security Timer"
+		not "event: Ultaka Saska: Security Timer"
 		"reputation: Ultaka" <= -5250
 		or
 			"reputation: Ultaka" <= -11000
+
+mission "Ultaka Saska: Provoked I"
+	landing
+	invisible
+	to offer
+		not "Ultaka Saska: Security Timer I"
+		"reputation: Ultaka" <= -8000
+		or
+			"reputation: Ultaka" <= -20000
 
 mission "Ultaka Saska: Provoked II"
 	landing
@@ -69,7 +97,7 @@ mission "Ultaka Saska: Provoked II"
 		not "Ultaka Saska: Security Timer II"
 		"reputation: Ultaka" <= -8000
 		or
-			"reputation: Ultaka" <= -25000
+			"reputation: Ultaka" <= -30000
 
 
 mission "Ultaka Saska: Death Threats 1"
@@ -234,6 +262,26 @@ mission "Ultaka Saska: Ultaka Hunt Player V"
 
 # VI, VII reserved for Ultaka Lvoris
 
+mission "Ultaka Saska: Ultaka Hunt Player VI"
+	landing
+	invisible
+	repeat 7
+	to offer
+		"Ultaka Saska: Provoked I: offered" >= 1
+		or
+			random < 15
+			and
+				random < 50
+				"armament deterrence" >= 20000
+		"reputation: Ultaka" <= -20000
+	npc kill
+		government "Ultaka"
+		personality
+			vindictive target entering
+		system
+			distance 0 2
+		fleet "Ultaka Lvoris Small" 3
+
 mission "Ultaka Saska: Ultaka Hunt Player VIII"
 	landing
 	invisible
@@ -297,6 +345,7 @@ mission "Ultaka Saska: Ultaka Hunt Player X"
 mission "Ultaka Saska: Ultaka Hunt Player EX"
 	landing
 	invisible
+	deadline 14
 	repeat 2
 	to offer
 		"Ultaka Saska: Provoked II: offered" >= 1

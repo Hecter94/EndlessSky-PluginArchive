@@ -1,0 +1,101 @@
+# Copyright (c) 2023 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+
+mission "Wanderer Ringworld Debris 1"
+	minor
+	name "Ringworld Debris"
+	description "Return to <waypoints> where you found the ringworld debris to search for a missing component that would help the Wanderers to understand it better. Bring what you find to <destination> where Wanderer technicians can study it."
+	source
+		government "Wanderer"
+		attributes "outfitter"
+	to offer
+		has "license: Wanderer Outfits"
+		has "event: wanderers: derecho mass production"
+		has "ringworld debris"
+		not "Ringworld Debris: Quarg: offered"
+		"reputation: Wanderer" > 0
+	waypoint "Queri"
+	on offer
+		conversation
+			scene "scene/ringworld debris"
+			`Do you want to show Wanderers the piece of debris you found in the abandoned, empty system, and ask them what they know about it?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+			`	The Wanderers have recently been developing their own cooling systems and conclude that this is some sort of advanced cooling technology beyond their own. But they would be interested in seeing more examples of it. Perhaps a thorough search of <waypoints> is in order. If you can find the missing link that allows them to solve this puzzle, the Wanderers might be able to create something from it.`
+				accept
+	on enter "Queri"
+		dialog "You begin a more thorough search of the system for something that might help the Wanderers unlock the solution to the puzzle hidden within the ringworld debris..."
+
+	npc disable
+		government "Test Dummy"
+		system "Queri"
+		personality unconstrained heroic nemesis
+		ship "Timer Ship" "Timer"
+		conversation
+			scene "scene/ringworld debris"
+			`You find another piece of debris that could be related to what you found previously. The Wanderers would be interested in seeing this. Be sure to take it to the outfitter on <destination>.`
+	on complete
+		event "add wanderer advanced cooling" 90
+		conversation
+			scene "scene/ringworld debris"
+			`The Wanderers are grateful for the new technological sample you've delivered to them. After having some time to study it, they may eventually learn enough to make something from it.`
+
+event "add wanderer advanced cooling"
+	outfitter "Wanderer Advanced"
+		add "Wanderer Advanced Cooling"
+	fleet "Wanderer Defense"
+		add variant 1
+			"Derecho (Advanced Cooling)"
+			"Tempest"
+		add variant 1
+			"Derecho (Advanced Cooling)"
+			"Strong Wind" 2
+
+mission "Wanderer Ringworld Debris 2"
+	outfitter
+	invisible
+	source
+		government "Wanderer"
+		attributes "outfitter"
+		outfits "Wanderer Advanced Cooling"
+	to offer
+		has "event: add wanderer advanced cooling"
+	on offer
+		conversation
+			scene "outfit/wanderer advanced cooling"
+			`The Wanderers have a new cooling system in stock at the outfitter. This appears to be the result of research on the ringworld debris you previously provided to their technicians.`
+				decline
+
+mission "Hurricane Advanced Cooling"
+	landing
+	invisible
+	to offer
+		has "event: add wanderer advanced cooling"
+		has "event: wanderers: hurricane mass production"
+	on offer
+		event "add hurricanes with advanced cooling"
+		fail
+
+event "add hurricanes with advanced cooling"
+	fleet "Wanderer Defense"
+		add variant 1
+			"Hurricane (Advanced Cooling)"
+		add variant 1
+			"Hurricane (Advanced Cooling)"
+			"Derecho (Advanced Cooling)"
+			"Tempest"
+		add variant 1
+			"Hurricane (Advanced Cooling)"
+			"Tempest" 2

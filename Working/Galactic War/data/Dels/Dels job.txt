@@ -217,7 +217,7 @@ mission "Dels Long Range Bulk Delivery"
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
-		payment 12000
+		payment 12000 350
 		dialog phrase "generic cargo delivery payment"
 
 mission "Dels Large Bulk Delivery"
@@ -240,7 +240,7 @@ mission "Dels Large Bulk Delivery"
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
-		payment 12000
+		payment 12000 320
 		dialog phrase "generic cargo delivery payment"
 
 mission "Dels Long Range Large Bulk Delivery"
@@ -263,10 +263,86 @@ mission "Dels Long Range Large Bulk Delivery"
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
-		payment 18000
+		payment 18000 300
 		dialog phrase "generic cargo delivery payment"
-
-mission "Dels Passengers"
+		
+mission "Dels Dardornai Transport Volunteers"
+	name "Transport volunteers to <planet>"
+	job
+	repeat
+	deadline 
+	description "<bunks> Dels volunteers are joining the Dels Dardornai navy at <destination>, they have to arrive by <date>. Payment is <payment>."
+	passengers 5 12
+	source
+		government "Dels" "Dels Kaote" "Dels Dardornai"
+	to offer
+		random < 40
+	destination
+		distance 2 12
+		government "Dels Dardornai"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"assisted dardornai" ++
+		payment
+		payment 5800
+		dialog `The leader of the group hands you <payment> as the group quickly left the ship.`
+		
+mission "Dels Dardornai Blockade Running"
+	name "Cargo to <destination>"
+	job
+	repeat
+	deadline 
+	description "<system> is besieged by the Kroom and is running low on supplies, you'll be paid <payment> to deliver <cargo> there by <date>. Be warned there's likely several Kroom ships in orbit."
+	cargo "military supplies" 30 90
+	source
+		government "Dels Dardornai"
+		attributes "dels frontline"
+	to offer
+		random < 10
+	destination
+		distance 2 12
+		government "Dels Dardornai"
+	npc
+		government "Kroom Kakaima"
+		personality heroic staying
+		system destination
+		fleet "Kakaima Attack"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"reputation: Dels Dardornai" += 2
+		"assisted dardornai" ++
+		payment
+		payment 18000 360
+		dialog `The locals were already waiting when you landed and quickly unload the cargo, one of them hands you <payment>.`
+		
+mission "Dels Dardornai Messenger"
+	name "Fly to <destination>"
+	job
+	repeat
+	deadline 
+	description "Hypernet satellite is damaged and the authority need an important message to be delivered to <destination>. Reach there by <date>. Payment is <payment>"
+	source
+		government "Dels Dardornai"
+		attributes "dels frontline"
+	to offer
+		has `language: Dels`
+		random < 15
+		or
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+	destination
+		distance 2 3
+		government "Dels Dardornai"
+	on complete
+		"assisted dardornai" ++
+		payment
+		payment 3400 250
+		dialog `You quickly find the local government and deliver them the message to them, they thank you and hands you <payment>.`
+		
+		
+mission "Dels Passengers [0]"
 	name "Passenger transport to <planet>"
 	job
 	repeat
@@ -285,6 +361,25 @@ mission "Dels Passengers"
 		payment 2000
 		dialog phrase "generic passenger dropoff payment"
 		
+mission "Dels Passengers [1]"
+	name "Passenger transport to <planet>"
+	job
+	repeat
+	deadline 
+	description "Bring <fare> to <destination> by <date>. Payment is <payment>."
+	passengers 1 10 .9
+	source
+		government "Dels" "Dels Kaote" "Dels Dardornai"
+	destination
+		distance 2 10
+		government "Dels" "Dels Kaote" "Dels Dardornai" "Ignaggen"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2100
+		dialog phrase "generic passenger dropoff payment"
+
 mission "Dels Many Passengers"
 	name "Passenger transport to <planet>"
 	job
@@ -322,3 +417,45 @@ mission "Dels Long Range Passengers"
 		payment
 		payment 4000
 		dialog phrase "generic passenger dropoff payment"
+
+mission "Dels Escort [0]"
+	job
+	repeat
+	deadline
+	name "Escort to <planet>"
+	description `Captain of Manoon freighter <npc> want and escort to <destination> by <date>. The payment will be <payment>.`
+	to offer
+		random < 40
+		"reputation: Dels" > 0
+		or
+			"combat rating" > 8
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+	source
+		government "Dels Kaote" "Dels Dardornai"
+	destination
+		government "Dels Kaote" "Dels Dardornai"
+		near Keedulva 1 4
+		distance 2 8
+		not attributes `uninhabited`
+	npc 
+		government "Dels Ufulre"
+		personality harvests
+			confusion 30
+		fleet "Dels Ufulre Raid Jobs"
+				
+	npc save accompany
+		government "Dels"
+		personality escort timid
+			confusion 25
+		fleet
+			name "Dels civillian"
+			cargo 2
+			variant
+				"Dels Manoon"
+
+	on complete
+		payment 70000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"

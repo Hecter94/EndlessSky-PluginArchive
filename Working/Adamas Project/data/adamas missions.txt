@@ -1,4 +1,4 @@
-# Adamas Project Copyright (c) 2016 by Cody Tompkins
+# Adamas Project Copyright (c) 2016 by Cody Tompkins & Bereskatuket
 #
 # The Adamas Project is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
@@ -7,19 +7,22 @@
 # The Adamas Project is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-
+				
 mission "Adamas Wormhole Opens"
 	name "Investigate wormhole"
 	invisible
+	landing
 	description "Opens the Adamas wormhole - you shouldn't be seeing this."
+	waypoint "At Andol"
 	destination "Maker"
 	to offer
 		has "kestrel available"
 		"reputation: Syndicate" >= 1
 	on offer
 		event "andol wormhole opens"
-		fail
+		event "small adamas outfitter chrysoprase" 60
+		event "large adamas outfitter chrysoprase" 120
+		event "dust wormhole opens" 30
 		
 		
 mission "First Contact: Adamas"
@@ -27,8 +30,87 @@ mission "First Contact: Adamas"
 	source "Dolthtleh"
 	on offer
 		"reputation: Adamas" = 50
+		set "adamas jobs"
 		conversation
 			`This station is filled with a strange kind of humanoid alien. They are of all different sizes, but all closely resemble humans, with one major difference: they are made of a metallic substance with strange, multicolored crystals running through them. As soon as you land, a very tall, thin alien with pronounced ribs moves quickly to you.`
 			`	"On fen tlagn," it says, in a high, metallic voice, similar to the voice of the old human androids, before they were banned. "On fen kthest?" Seeing that it is making no progress in communicating with you, it shakes its head and says emphatically, "Quadol Nes'el Thoest," then walks away.`
 				decline
-		event "small adamas outfitter chrysoprase" 120
+mission "First Adamas License"
+	name "Vitreus License"
+	landing
+	source
+		government "Adamas"
+	to offer
+		adamasjob >= 10
+	on offer
+		"reputation: Adamas" = 250
+		set "license: Vitreus"
+		conversation
+			`You recieve a short mathmatical message from the aliens, which after around 10 minutes of decryption from the <ship>'s computer, you discover it is a license to buy the Adamas light warship, the Vitreus.`
+			`Evidently, your contributions have earned you a good reputation with them.`
+			scene "thumbnail/vitreus"
+
+mission "Second Adamas License"
+	name "Shard License"
+	landing
+	source
+		government "Adamas"
+	to offer
+		adamasjob >= 20
+	on offer
+		"reputation: Adamas" = 500
+		set "license: Shard"
+		conversation
+			`You recieve a short mathmatical message from the aliens, which after around 10 minutes of decryption from the <ship>'s computer, you discover it is a license to buy the Adamas medium warship, the Shard.`
+			`Evidently, your contributions have earned you a good reputation with them.`
+			scene "thumbnail/shard"
+
+mission "Third Adamas License"
+	name "Vault License"
+	landing
+	source
+		government "Adamas"
+	to offer
+		adamasjob >= 30
+	on offer
+		"reputation: Adamas" = 750
+		set "license: Vault"
+		conversation
+			`You recieve a short mathmatical message from the aliens, which after around 10 minutes of decryption from the <ship>'s computer, you discover it is a license to buy the Adamas heavy freighter, the Vault.`
+			`Evidently, your contributions have earned you a good reputation with them.`
+			scene "thumbnail/vault"
+
+mission "Fourth Adamas License"
+	name "Colossus License"
+	landing
+	source
+		government "Adamas"
+	to offer
+		adamasjob >= 40
+	on offer
+		"reputation: Adamas" = 1000
+		set "license: Colossus"
+		conversation
+			`You recieve a short mathmatical message from the aliens, which after around 10 minutes of decryption from the <ship>'s computer, you discover it is a license to buy the Adamas heavy carrier, the Colossus.`
+			`Evidently, your contributions have earned you a massive reputation with them.`
+			scene "thumbnail/colossus"
+			
+			
+			
+			
+			
+			
+			
+			
+			
+#world-forge compat for licenses
+mission "Adamas Licenses"
+	name "Adamas Licenses"
+	source Forge
+	job
+	on offer
+		"reputation: Adamas" = 1000
+		set "license: Vitreus"
+		set "license: Shard"
+		set "license: Vault"
+		set "license: Colossus"

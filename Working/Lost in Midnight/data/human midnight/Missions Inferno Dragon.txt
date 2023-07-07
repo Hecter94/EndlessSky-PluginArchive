@@ -30,17 +30,17 @@ mission "Inferno Dragon: Inferno Rocket Fleets"
 		ship "Combat Drone" "Red Dragon 2"
 		ship "Combat Drone" "Red Dragon 3"
 		ship "Combat Drone" "Red Dragon 4"
-		ship "Fury (Inferno Rockets)" "Dragon's Guard"
-		ship "Hawk (Inferno Rockets)" "Dragon's Sentry"
-		ship "Berserker (Inferno Rockets)" "Dragon's Sentnel"
-	npc kill
+		ship "Gunboat (Inferno Rockets)" "Dragon's Guard"
+		ship "Rainmaker (Inferno Rockets)" "Dragon's Sentry"
+		ship "Rainmaker (Inferno Rockets)" "Dragon's Sentnel"
+	npc
 		government "Independent (Killable)"
 		system Sargas
 		personality waiting staying marked vindictive
 			confusion 10
-		ship "Frigate (Inferno Rockets)" "Dragon's Claws"
-		ship "Frigate (Inferno Rockets)" "Dragon's Breath"
-		ship "Frigate (Inferno Rockets)" "Dragon's Wings"
+		ship "Gunboat (Inferno Rockets)" "Dragon's Claws"
+		ship "Rainmaker (Inferno Rockets)" "Dragon's Breath"
+		ship "Rainmaker (Inferno Rockets)" "Dragon's Wings"
 
 event "inferno rocket fleets"
 	fleet "Small Southern Pirates"
@@ -61,11 +61,11 @@ event "inferno rocket fleets"
 		add variant 1
 			"Fury (Inferno Rockets)"
 			"Hawk"
-			"Sparrow"
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Fury"
 			"Hawk (Inferno Rockets)"
-			"Sparrow"
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Clipper (Inferno Rockets)"
 		add variant 1
@@ -80,7 +80,7 @@ event "inferno rocket fleets"
 			"Fury (Inferno Rockets)"
 		add variant 1
 			"Osprey (Inferno Rockets)"
-			"Sparrow"
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Clipper (Inferno Rockets)"
 			"Hawk"
@@ -93,16 +93,18 @@ event "inferno rocket fleets"
 			"Fury (Heavy)"
 		add variant 1
 			"Hawk (Inferno Rockets)"
-			"Sparrow" 3
+			"Sparrow" 2
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Modified Argosy (Inferno Rocket)"
-			"Sparrow" 2
+			"Sparrow"
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Modified Argosy (Inferno Rocket)"
 			"Fury (Heavy)" 2
 		add variant 1
 			"Modified Argosy (Inferno Rocket)"
-			"Modified Argosy (Missile)"
+			"Modified Argosy (Shields Missile)"
 		add variant 1
 			"Bastion (Inferno Rockets)"
 		add variant 1
@@ -198,7 +200,7 @@ event "inferno rocket fleets"
 			"Hawk (Inferno Rockets)"
 		add variant 1
 			"Hawk (Inferno Rockets)"
-			"Sparrow"
+			"Sparrow (Limit Break)"
 		add variant 1
 			"Raven (Inferno Rockets)"
 		add variant 1
@@ -271,7 +273,7 @@ event "inferno rocket fleets"
 			"Hawk (Bomber)"
 		add variant 1
 			"Hawk (Inferno Rockets)" 2
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 		add variant 1
 			"Modified Argosy (Inferno Rocket)"
 			"Raven (Afterburner)" 2
@@ -299,7 +301,7 @@ event "inferno rocket fleets"
 			"Corvette (Inferno Rockets)"
 		add variant 1
 			"Firebird (Plasma)"
-			"Berserker"
+			"Berserker (Limit Break)"
 		add variant 1
 			"Firebird (Plasma)"
 			"Berserker (Inferno Rockets)" 2
@@ -325,8 +327,8 @@ event "inferno rocket fleets"
 			"Leviathan (Laser)"
 			"Firebird (Inferno Rockets)"
 		add variant 1
-			"Berserker"
-			"Berserker (Afterburner)"
+			"Berserker (Limit Break)"
+			"Berserker (Afterburner Limit Break)"
 			"Berserker (Inferno Rockets)"
 
 mission "Inferno Dragon: Diyu Dragon"
@@ -561,8 +563,10 @@ outfitter "Inferno Rockets"
 	"Inferno Rocket"
 
 mission "Inferno Dragon: Inferno Outfitters"
+	outfitter
 	invisible
 	minor
+	deadline 2
 	source
 		government "Pirate"
 		attributes "outfitter"
@@ -608,14 +612,15 @@ mission "Inferno Dragon: Inferno Outfitters"
 			
 			label wrong
 			`The outfitter frowns. "It seems you don't know the Inferno Dragon."`
-				accept			
+				accept
 	on defer
 		set "Randomize Inferno Dragon: Inferno Outfitters"
-			
 	on decline
 		event "inferno rockets at pirate outfitters"
 		log "Inferno Dragon Notes: The Inferno Dragon poem is a password that gives access to Inferno Rockets at some outfitters."
-	
+	on enter
+		set "Randomize Inferno Dragon: Inferno Outfitters"
+		clear "Inferno Dragon: Inferno Outfitters: offered"
 	npc kill
 		government "Pirate"
 		personality entering staying plunders heroic unconstrained
@@ -656,13 +661,12 @@ mission "Inferno Dragon: Inferno Outfitters"
 			variant
 				"Splinter (Proton)"
 				"Hawk (Inferno Rockets)" 2
-	on complete
-		set "Randomize Inferno Dragon: Inferno Outfitters"
-		clear "Inferno Dragon: Inferno Outfitters: offered"
+
 
 event "inferno rockets at pirate outfitters"
 	outfitter "Pirate Outfits"
 		add "Inferno Rocket Launcher"
+		add "Inferno Rocket Pod"
 		add "Inferno Rocket"
 		add "Inferno Rocket Rack"
 	planet Zenith
@@ -672,11 +676,88 @@ event "inferno rockets at pirate outfitters"
 	planet New China
 		add outfitter "Inferno Rockets"
 
+mission "Inferno Dragon: Inferno Rocket Pod Patch"
+	landing
+	invisible
+	to offer
+		has "event: inferno rockets at pirate outfitters"
+	on offer
+		event "inferno rocket pod patch"
+		fail
+
+event "inferno rocket pod patch"
+	outfitter "Pirate Outfits"
+		add "Inferno Rocket Pod"
+
+phrase "red dragon"
+	phrase
+		"bad outcomes"
+	word
+		" Dragon"
+
+phrase "red dragon"
+	word
+		"Bo Hai"
+		"Chang An"
+		"Chang Sha"
+		"Cheng Du"
+		"Chin"
+		"Fu Shui"
+		"Guang Ling"
+		"Guang Zong"
+		"Gui Yang"
+		"Huai Nan"
+		"Ji Zhou"
+		"Jian An"
+		"Jian Ye"
+		"Jin Du"
+		"Ling Ling"
+		"Luo Yang"
+		"Luo"
+		"Nan Yang"
+		"Qing Zhou"
+		"Ru Nan"
+		"Wu Ling"
+		"Wu"
+		"Xu Zhou"
+		"Yang Zhou"
+		"Yuan"
+		"An Sha"
+		"Bei Ji"
+		"Ce Mian"
+		"Cheng Nei"
+		"Chi Xin"
+		"Da Re"
+		"Fu Bing"
+		"Gui Huan"
+		"Hong Shui"
+		"Huo Shen"
+		"Ji Mian"
+		"Ji Rou"
+		"Jie Ce"
+		"Jin Xian"
+		"Li Jian"
+		"Lian Huo"
+		"Qi Shou"
+		"Shui Jian"
+		"Shui Lei"
+		"Shui Long"
+		"Shui Tu"
+		"Shui Xing"
+		"Tong Xian"
+		"Tui Lu"
+		"Wan Fu"
+		"Wuo Jian"
+		"Yan Re"
+		"Ye Huo"
+		"Yi Xin"
+		"Yin Xian"
 
 
 mission "Inferno Dragon: Dragon's Hoard"
 	invisible
 	minor
+	deadline 7
 	source Lares
 	to offer
 		has "event: inferno rockets at pirate outfitters"
@@ -720,6 +801,7 @@ mission "Inferno Dragon: Dragon's Hoard"
 			`	You trip on the uneven ground and are buried alive under several tons of rock, dirt, and stone.`
 				die
 			label live
+			scene "asteroid/large rock/spin"
 			`	You safely escape the cave in, but whatever was hidden in there is lost for all eternity.`
 				decline
 			
@@ -905,52 +987,169 @@ mission "Inferno Dragon: Dragon's Hoard"
 	on enter
 		conversation
 			scene "thumbnail/frigate"
-			`That's a navy frigate, but you have a hunch the ones piloting it aren't here to clean up piracy...`
+			`That looks like a navy frigate, but you have a hunch the ones piloting it aren't here to clean up piracy...`
 			`They hail you: "We're with the Red Dragons. Our security system alerted us that someone was stupid enough to make an unauthorized entry at the Lares vault. Looks like we caught a thief trying to escape with our treasure. You'll burn for that!`
 
 	npc kill
 		government "Pirate"
+		system Mora
+		personality target entering heroic unconstrained nemesis
+			confusion 20
+		fleet
+			names "red dragon"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Frigate (Inferno Rockets)"
+				"Gunboat (Inferno Rockets)" 2
+				"Rainmaker (Inferno Rockets)" 2
+	npc kill
+		government "Pirate"
 		system Limen
-		personality target entering plunders heroic unconstrained
-			confusion 20
-		fleet
-			names "pirate"
-			cargo 0
-			variant
-				"Vanguard (Inferno Rockets)"
-				"Splinter (Inferno Rockets)"
-				"Modified Argosy (Inferno Rocket)"
-				"Hawk (Inferno Rockets)"
-	npc kill
-		government "Pirate"
-		system Orbona
-		personality target entering plunders heroic unconstrained
-			confusion 20
-		fleet
-			names "pirate"
-			cargo 0
-			variant
-				"Leviathan (Inferno Rockets)"
-				"Corvette (Inferno Rockets)"
-				"Firebird (Inferno Rockets)"
-				"Raven (Inferno Rockets)"
-				"Berserker (Inferno Rockets)"
-	npc kill
-		government "Pirate"
-		personality target waiting plunders heroic unconstrained
+		personality target entering heroic unconstrained nemesis
 			confusion 20
 		ship "Frigate (Inferno Rockets)" "Dragon's Avenger"
 		fleet
-			names "pirate"
-			cargo 0
+			names "red dragon"
+			cargo 1
+			outfitters "Inferno Rockets"
 			variant
-				"Falcon (Inferno Rockets)"
-				"Bastion (Inferno Rockets)"
-				"Osprey (Inferno Rockets)"
-				"Clipper (Inferno Rockets)"
-				"Fury (Inferno Rockets)"
+				"Frigate (Inferno Rockets)"
+				"Gunboat (Inferno Rockets)" 2
+				"Rainmaker (Inferno Rockets)" 2
+	npc kill
+		government "Pirate"
+		system Orbona
+		personality target entering heroic unconstrained nemesis
+			confusion 20
+		fleet
+			names "red dragon"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Frigate (Inferno Rockets)"
+				"Gunboat (Inferno Rockets)" 2
+				"Rainmaker (Inferno Rockets)" 2
+	npc kill
+		government "Pirate"
+		personality target waiting heroic unconstrained nemesis
+			confusion 20
+		fleet
+			names "red dragon"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Frigate (Inferno Rockets)"
+				"Gunboat (Inferno Rockets)" 2
+				"Rainmaker (Inferno Rockets)" 2
+	on fail
+		log `Found the Red Dragon's treasure hoard in a secluded cave on Lares. Had to solve a puzzle based on the Inferno Dragon poem and fight off a Red Dragon pirate fleet.`
 	on complete
 		log `Found the Red Dragon's treasure hoard in a secluded cave on Lares. Had to solve a puzzle based on the Inferno Dragon poem and fight off a Red Dragon pirate fleet.`
+
+
+mission "Holiday: New Year's Fireworks"
+	job
+	deadline 2
+	name "New Year's Fireworks Delivery"
+	description "Deliver <cargo> to <destination> for a New Year's festival. Payment is <payment>."
+	cargo fireworks 5 2 .1
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 1
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "uninhabited" "station"
+	to offer
+		"combat rating" > 1000
+		month == 12
+		day == 31
+		has "event: inferno rocket fleets"
+		or
+			has "Bounty Hunting (Very Tiny): done"
+			has "Bounty Hunting (Tiny): done"
+			has "Bounty Hunting (Very Small): done"
+			has "Bounty Hunting (Small): done"
+			has "Bounty Hunting (Medium): done"
+			has "Bounty Hunting (Big): done"
+			has "Bounty Hunting (Small, Hidden): done"
+			has "Bounty Hunting (Medium, Hidden): done"
+			has "Bounty Hunting (Big, Hidden): done"
+			has "Bounty Hunting (Small, Boarding, Entering): done"
+			has "Bounty Hunting (Medium, Boarding, Entering): done"
+			has "Bounty Hunting (Solo Marauder I): done"
+			has "Bounty Hunting (Solo Marauder II): done"
+			has "Bounty Hunting (Solo Marauder III): done"
+			has "Bounty Hunting (Solo Marauder IV): done"
+			has "Bounty Hunting (Marauder I): done"
+			has "Bounty Hunting (Marauder II): done"
+			has "Bounty Hunting (Marauder III): done"
+			has "Bounty Hunting (Marauder IV): done"
+			has "Bounty Hunting (Marauder V): done"
+			has "Bounty Hunting (Marauder VI): done"
+			has "Bounty Hunting (Marauder VII): done"
+			has "Bounty Hunting (Marauder VIII): done"
+			has "Bounty Hunting (Marauder IX): done"
+			has "Bounty Hunting (Marauder X): done"
+	on enter
+		dialog `A pirate ship hails you: "Remember the Three Skeleton Key? We decided to celebrate the new year by avenging her crew!" The pirates are targetting you with their weapons.`
+	npc disable
+		government "Pirate"
+		personality waiting heroic plunders
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Modified Argosy (Inferno Rocket)"
+				"Fury (Inferno Rockets)" 2
+		dialog `Fireworks do seem like a good way to celebrate the new year...`
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 1
+		government "Pirate"
+		personality waiting heroic plunders coward
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Bastion (Inferno Rockets)"
+				"Clipper (Inferno Rockets)" 2
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 2
+		government "Pirate"
+		personality waiting heroic plunders coward
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Falcon (Inferno Rockets)"
+				"Osprey (Inferno Rockets)" 2
+	npc evade
+		to spawn
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 4
+		government "Pirate"
+		personality waiting heroic plunders coward
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Inferno Rockets"
+			variant
+				"Leviathan (Inferno Rockets)"
+				"Firebird (Inferno Rockets)" 2
+	on visit
+		dialog `The pirates are still chasing you! You're going to have to use force to chase them off.`
+	on complete
+		payment
+		dialog `You receive <payment> for delivering the <cargo> to <planet>. The festival organizer invites you to watch the show, but you inform them that you've already celebrated with new year's fireworks.`
+
 
 
 mission "Inferno Dragon: FW Bounty [0]"
@@ -970,7 +1169,7 @@ mission "Inferno Dragon: FW Bounty [0]"
 		system
 			government "Pirate"
 			attributes "south"
-		personality target timid
+		personality target waiting staying timid
 			confusion 20
 		fleet
 			names "civilian"
@@ -979,7 +1178,7 @@ mission "Inferno Dragon: FW Bounty [0]"
 			variant
 				"Bastion"
 			variant
-				"Modified Argosy"
+				"Modified Argosy (Shields)"
 			variant
 				"Clipper"
 	on complete
@@ -998,12 +1197,34 @@ mission "Inferno Dragon: FW Bounty [1]"
 		random < 5
 		has "event: remembrance day"
 		has "salary: Free Worlds"
+	on accept
+		"reputation: Independent (Killable)" >?= 10
+	npc
+		government "Pirate"
+		system
+			government "Pirate"
+			attributes "south"
+		personality waiting heroic harvests plunders
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Berserker (Inferno Rockets)" 2
+			variant
+				"Fury (Inferno Rockets)" 2
+			variant
+				"Hawk (Inferno Rockets)" 2
+			variant
+				"Berserker (Inferno Rockets)"
+				"Fury (Inferno Rockets)"
+				"Hawk (Inferno Rockets)"
 	npc "scan cargo" kill
 		government "Independent (Killable)"
 		system
 			government "Pirate"
 			attributes "south"
-		personality target heroic
+		personality target waiting staying heroic
 			confusion 20
 		fleet
 			names "civilian"
@@ -1015,7 +1236,6 @@ mission "Inferno Dragon: FW Bounty [1]"
 				"Modified Argosy (Inferno Rocket)"
 			variant
 				"Clipper (Inferno Rockets)"
-
 	on complete
 		payment 150000
 		dialog `You hand the scanner data of the <npc> to the Free Worlds government and they pay you <payment> for stopping that shipment.`
@@ -1109,7 +1329,7 @@ event "inferno rockets appear patch"
 		variant 1
 			"Clipper (Speedy)"
 		variant 1
-			"Modified Argosy"
+			"Modified Argosy (Shields)"
 		variant 1
 			"Modified Nest"
 			"Pirate Drone" 4
@@ -1178,13 +1398,13 @@ event "inferno rockets appear patch"
 		variant 2
 			"Argosy (Turret)"
 		variant 1
-			"Modified Argosy"
+			"Modified Argosy (Shields)"
 		variant 1
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 		variant 1
-			"Modified Argosy (Blaster)"
+			"Modified Argosy (Shields Blaster)"
 		variant 1
-			"Modified Argosy (Missile)"
+			"Modified Argosy (Shields Missile)"
 		variant 4
 			"Clipper"
 		variant 2
@@ -1238,19 +1458,19 @@ event "inferno rockets appear patch"
 			"Argosy (Missile)"
 			"Hawk (Rocket)"
 		variant 1
-			"Modified Argosy"
+			"Modified Argosy (Shields)"
 			"Sparrow" 2
 		variant 1
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 			"Sparrow" 2
 		variant 1
-			"Modified Argosy (Blaster)"
+			"Modified Argosy (Shields Blaster)"
 			"Sparrow" 2
 		variant 1
-			"Modified Argosy (Missile)" 2
+			"Modified Argosy (Shields Missile)" 2
 		variant 1
 			"Fury (Heavy)" 2
-			"Modified Argosy (Missile)"
+			"Modified Argosy (Shields Missile)"
 		variant 4
 			"Bastion"
 		variant 2
@@ -1326,7 +1546,7 @@ event "inferno rockets appear patch"
 			"Fury (Heavy)" 2
 		variant 1
 			"Modified Argosy (Inferno Rocket)"
-			"Modified Argosy (Missile)"
+			"Modified Argosy (Shields Missile)"
 		variant 1
 			"Bastion (Inferno Rockets)"
 		variant 1
@@ -1909,11 +2129,11 @@ event "inferno rockets appear patch"
 		variant 2
 			"Argosy (Turret)"
 		variant 1
-			"Modified Argosy"
+			"Modified Argosy (Shields)"
 		variant 1
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 		variant 1
-			"Modified Argosy (Blaster)"
+			"Modified Argosy (Shields Blaster)"
 		variant 2
 			"Clipper (Speedy)"
 		variant 1
@@ -1941,10 +2161,10 @@ event "inferno rockets appear patch"
 			"Argosy (Missile)"
 			"Hawk (Rocket)"
 		variant 1
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 			"Hawk (Speedy)" 2
 		variant 1
-			"Modified Argosy (Blaster)"
+			"Modified Argosy (Shields Blaster)"
 			"Raven (Afterburner)" 2
 		variant 2
 			"Falcon"
@@ -2070,7 +2290,7 @@ event "inferno rockets appear patch"
 			"Hawk (Bomber)"
 		variant 1
 			"Hawk (Inferno Rockets)" 2
-			"Modified Argosy (Heavy)"
+			"Modified Argosy (Shields Heavy)"
 		variant 1
 			"Modified Argosy (Inferno Rocket)"
 			"Raven (Afterburner)" 2

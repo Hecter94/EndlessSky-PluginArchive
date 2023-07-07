@@ -1,0 +1,815 @@
+mission "First Contact: Akralva (boarding)"
+	substitutions
+		"<capturedAkralvaCondition>" "which you're trying to communicate with."
+		"<capturedAkralvaCondition>" "which you're learning their language from them."
+			"Akralva: language proficiency" >= 2
+		"<capturedAkralvaCondition>" "which you're improving your Akralvan language skill from them."
+			"Akralva: language proficiency" >= 4
+	boarding
+	name `Captured Alien`
+	description `You have an alien of Akralva race you captured on board <capturedAkralvaCondition>`
+	passengers 1
+	source
+		government "Akralva"
+	to offer
+		never
+		has "gw: debug mode"
+		"flagship crew" >= 12
+		not "First Contact: Nuru"
+		not "GW: Akralva Prisoner count"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`This is the first time you board this alien ship and you have a brig free, do you want to capture one of the alien to try and translate their language?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+				`	(Never)`
+					decline
+				# TODO: random chance depending on crew count and weapon? #No loss because it's impossible with current mechanic.
+			`	You and your crew boarded the ship and captured one of the alien and put it in the brig. It was a struggle as they're very strong and resilient but you eventually manage to do it, miraculously without any loss. Looking closer at the alien it stand about 2.5 meters tall with bulky build, it have slightly long head length wise with mouth similar to crabs, their black eyes located right under a black colored beetle-like hard shell with a few child's fist-sized spike along the middle of it that covers the top half of their head. It also have similar looking shell but without the spike on its forarm and lower legs which made it looks bigger than their upper arms and upper legs. The rest of their body is covered by bi-metal armour of grey and orange but doesn't seems to cover the joints too well and were meant for ranged combat -to which it did gave you and your crew a hard time- and you can still catch a glimpse of their skin under it which is creme colored and reflects similarly to their shells but looks thinner. Their hands looks like three crab pincers stacked together and could be retracted under the shell of their forearm, which they sometimes do when they punch.`
+			`	With how strong it was you and your crews reinforced the brig with more material to ensure it won't escape.`
+			action
+				"Akralva: Prisoner Name" = random
+				"GW: Akralva Prisoner count" = 1
+			``
+				accept
+	on daily
+		"Akralva: days since capture" += 1
+
+	on fail
+		"GW: Akralva Prisoner count" -= 1
+		clear "First Contact: Akralva (boarding): done"
+		dialog
+			`The ship with the alien prisoner on was destroyed, you'll have to capture a new one if you want to continue learning their language.`
+
+	to complete
+		never
+
+mission "Akralva: Learning Language (captured, a)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 7
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`You've got an alien captured on board for a week now, so far it had been uncooperative and difficult to gain anything out of it. You feel like this is going to take a while before you can learn something from it. At first they appears to prefer fruits and vegetables and fungi than meat it turned refuses to eat anything but meat on the next day.`
+				decline
+
+mission "Akralva: Learning Language (captured, b)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 30
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`It had been a month now since you've captured the alien. You figured out a few basic words or phrase but still a long way before you can really communicate with them.`
+				decline
+
+mission "Akralva: Learning Language (captured, c)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 60
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`Two months since you captured the alien from this Akralva race yet you still barely figured out just a few more words due to how uncooperative it is, you feel like this will take a year before you learn enough for some basic communication.`
+				decline
+			
+mission "Akralva: Learning Language (captured, e)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 360
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			action
+				set "language: Akralva"
+				"Akralva: language proficiency" = 1
+			`It've been almost a year since you captured the alien, you feel like you've figured out enough of their language for some basic communication just barely enough to get by now. You can let it go and free up a brig if you want since you should be capable of figuring your way out with them now.`
+			choice
+				`	(Keep it)`
+				`	(Kill it)`
+					goto kill
+				`	(Let it go)`
+					goto letgo
+			`	You decided to keep it onboard for now. You can decide its' fate later. (See job board to decide)`
+				decline
+			label kill
+			action
+				"gw: karma"--
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			`	You get rid of it and continue.`
+				decline
+			label letgo #Todo swap text depending on planet you're on when it's possible.
+			action
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			`	You open the hatch and take the alien outside and let it go, on whatever place this is.`
+				decline
+
+mission "Akralva: Learning Language (captured, release)"
+	job
+	deadline 1
+	name "Release Captured Alien"
+	description `Since you're done learning their language, you can release the Akraval you captured and free up a brig.`
+	source
+		not government "Akralva"
+	to offer
+		has "gw: debug mode"
+		has "GW: Akralva Prisoner count"
+		has "Akralva: Learning Language (captured, e): offered"
+		"Akralva: days since capture" >= 360
+	on accept
+		dialog
+			`You open the hatch and take the alien outside and let it go, on whatever place this is.`
+	on fail
+		clear "GW: Akralva Prisoner count"
+		"First Contact: Akralva (boarding): done" = 1
+		fail "First Contact: Akralva (boarding)"
+
+mission "Akralva: Learning Language (captured, release, akralva planet)"
+	job
+	deadline 1
+	name "Release Captured Alien"
+	description `Since you're done learning their language, you can release the Akraval you captured and free up a brig.`
+	source
+		government "Akralva"
+		not attributes uninhabited
+	to offer
+		has "gw: debug mode"
+		has "GW: Akralva Prisoner count"
+		has "Akralva: Learning Language (captured, e): offered"
+		"Akralva: days since capture" >= 360
+	on accept
+		dialog
+			`You open the hatch and take the alien outside and let it go on this Akralva planet. The inhabitants doesn't look happy or seems to be celebrating at all, neither does they seems to appreciate you for it. At least you know that you did something right...`
+	on fail
+		"gw: karma"++
+		"reputation: Akralva" += .5
+		clear "GW: Akralva Prisoner count"
+		"First Contact: Akralva (boarding): done" = 1
+		fail "First Contact: Akralva (boarding)"
+
+mission "Akralva: Learning Language (captured, kill)"
+	job
+	deadline 1
+	name "Kill Captured Alien"
+	description `Since you're done learning their language, you can kill the Akraval you captured and free up a brig.`
+	to offer
+		has "gw: debug mode"
+		has "GW: Akralva Prisoner count"
+		has "Akralva: Learning Language (captured, e): offered"
+		"Akralva: days since capture" >= 360
+	on accept
+		dialog
+			`You open the hatch and take the alien outside and let it go, on whatever place this is.`
+	on fail
+		"gw: karma"--
+		clear "GW: Akralva Prisoner count"
+		"First Contact: Akralva (boarding): done" = 1
+		fail "First Contact: Akralva (boarding)"
+
+mission "Akralva: Learning Language (captured, f)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 720
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			action
+				"Akralva: language proficiency" += 1
+			`You kept the Akralva prisoner onboard for two years now, you're not sure if it's just you but you feel like it's a little more cooperative now. You also learned a bit more of their language over the year as well.`
+				decline
+
+substitutions
+	`<capturedAkralvaName>` "Exkuzlo Helior"
+	`<capturedAkralvaName>` "Kakzik Akkrel"
+		"Akralva: Prisoner Name" < 17
+	`<capturedAkralvaName>` "Pathak Helior"
+		"Akralva: Prisoner Name" < 34
+	`<capturedAkralvaName>` "Zokriark Gamriz"
+		"Akralva: Prisoner Name" < 51
+	`<capturedAkralvaName>` "Ozkirak Vanra"
+		"Akralva: Prisoner Name" < 68
+	`<capturedAkralvaName>` "Ruzvaas Ei"
+		"Akralva: Prisoner Name" < 85
+
+mission "Akralva: Learning Language (captured, g)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 1080
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			action
+				"Akralva: language proficiency" += 1
+			`It's three years now since you've captured the Akralva. You figured out more about their language, especially when it's more cooperative now than ever. You also learned that his name is <capturedAkralvaName>.`
+				decline
+
+mission "Akralva: Learning Language (captured, h)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 1440
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	substitutions
+		`<capturedAkralvaStatus>` "He was getting very bored and begins asking to go out and fight but you don't quite trust him enough for that yet so he ask you to install a screen in his brig instead so at least he can watch your battles live and statisfy a bit of his thirst for battle, since he has been quite cooperative recently you decided to install one just outside his brig."
+		`<capturedAkralvaStatus>` "He appears to be sitting quietly facing the wall whenever you walked by, but always respond when called. You're not sure what he's doing and why as he was always avoiding the question but at least he didn't cause any trouble for you so far."
+			"Akralva: Prisoner Name" < 17
+		`<capturedAkralvaStatus>` "He is quiet the whole time when nobody speaks to him and just walk around in his tiny cell. You're not quite sure what's in his mind as he seems to ignore you entirely until you call him."
+			"Akralva: Prisoner Name" < 34
+		`<capturedAkralvaStatus>` "He begins asking for texts to read, since he doesn't appear to be violent at all for a long while you gave him some junk books and magazines you were planning to throw away already. While he can't read at first he eventually catch on as you tried to learn more about Akralva language from him."
+			"Akralva: Prisoner Name" < 51
+		`<capturedAkralvaStatus>` "He seems to be extremely bored and for several times were hitting walls and doors around him when no one is around and sit quietly when someone walks by. So far you see only superficial damage."
+			"Akralva: Prisoner Name" < 68
+		`<capturedAkralvaStatus>` "He was getting very bored and begins asking for something to do, anything. Since he has been quite cooperative so far you gave him some random plastic or soft toys you don't need and won't cause any damage. He broke first two plastic ones but eventually figured out how to handle it."
+			"Akralva: Prisoner Name" < 85
+	on offer
+		require "Brig" 1
+		conversation
+			action
+				"Akralva: language proficiency" += 1
+			`Four years with <capturedAkralvaName> the Akralva in your ship's brig. <capturedAkralvaStatus>`
+				decline
+
+mission "Akralva: Learning Language (captured, h)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 1440
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	substitutions
+		`<capturedAkralvaStatus>` "He wasn't asking to go out and fight much since you gave him the screen to watch but you can still notice some hint that he may have been bottling it up. You also learned that other than being a ship crew he claims to have some training as soldier or whatever the Akralvan equivalent is and he says that he can and will help you on boarding combat as well as stories of dealing with engine disruptions and corrosion problems and how he dealt with it. He seems to be obeying all your orders so far and you haven't notice any hint of murder intent towards you (or any of your crew) for a large while now, years even."
+		`<capturedAkralvaStatus>` "He's more talkative recently and often tell stories of glorious past in battles against various aliens turning tides of war and so on. Many of these a bit too fantastical to believe. He claims to specialize in energy management optimizing shield generator and hull repair power usage as well as being the one to figure out how to power ships from ion damages. He said that he can do these improvement for your ship as well if you let him out."
+			"Akralva: Prisoner Name" < 17
+		`<capturedAkralvaStatus>` "Recently he begins to speak a bit more without being asked. You also learned that he used to work in heavy industries before becoming a ship crew. To be more specific, he was the technician repairing shield generators and oversee their installation in the shipyards as well as managing hull repair works. He figured he could help you fine tune our ship's shield and hull repairs to improve overall efficiency if you let him out."
+			"Akralva: Prisoner Name" < 34
+		`<capturedAkralvaStatus>` "He has been learning more and more of your language as you converse with him to learn more of Akralva language. While not that good yet you figured he could probably ask his way back to your ship if he ever got lost. You also learned more about his past and interest and figured out he's quite skilled at dealing with various shield problem like discharges, disruption, and even harden shields against piercing weapons. He's also willing to help fine tuning your ship's shield if you let him out. He doesn't appears to be violent from all the past years and have been quite cooperative in later years."
+			"Akralva: Prisoner Name" < 51
+		`<capturedAkralvaStatus>` "He talked a lot more this year and you don't sense any hostility from him. He'd been talking a lot about his work as a crew and how he often ended up in the damage control team he eventually became a specialist at it. As well as complaining about his coworkers about various mistake they made. You learned that he was quite skilled at patching up hulls in flight, reparing various leaks and dealing with fire aboard the ship. He said he's willing to help you deal with those if you let him out because he's getting extremely bored in there. He's also quite tough due to his race and could be helpful in boarding combat as well."
+			"Akralva: Prisoner Name" < 68
+		`<capturedAkralvaStatus>` "He as been disassembling and reassembling the toys into various other things you don't recognize but doesn't appear harmful. You also learned that he was an engineer and could improve the efficiency of your hull repairs as well as stabilizing shields from disruption. He had also worked on engine disrupting weapons before and know how to fine tune engines to recover engine disruptions faster. While he said his strength is average for his race he's still a lot tougher than many other races and could still be useful in hand to hand combat. He has express interest in being freed to help you run your ship."
+			"Akralva: Prisoner Name" < 85
+	on offer
+		require "Brig" 1
+		conversation
+			action
+				"Akralva: language proficiency" += 1
+
+			`It's time for the fifth anniversary for having <capturedAkralvaName> the Akralva abroad your ship. <capturedAkralvaStatus>`
+			choice
+				`	(Trust him and let him out.)`
+				`	(Don't.)`
+					decline
+			branch 1
+				"Akralva: Prisoner Name" < 17
+			branch 2
+				"Akralva: Prisoner Name" < 34
+			branch 3
+				"Akralva: Prisoner Name" < 51
+			branch 4
+				"Akralva: Prisoner Name" < 68
+			branch 5
+				"Akralva: Prisoner Name" < 85
+			action
+				outfit "Exkuzlo Helior" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label 1
+			action
+				outfit "Kakzik Akkrel" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label 2
+			action
+				outfit "Pathak Helior" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label 3
+			action
+				outfit "Zokriark Gamriz" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label 4
+			action
+				outfit "Ruzvaas Ei" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label 5
+			action
+				outfit "Exkuzlo Helior" 1
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			``
+				goto end
+
+			label end
+			`	You decided to trust him and unlocked his cell. He walks out carefully and tries not to do anything that may seem provoking. You welcome him to the crew.`
+				decline
+
+
+outfit "Kakzik Akkrel"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"ion resistance" 1
+	"ion resistance energy" -1
+	"shield energy multiplier" .8
+	"hull energy multiplier" .8
+	"crew attack" 10
+	"crew defense" 4.2
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. He had claimed to turn the tide of one of their war when he figured out how to capture leaked energy from ionization, you don't feel like all of his story is true but he does know how to gain some energy from ion damages. He's also capable of optimizing shield generator energy usage. He's quite strong and very tough for his race as well as some training in hand to hand combat making him quite a useful during boarding combat.`
+
+outfit "Pathak Helior"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"shield generation multiplier" 1.05
+	"shield energy multiplier" .9
+	"shield heat multiplier" .8
+	"hull repair multiplier" 1.05
+	"hull energy multiplier" .9
+	"hull heat multiplier" .8
+	"crew attack" 5
+	"crew defense" 3.8
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. He's fairly good at fine tuning shields and hull repair systems for each specific ship and can improve overall efficiency of it slightly. He's average for his race in strength and toughness but still above many other races.`
+
+outfit "Zokriark Gamriz"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"shield generation multiplier" 1.1
+	"piercing protection" .2
+	"discharge resistance" .5
+	"ion resistance" .5
+	"disruption resistance" .5
+	"crew attack" 4.5
+	"crew defense" 3.4
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. He specialized in dealing with high tech devices and maintaining ships systems. He could help mitigate impact of energy and shield related problems. He's a bit weak at combat for his race but he's still stronger than most other races.`
+
+outfit "Ozkirak Vanra"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"hull repair rate" .8
+	"burn resistance" .5
+	"leak resistance" 1
+	"hull energy multiplier" .9
+	"crew attack" 6
+	"crew defense" 3.8
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. He said he used to be a regular ship crew that happens to end up in damage control and repair position for most of his time and became quite proficient at it. He's quite average at combat for his race, which are already much stronger than most other races.`
+
+outfit "Ruzvaas Ei"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"slowing resistance" 2
+	"disruption resistance" 1
+	"hull repair multiplier" 1.2
+	"crew attack" 5
+	"crew defense" 4.6
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. According to him his strength and combat training is average but still stronger than most races so he'll still be useful in boarding combat anyway. He was one of the more experienced engineer of his ship back then and could improve the effectiveness of your hull repairs as well as help shrug off shield disruptions. He has also figured some technique to quickly wear off engine disruptions from his experience working with engine disrupting weapons.`
+
+outfit "Exkuzlo Helior"
+	category "Unique"
+	thumbnail "outfit/unknown"
+	"bunks" -1
+	"required crew" -1
+	"slowing resistance" 1
+	"corrosion resistance" .5
+	"hull repair rate" .2
+	"capture attack" 12
+	"capture defense" 6
+	unplunderable 1
+	description `An Akralva you once captured from a ship, now as part of your ship's crew after years in captivity. He is very strong and skilled in hand to hand combat, and can greatly assist you during boarding combat. He had also dealt with multiple engine disrupting weapons and corrosion problems before and become quite skilled at dealing with it.`
+
+mission "Akralva: Learning Language (captured, why)"
+	landing
+	to offer
+		has "gw: debug mode"
+		"Akralva: days since capture" >= 28800
+		#not "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`It've been 80 years since you've captured the Akralva alien from their ship. Nobody knows anymore why are you keeping it around in a cage but it eventually died from old age. You figured they have lifespan of around a hundred years or so.`
+				decline
+
+mission "Akralva: Learning Language (captured, found nuru)"
+	landing
+	name "Translate Akralva"
+	substitutions
+		"<timepassed>" "sometime ago" 
+		"<timepassed>" "a few days ago" 
+			"Akralva: days since capture" < 7
+		"<timepassed>" "a few weeks ago" 
+			"Akralva: days since capture" < 28
+		"<timepassed>" "a few months ago" 
+			"Akralva: days since capture" < 90
+	to offer
+		has "gw: debug mode"
+		has "GW: Akralva Prisoner count"
+		has "First Contact: Nuru"
+		#has "outfit (flagship installed): Brig" #wait for 0.9.17/Cont
+	on offer
+		require "Brig" 1
+		conversation
+			`Now that you got a translation device from the Nuru which they claims to have records for some neighbouring species, maybe you can try using it with the Akralva alien you captured <timepassed>.`
+			choice
+				`	(Try it)`
+				`	(Later)`
+					defer
+				`	(Never)`
+					decline
+			action
+				set "language: Akralva"
+			`	You go to the brig you kept the alien in and tried to communicate with it. It's uncooperative as always but just a few words is all you need to figure out the Nuru translator is indeed capable of translating their language.`
+			`	Now that you can talk to them with the Nuru translator, what do you want to do with the prisoner?`
+			choice
+				`	(Keep it abroad)`
+				`	(Kill it)`
+					goto kill
+				`	(Let it go)`
+					goto letgo
+			`	You decided to keep it onboard for now. You can decide its' fate later.`
+				decline
+			label kill
+			action
+				"gw: karma"--
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			`	You get rid of it and continue.`
+				decline
+			label letgo #Todo swap text depending on planet you're on when it's possible.
+			action
+				clear "GW: Akralva Prisoner count"
+				"First Contact: Akralva (boarding): done" = 1
+				fail "First Contact: Akralva (boarding)"
+			`	You open the hatch and take the alien outside and let it go, on whatever place this is.`
+				decline
+
+mission "First Contact: Akralva (boarding, metNuru)"
+	boarding
+	source
+		government "Akralva"
+	to offer
+		has "gw: debug mode"
+		has "First Contact: Nuru"
+	on offer
+		conversation
+			`This is the first time you board this alien ship and you have a Nuru translator, do you want to try communicating with them?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+				`	(Never)`
+					decline
+			action
+				set "language: Akralva"
+			`	After a bit of fiddling you think you managed to open a voice comms to the alien ship, somehow. You attempted to communicate with them and try to find out what they want but you're rewarded with only various profanities and challenge to a hand to hand duel instead. Any attempt to reason with them is futile but at least you figured out your translator works with them.`
+				decline
+
+mission "First Contact: Akralva (landing)"
+	landing
+	name "Hunt Kumakk"
+	description `Go hunt Kumakk at <system> and come back here as "payment" for letting you land, repair and resupply.`
+	deadline 25
+	source
+		government Akralva
+		attribute `akralva beyond wormhole territory`
+		not attributes uninhabited `akralva home territory`
+	waypoint <someKumakksystem>
+	
+	npc kill
+		to despawn
+			has "Akralva: trial, negotiate with Kumakk"
+		government "Kumakk"
+		system <someKumakksystem>
+		fleet "Kumakk Security"
+	
+	to offer
+		never
+		has "language: Akralva" #You shouldn't be able to land without knowing how to talk to them.
+	on offer
+		conversation
+			branch friendly
+				"reputation: Akralva" > 0
+			`You somehow manages to land on this hostile alien planet, and soon after you landed you see a group of armed aliens approaching you, you decides it's better to stay inside your ship and observe. the aliens are standing about 2.5 meters tall with bulky build, it have slightly long head length wise with mouth similar to crabs, their black eyes located right under a black colored beetle-like hard shell with a few child's fist-sized spike along the middle of it that covers the top half of their head. It also have similar looking shell but without the spike on its forarm and lower legs which made it looks bigger than their upper arms and upper legs. The rest of their body is covered by bi-metal armour of grey and orange but doesn't seems to cover the joints too well and were meant for ranged combat. The one in front of the group appears to be the leader have their head painted with bright red lines across the middle length-wise.` 
+			branch understandAkralva
+				has "language: Akralva"
+			
+			label understandAkralva
+			`	The leader shouted asking what's your business here landing in their territory.`
+			choice
+				`	(Tell them you're here just to refuel.)`
+					goto langRefuel
+				`	(Tell them you're here to trade.)`
+					
+			label langRefuel
+			#`	They don't really seems to like the answer and demanded extra payment of 120,000 for repair and refuel.`
+			`	They don't really seems to like the answer and demanded that you come out of your ship and maybe they'll consider giving you options in exchange.`
+			choice
+				`	(Go out.)`
+					goto leaveShip
+				`	(Refuse)`
+			branch mad
+				random < 25
+			`	He stomps on the ground once, point at your viewport and point at the ground in front of him yelling at you to get out here, this is your final chance.`
+			choice
+				`	(Go out.)`
+				`	(Refuse.)`
+					goto mad
+			label leaveShip
+			`	You exit the hatch and meet the alien but keep some distance away from them, You caught a glimpse of their skin under their clothing which is creme colored and reflects similarly to their shells but looks thinner. Their hands looks like three crab pincers stacked together. They stares at you for a few seconds before continuing with the conversation. He said that he'll give you a chance to repay them via other means, such as transporting their supplies or help them hunt their enemies.`
+			choice
+				`	"I can help you deliver supplies."`
+				`	"Hunt who?"`
+					goto huntWho
+				`	"I'll help you hunt."`
+					goto hunt
+				`	"Can't I pay instead?"`
+					goto pay
+			label supplies
+			`	"Go to portchief, room in spaceport over there." he points somewhere then toss you a black cube, not too different from the one you find before coming to this galaxy, "Currency converter. in case you need to bribe someone." he says. "Now I leave, more important stuffs to do." He says and begins to turn around.`
+			choice
+				`	"Where did you get this cube from?'`
+				`	"Wait, can you tell me more about your race?"`
+					goto race
+				`	"Can you tell me first why did you attack me?"`
+					goto attack
+				`	(Leave.)`
+					decline
+			label cube #You will get chance to ask more later if you helped them enough.
+			`	"Someone found on prey ship." he says as he walks off, "All the rest are cloned.". The guards following him are staring at you, you probably shouldn't ask anymore question for now.`
+				decline
+			label race
+			`	"No, don't mess up and maybe you'll learn more." he replies without looking back. The guards following him are staring at you, you probably shouldn't ask anymore question for now.`
+				decline
+			label attack
+			`	"It move, we shoot. Do I say if you don't want that." he replied as he walks away. The guards following him are staring at you, you probably shouldn't ask anymore question for now.`
+			label huntWho
+			`	"Not you problem, hunt or not."`
+			choice
+				`	"Fine, I'll hunt."`
+				`	"How about the supplies"`
+					goto supplies
+				`	"Then can I pay instead?"`
+					goto pay
+			label hunt
+			`	"Good, There are these Kumakk at <system> that are a problem, go get rid of them then come back here." he says and look at some damaged ships on the landing pad next to you, one of it appears to be their larger warship. "Or if you scared go to portchief for supply job." he points at somewhere in the spaceport. "I will get you 25 days free pass so be fast. Now I leave, more important to do." he says and turns around and begins to leave.`
+			choice
+				`	"Where did you get this cube from?'`
+					goto cube
+				`	"Wait, can you tell me more about your race?"`
+					goto race
+				`	"Can you tell me first why did you attack me?"`
+					goto attack
+				`	(Leave.)`
+					accept
+				
+			label pay
+			`	"No. Money don't move my problem. If you be problem to my port you better get rid my other problem." he says. "Now pick."`
+			choice
+				`	"I can help you deliver supplies."`
+					goto supplies
+				`	"I'll help you hunt."`
+					goto hunt
+			label mad
+			`	As soon as they hear your answer the alien leader shouted at someone behind him and you notice nearby turrets to begin powering up. You fired up your ship's repulsor and get off the planet as soon as you can.`
+				flee
+
+			label friendly #Todo insert physical appearance somewhere for this branch.
+			`	A group of Akralva comes to meet you as you land a few of them are armed but doesn't seems overly hostile but you stay inside your ship first just incase. "What you want?" the alien leader shouted.`
+			choice
+				`	"Just here to repair and refuel."`
+					goto repair
+				`	"I'm here to trade."`
+					goto trade
+				`	"I'm an explorer."`
+					goto explorer
+			label repair
+			`	They don't look to happy with the answer. "Get out, We talk for deal."	the alien shouted again.`
+			choice
+				`	(Get out of your ship)`
+					goto fgetout
+				`	(Don't)`
+				
+			label fgetout
+			`	You go out of your ship to meet them. They stare at you for a moment before continuing. "We can help repair you but exchange for that help us one option, deliver supply or hunt enemy."`
+				
+			label trade
+			`	"We can trade, we can also use trader. Get out. We have offer."`
+			choice
+				`	(Get out of your ship)`
+				`	(Don't)`
+			
+			label fTradegetout
+			`	You exit your ship hatch and go meet them but kept some distance. "We can trade, can repair, and refuel. Exchange with that is your help, we can use extra ship to deliver us supplies, or fight enemies if you want. Choose."`
+			choice
+				`	"I can fight."`
+					goto fTradeFight
+				`	"What do you want delivered?"`
+					goto fTradeSupplies
+				`	"I'm not avaliable right now."`
+					goto tryDefer
+					
+			label fTradeSupplies
+			`	"Go see portchief for detail." he points to somewhere in the spaceport.`
+					decline
+			label fTradeFight
+			`	"Good, we got Kumakk problem. Go rid them at <system>. If you change mind, go to portchief."`
+					accept
+			label explorer
+			`	"Scout? We don't need. We will repair and resupply you but you help us in exchange. "`
+			
+			
+			label tryDefer
+			branch deferYes
+				"reputation: Akralva" >= 10
+			`	"We are not shooting you now don't mean we cannot. Exchange help or pay in scrap of you ship."`
+			choice
+				`	"Ok, fine, I can fight."`
+					goto fTradeFight
+				`	"Fine, I can bring supplies."`
+					goto fTradeSupplies
+				`	"I won't let you." (Get back in your ship and take off.)`
+			branch fdie
+				random > 80 #todo consider other factors(ship size, H2H, etc.)?
+			`	The alien leader shouted something and they begin shooting at you but you managed to get inside your ship first and take off...`
+				flee
+			label fdie
+			`	The alien leader shouted something but before you manage to get in your ship a shot lands on you...`
+				die
+			
+			label deferYes
+			`	He pause for a second before replying, "Fine. Come back when you can. Or if change mind go see portchief."`
+				decline
+	on accept
+		"reputation: Akralva" >?= 25
+		#event "Akralva trial end" 25
+		#Todo, player could land and negotiate with Kumakk.
+		
+	on daily
+		"reputation: Akralva" -= 1
+		
+	on complete
+		"reputation: Akralva" >?= 1
+		conversation
+			`Seems like the word of you accomplising the mission reached here before you did, your ship got serviced as soon as you land unlike the first time you were here. You asked your way to find the leader overseeing some construction project close by something and tell him you completed the task. "I heard it from other hunters. Good. I will let leaders know your deeds. Some world will let you land but some not, I can not help. If you want more go find bounty board and look. Now go, I busy."`
+		
+event "Akralva trial end" #todo, enough assisting prevent rep reset?
+	"reputation: Akralva" = -1
+	
+mission "Akralva: Intro Supplies [0]"
+	name "Pick up supplies at <stopover>"
+	description `Go to <stopover> to pick up supplies then return to <origin>.` 
+	source
+		government "Akralva"
+	stopover `<someakralvaplanet todo>`
+	to offer
+		never
+	on offer
+		conversation
+			`You find the portchief's room and knocked on the giant door that seems to have hinge on the top, You didn't hear any reply after the first knock but the lights seems to be on...`
+			choice
+				`	(Knock again)`
+				`	(Say that the leader send you here to help with supplies.)`
+					goto shout
+			`	You hear some footsteps and stepped back right before the door swings open upward with a large alien blocking the entire door looking at you, you can see him clenching one of his fist. After staring at you for a few moment he speaks, "Say what you want.". You tell him that the leader send you here to do some job. His fist unclenches "Get in." he says heading inside letting the door close. The door swing back only once before it's safe enough for you to lift it open and barely get inside.`
+				goto inRoom
+			label shout
+			`	"Get in." you hear voice from inside the room. The door is quite heavy but you manage to lift it up enough for you to get in.`
+			label inRoom
+			`	The alien takes out a roll of paper and toss it at you. He then takes out another one and unroll it on the ground. He pointed at one of the system some distance away with his foot and tell you to go there, hand that roll of paper to them and wait for them to load the cargo then bring it back here. He'll arrange you 25 days free pass so don't be late.`
+			`	You memorise the system and go back to your ship.`
+				accept
+				
+	on accept
+		"reputation: Akralva" >? 1
+		event "Akralva trial end" 25
+	
+	on stopover
+		dialog
+			`You arrived at the <planet stopovers> and it seems like the alien stationed here have already prepared for your arrival, you pick up the cargo and prepare to depart.`
+
+	on complete
+		conversation
+			`	`
+		
+mission "Akralva: Intro Supplies [1]"
+	name "Pick up supplies at <planet>"
+	description `Go to <stopover> to pick up supplies then return to <origin>.` 
+	destination
+		distance 4 8
+		government Akralva
+	source
+		government "Akralva"
+	to offer
+		has "Akralva: Intro Supplies [0]: done"
+		never
+	on offer
+		conversation
+			``
+
+#To make sure the player met both Akralva and these races first before being able to gain rep.
+
+mission "Akralva rep unlock (Kumakk)"
+	landing
+	invisible
+	to offer
+		has "GW: seen Akralva-Kumakk conflict"
+	on offer
+		event "Akralva rep unlock (Kumakk)"
+		fail
+
+event "Akralva rep unlock (Kumakk)"
+	government Akralva
+		"attitude toward"
+			"Kumakk" -.1
+		
+mission "Akralva rep unlock (Ceasrilis)"
+	landing
+	invisible
+	to offer
+		has "GW: seen Akralva-Ceasrilis conflict"
+	on offer
+		event "Akralva rep unlock (Ceasrilis)"
+		fail
+
+event "Akralva rep unlock (Ceasrilis)"
+	government Akralva
+		"attitude toward"
+			"Ceasrilis" -.1
+			
+mission "Akralva rep unlock (Gargoor'an)"
+	landing
+	invisible
+	to offer
+		has "GW: seen Akralva-Gargoor'an conflict"
+	on offer
+		event "Akralva rep unlock (Gargoor'an)"
+		fail
+
+event "Akralva rep unlock (Gargoor'an)"
+	government Akralva
+		"attitude toward"
+			"Gargoor'an" -.1

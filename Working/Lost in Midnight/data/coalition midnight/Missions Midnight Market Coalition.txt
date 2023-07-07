@@ -43,7 +43,7 @@ mission "Midnight Market: Trailblazer Auction"
 					goto auction
 
 			label auction
-			apply
+			action
 				set "trailblazer encountered"
 			`	"30 million!" yells one Saryd.`
 			`	"30 million!" recites another Saryd from behind a podium set up in front of the crowd. "Is a bid there for 31?"`
@@ -229,15 +229,17 @@ mission "Midnight Market: Trailblazer 2"
 				"Frigate (Mark II)"
 				"Frigate"
 				"Gunboat (Mark II)"
-				"Gunboat" 3
+				"Gunboat" 2
+				"Patrolboat"
 				"Rainmaker (Mark II)"
-				"Rainmaker" 3
+				"Rainmaker" 2
+				"Missileboat"
 
-				
 ship "Saryd Trailblazer" "Saryd Trailblazer (Pirate)"
 	outfits
-		"Modified Blaster" 4
-		"Modified Blaster Turret" 6
+		"Torpedo Launcher" 4
+		"Torpedo" 120
+		"Quad Mod Blaster Turret" 6
 		"Large Collector Module" 2
 		"Small Collector Module" 2
 		"Large Reactor Module"
@@ -255,7 +257,7 @@ ship "Saryd Trailblazer" "Saryd Trailblazer (Pirate)"
 		"Large Steering Module" 4
 		"Small Steering Module" 2
 		Hyperdrive
-		
+
 
 
 outfitter "Coalition Smuggling"
@@ -288,7 +290,7 @@ mission "Midnight Market: Coalition Smuggling 1"
 				random < 5
 	on offer
 		conversation
-			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1,000,000`
+			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1,000,000 credits.`
 			choice
 				`	(Accept.)`
 					accept
@@ -302,6 +304,7 @@ mission "Midnight Market: Coalition Smuggling 1"
 	on abort
 		"Midnight Market" --
 		set "Randomize Midnight Market: Coalition Smuggling 1"
+		clear "Midnight Market: Coalition Smuggling 1: offered"
 	on complete
 		dialog "Head to the spaceport to learn more about the escort job."
 
@@ -387,6 +390,8 @@ mission "Midnight Market: Coalition Smuggling 2"
 			`You arrive at the warehouse to find the dockworkers loading yet another Coalition ship. A man wearing sunglasses and a hawaiian shirt greets you. "Captain <last>, you did a great job with the last delivery. Once again, just escort this ship to <destination> by <date> and we'll wire <payment> to your account.`
 
 			label cargo
+			scene "scene/scene-wooden crates"
+			``
 			`	Someone runs up to the man and hands him some papers. "It looks like the cargo is loaded! Better get going."`
 				accept
 
@@ -430,6 +435,7 @@ mission "Midnight Market: Coalition Smuggling 2"
 		dialog `You escort the ship to secluded warehouse where they start unloading the cargo. Some of it is very bulky. You get a message congratulating you on a job well done. <payment> has been deposited into your account.`
 
 mission "Midnight Market: Coalition Smuggling 3"
+	minor
 	name "Mystery Job"
 	description "Escort a ship from <destination> to somewhere outside human space..."
 	source
@@ -448,7 +454,7 @@ mission "Midnight Market: Coalition Smuggling 3"
 				random < 10
 	on offer
 		conversation
-			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1000000`
+			`You receive a message indicating a job opportunity on Poisonwood. It involves escorting a ship outside of human space. The address is for a warehouse near the Poisonwood spaceport. Payment is 1,000,000 credits.`
 			choice
 				`	(Accept.)`
 					accept
@@ -488,6 +494,7 @@ mission "Midnight Market: Coalition Smuggling 4"
 			`	"Regrettable. I doubt you'll be handling any more of these shipments then."`
 				decline
 			label pay
+			scene "scene/scene-wooden crates"
 			`	"Of course! We'll load the cargo right away." Soon the dockworkers are loading your ship with the cargo. Hopefully you have enough Interference Plating to hide this shipment from the Heliarchs...`
 				accept
 	on accept
@@ -497,7 +504,7 @@ mission "Midnight Market: Coalition Smuggling 4"
 	on abort
 		"Midnight Market" -= 4
 	on fail
-		"Midnight Market" -= 3	
+		"Midnight Market" -= 3
 	on complete
 		"Midnight Market" ++
 		payment 2000000
@@ -548,21 +555,23 @@ event "Coalition Patrolling Southern Rim"
 mission "Midnight Market: Coalition Smuggling Bounty (Kimek)"
 	job
 	repeat
+	deadline 14
 	name "Coalition Smuggling Bounty"
-	description "The <npc> is suspected of smuggling illegal weapons into the Coalition. Board the vessel and bring one of the crew back to <destination>."
+	description "The <npc> is suspected of smuggling illegal weapons near <system>. Board the vessel and bring one of the crew back to <destination>."
 	passengers 1
 	source
 		attributes "kimek"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		"reputation: Heliarch" >= 10
 		random < 25
 	on offer
 		require "Brig"
 	npc board
 		government "Independent"
 		system
-			distance 2 3
+			distance 1 1
 		personality target waiting staying uninterested
 		fleet "Independent Kimek Smuggler"
 		conversation
@@ -579,21 +588,23 @@ mission "Midnight Market: Coalition Smuggling Bounty (Kimek)"
 mission "Midnight Market: Coalition Smuggling Bounty (Saryd)"
 	job
 	repeat
+	deadline 14
 	name "Coalition Smuggling Bounty"
-	description "The <npc> is suspected of smuggling illegal weapons into the Coalition. Board the vessel and bring one of the crew back to <destination>."
+	description "The <npc> is suspected of smuggling illegal weapons near <system>. Board the vessel and bring one of the crew back to <destination>."
 	passengers 1
 	source
 		attributes "saryd"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		"reputation: Heliarch" >= 10
 		random < 25
 	on offer
 		require "Brig"
 	npc board
 		government "Independent"
 		system
-			distance 2 3
+			distance 1 1
 		personality target waiting staying uninterested
 		fleet "Independent Saryd Smuggler"
 		conversation
@@ -610,21 +621,23 @@ mission "Midnight Market: Coalition Smuggling Bounty (Saryd)"
 mission "Midnight Market: Coalition Smuggling Bounty (Arach)"
 	job
 	repeat
+	deadline 14
 	name "Coalition Smuggling Bounty"
-	description "The <npc> is suspected of smuggling illegal weapons into the Coalition. Board the vessel and bring one of the crew back to <destination>."
+	description "The <npc> is suspected of smuggling illegal weapons near <system>. Board the vessel and bring one of the crew back to <destination>."
 	passengers 1
 	source
 		attributes "arach"
 		government "Coalition"
 	to offer
 		has "event: Coalition Patrolling Southern Rim"
+		"reputation: Heliarch" >= 10
 		random < 25
 	on offer
 		require "Brig"
 	npc board
 		government "Independent"
 		system
-			distance 2 3
+			distance 1 1
 		personality target waiting staying uninterested
 		fleet "Independent Arach Smuggler"
 		conversation
@@ -649,11 +662,13 @@ mission "Midnight Market: Source of Coalition Smuggling 1"
 		conversation
 			scene "scene/scene-modelguns"
 			`You wonder where the Coalition Smugglers get their supplies from...`
-			accept
+				accept
 	on fail
 		clear "Midnight Market: Source of Coalition Smuggling 1: offered"
 	on enter "Men"
-		dialog `That Hauler III looks suspicious. What kind of cargo is it carrying?`
+		conversation
+			scene "thumbnail/hauler iii"
+			`That Hauler III looks suspicious. What kind of cargo is it carrying?`
 	npc "scan outfits"
 		government "Independent"
 		system "Men"
@@ -666,7 +681,7 @@ mission "Midnight Market: Source of Coalition Smuggling 1"
 				"Hauler III"
 		conversation
 			scene "scene/scene-modelguns"
-			apply
+			action
 				set "Midnight Market: Found Source of Coalition Smuggling"
 			`The Coalition Smugglers may get their supplies from somewhere in the Men system.`
 

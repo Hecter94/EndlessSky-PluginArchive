@@ -1,5 +1,5 @@
 # LEESt: The world's greatest Endless Sky plugin.
-# Copyright (C) 2021-2022 Lemuria
+# Copyright (C) 2021-2023 Lemuria
 
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU
 # General Public License as published by the Free Software Foundation, either version 3 of the
@@ -16,7 +16,8 @@
 # as Lemuria#0685. Invite: https://discord.gg/ZeuASSx
 
 event githubCodeVault
-	date 2 1 3020
+	# dd/mm/yyyy format.
+	date 1 2 3020
 
 
 mission githubCodeVault.conversation
@@ -36,22 +37,22 @@ mission githubCodeVault.conversation
 
 		log "Minor People" "Linus Torvalds" "Software engineer born on Earth in the 20th century (c. 1965 - 1970). Known mostly for his effort in developing the 'Linux kernel', development of which continues well in the 31st century. 95% of computers in human space run operating systems that use the Linux kernel."
 
-		log "Minor People" "John" "Another software engineer who claims to be proficient in 'C'. He approached you at the spaceport bar and gave you information about GitHub and programming when the GitHub Code Vault was opened up 1000 years after it's inception."
+		log "Minor People" "John" "Another software engineer who claims to be proficient in 'C'. He approached you at the spaceport bar and gave you information about GitHub and programming when the GitHub Code Vault was opened up 1000 years after its inception."
 
 		log "Spaceport was quiet once more. Thankfully, it wasn't another rebellion just like the Free Worlds. Workers on Earth apparently opened up some old time capsule full of crates all labelled 'GitHub'. Some guy named John told me it was called the 'GitHub Code Vault'. All of it was code. Just code. He made a point to say that the first program that they 'compiled' was the 'Linux kernel'."
 
 		conversation
 			`As you land at the spaceport, you find that it is eerily quiet once more. You enter the spaceport bar and on one of the screens is a news broadcast showing a group of workers unloading several crates all labelled "GitHub" from an unknown location in the Arctic on Earth.`
-			
+
 			`	"Over 1000 years ago, our ancestors gathered more than 200 million "repositories" of code and preserved them in what they called the 'Arctic Code Vault'. According to archaeologists, GitHub was an ancient organization whose sole purpose was to distribute computer code across the world, via a model of development known as 'open source'.", says the news anchor.`
-			
+
 			`Just as you are about to leave, one of the patrons in the bar grab your shoulder. "They're opening the box!", says the patron. You gaze back at the screen. Several computer experts inspect the first box. The camera pans towards another label on the box. The label is as follows:`
-			
+
 			`		Repository: torvalds/linux`
 			`		ID: #90939-40093`
-			
+
 			`The same patron introduces himself as 'John'. He sees that you are visibly confused, so he asks you if you have a question. "You confused? Well, I've been programming in C since the 2990s so I'd say I'm quite knowledgeable."`
-			
+
 			choice
 				`	"Wait, what's 'torvalds/linux'?"`
 					goto torvaldsLinuxQuestion
@@ -81,7 +82,7 @@ mission githubCodeVault.conversation
 
 			label torvaldsLinuxQuestion
 			`	"Well, you must be confused. torvalds/linux was the repository for something called the Linux kernel. At the core of most of the computers that run our ships, such as the targeting, navigation and shield harmonics computers, is the Linux kernel. The Linux kernel has changed so much over the past 1000 years."`
-			`	"Meanwhile, the 'torvalds' in the name refers to the owner of the repository, a human known as Linus Torvalds. He was the creator of the Linux kernel until he handed over control of the project to his family. Nowadays, there are several forks of it.", John says.`
+			`	"Meanwhile, the 'torvalds' in the name refers to the owner of the repository, a human known as Linus Torvalds. He was the creator of the Linux kernel until he handed over control of the project to his family when he became old and incapable of maintaining the kernel. Nowadays, there are several forks of it.", John says.`
 			`	"Well, that explains everything.", you say in response.`
 			choice
 				`	(Leave.)`
@@ -135,7 +136,7 @@ mission githubCodeVault.alexandriaVisit
 			choice
 				"(Look through the shelves of datachips.)"
 					goto getGit.lookThroughShelves
-				
+
 				"(Ask a librarian for help.)"
 					goto getGit.askLibrarianForHelp
 
@@ -147,7 +148,7 @@ mission githubCodeVault.alexandriaVisit
 			choice
 				"(Leave and never come back.)"
 					decline
-				
+
 				"(Try again another day.)"
 					defer
 
@@ -170,3 +171,108 @@ mission githubCodeVault.alexandriaVisit
 
 			label getGit.leaving
 			"You leave the library with your copy of Git in hand. Hopefully you'll encounter John, the guy who told you about all this."
+
+phrase githubCodeVault.buyDataChipsForPerson.visit
+	word
+		"You were going to approach the old man, but you still don't have the datachips. You should get them. Remember, the store is on <stopover>."
+
+phrase githubCodeVault.buyDataChipsForPerson.stopover
+	word
+		"With the address you are given, you enter the store and pick up the order of datachips, explaining that you are there on the old man's behalf. The cashier gives you the datachips and you must now return to the old man."
+
+mission githubCodeVault.buyDataChipsForPerson
+	landing
+	name "Pick up order of datachips"
+	description "Buy the man some datachips for his stash of ancient software. The store is on <stopover>. You're going to get <payment> as payment."
+	to offer
+		has "leest.player.hasGit"
+		random > 99
+	source
+		government "Sayari Plushie" "Republic" "Free Worlds" "Syndicate" "Independent"
+	destination
+		distance 6 13
+		government Republic Syndicate "Free Worlds" Neutral Independent
+	on offer
+		conversation
+			"As you land at the spaceport and exit your ship, a man approaches you. A credit chip is in his hand."
+			`	"Hey there! I have a special collection of software from the 21st through 27th centuries. I placed an order for extra datachips to make copies of the collection, but I'm a little too busy today. Would you please go and pick the datachips for me in <stopover>? I would be willing to pay you <payment>".`
+			choice
+				`"I'm busy. Sorry."`
+					decline
+				`"Sure, I'll get you the datachips."`
+					goto accept
+
+			label accept
+			"Alright, great! Remember, visit <stopover>, that's where you can buy the datachips."
+				accept
+
+	on visit
+		dialog phrase githubCodeVault.buyDataChipsForPerson.visit
+	on stopover
+		dialog phrase githubCodeVault.buyDataChipsForPerson.stopover
+	on complete
+		conversation
+			"You land at the spaceport. The old man gave you his address so you could drop off the datachips. You make your way to the address and knock on the apartment door. As you knock the familiar old man opens the door to allow you in. You place the bag of (empty) datachips on the table, leaving the old man to check the status of the datachips. Once he confirms they are in good working order, he hands you <payment>."
+			`	"Thanks! While you're still here, do you want to see my collection?", asks the old man.`
+			choice
+				`"No thanks, I'm not interested."`
+					goto leaving
+				`"Sure, what do you have?"`
+					goto seeCollection
+
+			label seeCollection
+			`	"Great!", says the old man. "Here, enter this room."`
+
+			`You enter the room and see a shelf full of datachips. They are marked with decades, one saying 2020s, 1990s, 2340s, 2800s, all the way to the 2990s There are over 310 datachips total, if your counting was accurate.`
+
+			`	"I collect ancient software for a living. These datachips contain it all. Precious history. I've been trying to access the history for some 2030s software, but I never had the right software for the job. It rambled on and on about some software called Git. By any chance, do you have a copy of 43.11?"`
+			choice
+				`"Yes."`
+					goto playerHasGit
+
+				`"No."`
+					goto playerLiesAboutNotHavingGit
+
+			label playerHasGit
+			`	"Oh yes, I do.", you say.`
+			`	"Great!", replies the old man.`
+			`You make a quick copy of 43.11 onto a small datachip and hand it to the old man, now visibly excited. "I'll be able to access these 2030s repositories now! Thanks!"`
+				goto questions
+
+			# TODO: Maybe you can tell the old man there's likely a copy on Alexandria?
+			# Maybe you can even escort the old man there!
+			label playerLiesAboutNotHavingGit
+			`	"Okay."`
+				goto questions
+
+			label questions
+			choice
+				`"What's your favorite item in the collection?"`
+					goto favoriteItem
+
+				`"Why do you care so much about this?"`
+					goto whyDoYouCareSoMuchAboutThis
+
+				`"I have no questions. I think I'm going to leave now."`
+					goto leaving
+
+			label favoriteItem
+			`	"Linux. It may be a thousand years old but it still works like a charm! It was a kernel developed by some guy named Linus Torvalds. Did you know that he was originally going to call it Freax? Well the person who was helping distribute Linux by putting it on a server for everyone to see didn't like the name and so renamed it Linux. The name stuck.", says the old man.`
+				goto questions
+
+			label whyDoYouCareSoMuchAboutThis
+			`	"History is important to me. I'm very interested in the history of human computing and how much it has evolved since the first computers came into being in the early 19th century, which is a long time ago.", says the old man.`
+			`	"It's also very good fun.", adds the old man.`
+				goto questions
+
+			label leaving
+			`	"Alright then, good luck!", the old man says. You never got his name during your visit, though...`
+
+		log "I dropped off datachips for some old man with a software collection."
+
+		payment 340000 200
+	stopover
+		not attributes "station"
+		not government "Pirate"
+		not government "Sayari Plushie"
+		distance 13 40

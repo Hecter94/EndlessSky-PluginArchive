@@ -33,6 +33,7 @@ mission "Grudge Fight 1"
 		not "ships: Medium Warship"
 		not "ships: Heavy Warship"
 		not "ships: Heavy Freighter"
+		not "ships: Utility"
 		"ships: Light Warship" + "ships: Light Freighter" + "ships: Transport" + "ships: Interceptor" == 1
 		random < 70
 	on offer
@@ -219,7 +220,7 @@ mission "Grudge Fight 3"
 				"Sparrow"
 				"Hawk"
 				"Fury"
-				"Berserker"
+				"Berserker (Limit Break)"
 	npc kill
 		system Muphrid
 		government "Independent (Killable)"
@@ -251,8 +252,9 @@ ship "Marauder Hauler" "Relentless Grudge"
 		"outfit space" 40
 		"weapon capacity" 40
 	outfits
-		"Sidewinder Missile Launcher" 2
-		"Sidewinder Missile" 90
+		"Sidewinder Missile" 54
+		"Sidewinder Missile Pod" 2
+		"Sidewinder Missile Rack" 2
 		"Quad Blaster Turret" 4
 		"Anti-Missile Turret" 2
 
@@ -273,8 +275,8 @@ ship "Marauder Hauler" "Relentless Grudge"
 
 	engine -44 113
 	engine 45.5 113
-	gun -10.5 -87.5 "Sidewinder Missile Launcher"
-	gun 18 -87.5 "Sidewinder Missile Launcher"
+	gun -10.5 -87.5 "Sidewinder Missile Pod"
+	gun 18 -87.5 "Sidewinder Missile Pod"
 	turret -17.5 -41 "Quad Blaster Turret"
 	turret 25.5 -41 "Quad Blaster Turret"
 	turret -16.5 11.5 "Anti-Missile Turret"
@@ -284,6 +286,10 @@ ship "Marauder Hauler" "Relentless Grudge"
 	description "Pirate raiders using a Hauler will often choose to replace the central cargo unit with an additional weapons platform. This radical change to the ship's functionality leads many ship design theorists to argue that this model should be considered a completely different ship instead of a mere variant."
 
 
+
+phrase "ecstasy"
+	word
+		"Ecstasy"
 
 mission "Grudge Fight 4"
 	minor
@@ -345,7 +351,11 @@ mission "Grudge Fight 4"
 		government "Independent (Killable)"
 		personality target waiting staying
 			confusion 30
-		ship "Modified Argosy (Smuggler)" "Ecstasy"
+		fleet
+			names "ecstasy"
+			outfitters "Contraband"
+			variant
+				"Modified Argosy (Shields Smuggler)"
 		dialog `The Ecstasy has been destroyed. You decide to visit <planet> and see if you can get some sort of reward for your effort.`
 	
 	on complete
@@ -418,8 +428,7 @@ mission "Grudge Fight 5"
 		fleet
 			names "pirate"
 			variant
-				"Marauder Hauler B"
-				"Marauder Hauler C"
+				"Marauder Hauler" 2
 	npc kill
 		system Nocte
 		government "Independent (Killable)"
@@ -433,45 +442,26 @@ mission "Grudge Fight 5"
 		"reputation: Independent (Killable)" >?= 10
 
 	on complete
+		set "defeated grudge family"
 		"reputation: Independent (Killable)" >?= 10
-		event "Grudge Legacy"
 		payment 250000
 		log `Fought a War Hauler for the first time today. Tough little ship, the Grudge Hammer. Its captain, Papa Grudge, was the leader of the Grudge crime family. I received a sizable bounty for taking him down.`
 		conversation
 			`When you land on <planet>, the Luna shipyards inform you that there is no record of any test battle scheduled in Nocte. You look up bounties and wanted pirate documents, searching for any mention of the Grudge Hammer. Eventually, you find a bounty for the destruction of that ship. The information indicates that the pirate you killed went by the name Papa Grudge, leader of the Grudge family outlaws. Papa Grudge organized their criminal activities, assigning each of the Grudge children to roles that best suited them. This region of space should be safer with him gone.`
 			`	You head to the local authorities, and show them your combat logs of your fight against the Grudge Hammer. They pay you <payment> for your effort.`
-		
-ship "War Hauler" "Grudge Hammer"
-	outfits
-		"Energy Cannon" 2
-		"Meteor Missile Launcher"
-		"Meteor Missile" 30
-		"Quad Blaster Turret" 6
-		"Anti-Missile Turret" 2
-		"Fission Reactor"
-		"LP072a Battery Pack"
-		"S-970 Regenerator"
-		"Small Radar Jammer"
-		"Liquid Nitrogen Cooler"		
-		"Greyhound Plasma Thruster"
-		"Impala Plasma Steering"
-		"Hyperdrive"
-		"Laser Rifle" 3
-		"Fragmentation Grenades"
-		"Microwave Cannon"
-		"Security Station" 2
-	gun "Energy Cannon"
-	gun "Meteor Missile Launcher"
-	gun "Energy Cannon"
-	turret "Quad Blaster Turret"
-	turret "Quad Blaster Turret"
-	turret "Quad Blaster Turret"
-	turret "Anti-Missile Turret"
-	turret "Anti-Missile Turret"
-	turret "Quad Blaster Turret"
-	turret "Quad Blaster Turret"
-	turret "Quad Blaster Turret"
-	
+
+
+
+mission "Grudge Legacy"
+	landing
+	invisible
+	to offer
+		has "defeated grudge family"
+		has "event: southern carriers 2"
+	on offer
+		event "Grudge Legacy"
+		fail
+
 event "Grudge Legacy"
 	fleet "Marauder Bounty (Disguised)"
 		add variant 3
@@ -542,7 +532,7 @@ event "Grudge Legacy"
 			"Marauder Bounder (Weapons)"
 		add variant 2
 			"Marauder Hauler (engines)"
-			"Marauder Arrow" 2
+			"Marauder Arrow (Shields)" 2
 			"Marauder Bounder" 2
 	fleet "Marauder fleet IV"
 		add variant 10
@@ -707,10 +697,11 @@ mission "Grudge Brothers"
 		fleet
 			names "pirate"
 			variant
-				"Sparrow" 2
+				"Sparrow"
+				"Sparrow (Limit Break)"
 				"Hawk" 2
 				"Fury"
-				"Berserker"
+				"Berserker (Limit Break)"
 
 
 	on abort
@@ -854,7 +845,7 @@ mission "Grudge Hammer"
 		"reputation: Independent (Killable)" >?= 10
 	on complete
 		"reputation: Independent (Killable)" >?= 10
-		event "Grudge Legacy"
+		set "defeated grudge family"
 		payment 250000
 		log `Fought a War Hauler for the first time today. Tough little ship, the Grudge Hammer. Its captain, Papa Grudge, was the leader of the Grudge crime family. I received a sizable bounty for taking him down.`
 		conversation
@@ -1079,7 +1070,7 @@ mission "Grudge Mama"
 			`	You set the ship to auto pilot and settle in for a quick nap in the pilot's seat. If any pirates come along, the alarm should wake you.`
 			choice
 				`	"Zzz..."`
-			scene "scene/scene-remote detonator"
+			scene "outfit/thermo detonator"
 			`	You are startled awake by a loud explosion. You open your eyes to see Mara standing next to you with what appears to be a remote detonator in her hand! You try to move but your hands and feet are bound together in thick coils of duct tape!`
 			`	"My trade name is Mama Grudge. This is payback for killing my family." According to the ship status readouts, half the hull is gone and the rest is rapidly disintegrating. Mara laughs maniacally. "Soon, I'll get to see my family again!" The cockpit collapses and you are engulfed in a scorching fireball.`
 				explode

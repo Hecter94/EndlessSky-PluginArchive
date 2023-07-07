@@ -1,5 +1,5 @@
 # LEESt: The world's greatest Endless Sky plugin.
-# Copyright (C) 2021-2022 Lemuria
+# Copyright (C) 2021-2023 Lemuria
 
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU
 # General Public License as published by the Free Software Foundation, either version 3 of the
@@ -46,12 +46,6 @@ mission debianHatRetrieval.conversation.begin
 	stopover
 		government "Republic" "Syndicate" "Free Worlds"
 	to offer
-		"<name>" == "Debian" # Ship must be named Debian
-		
-		# And your pilot name must be "Ian Murdock", the founder of Debian.
-		"<first>" == "Ian"
-		"<last>" == "Murdock"
-
 		"random" > 80
 	on offer
 		log "Someone asked me for a Debian hat today. It seems like Debian was some centuries-old distribution of Linux. What a fun day."
@@ -67,7 +61,7 @@ mission debianHatRetrieval.conversation.begin
 
 			label doesNotUseLinux
 			`	"Well, I don't want you. I'll find another captain instead."`
-			decline
+				decline
 
 
 			label didNotDecline
@@ -75,7 +69,7 @@ mission debianHatRetrieval.conversation.begin
 			choice
 				`	"Yes, that's what my ship runs."`
 					goto shipUsesLinux
-				
+
 				`	"No, I haven't."`
 					goto doesNotUseLinux
 
@@ -91,22 +85,6 @@ mission debianHatRetrieval.conversation.begin
 
 				`	"Arch Linux."`
 					goto shipUsesLinux.distros.archbtw
-
-				`	"Manjaro."`
-					goto shipUsesLinux.distros.manjaro
-
-				`	"openSUSE."`
-					goto shipUsesLinux.distros.suse
-
-				`	"Fedora."`
-					goto shipUsesLinux.distros.fedora
-
-				`	"Red Hat."`
-					goto shipUsesLinux.distros.redHat
-
-				`	"Linux Mint."`
-					goto shipUsesLinux.distros.mint
-
 
 			label shipUsesLinux.distros.debian
 			`	"Debian. Great choice of distribution. I have a mission for you, and it has something to do with Debian.", the man says. He is visibly pleased by your response.`
@@ -127,31 +105,6 @@ mission debianHatRetrieval.conversation.begin
 			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
 				decline
 
-			label shipUsesLinux.distros.manjaro
-			`	"Manjaro. That's just as great too!"`
-			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
-				decline
-
-			label shipUsesLinux.distros.suse
-			`	"openSUSE, not sure I've heard of that distro before."`
-			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
-				decline
-
-			label shipUsesLinux.distros.fedora
-			`	"Fedora. I heard Linus Torvalds used that back in the 21st century."`
-			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
-				decline
-
-			label shipUsesLinux.distros.redHat
-			`	"Red Hat. Interesting."`
-			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
-				decline
-
-			label shipUsesLinux.distros.mint
-			`	"Linux Mint. Interesting too."`
-			`	"Unfortunately, I'm looking for someone that uses Debian, so.. I don't want you. I'll find another captain instead.", the man says. He leaves, leaving you confused.`
-				decline
-
 			label debianHatRetrieval.missionBrief
 			`	"I want a Debian hat. Go to <stopovers> and I will gladly pay you <payment>. Here's the address of the shop selling the Debian hat. Make it quick."`
 			`He gives you a data chip containing the address of the shop. You leave him, as you ponder on whether you should buy him a Debian hat.`
@@ -161,3 +114,102 @@ mission debianHatRetrieval.conversation.begin
 	on complete
 		payment 560000 800000
 		dialog phrase debianHatGiven
+
+
+phrase "Debian hat pickup visit"
+	word
+		"The mysterious person in the black shirt with the red swirl ignores you, as if they somehow know you still don't have the hats."
+		"You get a message: 'Scan of your ship reveals no hats. Get the hats and I will appear.'"
+
+
+phrase "Debian hat pickup complete"
+	word
+		"A mysterious person in a black shirt with a red swirl gives you your money after picking up the Debian hats. They give you a credit chip with <payment>."
+
+
+mission "Debian hat pickup [0]"
+	name "Debian hat to <system>"
+	description "Transport <tons> of <commodity> to <planet>, <system> for a reward of <payment>."
+	job
+	repeat
+	cargo "Debian hats" 10 54
+	to offer
+		has "debianHatRetrieval.conversation.begin: done"
+		"cargo space" > 10
+		random > 80
+	source
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	destination
+		distance 3 17
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	on visit
+		dialog phrase "Debian hat pickup visit"
+	on complete
+		payment 7600 340
+		dialog phrase "Debian hat pickup complete"
+
+
+mission "Debian hat pickup [1]"
+	name "Debian hat to <system>"
+	description "Transport <tons> of <commodity> to <planet>, <system> for a reward of <payment>."
+	job
+	repeat
+	cargo "Debian hats" 10 54
+	to offer
+		has "debianHatRetrieval.conversation.begin: done"
+		"cargo space" > 10
+		random > 80
+	source
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	destination
+		distance 3 17
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	on visit
+		dialog phrase "Debian hat pickup visit"
+	on complete
+		payment 7600 340
+		dialog phrase "Debian hat pickup complete"
+
+
+mission "Debian hat pickup [2]"
+	name "Debian hat to <system>"
+	description "Transport <tons> of <commodity> to <planet>, <system> for a reward of <payment>."
+	job
+	repeat
+	cargo "Debian hats" 10 54
+	to offer
+		has "debianHatRetrieval.conversation.begin: done"
+		"cargo space" > 10
+		random > 80
+	source
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	destination
+		distance 3 17
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	on visit
+		dialog phrase "Debian hat pickup visit"
+	on complete
+		payment 7600 340
+		dialog phrase "Debian hat pickup complete"
+
+
+mission "Debian hat pickup [3]"
+	name "Debian hat to <system>"
+	description "Transport <tons> of <commodity> to <planet>, <system> for a reward of <payment>."
+	job
+	repeat
+	cargo "Debian hats" 10 54
+	to offer
+		has "debianHatRetrieval.conversation.begin: done"
+		"cargo space" > 10
+		random > 80
+	source
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	destination
+		distance 3 17
+		government Republic "Free Worlds" Syndicate Neutral Independent "Sayari Plushie"
+	on visit
+		dialog phrase "Debian hat pickup visit"
+	on complete
+		payment 7600 340
+		dialog phrase "Debian hat pickup complete"

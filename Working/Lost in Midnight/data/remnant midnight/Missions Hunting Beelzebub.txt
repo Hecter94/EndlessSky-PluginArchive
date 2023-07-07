@@ -46,7 +46,13 @@ mission "Hunting Beelzebub: Modified Kestrel 1"
 			has "event: kestrel available: more weapons"
 			has "event: kestrel available: more engines"
 			has "event: kestrel available: more shields"
-		random < 30 - "ignored paris"
+		or
+			and
+				not "ignored paris"
+				random < 70
+			and
+				has "ignored paris"
+				random < 30 - "ignored paris"
 	on offer
 		conversation
 			`While walking through the spaceport, you spot someone who looks like Liutenant Paris of Deep Security. But he's not wearing a Deep Security uniform. The man hasn't noticed you and dips into a bar.`
@@ -75,7 +81,7 @@ mission "Hunting Beelzebub: Modified Kestrel 1"
 		
 	on enter
 		conversation
-			scene "thumbnail/modified kestrel-thumb"
+			scene "thumbnail/kestrel"
 			`Tom starts talking. "I've been on Beelzebub's trail since since our last encounter. Currently, I have a lead indicating that the crew of the Dreams of Darkness might be part of his organization. The ship is a Modified Kestrel that's been raiding merchant ships near Sargas. They say the ship has been spotted in systems that would be impossible to reach with a normal Hyperdrive in the time it would take to travel between them. Somehow, we need to capture that ship.`
 	on enter Lesath
 		dialog `There's a suspicious ship here, but it's not the Dreams of Darkness. They're not responding to your hails.`
@@ -127,7 +133,7 @@ mission "Hunting Beelzebub: Modified Kestrel 2"
 		has "Hunting Beelzebub: Modified Kestrel 1: done"
 	on offer
 		conversation
-			scene "thumbnail/modified kestrel-thumb"
+			scene "thumbnail/kestrel"
 			`You bump into Tom near the spaceport entrance. "I got a tip that the <npc> will be arriving soon. We should get into orbit."`
 				accept
 
@@ -140,7 +146,7 @@ mission "Hunting Beelzebub: Modified Kestrel 2"
 		fleet
 			names "pirate"
 			variant
-				"Hawk (Remnant B)" 4
+				"Shadow Hawk (B)" 4
 				"Finch (Inhibitor)" 4
 	npc capture
 		to spawn
@@ -207,11 +213,17 @@ mission "Hunting Beelzebub: Modified Bactrian 1"
 		or
 			has "Remnant: Deep Surveillance: done"
 			has "Remnant: Deep Surveillance: declined"
-			has "Remnant: Deep Surveillance: failed"			
+			has "Remnant: Deep Surveillance: failed"
 		or
 			has "defeated scar's legion"
 			has "Pirate Troubles [4]: done"
-		random < 30 - "ignored paris"
+		or
+			and
+				not "ignored paris"
+				random < 70
+			and
+				has "ignored paris"
+				random < 30 - "ignored paris"
 	on offer
 		conversation
 			`While walking through the spaceport, you spot someone who looks like Liutenant Paris of Deep Security. But he's not wearing a Deep Security uniform. The man hasn't noticed you and dips into a bar.`
@@ -234,6 +246,10 @@ mission "Hunting Beelzebub: Modified Bactrian 1"
 			label end
 			`	"Not here." Tom steps out of the bar and you follow. "We'll talk on your ship. Lead the way."`
 				accept
+
+	on defer
+		"ignored paris" += 5
+		
 	on enter
 		conversation
 			scene "thumbnail/modified bactrian-thumb"
@@ -316,7 +332,7 @@ mission "Hunting Beelzebub: Modified Bactrian 2"
 		fleet
 			names "pirate"
 			variant
-				"Raven (Remnant B)" 2
+				"Shadow Raven (B)" 2
 				"Finch (Inhibitor)" 4
 	npc capture
 		government "Bounty"
@@ -735,9 +751,9 @@ mission "Hunting Beelzebub: Rum Cellar"
 			names "pirate"
 			cargo 0
 			variant
-				"Falcon (Remnant B)"
+				"Shadow Falcon (B)"
 			variant
-				"Osprey (Remnant B)"
+				"Shadow Osprey (B)"
 		conversation
 			scene "outfit/inhibitor blaster"
 			`This ship is armed with Inhibitor Blasters. You managed to capture the captain who says he got the Inhibitors from Rum Cellar. Whether or not you spare the crew is up to you.`
@@ -798,7 +814,7 @@ mission "Hunting Beelzebub: Ember Nightmare"
 	on enter
 		conversation
 			scene "ship/ember nightmare/ember nightmare"			
-			`You receive a hail. "Did you think I wouldn't notice you snooping around my business? This is a fitting place for you to pass on to the next life." The transmission came from a ship that looks like a heavily modified Albatross. The red glowing lights nestled within the shadows of the ship match the description of the Ember Nightmare. That's Beelzebub's ship. The ship jumps away as a fleet of dark warships and interceptors swarm around you.`
+			`You receive a hail. "Did you think I wouldn't notice you snooping around my business? This is a fitting place for you to pass on to the next life." The transmission came from a ship that looks like a heavily modified Albatross. The red glowing lights nestled within the shadows of the ship match the description of the Ember Nightmare. That's Beelzebub's ship. The Ember Nightmare jumps away as a fleet of dark warships and interceptors swarm around you.`
 			`	Paris growls, "Forget these guys. We need to chase after Beelzebub!" He must have fled to one of the nearby systems...`
 	on enter Terminus
 		dialog `The Ember Nightmare is here and it's not alone.`
@@ -809,9 +825,9 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		fleet
 			names "pirate"
 			variant
-				"Osprey (Remnant B)"
-				"Raven (Remnant B)" 2
-				"Hawk (Remnant B)" 4
+				"Shadow Osprey (B)"
+				"Shadow Raven (B)" 2
+				"Shadow Hawk (B)" 4
 	npc
 		government "Phenomenon (dangerous)"
 		system Terminus
@@ -819,10 +835,10 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		fleet
 			names "pirate"
 			variant
-				"Falcon (Remnant B)"				
-				"Osprey (Remnant B)" 2
-				"Raven (Remnant B)" 2
-				"Hawk (Remnant B)" 4
+				"Shadow Falcon (B)"
+				"Shadow Osprey (B)" 2
+				"Shadow Raven (B)" 2
+				"Shadow Hawk (B)" 4
 	npc
 		government "Phenomenon (dangerous)"
 		system Terminus
@@ -830,20 +846,20 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		fleet
 			names "pirate"
 			variant
-				"Falcon (Remnant B)" 2
-				"Osprey (Remnant B)" 4
+				"Shadow Falcon (B)" 2
+				"Shadow Osprey (B)" 4
 				"Finch (Inhibitor)" 2
 	npc
 		to spawn
-			"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" >= 7
+			"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" >= 7
 		government "Phenomenon (dangerous)"
 		system Terminus
 		personality waiting staying plunders heroic unconstrained marked mute
 		fleet
 			names "pirate"
 			variant
-				"Falcon (Remnant B)"				
-				"Osprey (Remnant B)" 2
+				"Shadow Falcon (B)"
+				"Shadow Osprey (B)" 2
 	npc
 		to spawn
 			not "Hunting Beelzebub: Modified Bactrian 1: offered"
@@ -885,7 +901,10 @@ mission "Hunting Beelzebub: Ember Nightmare"
 	npc kill
 		government "Nemesis"
 		system Terminus
-		personality waiting staying vindictive heroic unconstrained marked
+		personality waiting staying vindictive unconstrained marked timid
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons"
 		ship "Ember Nightmare" "Ember Nightmare"
 		dialog `You've defeated Beelzebub. Paris asks that you take him to <destination>.`
 	on complete
@@ -899,7 +918,7 @@ mission "Hunting Beelzebub: Ember Nightmare"
 			label TMBR
 			`You part ways with Paris. With Beelzebub gone, Tom may return to Deep Security. After checking with the Deep government, it turns out there's a <payment> bounty on Beelzebub and it's all yours.`
 			``
-			`You notice a flier advertising a There Might Be Riots concert later that evening. Maybe Garrison, Hannah, and Pierre will be there. If you run into them, you'll let them know that Beelzebub was brought to justice. It won't bring Laura back, but maybe it will give them some closure.`
+			`You notice a flier advertising a There Might Be Riots concert later that evening. Maybe Garrison, Hannah, and Pierre will be there. If you run into them, you'll be able to let them know that Beelzebub was brought to justice. It won't bring Laura back, but maybe it will give them some closure.`
 				accept
 
 
@@ -922,7 +941,7 @@ ship "Ember Nightmare"
 		"drag" 8.6
 		"heat dissipation" 0.7
 		"fuel capacity" 600
-		"ramscoop" 2
+		"ramscoop" 2.75
 		"outfit space" 885
 		"weapon capacity" 393
 		"engine capacity" 144
@@ -931,8 +950,9 @@ ship "Ember Nightmare"
 		"hull repair rate" 2.5
 		"hull energy" 1.95
 		"outfit scan power" 18
-		"outfit scan speed" 1
+		"outfit scan efficiency" 24
 		"tactical scan power" 39
+		"integrated systems" -1
 		weapon
 			"blast radius" 360
 			"shield damage" 3600
@@ -943,7 +963,7 @@ ship "Ember Nightmare"
 		"Inhibitor Blaster" 6
 		"Thrasher Turret" 2
 		"Point Defense Turret" 2
-		"Korath Banisher"
+		"Banisher Grav-Turret"
 
 		"Aeon Cell"
 		"Epoch Cell"
@@ -954,11 +974,12 @@ ship "Ember Nightmare"
 		"Quantum Key Stone"
 		"Engineering Room"
 		"Tuning Rifle" 42
-		"Korath Repeater Rifle" 32
+		"Thermal Repeater Rifle" 32
 		"Pulse Rifle" 22
 		"Fragmentation Grenades" 12
 		"Dual Pulse Pistols"
 		"Medical Bay"
+		"Heart of Nightmare"
 
 		"Smelter-Class Steering"
 		"Smelter-Class Thruster"
@@ -994,7 +1015,7 @@ ship "Ember Nightmare"
 	turret 23 -34 "Thrasher Turret"
 	turret -74 62 "Point Defense Turret"
 	turret 74 62 "Point Defense Turret"
-	turret 0 77 "Korath Banisher"
+	turret 0 77 "Banisher Grav-Turret"
 	leak "remnant leak" 45 15
 	leak "remnant leak sparkle" 45 15
 	explode "small explosion" 45
@@ -1007,8 +1028,8 @@ ship "Ember Nightmare"
 
 
 ship "Modified Kestrel"
-	sprite "ship/modified kestrel"
-	thumbnail "thumbnail/modified kestrel-thumb"
+	sprite "ship/kestrel"
+	thumbnail "thumbnail/kestrel"
 	attributes
 		category "Heavy Warship"
 		"cost" 14700000
@@ -1066,13 +1087,15 @@ ship "Modified Kestrel"
 	description "Several years ago, while visiting a sweat lodge in search of spiritual renewal, Tarazed's chief ship designer fell into a trance and journeyed to a reality separate from our own. There he saw visions of a strange and elegant starship. Returning to his work with renewed purpose, he spent the next seven years making the Kestrel a reality."
 
 ship "Modified Kestrel" "Modified Kestrel (Remnant Engines)"
+	sprite "ship/kestrele"
+	thumbnail "thumbnail/kestrele"
 	add attributes
 		"drag" -1.0
 		"fuel capacity" 100
 		"engine capacity" 30
 	outfits
 		"Aeon Cell"
-		Afterburner
+		"Volcano Afterburner"
 		"Cargo Scanner"
 		"Crystal Capacitor"
 		"D67-TM Shield Generator"
@@ -1097,8 +1120,11 @@ ship "Modified Kestrel" "Modified Kestrel (Remnant Engines)"
 	turret "Thrasher Turret"
 	turret "Point Defense Turret"
 	turret "Point Defense Turret"
+	description "Featuring more engine space and extra fuel capacity, his Kestrel has been altered from the retail version to emphasize speed over all else."
 
 ship "Modified Kestrel" "Modified Kestrel (Remnant Shields)"
+	sprite "ship/kestrels"
+	thumbnail "thumbnail/kestrels"
 	add attributes
 		"shields" 3000
 		"hull" 1500
@@ -1130,8 +1156,11 @@ ship "Modified Kestrel" "Modified Kestrel (Remnant Shields)"
 	turret "Thrasher Turret"
 	turret "Point Defense Turret"
 	turret "Point Defense Turret"
+	description "Featuring additional shield emitters and a reinforced hull, this Kestrel has been altered from the retail version to emphasize defense over all else."
 
 ship "Modified Kestrel" "Modified Kestrel (Remnant Weapons)"
+	sprite "ship/kestrelw"
+	thumbnail "thumbnail/kestrelw"
 	add attributes
 		"weapon capacity" 40
 	outfits
@@ -1174,6 +1203,7 @@ ship "Modified Kestrel" "Modified Kestrel (Remnant Weapons)"
 	turret 7 -4 "Thrasher Turret"
 	turret -23 14 "Point Defense Turret"
 	turret 23 14 "Point Defense Turret"
+	description "Featuring additional gun ports and weapon space, this Kestrel has been altered from the retail version to emphasize offense over all else."
 
 
 
@@ -1285,33 +1315,4 @@ ship "Modified Bactrian" "Modified Bactrian (Remnant)"
 
 
 
-outfit "Inhibitor Blaster"
-	category "Guns"
-	licenses
-		Remnant
-	cost 471000
-	thumbnail "outfit/inhibitor blaster"
-	"mass" 16
-	"outfit space" -16
-	"weapon capacity" -16
-	"gun ports" -1
-	weapon
-		sprite "projectile/inhibitor"
-			"frame rate" 10
-			"no repeat"
-		sound "inhibitor"
-		"hit effect" "inhibitor impact" 3
-		"inaccuracy" .5
-		"velocity" 36
-		"random velocity" .5
-		"lifetime" 24
-		"reload" 13
-		"firing energy" 26
-		"firing heat" 45.5
-		"firing force" 13
-		"shield damage" 26
-		"hull damage" 19.5
-		"hit force" 39
-		"slowing damage" .5
-	description `This modified version of the Inhibitor Cannon lacks the firing synchronization of the standard Remnant version. The result is that instead of firing a volley of inhibitor projectiles, a group of these weapons will produce a steady stream. Intimate knowledge of how the weapon works is necessary to make this sort of modification while leaving the weapon's other attributes unchanged.`
 

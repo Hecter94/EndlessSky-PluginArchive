@@ -74,7 +74,7 @@ Due to some minor, trivial GitHub mess-ups, this changelog is not on any local c
 ##### Name fixes
 * Properly indented names
 * Added "word" attribute to a phrase that didn't have it.
- 
+
 # Roadmap
 ### Next version
 * Sporadic SPA-CSSF fleet battles in Republic/Synd space

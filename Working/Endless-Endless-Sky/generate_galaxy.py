@@ -7,6 +7,8 @@ import random
 
 import namegenerator #Custom Name generator
 
+from sys import platform
+
 def roundup100(x):
     return int(math.ceil(x / 100.0)) * 100
 
@@ -1048,7 +1050,10 @@ def load_description_data():
     planet_sprite_list = glob.glob("config/planet config/planet sprites/*.txt") #Imports files in directory
 
     for item in planet_sprite_list:
-        name = item.replace("config/planet config/planet sprites\\", "").replace(".txt", "")
+        if platform == "linux" or platform == "linux2" or platform == "darwin":
+            name = item.replace("config/planet config/planet sprites/", "").replace(".txt", "")
+        elif platform == "win32":
+            name = item.replace("config/planet config/planet sprites\\", "").replace(".txt", "")
         temp_items_list = []
         item = open(item, "r")
         for line in item:
@@ -1223,7 +1228,7 @@ def pick_landscape(planet_type):
         landscape = random.choice(desert_list)+str(random.randrange(0,6))
     return landscape
 
-#Returns dict of with lists of possible description
+#Returns dict of with lists of possible description. TODO: generate description from keywords?
 def read_planet_description():
     description_dict = {}
     tempdesclist = []
@@ -1331,8 +1336,8 @@ def generate_inhabited_planet(system,name):
     outfitterlist = None
     shipyardlist = None
 
-    outfitter_roll = random.random() * (system.government.age/3) + round(population/8,1) + round(military/2)
-    shipyard_roll = random.random() * (system.government.age/3) + round(population/10,1) + round(military/5)
+    outfitter_roll = random.random() * (system.government.age/10) + round(population/8,1) + round(military/2)
+    shipyard_roll = random.random() * (system.government.age/14) + round(population/10,1) + round(military/5)
 
     if outfitter_roll > base_outfitter_chance:
         outfitterlist = system.government.outfitterlist
@@ -1416,7 +1421,7 @@ def system_planets(system, galaxy): #Generates planets in system
     planet_radius = 120
     max_habitable_planets = 3
     is_habitable_chance = 1
-    number_of_planets = random.randint(4, 5)
+    number_of_planets = random.randint(4, 7)
 
     temp_wormhole_chance = 0
     for existing_wormhole in wormhole_dict.keys():
@@ -1434,7 +1439,7 @@ def system_planets(system, galaxy): #Generates planets in system
     while i < number_of_planets:
         #Determines habitable planets
         #distance = distance + random.randint(abs(distance - 100), distance * random.randint(1,2))
-        distance = distance + (planet_radius * 2) + random.randint(50, 100)
+        distance = distance + (planet_radius * 2) + random.randint(50, 1000)
         fraction = round(distance / habitable_zone, 2)
         if fraction > 2:
             planet_radius = 200
@@ -1591,7 +1596,7 @@ def galaxy_write_systems(galaxy,galaxy_center_x,galaxy_center_y,galaxy_image):
         galaxy_output.write(f'\tarrival {max(500, min(10000, system.habitable))}' + "\n")
         
         #belt
-        galaxy_output.write('\tbelt ' + str(random.randint(1000, 1500)) + "\n")
+        galaxy_output.write('\tbelt ' + str(random.randint(1000, 7500)) + "\n")
 
         links_temp_list = system.links
         links_temp_list_write = list(set([str(e) for e in links_temp_list ]))

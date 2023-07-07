@@ -69,7 +69,7 @@ event "angri byrds"
 		tribute 10000
 			threshold 20000
 			fleet "Wanderer Drones" 5
-			fleet "Wanderer Defense" 10
+			fleet "Wanderer Defense" 50
 	planet "Varu Ek'lak'lai"
 		tribute 2000
 			threshold 5000
@@ -78,8 +78,8 @@ event "angri byrds"
 	planet "Var' Kayi"
 		tribute 2000
 			threshold 5000
-			fleet "Wanderer Drones" 10
-			fleet "Wanderer Defense" 50
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
 	planet "Var' Roi"
 		tribute 2000
 			threshold 5000
@@ -90,6 +90,12 @@ event "angri byrds"
 			threshold 5000
 			fleet "Wanderer Drones" 5
 			fleet "Wanderer Defense" 10
+	planet "Varu K'prai"
+		tribute 2000
+			threshold 5000
+			fleet "Wanderer Drones" 5
+			fleet "Wanderer Defense" 10
+
 
 #-----Worlds in Korath space colonized by Wanderers-----
 
@@ -244,6 +250,8 @@ mission "Angri Byrds Vigilantes"
 				"Summer Leaf (Missile)" 2
 				"Summer Leaf" 2
 	npc evade
+		to spawn
+			random < 50
 		government "Wanderer"
 		personality waiting heroic vindictive
 		fleet
@@ -274,6 +282,38 @@ mission "Angri Byrds Vigilantes"
 			variant
 				"Hurricane (Tough)"
 
+mission "Angri Byrds: Deploy Thunder Maker"
+	landing
+	invisible
+	source
+		government "Wanderer"
+	to offer
+		has "event: angri byrds"
+	on enter "Ap'arak"
+		event "wanderer modern thunder makers"
+		dialog "The Wanderers have deployed an automated missile system to fortify their defenses against the Unfettered."
+	npc kill
+		government "Wanderer"
+		system "Ap'arak"
+		personality waiting staying mute
+			confusion 20
+		fleet
+			names "wanderer"
+			variant
+				"Thunder Maker (Modern)"
+
+fleet "Wanderer Thunder Maker"
+	government "Wanderer"
+	names "wanderer"
+	personality staying mute
+		confusion 20
+	variant
+		"Thunder Maker (Modern)"
+
+event "wanderer modern thunder makers"
+	system "Ap'arak"
+		add fleet "Wanderer Thunder Maker" 40000
+
 
 
 #------Reconciliation missions to restore peace after full domination of Wanderer territory.------
@@ -287,7 +327,9 @@ mission "Angri Byrds: Peace Through Strength 1"
 	destination "Desi Seledrak"
 	to offer
 		has "Wanderers Ap'arak 3: Pug: done"
-		has "Wanderers: Sestor: Final: done"
+		or
+			has "Wanderers: Sestor: Final: done"
+			has "Wanderers: Sestor: Final: Patched"
 		"tribute: Varu Tev'kei" > 0
 		"tribute: Kort Kehai" > 0
 		"tribute: Vara Rakak" > 0
@@ -315,7 +357,7 @@ mission "Angri Byrds: Peace Through Strength 2"
 			`Soon after you land, you are ushered in to a meeting with several of the senior Wanderer leaders. Among them you recognize the military commander Sobari Tele'ek, terraformer Tema'a Iriket, chief advisor on the Kor Mereti Meto Pa'aret, and Firstborn Ektasi Rek.`
 			`	"Hello Captain <first> <last>," Ektasi Rek welcomes you. We have invited you here to discuss a formal cessation of hostilities between you and our people.`
 			`	"Too many have died in needless battle with you," adds Tema'a Iriket. "Our [first? primary?] focus should be on developing these new worlds, not [participating? engaging?] in pointless warfare over a [robbery? pillaging?] between this human and the Pug." Several who are sitting near her nod in agreement.`
-			`	"There are some who [argue? preach?] the Pug have abandoned us to our fate here because of the actions of Captain <last>," states Sobari Tele'ek. There are murmurs amongst those present and from the agitation in their voices, you're certain there are some here who would shoot you now if they thought they could get away with it.`
+			`	"There are some who [argue? preach?] the Pug have abandoned us to our fate here because of the actions of Captain <last>," states Sobari Tele'ek. There are murmurs amongst those present and from the agitation in their voices, you're certain there are some here who would kill you now if they thought they could get away with it.`
 			`	Meto Pa'aret has been silent, quietly tinkering with a Kor Mereti Reasoning Node while the others were talking. When he realizes it's his turn to speak, he states, "The Mereti were willing to fight <last> on our behalf at first, but after the [failure? tragedy?] with the Exiles, their collective opinion is in disarray."`
 			`	Rek speaks again. "Ultimately, fighting with you now is not in the best interest of our people. We are prepared to cease hostilities and restore your licenses if you will release all tribute demands you have placed upon our worlds."`
 			choice
@@ -323,7 +365,7 @@ mission "Angri Byrds: Peace Through Strength 2"
 				`	(Negotiate a better offer.)`
 					goto negotiate
 
-			`	You refuse their offer. The room erupts in anarchy and one of the military officers opens fire on you. You fail to react in time and die on the spot. Your last sight is seeing Rek sadly watching as you crumple onto the floor.`
+			`	You refuse their offer. The room erupts in anarchy and one of the military officers opens fire on you with a type of weapon you've never seen before. You fail to react in time and die on the spot. Your last sight is seeing Rek sadly watching as you crumple onto the floor.`
 				die
 
 			label negotiate
@@ -393,7 +435,7 @@ mission "Angri Byrds Still Angry 1"
 				"Strong Wind (Shields)" 2
 				"Autumn Leaf (Missile)" 4
 				"Summer Leaf (Missile)" 4
-	npc kill
+	npc evade
 		government "Wanderer (Hostile)"
 		personality target waiting heroic vindictive
 		fleet
@@ -649,12 +691,12 @@ event "add wanderer militia 4"
 mission "Angri Byrds: Unfettered Strikers"
 	job
 	repeat
+	deadline 14
 	name "Unfettered Strikers"
-	description "An Unfettered fleet lead by a warship named the <npc> was spotted near <origin>. Eliminate the fleet, then report to <destination> to claim your payment [<payment>]."
+	description "An Unfettered fleet lead by a warship named the <npc> was spotted near <system>. Eliminate the fleet, then return to <destination> to claim your payment [<payment>]."
 	source
 		government "Wanderer"
 		neighbor near "Ka'ch'chrai" 0 4
-	destination "Vara K'chrai"
 	to offer
 		"combat rating" > 8000
 		has "event: wanderers: unfettered invasion starts"
@@ -662,7 +704,7 @@ mission "Angri Byrds: Unfettered Strikers"
 	npc kill
 		government "Bounty"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying heroic vindictive
 		fleet
 			names "hai"
@@ -675,6 +717,7 @@ mission "Angri Byrds: Unfettered Strikers"
 				"Violin Spider (Pulse)" 3
 				"Shield Beetle (Ion Pulse)" 2
 				"Lightning Bug" 4
+		dialog `You've eliminated the <npc> and its fleet. Report to <destination> for payment.`
 	on complete
 		payment 1000000
 		dialog `The Wanderers thank you for stopping the <npc> and its fleet. You are rewarded with <payment> for your efforts.`
@@ -684,6 +727,7 @@ mission "Angri Byrds: Unfettered Strikers"
 mission "Angri Byrds: Plundered Ship [Autumn Leaf]"
 	job
 	repeat
+	deadline 14
 	name "Plundered Ship"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -693,7 +737,7 @@ mission "Angri Byrds: Plundered Ship [Autumn Leaf]"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: eastern evacuation"
-		random < 25 + "millipede runs amok"
+		random < 20 + "millipede runs amok"
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -713,6 +757,7 @@ mission "Angri Byrds: Plundered Ship [Autumn Leaf]"
 mission "Angri Byrds: Plundered Ship [Strong Wind]"
 	job
 	repeat
+	deadline 14
 	name "Plundered Ship"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -722,7 +767,7 @@ mission "Angri Byrds: Plundered Ship [Strong Wind]"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: eastern evacuation"
-		random < 20 + "millipede runs amok"
+		random < 15 + "millipede runs amok"
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -742,6 +787,7 @@ mission "Angri Byrds: Plundered Ship [Strong Wind]"
 mission "Angri Byrds: Plundered Ship [Tempest]"
 	job
 	repeat
+	deadline 14
 	name "Plundered Ship"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -751,7 +797,7 @@ mission "Angri Byrds: Plundered Ship [Tempest]"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: derecho mass production"
-		random < 15 + "millipede runs amok"
+		random < 10 + "millipede runs amok"
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -771,6 +817,7 @@ mission "Angri Byrds: Plundered Ship [Tempest]"
 mission "Angri Byrds: Plundered Ship [Derecho]"
 	job
 	repeat
+	deadline 14
 	name "Plundered Ship"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -780,7 +827,7 @@ mission "Angri Byrds: Plundered Ship [Derecho]"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: hurricane mass production"
-		random < 10 + "millipede runs amok"
+		random < 5 + "millipede runs amok"
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"
@@ -800,6 +847,7 @@ mission "Angri Byrds: Plundered Ship [Derecho]"
 mission "Angri Byrds: Plundered Ship [Hurricane]"
 	job
 	repeat
+	deadline 14
 	name "Plundered Ship"
 	description "The <npc> was captured by the Unfettered. Eliminate the ship at <waypoints>, then report to <destination> for payment of <payment>."
 	source
@@ -809,7 +857,7 @@ mission "Angri Byrds: Plundered Ship [Hurricane]"
 	waypoint "Prakacha'a"
 	to offer
 		has "event: wanderers: desi seledrak"
-		random < 5 + "millipede runs amok"
+		random < 1 + "millipede runs amok"
 	npc kill
 		government "Hai (Unfettered)"
 		system "Prakacha'a"

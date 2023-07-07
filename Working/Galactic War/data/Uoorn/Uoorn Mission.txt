@@ -39,6 +39,7 @@ mission "First Contact: Uoorn"
 			confusion 30
 		fleet "Uoorn Defense" 8
 	on offer
+		event "Uoorn name reveal"
 		conversation
 			`As you entered the planet's atmosphere you noticed a fairly large patch of white giant mushrooms sticking out from its surrounding. From quick scan you also noted some similarly large buds hidden barely beneath the the roof of fungi forest and respond differently to your sensor than regular mushrooms surrounding it, ones deeper inside from the edge of the patches also contains some clump of things you simply don't recognize.`
 			choice
@@ -88,9 +89,9 @@ mission "First Contact: Uoorn"
 				`	(Change your mind and go back to your ship)`
 					decline
 				`	(Take the sample anyway)`
-			apply
+			action
 				"reputation: Uoorn" <?= -10
-				"Uoorn: got samples"
+				set "Uoorn: got samples"
 			`	The sword powers on automatically as you grip it, you then use it to shave off a piece of the mushroom skin with ease, you quickly put it in your bag and immediately make a sprint for your ship. You feel the emotions of anger and resentment being directed at you as you run. You managed to get inside your ship unscathed, you hear sounds of something small but solid collides with the hull of you ship and quickly fire up your ships' engines. There's some resistance as you try to get your ship off the ground but it wasn't too much to handle. You look at your sensors as you ascend into space and see at least a dozen ships following you...`
 				launch
 			label shootatthepatch
@@ -99,10 +100,24 @@ mission "First Contact: Uoorn"
 				`	(Don't shoot them and just take a closer look)`
 					goto closerscan
 				`	(Shoot them anyway)`
-			apply
+			action
 				"reputation: Uoorn" <?= -50
 			`	You fired a few salvo into the middle of the mushrooms, the mushrooms are fairly tough but eventually you manage to tear them apart. Suddenly, you get feeling of anger and hate directed at you, you feel that something hostile is approaching you. Almost immediately after, a swarm of white ships some organic, some covered in hard shells emerges from the patch of mushrooms and the cloud of dust in the area you bombarded. Following behind the ships is a swarm of massive creme-colored tendrils tipped with point or blade, all coming towards you. Without a second thought you fired up your engines and leave the planets' atmosphere.`
 				launch
+					
+mission "Uoorn name reveal patch"
+	landing
+	deadline 1
+	to offer
+		has "First Contact: Uoorn: offered"
+	on offer
+		event "Uoorn name reveal"
+	on accept
+		fail
+					
+event "Uoorn name reveal"
+	government Uoorn
+		"display name" Uoorn
 					
 mission "Uoorn: Uoorn-Gargoor'an battle (Kalloo'anuu)"
 	landing
@@ -121,6 +136,8 @@ mission "Uoorn: Uoorn-Gargoor'an battle (Kalloo'anuu)"
 		fleet "Gargoor'an Urn War Fleet" 3
 	on enter "Kalloo'anuu"
 		set "Seen Uoorn fight Gargoor'an"
+	to complete
+		never
 		
 mission "Uoorn: Ask about Gargoor'an"
 	landing
@@ -140,3 +157,135 @@ mission "Uoorn: Ask about Gargoor'an"
 					decline
 			`	You find the closest patch of giant mushrooms, presumably the Uoorn, and try to think about the aliens you saw with spiky black ships. It didn't take long before the Uoorn notice and answer you. Time felt long, you felt like you can feel the slight rotation of the galaxy spinning backward by several millions years, you feel like a fresh recruit being sent to the frontline in a war, for million years they fought in an endless stagnant war where only fronts they fight changes. Not once they felt demotivated, not once they felt tired or question the reason they have to fight, they just fight to keep them at bay. Like a perpetual machine that never stop running. They never know the origins of the Gargoor'an, for the Uoorn, they are just there to be fight and hold back at all cost. Unlike your first contact with them, this "conversation" feels more glitchy, incoherent, or missing some information. Presences of you? them? Gargoor'an? popping up in random position across the galaxy. You feels some difficult to explain horror if the Gargoor'an breakthrough and won. Whole galaxy consumed and turn lifeless as countless more of these alien ships raise to continue their invasion in another galaxy. It was a little confusing as many barely connected pieces of information flows into your mind in a short amount of time but from what you get the Uoorn where fighting these aliens they called Gargoor'an since their very beginning, and they apparently fight them everywhere across the galaxy, at least in the past. You don't get any information how they or the Gargoor'an got there.`
 				decline
+
+#Uoorn ask you to help them fight a large Gargoor'an offensive, they'll also help setup "spaceport" to service your ship and allow you to traverse their space easier.
+mission "Uoorn: First Defense of Oo'orakai A"
+	landing
+	name `Defend <system>`
+	description `Go to <system> and defeat the Gargoor'an attack then land on <planet>.`
+	to offer
+		never #todo: complete the event unlocking "spaceport" on uoorn planets.
+		has "First Contact: Uoorn: offered"
+		random > 40
+		"armament deterrence" >= 10
+	source
+		government "Uoorn"
+	destination `Oo'orakai`
+	on offer
+		conversation
+			branch knowgargooran
+				has "Seen Uoorn fight Gargoor'an"
+			`As you approach the <origin> which appears to be inhabited by the Uoorn you gradually get a feeling of distress, a call for help urging you to look toward some direction. Further as you descent into the atmosphere you find the feeling getting stronger, vision of fleet of alien warships fighting Uoorn warships came into your mind, it appears the alien fleet is much larger and still receiving reinforcement. Perhaps the Uoorn is asking you to help them fight off these invaders.`
+			choice
+				`	(Agree to help them.)`
+					goto accept
+				`	(Not now.)`
+					goto decline
+			label knowgargooran
+			`As you approach the <origin> which appears to be inhabited by the Uoorn you gradually get a feeling of distress, a call for help urging you to look toward some direction. Further as you descent into the atmosphere you find the feeling getting stronger, vision of fleet of alien warships fighting Uoorn warships came into your mind, it appears the alien fleet is much larger and still receiving reinforcement. Perhaps the Uoorn is asking you to help them fight off these invaders.`
+			label accept
+			`	The good feeling of helping someone washes through you, you also feel like you'll be rewarded but not sure on the details. Opening up the map you take a look at it for a while before getting a general idea of what system you need to go to and mark it.`
+				accept
+
+			label decline
+			`	The feeling and image won't go away but you've already decided to not participate yet. A few minutes later all the feeling fade away and somehow leave you a little sadder than minutes before.`
+				decline
+			#While choice implies defer, another mission will be offered in place.
+	npc evade
+		system `Kalloo'anuu`
+		government "Gargoor'an"
+		personality
+			confusion 20
+			target waiting uninterested
+		fleet "Gargoor'an Urn War Fleet" 4
+		dialog
+			`With the last of the attacking fleet defeated you can land on <planet> to check in with the Uoorn.`
+	npc
+		system `Kalloo'anuu`
+		government "Gargoor'an"
+		personality
+			confusion 20
+			entering
+		fleet "Gargoor'an Urn War Fleet" 1
+
+	npc
+		system `Kalloo'anuu`
+		government "Uoorn"
+		personality
+			heroic staying uninterested
+		fleet "Uoorn Defense" 5
+
+	on visit
+		dialog
+			`You landed on <planet> but there are still Gargoor'an ships in the system, better depart and chase them off.`
+
+event "uoorn spaceport"
+	planet `Oo'orakai` #Todo, do for the rest of planets.
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Cou'kaarao`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Anroo'ulreen`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Eoon'ulre`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Oonreeu`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Soonrenal`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Nuroon'neliue`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Ooren'lireen`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Ioon'ureen`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Liinoolu`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Mao'luuno`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Ciu'liion`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Kiinoluu`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Tiuoon'lra`
+		add spaceport `Being inhabited only by the Uoorn it doesn't exactly have a spaceport but each giant mushroom patch is willing to provide you fuel and repairs with specialized tendrils sprouting from the ground next to the mushrooms.`
+	planet `Soonrenal`
+	planet `Soonrenal`
+	planet `Soonrenal`
+	planet `Soonrenal`
+
+mission "Uoorn: First Defense of Oo'orakai B"
+	landing
+	name `Defend <system>`
+	description `Defeat the Gargoor'an attack then land on <planet>.`
+	source
+		government `Uoorn`
+	to offer
+		has "Uoorn: First Defense of Oo'orakai A: done"
+	on offer
+		event "uoorn spaceport"
+		conversation
+			`Just as you approach to land and get a feeling of gratitude from the Uoorn you were alerted by more enemies entering the system, seems like the battle is not done yet.`
+				launch
+	
+	npc evade
+		system `Kalloo'anuu`
+		government "Gargoor'an"
+		personality
+			confusion 20
+			target entering uninterested
+		fleet "Gargoor'an Urn War Fleet" 3
+		dialog
+			`With the last of the attacking fleet defeated you can land on <planet> to check in with the Uoorn.`
+
+	npc
+		system `Kalloo'anuu`
+		government "Uoorn"
+		personality
+			heroic staying uninterested
+		fleet "Uoorn Defense" 4
+
+	on complete
+		conversation
+			`The feeling of gratitude from the Uoorn wash over you again as you enter the planet atmosphere. One of the Uoorn ship flies in front of you and seems to be leading you to one of the Uoorn surface patches and landed in a flat area in the middle of it, you landed next to it and noticed some white tendrils sprouting out from the ground and slowly approach your ship. Something is telling you these are harmless and will even assist you so you decided to wait and see what it'll do.`
+			`	The tendrils got closer and you noticed one of it approaching the fuel port appears to have its tip closely mimic the port on your ship and others with varity of different tip from pointy to blunt end with tiny holes. They refuel your ship and repair any damage you took in battle as small reward for your assistance. Something is telling you that from now on you'll also be repair and refuelled on other Uoorn-inhabited planets as well.`
+			

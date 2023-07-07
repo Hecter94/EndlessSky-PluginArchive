@@ -3,7 +3,7 @@ An alternate start for Endless Sky.
 
 Start in the Sol system with an old Earth relic for your ship.
 
-The space shuttle has no weapons, but lots of cargo space.
+The space shuttle has lots of cargo space and a drone bay, but few weapons.
 
 It has an Afterburner.
 

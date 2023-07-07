@@ -2,9 +2,7 @@
 This is a repository for endless sky mod "Galactic War"
 The mod is currently in development stage, many things are subjected to changes later on.
 
-Currently the mod requires Endless Sky version 0.9.13+ to work properly.
-
-Some stars use new sprites that is was introduced in continous. Due to the system editor using the new resource some system might include these newer stars. Download and use this plugin to see the new stars: https://mega.nz/file/wUhGQaKB#O5_cjWEa5aQTUJ-gBZLE0lmGq6I_0NbQO_19t0xhPhs
+Currently the mod requires Endless Sky version 0.9.15+ to work properly.
 
 ![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
 
@@ -32,7 +30,9 @@ This plugin is complatible with Omnis and World Forge developer plugins, though,
 ## Known Issues
 Galaxy image not appearing. To fix this, turn on "reduce large graphic" option in the setting and restart the game.
 
-Memory Leaks(Game will freeze or crash, check task manager if memory usage is higher than usual. With this plugin installed, the game usually peaks at 2-3GB RAM.) when used with Endless Sky continuous after 16 August 2021 (specifically commit dda40b619e5c722dcf213c31efa53626486297c0). Please download the lastest update with code button or download the lastest release for the fix.
+Game slowing down when jumping with hyperdrive. Due to the number of systems this plugin add and game's pathfinding, unfortunately the only fix is to get better hardware.
+
+Game slowing down/freezing when escorts have high-range jump drive. Similar reason to above, use shorter-ranged jump drive or don't use escorts.
 
 ## Download
 To download the lastest (development) version, press the green [code] button and download as zip from this repository.
@@ -41,10 +41,10 @@ To install you can extract the zip in your plugin folder.
 
 High-DPI plugin for Galactic War:
 
-For 4k monitors or if ships look blurry, you can download this plugin for sprites with higher resolution;
+For 4k monitors or if ships/outfits look blurry, you can download this plugin for sprites with higher resolution;
 https://github.com/1010todd/Galactic-War-hi-dpi
 
-Lite version: (Outdated)
+Lite version: (Very Outdated)
 
 This version will have less animation frames and exclude @2x images to reduce memory required to load the plugin. Use this if you're using low end machines or 32 bit machines.
 https://mega.nz/file/8QpAAYhJ#H2vVusIAPKdlMZlzVNwTfTwzpV6tYQBsvZDXDdNhB54

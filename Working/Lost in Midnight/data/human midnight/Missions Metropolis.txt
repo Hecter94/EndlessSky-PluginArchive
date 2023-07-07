@@ -39,12 +39,12 @@ mission "Metropolis 1"
 		has "Caspar Delivery: done"
 	to fail
 		or
-			has "Balthazar Delivery: Aborted"
-			has "Balthazar Delivery: Failed"
-			has "Melchior Delivery: Aborted"
-			has "Melchior Delivery: Failed"
-			has "Caspar Delivery: Aborted"
-			has "Caspar Delivery: Failed"
+			has "Balthazar Delivery: aborted"
+			has "Balthazar Delivery: failed"
+			has "Melchior Delivery: aborted"
+			has "Melchior Delivery: failed"
+			has "Caspar Delivery: aborted"
+			has "Caspar Delivery: failed"
 	on offer
 		log "People" "Joseph Welder" `A mechanic from Luna who has offered to put together a Metropolis city ship if you deliver a set of District, Prefecture, and Municipality ships to him.`
 		conversation
@@ -232,14 +232,14 @@ mission "Balthazar 6"
 	source
 		near "Alpha Hydri" 1 30
 	destination "Nimbus"
-	stopover "Foundry"
+	stopover "Hephaestus"
 	cargo "replacement parts" 50
 	blocked "Salvaging Balthazar: You need <capacity> to carry the replacement parts."
 	to offer
 		has "event: Balthazar salvage timer"
 		"credits" > 1000000
 	on offer
-		dialog `You receive a message from Maria Carpenter. They've salvaged the Balthazar, but need to replace some unsalvagable components with fresh ones from Foundry. A list of the required equipment is attached to her message. It will cost 500,000 credits.`
+		dialog `You receive a message from Maria Carpenter. They've salvaged the Balthazar, but need to replace some unsalvagable components with fresh ones from <stopovers>. A list of the required equipment is attached to her message. It will cost 500,000 credits.`
 	on accept
 		payment -500000
 	on stopover
@@ -304,6 +304,7 @@ mission "Melchior 1"
 	description `Go to <planet> in the <system> system and inquire about the Prefecture ship Melchior.`
 	source
 		government "Free Worlds"
+		not planet "Zug"
 	destination Zug
 	to offer
 		has "Metropolis 1: active"
@@ -833,8 +834,16 @@ mission "Metropolis 2"
 		fleet
 			fighters "pirate"
 			variant
-				"Korath Chaser" 4
+				"'olofez" 4
 				"Far Lek 14" 6
+
+	npc evade
+		to spawn
+			has "event: plasma repeater advanced"
+		system Sol
+		government "Pirate"
+		personality target waiting disables
+		ship "Leviathan (Plasma Repeater)" "Chunk"
 
 	npc evade
 		to spawn
@@ -869,11 +878,19 @@ mission "Metropolis 2"
 
 	npc evade
 		to spawn
-			has "event: Grudge Legacy"
+			has "Pirate Duel: done"
 		system Sol
 		government "Pirate"
 		personality target waiting disables
-		fleet "Grudge Parade"
+		ship "Vanguard (Plasma Slow)" "Sea Devil"
+
+	npc evade
+		to spawn
+			has "defeated scar's legion"
+		system Sol
+		government "Pirate"
+		personality target waiting disables
+		ship "Leviathan (Hai Weapons)" "Callus"
 
 	npc evade
 		system Sol
@@ -896,7 +913,8 @@ mission "Metropolis 2"
 				launch
 	on complete
 		give ship "Metropolis" "Exodus"
-		log "People" "Joseph Welder" `Joseph passed away the day after the restored Exodus' test flight. One of his ancestors was on the design team for the Exodus. Seeing that ship fly again was a childhood dream of Joseph's. His dream will live on as the Exodus flies again.`
+		log "People" "Joseph Welder" `Joseph passed away the day after the restored Exodus' test flight. One of his ancestors was on the design team for the Exodus. Seeing that ship fly again was a childhood dream of Joseph's. His dream will live on as the Exodus returns to the Endless Sky.`
+		log `The Exodus had an exciting test flight. Unfortunately, damage to the interlocking mechanisms from an attack by Marauders prevents the Exodus from splitting into its component sub-ships.`
 		conversation
 			`After an exciting test flight, the Exodus has finally arrived to the celebration reception on Earth.`
 			`	"Alright everyone!" exclaims Joseph. "Begin the separation sequence and land!"`

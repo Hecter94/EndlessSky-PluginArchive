@@ -1,0 +1,506 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+#################################
+#
+# Adds an independent salvager that appears in some FW battles.
+#
+#################################
+
+phrase "rogue scavenger"
+	word
+		"Rogue Scavenger"
+
+fleet "rogue scavenger I"
+	government "Independent (Killable)"
+	names "rogue scavenger"
+	cargo 0
+	variant
+		"Behemoth (Proton)"
+
+fleet "rogue scavenger II"
+	government "Independent (Killable)"
+	names "rogue scavenger"
+	cargo 0
+	variant
+		"Marauder Behemoth (Scavenger)"
+
+fleet "rogue scavenger III"
+	government "Independent (Killable)"
+	names "rogue scavenger"
+	cargo 0
+	variant
+		"Marauder Behemoth (Scavenger Pug)"
+
+ship "Marauder Behemoth" "Marauder Behemoth (Scavenger)"
+	"crew" 32
+	outfits
+		"Plasma Cannon" 2
+		"Proton Turret" 2
+		"Electron Turret" 2
+		"Heavy Anti-Missile Turret" 2
+		"Breeder Reactor"
+		"LP144a Battery Pack"
+		"S-270 Regenerator"
+		"S-970 Regenerator"
+		"Liquid Helium Cooler"
+		"Large Radar Jammer"
+		"Outfits Expansion" 7
+		"Catalytic Ramscoop"
+		"Surveillance Pod"
+		"Fragmentation Grenades" 13
+		"Laser Rifle" 18
+		"Sniper Rifle"
+		"Ionic Afterburner"
+		"A125 Atomic Steering"
+		"A250 Atomic Thruster"
+		"A375 Atomic Steering"
+		"Scram Drive"
+	turret "Proton Turret"
+	turret "Proton Turret"
+	turret "Electron Turret"
+	turret "Electron Turret"
+	turret "Heavy Anti-Missile Turret"
+	turret "Heavy Anti-Missile Turret"
+
+ship "Marauder Behemoth" "Marauder Behemoth (Scavenger Pug)"
+	"crew" 32
+	outfits
+		"Pug Seeker" 2
+		"Pug Zapper Turret" 2
+		"Pug Anti-Missile" 2
+		"Breeder Reactor"
+		"LP144a Battery Pack"
+		"S-270 Regenerator"
+		"S-970 Regenerator"
+		"Liquid Helium Cooler"
+		"Outfits Expansion" 7
+		"Catalytic Ramscoop"
+		"Fuel Pod" 2
+		"Surveillance Pod"
+		"Pug Biodefenses" 10
+		"Pug Peacekeeping Staff" 23
+		"Ionic Afterburner"
+		"Pug Akfar Thruster"
+		"Pug Cormet Steering"
+		"Jump Drive"
+	turret "Pug Zapper Turret"
+	turret "Pug Zapper Turret"
+	turret "Pug Anti-Missile"
+	turret "Pug Anti-Missile"
+	turret 
+	turret 
+
+#############################
+#
+# FW start
+#
+#############################
+
+
+
+mission "Rogue Scavenger: FW Early Warning 3"
+	landing
+	invisible
+	source "Harmony"
+	destination "Deep"
+	to offer
+		has "FW Early Warning 2: done"
+		not "FW Early Warning 3: done"
+	npc save
+		government "Independent (Killable)"
+		system "Kornephoros"
+		personality staying harvests plunders uninterested
+			confusion 20
+		fleet "rogue scavenger I"
+
+mission "Rogue Scavenger: FW Early Warning 4"
+	landing
+	invisible
+	source "Deep"
+	destination "Hope"
+	to offer
+		has "Rogue Scavenger: FW Early Warning 3: done"
+		has "FW Early Warning 3: done"
+	npc save
+		government "Independent (Killable)"
+		system "Wei"
+		personality staying harvests plunders
+			confusion 20
+		fleet "rogue scavenger I"
+	on enter "Wei"
+		log `An Independent Behemoth called the "Rogue Scavenger" has been plundering battlefields during the war.`
+		conversation
+			scene "thumbnail/behemoth"
+			`One of the Free Worlds pilots comments: "Wasn't that the same Behemoth that was looting at Kornephoros?" The Rogue Scavenger... It does look familiar.`
+			`	Another pilot responds: "Stay on target! Navy ships spotted!" It's true. There are at least two Cruisers and several frigates. You can't afford to let yourself get distracted by some opportunistic looters even if they're hoping to profit from your death.`
+
+mission "Rogue Scavenger: FW Southern Battle 2"
+	landing
+	invisible
+	source Trinket
+	destination Dancer
+	to offer
+		has "Rogue Scavenger: FW Early Warning 4: done"
+		has "FW Southern Battle 1B: done"
+	npc save
+		government "Independent (Killable)"
+		system "Rastaban"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+	on enter
+		log `The Rogue Scavenger has been upgraded to a Marauder Behemoth outfitted with various outfits plundered from war torn battlefields.`
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`Rastaban is a warzone, with ships from both the Free Worlds and the Republic exchanging fire. Through it all, you notice the Rogue Scavenger picking up debris from destroyed ships. It seems they're looting technology from both sides of the conflict. While you might be tempted to scan their ship and see what sorts of upgrades they've made using their ill gotten gains, remember that you have a battle to fight first.`
+
+mission "Rogue Scavenger: FW Rand 1"
+	landing
+	invisible
+	source "Dancer"
+	destination "Rand"
+	to offer
+		has "Rogue Scavenger: FW Southern Battle 2: done"
+		has "FW Albatross 2B: done"
+	npc save
+		government "Independent (Killable)"
+		system "Zeta Aquilae"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+
+
+
+#################################
+#
+# Follows checkmate.
+#
+#################################
+
+
+
+mission "Rogue Scavenger: FW Liberate Delta Sagittarii"
+	landing
+	invisible
+	source Wayfarer
+	destination "New Portland"
+	to offer
+		has "Rogue Scavenger: FW Rand 1: done"
+		has "FW Rand 1B: done"
+		not "FW Defend New Tibet: done"
+	npc save
+		to spawn
+			has "fw did not rescue defector"
+		government "Independent (Killable)"
+		system "Delta Sagittarii"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+
+
+mission "Rogue Scavenger: FWC Attack Kaus Borealis"
+	landing
+	invisible
+	source "New Portland"
+	destination "New Iceland"
+	to offer
+		has "Rogue Scavenger: FW Liberate Delta Sagittarii: done"
+		has "FWC Scouting 1: done"
+	npc save
+		government "Independent (Killable)"
+		system "Kaus Borealis"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+mission "Rogue Scavenger: FWC Cebalrai 1B"
+	landing
+	invisible
+	source "New Portland"
+	destination "New Iceland"
+	to offer
+		has "Rogue Scavenger: FWC Attack Kaus Borealis: done"
+		has "FWC Cebalrai 1: done"
+	npc save
+		government "Independent (Killable)"
+		system "Cebalrai"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+mission "Rogue Scavenger: FWC Checkmate 1"
+	landing
+	invisible
+	source Tundra
+	to offer
+		has "Rogue Scavenger: FWC Cebalrai 1B: done"
+		has "FWC Diplomacy 1C: done"
+	npc save
+		government "Independent (Killable)"
+		system "Cebalrai"
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+mission "Rogue Scavenger: FWC Checkmate 1B"
+	landing
+	invisible
+	source Tundra
+	destination "New Austria"
+	to offer
+		has "Rogue Scavenger: FWC Checkmate 1: done"
+		has "FWC Checkmate 1: done"
+	npc save
+		government "Independent (Killable)"
+		system Menkent
+		personality staying harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+
+mission "Rogue Scavenger: FWC Pug 3D"
+	landing
+	invisible
+	source Tundra
+	destination Oblivion
+	to offer
+		has "Rogue Scavenger: FWC Checkmate 1B: done"
+		has "FWC Pug 3C: done"
+	npc save
+		government "Independent (Killable)"
+		system
+			distance 1
+		personality harvests plunders surveillance
+			confusion 10
+		fleet "rogue scavenger II"
+	on enter
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`As you prepare to leave the system, you notice the arrival of the Rogue Scavenger. Your truce with the Navy means you won't be blowing each other up for them to plunder the wreckage. What could they be after?`
+
+mission "Rogue Scavenger: FWC Pug 4C"
+	landing
+	invisible
+	source Arabia
+	destination Rand
+	to offer
+		has "Rogue Scavenger: FWC Pug 3D: done"
+		has "FWC Pug 4B: done"
+	npc save
+		government "Independent (Killable)"
+		system
+			distance 1
+		personality harvests plunders
+		fleet "rogue scavenger III"
+	on enter
+		log `The crew of the Rogue Scavenger have upgraded their ship with outfits plundered from Pug wreckage. As we wage war with those aliens more opportunities for salvagers to get ahold of their technology will be unavoidable.`
+		conversation "rogue scavenger jump drive"
+
+conversation "rogue scavenger jump drive"
+	scene "thumbnail/marauder behemoth-thumb"
+	`As you prepare to activate your Jump Drive, communications from the other ships in the fleet report that something is jumping into the system! There is a moment of tension, as everyone assumes that this is a surprise attack from the Pug. However, as the afterglow from their Jump Drive fades away, you can see that it's the Rogue Scavenger. Your comm fills with chatter.`
+	`	"They have a Jump Drive now?"`
+	`	"Looks like they have Pug weapons too."`
+	`	"Will more salvagers like them be picking through Pug wreckage?"`
+	`	You have a mission to do, but this raises some concerns for later. As more battles take place with the Pug, their Jump Drives and other technology will be salvaged and distributed. As you ruminate on this, the Rogue Scavenger nimbly skirts your fleet with its upgraded Pug engines and waits patiently for you to lead the way towards bloodsoaked riches...`
+
+mission "Rogue Scavenger: FWC Pug 5"
+	landing
+	invisible
+	source Rand
+	destination Silver
+	to offer
+		has "Rogue Scavenger: FWC Pug 4C: done"
+		has "FWC Pug 4C: done"
+	npc save
+		government "Independent (Killable)"
+		personality launching harvests plunders
+		fleet "rogue scavenger III"
+
+mission "Rogue Scavenger: FWC Pug 6"
+	landing
+	invisible
+	source Silver
+	destination Pugglemug
+	to offer
+		has "Rogue Scavenger: FWC Pug 5: done"
+		has "FWC Pug 5C: done"
+	npc save
+		government "Independent (Killable)"
+		system
+			distance 1
+		personality harvests plunders
+		fleet "rogue scavenger III"
+
+
+
+#################################
+#
+# Follow reconciliation.
+#
+#################################
+
+
+
+mission "Rogue Scavenger: FW Pug 4C"
+	landing
+	invisible
+	source Hephaestus
+	destination Maker
+	to offer
+		has "Rogue Scavenger: FW Rand 1: done"
+		has "FW Pug 4B: done"
+	npc save
+		government "Independent (Killable)"
+		system "Delta Capricorni"
+		personality staying harvests plunders
+			confusion 10
+		fleet "rogue scavenger II"
+	on enter "Delta Capricorni"
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`	It seems restoring the hyperspace link has brought a familiar opportunist out of hiding...`
+
+mission "Rogue Scavenger: FW Pug 5"
+	landing
+	invisible
+	source Maker
+	destination Shiver
+	to offer
+		has "Rogue Scavenger: FW Pug 4C: done"
+		has "FW Pug 4C: done"
+	npc save
+		government "Independent (Killable)"
+		system "Altair"
+		personality staying harvests plunders
+			confusion 10
+		fleet "rogue scavenger II"
+
+mission "Rogue Scavenger: FW Pug 5B"
+	landing
+	invisible
+	source Earth
+	destination Shiver
+	to offer
+		has "Rogue Scavenger: FW Pug 5: done"
+		has "FW Pug 5A: done"
+	npc save
+		government "Independent (Killable)"
+		system
+			distance 1
+		personality harvests plunders
+		fleet "rogue scavenger III"
+	on enter
+		log `The crew of the Rogue Scavenger have upgraded their ship with outfits plundered from Pug wreckage. As we wage war with those aliens more opportunities for salvagers to get ahold of their technology will be unavoidable.`
+		conversation "rogue scavenger jump drive"
+
+mission "Rogue Scavenger: FW Pug 6"
+	landing
+	invisible
+	source Shiver
+	destination Pugglemug
+	to offer
+		has "Rogue Scavenger: FW Pug 5B: done"
+		has "FW Pug 5B: done"
+	npc save
+		government "Independent (Killable)"
+		personality launching harvests plunders
+		fleet "rogue scavenger III"
+
+
+
+#################################
+#
+# epilogue
+#
+#################################
+
+mission "Rogue Scavenger: Epilogue"
+	job
+	name "Rogue Scavenger"
+	description "A heavy warship named Rogue Scavenger is wanted for war crimes committed during the war. It was last seen at Deneb. Destroy the ship and return to <destination> for payment (<payment>)."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	to offer
+		or
+			has "Rogue Scavenger: FWC Pug 6: done"
+			has "Rogue Scavenger: FW Pug 6: done"
+		has "main plot completed"
+		random < 25
+	on accept
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`You recall the Rogue Scavenger was an Independent Marauder Behemoth that would loot battlefields during the war. It seems someone wants to make them pay for that.`
+	on enter "World's End"
+		conversation
+			scene "thumbnail/marauder behemoth-thumb"
+			`The Rogue Scavenger is here with a fleet of Pug ships. It hails you and a man speaks: "Wow, Captain <last>, the war hero! You're either here for the bounty or you want the ring. Either way, I can't ignore you. It's a shame, really. The trail of death you left behind during the war helped make me a rich man. I merely looted the corpses, but you... You actually killed them." The message cuts off and the Rogue Scavenger moves to attack!`
+	npc
+		government "Bounty"
+		system "World's End"
+		personality staying harvests plunders
+		fleet
+			names "pirate"
+			fighters "coffin of bad outcomes"
+			outfitters "Quarg Plunder"
+			variant
+				"Pug Zibruka" 8
+				"Boxwing" 2
+	npc kill
+		government "Bounty"
+		system "World's End"
+		personality target staying harvests plunders
+		fleet
+			names "rogue scavenger"
+			outfitters "Quarg Plunder"
+			variant
+				"Marauder Behemoth (Scavenger Quarg)"
+		dialog `The Rogue Scavenger has been defeated. Return to <destination> for your reward.`
+	on complete
+		log `Hunted down the Rogue Scavenger for a bounty job. Before our battle, their captain claimed that his crime of looting corpses was a pale shadow compared to my involvement in creating them.`
+		payment 1000000
+		dialog `The government of <planet> pays you <payment> for bringing the <npc> to justice.`
+
+phrase "coffin of bad outcomes"
+	word
+		"Coffin of "
+	phrase
+		"bad outcomes"
+
+ship "Marauder Behemoth" "Marauder Behemoth (Scavenger Quarg)"
+	"crew" 32
+	outfits
+		"Pug Seeker" 2
+		"Quarg Skylance" 2
+		"Quarg Anti-Missile" 2
+		"Antimatter Core"
+		"Nanotech Battery"
+		"Quantum Shield Generator"
+		"Catalytic Ramscoop"
+		"Outfits Expansion" 7
+		"Surveillance Pod"
+		"Intrusion Countermeasures" 32
+		"Pug Biodefenses" 10
+		"Pug Peacekeeping Staff" 23
+		"Ionic Afterburner"
+		"Pug Akfar Thruster"
+		"Pug Cormet Steering"
+		"Jump Drive"
+	turret "Quarg Skylance"
+	turret "Quarg Skylance"
+	turret "Quarg Anti-Missile"
+	turret "Quarg Anti-Missile"
+	turret 
+	turret 

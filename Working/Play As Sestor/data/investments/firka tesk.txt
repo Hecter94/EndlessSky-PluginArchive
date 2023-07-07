@@ -1,0 +1,230 @@
+mission "Firka Tesk Investment 1"
+	name "Firka Tesk Infrastructure"
+	description "Gather credits to begin developing infrastructure on Firka Tesk. Cost is 10 million credits, with no apparent immediate benefit."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 10000001
+	on offer
+		conversation
+			`The planet known as "Firka Tesk" very out of the way and heavily damaged. However, with some time and resources, it could be used to form a capable industrial complex thanks to its vast and easily accessible reserves of geothermal energy.`
+			`	Do you want to construct infrastructure on Firka Tesk? This development won't provide any economic return for the 10 million credits necessary, but will pave the way for future expansions and permit the planet to be used as a spaceport.`
+			choice
+				`	[INITCOMMAND:MARKSTRUCTFORSPACEPORT]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -10000000
+		event "firka tesk spaceport"
+		conversation
+			`You receive a message from the hive. "<first> <last>, you are attempting to develop Firka Tesk? We cannot offer any compensation for infrastructure alone, but we will watch your progress with great interest."`
+			`	You proceed with the required ordering protocols for the necessary infrastructure. You'd better do something good with the land, for that kind of money.`
+			
+event "firka tesk spaceport"
+	planet "Firka Tesk"
+		spaceport `Thanks to your investment, the first parts of a spaceport are being constructed; landing pads and basic facilities for ship recharging, among other things, are being built. There is, however, far more potential here...`
+		
+mission "Firka Tesk Investment 2"
+	name "Firka Tesk Mineral Processing"
+	description "Gather credits to ignite the primary industrial sectors on Firka Tesk. Cost is 15 million credits, with an expected return of ten thousand credits per day."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 15000001
+		has "event: firka tesk spaceport"
+	on offer
+		conversation
+			`With infrastructure laid and a not-unsteady supply of ships to bring goods to and from the planet, you can begin industrial development. Mineral processors must come before any more advanced form of industry such as outfit or ship production, but should provide a basic level of income. The expected cost is 15 million credits.`
+			choice
+				`	[INITCOMMAND:INSTALLFACTORY(RESOURCEPRODUCTION)]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -15000000
+		event "firka tesk mineral processing" 14
+		conversation
+			`Your order for industrial machinery is met with a message from the hive. "It seems your directive is set on improving Firka Tesk. The investments you are making are not insignificant, and for your sacrifice, we will allocate credits to you as a result of your ownership of the property. Once the facilities are up and running, you will receive ten thousand allocated credits per day, as per your designs' espected capacities."`
+			`	You proceed with the required ordering protocols for acres of factorial machinery. It will take at least two weeks to set up, even with the hive's endorsement and support.`
+			
+event "firka tesk mineral processing"
+	"salary: Firka Tesk" = 10000
+	planet "Firka Tesk"
+		spaceport `In addition to the slowly growing spaceport, Firka Tesk now supports basic factorial complexes for refining raw resources into the necessary alloys for ship and outfit construction, thanks to your support.`
+
+mission "Firka Tesk Investment 3"
+	name "Firka Tesk Basic Outfitting"
+	description "Gather 20 million credits to ignite higher technology sectors to manufacture basic outfits. Leads to higher upgrades and should pay quite handsomely."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 20000001
+		has "event: firka tesk mineral processing"
+	on offer
+		conversation
+			`With raw mineral processing industry set up, you can begin establishing higher technology developments like outfitters. An outfitter will require a heavy investment of at least 20 million credits, but will likely yield great returns.`
+			choice
+				`	[INITCOMMAND:OUTFITPRODUCTION(PHASE=1)]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -20000000
+		event "firka tesk basic outfitter" 21
+		conversation
+			`The hive contacts you. "Remarkable, <first> <last>, very remarkable. It seems simple resource production does not suit your ambition; we were right to grant you your own delegation of the hive. Outfit production will support all aspects of the war effort, not just your own. Expect dilligent support."`
+			`	You make the orders and preparations for outfit production. From here on, it seems your ambition has put you in the hive's good graces.`
+			
+event "firka tesk basic outfitter"
+	"salary: Firka Tesk" = 22500
+	planet "Firka Tesk"
+		add outfitter "Sestor Basics"
+		spaceport `The recent construction of the outfitter on Firka Tesk has lead to a remarkable boom in commerce on the planet. What was once a dead and forgotten world is beginning to shape up into a remarkable hotspot of innovation.`
+	
+mission "Firka Tesk Investment 4"
+	name "Firka Tesk Advanced Outfitting"
+	description "Gather 25 million credits to ignite higher technology sectors to manufacture advanced outfits. With outfit production mastered, you may be able to find improvements in the designs."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 25000001
+		has "event: firka tesk basic outfitter"
+	on offer
+		conversation
+			`With basic outfit production properly established you can develop into a more prominent superpower, allowing you to produce the best of what Sestor technology has to offer. Perhaps you could even further improve Sestor Technology to aid the war effort.`
+			`	The outfitter upgrades will cost 25 million credits.`
+			choice
+				`	[INITCOMMAND:OUTFITPRODUCTION(PHASE=2)]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -25000000
+		event "firka tesk advanced outfitter" 14
+		conversation
+			`You don't even receive a special message from the hive this time. Instead, a broad-wave transmission is sent across Sestor Space, alerting the greater hive to the future prospects on Firka Tesk. Your orders progress even more smoothly than before, with approval going from almost instantaneous to perceivably instantaneous.`
+			
+event "firka tesk advanced outfitter"
+	"salary: Firka Tesk" = 40000
+	planet "Firka Tesk"
+		add outfitter "Sestor Advanced"
+
+mission "Firka Tesk Investment 5"
+	name "Firka Tesk Basic Shipyards"
+	description "Gather 50 million credits to begin developing ship production machinery. Your capabilities will be limited at first, but starting a ship assembly line is the most expensive part of the job."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 50000001
+		has "event: firka tesk advanced outfitter"
+	on offer
+		conversation
+			`With all contingencies of outfit production accounted for, you can begin developing ship production facilities. Be warned that it will take a much greater monetary and time investment than basic factory assembly. Expect it to cost at least 50 million credits.`
+			choice
+				`	[INITCOMMAND:SHIPYARDDEVELOPMENT(PHASE=1)]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -50000000
+		event "firka tesk basic shipyard" 70
+		conversation
+			`The hive contacts you as the orders are placed. "Excellent idea, developing further ship production facilities. Establishing new production lines will greatly aid the war effort."`
+			
+event "firka tesk basic shipyard"
+	"salary: Firka Tesk" = 70000
+	planet "Firka Tesk"
+		add shipyard "Sestor Basics"
+		spaceport "With the construction of a large shipbuilding complex, Firka Tesk has become a hub of Sestor industry. Ships transporting large quantities of minerals can be seen moving to and from the surface, as new ships leave the factories ready to contribute to the war effort."
+
+mission "Firka Tesk Investment 6"
+	name "Firka Tesk Advanced Shipyards"
+	description "Gather 30 million credits to expand the shipyards on Firka Tesk to include larger ships. Also may unlock further research."
+	landing
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 30000001
+		has "event: firka tesk basic shipyard"
+	on offer
+		conversation
+			`With the groundwork established, expanding production capabilities to include larger ships will be easy. It should take only 30 million credits to make the necessary expansion.`
+			choice
+				`	[INITCOMMAND:SHIPYARDDEVELOPMENT(PHASE=2)]`
+					accept
+				`	[SUSPENDPROTOCOL:EXPANSION]`
+					defer
+					
+	on accept
+		payment -30000000
+		event "firka tesk advanced shipyard" 28
+		conversation
+			`The hive contacts you as the orders are placed. "Excellent idea, developing further ship production facilities. Establishing new production lines will greatly aid the war effort."`
+			
+event "firka tesk advanced shipyard"
+	"salary: Firka Tesk" = 100000
+	planet "Firka Tesk"
+		add shipyard "Sestor Advanced"
+		
+mission "Firka Tesk Investment Small Repeat"
+	name "Small investment on Firka Tesk"
+	description "Gather 5 million credits to expand Firka Tesk's industrial sector."
+	job
+	repeat 40
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 5000001
+		has "event: firka tesk advanced shipyard"
+	on accept
+		payment -5000000
+		event "firka tesk small repeat" 4
+			
+event "firka tesk small repeat"
+	"salary: Firka Tesk" += 5000
+		
+mission "Firka Tesk Investment Medium Repeat"
+	name "Investment on Firka Tesk"
+	description "Gather 10 million credits to expand Firka Tesk's industrial sector."
+	job
+	repeat 20
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 10000001
+		has "event: firka tesk advanced shipyard"
+	on accept
+		payment -10000000
+		event "firka tesk medium repeat" 9
+			
+event "firka tesk medium repeat"
+	"salary: Firka Tesk" += 12500
+		
+mission "Firka Tesk Investment Large Repeat"
+	name "Large Investment on Firka Tesk"
+	description "Gather 15 million credits to expand Firka Tesk's industrial sector."
+	job
+	repeat 10
+	source "Firka Tesk"
+	destination "Firka Tesk"
+	to offer
+		"credits" >= 15000001
+		has "event: firka tesk advanced shipyard"
+	on accept
+		payment -15000000
+		event "firka tesk large repeat" 20
+			
+event "firka tesk large repeat"
+	"salary: Firka Tesk" += 25000
+		

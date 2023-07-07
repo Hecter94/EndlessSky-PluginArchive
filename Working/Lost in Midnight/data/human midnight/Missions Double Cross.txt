@@ -183,14 +183,14 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 7
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 7
 		government "Republic"
 		personality entering heroic
 		fleet "Small Republic" 2
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 8
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 8
 		government "Republic"
 		personality waiting heroic
 		system
@@ -199,7 +199,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 9
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 9
 		government "Republic"
 		personality waiting heroic
 		system destination
@@ -207,7 +207,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 10
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 10
 		government "Republic"
 		personality entering heroic
 		system destination
@@ -215,7 +215,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 11
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 11
 		government "Republic"
 		personality entering heroic
 		system
@@ -233,7 +233,7 @@ mission "Escort Independence"
 			
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 2
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 2
 		government "Merchant"
 		personality launching heroic
 		fleet
@@ -246,7 +246,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 3
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 3
 		government "Merchant"
 		personality launching heroic
 		fleet
@@ -259,7 +259,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 4
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 4
 		government "Merchant"
 		personality launching heroic
 		fleet
@@ -270,7 +270,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 5
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 5
 		government "Merchant"
 		personality launching heroic
 		fleet
@@ -281,7 +281,7 @@ mission "Escort Independence"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" >= 6
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 6
 		government "Merchant"
 		personality launching heroic
 		fleet
@@ -380,24 +380,24 @@ mission "Escort Requiem Alpha"
 
 mission "Protection: Marauder Double Cross"
 	job
-	repeat 5
+	repeat
 	deadline 15
 	name "Protection Escort"
-	description "Pay the <npc> 100,000 credits to escort your fleet until <date>."
+	description "Pay the <npc> 150,000 credits to escort your fleet until <date>."
 	source
 		attributes "frontier" "rim"
 	to offer
 		random < 30
 	on accept
-		payment -100000
-		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>.`
+		payment -150000
+		dialog `You pay the <npc> 150,000 credits to escort your fleet until <date>.`
 	on fail
 		"reputation: Bounty (Disguised)" >?= 1	
 		dialog `The protection contract with <npc> has expired.`
 	on abort
 		"reputation: Bounty (Disguised)" >?= 1	
-	on complete
-		"reputation: Bounty (Disguised)" >?= 1	
+	to complete
+		never
 	npc save
 		government "Bounty (Disguised)"
 		personality harvests plunders heroic
@@ -562,6 +562,9 @@ mission "Protection: Marauder Double Cross"
 		dialog `Treachery! The <npc> turns its weapons on you!`
 		"reputation: Bounty (Disguised)" <?= -1000
 	on enter Umbral
+		dialog `Treachery! The <npc> turns its weapons on you!`
+		"reputation: Bounty (Disguised)" <?= -1000
+	on enter Atik
 		dialog `Treachery! The <npc> turns its weapons on you!`
 		"reputation: Bounty (Disguised)" <?= -1000
 
@@ -740,28 +743,35 @@ fleet "TMBR Billboard"
 
 mission "Peace Tour 1"
 	minor
+	clearance
 	name "Promotion Tour"
 	description "Escort the <npc> to the planets marked on the map. Then return them to <destination>. Payment is 1,000,000 credits."
 	source
 		attributes "frontier"
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
+		neighbor near Kursa 100
 		attributes "pirate" "independent"
-		attributes "spaceport"
+		attributes spaceport
 	destination Farseer
 	to offer
 		has "main plot completed"
@@ -851,23 +861,44 @@ mission "Peace Tour 2"
 			`A package was left for you by a client. You open it to find a nasty surprise: a nuclear warhead with a countdown timer!`
 			choice
 				`	(Run.)`
-					goto explode
 				`	(Try to disarm it.)`
+					goto trydisarm
+					to display
+						not "learned nuke deactivation"
+				`	(Try to deactivate it.)`
+					goto trydeactivate
+					to display
+						has "learned nuke deactivation"
+			scene "scene/scene-explosion"
+			`	Despite your best efforts, there is no escaping the explosion.`
+				die
+
+			label trydisarm
 			branch disarm
 				random < 20
 				
 			scene "scene/scene-explosion"
-			`	Despite your effort, you were unable to disarm the warhead before it explodes. If life were a game, you could load a save file and try disarming it again.`
+			`	Despite your effort, you were unable to disarm the warhead before it explodes. If life were a game, you could load a save file and try disarming it again. You might have had better success if you learned how these devices work.`
 				die
 
 			label disarm
-			`	Somehow, you managed to safely disarm a nuclear warhead!`
+			`	Somehow, you managed to safely disarm a nuclear warhead! You hand over the disarmed warhead over to the authorities and explain what happened.`
 				goto end
-			
-			label explode
+
+			label trydeactivate
+			`	Recalling what you previously learned about nuke activation settings, you pop open a panel and see the activation code is set at "6-6-6". Enter the deactivation code. It is:`
+			choice
+				`	(0-0-0)`
+				`	(1-2-3)`
+				`	(2-3-4)`
+					goto deactivate
+				`	(3-4-5)`
 			scene "scene/scene-explosion"
-			`	Despite your best efforts, there is no escaping the explosion.`
+			`	Unfortunately, you must have remembered the deactivation code incorrectly. You barely have time to register this as you are instantly vaporized in the nuclear blast. If this were a game, you could load a save file and search your logbook for a clue.`
 				die
+
+			label deactivate
+			`	Fortunately, you correctly remembered the deactivation code. You hand over the disarmed warhead over to the authorities and explain what happened.`
 
 			label end
 			scene "portrait/human59"
@@ -988,39 +1019,83 @@ mission "Midnight Market: Nukes of Peace?"
 				
 			`	Fortunately you are armed and manage to fight off your attackers. With nothing better to do, you decide to check out some of those shops on the long walk back to the spaceport.`
 				defer
-				
+
 			label death
 			scene "scene/scene-bloodyknife"
-			`	Sudden pain pierces your back! You turn to see one of your attackers holding a knife covered with your blood. The rest of them close in to finish you off...`
+			`	Before you can draw your weapon, sudden pain pierces your back! You turn to see one of your attackers holding a knife covered with your blood. The rest of them close in to finish you off...`
 				die
-			
+
 			label legitimate
 			scene "outfit/nuke"
 			`	After a long walk you arrive at what looks like an abandoned store. The doors and windows are boarded up. Despite this, you notice someone move to hide behind a curtain on the upper floor. The stranger leads you to a side entrance. Inside are a pair of massive crates. The stranger opens one, saying "Behold! Nuclear missiles, a powerful addition to your arsenal. Just confirm payment of 2,000,000 credits on this datapad and they're yours."`
+			label nukechoice
 			choice
+				`	(Show me how they work.)`
+					goto show
+					to display
+						not "learned nuke deactivation"
 				`	(Buy the Nuclear Missiles.)`
 					goto purchase
 				`	(Don't buy the Nuclear Missiles.)`
 					goto refuse
 				`	(Steal the Nuclear Missiles.)`
 			`	You pull out your gun and tell the stranger you'll be taking the missiles for free.`
+
 			branch thief
 				random < 20
 			scene "scene/scene-bloodyknife"
 			`	The room explodes in a burst of violence as guards suddenly swarm in from other rooms in the building. You manage to put several down before one of them gets lucky with a knife. Your hands become slick with blood as you grasp at the wound. The surviving guards put a bullet into your head.`
 				die
-			
+
 			label thief
 			`	The room explodes in a burst of violence as guards suddenly swarm in from other rooms in the building. Though you expend all of your bullets in the fire fight, you miraculously come out of that bloodbath unharmed. A search of the building reveals several more crates in a hidden underground bunker. You begin the arduous task of hauling them back to your ship.`
 				decline
-			
+
 			label refuse
+			action
+				"Midnight Market" --
 			`	The stranger puts away the datapad while some guards enter from adjoining rooms. "It appears our negotiations have failed. Please find your own way back to the spaceport." You begin the long walk back. Maybe you can grab something to eat from one of the shops you passed earlier...`
 				defer
-			
+
 			label purchase
 			`	"Good choice captain. We'll help haul them back to your ship." Several burly men appear from other rooms in the building and help load the crates into a truck. The ride back is smooth and uneventful.`
 				accept
+
+			label show
+			`	The seller opens a panel on the missile's side. "Have you read the Bible?"`
+			choice
+				`	"I know it."`
+				`	"Never read it."`
+					goto nobible
+			`	Inside the panel are a set of controls for entering three digits. "The factory default is all zeroes. Activation is the number of the beast." The stranger sets all three digits to "6-6-6". A mechanism within the missile activates and you can hear a low hum that slowly fades away. "Deactivation is a walk through the valley of the shadow of death. Go ahead."`
+			choice
+				`	(Set the digits to 1-2-3.)`
+				`	(Set the digits to 2-3-4.)`
+					goto psalm
+				`	(Set the digits to 3-4-5.)`
+				`	"I, uh, don't remember reading that part..."`
+					goto notread
+			scene "scene/scene-explosion"
+			`	"What are you doing!?!" The stranger shrieks as you are all vaporized in a nuclear blast..."`
+				die
+			label notread
+			action
+				set "learned nuke deactivation"
+				log `Today I learned the activation code for a Nuclear Missile is the number of the beast and deactivation code is "2-3-4". The latter is supposedly inspired by Psalm 23:4 from the Bible.`
+			`	The stranger reaches over and sets the digits to "2-3-4". Closing the panel, the stranger say, "Psalm twenty three four. Well?"`
+				goto nukechoice
+			label psalm
+			action
+				set "learned nuke deactivation"
+				log `Today I learned the activation code for a Nuclear Missile is the number of the beast and deactivation code is "2-3-4". The latter is inspired by Psalm twenty three four from the Bible: "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me."`
+			`	Setting the digits to "2-3-4" causes the mechanism within to deactivate. The stranger smiles while closing the panel. "Well?"`
+				goto nukechoice
+			label nobible
+			action
+				set "learned nuke deactivation"
+				log `Today I learned activation code for a Nuclear Missile is "6-6-6" and the deactivation code is "2-3-4". These are supposedly references to something from the Bible, but the person who taught you never specified what they are.`
+			`	Inside the panel are a set of controls for setting three digits. "The factory default is all zeroes. Activation is six, six, and six." The stranger sets all three digits to "6-6-6". A mechanism within the missile activates and you can hear a low hum that slowly fades away. "Deactivation is two, three, and four." The stranger sets the digits to "2-3-4" and closes the panel. "Well?"`
+				goto nukechoice
 	on decline
 		outfit "Nuclear Missile" 50
 		"Midnight Market" <?= -1000
@@ -1030,6 +1105,49 @@ mission "Midnight Market: Nukes of Peace?"
 		"Midnight Market" ++
 		clear "Midnight Market: Nukes of Peace?: offered"
 		fail
+
+mission "Nuke Deactivation Code"
+	outfitter
+	minor
+	invisible
+	source "Solace"
+	to offer
+		has "event: fwc solace has nukes"
+		not "learned nuke deactivation"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/nuke"
+			`	A sales clerk is demonstrating how to operate Nuclear Missiles to other customers. Listen in?`
+			choice
+				`	(Listen to the lecture.)`
+					goto lecture
+				`	(Ignore them.)`
+			scene "outfit/attention"
+			`	Are you sure? This information could help save your life in the future.`
+			choice
+				`	(Listen to the lecture.)`
+				`	(I am not interested in this information.)`
+					decline
+			label lecture
+			`	The sales clerk opens a panel on the side of the missile. Inside are controls for setting three digits. "The factory setting on these defaults to zero, zero, and zero. Activation is set at six, six, and six. To deactivate, set the digits to two, three, and four. Any questions?"`
+			choice
+				`	"Can you demonstrate?"`
+				`	"Can it be reactivated?"`
+					goto used
+				`	(No questions.)`
+					goto end
+			`	"Sorry, I'm not authorized to do that."`
+				goto end
+			label used
+			`	"Yes! Simply set the digits back to six, six, and six."`
+			label end
+			scene "outfit/nuke"
+			action
+				set "learned nuke deactivation"
+				log `Today I learned the activation code for a Nuclear Missile is "6-6-6" and the deactivation is "2-3-4". At least, that's what the sales clerk at the Solace outfitter claimed.`
+			`	The sales clerk closes the panel. "Thanks for listening to this lecture. Please use your Nuclear Missiles responsibly!"`
+				decline
 
 
 
@@ -1062,31 +1180,31 @@ mission "Promotion Tour: Subsi"
 	description "Escort the marketing ship Subsi Tours to the planets marked on the map. Then return them to <destination> by <date>. Payment is <payment>."
 	source
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	stopover
 		attributes "paradise"
-		attributes "spaceport"
+		attributes spaceport
 	to offer
 		or
 			and
@@ -1158,11 +1276,12 @@ mission "Promotion Tour: Subsi"
 mission "Pot-o'-honey"
 	minor
 	name "Special Escort to <planet>"
-	description "The captain of the Pot-o'-honey will pay you <payment> to escort them safely into a dangerous region of space to reach <destination>."
+	description "The captain of the Pot-o'-honey will pay you <payment> to escort them safely through <waypoints> to reach <destination>."
 	source
 		government "Hai"
 		not planet "Darkwaste" "Cloudfire"
 	destination "Farpoint"
+	waypoint "Waypoint"
 	to offer
 		or
 			and
@@ -1196,7 +1315,7 @@ mission "Pot-o'-honey"
 		conversation
 			scene "scene/scene-bulk drones"
 			`When you enter the system, a small fleet of pirates is waiting for you. You are getting ready to defend the <npc> when you notice something strange. Its cargo bays are opening and releasing a swarm of drones! You receive a message from Captain Robin of the Pot-o'-honey:`
-			`"Congratulations, you fell for our trap Captain <last>!"`		
+			`"Congratulations, you fell for our trap Captain <last>!"`
 	npc
 		government "Pirate"
 		system "Waypoint"
@@ -1212,7 +1331,7 @@ mission "Pot-o'-honey"
 				"Scout (Hai)"
 	npc
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" < 2
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" > 2
 		government "Pirate"
 		system "Waypoint"
 		personality waiting staying harvests plunders nemesis
@@ -1224,7 +1343,7 @@ mission "Pot-o'-honey"
 				"Raven (Hai)"
 	npc
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" < 3
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" > 3
 		government "Pirate"
 		system "Waypoint"
 		personality waiting staying harvests plunders nemesis
@@ -1237,7 +1356,7 @@ mission "Pot-o'-honey"
 				"Firebird (Hai Weapons)"
 	npc
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" < 4
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" > 4
 		government "Pirate"
 		system "Waypoint"
 		personality waiting staying harvests plunders nemesis
@@ -1248,7 +1367,7 @@ mission "Pot-o'-honey"
 				"Mule (Hai Weapons)"
 	npc
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" < 5
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" > 5
 		government "Pirate"
 		system "Waypoint"
 		personality waiting staying harvests plunders nemesis
@@ -1259,7 +1378,7 @@ mission "Pot-o'-honey"
 				"Leviathan (Hai Weapons)"
 	npc
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" < 6
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" > 6
 		government "Pirate"
 		system "Waypoint"
 		personality waiting staying harvests plunders nemesis
@@ -1273,13 +1392,13 @@ mission "Pot-o'-honey"
 		government "Bounty (Disguised)"
 		personality target marked launching harvests plunders
 			confusion 20
-		ship "Bulk Freighter (hai drones)" "Pot-o'-honey"
+		ship "Bulk Freighter(hai) " "Pot-o'-honey"
 		fleet
 			fighters "republic fighter"
 			variant
 				"Pirate Drone" 10
 		conversation
-			apply
+			action
 				"reputation: Bounty (Disguised)" >?= 1
 			`The Pot-o'-honey and its drones have been defeated. You make a mental note to check with the authorities on <destination> to see if there is any reward for your effort.`
 
@@ -1336,7 +1455,7 @@ mission "Escort Trap Freighter (Hai)"
 			names "civilian"
 			fighters "republic fighter"
 			variant
-				"Bulk Freighter (hai drones)"
+				"Bulk Freighter(hai) "
 				"Pirate Drone" 10
 	on abort
 		"reputation: Bounty (Disguised)" >?= 1
@@ -1346,8 +1465,6 @@ mission "Escort Trap Freighter (Hai)"
 		"reputation: Bounty (Disguised)" >?= 1
 		payment 180000
 		dialog `You research the <npc> and find an outstanding bounty for <payment>. With a video recording of your battle in hand, you head for the job board office to claim your reward.`
-	on visit
-		dialog phrase "generic arrived-without-npc dialog"
 
 mission "Escort Trap Freighter (Human)"
 	job
@@ -1355,7 +1472,6 @@ mission "Escort Trap Freighter (Human)"
 	deadline
 	name "Escort to <planet>"
 	description "The captain of the <npc> will pay you <payment> to escort them safely out of this dangerous region of space to reach <destination> by <date>."
-	source
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "frontier"
@@ -1387,7 +1503,7 @@ mission "Escort Trap Freighter (Human)"
 			names "civilian"
 			fighters "pirate"
 			variant
-				"Bulk Freighter (hai drones)"
+				"Bulk Freighter(proton) "
 				"Pirate Drone" 10
 	on abort
 		"reputation: Bounty (Disguised)" >?= 1
@@ -1397,6 +1513,238 @@ mission "Escort Trap Freighter (Human)"
 		"reputation: Bounty (Disguised)" >?= 1
 		payment 150000
 		dialog `You research the <npc> and find an outstanding bounty for <payment>. With a video recording of your battle in hand, you head for the job board office to claim your reward.`
+
+
+
+conversation "microbot defense death"
+	scene "outfit/microbot defense station"
+	`You park your ship and the docking bay doors open, inviting you in. On the other side the floor of the room is a grate. Below this, a pool of gelatinous sludge glistens, reflecting the bright ceiling lights above. Behind you the door slams shut and a thick cloud of smoke begins filling the room along with a strange buzzing sound. The smoke stings when it touches you and your flesh begins to melt horrifically into a gelatinous goo that filters through the grate into the pool below. Your mind detaches from the shock and you realize that you've been screaming. Although you no longer have ears to listen nor a brain to process the sound, the screaming doesn't stop until the organs that enable you to do so melt away...`
+		die
+
+mission "Thraal: Moreau"
+	landing
+	invisible
+	clearance
+	destination "Gresku Fodar"
+	to offer
+		has "Star Explorer Korath Raid: done"
+	on enter "Kor Men"
+		conversation
+			scene "thumbnail/shuttle pod-thumb"
+			`Soon after arriving, you receive a distress signal from a Shuttle Pod. A man speaks, "My goodness, it's been forever and a half since I've seen another human! Can you help me? My ship is disabled! Any assist-" The signal dies out. It's unusual to find a lone Shuttle Pod outside of human space. Perhaps you can get his story after assisting him.`
+	npc assist save accompany
+		government "Bounty (Disguised)"
+		system "Kor Men"
+		personality target waiting derelict marked mute
+		ship "Shuttle Pod" "Moreau"
+		conversation
+			action
+				set "met Thraal"
+			scene "ship/star explorer"
+			`After introductions you learn that the man's name is Thraal. "I was aboard a ship, a Star Explorer named Icarus. We acquired a Jump Drive and were exploring this region of space. I had gone out in the Shuttle Pod to do some asteroid mining when aliens, the Korath, attacked the Icarus. Icarus fled, abandoning me in this system.`
+			choice
+				`	"It's amazing that you survived alone out here!"`
+				`	"It's amazing the Korath didn't hunt you down!"`
+			`	The man sighs. "It was hard at first. The Korath are a bit xenophobic. But once you get to know them, they aren't so bad."`
+			choice
+				`	"Are you serious?"`
+				`	"You've got to be kidding!"`
+			scene "planet/station2k"
+			`	Thraal places the cover back on some recently repaired ciruits and says, "Would you like to meet them? I can arrange it." The Korath have been an implacable adversary. This could be a chance to establish peaceful relations with them. Before you respond, Thraal hails Gresku Fodar, the Korath station in this system, and speaks to them in their language. After a short exchange, he smiles at you reassuringly. "They're waiting."`
+	on fail
+		dialog `[MISSION FAILED]: The Shuttle Pod that requested assistance has been destroyed. If life were a game you could load a save file and try again.`
 	on visit
-		dialog phrase "generic arrived-without-npc dialog"
+		conversation "microbot defense death"
+	on complete
+		conversation "microbot defense death"
+
+mission "Thraal: Moreau (Cleanup)"
+	landing
+	invisible
+	source
+		not planet "Gresku Fodar"
+	to offer
+		has "Thraal: Moreau: active"
+		has "met Thraal"
+	on offer
+		fail "Thraal: Moreau"
+		log "People" "Thraal" `A human who supposedly survived the Korath attack on the Icarus. Thraal claims to get along well with the Korath, but the nature of his relationship with them remains unclear.`
+		conversation
+			scene "planet/station2k"
+			`You decided to ignore Thraal's invitation to meet the Korath. They've proven themselves to be nothing but dangerous and you have little reason to put your trust in Thraal. With no change in their disposition towards you, they will continue on as a hostile foe to be wary of.`
+				decline
+
+mission "Thraal: Moreau (Failed)"
+	landing
+	invisible
+	source "Gresku Fodar"
+	to offer
+		has "Thraal: Moreau: failed"
+		not "Thraal: Moreau (Cleanup): declined"
+	on offer
+		conversation "microbot defense death"
+
+mission "Thraal: Moreau (Killed)"
+	landing
+	invisible
+	source
+		not planet "Gresku Fodar"
+	to offer
+		has "Thraal: Moreau: failed"
+		not "Thraal: Moreau (Cleanup): declined"
+	on offer
+		set "Thraal: Moreau (Failed): offered"
+		set "Thraal: Moreau (Failed): declined"
+		fail
+
+
+
+mission "Prisoner Bribe Offer (Job)"
+	job
+	passengers 1
+	name "Prisoner transport to <planet>"
+	description "Transport a notorious felon to a penal colony on <destination>. Payment is <payment>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination
+		distance 10 20
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "frontier" "moon" "military"
+	to offer
+		random < 15
+		"combat rating" > 100
+		"reputation: Pirate" < -10
+	on offer
+		require "Brig"
+	on accept
+		log "Minor People" "Dirk Malone" `A notorious felon recently convicted for heinous crimes after the authorities spent years tracking him down. The trial was broadcast thoughout the galaxy.`
+		dialog `Your prisoner is the notorious felon Dirk Malone, recently convicted for heinous crimes after the authorities spent years tracking him down. The trial was broadcast thoughout the galaxy. He smirks as you lock him in your brig..."`
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 25000 200
+		dialog `Dirk grins as well-armed guards arrive to escort him off your ship. "Hey guys, good to be back! Did you miss me? I won't be here long..." You collect your payment of <payment> as they leave.`
+	npc
+		government "Bounty Hunter"
+		personality nemesis heroic unconstrained
+			confusion 10
+		system
+			distance 3 4
+		fleet "Hired Guns"
+	npc
+		government "Bounty Hunter"
+		personality nemesis heroic unconstrained
+			confusion 10
+		system
+			distance 6 7
+		fleet "Hired Guns" 2
+	npc
+		government "Bounty Hunter"
+		personality nemesis heroic unconstrained
+			confusion 10
+		system
+			distance 9 10
+		fleet "Hired Guns" 4
+	on enter
+		dialog `Dirk Malone, the notorious felon, is doing some exercises when you check on him in your brig. "It's a long way to <planet>. I'm using my time well. How about you?"`
+	on enter
+		dialog `Dirk accepts his dinner of canned slop. "I know some taverns on pirate planets with better dishes. You should check them out sometime."`
+	on enter
+		dialog `Dirk says, "<planet> is so far away. We could go on for what, a week? Two weeks? Why not just drop me off at the nearest pirate planet. Whatever it is they're paying you, I'll pay more...`
+	on enter
+		dialog `Dirk says "Sorry about the hired guns. My friends must have found out you're transporting me. You could make things a lot easier on yourself if you just drop me off at the nearest pirate planet..."`
+	on fail
+		"reputation: Republic" --
+		"reputation: Free Worlds" --
+		"reputation: Syndicate" --
+
+mission "Prisoner Bribe Release (Job)"
+	landing
+	repeat
+	invisible
+	deadline 3
+	source
+		government "Pirate"
+	destination
+		distance 20 21
+	to offer
+		has "Prisoner Bribe Offer (Job): active"
+	on offer
+		conversation
+			scene "outfit/brig"
+			`Dirk grins when you land. "You've made the right choice. Release me and I'll have <payment> brought here for you."`
+			choice
+				`	"Just get me the money."`
+					goto release
+				`	"How do I know you'll pay me?"`
+				`	"I didn't come here to release you."`
+					decline
+			`	"You don't get far in the criminal underworld by backstabbing everyone. Just the ones you can get away with. Feeling confident?"`
+			choice
+				`	"Just get me the money."`
+				`	"I changed my mind. I'm not releasing you."`
+					decline
+			label release
+			scene "scene/scene-wooden crates"
+			`	After an hour, crates arrive at your landing pad with <payment>. They seem real...`
+				accept
+	on accept
+		fail "Prisoner Bribe Offer (Job)"
+		payment 25000 400
+	on enter
+		log `After accepting a bribe to release the notorious felon Dirk Malone, he sent his fleet of pirate raiders to attack me.`
+		dialog 	`You receive a message from the felon you just released: "You got your payment, so technically I've done my part of the agreement. Now we're just going to do what pirates do...`
+	npc evade
+		government "Pirate"
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 6
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 12
+
+
+
+mission "Stranded Dirtbelt Saboteur"
+	landing
+	deadline 2
+	name "Passenger to <planet>"
+	description "2 freighter crew you found stranded on <origin> have offered a reward of 30,000 credits for transporting them to <destination>."
+	source
+		attributes "uninhabited"
+		attributes "dirt belt"
+		not attributes "outfitter"
+	destination
+		distance 3 6
+		not attributes "uninhabited"
+	to offer
+		has "event: midnight: reveal cadrelock rock in eber"
+		"combat rating" > 300
+		random < 2
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`A man in shabby clothing approaches your ship. "Please help! Pirates stole our ship! We've been stranded here for days!" There are 2 of them. "We can get you <payment> if you transport us to <destination>." What will you do?`
+			choice
+				`	(Rescue them.)`
+				`	(Leave them.)`
+					defer
+			scene "outfit/bunk room"
+			`	The 2 of them thank you and board your ship... But they realize they forgot something and they rush back out. "Go ahead and finish pre-flight preparations. We'll be back aboard when you leave."`
+				accept
+	on accept
+		outfit "Shield Suppressor" 1
+	on enter
+		conversation
+			scene "outfit/shield suppressor"
+			`Something is wrong with your shield generator... You also notice that the 2 passengers who asked to be rescued from <origin> aren't aboard your ship...`
+	npc evade
+		government "Pirate"
+		personality plunders harvests
+			confusion 20
+		fleet "Large Dirt Belt Pirates"
 

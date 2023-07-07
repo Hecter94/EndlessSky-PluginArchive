@@ -42,6 +42,7 @@ mission "Scrapyard Random Station Scrappers"
 mission "Scrapyard: Factory Scrapper"
 	landing
 	invisible
+	deadline 7
 	source "Sestor Ikfar"
 	to offer
 		has "event: Blight Shadow Infestation"
@@ -59,16 +60,16 @@ mission "Scrapyard: Factory Scrapper"
 			cargo 0
 			variant
 				"Korath Scrapper (shields)"
-				"Korath Chaser" 2
+				"'olofez" 2
 			variant
 				"Korath Scrapper (weapons)"
-				"Korath Chaser" 2
+				"'olofez" 2
 			variant
 				"Korath Scrapper (engines)"
-				"Korath Chaser" 2
+				"'olofez" 2
 			variant
 				"Korath Scrapper (carrier)"
-				"Korath Chaser" 2
+				"'olofez" 2
 				"Far Lek 14"
 				"Far Osk 27"
 
@@ -76,6 +77,8 @@ mission "Scrapyard: Factory Scrapper"
 		government "Kor Sestor"
 		personality waiting uninterested
 		fleet "Large Kor Sestor"
+	on fail
+		clear "Scrapyard: Factory Scrapper: offered"
 	on complete
 		clear "Scrapyard: Factory Scrapper: offered"
 
@@ -99,7 +102,7 @@ mission "Scrapyard Korath Tractor 1"
 	npc board
 		government "Kor Scrappers (Hostile)"
 		system "Sobarati"
-		personality waiting staying heroic mute
+		personality waiting staying opportunistic mute
 			confusion 60
 		fleet
 			names "korath"
@@ -186,12 +189,26 @@ mission "Scrapyard Korath Tractor 2"
 mission "Scrapyard Devourer (Infested) 1"
 	landing
 	invisible
+	source
+		attributes "korath"
+	destination "Laki Nemparu"
 	to offer
 		"Scrapyard Threat Level" >= 16
+		random < 10
+	on enter "Makferuti"
+		set "found infested devourer"
+		dialog `That Korath Devourer is behaving strangely...`
+	npc
+		government "Invasive Predator"
+		system "Makferuti"
+		personality waiting staying heroic mute
+		fleet
+			variant
+				"Blight Hatchling" 12
 	npc kill
 		government "Kor Scrappers (Hostile)"
 		system "Makferuti"
-		personality waiting staying opportunistic uninterested
+		personality waiting staying opportunistic mute
 			confusion 60
 		fleet
 			names "korath"
@@ -200,7 +217,18 @@ mission "Scrapyard Devourer (Infested) 1"
 			outfitters "Korath Basics"
 			variant
 				"Korath Devourer (Infested)"
-				"Blight Hatchling" 12
+
+mission "Scrapyard Devourer (Infested) 1 cleanup"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Devourer (Infested) 1: active"
+		has "found infested devourer"
+	on offer
+		clear "found infested devourer"
+		fail "Scrapyard Devourer (Infested) 1"
+		fail
+
 
 mission "Scrapyard Devourer (Neutral) 1"
 	landing
@@ -302,7 +330,6 @@ mission "Scrapyard Scrapper Siege (Mekislepti)"
 		"reputation: Wanderer" ++
 		"reputation: Kor Mereti" += 8
 		dialog `You update Meto Pa'aret on the result of the battle. Your reputation with the Wanderers and Mereti has improved.`
-		
 
 mission "Scrapyard Scrapper Siege (Similisti)"
 	landing
@@ -502,23 +529,49 @@ event "node 8 processor Activated"
 		add fleet "Hostile Kor Mereti Miners" 1600
 
 
-mission "Scrapyard Damnation 2"
+mission "Scrapyard Damnation 2A"
 	landing
 	name "Damnation"
 	description "Hunt down the Korath Devourer ship 'Damnation' and discover how thay're controlling the Mereti automatons."
 	source
 		government "Wanderer"
-	destination "Esperaktu Station"
 	to offer
 		has "event: node 8 processor Activated"
+		not "Scrapyard Damnation 2: done"
+	to fail
+		has "Scrapyard Damnation 2: done"
 	on offer
 		conversation
-			`You receive a message from Meto Pa'aret: "The Mereti have [abandoned, deserted] us. Based on their [behavior, personality] prior to leaving, they are being [controlled, manipulated] by some outside influence. If only we had some [clue, hint] about what caused this change..."`
+			`You receive a message from Meto Pa'aret: "The Mereti have [abandoned, deserted] us! Based on their [behavior, personality] prior to leaving, they are being [controlled, manipulated] by some outside influence. If only we had some [clue, hint] about what caused this change..."`
 			`	You tell Meto Pa'aret about the Damnation.`
-			`	"They have access to Jump Drive technology? Maybe they have a [base, hideout] somewhere that they can use to [install, equip] Jump Drives on the automatons. Find the Mereti, Captain <last>, and you'll probably find the Damnation.`
+			`	"They have access to Jump Drive technology? Maybe they have a [base, hideout] somewhere that they can use to [install, equip] Jump Drives on the automatons. [Follow, Trail] the Mereti, Captain <last>, and you'll probably find the Damnation.`
 				accept
 	on enter Feroteri
 		dialog `The system is overrun by the Mereti. That space station orbiting the fourth planet looks like it could be used as a base of operations...`
+
+mission "Scrapyard Damnation 2B"
+	landing
+	repeat
+	source
+		attributes "korath"
+		attributes "uninhabited"
+		not attributes "efret" "core"
+	to offer
+		has "Scrapyard Damnation 2A: active"
+	on offer
+		dialog `You find no sign of the Damnation here. They must be hiding somewhere protected by the Mereti...`
+	on accept
+		fail
+
+
+mission "Scrapyard Damnation 2"
+	invisible
+	landing
+	source
+		government "Wanderer"
+	destination "Esperaktu Station"
+	to offer
+		has "event: node 8 processor Activated"
 
 	npc
 		government "Kor Mereti (Hostile)"
@@ -537,10 +590,8 @@ mission "Scrapyard Damnation 2"
 
 	on complete
 		event "Blight Shadows vs Mereti"
-		conversation
-			scene "scene/scene-damnation2"
-			`Unfortunately, the battle outside did not go unnoticed. The Damnation flees the station just as you finish landing! You need to board that ship and learn how they're controlling the Mereti.`
-		
+		fail "Scrapyard Damnation 2A"
+
 event "Blight Shadows vs Mereti"
 	system Chimitarp
 		remove fleet "Aggressive Kor Mereti" 600
@@ -583,20 +634,31 @@ event "Blight Shadows vs Mereti"
 mission "Scrapyard Damnation 3"
 	landing
 	name "Damnation"
-	description "Take what you found aboard the Damnation back to <destination> for analysis."
+	description "Board the Damnation and find what they're using to control the Mereti. Then take what you found there back to <destination> for analysis."
 	source "Esperaktu Station"
 	destination "Desi Seledrak"	
 	to offer
 		has "Scrapyard Damnation 2: done"
+	on offer
+		conversation
+			scene "scene/scene-damnation2"
+			`Unfortunately, the battle outside did not go unnoticed. The Damnation flees the station just as you finish landing! You need to board that ship and learn how they're controlling the Mereti.`
+				accept
 
 	on enter Kaliptari
 		dialog `The Blight Shadows have made it this far without the Kor Mereti to hold them back. The sooner you bring the Mereti back to normal, the better.`
-	
 	npc
 		government "Invasive Predator"
 		system Kaliptari
 		personality waiting staying heroic disables unconstrained mute
-		fleet "Large Blight Shadow" 3
+		fleet "Large Blight Shadow"
+	on enter Skeruto
+		dialog `The Blight Shadows have made it this far without the Kor Mereti to hold them back. The sooner you bring the Mereti back to normal, the better.`
+	npc
+		government "Invasive Predator"
+		system Skeruto
+		personality waiting staying heroic disables unconstrained mute
+		fleet "Large Blight Shadow"
 
 	on enter Feroteri
 		dialog `Looks like the Damnation ran into a little trouble. Board the ship and learn how they're controlling the Mereti!`
@@ -651,27 +713,27 @@ mission "Scrapyard Damnation 3"
 			branch "Midnight's Lost Orphan"
 				has "captain of atrocity"
 				
-			branch "T.H.O.R."
-				or
-					has "Midnight Market: Project THOR 2: active"
-					has "Midnight Market: Project THOR 2: done"
-			
 			branch "Quantum Key Blade"
 				has "Bearer of The Blade"
+			
+			branch "T.H.O.R."
+				has "T.H.O.R"
 			
 			`	He grabs you by the neck and slams you onto the floor like a ragdoll. As you lose consciousness, you regret not shooting him in the back...`
 				die
 				
 			label "Midnight's Lost Orphan"
-			`	But you are the demon captain of atrocity. The power of Midnight's Lost Orphan flows through you and the Alpha finds himself writhing on the floor in agony as you psychopathically rearrange his internal organs.`
+			action
+				"captain of atrocity" ++
+			`	But you are the demon captain of atrocity. The power of Midnight's Lost Orphan flows through you and the Alpha finds himself writhing on the floor in agony as you enjoy a perverse pleasure in psychopathically rearranging his internal organs.`
 				goto end
 				
-			label "T.H.O.R."
-			`	But T.H.O.R. swoops in and nails him with the arm mounted pile driver! Even a genetically enhanced human is no match for the Tactical Heavy Offensive Robot.`
-				goto end
-			
 			label "Quantum Key Blade"
 			`	Normally, you'd be no match for an Alpha in this situation. Fortunately, you've got something to even the odds. You draw the Quantum Key Blade and Quantum Shift just as the Alpha tries to disarm you. His hands pass through the blade, unable to grab it. As he looks at you in shock, you plunge the blade into his chest and deactivate Quantum Shifting. The Alpha slumps to the floor, defeated.`
+				goto end
+			
+			label "T.H.O.R."
+			`	But T.H.O.R. swoops in and nails him with the arm mounted pile driver! Even a genetically enhanced human is no match for the Tactical Heavy Offensive Robot.`
 				goto end
 			
 			label "shot in back"
@@ -864,6 +926,127 @@ mission "Scrapyard Devourer (Neutral) 2"
 		personality waiting staying mining harvests plunders uninterested
 		fleet "Korath Devourer (Neutral)"
 
+
+
+mission "Scrapyard Scrapper Base Sebra Skira"
+	landing
+	invisible
+	source
+		attributes korath
+		not planet "Sebra Skira"
+	destination "Sebra Skira"
+	to offer
+		"Scrapyard Threat Level" >= 1
+		random < 10
+	on enter "Silikatakfar"
+		conversation
+			scene "thumbnail/world-ship b"
+			`A Korath Scrapper Ra'gru Ik 618 and its fleet of salvaged automatons launches from Sebra Skira station and targets you!`
+	npc disable
+		government "Kor Scrappers (Hostile)"
+		system "Silikatakfar"
+		personality waiting staying mining harvests plunders
+		fleet
+			names "korath"
+			cargo 10
+			commodities "Metal" "Heavy Metals"
+			outfitters "Korath Basics"
+			variant
+				"Ra'gru Ik 618 (Sestor)"
+				"Model 512 (scrapper)"
+				"Kar Ik Vot 349 (Defense)"
+				"Met Par Tek 53" 2
+				"Model 16 (scrapper)"
+				"Model 32 (scrapper)"
+		dialog `The scrapper fleet came from Sebra Skira station. They could have left something there.`
+	on complete
+		outfit "Piercer Missile Rack" 8
+		outfit "Piercer Missile" 128
+		conversation
+			scene "outfit/korath piercer storage"
+			`A search of the abandoned station uncovers a hidden cache of Sestor ammunition.`
+
+mission "Scrapyard Scrapper Base Esperaktu"
+	landing
+	invisible
+	source
+		attributes korath
+		not planet "Esperaktu Station"
+	destination "Esperaktu Station"
+	to offer
+		has "Scrapyard Damnation Epilogue: done"
+		random < 15
+	on enter "Faronektu"
+		conversation
+			scene "thumbnail/world-ship b"
+			`A Korath Scrapper Ra'gru Ik 618 and its fleet of salvaged automatons launches from Esperaktu station and targets you!`
+	npc disable
+		government "Kor Scrappers (Hostile)"
+		system "Faronektu"
+		personality waiting staying mining harvests plunders
+		fleet
+			names "korath"
+			cargo 10
+			commodities "Metal" "Heavy Metals"
+			outfitters "Korath Basics"
+			variant
+				"Ra'gru Ik 618 (Mereti)"
+				"Model 512"
+				"Kar Ik Vot 349 (scrapper)"
+				"Model 128" 2
+				"Met Par Tek 53 (scrapper)"
+				"Model 8" 8
+		dialog `The scrapper fleet came from Esperaktu station. They could have left something there.`
+	on complete
+		outfit "Cluster Mine Rack" 8
+		outfit "Cluster Mine" 72
+		conversation
+			scene "outfit/korath mine storage"
+			`A search of the abandoned station uncovers a hidden cache of Mereti ammunition.`
+
+mission "Scrapyard Scrapper Base Makwar Pratarati"
+	landing
+	invisible
+	source
+		attributes korath
+		not planet "Makwar Pratarati" "Metwar Skaretar"
+	destination "Makwar Pratarati"
+	to offer
+		has "Scrapyard Scrapper Base Sebra Skira: done"
+		has "Scrapyard Scrapper Base Esperaktu: done"
+		random < 20
+	on enter "Mesuket"
+		conversation
+			scene "thumbnail/world-ship e"
+			`A Korath Scrapper Ra'at Ik 621 and its fleet of salvaged automatons launches from Makwar Pratarati station and targets you!`
+	npc disable
+		government "Kor Scrappers (Hostile)"
+		system "Mesuket"
+		personality waiting staying mining harvests plunders
+		fleet
+			names "korath"
+			cargo 10
+			commodities "Metal" "Heavy Metals"
+			outfitters "Korath Basics"
+			variant
+				"Ra'at Ik 621 (Automata)"
+				"Model 512"
+				"Model 16" 4
+				"Model 8" 8
+				"Kar Ik Vot 349 (Defense)"
+				"Met Par Tek 53 (Sniper)" 2
+				"Far Osk 27" 9
+				"Far Lek 14" 6
+		dialog `The scrapper fleet came from Makwar Pratarati station. They could have left something there.`
+	on complete
+		outfit "Piercer Missile Rack" 8
+		outfit "Piercer Missile" 128
+		outfit "Cluster Mine Rack" 8
+		outfit "Cluster Mine" 72
+		conversation
+			scene "outfit/korath piercer storage"
+			scene "outfit/korath mine storage"
+			`A search of the abandoned station uncovers a hidden cache of Korath automata ammunition.`
 
 
 

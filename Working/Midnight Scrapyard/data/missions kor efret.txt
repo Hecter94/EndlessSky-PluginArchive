@@ -17,20 +17,90 @@
 
 
 
-fleet "Kor Efret Miners"
-	government "Kor Efret"
-	names "korath"
-	personality mining harvests coward
-		confusion 20
-	cargo 0
-	variant 3
-		"Korath Explorer"
-		"Korath Chaser (Miner)" 2
-
 outfitter "Korath Basics"
-	"Korath Afterburner"
 	"Korath Scanner"
 
+
+
+mission "Scrapyard: Add Fireswarm Kor Efret"
+	landing
+	invisible
+	on offer
+		event "add fireswarm kor efret"
+		fail
+
+event "add fireswarm kor efret"
+	fleet "Kor Efret Home"
+		add variant 4
+			"Echo-Galleon"
+		add variant 6
+			"Arch-Carrack"
+		add variant 2
+			"Charm-Shallop"
+		add variant 2
+			"Echo-Galleon (Fireswarm)"
+		add variant 3
+			"Arch-Carrack (Fireswarm)"
+		add variant 1
+			"Charm-Shallop (Fireswarm)"
+		add variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Eave-Skiff" 3
+	fleet "Kor Efret Miners"
+		add variant 2
+			"Charm-Shallop"
+		add variant 1
+			"Charm-Shallop (Fireswarm)"
+
+outfitter "Korath Fireswarm"
+	"Korath Fireswarm"
+	"Korath Fireswarm Nest"
+	"Korath Fireswarm Launcher"
+
+
+
+mission "Scrapyard: Escort Kor Efret Visitors"
+	landing
+	name "Escort to <system>"
+	description "Escort these Kor Efret visitors back to <destination>."
+	source
+		government "Wanderer"
+		attributes "spaceport"
+		not attributes "uninhabited"
+	destination "Laki Nemparu"
+	to offer
+		has "event: wanderers taking jobs from kor efreti"
+		not "event: Laki Nemparu opens Shipyard"
+	on offer
+		conversation
+			scene "thumbnail/arch-carrack"
+			`A Wanderer spaceport officer walks up to you. "Captain <last>, I need some [help, assistance]." He gestures towards a group of Kor Efret.`
+			`	One of them steps forward, palms extended. It points at the sky, towards <system>. Then it points towards their own ship. Finally, it points to you before clasping its hands together. It seems they would like an escort.`
+			choice
+				`	(Escort the Kor Efret.)`
+				`	(Don't get involved.)`
+					decline
+			`	You extend your own palms outward then clasp your hands together and gesture at the sky. The Efret seems pleased.`
+				accept
+	on enter
+	on enter
+		dialog `Maybe it's just your imagination, but it looked like some shadows were moving in the darkness...`
+	npc accompany save
+		government "Kor Efret"
+		personality target escort timid
+		fleet
+			names "korath"
+			variant
+				"Arch-Carrack"
+	on complete
+		payment 150000
+		dialog `The captain of the <npc> is grateful for your assistance and pays you <payment>.`
 
 mission "Scrapyard: Laki Nemparu Shipyard"
 	landing
@@ -48,25 +118,28 @@ mission "Scrapyard: Laki Nemparu Shipyard"
 		has "event: Laki Nemparu opens Shipyard"
 	on complete
 		dialog `The shipyard appears to be open. A fleet of new ships is on display.`
-		
+
 shipyard "Kor Efret Scrapyard"
-	"Korath Chaser"
-	"Korath Explorer"
-	"Korath Transport"
-	"Korath Transport B"
-	"Korath Transport C"
-		
+	"Arch-Carrack"
+	"Charm-Shallop"
+	"Eave-Skiff"
+	"Vault-Barge"
+	"Bravo-Monitor"
+	"Delta-Ferry"
+
 event "Laki Nemparu opens Shipyard"
 	planet "Laki Nemparu"
 		add shipyard "Kor Efret Scrapyard"
 	fleet "Kor Efret Home"
-		add variant
-			"Korath Transport"
-		add variant
-			"Korath Transport B"
-		add variant
-			"Korath Transport C"
-			"Korath Chaser" 2
+		add variant 1
+			"Vault-Barge"
+		add variant 1
+			"Bravo-Monitor"
+		add variant 1
+			"Delta-Ferry"
+			"Eave-Skiff" 3
+
+
 
 mission "Midnight Scrapyard: Kor Efret Miners"
 	landing
@@ -78,26 +151,389 @@ mission "Midnight Scrapyard: Kor Efret Miners"
 		fail
 
 event "kor efret miners scrapyard"
-	system Sumprast
-		add fleet "Kor Efret Miners" 8000
-	system Sevrelect
-		add fleet "Kor Efret Miners" 8000
-	system Kashikt
-		add fleet "Kor Efret Miners" 8000
 	system Furmeliki
-		add fleet "Kor Efret Miners" 10000
+		add fleet "Kor Efret Miners" 10800
 	system Dokdobaru
-		add fleet "Kor Efret Miners" 10000
-	system Chikatip
-		add fleet "Kor Efret Miners" 10000
+		add fleet "Kor Efret Miners" 10800
 	system Skeruto
-		add fleet "Kor Efret Miners" 10000
-	system Meftarkata
-		add fleet "Kor Efret Miners" 12000
+		add fleet "Kor Efret Miners" 10800
 	system Chornifath
-		add fleet "Kor Efret Miners" 12000
-	system Hesselpost
-		add fleet "Kor Efret Miners" 12000
+		add fleet "Kor Efret Miners" 7200
+
+
+
+mission "Echo Galleon Construction Shortage 1 - Scan"
+	shipyard
+	minor
+	name "Echo-Galleon Scan"
+	description "Find an Echo-Galleon that isn't moving around too much and scan its outfits. Deliver the scanner image to the shipyard on <destination>."
+	source "Laki Nemparu"
+	to offer
+		has "event: Laki Nemparu opens Shipyard"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/echo-galleon"
+			`	Looking about the shipyard, you notice no Echo-Galleons available for sale. While shopping here shouldn't be much more difficult than simply pointing at the ship you want, trying to place an order for something that isn't in stock requires a bit more effort.`
+			choice
+				`	(I'm not interested in an Echo-Galleon.)`
+				`	(Try to get a scan of an Echo-Galleon.)`
+					goto scan
+			scene "outfit/attention"
+			`	The Echo-Galleon seems like a formidable ship. Are you sure that you aren't interested in ever buying one?`
+			choice
+				`	(I'm definitely not interested in buying an Echo-Galleon.)`
+				decline
+				`	(I'll try to get a scan of an Echo-Galleon.)`
+			label scan
+			scene "outfit/outfit scanner"
+			`	Scanning an Echo-Galleon and bringing the image back to the shipyard might be the easiest way to show your interest in acquiring one. Cargo scanning is irrelevant but make sure you install an Outfit Scanner or something similar on your flagship.`
+				accept
+	on enter
+		dialog "The <npc> appears to be in no rush to leave the system. That Echo-Galleon would be an ideal target for a scan."
+	npc "scan outfits"
+		government "Kor Efret"
+		personality target waiting staying
+		ship "Echo-Galleon" "Sesk Gratakfar"
+		dialog "You've successfully scanned an Echo-Galleon. Return to <origin> with the data file."
+	on fail
+		dialog "[MISSION FAILED]: Wow, Echo-Galleons aren't so tough afterall. If this were a game you could try reloading a save file to try again."
+	on complete
+		conversation
+			scene "thumbnail/echo-galleon"
+			`	After presenting the Kor Efret at the shipyard with an image of an Echo-Galleon, they respond by showing you images of various metals and minerals. Perhaps they simply don't have the resources to devote to building Echo-Galleons now.`
+
+mission "Echo Galleon Construction Shortage 2 - Silicon"
+	landing
+	name "Echo-Galleon: Silicon"
+	description "Find and deliver 130 tons of Silicon to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 1 - Scan: done"
+	on offer
+		conversation
+			scene "outfit/harvested silicon"
+			`	A notice appears to be posted regarding Silicon. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 130 tons of Silicon. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Silicon" -130
+		payment 57200
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 130 tons of Silicon. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 3 - Lead"
+	landing
+	name "Echo-Galleon: Lead"
+	description "Find and deliver 120 tons of Lead to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 2 - Silicon: done"
+	on offer
+		conversation
+			scene "outfit/harvested lead"
+			`	A notice appears to be posted regarding Lead. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 120 tons of Lead. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Lead" -120
+		payment 118800
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 120 tons of Lead. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 4 - Iron"
+	landing
+	name "Echo-Galleon: Iron"
+	description "Find and deliver 110 tons of Iron to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 3 - Lead: done"
+	on offer
+		conversation
+			scene "outfit/harvested iron"
+			`	A notice appears to be posted regarding Iron. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 110 tons of Iron. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Iron" -110
+		payment 145200
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 110 tons of Iron. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 5 - Aluminum"
+	landing
+	name "Echo-Galleon: Aluminum"
+	description "Find and deliver 100 tons of Aluminum to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 4 - Iron: done"
+	on offer
+		conversation
+			scene "outfit/harvested aluminum"
+			`	A notice appears to be posted regarding Aluminum. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 100 tons of Aluminum. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Aluminum" -100
+		payment 198000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 100 tons of Aluminum. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 6 - Titanium"
+	landing
+	name "Echo-Galleon: Titanium"
+	description "Find and deliver 90 tons of Titanium to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 5 - Aluminum: done"
+	on offer
+		conversation
+			scene "outfit/harvested titanium"
+			`	A notice appears to be posted regarding Titanium. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 90 tons of Titanium. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Titanium" -90
+		payment 247500
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 90 tons of Titanium. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 7 - Copper"
+	landing
+	name "Echo-Galleon: Copper"
+	description "Find and deliver 80 tons of Copper to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 6 - Titanium: done"
+	on offer
+		conversation
+			scene "outfit/harvested copper"
+			`	A notice appears to be posted regarding Copper. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 80 tons of Copper. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Copper" -80
+		payment 264000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 80 tons of Copper. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 8 - Neodymium"
+	landing
+	name "Echo-Galleon: Neodymium"
+	description "Find and deliver 70 tons of Neodymium to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 7 - Copper: done"
+	on offer
+		conversation
+			scene "outfit/harvested neodymium"
+			`	A notice appears to be posted regarding Neodymium. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 70 tons of Neodymium. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Neodymium" -70
+		payment 292600
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 70 tons of Neodymium. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 9 - Tungsten"
+	landing
+	name "Echo-Galleon: Tungsten"
+	description "Find and deliver 60 tons of Tungsten to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 8 - Neodymium: done"
+	on offer
+		conversation
+			scene "outfit/harvested tungsten"
+			`	A notice appears to be posted regarding Tungsten. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 60 tons of Tungsten. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Tungsten" -60
+		payment 297000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 60 tons of Tungsten. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 10 - Uranium"
+	landing
+	name "Echo-Galleon: Uranium"
+	description "Find and deliver 50 tons of Uranium to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 9 - Tungsten: done"
+	on offer
+		conversation
+			scene "outfit/harvested uranium"
+			`	A notice appears to be posted regarding Uranium. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 50 tons of Uranium. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Uranium" -50
+		payment 275000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 50 tons of Uranium. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 11 - Silver"
+	landing
+	name "Echo-Galleon: Silver"
+	description "Find and deliver 40 tons of Silver to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 10 - Uranium: done"
+	on offer
+		conversation
+			scene "outfit/harvested silver"
+			`	A notice appears to be posted regarding Silver. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 40 tons of Silver. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Silver" -40
+		payment 264000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 40 tons of Silver. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 12 - Gold"
+	landing
+	name "Echo-Galleon: Gold"
+	description "Find and deliver 30 tons of Gold to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 11 - Uranium: done"
+	on offer
+		conversation
+			scene "outfit/harvested gold"
+			`	A notice appears to be posted regarding Gold. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 30 tons of Gold. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Gold" -30
+		payment 264000
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 30 tons of Gold. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+
+mission "Echo Galleon Construction Shortage 13 - Platinum"
+	landing
+	name "Echo-Galleon: Platinum"
+	description "Find and deliver 20 tons of Platinum to the shipyard on <destination>. This can help provide the materials necessary to restart construction of Echo-Galleons."
+	source "Laki Nemparu"
+	to offer
+		has "Echo Galleon Construction Shortage 12 - Gold: done"
+	on offer
+		conversation
+			scene "outfit/harvested platinum"
+			`	A notice appears to be posted regarding Platinum. After checking with the Kor Efret, it seems the shipyard will pay a premium for delivery of 20 tons of Platinum. Helping them increase their supply of building materials could help restart construction of Echo-Galleons.`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+			scene "outfit/attention"
+			`	Are you giving up on restarting construction of Echo-Galleons?`
+			choice
+				`	(Add this task to your mission log.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	on complete
+		outfit "Platinum" -20
+		payment 220000
+		event "add echo-galleon to kor efret scrapyard"
+		dialog `The <planet> shipyard rewards you with <payment> for your delivery of 20 tons of Platinum. Hopefully, this will help provide the necessary materials to restart construction of Echo-Galleons.`
+		conversation
+			scene "thumbnail/echo-galleon"
+			`You notice an Echo-Galleon under construction in the shipyard. It seems your efforts have paid off. Hopefully they'll be back in stock soon.`
+
+event "add echo-galleon to kor efret scrapyard"
+	shipyard "Kor Efret Scrapyard"
+		add "Echo-Galleon"
 
 
 
@@ -112,7 +548,7 @@ mission "Scrapyard Derelict World Ship"
 		"Scrapyard Threat Level" ++
 		conversation
 			scene "scene/scene-derelictworldship"
-			`You stumble upon tragic scene. A derelict Kor Efret world ship is surrounded by blight shadows. The ship hails you, and though you don't speak their language, it's obviously a distress call. The ship is heavily damaged and it will be a miracle if you can escort it back to Laki Nemparu in the Kashikt system.`
+			`You stumble upon tragic scene. An old Kor Efret World-Ship named the <npc> is surrounded by blight shadows. The disabled ship hails you, and though you don't speak their language, it's obviously a distress call. Damage to the <npc> is severe and it will be a miracle if you can safely escort it back to <destination>.`
 				accept
 
 	npc
@@ -185,23 +621,28 @@ mission "Scrapyard Derelict World Ship"
 		give ship "Scrapyard World-Ship (Crippled)" "Lekfarosk"
 		conversation
 			scene "thumbnail/world-ship scrapyard-thumb"
-			`The Kor Efret are grateful to you for saving them from certain death. They seem to want to give you a tour of their ship, but as the tour progresses, it becomes apparent that they are offering the ship to you as a gesture of thanks. While you appreciate the reward, you can't help but notice that damage to the ship's key systems hasn't been repaired...`
-			
+			`The Kor Efret are grateful to you for saving them from certain death. They seem to want to give you a tour of their ship. It's an old antique, a genuine World-Ship. As the tour progresses, it becomes apparent that they are offering the ship to you as a gesture of thanks. While you appreciate the reward, you can't help but notice that damage to the ships key systems hasn't been repaired...`
+
 ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	sprite "ship/world-ship scrapyard"
 	thumbnail "thumbnail/world-ship scrapyard-thumb"
 	add attributes
 		"fused circuits" -5
-	outfits		
+	outfits
 		"Triple Plasma Core (Damaged)"
 		"Systems Core (Damaged)"
 		"Large Heat Shunt"
 		"Small Heat Shunt" 2
-		
+		"Thermal Repeater Rifle" 150
 		"Thruster (Planetary Class)(Damaged)"
 		"Steering (Planetary Class)(Damaged)"
 		"Hyperdrive (Damaged)"
-
+		"Scrap Metal" 200
+	engine -37 343 .8
+	engine 0 343 .9
+	engine 37 343 .8
+	gun -22 -275
+	gun 22 -275
 	turret -74 -156
 	turret 74 -155.5
 	turret -42 -50.5
@@ -214,73 +655,124 @@ ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	bay "Fighter" 34 -70
 	bay "Fighter" 0 -70
 
-ship "Korath World-Ship" "Korath World-Ship D (Crippled)"
-	sprite "ship/world-ship scrapyard"
-	thumbnail "thumbnail/world-ship scrapyard-thumb"
-	add attributes
-		"fused circuits" -5
-	outfits		
-		"Triple Plasma Core (Damaged)"
-		"Systems Core (Damaged)"
-		"Large Heat Shunt"
-		"Small Heat Shunt" 2
-		
-		"Thruster (Planetary Class)(Damaged)"
-		"Steering (Planetary Class)(Damaged)"
-		"Hyperdrive (Damaged)"
 
-	turret -74 -156
-	turret 74 -155.5
-	turret -42 -50.5
-	turret 44 -50.5
-	turret -27.5 134.5
-	turret 27 134.5
-	turret -89 293
-	turret 87.5 292.5
 
-mission "Scrapyard: Warmonger Construction"
+mission "Scrapyard: Add Kor Efret Scanners"
+	landing
+	invisible
+	to offer
+		has "Scrapyard Derelict World Ship: done"
+	on offer
+		event "add kor efret scanners"
+		fail
+
+event "add kor efret scanners"
+	fleet "Kor Efret Miners"
+		add variant 1
+			"Charm-Shallop (Scanner)"
+		add variant 1
+			"Charm-Shallop (Fireswarm Scanner)"
+
+
+mission "Scrapyard: Ranger Construction"
 	landing
 	invisible
 	source "Laki Nemparu"
 	to offer
 		has "Scrapyard Derelict World Ship: done"
+		not "Scrapyard: Warmonger Construction: offered"
 	on offer
-		event "Warmonger Construction Completed" 30
+		event "Korath Ranger Construction Completed" 30
 		conversation
-			scene "thumbnail/korath warmonger-thumb"
+			scene "thumbnail/korath ranger-thumb"
 			`	You notice a new type of ship under construction in the shipyard. While none are available for sale yet, the ship looks somewhat familiar...`
 				accept
 	to complete
-		has "event: Warmonger Construction Completed"
+		has "event: Korath Ranger Construction Completed"
 	on complete
-		dialog `The new warship is available for sale in the shipyard. A fleet of the new ships is on display.`
+		conversation
+			scene "thumbnail/korath ranger-thumb"
+			`A new warship is available for sale in the shipyard. A fleet of the new ships is on display.`
 
-event "Warmonger Construction Completed"
+event "Korath Ranger Construction Completed"
 	shipyard "Kor Efret Scrapyard"
-		add "Korath Warmonger"
+		add "Korath Ranger"
 	fleet "Kor Efret Home"
-		add variant 10
-			"Korath Warmonger"
-			"Korath Chaser" 2
+		remove variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
 		add variant 5
-			"Korath World-Ship"
-			"Korath Warmonger" 2
-			"Korath Chaser" 4
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 3
+			"Echo-Galleon"
+			"Korath Ranger" 2
+			"Eave-Skiff" 6
 		add variant 5
-			"Korath World-Ship B"
-			"Korath Warmonger" 2
-			"Korath Chaser" 4
+			"Arch-Carrack"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger"
+			"Eave-Skiff" 6
 		add variant 5
-			"Korath World-Ship C"
-			"Korath Warmonger" 2
-			"Korath Chaser" 4
-		add variant 15
-			"Korath Transport"
-		add variant 15
-			"Korath Transport B"
-		add variant 15
-			"Korath Transport C"
-			"Korath Chaser" 3
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 2
+			"Echo-Galleon (Fireswarm)"
+			"Korath Ranger (Fireswarm)" 2
+			"Eave-Skiff" 6
+		add variant 3
+			"Arch-Carrack (Fireswarm)"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop (Fireswarm)"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 6
 
 
 
@@ -293,7 +785,9 @@ mission "Scrapyard: Efret Salvage License 1"
 		not attributes "uninhabited"
 	destination "Desi Seledrak"
 	to offer
-		has "event: Warmonger Construction Completed"
+		or
+			has "event: Korath Ranger Construction Completed"
+			has "event: Warmonger Construction Completed"
 		random < 40
 	on offer
 		conversation
@@ -305,20 +799,18 @@ mission "Scrapyard: Efret Salvage License 1"
 		system Solifar
 		personality waiting disables unconstrained mute
 		fleet "Small Blight Shadow"
-	on complete
-		dialog `Visit the spaceport to look for Rek.`
 
 mission "Scrapyard: Efret Salvage License 2"
-	minor
+	landing
 	name "Efret License"
 	description "Ask Rek to help you convince the Kor Efret to sell you weapons and other outfits installed on their ships."
 	source "Desi Seledrak"
 	destination "Setar Fort"
 	to offer
 		has "Scrapyard: Efret Salvage License 1: done"
-		random < 70
 	on offer
 		conversation
+			scene "planet/forest4-b"
 			`When you ask to meet Rek, you are told that she as returned to Setar Fort.`
 				accept
 	npc evade
@@ -338,40 +830,49 @@ mission "Scrapyard: Efret Salvage License 2"
 
 
 outfitter "Efret Salvage"
-	"Korath Detainer"
-	"Korath Repeater"
-	"Korath Slicer"
-	"Korath Banisher"
-	"Korath Disruptor"
-	"Korath Grab-Strike"
-	"Korath Warder"
-	"Korath Repeater Turret"
-	"Korath Slicer Turret"
-	"Korath Minelayer"
-	"Korath Piercer Launcher"
-	"Korath Mine"
-	"Korath Mine Rack"
-	"Korath Piercer"
-	"Korath Piercer Rack"
+	"Banisher Grav-Turret"
+	"Cluster Mine"
+	"Cluster Mine Layer"
+	"Control Transceiver"
+	"Digger Mining Beam"
 	"Double Plasma Core"
-	"Plasma Core"
+	"Expeller Grav-Ray"
 	"Generator (Furnace Class)"
 	"Generator (Candle Class)"
-	"Systems Core (Medium)"
-	"Systems Core (Small)"
-	"Small Heat Shunt"
-	"Control Transceiver"
+	"Grab-Strike Turret"
+	"Husk-Slice"
+	"Husk-Slice Turret"
+	"Korath Detainer"
+	"Piercer Missile Launcher"
+	"Piercer Missile"
+	"Plasma Core"
 	"Reasoning Node"
-	"Thruster (Planetary Class)"
-	"Thruster (Lunar Class)"
-	"Thruster (Comet Class)"
-	"Thruster (Asteroid Class)"
+	"Shield Disruptor Turret"
+	"Small Heat Shunt"
 	"Steering (Planetary Class)"
 	"Steering (Lunar Class)"
 	"Steering (Comet Class)"
 	"Steering (Asteroid Class)"
-	"Outfits Expansion"
-	Hyperdrive
+	"Systems Core (Medium)"
+	"Systems Core (Small)"
+	"Systems Core (Tiny)"
+	"Thermal Repeater"
+	"Thermal Repeater Turret"
+	"Thruster (Planetary Class)"
+	"Thruster (Lunar Class)"
+	"Thruster (Comet Class)"
+	"Thruster (Asteroid Class)"
+	"Warder Anti-Missile"
+	"Arkrof GP Hybrid Thruster"
+	"Farves GP Hybrid Thruster"
+	"Gaktem GP Hybrid Thruster"
+	"Arkrof GP Hybrid Steering"
+	"Farves GP Hybrid Steering"
+	"Gaktem GP Hybrid Steering"
+	"Afterburner (Meteor Class)"
+	"Korath Fireswarm"
+	"Korath Fireswarm Nest"
+	"Korath Fireswarm Launcher"
 
 outfitter "Efret Salvage Advanced"
 	"Triple Plasma Core"
@@ -380,6 +881,10 @@ outfitter "Efret Salvage Advanced"
 	"Large Heat Shunt"
 	"Thruster (Stellar Class)"
 	"Steering (Stellar Class)"
+	"Nelmeb GP Hybrid Thruster"
+	"Nelmeb GP Hybrid Steering"
+	"Scram Drive"
+
 
 event "access efret salvage"
 	planet "Laki Nemparu"
@@ -387,6 +892,8 @@ event "access efret salvage"
 		add outfitter "Efret Salvage Advanced"
 	planet "Setar Fort"
 		add outfitter "Efret Salvage"
+
+
 
 
 
@@ -478,33 +985,64 @@ event "efret salvage grappler"
 	outfitter "Efret Salvage Advanced"
 		add "Korath Grappler"
 
-mission "Scrapyard: Efret Grappler Warmongers"
+mission "Scrapyard: Efret Grappler Korath Rangers"
 	landing
 	invisible
 	to offer
 		has "event: efret salvage grappler"
-		has "event: Warmonger Construction Completed"
+		or
+			has "event: Korath Ranger Construction Completed"
+			has "event: Warmonger Construction Completed"
+		not "Scrapyard: Efret Grappler Warmongers: offered"
 	on offer
-		event "Efret Grappler Warmongers"
+		event "Efret Grappler Korath Rangers"
 		fail
 
-event "Efret Grappler Warmongers"
+event "Efret Grappler Korath Rangers"
 	fleet "Kor Efret Home"
-		add variant 10
-			"Korath Warmonger (Grappler)"
-			"Korath Chaser" 2
-		add variant 5
-			"Korath World-Ship"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 4
-		add variant 5
-			"Korath World-Ship B"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 4
-		add variant 5
-			"Korath World-Ship C"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 4
+		add variant 1
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+	fleet "Kor Efret Home"
+		add variant 1
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+		add variant 1
+			"Echo-Galleon"
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 4
+		add variant 1
+			"Arch-Carrack"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+		add variant 1
+			"Charm-Shallop"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 2
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 5
+		add variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 5
+		add variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 5
+		add variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 5
 
 
 mission "Scrapyard: Efret Salvage Grappler 2"
@@ -636,12 +1174,15 @@ mission "Scrapyard Mereti Efret Test Flight"
 	waypoint Solifar
 	waypoint Chimitarp
 	to offer
-		has "event: Warmonger Construction Completed"
+		or
+			has "event: Korath Ranger Construction Completed"
+			has "event: Warmonger Construction Completed"
 		has "event: access efret salvage"
 		or
-			not "Scrapyard Scrapper Siege (Faronektu): done"
-			not "Scrapyard Scrapper Siege (Mekislepti): done"
-			not "Scrapyard Scrapper Siege (Similisti): done"
+			and
+				not "Scrapyard Scrapper Siege (Faronektu): done"
+				not "Scrapyard Scrapper Siege (Mekislepti): done"
+				not "Scrapyard Scrapper Siege (Similisti): done"
 			has "event: Node 8 Processor Returned"
 		or
 			and
@@ -724,6 +1265,99 @@ mission "Scrapyard Mereti Efret Sales"
 			`You can see that the Mereti Efret has been added to the inventory at the shipyard. But no one is lining up to buy. The reason why isn't difficult to figure out once you see the price. There is a huge disparity between the cost of a Mereti Efret and those of the other ships available for sale.`
 				decline
 
+
+
+mission "Laki Nemparu Bullies 1"
+	landing
+	invisible
+	source
+		attributes "korath"
+		not planet "Laki Nemparu"
+	destination "Laki Nemparu"
+	to offer
+		has "event: access efret salvage"
+	on enter "Kashikt"
+		dialog `A Model 512 automata is lurking near Laki Nemparu. Hailing it gets a response reminiscent of the Korath near the galactic core.`
+	npc save
+		government "Korath (Civilian)"
+		system "Kashikt"
+		personality waiting staying
+		ship "Model 512 (Jump)" "Ber Ertakari"
+	on fail
+		event "laki nemparu bullies"
+	on complete
+		event "laki nemparu bullies"
+
+event "laki nemparu bullies"
+	planet "Laki Nemparu"
+		remove shipyard "Kor Efret Scrapyard"
+		remove outfitter "Korath Basics"
+		remove outfitter "Korath Fireswarm"
+		remove outfitter "Efret Salvage"
+		remove outfitter "Efret Salvage Advanced"
+
+mission "Laki Nemparu Bullies 2 [Ongoing]"
+	repeat
+	invisible
+	source "Laki Nemparu"
+	to offer
+		has "Laki Nemparu Bullies 2: active"
+	on offer
+		dialog `The spaceport, outfitters, and shipyard are in disarray. The crew of the Grakeratus must have been tormenting the locals again.`
+	on accept
+		fail
+
+
+mission "Laki Nemparu Bullies 2"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		or
+			has "Laki Nemparu Bullies 1: done"
+			has "Laki Nemparu Bullies 1: failed"
+	on offer
+		conversation
+			scene "thumbnail/world-ship f"
+			`A Kasichara A'awoj, the Grakeratus, was parked in the spaceport along with more automata. Non-Efreti Korath have invaded the spaceport, outfitters, and shipyard. One flips a street vendor's table, scattering merchandise onto the ground while another has a group of Efreti cowering in fear while he yells at them. Although you don't understand their language, it's clear that they are bullying the locals. The one yelling notices you and sneers before leaving. The other non-Efreti Korath notice his departure and follow.`
+			`	The Kor Efret relax and begin cleaning up the mess. Some seem grateful to you. But it's doubtful that you've seen the last of those troublemakers. And you might have trouble buying supplies while that crew of Korath Exiles is around.`
+				accept
+	on enter "Kashikt"
+		dialog `The Grakeratus is in no rush to leave the system. If left alone they will likely continue to torment the inhabitants of Laki Nemparu.`
+	npc
+		to spawn
+			has "Laki Nemparu Bullies 1: done"
+		government "Korath"
+		system "Kashikt"
+		personality waiting staying heroic
+		ship "Model 512 (Jump)" "Ber Ertakari"
+	npc
+		government "Korath"
+		system "Kashikt"
+		personality waiting staying heroic
+		ship "Model 512 (Jump)" "Ber Ertaketar"
+		ship "Kar Ik Vot 349 (Jump)" "Urkotore"
+		ship "Kar Ik Vot 349 (Jump)" "Eskotore"
+	npc kill
+		government "Korath"
+		system "Kashikt"
+		personality waiting staying timid uninterested
+		ship "Kasichara A'awoj (Jump)" "Grakeratus"
+		dialog `You've defeated the Grakeratus. The inhabitants of <origin> won't be bothered by them again.`
+	on complete
+		event "laki nemparu bullies defeated"
+		dialog `Shipyard and outfitters operations should soon return to normal with the crew of the Grakeratus gone.`
+
+event "laki nemparu bullies defeated"
+	planet "Laki Nemparu"
+		add shipyard "Kor Efret Scrapyard"
+		add outfitter "Korath Basics"
+		add outfitter "Korath Fireswarm"
+		add outfitter "Efret Salvage"
+		add outfitter "Efret Salvage Advanced"
+
+
+
 ######################
 # Jobs
 ######################
@@ -740,21 +1374,39 @@ mission "Scrapyard: Escort to Wanderer Colony (Big)"
 		government "Kor Efret"
 	destination 
 		government "Wanderer"
-		attributes "korath"
+		neighbor near "Kaliptari"
 	to offer
 		has "event: wanderers taking jobs from kor efreti"
+		has "event: Blight Shadow Infestation"
 		random < 15
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
 	npc accompany save
 		government "Kor Efret"
 		personality target escort timid
 		fleet
 			names "korath"
-			variant
-				"Korath World-Ship"
-			variant
-				"Korath World-Ship B"
-			variant
-				"Korath World-Ship C"
+			variant 2
+				"Echo-Galleon"
+			variant 4
+				"Arch-Carrack"
+			variant 1
+				"Echo-Galleon (Fireswarm)"
+			variant 2
+				"Arch-Carrack (Fireswarm)"
+			variant 1
+				"Korath World-Ship (Fireswarm)"
+				"Eave-Skiff" 3
+			variant 1
+				"Korath World-Ship B (Fireswarm)"
+				"Eave-Skiff" 3
+			variant 1
+				"Korath World-Ship C (Fireswarm)"
+				"Eave-Skiff" 3
 	on complete
 		payment 300000
 		dialog `The captain of the <npc> thanks you for escorting them to <planet> and pays you <payment>.`
@@ -770,22 +1422,26 @@ mission "Scrapyard: Escort to Wanderer Colony (Small)"
 		government "Kor Efret"
 	destination 
 		government "Wanderer"
-		attributes "korath"
-		not attributes "uninhabited"
+		neighbor near "Kaliptari"
 	to offer
 		has "event: Laki Nemparu opens Shipyard"
+		has "event: Blight Shadow Infestation"
 		random < 25
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
 	npc accompany save
 		government "Kor Efret"
 		personality target escort timid
 		fleet
 			names "korath"
 			variant
-				"Korath Transport"
+				"Vault-Barge"
 			variant
-				"Korath Transport B"
-			variant
-				"Korath Transport C"
+				"Delta-Ferry"
 	on complete
 		payment 200000
 		dialog `The captain of the <npc> thanks you for escorting them to <planet> and pays you <payment>.`
@@ -794,25 +1450,33 @@ mission "Scrapyard: Escort to Wanderer Colony (Small)"
 mission "Scrapyard: Escort to Wanderer Worlds A"
 	job
 	repeat
-	deadline
+	deadline 15
 	name "Escort Kor Efret"
 	description "Escort the <npc> to <destination> by <date>. Payment is <payment>."
 	source
 		government "Kor Efret"
 	destination 
 		government "Wanderer"
-		not attributes "korath"
-		not attributes "uninhabited"
+		not near "Kaliptari"
 	to offer
 		has "event: Laki Nemparu opens Shipyard"
+		has "event: Blight Shadow Infestation"
 		random < 25
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
 	npc accompany save
 		government "Kor Efret"
 		personality target escort timid
 		fleet
 			names "korath"
-			variant
-				"Korath Explorer"
+			variant 2
+				"Charm-Shallop"
+			variant 1
+				"Charm-Shallop (Scanner)"
 	on complete
 		payment 400000
 		dialog `The captain of the <npc> thanks you for escorting them to <planet> and pays you <payment>.`
@@ -821,25 +1485,33 @@ mission "Scrapyard: Escort to Wanderer Worlds A"
 mission "Scrapyard: Escort to Wanderer Worlds B"
 	job
 	repeat
-	deadline
+	deadline 15
 	name "Escort Kor Efret"
 	description "Escort the <npc> to <destination> by <date>. Payment is <payment>."
 	source
 		government "Kor Efret"
 	destination
 		government "Wanderer"
-		not attributes "korath"
-		not attributes "uninhabited"
+		not near "Kaliptari"
 	to offer
 		has "event: Laki Nemparu opens Shipyard"
+		has "event: Blight Shadow Infestation"
 		random < 25
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
 	npc accompany save
 		government "Kor Efret"
 		personality target escort timid
 		fleet
 			names "korath"
-			variant
-				"Korath Explorer"
+			variant 2
+				"Charm-Shallop"
+			variant 1
+				"Charm-Shallop (Scanner)"
 	on complete
 		payment 200000
 		dialog `The captain of the <npc> thanks you for escorting them to <planet> and pays you <payment>.`
@@ -857,17 +1529,26 @@ mission "Scrapyard: Kor Efret Salvage"
 		attributes "korath"
 		attributes "uninhabited"
 	on stopover
-		dialog `The Kor Efret crew work quickly to scavange as much as they can. After loading their ship, the captain signals it's time to return to <destination>.`
+		dialog `The Kor Efret crew work quickly to scavenge as much as they can. After loading their ship, the captain signals it's time to return to <destination>.`
 	to offer
 		has "event: Laki Nemparu opens Shipyard"
+		has "event: Blight Shadow Infestation"
 		random < 25
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
 	npc accompany save
 		government "Kor Efret"
 		personality target escort timid
 		fleet
 			names "korath"
 			variant
-				"Korath Explorer"
+				"Charm-Shallop (Scanner)"
+			variant
+				"Charm-Shallop (Fireswarm Scanner)"
 	on complete
 		payment 400000
 		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
@@ -881,7 +1562,7 @@ mission "Scrapyard: Wanderer Planetary Survey"
 	description "Escort the <npc> on a survey expedition to <stopovers>. Then escort them back to <destination> by <date>. Payment is <payment>."
 	source
 		government "Wanderer"
-		attributes "korath"
+		neighbor near "Kaliptari"
 	stopover
 		attributes "korath"
 		attributes "uninhabited"
@@ -890,7 +1571,14 @@ mission "Scrapyard: Wanderer Planetary Survey"
 		dialog `The Wanderer scientists work quickly to gather samples and specimens. After completing their mission objectives, the captain signals it's time to return to <destination>.`
 	to offer
 		has "event: wanderers: sestor planets unrestricted"
+		has "event: Blight Shadow Infestation"
 		random < 25
+	npc
+		government "Invasive Predator"
+		system
+			distance 3 4
+		personality waiting disables unconstrained mute
+		fleet "Small Blight Shadow"
 	npc accompany save
 		government "Wanderer"
 		personality target escort
@@ -904,56 +1592,192 @@ mission "Scrapyard: Wanderer Planetary Survey"
 
 
 
-##################
-# Bonus Mission
-##################
+#######################
+# Deprecated
+#######################
 
-fleet "Exiled Explorers"
-	government "Korath"
-	personality plunders harvests surveillance
-	names "korath"
-	cargo 0
-	variant 4
-		"Korath Explorer (Exile)"
-		"Korath Chaser" 2
-	variant 3
-		"Korath Explorer (Sestor)"
-		"Korath Chaser" 2
-	variant 2
-		"Korath Explorer (Banisher)"
-		"Korath Explorer (Grab-Strike)"
-		"Korath Chaser" 4
-	variant 1
-		"Korath Explorer (Exile)"
-		"Korath Explorer (Banisher)"
-		"Korath Explorer (Grab-Strike)"
-		"Korath Chaser" 6
+mission "Add Fireswarm World-Ships"
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		fail
+event "add fireswarm world-ships"
 
+# content moved to Lost in Midnight
+# placeholder to prevent missing mission error
 mission "Scrapyard: Exiled Explorers"
 	landing
 	invisible
 	source Fossil
+	to offer
+		never
 	on offer
-		event "exiled explorers"
-		dialog `You've only barely disembarked from your ship when a shadow passes overhead. It isn't one of those strange crystalline structures floating in this system. It might be another ship.`
-	npc kill
-		government "Korath"
-		personality waiting staying plunders harvests surveillance
-		fleet
-			names "korath"
-			cargo 0
-			variant
-				"Korath Explorer (Exile)"
-				"Korath Chaser" 2
-		
+		fail
 event "exiled explorers"
-	system "Kor Ak'Mari"
-		add fleet "Exiled Explorers" 40000
-	system "Sagittarius A*"
-		add fleet "Exiled Explorers" 40000
-	system Tekochtli
-		add fleet "Exiled Explorers" 30000
-	system Kalsolli
-		add fleet "Exiled Explorers" 30000
-	system Temeh
-		add fleet "Exiled Explorers" 30000
+
+
+
+mission "Scrapyard: Warmonger Construction"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		never
+
+event "Warmonger Construction Completed"
+	shipyard "Kor Efret Scrapyard"
+		add "Korath Ranger"
+	fleet "Kor Efret Home"
+		add variant 5
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 3
+			"Echo-Galleon"
+			"Korath Ranger" 2
+			"Eave-Skiff" 6
+		add variant 5
+			"Arch-Carrack"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+		remove variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Korath Ranger"
+			"Eave-Skiff" 6
+
+mission "Scrapyard: Warmonger Fireswarm Update"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		never
+
+
+event "Warmonger Fireswarm Update"
+	fleet "Kor Efret Home"
+		add variant 5
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 2
+			"Echo-Galleon (Fireswarm)"
+			"Korath Ranger (Fireswarm)" 2
+			"Eave-Skiff" 6
+		add variant 3
+			"Arch-Carrack (Fireswarm)"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop (Fireswarm)"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger (Fireswarm)"
+			"Eave-Skiff" 6
+
+mission "Scrapyard: Efret Grappler Warmongers"
+	landing
+	invisible
+	to offer
+		never
+
+
+event "Efret Grappler Warmongers"
+	fleet "Kor Efret Home"
+		add variant 1
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+	fleet "Kor Efret Home"
+		add variant 1
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Echo-Galleon"
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 6
+		add variant 1
+			"Arch-Carrack"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship B (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 6
+		add variant 1
+			"Korath World-Ship C (Fireswarm)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 6
+
+mission "Add Kor Efret Fireswarms"
+	landing
+	invisible
+	to offer
+		never
+
+event "add kor efret fireswarms"
+	planet "Laki Nemparu"
+		add outfitter "Korath Fireswarm"
+	planet "Setar Fort"
+		add outfitter "Korath Fireswarm"

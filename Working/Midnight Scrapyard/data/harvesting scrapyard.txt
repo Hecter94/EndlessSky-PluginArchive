@@ -14,6 +14,7 @@
 minable "jump drive"
 	sprite "asteroid/jump drive/spin"
 	hull 20000
+	payload "Jump Drive" 1
 	payload "Jump Drive (Broken)" 4
 	payload "Scrap Metal" 20
 	explode "smoke" 40
@@ -28,6 +29,16 @@ minable "scrap metal"
 	explode "bolide" 40
 	explode "asteroid crunch small"
 
+minable "mereti"
+	sprite "asteroid/reasoning node/spin"
+	hull 5000
+	payload "Reasoning Node" 8
+	payload "Scrap Metal" 20
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch small"
+
+#deprecated version of minable "mereti"
 minable "reasoning node"
 	sprite "asteroid/reasoning node/spin"
 	hull 5000
@@ -37,6 +48,16 @@ minable "reasoning node"
 	explode "bolide" 40
 	explode "asteroid crunch small"
 
+minable "sestor"
+	sprite "asteroid/control transceiver/spin"
+	hull 5000
+	payload "Control Transceiver" 16
+	payload "Scrap Metal" 40
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch small"
+
+#deprecated version of minable "sestor"
 minable "control transceiver"
 	sprite "asteroid/control transceiver/spin"
 	hull 5000
@@ -53,35 +74,38 @@ outfit "Scrap Metal"
 	thumbnail "outfit/scrap metal"
 	"mass" 1
 	installable -1
-	description "Twisted wreckage from a destroyed spacecraft."
-	
+	description "Twisted wreckage from a destroyed spacecraft or other artificial object."
+
+
 
 mission "Scrapyard Add Scrap"
 	landing
 	invisible
 	to offer
-		has "Wanderers: Sestor: Final: done"
+		or
+			has "Wanderers: Sestor: Final: done"
+			has "Wanderers: Sestor: Final: Patched"
 	on offer
 		event "Scrapyard Add Scrap" 3
 		fail
 
 event "Scrapyard Add Scrap"
 	system "Celeborim"
-		add minables "control transceiver" 1 2.1
+		add minables "sestor" 1 2.1
 	system "Makferuti"
-		add minables "control transceiver" 1 2.3
+		add minables "sestor" 1 2.3
 	system "Asikafarnut"
-		add minables "control transceiver" 1 2.8
+		add minables "sestor" 1 2.8
 	system "Sobarati"
-		add minables "control transceiver" 1 2.4
+		add minables "sestor" 1 2.4
 	system "Silikatakfar"
-		add minables "control transceiver" 1 2
+		add minables "sestor" 1 2
 	system "Ferukistek"
-		add minables "control transceiver" 1 1.8
+		add minables "sestor" 1 1.8
 	system "Eneremprukt"
-		add minables "control transceiver" 1 1.6
+		add minables "sestor" 1 1.6
 	system "Mesuket"
-		add minables "control transceiver" 1 1
+		add minables "sestor" 1 1
 
 
 
@@ -105,10 +129,10 @@ event "Scrapyard More Scrap"
 	system "Sobarati"
 		add minables "scrap metal" 1 2.5
 	system "Silikatakfar"
-		add minables "reasoning node" 1 2.2
+		add minables "mereti" 1 2.2
 	system "Ferukistek"
-		add minables "reasoning node" 1 2.5
+		add minables "mereti" 1 2.5
 	system "Eneremprukt"
-		add minables "reasoning node" 1 2.7
+		add minables "mereti" 1 2.7
 	system "Mesuket"
-		add minables "reasoning node" 1 1.4
+		add minables "mereti" 1 1.4

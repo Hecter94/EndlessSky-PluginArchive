@@ -1,5 +1,5 @@
 # LEESt: The world's greatest Endless Sky plugin.
-# Copyright (C) 2021-2022 Lemuria
+# Copyright (C) 2021-2023 Lemuria
 
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU
 # General Public License as published by the Free Software Foundation, either version 3 of the
@@ -34,17 +34,23 @@ mission animeorg.landing
 
 				`"No, I don't feel like it."`
 					decline
-			
+
 			label accepted
-			"You decide to attend the screening. Reading directions on a poster, you walk to the theater. Many people walk alongside you, from the disreputable-looking to well-dressed people. Some of them have rifles, but you don't think of it. Some people in the crowd buy snacks and drinks, while you go straight to the cinema. You're briefed on the rules, such as remaining quiet at all times, not littering."
+			"You decide to attend the screening."
+			choice
+				`(Get snacks.)`
+					goto getSnacks
+				`(Walk straight to the theater.)`
+					goto walkToTheater
+
+			label getSnacks
+			"You buy your snacks and drinks at the concession stand. They are fairly cheap."
+			choice
+				`(Walk to the theater.)`
+					goto walkToTheater
+
+			label walkToTheater
+			"Reading directions on a poster, you walk to the theater. Many people walk alongside you, from the disreputable-looking to well-dressed people. Some of them have rifles, but you don't think of it. Some people in the crowd buy snacks and drinks, while you go straight to the cinema. You're briefed on the rules, such as remaining quiet at all times, and not littering."
 			"The anime they screen is good. After what feels like a few hours, the screening concludes as the end credits roll and you return to your ship, ready to leave."
 			action
 				set "watchedAnimeOnEisei"
-
-
-mission animeorg.landing.setFlag.landedOnEisei
-	landing
-	to offer
-		not "landedOnEisei"
-	on offer
-		set "landedOnEisei"

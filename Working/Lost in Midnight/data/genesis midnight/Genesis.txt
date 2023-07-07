@@ -1,0 +1,748 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+phrase "genesis"
+	word
+		"Za"
+		"Ki"
+		"Nine"
+		"Susi"
+		"Ara"
+		"Nai"
+		"Shu"
+		"Idu"
+	word
+		"chen"
+		"ni"
+		"me"
+		"mane"
+		"ser"
+		"ri"
+		"kun"
+		"shan"
+		"ra"
+		"mea"
+		"dea"
+		"shur"
+		"veh"
+		"rud"
+		"ghat"
+		"leh"
+		"gros"
+		"rat"
+	word
+		" "
+	word
+		"Mith"
+		"Sher"
+		"Nim"
+		"As"
+		"Shem"
+		"Chal"
+		"Mat"
+		"Min"
+		"Ash"
+		"Shal"
+		"Arz"
+		"Mad"
+		"Japh"
+		"Fars"
+		"Elam"
+	word
+		"ai"
+		"ana"
+		"ash"
+		"az"
+		"ath"
+		"eth"
+		"ei"
+		"ena"
+		"esh"
+		"ez"
+		"iene"
+		"ina"
+		"ish"
+		"iz"
+		"ith"
+		"oth"
+
+
+
+shipyard "Genesis"
+	"Genesis Spacecraft"
+	"Genesis Probe"
+	"Genesis Logistic"
+	"Genesis Transport"
+
+shipyard "Genesis Advanced"
+	"Genesis Cryoship"
+
+outfitter "Genesis"
+	"Cryogenic Cooler"
+	"Cryogenic Hub"
+	"Genesis Anti-Missile"
+	"Genesis Battery"
+	"Genesis Engines"
+	"Genesis Flak Turret"
+	"Genesis Flak Shell"
+	"Genesis Flak Shell Crate"
+	"Genesis Fuel Cell"
+	"Genesis Photovoltaic Array"
+	"Genesis Photovoltaic Panel"
+	"Genesis Radiothermal"
+	"Genesis Repair Bot"
+	"Genesis Narrowband Scanner"
+	"Genesis Thermionic"
+	"High Calibur Gun"
+	"High Calibur Boxes"
+	"High Calibur Ammo"
+	"Hydrogen Missile"
+	"Hydrogen Collector"
+	"Afterburner"
+	"Cargo Expansion"
+	"Fuel Pod"
+	"Luxury Accommodations"
+	"Outfits Expansion"
+
+outfitter "Genesis Advanced"
+	"Cryostasis Pod"
+	"Genesis Fission"
+	"Genesis Mining Laser"
+	"Icicle Gun"
+
+
+
+fleet "Genesis Space"
+	government "Genesis"
+	names "genesis"
+	personality surveillance mining harvests
+	cargo 0
+	variant 1
+		"Genesis Spacecraft"
+	variant 1
+		"Genesis Probe"
+
+fleet "Genesis Transports"
+	government "Genesis"
+	names "genesis"
+	personality uninterested
+	variant 1
+		"Genesis Logistic"
+	variant 1
+		"Genesis Transport"
+
+fleet "Genesis Colony"
+	government "Genesis"
+	names "genesis"
+	personality timid coward uninterested unconstrained
+	cargo 10
+	variant 1
+		"Genesis Cryoship"
+
+
+
+mission "First Contact: Genesis"
+	landing
+	autosave
+	name "Genesis Defense System"
+	description "Destroy the automated defense system that prevents the inhabitants of Genesis from exploring space. Then return to <origin>."
+	source "The Garden"
+	to offer
+		or
+			has "Cartography: The Garden: done"
+			has "Cartography: The Map: The Garden: done"
+
+	on offer
+		conversation
+			`While some aircraft rise to meet you, they do not open fire. That's usually a good sign. Eventually, they guide you to an open space with enough room for your ship to land. When you disembark, a delegation steps forward from the growing crowd to greet you. Naturally, you don't understand a word they're saying. At first, you get the impression that there are two species co-habiting this world. One has thick fur covering their bodies from head to toe, while the other is bald with apparently no body hair whatsoever. It's only after studying the gathered crowd that you realize that all the ones with fur appear to be male, while all the ones that are bald appear to be female. The females actually almost look like bald humans, while the males remind you of actors wearing werewolf makeup in old earth movies.`
+			`	One of them is attempting to clap out prime numbers in attempt to communicate with math when a shadow falls over the crowd. An eclipse?`
+			choice
+				`	(Look up.)`
+			scene "scene/scene-thunder maker eclipse"
+			`	It's hard to make out at first, but you soon realize that another of the Wanderer automated missile systems has momentarily blocked out the sun. All around you, the crowd is gasping in shock. They make gestures with their hands and bow their heads in what looks like a show of appeasement. Could it be some sort of religious ceremony?`
+			`	Your thoughts are interrupted by a male shouting at the crowd. He gestures toward you and says something you don't understand before heading off with a small group to board a nearby ship. While there are other ships nearby, no one moves to follow their example. The crowd looks to you.`
+			`	Somehow, you suspect you've found yourself at a pivotal point in this species history. How you conduct yourself in the next few moments could affect their development for years to come. Do you follow the other ship into space and fight the automated defense system?`
+			choice
+				`	(Liberate the inhabitants of Genesis.)`
+					goto hero
+				`	(Condemn them to life under the automaton's shadow.)`
+			`	You watch the alien ship head into space alone. There is a brief flash of light... Then nothing. You're certain those people won't be coming back. The crowd has fallen silent, save for the few that are openly weeping. They slowly disperse, leaving you with little to do but board your ship and wait for the shadow overhead to pass before leaving.`
+				flee
+			label hero
+			`	You board your ship and prepare to follow that brave crew into battle. The crowd cheers and a few other crews are inspired to board their own ships. If all goes well, you're about to take part in a turning point of their civilization.`
+				launch
+	on decline
+		"reputation: Genesis" == 0
+
+	on enter
+		dialog `It's worse than you thought. There are two defense systems pointing their launchers at you! Like the first one, they look worn with age. Hopefully some of their ammo's gone bad...`
+
+	npc
+		government "Genesis"
+		personality heroic vindictive
+		fleet
+			names "genesis"
+			cargo 0
+			variant
+				"Genesis Spacecraft" 3
+
+	npc disable
+		government "Wanderer (Hostile)"
+		system Genesis
+		personality waiting staying vindictive mute
+			confusion 30
+		ship "Thunder Maker B" "Vori'cha"
+		ship "Thunder Maker C" "Vori'key"
+		dialog "Both automatons are disabled and no additional reinforcements appear to be coming."
+
+	on visit
+		dialog `An automaton still casts its shadow upon the planet...`
+	on complete
+		"reputation: Genesis" += 10
+		event "Genesis Space Exploration"
+		event "Genesis Colony" 360
+		event "Genesis Cryoships Deployed" 540
+		conversation
+			scene "scene/scene-genesisspace"
+			`It was a hard battle, but the inhabitants of Genesis are now free to explore the vast potential of space. People are celebrating in the streets all over the planet. Though they do not share a language with you, their gratitude is unmistakeable. This is the beginning of a new era for them.`
+
+ship "Thunder Maker" "Thunder Maker B"
+	add attributes
+		"self destruct" .1
+	outfits
+		"Thunderhead Launcher" 13
+		"Thunderhead Storage Array" 13
+		"Thunderhead Missile" 740
+		"White Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	
+ship "Thunder Maker" "Thunder Maker C"
+	add attributes
+		"self destruct" -.1
+	outfits
+		"Thunderhead Launcher" 11
+		"Thunderhead Storage Array" 11
+		"Thunderhead Missile" 700
+		"White Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun 
+	
+event "Genesis Space Exploration"
+	system Genesis
+		add fleet "Genesis Space" 6000
+	planet "The Garden"
+		attributes midnight genesis
+		description `The inhabitants of Genesis have developed a pre-hyperdrive civilization. They are attempting to explore space. And now that you've cleared a path for them, they've begun to execute their space program in earnest.`
+
+event "Genesis Colony"
+	system Genesis
+		add fleet "Genesis Transports" 2000
+		object
+			sprite star/g0
+			distance 33.374
+			period 13.2124
+			offset 180
+		object
+			sprite star/k5
+			distance 84.626
+			period 13.2124
+		object
+			sprite planet/lava4
+			distance 735.383
+			period 205.556
+			offset 242.64
+		object "The Garden"
+			sprite planet/earth
+			distance 1532
+			period 618.084
+			offset 322.711
+			object "The Gate"
+				sprite planet/luna
+				distance 173
+				period 23.2957
+		object
+			sprite planet/desert10
+			distance 1986.42
+			period 912.569
+			offset 3.97754
+		object
+			sprite planet/gas1
+			distance 3103.76
+			period 1782.35
+			offset 271.705
+			object
+				sprite planet/dust7
+				distance 219
+				period 12.9533
+				offset 299.477
+			object
+				sprite planet/europa
+				distance 348
+				period 25.9468
+				offset 224.845
+			object
+				sprite planet/rhea
+				distance 520
+				period 47.3937
+				offset 196.692
+	planet "The Garden"
+		add description `They have set up an outfitter and shipyard. Many of the outfits are similar to equivalents you can find in human space.`
+		spaceport `The inhabitants of Genesis have constructed a simple spaceport, with runways, landing/launching pads, and hangars. Though they haven't developed a Hyperdrive, they still use hyperspace fuel in their engines and are able to refuel your ship.`
+		outfitter "Genesis"
+		shipyard "Genesis"
+
+planet "The Gate"
+	attributes midnight genesis
+	landscape land/earthrisever8
+	description `While this space colony has only the bare essentials to support life on this barren rock, that the inhabitants of Genesis built it in such a short time is a testament to their drive to explore the stars.`
+	"required reputation" 1
+
+
+
+mission "Genesis Visit Intermission (Garden)"
+	landing
+	invisible
+	source "The Garden"
+	to offer
+		has "event: Genesis Colony"
+		not "event: Genesis Cryoships Deployed"
+	on offer
+		conversation
+			scene "ship/genesis logistic"
+			`You notice some newer models among the ships arriving and leaving from their spaceport. Some of the natives give you a tour of their new outfitters and shipyards. Although you don't understand their words, the pride they have in these achievements is evident.`
+				decline
+
+mission "Genesis Visit Intermission (Gate)"
+	landing
+	invisible
+	source "The Gate"
+	to offer
+		has "event: Genesis Colony"
+		not "event: Genesis Cryoships Deployed"
+	on offer
+		conversation
+			scene "planet/luna"
+			`Although they inhabitants have built some structures on the surface of this planet, a proper spaceport isn't among them. More construction is underway, so this small colony should be more developed in the years to come.`
+				decline
+
+mission "Genesis Deuterium Request"
+	minor
+	name "Genesis Deuterium Mining"
+	description "Bring 10 tons of harvested Deuterium to <origin>."
+	source
+		government "Genesis"
+	to offer
+		has "event: Genesis Colony"
+	on offer
+		conversation
+			scene "outfit/harvested deuterium"
+			`One of the locals approaches you with what appears to be a chunk of frozen deuterium. While you can't understand the words spoken, it seems they want more of these. Despite not having developed a hyperdrive, the technology of the inhabitants of Genesis seems to rely heavily on consuming hyperspace fuel.`
+			choice
+				`	(Harvest some deuterium for them.)`
+				`	(Ignore this request.)`
+					decline
+			`	Hopefully, you understood their request correctly. Perhaps ten tons will be enough to satisfy them.`
+				accept
+	on complete
+		outfit "Deuterium" -10
+		payment 140000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 10 tons of deuterium and reward you with <payment>.`
+
+mission "Genesis Deuterium Harvest [tiny]"
+	job
+	repeat
+	name "Genesis Deuterium Mining"
+	description "Bring 10 tons of harvested Deuterium to <origin>. Payment is <payment>."
+	source
+		government "Genesis"
+	to offer
+		has "Genesis Deuterium Request: done"
+		random < 50
+	on complete
+		outfit "Deuterium" -10
+		payment 140000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 10 tons of deuterium and reward you with <payment>.`
+
+mission "Genesis Deuterium Harvest [small]"
+	job
+	repeat
+	name "Genesis Deuterium Mining"
+	description "Bring 20 tons of harvested Deuterium to <origin>. Payment is <payment>."
+	source
+		government "Genesis"
+	to offer
+		has "Genesis Deuterium Request: done"
+		random < 40
+	on complete
+		outfit "Deuterium" -20
+		payment 280000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 20 tons of deuterium and reward you with <payment>.`
+
+mission "Genesis Deuterium Harvest [medium]"
+	job
+	repeat
+	name "Genesis Deuterium Mining"
+	description "Bring 40 tons of harvested Deuterium to <origin>. Payment is <payment>."
+	source
+		government "Genesis"
+	to offer
+		has "Genesis Deuterium Harvest [small]: done"
+		random < 30
+	on complete
+		outfit "Deuterium" -40
+		payment 560000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 40 tons of deuterium and reward you with <payment>.`
+
+mission "Genesis Deuterium Harvest [large]"
+	job
+	repeat
+	name "Genesis Deuterium Mining"
+	description "Bring 80 tons of harvested Deuterium to <origin>. Payment is <payment>."
+	source
+		government "Genesis"
+	to offer
+		has "Genesis Deuterium Harvest [medium]: done"
+		random < 20
+	on complete
+		outfit "Deuterium" -80
+		payment 1120000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 80 tons of deuterium and reward you with <payment>.`
+
+mission "Genesis Deuterium Harvest [huge]"
+	job
+	repeat
+	name "Genesis Deuterium Mining"
+	description "Bring 160 tons of harvested Deuterium to <origin>. Payment is <payment>."
+	source
+		government "Genesis"
+	to offer
+		has "Genesis Deuterium Harvest [large]: done"
+		random < 10
+	on complete
+		outfit "Deuterium" -160
+		payment 2240000
+		dialog `The inhabitants of Genesis are grateful for your delivery of 160 tons of deuterium and reward you with <payment>.`
+
+
+
+event "Genesis Cryoships Deployed"
+	fleet "Genesis Space"
+		add variant 1
+			"Genesis Spacecraft (Icicle)"
+	fleet "Genesis Transports"
+		add variant 1
+			"Genesis Logistic (Icicle)"
+		add variant 1
+			"Genesis Transport (Icicle)"
+	system Genesis
+		add fleet "Genesis Colony" 8000
+		object
+			sprite star/g0
+			distance 33.374
+			period 13.2124
+			offset 180
+		object
+			sprite star/k5
+			distance 84.626
+			period 13.2124
+		object
+			sprite planet/lava4
+			distance 735.383
+			period 205.556
+			offset 242.64
+		object "The Garden"
+			sprite planet/earth
+			distance 1532
+			period 618.084
+			offset 322.711
+			object "The Gate"
+				sprite planet/luna
+				distance 173
+				period 23.2957
+		object
+			sprite planet/desert10
+			distance 1986.42
+			period 912.569
+			offset 3.97754
+		object
+			sprite planet/gas1
+			distance 3103.76
+			period 1782.35
+			offset 271.705
+			object
+				sprite planet/dust7
+				distance 219
+				period 12.9533
+				offset 299.477
+			object
+				sprite planet/europa
+				distance 348
+				period 25.9468
+				offset 224.845
+			object
+				sprite planet/rhea
+				distance 520
+				period 47.3937
+				offset 196.692
+			object "Revelations"
+				sprite planet/station2ver8
+				distance 600
+				period 35.9468
+				offset 196.692
+	planet "The Garden"
+		spaceport `The inhabitants of Genesis have constructed a new spaceport, with larger landing/launching pads and facilities to handle their new Cryoships. Though they haven't developed a Hyperdrive, they still use hyperspace fuel in their engines and are able to refuel your ship.`
+		add outfitter "Genesis Advanced"
+		add shipyard "Genesis Advanced"
+	planet "The Gate"
+		description `The inhabitants of Genesis have developed this spacecolony into a thriving city.`
+		spaceport `The landing pads are a bit smaller than you're accustomed to, but this is otherwise a fully serviceable spaceport.`
+
+planet "Revelations"
+	attributes midnight genesis
+	landscape land/station1ver8
+	description `The inhabitants of Genesis have deployed this space station on the edge of their solar system to study conditions in deep space.`
+	"required reputation" 1
+
+mission "Genesis Advanced Suppliers Patch"
+	landing
+	invisible
+	to offer
+		has "event: Genesis Cryoships Deployed"
+	on offer
+		event "genesis advanced suppliers patch"
+		fail
+
+event "genesis advanced suppliers patch"
+	planet "The Garden"
+		spaceport `The inhabitants of Genesis have constructed a new spaceport, with larger landing/launching pads and facilities to handle their new Cryoships. Though they haven't developed a Hyperdrive, they still use hyperspace fuel in their engines and are able to refuel your ship.`
+		add outfitter "Genesis Advanced"
+		add shipyard "Genesis Advanced"
+	outfitter "Genesis"
+		remove "Cryostasis Pod"
+		remove "Laser"
+		remove "Fusion"
+	shipyard "Genesis"
+		remove "Genesis Cryoship"
+	fleet "Genesis Space"
+		add variant 1
+			"Genesis Spacecraft (Icicle)"
+	fleet "Genesis Transports"
+		add variant 1
+			"Genesis Logistic (Icicle)"
+		add variant 1
+			"Genesis Transport (Laser)"
+
+mission "Genesis Patch Revelation3"
+	landing
+	invisible
+	to offer
+		has "event: Genesis Cryoships"
+	on offer
+		event "Genesis Revelation patch3"
+		fail
+		
+event "Genesis Revelation patch3"
+	system Genesis
+		object
+			sprite star/g0
+			distance 33.374
+			period 13.2124
+			offset 180
+		object
+			sprite star/k5
+			distance 84.626
+			period 13.2124
+		object
+			sprite planet/lava4
+			distance 735.383
+			period 205.556
+			offset 242.64
+		object "The Garden"
+			sprite planet/earth
+			distance 1532
+			period 618.084
+			offset 322.711
+			object "The Gate"
+				sprite planet/luna
+				distance 173
+				period 23.2957
+		object
+			sprite planet/desert10
+			distance 1986.42
+			period 912.569
+			offset 3.97754
+		object
+			sprite planet/gas1
+			distance 3103.76
+			period 1782.35
+			offset 271.705
+			object
+				sprite planet/dust7
+				distance 219
+				period 12.9533
+				offset 299.477
+			object
+				sprite planet/europa
+				distance 348
+				period 25.9468
+				offset 224.845
+			object
+				sprite planet/rhea
+				distance 520
+				period 47.3937
+				offset 196.692
+			object "Revelations"
+				sprite planet/station2ver8
+				distance 600
+				period 35.9468
+				offset 196.692
+	planet "Revelations"
+		attributes midnight genesis
+		landscape land/sivael0
+		description `The inhabitants of Genesis have deployed this space station on the edge of their solar system to study conditions in deep space.`
+		"required reputation" 1
+	planet Revelation
+		attributes saryd moon uninhabited
+		landscape land/canyon0
+		description `The Saryds are the only known species who successfully visited another world when their technology was still in the age of steam. The scientist who first landed here was piloting a ramshackle rocket ship of dizzying complexity. Modern analysis of his plans indicates that his flight had less than a one in ten thousand chance of success. This has led to speculation that he was either secretly assisted by friendly aliens, or completely insane, or possibly both.`
+		"required reputation" 15
+
+
+
+mission "Genesis Visit Colonization (Garden)"
+	minor
+	invisible
+	source "The Garden"
+	to offer
+		has "event: Genesis Cryoships Deployed"
+	on offer
+		conversation
+			scene "ship/genesis cryoship"
+			`One of the new ships is being loaded with metallic pods. Look closer?`
+			choice
+				`	(Look closer.)`
+				`	(Ignore this.)`
+					decline
+			scene "outfit/cryostasis pod"
+			`	Inside the pods are frozen people. There are hundreds of pods being loaded onto the ship.`
+				decline
+
+mission "Genesis Visit Colonization (Gate)"
+	minor
+	invisible
+	source "The Gate"
+	to offer
+		has "event: Genesis Cryoships Deployed"
+	on offer
+		conversation
+			scene "outfit/sunbeam"
+			`Several objects are prominently displayed at the spaceport. They appear to be Wanderer artifacts found on this moon. This archaeological discovery could have had some influence in recent developments of Genesis technology.`
+				decline
+
+mission "Genesis Visit Colonization (Revelations)"
+	landing
+	name "Defend <planet>!"
+	description "Protect <planet> from the unidentified invader!"
+	source "Revelations"
+	to offer
+		has "event: Genesis Cryoships Deployed"
+	on offer
+		conversation
+			scene "planet/station2ver8"
+			`The inhabitants of the station are panicked. Some are pointing at a map which is displaying what must be an unidentified flying object entering the system. One of their ships is preparing to launch, perhaps to intercept this invader from beyond. Join the defense?`
+			choice
+				`	(Join the defense!)`
+				`	(Wait aboard the station.)`
+					goto wait
+			`	You head for the <ship> and prepare to launch.`
+				accept
+			label wait
+			scene "thumbnail/subsidurial"
+			`	Their ship launches while you remain behind. The station staff communicates with them, but you don't understand their words. Suddenly an image pops up on a monitor. The others around you look upon it with what appears to be mixture of awe and horror. This must be their first time seeing a Subsidurial. They continue to monitor the creature as it moves about the system.`
+				decline
+	on enter
+		conversation
+			scene "thumbnail/subsidurial"
+			`You spot the invader some distance away. The communications from the inhabitants of Genesis are filled with excited chatter in words you don't understand. This may be their first time seeing a Subsidurial.`
+	npc
+		government "Genesis"
+		personality
+		fleet
+			cargo 0
+			variant
+				"Genesis Logistic (Icicle)"
+	npc
+		government "Indigenous Lifeform"
+		personality waiting staying timid mining harvests mute unconstrained
+		fleet
+			cargo 0
+			variant
+				"Subsidurial"
+	on complete
+		dialog "The occupants of the station continue to monitor the creature as it moves about the system."
+
+mission "Genesis Visit Colonization (Revelations) Epilogue"
+	landing
+	invisible
+	deadline 2
+	source "Revelations"
+	to offer
+		or
+			has "Genesis Visit Colonization (Revelations): done"
+			has "Genesis Visit Colonization (Revelations): declined"
+			has "Genesis Visit Colonization (Revelations): aborted"
+	npc
+		government "Indigenous Lifeform"
+		personality waiting staying timid mining harvests mute unconstrained
+		fleet
+			cargo 0
+			variant
+				"Subsidurial"
+

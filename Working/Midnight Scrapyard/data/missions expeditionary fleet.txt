@@ -20,11 +20,13 @@
 mission "Scrapyard Avalon TL 0"
 	landing
 	invisible
+	destination "Avalon"
 	to offer
-		has "Wanderers: Sestor: Final: done"
+		or
+			has "Wanderers: Sestor: Final: done"
+			has "event: wanderers: sestor eliminated"
 	on enter "Host"
 		dialog `This is where you fought the Alpha ship 'Giftbringer'. It might be a good idea to check the planet below for any renewed Alpha activity.`
-	on accept
 		fail
 
 mission "Scrapyard Sestor Expedtionary Fleet"
@@ -33,13 +35,15 @@ mission "Scrapyard Sestor Expedtionary Fleet"
 	source "Avalon"
 	destination "Laki Nemparu"
 	to offer
-		has "Wanderers: Sestor: Final: done"
+		or
+			has "Wanderers: Sestor: Final: done"
+			has "event: wanderers: sestor eliminated"
 	on offer
 		"Scrapyard Threat Level" ++
 		event "Sestor Expeditionary Fleets"
 		conversation
 			scene "scene/scene-brontosaurus"
-			`You spend a few hours scanning the planet for signs of Alpha activity. Fortunately, there is none. It would be a shame if some outside force threatened this primordial paradse. You take a moment to enjoy the scenery of exotic wildlife before returning to orbit.`
+			`You spend a few hours scanning the planet for signs of Alpha activity. Fortunately, there are none. It would be a shame if some outside force threatened this primordial paradise. You take a moment to enjoy the scenery of exotic wildlife before returning to orbit.`
 				accept
 	on enter
 		conversation
@@ -94,7 +98,6 @@ mission "Scrapyard Update Expeditionary Fleets"
 			and
 				has "Scrapyard Sestor Expedtionary Fleet: offered"
 				not "event: Sestor Expeditionary Fleets"
-			
 	on offer
 		"Scrapyard Threat Level" ++
 		event "Sestor Expeditionary Fleets"
@@ -119,13 +122,17 @@ event "Kor Sestor Hostile to Hai"
 			"Navy (Oathkeeper)" -.01
 			"Syndicate" -.01
 			"Hai" -.01
+			"Hai Merchant" -.01
+			"Hai Merchant (Human)" -.01
+			"Hai Merchant (Sympathizers)" -.01
 			"Hai (Unfettered)" -.01
+			"Hai (Wormhole Access)" -.01
 
 
 
 mission "Scrapyard Uwa Fahn Attack"
 	minor
-	name "Defend Icelake"
+	name "Defend <planet>"
 	description "An alien fleet has attacked <destination>. Defend <planet> from this interstellar threat."
 	source
 		near "Uwa Fahn" 1 3
@@ -158,7 +165,12 @@ mission "Scrapyard Uwa Fahn Attack"
 		system "Uwa Fahn"
 		government "Kor Sestor"
 		personality target waiting staying
-		fleet "Kor Sestor Expedition"
+		fleet
+			names "kor sestor"
+			variant
+				"Grakerat 572"
+				"Tercheldar 150" 4
+				"Skoretak 13" 8
 		dialog `The alien fleet has been defeated. Check if the authorities on <planet> will reward you for your efforts.`
 	
 	on complete
@@ -169,7 +181,7 @@ mission "Scrapyard Uwa Fahn Attack"
 
 mission "Scrapyard Bore Fah Attack"
 	minor
-	name "Defend Snowfeather"
+	name "Defend <planet>"
 	description "An alien fleet has attacked <destination>. Defend <planet> from this interstellar threat."
 	source 
 		near "Bore Fah" 1 3
@@ -199,14 +211,14 @@ mission "Scrapyard Bore Fah Attack"
 		personality heroic
 		fleet "Small Hai"
 		fleet "Hai Surveillance"
-	
+
 	npc kill
 		system "Bore Fah"
 		government "Invasive Predator"
 		personality target waiting disables unconstrained mute staying
 		fleet "Infested Sestor Expedition"
 		dialog `The alien threat has been defeated. Check if the authorities on <planet> will reward you for your efforts.`
-	
+
 	on complete
 		payment 500000
 		dialog `The authorities of <planet> reward you with <payment> for helping to defend against the alien threat.`
@@ -227,27 +239,30 @@ mission "Scrapyard Persitar Fleet Wreck"
 planet "Persitar Wreck"
 	attributes uninhabited midnight
 	landscape "land/nasa-ksc20170322"
-	description "These ruined derelicts appear to be part of a Kor Sestor expeditionary fleet. With no jump drives, it must have taken this fleet centuries to arrive here. The largest ship is loaded with construction equipment. If these ships had managed to find a suitable planet to set up a base of operations, it could have lead to the return of the Kor Sestor. You wonder how many more of these fleets are out there."
+	music ambient/derelictB
+	description "These ruined derelicts appear to be part of a Kor Sestor expeditionary fleet. With no jump drives, it must have taken this fleet centuries to arrive here. The largest ship is loaded with construction equipment. If these ships had managed to find a suitable planet to set up a base of operations, it could have lead to the return of the Kor Sestor. It is unknown how many more of these fleets are out there."
 
 event "Scrapyard Persitar Fleet Wreck"
 	system Persitar
 		add object "Persitar Wreck"
 			sprite "planet/wrecked sestor fleet"
-			distance 240
+			distance 2000
 			period 95
 
 mission "Scrapyard Persitar Wreck Hint"
 	landing
 	invisible
+	destination "Persitar Wreck"
 	to offer
 		has "event: Scrapyard Persitar Fleet Wreck"
 	on enter Persitar
 		dialog `You notice the wreckage of what appears to be a Kor Sestor fleet. But they aren't the Kor Sestor ships you normally see. It might be worth checking out.`
 
+
 mission "Scrapyard Exploring the Persitar Wreck"
 	landing
 	invisible
-	deadline 3
+	deadline 7
 	source "Persitar Wreck"
 	on offer
 		"Scrapyard Threat Level" ++
@@ -260,7 +275,11 @@ mission "Scrapyard Exploring the Persitar Wreck"
 	npc kill
 		government "Invasive Predator"
 		personality waiting staying disables unconstrained mute
-		fleet "Large Blight Hatchling" 3
+		fleet "Large Blight Hatchling" 2
+	npc kill
+		government "Invasive Predator"
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
 
 event "Blight Shadows Nest In Persitar"
 	system Persitar
@@ -325,65 +344,29 @@ mission "Scrapyard Stakoshstar 1"
 			commodities Equipment Electronics Construction
 			variant
 				"Grakerat 572"
-				"Tercheldar 150" 2
-				"Skoretak 13" 4
+				"Tercheldar 150" 4
+				"Skoretak 13" 8
 				"Stakoshtar 187"
 		conversation
 			scene "ship/stakoshtar 187/stakoshtar"
-			apply
+			action
 				set "defeatedd stakoshtar 187 in prakacha'a"
 			`You've stopped the Stakoshtar 187 from damaging any more worlds. A telepathic presence addresses you. It says, "During their civil war, the Korath used this weapon against planetary targets. Scars from such battles still cover the surface of many of their worlds. You've done well to stop this one."`
 				accept
-
-
+	on complete
+		"reputation: Wanderer" += 10
+		dialog `The Wanderers are thankful that you removed the threat of the <npc> falling into Unfettered hands.`
 
 event "stakoshtar in prakacha'a"
 	system "Prakacha'a"
-		object
-			sprite star/g0
-			distance 32.5255
-			period 12.7118
-			offset 180
-		object
-			sprite star/k5-old
-			distance 82.4745
-			period 12.7118
-		object
+		remove object
+			sprite planet/rock18
+			distance 270
+			period 39.3874
+		add object
 			sprite planet/lava4-b
-			distance 247.965
-			period 40.2479
-		object
-			sprite planet/desert5-b
-			distance 458.205
-			period 101.099
-		object
-			sprite planet/rock19-b
-			distance 692.455
-			period 187.822
-		object
-			sprite planet/tethys
-			distance 846.065
-			period 253.667
-		object
-			sprite planet/gas6-b
-			distance 4036.31
-			period 2643.24
-			object
-				sprite planet/callisto-b
-				distance 294
-				period 12.8761
-			object
-				sprite planet/rock3-b
-				distance 437
-				period 23.3339
-			object
-				sprite planet/io-b
-				distance 540
-				period 32.052
-			object
-				sprite planet/dust3-b
-				distance 723
-				period 49.6561
+			distance 270
+			period 39.3874
 
 mission "Scrapyard Stakoshstar Expeditions"
 	landing
@@ -398,6 +381,11 @@ event "Stakoshstar Expeditions"
 	fleet "Kor Sestor Expedition"
 		add variant 1
 			"Grakerat 572"
-			"Tercheldar 150" 2
+			"Tercheldar 150" 4
 			"Skoretak 13" 8
 			"Stakoshtar 187(SD)"
+		add variant 1
+			"Grakerat 572"
+			"Tercheldar 150" 4
+			"Skoretak 13" 8
+			"Stakoshtar 187(SD)" 2

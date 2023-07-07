@@ -17,6 +17,14 @@
 
 event "Infected with Shadowblight"
 
+mission "Infected with Shadowblight Fix"
+	landing
+	invisible
+	to offer
+		has "event: Infected with Shadowblight"
+	on offer
+		set "Infected with Shadowblight"
+		fail
 
 
 mission "Scrapyard Sebra Skira TL5"
@@ -26,7 +34,6 @@ mission "Scrapyard Sebra Skira TL5"
 		"Scrapyard Threat Level" >= 5
 	on enter "Silikatakfar"
 		dialog `There's an old space station here. It might be worth checking out.`
-	on accept
 		fail
 
 mission "Scrapyard Eggs Pirate 1"
@@ -57,7 +64,7 @@ mission "Scrapyard Eggs Pirate 1"
 			`	You carefully load the eggs into a crate and store them in your cargo hold. Perhaps they will be worth something to the right buyer. Perhaps a place that deals with exotic animals would be interested...`
 				accept
 	on decline
-		event "Infected with Shadowblight"
+		set "Infected with Shadowblight"
 		log `Destroyed some Blight Shadow eggs. The black slime that splattered me was disgusting. Washing it off wasn't easy.`
 	on accept
 		event "Pirate Egg timer" 180
@@ -133,7 +140,7 @@ mission "Scrapyard Eggs Pirate 3"
 	npc kill
 		government "Escort"
 		personality launching escort disables mute
-		ship "Blight Shadow"
+		ship "Blight Shadow" "Blight Shadow"
 		dialog `It was a crazy idea to try keeping one as a pet. But the Blight Shadow that you hatched from an egg served you well in the time you had together.`	
 	on complete
 		log `Gemini Jack's exotic animal zoo was wiped out. I won't be able to get a new Blight Shadow to replace the one I lost from them.`
@@ -144,6 +151,8 @@ mission "Scrapyard Eggs Pirate 3"
 mission "Scrapyard Pirate Eggs Hatch"
 	landing
 	invisible
+	repeat
+	deadline 3
 	to offer
 		has "event: Pirate Egg timer"
 		not "Scrapyard Eggs Pirate 2: offered"
@@ -186,7 +195,6 @@ mission "Scrapyard Devru Kaska TL15"
 			has "Scrapyard Pirate Eggs Hatch: offered"
 	on enter "Sobarati"
 		dialog `There's an old space station here. It might be worth checking out.`
-	on accept
 		fail
 
 mission "Scrapyard Eggs Remnant 1"
@@ -231,7 +239,7 @@ mission "Scrapyard Eggs Remnant 1"
 			`	You carefully load the eggs into a crate and store them in your cargo hold. After your experience with the pirates, you wonder if taking them to the Remnant might yield better results...`
 				accept
 	on decline
-		event "Infected with Shadowblight" 
+		set "Infected with Shadowblight" 
 		log `Destroyed some Blight Shadow eggs. The black slime that splattered me was disgusting. Washing it off wasn't easy.`
 	on accept
 		event "Remnant Egg timer" 30
@@ -322,7 +330,7 @@ mission "Scrapyard Blight Rifle 1"
 	on accept
 		log `The prototype Blight Rifle exploded during a boarding battle, splattering me with black slime. I wasn't injured, but the rifle was ruined.`
 		outfit "Blight Rifle" -1
-		event "Infected with Shadowblight" 
+		set "Infected with Shadowblight" 
 	on complete
 		dialog `Head to the spaceport to report your Blight Rifle field test results to Prefect Chilia.`
 
@@ -389,6 +397,7 @@ mission "Scrapyard Remnant Eggs Hatch"
 	landing
 	invisible
 	repeat
+	deadline 3
 	to offer
 		has "event: Remnant Egg timer"
 		not "Scrapyard Eggs Remnant 1: done"
@@ -434,8 +443,9 @@ mission "Scrapyard Plume's Research"
 	landing
 	invisible
 	source "Aventine"
+	deadline 7
 	to offer
-		has "event: Blight Rifle Testing"
+		has "event: Remnant Egg timer"
 		random < 25
 	on offer
 		conversation
@@ -451,7 +461,7 @@ mission "Scrapyard Plume's Research"
 				`	"Was anyone hurt?"`
 				`	"What have you learned?"`
 					goto research
-			apply
+			action
 				"reputation: Remnant" ++
 			`	"No, but the creatures escaped before we could study them." His notes trail off on a mournful tone. "We've put more vigorous safety protocols into practice with the remaining test subjects.`
 			choice
@@ -466,31 +476,32 @@ mission "Scrapyard Plume's Research"
 		dialog `Plume mentioned that some of the Blight Shadows escaped. He never indicated if they were all caught...`
 	npc kill
 		government "Invasive Predator"
-		personality waiting disables unconstrained mute
-		fleet "Small Blight Hatchling" 3
+		personality waiting staying disables unconstrained mute
+		fleet "Large Blight Hatchling"
+		dialog `These Blight Shadows are weaker than the ones you've encountered in Sestor space. They could just be hatchlings. Or maybe the Ember Waste is somehow inhospitable to them.`
 	npc kill
 		government "Invasive Predator"
 		system
 			distance 1 2
-		personality waiting disables unconstrained mute
-		fleet "Small Blight Hatchling" 2
+		personality entering disables unconstrained mute
+		fleet "Small Blight Hatchling"
 	npc kill
 		government "Invasive Predator"
 		system
 			distance 2 3
-		personality waiting disables unconstrained mute
+		personality entering disables unconstrained mute
 		fleet "Small Blight Hatchling"
-		dialog `These Blight Shadows are weaker than the ones you've encountered in Sestor space. They could just be hatchlings. Or maybe the Ember Waste is somehow inhospitable to them.`
 
 
 
 mission "Scrapyard Shadowblight Hai"
 	landing
 	invisible
+	deadline 7
 	source
 		government "Hai"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 	on offer
 		event "Shadowblight Hai"
 	on enter
@@ -504,14 +515,31 @@ event "Shadowblight Hai"
 	system "Bote Asu"
 		add fleet "Large Blight Shadow" 50000
 
+mission "Scrapyard Adjust Shadowblight Hai"
+	landing
+	invisible
+	to offer
+		has "event: Shadowblight Hai"
+	on offer
+		event "Adjust Shadowblight Hai"
+		fail
+
+event "Adjust Shadowblight Hai"
+	system "Bote Asu"
+		remove fleet "Large Blight Shadow"
+	system "Lom Tahr"
+		add fleet "Large Blight Shadow" 50000
+	system "Fah Root"
+		add fleet "Large Blight Shadow" 50000
 
 mission "Scrapyard Shadowblight Wanderer"
 	landing
 	invisible
+	deadline 7
 	source
 		government "Wanderer"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 	on offer
 		event "Shadowblight Wanderer"
 	on enter
@@ -544,10 +572,11 @@ event "Adjust Shadowblight Wanderer"
 mission "Scrapyard Shadowblight Coalition"
 	landing
 	invisible
+	deadline 7
 	source
 		government "Coalition"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 	on enter
 		dialog `The Blight Shadows have reached Coalition space. Could they be following you?`
 	npc kill
@@ -560,10 +589,11 @@ mission "Scrapyard Shadowblight Coalition"
 mission "Scrapyard Shadowblight Remnant"
 	landing
 	invisible
+	deadline 7
 	source
 		government "Remnant"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 	on enter
 		dialog `The Blight Shadows have reached Remnant space. Could they be following you?`
 	npc kill
@@ -576,10 +606,11 @@ mission "Scrapyard Shadowblight Remnant"
 mission "Scrapyard Shadowblight Human"
 	landing
 	invisible
+	deadline 7
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Pirate"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 	on offer
 		event "Shadowblight Human"
 	on enter
@@ -699,6 +730,56 @@ event "Shadowblight Human"
 	system Umbral
 		add fleet "Large Blight Shadow" 50000
 
+mission "Scrapyard Shadowblight Human Addon"
+	landing
+	invisible
+	to offer
+		has "Infected with Shadowblight"
+	on offer
+		event "Shadowblight Human Addon"
+		fail
+
+event "Shadowblight Human Addon"
+	system Atik
+		add fleet "Large Blight Shadow" 50000
+
+
+
+mission "Scrapyard Shadowblight Bunrodea"
+	landing
+	invisible
+	deadline 7
+	source
+		government "Bunrodea"
+	to offer
+		has "Infected with Shadowblight"
+	on offer
+		event "Shadowblight Bunrodea"
+	on enter
+		dialog `The Blight Shadows have reached Bunrodea space. Could they be following you?`
+	npc kill
+		government "Invasive Predator"
+		personality waiting disables unconstrained mute
+		fleet "Large Blight Shadow"
+
+event "Shadowblight Bunrodea"
+	system "Sera Natta"
+		add fleet "Large Blight Shadow" 50000
+	system "Gento Ah"
+		add fleet "Large Blight Shadow" 50000
+	system "Xutluno Rees"
+		add fleet "Large Blight Shadow" 50000
+	system "Xutluno Fali"
+		add fleet "Large Blight Shadow" 50000
+	system "Paru Paru"
+		add fleet "Large Blight Shadow" 50000
+	system "Era Natta"
+		add fleet "Large Blight Shadow" 50000
+	system "Genta Bo"
+		add fleet "Large Blight Shadow" 50000
+	system "Eneva Katta"
+		add fleet "Large Blight Shadow" 50000
+
 
 
 mission "Scrapyard Random Station Eggs"
@@ -709,7 +790,7 @@ mission "Scrapyard Random Station Eggs"
 	source
 		planet "Sebra Skira" "Devru Kaska" "Metwar Skaretar" "Makwar Pratarati"
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 		random < 20
 	on offer
 		conversation
@@ -739,7 +820,7 @@ mission "Scrapyard Blight Mutation"
 	landing
 	invisible
 	to offer
-		has "event: Infected with Shadowblight"
+		has "Infected with Shadowblight"
 		has "event: Blight Shadows Nest In Persitar"
 		"Scrapyard Threat Level" >= 25
 	on offer
@@ -781,7 +862,7 @@ event "scrapyard blight horrors"
 	system Makferuti
 		add fleet "Small Blight Horror" 1200
 	system Asikafarnut
-		remove fleet "Small Blight Shadow" 
+		remove fleet "Small Blight Shadow"
 		add fleet "Small Blight Horror" 1200
 	system Sobarati
 		add fleet "Small Blight Horror" 1200
@@ -874,6 +955,8 @@ mission "Scrapyard: Quarg Hunter"
 	waypoint "Sobarati"
 	to offer
 		"Scrapyard Threat Level" >= 5
+		not "Scrapyard: Big Game Hunter: active"
+		not "Scrapyard: Big Game Hunter: failed"
 		or
 			and
 				not "Scrapyard: Quarg Hunter: done"
@@ -902,7 +985,7 @@ mission "Scrapyard: Quarg Hunter"
 
 			label "blood paint"
 
-			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos Maharim! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain our hull green with their blood as you have! Return by <date>. Is more fun than staying on ringworld, no?" The Quarg in this region of space might not follow the details of human political affairs and are probably unaware of the Free Worlds...`
+			`	"Good!" The Quarg straightens to its full height, "Me am Quaelar-Enkaras Foksarardelaos Maharim! But human may call me Quaelar-En. You lead my ship into Sestor region. We hunt Blight Shadows. Stain me hull green with their blood as you have! Return by <date>. Is more fun than staying on ringworld, no?" The Quarg in this region of space might not follow the details of human political affairs and are probably unaware of the Free Worlds...`
 				goto decision
 			
 			label "repeat"
@@ -967,7 +1050,7 @@ mission "Scrapyard: Quarg Hunter Patch"
 		clear "Scrapyard: Quarg Hunter: offered"
 		clear "Scrapyard: Quarg Hunter: declined"
 		fail
-		
+
 mission "Scrapyard: Quarg Hunter Log"
 	landing
 	invisible
@@ -977,3 +1060,40 @@ mission "Scrapyard: Quarg Hunter Log"
 		log "People" "Quaelar-En" `A Quarg who enjoys the thrill of the hunt, Quaelar-En has mentioned that the hull of one's ship should be stained with the blood of one's enemies. The hull of its ship is blue...`
 		log `Hunted Blight Shadows with the Quarg, Quaelar-En, who hoped to stain its hull green with their blood. While many Blight Shadows were slain, the hull of its ship is still unmistakably blue...`
 		fail
+
+mission "Scrapyard: Big Game Hunter"
+	landing
+	invisible
+	to offer
+		has "Scrapyard: Quarg Hunter: done"
+		"Scrapyard Threat Level" >= 30
+	destination "Kuwaru Efreti"
+	on enter Sayaiban
+		fail
+		conversation
+			scene "scene/scene-blue wardragon"
+			`A familiar looking Quarg Wardragon is lurking among the rocks. Quaelar-en hails, "Big shadow spotted here. Me hunt it. You watch!" For a brief moment you do sense something moving in the shadows between asteroids...`
+	npc save
+		government "Quarg"
+		system Sayaiban
+		personality waiting staying heroic vindictive unconstrained
+		ship "Blue Wardragon" "Dar-Quelar"
+	npc
+		government "Invasive Predator"
+		system Sayaiban
+		personality waiting staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+	npc kill
+		government "Invasive Predator"
+		system Sayaiban
+		personality target waiting staying disables unconstrained mute
+		ship "Blight Terror" "Blight Shadow"
+		dialog `Quaelar-en says, "Big one dead. We hunt again someday!"`
+	on complete
+		event "blight terrors in sayaiban"
+
+event "blight terrors in sayaiban"
+	system Sayaiban
+		add fleet "Small Blight Horror" 30000
+		add fleet "Small Blight Terror" 20000
+

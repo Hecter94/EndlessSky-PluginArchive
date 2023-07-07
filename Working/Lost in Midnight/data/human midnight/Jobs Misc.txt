@@ -11,69 +11,21 @@
 
 
 
-mission "Bounty Hunting: Tweedledee & Tweedledum"
-	job
-	name "Wanted Bandit near <system>"
-	description "A pair of old Berserkers named the Tweedledee & Tweedledum have been attacking merchants near <system>. Eliminate these ships, then report to <destination> for payment (<payment>)."
-	source
-		government "Republic" "Free Worlds"
-		attributes "dirt belt"
-	to offer
-		"combat rating" >= 100
-		random < 10
-	npc kill
-		government "Bounty"
-		system
-			distance 1 2
-		personality target waiting staying plunders harvests
-			confusion 20
-		ship "Berserker (Energy Cannons)" "Tweedledee"
-		ship "Berserker (Energy Cannons)" "Tweedledum"
-		dialog `Tweedledee & Tweedledum have been eliminated. You can claim the bounty payment by returning to <destination>.`
-	on visit
-		dialog `You've landed on <planet>, but Tweedledee & Tweedledum have not been eliminated yet. Hunt them down and destroy them before returning.`
-	on complete
-		payment 100000
-		dialog `The government of <planet> gratefully pays you <payment> for eliminating Tweedledee & Tweedledum.`
-
-mission "Bounty Hunting: Angry Chicken"
-	job
-	name "Wanted Bandit near <system>"
-	description "A Modified Firebird named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
-	source
-		government "Republic" "Free Worlds"
-		attributes "south"
-	to offer
-		"combat rating" >= 100
-		random < 10
-	npc kill
-		government "Bounty"
-		system
-			distance 1 2
-		personality target waiting staying plunders harvests
-			confusion 20
-		ship "Modified Firebird" "Angry Chicken"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 125000
-		dialog phrase "generic bounty hunting payment dialog"
-
 mission "Bounty Hunting: Mother Goose"
 	job
+	deadline 14
 	name "Wanted Bandit near <system>"
 	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Eliminate the fleet, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic"
 		attributes "deep"
 	to offer
-		"combat rating" >= 100
+		"combat rating" >= 250
 		random < 10
 	npc kill
 		government "Bounty"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying plunders harvests
 			confusion 20
 		ship "Aerie (Energy Cannons)" "Mother Goose"
@@ -88,18 +40,19 @@ mission "Bounty Hunting: Mother Goose"
 
 mission "Bounty Hunting: Humpty Dumpty"
 	job
+	deadline 14
 	name "Wanted Bandit near <system>"
 	description "An old Hauler named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
 	source
 		government "Syndicate"
 		attributes "frontier"
 	to offer
-		"combat rating" >= 100
+		"combat rating" >= 350
 		random < 10
 	npc kill
 		government "Bounty"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying plunders harvests
 			confusion 20
 		ship "Hauler (Energy Cannons)" "Humpty Dumpty"
@@ -112,18 +65,19 @@ mission "Bounty Hunting: Humpty Dumpty"
 
 mission "Bounty Hunting: Jabberwocky"
 	job
+	deadline 14
 	name "Wanted Bandit near <system>"
 	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
 	source
 		government "Republic"
 		attributes "frontier"
 	to offer
-		"combat rating" >= 100
+		"combat rating" >= 400
 		random < 10
 	npc kill
 		government "Bounty"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying plunders harvests
 			confusion 20
 		ship "Modified Aerie" "Jabberwocky"
@@ -187,6 +141,7 @@ outfit "Prototype Ramscoop FCX"
 	"hull fuel" 10
 	"afterburner fuel" 10
 	"cloaking fuel" 10
+	description "This prototype isn't working as intended..."
 
 mission "Engineering Room: Prototype Test 2"
 	name "Prototype Test"
@@ -235,6 +190,7 @@ outfit "Prototype Lodestone Engine MDX"
 	thumbnail "outfit/unknown"
 	"mass" 1000
 	"drag" 100
+	description "This prototype isn't working as intended..."
 
 mission "Engineering Room: Prototype Test 3"
 	name "Prototype Test"
@@ -281,8 +237,9 @@ mission "Engineering Room: Prototype Test 3"
 outfit "Prototype Shield Modulator SD-DSD"
 	category "Systems"
 	thumbnail "outfit/unknown"
-	"shield delay" 800
-	"depleted shield delay" 800
+	"shield delay" 600
+	"depleted shield delay" 600
+	description "This prototype isn't working as intended..."
 
 mission "Engineering Room: Prototype Test 4"
 	name "Prototype Test"
@@ -338,6 +295,7 @@ outfit "Prototype Cooling HGX"
 	"afterburner heat" 80
 	"cloaking heat" 80
 	"heat protection" -.99
+	description "This prototype isn't working as intended..."
 
 mission "Engineering Room: Prototype Test 5"
 	name "Prototype Test"
@@ -393,6 +351,7 @@ outfit "Prototype Power Converter ECX"
 	"afterburner energy" 10
 	"cloaking energy" 10
 	"energy protection" -.99
+	description "This prototype isn't working as intended..."
 
 
 
@@ -448,9 +407,8 @@ mission "Executive Guard: Syndicated Systems"
 		fleet
 			names "syndicate capital"
 			variant
-				"Vanguard (Proton Gun-CF8)"
-				"Vanguard"
-				"Protector (Proton)" 2
+				"Vanguard (Proton Gun-CF8)" 2
+				"Protector (Proton Turret-ATS)" 2
 		fleet
 			names "syndicate small"
 			variant
@@ -475,7 +433,7 @@ mission "Executive Guard: Syndicated Systems"
 		personality waiting staying heroic
 		ship "Executive Guard" "S.S. Magnus"
 		conversation
-			apply
+			action
 				"reputation: Syndicate" <?= -1000
 			scene "outfit/brig"		
 			`You've captured the CEO of Syndicated Systems! Return to <destination> where he'll be held for ransom.`
@@ -542,9 +500,8 @@ mission "Executive Guard: Syndicated Shipyards"
 		fleet
 			names "syndicate capital"
 			variant
-				"Vanguard (Proton Gun-CF8)"
-				"Vanguard"
-				"Protector (Proton)" 2
+				"Vanguard (Proton Gun-CF8)" 2
+				"Protector (Proton Turret-ATS)" 2
 		fleet
 			names "syndicate small"
 			variant
@@ -568,7 +525,7 @@ mission "Executive Guard: Syndicated Shipyards"
 		personality waiting staying heroic
 		ship "Executive Guard" "S.S. Decimus"
 		conversation
-			apply
+			action
 				"reputation: Syndicate" <?= -1000
 			scene "outfit/brig"		
 			`You've captured the CEO of Syndicated Shipyards! Return to <destination> where he'll be held for ransom.`
@@ -585,83 +542,13 @@ mission "Executive Guard: Syndicated Shipyards"
 
 
 
-mission "Hijacked Escort"
-	name "Escort to <planet>"
-	description "The captain of the <npc> will pay you 150,000 credits to escort them safely out of this dangerous region of space to reach <destination> by <date>."
-	job
-	repeat
-	deadline 10
-	to offer
-		random < 5
-		"combat rating" > 200
-	source
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
-		attributes "frontier" "north"
-	destination
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
-		attributes "deep" "paradise" "near earth" "core"
-		distance 4 4
-	on accept
-		"reputation: Bounty (Disguised)" >?= 1
-	on enter
-#jumps 0
-	on enter
-#jumps 1
-	on enter
-#jumps 2
-	on enter
-#jumps 3
-		"reputation: Bounty (Disguised)" <?= -1
-		dialog `The <npc> hails you: "Emergency! Pirate stowaways have taken over the ship! Get over here and save us!" Retaking the ship to rescue the passengers may not be easy.`
-	npc
-		government "Pirate"
-		personality nemesis harvests plunders
-		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
-	npc
-		government "Pirate"
-		personality nemesis harvests plunders
-		system
-			distance 1 2
-		fleet "Small Northern Pirates"
-	npc
-		government "Pirate"
-		personality nemesis harvests plunders
-		system
-			distance 1 1
-		fleet "Large Northern Pirates"
-	
-	npc capture
-		government "Bounty (Disguised)"
-		personality target escort marked timid
-		fleet
-			names "civilian"
-			variant 1
-				"Bactrian (Hijacked)"
-			variant 2
-				"Star Queen (Hijacked)"
-		dialog `You've taken control of the <npc> from the hijackers. Bring the rescued passengers to <destination>.`
-	on abort
-		"reputation: Bounty (Disguised)" >?= 1
-		"reputation: Merchant" -= 10
-		dialog "The <npc> never made it to its destination. There are nasty rumors that you hijacked the ship yourself..."
-	on fail
-		"reputation: Bounty (Disguised)" >?= 1
-		"reputation: Merchant" -= 10
-		dialog "The <npc> never made it to its destination. There are nasty rumors that you hijacked the ship yourself..."
-	on complete
-		"reputation: Bounty (Disguised)" >?= 1
-		payment 300000
-		dialog `While it is unfortunate that the crew of the <npc> died, the passengers are grateful for your efforts to rescue and transport them to <planet>. With the bonus pay they offer, your reward for this job comes to <payment>.`
-
-
-
 phrase "Cupid's Arrow"
 	word
 		"Cupid's Arrow"
 
 mission "Holiday: Cupid's Arrow"
 	job
+	deadline 14
 	name "Cupid's Arrow"
 	description "Chocolate deliveries are being raided by a pirate ship known as Cupid's Arrow near <system>. Destroy the ship then return to <planet> for payment (<payment>)."
 	source
@@ -670,11 +557,11 @@ mission "Holiday: Cupid's Arrow"
 		not attributes "station"
 	to offer
 		month == 2
-		day == 14
+		day < 14
 	npc kill
 		government "Bounty (Disguised)"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying uninterested
 		fleet
 			names "Cupid's Arrow"
@@ -713,34 +600,37 @@ mission "Holiday: Saint Nick"
 		not attributes "station"
 	to offer
 		month == 12
-		random < 30 - "day"
+		random < 31 - "day"
 	npc
 		government "Pirate"
 		system destination
 		personality plunders harvests
-		ship "Fury (Bomber)" "Evil Elf"
+		ship "Fury (Bomber)" "Rockin' Elfis"
 		ship "Fury (Bomber)" "Bah Humbug"
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" > 1
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 1
 		government "Pirate"
 		system destination
 		personality waiting staying plunders harvests
 		ship "Marauder Falcon (Weapons)" "Krampus"
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" > 2
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 2
 		government "Pirate"
 		system destination
 		personality waiting staying plunders harvests
 		ship "Marauder Leviathan (Weapons)" "Scrooge"
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" > 3
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 3
 		government "Pirate"
 		system destination
 		personality waiting staying plunders harvests
 		ship "Bactrian" "Bad Santa"
+		ship "Dagger" "Snow Devil"
+		ship "Dagger" "Jack Frost"
+		ship "Dagger" "Rotten Eggnog"
 	npc accompany save
 		government "Merchant"
 		personality target escort pacifist
@@ -758,64 +648,6 @@ mission "Holiday: Saint Nick"
 
 
 
-mission "Testing: Proton Gun-CF8"
-	name "Syndicate weapons test"
-	job
-	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
-	source
-		government Syndicate
-	destination
-		distance 1 3
-		government Syndicate
-	to offer
-		has "main plot completed"
-		random < 60
-		"combat rating" > 1000
-		"destroyed Syndicate target ship" < 3
-	npc save disable "scan outfits"
-		government "Test Dummy"
-		personality disables staying heroic target
-			confusion 120
-		system destination
-		ship "Vanguard Test-PGCF8" "Syndicate Test Vessel"
-		conversation
-			scene "outfit/proton gun-cf8"
-			"You scan the disabled craft and take careful measurements of the battle damage. While doing so, you notice the Proton Guns on this ship must be some new model they wanted to test. Time to deliver the results on <planet>."
-	on visit
-		dialog "You forgot to either disable or scan the target dummy ship in <system>! You'll need to head back there and do that before you can return here for payment."
-	on abort
-		# No penalty
-	on fail
-		dialog "The robotic target ship has been destroyed. You are hailed by an angry Syndicate official who fines you <payment> and warns you that further mistakes of this nature may remove you from eligibility for these jobs."
-		"destroyed Syndicate target ship" += 3
-		"reputation: Syndicate" -= 3
-		payment -2000000
-	on complete
-		payment 125000
-		event "Proton Gun-CF8 added to outfitters" 30
-		dialog "You transmit the scan results to a team of eager engineers and collect your payment of <payment>."
-
-event "Proton Gun-CF8 added to outfitters"
-	outfitter "Syndicate Advanced"
-		add "Proton Gun-CF8"
-
-ship "Vanguard" "Vanguard Test-PGCF8"
-	add attributes
-		"automaton" 1
-		"self destruct" 1
-	outfits
-		"Proton Gun-CF8" 7
-		"Anti-Missile Turret"
-		"Fusion Reactor"
-		"LP144a Battery Pack"
-		"S-970 Regenerator"
-		"Liquid Nitrogen Cooler"
-		"Laser Rifle" 4
-		"X3700 Ion Thruster"
-		"X4200 Ion Steering"
-		"Hyperdrive"
-
-
 
 ##########################
 # Jobs that repeat
@@ -826,9 +658,10 @@ mission "Bounty Hunting (Secret Prototype)"
 	description "A heavy warship known as the <npc> has stolen a secret prototype near the <system> system. Recover the cargo and return it to <planet> for payment (<payment>)"
 	repeat
 	job
+	deadline 14
 	to offer
 		"combat rating" > 1000
-		random < 10
+		random < 5
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
@@ -836,7 +669,7 @@ mission "Bounty Hunting (Secret Prototype)"
 		government "Bounty (Disguised)"
 		personality heroic staying marked target
 		system
-			distance 2 3
+			distance 1 1
 		fleet
 			names "pirate"
 			cargo 3
@@ -894,10 +727,11 @@ mission "Bounty Hunting (Smuggler)"
 		personality timid fleeing uninterested entering target
 		fleet
 			names "civilian"
+			outfitters "Contraband"
 			variant
 				"Modified Clipper (Smuggler)"
 			variant
-				"Modified Argosy (Smuggler)"
+				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
 		dialog "You blast your way onto the ship and confine the captain to your ship's brig. Time to deliver them to <planet>."
@@ -913,6 +747,7 @@ mission "Corporate espionage [1]"
 	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
 	job
 	repeat
+	deadline 1 3
 	to offer
 		random < 10
 	source
@@ -937,11 +772,12 @@ mission "Corporate espionage [1]"
 
 mission "Corporate espionage [2]"
 	name "Corporate espionage"
+	deadline 1 3
 	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
 	job
 	repeat
 	to offer
-		random < 10
+		random < 5
 	source
 		government Republic Syndicate Neutral
 	destination
@@ -1047,6 +883,7 @@ mission "Energy Cannon Outfitter"
 		
 outfitter "Energy Cannon"
 	"Energy Cannon"
+	"Energy Cannon Turret"
 
 event "energy cannon outfitter"
 	planet Haven
@@ -1059,9 +896,10 @@ event "energy cannon outfitter"
 
 
 mission "Free Worlds espionage"
-	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Syndicate researchers on <destination>; proceed there for <payment> after retrieving the data."
+	description "The <npc> is about to enter this system. Locate it and make detailed scans of its cargo, which are of considerable interest to a team of Free Worlds researchers on <destination>; proceed there for <payment> after retrieving the data."
 	job
 	repeat
+	deadline 1 3
 	to offer
 		random < 10
 		has "salary: Free Worlds"
@@ -1081,11 +919,88 @@ mission "Free Worlds espionage"
 				"Scout"
 			variant
 				"Flivver"
+			variant
+				"Arrow"
+			variant
+				"Bounder"
 		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
 	on complete
 		"reputation: Free Worlds" ++
 		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This information changes everything!" you hear someone say in the background as you close the audio link.`
 		payment 40000
+
+
+
+mission "Hijacked Escort"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you 150,000 credits to escort them safely out of this dangerous region of space to reach <destination> by <date>."
+	job
+	repeat
+	deadline 10
+	to offer
+		random < 5
+		"combat rating" > 200
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 4 4
+	on accept
+		"reputation: Bounty (Disguised)" >?= 1
+	on enter
+#jumps 0
+	on enter
+#jumps 1
+	on enter
+#jumps 2
+	on enter
+#jumps 3
+		"reputation: Bounty (Disguised)" <?= -1
+		dialog `The <npc> hails you: "Emergency! Pirate stowaways have taken over the ship! Get over here and save us!" Retaking the ship to rescue the passengers may not be easy.`
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 1
+		fleet "Large Northern Pirates"
+	
+	npc capture
+		government "Bounty (Disguised)"
+		personality target escort marked timid
+		fleet
+			names "civilian"
+			variant 1
+				"Bactrian (Hijacked)"
+			variant 2
+				"Star Queen (Hijacked)"
+		dialog `You've taken control of the <npc> from the hijackers. Bring the rescued passengers to <destination>.`
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+		"reputation: Merchant" -= 10
+		dialog "The <npc> never made it to its destination. There are nasty rumors that you hijacked the ship yourself..."
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
+		"reputation: Merchant" -= 10
+		dialog "The <npc> never made it to its destination. There are nasty rumors that you hijacked the ship yourself..."
+	on visit
+		dialog `The <npc> is still under the control of hijackers. Retake the ship to rescue the passengers!`
+	on complete
+		"reputation: Bounty (Disguised)" >?= 1
+		payment 300000
+		dialog `While it is unfortunate that the crew of the <npc> died, the passengers are grateful for your efforts to rescue and transport them to <planet>. With the bonus pay they offer, your reward for this job comes to <payment>.`
 
 
 
@@ -1112,6 +1027,362 @@ mission "Medical Bay: Patient Transport"
 		payment
 		payment
 		dialog `You wish the patient good luck with their surgery. An insurance company deposits <payment> into your account.`
+
+
+
+mission "Militia: Joint Operations (Sparrow)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc> is leading a squadron of interceptors on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 5
+		random < 40
+	on accept
+		conversation
+			branch assist
+				random < 80
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/sparrow"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia small"
+			variant
+				"Sparrow" 5
+		conversation
+			action
+				"reputation: Militia" -= 5
+				fail "Militia: Joint Operations (Sparrow)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> and its squadron of interceptors is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Hawk)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc> is leading a squadron of interceptors on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 5
+		random < 40
+	on accept
+		conversation
+			branch assist
+				random < 80
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/hawk"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia small"
+			variant
+				"Hawk (Speedy)"
+				"Hawk (Rocket)" 2
+				"Hawk" 2
+		conversation
+			action
+				"reputation: Militia" -= 5
+				fail "Militia: Joint Operations (Hawk)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> and its squadron of interceptors is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Fury)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc> is leading a squadron of interceptors on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 5
+		random < 40
+	on accept
+		conversation
+			branch assist
+				random < 80
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/fury"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia small"
+			variant
+				"Fury"
+				"Fury (Laser)"
+				"Fury (Bomber)" 2
+				"Fury (Missile)"
+		conversation
+			action
+				"reputation: Militia" -= 5
+				fail "Militia: Joint Operations (Fury)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> and its squadron of interceptors is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Argosy)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc>, a light warship, is on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 10
+		random < 30
+	on accept
+		conversation
+			branch assist
+				random < 70
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/argosy"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia small"
+			variant
+				"Argosy"
+			variant
+				"Argosy (Blaster)"
+			variant
+				"Argosy (Laser)"
+			variant
+				"Argosy (Missile)"
+			variant
+				"Argosy (Turret)"
+		conversation
+			action
+				"reputation: Militia" -= 10
+				fail "Militia: Joint Operations (Argosy)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Osprey)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc>, a light warship, is on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 10
+		random < 30
+	on accept
+		conversation
+			branch assist
+				random < 70
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/osprey"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia capital"
+			variant
+				"Osprey"
+			variant
+				"Osprey (Missile)"
+			variant
+				"Osprey (Laser)"
+		conversation
+			action
+				"reputation: Militia" -= 10
+				fail "Militia: Joint Operations (Osprey)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Bastion)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc>, a medium warship, is on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 15
+		random < 20
+	on accept
+		conversation
+			branch assist
+				random < 60
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/bastion"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia capital"
+			variant
+				"Bastion"
+			variant
+				"Bastion (Heavy)"
+			variant
+				"Bastion (Laser)"
+		conversation
+			action
+				"reputation: Militia" -= 15
+				fail "Militia: Joint Operations (Bastion)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
+
+mission "Militia: Joint Operations (Falcon)"
+	job
+	repeat
+	deadline 14
+	name "Militia Joint Operations"
+	description "The <npc>, a heavy warship, is on patrol nearby. You can request that they abandon their patrol to bolster your fleet until <date>, but you risk damaging your reputation by doing so."
+	source
+		government "Free Worlds"
+	to offer
+		has "license: Militia"
+		"reputation: Militia" >= 20
+		random < 10
+	on accept
+		conversation
+			branch assist
+				random < 50
+			`You send a request for reinforcements to the <npc>. The reply is short: "Negative, Captain <last>. We are under strict orders not to abandon our position. <npc>, out."`
+				defer
+			label assist
+			scene "thumbnail/falcon"
+			`You send a request for reinforcements to the <npc>. The reply: "Affirmative, Captain <last>. We can accompany you until <date>. Be advised we are in pursuit of hostiles headed your way."`
+				accept
+	npc
+		government "Pirate"
+		personality entering plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Militia"
+		system
+			distance 2
+		personality escort heroic
+		fleet
+			names "militia capital"
+			variant
+				"Falcon"
+			variant
+				"Falcon (Heavy)"
+			variant
+				"Falcon (Laser)"
+		conversation
+			action
+				"reputation: Militia" -= 20
+				fail "Militia: Joint Operations (Falcon)"
+			scene "scene/scene-explosion"
+			`The loss of the <npc> is blamed on your incompetence. Your reputation with the Militia has diminished as a result.`
+	on fail
+		dialog `The Joint Operation with <npc> has ended.`
+	to complete
+		never
 
 
 
@@ -1323,6 +1594,7 @@ mission "Mining: Platinum"
 
 mission "Navy: Captured Ship"
 	job
+	deadline 30
 	repeat
 	name "Captured Navy"
 	description "Search for a stolen Navy ship, the <npc>, near the northern pirate systems. Destroy it, then report to <destination> for payment (<payment>)."
@@ -1354,6 +1626,7 @@ mission "Navy: Captured Ship"
 mission "Raider Bounty"
 	job
 	repeat
+	deadline 14
 	name "Alien Raider near <system>"
 	description "An alien ship has been attacking merchants near <system>. Destroy the ship then return to <planet> for payment [<payment>]."
 	source
@@ -1367,13 +1640,13 @@ mission "Raider Bounty"
 	npc kill
 		government "Korath"
 		system
-			distance 1 2
+			distance 1 1
 		personality target waiting staying plunders
 		fleet
 			names "pirate"
 			variant
-				"Korath Raider (Fireswarm)"
-				"Korath Chaser" 2
+				"Palavret"
+				"'olofez" 2
 	on complete
 		payment 300000
 		dialog `The government of <planet> pays you <payment> for eliminating the alien raider threat.`
@@ -1383,7 +1656,7 @@ mission "Raider Bounty"
 
 mission "Protection: Heavy"
 	job
-	repeat 5
+	repeat
 	deadline 15
 	name "Protection Escort"
 	description "Pay the <npc> 125,000 credits to escort your fleet until <date>."
@@ -1392,7 +1665,7 @@ mission "Protection: Heavy"
 	to offer
 		random < 20
 		"ships: Medium Warship" < 5
-		"ships: Heavy Warship" <= 1
+		"ships: Heavy Warship" + "ships: Utility" <= 1
 	on accept
 		payment -125000
 		dialog `You pay the <npc> 125,000 credits to escort your fleet until <date>.`
@@ -1402,10 +1675,12 @@ mission "Protection: Heavy"
 		government "Merchant"
 		personality heroic
 		fleet "Protection Heavy"
+	to complete
+		never
 
 mission "Protection: Medium"
 	job
-	repeat 10
+	repeat
 	deadline 15
 	name "Protection Escort"
 	description "Pay the <npc> 100,000 credits to escort your fleet until <date>."
@@ -1415,6 +1690,7 @@ mission "Protection: Medium"
 		random < 25
 		"ships: Medium Warship" <= 1
 		not "ships: Heavy Warship"
+		not "ships: Utility"
 	on accept
 		payment -100000
 		dialog `You pay the <npc> 100,000 credits to escort your fleet until <date>.`
@@ -1424,10 +1700,12 @@ mission "Protection: Medium"
 		government "Merchant"
 		personality heroic
 		fleet "Protection Medium"
-				
+	to complete
+		never
+
 mission "Protection: Light"
 	job
-	repeat 15
+	repeat
 	deadline 15
 	name "Protection Escort"
 	description "Pay the <npc> 80,000 credits to escort your fleet until <date>."
@@ -1437,6 +1715,8 @@ mission "Protection: Light"
 		random < 30
 		"ships: Light Warship" < 5
 		not "ships: Medium Warship"
+		not "ships: Heavy Warship"
+		not "ships: Utility"
 	on accept
 		payment -80000
 		dialog `You pay the <npc> 80,000 credits to escort your fleet until <date>.`
@@ -1446,13 +1726,15 @@ mission "Protection: Light"
 		government "Merchant"
 		personality heroic
 		fleet "Protection Light"
-			
+	to complete
+		never
+
 mission "Protection: Marauder"
 	job
-	repeat 5
+	repeat
 	deadline 15
 	name "Protection Escort"
-	description "Pay the <npc> 100,000 credits to escort your fleet until <date>."
+	description "Pay the <npc> 150,000 credits to escort your fleet until <date>."
 	source
 		attributes "frontier" "rim"
 	to offer
@@ -1466,6 +1748,8 @@ mission "Protection: Marauder"
 		government "Merchant"
 		personality plunders heroic
 		fleet "Marauder Independent"
+	to complete
+		never
 
 
 
@@ -1474,20 +1758,24 @@ mission "Star Explorer: Missing Science Vessel"
 	description "The science vessel <npc> was last seen on an expedition heading to <waypoints>. It has not been seen since. Locate and rescue the vessel. Then return it safely to <destination> for <payment>."
 	job
 	repeat
+	deadline 60
 	to offer
 		random < 1
 		"combat rating" > 100
 	source
-		government "Republic" "Free Worlds" "Syndicate"
+		government "Republic" "Syndicate"
 		attributes "research"
-	waypoint
-		government "Pirate"
-		neighbor distance 6 50
+	waypoint Durax
 	on accept
 		clear "star explorer pirate raid activated"
 	on waypoint
 		set "star explorer pirate raid activated"
 		dialog "You've located the <npc>! Help them repair their ship, then return them safely to <planet>."
+	npc
+		government "Pirate"
+		system Atik
+		personality nemesis waiting staying plunders
+		fleet "pirate raid"
 	npc
 		to spawn
 			has "star explorer pirate raid activated"
@@ -1500,12 +1788,13 @@ mission "Star Explorer: Missing Science Vessel"
 		government "Pirate"
 		personality nemesis waiting plunders
 		system destination
-		fleet "pirate raid" 3
+		fleet "pirate raid"
 	npc assist accompany save
 		government "Merchant"
+		system Atik
 		personality target derelict timid
 		fleet
-			names "civilian"
+			names "intellectuals"
 			variant
 				"Star Explorer"
 	on fail
@@ -1550,7 +1839,7 @@ mission "Star Explorer: Escort"
 		government "Merchant"
 		personality escort timid
 		fleet
-			names "civilian"
+			names "intellectuals"
 			variant
 				"Star Explorer"
 	on waypoint
@@ -1581,16 +1870,226 @@ mission "Stealing From Rival Smugglers"
 		personality timid fleeing uninterested entering target
 		fleet
 			names "civilian"
+			outfitters "Contraband"
 			variant
 				"Modified Clipper (Smuggler)"
 			variant
-				"Modified Argosy (Smuggler)"
+				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
 		dialog "You blast your way onto the ship and steal the smuggled cargo. Deliver it to <planet>."
 	on complete
 		payment 350000
 		dialog "The pirates of <planet> take the smuggled cargo from your cargo hold and pay you <payment>."
+
+
+
+mission "Pirate Sabotage: Shield Suppressor (Republic)"
+	job
+	repeat
+	name "Pirate Sabotage"
+	description "The <npc> has been harassing pirates near <system>. Sneak a Shield Suppressor onto the ship to sabotage their defenses. Return to <planet> for payment. (<payment>)."
+	source
+		attributes "north pirate" "dirtbelt pirate"
+		not attributes uninhabited
+	to offer
+		"reputation: Republic" > 0
+		has "event: initial deployment 4"
+	npc assist
+		government "Republic"
+		system
+			distance 1 2
+		personality target derelict waiting staying timid
+		fleet
+			names "republic capital"
+			outfitters "Ammo North"
+			variant 1
+				"Carrier"
+			variant 2
+				"Cruiser"
+		conversation
+			scene "outfit/shield suppressor"
+			action
+				"reputation: Republic" -= 40
+			`While assisting in the repairs of the <npc>, you discreetly attach the Shield Suppressor to their systems. Hopefully they won't realize what you've done until after you get to <destination> for your reward.`
+	on abort
+		"reputation: Pirate" -= 10
+		dialog `The pirates weren't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
+	on complete
+		payment 50000
+		"reputation: Pirate" += 10
+		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how easily that ship was subsequently destroyed thanks to your efforts.`
+
+mission "Pirate Sabotage: Shield Suppressor (Free Worlds)"
+	job
+	repeat
+	name "Pirate Sabotage"
+	description "The <npc> has been harassing pirates near <system>. Sneak a Shield Suppressor onto the ship to sabotage their defenses. Return to <planet> for payment. (<payment>)."
+	source
+		attributes "south pirate"
+		not attributes uninhabited
+	to offer
+		"reputation: Free Worlds" > 0
+		has "event: dreadnought deployment"
+	npc assist
+		government "Free Worlds"
+		system
+			distance 1 2
+		personality target derelict waiting staying timid
+		fleet
+			names "free worlds capital"
+			outfitters "Ammo South"
+			variant
+				"Dreadnought"
+		conversation
+			scene "outfit/shield suppressor"
+			action
+				"reputation: Free Worlds" -= 40
+			`While assisting in the repairs of the <npc>, you discreetly attach the Shield Suppressor to their systems. Hopefully they won't realize what you've done until after you get to <destination> for your reward.`
+	on abort
+		"reputation: Pirate" -= 10
+		dialog `The pirates weren't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
+	on complete
+		payment 50000
+		"reputation: Pirate" += 10
+		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how easily that ship was subsequentially destroyed thanks to your efforts.`
+
+mission "Rescue: Sabotaged Ship (Free Worlds)"
+	job
+	name "Rescue Mission"
+	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it back to <destination>. Payment is <payment>."
+	source
+		government "Free Worlds"
+		attributes "shipyard"
+		attributes "outfitter"
+		attributes "south"
+	waypoint "Lesath"
+	to offer
+		"reputation: Militia" > 0
+		"combat rating" > 1000
+		has "event: dreadnought deployment"
+		random < 25
+	on enter "Lesath"
+		dialog `The <npc> hails you. Their shields are not working properly, making them an easy target for pirates. Their weapons have already been plundered...`
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system destination
+		personality entering harvests plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Sargas"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Shaula"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Large Southern Pirates"
+	npc assist accompany save
+		government "Militia"
+		system "Lesath"
+		personality target waiting derelict
+		fleet
+			names "militia capital"
+			cargo 0
+			variant
+				"Dreadnought (Sabotaged)"
+		conversation
+			action
+				set "sabotaged ship ambush"
+			scene "outfit/shield suppressor"
+			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them back to <destination> where they will have it removed.`
+	on abort
+		clear "sabotaged ship ambush"
+	on fail
+		clear "sabotaged ship ambush"
+	on complete
+		clear "sabotaged ship ambush"
+		payment 1000000
+		dialog "The government of <planet> rewards you with <payment> for rescuing the <npc>."
+
+mission "Rescue: Sabotaged Ship (Republic)"
+	job
+	name "Rescue Mission"
+	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it back to <destination>. Payment is <payment>."
+	source
+		government "Republic"
+		attributes "shipyard"
+		attributes "outfitter"
+		attributes "north"
+	waypoint "Hatysa"
+	to offer
+		"reputation: Republic" > 0
+		"combat rating" > 1000
+		random < 25
+	on enter "Hatysa"
+		dialog `The <npc> hails you. Their shields are not working properly, making them an easy target for pirates. Their weapons have already been plundered...`
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system destination
+		personality entering harvests plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Almaaz"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Northern Pirates"
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Alnilam"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Northern Pirates"
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Arneb"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Large Northern Pirates"
+	npc assist accompany save
+		government "Republic"
+		system "Hatysa"
+		personality target waiting derelict
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			cargo 0
+			variant
+				"Carrier (Sabotaged)"
+		conversation
+			action
+				set "sabotaged ship ambush"
+			scene "outfit/shield suppressor"
+			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them back to <destination> where they will have it removed.`
+	on abort
+		clear "sabotaged ship ambush"
+	on fail
+		clear "sabotaged ship ambush"
+	on complete
+		clear "sabotaged ship ambush"
+		payment 1000000
+		dialog "The government of <planet> rewards you with <payment> for rescuing the <npc>."
+
 
 
 
@@ -1757,3 +2256,4 @@ mission "Cryostasis Organ Transplant (hard)"
 	on complete
 		payment 25000 175
 		dialog `The cryostasis pod opens with a hiss and you retrieve the last of the donated organs. A medical team rushes it to the intended recipient. Five lives may have been saved with your help. Compared to that, your payment of <payment> is just a bonus.`
+

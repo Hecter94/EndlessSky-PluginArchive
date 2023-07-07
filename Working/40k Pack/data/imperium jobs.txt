@@ -1,4 +1,4 @@
-mission "Imperium: Kill Archons guarding Korath space"
+mission "IoM: Kill Archons guarding Korath space"
 	job
 	name "Kill space bugs"
 	description "A mechanicus explorator fleet have discovered space bugs wandering in xenos Korath space, it would be preferred if they're to be exterminated as soon as possible."
@@ -15,7 +15,21 @@ mission "Imperium: Kill Archons guarding Korath space"
 		dialog
 			`The Imperium of Man is grateful for your service and reward you <payment> credits.`
 			
-mission "Imperium: Conquer Covert"
+mission "IoM: Transport Guardsmen[0]"
+	job
+	name "Transport Guardsmen"
+	description `Transport <bunks> of guardsmen to <destination>. Reward is <payment> credits.`
+	passengers 800 2000
+	source
+		planet "Agcelli"
+	destination
+		government "Imperium of Man" "Adeptus Mechanicus"
+		not planet "Agcelli" #Yes, you can just move some Guardsmen to Admech world in the same system. Not lore accurate but who cares.
+	on complete
+		dialog `The guardsmen pick up their gears and left your ship. <payment> is transferred to your account.`
+		
+			
+mission "IoM: Conquer Covert"
 	job
 	name "Conquer <destination>"
 	description `Escort a few Imperial troop ships, demand tribute, and land on <destination> to reclaim the planet for the Emperor. Loss of any cruiser is unacceptable.`
@@ -38,14 +52,14 @@ mission "Imperium: Conquer Covert"
 		ship "Storm-Class" "Lance"
 		ship "Storm-Class" "Trident"
 			
-mission "Imperium: Conquer Covert(land)"
+mission "IoM: Conquer Covert(land)"
 	landing
 	name "Return to <planet>"
 	description "You've completed your mission, return to <destination> to report back."
 	source "Covert"
 	destination "Pifitus"
 	to offer
-		has "Imperium: Conquer Covert: done"
+		has "IoM: Conquer Covert: done"
 		has "tribute: Covert"
 	on offer
 		event "IoM conquer Covert"
@@ -143,7 +157,7 @@ event "IoM conquer Buccaneer Bay"
 		"required reputation" 1
 		security 0
 		
-mission "Imperium: Conquer Buccaneer Bay"
+mission "IoM: Conquer Buccaneer Bay"
 	job
 	name "Conquer <destination>"
 	description `Escort a few Imperial troop ships, demand tribute, and land on <destination> to reclaim the planet for the Emperor. Loss of any cruiser is unacceptable. [WARNING] This job WILL conflict with some Free World storyline missions, no support have been implemented yet, proceed at your own risk.`
@@ -154,7 +168,7 @@ mission "Imperium: Conquer Buccaneer Bay"
 			random < 10 #Less priority
 			and
 				random < 50
-				"Imperium: Conquer Covert: done"
+				"IoM: Conquer Covert: done"
 	to complete
 		has "tribute: Buccaneer Bay"
 	on visit
@@ -170,14 +184,14 @@ mission "Imperium: Conquer Buccaneer Bay"
 		ship "Storm-Class" "Arquebus"
 		ship "Storm-Class" "Firehawk"
 			
-mission "Imperium: Conquer Buccaneer Bay(land)"
+mission "IoM: Conquer Buccaneer Bay(land)"
 	landing
 	name "Return to <planet>"
 	description "You've completed your mission, return to <destination> to report back."
 	source "Buccaneer Bay"
 	destination "Pifitus"
 	to offer
-		has "Imperium: Conquer Buccaneer Bay: done"
+		has "IoM: Conquer Buccaneer Bay: done"
 		has "tribute: Buccaneer Bay"
 	on offer
 		event "IoM conquer Buccaneer Bay"

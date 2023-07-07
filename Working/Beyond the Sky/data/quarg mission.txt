@@ -1,40 +1,95 @@
+
+mission "BytS: Extra Hard"
+	job
+	description `Increase Quarg fleet number much more exponentially (Pre 7/06/2022 Update). Note this is much more difficult(and unbalanced) than standard. WARNING: May impact performance on lower end computers.`
+	source
+		government "cheat" "vanilla"
+		#system Omnis
+	on accept
+		set "BytS: Extra Hard"
+		fail
+		
+mission "BytS: Super Hard"
+	job
+	description `Reduce triggering thresholds, Increase Quarg fleet number, spawnrate, and make Quargs hunt you more aggressively. WARNING: May impact performance on lower end computers.`
+	source
+		government "cheat" "vanilla"
+		#system Omnis
+	on accept
+		set "BytS: Extra Hard"
+		set "BytS: Super Hard"
+		event "BytS: Super Hard"
+		fail
+
+event "BytS: Super Hard"
+	planet "Alta Hai"
+		add tribute 1000000000
+			threshold 8000
+			fleet "Quarg Warfleet" 500000
+			fleet "Quarg Titan Warfleet" 5000
+			
 mission "BytS Quarg Increased Security"
 	landing
 	invisible
 	to offer
-		"reputation: Quarg" <= -100
+		or
+			"reputation: Quarg" <= -500
+			and
+				"reputation: Quarg" <= -50
+				"BytS: Super Hard" == 1
 	on offer
-		event "Quarg Increased Security"
+		event "Byts Quarg Increased Security"
+		fail
 
 mission "BytS Quarg Increased Security 2"
 	landing
 	invisible
 	to offer
-		"reputation: Quarg" <= -500
+		or
+			"reputation: Quarg" <= -1500
+			and
+				"reputation: Quarg" <= -250
+				"BytS: Super Hard" == 1
 	on offer
-		event "Quarg Increased Security 2"
+		event "Byts Quarg Increased Security 2"
+		fail
 		
 mission "BytS Quarg Increased Security 3"
 	landing
 	invisible
 	to offer
-		"reputation: Quarg" <= -1000
+		or
+			"reputation: Quarg" <= -3000
+			and
+				"reputation: Quarg" <= -500
+				"BytS: Super Hard" == 1
 	on offer
-		event "Quarg Increased Security 3"
+		event "Byts Quarg Increased Security 3"
+		fail
 
 mission "BytS Quarg Dangerous Player 1"
 	landing
 	invisible
 	to offer
-		"reputation: Quarg" <= -100
-		"armament deterrence" > 80
+		or
+			"reputation: Quarg" <= -100
+			"armament deterrence" > 250
+			and
+				"armament deterrence" > 200
+				"BytS: Super Hard" == 1
 	on offer
+		event "Byts Quarg Increased Security 2"
+		fail
 
 mission "BytS Quarg Very Angry"
 	landing
 	invisible
 	to offer
-		"reputation: Quarg" <= -5000
+		or
+			"reputation: Quarg" <= -5000
+			and
+				"reputation: Quarg" <= -2000
+				"BytS: Super Hard" == 1
 	npc kill
 		government "Quarg"
 		personality
@@ -76,8 +131,37 @@ mission "BytS Quarg Very Angry"
 			vindictive target staying
 		system Enif
 		to spawn
-			"armament deterrence" >= 150
+			or
+				"armament deterrence" >= 5000
+				and
+					"armament deterrence" >= 150
+					has "BytS: Extra Hard"
 		fleet "Quarg Reserve Fleet" 4
+		fleet "Quarg Warfleet" 4
+		#fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system Enif
+		to spawn
+			"armament deterrence" >= 150
+			has "BytS: Super Hard"
+		fleet "Quarg Reserve Fleet" 4
+		fleet "Quarg Warfleet" 4
+		#fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system Enif
+		to spawn
+			or
+				"armament deterrence" >= 12500
+				and
+					"armament deterrence" >= 350
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 8
 		fleet "Quarg Warfleet" 4
 		fleet "Quarg Titan Warfleet" 1
 	npc kill
@@ -86,10 +170,25 @@ mission "BytS Quarg Very Angry"
 			vindictive target staying
 		system Enif
 		to spawn
-			"armament deterrence" >= 250
-		fleet "Quarg Reserve Fleet" 20
-		fleet "Quarg Warfleet" 12
-		fleet "Quarg Titan Warfleet" 3
+			"armament deterrence" >= 350
+			has "BytS: Super Hard"
+		fleet "Quarg Reserve Fleet" 8
+		fleet "Quarg Warfleet" 4
+		#fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system Enif
+		to spawn
+			or
+				"armament deterrence" >= 25000
+				and
+					"armament deterrence" >= 750
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 8
+		fleet "Quarg Warfleet" 4
+		fleet "Quarg Titan Warfleet" 1
 	npc kill
 		government "Quarg"
 		personality
@@ -97,19 +196,50 @@ mission "BytS Quarg Very Angry"
 		system Enif
 		to spawn
 			"armament deterrence" >= 750
-		fleet "Quarg Reserve Fleet" 40
-		fleet "Quarg Warfleet" 22
-		fleet "Quarg Titan Warfleet" 6
+			has "BytS: Super Hard"
+		fleet "Quarg Reserve Fleet" 8
+		fleet "Quarg Warfleet" 4
+		#fleet "Quarg Titan Warfleet" 1
 	npc kill
 		government "Quarg"
 		personality
 			vindictive target staying
 		system Enif
 		to spawn
-			"armament deterrence" >= 1200
-		fleet "Quarg Reserve Fleet" 50
-		fleet "Quarg Warfleet" 32
-		fleet "Quarg Titan Warfleet" 20
+			or
+				"armament deterrence" >= 50000
+				and
+					"armament deterrence" >= 1200
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 12
+		fleet "Quarg Warfleet" 6
+		fleet "Quarg Titan Warfleet" 2
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system Enif
+		to spawn
+			or
+				"armament deterrence" >= 1200
+				has "BytS: Super Hard"
+		fleet "Quarg Reserve Fleet" 8
+		fleet "Quarg Warfleet" 6
+		#fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system Enif
+		to spawn
+			or
+				"armament deterrence" >= 100000
+				and
+					"armament deterrence" >= 4900
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 32
+		fleet "Quarg Warfleet" 16
+		fleet "Quarg Titan Warfleet" 5
 	npc kill
 		government "Quarg"
 		personality
@@ -117,59 +247,80 @@ mission "BytS Quarg Very Angry"
 		system Enif
 		to spawn
 			"armament deterrence" >= 4900
-		fleet "Quarg Reserve Fleet" 90
-		fleet "Quarg Warfleet" 90
-		fleet "Quarg Titan Warfleet" 50
+			has "BytS: Super Hard"
+		fleet "Quarg Reserve Fleet" 32
+		fleet "Quarg Warfleet" 16
+		fleet "Quarg Titan Warfleet" 5
 	npc kill
 		government "Quarg"
 		personality
 			vindictive target staying
-		system Hevru Hai
+		system `Hevru Hai`
 		to spawn
-			"armament deterrence" >= 200
+			or
+				"armament deterrence" >= 5000
+				and
+					"armament deterrence" >= 200
+					has "BytS: Extra Hard"
 		fleet "Quarg Reserve Fleet" 4
+		fleet "Quarg Warfleet" 4
+		#fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system `Hevru Hai`
+		to spawn
+			or
+				"armament deterrence" >= 11000
+				and
+					"armament deterrence" >= 400
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 6
 		fleet "Quarg Warfleet" 4
 		fleet "Quarg Titan Warfleet" 1
 	npc kill
 		government "Quarg"
 		personality
 			vindictive target staying
-		system Hevru Hai
+		system `Hevru Hai`
 		to spawn
-			"armament deterrence" >= 400
-		fleet "Quarg Reserve Fleet" 20
-		fleet "Quarg Warfleet" 12
+			or
+				"armament deterrence" >= 25000
+				and
+					"armament deterrence" >= 800
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 6
+		fleet "Quarg Warfleet" 6
+		fleet "Quarg Titan Warfleet" 1
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system `Hevru Hai`
+		to spawn
+			or
+				"armament deterrence" >= 35000
+				and
+					"armament deterrence" >= 1200
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 7
+		fleet "Quarg Warfleet" 5
+		fleet "Quarg Titan Warfleet" 2
+	npc kill
+		government "Quarg"
+		personality
+			vindictive target staying
+		system `Hevru Hai`
+		to spawn
+			or
+				"armament deterrence" >= 50000
+				and
+					"armament deterrence" >= 4900
+					has "BytS: Extra Hard"
+		fleet "Quarg Reserve Fleet" 8
+		fleet "Quarg Warfleet" 5
 		fleet "Quarg Titan Warfleet" 3
-	npc kill
-		government "Quarg"
-		personality
-			vindictive target staying
-		system Hevru Hai
-		to spawn
-			"armament deterrence" >= 800
-		fleet "Quarg Reserve Fleet" 40
-		fleet "Quarg Warfleet" 22
-		fleet "Quarg Titan Warfleet" 6
-	npc kill
-		government "Quarg"
-		personality
-			vindictive target staying
-		system Hevru Hai
-		to spawn
-			"armament deterrence" >= 1200
-		fleet "Quarg Reserve Fleet" 50
-		fleet "Quarg Warfleet" 32
-		fleet "Quarg Titan Warfleet" 20
-	npc kill
-		government "Quarg"
-		personality
-			vindictive target staying
-		system Hevru Hai
-		to spawn
-			"armament deterrence" >= 4900
-		fleet "Quarg Reserve Fleet" 90
-		fleet "Quarg Warfleet" 90
-		fleet "Quarg Titan Warfleet" 50
 		
 event "BytS Quarg Increased Security"
 	fleet "Quarg"
@@ -331,97 +482,195 @@ event "BytS Quarg Increased Security 3"
 			"Quarg Fafnir" 2
 			"Quarg Wardragon" 8
 				
-fleet "Quarg Reserve Fleet"
-	government "Quarg"
-	names "quarg"
-	cargo 1
-	personality
-		heroic
-	variant 1
-		"Quarg Zilant"
-		"Quarg Tiamat" 3
-		"BytS Quarg Hydra" 2
-
-fleet "Quarg Warfleet"
-	government "Quarg"
-	names "quarg"
-	cargo 1
-	personality
-		heroic
-	variant 1
-		"Quarg Tarasque" 3
-		"Quarg Fafnir" 3
-	variant 1
-		"Quarg Tarasque" 5
-		"Quarg Fafnir" 2
-	variant 1
-		"Quarg Tarasque" 6
-		"Quarg Fafnir" 2
-	variant 1
-		"Quarg Tarasque" 3
-		"Quarg Fafnir" 4
-		
-fleet "Quarg Titan Warfleet"
-	government "Quarg"
-	names "quarg"
-	cargo 1
-	personality
-		heroic
-	variant 1
-		"Quarg Psuchawrl"
-		"Quarg Tarasque" 2
-	variant 1
-		"Quarg Gtuhanai"
-		"Quarg Tarasque" 2
-		
-fleet "Quarg Heavy Warfleet"
-	government "Quarg"
-	names "quarg"
-	cargo 1
-	personality
-		heroic
-	variant 1
-		"Quarg Tarasque" 6
-		"Quarg Fafnir" 6
-	variant 1
-		"Quarg Tarasque" 10
-		"Quarg Fafnir" 4
-	variant 1
-		"Quarg Tarasque" 12
-		"Quarg Fafnir" 5
-	variant 1
-		"Quarg Tarasque" 6
-		"Quarg Fafnir" 8
 		
 mission "BytS Quarg: Hunt player down I"
+	landing
+	invisible
+	repeat 5
+	deadline 7
+	source
+		near Enif 0 3
+	to offer
+		"reputation: Quarg" <= -8000
+		or
+			random > 70
+			and
+				random > 60
+				"reputation: Quarg" <= -16000
+			and
+				random > 55
+				"reputation: Quarg" <= -32000
+			and
+				random > 50
+				"reputation: Quarg" <= -54000
+			and
+				random > 45
+				"reputation: Quarg" <= -100000
+			
+	npc kill
+		on kill
+			fail #to remove the mission
+		government "Quarg"
+		personality
+			vindictive unconstrained 
+		system Enif
+		fleet "Quarg Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 2900
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 7800
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 2
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 22000
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 4
+		fleet "Quarg Titan Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 48900
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 8
+		fleet "Quarg Titan Warfleet" 1
+		
+	on fail 
+		"BytS Quarg: Hunt player down I: offered" -= 1
+
+mission "BytS Quarg: Hunt player down I (Extra Hard)"
 	landing
 	invisible
 	repeat 5
 	source
 		near Enif 0 5
 	to offer
-		"reputation: Quarg" <= -1000
+		has "BytS: Extra Hard"
+		"reputation: Quarg" <= -4000
 		or
 			random > 70
 			and
 				random > 60
-				"reputation: Quarg" <= -1500
+				"reputation: Quarg" <= -7500
+			and
+				random > 55
+				"reputation: Quarg" <= -14000
 			and
 				random > 50
-				"reputation: Quarg" <= -2000
+				"reputation: Quarg" <= -26000
+			and
+				random > 45
+				"reputation: Quarg" <= -40000
+			
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		personality
+			vindictive unconstrained 
+		system Enif
+		fleet "Quarg Warfleet" 4
+		fleet "Quarg Titan Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 500
+		personality
+			vindictive unconstrained
+		system Enif
+		fleet "Quarg Warfleet" 8
+		fleet "Quarg Titan Warfleet" 2
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 2200
+		personality
+			vindictive unconstrained
+		system Enif
+		fleet "Quarg Warfleet" 16
+		fleet "Quarg Titan Warfleet" 4
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 6500
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 32
+		fleet "Quarg Titan Warfleet" 8
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 18500
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 32
+		fleet "Quarg Titan Warfleet" 8
+	
+mission "BytS Quarg: Hunt player down I (Super Hard)"
+	landing
+	invisible
+	repeat 8
+	source
+		near Enif 0 10
+	to offer
+		has "BytS: Super Hard"
+		"reputation: Quarg" <= -1000
+		or
+			random > 60
+			and
+				random > 50
+				"reputation: Quarg" <= -1500
 			and
 				random > 40
+				"reputation: Quarg" <= -2000
+			and
+				random > 30
 				"reputation: Quarg" <= -2500
 			and
 				random > 30
 				"reputation: Quarg" <= -3000
 			
 	npc kill
+		on kill
+			fail
 		government "Quarg"
 		personality
 			vindictive unconstrained 
 		system Enif
-		fleet "Quarg Warfleet" 4
+		fleet "Quarg Warfleet" 5
 		fleet "Quarg Titan Warfleet" 1
 	npc kill
 		government "Quarg"
@@ -430,42 +679,188 @@ mission "BytS Quarg: Hunt player down I"
 		personality
 			vindictive unconstrained
 		system Enif
-		fleet "Quarg Warfleet" 8
+		fleet "Quarg Warfleet" 10
 		fleet "Quarg Titan Warfleet" 2
 	npc kill
 		government "Quarg"
 		to spawn
-			"armament deterrence" >= 120
+			"armament deterrence" >= 200
 		personality
 			vindictive unconstrained
 		system Enif
-		fleet "Quarg Warfleet" 16
+		fleet "Quarg Warfleet" 18
 		fleet "Quarg Titan Warfleet" 4
 	npc kill
 		government "Quarg"
 		to spawn
-			"armament deterrence" >= 380
+			"armament deterrence" >= 600
 		personality
 			vindictive unconstrained entering
 		system Enif
-		fleet "Quarg Warfleet" 32
+		fleet "Quarg Warfleet" 36
+		fleet "Quarg Titan Warfleet" 8
+	npc kill
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 1400
+		personality
+			vindictive unconstrained entering
+		system Enif
+		fleet "Quarg Warfleet" 36
 		fleet "Quarg Titan Warfleet" 8
 	
+mission "BytS Quarg(Hai): Hunt player down I"
+	landing
+	invisible
+	repeat 5
+	deadline 6
+	source
+		near `Hevru Hai` 0 4
+	to offer
+		"reputation: Quarg" <= -8000
+		or
+			random > 70
+			and
+				random > 60
+				"reputation: Quarg" <= -16000
+			and
+				random > 55
+				"reputation: Quarg" <= -32000
+			and
+				random > 50
+				"reputation: Quarg" <= -54000
+			and
+				random > 45
+				"reputation: Quarg" <= -100000
+			
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		personality
+			vindictive unconstrained 
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 2
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 7800
+		personality
+			vindictive unconstrained
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 2
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 25000
+		personality
+			vindictive unconstrained
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 4
+		fleet "Quarg Titan Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 46000
+		personality
+			vindictive unconstrained entering
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 6
+		fleet "Quarg Titan Warfleet" 1
+	on fail
+		"BytS Quarg(Hai): Hunt player down I: offered" -= 1
 		
-government "Quarg" #Can't use add with government so have to do this. #I forget what I did here or why it's here.
-	swizzle 6 #I think it was this..?
-	color .88 .77 0
-	
-	"player reputation" 1
-	"attitude toward"
-		"Merchant" .01
-		"Kor Efret" .01
-		"Kor Mereti" -.01
-		"Kor Sestor" -.01
-		"Hai" .01
-		"Hai (Wormhole Access)" .01
-		"Pirate" -.01
-		"Pug" -.01
-		"Pug (Wanderer)" -.01
-	"hostile hail" "hostile quarg"
-	"hostile disabled hail" "hostile quarg"
+mission "BytS Quarg(Hai): Hunt player down I (Extra Hard)"
+	landing
+	invisible
+	repeat 5
+	source
+		near `Hevru Hai` 0 5
+	to offer
+		has "BytS: Extra Hard"
+		"reputation: Quarg" <= -4000
+		or
+			random > 70
+			and
+				random > 60
+				"reputation: Quarg" <= -7500
+			and
+				random > 55
+				"reputation: Quarg" <= -14000
+			and
+				random > 50
+				"reputation: Quarg" <= -26000
+			and
+				random > 45
+				"reputation: Quarg" <= -40000
+			
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		personality
+			vindictive unconstrained 
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 5
+		fleet "Quarg Titan Warfleet" 1
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 50
+		personality
+			vindictive unconstrained
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 9
+		fleet "Quarg Titan Warfleet" 2
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 220
+		personality
+			vindictive unconstrained
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 18
+		fleet "Quarg Titan Warfleet" 4
+	npc kill
+		on kill
+			fail
+		government "Quarg"
+		to spawn
+			"armament deterrence" >= 600
+		personality
+			vindictive unconstrained entering
+		system `Hevru Hai`
+		fleet "Quarg Warfleet" 36
+		fleet "Quarg Titan Warfleet" 8
+
+mission "BYTS: Quarg Ships Atrocity"
+	landing
+	invisible
+	source
+		government "Quarg"
+		not attributes uninhabited
+	to offer
+		not "omnis start"
+		or
+			has "ship model: Quarg Amphithere"
+			has "ship model: Quarg Slibinas"
+			has "ship model: Quarg Kaukas"
+			has "ship model: Quarg Tiamat"
+			has "ship model: Quarg Hydra"
+			has "ship model: Quarg Zilant"
+			has "ship model: Quarg Fafnir"
+			has "ship model: Quarg Tarasque"
+			has "ship model: Quarg Psuchawrl"
+			has "ship model: Quarg Gtuhanai"
+	on offer
+		conversation "quarg imprisonment"

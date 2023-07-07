@@ -1,0 +1,321 @@
+# Carla von Hausen, one of the game's minor characters
+# sells houses. She will continue attempting to sell
+# you a house after that first encounter.
+
+news "CVH advertising billboard"
+	to show
+		has "Home for Skadenga 3: done"
+	location
+		planet "Asgard"
+	name
+		word
+			"Advertising billboard"
+	message
+		word
+			"You see an advertisement of a ${woman in a suit} in a pantsuit handing over keys to a family in one of Asgard's prefabricated housing developments. You notice that on the bottom right, the name 'Carla von Hausen' is written."
+			"You see an advertisement for housing in Asgard. In the bottom corner you see the face of a familiar ${woman in a suit} with the name 'Carla von Hausen' written right next to it."
+
+phrase "woman in a suit"
+	word
+		"woman"
+		"lady"
+	word
+		" "
+	word
+		"in a"
+		"wearing a"
+		"dressed in a"
+	word
+		" "
+	word
+		"high-quality"
+		"well-pressed"
+		"well-made"
+		"bespoke"
+		"" 50
+	word
+		"red" 5
+		"green" 5
+		"black" 10
+		"brown" 8
+	word
+		" suit" 100
+		" pantsuit" 100
+		" suit jacket" 80
+		" blazer" 70
+
+news "CVH for sale sign"
+	to show
+		has "Home for Skadenga 3: done"
+	location
+		planet "Asgard"
+	name
+		word
+			"Sign"
+			"Poster"
+	message
+		phrase
+			"CVH for sale sign messages"
+
+phrase "CVH for sale sign messages"
+	word
+		"You see an empty space for rent. The name 'Carla von Hausen' is written on the sign, alongside the face of a woman."
+
+phrase "CVH for sale sign messages"
+	word
+		"You see a poster on the wall of the spaceport. It is a portrait of a "
+	phrase
+		"woman in a suit"
+	word
+		" and the name 'Carla von Hausen' written on it. It is an advertisement for "
+	word
+		"housing in Asgard."
+		"an apartment in Asgard."
+
+# TODO: Change the dialog slightly if Carla reveals that she is an agent working for the Deep in "Home for Skadenga 7"
+mission "CVH sales pitch 1"
+	landing
+	to offer
+		has "Home for Skadenga 3: done"
+		random > 95
+		credits >= 1300000
+	source
+		planet "Asgard"
+	on offer
+
+		log "Minor People" "Carla von Hausen" "A property agent based on Asgard, Naos. She runs her own property agency. You have had multiple run-ins with her, whether it was her boarding your ship, her approaching you, or selling you an apartment."
+
+		conversation
+			"	When you land on <origin> and open your hatch, a woman in a well-pressed green pantsuit rushes in, sitting on a nearby table."
+			choice
+				`	"Get out of my ship right now!"`
+					goto angrilyDemandLeave0
+				"	(Approach her.)"
+
+			"	You walk over to the table where she is sitting at."
+			"	The unknown woman in the green pantsuit takes something from her pocket and hands it to you. It is yet another card. Her name, 'Carla von Hausen', is written on it."
+			`	"Hello!" She smiles at you. "<origin> is a really great place, isn't it? Have you reconsidered your decision to purchase a home?"`
+			choice
+				`	"No. I don't want a house."`
+					goto leaveShip1
+				`	"My home is among the stars."`
+					goto homeIsAmongStars
+				`	"I'm curious. Do you want to explain to me why I should get a home on Asgard?"`
+					goto homeIsAmongStars
+
+			label angrilyDemandLeave0
+			"	The unknown woman in the green pantsuit hands you her name card and leaves your ship. Her name was 'Carla von Hausen'. You vaguely remember that when you were here earlier, she had approached you wanting to sell you a house."
+				goto closeHatch
+
+			label angrilyDemandLeave1
+			"	After realizing you are serious, Carla leaves behind her card and the advertising materials on the table. She picks up her other items, double-checking to ensure she didn't forget anything, smoothing and adjusting her suit jacket on the way out. Eventually, she leaves your ship."
+				goto closeHatch
+
+			label closeHatch
+			"	You immediately close the hatch and lock the door. Being suddenly interrupted, you have now forgotten what you were supposed to do. You read over your checklist to see what it must have been."
+				decline
+
+			label leaveShip1
+			`	"Well, that's fair. But remember, there's so much to see on Asgard. If you ever reconsider in the future, just send mail to the address on the name card."`
+			`	Carla leaves behind her card and the advertising materials on the table. She picks up her other items, double-checking to ensure she didn't forget anything, smoothing and adjusting her suit jacket on the way out.`
+				goto closeHatch
+
+			label homeIsAmongStars
+			`	Carla lays out some advertising materials, before going into a puffery-laden speech about the state of the housing market and the 'great and rich' culture on <origin>, the nearby restaurants, swimming pools, libraries and other amenities, the great experiences, and the prestigious universities and schools nearby.`
+			`	Sometimes, her speech is so fast that it is nearly incomprehensible. She gestures wildly, to the point where the buttons on her suit jacket's sleeve are briefly visible, and at some points nearly slapping you, only dodging mere milliseconds before impact.`
+			`	After roughly 8 minutes of continuing to listen to her speech, you eventually begin to have an annoyed look on your face.`
+			`	"Your home may be the stars and your ship, but you can't live here forever. You will eventually need a world to call home. The secret of Helsingor is about to leak, and once it does, the prices will climb! You're in on a rare opportunity to see how great Asgard is before the rest!"`
+			choice
+				`	"I'm not convinced. Can you please leave now?"`
+					goto leaveShip1
+				`	"Sorry, I'm still not interested in buying a house."`
+					goto leaveShip1
+				`	"Okay. I'm interested."`
+					goto interested
+
+			label interested
+			`	"Great!", says Carla. "I have an opening today, so we can check out the house and see if it is right for you."`
+			`	"Where is the house, exactly?", you ask.`
+			`	"Just outside the city center. It's an apartment.", Carla replies. "It should be a 20-minute bus ride from here."`
+			choice
+				`	"Let's go, then."`
+					goto journey
+
+			label journey
+			`	Carla gets up from her seat, smoothing and adjusting her suit jacket as necessary and fastening a few buttons. She collects her things. After a few minutes you open the hatch and begin walking to the nearest bus stop.`
+			`	After a few minutes of both of you sitting, the bus arrives. You and Carla get on the bus, finding a seat in the front. You both pay the fare. Occasionally, to pass the time and stave off boredom, she tells you one of her many stories about life as a property agent, such as the time she accidentally stepped over a child's toy set, the time she found magazines of a certain type on the desk, and the occasional renter who acted rude towards a client during a showing.`
+			`	Once the stop is in sight Carla approaches the door, and you follow. The door opens, and you walk for a few minutes, enter an elevator, and arrive on the 18th floor. She brings out a ring of keys and browses through them to find the proper key and eventually opens the door.`
+			choice
+				`	(Enter the apartment.)`
+					goto insideApartment
+
+			label insideApartment
+			`	You enter the apartment. It only has a bed, table, a sofa, and a few chairs. The apartment contains a single bedroom, a bathroom, and a large living room, alongside a small storage room between the kitchen and the living room.`
+			`	Carla begins explaining. Unlike the speech she gave at the table on your ship, this time she speaks in a clear voice. "It's a one-bedroom apartment. The bedroom should be large enough for three people. If you want to rent, it is 5,800 credits per month, and if you want to buy it, it should cost about 810,000 credits. The purchase price includes the furniture."`
+			`	"So, what will it be?", she asks.`
+			choice
+				`	"I want to buy the apartment."`
+					goto buyApartment
+				`	"Sorry, I'm not interested."`
+					goto changeMind
+
+			label buyApartment
+			`	The professional smile on Carla's face asserts itself even stronger. "Good. I will say it again. The house costs 810,000 credits. Once I receive your payment, I will hand you the key, and from there on, the house will be yours. Your main home may be the stars and outer space, but when you retire, you'll have this house. You can even have it for your family."`
+			`	She hands you a clipboard with the purchase agreement. You sit down on the table while you read the contract. Carla disappears into the bedroom. While you review the terms, you can sometimes hear her taking some calls in the distance.`
+			choice
+				`	(Call Carla over.)`
+			`	You begin to speak with a slightly raised voice. "Carla, I've read the contract and I've made my decision. Please come here." Carla excuses herself from the phone and walks up to the table, taking a seat.`
+			choice
+				`	"I've decided to buy the apartment."`
+					goto finalizePurchase
+				`	"Sorry, but I've changed my mind. I don't want the apartment."`
+					goto changeMind
+
+			label finalizePurchase
+			`	"You made the right decision today.", says Carla in a happy tone. She watches as you bring out your pen and sign with your...`
+			choice
+				"right hand."
+					goto finalizePurchase.signed
+				"left hand."
+					goto finalizePurchase.leftHand
+
+			label finalizePurchase.leftHand
+			`	"Wait, you're left-handed too? I'm actually left-handed myself!", comments Carla as you sign your name.`
+				goto finalizePurchase.signed
+
+			label finalizePurchase.signed
+			`	With the ink of your signature now dried on the paper, you hand Carla a credit chip with 810,000 credits. She then reaches into her bag, retrieves a keyring, removes several keys from it, puts them on another smaller keyring, and hands them to you. She explains to you what door each individual key is for.`
+			`	You shake hands with the agent, and wish each other well. You are now in your brand new house. Carla again smooths and adjusts her suit jacket, fastening a few buttons once more before she walks off. You lock the door behind her and begin contemplating on what to do with your new house.`
+			`	Eventually, you decide to leave. You board a bus to the spaceport, and return to your ship.`
+				accept
+
+			label changeMind
+			`	As you speak those few words, Carla's smile temporarily gives way to a frown and maybe even an angry face. You greet each other farewell, and you leave the house. As you exit the front door, she locks the door behind you. You board a bus to the spaceport and return to your ship.`
+				decline
+
+	on accept
+		set "bought house from carla von hausen"
+		set "has house on asgard"
+		set "met carla von hausen"
+		payment -810000
+
+
+		log "I remember when Carla von Hausen tried to sell me a house while I was sitting in a park in Helsingor. Today she approached me again. I bought a house from her for 810,000 credits."
+
+	on decline
+		log "I remember when Carla von Hausen tried to sell me a house while I was sitting in a park in Helsingor. Today she approached me again. I made it clear to her that I was not interested."
+
+trade
+	commodity "Elaine's stuff"
+		"Elaine's stuff"
+
+mission "CVH customer moving house"
+	to offer
+		has "Home for Skadenga 3: done"
+		"cargo space" > 7
+		#random > 80
+	source
+		distance 2 5
+		attributes "deep"
+		not attributes "station"
+	destination
+		planet "Asgard"
+	cargo "Elaine's stuff" 4 6
+	on offer
+		conversation
+			"	As you walk to the spaceport, a woman approaches you."
+			`	"Captain?", she says.`
+			choice
+				`	"Leave me alone!"`
+					decline
+				`	"Yes?"`
+					goto explain
+
+			label explain
+			"	I have a job for you. I'm moving to <destination> soon. I just want a captain who will transport me and my stuff. It should be roughly <tons>."
+			choice
+				`	"Sorry, I'm not headed there right now."`
+					decline
+				`	"I can transport you."`
+					goto canTransportYou
+				`	"How much are you willing to pay me?"`
+					goto askAboutPayment
+
+			label askAboutPayment
+			`	"I can pay you <payment>.", explains the woman.`
+			choice
+				`	"Okay, I will be willing to transport you."`
+					goto canTransportYou
+				`	"Sorry, but I can't take a job for that amount of money."`
+					decline
+
+			label canTransportYou
+			`	"Great!", says the woman. "I'll load my cargo onto your ship.". A few dockworkers arrive and begin loading what looks like her items into the hatch. With the items loaded, you show the woman her bunk as you go to the bridge. "Oh, and the name's Elaine".`
+				accept
+
+	on complete
+		conversation
+			"	Your ship enters the atmosphere of Asgard. As you land on the spaceport and prepare to open the hatch, you approach the woman.."
+			choice
+				`	"So by any chance, who's your landlord?"`
+					goto whoIsLandlord
+				`	"We're here. Time to go."`
+					goto timeToGo
+
+			label whoIsLandlord
+			`	"Her name is 'Carla von Hausen'. I'm renting.", says Elaine.`
+
+			label timeToGo
+			`	"It's time to go", you say.`
+
+			label leaveShip
+			`	A truck pulls in, stopping near your ship. As the hatch opens, a few dockworkers enter and begin lifting furniture and carrying smaller items outside of the ship into the truck. Just as you and Elaine leave the ship, a woman in a red pantsuit approaches.`
+			`	As she approaches you, she identifies herself as 'Carla von Hausen'.`
+			`	"Hello. I'm <first> <last>", you say.`
+			`	"Thank you very much, Captain <last>. I appreciate your help in getting my tenant and her stuff transported to Asgard.`
+			`	For the next half-hour, Carla and Elaine observe as the dockworkers continue loading the truck. Just as the last of the cargo is loaded, you hear a taxi stop nearby.`
+			`	"Want to join us?", asks Carla.`
+			choice
+				`	"Sure, I'd love to go with you."`
+					goto accompanyThem
+				`	"No, I'm going on my own now."`
+					decline
+
+			label accompanyThem
+			`	The three of you board the taxi. The truck begins departing the spaceport, while the taxi follows. Eventually, you arrive at your destination. The three of you then leave the taxi. A van that you haven't noticed stops nearby. A group of workers begin unloading Elaine's items from the truck, while another group lays down protective covers on the walls, floor, and elevator interior.`
+			`	"Greetings to all residents! A new tenant is moving into your block. We apologize for the noise and inconvenience.", says one of the workers over the apartment block's PA system.`
+			`	Elaine then approaches you, and hands you a credit chip containing <payment>. You wave goodbye to Carla and Elaine as they disappear into one of the elevators.`
+			`	"Are you going to return to the spaceport <first>? I have to go back to the city soon!", yells the taxi driver.`
+			`	"Yes! I'm going back.", you reply, in a voice matching that of the driver. You walk back to the taxi, open the door, and put on your seatbelt. Eventually, you arrive at the spaceport and return to your ship, ready to leave.`
+
+		set "met carla von hausen"
+		payment 76000
+
+# Patch mission to fix my misspelling of Carla's last name
+mission "leest carla von hausen condition patch"
+	landing
+	invisible
+	to offer
+		# Do not correct this typo
+		has "met carla von hansen"
+	on offer
+		set "met carla von hausen"
+		fail
+
+# The player first meets Carla in the mission "Home for Skadenga 3"
+mission "leest detect home for skadenga 3"
+	landing
+	invisible
+	to offer
+		has "Home for Skadenga 3: done"
+	on offer
+		set "met carla von hausen"
+		fail
+
+mission "leest carla von hausen log"
+	landing
+	invisible
+	to offer
+		has "met carla von hausen"
+	on offer
+		log "People" "Carla von Hausen" "A property agent based in the Deep. All the times you have encountered her, you have only seen her in one of her many, many different pantsuits."

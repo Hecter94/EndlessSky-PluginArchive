@@ -1,9 +1,11 @@
-#Missions and events relating to spawning a persistient ship or adding new ships to fleet due to timed events or trigger mission not immediately to any story mission.
+#Missions and events relating to spawning a persistent ship or adding new ships to fleet due to timed events or trigger mission not immediately attached to any story mission.
 
 
 mission "MGF: Polaris Alcazar"
 	invisible
 	landing
+	to complete
+		never
 	npc save
 		government Syndicate
 		personality heroic staying opportunistic
@@ -24,7 +26,7 @@ mission "MGF: Polaris Alcazar Respawn Delay"
 	to offer
 		has "MGF: Polaris Alcazar: failed"
 	on offer
-		"MGF: Polaris Alcazar Destruction Date" = ("year" * "months") + "months"
+		"MGF: Polaris Alcazar Destruction Date" = ( "year" * 12 ) + "months"
 	on accept
 		fail
 		
@@ -32,7 +34,8 @@ mission "MGF: Polaris Alcazar Respawn"
 	invisible
 	landing
 	to offer
-		"MGF: Polaris Alcazar Destruction Date" + 12 == ("year" * "months") + "months"
+		has "MGF: Polaris Alcazar: failed"
+		"MGF: Polaris Alcazar Destruction Date" == ( "year" * 12 ) + "months" - 12
 	on offer
 		clear "MGF: Polaris Alcazar: offered"
 		clear "MGF: Polaris Alcazar: failed"
@@ -41,6 +44,8 @@ mission "MGF: Polaris Alcazar Respawn"
 mission "MGF: Sol Alcazar"
 	invisible
 	landing
+	to complete
+		never
 	npc save
 		government Republic
 		personality heroic staying opportunistic
@@ -62,7 +67,7 @@ mission "MGF: Sol Alcazar Respawn Delay"
 	to offer
 		has "MGF: Sol Alcazar: failed"
 	on offer
-		"MGF: Sol Alcazar Destruction Date" = ("year" * "months") + "months"
+		"MGF: Sol Alcazar Destruction Date" = ( "year" * 12 ) + "months"
 	on accept
 		fail
 		
@@ -70,7 +75,8 @@ mission "MGF: Sol Alcazar Respawn"
 	invisible
 	landing
 	to offer
-		"MGF: Sol Alcazar Destruction Date" + 12 == ("year" * "months") + "months"
+		has "MGF: Sol Alcazar: failed"
+		"MGF: Sol Alcazar Destruction Date" == ( "year" * 12 ) + "months" - 12
 	on offer
 		clear "MGF: Sol Alcazar: offered"
 		clear "MGF: Sol Alcazar: failed"
@@ -79,11 +85,17 @@ mission "MGF: Sol Alcazar Respawn"
 mission "MGF: Almaaz Alcazar"
 	invisible
 	landing
+	to complete
+		never
 	npc save
 		government Pirate
 		personality heroic staying opportunistic
 		system Almaaz
 		ship "SC-1 Alcazar" "Eternal Void"
+	npc
+		government Pirate
+		personality heroic staying
+		system Almaaz
 		fleet
 			names "pirate"
 			variant
@@ -447,7 +459,27 @@ event "MGF: Pirate Advancement V"
 			
 	fleet "Large Core Pirates"
 		add variant 1
-			"AP-22 Fusillade"
+			"AP-7 Sentinel"
+			"Battle Bulk" 2
+			"CS-24 Garrison"
+			"Barb" 18
+			
+#Removed Fusillade spawn from older version. The ship was sort of a joke anyway.
+#In the future it'll possibly be obtainable as some unique one-of-a-kind ship.
+mission "MGF: Remove Fusillade Spawn"
+	invisible
+	landing
+	to offer
+		has "event: MGF: Pirate Advancement V"
+	on offer
+		event "MGF: Remove Fusillade Spawn"
+	on accept
+		fail
+		
+event "MGF: Remove Fusillade Spawn"
+	fleet "Large Core Pirates"
+		remove variant 1
+			"AP-7 Sentinel"
 			"Battle Bulk" 2
 			"CS-24 Garrison"
 			"Barb" 18
@@ -547,9 +579,277 @@ event "MGF: Southern Merchant Upgrade I"
 			"Lance" 6
 			"AGT-31 Xencar" 6
 		
+mission "MGF: Southern Merchant Upgrade II"
+	invisible
+	landing
+	to offer
+		has "MGF: Pirate Advancement III"
+	on offer
+		event "MGF: Southern Merchant Upgrade II"
+	on accept
+		fail
+		
+event "MGF: Southern Merchant Upgrade II"
+	fleet "Small Southern Merchants"
+		add variant 5
+			"FG-6 Startrain"
+			"Quicksilver" 2
+			
+		add variant 2
+			"QYG-30r Qazan"
+			"Headhunter"
+		add variant 2
+			"QYG-30r Qazan"
+			"Headhunter (Particle)"
+		add variant 2
+			"FF-30 Volant" 2
+			"Raven" 2
+			
+		add variant 1
+			"Clipper (Heavy Laser)" 2
+
+	fleet "Large Southern Merchants"
+		add variant 6
+			"PF-80 Intrepid"
+			"Bastion"
+		add variant 4
+			"PF-80 Intrepid" 2
+			"Osprey"
+			"Osprey (Missile)"
+		add variant 3
+			"PF-80 Intrepid" 3
+			"CSE-6 Steward"
+			"Barb (Proton)" 6
+			
+		add variant 4
+			"FG-7 Conveyor-A" 3
+			"CS-24 Garrison" #18
+			"Lance" 20
+			"AGT-31 Xencar" 22
+		add variant 4
+			"Hauler III" 4
+			"Bastion"
+			"CS-24 Garrison" #18
+			"Lance" 6
+			"AGT-31 Xencar" 12
+		add variant 5
+			"Strata (Sulfuric Acid Filled)"
+			"Osprey"
+			"Osprey (Missile)"
+		add variant 4
+			"FG-5 Bluewhale-A" 2
+			"CSE-6 Steward" 2
+			"Lance" 6
+			"AGT-31 Xencar" 6
+		add variant 3
+			"Tlielart (Cargo Carrier)" #36
+			"Lance" 20
+			"AGT-31 Xencar" 16
+		add variant 4
+			"FG-5 Bluewhale-A" 3
+			"Leviathan"
+			"Bastion"
+		add variant 2
+			"FG-7 Conveyor-A" 3
+			"Eleonorae"
+			"Osprey (Missile)"
+			
+		add variant 2
+			"CDB-6K Jupiter" 3
+			"Eleonorae"
+			"Bastion"
+		add variant 2
+			"CDB-6K Jupiter" 2
+			"CS-24 Garrison" #18
+			"Lance" 6
+			"AGT-31 Xencar" 12
+			
+mission "MGF: Northern Merchant Upgrade I"
+	invisible
+	landing
+	to offer
+		has "MGF: Pirate Advancement II"
+	on offer
+		event "MGF: Northern Merchant Upgrade I"
+	on accept
+		fail
+		
+event "MGF: Northern Merchant Upgrade I"
+	fleet "Small Northern Merchants"
+		add variant 5
+			"TS-650 Herrenbal"
+			"Berserker" 2
+
+		add variant 5
+			"QYG-30r Qazan"
+			"Berserker"
+
+		add variant 10
+			"QYG-30 Qazan"
+			"Sparrow"
+
+		add variant 2
+			"FG-6 Startrain"
+			"Headhunter"
+		add variant 2
+			"FG-6 Startrain"
+			"Raven"
+
+		add variant 2
+			"S-PT06 Harukaze (Quad Blaster)" 2
+
+	fleet "Large Northern Merchants"
+		add variant 10
+			"CH-6 Carrack"
+			"Barb" 4
+		add variant 10
+			"FG-7 Conveyor"
+			"Barb" 8
+		add variant 5
+			"FG-5 Bluewhale"
+			"CSE-6 Steward" #6
+			"Dagger" 3
+			"Barb" 3
+		add variant 3
+			"FG-7 Conveyor" 3
+			"Dagger" 24
+			"CS-24 Garrison" #18
+			"AGT-31 Xencar" 18
+
+		add variant 20
+			"QYG-30 Qazan" 3
+			"Headhunter" 2
+		add variant 25
+			"QYG-60 Sandiq" 2
+			"Raven"
+
+		add variant 7
+			"CK50T Stahbar (Proton)"
+		add variant 1
+			"Tlielart (Cargo Carrier)"
+			"AGT-31 Xencar" 36
+
+		add variant 1
+			"Strata (Ammonia Filled)"
+			"Headhunter (Particle)" 2
+
+		add variant 10
+			"QYG-30r Qazan" 2
+			"Headhunter (Particle)"
+
+		add variant 2
+			"CDB-6K Jupiter"
+			"Corvette"
+			"CSE-6 Steward"
+			"Dagger" 3
+			"AGT-31 Xencar" 3
+		
+		add variant 4
+			"CDB-12K Saturn"
+			"Leviathan"
+		add variant 2
+			"CDB-12K Saturn"
+			"Leviathan (EPS-1)"
+
+event "MGF: Northern Merchant Upgrade II"
+	fleet "Small Northern Merchants"
+		add variant 1
+			"S-PT06 Harukaze (Swordfish)"
+
+mission "MGF: LunaWine Escort Upgrade I"
+	invisible
+	landing
+	to offer
+		has "MGF: Pirate Advancement II"
+	on offer
+		event "MGF: LunaWine Escort Upgrade I"
+	on accept
+		fail
+		
+event "MGF: LunaWine Escort Upgrade I"
+	fleet "MGF: Luna Winery Long Range"
+		remove variant 20
+			"CWC-2 Celestine (Long Range)"
+			"Headhunter (LunaWine Long Range Escort)" 2
+		remove variant 60
+			"Celestine (Long Range, Red Wine)"
+			"Headhunter (LunaWine Long Range Escort)" 2
+		remove variant 60
+			"Celestine (Long Range, White Wine)"
+			"Headhunter (LunaWine Long Range Escort)" 2
+		remove variant 60
+			"Celestine (Long Range, Rose Wine)"
+			"Headhunter (LunaWine Long Range Escort)" 2
+		add variant 20
+			"CWC-2 Celestine (Long Range)"
+			"Headhunter (LunaWine Long Range Escort, Burst Particle)" 2
+		add variant 60
+			"Celestine (Long Range, Red Wine)"
+			"Headhunter (LunaWine Long Range Escort, Burst Particle)" 2
+		add variant 60
+			"Celestine (Long Range, White Wine)"
+			"Headhunter (LunaWine Long Range Escort, Burst Particle)" 2
+		add variant 60
+			"Celestine (Long Range, Rose Wine)"
+			"Headhunter (LunaWine Long Range Escort, Burst Particle)" 2
+
+mission "MGF: NGK HeavyFreight Upgrade I"
+	invisible
+	landing
+	to offer
+		has "MGF: Pirate Advancement III"
+	on offer
+		event "MGF: NGK HeavyFreight Upgrade I"
+	on accept
+		fail
+
+event "MGF: NGK HeavyFreight Upgrade I"
+	fleet "NGK Hauling HeavyFreight"
+		remove variant 50
+			"FG-5 Bluewhale-A" 5
+			"AP-7 Sentinel (NGK Escort)"
+			"E-VC14 Zuiho"
+			"Xencar (NGK)" 10
+		remove variant 50
+			"FG-7 Conveyor-A" 4
+			"Xencar (NGK)" 32
+			"Leviathan (NGK Escort)" 2
+			"E-VC14 Zuiho"
+			"Xencar (NGK)" 10
+		remove variant 30
+			"FG-5 Bluewhale-A" 2
+			"FG-5 Bluewhale-A (NGK, Turret Upgrade)"
+			"CDB-6K Jupiter"
+			"CDB-6K Jupiter (NGK, Partial Turret Upgrade)"
+			"Leviathan (NGK Escort)"
+			"E-VC14 Zuiho"
+			"Xencar (NGK)" 10
+		
+		add variant 50
+			"FG-5 Bluewhale-A" 3
+			"FG-5 Bluewhale-A (NGK, Turret Upgrade)" 2
+			"AP-7 Sentinel (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+		add variant 50
+			"FG-7 Conveyor-A" 2
+			"FG-7 Conveyor-A (NGK, Turret Upgrade)" 2
+			"Xencar (NGK)" 32
+			"Leviathan (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+		add variant 10
+			"FG-5 Bluewhale-A (NGK, Turret Upgrade)" 3
+			"CDB-6K Jupiter (NGK, Turret Upgrade)" 2
+			"Leviathan (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+
 event "mgf: mieusbar released"
 	date 21 4 3014
 	shipyard "Southbound Advanced"
+		add "TS-1L260 Mieusbar"
+	shipyard "Vessa Shipworks Advanced"
 		add "TS-1L260 Mieusbar"
 	fleet "Rangphenn Transport"
 		add variant 5
@@ -574,6 +874,127 @@ event "mgf: mieusbar released"
 			"TS-1L260 Mieusbar"
 			"Quicksilver" 3
 			
+event "mgf: g-class released"
+	date 1 3 3014
+	shipyard "Syndicate Basics"
+		add "UA-10 Porter"
+	shipyard "Syndicate Advanced"
+		add "G-Class Container Transport"
+	fleet "Large Southern Merchants"
+		add variant 2
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Splinter"
+	fleet "Large Core Merchants"
+		add variant 5
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Quicksilver" 3
+		add variant 4
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Splinter"
+		add variant 4
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Wasp (Proton)" 3
+		add variant 4
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Vanguard" 1
+		add variant 3
+			"G-Class Container Transport" 2
+			"UA-10 Porter" 4
+			"Vanguard" 1
+			"Quicksilver" 2
+		add variant 3
+			"G-Class Container Transport" 2
+			"UA-10 Porter" 4
+			"Vanguard" 1
+			"Splinter"
+	fleet "Large Northern Merchants"
+		add variant 3
+			"G-Class Container Transport"
+			"UA-10 Porter" 2
+			"Splinter"
+
+mission "MGF: Liathtar Release"
+	invisible
+	landing
+	to offer
+		has "event: mgf: g-class released"
+	on offer
+		event "mgf: liathtar released" 50
+	on accept
+		fail
+
+event "mgf: liathtar released"
+	shipyard "MarStel Basics"
+		add "CK10C Liathtar"
+	shipyard "MarStel Intermediate"
+		add "CK10C Liathtar"
+	shipyard "MarStel Advanced"
+		add "CK10C Liathtar"
+	fleet "Large Southern Merchants"
+		add variant 2
+			"Tlielart (Cargo Carrier)"
+			"CK10C Liathtar" 20
+			"AGT-31 Xencar" 16
+	fleet "Large Northern Merchants"
+		add variant 2
+			"Tlielart (Cargo Carrier)"
+			"CK10C Liathtar" 26
+			"AGT-31 Xencar" 10
+	fleet "Large Core Merchants"
+		add variant 1
+			"Tlielart (Cargo Carrier)"
+			"CK10C Liathtar" 20
+			"AGT-31 Xencar" 16
+
+mission "MGF: Navilel Release Trigger"
+	landing
+	invisible
+	to offer
+		has "event: mgf: g-class released"
+	on offer
+		event "mgf: navilel released" 180
+		fail
+
+event "mgf: navilel released" 
+	shipyard "Betelgeuse Advanced"
+		"SV40-n Navilel"
+	fleet "Large Core Merchants"
+		add variant 3
+			"SV40-n Navilel"
+		add variant 2
+			"SV40-n Navilel"
+			"Splinter"
+		add variant 2
+			"SV40-n Navilel"
+			"Quicksilver" 2
+		add variant 2
+			"SV40-n Navilel" 2
+			"Vanguard"
+	fleet "Large Southern Merchants"
+		add variant 4
+			"SV40-n Navilel"
+		add variant 2
+			"SV40-n Navilel"
+			"Splinter"
+		add variant 2
+			"SV40-n Navilel" 2
+			"Falcon"
+	fleet "Large Northern Merchants"
+		add variant 2
+			"SV40-n Navilel"
+		add variant 1
+			"SV40-n Navilel"
+			"Splinter"
+		add variant 1
+			"SV40-n Navilel"
+			"Firebird"
+		
+
 event "mgf: ialmuslati released"
 	date 6 10 3014
 	shipyard "Betelgeuse Advanced"
@@ -581,6 +1002,8 @@ event "mgf: ialmuslati released"
 	shipyard "Lionheart Basics"
 		"AD-0032 Ialmuslati"
 	shipyard "Luxury Ships"
+		"AD-0032 Ialmuslati"
+	shipyard "Najrmalas Shipworks Advanced"
 		"AD-0032 Ialmuslati"
 	fleet "Small Northern Merchants"
 		add variant 4
@@ -602,6 +1025,906 @@ event "mgf: ialmuslati released"
 		add variant 1
 			"Ialmuslati (Hyperdrive)"
 			
+event "mgf: tonazqi released"
+	date 12 5 3014
+	shipyard "Syndicate Advanced"
+		"QYG-70r Tonazqi"
+	shipyard "Vefrol Dockyard Advanced"
+		"QYG-70r Tonazqi"
+	fleet "Large Southern Merchants"
+		add variant 5
+			"QYG-70r Tonazqi"
+			"Hawk" 3
+		add variant 3
+			"QYG-70r Tonazqi"
+			"Splinter"
+		add variant 3
+			"QYG-70r Tonazqi"
+			"Bastion"
+	fleet "Large Core Merchants"
+		add variant 5
+			"QYG-70r Tonazqi"
+			"Quicksilver" 2
+		add variant 3
+			"QYG-70r Tonazqi"
+			"Quicksilver" 3
+	fleet "Paradise Merchants"
+		add variant 5
+			"QYG-70r Tonazqi"
+	fleet "Large Northern Merchants"
+		add variant 4
+			"QYG-70r Tonazqi"
+			"Berserker" 2
+			
+mission "MGF: Core Food Update I"
+	invisible
+	landing
+	to offer
+		has "event: mgf: tonazqi released"
+	on offer
+		event "MGF: Core Food Upgrade I"
+	on accept
+		fail
+		
+event "MGF: Core Food Upgrade I"
+	fleet "MGF: Small Core Food Corp"
+		add variant 30
+			"QYG-70r Tonazqi"
+			"Quicksilver" 2
+		add variant 30
+			"QYG-70r Tonazqi"
+			"QYG-30r Qazan"
+			"Quicksilver" 2
+
+mission "MGF: Core Food Escort Upgrade (Post FW I)"
+	invisible
+	landing
+	to offer
+		has "main plot completed"
+	on offer
+		event "MGF: Core Food Escort Upgrade (Post FW I)" 360
+	on accept
+		fail
+
+event "MGF: Core Food Escort Upgrade (Post FW I)"
+	fleet "MGF: Small Core Food Corp"
+		variant 20
+			"Freighter"
+			"Quicksilver (Mark II)"
+		variant 20
+			"Freighter"
+			"QYG-30r Qazan"
+			"Quicksilver (Mark II)"
+		add variant 20
+			"QYG-70r Tonazqi"
+			"Quicksilver (Mark II)" 2
+		add variant 20
+			"QYG-70r Tonazqi"
+			"QYG-30r Qazan"
+			"Quicksilver (Mark II)" 2
+		variant 35
+			"QYG-30r Qazan" 2
+			"Quicksilver (Mark II)"
+		variant 10
+			"TQK-20 Qaytas"
+			"Quicksilver (Mark II)"
+		variant 20
+			"TQK-20 Qaytas (White Sugar)"
+			"Quicksilver (Mark II)"
+
+mission "MGF: Solacer Upgrade I"
+	invisible
+	landing
+	to offer
+		has "event: mgf: tonazqi released"
+	on offer
+		event "MGF: Solacer Upgrade I" 60
+	on accept
+		fail
+		
+event "MGF: Solacer Upgrade I"
+	fleet "MGF: Small Solacer Reefer"
+		add variant 20
+			"QYG-70r Tonazqi"
+			"Hawk" 2
+			
+event "mgf: h-class development"
+	date 2 5 3020 # 6 years after G-class
+
+mission "MGF: H-Class on sale"
+	landing
+	invisible
+	to offer
+		has "event: mgf: h-class development"
+		or
+			#Won't offer during the war
+			not "Liberate Kornephoros: offered"
+			has "main plot completed"
+	on offer
+		event "mgf: h-class on sale"
+		fail
+
+event "mgf: h-class on sale"
+	shipyard "Syndicate Advanced"
+		"H-Class Super Container Ship"
+	fleet "Large Core Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Vanguard"
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"CSE-6 Steward"
+			"Lance" 6
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Vanguard"
+			"Splinter" 2
+		add variant 4
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Splinter" 2
+	fleet "Large Northern Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Firebird" 2
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Leviathan"
+		add variant 2
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Vanguard"
+			"Splinter" 2
+		add variant 4
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Corvette" 2
+			"Raven"
+
+	fleet "Large Southern Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Falcon"
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"CSE-6 Steward"
+			"Lance" 6
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Falcon"
+			"Bastion" 2
+		add variant 3
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"Falcon" 2
+
+	fleet "NGK Hauling HeavyFreight"
+		add variant 10
+			"H-Class Super Container Ship" 2
+			"UA-10 Porter" 128
+			"Leviathan (NGK Escort)"
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+
+mission "MGF: Zummenstoss developed"
+	landing
+	invisible
+	to offer
+		has "event: mgf: h-class development"
+		or
+			#Won't offer during the war
+			not "Liberate Kornephoros: offered"
+			has "main plot completed"
+	on offer
+		event "mgf: zummenstoss on sale" 360
+		fail
+
+event "mgf: zummenstoss on sale"
+	shipyard "Thyrupp AG Advanced"
+		add "GKS-48 Zummenstoss"
+	shipyard "Betelgeuse Advanced"
+		add "GKS-48 Zummenstoss"
+	outfitter "Thyrupp AG Advanced"
+		"NW40 Hagel Cannon"
+		"NW40z Hagel Turret"
+	fleet "Large Core Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"CH-6 Carrack" 2
+			"Dagger" 8
+			"FG-5 Bluewhale-A"
+			"GKS-48 Zummenstoss"
+		add variant 1
+			"CK50T Stahbar"
+			"GKS-48 Zummenstoss"
+		add variant 3
+			"G-Class Container Transport" 2
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"FG-5 Bluewhale-A" 2
+			"GKS-48 Zummenstoss"
+
+	fleet "Large Northern Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"GKS-48 Zummenstoss"
+		add variant 1
+			"CDB-6K Jupiter" 2
+			"GKS-48 Zummenstoss"
+		add variant 3
+			"FG-5 Bluewhale-A" 2
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"CH-6 Carrack" 2
+			"Dagger" 8
+			"FG-5 Bluewhale-A"
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"G-Class Container Transport" 2
+			"GKS-48 Zummenstoss"
+		add variant 1
+			"CDB-12K Saturn"
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"SV80-n Catirfel"
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"FUe06a Gebrant III"
+			"FUe04a Gebrant II" 2
+			"GKS-48 Zummenstoss"
+
+	fleet "Large Southern Merchants"
+		add variant 1
+			"H-Class Super Container Ship"
+			"UA-10 Porter" 64
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"CDB-6K Jupiter" 2
+			"GKS-48 Zummenstoss"
+		add variant 1
+			"CDB-12K Saturn"
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"FG-5 Bluewhale-A" 3
+			"GKS-48 Zummenstoss"
+			"Falcon"
+		add variant 2
+			"Hauler III" 3
+			"GKS-48 Zummenstoss"
+		add variant 2
+			"CK50T Stahbar" 3
+			"GKS-48 Zummenstoss"
+
+	fleet "Large Crossguard Patrol"
+		add variant 5
+			"GKS-48 Zummenstoss"
+			"Eleonorae"
+		add variant 2
+			"GKS-48 Zummenstoss"
+			"CS-24 Garrison"
+			"Lance" 10
+			"AGT-31 Xencar" 8
+
+	fleet "Large Espion Guard"
+		add variant 8
+			"GKS-48 Zummenstoss"
+			"Quicksilver (EPB3-2)" 3
+
+	fleet "Large Northern Pirate"
+		add variant 2
+			"GKS-48 Zummenstoss"
+			"Behemoth"
+
+	fleet "Large Southern Pirate"
+		add variant 4
+			"GKS-48 Zummenstoss"
+			"Argosy" 2
+		add variant 2
+			"GKS-48 Zummenstoss"
+			"Argosy"
+			"Bastion"
+
+	fleet "Maryhal Logistic ArteryLine"
+		add variant 10
+			"CDB-6K Jupiter" 2
+			"FG-7 Conveyor-A" 3
+			"Xencar (Particle)" 18
+			"GKS-48 Zummenstoss"
+			"Garrison (Long Range)"
+			"Xencar (Particle)" 18
+	
+
+mission "MGF: Galaxy Station Begin"
+	landing
+	invisible
+	to offer
+		has "event: mgf: h-class on sale"
+		or
+			not "Liberate Kornephoros: offered"
+			has "main plot completed"
+	on offer
+		event "mgf: galaxy station begin" 45
+		event "mgf: galaxy station done auto" 170
+	on accept
+		fail
+
+planet "MGF Fake New China"
+	attributes "requires: unlandable"
+
+planet "GS1 Galaxy Station"
+	government "Republic"
+	attributes station
+	landscape `land/space0`
+	music ambient/machinery
+	description `This is a purpose-built shipyard station owned by Freight Galactic shipyards specifically for building one of the largest ship ever devised.`
+	spaceport `Most of the station is dedicated to developing and building exceptionally large ships and in turns it is fairly cramped and services are minimal, though the restaurant chains brought into this station is considered one of the best around.`
+	bribe 0.1
+	security 0.5
+	shipyard "Basic Ships"
+	outfitter "Common Outfits"
+	
+
+event "mgf: galaxy station begin"
+	system "Merak"
+		add object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station wip"
+				distance 150.24
+				period 25
+
+event "mgf: galaxy station done auto"
+
+mission "MGF: Galaxy Station Done Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station done auto"
+		not "event: mgf: galaxy station done"
+	on offer
+		event "mgf: galaxy station done"
+		event "mgf: galaxy station expansion1 begin" 360
+		event "mgf: galaxy station expansion1 done auto" 490
+		set "mgf: galaxy station post-05062023"
+	on accept
+		fail
+
+mission "MGF: Galaxy Station Upgrade Patch"
+	landing
+	invisible
+	to offer
+		not "mgf: galaxy station post-05062023"
+		has "event: mgf: galaxy station done auto"
+		not "MGF: Galaxy Station Done Early: offered"
+	on offer
+		event "mgf: galaxy station expansion1 begin" 360
+		event "mgf: galaxy station expansion1 done auto" 490
+	on accept
+		fail
+
+mission "MGF: Galaxy Station Done Early"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station begin"
+		not "event: mgf: galaxy station done auto"
+		"mgf: gs1 construction assist" >= 12
+	on offer
+		event "mgf: galaxy station done"
+		event "mgf: galaxy station expansion1 begin" 360
+		event "mgf: galaxy station expansion1 done auto" 490
+	on accept
+		fail
+
+event "mgf: galaxy station done"
+	system "Merak"
+		remove object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station wip"
+				distance 150.24
+				period 25
+		add object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station complete"
+				distance 150.24
+				period 25
+	planet "GS1 Galaxy Station"
+		#Todo: improve landscape image, currently using lazy version.
+		landscape "land/mgf galaxy station landscape"
+		shipyard "Betelgeuse Basics"
+		shipyard "Freight Galactic Advanced"
+		shipyard "Freight Galactic Advanced EX"
+		outfitter "Ammo North"
+		outfitter "Lovelace Advanced"
+		outfitter "Syndicate Basics"
+
+mission "MGF: Exchanger-Class on sale trigger"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station done"
+	on offer
+		event "mgf: exchanger-class on sale" 350
+	on accept
+		fail
+
+event "mgf: exchanger-class on sale"
+	shipyard "Freight Galactic Advanced EX"
+		"FG-10 Exchanger"
+	fleet "Maryhal Logistic ArteryLine"
+		add variant 1
+			"FG-10 Exchanger"
+			"Xencar (EPB3-2)" 36
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		remove variant 10
+			"Tlielart (Long Range)"
+			"Steward (Long Range)"
+			"Xencar (Particle)" 6
+			"Garrison (Long Range)"
+			"Xencar (Particle)" 18
+		remove variant 20
+			"FG-7 Conveyor-A" 4
+			"Lance" 24
+			"Steward (Long Range)"
+			"Xencar (Particle)" 6
+			"Garrison (Long Range)"
+			"Xencar (Particle)" 18
+		remove variant 20
+			"CDB-12K Saturn" 2
+			"FG-5 Bluewhale-A" 3
+			"Steward (Long Range)"
+			"Xencar (Particle)" 6
+			"Garrison (Long Range)"
+			"Xencar (Particle)" 18
+
+		add variant 10
+			"Tlielart (Long Range)"
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		add variant 20
+			"FG-7 Conveyor-A" 4
+			"Xencar (EPB3-2)" 24
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		add variant 20
+			"CDB-12K Saturn" 2
+			"FG-5 Bluewhale-A" 3
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+
+event "mgf: galaxy station expansion1 begin"
+	system "Merak"
+		remove object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station complete"
+				distance 150.24
+				period 25
+		add object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station upgrade1 wip"
+				distance 150.24
+				period 25
+
+event "mgf: galaxy station expansion1 done auto"
+
+mission "MGF: Galaxy Station Expansion1 Done Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station expansion1 done auto"
+	on offer
+		event "mgf: galaxy station expansion1 done"
+	on accept
+		fail
+
+event "mgf: galaxy station expansion1 done"
+	system "Merak"
+		remove object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station upgrade1 wip"
+				distance 150.24
+				period 25
+		add object "MGF Fake New China"
+			distance 1107.51
+			period 441.513
+			object "GS1 Galaxy Station"
+				sprite "planet/mgf galaxy station upgrade1 done"
+				distance 150.24
+				period 25
+	planet "GS1 Galaxy Station"
+		description `This is a purpose-built shipyard station owned by Freight Galactic shipyards specifically for building one of the largest ship ever devised.`
+		description `The station was recently expanded to increase production capacity to meet the demand of their customer.`
+		spaceport `With the recent expansion the station now have more space for various accomodations and facilities beside research and construction. This also includes the expansion of various worker-favorite restaurant further improve life quality abroad the station.`
+		shipyard "Betelgeuse Advanced"
+	fleet "Maryhal Logistic ArteryLine"
+		add variant 5
+			"FG-10 Exchanger"
+			"Xencar (EPB3-2)" 36
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+	fleet "Large Northern Merchant"
+		add variant 1
+			"FG-10 Exchanger"
+			"Dagger" 36
+			"Leviathan" 2
+	fleet "Large Southern Merchant"
+		add variant 1
+			"FG-10 Exchanger"
+			"Finch" 36
+			"Falcon" 2
+
+mission "MGF: Exchanger Post-Lucerne"
+	landing
+	invisible
+	to offer
+		has "event: mgf: developed Lucerne"
+		has "event: mgf: galaxy station expansion1 done"
+	on offer
+		event "mgf: exchanger post-lucerne"
+	on accept
+		fail
+		
+event "mgf: exchanger post-lucerne"
+	shipyard "Freight Galactic Advanced EX"
+		remove "FG-10 Exchanger"
+		add "FG-10 Exchanger (Post-Lucerne)"
+	fleet "Maryhal Logistic ArteryLine"
+		remove variant 5
+			"FG-10 Exchanger"
+			"Xencar (EPB3-2)" 36
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+		add variant 5
+			"FG-10 Exchanger (Post-Lucerne, Upgrade I)"
+			"Xencar (EPB3-2)" 36
+			"Stahbar (MHL Combat)" 2
+			"Steward (Long Range)"
+			"Xencar (EPB3-2)" 6
+			"Garrison (Long Range)"
+			"Xencar (EPB3-2)" 18
+	fleet "Large Northern Merchant"
+		remove variant 1
+			"FG-10 Exchanger"
+			"Dagger" 36
+			"Leviathan" 2
+		add variant 1
+			"FG-10 Exchanger (Post-Lucerne)"
+			"Dagger" 36
+			"Leviathan" 2
+		
+	fleet "Large Southern Merchant"
+		remove variant 1
+			"FG-10 Exchanger"
+			"Finch" 36
+			"Falcon" 2
+		add variant 1
+			"FG-10 Exchanger (Post-Lucerne)"
+			"Finch" 36
+			"Falcon" 2
+		
+mission "MGF: Ourea Naval Arsenal Station Begin"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station done"
+		or
+			not "Liberate Kornephoros: offered"
+			has "main plot completed"
+	on offer
+		event "mgf: ourea naval arsenal begin" 30
+		event "mgf: ourea naval arsenal done auto" 160
+	on accept
+		fail
+
+planet `MGF Fake Shangri-La`
+	attributes "requires: unlandable"
+
+planet "Ourea Naval Arsenal"
+	government "Syndicate"
+	attributes station
+	landscape `land/space0`
+	music ambient/machinery
+	description `Ourea Naval Arsenal is a huge shipyard station with massive docks for building largest type of ships ever designed as well as building regular ships in parallel.`
+	spaceport `The interior of this station is as expansive as the outside suggest to support the endless stream of traffic as ships arrive to supply the station with various raw material for construction.`
+	bribe 0.15
+	security 0.7
+	shipyard "Basic Ships"
+	outfitter "Common Outfits"
+
+event "mgf: ourea naval arsenal begin"
+	system Polaris
+		add object `MGF Fake Shangri-La`
+			distance 1920.05
+			period 812.637
+			object "Ourea Naval Arsenal"
+				sprite "planet/mgf ourea naval arsenal wip"
+				distance 150.24
+				period 35
+
+event "mgf: ourea naval arsenal done auto"
+
+mission "MGF: Ourea Naval Arsenal Done Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: ourea naval arsenal done auto"
+		not "event: mgf: ourea naval arsenal done"
+	on offer
+		event "mgf: ourea naval arsenal done"
+	on accept
+		fail
+
+mission "MGF: Ourea Naval Arsenal Done Early"
+	landing
+	invisible
+	to offer
+		has "event: mgf: galaxy station begin"
+		not "event: mgf: ourea naval arsenal done auto"
+		"mgf: ourea construction assist" >= 12
+	on offer
+		event "mgf: ourea naval arsenal done"
+	on accept
+		fail
+
+event "mgf: ourea naval arsenal done"
+	system Polaris
+		remove object `MGF Fake Shangri-La`
+			distance 1920.05
+			period 812.637
+			object "Ourea Naval Arsenal"
+				sprite "planet/mgf ourea naval arsenal wip"
+				distance 150.24
+				period 35
+
+		add object `MGF Fake Shangri-La`
+			distance 1920.05
+			period 812.637
+			object "Ourea Naval Arsenal"
+				sprite "planet/mgf ourea naval arsenal"
+				distance 150.24
+				period 35
+
+	planet "Ourea Naval Arsenal"
+		landscape `land/station24`
+		shipyard "Syndicate Basics"
+		shipyard "Syndicate Advanced"
+		shipyard "DSSE Shipbuilding Advanced"
+		outfitter "Syndicate Basic"
+		outfitter "Syndicate Advanced"
+
+mission "MGF: K-Class on sale trigger"
+	landing
+	invisible
+	to offer
+		has "event: mgf: ourea naval arsenal done"
+	on offer
+		event "mgf: k-class on sale" 580
+	on accept
+		fail
+
+event "mgf: k-class on sale"
+	shipyard "Syndicate Advanced EX"
+		add "K-Class Ultra Container Ship"
+	planet "Ourea Naval Arsenal"
+		shipyard "Syndicate Advanced EX"
+	fleet "Large Northern Merchant"
+		add variant 1
+			"K-Class Ultra Container Ship"
+			"Dagger" 72
+			"Leviathan" 2
+	fleet "Large Southern Merchant"
+		add variant 1
+			"K-Class Ultra Container Ship"
+			"Finch" 72
+			"Falcon" 2
+	fleet "Large Core Merchant"
+		add variant 1
+			"K-Class Ultra Container Ship"
+			"Barb" 42
+			"Barb (Proton)" 30
+			"Vanguard" 2
+	fleet "NGK Hauling HeavyFreight"
+		add variant 1
+			"K-Class Ultra Container Ship (NGK)"
+			"Xencar (NGK)" 72
+			"Leviathan (NGK Escort)" 2
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+			
+
+mission "MGF: K-Class Post-Lucerne"
+	landing
+	invisible
+	to offer
+		has "event: mgf: developed Lucerne"
+		has "event: mgf: ourea naval arsenal done"
+	on offer
+		event "mgf: k-class post-lucerne"
+	on accept
+		fail
+
+event "mgf: k-class post-lucerne"
+	shipyard "Syndicate Advanced EX"
+		remove "K-Class Ultra Container Ship"
+		add "K-Class Ultra Container Ship (Post-Lucerne)"
+	fleet "Large Northern Merchant"
+		remove variant 1
+			"K-Class Ultra Container Ship"
+			"Dagger" 72
+			"Leviathan" 2
+		add variant 1
+			"K-Class Ultra Container Ship (Post-Lucerne)"
+			"Dagger" 72
+			"Leviathan" 2
+	fleet "Large Southern Merchant"
+		remove variant 1
+			"K-Class Ultra Container Ship"
+			"Finch" 72
+			"Falcon" 2
+		add variant 1
+			"K-Class Ultra Container Ship (Post-Lucerne)"
+			"Finch" 72
+			"Falcon" 2
+	fleet "Large Core Merchant"
+		remove variant 1
+			"K-Class Ultra Container Ship"
+			"Barb" 42
+			"Barb (Proton)" 30
+			"Vanguard" 2
+		add variant 1
+			"K-Class Ultra Container Ship (Post-Lucerne)"
+			"Barb" 42
+			"Barb (Proton)" 30
+			"Vanguard" 2
+
+#=====================Patch for date-locked event
+#Because ES don't trigger it if save file is already past that date
+
+#1100429 is 16 11 3013 (ddmmyyyy)
+
+mission "MGF: Mieusbar overdue"
+	landing
+	invisible
+	to offer
+		#date 21 4 3014
+		not "event: mgf: mieusbar released"
+		"days since epoch" > 1100429 + 156
+	on offer
+		event "mgf: mieusbar released"
+
+mission "MGF: G-class overdue"
+	landing
+	invisible
+	to offer
+		# date 1 3 3014
+		not "event: mgf: g-class released"
+		"days since epoch" > 1100429 + 105
+	on offer
+		event "mgf: g-class released"
+
+mission "MGF: H-class development overdue"
+	landing
+	invisible
+	to offer
+		# date 2 5 3020
+		not "event: mgf: h-class development"
+		"days since epoch" > 1100429 + 2359
+	on offer
+		event "mgf: h-class development"
+		fail
+
+mission "MGF: Ialmuslati overdue"
+	landing
+	invisible
+	to offer
+		# date 6 10 3014
+		not "event: mgf: ialmuslati released"
+		"days since epoch" > 1100429 + 324
+	on offer
+		event "mgf: ialmuslati released"
+
+mission "MGF: Pirate Advancement V overdue"
+	landing
+	invisible
+	to offer
+		#date 16 12 3018
+		not "event: MGF: Pirate Advancement V"
+		"days since epoch" > 1100429 + 1856
+	on offer
+		event "MGF: Pirate Advancement V"
+
+mission "MGF: Pirate Advancement IV overdue"
+	landing
+	invisible
+	to offer
+		#date 16 12 3017
+		not "event: MGF: Pirate Advancement IV"
+		"days since epoch" > 1100429 + 1491
+	on offer
+		event "MGF: Pirate Advancement IV"
+
+mission "MGF: Pirate Advancement III overdue"
+	landing
+	invisible
+	to offer
+		#date 16 12 3016
+		not "event: MGF: Pirate Advancement III"
+		"days since epoch" > 1100429 + 1126
+	on offer
+		event "MGF: Pirate Advancement III"
+
+mission "MGF: Pirate Advancement II overdue"
+	landing
+	invisible
+	to offer
+		#date 16 12 3015
+		not "event: MGF: Pirate Advancement II"
+		"days since epoch" > 1100429 + 760
+	on offer
+		event "MGF: Pirate Advancement II"
+
+mission "MGF: Pirate Advancement I overdue"
+	landing
+	invisible
+	to offer
+		#date 16 12 3014
+		not "event: MGF: Pirate Advancement I"
+		"days since epoch" > 1100429 + 395
+	on offer
+		event "MGF: Pirate Advancement I"
+
+mission "MGF: Tonazqi overdue"
+	landing
+	invisible
+	to offer
+		# date 12 5 3014
+		not "event: mgf: tonazqi released"
+		"days since epoch" > 1100429 + 177
+	on offer
+		event "mgf: tonazqi released"
+
 #=========================Event Additions
 
 
@@ -732,6 +2055,187 @@ event "mgf: fw converted warships"
 			"Finch" 20
 			"AGT-31 Xencar" 60
 			
+mission "MGF: FW Converted Warship 2"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: mgf: fw converted warships"
+	on offer
+		event "mgf: fw converted warships 2-1"
+		event "mgf: fw converted warships 2-2" 120
+		
+event "mgf: fw converted warships 2-1"
+	shipyard "Southbound Advanced"
+		"PAS-3 Barbette (Early, G22)"
+	fleet "Large Free Worlds"
+		add variant 1
+			"PAS-3 Barbette (Early, ACS)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 4
+			"PAS-3 Barbette (Early, G22)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 1
+			"PAS-3 Barbette (Early, G22)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"Falcon (Laser)"
+			"PAS-3 Barbette (Early, G22)"
+		add variant 1
+			"PAS-3 Barbette (Early, ACS)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"PAS-3 Barbette (Early, ACS)"
+			"Bastion" 2
+			"PAS-2 Bulwark"
+			"PCS-4 Castle" 2
+			"Finch" 80
+			"AGT-31 Xencar" 120
+		add variant 1
+			"PAS-2 Bulwark"
+			"Bastion" 2
+			"PAS-3 Barbette (Early, G22)" 2
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+			
+event "mgf: fw converted warships 2-2"
+	shipyard "Southbound Advanced"
+		remove "PAS-3 Barbette (Early, G22)"
+		add "PAS-3 Barbette"
+	outfitter "Kraz Basic"
+		"Jaivana Shell"
+	outfitter "Ammo South"
+		"Jaivana Shell"
+	outfitter "Kraz Advanced"
+		"LbrC-1 Jaivana Turret"
+		"Jaivana Shell Storage"
+		"Jaivana Shell"
+	outfitter "FW Security"
+		"Jaivana Shell"
+	fleet "Large Free Worlds"
+		remove variant 1
+			"PAS-3 Barbette (Early, ACS)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		remove variant 4
+			"PAS-3 Barbette (Early, G22)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		remove variant 1
+			"PAS-3 Barbette (Early, G22)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		remove variant 1
+			"PAS-3 Barbette (Early, ACS)"
+			"CS-24 Garrison"
+			"Finch" 18
+		remove variant 1
+			"PAS-2 Bulwark"
+			"Bastion" 2
+			"PAS-3 Barbette (Early, G22)" 2
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+			
+		add variant 1
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 4
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 1
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"PAS-3 Barbette"
+			"PAS-2 Bulwark"
+		add variant 1
+			"PAS-3 Barbette"
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+			
+mission "MGF: FW Converted Gebrant Carrier"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: initial deployment 4"
+	on offer
+		event "mgf: fw converted mwcarrier" 60
+		event "mgf: tarazed harrier" 90
+
+event "mgf: fw converted mwcarrier"
+	shipyard "Corbel Engineering Intermediate"
+		"FUe02y Gebrant Tender"
+	shipyard "Corbel Engineering Advanced"
+		"FUe02y Gebrant Tender"
+	shipyard "Southbound Advanced"
+		"FUe02y Gebrant Tender"
+		"SWV4 Ravelin"
+	fleet "Large Free Worlds"
+		add variant 4
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Falcon"
+		add variant 3
+			"Falcon (Heavy)"
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+	fleet "Large Southern Merchant"
+		add variant 3
+			"FUe04a Gebrant II"
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+		add variant 2
+			"FUe04a Gebrant II" 2
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Falcon"
+
+event "mgf: tarazed harrier"
+	shipyard "Tarazed Advanced"
+		"TCM-23 Harrier"
+	fleet "Large Free Worlds"
+		add variant 4
+			"FUe02y Gebrant Tender"
+			"TCM-23 Harrier"
+			"Falcon"
+		add variant 3
+			"Falcon (Heavy)"
+			"FUe02y Gebrant Tender"
+			"TCM-23 Harrier"
+			"CSE-6 Steward" #6
+			"Finch" 4
+			"AGT-31 Xencar" 2
+	fleet "Large Southern Merchant"
+		add variant 2
+			"FUe04a Gebrant II"
+			"FUe02y Gebrant Tender"
+			"TCM-23 Harrier"
+		add variant 1
+			"FUe04a Gebrant II" 2
+			"FUe02y Gebrant Tender"
+			"TCM-23 Harrier"
+			"Falcon"
+
 mission "MGF: FW Converted Supercarrier"
 	landing
 	invisible
@@ -792,6 +2296,27 @@ event "mgf: fw converted supercarrier"
 			"SWV4 Ravelin" 2
 			"Eleonorae" 2
 			"PAS-2 Bulwark" 2
+			"Bastion" 4
+			
+mission "MGF: FW Converted Supercarrier 2"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: initial deployment 4"
+	on offer
+		event "mgf: fw converted supercarrier 2"
+		
+event "mgf: fw converted supercarrier 2"
+	fleet "Large Free Worlds"
+		add variant 1
+			"PCS-5 Citadel"
+			"Finch" 44
+			"AGT-31 Xencar" 100
+			"SWV4 Ravelin" 2
+			"Eleonorae" 
+			"PAS-2 Bulwark" 
+			"PAS-3 Barbette"
 			"Bastion" 4
 			
 mission "MGF: FW plasma turret available"
@@ -892,6 +2417,37 @@ event "mgf: fw parapet am available"
 			"CS-24 Garrison" #18
 			"Lance" 18
 			
+mission "MGF: FW Barbette Parapet"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: mgf: fw parapet am available"
+	on offer
+		event "mgf: fw barbette parapet"
+
+event "mgf: fw barbette parapet"
+	fleet "Large Free Worlds"
+		add variant 1
+			"PAS-3 Barbette (Parapet)"
+		add variant 5
+			"PAS-3 Barbette (Parapet)"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 1
+			"Eleonorae"
+			"PAS-3 Barbette (Parapet)"
+			"CS-24 Garrison"
+			"Finch" 10
+			"AGT-31 Xencar" 8
+		add variant 1
+			"PAS-3 Barbette (Parapet)"
+			"PAS-2 Bulwark"
+			"CS-24 Garrison"
+			"Finch" 10
+			"AGT-31 Xencar" 8
+			
 mission "MGF: FW Dreadnought Parapet"
 	landing
 	invisible
@@ -931,6 +2487,11 @@ event "mgf: fw converted warships w parapet"
 			"Eleonorae"
 			"PAS-2 Bulwark (Parapets)"
 			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"Eleonorae"
+			"PAS-2 Bulwark"
+			"CS-24 Garrison (Parapet)"
 			"Finch" 18
 		add variant 1
 			"Falcon (Parapet)"
@@ -1122,7 +2683,84 @@ event "MGF: Ugyr's Sanctuary Appears"
 				`There've been some mad cult strapping huge cannons to their Star barge parading it around Lesath shooting at anyone who looked at them wrong, you probably want to avoid that area for the time.`
 			word
 				`"`
+				
+mission "MGF: Peytoia Mass Production"
+	landing
+	invisible
+	to offer
+		or
+			has "event: pond strider mass production"
+			has "event: pond strider mass production v2"
+	on offer
+		event "mgf: peytoia mass production" 90
+		fail
 
+event "mgf: peytoia mass production"
+	outfitter "Hai Advanced"
+		"Mi3 Ion Cannon Turret"
+		"MYi2 Railgun Turret"
+	shipyard "Hai Advanced"
+		add "AYS-19 Peytoia"
+	shipyard "Mon Ki i'Hiya Advanced"
+		add "AYS-19 Peytoia"
+	fleet "Large Hai"
+		add variant 1
+			"AYS-19 Peytoia"
+			"Flea" 18
+	fleet "Large Hai Merchant (Human)"
+		add variant 1
+			"AYS-19 Peytoia"
+			"Flea" 18
+		add variant 1
+			"AYS-19 Peytoia"
+			"Flea" 18
+			"Shield Beetle"
+	fleet "Large Hai Merchant"
+		add variant 1
+			"AYS-19 Peytoia"
+			"Flea" 18
+		add variant 1
+			"AYS-19 Peytoia"
+			"Flea" 18
+			"Aphid" 3
+			
+mission "MGF: Peytoia Mass Production (patch)"
+	landing
+	invisible
+	to offer
+		has "event: mgf: peytoia mass production"
+	on offer
+		event "mgf: peytoia mass production (patch)"
+		fail
+	on accept
+		fail
+		
+event "mgf: peytoia mass production (patch)"
+	outfitter "Hai Advanced"
+		"MYi2 Railgun Turret"
+			
+mission "MGF: Sea Strait Mass Production"
+	landing
+	invisible
+	to offer
+		has "event: wanderers: the eye opens"
+		
+	on offer
+		event "mgf: sea strait mass production" 30
+		
+event "mgf: sea strait mass production"
+	shipyard "Wanderer Advanced" 
+		"Type-13 Sea Strait"
+	fleet "Wanderer Freight"
+		add variant
+			"Type-13 Sea Strait"
+		add variant
+			"Type-13 Sea Strait"
+			"Tempest"
+		add variant
+			"Type-13 Sea Strait"
+			"Summer Leaf" 2
+	
 # Set fleets after vanilla reset
 # Vanilla events will overwrite fleets, this mission is a quick fix to it after the 4 deployments are done.
 # I blame MZ.
@@ -1216,263 +2854,266 @@ event "mgf: readd fleets 1-4"
 
 	#=================================Crossguard Patrol
 	system Acrux
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5000
+		add fleet "Small Crossguard Patrol" 5900
+		add fleet "Large Crossguard Patrol" 7700
 	system Albaldah
-		add fleet "Small Crossguard Patrol" 3800
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 9000
 	system Albireo
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 5800
+		add fleet "Large Crossguard Patrol" 8800
 	system Aldhibain
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5500
+		add fleet "Small Crossguard Patrol" 5100
+		add fleet "Large Crossguard Patrol" 7700
 	system Algorel
-		add fleet "Small Crossguard Patrol" 2100
-		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Crossguard Patrol" 4600
+		add fleet "Large Crossguard Patrol" 9200
 	system Alioth
-		add fleet "Small Crossguard Patrol" 3400
-		add fleet "Large Crossguard Patrol" 6800
+		add fleet "Small Crossguard Patrol" 6500
+		add fleet "Large Crossguard Patrol" 8100
 	system Alkaid
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6200
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 8400
 	system Alnasl
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Small Crossguard Patrol" 5900
+		add fleet "Large Crossguard Patrol" 8500
 	system Alniyat
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 6900
+		add fleet "Small Crossguard Patrol" 4400
+		add fleet "Large Crossguard Patrol" 9400
 	system "Alpha Arae"
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 5700
+		add fleet "Large Crossguard Patrol" 8300
 	system Alphecca
-		add fleet "Small Crossguard Patrol" 3300
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 7600
 	system Antares
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 6500
+		add fleet "Small Crossguard Patrol" 4800
+		add fleet "Large Crossguard Patrol" 7600
 	system Arcturus
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 9400
 	system Ascella
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5600
+		add fleet "Small Crossguard Patrol" 4300
+		add fleet "Large Crossguard Patrol" 9300
 	system Atria
-		add fleet "Small Crossguard Patrol" 2100
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 8100
 	system "Beta Lupi"
-		add fleet "Small Crossguard Patrol" 2100
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 6200
+		add fleet "Large Crossguard Patrol" 8200
 	system Boral
-		add fleet "Small Crossguard Patrol" 3900
-		add fleet "Large Crossguard Patrol" 5500
+		add fleet "Small Crossguard Patrol" 4200
+		add fleet "Large Crossguard Patrol" 8100
 	system Cebalrai
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5800
+		add fleet "Large Crossguard Patrol" 9700
 	system "Cor Caroli"
-		add fleet "Small Crossguard Patrol" 2600
-		add fleet "Large Crossguard Patrol" 5600
+		add fleet "Small Crossguard Patrol" 5300
+		add fleet "Large Crossguard Patrol" 9300
 	system Dabih
-		add fleet "Small Crossguard Patrol" 2500
-		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Crossguard Patrol" 4800
+		add fleet "Large Crossguard Patrol" 8600
 	system "Delta Sagittarii"
-		add fleet "Small Crossguard Patrol" 2100
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 5900
+		add fleet "Large Crossguard Patrol" 8400
 	system "Delta Velorum"
-		add fleet "Small Crossguard Patrol" 3000
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 4200
+		add fleet "Large Crossguard Patrol" 7800
 	system Dschubba
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 9900
 	system Eber
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 6700
+		add fleet "Small Crossguard Patrol" 6400
+		add fleet "Large Crossguard Patrol" 8800
 	system Eltanin
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 5300
+		add fleet "Small Crossguard Patrol" 4100
+		add fleet "Large Crossguard Patrol" 8700
 	system Fala
-		add fleet "Small Crossguard Patrol" 3700
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 6600
+		add fleet "Large Crossguard Patrol" 9700
 	system Gacrux
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Small Crossguard Patrol" 4800
+		add fleet "Large Crossguard Patrol" 8200
 	system "Gamma Corvi"
-		add fleet "Small Crossguard Patrol" 3800
-		add fleet "Large Crossguard Patrol" 5000
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 8200
 	system Girtab
-		add fleet "Small Crossguard Patrol" 3500
-		add fleet "Large Crossguard Patrol" 5700
+		add fleet "Small Crossguard Patrol" 4200
+		add fleet "Large Crossguard Patrol" 8900
 	system Graffias
-		add fleet "Small Crossguard Patrol" 3400
-		add fleet "Large Crossguard Patrol" 5700
+		add fleet "Small Crossguard Patrol" 4600
+		add fleet "Large Crossguard Patrol" 8800
 	system Hadar
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 5200
+		add fleet "Large Crossguard Patrol" 8800
 	system Han
-		add fleet "Small Crossguard Patrol" 3800
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 6200
+		add fleet "Large Crossguard Patrol" 7700
 	system Hintar
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 5500
+		add fleet "Small Crossguard Patrol" 4900
+		add fleet "Large Crossguard Patrol" 8700
 	system Holeb
-		add fleet "Small Crossguard Patrol" 3100
-		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Crossguard Patrol" 4400
+		add fleet "Large Crossguard Patrol" 8700
 	system Ildaria
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 3500
+		add fleet "Large Crossguard Patrol" 7500
 	system Ipsing
-		add fleet "Small Crossguard Patrol" 2800
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 7600
 	system Izar
-		add fleet "Small Crossguard Patrol" 3300
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 8000
 	system "Kappa Centauri"
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 6500
+		add fleet "Small Crossguard Patrol" 4500
+		add fleet "Large Crossguard Patrol" 8200
 	system "Kaus Australis"
-		add fleet "Small Crossguard Patrol" 2800
-		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Small Crossguard Patrol" 5000
+		add fleet "Large Crossguard Patrol" 9800
 	system "Kaus Borealis"
-		add fleet "Small Crossguard Patrol" 3500
-		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Crossguard Patrol" 6100
+		add fleet "Large Crossguard Patrol" 8600
 	system Kochab
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 6600
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 8300
 	system Kornephoros
-		add fleet "Small Crossguard Patrol" 2700
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5900
+		add fleet "Large Crossguard Patrol" 7700
 	system Kraz
-		add fleet "Small Crossguard Patrol" 2200
-		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Small Crossguard Patrol" 6400
+		add fleet "Large Crossguard Patrol" 9500
 	system Lesath
-		add fleet "Small Crossguard Patrol" 3400
-		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Crossguard Patrol" 5800
+		add fleet "Large Crossguard Patrol" 9000
 	system Limen
-		add fleet "Small Crossguard Patrol" 3100
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 5900
+		add fleet "Large Crossguard Patrol" 8000
 	system Lolami
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Crossguard Patrol" 5300
+		add fleet "Large Crossguard Patrol" 7600
 	system Lurata
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 5000
+		add fleet "Small Crossguard Patrol" 6500
+		add fleet "Large Crossguard Patrol" 8400
 	system Men
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6200
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 8500
 	system Menkent
-		add fleet "Small Crossguard Patrol" 3500
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 4400
+		add fleet "Large Crossguard Patrol" 8700
 	system Mimosa
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 5700
+		add fleet "Small Crossguard Patrol" 4100
+		add fleet "Large Crossguard Patrol" 9900
 	system Minkar
-		add fleet "Small Crossguard Patrol" 3600
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 6200
+		add fleet "Large Crossguard Patrol" 9600
 	system Mizar
-		add fleet "Small Crossguard Patrol" 3900
-		add fleet "Large Crossguard Patrol" 6800
+		add fleet "Small Crossguard Patrol" 5300
+		add fleet "Large Crossguard Patrol" 7900
 	system Mora
-		add fleet "Small Crossguard Patrol" 2200
-		add fleet "Large Crossguard Patrol" 5900
+		add fleet "Small Crossguard Patrol" 4600
+		add fleet "Large Crossguard Patrol" 9100
 	system Muhlifain
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 4900
+		add fleet "Large Crossguard Patrol" 7700
 	system Naper
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 9600
 	system Nunki
-		add fleet "Small Crossguard Patrol" 3200
-		add fleet "Large Crossguard Patrol" 5600
+		add fleet "Small Crossguard Patrol" 4900
+		add fleet "Large Crossguard Patrol" 8500
 	system Orbona
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 6800
+		add fleet "Small Crossguard Patrol" 5200
+		add fleet "Large Crossguard Patrol" 8000
 	system Orvala
-		add fleet "Small Crossguard Patrol" 3100
-		add fleet "Large Crossguard Patrol" 5700
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 7800
 	system Peacock
-		add fleet "Small Crossguard Patrol" 3900
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 9600
 	system Phecda
-		add fleet "Small Crossguard Patrol" 2800
-		add fleet "Large Crossguard Patrol" 6400
+		add fleet "Small Crossguard Patrol" 5800
+		add fleet "Large Crossguard Patrol" 8400
 	system Pherkad
-		add fleet "Small Crossguard Patrol" 2600
-		add fleet "Large Crossguard Patrol" 6200
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 9800
 	system Rasalhague
-		add fleet "Small Crossguard Patrol" 2700
-		add fleet "Large Crossguard Patrol" 6100
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 7900
 	system Rastaban
-		add fleet "Small Crossguard Patrol" 2300
-		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Crossguard Patrol" 5600
+		add fleet "Large Crossguard Patrol" 8400
 	system Rutilicus
-		add fleet "Small Crossguard Patrol" 2500
-		add fleet "Large Crossguard Patrol" 5300
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 9500
 	system Sabik
-		add fleet "Small Crossguard Patrol" 3900
-		add fleet "Large Crossguard Patrol" 6500
+		add fleet "Small Crossguard Patrol" 4500
+		add fleet "Large Crossguard Patrol" 10000
 	system Sadalmelik
-		add fleet "Small Crossguard Patrol" 3300
-		add fleet "Large Crossguard Patrol" 5100
+		add fleet "Small Crossguard Patrol" 6400
+		add fleet "Large Crossguard Patrol" 9100
 	system Sadalsuud
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 6800
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 9800
 	system Sadr
-		add fleet "Small Crossguard Patrol" 3300
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 7800
 	system Sargas
-		add fleet "Small Crossguard Patrol" 2500
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 5200
+		add fleet "Large Crossguard Patrol" 9700
 	system Sarin
-		add fleet "Small Crossguard Patrol" 2700
-		add fleet "Large Crossguard Patrol" 5200
+		add fleet "Small Crossguard Patrol" 5500
+		add fleet "Large Crossguard Patrol" 9200
 	system Seginus
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5300
+		add fleet "Small Crossguard Patrol" 5000
+		add fleet "Large Crossguard Patrol" 8800
 	system Shaula
-		add fleet "Small Crossguard Patrol" 3800
-		add fleet "Large Crossguard Patrol" 6300
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 8900
 	system Spica
-		add fleet "Small Crossguard Patrol" 2200
-		add fleet "Large Crossguard Patrol" 5000
+		add fleet "Small Crossguard Patrol" 6500
+		add fleet "Large Crossguard Patrol" 9000
 	system Tais
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Crossguard Patrol" 5700
+		add fleet "Large Crossguard Patrol" 8400
 	system "Tania Australis"
-		add fleet "Small Crossguard Patrol" 3500
-		add fleet "Large Crossguard Patrol" 6000
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 10000
 	system Tarazed
-		add fleet "Small Crossguard Patrol" 2400
-		add fleet "Large Crossguard Patrol" 6500
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 8800
 	system Terminus
-		add fleet "Small Crossguard Patrol" 2800
-		add fleet "Large Crossguard Patrol" 5600
+		add fleet "Small Crossguard Patrol" 6400
+		add fleet "Large Crossguard Patrol" 8700
 	system Turais
-		add fleet "Small Crossguard Patrol" 3100
-		add fleet "Large Crossguard Patrol" 6100
+		add fleet "Small Crossguard Patrol" 4900
+		add fleet "Large Crossguard Patrol" 7600
 	system Umbral
-		add fleet "Small Crossguard Patrol" 3100
-		add fleet "Large Crossguard Patrol" 6100
+		add fleet "Small Crossguard Patrol" 4500
+		add fleet "Large Crossguard Patrol" 9700
 	system Unukalhai
-		add fleet "Small Crossguard Patrol" 3600
-		add fleet "Large Crossguard Patrol" 5300
+		add fleet "Small Crossguard Patrol" 4200
+		add fleet "Large Crossguard Patrol" 9500
 	system Vindemiatrix
-		add fleet "Small Crossguard Patrol" 2000
-		add fleet "Large Crossguard Patrol" 5100
+		add fleet "Small Crossguard Patrol" 6100
+		add fleet "Large Crossguard Patrol" 9000
 	system Wei
-		add fleet "Small Crossguard Patrol" 3800
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 5400
+		add fleet "Large Crossguard Patrol" 8200
 	system "Yed Prior"
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5800
+		add fleet "Small Crossguard Patrol" 4900
+		add fleet "Large Crossguard Patrol" 9000
 	system "Zeta Aquilae"
-		add fleet "Small Crossguard Patrol" 2900
-		add fleet "Large Crossguard Patrol" 5400
+		add fleet "Small Crossguard Patrol" 6300
+		add fleet "Large Crossguard Patrol" 8500
 	system "Zeta Centauri"
-		add fleet "Small Crossguard Patrol" 2800
-		add fleet "Large Crossguard Patrol" 5600
+		add fleet "Small Crossguard Patrol" 6300
+		add fleet "Large Crossguard Patrol" 9100
 	system Zubenelgenubi
-		add fleet "Small Crossguard Patrol" 2600
-		add fleet "Large Crossguard Patrol" 6700
+		add fleet "Small Crossguard Patrol" 4200
+		add fleet "Large Crossguard Patrol" 8600
+	system Zubeneschamali
+		add fleet "Small Crossguard Patrol" 6200
+		add fleet "Large Crossguard Patrol" 7700
 
 	#===============================Black Death
 
@@ -2145,6 +3786,653 @@ event "mgf: readd fleets 1-4"
 	system Zubenelgenubi
 		add fleet "Jacks Gang" 15100
 		
+mission "MGF: quick readd fleet 1-4 set2"
+	invisible
+	landing
+	to offer
+		has "event: initial deployment 4"
+	on offer
+		event "mgf: readd fleets 1-4 set2"
+	on accept
+		fail
+		
+event "mgf: readd fleets 1-4 set2"
+	system Zubeneschamali
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Zubenelgenubi
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Sabik
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Kornephoros
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Wei
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Alioth
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Holeb
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Rutilicus
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Tarazed
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Dabih
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system "Kaus Australis"
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Peacock
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Ascella
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Rasalhague
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system Cebalrai
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		
+	system Altair
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Fomalhaut
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Markab
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Scheat
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system "Al Dhanab"
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Achernar
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Zubeneschamali
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Zubenelgenubi
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Sabik
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Kornephoros
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Wei
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Alioth
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Holeb
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Rutilicus
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Tarazed
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Dabih
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system "Kaus Australis"
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Peacock
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Ascella
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Rasalhague
+		add fleet "Maryhal Logistic ArteryLine" 7500
+	system Cebalrai
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		
+	system Algieba
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system "Tania Australis"
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Fala
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system "Delta Velorum"
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Turais
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Algorel
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system "Cor Caroli"
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Vindemiatrix
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Sarin
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Zubeneschamali
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Zubenelgenubi
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Sabik
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Kornephoros
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Wei
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Alioth
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Holeb
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Rutilicus
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system "Aldhibain"
+		add fleet "NGK Hauling HeavyFreight" 8500
+	system Alniyat
+		add fleet "NGK Hauling HeavyFreight" 8500
+	system Pherkad
+		add fleet "NGK Hauling HeavyFreight" 8500
+	system Tarazed
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Dabih
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system "Kaus Australis"
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Peacock
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Ascella
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Rasalhague
+		add fleet "NGK Hauling HeavyFreight" 7500
+	system Cebalrai
+		add fleet "NGK Hauling HeavyFreight" 7500
+		
+	system Alphard
+		add fleet "MGF: Luna Winery" 4500
+	system Talita
+		add fleet "MGF: Luna Winery" 4500
+	system Miaplacidus
+		add fleet "MGF: Luna Winery" 4500
+	system Tejat
+		add fleet "MGF: Luna Winery" 4500
+	system Phurad
+		add fleet "MGF: Luna Winery" 4500
+	system Wazn
+		add fleet "MGF: Luna Winery" 4500
+	system Kursa
+		add fleet "MGF: Luna Winery" 4500
+	system Alhena
+		add fleet "MGF: Luna Winery" 4500
+	system Menkalinan
+		add fleet "MGF: Luna Winery" 4500
+	system Castor
+		add fleet "MGF: Luna Winery" 4500
+	system Pollux
+		add fleet "MGF: Luna Winery" 4500
+	system Procyon
+		add fleet "MGF: Luna Winery" 4500
+	system Capella
+		add fleet "MGF: Luna Winery" 4500
+	system Aldebaran
+		add fleet "MGF: Luna Winery" 4500
+	system Sirius
+		add fleet "MGF: Luna Winery" 4500
+	system Eteron
+		add fleet "MGF: Luna Winery" 4500
+	system Sol
+		add fleet "MGF: Luna Winery" 4500
+	system "Alpha Centauri"
+		add fleet "MGF: Luna Winery" 4500
+	system Caph
+		add fleet "MGF: Luna Winery" 4500
+	system Denebola
+		add fleet "MGF: Luna Winery" 4500
+	system Merak
+		add fleet "MGF: Luna Winery" 4500
+	system "Gamma Corvi"
+		add fleet "MGF: Luna Winery" 5500
+	system "Spica"
+		add fleet "MGF: Luna Winery" 5500
+	system Minkar
+		add fleet "MGF: Luna Winery" 5500
+	system Mimosa
+		add fleet "MGF: Luna Winery" 5500
+	system Kraz
+		add fleet "MGF: Luna Winery" 5500
+	system Acrux
+		add fleet "MGF: Luna Winery" 5500
+	system Izar
+		add fleet "MGF: Luna Winery" 6000
+	system "Zeta Centauri"
+		add fleet "MGF: Luna Winery" 6000
+	system Hadar
+		add fleet "MGF: Luna Winery" 6000
+	system Alkaid
+		add fleet "MGF: Luna Winery" 8000
+	system Zubeneschamali
+		add fleet "MGF: Luna Winery" 6000
+		
+	system Acrux
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Albaldah
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Albireo
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Aldhibain
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Algorel
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alioth
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alkaid
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alnasl
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alniyat
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Alpha Arae"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alphecca
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Antares
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Arcturus
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Ascella
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Atria
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Beta Lupi"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Boral
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Cebalrai
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Cor Caroli"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Dabih
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Delta Sagittarii"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Delta Velorum"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Dschubba
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Eber
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Eltanin
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Fala
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Gacrux
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Gamma Corvi"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Girtab
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Graffias
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Hadar
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Han
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Hintar
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Holeb
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Ildaria
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Ipsing
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Izar
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Kappa Centauri"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Kaus Australis"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Kaus Borealis"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Kochab
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Kornephoros
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Kraz
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Lesath
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Limen
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Lolami
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Lurata
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Men
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Menkent
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Mimosa
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Minkar
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Mizar
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Mora
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Muhlifain
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Naper
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Nunki
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Orbona
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Orvala
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Peacock
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Phecda
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Pherkad
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Rasalhague
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Rastaban
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Rutilicus
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sabik
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sadalmelik
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sadalsuud
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sadr
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sargas
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Sarin
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Seginus
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Shaula
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Spica
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Tais
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Tania Australis"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Tarazed
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Terminus
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Turais
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Umbral
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Unukalhai
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Vindemiatrix
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Wei
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Yed Prior"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Zeta Aquilae"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Zeta Centauri"
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Zubenelgenubi
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system Alphard
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Talita
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Miaplacidus
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Tejat
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Phurad
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Wazn
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Kursa
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Alhena
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Menkalinan
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Castor
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Pollux
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Procyon
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Capella
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Aldebaran
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Sirius
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Eteron
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Sol
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Alpha Centauri"
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Caph
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Denebola
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Merak
+		add fleet "MGF: Solacer Juice Tanker" 7500
+	system Acrux
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Albaldah
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Albireo
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Aldhibain
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Algorel
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Alioth
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Alkaid
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Alnasl
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Alniyat
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Alpha Arae"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Alphecca
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Antares
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Arcturus
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Ascella
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Atria
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Beta Lupi"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Boral
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Cebalrai
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Cor Caroli"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Dabih
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Delta Sagittarii"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Delta Velorum"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Dschubba
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Eber
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Eltanin
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Fala
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Gacrux
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Gamma Corvi"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Girtab
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Graffias
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Hadar
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Han
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Hintar
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Holeb
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Ildaria
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Ipsing
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Izar
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Kappa Centauri"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Kaus Australis"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Kaus Borealis"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Kochab
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Kornephoros
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Kraz
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Lesath
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Limen
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Lolami
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Lurata
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Men
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Menkent
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Mimosa
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Minkar
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Mizar
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Mora
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Muhlifain
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Naper
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Nunki
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Orbona
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Orvala
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Peacock
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Phecda
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Pherkad
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Rasalhague
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Rastaban
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Rutilicus
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sabik
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sadalmelik
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sadalsuud
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sadr
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sargas
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Sarin
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Seginus
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Shaula
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Spica
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Tais
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Tania Australis"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Tarazed
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Terminus
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Turais
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Umbral
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Unukalhai
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Vindemiatrix
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Wei
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Yed Prior"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Zeta Aquilae"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system "Zeta Centauri"
+		add fleet "MGF: Small Solacer Reefer" 4500
+	system Zubenelgenubi
+		add fleet "MGF: Small Solacer Reefer" 4500
+		
+	system Ruchbah
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+	system Menkent
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+	system Kornephoros
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+	system Izar
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+	system Peacock
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+	system "Delta Capricorni"
+		add fleet "Sulso LG Shipping" 8500
+	system Fomalhaut
+		add fleet "Sulso LG Shipping" 6500
+	system Alpheratz
+		add fleet "Sulso LG Shipping" 8500
+	system Caph
+		add fleet "Sulso LG Shipping" 8500
+	system Mirfak
+		add fleet "Sulso LG Shipping" 8500
+	system Diphda
+		add fleet "Sulso LG Shipping" 8500
+	system Sabik
+		add fleet "Sulso LG Shipping" 8500
+	system Dabih
+		add fleet "Sulso LG Shipping" 8500
+	system Alphecca
+		add fleet "Sulso LG Shipping" 8500
+	system Alioth
+		add fleet "Sulso LG Shipping" 8500
+	system Graffias
+		add fleet "Sulso LG Shipping" 8500
+	system Kraz
+		add fleet "Sulso LG Shipping" 6500
+	system Pherkad
+		add fleet "Sulso LG Shipping" 8500
+	system Tarazed
+		add fleet "Sulso LG Shipping" 6500
+	system Zubeneschamali
+		add fleet "Sulso LG Shipping" 6500
+	system "Yed Prior"
+		add fleet "Sulso LG Shipping" 8500
+	system "Kaus Borealis"
+		add fleet "Sulso LG Shipping" 8500
+	system "Peacock"
+		add fleet "Sulso LG Shipping" 8500
+	system Rasalhague
+		add fleet "Sulso LG Shipping" 8500
+	system Vega
+		add fleet "Sulso LG Shipping" 8500
+	system Cebalrai
+		add fleet "Sulso LG Shipping" 8500
+	system Ascella
+		add fleet "Sulso LG Shipping" 8500
+	
 mission "MGF: quick readd fleet recapture of Kornephoros"
 	invisible
 	landing
@@ -2175,6 +4463,31 @@ event "mgf: readd fleets recapture of Kornephoros"
 		add fleet "Small Crossguard Patrol" 2700
 		add fleet "Large Crossguard Patrol" 5800
 		
+mission "MGF: quick readd fleet recapture of Kornephoros set2"
+	invisible
+	landing
+	to offer
+		has "event: recapture of Kornephoros"
+	on offer
+		event "mgf: readd fleets recapture of Kornephoros set2"
+	on accept
+		fail
+		
+event "mgf: readd fleets recapture of Kornephoros set2"
+	system "Aldhibain"
+		add fleet "Intrasystem Merchants" 1000
+		add fleet "NGK Hauling HeavyFreight" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Kornephoros"
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "MGF: Sulso Intrasystem Refuelling" 4500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		add fleet "Intrasystem Merchants" 1000
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		
 mission "MGF: readd fleet normal in Alnasl"
 	invisible
 	landing
@@ -2194,13 +4507,28 @@ event "mgf: readd fleets normal in Alnasl"
 		add fleet "Small Black Death" 7900
 		add fleet "Large Black Death" 11800
 		
-mission "MGF: quick readd fleet fw southern expansion"
+mission "MGF: readd fleet normal in Alnasl set2"
+	invisible
+	landing
+	to offer
+		has "event: normal in Alnasl"
+	on offer
+		event "mgf: readd fleets normal in Alnasl set2"
+	on accept
+		fail
+		
+event "mgf: readd fleets normal in Alnasl set2"
+	system Alnasl
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	
+mission "MGF: readd fleet fw southern expansion"
 	invisible
 	landing
 	to offer
 		has "event: fw southern expansion"
 	on offer
-		event "mgf: quick readd fleets fw southern expansion"
+		event "mgf: readd fleets fw southern expansion"
 	on accept
 		fail
 		
@@ -2255,6 +4583,40 @@ event "mgf: readd fleets fw southern expansion"
 		add fleet "Rangphenn Transport" 5000
 		add fleet "Jacks Gang" 11800
 		
+mission "MGF: readd fleet fw southern expansion set2"
+	invisible
+	landing
+	to offer
+		has "event: fw southern expansion"
+	on offer
+		event "mgf: readd fleets fw southern expansion set2"
+	on accept
+		fail
+		
+event "mgf: readd fleets fw southern expansion set2"
+	system "Lesath"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Sargas"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Rastaban"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Girtab"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Albaldah"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Delta Sagittarii"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Kaus Borealis"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "Sulso LG Shipping" 8500
+		
 mission "MGF: quick readd fleet fw occupying the north"
 	invisible
 	landing
@@ -2301,6 +4663,44 @@ event "mgf: quick readd fleets fw occupying the north"
 		add fleet "Large Black Death" 16800
 		add fleet "Rangphenn Transport" 5000
 		add fleet "Jacks Gang" 11800
+		
+mission "MGF: quick readd fleet fw occupying the north set2"
+	invisible
+	landing
+	to offer
+		has "event: fw southern expansion"
+	on offer
+		event "mgf: quick readd fleets fw occupying the north set2"
+	on accept
+		fail
+		
+event "mgf: quick readd fleets fw occupying the north set2"
+	system "Alioth"
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Alphecca"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Boral"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Seginus"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Wei"
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
 		
 mission "MGF: quick readd fleet fw expanded and cut"
 	invisible
@@ -2349,6 +4749,33 @@ event "mgf: quick readd fleets fw expanded and cut"
 		add fleet "Small Crossguard Patrol" 2000
 		add fleet "Large Crossguard Patrol" 6300
 		
+mission "MGF: quick readd fleet fw expanded and cut set2"
+	invisible
+	landing
+	to offer
+		has "event: fw expanded and cut"
+	on offer
+		event "mgf: quick readd fleets fw expanded and cut set2"
+	on accept
+		fail
+	
+event "mgf: quick readd fleets fw expanded and cut set2"
+	system "Delta Sagittarii"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Rastaban"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Girtab"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Lesath"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	system "Alpha Arae"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+	
 mission "MGF: quick readd fleet fw armistice"
 	invisible
 	landing
@@ -2382,6 +4809,186 @@ event "mgf: quick readd fleets fw armistice"
 		add fleet "Rangphenn Transport" 4600
 		add fleet "Jacks Gang" 12200
 		
+mission "MGF: quick readd fleet fw armistice set2"
+	invisible
+	landing
+	to offer
+		has "event: fw armistice"
+	on offer
+		event "mgf: quick readd fleets fw armistice set2"
+	on accept
+		fail
+		
+event "mgf: quick readd fleets fw armistice set2"
+	system "Rutilicus"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system "Cebalrai"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+	system "Holeb"
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+
+mission "MGF: NGK Resist Pug Invasion"
+	landing
+	invisible
+	deadline
+	to offer
+		has "FW Syndicate Capture 1C: done"
+	on offer
+		event "mgf: ngk resist pug invasion" 15
+		
+event "mgf: ngk resist pug invasion"
+	government "MGF: NGK Hauling"
+		"attitude toward"
+			"Pug" -.06
+			"Merchant" 1
+			"Pirate" -.1
+			"Korath" -.1
+			"Scar's Legion" -.1
+			"MGF: Minotaurs" -.2
+			"MGF: Black Death" -.2
+			#Lost in Midnight
+			"Invasive Lifeform" -.01
+			"Phenomenon (dangerous)" -.01
+			"Indigenous Predator" -.01
+	system Diphda
+		government Syndicate
+		
+mission "MGF: NGK Resist Pug Invasion: System Patrol"
+	landing
+	invisible
+	to offer
+		has "event: pug invasion 4"
+	to fail
+		has "event: pug territory liberated"
+	on offer
+		event "mgf: ngk resist pug invasion"
+	to complete
+		never
+	npc #todo make some of them attempt to find and assist the player.
+		government "MGF: NGK Hauling"
+		system "Diphda"
+		personality
+			hunting staying uninterested
+			confusion 5
+		ship "L-VC28 Zuikaku (Advanced)" "Zuikaku"
+		ship "L-VC28 Zuikaku (Advanced)" "Satsuma"
+		ship "L-VC28 Zuikaku (Advanced)" "Chiyoda"
+		ship "L-VC28 Zuikaku (Advanced)" "Shohei"
+		ship "L-VC28 Zuikaku" "Banryu"
+		ship "L-VC28 Zuikaku" "Hyuga"
+		ship "Leviathan (NGK Escort, Turret Upgrade)" "Tango"
+		ship "Leviathan (NGK Escort, Turret Upgrade)" "Sagami"
+		ship "Leviathan (NGK Escort, Turret Upgrade)" "Suwo"
+		ship "Leviathan (NGK Escort)" "Hizen"
+		ship "Leviathan (NGK Escort)" "Iwami"
+		ship "AP-7 Sentinel (NGK Escort)" "Tsukuba"
+		ship "AP-7 Sentinel (NGK Escort)" "Ikoma"
+		ship "E-VC14 Zuiho (Advanced)" "Wakamiya"
+		ship "E-VC14 Zuiho" "Notoro"
+		ship "E-VC14 Zuiho (Advanced)" "Akitsushima"
+		ship "E-VC14 Zuiho" "Kamikawa"
+		fleet 8
+			names "ngk name"
+			fighters "ngk fighter"
+			variant
+				"Xencar (NGK)" 20
+		
+mission "MGF: quick readd fleet pug link restoration 1-4"
+	invisible
+	landing
+	to offer
+		has "event: pug link restoration 4"
+	on offer
+		event "mgf: quick readd fleet pug link restoration 4"
+	on accept
+		fail
+	
+event "mgf: quick readd fleet pug link restoration 4"
+	system "Zeta Aquilae"
+		add fleet "Small Crossguard Patrol" 6300
+		add fleet "Large Crossguard Patrol" 8500
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 10100
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "Rangphenn Transport" 4900
+		add fleet "Jacks Gang" 15400
+	system "Rasalhague"
+		add fleet "Small Crossguard Patrol" 6000
+		add fleet "Large Crossguard Patrol" 7900
+		add fleet "Small Black Death" 7800
+		add fleet "Large Black Death" 19000
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Large Bounty Hunters (AntiMHL)" 15800
+		add fleet "Rangphenn Transport" 5900
+		add fleet "Jacks Gang" 14800
+	system "Vega"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Solacer Juice Tanker" 7500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Rangphenn Transport" 4400
+	system "Altair"
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "NGK Hauling RORO" 12000
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Rangphenn Transport" 4400
+		add fleet "MGF: Intrasystem Refuelling" 4500
+	system "Fomalhaut"
+		add fleet "Sulso LG Shipping" 6500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "NGK Hauling RORO" 12000
+		add fleet "Maryhal Logistic ArteryLine" 7500
+		add fleet "Rangphenn Transport" 5600
+	system "Delta Capricorni"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "Rangphenn Transport" 5000
+	system "Alderamin"
+		add fleet "Rangphenn Transport" 4500
+	system "Diphda"
+		add fleet "Intrasystem Merchants" 1000
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "NGK Hauling RORO" 12000
+		add fleet "Rangphenn Transport" 5600
+	system "Caph"
+		add fleet "Sulso LG Shipping" 8500
+		add fleet "MGF: Solacer Juice Tanker" 7500
+		add fleet "MGF: Luna Winery" 4500
+		add fleet "NGK Hauling HeavyFreight" 7500
+		add fleet "NGK Hauling RORO" 12000
+		add fleet "Rangphenn Transport" 5600
+	system "Nocte"
+		add fleet "Small Espion Miners" 800
+		add fleet "Large Espion Miners" 1800
+		add fleet "Small Espion Guard" 1000
+		add fleet "Large Espion Guard" 2000
+	system "Orvala"
+		add fleet "Small Crossguard Patrol" 4700
+		add fleet "Large Crossguard Patrol" 7800
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 17600
+		add fleet "MGF: Small Solacer Reefer" 4500
+		add fleet "MGF: Solacer Juice Tanker" 5500
+		add fleet "Jacks Gang" 16200
+
 #Lost in Midnight Compatibility Support
 
 mission "MGF-LiM compat: Marauder Syndi HW"
@@ -2478,4 +5085,3 @@ event "MGF-LiM: Drone Nest"
 			"Protector"
 			"Modified Roost"
 			"Surveillance Drone (Kamikaze)" 8
-			

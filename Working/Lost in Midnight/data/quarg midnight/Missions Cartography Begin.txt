@@ -55,6 +55,7 @@ mission "Cartography: Quarg Hitchhiker 1"
 				"tribute: Haven" > 0
 				"tribute: Stormhold" > 0
 				"tribute: Zenith" > 0
+				"tribute: New Tortuga" > 0
 
 	on offer
 		conversation
@@ -207,7 +208,7 @@ mission "Cartography: The Map Obtained"
 				goto wreck
 
 			label wreck
-			apply
+			action
 				set "trailblazer encountered"
 				set "trailblazer map"
 			
@@ -403,7 +404,7 @@ mission "Cartography: The Map (Alexandria) 2"
 				
 	on decline
 		event "Diyu reveal"
-		
+
 event "Diyu reveal"
 	system Diyu
 		remove hidden
@@ -429,6 +430,7 @@ mission "Cartography: Diyu Link"
 				`	(Refuse to buy them.)`
 					decline
 			`	You exchange your credits for the codes and instructions on how to transmit them. Hopefully this isn't some scam.`
+				accept
 	on accept
 		payment -100000
 		event "Diyu hyperlinks"
@@ -512,7 +514,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 			
 			branch "armament deterrence"
 				"armament deterrence" >= 8
-				"ships: Heavy Warship" >= 1
+				"ships: Heavy Warship" + "ships: Utility" >= 1
 			
 			`	Suddenly the pirate ship opens fire, shooting Quash in the back! The ship is reorienting its guns towards you. It looks like they've decided your ship is an easy target. You'd better get out of here fast.`
 			`MISSION FAILED: You have failed a key part of the Cartography plot. If life were a game, you could load a previous save file and try again, preferably with a heavy warship outfitted with powerful weapons.`
@@ -541,8 +543,8 @@ mission "Cartography: Quarg Hitchhiker 4"
 		government "Pirate"
 		personality entering plunders harvests coward
 		ship "Korath Raider (Torpedo)" "Red Queen"
-		ship "Korath Chaser" "Jack of Hearts"
-		ship "Korath Chaser" "Jack of Diamonds"
+		ship "'olofez" "Jack of Hearts"
+		ship "'olofez" "Jack of Diamonds"
 
 	on complete
 		log `Ran into Quash again on Wang Xiang Tai, a pirate station in the Diyu system. I took him to a pirate meeting in the underground caverns of Naihe Qiao, where he acquired a device he refers to as a Celestial Compass.`

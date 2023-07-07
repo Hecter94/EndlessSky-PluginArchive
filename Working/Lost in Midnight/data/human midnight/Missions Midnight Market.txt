@@ -231,13 +231,15 @@ event "Hauler VI Market timer"
 			"Hauler" 2
 		add variant 1
 			"Hauler VI"
-			"Berserker" 2
+			"Berserker"
+			"Berserker (Limit Break)"
 
 
 ship "Hauler VI" "Hauler VI (prototype)"
 	outfits
-		"Meteor Missile Launcher" 2
-		"Meteor Missile" 60
+		"Meteor Missile Pod" 2
+		"Meteor Missile" 44
+		"Meteor Missile Box" 2
 		"Quad Blaster Turret" 2
 		"Heavy Anti-Missile Turret" 2
 		"S3 Thermionic"
@@ -396,6 +398,7 @@ mission "Midnight Market: Cloaking Device 0"
 	to offer
 		has "FW Syndicate Extremists 1B: done"
 		has "main plot completed"
+		not "flagship model: Pug Arfecta"
 		random < 70
 	on offer
 		require "Cloaking Device"
@@ -441,7 +444,7 @@ mission "Midnight Market: Cloaking Device 1"
 	to offer
 		"Midnight Market" > 4
 		"Corporate espionage: done" + "Corporate espionage [1]: done" + "Corporate espionage [2]: done" + "Free Worlds espionage: done" >= 4
-		has "event: Stolen Cloaking Device"		
+		has "event: Stolen Cloaking Device"
 		"net worth" > 8000000
 		"credits" >= 6000000
 		or
@@ -615,9 +618,11 @@ mission "Midnight Market: Intrusion Countermeasures 2"
 
 mission "Midnight Market: Wanderer Micro-sat"
 	minor
+	invisible
+	deadline 2
 	source
 		government "Pirate"
-		attributes "spaceport"
+		attributes spaceport
 	to offer
 		has "stole a wanderer micro-sat"
 		not "Wanderers: Alpha Surveillance B: done"
@@ -672,7 +677,7 @@ mission "Midnight Market: Wanderer Micro-sat"
 				die
 
 			label keep
-			scene "outfit/unknown"
+			scene "scene/scene-black cube"
 			`You've decided to keep this valuable piece of alien technology for yourself. Perhaps you'll even figure out how it works someday. After returning to your ship you hide it in a safe place.`
 				decline
 
@@ -685,7 +690,7 @@ mission "Midnight Market: Wanderer Micro-sat"
 		set "sold a wanderer micro-sat"
 	npc kill
 		government "Pirate"
-		personality waiting harvests plunders coward
+		personality waiting staying harvests plunders coward
 			confusion 20
 		fleet
 			names "pirate"
@@ -693,7 +698,7 @@ mission "Midnight Market: Wanderer Micro-sat"
 			variant
 				"Marauder Behemoth"
 				"Modified Firebird"
-				"Modified Argosy"
+				"Modified Argosy (Shields)"
 				"Modified Roost"
 				"Modified Nest" 2
 				"Pirate Drone" 16

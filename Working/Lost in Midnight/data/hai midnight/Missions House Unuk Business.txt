@@ -21,10 +21,12 @@ mission "House Unuk Business"
 	source Flood
 	to offer
 		has "QKBlade: House Unuk Secrets: declined"
-		has "Wanderers: Sestor: Final: done"
 		has "Coalition: Contributor: done"
 		has "event: remnant: sign studies complete"
 		has "First Contact: Setar Fort: declined"
+		or
+			has "Wanderers: Sestor: Final: done"
+			has "Wanderers: Sestor: Final: Patched"
 
 		or
 			not "Randomize House Unuk Business"
@@ -181,7 +183,7 @@ mission "House Unuk Business Kor Efret 5"
 		personality target launching escort 
 		fleet "Acorn Efret"
 	on complete
-		"salary: House Unuk Kor Efret" = 10000
+		"salary: House Unuk Kor Efret" += 10000
 		event "House Unuk Sevrelect"
 		conversation
 			scene "thumbnail/behemoth"
@@ -314,7 +316,7 @@ mission "House Unuk Business Wanderer 4"
 		personality target launching escort 
 		fleet "Acorn Wanderer"
 	on complete
-		"salary: House Unuk Wanderer" = 10000
+		"salary: House Unuk Wanderer" += 10000
 		event "House Unuk Ka'ch'chrai"
 		conversation
 			scene "thumbnail/behemoth"
@@ -381,7 +383,7 @@ mission "House Unuk Business Arach 2"
 		personality target launching escort 
 		fleet "Acorn Arach"
 	on complete
-		"salary: House Unuk Arach" = 7000
+		"salary: House Unuk Arach" += 7000
 		event "House Unuk Sol Arach"
 		conversation
 			scene "thumbnail/behemoth"
@@ -451,7 +453,7 @@ mission "House Unuk Business Saryd 2"
 		personality target launching escort 
 		fleet "Acorn Saryd"
 	on complete
-		"salary: House Unuk Saryd" = 3000
+		"salary: House Unuk Saryd" += 3000
 		event "House Unuk Sol Saryd"
 		conversation
 			scene "thumbnail/behemoth"
@@ -520,7 +522,7 @@ mission "House Unuk Business Kimek 2"
 		personality target launching escort 
 		fleet "Acorn Kimek"
 	on complete
-		"salary: House Unuk Kimek" = 5000
+		"salary: House Unuk Kimek" += 5000
 		event "House Unuk Sol Kimek"
 		conversation
 			scene "thumbnail/behemoth"
@@ -631,9 +633,11 @@ fleet "Acorn Efret"
 mission "House Unuk Cookie Crook 1"
 	minor
 	name "Acorn Cookie Request"
-	description "Your client wants a taste of House Unuk's acorn cookies. <destination> is an urban planet. If there's any place nearby that's sure to have some, it would be there..."
+	description "Your client wants a taste of House Unuk's acorn cookies. <stopovers> is an urban planet. If there's any place nearby that's sure to have some, it would be there..."
 	source
 		government "Hai"
+		not attributes "station" "uninhabited"
+		not planet "Darkwaste"
 	stopover "Prime"
 	to offer
 		has "QKBlade: House Unuk Door Delivery: done"
@@ -681,13 +685,13 @@ mission "House Unuk Cookie Crook 2"
 	description "Find the <npc> near <waypoints> and retrieve the stolen acorn cookies. Then return to <origin>."
 	source "Prime"
 	waypoint "Rigel"
-	cargo "Stolen Acorn Cookies" 50
+	cargo "reserved for mission cargo" 50
 	blocked "Cargo: You need <capacity> to accept the next mission."
 	to offer
 		has "House Unuk Cookie Crook 1: active"
 	on offer
 		conversation
-			`You check the spaceport convenience store for acorn cookies but they're out of stock. The manager tells you that none of the markets or supermarkets on <origin> have them available! A pirate ship called the <npc> stole the most recent shipment of acorn cookies near <waypoint>. The prices on the cookies are skyrocketing, so it may be worthwhile to track down that shipment.`
+			`You check the spaceport convenience store for acorn cookies but they're out of stock. The manager tells you that none of the markets or supermarkets on <origin> have them available! A pirate ship called the <npc> stole the most recent shipment of acorn cookies near <waypoints>. The prices on the cookies are skyrocketing, so it may be worthwhile to track down that shipment.`
 				accept
 	on enter Rigel
 		dialog `The ship that stole the acorn cookies fled here...`
@@ -695,24 +699,22 @@ mission "House Unuk Cookie Crook 2"
 		government "Bounty"
 		system Rigel
 		personality waiting staying plunders harvests
-		fleet
-			names "pirate"
+		"cargo settings"
 			cargo 1
 			commodities "Food"
-			variant
-				"Marauder Firebird (Hai)" 2
-				Dagger 2
+		ship "Firebird (Hai Shields)" "Biscuit"
+		ship "Firebird (Hai Weapons)" "Wafer"
+		ship "Dagger" "Gingerbread"
+		ship "Dagger" "Chocolate Chip"
 	npc board
 		government "Bounty"
 		system Rigel
 		personality target waiting staying plunders harvests
 			confusion 20
-		fleet
-			names "pirate"
+		"cargo settings"
 			cargo 1
 			commodities "Food"
-			variant
-				"Marauder Behemoth (Hai)"
+		ship "Marauder Behemoth (Hai)" "Cookie Crook"
 		dialog `You've managed to retrieve the stolen acorn cookies! Bring them back to <destination>.`
 	on fail
 		fail "House Unuk Cookie Crook 1"

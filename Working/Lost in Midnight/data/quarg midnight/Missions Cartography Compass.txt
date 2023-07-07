@@ -72,14 +72,10 @@ mission "Cartography Compass: Hazehai"
 event "reveal Hazehai"
 	system Ehmahai
 		remove hidden
-		add fleet "Nova Firefly" 3000
 	system Hazehai
 		remove hidden
-		add fleet "Nova Firefly Hatchery" 900
-		add fleet "Nova Firefly" 4000
 	system Heiahai
 		remove hidden
-		add fleet "Nova Firefly" 3000
 	system Zubahai
 		remove hidden
 
@@ -123,16 +119,16 @@ mission "Cartography: Pebble Beach Link"
 				`	(Do nothing.)`
 					defer
 			
-			`	You touch the icon representing Gamma Corvi. There is a low humming sound and the floor panels start to vibrate as distant machinery moves into place... A hyperspace link is forming! The Gamma Corvi system is now connected to this one.`
+			`	You touch the icon representing Gamma Corvi. There is a low humming sound and the floor panels start to vibrate as ancient machinery long dormant moves once again... A hyperspace link is forming! The Gamma Corvi system is now connected to this one.`
 			scene "scene/scene-engine2flip"
-			`Suddenly, sparks erupt from the device as it bursts into flames! Considering the condition this facility is in, it was amazing that any of the devices were working at all.`
+			`Suddenly, sparks erupt from the device as it bursts into flames! You won't be able to activate the link to Spica with this...`
 				decline
 			
 			label Spica
 			
-			`	You touch the icon representing Spica. There is a low humming sound and the floor panels start to vibrate as distant machinery moves into place... A hyperspace link is forming! The Spica system is now connected to this one.`
+			`	You touch the icon representing Spica. There is a low humming sound and the floor panels start to vibrate as ancient machinery long dormant moves once again... A hyperspace link is forming! The Spica system is now connected to this one.`
 			scene "scene/scene-engine2flip"
-			`Suddenly, sparks erupt from the device as it bursts into flames! Considering the condition this facility is in, it was amazing that any of the devices were working at all.`
+			`Suddenly, sparks erupt from the device as it bursts into flames! You won't be able to activate the link to Gamma Corvi with this...`
 				accept
 				
 	on decline
@@ -266,10 +262,19 @@ mission "Cartography: Nanachi Gossip"
 	to offer
 		has "Angry Squirrels: The Monkey King: offered"
 		has "event: Nova Firefly Invasion"
-		has "event: Nanachi: payment"
 		random < 70
 	on offer
 		conversation
+			branch Nanachi
+				has "event: Nanachi: payment"
+			`At the spaceport bar some Hai freighter pilots are exchanging stories. They invite you to join them and share your experiences flying beyond Hai space. You start with some stories from the early days when you were just starting out. The tale of your first encounter with pirates prompts another pilot to relate his own experience meeting the Unfettered for the first time. Another pilot offers to buy you a drink and asks about your experiences flying outside of human space. You begin with the tale of how you found Hai space. This gets a few giggles from the crowd. The night wears on as more stories are told and more drinks are poured. Eventually, you mention the abandoned Hai systems to the far west near Terminus.`
+			`	"You've been to the Ancestral Lands?" they ask.`
+			choice
+				`	"Yeah, I've been there."`
+				`	"I'm certain that's what I found."`
+			`	You tell them about the current state of those worlds. The Hai listen intently, occasionally asking questions. The barkeep announces that the bar is closing as you finish your tale. Finishing your drinks, the other pilots thank you for sharing your stories and wish you a good night.`
+				decline
+			label Nanachi
 			`You find Nanachi, the Hai pilot who you helped start out, at a spaceport cafe. She's reading a copy of "Journey to the Southwest" when she notices you and waves you over to join her. She tells you about her experiences as a captain. You also tell her about how your life has been ever since you last met, of your adventures and how far you've come.`
 			`	When you mention that you've been to the ancient Hai worlds near Terminus, she becomes especially attentive. She asks several questions and eagerly listens to your answers. Eventually, the conversation moves on to other topics. You keep swapping stories for hours, until the cafe is ready to close.` 
 				decline
@@ -306,6 +311,7 @@ mission "Cartography: The Garden"
 		government "Wanderer (Hostile)"
 		system Genesis
 		personality waiting staying vindictive mute
+			confusion 30
 		ship "Thunder Maker" "Vori'sek"
 	on visit
 		dialog `This world is inhabited, but the civilization appears to have only reached a primitive pre-hyperdrive level of technology.`

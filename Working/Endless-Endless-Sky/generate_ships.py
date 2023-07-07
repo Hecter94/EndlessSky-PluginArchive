@@ -10,7 +10,6 @@ import generate_weapons
 import generate_outfits
 import namegenerator
 
-
 from struct import unpack
 
 global ship_sprite_is_default
@@ -605,18 +604,24 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
         #print(f"SHIPGEN: Ship is overheating {totalheat:.1f}/{ship_max_heat*0.8:.1f}")
         #print("Checking existing cooling")
         #print(f"spaceleft: {shipstats['outfit sp']}")
-        for outfit in faction.outfitlist:
-            if (outfit_type(outfit) == "cooling") and (outfit.outfit_space <= shipstats['outfit sp']):
-                #print(f"Installing {outfit.name}")
-                ship.outfits_list.append(outfit)
-                shipstats['outfit sp'] -= outfit.outfit_space
-                shipstats['idle heat'] -= outfit.cooling
-                shipstats['idle heat'] -= outfit.active_cooling
-                totalheat -= outfit.cooling
-                totalheat -= outfit.active_cooling
-                if totalheat < ship_max_heat*0.8:
-                    break
-            cl += 1
+        for iii in range(len(faction.outfitlist)):
+            largest_cooling = 0
+            for outfit in faction.outfitlist:
+                if (outfit_type(outfit) == "cooling") and (outfit.outfit_space <= shipstats['outfit sp']):
+                    if largest_cooling == 0:
+                        largest_cooling = outfit
+                    elif outfit.outfit_space >= largest_cooling.outfit_space:
+                        largest_cooling = outfit
+            if largest_cooling != 0:
+                while(totalheat > ship_max_heat*0.8 and shipstats['outfit sp'] > largest_cooling.outfit_space):
+                    #print(f"Installing {outfit.name}")
+                    ship.outfits_list.append(outfit)
+                    shipstats['outfit sp'] -= outfit.outfit_space
+                    shipstats['idle heat'] -= outfit.cooling
+                    shipstats['idle heat'] -= outfit.active_cooling
+                    shipstats['energy use'] += outfit.cooling_ener/2
+                    totalheat -= outfit.cooling
+                    totalheat -= outfit.active_cooling
         if (totalheat > ship_max_heat*0.8) and (shipstats['outfit sp'] > 0):
             #print("Generating new cooling")
             heatdiff = totalheat-ship_max_heat*0.8

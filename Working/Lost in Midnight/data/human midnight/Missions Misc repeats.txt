@@ -1,0 +1,967 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+#########################
+# missions that repeat
+#########################
+
+
+
+mission "Engineering Room: Salvaged Supercapacitor"
+	boarding
+	repeat
+	invisible
+	minor
+	source
+		not category "Drone"
+		attributes "automaton"
+	destination Earth
+	to offer
+		random < 5
+	on offer
+		require "Engineering Room"
+		conversation
+			scene "outfit/supercapacitor"
+			`While searching the derelict, your engineer finds a loose component that is the equivalent of a Supercapacitor. Take it?`
+			choice
+				`	(Take it.)`
+					accept
+				`	(Leave it.)`
+					decline
+	on accept
+		outfit "Supercapacitor" 1
+#		"engineer salvaged supercapacitor" ++
+		fail
+#	on decline
+#		"engineer salvaged supercapacitor" --
+
+
+
+mission "Medical Bay: Injured Crewmember (Coalition)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Coalition" "Heliarch"
+		not attributes "automaton"
+	destination
+		government "Coalition" "Heliarch"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "known to the heliarchs"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		"reputation: Coalition" ++
+		"reputation: Heliarch" ++
+		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Hai)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Hai"
+		not attributes "automaton"
+	destination
+		government "Hai"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "First Contact: Hai: declined"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		"reputation: Hai" ++
+		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Human)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		not attributes "automaton"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		payment
+		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away. An insurance company deposits <payment> into your account.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Kor Efret)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Kor Efret"
+		not attributes "automaton"
+	destination
+		government "Kor Efret"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		or
+			has "First Contact: Korati Efreti: declined"
+			has "First Contact: Laki Nemparu: declined"
+			has "First Contact: Karek Fornati: declined"
+			has "First Contact: Setar Fort: declined"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		"reputation: Kor Efret" ++
+		dialog `Despite the language barrier, you manage to inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Remnant)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Remnant"
+		not attributes "automaton"
+	destination
+		government "Remnant"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		has "remnant blood test pure"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		"reputation: Remnant" ++
+		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Wanderer)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Wanderer"
+		not attributes "automaton"
+	destination
+		government "Wanderer"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "language: Wanderer"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the ship, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember to a hospital in time...`
+	on complete
+		"reputation: Wanderer" ++
+		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Mining: Claim Jumpers"
+	minor
+	invisible
+	deadline 4
+	repeat
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	to offer
+		or
+			has "Mining: Iron Challenge: done"
+			has "Mining: Silicon: done"
+			has "Mining: Lead: done"
+			has "Mining: Iron: done"
+			has "Mining: Aluminum: done"
+			has "Mining: Titanium: done"
+			has "Mining: Copper: done"
+			has "Mining: Neodymium: done"
+			has "Mining: Tungsten: done"
+			has "Mining: Uranium: done"
+			has "Mining: Silver: done"
+			has "Mining: Gold: done"
+			has "Mining: Platinum: done"
+		random < 5
+	on offer
+		require "Asteroid Scanner"
+	npc
+		government "Merchant"
+		personality launching mining harvests timid
+		fleet
+			names "civilian"
+			cargo 0
+			variant 6
+				"Sparrow (Afterburner)" 3
+			variant 6
+				"Fury (Miner)"
+				"Sparrow" 2
+			variant 6
+				"Modified Berserker"
+				"Sparrow" 2
+			variant 6
+				"Hawk (Miner)"
+				"Sparrow" 2
+			variant 6
+				"Headhunter (Miner)"
+				"Sparrow" 2
+			variant 1
+				"Rancor"
+				"Sparrow" 2
+			variant 1
+				"Diamondback (Mining)"
+				"Sparrow" 2
+
+mission "Mining: Iron Challenge"
+	deadline 7
+	minor
+	repeat
+	name "Iron Challenge"
+	description "The captain of the <npc> has challenged you to a mining duel! Harvest 15 tons of Iron and return to <destination> by <date>. Whoever loses the duel gives their harvest to the winner."
+	source
+		planet Hestia Helheim Icefall Canyon Memory Calda Vail Vinci Hermes Earth Luna Mars Foundry Burthen Hephaestus Maker Oblivion "New Portland" Glaze Sundrinker Humanika "New India" Poisonwood Lichen
+	to offer
+		not "ships: Transport"
+		not "ships: Light Warship"
+		not "ships: Medium Warship"
+		not "ships: Heavy Warship"
+		not "ships: Utility"
+		not "ships: Space Liner"
+		not "ships: Light Freighter"
+		not "ships: Heavy Freighter"
+		"ships: Interceptor" == 1
+		random < 10
+	on offer
+		conversation
+			`Another pilot approaches you. "Nice ship. Are you a miner?`
+			choice
+				`	"I've harvested a few asteroids."`
+				`	"I don't mine."`
+					decline
+			scene "asteroid/iron/spin"
+			`	"How about a challenge then? It'll be my ship, the <npc>, versus yours. Whoever mines the most Iron by <date> wins. The loser gives their harvest to the winner. How about it?" The <npc> looks like a capable mining ship. But unless its been significantly modified, its pilot seems to have forgotten an important detail..."`
+			choice
+				`	(Accept the challenge.)`
+				`	(Reject the challenge.)`
+					decline
+			`	"That's the spirit! We meet back here by <date>!"`
+				accept
+	on enter
+		conversation
+			scene "asteroid/iron/spin"
+			`There's Iron in this system. The pilot of the <npc> probably makes this type of challenge regularly. Time to find out who's the better miner!`
+	npc accompany save
+		government "Merchant"
+		personality target mining harvests marked
+		fleet
+			names "civilian"
+			cargo 0
+			variant 1
+				"Berserker (Energy Cannons)"
+			
+	on complete
+		outfit "Iron" -15
+		payment 30000
+		conversation
+			scene "asteroid/iron/spin"
+			`As expected, after tallying up who mined more Iron, it's obvious you've won. It seems the other pilot didn't realize your ship had more cargo space than the <npc>. He begrudgingly hands over his harvest, but your cargo hold is already full. You end up selling both harvests for <payment>.`
+
+
+
+mission "Rogue Asteroid (Pirate)"
+	deadline 2
+	minor
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "frontier" "dirt belt"
+		not attributes "uninhabited"
+	to offer
+		"combat rating" > 100
+		or
+			has "Rogue Asteroid (Poor World): done"
+			has "Rogue Asteroid (Poor World): declined"
+			has "Rogue Asteroid (Poor World): failed"
+			has "Rogue Asteroid (Poor World): aborted"
+		random < 5
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested forbearing waiting staying
+		fleet
+			names "asteroid names"
+			cargo 0
+			variant
+				"Mysterious Asteroid"
+				"Dagger" 5
+		dialog `You've destroyed the rogue asteroid and the pirate ships that were hiding on it. Return to <planet> for your reward.`
+	on complete
+		payment 10000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+
+mission "Rogue Asteroid (Rich World)"
+	deadline 2
+	minor
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "paradise" "urban" "rich" "tourist"
+		not attributes "uninhabited"
+	to offer
+		"combat rating" > 100
+		or
+			has "Rogue Asteroid (Poor World): done"
+			has "Rogue Asteroid (Poor World): declined"
+			has "Rogue Asteroid (Poor World): failed"
+			has "Rogue Asteroid (Poor World): aborted"
+		random < 5
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested waiting staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Iron" "Lead" "Silicon"
+			variant
+				"Rogue Asteroid"
+		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
+
+	on complete
+		payment 20000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+
+mission "Rogue Asteroid (Ambush)"
+	landing
+	invisible
+	source
+		attributes "pirate" "frontier"
+	to offer
+		or
+			has "Rogue Asteroid (Pirate): done"
+			has "Rogue Asteroid (Pirate): declined"
+			has "Rogue Asteroid (Pirate): failed"
+			has "Rogue Asteroid (Pirate): aborted"
+		random < 1
+	npc kill
+		government "Pirate"
+		personality uninterested forbearing waiting staying mute
+		fleet
+			names "pirate"
+			cargo 3
+			outfitters "Iron" "Lead" "Silicon"
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 5
+			variant 1
+				"Mysterious Asteroid"
+				"Dagger" 4
+	on complete
+		clear "Rogue Asteroid (Ambush): offered"
+
+
+
+phrase "blackwing scan request"
+	word
+		`A mangy old `
+		`A young hotshot `
+		`A seasoned `
+	word
+		`pirate `
+		`bucanneer `
+		`rogue `
+		`mercenary `
+		`smuggler `
+		`information broker `
+	word
+		`with a cybernetic arm `
+		`with a prosthetic leg `
+		`with a data pad `
+		`wearing an eye patch `
+		`more brains than brawn `
+		`wearing a scruffy bandanna `
+		`wearing a mask `
+	word
+		`approaches you. "Are you familiar with the Blackwings? One is about to launch and I'll pay you 50,000 credits if you can get me a scan of their outfits."`
+
+mission "Blackwing Scan Request"
+	repeat
+	deadline 1
+	minor
+	name "Blackwing Scan Request"
+	description "Scan the <npc> before it leaves the system, then bring the data to <destination>. Payment is 50,000 credits."
+	source
+		attributes "dirt belt" "frontier"
+	to offer
+		or
+			and
+				"credits" < 500000
+				random < 15
+			and
+				"credits" >= 500000
+				random < 5
+	on offer
+		dialog phrase "blackwing scan request"
+	npc "scan outfits"
+		government "Independent"
+		personality target timid uninterested surveillance mute
+		ship "Modified Blackbird" "Black Wings"
+	on complete
+		payment 25000
+		dialog `They're not happy with the scanner data and only pay half of the reward...`
+
+
+
+mission "Lares Camping (Bums)"
+	minor
+	invisible
+	source "Lares"
+	to offer
+		random < "day"
+	on offer
+		conversation
+			`Despte being abandoned, the nearby cabins are well furnished. It might be a nice change of pace to sleep somewhere other than the cramped bunk on your ship.`
+			choice
+				`	(Camp here for the night.)`
+				`	(Head back to your ship.)`
+					defer
+			`	Archipelago nights can be bright as twilight, depending on the positioning of the nearby star systems. Looking out the window, you see some wild animals moving among the trees.`
+			choice
+				`	(Go hunting.)`
+				`	(Stay indoors.)`
+					goto morning
+			`	You grab your gun and head out into the woods. Not too far is some kind of three legged furry creature. You take aim and fire! The creature collapses while other animals farther away flee. Hauling the carcass back to the cabin isn't difficult and you start skinning the creature. You're just about done when there's a knock on your door.`
+			choice
+				`	(Answer.)`
+				`	(Ignore.)`
+					goto alone
+			`	You open the door and find a pair of hobos who were attracted by the gunfire. They're hoping you'd be willing to spare some of whatever you caught.`
+			choice
+				`	(Share.)`
+				`	(Refuse.)`
+					goto bumfight
+			`	You give each hobo one of the creature's legs. They are overjoyed at the gift and thank you before leaving. You watch them head over to one of the other abandoned cabins.`
+				goto alone
+			
+			label bumfight
+			branch "lucky"
+				random < 33
+			`	It's two against one and it turns out these bums have guns of their own! You manage to shoot one, but the other one shoots you. The bullet lands somewhere inside a vital organ.`
+				die
+			label "lucky"
+			`	It's two against one and it turns out these bums have guns of their own! Fortunately, their shots miss and you manage to take them down. With all the gunfire, you've no doubt that more unwelcome guests will be approaching. Better head back to your ship and get out of here.`
+				depart
+			
+			label alone
+			`	You light up the fireplace and roast the meat from the creature you hunted. The smell of the charred meat is heavenly and you can't resist taking a bite of the delicious barbecue as its juices glisten in the firelight. It's always great to have fresh food instead of the usual canned slop you keep in your ship's pantry.`
+			
+			label morning
+			`	After a restful night, you clean up the cabin and head back to your ship.`
+				decline
+
+mission "Lares Camping (Raiders)"
+	minor
+	invisible
+	source "Lares"
+	to offer
+		random < 50
+	on offer
+		conversation
+			`Despite being abandoned, the nearby cabins are well furnished. It might be a nice change of pace to sleep somewhere other than the cramped bunk on your ship.`
+			choice
+				`	(Camp here for the night.)`
+				`	(Head back to your ship.)`
+					defer
+			`You settle in for a peaceful night's sleep when the silence is broken by the sounds of an afterburner ripping through the night sky! That sound is quickly overttaken by a loud explosion from the direction of the spaceport!`
+			choice
+				`	(Stay here.)`
+				`	(Head back to your ship.)`
+					goto raiders
+			`	You kill the lights and huddle with your gun in the darkness. There are distant sounds of yelling and gunfire. Eventually, the sounds fade and silence reclaims the night.`
+			choice
+				`	(Stay here.)`
+				`	(Head back to your ship.)`
+					goto raiders
+			`	You try to get some sleep, but you keep your gun clutched close in case someone comes looking for trouble. Eventually, morning comes.`
+			label raiders
+			`	When you get back to the spaceport, you find the burnt wreck of a pirate interceptor near your ship. It looks like someone tried and failed to pry open the hatch to your ship. There are no other ships nearby and other than the addition of the wrecked interceptor, the spaceport looks as deserted as usual.`
+				decline
+	on decline
+		event "Lares Midnight Crash"
+
+event "Lares Midnight Crash"
+	planet Lares
+		spaceport `The spaceport is a concrete slab forming a large forest clearing surrounded by some log cabins. The burnt wreckage of a pirate interceptor sits on the edge of the slab. You see no other parked ships and the area looks deserted.`
+
+mission "Lares Camping (Scavenger)"
+	minor
+	invisible
+	source "Lares"
+	to offer
+		random < 30 - "day"
+	on offer
+		conversation
+			`Despte being abandoned, the nearby cabins are well furnished. It might be a nice change of pace to sleep somewhere other than the cramped bunk on your ship.`
+			choice
+				`	(Camp here for the night.)`
+				`	(Head back to your ship.)`
+					defer
+			`	The night is surprisingly dark and a cool breeze blows in the window. As you close the shutters, you hear a scratching sound on your door.`
+			choice
+				`	(Answer.)`
+				`	(Ignore.)`
+					goto morning
+			`	You've barely opened the door a crack when a small furball darts in underfoot! The cabin is riddled with innumerable nooks and crannies between and under the furnishings. There's no telling where the creature went. All night long you hear weird scratching sounds as the creature scampers about unseen. Before you can get any shuteye, the first light of dawn is already filtering in between the window shutters. To your dismay, you discover that the creature managed to get into your food stash, leaving crumbs scattered about. You tidy up the cabin as best as you can, but are unable to find the little creature responsible for your sleepless night of misery. You are still bleary eyed when you return to your ship and idly wonder if you should really be piloting it in your current condition.`
+				decline
+			label morning
+			`	After a restful night, you clean up the cabin and head back to your ship.`
+				decline
+
+mission "Lares Exploring"
+	minor
+	repeat
+	source "Lares"
+	to offer
+		or
+			and
+				not "Lares Exploring: failed"
+				random < 15
+			and
+				has "Lares Exploring: failed"
+				random < 10
+	on offer
+		conversation
+			`It's a beautiful day for a hike...`
+			choice
+				`	(Explore the wilderness.)`
+				`	(Not now...)`
+					defer
+			branch "cave"
+				random < 50
+
+			branch "lake"
+				random < 50
+
+			`During your hike you spot several new types of animals you've never seen before. Eventually, you find a forest clearing.`
+			choice
+				`	(Stop for a picnic.)`
+				`	(Return to your ship.)`
+					defer
+			`	While eating lunch, you notice something weird about the ground nearby.`
+			choice
+				`	(Dig it up.)`
+				`	(Ignore it and return to your ship.)`
+					defer
+			branch "predator"
+				random < 20
+			
+			branch "weapons"
+				random < 50
+			
+			branch "treasure"
+				random < 20
+
+			scene "scene/scene-empty box"
+			`	You find an old empty crate. From the way the wood is rotted, it must have been here for a very long time.`
+				defer
+
+			label "treasure"
+			scene "outfit/treasure"
+			`	You find an old crate. Inside is a Mysterious Treasure! You could probably sell it for a decent sum anywhere, but getting it appraised by someone knowledgeable about archaeology might yield better results.`
+				accept
+			
+			label "weapons"
+			scene "scene/scene-weapons cache"
+			`	You find an old weapons cache. These look ancient, but probably still work.`
+				decline
+			
+			label "predator"
+			scene "outfit/mouthparts"
+			`	Suddenly you are attacked by a vicious predator!`
+			choice
+				`	(Run back to your ship!)`
+					defer
+				`	(Kill the beast!)`
+
+			branch "death"
+				random < 20
+			scene "outfit/laser rifle"
+			`	Fortunately, you happen to be armed and have no trouble putting down the creature. At least tonight's dinner is covered!`
+				defer
+			
+			label "death"
+			scene "scene/scene-devoured"
+			`	Before you can properly aim, the beast has taken your arm! The pain and shock renders you unable to escape as the beast devours you alive...`
+				die
+			
+			label lake
+			`During your hike you spot several new types of animals you've never seen before. Eventually, you find a lake.`
+			choice
+				`	(Go for a swim.)`
+				`	(Return to your ship.)`
+					defer
+			branch "predator"
+				random < 33
+			
+			`	While swimming you notice an unnatural object beneath the water.`
+			choice
+				`	(Bring it back to the surface.)`
+				`	(Ignore it and return to your ship.)`
+					defer
+			branch "predator"
+				random < 50
+
+			branch "weapons"
+				random < 50
+			
+			branch "treasure"
+				random < 20
+
+			scene "scene/scene-empty box"
+			`	You find an old empty crate. From the way the wood is rotted, it must have been here for a very long time.`
+				defer
+			
+			label cave
+			`During your hike you spot several new types of animals you've never seen before. Eventually, you find a cave.`
+			choice
+				`	(Search the cave.)`
+				`	(Ignore it and return to your ship.)`
+					defer
+			branch "predator"
+				random < 25
+
+			branch "empty"
+				random < 50
+			
+			branch "weapons"
+				random < 50
+			
+			branch "treasure"
+				random < 20
+
+			scene "scene/scene-empty box"
+			`	You find an old empty crate. From the way the wood is rotted, it must have been here for a very long time.`
+				defer
+
+			label "empty"
+			`	The cavern is empty. Perhaps you are the first living creature to set eyes on these rock formations.`
+				defer
+	on decline
+		outfit "Sniper Rifle" 1
+		outfit "Fragmentation Grenades" 1
+		outfit "Bullet Boxes" 1
+		outfit "Gatling Gun Ammo" 1500
+	on accept
+		outfit "Mysterious Treasure" 1
+		fail
+
+
+
+mission "Pirate Raid: Shield Suppressor"
+	landing
+	invisible
+	deadline 3
+	repeat
+	to offer
+		"reputation: Pirate" < 0
+		"combat rating" >= 403
+		random < 10
+	on offer
+		require "Shield Suppressor"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+	npc evade
+		to spawn
+			"combat rating" > 1097
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+		fleet "Marauder fleet I"
+	npc evade
+		to spawn
+			"combat rating" > 2981
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+		fleet "Marauder fleet II"
+	npc evade
+		to spawn
+			"combat rating" > 8103
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Marauder fleet VII"
+		fleet "Marauder fleet III"
+	npc evade
+		to spawn
+			"combat rating" > 22026
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Marauder fleet VIII"
+		fleet "Marauder fleet IV"
+	npc evade
+		to spawn
+			"combat rating" > 59874
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Marauder fleet IX"
+		fleet "Marauder fleet V"
+	npc evade
+		to spawn
+			"combat rating" > 162755
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Marauder fleet X"
+		fleet "Marauder fleet VI"
+	npc evade
+		to spawn
+			"combat rating" > 442413
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Large Southern Pirates"
+		fleet "Large Core Pirates"
+		fleet "Large Northern Pirates"
+
+
+
+conversation "sabotage: shield suppressor"
+	scene "outfit/shield suppressor"
+	`You notice a malfunction with the shield generator of your ship. You should probably have it checked out the next time you're at an outfitter...`
+		accept
+
+mission "Sabotage: Shield Suppressor (assisting)"
+	assisting
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Merchant" "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 1097
+		has "Sabotage: Shield Suppressor (boarding): offered"
+		random < 1
+	on offer
+		require "Shield Suppressor" 0
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Bounty Hunter"
+		personality nemesis entering heroic
+		fleet "Bounty Hunters" 2
+
+
+mission "Sabotage: Shield Suppressor (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"reputation: Pirate" < 0
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Shield Suppressor (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Shield Suppressor (boarding): offered"
+				random < 2
+	on offer
+		require "Shield Suppressor" 0
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+
+mission "Sabotage: Shield Suppressor (boarding rival)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"reputation: Pirate" >= 0
+		"reputation: Pirate (Rival)" < 0
+		"combat rating" >= 403
+		random < 2
+	on offer
+		require "Shield Suppressor" 0
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Pirate (Rival)"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+
+
+##################################
+#
+# deprecated missions
+#
+##################################
+
+mission "Rogue Asteroid (Poor World)"
+	deadline 2
+	minor
+	name "Rogue Asteroid"
+	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "paradise" "urban" "rich" "tourist"
+		not attributes "uninhabited"
+	to offer
+		never
+	on offer
+		conversation
+			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
+			choice
+				`	"Are we under attack from pirates?"`
+				`	"Are we under attack from aliens?"`
+			scene "asteroid/fossil/spin"
+			`	One of the dockworkers answers, "A rogue asteroid has shifted into an erratic orbital path. The local government is offering pilots a <payment> reward for destroying it before it becomes a threat to <planet>."`
+			choice
+				`	(Try to destroy the asteroid.)`
+					launch
+				`	(Don't try to destroy the asteroid.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality target uninterested waiting staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Copper" "Gold" "Silver"
+			variant
+				"Rogue Asteroid"
+		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
+
+	on complete
+		payment 10000
+		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`

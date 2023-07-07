@@ -1,0 +1,161 @@
+mission "BytS Quarg Respond to Invasion"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka Scout South"
+	on offer
+		event "BytS Quarg Increased Security"
+		
+mission "BytS Quarg Respond to Invasion 2"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka Invades South-Quarg"
+	on offer
+		event "BytS Quarg Increased Security 2"
+		event "BytS Quarg Increased Security 3" 2
+		
+mission "BytS-UiMW Quarg: Defend Enif Ringworld"
+	job
+	repeat
+	name "Defend <origin>"
+	description `Large Ultaka invasion fleet is detected coming this way, Quarg want some assistance defending it. They'll pay you very well, if you survive.`
+	source "Lagrange"
+	to offer
+		has "event: UiMW: Ultaka Invades South-Quarg"
+		random < 50
+	npc evade
+		government "Ultaka (Milky Way)"
+		personality
+			coward target
+		fleet "MW Ultaka Quarg Raid Large" 15
+	
+	npc
+		government "Quarg"
+		personality
+			heroic staying
+		fleet "Quarg Heavy Warfleet" 7
+		fleet "Quarg Titan Warfleet" 2
+	
+	on complete
+		payment 120000000
+		"reputation: Quarg" += 10
+		dialog `The Quarg thanks you for helping them defend the ring and pays you <payment>.`
+	
+mission "BytS-UiMW Quarg: Defend Hevru Hai Ringworld"
+	job
+	repeat
+	name "Defend <origin>"
+	description `Large Ultaka invasion fleet is detected coming this way, Quarg want some assistance defending it. They'll pay you very well, if you survive.`
+	source "Alta Hai"
+	to offer
+		has "event: UiMW: Ultaka Invades Hai"
+		random < 40
+	npc evade
+		government "Ultaka (Milky Way)"
+		personality
+			coward target
+		fleet "MW Ultaka Quarg Raid Large" 18
+	
+	npc
+		government "Quarg"
+		personality
+			heroic staying
+		fleet "Quarg Heavy Warfleet" 8
+		fleet "Quarg Titan Warfleet" 2
+	
+	on complete
+		payment 120000000
+		"reputation: Quarg" += 10
+		dialog `The Quarg thanks you for helping them defend the ring and pays you <payment>.`
+	
+mission "BytS-UiMW Quarg System Guard 1 (Enif)"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka conquer 1"
+	
+	npc save
+		government "Quarg"
+		personality
+			heroic staying
+		system Enif
+		fleet "Quarg Reserve Fleet" 5
+		fleet "Quarg Warfleet" 2
+		
+mission "BytS-UiMW Quarg System Guard 2 (Enif)"
+	landing
+	invisible
+	to offer
+		or
+			has "event: UiMW: Ultaka conquer 2"
+			has "BytS-UiMW Quarg System Guard 1 (Enif): failed"
+	npc save
+		government "Quarg"
+		personality
+			heroic staying
+		system Enif
+		fleet "Quarg Reserve Fleet" 7
+		fleet "Quarg Warfleet" 2
+		fleet "Quarg Titan Warfleet" 2
+		
+mission "BytS-UiMW Deneb Guard"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka conquer 2"
+		not "event: pug flee"
+	npc save
+		government "Pug"
+		personality unconstrained staying
+		system "Pug Iyik"
+		ship "Pug Lzdihsek" "Waee Ree Bee"
+		ship "Pug Lzdihsek" "Arr Tak Bee"
+	to fail
+		has "event: pug flee"
+		
+mission "BytS-UiMW Deneb Guard 2"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka conquer 2"
+		has "BytS-UiMW Deneb Guard: failed"
+		not "event: pug flee"
+	npc save
+		government "Pug"
+		personality unconstrained staying
+		system "Pug Iyik"
+		ship "Pug Lzdihsek" "Ek Ree Hik"
+		ship "Pug Lzdihsek" "Aee Rek So"
+		ship "Pug Lzdihsek" "Ek Ree Hik"
+		ship "Pug Lzdihsek" "Aee Rek So"
+	to fail
+		has "event: pug flee"
+		
+mission "BytS-UiMW Deneb T5 Patrol"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka conquer 2"
+		has "BytS-UiMW Deneb Guard 2: failed"
+		not "event: pug flee"
+	on offer
+		event "Byts-UiMW Deneb T5 Patrol"
+
+event "Byts-UiMW Deneb T5 Patrol"
+	system "Deneb"
+		add fleet "Pug T5 Patrol" 1600
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

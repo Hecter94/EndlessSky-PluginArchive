@@ -2,7 +2,12 @@
 import math
 import os
 import random
-from PIL import Image, ImageDraw
+try:
+    from PIL import Image, ImageDraw
+except ModuleNotFoundError:
+    pass
+
+patt_overlay_path = "imgparts/000 shipoverlay/"
 
 def remap(value, fromLow, fromHigh, toLow, toHigh): 
     return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow
@@ -17,55 +22,137 @@ def avg_deviation(numlist):
         x += (num-avg)**2
     return avg, math.sqrt(x/totalnum)
 
-def get_overlay_pattern(palette,pattern_complexity=1):
+def img_additive(arr1, arr2): #Probably doesn't work
+    arr3 = [list(a) for a in list(arr1.copy())]
+    i = 0
+    for y in arr1: #y
+        ii = 0
+        for x in y: #x
+            arr3[i][ii] = arr2[i][ii] + arr1[i][ii]
+            ii += 1
+        i+=1
+    return arr3
+
+def img_multiply(arr1, arr2, fraction=0):
+    arr3 = [list(a) for a in list(arr1.copy())]
+    a = 127 #127
+    w1 = 1. + fraction
+    w2 = 2 - w1
+    i = 0
+    for y in arr1: #y
+        ii = 0
+        #arr3[i]
+        for x in y: #x
+            arr3[i][ii] = int(((arr2[i][ii]*w1) * (arr1[i][ii]*w2))/a)
+            ii += 1
+        i+=1
+    return arr3
+
+def img_overlay(arr1, arr2):
+    arr3 = [list(a) for a in list(arr1.copy())]
+    i = 0
+    for y in arr1: #y
+        ii = 0
+        for x in y: #x
+            if arr2[i][ii] < 128:
+                arr3[i][ii] = int(((arr2[i][ii] * arr1[i][ii])/127))
+            else:
+                arr3[i][ii] = int(255-(((255-arr2[i][ii]) * (255-arr1[i][ii]))/127))
+            ii += 1
+        i+=1
+    return arr3
+
+def polar_to_cartesian(angle, amplitude):
+    x = amplitude * math.cos(angle)
+    y = amplitude * math.sin(angle)
+    return x,y
+
+def get_overlay_pattern(faction,palette,pattern_complexity=3,style=0,color_style=0):
     w, h = 110, 220
 
-    style = random.randint(1,2)
+    if style==0:
+        style = random.randint(1,4)
     shape = []
-    edge_offset = 20
-    if pattern_complexity == 1:
-        start_x = random.randrange(0+edge_offset,round((w/2)-edge_offset))
-        start_y = random.randrange(0+edge_offset,h-edge_offset)
-        end_x = random.randrange(round((w/2)+edge_offset),w-edge_offset)
-        end_y = random.randrange(0+edge_offset,h-edge_offset)
-        shape.append([(start_x, start_y), (end_x, end_y)])
-        if style == 1:
-            shape.append([(start_x, start_y+20), (end_x, end_y+20)])
-            shape.append([(start_x, start_y-20), (end_x, end_y-20)])
-        elif style == 2:
-            for n in range(2):
-                start_x = end_x
-                start_y = end_y
-                end_x = random.randrange(0+edge_offset,w-edge_offset)
-                end_y = random.randrange(0+edge_offset,h-edge_offset)
-                shape.append([(start_x, start_y), (end_x, end_y)])
-        elif style == 3:
-            for n in range(2):
-                constraint_x = 40
-                constraint_y = 40
-                max_angle = 30
-                max_amplitude = 30
-                start_x = end_x
-                start_y = end_y
-                end_x = random.randrange(0+edge_offset,w-edge_offset)
-                end_y = random.randrange(0+edge_offset,h-edge_offset)
-                shape.append([(start_x, start_y), (end_x, end_y)])
+    edge_offset = 10
+
+    start_x = random.randrange(0+edge_offset,round((w/2)-edge_offset))
+    start_y = random.randrange(0+edge_offset,h-edge_offset)
+    end_x = random.randrange(round((w/2)+edge_offset),w-edge_offset)
+    end_y = random.randrange(0+edge_offset,h-edge_offset)
+    shape.append([(start_x, start_y), (end_x, end_y)])
+    if style == 1: #array (probably should move to second step)
+        shape.append([(start_x, start_y+20), (end_x, end_y+20)])
+        shape.append([(start_x, start_y-20), (end_x, end_y-20)])
+    elif style == 2: #Random connected lines
+        for n in range(pattern_complexity):
+            start_x = end_x
+            start_y = end_y
+            end_x = random.randrange(0+edge_offset,w-edge_offset)
+            end_y = random.randrange(0+edge_offset,h-edge_offset)
+            shape.append([(start_x, start_y), (end_x, end_y)])
+    elif style == 3: #Random connected lines + angle limits
+        max_angle = 15
+        max_amplitude = 40
+        prev_angle = random.uniform(0,359)
+        for n in range(pattern_complexity):
+            start_x = end_x
+            start_y = end_y
+            while True:
+                new_angle = random.uniform(prev_angle-max_angle, prev_angle+max_angle)
+                new_dist = random.uniform(1,max_amplitude)
+                #print(f"na {new_angle}, nd {new_dist}")
+                end_x,end_y =  polar_to_cartesian(new_angle,new_dist)
+                end_x += round(start_x)
+                end_y += round(start_y)
+                #print(f"nX {end_x}, nY {end_y}")
+                if end_x > edge_offset and end_y > edge_offset:
+                    break
+            #print(f"nX {end_x}, nY {end_y}")
+            shape.append([(start_x, start_y), (end_x, end_y)])
+    elif style == 4: #Random lines
+        for n in range(pattern_complexity):
+            start_x = random.randrange(0+edge_offset,w-edge_offset)
+            start_y = random.randrange(0+edge_offset,w-edge_offset)
+            end_x = random.randrange(0+edge_offset,w-edge_offset)
+            end_y = random.randrange(0+edge_offset,h-edge_offset)
+            shape.append([(start_x, start_y), (end_x, end_y)])
     
     # creating new Image object
     img = Image.new("RGBA", (w, h))
     
-    color_alt = random.choice(['blue','green','purple'])
+    color_alt = random.choice(['blue','green','magenta'])
     color_fill_list = ['red','orange','yellow',color_alt]
-    col_width = random.randint(1,5)
-    # create line n times
-    img1 = ImageDraw.Draw(img)  
-    for n in range(palette):
-        img1.line(shape[n], fill=color_fill_list[n], width = col_width)
-    img.show()
+    col_width = random.randint(3,8)
+    
+    if color_style == 1:
+        color_style == random.randint(1,2)
+
+    img1 = ImageDraw.Draw(img)
+    if color_style == 1: #one color per line segment
+        i = 0 
+        for nn in range(round(pattern_complexity/palette)):
+            for n in range(palette):
+                img1.line(shape[min(len(shape)-1,i)], fill=color_fill_list[n], width = col_width)
+                i+=1
+    elif color_style == 2: #single color
+        i = 0 
+        color_sel = random.randint(0,len(color_fill_list)-1)
+        for nn in range(round(pattern_complexity/palette)):
+            for n in range(palette):
+                img1.line(shape[min(len(shape)-1,i)], fill=color_fill_list[color_sel], width = col_width)
+                i+=1
+    #img.show()
+    #img.putalpha(127)
+    if faction != None:
+        global patt_overlay_path
+        try:
+            img.save(f"{patt_overlay_path}{faction.name}.png")
+        except FileNotFoundError:
+            os.makedirs(patt_overlay_path)
+            img.save(f"{patt_overlay_path}{faction.name}.png")
     pass
 
 #TODO: Train AI for generating parts to be assembled. (Or maybe not, each checkpoint is massive)
-#TODO: Use PIL.Image.alpha_composite or something to overlay sprites with color patterns and make each faction more unique
 def get_sprites(setselect="human"):
     #print(os.listdir(f"imgparts/{setselect}"))
     file_list = [f for f in os.listdir(f"imgparts/{setselect}") if f.endswith(".png") or f.endswith(".PNG")]
@@ -742,6 +829,8 @@ def generate_sprite(faction,category="Heavy Warship",width=0,height=0,part_list=
             width = random.randrange(120,260,2)
             height = random.randrange(120,260,2)
 
+    width = int(math.ceil((width*faction.lenwid) / 2) * 2)
+    height = int(math.ceil((height*1-faction.lenwid) / 2) * 2)
     if category == "Drone" or category == "Fighter":
         stacktype = 3
     elif category == "Interceptor":
@@ -822,7 +911,31 @@ def generate_sprite(faction,category="Heavy Warship",width=0,height=0,part_list=
         new_img,bounddictc,a = place_parts(new_img,part_list,count=1,part_type='core')
         new_img,bounddictb,a = place_parts(new_img,part_list,count=2,part_type='body',bounddict=bounddictc,
                                                                                     clustermode=True)
-    
+    if faction != None:
+        global patt_overlay_path
+        patt_overlay = Image.open(f"{patt_overlay_path}{faction.name}.png")
+        pto_x = random.randrange(0,width/2)
+        pto_y = random.randrange(10,round(height*.5))
+        col_img = Image.new('RGBA', (width,height), faction.shipcoloring) 
+        pto_img = Image.new('RGBA', (width,height), "grey")
+        #pto_img2 = Image.new('RGBA', (width,height))
+        pto_img.paste(patt_overlay,(pto_x,pto_y),patt_overlay)
+        if(symmode):
+            pto_img = pto_img.transpose(Image.FLIP_LEFT_RIGHT)
+            pto_img.paste(patt_overlay,(pto_x,pto_y),patt_overlay)
+        pto_img = Image.blend(pto_img,new_img,.5)
+        img_arr = list(new_img.getdata())
+        img_oly = list(col_img.getdata())
+        img_arr = img_multiply(img_arr,img_oly)
+        img_arr2 = list(pto_img.getdata())
+        img_arr3 = img_overlay(img_arr,img_arr2)
+        nn_img = Image.new('RGBA', (width,height))
+        img_arr3 = [tuple(a) for a in tuple(img_arr3)]
+        nn_img.putdata(img_arr3)
+        #nn_img.show()
+        new_img = nn_img
+        #new_img = Image.alpha_composite(new_img,pto_img)
+
     gradient = Image.linear_gradient('L')
     gradient = gradient.rotate(90)
     gradient = gradient.resize((width,height), resample=Image.BICUBIC)
@@ -840,7 +953,7 @@ def generate_sprite(faction,category="Heavy Warship",width=0,height=0,part_list=
     #new_img.show()
 StandaloneMode = False
 TestMode = False
-TestPattMode = True
+TestPattMode = False
 if StandaloneMode:
     part_sel = input("Choose part type(default:human): ")
     if part_sel == "":
@@ -865,7 +978,7 @@ elif TestMode:
         except FileNotFoundError:
             os.makedirs('generatedsprites')
 elif TestPattMode:
-    get_overlay_pattern(3)
+    get_overlay_pattern(None,3,8)
 
 def call_generate_sprite(faction,category,name,gun,turret,width=0,height=0,enginesp=0):
     if faction.devmode:
@@ -883,15 +996,16 @@ def call_generate_sprite(faction,category,name,gun,turret,width=0,height=0,engin
     except FileExistsError:
         pass
     sprite.save(f'images/ship/{faction.name}/{name}.png')
-    for i,gunxy in gpoints.items():
-        #print(gunxy)
-        gunlistx.append(gunxy[0])
-        gunlisty.append(gunxy[1])
-    for i,turxy in tpoints.items():
-        turlistx.append(turxy[0])
-        turlisty.append(turxy[1])
-    for i,engixy in epoints.items():
-        engilistx.append(engixy[0])
-        engilisty.append(engixy[1])
+    if True:
+        for i,gunxy in gpoints.items():
+            #print(gunxy)
+            gunlistx.append(gunxy[0])
+            gunlisty.append(gunxy[1])
+        for i,turxy in tpoints.items():
+            turlistx.append(turxy[0])
+            turlisty.append(turxy[1])
+        for i,engixy in epoints.items():
+            engilistx.append(engixy[0])
+            engilisty.append(engixy[1])
 
     return gunlistx,gunlisty,turlistx,turlisty,engilistx,engilisty

@@ -170,6 +170,15 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
         weapon_inaccuracy = round(random.uniform(0, weapon_max_inaccuracy),1)
         weapon_lifetime = round(weapon_range / weapon_velocity)
 
+        weapon_r_velo_chance = .4
+        weapon_r_life_chance = .4
+        weapon_r_velo = 0
+        weapon_r_life = 0
+        if random.random() < weapon_r_velo_chance:
+            weapon_r_velo = random.randint(1,round(max(2,weapon_velocity/2)))
+        if random.random() < weapon_r_life_chance:
+            weapon_r_life = random.randint(1,round(max(2,weapon_lifetime/2)))
+
         weapon_reload = max(1,math.ceil(60 / weapon_shotpersec)) #Please don't be zero and break stuffs.
         if weapon_is_burst and not weapon_type == "beam":
             if weapon_reload <= 1:
@@ -213,35 +222,6 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                 weapon_special_mult += random.uniform(.01,max(.05,weapon_special_mult)) #Add minor variation, TODO: properly calculate it.
                 weapon_special_dps = weapon_damagepersec * weapon_special_mult
                 weapon_special_dpshot[dmg_type] = round(weapon_special_dps / weapon_shotpersec,1)
-        """
-        if random.random() < .1 * (faction.tier/3):
-            weapon_fuel_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['fuel'] = round(weapon_fuel_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_energy_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['energy'] = round(weapon_energy_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_ion_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['ion'] = round(weapon_ion_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_disrupt_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['disrupt'] = round(weapon_disrupt_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_slow_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['slow'] = round(weapon_slow_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_discharge_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['discharge'] = round(weapon_discharge_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_corrosion_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['corrosion'] = round(weapon_corrosion_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_leak_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['leak'] = round(weapon_leak_dps / weapon_shotpersec,1)
-        if random.random() < .1 * (faction.tier/3):
-            weapon_burn_dps = weapon_damagepersec * weapon_special_ratio
-            weapon_special_dpshot['burn'] = round(weapon_burn_dps / weapon_shotpersec,1)
-        """
 
         #=======Create Special Projectile with submunitions (shotgun,flak,etc.)
         projectile_type = 'none'
@@ -269,6 +249,12 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                     submunition_stats['inaccuracy'] = random.uniform(12,45)
                     submunition_stats['shield damage'] = weapon_shield_dpshot/submunition_count
                     submunition_stats['hull damage'] = weapon_hull_dpshot/submunition_count
+                    submunition_inherit_r_velo = .5
+                    submunition_inherit_r_life = .5
+                    if random.random() < submunition_inherit_r_velo:
+                        submunition_stats['random velocity'] = weapon_r_velo
+                    if random.random() < submunition_inherit_r_life:
+                        submunition_stats['random lifetime'] = weapon_r_life
                     for sp_dmg in list( weapon_special_dpshot.keys()):
                         submunition_stats[sp_dmg+' damage'] = weapon_special_dpshot[sp_dmg]/submunition_count
                     if faction.tier > 3 and random.random() < .3:
@@ -423,6 +409,10 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             weapon_output.write('\t\t"inaccuracy" ' + str(weapon_inaccuracy) + "\n")
             weapon_output.write('\t\t"velocity" ' + str(weapon_velocity) + "\n")
             weapon_output.write('\t\t"lifetime" ' + str(weapon_lifetime) + "\n")
+            if(round(weapon_r_life) > 0):
+                weapon_output.write('\t\t"random velocity" ' + str(weapon_r_life) + "\n")
+            if(round(weapon_r_velo) > 0):
+                weapon_output.write('\t\t"random lifetime" ' + str(weapon_r_velo) + "\n")
             if projectile_type != 'none':
                 weapon_sub_name = f"{weapon_name} sub 1"
                 weapon_output.write(f'\t\t"submunition" "{weapon_sub_name}" {submunition_count}' + "\n")
@@ -491,6 +481,10 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                 weapon_output.write('\t\t"turret turn" ' + str(turret_turn) + '\n')
                 weapon_output.write('\t\t"velocity" ' + str(weapon_velocity) + "\n")
                 weapon_output.write('\t\t"lifetime" ' + str(weapon_lifetime) + "\n")
+                if(round(weapon_r_life) > 0):
+                    weapon_output.write('\t\t"random velocity" ' + str(weapon_r_life) + "\n")
+                if(round(weapon_r_velo) > 0):
+                    weapon_output.write('\t\t"random lifetime" ' + str(weapon_r_velo) + "\n")
                 if projectile_type != 'none':
                     weapon_sub_name = f"{weapon_name} sub 1"
                     weapon_output.write(f'\t\t"submunition" "{weapon_sub_name}" {submunition_count}' + "\n")
@@ -711,6 +705,10 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             weapon_output.write('\t\t"inaccuracy" ' + str(weapon_inaccuracy) + "\n")
             weapon_output.write('\t\t"velocity" ' + str(weapon_velocity) + "\n")
             weapon_output.write('\t\t"lifetime" ' + str(weapon_lifetime) + "\n")
+            if(round(weapon_r_life) > 0):
+                weapon_output.write('\t\t"random velocity" ' + str(weapon_r_life) + "\n")
+            if(round(weapon_r_velo) > 0):
+                weapon_output.write('\t\t"random lifetime" ' + str(weapon_r_velo) + "\n")
             if projectile_type != 'none':
                 weapon_sub_name = f"{weapon_name} sub 1"
                 weapon_output.write(f'\t\t"submunition" "{weapon_sub_name}" {submunition_count}' + "\n")
@@ -790,7 +788,7 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             weapon_output.write(f'\t\t"hardpoint sprite" "hardpoint/{anti_missile_thumb}"'+ "\n")
             weapon_output.write('\t\t"hardpoint offset" 4.'+ "\n")
             weapon_output.write(f'\t\t"hit effect" "{weapon_effect}"'+ "\n")
-            weapon_output.write('\t\t"fire effect" "tiny explosion"'+ "\n")
+            weapon_output.write(f'\t\t"fire effect" "{weapon_effect}"'+ "\n")
             weapon_output.write('\t\t"anti-missile" ' + str(anti_missile_strength) + "\n")
             weapon_output.write('\t\t"velocity" ' + str(weapon_velocity) + "\n")
             weapon_output.write('\t\t"lifetime" ' + str(weapon_lifetime) + "\n")

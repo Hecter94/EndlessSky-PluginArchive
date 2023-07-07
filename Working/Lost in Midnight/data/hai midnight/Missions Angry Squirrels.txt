@@ -16,6 +16,7 @@
 # - Offend the Hai when they find out.
 # - Dominate the Unfettered.
 # - Guide the Unfettered on a Journey to the Southwest.
+# - Uncover a secret cult of Unfettered sympathizers
 
 
 
@@ -100,7 +101,7 @@ mission "Angry Squirrels: Korath Rifle Deal"
 	to offer
 		random < 20
 	on offer
-		require "Korath Repeater Rifle"
+		require "Thermal Repeater Rifle"
 		conversation
 			`One of the Unfettered approaches you. "That is an interesting looking rifle you have there. What kind is it?"`
 			`	"A Korath Repeater Rifle," you reply.`
@@ -118,7 +119,7 @@ mission "Angry Squirrels: Korath Rifle Deal"
 			`Korath Repeater Rifles aren't normally in stock at your local outfitter. You'll probably have to steal them from captured ships.`
 	on complete
 		"Angry Squirrels: Korath Rifle Deal: offered" --
-		outfit "Korath Repeater Rifle" -100
+		outfit "Thermal Repeater Rifle" -100
 		payment 2600000
 		"Unfettered Arms Dealer" ++
 		"reputation: Hai" --
@@ -197,7 +198,7 @@ mission "Angry Squirrels: Fragmentation Grenade Deal"
 
 
 fleet "unfettered weapon collectors"
-	government "Hai (Unfettered)"
+	government "Hai (Unfettered Civilians)"
 	names "hai"
 	cargo 1
 	personality
@@ -446,6 +447,15 @@ mission "Angry Squirrels: Countermeasures 3"
 	on enter "Almaaz"
 		dialog `That Bactrian looks like the perfect target to try this new boarding weapon on. Disable it without destroying it then move in for the capture!`
 
+	npc
+		system "Almaaz"
+		government "Pirate"
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			variant
+				"Aerie (Energy Cannons)"
+				"Dagger" 5
 	npc board
 		system "Almaaz"
 		government "Pirate"
@@ -476,24 +486,24 @@ mission "Angry Squirrels: Dominate Unfettered"
 		has "First Contact: Unfettered: offered"
 	on offer
 		event "unfettered tribute main"
+		fail
 
 event "unfettered tribute main"
 	planet Firelode
 		tribute 2000
-			threshold 5000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 15
-	planet Darkcloak
-		tribute 5000
 			threshold 10000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 20
-			fleet "Unfettered Raid" 5
-	planet Warfeed
-		tribute 2000
-			threshold 5000
-			fleet "Small Unfettered" 10
 			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
+	planet Darkcloak
+		tribute 3500
+			threshold 10000
+			fleet "Large Unfettered" 25
+			fleet "Small Unfettered" 15
+	planet Warfeed
+		tribute 6000
+			threshold 10000
+			fleet "Large Unfettered" 10
+			fleet "Small Unfettered" 100
 
 
 
@@ -509,11 +519,10 @@ mission "Angry Squirrels: planet Varu Mer'ek"
 
 event "unfettered tribute Varu Mer'ek"
 	planet "Varu Mer'ek"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 
 mission "Angry Squirrels: planet Kort Vek'kri"
 	landing
@@ -525,11 +534,10 @@ mission "Angry Squirrels: planet Kort Vek'kri"
 
 event "unfettered tribute Vek'kri"
 	planet "Kort Vek'kri"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 			
 mission "Angry Squirrels: more planets"
 	landing
@@ -543,27 +551,24 @@ mission "Angry Squirrels: more planets"
 		
 event "unfettered tribute Vara Ke'sok"
 	planet "Vara Ke'sok"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 			
 event "unfettered tribute Vara Ke'stai"
 	planet "Vara Ke'stai"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 
 event "unfettered tribute Var' Kar'i'i"
 	planet "Var' Kar'i'i"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 
 			
 mission "Angry Squirrels: planet Varu K'est"
@@ -576,11 +581,10 @@ mission "Angry Squirrels: planet Varu K'est"
 
 event "unfettered tribute Varu K'est"
 	planet "Varu K'est"
-		tribute 3000
-			threshold 8000
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 10
-			fleet "Unfettered Raid" 10
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
 
 
 
@@ -620,7 +624,7 @@ mission "Angry Squirrels: Journey to the Southwest"
 		has "Angry Squirrels: The Monkey King: offered"
 		has "event: Hai Ancestral Lands Discovered"
 		"combat rating" > 2981
-		"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" >= 10
+		"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" >= 10
 		or
 			and
 				not "Randomize Angry Squirrels: Journey to the Southwest"
@@ -701,7 +705,7 @@ mission "Angry Squirrels: Journey to the Southwest"
 		"reputation: Hai (Unfettered)" >?= 10
 	
 	npc
-		government "Hai (Unfettered)"
+		government "Hai (Friendly Unfettered)"
 		personality heroic plunders escort
 		fleet
 			names "hai"
@@ -745,7 +749,10 @@ event "Completed Journey to the Southwest"
 		fleet "Ancestral Unfettered" 6000
 		fleet "Nova Firefly" 4000
 	planet Oldhome
-		attributes unfettered
+		remove attributes
+			"uninhabited"
+		add attributes
+			"unfettered"
 		add description `The Unfettered have uncovered underground bunkers filled with supplies and equipment. They've even found some completed ships, ready for launch. It's as if the Hai were prepared to return someday.`
 		spaceport `The spaceport was once concealed underneath a thick forest canopy. Despite the Unfettered's attempt to clear away the brush, branches and leaves are still scattered across the landing pads.`
 		
@@ -765,12 +772,22 @@ event "Unfettered Expand in Ancestral Lands"
 		add shipyard "Unfettered Basics"
 		add outfitter "Unfettered Basics"
 	planet Nearwater
+		add attributes
+			"unfettered"
 		add description `While the Unfettered lay claim to Nearwater, they don't have the resources or patience to build an outpost in the midst of the constant storms here.`
 	planet Drywaste
+		add attributes
+			"unfettered"
 		add description `Unfettered scavengers have started digging through the sand in search of working warship parts. They aren't having much success.`
 	planet Takerstone
+		add attributes
+			"unfettered"
 		add description `Unfettered scavengers have started searching the rocky crevices in search of a salvageable warship. They aren't having much success.`
 	planet Wildland
+		remove attributes
+			"uninhabited"
+		add attributes
+			"unfettered"
 		spaceport `The Unfettered have converted part of the ruins into a spaceport. It seems the civilization that once lived here used it to launch and land terrestrial aircraft.`
 		
 event "It came from the desert..."
@@ -793,21 +810,21 @@ event "It came from the desert..."
 			fleet "Small Unfettered" 10
 			fleet "Large Unfettered" 20
 	planet Nearwater
+		remove attributes
+			"uninhabited"
 		spaceport `The "spaceport" is the exposed flagstones of a former Hai fortress. A section of crumbling wall provides some shelter for the Unfettered captain and his ship unfortunate enough to be assigned the duty of port authority.`
 		tribute 200
 			threshold 500
 			fleet "Small Unfettered" 10
 			fleet "Large Unfettered" 15
 	planet Drywaste
+		remove attributes
+			"uninhabited"
 		tribute 200
 			threshold 500
 			fleet "Small Unfettered" 10
 			fleet "Large Unfettered" 15
-	planet Takerstone
-		tribute 200
-			threshold 500
-			fleet "Small Unfettered" 10
-			fleet "Large Unfettered" 15
+		spaceport `A trading outpost has been set up in the shadow of a derelict Megalocoleus. Some nearby hills keep the sand from covering the area, allowing a flat surface for parking ships.`
 	planet Wildland
 		add shipyard "Unfettered Basics"
 		add outfitter "Unfettered Basics"
@@ -916,7 +933,7 @@ mission "Ancestral Lands: Nova Firefly Swarm"
 			`A few Unfettered pilots have gathered to help repel the Nova Firefly swarm. You join them, and take off together...`
 				launch
 	on defer
-		"reputation: Hai (Unfettered)" <?= -1000		
+		"reputation: Hai (Unfettered)" <?= -1000
 		set "Randomize Ancestral Lands: Nova Firefly Swarm"
 	npc
 		government "Hai (Unfettered)"
@@ -932,3 +949,242 @@ mission "Ancestral Lands: Nova Firefly Swarm"
 		set "Randomize Ancestral Lands: Nova Firefly Swarm"
 		payment 150000
 		dialog `The Unfettered pay you <payment> for your assistance.`
+
+
+
+###############################
+# Unfettered Cultists
+###############################
+
+mission "Danger In Darkwaste 1"
+	minor
+	name "Hai Camping Trip"
+	description "Transport Blawi and his camping club to the wilderness world of <destination> for an overnight camping trip."
+	source
+		government Hai
+		not attributes "uninhabited"
+		not planet "Darkwaste"
+	destination "Darkwaste"
+	passengers 3
+	to offer
+		month == 10
+		random < 70
+	on offer
+		conversation
+			`You return from the spaceport to find an old Hai in what looks like hiking gear waiting for you. "Greetings human, would you happen to be the captain of the <ship>?"`
+			choice
+				`	"Yes, Captain <first> <last>, at your service."`
+				`	"Yes, but I'm not taking jobs right now."`
+					goto refused
+			`	"Ah <first> <last> is it? A fine name indeed. My name is Blawi and the camping club I organize has been looking for a captain not susceptible to superstitions. We need transportation to the wilderness world of <destination> for an overnight camping trip, then a return trip to Hai-home. Would you be interested in taking the job? We can pay you 1,000,000 credits for the trouble."`
+			choice
+				`	"A million credits? Sure, no problem!"`
+				`	"What superstitions?"`
+					goto superstitions
+			label end
+			`	"Wonderful1! I'll tell the other club members the great news!"`
+				accept
+			label superstitions
+			scene "planet/rock18"
+			`	"Some Hai captains have weird notions about <planet> being cursed. Some won't even enter the system! Such a bother for camping enthusiasts like myself. So how about it? Would you be able to transport us there and back?"`
+			choice
+				`	"Alright, I'll take you there."`
+					goto end
+				`	"Sorry, not interested."`
+			label refused
+			`	"The camping club members will be so disappointed. At this rate it looks like our camping trip will be cancelled."`
+				decline
+	on accept
+		log "People" "Blawi" `The organizer of a Hai camping club planning an overnight trip to the wilderness world of Darkwaste.`
+
+	on enter "Fah Root"
+		dialog `Several human ships are already in this system. "Other campers," explains Blawi. "Hurry and land before all the good spots are taken!"`
+	npc
+		government "Merchant"
+		system "Fah Root"
+		personality waiting staying uninterested
+		fleet
+			names "civilian"
+			cargo 3
+			commodities "Food" "Equipment" "Medical"
+			variant
+				"Star Queen (Hai)"
+				"Bounder"
+				"Scout (Speedy)"
+				"Shuttle" 2
+
+mission "Danger In Darkwaste 2"
+	landing
+	invisible
+	name "Hai Camping Trip"
+	description "Transport Blawi and his camping club to <destination> after their camping trip."
+	source "Darkwaste"
+	destination "Hai-home"
+	passengers 3
+	to offer
+		has "Danger In Darkwaste 1: done"
+	on offer
+		conversation
+			`As Blawi and the others unpack their things, he asks "Captain <last>, would you like to join us? Sleeping under the stars might be a nice change of pace from sleeping in your ship."`
+			choice
+				`	"Alright. Some fresh air might be refreshing."`
+				`	"No thanks, I'll be fine on the <ship>."`
+					goto end
+			scene "scene/scene-campfire"
+			`	"Don't worry about supplies. We've brought enough to share." The group welcomes you and introduce themselves as they begin their hike into the nearby mountains. After a few hours, you arrive at a place where several other groups have set up tents and campfires. By the time the sun sets Blawi's camping club has their own campfire going.`
+			`	"Let's roast chestnuts!" One of the club members, Hemijo if you remember her name correctly, is holding up a big bag of what are supposedly chestnuts. After she tears it open, Dolewi, a husky Hai who had some trouble during the earlier hike, starts impaling the nuts on barbecue sticks. From their large size and ease with which he pierced them, it's obvious that these aren't the chestnuts from Earth that are sold and distributed throughout human space. Hemijo notices your interest and explains, "Oh <first>! These aren't the chestnuts imported from human space. It's actually a tropical fruit native to Greenbloom's rainforests. We just call them chestnuts because that's what humans say they are reminded of when we roast them."`
+			`	Dolewi soon has some "chestnuts" roasting over the fire and hands one finished stick to you. As they roast, a sweet aroma fills your nostrils.`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Hand it to Hemijo.)`
+			scene "scene/scene-campfire"
+			`	You hand the stick of roasted "chestnuts" to Hemijo and she gladly accepts it. Without hesitation she bites into the still steaming fruit. There are audible wet chewing sounds as some of the juice leaks from the sides of her mouth. "My gosh! It's so good!"`
+			`	"The next one is finished." Dolewi offers the barbecue stick to you.`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Hand it to Blawi.)`
+			scene "scene/scene-campfire"
+			`	You offer the stick of roasted fruit to Blawi, who has just finished setting up a tent. "Thanks <first>!" He bites into the fruit, munching on it as some juice leaks from the corners of his mouth. "Mmm! Tasty! Just what I needed!"`
+			`	"This one is just about done." Dolewi looks at you as he holds out the stick of roasted fruit. "Be careful. It's hot."`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Politely refuse.)`
+			scene "scene/scene-campfire"
+			`	Dolewi shrugs and chomps down the fruit himself. "Mmh!" He sucks in air and grabs a nearby canteen for some water. "It's good but hot!" He takes another bite, wiping the juice running down the sides of his mouth and licks his paws. There's still one stick of uncooked fruit, but Dolewi doesn't seem interested in roasting it.`
+			choice
+				`	(Cook it yourself.)`
+				`	(Get a drink instead.)`
+					goto drink
+				`	(Go for a walk.)`
+					goto walk
+			scene "scene/scene-campfire"
+			`	You pick up the last stick and hold it out over the fire. "Keep it above the flame or you'll burn it," warns Dolewi. After a while you can hear the juices sizzling within. Hot steam wafts up from the roasted fruit when you pull it back from the flames. Its sweet aroma tantalizes your senses. Remembering how Dolewi reacted earlier, you blow on the "chestnut" a few times to let it cool before taking a bite. Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label eat
+			scene "scene/scene-campfire"
+			`	You accept the stick of still sizzling fruit and are about to take a bite when Hemijo yells "Stop!" Blawi and Dolewi are both startled by her exclamation. "Let it cool a bit, you don't want to burn yourself," she explains. The sizzling slows down and you carefully bite into the warm roasted "chestnut". Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label drink
+			scene "scene/scene-campfire"
+			`	You pull a flask of whisky from your pocket and help yourself to a bit of happy juice. What starts with a few sips turns into gulps and you fall asleep holding the empty bottle as Blawi, Hemijo, and Dolewi are all staring at you...`
+			choice
+				`	(The nightmare begins.)`
+			label nightmare
+			scene "scene/scene-bloodyknife"
+			``
+			`THUD.`
+			``
+			`THUD.`
+			``
+			`THUD.`
+			``
+			`	Your head is pounding as you wake up bleary eyed, your mind still wrapped in the murky fog of blissful unconsciousness. After a moment you realize that you've been tied up along with the humans from other camping groups. The Hai campers have gathered all around you, chanting in their native language. You recognize Dolewi beating a drum while Hemijo has joined in the chant. The chanting stops as Blawi stands before you. He yells, "In the name of the true Hai we offer this SACRIFICE TO THE ACORN GOD," before stabbing you in the chest! The Hai cultists cheer as the other human sacrifices look with horror at your last dying moments, knowing they'll soon meet the same fate.`
+				die
+			label walk
+			scene "scene/scene-campfire"
+			`	"I'm going for a walk," you say as you turn to leave.`
+			`	"Don't stray too far," warns Blawi.`
+			`	"Being alone in the dark can be dangerous," suggests Hemijo.`
+			`	You nod, noticing that Dolewi has set up a stew pot over the fire and is sharpening a knife, presumably to cut some vegetables. "Don't stay out too late," he says while staring at you. "It'd be a shame if you missed the main course!"`
+			choice
+				`	(Walk for a bit.)`
+			`	As you put some distance between yourself and the camp, the cold night air instills a craving for the warmth of the campfire. What will you do?`
+			choice
+				`	(Return to camp.)`
+				`	(Snoop around.)`
+					goto snoop
+				`	(Return to the <ship>)`
+					goto ship
+			`	When you return Dolewi is still chopping vegetables, but the last stick of "chestnuts" is available. After your walk in the cold, the thought of eating the warm fruit is impossible to resist and you set about roasting and eating it. Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label snoop
+			`	You make your way to one of the other camps and peek at them from the darkness. This group of Hai campers have begun tying up an unconscious human, probably the ship captain that brought them here. You try to listen to their chatter, but it's in a language you are unfamiliar with. You weren't expecting a fight, so all you have is a pistol.`
+			choice
+				`	(Make a rescue attempt.)`
+				`	(Seek help.)`
+					goto help
+				`	(Slip away into the darkness.)`
+					goto darkness
+			`	You pull your pistol and take aim at the nearest Hai. You're not sure why they've tied up the human but something in your gut tells you that what they're doing is wrong. The Hai are a peaceful people, right? Right?`
+			`	As these thoughts rush through your mind someone clobbers you on the back of the head...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label help
+			scene "scene/scene-bloodyknife"
+			`	You rush back to Blawi's camp to seek help. "Some of the other campers have taken a human hostage!"`
+			`	"Now calm down <first> and show us where," replies Blawi.`
+			`	"This way!" You turn towards the other Hai camp when you feel a sharp pain in your back and abdomen. Startled, you realize the tip of Dolewi's cooking knife is protruding from your belly!`
+			`	"Now's as good a time as any," mutters Blawi before screaming, "In the name of the true Hai we offer this SACRIFICE TO THE ACORN GOD!" You slump to the ground in pain as the Hai cultists begin butchering you...`
+				die
+			label darkness
+			`	You slip away into the darkness before anyone notices your presence. Checking the other camp sites, similar situations are unfolding as the Hai tie up their human guests. In the distance, you can hear a steady drum beat. The Hai begin chanting in their native language as they carry off the human captives toward the sound. Blawi and the others might have intended to do the same thing to you. Could this be some sort of cult?`
+			choice
+				`	(Head towards the sound of the drums.)`
+				`	(Return to your ship and escape from Darkwaste.)`
+					goto escape
+			`	The sound of the drums reverberates through your bones as you get closer. Suddenly, you hear Hai chittering in their native language nearby! You see a blur as something rushes through the darkness and knocks you out...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label escape
+			`	You rush back to the <ship> and begin an emergency take off. You're not sure what's going to happen to the captured humans, but someone needs to report this to the Hai authorities. Rising above Darkwaste, the orange lights of their campfires glow like the eyes of demons in the dark...`
+				flee
+			label ship
+			`	It's a long walk to get back to the <ship>. After getting in you set the environmental controls to warm the interior and grab some canned slop from the supply chest to fill your empty belly. As you settle into your bunk for a relaxing sleep you wonder if the campers are enjoying themselves.`
+			``
+			`	The following day, Blawi and the others return to the <ship>. "You had us worried <first>. I'm glad you're okay, but that was a very selfish thing you did!" They finish stowing away their gear and are ready to head to <destination>.`
+				accept
+			label end
+			`	"Suit yourself." Blawi seems disappointed as he joins the other campers. You watch them hike towards the mountains. As the sun sets you can see them lighting their campfires, mere specks of orange light, far in the distance.`
+			``
+			`	The following day, Blawi and the others return to the <ship>, ready to go to <destination>. They seem more relaxed after enjoying their camping trip.`
+				accept
+	on enter
+		dialog `The other human captains seem to still be parked on Darkwaste. Maybe they slept in...`
+	on decline
+		log "People" "Blawi" `Blawi seems to be involved in some sort of Hai cult.`
+		log "Blawi and the other Darkwaste campers may actually be cultists. During their camping trip they kidnapped humans and seemed to be preparing for some kind of ritual."
+
+	on complete
+		payment 1000000
+		conversation
+			scene "effect/blood"
+			`	After landing Blawi and his companions thank you for making the trip possible and hand over credit chips worth <payment>. That's a lot to be carrying around. After they're gone you notice a dark stain where Blawi had stored his gear. When you try wiping it away the wash cloth smears red, as if stained with blood...`
+
+mission "Danger In Darkwaste Escape Epilogue"
+	landing
+	invisible
+	source
+		government Hai
+		attributes spaceport
+		not attributes "uninhabited"
+		not planet "Darkwaste"
+	to offer
+		has "Danger In Darkwaste 2: declined"
+	on offer
+		conversation
+			scene "scene/scene-campfire"
+			`Do you want to tell the Hai authorities about your experience with Blawi's camping club on Darkwaste?`
+			choice
+				`	(Report the situation to the authorities.)`
+				`	(Not yet.)`
+					defer
+			scene "outfit/bloodstone"
+			`You find the spaceport authorities and report your tale of suspected Hai cultists and human hostages.`
+			`	"That's just a conspiracy theory," exclaims one of the officers on duty. "Stop wasting our time or I'll have you arrested for interfering with Hai police operations!"`
+			`	You are about to leave when a Hai prisoner being processed yells out to you, "The cultists are real! Look for the Quantum Bloodstones!" The Hai police struggle to keep the prisoner under control, finally stunning him with a Pulse Pistol. They drag his unconscious form off to their detention facility. The officer who shot him comments, "Don't listen that criminal. He'd say anything to cause a disruption and escape."`
+				decline
+	on decline
+		event "add quantum bloodstones"
+		log "The authorities claim the existance of the Hai cultists is nothing more than a conspiracy theory. A Hai criminal claims that the Hai cultists are real and that they are associated with Quantum Bloodstones."
+
