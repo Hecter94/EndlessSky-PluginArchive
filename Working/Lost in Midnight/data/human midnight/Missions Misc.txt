@@ -19,7 +19,7 @@ mission "Biohazard 1: Star Explorer"
 		attributes "north"
 		not attributes "uninhabited"
 	to offer
-		has "event: star explorer fleet update"
+		has "event: star explorer update"
 		"combat rating" > 300
 		or
 			and
@@ -80,6 +80,112 @@ mission "Biohazard 1: Star Explorer"
 			scene "scene/scene-biohazard031"
 			`Although you failed to rescue any of the victims, the government of <planet> pays you <payment>. You managed to stop the Biohazard from kidnapping any more people for their twisted experiments. But some details about this mission linger. The crew of the Biohazard didn't seem like normal pirates. The uniforms were too professional. And the antipersonnel weapons they carried require specialized ammunition. But most concerning of all was the "031" appended to the ship's name. It seems to suggest that there are other Biohazard ships out there...`
 
+phrase "slave drones"
+	word
+		"Slave-"
+	phrase
+		"digit"
+	phrase
+		"digit"
+
+mission "Biohazard 2: Bulk Freighter"
+	minor
+	name "Biohazard-013"
+	description "A ship named Biohazard-013 seems to be freeing slaves from pirate slavers in the core. Find the ship and rescue any slaves on board. Then return to <planet> for payment (<payment>)."
+	source
+		attributes "core pirate"
+		not attributes "uninhabited"
+	to offer
+		has "Biohazard 1: Star Explorer: done"
+		has "main plot completed"
+		"combat rating" > 600
+		or
+			and
+				not "Randomize Star Explorer Biohazard"
+				random < 70
+			and
+				has "Randomize Star Explorer Biohazard"
+				random < 5
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Several odd flyers are posted around the spaceport:`
+			``
+			`"Don't be fooled by strangers offering freedom from slavery! It's just a trick from rival pirates!"`
+			``
+			`"My favorite slave was kidnapped! Reward of 1,000 credits for her safe return. Contact Cygnet on Deadman's Cove for more details."`
+			``
+			`"Is your master mistreating you? Contact us for a better tomorrow!"`
+			``
+			`The intricacies of rival pirate slavers normally wouldn't catch your attention, but the job board has something interesting:`
+			choice
+				`	(Read the job posting.)`
+			scene "outfit/attention"
+			`Wanted: A pirate ship named Biohazard-013 working for an unknown group is suspected of liberating slaves. Find them and retrieve any stolen slaves found onboard. Show no mercy to the ship's crew. Payment is <payment>.`
+			``
+			scene "scene/scene-biohazard031"
+			`	A ship that liberates slaves may seem heroic, but the name of the ship evokes horrible memories of another ship with a similar name you've encountered in the past.`
+			choice
+				`	(Take the job to hunt down the Biohazard-013.)`
+				`	(Ignore this.)`
+					decline
+			`	If this ship is anything like the previous Biohazard you encountered, the missing slaves could have been harvested for some horrible experiment.`
+				accept
+	on defer
+		set "Randomize Star Explorer Biohazard"
+	on enter Atik
+		conversation
+			scene "thumbnail/bulk freighter"
+			`You find the Biohazard-013 lurking in this system with several Headhunters escorting it. The freighter hails you: "You were responsible for the incident with BH-031. You will not be permitted to interfere with our operation."`
+			`	Suddenly, the Biohazard releases a cloud of drones that move to attack!`
+	npc
+		government "Bounty"
+		system Atik
+		personality target waiting staying
+			confusion 20
+		fleet
+			names "bounty hunter"
+			cargo 0
+			variant
+				"Headhunter"
+				"Headhunter (Particle)"
+				"Headhunter (Strike)"
+	npc
+		government "Bounty"
+		system Atik
+		personality target waiting staying
+			confusion 20
+		fleet
+			names "slave drones"
+			cargo 0
+			variant
+				"Pirate Drone" 6
+				"Pirate Drone (Modified)" 6
+	npc board
+		government "Bounty"
+		system Atik
+		personality target waiting staying mute
+			confusion 10
+		ship "Bulk Freighter (Biohazard)" "Biohazard-013"
+		conversation
+			scene "outfit/brig"
+			`When you board the ship, no defenders challenge you. The ship is eerily quiet. Your search for the kidnapped victims leads you to the ships brig. But no one is being held here.`
+			choice
+				`	(Continue your search.)`
+			scene "outfit/pug biodefenses"
+			`	You find a relic of the Pug invasion on board. Nearby is a shelf with empty cannisters that are designed to be attached to the Pug Biodefenses and filled with its gas. Several spots on the shelf are empty...`
+			choice
+				`	(Continue your search.)`
+			scene "outfit/cargo expansion"
+			`	The cargo bay is stuffed with dead slaves. They appear to have died from exposure to the Pug Biodefenses. Perhaps this ship was focused on bio weapons experiments. The vents begin to hiss as gas from the Biodefenses flows in... The crew must still be controlling it from elsewhere on the ship. You exit the cargo bay and plan your next move.`
+	on fail
+		dialog "[MISSION FAILED]: You were supposed to retrieve the stolen slaves before destroying the Biohazard-013. If life were a game, you could reload a save file and try again."
+	on complete
+		payment 300000
+		log `Found a ship named "Biohazard-013". This one was kidnapping slaves from pirate slavers and using them for bioweapons experimentation. I put a stop to this operation, earning the gratitude of the pirate slavers. Whether this was a fate worse for the slaves or not is a debate too lengthy to include here.`
+		conversation
+			scene "outfit/biohazard gas"
+			`Although you failed to retrieve any of the stolen slaves, the Biohazard-013 has stopped stealing them from the pirate slavers. The pirates reward you with <payment>. The strange cannisters you spotted aboard the ship could be deadlier than Nerve Gas. Hopefully no other ships were developing this weapon.`
 
 
 
@@ -1329,7 +1435,7 @@ mission "Star Explorer Korath Raid"
 		attributes "core"
 	destination Earth
 	to offer
-		has "event: star explorer fleet update"
+		has "event: star explorer update"
 	on offer
 		require "Jump Drive"
 	on enter "Kor Ak'Mari"
@@ -2079,7 +2185,14 @@ mission "Quash: Humanika Infiltration 2"
 	on decline
 		"rejected illegal jobs" ++
 	on accept
-		"reputation: Quarg" <?= -1
+		"stored reputation: Quarg" = "reputation: Quarg"
+		"reputation: Quarg" <?= -10
+		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
+		"reputation: Quarg (Hai)" <?= -10
+		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Kor Efret)" <?= -10
+		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
+		"reputation: Quarg (Gegno)" <?= -10
 	on enter
 		conversation
 			`You can hear Commander muttering to himself,"'It'll be easy,' it said. 'You're the best,' it said. I never should have trusted that damn Quarg..."`
@@ -2094,9 +2207,12 @@ mission "Quash: Humanika Infiltration 2"
 			names "quarg"
 			cargo 10
 			variant
-				"Quarg Wardragon"
+				"Quarg Wardragon (Scanner)"
 	on complete
-		"reputation: Quarg" >?= 1
+		"reputation: Quarg" >?= "stored reputation: Quarg"
+		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
+		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
 		"getaway driver" ++
 		payment 100000
 		outfit "Sniper Rifle" 1
@@ -2104,6 +2220,19 @@ mission "Quash: Humanika Infiltration 2"
 		conversation
 			scene "outfit/sniper rifle"
 			`When you land, Commander hands over <payment>. "Sorry it's not what we agreed on, but the others were each responsible for paying a portion of it. Now that they're..." He hesitates a moment, then hands over the Sniper Rifle. "I guess you could also try selling this. That's the best I can offer." He departs, never explaining anything about what happened on Humanika or the mysterious Quarg he was cursing.`
+
+mission "Quash: Humanika Infiltration 2 Patch"
+	landing
+	invisible
+	to offer
+		has "Quash: Humanika Infiltration 2: done"
+		not "Cartography: Quarg Hitchhiker 5: offered"
+	on offer
+		"reputation: Quarg" >?= 1
+		"reputation: Quarg (Hai)" >?= 1
+		"reputation: Quarg (Kor Efret)" >?= 1
+		"reputation: Quarg (Gegno)" >?= 1
+		fail
 
 
 

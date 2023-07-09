@@ -18,7 +18,7 @@
 mission "Midnight Phoenix Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Phoenix Station"
 	to offer
@@ -260,7 +260,7 @@ event "phoenix station defense job success"
 mission "Midnight Triton Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Triton Station"
 	to offer
@@ -275,7 +275,7 @@ mission "Midnight Triton Station Defense Job"
 				random < 50
 			and
 				has "Midnight Triton Station Defense Job: done"
-				random < 5
+				random < 10
 	on accept
 		event "triton station defense job"
 		dialog "The attack is expected to begin soon. Finish your final preparations before joining the defense fleet in orbit. Be aware that you won't have the opportunity to land on the station during the battle."
@@ -503,7 +503,7 @@ event "triton station ammo outfitter"
 mission "Midnight Fenrir Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Fenrir Station"
 	to offer
@@ -745,11 +745,10 @@ event "fenrir station advanced fuel outfitter"
 mission "Midnight Typhon Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Typhon Station"
 	to offer
-		has "war begins"
 		or
 			"combat rating" > 8000
 			and
@@ -895,6 +894,18 @@ mission "Midnight Typhon Station Defense Job"
 			variant
 				"Bastion (Tanker)"
 	npc accompany save
+		to spawn
+			not "war begins"
+		government "Republic"
+		personality target launching staying timid opportunistic
+			confusion 30
+		"cargo settings"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+		ship "Typhon Station" "Typhon"
+	npc accompany save
+		to spawn
+			has "war begins"
 		government "Free Worlds"
 		personality target launching staying timid opportunistic
 			confusion 30
@@ -993,7 +1004,7 @@ event "typhon station advanced fuel outfitter"
 mission "Midnight Oberon Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Oberon Station"
 	to offer
@@ -1239,7 +1250,7 @@ event "oberon station advanced fuel outfitter"
 mission "Midnight Leviathan Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Leviathan Station"
 	to offer
@@ -1481,7 +1492,7 @@ event "leviathan station advanced fuel outfitter"
 mission "Midnight Alexandria Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source Alexandria
 	to offer
@@ -1656,16 +1667,25 @@ mission "Midnight Alexandria Station Defense Job"
 				`	(Request a piece of super secret tech.)`
 				`	(Just accept the credits.)`
 					goto credits
+			scene "outfit/pug maretar thruster"
+			`	They were expecting your request. In the next room they already prepared something to share with you, likely chosen due to your involvement with the recent Pug incident at Deneb: a set of Pug engines larger than any you've seen before. If you don't have 202 tons of engine outfit or cargo space on your ship, you won't be able to take them off the station...`
+			choice
+				`	"I'll take them, but where did you get these?"`
+				`	"I'm not sure I can fit these on my ship!"`
+					goto hold
 			action
 				outfit "Pug Maretar Thruster"
 				outfit "Pug Maretar Steering"
 				"reputation: Republic" += 100
-			scene "outfit/pug maretar thruster"
-			`	They were expecting your request. In the next room they already prepared something to share with you, likely chosen due to your involvement with the recent Pug incident at Deneb: a set of Pug engines larger than any you've seen before.`
-			choice
-				`	"Where did you get these?"`
 			scene "outfit/pug maretar steering"
 			`	"We are willing to share this set of Maretar engines with you, but their origins are a secret we're not allowed to divulge." They probably had to pull a lot of strings just to even share these engines with you. It's probably best not to press the issue any farther.`
+				accept
+			label hold
+			action
+				set "alexandria station maretar hold"
+				"reputation: Republic" += 100
+			scene "outfit/pug maretar steering"
+			`	"That's understandable. They are rather large. We'll hold onto them until you return with 202 tons of available cargo space."`
 				accept
 			label credits
 			action
@@ -1721,16 +1741,41 @@ event "alexandria station defense job success"
 		remove attributes uninhabited
 		government clear
 
+mission "Midnight Alexandria Station Maretar Hold"
+	landing
+	invisible
+	source Alexandria
+	cargo "reserved" 202
+	to offer
+		has "alexandria station maretar hold"
+	on offer
+		conversation
+			scene "outfit/pug maretar thruster"
+			`	You have returned with 202 tons of space in your cargo hold. If they aren't split among multiple ships, this should be enough to carry the Pug engines that the administrators of <origin> have been holding for you. Load them now?`
+			choice
+				`	(Take the engines now.)`
+				`	(Leave them for next time.)`
+					defer
+			scene "outfit/unknown"
+			`	As they load the engines into your cargo bay, a question comes to mind:`
+			choice
+				`	"Where did you get these?"`
+			action
+				outfit "Pug Maretar Thruster"
+				outfit "Pug Maretar Steering"
+				clear "alexandria station maretar hold"
+			scene "outfit/pug maretar steering"
+			`	"We are willing to share this set of Maretar engines with you, but their origins are a secret we're not allowed to divulge." They probably had to pull a lot of strings just to even share these engines with you. It's probably best not to press the issue any farther.`
+				decline
 
 
 mission "Midnight Wyvern Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Wyvern Station"
 	to offer
-		has "war begins"
 		or
 			"combat rating" > 8000
 			and
@@ -1871,6 +1916,18 @@ mission "Midnight Wyvern Station Defense Job"
 			confusion 10
 		fleet "Small Militia"
 	npc accompany save
+		to spawn
+			not "war begins"
+		government "Republic"
+		personality target launching staying timid opportunistic
+			confusion 30
+		"cargo settings"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+		ship "Wyvern Station" "Wyvern"
+	npc accompany save
+		to spawn
+			has "war begins"
 		government "Free Worlds"
 		personality target launching staying timid opportunistic
 			confusion 30
@@ -1969,7 +2026,7 @@ event "wyvern station advanced fuel outfitter"
 mission "Midnight Carbuncle Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source Pilot
 	destination "Carbuncle Station"
@@ -2213,7 +2270,7 @@ event "carbuncle station lovelace laboratory outfitter"
 mission "Midnight Kraken Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Kraken Station"
 	to offer
@@ -2474,7 +2531,7 @@ event "kraken station advanced fuel outfitter"
 mission "Midnight Arachne Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Arachne Station"
 	to offer
@@ -2748,7 +2805,7 @@ event "arachne station tarazed laboratory outfitter"
 mission "Midnight Muninn Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Muninn Station"
 	to offer
@@ -2763,7 +2820,7 @@ mission "Midnight Muninn Station Defense Job"
 				random < 50
 			and
 				has "Midnight Muninn Station Defense Job: done"
-				random < 5
+				random < 15
 	on accept
 		event "muninn station defense job"
 		dialog "The attack is expected to begin soon. Finish your final preparations before joining the defense fleet in orbit. Be aware that you won't have the opportunity to land on the station during the battle."
@@ -2773,7 +2830,7 @@ mission "Midnight Muninn Station Defense Job"
 			``
 			scene "planet/station16"
 			`	As you wait, an emergency message from Huginn Station is sent out on an open channel to anyone able to receive it: "Huginn Station has been hijacked by pirates! I repeat, Huginn Station has been hijack-" The message cuts off.`
-			`	The station commander from Muninn Station sends out new orders: "Disable Huginn Station. I expect both stations to be intact after this battle!" This job just got a whole lot harder...`
+			`	The station commander from Muninn Station sends out new orders: "Disable Huginn Station, but leave recapturing it to us. I expect both stations to be intact after this battle!" This job just got a whole lot harder...`
 	npc disable
 		government "Pirate"
 		personality target entering plunders harvests heroic
@@ -3038,11 +3095,10 @@ event "muninn station ammo outfitter"
 mission "Midnight Hydra Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Hydra Station"
 	to offer
-		has "event: war begins"
 		or
 			"combat rating" > 8000
 			and
@@ -3186,6 +3242,18 @@ mission "Midnight Hydra Station Defense Job"
 			confusion 10
 		fleet "Small Militia"
 	npc assist accompany save
+		to spawn
+			not "war begins"
+		government "Republic"
+		personality target waiting derelict staying timid opportunistic
+			confusion 30
+		"cargo settings"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+		ship "Hydra Station" "Hydra"
+	npc assist accompany save
+		to spawn
+			has "war begins"
 		government "Free Worlds"
 		personality target waiting derelict staying timid opportunistic
 			confusion 30
@@ -3284,11 +3352,10 @@ event "hydra station advanced fuel outfitter"
 mission "Midnight Charon Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Charon Station"
 	to offer
-		has "war begins"
 		or
 			"combat rating" > 8000
 			and
@@ -3429,6 +3496,18 @@ mission "Midnight Charon Station Defense Job"
 			confusion 10
 		fleet "Small Militia"
 	npc accompany save
+		to spawn
+			not "war begins"
+		government "Republic"
+		personality target launching staying timid opportunistic
+			confusion 30
+		"cargo settings"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+		ship "Charon Station" "Charon"
+	npc accompany save
+		to spawn
+			has "war begins"
 		government "Free Worlds"
 		personality target launching staying timid opportunistic
 			confusion 30
@@ -3527,7 +3606,7 @@ event "charon station advanced fuel outfitter"
 mission "Midnight Smuggler's Den Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Smuggler's Den"
 	to offer
@@ -3777,7 +3856,7 @@ event "smuggler's den station marauder basics shipyard"
 mission "Midnight Charybdis Station Defense Job"
 	job
 	autosave
-	name "<planet> Defense"
+	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Charybdis Station"
 	to offer

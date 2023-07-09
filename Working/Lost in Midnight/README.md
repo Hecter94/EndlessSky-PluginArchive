@@ -41,4 +41,5 @@ Some highlights:
 - comets
 - Pug reinforcements armed with new technology
 - three Skeleton Keys to unlock a hidden treasure
+- space station defense jobs
 

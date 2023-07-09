@@ -1,0 +1,861 @@
+# Copyright (c) 2023 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Vault Weapon Pulse Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government Republic
+	to offer
+		"combat rating" < 8000
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/gunboat"
+			`The crew of a Navy Gunboat is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Seeds of Sin, which has been known to operate in the area. Your orders are to capture this ship and recover the stolen weapon."`
+			`	"SIR, YES SIR!" They accept their orders and board their ship. If you find the Seeds of Sin before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Seeds of Sin.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Gunboat" "Congo"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Firebird (Pulse Rifle)" "Seeds of Sin"
+		conversation
+			action
+				set "Vault Weapon Level 1"
+				fail "Vault Weapon Pulse Rifle"
+			scene "outfit/hai rifle"
+			`The pirate captain wielded an exotic rifle... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Ion Pulse Shotgun"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		attributes "north pirate"
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "thumbnail/mleviathans"
+			`You see two pirates arguing. "I lost half my crew tring to board that Leviathan! You didn't tell me that the captain of the Seeds of Doom has some exotic weapon stolen from Farpoint's evidence vault!" The other pirate tries to apologize to the first, but they end up in a vicious knife fight. It sounds like the Seeds of Doom has some interesting plunder.`
+			choice
+				`	(Try to find the Seeds of Doom.)`
+				`	(Ignore this opportunity.)`
+					decline
+			`	The first pirate is wounded, but alive. The other one is dead. Without medical attention, the first one will bleed out...`
+			choice
+				`	"Tell me how to find the Seeds of Doom if you want to live."`
+			`	"It should be operating in the nearby systems..." As you hand him a med kit he adds, "If you're going after them, good luck. The captain has some sort of weird alien shotgun."`
+				accept
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 2
+		personality target waiting staying timid vindictive
+		ship "Marauder Leviathan (Ion Pulse Shotgun)" "Seeds of Doom"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Ion Pulse Shotgun"
+			scene "outfit/ion pulse shotgun"
+			`The pirate captain wielded an exotic shotgun... This must be another weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Tuning Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government Republic
+	to offer
+		"combat rating" < 8000
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/rainmaker"
+			`The crew of a Navy Rainmaker is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Grim Shadow, which has been known to operate in the area. Your orders are to capture this ship and recover the stolen weapon."`
+			`	"SIR, YES SIR!" They accept their orders and board their ship. If you find the Grim Shadow before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Grim Shadow.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Gunboat" "Euphrates"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Raven (Tuning Rifle)" "Grim Shadow"
+		conversation
+			action
+				set "Vault Weapon Level 1"
+				fail "Vault Weapon Tuning Rifle"
+			scene "outfit/remnant rifle"
+			`The pirate captain wielded an exotic rifle... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Reverberator Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		attributes "south pirate"
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`An information broker approaches you. "I have a hot tip on one of the exotic weapons stolen from Farpoint's evidence vault. Only 500,000 credits. Interested?"`
+			choice
+				`	(Buy the info.)`
+				`	(Ignore this opportunity.)`
+					decline
+			scene "thumbnail/mfalcons"
+			`	The info broker pockets your payment and says, "The captain of the Grim Darkness has it. It's a Marauder Falcon that ambushes merchant ships passing through Ildaria."`
+				accept
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system Ildaria
+		personality target waiting staying timid vindictive
+		ship "Marauder Falcon (Reverberator Rifle)" "Grim Darkness"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Reverberator Rifle"
+			scene "outfit/reverberator rifle"
+			`The pirate captain wielded an exotic rifle... This must be another weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Thermal Repeater Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government Syndicate
+	to offer
+		"combat rating" < 8000
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/quicksilver"
+			`The crew of a Syndicate Quicksilver is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Burning Skull, which has been known to operate in the area. The crew that captures this ship and recovers the stolen weapon can expect bonus pay with their next scheduled credit deposit."`
+			`	"Aye!" They accept their orders and board their ship. If you find the Burning Skull before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Burning Skull.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Quicksilver" "S-13A2"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Splinter (Thermal Repeater Rifle)" "Burning Skull"
+		conversation
+			action
+				set "Vault Weapon Level 1"
+				fail "Vault Weapon Thermal Repeater Rifle"
+			scene "outfit/korath rifle"
+			`The pirate captain wielded an exotic rifle... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Meltdown Cannon"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		attributes "core pirate"
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "scene/scene-explosion"
+			`A nearby explosion sends people running in the opposite direction. Someone asks what's going on and another responds, "The captain of the Melting Point just hit a rival gang! Ever since he got ahold of that weapon stolen from Farpoint's evidence vault, he's been throwing his weight around." The Melting Point seems to have something worth plundering...`
+			choice
+				`	(Chase after the Melting Point.)`
+				`	(Ignore this opportunity.)`
+					decline
+			`	The Melting Point may still be nearby...`
+				accept
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Vanguard (Meltdown Cannon)" "Melting Point"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Meltdown Cannon"
+			scene "outfit/meltdown cannon"
+			`The pirate captain wielded an exotic cannon... This must be another weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Enforcer Confrontation Gear"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government "Free Worlds"
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "thumbnail/osprey"
+			`The crew of a Militia Osprey is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Chaos Weaver, which has been known to operate in the area. Your orders are to capture this ship and recover the stolen weapon."`
+			`	"Yes sir!" They accept their orders and board their ship. If you find the Chaos Weaver before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Chaos Weaver.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Osprey" "I.M.S. Sassafras"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Falcon (Enforcer Confrontation Gear)" "Chaos Weaver"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Enforcer Confrontation Gear"
+			scene "outfit/enforcer confrontation gear"
+			`The pirate captain wielded an exotic weapon... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
+mission "Vault Weapon Lasher Pistol"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government Syndicate
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "thumbnail/quicksilver"
+			`The crew of a Syndicate Quicksilver is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Hell Scourge, which has been known to operate in the area. The crew that captures this ship and recovers the stolen weapon can expect bonus pay with their next scheduled credit deposit."`
+			`	"Aye!" They accept their orders and board their ship. If you find the Hell Scourge before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Hell Scourge.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Quicksilver" "S-21A3"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Protector (Lasher Pistol)" "Hell Scourge"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Lasher Pistol"
+			scene "outfit/lasher pistol"
+			`The pirate captain wielded an exotic pistol... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
+
+
+mission "Vault Weapon Quash 1"
+	minor
+	name "Navy Request"
+	description "The Navy requests your assistance with a sensitive matter. Report to Farpoint for more details."
+	source
+		government "Free Worlds"
+	destination Farpoint
+	to offer
+		has "free worlds plot completed"
+		has "Vault Weapon Level 2"
+		random < 20
+		or
+			not "Cartography: Quarg Hitchhiker 1: offered"
+			has "Cartography: Quarg Hitchhiker 7: declined"
+			has "quash dead?"
+	on offer
+		clear "Vault Weapon Level 1"
+		clear "Vault Weapon Level 2"
+		conversation
+			scene "outfit/attention"
+			`You're about to leave the spaceport bar when a Free Worlds officer stops you. She breathlessly exclaims, "Captain <first> <last>, I finally found you!" as she hands over an encrypted data chip.`
+			choice
+				`	"What's the emergency?"`
+				`	(Salute.)`
+					goto salute
+			`	"Sorry, I wasn't told what the contents on the chip are. I only know it's top secret!"`	
+				goto end
+			label salute
+			`	You give the officer a salute and she salutes back.`
+			label end
+			``
+			scene "planet/forest0-b"
+			`	After returning to the <ship>, you find a message from Alondo. "Hello <first>. We received a request from Republic Navy Intelligence asking for your assistance with a sensitive matter on <destination>. In the interest of maintaining good relations with the Republic, the Free Worlds would like you to go there and help in any way that you can." It seems you have a long trip ahead of you.`
+				accept
+
+mission "Vault Weapon Quash 2"
+	landing
+	name "Stolen Quarg Weapons"
+	description "Two Quarg weapons were among the items stolen from Farpoint's evidence vault. Search the pirate systems for them."
+	source Farpoint
+	to offer
+		has "Vault Weapon Quash 1: done"
+	on offer
+		conversation
+			`You are lead to an underground interrogation room where a familiar face awaits. "Welcome Captain <last>, I've been expecting you." You never thought you'd meet Raven again. "Our operatives have determined that you successfully recovered some of the weapons that were stolen from this facility's evidence vault."`
+			choice
+				`	"Just lucky to be in the right place at the right time."`
+				`	"How has your own search fared?"`
+					goto recovery
+			`	"We are hoping you could put that luck to work for us."`
+			choice
+				`	"What do you mean by that?"`
+				`	"Your own search hasn't fared well?"`
+			label recovery
+			`	"While we managed to find the collaborator who made the heist possible, the Republic's own recovery efforts have not been as productive. And so we've decided to reach out to you for assistance. Specifically, for two Quarg weapons that are of particular interest." She shows you data on them: a Quantum Phase Pistol and a Graviton Generator. "As you can see, the power of these weapons far exceeds the ones you've retrieved so far. And that doesn't even begin to address the diplomatic issue that could arise if the Quarg find out we've been keeping them here."`
+			label questions
+			choice
+				`	"How did the Navy get their hands on these?"`
+					goto how
+				`	"What can you tell me about the Quantum Phase Pistol?"`
+					goto pistol
+				`	"What can you tell me about the Graviton Generator more dangerous?"`
+					goto graviton
+				`	"What diplomatic concerns are there with the Quarg?"`
+					goto diplomatic
+				`	"What's in it for me if I help you?"`
+					goto reward
+				`	"Alright, I'll help track down these weapons."`
+			`	"Thank you for agreeing to help. I wish you luck in your search. Remember, the existence of these weapons is top secret. Take care not to mention them in any communications."`
+				accept
+			label how
+			`	"Like the other exotic stolen weapons, they were confiscated from pirates during the early days of the Republic. The pirates claimed that these weapons were sold to them by a rogue Quarg named..." She pauses to look through some notes. "Quiche? That must be a typo. Well, I suppose that's not important. These events took place centuries ago and likely have no bearing on the current situation."`
+				goto questions
+			label pistol
+			scene "outfit/graviton generator"
+			`	"The data indicates that once this weapon locks onto a target, projectiles fired will home in on their target, phasing though any matter blocking its path. Very suitable for assassinations."`
+				goto questions
+			label graviton
+			scene "outfit/graviton generator"
+			`	"This device creates miniature black holes. A personal weapon of mass destruction is not to be taken lightly."`
+				goto questions
+			label diplomatic
+			`	"The Quarg do not approve of humans using their technology. There are unconfirmed reports of Quarg using violence against humans violating this taboo."`
+				goto questions
+			label reward
+			`	"We are willing to overlook the other stolen weapons that have found their way into your posession..."`
+				goto questions
+	to complete
+		never
+
+mission "Vault Weapon Quash 3"
+	landing
+	name "Assassination Plot"
+	description "Stop an assassin from killing his target on <destination> by <date>. He may be armed with one of the weapons stolen from the Farpoint evidence vault."
+	deadline
+	source
+		attributes "core pirate"
+		not attributes "uninhabited"
+	destination Earth
+	to offer
+		has "Vault Weapon Quash 2: active"
+	on offer
+		fail "Vault Weapon Quash 2"
+		conversation
+			`The job board has an interesting post: "Assassination job. Target, Alastair Korban, former Syndicate CEO. He will be attending a political rally on Earth." Looking into the details, it seems this job was already accepted. The assassination will be taking place soon. You have until <date> to stop it. The security at the event should be intense. Either the assassin has incredible skill or might have the benefit of some exotic weapon...`
+				accept
+	on enter Sol
+		dialog `Even though Korban resigned as the Syndicate CEO, he must have been granted the use of an Executive Guard as part of his severance.`
+	npc
+		government "Syndicate"
+		system Sol
+		personality waiting staying heroic uninterested
+		ship "Barb (Proton)" "F-001"
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"
+	npc save
+		government "Syndicate"
+		system Sol
+		personality waiting staying uninterested
+		ship "Executive Guard" "S.S. Praefectus"
+	on fail
+		conversation
+			scene "outfit/attention"
+			`[MISSION FAILED] You drew attention to yourself by attacking Korban's ship! As security focuses on you, the assassin kills Alastair during the confusion... If life were a game, you could reload a save file and try again.`
+
+mission "Vault Weapon Quash 4"
+	landing
+	name "Covert"
+	description "The Covert mining cartel was probably behind the assassination plot. Head to <destination> to investigate."
+	source Earth
+	destination Covert
+	to offer
+		has "Vault Weapon Quash 3: done"
+	on offer
+		conversation
+			`Orban is scheduled to attend a rally being held at a plaza. It's some sort of historical site, with buildings over 1,000 years old. The crowd is already large. Nearby is a bridge and a library.`
+			label search
+			choice
+				`	(Check the crowd.)`
+				`	(Check the bridge.)`
+					goto bridge
+				`	(Check the library.)`
+					goto library
+				`	(Survey the area from a grassy knoll.)`
+					to display
+						has "vaultwpnquashcrowd"
+						has "vaultwpnquashbridge"
+						has "vaultwpnquashlibrary"
+					goto knoll
+
+			branch crowd2
+				has "vaultwpnquashcrowd"
+			action
+				set "vaultwpnquashcrowd"
+			`	The candidate this rally supports hasn't arrived yet, but there are already thousands of people here. Korban is nowhere to be seen, but a VIP like him may be part of the candidate's entourage. Any of these people could be the assassin. You need a better vantage point...`
+				goto search
+			label crowd2
+			`	The crowd is even thicker now. Any of these people could be the assassin. You need a better vantage point...`
+				goto search
+
+			label bridge
+			branch bridge2
+				has "vaultwpnquashbridge"
+			action
+				set "vaultwpnquashbridge"
+			`	While nearby, the bridge is some distance away from the stage where the candidate and his entourage will be standing. But it's difficult the hide here. A sniper would using the bridge would be easy to spot. No one else is here at the moment.`
+				goto search
+			label bridge2
+			`	When you return to the bridge, onlookers have gathered on the side facing the plaza. None of them appear to be armed.`
+				goto search
+			
+			label library
+			action
+				set "vaultwpnquashlibrary"
+			`	The library is a tall building. Several dark windows face the plaza. A sniper could be hiding in any one of them. The door is locked...`
+				goto search
+			label knoll
+			action
+				clear "vaultwpnquashcrowd"
+				clear "vaultwpnquashbridge"
+				clear "vaultwpnquashlibrary"
+			`	You've spent hours searching the area with nothing to show for it. Standing on a grassy knoll, you are surrounded by onlookers who arrived too late to get closer to the stage. The candidate's entourage has arrived and Korban is among them.`
+			choice
+				`	(Look at the crowd.)`
+				`	(Look at the bridge.)`
+				`	(Look at the library.)`
+					goto library2
+			`	While you are trying to find the assassin, an energy blast flies down from one of the library windows and kills Korban! Security returns fire as the crowd panics and starts stampeding! Some are running in your direction and you are knocked down by the rushing throngs. You try to get back up but thousands of feet are bludgeoning you to death. Your search ends here...`
+				die
+			label library2
+			`	You spot some movement in the upper windows...`
+			choice
+				`	(Shoot at the window.)`
+					goto shoot
+				`	(Rush over to the building.)`
+			`	You start running but you don't make it in time. An energy blast flies down from the library window and kills Korban! Security returns fire as the crowd panics and starts stampeding! Some are running in your direction and you are knocked down by the rushing throngs. You try to get back up but thousands of feet are bludgeoning you to death. Your search ends here...`
+				die
+			label shoot
+			`	You aim a shot at the window and fire! The crowd screams and runs away from you. Security has their own guns out, but realizing you weren't aiming at the stage, makes no move to return fire. Korban sees you and nods. You quickly run towards the library, finding the door unlocked. Stepping into the building, you run into the shooter!`
+			choice
+				`	(Do this karate move I saw in a video one time.)`
+				`	(Just shoot him.)`
+					goto shoot2
+			scene "outfit/quantum phase pistol"
+			`	Before you can get into a proper stance, the assassin fires with the Quantum Phase Pistol. You react by diving behind a book case, but the energy bolt phases through the shelf and slams into you! You hear the security team fighting the assassin as your consciousness drifts into oblivion.`
+				die
+			label shoot2
+			scene "outfit/quantum phase pistol"
+			`	You are quicker on the draw. The assassin is lying on the ground, a pool of blood forming from the wound you put into his shoulder. Taking the pistol he was wielding, you ask:`
+			choice
+				`	"Who hired you?"`
+				`	"Where did you get this?"`
+			scene "planet/cloud4"
+			`	The assassin spits at you. Rally security arrives with Korban. Alastair says, "We meet again Captain <last>. It seems I am in your debt. This assassin was likely hired by the Covert mining cartel. We've always been at odds, even after I resigned." Alistair's eyes linger on the alien pistol gripped in your hand, but says nothing. Looking down at the assassin he continues, "We'll handle the rest. The Syndicate Security and Republic Intelligence will have a lot of questions for this one."`
+			``
+			`	Having retrieved the Quantum Phase Pistol, it's not clear where to search next. With no other leads on the Graviton Generator, you consider heading to Covert.`
+				accept
+	on accept
+		outfit "Quarg Quantum Phase Pistol"
+		log `Saved Alistair Korban from an assassination attempt on Earth.`
+	on enter Gienah
+		dialog "You spot the remains of a freighter adrift. The hull appears to have imploded. Check the vessel before landing on Covert."
+	npc board
+		government "Derelict (Killable)"
+		system Gienah
+		personality target derelict marked mute
+		"cargo settings"
+			cargo 0
+		ship "Derelict Freighter" "Underdark"
+		dialog "This ship belonged to the Covert mining cartel. The cargo bays that haven't been crushed by whatever caused the implosion are empty and all crewmembers are dead."
+
+mission "Vault Weapon Quash 4 (gift checkmate)"
+	landing
+	invisible
+	source
+		government Syndicate
+		attributes outfitter
+	to offer
+		has "free worlds checkmate"
+		has "Vault Weapon Quash 4: done"
+	on offer
+		outfit "Ionic Afterburner"
+		outfit "S-270 Regenerator"
+		outfit "S-970 Regenerator"
+		outfit "Proton Gun-CF8" 2
+		outfit "Proton Turret-ATS" 2
+		conversation
+			scene "scene/scene-syndicate research"
+			scene "outfit/proton gun-cf8"
+			scene "outfit/proton turret-ats"
+			`	When you arrive on <origin>, a message from Alistair Korban pops up: "As a token of appreciation for saving my life, I've arranged for a gift package featuring some of the Syndicate's latest technology to be delivered to you."`
+				decline
+
+mission "Vault Weapon Quash 4 (gift reconciliation)"
+	landing
+	invisible
+	source
+		government Syndicate
+		attributes outfitter
+	to offer
+		has "free worlds reconciliation"
+		has "Vault Weapon Quash 4: done"
+	on offer
+		event "syndicate tech available"
+		conversation
+			scene "scene/scene-syndicate research"
+			`	When you arrive on <origin>, a message from Alistair Korban pops up: "As a token of appreciation for saving my life, I've arranged for some of the Syndicate's latest technology to be made available to you."`
+				decline
+
+mission "Vault Weapon Quash 5"
+	landing
+	name "Diabolos Bounty"
+	description "A heavy warship name Diabolos has been raiding cartel ships near Gienah. Find the ship and destroy it. Then report to <destination> for payment. (<payment>)"
+	source Covert
+	to offer
+		has "Vault Weapon Quash 4: done"
+	on offer
+		conversation
+			scene "thumbnail/freighter"
+			`The attack on the Underdark is the hot topic of conversation at the spaceport bar. As the story goes, a few months ago the Covert mining cartel got ahold of an alien device that could quickly convert large amounts of coal into diamonds. The cartel employee responsible for safeguarding the device stabbed the cartel in the back and has become a pirate warlord. It turns out the device can be used as a powerful weapon, and the Underdark was its latest victim. The cartel has placed a hefty bounty on his ship, the Diabolos. While it has already made several attacks on cartel ships in Gienah, they must be using another pirate outpost as their base of operations.`
+	on enter "Persian"
+		conversation
+			scene "thumbnail/raider"
+			`The Diabolos is surrounded by a fleet of other pirate ships. The alien device its captain stole from the mining cartel must have helped him to quickly gain a large following. Capture the ship to get ahold of that device!`
+	npc
+		government "Bounty"
+		system "Persian"
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Uranium"
+			variant
+				"Vanguard (Korath)"
+				"Protector (Korath)"
+				"Splinter (Korath)"
+				"Manta (Korath)"
+				"Quicksilver (Korath)"
+				"'olofez" 2
+	npc capture
+		government "Bounty"
+		system "Gamma Cassiopeiae"
+		personality target waiting staying plunders harvests
+		"cargo settings"
+			cargo 4
+			outfitters "Uranium" "Aluminum" "Copper" "Silver"
+		ship "Palavret (Graviton Generator)" "Diabolos"
+		conversation
+			scene "outfit/graviton generator"
+			`When the dying captain fell in battle, he dropped the Quarg Graviton Generator. It lies just out of his reach, but he still spends the last of his strength in a futile attempt to reach it.`
+			choice
+				`	(Grab the weapon.)`
+			scene "planet/forest0-b"
+			`	You've confirmed that the device stolen from the mining cartel is actually the Quarg Graviton Generator stolen from Farpoint. Before deciding what to do with it, you might consider returning to <origin> and collecting the bounty on the Diabolos.`
+	on complete
+		payment 1000000
+
+mission "Vault Weapon Quash 6"
+	landing
+	name "Return to Farpoint"
+	description "Return the stolen Quarg weapons to Farpoint. Evade any Quarg who tries to stop you."
+	source "Covert"
+	destination "Farpoint"
+	to offer
+		has "Vault Weapon Quash 5: done"
+	on offer
+		conversation
+			scene "outfit/graviton generator"
+			`You claim the reward on the Diabolos. Shady cartel goons follow you, but the sight of the Graviton Generator on your hip discourages them from actively trying to stop you. With both Quarg weapons recovered, you have a decision to make. Will you return them to the evidence vault on Farpoint? Or will you keep them for yourself?`
+			choice
+				`	(Return them to the Republic.)`
+				`	(Keep them.)`
+					goto keep
+			scene "planet/forest0-b"
+			`	This is probably the safest course of action. As long as the Quarg don't catch you with them, everything should be fine...`
+				accept
+			label keep
+			scene "outfit/quantum phase pistol"
+			`	You've decided to keep the weapons for yourself. They are powerful, but dangerous. If the Quarg ever catch you with them, things could turn ugly.`
+				decline
+	on decline
+		"reputation: Republic" <?= 0
+	on enter
+		conversation
+			scene "thumbnail/wardragon"
+			`	A surprising sight greets you as you enter orbit. A Quarg Wardragon has arrived in Gienah! It broadcasts a hail on all frequencies: "Greetings. We have reason to believe the humans in this system are in possession of stolen Quarg technology. You will be scanned. Do not resist. This is for your own safety as well as the safety of your species."`
+			`	Naturally, the pirates won't submit. Hopefully, they can provide enough of a distraction for you to avoid the Quarg's notice.`
+	npc
+		government "Pirate"
+		personality waiting plunders harvests coward
+			confusion 20
+		fleet "Small Core Pirates" 2
+	npc evade
+		government "Quarg"
+		personality waiting staying surveillance
+		ship "Quarg Wardragon (Scanner)" "Quariel"
+	npc evade
+		government "Quarg"
+		system
+			distance 2
+		personality waiting surveillance
+		ship "Quarg Wardragon (Scanner)" "Grokiel"
+	npc evade
+		government "Quarg"
+		system destination
+		personality waiting surveillance
+		ship "Quarg Wardragon (Scanner)" "Kooriel"
+	on abort
+		"reputation: Republic" <?= 0
+	on complete
+		payment 2000000
+		outfit "Quarg Quantum Phase Pistol" -1
+		outfit "Quarg Graviton Generator" -1
+		conversation
+			scene "outfit/graviton generator"
+			`You return both weapons to the Farpoint evidence vault where they will, hopefully, be kept safe. The Republic rewards you with <payment>, along with a reminder that the existence of these weapons is to be kept secret.`
+
+
+
+mission "Vault Weapon Lasher Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		attributes "core pirate"
+		not attributes "uninhabited"
+	to offer
+		or
+			has "Vault Weapon Quash 6: done"
+			has "Vault Weapon Quash 6: declined"
+		random < 25
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`An information broker approaches you. "Captain <last>, I have a hot tip on one of the exotic weapons stolen from Farpoint's evidence vault. Only 1,000,000 credits. You're interested, aren't you?"`
+			choice
+				`	(Buy the info.)`
+				`	(Ignore this opportunity.)`
+					decline
+			scene "thumbnail/marauder vanguard"
+			`	The info broker takes your payment and says, "The captain of the Antlion has it. It's a Marauder Vanguard that lurks in the systems near Durax."`
+				accept
+	on enter Atik
+		dialog `The Antlion sends out a strange hail: "Zey hazzz dizturbed ze hive! Go my wazpzzz, and teach zem to rezpect ze bugzzz!"`
+	npc
+		government Bounty
+		system Atik
+		personality waiting staying heroic vindictive
+		fleet
+			variant
+				"Wasp (Korath)" 24
+	npc capture
+		government Bounty
+		system Atik
+		personality target waiting staying timid vindictive
+		ship "Marauder Vanguard (Lasher Rifle)" "Antlion"
+		conversation
+			action
+				fail "Vault Weapon Lasher Rifle"
+			scene "outfit/lasher rifle"
+			`The pirate captain wielded an exotic rifle... This must be another weapon that was stolen from the evidence vault on Farpoint.`
+
+
+
+mission "Vault Weapon Insurgent Subjugation Gear"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon. Then deliver it to <destination>."
+	source
+		attributes "frontier"
+		attributes "south"
+		not attributes "uninhabited"
+	to offer
+		or
+			has "Vault Weapon Quash 6: done"
+		random < 25
+	on offer
+		conversation
+			scene planet/cloud8
+			`You receive a message from the governor on Poisonwood: "Hello Captain <first> <last>. Our contacts on Farpoint recommended you to us for a delicate sitation regarding an item stolen from their evidence vault. We had recovered the object from someone attempting to illegally sell it and had it ready for a freighter to transport to Farpoint. But a pirate ship posing as the official courier tricked the dockworkers into loading it onto their ship instead. We suspect the Behemoth that took this valuable cargo is still somewhere in the south near Graffias. If you are willing to assist us, please retrieve the stolen cargo and return it to Farpoint. Know that the nature of the item must be kept secret."`
+			choice
+				`	"Alright, I'll retrieve the item."`
+				`	"Sorry, find someone else to do it."`
+					goto refuse
+			"thumbnail/behemoth"
+			`	You've decided to hunt down what is likely another stolen weapon from Farpoint's evidence vault. A Behemoth is an uncommon sight in the south. Tracking this one down shouldn't be too difficult. Their message was oddly vague however. Maybe the stolen object was one of the Quarg weapons again.`
+				accept
+			label refuse
+			`	You've decided not to get involved in what is likely yet another stolen weapon hunt.`
+				decline
+	on enter Ablodab
+		conversation
+			scene "thumbnail/pirate mammoth"
+			`There appears to be a Behemoth here. Could this be the mysterious "Behemoth" that took the stolen item from the Poisonwood dockworkers? A closer look reveals that it's actually a Mammoth, a heavily modified Behemoth sometimes used by pirates. It powers up its weapons. The captain has abandoned all pretense of being peaceful. If they do have the stolen weapon, they aren't going to give it up willingly.`
+	npc capture
+		government "Bounty"
+		system Ablodab
+		personality target waiting staying timid vindictive
+		"cargo settings"
+			cargo 5
+			outfitters "Coalition Smuggling"
+		ship "Mammoth (Insurgent Subjugation Gear)" "Vault of Secrets"
+		conversation
+			scene "outfit/insurgent subjugation gear"
+			`The pirate captain wielded an exotic weapon... This must be the item that was stolen from the evidence vault. Will you return it to Farpoint or keep it for yourself?`
+			choice
+				`	(Return the weapon to Farpoint.)`
+				`	(Keep it for youself.)`
+					goto keep
+			action
+				set "transporting insurgent subjugation gear"
+			scene "planet/forest0-b"
+			`	You've decided to deliver the weapon back to the evidence vault on Farpoint. As long as the Quarg don't catch you with it, it should be fine.`
+				accept
+			label keep
+			`	You've decided to keep the weapon for yourself. If the Quarg catch you with it, they might turn hostile.`
+			action
+				"reputation: Republic" <?= 0
+				fail "Vault Weapon Insurgent Subjugation Gear"
+	npc evade
+		to spawn
+			has "transporting insurgent subjugation gear"
+		government "Quarg"
+		system Enif
+		personality waiting surveillance
+		ship "Quarg Skylark (Scanner)"
+	npc evade
+		to spawn
+			has "transporting insurgent subjugation gear"
+		government "Quarg"
+		system destination
+		personality waiting surveillance
+		ship "Quarg Wardragon (Scanner)"
+	on abort
+		"reputation: Republic" <?= 0
+		clear "transporting insurgent subjugation gear"
+	on complete
+		outfit "Insurgent Subjugation Gear" -1
+		clear "transporting insurgent subjugation gear"
+		payment 1000000
+		conversation
+			scene "outfit/insurgent subjugation gear"
+			`The Insurgent Subjugation Gear is placed back into the evidence vault and you are given <payment> along with a reminder to keep all details regarding this mission secret.`
