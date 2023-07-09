@@ -5,7 +5,8 @@
 (latest 10 entries):
 <table><tr><td width=800>
 
-2023-07-07 'Sounds Of Endless Sky' updated by Sam Gleske | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
+2023-07-09 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
+<br>2023-07-07 'Sounds Of Endless Sky' updated by Sam Gleske | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
 <br>2023-07-07 'Undisclosed Plugin' updated by petervdmeer | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
 <br>2023-07-07 'Coalition-At-War' updated by Josh Mudge | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-07 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
@@ -14,7 +15,6 @@
 <br>2023-07-07 'sensor' updated by orbitalsupershell | category: [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons)
 <br>2023-07-07 'Sci-Fi Flavours' updated by Linear Perk | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
 <br>2023-07-07 'Arena of the worthy' updated by RisingLeaf | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
-<br>2023-07-07 'Midnight Scrapyard' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>
 
 </td></tr></table>
@@ -6599,7 +6599,7 @@ Status: Playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Lost in Midnight/icon.png' width='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.15 mb | 2023-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.4 mb | 2023-07-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)  
 Category: Story  
 
