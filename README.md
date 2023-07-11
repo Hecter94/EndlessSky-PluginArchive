@@ -5,7 +5,8 @@
 (latest 10 entries):
 <table><tr><td width=800>
 
-2023-07-09 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
+2023-07-11 'Amphibious-Ships' updated by Zoura | category: [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)
+<br>2023-07-09 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-07 'Sounds Of Endless Sky' updated by Sam Gleske | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
 <br>2023-07-07 'Undisclosed Plugin' updated by petervdmeer | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
 <br>2023-07-07 'Coalition-At-War' updated by Josh Mudge | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
@@ -14,7 +15,6 @@
 <br>2023-07-07 'Portraits for News' updated by Anarchist2 | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-07 'sensor' updated by orbitalsupershell | category: [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons)
 <br>2023-07-07 'Sci-Fi Flavours' updated by Linear Perk | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
-<br>2023-07-07 'Arena of the worthy' updated by RisingLeaf | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
 <br>
 
 </td></tr></table>
@@ -4211,7 +4211,7 @@ Status: should work
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 8.38 mb | 2023-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/)  
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 10.45 mb | 2023-07-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/)  
 Author: Zoura | [https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)  
 Category: Ships  
 
