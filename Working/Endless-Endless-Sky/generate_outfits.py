@@ -145,7 +145,7 @@ def create_battery(faction,fileout=''):
         battery_name_list=[]
         for n in range(battery_iterations):
             name_length_min = 3
-            name_length_max = 7
+            name_length_max = 10
             battery_name = namegen.generateNameFromRules(name_length_min,
                                                     name_length_max,
                                                     wordlen=faction.lang_wordlen,
@@ -162,7 +162,7 @@ def create_battery(faction,fileout=''):
        
 
         for aa in range(battery_iterations):
-            battery_name_final = battery_name_list[battery_iterations_count-1] + " " + battery_type
+            battery_name_final = battery_name_list[aa] + " " + battery_type
 
             battery_thumb = battery_thumb_list[min(4,aa)]
             #Writes ES code to file, use \n for line break
