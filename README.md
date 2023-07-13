@@ -5,7 +5,9 @@
 (latest 10 entries):
 <table><tr><td width=800>
 
-2023-07-12 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
+2023-07-13 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
+<br>2023-07-13 'Amphibious-Ships' updated by Zoura | category: [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)
+<br>2023-07-12 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-11 'Amphibious-Ships' updated by Zoura | category: [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)
 <br>2023-07-09 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-07 'Sounds Of Endless Sky' updated by Sam Gleske | category: [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)
@@ -13,8 +15,6 @@
 <br>2023-07-07 'Coalition-At-War' updated by Josh Mudge | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-07 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
 <br>2023-07-07 'High DPI' updated by Michael Zahniser (Maintained by the ES Community) | category: [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics)
-<br>2023-07-07 'Portraits for News' updated by Anarchist2 | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-07 'sensor' updated by orbitalsupershell | category: [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons)
 <br>
 
 </td></tr></table>
@@ -2547,7 +2547,7 @@ Status: Abandoned, Should be playable on 0.9.14, 0.9.15 Continuous.
 <img src='Working/Endless-Endless-Sky/icon.png' width='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
 Author: 1010Todd | [https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky)  
 Category: Overhauls  
 
@@ -4211,7 +4211,7 @@ Status: should work
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 10.45 mb | 2023-07-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/)  
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 11.36 mb | 2023-07-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/)  
 Author: Zoura | [https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships)  
 Category: Ships  
 
