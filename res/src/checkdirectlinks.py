@@ -143,7 +143,7 @@ for entry in listing:
 		ossep = entry.split(os.sep)
 		stripped = ossep[1]
 		stripped = stripped[:len(stripped)-4] # pluginname stripped from zip name
-		print(entry + " | extacted to: temp/" + firstfolder)
+		print("\n" + entry + " | extacted to: temp/" + firstfolder)
 		# check for same names of zip and first folder in zip
 		if stripped != firstfolder:
 			print("ERROR: mismatch between zipname and in-zip folder!")
