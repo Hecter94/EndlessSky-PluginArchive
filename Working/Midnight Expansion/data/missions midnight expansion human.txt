@@ -180,6 +180,50 @@ mission "Midnight Expansion: Bounty Hunting (Smuggler, Disguised)"
 		payment 350000
 		dialog phrase "generic bounty hunting payment dialog"
 
+mission "Midnight Expansion Cargo Trap (Core)"
+	name "Convoy near <system>"
+	job
+	repeat
+	description `A merchant convoy has been spotted near the <system> system. A local warlord is interested in having the cargo on the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
+	to offer
+		or
+			has "fw delivered prisoners"
+			has "main plot completed"
+		random < 5
+		"combat rating" > 3500
+	deadline 20
+	source
+		government Pirate
+		attributes "core pirate"
+	npc
+		government "Merchant"
+		personality staying heroic target
+		system
+			not government "Pirate"
+			distance 2 2
+		fleet
+			names "civilian"
+			variant
+				"Bulk Freighter (Secret Cargo) "
+				"Locust" 12
+				"Quicksilver (Proton)" 6
+			variant
+				"Bulk Freighter (Secret Cargo) "
+				"Locust" 12
+				"Vanguard"
+				"Splinter (Proton)"
+			variant
+				"Bulk Freighter (Secret Cargo) "
+				"Locust" 12
+				"Protector (Proton)"
+				"Manta (Proton)"
+	on visit
+		dialog "You land on <planet>, but you don't have the secret cargo! Return to the <npc> and bring the cargo back to <planet>."
+	on complete
+		outfit "Secret Cargo" -1
+		payment 1500000
+		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
+
 mission "Midnight Expansion: Recycle garbage"
 	name "Recycle garbage"
 	description "<origin> produces a lot of garbage that needs to be disposed of off-station. Transport <cargo> to the industrial solid waste recycler on <destination>. Payment is <payment>."
@@ -605,3 +649,484 @@ event "add marauder rukh"
 			"Marauder Quicksilver"
 
 
+
+mission "Midnight Scum & Villainy 1A"
+	minor
+	deadline
+	name "Millenium Eagle"
+	description "The captain of the Millenium Eagle asked you to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	source
+		attributes "north"
+		not attributes "pirate"
+		not attributes "station"
+	destination Sunracer
+	to offer
+		has "main plot completed"
+		not "Midnight Scum & Villainy 1B: active"
+		or
+			and
+				not "Randomize Midnight Scum & Villainy 1A"
+				random < 70
+			and
+				has "Randomize Midnight Scum & Villainy 1A"
+				random < 5
+	on offer
+		conversation
+			`A freighter captain approaches you. Gesturing at your ship, he says, "If that's the <ship>, then you must be Captain <first> <last>. I'm organizing a convoy through the Northern passage to reach <destination> by <date>, and you're welcome to join us."`
+			choice
+				`	"Sure, there's safety in numbers."`
+				`	"Sorry, I'm headed in a different direction."`
+					goto refuse
+			`	"My name's Jon Silo, captain of the Millenium Eagle. Truth be told, some of the other captains who'll be joing us thought you'd be unwilling to take part in the convoy. I'm glad they were wrong. See you in orbit." Jon leaves to make preparations for launch.`
+				accept
+			label refuse
+			branch refuse2
+				random < 75
+			`	"That's unfortunate. I guess having a war hero accompany us was too much to hope for."`
+				defer
+			label refuse2
+			branch refuse3
+				random < 66
+			`	"That's too bad. I suppose having a war hero join us just wasn't in the cards."`
+				defer
+			label refuse3
+			branch refuse4
+				random < 50
+			`	"That's what I was afraid of. Some of the others said a war hero wouldn't want to join us. I guess they were right."`
+				defer
+			label refuse4
+			`	"Suit yourself. I guess a war hero doesn't need to join merchant convoys."`
+				defer
+	on defer
+		set "Randomize Midnight Scum & Villainy 1A"
+	on enter
+		conversation
+			scene "thumbnail/AESmisc proto_freighter"
+			`Jon sends a hail asking everyone to check in. You notice his ship is an unusual freighter. According to the scanner database it's a Modified Cargo Star, an old design exclusively used by Starwell Shipping Corporation before they were bought out by the Syndicate.`
+			scene "thumbnail/hauler i"
+			`	"Farm Boy, checking in."`
+			scene "thumbnail/freighter"
+			`	"Gold Idol, checking in."`
+			scene "thumbnail/star barge"
+			`	"Astro Tech, checking in."`
+			choice
+				`	"<ship>, checking in."`
+			`	"Stay together everyone. Let's all get to <planet> in one piece."`
+	npc
+		government Pirate
+		system
+			distance 1 2
+		personality plunders harvests coward
+			confusion 20
+		fleet "pirate raid"
+	npc
+		government Pirate
+		system
+			distance 3 4
+		personality plunders harvests coward
+			confusion 20
+		fleet "pirate raid"
+	npc accompany save
+		government Merchant
+		personality target launching timid
+			confusion 30
+		"cargo settings"
+			cargo 6
+		ship "Modified Cargo Star (Smuggler)" "Millenium Eagle"
+		ship "Hauler" "Farm Boy"
+		ship "Freighter" "Gold Idol"
+		ship "Star Barge" "Astro Tech"
+	on fail
+		dialog "[MISSION FAILED] Not all of the ships in the convoy made it to their destination. If life were a game, you could load a save file and try again."
+	on visit
+		dialog "One or more ships from the convoy haven't arrived yet. Get back out there and make sure they're safe!"
+	on complete
+		payment 500000
+		dialog "The starship captains pool together <payment> and give it to you for helping them to arrive safely on <planet>."
+
+mission "Midnight Scum & Villainy 1B"
+	minor
+	deadline
+	name "Tomboy Princess"
+	description "The captain of the Tomboy Princess asked you to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	source
+		attributes "paradise"
+		not attributes "station"
+	destination Sunracer
+	to offer
+		has "main plot completed"
+		not "Midnight Scum & Villainy 1A: active"
+		or
+			and
+				not "Randomize Midnight Scum & Villainy 1B"
+				random < 70
+			and
+				has "Randomize Midnight Scum & Villainy 1B"
+				random < 5
+	on offer
+		conversation
+			`A transport captain approaches you. Gesturing at your ship, she says, "If that's the <ship>, then you must be Captain <first> <last>. I'm traveling through the Northern passage to reach <destination> by <date>, and would like for you to escort us."`
+			choice
+				`	"Sure, there's safety in numbers."`
+				`	"Sorry, I'm headed in a different direction."`
+			`	"My name's Lia Skystrider, captain of the Tomboy Princess. Truth be told, I wasn't certain a war hero would be willing to take on a civilian escort job. I'm glad I was wrong. See you in orbit." Lia leaves to make preparations for launch.`
+				accept
+			label refuse
+			branch refuse2
+				random < 75
+			`	"That's unfortunate. I guess having a war hero accompany us was too much to hope for."`
+				defer
+			label refuse2
+			branch refuse3
+				random < 66
+			`	"That's too bad. I suppose having a war hero join us just wasn't in the cards."`
+				defer
+			label refuse3
+			branch refuse4
+				random < 50
+			`	"That's what I was afraid of. I guess a war hero wouldn't be interested in a civilian escort job."`
+				defer
+			label refuse4
+			`	"Suit yourself. I guess a war hero doesn't need to take on civilan escort work."`
+				defer
+	on defer
+		set "Randomize Midnight Scum & Villainy 1B"
+	on enter
+		conversation
+			scene "thumbnail/star queen"
+			`You receive a hail from Lia: "The last few times I took this route, pirates attacked. Watch out for a particularly ugly heavy warship that's shaped like a star."`
+	npc
+		government Pirate
+		system
+			distance 1 2
+		personality plunders harvests coward
+			confusion 20
+		fleet "pirate raid"
+	npc
+		government Pirate
+		system
+			distance 3 4
+		personality plunders harvests coward
+			confusion 20
+		fleet "pirate raid"
+	npc accompany save
+		government Merchant
+		personality target launching timid
+			confusion 30
+		ship "Star Queen" "Tomboy Princess"
+	on fail
+		dialog "[MISSION FAILED] The Tomboy Princess was destroyed. If life were a game, you could load a save file and try again."
+	on visit
+		dialog "The Tomboy Princess hasn't arrived yet. Get back out there and make sure they're safe!"
+	on complete
+		payment 500000
+		dialog "Lia gives you <payment> for helping the Tomboy Princess arrive safely on <planet>."
+
+mission "Midnight Scum & Villainy 2"
+	minor
+	deadline
+	name "Scum & Villainy"
+	description "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"
+	source Sunracer
+	to offer
+		or
+			has "Midnight Scum & Villainy 1A: done"
+			has "Midnight Scum & Villainy 1B: done"
+	on offer
+		conversation
+			branch lia
+				has "Midnight Scum & Villainy 1B: done"
+			`As you are about to part ways with Jon and the other captains, a woman shouts "That star shaped ship might be the one! That's just ugly enough to be the ship that's been leading the pirate raiders!" She points an accusatory finger at Jon. "You're the captain of that ship aren't you!?!"`
+			`	Jon shrugs. "Listen lady, I've been with a merchant convoy that barely escaped pirates before arriving here. These other captains can vouch for me." The other captains nod in support.`
+			`	But the woman is not dissuaded. "How do we know you weren't collaborating with those pirates?"`
+			choice
+				`	"Maybe there's something on the job boards about that ship."`
+					goto board
+				`	(Walk away from this.)`
+			`	You try to slip away unnoticed from this argument, but Jon calls out to you. "Hey Captain <last>, you're a respectable war hero. Can you convince her I'm innocent?" There's one way to find out...`
+			choice
+				`	"Maybe there's something on the job boards about that ship."`
+			label board
+			scene "thumbnail/AESmisc bulwark"
+			`	You, Jon, and the woman search the job board for bounties. After a while, you find a post that may be related. "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"`
+			`	"Three million! I could pay off my debt with that." Jon looks to you. "Captain <last>, would you be willing to team up with me on this?"`
+			`	"Hold on!" The woman interrupts. "Listen buster, I'm not letting you off the hook just yet."`
+			`	"Well maybe you should tag along and see for yourself." But Jon's sarcastic reply doesn't make her back down.`
+			`	"I think I'll do that." The woman turns to you. "He said you're a war hero? My name is Lia Skystrider. I'll be joining in on this expedition. And I expect a fair share of the reward money when we bring this pirate to justice." She glances at Jon, who smirks and rolls his eyes while shaking his head.`
+			choice
+				`	"I'm Captain <first> <last>. We'll all split the reward evenly."`
+					accept
+				`	"Sorry, I'm not interested. Leave me out of this."`
+					decline
+			label lia
+			scene "thumbnail/AESmisc proto_freighter"
+			`You are about to part ways with Lia when she gasps, "I think that's the ship. Look <first>, at that star shaped ship!" That's a strange looking freighter. Lia rushes off towards that ship's landing pad.`
+			choice
+				`	(Follow Lia.)`
+				`	(Abandon Lia.)`
+					decline
+			`When you arrive, Lia is accusing the ship's captain of being a pirate. He defends himself saying, "Listen lady, I've been with a merchant convoy that barely escaped pirates before arriving here. These other captains can vouch for me." Several other freighter captains nod in support.`
+			`	But Lia is not dissuaded. "How do we know you weren't collaborating with those pirates?"`
+			choice
+				`	"Maybe there's something on the job boards about the star shaped pirate ship."`
+					goto boardlia
+				`	(Walk away from this.)`
+			`	You try to slip away unnoticed from this argument, but Lia calls out to you. "Hey Captain <last>, you're a respectable war hero. Do you think he's a pirate?" There's one way to find out...`
+			choice
+				`	"Maybe there's something on the job boards about the star shaped pirate ship."`
+			label boardlia
+			scene "thumbnail/AESmisc bulwark"
+			`	You, Lia, and the accused man search the job board for bounties. After a while, you find a post that may be related. "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"`
+			`	"Three million! I could pay off my debt with that." The man looks to you. "She said you're a war hero? My name's Jon Silo. Would you be willing to team up with me on this?"`
+			`	"Hold on!" Lia interrupts. "Listen buster, I'm not letting you off the hook just yet."`
+			`	"Well maybe you should tag along and see for yourself." But Jon's sarcastic reply doesn't make her back down.`
+			`	"I think I'll do that." Lia turns to you. "I'll be joining in on this expedition. Of course I expect a fair share of the reward money when we bring this pirate to justice." She glances at Jon, who smirks and rolls his eyes while shaking his head.`
+			choice
+				`	"I'm Captain <first> <last>. We'll all split the reward evenly."`
+					accept
+				`	"Sorry, I'm not interested. Leave me out of this."`
+					decline
+	on enter Cardax
+		conversation
+			`Cardax is a major crossroads in the Northern Passage, so it's no wonder that you find the Scum & Villainy here.`
+			`	Jon remarks, "You see now? My ship isn't the one leading pirate raids. It was that Protector."`
+			choice
+				`	"That's no Protector!"`
+			scene "thumbnail/AESmisc bulwark"
+			`	Lia laments, "Whatever it is, I have a bad feeling about this..."`
+			`	It appears to be a Protector so heavily modified that your ship's database identifies it as a "Wretched Hive", a rare variant even among pirate Marauders.`
+	npc accompany save
+		government Merchant
+		personality target escort timid appeasing
+			confusion 30
+		ship "Modified Cargo Star (Smuggler)" "Millenium Eagle"
+		ship "Star Queen" "Tomboy Princess"
+	npc
+		government Bounty
+		system Cardax
+		personality waiting staying plunders
+			confusion 10
+		fleet
+			names "pirate"
+			cargo 1
+			variant
+				"Marauder Manta"
+				"Marauder Splinter"
+				"Marauder Quicksilver"
+				"Marauder Quicksilver (Weapons)"
+				"Marauder Quicksilver (Engines)"
+				"Pirate Drone" 7
+	npc kill
+		government Bounty
+		system Cardax
+		personality target waiting staying plunders
+			confusion 10
+		ship "Wretched Hive" "Scum & Villainy"
+		dialog "The Scum & Villainy has been destroyed. Return to <destination> to collect the reward."
+	on fail
+		dialog "[MISSION FAILED] One or both of your fellow captains was lost during this mission. If life were a game, you could load a save file and try again."
+	on complete
+		payment 1000000
+		log "People" "Jon Silo" `Captain of the Millenium Eagle, an old Starwellian freighter making cargo runs through the Northern Passage. He joined you on a bounty hunt for the Wretched Hive known as "Scum & Villainy".`
+		log "People" "Lia Skystrider" `Captain of the Tomboy Princess, a Star Queen ferrying passengers between the Paradise worlds and the core. She joined you on a bounty hunt for the Wretched Hive known as "Scum & Villainy".`
+		conversation
+			scene "thumbnail/AESmisc proto_freighter"
+			`"The Millenium Eagle isn't a warship, it's a classic Starwellian freighter from before the Syndicate..." Jon was boasting about his ship to Lia when you find them at the spaceport.`
+			`	She waves to you, "Hi <first>, thanks for your help. Maybe travel through the Northern Passage will be a little safer now." Having collected your share of the three million credit reward, you say goodbye to both of them.`
+
+mission "Midnight Venomous Fang 1"
+	minor
+	name "Millenium Eagle"
+	description "The Millenium Eagle hasn't returned from its last voyage. Lia is worried that pirates may have attacked Jon's ship. Search the pirate planets in the north for information."
+	source
+		attributes "paradise"
+		not attributes "station"
+	destination "Haven"
+	stopover "Zenith"
+	stopover "Freedom"
+	to offer
+		has "Midnight Scum & Villainy 2: done"
+		random < 5
+	on offer
+		conversation
+			scene "thumbnail/star queen"
+			`You notice the Tomboy Princess is docked at the spaceport. Lia, the Star Queen captain who worked with you to track down the Scum & Villainy, must be here. Meet her again?`
+			choice
+				`	(Meet Lia.)`
+				`	(I'm busy with other things.)`
+					defer
+			scene "thumbnail/AESmisc proto_freighter"
+			`	You find Lia trying to hire crew members at the space port. "Hi <first>! I'm trying to form a rescue party to search for Jon, but no one wants to ride a Star Queen into pirate territory." Jon Silo is the captain of the Modified Cargo Star who teamed up with you and Lia to hunt down the Scum & Villainy.`
+			choice
+				`	"Jon's missing?"`
+				`	"Pirate territory?"`
+			`	"I was supposed to meet Jon after his last voyage, a delivery of medicine to Freedom and food to Zenith. But he hasn't returned and I'm worried he might have been attacked by the pirates." Freedom and Zenith are both pirate worlds. It would be more surprising if the pirates didn't attack him.`
+			choice
+				`	"I could go have a look."`
+				`	"He's probably dead now."`
+					goto refuse
+			`	"Thank you <first>. Stay safe out there." If you don't find anything on Freedom or Zenith, it might be worthwhile to check Haven as well.`
+				accept
+			label refuse
+			`	"I refuse to believe that!" Lia is frustrated by your response. "I won't give up until I'm certain." She leaves to search for Jon on her own.`
+				decline
+	on stopover
+		dialog "Although Jon didn't have a delivery there, it might be worthwhile to also check <destination> for information."
+	on visit
+		dialog "Jon didn't have any deliveries here. Check Freedom and Zenith first."
+
+mission "Midnight Venomous Fang 1a"
+	landing
+	invisible
+	source "Freedom"
+	to offer
+		has "Midnight Venomous Fang 1: active"
+	on offer
+		dialog "After asking around the spaceport, you learn that Jon made his delivery of medicine on time. The locals have nothing else to add."
+	on accept
+		fail
+
+mission "Midnight Venomous Fang 1b"
+	landing
+	invisible
+	source "Zenith"
+	to offer
+		has "Midnight Venomous Fang 1: active"
+	on offer
+		dialog "After asking around the spaceport, you learn that Jon made his delivery of food on time. The locals have nothing else to add."
+	on accept
+		fail
+
+mission "Midnight Venomous Fang 2"
+	name "Venomous Fang"
+	description "The Venomous Fang was hired to eliminate the Millenium Eagle. Search for them in the string of uninhabited systems connecting the North to the Core. Head to <destination> when done."
+	source "Haven"
+	destination "Farpoint"
+	to offer
+		has "Midnight Venomous Fang 1: done"
+	on offer
+		conversation
+			scene "thumbnail/AESmisc proto_freighter"
+			`Your search of Freedom and Zenith didn't reveal any information about Jon's whereabouts. Searching the spaceport on Haven, you hear some disturbing rumors. The Venomous Fang, a bounty hunter ship, was hired by a pirate warlord to track down the Millenium Eagle. It seems Jon dumped some of their contraband when a Navy Gunboat started following him. Both ships are probably somewhere in the Northern Passage, the string of uninhabited systems connecting the North to the Core. Hopefully, you can find them in time.`
+				accept
+	on enter "Tortor"
+		conversation
+			scene "thumbnail/AESmisc hydra"
+			`You find the Venomous Fang. It's a Leviathan so heavily modified that your ship's computer registers it as an Ogopogo instead. Nearby, the Millenium Eagle sits disabled, an easy target for destruction...`
+	npc evade
+		government "Bounty Hunter"
+		system Tortor
+		personality target waiting staying vindictive heroic
+			confusion 10
+		ship "Ogopogo" "Venomous Fang"
+		ship "Combat Drone" "Poison Fang"
+		ship "Combat Drone" "Death Fang"
+	npc assist save accompany
+		government "Merchant"
+		system Tortor
+		personality target waiting derelict timid
+		ship "Modified Cargo Star" "Millenium Eagle"
+		dialog "Thanks <first>! Let's head over to Farpoint before we run into more pirates."
+	on complete
+		payment 150000
+		conversation
+			scene "thumbnail/star queen"
+			`When you arrive at Farpoint, you find the Tomboy Princess refueling. Jon thanks you for the rescue and greets Lia. "I'm glad you're both safe" she says. The three of you celebrate at the spaceport bar, where you manage to win <payment> in a few card games before returning to your ship.`
+
+mission "Midnight Modified Cargo Star"
+	invisible
+	minor
+	source
+		government "Syndicate"
+		not attributes "shipyard" "uninhabited" "station"
+	to offer
+		"credits" > 7022000
+		has "Midnight Venomous Fang 2: done"
+		or
+			and
+				not "Randomize Midnight Modified Cargo Star"
+				random < 50
+			and
+				has "Randomize Midnight Modified Cargo Star"
+				random < 1
+	on offer
+		conversation
+			scene "thumbnail/AESmisc proto_freighter"
+			`You notice someone trying to sell a used ship, a Modified Cargo Star.`
+			choice
+				`	"Tell me more about this ship."`
+				`	"Not interested in buying a ship right now."`
+					defer
+
+			`	The seller says "The Cargo Star was a proprietary freighter used by Starwell Shipping Corporation before it was bought out by the Syndicate in a hostile corporate takeover. Many of the technologies and design principles from this ship can be found in the modern designs of Syndicate Shipyards. Most Cargo Stars that survived the Alpha Wars did so by having extensive modifications made to strengthen their hull, shields, and weapon capacity. The price is 7,022,000."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			label "purchase"
+			action
+				payment -7022000
+				give ship "Modified Cargo Star"
+			`	"Thank you for your purchase!"`
+				decline
+
+			label negotiate
+			branch "deal"
+				random < 50
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+					goto purchase
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			label "deal"
+			`	"How about we meet halfway? 5,266,500 credits."`
+			choice
+				`	"It's a deal. I'll buy it!`
+				`	"That's still too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			action
+				payment -5266500
+				give ship "Modified Cargo Star"
+			`	"Thank you for your purchase!"`
+				decline
+
+			label shootout
+			branch "victory"
+				random < ( "flagship required crew" - 22 )
+
+			`	You try to take the ship by force, but die during the shootout.`
+				die
+
+			label victory
+			`	You and your crew manage to overpower the owner's crew and steal the ship!`
+				accept
+
+	on defer
+		set "Randomize Midnight Modified Cargo Star"
+
+	on accept
+		"reputation: Syndicate" <?= -1000
+		"reputation: Merchant" <?= -1000
+		give ship "Modified Cargo Star"
+		clear "Randomize Midnight Modified Cargo Star"
+
+	on enter
+		dialog `Looks like the authorities got wind of you pirating the Modified Cargo Star...`
+
+	npc kill
+		government "Syndicate"
+		personality waiting staying vindictive heroic
+		fleet "Large Syndicate"
+		fleet "Small Syndicate" 2

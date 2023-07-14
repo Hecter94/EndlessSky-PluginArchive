@@ -1,5 +1,6 @@
 
 #Imports
+from copy import copy
 import math
 #from math import sqrt
 import glob
@@ -167,6 +168,7 @@ def analyze_outfits(faction):
     return smallest_gun,smallest_turret,smallest_power,smallest_engine
 
 def outfit_type(outfit):
+    weaponCategories = ['Guns','Turrets','Secondary']
     if(outfit.energy_gen > 0):
         return "power gen"
     elif(outfit.energy_gen <= 0) and (outfit.energy_cap > 0):
@@ -177,6 +179,10 @@ def outfit_type(outfit):
         return "hull repair"
     elif(outfit.cooling > 0) or (outfit.active_cooling > 0):
         return "cooling"
+    elif(outfit.ramscoop > 0):
+        return "ramscoop"
+    elif(weaponCategories.count(outfit.category)):
+        return "weapon"
     else:
         return "other"
 
@@ -185,25 +191,28 @@ def outfit_sort(outfitlist,sortby="outfit space"):
         for i in range(len(outfitlist)):
             for j in range(i+1,len(outfitlist)):
                 if outfitlist[i].outfit_space < outfitlist[j].outfit_space:
-                    outfitlist[i].outfit_space,outfitlist[j].outfit_space = outfitlist[j].outfit_space,outfitlist[i].outfit_space
+                    outfitlist[i],outfitlist[j] = outfitlist[j],outfitlist[i]
     return outfitlist
 
 def ship_update(faction,ship,shipstats,outfit,mode,weapon=False):
-    if mode == 'install':
+    if weapon:
+        weapon = outfit.weapon_type
+    if mode == 'install' or mode == "Install":
         shipstats['outfit sp'] -= outfit.outfit_space
         shipstats['engine sp'] -= outfit.engine_space
         shipstats['engine energy'] += outfit.thrust_ener + outfit.turn_ener
         shipstats['engine heat'] += outfit.thrust_heat + outfit.turn_heat
         shipstats['thrust'] += outfit.thrust
         shipstats['turn'] += outfit.turn
-        shipstats['weapon sp'] -= outfit.weapon_space
-        shipstats['weapon heat'] += outfit.fire_heat
-        shipstats['weapon energy'] += outfit.fire_ener
-        if weapon == "Turret" or weapon == "Anti-Missile":
+        if weapon:
+            shipstats['weapon sp'] -= outfit.weapon_space
+            shipstats['weapon heat'] += outfit.fire_heat
+            shipstats['weapon energy'] += outfit.fire_ener
+        if weapon == "turret" or weapon == "antimissile":
             shipstats['turret free'] -= 1
-        elif weapon == "Gun":
+        elif weapon == "gun":
             shipstats['gun free'] -= 1
-        if weapon == "Anti-Missile":
+        if weapon == "antimissile":
             shipstats['am count'] += 1
             shipstats['am energy'] += outfit.fire_ener * 60/outfit.reload
         shipstats['mass'] += outfit.mass
@@ -219,16 +228,17 @@ def ship_update(faction,ship,shipstats,outfit,mode,weapon=False):
         shipstats['regen energy'] += outfit.shields_ener + outfit.hull_ener
         shipstats['regen heat'] += outfit.shields_heat + outfit.hull_heat
         ship.outfits_list.append(outfit)
-    elif mode == 'uninstall':
+    elif mode == 'uninstall' or mode == "Uninstall":
         shipstats['outfit sp'] += outfit.outfit_space
         shipstats['engine sp'] += outfit.engine_space
         shipstats['engine energy'] -= outfit.thrust_ener + outfit.turn_ener
         shipstats['engine heat'] -= outfit.thrust_heat + outfit.turn_heat
         shipstats['thrust'] -= outfit.thrust
         shipstats['turn'] -= outfit.turn
-        shipstats['weapon sp'] += outfit.weapon_space
-        shipstats['weapon heat'] -= outfit.fire_heat
-        shipstats['weapon energy'] -= outfit.fire_ener
+        if weapon:
+            shipstats['weapon sp'] -= outfit.weapon_space
+            shipstats['weapon heat'] += outfit.fire_heat
+            shipstats['weapon energy'] += outfit.fire_ener
         if weapon == "Turret" or weapon == "Anti-Missile":
             shipstats['turret free'] += 1
         elif weapon == "Gun":
@@ -251,6 +261,32 @@ def ship_update(faction,ship,shipstats,outfit,mode,weapon=False):
         ship.outfits_list.pop(ship.outfits_list.index(outfit))
     pass
 
+def outfit_install_engine(ship,shipstats,outfit):
+    if shipstats['outfit sp'] >= outfit.outfit_space and shipstats['engine sp'] >= outfit.engine_space:
+        ship.outfits_list.append(outfit)
+        shipstats['outfit sp'] -= outfit.outfit_space
+        shipstats['engine sp'] -= outfit.engine_space
+        shipstats['energy use'] += outfit.thrust_ener
+        shipstats['engine heat'] += outfit.thrust_heat
+        shipstats['thrust'] += outfit.thrust
+        shipstats['turn'] += outfit.turn
+        if debugMessage:
+            print(f"SHIPGEN: Install Engine [{outfit.name}]")
+            print(f"OutfitSpace:{shipstats['outfit sp']}")
+            print(f"EngineSpace:{shipstats['engine sp']}")
+            print(f"Energy Use:{shipstats['energy use']}")
+            #print(f"Energy Gen:{shipstats['energy gen']}")
+            #print(f"Idle Heat:{shipstats['idle heat']}")
+        return True
+    else:
+        if debugMessage:
+            print(f"SHIPGEN: Install Engine Failed [{outfit.name}]")
+            print(f"OutfitSpace:{shipstats['outfit sp']}")
+            print(f"EngineSpace:{shipstats['engine sp']}")
+            print(f"Energy Use:{shipstats['energy use']}")
+            #print(f"Energy Gen:{shipstats['energy gen']}")
+            #print(f"Idle Heat:{shipstats['idle heat']}")
+
 def install_engine(faction,ship,shipstats,steeringlist,thrusterlist,enginelist):
     facengines = faction.engineslist
     facengines.reverse()
@@ -267,18 +303,14 @@ def install_engine(faction,ship,shipstats,steeringlist,thrusterlist,enginelist):
     thrusterlist = outfit_sort(thrusterlist)
     engine_pair_num = None
     thruster_pair_num = None
+    engine_installed = False
     i = -1
     for outfit in enginelist:
         i += 1
         if(outfit.engine_space <= shipstats['engine sp']): #For Thruster+steering combo
-            ship.outfits_list.append(outfit)
-            shipstats['outfit sp'] -= outfit.outfit_space
-            shipstats['engine sp'] -= outfit.engine_space
-            shipstats['energy use'] += outfit.thrust_ener + outfit.turn_ener
-            shipstats['engine heat'] += outfit.thrust_heat + outfit.turn_heat
-            shipstats['thrust'] += outfit.thrust
-            shipstats['turn'] += outfit.turn
+            outfit_install_engine(ship,shipstats,outfit)
             engine_pair_num = i
+            engine_installed = True
             if (faction.designpriority != "engines") or (outfit.engine_space <= shipstats['outfit sp']*.30):
                 break
             #print(f"SHIPGEN: {outfit.name} equipped, {outfit.engine_space} used from {shipstats['engine sp']}")
@@ -286,21 +318,30 @@ def install_engine(faction,ship,shipstats,steeringlist,thrusterlist,enginelist):
     for n in range(len(thrusterlist)):
         ii += 1
         if(shipstats['engine sp'] >= thrusterlist[n].engine_space+steeringlist[n].engine_space):
-            ship.outfits_list.append(thrusterlist[n])
-            ship.outfits_list.append(steeringlist[n])
-            shipstats['outfit sp'] -= thrusterlist[n].outfit_space+steeringlist[n].outfit_space
-            shipstats['engine sp'] -= thrusterlist[n].engine_space+steeringlist[n].engine_space
-            shipstats['energy use'] += thrusterlist[n].thrust_heat+steeringlist[n].thrust_heat
-            shipstats['engine heat'] += thrusterlist[n].turn_heat+steeringlist[n].turn_heat
-            shipstats['thrust'] += thrusterlist[n].thrust
-            shipstats['turn'] += steeringlist[n].turn
+            if debugMessage:
+                print(f"Engine Sp Ava:{shipstats['engine sp']}")
+                print(f"Engine Sp toUse:{thrusterlist[n].engine_space+steeringlist[n].engine_space}")
+            outfit_install_engine(ship,shipstats,thrusterlist[n])
+            outfit_install_engine(ship,shipstats,steeringlist[n])
             thruster_pair_num = n
-            shipstats['energy use'] += thrusterlist[n].thrust_ener+steeringlist[n].turn_ener
-            if (faction.designpriority != "engines") or (outfit.engine_space <= shipstats['outfit sp']*.30):
+            engine_installed = True
+            if debugMessage:
+                print(f"Outfit sp left:{shipstats['outfit sp'] }")
+            if (faction.designpriority != "engines"):
                 break
+
+    #If no engine fit, expand the ship.
+    #TODO: Alternatively generate new, smaller engine.
+    if not engine_installed:
+        ship.engine_cap += (thrusterlist[ii].engine_space+steeringlist[ii].engine_space) - ship.engine_cap
+        ship.outfit_space += (thrusterlist[ii].outfit_space+steeringlist[ii].outfit_space) - ship.outfit_space
+        ship.outfits_list.append(thrusterlist[ii])
+        ship.outfits_list.append(steeringlist[ii])
+
     return ship,shipstats,i,ii,engine_pair_num,thruster_pair_num
 
 def install_antimissile(ship,shipstats,weapon):
+    print(f"Installed AntiMissile {weapon.name}")
     ship.outfits_list.append(weapon)
     shipstats['weapon sp'] -= weapon.weapon_space
     shipstats['outfit sp'] -= weapon.outfit_space
@@ -311,6 +352,7 @@ def install_antimissile(ship,shipstats,weapon):
     return ship,shipstats
 
 def install_turret(ship,shipstats,weapon):
+    print(f"Installed turret {weapon.name}")
     ship.outfits_list.append(weapon)
     shipstats['weapon sp'] -= weapon.weapon_space
     shipstats['outfit sp'] -= weapon.outfit_space
@@ -319,6 +361,7 @@ def install_turret(ship,shipstats,weapon):
     ship.installed_weapons += 1
     return ship,shipstats
 def install_gun(ship,shipstats,weapon):
+    print(f"Installed gun {weapon.name}")
     ship.outfits_list.append(weapon)
     shipstats['weapon sp'] -= weapon.weapon_space
     shipstats['outfit sp'] -= weapon.outfit_space
@@ -328,6 +371,7 @@ def install_gun(ship,shipstats,weapon):
     ship.installed_weapons += 1
     return ship,shipstats
 def install_missile(ship,shipstats,weapon,faction):
+    print(f"Installed Missile {weapon.name}")
     ship.outfits_list.append(weapon)
     shipstats['weapon sp'] -= weapon.weapon_space
     shipstats['outfit sp'] -= weapon.outfit_space
@@ -339,142 +383,194 @@ def install_missile(ship,shipstats,weapon,faction):
     launchername = launchername.split()[0]
     ammo_cap = weapon.ammo_cap
     for ammo in faction.weaponlist:
-        ammoname = ammo.name
-        if ammoname.split()[0] == launchername:
-            for n in range(ammo_cap):
-                ship.outfits_list.append(ammo)
-            break
+        if ammo.weapon_type == 'missileammo':
+            ammoname = ammo.name
+            if ammoname.split()[0] == launchername.split()[0]:
+                for n in range(ammo_cap):
+                    ship.outfits_list.append(ammo)
+                break
     return ship,shipstats
+
+def wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
+    gunSpaceAva = shipstats['weapon sp'] > smallestWeapon[0] and shipstats['outfit sp'] > smallestWeapon[0]
+    turretSpaceAva = shipstats['weapon sp'] > smallestWeapon[1] and shipstats['outfit sp'] > smallestWeapon[1]
+    gunAvaliable = (shipstats['gun free'] >= 1 * gunExist) and gunSpaceAva
+    turretAvaliable = shipstats['turret free'] >= 1 * turretExist and turretSpaceAva
+    #spaceAvaliable = ((shipstats['weapon sp'] > smallestWeapon) and (shipstats['outfit sp'] > smallestWeapon))
+    return (gunAvaliable or turretAvaliable)
+
 def install_weapons(faction,ship,shipstats,weaponlist):
     c = 0  
     while (shipstats['turret free']+shipstats['gun free'] > 0) and (c < len(faction.weaponlist)):
         #print("Ship WepAdd CondChk 1: ", (shipstats['turret free']+shipstats['gun free'] > 0) )
         #print("Ship WepAdd CondChk 2: ", (c < len(faction.weaponlist) ))
         #'defense offense balance hitrun kite'
+        gunExist = 0
+        turretExist = 0
+        nonAMTurretExist = False
+        smallestGun = 9999999999
+        smallestTurret = 9999999999
+        for weapon in weaponlist:
+            if weapon.weapon_type == "gun" or weapon.weapon_type == "missile":
+                gunExist = 1
+                if weapon.outfit_space < smallestGun:
+                    smallestGun = weapon.outfit_space
+            if weapon.weapon_type == "turret" or weapon.weapon_type == "antimissile":
+                turretExist = 1
+                nonAMTurretExist = weapon.weapon_type == "turret"
+                if weapon.outfit_space < smallestTurret:
+                    smallestTurret = weapon.outfit_space
+        smallestWeapon = [smallestGun,smallestTurret]
+        i = 0
         #TODO:Figure out better way to do this
         if faction.fleet_tactic == 'kite':
-            for weapon in weaponlist:
-                turretFree = bool(shipstats['turret free'] > 0)
-                gunFree = bool(shipstats['gun free'] > 0)
-                if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+            while (wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)):
+                for weapon in weaponlist:
+                    turretFree = bool(shipstats['turret free'] > 0)
+                    gunFree = bool(shipstats['gun free'] > 0)
+                    if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+                        break
+                    if gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
+                        ship,shipstats = install_missile(ship,shipstats,weapon,faction)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and (shipstats['am count'] < 1 or not nonAMTurretExist):
+                        ship,shipstats = install_antimissile(ship,shipstats,weapon)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
+                        ship,shipstats = install_turret(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
+                        ship,shipstats = install_gun(ship,shipstats,weapon)
+                    i += 1
+                if not wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
                     break
-                if gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
-                    ship,shipstats = install_missile(ship,shipstats,weapon,faction)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and shipstats['am count'] < 1:
-                    ship,shipstats = install_antimissile(ship,shipstats,weapon)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
-                    ship,shipstats = install_turret(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
-                    ship,shipstats = install_gun(ship,shipstats,weapon)
         elif faction.fleet_tactic == 'hitrun':
-            for weapon in weaponlist:
-                turretFree = bool(shipstats['turret free'] > 0)
-                gunFree = bool(shipstats['gun free'] > 0)
-                if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+            while (wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)):
+                for weapon in weaponlist:
+                    turretFree = bool(shipstats['turret free'] > 0)
+                    gunFree = bool(shipstats['gun free'] > 0)
+                    if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+                        break
+                    if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
+                        ship,shipstats = install_turret(ship,shipstats,weapon)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and (shipstats['am count'] < 1 or not nonAMTurretExist):
+                        ship,shipstats = install_antimissile(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
+                        ship,shipstats = install_gun(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
+                        ship,shipstats = install_missile(ship,shipstats,weapon,faction)
+                    i += 1
+                if not wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
                     break
-                if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
-                    ship,shipstats = install_turret(ship,shipstats,weapon)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and shipstats['am count'] < 1:
-                    ship,shipstats = install_antimissile(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
-                    ship,shipstats = install_gun(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
-                    ship,shipstats = install_missile(ship,shipstats,weapon,faction)
         elif faction.fleet_tactic == 'defense':
-            for weapon in weaponlist:
-                turretFree = bool(shipstats['turret free'] > 0)
-                gunFree = bool(shipstats['gun free'] > 0)
-                if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+            while (wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)):
+                for weapon in weaponlist:
+                    turretFree = bool(shipstats['turret free'] > 0)
+                    gunFree = bool(shipstats['gun free'] > 0)
+                    if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+                        break
+                    if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and (shipstats['am count'] < 1 or not nonAMTurretExist):
+                        ship,shipstats = install_antimissile(ship,shipstats,weapon)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
+                        ship,shipstats = install_turret(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
+                        ship,shipstats = install_gun(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
+                        ship,shipstats = install_missile(ship,shipstats,weapon,faction)
+                    i += 1
+                if not wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
                     break
-                if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and shipstats['am count'] < 1:
-                    ship,shipstats = install_antimissile(ship,shipstats,weapon)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
-                    ship,shipstats = install_turret(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
-                    ship,shipstats = install_gun(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
-                    ship,shipstats = install_missile(ship,shipstats,weapon,faction)
         elif faction.fleet_tactic == 'offense':
-            for weapon in weaponlist:
-                turretFree = bool(shipstats['turret free'] > 0)
-                gunFree = bool(shipstats['gun free'] > 0)
-                if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+            while (wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)):
+                for weapon in weaponlist:
+                    turretFree = bool(shipstats['turret free'] > 0)
+                    gunFree = bool(shipstats['gun free'] > 0)
+                    if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+                        break
+                    if gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
+                        ship,shipstats = install_missile(ship,shipstats,weapon,faction)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
+                        ship,shipstats = install_turret(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
+                        ship,shipstats = install_gun(ship,shipstats,weapon)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and (shipstats['am count'] < 1 or not nonAMTurretExist):
+                        ship,shipstats = install_antimissile(ship,shipstats,weapon)
+                    i += 1
+                if not wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
                     break
-                if gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
-                    ship,shipstats = install_missile(ship,shipstats,weapon,faction)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
-                    ship,shipstats = install_turret(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
-                    ship,shipstats = install_gun(ship,shipstats,weapon)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and shipstats['am count'] < 1:
-                    ship,shipstats = install_antimissile(ship,shipstats,weapon)
         else:
-            for weapon in weaponlist:
-                turretFree = bool(shipstats['turret free'] > 0)
-                gunFree = bool(shipstats['gun free'] > 0)
-                if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+            while (wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)):
+                res = wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist)
+                for weapon in weaponlist:
+                    turretFree = bool(shipstats['turret free'] > 0)
+                    gunFree = bool(shipstats['gun free'] > 0)
+                    if (shipstats['turret free']==0) and (shipstats['gun free']==0):
+                        break
+                    if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and (shipstats['am count'] < 1 or not nonAMTurretExist):
+                        ship,shipstats = install_antimissile(ship,shipstats,weapon)
+                    elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
+                        ship,shipstats = install_turret(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
+                        ship,shipstats = install_gun(ship,shipstats,weapon)
+                    elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
+                        ship,shipstats = install_missile(ship,shipstats,weapon,faction)
+                if not wep_install_loop_calc(shipstats,smallestWeapon,gunExist,turretExist):
                     break
-                if turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'antimissile' and shipstats['am count'] < 1:
-                    ship,shipstats = install_antimissile(ship,shipstats,weapon)
-                elif turretFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'turret':
-                    ship,shipstats = install_turret(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'gun':
-                    ship,shipstats = install_gun(ship,shipstats,weapon)
-                elif gunFree and (weapon.weapon_space <= shipstats['weapon sp']) and weapon.weapon_type == 'missile':
-                    ship,shipstats = install_missile(ship,shipstats,weapon,faction)
         c += 1
     return ship,shipstats
-def install_generator_alt(faction,ship,shipstats,powergenlist,generator_percent=.5):
-    if faction.designpriority[0] == 'power':
-        generator_percent += .1
-    while shipstats['energy gen'] <= 0:
-        for outfit in powergenlist:
-            if (shipstats['energy use'] >= 0) and (outfit.outfit_space <= (shipstats['outfit sp']*generator_percent)):
-                ship_update(faction,ship,shipstats,outfit,mode='install',weapon=False)
-                #Install another copy if still required.
-                if (shipstats['energy use'] >= 0) and (outfit.outfit_space <= (shipstats['outfit sp']*generator_percent)):
-                    ship_update(faction,ship,shipstats,outfit,mode='install',weapon=False)
-                break
-        generator_percent = min(1,generator_percent + .1)
+
+def get_outfit_space(outfit):
+    return outfit.outfit_space
 
 def pick_generator(faction,ship,shipstats,powergenlist,generator_percent=.5):
     chosen_generators = []
 
+    #If no power generator exist somehow, make new one.
+    if not len(powergenlist) and shipstats['outfit sp'] > 2:
+        generate_outfits.create_power(faction,power_type_amount=1,min_outfit_space=2,max_outfit_space=shipstats['outfit sp'])
+        for outfit in faction.outfitlist:
+            if outfit_type(outfit) == "power gen":
+                powergenlist.append(outfit)
+
     #Find Generator that fits just right.
     for outfit in powergenlist:
-        if outfit.energy_gen >= shipstats['energy use']:
+        if outfit.energy_gen >= shipstats['energy use'] and outfit.outfit_space <= shipstats['outfit sp']:
             chosen_generators.append(outfit)
-
+    
     #Else make a combination of generators that works.
-    if not chosen_generators:
+    if len(chosen_generators) == 0:
         maxPowerGen = 0
         n = 0
         maxGenIndex = 0
-        tempPowList = []
+        tempPow = copy(shipstats['energy use'])
+        outfit_sort(powergenlist)
         for outfit in powergenlist:
-            if outfit.energy_gen > maxPowerGen:
-                #tempPowList.append(outfit)
-                maxGenIndex = n
-                maxPowerGen = outfit.energy_gen
-            n += 1
-        fittableGenerators = math.floor(shipstats['outfit sp']/outfit.outfit_space)
-        requiredGenerators = math.ceil(shipstats['energy use']/maxPowerGen)
+            fittableGenerators = math.floor(shipstats['outfit sp']/outfit.outfit_space)
+            loopiteration = 0
+            while tempPow > 0 and loopiteration < fittableGenerators:
+                chosen_generators.append(outfit)
+                tempPow -= outfit.energy_gen
+                loopiteration += 1
+            if False:
+                if outfit.energy_gen > maxPowerGen:
+                    #tempPowList.append(outfit)
+                    maxGenIndex = copy(n)
+                    maxPowerGen = outfit.energy_gen
+                n += 1
+        #fittableGenerators = math.floor(shipstats['outfit sp']/powergenlist[maxGenIndex].outfit_space)
+        #requiredGenerators = math.ceil(shipstats['energy use']/maxPowerGen)
         #if fittableGenerators <= requiredGenerators:
-        for n in range(requiredGenerators):
-            chosen_generators.append(powergenlist[maxGenIndex])
+        #for n in range(requiredGenerators):
+        #    chosen_generators.append(powergenlist[maxGenIndex])
             
-                
+    #Install another generator if it can fit and if faction prioritize it.
     if chosen_generators and faction.designpriority[0] == 'power':
         for outfit in powergenlist:
             if outfit.energy_gen >= chosen_generators[0].energy_gen and outfit.outfit_space >= shipstats['outfit sp']:
                 chosen_generators.append(outfit)
-
     if len(chosen_generators):
         for generator in chosen_generators:
             just_install_generator(ship,shipstats,generator)
     else:
         if debugMessage:
-            print("SHIPGEN: Install Generator Failed.")
+            print("SHIPGEN: Install Generators Failed, no generator selected.")
             print(f"OutfitSpace:{shipstats['outfit sp']}")
             print(f"Energy Use:{shipstats['energy use']}")
             print(f"Energy Gen:{shipstats['energy gen']}")
@@ -490,16 +586,16 @@ def just_install_generator(ship,shipstats,outfit):
         shipstats['energy storage'] += outfit.energy_cap
         shipstats['idle heat'] += outfit.heat_gen
         if debugMessage:
-            print("SHIPGEN: Install Generator.")
-            print(f"OutfitSpace:{shipstats['outfit sp']}")
+            print(f"SHIPGEN: Install Generator [{outfit.name}]")
+            print(f"OutfitSpace/Req:{shipstats['outfit sp']}/{outfit.outfit_space}")
             print(f"Energy Use:{shipstats['energy use']}")
             print(f"Energy Gen:{shipstats['energy gen']}")
             print(f"Idle Heat:{shipstats['idle heat']}")
         return True
     else:
         if debugMessage:
-            print("SHIPGEN: Install Generator Failed.")
-            print(f"OutfitSpace:{shipstats['outfit sp']}")
+            print(f"SHIPGEN: Install Generator Failed [{outfit.name}]")
+            print(f"OutfitSpace/Req:{shipstats['outfit sp']}/{outfit.outfit_space}")
             print(f"Energy Use:{shipstats['energy use']}")
             print(f"Energy Gen:{shipstats['energy gen']}")
             print(f"Idle Heat:{shipstats['idle heat']}")
@@ -586,7 +682,8 @@ def install_regen(faction,ship,shipstats,shieldgenlist,hullgenlist):
             break
     return ship,shipstats
 
-def install_battery(faction,ship,shipstats,batterylist,battthreshold=0):
+def install_battery(faction,ship,shipstats,batterylist,battthreshold=50):
+    batteryInstalled = False
     for outfit in batterylist:
         if (outfit.outfit_space <= shipstats['outfit sp']) and (shipstats['energy storage'] <= battthreshold): #Just one storage
             #print(f"installed {outfit.name}, space{outfit.outfit_space}/{shipstats['outfit sp']}")
@@ -596,7 +693,26 @@ def install_battery(faction,ship,shipstats,batterylist,battthreshold=0):
             shipstats['energy use'] += outfit.energy_use
             shipstats['energy storage'] += outfit.energy_cap
             shipstats['idle heat'] += outfit.heat_gen
+            batteryInstalled = True
             break
+    if len(batterylist) and batteryInstalled:
+        if debugMessage:
+            print(f"SHIPGEN: Install Battery [{outfit.name}]")
+            print(f"OutfitSpace/Req:{shipstats['outfit sp']}/{outfit.outfit_space}")
+            print(f"Energy Cap:{shipstats['energy storage']}")
+            print(f"Energy Gen:{shipstats['energy gen']}")
+            print(f"Idle Heat:{shipstats['idle heat']}")
+    elif len(batterylist) and not batteryInstalled:
+        if debugMessage:
+            print(f"SHIPGEN: Install Battery Failed")
+            print(f"OutfitSpace/Req:{shipstats['outfit sp']}/{outfit.outfit_space}")
+            print(f"Energy Cap:{shipstats['energy storage']}")
+            print(f"Energy Gen:{shipstats['energy gen']}")
+            print(f"Idle Heat:{shipstats['idle heat']}")
+    elif not len(batterylist):
+        if debugMessage:
+            print(f"SHIPGEN: Install Battery Failed, No Battery Avaliable")
+
     return ship,shipstats
 #Add outfits to the ship TODO*** Universal install function.
 def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much sometimes too few
@@ -626,6 +742,8 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                  "energy storage": 0,
                  "regen energy": 0,
                  "am count": 0,
+
+                 "cooling ener": 0,
                  
                  "idle heat": 0,
                  "engine heat": 0,
@@ -654,7 +772,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
         shipstats['outfit sp'] -= 20
     #==============Sort Outfits
     faction_outfitlist = faction.outfitlist
-    steeringlist,thrusterlist
+    #steeringlist,thrusterlist
     #faction_outfitlist=faction_outfitlist.reverse()
     for outfit in faction_outfitlist:
         if outfit_type(outfit) == "power gen":
@@ -744,46 +862,96 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
     #print(f"Postinit spaceleft: {shipstats['outfit sp']}")
     #Check if it have enough energy gen/store
     print(f"SHIPGEN: PreEStore, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']}")
-    c = 0
-    while (shipstats['energy use'] > 0) and c <= len(faction.outfitlist)*2:
-        #print("SHIPGEN: Not enough energy?")
-        for outfit in powergenlist:
-            if (shipstats['energy use'] >= 0) and (outfit.outfit_space <= shipstats['outfit sp']):
-                #print(f"installed {outfit.name}, space{outfit.outfit_space}/{shipstats['outfit sp']}")
-                ship.outfits_list.append(outfit)
-                shipstats['outfit sp'] -= outfit.outfit_space
-                shipstats['energy use'] -= outfit.energy_gen
-                shipstats['energy storage'] += outfit.energy_cap
-                shipstats['idle heat'] += outfit.heat_gen
-        c += 1
-        #Use smaller engines if possible. TODO: Fix,
-        if c == len(faction.outfitlist):
-            if engindex >= 0:
-                try:
-                    ship.outfits_list.pop(0) 
-                    ship.outfits_list.append(enginelist[min(len(enginelist)-1,engine_pair_num+1)])
-                    shipstats['energy use'] -= enginelist[engine_pair_num].thrust_ener-enginelist[min(len(enginelist)-1,engine_pair_num+1)].thrust_ener
-                    shipstats['energy use'] -= enginelist[engine_pair_num].turn_ener-enginelist[min(len(enginelist)-1,engine_pair_num+1)].turn_ener
-                    shipstats['engine heat'] -= enginelist[engine_pair_num].thrust_heat-enginelist[min(len(enginelist)-1,engine_pair_num+1)].thrust_heat
-                    shipstats['engine heat'] -= enginelist[engine_pair_num].turn_heat-enginelist[min(len(enginelist)-1,engine_pair_num+1)].turn_heat
-                    shipstats['outfit sp'] += enginelist[engine_pair_num].outfit_space-enginelist[min(len(enginelist)-1,engine_pair_num+1)].outfit_space
-                except IndexError:
-                    pass
-                
-            elif thrturindex >= 0:
-                try:
-                    ship.outfits_list.pop(0) 
-                    ship.outfits_list.pop(0) 
-                    ship.outfits_list.append(thrusterlist[min(len(thrusterlist)-1,thruster_pair_num+1)])
-                    ship.outfits_list.append(steeringlist[min(len(steeringlist)-1,thruster_pair_num+1)])
-                    shipstats['energy use'] -= thrusterlist[min(len(thrusterlist)-1,thruster_pair_num+1)].thrust_ener
-                    shipstats['energy use'] -= steeringlist[min(len(steeringlist)-1,thruster_pair_num+1)].turn_ener
-                    shipstats['engine heat'] -= thrusterlist[min(len(thrusterlist)-1,thruster_pair_num+1)].thrust_heat
-                    shipstats['engine heat'] -= steeringlist[min(len(steeringlist)-1,thruster_pair_num+1)].turn_heat
-                    shipstats['outfit sp'] += thrusterlist[min(len(thrusterlist)-1,thruster_pair_num+1)].outfit_space
-                    shipstats['outfit sp'] += steeringlist[min(len(steeringlist)-1,thruster_pair_num+1)].outfit_space
-                except IndexError:
-                    pass    
+    #IF not enough energy gen is installed, it probably can't because something is too big.
+    #Find a suitable energy gen and space required for that outfit then try to make space
+    # for it by downgrading other non-essentials like shield gen and hull repairs.
+    #TODO:Allow picking engines or weapons to downgrade based on faction priority.
+    #Not considering batteries because it was installed after the powergen.
+    if (shipstats['energy use'] > 0):
+        outfitspaceRequired = 0
+        selectedPowGen = None
+        reversedPowgenList = reversed(powergenlist)
+        for outfit in reversedPowgenList:
+            if outfit.energy_gen >= shipstats['energy use'] and shipstats['outfit sp'] < outfit.outfit_space:
+                outfitspaceRequired = outfit.outfit_space - shipstats['outfit sp']
+                selectedPowGen = outfit
+                break
+        for outfit in ship.outfits_list:
+            if outfit_type(outfit) == "shield gen" :
+                if debugMessage:
+                    print("Downgrading Shield Gen")
+                enoughOutfitSpace = outfit.outfit_space > outfitspaceRequired
+                #Figure out if there's smaller outfit that can fit and still have space avaliable.
+                outfitOK = False
+                if enoughOutfitSpace:
+                    currentIndex = shieldgenlist.index(outfit)
+                    while(currentIndex > 0):
+                        newOutfit = shieldgenlist[currentIndex-1]
+                        currentIndex -= 1
+                        if outfit.outfit_space - newOutfit.outfit_space >= outfitspaceRequired:
+                            outfitOK = True
+                            break
+                if outfitOK:
+                    if debugMessage:
+                        print("Downgraded Shield Gen")
+                    ship_update(faction,ship,shipstats,outfit,"uninstall",weapon=False)
+                    ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+            elif outfit_type(outfit) == "hull repair" :
+                if debugMessage:
+                    print("Downgrading Hull Repair")
+                enoughOutfitSpace = outfit.outfit_space > outfitspaceRequired
+                #Figure out if there's smaller outfit that can fit and still have space avaliable.
+                outfitOK = False
+                if enoughOutfitSpace:
+                    currentIndex = hullgenlist.index(outfit)
+                    while(currentIndex > 0):
+                        newOutfit = hullgenlist[currentIndex-1]
+                        currentIndex -= 1
+                        if outfit.outfit_space - newOutfit.outfit_space >= outfitspaceRequired:
+                            outfitOK = True
+                            break
+                if outfitOK:
+                    if debugMessage:
+                        print("Downgraded Hull Repair")
+                    ship_update(faction,ship,shipstats,outfit,"uninstall",weapon=False)
+                    ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+            elif outfit_type(outfit) == "weapon":
+                if debugMessage:
+                    print("Downsizing Weapon")
+                enoughOutfitSpace = outfit.outfit_space > outfitspaceRequired
+                #Figure out if there's smaller outfit that can fit and still have space avaliable.
+                outfitOK = False
+                if enoughOutfitSpace:
+                    currentIndex = weaponlist.index(outfit)
+                    while(currentIndex > 0):
+                        newOutfit = weaponlist[currentIndex-1]
+                        currentIndex -= 1
+                        weaponSameType = outfit.weapon_type == newOutfit.weapon_type
+                        if outfit.outfit_space - newOutfit.outfit_space >= outfitspaceRequired and weaponSameType:
+                            outfitOK = True
+                            break
+                #Uninstall weapon first, if warship just make new weapon to fit.
+                ship_update(faction,ship,shipstats,outfit,"uninstall",weapon=True)
+                if outfitOK:
+                    if debugMessage:
+                        print("Downsized Weapon")
+                    ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+                if not outfitOK and ship.isWarship:
+                    weaponSpaceAva = shipstats['outfit sp'] - outfitspaceRequired
+                    if weaponSpaceAva <= 0:
+                        shipstats['outfit sp'] += abs(weaponSpaceAva) + 5
+                        shipstats['weapon sp'] += abs(weaponSpaceAva) + 5
+                        ship.outfit_space += abs(weaponSpaceAva) + 5
+                        ship.weapon_cap += abs(weaponSpaceAva) + 5
+                        weaponSpaceAva += abs(weaponSpaceAva) + 5
+                    generate_weapons.create_weapon(faction,weapon_amount = 1,weapon_min_outfit = 2, weapon_max_outfit = weaponSpaceAva)
+                    #Refresh weaponlist
+                    weaponlist = outfit_sort(faction.weaponlist)
+                    ship,shipstats = install_weapons(faction,ship,shipstats,weaponlist)
+                    print(f"Installed Smaller Weapon, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
+        if selectedPowGen:
+            ship_update(faction,ship,shipstats,selectedPowGen,"Install",weapon=False)
+        
     #====================post outfitting check.
     if debugMessage:
         print(f"SHIPGEN: PO, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
@@ -801,12 +969,13 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
         #print("Checking existing cooling")
         #print(f"spaceleft: {shipstats['outfit sp']}")
         for iii in range(len(faction.outfitlist)):
+            #Largest Cooling that fits
             largest_cooling = 0
             for outfit in faction.outfitlist:
                 if (outfit_type(outfit) == "cooling") and (outfit.outfit_space <= shipstats['outfit sp']):
                     if largest_cooling == 0:
                         largest_cooling = outfit
-                    elif outfit.outfit_space >= largest_cooling.outfit_space:
+                    elif outfit.outfit_space >= largest_cooling.outfit_space and shipstats['outfit sp'] >= largest_cooling.outfit_space:
                         largest_cooling = outfit
             if largest_cooling != 0:
                 while(totalheat > ship_max_heat*0.8 and shipstats['outfit sp'] >= largest_cooling.outfit_space):
@@ -818,7 +987,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                     shipstats['energy use'] += outfit.cooling_ener/2
                     totalheat -= outfit.cooling
                     totalheat -= outfit.active_cooling
-        if (totalheat > ship_max_heat*0.8) and (shipstats['outfit sp'] > 0):
+        if (totalheat > ship_max_heat*0.8) and (shipstats['outfit sp'] > 0) and not largest_cooling:
             print("Generating new cooling")
             heatdiff = totalheat-ship_max_heat*0.8
             generate_outfits.create_cooling(faction,max_outfit_count=1,max_outfit_space=shipstats['outfit sp'],coolingmin=heatdiff)
@@ -826,7 +995,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                 if (outfit_type(outfit) == "cooling") and (outfit.outfit_space <= shipstats['outfit sp']):
                     if largest_cooling == 0:
                         largest_cooling = outfit
-                    elif outfit.outfit_space >= largest_cooling.outfit_space:
+                    elif outfit.outfit_space >= largest_cooling.outfit_space and shipstats['outfit sp'] >= largest_cooling.outfit_space:
                         largest_cooling = outfit
             if largest_cooling != 0:
                 while(totalheat > ship_max_heat*0.8 and shipstats['outfit sp'] >= largest_cooling.outfit_space):
@@ -965,18 +1134,17 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
         print(f"SHIPGEN: AftBatt, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
     #====================POWER CHECK
     if shipstats['energy use'] >= 0 and shipstats['outfit sp'] > 0:
-        ship,shipstats,powergenlist = install_generator(faction,ship,shipstats,powergenlist,generator_percent=1)
-    elif shipstats['energy use'] >= 0 and shipstats['outfit sp'] < 0:
+        ship,shipstats,powergenlist = pick_generator(faction,ship,shipstats,powergenlist)
+    elif shipstats['energy use'] >= 0 and shipstats['outfit sp'] <= 0:
         smallestpowgen = 0
         for powgen in powergenlist: #Look for smallest powergenerator sufficient for 70% power
             if smallestpowgen == 0:
                 smallestpowgen = powgen
             if powgen.energy_gen >= shipstats['energy use'] * .7 and powgen.outfit_space <= smallestpowgen.outfit_space:
                 smallestpowgen = powgen
-        ship.outfits_list.append(smallestpowgen)
         ship.outfit_space += smallestpowgen.outfit_space
-        #shipstats['outfit sp'] += smallestpowgen.outfit_space
-        shipstats['idle heat'] += smallestpowgen.heat_gen
+        shipstats['outfit sp'] += smallestpowgen.outfit_space
+        just_install_generator(ship,shipstats,smallestpowgen)
     if debugMessage:
         print(f"SHIPGEN: AftPow, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
     #====================HEAT ReCHECK
@@ -1014,7 +1182,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                 ship.outfits_list.append(smallestcooling)
                 ship.outfit_space += smallestcooling.outfit_space
                 ship_max_heat += smallestcooling.outfit_space
-                #shipstats['outfit sp'] += smallestcooling.outfit_space
+                shipstats['outfit sp'] += smallestcooling.outfit_space
                 shipstats['idle heat'] -= smallestcooling.cooling
                 shipstats['idle heat'] -= smallestcooling.active_cooling
     print(f"SHIPGEN: AftHeat2, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
@@ -1396,6 +1564,7 @@ def create_ship(faction): #Todo, option for without faction?
             ship_drones = 0
         
         #Make sure at least smallest outfits fits.
+        #Engine *2 to account for steering.
         if smallest_engine*2 > ship_engine_capacity:
             ship_engine_capacity = smallest_engine*2
         if (smallest_gun > ship_weapon_capacity and ship_guns > 0) and warship == True:

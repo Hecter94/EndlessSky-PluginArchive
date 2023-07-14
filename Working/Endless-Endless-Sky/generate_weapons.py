@@ -75,7 +75,7 @@ class class_Weapon(class_Outfit):
         super().__init__(name,outfit_category,cost,thumbnail,mass,outfit_space,weapon_space)
 
 
-def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, weapon_max_outfit = 80):
+def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, weapon_max_outfit = 80,weaponconfig={}):
     
     namegen = namegenerator.Namegenerator(faction)
 
@@ -109,20 +109,37 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
         weapon_amount = max(1,random.gauss(4,2))
 
     print("\n")
+
+    weapon_type = 0
+    for key in weaponconfig:
+        if(key == "weapon_type"):
+            weapon_type = weaponconfig[key]
+
     weapon_types_generated_count = 1
     while weapon_types_generated_count <= int(weapon_amount):
         
+        create_turrets = False
+
         beam_wep_weight = 25 * min(1,remap(faction.tier,0.1,4,0.1,1))
         projectile_wep_weight = 25 + (beam_wep_weight-25)
-        weapon_type_weight = [projectile_wep_weight,25,beam_wep_weight,25]
-        weapon_type = random.choices(('projectile','missile','beam','anti-missile'),weights=weapon_type_weight)
-        weapon_type = weapon_type[0]
+        if not weapon_type:
+            weapon_type_weight = [projectile_wep_weight,25,beam_wep_weight,25]
+            weapon_type = random.choices(('projectile','missile','beam','anti-missile'),weights=weapon_type_weight)
+            weapon_type = weapon_type[0]
+        else:
+            if weapon_type == 'gun':
+                weapon_type = random.choice(('projectile','beam'))
+            elif weapon_type == 'turret':
+                weapon_type = random.choice(('projectile','beam'))
+                create_turrets = True
+            #elif weapon_type == 'missile':
+            elif weapon_type == 'antimissile':
+                weapon_type = 'anti-missile'
         weapon_outfit = round(random.randint(math.floor(weapon_min_outfit),max(1,weapon_max_outfit)))
         weapon_mass = weapon_outfit
 
         weapon_is_burst = int(random.paretovariate(5)) #1 = no burst
-        #Burst doesn't do anything at the moment, will use later.
-        create_turrets = False
+        
         if random.randrange(round(weapon_outfit/3),max(1,weapon_outfit)) <= 40:
             create_turrets = True
         print("Weapon type: " + (str(weapon_type)))
@@ -341,8 +358,8 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                 if(spdmgvalue > 0):
                     turret_special_dpsh[spdmgtype] = spdmgvalue
         turret_reload = round(max(1,weapon_reload/turret_gun_num))
-        turret_extra_outfit = random.randrange(round(weapon_outfit/3*(weapon_outfit/10)),round(weapon_outfit/3*(weapon_outfit/5)))
-        turret_turn = round(weapon_outfit*1.5/turret_extra_outfit*(turret_gun_num*0.3),1)
+        turret_extra_outfit = random.randrange(round(weapon_outfit/3*(weapon_outfit/10)),round(weapon_outfit/3*(weapon_outfit/5)+5))
+        turret_turn = round(weapon_outfit*1.5/max(1,turret_extra_outfit)*(turret_gun_num*0.3),1)
 
         #=============Visuals/Names
         gun_types = ['Gun','Cannon','Blaster','Culverin','Howizer','Mortar','Bombard','Basilisk','Ballista']

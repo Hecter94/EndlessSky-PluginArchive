@@ -17,7 +17,7 @@ mission "Vault Weapon Pulse Rifle"
 	source
 		government Republic
 	to offer
-		"combat rating" < 8000
+		"combat rating" > 8000
 		random < 70
 	on offer
 		conversation
@@ -102,7 +102,7 @@ mission "Vault Weapon Tuning Rifle"
 	source
 		government Republic
 	to offer
-		"combat rating" < 8000
+		"combat rating" > 8000
 		random < 70
 	on offer
 		conversation
@@ -184,7 +184,7 @@ mission "Vault Weapon Thermal Repeater Rifle"
 	source
 		government Syndicate
 	to offer
-		"combat rating" < 8000
+		"combat rating" > 8000
 		random < 70
 	on offer
 		conversation
@@ -636,6 +636,7 @@ mission "Vault Weapon Quash 5"
 		conversation
 			scene "thumbnail/freighter"
 			`The attack on the Underdark is the hot topic of conversation at the spaceport bar. As the story goes, a few months ago the Covert mining cartel got ahold of an alien device that could quickly convert large amounts of coal into diamonds. The cartel employee responsible for safeguarding the device stabbed the cartel in the back and has become a pirate warlord. It turns out the device can be used as a powerful weapon, and the Underdark was its latest victim. The cartel has placed a hefty bounty on his ship, the Diabolos. While it has already made several attacks on cartel ships in Gienah, they must be using another pirate outpost as their base of operations.`
+				accept
 	on enter "Persian"
 		conversation
 			scene "thumbnail/raider"
@@ -672,6 +673,16 @@ mission "Vault Weapon Quash 5"
 			`	You've confirmed that the device stolen from the mining cartel is actually the Quarg Graviton Generator stolen from Farpoint. Before deciding what to do with it, you might consider returning to <origin> and collecting the bounty on the Diabolos.`
 	on complete
 		payment 1000000
+
+mission "Vault Weapon Quash 5 Patch"
+	landing
+	invisible
+	to offer
+		has "Vault Weapon Quash 5: declined"
+	on offer
+		clear "Vault Weapon Quash 5: offered"
+		clear "Vault Weapon Quash 5: declined"
+		fail
 
 mission "Vault Weapon Quash 6"
 	landing
@@ -800,7 +811,7 @@ mission "Vault Weapon Insurgent Subjugation Gear"
 				`	"Alright, I'll retrieve the item."`
 				`	"Sorry, find someone else to do it."`
 					goto refuse
-			"thumbnail/behemoth"
+			scene "thumbnail/behemoth"
 			`	You've decided to hunt down what is likely another stolen weapon from Farpoint's evidence vault. A Behemoth is an uncommon sight in the south. Tracking this one down shouldn't be too difficult. Their message was oddly vague however. Maybe the stolen object was one of the Quarg weapons again.`
 				accept
 			label refuse
@@ -810,6 +821,20 @@ mission "Vault Weapon Insurgent Subjugation Gear"
 		conversation
 			scene "thumbnail/pirate mammoth"
 			`There appears to be a Behemoth here. Could this be the mysterious "Behemoth" that took the stolen item from the Poisonwood dockworkers? A closer look reveals that it's actually a Mammoth, a heavily modified Behemoth sometimes used by pirates. It powers up its weapons. The captain has abandoned all pretense of being peaceful. If they do have the stolen weapon, they aren't going to give it up willingly.`
+	npc evade
+		to spawn
+			has "transporting insurgent subjugation gear"
+		government "Quarg"
+		system Enif
+		personality waiting surveillance
+		ship "Quarg Skylark (Scanner)" "Quorok"
+	npc evade
+		to spawn
+			has "transporting insurgent subjugation gear"
+		government "Quarg"
+		system destination
+		personality waiting surveillance
+		ship "Quarg Wardragon (Scanner)" "Qualrog"
 	npc capture
 		government "Bounty"
 		system Ablodab
@@ -835,20 +860,6 @@ mission "Vault Weapon Insurgent Subjugation Gear"
 			action
 				"reputation: Republic" <?= 0
 				fail "Vault Weapon Insurgent Subjugation Gear"
-	npc evade
-		to spawn
-			has "transporting insurgent subjugation gear"
-		government "Quarg"
-		system Enif
-		personality waiting surveillance
-		ship "Quarg Skylark (Scanner)"
-	npc evade
-		to spawn
-			has "transporting insurgent subjugation gear"
-		government "Quarg"
-		system destination
-		personality waiting surveillance
-		ship "Quarg Wardragon (Scanner)"
 	on abort
 		"reputation: Republic" <?= 0
 		clear "transporting insurgent subjugation gear"

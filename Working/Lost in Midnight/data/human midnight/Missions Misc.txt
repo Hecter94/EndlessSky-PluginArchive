@@ -812,6 +812,39 @@ mission "Infiltrator: War Begins"
 
 
 
+mission "Kraz Adds Twin Torpedo Pods"
+	landing
+	name "Twin Torpedo Pod"
+	description "Find and deliver a Twin Torpedo Pod to <destination>. Barmy will try to reverse engineer them."
+	source
+		government "Free Worlds"
+		attributes "spaceport"
+		not attributes "uninhabited"
+	destination "Rust"
+	to offer
+		has "event: deep sky tech available"
+		has "event: add twin torpedo pods"
+		has "event: stack core for sale"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/twintorpedopod"
+			`You receive a message from Barmy Edwards: "Hi <first>! Reports from the Militia indicate that pirates have developed a new weapon to keep pace with the Navy's Typhoon Torpedos. The Free Worlds wants us to get ahold of one and reverse engineer it for our own use. Do you think you can find a Twin Torpedo Pod and deliver it to <destination>?" You could try to buy one from a pirate outfitter or plunder one off of a pirate ship.`
+			choice
+				`	"Sure, I'll get one for you."`
+				`	"Sorry, I'm not up for that."`
+					decline
+			`	"I knew I could count on you!" Hopefully Barmy won't need to use your ship for target practice once you deliver this weapon.`
+				accept
+	on complete
+		outfit "Twin Torpedo Pod" -1
+		event "kraz twin torpedo pods" 15
+		conversation
+			scene "outfit/twintorpedopod"
+			`You deliver the Twin Torpedo Pod to Barmy's lab at Kraz. "Thanks <first>! The modifications seem simple enough. With luck, we'll have it available at some of our outfitters in a couple of weeks." As Barmy studies some wiring on the Twin Torpedo Pod, you quietly head back to your ship before he decides that he wants to try shooting it at something.`
+
+
+
 mission "Limit Breaker Intro"
 	outfitter
 	minor
@@ -1196,6 +1229,68 @@ mission "Pandora's Problems 3"
 
 
 
+mission "Midnight Swarm Lord"
+	minor
+	landing
+	name "Swarm Lord"
+	description "A small pirate ship named Swarm Lord has been capturing Militia ships near <system>. Find and eliminate it and it's fleet. Then report to <planet>."
+	source
+		government "Free Worlds"
+		attributes "frontier"
+	to offer
+		has "license: Militia"
+		has "event: midnight add starbus pirates"
+		has "event: southern carriers 4"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/starbus-thumb"
+			`A militia officer approaches you. "Captain <last>, a local pirate ship named Swarm Lord has been ambushing Militia ships and building a fleet of captured ships. It's starting to get out of hand. Could you help us hunt it down?`
+			choice
+				`	"Sure, I'm in the Militia too afterall."`
+				`	"Sorry, I'm busy with something else."`
+					decline
+			`	"Thanks. We've already searched the nearby systems but failed to find it. The Swarm Lord might have moved on to more distant systems."`
+				accept
+	npc kill
+		government "Bounty"
+		system
+			distance 2 3
+		personality target waiting staying plunders
+			confusion 20
+		ship "Starbus (Troops)" "Swarm Lord"
+		fleet
+			names "militia small"
+			cargo 1
+			variant
+				"Fury (Bomber)"
+				"Fury (Laser)"
+				"Fury (Missile)"
+				"Fury (Gatling)"
+				"Fury (Heavy)"
+				"Fury"
+				"Fury (Bomber Limit Break)"
+				"Hawk (Rocket)"
+				"Hawk (Speedy)"
+				"Hawk"
+				"Hawk (Isochronal)"
+				"Hawk (Modified Blaster)"
+				"Sparrow"
+				"Sparrow (Patrol)"
+				"Sparrow (Gatling)"
+				"Sparrow (Afterburner)"
+				"Sparrow (Limit Break)"
+				"Sparrow (Modified Blaster)"
+				"Sparrow (Meteor Missile)"
+				"Sparrow (Isochronal)"
+		dialog "You've defeated the Swarm Lord and its fleet. Report to <destination>."
+	on complete
+		payment 250000
+		"reputation: Militia" += 100
+		dialog "The local Militia rewards you with <payment> for eliminating the Swarm Lord."
+
+
+
 mission "Raider Attack (Pirates)"
 	minor
 	repeat
@@ -1236,6 +1331,97 @@ mission "Raider Attack (Pirates)"
 	on complete
 		payment 300000
 		dialog `The government of <planet> pays you <payment> for helping to drive off the raiders.`
+
+
+
+mission "Midnight Striker"
+	landing
+	name "Kraz Testing"
+	description "Visit <destination> and help Barmy test something new."
+	source
+		government "Free Worlds"
+		attributes "spaceport"
+	to offer
+		has "free worlds plot completed"
+		random < 50
+	on offer
+		conversation
+			scene "planet/forest6"
+			`You receive a message from Barmy Edwards: "<first>! I'd like you're input on something I've been asked to work on. Drop by <planet> when you can." He must need you to help him with another test.`
+				accept
+	on enter Kraz
+		conversation
+			scene "thumbnail/striker drone-thumb"
+			`You receive an pre-recorded hail from some drones: "Hey <first>, Barmy here. We're on a tight scedule, so I'll need you to get started right away. These are some new drones we put together for a secret project. After you're done fighting them meet me planet side and we can discuss how they performed." Maybe Barmy has gotten too comfortable with expecting your assitance in these mock battles...`
+	npc disable
+		government "Test Dummy"
+		system Kraz
+		personality target waiting staying disables
+			confusion 10
+		fleet
+			fighters "free worlds fighters"
+			variant
+				"Striker Drone" 6
+				"Striker Drone (Meteor)" 6
+		dialog "You've defeated the new drones. Land on <planet> and let Barmy know what you think."
+	on complete
+		conversation
+			scene "thumbnail/striker drone-thumb"
+			`Barmy is already waiting at the landing pad when you open your hatch. "So what do you think of the drones?"`
+			choice
+				`	"Don't ever do that again!"`
+				`	"It's about time we had our own drones!"`
+					goto our
+				`	"They look a lot like Navy Surveillance Drones..."`
+					goto navy
+			`	Barmy seems to realise he was out of line. "Sorry <first>! Sending the drones after you as soon as you arrived was wrong. I think the stress of working on this project must have gotten the better of me. This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly.`
+			choice
+				`	"What's the rush?"`
+				`	"You couldn't take time to sleep?"`
+			`	Barmy crosses his arms and closes his eyes. "Alondo contacted me with a secret project that required drones. We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
+				goto report
+			label our
+			`	Barmy crosses his arms and closes his eyes. "You know, people take drones for granted. A lot of captains view them as disposable fodder. But it takes considerable effort to program them! This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly. "We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
+				goto report
+			label navy
+			`	Barmy crosses his arms and closes his eyes. "Southbound designed the hull, not Kraz. We were all working on a tight deadline and Kraz ended up slapping together something that looks like a knockoff Surveillance Drone. At least they finished their part on time! Programming the AI was another story. This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly. "We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
+			label report
+			``
+			`	Barmy calms down before continuing, "So, during the battle, you may have noticed that some of the drones were armed with Javelins while others had Meteor Missiles. Which ones do you think fared better?"`
+			label final
+			choice
+				`	"The Javelins are good for surprise strikes."`
+					goto javelin
+				`	"The Meteors are good for fire support."`
+					goto meteor
+				`	"Couldn't they be armed with something else?"`
+					to display
+						not "striker non-missiles"
+			action
+				set "striker non-missiles"
+			`	Barmy sighs, "Unfortunately, Southbound didn't leave enough weapon space to cram in anything but the smallest of missile pods. I suppose one could try Sidewinders, but there'd be problems with sourcing the ammo." It seems even a basic Energy Blaster won't fit in the alotted weapon space.`
+				goto final
+			label javelin
+			action
+				clear "striker non-missiles"
+				event "add striker drones javelin" 30
+			scene "outfit/javelin"
+			`	Barmy nods, "I'd have to agree. While the reliance on ammunition means they'll run out of steam during a protracted battle, the Javelins will do more damage than just about any other gun during the first few moments of fighting." Barmy makes a note of this. "Thanks for your help. While I can't go into detail with what these drones will be used for, you'll be able to use your Militia license to buy them for yourself at Southbound's bigger shipyards about a month from now. Take care, <first>."`
+				accept
+			label meteor
+			action
+				clear "striker non-missiles"
+				event "add striker drones meteor" 30
+			scene "outfit/meteor"
+			`	Barmy nods, "I'd have to agree. While the reliance on ammunition means they'll run out of steam during a protracted battle, the Meteors will be able to soften up the opposition from a distance during the first few moments of fighting." Barmy makes a note of this. "Thanks for your help. While I can't go into detail with what these drones will be used for, you'll be able to use your Militia license to buy them for yourself at Southbound's bigger shipyards about a month from now. Take care, <first>."`
+
+event "add striker drones javelin"
+	shipyard "Southbound Advanced"
+		add "Striker Drone"
+
+event "add striker drones meteor"
+	shipyard "Southbound Advanced"
+		add "Striker Drone (Meteor)"
 
 
 
@@ -1833,7 +2019,7 @@ mission "Pirate FW invite 3"
 			cargo 1
 			variant
 				"Hawk"
-				"Sparrow"
+				"Sparrow (Modified Blaster)"
 				"Sparrow (Limit Break)"
 	npc
 		government "Republic"

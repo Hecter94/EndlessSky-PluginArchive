@@ -33,7 +33,7 @@ class class_Outfit():
         self.outfit_space = outfit_space
         self.weapon_space = weapon_space
         self.engine_space = engine_space
-        
+        #TODO: Use Dict instead so it's easier to add?
         #=====================Note: Not complete.
         self.cooling = 0
         self.active_cooling = 0
@@ -238,6 +238,7 @@ def create_cooling(faction,fileout='',max_outfit_count=8, min_outfit_space=1, ma
             cooling_outfit = random.randrange(int(max(1,min_outfit_space)), int(max(2,max_outfit_space)))
             cooling_cooling = round(random.randrange(int(1), int(5*cooling_outfit)), 1)
         cooling_outfit = max(1,cooling_outfit)
+        cooling_outfit = min(max_outfit_space,cooling_outfit)
         cooling_cost = roundup100(random.randrange(int(8500*(cooling_outfit/cooling_cooling)), int(10000*(cooling_outfit/cooling_cooling)))*faction.tier)
         cooling_ener = 0
         cooling_active = 0
@@ -350,10 +351,14 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
     #Generate sets of energy generators;
     for n in range(int(power_type_amount)):
         #Calculates new values
+        powheat_fac_min = (8.4/(8.2 + .01*(2.718)**(2 * faction.tier)))
+        powheat_fac_max = (8.4/(3 + .0001*(2.718)**(2*faction.tier))) + .2
         
         power_outfit = random.randint(int(min_outfit_space), int(max_outfit_space))
-        power_power = round(((random.uniform(float((1)*faction.tier), float((1.3)*faction.tier)))), 1)
-        power_heat = round(((random.uniform(float(power_power), float((power_power)*3)))), 1)
+        #power_power = round(((random.uniform(float((1)*faction.tier), float((1.3)*faction.tier)))), 1)
+        power_power = round(random.uniform(0.055,0.065)*faction.tier, 3)
+        power_power *= power_outfit
+        power_heat = round(((random.uniform(power_power*powheat_fac_min, power_power*powheat_fac_max))), 2)
         power_cost = roundup100(random.uniform(round(((power_power*60)/power_outfit)*1500*faction.tier), round(((power_power*60)/power_outfit)*3500*faction.tier)))
 
         power_iterations = round(random.gauss(3, 1))
@@ -374,7 +379,7 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
         power_name_list=[]
         for n in range(power_iterations):
             name_length_min = 3
-            name_length_max = 7
+            name_length_max = 10
             seedy =0 
             if faction.devmode:
                 seedy = faction.devmodeseed+n
@@ -387,9 +392,9 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
             power_name_list.append(power_name)
         power_name_list.sort()
 
-        power_cost_curve = .85
-        power_outfit_curve = round(random.gauss(1, .1),1)
-        power_power_curve = round(1.1*(max(1,faction.tier/2)),1)
+        power_cost_curve = random.uniform(.85,.95)
+        power_outfit_curve = round(random.uniform(1.02, 1.1),1)
+        power_power_curve = round(1.1,1)
         power_heat_curve = round(1.1*pow_heat_effciency,1)
         battery_energy_curve = round(1.1*(max(1,random.uniform(faction.tier/3,faction.tier/2))),1)
 
@@ -431,7 +436,8 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
             outfit.heat_gen = power_heat
             faction.outfitlist.append(outfit)
             #Name
-            print(f"Created power {faction.name}" + power_name_list[power_iterations_count-1] + ' ' + power_type)
+            print(f"Created power {faction.name} {power_name_list[power_iterations_count-1]} {power_type}")
+            print(f"-Mass:{power_outfit} E Gen:{power_power}")
 
             #Iterate for next run of loop
             power_cost = roundup100((power_cost * 2) * float(power_cost_curve))
@@ -844,7 +850,8 @@ def create_h2h(faction,fileout='',max_outfit_count=4,h2hmin=1):
         h2h_takespace = False
         h2h_tradeoff = ''
         h2h_tradeoff_value = 0
-        h2h_total = round(random.uniform(float(faction.tier*1.5), float(faction.tier*2)+1), 1)
+        h2h_baseline_tier = 2.718**(1.4*(faction.tier-1))
+        h2h_total = round(random.uniform(float(h2h_baseline_tier*.5), float(h2h_baseline_tier*2)+1), 1)
         if random.random() < .3:
             h2h_total = round(random.uniform(float(faction.tier*3), float(faction.tier*4.5)), 1)
             h2h_have_tradeoff = True
@@ -906,7 +913,8 @@ def create_h2h(faction,fileout='',max_outfit_count=4,h2hmin=1):
             h2h_output.write(f'\t"boarding attack" {h2h_atk}\n')
             h2h_output.write(f'\t"boarding defense" {h2h_def}\n')
             h2h_output.write(f'\t"unplunderable" 1\n')
-            h2h_output.write(f'{h2h_tradeoff} {h2h_tradeoff_value}' + "\n")
+            if(h2h_have_tradeoff):
+                h2h_output.write(f'{h2h_tradeoff} {h2h_tradeoff_value}' + "\n")
             h2h_output.write(f'\tdescription "{faction.name} T{faction.tier:.1f} Hand to Hand"\n')
             h2h_output.write('\n')
 
@@ -935,7 +943,7 @@ def load_custom_configs(faction):
     if faction.devmode:
         random.seed(faction.devmodeseed)
     outfit_configs_list = glob.glob("config/outfit config/*.txt") #Imports files in directory
-    outfit_configs_amount = len(outfit_configs_list) #Gets amount of items in list
+    #outfit_configs_amount = len(outfit_configs_list) #Gets amount of items in list
     outfit_configs_iterations = 0
     global outfit_config_file #Config File
     outfit_config_file = str(outfit_configs_list[outfit_configs_iterations]).replace("\\", "/")
@@ -950,6 +958,11 @@ def load_custom_configs(faction):
 
     create_battery(faction)
     create_power(faction)
+    #Power Verification
+    #print(f"==[POWER VERIFICATION]==")
+    #for outfit in faction.outfitlist:
+    #    print(f"{outfit.name}")
+    #    print(f"-Mass:{outfit.mass} E Gen:{outfit.energy_gen}")
     create_engines(faction)
     create_shield_generator(faction)
     create_hull_repair(faction)

@@ -207,6 +207,9 @@ mission "Scrapyard Eggs Remnant 1"
 		has "event: remnant: return the samples timer"
 		"Scrapyard Threat Level" >= 15
 		or
+			not "Remnant: Cognizance 1: offered"
+			has "Remnant: Cognizance 19: done"
+		or
 			has "Infected with Shadowblight"
 			has "Scrapyard Eggs Pirate 3: offered"
 			has "Scrapyard Pirate Eggs Hatch: offered"
@@ -446,6 +449,9 @@ mission "Scrapyard Plume's Research"
 	deadline 7
 	to offer
 		has "event: Remnant Egg timer"
+		or
+			not "Remnant: Cognizance 1: offered"
+			has "Remnant: Cognizance 19: done"
 		random < 25
 	on offer
 		conversation
@@ -467,7 +473,7 @@ mission "Scrapyard Plume's Research"
 			choice
 				`	"What have you learned?"`
 			label research
-			`	"The creature absorbs energy. Both light and heat are absorbed through its skin. It can also absorb fuel, energy, and heat from ships through a beam emitted by a special organ hidden amongst its tentacles. As I said, it is very dangerous. However it does seem to have a weakness." He takes a breath then continues, "While hunting down the escaped specimens, an ion storm swept through the system. Apparently, the ionic energy was somewhat disruptive to several of their internal organs."`
+			`	"The creature absorbs energy. Both light and heat are absorbed through its skin, imbuing it with the ability to cloak itself. It can also absorb fuel, energy, and heat from ships through a beam emitted by a special organ hidden amongst its tentacles. As I said, it is very dangerous. However it does seem to have a weakness." He takes a breath then continues, "While hunting down the escaped specimens, an ion storm swept through the system. Apparently, the ionic energy was somewhat disruptive to whatever internal organs regulate movement and cloaking."`
 			`	That information could be useful. You thank Plume for his research and head out.`
 				accept
 	on accept
@@ -491,6 +497,225 @@ mission "Scrapyard Plume's Research"
 			distance 2 3
 		personality entering disables unconstrained mute
 		fleet "Small Blight Hatchling"
+
+mission "Scrapyard Remnant Rescue 1"
+	minor
+	name "Twilight Sky"
+	description "Locate the <npc> in Sestor space and escort them back to <destination>."
+	source "Aventine"
+	to offer
+		or
+			has "Scrapyard Plume's Research: done"
+			has "Scrapyard Plume's Research: failed"
+		has "event: scrapyard blight mutation"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/gull"
+			`	You find Plume pacing at the spaceport. "Captain <last>! A research team aboard the <npc> ventured out into Korath space to research the Blight Shadows and didn't return on schedule. We fear the worst has happened to them. Would you be willing to search for them?" The tone of his chant seems to confirm his worry.`
+			choice
+				`	"I can search for them."`
+					goto search
+				`	"They're probably dead."`
+			`	Plume frowns. "Such a loss," he chants mournfully. Plume looks to he sky for a moment, then walks away.`
+				decline
+			label search
+			`	"Thank you <first>!" His tone seems hopeful. "May the Embers light your way."`
+				accept
+	on enter Mesuket
+		conversation
+			scene "thumbnail/gull"
+			`	You find the <npc> adrift. They send a hail: "Please provide assistance. We were caught in the crossfire and our cloak stopped working!"`
+	npc accompany save
+		government "Remnant"
+		system Mesuket
+		personality target derelict waiting timid decloaked
+		"cargo settings"
+			cargo 6
+			outfitters "Korath Basics"
+		ship "Gull (Scrapyard Rescue)" "Twilight Sky"
+	on complete
+		payment 1000000
+		conversation
+			scene "ship/blight mutation/blight mutation"
+			`	The crew of the <npc> is grateful for your assistance. In addition to a small payment of <payment>, they share what they've learned on their expedition. Some of the Blight Shadows seem to have mutated, developing organs that strike out against incoming missiles as well as a longer ranged energy draining organ that siphons power more voraciously than the non-mutated Blight Shadows.`
+
+ship "Gull" "Gull (Scrapyard Rescue)"
+	add attributes
+		"cloak" -.02
+		"cloaking energy" -5
+		"cloaking fuel" -.1
+	outfits
+		"Inhibitor Cannon" 3
+		"Point Defense Turret"
+		"Epoch Cell"
+		"Millennium Cell"
+		"Crystal Capacitor"
+		"Quantum Key Stone"
+		"Salvage Scanner" 2
+		"Outfits Expansion"
+		"Thermoelectric Cooler"
+		"Tuning Rifle" 4
+		"Forge-Class Thruster"
+		"Forge-Class Steering"
+		"Jump Drive"
+
+mission "Scrapyard Remnant Rescue 2"
+	minor
+	name "Evening Sky"
+	description "Locate the <npc> in Sestor space and escort them back to <destination>."
+	source "Aventine"
+	to offer
+		has "Scrapyard Remnant Rescue 1: done"
+		has "event: scrapyard blight horrors"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/starling"
+			`	You find Plume pacing at the spaceport again. "Captain <last>! A research team aboard the <npc> ventured out into Korath space to research the Blight Shadows and didn't return on schedule. We fear the worst has happened to them. Would you be willing to search for them?" The tone of his chant seems to confirm his worry.`
+			choice
+				`	"I can search for them."`
+					goto search
+				`	"They're probably dead."`
+			`	Plume frowns. "Such a loss," he chants mournfully. Plume looks to he sky for a moment, then walks away.`
+				decline
+			label search
+			`	"Thank you <first>!" His tone seems hopeful. "May the Embers light your way."`
+				accept
+	on enter Silikatakfar
+		conversation
+			scene "thumbnail/starling"
+			`	You find the <npc> adrift. They send a hail: "Please provide assistance. We were caught in the crossfire and our cloak stopped working!"`
+	npc accompany save
+		government "Remnant"
+		system Silikatakfar
+		personality target derelict waiting timid decloaked
+		"cargo settings"
+			cargo 6
+			outfitters "Korath Basics"
+		ship "Starling (Scrapyard Rescue)" "Evening Sky"
+	on complete
+		payment 1000000
+		conversation
+			scene "ship/blight horror/blight horror"
+			`	The crew of the <npc> is grateful for your assistance. In addition to a small payment of <payment>, they share what they've learned on their expedition. Some horrifying mutations have appeared amongst the Blight Shadow swarms, developing an organ that generates bolts of red lightning. Unlike the energy draining beams, these bolts slightly charge the batteries of ships struck by them. But they also cause weapons to jam in a manner similar to, yet different from, the effects of ionization.`
+
+ship "Starling" "Starling (Scrapyard Rescue)"
+	add attributes
+		"cloak" -.02
+		"cloaking energy" -5
+		"cloaking fuel" -.1
+	outfits
+		"EMP Torpedo Bay"
+		"Inhibitor Cannon" 4
+		"EMP Torpedo Storage Bay"
+		"Epoch Cell"
+		"Crystal Capacitor"
+		"Emergency Ramscoop" 2
+		"Quantum Key Stone"
+		"Outfits Expansion"
+		"Thermoelectric Cooler"
+		"Tuning Rifle" 9
+		"Forge-Class Thruster"
+		"Smelter-Class Steering"
+		"Jump Drive"
+
+mission "Scrapyard Remnant Rescue 3"
+	minor
+	name "Shroud of Shadows"
+	description "Locate the <npc> in Sestor space and escort them back to <destination>."
+	source "Aventine"
+	to offer
+		has "Scrapyard Remnant Rescue 2: done"
+		has "event: scrapyard blight horrors"
+		has "event: remnant: cognizance peregrine"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/peregrine"
+			`	You find Taely pacing at the spaceport. She starts frantically signing when she notices you. "Captain <first>! A search and rescue team took a Peregrine named <npc> out into Korath space to locate one of Plume's missing research teams and didn't return on schedule. We fear the worst has happened to them. Would you be willing to search for them?"`
+			choice
+				`	"I can search for them."`
+					goto search
+				`	"They're probably dead."`
+			`	Taely frowns. "I refuse to believe that," she signs. Taely then starts to walk away. She pauses, turning slightly and raising her arms as if to sign something. But instead, she lowers her hands in resignation and leaves.`
+				decline
+			label search
+			`	"Thank you <first>!" The tone of her gestures seems hopeful. "May the Embers light your way."`
+				accept
+	on enter Asikafarnut
+		conversation
+			scene "thumbnail/peregrine"
+			`	You find the <npc> adrift. There are no responses to your hails. Board the ship to confirm the status of the crew."`
+	npc board
+		government "Derelict (Killable)"
+		system Asikafarnut
+		personality target derelict waiting timid decloaked marked
+		"cargo settings"
+			cargo 3
+			commodities "Metal" "Plastic" "Electronics"
+		ship "Peregrine (Scrapyard Derelict)" "Shroud of Shadows"
+		conversation
+			scene "outfit/jump drive (broken)"
+			`The ship has been gutted. Black slime covers the internal walls and the leathery remains of Blight Shadow eggs are littered about. The only signs of the crew who were once aboard are some unidentifiable shriveled lumps in tattered Remnant clothing drenched with globs of the omnipresent black slime. There is no salvaging this ship. To remain here would doom yourself to sharing their fate. Return to <destination> and tell Taely what happened to the <npc>.`
+	on complete
+		payment 1000000
+		conversation
+			scene "thumbnail/peregrine"
+			`	You share the bad news with Taely. She signs, "I'm sure the <npc> fought hard for its crew." Seemingly in mourning for the ship as well as the people who piloted it, she still thanks you for confirming their fate and arranges for <payment> to be deposited into your account.`
+
+ship "Peregrine" "Peregrine (Scrapyard Derelict)"
+	uncapturable
+	add attributes
+		"inscrutable" 1
+	outfits
+		"Jump Drive (Broken)"
+
+mission "Ember Blight Hunt A"
+	job
+	repeat
+	deadline 14
+	name "Ember Blight Shadow"
+	description "A Blight Shadow has been detected in the systems near <system>. Scan it with an outfit scanner, then eliminate it before it becomes a threat. Deliver the scanner data to <destination> for <payment>."
+	source
+		government Remnant
+		not attributes "station"
+	to offer
+		has "Scrapyard Eggs Remnant 1: done"
+		random < 1
+	npc "scan outfits" kill
+		government "Invasive Predator"
+		system
+			near "Stercutus" 1
+		personality target waiting staying disables unconstrained mute
+		ship "Blight Shadow" "???"
+		dialog `After having scanned and eliminated the target, you should deliver the scanner data to <destination>.`
+	on complete
+		payment 100000
+		dialog "Remnant researchers accept the scanner data and deposit <payment> into your account."
+
+mission "Ember Blight Hunt B"
+	job
+	repeat
+	deadline 16
+	name "Ember Blight Shadow"
+	description "A Blight Shadow has been detected in the systems near <system>. Scan it with an outfit scanner, then eliminate it before it becomes a threat. Deliver the scanner data to <destination> for <payment>."
+	source
+		government Remnant
+		not attributes "station"
+	to offer
+		has "Scrapyard Eggs Remnant 1: done"
+		random < 1
+	npc "scan outfits" kill
+		government "Invasive Predator"
+		system
+			near "Nenia" 1
+		personality target waiting staying disables unconstrained mute
+		ship "Blight Shadow" "???"
+		dialog `After having scanned and eliminated the target, you should deliver the scanner data to <destination>.`
+	on complete
+		payment 100000
+		dialog "Remnant researchers accept the scanner data and deposit <payment> into your account."
 
 
 

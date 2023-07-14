@@ -44,7 +44,7 @@ class system():
         self.mineables = {} #name: [count, energy]
         self.hazard = []
         self.haze = ''
-        self.cloud = '' #Image to paste behind system location
+        self.cloud = '' #Image to paste behind system location on the galaxy map
 
         self.government = government #reference to gov class
         self.fleets = []
@@ -1370,11 +1370,11 @@ def generate_inhabited_planet(system,name):
     #if military >= 1:
     #    security += random.uniform(.2,.5)
     #Pure guess work
-    threshold = round(random.randrange(55,1097) + math.exp(system.government.tier) + math.exp((military+population)/2))
-    tribute = round((threshold/2) * (population/6))
+    threshold = round(random.randrange(550,8097) + math.exp(system.government.tier) + math.exp((military+population)/2))
+    tribute = round((threshold/2) * (population/6) * system.government.tier)
     fleet_name = random.choice(system.government.patrolfleets)
     fleet_num = random.randrange(max(1,round(threshold/1000)),max(2,round(threshold/50)))
-    fleet = str(fleet_name) + " " + str(fleet_num)
+    fleet = '"' + str(fleet_name) + '"' + " " + str(fleet_num)
     descriptionFinal = [description,spaceport]
     #return planet_name,planet_sprite,landscape,attributes,description,spaceport,outfitterlist,shipyardlist
     return planet_properties(attributes,
@@ -1698,7 +1698,7 @@ def galaxy_write_systems(galaxy,galaxy_center_x,galaxy_center_y,galaxy_image):
         if planet.planet_properties.threshold != '':
             galaxy_output.write('\t\tthreshold ' + str(planet.planet_properties.threshold) + '\n')
         if planet.planet_properties.fleet != '':
-            galaxy_output.write('\t\tfleet ' + str(planet.planet_properties.fleet) + '\n')
+            galaxy_output.write(f'\t\tfleet {planet.planet_properties.fleet}\n')
 
 
         galaxy_output.write('\n')
