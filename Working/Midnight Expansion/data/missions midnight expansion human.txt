@@ -1,0 +1,607 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Midnight Expansion: Add Fuel Stabilizer"
+	landing
+	invisible
+	on offer
+		event "add garbage scows"
+		fail
+
+event "add fuel stabilizer"
+	outfitter "Advanced Fuel"
+		add "Fuel Stabilizer"
+
+mission "Midnight Expansion: Add Garbage Scows"
+	landing
+	invisible
+	on offer
+		event "add garbage scows"
+		fail
+
+event "add garbage scows"
+	shipyard "Common Freighters"
+		add "Garbage Scow"
+	shipyard "Advanced Northern Pirates"
+		add "Garbage Scow"
+	shipyard "Advanced Core Pirates"
+		add "Garbage Scow"
+	shipyard "Advanced Southern Pirates"
+		add "Garbage Scow (Jammer)"
+	fleet "Large Northern Merchants"
+		add variant 1
+			"Garbage Scow"
+	fleet "Large Core Merchants"
+		add variant 1
+			"Garbage Scow"
+	fleet "Large Southern Merchants"
+		add variant 1
+			"Garbage Scow (Jammer)"
+	fleet "Large Dirt Belt Pirates"
+		add variant 1
+			"Garbage Scow (Turbo)"
+		add variant 1
+			"Modified Garbage Scow"
+			"Rancor (Berserker)"
+			"Rancor (Turbo Blaster)"
+	fleet "pirate raid"
+		add variant 1
+			"Garbage Scow (Stinger)"
+	fleet "pirate raid (rivals)"
+		add variant 1
+			"Garbage Scow (Stinger)"
+	fleet "Large Independent"
+		add variant 1
+			"Garbage Scow (Stinger)"
+
+mission "Midnight Expansion: Update Garbage Scows"
+	landing
+	invisible
+	to offer
+		has "event: war begins"
+	on offer
+		event "update garbage scows"
+		fail
+
+event "update garbage scows"
+	shipyard "Dirt Belt Pirates"
+		add "Modified Garbage Scow (Quad Blaster)"
+	shipyard "Advanced Northern Pirates"
+		remove "Garbage Scow"
+		add "Modified Garbage Scow (Heavy)"
+	shipyard "Advanced Core Pirates"
+		remove "Garbage Scow"
+		add "Modified Garbage Scow (Proton)"
+	shipyard "Advanced Southern Pirates"
+		remove "Garbage Scow (Jammer)"
+		add "Modified Garbage Scow (Quad Blaster)"
+	fleet "Large Northern Pirates"
+		add variant 1
+			"Garbage Scow (Heavy)"
+		add variant 1
+			"Modified Garbage Scow (Heavy)"
+			"Berserker (Strike Limit Break)" 2
+	fleet "Large Core Pirates"
+		add variant 1
+			"Garbage Scow (Proton)"
+		add variant 1
+			"Modified Garbage Scow (Proton)"
+			"Hawk (Stinger)" 2
+	fleet "Large Southern Pirates"
+		add variant 1
+			"Garbage Scow (Quad Blaster)"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+			"Hawk (Stinger)"
+			"Fury (Bomber Limit Break)"
+
+mission "Midnight Expansion: Bounty Hunting (Boarding, Stinger Missile)"
+	assisting
+	repeat
+	name "Wanted smuggler near <system>"
+	description "A low-end pirate smuggler named the <npc> has been supplying pirate planets with weapons near the <system> system. Destroy it and report to <planet> for payment (<payment>)."
+	to offer
+		"combat rating" > 300
+		random < 3 - "Midnight Expansion: Bounty Hunting (Boarding, Stinger Missile): offered"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Militia" "Navy (Oathkeeper)"
+		not category "Fighter" "Drone"
+		not attributes "automaton"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier"
+		distance 1 2
+	on offer
+		conversation
+			`The captain of the <origin> thanks you for repairing them and informs you that they were searching for a smuggler ship named the <npc> that is supplying weapons to nearby pirate planets.`
+			`	The authorities of <planet> will probably pay you quite well if you hunt down the <npc>, but depending on how quickly you are able to track it down, this could require more than a short detour.`
+			choice
+				`	(Hunt the <npc>.)`
+					accept
+				`	(Ignore this opportunity.)`
+					decline
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+		system
+			distance 1
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Stinger Missile"
+			variant
+				"Garbage Scow (Stinger)"
+
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 150000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Midnight Expansion: Bounty Hunting (Smuggler, Disguised)"
+	job
+	repeat
+	name "Disguised pirate near <system>"
+	description "A pirate smuggler named the <npc> is posing as a merchant ship near the <system> system. Select merchant ships until you find a ship with a matching name, then destroy it and return to <planet> for payment (<payment>)."
+	to offer
+		"combat rating" > 400
+		random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty (Disguised)"
+		personality heroic staying
+		system
+			distance 1 2
+		fleet
+			names "pirate"
+			cargo 1
+			outfitters "Contraband"
+			variant
+				"Garbage Scow (Stinger)"
+			variant
+				"Modified Firebird (Smuggler)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 350000
+		dialog phrase "generic bounty hunting payment dialog"
+
+mission "Midnight Expansion: Recycle garbage"
+	name "Recycle garbage"
+	description "<origin> produces a lot of garbage that needs to be disposed of off-station. Transport <cargo> to the industrial solid waste recycler on <destination>. Payment is <payment>."
+	job
+	repeat
+	to offer
+		random < 35
+	cargo "Garbage" 100 185
+	source
+		attributes station
+	destination
+		attributes "factory" "mining" "dirt belt"
+		distance 9 12
+	npc
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Garbage Scow (Stinger)"
+			variant
+				"Garbage Scow (Heavy)"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		dialog "You drop off the <commodity> at an especially smelly solid waste recycler and collect your payment of <payment>."
+		payment
+		payment 40000
+
+mission "Midnight Expansion: Waste Disposal"
+	name "Waste disposal on <planet>"
+	job
+	repeat
+	description "Urgent waste disposal is needed. Transport <cargo> to <destination> to keep property values from falling. Payment is <payment>."
+	cargo "Garbage" 6 40
+	to offer
+		random < 5
+	on offer
+		require "Radiological Containment"
+	source
+		attributes "paradise"
+	destination
+		distance 2 20
+		attributes "dirt belt"
+	npc
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Garbage Scow (Stinger)"
+			variant
+				"Garbage Scow (Turbo)"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "You drop off the exceptionally foul shipment of <commodity> on <planet>, already looking forward to the chemical bath your cargo hold is going to receive. You collect your payment of <payment> and hope that somebody around here knows what to do with the unpleasant mess you dropped off."
+
+mission "Midnight Expansion: Waste recycling on <planet>"
+	job
+	repeat
+	name "Waste recycling on <planet>"
+	description "Syndicated Systems is looking for intrepid captains willing to make a difference as part of our new Green Initiative! Deliver <tons> of recyclable <commodity> to our special facility on <destination>. Payment is <payment>."
+	cargo "Garbage" 15 100
+	to offer
+		random < 10
+	on offer
+		require "Radiological Containment"
+	source
+		government Syndicate
+	destination
+		distance 3 10
+		government Syndicate
+	npc
+		government "Pirate"
+		system destination
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Garbage Scow (Stinger)"
+			variant
+				"Garbage Scow (Proton)"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 20000
+		dialog "You land on <planet> and drop off the exceptionally smelly shipment of <commodity> at a nondescript building, as instructed. Just as you take off, your rear camera catches sight of a burly Syndicate employee running out of the building shaking his fist. You notice that your payment of <payment> came from your contact on <origin>, not from anywhere on <planet>."
+
+mission "Midnight Expansion: Garbage Escort (Double Cross)"
+	minor
+	name "Garbage Escort"
+	description "Escort the <npc> through a dangerous region of space to the industrial solid waste recycler on <destination>. Payment is 20,000 credits."
+	to offer
+		"combat rating" > 300
+		or
+			and
+				not "Randomize Midnight Expansion: Garbage Escort (Double Cross)"
+				random < 70
+			and
+				has "Randomize Midnight Expansion: Garbage Escort (Double Cross)"
+				random < 5
+	source
+		attributes station
+	destination
+		attributes "frontier"
+		distance 9 12
+	on offer
+		conversation
+			scene "thumbnail/Becca scavenger"
+			`The captain of a Garbage Scow docked nearby waves at you.`
+			choice
+				`	(Wave back.)`
+				`	(Ignore him.)`
+					defer
+			`	The captain approaches. As he does, you notice the odor of rotting garbage precedes him. "I'm sorry to ask this, but I'm in need of an escort. It turns out that pirates find value in the toxic waste I'm hauling. It's a necessary component for certain dirty weapons. If you could escort my ship, the <npc>, to the industrial solid waste recycler on <destination>, I'd be willing to pay 20,000 credits for your assistance. How about it?`
+			`	Escorting a Garbage Scow isn't what you imagined you'd be doing when you dreamed of exploring the stars. But you could help prevent dangerous material from falling into pirate hands. What do you do?`
+			choice
+				`	(Escort the <npc>.)`
+				`	(Refuse.)`
+					decline
+			`	"Great! The name's Geryon." He wipes a grime covered hand on his overalls before extending it to you.`
+			choice
+				`	(Shake his hand.)`
+				`	(Don't shake his hand.)`
+					goto hanging
+			`	"<first>," you reply.`
+			`	Geryon smirks. "I'll be waiting in orbit!" He walks off. The foul stench remains...`
+				accept
+			label hanging
+			`	"<first>," you reply.`
+			`	After an awkward moment, Geryon lowers his hand. "Well, I'll be waiting in orbit." He walks off. The foul stench remains...`
+				accept
+	on defer
+		set "Randomize Midnight Expansion: Garbage Escort (Double Cross)"
+	on accept
+		log "Minor People" "Geryon" `Geryon is the captain of a Garbage Scow, hauling dangerous toxic waste across the galaxy. He's worried that pirates will target his ship to get their hands on his cargo. Supposedly, it can be used to make dirty weapons.`
+		"reputation: Bounty (Disguised)" >?= 1	
+	on enter
+	on enter
+	on enter
+	on enter
+	on enter
+	on enter
+	on enter
+	on enter
+		"reputation: Bounty (Disguised)" <?= -1000
+		log "Minor People" "Geryon" `Geryon turned out to be a pirate himself. I knew there was something rotten about him.`
+		conversation
+			scene "thumbnail/Becca scavenger"
+			`You receive a hail from Geryon: "The time has come for me to out the trash." The <npc> targets you with its weapons!`
+	npc
+		government "Pirate"
+		system
+			distance 1 2
+		personality plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Rancor (Berserker)"
+	npc
+		government "Pirate"
+		system
+			distance 3 4
+		personality plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Berserker (Strike Limit Break)"
+	npc
+		government "Pirate"
+		system
+			distance 5 6
+		personality plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Fury (Bomber Limit Break)"
+	npc
+		government "Pirate"
+		system destination
+		personality plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Modified Argosy (Stinger)"
+	npc accompany save
+		government "Bounty (Disguised)"
+		personality target waiting plunders harvests
+		ship "Garbage Scow (Heavy)" "Manticore"
+
+
+
+mission "Midnight Expansion: Add Rukh"
+	landing
+	invisible
+	on offer
+		event "add rukh"
+		fail
+
+event "add rukh"
+	shipyard "Dirt Belt Pirates"
+		add "Rukh (Modified Blaster)"
+	fleet "pirate raid"
+		add variant 1
+			"Rukh"
+	fleet "pirate raid (rivals)"
+		add variant 1
+			"Rukh"
+	fleet "Large Dirt Belt Pirates"
+		add variant 1
+			"Rukh"
+		add variant 1
+			"Rukh (Turbo Blaster)"
+	fleet "Large Independent"
+		add variant 1
+			"Rukh"
+	fleet "Bounty Hunters"
+		add variant 1
+			"Rukh (Heavy)"
+	fleet "Bounty Hunter (licensed)"
+		add variant 1
+			"Rukh (Heavy)"
+	fleet "Hired Guns"
+		add variant 1
+			"Rukh (Heavy)"
+			"Firebird (Laser)" 2
+
+mission "Midnight Expansion: FW Prisoner Parole Add On"
+	landing
+	invisible
+	source "Deep"
+	destination "New Tibet"
+	deadline 7
+	to offer
+		has "Liberate Kornephoros: done"
+		not "FW Prisoner Parole: done"
+	to fail
+		or
+			has "FW Prisoner Parole: aborted"
+			has "FW Prisoner Parole: failed"
+			has "FW Prisoner Parole: done"
+	on enter
+		dialog `You are hailed by a pirate ship: "I heard you're transporting some navy scum. You can all die together!"`
+	npc 
+		to spawn
+			"ship: Medium Warship" + "ship: Heavy Warship" + "ship: Utility" + "ship: Heavy Freighter" > 1
+		government "Pirate"
+		system destination
+		personality waiting staying vindictive
+		fleet "Small Dirt Belt Pirates" 2
+	npc 
+		government "Pirate"
+		system destination
+		personality waiting staying vindictive
+		fleet "Small Dirt Belt Pirates" 2
+	npc 
+		government "Pirate"
+		system destination
+		personality coward
+		fleet "Small Dirt Belt Pirates" 2
+	npc 
+		government "Pirate"
+		personality waiting vindictive
+		ship "Rukh (Turbo)" "Red Death"
+
+mission "Midnight Expansion: Rukh Blueprints"
+	minor
+	name "Rukh Blueprints"
+	description "Search <destination> for the blueprints of the Rukh." 
+	source
+		attributes "frontier"
+		not attributes "uninhabited"
+	destination Hope
+	to offer
+		"combat rating" > 600
+		random < 70
+	on offer
+		conversation
+			scene "effect/blood"
+			`When you enter the spaceport bar you notice the smell of blood in the air. The bottles behind the bar are smashed, their contents still leaking onto the floor. The bar counter and several overturned tables are riddled with bullet holes. Behind them, dead bodies lay on the floor. It seems like that smart thing to do is flee, but before you do, you hear faint wheezing from a corner booth.`
+			choice
+				`	(Investigate the sound.)`
+					goto investigate
+				`	(Flee.)`
+			scene "outfit/attention"
+			`	Whoever shot this place up did so recently. You decide to ignore the sound and flee before getting caught up in whatever trouble caused this mess.`
+				decline
+			label investigate
+			scene "outfit/unknown"
+			`	An old man lies bleeding on the floor. His breathing is shallow, but he's still alive. When you approach he gasps, "Those bastards... wanted the Rukh blueprints... Wei shipyards... Hope..." He twitches a few times then is still, his breathing silenced. The sound of sirens can be heard in the distance.`
+			choice
+				`	(Wait for the authorities.)`
+				`	(Leave.)`
+					goto leave
+			`	You don't have to wait long for the local police to arrive. After being detained overnight for a lengthy interrogation, they determine that you weren't involved in the shooting and let you go free.`
+				decline
+			label leave
+			scene "thumbnail/Becca warbird"
+			`	The Rukh is an old warship once manufactured at the Wei shipyards on Hope.`
+			choice
+				`	(Look for the blueprints.)`
+					goto end
+				`	(Don't get involved.)`
+			scene "outfit/attention"
+			`	Someone wanted the blueprints badly enough to kill everyone at the bar. This seems dangerous and you want no part of it. You decide not to look into the whereabouts of the Rukh blueprints.`
+				decline
+			label end
+			scene "planet/ice2"
+			`	You've decided to head for <destination> and search for the Rukh blueprints. Before heading out you prepare some gear for the excavation.`
+				accept
+	on decline
+		event "add marauder rukh" 30
+	on enter
+		dialog `You receive a hail from another ship: "Did the old man tell you something? I suppose it doesn't matter. You'll be joining him in the afterlife!`
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 1
+		government "Bounty Hunter"
+		personality nemesis disables waiting plunders
+		fleet "Bounty Hunters"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 2
+		government "Bounty Hunter"
+		personality nemesis disables waiting plunders
+		fleet "Bounty Hunters"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 3
+		government "Bounty Hunter"
+		personality nemesis disables waiting plunders
+		fleet "Bounty Hunters"
+	npc
+		government "Bounty Hunter"
+		personality nemesis disables waiting plunders
+		ship "Rukh (Energy Cannons)" "Rain Dancer"
+	on complete
+		event "add marauder rukh"
+		conversation
+			scene "scene/scene-empty box"
+			`	Someone sent bounty hunters to slow down anyone who might have gotten information from the old man. So it isn't too surprising that after spending all day searching the ruins of the Wei shipyards, you haven't found any blueprints. If they were here, they've already been plundered.`
+
+event "add marauder rukh"
+	fleet "Marauder Independent"
+		add variant 2
+			"Marauder Rukh"
+		add variant 2
+			"Marauder Rukh (Inferno Rocket)"
+		add variant 2
+			"Marauder Rukh (Heavy)"
+	fleet "Marauder Bounty (Disguised)"
+		add variant 2
+			"Marauder Rukh"
+		add variant 2
+			"Marauder Rukh (Inferno Rocket)"
+		add variant 2
+			"Marauder Rukh (Heavy)"
+	fleet "Marauder Independent (Killable)"
+		add variant 2
+			"Marauder Rukh"
+		add variant 2
+			"Marauder Rukh (Inferno Rocket)"
+		add variant 2
+			"Marauder Rukh (Heavy)"
+	fleet "Marauder III"
+		add variant 1
+			"Marauder Rukh"
+		add variant 1
+			"Marauder Rukh (Inferno Rocket)"
+		add variant 1
+			"Marauder Rukh (Heavy)"
+	fleet "Marauder fleet IV"
+		add variant 3
+			"Marauder Rukh"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 3
+			"Marauder Rukh (Inferno Rocket)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 3
+			"Marauder Rukh (Heavy)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+	fleet "Marauder fleet V"
+		add variant 2
+			"Marauder Rukh"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 2
+			"Marauder Rukh (Inferno Rocket)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 2
+			"Marauder Rukh (Heavy)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+	fleet "Marauder fleet VI"
+		add variant 1
+			"Marauder Rukh"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 1
+			"Marauder Rukh (Inferno Rocket)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+		add variant 1
+			"Marauder Rukh (Heavy)"
+			"Marauder Raven"
+			"Marauder Quicksilver"
+
+

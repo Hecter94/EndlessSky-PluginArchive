@@ -1,2 +1,2 @@
-# Adde Irm
-> New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
+# Irm
+> Explore a curiosity of a long gone and mysterious species in this intwined story of adventure and vision. Familiar friends will capitalise on what remains in the midst of noble opportunity, as the player you will find yourself to be relied on by unassuming forces.

@@ -16,7 +16,6 @@ mission "ScS Alpha Abduction 1"
 		dialog phrase failure
 	on offer
 		event "ScS syndicate against alphas"
-		fail "The End has Not Yet Been Written 2"
 		conversation
 			`As Sawer speeds off into the distance, you land and wonder if you ought to have followed to escort him safely. It's good you didn't: as you land you see a masive Vanguard land next to you, and out steps none other than Downey himself!	When he recognises your ship, he comes over flanked by half a dozen well-armed guards.`
 			`	"<last>! What are you doing here! I told you to wait in Delta Capricorni!"`
@@ -190,6 +189,8 @@ mission "ScS Alpha Abduction 3 return"
 	on fail
 		dialog phrase failure
 		fail "ScS Alpha Abduction 3"
+	on complete
+		log `Alphas abducted women from Bluestone, to take as incubators for their offspring. We managed to track them down, and with the help of Admiral Danforth, kill the Alphas and rescue the women. However, some Alphas separated before we caught them: we'll do what we can to hunt them down and free their captives also.`
 	
 	npc save accompany
 		government "Navy (Oathkeeper)"
@@ -224,6 +225,7 @@ mission "ScS Alpha Abduction 3 solo"
 		event "ScS empty alcyone"
 	on complete
 		event "ScS restore alcyone"
+		log `Alphas abducted women from Bluestone to take as incubators for their offspring. We tracked them down and destroyed them, but sadly the women were killed in the process by Syndicate ships. Some Alphas escaped: maybe there's still a chance of catching them and rescuing their captives.`
 	
 	npc kill
 		government "Alpha"
@@ -379,6 +381,7 @@ mission "ScS Downey 1"
 	to offer
 		has "ScS Alpha Abduction 4: done"
 	on offer
+		log `It's time to deal with the corruption inside the Syndicate that lets tragedies like this Alpha abduction happen. Starting with Benjamin Downey: I'll go back and pretend to work for him, to uncover the truth and expose him.`
 		conversation
 			`The Amazons are ready for you when you arrive, and have convened a meeting. Mary-Jane affirms much the same stance as Arnold, that the Alphas were able to pull off the abduction because of the corruption and evil in the Syndicate that put profits before human life.`
 			`	"We need a revolution in leadership, from top to bottom. Out with those who feast on the labour of the poor. Out with those who throw away human life for a credit. Out with those who would bomb a city for profits - and with nuclear weapons too!"`
@@ -486,12 +489,14 @@ mission "ScS Downey 3"
 					goto truth
 				`	"Benjamin Downey planned it for propaganda, and framed the Free Worlds."`
 			action
+				log `Fought off an attack on a Syndicate world by rogue militia. Blamed it on Downey - may he rot in jail for his crimes.`
 				set "ScS downey lie"
 			`	"I see," says the executive. "I have suspected something like that of Downey for years. Don't you worry, I will see to it that he is taken into custody and faces full punishment for his crimes. Thank you for your valuable information."`
 			`	Well, that seemed to go as well as you could have hoped. You'd better head back to the Amazons to see what to do next.`
 				accept
 			label truth
 			action
+				log `Faught off an attack on a Syndicate world by rogue militia. Don't know for sure how Downey knew about it in advance, so I just told the truth.`
 				set "ScS downey truth"
 			`	"I see," says the executive. "He does have spies everywhere; he must have got a tip-off. Thank you again for your assistance, and I'll relay your information, and your success, to the higher-ups."`
 			`	The system is safe, but you have nothing on Downey. You'd better go back to the Amazons and see what to to next.`
@@ -552,7 +557,7 @@ mission "ScS Downey 5"
 		personality staying timid target
 		ship "Vanguard" "Feathers McGraw"
 	
-	npc accompany save
+	npc accompany
 		government "Syndicate"
 		system "Al Dhanab"
 		personality target
@@ -645,6 +650,7 @@ mission "ScS Downey 6"
 	to offer
 		has "ScS Downey 5: done"
 	on offer
+		log `Downey took his reward money to Buccaneer Bay, for some deal with pirates. That was his undoing, though, and now he's safely uner lock and key.`
 		conversation
 			`The Syndicate ships follow you down and herd the Feathers McGraw onto a pad. Downey doesn't even try to resist as officers surround his ship: there's no point trying to run now. One, in a highly-decorated uniform, walks up to Downey holding up some sort of warrant or notice.`
 			`	"Benjamin Alexander Andrew Downey. This is a record of your properties and assets on Buccaneer Bay, illegally purchased in collaboration with pirates through holdings you control. Do you deny it?" Downey remains silent, but you can see the fear in his face. The officer produces a pair of handcuffs, and escorts Downey away, while other officers head on board to commandeer his ship. One extremest, at least, will finally be locked away.`
@@ -726,6 +732,8 @@ mission "ScS Villains 2"
 		conversation
 			branch truth
 				has "ScS downey truth"
+			action
+				log `Downey was acquitted for the rogue militia attack! Better hope he doesn't realise I falsely accused him.`
 			`Mary-Jane and the others congratulate you on your return, that those two extremists will never terrorise the worlds again. They have bad news, though. Downey was arrested on the charge of staging the attack in Delta Capricorni, but it turned out there was no evidence for it. Perhaps he was innocent of that crime after all; or perhaps he hid his tracks too well. He's now free, and you'd better hope he doesn't hear you denounced him.`
 			`	Soon enough, though, you're talking about the next group they've identified.`
 				goto next
@@ -755,6 +763,7 @@ mission "ScS Villains 2"
 	to complete
 		has "ScS spotted nick b"
 	on complete
+		log `Saw the missing Alpha ship, ever so briefly. They're in a Firebird named the Nick B. Arnold is doing his best to put a net around them.`
 		clear "ScS spotted nick b"
 		conversation
 			`You land and send a copy of your logs immediately to Mary-Jane. Next you go to your cargo hold to check out what you picked up. It's a piece of ducting, some relatively inconsequential bit of the side of a ship, but it does look right to be from a Firebird. Much more interesting, when you look closer, it's not just broken off from gunfire or daily wear. Bolts are loose, and the metal has sheared in some places as if neatly cut half way through. Someone has sabotaged this!`
@@ -928,6 +937,7 @@ mission "ScS Villains 4"
 		ship "Protector" "Great Profit of Heaven"
 	
 	on complete
+		log `Been apprehending various extremists within the Syndicate, and finally Franz Francis Jr and his strange colleagues. They can amuse each other with their strange dreams of twisted progress - in jail.`
 		conversation
 			`The battered remains of the 'Great Profit of Heaven' lands behind you, escorted by numerous Syndicate police. As Franz and his colleagues file off their ship, looking wan in the open light away from their office, you wander over. You smile sweetly and give them a little wave.`
 			`	One waves back, as they shuffle along between the bristling guns of the policemen, then there's a mumbling and a yelp and one shouts back angrily,`
@@ -945,6 +955,7 @@ mission "ScS Villains 4"
 	on abort
 		dialog phrase failure
 	on fail
+		log `Been apprehending various extremists within the Syndicate, and finally Franz Francis Jr and his strange colleages. They're dead now. They'll never trouble the galaxy again.`
 		conversation
 			`You look back as you land, to see the smouldering remains on the Great Profit of Heaven. At last, they paid their debt. May all who think to follow in their footsteps take heed.`
 			`	Now you can head back to Amazon in peace.`
@@ -1017,6 +1028,7 @@ mission "ScS Downey Returns"
 		dialog `Downey's ship, the Feathers McGraw, is here. He responds to no hails, but powers up his weapons. You power up yours.`
 	
 	on complete
+		log `Downey went on the run, one last time, but I chased him and caught his ship. Now the Syndicate will lock him down tight, and he will face the justice he ought to have long ago.`
 		conversation
 			`It doesn't take long, after you land, for Syndicate ships to stream overhead and jump into <waypoints>. The pirates must have dispersed pretty quick after their leader was down. You hang around long enough to get a message from Mary-Jane: "They've got Downey. Confirmed. He's in custody and won't escape this time, if he lives long enough to try."`
 			`	You open a secure connection to get more detail, but there's not much to know. Downey will be transported under lock and key, and no one will see him except briefly at his trial.`
@@ -1039,6 +1051,7 @@ mission "ScS Downey Returns"
 	on abort
 		dialog phrase failure
 	on fail
+		log `Downey went on the run, one last time, but I chased him down and put and put an end to his evil. He will never again trouble the galaxy.`
 		conversation
 			`You land, satisfied that Downey will never again trouble the galaxy with his evils. Others may rise to replace him, but he, at least, is gone forever. You call Mary-Jane to let her know.`
 			`	"Well done <first>. He was a truly evil man, and we will have more peace for his loss. I think, after all that, you'd better take a break. We have no more extremists to catch right now. Did you get anywhere tracking down those missing Alphas and the women they kidnapped?"`
@@ -1072,6 +1085,7 @@ mission "ScS Alpha Letter"
 	to offer
 		has "ScS Villains 2: done"
 	on complete
+		log `People` `Nikki and Vicky` `Twin sisters who were captured by the Alphas. They come from Relic, where their grandmother still lives.`
 		conversation
 			`As you're coming in to land, you look up the Taylor sisters' grandmother's address, and send her a message to say you'll be coming. Arnold has already informed her that a captain will be coming round with news of her granddaughters, but left the rest up to you. It's some distance from the spaceport to her house, so you take a train from the nearest city, then a taxi to her house. It seems she lives quite some way away from development.`
 			`	You knock on the door, and an elderly woman answers. "Mrs Haythorne?" you ask.`
@@ -1167,6 +1181,7 @@ mission "ScS Alpha Hunt 2"
 		dialog `As you enter Sol you catch sight of the Nick B, the Alphas' Firebird, making its way swiftly to Mars. You follow as quick as you can.`
 	
 	on complete
+		log `Tracked the Alphas to Mars, but they switched ships to a Blackbird, and fled before we could catch them.`
 		event "ScS alpha looped" 6
 		conversation
 			`You fly over, about the place where the Nick B landed, until you see a ring of troops start to assemble. Ships take off and land in the distance, but this one won't get away. As the troops get close, you land nearby and go in to join.`
@@ -1217,6 +1232,8 @@ mission "ScS Alpha Hunt 3"
 			`	You ignore him, and leave him to the Navy who will make sure they're captured without harm coming to the captives.`
 	
 	on complete
+		log `The Alphas were caught in a net, but they slipped out by trading ships with a merchant. They're now flying a Heavy Shuttle, the Richard III. In the chaos, eleven women escaped and were rescued, leaving only four with the Alphas. Nikki was among the rescued; her twin Vicky is still in captivity.`
+		log `People` `Nikki and Vicky` `Nikki was rescued when the Alphas traded ships for a Heavy Shuttle, but Vicky is still out there somewhere, with three others, awaiting your rescue. Nikki and Vicky had been trying to drop clues to help us to follow them.`
 		event "ScS alpha romeo ready" 5
 		conversation
 			`You land, and sigh a huge sigh of relief. Arnold's voice flickers to life as you contact him, but he's troubled. "<first>, you'd better go and find the lieutenant, something's wrong." You look out as the Alpha ship, escorted by a dozen Navy boats, comes into land, and soldiers lead out a solitary prisoner in chains. From another ship comes an officer, who must be the lieutenant in charge. You go quickly to find him.`
@@ -1343,6 +1360,7 @@ mission "ScS Soylent Seizure"
 	to offer
 		has "ScS Alpha Swap 2: done"
 	on offer
+		log `Have provided the Alphas with a fast Bounder, the Romeo, so they can escape. It's bugged: as soon as they leave the atmosphere and try to flee, we should be able to follow and catch them. Now I'm participating in a blockade to let the security from the Deep catch one of the top Syndicate extremists.`
 		conversation
 			`You land out on one side of the spaceport, and the Romeo lands on the other. Everything is set up: now all you can do is wait.`
 			`	Hours go by. You don't even know if the Alphas are in this system, you just know they're trapped between here, Altair and Nocte, and Arnold recommended here for the bait. Perhaps you should go and do something else. After all, you don't need to see them take the ship: that's what the trackers are for.`
@@ -1459,6 +1477,7 @@ mission "ScS The Top"
 	on visit
 		dialog `You've arrived on Foundry, but either Jana or Arnold haven't made it yet. Take off again and wait for them: you have to do this together.`
 	on complete
+		log `Confronted Alistair Korban, CEO of the Syndicate. He may not be directly a terrorist himself, but he's up to his neck in muck, including fraternising with Alphas. Put pressure on him to resign, to which he replied he'd resign "when the galaxy is rent apart, and the shadows of the gods themselves come down."`
 		conversation "ScS korban resignator"
 
 conversation "ScS korban resignator"

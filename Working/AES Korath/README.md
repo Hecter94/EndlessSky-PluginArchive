@@ -1,2 +1,1 @@
-# AES-Korath
-> A collection of changes and additions to Endless Sky regarding the fallen empire: The Korath.
+# Merged into `Fluff`

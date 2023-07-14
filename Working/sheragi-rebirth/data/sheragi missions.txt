@@ -1,0 +1,100 @@
+mission "Assisting Sheragi"
+	assisting
+	repeat
+	to offer
+		random < 27
+	source
+		government "Sheragi (Rebirth)"
+		not attributes "automaton"
+	on offer
+		payment 75000
+		conversation
+			`With many declarations of how honourable you are, the captain of the <origin> gives you <payment>.`
+				decline
+	destination "Thaczil"
+
+mission "Boarding Dishonoured Jewels"
+	boarding
+	repeat
+	to offer
+		random < 1
+	source
+		government "Sheragi (Dishonoured)"
+		not attributes "automaton"
+	on offer
+		payment 3250000
+		conversation
+			`Upon boarding the <origin> you find a large hoard of jewels, easily worth <payment>.`
+				decline
+	destination "Thaczil"
+
+mission "Boarding Dishonoured Gold"
+	boarding
+	repeat
+	to offer
+		random < 10
+	source
+		government "Sheragi (Dishonoured)"
+		not attributes "automaton"
+	on offer
+		payment 350000
+		conversation
+			`Upon boarding the <origin> you find a large hoard of gold, easily worth <payment>.`
+				decline
+	destination "Thaczil"
+
+mission "Izkagg 1"
+	name "Escort Izkagg to <planet>"
+	description "Help Izkagg, a budding Sheragi warrior, by dueling his ship <npc>."
+	minor
+	source "Ghrophund"
+	destination "Ghrophund"
+	to offer
+		random < 35
+		or
+			"combat rating" > 1000
+			"net worth" > 12000000
+		has "First Contact: Sheragi: offered"
+	on offer
+		conversation
+			`As you head into the spaceport a young-looking Sheragi approaches you. "Excuse me, I'm trying to find a worthy duel partner to test my skills against in ship combat. Would you mind dueling me?"`
+			choice
+				`	(Accept without any questions.)`
+					goto in
+				`	"Wait what?"`
+					goto waitwhat
+				`	(Decline.)`
+					decline
+			label waitwhat
+			`	"It is common practice for Sheragi to duel in a contest of strength and skill, both parties gain from the experience of the fight," he says.`
+			choice
+				`	"Alright I'm in."`
+					goto in
+				`	"No way."`
+					decline
+			label in
+			`	"That's the spirit," he says, "the name's Izkagg by the way. Now let's get this duel going. Remember, don't destroy my ship if you beat me, just disable it and land back down, I'll make my own way back to the spaceport after the duel."`
+				accept
+	npc save disable
+		personality disables staying heroic
+		government "Sheragi (Duel)"
+		ship "Lleisgarir Hardri" "Lleisgarir Hardri"
+	on visit
+		dialog `You have landed on <planet>, but you didn't disable Izkagg's ship! Depart and finish the duel.`
+	on complete
+		payment 65000
+		log "Duelled a young Sheragi warrior named Izkagg."
+		conversation
+			`"Honour upon you. Please take this as payment." He hands you a chip worth <payment>.`
+
+ship "Bronze Edge" "Lleisgarir Hardri"
+	outfits
+		"Heavy Ion Cyclotron" 3
+		"Sheragi Anti-Missile"
+		"Electronic Warfare System"
+		"Small EM Battery"
+		"Small Hybrid Cooling"
+		"Sheragi Solar Intake"
+		"Large Fission Drive"
+		"Fusion Afterburner"
+		"Sheragi Hyperdrive"

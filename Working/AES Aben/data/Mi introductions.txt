@@ -1,0 +1,57 @@
+mission "abenFirstContact"
+	description "You've located in new lands a great city adorned by a towering spire, they may have work they need help in carrying out."
+	landing
+	name "Formal Introductions"
+	on offer
+		event "abenInvolvement" 4
+		event "abenInvolvementFalse" 8
+		conversation
+			`On the descent down into a large sprawling crater, a great shimmering spire at the center of a breathtaking city casts an intense glare in all directions. The beautiful sight of the city surrounding the spire puts you in awe, the buildings seem well-maintained and have ease of access by air, or ground. The swarming layers of hover vehicles above it all are incredible, they must run autonomously as they all traverse the airspace fluidly and with very little room for error.`
+			`	Near the pinnacle of the spire, which tapers off into a gentle slope, lies an unexpectedly large opening with flashing strips marking landing areas within the hanger. Upon landing your ship within, a party of four approaches you shortly after you disembark, they appear to be mostly human-like figures, only unclothed. On approach, it's clear that they possess no obvious reproductive organs, bear no hair across their bodies, and are missing noses. The relief you feel from being confronted by figures with a similar physicality is almost entirely shaken by the striking differences in their appearance.`
+			`	As they reach you, you notice that the two adjacent to the center individual bear an unusual build, it seems they are clad in body armor designed to mimic their already imposing build. The last of the four appear to be female or at least a separate breed of the species that is very slim, and at least a head taller than the others. 'Her' ears stretch to a point, much like a mythical race from old earth legends. She holds an electronic device that you assume is for transcribing the conversation, "It is a wonderful and clear day sir, or ma'am of course. We call ourselves Aben." the spokesperson opens with, he sounds almost cautious when pronouncing mention of gender.`
+			choice
+				`	"How are we understanding each other?"`
+				`	"When did you learn to speak with my kind?"`
+			`	He plainly explains, "We have met travelers from your people before, they were kind to lend us multiple databases of text and literature in your native tongue." he hesitates, perhaps to articulate his thoughts, looking posed to deliver a rehearsal of speech, "We the Aben are a modest race, we can not rule over others with our feeble technology or live in peace with those who would rule us, we are homebound by culture. To gain power as other great civilizations have before us, we adapt the works of others for our use. Many oblige us with their favor, we have received a great many deliveries of exciting applications, and they of course get their return for their service."`
+			choice
+				`	"How do you determine what technology you can use?"`
+				`	"Can I get involved with your deliveries?"`
+					goto "involved"
+			`	"We are interested in any of which mechanisms we don't currently understand, there are establishments for determination of use." After a brief pause, the spokesperson introduces themself, "For the matter of personal relations my designation, or name as you might say, is Saed. May I learn your name?"`
+			branch "hero"
+				has "main plot completed"
+			`	"I call myself <first> <last>, I'm the captain of my own ship." Pausing to consider what exactly you do before you answer, "I travel further than the rest of my kind are able. I am witness to many of our galaxy's wonders, one individual explorer helping where I can."`
+				goto "named"
+			label "hero"
+			`	"My name is Captain <last>, I led the forces of my kind against the invasive Pug and together drove them away. I'm just an explorer now, but I once pledged allegiance and fulfilled my duty to a smaller part of the whole of my kind."`
+			label "named"
+			`	Saed looks pleased, although the expression feels muted and askew due to their lack of a nose, "I am happy to meet your acquaintance <last>. If you too would like to assist us you can inquire in an amount of 8 of your standard day cycles, we are unfortunate to be busy at this time."`
+				accept
+			label "involved"
+			`	Expressions are somewhat muted on the Aben it seems, you never considered how much expression is conveyed through the movements in the nose. You can pick up an inkling of a surprise after your offer to help, "Gracious visitor, you would be welcome. We are however busy for a time, you can return at any time after an amount of 4 of your standard day cycles are passed."`
+				accept
+	source
+		planet "Nis"
+	to complete
+		or
+			has "abenLogisticsRegister: offered"
+			has "event: abenInvolvementFalse"
+event "abenInvolvement"
+event "abenInvolvementFalse"
+mission "abenLogisticsRegister"
+	description "Saed has introduced you to their logistics operations and has allowed you to take out contracts under their direction. (You can access contracts using the job board.)"
+	job
+	name "Logistics Register"
+	on accept
+		conversation
+			`Landing in the spacious hanger as you have before still feels as new an experience. The cavernous hanger, as empty and immaculate as any ventured before, is isolating; the entire structure you stand in now feels newly established, though you do not know truly how long the Aben, or this structure, has persisted.`
+			`	Without so long to wait, you find yourself once again to face with the spokesperson and his scribe. "Are you here to participate in our acquisitions? I will personally court you in the proceeding registering."`
+			`	"I am, Saed. Anything I can do to help."`
+			`	A short journey ensues out of the hanger, just a floor below by elevator is another spacious room, a warehouse of a sort. The vast open-plan display of equipment both known and unknown to you along the floors lends credence to the entire operation. You feel as if a machine of unseen magnitude has just revealed the cogs of its mechanisms, gearing for some grandiose purpose.`
+			`	After a select few tours of their operations on various sorts of equipment, both space-borne and earth-bound, you are guided through several trials in the procedure. A deceptively long process leaves you picking up the pieces well after you decompress in your ship, though the actual necessities of their operation aren't much more than some courier work over long distances.`
+			`	(You can access contracts using the job board.)`
+				decline
+	source
+		planet "Nis"
+	to offer
+		has "event: abenInvolvement"

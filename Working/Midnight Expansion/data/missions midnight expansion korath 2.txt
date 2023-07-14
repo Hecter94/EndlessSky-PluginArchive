@@ -20,7 +20,7 @@ fleet "Korath Scouter"
 		timid surveillance fleeing uninterested
 	variant 1
 		"Korath Scouter"
-		"Korath Chaser"
+		"'olofez"
 
 mission "Midnight Expansion: Korath Scouter deployments."
 	landing
@@ -42,6 +42,10 @@ event "Korath Scouter deployments"
 		add fleet "Korath Scouter" 20000
 	system Durax
 		add fleet "Korath Scouter" 10000
+	system Atik
+		add fleet "Korath Scouter" 10000
+	system Misam
+		add fleet "Korath Scouter" 5000
 	system Sheratan
 		add fleet "Korath Scouter" 15000
 	system Polaris
@@ -86,10 +90,10 @@ fleet "Korath Scouter (Ember)"
 		timid surveillance fleeing uninterested
 	variant 1
 		"Korath Scouter (Fire-Lance)"
-		"Korath Chaser"
+		"'olofez (Expeller)"
 	variant 1
 		"Korath Scouter"
-		"Korath Chaser"
+		"'olofez"
 
 mission "Midnight Expansion: Korath Scouter Ember Waste"
 	landing
@@ -148,6 +152,115 @@ event "Korath Scouter ember waste"
 	system Gerenus
 		add fleet "Korath Scouter (Ember)" 45000
 
+mission "Midnight Expansion: Korath Scouter Scrapyard"
+	landing
+	invisible
+	to offer
+		has "event: Scrapyard Develops"
+	on offer
+		event "Korath Scouter Scrapyard"
+		fail
+
+event "Korath Scouter Scrapyard"
+	fleet "Small Korath Scrappers"
+		add variant 1
+			"Korath Scouter"
+			"'olofez"
+			"Model 8 (scrapper)"
+			"Model 8 (disruptor)"
+		add variant 1
+			"Korath Scouter"
+			"'olofez"
+			"Model 8 (scrapper)" 2
+			"Model 8 (disruptor)" 2
+		add variant 1
+			"Korath Scouter"
+			"'olofez"
+			"Model 8 (scrapper)" 3
+			"Model 8 (disruptor)" 3
+	fleet "Large Korath Scrappers"
+		add variant 1
+			"Korath Scouter (Repeater)"
+			"Far Osk 27"
+			"Model 8 (scrapper)" 4
+			"Model 8 (disruptor)" 4
+		add variant 1
+			"Korath Scouter (Repeater)"
+			"Far Osk 27"
+			"Model 8 (scrapper)"
+			"Model 8 (disruptor)"
+			"Model 16 (scrapper)"
+			"Met Par Tek 53 (scrapper)"
+		add variant 1
+			"Korath Scouter (Repeater)"
+			"Far Osk 27"
+			"Model 8 (scrapper)"
+			"Model 8 (disruptor)"
+			"Model 16"
+			"Model 16 (scrapper)"
+		add variant 1
+			"Korath Scouter (Repeater)"
+			"Far Osk 27"
+			"Model 8 (scrapper)"
+			"Model 8 (disruptor)"
+			"Model 32 (scrapper)"
+
+
+
+mission "Midnight Expansion Remnant: Cognizance 4 plus"
+	invisible
+	source "Caelian"
+	landing
+	to offer
+		has "Remnant: Cognizance 2: done"
+	npc kill
+		government "Korath"
+		personality staying surveillance
+		system "Aescolanus"
+		fleet
+			names "korath"
+			commodities "Food"
+			outfitters "Void Sprite Parts"
+			variant
+				"Lor'kas Ik 577 (Ember)"
+				"Korath Scouter (Fire-Lance)" 4
+				"'olofez (Expeller)" 7
+
+# "Lor'kas Ik 577 (Ember)" variant is deprecated in vanilla
+ship "Lor'kas Ik 577" "Lor'kas Ik 577 (Ember)"
+	outfits
+		"Digger Mining Beam" 2
+		"Banisher Grav-Turret" 2
+		"Warder Anti-Missile" 4
+		"Shunt-Strike Turret" 2
+
+		"Triple Plasma Core"
+		"Systems Core (Large)"
+		"Liquid Sodium Cooler"
+		"Fuel Processor" 2
+		"Thermal Repeater Rifle" 453
+		"Microbot Defense Station" 15
+		"Hyperdrive"
+		"Jump Drive"
+
+		"Bow Drive (Meteor Class)"
+		"Reverser (Lunar Class)"
+		"Steering (Planetary Class)"
+		"Thruster (Planetary Class)"
+
+	gun "Digger Mining Beam"
+	gun "Digger Mining Beam"
+	turret "Shunt-Strike Turret"
+	turret "Warder Anti-Missile"
+	turret "Warder Anti-Missile"
+	turret "Shunt-Strike Turret"
+	turret "Warder Anti-Missile"
+	turret "Banisher Grav-Turret"
+	turret "Banisher Grav-Turret"
+	turret "Warder Anti-Missile"
+
+
+
 # phasing this version of the job out for a renamed version
 mission "Remnant: Bounty-Korath Scouter"
 	minor
@@ -178,7 +291,7 @@ mission "Midnight Expansion: Bounty-Korath Scouter"
 			cargo 3
 			variant
 				"Korath Scouter (Crippled)"
-				"Korath Chaser"
+				"'olofez"
 		dialog "You have destroyed the Korath ship. You can now return to <planet> to collect your payment."
 	on visit
 		dialog phrase "generic bounty hunting on visit"
@@ -223,7 +336,7 @@ mission "Midnight Expansion: Salvage Scouter"
 mission "Midnight Expansion: Nenia Gas Harvest"
 	job
 	repeat
-	name "Harvest atmosphere from <system>"
+	name "Harvest atmosphere from <stopovers>"
 	description "Use a ship that can land on gas giants to travel with the <npc> to pick up another shipment of atmosphere from <stopovers>, and deliver it to <destination>."
 	cargo equipment 8
 	source
@@ -247,7 +360,31 @@ mission "Midnight Expansion: Nenia Gas Harvest"
 			names "korath"
 			variant
 				"Korath Scouter (Fire-Lance)"
-				"Korath Chaser"
+				"'olofez"
+	npc evade
+		to spawn
+			has "nenia gas scouter hunts you"
+			"ship: Heavy Warship" + "ship: Medium Warship" + "ship: Utility" >= 2
+		government "Korath"
+		system "Nenia"
+		personality entering heroic harvests plunders
+		fleet
+			names "korath"
+			variant
+				"Korath Scouter (Fire-Lance)" 2
+				"'olofez" 2
+	npc evade
+		to spawn
+			has "nenia gas scouter hunts you"
+			"ship: Heavy Warship" + "ship: Medium Warship" + "ship: Utility" >= 3
+		government "Korath"
+		system "Nenia"
+		personality entering heroic harvests plunders
+		fleet
+			names "korath"
+			variant
+				"Korath Scouter (Fire-Lance)" 2
+				"'olofez" 2
 	npc accompany
 		government "Remnant"
 		personality target timid launching escort
@@ -276,102 +413,266 @@ mission "Midnight Expansion: Nenia Gas Harvest"
 
 
 
-mission "Midnight Expansion: Add Korath Electro Shock Weapons"
+mission "Midnight Expansion: Add Korath Electro Shock Weapons Patch"
+	landing
+	invisible
+	to offer
+		has "event: add Korath Electro Shock Weapons"
+	on offer
+		event "add Korath Electro Shock Weapons patch"
+		fail
+
+event "add Korath Electro Shock Weapons patch"
+	fleet "Kor Efret Home"
+		remove variant 1
+			"Korath World-Ship (Shocker)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship B (Shocker)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship C (Shocker)"
+			"Eave-Skiff" 3
+	fleet "Korath Home"
+		remove variant 1
+			"Korath World-Ship (Shock-Strike)"
+			"'olofez (Expeller)" 3
+		remove variant 1
+			"Korath World-Ship B (Shock-Strike)"
+			"'olofez (Expeller)" 3
+		remove variant 1
+			"Korath World-Ship C (Shock-Strike)"
+			"'olofez (Expeller)" 3
+
+
+mission "Midnight Expansion: Add Korath Electro Shocker"
 	landing
 	invisible
 	on offer
-		event "add Korath Electro Shock Weapons"
+		event "add korath electro shock weapon"
+		not "event: add korath electro shock weapon"
 		fail
 
-event "add Korath Electro Shock Weapons"
+event "add korath electro shocker"
 	outfitter "Efret Salvage Advanced"
 		add "Korath Electro Shocker"
 		add "Korath Shocker Turret"
 	fleet "Kor Efret Home"
+		add variant 2
+			"Echo-Galleon (Shocker)"
+		add variant 3
+			"Arch-Carrack (Shocker)"
+		add variant 1
+			"Charm-Shallop (Shocker)"
 		add variant 1
 			"Korath World-Ship (Shocker)"
-			"Korath Chaser" 3
+			"Eave-Skiff" 3
 		add variant 1
 			"Korath World-Ship B (Shocker)"
-			"Korath Chaser" 3
+			"Eave-Skiff" 3
 		add variant 1
 			"Korath World-Ship C (Shocker)"
-			"Korath Chaser" 3
-	fleet "Korath Home"
-		add variant 6
-			"Korath World-Ship (Shock-Strike)"
-			"Korath Chaser" 3
-		add variant 6
-			"Korath World-Ship B (Shock-Strike)"
-			"Korath Chaser" 3
-		add variant 6
-			"Korath World-Ship C (Shock-Strike)"
-			"Korath Chaser" 3
+			"Eave-Skiff" 3
 
-mission "Midnight Expansion: Add Korath Electro Shock Warmonger escorts"
+mission "Midnight Expansion: Korath Electro Shock Weapon Patch"
 	landing
 	invisible
 	to offer
-		has "Warmonger Construction Completed"
+		has "event: add korath electro shock weapon"
 	on offer
-		event "Add Korath Electro Shock Warmonger escorts"
+		event "korath electro shock weapon patch"
 		fail
 
-event "Add Korath Electro Shock Warmonger escorts"
-	fleet "Kor Efret Home"
-		add variant 5
-			"Korath World-Ship (Shocker)"
-			"Korath Warmonger" 2
-			"Korath Chaser" 7
-		add variant 5
-			"Korath World-Ship B (Shocker)"
-			"Korath Warmonger" 2
-			"Korath Chaser" 7
-		add variant 5
-			"Korath World-Ship C (Shocker)"
-			"Korath Warmonger" 2
-			"Korath Chaser" 7
+event "korath electro shock weapon patch"
+	fleet "Korath Ember Waste Large Raid"
+		add variant 15
+			"Palavret (Ember)"
+			"'olofez" 2
+		add variant 3
+			"Palavret (Ember Blaze)"
+			"'olofez" 2
+		add variant 3
+			"Palavret (Ember Shunt)"
+			"'olofez" 2
+		add variant 2
+			"Rano'erek"
+			"'olofez" 4
+		add variant 2
+			"Rano'erek (Shunt)"
+			"'olofez" 4
+		add variant 1
+			"Ra'gru Ik 618 (Ember)"
+			"Rano'erek (Heaver)"
+			"Palavret (Ember)" 3
+			"'olofez" 10
+		add variant 1
+			"Ra'at Ik 621"
+			"Rano'erek (Heaver)"
+			"Palavret (Ember)" 3
+			"'olofez" 19
+		add variant 1
+			"Kas'lor Ik 582 (Ember)"
+			"Palavret (Ember)"
+			"Palavret (Ember Blaze)"
+			"Rano'erek"
+			"'olofez" 11
+		add variant 1
+			"Ra'gru Ik 618 (Shock Strike)"
+			"Rano'erek (Heaver)"
+			"Palavret (Ember)" 3
+			"'olofez" 10
+		add variant 1
+			"Ra'at Ik 621 (Shock Strike)"
+			"Rano'erek (Heaver)"
+			"Palavret (Ember)" 3
+			"'olofez" 19
 
-mission "Scrapyard: Efret Grappler Shocker Warmongers"
+
+mission "Midnight Expansion: Add Korath Electro Shock Ranger escorts"
 	landing
 	invisible
 	to offer
-		has "event: Add Korath Electro Shock Warmonger escorts"
-		has "event: Efret Grappler Warmongers"
+		or
+			has "Korath Ranger Construction Completed"
+			has "Warmonger Construction Completed"
 	on offer
-		event "Efret Grappler Shocker Warmongers"
+		event "Add Korath Electro Shock Ranger escorts"
 		fail
 
-event "Efret Grappler Shocker Warmongers"
+event "Add Korath Electro Shock Ranger escorts"
+	fleet "Kor Efret Home"
+		remove variant 1
+			"Korath World-Ship (Shocker)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship B (Shocker)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship C (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship (Shocker)"
+			"Korath Ranger (Shocker)" 2
+			"Eave-Skiff" 9
+		add variant 1
+			"Korath World-Ship B (Shocker)"
+			"Korath Ranger (Shocker)" 2
+			"Eave-Skiff" 9
+		add variant 1
+			"Korath World-Ship C (Shocker)"
+			"Korath Ranger (Shocker)" 2
+			"Eave-Skiff" 9
+		add variant 5
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 3
+		add variant 2
+			"Echo-Galleon (Shocker)"
+			"Korath Ranger (Shocker)" 2
+			"Eave-Skiff" 6
+		add variant 3
+			"Arch-Carrack (Shocker)"
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop (Shocker)"
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Vault-Barge"
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor (Shocker)"
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Delta-Ferry"
+			"Korath Ranger (Shocker)"
+			"Eave-Skiff" 6
+		add variant 1
+			"Bravo-Monitor (Shocker)"
+
+mission "Scrapyard: Efret Grappler Shocker Rangers"
+	landing
+	invisible
+	to offer
+		or
+			has "event: Add Korath Electro Shock Ranger escorts"
+			has "event: Add Korath Electro Shock Warmonger escorts"
+		or
+			has "event: Efret Grappler Korath Rangers"
+			has "event: Efret Grappler Warmongers"
+	on offer
+		event "Efret Grappler Shocker Rangers"
+		fail
+
+event "Efret Grappler Shocker Rangers"
 	fleet "Kor Efret Home"
 		add variant 1
 			"Korath World-Ship (Shocker)"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 7
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 9
 		add variant 1
 			"Korath World-Ship B (Shocker)"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 7
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 9
 		add variant 1
 			"Korath World-Ship C (Shocker)"
-			"Korath Warmonger (Grappler)" 2
-			"Korath Chaser" 7
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 9
+
+mission "Scrapyard: Efret Grappler Shocker Rangers 2"
+	landing
+	invisible
+	to offer
+		or
+			has "event: Add Korath Electro Shock Ranger escorts"
+			has "event: Add Korath Electro Shock Warmonger escorts 2"
+		or
+			has "event: Efret Grappler Korath Rangers"
+			has "event: Efret Grappler Warmongers"
+	on offer
+		event "Efret Grappler Shocker Rangers 2"
+		fail
+
+event "Efret Grappler Shocker Rangers 2"
+	fleet "Kor Efret Home"
+		add variant 2
+			"Echo-Galleon (Shocker)"
+			"Korath Ranger (Grappler)" 2
+			"Eave-Skiff" 6
+		add variant 3
+			"Arch-Carrack (Shocker)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Charm-Shallop (Shocker)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Bravo-Monitor (Shocker)"
+			"Korath Ranger (Grappler)"
+			"Eave-Skiff" 3
 
 
 
-mission "Midnight Expansion: Kor Efret World Crafter Skeruto"
+mission "Midnight Expansion: Kor Efret Tevah-Ark Coracle"
 	landing
 	invisible
 	destination "Laki Nemparu"
 	to offer
 		has "event: wanderers: sabira eseskrai colony"
+	on offer
+		fail "Midnight Expansion: Kor Efret World Crafter Skeruto"
 	on enter Skeruto
 		conversation
-			scene "thumbnail/PR4987 korath refuge"
+			scene "thumbnail/PR4987 korath haven"
 			`A massive world ship has arrived. It is probably providing support to the Kor Efret colony.`
 	npc
 		to spawn
-			has "Warmonger Construction Completed"
+			or
+				has "Korath Ranger Construction Completed"
+				has "Warmonger Construction Completed"
 		government "Kor Efret"
 		system Skeruto
 		personality waiting staying heroic
@@ -381,11 +682,13 @@ mission "Midnight Expansion: Kor Efret World Crafter Skeruto"
 			cargo 5
 			outfitters "Korath Basics"
 			variant
-				"Korath Warmonger" 2
-				"Korath Chaser" 4
+				"Korath Ranger" 2
+				"Eave-Skiff" 6
 	npc
 		to spawn
-			has "event: Efret Grappler Warmongers"
+			or
+				has "event: Efret Grappler Korath Rangers"
+				has "event: Efret Grappler Warmongers"
 		government "Kor Efret"
 		system Skeruto
 		personality waiting staying heroic
@@ -395,8 +698,8 @@ mission "Midnight Expansion: Kor Efret World Crafter Skeruto"
 			cargo 5
 			outfitters "Korath Basics"
 			variant
-				"Korath Warmonger (Grappler)" 2
-				"Korath Chaser" 4
+				"Korath Ranger (Grappler)" 2
+				"Eave-Skiff" 6
 	npc
 		government "Kor Efret"
 		system Skeruto
@@ -406,22 +709,22 @@ mission "Midnight Expansion: Kor Efret World Crafter Skeruto"
 			fighters "korath"
 			cargo 0
 			variant
-				"Korath Chaser" 4
+				"Eave-Skiff" 12
 	npc kill
 		government "Kor Efret"
 		system Skeruto
-		personality waiting staying timid
+		personality waiting staying timid 
 		fleet
 			names "korath"
 			fighters "korath"
 			cargo 10
 			outfitters "Korath Basics"
 			variant
-				"Kor Efret World Crafter"
+				"Tevah-Ark Coracle"
 		conversation
-			apply
+			action
 				"reputation: Kor Efret" <?= -1000
-			`Your attack on the World Crafter was a success. You receive an angry transmission, but you don't understand the words being said...`
+			`Your attack on the Tevah-Ark Coracle was a success. You receive an angry transmission, but you don't understand the words being said...`
 
 
 
@@ -433,18 +736,18 @@ fleet "Korath Scrapper Raid"
 	outfitters "Korath Basics"
 	variant 2
 		"Korath Raider (Scrapyard)"
-		"Korath Chaser" 2
+		"'olofez" 2
 	variant 2
 		"Korath Raider (Scrapyard)"
 		"Far Osk 27" 2
 	variant 1
 		"Korath Dredger (Scrapyard)"
-		"Korath Chaser" 4
+		"'olofez" 4
 	variant 1
 		"Korath Dredger (Scrapyard)"
 		"Far Osk 27" 4
 
-mission "Midnight Expansion: Scrapper World Forger"
+mission "Midnight Expansion: Scrapper Rai'alorej Makwar"
 	landing
 	invisible
 	destination "Laki Nemparu"
@@ -452,9 +755,10 @@ mission "Midnight Expansion: Scrapper World Forger"
 		has "event: Blight Shadow Infestation"
 	on offer
 		event "scrapper world forger begin"
+		fail "Midnight Expansion: Scrapper World Forger"
 	on enter Host
 		conversation
-			scene "thumbnail/PR4987 korath refabricator"
+			scene "thumbnail/PR4987 korath refuge"
 			`A massive world ship is here. Perhaps the Korath are using it as a base of operations.`
 	npc
 		government "Kor Scrappers"
@@ -467,11 +771,11 @@ mission "Midnight Expansion: Scrapper World Forger"
 			outfitters "Efret Salvage"
 			variant
 				"Korath Scouter (Repeater)" 4
-				"Korath Chaser" 10
+				"'olofez" 6
 	npc kill
 		government "Kor Scrappers"
 		system Host
-		personality waiting staying forbearing timid
+		personality waiting staying mining harvests timid
 		fleet
 			names "korath"
 			fighters "korath"
@@ -479,11 +783,11 @@ mission "Midnight Expansion: Scrapper World Forger"
 			outfitters "Efret Salvage"
 			outfitters "Remnant Salvage"
 			variant
-				"Korath World Forger"
+				"Rai'alorej Makwar"
 		conversation
-			apply
+			action
 				"reputation: Kor Scrappers" <?= -1000
-			`Your attack on the World Forger was a success. You receive an angry transmission, but you don't understand the words being said...`
+			`Your attack on the Rai'alorej Makwar was a success. You receive an angry transmission, but you don't understand the words being said...`
 	on complete
 		event "scrapper world forger end"
 		"Scrapyard Threat Level" ++
@@ -504,7 +808,7 @@ event "scrapper world forger end"
 
 
 
-mission "Midnight Expansion: Scrapper World Shaper"
+mission "Midnight Expansion: Scrapper Ikatila'ej Eldar"
 	landing
 	invisible
 	source "Laki Nemparu"
@@ -514,14 +818,15 @@ mission "Midnight Expansion: Scrapper World Shaper"
 	on offer
 		event "scrapper world shaper begin"
 		fail "Scrapyard Exploring the Persitar Wreck"
+		fail "Midnight Expansion: Scrapper World Shaper"
 	on enter Persitar
 		conversation
-			scene "thumbnail/PR4987 korath haven"
+			scene "thumbnail/PR4987 korath refabricator"
 			`A massive world ship is parked here. It must be keeping the Blight Shadows here under control.`
 	npc
 		government "Kor Scrappers"
 		system Persitar
-		personality waiting staying heroic
+		personality waiting staying heroic mining harvests
 		fleet
 			names "korath"
 			fighters "korath"
@@ -529,22 +834,22 @@ mission "Midnight Expansion: Scrapper World Shaper"
 			outfitters "Efret Salvage"
 			variant
 				"Korath Scouter (Repeater)" 6
-				"Korath Chaser" 18
+				"'olofez" 10
 	npc kill
 		government "Kor Scrappers"
 		system Persitar
-		personality waiting staying timid
+		personality waiting staying timid mining harvests
 		fleet
 			names "korath"
 			fighters "korath"
 			cargo 10
 			outfitters "Efret Salvage"
 			variant
-				"Korath World Shaper"
+				"Ikatila'ej Eldar"
 		conversation
-			apply
+			action
 				"reputation: Kor Scrappers" <?= -1000
-			`Your attack on the World Shaper was a success. You receive an angry transmission, but you don't understand the words being said...`
+			`Your attack on the Ikatila'ej Eldar was a success. You receive an angry transmission, but you don't understand the words being said...`
 	on complete
 		event "scrapper world shaper end"
 		"Scrapyard Threat Level" ++
@@ -569,6 +874,149 @@ event "scrapper world shaper end"
 
 
 
+#Deprecated mission that seems to contradict vanilla Remnant attitude towards Korath World Ships. May rewrite in future.
+mission "Midnight Expansion: Ember World Crafter Cancel"
+	landing
+	invisible
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		not "Midnight Expansion: Ember World Crafter: done"
+		has "Midnight Expansion: Ember World Crafter: active"
+	on offer
+		event "ember world crafter end"
+		fail "Midnight Expansion: Ember World Crafter"
+		conversation
+			scene "thumbnail/PR4987 korath refuge"
+			`It seems the Korath ship occupying Lucina has left. While the Remnant are relieved, it is uncertain if the ship will return or appear elsewhere in the galaxy.`
+				decline
+
+#Deprecated mission that seems to contradict vanilla Remnant attitude towards Korath World Ships. May rewrite in future.
+mission "Midnight Expansion: Ember World Forger Cancel"
+	landing
+	invisible
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		not "Midnight Expansion: Ember World Forger: done"
+		has "Midnight Expansion: Ember World Forger: active"
+	on offer
+		event "ember world forger end"
+		fail "Midnight Expansion: Ember World Forger"
+		conversation
+			scene "thumbnail/PR4987 korath refabricator"
+			`It seems the Korath ship occupying Lucina has left. While the Remnant are relieved, it is uncertain if the ship will return or appear elsewhere in the galaxy.`
+				decline
+
+#Deprecated mission that seems to contradict vanilla Remnant attitude towards Korath World Ships. May rewrite in future.
+mission "Midnight Expansion: Ember World Shaper Cancel"
+	landing
+	invisible
+	source
+		government "Remnant"
+		not attributes "uninhabited"
+	to offer
+		not "Midnight Expansion: Ember World Shaper: done"
+		has "Midnight Expansion: Ember World Shaper: active"
+	on offer
+		event "ember world shaper end"
+		fail "Midnight Expansion: Ember World Shaper"
+		conversation
+			scene "thumbnail/PR4987 korath haven"
+			`It seems the Korath ship occupying Lucina has left. While the Remnant are relieved, it is uncertain if the ship will return or appear elsewhere in the galaxy.`
+				decline
+
+
+
+##########################
+#
+# Deprecated
+#
+##########################
+
+
+
+mission "Midnight Expansion: Kor Efret World Crafter Skeruto"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		never
+
+mission "Midnight Expansion: Scrapper World Forger"
+	landing
+	invisible
+	destination "Laki Nemparu"
+	to offer
+		never
+
+mission "Midnight Expansion: Scrapper World Shaper"
+	landing
+	invisible
+	source "Laki Nemparu"
+	to offer
+		never
+
+
+
+mission "Midnight Expansion: Add Korath Electro Shock Weapon"
+	landing
+	invisible
+	to offer
+		never
+
+event "add korath electro shock weapon"
+
+mission "Midnight Expansion: Add Korath Electro Shock Weapons"
+	landing
+	invisible
+	to offer
+		never
+
+event "add Korath Electro Shock Weapons"
+
+
+
+mission "Midnight Expansion: Add Korath Electro Shock Warmonger escorts"
+	landing
+	invisible
+	to offer
+		never
+
+event "Add Korath Electro Shock Warmonger escorts"
+
+
+
+mission "Midnight Expansion: Add Korath Electro Shock Warmonger escorts 2"
+	landing
+	invisible
+	to offer
+		never
+
+event "Add Korath Electro Shock Warmonger escorts 2"
+
+
+
+mission "Scrapyard: Efret Grappler Shocker Warmongers"
+	landing
+	invisible
+	to offer
+		never
+
+event "Efret Grappler Shocker Warmongers"
+
+mission "Scrapyard: Efret Grappler Shocker Warmongers 2"
+	landing
+	invisible
+	to offer
+		never
+
+event "Efret Grappler Shocker Warmongers 2"
+
+
+
 mission "Midnight Expansion: Ember World Crafter"
 	minor
 	name "World Crafter"
@@ -576,9 +1024,10 @@ mission "Midnight Expansion: Ember World Crafter"
 	source "Viminal"
 	waypoint Lucina
 	to offer
-		has "event: remnant: surveillance end"
-		has "main plot completed"
-		random < 30
+		never
+#		has "event: remnant: surveillance end"
+#		has "main plot completed"
+#		random < 30
 	on offer
 		event "ember world crafter begin"
 		conversation
@@ -601,7 +1050,7 @@ mission "Midnight Expansion: Ember World Crafter"
 			outfitters "Remnant"
 			variant
 				"Korath Scouter (Fire-Lance)" 4
-				"Korath Chaser" 8
+				"'olofez" 8
 	npc kill
 		government "Korath"
 		system Lucina
@@ -649,8 +1098,9 @@ mission "Midnight Expansion: Ember World Forger"
 	source "Aventine"
 	waypoint Lucina
 	to offer
-		has "event: ember world crafter end"
-		random < 30 - "day"
+		never
+#		has "event: ember world crafter end"
+#		random < 30 - "day"
 	on offer
 		event "ember world forger begin"
 		conversation
@@ -673,7 +1123,7 @@ mission "Midnight Expansion: Ember World Forger"
 			outfitters "Remnant"
 			variant
 				"Korath Scouter (Fire-Lance)" 4
-				"Korath Chaser" 10
+				"'olofez" 10
 	npc kill
 		government "Korath"
 		system Lucina
@@ -721,8 +1171,9 @@ mission "Midnight Expansion: Ember World Shaper"
 	source "Caelian"
 	waypoint Lucina
 	to offer
-		has "event: ember world forger end"
-		random < "day"
+		never
+#		has "event: ember world forger end"
+#		random < "day"
 	on offer
 		event "ember world shaper begin"
 		conversation
@@ -745,7 +1196,7 @@ mission "Midnight Expansion: Ember World Shaper"
 			outfitters "Remnant"
 			variant
 				"Korath Scouter (Fire-Lance)" 6
-				"Korath Chaser" 18
+				"'olofez" 18
 	npc kill
 		government "Korath"
 		system Lucina
@@ -787,14 +1238,14 @@ event "ember world shaper end"
 		remove fleet "Korath Raid"
 
 
-
+# keep available for pilots who already have Korath Waste Launcher
 mission "Korath Waste Disposal"
 	job
 	repeat
 	name "Korath Waste Disposal"
 	description "Dispose of 96 tons of industrial waste. You might be able to put this to good use..."
 	source
-		government "Kor Efret" "Korath" "Kor Mereti"
+		government "Kor Efret" "Korath" "Kor Mereti" "Kor Sestor"
 	to offer
 		random < 50
 	on offer
@@ -803,9 +1254,10 @@ mission "Korath Waste Disposal"
 		outfit "Korath Waste" 96
 		conversation
 			scene "outfit/PR4987 shunt bomb launcher"
-			`Custody of the industrial waste is transferred to you. You can think of a good way to dispose of it...`
+			`You take possession of the industrial waste. You can think of a good way to dispose of it...`
 		fail
 
+# keep available for pilots who already have Korath Waste Launcher
 mission "Korath Waste Generation"
 	landing
 	invisible
@@ -813,7 +1265,7 @@ mission "Korath Waste Generation"
 	to offer
 		random < 20
 	source
-		not government "Kor Efret" "Korath" "Kor Mereti"
+		not government "Kor Efret" "Korath" "Kor Mereti" "Kor Sestor"
 	on offer
 		require "Korath Waste Launcher"
 		require "Korath Waste" 0
@@ -821,3 +1273,6 @@ mission "Korath Waste Generation"
 	on accept
 		outfit "Korath Waste" 96
 		fail
+
+
+

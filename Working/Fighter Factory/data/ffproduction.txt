@@ -1,4 +1,6 @@
 
+
+#Allow other plugin to check if this plugin is installed (at some point).
 mission "Fighter Factory Installed"
 	landing
 	invisible
@@ -12,12 +14,31 @@ mission "FiFc: Fighter Record"
 	repeat
 	name "!F: Record Fighter"
 	description `Record number of current number of fighter and drone present. If fighter were loss new fighter will be produced on landing to replace it.`
+	#To automatically clear this from active mission.
 	deadline 1
-	to offer
-		has "outfit (installed): XMA03 Fighter Assembler"
+	#to offer
+	#	has "outfit (installed): XMA03 Fighter Assembler"
 	on offer
+		require "XMA03 Fighter Assembler"
+	on accept
 		"FiFc: Mem: Fighter Count" = "ships: Fighter"
 		"FiFc: Mem: Drone Count" = "ships: Drone"
+
+#Unused. For upgrading to 0.10.0
+mission "FiFc: Fighter Assembly (Custom Fighter 1) 1 v0.10.0"
+	invisible
+	landing
+	repeat
+	to offer
+		never
+		"ships: Fighter" < "FiFc: Mem: Fighter Count"
+		"outfit (installed): XMA03 Fighter Assembler" >= 1
+		"outfit (installed): E1-a Custom Blueprint 1" >= 1
+	on offer
+		outfit "Universal Fighter Parts" -1
+		give ship "FiFc: Custom Fighter 1"
+	on accept
+		fail
 
 mission "FiFc: Fighter Assembly (Custom Fighter 1) 1"
 	invisible
@@ -25,9 +46,9 @@ mission "FiFc: Fighter Assembly (Custom Fighter 1) 1"
 	repeat
 	to offer
 		"ships: Fighter" < "FiFc: Mem: Fighter Count"
-		"outfit (installed): XMA03 Fighter Assembler" >= 1
-		"outfit (installed): E1-a Custom Blueprint 1" >= 1
 	on offer
+		require "XMA03 Fighter Assembler" 2
+		require "E1-a Custom Blueprint 1" 1
 		outfit "Universal Fighter Parts" -1
 		give ship "FiFc: Custom Fighter 1"
 	on accept

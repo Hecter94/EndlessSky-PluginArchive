@@ -1,12 +1,13 @@
 mission "UiMW Heliarch: Get Anti-Missile"
 	landing
 	name `Buy anti-missiles`
-	description `Heliarch need anti-missiles fast, get 10 Anti-Missile and 10 Heavy Anti-Missile.`
-	deadline 7
+	description `Heliarch need anti-missiles fast, get 10 Anti-Missile and 10 Heavy Anti-Missile by <date>`
+	deadline 14
 	source
 		government "Coalition"
 		not attributes uninhabited
 	to offer
+		#Ignoring first contact, they already know how to speak to you anyway.
 		has "event: UiMW: Ultaka Invades Coalition 1"
 		random < 70
 	on offer
@@ -23,10 +24,13 @@ mission "UiMW Heliarch: Get Anti-Missile"
 		outfit "Heavy Anti-Missile Turret" -10
 		payment 28000000
 		event `UiMW Heliarch: Heliarch use human anti-missiles`
+		event `UiMW Heliarch: Heliarch develop anti-missiles` 14 30
 		"reputation: Heliarch" += 1
 		"reputation: Coalition" += 1
 		conversation
 			`A different group of Heliarch approach you, "Many thanks to you, we are. More help needed, we do, see job board, for more.", they transfer <payment> into your account as they unload the Anti-Missiles.`
+			
+event `UiMW Heliarch: Heliarch develop anti-missiles`
 			
 mission "UiMW Heliarch: Get Anti-Missile Job 1"
 	job
@@ -148,6 +152,16 @@ mission "UiMW Heliarch: More Anti-Missile deployment"
 		event `UiMW Heliarch: Heliarch use human anti-missiles 2`
 	on accept
 		fail
+		
+mission "UiMW Heliarch: Civilian use anti-missiles"
+	invisible
+	landing
+	to offer
+		"UiMW: Heliarch Additional AM" >= 20
+	on offer
+		event `UiMW Heliarch: Coalition use human anti-missiles`
+	on accept
+		fail
 			
 event `UiMW Heliarch: Heliarch use human anti-missiles 2`
 	fleet "Heliarch"
@@ -165,6 +179,140 @@ event `UiMW Heliarch: Heliarch use human anti-missiles 2`
 		add variant 20
 			"Heliarch Hunter (Interdicting, UiMW Human AM)" 1
 			"Heliarch Hunter (Scrappy, UiMW Human AM)" 2
+
+event `UiMW Heliarch: Coalition use human anti-missiles`
+	fleet "Small Arach"
+		add variant 20
+			"Arach Transport (UiMW, Human Anti-Missile)"
+			"Arach Courier"
+		add variant 20
+			"Arach Freighter (UiMW, Human Anti-Missile)"
+			"Arach Courier"
+		add variant 30
+			"Arach Courier (UiMW, Human Anti-Missile)" 2
+		add variant 20
+			"Arach Courier (UiMW, Human Anti-Missile)"
+		add variant 10
+			"Arach Freighter (UiMW, Human Anti-Missile)" 2
+		add variant 5
+			"Arach Freighter (UiMW, Human Anti-Missile)"
+			"Kimek Thorn" 2
+		add variant 5
+			"Arach Transport (UiMW, Human Anti-Missile)"
+			"Saryd Runabout"
+
+	fleet "Large Arach"
+		add variant 30
+			"Arach Hulk (UiMW, Human Anti-Missile)"
+		add variant 20
+			"Arach Spindle (UiMW, Human Anti-Missile)"
+		add variant 40
+			"Arach Freighter (UiMW, Human Anti-Missile)"
+			"Arach Transport (UiMW, Human Anti-Missile)"
+			"Arach Courier" 2
+		add variant 10
+			"Arach Hulk (UiMW, Human Anti-Missile)"
+			"Arach Spindle (UiMW, Human Anti-Missile)"
+		add variant 10
+			"Arach Spindle (UiMW, Human Anti-Missile)"
+			"Arach Freighter (UiMW, Human Anti-Missile)"
+		add variant 5
+			"Arach Freighter (UiMW, Human Anti-Missile)"
+			"Arach Transport (UiMW, Human Anti-Missile)"
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+		add variant 5
+			"Arach Spindle (UiMW, Human Anti-Missile)"
+			"Kimek Briar (UiMW, Human Anti-Missile)"
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+
+	fleet "Small Kimek"
+		add variant 20
+			"Kimek Briar (UiMW, Human Anti-Missile)"
+			"Kimek Thorn"
+		add variant 10
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+		add variant 10
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+			"Kimek Thorn"
+		add variant 10
+			"Kimek Briar (UiMW, Human Anti-Missile)" 2
+		add variant 5
+			"Kimek Briar (UiMW, Human Anti-Missile)"
+			"Saryd Runabout"
+		add variant 5
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+			"Arach Courier"
+
+	fleet "Large Kimek"
+		add variant 40
+			"Kimek Spire (UiMW, Human Anti-Missile)"
+		add variant 30
+			"Kimek Spire (UiMW, Human Anti-Missile)"
+			"Kimek Thorn" 2
+		add variant 20
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+			"Kimek Briar (UiMW, Human Anti-Missile)"
+			"Kimek Thorn"
+		add variant 10
+			"Kimek Thistle (UiMW, Human Anti-Missile)" 3
+		add variant 10
+			"Kimek Spire (UiMW, Human Anti-Missile)"
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+			"Kimek Briar (UiMW, Human Anti-Missile)"
+			"Kimek Thorn"
+		add variant 5
+			"Kimek Spire (UiMW, Human Anti-Missile)" 2
+		add variant 5
+			"Kimek Spire (UiMW, Human Anti-Missile)"
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+		add variant 5
+			"Kimek Thistle (UiMW, Human Anti-Missile)"
+			"Kimek Thorn" 2
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+
+	fleet "Small Saryd"
+		add variant 40
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+		add variant 20
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+			"Saryd Runabout"
+		add variant 10
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+			"Saryd Runabout" 2
+		add variant 5
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+			"Kimek Thorn" 2
+		add variant 5
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+			"Arach Courier"
+
+	fleet "Large Saryd"
+		add variant 60
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+		add variant 40
+			"Saryd Sojourner (UiMW, Human Anti-Missile)"
+		add variant 30
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+		add variant 20
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+			"Saryd Visitor (UiMW, Human Anti-Missile)"
+			"Saryd Runabout"
+		add variant 10
+			"Saryd Visitor (UiMW, Human Anti-Missile)" 3
+		add variant 10
+			"Saryd Sojourner (UiMW, Human Anti-Missile)"
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+		add variant 10
+			"Saryd Sojourner (UiMW, Human Anti-Missile)"
+			"Saryd Visitor (UiMW, Human Anti-Missile)" 2
+		add variant 5
+			"Saryd Sojourner (UiMW, Human Anti-Missile)"
+			"Kimek Thorn" 4
+		add variant 5
+			"Saryd Traveler (UiMW, Human Anti-Missile)"
+			"Arach Courier (UiMW, Human Anti-Missile)" 2
+			"Kimek Briar (UiMW, Human Anti-Missile)"
 #====================Variants
 
 ship "Heliarch Breacher" "Heliarch Breacher (Scrappy, UiMW Human AM)"
@@ -282,4 +430,154 @@ ship "Heliarch Punisher" "Heliarch Punisher (Scrappy, UiMW Human AM)"
 		"Small Thrust Module"
 		"Large Steering Module" 4
 		"Small Steering Module" 2
+		"Hyperdrive"
+		
+#==============================Civvie variants
+
+ship "Arach Freighter" "Arach Freighter (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 2
+	
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 2
+		"Large Steering Module"
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+ship "Arach Hulk" "Arach Hulk (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 4
+	
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Battery Module"
+		"Small Shield Module" 2
+		"Large Repair Module"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+ship "Arach Spindle" "Arach Spindle (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 2
+	
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Battery Module"
+		"Small Shield Module" 2
+		"Small Repair Module" 3
+		"Cooling Module"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module" 1
+		"Hyperdrive"
+
+
+ship "Arach Transport" "Arach Transport (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret"
+	
+		"Small Collector Module" 2
+		"Small Battery Module"
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Briar" "Kimek Briar (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret"
+	
+		"Small Collector Module" 2
+		"Small Battery Module" 2
+		"Small Shield Module" 2
+		
+		"Large Thrust Module"
+		"Large Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Spire" "Kimek Spire (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 4
+		
+		"Large Collector Module"
+		"Small Collector Module"
+		"Large Battery Module"
+		"Large Shield Module"
+		"Small Shield Module"
+		
+		"Large Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Thistle" "Kimek Thistle (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 2
+	
+		"Large Collector Module"
+		"Small Battery Module"
+		"Small Shield Module" 3
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 2
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Saryd Sojourner" "Saryd Sojourner (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 4
+	
+		"Large Collector Module"
+		"Small Collector Module" 3
+		"Large Battery Module"
+		"Large Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+		
+ship "Saryd Traveler" "Saryd Traveler (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret" 2
+			
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module" 2
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Small Thrust Module"
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+		
+ship "Saryd Visitor" "Saryd Visitor (UiMW, Human Anti-Missile)"
+	outfits
+		"Heavy Anti-Missile Turret"
+		
+		"Small Collector Module" 2
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Small Thrust Module" 3
+		"Large Steering Module"
 		"Hyperdrive"

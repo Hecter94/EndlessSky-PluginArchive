@@ -23,6 +23,7 @@ mission "ScS Get Rich 0"
 					decline
 	on accept
 		log "People" "Uncle William C. Washermann" `Uncle WC is CEO of Watersoft, a large company in the Syndicate that started out making 24 carat gold plumbing for people too rich for their heads. When you were young he sometimes sent you birthday presents of washers and nuts made from iron pyrite. You're not sure if that was a joke about other people, or an insult to your family.`
+			`His main office is on Crossroads, although the company head office is actually on Reunion.`
 
 mission "ScS Get Rich 1a"
 	landing
@@ -35,6 +36,7 @@ mission "ScS Get Rich 1a"
 	to offer
 		has "ScS Get Rich 0: done"
 	on offer
+		log `Begun working for Uncle William C. Washermann, through whose plans I can become rich.`
 		conversation
 			`Although the main headquarters of your Uncle's company, Watersoft, is on Reunion, his office as CEO is here on Crossroads, more convenient for meeting with various company executives around syndicate space. More convenient also, you figure, for avoiding the ignorant opinions of commoners and politicians.`
 			`	When you reach his office, Uncle 'WC' welcomes you in, beaming. He pushes a button on his desk and soon a maid comes in with tea.`
@@ -219,6 +221,7 @@ mission "ScS Catch a Fly 1"
 			`	"No, you'll bill the Syndicate," he winks. "And you'll take a nice salary from them, for daily upkeep. Remember, get there quick and make sure the troublemaker doesn't escape."`
 				accept
 	on accept
+		log `Joined the Syndicate's official staff. This is the fast path to wealth. The first job is catching a troublemaker, getting in the way or production. This shouldn't be too hard.`
 		set "chosen sides"
 		event "joined the syndicate"
 		"salary: Syndicate" = 5000
@@ -273,7 +276,7 @@ mission "ScS Catch a Fly 2"
 				`	"Understood, I'll go right away."`
 					accept
 				`	"Why don't you just call them?"`
-			`	"Records. I'm sure they're already doing things safely; you're just giving a friendly checkup. But it doesn't look good in an audit if they get an official message right before an inspection."`
+			`	"Records. Of course they're already doing things safely; you're just giving a friendly checkup. But it doesn't look good in an audit if they get an official message right before an inspection."`
 				accept
 	on stopover
 		conversation
@@ -289,6 +292,7 @@ mission "ScS Catch a Fly 3"
 	description "Take your uncle with you as far as <planet>"
 	passengers 1
 	blocked "You need a passenger bunk free for the next mission"
+	source Crossroads
 	destination Moonshake
 	on fail
 		dialog phrase failure
@@ -326,6 +330,7 @@ mission "ScS Catch a Fly 4"
 	to offer
 		has "ScS Catch a Fly 3: done"
 	on offer
+		log `It turns out Uncle WC has a second wife, on Moonshake. How many more secrets does he have?`
 		dialog `Uncle WC leaves to meet his wife, leaving you to head onward to meet the power plant managers again.`
 
 mission "ScS Espionage 1"
@@ -390,6 +395,7 @@ mission "ScS Espionage 1"
 			`	Slowly you turn back round and steel your nerves. The walk back to your ship seems to take forever, but you climb in, radio air traffic control, and leave as casually as you can.`
 				launch
 	on complete
+		log `Running espionage missions for the Syndicate has raised my profile. Now I should be offered more, and more prestigious, jobs.`
 		payment 20000
 		"salary: Syndicate" = 8000
 		set "ScS syndicate trusted"
@@ -451,6 +457,7 @@ mission "ScS An Edge 1"
 	on fail
 		dialog phrase failure
 	on offer
+		log `People` `Franz Francis Jr` `A somewhat eccentric Syndicate leader amongst more-eccentric colleagues. Franz and his group meet on Hephaestus, and appear to have big responsibility in the future and economic welfare of the Syndicate.`
 		outfit "Ionic Afterburner"
 		conversation
 			`Back in the Syndicate Headquarters, Franz Francis Jr turns out to be the same expensively-attired man you met previously. If possible, his suit looks even more expensive now. He's in a long hall with a few other similarly-expensive men.`
@@ -602,7 +609,7 @@ mission "ScS Wifery 1"
 			`	"And you're a terrible space-captain." He hands you a card with Maurissa's details, and a handful of holiday brochures. "Just take her somewhere nice for a few days, at my expense. Or drop her off and let her find her own way home, I don't care."`
 				accept
 			label alphas
-			`	"And who can blame them. If you can't have family the normal way, you make a family your own way. It's no more than what Kings, millenia past on earth would do."`
+			`	"And who can blame them! If you can't have family the normal way, you make a family your own way. It's no more than what Kings, millenia past on earth would do."`
 			`	You stare at him for a moment.`
 			`	"And their children, if they're fit enough to have them, grow up to be the greatest super-soldiers the galaxy has known.`
 			`	"Anyway, enough about Alphas. Go and solve my problem, I'll make it worth your while." He hands you a card with Maurissa's details, and a handful of holiday brochures. "Just take her somewhere nice for a few days, at my expense. Or drop her off and she can find her own way home, either way's as good."`
@@ -666,7 +673,7 @@ mission "ScS Wifery 1"
 			`	You nod, and Maurissa's eyes glaze over for a moment as she wanders through her imagination. Her features harden for a moment, then relax.`
 			label notbad
 			`	"William's not a bad man really," she comes back to focus. "No, who am I kidding, he is. But I've seen worse. He doesn't beat me, he doesn't scream and shout, he's generous - to some - and if he's indifferent to everyone else, at least he doesn't go out of his way to mistreat them. Many powerful men can't live up to that.`
-			`	"We don't need to ruin their lives - of the other wives, I mean. We'll let each of them know the truth, and let them decide what to do. As for me, I've had enough of 'WC Watermann'; perhaps I'll tell him I won a five-year galaxy cruise. He can forward a 'monthly deposit'. But now, how do we meet the others without tipping William off?"`
+			`	"We don't need to ruin their lives - of the other wives, I mean. We'll let each of them know the truth, and let them decide what to do. As for me, I've had enough of 'WC Washermann'; perhaps I'll tell him I won a five-year galaxy cruise. He can forward a 'monthly deposit'. But now, how do we meet the others without tipping William off?"`
 			choice
 				`	"I know where Amanda lives, on Crossroads."`
 					goto amanda
@@ -696,6 +703,8 @@ mission "ScS Wifery Holiday"
 		has "ScS Wifery 1: done"
 		not "helped WC wives"
 	on offer
+		log `It turns out Uncle WC has many wives, on many planets. I agreed to hide this from another wife of his, and take her on a lavish holiday. Better, perhaps, to keep the peace.`
+		log `People` `Maurissa Washermann` `One of Uncle WC's wives, lives on Foundry. Uncle WC sent her on holiday to avoid her meeting another of his wives.`
 		conversation
 			`You find Maurissa waiting in the spaceport dressed in lavish clothes but with only a small suitcase.`
 			`	"Anything I need," she explains, "I'll buy while I'm there. Then before I return, I just donate it to some factory workers and their families. I think it's a good use of your Uncle Billy's money, don't you?"`
@@ -735,6 +744,8 @@ mission "ScS Wifery Help 1"
 		not "holidayed WC wife"
 		has "ScS Wifery 1: done"
 	on offer
+		log `It turns out Uncle WC has many wives, on many planets. I revealed the truth to his wife Maruissa, on Foundry, and will take her to meet Amanda, to begin revealing his infedelidy to all his wives.`
+		log `People` `Maurissa Washermann` `One of Uncle WC's wives; lives on Foundry. She knows her husband's infedelity, and has started a campaign to reveal the truth to his other wives.`
 		conversation
 			`In the spaceport Maurissa meets you dressed lavishly and with a small suitcase.`
 			`	"I thought we weren't going on holiday," you say.`
@@ -742,9 +753,11 @@ mission "ScS Wifery Help 1"
 			`	"Alrighty," you say, and immediately buy a big box of chocolates "for the flight." You'll put it on the bill to WC. Thinking the better of it, you buy a second box to give to Amanda: she might need some comforting when she finds out.`
 				accept
 	on complete
+		log `People` `Amanda Washermann` `Uncle WC's first wife. She lives on Crossroads, where WC has his main house and office.`
+		log `People` `Lily` `Amanda Washermann's maid at the house on Crossroads.`
 		conversation
 			`You lead the way to WC's house, and hope Amanda is in. The big, ornate doorbell at the gate makes almost no sound outside, but in a few minutes the front door opens and a maid comes hurrying across the artificial garden to meet you. She recognises you and welcomes you both in.`
-			`	"I'm so sorry, Captain <last>, with Mr Watermann gone we didn't expect guests."`
+			`	"I'm so sorry, Captain <last>, with Mr Washermann gone we didn't expect guests."`
 			`	"Is Amanda in?" you ask.`
 			`	"Yes, m'lady is upstairs writing letters. I'll tell her you're here."`
 			`	She hurries off to announce your presence, while you and Maurissa make yourselves comfortable in a sitting room. This house is much bigger than the one Maurissa lives in on Foundry, and she begins to get uncomfortable. In a few minutes there's a soft noise on the stairs and Amanda comes in.`
@@ -769,10 +782,10 @@ mission "ScS Wifery Help 1"
 				goto tears
 	
 			label maurissa
-			`	"Are you Amanda Watermann?" says Maurissa, "you look lovely! You're every bit as beautiful as I imagined you'd be. And those earrings? They suit you so well. I feel like I've entered the house of a queen."`
+			`	"Are you Amanda Washermann?" says Maurissa, "you look lovely! You're every bit as beautiful as I imagined you'd be. And those earrings? They suit you so well. I feel like I've entered the house of a queen."`
 			`	"Oh thank you!" she replies. "It's nothing like that at all, I'm sure. One does one's best, and my husband is quite rich. He's the CEO of Watersoft, you see."`
 			`	"Yes, I know," says Maurissa more sombrely. "And he's made good with his riches here. Elsewhere, I'm afraid to say, he's not done so good." There's a troubled silence and Maurissa hands her a calling card, that reads,`
-			`		"Mrs Maurissa Watermann, Charities, Parties and Good Friendship,"`
+			`		"Mrs Maurissa Washermann, Charities, Parties and Good Friendship,"`
 			`		along with her address.`
 	
 			label tears
@@ -789,8 +802,8 @@ mission "ScS Wifery Help 1"
 			label calm
 			`	You both take a chocolate from the box meant for Amanda, and eat them quietly as you wait. You've eaten through a few, before Amanda comes back in, tear-stained, accompanied by her maid. She sits in silence for another minute, which feels like an hour, and then composes herself to speak.`
 			`	"I'm sorry. And I'm sorry especially to you, Mrs--"`
-			`	"Maurissa Watermann"`
-			`	"Mrs Maurissa Watermann. My half-wife, I suppose. Not that the law allows it, but with enough bribes any law can be ignored. Did you know? About me, I mean?"`
+			`	"Maurissa Washermann"`
+			`	"Mrs Maurissa Washermann. My half-wife, I suppose. Not that the law allows it, but with enough bribes any law can be ignored. Did you know? About me, I mean?"`
 			`	"Only when <first> told me. Though I had suspected for a while."`
 			`	"I should have stopped him. I should have watched him more carefully. I should have loved him better. I should have been a better wife."`
 			`	"No--" Maurissa interjects.`
@@ -818,7 +831,7 @@ mission "ScS Wifery Help 1"
 			label lily
 			`	"Lily will manage things in my absence." She must mean her maid.`
 			label house
-			`	"She's very capable, and will run the house when I'm gone. If Mr Watermann comes, she'll simply say I'm away on a trip, and she doesn't know where, and she's sure I'll be back before long. If Mr Watermann decides he cares more for his first wife than his house and his free-roaming, he can enjoy the distress of waiting around for a while without knowing.`
+			`	"She's very capable, and will run the house when I'm gone. If Mr Washermann comes, she'll simply say I'm away on a trip, and she doesn't know where, and she's sure I'll be back before long. If Mr Washermann decides he cares more for his first wife than his house and his free-roaming, he can enjoy the distress of waiting around for a while without knowing.`
 			`	"And, <first>, give Lily your contact information. She'll contact you if we need your help again. Thank you so much for helping us and letting the cat out of the bag. And don't think I'm upset at you, even a little bit.`
 			`	"We'll see you in the spaceport when you're ready for us."`
 				# accept
@@ -887,6 +900,7 @@ mission "ScS Negotiation 2"
 	to offer
 		has "ScS Negotiation 1: done"
 	on offer
+		log `The 'Free Worlds' terrorists have begun negotiating with the Syndicate, which puts power in the Syndicate's hands to continue economic progress. The war is certainly getting more complicated, which some people see as a good thing.`
 		payment 100000
 		conversation
 			`When you land, Prof. Lenforth wires a generous <payment> to your account, and heads out to the Syndicate headquarters. Thinking there may be some more important work for you, you go with him and he tells you about this sudden event.`
@@ -929,6 +943,8 @@ mission "ScS Fight Club 1a"
 		or
 			has "ScS Fight Club 1b: done"
 			has "ScS Fight Club 1b: failed"
+	on complete
+		log `Fought an alien spaceship! Golly, those things are big and scary.`
 
 event "ScS korath fight ready"
 	system "Sheratan"
@@ -1096,6 +1112,7 @@ mission "ScS Abduction 1"
 	to offer
 		has "ScS Fight Club 2: done"
 	on offer
+		log `Faked a fight with pirates, to motivate workers. This is a worrying direction that the Syndicate managers are taking. Next, I'm stealing a military consultant from under the Navy and Deep's noses.`
 		payment 50000
 		conversation
 			`You land to a small crowd of cheers, and a huge roar of applause over the spaceport's speaker system. A Syndicate official meets you as you step out of your ship.`
@@ -1155,12 +1172,15 @@ mission "ScS Abduction 2a"
 		ship "Raven" "Blue Sea"
 	
 	on complete
+		log `Took the weapons specialist to Benjamin Downey on Shangri-La. Downey seems to be some sort of mastermind within the Syndicate.`
 		payment 50000
 		fail "ScS Abduction 2b"
 		conversation
 			branch connoire
 				has "met benjamin downey"
 				#has "Sc Package Delivery 5: done"
+			action
+				log `People` `Benjamin Downey` `Somewhere high-up in the Syndicate, lives on Shangri-La, and possibly something of a mastermind for intricate plots.`
 			`Following directions, you find your way to the office of Benjamin Downey. It takes you many elevators and corridors to reach, with more than one stern-looking security guard to pass on the way.`
 				goto talk
 			label connoire
@@ -1187,6 +1207,7 @@ mission "ScS Abduction 2b"
 	on visit
 		dialog `You seem to have left your passenger behind in another system. How about you wait for your escorts to catch up and try landing again?`
 	on complete
+		log `Took the weapons specialist to Uncle WC instead of Syndicate leadership. Hopefully only good comes of this.`
 		payment 100000
 		fail "ScS Abduction 2a"
 		conversation
@@ -1283,6 +1304,7 @@ mission "ScS Marketing 1"
 	to offer
 		has "ScS Marketing 0: done"
 	on offer
+		log `The Syndicate wants to encourage other factions in the galaxy to spend money on their products. Franz and his colleagues have sent me on a marketing and propaganda tour.`
 		payment 40000
 		conversation
 			`With <payment> more in your account from the delivery job, you head up to the Syndicate headquarters. Once again you pass through the hallways, once again you take silent elevators. And once again you find yourself in a long room with several expensively-dressed men, and Franz Francis Jr their main spokesman.`
@@ -1439,7 +1461,7 @@ mission "ScS Tarazed Escort 1"
 			`You receive <payment>, and head up to headquarters. Once again you meet the rich men, up their rich tower, in their rich room, and again they greet you in their peculiar style.`
 			`	"Sales are up!" says one.`
 			`	"The Galaxy has received our message," agrees another.`
-			`	"Captain <last> has brought to us the wealth of lesser humanity." Suddenly you're not sure you want their appreciation any more.`
+			`	"Captain <last> has brought to us the wealth of lesser humanity." ...Suddenly you're not sure you want their appreciation any more.`
 			choice
 				`	"What news have you for me today?"`
 					goto safe
@@ -1495,6 +1517,7 @@ mission "ScS Quarg Query"
 	to offer
 		has "ScS Tarazed Escort 1: done"
 	on complete
+		log `Asked one of the alien Quarg about the galactic war. It didn't have much to offer, except a warning that humanity could be entirely destroyed if war goes too far.`
 		conversation
 			`The aliens who live on this moon are called the 'Quarg', and although distrusted by many throughout the galaxy they are known to be both disproportionately powerful and incorruptably peaceful. Whether that's really true or just their own propaganda, you don't know, but seeing how things have been going in Syndicate space, you think it's worth giving them a try.`
 			`	Feeling rather lost you wander through the outpust, keeping your oxygen mask to breathe comfortably in the thin air. It makes for akward talking when you do find a Quarg to ask questions to, but somehow you manage. The Quarg is curious about you too, and asks a few questions about your home, before you pluck up courage to ask it about your own concerns.`
@@ -1627,6 +1650,7 @@ mission "ScS Last Straw 1"
 	to offer
 		has "ScS Last Straw 0: done"
 	on offer
+		log `Uncle WC asked me to ship his workers to Burthen and abandon them, so he can bring new workers and pay them less. I refused. This has landed me in trouble.`
 		conversation
 			`You park the <ship> and head up to Uncle WC's main office on <origin>. As you navigate the corridors and elevators you wonder what sort of work he has for you. Has he got some new plan to rescue the Syndicate from recession? Have the top leaders entrusted his comparatively-insignificant Watersoft company with some important task? Is he cooking some scheme to enrich Watersoft and himself? Or just trying to weasel out of family responsbility again?`
 			choice
@@ -1712,7 +1736,7 @@ mission "ScS Last Straw 1"
 			`	"What are you doing?! I made you a fantastic offer! More than you've had your whole space career! I thought you'd be grateful!"`
 			`	When you don't answer, he follows you and carries on pleading, turning to anger. "You don't think it's enough? I'll give you 60% of saivings. I can't afford more than that, all this rearrangement costs money, costs time, I have to train new workers. ...65%! Plus a downpayment. You think you're so clever! You think you'll get a better deal somewhere else?! I'll close every door to you! You'll never see my face again!" He doesn't get it. But that's okay. He thinks you're as mercenary as him, but you'll leave him to his red face; you don't need his approval.`
 			`	"I'll have you cut off from the Syndicate! Nobody will give you work! No more suck-ups washing your feet. No more hero. You'll be ruined!"`
-			`	You almost hesitate. But they're empty words. You're far too valuable to the Syndicate's recovery, and 'WC Watermann' doesn't have enough influence to tarnish you.`
+			`	You almost hesitate. But they're empty words. You're far too valuable to the Syndicate's recovery, and 'WC Washermann' doesn't have enough influence to tarnish you.`
 			choice
 				`	(leave)`
 					goto goodbye
@@ -1742,7 +1766,7 @@ mission "ScS Last Straw 1"
 			`	"Even so," you say, controlling your anger as best you can, "you have no right to ruin other people's lives."`
 			`	"They have every opportunity to make a success! I'm not ruining them--" you turn to leave "--but I'll ruin you!" he shouts and springs after you.`
 			`	"Come back here! You think you'll find work somewhere else? I'll close every door to you! I'll have you cut off from the Syndicate! Nobody will give you work! No more suck-ups washing your feet. No more hero. You'll be ruined!"`
-			`	You almost hesitate. But they're empty words. You're far too valuable to the Syndicate's recovery, and 'WC Watermann' doesn't have enough influence to tarnish you.`
+			`	You almost hesitate. But they're empty words. You're far too valuable to the Syndicate's recovery, and 'WC Washermann' doesn't have enough influence to tarnish you.`
 			choice
 				`	(leave)`
 					goto goodbye
@@ -1769,6 +1793,7 @@ mission "ScS Suck-up"
 		has "ScS rescue complete"
 		not "ScS Call to Aid: offered"
 	on offer
+		log `Apparently I can't just waltz back into the Syndicate secret cult like nothing happened. Seems I'm on my own for a while...`
 		conversation
 			`You're on <origin> where Franz and the other Syndicate leaders work. Do you want to go and see them and explain your side of the story?`
 			choice

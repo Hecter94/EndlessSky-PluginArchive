@@ -1,0 +1,403 @@
+mission "Irm enableWaypointShift"
+	invisible
+	landing
+	on offer
+		set "Irm originalWaypoint"
+		conversation
+			`In this abandoned station, there are few places of intrigue left as the port has been almost completely ransacked, which might have been from passing pirates. The origins of this place are of course a mystery, but the structure seems decayed from countless years of abandon.`
+			`	It feels like a daunting journey to return to Human space, it has already consumed a lot of fuel to get this far. Unfamiliar ships were seen flying in and out of this system since your arrival. There may be a colony nearby where you can refuel and gather information about this place.`
+				to display
+					not "First Contact: Hai: offered"
+	source
+		planet "Slic Airn"
+	to offer
+		or
+			not "outfit: Quantum Key Stone"
+			not "outfit: Quantum Keystone"
+mission "Irm shiftIntroduction1"
+	invisible
+	landing
+	on offer
+		conversation
+			`On arrival to the abandoned station, you decide to explore the structure, perhaps there's something that points to whoever built this, whenever it was built. Several halls stretch far, the contents plucked clean but there are entryways along the walls. They lead nowhere obvious as most are just a tube-like space, something resembling an elevator.`
+			`	It just seems to offer more of the same barren rooms anywhere you go, only defaced surfaces vaunting what you assume to be the work of passing pirate lords. You decide to return to your ship as there doesn't seem to be anything of substance left here.`
+			`	Something you didn't notice before in the hum of your ship during landing, there's a faint thrum echoing from within your ship through the dock. You follow the sound until you reach where it is loudest, evidently, it's emanating from your Quantum Keystone, which is glowing a faint yellow and vibrating softly.`
+			`	Out of an underlying fear that this situation might escalate, you quickly depart the station, hoping that it's nothing of consequence.`
+				launch
+	source
+		planet "Slic Airn"
+	to offer
+		has "Irm originalWaypoint"
+		or
+			has "outfit: Quantum Key Stone"
+			has "outfit: Quantum Keystone"
+mission "Irm shiftIntroduction2"
+	on offer
+		outfit "Keystone Stabilizer" 1
+		conversation
+			`You're walking through the bustling docks of the port, with ships arriving and departing non-stop, Remnant ports sure seem to be some of the busiest you find yourself at. Not long after finding yourself in the spaceport of <planet>, you're approached by what you assume to be security personnel.`
+			`	"Hello captain, is the '<ship>' your ship?" they ask you in a rather friendly manner, and you confirm that it is, "We've been asked to fetch you to meet one of the technicians in the outfitters."`
+			`	You're led by security to the outfitters and greeted promptly by a Remnant with comically large tinted goggles. Your escorts stop and tell the man; "Here is the Captain of the <ship>, We'll leave them in your hands now." before walking away from you two.`
+			`	"I'll make this quick, you're not in trouble. On your arrival, we noticed an abnormality in your Keystone that I believe I can help you with. We occasionally run into a similar problem during the 'Ion Storms' we encounter in the region, we have augmentations to encompass the Keystone that remove unsafe levels of resonant build-up and I have to insist that we install it for you."`
+			choice
+				`	"You insist? Well sure, if it's so important."`
+					decline
+				`	"What happens at 'unsafe levels'?"`
+			`	"Unsafe as in it won't allow you to travel through our wormholes anymore. Nothing so harmful as to directly compromise your safety, but it's a problem you don't want to be on the wrong side of."`
+			`	With that explanation, you allow for the rather speedy installation of the device, and you're eager to be left to your devices.`
+				decline
+	source
+		government "Remnant"
+	to offer
+		has "Irm shiftIntroduction1: offered"
+		has "Remnant: Technology Available: offered"
+mission "Irm shiftWaypoint"
+	invisible
+	landing
+	on offer
+		conversation
+			`When you land on the station, you're surprised to find that the hull of your ship exhibits a yellow haze, you find the same of the surfaces of the dock when you depart your ship. With a feeling of unease around the situation, you check on your Keystone, recalling that it exhibited a similar appearance last time you were here.`
+			`	Unlike last time, the Keystone appears to not be vibrating anymore, but maintaining the same yellow aura as anything else here. The stabilization of the Keystone, allowed by the Remnants gift to you, must have had some unforseen reaction to the stations past effects on it.`
+				launch
+		clear "Irm originalWaypoint"
+		event "Irm shiftWaypoint"
+		set "Irm shiftedWaypoint"
+	source
+		planet "Slic Airn"
+	to offer
+		has "Irm originalWaypoint"
+		has "outfit: Keystone Stabilizer"
+mission "Irm shiftWaypointRepeat"
+	invisible
+	landing
+	to offer
+		not "Expanding Business [9c]: active"
+	on offer
+		clear "Irm originalWaypoint"
+		event "Irm shiftWaypoint"
+		set "Irm shiftedWaypoint"
+		conversation
+			`The mysterious effect of your Keystone Stabilizer on the Keystone at this station occurs once more, taking you somewhere new, or even a different time entirely.`
+				launch
+	repeat
+	source
+		planet "Slic Airn"
+	to offer
+		has "Irm originalWaypoint"
+		has "Irm shiftWaypoint: offered"
+		has "outfit: Keystone Stabilizer"
+event "Irm shiftWaypoint"
+	system "Heia Due"
+		remove link "Waypoint"
+	system "Persolus"
+		pos -287 -528
+	system "Solus"
+		pos -230 -528
+		add link "Waypoint"
+	system "Tantum"
+		pos -212 -480
+		add link "Waypoint"
+	system "Ultima Thule"
+		object
+	system "Waypoint"
+		"jump range" 1
+		asteroids "large metal" 5 2.120024
+		asteroids "medium rock" 8 3.637729
+		remove fleet "Hai Surveillance"
+		remove fleet "Large Human Merchants (Hai)"
+		remove fleet "Small Hai"
+		remove fleet "Small Human Merchants (Hai)"
+		haze "_menu/haze-yellow"
+		link "Solus"
+		link "Tantum"
+		object
+			sprite "star/k0"
+		object
+			distance 406
+			offset 20
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 40
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 60
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 80
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 100
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 120
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 140
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 160
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 180
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 200
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 220
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 240
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 260
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 280
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 300
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 320
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 340
+			sprite "planet/shaders"
+		object
+			distance 406
+			offset 360
+			sprite "planet/shaders"
+		object "Arx"
+			distance 812
+			offset 20
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 40
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 60
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 80
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 100
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 120
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 140
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 160
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 180
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 200
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 220
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 240
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 260
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 280
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 300
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 320
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 340
+			sprite "planet/ringworld"
+				scale .5
+		object "Arx"
+			distance 812
+			offset 360
+			sprite "planet/ringworld"
+				scale .5
+		object "Huer"
+			distance 1047
+			offset 280
+			period 360
+			sprite "planet/ocean2"
+		object "Slic Airn"
+			distance 1408
+			period 1818.85
+			sprite "planet/sheragi_postverta"
+				scale 0.5
+mission "Irm resetWaypoint"
+	invisible
+	landing
+	on offer
+		clear "Irm shiftedWaypoint"
+		event "Irm resetWaypoint"
+		set "Irm originalWaypoint"
+		conversation
+			`When landing back on the station, all the yellow glow from arriving here is absent. It doesn't make sense, but you are no scientist.`
+				launch
+	repeat
+	source
+		planet "Slic Airn"
+	to offer
+		has "Irm shiftedWaypoint"
+event "Irm resetWaypoint"
+	system "Heia Due"
+		add link "Waypoint"
+	system "Persolus"
+		pos 10000 0
+	system "Solus"
+		pos 10000 0
+		remove link "Waypoint"
+	system "Tantum"
+		pos 10000 0
+		remove link "Waypoint"
+	system "Ultima Thule"
+		object
+			period 10
+			sprite "star/f0"
+		object
+			distance 200
+			period 22.3606
+			sprite "planet/desert5"
+		object
+			distance 403.41
+			period 64.0560
+			sprite "planet/europa-b"
+		object
+			distance 824.9
+			period 187.301
+			sprite "planet/desert7-b"
+		object
+			distance 1706.99
+			period 557.553
+			sprite "planet/gas1"
+			object
+				distance 216
+				period 11.1964
+				sprite "planet/ice8-b"
+		object "Wormhole Alpha"
+			distance 4208.63
+			period 2158.49
+			sprite "planet/wormhole"
+	system "Waypoint"
+		"jump range" 100
+		arrival 500
+		asteroids "large metal" 2 1.9404
+		asteroids "large rock" 1 3.2956
+		asteroids "medium metal" 6 4.0656
+		asteroids "medium rock" 90 2.0328
+		asteroids "small metal" 1 1.9712
+		asteroids "small rock" 9 2.8028
+		attributes "wormhole"
+		belt 1610
+		fleet "Hai Surveillance" 2000
+		fleet "Large Human Merchants (Hai)" 18000
+		fleet "Small Hai" 5000
+		fleet "Small Human Merchants (Hai)" 12000
+		habitable 135
+		haze "_menu/haze-67"
+		link "Heia Due"
+		minables "lead" 11 3.06125
+		minables "silicon" 3 2.57646
+		object
+			period 10
+			sprite "star/m8"
+		object
+			distance 187.26
+			period 88.2186
+			sprite "planet/rock8"
+		object
+			distance 866.67
+			period 878.362
+			sprite "planet/gas16"
+			object
+				distance 200
+				period 13.9414
+				sprite "planet/lava0"
+			object
+				distance 333
+				period 29.9522
+				sprite "planet/rock7-b"
+		object "Slic Airn"
+			distance 1408
+			period 1818.85
+			sprite "planet/sheragi_postverta"
+				scale 0.5
+		object
+			distance 1499.03
+			period 1998.06
+			sprite "planet/luna-b"
+		object "Wormhole Alpha"
+			distance 2079.28
+			period 3264.09
+			sprite "planet/wormhole"
+		pos -184 -515
+		trade "Clothing" 378
+		trade "Electronics" 765
+		trade "Equipment" 580
+		trade "Food" 357
+		trade "Heavy Metals" 1015
+		trade "Industrial" 691
+		trade "Luxury Goods" 1195
+		trade "Medical" 745
+		trade "Metal" 478
+		trade "Plastic" 452

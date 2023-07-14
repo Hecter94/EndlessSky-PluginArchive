@@ -1,0 +1,1486 @@
+mission "UiMW: Player Conquer New Britain"
+	landing
+	invisible
+	source "New Britain"
+	name "Conquer New Britain"
+	description `Retake New Britain`
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+		has "tribute: New Britain"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer New Britain"
+		clear "UiMW: Ultaka Reconquer New Britain notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer New Britain notice"
+	landing
+	repeat
+	source
+		not planet "New Britain"
+	to offer
+		"uimw: defense counter: new britain" <= 0
+		not "UiMW: Ultaka Reconquer New Britain notice: offered"
+		has "UiMW: Player Conquer New Britain: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending New Britain have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer New Britain"
+		clear "UiMW: Player Conquer New Britain: offered"
+		clear "tribute: New Britain"
+				
+mission "UiMW: Ultaka Reconquer New Britain warning"
+	landing
+	repeat
+	source "New Britain"
+	to offer
+		"uimw: defense counter: new britain" <= 0
+		has "UiMW: Player Conquer New Britain: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer New Britain"
+	system Dabih
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet New Britain
+		remove attributes "conquered by ultaka"
+		
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer New Britain"
+	system Dabih
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet New Britain
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: New Britain Defense [Militia]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend New Britain for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: New Britain"
+	on accept
+		payment -75000000
+		"uimw: defense counter: new britain" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your New Britain militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 75000000
+		"uimw: defense counter: new britain" -= 1
+				
+mission "UiMW: New Britain Defense [Navy Mark I]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend New Britain for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: New Britain"
+	on accept
+		payment -200000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your New Britain navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+				
+mission "UiMW: New Britain Defense [Navy Mark II]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend New Britain for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: New Britain"
+	on accept
+		payment -280000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your New Britain navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+		
+mission "UiMW: New Britain Defense [Hai]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend New Britain for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: New Britain"
+	on accept
+		payment -300000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 7
+				"Shield Beetle (Tracker)" 4
+				"Shield Beetle (Pulse)" 3
+				"Lightning Bug" 22
+		conversation
+			`Your New Britain Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+		
+mission "UiMW: New Britain Defense [Wanderer]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Wanderer)`
+	description `Buy very large Wanderer fleet consist of ships from Wanderer shipyard to defend New Britain for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Wanderer" >= 0
+			has "license: Wanderer Military"
+		has "tribute: New Britain"
+	on accept
+		payment -300000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Hurricane" 4
+				"Hurricane (Tough)" 2
+				"Tempest" 3
+				"Derecho" 2
+				"Autumn Leaf" 22
+		conversation
+			`Your New Britain Wanderer defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+				
+mission "UiMW: New Britain Defense [Quarg]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend New Britain for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: New Britain"
+	on accept
+		payment -1200000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your New Britain Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+
+mission "UiMW: New Britain Defense [Custom]"
+	job
+	repeat
+	source "New Britain"
+	name `New Britain Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend New Britain for <payment>.`
+	to offer
+		has "tribute: New Britain"
+	on accept
+		payment -500000000
+		"uimw: defense counter: new britain" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your New Britain custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: new britain" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: new britain" -= 1
+mission "UiMW: Player Conquer Dancer"
+	landing
+	invisible
+	source Dancer
+	name "Conquer Dancer"
+	description `Retake Dancer`
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+		has "tribute: Dancer"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer Dancer"
+		clear "UiMW: Ultaka Reconquer Dancer notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer Dancer notice"
+	landing
+	repeat
+	source
+		not planet "Dancer"
+	to offer
+		"uimw: defense counter: dancer" <= 0
+		not "UiMW: Ultaka Reconquer Dancer notice: offered"
+		has "UiMW: Player Conquer Dancer: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending Dancer have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer Dancer"
+		clear "UiMW: Player Conquer Dancer: offered"
+		clear "tribute: Dancer"
+				
+mission "UiMW: Ultaka Reconquer Dancer warning"
+	landing
+	repeat
+	source "Dancer"
+	to offer
+		"uimw: defense counter: dancer" <= 0
+		has "UiMW: Player Conquer Dancer: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer Dancer"
+	system Rastaban
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet Dancer
+		remove attributes "conquered by ultaka"
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer Dancer"
+	system Rastaban
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet Dancer
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: Dancer Defense [Militia]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend Dancer for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: Dancer"
+	on accept
+		payment -75000000
+		"uimw: defense counter: dancer" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your Dancer militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 75000000
+		"uimw: defense counter: dancer" -= 1
+				
+mission "UiMW: Dancer Defense [Navy Mark I]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Dancer for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: Dancer"
+	on accept
+		payment -200000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your Dancer navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+				
+mission "UiMW: Dancer Defense [Navy Mark II]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Dancer for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: Dancer"
+	on accept
+		payment -280000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your Dancer navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+		
+mission "UiMW: Dancer Defense [Hai]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend Dancer for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: Dancer"
+	on accept
+		payment -300000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 7
+				"Shield Beetle (Tracker)" 4
+				"Shield Beetle (Pulse)" 3
+				"Lightning Bug" 22
+		conversation
+			`Your Dancer Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+		
+mission "UiMW: Dancer Defense [Wanderer]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Wanderer)`
+	description `Buy very large Wanderer fleet consist of ships from Wanderer shipyard to defend Dancer for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Wanderer" >= 0
+			has "license: Wanderer Military"
+		has "tribute: Dancer"
+	on accept
+		payment -300000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Hurricane" 4
+				"Hurricane (Tough)" 2
+				"Tempest" 3
+				"Derecho" 2
+				"Autumn Leaf" 22
+		conversation
+			`Your Dancer Wanderer defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+				
+mission "UiMW: Dancer Defense [Quarg]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend Dancer for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: Dancer"
+	on accept
+		payment -1200000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your Dancer Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+
+mission "UiMW: Dancer Defense [Custom]"
+	job
+	repeat
+	source Dancer
+	name `Dancer Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend Dancer for <payment>.`
+	to offer
+		has "tribute: Dancer"
+	on accept
+		payment -500000000
+		"uimw: defense counter: dancer" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your Dancer custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: dancer" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: dancer" -= 1
+mission "UiMW: Player Conquer Trinket"
+	landing
+	invisible
+	source Trinket
+	name "Conquer Trinket"
+	description `Retake Trinket`
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+		has "tribute: Trinket"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer Trinket"
+		clear "UiMW: Ultaka Reconquer Trinket notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer Trinket notice"
+	landing
+	repeat
+	source
+		not planet "Trinket"
+	to offer
+		"uimw: defense counter: trinket" <= 0
+		not "UiMW: Ultaka Reconquer Trinket notice: offered"
+		has "UiMW: Player Conquer Trinket: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending Trinket have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer Trinket"
+		clear "UiMW: Player Conquer Trinket: offered"
+		clear "tribute: Trinket"
+				
+mission "UiMW: Ultaka Reconquer Trinket warning"
+	landing
+	repeat
+	source "Trinket"
+	to offer
+		"uimw: defense counter: trinket" <= 0
+		has "UiMW: Player Conquer Trinket: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer Trinket"
+	system Sargas
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet Trinket
+		remove attributes "conquered by ultaka"
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer Trinket"
+	system Sargas
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet Trinket
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: Trinket Defense [Militia]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend Trinket for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: Trinket"
+	on accept
+		payment -75000000
+		"uimw: defense counter: trinket" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your Trinket militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 75000000
+		"uimw: defense counter: trinket" -= 1
+				
+mission "UiMW: Trinket Defense [Navy Mark I]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Trinket for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: Trinket"
+	on accept
+		payment -200000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your Trinket navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+				
+mission "UiMW: Trinket Defense [Navy Mark II]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Trinket for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: Trinket"
+	on accept
+		payment -280000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your Trinket navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+		
+mission "UiMW: Trinket Defense [Hai]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend Trinket for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: Trinket"
+	on accept
+		payment -300000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 7
+				"Shield Beetle (Tracker)" 4
+				"Shield Beetle (Pulse)" 3
+				"Lightning Bug" 22
+		conversation
+			`Your Trinket Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+		
+mission "UiMW: Trinket Defense [Wanderer]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Wanderer)`
+	description `Buy very large Wanderer fleet consist of ships from Wanderer shipyard to defend Trinket for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Wanderer" >= 0
+			has "license: Wanderer Military"
+		has "tribute: Trinket"
+	on accept
+		payment -300000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Hurricane" 4
+				"Hurricane (Tough)" 2
+				"Tempest" 3
+				"Derecho" 2
+				"Autumn Leaf" 22
+		conversation
+			`Your Trinket Wanderer defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+				
+mission "UiMW: Trinket Defense [Quarg]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend Trinket for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: Trinket"
+	on accept
+		payment -1200000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your Trinket Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+
+mission "UiMW: Trinket Defense [Custom]"
+	job
+	repeat
+	source Trinket
+	name `Trinket Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend Trinket for <payment>.`
+	to offer
+		has "tribute: Trinket"
+	on accept
+		payment -500000000
+		"uimw: defense counter: trinket" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your Trinket custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: trinket" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: trinket" -= 1
+mission "UiMW: Player Conquer Sundrinker"
+	landing
+	invisible
+	source Sundrinker
+	name "Conquer Sundrinker"
+	description `Retake Sundrinker`
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+		has "tribute: Sundrinker"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer Sundrinker"
+		clear "UiMW: Ultaka Reconquer Sundrinker notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer Sundrinker notice"
+	landing
+	repeat
+	source
+		not planet "Sundrinker"
+	to offer
+		"uimw: defense counter: sundrinker" <= 0
+		not "UiMW: Ultaka Reconquer Sundrinker notice: offered"
+		has "UiMW: Player Conquer Sundrinker: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending Sundrinker have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer Sundrinker"
+		clear "UiMW: Player Conquer Sundrinker: offered"
+		clear "tribute: Sundrinker"
+				
+mission "UiMW: Ultaka Reconquer Sundrinker warning"
+	landing
+	repeat
+	source Sundrinker
+	to offer
+		"uimw: defense counter: sundrinker" <= 0
+		has "UiMW: Player Conquer Sundrinker: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer Sundrinker"
+	system Dschubba
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet Sundrinker
+		remove attributes "conquered by ultaka"
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer Sundrinker"
+	system Dschubba
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet Sundrinker
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: Sundrinker Defense [Militia]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend Sundrinker for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: Sundrinker"
+	on accept
+		payment -75000000
+		"uimw: defense counter: sundrinker" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your Sundrinker militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 75000000
+		"uimw: defense counter: sundrinker" -= 1
+				
+mission "UiMW: Sundrinker Defense [Navy Mark I]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Sundrinker for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: Sundrinker"
+	on accept
+		payment -200000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your Sundrinker navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+				
+mission "UiMW: Sundrinker Defense [Navy Mark II]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Sundrinker for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: Sundrinker"
+	on accept
+		payment -280000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your Sundrinker navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+		
+mission "UiMW: Sundrinker Defense [Hai]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend Sundrinker for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: Sundrinker"
+	on accept
+		payment -300000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 7
+				"Shield Beetle (Tracker)" 4
+				"Shield Beetle (Pulse)" 3
+				"Lightning Bug" 22
+		conversation
+			`Your Sundrinker Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+		
+mission "UiMW: Sundrinker Defense [Wanderer]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Wanderer)`
+	description `Buy very large Wanderer fleet consist of ships from Wanderer shipyard to defend Sundrinker for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Wanderer" >= 0
+			has "license: Wanderer Military"
+		has "tribute: Sundrinker"
+	on accept
+		payment -300000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Hurricane" 4
+				"Hurricane (Tough)" 2
+				"Tempest" 3
+				"Derecho" 2
+				"Autumn Leaf" 22
+		conversation
+			`Your Sundrinker Wanderer defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+				
+mission "UiMW: Sundrinker Defense [Quarg]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend Sundrinker for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: Sundrinker"
+	on accept
+		payment -1200000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your Sundrinker Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+
+mission "UiMW: Sundrinker Defense [Custom]"
+	job
+	repeat
+	source Sundrinker
+	name `Sundrinker Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend Sundrinker for <payment>.`
+	to offer
+		has "tribute: Sundrinker"
+	on accept
+		payment -500000000
+		"uimw: defense counter: sundrinker" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your Sundrinker custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: sundrinker" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: sundrinker" -= 1
+mission "UiMW: Player Conquer Darkstone"
+	landing
+	invisible
+	source Darkstone
+	name "Conquer Darkstone"
+	description `Retake Darkstone`
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+		has "tribute: Darkstone"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer Darkstone"
+		clear "UiMW: Ultaka Reconquer Darkstone notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer Darkstone notice"
+	landing
+	repeat
+	source
+		not planet "Darkstone"
+	to offer
+		"uimw: defense counter: darkstone" <= 0
+		not "UiMW: Ultaka Reconquer Darkstone notice: offered"
+		has "UiMW: Player Conquer Darkstone: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending Darkstone have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer Darkstone"
+		clear "UiMW: Player Conquer Darkstone: offered"
+		clear "tribute: Darkstone"
+				
+mission "UiMW: Ultaka Reconquer Darkstone warning"
+	landing
+	repeat
+	source "Darkstone"
+	to offer
+		"uimw: defense counter: darkstone" <= 0
+		has "UiMW: Player Conquer Darkstone: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer Darkstone"
+	system Han
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet Darkstone
+		remove attributes "conquered by ultaka"
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer Darkstone"
+	system Han
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet Darkstone
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: Darkstone Defense [Militia]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend Darkstone for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: Darkstone"
+	on accept
+		payment -75000000
+		"uimw: defense counter: darkstone" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your Darkstone militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 75000000
+		"uimw: defense counter: darkstone" -= 1
+				
+mission "UiMW: Darkstone Defense [Navy Mark I]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Darkstone for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: Darkstone"
+	on accept
+		payment -200000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your Darkstone navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1
+				
+mission "UiMW: Darkstone Defense [Navy Mark II]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Darkstone for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: Darkstone"
+	on accept
+		payment -280000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your Darkstone navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1
+		
+mission "UiMW: Darkstone Defense [Hai]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend Darkstone for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: Darkstone"
+	on accept
+		payment -300000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 7
+				"Shield Beetle (Tracker)" 4
+				"Shield Beetle (Pulse)" 3
+				"Lightning Bug" 22
+		conversation
+			`Your Darkstone Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1
+		
+mission "UiMW: Darkstone Defense [Wanderer]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Wanderer)`
+	description `Buy very large Wanderer fleet consist of ships from Wanderer shipyard to defend Darkstone for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Wanderer" >= 0
+			has "license: Wanderer Military"
+		has "tribute: Darkstone"
+	on accept
+		payment -300000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Hurricane" 4
+				"Hurricane (Tough)" 2
+				"Tempest" 3
+				"Derecho" 2
+				"Autumn Leaf" 22
+		conversation
+			`Your Darkstone Wanderer defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1
+				
+mission "UiMW: Darkstone Defense [Quarg]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend Darkstone for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: Darkstone"
+	on accept
+		payment -1200000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your Darkstone Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1
+
+mission "UiMW: Darkstone Defense [Custom]"
+	job
+	repeat
+	source Darkstone
+	name `Darkstone Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend Darkstone for <payment>.`
+	to offer
+		has "tribute: Darkstone"
+	on accept
+		payment -500000000
+		"uimw: defense counter: darkstone" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your Darkstone custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: darkstone" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: darkstone" -= 1

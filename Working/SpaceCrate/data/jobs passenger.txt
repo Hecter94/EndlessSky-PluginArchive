@@ -21,8 +21,8 @@ mission "spacecrate_passenger_pickup_1"
 	description "We need more workers. Go and recruit <bunks> laborers from <stopovers> and bring them to <destination>. Payment is <payment>."
 	passengers 5 20
 	to offer
-		random < 35
-		"combat rating" > 403
+		random < 15
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	stopover
@@ -30,12 +30,16 @@ mission "spacecrate_passenger_pickup_1"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "spaceport"
 		not attributes "station"
-		dialog phrase "You'll head over to the nearest bar and gather <bunks> people who are looking for work with the vague promise of a better future."
+	on stopover
+		dialog "You head over to the nearest bar and gather a bunch of people who are looking for work with the vague promise of a better future."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 75000
+		"reputation: SpaceCrate" += 20
 		dialog "With a wave you welcome the new workers to <destination>, and take your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" -= 10
 
 mission "spacecrate_passenger_pickup_2"
 	job
@@ -44,8 +48,8 @@ mission "spacecrate_passenger_pickup_2"
 	description "We've hired new miners. Please pick up the <bunks> miners from <stopovers> and bring them to <destination>. Payment is <payment>."
 	passengers 2 8
 	to offer
-		random < 90
-		"combat rating" > 20
+		random < 60
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	stopover
@@ -53,11 +57,16 @@ mission "spacecrate_passenger_pickup_2"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "spaceport"
 		not attributes "station"
+	on stopover
+		dialog "You see the miners standing on the landing pad ready to leave immediately for <destination>."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 50000
+		"reputation: SpaceCrate" += 20
 		dialog "You point the miners to the employment office and receive your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" -= 10
 
 mission "spacecrate_passenger_pickup_3"
 	job
@@ -67,7 +76,7 @@ mission "spacecrate_passenger_pickup_3"
 	passengers 5 20
 	to offer
 		random < 50
-		"combat rating" > 403
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	stopover
@@ -75,11 +84,16 @@ mission "spacecrate_passenger_pickup_3"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "spaceport"
 		not attributes "station"
+	on stopover
+		dialog "You find the miners headed for <destination> in a dark bar near the spaceport."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 80000
+		"reputation: SpaceCrate" += 20
 		dialog "Human resources is waiting for you as you land. Upon seeing the miners you receive your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" -= 10
 
 mission "spacecrate_passenger_pickup_4"
 	job
@@ -88,8 +102,8 @@ mission "spacecrate_passenger_pickup_4"
 	description "We're expanding our factory workforce. There is a group of <bunks> laborers waiting on <stopovers>. Bring them to <destination>. Payment is <payment>."
 	passengers 2 10
 	to offer
-		random < 120
-		"combat rating" > 20
+		random < 70
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	stopover
@@ -97,21 +111,26 @@ mission "spacecrate_passenger_pickup_4"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "spaceport"
 		not attributes "station"
+	on stopover
+		dialog "You usher the laborers for <destination> into your ship telling them not to touch anything."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 50000
+		"reputation: SpaceCrate" += 20
 		dialog "You point the miners to the employment office and receive your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" -= 10
 
 mission "spacecrate_passenger_pickup_5"
 	job
 	repeat
 	name "Pick up group of laborers"
-	description "Excreased profits allow for expansion. We've hired <bunks> laborers from <stopovers>. They need a ride to <destination>. Payment is <payment>."
+	description "Increased profits allow for expansion. We've hired <bunks> laborers from <stopovers>. They need a ride to <destination>. Payment is <payment>."
 	passengers 8 25
 	to offer
-		random < 80
-		"combat rating" > 403
+		random < 50
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	stopover
@@ -119,14 +138,19 @@ mission "spacecrate_passenger_pickup_5"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "spaceport"
 		not attributes "station"
+	on stopover
+		dialog "After some searching you find the laborers for <destination> and tell them to hurry onto your ship."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 80000
+		"reputation: SpaceCrate" += 20
 		dialog "You point the miners to the employment office and receive your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" -= 10
 
 # ------------------------------------------------------------------------------------------
-# Security personel
+# Security personnel
 # Offered on SpaceCrate planets
 # ------------------------------------------------------------------------------------------
 # Fixed fee rewards!!
@@ -139,7 +163,7 @@ mission "spacecrate_passenger_security_1"
 	passengers 28
 	to offer
 		random < 15
-		"combat rating" > 1097
+		"reputation: SpaceCrate" > 1000
 	source
 		government "SpaceCrate"
 	stopover
@@ -147,11 +171,16 @@ mission "spacecrate_passenger_security_1"
 		government "Republic"
 		attributes "spaceport"
 		not attributes "station"
+	on stopover
+		dialog "Immediately after opening the cargo bay door you hear a whistle blowing and the platoon for <destination> marches on board."
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment 50000
+		"reputation: SpaceCrate" += 2
 		dialog "With a lazy salute you open the cargo door and send the security platoon on its way, and collect your payment of <payment>."
+	on fail
+		"reputation: SpaceCrate" --
 
 # ------------------------------------------------------------------------------------------
 # workers (Immigrants/oppurtunists)
@@ -167,8 +196,8 @@ mission "spacecrate_passenger_delivery_1"
 	description "This family of <bunks> miners is hoping to strike it rich on <destination>, they're willing to pay <payment>. This job includes a signing bonus from SpaceCrate."
 	passengers 2 6
 	to offer
-		random < 50
-		"combat rating" > 20
+		random < 35
+		"reputation: SpaceCrate" > 0
 	source
 		distance 1 6
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
@@ -182,6 +211,7 @@ mission "spacecrate_passenger_delivery_1"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog "With a wave you wish the mining family the best of luck on <planet>, and collect your payment of <payment>."
 	on abort
 		payment -2500
@@ -194,8 +224,8 @@ mission "spacecrate_passenger_delivery_2"
 	description "This family of <bunks> farmers wants to make a new start on <destination>, they will pay you <payment> to take them there. This job includes a signing bonus from SpaceCrate."
 	passengers 2 6
 	to offer
-		random < 50
-		"combat rating" > 20
+		random < 40
+		"reputation: SpaceCrate" > 0
 	source
 		distance 1 6
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
@@ -209,6 +239,7 @@ mission "spacecrate_passenger_delivery_2"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog "You wish the farm family the best of luck on <planet>, and collect your payment of <payment>."
 	on abort
 		payment -2500
@@ -218,11 +249,11 @@ mission "spacecrate_passenger_delivery_3"
 	job
 	repeat
 	name "Factory workers to <planet>"
-	description "This group of <bunks> factory workers is following the promise of a career on <destination>, they saved up <payment> credits for your troubles. This job includes a signing bonus from SpaceCrate."
+	description "This group of <bunks> factory workers is following the promise of a career on <destination>, they saved up <payment> for your troubles. This job includes a signing bonus from SpaceCrate."
 	passengers 2 6
 	to offer
-		random < 50
-		"combat rating" > 20
+		random < 25
+		"reputation: SpaceCrate" > 0
 	source
 		distance 5 14
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
@@ -236,6 +267,7 @@ mission "spacecrate_passenger_delivery_3"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog "After wishing the workers good fortunes you leave them be, and collect your payment of <payment>."
 	on abort
 		payment -5000
@@ -245,11 +277,11 @@ mission "spacecrate_passenger_delivery_4"
 	job
 	repeat
 	name "Factory workers to <planet>"
-	description "A group of <bunks> factory workers is hoping to find work on <destination>, they can pay you <payment> credits to take them there. This job includes a signing bonus from SpaceCrate."
+	description "A group of <bunks> factory workers is hoping to find work on <destination>, they can pay you <payment> to take them there. This job includes a signing bonus from SpaceCrate."
 	passengers 2 6
 	to offer
-		random < 50
-		"combat rating" > 20
+		random < 30
+		"reputation: SpaceCrate" > 0
 	source
 		distance 6 15
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
@@ -263,7 +295,34 @@ mission "spacecrate_passenger_delivery_4"
 		dialog phrase "generic passenger on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
 	on abort
 		payment -5000
 		dialog "Signing bonus deducted from your account."
+
+# ------------------------------------------------------------------------------------------
+# workers (Immigrants/oppurtunists)
+# Offered in pirate systems shipping people to SpaceCrate
+# ------------------------------------------------------------------------------------------
+# No signing bonus, but higher payment.
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_passenger_delivery_4"
+	job
+	repeat
+	name "Seeking new opportunities"
+	description "A group of <bunks> disdraught pirates is trying to better their lives and find work on <destination>, they can pay you <payment> to take them there."
+	passengers 2 6
+	to offer
+		random < 25
+		"reputation: SpaceCrate" > 0
+	source
+		government "Pirate"
+	destination
+		government "SpaceCrate"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 50000
+		"reputation: SpaceCrate" += 5
+		dialog "You wish the former pirates good fortunes with SpaceCrate, and collect your payment of <payment>."

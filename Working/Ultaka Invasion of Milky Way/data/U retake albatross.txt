@@ -1,0 +1,263 @@
+mission "UiMW: Player Conquer Albatross"
+	landing
+	invisible
+	source Albatross
+	name "Conquer Albatross"
+	description `Retake Albatross`
+	to offer
+		has "event: UiMW: Ultaka conquer 1"
+		has "tribute: Albatross"
+	on offer
+		conversation
+			`You've chased away the Ultaka stationed here but to hold it you'll need a fleet to defend it, check the job board to see what fleet you can buy.`
+				accept
+		event "UiMW: Player conquer Albatross"
+		clear "UiMW: Ultaka Reconquer Albatross notice: offered"
+	on accept
+		fail
+		
+mission "UiMW: Ultaka Reconquer Albatross notice"
+	landing
+	repeat
+	source
+		not planet "Albatross"
+	to offer
+		"uimw: defense counter: albatross" <= 0
+		not "UiMW: Ultaka Reconquer Albatross notice: offered"
+		has "UiMW: Player Conquer Albatross: offered"
+	on offer
+		conversation
+			`NOTICE: Your fleet defending Albatross have been defeated and the planet was taken over by the Ultaka.`
+			`	[note: map will update after departing. Relinquish Tribute and Demand Tribute again to reconquer it.]`
+				decline
+		event "UiMW: Ultaka reconquer Albatross"
+		clear "UiMW: Player Conquer Albatross: offered"
+		clear "tribute: Albatross"
+				
+mission "UiMW: Ultaka Reconquer Albatross warning"
+	landing
+	repeat
+	source "Albatross"
+	to offer
+		"uimw: defense counter: albatross" <= 0
+		has "UiMW: Player Conquer Albatross: offered"
+	on offer
+		conversation
+			`WARN: Your do not have any active fleet defending <origin>, Ultaka will come back and take it if you leave it undefended.`
+				decline
+				
+event "UiMW: Player conquer Albatross"
+	system Nunki
+		government "Escort"
+		# Make Ultaka less frequent
+		add fleet "MW Ultaka South Raid Small" 1200
+		add fleet "MW Ultaka South Raid Large" 1800
+	planet Albatross
+		remove attributes "conquered by ultaka"
+		description `Albatross is a cold ocean world orbiting a small, cold sun. The first settlers on Albatross were anarchists who believed that in a society free from unnatural laws and constraints, everyone would happily and freely work for the common good. The next settlers were pirates who believed that a planet free from laws and constraints would be a great base of operations. Most recently, war hungry alien that made a quick work of this poorly defended planet, most previous settlements where all but craters, replaced by oval Ultaka structures constantly harvesting materials from the ground to manufacture their warships.`
+		add outfitter "Ammo North"
+		add outfitter "Ammo South"
+				
+event "UiMW: Ultaka reconquer Albatross"
+	system Nunki
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	planet Albatross
+		add attributes "conquered by ultaka"
+		remove outfitter "Ammo North"
+		remove outfitter "Ammo South"
+		
+mission "UiMW: Albatross Defense [Militia]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Militia)`
+	description `Buy very large militia fleet consist of ships from Southbound and Tarazed shipyards to defend Albatross for <payment>.`
+	to offer
+		#"net worth" >= 100000000
+		has "tribute: Albatross"
+	on accept
+		payment -10000000
+		"uimw: defense counter: albatross" += 1
+	# Used kill to require all ships to be dead, save requires only 1 ship dead to fail.
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Falcon (Heavy)" 5
+				"Falcon" 5
+				"Bastion (Heavy)" 7
+				"Argosy (Missile)" 12
+				"Argosy (Turret)" 12
+				"Osprey (Missile)" 7
+				"Fury" 12
+		conversation #Required because on complete have specific destination and save don't work, so conversation is used instead to trigger the value reduction.
+			`Your militia defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1
+				
+mission "UiMW: Albatross Defense [Navy Mark I]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Navy Mk I)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Albatross for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "tribute: Albatross"
+	on accept
+		payment -20000000
+		"uimw: defense counter: albatross" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser" 5
+				"Combat Drone" 20
+				"Frigate" 12
+				"Rainmaker" 22
+				"Gunboat" 22
+		conversation
+			`Your navy mk i defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1
+				
+mission "UiMW: Albatross Defense [Navy Mark II]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Navy Mk II)`
+	description `Buy very large navy fleet consist of ships from Navy shipyard to defend Albatross for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		"reputation: Republic" >= 0
+		has "event: navy using mark ii ships"
+		has "tribute: Albatross"
+	on accept
+		payment -28000000
+		"uimw: defense counter: albatross" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Carrier (Mark II)" 5
+				"Lance" 20
+				"Combat Drone" 30
+				"Cruiser (Mark II)" 5
+				"Combat Drone" 20
+				"Frigate (Mark II)" 12
+				"Rainmaker (Mark II)" 22
+				"Gunboat (Mark II)" 22
+		conversation
+			`Your navy mk ii defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1
+		
+mission "UiMW: Albatross Defense [Hai]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Hai)`
+	description `Buy very large Hai fleet consist of ships from Hai shipyard to defend Albatross for <payment>.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Hai" >= 0 #Buy hai ships
+			"reputation: Hai (Unfettered)" < -1000 #Cap unfets.
+		has "tribute: Albatross"
+	on accept
+		payment -30000000
+		"uimw: defense counter: albatross" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet
+			names "player navy"
+			fighters "player fighters"
+			variant
+				"Shield Beetle" 5
+				"Shield Beetle (Tracker)" 3
+				"Shield Beetle (Pulse)" 2
+				"Lightning Bug" 22
+		conversation
+			`Your Hai defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1
+				
+mission "UiMW: Albatross Defense [Quarg]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Quarg)`
+	description `Buy very large Quarg fleet to defend Albatross for 120,000,000 Credits.`
+	to offer
+		"net worth" >= 100000000
+		or
+			"reputation: Quarg" >= 0 #Ask Quarg for help
+			"reputation: Quarg" < -1000 #Cap Quarg ships.
+		has "tribute: Albatross"
+	on accept
+		payment -120000000
+		"uimw: defense counter: albatross" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Quarg" 3
+		fleet "Quarg" 5
+		conversation
+			`Your Quarg defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1
+
+mission "UiMW: Albatross Defense [Custom]"
+	job
+	repeat
+	source Albatross
+	name `Albatross Defense (Custom)`
+	description `Buy your own configured fleets 1 large 2 small (in the plugin data) to defend Albatross for 50,000,000 Credits.`
+	to offer
+		has "tribute: Albatross"
+	on accept
+		payment -50000000
+		"uimw: defense counter: albatross" += 1
+	npc kill
+		government "Escort"
+		personality heroic uninterested staying
+		fleet "Large Player Navy"
+		fleet "Small Player Navy" 2
+		conversation
+			`Your custom defense fleet has been wiped out!`
+			action
+				"uimw: defense counter: albatross" -= 1
+	on abort
+		payment 100000000
+		"uimw: defense counter: albatross" -= 1

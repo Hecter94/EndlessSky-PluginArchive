@@ -1,0 +1,500 @@
+# Copyright (c) 2022-2023 by Arnan de Gans
+#
+# Endless Sky: SpaceCrate is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky: SpaceCrate is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+# ------------------------------------------------------------------------------------------
+# Employee exclusive cargo export missions
+# Offered on SpaceCrate planets
+# ------------------------------------------------------------------------------------------
+# Does not require combat rating
+# Increased modifier for payments
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_export_employee_1"
+	job
+	repeat
+	name "SpaceCrate Employees - Large bulk delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 150 300
+	to offer
+		random < 65
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		distance 1 7
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+mission "spacecrate_export_employee_2"
+	job
+	repeat
+	name "SpaceCrate Employees - Large bulk delivery to <planet>"
+	description "Deliver a large shipment of <cargo> to <destination>. Payment is <payment>."
+	cargo random 300 450
+	to offer
+		random < 50
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 50
+		system
+			distance 5 9
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+mission "spacecrate_export_employee_3"
+	job
+	repeat
+	name "SpaceCrate Employees - Large bulk delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo random 450 640
+	to offer
+		random < 35
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		distance 10 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 50
+		system
+			distance 8 15
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+# ------------------------------------------------------------------------------------------
+# Employee exclusive cargo import missions
+# Offered in different systems shipping raw materials to X-283N1
+# ------------------------------------------------------------------------------------------
+# Source planets require 'raw materials' related attributes
+# Increased modifier for payment
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_import_employee_1"
+	job
+	repeat
+	name "SpaceCrate Employees - Bulk delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>. As a SpaceCrate employee this "
+	cargo "Metal" 100 200
+	to offer
+		random < 65
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		distance 3 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining"
+	destination
+		government "SpaceCrate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+mission "spacecrate_import_employee_2"
+	job
+	repeat
+	name "SpaceCrate Employees - Bulk delivery to <planet>"
+	description "Deliver a large shipment of <cargo> to <destination>. Payment is <payment>."
+	cargo "Plastic" 210 320
+	to offer
+		random < 50
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		distance 7 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining" "oil"
+	destination
+		government "SpaceCrate"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 75
+		system
+			distance 3 10
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+mission "spacecrate_import_employee_3"
+	job
+	repeat
+	name "SpaceCrate Employees - bulk delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Heavy Metals" 350 520
+	to offer
+		random < 35
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		distance 11 19
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining"
+	destination
+		government "SpaceCrate"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 75
+		system
+			distance 4 16
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 175
+		"reputation: SpaceCrate" += 30
+		dialog phrase "generic cargo delivery payment"
+	on fail
+		"reputation: SpaceCrate" -= 20
+
+# ------------------------------------------------------------------------------------------
+# Employee exclusive illegal missions
+# Offered on SpaceCrate planets
+# ------------------------------------------------------------------------------------------
+# Fixed payments
+# Combat rating required
+# 'clearance' for missions common
+# 'illegal' for missions common
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_export_illegal_1"
+	job
+	repeat
+	clearance
+	name "Employee Offer - Smuggle weapons to <planet>"
+	description "Deliver the <cargo> to <destination>. Payment is <payment>. Don't get caught!"
+	cargo "Military" 2 5
+	illegal 100000 `On top of the fine, your cargo is hereby confiscated. What else did you expect!`
+	to offer
+		random < 25
+		"combat rating" > 8103
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		distance 4 8
+		government "Republic"
+	npc
+		government Republic
+		personality
+			heroic
+			waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	on visit
+		dialog "The longer you linger around, the bigger the chance you'll get caught!"
+	on complete
+		payment 250000
+		"reputation: Pirate" += 3
+		"reputation: SpaceCrate" += 30
+		"reputation: Republic" -= 2
+		dialog phrase "generic completed pirate cargo mission"
+	on abort
+		"reputation: SpaceCrate" -= 10
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: SpaceCrate" -= 10
+
+mission "spacecrate_export_illegal_2"
+	job
+	repeat
+	clearance
+	name "Employee Offer - The Almach Corridor - High risk"
+	description "Deliver <cargo> to <destination>. Don't get scanned or caught by law enforcement. The SpaceCrate broker has made sure you are cleared to land but suspects the navy has set up an ambush. Payment is <payment>."
+	cargo "Military" 2 10
+	illegal 200000 `Of-course, on top of the fine, your cargo is hereby confiscated.`
+	stealth
+	to offer
+		random < 25
+		"combat rating" > 8103
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+		"reputation: Pirate" > -10
+	source
+		government "SpaceCrate"
+	destination
+		planet "Deadman's Cove"
+	npc
+		government Syndicate
+		personality
+			heroic
+			waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality
+			heroic
+			entering
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	on visit
+		dialog "The longer you linger around, the bigger the chance you'll get caught!"
+	on complete
+		payment 300000
+		"reputation: Pirate" += 5
+		"reputation: SpaceCrate" += 50
+		"reputation: Republic" -= 1
+		"reputation: Syndicate" -= 5
+		dialog phrase "generic completed pirate cargo mission"
+	on abort
+		"reputation: SpaceCrate" -= 10
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 2
+		"reputation: SpaceCrate" -= 50
+
+mission "spacecrate_export_illegal_3"
+	job
+	repeat
+	clearance
+	name "Employee Offer - The Algenib Run - High risk"
+	description "Deliver <cargo> to <destination>. Try not to get scanned or caught by law enforcement. The SpaceCrate broker has made sure you are cleared to land but is sure someone was listening to the deal. Payment is <payment>."
+	cargo "Military" 2 10
+	illegal 200000 `Gotcha! On top of the fine, your cargo is hereby confiscated.`
+	stealth
+	to offer
+		random < 25
+		"combat rating" > 8103
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+		"reputation: Pirate" > -10
+	source
+		government "SpaceCrate"
+	destination
+		planet "Buccaneer Bay"
+	npc
+		government Syndicate
+		personality
+			heroic
+			waiting
+		system "Scheat"
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)" 2
+	npc
+		government Syndicate
+		personality
+			heroic
+			waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality
+			heroic
+			entering
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	on visit
+		dialog "The longer you linger around, the bigger the chance you'll get caught!"
+	on complete
+		payment 450000
+		"reputation: Pirate" += 5
+		"reputation: SpaceCrate" += 50
+		"reputation: Republic" -= 3
+		"reputation: Syndicate" -= 3
+		dialog phrase "generic completed pirate cargo mission"
+	on abort
+		"reputation: SpaceCrate" -= 10
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 2
+		"reputation: SpaceCrate" -= 50
+
+# ------------------------------------------------------------------------------------------
+# Job termination
+# Offered on SpaceCrate planets
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_employee_quit_1"
+	job
+	repeat
+	name "Quit working for SpaceCrate - Dangerous"
+	description "You've stolen a shipment of Quafe from the factory to offer to the Quarg in <destination> as a gift. The Quarg might reward you, but the SpaceCrate Defense Fleet will definitely hunt you down and terminate your employment."
+	cargo "Quafe" 20 60
+	to offer
+		"combat rating" > 8103
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		government "Quarg"
+		near "Tarazed" 1 2
+	npc
+		government "SpaceCrate"
+		personality
+			nemesis
+			opportunistic
+			heroic
+			entering
+		system "Alpha Centauri"
+		fleet "spacecrate_missionfleet_2"
+	npc
+		government "SpaceCrate"
+		personality
+			nemesis
+			opportunistic
+			heroic
+			entering
+		system
+			near "Cebalrai" 0 2
+		fleet "spacecrate_missionfleet_2"
+	npc
+		government "SpaceCrate"
+		personality
+			nemesis
+			opportunistic
+			heroic
+			entering
+		system
+			near "Dabih" 0 1
+		fleet "spacecrate_missionfleet_2" 2
+	npc
+		government "SpaceCrate"
+		personality
+			nemesis
+			opportunistic
+			heroic
+			entering
+		system destination
+		fleet "spacecrate_missionfleet_2"
+	on complete
+		payment 500000
+		"reputation: SpaceCrate" = 2
+		"reputation: Quarg" += 30
+		clear "spacecrate_employee"
+		clear "salary: SpaceCrate"
+		clear "spacecrate_story_signup_1: done"
+		clear "spacecrate_story_signup_2: done"
+		clear "spacecrate_story_signup_3: done"
+		clear "spacecrate_story_signup_4: done"
+		clear "spacecrate_story_signup_5: done"
+		dialog "The Quarg look pleasantly surprised with your unexpected gift and give you a 'finders fee' of <payment>."
+		dialog "You get a message from SpaceCrate HR expressing their disappointment and they notify you of the termination of your employment as well as a loss of reputation."
+	on fail
+		fine 100000
+		"reputation: SpaceCrate" = 2
+		clear "spacecrate_employee"
+		clear "salary: SpaceCrate"
+		clear "spacecrate_story_signup_1: done"
+		clear "spacecrate_story_signup_2: done"
+		clear "spacecrate_story_signup_3: done"
+		clear "spacecrate_story_signup_4: done"
+		clear "spacecrate_story_signup_5: done"
+		dialog "Looks like the SpaceCrate defense fleet caught up to you and they look none too happy. You get a hefty fine of <fine> and reputation loss for your foolishness."
+		dialog "SpaceCrate HR informs you that your employment has been terminated."
+
+mission "spacecrate_employee_quit_2"
+	job
+	repeat
+	clearance
+	name "Quit working for SpaceCrate - Risky"
+	description "As your last job you're to illegally dump <cargo> on <destination>. Try not to get scanned or caught by law enforcement. If all goes well your payment is <payment> and you'll go your separate ways on good terms."
+	cargo "Toxic waste" 10 20
+	illegal 200000 `On top of the fine, your cargo is hereby confiscated.`
+	stealth
+	to offer
+		"combat rating" > 8103
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 5000
+	source
+		government "SpaceCrate"
+	destination
+		planet "Watcher"
+	on complete
+		payment 300000
+		"reputation: SpaceCrate" = 4000
+		"reputation: Republic" -= 2
+		clear "spacecrate_employee"
+		clear "salary: SpaceCrate"
+		clear "spacecrate_story_signup_1: done"
+		clear "spacecrate_story_signup_2: done"
+		clear "spacecrate_story_signup_3: done"
+		clear "spacecrate_story_signup_4: done"
+		clear "spacecrate_story_signup_5: done"
+		dialog "You dump the cargo straight out the door and get the hell out of there."
+		dialog "SpaceCrate HR informs you that your employment has been terminated and your final payment is <payment>. It goes on to state that your reputation has been demoted to to a decent standing."
+	on fail
+		fine 100000
+		"reputation: SpaceCrate" = 2000
+		clear "spacecrate_employee"
+		clear "salary: SpaceCrate"
+		clear "spacecrate_story_signup_1: done"
+		clear "spacecrate_story_signup_2: done"
+		clear "spacecrate_story_signup_3: done"
+		clear "spacecrate_story_signup_4: done"
+		clear "spacecrate_story_signup_5: done"
+		dialog "Looks like something went wrong. You get a hefty fine of <fine>."
+		dialog "SpaceCrate HR informs you that your employment has been terminated and you got a reputation loss for your failure."

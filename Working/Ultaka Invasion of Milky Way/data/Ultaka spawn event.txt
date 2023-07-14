@@ -4,19 +4,49 @@ mission "UiMW Dev: Trigger Invasion"
 	repeat
 	deadline 1
 	name "UiMW Dev: Trigger Invasion"
-	description "Trigger the Ultaka invasion of Milkyway. (Scout first, main invasion one months after.) WARNING: This will likely disrupt every storyline."
+	description "Trigger the Ultaka invasion of Milky Way. (Scout first, main invasion one months after.) WARNING: This will likely disrupt every storyline."
 	source
-		government "cheat"
+		government "cheat" "vanilla"
 	on accept
 		event "UiMW: Ultaka Scout South"
 		event "UiMW: Ultaka Invades South-Quarg" 30
+		event "UiMW: Ultaka conquer 1 pre-trig" 30
 		event "UiMW: Ultaka conquer 1" 31
+		event "UiMW: Ultaka conquer 2 pre-trig" 31
 		event "UiMW: Ultaka conquer 2" 32
+		event "UiMW: Remove Ultaka Scout South" 40
 		event "UiMW: Ultaka Scout Coalition 1"
 		event "UiMW: Ultaka Invades Coalition 1" 30
+		event "UiMW: Ultaka Invades Graveyard 1" 30
+		
+
+#Pre-trigger mission for text when player is on the planet when invasion happened
+event "UiMW: Ultaka conquer 1 pre-trig"
+	planet Greenrock
+		add attributes "uimw invasion imminent"
+	planet Albatross
+		add attributes "uimw invasion imminent"
+	planet Forpelog
+		add attributes "uimw invasion imminent"
+
+event "UiMW: Ultaka conquer 2 pre-trig"
+	planet Lichen
+		add attributes "uimw invasion imminent"
+	planet Harmony
+		add attributes "uimw invasion imminent"
+	planet "New India"
+		add attributes "uimw invasion imminent"
+	planet Sinter
+		add attributes "uimw invasion imminent"
+	planet Humanika
+		add attributes "uimw invasion imminent"
+	planet Grakhord
+		add attributes "uimw invasion imminent"
+	
 
 #Invades, conquer a few worlds to use as base.
 
+#Auto trigger, disabled.
 mission "UiMW: Ultaka Invasion Trigger"
 	landing
 	invisible
@@ -28,8 +58,10 @@ mission "UiMW: Ultaka Invasion Trigger"
 		event "UiMW: Ultaka Invades South-Quarg" 60
 		event "UiMW: Ultaka conquer 1" 61
 		event "UiMW: Ultaka conquer 2" 62
+		event "UiMW: Remove Ultaka Scout South" 70
 		event "UiMW: Ultaka Scout Coalition 1" 30
 		event "UiMW: Ultaka Invades Coalition 1" 60
+		event "UiMW: Ultaka Invades Graveyard 1" 60
 		fail
 		
 mission "UiMW: Ultaka Danger Level Probing"
@@ -83,6 +115,8 @@ event "UiMW: Ultaka Scout South"
 		add fleet "MW Ultaka Scout" 1500
 	system Lurata
 		add fleet "MW Ultaka Scout" 1500
+	system Sadr
+		add fleet "MW Ultaka Scout" 1500
 	system "Kaus Australis"
 		add fleet "MW Ultaka Scout" 1500
 	system Eltanin
@@ -101,6 +135,45 @@ event "UiMW: Ultaka Scout South"
 		add fleet "MW Ultaka Scout" 1500
 	system Atria
 		add fleet "MW Ultaka Scout" 1500
+
+event "UiMW: Remove Ultaka Scout South"
+	government "Quarg"
+	system Sadalmelik
+		remove fleet "MW Ultaka Scout" 1500
+	system Sadalsuud
+		remove fleet "MW Ultaka Scout" 1500
+	system Enif
+		remove fleet "MW Ultaka Scout" 1500
+	system Tarazed
+		remove fleet "MW Ultaka Scout" 1500
+	system Dabih
+		remove fleet "MW Ultaka Scout" 1500
+	system Umbral
+		remove fleet "MW Ultaka Scout" 1500
+	system Albireo
+		remove fleet "MW Ultaka Scout" 1500
+	system Albaldah
+		remove fleet "MW Ultaka Scout" 1500
+	system Lurata
+		remove fleet "MW Ultaka Scout" 1500
+	system "Kaus Australis"
+		remove fleet "MW Ultaka Scout" 1500
+	system Eltanin
+		remove fleet "MW Ultaka Scout" 1500
+	system Nunki
+		remove fleet "MW Ultaka Scout" 1500
+	system Girtab
+		remove fleet "MW Ultaka Scout" 1500
+	system "Delta Sagittarii"
+		remove fleet "MW Ultaka Scout" 1500
+	system Rastaban
+		remove fleet "MW Ultaka Scout" 1500
+	system Lesath
+		remove fleet "MW Ultaka Scout" 1500
+	system Shaula
+		remove fleet "MW Ultaka Scout" 1500
+	system Atria
+		remove fleet "MW Ultaka Scout" 1500
 
 event "UiMW: Ultaka Scout Coalition 1"
 	government "Quarg"
@@ -116,102 +189,120 @@ event "UiMW: Ultaka Scout Coalition 1"
 		add fleet "MW Ultaka Scout" 1500
 	system Plort
 		add fleet "MW Ultaka Scout" 1500
-
+	system "Sol Arach"
+		add fleet "MW Ultaka Scout" 1500
+		
+	system Meblumem
+		add fleet "MW Ultaka Scout" 2000
+	system Blugtad
+		add fleet "MW Ultaka Scout" 2000
+	system Eblumab
+		add fleet "MW Ultaka Scout" 2000
+	system Bloptap
+		add fleet "MW Ultaka Scout" 2000
+	system Pelubta
+		add fleet "MW Ultaka Scout" 2000
+	system Gupta
+		add fleet "MW Ultaka Scout" 2000
+		
 event "UiMW: Ultaka Invades South-Quarg"
 	system Sadalmelik
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 600
-		add fleet "MW Ultaka Quarg Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
 	system Sadalsuud
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 600
-		add fleet "MW Ultaka Quarg Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
 	system Enif
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 600
-		add fleet "MW Ultaka Quarg Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
 		add fleet Quarg 300
 		add fleet "Large Quarg" 500
 	system Tarazed
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 600
-		add fleet "MW Ultaka Quarg Raid Large" 800
-	system Dabih
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system Dabih
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 1200
 		add fleet "MW Ultaka Quarg Raid Large" 1500
 	system Umbral
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 1200
 		add fleet "MW Ultaka Quarg Raid Large" 1500
 	system Albireo
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 1200
 		add fleet "MW Ultaka Quarg Raid Large" 1500
+	system Sadr
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Albaldah
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 1200
 		add fleet "MW Ultaka Quarg Raid Large" 1500
 	system Lurata
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system "Kaus Australis"
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Eltanin
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Nunki
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Girtab
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system "Delta Sagittarii"
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Rastaban
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Lesath
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Shaula
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Atria
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	#system 
 	
 event "UiMW: Ultaka Invades Coalition 1"
-	government "Quarg"
+	#government "Quarg"
 	system Ablub
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	system Blubipad
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	system Miblulub
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	system Tebuteb
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	system Glubatub
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	system Plort
-		add fleet "MW Ultaka Heliarch Raid Small" 500
-		add fleet "MW Ultaka Heliarch Raid Large" 700
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
 	
 event "UiMW: Ultaka conquer 1"
 	system Shaula
@@ -234,7 +325,10 @@ event "UiMW: Ultaka conquer 1"
 		remove outfitter "Pirate Outfits"
 		bribe 0
 		security 0
-		tribute 0
+		tribute 1 # 1 is minimum
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Nunki
 		government "Ultaka (Milky Way)"
 	planet Albatross
@@ -246,7 +340,10 @@ event "UiMW: Ultaka conquer 1"
 		remove outfitter "Common Outfits"
 		remove outfitter "Pirate Outfits"
 		security 0
-		tribute 0
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Sadalsuud
 		government "Ultaka (Milky Way)"
 	planet Forpelog
@@ -254,91 +351,514 @@ event "UiMW: Ultaka conquer 1"
 		description `Forpelog is a Quarg mining world, barely habitable by their standards. Now occupied by Ultaka who have already deployed several mining and manufacturing structures across the entire moon producing warships faster than you could ever imagine possible.`
 		bribe 0
 		security 0
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 12
+			fleet "MW Ultaka South Raid Large" 8
 		
 	system Dschubba
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Sargas
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Han
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Alniyat
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Antares
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Aldhibain
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-	system Alpha Arae
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
-	system Kaus Borealis
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Alpha Arae"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Kaus Borealis"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Tais
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Peacock
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Ascella
 		add fleet "MW Ultaka South Raid Small" 800
-		add fleet "MW Ultaka South Raid Large" 1000
-	
+		add fleet "MW Ultaka South Raid Large" 1200
+	#====Ember Waste
 	system Cardea
 		add fleet "MW Ultaka Ember Waste Raid Small" 900
 	system Nenia
-		add fleet "MW Ultaka Ember Waste Raid Small" 800
+		add fleet "MW Ultaka Ember Waste Raid Small" 1100
 		add fleet "MW Ultaka Archon Task Force" 1200
 	system Antevorta
 		add fleet "MW Ultaka Ember Waste Raid Small" 900
 	
 	system Algenib
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Gienah
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	system Persian
-		add fleet "MW Ultaka South Raid Small" 600
-		add fleet "MW Ultaka South Raid Large" 800
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
 	government Drak
 		"attitude towards"
 			"Ultaka (Milky Way)" -.01
+			"Ultaka (Milky Way, Counter-Archon)" -.01
 		
 event "UiMW: Ultaka conquer 2"
+	system Nunki
+		add fleet "MW Ultaka South Raid Small" 400
+		add fleet "MW Ultaka Minefield" 1500
+	system Shaula
+		add fleet "MW Ultaka South Raid Small" 400
+		add fleet "MW Ultaka Minefield" 1500
+	system Sadalsuud
+		add fleet "MW Ultaka South Raid Small" 500
+		add fleet "MW Ultaka Minefield" 1500
+		
 	system Atria
 		government "Ultaka (Milky Way)"
 	planet "Lichen"
 		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Girtab
 		government "Ultaka (Milky Way)"
 	planet "Harmony"
 		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Albaldah
 		government "Ultaka (Milky Way)"
 	planet "New India"
 		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Albireo
 		government "Ultaka (Milky Way)"
 	planet "Sinter"
 		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
 	system Sadalmelik
 		government "Ultaka (Milky Way)"
+		add fleet "Quarg Large" 500
 	planet "Humanika"
 		attributes "conquered by ultaka" "previously quarg"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 18
+			fleet "MW Ultaka South Raid Large" 12
 	planet "Grakhord"
 		attributes "conquered by ultaka" "previously quarg"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 12
+			fleet "MW Ultaka South Raid Large" 8
 		
 	system "Kaus Borealis"
-		add fleet "Large Republic" 600
+		add fleet "Large Republic" 100
 	system "Ascella"
-		add fleet "Large Republic" 600
+		add fleet "Large Republic" 100
+	#"MW Ultaka Logistic"
+mission "UiMW: Ultaka conquer 2 fix mission"
+	landing
+	to offer
+		never
+		has "event: UiMW: Ultaka conquer 2"
+	on offer
+		event "UiMW: Ultaka conquer 2 fix"
+	on accept
+		fail
 	
+event "UiMW: Ultaka conquer 2 fix"
+	system Atria
+		government "Ultaka (Milky Way)"
+	planet "Lichen"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Girtab
+		government "Ultaka (Milky Way)"
+	planet "Harmony"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Albaldah
+		government "Ultaka (Milky Way)"
+	planet "New India"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Albireo
+		government "Ultaka (Milky Way)"
+	planet "Sinter"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Sadalmelik
+		government "Ultaka (Milky Way)"
+		add fleet "Quarg Large" 500
+	planet "Humanika"
+		attributes "conquered by ultaka" "previously quarg"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 18
+			fleet "MW Ultaka South Raid Large" 12
+	planet "Grakhord"
+		attributes "conquered by ultaka" "previously quarg"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 12
+			fleet "MW Ultaka South Raid Large" 8
+	
+mission "UiMW: Ultaka conquer coal 1"
+	landing
+	to offer
+		has "event: UiMW: Ultaka Invades Coalition 1"
+	on offer
+		event "UiMW: Ultaka conquer coal 1" 4
+	on accept
+		fail
+		
+event "UiMW: Ultaka conquer coal 1"
+	government "Heliarch"
+		"attitude towards"
+			"Ultaka (Milky Way)" -.2
+			
+	system Ablub
+		add fleet Heliarch 100 
+	system Miblulub
+		add fleet Heliarch 100 
+	system Tebuteb
+		add fleet Heliarch 100 
+	
+	system Blubipad
+		add fleet Heliarch 100 
+	system Glubatub
+		add fleet Heliarch 100 
+	system Sol Arach
+		add fleet Heliarch 100 
+	
+	system Ablub
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system Blubipad
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system Miblulub
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system Tebuteb
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system Glubatub
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system Plort
+		add fleet "MW Ultaka Heliarch Raid Small" 600
+		add fleet "MW Ultaka Heliarch Raid Large" 1100
+	system "Sol Arach"
+		add fleet "MW Ultaka Heliarch Raid Small" 750
+		add fleet "MW Ultaka Heliarch Raid Large" 1200
+	
+	system Ablub
+		goverment "Ultaka (Milky Way)"
+	planet "Ablub's Invention"
+		attributes "conquered by ultaka" "previously coal"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka Heliarch Raid Small" 8
+			fleet "MW Ultaka Heliarch Raid Large" 5
+	system Miblulub
+		goverment "Ultaka (Milky Way)"
+	planet "Miblulub's Plenty"
+		attributes "conquered by ultaka" "previously coal"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka Heliarch Raid Small" 8
+			fleet "MW Ultaka Heliarch Raid Large" 5
+	system Tebuteb
+		goverment "Ultaka (Milky Way)"
+	planet "Tebuteb's Table"
+		attributes "conquered by ultaka" "previously coal"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka Heliarch Raid Small" 8
+			fleet "MW Ultaka Heliarch Raid Large" 5
+	
+mission "UiMW: Ultaka conquer 3 trigger"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka conquer 2"
+	on offer
+		event "UiMW: Ultaka conquer 3" 2 5
+	on accept
+		fail
+	
+event "UiMW: Ultaka conquer 3"
+	system "Delta Sagittarii"
+		add fleet "Large Republic" 200
+	system "Kaus Australis"
+		add fleet "Large Republic" 200
+	
+	system Nunki
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+	system Shaula
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+	system Albaldah
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+	system Albireo
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+	system Girtab
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+	system Lesath
+		remove fleet "Small Southern Merchant"
+		remove fleet "Large Southern Merchant"
+		remove fleet "Small Free Worlds"
+		remove fleet "Large Free Worlds"
+		add fleet "MW Ultaka Minefield" 600
+		
+	system Atria
+		add fleet "MW Ultaka Logistic" 4000
+	system Shaula
+		add fleet "MW Ultaka Logistic" 4000
+	system Saquergen
+		add fleet "MW Ultaka Logistic" 4000
+		add fleet "MW Ultaka South Raid Small" 2000
+		
+	system Umbral
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+		
+	system Dabih
+		government "Ultaka (Milky Way)"
+	planet "New Britain"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Tarazed
+		government "Ultaka (Milky Way)"
+		add fleet "MW Ultaka South Raid Small" 600
+		add fleet "MW Ultaka South Raid Large" 1000
+		add fleet "MW Ultaka Quarg Raid Small" 600
+		add fleet "MW Ultaka Quarg Raid Large" 1000
+	planet "New Britain"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Rastaban
+		government "Ultaka (Milky Way)"
+	planet "Dancer"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Sargas
+		government "Ultaka (Milky Way)"
+	planet "Trinket"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Dschubba
+		government "Ultaka (Milky Way)"
+	planet "Sundrinker"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 8
+			fleet "MW Ultaka South Raid Large" 5
+	system Han
+		government "Ultaka (Milky Way)"
+	planet "Darkstone"
+		attributes "conquered by ultaka" "previously fw"
+		tribute 1 # 1 is minimum.
+			threshold 10
+			fleet "MW Ultaka South Raid Small" 12
+			fleet "MW Ultaka South Raid Large" 8
+			
+	#Outer Rim
+	system Graffias
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Pherkad
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Kappa Centauri"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Beta Lupi"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Yed Prior"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Men
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		
+	#Rim
+	system "Kornephoros"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system "Sabik"
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Unukalhai
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Zubenelgenubi
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	#Dirt Belt
+	system Wei
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Alnasl
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Eber
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Seginus
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Alioth
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Alphecca
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Boral
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+		
+	system Rutilicus
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Holeb
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Vindemiatrix
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	system Cebalrai
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	
+	system Naper
+		add fleet "MW Ultaka South Raid Small" 800
+		add fleet "MW Ultaka South Raid Large" 1200
+	
+	system Ascella
+		add fleet "MW Ultaka South Raid Small" 600
+		add fleet "MW Ultaka South Raid Large" 1000
+	system Orvala
+		add fleet "MW Ultaka South Raid Small" 1400
+		add fleet "MW Ultaka South Raid Large" 1800
+	system "Zeta Aquilae"
+		add fleet "MW Ultaka South Raid Small" 1400
+		add fleet "MW Ultaka South Raid Large" 1800
+	system Rasalhague
+		add fleet "MW Ultaka South Raid Small" 1400
+		add fleet "MW Ultaka South Raid Large" 1800
+		
+mission "UiMW: Ultaka Invades Syndicate"
+	invisible
+	landing
+	to offer
+		has "event: UiMW: Ultaka conquer 3"
+	on offer
+		event "UiMW: Ultaka Invades Syndicate"
+	on accept
+		fail
+		
+event "UiMW: Ultaka Invades Syndicate"
+	system Alnair
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Persian
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Glenah
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Algenib
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Matar
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Alderamin
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system "Delta Capricorni"
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Scheat
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system Mirach
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+	system "Gamma Cassiopeiae"
+		add fleet "MW Ultaka Syndi Raid Small" 1000
+		add fleet "MW Ultaka Syndi Raid Large" 1400
+		
 fleet "Human Pug Large T3"
 	government "Pug"
 	names "pug"
@@ -366,7 +886,7 @@ mission "UiMW: Siege of Deneb"
 event "UiMW: Siege of Deneb"
 	system "Deneb"
 		add fleet "MW Ultaka Quarg Raid Small" 500
-		add fleet "MW Ultaka Quarg Raid Large" 600
+		add fleet "MW Ultaka Quarg Raid Large" 800
 		add fleet "Large Pug" 500
 		add fleet "Human Pug Large T3" 700
 		
@@ -376,6 +896,196 @@ event "UiMW: Siege of Deneb over"
 		remove fleet "MW Ultaka Quarg Raid Large"
 		remove fleet "Large Pug"
 		remove fleet "Human Pug Large T3"
+	
+event "UiMW: Ultaka Invades Graveyard 1"
+	system Lire
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Fereti
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Fearis
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Giribea
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Delia
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Dixere
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Feraticus
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Relifer
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	system Aki'il
+		add fleet "MW Ultaka Ember Waste Raid Small" 1200
+	
+mission "UiMW: Ultaka Invades Ember Waste 1"
+	invisible
+	landing
+	to offer
+		has "event: UiMW: Ultaka Invades Graveyard 1"
+	on offer
+		event "UiMW: Ultaka Invades Graveyard 2"
+		event "UiMW: Ultaka Invades Ember Waste 1"
+	on accept
+		fail
+		
+event "UiMW: Ultaka Invades Graveyard 2"
+	system Ritilas
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Queri
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Esix
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Nona
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Gerenus
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Paeli
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+	system Polerius
+		add fleet "MW Ultaka Ember Waste Raid Small" 2400
+		
+event "UiMW: Ultaka Invades Ember Waste 1"
+	system Ossipago
+		add fleet "MW Ultaka Ember Waste Raid Small" 1400
+	system Insitor
+		add fleet "MW Ultaka Ember Waste Raid Small" 1400
+	system Convector
+		add fleet "MW Ultaka Ember Waste Raid Small" 1400
+	system Aescolanus
+		add fleet "MW Ultaka Ember Waste Raid Small" 2000
+		
+#Remnants send out scouts every now and then, with how much Ultaka is flooding in Ember Waste they will absolutely catch some.
+#Probably should disable Remnant scout job from appearing out here after some time as well because after several consecutive missing scouts something is really wrong and they probably wouldn't send out more being paranoid af as they are. Too lazy to do it right now.
+mission "UiMW: Ultaka Recovers Quantum Key Stone"
+	invisible
+	landing
+	to offer
+		has "event: UiMW: Ultaka Invades Ember Waste 1"
+		or
+			random < 5
+			and
+				has "Remnant: Rescue: active"
+				random < 30
+	on offer
+		event "Ultaka Hunt Remnant"
+		event "Ultaka Partial Access Red Wormhole" 14
+		
+event "Ultaka Hunt Remnant"
+	system "Ossipago"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	system "Antevorta"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	system "Cardea"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	system "Insitor"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	system "Convector"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	system "Aescolanus"
+		add fleet "MW Ultaka Ember Waste Decloaker" 900
+		add fleet "MW Ultaka Minefield" 800
+	
+event "Ultaka Partial Access Red Wormhole"
+	
+mission "UiMW: Ultaka Invades Remnant Deployment"
+	invisible
+	landing
+	deadline 5
+	to offer
+		has "event: Ultaka Partial Access Red Wormhole"
+		
+	npc kill
+		system Segesta
+		government "Ultaka (Milky Way)"
+		personality uninterested staying
+		ship "Muerulaisot (Keystone)" "Kulikay-RW5"
+		fleet
+			names "Ultaka Big"
+			variant
+				"Dusalyurmai (Carried)"
+				"Ultayon (Carried)" 24
+		conversation
+			action
+				set "UiMW: temp halt ultaka invading remnant"
+			`You destroyed an Ultaka factory ship that somehow slipped into Remnant space and potentially stopped their invasion into the Remnant space, for now.`
+			
+mission "UiMW: Ultaka Invades Remnant 2"
+	invisible
+	landing
+	to offer
+		not "UiMW: temp halt ultaka invading remnant"
+		has "event: Ultaka Partial Access Red Wormhole"
+		or
+			has "UiMW: Ultaka Invades Remnant Deployment: failed"
+			has "UiMW: Ultaka Invades Remnant Deployment: offered"
+	on offer
+		event "UiMW: Ultaka Invades Remnant Establishment"
+		event "UiMW: Remnant Counter-Attack" 4
+	on accept
+		fail
+
+event "UiMW: Ultaka Invades Remnant Establishment"
+	system Segesta
+		goverment "Ultaka (Milky Way)"
+		add fleet "MW Ultaka Ember Waste Raid Small" 2000
+		add fleet "MW Ultaka Ember Waste Decloaker" 2000
+		add fleet "MW Ultaka Minefield" 1200
+		object
+			sprite star/k5-old
+			period 10
+		object
+			sprite planet/venus-b
+			distance 350
+			period 84.9767
+			object
+				sprite planet/dust5
+				distance 178
+				period 27.0988
+		object "Alulika"
+			sprite planet/forest2
+			distance 918.01
+			period 360.968
+			object
+				sprite planet/rock0-b
+				distance 171
+				period 21.3838
+		object
+			sprite planet/browndwarf-t
+			distance 1408.25
+			period 685.832
+			object
+				sprite planet/tethys-b
+				distance 300
+				period 27
+		object "Ember Wormhole"
+			sprite planet/wormhole-red
+			distance 2749.5
+			period 1871.02
+		object
+			sprite planet/gas2-b
+			distance 2749.5
+			period 1871.02
+			offset 180
+			
+planet "Alulika"
+	attributes "ultaka initial factory"
+	landscape land/forest1
+	description `A previously uninhabited planet recently "colonized" by the Ultaka with their factory ship mining out resource from the planet crust to build warships at unseen rate already establishing several ground-based mining and production stations.`
+	spaceport `.`
+	"required reputation" 1000
+	security 0
+	tribute 1
+		threshold 10
+		fleet "MW Ultaka Ember Waste Raid Small" 6
+		fleet "MW Ultaka South Raid Large" 2
+		
+#Remnant probably want to wipe out this potential threat as soon as possible, then pack up and prepare to leave. But too lazy to write right now.
+#=============Plugin
 	
 mission "UiMW: Ultaka Invades Pyherrus"
 	landing
@@ -388,5 +1098,188 @@ mission "UiMW: Ultaka Invades Pyherrus"
 		
 event "UiMW: Ultaka Invades Pyherrus"
 	system Pyherrus
-		add fleet "MW Ultaka Quarg Raid Small" 600
-		add fleet "MW Ultaka Quarg Raid Large" 800
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+		
+mission "UiMW: Ultaka Attack Mil'taj"
+	landing
+	invisible
+	to offer
+		has "event: UiMW: Ultaka Scout South"
+	on offer
+		event "UiMW: Ultaka Attack Mil'taj" 14
+		
+event "UiMW: Ultaka Attack Mil'taj"
+	system `Mil'taj Yoh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Voh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Zoh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Noh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Roh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Poh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Moh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Woh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Con`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Pon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Doh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Joh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Goh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Toh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Boh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Fon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Von`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Con`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Gon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Koh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Joh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Coh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Soh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Foh`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Nol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Bon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Won`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Ton`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Bon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Non`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Yon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Jon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Son`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Mon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Ron`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Hon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Dol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Lon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Zon`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Kol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Zol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Gol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+	system `Mil'taj Bol`
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+		
+	system Zubrik #Oh you like war?
+		add fleet "MW Ultaka Red-Blue Pug Raid Small" 400
+		add fleet "MW Ultaka Red-Blue Pug Raid Large" 500
+		add fleet "MW Ultaka Mil'taj Raid Small" 800
+		add fleet "MW Ultaka Mil'taj Raid Large" 1200
+		
+	system `Flar`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Qarn`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Bera`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Yarg`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Gami`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+		
+	system `Zeta Nurphae`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Subra`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Novae`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Udualudu`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Eta Delphi`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Plus De`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200
+	system `Wartorn`
+		add fleet "MW Ultaka Quarg Raid Small" 800
+		add fleet "MW Ultaka Quarg Raid Large" 1200

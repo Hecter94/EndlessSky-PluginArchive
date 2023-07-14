@@ -12,7 +12,6 @@ mission "ScS Tracking 1"
 	to offer
 		has "ScS The Top: done"
 	on offer
-		fail "The End has Not Yet Been Written 3"
 		event "pug invasion"
 		event "ScS alpha relations"
 		"reputation: Pug" >?= 1
@@ -55,6 +54,7 @@ mission "ScS Tracking 2"
 	to offer
 		has "ScS Tracking 1: active"
 	on offer
+		log `Tracked the Alphas to the Delta Capricorni system, where things are very strange indeed. Unusual, yellow ships have appeared in orbit, and I've been feeling some strange sensations. What is going on? Have the Alphas started a new empire? Evolved to a new form?`
 		fail "ScS Tracking 1"
 		event "ScS pug invasion 3"
 		event "pug invasion 4"
@@ -65,6 +65,7 @@ mission "ScS Tracking 2"
 			`	Your tracker has stopped working, and when you try to send a message to Arnold or Mary-Jane, the hyperlink network isn't connecting. Apparently everything is under the control of these pale-skinned creatures now. You'd better start finding out what's going on and how far this take-over has spread. Maybe you should look on some other planets.`
 				accept
 	on enter
+		log `Worse still, many hyperlanes have disappeared! Am I trapped?`
 		conversation
 			`When you check your navigation computers, to your horror you realise the hyperlanes themselves have disappeared, back whence you came, and a new system has opened up. If that's the centre of a new Alpha Empire, perhaps you'd better not go there without an army.`
 	to complete
@@ -290,9 +291,13 @@ mission "ScS Corporate Friends 1"
 			`	"What was that!" you say. "They just vanished, like the alien ships. They could be anywhere now, and my tracker no longer works."`
 			branch union
 				has "ScS Unionise 3: done"
+			action
+				log `The company I helped on Furnace are helping me find the Alphas, which landed here then fled - and vanished without a hyperspace jump! The company want me to join a resistance against these aliens, the Pug, then their contacts outside this annexed region will help me track down the Alphas.`
 			`	An executive looks at your tracker.`
 				goto tracker
 			label union
+			action
+				log `The union I helped on Furnace are helping me find the Alphas, which landed here then fled - and vanished without a hyperspace jump! The union want me to join a resistance against these aliens, the Pug, then their contacts outside this annexed region will help me track down the Alphas.`
 			`	The union boss looks at your tracker.`
 			label tracker
 			`	"Yeah, with the hyperlink network broken, it's no surprise this doesn't work. And the Alphas, they must have stolen some sort of jumping hyperdrive from the alien ship. Looks like you're stuck with us."`
@@ -581,6 +586,8 @@ mission "ScS Pug Support 2"
 	to offer
 		has "ScS Pug Support 1: done"
 	on offer
+		# Deep Archaeology checks if one of two FW missions are offered to see if you know the Pug, so set the FW reconciliation one as offered.
+		set "FW Pug 3: offered"
 		log "Located the Pug homeworld, and met with some of them. They say that they have annexed the neighboring systems into the Pug Protectorate in order to stop the human civil war. However, their idea of bringing peace seems to involve conquering human space and replacing the Republic with their own government."
 		log "Factions" "Pug" `The Pug are aliens with barrel-shaped bodies, spindly legs, and milky blue blood. They claim to have intervened in the human civil war purely for the sake of preventing more bloodshed and helping humans to live together in peace.`
 		conversation
@@ -640,6 +647,7 @@ mission "ScS Pug Support 2"
 				accept
 	
 	on accept
+		log `Accepted Pug help to chase the Alphas. They've given me some alien staves to help fight those twisted supersoldiers, and provided a way out of their annexed space.`
 		fail "ScS Tracking 3"
 		fail "ScS Corporate Friends 2"
 		event "ScS empty algenib"
@@ -676,6 +684,8 @@ mission "ScS Final Hunt"
 
 conversation "ScS Finale"
 	action
+		log `It was epic. It was frightening. But at last, I rescued the four women still in captivity of the Alphas. Well... I found them, and saved them from being molested by the Alphas for breeding. At long last, Admiral Danforth and the Navy came and destroyed the Alpha base and rescued us. Apparently the Civil War is all over now, the galaxy's hyperlanes are restored, adn everything is at peace, of some sort. And, since I picked up the Alphas' Bounder, which was stuffed full of alien outfits including a jump drive, I can now explore the galaxy beyond human space. If I want. Maybe I'll live a peaceful life as a merchant captain instead... who knows.`
+		log `People` `Nikki and Vicky` `At last Vicky was also rescued, along with the other three women, the last of the Alphas' captives.`
 		event "at war with the pug"
 		event "battle for delta capricorni"
 		event "reconnected delta capricorni"
@@ -790,9 +800,9 @@ conversation "ScS Finale"
 	label command
 	`	Dispatching the few Alphas who'd hoped to hide out here, you take command. You earned it, and no one will dispute that: you take the Alpha's ship for your own. Climbing on board, and leaving the Navy men (at their request) to continue sweeping the base, you lift off through the tin-and-grass ceiling and fly back to the spaceport.`
 	choice
-		`	(take your leave)`
 		`	(stay to talk with Danforth)`
 			goto talk
+		`	(take your leave)`
 	`	You find Danforth, and the women, and your ship, and take your leave of the two but not the third. The excitement has all been quite enough for you, and it's time once again to take to the skies, to the peace and quiet of open space. With many well-wishes, and thank yous, you finally say good-bye.`
 		accept
 	label talk

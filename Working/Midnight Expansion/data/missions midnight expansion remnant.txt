@@ -1,0 +1,258 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Midnight Expansion Magpie"
+	minor
+	invisible
+	source Viminal
+	to offer
+		has "license: Remnant Capital"
+		has "event: remnant: sign studies complete"
+		random < 70
+	on offer
+		event "midnight add remnant magpies"
+		conversation
+			scene "outfit/emergency ramscoop"
+			`	You notice Taely installing an Emergency Ramscoop on a Remnant ship you haven't seen before.`
+			choice
+				`	"What is wrong with this ship?"`
+				`	"Is this a new ship?"`
+					goto new
+			`	Closing the maintenance panel, Taely wipes her hands and signs, "The cloaking feature on these Magpies burns through fuel much faster than a Gull or Starling. Installing additional Ramscoops helps mitigate this problem."`
+				goto end
+			label new
+			`	Closing the maintenance panel, Taely wipes her hands and signs, "No. The Magpie is almost as old as the Starling."`
+			label end
+			choice
+				`	"Magpie? Why have I not seen them at the shipyard?"`
+			scene "thumbnail/Becca robin"
+			`	"It is not widely used so the shipyards do not keep many in stock. But orders can be placed to have them made. The next time I am there, I will inform them that you were interested in the Magpie." Looking at the ship, she adds, "This is a solidly built ship. Just realize that you cannot rely on the cloaking feature for extended periods of operation. But if you are planning to use it for fast hit and run strikes, you should be fine." Before you can discuss this more, some techs gesture for Taely's assistance with another ship.`
+				decline
+
+event "midnight add remnant magpies"
+	shipyard "Remnant"
+		add "Magpie"
+	fleet "Small Remnant"
+		add variant 1
+			"Magpie"
+
+mission "Midnight Expansion Nemesis Grave Digger Magpies"
+	landing
+	invisible
+	source
+		government "Remnant"
+	to offer
+		has "event: midnight add remnant magpies"
+		or
+			has "event: Grave Digger Testimony"
+			and
+				has "Grave Digger: Midnight Market Clue: declined"
+				random < 0 + ( 2 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" + "Grave Digger: Graveyard Robbery Job A: done" + "Grave Digger: Graveyard Robbery Job B: done" + "Grave Digger: Graveyard Robbery Job C: done" + "Grave Digger: Suspicious Ship Tracking: done") )
+		not "event: Gravedigger defeated"
+	to fail
+		has "event: Gravedigger defeated"
+	npc kill
+		government "Grave Diggers"
+		personality waiting staying plunders harvests unconstrained
+			confusion 10
+		system Aki'il
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+		ship "Magpie (Grave Digger)" "Gathering Darkness"
+
+mission "Midnight Expansion Omnipotence Magpies"
+	landing
+	invisible
+	source Kaeyin
+	to offer
+		has "event: midnight add remnant magpies"
+		has "Omnipotence: Grave Digger Epilogue 1: done"
+	to fail
+		has "graveyard map"
+	npc kill
+		government "Grave Diggers"
+		personality waiting vindictive mute
+		"cargo settings"
+			cargo 6
+			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+		ship "Magpie (Grave Digger)" "Night Avenger"
+
+
+
+mission "Midnight Expansion Avialae Salvage 1"
+	minor
+	name "Ancient Memory Salvage"
+	description "Transport Ciconia to <destination> and search for the abandoned Avialae ship, Ancient Memory."
+	source "Caelian"
+	destination "Baianus"
+	passengers 1
+	to offer
+		has "event: remnant: cognizance calm"
+		has "event: remnant: shattered light"
+		has "event: remnant: sign studies complete"
+		or
+			and
+				not "Randomize Midnight Expansion Avialae Salvage" 
+				random < 70
+			and
+				has "Randomize Midnight Expansion Avialae Salvage" 
+				random < 5
+	on offer
+		conversation
+			scene "planet/callisto"
+			`	A Remnant approaches you and signs, "Captain <last>, may I request your assistance?" Her face seems familiar. As you try to remember where you've seen her before she adds, "Thanks to your efforts, I was one of the fortunate ones to survive the destruction of our outpost on Baianus."`
+			choice
+				`	"How can I help?"`
+				`	"Sorry, I'm busy with something else."`
+					defer
+			`	"My name is Ciconia. Before you were asked to intervene, I was supposed to retrieve the equipment from Baianus. But my ship, the Ancient Memory, was forced into a crash landing by the Korath. I would like to return to Baianus and salvage the ship, if possible."`
+			choice
+				`	"The Ancient Memory was probably obliterated during the attack."`
+				`	"Can't you just get a new ship from the shipyard?"`
+					goto new
+			`	"While I cannot deny that possibility, I still hold out hope that the wreckage is salvageable."`
+				goto request
+			label new
+			`	"The Ancient Memory was not just any ship. It was one of the last surviving Avialae, from the first generation in modern Remnant ship design! The Prefects halted production on them centuries ago."`
+			label request
+			scene "thumbnail/Becca swan"
+			`	She pauses to gather her thoughts then continues, "Unfortunately, my request to lead a salvage operation was denied by the Prefects. So now you are my last hope. Would you fly me to Baianus to search for the remains of the Ancient Memory?"`
+			choice
+				`	"Alright, welcome aboard."`
+				`	"Sorry, you will have to find some other way there."`
+					goto refuse
+			`	"Thank you Captain <last>! May the Embers light our way."`
+				accept
+			label refuse
+			`	"I am sorry for wasting your time." She walks away, dejected.`
+				decline
+	on defer
+		set "Randomize Midnight Expansion Avialae Salvage"
+	on accept
+		log `People` `Ciconia` `A Remnant captain who lost her ship during the battle at Bainus.`
+	on enter Parca
+		conversation
+			scene "thumbnail/PR4987 ravager"
+			`Some Korath are surveilling the area. You had better eliminate them before they call for backup.`
+	npc
+		government "Korath"
+		personality target waiting staying plunders timid marked
+		system destination
+		fleet
+			names "korath"
+			cargo 0
+			variant
+				"'olofez"
+	npc kill
+		government "Korath"
+		personality target waiting staying plunders timid marked
+		system destination
+		fleet
+			names "korath"
+			cargo 3
+			commodities "Metal" "Pastic" "Electronics"
+			variant
+				"Korath Scouter"
+			variant
+				"Korath Scouter (Fire-Lance)"
+	on fail
+		dialog "[MISSION FAILED] You have failed to safely transport Ciconia to her destination. If life were a game, you could reload a save file and try again."
+	on visit
+		dialog "Maybe the Korath are still in orbit observing you or maybe Ciconia is riding on one of your escorts that hasn't arrived. Either way, you won't be able to progress until both are taken care of."
+
+mission "Midnight Expansion Avialae Salvage 2"
+	name "Ancient Memory Salvage"
+	description "Bring Ciconia to Viminal to gather supplies for salvaging the Ancient Memory."
+	source "Baianus"
+	destination "Viminal"
+	passengers 1
+	to offer
+		has "Midnight Expansion Avialae Salvage 1: done"
+	on offer
+		conversation
+			scene "thumbnail/Becca swan"
+			`	A quick scan of the planet's surface reveals the location of the Ancient Memory. Half covered in glistening snow, the hull of the Avialae is surprisingly intact. The engines, however, are thoroughly destroyed. What's worse, it appears the Korath have already picked it clean of its other outfits. But Ciconia seems hopeful. "It will be a massive undertaking, but the Ancient Memory can be saved. Let's go to Viminal."`
+				accept
+	on fail
+		dialog "[MISSION FAILED] You have failed to safely transport Ciconia to her destination. If life were a game, you could reload a save file and try again."
+	on complete
+		conversation
+			scene "outfit/cargo expansion"
+			scene "outfit/bunk room"
+			`Ciconia has done some calculations and informs you that 270 tons of cargo space will be needed to salvage the Ancient Memory. She will also need 89 bunks for her crew. Once you've prepared for this, meet her at the space port.`
+
+mission "Midnight Expansion Avialae Salvage 3"
+	name "Ancient Memory Salvage"
+	description "Deliver 270 tons of salvage equipment and 89 crew members to <destination> to salvage the Ancient Memory."
+	source "Viminal"
+	destination "Baianus"
+	passengers 89
+	cargo "salvage equipment" 270
+	blocked "You need <capacity> for Ciconia's salvage operation."
+	to offer
+		has "Midnight Expansion Avialae Salvage 3: done"
+	on offer
+		conversation
+			`Ciconia has arranged for the necessary equipment and personnel to salvage the Ancient Memory. Transport them to Baianus.`
+				accept
+	on enter Parca
+		conversation
+			scene "thumbnail/Becca robin"
+			`Soon after your arrival, a Magpie decloaks and sends a hail. An unfamiliar Remnant addresses you: "Greetings Captain <last>. What brings you to Parca?" He ends his gestues with an elaborate flourish. Something about his demeanor reminds you of a Paradise Worlder speaking to people from the Dirt Belt with contempt. Ciconia, for her part, averts her eyes from the view screen.`
+			choice
+				`	"Just exploring."`
+				`	"You first."`
+					goto first
+				`	"We are here for the Ancient Memory."`
+					goto memory
+			`	"But have you not already been to Parca? What reason would you have to return?"`
+				goto end
+			label first
+			`	"We are conducting salvage operations. I trust you will not interfere."`
+				goto end
+			label memory
+			`	"That rusted hulk is nothing more than scrap, barely fit to be melted down for its raw material value!"`
+			label end
+			scene "thumbnail/dredger"
+			`	Before you respond, Korath raiding vessels enter the system. The mysterious Magpie cloaks, leaving you to face the attack alone.`
+	npc disable
+		government "Korath"
+		personality target waiting staying plunders harvests
+		system destination
+		fleet
+			names "korath"
+			cargo 0
+			variant
+				"Rano'erek"
+				"Korath Scouter (Fire-Lance)" 2
+				"'olofez" 6
+		dialog `Ciconia signs, "That was a timely distraction. Let's get to the Ancient Memory on <planet>."`
+	on fail
+		dialog "[MISSION FAILED] You have failed to safely transport Ciconia's crew and equipment to their destination. If life were a game, you could reload a save file and try again."
+	on visit
+		dialog "Either the Korath are still observing you from orbit or you're still waiting for passengers or cargo on your escorts. Either way, you can't proceed until those are resolved."
+	on complete
+		give ship "Avialae (Disarmed)" "Ancient Memory"
+		conversation
+			scene "outfit/blue screwdriver"
+			`Ciconia and her crew work tirelessly to repair the Ancient Memory.`
+			choice
+				`	"Who was that Remnant on the Magpie?"`
+				`	"What will you do once the Ancient Memory is repaired?"`
+					goto end
+			scene "thumbnail/modified dromedary"
+			`	Ciconia clenches her fist in frustration. "A Remnant Prefect who is a strong opponent of allowing large utility ships into the Remnant fleets. He, and others like him, are heavily in favor of dismantling them for spare parts whenever they are found. Your discovery of the Shattered Light only emboldened them to be more active."`
+			label end
+			scene "thumbnail/Becca swan"
+			`	Ciconia thinks a moment then signs, "If we rejoin the Remnant fleets once we are done here, I suspect we will not be allowed to keep the Ancient Memory. I hope you will not mind if we join you instead. The Avialae is an old ship, but I am sure it could prove to be a beneficial part of your fleet."`

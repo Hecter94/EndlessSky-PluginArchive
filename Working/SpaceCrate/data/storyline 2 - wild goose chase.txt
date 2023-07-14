@@ -1,0 +1,200 @@
+# Copyright (c) 2022-2023 by Arnan de Gans
+#
+# Endless Sky: SpaceCrate is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky: SpaceCrate is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+# ------------------------------------------------------------------------------------------
+# Helping Arnan de Gans retrieve a valued possession.
+# Offered on SpaceCrate planets
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_story_goosechase_1"
+	name "SpaceCrate - A wild goose chase"
+	description "CEO Arnan looks like he lost something valuable. Help him find it by whatever means... This is a 4 part side-story."
+	autosave
+	source "X-283N1"
+	destination "Reunion"
+	to offer
+		"reputation: SpaceCrate" > 10000
+		"spacecrate_employee" > 0
+		"combat rating" > 59874
+	on offer
+		conversation
+			`As you land and wait for the ship caterer to finally restock the pantry with doughnuts you notice a man wandering around your ship.`
+			`Curious what the guy is doing you approach him and ask, "What are you doing here? Anything I can help you with?"`
+			`The man looks up and you recognize him as CEO Arnan de Gans, he looks at you for a second and sighs deeply.`
+			`"Hello? I'm talking to you..."`
+			`"I'm looking for the hood ornament of my ship" He exclaims, "A silver goose, if it's not here it probably got stolen on <planet>."`
+			`"If you manage to find it I'll reward you handsomely <first>."`
+			choice
+				`	Search for the hood ornament.`
+				accept
+				`	You decide to leave the CEO alone.`
+				defer
+	on accept
+		log "The wild goose chase begins."
+	on complete
+		"reputation: SpaceCrate" += 10
+		dialog `When you land a message shows onto your comlog "Pilot <last>? This is port control. A CEO Arnan from SpaceCrate sent word that you might find the culprit in the Spaceport"`
+	on fail
+		clear "spacecrate_story_goosechase_1: done"
+		dialog "You have disappointed CEO Arnan."
+		log "The hood ornament seems impossible to find."
+
+mission "spacecrate_story_goosechase_2"
+	name "SpaceCrate - A wild goose chase"
+	description "Chase whoever took the hood ornament to <destination>."
+	autosave
+	landing
+	source "Reunion"
+	destination "Crossroads"
+	to offer
+		has "spacecrate_story_goosechase_1: done"
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 10000
+		"combat rating" > 59874
+	on offer
+		conversation
+			`As you enter the spaceport looking for someone who might steal a hood ornament someone jumps up and runs away to an Arrow parked outside.`
+			`You shout into the port lounge "Where is that guy going?!", met with blank stares you point at the small ship flying away while reaching for your gun.`
+			`Considering your options for a few seconds you...`
+			choice
+				`	Give chase.`
+				accept
+				`	Decide to do something else first.`
+				defer
+	on accept
+		log "The wild goose chase takes you to <destination>."
+	on complete
+		"reputation: SpaceCrate" += 10
+		dialog `You land on <destination> and notice the Array parked in a nearby hanger.`
+		log "The wild goose chase takes you to <destination>, but where is the guy who stole the hood ornament?"
+	on fail
+		clear "spacecrate_story_goosechase_1: done"
+		clear "spacecrate_story_goosechase_2: done"
+		dialog "You have disappointed CEO Arnan."
+		log "The hood ornament seems more difficult to find than you anticipated."
+
+mission "spacecrate_story_goosechase_3"
+	name "SpaceCrate - A wild goose chase"
+	description "Capture the thief and retrieve the hood ornament. Requires 1 bunk space."
+	passengers 1
+	landing
+	autosave
+	source "Crossroads"
+	destination "Deadman's Cove"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 50
+		system "Almach"
+		fleet "pirate raid"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 75
+		system
+			distance 1 2
+		fleet "pirate raid"
+	to offer
+		has "spacecrate_story_goosechase_1: done"
+		has "spacecrate_story_goosechase_2: done"
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 10000
+	on offer
+		conversation
+			`Inside the ship you find its pilot hiding in a cupboard. Taking no chances you hold the door closed and demand to know where the hood ornament is.`
+			`"It's on the roof" the pilot replies. "Please don't hurt me..."`
+			`Looking on the roof you indeed see some kind of ornament, but it's not a goose.`
+			`"Where is the Goose ornament?" You ask the locked in pilot. "Some guy on <destination> took it" The pilot says. You knock out the pilot and lock him in a storage compartment on your ship. Finally you report his ship for smuggling pineapples to Trove.`
+			choice
+				"	Head to <destination>?"
+					accept
+				"	Not yet."
+					defer
+	on accept
+		log "The wild goose chase takes you to the pirate planet named <destination>."
+	on complete
+		"reputation: SpaceCrate" += 10
+		dialog `"As you land on <destination> you immediately notice a fighter with a shiny hood ornament. It's shaped like a goose.`
+		log "The wild goose chase lead you to <destination> where you find a ship with a hood ornament that looks like a goose."
+	on fail
+		clear "spacecrate_story_goosechase_1: done"
+		clear "spacecrate_story_goosechase_2: done"
+		clear "spacecrate_story_goosechase_3: done"
+		dialog "You have disappointed CEO Arnan."
+		log "You got close to finding the hood ornament but not quite close enough."
+
+mission "spacecrate_story_goosechase_4"
+	name "SpaceCrate - A wild goose chase"
+	description "Return the hood ornament you retrieved from the pirate pilot you found on <origin>. Requires 2 bunk spaces and 1 ton of cargo space."
+	cargo "Goose Hood Ornament" 1
+	passengers 2
+	landing
+	autosave
+	source "Deadman's Cove"
+	destination "X-283N1"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 75
+		system "Almach"
+		fleet "pirate raid"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 50
+		system
+			distance 2 4
+		fleet "pirate raid"
+	npc
+		government "Pirate"
+		personality heroic harvests plunders
+		to spawn
+			random < 25
+		system
+			distance 4 5
+		fleet "pirate raid"
+	to offer
+		has "spacecrate_story_goosechase_1: done"
+		has "spacecrate_story_goosechase_2: done"
+		has "spacecrate_story_goosechase_3: done"
+		"spacecrate_employee" > 0
+		"reputation: SpaceCrate" > 10000
+	on offer
+		conversation
+			`Entering the spaceport it's full of dodgy looking people.`
+			`"Who's ship is that?" You ask gesturing at a blinged out Hawk on a nearby landing pad.`
+			`One of the men jumps up and charges at you. A fierce fight ensues but you manage to overpower the guy.`
+			`Having captured the Pirate pilot you lock him into a cargo compartment on your ship and load the hood ornament. The other Spaceport guests look none too happy.`
+			`Fearing repercussions you quickly enter your ship and just as you take off you see a group of pilots running for their ships.`
+			choice
+				"	Try to outrun the pirates to <destination>."
+					accept
+				"	I've got other things to do first."
+					defer
+	on accept
+		log "After arresting both thieves and retrieving the hood ornament you've upset several pirates."
+	on complete
+		"reputation: SpaceCrate" += 200
+		event "spacecrate_story_goosechase_reset" 1080
+		payment 250000
+		"salary: SpaceCrate" += 5000
+		dialog `CEO Arnan is waiting for you at the landing pad with a security team and a forklift. He arrests both men and has them taken away. Then the forklift unloads the Goose Hood Ornament. CEO Arnan is very pleased with your results and gives you a 'finders fee' along with a $5000/day pay raise.`
+		log "The wild goose chase is concluded."
+	on fail
+		"reputation: SpaceCrate" -= 200
+		clear "spacecrate_story_goosechase_1: done"
+		clear "spacecrate_story_goosechase_2: done"
+		clear "spacecrate_story_goosechase_3: done"
+		clear "spacecrate_story_goosechase_4: done"
+		dialog "You have disappointed CEO Arnan."
+		log "You got close to retrieving the hood ornament but failed to complete all tasks."

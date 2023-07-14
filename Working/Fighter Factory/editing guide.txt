@@ -1,0 +1,88 @@
+Small guide to explain a bit about how to edit this plugin 
+to maybe increase number of fighter produced a day or something
+
+This will assume you have some basic knowledge about ES Data
+if not, see https://github.com/endless-sky/endless-sky/wiki
+Tip: If stuffs doesn't appear/work, check error.txt first.
+Tip2: Turn on Word Warp if a line is too long. (Often in View -> Word Warp)
+
+For editing custom fighter, see ffcustomfighter.txt inside data folder.
+
+===How the plugin works===
+For v0.9.16.1
+
+In the backend it's basically an invisible mission that offer 
+on landing if you met the requirement (have factory and 
+one of the blueprint). Nothing complicated, just repetitive and tedious.
+
+The main stuffs are in ffproduction.txt.
+
+First, fighter/drone number logging. It is put in the job board to be the least intrusive since it's the only place you can visit for a list of option
+that didn't just pop in your face and potentially blocking other mission 
+if done repeatedly (FW intros do get blocked a lot because it have minor 
+which means it won't offer if anything else offers at the same time). 
+Mechanically this is simply just copying current number of fighters and 
+drone (via "ship: Fighter" and "ship: Drone" condition) into a new condition 
+(condition is basically a variable).
+
+See https://github.com/endless-sky/endless-sky/wiki/Player-Conditions for all condition you can use.
+
+After number of drones and fighter is logged next time when you land mission checks for a few things as offer condition: Factory outfit, blueprint outfit, parts outfit, and if current number of fighter or drone is less than memorized earlier. If all is yes then the mission is offered and during offering it give the appropriate ship.
+
+
+`require` is technically part of what check if this mission can offer but 
+for some weird code reason it's under `on offer` instead.
+
+The `on accept` with `fail` under it is just some clean up so it 
+doesn't stay active and bloat the save file.
+
+mission "FiFc: Fighter Assembly (Lance) 1"
+	invisible
+	landing
+	repeat
+	to offer
+		"ships: Fighter" < "FiFc: Mem: Fighter Count"
+	on offer
+		require "XMA03 Fighter Assembler" 1
+		require "E1-a Lance Blueprint" 1
+		outfit "Universal Fighter Parts" -1
+		give ship "Lance"
+	on accept
+		fail
+		
+If you want to make two ship each landing just duplicate the 
+`give ship "Lance"` line 
+(and increase consumption of Parts if you want to be fair).
+
+If you want to allow more Fighter Assembler to stack you'll have to 
+duplicate the entire mission block (and give it different name, which is 
+just swapping 1 to other number). Increase the number of Fighter Assembler 
+and Blueprint required then you're done, for one ship, repeat that for the 
+rest of the ships. If you're doing alot just write a script to duplicate 
+the missions or get one from here: 
+https://github.com/1010todd/ES-Content-Creation-Tools
+
+Similarly if you want it to be able to build more fighter model then you 
+do similar to above but edit the model name instead and create blueprint 
+outfit for it simply by duplicating the blueprint outfit in ffoutfit.txt 
+replace the name just like before and put the new blueprint in outfitters.
+
+
+===
+For 0.10.0
+
+v0.10.0 have new autocondition stuffs which is more granular and more readable than `require` stuffs. It basically do the same thing as above.
+
+mission "FiFc: Fighter Assembly (Custom Fighter 1) 1 v0.10.0"
+	invisible
+	landing
+	repeat
+	to offer
+		"ships: Fighter" < "FiFc: Mem: Fighter Count"
+		"outfit (installed): XMA03 Fighter Assembler" >= 1
+		"outfit (installed): E1-a Custom Blueprint 1" >= 1
+	on offer
+		outfit "Universal Fighter Parts" -1
+		give ship "FiFc: Custom Fighter 1"
+	on accept
+		fail

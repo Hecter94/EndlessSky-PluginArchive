@@ -9,8 +9,9 @@
 # PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 # ------------------------------------------------------------------------------------------
-# Passengers (getting them to X-283N1)
+# Small cargo export missions 
 # Offered on SpaceCrate planets
+# No 'random'
 # ------------------------------------------------------------------------------------------
 mission "spacecrate_export_small_1"
 	job
@@ -19,8 +20,7 @@ mission "spacecrate_export_small_1"
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
 	cargo random 5 20
 	to offer
-		random < 80
-		"combat rating" > 20
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
@@ -30,6 +30,7 @@ mission "spacecrate_export_small_1"
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
 
 mission "spacecrate_export_small_2"
@@ -39,16 +40,17 @@ mission "spacecrate_export_small_2"
 	description "Deliver a large shipment of <cargo> to <destination>. Payment is <payment>."
 	cargo random 15 30
 	to offer
-		random < 120
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
-		distance 3 12
+		distance 3 8
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
 
 mission "spacecrate_export_small_3"
@@ -58,18 +60,18 @@ mission "spacecrate_export_small_3"
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
 	cargo random 30 45
 	to offer
-		random < 110
-		"combat rating" > 20
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
-		distance 4 16
+		distance 4 9
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
 
 mission "spacecrate_export_small_4"
@@ -79,8 +81,7 @@ mission "spacecrate_export_small_4"
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
 	cargo random 5 35
 	to offer
-		random < 120
-		"combat rating" > 20
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
@@ -90,6 +91,7 @@ mission "spacecrate_export_small_4"
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
 
 mission "spacecrate_export_small_5"
@@ -99,18 +101,18 @@ mission "spacecrate_export_small_5"
 	description "Deliver a large shipment of <cargo> to <destination>. Payment is <payment>."
 	cargo random 2 14
 	to offer
-		random < 140
-		"combat rating" > 20
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
-		distance 6 14
+		distance 6 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "mining" "textiles" "factory"
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
 
 mission "spacecrate_export_small_6"
@@ -120,16 +122,118 @@ mission "spacecrate_export_small_6"
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
 	cargo random 2 9
 	to offer
-		random < 160
-		"combat rating" > 20
+		"reputation: SpaceCrate" > 0
 	source
 		government "SpaceCrate"
 	destination
-		distance 3 15
+		distance 3 9
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "farming" "fishing" "oil"
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
 		payment
+		"reputation: SpaceCrate" += 10
+		dialog phrase "generic cargo delivery payment"
+
+# ------------------------------------------------------------------------------------------
+# Small cargo export missions 
+# Offered on SpaceCrate planets after completing the first 6
+# ------------------------------------------------------------------------------------------
+# Does not require combat rating
+# ------------------------------------------------------------------------------------------
+mission "spacecrate_export_small_7"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Food" 10 25
+	to offer
+		"reputation: SpaceCrate" > 0
+		random < 80
+		has "spacecrate_export_small_1: done"
+		has "spacecrate_export_small_3: done"
+		has "spacecrate_export_small_5: done"
+	source
+		government "SpaceCrate"
+	destination
+		distance 8 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		"reputation: SpaceCrate" += 10
+		dialog phrase "generic cargo delivery payment"
+
+mission "spacecrate_export_small_8"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver a large shipment of <cargo> to <destination>. Payment is <payment>."
+	cargo "military" 20 35
+	to offer
+		"reputation: SpaceCrate" > 0
+		random < 80
+		has "spacecrate_export_small_2: done"
+		has "spacecrate_export_small_4: done"
+		has "spacecrate_export_small_6: done"
+	source
+		government "SpaceCrate"
+	destination
+		distance 9 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		"reputation: SpaceCrate" += 10
+		dialog phrase "generic cargo delivery payment"
+
+mission "spacecrate_export_small_9"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Medical" 30 40
+	to offer
+		"reputation: SpaceCrate" > 0
+		random < 60
+		has "spacecrate_export_small_1: done"
+		has "spacecrate_export_small_2: done"
+		has "spacecrate_export_small_3: done"
+	source
+		government "SpaceCrate"
+	destination
+		distance 8 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		"reputation: SpaceCrate" += 10
+		dialog phrase "generic cargo delivery payment"
+
+mission "spacecrate_export_small_10"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Luxury Goods" 15 25
+	to offer
+		"reputation: SpaceCrate" > 0
+		random < 60
+		has "spacecrate_export_small_4: done"
+		has "spacecrate_export_small_5: done"
+		has "spacecrate_export_small_6: done"
+	source
+		government "SpaceCrate"
+	destination
+		distance 10 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		"reputation: SpaceCrate" += 10
 		dialog phrase "generic cargo delivery payment"
