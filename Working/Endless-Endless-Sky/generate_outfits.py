@@ -123,19 +123,24 @@ def create_battery(faction,fileout=''):
         random.seed(faction.devmodeseed)
 
 
-    battery_type_amount = 1
+    battery_type_amount = random.randint(1,2)
 
     battery_types_generated_count = 1
     while battery_types_generated_count <= int(battery_type_amount):
 
         #Calculates new values
+
+        #Batteries seems to be around 123 to 52.75 times over gen
+        power_per_ton_base = (17.25 * 2.718 ** (1.407*faction.tier))/60 #From Generator
+
         battery_outfit = random.randint(5, 10)
-        battery_energy = roundup10(random.randint(int(1000*random.uniform(1.1*faction.tier,2*faction.tier)), int(2500*random.uniform(1.1*faction.tier,2*faction.tier))))
+        battery_energy = (power_per_ton_base * random.randint(55,100)) * battery_outfit
+        #battery_energy = roundup10(random.randint(int(1000*random.uniform(1.1*faction.tier,2*faction.tier)), int(2500*random.uniform(1.1*faction.tier,2*faction.tier))))
         battery_cost = roundup100(random.randint(round((battery_energy/battery_outfit)*500),round((battery_energy/battery_outfit)*600)))
 
         battery_cost_curve = .9
         battery_outfit_curve = round(random.gauss(1, .1),1)
-        battery_energy_curve = round(1.1*(max(1,faction.tier/2)),1)
+        battery_energy_curve = round(random.uniform(1.1,1.2),1)
         battery_iterations = round(random.gauss(4, 1))
 
         battery_type = random.choice(['Battery','Capacitor','Battery Pack','Capacitor Pack','Battery Rack','Capacitor Rack','Storage Device','Power Storage', 'Power Cache'])
@@ -145,7 +150,7 @@ def create_battery(faction,fileout=''):
         battery_name_list=[]
         for n in range(battery_iterations):
             name_length_min = 3
-            name_length_max = 10
+            name_length_max = 9
             battery_name = namegen.generateNameFromRules(name_length_min,
                                                     name_length_max,
                                                     wordlen=faction.lang_wordlen,
@@ -197,7 +202,7 @@ def create_battery(faction,fileout=''):
 #============================================COOLING=========================================
 #============================================================================================
 
-def create_cooling(faction,fileout='',max_outfit_count=8, min_outfit_space=1, max_outfit_space = 10,coolingmin=None):
+def create_cooling(faction,fileout='',max_outfit_count=8, min_outfit_space=2, max_outfit_space = 10,coolingmin=None):
     namegen = namegenerator.Namegenerator(faction)
     generate_outfits_config = open(outfit_config_file, "r")
     if fileout == '':
@@ -232,14 +237,15 @@ def create_cooling(faction,fileout='',max_outfit_count=8, min_outfit_space=1, ma
             for n in range(max_outfit_space*2):
                 cooling_cooling = round(((random.randrange(int(coolingmin), int(coolingmin*2)))), 1)
                 cooling_outfit = random.randrange(round(max(1,cooling_cooling)/(2.5+faction.tier)), round(max(2,cooling_cooling/2+(faction.tier/2))))
-                if cooling_outfit < max_outfit_space:
+                #cooling_cooling /= 60
+                if cooling_outfit <= max_outfit_space:
                     break
         else:
             cooling_outfit = random.randrange(int(max(1,min_outfit_space)), int(max(2,max_outfit_space)))
             cooling_cooling = round(random.randrange(int(1), int(5*cooling_outfit)), 1)
         cooling_outfit = max(1,cooling_outfit)
         cooling_outfit = min(max_outfit_space,cooling_outfit)
-        cooling_cost = roundup100(random.randrange(int(8500*(cooling_outfit/cooling_cooling)), int(10000*(cooling_outfit/cooling_cooling)))*faction.tier)
+        cooling_cost = roundup100(random.randrange(int(8500*(cooling_cooling/cooling_outfit)), int(10000*(cooling_cooling/cooling_outfit)))*faction.tier)
         cooling_ener = 0
         cooling_active = 0
         if random.random() > .7:
@@ -355,8 +361,12 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
         powheat_fac_max = (8.4/(3 + .0001*(2.718)**(2*faction.tier))) + .2
         
         power_outfit = random.randint(int(min_outfit_space), int(max_outfit_space))
+
+        power_per_ton_base = (17.25 * 2.718 ** (1.407*faction.tier))/60
+        power_power = random.uniform((power_per_ton_base*.8),(power_per_ton_base*1.2))
         #power_power = round(((random.uniform(float((1)*faction.tier), float((1.3)*faction.tier)))), 1)
-        power_power = round(random.uniform(0.055,0.065)*faction.tier, 3)
+        #power_power = round(random.uniform(0.055,0.065)*faction.tier, 3)
+        power_power /= 10
         power_power *= power_outfit
         power_heat = round(((random.uniform(power_power*powheat_fac_min, power_power*powheat_fac_max))), 2)
         power_cost = roundup100(random.uniform(round(((power_power*60)/power_outfit)*1500*faction.tier), round(((power_power*60)/power_outfit)*3500*faction.tier)))
@@ -396,7 +406,7 @@ def create_power(faction,fileout = '',power_type_amount=0, min_outfit_space=10, 
         power_outfit_curve = round(random.uniform(1.02, 1.1),1)
         power_power_curve = round(1.1,1)
         power_heat_curve = round(1.1*pow_heat_effciency,1)
-        battery_energy_curve = round(1.1*(max(1,random.uniform(faction.tier/3,faction.tier/2))),1)
+        battery_energy_curve = round(1.1,1)
 
         power_thumb_list = ['tiny fuel cell','small fuel cell','medium fuel cell','large fuel cell','huge fuel cell']
         if power_iterations <= 3:
@@ -634,15 +644,21 @@ def create_shield_generator(faction,fileout=''):
         #Calculates new values
         shield_gen_delaychance = .1
         shield_gen_outfit = random.randint(int(5), int(20))
-        shield_gen_shield_generation = round(random.uniform(float(0.1*max(1,faction.tier*faction.tier)), float(0.2*max(1,faction.tier*faction.tier))), 2)
+        shield_gen_per_mass = (5.35*2.718**(1.407*faction.tier))/60
+        #shield_gen_per_mass = (3.58*2.718**(1.407*faction.tier))/60
+        shield_gpm_lo = shield_gen_per_mass*.8
+        shield_gpm_hi = shield_gen_per_mass*1.8
+        shield_gen_shield_generation = round(random.uniform(shield_gpm_lo*shield_gen_outfit,shield_gpm_hi*shield_gen_outfit))
+        shield_gen_shield_generation /= 10
+        #shield_gen_shield_generation = round(random.uniform(float(0.1*max(1,faction.tier*faction.tier)), float(0.2*max(1,faction.tier*faction.tier))), 2)
         shield_gen_shield_energy = round(random.uniform(float(shield_gen_shield_generation), float(shield_gen_shield_generation*2)), 2)
         shield_gen_shield_heat = round(random.uniform(shield_gen_shield_energy*0,shield_gen_shield_energy*2))
         shield_gen_cost = roundup100(random.randint(round(((shield_gen_shield_generation*60*faction.tier)/shield_gen_outfit)*3200*faction.tier), round(((shield_gen_shield_generation*60*faction.tier)/shield_gen_outfit)*5500*faction.tier)))
         shield_gen_delay = 0
         if random.random() < shield_gen_delaychance:
             shield_gen_delay = round(random.uniform(1,120))
-            shield_gen_shield_generation *= round(shield_gen_delay*random.uniform(1,3),1)
-        shield_gen_type = random.choice(['Shield Generator','Shield Core','Shield Regenerator', 'Shielding', 'Shield Rejuvenator'])
+            shield_gen_shield_generation *= round(random.uniform(1,2),1)
+        shield_gen_type = random.choice(['Shield Generator','Shield Core','Shield Regenerator', 'Shielding', 'Shield Rejuvenator','Shield Restorerer'])
         shield_gen_iterations = round(random.gauss(4,2))
         #shield_gen Name
         sheild_gen_name_list=[]
@@ -910,8 +926,8 @@ def create_h2h(faction,fileout='',max_outfit_count=4,h2hmin=1):
             h2h_output.write('\tcategory "Hand to Hand"\n')
             h2h_output.write('\tcost ' + str(h2h_cost) + "\n")
             h2h_output.write(f'\tthumbnail "outfit/{h2h_thumb}"\n')
-            h2h_output.write(f'\t"boarding attack" {h2h_atk}\n')
-            h2h_output.write(f'\t"boarding defense" {h2h_def}\n')
+            h2h_output.write(f'\t"boarding attack" {h2h_atk:.2f}\n')
+            h2h_output.write(f'\t"boarding defense" {h2h_def:.2f}\n')
             h2h_output.write(f'\t"unplunderable" 1\n')
             if(h2h_have_tradeoff):
                 h2h_output.write(f'{h2h_tradeoff} {h2h_tradeoff_value}' + "\n")

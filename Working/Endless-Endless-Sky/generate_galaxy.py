@@ -1256,7 +1256,7 @@ def generate_spaceport(planet_type,attributes,population):
     factory_desc = "The spaceport have a lot of warehouses along with various trucks moving containers around all the time. "
     farm_desc = "Farming seems to one of the major export here guessing from number of farm vehicles parked near the spaceport. "
     medical_desc = "Rather clean and large spaceport with reserved landing pad right next to hospital entrance. "
-    mining_desc = "Smoggy spaceport flooded with noise from heavy mining vehicles and cranes loading minerals into freighters. "
+    mining_desc = "The spaceport is often covered in dust and flooded with noise from heavy mining vehicles and cranes loading minerals into freighters. "
     oil_desc = "Located close to an oil refinery connected with large pipes and surrounded with liquid tanks. "
     research_desc = "The spaceport sits not too far away from a large research facility. "
     military_desc = "Well defended and patrolled spaceport close to a military base. "
@@ -1265,7 +1265,7 @@ def generate_spaceport(planet_type,attributes,population):
     lowpop_desc = "A small spaceport with old solid landing pads. "
     mediumpop_desc = "A medium-sized spaceport. "
     highpop_desc = "A large spaceport. "
-    vhighpop_desc = "A massive spaceport. "
+    vhighpop_desc = "A massive spaceport with multiple landing pads of various size. "
 
     tempspaceport = []
     if population < 2:

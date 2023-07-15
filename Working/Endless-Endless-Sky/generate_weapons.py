@@ -88,6 +88,9 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
     weapon_config_file = "config/weapon config/weapons 1.txt"
     generate_weapons_config = open(weapon_config_file, "r")
     weapon_output = open(fileout, "a")
+    wep_amount_min = 2
+    wep_amount_max = 5
+    wep_amount_mode = 3
     #Searches config file for values and creates variables
     for line in generate_weapons_config: #Creates vars from txt file
 
@@ -102,11 +105,18 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
         if ("weapon_seed" in line) and use_seed == True:
             weapon_seed = next(generate_weapons_config)
             random.seed(int(weapon_seed))
+
+        if ("weapon_per_faction_min" in line):
+            wep_amount_min = int(next(generate_weapons_config))
+        if ("weapon_per_faction_max" in line):
+            wep_amount_max = int(next(generate_weapons_config))
+        if ("weapon_per_faction_mode" in line):
+            wep_amount_mode = int(next(generate_weapons_config))
 #End reading data from config file
     if faction.devmode:
         random.seed(99)
     if weapon_amount == 0:
-        weapon_amount = max(1,random.gauss(4,2))
+        weapon_amount = max(1,random.triangular(wep_amount_min,wep_amount_max,wep_amount_mode))
 
     print("\n")
 
@@ -138,7 +148,7 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
         weapon_outfit = round(random.randint(math.floor(weapon_min_outfit),max(1,weapon_max_outfit)))
         weapon_mass = weapon_outfit
 
-        weapon_is_burst = int(random.paretovariate(5)) #1 = no burst
+        weapon_is_burst = int(random.paretovariate(4)) #1 = no burst
         
         if random.randrange(round(weapon_outfit/3),max(1,weapon_outfit)) <= 40:
             create_turrets = True
@@ -150,7 +160,11 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
 
 
         #Weapon calculations
-        weapon_damagepersec = random.uniform(weapon_outfit*(8*faction.tier),weapon_outfit*(16*faction.tier))
+        #scale like ships
+        wep_dps_scaling = 17.25 * 2.718 ** (1.407*faction.tier)
+        #weapon_damagepersec = random.uniform(weapon_outfit*(8*faction.tier),weapon_outfit*(16*faction.tier))
+        weapon_damagepersec = random.uniform(weapon_outfit*(wep_dps_scaling*.4),weapon_outfit*(wep_dps_scaling*1.6))
+        weapon_damagepersec /= 10
         wep_cost_min = int((weapon_damagepersec/weapon_outfit)*65*weapon_outfit*sqrt(100*faction.tier))
         wep_cost_max = int((weapon_damagepersec/weapon_outfit)*75*weapon_outfit*sqrt(150*faction.tier))
         weapon_cost = roundup100(random.randint(int(wep_cost_min),int(wep_cost_max)))
@@ -174,7 +188,7 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             weapon_velocity = weapon_range
             weapon_max_inaccuracy = 0
         else:
-            weapon_shotpersec = random.triangular(0.1,random.randrange(10,60)) #too many single digit reload ffs
+            weapon_shotpersec = random.triangular(0.05,random.randrange(10,60)) #too many single digit reload ffs
             weapon_range = roundup10(random.weibullvariate(350, 1))
             if weapon_type == 'missile':
                 weapon_range = max(300,weapon_range)
@@ -216,12 +230,16 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
 
         weapon_firing_energypershot = round((weapon_shield_dpshot*weapon_energy_ratio)/faction.tier,1)
         weapon_firing_heatpershot = round((weapon_shield_dpshot*weapon_heat_ratio)/faction.tier,1)
+
+        if weapon_type == 'missile':
+            weapon_firing_energypershot /= random.randrange(10,20)
         #=============================Special Damages todo
         weapon_special_dpshot = {
             'heat':0,
             'fuel':0,
             'energy':0,
             'ion':0,
+            'scrambling':0,
             'disrupt':0,
             'slow':0,
             'discharge':0,
@@ -238,7 +256,8 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                 weapon_special_mult = weapon_special_ratio/len(weapon_special_dmg_picks)
                 weapon_special_mult += random.uniform(.01,max(.05,weapon_special_mult)) #Add minor variation, TODO: properly calculate it.
                 weapon_special_dps = weapon_damagepersec * weapon_special_mult
-                weapon_special_dpshot[dmg_type] = round(weapon_special_dps / weapon_shotpersec,1)
+                weapon_special_dpshot[dmg_type] = abs(round(weapon_special_dps / weapon_shotpersec,1))
+                                                #It's going negative for some reason, TODO: Fix.
 
         #=======Create Special Projectile with submunitions (shotgun,flak,etc.)
         projectile_type = 'none'
@@ -307,7 +326,8 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
                             submunition_stats['missile strength'] = max(1,round(random.uniform((weapon_reload*.5)*(faction.tier**3), (weapon_reload*3)*(faction.tier**3))/submunition_count, 1))
 
         #Missile Calculations
-        missile_cost = random.randint(weapon_cost/5, weapon_cost/4)
+        #missile_cost = random.randint(weapon_cost/5, weapon_cost/4)
+        missile_cost = random.randint(int((weapon_hull_dpshot+weapon_shield_dpshot)*.85), int((weapon_hull_dpshot+weapon_shield_dpshot)*1.85))
         missile_mass = round(random.uniform(.01, .1), 2)
 
         #Missile storage calculations
@@ -333,11 +353,14 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             missile_tracking_amount = round(random.uniform(min(.98,.1*(faction.tier)), .99), 2)
             missile_turn = round(random.uniform(1, 30*max(1,faction.tier)), 1)
             missile_homing = random.randrange(1,4)
-        missile_strength = round(random.uniform((weapon_reload*.5)*(faction.tier**3), (weapon_reload*3)*(faction.tier**3)), 1)
+        missile_strength = round(random.uniform((weapon_reload*.5)*(faction.tier**2), (weapon_reload*3)*(faction.tier**2)), 1)
         missile_acceleration = round(random.uniform((weapon_velocity/4)*.1, (weapon_velocity/2)*.1), 1)
         missile_drag = round(random.uniform(.1, .2), 1)
         #Anti Missile
-        anti_missile_strength = round(random.uniform(6*(faction.tier**3), 20*(faction.tier**3))/weapon_shotpersec, 1)
+        anti_missile_strength = round((random.uniform(6*(faction.tier**2)*weapon_outfit, 20*(faction.tier**2)*weapon_outfit)/weapon_shotpersec)/((weapon_velocity/100)*.8), 1)
+        if weapon_type == "anti-missile":
+            weapon_firing_energypershot = anti_missile_strength * random.triangular(1,2,1.1)
+            weapon_firing_heatpershot = anti_missile_strength * weapon_heat_ratio
 
         turret_gun_num = random.randrange(1,4)
         #If have more than 1 gun and already at 1 reload, increase damage. Else increse fire-rate
@@ -697,7 +720,7 @@ def create_weapon(faction,fileout='',weapon_amount = 0,weapon_min_outfit = 5, we
             faction.weaponlist.append(missilestor)
 
             launcher_name_final = missile_name_final + ' ' + launcher_type
-            launcher_mass = weapon_outfit-(missile_storage_mass)
+            launcher_mass = weapon_outfit-(missile_store_outfit-missile_storage_mass)
             missile_framerate = random.uniform(.1,1)
 
             weapon_output.write('outfit "' + launcher_name_final + '"' + "\n")

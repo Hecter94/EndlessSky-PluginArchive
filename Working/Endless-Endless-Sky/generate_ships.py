@@ -1081,7 +1081,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
         print(f"SHIPGEN: AftHeat, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
     #==================TURN CHECK
     turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
-    insaneturnthreshold = 500
+    insaneturnthreshold = 300
     if turn > insaneturnthreshold:
         newoutfitlist = ship.outfits_list
         print("Turn too high, refitting..")
@@ -1185,7 +1185,8 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                 shipstats['outfit sp'] += smallestcooling.outfit_space
                 shipstats['idle heat'] -= smallestcooling.cooling
                 shipstats['idle heat'] -= smallestcooling.active_cooling
-    print(f"SHIPGEN: AftHeat2, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
+    if debugMessage:
+        print(f"SHIPGEN: AftHeat2, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
     if len(h2hsmall_list) != 0:
         h2h_to_use = random.choice(h2hsmall_list)
         h2h_using_percent = random.random()
@@ -1279,6 +1280,15 @@ def create_ship(faction): #Todo, option for without faction?
     #Searches config file for values and creates variables
 
     #=========Default values
+    shipLWMass = [100,300]
+    shipMWMass = [250,500]
+    shipHWMass = [500,2500]
+    shipInMass = [40,110]
+    shipFtMass = [35,80]
+    shipDrMass = [35,80]
+    shipTpMass = [50,300]
+    shipLFMass = [150,350]
+    shipHFMass = [450,2500]
     ship_amount = 3
     shipmax = 12
     use_seed = False
@@ -1296,6 +1306,43 @@ def create_ship(faction): #Todo, option for without faction?
             shipmax = int(next(generate_ships_config).removesuffix("\n"))
         if "ship_per_faction_min" in line:
             shipmin = int(next(generate_ships_config).removesuffix("\n"))
+
+        if "ship_LW_min_mass" in line:
+            shipLWMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_LW_max_mass" in line:
+            shipLWMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_MW_min_mass" in line:
+            shipMWMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_MW_max_mass" in line:
+            shipMWMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_HW_min_mass" in line:
+            shipHWMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_HW_max_mass" in line:
+            shipHWMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_In_min_mass" in line:
+            shipInMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_In_max_mass" in line:
+            shipInMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Ft_min_mass" in line:
+            shipFtMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Ft_max_mass" in line:
+            shipFtMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Dr_min_mass" in line:
+            shipDrMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Dr_max_mass" in line:
+            shipDrMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Tp_min_mass" in line:
+            shipTpMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_Tp_max_mass" in line:
+            shipTpMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_LF_min_mass" in line:
+            shipLFMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_LF_max_mass" in line:
+            shipLFMass[1] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_HF_min_mass" in line:
+            shipHFMass[0] = int(next(generate_ships_config).removesuffix("\n"))
+        if "ship_HF_max_mass" in line:
+            shipHFMass[1] = int(next(generate_ships_config).removesuffix("\n"))
             
     ship_amount = random.randrange(shipmin,shipmax)
 
@@ -1364,47 +1411,47 @@ def create_ship(faction): #Todo, option for without faction?
         shiptypenum = 0.
         if(ship == 'Light Warship'):
             shiptypenum = 0.1
-            ship_mass = round(random.uniform(100,300))
+            ship_mass = round(random.uniform(shipLWMass[0],shipLWMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(light_warship_sprites, used_sprites,ship, faction)
             warship = True
         elif(ship == 'Medium Warship'):
             shiptypenum = 0.5
-            ship_mass = round(random.uniform(250,500))
+            ship_mass = round(random.uniform(shipMWMass[0],shipMWMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(medium_warship_sprites, used_sprites,ship, faction)
             warship = True
         elif(ship == 'Heavy Warship'):
             shiptypenum = 1.
-            ship_mass = round(random.uniform(500,1200))
+            ship_mass = round(random.uniform(shipHWMass[0],shipHWMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(heavy_warship_sprites, used_sprites,ship, faction)
             warship = True
         elif(ship == 'Interceptor'):
             shiptypenum = -0.9
-            ship_mass = round(random.uniform(45,110))
+            ship_mass = round(random.uniform(shipInMass[0],shipInMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(interceptor_sprites, used_sprites,ship, faction)
             warship = True
         elif(ship == 'Fighter'):
             shiptypenum = -0.9
-            ship_mass = round(random.uniform(30,70))
+            ship_mass = round(random.uniform(shipFtMass[0],shipFtMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(fighter_sprites, used_sprites,ship, faction)
         elif(ship == 'Drone'):
             shiptypenum = -0.9
-            ship_mass = round(random.uniform(30,70))
+            ship_mass = round(random.uniform(shipDrMass[0],shipDrMass[1]))
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(drone_sprites, used_sprites,ship, faction)
         elif(ship == 'Transport'):
             shiptypenum = random.gauss(-0.04, 0.1)
-            ship_mass = round(random.uniform(50,300))
+            ship_mass = round(random.uniform(shipTpMass[0],shipTpMass[1]))
             if shiptypenum == 0:
                 shiptypenum = 0.1
             transport = 3
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(transport_sprites, used_sprites,ship, faction)
         elif(ship == 'Light Freighter'):
             shiptypenum = -0.6
-            ship_mass = round(random.uniform(150,350))
+            ship_mass = round(random.uniform(shipLFMass[0],shipLFMass[1]))
             freighter = 2.5
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(light_freighter_sprites, used_sprites,ship, faction)
         elif(ship == 'Heavy Freighter'):
             shiptypenum = random.gauss(0.5, 0.1)
-            ship_mass = round(random.uniform(450,1200))
+            ship_mass = round(random.uniform(shipHFMass[0],shipHFMass[1]))
             freighter = 4
             ship_sprite, used_sprites, ship_sprite_path, thumb_sprite_path = randomizeSprite(heavy_freighter_sprites, used_sprites,ship, faction)
 
