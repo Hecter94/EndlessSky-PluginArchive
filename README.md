@@ -5,16 +5,16 @@
 (latest 10 entries):
 <table><tr><td width=800>
 
-2023-07-14 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
+2023-07-15 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
+<br>2023-07-15 'Midnight Expansion' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
+<br>2023-07-15 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
+<br>2023-07-14 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
 <br>2023-07-14 'Midnight Scrapyard' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-14 'Midnight Expansion' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-14 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-14 'Enigma Corp High DPI' updated by Amazinite | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
 <br>2023-07-14 '-Omnis' updated by Darcy Manoel | category: [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)
 <br>2023-07-14 'Ultaka Invasion of Milky Way' updated by 1010Todd | category: [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)
-<br>2023-07-14 'AES Quarg' updated by Darcy Manoel | category: [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)
-<br>2023-07-14 'Mining Pinger' updated by Zoura | category: [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)
-<br>2023-07-14 'Fighter Factory' updated by 1010todd | category: [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits)
 <br>
 
 </td></tr></table>
@@ -2751,7 +2751,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Endless-Endless-Sky/icon.png' width='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
 Author: 1010Todd | [https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky)  
 Category: Overhauls  
 
@@ -6167,7 +6167,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Rymeilema Skylark/icon.png' width='100'></img><br>
 
 
-[Rymeilema.Skylark.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rymeilema.Skylark.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rymeilema%20Skylark/)  
+[Rymeilema.Skylark.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rymeilema.Skylark.zip) | 43.9 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rymeilema%20Skylark/)  
 Author: rymeilema | [https://github.com/rymeilema/rymeilema-skylark](https://github.com/rymeilema/rymeilema-skylark)  
 Category: Ships  
 
@@ -7207,7 +7207,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Lost in Midnight/icon.png' width='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.46 mb | 2023-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.46 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)  
 Category: Story  
 
@@ -7242,7 +7242,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Midnight Expansion/icon.png' width='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion)  
 Category: Story  
 
