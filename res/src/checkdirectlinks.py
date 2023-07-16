@@ -81,7 +81,7 @@ for entry in entries:
 			response = requests.head(directlink, allow_redirects=True)
 			response.raise_for_status()
 		except requests.exceptions.HTTPError as err:
-			print("ABORTING: directlink not reachable")
+			print("ERROR: directlink not reachable: " + directlink)
 			print(err)
 			continue
 		else: 
@@ -100,7 +100,7 @@ for entry in entries:
 						params = {'page': '1', 'per_page': '1'}
 						response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
 					except:
-						print("ABORTING: github api not reachable")
+						print("ERROR: github api not reachable: " + plug)
 						linklastmodified = "FALSE"
 						continue
 					else: # get last commit date and time
@@ -110,32 +110,43 @@ for entry in entries:
 						committime = dateandtime[19:27]
 						linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d').date()
 		if linksize != "FALSE":
-			if linksize >= 102400:
-				print("ABORTING: directlink is bigger than 100 mb")
+			if linksize >= 204800:
+				print("ABORTING: directlink is bigger than 200 mb")
 				continue
 		if linklastmodified != "FALSE":
 			if assetlastmodified != "FALSE":
 				datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
 				if datediff.days < 1: 
-					print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
+					print("", end="")
+					#print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
 				else:	
-					print("SUCCESS: linkfile is newer")
+					print("SUCCESS: linkfile is newer: " + pluginname)
 					with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
 						r = requests.get(directlink, allow_redirects=True)
 						file2.write(r.content)
-						print("SUCCESS: downloaded zip")
+						print("SUCCESS: downloaded zip" )
 			else:
-				print("no assetfile, must be a new plugin")
-				with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
+				print("no assetfile, must be a new plugin: " + pluginname)
+				with open("temp/new_plugin_" + pluginname + ".zip", "wb") as file2: # create zip file, naming it see if it a new one
 					r = requests.get(directlink, allow_redirects=True)
 					file2.write(r.content)
 					print("SUCCESS: downloaded zip")
 				
 # extracting zips
 listing = glob.glob("temp/*.zip")
-print("\nlast modified checks DONE, extracting zips now")
+print("\nlast modified checks DONE, extracting zips now\n")
+print(listing)
 for entry in listing:
 	# unzip all zips
+	print(entry)
+	if entry[:16] == "temp/new_plugin_": # check for different news generating
+		new_or_updated = "new"
+		shutil.move(entry, "temp/" + entry[16:])
+		entry = "temp/" + entry[16:]
+		print("\nnew plugin!")
+	else:
+		new_or_updated = "updated"
+		print("\nupdated plugin!")
 	with ZipFile(entry, 'r') as zObject:
 		zObject.extractall("temp/")
 		firstfolder = zObject.namelist()[0] # first folder inside zip, should be pluginname
@@ -143,7 +154,7 @@ for entry in listing:
 		ossep = entry.split(os.sep)
 		stripped = ossep[1]
 		stripped = stripped[:len(stripped)-4] # pluginname stripped from zip name
-		print("\n" + entry + " | extacted to: temp/" + firstfolder)
+		print(entry + " | extacted to: temp/" + firstfolder)
 		# check for same names of zip and first folder in zip
 		if stripped != firstfolder:
 			print("ERROR: mismatch between zipname and in-zip folder!")
@@ -152,23 +163,12 @@ for entry in listing:
 		if os.path.isdir(pathtoplugins + stripped):
 			shutil.rmtree(pathtoplugins + stripped) # delete old plugin
 		shutil.move("temp/" + stripped, pathtoplugins + stripped)
-	with open("res/news.txt", "r") as file1: 
+	with open("res/news.txt", "r") as file1: # reading old news
 		news = file1.readlines()
 	with open("res/news.txt", "w") as file1: # write to news file, newest on top, keep old contents
 		today = datetime.today().strftime('%Y-%m-%d')
-		with open("res/pluginlist/" + stripped + ".txt") as file2:
-			author = file2.readline()
-			author = author.replace("author=", "")
-			author = author.strip()
-			c = file2.readline()
-			c = file2.readline()
-			c = file2.readline()
-			c = c.replace("category=", "")
-			c = c.strip()
-			if c == "N/A":
-				c = "uncategorized"
-			c = "[" + c + "](" + webroot + indexfile + "#" + c + ")\n" # anchor link to category
-		news = [today + " '" + stripped + "' updated by " + author + " | category: " + c] + news
+		# writing date, stripped(pluginname) and new_or_update to news 
+		news = [today + " | " + stripped + " | " + new_or_updated + " <br>\n"] + news
 		file1.writelines(news)
 	# renaming zips to asset convention
 	withdots = stripped.replace(" ", ".") 
