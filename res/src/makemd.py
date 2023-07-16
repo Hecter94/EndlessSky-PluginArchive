@@ -1,10 +1,9 @@
 import os
 import requests
 from datetime import datetime
-import PIL
 from PIL import Image
 
-iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = updatecheck =""
+iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = updatecheck =""
 allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
 categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
 plist = []
@@ -27,6 +26,8 @@ with open("res/config.txt") as f:
 			pluginurl = line.split(" = ")[1]
 		if line.find("assetfullpath") == 0:	# i.e. assetfullpath = https://github.com/zuckung/test3/releases/download/Latest/
 			assetfullpath = line.split(" = ")[1]
+		if line.find("newsamount") == 0:	# i.e. newsamount = 20
+			newsamount = line.split(" = ")[1]
 			
 def replacevar(string): # replaces %variables% in header template with real values
 	if cat == "AllPlugins":
@@ -82,6 +83,7 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%webroot%", webroot)
 	string = string.replace("%indexfile%", indexfile)
 	string = string.replace("%news%", news)
+	string = string.replace("%newsamount%", newsamount)	
 	string = string.replace("%updatecheck%", updatecheck)	
 	if website == "N/A": # for prevent [N/A](N/A) links
 		websitecheck = "N/A"
@@ -159,11 +161,33 @@ tempcatup = temptempcat[:pos] # upper half of template category
 tempcatdown = temptempcat[pos +12:] # lower half of template string
 
 
-with open("res/news.txt", "r") as file1: # reading and formating lines
+# writing res/allnews.md and putting the amount  of news entries defined in the config.txt to the new variable
+with open("res/news.txt", "r") as file1:
 	newslist = file1.readlines()
-for i in range(10): # define amount of news to 10
-	if i <= len(newslist)-1:
-		news = news + newslist[i] + "<br>"
+# get all values for all news
+for each in  newslist: 
+	news_line = each.split(" | ") # 3 variables from the news file
+	ndate = news_line[0]
+	nname = news_line[1]
+	nnew_or_update = news_line[2].split(" ")[0]
+	with open(listfolder + nname + ".txt", "r") as file1: # 2 valriables from the listfile
+		nauthor = file1.readline().replace("author=", "").strip()
+		ncat = file1.readline()
+		ncat = file1.readline()
+		ncat = file1.readline().replace("category=", "").strip()
+	if ncat == "N/A":
+		ncat = "uncategorized"
+	# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
+	nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + indexfile + "#" + ncat + ")<br>\n"
+	allnews = allnews + nline
+with open("res/allnews.md", "w") as file1: # writing ALLNEWS.md
+	file1.writelines(allnews)
+split_str = "\n" # setting variable news to right format, to put into template
+splitted_news = allnews.split(split_str)
+part_news = splitted_news[:int(newsamount)]
+news = split_str.join(part_news)
+		
+
 
 # writing the md file
 with open("res/errorlog.txt", "w") as filerr: # resetting errorlog.txt
