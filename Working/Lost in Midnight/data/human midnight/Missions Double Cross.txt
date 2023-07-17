@@ -1554,8 +1554,6 @@ mission "Thraal: Moreau"
 				`	"You've got to be kidding!"`
 			scene "planet/station2k"
 			`	Thraal places the cover back on some recently repaired ciruits and says, "Would you like to meet them? I can arrange it." The Korath have been an implacable adversary. This could be a chance to establish peaceful relations with them. Before you respond, Thraal hails Gresku Fodar, the Korath station in this system, and speaks to them in their language. After a short exchange, he smiles at you reassuringly. "They're waiting."`
-	on fail
-		dialog `[MISSION FAILED]: The Shuttle Pod that requested assistance has been destroyed. If life were a game you could load a save file and try again.`
 	on visit
 		conversation "microbot defense death"
 	on complete
@@ -1583,9 +1581,10 @@ mission "Thraal: Moreau (Failed)"
 	source "Gresku Fodar"
 	to offer
 		has "Thraal: Moreau: failed"
-		not "Thraal: Moreau (Cleanup): declined"
+#		not "Thraal: Moreau (Cleanup): declined"
 	on offer
 		conversation "microbot defense death"
+# This mission still runs even with the cleanup because the station still has clearance after failing the mission.
 
 mission "Thraal: Moreau (Killed)"
 	landing
@@ -1593,13 +1592,14 @@ mission "Thraal: Moreau (Killed)"
 	source
 		not planet "Gresku Fodar"
 	to offer
-		has "Thraal: Moreau: failed"
-		not "Thraal: Moreau (Cleanup): declined"
+		never
+#		has "Thraal: Moreau: failed"
+#		not "Thraal: Moreau (Cleanup): declined"
 	on offer
 		set "Thraal: Moreau (Failed): offered"
 		set "Thraal: Moreau (Failed): declined"
 		fail
-
+# This mission is deprecated because the clearance from "Thraal Moreau" remains after the mission is failed.
 
 
 mission "Prisoner Bribe Offer (Job)"
