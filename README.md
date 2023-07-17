@@ -2,25 +2,29 @@
 
 
 # News
-(latest 10 entries):
+(latest 15 entries):
 <table><tr><td width=800>
 
-2023-07-15 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
-<br>2023-07-15 'Midnight Expansion' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-15 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-14 'Endless-Endless-Sky' updated by 1010Todd | category: [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)
-<br>2023-07-14 'Midnight Scrapyard' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-14 'Midnight Expansion' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-14 'Lost in Midnight' updated by MidnightPlugins | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-14 'Enigma Corp High DPI' updated by Amazinite | category: [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)
-<br>2023-07-14 '-Omnis' updated by Darcy Manoel | category: [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)
-<br>2023-07-14 'Ultaka Invasion of Milky Way' updated by 1010Todd | category: [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)
-<br>
+2023-07-16 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-15 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
+2023-07-15 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-15 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-14 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
+2023-07-14 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-14 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-14 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-14 | updated Plugin 'Enigma Corp High DPI' by Amazinite | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-14 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
+2023-07-14 | updated Plugin 'Ultaka Invasion of Milky Way' by 1010Todd | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
+2023-07-14 | updated Plugin 'AES Quarg' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
+2023-07-14 | updated Plugin 'Mining Pinger' by Zoura | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-14 | updated Plugin 'Fighter Factory' by 1010todd | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits)<br>
+2023-07-14 | updated Plugin 'AES Irm' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
 
 </td></tr></table>
 Provide a directlink to your zipped plugin and we do a daily check if it is newer than the one we host here.<br>
 
-[howto](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#automatic-updating) | [view all news](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/news.txt)
+[howto](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#automatic-updating) | [view all news](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/allnews.md)
 
 ---
 
@@ -193,7 +197,7 @@ If you provide the `directlink=` in the plugin-file at `res/pluginlist/`, then t
 
 The files in `res/pluginlist/` which are used to generate this README.md, have a line `directlink=`, where you can put a URL to your zipped plugin. The line should look like: `directlink=https://github.com/userxyz/esplugins/releases/download/Latest/myplugin.zip` or any other directly accessible webspace.
 
-This repository does an automated check for your directlink once a day(03:30 am utc) and if your plugin there is newer than the one hosted here, it updates it and puts it in the news box. Please read naming convention paragraph to prevent errors.
+This repository does an automated check for your directlink once a day(23:30 am utc) and if your plugin there is newer than the one hosted here, it updates it and puts it in the news box. Please read naming convention paragraph to prevent errors.
 
 If you have a single plugin GitHub repo (with the data folder in root), you can use the auto-generated zip file (green button) as a direct update link. You can fork the official plugin template repository at [https://github.com/endless-sky/plugin-template](https://github.com/endless-sky/plugin-template).
 
@@ -7242,7 +7246,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Midnight Expansion/icon.png' width='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion)  
 Category: Story  
 
