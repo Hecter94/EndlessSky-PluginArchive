@@ -824,7 +824,7 @@ mission "Midnight Scum & Villainy 1B"
 
 mission "Midnight Scum & Villainy 2"
 	minor
-	deadline
+	deadline 14 
 	name "Scum & Villainy"
 	description "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"
 	source Sunracer
@@ -833,6 +833,7 @@ mission "Midnight Scum & Villainy 2"
 			has "Midnight Scum & Villainy 1A: done"
 			has "Midnight Scum & Villainy 1B: done"
 	on offer
+		set "Midnight Scum & Villainy 2 patched"
 		conversation
 			branch lia
 				has "Midnight Scum & Villainy 1B: done"
@@ -924,15 +925,27 @@ mission "Midnight Scum & Villainy 2"
 		ship "Wretched Hive" "Scum & Villainy"
 		dialog "The Scum & Villainy has been destroyed. Return to <destination> to collect the reward."
 	on fail
-		dialog "[MISSION FAILED] One or both of your fellow captains was lost during this mission. If life were a game, you could load a save file and try again."
+		dialog "[MISSION FAILED] Either one or both of your fellow captains was lost during this mission or too much time passed and the Scum & Villainy escaped. If life were a game, you could load a save file and try again."
 	on complete
 		payment 1000000
+		clear "Midnight Scum & Villainy 2 patched"
 		log "People" "Jon Silo" `Captain of the Millenium Eagle, an old Starwellian freighter making cargo runs through the Northern Passage. He joined you on a bounty hunt for the Wretched Hive known as "Scum & Villainy".`
 		log "People" "Lia Skystrider" `Captain of the Tomboy Princess, a Star Queen ferrying passengers between the Paradise worlds and the core. She joined you on a bounty hunt for the Wretched Hive known as "Scum & Villainy".`
 		conversation
 			scene "thumbnail/AESmisc proto_freighter"
 			`"The Millenium Eagle isn't a warship, it's a classic Starwellian freighter from before the Syndicate..." Jon was boasting about his ship to Lia when you find them at the spaceport.`
 			`	She waves to you, "Hi <first>, thanks for your help. Maybe travel through the Northern Passage will be a little safer now." Having collected your share of the three million credit reward, you say goodbye to both of them.`
+
+mission "Midnight Scum & Villainy 2 Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Scum & Villainy 2: failed"
+		not "Midnight Scum & Villainy 2 patched"
+	on offer
+		clear "Midnight Scum & Villainy 2: offered"
+		clear "Midnight Scum & Villainy 2: failed" 
+		fail
 
 mission "Midnight Venomous Fang 1"
 	minor
