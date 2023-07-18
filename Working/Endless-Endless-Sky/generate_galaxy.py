@@ -1584,10 +1584,11 @@ def galaxy_write_systems(galaxy,galaxy_center_x,galaxy_center_y,galaxy_image):
         except AttributeError:
             galaxy_output.write('\tgovernment ' + '"' + str('Uninhabited') + '"' + "\n")
 
-        galaxy_output.write('\tattributes ')
-        for attr in system.attributes:
-            galaxy_output.write(f'"{attr}" ')
-        galaxy_output.write('\n')
+        if len(system.attributes):
+            galaxy_output.write('\tattributes ')
+            for attr in system.attributes:
+                galaxy_output.write(f'"{attr}" ')
+            galaxy_output.write('\n')
 
         #habitable
         galaxy_output.write(f'\thabitable {system.habitable}' + "\n")

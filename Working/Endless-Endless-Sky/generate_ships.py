@@ -935,7 +935,7 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                 if outfitOK:
                     if debugMessage:
                         print("Downsized Weapon")
-                    ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+                    ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=True)
                 if not outfitOK and ship.isWarship:
                     weaponSpaceAva = shipstats['outfit sp'] - outfitspaceRequired
                     if weaponSpaceAva <= 0:
@@ -1082,11 +1082,12 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
     #==================TURN CHECK
     turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
     insaneturnthreshold = 300
-    if turn > insaneturnthreshold:
+    while (turn > insaneturnthreshold):
         newoutfitlist = ship.outfits_list
         print("Turn too high, refitting..")
         for outfit in ship.outfits_list:
             if turn > insaneturnthreshold:
+                #Find engine outfit and install smaller pair or just smaller steering.
                 if outfit.turn > 0 and outfit.thrust > 0:
                     nosmaller = False
                     oldenginenum = enginelist.index(outfit.name)
@@ -1095,17 +1096,20 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                     except IndexError:
                         nosmaller = True
                     if not nosmaller:
-                        target = ship.outfits_list.index(outfit)
-                        newoutfitlist.pop(target)
-                        shipstats['energy use'] -= outfit.thrust_ener - newengine.thrust_ener
-                        shipstats['energy use'] -= outfit.turn_ener - newengine.turn_ener
-                        shipstats['engine heat'] -= outfit.thrust_heat - newengine.thrust_heat
-                        shipstats['engine heat'] -= outfit.turn_heat - newengine.turn_heat
-                        shipstats['turn'] -= outfit.turn - newengine.turn
-                        shipstats['thrust'] -= outfit.thrust - newengine.thrust
-                        shipstats['outfit sp'] += outfit.outfit_space - newengine.outfit_space
-                        turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
-                        newoutfitlist.append(newengine)
+                        ship_update(faction,ship,shipstats,outfit,"uninstall",weapon=False)
+                        ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+                        if False:
+                            target = ship.outfits_list.index(outfit)
+                            newoutfitlist.pop(target)
+                            shipstats['energy use'] -= outfit.thrust_ener - newengine.thrust_ener
+                            shipstats['energy use'] -= outfit.turn_ener - newengine.turn_ener
+                            shipstats['engine heat'] -= outfit.thrust_heat - newengine.thrust_heat
+                            shipstats['engine heat'] -= outfit.turn_heat - newengine.turn_heat
+                            shipstats['turn'] -= outfit.turn - newengine.turn
+                            shipstats['thrust'] -= outfit.thrust - newengine.thrust
+                            shipstats['outfit sp'] += outfit.outfit_space - newengine.outfit_space
+                            turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
+                            newoutfitlist.append(newengine)
                 elif outfit.turn > 0 and not outfit.thrust > 0:
                     nosmaller = False
                     oldenginenum = steeringlist.index(outfit)
@@ -1114,16 +1118,20 @@ def outfit_ship(faction,ship): #TODO: Space calc is wrong, sometimes too much so
                     except IndexError:
                         nosmaller = True
                     if not nosmaller:
-                        target = ship.outfits_list.index(outfit.name)
-                        newoutfitlist.pop(target)
-                        shipstats['energy use'] -= outfit.turn_ener - newengine.turn_ener
-                        shipstats['engine heat'] -= outfit.turn_heat - newengine.turn_heat
-                        shipstats['turn'] -= outfit.turn - newengine.turn
-                        shipstats['thrust'] -= outfit.thrust - newengine.thrust
-                        shipstats['outfit sp'] += outfit.outfit_space - newengine.outfit_space
-                        turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
-                        newoutfitlist.append(newengine)
+                        ship_update(faction,ship,shipstats,outfit,"uninstall",weapon=False)
+                        ship_update(faction,ship,shipstats,newOutfit,"Install",weapon=False)
+                        if False:
+                            target = ship.outfits_list.index(outfit.name)
+                            newoutfitlist.pop(target)
+                            shipstats['energy use'] -= outfit.turn_ener - newengine.turn_ener
+                            shipstats['engine heat'] -= outfit.turn_heat - newengine.turn_heat
+                            shipstats['turn'] -= outfit.turn - newengine.turn
+                            shipstats['thrust'] -= outfit.thrust - newengine.thrust
+                            shipstats['outfit sp'] += outfit.outfit_space - newengine.outfit_space
+                            turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
+                            newoutfitlist.append(newengine)
                 #shipstats['outfit sp'] += outfit.outfit_space
+        turn = (shipstats['turn']*60)/(ship.mass+(ship.outfit_space-shipstats['outfit sp'])+ship.cargo_space)
         ship.outfits_list = newoutfitlist
     if debugMessage:
         print(f"SHIPGEN: AftTurn, spaceleft:{shipstats['outfit sp']}, idleheat/max{round(shipstats['idle heat'],1)*60}/{ship_max_heat*60}, eneruse/store{shipstats['energy use']*60}/{shipstats['energy storage']*60}")
