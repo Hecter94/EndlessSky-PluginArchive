@@ -4,7 +4,7 @@ mission "MGF: Order Alcazar"
 	landing
 	source "Shangri-La"
 	to offer
-		"credits" >= 4000000000
+		"credits" >= 2000000000
 		has "MGF: Polaris Alcazar: active"
 	on offer
 		conversation
@@ -17,24 +17,24 @@ mission "MGF: Order Alcazar"
 					defer
 			branch `warhero`
 				has "main plot completed"
-			`	You eventually find your way to order the battlestation for yourself. While they won't allow private ownership of the battlestation maybe you can bribe your way to it with enough money, which will set you back about 800,000,000 credits`
+			`	You eventually find your way to order the battlestation for yourself. While they won't allow private ownership of the battlestation maybe you can bribe your way to it with enough money, which will set you back about 1,600,000,000 credits`
 			choice
 				`	(Bribe to buy it.)`
 				`	(No, you've changed your mind.)`
 					defer
 			action
-				payment -800000000
+				payment -1600000000
 			`	When dealing with the Syndicates money is always the solution, you managed to bribe the authorities to build it for you. The station will take about a year to build, they'll message you when it's ready.`
 				accept
 			label `warhero`
-			`	You eventually find your way to order the battlestation for yourself. Though while they normally won't allow private ownership of the battlestation, being a war hero you can get a pass. You still have to pay for it however, the price will be 400,000,000 credits.`
+			`	You eventually find your way to order the battlestation for yourself. Though while they normally won't allow private ownership of the battlestation, being a war hero you can get a pass. You still have to pay for it however, the price will be 800,000,000 credits.`
 			choice
 				`	(Place the order.)`
 					
 				`	(No, you've changed your mind.)`
 					defer
 			action
-				payment -400000000
+				payment -800000000
 			`	The station will take about a year to build, they'll message you when it's ready.`
 				accept
 	on accept
@@ -905,6 +905,8 @@ event "mgf: nordlin navy yard upgrade done"
 				offset 180
 				period 13.5253
 
+#========================================
+
 mission "MGF: MHL Combat Fleet"
 	landing
 	invisible
@@ -990,6 +992,87 @@ event "mgf: navy attack antimhl bountyhunter"
 		"attitude toward"
 			"MGF: Bounty Hunter (AntiMHL)" -.1
 
+mission "MGF: Navy Respond to AntiMHL Bounty Hunter 2"
+	landing
+	invisible
+	to offer
+		has "event: mgf: navy attack antimhl bountyhunter"
+	on offer
+		event "mgf: navy attack antimhl bountyhunter 2" 7
+		event "mgf: reduced antimhl activity" 30
+		fail
+
+event "mgf: navy attack antimhl bountyhunter 2"
+	system Rutilicus
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+
+	system "Kaus Australis"
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+	system Peacock
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+	system Ascella
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+	system Rasalhague
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+	system Cebalrai
+		add fleet "MGF: Navy CounterBH Task Force" 18000
+
+fleet "MGF: Navy CounterBH Task Force"
+	government "Republic"
+	names "republic capital"
+	fighters "republic fighter"
+	cargo 3
+	personality
+		heroic opportunistic
+	variant 20
+		"Spetum Class"
+		"Lance" 20
+		"A-14F Rondel" 60
+		"Combat Drone" 24
+		"Culverin Class" 2
+		"Lance" 4
+		"Carrier" 2
+		"Lance" 4
+		"A-14F Rondel" 4
+		"Combat Drone" 12
+		"Cruiser" 2
+		"Combat Drone" 8
+		"Frigate" 4
+		"Rainmaker" 6
+		"Gunboat" 4
+
+event "mgf: reduced antimhl activity"
+	system Zubeneschamali
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Zubenelgenubi
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Sabik
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Kornephoros
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Wei
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Alioth
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Holeb
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Rutilicus
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+
+	system Tarazed
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Dabih
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system "Kaus Australis"
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Peacock
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Ascella
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Rasalhague
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+	system Cebalrai
+		add fleet "Large Bounty Hunters (AntiMHL)" 50800
 
 #===========================NGK
 
@@ -1295,6 +1378,46 @@ event "mgf: full kaga deployed"
 		add fleet "Large NGK-Syndicate Border Patrol" 60000
 	system Polaris
 		add fleet "Large NGK-Syndicate Border Patrol" 60000
+
+mission "MGF: Yamato Development"
+	landing
+	invisible
+	to offer
+		has "event: mgf: full kaga deployed"
+	on offer
+		event "mgf: early yamato deployed" 380
+
+event "mgf: early yamato deployed"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"H-BS140 Yamato"
+	outfitter "MJK Heavy Industries Advanced Exclusive"
+		"Type-83 Yoden Torpedo"
+		"Type-83 Yoden Torpedo Launcher"
+		"Q4L Pulse Anti-Missile"
+		"T2L Pulse Turret"
+		"T2-A-T Shock Turret"
+	fleet "MJK Advanced Defense Fleet"
+		remove variant 50
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced, Itano)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga"
+			"S-FS06 Reisen (Refined I)" 90
+
+		add variant 50
+			"H-BS140 Yamato (Early)"
+			"S-FS06 Reisen (Refined I)" 12
+			"Leviathan (NGK Escort, Turret Upgrade)" 6
+			"AP-7 Sentinel (NGK Escort)" 3
+			"E-VC14 Zuiho (Advanced, Itano)" 4
+			"S-FS06 Reisen (Refined I)" 40
+			"L-VC28 Zuikaku (Advanced)"  2
+			"S-FS06 Reisen (Refined I)" 40
+			"F-VC56 Kaga"
+			"S-FS06 Reisen (Refined I)" 90
 
 #=============================ESPION
 

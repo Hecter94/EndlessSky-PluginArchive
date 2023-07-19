@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-07-18 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
+2023-07-18 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
 2023-07-17 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-16 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-15 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
@@ -18,8 +20,6 @@
 2023-07-14 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
 2023-07-14 | updated Plugin 'Ultaka Invasion of Milky Way' by 1010Todd | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
 2023-07-14 | updated Plugin 'AES Quarg' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
-2023-07-14 | updated Plugin 'Mining Pinger' by Zoura | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
-2023-07-14 | updated Plugin 'Fighter Factory' by 1010todd | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits)<br>
 
 </td></tr></table>
 Provide a directlink to your zipped plugin and we do a daily check if it is newer than the one we host here.<br>
@@ -2755,7 +2755,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Endless-Endless-Sky/icon.png' width='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.1 mb | 2023-07-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/)  
 Author: 1010Todd | [https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky)  
 Category: Overhauls  
 
@@ -5564,7 +5564,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Mega Freight/icon.png' width='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 82.97 mb | 2023-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/)  
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 174.14 mb | 2023-07-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/)  
 Author: 1010todd | [https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight)  
 Category: Ships  
 

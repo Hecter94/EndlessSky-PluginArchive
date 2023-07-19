@@ -181,7 +181,7 @@ def create_battery(faction,fileout=''):
             battery_output.write(f'\tdescription "{faction.name} T{faction.tier:.1f} Battery"\n')
             battery_output.write('\n')
 
-            outfitter_output.write(f'\t"{battery_name_final}"' + '"\n')
+            outfitter_output.write(f'\t"{battery_name_final}"' + '\n')
 
             outfit = class_Outfit(battery_name_final,'Power',battery_cost,battery_thumb,battery_outfit,battery_outfit)
             outfit.energy_cap = battery_energy
