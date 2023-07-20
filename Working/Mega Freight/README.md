@@ -3,7 +3,7 @@
 
 ![1](https://user-images.githubusercontent.com/19187937/176770486-96d0ba66-0464-4557-ab3b-ef5c43d44505.PNG)
 
-Adds several ships for you and various factions to use adding more variety to the galaxy(mostly just human space for now).
+Adds several ships for you and various factions to use adding more variety to the galaxy as well as universe progression releasing new ships and technologies dependent and independent of storyline (mostly just human space for now).
 * Faction with new ships: Merchant, Pirate, Republic, Syndicate, Free Worlds, Hai, Wanderer
 
 Summary of what this plugin adds:
@@ -13,7 +13,7 @@ Over 50 ships:
 * 4 Transports
 * 3 Space Liner
 * 10+ Utility (Carriers, miners, etc.)
-* 17+ Warships + 2 Superheavy (Purpose-built and modifications of existing.)
+* 17+ Warships + 2 Superheavy (Purpose-built and modification of existing.)
 * 1 Battlestation
 * 9 Fighters, Drones, and other carried ships (Utility and Combat)
 
@@ -23,11 +23,16 @@ And other things:
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
 * New sub-factions often with unique variants, weapons, or even ships (Espion Mining, Rangphenn, Ugyr, Jack's, Rakin, Black Death, Crossguard, Sulso, Maryhal, NGK, Core Food, Core Nuclear, Solacer, Luna Winery).
-* NPC fleets using the new ships. (And make pirates and merchants get stronger over time.)
+* NPC fleets using the new ships.
 * Persistent NPC (Battlestations in 3 systems, 2 of which can respawn after some time.)
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
 * A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea)
+* Gradual progression of the universe both dependent and independent of story missions. 
+  * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
+  * New ships and technologies (time and/or story missions)
+  * Station constructions.
+  * Limited time events that will be resolved by governments after a while.
 
 Requires 0.10.1 or above (Will work with 0.10.0 as of 2023-05-31 but just to be safe.)
 
@@ -35,6 +40,7 @@ Requires 0.10.1 or above (Will work with 0.10.0 as of 2023-05-31 but just to be 
 
 To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you ~~command your ships to target mineable asteroids~~(In vanilla now) and distribute fuel among your fleet with fighters. The fork also provides other gameplay improvements and bug fixes.
 
+(Possibly outdated as of 19/07/2023)
 Link: https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins
 
 This plugin have a few debug functionality and unobtainable ships which can be unlocked with Omnis cheat/developer plugin.
