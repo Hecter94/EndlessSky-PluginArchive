@@ -6,10 +6,6 @@ import shutil
 from zipfile import ZipFile
 
 
-# check for local testing
-if os.getcwd() == "/storage/emulated/0/Download/mgit/test3/res/src":
-	os.chdir("../../")
-
 # read paths and files
 with open("res/config.txt") as f:
 	for line in f:
@@ -29,17 +25,16 @@ with open("res/config.txt") as f:
 		if line.find("assetfullpath") == 0:	# i.e. assetfullpath = https://github.com/zuckung/test3/releases/download/Latest/
 			assetfullpath = line.split(" = ")[1]
 
-			
-if os.path.isdir("temp") == False: # creating temp directory
+# creating temp directory			
+if os.path.isdir("temp") == False: 
 	os.mkdir("temp")						
 
-
+# getting username and token for login to github api(to increase request limit from 60/hr to 5000/hr)
 username = os.getenv("GITHUB_ACTOR")
 token = os.getenv("github_token")
 
-
-
-entries = os.listdir(listfolder) # for all listfiles
+# reading listfiles and check for updates
+entries = os.listdir(listfolder)
 entries.sort(key=str.lower)		
 for entry in entries:
 	with open(listfolder + entry, "r") as file1:
@@ -47,20 +42,13 @@ for entry in entries:
 		x = file1.readline()
 		x = file1.readline()
 		directlink = x.replace("directlink=","")
-	if directlink == "N/A\n": # when there is a direct link
+	if directlink == "N/A\n": # when there is no direct link go to next file
 		continue
 	else:
 		directlink = directlink.strip()
 		pluginname = entry[:len(entry) -4] # removes '.txt'
-		print("\ndirectlink found for: " + pluginname)
-		withdots = pluginname.replace(" ", ".") # getting asset file name
-		withdots = withdots.replace("'", ".")
-		withdots = withdots.replace(",", ".") 
-		withdots = withdots.replace("(", ".") 
-		withdots = withdots.replace(")", ".") 
-		withdots = withdots.replace("&", ".")  
-		withdots = withdots.replace("...", ".")
-		withdots = withdots.replace("..", ".")
+		 # getting asset file name
+		withdots = pluginname.replace(" ", ".").replace("'", ".").replace(",", ".").replace("(", ".").replace(")", ".").replace("&", ".").replace("...", ".").replace("..", ".")
 		if withdots[len(withdots)-1] == ".":
 			withdots = withdots[:len(withdots)-1]
 		directzip = directlink.split(os.sep)
@@ -96,7 +84,7 @@ for entry in entries:
 					author = urllist[3]
 					plug = urllist[4]
 					linksize = "FALSE"
-					try: # check gifhub api for last commit
+					try: # check github api for last commit
 						params = {'page': '1', 'per_page': '1'}
 						response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
 					except:
@@ -118,67 +106,73 @@ for entry in entries:
 				datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
 				if datediff.days < 1: 
 					print("", end="")
-					#print("ABORTING: assetfile is newer | link: " + str(linklastmodified) + " asset: " + str(assetlastmodified) + " datediff: " + str(datediff.days))
 				else:	
-					print("SUCCESS: linkfile is newer: " + pluginname)
+					print("SUCCESS: linkfile is newer: " + pluginname + "\n")
 					with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
 						r = requests.get(directlink, allow_redirects=True)
 						file2.write(r.content)
-						print("SUCCESS: downloaded zip" )
 			else:
-				print("no assetfile, must be a new plugin: " + pluginname)
+				print("no assetfile, must be a new plugin: " + pluginname + "\n")
 				with open("temp/new_plugin_" + pluginname + ".zip", "wb") as file2: # create zip file, naming it see if it a new one
 					r = requests.get(directlink, allow_redirects=True)
 					file2.write(r.content)
-					print("SUCCESS: downloaded zip")
 				
 # extracting zips
 listing = glob.glob("temp/*.zip")
-print("\nlast modified checks DONE, extracting zips now\n")
-print(listing)
+print("\nlast modified checks DONE, extracting zips now")
 for entry in listing:
-	# unzip all zips
-	print(entry)
-	if entry[:16] == "temp/new_plugin_": # check for different news generating
+	# check for different news generating, new or updated plugin
+	if entry[:16] == "temp/new_plugin_":
 		new_or_updated = "new"
-		shutil.move(entry, "temp/" + entry[16:])
+		shutil.move(entry, "temp/" + entry[16:]) # cut off the 'new_plugin_'
 		entry = "temp/" + entry[16:]
-		print("\nnew plugin!")
+		print("\nnew plugin:", end=" " )
 	else:
 		new_or_updated = "updated"
-		print("\nupdated plugin!")
+		print("\nupdated plugin:", end=" ")
+	# get names
+	zip_name = entry.split(os.sep)[1]
+	plugin_name = zip_name[:len(zip_name) -4]
+	withdots = zip_name.replace(" ", ".").replace("'", ".").replace(",", ".").replace("(", ".").replace(")", ".").replace("&", ".").replace("...", ".").replace("..", ".")
+	if withdots[len(withdots)-1] == ".":
+		withdots = withdots[:len(withdots)-1]
+	print(plugin_name +  " " + zip_name + " " + withdots)
+	# extract zip now
+	os.mkdir("temp/" + plugin_name)
 	with ZipFile(entry, 'r') as zObject:
-		zObject.extractall("temp/")
+		zObject.extractall("temp/" + plugin_name + "/")
 		firstfolder = zObject.namelist()[0] # first folder inside zip, should be pluginname
-		firstfolder = firstfolder[:len(firstfolder) -1]
-		ossep = entry.split(os.sep)
-		stripped = ossep[1]
-		stripped = stripped[:len(stripped)-4] # pluginname stripped from zip name
-		print(entry + " | extacted to: temp/" + firstfolder)
-		# check for same names of zip and first folder in zip
-		if stripped != firstfolder:
-			print("ERROR: mismatch between zipname and in-zip folder!")
-			shutil.move("temp/" + firstfolder, "temp/" + stripped)
-			print("temp/" + firstfolder + " | renamed to: temp/" + stripped)
-		if os.path.isdir(pathtoplugins + stripped):
-			shutil.rmtree(pathtoplugins + stripped) # delete old plugin
-		shutil.move("temp/" + stripped, pathtoplugins + stripped)
+	firstfolder = firstfolder[:len(firstfolder) -1]
+	print(entry + " | extracted to: temp/" + firstfolder)
+	# check for correct folder structer and correct it
+	if plugin_name != firstfolder:
+		print("ERROR: mismatch between zipname and in-zip folder!")
+		shutil.move("temp/"+ plugin_name + "/" + firstfolder, "temp/" + plugin_name + "/" + plugin_name)
+		print(firstfolder + " | renamed to: " + plugin_name)
+		sub_folder = os.listdir("temp/" + plugin_name + "/" + plugin_name) 
+	for each in sub_folder:
+		if each.lower() == "data": 
+			print("DATA FOLDER FOUND, moving plugin to plugin folder")
+			break
+		elif each.lower() == plugin_name.lower():
+			print("SUBFOLDER FOUND, clearing structure and moving plugin to plugin folder")
+			shutil.move("temp/" + plugin_name + "/" + plugin_name + "/" + each + "/", "temp/" + plugin_name + "/" + plugin_name + "X/")
+			shutil.rmtree("temp/" + plugin_name + "/" + plugin_name )
+			shutil.move("temp/" + plugin_name + "/" + plugin_name + "X/", "temp/" + plugin_name + "/" + plugin_name + "/")
+			break		
+	# create new zip with correct paths
+	shutil.make_archive("temp/" + plugin_name, 'zip', "temp/" + plugin_name + "/")
+	# delete old plugin folder, and move plugin to plugin folder		
+	if os.path.isdir(pathtoplugins + plugin_name): 
+		shutil.rmtree(pathtoplugins + plugin_name) 
+	shutil.move("temp/" + plugin_name + "/" + plugin_name, pathtoplugins + plugin_name)		
+	# renaming zips to asset convention
+	shutil.move("temp/" + zip_name, "temp/" + withdots)
+	#generating news
 	with open("res/news.txt", "r") as file1: # reading old news
 		news = file1.readlines()
 	with open("res/news.txt", "w") as file1: # write to news file, newest on top, keep old contents
 		today = datetime.today().strftime('%Y-%m-%d')
 		# writing date, stripped(pluginname) and new_or_update to news 
-		news = [today + " | " + stripped + " | " + new_or_updated + " <br>\n"] + news
+		news = [today + " | " + plugin_name + " | " + new_or_updated + " <br>\n"] + news
 		file1.writelines(news)
-	# renaming zips to asset convention
-	withdots = stripped.replace(" ", ".") 
-	withdots = withdots.replace("'", ".")
-	withdots = withdots.replace(",", ".") 
-	withdots = withdots.replace("(", ".") 
-	withdots = withdots.replace(")", ".") 
-	withdots = withdots.replace("&", ".") 
-	withdots = withdots.replace("...", ".")
-	withdots = withdots.replace("..", ".")
-	if withdots[len(withdots)-1] == ".":
-		withdots = withdots[:len(withdots)-1]
-	shutil.move(entry, "temp/" + withdots + ".zip")

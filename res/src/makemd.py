@@ -1,9 +1,10 @@
+#pylint:disable=E0602
 import os
 import requests
 from datetime import datetime
 from PIL import Image
 
-iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = updatecheck =""
+iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = pluginissues = updatecheck =""
 allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
 categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
 plist = []
@@ -84,6 +85,7 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%indexfile%", indexfile)
 	string = string.replace("%news%", news)
 	string = string.replace("%newsamount%", newsamount)	
+	string = string.replace("%pluginissues%", pluginissues)
 	string = string.replace("%updatecheck%", updatecheck)	
 	if website == "N/A": # for prevent [N/A](N/A) links
 		websitecheck = "N/A"
@@ -99,6 +101,11 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%pluginnameurl%", pluginnameurl)	
 	string = string.replace("%description%", description)
 	return string
+				
+# reading the plugin issues from plugin_issues.txt	
+with open("res/plugin_issues.txt") as file1:
+	pluginissues = file1.read()
+				
 				
 # counting categories of files in  pluginlistfolder and create a list object with
 entries = os.listdir(pathtoplugins)
@@ -170,19 +177,22 @@ for each in  newslist:
 	ndate = news_line[0]
 	nname = news_line[1]
 	nnew_or_update = news_line[2].split(" ")[0]
-	with open(listfolder + nname + ".txt", "r") as file1: # 2 valriables from the listfile
-		nauthor = file1.readline().replace("author=", "").strip()
-		ncat = file1.readline()
-		ncat = file1.readline()
-		ncat = file1.readline().replace("category=", "").strip()
-	if ncat == "N/A":
-		ncat = "uncategorized"
-	# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
-	nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + indexfile + "#" + ncat + ")<br>\n"
+	if os.path.isfile(listfolder + nname + ".txt"):
+		with open(listfolder + nname + ".txt", "r") as file1: # 2 valriables from the listfile
+			nauthor = file1.readline().replace("author=", "").strip()
+			ncat = file1.readline()
+			ncat = file1.readline()
+			ncat = file1.readline().replace("category=", "").strip()
+		if ncat == "N/A":
+			ncat = "uncategorized"
+		# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
+		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + indexfile + "#" + ncat + ")<br>\n"
+	else: # no listfile found, plugin must got deleted or renamed
+		nline = ndate + " | " + nnew_or_update + " Plugin " + nname + " | Plugin got deleted or renamed <br>\n"
 	allnews = allnews + nline
-with open("res/allnews.md", "w") as file1: # writing ALLNEWS.md
+with open("res/allnews.md", "w") as file1: # writing allnews.md
 	file1.writelines(allnews)
-split_str = "\n" # setting variable news to right format, to put into template
+split_str = "\n" # setting variable news to right format and amount, to put into template
 splitted_news = allnews.split(split_str)
 part_news = splitted_news[:int(newsamount)]
 news = split_str.join(part_news)
@@ -190,8 +200,6 @@ news = split_str.join(part_news)
 
 
 # writing the md file
-with open("res/errorlog.txt", "w") as filerr: # resetting errorlog.txt
-	filerr.writelines("header request error log:\n")
 with open(indexfile, "w") as file1:
 	temphead = replacevar(temphead)
 	temphead = replacevarp(temphead)
@@ -245,7 +253,6 @@ with open(indexfile, "w") as file1:
 						iconpng = "<img src='"+ iconpath + "/icon.png' width='100'></img><br>\n"
 				else:
 					iconpng = ""
-				
 				# get last modified date and size from the assetfiles
 				withdots = pluginname.replace(" ", ".") 
 				withdots = withdots.replace("'", ".")
@@ -264,8 +271,6 @@ with open(indexfile, "w") as file1:
 					print(err)
 					lastmodified = "N/A"
 					size = "N/A" 
-					with open("res/errorlog.txt", "a") as filerr:
-						filerr.writelines(str(err) + " \n")
 				else:
 					modif = response.headers['Last-Modified'] # get last modified date
 					datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
