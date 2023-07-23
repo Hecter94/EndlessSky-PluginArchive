@@ -1,0 +1,217 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+# Hack to launch to orbit after a delivery.
+mission "Complete PP delivery"
+	name "Finish delivery and launch"
+	repeat
+	landing
+	to offer
+		has "PP delivery finished"
+	on offer
+		clear "PP delivery finished"
+		conversation
+			`Now that you are finished with your delivery you launch your ship back into orbit.`
+				flee
+
+
+
+mission "PP initial"
+	name "Delivery to an isolated group on <planet>."
+	description "Jonah asked you to travel to <destination> and deliver <cargo> to a remote community without exposing the location of their settlement to the Pirate Warlords."
+	minor
+	cargo Clothing 20 30
+	clearance
+	infiltrating
+	blocked "You see Jonah in the spaceport. He suggests he has a mission for you, but you'd need <capacity> to accept it."
+	source
+		attributes "north pirate"
+	destination
+		attributes "north pirate"
+		not attributes station
+		distance 2 10
+	to offer
+		has "born in the Pirate Planets"
+		random < 30
+		"combat rating" > 50
+		"reputation: Pirate Planets" > 15
+		"net worth" > 1000000
+	npc evade
+		government "Pirate Warlords"
+		personality forbearing waiting surveillance mute
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+	on offer
+		conversation
+			`You hear your name called from a stall selling skewered meat as you maneuver through the spaceport. You turn and see Jonah's scarred visage leering, or is he smiling?, at you from under the awning.`
+			choice
+				`	Keep going and pretend you didn't see him.`
+					decline
+				`	"Jonah! It's good to see you."`
+			`	"How've you been, <first>?" he asks. "Settling into life as a star captain, I hope? What have you been up to?"`
+			choice
+				`	"I can't complain."`
+					goto "no complaints"
+				`	"Just trying to keep those Republic bastards off my back."`
+					goto republic
+				`	"Always trying to make money. There never seem to be enough credits."`
+					goto credits
+			label "no complaints"
+			`	"Good. Say, I've got a mission I don't have the time to take care of myself. Are you interested?"`
+				goto mission
+			label republic
+			`	Jonah chuckles. "Aren't we all."`
+			`	"They're worse than the raiders," you say. "At least the raiders are honest about what they're doing. 'We regret that it is our duty to destroy you?' Seriously? Who says that?"`
+			`	"Most of them are jackasses," Jonah agrees. "There are a few good ones, though."`
+			`	"Huh. I'll believe that when I meet one and he doesn't try to blow me away on sight."`
+			`	"Maybe someday you'll get your chance. But I'm glad to hear you still consider yourself a native of the Pirate planets."`
+			`	"Yeah? Why is that?"`
+			`	"I have a mission for you, if you're interested," Jonah says.`
+				goto mission
+			label credits
+			`	Jonah smiles his gruesome smile. "Don't I know it! You're not doing too badly for yourself, though. Pretty soon you'll be wealthy enough you could leave us and buy yourself a place among the Republic merchant class if you wanted to, I expect. I hope you haven't forgotten there are other things in this galaxy besides credits, though."`
+			choice
+				`	Yeah, it's trite but true, money isn't everything.`
+					goto "not just money"
+				`	No, actually everything does come down to money in the end.`
+			`	"Things worth more than money?" you say. "Yeah, I know the shtick, but I hadn't expected to hear it from you. I always figured that was something people said to make themselves feel better about not having the credits they want."`
+			`	"I'm sorry to hear you say that. I take it you wouldn't be interested a mission that's not just about the money?"`
+				goto mission
+			label "not just money"
+			`	"Other things than credits?" you ask, feigning shock. "And you call yourself a star captain! No, you're right though. Credits are important but they're not everything."`
+			`	"I was hoping you'd say that. I have a mission for you, if you're interested."`
+			label mission
+			choice
+				`	"What is it?"`
+			`	"There's a small community on <planet> that I've been in contact with. They're refugees, really. The warlord who controlled their village is especially brutal. He ran short on funds and decided to make it up by doubling their taxes. When they couldn't pay he killed every firstborn in the community. Very biblical of him."`
+			`	"Biblical?" you ask.`
+			`	"Nevermind, it's an ancient text. Anyway, I heard about the incident from a, ah," Jonah hesitates. "A friend. So I got in touch with the villagers and helped them find a place out of reach of their old warlord where they could set up a new settlement. Problem is, <planet> is like the rest of the Pirate planets: the only real infrastructure is what the warlords themselves provide. They're free, and doing well, considering, but there are some things they can't provide for themselves. That's where you come in." Jonah stops and looks at you."`
+			choice
+				`	"Go on."`
+				`	"Sorry, Jonah, but I think you'll need to find someone else for this job."`
+					decline
+			`	"Right now they particularly need <commodity>. I've helped them set up a credit account with the Republic banks and they have a bit of money, but it's not much. They can afford to pay <payment> for delivery. I've got the cargo set aside and can load it on your ship immediately. If you take the job I'll give you instructions on how to find them. You make delivery and they'll give you a credit chit with a confirmation number. Enter the number into your ship computer and your account will be credited with <payment>. It's a bit more complicated than a drop-off at the port, but that's because these folks aren't hooked up to the banking network."`
+			`	"I see," you say.`
+			`	"It's less than the going rate, I know, but you'd be doing it for a good cause. You in?"`
+			choice
+				`	"Sure."`
+				`	"Charity work isn't for me, I'm afraid. I wish you luck, though."`
+					decline
+			`	"One more thing before you agree. It's vital that the Warlords not find the location of the settlement, if they do they'll come in later and wipe it out. They don't want the precedent. If they see you they may try to stop you, or they may just sit back and watch. Either way, you'll need to lose or destroy any spies before you make the final delivery."`
+			`	"The warlords? You talk about them like they're some kind of a cabal or something."`
+			`	"Yeah, you'd expect they'd stick to themselves, wouldn't you? And most of them do. But some of them understand that if things change too much in the Pirate worlds they could be on the way out, and they're willing to work together to keep that from happening."`
+			choice
+				`	"If I can help these folks out by shipping some <commodity>, I'll do it."`
+				`	"You know, I wish I help, but staying clear of the Republic and the Merchants is bad enough, I don't want to add another enemy to the list. Sorry."`
+					decline
+			`	"Good. I'll go get the cargo loaded into your ship right away."`
+				accept
+
+	on decline
+		"reputation: Pirate Warlords" = 20
+		"reputation: Pirate Planets" = -1
+
+	on accept
+		"reputation: Pirate Warlords" = 10
+		"reputation: Pirate Planets" >?= 20
+
+	on fail
+		"reputation: Pirate Planets" = 0
+		dialog "You've failed to complete the mission Jonah put so much work into, you're pretty sure he's going to be very disappointed."
+
+	on visit
+		dialog
+			`As you pull in close to <planet> to land you catch sight of <npc> and realize it's been hanging around you for the past couple of systems. You can't take a chance that anyone from the Pirate Warlords is watching you, so you decide to hold off on your delivery.`
+				launch
+
+	on complete
+		set "PP delivery finished"
+		log "Did another mission for Jonah today. There seem to be a lot of communities on the Pirate planets that are trying to find a way to get out from under the thumb of the warlords. Do I know what I'm getting myself involved with here?"
+		payment 0 100
+		"reputation: Pirate Planets" += 5
+		"reputation: Pirate Warlords" -= 500
+		"PP missions" ++
+		conversation
+			`The pre-arranged drop off point is in a particularly rugged forest region, and by the time you find a place you can land you are more than a mile away from the rendezvous. You need to hike through the heavily forested countryside to the rendezvous and lead a crew of villagers back to your ship.`
+			`	By the time you're ready to start unloading you're already exhausted, but the villagers are overjoyed to have the <commodity>. Unloading the cargo takes another couple of hours, what with the villagers' disorganization and tendency to break into a chaos of cheers and back-slapping whenever the mood strikes. Only after they're done do they realize they forgot the payment chit in the village, and a runner is sent after it.`
+			`	He finally returns with the chit and a basket of home-baked pastries which the villagers press on you along with the payment. You enter the chit into your computer and your payment of <payment> is credited to your account. You then have to clear the villagers away from the ship so they won't be harmed by the blast of takeoff - two or three times, for a few of them. By the time you climb back into the cockpit your ship has been on the ground for almost five hours and you're covered in sweat and tree sap. The pastries are a bit mashed but excellent.`
+
+
+
+mission "PP delivery, tier 1"
+	name "Delivery to a community on <planet>."
+	description "You need to travel to <destination> and deliver <cargo> to a remote community by <day>. Be sure you're not observed by any ships associated with the Pirate Warlords."
+	minor
+	repeat
+	landing
+	cargo random 5 2 .1
+	clearance
+	deadline 7 2
+	infiltrating
+	source
+		attributes "north pirate"
+	destination
+		attributes "north pirate"
+		not attributes station
+		distance 2 10
+	to offer
+		has "PP initial: done"
+		not "PP delivery, tier 1: active"
+		not "PP Miner rescue: offered"
+		random < 33
+		"combat rating" > 100
+		"reputation: Pirate Planets" >= 15
+	npc evade
+		government "Pirate Warlords"
+		personality forbearing waiting surveillance mute
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+		fleet "Small Northern Pirates"
+	on offer
+		conversation
+			`There is a message from Jonah waiting for you when you land.`
+			`	"A group on <planet> needs <cargo> delivered by <day>. You'll get <payment> for the job."`
+			choice
+				`	Take the job.`
+					accept
+				`	Refuse the job.`
+			`	Dockworkers are already loading the cargo into your hold. Apparently Jonah assumed you'd take the job. Are you going to make them unload and take the cargo away?`
+			choice
+				`	Take the job after all.`
+					accept
+				`	Turn the cargo away.`
+			`	You go out and tell the dockworkers there's been a mistake, that the cargo isn't for you. Then you send Jonah a terse note letting him know you're not taking the job and that you don't appreciate his presumption.`
+				decline
+
+	on visit
+		dialog
+			`You begin the descent into the atmosphere on <planet>, but as you do you catch sight of <npc>. You quickly abort the landing and return to orbit.`
+				launch
+
+	on decline
+		"reputation: Pirate Planets" -= 2
+
+	on accept
+		"reputation: Pirate Warlords" --
+
+	on fail
+		"reputation: Pirate Planets" -= 4
+		dialog "You get a message from Jonah. He seems pretty upset you took the job but didn't deliver the goods."
+
+	on complete
+		set "PP delivery finished"
+		"PP missions" ++
+		"reputation: Pirate Planets" ++
+		payment 0 100
+		conversation
+			`The mission goes smoothly. You find the rendezvous and drop off the <commodity>. The payment chit is ready for you, and your account is credited with <payment> once you enter it.`
+

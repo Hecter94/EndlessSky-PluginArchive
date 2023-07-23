@@ -1,0 +1,74 @@
+# Copyright (c) 2023 by mOctave
+#
+# Moar Humanity is free software: you can redistribute it and/or modify it under the
+# terms of the GNU Affero General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Moar Humanity is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "Wealthy Tourist Tours [0]"
+	name "Show a wealthy tourist the galaxy"
+	job
+	repeat
+	description "Take a wealthy tourist on a tour of the galaxy, stopping at <planet stopovers> before returning to <destination>. Payment is <payment>."
+	passengers 1
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rich" "urban"
+	stopover
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		distance 4 10
+		attributes "tourism"
+	stopover
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		distance 4 10
+		attributes "tourism"
+	stopover
+		# The last stopover can be almost anywhere accessible by human space, including a visit to Pirate, the Pug or Quarg, and some really unplesasnt factory worlds.
+		distance 4 10
+	on visit
+		dialog "You've reached <destination>, but either your passenger has been left behind or you haven't gone everywhere they wanted to yet!"
+	on complete
+		payment 15000 150
+		dialog "The tourist, loaded down with trinkets and a pile of t-shirts, thanks you profusely as they disembark and hand you the largest credit chip you've ever seen, worth <payment>."
+
+mission "Wealthy Tourist Tours [1]"
+	name "Show a wealthy family the galaxy"
+	job
+	repeat
+	description "Take a family of <bunks> wealthy tourists on a tour of the galaxy, stopping at <planet stopovers> before returning to <destination>. Payment is <payment>."
+	passengers 2 2 .8
+	to offer
+		random < 10
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rich" "urban"
+	stopover
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		distance 4 10
+		attributes "tourism"
+	stopover
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		distance 4 10
+		attributes "tourism"
+	stopover
+		# Families are _slightly_ less crazy than individuals, so they won't stop on pirate planets for the last stopover.
+		distance 4 10
+		not government "Pirate"
+	on visit
+		dialog "You've reached <destination>, but either some of your passengers have been left behind or you haven't gone everywhere they wanted to yet!"
+	on complete
+		payment 18000 100
+		dialog "The tourists, loaded down with trinkets and a pile of t-shirts, bound off the ship excitedly, leaving you holding a check worth <payment> credits. You'd better not lose it!"

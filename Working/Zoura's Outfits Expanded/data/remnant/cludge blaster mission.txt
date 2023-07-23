@@ -1,0 +1,98 @@
+mission "Remnant Cludge Blaster Sale"
+	repeat
+	source
+		government "Remnant"
+	to offer
+		random > 49
+		has "license: Remnant"
+		"credits" >= 15000000
+	on offer
+		conversation
+			`As you walk around the spaceport, you notice a few Remnant hauling a sled around with what appears to be a variety of modified weapons. Do you want to investigate?`
+			choice
+				`	Yes.`
+					goto sale
+				`	No.`
+					decline
+					
+			label sale
+			`You approach the Remnant, and a couple of them looks at you, "Are you interested in the Cludge Blasters?" They ask.`
+			choice
+				`	"You bet!"`
+					goto sale2
+				`	"Those don't look anything like the Cludge Blasters for sale in the outfitter."`
+			
+			`The Remnant smiles, "That's because they've been modified by my students," They explain, "Every year, an engineering student's final project is to modify a Cludge Blaster using parts sourced from salvage and occasional military excess; we then sell them to fund next year's projects. Are you interested?`
+				goto offer
+			
+			label offer
+			choice
+				`	"Sure."`
+					goto sale2
+				`	"No thank you."`
+					decline
+					
+			label sale2
+			`The remnant smiles, "I'm sure you'll find the modifications fulfill roles not easily found in small weapons," They say, "For you, we will give four for a million credits. Is that acceptable?" They ask.`
+			choice
+				`	"Sounds like a fair deal."`
+					goto trade
+				`	"If it'll support the Remnant's future, I might as well."`
+					goto trade
+				`	"That's a bit outside my price range right now."`
+					decline
+				
+			label trade
+			action
+				payment -1000000
+			`You hand over a handful of credit chips before the Remnant signs to a few of their compatriots, and they help load everything into your ship from the cart.`
+			branch "Alt1" "Alt2"
+				random > 50
+			
+			label Alt1
+			branch "Alt3" "Alt4"
+				random > 50
+				
+			label "Alt3"
+			action
+				outfit "Cludge Blaster (Compact)" 1
+				outfit "Cludge Blaster (Heavy)" 1
+				outfit "Cludge Blaster (Pulse)" 1
+				outfit "Cludge Blaster Turret" 1
+			`The Remnant smiles at you, "Thank you for your business," They say softly.`
+				goto end
+			
+			label "Alt4"
+			action
+				outfit "Cludge Blaster (Pull)" 1
+				outfit "Cludge Blaster (Interdictor)" 1
+				outfit "Cludge Blaster (Pulse)" 1
+				outfit "Cludge Blaster Turret (Defense)" 1
+			`The Remnant smiles at you, "Thank you for your business," They say softly.`
+				goto end
+			
+			label Alt2
+			branch "Alt5" "Alt6"
+				random > 50
+			
+			label "Alt5"
+			action
+				outfit "Cludge Blaster (Compact)" 1
+				outfit "Cludge Blaster (Pull)" 1
+				outfit "Cludge Blaster Turret" 1
+				outfit "Cludge Blaster Turret (Defense)" 1
+			`The Remnant smiles at you, "Thank you for your business," They say softly.`
+				goto end
+			
+			label "Alt6"
+			action
+				outfit "Cludge Blaster (Interdictor)" 1
+				outfit "Cludge Blaster (Compact)" 1
+				outfit "Cludge Blaster (Heavy)" 1
+				outfit "Cludge Blaster Turret (Defense)" 1
+			`The Remnant smiles at you, "Thank you for your business," They say softly.`
+				goto end
+				
+			label end
+			``
+				decline

@@ -1,0 +1,51 @@
+mission help-rebels-prisonners
+      name "Bring prisonner to <planet>"
+      description "Bring the 3 empire prisonners you found in the Empire Rebel ship to <destination>. Payment is <payment>."
+      boarding
+      repeat
+      to offer
+            random < 5
+      source
+            government "Empire Rebels"
+      destination
+            government "Cromha Empire"
+            distance 1 5
+      on offer
+            conversation
+                  `When you board the ship, you hear some people shouting "help!". You try to approach the sound and you finnally found 3 Empire Navy pilots that have been captured by Empire Rebels.`
+                  `     You hear Empire Rebels coming for defend their ship. You have two choice:`
+                  choice
+                        `     Take the prisonners with you and leave the ship immedialty.`
+                              launch
+                        `     Let the prisonners here.`
+                              decline
+      on complete
+            payment
+            payment 35000
+            dialog "The 3 prisonners thanks you and gives you <payment>."
+            
+mission "Rebels Ambush"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		"combat rating" > 100
+		random < 5
+	source
+		government "Empire Rebels"
+	on offer
+		conversation
+			`You board the <origin>, but find no crew aboard. When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. The <origin> is emitting a distress signal to nearby rebels and pirates, and a self-destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+	destination "Earth"
+	npc kill
+		government "Empire Rebels"
+		personality nemesis harvests plunders entering
+		fleet "empire-rebels-raiders" 2
+		fleet "empire-rebels-merchants" 5
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "Large Southern Pirate" 3

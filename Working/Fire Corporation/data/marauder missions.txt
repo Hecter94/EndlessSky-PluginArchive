@@ -1,0 +1,83 @@
+mission "Pirate-Marauder Investigation 1"
+	name `Search for pirates on <destination>.`
+	description `There is a sale for Christmas on <destination>. Fire Corporation wants you to investigate.`
+	source
+		government Republic "Free Worlds"
+	destination Wayfarer
+	to offer
+		has "Marauder Sales: active"
+		has "non-pirate"
+		random < 40
+	on offer
+		conversation
+			`As you look around the spaceport, you see several Fire Corporation workers speaking together. Then one of them sees you, and gestures for you to come over.`
+			`	"Hello, Captain," the other says. "Would you be interested in having a perfectly safe mission that could pay well?"`
+			choice
+				`	"Sure!"`
+					goto yes
+				`	"The way you said it...doesn't make it seem safe."`
+					goto cautious
+			label cautious
+			`	He pauses for a moment, but then the other one steps in. "There may be some pirates that will want to attack you, but you will receive 6 million credits!"`
+			choice
+				`	"OK, if it's like that."`
+					goto yes
+				`	"No, it sounds too dangerous."`
+					decline
+
+			label yes
+			`	"Good. Now, your mission is to go to <destination> because there is a group of ship modifiers there. We want you to go there and see if there are any pirates, for many modified warships are used by Marauders. Also, when you are done, come to Sinter in the Albireo system."`
+			choice
+				`	(Accept)`
+					accept
+				`	(Decline)`
+					decline
+
+	npc
+		personality timid coward opportunistic
+		system Tarazed
+		government Independent
+		fleet "Marauder II" 3
+	npc
+		personality heroic unconstrained opportunistic swarming
+		government Independent
+		system Tarazed
+		fleet "Marauder III"
+		fleet "Marauder II" 2
+
+	on complete
+		dialog `After looking around a bit, you notice something going on above. You should probably check it out and report to the Fire Corporation.`
+
+mission "Pirate-Marauder Investigation 2"
+	landing
+	name `Report of Fire Corporation`
+	description `Report what you saw in Tarazed back to Fire Corporation. You should find them on <destination>.`
+	source Wayfarer
+	destination Sinter
+	to offer
+		has "Pirate-Marauder Investigation 1: done"
+
+	npc
+		personality timid coward opportunistic
+		system Tarazed
+		government Independent
+		fleet "Marauder II" 3
+	npc
+		personality heroic unconstrained opportunistic swarming
+		government Independent
+		system Tarazed
+		fleet "Marauder III"
+		fleet "Marauder II" 2
+	npc
+		personality timid plunders
+		system Tarazed
+		government Pirate
+		fleet "Marauder IV"
+		fleet "Marauder II" 3
+
+	on complete
+		payment 6000000
+		conversation
+			`"Ah! There you are Captain," one of the Fire Corporation workers who recruited you comes over. "What information do you have for us?"`
+			`	You explain how there was a pirate attack with modified ships fighting some other modified ships.`
+			`	"Interesting," the worker thinks for a moment. "We will contact you later. Have fun with <payment>! You should get a Firestorm if you don't have one, using that money. It's about as good as a Falcon, but cheaper!"`

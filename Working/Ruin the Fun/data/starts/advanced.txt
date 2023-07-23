@@ -1,0 +1,129 @@
+start "Ruin-The-Fun (Avanced)"
+	name "Ruin-The-Fun (Advanced)"
+	description `The gods though their knowledge was infinite. Then they discovered you. Stunned by your majesty, they made you their new master.`
+	description `	Give you all licenses and a lot of money. Either start with a custom ship, or a pre-outfitted ship, coming with combat rating and a custom color.`
+	description `	Start on RTF0, near Rutilicus, after configuring a few details.`
+	thumbnail "scene/sagittarius a"
+	date 16 11 3013
+	system "RTF0"
+	planet "RTF0-P"
+	conversation "Ruin-The-Fun Intro (Avanced)"
+	account
+		credits 1000000000
+		score 400000
+	# grep -R "outfit.*License" ~/projects/endless-sky/data/ | sed "s/.*outfit \"/\tset \"license: /" | sed "s/ License\"/\"/" | sort 
+	# (command outdated)
+	set "license: Carrier"
+	set "license: City-Ship"
+	set "license: Coalition"
+	set "license: Cruiser"
+	set "license: Gegno Civilian"
+	set "license: Gegno Driller"
+	set "license: Heliarch"
+	set "license: Militia"
+	set "license: Navy"
+	set "license: Navy Auxiliary"
+	set "license: Navy Carrier"
+	set "license: Navy Cruiser"
+	set "license: Pilot's"
+	set "license: Remnant"
+	set "license: Remnant Capital"
+	set "license: Scin Adjutant"
+	set "license: Scin Architect"
+	set "license: Scin Hoplologist"
+	set "license: Vi Centurion"
+	set "license: Vi Evocati"
+	set "license: Vi Lord"
+	set "license: Wanderer"
+	set "license: Wanderer Military"
+	set "license: Wanderer Outfits"
+
+
+
+conversation "Ruin-The-Fun Intro (Avanced)"
+	scene "scene/sagittarius a"
+	`	Zeus kneels in front of you. "What name would you like us to call you, sir?"`
+	name
+	`	Even without the gods at your service, you would still be the world's suzerain. But their contribution should make everything a little bit faster.`
+	label config
+	choice
+		`	(First, Reveal the map.)`
+			goto "reveal map"
+		`	(Start, with an outfitted Albatross)`
+			goto albatross
+		`	(Start, with an outfitted Tubfalet)`
+			goto tubfalet
+		`	(Start, with an outfitted Tek Far 109 and optimized drones)`
+			goto "109"
+		`	(Start, with a Punisher outfitted with plundered quarg tech.)`
+			goto punisher
+		`	(Start, with a 577 outfitted with plundered quarg tech.)`
+			goto "577"
+		`	(Start, and let be build my ship.)`
+			goto end
+	
+	label "reveal map"
+	action
+		event "Ruin-the-Fun Visit Systems"
+		event "Ruin-the-Fun Visit Planets"
+	`	Systems and planets info revealed.`
+		goto config
+	
+	label "albatross"
+	action
+		"combat rating" = 1202604 + 1
+		give ship "Ruin-The-Fun Albatross" "Snappy Starter"
+		event "Ruin-The-Fun Swizzle 1"
+	`	You have been given an outfitted Albatross.`
+		goto end
+	
+	label "tubfalet"
+	action
+		"combat rating" = 1202604 + 1
+		give ship "Ruin-The-Fun Tubfalet" "Savage Starter"
+		event "Ruin-The-Fun Swizzle 3"
+	`	You have been given an outfitted Tubfalet.`
+		goto end
+	
+	label "109"
+	action
+		"combat rating" = 1202604 + 1
+		give ship "Ruin-The-Fun 109 (Maned)" "Harmless Starter"
+		give ship "Ruin-The-Fun Petrel" "Deadly Escort"
+		give ship "Ruin-The-Fun Petrel" "Lethal Escort"
+		give ship "Ruin-The-Fun Petrel" "Fatal Escort"
+		give ship "Ruin-The-Fun Petrel" "Harmful Escort"
+		give ship "Ruin-The-Fun Petrel" "Dangerous Escort"
+		give ship "Ruin-The-Fun Petrel" "Killer Escort"
+		give ship "Ruin-The-Fun Petrel" "Deathly Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Destructive Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Baneful Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Pernicious Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Truculent Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Mortal Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Risky Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Menacing Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Threatening Escort"
+		give ship "Ruin-The-Fun Flycatcher" "Detrimental Escort"
+		event "Ruin-The-Fun Swizzle 9"
+	`	You have been given an outfitted Tek Far 109.`
+		goto end
+	
+	label "punisher"
+	action
+		"combat rating" = 1202604 + 1
+		give ship "Ruin-The-Fun Punisher" "Graceful Starter"
+		event "Ruin-The-Fun Swizzle 6"
+	`	A Punisher with quarg tech, ironic?`
+		goto end
+	
+	label "577"
+	action
+		"combat rating" = 1202604 + 1
+		give ship "Ruin-The-Fun 577" "Funky Starter"
+		event "Ruin-The-Fun Swizzle 6"
+	`	The ground shakes under the weigh of your 577. No Korath child inside.`
+		goto end
+	
+	label end
+	`	Divine services are available from the Job Board. Visit the Spaceport for information and quick actions. But you do not need any of that, you are omnipotent and omniscient, right? Or did you lure the gods...`

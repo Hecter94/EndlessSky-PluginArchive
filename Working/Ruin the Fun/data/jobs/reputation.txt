@@ -1,0 +1,2082 @@
+mission "Ruin-the-Fun Reputations"
+	job
+	name "Reputations"
+	description "Configure your government reputations. 'The world will forget your name. That is regrettable. We will not.' - Dionysos"
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			`	Set government reputations globally:`
+			label begin
+			choice
+				`	(Make all factions friendly.)`
+					goto friendly
+				`	(Make all factions hostile.)`
+					goto hostile
+				`	(Reset reputations with all governments.)`
+					goto reset
+				`	Reset reputations with initially friendly governments only.`
+					goto "reset friendly"
+				`	(Toggle reputations individually...)`
+					goto "toggles menu"
+				`	(Done.)`
+					decline
+					
+			label reset
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
+			action
+				"reputation: Alpha" = -1000
+				"reputation: Author" = 1
+				"reputation: Bad Trip" = -1000
+				"reputation: Bounty" = -1000
+				"reputation: Bounty (Disguised)" = 1
+				"reputation: Bounty Hunter" = -1000
+				"reputation: Bounty Hunter that Won't Enter Hai Space" = -1000
+				"reputation: Builder" = 0
+				"reputation: Bunrodea" = 1
+				"reputation: Bunrodea (Erabu)" = 1
+				"reputation: Bunrodea (Guard)" = -1
+				"reputation: Bunrodea (Megasa)" = 1
+				"reputation: Coalition" = 1
+				"reputation: Deep" = -1000
+				"reputation: Deep Security" = 1
+				"reputation: Derelict" = 0
+				"reputation: Drak" = 1
+				"reputation: Drak (Hostile)" = -1000
+				"reputation: Elenctic Commune" = 1000
+				"reputation: Ember Waste" = 1
+				"reputation: Escort (Betraying)" = 10
+				"reputation: Forest (Prey)" = 1
+				"reputation: Free Worlds" = 1
+				"reputation: Free Worlds that won't enter wormhole" = 1
+				"reputation: Gegno" = 0
+				"reputation: Gegno Scin" = 0
+				"reputation: Gegno Scin (Neutral)" = 0
+				"reputation: Gegno Vi" = 0
+				"reputation: Gegno Vi (Duelist A)" = 0
+				"reputation: Gegno Vi (Duelist B)" = 0
+				"reputation: Gegno Vi (Neutral)" = 0
+				"reputation: Hai" = 0
+				"reputation: Hai (Friendly Unfettered)" = 100
+				"reputation: Hai (Unfettered Civilians)" = 10
+				"reputation: Hai (Unfettered Wanderer Tribute)" = 0
+				"reputation: Hai (Unfettered)" = -1000
+				"reputation: Hai (Wormhole Access)" = 0
+				"reputation: Hai Merchant" = 0
+				"reputation: Hai Merchant (Human)" = 0
+				"reputation: Hai Merchant (Sympathizers)" = 0
+				"reputation: Heliarch" = 1
+				"reputation: Independent" = 10
+				"reputation: Independent (Killable)" = 10
+				"reputation: Indigenous Lifeform" = 1
+				"reputation: Indigenous Lifeform (Astral)" = 1
+				"reputation: Ka'het" = -1
+				"reputation: Ka'het (Infighting)" = -1
+				"reputation: Ka'sei" = 1
+				"reputation: Kor Efret" = 1
+				"reputation: Kor Mereti" = -1000
+				"reputation: Kor Mereti (Hostile)" = -1000
+				"reputation: Kor Sestor" = -1000
+				"reputation: Korath" = -10
+				"reputation: Korath (Civilian)" = 1
+				"reputation: Korath Nanobots" = -1000
+				"reputation: Marauder" = 1
+				"reputation: Merchant" = 10
+				"reputation: Merchant (Hijacked)" = 1
+				"reputation: Militia" = 0
+				"reputation: Navy (Oathkeeper)" = 100
+				"reputation: Navy Intelligence" = 0
+				"reputation: Neutral" = 1
+				"reputation: Parrot" = 1
+				"reputation: Pirate" = -10
+				"reputation: Pirate (Devil-Run Gang)" = -1000
+				"reputation: Pirate (Rival)" = -10
+				"reputation: Pug" = 1
+				"reputation: Pug (Wanderer)" = 1
+				"reputation: Quarg" = 1
+				"reputation: Quarg (Gegno)" = 1
+				"reputation: Quarg (Hai)" = 1
+				"reputation: Quarg (Kor Efret)" = 1
+				"reputation: Remnant" = 1
+				"reputation: Remnant (Research)" = 1
+				"reputation: Republic" = 2
+				"reputation: Republic (Friendly)" = 2
+				"reputation: Republic Intelligence" = 0
+				"reputation: Republic that won't enter wormhole" = 2
+				"reputation: Rulei" = 0
+				"reputation: Scar's Legion" = 10
+				"reputation: Scar's Legion (Killable)" = -1000
+				"reputation: Sheragi" = 1
+				"reputation: Smuggler (Hai Trafficker)" = 1
+				"reputation: Syndicate" = 2
+				"reputation: Syndicate (Extremist)" = -1000
+				"reputation: Syndicate (Hostile)" = -1000
+				"reputation: Team Blue" = -1000
+				"reputation: Team Red" = -1000
+				"reputation: Test Dummy" = -1000
+				"reputation: Uninhabited" = 0
+				"reputation: Unknown" = -1000
+				"reputation: Wanderer" = 1
+				"reputation: Wormhole Alpha" = 0
+			`	Reputations have been reset.`
+				decline
+			
+			label "reset friendly"
+			# cat default_saved_reputations.tmp | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
+			action
+				"reputation: Author" = 1
+				"reputation: Bounty (Disguised)" = 1
+				"reputation: Builder" = 0
+				"reputation: Bunrodea" = 1
+				"reputation: Bunrodea (Erabu)" = 1
+				"reputation: Bunrodea (Megasa)" = 1
+				"reputation: Coalition" = 1
+				"reputation: Deep Security" = 1
+				"reputation: Derelict" = 0
+				"reputation: Drak" = 1
+				"reputation: Elenctic Commune" = 1000
+				"reputation: Ember Waste" = 1
+				"reputation: Escort (Betraying)" = 10
+				"reputation: Forest (Prey)" = 1
+				"reputation: Free Worlds" = 1
+				"reputation: Free Worlds that won't enter wormhole" = 1
+				"reputation: Gegno" = 0
+				"reputation: Gegno Scin" = 0
+				"reputation: Gegno Scin (Neutral)" = 0
+				"reputation: Gegno Vi" = 0
+				"reputation: Gegno Vi (Duelist A)" = 0
+				"reputation: Gegno Vi (Duelist B)" = 0
+				"reputation: Gegno Vi (Neutral)" = 0
+				"reputation: Hai" = 0
+				"reputation: Hai (Friendly Unfettered)" = 100
+				"reputation: Hai (Unfettered Civilians)" = 10
+				"reputation: Hai (Unfettered Wanderer Tribute)" = 0
+				"reputation: Hai (Wormhole Access)" = 0
+				"reputation: Hai Merchant" = 0
+				"reputation: Hai Merchant (Human)" = 0
+				"reputation: Hai Merchant (Sympathizers)" = 0
+				"reputation: Heliarch" = 1
+				"reputation: Independent" = 10
+				"reputation: Independent (Killable)" = 10
+				"reputation: Indigenous Lifeform" = 1
+				"reputation: Indigenous Lifeform (Astral)" = 1
+				"reputation: Ka'sei" = 1
+				"reputation: Kor Efret" = 1
+				"reputation: Korath (Civilian)" = 1
+				"reputation: Marauder" = 1
+				"reputation: Merchant" = 10
+				"reputation: Merchant (Hijacked)" = 1
+				"reputation: Militia" = 0
+				"reputation: Navy (Oathkeeper)" = 100
+				"reputation: Navy Intelligence" = 0
+				"reputation: Neutral" = 1
+				"reputation: Parrot" = 1
+				"reputation: Pug" = 1
+				"reputation: Pug (Wanderer)" = 1
+				"reputation: Quarg" = 1
+				"reputation: Quarg (Gegno)" = 1
+				"reputation: Quarg (Hai)" = 1
+				"reputation: Quarg (Kor Efret)" = 1
+				"reputation: Remnant" = 1
+				"reputation: Remnant (Research)" = 1
+				"reputation: Republic" = 2
+				"reputation: Republic (Friendly)" = 2
+				"reputation: Republic Intelligence" = 0
+				"reputation: Republic that won't enter wormhole" = 2
+				"reputation: Rulei" = 0
+				"reputation: Scar's Legion" = 10
+				"reputation: Sheragi" = 1
+				"reputation: Smuggler (Hai Trafficker)" = 1
+				"reputation: Syndicate" = 2
+				"reputation: Uninhabited" = 0
+				"reputation: Wanderer" = 1
+				"reputation: Wormhole Alpha" = 0
+			`	Friendly factions are now friendly again.`
+				goto begin
+			
+			label friendly
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = 1/'
+			action
+				"reputation: Alpha" = 10
+				"reputation: Author" = 10
+				"reputation: Bad Trip" = 10
+				"reputation: Bounty" = 10
+				"reputation: Bounty (Disguised)" = 10
+				"reputation: Bounty Hunter" = 10
+				"reputation: Bounty Hunter that Won't Enter Hai Space" = 10
+				"reputation: Builder" = 10
+				"reputation: Bunrodea" = 10
+				"reputation: Bunrodea (Erabu)" = 10
+				"reputation: Bunrodea (Guard)" = 10
+				"reputation: Bunrodea (Megasa)" = 10
+				"reputation: Coalition" = 10
+				"reputation: Deep" = 10
+				"reputation: Deep Security" = 10
+				"reputation: Derelict" = 10
+				"reputation: Drak" = 10
+				"reputation: Drak (Hostile)" = 10
+				"reputation: Elenctic Commune" = 10
+				"reputation: Ember Waste" = 10
+				"reputation: Escort (Betraying)" = 10
+				"reputation: Forest (Prey)" = 10
+				"reputation: Free Worlds" = 10
+				"reputation: Free Worlds that won't enter wormhole" = 10
+				"reputation: Gegno" = 10
+				"reputation: Gegno Scin" = 10
+				"reputation: Gegno Scin (Neutral)" = 10
+				"reputation: Gegno Vi" = 10
+				"reputation: Gegno Vi (Duelist A)" = 10
+				"reputation: Gegno Vi (Duelist B)" = 10
+				"reputation: Gegno Vi (Neutral)" = 10
+				"reputation: Hai" = 10
+				"reputation: Hai (Friendly Unfettered)" = 10
+				"reputation: Hai Merchant" = 10
+				"reputation: Hai Merchant (Human)" = 10
+				"reputation: Hai Merchant (Sympathizers)" = 10
+				"reputation: Hai (Unfettered)" = 10
+				"reputation: Hai (Unfettered Civilians)" = 10
+				"reputation: Hai (Unfettered Wanderer Tribute)" = 10
+				"reputation: Hai (Wormhole Access)" = 10
+				"reputation: Heliarch" = 10
+				"reputation: Independent" = 10
+				"reputation: Independent (Killable)" = 10
+				"reputation: Indigenous Lifeform" = 10
+				"reputation: Indigenous Lifeform (Astral)" = 10
+				"reputation: Ka'het" = 10
+				"reputation: Ka'het (Infighting)" = 10
+				"reputation: Ka'sei" = 10
+				"reputation: Korath" = 10
+				"reputation: Korath (Civilian)" = 10
+				"reputation: Korath Nanobots" = 10
+				"reputation: Kor Efret" = 10
+				"reputation: Kor Mereti" = 10
+				"reputation: Kor Mereti (Hostile)" = 10
+				"reputation: Kor Sestor" = 10
+				"reputation: Marauder" = 10
+				"reputation: Merchant" = 10
+				"reputation: Merchant (Hijacked)" = 10
+				"reputation: Militia" = 10
+				"reputation: Navy Intelligence" = 10
+				"reputation: Navy (Oathkeeper)" = 10
+				"reputation: Neutral" = 10
+				"reputation: Parrot" = 10
+				"reputation: Pirate" = 10
+				"reputation: Pirate (Devil-Run Gang)" = 10
+				"reputation: Pirate (Rival)" = 10
+				"reputation: Pug" = 10
+				"reputation: Pug (Wanderer)" = 10
+				"reputation: Quarg" = 10
+				"reputation: Quarg (Gegno)" = 10
+				"reputation: Quarg (Hai)" = 10
+				"reputation: Quarg (Kor Efret)" = 10
+				"reputation: Remnant" = 10
+				"reputation: Remnant (Research)" = 10
+				"reputation: Republic" = 10
+				"reputation: Republic (Friendly)" = 10
+				"reputation: Republic Intelligence" = 10
+				"reputation: Republic that won't enter wormhole" = 10
+				"reputation: Rulei" = 10
+				"reputation: Scar's Legion" = 10
+				"reputation: Scar's Legion (Killable)" = 10
+				"reputation: Sheragi" = 10
+				"reputation: Smuggler (Hai Trafficker)" = 10
+				"reputation: Syndicate" = 10
+				"reputation: Syndicate (Extremist)" = 10
+				"reputation: Syndicate (Hostile)" = 10
+				"reputation: Team Blue" = 10
+				"reputation: Team Red" = 10
+				"reputation: Test Dummy" = 10
+				"reputation: Uninhabited" = 10
+				"reputation: Unknown" = 10
+				"reputation: Wanderer" = 10
+				"reputation: Wormhole Alpha" = 10
+			`	All factions are now friendly.`
+				decline
+			
+			label hostile
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = -1/'
+			action
+				"reputation: Alpha" = -10
+				"reputation: Author" = -10
+				"reputation: Bad Trip" = -10
+				"reputation: Bounty" = -10
+				"reputation: Bounty (Disguised)" = -10
+				"reputation: Bounty Hunter" = -10
+				"reputation: Bounty Hunter that Won't Enter Hai Space" = -10
+				"reputation: Builder" = -10
+				"reputation: Bunrodea" = -10
+				"reputation: Bunrodea (Erabu)" = -10
+				"reputation: Bunrodea (Guard)" = -10
+				"reputation: Bunrodea (Megasa)" = -10
+				"reputation: Coalition" = -10
+				"reputation: Deep" = -10
+				"reputation: Deep Security" = -10
+				"reputation: Derelict" = -10
+				"reputation: Drak" = -10
+				"reputation: Drak (Hostile)" = -10
+				"reputation: Elenctic Commune" = -10
+				"reputation: Ember Waste" = -10
+				"reputation: Escort (Betraying)" = -10
+				"reputation: Forest (Prey)" = -10
+				"reputation: Free Worlds" = -10
+				"reputation: Free Worlds that won't enter wormhole" = -10
+				"reputation: Gegno" = -10
+				"reputation: Gegno Scin" = -10
+				"reputation: Gegno Scin (Neutral)" = -10
+				"reputation: Gegno Vi" = -10
+				"reputation: Gegno Vi (Duelist A)" = -10
+				"reputation: Gegno Vi (Duelist B)" = -10
+				"reputation: Gegno Vi (Neutral)" = -10
+				"reputation: Hai" = -10
+				"reputation: Hai (Friendly Unfettered)" = -10
+				"reputation: Hai Merchant" = -10
+				"reputation: Hai Merchant (Human)" = -10
+				"reputation: Hai Merchant (Sympathizers)" = -10
+				"reputation: Hai (Unfettered)" = -10
+				"reputation: Hai (Unfettered Civilians)" = -10
+				"reputation: Hai (Unfettered Wanderer Tribute)" = -10
+				"reputation: Hai (Wormhole Access)" = -10
+				"reputation: Heliarch" = -10
+				"reputation: Independent" = -10
+				"reputation: Independent (Killable)" = -10
+				"reputation: Indigenous Lifeform" = -10
+				"reputation: Indigenous Lifeform (Astral)" = -10
+				"reputation: Ka'het" = -10
+				"reputation: Ka'het (Infighting)" = -10
+				"reputation: Ka'sei" = -10
+				"reputation: Korath" = -10
+				"reputation: Korath (Civilian)" = -10
+				"reputation: Korath Nanobots" = -10
+				"reputation: Kor Efret" = -10
+				"reputation: Kor Mereti" = -10
+				"reputation: Kor Mereti (Hostile)" = -10
+				"reputation: Kor Sestor" = -10
+				"reputation: Marauder" = -10
+				"reputation: Merchant" = -10
+				"reputation: Merchant (Hijacked)" = -10
+				"reputation: Militia" = -10
+				"reputation: Navy Intelligence" = -10
+				"reputation: Navy (Oathkeeper)" = -10
+				"reputation: Neutral" = -10
+				"reputation: Parrot" = -10
+				"reputation: Pirate" = -10
+				"reputation: Pirate (Devil-Run Gang)" = -10
+				"reputation: Pirate (Rival)" = -10
+				"reputation: Pug" = -10
+				"reputation: Pug (Wanderer)" = -10
+				"reputation: Quarg" = -10
+				"reputation: Quarg (Gegno)" = -10
+				"reputation: Quarg (Hai)" = -10
+				"reputation: Quarg (Kor Efret)" = -10
+				"reputation: Remnant" = -10
+				"reputation: Remnant (Research)" = -10
+				"reputation: Republic" = -10
+				"reputation: Republic (Friendly)" = -10
+				"reputation: Republic Intelligence" = -10
+				"reputation: Republic that won't enter wormhole" = -10
+				"reputation: Rulei" = -10
+				"reputation: Scar's Legion" = -10
+				"reputation: Scar's Legion (Killable)" = -10
+				"reputation: Sheragi" = -10
+				"reputation: Smuggler (Hai Trafficker)" = -10
+				"reputation: Syndicate" = -10
+				"reputation: Syndicate (Extremist)" = -10
+				"reputation: Syndicate (Hostile)" = -10
+				"reputation: Team Blue" = -10
+				"reputation: Team Red" = -10
+				"reputation: Test Dummy" = -10
+				"reputation: Uninhabited" = -10
+				"reputation: Unknown" = -10
+				"reputation: Wanderer" = -10
+				"reputation: Wormhole Alpha" = -10
+			`	Everyone now wants to make an argument with you.`
+				decline
+			
+			label "toggles menu"
+			`	Click on a government to toggle your reputation with them.`
+			
+			label toggles
+			choice
+				`	(Done.)`
+					decline
+				`	(Toggle reputations globally...)`
+					goto begin
+				`	Alpha:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Alpha" >= 0
+					goto "toggle hostile: Alpha"
+				`	Alpha:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Alpha" < 0
+					goto "toggle friendly: Alpha"
+				`	Author:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Author" >= 0
+					goto "toggle hostile: Author"
+				`	Author:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Author" < 0
+					goto "toggle friendly: Author"
+				`	Bad Trip:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bad Trip" >= 0
+					goto "toggle hostile: Bad Trip"
+				`	Bad Trip:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bad Trip" < 0
+					goto "toggle friendly: Bad Trip"
+				`	Bounty:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bounty" >= 0
+					goto "toggle hostile: Bounty"
+				`	Bounty:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bounty" < 0
+					goto "toggle friendly: Bounty"
+				`	Bounty (Disguised):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bounty (Disguised)" >= 0
+					goto "toggle hostile: Bounty (Disguised)"
+				`	Bounty (Disguised):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bounty (Disguised)" < 0
+					goto "toggle friendly: Bounty (Disguised)"
+				`	Bounty Hunter:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bounty Hunter" >= 0
+					goto "toggle hostile: Bounty Hunter"
+				`	Bounty Hunter:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bounty Hunter" < 0
+					goto "toggle friendly: Bounty Hunter"
+				`	Bounty Hunter that Won't Enter Hai Space:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bounty Hunter that Won't Enter Hai Space" >= 0
+					goto "toggle hostile: Bounty Hunter that Won't Enter Hai Space"
+				`	Bounty Hunter that Won't Enter Hai Space:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bounty Hunter that Won't Enter Hai Space" < 0
+					goto "toggle friendly: Bounty Hunter that Won't Enter Hai Space"
+				`	Builder:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Builder" >= 0
+					goto "toggle hostile: Builder"
+				`	Builder:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Builder" < 0
+					goto "toggle friendly: Builder"
+				`	Bunrodea:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bunrodea" >= 0
+					goto "toggle hostile: Bunrodea"
+				`	Bunrodea:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bunrodea" < 0
+					goto "toggle friendly: Bunrodea"
+				`	Bunrodea (Erabu):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bunrodea (Erabu)" >= 0
+					goto "toggle hostile: Bunrodea (Erabu)"
+				`	Bunrodea (Erabu):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bunrodea (Erabu)" < 0
+					goto "toggle friendly: Bunrodea (Erabu)"
+				`	Bunrodea (Guard):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bunrodea (Guard)" >= 0
+					goto "toggle hostile: Bunrodea (Guard)"
+				`	Bunrodea (Guard):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bunrodea (Guard)" < 0
+					goto "toggle friendly: Bunrodea (Guard)"
+				`	Bunrodea (Megasa):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Bunrodea (Megasa)" >= 0
+					goto "toggle hostile: Bunrodea (Megasa)"
+				`	Bunrodea (Megasa):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Bunrodea (Megasa)" < 0
+					goto "toggle friendly: Bunrodea (Megasa)"
+				`	Coalition:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Coalition" >= 0
+					goto "toggle hostile: Coalition"
+				`	Coalition:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Coalition" < 0
+					goto "toggle friendly: Coalition"
+				`	Deep:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Deep" >= 0
+					goto "toggle hostile: Deep"
+				`	Deep:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Deep" < 0
+					goto "toggle friendly: Deep"
+				`	Deep Security:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Deep Security" >= 0
+					goto "toggle hostile: Deep Security"
+				`	Deep Security:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Deep Security" < 0
+					goto "toggle friendly: Deep Security"
+				`	Derelict:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Derelict" >= 0
+					goto "toggle hostile: Derelict"
+				`	Derelict:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Derelict" < 0
+					goto "toggle friendly: Derelict"
+				`	Drak:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Drak" >= 0
+					goto "toggle hostile: Drak"
+				`	Drak:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Drak" < 0
+					goto "toggle friendly: Drak"
+				`	Drak (Hostile):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Drak (Hostile)" >= 0
+					goto "toggle hostile: Drak (Hostile)"
+				`	Drak (Hostile):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Drak (Hostile)" < 0
+					goto "toggle friendly: Drak (Hostile)"
+				`	Elenctic Commune:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Elenctic Commune" >= 0
+					goto "toggle hostile: Elenctic Commune"
+				`	Elenctic Commune:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Elenctic Commune" < 0
+					goto "toggle friendly: Elenctic Commune"
+				`	Ember Waste:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Ember Waste" >= 0
+					goto "toggle hostile: Ember Waste"
+				`	Ember Waste:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Ember Waste" < 0
+					goto "toggle friendly: Ember Waste"
+				`	Escort (Betraying):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Escort (Betraying)" >= 0
+					goto "toggle hostile: Escort (Betraying)"
+				`	Escort (Betraying):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Escort (Betraying)" < 0
+					goto "toggle friendly: Escort (Betraying)"
+				`	Forest (Prey):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Forest (Prey)" >= 0
+					goto "toggle hostile: Forest (Prey)"
+				`	Forest (Prey):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Forest (Prey)" < 0
+					goto "toggle friendly: Forest (Prey)"
+				`	Free Worlds:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Free Worlds" >= 0
+					goto "toggle hostile: Free Worlds"
+				`	Free Worlds:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Free Worlds" < 0
+					goto "toggle friendly: Free Worlds"
+				`	Free Worlds that won't enter wormhole:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Free Worlds that won't enter wormhole" >= 0
+					goto "toggle hostile: Free Worlds that won't enter wormhole"
+				`	Free Worlds that won't enter wormhole:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Free Worlds that won't enter wormhole" < 0
+					goto "toggle friendly: Free Worlds that won't enter wormhole"
+				`	Gegno:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno" >= 0
+					goto "toggle hostile: Gegno"
+				`	Gegno:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno" < 0
+					goto "toggle friendly: Gegno"
+				`	Gegno Scin:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Scin" >= 0
+					goto "toggle hostile: Gegno Scin"
+				`	Gegno Scin:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Scin" < 0
+					goto "toggle friendly: Gegno Scin"
+				`	Gegno Scin (Neutral):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Scin (Neutral)" >= 0
+					goto "toggle hostile: Gegno Scin (Neutral)"
+				`	Gegno Scin (Neutral):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Scin (Neutral)" < 0
+					goto "toggle friendly: Gegno Scin (Neutral)"
+				`	Gegno Vi:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Vi" >= 0
+					goto "toggle hostile: Gegno Vi"
+				`	Gegno Vi:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Vi" < 0
+					goto "toggle friendly: Gegno Vi"
+				`	Gegno Vi (Duelist A):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Vi (Duelist A)" >= 0
+					goto "toggle hostile: Gegno Vi (Duelist A)"
+				`	Gegno Vi (Duelist A):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Vi (Duelist A)" < 0
+					goto "toggle friendly: Gegno Vi (Duelist A)"
+				`	Gegno Vi (Duelist B):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Vi (Duelist B)" >= 0
+					goto "toggle hostile: Gegno Vi (Duelist B)"
+				`	Gegno Vi (Duelist B):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Vi (Duelist B)" < 0
+					goto "toggle friendly: Gegno Vi (Duelist B)"
+				`	Gegno Vi (Neutral):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Gegno Vi (Neutral)" >= 0
+					goto "toggle hostile: Gegno Vi (Neutral)"
+				`	Gegno Vi (Neutral):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Gegno Vi (Neutral)" < 0
+					goto "toggle friendly: Gegno Vi (Neutral)"
+				`	Hai:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai" >= 0
+					goto "toggle hostile: Hai"
+				`	Hai:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai" < 0
+					goto "toggle friendly: Hai"
+				`	Hai (Friendly Unfettered):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai (Friendly Unfettered)" >= 0
+					goto "toggle hostile: Hai (Friendly Unfettered)"
+				`	Hai (Friendly Unfettered):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai (Friendly Unfettered)" < 0
+					goto "toggle friendly: Hai (Friendly Unfettered)"
+				`	Hai Merchant:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai Merchant" >= 0
+					goto "toggle hostile: Hai Merchant"
+				`	Hai Merchant:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai Merchant" < 0
+					goto "toggle friendly: Hai Merchant"
+				`	Hai Merchant (Human):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai Merchant (Human)" >= 0
+					goto "toggle hostile: Hai Merchant (Human)"
+				`	Hai Merchant (Human):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai Merchant (Human)" < 0
+					goto "toggle friendly: Hai Merchant (Human)"
+				`	Hai Merchant (Sympathizers):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai Merchant (Sympathizers)" >= 0
+					goto "toggle hostile: Hai Merchant (Sympathizers)"
+				`	Hai Merchant (Sympathizers):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai Merchant (Sympathizers)" < 0
+					goto "toggle friendly: Hai Merchant (Sympathizers)"
+				`	Hai (Unfettered):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai (Unfettered)" >= 0
+					goto "toggle hostile: Hai (Unfettered)"
+				`	Hai (Unfettered):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai (Unfettered)" < 0
+					goto "toggle friendly: Hai (Unfettered)"
+				`	Hai (Unfettered Civilians):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai (Unfettered Civilians)" >= 0
+					goto "toggle hostile: Hai (Unfettered Civilians)"
+				`	Hai (Unfettered Civilians):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai (Unfettered Civilians)" < 0
+					goto "toggle friendly: Hai (Unfettered Civilians)"
+				`	Hai (Unfettered Wanderer Tribute):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai (Unfettered Wanderer Tribute)" >= 0
+					goto "toggle hostile: Hai (Unfettered Wanderer Tribute)"
+				`	Hai (Unfettered Wanderer Tribute):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai (Unfettered Wanderer Tribute)" < 0
+					goto "toggle friendly: Hai (Unfettered Wanderer Tribute)"
+				`	Hai (Wormhole Access):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Hai (Wormhole Access)" >= 0
+					goto "toggle hostile: Hai (Wormhole Access)"
+				`	Hai (Wormhole Access):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Hai (Wormhole Access)" < 0
+					goto "toggle friendly: Hai (Wormhole Access)"
+				`	Heliarch:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Heliarch" >= 0
+					goto "toggle hostile: Heliarch"
+				`	Heliarch:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Heliarch" < 0
+					goto "toggle friendly: Heliarch"
+				`	Independent:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Independent" >= 0
+					goto "toggle hostile: Independent"
+				`	Independent:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Independent" < 0
+					goto "toggle friendly: Independent"
+				`	Independent (Killable):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Independent (Killable)" >= 0
+					goto "toggle hostile: Independent (Killable)"
+				`	Independent (Killable):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Independent (Killable)" < 0
+					goto "toggle friendly: Independent (Killable)"
+				`	Indigenous Lifeform:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Indigenous Lifeform" >= 0
+					goto "toggle hostile: Indigenous Lifeform"
+				`	Indigenous Lifeform:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Indigenous Lifeform" < 0
+					goto "toggle friendly: Indigenous Lifeform"
+				`	Indigenous Lifeform (Astral):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Indigenous Lifeform (Astral)" >= 0
+					goto "toggle hostile: Indigenous Lifeform (Astral)"
+				`	Indigenous Lifeform (Astral):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Indigenous Lifeform (Astral)" < 0
+					goto "toggle friendly: Indigenous Lifeform (Astral)"
+				`	Ka'het:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Ka'het" >= 0
+					goto "toggle hostile: Ka'het"
+				`	Ka'het:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Ka'het" < 0
+					goto "toggle friendly: Ka'het"
+				`	Ka'het (Infighting):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Ka'het (Infighting)" >= 0
+					goto "toggle hostile: Ka'het (Infighting)"
+				`	Ka'het (Infighting):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Ka'het (Infighting)" < 0
+					goto "toggle friendly: Ka'het (Infighting)"
+				`	Ka'sei:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Ka'sei" >= 0
+					goto "toggle hostile: Ka'sei"
+				`	Ka'sei:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Ka'sei" < 0
+					goto "toggle friendly: Ka'sei"
+				`	Korath:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Korath" >= 0
+					goto "toggle hostile: Korath"
+				`	Korath:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Korath" < 0
+					goto "toggle friendly: Korath"
+				`	Korath (Civilian):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Korath (Civilian)" >= 0
+					goto "toggle hostile: Korath (Civilian)"
+				`	Korath (Civilian):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Korath (Civilian)" < 0
+					goto "toggle friendly: Korath (Civilian)"
+				`	Korath Nanobots:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Korath Nanobots" >= 0
+					goto "toggle hostile: Korath Nanobots"
+				`	Korath Nanobots:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Korath Nanobots" < 0
+					goto "toggle friendly: Korath Nanobots"
+				`	Kor Efret:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Kor Efret" >= 0
+					goto "toggle hostile: Kor Efret"
+				`	Kor Efret:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Kor Efret" < 0
+					goto "toggle friendly: Kor Efret"
+				`	Kor Mereti:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Kor Mereti" >= 0
+					goto "toggle hostile: Kor Mereti"
+				`	Kor Mereti:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Kor Mereti" < 0
+					goto "toggle friendly: Kor Mereti"
+				`	Kor Mereti (Hostile):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Kor Mereti (Hostile)" >= 0
+					goto "toggle hostile: Kor Mereti (Hostile)"
+				`	Kor Mereti (Hostile):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Kor Mereti (Hostile)" < 0
+					goto "toggle friendly: Kor Mereti (Hostile)"
+				`	Kor Sestor:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Kor Sestor" >= 0
+					goto "toggle hostile: Kor Sestor"
+				`	Kor Sestor:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Kor Sestor" < 0
+					goto "toggle friendly: Kor Sestor"
+				`	Marauder:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Marauder" >= 0
+					goto "toggle hostile: Marauder"
+				`	Marauder:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Marauder" < 0
+					goto "toggle friendly: Marauder"
+				`	Merchant:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Merchant" >= 0
+					goto "toggle hostile: Merchant"
+				`	Merchant:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Merchant" < 0
+					goto "toggle friendly: Merchant"
+				`	Merchant (Hijacked):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Merchant (Hijacked)" >= 0
+					goto "toggle hostile: Merchant (Hijacked)"
+				`	Merchant (Hijacked):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Merchant (Hijacked)" < 0
+					goto "toggle friendly: Merchant (Hijacked)"
+				`	Militia:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Militia" >= 0
+					goto "toggle hostile: Militia"
+				`	Militia:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Militia" < 0
+					goto "toggle friendly: Militia"
+				`	Navy Intelligence:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Navy Intelligence" >= 0
+					goto "toggle hostile: Navy Intelligence"
+				`	Navy Intelligence:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Navy Intelligence" < 0
+					goto "toggle friendly: Navy Intelligence"
+				`	Navy (Oathkeeper):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Navy (Oathkeeper)" >= 0
+					goto "toggle hostile: Navy (Oathkeeper)"
+				`	Navy (Oathkeeper):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Navy (Oathkeeper)" < 0
+					goto "toggle friendly: Navy (Oathkeeper)"
+				`	Neutral:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Neutral" >= 0
+					goto "toggle hostile: Neutral"
+				`	Neutral:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Neutral" < 0
+					goto "toggle friendly: Neutral"
+				`	Parrot:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Parrot" >= 0
+					goto "toggle hostile: Parrot"
+				`	Parrot:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Parrot" < 0
+					goto "toggle friendly: Parrot"
+				`	Pirate:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Pirate" >= 0
+					goto "toggle hostile: Pirate"
+				`	Pirate:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Pirate" < 0
+					goto "toggle friendly: Pirate"
+				`	Pirate (Devil-Run Gang):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Pirate (Devil-Run Gang)" >= 0
+					goto "toggle hostile: Pirate (Devil-Run Gang)"
+				`	Pirate (Devil-Run Gang):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Pirate (Devil-Run Gang)" < 0
+					goto "toggle friendly: Pirate (Devil-Run Gang)"
+				`	Pirate (Rival):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Pirate (Rival)" >= 0
+					goto "toggle hostile: Pirate (Rival)"
+				`	Pirate (Rival):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Pirate (Rival)" < 0
+					goto "toggle friendly: Pirate (Rival)"
+				`	Pug:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Pug" >= 0
+					goto "toggle hostile: Pug"
+				`	Pug:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Pug" < 0
+					goto "toggle friendly: Pug"
+				`	Pug (Wanderer):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Pug (Wanderer)" >= 0
+					goto "toggle hostile: Pug (Wanderer)"
+				`	Pug (Wanderer):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Pug (Wanderer)" < 0
+					goto "toggle friendly: Pug (Wanderer)"
+				`	Quarg:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Quarg" >= 0
+					goto "toggle hostile: Quarg"
+				`	Quarg:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Quarg" < 0
+					goto "toggle friendly: Quarg"
+				`	Quarg (Gegno):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Quarg (Gegno)" >= 0
+					goto "toggle hostile: Quarg (Gegno)"
+				`	Quarg (Gegno):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Quarg (Gegno)" < 0
+					goto "toggle friendly: Quarg (Gegno)"
+				`	Quarg (Hai):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Quarg (Hai)" >= 0
+					goto "toggle hostile: Quarg (Hai)"
+				`	Quarg (Hai):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Quarg (Hai)" < 0
+					goto "toggle friendly: Quarg (Hai)"
+				`	Quarg (Kor Efret):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Quarg (Kor Efret)" >= 0
+					goto "toggle hostile: Quarg (Kor Efret)"
+				`	Quarg (Kor Efret):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Quarg (Kor Efret)" < 0
+					goto "toggle friendly: Quarg (Kor Efret)"
+				`	Remnant:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Remnant" >= 0
+					goto "toggle hostile: Remnant"
+				`	Remnant:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Remnant" < 0
+					goto "toggle friendly: Remnant"
+				`	Remnant (Research):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Remnant (Research)" >= 0
+					goto "toggle hostile: Remnant (Research)"
+				`	Remnant (Research):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Remnant (Research)" < 0
+					goto "toggle friendly: Remnant (Research)"
+				`	Republic:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Republic" >= 0
+					goto "toggle hostile: Republic"
+				`	Republic:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Republic" < 0
+					goto "toggle friendly: Republic"
+				`	Republic (Friendly):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Republic (Friendly)" >= 0
+					goto "toggle hostile: Republic (Friendly)"
+				`	Republic (Friendly):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Republic (Friendly)" < 0
+					goto "toggle friendly: Republic (Friendly)"
+				`	Republic Intelligence:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Republic Intelligence" >= 0
+					goto "toggle hostile: Republic Intelligence"
+				`	Republic Intelligence:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Republic Intelligence" < 0
+					goto "toggle friendly: Republic Intelligence"
+				`	Republic that won't enter wormhole:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Republic that won't enter wormhole" >= 0
+					goto "toggle hostile: Republic that won't enter wormhole"
+				`	Republic that won't enter wormhole:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Republic that won't enter wormhole" < 0
+					goto "toggle friendly: Republic that won't enter wormhole"
+				`	Rulei:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Rulei" >= 0
+					goto "toggle hostile: Rulei"
+				`	Rulei:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Rulei" < 0
+					goto "toggle friendly: Rulei"
+				`	Scar's Legion:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Scar's Legion" >= 0
+					goto "toggle hostile: Scar's Legion"
+				`	Scar's Legion:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Scar's Legion" < 0
+					goto "toggle friendly: Scar's Legion"
+				`	Scar's Legion (Killable):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Scar's Legion (Killable)" >= 0
+					goto "toggle hostile: Scar's Legion (Killable)"
+				`	Scar's Legion (Killable):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Scar's Legion (Killable)" < 0
+					goto "toggle friendly: Scar's Legion (Killable)"
+				`	Sheragi:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Sheragi" >= 0
+					goto "toggle hostile: Sheragi"
+				`	Sheragi:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Sheragi" < 0
+					goto "toggle friendly: Sheragi"
+				`	Smuggler (Hai Trafficker):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Smuggler (Hai Trafficker)" >= 0
+					goto "toggle hostile: Smuggler (Hai Trafficker)"
+				`	Smuggler (Hai Trafficker):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Smuggler (Hai Trafficker)" < 0
+					goto "toggle friendly: Smuggler (Hai Trafficker)"
+				`	Syndicate:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Syndicate" >= 0
+					goto "toggle hostile: Syndicate"
+				`	Syndicate:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Syndicate" < 0
+					goto "toggle friendly: Syndicate"
+				`	Syndicate (Extremist):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Syndicate (Extremist)" >= 0
+					goto "toggle hostile: Syndicate (Extremist)"
+				`	Syndicate (Extremist):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Syndicate (Extremist)" < 0
+					goto "toggle friendly: Syndicate (Extremist)"
+				`	Syndicate (Hostile):	Currently Friendly	(toggle)`
+					to display
+						"reputation: Syndicate (Hostile)" >= 0
+					goto "toggle hostile: Syndicate (Hostile)"
+				`	Syndicate (Hostile):	Currently Hostile	(toggle)`
+					to display
+						"reputation: Syndicate (Hostile)" < 0
+					goto "toggle friendly: Syndicate (Hostile)"
+				`	Team Blue:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Team Blue" >= 0
+					goto "toggle hostile: Team Blue"
+				`	Team Blue:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Team Blue" < 0
+					goto "toggle friendly: Team Blue"
+				`	Team Red:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Team Red" >= 0
+					goto "toggle hostile: Team Red"
+				`	Team Red:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Team Red" < 0
+					goto "toggle friendly: Team Red"
+				`	Test Dummy:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Test Dummy" >= 0
+					goto "toggle hostile: Test Dummy"
+				`	Test Dummy:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Test Dummy" < 0
+					goto "toggle friendly: Test Dummy"
+				`	Uninhabited:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Uninhabited" >= 0
+					goto "toggle hostile: Uninhabited"
+				`	Uninhabited:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Uninhabited" < 0
+					goto "toggle friendly: Uninhabited"
+				`	Unknown:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Unknown" >= 0
+					goto "toggle hostile: Unknown"
+				`	Unknown:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Unknown" < 0
+					goto "toggle friendly: Unknown"
+				`	Wanderer:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Wanderer" >= 0
+					goto "toggle hostile: Wanderer"
+				`	Wanderer:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Wanderer" < 0
+					goto "toggle friendly: Wanderer"
+				`	Wormhole Alpha:	Currently Friendly	(toggle)`
+					to display
+						"reputation: Wormhole Alpha" >= 0
+					goto "toggle hostile: Wormhole Alpha"
+				`	Wormhole Alpha:	Currently Hostile	(toggle)`
+					to display
+						"reputation: Wormhole Alpha" < 0
+					goto "toggle friendly: Wormhole Alpha"
+			
+			label "toggle friendly: Alpha"
+			action
+				"reputation: Alpha" = 10
+			`	Reputation with Alpha changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Author"
+			action
+				"reputation: Author" = 10
+			`	Reputation with Author changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bad Trip"
+			action
+				"reputation: Bad Trip" = 10
+			`	Reputation with Bad Trip changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bounty"
+			action
+				"reputation: Bounty" = 10
+			`	Reputation with Bounty changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bounty (Disguised)"
+			action
+				"reputation: Bounty (Disguised)" = 10
+			`	Reputation with Bounty (Disguised) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bounty Hunter"
+			action
+				"reputation: Bounty Hunter" = 10
+			`	Reputation with Bounty Hunter changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bounty Hunter that Won't Enter Hai Space"
+			action
+				"reputation: Bounty Hunter that Won't Enter Hai Space" = 10
+			`	Reputation with Bounty Hunter that Won't Enter Hai Space changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Builder"
+			action
+				"reputation: Builder" = 10
+			`	Reputation with Builder changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bunrodea"
+			action
+				"reputation: Bunrodea" = 10
+			`	Reputation with Bunrodea changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bunrodea (Erabu)"
+			action
+				"reputation: Bunrodea (Erabu)" = 10
+			`	Reputation with Bunrodea (Erabu) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bunrodea (Guard)"
+			action
+				"reputation: Bunrodea (Guard)" = 10
+			`	Reputation with Bunrodea (Guard) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Bunrodea (Megasa)"
+			action
+				"reputation: Bunrodea (Megasa)" = 10
+			`	Reputation with Bunrodea (Megasa) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Coalition"
+			action
+				"reputation: Coalition" = 10
+			`	Reputation with Coalition changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Deep"
+			action
+				"reputation: Deep" = 10
+			`	Reputation with Deep changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Deep Security"
+			action
+				"reputation: Deep Security" = 10
+			`	Reputation with Deep Security changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Derelict"
+			action
+				"reputation: Derelict" = 10
+			`	Reputation with Derelict changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Drak"
+			action
+				"reputation: Drak" = 10
+			`	Reputation with Drak changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Drak (Hostile)"
+			action
+				"reputation: Drak (Hostile)" = 10
+			`	Reputation with Drak (Hostile) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Elenctic Commune"
+			action
+				"reputation: Elenctic Commune" = 10
+			`	Reputation with Elenctic Commune changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Ember Waste"
+			action
+				"reputation: Ember Waste" = 10
+			`	Reputation with Ember Waste changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Escort (Betraying)"
+			action
+				"reputation: Escort (Betraying)" = 10
+			`	Reputation with Escort (Betraying) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Forest (Prey)"
+			action
+				"reputation: Forest (Prey)" = 10
+			`	Reputation with Forest (Prey) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Free Worlds"
+			action
+				"reputation: Free Worlds" = 10
+			`	Reputation with Free Worlds changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Free Worlds that won't enter wormhole"
+			action
+				"reputation: Free Worlds that won't enter wormhole" = 10
+			`	Reputation with Free Worlds that won't enter wormhole changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno"
+			action
+				"reputation: Gegno" = 10
+			`	Reputation with Gegno changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Scin"
+			action
+				"reputation: Gegno Scin" = 10
+			`	Reputation with Gegno Scin changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Scin (Neutral)"
+			action
+				"reputation: Gegno Scin (Neutral)" = 10
+			`	Reputation with Gegno Scin (Neutral) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Vi"
+			action
+				"reputation: Gegno Vi" = 10
+			`	Reputation with Gegno Vi changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Vi (Duelist A)"
+			action
+				"reputation: Gegno Vi (Duelist A)" = 10
+			`	Reputation with Gegno Vi (Duelist A) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Vi (Duelist B)"
+			action
+				"reputation: Gegno Vi (Duelist B)" = 10
+			`	Reputation with Gegno Vi (Duelist B) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Gegno Vi (Neutral)"
+			action
+				"reputation: Gegno Vi (Neutral)" = 10
+			`	Reputation with Gegno Vi (Neutral) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai"
+			action
+				"reputation: Hai" = 10
+			`	Reputation with Hai changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai (Friendly Unfettered)"
+			action
+				"reputation: Hai (Friendly Unfettered)" = 10
+			`	Reputation with Hai (Friendly Unfettered) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai Merchant"
+			action
+				"reputation: Hai Merchant" = 10
+			`	Reputation with Hai Merchant changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai Merchant (Human)"
+			action
+				"reputation: Hai Merchant (Human)" = 10
+			`	Reputation with Hai Merchant (Human) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai Merchant (Sympathizers)"
+			action
+				"reputation: Hai Merchant (Sympathizers)" = 10
+			`	Reputation with Hai Merchant (Sympathizers) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai (Unfettered)"
+			action
+				"reputation: Hai (Unfettered)" = 10
+			`	Reputation with Hai (Unfettered) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai (Unfettered Civilians)"
+			action
+				"reputation: Hai (Unfettered Civilians)" = 10
+			`	Reputation with Hai (Unfettered Civilians) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai (Unfettered Wanderer Tribute)"
+			action
+				"reputation: Hai (Unfettered Wanderer Tribute)" = 10
+			`	Reputation with Hai (Unfettered Wanderer Tribute) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Hai (Wormhole Access)"
+			action
+				"reputation: Hai (Wormhole Access)" = 10
+			`	Reputation with Hai (Wormhole Access) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Heliarch"
+			action
+				"reputation: Heliarch" = 10
+			`	Reputation with Heliarch changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Independent"
+			action
+				"reputation: Independent" = 10
+			`	Reputation with Independent changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Independent (Killable)"
+			action
+				"reputation: Independent (Killable)" = 10
+			`	Reputation with Independent (Killable) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Indigenous Lifeform"
+			action
+				"reputation: Indigenous Lifeform" = 10
+			`	Reputation with Indigenous Lifeform changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Indigenous Lifeform (Astral)"
+			action
+				"reputation: Indigenous Lifeform (Astral)" = 10
+			`	Reputation with Indigenous Lifeform (Astral) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Ka'het"
+			action
+				"reputation: Ka'het" = 10
+			`	Reputation with Ka'het changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Ka'het (Infighting)"
+			action
+				"reputation: Ka'het (Infighting)" = 10
+			`	Reputation with Ka'het (Infighting) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Ka'sei"
+			action
+				"reputation: Ka'sei" = 10
+			`	Reputation with Ka'sei changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Korath"
+			action
+				"reputation: Korath" = 10
+			`	Reputation with Korath changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Korath (Civilian)"
+			action
+				"reputation: Korath (Civilian)" = 10
+			`	Reputation with Korath (Civilian) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Korath Nanobots"
+			action
+				"reputation: Korath Nanobots" = 10
+			`	Reputation with Korath Nanobots changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Kor Efret"
+			action
+				"reputation: Kor Efret" = 10
+			`	Reputation with Kor Efret changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Kor Mereti"
+			action
+				"reputation: Kor Mereti" = 10
+			`	Reputation with Kor Mereti changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Kor Mereti (Hostile)"
+			action
+				"reputation: Kor Mereti (Hostile)" = 10
+			`	Reputation with Kor Mereti (Hostile) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Kor Sestor"
+			action
+				"reputation: Kor Sestor" = 10
+			`	Reputation with Kor Sestor changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Marauder"
+			action
+				"reputation: Marauder" = 10
+			`	Reputation with Marauder changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Merchant"
+			action
+				"reputation: Merchant" = 10
+			`	Reputation with Merchant changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Merchant (Hijacked)"
+			action
+				"reputation: Merchant (Hijacked)" = 10
+			`	Reputation with Merchant (Hijacked) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Militia"
+			action
+				"reputation: Militia" = 10
+			`	Reputation with Militia changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Navy Intelligence"
+			action
+				"reputation: Navy Intelligence" = 10
+			`	Reputation with Navy Intelligence changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Navy (Oathkeeper)"
+			action
+				"reputation: Navy (Oathkeeper)" = 10
+			`	Reputation with Navy (Oathkeeper) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Neutral"
+			action
+				"reputation: Neutral" = 10
+			`	Reputation with Neutral changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Parrot"
+			action
+				"reputation: Parrot" = 10
+			`	Reputation with Parrot changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Pirate"
+			action
+				"reputation: Pirate" = 10
+			`	Reputation with Pirate changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Pirate (Devil-Run Gang)"
+			action
+				"reputation: Pirate (Devil-Run Gang)" = 10
+			`	Reputation with Pirate (Devil-Run Gang) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Pirate (Rival)"
+			action
+				"reputation: Pirate (Rival)" = 10
+			`	Reputation with Pirate (Rival) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Pug"
+			action
+				"reputation: Pug" = 10
+			`	Reputation with Pug changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Pug (Wanderer)"
+			action
+				"reputation: Pug (Wanderer)" = 10
+			`	Reputation with Pug (Wanderer) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Quarg"
+			action
+				"reputation: Quarg" = 10
+			`	Reputation with Quarg changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Quarg (Gegno)"
+			action
+				"reputation: Quarg (Gegno)" = 10
+			`	Reputation with Quarg (Gegno) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Quarg (Hai)"
+			action
+				"reputation: Quarg (Hai)" = 10
+			`	Reputation with Quarg (Hai) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Quarg (Kor Efret)"
+			action
+				"reputation: Quarg (Kor Efret)" = 10
+			`	Reputation with Quarg (Kor Efret) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Remnant"
+			action
+				"reputation: Remnant" = 10
+			`	Reputation with Remnant changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Remnant (Research)"
+			action
+				"reputation: Remnant (Research)" = 10
+			`	Reputation with Remnant (Research) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Republic"
+			action
+				"reputation: Republic" = 10
+			`	Reputation with Republic changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Republic (Friendly)"
+			action
+				"reputation: Republic (Friendly)" = 10
+			`	Reputation with Republic (Friendly) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Republic Intelligence"
+			action
+				"reputation: Republic Intelligence" = 10
+			`	Reputation with Republic Intelligence changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Republic that won't enter wormhole"
+			action
+				"reputation: Republic that won't enter wormhole" = 10
+			`	Reputation with Republic that won't enter wormhole changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Rulei"
+			action
+				"reputation: Rulei" = 10
+			`	Reputation with Rulei changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Scar's Legion"
+			action
+				"reputation: Scar's Legion" = 10
+			`	Reputation with Scar's Legion changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Scar's Legion (Killable)"
+			action
+				"reputation: Scar's Legion (Killable)" = 10
+			`	Reputation with Scar's Legion (Killable) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Sheragi"
+			action
+				"reputation: Sheragi" = 10
+			`	Reputation with Sheragi changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Smuggler (Hai Trafficker)"
+			action
+				"reputation: Smuggler (Hai Trafficker)" = 10
+			`	Reputation with Smuggler (Hai Trafficker) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Syndicate"
+			action
+				"reputation: Syndicate" = 10
+			`	Reputation with Syndicate changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Syndicate (Extremist)"
+			action
+				"reputation: Syndicate (Extremist)" = 10
+			`	Reputation with Syndicate (Extremist) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Syndicate (Hostile)"
+			action
+				"reputation: Syndicate (Hostile)" = 10
+			`	Reputation with Syndicate (Hostile) changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Team Blue"
+			action
+				"reputation: Team Blue" = 10
+			`	Reputation with Team Blue changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Team Red"
+			action
+				"reputation: Team Red" = 10
+			`	Reputation with Team Red changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Test Dummy"
+			action
+				"reputation: Test Dummy" = 10
+			`	Reputation with Test Dummy changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Uninhabited"
+			action
+				"reputation: Uninhabited" = 10
+			`	Reputation with Uninhabited changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Unknown"
+			action
+				"reputation: Unknown" = 10
+			`	Reputation with Unknown changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Wanderer"
+			action
+				"reputation: Wanderer" = 10
+			`	Reputation with Wanderer changed to Friendly.`
+				goto toggles
+			label "toggle friendly: Wormhole Alpha"
+			action
+				"reputation: Wormhole Alpha" = 10
+			`	Reputation with Wormhole Alpha changed to Friendly.`
+				goto toggles
+			label "toggle hostile: Alpha"
+			action
+				"reputation: Alpha" = -10
+			`	Reputation with Alpha changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Author"
+			action
+				"reputation: Author" = -10
+			`	Reputation with Author changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bad Trip"
+			action
+				"reputation: Bad Trip" = -10
+			`	Reputation with Bad Trip changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bounty"
+			action
+				"reputation: Bounty" = -10
+			`	Reputation with Bounty changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bounty (Disguised)"
+			action
+				"reputation: Bounty (Disguised)" = -10
+			`	Reputation with Bounty (Disguised) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bounty Hunter"
+			action
+				"reputation: Bounty Hunter" = -10
+			`	Reputation with Bounty Hunter changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bounty Hunter that Won't Enter Hai Space"
+			action
+				"reputation: Bounty Hunter that Won't Enter Hai Space" = -10
+			`	Reputation with Bounty Hunter that Won't Enter Hai Space changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Builder"
+			action
+				"reputation: Builder" = -10
+			`	Reputation with Builder changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bunrodea"
+			action
+				"reputation: Bunrodea" = -10
+			`	Reputation with Bunrodea changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bunrodea (Erabu)"
+			action
+				"reputation: Bunrodea (Erabu)" = -10
+			`	Reputation with Bunrodea (Erabu) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bunrodea (Guard)"
+			action
+				"reputation: Bunrodea (Guard)" = -10
+			`	Reputation with Bunrodea (Guard) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Bunrodea (Megasa)"
+			action
+				"reputation: Bunrodea (Megasa)" = -10
+			`	Reputation with Bunrodea (Megasa) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Coalition"
+			action
+				"reputation: Coalition" = -10
+			`	Reputation with Coalition changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Deep"
+			action
+				"reputation: Deep" = -10
+			`	Reputation with Deep changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Deep Security"
+			action
+				"reputation: Deep Security" = -10
+			`	Reputation with Deep Security changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Derelict"
+			action
+				"reputation: Derelict" = -10
+			`	Reputation with Derelict changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Drak"
+			action
+				"reputation: Drak" = -10
+			`	Reputation with Drak changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Drak (Hostile)"
+			action
+				"reputation: Drak (Hostile)" = -10
+			`	Reputation with Drak (Hostile) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Elenctic Commune"
+			action
+				"reputation: Elenctic Commune" = -10
+			`	Reputation with Elenctic Commune changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Ember Waste"
+			action
+				"reputation: Ember Waste" = -10
+			`	Reputation with Ember Waste changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Escort (Betraying)"
+			action
+				"reputation: Escort (Betraying)" = -10
+			`	Reputation with Escort (Betraying) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Forest (Prey)"
+			action
+				"reputation: Forest (Prey)" = -10
+			`	Reputation with Forest (Prey) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Free Worlds"
+			action
+				"reputation: Free Worlds" = -10
+			`	Reputation with Free Worlds changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Free Worlds that won't enter wormhole"
+			action
+				"reputation: Free Worlds that won't enter wormhole" = -10
+			`	Reputation with Free Worlds that won't enter wormhole changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno"
+			action
+				"reputation: Gegno" = -10
+			`	Reputation with Gegno changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Scin"
+			action
+				"reputation: Gegno Scin" = -10
+			`	Reputation with Gegno Scin changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Scin (Neutral)"
+			action
+				"reputation: Gegno Scin (Neutral)" = -10
+			`	Reputation with Gegno Scin (Neutral) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Vi"
+			action
+				"reputation: Gegno Vi" = -10
+			`	Reputation with Gegno Vi changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Vi (Duelist A)"
+			action
+				"reputation: Gegno Vi (Duelist A)" = -10
+			`	Reputation with Gegno Vi (Duelist A) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Vi (Duelist B)"
+			action
+				"reputation: Gegno Vi (Duelist B)" = -10
+			`	Reputation with Gegno Vi (Duelist B) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Gegno Vi (Neutral)"
+			action
+				"reputation: Gegno Vi (Neutral)" = -10
+			`	Reputation with Gegno Vi (Neutral) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai"
+			action
+				"reputation: Hai" = -10
+			`	Reputation with Hai changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai (Friendly Unfettered)"
+			action
+				"reputation: Hai (Friendly Unfettered)" = -10
+			`	Reputation with Hai (Friendly Unfettered) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai Merchant"
+			action
+				"reputation: Hai Merchant" = -10
+			`	Reputation with Hai Merchant changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai Merchant (Human)"
+			action
+				"reputation: Hai Merchant (Human)" = -10
+			`	Reputation with Hai Merchant (Human) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai Merchant (Sympathizers)"
+			action
+				"reputation: Hai Merchant (Sympathizers)" = -10
+			`	Reputation with Hai Merchant (Sympathizers) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai (Unfettered)"
+			action
+				"reputation: Hai (Unfettered)" = -10
+			`	Reputation with Hai (Unfettered) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai (Unfettered Civilians)"
+			action
+				"reputation: Hai (Unfettered Civilians)" = -10
+			`	Reputation with Hai (Unfettered Civilians) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai (Unfettered Wanderer Tribute)"
+			action
+				"reputation: Hai (Unfettered Wanderer Tribute)" = -10
+			`	Reputation with Hai (Unfettered Wanderer Tribute) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Hai (Wormhole Access)"
+			action
+				"reputation: Hai (Wormhole Access)" = -10
+			`	Reputation with Hai (Wormhole Access) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Heliarch"
+			action
+				"reputation: Heliarch" = -10
+			`	Reputation with Heliarch changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Independent"
+			action
+				"reputation: Independent" = -10
+			`	Reputation with Independent changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Independent (Killable)"
+			action
+				"reputation: Independent (Killable)" = -10
+			`	Reputation with Independent (Killable) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Indigenous Lifeform"
+			action
+				"reputation: Indigenous Lifeform" = -10
+			`	Reputation with Indigenous Lifeform changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Indigenous Lifeform (Astral)"
+			action
+				"reputation: Indigenous Lifeform (Astral)" = -10
+			`	Reputation with Indigenous Lifeform (Astral) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Ka'het"
+			action
+				"reputation: Ka'het" = -10
+			`	Reputation with Ka'het changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Ka'het (Infighting)"
+			action
+				"reputation: Ka'het (Infighting)" = -10
+			`	Reputation with Ka'het (Infighting) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Ka'sei"
+			action
+				"reputation: Ka'sei" = -10
+			`	Reputation with Ka'sei changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Korath"
+			action
+				"reputation: Korath" = -10
+			`	Reputation with Korath changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Korath (Civilian)"
+			action
+				"reputation: Korath (Civilian)" = -10
+			`	Reputation with Korath (Civilian) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Korath Nanobots"
+			action
+				"reputation: Korath Nanobots" = -10
+			`	Reputation with Korath Nanobots changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Kor Efret"
+			action
+				"reputation: Kor Efret" = -10
+			`	Reputation with Kor Efret changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Kor Mereti"
+			action
+				"reputation: Kor Mereti" = -10
+			`	Reputation with Kor Mereti changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Kor Mereti (Hostile)"
+			action
+				"reputation: Kor Mereti (Hostile)" = -10
+			`	Reputation with Kor Mereti (Hostile) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Kor Sestor"
+			action
+				"reputation: Kor Sestor" = -10
+			`	Reputation with Kor Sestor changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Marauder"
+			action
+				"reputation: Marauder" = -10
+			`	Reputation with Marauder changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Merchant"
+			action
+				"reputation: Merchant" = -10
+			`	Reputation with Merchant changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Merchant (Hijacked)"
+			action
+				"reputation: Merchant (Hijacked)" = -10
+			`	Reputation with Merchant (Hijacked) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Militia"
+			action
+				"reputation: Militia" = -10
+			`	Reputation with Militia changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Navy Intelligence"
+			action
+				"reputation: Navy Intelligence" = -10
+			`	Reputation with Navy Intelligence changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Navy (Oathkeeper)"
+			action
+				"reputation: Navy (Oathkeeper)" = -10
+			`	Reputation with Navy (Oathkeeper) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Neutral"
+			action
+				"reputation: Neutral" = -10
+			`	Reputation with Neutral changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Parrot"
+			action
+				"reputation: Parrot" = -10
+			`	Reputation with Parrot changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Pirate"
+			action
+				"reputation: Pirate" = -10
+			`	Reputation with Pirate changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Pirate (Devil-Run Gang)"
+			action
+				"reputation: Pirate (Devil-Run Gang)" = -10
+			`	Reputation with Pirate (Devil-Run Gang) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Pirate (Rival)"
+			action
+				"reputation: Pirate (Rival)" = -10
+			`	Reputation with Pirate (Rival) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Pug"
+			action
+				"reputation: Pug" = -10
+			`	Reputation with Pug changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Pug (Wanderer)"
+			action
+				"reputation: Pug (Wanderer)" = -10
+			`	Reputation with Pug (Wanderer) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Quarg"
+			action
+				"reputation: Quarg" = -10
+			`	Reputation with Quarg changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Quarg (Gegno)"
+			action
+				"reputation: Quarg (Gegno)" = -10
+			`	Reputation with Quarg (Gegno) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Quarg (Hai)"
+			action
+				"reputation: Quarg (Hai)" = -10
+			`	Reputation with Quarg (Hai) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Quarg (Kor Efret)"
+			action
+				"reputation: Quarg (Kor Efret)" = -10
+			`	Reputation with Quarg (Kor Efret) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Remnant"
+			action
+				"reputation: Remnant" = -10
+			`	Reputation with Remnant changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Remnant (Research)"
+			action
+				"reputation: Remnant (Research)" = -10
+			`	Reputation with Remnant (Research) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Republic"
+			action
+				"reputation: Republic" = -10
+			`	Reputation with Republic changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Republic (Friendly)"
+			action
+				"reputation: Republic (Friendly)" = -10
+			`	Reputation with Republic (Friendly) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Republic Intelligence"
+			action
+				"reputation: Republic Intelligence" = -10
+			`	Reputation with Republic Intelligence changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Republic that won't enter wormhole"
+			action
+				"reputation: Republic that won't enter wormhole" = -10
+			`	Reputation with Republic that won't enter wormhole changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Rulei"
+			action
+				"reputation: Rulei" = -10
+			`	Reputation with Rulei changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Scar's Legion"
+			action
+				"reputation: Scar's Legion" = -10
+			`	Reputation with Scar's Legion changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Scar's Legion (Killable)"
+			action
+				"reputation: Scar's Legion (Killable)" = -10
+			`	Reputation with Scar's Legion (Killable) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Sheragi"
+			action
+				"reputation: Sheragi" = -10
+			`	Reputation with Sheragi changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Smuggler (Hai Trafficker)"
+			action
+				"reputation: Smuggler (Hai Trafficker)" = -10
+			`	Reputation with Smuggler (Hai Trafficker) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Syndicate"
+			action
+				"reputation: Syndicate" = -10
+			`	Reputation with Syndicate changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Syndicate (Extremist)"
+			action
+				"reputation: Syndicate (Extremist)" = -10
+			`	Reputation with Syndicate (Extremist) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Syndicate (Hostile)"
+			action
+				"reputation: Syndicate (Hostile)" = -10
+			`	Reputation with Syndicate (Hostile) changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Team Blue"
+			action
+				"reputation: Team Blue" = -10
+			`	Reputation with Team Blue changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Team Red"
+			action
+				"reputation: Team Red" = -10
+			`	Reputation with Team Red changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Test Dummy"
+			action
+				"reputation: Test Dummy" = -10
+			`	Reputation with Test Dummy changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Uninhabited"
+			action
+				"reputation: Uninhabited" = -10
+			`	Reputation with Uninhabited changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Unknown"
+			action
+				"reputation: Unknown" = -10
+			`	Reputation with Unknown changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Wanderer"
+			action
+				"reputation: Wanderer" = -10
+			`	Reputation with Wanderer changed to Hostile.`
+				goto toggles
+			label "toggle hostile: Wormhole Alpha"
+			action
+				"reputation: Wormhole Alpha" = -10
+			`	Reputation with Wormhole Alpha changed to Hostile.`
+				goto toggles
+		fail

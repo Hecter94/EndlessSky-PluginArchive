@@ -1,0 +1,35 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+# Payment is totally messed up here.
+mission "Import from Hai [0]"
+	name "Retrieve cargo from Hai space"
+	job
+	repeat
+	description "A wealthy individual on <planet> has heard of the alien Hai and would like you to go and retrieve <tons> of Hai goods from <stopovers>. He is willing to pay <payment>."
+	waypoint "Ultima Thule"
+	waypoint "Waypoint"
+	to offer
+		never
+		has "Discovered Hai Space: offered"
+		random < 50
+	source
+		government Pirate
+		near "Ultima Thule" 1 6
+	stopover
+		government Hai
+		near "Waypoint" 1 10
+	cargo "Hai goods" 5 2 .1
+	on stopover
+		dialog "You load the goods for your mission into the cargo hold. Now you need to return to <planet> for payment."
+	on complete
+		payment 20000 200
+		dialog "You deliver the load of Hai goods to the wealthy individual. Your account is credited with <payment> credits."
+

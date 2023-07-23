@@ -1,0 +1,171 @@
+# Copyright (c) 2023 by Alex di Giovanni
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Telashki: Bright Star Biophotovoltaics: Mist"
+	name `Star Research`
+	description `Travel to <waypoints>, and observe the way that your Mist Cell behaves in the bright starlight.`
+	to offer
+		has "First Contact: Naltok (Telashki): offered"
+		has "outfit (installed): Mist Cell"
+		random < 15
+	source
+		government Telashki
+	destination Legash
+	waypoint Rigel
+	on offer
+		conversation
+			``
+	on enter Rigel
+		dialog `You record the requested data on the Mist Cell.`
+	on complete
+		payment 48000
+		conversation
+			``
+
+mission "Star-Worm Research 1"
+	name `Star-Worm Research`
+	description `Travel to the Norelon system and record the activity of the local "Star-Worms".`
+	to offer
+		has "First Contact: Naltok (Telashki): offered"
+	source Kutora
+	waypoint Norelon
+	destination Kutora
+	on offer
+		conversation
+			`As you walk through the spaceport on <origin>, a Naltok wearing the dark-green uniform of the Ministry of Alien Life waves at you from across the room.`
+			choice
+				`	(Walk over to them.)`
+					goto talk
+				`	(Pretend not to see them.)`
+			`	After waving at you enthusiastically for a couple more seconds, the Naltok stands up and walks over to you.`
+			label talk
+			`	As you get closer, you see that their uniform has some bright blue markings, and a small logo of a bacterial cell on each shoulder.`
+			`	"You are our new human friend, yes? We could use your help with something."`
+			choice
+				`	"Certainly, tell me more!"`
+					goto eager
+				`	"That depends, what do you need?"`
+					goto cautious
+				`	"Will I be paid for this?"`
+				`	"I am too busy to do anything right now, sorry."`
+					defer
+			`	The Naltok makes a strange, guttural sound, perhaps their equivalent of laughter. "The Alphas told us as much about you humans, that the only thing that interests you is money. Yes, we will pay you."`
+				goto proposal
+			label eager
+			`	"You seem very eager, perhaps one day you will wish to settle down here and join the Ministry!"`
+				goto proposal
+			label cautious
+			`	"Do not worry, you may listen to the whole proposal before deciding."`
+			label proposal
+			`	"Here is the situation: For many years now, we have been studying an interesting phenomenon that occurs in the Norelon system. Our name for it would translate best into your language as 'Star-Worms', but essentially they are tiny flashes of light, visible from a ship's window. We have been aware for a long time that at some point, we will have to relocate this phenomenon to another star system, as the imminent supernova in Vokegol likely poses a great threat to it."`
+			choice
+				`	"Wait, what's this about a supernova?"`
+				`	(Let them continue)`
+					goto continuing
+			`	"Have none of us told you about Vokegol yet? I am not an astrophysicist, so I cannot go into much detail, but the short explanation is that the stars you see in that system are continually spiralling inwards, and when they collide they will erupt in a supernova explosion." They pause for a second, seeing your worried expression, and then continue. "Do not worry, there is no risk of anything happening in the next hundred years! This is simply a long-term plan."`
+			label continuing
+			`	"Anyways, before that system goes supernova, we need someone to help us transfer these Star-Worms to another system. Unfortunately, the recent war with the Xochira has made sending unarmed ships there too risky, so instead we would like to enlist your help. For now though, we just want you to visit the Norelon system and collect some simple data, checking whether the Star-Worms have any unexpected interactions with your ship, then return here."`
+			choice
+				`	"Sure, sounds like a plan!"`
+					accept
+				`	"I'll do it."`
+					accept
+				`	"I can't help you with that right now, but perhaps later?"`
+					set "deferred norelon recon"
+					decline
+				`	"I'm not interested in working with the Star-Worms or with your Ministry. I'm out."`
+					decline
+	on enter Norelon
+		dialog `Sure enough, your sensors detect something in this system, and you can see a number of tiny light sources all around you. After a few seconds, you finish collecting the requested data.`
+	on complete
+		payment 50000
+		dialog
+			`The Naltok from earlier is waiting for you as you land, and hands you 50,000 credits in exchange for your data.`
+			`	"Give me a few minutes to go over this, then meet me in the spaceport whenever you are interested in continuing with this work."`
+
+mission "Star-Worm Research 1 (deferred)"
+	landing
+	minor
+	name `Star-Worm Research`
+	description `Travel to the Norelon system and record the activity of the local "Star-Worms"`
+	to offer
+		has "deferred norelon recon"
+	source Kutora
+	waypoint Norelon
+	destination Kutora
+	on offer
+		conversation
+			`	The Naltok you met here before is waiting for you as you land. "So, are you ready to help with my proposal?"`
+			choice
+				`	"Yes, I am ready now."`
+					accept
+				`	"No, not right now, sorry."`
+					defer
+				`	"No, and please stop asking."`
+					decline	
+	on enter Norelon
+		dialog `Sure enough, your sensors detect something in this system, and you can see a number of tiny light sources all around you. After a few seconds, you finish collecting the requested data.`
+	on complete
+		payment 50000
+		dialog
+			`The Naltok from earlier is waiting for you as you land, and hands you 50,000 credits in exchange for your data.`
+			`	"Give me a few minutes to go over this, then meet me in the spaceport whenever you are interested in continuing with this work."`
+
+mission "Star-Worm Research 2"
+	name `Star-Worm Recovery`
+	description `Bring this five ton collecting device to the Norelon system, where it will scoop up some "Star-Worms".`
+	cargo "collecting device" 5
+	blocked "You need five tons of cargo space free to complete this mission. Return here when you have freed up enough space."
+	to offer
+		or
+			has "Star-Worm Research 1: done"
+			has "Star-Worm Research 1 (deferred): done"
+	source Kutora
+	waypoint Norelon
+	destination Kutora
+	on offer
+		conversation
+			`The Naltok from before meets you in the spaceport. "Ah perfect timing! I just finished analysing your data, and it looks like everything is in order." They pause for a moment. "Ah, I just realised I haven't introduced myself yet. My name is Takirsha Nozirlon, I am head of the Star-Worms Department."`
+			choice #todo: more options here
+				`	"I am <first> <last>, a travelling merchant captain."`
+				`	"I am <first> <last>, the legendary hero of humanity."`
+					to display
+						has "main plot completed"
+				`	"I am <first> <last>, a member of the Free Worlds Council."`
+					to display
+						has "FW Northern 3: done"
+				`	"It's good to see you again. Could you tell me more about the Star-Worms?"`
+					goto starworms
+				`	"Let's skip the formalities. Do you have any more assignments for me?"`
+					goto assignment
+			`	"I am glad for the opportunity to work with you, <first>. I hope this can be the beginning of a long collaborative working relationship between you and the Ministry of Alien Life. Before I tell you about the next part of the plan, would you like to ask anything?"`
+			choice
+				`	"What actually are these Star-Worms?"`
+				`	"No, I don't have anything to ask. What's the plan?"`
+					goto assignment
+			label starworms
+			`	"The Star-Worms are not really worms in the traditional sense - they are actually a complex filamentous arrangement of bacterial cells. They live in the vacuum of space, and are able to extract energy from ionised dust and gas. The most interesting thing we've learned about them is that they seem to be able to propel themselves directionally in a manner not totally dissimilar to the way ion engines work, albeit at a vastly lower specific impulse. We've noticed that they often cling to the exterior of ships, and our research has suggested that they are attracted to the shields."`
+			`	"As yet, the fact that the Star-Worms can only survive in a near-total vacuum, and require the presence of small amounts of ionised matter to provide them with energy, has made it difficult to cultivate them in laboratory environments. We can study their activity, but we cannot effectively induce them to replicate on large scales, so we have been shipping them in from Norelon rather than trying to cultivate them locally."`
+			label assignment
+			`	"To continue our research, we need to ship more Star-Worms here from Norelon. What we need you to do is bring this 5 ton collecting device to the Norelon system, where it will scoop up some Star-Worms for use in our research."`
+			choice
+				`	"Alright, I'll do it."`
+					accept
+	on enter Norelon
+		dialog `You open up your cargo hold and activate the collecting device. You can see the lights from the Star-Worms as they zoom toward the device, which switches off after about half a minute. Time to head back to Kutora`
+	on complete
+		payment 50000
+		dialog
+			`Takirsha is not there to greet you when you land, but some dockworkers with similar uniforms carefully unload the collecting device from your ship and pay you <payment>.`
+			`"Takirsha is in a meeting right now, but she told us to tell you that it will probably take a few weeks to perform the necessary experiments. She will let you know when your help is needed again."`
+		event "star-worm research ready" 14 42
+		log `Helped the Naltok aquire some "Star-Worms" from the Norelon system.`
+
+event "star-worm research ready"

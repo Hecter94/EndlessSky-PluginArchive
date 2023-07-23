@@ -1,0 +1,264 @@
+mission "Levi Opening"
+	landing
+	repeat
+	source "Bluestone"
+	to offer
+		"credits" > 20000000
+	on offer
+		conversation
+			`You land on the planet, looking around for this so-called "Levi's Customs" you've heard about. You're approached by a large man in a welding apron, who wastes no time introducing himself: "Welcome to Levi's customs, home of the finest augmented ships this side of the galactic core," He greets, "I'm Levi Hangam; the third. My family's been modifying Leviathans since before I was born, and if I may be so bold, I'd say we're among the best at it," He states with a proud chuckle.`
+			`"So you make marauder-type vessels?" You ask. Levi chuckles and shakes his head, "We go much further than a typical marauder work crew," He states calmly, "We go through the Leviathan and rebuild it plate by plate, to the exact specifications of our customers," He explains, "Hardpoints, hull integrity, and even special features not found elsewhere in human space; each Leviathan we put out is unique as it gets," He details, pausing for a moment, before adding a sly, "So, can I interest you in a custom worked Leviathan?" He asks, "We start at 20 million credits."`
+			choice
+				`	"20 Million? That's a lot!"`
+					goto cost
+				`	"I'm sorry, I don't have that kind of money at the moment."`
+					defer
+				`	"Absolutely. Let's see if you live up to your self-hype."`
+					goto start
+					
+			label cost
+			`"It's pricey, sure, but you won't find better quality in human space, I assure you. They may start out as humble Leviathans, but once we're done with them they can easily go toe-to-toe with the republic's mightiest ships," Levi states matter-of-factly.`
+			choice
+				`	"I'm sorry, I don't have that kind of money at the moment."`
+					defer
+				`	"Absolutely. Let's see if you live up to your self-hype."`
+					goto start
+					
+			label start
+			action
+				payment -20000000
+			`"Alright!" He cheers, grabbing a notepad from his desk, "So, for starters, we offer hardpoints in sets of two: Two guns, two turrets, or two bays for fighters. You get to pick up to three pairs of hardpoints to be added do your new ship; we'll handle the logistics," He states.`
+			`You nod, thinking about the hardpoint setup you'd want the most.`
+			choice
+				`	"Three pairs of guns."`
+					goto 3guns
+				`	"Three pairs of turrets."`
+					goto 3turrets
+				`	"Three pairs of fighter bays."`
+					goto 3fighters
+				`	"Two pairs of guns and one pair of turrets."`
+					goto 2guns1turret
+				`	"Two pairs of guns and one pair of fighter bays."`
+					goto 2guns1fighter
+				`	"One pair of guns and two pairs of turrets."`
+					goto 1gun2turrets
+				`	"One pair of guns and two pairs of fighter bays."`
+					goto 1gun2fighters
+				`	"Two pairs of turrets and one pair of fighter bays."`
+					goto 2turrets1fighter
+				`	"One pair of turrets and two pairs of fighter bays."`
+					goto 1turret2fighters
+				`	"One pair of each hardpoint type."`
+					goto 1gun1turret1fighter
+					
+			label 3guns
+			action
+				give ship "Custom Leviathan (3Guns)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+			
+			label 3turrets
+			action
+				give ship "Custom Leviathan (3Turrets)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 3fighters
+			action
+				give ship "Custom Leviathan (3Fighters)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 2guns1turret
+			action
+				give ship "Custom Leviathan (2Guns1Turret)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 2guns1fighter
+			action
+				give ship "Custom Leviathan (2Guns1Fighter)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 1gun2turrets
+			action
+				give ship "Custom Leviathan (1Gun2Turrets)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 1gun2fighters
+			action
+				give ship "Custom Leviathan (1Gun2Fighters)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 2turrets1fighter
+			action
+				give ship "Custom Leviathan (2Turrets1Fighter)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 1turret2fighters
+			action
+				give ship "Custom Leviathan (1Turret2Fighters)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label 1gun1turret1fighter
+			action
+				give ship "Custom Leviathan (1Gun1Turret1Fighter)" "Custom Leviathan"
+			`"Alright, that's hardpoints," Levi says, nodding slightly in approval.`
+				goto flagship
+				
+			label flagship
+			`"Now, to do the modifications, I need you to set your new Leviathan as your flagship, take off, fly around a bit, and bring it back here so we can finish up," He says.`
+			`You tilt your head, "Can't you do it right away?" You ask.`
+			`Levi shakes his head, "Company policy; I don't need you to fly it for long. Just hop into it as if it were a new, shiny flagship, take off, and land back here. I don't even need you to really go anywhere; just departing and landing right away is fine by me."`
+				decline
+				
+mission "Levi Finishing"
+	landing
+	repeat
+	source "Bluestone"
+	on offer
+		require "Levi's Tag" 1
+		outfit "Levi's Tag" -1
+		conversation
+			`"Alright, welcome back," Levi says, "Now, let's finish up your ship: You can choose between reinforcing your hull and shields, increasing your weapon capacity, or increasing your engine capacity," He states, "Unlike the hardpoints, you get to pick four times," He details.`
+			`You nod, thinking for a good long moment about what would best suit your new ship.`
+			choice
+				`	"Give her some thicker skin."`
+					goto hullone
+				`	"Ramp up her firepower."`
+					goto weaponone
+				`	"Give her some speed."`
+					goto engineone
+					
+			label hullone
+			action
+				outfit "Health Increase" 1
+			`"More durability it is. Next pick?" Levi asks.`
+				goto choice2
+				
+			label weaponone
+			action
+				outfit "Weapon Increase" 1
+			`"More firepower it is. Next pick?" Levi asks.`
+				goto choice2
+				
+			label engineone
+			action
+				outfit "Engine Increase" 1
+			`"More durability it is. Next pick?" Levi asks.`
+				goto choice2
+				
+			label choice2
+			choice
+				`	"Give her some thicker skin."`
+					goto hulltwo
+				`	"Ramp up her firepower."`
+					goto weapontwo
+				`	"Give her some speed."`
+					goto enginetwo
+				
+			label hulltwo
+			action
+				outfit "Health Increase" 1
+			`"More durability it is. Last pick?" Levi asks.`
+				goto choice2b
+				
+			label weapontwo
+			action
+				outfit "Weapon Increase" 1
+			`"More firepower it is. Last pick?" Levi asks.`
+				goto choice2b
+				
+			label enginetwo
+			action
+				outfit "Engine Increase" 1
+			`"More durability it is. Last pick?" Levi asks.`
+				goto choice2b
+				
+			label choice2b
+			choice
+				`	"Give her some thicker skin."`
+					goto hulltwob
+				`	"Ramp up her firepower."`
+					goto weapontwob
+				`	"Give her some speed."`
+					goto enginetwob
+					
+			label hulltwob
+			action
+				outfit "Health Increase" 1
+			`"More durability it is. Last pick?" Levi asks.`
+				goto choice3
+				
+			label weapontwob
+			action
+				outfit "Weapon Increase" 1
+			`"More firepower it is. Last pick?" Levi asks.`
+				goto choice3
+				
+			label enginetwob
+			action
+				outfit "Engine Increase" 1
+			`"More durability it is. Last pick?" Levi asks.`
+				goto choice3
+				
+			label choice3
+			choice
+				`	"Give her some thicker skin."`
+					goto hullthree
+				`	"Ramp up her firepower."`
+					goto weaponthree
+				`	"Give her some speed."`
+					goto enginethree
+				
+			label hullthree
+			action
+				outfit "Health Increase" 1
+			`"More durability it is. For your last pick, we offer a choice between cooling tune-up, integrated hull and shield recovery, and an integral energy and fuel reactor," Levi states, "What special augment can I interest you in today?"`
+				goto choice4
+				
+			label weaponthree
+			action
+				outfit "Weapon Increase" 1
+			`"More firepower it is. For your last pick, we offer a choice between cooling tune-up, integrated hull and shield recovery, and an integral energy and fuel reactor," Levi states, "What special augment can I interest you in today?"`
+				goto choice4
+				
+			label enginethree
+			action
+				outfit "Engine Increase" 1
+			`"More durability it is. For your last pick, we offer a choice between cooling tune-up, integrated hull and shield recovery, and an integral energy and fuel reactor," Levi states, "What special augment can I interest you in today?"`
+				goto choice4
+				
+			label choice4
+			choice
+				`	"Keep it cool."`
+					goto coolingone
+				`	"Some healing on the go never hurt."`
+					goto healingone
+				`	"Can never have enough energy or fuel."`
+					goto reactorone
+					
+			label coolingone
+			action
+				outfit "Cooling Augment" 1
+			`"With the coolers installed, she's all yours, captain. One fully customized Leviathan, ready to take on the galaxy," He says with a soft chuckle, firmly shaking your hand after you sign the licensing papers, "If anyone asks, you know where to send 'em," He adds with a wink, chuckling a bit.`
+				decline
+				
+			label healingone
+			action
+				outfit "Regeneration Augment" 1
+			`"With the regenerators installed, she's all yours, captain. One fully customized Leviathan, ready to take on the galaxy," He says with a soft chuckle, firmly shaking your hand after you sign the licensing papers, "If anyone asks, you know where to send 'em," He adds with a wink, chuckling a bit.`
+				decline
+				
+			label reactorone
+			action
+				outfit "Generator Augment" 1
+			`"With the reactors installed, she's all yours, captain. One fully customized Leviathan, ready to take on the galaxy," He says with a soft chuckle, firmly shaking your hand after you sign the licensing papers, "If anyone asks, you know where to send 'em," He adds with a wink, chuckling a bit.`
+				decline
+				
+			

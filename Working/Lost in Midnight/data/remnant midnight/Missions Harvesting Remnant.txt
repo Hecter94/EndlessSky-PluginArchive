@@ -37,14 +37,16 @@ mission "Harvesting Quantumium Research"
 			`	Aeolus is surprised when you present him with the Quantumium. "I would be very interested in more samples. Probably ten would be enough. You will be rewarded with <payment>."`
 			choice
 				`	"I will bring them to you as soon as I can."`
-					accept
+					goto end
 				`	"It was hard just getting this one."`
-			`	"I see. If they are that rare, then we might not have a practical use for them." He taps at his commlink and walks away."`
+			`	"I see. If they are that rare, then we might not have a practical use for them." He taps at his commlink and walks away.`
 				decline
+			label end
+			`	"May the Embers burn bright for you captain." He taps at his commlink and walks away.`
 	on defer
 		set "Randomize Harvesting Quantumium Research"
 	on enter "Sagittarius A*"
-		dialog `A Raider is struggling against the gravitational forces of the black hole...`
+		dialog `A Palavret is struggling against the gravitational forces of the black hole...`
 	npc
 		government "Korath"
 		system "Sagittarius A*"
@@ -150,6 +152,8 @@ mission "Salvage Raider"
 			cargo 3
 			commodities "Food" "Medical"
 			variant
+				"Palavret (Ember)"
+			variant
 				"Palavret (Ember Blaze)"
 			variant
 				"Palavret (Ember Shunt)"
@@ -185,6 +189,8 @@ mission "Salvage Dredger"
 			commodities "Food" "Medical"
 			variant
 				"Rano'erek"
+			variant
+				"Rano'erek (Shunt)"
 		dialog "You have disabled the Korath ship that the Remnant want to plunder. You can now return to <planet> and collect your payment."
 	on fail
 		dialog `You have failed to disable the Korath ship so that the Remnant can salvage it for technology...`
@@ -213,3 +219,51 @@ mission "Remnant Atmospheric Samples"
 		payment
 		payment 150000
 		dialog `You arrive back on <planet> and offload the atmospheric gas sample. A logistics adjustment of <payment> has been applied to your account.`
+
+
+
+mission "Midnight Remnant Tech: Turbo Blaster"
+	name "Retrieve Turbo Blasters"
+	description "A Remnant engineer has asked you for a delivery of two Turbo Blasters to <planet> for them to study."
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Turbo Blaster"
+		conversation
+			scene "outfit/turbo blaster"
+			`You remember that Taely was interested in seeing examples of technology from human space. Would you like to show her your Turbo Blaster?`
+			choice
+				`	(Not now.)`
+					defer
+				`	(Yes.)`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`	After asking a few people, you finally get directed to a bay in the shipyard where you find Taely just finishing the installation of a Point Defense Turret onto an Albatross. "Greetings, <first>. I will be down in a minute." She makes a few more adjustments to the turret mount, puts away her tools, and drops to the ground on a tether. "So, do you have something for me?"`
+				goto next
+			label familiar
+			`	Aware that Taely's main area of responsibility is in the shipyards, you head straight there and have almost arrived when you see Taely approaching from the direction of the cafeteria... "Greetings, Captain. I was told our scans picked up indications of uncatalogued human weaponry."`
+			choice
+				`	"I brought something that might interest you."`
+					goto next
+				`	"Did I interrupt your lunch?"`
+			`	She smiles and responds, "Yes, but I am much more interested in what you brought!"`
+			label next
+			`	You lead her back to your ship, where you show her the Turbo Blaster. "This appears to be an advanced version of the Energy Blasters our ancestors used. Are they in widespread use?" she asks, gesturing at the Turbo Blaster. You inform her that it's primarily used by pirates in the Dirt Belt, and she continues, "So none of the major governments are fielding it? Interesting. I would enjoy studying these a bit more. If you could deliver two to <planet> I would appreciate it."`
+				accept
+	on visit
+		dialog `You have returned to <planet>, but you don't have the two Turbo Blasters that Taely requested. Go acquire two Turbo Blasters before returning.`
+	on complete
+		outfit "Turbo Blaster" -2
+		payment 864000
+		"remnant met taely" ++
+		conversation
+			scene "outfit/turbo blaster"
+			`As the <ship> settles onto the pad closest to the research laboratory, you can see several people exiting an adjacent hangar with a trailer pulled by a camel. They quickly approach your landing pad and wait for you to complete your shutdown routines before boarding and starting to unload the Turbo Blasters. Once they are done one of them comes up to you and hands you your payment of <payment>. "Thank you for the delivery, Captain. We are looking forward to seeing what advances they have made to the archaic blaster weapons."`

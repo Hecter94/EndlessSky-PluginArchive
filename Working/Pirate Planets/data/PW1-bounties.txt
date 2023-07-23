@@ -1,0 +1,192 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+mission "PW initial"
+	name "Bounty on a band of criminals."
+	description "You've been asked to take out a criminal band lead by <npc> which pose a threat to the independence of the Pirate worlds. They should be somewhere near <system>."
+	minor
+	source
+		government Pirate
+		not attributes station
+	to offer
+		has "born in the Pirate Planets"
+		has "PP initial: offered"
+		random < 30
+		"combat rating" > 100
+		"reputation: Pirate Warlords" >= 15
+		"reputation: Pirate" >= 40
+		"reputation: Pirate Planets" < 0
+		"net worth" > 2000000
+	npc kill
+		personality heroic staying target marked
+		government "Pirate Planets"
+		cargo 3
+		system
+			distance 1 2
+		fleet
+			names "pirate"
+			variant 2
+				"Corvette (Missile)"
+				"Fury (Laser)" 2
+			variant 2
+				"Corvette (Speedy)"
+				"Fury (Missile)" 2
+			variant 1
+				"Raven (Heavy)" 2
+		dialog "The <npc> has been eliminated. You can claim the bounty by returning to <destination>."
+	on offer
+		log "People" "Amelia Locke" "Amelia represents a cabal of Pirate world warlords who seek to put aside their differences in order to preserve the stability of the Pirate worlds."
+		conversation
+			`You're sitting down to a bowl of steaming hot noodles with pork smothered in a fiery sauce when someone sits down across from you. You look up, expecting it to be a pilot acquaintance, but you don't recognize the woman sitting there.`
+			`	"Hello," you say. "Do I know you?"`
+			`	"No, Captain <last>," she says. "I wouldn't think so. My name is Amelia Locke. You've had quite an interesting career."`
+			`	"Have I?" you ask. "I'm just another Pirate worlds captain." You wonder how much she knows about your past, particularly the part before you were a pilot.`
+			`	"Oh yes, you've most definitely had an interesting career," she says. "First you show up on Zenith with an unknown ship, which some might suspect to have been stolen. From there, with no prior record of your having even existed and no known resources, you've gone on to establish yourself as a well respect member of the Pirate worlds community worth millions of credits. I'd say you're definitely more than just another Pirate Captain."`
+			choice
+				`	"I'm not a pirate."`
+					goto "not a pirate"
+				`	"It's nice to finally be getting the respect I deserve."`
+			`	"Of course it is!" Was that a smirk? No, you're surely mistaken.`
+			apply
+				"romantic interest with Amelia" --
+			`	"I'm not admitting to piracy, though," you say, smiling. "That's illegal."`
+			label "not a pirate"
+			`	"Of course! I never meant to suggest you were. I just mean that you're a member of the Pirate worlds, and a captain."`
+			`	"So what do you want from me? Surely you have a reason for disturbing my lunch?"`
+			`	"Of course, straight to it then. I represent a powerful group of people who understand that their interests are aligned with those of the Pirate worlds as a whole. If the Pirate worlds succeed and prosper as they have always done, so do we. On the other hand, when something threatens the Pirate worlds it's a threat to all of us. When that happens it's up to those of us with the resources to do something about it."`
+			`	"This is starting to sound like a government," you say.`
+			`	"Not at all. We don't levy taxes or tell anyone what to do. We're merely independent and successful members of the Pirate worlds making use of our own resources to see to it that the Pirate worlds continue to be the same thriving place for business of all kinds that they have always been. We understand why people choose to live here rather than bureaucratic, red-tape entangled Republic, or the autocratic and equally bureaucratic Syndicate. We don't want to change what makes the Pirate Worlds unique."`
+			choice
+				`	"Sounds great," you say. "What does this have to do with me?"`
+					goto "continue"
+				`	"You mean, you don't want anything to interfere with the Warlords' ability to enslave and exploit whoever they wish."`
+			`	She freezes, and for a split second you have the sense of a general making a tactical withdrawal in order to try an approach on easier terrain. Then her smile returns, and you wonder if you're reading too much into it. "Is that such a terrible thing?" she asks. "If people are being 'exploited,' as you say, what is that but the result of their own choices? They could make different choices and leave their situations behind if they found them so horrible. That most people don't do that simply shows they lack the drive to better themselves - or perhaps, deep down, they actually prefer to be taken care of? It's not for you and me to say, I think. You perhaps know this better than most, am I right?"`
+			choice
+				`	"That's... a surprisingly good point. What does it have to do with me, though?"`
+					goto continue
+				`	"That's a load of crap and you know it. But I like your style. Go on."`
+					goto style
+				`	You've got nothing but sputtering outrage.`
+			`	When your tongue begins to function again you can't help yourself, the words tumble out faster than you can keep track of them. "The people of the Pirate worlds are enslaved," you say. "Some of them are enslaved with chains and whips, others are kept in their places by the Warlords' stranglehold on commerce, on infrastructure like roads and electricity, and by the Warlords' refusal to allow even basic facilities like hospitals and schools. Don't talk to me about 'choice,' because the people of the Pirate worlds have none of it! If they could they would rise up and overthrow the lot of you, but they don't because they're weak and afraid, and they're kept that way by people like you. I'm done with this conversation, and I'm done with you!"`
+			`	You stand up, and in the process you accidentally (or is it on purpose?) knock the bowl of hot noodles into her lap. She gasps in surprise, and as you walk away you hear her cursing at you. You smile a satisfied smile to yourself, but you have the nagging worry that you may have just run out of friends.`
+				decline
+			label style
+			`	She seems startled but covers it quickly with a smile. "You know, I think you and I are going to get along well," she says.`
+			`	You smile as well. "Go on," you say. "Tell me where I come into this."`
+			apply
+				"romantic interest with Amelia" += 2
+			label continue
+			`	"We would like your help with a group calling themselves the 'Pirate Planets.' They've been setting up a network of rebellious villages on many of the Pirate worlds. They start by finding some real or imagined grievance that the village has, there's always something. Then they offer their protection to the villagers."`
+			`	You think back to your meeting with Jonah, and wonder if he is somehow at the root of all this. You decide it's best not to mention your connection with him, in case Amelia doesn't already know. "How is this any different from what the warlords themselves do?" you ask.`
+			`	"In many cases it's not that different at all," Amelia admits. "And if that were all it were, one warlord poaching clients from another, no one else would get involved. It would be up to the concerned parties to work out their differences. The problem is that, rather than moving in and assuming a traditional client relationship with the village, this Pirate Planets group continues to offer bribes for their support and a sham of freedom for the villagers. It's obviously unsustainable, yet the poor villagers are, as you can imagine, entirely taken in by it."`
+			`	"Why are they doing this, if it's so unsustainable?" you ask.`
+			`	"We're pretty sure their eventual goal is to use these villages as a beachhead for an armed takeover of the Pirate worlds, possibly with the help of the Republic."`
+			`	"Wait, you think they're trying to bring the Pirate Planets under Republic control? Is this a Republic plot, then?"`
+			`	"I don't know whether it was instigated by Republic provocateurs or by naive fools among the Pirate worlds. In the end, I don't think that makes much difference. Either way the plan seems to be as you say, to bring the Pirate worlds under Republic control."`
+			choice
+				`	"That's terrible! It's a betrayal of everything the Pirate worlds are about!"`
+					goto awful
+				`	"Well, maybe that's a good idea."`
+			`	Her eyes widen. "You really think so? Republic laws, more Navy ships nosing around? Taxes, Paradise world bureaucrats telling us how to live our lives? Do you really want that? That's not the kind of pilot I took you to be, based on your record!"`
+			`	This is not a woman you want to annoy. It's probably not a good idea to insist on disagreeing with her.`
+			choice
+				`	"Well, when you put it that way it does sound pretty bad. But what do you want me to do?"`
+					goto mission
+			label awful
+			`	"Indeed. I'm sure we all agree that it would be bad for all of us."`
+			choice
+				`	"So what do you need done?"`
+			label mission
+			`	"There is a small group of ships belonging to the Pirate Planets organization that seem to have an interest in <planet>. They are often seen near the <system> system. We would like you to take them out for us. We'll pay generously. How does <payment> sound?"`
+			choice
+				`	"Sounds great. I'll do it."`
+					accept
+				`	"You know, I'm actually a bit busy at the moment. Maybe you could find someone else for this job?"`
+			`	Amelia frowns. "I was really hoping we'd be able to work together. Are you sure you can't do the job?"`
+			choice
+				`	"I guess I can do it. It'll take a bit of shuffling, but I'll get it done."`
+					accept
+				`	"Yes, I'm sure. I'm just far too busy."`
+			`	"That's really very disappointing," she says. "After all, we did all that work collecting information about your background. That was a significant investment, you know." She pauses and makes a show of considering. "Though I imagine we could find some way to recoup our losses. I wonder if there are any pirate groups who would like to know about a farm boy that showed up suddenly on Zenith with an obviously stolen Star Barge?"`
+			choice
+				`	"On second thought, perhaps I can make time."`
+					accept
+
+	on decline
+		log "I told off a representative of the Warlords today. It was highly satisfying. I hope I don't come to regret it."
+		dialog "You've burned your bridges with Amelia and the Warlords, and you're pretty sure they can swing popular opinion on the Pirate worlds against you. If you still have any friends you should find them, otherwise you may want to restore from a saved game."
+		"reputation: Pirate Warlords" = -5000
+		"reputation: Pirate" = -5000
+
+	on fail
+		"reputation: Pirate Warlords" = -5000
+		"reputation: Pirate" = -5000
+		dialog "You've failed to complete the mission Amelia gave you and she's not the sort to give second chances. You doubt your reputation in the Pirate worlds is worth much now and you probably don't have many friends left in human space. You may want to restore from a saved game."
+
+	on accept
+		"reputation: Pirate Planets" -= 5000
+
+	on complete
+		log "I completed a bounty mission for the Pirate Warlords today. I destroyed a group of criminals trying to destabilize the Pirate worlds and make us vulnerable to the Republic."
+		payment 300000
+		"reputation: Pirate Warlords" += 10
+		"PW missions" ++
+		dialog "You receive <payment> and a note from Amelia thanking you. She assures you that she'll be in touch when she has another mission for you."
+
+
+mission "PW bounty, tier 1"
+	name "Bounty on Pirate Planets criminals."
+	description "Amelia asked you to take out a band of Pirate Planets agents lead by <npc>. They should be somewhere near <system>."
+	minor
+	landing
+	source
+		government Pirate
+	to offer
+		has "PW initial: done"
+		"PW missions" <= 10
+		random < 50
+		"combat rating" > 100
+		"reputation: Pirate Warlords" > 0
+	npc kill
+		personality heroic staying target marked
+		government "Pirate Planets"
+		cargo 3
+		system
+			distance 2 10
+		fleet
+			names "pirate"
+			variant 2
+				"Corvette (Missile)"
+				"Fury (Laser)" 2
+			variant 2
+				"Corvette (Speedy)"
+				"Fury (Missile)" 2
+			variant 1
+				"Raven (Heavy)" 2
+		dialog "The <npc> has been eliminated. You can claim the bounty by returning to <destination>."
+	on offer
+		conversation
+			`There is a message waiting for you when you land:`
+			``
+			`	A band of Pirate Planets agents was spotted near the <system> system, following the <npc>. You need to take them out as quickly as possible for a payment of <payment>.`
+			`		- Amelia`
+				accept
+	on accept
+		"reputation: Pirate Planets" --
+
+	on fail
+		"reputation: Pirate Warlords" -= 5
+
+	on complete
+		"reputation: Pirate Warlords" += 2
+		"PW missions" ++
+		payment 300000
+		dialog "You receive <payment> and another note from Amelia, thanking you for all your work for the Pirate worlds."

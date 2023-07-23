@@ -1,0 +1,579 @@
+# intro single
+
+mission "Bounty Hunting (Surprise)"
+	name "Wanted warlord near <system>"
+	description "A heavy warship known as the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	job
+	repeat 9
+	deadline 14
+	to offer
+		"combat rating" > 600
+		random < 40 + ("surprise warlord" * 10)
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+#		system
+#			distance 1 1
+		fleet
+			names "pirate"
+			variant
+				"Strongblade"
+			variant
+				"Strongblade"
+				"Thorn" 2
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on enter
+		dialog `When you leave <origin>, you are greeted with the <npc> right on top of you. It isn't a common pirate ship, and not one you see on non-pirates.`
+	on complete
+		"surprise warlord" ++
+		payment 350000
+		dialog phrase "generic bounty hunting payment dialog"
+
+# intro missions
+
+mission "New Pirates 1"
+	name `Investigate pirates in <waypoints>`
+	description `Pirates seem to be using strange new ships. Fire Corporation wants you to go investigate, scanning if possible. They will be in <waypoints>."`
+	source
+		government "Free Worlds"
+	waypoint Antares
+	to offer
+		"surprise warlord" > 6
+		"random" > 50
+		"combat rating" > 1000
+	on offer
+		conversation
+			`As you look around, you are startled with a sudden shout, "Hey! Captain <first>!"`
+			choice
+				`	"Yes?"`
+				`	"How do you know my name?"`
+					goto name
+				`	(Slip away silently)`
+					decline
+
+			label yes
+			`	"Hello, Captain <first>! I've long waited to see you! You have much fame!" He pauses, "But that's not the only reason I wanted to talk to you."`
+			choice
+				`	"What do you want?"`
+					goto mission
+				`	"I don't care. Goodbye!"`
+					decline
+
+			label name
+			`	"You are very well known amongst the employees of Fire Corporation. But let's leave that. I have a proposition for you."`
+			choice
+				`	"What proposition?"`
+					goto mission
+				`	"Sorry, I'm not interested."`
+					decline
+
+			label mission
+			`	"Would you be interested in going on a potentially dangerous mission to <waypoints> to scan some pirates? They seem to be making their own ships, and the heads of Fire Corporation would like to have more info."`
+			`	(It is OK to disable the pirates, but they can't be killed)`
+			choice
+				`	"I'll take it!"`
+					accept
+				`	"Sorry, sounds too dangerous."`
+					decline
+
+	npc
+		system Antares
+		government "Pirate"
+		personality disables plunders harvests staying
+		fleet "Small Southern Pirates" 3
+	npc "scan outfits"
+		system Antares
+		government "Bounty"
+		personality disables plunders harvests staying target
+		ship "Strongblade" "Shattering Might"
+		ship "Thorn" "Backstab"
+		ship "Thorn" "Cruel Cutlas"
+
+	on complete
+		payment 1200000
+		conversation
+			`As you touch down, the Fire Corporation worker runs over to your ship. "Thank you, Captain <first>! Fire Corporation will be glad of this information!" He then waits until you step out, and hands you <payment>.`
+
+mission "New Pirates 2"
+	name `Investigate <destination>`
+	description `Go to <destination>, a pirate planet, to see if you can find the people who are making the new pirate ships.`
+	landing
+	destination Bloodsea
+	to offer
+		has "New Pirates 1: done"
+	on offer
+		conversation
+			`Before you can even walk back to your ship, the Fire Corporation employee runs back to you. "I just got a call from the Commanders! Can you go to <destination> to see if you can find the person making those ships we had you scan?"`
+			choice
+				`	"Who are the Commanders?"`
+					goto who
+				`	"I'll get going right away!"`
+					goto accept
+				`	"Sorry, but the last mission was too dangerous. I can't do this."`
+					goto dangerous
+
+			label who
+			action
+				log "People" "The Commanders" "The Commanders are the military leaders of Fire Corporation"
+			`	"The Commanders are the military leaders of Fire Corporation."`
+			choice
+				`	"Thanks, I'll go to <destination>."`
+					goto accept
+				`	"Thanks, but this sounds too dangerous. I can't do it."`
+					goto dangerous
+
+			label dangerous
+			`	"I'm sorry to hear that," he pauses. "However, maybe I can convince you otherwise. While I can't go alone, I may be able to send an escort and enough money for clearance."`
+			choice
+				`	"Alright, I'll go."`
+					goto assistance
+				`	"What type of ship do you have?"`
+					goto ship
+				`	"Sorry, I still can't go."`
+					decline
+
+
+			label ship
+			`	"My ship? It's fair enough, just a Firestorm."`
+			choice
+				`	"OK, if you'll guard me."`
+					got assistance
+				`	"Sorry, but that's not enough."`
+					decline
+
+			label assistance
+			action
+				set "ship help"
+				payment 250000
+			`	"Good. I look forwards to traveling with you, Captain <last>."`
+				accept
+
+
+			label accept
+			`	"Good. I hope you return safely!"`
+				accept
+
+
+	npc accompany
+		to spawn
+			has "ship help"
+		government "Fire Corporation"
+		personality
+			disables heroic opportunistic launching
+			confusion 4
+		ship "Firestorm" "Wind of Flame"
+
+	on complete
+		conversation
+			branch "ship help"
+				has "ship help"
+
+			label start
+			`It takes some time to get the pirates to let you investigate, but eventually you do. The most promising spot is a large factory that has a sign in front: Pirates Inc.`
+			choice
+				`	(Investigate)`
+				`	(Leave, this is getting too creepy.)`
+					flee
+
+			label investigate
+			`	You take a casual stroll closer to the building, but are not allowed entry.`
+			choice
+				`	(Peek through the window)`
+				`	(Run away!)`
+					flee
+
+			label window
+			scene "scene/window peek"
+			`	Inside the window you spot the very thing you are looking for: one of the pirate ships. Not only that, but there are enough "NO STEALING SHIP DESIGNS: THIS BELONGS TO JARWHIP PIRATEHEAD - THE ORIGINAL DESIGNER" to tell you that this is really it.`
+			goto end
+
+			label "ship help"
+			`	When landing, you look behind yourself and see with alarm that this Wind of Flame is not right behind you! It has been destroyed. However, as you peer closely out, you spot a small shape, perhaps an escape pod.`
+			goto start
+
+			label end
+			`	Suddenly, you get a message to go to a Fire Home docked at Kornephoros. They will be glad to hear your information.`
+
+mission "New Pirates 2b"
+	name `Go to the Fire Home in Kornephoros`
+	description `You found the manufacturers, so go to the Kornephoros system where there is a Fire Home ready for boarding.`
+	destination "Deep"
+	landing
+	to offer
+		has "New Pirates 2: done"
+#		event "fb c16 in kornephoros"
+	to complete
+		"never"
+
+	npc
+		government "Fire Corporation"
+		personality disables heroic opportunistic derelict
+		system Kornephoros
+		ship "Fire Home" "Fire Base C16"
+
+	on enter "Kornephoros"
+		dialog `The Fire Home is waiting for you. (You need to board it)`
+
+#planet "Fire Base C16"
+#	government "Fire Corporation"
+#	shipyard "Basic Ships"
+#	outfitter "Common Outfits"
+#	outfitter "Basic Outfits"
+#	outfitter "Basic Weapons"
+#	description `This is one of the few Fire Homes built. Fire Homes serve as mobile factories and have been described as planets with engines and armor.`
+#	shipyard `All around there is production. Ships are begin made and designed for being sold all over the galaxy.`
+
+mission "New Pirates 3"
+	assisting
+	landing
+	clearance
+	name `Lead an attack on <destination>`
+	description `Since you found Pirates Inc. on <destination>, Fire Corporation wants it taken. You must take part in the attack!`
+	source
+		government "Fire Corporation" # offered on Trinket??
+	to offer
+		has "New Pirates 2b: offered"
+	on offer
+		fail "New Pirates 2b" # did nothing
+		payment 300000
+		conversation
+			`For the first time in your life, you are inside a Fire Home, meant to be boarded. Your ship is inside too.`
+			`	You don't have to wait long before a Fire Corporation security officer comes up. You explain what you saw to him, and he gives you 300,000 credits.`
+			`	"Now," he says, "would you like to take part in a big battle?"`
+			choice
+				`	"Big battles are my favorite!"`
+				`	"Sorry, but that sounds too dangerous."`
+					decline
+
+			`	"Good to see one so enthusiastic about this. We are attacking the pirate planet of <destination> to see if we can capture the 'Pirates Inc.' people. However, the pirates have realized some of our intentions, so we cannot sneak in like before. Are you ready?"`
+			choice
+				`	"Yes, all set to fight!"`
+					accept
+				`	"No, that sounds even more dangerous than just a big battle."`
+					decline
+
+	npc evade
+		government Pirate
+		personality launching plunders harvests
+		system Antares
+		names "pirate"
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+
+	npc
+		government "Fire Corporation"
+		personality disables heroic opportunistic
+		system Kornephoros
+		names "militia"
+		fleet
+			variant
+				"Firestorm" 2
+				"Sparrowhawk" 3
+			variant
+				"Knife" 4
+			variant
+				"Sparrowhawk" 15
+			variant
+				"Short Sword" 3
+			variant
+				"Fire Assassin" 3
+		fleet
+			variant
+				"Firestorm" 2
+				"Sparrowhawk" 3
+			variant
+				"Knife" 4
+			variant
+				"Sparrowhawk" 15
+			variant
+				"Short Sword" 3
+			variant
+				"Fire Assassin" 3
+		fleet
+			variant
+				"Firestorm" 2
+				"Sparrowhawk" 3
+			variant
+				"Knife" 4
+			variant
+				"Sparrowhawk" 15
+			variant
+				"Short Sword" 3
+			variant
+				"Fire Assassin" 3
+
+
+	on complete
+		payment 500000
+		conversation
+			`Several Fire Corporation ships have landed before you did, and they went after Pirates Inc.`
+			`	They seem to be having some trouble - and then the Pirates  Inc. building explodes! A small ship, perhaps a Scout, shoots out from the debris and blast off the planet!`
+			`	Several ships gear up and chase after it.`
+			``
+			`	Once you have landed, a Fire Corporation officer comes up and hands you <payment>. "I'm sorry about this," she says, "but the pirates escaped. I would ask you to chase them down, but there's a fleet of pirates coming. You should help defend."`
+
+#mission "New Pirates 4"
+#	clearance
+#	name `Hunt down the <npc>`
+#	description `The <npc>, a <npc model> is carrying people from Pirates Inc. Fire Corporation wants it hunted down. It should be near <origin>.`
+#	source Bloodsea
+#	to offer
+#		has "New Pirates 3: done"
+#	on offer
+#		conversation
+#			`As you step into the spaceport, you remember how a Fire Corporation officer would welcome help chasing the people from Pirates Inc. down. Do you want to help?`
+#			choice
+#				`	(Yes)`
+#				`	(Maybe later)`
+#					defer
+#
+#			`	Since there is much to do on this pirate planet, it takes some time to find a Fire Corporation officer who is willing to help you find the woman. Finally you get to her.`
+#			`	"Ah! Captain <last>! Thank you for coming," she smiles. "I'm sorry if it was difficult to find me, I had to help with fixing up this place."`
+#			choice
+#				`	"I'm here to help hunt down that Scout that fled earlier."`
+#				`	"Are you high-ranking?"`
+#					goto rank
+#
+#			label mission
+#			`	"Good. We believe that they are still near here, but we can't discern where. Now, remember that we want them alive. Are you ready?"`
+#			choice
+#				`	"Yep!"`
+#					accept
+#				`	"Are you high-ranking?"`
+#					goto rank
+#				`	"Sorry, but I've changed my mind."`
+#
+#			label decline
+#			event "chase timer 1" 7 31
+#			`	"I'm sorry to hear that," she says. "If you change your mind again, I will let you help, unless we already caught them."`
+#				defer
+#
+#			label rank
+#			action
+#				log "People" "Rachel Himnolch" `A Fire Corporation commander helping with the things with Pirates Inc.`
+#			`	"Yes, I suppose I am," she pauses. "You know what, I never told you my name. I'm Commander Rachel Himnolch. Are you ready to hunt down that Scout?"`
+#			choice
+#				`	"Yes!"`
+#					goto mission
+#				`	"I was just here to see how you were doing."`
+#					goto decline
+#
+#	npc disable
+#		personality staying target timid
+#		government Bounty
+#		system 1 3
+#		ship "Scout (Speedy)" "Ligthspeed"
+#
+#event "chase timer"
+
+
+mission "New Pirates 4"
+	landing
+	clearance
+	name `Fend off the pirate attack`
+	description `There is a fleet of pirates trying to retake <origin>. Fend them off.`
+	source Bloodsea
+	to offer
+		has "New Pirates 3: done"
+	on complete
+		payment 500000
+		log "Person" "Rachel Himnolch" `A Fire Corporation commander helping deal with Pirates Inc.`
+		conversation
+			`As soon as you land, the Fire Corporation officer runs up to you. "Captain <last>, thank you for your assistance," she says and hands you <payment>. "I suppose by now you might be wondering who I am, as I have been having many interactions with you. I'm Commander Rachel Himnolch.`
+
+	npc evade
+		government Pirate
+		personality launching plunders harvests
+		system Antares
+		names "pirate"
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+		fleet
+			variant
+				"Strongblade" 3
+				"Thorn" 9
+			variant
+				"Leviathan (Laser)"
+				"Bastion (Heavy)"
+			variant
+				"Falcon" 2
+			variant
+				"Leviathan"
+				"Strongblade" 2
+			variant
+				"Falcon (Plasma)"
+				"Strongblade" 2
+			variant
+				"Bastion (Heavy)" 3
+				"Thorn" 6
+
+	npc
+		government "Fire Corporation"
+		personality disables heroic opportunistic
+		system Kornephoros
+		names "militia"
+		fleet
+			variant
+				"Firestorm" 2
+				"Sparrowhawk"
+			variant
+				"Knife" 3
+			variant
+				"Sparrowhawk" 13
+			variant
+				"Short Sword" 2
+			variant
+				"Fire Assassin" 2
+		fleet
+			variant
+				"Firestorm"
+				"Sparrowhawk" 3
+			variant
+				"Knife" 4
+			variant
+				"Sparrowhawk" 15
+			variant
+				"Short Sword" 2
+			variant
+				"Fire Assassin" 2
+		fleet
+			variant
+				"Firestorm" 2
+				"Sparrowhawk" 3
+			variant
+				"Knife" 4
+			variant
+				"Sparrowhawk" 15
+			variant
+				"Short Sword" 3
+			variant
+				"Fire Assassin" 3
+
+mission "New Pirates 5"
+	landing
+	clearance
+	autosave
+	name `Go to <destination>"`
+	description `Several people from Pirates Inc. escaped from <origin>. See if you can find them on <destination>.`
+	destination Greenrock
+	to offer
+		has "New Pirates 4: done"
+	on offer
+		conversation
+			`After a few hours, Commander Himnolch comes back. "Captain <last>, we have decided to send you out to find the people from Pirates Inc. Our first location is <destination>."`
+			choice
+				`	"I'll go right away!"`
+					accept
+				`	"Sorry, but I'm done."`
+					decline
+	on complete
+		conversation
+			`You do not find any manufacturers here, though there is one pirate who tries to sell you his Scrapper collection.`
+
+mission "New Pirates 6"
+	landing
+	clearance
+	autosave
+	name `Go to <destination>"`
+	description `Several people from Pirates Inc. escaped from <origin>. See if you can find them on <destination>.`
+	destination Albatross
+	to offer
+		has "New Pirates 5: done"
+	on offer
+		conversation
+			`You receive a message from Commander Himnolch, "We have a potential lead on <destination>. Please head there."`
+				accept
+	on complete
+		conversation
+			`There are no manufacturers on Albatross, though someone explains how Pirates Inc. would rule the world from the Men system.`

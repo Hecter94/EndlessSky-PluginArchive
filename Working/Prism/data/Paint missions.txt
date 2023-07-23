@@ -1,0 +1,106 @@
+# Copyright (c) 2023 by Reed Cera
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+	
+#I was abit of an idiot. tried to make a cool ui, realized i was way, Way, WAY out of my 
+#depth, and so im gonna copy the genius solution from that remnant station and use 
+#missions as a toggler
+	
+mission "Change paint I"
+	name "Repaint Independent"
+	description "Change paint to Independant colors. No licence or relationship requirments."
+	job
+	repeat
+	on accept
+		event "colorI"
+		
+event "colorI"
+	government "Escort"
+		swizzle 6
+	
+mission "Change paint M"
+	name "Repaint Civilian"
+	description "Change paint to Civilian colors. Pilot's licence and positvie relatinship with the 4 main human goverments required."
+	job
+	repeat
+# turns out this is the only one that doesnt work because the event for the pilots licence, if there is 
+# one, isnt named in the same style as the others. then again idk when you wouldn't have a pilots licence
+	to accept
+		"reputation: Republic" > 0
+		"reputation: Free Worlds" > 0
+		"reputation: Syndicate" > 0
+		"reputation: Deep Security" > 0
+	on accept
+		event "colorM"
+		
+event "colorM"
+	government "Escort"
+		swizzle 5
+		
+mission "Change paint R"
+	name "Repaint Remnant"
+	description "Change paint to Remnant colors*. Remnant licence and positvie relatinship with the Remnant required."
+	job
+	repeat
+	to offer
+		has "license: Remnant"
+	to accept
+		"reputation: Remnant" > 0
+	on accept
+		event "colorR"
+		
+event "colorR"
+	government "Escort"
+		swizzle 4
+
+mission "Change paint F"
+	name "Repaint Free Worlds"
+	description "Change paint to Free Worlds colors. Militia licence and positvie relatinship with the Free Worlds required."
+	job
+	repeat
+	to offer
+		has "license: Militia"
+	to accept
+		"reputation: Free Worlds" > 0
+	on accept
+		event "colorFW"
+		
+event "colorFW"
+	government "Escort"
+		swizzle 2
+
+mission "Change paint W"
+	name "Repaint Wanderer"
+	description "Change paint to Wanderer colors*. Wanderer ship licence and positvie relatinship with the Wanderers required."
+	job
+	repeat
+	to offer
+		has "license: Wanderer"
+	to accept
+		"reputation: Wanderer" > 0
+	on accept
+		event "colorW"
+		
+event "colorW"
+	government "Escort"
+		swizzle 3
+		
+mission "Change paint U"
+	name "Repaint Unpainted"
+	description "Change paint to Unpainted colors, AKA republic colors. Reward for completing the main story."
+	job
+	repeat
+	to offer
+		has "free worlds plot completed"
+	on accept
+		event "colorU"
+		
+event "colorU"
+	government "Escort"
+		swizzle 0

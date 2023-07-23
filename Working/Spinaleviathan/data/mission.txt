@@ -1,0 +1,44 @@
+mission "The Wanderlust"
+	minor
+	name "Hunt down the Wanderlust"
+	description `You have been asked to hunt down and neutralize an exotic Leviathan called the Wanderlust. It was last seen around <system>.`
+	source
+		government "Free Worlds" "Republic" "Syndicate"
+	to offer
+		"combat rating" > 2000
+		random > 95
+	
+	on offer
+		conversation
+			`A somewhat flustered looking merchant captain approaches you. "Greetings, captain," He says, "I need some assistance with a pirate ship; would you say your ship is well-equipped?" He asks.`
+			choice
+				`	"Say no more, traveller. Just give me a name and face and it'll be gone."`
+					goto accept
+				`	"What kind of ship am I fighting?"`
+				`	"I'm not a bounty hunter, sorry."`
+					decline
+			
+			`	The merchant shudders slightly, "It's a Leviathan; obviously marauderized, but... It carries two guns larger than I've ever seen. It pulverized the Behemoth my convoy was travelling with in moments; I even watched it beat back the Navy patrol that had come into the system at the time," He states, "I'm in dire need of aid, but please, be prepared before you challenge it," The man expresses.`
+			`	This sounds quite dangerous, but could also be a good way to steal some exotic pirate tech.`
+			choice
+				`	"I'll take it on. I've got some pretty nasty guns of my own."`
+				`	"I'm not here to become space debris; find someone else."`
+					decline
+			
+			label accept
+			`	"Thank you," he says. "The ship is named the <npc>, and trust me, you'll know it when you see it. It's a Leviathan with its gun ports merged into two enormous ones."`
+				accept
+	
+	npc kill
+		government "Bounty"
+		personality heroic staying nemesis target
+		system
+			distance 1 3
+		ship "Marauder Leviathan (Spinals)" "Wanderlust"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 500000
+		dialog `You are thanked by the merchant captain and are paid half a million credits for your hard work.`

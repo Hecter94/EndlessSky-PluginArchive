@@ -1,0 +1,94 @@
+mission "UM 1"
+	name "Transport Catherine"
+	description `Take Catherine to the Unity Movement's base on <destination>.`
+	to offer
+		random < 45
+		has "main plot completed"
+	source
+		government Republic "Free Worlds" Syndicate Neutral 
+	destination
+		planet Featherweight
+	on offer
+		conversation
+			`You find yourself walking down a dark alleyway on the way to an underground bar that sells some of your favorite exotic drinks.`
+			`	You are nearing your destination when you see a striking woman walking towards you. Assuming she's just a normal individual, you are about to turn the corner when she stops you.`
+			`	"Hi there!" She says quite cheerily. "My name is Catherine! If I'm correct, you're Captain <first>."`
+			choice
+				`	"I am. How do you know that?"`
+				`	"I am, but how do you know my name?"`
+			`	"Well, not only does my organization know quite a bit about your life, you're also one of the most well known people in the galaxy. What with you repelling those 'Pug'."`
+			`	You open your mouth to speak, but she stops you. "You were going to ask about my "organization" right? Well, I'm a part of the Unity Movement. We work to... remove destabilizing factors in the galaxy."`
+			`	She grins a bit before continuing. "This is a little bit embarrasing, but you and your Free Worlds friends were once one of those factors. I guess it's good you weren't removed."`
+			choice
+				`	"I can agree with that."`
+					goto agree
+				`	"Being "removed" doesnt sound very fun at all."`
+			`	"It wouldn't have been. The resolution to the war came at a good time for you" she replies.`
+			label agree 
+			`	"Anyways, we're getting off topic here. Or movement needs your help. However, I cannot tell you more until you agree to help us."`
+			choice
+				`	"You're not giving me an awful lot to go off here, but I guess I'll help you."`
+					goto help
+				
+				`	"I'm sorry, but I'm not convinced. I'm not just going to join some organization without knowing anything about it."`
+				
+			`	"Well that's to bad. I guess there's nothing left to talk about." She leaves you standing in the alleyway. Unable to remember why you came down here in the first place, you return to your ship.`
+			decline
+			
+			label help
+			`	"That's great! Your first assignment is to bring me to our base on <destination>. I'll be able to fully brief you on your mission after meeting with my superiors."
+			accept
+			
+	npc evade
+		government ???
+		personality timid
+		fleet
+			names "mystery craft"
+			variant
+				"Gunboat (Mark II)"
+	
+	on visit
+		dialog `As you prepare for final approach to the base, you scan an unidentified Gunboat off your wake. It has been following you for some time. You'll have to shake it off before landing.`
+				
+	on complete
+		dialog `You land at the base and Catherine hurries off. She quickly turns around and calls back "Meet me at the spaceport in a few hours!"`
+		event "CI negative rep"
+		
+mission "UM 2"
+	name "Destroy CI Fleet"
+	description `Destroy the Chaos Insurgency fleet gathering in Cardax`
+	source "Featherweight"
+	destination "Featherweight"
+	to offer
+		has "UM 1 completed"
+	on offer
+		conversation
+			`You meet Catherine in the spaceport as instructed.`
+			`	"Hey there," she says, "good to see you didn't run off on us!"`
+			`	"So I have your next job. It seems that the Chaos Insurgency has a small fleet in Cardax"`
+			`	"We need you to destroy it. It shouldn't be an issue for you, it's only a few ships. Can you do this?"`
+			choice
+				`"I'm on it"`
+				`Those ships are as good as gone"`
+			`	"That's great! I'll see you when you get back!"`
+	waypoint "Cardax"
+	on enter "Cardax"
+		dialog `"A few ships" turns out to be a formidable fleet. This might be tough`
+	npc kill
+		system "Cardax"
+		government "Chaos Insurgency"
+		personality heroic staying target
+		fleet
+			names "chaos insurgency"
+			variant
+				"Falcon"
+				"Leviathan" 2
+				"Firebird" 2
+				"Splinter" 3
+		dialog `The fleet has been destroyed and you can return to <origin>.`
+	on complete
+		conversation
+			`Catherine meets you at your ship on your return.`
+			`	"We've intercepted signals saying that a Chaos Insurgency fleet has disappeared."`
+			`	"Great work on your first assignment! I've also recieved word that or organization is willing to let you officially join."`
+			`	"Meet me at Splashdown and we can discuss it over a few drinks. The bar there is the best in the galaxy."`

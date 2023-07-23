@@ -1,0 +1,476 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+
+mission "PP Miner rescue"
+	name "Meet Jonah on <planet>."
+	description "Jonah wants to see you in person, go to <destination> to find out what he wants."
+	minor
+	landing
+	source
+		not planet "Haven"
+		attributes "north pirate"
+	destination "Haven"
+	to offer
+		has "event: discover Acheron"
+		"PP missions" > 5
+		"reputation: Pirate Planets" > 35
+		random < 50
+		"combat rating" > 2000
+	on offer
+		conversation
+			`When you land there is a message waiting for you.`
+			`	"<first>, this is Jonah. I need to see you in person, finish what you're doing and come by <planet>."`
+				accept
+	on fail
+		dialog "You're sure Jonah is going to be annoyed at your failure to meet with him."
+		"reputation: Pirate Planets" -= 10
+
+	on complete
+		dialog "You should check the spaceport to see if you can find Jonah."
+
+
+
+mission "PP Miner rescue [1]"
+	name "Pick up your escort at <planet>."
+	description "Go to <destination> to pick up a couple of modified freighters for your trip to Covert."
+	minor
+	source Haven
+	destination "Acheron Station"
+
+	to offer
+		has "PP Miner rescue: done"
+	on decline
+		"reputation: Pirate Planets" <?= 10
+
+	on offer
+		conversation
+			`You find Jonah sipping a cup of tea at a spaceport cafe. As always, the gruesome scar on his cheek gives you a moment of shock when you see it. You wonder why he does nothing to cover it.`
+			`	"Jonah!" you call out. He turns and sees you, and beckons you over.`
+			`	"Hey <first>. Want something to drink? They have a decent oolong here."`
+			`	"Just coffee for me," you say.`
+			`	Jonah signals a waiter, who quickly brings you a cup. "So, things been going well? Deliveries haven't been giving you trouble, have they?"`
+			choice
+				`	"No, no trouble at all."`
+					goto "no trouble"
+				`	"Actually, I've been meaning to talk to you about that."`
+			`	"About what?" Jonah asks. "You haven't been getting trouble from the recipients, have you?"`
+			`	"No, there's no trouble there. I just don't appreciate the way you've been handing out the jobs. I don't mind doing these jobs for you now and then, I know it's for a good cause. But I've got to earn a living too, and I can't do that when I'm constantly having to drop what I'm doing and head off on another one of your charity case deliveries."`
+			`	Jonah nods, looking at you. When you say nothing more he says, "I see. I understand how you feel, and I wish I could say it was going to get easier. You know I wouldn't be asking you to do these deliveries if it weren't important."`
+			`	"Yeah, I know that, but--"`
+			`	"We're really hitting the warlords where it hurts. They make money from pirate raids, sure, and from drug sales to the inner worlds. And for the little guys, it's boom and bust, and all they care about is the next score. But the bigger outfits, they need to keep the fuel refineries running, and farmers to supply their food. That's where the real money is anyway, in providing services to the folks who want to go out and try to get themselves killed: food, prostitutes, liquor, and so on. And the fuel and repair services to keep their ships running, don't forget that. And all that takes people. Slaves, for some of it. And farming villages who've got no choice but to give their crops away to whatever Warlord offers them protection. And that leaves everybody else desperate for whatever work they can get at whatever wage they can earn. Because once you're here in the Pirate worlds, for most people there's no way out."`
+			choice
+				`	"It's not really that bad."`
+				`	"Yeah, I know. It's terrible."`
+					goto terrible
+			`	"You don't think so? You grew up on a pirate world farm, you know what it was like."`
+			choice
+				`	"Sure, things were hard. But I got out, didn't I?"`
+				`	"You're right, it was bad. I was lucky to get out."`
+					goto terrible
+			`	"If that's how you feel, what are you doing here?"`
+			choice
+				"I really don't know."
+					decline
+			label terrible
+			`	"Yes," Jonah says. "And what we're doing is working, the Warlords are starting to worry. That's why they've been coming after you and the other pilots doing deliveries. Those deliveries keep the communities we're supporting from going under. That's important not just for their sakes, but because if they get desperate enough they'll go back to the warlords. Most of 'em figure it's better to live under a brutal overlord who feeds you than starve as a free man."`
+			`	"Yes," you say. "But--"`
+			`	"Yes, I know, the missions don't pay very well. I understand, dedication to the cause isn't always enough." Jonah leans back in his chair and makes a show of considering. "You've been working with the Pirate Planets for a while now, maybe it's time you were getting a salary. It would involve taking on some new responsibilities, though. Interested?"`
+			choice
+				`	"Yes."`
+					goto salary
+				`	"No, that's not good enough."`
+			`	"Why not?" Jonah asks.`
+			`	"I appreciate what you're trying to do, Jonah," you say. "I really do. But I want out. It's not just about the money, it's about being able to do my own thing without having to drop everything to take on one of your missions whenever you need me."`
+			`	"I'm sorry to hear that. If you want to go you can go. But understand that if you leave, that's it," Jonah says. "I'm not going to let someone who's not committed back in later, and if the warlords come after you because of your association with me I won't be able to protect you. We just don't have the resources. Do you still want out?"`
+			choice
+				`	Get out of this while you can.`
+					decline
+				`	Change your mind.`
+			`	"Actually," you say, "maybe I'll stick this through after all."`
+			label salary
+			`	"Glad to hear it. How does a daily salary of 600 credits sound? And I've got a job for you, for your first duty as a paid member of the Pirate Planets."`
+			apply
+				"salary: Pirate Planets" = 600
+			choice
+				`	"Excellent," you say. "What's the job?"`
+					goto job
+			label "no trouble"
+			`	"Good, I'm glad to hear it. You've been helping the Pirate Planets out for a while now, I think it's about time you became a full member with salary and everything. You'll start at 300 credits, but if you keep showing the dedication you've been showing we should be able to increase that. It does come with added responsibility, though, starting with a special job I have for you."`
+			choice
+				`	"Good, I can always use the money. What's the job?"`
+					goto "accept 300"
+				`	"Three hundred credits? I'm worth more than that."`
+			`	"It's true you've been doing a lot of good. How about if increased the salary to 600 credits? I can't go higher than that, though. If you're after big money you'd be better off on your own. You should know though, once you leave you're out. I can't rely on someone who's not committed. And I can't protect you if the Warlords come after you because of your association with me."`
+			choice
+				`	"Six hundred credits sounds great."`
+				`	"No. Thanks for the offer, but I think you're right. I'm better off on my own."`
+					decline
+			apply
+				"salary: Pirate Planets" = 600
+			`	"Excellent," Jonah says. "I'm glad to hear it."`
+			`	"So what's the job," you ask.`
+				goto job
+			label "accept 300"
+			apply
+				"salary: Pirate Planets" = 300
+			label job
+			`	"There's another group of pirate worlds on the other side of Syndicate space. Do you know Covert, or Buccaneer Bay?"`
+			choice
+				`	"Yes."`
+					goto yes
+				`	"No."`
+			`	"Both of them are very powerful and very wealthy pirate worlds. There are even rumors that some of the pirate clans based there are fronts for Syndicate activity, though I don't know as I believe that - I figure the Syndicate is like the Republic, they're happy to make use of us when it suits them but they're careful not too get to friendly. Covert's money is in mining and Buccaneer Bay's is in shipbuilding, and between the two of them they're a major source of the Warlord's power. All the most powerful Warlords have connections there. I've always figured there was no way to include them in our plans. They're too far away through hostile systems, and the Warlords are too powerful there."`
+				goto "include them"
+			label yes
+			`	"Then you know that they're both powerful and, for pirate worlds, wealthy. It would be fantastic if we could undermine the Warlords' control there, but they're too far away through hostile systems."`
+			label "include them"
+			choice
+				`	"But what about the miners on Covert? Don't they deserve the same chance the rest of us do?"`
+					goto miners
+				`	"The ships on Buccaneer Bay, they'd sure be a help to our cause."`
+			`	"Yes, they would. But Buccaneer Bay is a pleasant world, the closest thing we Pirates have to a Paradise Planet. There are a lot of very powerful Warlords living there, all with large security forces and all armed to the teeth. Even if there are communities there who would want our help, getting it to them would be too risky. No, I think Covert is our chance."`
+			`	"Why Covert?" you ask.`
+				goto "mission to Covert"
+			label miners
+			`	"Yes, they do." Jonah fingered the scar on his cheek, which you remember he received while working the Haven mines. "But I always thought it would be too risky to make the attempt, there's just too much security on Covert. But I recently heard something that changes that."`
+			`	"What's that?" you ask.`
+			label "mission to Covert"
+			`	"Got a note from a fellow I used to know. A crew-mate of mine, from back in my mining days here on Haven, he apparently ended up on Covert. We escaped the mines together, don't know how he ended up doing that kind of work again. Though I guess it's not that surprising, mining is what he knows, and they need miners on Covert. He was never the adventurous one."`
+			`	He doesn't continue, and seems ready stare off into space for a while. You prompt him with, "What was in the note?"`
+			`	"Oh, yes. He needs my help," Jonah says. "Things are bad on Covert, real bad. They're not just mining regular metals, or even rare earths, they're mining radioactives. To build power generators on Buccaneer Bay, I suppose, I don't know. But miners are getting sick, and they're not getting medical care. Mike, that's my friend, he'd heard rumors about what we were doing up here in the north and he figured it must be me. So he got me a message asking for help."`
+			`	"So what do you want me to do?"`
+			`	"I'm can't do anything, I can't leave the north. The Warlords are starting to really notice what we're doing and we can't afford to let up. So you are going to go get my friend and anyone he has with him and bring them here. I've already got my man Max out there arranging things so you can pick them up."`
+			choice
+				`	"What are you going to do with them?"`
+			`	"I'm getting a place set up for them on Zenith," Jonah says.`
+			`	"Zenith? I don't remember any mines on Zenith."`
+			`	"There are a few minor mines, but that doesn't matter, they're going to have to give up mining. You can't put food on the table mining unless you've got a market for your ore, and we're going to have to keep these folks hidden. They're going to have to provide for themselves, and that means farming and fishing. They'll get help, but they're going to have to adapt. If they don't like it they can stay on Covert. Any other questions?"`
+			choice
+				`	"What's the pay for this mission?"`
+				`	"What's Mike's last name? How would I recognize him?"`
+					goto mike
+				`	"How am I supposed to get all the way to Covert through Syndicate space?"`
+					goto key
+			`	"I'm not sure where we'll find it, but we should be able to get you a couple hundred thousand credits for the job. Just bring all the passengers back alive, right?"`
+			`	"Right," you say.`
+			`	"Anything else?" he asks.`
+			choice
+				`	"Yeah. What's Mike's last name? How would I recognize him?"`
+				`	"How am I supposed to get all the way to Covert through Syndicate space?"`
+					goto key
+
+			label mike
+			`	"His name is Michael Abrahard. He's a big guy, not hard to pick out of a croud. But Max has met him before, that's why I sent him ahead, and he should be able to put you in touch with him. "
+			`	"Okay. What about the trip to Covert? Any suggestions on how I'll get there through Syndicate space?"`
+
+			label key
+			`	"Oh yes," Jonah says, smiling. "That's the best part. If you've ever been to the Sospi system you may have seen what looked like a wormhole, only you couldn't use it. I've got a way for you to use it. It looks like a worthless hunk of crystal, but it does something to your drive that will let you pass the wormhole. I'll arrange to have it installed on your ship when you dock at Acheron Station. Take good care of it, I've only got the one for you and one each for the freighters you're escorting."`
+			`	"Where's the wormhole take you?" you ask.`
+			`	"It'll take you to Gamma Cassiopeiae. From there you've got five jumps and three Syndicate systems to make it through before you reach Gienah. If you refuel at Acheron before you go, in the Moktar system, it's a total of eight jumps, the freighters should just be able to make that. I leave it to you to make sure your flagship can handle it. Got it?"`
+			`	"And when I get there? How do I find the contact, this guy Max?" you ask.`
+			`	"Max will be waiting in Gienah aboard the <npc>. He'll be pretending to be disabled. Dock with the <npc> as if you're giving aid, and you'll be able to talk with Max without risk of being overheard. He'll give you instructions from there."`
+			`	"Okay, I'll leave immediately," you say."`
+				accept
+
+	on accept
+		log `I'm setting out on a mission to Covert, across Syndicate space. Miners there are being mistreated, and one of them is a friend of Jonah's. I'm to rescue them and bring them to Zenith.`
+		log "People" "Mike Abrahard" `Mike is a friend of Jonah's from his mining days. Unlike Jonah he went returned to mining after fleeing the mines on Haven and ended up on Covert.`
+		log "People" "Maximus Gaultieri" `Max has been working with Jonah since before either of them had even imagined resisting the Warlords. In many ways he's Jonah's most trusted agent.`
+
+	on decline
+		"reputation: Pirate Planets" <?= 10
+
+
+
+mission "PP Ellerschmit crew"
+	source "Acheron Station"
+	destination Covert
+	landing
+	invisible
+	to offer
+		has "PP Miner rescue [1]: done"
+
+	npc accompany
+		government "Pirate Planets"
+		personality timid escort
+		ship "Freighter (transport)" "Grim Paradise I"
+		ship "Freighter (transport)" "Grim Paradise II"
+
+	on offer
+		conversation
+			`When you land you see the two freighters you're to escort. As the key device Jonah promised is being installed into your ship you walk over and introduce yourself to the captains, a husband-and-wife team that call themselves the Ellerschmit crew.`
+			`	"Hello, Captain <last>. I'm Captain Ellerschmit, and this is my husband, Captain Ellerschmit. Or it'd be less confusing, call me Captain Jenn and he can be Captain Walter. I understand you're to lead us to Covert." She speaks with an abrupt and forceful rhythm that's slightly irritating, though she seems friendly enough.`
+			`	"Yes, ah, Captain Jenn. Are you sure those freighters can make the trip? We're moving through hostile systems."`
+			`	"Yes sir, they certainly can. Even in their current sad and sorry state, all gutted out and filled to the noggin with bunk-rooms, they're tougher than they look. And Walter and I, we've done this kind of thing before."`
+			`	"But they don't even have weapons, do they?"`
+			`	"No sir, they certainly do not. Best not to, in cases like this. Your job is to draw fire, we'll hang back and follow. So long as you're the biggest, baddest pirate in the system, they'll go after you, not us."`
+			`	"Okay, if that's how you want to do things," you say.`
+			`	"It most certainly is. See you on the other side, Captain <last>."`
+				accept
+
+	on fail
+		dialog `You receive a transmission from Walter Ellerschmit: "Jenn's dead, you bastard! You were supposed to keep her safe!"`
+
+	on complete
+		set "Ellerschmits safe"
+
+
+
+# Crippled ship:
+ship "Bounder" "Bones of Avarice"
+	outfits
+		"D14-RN Shield Generator"
+		"Hyperdrive"
+		
+# TODO: The Bones of Avarice should either self destruct or turn hostile after it's boarded.
+# BUG: If you board the Bones you should die, but do not.
+mission "PP Miner rescue [2]"
+	name "Retrieve miners from Covert."
+	description "Escort the Grim Paradise I and II through the wormhole at Sospi and then to the Gienah system. Render aid to the Bones of Avarice and while aboard meet with Max who will give further instructions."
+	landing
+	source "Acheron Station"
+	destination "Covert"
+
+	to offer
+		has "PP Miner rescue [1]: done"
+
+	waypoint Sospi
+	on enter Sospi
+		dialog "On entering the system you see the wormhole. It's a red, angry-looking thing, and you hope the device Jonah gave you will allow you to pass through it safely."
+
+	on enter Gienah
+		set "PP Miner rescue, entering Gienah"
+		dialog `Seconds after you enter the system there's a broadcast from somewhere in the system: "Captain <last>, this is Maximus Gaultieri! Whatever you do, don't dock with the Bones! It's a tra--!" There is a burst of gunfire, and the signal cuts out.`
+
+	npc assist
+		government " Pirate "
+		personality derelict fleeing
+		system Gienah
+		ship "Bones of Avarice" "Bones of Avarice"
+		conversation
+			apply
+				set "Docked with the Bones"
+			`There is no activity from the ship as you pull in close and secure your docking clamps. You hesitate as you are about to open the hatch connecting the two ships.`
+			choice
+				`	(Explore the Bones of Avarice.)`
+				`	(Abandon the Bones and get out of here.)`
+					goto "get out"
+			`	You open the hatch and go through, your sidearm close in hand. Max should be waiting for you, but you don't see anyone. Surprisingly, the ship seems to genuinely need repairs. Either Max ran into unexpected trouble or he takes realism very seriously. After waiting a moment you place your weapon back in its holster and turn to plug in the cables that allow the Bones to draw on your ship's power to begin the repair process. While your back is turned someone walks up behind you.`
+			`	"<first> <last>, I presume?"`
+			`	You turn to face the newcomer. His hair is cropped short and he has an erect, military bearing. "Yes, I'm Cap--"`
+			`	You have no chance to finish because the other man raises his weapon and shoots you in the chest. You fall to the ground. You find it strangely hard to breathe, and a sensation of warmth and wet spreads from the point of impact. Curiously, you feel no pain.`
+			`	The other man walks over and looks down at you, gun out. "A pity. We'd hoped for Mr. Nguyen himself." He then shoots you again.`
+			`	You are dead.`
+				die
+			label "get out"
+			`	Something doesn't feel right. And that transmission when you entered the system? It has to be a trap.`
+			`	You slam the lever that releases the docking clamps and rush to your seat to engage the engines. Through the hull you hear the metal-on-metal groan of the Bones' docking hooks trying to gain purchase against your ship as you pull away. They catch, but you crank your ship into a turn. Metal scraping on metal screeches through the hull, but your ship slowly manages to spin away from the Bones of Avarice, spraying it with your engine. At such close range it's as effective as any weapon, and the Bones of Avarice is destroyed. You hope Max wasn't aboard.`
+			`	You don't know how to complete the mission now, but at least you're still alive. You can either land on Covert and try to locate Jonah's friend Mike on your own, or you can return to Acheron Station and tell Jonah you failed.`
+
+	npc
+		government " Pirate Warlords "
+		personality staying uninterested heroic vindictive
+		system Gienah
+		fleet
+			names "pirate"
+			variant 1
+				"Quicksilver (Proton)" 4
+
+	on accept
+		outfit "Quantum Key"
+
+	to complete
+		has "PP Ellerschmit crew: done"
+
+	on visit
+		conversation
+			branch "Ellerschmits dead"
+				not "PP Ellerschmit crew: active"
+
+			dialog "The Ellerschmits have not yet made it to Gienah. You should launch and ensure they arrive safely."
+
+			label "Ellerschmits dead"
+			dialog "The Ellerschmits didn't make it and you suspect the Bones of Avarice was a trap, so you were unable to meet with Max. The mission is in shambles, but if you would like to try to salvage something from it anyway you could try exploring the spaceport."
+			apply
+				clear "PP Miner rescue, entering Gienah"
+				set "PP Miner rescue, reached Covert"
+				fail
+
+	on complete
+		clear "PP Miner rescue, entering Gienah"
+		set "PP Miner rescue, reached Covert"
+		dialog "You've made it safely to Covert with the Ellerschmits, though you weren't able to contact Max. Perhaps you should explore the spaceport before you decide what to do next."
+
+
+
+mission "PP Miner rescue [3a]"
+	name "Make no attempt to rescue the miners."
+	landing
+	source
+		attributes "north pirate"
+
+	to offer
+		"PP Miner rescue [2]: offered"
+		not "PP Miner rescue [2]: active"
+		not "PP Miner rescue, entering Gienah"
+		not "PP Miner rescue, reached Covert"
+
+	on offer
+		clear "salary: Pirate Planets"
+		outfit "Quantum Key" -1
+		"reputation: Pirate Planets" <?= 5
+		conversation
+			`You've made no attempt to complete the mission to rescue the miners on Covert and you clearly don't intend to. An agent of the Pirate Planets removes the Quantum Key from your ship, and you're made to understand that Jonah isn't willing to work with you any more.`
+				decline
+
+
+
+mission "PP Miner rescue [3b]"
+	name "Inform Jonah of your failure."
+	landing
+	source
+		attributes "north pirate"
+		not planet "Acheron Station"
+	destination "Acheron Station"
+	
+	to offer
+		not "PP Miner rescue [4]: offered"
+		or
+			has "PP Miner rescue, entering Gienah"
+			has "PP Miner rescue, reached Covert"
+		
+	on offer
+		conversation
+			`You receive a message from Jonah. He's waiting for you on <planet> and wants to know what happened to your rescue mission. Are you going to go talk to him?`
+			choice
+				`	(Yes.)`
+					accept
+				`	(No.)`
+			`	You have failed to complete a mission Jonah cares a great deal about and you're refusing to talk to him about it. You doubt he's going to be willing to work with you again.`
+				decline
+
+	on decline
+		fail "PP Miner rescue [2]"
+		clear "PP Miner rescue, entering Gienah"
+		clear "PP Miner rescue, reached Covert"
+		clear "salary: Pirate Planets"
+		"reputation: Pirate Planets" <?= 5
+
+
+
+mission "PP Miner rescue [3c]"
+	name "Rescue miners on <planet>, take two."
+	description "Go back to <destination> and see if you can find a way to rescue the miners without Max's help."
+	landing
+	source "Acheron Station"
+	destination "Covert"
+	
+	to offer
+		not "PP Miner rescue [4]: offered"
+		or
+			has "PP Miner rescue, entering Gienah"
+			has "PP Miner rescue, reached Covert"
+
+	on offer
+		fail "PP Miner rescue [2]"
+		conversation
+			`Jonah is waiting for you when you exit your ship.`
+			`	"Captain <last>. What happened?" he asks. His tone is abrupt and formal, and not at all friendly.`
+			`	"Jonah," you say. "I mean, ah, Captain Nguyen. It was a trap. When I entered the system there was a signal from Max, at least, I think it was Max. He called himself Maximus Gaultieri?"`
+			`	"Yes, that was Max." Jonah gives a thin smile. "He does enjoy pulling out that handle of his. What'd he say?"`
+			`	"I'm sorry to have to say this, but I think he's probably dead. The message cut off abruptly in what sounded like gunfire. But before that he warned me not to dock with the Bones of Avarice."`
+			`	"Did you?" Jonah asks.`
+			branch docked
+				has "Docked with the Bones"
+			
+			`	"No, I did not. The mission was clearly bust, so I made my way back here to talk to you."`
+			`	"Did you make any attempt to contact Max after that? Or contact Mike directly?"`
+			`	"No," you say.`
+				goto "Ellerschmit crew"
+
+			label docked
+			`	"Yes, I did. But I didn't enter. It didn't ... feel right." You wince, realizing how that sounds.`
+			`	"It didn't feel right," Jonah says. "So you left the Bones of Avarice behind. Then what?"`
+			`	"I, ah, didn't exactly leave it behind," you say. "It refused to release its docking clamps, and in the end I had to destroy it."`
+
+			label "Ellerschmit crew"
+			branch alive
+				has "PP Ellerschmit crew: active"
+
+			`	"I see," Jonah says. "And the Ellerschmits? What about them?"`
+			`	"I don't think they made it," you say. "There were Warlord ships waiting for them in Gienah. They ignored me and went straight for the Ellerschmits."`
+			`	"Damn. This is a fiasco," Jonah says. "Is there anything you did do? Did you even make it to Gienah?"`
+			`	"Of course I did! If I were going to lie about this, don't you think I'd come up with something better?"`
+			`	"I don't know," Jonah says.`
+			choice
+				`	"Give me another chance."`
+					goto "try again"
+				`	(Say nothing.)`
+					goto "give up"
+
+			label alive
+			apply
+				fail "PP Ellerschmit crew
+				set "Ellerschmits safe"
+			`	"I see," Jonah says. "At least you brought the Ellerschmits back safely. I spoke before they took off, they say you took good care of them. Apparently you had to fight off a pack of Warlord ships in Gienah?"`
+			`	"Yes. The Warlords must have known what we were planning, they were lying in wait for the Ellerschmits. They ignored me entirely, at first."`
+			`	"Yes. Max must have let something slip. I wish I knew for sure what had happened to him. He was a fine pilot, and dedicated to freeing the Pirate Planets."`
+			`	"Would you like me to try again?" you ask.`
+			`	"You mean go in without any help? Find a way to contact Mike, and get him and whoever's with him back here? You think you can do that?"`
+			choice
+				`	"Yes. I can do this."`
+					goto "try again"
+				`	"On second thought, maybe I should leave the intrigue to other pilots."`
+					goto "give up"
+
+			label "try again"
+			`	Jonah nodded slowly. "Okay. Yes, do that. Who knows, maybe we can salvage this. You'll have to handle the transport on your own, you won't have the Ellerschmits with you this time."`
+			`	"I'll figure something out. I won't let you down," you say. "Or the miners on Covert."`
+				accept
+
+			label "give up"
+			`	"Look," Jonah says after a pause, "I don't think you're cut out for this kind of work. It's probably best if you go back to hauling cargo, or raiding merchants, or whatever it was you were doing before."`
+			`	"Okay," you say. "Yeah, I'm going to do that."`
+				decline			
+
+	on decline
+		clear "PP Miner rescue, entering Gienah"
+		clear "PP Miner rescue, reached Covert"
+		clear "salary: Pirate Planets"
+		outfit "Quantum Key" -1
+		"reputation: Pirate Planets" <?= 5
+
+	on fail
+		clear "PP Miner rescue, entering Gienah"
+		clear "PP Miner rescue, reached Covert"
+		clear "salary: Pirate Planets"
+		outfit "Quantum Key" -1
+		"reputation: Pirate Planets" <?= 5
+		dialog "You've failed to complete an important Pirate Planets mission, it's very doubtful Jonah will continue to work with you."
+
+	on complete
+		set "PP Miner rescue, reached Covert"
+		dialog "Now that you're back on Covert you should explore the spaceport before deciding what to do next."
+
+
+
+mission "PP Miner rescue [4]"
+	name ""
+	description ""
+	spaceport
+	source "Covert"
+
+	to offer
+		has "PP Miner rescue, reached Covert"
+
+	on offer
+		dialog "Commencing step 4 of miner mission."

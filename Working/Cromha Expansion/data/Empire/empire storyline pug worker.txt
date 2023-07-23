@@ -1,0 +1,156 @@
+mission "Empire: Transport Pugs Vacancers"
+	name "Pug: Transport Pugs Vacancers"
+	description "Transport Pugs Vacancers to <destination>."
+	landing
+	passengers 3
+	destination "Empire Ring"
+	source
+		government "Pug"
+	to offer
+		has "Empire: Visit Pugs: done"
+		random < 65
+	on offer
+		conversation
+			`As you land on <origin>, you see some sorts of aliens coming to you: it's Pugs. You show them where the cargo is stocked. You approach of one of their ship, they are extremely smooth and seems highly advanced in technology.`
+			`	You stay some time in the spaceport to look at the Pugs's ships. You go back to your ship to do some things when you hear a noise near the ship arrimage. You go to see what is it and see an Pug.`
+			`	The Pug starts the conversation: "Hi!"`
+			`	You response to him and say "Great to meet you. But how do you know my language?"`
+			`	"I actually have a translator on me. It automaticlly translate everything i say and you say."`
+			`	"It seems pretty cool, but why are you here if i'm no too curious?"`
+			`	"I'm here to ask you a favor. Me and my family and i wants to travel to the Empire Ringwolrd, people says that it is the greatest and most ingenious invention of the human space. And i also think that i could help a lot out there. Is this okay for you?"`
+			choice
+				`	"Sounds great for me"`
+					accept
+				`	"Sorry but i don't have that much time."`
+					decline
+	on complete
+		dialog "You land on <planet> and greets the Pug. He says that he will contact you in a few months when i will find some sort of job."
+		"reputation: Pug" += 10
+		"empire worker jobs" += 1
+		log "You transported a Pug to the Empire Ringworld."
+		log "Minor People" "Pug Worker" "He is a new friend that you made. He is a pug that you bringed to the Empire Ringworld so he could get a job."
+		
+mission "Pug: Crodust Shipyard"
+	name "Pug: Crodust Shipyard"
+	description "The Pug worker that you bringed to The Empire Ringworld some time ago wants to go to Crodust. Escort him to Crodust so he can buy his new ship."
+	spaceport
+	destination "Crodust"
+	to offer
+		has "Empire: Transport Pugs Vacancers: done"
+		random < 15
+	source "Empire Ring"
+	on offer
+		conversation
+			`	As you enter the spaceport and go for a coffee in a bar, you see a pug guy that you already meet buy you don't know how... You approach him and ask:`
+			`	"Hi! Sorry to borrow you but i feel we already meet somewhere?"`
+			`	"Oh! Yes of course! Remember me? You bringed me to this fabulous station two months ago i think."`
+			`	"Yes now i remember, how are you since the last time?" You say to him.`
+			`	"Pretty good, i wanna thank you for bringing me here, i know have a job that i like and i have no more money problems anymore! I would like to give you something but i don't know what..."`
+			`	"All the pleasure is for me, i don't need any kind of recompense."`
+			`	"Here! i give you this crystal, it carries good luck."`
+			`You can see a sort of yellow crystal in his hands. It seems to have secrets power.`
+			`	"Also, i want to ask you something: would you escort me to <destination> so I can buy a new ship? I've heard some stories about Empire Rebels and I'm pretty scared. Don't you?"`
+			choice
+				`	"Sure"`
+					accept
+				`	"Sorry, but I don't have that much time"`
+					decline
+	npc accompany save
+		government "Pug"
+		personality escort timid
+		ship "Pug Zibruka" "Great Flyer"
+	on accept
+		outfit "Pug Crystal" 1
+		dialog "The Pug give you the Pug Crystal"
+		log "The friendly Pug gave you a 'Pug Crystal'"
+	on decline
+		dialog "The Pug worker leaves with disapointment and don't give you the crystal"
+	on complete
+		dialog "You land on <planet> and see the Pug Worker walking toward some shipyards."
+		"reputation: Pug" += 10
+		"empire worker jobs" += 1
+		log "You transported a friendly Pug to Crodust so he can buy a ship."
+		
+mission "Pug: Find Gift"
+	name "Pug: Find Gift"
+	description "Check in spaceports for gifts that you could give to your friend pug so he can give it to his son for his birthday. Get the gift before the date of <date>."
+	source "Empire Ring"
+	deadline 4
+	to offer
+		has "Pug: Crodust Shipyard: done"
+		random < 25
+	landing
+	on offer
+		conversation
+			scene "land/ringworld"
+			`You're searching for bars when you meet your Pug friend. You make greeting and start talking about what happened since you two met last time. You learn that the Pug won 7,000,000 credits in a lottery so he bought a new ship: a Bounder. He ask you for taking you to his ship and take a look at it.`
+			choice
+				`	Accept and follow him.`
+					goto next
+				`	You don't have time and say bye to the Pug.`
+					decline
+			label next
+			`	He smiles and says to follow him closely, his ships is parked in a weird place he says. You continue talking about stuff while walking.`
+			choice
+				`	Next`
+					goto ship
+			label ship
+			scene "thumbnail/mbounders"
+			`	You happen to finally get to his ship. It is a beautiful Bounder with good weaponry. You both talk about outfitting, weaponry and other captain stuff when he comes to talk about is family and his son: you Pug friend had a lot of work recently and couldn't find the time to buy a great gift for his son but the birthday is in 4 days! He ask you to search in spaceports for great gifts and he says he will pay you gracefully.`
+			choice
+				`	Accept the mission.`
+					accept
+				`	Decline the mission.`
+					decline
+	on complete
+		outfit "Subsidurial Plushie" -1
+		require "Subsidurial Plushie"
+		dialog "You give one of the plushies to you Pug friend. He is so happy that he pays you 700,000 credits. You also kept one because isn't it adorable?"
+		log "Your Pug friend paid you 700,000 credits after you gave him a Subsiderial Plushie"
+		payment
+		payment 700000
+		
+mission plushie-expensive
+	spaceport
+	source
+		government "Cromha Empire"
+	to offer
+		has "Pug: Find Gift: active"
+		random < 25
+	on offer
+		conversation
+			scene "thumbnail/ayym"
+			`	While searching for merchants, you see a plushie that looks like a Indigenous Lifeform. You go see the merchant and he says the two plushies are for sale at 2,000,000 credits."
+			choice
+				`	Buy the two for 2M credits.`
+					accept
+				`	Leave while grinning.`
+					decline
+	on accept
+		fine 2000000
+		outfit "Subsidurial Plushie" 2
+		log "You bought two expensive Subsiderial Plushie for 2,000,000 credits and found out it was worth only 80 credits. It was probably the worse investment of your whole life."
+		fail
+					
+mission plushie-cheaper
+	spaceport
+	source
+		government "Cromha Empire"
+	to offer
+		has "Pug: Find Gift: active"
+		random < 5
+	on offer
+		conversation
+			scene "thumbnail/ayym"
+			`	While searching for merchants, you see a plushie that looks like a Indigenous Lifeform. You go see the merchant and he says that you can buy two for 40 credits"
+			choice
+				`	Buy the two for 40 credits.`
+					accept
+				`	Decline.`
+					decline
+	on accept
+		fine 40
+		outfit "Subsiderial Plushie" 2
+		log "You bought two adorable Subsiderial Plushie for a Pug friend."
+		fail
+					
