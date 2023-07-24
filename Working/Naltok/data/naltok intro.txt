@@ -1,0 +1,201 @@
+# Copyright (c) 2022 by Alex di Giovanni
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "First Contact: Naltok (Telashki)"
+	landing
+	to offer
+		not "First Contact: Naltok (Xochira): offered"
+	source
+		government "Telashki"
+	destination Raxnolak
+#	clearance
+	on offer
+		conversation
+			`This planet is populated by a species of aliens that remind you of giant newts, slightly shorter than you and with large eyes and dark, rubbery skin. They move languidly through the spaceport, which appears to be flooded with around a foot of water, and several of them come in to watch your ship as you land.`
+			`	Several of them have gathered in a crowd outside your ship's door, waiting for you to leave.`
+			`	As you cautiously open your ship's hatch, the crowd of aliens opens slightly. An individual wearing a tight, dark green outfit made from some kind of plastic-like material steps forward, pauses briefly, then begins speaking to you.`
+			`	"Greetings, visitor. You are human, yes?"`
+			choice
+				`	"Yes, I am human."`
+					goto naltok
+				`	"Wait, how do you know my language?"`
+			`	"Don't worry too much about that. But I will assume from the fact that you responded in the human language when questioned in it that you are indeed human."`
+			label naltok
+			`	The alien steps back slightly and gestures around. "We are the Naltok. These planets are under the control of the Telashki, and we will welcome you so long as you do not cause trouble."`
+			choice
+				`	"Why was I attacked when I entered your space?"`
+					goto xochira
+				`	"If you are all Naltok, who are the Telashki?"`
+			`	"My apologies, I may have explained that poorly. The Telashki are the government of this region - equivalent to your 'Republic'. Naltok is the name of our species."`
+			label xochira
+			`	"You must have entered our space from the south, yes? If so, you no doubt encountered the Xochira. They are xenophobes and technophobes who rejected our leadership, and now attack anyone attempting to enter or leave Naltok space. If you do not wish to face them again, you are welcome to stay here in our space. Alternatively, if you wish to leave, we are happy to sell you weapons and warships to aid you on your journey back."`
+			`	As the Naltok continues talking, the crowd behind them parts to allow a taller, more humanlike individual through. As they approach, you see brief glimpses of green skin, and before you have a chance to respond you are face to face with an Alpha. She is slightly taller than you, with short hair, and is wearing waterproof trousers and a pair of rubber boots.`
+			choice
+				`	(Draw my weapon.)`
+					goto weapon
+				`	(Wait for them to act.)`
+					goto waiting
+				`	"Hello, what brings you here?"`
+			`	The Alpha seems briefly surprised, perhaps not expecting you to strike up a conversation. "Same as you, I believe. I travelled here with a Jump Drive, then found my exit blocked by the Xochira and their 'Archerfish'. Figured I'd be better off staying here than getting myself killed trying to escape. Now that we're stuck here together, what's your name?"`
+				goto name
+			label waiting
+			`	After a few seconds of silent stares, the Naltok begins talking with a distinct enthusiasm in a clear attempt to defuse the situation before things go downhill. "Hey, I realise we don't even know each others' names." They look back and forth expectantly between you and the Alpha.`
+				goto name
+			label weapon
+			`	The Alpha knocks your weapon out of your hand with laughable ease, then leans in closer and whispers to you. "It doesn't surprise me that that's your initial response, but I urge you to reconsider. Right now, we're both prisoners of the Xochira, whether we like it or not. You've nothing to gain by starting a fight."`
+			choice
+				`	"I suppose you are right."`
+					goto waiting
+				`	(Return to my ship and take off)`
+			`	You never moved far from the hatch of your ship, so there is no time for anyone to stop you. As you ascend through the atmosphere, your sensors note that your ship is receiving fire from small-caliber weaponry. It appears you are no longer welcome here.`
+				launch
+			label name
+			choice
+				`	"My name is <first> <last>"`
+					goto tellname
+				`	"I would prefer not to tell you my name."`
+			`	The Alpha speaks up first. "There's no need to be so uncooperative; we truly mean you no harm. I understand that the years of propaganda you must have been subjected to back in Human space are not easy to overcome, but I must ask that you try to have an open mind. My name is Izarna."`
+			`	The Naltok joins in before you can respond "My name is Choshkal."`
+				goto choshkal
+			label tellname
+			`	The Alpha smiles. "My name is Izarna. This is Choshkal, a friend of mine from the Ministry of Alien Life."`
+			label choskal
+			`	Choshkal's expression changes in what you presume is the Naltok equivalent of a smile "Anyways, I would like to welcome you to our space on behalf of the Ministry of Alien Life. We hope you have a good time here, and there are probably many things you can help us with."`
+			`	Choshkal says something to the onlookers in the Naltok language and the crowd disperses, leaving you free to wander the planet.`
+				decline
+	on enter
+		"reputation: Telashki" <?= -10
+#		"reputation: Xochira" >?= 0
+		log "Factions" "Telashki" `The Telashki govern the north of Naltok space. They are apparently harbouring at least one Alpha, though you did not have the opportunity to learn more.`
+		log "Factions" "Xochira" `According to the Telashki, the Xochira are a group of "xenophobes and technophobes" who control the south of Naltok space. Whatever their nature, they attacked you when you first entered their space.`
+		log "Factions" "Naltok" `The Naltok are a species of aliens living on the westernmost fringes of the galaxy. They resemble newts, or perhaps salamanders or toads, and seem to prefer to live in relatively damp conditions - most of their living spaces are wholly or partially flooded with water. Their space is divided between two rival factions, the Telashki in the north and the Xochira in the south.`
+		log `Encountered an amphibian-like alien species called the Naltok to the west of the Deep. Met an Alpha there, and escaped alive, but angered the 'Telashki' in the process.`
+		fail
+	on decline
+		log "Factions" "Telashki" `The Telashki govern the north of Naltok space. They are harbouring several Alphas, all of whom arrived prior to the Xochira's formation and are now trapped. The central governing body of their society appears to be the "ministries", one of which is the Ministry of Alien Life.`
+		log "Factions" "Xochira" `According to the Telashki, the Xochira are a group of "xenophobes and technophobes" who control the south of Naltok space. Whatever their nature, they attacked you when you first entered their space.`
+		log "Factions" "Naltok" `The Naltok are a species of aliens living on the westernmost fringes of the galaxy. They resemble newts, or perhaps salamanders or toads, and seem to prefer to live in relatively damp conditions - most of their living spaces are wholly or partially flooded with water. Their space is divided between two rival factions, the Telashki in the north and the Xochira in the south.`
+		log "People" "Izarna" `Izarna is an Alpha living in Telashki space, who apparently arrived before the Xochira split off from the rest of the Naltok and is now trapped there.`
+		log "Minor People" "Choshkal" `A member of the Ministry of Alien Life who greeted you when you first arrived in Telashki space.`
+		log `Encountered an amphibian-like alien species called the Naltok to the west of the Deep. Met an Alpha who is living in their space, and had a fairly pleasant meeting - she is apparently trapped there due to the 'Xochira'.`
+
+mission "First Contact: Naltok (Xochira)"
+	boarding
+	to offer
+		not "First Contact: Naltok (Telashki): offered"
+	source
+		government "Xochira"
+	passengers 1
+	destination
+		government "Xochira"
+	clearance
+	on offer
+		conversation
+			`As you blast open the airlock of the mysterious ship that attacked you, you find yourself face to face with an alien and knee-deep in water. The alien vaguely reminds you of a giant newt or salamander, with dark, rubbery skin and large eyes, and is slightly shorter than you. The water is lukewarm, and quickly washes over your lower legs.`
+			`	The alien immediately reaches down to its waist, where you see two pistols holstered.`
+			choice
+				`	(Raise my hands.)`
+				`	(Draw my gun.)`
+					goto threaten
+				`	(Draw my gun and fire.)`
+					goto murder
+			`	The alien draws both its pistols and points them at you, but does not fire. After a few seconds, the alien hesitantly lowers first one, then the other`	
+			choice
+				`	"Hello? Can you understand me?"`
+				`	(Say nothing.)`
+					goto silencep
+			`	The alien appears not to understand you. It begins speaking in its own language, then stops after realising you do not understand it.`
+				goto device
+			label silencep
+			`	The alien stares at you hesitantly, evidently waiting for you to make a move.`
+				goto device
+			label threaten
+			`	The alien draws both its pistols and points them at you, but does not fire. You both stand in silence, weapons pointed towards each other.`
+			choice
+				`	"Hello? Can you understand me?"`
+				`	(Say nothing.)`
+					goto silence
+			`	The alien does not appear to understand you, but begins speaking in its own language. When it sees that you do not understand, it stops and continues staring.`
+				goto device
+			label silence
+			`	You and the alien continue holding each other at gunpoint for nearly a minute. The air on the ship is excessively damp, and you realise that neither you nor the alien have blinked.`
+			label device
+			`	The alien slowly reaches down to its waist and withdraws a small, flat hexagonal device from its pocket. The alien slowly brings the device up until it is slightly below its head, such that both you and the device are within the field of view of its large eyes, then begins pressing some buttons on the device.`
+			`	After a couple of seconds, you hear a slow, synthetic voice coming from the device: "Human. You are human." The alien looks you in the eyes, awaiting a response.`
+			choice
+				`	"Yes, I am human."`
+				`	"No, I don't think so."`
+				`	"What are you?"`
+					goto question1
+				`	"How does that thing work?"`
+					goto question2
+			label notalpha
+			`	The device continues: "You are not Alpha."`
+			choice
+				`	"I am not an Alpha."`
+					goto peacechance
+				`	"How do you know about the Alphas?"`
+					goto tenuous
+			label question1
+			`	The device pauses for a few seconds, and you see the reflection of some coloured flashes of light in the face of the alien. After a few more moments, the alien presses some buttons again, and the device continues to speak: "Naltok. We are Naltok."`
+				goto notalpha
+			label question2
+			`	The device pauses for a few seconds, and you see the reflection of some coloured flashes of light in the face of the alien. The alien presses several combinations of buttons on the device, and after a few mrore seconds the device continues to speak: "Speaking device. Speaking Human."`
+				goto notalpha
+			label peacechance
+			`	You see the reflection of the device's screen in the alien's eyes. Some text appears, and the alien drops both its pistols to the ground, then puts the device down and looks at you expectantly.`
+			choice
+				`	(Discard my weapons.)`
+					goto peacesuccess
+				`	(Open fire.)`
+					goto murder
+			label tenuous
+			`	The device flashes, and the alien's expression changes. The device repeats itself: "You are not Alpha."`
+			choice
+				`	"I am not an Alpha."`
+					goto peacechance
+				`	(Just shoot them.)`
+					goto murder
+			label murder
+			`	You reach for your gun and pull the trigger. The alien stumbles and falls down, apparently dead.` 
+			`	Perhaps things could have ended differently, but any chance of peace between you and these aliens is now gone. All that remains now is to continue with your plans to either loot or steal this ship.`
+				decline #todo: have the boarded ship lose one crew member here
+	on accept
+		"reputation: Xochira" >?= 1
+	on fail
+		"reputation: Xochira" <?= -1
+	on complete
+		conversation
+			`Several ships shadow you as you descend through the atmosphere, but they do not fire at you. When you land, there are guards waiting for you, armed with large, intimidating weapons. Your passenger steps off your ship immediately and begins talking to the guards.`
+		
+
+mission "Second Contact: Naltok (Telashki)"
+	landing
+	to offer
+		not "First Contact: Naltok (Telashki): offered"
+		has "First Contact: Naltok (Xochira): offered"
+	invisible
+	source
+		government "Telashki"
+	on offer
+		conversation
+			`As you come in to land, you see that this planet too is inhabited by Naltok, just like the one you visited south of here. Much like before, you are shadowed by several ships as you descend, but this time they are flying greenish-blue colours, rather than the purples of the Xochira.`
+
+#mission "Second Contact: Naltok (Xochira)"
+#	boarding
+#	to offer
+#		has "First Contact: Naltok (Telashki): offered"
+#		not "First Contact: Naltok (Xochira): offered"
+#	invisible
+#	source
+#		government "Xochira"
+#	on offer
+#		conversation
+#			``

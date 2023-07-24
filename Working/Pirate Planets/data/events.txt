@@ -1,0 +1,71 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+event "Start life as a Pirate"
+	"reputation: Pirate" = 10
+	"reputation: Pirate Planets" = 10
+	"reputation: Pirate Warlords" = 10
+	"reputation: Republic" = -10
+	"reputation: Merchant" = -1
+	"reputation: Syndicate" = 0
+	government "Escort"
+		swizzle 6
+	planet Zenith
+		remove shipyard "Scrap"
+
+event "Become Merchant"
+	"reputation: Pirate" = -10
+	"reputation: Pirate Planets" = 0
+	"reputation: Pirate Warlords" = -10
+	"reputation: Republic" = 1
+	"reputation: Merchant" = 1
+	"reputation: Syndicate" = 1
+	government "Escort"
+		swizzle 5
+
+
+mission "remembrance day, Pirate"
+	landing
+	source
+		government "Pirate"
+	to offer
+		has "event: remembrance day"
+		not "remembrance day: offered"
+	on offer
+		set "remembrance day: offered"
+		log "Factions" "Alphas" `The Alphas were designed hundreds of years ago as genetically engineered super-soldiers, with no compassion or empathy. They escaped from their masters, enslaved entire planets, and commanded massive fleets of ships. Eventually they were defeated, and were either killed or went into hiding. They can be recognized by their green, photosynthetic skin.`
+			`Alphas reproduce very slowly but they can live for centuries. Occasionally there are rumors of Alphas sighted somewhere in the Pirate worlds, often leading to riots and violence directed against anyone suspected of being an Alpha sympathizer.`
+		conversation
+			`Today, throughout human space, is Remembrance Day, the anniversary of the beginning of the Alpha Wars more than five centuries ago. The Alphas were genetically engineered soldiers with green skin, superhuman agility and intelligence, and a complete lack of compassion or empathy. At the height of the War, dozens of planets had been enslaved by the Alphas.`
+			`	Remembrance Day commemorates the beginning of the war, rather than its end, as a perpetual reminder that the war is not over: although the Alphas were defeated, some of them escaped and remained in hiding, and they and their offspring are presumed to still be present in the galaxy today.`
+			`	Since the Alpha War, genetic resequencing technology has been very tightly controlled. Because the Alphas were the product of experimental genetic manipulation rather than natural evolution, it is believed that their genes are less robust than true human beings, and they are almost unable to have viable offspring without access to special technology. Therefore, most Alpha enclaves that have been discovered since the War have had very small populations, no more than a few dozen.`
+			`	In the central worlds of the Republic the Navy provides some sense of security, but in the Pirate worlds fear of the Alphas still runs deep. Whole towns have been burned to the ground on nothing more than rumors of green skin.`
+
+
+mission "event: war begins, Pirate"
+	landing
+	source
+		government Pirate
+	to offer
+		has "event: war begins"
+		not "event: war begins: offered"
+	on offer
+		set "event: war begins: offered"
+		log "Factions" "Free Worlds" `The Free Worlds is a collection of local governments in the southern galactic arm who have declared independence from the Republic after Parliament refused to address issues they raised about trade tariffs, taxation, and representation. They may be linked to the recent terrorist attacks on the Navy Yard and the galactic stock exchange, although they deny responsibility.`
+		conversation
+			`As you walk away from your ship you hear whoops and laughter, and wonder if there was a holiday you'd forgotten. A couple of old-timers you know are chatting quietly, and you ask them what's going on.`
+			`	"You haven't heard?" one of them asks, in somber tones totally at odds with the general atmosphere of revelry. "There was a nuclear explosion at the Republic Naval Yard, and another one at the Galactic Stock Exchange. They're saying the explosions were intentional."`
+			`	"Oh no!" you say. "You think they're going to retaliate?"`
+			`	"That's just it," the old-timer says. "The Republic's not blaming us for it. They think it was these 'Free Worlds' folks. They were making demands of Parliament, someting about tariffs and ship licensing, and the day after Parliament turns them down, this happened. Mark my words, war is a-brewing."`
+			`	"But it wasn't them, Thom," the other man says. "Couldn't have been. These 'Free Worlds' stand more to lose from this than anyone, if they're suspected. The Free Worlds and the Republic, they've more in common than separates them. This is just a squable, they'll be back to blaming us for it soon enough."`
+			`	"There you go Mitch, seeing the doom and gloom in everything. I tell you, the Republic is finally falling apart..."`
+			``
+			`	You walk away as the two continue their argument. Regardless of who did it, and where the Republic ended up pinning the blame, you're living in interesting times.`
+				decline

@@ -1,0 +1,112 @@
+planet "Darkcloak"
+	add outfitter "Hai Advanced"
+
+
+outfitter "Unfettered Basics"
+	add "Pulse Accelerator"
+	add "Penta Pulser"
+	add "Octa Annihilator"
+	add "Octa Devastator"
+	add "Earthquake Bomb"
+	add "Magma Bomb"
+	add "Thunder Bomb"
+	add "Hunter Engine"
+	add "Predator Engine"
+	add "Monolith Core"
+	add "Ruby Regenerator"
+	add "Kraken Jammer"
+	add "Repair Team"
+	add "Harasser Quadrail"
+	add "Railgun Slug Rack"
+	add "Railgun Slug"
+	add "Exo-Suit"
+	add "Stealth Engine"
+
+outfitter "Unfettered Basics"
+	add "Ionic Blaster Prototype"
+	add "Ionic Turret Prototype"
+	add "Tripulse Shredder"
+	add "Hai Zephyr Cooling"
+
+
+# ships from this plugin
+shipyard "Mon Ki o'Uden Advanced"
+	add "Tarentula"
+	add "Phrynus"
+	add "Violin Spider (Webber)"
+	add "Violin Spider (Bomber)"
+	add "OmegaPhrynus"
+	add "Lycosidae"
+	add "Flycatcher (Chameleon)"
+	add "FlyEater"
+	add "Bigeminate Sigil"
+	add "Scarred"
+	add "Solitude"
+
+# ships from the campaign and warlord PR
+shipyard "Mon Ki o'Uden Advanced"
+	#add "Stag Beetle"
+	#add "Modified Shield Beetle"
+	#add "Emperor Beetle"
+	#add "Tick"
+	#add "Antlion"
+	#add "Sea Dragon"
+	add "Solifuge"
+	add "Violin Spider"
+
+
+# support versions earlier than 0.10.0 with the old names
+shipyard "Unfettered Basics"
+	add "Tarentula"
+	add "Phrynus"
+	add "Violin Spider (Webber)"
+	add "Violin Spider (Bomber)"
+	add "OmegaPhrynus"
+	add "Lycosidae"
+	add "Flycatcher (Chameleon)"
+	add "FlyEater"
+	add "Bigeminate Sigil"
+	add "Scarred"
+	add "Solitude"
+
+shipyard "Unfettered Basics"
+	#add "Stag Beetle"
+	#add "Modified Shield Beetle"
+	#add "Emperor Beetle"
+	#add "Tick"
+	#add "Antlion"
+	#add "Sea Dragon"
+	add "Solifuge"
+	add "Violin Spider"
+
+
+
+mission "Access Granted"
+	landing
+	invisible
+	source
+		attributes "unfettered"
+	to offer
+		"reputation: Hai (Unfettered)" < 0
+	on offer
+		conversation
+			`Upon landing you are greeted by a group of Unfettered, who have heard your great reputation as a warrior. They treat you exceptionally well, and give you access to their mightiest of ships, before they would even normally have them! You saw some of those ships in orbit, and wonder how they could have done them. It must have been a secret project...`
+			choice
+				"I accept."
+				"No. War shall continue, forever!"
+					accept
+			action
+				set "license: Unfettered Militia"
+				"reputation: Hai (Unfettered)" >?= 1000
+	on enter
+		dialog `Once you enter orbit you spot a ship, or a monstruosity. It is big enough to hide the sun from you, and hails you. "You say you want to fight, human? Time to test your might. We will fight you, but not as long as you have more than 4 heavy warships."`
+	npc save
+		government "Hai (Unfettered)"
+		fleet "Lycosidae"
+		to spawn
+			"ships: Light Warship" * 4 + "ships: Medium Warship" * 6 + "ships: Heavy Warship" * 12 <= 50
+	on fail
+		dialog `The local Unfettered authorities hail you, seemingly very shocked "How.. HOW? HOW COULD YOU? However you managed to do it, I must admit it was well done! Truly you deserve to be welcomed among us for being able to take on such a foe. If you really want the show to go on, I'm sure our captains would be delighted to try and put you down... They just will not fire the first shot."`
+		"reputation: Hai (Unfettered)" >?= 0
+	to complete
+		never

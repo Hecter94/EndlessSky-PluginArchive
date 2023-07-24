@@ -1,0 +1,133 @@
+mission "JW Recon 1"
+	name "Wanderer Scanning Demonstration"
+	description "Perform an outfit scan on the Wanderer ship <npc>, then report to Rek on <destination>."
+	source
+		planet "Vara K'chrai"
+#	to offer
+#		has "FW Recon 0: done"
+	
+	on offer
+		conversation
+			branch "deferred"
+				has "JW Recon 1: deferred"
+			label "deferred"
+				clear "JW Recon 1: deferred"
+				`The Wanderers had asked you obtain scanners and demonstrate their effectivenes. Are you ready to show them what the scanners can do?`
+				choice
+					`	(I'm ready to scan some ships)`
+						goto readynow
+					`	(I'm too busy right now.)`
+						set "JW Recon 1: deferred"
+						defer
+
+
+			`When you walk into the spaceport Rek greets you and asks you to join him in a meeting. He leads you to a conference room where Ambassador Sayari and several Wanderers in uniform are discussing a star map projected from the table.`
+			`	They look up as you walk in and one of the commanders calls you over. "Captain <last>, she begins, "We are [discussing, pondering] the source of the Unfettered jump drives." She points to a star system to the right of Ehma Ti. "We know they must come through this [area, region] of space, since they cannot travel through Hai territory.`
+			`	"There are, of course, problems with us [gaining access, travelling] to those systems," She says and  rustles her feathers in a gesture approximating a shrug, "but even if we had access, we can only [evaluate, inspect] a ship by disabiling and boarding it. Ambassador Sayari had indicated that the Hai have [inspectors, scanners] that can [discover, probe] and ship at a distance, but had no technical details. We hope that you would be able to tell us more."`
+			choice
+				`	(Tell them about scanner technology.)`
+					goto scanners
+				`	(Plead ignorance.)`
+					goto dunno
+				`	(Refuse.)`
+					decline
+			label dunno
+			`	?????`
+			label scanners
+			`	You tell the group about the outfit and cargo scanners used by by the Human and Hai ships, describing the information they provide. Then you tell them about the Human tactical scanners that can provide real time combat information on enemy ships.`
+			`	There is a twitter of excitement and the Wanderers all speaking amongst themselves which your translator can't make sense of. At length the commander raises her wings and the group fall silent. "Captain <last>," she says, "can you [demonstrate, prove] this technology to us?"`
+			choice
+				`	"I would be glad to."`
+					goto gladto
+				`	"I don't have the scanners installed."`
+					goto needscanner
+				`	"I don't want to help the Wanderers."`
+					decline
+
+			label needscanner
+			`	The commander ruffles her feathers in a display of frustration. "Please come back to us when you have the [inspector, scanner] so we can [determine, choose] our course of action.`
+			set "JW Recon 1: deferred"
+				defer
+				goto end
+			label readynow
+			`	You reach out to Rek to tell him you have outfitted the <ship> with the scanners and are ready to perform the testing. He adds one of the military commanders to the call.`
+				goto gladto
+			label gladto
+			`	"Good," the commander replies and issues a brief command over her commlink. "There are some ships undergoing field [testing, trials] in a restricted area in this system. Please [inspect, scan] them and show us the results."`
+				accept
+			label end
+			
+	on accept
+		log "Demonstrated scanner technology to the Wanderers."
+	
+	npc "scan outfits"
+		government "Wanderer"
+		personality staying uninterested target
+		fleet
+			names "wanderer"
+			variant
+				"Derecho"
+				"Autumn Leaf"
+				"Riptide"
+		conversation
+			`As soon as you scan the <npc> its captain hails you. "We are excited to see what your [inspector, scanner] call tell us about our ships. Please meet us for [celebrations, drinks]after you finish with the [commander, brass]."`
+			choice
+				`	(Accept invitation.)`
+					goto drinks
+				`	(Decline.)`
+					goto gottawork
+			label drinks
+			`	"I'd love to," you reply. The pilot gives you the name of a bar you've never heard of and promises that you won't be certified to fly for at least a day after.`
+				goto close
+			label gottawork
+			`	You explain that you are flying out directly after the meeting. The Wanderer pilot says he [commiserates, understands]. They give you the name of a bar you've never heard of and tells you you will be [greeted, welcome] any time.`
+				goto close
+			label close
+			`	You cut the commlink and prepare to land on <planet>.`
+	
+	on visit
+		dialog `You land on <planet>, but you haven't yet scanned the Wanderer prototypes in the restriced area. Depart and scan the ships' outfits before returning.`
+	# on complete
+	# 	dialog `Soon after you land, the militia officer comes to your ship and pays you <payment> in exchange for your sensor logs regarding the <npc>. He says, "If you would be interested in continuing to work for us, meet me in the spaceport bar in an hour."`
+	# 	payment 10000
+
+
+
+mission "FW Recon 2"
+	name "Free Worlds Reconnaissance"
+	description "Scan any ships in the <waypoints> system that are equipped like the combat-ready Cruiser you scanned previously, then return to <destination>."
+	source
+		planet "Glaze"
+	to offer
+		has "FW Recon 1: done"
+	to fail
+		has "chosen sides"
+	waypoint "Menkent"
+	
+	on offer
+		conversation
+			`You meet up with the militia officer in the spaceport bar. "Glad you showed up," he says, "I'm Jean-Jacques, by the way, but you can call me JJ."`
+			`	You introduce yourself in return, and he continues. "Here's the deal. I'm the commander of the militia on Glaze. So far, we and the Navy are not shooting at each other, because no one wants to fire the first shot. But if they're getting ready to change that, they'll start refitting their Cruisers with heavy weaponry instead of surveillance equipment. So, I need to know how many more of their ships are equipped like the one you just scanned."`
+			`	He continues, "I'd like you to go to <waypoints>, where they're building some sort of secret base. Scan any ships you think match the one we just saw, then bring your scanner logs back here for me to look at."`
+			choice
+				`	"Sure, I'd be glad to do that."`
+					accept
+				`	"Sorry, after the way this last captain responded to me scanning him, I'm not sure I want to risk it again."`
+					decline
+	
+	npc "scan outfits"
+		government "Republic"
+		personality staying uninterested target
+		system "Menkent"
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Heavy)" 4
+		dialog "You've scanned all the ships you can find here that seem to be upgraded for combat. Time to return to <planet> to collect your payment."
+	
+	on visit
+		dialog `You land on <planet>, but you haven't yet scanned the Navy Cruisers patrolling Menkent. Depart and scan the Cruisers' outfits before returning.`
+	on complete
+		dialog `JJ meets you as soon as you land, and you hand over the scanner data. "Thank you again," he says. "If you're willing to take on one more recon mission, meet me in the bar." He hands you <payment>.`
+		payment 50000

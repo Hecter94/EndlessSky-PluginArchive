@@ -92,9 +92,8 @@ mission "Ghost Hunting: Dire Omen 2"
 		personality derelict target pacifist mute
 		fleet "Derelict Northern Pirate"
 		dialog `The ship is an abandoned derelict. Large portions of key systems look to have melted right off. Whatever did this must generate intense heat. It's clear that this ship, or what's left of it, is not going anywhere. You'll have to leave it behind.`
-	on complete
-		"Ghost Hunting: Dire Omen 2" --
-
+	to fail
+		has "Ghost Hunting: Dire Omen 5: done"
 
 
 
@@ -174,12 +173,12 @@ mission "Ghost Hunting: Dire Omen 4"
 			
 			label ask
 			`	After he is done filing his report you approach the captain and ask, "Where did you last spot this 'ghost ship'?"`
-			`	"About halfway through the northern passage," he responds. "I didn't believe the tales of a haunted war ship. But the legend of the 'Dire Omen' is real! According to my scanner, the ship has no crew."`
+			`	"About halfway through the Northern Passage," he responds. "I didn't believe the tales of a haunted war ship. But the legend of the 'Dire Omen' is real! According to my scanner, the ship has no crew."`
 				accept
 	on accept
 		log `A merchant captain claimed to have been attacked by a ghost ship he referred to as the "Dire Omen". The government official who filed the report seemed skeptical of his testimony.`
 		fail
-				
+
 
 
 mission "Ghost Hunting: Dire Omen 5"
@@ -189,9 +188,10 @@ mission "Ghost Hunting: Dire Omen 5"
 	source 
 		planet "Farpoint" "Maelstrom" "Sunracer" "Skillet" "Prime"
 	waypoint "Rajak"
-
 	to offer
-		has "Ghost Hunting: Dire Omen 3: failed"
+		or
+			has "Ghost Hunting: Dire Omen 4: failed"
+			has "Ghost Hunting: Dire Omen 4: declined"
 	on offer
 		conversation
 			`As you open your hatch there is a group of merchants waiting for you. "Excuse us captain. We are seeking volunteers for a rescue mission. Will you hear us out?"`
@@ -762,6 +762,7 @@ mission "Ghost Hunting: Zubenelgenubi Ghost Ship"
 	description "An alien ghost ship is projected to pass through the Zubenelgenubi system. Head over there if you want to investigate. Return to <planet> afterwards and tell Cali what you found."
 	source
 		attributes "dirt belt"
+		not attributes "uninhabited"
 	waypoint Zubenelgenubi
 	to offer
 		"month" == 10

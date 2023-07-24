@@ -1,0 +1,50 @@
+# Example mission of a duel with a warlord, just add dialog and a ship that doesnt cost more than say 60M, and other things optionally.
+mission "<uhai> Challenge Warlord Job"
+	job
+	name `Defeat the warlord`
+	description `An Unfettered warlord has provoked you into a duel. Disable his ship for a big increase in salary.`
+	source
+		attributes "unfettered"
+	to offer
+		random < 15
+		has "<uhai> 2: Prove Your Strength: done"
+	to accept
+		"ships: Space Liner" * 2 + "ships: Transport" * 4 + "ships: Light Freighter" * 2 + "ships: Heavy Freighter" * 4 + "ships: Utility" * 6 + "ships: Interceptor" * 2 + "ships: Light Warship" * 3 + "ships: Medium Warship" * 6 + "ships: Heavy Warship" * 12 + "ships: Superheavy" * 18 <= 18
+	on accept
+		dialog `So you think you can beat me <, unfettered title>? Ha, let's see it!`
+	npc save disable
+		government "Hai (Unfettered Challenger)"
+		personality disables staying heroic target launching
+		ship "Sea Scorpion (Ionic)" "Disabler"
+		ship "Sea Scorpion (Shredder)" "Destroyer"
+		to spawn
+			"ships: Space Liner" * 2 + "ships: Transport" * 4 + "ships: Light Freighter" * 2 + "ships: Heavy Freighter" * 4 + "ships: Utility" * 6 + "ships: Interceptor" * 2 + "ships: Light Warship" * 3 + "ships: Medium Warship" * 6 + "ships: Heavy Warship" * 12 + "ships: Superheavy" * 18 <= 18
+		to despawn
+			has "unfettered: beaten the warlord"
+		conversation
+			`Now that you have disabled the <npc>, the warlord gives you your reward without further explanation.`
+			action
+				log `Defeated a warlord in a duel.`
+				set "unfettered: beaten the warlord"
+				"salary: Unfettered" += 500
+	to fail
+		has "event: unfettered: outcast"
+	on visit
+		dialog "You have not yet defeated the Unfettered Warlord. If he did not show up it is probably because your fleet is too large."
+	to complete
+		has "unfettered: beaten the warlord"
+
+mission "<uhai> Challenge Warlord Job: Trust Broken"
+	invisible
+	landing
+	to offer
+		has "<uhai> Challenge Warlord Job: active"
+		"ships: Space Liner" * 2 + "ships: Transport" * 4 + "ships: Light Freighter" * 2 + "ships: Heavy Freighter" * 4 + "ships: Utility" * 6 + "ships: Interceptor" * 2 + "ships: Light Warship" * 3 + "ships: Medium Warship" * 6 + "ships: Heavy Warship" * 12 + "ships: Superheavy" * 18 <= 18
+	to fail
+		"ships: Space Liner" * 2 + "ships: Transport" * 4 + "ships: Light Freighter" * 2 + "ships: Heavy Freighter" * 4 + "ships: Utility" * 6 + "ships: Interceptor" * 2 + "ships: Light Warship" * 3 + "ships: Medium Warship" * 6 + "ships: Heavy Warship" * 12 + "ships: Superheavy" * 18 > 18
+		has "flagship system: Wah Yoot"
+	on fail
+		dialog "You have broken the trust of the Unfettered warlord by trying to come to a duel with too many ships. He will not show up again."
+		fail "<uhai> Challenge Warlord Job"
+	to complete
+		not "<uhai> Challenge Warlord Job: active"

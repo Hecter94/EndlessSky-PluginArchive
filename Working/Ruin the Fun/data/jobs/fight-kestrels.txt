@@ -1,0 +1,95 @@
+mission "Ruin-the-Fun Combat Kestrels"
+	job
+	name "Fight Kestrels"
+	description "Spawn a few hostile kestrels."
+	"apparent payment" 100
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			action
+				clear "Ruin-the-Fun Combat Kestrels: engines"
+				clear "Ruin-the-Fun Combat Kestrels: shields"
+				clear "Ruin-the-Fun Combat Kestrels: weapons"
+			`	Which variants would you like to spawn?`
+			choice
+				`	(Engines.)`
+					goto e
+				`	(Shields.)`
+					goto s
+				`	(Weapons.)`
+					goto w
+				`	(Engines and Shields.)`
+					goto es
+				`	(Engines and Weapons.)`
+					goto ew
+				`	(Shields and Weapons.)`
+					goto sw
+				`	(All of them.)`
+					goto esw
+			label e
+			action
+				set "Ruin-the-Fun Combat Kestrels: engines"
+			`	A ship was launched. Press [D] three times to depart.`
+				accept
+			label s
+			action
+				set "Ruin-the-Fun Combat Kestrels: shields"
+			`	A ships was launched. Press [D] three times to depart.`
+				accept
+			label w
+			action
+				set "Ruin-the-Fun Combat Kestrels: weapons"
+			`	A ships was launched. Press [D] three times to depart.`
+				accept
+			label es
+			action
+				set "Ruin-the-Fun Combat Kestrels: engines"
+				set "Ruin-the-Fun Combat Kestrels: shields"
+			`	Two ships were launched. Press [D] three times to depart.`
+				accept
+			label ew
+			action
+				set "Ruin-the-Fun Combat Kestrels: engines"
+				set "Ruin-the-Fun Combat Kestrels: weapons"
+			`	Two ships were launched. Press [D] three times to depart.`
+				accept
+			label sw
+			action
+				set "Ruin-the-Fun Combat Kestrels: shields"
+				set "Ruin-the-Fun Combat Kestrels: weapons"
+			`	Two ships were launched. Press [D] three times to depart.`
+				accept
+			label esw
+			action
+				set "Ruin-the-Fun Combat Kestrels: engines"
+				set "Ruin-the-Fun Combat Kestrels: shields"
+				set "Ruin-the-Fun Combat Kestrels: weapons"
+			`	Three ships were launched. Press [D] three times to depart.`
+				accept
+	npc disable
+		government "Ruin-The-Fun (Hostile)"
+		ship "Kestrel (More Engines)" "Engines Kestrel"
+		personality heroic disables
+		to spawn
+			has "Ruin-the-Fun Combat Kestrels: engines"
+		to despawn
+			not "Ruin-the-Fun Combat Kestrels: engines"
+	npc disable
+		government "Ruin-The-Fun (Hostile)"
+		ship "Kestrel (More Shields)" "Shields Kestrel"
+		personality heroic disables
+		to spawn
+			has "Ruin-the-Fun Combat Kestrels: shields"
+		to despawn
+			not "Ruin-the-Fun Combat Kestrels: shields"
+	npc disable
+		government "Ruin-The-Fun (Hostile)"
+		ship "Kestrel (More Weapons)" "Weapons Kestrel"
+		personality heroic disables
+		to spawn
+			has "Ruin-the-Fun Combat Kestrels: weapons"
+		to despawn
+			not "Ruin-the-Fun Combat Kestrels: weapons"

@@ -1,0 +1,58 @@
+mission "Non-Pirate License Trigger"
+	minor
+	invisible
+	landing
+	repeat
+	to offer
+		not "non-pirate"
+		"reputation: Merchant" > 0
+	on offer
+		set "license: Friendly"
+		set "non-pirate"
+
+mission "You are Pirate"
+	minor
+	repeat
+	invisible
+	landing
+	to offer
+		"reputation: Merchant" < 0
+	on offer
+		clear "license: Friendly"
+		clear "non-pirate"
+
+mission "Marauder Sales"
+	minor
+	repeat
+	invisible
+	landing
+	source
+		government Republic "Free Worlds" Syndicate Independent Pirate
+	to offer
+		"month" == 11
+		not "ms_on"
+	on offer
+		set "ms_on"
+		event "ms_on" 1
+		event "ms_off" 50
+		conversation
+			`You overhear some people say that there is a shipyard that will be only for Christmas on Wayfarer (in the Tarazed system).`
+
+mission "Marauder Closing"
+	invisible
+	landing
+	repeat
+	to offer
+		has "Marauder Sales: active"
+		"month" == 2
+	on offer
+		clear "ms_on"
+		fail "Marauder Sales"
+
+event "ms_on"
+	planet "Wayfarer"
+		add shipyard Modified
+
+event "ms_off"
+	planet "Wayfarer"
+		remove shipyard Modified

@@ -1,0 +1,183 @@
+mission "Ruin-The-Fun Services"
+	priority
+	repeat
+	name "Reception"
+	description "The spaceport's reception is closed. Take off and land back for it to open again."
+	source
+		government "Ruin-The-Fun"
+	on offer
+		conversation
+			`	You walk to the spaceport's reception. A man with a sumptuous beard, and a badge reading "Zeus", is waiting for you. "Hello <first>, how might I serve You?"`
+				to display
+					not "Ruin-The-Fun Services: player met Zeus"
+				goto options
+			`	At the reception, Zeus is waiting for you. "Welcome back, <first>. How might I serve You?"`
+				to display
+					has "Ruin-The-Fun Services: player met Zeus"
+				goto options
+			
+			label reoptions
+			`	"Would you like anything else?"`
+				goto options
+			
+			label options
+			action
+				set "Ruin-The-Fun Services: player met Zeus"
+			choice
+				`	(Reveal the map.)`
+					goto "reveal map"
+				`	(Combat Rank 14.)`
+					goto "rank 14"
+				`	(Combat Rank 21.)`
+					goto "rank 21"
+				`	(Begin Free Worlds story and join it.)`
+					goto "free worlds"
+				`	(Set 'main plot completed'.)`
+					goto "main plot completed"
+				`	(Paint my ship in Magenta.)`
+					goto "paint magenta"
+				`	(Paint my ship in Turquoise.)`
+					goto "paint turquoise"
+				`	(Paint my ship in Red.)`
+					goto "paint red"
+				`	(Outfit me an Albatross with legit tech.)`
+					goto albatross
+				`	(Outfit me a Tubfalet with legit tech.)`
+					goto tubfalet
+				`	(Outfit me a Punisher with stolen Quarg tech.)`
+					goto punisher
+				`	(Outfit me a 577 with stolen Quarg tech.)`
+					goto 577
+				`	(Give me a Petrel fighter.)`
+					goto petrel
+				`	(Give me a Flycatcher drone.)`
+					goto flycatcher
+				`	"Is this all the services you have to offer?"`
+					goto "other services"
+				`	"The shipyard and outfitter are missing some items."`
+					goto missing
+				`	"I'm bored, entertain me."`
+					goto entertain
+				`	"Thank you." (Leave.)`
+					goto end
+	
+			label "reveal map"
+			action
+				event "Ruin-the-Fun Visit Systems"
+				event "Ruin-the-Fun Visit Planets"
+			`	Systems and planets info revealed.`
+				goto options
+			
+			label "rank 14"
+			action
+				"combat rating" = 1202604 + 1
+			`	Rank updated.`
+				goto options
+			
+			label "rank 21"
+			action
+				"combat rating" = 1318815734 + 1
+			`	Rank updated.`
+				goto options
+			
+			label "main plot completed"
+			action
+				set "main plot completed"
+			`	Condition set.`
+				goto options
+			
+			label "free worlds"
+			action
+				event "war begins"
+				event "initial deployment 1"
+				event "initial deployment 2"
+				event "initial deployment 3"
+				event "joined the free worlds"
+			`	You joined the Free Worlds.`
+				goto options
+			
+			label "paint magenta"
+			action
+				event "Ruin-The-Fun Swizzle 1"
+			`	Your ship have been painted.`
+				goto options
+			
+			label "paint turquoise"
+			action
+				event "Ruin-The-Fun Swizzle 3"
+			`	Your ship have been painted.`
+				goto options
+			
+			label "paint red"
+			action
+				event "Ruin-The-Fun Swizzle 6"
+			`	Your ship have been painted.`
+				goto options
+			
+			label "albatross"
+			action
+				give ship "Ruin-The-Fun Albatross" "Snappy Present"
+			`	You have been given an outfitted Albatross.`
+				goto options
+			
+			label "tubfalet"
+			action
+				give ship "Ruin-The-Fun Tubfalet" "Savage Present"
+			`	You have been given an outfitted Tubfalet.`
+				goto options
+	
+			label "punisher"
+			action
+				give ship "Ruin-The-Fun Punisher" "Graceful Present"
+			`	A Punisher with quarg tech, ironic?`
+				goto options
+			
+			label "577"
+			action
+				give ship "Ruin-The-Fun 577" "Funky Present"
+			`	The ground shakes under the weigh of your 577. No Korath child inside.`
+				goto options
+			
+			label "petrel"
+			action
+				give ship "Ruin-The-Fun Petrel" "Expensive Replacement"
+			`	You have been given a replacement Petrel`
+				goto options
+			
+			label "flycatcher"
+			action
+				give ship "Ruin-The-Fun Flycatcher" "Expensive Replacement"
+			`	You have been given a replacement Flycatcher`
+				goto options
+			
+			label "other services"
+			`	"Most of our available services are listed in the job board, sir."`
+				goto options
+			
+			label missing
+			`	"I am sorry to hear that, sir. We do our best to maintain our catalog up to date."`
+			`	"You can update the catalog by running 'make update' in the plugin's directory. Feel free to open an issue on github about missing vanilla items, so we can fix the problem for our other customers as well."`
+			`	"If you are using plugins, you will need to run the 'make plugin-update' command, from the Ruin-The-Fun plugin folder, as our catalog does not include this content by default."`
+				goto options
+			
+			label end
+			`	"Have a nice day, sir."`
+			`	The reception is closing. You can come back next time you land.`
+				decline
+	
+			label entertain
+			`	"May I suggest a riddle, sir?"`
+			choice
+				`	"Tell me."`
+				`	"No, thanks."`
+					goto options
+			action
+				set "Ruin-the-Fun Riddle: active"
+			`	Zeus summons an holographic map, and points at random systems, one after another.`
+			`	"I cannot use a computer, but I can go on the net. I have one less leg than you might think. Who am I?"`
+			choice
+				`	"I will demonstrate my omniscience."`
+					goto options
+				`	"I don't get it."`
+			`	"Were we wrong about you?"`
+				goto options

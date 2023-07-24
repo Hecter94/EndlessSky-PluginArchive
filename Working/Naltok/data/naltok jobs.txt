@@ -1,0 +1,171 @@
+# Copyright (c) 2022 by Alex di Giovanni
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Telashki Redundant Research 1"
+	name "Research to <planet>"
+	job
+	repeat
+	description "Deliver a redundant copy of some recent research to <destination>. Payment is <payment>."
+	to offer
+		random < 60
+	source
+		attributes research
+		government "Telashki"
+	destination
+		government "Telashki"
+		distance 1 8
+	on accept
+		dialog `The copied data is carried on a small device, about the size of a small eraser. The attendant who hands it to you advises you to copy it to your ship's computer too, "just in case".`
+	on complete
+		payment 30000
+		dialog `A Naltok wearing the uniform of the Ministry of Genetic Research is waiting for you when you land, and happily takes the data chip from you after paying you <payment>.`
+
+mission "Telashki Redundant Research 2"
+	name "Research to <planet>"
+	job
+	repeat
+	description "Deliver a redundant copy of some recent research to <destination>. Payment is <payment>."
+	to offer
+		random < 40
+	source
+		government "Telashki"
+	destination
+		government "Telashki"
+		distance 1 8
+	on accept
+		dialog `The copied data is carried on a small device, about the size of a small eraser. The attendant who hands it to you advises you to copy it to your ship's computer too, "just in case".`
+	on complete
+		payment 25000
+		dialog `A Naltok wearing the uniform of the Ministry of Transport is waiting for you when you land, and happily takes the data chip from you after paying you <payment>.`
+
+mission "Lumber Delivery Telashki Minor"
+	name "Delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo Woods 5 1 .4
+	to offer
+		random < 80
+	source Chireke
+	destination
+		distance 1 8
+		government "Telashki"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Lumber Delivery Telashki Medium"
+	name "Delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo Woods 15 3 .25
+	to offer
+		random > 30
+	source Chireke
+	destination
+		distance 1 8
+		government "Telashki"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Lumber Delivery Telashki Massive Rush"
+	name "Large rush delivery to <planet>"
+	job
+	deadline 1 1
+	repeat
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo Woods 40 5 .1
+	to offer
+		random < 15
+	source Chireke
+	destination
+		distance 1 8
+		government "Telashki"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 15000 250
+		dialog phrase "generic cargo delivery payment"
+
+#todo: redo these with fleets so that different variants can appear. Also, figure out a way to sort out rep changes.
+mission "Xochira Military Drill 1"
+	name "Training exercise"
+	job
+	deadline 2
+	repeat
+	description "Engage the <npc> in simulated battle to provide valuable combat experience for the crew, who have recently begun their training. Disable it, but do not board or destroy it. Payment is <payment>."
+	to offer
+		random < 20
+		has "language: naltok"
+	source
+		government "Xochira"
+	npc save disable
+		names xochira
+		personality disables staying heroic
+			confusion 40
+		government "Xochira (Training)"
+		ship "Piranha"
+	on complete
+		payment 30000
+		dialog `Once it has been repaired, the <npc> comes in to land beside your ship. The crew step out and thank you for the valuable experience you have given them. After they leave, you recieve a notice telling you that <payment> have been transferred to your account.`
+	on fail
+		"reputation: Xochira" <?= -1
+
+mission "Xochira Military Drill 2"
+	name "Training exercise"
+	job
+	deadline 2
+	repeat
+	description "Engage the <npc> in simulated battle to provide valuable combat experience for the crew, who are still in training. Disable it, but do not board or destroy it. Payment is <payment>."
+	to offer
+		random < 15
+		has "language: naltok"
+	source
+		government "Xochira"
+	npc save disable
+		names xochira
+		personality disables staying heroic
+			confusion 30
+		government "Xochira (Training)"
+		ship "Barracuda"
+	on complete
+		payment 50000
+		dialog `Once it has been repaired, the <npc> comes in to land beside your ship. The crew step out and thank you for the valuable experience you have given them. After they leave, you recieve a notice telling you that <payment> have been transferred to your account.`
+	on fail
+		"reputation: Xochira" <?= -1
+
+mission "Xochira Military Drill 3"
+	name "Training exercise"
+	job
+	deadline 2
+	repeat
+	description "Engage the <npc> in simulated battle to provide valuable combat experience for the crew, who are completing their training. Disable it, but do not board or destroy it. Payment is <payment>."
+	to offer
+		random < 10
+		has "language: naltok"
+	source
+		government "Xochira"
+	npc save disable
+		names xochira
+		personality disables staying heroic
+			confusion 30
+		government "Xochira (Training)"
+		ship "Moray"
+	on complete
+		payment 60000
+		dialog `Once it has been repaired, the <npc> comes in to land beside your ship. The crew step out and thank you for the valuable experience you have given them. After they leave, you recieve a notice telling you that <payment> have been transferred to your account.`
+	on fail
+		"reputation: Xochira" <?= -1

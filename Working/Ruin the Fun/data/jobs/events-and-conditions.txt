@@ -1,0 +1,60 @@
+mission "Ruin-the-Fun Events And Conditions"
+	job
+	name "Vanilla Events & Conditions"
+	description "Choose what happened. Rewrite history. You are the master."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			`	Dionysos bows down as you appear. "Captain <last>, could you please remind me of what happened, and, in what order?"`
+			label choices
+			choice
+				`	(Set conditions from an advanced save of a player who did all vanilla things.)`
+					goto "thousand things"
+				`	"The Free Worlds declared their Independence."`
+					goto "war begins"
+				`	"The Republic is attacking the Free Worlds."`
+					goto "start of hostilities"
+				`	"Pugs were defeated. Which completed the main plot."`
+					goto "main plot completed"
+				`	"The future." (Finish.)`
+					goto end
+			
+			label "thousand things"
+			action
+				event "Ruin-The-Fun A Thousand Things"
+			`	Dionysos disappears in an explosion of sparkles.`
+				decline
+			
+			label "war begins"
+			action
+				event "war begins"
+				event "initial deployment 1"
+				event "initial deployment 2"
+				event "initial deployment 3"
+			`	"Of course, what happens next?"`
+				goto choices
+			
+			label "start of hostilities"
+			action
+				event "start of hostilities"
+			`	"Unfortunate, what happens next?"`
+				goto choices
+			
+			label "main plot completed"
+			action
+				event "fwc pug defeated"
+				event "fwc link restoration 1"
+				event "fwc link restoration 2"
+				event "fwc link restoration 3"
+				set "main plot completed"
+			`	"I remember, what happens next?"`
+				goto choices
+			
+			label end
+			`	"The future is yours, <first>."`
+				decline
+		fail

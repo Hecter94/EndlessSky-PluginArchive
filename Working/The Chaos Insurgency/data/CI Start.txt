@@ -1,0 +1,101 @@
+mission "CI 1"
+	name "Transport Cryptarch"
+	description `Take Cryptarch to the Chaos Insurgency's base on <destination>.`
+	minor
+	to offer
+		random < 45
+		has "main plot completed"
+	source
+		government Republic "Free Worlds" Syndicate Neutral 
+	destination
+		planet "Location One"
+	on offer
+		conversation
+			`You find yourself walking down a dark alleyway on the way to an underground bar that sells some of your favorite exotic drinks.`
+			`	As you near your destination, you notice a shady figure in a trench coat leaning against a wall. You think nothing of it, assuming he's just a normal dark alley shady figure.`
+			`	You are about to turn the corner when the figure steps in front of you, blocking your path. You can't see his face. "Captain <last>."`
+			choice
+				`	"That's me"`
+				`	"I'm <last>, who the hell are you?"`
+			`	"You will know me as Cryptarch, for I cannot reveal to you my true name at this time. I come representing an agency who's interested in your services."`
+			`	You open your mouth to speak, but he stops you. "Let me stop you. You were going to inquire about my agency? We are known to most as the Chaos Insurgency. We live to free the common people from their opressors."`
+			`	"we are... aware of your work with the Free Worlds, and you are the kind of the material we're looking for. Now the only question that remains is, are you in or out?"`
+			choice
+				`	"I'll need more info."`
+					goto more
+				
+				`	"Aware of my work? What are you, some kind of stalker?"`
+			`	"Our agency keeps detailed records on any and all possible members. We don't 'stalk' anyone..."`
+			label more
+			`	"I guess I can trust you enough to tell you more... Our current goal is to remove a corrupt organization known as the Unity Movement from power."`
+			`	"All apologies in advance, but this is all I can tell you at this time. You will be allowed more information if you take me to our base, and join the agency."
+			choice
+				`	"You're not giving me an awful lot to go off here, but I guess I'll help you."`
+					goto help
+				
+				`	"I'm sorry, but I'm not convinced. I'm not just going to join some organization without knowing anything about it."`
+				
+			`	"Well, that's unfortunate." He moves aside and allows you to pass, but just as you pass, you get hit on the back of the head and fall to the ground. WHen you wake up, you find yourself unable to remember what happened for the last half hour.`
+			decline
+			
+			label help
+			`	"That's good to hear. Your first assignment is to take me to our secret space station, <destination>."
+			accept
+			
+	npc evade
+		government "??? "
+		personality timid
+		fleet
+			names "mystery craft"
+			variant
+				"Gunboat (Mark II)"
+	
+	on visit
+		dialog `You prepare to disembark your ship but notice an odd sensor scan. An unknown Gunboat has been following you since <source>. You decide to undock and try to shake off the ship.`
+				
+	on complete
+		dialog `You dock with the station and cycle the airlocks. You glance at a security feed and see Cryptarch exiting the ship. You are pinged with a message: "Remain on your ship for one hour. Then meet me at the cafeteria."`
+		event "UM negative rep"
+		
+mission "CI 2"
+	name "Destroy UM Fleet"
+	description `Destroy the Unity Movement fleet gathering in Mirzam`
+	source "Location One"
+	destination "Location One"
+	to offer
+		has "CI 1 completed"
+	on offer
+		conversation
+			`You meet with Cryptarch in the cafeteria as he instructed.`
+			`	A voice speaks up from behind you, startling you, "Good to see you again."`
+			`	You turn out and see someone behind you. You don't recognize him.`
+			`	The man grins when he sees your look of confusion, "I'm the one you know as Cryptarch."`
+			`	Cryptarch isn't wearing the trench coat and you can see most of hus features. He's a normal looking guy, medium weight, with a pretty plain face.`
+			`	"I thought it was prudent to drop the disguise. And since i'm doing that, I'll tell you my real name"`
+			`	"My name is Adam, and to most I'm just a normal charter captain. However, we're getting off topic. I have your next assignment"`
+			`	"We think the Unity Movement is massing a fleet to launch an attack on this station. We need you to destroy it."`
+			choice
+				`"I'm on it."`
+				`Those ships are as good as gone."`
+			`	"Good. I'll see you when you return."`
+	waypoint "Mirzam"
+	on enter "Mirzam"
+		dialog `You enter Mirzam and spot a pretty formidable fleet. This might be a tough fight`
+	npc kill
+		system "Cardax"
+		government "Chaos Insurgency"
+		personality heroic staying target
+		fleet
+			names "chaos insurgency"
+			variant
+				"Falcon"
+				"Leviathan" 2
+				"Firebird" 2
+				"Splinter" 3
+		dialog `The fleet has been destroyed and you can return to <origin>.`
+	on complete
+		conversation
+			`Catherine meets you at your ship on your return.`
+			`	"We've intercepted signals saying that a Chaos Insurgency fleet has disappeared."`
+			`	"Great work on your first assignment! I've also recieved word that or organization is willing to let you officially join."`
+			`	"Meet me at Splashdown and we can discuss it over a few drinks. The bar there is the best in the galaxy."`

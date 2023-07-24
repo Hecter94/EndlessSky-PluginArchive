@@ -1,0 +1,263 @@
+# Copyright (c) 2017 by Jeremy Hankins
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+conversation "intro"
+	scene "scene/loc3"
+	`The raiders struck during the early hours of the morning and left no one in your isolated settlement alive. If you'd been where you were supposed to be you'd be dead along with them. Instead you were out on a nearby hilltop trying to get away from the everpresent smell of sheep dung and wondering what it would be like to fly between the stars. When the gunshots started you hid, cursing yourself for a coward yet knowing you had no choice.`
+	`	By the time you work up the courage to return you find the settlement in ruins. There are bodies everywhere, and everything of value has been carted off by the raiders.`
+	`	There is one thing, though. One of the raiders' ships is standing abandoned in a turnip field. You discover the reason as you approach - its captain lay dead of a gunshot in the dirt in front of the hatch. His shirt bears a an emblem you don't recognize: a stylized skull with two parallel curves across the front of it where you might have expected crossed bones. He had to have been shot by one of the other pirates, since you know no one in the settlement had a gun. You don't know what the fight was over and you don't know how long until the other raiders return for the dead man's ship.`
+	`	You study the skull emblem closely, it's your only clue to who it was that murdered your friends and family.`
+	`	But you can't afford to take too long. Unless you want to wait for the monthly airship the local warlord sends for taxes, the abandoned Star Barge is your only way back to civilization.`
+	`	You climb into the starship.`
+	``
+	`	NOTE: You must purchase the Star Barge in the following screen, otherwise the story will not work properly.`
+
+mission "Intro [0 Pirate]"
+	priority
+	name "Escape your ruined settlement."
+	description `You have escaped your ruined settlement, but what comes next? You need to land and lose yourself among the other ships at the Zenith spaceport, and maybe find a way to get a hyperdrive.`
+	landing
+	destination "Zenith"
+	to offer
+		has "born in the Pirate Planets"
+	on offer
+		set "Intro [0]: offered"
+		event "Start life as a Pirate"
+		conversation
+			`	You've never been in the cockpit of a starship before, but your uncle Max spent time in space and you used to listen to his stories over and over again. It's not like you imagined it would be. Everything is dingy, and there's dirt everywhere. There are food wrappers kicked into the corners under the console, and the pilot's seat has probably held thousands of pilots' bottoms, and looks it. As a farmer you're used to dirt, but this is different. Real dirt is clean, this is just dirty.`
+			`	But you don't have time to clean up, or to be squeamish. The pirates could be back any minute, and it's time to make a choice. Do you take off in the ship, fleeing the pirates? Or do you get back out and take your chances in the ruined farm? If they return and find you in the ship they surely won't be pleased.`
+			choice
+				`	Play it safe and get out of the ship.`
+				`	Embark on a life of high adventure.`
+					goto takeoff
+			`	You climb back out of the Star Barge. You give it a wistful pat as you leave it, but you know you are not cut out to be a star captain. You go back to the ruined settlement and try to take an inventory of your resources.`
+			`	An couple of hours later you have a fire going and are trying to heat a can of creamed spinach, which was all you were able to find to eat. As you are struggling to open the can without a can opener you hear a roar overhead. The pirates have returned for their Star Barge. You try to hide, but they notice your fire and make a search. They find you quickly. Afraid that you will describe them to your warlord and get them in trouble, they shoot you on the spot. You are dead.`
+				die
+			label takeoff
+			`	Before you take off you spend a few moments scratching the ID marking off the ship with dirt and gravel. You can claim they were erased by space dust, and paint on something new when you get a chance. You then enter the ship's new name into its transponder, eliminating as best you can any trace of its previous owner - other than the mess on the inside, and that will have to wait.`
+			`	You decide that your best bet is to take of and then immediately land again at the Zenith spaceport. If the pirates are on their way back they may see you taking off from the settlement, but you could lose yourself among the other ships at the spaceport. Besides, there doesn't seem to be a hyperdrive installed on the ship, so fleeing to another system is out of the question. Struggling to remember everything your uncle Max ever said about his time in space, you power up the ship and launch.`
+				launch
+
+	on complete
+		log "Left the only life I ever knew as a farmer when raiders destroyed my settlement. But I stole one of their ships, and now I'm going to try to make a go as a star pilot."
+		log "The raiders who destroyed my village wore a symbol I've never seen before: a skull crossed with two parallel curves. If I even see that symbol again it will be time to plan my revenge."
+		log "Factions" "Republic" `The founding myth of the Republic is that it is the peaceful union of many different independent human territories into a single democratic government. The Republic prides itself on its democratic institutions, and claims to have brought peace and prosperity to human history.`
+			`While the Republic has certainly brought peace and prosperity to the wealthy cities of the "Paradise Worlds," because of the structure of the Republic's democracy, the planets of the Dirt Belt have little say in Republic policy, and the fringe planets of the Pirate worlds do not have representation in the Republic Parliament at all.`
+		log "Factions" "Pirates" `In the poorer and more remote star systems of the human-inhabited galaxy the Republic Navy is given free reign to enforce the law as they see fit. Usually this involves destroying any ships not registered as merchants with the Republic, and assuming after the fact that any such ships must clearly have broken the law. As a result, few in the Pirate planets see much use for Republic law, and feel no compunctions at all about engaging in actual piracy if they can get away with it - a fact which merely reinforces the Republic's attitude toward inhabitants of the Pirate worlds.`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`The Syndicate is a central part of the Republic's economy, but they are also well known for selling shoddy products and for doing damage to the environment on the worlds they control. Their treatment of workers is questionable, and their opposition to organized labor is legendary. Some Syndicate factory towns have even been accused of human rights abuses.`
+
+		conversation
+			`	The landing was a bit shaky and you hope no one was watching. The good news is that you have a cargo, probably goods stolen from your settlement. You were worried there would be suspicion over a new ship landing at the spaceport, but there was very little scrutiny during the landing process. Not surprising, really, this wasn't a planet where it paid to be to nosy.`
+			`	But once you're on the ground a man with an ugly scar across his cheek and grimy overalls walks over and hooks up the refueling hoses. As he does so he asks your name. You don't know whether the raiders who destroyed your settlement have access the names of the people living there, but once they find their Star Barge gone they'll surely start looking for anyone who survived. Besides, you're beginning a new life, it would be good to have a true star captain's name, something that people will remember. Or maybe you want something less flashy, a name people won't remark upon until it's too late? You think for a split second, but you don't have much time.`
+			name
+			`	The man squints at you suspiciously, and punches the name into his tablet, which beeps angrily. "Hm," he says. "Not in the system. You'll want to get that straigtened out before you try to sell your cargo."`
+			`	You stammer agreement, and the scarred fellow nods. You hope he believes it's a simple mix-up.`
+			`	But he's right, you know. You can't buy and sell goods, not to mention upgrade your ship, without a credit account, which you don't have, even under your real name. You start to have second thoughts. Maybe being a star captain isn't all it's cracked up to be, and you'd be better off making a run for it. Find a farm somewhere and get a job harvesting turnips or tending sheep. That's all you know how to do, anyway, isn't it?`
+			`	No. You have a ship, and you've got nothing to lose. Surely you're not the first person to show up without a record, there has to be someone who could get you into the system.`
+			`	Once you get rid of the nosy refueling agent you lock the ship down using keys you find in a storage cabinet and set out to explore the spaceport.`
+
+
+mission "Intro [1 Pirate]"
+	priority
+	name `Deliver Jonah's message.`
+	description `Deliver a message from a man named Jonah to someone who'll be waiting on a derelict named "Uneasy Dreams." It should be floating somewhere in the Alnilam system. Maybe you can find some useful outfits there while you're at it.`
+	deadline 2
+	landing
+	destination "Zenith"
+	to offer
+		has "Intro [0 Pirate]: done"
+	npc board
+		government Abandoned
+		personality derelict
+		ship "Leviathan (abandoned)" "Uneasy Dreams"
+		conversation
+			`Just as you are about to give up on finding someone to take Jonah's envelope, there's a tap on the airlock door - from the outside! Taking a knife from your boot, you cycle the airlock. When the inner door opens there's a man in a pressure suit standing in your airlock. He takes off his helmet, glances at the knife in your hand, and ignores it.`
+			`	"Are you Jonah's messenger?" he asks.`
+			choice
+				`	"Aren't you worried I'll knife you, showing up here all alone?"`
+				`	"Yeah. Do you want the message?"`
+					goto message
+			`	"If I don't make it back out of this airlock to give the proper signal, there are multiple ships out there ready to blow you to bits."`
+			`	"Got it." You hope you're not visibly sweating. "You want the message?"`
+			label message
+			`	"Yeah. Hand it over."`
+			`	You do, and he slides it down the neck of his suit. He goes and stands inside the airlock, buckling on his helmet.`
+			choice
+				`	"Hey, you mind if I take the outfits off this hulk?"`
+				`	Let him out.`
+					goto airlock
+			`	"What? I guess if you're piloting this hunk of junk you need the credits. Go ahead."`
+			label airlock
+			`	He finished latching his helmet into place and you cycle the airlock. You hear a couple of clangs on your hull, then nothing.`
+	on offer
+		log "People" "Jonah Nguyen" "Jonah was once a miner on Haven, which is where he got the horrible scar on his cheek. Now he says he's a star captain, though there seems to be more to him than he'll admit to."
+		conversation
+			`You set off through the spaceport, but it doesn't take long for you to realize you're being followed. You duck down an alley to get a better look at the guy following you.`
+			`	It's the fellow with the scar on his cheek from the dock. He sees you watching him from the alley mouth and walks over. You tense, ready for a fight.`
+			`	"Easy there, kid. I'm not after trouble. My name is Jonah Nguyen. Thought you could use a hand, that's all," he says.`
+			choice
+				`	"Go away. I don't want your help."`
+				`	"Yeah, maybe. What's it to you?"`
+					goto end
+			`	"Suspicious, eh? I know, I've been there. Suspicion is about the only thing that comes easy growing up on the Pirate Planets. But my bet is, you don't have anywhere else to turn. And right now I'm offering you a hand. Let me guess, you don't have credit access, do you? Cuz if you do, there's the market. Go ahead and go sell your cargo."`
+			choice
+				`	You admit you don't have a credit account.`
+			label end
+			`	"Yeah, that's what I thought." He seems to consider you briefly. "I know a guy that can fix you up with credit access. In return I want you to carry a message for me. It's no big deal, not contraband or anything, but you can't let the Republic goons catch you."`
+			`	"What's the message?"`
+			`	"The less you know the better. You in or not?"`
+			`	"Yeah, okay," you say. It's not as if you have much choice.`
+			`	"Good." He hands you a sealed envelope. "There's a derelict Leviathan in orbit, by the name of 'Uneasy Dreams.' Go dock with it, and someone will be there to take this off your hands. Who knows, you might find some outfits on there you can sell, or even use."`
+			``
+			`	After that Jonah takes you to a seedy looking fellow in an out-of-the-way corner of the market with a pile of cobbled-together computer equipment. Money changes hands, you don't see how much, and a few minutes later the deed is done. You can now buy and sell at the market, and once you build up a credit history you can even go into debt. Aren't you lucky.`
+			`	"Great," Jonah says. "The packages will be loaded into your ship. Go sell that cargo of yours. And you might want to change your clothes into something that doesn't smell of sheep."`
+			`	You surreptitiously sniff your shirt and wonder how much he knows.`
+			choice
+				`	Make excuses and get away as quickly as you can.`
+					goto sell
+				`	"Is it that obvious?"`
+			`	He grins, which his scar stretches into a terrifying grimace. "Change your clothes, and you might pass for a pilot. You made it this far, I think you've got a chance. I did it, I suppose you can too."`
+			choice
+				`	"You're a star captain?"`
+					goto captain
+				`	"You were a farmer?"`
+			`	"No, I was a miner on Haven. Got this scar there," he gestures at his face, "when the overseer decided I wasn't working fast enough. He gave me this, and I gave him a broken neck. After that, I knew I had to get out of town."`
+				goto advice
+			label captain
+			`	"Yup. Lately it seems like it's more backrooms and politics than sitting in a cockpit, but I've still got my own ship."`
+			label advice
+			choice
+				`	Tell him you need to go and sell your cargo.`
+					goto sell
+				`	"Any advice for me, starting out?"`
+			`	"Hmm, advice. Don't think anyone's ever asked me for advice before. I'd say, take it easy. Don't try to do everything at once, you'll get there. Run some cargo, stay away from the shadier missions. You'll see a lot of combat out there, and right now your best defense is that you don't have a weapon on your ship. Republic bastards'd as soon kill you as look at you, but they'll go after the armed ships first. That'll give you a chance to run. If you're feeling brave maybe pick up a bit of loot when the battle's over."`
+			`	"Got it. Thanks for your help."`
+			`	"No problem. Those of us from the Pirate Planets, we got to stick up for each other cuz nobody else is going to."`
+			label sell
+			``
+			`	After you leave Jonah you go to the trading center to sell your cargo. You don't get top price for it since it's clearly stolen goods. In the end you're happy to get 3,000 credits for the whole load. It's not much, but it would have to do.`
+				accept
+
+	on accept
+		log "Gained access to the credit network with the help of a fellow named Jonah, he also gave me some good advice on how to get started as a star captain. Doing a courier job for him that seems a bit shady."
+		payment 3000
+
+	on complete
+		"reputation: Pirate Planets" += 5
+		"reputation: Republic" += 4
+		dialog
+			`If you got any outfits off the "Uneasy Dreams" you want to use you should go to the outfitter to get them installed. After that look for Jonah in the spaceport to let him know the job's complete.`
+
+	on fail
+		"reputation: Pirate" = -10
+		dialog
+			`You have failed to deliver Jonah's message. You doubt the intended recipients will be pleased.`
+		
+
+# TODO: This ought to be a stealth mission, but from the Pirate Warlords, not the republic.
+mission "Intro [2 Pirate]"
+	priority
+	name "Deliver <commodity> to <planet>"
+	description "Travel to <destination> and deliver <cargo> to a group in the hinterlands."
+	blocked "A fellow in the spaceport offers you <payment> for a mission, but you'd need <capacity> to accept. He suggests you try back later if you can free up the room."
+	cargo Medical 30 45
+	source Zenith
+	clearance
+	infiltrating
+	destination Haven
+	to offer
+		has "Intro [1 Pirate]: done"
+
+	on offer
+		conversation
+			`You wander through the spaceport but don't see Jonah anywhere. As you hesitate outside of a bar, wondering if you can afford a drink, a stranger comes up to you. He's wearing the clothes of a dockworker, but something about his bearing suggests he'd be more comfortable in a uniform.`
+			`	"I think we have a mutual friend," he says. "A fellow named Jonah, with a nasty scar?" He draws a line on his cheek.`
+			choice
+				`	"Yeah. I know the guy you're talking about."`
+				`	"I'm a simple star captain, I don't want to get involved in anything."`
+					decline
+			`	"You're <last>, the one that delivered his message, right?"`
+			choice
+				`	"I'm afraid I couldn't say. If I did deliver a message I wouldn't talk about it."`
+				`	"Yeah, that was me."`
+			`	"Hmm," the man says. "Good. My name is Ivan Baker. If you're interested, I have another job for you. Nothing so shady this time, just a delivery of <commodity> to <destination>. But the people it's for can't come to the spaceport, you'll need to take it to them. Preferably without anyone else seeing you do it. Think you can do that? There's <payment> in it for you."`
+			choice
+				`	"Yeah, I can do that. No problem."`
+				`	"Hey, I don't know what's going on here, and I don't want to know. You'll need to find someone else to do your delivery."`
+					decline
+			`	"Great. I'll have the <commodity> loaded into your ship right away. You'll be paid when I hear that the delivery's been made."`
+				accept
+
+	on complete
+		log "Delivered medical supplies to a group hiding on <planet>. I think they were military."
+		payment 5000 350
+		"reputation: Republic" += 5
+		conversation
+			`You fly low over the surface of <planet>, avoiding the spaceport and looking for the drop off site. When you see it you land, and grim-faced men appear out of nowhere to help you offload your cargo of <commodity>. When it's finished one of them walks over to you.`
+			`	"Thanks," he says. "What you've done here today will save lives. I'll let Ivan know you delivered as promised."`
+			`	He then signals the others, and they fade back into the wilderness. A few minutes later you receive a signal indicating that <payment> has been credited to your account.`
+
+mission "Intro [3 Pirate]"
+	priority
+	name "Deliver <commodity> to <planet>"
+	description "Travel to <destination> and deliver it to a group who will be waiting for it in the wilderness."
+	blocked "Jonah offers you <payment> for a mission, but you'd need <capacity> to accept. He suggests you try back later if you can free up the room."
+	cargo Food 25 45
+	source Haven
+	clearance
+	infiltrating
+	destination Freedom
+	to offer
+		has "Intro [2 Pirate]: done"
+
+	on offer
+		conversation
+			`As you walk through the spaceport you see Jonah nursing a beer at a seedy bar.`
+			choice
+				`	Ignore him.`
+					decline
+				`	Walk up to him.`
+			`	As far as you could tell he didn't see you walk up, but when you sit next to him he says, "<first>. How'd the drop off go?"`
+			choice
+				`	Ask him if he has another mission for you.`
+					goto mission
+				`	Ask him outright if he had something to do with the mission to deliver medical supplies.`
+			`	You think you see a disappointed look in his face. "I don't know what you're talking about," he says. "Though if I did know something about it, I wouldn't want it blabbed all over a spaceport bar."`
+			`	"I can be discreet, don't worry," you say. "I'm looking for another mission, you have anything for me?"`
+			`	"Are you sure? Because I can't use you if you don't know how to keep your mouth shut."`
+			choice
+				`	"I'm sure."`
+				`	"No, on second thought this cloak-and-dagger stuff isn't for me."`
+					decline
+			label mission
+			`	"Okay, I might have something for you. Things are happening here in the Pirate Planets, and we might finally be getting ready for some change. Folks as who live here ought to be involved in that. Hmm. Right now I can't make much use of you. You need some skills first, scrub off some of that green. And a better ship, too."`
+			`	You nod, trying not to look anxious for the work. As casually as you can you ask, "But you said you have something for me?"`
+			`	"Yeah. Something you can handle, I think. There's a group on <planet> who needs supplies. If you could deliver a load of <commodity> to them, I think I could scrounge up, oh, <payment> for you. After that, check the job boards for similar jobs. The people of the Pirate Planets need someone who can move their cargo, someone who's willing to go around the strangelhold the warlords have on the spaceport marketplaces."`
+			choice
+				`	"Yeah, I know how hard it is to get supplies in and out of isolated communities. If I can help with that, I'm in."`
+					accept
+				`	"You know what? I'm no hero. I just want to survive, and I don't want the warlords upset with me. I'll find my own jobs, thanks anyway."`
+					decline
+	
+	on complete
+		log "Delivered <commodity> directly to a poor community on <planet>. They reminded me of the village I grew up in."
+		payment 0 200
+		"reputation: Pirate Planets" += 10
+		"reputation: Pirate Warlords" -= 4
+		conversation
+			`You avoid the spaceport and head off over the countryside. This time the target is a lakeside hamlet, and there's a large flat area nearby that's been cleared of underbrush so you can land. The whole town comes out, men, women, and children, and they seem very happy to be getting the delivery of <commodity>. After the goods are unloaded a woman comes up who, by her bearing, seems to be the leader of the town.`
+			`	"Thank you, very much. You don't know what this delivery means to us out here. Few star captains are willing to do more than drop off goods at the spaceport, and then it's up to the warlords whether we ever get to see it, and at what price. You're doing good work." She smiles, then says "May the Goddess shine upon you."`
+			`	Several of the townsfolk seem moved almost to tears, so rather than entangle yourself further you quickly make excuses and climb back into your ship. You've barely begun the takeoff sequence when a message dings on the console confirming payment.`
+
+	on decline
+		"reputation: Pirate Planets" -= 10
+		"reputation: Pirate Warlords" += 5

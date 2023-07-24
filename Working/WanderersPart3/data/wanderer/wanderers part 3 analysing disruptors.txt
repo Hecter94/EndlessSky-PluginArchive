@@ -1,0 +1,102 @@
+
+mission "Wanderers: Improved Resistance 1"
+	name "Harmonizing Shields"
+	description "Take Tele'ek and some researchers to the Mereti to test and improve resistance against disruptors on new Wanderer ships."
+	landing
+	source #we'll see
+	destination #Kor Mereti system
+	to offer
+		#whatever comes before
+	on offer
+		conversation
+			`You find Tele'ek near a ship you do not recognise, not that this is surprising when it comes to the Wanderers anymore. It is a medium sized ship, similar to the Tempest, but much bulkier, and it seems to have a pair of fighter bays, which is a surprise.`
+			`   Tele'ek spots you and ends the conversation he is engaged in before approaching you. "Captain, your thoughts?" He asks, making a wide, sweeping gesture with one wing, indicating the new ship.`
+			choice
+				`   "It can carry fighters? That's new for you."`
+				`   "It looks strong, I look forward to flying one."`
+					goto next
+			`	"Indeed. The small craft that will [accompany, support] this vessel will be very well armed for their size, but leave their pilots [vulnerable, unprotected]. The designs are not yet [complete, concluded], however, so we cannot show you any today. The ship may also carry a small number of drones, allowing our Flycatchers to support ships beyond our systems.`
+			label next
+			`	"While this [unit, prototype] is complete, production, for now, is still slow, so it may be a while before you are able to [purchase, acquire] your own." He says, apologetically. "What I [wish, desire] today is to [assess, observe] one of the new capabilities in this generation of craft." He pauses momentarily, "The shield matrices have been improved to provide better [harmonization?] and [dissipate?] disrupting effects applied to them, such as those caused by the Mereti's weapons, faster."`
+			choice
+				`	"Aren't they your allies? Why do you need better defenses against their weapons?"`
+				`	"That sounds very useful. I look forward to seeing this technology in action."`
+					goto ends
+			`	He breaths out in something akin to a sigh, "The Mereti [gestalt, intelligence] are indeed allies, but they are not the only ones who utilize disrupting weapons, and the others are less [friendly, agreeable].`
+			label end
+			`	"If you are willing, I'd like you to accompany us to <destination> where, with the [aid, support] of the Mereti, we may witness the new shield harmonization in practice, and assess its capabilities."`
+			choice
+				`	(Agree.)`
+					accept
+				`	(Decline.)`
+					Decline
+	on visit
+		dialog #whatever
+	npc accompany save
+		government "Wanderer"
+		personality escort
+		ship "Squall" "something"
+
+
+
+ship "Squall" "Squall (Test Dummy)"
+	outfits
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		"Large Biochemical Cell"
+
+
+
+mission "Wanderers: Improved Resistance 2"
+	name "Harmonizing Shields"
+	description "Observe the Squall as it is attacked by a Mereti ship to test its new shielding."
+	landing
+	source #wherever
+	to offer
+		has "Wanderers: Improved Resistance 1: done"
+	on offer
+		conversation
+			``
+				accept
+	on visit
+		dialog #something
+	npc disable save
+		government ""
+		personality waiting staying uninterested
+		ship "Squall (Test Dummy)" "something"
+	npc
+		government ""
+		personality waiting staying uninterested disables
+		ship "Model 128" "whatever"
+
+
+
+mission "Wanderers: Improved Resistance 3"
+	name "Harmonizing Shields"
+	description "Observe the Squall as it is attacked by a Mereti ship to test its new shielding."
+	landing
+	source #as above
+	to offer
+		has "Wanderers: Improved Resistance 2: done"
+	on offer
+		conversation
+			``
+				accept
+	on visit
+		dialog #something
+	npc disable save
+		government ""
+		personality waiting staying uninterested
+		ship "Squall (Test Dummy)" "something"
+	npc
+		government ""
+		personality waiting staying uninterested disables
+		ship "Model 256" "whatever"
+
+
+
+mission "Wanderers: Improved Resistance 4"
+	name ""
+	description "Now you've seen the disruption resistance of the new Wanderer vessels, 
+	
+

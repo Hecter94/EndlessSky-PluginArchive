@@ -5,21 +5,21 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
-2023-07-18 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
-2023-07-18 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
-2023-07-17 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-16 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-15 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
-2023-07-15 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-15 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-14 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
-2023-07-14 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-14 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-14 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-14 | updated Plugin 'Enigma Corp High DPI' by Amazinite | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-14 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
-2023-07-14 | updated Plugin 'Ultaka Invasion of Milky Way' by 1010Todd | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
-2023-07-14 | updated Plugin 'AES Quarg' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
+2023-07-23 | updated Plugin 'Weapon Ranges' by EjoThims | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay)<br>
+2023-07-23 | new Plugin 'Reluvethel Potestas' by Makuta Miras | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)<br>
+2023-07-23 | new Plugin 'Pirate Planets' by jjhankins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-23 | new Plugin 'Endless Zombies' by Zoura | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)<br>
+2023-07-23 | new Plugin 'Unfettered Innovations' by Hurleveur | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-23 | new Plugin 'Endless Seas' by Zoura | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
+2023-07-23 | new Plugin 'AES Human Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-23 | new Plugin 'AES Boarding Ease' by Darcy Manoel | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized)<br>
+2023-07-23 | new Plugin 'Rymeilema Skylark II' by Rymeilema | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-23 | new Plugin 'Fire Corporation' by lumbar527 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-23 | new Plugin 'TheronEpics Ships' by TheronEpic | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-23 | new Plugin 'TheronEpic Omnis' by TheronEpic | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
+2023-07-23 | new Plugin 'The Peacebringer' by Polaria1 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-23 | new Plugin 'Moar Humanity' by mOctave | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
+2023-07-23 | new Plugin 'Spinaleviathan' by Zoura | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
 
 </td></tr></table>
 Provide a directlink to your zipped plugin and we do a daily check if it is newer than the one we host here.<br>
@@ -61,7 +61,7 @@ Provide a directlink to your zipped plugin and we do a daily check if it is newe
 
 # Introduction
 
-A comprehensive library of 475 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 536 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -86,6 +86,9 @@ Github by default only allows the entire library to be downloaded as a single .z
 ## Known Plugin Issues
 
 <details>
+
+If you find more plugin issues / conflicts please add them to 'res/plugin_issues.txt'.
+
 
 ### A Galaxy Far Far Away, Businessman Mod, Endless Depth, Normandy
 
@@ -215,11 +218,11 @@ To keep these files related together, you have to give them the same name.
 
 # Plugin Download
 
-All Plugins (475)
+All Plugins (536)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (36) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (34) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (17) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (37)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (41) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (3) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (65)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (122) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (65) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (39) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (13)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay) (40) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics) (22) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#outfits) (41)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overwrites) (5) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships) (135) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story) (75) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#uncategorized) (24)<br>
 
 
 
@@ -227,7 +230,7 @@ All Plugins (475)
 
 ## Cheats
 
-<p>36 plugins in this category.<p>
+<p>38 plugins in this category.<p>
 
 <details>
 
@@ -444,7 +447,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 [Cloaking.Device.Unlocked.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cloaking.Device.Unlocked.zip) | 2.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cloaking%20Device%20Unlocked/)  
-Author: N/A | N/A[]()  
+Author: FriendlyNeighbour | N/A[]()  
 Category: Cheats  
 
 >N/A
@@ -474,6 +477,22 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### DevStarts
+
+
+[DevStarts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/DevStarts.zip) | 13.57 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/DevStarts/)  
+Author: williaji | [https://github.com/williaji/DevStarts](https://github.com/williaji/DevStarts)  
+Category: Cheats  
+
+>several developer start options, with credits, ships or jump drives
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Dragonflame Fabrication
 
 
@@ -487,23 +506,6 @@ Category: Cheats
 
 Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
-
-
----
-
-### easier harvesting
-
-
-[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | 92.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/easier%20harvesting/)  
-Author: Endros Gunderberg | [https://github.com/EndrosG/ES-Plugins](https://github.com/EndrosG/ES-Plugins)  
-Category: Cheats  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 ---
@@ -548,10 +550,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Gray.Box.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gray.Box.zip) | 18.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gray%20Box/)  
-Author: N/A | N/A[]()  
+Author: granto | N/A[]()  
 Category: Cheats  
 
->N/A
+>alternate start with more money and a medium warship
 >
 
 
@@ -608,7 +610,7 @@ Category: Cheats
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -653,10 +655,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [No.Drag.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/No.Drag.Mod.zip) | 1.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/No%20Drag%20Mod/)  
-Author: N/A | N/A[]()  
+Author: Jafdy | N/A[]()  
 Category: Cheats  
 
->N/A
+>sets the drag of all ships and missiles to 0.
 >
 
 
@@ -717,6 +719,23 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Ruin the Fun
+<img src='Working/Ruin the Fun/icon.png' width='100'></img><br>
+
+
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.56 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/)  
+Author: Pshy0 | [https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun)  
+Category: Cheats  
+
+>A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Shipmod
 
 
@@ -724,7 +743,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: Galaucus | [https://github.com/Galaucus/Shipmod](https://github.com/Galaucus/Shipmod)  
 Category: Cheats  
 
->N/A
+>adds lots of outfits to the game
 >
 
 
@@ -758,12 +777,28 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: whismerhill | [https://www.nexusmods.com/endlesssky/mods/1](https://www.nexusmods.com/endlesssky/mods/1)  
 Category: Cheats  
 
->N/A
+>Adds several outfits to fine-tune your ships, convert weapon slots, existing bunks to outfit or cargo space and even create more engine space.
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### TheronEpic Omnis
+
+
+[TheronEpic.Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/TheronEpic.Omnis.zip) | 19.73 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/TheronEpic%20Omnis/)  
+Author: TheronEpic | [https://github.com/TheronEpic/TheronEpic-Omnis](https://github.com/TheronEpic/TheronEpic-Omnis)  
+Category: Cheats  
+
+>Just a small mod, adding a dedicated system for my content, made for players with Omnis. Has arena worlds for most of my ships
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -843,7 +878,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/World Forge/icon.png' width='100'></img><br>
 
 
-[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.47 kb | 2023-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/)  
+[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.47 kb | 2023-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/)  
 Author: Amazinite | [https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge)  
 Category: Cheats  
 
@@ -888,7 +923,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ## Gameplay
 
-<p>34 plugins in this category.<p>
+<p>40 plugins in this category.<p>
 
 <details>
 
@@ -969,6 +1004,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### BetterVanillaHai
+<img src='Working/BetterVanillaHai/icon.png' width='100'></img><br>
+
+
+[BetterVanillaHai.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BetterVanillaHai.zip) | 73.69 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/BetterVanillaHai/)  
+Author: ZBok | [https://github.com/ZBok/BetterVanillaHai](https://github.com/ZBok/BetterVanillaHai)  
+Category: Gameplay  
+
+>In short this plugin assumes news of the Hai spreads rapidly. Therefore in the late game a small percentage of humans start using their ships in ambient fleets. It therefore adds Hai vessels and many variants (like full Proton SB or Plasma/QuadBlaster Solifuge + many more) as rare additions to almost all human fleets in the late-game (more details below). This makes ambient pirate combat much more spicy and varied, with the tide of pirate battle being turned when a Hai ship from either side jumps in.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Boarding Licenses
 
 
@@ -1003,6 +1055,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Bounty-Fix
+<img src='Working/Bounty-Fix/icon.png' width='100'></img><br>
+
+
+[Bounty-Fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bounty-Fix.zip) | 95.43 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bounty-Fix/)  
+Author: CatLady | [https://github.com/Cat-Lady/Bounty-Fix](https://github.com/Cat-Lady/Bounty-Fix)  
+Category: Gameplay  
+
+>This ES plugin makes Pirates/Marauders that are subject of Bounty Hunting missions be properly seen as enemies by Militia/Navy/Deep Security/Merchants and other forces that should dislike Marauders/Pirates.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Businessman Mod
 
 
@@ -1016,6 +1085,38 @@ Category: Gameplay
 
 Status: Playable on 0.9.14, 0.9.15 Continuous.  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Cargo Controls Plugin
+
+
+[Cargo.Controls.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cargo.Controls.Plugin.zip) | 15.37 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cargo%20Controls%20Plugin/)  
+Author: petervdmeer | [https://github.com/petervdmeer/endless-sky-cargo-controls-plugin](https://github.com/petervdmeer/endless-sky-cargo-controls-plugin)  
+Category: Gameplay  
+
+>Cargo Controls options for Endless Sky.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Conscience Plugin
+
+
+[Conscience.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Conscience.Plugin.zip) | 25.37 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Conscience%20Plugin/)  
+Author: mathwhiz1212 | [https://github.com/mathwhiz1212/ES-conscience-plugin](https://github.com/mathwhiz1212/ES-conscience-plugin)  
+Category: Gameplay  
+
+>This plugin is meant to allow you to complete Endless Sky story lines without doing things you have an ethical problem with. For now, it just makes it so you don't need to drop a bomb on Zenith and kill civilians.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -1052,6 +1153,22 @@ Category: Gameplay
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Delayed Free Worlds
+
+
+[Delayed.Free.Worlds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Delayed.Free.Worlds.zip) | 16.72 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Delayed%20Free%20Worlds/)  
+Author: MinneIceCube | [https://github.com/MinneIceCube/Delayed-Free-Worlds-Start](https://github.com/MinneIceCube/Delayed-Free-Worlds-Start)  
+Category: Gameplay  
+
+>Does exactly what the title says it does. Delays the declration of the Free Worlds by about half a year. The reason for this is so that players will have more time to complete missions for the The "Southern Mutual Defense Pact." While few in number, they are easy to miss if not done before the war starts. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -1117,7 +1234,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
->N/A
+>adds more hazards to many systems. like coronar mass ejection, different asteroid impact, dust rings atound stars, etc.
 >
 
 
@@ -1220,6 +1337,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Kor Mereti Fluff
+<img src='Working/Kor Mereti Fluff/icon.png' width='100'></img><br>
+
+
+[Kor.Mereti.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Mereti.Fluff.zip) | 2.62 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Mereti%20Fluff/)  
+Author: OcelotWalrus | [https://github.com/OcelotWalrus/Kor-Mereti-Fluff](https://github.com/OcelotWalrus/Kor-Mereti-Fluff)  
+Category: Gameplay  
+
+>It is a plugin that expand the ships and the outfits of the Kor Mereti faction.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### kor.efret.shipyard
 <img src='Working/kor.efret.shipyard/icon.png' width='100'></img><br>
 
@@ -1246,7 +1380,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Gameplay  
 
->N/A
+>makes korath exiles, kor efret, mereti and sestor planets dominateable(with tribute)
 >
 
 
@@ -1475,7 +1609,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 ### Weapon Ranges
 
 
-[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 2.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Weapon%20Ranges/)  
+[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 1.54 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Weapon%20Ranges/)  
 Author: EjoThims | [https://github.com/EjoThims/Weapon-Ranges](https://github.com/EjoThims/Weapon-Ranges)  
 Category: Gameplay  
 
@@ -1491,7 +1625,7 @@ Category: Gameplay
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -1522,7 +1656,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Graphics
 
-<p>17 plugins in this category.<p>
+<p>22 plugins in this category.<p>
 
 <details>
 
@@ -1622,6 +1756,63 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Different Galaxy Plugin
+
+
+[Different.Galaxy.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Different.Galaxy.Plugin.zip) | 12.37 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Different%20Galaxy%20Plugin/)  
+Author: FranchuFranchu | [https://github.com/FranchuFranchu/endless-sky-different-galaxy-plugin](https://github.com/FranchuFranchu/endless-sky-different-galaxy-plugin)  
+Category: Graphics  
+
+>Changes the background galaxy image of Endless Sky to a nicer one.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### easier harvesting
+
+
+[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | 92.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/easier%20harvesting/)  
+Author: Endros Gunderberg | [https://github.com/EndrosG/ES-Plugins](https://github.com/EndrosG/ES-Plugins)  
+Category: Graphics  
+
+>This plugin provides easy to identify images which help you identifying minable asteroids.
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### EndlessSky_ARUI
+<img src='Working/EndlessSky_ARUI/icon.png' width='100'></img><br>
+
+
+[EndlessSky_ARUI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EndlessSky_ARUI.zip) | 325.71 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EndlessSky_ARUI/)  
+Author: DrZingo | [https://github.com/DrZingo/EndlessSky_ARUI](https://github.com/DrZingo/EndlessSky_ARUI)  
+Category: Graphics  
+
+>A Reorganized User Interface for Endless Sky.
+>
+>This is a changed user interface when in space.
+>
+>Most important stuff (bars, weapons, hull/shield, target) is organized in top left corner by the radar.
+>
+>Destination is now to the right under world / date / money.
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### ES Ships
 
 
@@ -1681,7 +1872,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Graphics  
 
->N/A
+>replaces ship images with lows quality versions
 >
 
 
@@ -1745,6 +1936,23 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Pug-Hud
+<img src='Working/Pug-Hud/icon.png' width='100'></img><br>
+
+
+[Pug-Hud.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug-Hud.zip) | 467.08 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pug-Hud/)  
+Author: comnom | [https://github.com/comnom/es-huds](https://github.com/comnom/es-huds)  
+Category: Graphics  
+
+>adds a HUD
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Realistic Solar System
 
 
@@ -1757,6 +1965,22 @@ Category: Graphics
 
 
 Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Resized Endless Sky
+
+
+[Resized.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Resized.Endless.Sky.zip) | 3.27 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Resized%20Endless%20Sky/)  
+Author: FranchuFranchu | [https://github.com/FranchuFranchu/resized-endless-sky](https://github.com/FranchuFranchu/resized-endless-sky)  
+Category: Graphics  
+
+>Resizes the Endless Sky galaxy. 
+
+
+Status: WIP  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -1841,7 +2065,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Outfits
 
-<p>37 plugins in this category.<p>
+<p>41 plugins in this category.<p>
 
 <details>
 
@@ -1895,7 +2119,7 @@ Category: Outfits
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -1908,23 +2132,6 @@ Author: N/A | N/A[]()
 Category: Outfits  
 
 >A few antique outfits and weapons scattered across human space. Plunder them from pirates and sell them for a lot of money! Or keep them for yourself, to remind yourself that you have antique stuff!
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
-
-
----
-
-### Assorted Outfits
-
-
-[Assorted.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assorted.Outfits.zip) | 96.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Assorted%20Outfits/)  
-Author: N/A | N/A[]()  
-Category: Outfits  
-
->N/A
 >
 
 
@@ -2019,6 +2226,39 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### ES Compatability Plugin
+
+
+[ES.Compatability.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Compatability.Plugin.zip) | 39.66 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Compatability%20Plugin/)  
+Author: lumbar527 | [https://github.com/lumbar527/es-compatability-plugin](https://github.com/lumbar527/es-compatability-plugin)  
+Category: Outfits  
+
+>This plugin is for use on older saves that have deprecated ships or outfits. It will only be useful when deprecated things are removed from Endless Sky.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Experimental
+
+
+[Experimental.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Experimental.zip) | 6.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Experimental/)  
+Author: N/A | N/A[]()  
+Category: Outfits  
+
+>adds a 'multidrive'
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
 ### Fighter Factory
 <img src='Working/Fighter Factory/icon.png' width='100'></img><br>
 
@@ -2081,10 +2321,27 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Hai.Engine.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hai.Engine.zip) | 3.34 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hai%20Engine/)  
+Author: Natan Gold | N/A[]()  
+Category: Outfits  
+
+>adds several hai engines
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Hi Quality Stainless Steel Nonstick Pan
+
+
+[Hi.Quality.Stainless.Steel.Nonstick.Pan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hi.Quality.Stainless.Steel.Nonstick.Pan.zip) | 212.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hi%20Quality%20Stainless%20Steel%20Nonstick%20Pan/)  
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds a station with outfitter, several weapons and other outfits
 >
 
 
@@ -2118,7 +2375,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: Jafdy | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds hyperdrive/scramdrive boosters, increasing the speed at which you can jump.
 >
 
 
@@ -2170,23 +2427,6 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
-### Kraz Cybernetics Evolution
-
-
-[Kraz.Cybernetics.Evolution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Cybernetics.Evolution.zip) | 116.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Cybernetics%20Evolution/)  
-Author: MCOfficer | [https://github.com/MCOfficer/Kraz-Cybernetics-Evolution](https://github.com/MCOfficer/Kraz-Cybernetics-Evolution)  
-Category: Outfits  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/check.png' width='15' ></img>
-
-
----
-
 ### MaddreMod
 
 
@@ -2211,7 +2451,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds several new outfits. more weapon space, more hullarmor etc.
 >
 
 
@@ -2245,7 +2485,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds more antimissiles, missiles and racks.
 >
 
 
@@ -2262,7 +2502,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: sgtdrew720 | [https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-](https://github.com/sgtdrew720/MultiTech-Extra-Light-v1.0.0-)  
 Category: Outfits  
 
->N/A
+>Mod for endless sky adding alien-human tech in systems near the deep
 >
 
 
@@ -2279,12 +2519,12 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: czartrak | [https://github.com/czartrak/New-Droid-Regime](https://github.com/czartrak/New-Droid-Regime)  
 Category: Outfits  
 
->N/A
+>Re-adds NDR-228 Androids at a much higher price. Installing new droids requires a Charging Dock.
 >
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -2307,6 +2547,23 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Project Technovirus
+
+
+[Project.Technovirus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Technovirus.zip) | 694.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Technovirus/)  
+Author: czartrak | [https://github.com/czartrak/Project-Technovirus](https://github.com/czartrak/Project-Technovirus)  
+Category: Outfits  
+
+>adds several outfits and ships
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
 ### Quarg Outfit Overhaul
 
 
@@ -2314,7 +2571,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>changing stats on some quarg outfits
 >
 
 
@@ -2331,7 +2588,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds some coolers, engines, beam weapons and a hyperdrive.
 >
 
 
@@ -2403,7 +2660,24 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds 3 outfits modifying mass and drag
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Stargate Mod
+
+
+[Stargate.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stargate.Mod.zip) | 29.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Stargate%20Mod/)  
+Author: N/A | N/A[]()  
+Category: Outfits  
+
+>adds stargate themed outfits to the game
 >
 
 
@@ -2437,7 +2711,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds the large cargo expansion and modifies the x1000 ion engine. also expands the outfit/cargo space of the 'crate' ship.
 >
 
 
@@ -2454,7 +2728,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds some wanderer thruster/steering
 >
 
 
@@ -2471,12 +2745,28 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Outfits  
 
->N/A
+>adds the "B-35 Worker Bot" which has some cooling effect.
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Zoura's Outfits Expanded
+
+
+[Zoura.s.Outfits.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zoura.s.Outfits.Expanded.zip) | 248.03 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zoura's%20Outfits%20Expanded/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded)  
+Category: Outfits  
+
+>Expands outfit variety across all castes of vanilla Endless Sky.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -2507,7 +2797,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Overhauls
 
-<p>41 plugins in this category.<p>
+<p>45 plugins in this category.<p>
 
 <details>
 
@@ -2574,6 +2864,22 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### AES Slow Ships
+
+
+[AES.Slow.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Slow.Ships.zip) | 3.9 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Slow%20Ships/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/Slow-Ships](https://github.com/Adde-Endless-Sky-Mods/Slow-Ships)  
+Category: Overhauls  
+
+>Changes ships and outfits stats to make them slower
+
+
+Status: Abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Alphean Boolean's Expansion
 
 
@@ -2625,7 +2931,7 @@ Category: Overhauls
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -2751,6 +3057,24 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Endless Seas
+<img src='Working/Endless Seas/icon.png' width='100'></img><br>
+
+
+[Endless.Seas.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Seas.zip) | 169.17 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Seas/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Endless-Seas](https://github.com/AvianGeneticist/Endless-Seas)  
+Category: Overhauls  
+
+>A total conversion mod of Endless Sky. The objective of this total conversion is to give Endless Sky a more maritime theme, with all the quirks that come with it. 
+>
+
+
+Status: Currently, this is a pre-pre-pre-alpha  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Endless-Endless-Sky
 <img src='Working/Endless-Endless-Sky/icon.png' width='100'></img><br>
 
@@ -2776,7 +3100,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: Michael Feather | [https://github.com/MrmanNaqa/Endless_Sky_PRP_Fallen](https://github.com/MrmanNaqa/Endless_Sky_PRP_Fallen)  
 Category: Overhauls  
 
->N/A
+>This mod starts you on an ancient space station that was built by a fallen alien empire. You are the last member of this alien species, and the AI that awoke you has informed you that you have been tasked with reconquering the galaxy. It's a good thing the station you're on doubles as a ship construction yard.
 >
 
 
@@ -2799,6 +3123,22 @@ Category: Overhauls
 
 
 Status: Playable on 0.9.14, 0.9.15 Continuous.  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Galactic War hi-dpi
+
+
+[Galactic.War.hi-dpi.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.hi-dpi.zip) | 55.67 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War%20hi-dpi/)  
+Author: 1010todd | [https://github.com/1010todd/Galactic-War-hi-dpi](https://github.com/1010todd/Galactic-War-hi-dpi)  
+Category: Overhauls  
+
+>high resolution sprites for endless sky mod "Galactic War"
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -2860,10 +3200,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 [PipMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PipMod.zip) | 24.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PipMod/)  
-Author: N/A | N/A[]()  
+Author: Pipsqueak | N/A[]()  
 Category: Overhauls  
 
->N/A
+>a lot of changes to weapons / rebalancing
 >
 
 
@@ -3085,7 +3425,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | [https://github.com/Amazinite/Shields-Up](https://github.com/Amazinite/Shields-Up)  
 Category: Overhauls  
 
->N/A
+>a new race, several systems, several new ships and outfits
 >
 
 
@@ -3161,6 +3501,22 @@ Category: Overhauls
 
 
 Status: Playable on 0.9.14, 0.9.15 Continuous.  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### The Enclave High DPI
+
+
+[The.Enclave.High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Enclave.High.DPI.zip) | 9.04 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Enclave%20High%20DPI/)  
+Author: Makuta Miras | [https://github.com/Makuta-Miras/The-Enclave-High-DPI](https://github.com/Makuta-Miras/The-Enclave-High-DPI)  
+Category: Overhauls  
+
+>High DPI for The Enclave
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -3266,11 +3622,27 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ## Overwrites
 
-<p>3 plugins in this category.<p>
+<p>5 plugins in this category.<p>
 
 <details>
 
  
+
+---
+
+### AES No Asteroids
+
+
+[AES.No.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Asteroids.zip) | 219.21 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Asteroids/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/No-Asteroids](https://github.com/Adde-Endless-Sky-Mods/No-Asteroids)  
+Category: Overwrites  
+
+>Overwrites asteroid images with empty images.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
 
 ---
 
@@ -3304,6 +3676,22 @@ Category: Overwrites
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### EndlessSky Sounds
+
+
+[EndlessSky.Sounds.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EndlessSky.Sounds.zip) | 9.55 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EndlessSky%20Sounds/)  
+Author: pphotography | [https://github.com/pphotography/EndlessSky_Sounds](https://github.com/pphotography/EndlessSky_Sounds)  
+Category: Overwrites  
+
+>Sounds for Endless Sky 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -3403,7 +3791,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Races
 
-<p>65 plugins in this category.<p>
+<p>67 plugins in this category.<p>
 
 <details>
 
@@ -3680,7 +4068,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: superdragon322 | [https://github.com/ldjahnigen/Better-Korath-](https://github.com/ldjahnigen/Better-Korath-)  
 Category: Races  
 
->N/A
+>some more mereti ships, reworked outfits and weapons, lots of fleet definitions
 >
 
 
@@ -3699,6 +4087,39 @@ Category: Races
 
 >This mod currently assumes that the Player has completed the main plot of the game. In this mod, the Player discovers the first race to actually be younger than Humanity and is tasked with helping them grow up a little bit and in the process learn how to help the Human race grow up more themselves.
 >
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Celestial Strands
+<img src='Working/Celestial Strands/icon.png' width='100'></img><br>
+
+
+[Celestial.Strands.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.zip) | 21.58 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands/)  
+Author: Saugia | [https://github.com/Saugia/celestial-strands](https://github.com/Saugia/celestial-strands)  
+Category: Races  
+
+>Celestial Strands is a plug-in for Endless Sky that adds a new area of content based on the original Escape Velocity games, primarily Escape Velocity: Override. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Celestial Strands HighDPI
+
+
+[Celestial.Strands.HighDPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.HighDPI.zip) | 52.61 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands%20HighDPI/)  
+Author: Saugia | [https://github.com/Saugia/celestial-strands-highdpi](https://github.com/Saugia/celestial-strands-highdpi)  
+Category: Races  
+
+>High DPI for the Celestial Strands plug-in. 
 
 
 Status: N/A  
@@ -3808,7 +4229,7 @@ Category: Races
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -4010,6 +4431,22 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Lupainians
+
+
+[Lupainians.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lupainians.zip) | 1.42 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lupainians/)  
+Author: 3agleEmpire | [https://github.com/3agleEmpire/Lupainian-Development](https://github.com/3agleEmpire/Lupainian-Development)  
+Category: Races  
+
+>This Is The Development for a new alien Species inside Endless Sky, I will upload updates here as they come out.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Make Communism Great Again
 
 
@@ -4095,6 +4532,22 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Naltok
+
+
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.08 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/)  
+Author: Quantumshark | [https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok)  
+Category: Races  
+
+>A new tier 1.5 alien species, the amphibious Naltok. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### nomads
 
 
@@ -4102,8 +4555,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: RisingLeaf | [https://github.com/RisingLeaf/nomads](https://github.com/RisingLeaf/nomads)  
 Category: Races  
 
->N/A
->
+>adds several nomad fleets appearing ramndomly
 
 
 Status: N/A  
@@ -4124,7 +4576,7 @@ Category: Races
 
 
 Status: Should be playable on 0.9.14, 0.9.15 Continuous.  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -4160,23 +4612,6 @@ Category: Races
 
 Status: Playable on 0.9.15/0.9.16.  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
-
-
----
-
-### Project Technovirus
-
-
-[Project.Technovirus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Technovirus.zip) | 694.59 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Technovirus/)  
-Author: czartrak | [https://github.com/czartrak/Project-Technovirus](https://github.com/czartrak/Project-Technovirus)  
-Category: Races  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 ---
@@ -4293,23 +4728,6 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
-### Stargate Mod
-
-
-[Stargate.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Stargate.Mod.zip) | 29.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Stargate%20Mod/)  
-Author: N/A | N/A[]()  
-Category: Races  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
-
-
----
-
 ### Starlus
 
 
@@ -4336,7 +4754,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Races  
 
->N/A
+>adds starsector themed outfits and ships
 >
 
 
@@ -4370,11 +4788,11 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: TimCabbage | [https://github.com/TimCabbage/EndlessSkyTerrans](https://github.com/TimCabbage/EndlessSkyTerrans)  
 Category: Races  
 
->N/A
+>just pictures, no data folders
 >
 
 
-Status: N/A  
+Status: Nonfunfional  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
@@ -4563,11 +4981,43 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Ships
 
-<p>122 plugins in this category.<p>
+<p>135 plugins in this category.<p>
 
 <details>
 
  
+
+---
+
+### AES Fluff
+
+
+[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff)  
+Category: Ships  
+
+>As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### AES Human Fluff
+
+
+[AES.Human.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Human.Fluff.zip) | 958.91 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Human%20Fluff/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/Human-Fluff](https://github.com/Adde-Endless-Sky-Mods/Human-Fluff)  
+Category: Ships  
+
+>N/A
+
+
+Status: Merged into AES Fluff  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
 
 ---
 
@@ -4646,7 +5096,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the ship B-25 ynd several weapon outfits to the pirates
 >
 
 
@@ -4768,6 +5218,22 @@ Category: Ships
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### BSRC
+
+
+[BSRC.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BSRC.zip) | 4.72 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/BSRC/)  
+Author: phenix2 | [https://github.com/phenix2/BSRC](https://github.com/phenix2/BSRC)  
+Category: Ships  
+
+>A Endless Sky plugin with ships from drone class to battleship class
 
 
 Status: N/A  
@@ -4904,7 +5370,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the person ship "Derpy Horse"
 >
 
 
@@ -4927,6 +5393,22 @@ Category: Ships
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Donut 512
+
+
+[Donut.512.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Donut.512.zip) | 388.77 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Donut%20512/)  
+Author: Lorantine | [https://github.com/Lorantine/donut-512](https://github.com/Lorantine/donut-512)  
+Category: Ships  
+
+>A carefully-crafted Endless Sky plugin that replaces the Model 512 with a better model. May affect balance due to size.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -5027,7 +5509,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: Please-Close-This-Issue | [https://github.com/Please-Close-This-Issue/everything-n-more-mod-](https://github.com/Please-Close-This-Issue/everything-n-more-mod-)  
 Category: Ships  
 
->N/A
+>several modified ships
 >
 
 
@@ -5044,7 +5526,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the ship "Fauxwing" to the shipyard on Zug
 >
 
 
@@ -5079,7 +5561,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship
 >
 
 
@@ -5099,6 +5581,22 @@ Category: Ships
 
 >An Endless Sky plugin for the Galaxias fast battlecruiser.
 >
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Gander
+
+
+[Gander.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gander.zip) | 313.22 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gander/)  
+Author: williaji | [https://github.com/williaji/Gander](https://github.com/williaji/Gander)  
+Category: Ships  
+
+>a new ship named Gander
 
 
 Status: N/A  
@@ -5188,7 +5686,7 @@ Category: Ships
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -5304,7 +5802,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the ship "Kestrel-M" to Tarazad shipyard
 >
 
 
@@ -5375,6 +5873,24 @@ Author: TheronEpic | [https://github.com/TheronEpic/lertsek](https://github.com/
 Category: Ships  
 
 >Do you dislike the Kestrel? Are its guns too far back? Do you just want something different? Or do you just like front-heavy ships? Well then the Lertsek is for you.
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Levis Customs
+
+
+[Levis.Customs.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Levis.Customs.zip) | 17.6 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Levis%20Customs/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Levi-s-Customs](https://github.com/AvianGeneticist/Levi-s-Customs)  
+Category: Ships  
+
+>Build your own custom Leviathans!
+>This is a simple plugin for Endless Sky that allows you to pay 20 million credits to customize a Leviathan. Choose half a dozen extra hardpoints, add Health and System Capacities, and even special augmentations to give yourself a leg-up in the early to mid game!
 >
 
 
@@ -5473,6 +5989,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Marvette
+<img src='Working/Marvette/icon.png' height='100'></img><br>
+
+
+[Marvette.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Marvette.zip) | 367.49 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Marvette/)  
+Author: TheronEpic | [https://github.com/TheronEpic/marvette](https://github.com/TheronEpic/marvette)  
+Category: Ships  
+
+>plugin that adds a Marauder Corvette, as well as two variants with different sprites and thumbnails, to the game Endless Sky. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Matthews Alien Ship
 
 
@@ -5480,7 +6013,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship to Tarazad shipyard
 >
 
 
@@ -5495,10 +6028,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Maurader.Osprey.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Maurader.Osprey.zip) | 486.69 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Maurader%20Osprey/)  
-Author: N/A | N/A[]()  
+Author: TheronEpic | N/A[]()  
 Category: Ships  
 
->N/A
+>Three new upgraded versions of the Osprey! Now with 30% more spike, and 100% more badassery.
 >
 
 
@@ -5533,7 +6066,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds several new ships and outfits
 >
 
 
@@ -5564,7 +6097,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Mega Freight/icon.png' width='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 174.14 mb | 2023-07-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/)  
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 110.9 mb | 2023-07-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/)  
 Author: 1010todd | [https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight)  
 Category: Ships  
 
@@ -5655,10 +6188,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Modified.Falcon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Modified.Falcon.zip) | 295.48 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Modified%20Falcon/)  
-Author: N/A | N/A[]()  
+Author: Jason Clark | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the "Modified Falcon" the the southern pirates shipyards
 >
 
 
@@ -5778,10 +6311,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Pheonix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pheonix.zip) | 267.1 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pheonix/)  
-Author: N/A | N/A[]()  
+Author: Matthew Smestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a new ship
 >
 
 
@@ -5798,7 +6331,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a new ship
 >
 
 
@@ -5829,7 +6362,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Project.Runabout.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Project.Runabout.zip) | 213.36 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Project%20Runabout/)  
-Author: N/A | N/A[]()  
+Author: EarlGrey | N/A[]()  
 Category: Ships  
 
 >N/A
@@ -5953,7 +6486,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the ship "Elder Dragon" to the quarg fleets. also adds an introduction mission for it if your quarg reputation is very low.
 >
 
 
@@ -5970,12 +6503,29 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds several new quarg ships to their fleets. the fleets can be very large.
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Random Human Expansion
+<img src='Working/Random Human Expansion/icon.png' height='100'></img><br>
+
+
+[Random.Human.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Random.Human.Expansion.zip) | 5.93 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Random%20Human%20Expansion/)  
+Author: kestrel1110 | [https://github.com/kestrel1110/Random-Human-Expansion](https://github.com/kestrel1110/Random-Human-Expansion)  
+Category: Ships  
+
+>Adds a bunch of ships to the human race.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -5987,7 +6537,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the new ship "Raptor" to the Remnant shipyard on Caelian.
 >
 
 
@@ -6021,7 +6571,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: David Reynolds | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship
 >
 
 
@@ -6072,7 +6622,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: William 'Swingfire' | N/A[]()  
 Category: Ships  
 
->N/A
+>adds many StarTrek themed ships to the game
 >
 
 
@@ -6086,10 +6636,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Red.s.The.Final.Frontier.0.0.1a.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Red.s.The.Final.Frontier.0.0.1a.zip) | 25.8 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Red's%20The%20Final%20Frontier%200.0.1a/)  
-Author: N/A | N/A[]()  
+Author: N/A | [https://www.moddb.com/mods/endless-sky-the-final-frontier](https://www.moddb.com/mods/endless-sky-the-final-frontier)  
 Category: Ships  
 
->N/A
+>The Final Frontier is a Star-Trek themed full overhaul mod
 >
 
 
@@ -6106,7 +6656,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the new ship Battlecruiser to Republic fleets.
 >
 
 
@@ -6123,7 +6673,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>add the Republic Destroyer. can only be seen/obtained with an all-content-plugin.
 >
 
 
@@ -6181,6 +6731,23 @@ Category: Ships
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Rymeilema Skylark II
+<img src='Working/Rymeilema Skylark II/icon.png' width='100'></img><br>
+
+
+[Rymeilema.Skylark.II.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rymeilema.Skylark.II.zip) | 11.54 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rymeilema%20Skylark%20II/)  
+Author: Rymeilema | [https://github.com/rymeilema/rymeilema-skylark-ii](https://github.com/rymeilema/rymeilema-skylark-ii)  
+Category: Ships  
+
+>new animated skylark as a tribute to Storm Crow's old "edgy designs"
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -6244,8 +6811,24 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: loiseeer | [https://github.com/loiseeer/Ship-testing](https://github.com/loiseeer/Ship-testing)  
 Category: Ships  
 
->N/A
+>adds several new ships to the game
 >
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Spinaleviathan
+
+
+[Spinaleviathan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spinaleviathan.zip) | 62.81 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Spinaleviathan/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Spinaleviathan](https://github.com/AvianGeneticist/Spinaleviathan)  
+Category: Ships  
+
+>Adds a spinal leviathan with big guns. 
 
 
 Status: N/A  
@@ -6278,7 +6861,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the Star Destroyer from StarWars to several shipyards
 >
 
 
@@ -6309,10 +6892,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 [Starhopper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Starhopper.zip) | 33.56 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Starhopper/)  
-Author: N/A | N/A[]()  
+Author: Matthew Smestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship
 >
 
 
@@ -6365,7 +6948,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the Super Carrier to the Tarazad shipyard
 >
 
 
@@ -6382,7 +6965,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship and several outfits for it
 >
 
 
@@ -6416,7 +6999,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the fighter "Swarm Drone"
 >
 
 
@@ -6451,7 +7034,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: mdsmestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds the ship "Tachyon" to syndicate shipyards
 >
 
 
@@ -6494,6 +7077,22 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### The Peacebringer
+
+
+[The.Peacebringer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Peacebringer.zip) | 4.39 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Peacebringer/)  
+Author: Polaria1 | [https://github.com/Polaria1/The-Peacebringer](https://github.com/Polaria1/The-Peacebringer)  
+Category: Ships  
+
+>End-game flagship with *jazz hands* modularity! 
+
+
+Status: WIP  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### The Ships of the Internet
 
 
@@ -6501,12 +7100,28 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds several ships
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### TheronEpics Ships
+
+
+[TheronEpics.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/TheronEpics.Ships.zip) | 2.79 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/TheronEpics%20Ships/)  
+Author: TheronEpic | [https://github.com/TheronEpic/TheronEpics-Ships](https://github.com/TheronEpic/TheronEpics-Ships)  
+Category: Ships  
+
+>A merging of multiple of my other ship-focused plugins, this holds: the Flipped Ships, Marvette, Marausprey, and a separate ship, the Amur.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -6518,7 +7133,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds tiny versions of warships to the shipyard on Tarazad
 >
 
 
@@ -6553,7 +7168,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds some new ships, several outfits and fleet definifions
 >
 
 
@@ -6570,7 +7185,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds ships and outfits
 >
 
 
@@ -6605,12 +7220,29 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Unfettered Innovations
+<img src='Working/Unfettered Innovations/icon.png' width='100'></img><br>
+
+
+[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 986.07 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/)  
+Author: Hurleveur | [https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations)  
+Category: Ships  
+
+>endless sky plugin for the Unfettered ships and outfits to come in the campaign
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -6636,10 +7268,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Winners.Arrow.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Winners.Arrow.zip) | 42.61 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Winners%20Arrow/)  
-Author: N/A | N/A[]()  
+Author: Matthew Smestad | N/A[]()  
 Category: Ships  
 
->N/A
+>adds a ship
 >
 
 
@@ -6693,7 +7325,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ## Story
 
-<p>65 plugins in this category.<p>
+<p>75 plugins in this category.<p>
 
 <details>
 
@@ -6725,7 +7357,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>adds a museum tour on alexandria
 >
 
 
@@ -6742,7 +7374,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>adds a new start option/story on luna
 >
 
 
@@ -6788,6 +7420,22 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Blackheart's Treasure
+
+
+[Blackheart.s.Treasure.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blackheart.s.Treasure.zip) | 397.87 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blackheart's%20Treasure/)  
+Author: Galaucus | [https://github.com/Galaucus/Blackheart-s-Treasure](https://github.com/Galaucus/Blackheart-s-Treasure)  
+Category: Story  
+
+>N/A
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Boarding Missions
 
 
@@ -6800,7 +7448,7 @@ Category: Story
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -6873,7 +7521,24 @@ Category: Story
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Cromha Expansion
+<img src='Working/Cromha Expansion/icon.png' width='100'></img><br>
+
+
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 214.36 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/)  
+Author: OcelotWalrus | [https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin)  
+Category: Story  
+
+>Adds a new civilization to the Korath Space (now named the 'Empire Space'): The Cromha Empire. Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government, that has kind of remixed outfits and ships from other vanilla governments. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -6890,6 +7555,22 @@ Category: Story
 
 
 Status: Allready ingame  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### EfretiMissions
+
+
+[EfretiMissions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EfretiMissions.zip) | 5.83 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EfretiMissions/)  
+Author: williaji | [https://github.com/williaji/EfretiMissions](https://github.com/williaji/EfretiMissions)  
+Category: Story  
+
+>additional missions for the Korath Efreti
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -6955,7 +7636,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: Amazinite | [https://github.com/Amazinite/Enigma-Corp-Legacy](https://github.com/Amazinite/Enigma-Corp-Legacy)  
 Category: Story  
 
->N/A
+>A bunch of old stuff that I removed from Enigma Corp 
 >
 
 
@@ -7000,6 +7681,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### ES Callisto
+<img src='Working/ES Callisto/icon.png' width='100'></img><br>
+
+
+[ES.Callisto.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Callisto.zip) | 309.44 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Callisto/)  
+Author: mOctave | [https://github.com/mOctave/es-callisto](https://github.com/mOctave/es-callisto)  
+Category: Story  
+
+>This is a very small plugin that adds Callisto as a landable location in Sol, and provides backstory as to why it is currently abandoned. More may be added to this plugin in the future, but I might also just leave it at this.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### ES Dawn
 
 
@@ -7012,6 +7710,23 @@ Category: Story
 
 
 Status:  designed for 0.9.14  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Fire Corporation
+<img src='Working/Fire Corporation/icon.png' height='100'></img><br>
+
+
+[Fire.Corporation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fire.Corporation.zip) | 1.01 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fire%20Corporation/)  
+Author: lumbar527 | [https://github.com/lumbar527/Fire-Corporation](https://github.com/lumbar527/Fire-Corporation)  
+Category: Story  
+
+>An Endless Sky plugin about a manufacturing corporation that hates pirates. 
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -7079,7 +7794,7 @@ Category: Story
 >
 
 
-Status: Abandoned. An updated version appears to have been made by 1010Todd. AES Fallen  
+Status: Abandoned. An updated version appears to have been made by 1010Todd: "Fallen"  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
@@ -7111,7 +7826,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>alternate start with some missions
 >
 
 
@@ -7128,7 +7843,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>many missions for the navy
 >
 
 
@@ -7211,7 +7926,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Lost in Midnight/icon.png' width='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.46 mb | 2023-07-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.43 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)  
 Category: Story  
 
@@ -7237,7 +7952,7 @@ Category: Story
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -7246,7 +7961,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 <img src='Working/Midnight Expansion/icon.png' width='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 14.65 mb | 2023-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion)  
 Category: Story  
 
@@ -7264,7 +7979,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 <img src='Working/Midnight Scrapyard/icon.png' width='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.15 mb | 2023-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/)  
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.15 mb | 2023-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/)  
 Author: MidnightPlugins | [https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard)  
 Category: Story  
 
@@ -7275,6 +7990,23 @@ Category: Story
 
 
 Status: In development, Playable on 0.9.14, 0.9.15 Continuous.  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Moar Humanity
+<img src='Working/Moar Humanity/icon.png' width='100'></img><br>
+
+
+[Moar.Humanity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Humanity.zip) | 28.75 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Moar%20Humanity/)  
+Author: mOctave | [https://github.com/mOctave/moar-humanity](https://github.com/mOctave/moar-humanity)  
+Category: Story  
+
+>Moar Humanity is my dump for everything human related that involves original creation (read, not ship splices). Some of this new content is actually somewhat realistic, but a lot of it, especially the setup with Marauding Max, is completely illogical and designed for comic relief rather than sanity.
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -7304,7 +8036,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>adds a mission to eliminate a pirate fleet
 >
 
 
@@ -7363,7 +8095,7 @@ Category: Story
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -7395,7 +8127,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>adds some remnant missions and a new jumpdrive
 >
 
 
@@ -7412,7 +8144,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>adds some systems/planets with own human government and a mission chain for it.
 >
 
 
@@ -7434,7 +8166,7 @@ Category: Story
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -7456,6 +8188,22 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Pirate Planets
+
+
+[Pirate.Planets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Planets.zip) | 62.11 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pirate%20Planets/)  
+Author: jjhankins | [https://github.com/jjhankins/pirate-planets](https://github.com/jjhankins/pirate-planets)  
+Category: Story  
+
+>In this mod you start as a member of a poor farming community on one of the Pirate worlds. Your village has just been massacred by a rogue band of pirate raiders, yet you have managed to steal one of their ships and escape. You have a chance to seek justice, wealth, or perhaps bring true political change to the Pirate worlds.
+
+
+Status: WIP abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Portraits for News
 <img src='Working/Portraits for News/icon.png' width='100'></img><br>
 
@@ -7469,6 +8217,23 @@ Category: Story
 
 
 Status: made for 0.9.13  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Prometheus-Flame
+<img src='Working/Prometheus-Flame/icon.png' width='100'></img><br>
+
+
+[Prometheus-Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometheus-Flame.zip) | 12.12 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometheus-Flame/)  
+Author: CruzEli | [https://github.com/CruzEli/Prometheus-Flame](https://github.com/CruzEli/Prometheus-Flame)  
+Category: Story  
+
+>A content expansion plugin that aims to overhaul the campaign and human content in general to make it relevant for mid and late game while introducing new ships, factions and storylines fleshing out the world of Endless Sky. It introduces a new corporation: "Paradeigm AT Group", a major player in the periphery which became vital to the Free Worlds war effort and later the development of human civilization.
+
+
+Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
@@ -7593,7 +8358,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>a bunch of missions to renew your pilots license
 >
 
 
@@ -7611,7 +8376,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
 >
 
 
@@ -7688,7 +8453,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>All this variant/plugin adds is a little more background to the PC on start, to reduce the whole feeling of being parachuted into a bank with a loan signing hanging over your head.
 >
 
 
@@ -7742,11 +8507,11 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Story  
 
->N/A
+>does nothing, its a single nonfunctional mission
 >
 
 
-Status: N/A  
+Status: Nonfunctional  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
@@ -7756,7 +8521,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [The.Station.of.Dr.Rousseau.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Station.of.Dr.Rousseau.zip) | 2.5 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Station%20of%20Dr.%20Rousseau/)  
-Author: N/A | N/A[]()  
+Author: Fallen Cat | N/A[]()  
 Category: Story  
 
 >N/A
@@ -7811,6 +8576,38 @@ Author: beccabunny | [https://github.com/beccabunny/Wanderer-Storyline](https://
 Category: Story  
 
 >A continuation to the wanderer storyline, with new ships, outfits and missions!
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### WanderersPart3
+
+
+[WanderersPart3.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/WanderersPart3.zip) | 22.05 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/WanderersPart3/)  
+Author: warp core | [https://github.com/warp-core/WanderersPart3](https://github.com/warp-core/WanderersPart3)  
+Category: Story  
+
+>A potential continuation of the Wanderer story in Endless Sky.
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### WandererStart
+
+
+[WandererStart.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/WandererStart.zip) | 9.01 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/WandererStart/)  
+Author: williaji | [https://github.com/williaji/WandererStart](https://github.com/williaji/WandererStart)  
+Category: Story  
+
+>a bunch of wanderer missions
 
 
 Status: N/A  
@@ -7876,7 +8673,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Weapons
 
-<p>39 plugins in this category.<p>
+<p>41 plugins in this category.<p>
 
 <details>
 
@@ -7909,6 +8706,23 @@ Author: N/A | N/A[]()
 Category: Weapons  
 
 >Adds a torpedo and launcher to the game.
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Assorted Outfits
+
+
+[Assorted.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Assorted.Outfits.zip) | 96.83 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Assorted%20Outfits/)  
+Author: N/A | N/A[]()  
+Category: Weapons  
+
+>adds some new weapons(ionizer blaster, incendiary launcher/rockets/rack)
 >
 
 
@@ -8009,7 +8823,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [EMP.Weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EMP.Weapons.zip) | 2.68 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EMP%20Weapons/)  
-Author: N/A | N/A[]()  
+Author: Fallen Cat | N/A[]()  
 Category: Weapons  
 
 >Adds some outfits and a ship.
@@ -8130,7 +8944,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: jschiav | [https://github.com/jschiav/Gungnir](https://github.com/jschiav/Gungnir)  
 Category: Weapons  
 
->N/A
+>adds mining laser
 >
 
 
@@ -8147,7 +8961,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds hellfire missile launcher and missiles
 >
 
 
@@ -8193,6 +9007,23 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 ---
 
+### Kraz Cybernetics Evolution
+
+
+[Kraz.Cybernetics.Evolution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Cybernetics.Evolution.zip) | 116.51 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Cybernetics%20Evolution/)  
+Author: MCOfficer | [https://github.com/MCOfficer/Kraz-Cybernetics-Evolution](https://github.com/MCOfficer/Kraz-Cybernetics-Evolution)  
+Category: Weapons  
+
+>adds the quad electron turret to the kraz outfitter.
+>
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### M.A.C. cannon
 
 
@@ -8200,7 +9031,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds the magnetic accelerator cannon and its ammo
 >
 
 
@@ -8214,10 +9045,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 [Mass.Driver.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mass.Driver.zip) | 1.04 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mass%20Driver/)  
-Author: N/A | N/A[]()  
+Author: Daniel Bordeianu | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds the mass driver turret and its ammo
 >
 
 
@@ -8234,7 +9065,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: Dalrethliant | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds the sidewinder missile turret
 >
 
 
@@ -8251,7 +9082,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds to tractor beams and several hand to hand outfits
 >
 
 
@@ -8268,7 +9099,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds nuclear launcher/missiles to the pirate outfitters
 >
 
 
@@ -8335,10 +9166,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 [Particle.Turret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Particle.Turret.zip) | 363.74 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Particle%20Turret/)  
-Author: N/A | N/A[]()  
+Author: Jason Clark | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds two missions to unlock the particle turret
 >
 
 
@@ -8407,7 +9238,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: N/A | N/A[]()  
 Category: Weapons  
 
->N/A
+>adds some quarg outfits/weapons
 >
 
 
@@ -8568,11 +9399,76 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ## Uncategorized
 
-<p>13 plugins in this category.<p>
+<p>24 plugins in this category.<p>
 
 <details>
 
  
+
+---
+
+### AES Boarding Ease
+
+
+[AES.Boarding.Ease.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Boarding.Ease.zip) | 1.01 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Boarding%20Ease/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease](https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease)  
+Category: N/A  
+
+>Reduces automata self destruction chance, adds self destruction chance to marauder pirates and some korath exiles.
+
+
+Status: Abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### AES No Pleiades
+
+
+[AES.No.Pleiades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Pleiades.zip) | 13.42 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Pleiades/)  
+Author: Darcy Manoel | [https://github.com/Adde-Endless-Sky-Mods/No-Pleiades](https://github.com/Adde-Endless-Sky-Mods/No-Pleiades)  
+Category: N/A  
+
+>N/A
+
+
+Status: Merged into AES Fluff  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### AuldrStarts
+
+
+[AuldrStarts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AuldrStarts.zip) | 13.8 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AuldrStarts/)  
+Author: williaji | [https://github.com/williaji/AuldrStarts](https://github.com/williaji/AuldrStarts)  
+Category: N/A  
+
+>several starting options with different ships
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Disable Author Ships
+<img src='Working/Disable Author Ships/icon.png' width='100'></img><br>
+
+
+[Disable.Author.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Disable.Author.Ships.zip) | 93.06 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Disable%20Author%20Ships/)  
+Author: samrocketman | [https://github.com/samrocketman/endless-sky-disable-author-ships](https://github.com/samrocketman/endless-sky-disable-author-ships)  
+Category: N/A  
+
+>An endless sky plugin to remove author ships from the game. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
 
 ---
 
@@ -8588,7 +9484,7 @@ Category: N/A
 
 
 Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -8645,6 +9541,54 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 ---
 
+### Endless Sky Gauntlet
+
+
+[Endless.Sky.Gauntlet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.Gauntlet.zip) | 13.62 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Sky%20Gauntlet/)  
+Author: Galaucus | [https://github.com/Galaucus/Endless-Sky-Gauntlet](https://github.com/Galaucus/Endless-Sky-Gauntlet)  
+Category: N/A  
+
+>The goal of this project is to add a difficult region of space that can only be accessible with a small fleet. This is to be achieved through an unstable wormhole gate, and accessed via missions that give the player a handful of "keys" to be installed onto ships.
+
+
+Status: WIP, looks abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Endless Zombies
+
+
+[Endless.Zombies.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Zombies.zip) | 28.33 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Zombies/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Endless-Zombies](https://github.com/AvianGeneticist/Endless-Zombies)  
+Category: N/A  
+
+>Adds an waved-based PvE zombies mode to Endless Sky. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### ES Andromeda
+
+
+[ES.Andromeda.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Andromeda.zip) | 10.86 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Andromeda/)  
+Author: Amazinite | [https://github.com/Amazinite/ES-Andromeda](https://github.com/Amazinite/ES-Andromeda)  
+Category: N/A  
+
+>Adds a new galaxy with lots of systems. No other content.
+
+
+Status: Abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
 ### Expanded Territory
 
 
@@ -8658,40 +9602,6 @@ Category: N/A
 
 Status: N/A  
 Daily update check: <img src='res/img/check.png' width='15' ></img>
-
-
----
-
-### Experimental
-
-
-[Experimental.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Experimental.zip) | 6.64 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Experimental/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
-
-
----
-
-### Hi Quality Stainless Steel Nonstick Pan
-
-
-[Hi.Quality.Stainless.Steel.Nonstick.Pan.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hi.Quality.Stainless.Steel.Nonstick.Pan.zip) | 212.9 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hi%20Quality%20Stainless%20Steel%20Nonstick%20Pan/)  
-Author: N/A | N/A[]()  
-Category: N/A  
-
->N/A
->
-
-
-Status: N/A  
-Daily update check: <img src='res/img/cross.png' width='15' ></img>
 
 
 ---
@@ -8758,12 +9668,44 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img>
 Author: czartrak | [https://github.com/czartrak/ES-newscasts](https://github.com/czartrak/ES-newscasts)  
 Category: N/A  
 
->N/A
+>more spaceport news
 >
 
 
 Status: N/A  
 Daily update check: <img src='res/img/cross.png' width='15' ></img>
+
+
+---
+
+### Prism
+
+
+[Prism.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prism.zip) | 2.47 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prism/)  
+Author: Startingfresher | [https://github.com/Startingfresher/Prism-Plug-in](https://github.com/Startingfresher/Prism-Plug-in)  
+Category: N/A  
+
+>a plug-in for the game "Endless Sky", it adds missions on every star that let you change your fleet swizzle to a few options. when you start the game you get access to two, eventually you will find all 6. look in the about.txt file for spoilers on where to get em. 
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Reluvethel Potestas
+
+
+[Reluvethel.Potestas.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Reluvethel.Potestas.zip) | 15.14 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Reluvethel%20Potestas/)  
+Author: Makuta Miras | [https://github.com/Makuta-Miras/Reluvethel-Potestas](https://github.com/Makuta-Miras/Reluvethel-Potestas)  
+Category: N/A  
+
+>In the far north-west of the galaxy lie the lands of the Reluvethel. Splintered and fractured, can they rebuild the ancient, glorious dominion of the Reluvethel? 
+
+
+Status: WIP abandoned  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
 
 
 ---
@@ -8778,6 +9720,70 @@ Category: N/A
 >This is a plugin aiming to provide music for Endless Sky as well as remaster the audio to balance it.
 >
 >
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### SW Galaxy Test
+
+
+[SW.Galaxy.Test.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SW.Galaxy.Test.zip) | 8.73 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/SW%20Galaxy%20Test/)  
+Author: FranchuFranchu | [https://github.com/FranchuFranchu/endless-sky-sw-galaxy-test](https://github.com/FranchuFranchu/endless-sky-sw-galaxy-test)  
+Category: N/A  
+
+>N/A
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### The Chaos Insurgency
+
+
+[The.Chaos.Insurgency.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Chaos.Insurgency.zip) | 231.99 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Chaos%20Insurgency/)  
+Author: czartrak | [https://github.com/czartrak/Chaos-Insurgency](https://github.com/czartrak/Chaos-Insurgency)  
+Category: N/A  
+
+>N/A
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Thi Ruun
+
+
+[Thi.Ruun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Thi.Ruun.zip) | 712.75 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Thi%20Ruun/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Thi-Ruun](https://github.com/AvianGeneticist/Thi-Ruun)  
+Category: N/A  
+
+>Map Content for the Thi'Ruun Project
+
+
+Status: N/A  
+Daily update check: <img src='res/img/check.png' width='15' ></img>
+
+
+---
+
+### Thi Ruun Content
+
+
+[Thi.Ruun.Content.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Thi.Ruun.Content.zip) | 1.64 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Thi%20Ruun%20Content/)  
+Author: Zoura | [https://github.com/AvianGeneticist/Thi-Ruun--Content-](https://github.com/AvianGeneticist/Thi-Ruun--Content-)  
+Category: N/A  
+
+>Ships and Outfits for the Thi-Ruun
 
 
 Status: N/A  
