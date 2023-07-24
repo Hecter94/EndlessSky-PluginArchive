@@ -10,7 +10,7 @@
 # Request feature & Report bugs
 **Please, every time before reporting a bug or requesting a feature, check if there is not a duplicated issue(someone that had the same idea or bug than you).**
 ## Reporting bugs
-You can report bugs by opening an issue [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues). Then select the "bug report" option. It will automatically create a pattern to help you making the report clearer. I will try my best to answer you the fastest possible and solve the bug.
+You can report bugs by opening an issue [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues/new/choose). Then select the "bug report" option. It will automatically create a pattern to help you making the report clearer. I will try my best to answer you the fastest possible and solve the bug.
 
 It will look like something like this:
 ```
@@ -40,7 +40,7 @@ It will look like something like this:
 ```
 
 ## Requesting Features
-You can also request features threw the issues menu on the github repository that you can find [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues). Open an issue and select the "Feature Request" option. It will automatically create a pattern to help you improve your request and make it clearer to us.
+You can also request features threw the issues menu on the github repository that you can find [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues/new/choose). Open an issue and select the "Feature Request" option. It will automatically create a pattern to help you improve your request and make it clearer to us.
 
 It will look like something like this:
 

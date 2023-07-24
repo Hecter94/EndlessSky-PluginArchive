@@ -98,9 +98,9 @@ RTF also adds a few outfits, all listed under the `Special` category:
 
 # Assets (placeholders)
 
-This plugin provides a few free assets you can use as placeholders:
- - [Images.](./images/placeholder/)
- - [Sounds.](./sounds/placeholder/)
+You can use those assets as placeholders:
+ - [Outfits](./images/outfit/rtf/)
+ - [Sounds](./sounds/)
 
 If needed, info about individual assets are available from [./copyright](./copyright).
 
