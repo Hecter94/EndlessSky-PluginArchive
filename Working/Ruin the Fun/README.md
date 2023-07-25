@@ -138,6 +138,19 @@ You can **include content from other plugins** by running the following command 
 
 This will only work if all plugins, including RTF, are in the same `plugins` folder.
 
+## Moving an RTF system
+You can use a mission and an event like this to move a RTF system to your plugin's galaxy:
+```
+mission "MYPLUGIN: Move RTF10"
+    landing
+    on offer
+        event "MYPLUGIN: Move RTF10"
+        fail
+event "MYPLUGIN: Move RTF10"
+	system "RTF10"
+		pos -2700 -1500
+```
+
 
 
 # Bugs / Suggestions

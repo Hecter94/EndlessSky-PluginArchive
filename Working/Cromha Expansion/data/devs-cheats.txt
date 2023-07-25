@@ -1,0 +1,340 @@
+# START
+
+start "Devs-cheats"
+	name "Devs cheats"
+	date 16 11 3013
+	system "Shaulaee"
+	planet "Greenarok"
+	account
+		credits 1e12
+		score 200
+	conversation "all-content plugin start"
+	description `You grew up on New Boston, that bland wasteland in the Dirt Belt. You knew early on that your dreams of owning a starship enterprise would never be realized by just working in a third-world sweatshop, but a few years of hard labor made you plenty of friends in just the right places...`
+	# License Conditions
+	set "license: City-Ship"
+	set "license: Coalition"
+	set "license: Heliarch"
+	set "license: Militia"
+	set "license: Navy Auxiliary"
+	set "license: Navy Carrier"
+	set "license: Navy Cruiser"
+	set "license: Navy"
+	set "license: Pilot's"
+	set "license: Remnant Capital"
+	set "license: Remnant"
+	set "license: Unfettered Militia"
+	set "license: Wanderer"
+	set "license: Wanderer Military"
+	set "license: Wanderer Outfits"
+	set "license: Empire Contributor"
+	set "license: Empire Navy"
+	set "license: Empire Black Manta"
+	set "license: Lumbarian"
+	set "license: Lumbarian Knight"
+	set "license: Lumbarian King"
+	set "license: Lumbarian Emperor"
+	set "cheater"
+	# Skip the game's normal intro mission string.
+	set "Intro [0]: offered"
+
+
+
+conversation "all-content plugin start"
+	scene "scene/lobby"
+	`The bank's architecture is what you would have called "futuristic" back when you dreamed that the future would be less squalid than the present: story above story of curves and spires and balconies, all in gleaming metal. A doorman stands by each of the heavy glass doors. You are wearing your very best clothes, but you feel shabby next to them.`
+	`	The fancy little banker in his very fancy suit is clearly trying not to show how scared he is of your laser pistol, but he can't help letting out a small whimper as he watches you shovel piles of credit chips into your sack.`
+	`	A few minutes later you are on your way to meet a buddy of yours to get a face transplant and a fake ID. As he carefully injects you with local anaesthetic, he asks, "Now, what name did you say you wanted on that ID?"`
+	name
+	`	You give him a few hundred thousand credits extra and tell him to make you some fake ship licenses too, while he's at it. Then you sit back and try to relax as he surgically rearranges your face.`
+	`	It takes a few weeks or so for you to heal enough to venture out in public, but by then the furor over the robbery has begun to die down. And thanks to your extensive black market connections, every ship and outfit in the galaxy is available to you here, including some that have not even been invented yet...`
+
+
+
+mission "All-Content Start"
+	priority
+	landing
+	invisible
+	name `The all-content-plugin's start mission`
+	on offer
+		log `Finally "scraped together" enough money for a down payment on a starship. Didn't even have to hurt anyone!`
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`Representation in the Republic Parliament is based on population. That means that some individual "Paradise Worlds" have more representatives than entire regions of space like the Dirt Belt that are more sparsely settled.`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`The Syndicate is a central part of the Republic's economy, but they are also well known for selling shoddy products and for doing damage to the environment on the worlds they control. Their treatment of workers is questionable, and their opposition to organized labor is legendary. Some Syndicate factory towns have even been accused of human rights abuses.`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+		fail
+
+# CHEATER CORE
+outfit "Cheater Core"
+	category Special
+	cost 77777777
+	thumbnail "outfit/cheater core"
+	"outfit space" 77777777
+	"engine capacity" 77777777
+	"weapon capacity" 7777777
+	"fuel generation" 77777777
+	"scram drive" 77777777
+	"jump fuel" .7
+	"hyperdrive" 1
+	"jump effect" "jump drive"
+	"jump drive" 1
+	"jump speed" 77777777
+	"jump range" 7777777777777777
+	"hull repair rate" 77777777
+	"shield generation" 77777777
+	"energy capacity" 777777
+	"energy generation" 7777777
+	"quantum keystone"
+	"cloaking" 77
+	"cloaking fuel" .77777777
+	"cloaking energy" .77777777
+	"cooling" 77777777
+	description "What a fascinating creation, the Cheater Core is. Made even more so by the fact that it does not exist. This think has everything you could want, along with some things you did not think to want."
+
+# FIXES
+
+# Edit Shaulaee system so it's no more invisible
+mission "remove shaulaee hidden"
+	landing
+	priority
+	invisible
+	to offer
+		"cheater" > 0
+	on offer
+		event "remove shaulaee hidden"
+		give ship "Empire Hydra (Emperor)" "Z-47-IY.7"
+		outfit "Cheater Core" 1
+		fail
+
+event "remove shaulaee hidden"
+	system Shaulaee
+		remove hidden
+	visit Sol
+
+	
+# Add a valid category to uncategorized ships to make them appear in shipyards.
+ship "Nanobot"
+	add attributes
+		category "Uncategorized"
+
+ship "Timer Ship"
+	add attributes
+		category "Uncategorized"
+
+ship "_Ion Timer Ship"
+	add attributes
+		category "Uncategorized"
+
+ship "Hallucination"
+	add attributes
+		category "Uncategorized"
+	
+# SALES
+# There is where there is the outfitter and the shipyard for all content
+# For ships there is just the '# <Species/Civlizations/Government> to add and then all ship unordered.
+# Make sure you separate use the following template so it's easier to find out things:
+#
+# # <Species/Civilization/Government>
+# 	# Engines
+#	<outfits>
+#
+# 	# Power
+#	<outfits>
+#
+# 	# Weapons
+#	<outfits>
+#
+#	# Ammunition Stuff
+#	<outfits>
+#
+#	# Systems (Everything that is not of all other categories)
+#	<outfits>
+#
+#	# Hand to Hand
+#	<outfits>
+#
+# Everything that is in '()' you have to ignore it and everything that is in '<>' you have to replace it by what is written inside (if it's written species, you have to write the species)
+
+outfitter "Everything Outfitter"
+	# Author
+		# Systems
+	"Cheater Core"
+	
+	# Uncategorized
+		# Weapons
+	"Twin Modified Blaster"
+		# Uniques
+	"Empire Quantum Medal"
+	"Pug Crystal"
+	"Subsidurial Plushie"
+	
+	# Empire
+		# Engines
+	`RC-001 Atomic Engines`
+	`RC-140 Atomic Thruster`
+	`RC-160 Atomic Thruster`
+	`RC-180 Atomic Thruster`
+	`RC-200 Atomic Thruster`
+	`RC-220 Atomic Thruster`
+	`RX-120 Reverse Thruster`
+	`RX-180 Reverse Thruster`
+	`RX-200 Reverse Thruster`
+	`RC-145 Atomic Steering`
+	`RC-165 Atomic Steering`
+	`RC-185 Atomic Steering`
+	`RC-205 Atomic Steering`
+	`RC-225 Atomic Steering`
+	"Disruption Afterburnner"
+		
+		# Power
+	"Empire Hai Chasm Batteries"
+	"Empire Hai Fissure Batteries"
+	"Empire Hai Gorge Batteries"
+	"Empire Hai Ravine Batteries"
+	"Empire Hai Valley Batteries"
+	"Multiphasic Capacitor"
+	"Phasic Radiothermal"
+	"Phasic Dwarf Core"
+	"Phasic Fission Reactor"
+	"Thermal Nucleavoltaic"
+	"RC-X1 Multiphasic Reactor"
+	"RC-X2 Multiphasic Reactor"
+	"RC-X3 Multiphasic Reactor"
+	"RC-X4 Multiphasic Reactor"
+	"Quantum Generator"
+	
+		# Weapons
+	"Empire Particle gun"
+	"Twin Empire Particle"
+	"Empire Particle Turret"
+	"Empire Particle Turret (Augmented)"
+	"Ion Proton Gun"
+	"Ion Proton Turret"
+	"Multiphasic Anti-Missile"
+	"Antimatter Railgun"
+	"Empire Torpedo Bank"
+	"Empire Typhoon Bank"
+	"Empire Nuke"
+	"Grab-Strike Blaze"
+	"Langrage Empire-Heaver"
+	"Alldust Beam Canon"
+	"Alldust Beam Turret"
+	"Nuclavoltaic Repeater"
+	"Nuclavoltaic Turret"
+	"Phasic Mine Layer"
+	"Wel'y Beam Canon"
+	"Wel'y Beam Turret"
+	"Dual Wel'y Beam Turret"
+	"Scrambling Beam"
+	
+		# Ammunition Stuff
+	"Multiphasic ammo"
+	"Multiphasic Ammo Rack"
+	"Empire Torpedo Rack"
+	"Empire Torpedo Missile"
+	"Phasic-Cluster Mine"
+	"Phasic Mine Rack"
+	
+		# Systems
+	"Mineria Key Stone"
+	"Fuel Capacitor"
+	"X-Skirmish Computer"
+	"X-Battlezone Computer"
+	"X-Warforge Computer"
+	"X-Crusade Computer"
+	"Nanobot Pod"
+	"Cloaking Module"
+	"Empire Navy Emitter"
+	"Countermesure Module"
+	"Countermesure Module Compact"
+	"Fuel Cell"
+	"Weapon Module"
+	"Engine Module"
+	"Hull Breaker"
+	"T1 Phasic Amplifier"
+	"T2 Phasic Amplifier"
+	"T3 Phasic Amplifier"
+	"Phasic Ramscoop"
+	"Ameliorating Phasic-Cell"
+	"Phasic Reasoning Node"
+	"Antimatter Capacitor"
+	"Antimatter Capacitor (Large)"
+	"Quatalant Shield (Tiny)"
+	"Quatalant Shield (Small)"
+	"Quatalant Shield (Medium)"
+	"Quatalant Shield (Big)"
+	"Quatalant Shield (Huge)"
+	"Shield Processor"
+	"Shield Processor (Huge)"
+	"Compact Plasma Drive"
+	"Plasma Drive"
+	"Multiphasic Cooler"
+	"Tre-Phasic Cooler"
+	"One-Phasic Cooler"
+	"NGx3 Quatalant Cooler"
+	"NGx9 Quatalant Cooler"
+	"Antimatter Cooling Cell"
+	"Multiphasic Scanner"
+	"Plasma Fuel Pod"
+	"Empire Mapper"
+	
+		# Hand to Hand
+	"Teleportation Dock"
+	"Phasic Rifle"
+	"Tre-Phasic Rifle"
+	"Phasic Grenades"
+	"Empire Barricade"
+	"Empire Defense Station"
+	"Medical Station"
+	
+		# Prototypes
+	"RV-120 Disruption Thruster"
+	"RV-120 Disruption Steering"
+	"RV-170 Disruption Thruster"
+	"RV-170 Disruption Steering"
+	"Tri-Phasic Hyperdrive"
+	"Caltalytic Tear Secret"
+	"Caltalytic Tear"
+	"Anti-Missile Field Device"
+	"Draining Field Device"
+	"Prototype Fusion Cannon (Empire)"
+	"Dragonflame Cannon (Empire)"
+
+shipyard "Everything Shipyard"
+	# Empire
+	"Empire Classik"
+	"Empire Daggrez"
+	"Empire Shall'ok"
+	"Empire Kraken"
+	"Empire Kastador"
+	"Empire Corvette YLL'A"
+	"Empire Corvette YLL'E"
+	"Empire Striker"
+	"Empire Nano-Flyer"
+	"Empire Galactik"
+	"Empire Hydra (Emperor)"
+	"Empire Fortress (Emperor)"
+	"Empire Kraken (Emperor)"
+	"Black Manta"
+	"Empire Starline Ak"
+	"Empire Starline Bul"
+	"Empire Starline Cal"
+	"Empire Starline Dys"
+	"Empire Starline Eas"
+	"Empire Starline Fex"
+	"Mefterk Refinery"
+	# Not adding Empire Warships variants
+	"Empire Wardragon"
+	"Empire Skylark"
+	"Empire Palavret"
+	# Not adding Empire Warships variants
+	"Empire Tubfalet"
+	"Empire Dredger"
+	"Empire Hydra"
+	"Empire Oriole"
+	"Empire Skyswift"
+	"Empire Sea Kraken"
+	"Empire Fortress"
+	"Empire Colinizer"
+	"Empire Sea Kraken (Caltalyctic)"
+

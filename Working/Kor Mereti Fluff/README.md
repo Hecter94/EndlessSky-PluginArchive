@@ -5,7 +5,8 @@
 This is a plugin for the free, open-source game [Endless Sky][es]. This plugin
 is developed and tested against the [Endless Sky continuous][continuous] build.
 Learn more [about Endless Sky][esweb].
-Ff you want to discuss about the plugin or ask more in depth questions to me.
+If you want to discuss about the plugin or ask more in depth questions to me.
+You can also find this plugin merged with an other plugin: [Cromha Expansion](https://github.com/OcelotWalrus/Cromha-Expansion-plugin)
 
 
 <details>
@@ -40,12 +41,7 @@ To contribute to the plugin, you can create issues to describe an error from spe
 You can also create an issue to request specific feature.
 
 # Development Status
-It is currently a Alpha plugin.
-
-* No new systems yet.
-* No new outfits yet.
-* No new ships yet
-* No new lore yet.
+This plugin is fully finished.
 
 # Installation
 Go [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) for more infos on installing the plugin.
