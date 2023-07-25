@@ -1,0 +1,45 @@
+start "firefly"
+	name "Serenity"
+	description `I kick the bits of dirt and debris off the path as I dejectedly walk towards the shipyards. Life in a Syndicate system is rough. Working for the company will keep you fed and little more. Sometimes you catch a piece of good luck if that's what I can call this. All I had was my dad, and now all I have is a pilot's license and an insurance payout. Hopefully, I can afford a ship with all this or I'm going to have to sell myself off to the company.`
+	thumbnail "scene/fireflystart1"
+	date 16 11 3012
+	system "Fomalhaut"
+	planet "Millrace"
+	conversation "firefly intro"
+	account
+		credits 700000
+		score 350
+	set "license: Pilot's"
+
+conversation "firefly intro"
+	`I kick the bits of dirt and debris off the path as I dejectedly walk towards the shipyards. Life in a Syndicate system is rough. Working for the company will keep you fed and little more. Sometimes you catch a piece of good luck if that's what I can call this. All I had was my dad, and now all I have is a pilot's license and an insurance payout. Hopefully, I can afford a ship with all this or I'm going to have to sell myself off to the company.`
+	`	"You look like a man on a mission." I hear from one of the paths leading to a spaceport dock and nearly jump out of my skin.`
+	`	The man begins laughing "Sorry, sorry I didn't mean to scare you, my young friend. You seemed of foul mood but with grim determination. Perhaps you are going to make first ship purchase?" He says all this with a thick accent that I don't recognize.`
+	`	"Yeah, maybe if I have enough," I tell him with a little laugh at myself.`
+	`	"Well, then I have good news for someone like you. I have... hobby of collecting ships and I have one right now for cheap if you are interested." He gives me a smile that is friendly yet terrifying.`
+	`	"I might be interested Mr. um,"`
+	`	"Ivan, just call me Ivan. So what kind of ship do you want, eh? Something that has all the guns? Or, maybe one that could haul cargo... oh how about people? Possibilities, that is what you have here my friend." He strides towards me and slaps his hand down on my shoulder. "Me and my boys can help rig this ship up however you want"`
+	`	"Just sign here so you can call it yours... Captain."`
+	apply
+		set "ivan talked to"
+	name
+
+mission "serenity aquired"
+	invisible
+	landing
+	source "Millrace"
+	destination "Millrace"
+	on complete
+		event "millrace normal"
+
+shipyard "Crazy Ivan's"
+	"Firefly (Weapons)"
+	"Firefly (Cargo)"
+	"Firefly (Passengers)"
+
+planet "Millrace"
+	shipyard "Crazy Ivan's"
+
+event "millrace normal"
+	planet "Millrace"
+		remove shipyard "Crazy Ivan's"
