@@ -1,3 +1,7 @@
+2023-07-25 | updated Plugin 'Kor Mereti Fluff' by OcelotWalrus | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay)<br>
+2023-07-25 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
+2023-07-25 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-07-25 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-24 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
 2023-07-24 | updated Plugin 'nomads' by RisingLeaf | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
 2023-07-24 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
