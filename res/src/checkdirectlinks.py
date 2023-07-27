@@ -143,8 +143,23 @@ for entry in listing:
 		zObject.extractall("temp/" + plugin_name + "/")
 		firstfolder = zObject.namelist()[0] # first folder inside zip, should be pluginname
 	firstfolder = firstfolder[:len(firstfolder) -1]
-	print(entry + " | extracted to: temp/" + firstfolder)
-	# check for correct folder structer and correct it
+	print(entry + " | extracted to: temp/" + plugin_name)
+	# replaces chars in file and folder names, which are allowed in linux, but not in windows	
+	chars = ['\\', ':', '*', '?', '"', '<', '>', '|']
+	for root, dirs, files in os.walk("temp/" + plugin_name + "/"):
+		for name in files:
+			for char in chars:
+				if char in name:
+					print(name + " has invalid char: " + char + " !renaming it!")		
+					os.rename(os.path.join(root, name), os.path.join(root, name).replace(char, ''))
+					name = name.replace(char,'')
+		for name in dirs:
+			for char in chars:
+				if char in name:
+					print(name + " has invalid char: " + char + " !renaming it!")		
+					os.rename(os.path.join(root, name), os.path.join(root, name).replace(char, ''))
+					name = name.replace(char,'')
+	# check for correct folder structure and correct it
 	if plugin_name != firstfolder:
 		print("ERROR: mismatch between zipname and in-zip folder!")
 		shutil.move("temp/"+ plugin_name + "/" + firstfolder, "temp/" + plugin_name + "/" + plugin_name)
