@@ -1,25 +1,42 @@
 mission help-disabled-empire
-    assisting
-    repeat
-    source
-        government "Cromha Empire" "Mineria colonnies" "Empire Merchant"
-    on offer
-        dialog "The captain of the ship greets you and gives you a crate full of money."
-            decline
-    on decline
-        payment
-        payment 270000
+	assisting
+	repeat
+	source
+		government "Cromha Empire" "Mineria colonnies" "Empire Merchant"
+	to offer
+		"reputation: Cromha Empire" > 1
+	on offer
+		dialog "The captain of the ship greets you and gives you a crate full of money."
+		"reputation: Cromha Empire" += 5
+		decline
+	on decline
+		payment
+		payment 270000
+		
+mission empire-saykain-black-manta-protection
+	landing
+	invisible
+	to complete
+		never
+	npc save
+		government "Cromha Empire"
+		personality heroic vindictive staying forbearing unconstrained daring
+		system Saykain
+		ship "Black Manta" "Kasiliri's Folly"
+		ship "Black Manta" "Sword of Eden"
+		ship "Black Manta" "Snows of Far Door Nai"
 
 mission caught-by-empire
-    landing
-    repeat
-    source
-        government "Cromha Empire" "Mineria colonnies"
-        not attributes uninhabited
-    to offer
-        "reputation: Cromha Empire" < -200
-    on offer
-        conversation "empire imprisonment reputation"
+	landing
+	repeat
+	source
+		government "Cromha Empire" "Mineria colonnies"
+		not attributes uninhabited
+	to offer
+		"reputation: Cromha Empire" < -200
+	on offer
+		conversation "empire imprisonment reputation"
+
 
 mission empire-kor-sestor-attack
     landing

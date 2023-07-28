@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
+  
   cd_upload_artifacts_to_release:
     name: Upload
     if: github.event_name == 'push'
@@ -32,6 +32,11 @@ jobs:
         run: |
           echo "GITHUB_USER=$( echo ${{ github.repository }} | cut -d/ -f1 )" >> $GITHUB_ENV
           echo "GITHUB_REPO=$( echo ${{ github.repository }} | cut -d/ -f2 )" >> $GITHUB_ENV
+      - name: Create Zip
+        uses: vimtor/action-zip@v1
+        with:
+          files: data/ images/ about.txt icon.png README.md LICENSE copyright.txt
+          dest: builds/Cromha-Expansion-plugin.zip
       - name: Move/Create continuous tag
         run: |
           git tag --force continuous ${{ github.sha }}
@@ -56,3 +61,15 @@ jobs:
               --description "$DESCRIPTION" \
               --pre-release
           fi
+      - name: Upload Artifacts
+        uses: IsaacShelton/update-existing-release@v1.3.2
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          release: "Continuous Build"
+          tag: "continuous"
+          prerelease: true
+          replace: true
+          message: "This is an automated build of the latest source. It may be unstable or even crash, corrupt your save or eat your kitten. Use with caution!"
+          body: "This is an automated build of the latest source. It may be unstable or even crash, corrupt your save or eat your kitten. Use with caution!"
+          files: >
+            builds/Cromha-Expansion-plugin.zip

@@ -1436,7 +1436,95 @@ mission "MGF: MHL Scout Route (Tarazed Route)"
 		"reputation: Maryhaul Logistic" += 1
 		"MGF: MHL scouting job done" += 1
 		payment 90000
+
+phrase `mgf: mhl destory bountyhunter complete`
+	word
+		`All the bounty hunter has been eliminated, whatever done is done and bounty hunters now may target you. You can return to <origin> to collect your payment.`
+
+mission "MGF: MHL Destory Bounty Hunter (Wei)"
+	name "Destory Bounty Hunter Fleet"
+	description `MHL is looking for someone to eliminate a bounty hunter ambush fleet at <waypoints>. Payment is <payment>. WARNING: The Bounty Hunter fleet is very strong and attacking them will have permanent consequences.`
+	job
+	repeat
+	deadline
+	to offer
+		"reputation: Maryhaul Logistic" >= 3
+		"combat rating" >= 8000
+		or
+			and
+				not "event: mgf: reduced antimhl activity"
+				random < 30
+			and
+				has "event: mgf: reduced antimhl activity"
+				random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "dirt belt" rim "south" "near earth"
+		near Wei 1 3
 		
+	waypoint Wei
+	
+	npc	kill
+		government "MGF: Bounty Hunter (AntiMHL)"
+		system Wei
+		personality
+			confusion 20
+			hunting staying
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+		dialog `mgf: mhl destory bountyhunter complete`
+	
+	on abort
+		"reputation: Maryhaul Logistic" -= 1
+		"reputation: Maryhaul Logistic" >?= 1
+	on complete
+		dialog
+			`You land back on <origin> and send a video and sensor log to the company for verification, after a short while <payment> is transferred into your account.`
+		"reputation: Maryhaul Logistic" += 3
+		"MGF: MHL destory BH job done" += 1
+		payment 750000
+
+mission "MGF: MHL Destory Bounty Hunter (Kaus Australis)"
+	name "Destory Bounty Hunter Fleet"
+	description `MHL is looking for someone to eliminate a bounty hunter ambush fleet at <waypoints>. Payment is <payment>. WARNING: The Bounty Hunter fleet is very strong and attacking them will have permanent consequences.`
+	job
+	repeat
+	deadline
+	to offer
+		"reputation: Maryhaul Logistic" >= 3
+		"combat rating" >= 8000
+		or
+			and
+				not "event: mgf: reduced antimhl activity"
+				random < 30
+			and
+				has "event: mgf: reduced antimhl activity"
+				random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "dirt belt" rim "south" "near earth"
+		near Wei 1 3
+		
+	waypoint "Kaus Australis"
+	
+	npc	kill
+		government "MGF: Bounty Hunter (AntiMHL)"
+		system "Kaus Australis"
+		personality
+			confusion 20
+			hunting staying
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+		dialog `mgf: mhl destory bountyhunter complete`
+	
+	on abort
+		"reputation: Maryhaul Logistic" -= 1
+		"reputation: Maryhaul Logistic" >?= 1
+	on complete
+		dialog
+			`You land back on <origin> and send a video and sensor log to the company for verification, after a short while <payment> is transferred into your account.`
+		"reputation: Maryhaul Logistic" += 3
+		"MGF: MHL destory BH job done" += 1
+		payment 750000
+
 #================================Ankulah
 
 phrase "mgf: arrived-without-wreckage dialog"
