@@ -595,7 +595,7 @@ event "unfettered tribute Varu K'est"
 # The event: "Hai Ancestral Lands Discovered" is triggered during a Cartography Compass/Map mission.
 
 
-
+# The negative reputation requirement is a placeholder until PR9086 is gets into stable
 mission "Angry Squirrels: The Monkey King"
 	landing
 	invisible
@@ -603,9 +603,15 @@ mission "Angry Squirrels: The Monkey King"
 		government "Hai" "Hai (Unfettered)"
 		not planet "Darkwaste"
 	to offer
-		"tribute: Earth" > 0
-		"tribute: Foundry" > 0
-		"tribute: Bourne" > 0
+		or
+			and
+				"tribute: Earth" > 0
+				"tribute: Foundry" > 0
+				"tribute: Bourne" > 0
+			and
+				"reputation: Republic" < -50000
+				"reputation: Syndicate" < -50000
+				"reputation: Free Worlds" < -50000
 	on offer
 		dialog `A street vendor tries to sell you a book, "Journey to the Southwest." Apparently it's an adaptation of "Journey to the West" that's been altered to appeal to a Hai audience.`
 	on accept

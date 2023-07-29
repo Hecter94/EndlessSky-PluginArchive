@@ -4,6 +4,7 @@
   * [Requesting Features](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#requesting-features)
 * [Adding your own code](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#adding-your-own-code)
   * [Coding Features & Add-ons](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#coding-features--add-ons)
+    * [Coding Tips](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#coding-tips)
   * [Apply your code to the base plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#apply-your-code-to-the-base-plugin)
   * [Using the scripts](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide#using-the-scripts)
 
@@ -13,54 +14,19 @@
 You can report bugs by opening an issue [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues/new/choose). Then select the "bug report" option. It will automatically create a pattern to help you making the report clearer. I will try my best to answer you the fastest possible and solve the bug.
 
 It will look like something like this:
-```
-<!--⚠️⚠️Do not delete text that are in brackets. It's here to help you and they will disappear when you will post the issue⚠️⚠️-->
+![image](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/ecb3f907-d80b-435d-9a9a-dcccb3962ce6)
 
-**Describe the bug**
-<Describe with the most words possible the bug that occurred.>
-
-**To Reproduce**
-<Write the steps to reproduce the behavior. You can add or delete existing steps.>
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
-<!--Describe what was supposed to happen instead of what happened to you. If not, delete this part.-->
-
-**Screenshots**
-<!--Add at least 1 to 3 screenshots if possible. It will help to understand more your problem. Delete this part if you don't have any screenshots-->
-
-**Game Logs**
-<!--Drag & Drop your endless-sky logs file. It should be in your [endless-sky folder](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins) and it is called "errors.txt".-->
-
-**Additional context**
-<!--You can add additional context if you want. If not, delete this part.-->
-```
+Select `Bug Report` and fill in the form that should look like this:
+![image](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/41d5d13b-1268-478f-9f05-74aa3ad89977)
 
 ## Requesting Features
 You can also request features threw the issues menu on the github repository that you can find [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues/new/choose). Open an issue and select the "Feature Request" option. It will automatically create a pattern to help you improve your request and make it clearer to us.
 
 It will look like something like this:
+![image](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/ecb3f907-d80b-435d-9a9a-dcccb3962ce6)
 
-```
-<!--⚠️⚠️Do not delete text that are in brackets. It's here to help you and they will disappear when you will post the issue⚠️⚠️-->
-
-**Is your feature request related to a problem? Please describe.**
-<!--A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] If your feature is not related to a problem delete this part.-->
-
-**Describe the solution you'd like**
-<!--A clear and concise description of what you want to happen or what you would like to add. You can add code blocks, screenshots or draws to explain yourself.-->
-
-**Describe alternatives you've considered**
-<!--A clear and concise description of any alternative solutions or features you've considered. if there is none, delete this part.-->
-
-**Additional context**
-<!--You can add additional context if you want. If not, delete this part.-->
-
-```
-
+Select `Feature Request` and fill in the form that should look like this:
+![image](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/f2d7244c-f487-4378-879f-d0936f71d3c2)
 
 # Adding your own code
 First thing first, to contribute to the plugin you have three options: either coding your own idea and create a pull request, either create a feature request but not code it or last, helping on opened bug reports or feature requests.
@@ -75,6 +41,8 @@ Note that you can create your own codespace and work on it if you prefer.
 
 **You will find useful links to help you coding faster and better on the [discord server](https://discord.com/invite/tafa8dVH5Q)**
 
+### Coding Tips
+
 Here are some tips to code addons or create your own plugin:
 * Always check the "errors.txt" file in your endless sky directory to find possible coding errors made by you or other contributors.
 
@@ -86,7 +54,59 @@ Here are some tips to code addons or create your own plugin:
 
 * Check the differents projects in the github repositories to know for what we need help or to find some projects that interest you.
 
-* Use the github wiki if there is something you're not sure about.
+* Use the [plugin wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki) as well as the official [plugin creation wiki](https://github.com/endless-sky/endless-sky/wiki#creating-ships-missions-artwork-etc) if there is something you're not sure about.
+
+* If you're adding ships or outfits, make sure that if you made your own model, to add it to the [`source/`](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/tree/main/source) directory. Make sure to use the following pattern for creating files & folders:
+```
+  source/
+  |-- outfit/
+  |   |-- <outfit code name>/
+  |       |-- 3D/ (the 3D models)
+  |       |   |-- <outfit code name>.blend
+  |       |       ...
+  |       |-- GIMP/ (optional, only if you added metal texture to your render)
+  |       |   |-- <outfit code name>.xcf
+  |       |       ...
+  |       |-- rendering/ (the blender renders in PNG format)
+  |       |   |-- raw/ (the render of your blender model without any re-scaling and GIMP modifications)
+  |       |   |   |-- <outfit code name>.png
+  |       |   |       ...
+  |       |   |-- final/ (the render of your blender model with GIMP modifications)
+  |       |   |   |-- <outfit code name>.png
+  |       |   |       ...
+  |       |   |-- sprites/ (the render of your blender model with GIMP modifications and re-scaling for the game)
+  |       |       |-- <outfit code name>.png
+  |       |           ...
+  |       |-- templates/ (optional, only if you use other parts of blender models that are not already in the source/ directory)
+  |           ...
+  |
+  |-- ships/
+      |-- <ship code name>/
+          |-- 3D/ (the 3D models)
+          |   |-- <ship code name>.blend
+          |       ...
+          |-- GIMP/ (optional, only if you added metal texture to your render)
+          |   |-- <ship code name>.xcf
+          |   |-- <ship code name>-thumb.xcf
+          |       ...
+          |-- rendering/ (the blender renders in PNG format)
+          |   |-- raw/ (the render of your blender model without any re-scaling and GIMP modifications)
+          |   |   |-- <ship code name>.png
+          |   |   |-- <ship code name>-thumb.png
+          |   |       ...
+          |   |-- final/ (the render of your blender model with GIMP modifications)
+          |   |   |-- <ship code name>.png
+          |   |   |-- <ship code name>-thumb.png
+          |   |       ...
+          |   |-- sprites/ (the render of your blender model with GIMP modifications and re-scaling for the game)
+          |   |   |-- <ship code name>.png
+          |   |   |-- <ship code name>-thumb.png
+          |   |       ...
+          |-- templates/ (optional, only if you use other parts of blender models that are not already in the source/ directory)
+              ...
+```
+
+_Where <ship code name> is your ship model name without any caps and <outfit code name> is your outfit model name without any caps._
 
 ## Apply your code to the base plugin
-You can simply create a pull request that merge the branch where you created your work (a forked or a local repository of you) to the 'devs' branch. If you've done everything right, I should review the pull request and maybe add your very own code to the plugin.
+You can simply create a new [pull request](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/compare) that merge the branch where you created your work (a forked or a local repository of you) to the 'main' branch. If you've done everything right, I or @lumba527 should review the pull request and maybe add your very own code to the plugin.

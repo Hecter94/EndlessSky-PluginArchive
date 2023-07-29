@@ -10,7 +10,7 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
+# The negative reputation requirement is a placeholder until PR9086 is gets into stable
 mission "Cartography: Quarg Hitchhiker 1"
 	minor
 	name "Quarg Hitch Hiker"
@@ -34,6 +34,7 @@ mission "Cartography: Quarg Hitchhiker 1"
 				random < 20
 		or
 			"reputation: Pirate" > 0
+			"reputation: Pirate" < -50000
 			and
 				or
 					"tribute: Albatross" > 0
@@ -582,6 +583,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 					accept
 
 	on accept
+		"reputation: Independent (Killable)" >?= 10
 		"stored reputation: Quarg" = "reputation: Quarg"
 		"reputation: Quarg" <?= -10
 		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
@@ -607,7 +609,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 		ship "Heliarch Stalker" "Vigilant Sentinel"
 
 	npc accompany save
-		government "Independent"
+		government "Independent (Killable)"
 		personality escort timid plunders harvests
 		ship "Carabao (Quash)" "Halcyon"
 	
@@ -798,6 +800,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 
 	on accept
 		log `I will be accompanying Quash to the system which it has been searching for. I am not sure what we'll find there, but I have a feeling that whatever is there will be unusual.`
+		"reputation: Independent (Killable)" >?= 10
 		"stored reputation: Quarg" = "reputation: Quarg"
 		"reputation: Quarg" <?= -10
 		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
@@ -855,7 +858,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 		dialog `The "system" you've entered is nothing more than an orphaned planet with a ruined shard of a Quarg ring world orbiting it. Could this really be what Quash was searching for?`
 
 	npc accompany save
-		government "Independent"
+		government "Independent (Killable)"
 		personality escort timid plunders harvests
 		ship "Carabao (Quash)" "Halcyon"
 	
