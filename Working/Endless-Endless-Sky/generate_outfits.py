@@ -472,6 +472,8 @@ def create_engines(faction,fileout=''):
         fileout = f'data/{faction.name}/{faction.name} outfits.txt'
     engines_output = open(fileout, "a")
     outfitter_output = open(outfitter_output_file,'a')
+
+    thrust_scaling = 0
     #Searches config file for values and creates variables
     for line in generate_outfits_config: #Creates vars from txt file
         use_seed = False
@@ -484,6 +486,8 @@ def create_engines(faction,fileout=''):
         if ("outfit_seed" in line) and use_seed == True:
             outfit_seed = next(generate_outfits_config)
             random.seed(int(outfit_seed))
+        if ("thrust_scaling" in line):
+            thrust_scaling = next(generate_outfits_config)
     if faction.devmode:
         random.seed(99)
     
@@ -926,8 +930,8 @@ def create_h2h(faction,fileout='',max_outfit_count=4,h2hmin=1):
             h2h_output.write('\tcategory "Hand to Hand"\n')
             h2h_output.write('\tcost ' + str(h2h_cost) + "\n")
             h2h_output.write(f'\tthumbnail "outfit/{h2h_thumb}"\n')
-            h2h_output.write(f'\t"boarding attack" {h2h_atk:.2f}\n')
-            h2h_output.write(f'\t"boarding defense" {h2h_def:.2f}\n')
+            h2h_output.write(f'\t"capture attack" {h2h_atk:.2f}\n')
+            h2h_output.write(f'\t"capture defense" {h2h_def:.2f}\n')
             h2h_output.write(f'\t"unplunderable" 1\n')
             if(h2h_have_tradeoff):
                 h2h_output.write(f'{h2h_tradeoff} {h2h_tradeoff_value}' + "\n")
