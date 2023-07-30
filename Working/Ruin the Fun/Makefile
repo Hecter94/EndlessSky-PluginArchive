@@ -53,7 +53,7 @@ tmp/enabled-plugins.tmp: ../../plugins.txt | tmp
 .PHONY: plugin-update
 plugin-update: tmp/enabled-plugins.tmp tmp/data-dirs.tmp
 	@echo "Inserting enabled plugin list into data sources..."
-	@cat $< | sed "s/^/..\/..\/plugins\//" | sed "s/$$/\/data\//" >> tmp/data-dirs.tmp
+	@cat $< | sed "s/^/..\/..\/plugins\//" | sed "/ruin-the-fun/d" | sed "s/$$/\/data\//" >> tmp/data-dirs.tmp
 	@make update
 
 tmp/re.tmp: | tmp

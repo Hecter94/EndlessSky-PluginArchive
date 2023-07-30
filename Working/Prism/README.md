@@ -1,0 +1,2 @@
+# Prism-Plug-in
+An [Endless Sky](https://github.com/endless-sky/endless-sky) that adds the option to change your ship swizzle (colors on specific parts of your ships) using missions. How far you are in-game will affect what swizzles you can use. At the beginning, you only have to option to choose between Merchant (blue) and Pirate/Independent (Red). See [about.txt](https://github.com/Startingfresher/Prism-Plug-in/blob/main/about.txt) for clues on how to get them all!

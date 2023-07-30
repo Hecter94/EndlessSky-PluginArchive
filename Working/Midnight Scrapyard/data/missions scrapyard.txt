@@ -270,7 +270,7 @@ mission "Scrapyard Boarding A"
 		attributes "korath"
 	destination "Laki Nemparu"
 	to offer
-		has "event: Scrapyard Develops"
+		has "event: Scrapyard Derelicts"
 		random < 50
 	npc kill
 		government "Scrapyard Derelict"
@@ -292,26 +292,27 @@ mission "Scrapyard Boarding A"
 mission "Scrapyard Boarding B"
 	landing
 	invisible
+	deadline 30
 	source
 		attributes "korath"
 	destination "Laki Nemparu"
 	to offer
-		never
-#		has "event: Blight Shadow Infestation"
-#		random < 15
-#	npc kill
-#		government "Scrapyard Derelict"
-#		system
-#			attributes "Scrapyard"
-#		personality waiting derelict mute
-#		fleet "Error Scrap"
-#		conversation
-#			action
-#				"Scrapyard Threat Level" ++
-#				"Scrapyard Boarding B: offered" --
-#			`You've eliminated some of the derelicts, but more are out there waiting to be exploited by Scrappers and Blight Shadows.`
-#	on fail
-#		"Scrapyard Boarding B: offered" --
+		has "event: Scrapyard Develops"
+		not "event: Scrapyard Derelicts"
+		random < 50
+	npc kill
+		government "Scrapyard Derelict"
+		system
+			attributes "Scrapyard"
+		personality waiting derelict mute
+		fleet "Error Scrap"
+		conversation
+			action
+				clear "Scrapyard Boarding B: offered"
+	on fail
+		clear "Scrapyard Boarding B: offered"
+	on complete
+		clear "Scrapyard Boarding B: offered"
 
 mission "Scrapyard Boarding A Clear"
 	landing
@@ -336,6 +337,9 @@ mission "Scrapyard Boarding B Clear"
 		or
 			"Scrapyard Boarding B: offered" > 1
 			"Scrapyard Boarding B: offered" < 0
+			and
+				"Scrapyard Boarding B: offered" > 0
+				has "Scrapyard Boarding B: done"
 	on offer
 		clear "Scrapyard Boarding B: offered"
 		fail

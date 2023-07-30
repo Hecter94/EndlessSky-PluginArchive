@@ -1,0 +1,726 @@
+disable mission
+	"Hai Reveal: Pirate Troubles [3]"
+
+#Edited to consider the fact that you might be in a ship too large to enter as well as consider for the fact that some ship doesn't have cockpit or bridge, neither does all bridge are built equal, heavy warships can and will survive the ambush.
+mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
+	landing
+	name "Scar's Legion"
+	description "Having declined the tribute, the leader of Scar's Legion has challenged you to a fight to the death. Defeat the <npc>, then return to <destination>."
+	source "Scar's Hideout"
+	destination "Hai-home"
+	clearance
+	to offer
+		has "Hai Reveal: Pirate Troubles [2]: offered"
+		not "Hai Reveal: Pirate Troubles [3]: offered"
+		has "event: scar's hideout"
+	on offer
+		set "Hai Reveal: Pirate Troubles [3]: offered"
+		conversation
+			`You've located the Scar's Hideout, a massive asteroid in orbit around a gas giant. As you fly over the asteroid's surface, you spot an open blast door. They must be inviting you inside. It surprises you that a gang of pirates would be capable of creating such a base, as the materials and time needed to make something like this are immense.`
+			# >700 because Deep River is largest at the time iirc.
+			branch shipTooBig
+				or
+					has "flagship model: Claymore Class"
+					has "flagship model: Lucerne Class"
+					has "flagship model: Grose Bochse Class"
+					has "flagship model: Dulle Griet Class"
+					has "flagship model: Ranseur Class"
+					has "flagship model: Spetum Class"
+					has "flagship model: Typ012 Guangzhou"
+					has "flagship model: AP-22 Fusillade"
+					has "flagship model: SC-1 Alcazar"
+
+					has "flagship model: CDB-6K Jupiter"
+					has "flagship model: CDB-12K Saturn"
+					has "flagship model: PCS-4 Castle"
+					has "flagship model: PAS-3 Barbette"
+					has "flagship model: CK80Tp Death Harmonica"
+					has "flagship model: PCS-5 Citadel"
+					has "flagship model: F-VC56 Kaga"
+					has "flagship model: H-BS140 Yamato"
+
+					has "flagship model: FG-10 Exchanger"
+					has "flagship model: SMM-111 Bagger"
+					has "flagship model: EM-28F Wombat"
+					has "flagship model: SV-4450 Sovereign"
+					has "flagship model: CK80T Tlielart"
+					has "flagship model: H-Class Super Container Ship"
+					has "flagship model: K-Class Ultra Container Ship"
+					has "flagship model: Agrunnos"
+					has "flagship model: Fanis Aestre"
+					has "flagship model: AYS-17 Proetida"
+					has "flagship model: AYS-19 Peytoia"
+					has "flagship model: Type-13 Sea Strait"
+
+					has "flagship model: Korsmanath A'awoj"
+					has "flagship model: Augen"
+					has "flagship model: Heron"
+
+					has "flagship model: Athmagr Themaut"
+					has "flagship model: Athmagr Atleath"
+					has "flagship model: Dominium"
+					has "flagship model: Diviso"
+					has "flagship model: Imperium"
+					has "flagship model: Microphylum"
+					has "flagship model: Parvregalimen"
+					has "flagship model: Phylum"
+					has "flagship model: Regalis"
+					has "flagship model: Regio"
+					has "flagship model: Regnum"
+					has "flagship model: Subsectio"
+					has "flagship model: Supravitae"
+			``
+				goto enterAsteroid
+			label shipTooBig
+			`	Your ship happen to be too big to enter so you stopped your ship right outside and consider your action.`
+			choice
+				`	(Attempt to communicate with them via communication device.)`
+				`	(Blow it up.)`
+					to display
+						"armament deterrence" > 10
+					goto destroyTheAsteroid
+			`	Soon enough you managed to connect to them.`
+			`	"Who are you and what do you want?" a voice booms from the comms.`
+			choice
+				`	"I'm <first> <last>, here to negotiate on behalf of the Hai."`
+					goto negotiateOutside
+				`	"I'm <first> <last>, here to take this gang down."`
+			branch intimidationCheck
+				or
+					has "flagship model: Claymore Class"
+					has "flagship model: Lucerne Class"
+					has "flagship model: Grose Bochse Class"
+					has "flagship model: Dulle Griet Class"
+					has "flagship model: Ranseur Class"
+					has "flagship model: Spetum Class"
+					has "flagship model: Typ012 Guangzhou"
+					has "flagship model: AP-22 Fusillade"
+					has "flagship model: SC-1 Alcazar"
+					has "flagship model: PCS-4 Castle"
+					has "flagship model: PAS-3 Barbette"
+					has "flagship model: CK80Tp Death Harmonica"
+					has "flagship model: Agrunnos"
+					has "flagship model: Fanis Aestre"
+					has "flagship model: PCS-5 Citadel"
+					has "flagship model: F-VC56 Kaga"
+					has "flagship model: H-BS140 Yamato"
+					has "flagship model: EM-28F Wombat"
+					has "flagship model: AYS-19 Peytoia"
+
+					has "flagship model: Korsmanath A'awoj"
+			#Presumably they have some sensor or camera to see your ship.
+			`	The voice laughs. "Well too bad, because you're right next to a hornet's nest. Launch, boys!"`
+				goto pirateLaunching
+			label intimidationCheck
+			#Thought about making them do the smart thing but nah, if player is written to be stupid so can they.
+			`	There is some pause before they respond. "You thought you're so big? Launch, boys!"`
+			label pirateLaunching
+			`	You see ships leaving from the asteroid so you immediately fire upon them before they can do anything.`
+			branch intimidationNotEnoughFirepower
+				"armament deterrence" < 22
+			`	Storm of your gunfire managed to disable if not destory all launching ships before they have chance to even aim.`
+			action
+				set "mgf: temp: destroyed scars fleet"
+			choice
+				`	(Their leader is probably killed in the fight, leave.)`
+					flee
+				`	(Blow up their base just to be sure.)`
+					goto destroyTheAsteroid
+			label intimidationNotEnoughFirepower
+			action
+				set "mgf: fight scars fleet"
+				"reputation: Scar's Legion" = -1000
+			`	You managed to take down a few of the leaving ships but not all of them. Now it's a fight.`
+				launch
+
+			label negotiateOutside
+			`	The voice laughs. "Ah, yes. Those squirrels. I take it they've had enough of us plundering their systems. Boys!"`
+			`	"Please, Captain. Come inside and step out of your ship."`
+			choice
+				`	(Comply with the orders.)`
+					goto complyOutside
+					to display
+						or
+							has "ships: Fighter"
+							has "ships: Pocket Light Warship"
+							has "ships: Pocket Medium Warship"
+				`	"No, we'll negotiate from here."`
+			branch negotiationOutsideIntimidationCheck
+				or
+					has "flagship model: Claymore Class"
+					has "flagship model: Lucerne Class"
+					has "flagship model: Grose Bochse Class"
+					has "flagship model: Dulle Griet Class"
+					has "flagship model: Ranseur Class"
+					has "flagship model: Spetum Class"
+					has "flagship model: Typ012 Guangzhou"
+					has "flagship model: AP-22 Fusillade"
+					has "flagship model: SC-1 Alcazar"
+					has "flagship model: PCS-4 Castle"
+					has "flagship model: PAS-3 Barbette"
+					has "flagship model: CK80Tp Death Harmonica"
+					has "flagship model: Agrunnos"
+					has "flagship model: Fanis Aestre"
+					has "flagship model: PCS-5 Citadel"
+					has "flagship model: F-VC56 Kaga"
+					has "flagship model: H-BS140 Yamato"
+					has "flagship model: EM-28F Wombat"
+					has "flagship model: AYS-19 Peytoia"
+
+					has "flagship model: Korsmanath A'awoj"
+
+					"ships: Heavy Warship" > 8
+					"ships: Superheavy" > 2
+			`	"I know you can't do anything with that ship, please come inside."`
+			choice
+				`	(Comply with the orders.)`
+					goto complyOutside
+					to display
+						or
+							has "ships: Fighter"
+							has "ships: Pocket Light Warship"
+							has "ships: Pocket Medium Warship"
+				`	"No."`
+			`	"That's it, go away or eat dust." the communication cuts off.`
+				goto pirateLaunching
+			label negotiationOutsideIntimidationCheck
+			`	"Fine." the voice sounds a little disgruntled.`
+			`	"The Hai ask that you stop attacking their systems." you say.`
+			`	"Perhaps we will stop," the voice pause for a brief moment.`
+			`	"Under one condition. We'd like a one time shipment of various Hai weapons and technology. The shipment should be as big as possible. I've seen the freighters those aliens have. They're massive. Load two or three up with the goods and we'll consider focusing our attention elsewhere."`
+			choice
+				`	"Okay. I'll meet with the Hai and see what they can provide."`
+					goto tributeOutside
+				`	"I'm afraid that I can't allow that."`
+					goto disallowOutside
+			label complyOutside
+			`	You boarded one of the smaller ship you carried on your ship and fly it inside.`
+				goto comply
+			label tributeOutside
+			action
+				set "hr accepted scar's legion tribute"
+			`	"Excellent!" the pirate says, you also hear  cheers from the rest of the pirates in the room. "But make it quick. Wouldn't want to keep us waiting."`
+				flee
+			label disallowOutside
+			action
+				set "mgf: scar legion duel"
+			`	You hear a large crowd of pirates respond with a cacophony of jeers and boos. Suddenly the crowd falls silent. "Well I'm afraid that just won't do."`
+			`	You hear footsteps of a single person from the comms. "Well if we don't get what we want, then we're just going to need to keep on attacking. Which means that your presence here is pretty useless."`
+			`	The sound of footstep stops. "How about a fight? To the death!", you hear the crowd erupts in cheers. "We fight in this system only. Just you and me. You attempt to run, my men hunt you down. How's that sound?" You attempt to respond, but before you can, you hear ship engines roaring in the background "Run."`
+			choice
+				`	(Pre-emptively bombard the base.)`
+					goto slowlyDestroyBase
+				`	(Launch to duel with him.)`
+					launch
+			label destroyTheAsteroid
+			branch spinalDestroy
+				or
+					has "outfit (installed): ExP252 Railcannon"
+					has "outfit (installed): ExP314 Railcannon"
+					has "outfit (installed): Diatonic Apocalypse"
+					has "outfit (installed): MWG-1 Harmonic Cannon"
+					has "outfit (installed): Dragonflame Cannon"
+					has "outfit (installed): Ember Tear"
+			branch overwhelmingFirepower
+				"armament deterrence" > 22
+
+			`	You distance your ship away from the asteroid to avoid blast and debris from you weapons and begin laying down fire upon it.`
+			branch slowlyDestroyBase
+				has "mgf: temp: destroyed scars fleet"
+			`	You see ships leaving from the asteroid and immediately fire upon them before they can do anything.`
+				goto intimidationNotEnoughFirepower
+
+			label slowlyDestroyBase
+			action
+				set "mgf: destoryed scars legion"
+				event "mgf: remove scars legion asteroid"
+				event "mgf: remove scars legion asteroid (cleanup)" 2
+			`	You focused your fire right into the blast door and slowly tear the entire base apart. There's no further response from the pirates.`
+			`	After a while of continuious fire the large asteroid is now reduced to field of dust and debris.`
+				flee
+
+			label overwhelmingFirepower
+			action
+				set "mgf: destoryed scars legion"
+				event "mgf: remove scars legion asteroid"
+				event "mgf: remove scars legion asteroid (cleanup)" 2
+			`	You distance your ship away from the asteroid to avoid blast and debris from you weapons and begin laying down fire upon it. The pirates attempted to respond by sending ships out all but in vain as they get pinned down and destoryed by your overwhelming firepower. After a brief moment the asteroid base is now reduced to a field of debris.`
+				flee
+
+			label spinalDestroy
+			action
+				set "mgf: destoryed scars legion hideout"
+				event "mgf: remove scars legion asteroid"
+				event "mgf: remove scars legion asteroid (cleanup)" 2
+			`	The asteroid is sure big but not enough to survive your spinal gun. You distanced your ship away from the asteroid enough to not take any damage from the blast and debris and fires your spinal cannon upon the asteroid causing a massive explosion and leave only cloud of dust where the astroid once was.`
+			`	Scar's Legion hideout is no more, you can now return to Hai space.`
+				flee
+			label enterAsteroid
+			`	Upon entering the blast door, it closes behind you, leaving you in complete dark. Suddenly, floodlights flash on all around your ship. The brightness of the lights prevents you from seeing anyone beyond them, but you suspect that there are a number of weapons pointed at your ship right now.`
+			`	You checked your tactical scanner and it confirms that there are hundreds of armed pirates behind the lights.`
+				to display
+					has "flagship attribute: tactical scan power"
+			`	"Who are you and what do you want?" a voice booms from a loud speaker. You press a button to activate your ship's external speakers.`
+			choice
+				`	"I'm <first> <last>, here to negotiate on behalf of the Hai."`
+					goto negotiate
+				`	"I'm <first> <last>, here to take this gang down."`
+			`	The voice laughs. "Well too bad, because you're right in the middle of a hornet's nest. Fire, boys!"`
+				goto die
+			
+			label negotiate
+			`	The voice laughs. "Ah, yes. Those squirrels. I take it they've had enough of us plundering their systems. Boys!"`
+			`	The floodlights turn off, revealing a large room with what must be hundreds of pirates with guns of various sizes trained on your ship. One wrong move and you're toast. "Please, Captain. Step out of your ship."`
+			choice
+				`	(Comply with the orders.)`
+					goto comply
+				`	(Attempt to escape.)`
+			`	You activate your ship's engines to escape. The floodlights suddenly reactivate.`
+			
+			label die
+			#Or not really,
+			#If you bring in proper ship for the job you now have an option to screw them up.
+			#I'm also overlooking the fact that you stupidly don't have shields on *in the middle of a known active enemy base*.
+
+			#High-end warships and ship designed for high-risk works
+			branch hitBridgeNoDamage
+				or
+					has "flagship model: SRC-41C Curie"
+					has "flagship model: Eleonorae"
+					has "flagship model: Aplomado"
+					has "flagship model: EM-8A Armadillo"
+					has "flagship model: Culverin Class"
+					has "flagship model: L-VC28 Zuikaku"
+					has "flagship model: E-VC14 Zuiho"
+					has "flagship model: Cruiser"
+					has "flagship model: Carrier"
+					has "flagship model: AP-7 Sentinel"
+					has "flagship model: Kestrel"
+					has "flagship model: Marauder Falcon"
+					has "flagship model: Marauder Leviathan"
+
+					has "flagship model: Shield Beetle"
+					has "flagship model: Solifuge"
+
+					has "flagship model: Albatross"
+					has "flagship model: Gull"
+					has "flagship model: Ibis"
+					has "flagship model: Pelican"
+					has "flagship model: Peregrine"
+
+					has "flagship model: Arch-Carrack"
+					has "flagship model: Charm-Shallop"
+					has "flagship model: Echo-Galleon"
+					has "flagship model: 'nra'ret"
+					has "flagship model: Kas'lor Ik 582"
+					has "flagship model: Lor'kas Ik 577"
+					has "flagship model: Lor'nag Ik 590"
+					has "flagship model: Ra'at Ik 621"
+					has "flagship model: Ra'gru Ik 618"
+					has "flagship model: Kasichara A'awoj"
+
+					has "flagship model: Derecho"
+					has "flagship model: Hurricane"
+					has "flagship model: Tempest"
+					has "flagship model: Summer Leaf"
+					has "flagship model: Strong Wind"
+
+					has "flagship model: Heliarch Breacher"
+					has "flagship model: Heliarch Hunter"
+					has "flagship model: Heliarch Interdictor"
+					has "flagship model: Heliarch Judicator"
+					has "flagship model: Heliarch Neutralizer"
+					has "flagship model: Heliarch Punisher"
+
+					has "flagship model: Quarg Skylark"
+					has "flagship model: Quarg Wardragon"
+					has "flagship model: Pug Arfecta"
+
+					#Some plugin support, might not be complete.
+					has "flagship model: Cosvre-Class Battlecruiser"
+					has "flagship model: MS06 Dreadnought"
+					has "flagship model: Starcadia"
+					has "flagship model: Executive Guard"
+					has "flagship model: Shield Fortress"
+					has "flagship model: Strategos"
+					has "flagship model: Thunder Maker"
+					has "flagship model: Tornado"
+					has "flagship model: Tsunami"
+					has "flagship model: Armor Beetle"
+					has "flagship model: Sword Scorpion"
+					has "flagship model: Tsunami"
+					has "flagship model: Quarg Hydra"
+					has "flagship model: Quarg Fafnir"
+					has "flagship model: Quarg Gtuhanai"
+					has "flagship model: Quarg Psuchawrl"
+					has "flagship model: Quarg Tarasque"
+					has "flagship model: Quarg Tiamat"
+					has "flagship model: Quarg Zilant"
+					has "flagship model: Pug Lzdihsek"
+					and
+						has "flagship model: Apoxys"
+						has "apoxys lv.20"
+						
+			#Civilian warships and ships designed to survive rough terrians.
+			branch hitBridgeSurvive
+				or
+					has "flagship model: AKH-8 Mlitgante"
+					has "flagship model: SV80-n Catirfel"
+					has "flagship model: SV40-n Navilel"
+					has "flagship model: Frigate"
+					has "flagship model: Dreadnought"
+					has "flagship model: Vanguard"
+					has "flagship model: Protector"
+					has "flagship model: Leviathan"
+					has "flagship model: Marauder Leviathan"
+					has "flagship model: Falcon"
+					has "flagship model: Marauder Falcon"
+					has "flagship model: Bactrian"
+					has "flagship model: Saryd Sojourner"
+					has "flagship model: Saryd Traveler"
+					has "flagship model: Arach Spindle"
+					has "flagship model: Arach Hulk"
+
+					has "flagship model: Newmaker"
+					has "flagship model: Matlea-Class Light Cruiser"
+					has "flagship model: Ghasrel-Class Fleet Carrier"
+					has "flagship model: Oxilre-Class Freighter"
+					has "flagship model: Hipparion"
+					has "flagship model: Liberator"
+					has "flagship model: Vindicator"
+					has "flagship model: Plexus"
+					has "flagship model: Marauder Protector"
+					has "flagship model: Marauder Vanguard"
+					has "flagship model: Saryd Trailblazer"
+					has "flagship model: Kriegsmacher"
+			#Can't hit the cockpit if it doesn't exist.
+			branch noBridgenoCockpit
+				or
+					has "flagship model: PF-80 Intrepid"
+					has "flagship model: PT-60 Gallant"
+					has "flagship model: PL-50 Impavid"
+					has "flagship model: TMS-64 Kernstoff"
+					has "flagship model: FG-7 Conveyor"
+					has "flagship model: FG-6 Startrain"
+					has "flagship model: FG-5 Bluewhale"
+					has "flagship model: SBS-12 Ossun"
+					has "flagship model: FTV-33 Acareus"
+					has "flagship model: RF-03 Gerlache"
+					has "flagship model: CH-6 Carrack"
+					has "flagship model: Typ057 Lanzhou"
+					has "flagship model: Typ064 Xuchang"
+					has "flagship model: KM50T Stetnel"
+					has "flagship model: PAS-2 Bulwark"
+					has "flagship model: GKS-48 Zummenstoss"
+					has "flagship model: E-FD23 Kanran"
+					has "flagship model: HMM-190 Kotroger"
+					has "flagship model: Nasprite"
+					has "flagship model: CK50T Stahbar"
+					has "flagship model: CK40T Treibard"
+					has "flagship model: CS-24 Garrison"
+
+					has "flagship model: Model 512"
+					has "flagship model: Model 256"
+					has "flagship model: Model 128"
+					has "flagship model: Model 64"
+					has "flagship model: Model 32"
+					has "flagship model: Model 16"
+					has "flagship model: Model 8"
+					has "flagship model: Kar Ik Vot 349"
+					has "flagship model: Met Par Tek 53"
+					has "flagship model: Tek Far 109"
+					has "flagship model: Tek Far 71 - Lek"
+					has "flagship model: Tek Far 78 - Osk"
+					has "flagship model: Tubfalet"
+					has "flagship model: Palavret"
+					has "flagship model: Rano'erek"
+
+					has "flagship model: Prototype-D"
+					has "flagship model: Midnight Predator"
+					has "flagship model: Dire Omen"
+					has "flagship model: Veliante'exis"
+					has "flagship model: Veliante'ixis"
+					has "flagship model: Athmagr Cilhaut"
+					has "flagship model: Athmagr Hylthau"
+					has "flagship model: Athmagr Vulraht"
+					has "flagship model: Athmagr Guelhat"
+					has "flagship model: Tribus"
+					has "flagship model: Subfamilia"
+					has "flagship model: Subclassis"
+					has "flagship model: Ordo"
+					has "flagship model: Nixus"
+					has "flagship model: Legio"
+					has "flagship model: Infracohors"
+					has "flagship model: Genus"
+					has "flagship model: Familia"
+			#Have cockpit/bridge-like features but doesn't function as one or not critical to control of the ship itself.
+			branch fakeBridge
+				or
+					has "flagship model: TS-CH0 Kratzbal"
+					#Passenger view dome
+					has "flagship model: TS-650 Herrenbal"
+					#Passenger view dome
+					has "flagship model: TS-1L260 Mieusbar"
+					#Passenger view dome
+					has "flagship model: CSE-6 Steward" #fighter command bridge
+					has "flagship model: DSSN-C40 Dulumi" #Passenger view deck
+				
+			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying straight at your cockpit. You die instantly as the rockets impact the glass in front of you.`
+				die
+
+			label hitBridgeNoDamage
+			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying straight at your bridge. The impact did virtually no damage to your ship's heavily armoured bridge.`
+				goto surviveRocketChoice
+
+			label hitBridgeSurvive
+			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying straight at your bridge. Thankfully the ship got armoured shutter system which closed immediately as it detects incoming projectiles blocked the rockets keeping you alive. Screens display camera feed from outside.`
+				goto surviveRocketChoice
+
+			label noBridgenoCockpit
+			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying at random spot on your ship trying to find the non-existient cockpit. It did some non-critical damage.`
+				goto surviveRocketChoice
+
+			label fakeBridge
+			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying at observation deck they perhaps presumed it was a cockpit. It did some non-critical damage and caused no casualty on your side.`
+				goto surviveRocketChoice
+
+			label surviveRocketChoice
+			choice
+				`	(Escape.)`
+					goto escapeCheck
+				`	(Fire back.)`
+					to display
+						"armament deterrence" > 0
+				`	(Crash into the pirates.)`
+					goto crashIn
+			action
+				set "mgf: wiped out scars legion from base"
+				set "hr defeated scar's legion"
+				"reputation: Scar's Legion" = -1000
+			`	You begin firing back at them and causing several explosion and the gunfire died down as fast as it came as the pirates scatter for cover, if not getting blown up by starship-grade weapon.`
+			`	After you made sure your guns swept through every corner of the room and blast away any possible cover, you blow open the blast door and leave a ruin of a base behind.`
+				flee
+
+			label escapeCheck
+			branch escapeCrashThrough
+				#attribute are multiplied by 1000 
+				or
+					"flagship attribute: mass" > 1000 * 1000
+					"flagship attribute: hull" > 5000 * 1000
+			branch escapePirateAlive
+				or
+					not "mgf: killed a lot of scars pirates"
+					not "mgf: wiped out scars legion from base"
+			branch escapeCheckFail
+				"armament deterrence" < 0
+			`	You aim your guns at the blast door and blow it open amist the gunfire from the pirates. Once the hole is large enough you fly out and escape the ambush.`
+				flee
+			
+			label escapeCrashThrough
+			`	You turn your ship around as fast as you can and ramp your engines to maximum. With the sheer mass of your ship you managed to punch straight through the blast door.`
+				flee
+
+			label escapeCheckFail
+			`	You attempted to escape but lacks the armament nor sheer weight to push through the blast door. The continuous fire from the gang eventually wither down your ship and destroys it.`
+				die
+
+			label crashIn
+			action
+				set "mgf: killed some scars pirates"
+				set "hr defeated scar's legion"
+			`	You drive your ship straight into the platforms in front of you and plow through the rest of the area. Gunfire dies down as the rest of the pirate scatter for cover.`
+			choice
+				`	(Escape.)`
+					goto escapeCheck
+				`	(Keep dragging your ship around.)`
+			action
+				set "mgf: killed a lot of scars pirates"
+				"reputation: Scar's Legion" = -1000
+			`	You keep dragging your ship around smashing anything that isn't rock-solid and fly into everything that isn't a crate of bomb until you hit some metal control box that causes the blast door to reopen. You escaped from the kill pit with minor damage to your ship and leave whoever survived that to rethink before inviting someone again.`
+				flee
+
+			label comply
+			`	You step out of your ship, and a tall man with a scar across his cheek steps forward from the crowd of pirates. Presumably, it's the eponymous leader of the gang.`
+			choice
+				`	"The Hai ask that you stop attacking their systems."`
+					goto negotiations
+				`	"You must be Scar."`
+			`	"No. Scar is long dead," the leader says.`
+			choice
+				`	"Oh, so does that make you Scab?"`
+				`	"The Hai ask that you stop attacking their systems."`
+					goto negotiations
+			`	The leader grimaces. "I'll cut your tongue out if you don't watch your mouth."`
+			`	You take a step back. "The Hai ask that you stop attacking their systems," you say, attempting not to get shanked.`
+			
+			label negotiations
+			`	"Perhaps we will stop," the leader says with a smile. "Under one condition. We'd like a one time shipment of various Hai weapons and technology. The shipment should be as big as possible. I've seen the freighters those aliens have. They're massive. Load two or three up with the goods and we'll consider focusing our attention elsewhere."`
+			choice
+				`	"Okay. I'll meet with the Hai and see what they can provide."`
+					goto tribute
+				`	"I'm afraid that I can't allow that."`
+					goto disallow
+			label disallow
+			action
+				set "mgf: scar legion duel"
+			`	The crowd of pirates respond with a cacophony of jeers and boos. The leader raises his fist in the air, and the crowd falls silent. "Well I'm afraid that just won't do."`
+			`	The leader paces back and forth in silence for a moment. "Well if we don't get what we want, then we're just going to need to keep on attacking. Which means that your presence here is pretty useless."`
+			`	The leader turns to the crowd. "How about a fight? To the death!" The crowd erupts in cheers. The leader turns back to you. "We fight in this system only. Just you and me. You attempt to run, my men hunt you down. How's that sound?" You attempt to respond, but before you can, the leader pulls his gun and aims it at you. "Run."`
+				launch
+			
+			label tribute
+			action
+				set "hr accepted scar's legion tribute"
+			`	"Excellent!" the pirate says, which is met with cheers from the rest of the pirates in the room. "But make it quick. Wouldn't want to keep us waiting." The blast doors reopen, and you return to your ship to leave immediately.`
+				flee
+	
+	on decline
+		set "Hai Reveal: Pirate Troubles [3]: declined"
+		clear "mgf: temp: destroyed scars fleet"
+		
+	on accept
+		event "battle against scar's legion"
+		clear "mgf: temp: destroyed scars fleet"
+	
+	npc kill
+		to spawn
+			has "mgf: scar legion duel"
+		government "Scar's Legion (Killable)"
+		personality nemesis
+		ship "Leviathan (Hai Weapons)" "Keloid"
+		dialog "You've defeated the leader of Scar's Legion. The various spectators to the fight aren't attacking you, but it may only be a matter of time before they decide to turn their guns on you for killing their leader. Better head to <planet> before that happens."
+	
+	npc
+		to spawn
+			has "mgf: scar legion duel"
+		government "Scar's Legion"
+		personality nemesis
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates" 4
+
+	npc kill
+		to spawn
+			has "mgf: fight scars fleet"
+		government "Scar's Legion"
+		personality nemesis
+		#fleet "Large Northern Pirates" 4
+		fleet
+			names "pirates"
+			variant
+				"Firebird"
+				"Firebird (Plasma)"
+				"Leviathan (Heavy)"
+				"Leviathan (Laser)"
+				"Corvette (Missile)"
+	npc kill
+		to spawn
+			has "mgf: fight scars fleet"
+		government "Scar's Legion"
+		personality nemesis
+		ship "Leviathan (Hai Weapons)" "Keloid"
+		dialog "You've defeated the leader of Scar's Legion leader, it may only be a matter of time before the other fleets return. Better head to <planet> before that happens."
+
+	on enter
+	on enter
+		"reputation: Scar's Legion" = -1000
+	
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+		
+	on complete
+		set "Hai Reveal: Pirate Troubles [3]: done"
+		set "hr defeated scar's legion"
+		event "battle against scar's legion over"
+
+#game will crash if planet is suddenly removed and replaced
+event "mgf: remove scars legion asteroid"
+	planet "Scar's Hideout"
+		add attributes "requires: unlandable"
+	system "Danoa"
+		remove object
+			sprite planet/gas6
+			distance 2069.42
+			period 3240.9
+			remove object
+				sprite planet/lava1-b
+				distance 293
+				period 11.3672
+			remove object
+				sprite planet/rock0-b
+				distance 440
+				period 20.9186
+			remove object
+				sprite planet/lava2-b
+				distance 607
+				period 33.895
+			remove object "Scar's Hideout"
+				sprite "planet/asteroid base"
+				distance 809
+				period 52.153
+	system "Danoa"
+		add object
+			sprite planet/gas6
+			distance 2069.42
+			period 3240.9
+			object
+				sprite planet/lava1-b
+				distance 293
+				period 11.3672
+			object
+				sprite planet/rock0-b
+				distance 440
+				period 20.9186
+			object
+				sprite planet/lava2-b
+				distance 607
+				period 33.895
+			object "Scar's Hideout"
+				sprite "planet/mgf destroyed asteroid base"
+				distance 809
+				period 52.153
+
+event "mgf: remove scars legion asteroid (cleanup)"
+	planet "Scar's Hideout"
+		add attributes "requires: unlandable"
+	system "Danoa"
+		remove object
+			sprite planet/gas6
+			distance 2069.42
+			period 3240.9
+			remove object
+				sprite planet/lava1-b
+				distance 293
+				period 11.3672
+			remove object
+				sprite planet/rock0-b
+				distance 440
+				period 20.9186
+			remove object
+				sprite planet/lava2-b
+				distance 607
+				period 33.895
+			remove object "Scar's Hideout"
+				sprite "planet/mgf destroyed asteroid base"
+				distance 809
+				period 52.153
+	system "Danoa"
+		add object
+			sprite planet/gas6
+			distance 2069.42
+			period 3240.9
+			object
+				sprite planet/lava1-b
+				distance 293
+				period 11.3672
+			object
+				sprite planet/rock0-b
+				distance 440
+				period 20.9186
+			object
+				sprite planet/lava2-b
+				distance 607
+				period 33.895
+			object
+				sprite "planet/mgf destroyed asteroid base"
+				distance 809
+				period 52.153

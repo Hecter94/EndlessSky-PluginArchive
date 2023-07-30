@@ -76,9 +76,13 @@ ship "Black Manta"
 		"X-Skirmish Computer" 2
 		"Drak Reproaching Device" 4
 		"Empire Nuke Fabricator" 2
+		"Ion Plasma Thrower" 3
 		
 	gun 0 -105.5 "Caltalytic Tear"
 		under
+	gun 0 -110 "Ion Plasma Thrower"
+	gun 3 -110 "Ion Plasma Thrower"
+	gun -3 -110 "Ion Plasma Thrower"
 	gun -4.5 -94.5 "Dragonflame Cannon (Empire)"
 		under
 	gun 4.5 -94.5 "Prototype Fusion Cannon (Empire)"
@@ -136,7 +140,7 @@ outfit "Empire Particle Turret (Augmented)"
 	weapon
 		sprite "projectile/empire particle beam"
 		"hardpoint sprite" "hardpoint/empire particle turret"
-		sound particle
+		sound acuit
 		"hit effect" "empire particle impact" 3
 		"inaccuracy" 0.2
 		"velocity" 35
@@ -198,6 +202,77 @@ outfit "Empire Nuke Fabricator"
 	description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
 	description "	[Nuclear missiles are a one-shot weapon: each missile occupies a gun slot, and after it is fired, the slot it was in is left empty.]"
 	
+outfit "Ion Plasma Thrower"
+	category "Secondary Weapons"
+	cost 190000
+	thumbnail "outfit/empire flamethrower"
+	"mass" 9
+	"outfit space" -9
+	"weapon capacity" -9
+	"gun ports" -1
+	weapon
+		sprite "effect/explosion/empire medium"
+			"frame rate" 60
+			"no repeat"
+		sound "flamethrower"
+		icon "icon/flamethrower empire"
+		"submunition" "Ion Plasma Thrower Projectile"
+		"inaccuracy" 12
+		"velocity" 9
+		"lifetime" 4
+		"reload" 1
+		"firing energy" .1
+		"firing fuel" .25
+		"firing heat" 4
+		"damage dropoff" 0 198
+		"dropoff modifier" .5
+		"shield damage" .8
+		"hull damage" .7
+		"heat damage" 370
+		"ion damage" 19
+	description "A crude but impressive-looking weapon, the Flamethrower ignites your hyperspace fuel and directs a stream of it towards your adversaries. The damage it does is relatively minor, but it can be useful for causing a target that is already operating near its thermal capacity to overheat, temporarily taking it out of the fight."
+
+outfit "Ion Plasma Thrower Projectile"
+	weapon
+		sprite "effect/explosion/empire small"
+			"frame rate" 17
+			"random start frame"
+		"hit effect" "flamethrower empire hit"
+		"die effect" "flamethrower empire die"
+		"inaccuracy" 20
+		"lifetime" 26
+		"random lifetime" 8
+		"damage dropoff" 0 198
+		"dropoff modifier" .5
+		"shield damage" .8
+		"hull damage" .7
+		"heat damage" 370
+		"ion damage" 19
+
+effect "flamethrower empire die"
+	sprite "effect/explosion/empire medium"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 24
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" .4
+	"velocity scale" .4
+
+effect "flamethrower empire hit"
+	sprite "effect/explosion/empire huge"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 28
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 3
+	"random velocity" .6
+	"velocity scale" .4
+	
 outfit "Drak Reproaching Device"
 	category Turrets
 	cost 77777777
@@ -206,12 +281,12 @@ outfit "Drak Reproaching Device"
 	"outfit space" -15
 	"turret mounts" -1
 	weapon
-		sound acuit
 		"hit effect" "empire leak" 3
 		"velocity" 77777777
 		"lifetime" 1
 		"reload"
 		"turret turn" 2.
+		"ion damage" 2.4
 		"firing energy" 15
 		"firing heat" 10
 		"hit force" -285
