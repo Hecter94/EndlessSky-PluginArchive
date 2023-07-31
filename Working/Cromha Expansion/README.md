@@ -32,7 +32,7 @@ Adds a new civilization to the Korath Space (now named the '[Empire Space](https
 * The storyline that the plugin adds is made so it is the most similar possible to the vanilla one.
 * Add new outfits and ships from different governments.
 * Expands upon the existing map for exploration (New Systems in the north of the galaxy and near the Deep Space).
-* Adds a new galaxy where there is Sheragis but it is still in work.
+* Adds a new galaxy where there is Sheragi is but it is still in work.
 
 # Contributing
 

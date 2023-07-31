@@ -974,6 +974,13 @@ trade
 			"kanthal"
 			"kovar"
 			"chromel"
+			"silicon carbide"
+			#usable byproducts excl. ones that already have their own export.
+	commodity "Multi-Metal Smelter Solid Byproduct"
+			"magnesium chloride"
+			"cadmium"
+	commodity "Multi-Metal Smelter Gas Byproduct"
+			"carbon dioxide"
 
 mission "MGF: EB-1A Forge Export [0]"
 	name "Export to <planet>"
@@ -1190,6 +1197,26 @@ mission "MGF: EB-1A Forge Large Export [5]"
 		payment 4500
 		dialog phrase "generic cargo delivery payment"
 
+mission "MGF: EB-1A Forge Large Export [6]"
+	name "Export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Multi-Metal Smelter Solid Byproduct" 500 1500 .7
+	to offer
+		random < 60
+	source "EB-1A Forge Station"
+	destination
+		distance 3 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes factory
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic cargo delivery payment"
+
 mission "MGF: EB-1A Forge Large Bulk Export [0]"
 	name "Export to <planet>"
 	job
@@ -1202,7 +1229,7 @@ mission "MGF: EB-1A Forge Large Bulk Export [0]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1222,7 +1249,7 @@ mission "MGF: EB-1A Forge Large Bulk Export [1]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1242,7 +1269,7 @@ mission "MGF: EB-1A Forge Large Bulk Export [2]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1262,7 +1289,7 @@ mission "MGF: EB-1A Forge Large Bulk Export [3]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1282,7 +1309,7 @@ mission "MGF: EB-1A Forge Large Bulk Export [4]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1302,7 +1329,7 @@ mission "MGF: EB-1A Forge Huge Export [0]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1322,7 +1349,7 @@ mission "MGF: EB-1A Forge Huge Export [1]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1342,7 +1369,7 @@ mission "MGF: EB-1A Forge Huge Export [2]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1362,7 +1389,7 @@ mission "MGF: EB-1A Forge Huge Export [3]"
 	destination
 		distance 3 10
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes factory
+		attributes factory shipyard
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
@@ -1486,14 +1513,47 @@ mission "MGF: EB-1A Forge-Canaveral Huge Shipment [1]"
 		payment 19000
 		dialog phrase "generic cargo delivery payment"
 
-#TODO: hydrogen, nitrogen, oxygen import
+mission "MGF: EB-1A Forge-Geminus Huge Shipment [0]"
+	name "Shipment to <planet>"
+	job
+	repeat
+	description "Ship <cargo> to <destination>, a major navy shipyard. Payment is <payment>."
+	cargo "Refined Metal" 5000 20000 .7
+	to offer
+		random < 50
+		#not "event: war begins"
+		#filtering for shipyard attribute at destination might be enough so if other plugin or vanilla readd shipyard to it the job will be offered again.
+	source "EB-1A Forge Station"
+	destination
+		planet "Geminus"
+		attributes shipyard
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 19000
+		dialog phrase "generic cargo delivery payment"
+
+#TODO: nitrogen, oxygen import
+
+trade
+	#Some of these may overlaps but it could simply be the case of how much details the shipper bothered to give you.
+	commodity "coke types"
+		"needle coke"
+		"honeycomb coke"
+		"sponge coke"
+		"shot coke"
+		"anode-grade coke"
+		"fuel-grade coke"
+		"petcoke"
 
 mission "MGF: EB-1A Forge Coke Import [0]"
 	name "Large dry bulk delivery to <planet>"
 	job
 	repeat
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo "coke" 500 2000 
+	cargo "coke types" 500 2000 
 	to offer
 		random < 60
 		"cargo space" > 500
@@ -1506,7 +1566,7 @@ mission "MGF: EB-1A Forge Coke Import [0]"
 			has "ship model: SV40-n Navilel"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes mining
+		attributes mining oil
 	destination
 		planet "EB-1A Forge Station"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
@@ -1522,7 +1582,7 @@ mission "MGF: EB-1A Forge Coke Import [1]"
 	job
 	repeat
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo "coke" 500 2000 
+	cargo "coke types" 500 2000 
 	to offer
 		random < 60
 		"cargo space" > 500
@@ -1535,7 +1595,7 @@ mission "MGF: EB-1A Forge Coke Import [1]"
 			has "ship model: SV40-n Navilel"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes mining
+		attributes mining oil
 	destination
 		planet "EB-1A Forge Station"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
@@ -1551,7 +1611,7 @@ mission "MGF: EB-1A Forge Coke Import [2]"
 	job
 	repeat
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo "coke" 500 2000 
+	cargo "coke types" 500 2000 
 	to offer
 		random < 50
 		"cargo space" > 500
@@ -1564,7 +1624,7 @@ mission "MGF: EB-1A Forge Coke Import [2]"
 			has "ship model: SV40-n Navilel"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes mining
+		attributes mining oil
 	destination
 		planet "EB-1A Forge Station"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
@@ -1580,7 +1640,7 @@ mission "MGF: EB-1A Forge Coke Import [3]"
 	job
 	repeat
 	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo "coke" 500 2000 
+	cargo "coke types" 500 2000 
 	to offer
 		random < 50
 		"cargo space" > 500
@@ -1593,7 +1653,7 @@ mission "MGF: EB-1A Forge Coke Import [3]"
 			has "ship model: SV40-n Navilel"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
-		attributes mining
+		attributes mining oil
 	destination
 		planet "EB-1A Forge Station"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
@@ -1604,6 +1664,462 @@ mission "MGF: EB-1A Forge Coke Import [3]"
 		payment 5000
 		dialog phrase "generic cargo delivery payment"
 
+mission "MGF: EB-1A Forge Coke Import [4]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "coke types" 1000 2000 
+	to offer
+		random < 80
+		"cargo space" > 750
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "oil refinery"
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Rush Coke Import [0]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "coke types" 500 2000 
+	to offer
+		random < 60
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes mining oil "oil refinery"
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Rush Coke Import [1]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "coke types" 500 2000 
+	to offer
+		random < 60
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes mining oil "oil refinery"
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Rush Coke Import [2]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "coke types" 500 2000 
+	to offer
+		random < 40
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes mining oil "oil refinery"
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9500
+		dialog phrase "generic cargo delivery payment"
+
+#Todo: require special moisture-removal freighter?
+mission "MGF: EB-1A Forge Quicklime Import [0]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "quicklime" 500 2000 
+	to offer
+		random < 80
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "limestone mining" 
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Quicklime Import [1]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "quicklime" 500 2000 
+	to offer
+		random < 80
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "limestone mining" 
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Quicklime Import [2]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "quicklime" 500 2000 
+	to offer
+		random < 60
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "limestone mining" 
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Quicklime Import [3]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "quicklime" 500 2000 
+	to offer
+		random < 60
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "limestone mining" 
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Quicklime Import [4]"
+	name "Large dry bulk delivery to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "quicklime" 500 2000 
+	to offer
+		random < 60
+		"cargo space" > 500
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "limestone mining" 
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8700
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Gas Import (Hydrogen 1)"
+	name "Gas Transport to <planet>"
+	description "4000 units of Liquid Hydrogen along with <cargo> to confirm the batch is required to be shipped to <destination>. Payment is <payment>."
+	job
+	repeat
+	cargo "paper works" 1
+	to offer
+		random < 50
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "oil"
+	destination
+		planet "EB-1A Forge Station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		distance 3 20
+	on offer
+		require "M-type 1k Gas Tank" 2
+	to accept
+		"outfit (flagship installed): M-type 1k Gas Tank" >= 2 + ( "outfit (installed): Liquid Natural Gas" / 2000 ) + ( "outfit (installed): Liquid Ethane" / 2000 ) + ( "outfit (installed): Liquid Hydrogen" / 2000 )
+	on accept
+		outfit "Liquid Hydrogen" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Liquid Hydrogen" -4000
+	on complete
+		outfit "Liquid Hydrogen" -4000
+		dialog "You were directed to a special dock for transferring liquid gas and begin the discharging process. <payment> is transferred into your account after it finishes."
+		payment 1250000 17000
+
+trade
+	commodity "Slag Types"
+		"ferrous slag"
+		"slow cooled slag"
+		"quenched slag"
+		"non-ferrous slag"
+
+mission "MGF: EB-1A Forge Slag Export [0]"
+	name "Large slag export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Slag Types" 1000 2000 
+	to offer
+		random < 80
+		"cargo space" > 800
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+
+			has "ship model: FAd36 Flint"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "EB-1A Forge Station"
+	destination
+		attributes "medium factory" "large factory"
+		attributes "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: EB-1A Forge Slag Export [1]"
+	name "Large slag export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Slag Types" 1000 2000 
+	to offer
+		random < 60
+		"cargo space" > 800
+		or
+			has "flagship attributes: bulk bay"
+			has "ship model: CDB-6K Jupiter"
+			has "ship model: CDB-12K Saturn"
+			has "ship model: Bulk Freighter"
+			has "ship model: SV80-n Catirfel"
+			has "ship model: SV40-n Navilel"
+
+			has "ship model: FAd36 Flint"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "EB-1A Forge Station"
+	destination
+		attributes "medium factory" "large factory"
+		attributes "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic cargo delivery payment"
+
+phrase "mgf: unload chemical station"
+	word
+		`You dock at a designated industrial unloading section and discharge the chemical. Payment of <payment> is transferred into your account.`
+
+mission "MGF: EB-1A Forge Chem Import (Hydrochloric 1)"
+	name "Chemical Transport to <planet>"
+	description "2000 units of Hydrochloric Acid along with <cargo> to confirm the validity is required to be shipped to <destination>. Payment is <payment>. To accept this job you need flagship capable of carrying highly corrosive chemical."
+	job
+	repeat
+	#So Multiplier works.
+	cargo "paper works" 1
+	to offer
+		random < 60
+		has "outfit (flagship installed): U-type 1k Chemical Tank"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "medium factory" "large factory"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "EB-1A Forge Station"
+	to accept
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
+	on accept
+		outfit "Hydrochloric Acid" 2000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Hydrochloric Acid" -2000
+	on complete
+		outfit "Hydrochloric Acid" -2000
+		dialog phrase "mgf: unload chemical station"
+		payment 500000 12000
+
+mission "MGF: EB-1A Forge Chem Import (Hydrochloric 2)"
+	name "Chemical Transport to <planet>"
+	description "2000 units of Hydrochloric Acid along with <cargo> to confirm the validity is required to be shipped to <destination>. Payment is <payment>. To accept this job you need flagship capable of carrying highly corrosive chemical."
+	job
+	repeat
+	#So Multiplier works.
+	cargo "paper works" 1
+	to offer
+		random < 50
+		has "outfit (flagship installed): U-type 1k Chemical Tank"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "medium factory" "large factory"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "EB-1A Forge Station"
+	to accept
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
+	on accept
+		outfit "Hydrochloric Acid" 2000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Hydrochloric Acid" -2000
+	on complete
+		outfit "Hydrochloric Acid" -2000
+		dialog phrase "mgf: unload chemical station"
+		payment 500000 12000
+
+mission "MGF: EB-1A Forge Chem Import (Sulfuric 1)"
+	name "Chemical Transport to <planet>"
+	description "2000 units of Sulfuric Acid along with <cargo> to confirm the validity is required to be shipped to <destination>. Payment is <payment>. To accept this job you need flagship capable of carrying highly corrosive chemical."
+	job
+	repeat
+	#So Multiplier works.
+	cargo "paper works" 1
+	to offer
+		random < 60
+		has "outfit (flagship installed): U-type 1k Chemical Tank"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "medium factory" "large factory"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "EB-1A Forge Station"
+	to accept
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
+	on accept
+		outfit "Sulfuric Acid" 2000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Sulfuric Acid" -2000
+	on complete
+		outfit "Sulfuric Acid" -2000
+		dialog phrase "mgf: unload chemical station"
+		payment 500000 11000
 #============================Dry Bulk (requires bulk carrier)
 		
 trade
@@ -7333,6 +7849,77 @@ mission "MGF: Rush Oil Transport (Kerosene 1)"
 		dialog phrase "mgf: unload oil"
 		payment 1120000 8000
 		
+#More precise source-destination pair
+mission "MGF: Oil Shipment (Crude Oil 1)"
+	name "Oil Transport to <planet>"
+	description "4000 units of Crude Oil along with <cargo> to verify the batch is required to be shipped to <destination>. Payment is <payment>. To accept this job you need flagship capable of carrying oil."
+	job
+	repeat
+	#So Multiplier works.
+	cargo "paper works" 1
+	to offer
+		or
+			random < 60
+			and
+				random < 80
+				has "outfit (installed): B-type 1k Oil Tank"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "oil"
+		not attributes "oil refinery"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "oil refinery"
+		not attributes "oil"
+		distance 3 20
+	to accept
+		"outfit (flagship installed): B-type 1k Oil Tank" >= 4 + ( "outfit (installed): Crude Oil" / 1000 ) + ( "outfit (installed): Gasoline" / 1000 ) + ( "outfit (installed): Machine Oil" / 1000 ) + ( "outfit (installed): Kerosene" / 1000 )
+	on accept
+		outfit "Crude Oil" 4000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Crude Oil" -4000
+	on complete
+		outfit "Crude Oil" -4000
+		dialog phrase "mgf: unload oil"
+		payment 1500000 4900
+
+mission "MGF: Oil Shipment (Crude Oil 2)"
+	name "Oil Transport to <planet>"
+	description "8000 units of Crude Oil along with <cargo> to verify the batch is required to be shipped to <destination>. Payment is <payment>. To accept this job you need flagship capable of carrying oil."
+	job
+	repeat
+	#So Multiplier works.
+	cargo "paper works" 1
+	to offer
+		or
+			random < 40
+			and
+				random < 70
+				has "outfit (installed): B-type 1k Oil Tank"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "oil"
+		not attributes "oil refinery"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "oil refinery"
+		not attributes "oil"
+		distance 3 20
+	to accept
+		"outfit (flagship installed): B-type 1k Oil Tank" >= 8 + ( "outfit (installed): Crude Oil" / 1000 ) + ( "outfit (installed): Gasoline" / 1000 ) + ( "outfit (installed): Machine Oil" / 1000 ) + ( "outfit (installed): Kerosene" / 1000 )
+	on accept
+		outfit "Crude Oil" 8000
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+		outfit "Crude Oil" -8000
+	on complete
+		outfit "Crude Oil" -8000
+		dialog phrase "mgf: unload oil"
+		payment 2750000 8800
+
 #=======================================Bitumen
 
 phrase "mgf: unload bitumen regular"
@@ -7596,7 +8183,7 @@ mission "MGF: Chemical Transport (Sulfuric 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Sulfuric Acid" 2000
 	on visit
@@ -7626,7 +8213,7 @@ mission "MGF: Chemical Transport (Sulfuric 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Sulfuric Acid" 2000
 	on visit
@@ -7656,7 +8243,7 @@ mission "MGF: Rush Chemical Transport (Sulfuric 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Sulfuric Acid" 2000
 	on visit
@@ -7685,7 +8272,7 @@ mission "MGF: Chemical Transport (Phosphoric Acid 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Phosphoric Acid" 2000
 	on visit
@@ -7714,7 +8301,7 @@ mission "MGF: Chemical Transport (Methanol 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Methanol" 2000
 	on visit
@@ -7743,7 +8330,7 @@ mission "MGF: Chemical Transport (Methanol 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Methanol" 2000
 	on visit
@@ -7772,7 +8359,7 @@ mission "MGF: Chemical Transport (Methanol 3)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 4 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 4 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Methanol" 4000
 	on visit
@@ -7801,7 +8388,7 @@ mission "MGF: Chemical Transport (Ammonia 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Ammonia" 2000
 	on visit
@@ -7830,7 +8417,7 @@ mission "MGF: Chemical Transport (Ammonia 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Ammonia" 2000
 	on visit
@@ -7859,7 +8446,7 @@ mission "MGF: Chemical Transport (Ammonia 3)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Ammonia" 2000
 	on visit
@@ -7889,7 +8476,7 @@ mission "MGF: Rush Chemical Transport (Ammonia 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Ammonia" 2000
 	on visit
@@ -7919,7 +8506,7 @@ mission "MGF: Rush Chemical Transport (Ammonia 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Ammonia" 2000
 	on visit
@@ -7948,7 +8535,7 @@ mission "MGF: Chemical Transport (Hydrazine 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Hydrazine" 2000
 	on visit
@@ -7977,7 +8564,7 @@ mission "MGF: Chemical Transport (Hydrazine 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Hydrazine" 2000
 	on visit
@@ -8006,7 +8593,7 @@ mission "MGF: Chemical Transport (Diborane 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Diborane" 2000
 	on visit
@@ -8035,7 +8622,7 @@ mission "MGF: Chemical Transport (Chlorine 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Chlorine" 2000
 	on visit
@@ -8064,7 +8651,7 @@ mission "MGF: Chemical Transport (Chlorine 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Chlorine" 2000
 	on visit
@@ -8093,7 +8680,7 @@ mission "MGF: Chemical Transport (Chlorine 3)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Chlorine" 2000
 	on visit
@@ -8123,7 +8710,7 @@ mission "MGF: Rush Chemical Transport (Chlorine 1)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Chlorine" 2000
 	on visit
@@ -8153,7 +8740,7 @@ mission "MGF: Rush Chemical Transport (Chlorine 2)"
 		attributes "factory" "manufacturing"
 		distance 3 20
 	to accept
-		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 )
+		"outfit (flagship installed): U-type 1k Chemical Tank" >= 2 + ( "outfit (installed): Sulfuric Acid" / 1000 ) + ( "outfit (installed): Phosphoric Acid" / 1000 ) + ( "outfit (installed): Methanol" / 1000 ) + ( "outfit (installed): Ammonia" / 1000 ) + ( "outfit (installed): Hydrazine" / 1000 ) + ( "outfit (installed): Diborane" / 1000 ) + ( "outfit (installed): Chlorine" / 1000 ) + ( "outfit (installed): Hydrochloric Acid" / 1000 )
 	on accept
 		outfit "Chlorine" 2000
 	on visit
