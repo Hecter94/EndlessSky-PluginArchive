@@ -33,11 +33,13 @@ First thing first, to contribute to the plugin you have three options: either co
 
 To check if you can help coding anything, go to the [project](https://github.com/users/OcelotWalrus/projects/5/views/1) and check for issues with the "help wanted" label. You can propose your help here. Even if there is no "help wanted" label, you can still propose your help, all contribution is welcome!
 
+If you need help or just want feedback and what you're working on is kind of a big project, feel free to create a new discussion in the [Discussion Tab](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/discussions).
+
 ## Coding Features & Add-ons
 To code features in the base plugin, you can check the [endless sky github wiki](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins) to learn how to code things in the [endless sky data format](https://github.com/endless-sky/endless-sky/wiki/DataFormat).
 
 The best way to contribute is [creating a fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of the main branch and code in this forked repository.
-Note that you can create your own codespace and work on it if you prefer.
+Note that you can create your own [codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=582686045&skip_quickstart=true) and work on it if you prefer.
 
 **You will find useful links to help you coding faster and better on the [discord server](https://discord.com/invite/tafa8dVH5Q)**
 
@@ -50,15 +52,25 @@ Here are some tips to code addons or create your own plugin:
 
 * Keep your code organized in multiple files.
 
-* Add some more details to your addons, to make it more interesting.
+* For editing the data files, make sure you have a text editor that:
+
+  * Saves files with Unix-style line endings. (That is, don't use Notepad.)
+
+  * Does not convert straight quotes `"..."` into curly quotes `“...”`
+
+  * Inserts a tab character, rather than some number of spaces, when you press the TAB key.
+
+  * Some text editors support an [EditorConfig](https://editorconfig.org/) file, and will read settings from the file provided in this repository. This can help ensure your contributions match the format of existing data files.
+
+* Add some more details to your add-ons, to make it more interesting.
 
 * Check the differents projects in the github repositories to know for what we need help or to find some projects that interest you.
 
 * Use the [plugin wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki) as well as the official [plugin creation wiki](https://github.com/endless-sky/endless-sky/wiki#creating-ships-missions-artwork-etc) if there is something you're not sure about.
 
-* If you're adding ships or outfits, make sure that if you made your own model, to add it to the [`source/`](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/tree/main/source) directory. Make sure to use the following pattern for creating files & folders:
+* If you're adding ships or outfits, make sure that if you made your own model, to add it to the [`sources/`](https://github.com/OcelotWalrus/Cromha-Expansion-sources) sub-module. Make sure to use the following pattern for creating files & folders:
 ```
-  source/
+  sources/
   |-- outfit/
   |   |-- <outfit code name>/
   |       |-- 3D/ (the 3D models)
@@ -77,7 +89,7 @@ Here are some tips to code addons or create your own plugin:
   |       |   |-- sprites/ (the render of your blender model with GIMP modifications and re-scaling for the game)
   |       |       |-- <outfit code name>.png
   |       |           ...
-  |       |-- templates/ (optional, only if you use other parts of blender models that are not already in the source/ directory)
+  |       |-- templates/ (optional, only if you use other parts of blender models that are not already in the sources/ directory)
   |           ...
   |
   |-- ships/
@@ -102,11 +114,11 @@ Here are some tips to code addons or create your own plugin:
           |   |   |-- <ship code name>.png
           |   |   |-- <ship code name>-thumb.png
           |   |       ...
-          |-- templates/ (optional, only if you use other parts of blender models that are not already in the source/ directory)
+          |-- templates/ (optional, only if you use other parts of blender models that are not already in the sources/ directory)
               ...
 ```
 
 _Where <ship code name> is your ship model name without any caps and <outfit code name> is your outfit model name without any caps._
 
 ## Apply your code to the base plugin
-You can simply create a new [pull request](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/compare) that merge the branch where you created your work (a forked or a local repository of you) to the 'main' branch. If you've done everything right, I or @lumba527 should review the pull request and maybe add your very own code to the plugin.
+You can simply create a new [pull request](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/compare) that merge the branch where you created your work (a forked or a local repository of you) to the 'main' branch. If you've done everything right, I or @lumbar527 should review the pull request and maybe add your very own code to the plugin.
