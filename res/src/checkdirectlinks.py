@@ -27,7 +27,11 @@ with open("res/config.txt") as f:
 
 # creating temp directory			
 if os.path.isdir("temp") == False: 
-	os.mkdir("temp")						
+	os.mkdir("temp")			
+	
+# creating res/last_commits.txt
+with open("res/last_commits.txt", "w") as file1:
+	file1.write("")
 
 # getting username and token for login to github api(to increase request limit from 60/hr to 5000/hr)
 username = os.getenv("GITHUB_ACTOR")
@@ -39,12 +43,36 @@ entries.sort(key=str.lower)
 for entry in entries:
 	with open(listfolder + entry, "r") as file1:
 		x = file1.readline()
-		x = file1.readline()
+		website = file1.readline().replace("website=", "")
 		x = file1.readline()
 		directlink = x.replace("directlink=","")
-	if directlink == "N/A\n": # when there is no direct link go to next file
+	if directlink == "N/A\n": # when there is no direct
+		
+		# check for website github to get last commit, then continue to next
+		website = website.strip()
+		if website[:18] == "https://github.com":
+			urllist = website.split(os.sep)
+			author = urllist[3]
+			plug = urllist[4]
+			linksize = "FALSE"
+			try: # check github api for last commit
+				params = {'page': '1', 'per_page': '1'}
+				response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
+			except:
+				print("ERROR: github api not reachable: " + plug)
+				linklastmodified = "FALSE"
+				continue
+			else: # get last commit date and time
+				cont = str(response.content)
+				dateandtime = cont.split(",")[4]
+				commitdate = dateandtime[8:18] + " " + dateandtime[19:27]
+				linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d %H:%M:%S')
+				with open("res/last_commits.txt", "a") as commit:
+					commit.writelines(entry[:len(entry) - 4] + "|" + str(linklastmodified.date()) + "\n")
+				continue
 		continue
-	else:
+		
+	else: # has directlink
 		directlink = directlink.strip()
 		pluginname = entry[:len(entry) -4] # removes '.txt'
 		 # getting asset file name
@@ -63,7 +91,7 @@ for entry in entries:
 		else:
 			modif = response.headers['Last-Modified']
 			datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
-			assetlastmodified = datetime_object.date()
+			assetlastmodified = datetime_object
 		
 		try: # check directlink
 			response = requests.head(directlink, allow_redirects=True)
@@ -76,8 +104,10 @@ for entry in entries:
 			try: # checking if last-modified/content-length tags are there
 				modif = response.headers['Last-Modified']
 				datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
-				linklastmodified = datetime_object.date()
-				linksize = int(response.headers['Content-Length']) / 1024 # get size in kb
+				linklastmodified = datetime_object
+				if directlink[:18] == "https://github.com": # check if github repo | must be multi-plugin repo with own asset links
+					with open("res/last_commits.txt", "a") as commit:
+						commit.writelines(pluginname + "|" + str(linklastmodified.date()) + "\n")
 			except:
 				if directlink[:18] == "https://github.com": # check if github repo
 					urllist = directlink.split(os.sep)
@@ -94,20 +124,34 @@ for entry in entries:
 					else: # get last commit date and time
 						cont = str(response.content)
 						dateandtime = cont.split(",")[4]
-						commitdate = dateandtime[8:18] 
-						committime = dateandtime[19:27]
-						linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d').date()
+						commitdate = dateandtime[8:18] + " " + dateandtime[19:27]
+						linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d %H:%M:%S')
+						with open("res/last_commits.txt", "a") as commit:
+							commit.writelines(pluginname + "|" + str(linklastmodified.date()) + "\n")
 		if linksize != "FALSE":
-			if linksize >= 204800:
-				print("ABORTING: directlink is bigger than 200 mb")
+			if linksize >= 307200:
+				print("ABORTING: directlink is bigger than 300 mb")
 				continue
+				
 		if linklastmodified != "FALSE":
 			if assetlastmodified != "FALSE":
 				datediff = linklastmodified - assetlastmodified # both lastmodified were successful, compare them
-				if datediff.days < 1: 
+				# positive update, negative no update
+				if datediff.days == 0: # same day, go check seconds
+					if datediff.seconds > 600: # linkfile is at least 10 min newer, do update
+						modified = 1
+					else:
+						print("", end="")
+						modified = 0
+				elif datediff.days < 0: # negative days, asset is newer, no update
 					print("", end="")
-				else:	
-					print("SUCCESS: linkfile is newer: " + pluginname + "\n")
+					modified = 0					
+				else: # positive days, linkfile is newer, do update
+					modified = 1	
+					
+				if modified == 1:
+					print("SUCCESS: linkfile is newer: " + pluginname)
+					print("datediff: " + str(datediff.days) + " " + str(datediff.seconds) + " | asset: " + str(assetlastmodified) + " | link: " + str(linklastmodified) + "\n")
 					with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
 						r = requests.get(directlink, allow_redirects=True)
 						file2.write(r.content)
@@ -130,13 +174,15 @@ for entry in listing:
 	else:
 		new_or_updated = "updated"
 		print("\nupdated plugin:", end=" ")
+		
 	# get names
 	zip_name = entry.split(os.sep)[1]
 	plugin_name = zip_name[:len(zip_name) -4]
 	withdots = zip_name.replace(" ", ".").replace("'", ".").replace(",", ".").replace("(", ".").replace(")", ".").replace("&", ".").replace("...", ".").replace("..", ".")
 	if withdots[len(withdots)-1] == ".":
 		withdots = withdots[:len(withdots)-1]
-	print(plugin_name +  " " + zip_name + " " + withdots)
+	print(plugin_name)
+	
 	# extract zip now
 	os.mkdir("temp/" + plugin_name)
 	with ZipFile(entry, 'r') as zObject:
@@ -144,7 +190,8 @@ for entry in listing:
 		firstfolder = zObject.namelist()[0] # first folder inside zip, should be pluginname
 	firstfolder = firstfolder[:len(firstfolder) -1]
 	print(entry + " | extracted to: temp/" + plugin_name)
-	# replaces chars in file and folder names, which are allowed in linux, but not in windows	
+	
+	# replaces chars in file and folder names, which are allowed in linux, but not in windows
 	chars = ['\\', ':', '*', '?', '"', '<', '>', '|']
 	for root, dirs, files in os.walk("temp/" + plugin_name + "/"):
 		for name in files:
@@ -159,30 +206,60 @@ for entry in listing:
 					print(name + " has invalid char: " + char + " !renaming it!")		
 					os.rename(os.path.join(root, name), os.path.join(root, name).replace(char, ''))
 					name = name.replace(char,'')
+					
 	# check for correct folder structure and correct it
 	if plugin_name != firstfolder:
 		print("ERROR: mismatch between zipname and in-zip folder!")
 		shutil.move("temp/"+ plugin_name + "/" + firstfolder, "temp/" + plugin_name + "/" + plugin_name)
 		print(firstfolder + " | renamed to: " + plugin_name)
-		sub_folder = os.listdir("temp/" + plugin_name + "/" + plugin_name) 
-	for each in sub_folder:
-		if each.lower() == "data": 
-			print("DATA FOLDER FOUND, moving plugin to plugin folder")
-			break
-		elif each.lower() == plugin_name.lower():
-			print("SUBFOLDER FOUND, clearing structure and moving plugin to plugin folder")
-			shutil.move("temp/" + plugin_name + "/" + plugin_name + "/" + each + "/", "temp/" + plugin_name + "/" + plugin_name + "X/")
-			shutil.rmtree("temp/" + plugin_name + "/" + plugin_name )
-			shutil.move("temp/" + plugin_name + "/" + plugin_name + "X/", "temp/" + plugin_name + "/" + plugin_name + "/")
-			break		
+		sub_folders = os.listdir("temp/" + plugin_name + "/" + plugin_name) 
+		for sub_f in sub_folders:
+			if sub_f.lower() == "data": 
+				print("DATA FOLDER FOUND, structure is correct")
+				break
+			elif sub_f.lower() == plugin_name.lower():
+				print("SUBFOLDER FOUND, clearing structure and moving plugin to correct folder")
+				shutil.move("temp/" + plugin_name + "/" + plugin_name + "/" + sub_f + "/", "temp/" + plugin_name + "/" + plugin_name + "X/")
+				shutil.rmtree("temp/" + plugin_name + "/" + plugin_name )
+				shutil.move("temp/" + plugin_name + "/" + plugin_name + "X/", "temp/" + plugin_name + "/" + plugin_name + "/")
+				break	
+			
+	# remove irrelevant files and folders
+	# remove files: *.zip .gitignore .gitattributes | folder: .git/ .github/ __MACOSX/
+	check_irr = os.listdir("temp/" + plugin_name + "/" + plugin_name + "/")
+	for irr in check_irr:
+		if irr == ".gitignore":
+			os.remove("temp/" + plugin_name + "/" + plugin_name + "/" + irr)
+			print(irr + " removed")
+		elif irr == ".gitattributes":
+			os.remove("temp/" + plugin_name + "/" + plugin_name + "/" + irr)
+			print(irr + " removed")
+		elif irr[len(irr) -4:] == ".zip":
+			os.remove("temp/" + plugin_name + "/" + plugin_name + "/" + irr)
+			print(irr + " removed")
+		elif irr == ".git":
+			shutil.rmtree("temp/" + plugin_name + "/" + plugin_name + "/" + irr + "/")
+			print(irr + " removed")
+		elif irr == ".github":
+			shutil.rmtree("temp/" + plugin_name + "/" + plugin_name + "/" + irr + "/")
+			print(irr + " removed")
+		elif irr == "__MACOSX":
+			shutil.rmtree("temp/" + plugin_name + "/" + plugin_name + "/" + irr + "/")
+			print(irr + " removed")
+			
 	# create new zip with correct paths
 	shutil.make_archive("temp/" + plugin_name, 'zip', "temp/" + plugin_name + "/")
+	print("new clean zip created")
+	
 	# delete old plugin folder, and move plugin to plugin folder		
 	if os.path.isdir(pathtoplugins + plugin_name): 
 		shutil.rmtree(pathtoplugins + plugin_name) 
-	shutil.move("temp/" + plugin_name + "/" + plugin_name, pathtoplugins + plugin_name)		
+	shutil.move("temp/" + plugin_name + "/" + plugin_name, pathtoplugins + plugin_name)
+	print("plugin moved to " + pathtoplugins)
+	
 	# renaming zips to asset convention
 	shutil.move("temp/" + zip_name, "temp/" + withdots)
+	
 	#generating news
 	with open("res/news.txt", "r") as file1: # reading old news
 		news = file1.readlines()
