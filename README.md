@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-08-02 | updated Plugin 'Kor Mereti Fluff' by OcelotWalrus | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay)<br>
+2023-08-02 | updated Plugin 'additional.command.buttons' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics)<br>
+2023-08-02 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-01 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-31 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-31 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
@@ -17,9 +20,6 @@
 2023-07-30 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-29 | updated Plugin 'Endless-Endless-Sky' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#overhauls)<br>
 2023-07-29 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
-2023-07-29 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-29 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-07-29 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#races)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -1338,7 +1338,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Kor Mereti Fluff/icon.png' width='100'></img><br>
 
 
-[Kor.Mereti.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Mereti.Fluff.zip) | 2.62 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Mereti%20Fluff/) <br>
+[Kor.Mereti.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Mereti.Fluff.zip) | 2.62 mb | 2023-08-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Mereti%20Fluff/) <br>
 Author: OcelotWalrus | [https://github.com/OcelotWalrus/Kor-Mereti-Fluff](https://github.com/OcelotWalrus/Kor-Mereti-Fluff) <br>
 Category: Gameplay <br>
 
@@ -1665,7 +1665,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/additional.command.buttons/icon.png' width='100'></img><br>
 
 
-[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 129.35 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
+[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 92.6 kb | 2023-08-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
 Author: zuckung | [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) <br>
 Category: Graphics <br>
 
@@ -7645,7 +7645,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cromha Expansion/icon.png' width='100'></img><br>
 
 
-[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 366.17 mb | 2023-08-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 414.73 mb | 2023-08-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
 Author: OcelotWalrus | [https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) <br>
 Category: Story <br>
 

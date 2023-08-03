@@ -1,3 +1,6 @@
+2023-08-02 | updated Plugin 'Kor Mereti Fluff' by OcelotWalrus | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#gameplay)<br>
+2023-08-02 | updated Plugin 'additional.command.buttons' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics)<br>
+2023-08-02 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-01 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-31 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-07-31 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
