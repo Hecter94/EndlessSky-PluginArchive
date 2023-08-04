@@ -22,9 +22,10 @@ RTF_PLANET_FILES += data/map/planets/RTF-9-P.txt
 RTF_PLANET_FILES += data/map/planets/RTF-10-P.txt
 RTF_JOB_FILES += data/jobs/reputation.txt
 RTF_JOB_FILES += data/jobs/visit-systems.txt
-#RTF_JOB_FILES += data/jobs/visit-planets.txt
+RTF_JOB_FILES += data/jobs/visit-planets.txt
 GENERATED_DATA_FILES += $(RTF_PLANET_FILES)
 GENERATED_DATA_FILES += $(RTF_JOB_FILES)
+GENERATED_DATA_FILES += data/events/all-licenses.txt
 
 
 
@@ -59,46 +60,73 @@ plugin-update: tmp/enabled-plugins.tmp tmp/data-dirs.tmp
 tmp/re.tmp: | tmp
 	@touch $@
 
+tmp/deprecated-outfits.list.tmp: tmp/data-dirs.tmp
+	@echo "Listing deprecated outfits..."
+	@cat tmp/data-dirs.tmp | sed "s|$$|_deprecated/|" | xargs grep -R "^outfit " | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sort | uniq > $@
+
+tmp/deprecated-ships.list.tmp: tmp/data-dirs.tmp
+	@echo "Listing deprecated ship..."
+	@cat tmp/data-dirs.tmp | sed "s|$$|_deprecated/|" | xargs grep -R "^ship " | grep "\.txt:" | sed "s/^.*\.txt:ship //" | tools/unquote-ship.sh | sort | uniq > $@
+
+tmp/outfits.list.tmp: tmp/data-dirs.tmp tmp/deprecated-outfits.list.tmp | tmp
+	@echo "Listing outfits..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^outfit " | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sort | uniq > tmp/tmp.list.tmp
+	@comm -23 tmp/tmp.list.tmp tmp/deprecated-outfits.list.tmp > $@
+
+tmp/ships.list.tmp: tmp/data-dirs.tmp tmp/deprecated-ships.list.tmp | tmp
+	@echo "Listing ship..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^ship " | grep "\.txt:" | sed "s/^.*\.txt:ship //" | tools/unquote-ship.sh | sort | uniq > tmp/tmp.list.tmp
+	@comm -23 tmp/tmp.list.tmp tmp/deprecated-ships.list.tmp > $@
+
+tmp/systems.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing systems..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^system" | grep "\.txt:" | sed "s/^.*\.txt:system //" | tools/unquote.sh | sort | uniq > $@
+
+tmp/wormholes.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing wormholes..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^wormhole" | grep "\.txt:" | sed "s/^.*\.txt:wormhole //" | tools/unquote.sh | sort | uniq > $@
+
+tmp/objects.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing objects..."
+	@cat tmp/data-dirs.tmp | xargs grep -P -R '^\t\t?object ' | grep '\.txt:' | sed 's|^.*\.txt:\t\t\?object ||' | tools/unquote.sh | sort | uniq > $@
+
+tmp/planets.list.tmp: tmp/data-dirs.tmp tmp/wormholes.list.tmp tmp/objects.list.tmp | tmp
+	@echo "Listing planets..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^planet" | grep "\.txt:" | sed "s/^.*\.txt:planet //" | tools/unquote.sh | sort | uniq > tmp/tmp.tmp
+	@comm -23 tmp/tmp.tmp tmp/wormholes.list.tmp > tmp/tmp2.tmp
+	@comm -12 tmp/tmp2.tmp tmp/objects.list.tmp > $@
+
+tmp/outfitters.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing outfitters..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^outfitter" | grep "\.txt:" | sed "s/^.*\.txt:outfitter //" | tools/unquote.sh | sort | uniq > $@
+
+tmp/shipyards.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing shipyards..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^shipyard" | grep "\.txt:" | sed "s/^.*\.txt:shipyard //" | tools/unquote.sh | sort | uniq > $@
+
+tmp/governments.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing governments..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^government" | grep "\.txt:" | sed "s/^.*\.txt:government //g" | tools/unquote.sh | sort | uniq | sed "/^Escort$$/d" > $@
+
+tmp/licenses.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Listing licenses..."
+	@cat tmp/data-dirs.tmp | xargs grep -P -R "outfit.*License" | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sed 's| License$$||' | sort | uniq > $@
+
 .PHONY: data/all-vanilla-outfits-outfitter.txt
-data/all-vanilla-outfits-outfitter.txt: tmp/data-dirs.tmp | tmp
-	@echo "Updating outfits..."
+data/all-vanilla-outfits-outfitter.txt: tmp/outfits.list.tmp | tmp
+	@echo "Updating all-outfits outfitter..."
 	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@cat tmp/data-dirs.tmp | xargs grep -R "^outfit " | grep "\.txt:" | sed "s/^.*\.txt:outfit /\t/" | sort | uniq >> $@
+	@cat tmp/outfits.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
 
 .PHONY: data/all-vanilla-ships-shipyard.txt
-data/all-vanilla-ships-shipyard.txt: tmp/data-dirs.tmp | tmp
-	@echo "Updating ship..."
+data/all-vanilla-ships-shipyard.txt: tmp/ships.list.tmp | tmp
+	@echo "Updating all-ships shipyard..."
 	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@cat tmp/data-dirs.tmp | xargs grep -R "^ship " | grep "\.txt:" | sed "s/^.*\.txt:ship /\t/" | sed "s/\".*\" //" | sort | uniq >> $@
+	@cat tmp/ships.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
 
-tmp/outfitters.tmp: tmp/data-dirs.tmp | tmp
-	@echo "Listing outfitters..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^outfitter" | grep "\.txt:" | sed "s/^.*\.txt:outfitter //" | sort | uniq > $@
-
-tmp/shipyards.tmp: tmp/data-dirs.tmp | tmp
-	@echo "Listing shipyards..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^shipyard" | grep "\.txt:" | sed "s/^.*\.txt:shipyard //" | sort | uniq > $@
-
-.PHONY: tmp/systems.tmp
-tmp/systems.tmp: tmp/data-dirs.tmp | tmp
-	@echo "Listing systems..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^system" | grep "\.txt:" | sed "s/^.*\.txt:system //" | sort | uniq > $@
-
-.PHONY: tmp/planets.tmp
-tmp/planets.tmp: tmp/data-dirs.tmp tmp/wormholes.tmp | tmp
-	@echo "Listing planets..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^planet" | grep "\.txt:" | sed "s/^.*\.txt:planet //" | sort | uniq > tmp/tmp.tmp
-	@printf '!/' > tmp/awk.tmp && cat tmp/wormholes.tmp | tr "\n" "|" | sed "s/|$$//" >> tmp/awk.tmp && printf "/" >> tmp/awk.tmp
-	@awk -f tmp/awk.tmp tmp/tmp.tmp > $@
-
-.PHONY: tmp/wormholes.tmp
-tmp/wormholes.tmp: tmp/data-dirs.tmp | tmp
-	@echo "Listing wormholes..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^wormhole" | grep "\.txt:" | sed "s/^.*\.txt:wormhole //" | sort | uniq > $@
-
-data/map/planets/RTF-%-P.txt: tmp/outfitters.tmp tmp/shipyards.tmp | tmp
+data/map/planets/RTF-%-P.txt: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
 	@printf "Updating planet %s...\n" $@
 	@cat $@ | sed "/^\tshipyard /d" | sed "/\toutfitter /d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
@@ -106,28 +134,30 @@ data/map/planets/RTF-%-P.txt: tmp/outfitters.tmp tmp/shipyards.tmp | tmp
 	@echo '\toutfitter "Ruin-The-Fun Stat Outfits"' >> $@
 	@echo '\toutfitter "Ruin-The-Fun All Vanilla Outfits"' >> $@
 	@echo '\tshipyard "Ruin-The-Fun All Vanilla Ships"' >> $@
-	@cat tmp/outfitters.tmp | sed "s/^/\toutfitter /" >> $@
-	@cat tmp/shipyards.tmp | sed "s/^/\tshipyard /" >> $@
+	@cat tmp/outfitters.list.tmp | sed 's/^\(.*\)$$/\toutfitter `\1`/' >> $@
+	@cat tmp/shipyards.list.tmp | sed 's/^\(.*\)$$/\tshipyard `\1`/' >> $@
 
-data/jobs/visit-systems.txt: tmp/systems.tmp | tmp
+data/jobs/visit-systems.txt: tmp/systems.list.tmp | tmp
 	@echo "Updating job $@..."
 	@cat $@ | sed '/\tvisit /d' > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@cat tmp/systems.tmp | sed 's/^\(.*\)$$/\tvisit \1/' >> $@
+	@cat tmp/systems.list.tmp | sed 's|^\(.*\)$$|\tvisit `\1`|' >> $@
 
-data/jobs/visit-planets.txt: tmp/planets.tmp | tmp
+data/jobs/visit-planets.txt: tmp/planets.list.tmp | tmp
 	@echo "Updating job $@..."
 	@cat $@ | sed '/\t"visit planet" /d' > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@cat tmp/planets.tmp | sed 's/^\(.*\)$$/\t"visit planet" \1/' >> $@
+	@cat tmp/planets.list.tmp | sed 's/^\(.*\)$$/\t"visit planet" `\1`/' >> $@
+
+data/events/all-licenses.txt: tmp/licenses.list.tmp | tmp
+	@echo "Updating licenses..."
+	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
+	@mv tmp/tmp.tmp $@
+	@cat tmp/licenses.list.tmp | sed 's|^\(.*\)$$|\tset `license: \1`|' >> $@
 
 default-reputations.txt:
 	$(error This is currently not generated)
 	#TODO: generate from $(ES_DEFAULT_PILOT_SAVE)
-
-tmp/governments.tmp: tmp/data-dirs.tmp | tmp
-	@echo "Listing governments..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^government" | grep "\.txt:" | sed "s/^.*\.txt:government //g" | sed 's/^"//' | sed 's/"$$//' | sort | uniq | sed "/^Escort$$/d" > $@
 
 tmp/REPUTATION_RESET_ALL.txt: default-reputations.txt | tmp
 	@cat default-reputations.txt | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
@@ -135,19 +165,19 @@ tmp/REPUTATION_RESET_ALL.txt: default-reputations.txt | tmp
 tmp/REPUTATION_RESET_FRIENDLIES.txt: default-reputations.txt | tmp
 	@cat default-reputations.txt | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
 
-tmp/REPUTATION_FRIENDLY_ALL.txt: tmp/governments.tmp | tmp
-	@cat tmp/governments.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = 10/' > $@
+tmp/REPUTATION_FRIENDLY_ALL.txt: tmp/governments.list.tmp | tmp
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = 10/' > $@
 
-tmp/REPUTATION_HOSTILE_ALL.txt: tmp/governments.tmp | tmp
-	@cat tmp/governments.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = -10/' > $@
+tmp/REPUTATION_HOSTILE_ALL.txt: tmp/governments.list.tmp | tmp
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = -10/' > $@
 
-tmp/REPUTATION_TOGGLE_CHOICES.tmp: tmp/governments.tmp | tmp
-	@cat tmp/governments.tmp | sed 's/^\(.*\)$$/\t\t\t\t\`\t\1:\tCurrently Friendly\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" >= 0\n\t\t\t\t\tgoto "toggle hostile: \1"\n\t\t\t\t\`\t\1:\tCurrently Hostile\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" < 0\n\t\t\t\t\tgoto "toggle friendly: \1"/' > $@
+tmp/REPUTATION_TOGGLE_CHOICES.tmp: tmp/governments.list.tmp | tmp
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t\`\t\1:\tCurrently Friendly\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" >= 0\n\t\t\t\t\tgoto "toggle hostile: \1"\n\t\t\t\t\`\t\1:\tCurrently Hostile\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" < 0\n\t\t\t\t\tgoto "toggle friendly: \1"/' > $@
 
-tmp/REPUTATION_TOGGLE_LABELS.tmp: tmp/governments.tmp | tmp
+tmp/REPUTATION_TOGGLE_LABELS.tmp: tmp/governments.list.tmp | tmp
 	@rm -f $@
-	@cat tmp/governments.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle friendly: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = 10\n\t\t\t\`\tReputation with \1 changed to Friendly.\`\n\t\t\t\tgoto toggles/' >> $@
-	@cat tmp/governments.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle hostile: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = -10\n\t\t\t\`\tReputation with \1 changed to Hostile.\`\n\t\t\t\tgoto toggles/' >> $@
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle friendly: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = 10\n\t\t\t\`\tReputation with \1 changed to Friendly.\`\n\t\t\t\tgoto toggles/' >> $@
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle hostile: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = -10\n\t\t\t\`\tReputation with \1 changed to Hostile.\`\n\t\t\t\tgoto toggles/' >> $@
 
 data/jobs/reputation.txt: tmp/REPUTATION_RESET_ALL.txt tmp/REPUTATION_RESET_FRIENDLIES.txt tmp/REPUTATION_FRIENDLY_ALL.txt tmp/REPUTATION_HOSTILE_ALL.txt tmp/REPUTATION_TOGGLE_CHOICES.tmp tmp/REPUTATION_TOGGLE_LABELS.tmp
 	@echo "Generating job $@..."

@@ -22,6 +22,8 @@ Learn more [about Endless Sky][esweb].
     * [This plugin](#this-plugin)
 * [Contributing](#contributing)
 * [Development status](#development-status)
+* [System Requirements](#system-requirements)
+  * [Known Issues](#known-issues)
 * [Installation](#installation)
     * [Install steps](#install-steps)
     * [Keeping the plugin updated](#keeping-the-plugin-updated)
@@ -70,6 +72,18 @@ It is currently a Beta plugin.
 * The whole 'Empire Rebels' part is not started very yet. (check [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Governments-&-Major-Factions))
 * The [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/) still in work and most of the Gameplay section is outdated
 * The Lumbarian Empire is currently in a very early stage. Help create the storyline [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/discussions/117)
+
+# System requirements
+Endless Sky has very minimal system requirements, meaning most systems should be able to run the game. But this plugin is kind of heavy.
+
+|| Minimum | Recommended |
+|---|----:|----:|
+|RAM | 4 MB | 8 GB |
+|Graphics | OpenGL 3.0 | OpenGL 3.3 |
+|Storage Free | 900 MB | 3 GB |
+
+## Known issues
+  * Game crash when loading resources (don't have enough RAM)
 
 # Installation
 If you're new in the Endless Sky community, check the [User Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) to learn the basics!
