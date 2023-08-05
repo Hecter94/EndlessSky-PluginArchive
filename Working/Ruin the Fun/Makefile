@@ -8,7 +8,9 @@ ES_DATA = ~/projects/endless-sky/data/
 ES_DEFAULT_PILOT_SAVE = "../../saves/Default Pilot"
 
 # List of files to be generated (recipes defined bellow):
-GENERATED_DATA_FILES = data/all-vanilla-outfits-outfitter.txt data/all-vanilla-ships-shipyard.txt
+GENERATED_DATA_FILES += data/outfitters/all-outfits.txt
+GENERATED_DATA_FILES += data/shipyards/all-base-ships.txt
+GENERATED_DATA_FILES += data/shipyards/all-ship-variants.txt
 RTF_PLANET_FILES += data/map/planets/RTF-0-P.txt
 RTF_PLANET_FILES += data/map/planets/RTF-1-P.txt
 RTF_PLANET_FILES += data/map/planets/RTF-2-P.txt
@@ -73,10 +75,23 @@ tmp/outfits.list.tmp: tmp/data-dirs.tmp tmp/deprecated-outfits.list.tmp | tmp
 	@cat tmp/data-dirs.tmp | xargs grep -R "^outfit " | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sort | uniq > tmp/tmp.list.tmp
 	@comm -23 tmp/tmp.list.tmp tmp/deprecated-outfits.list.tmp > $@
 
-tmp/ships.list.tmp: tmp/data-dirs.tmp tmp/deprecated-ships.list.tmp | tmp
-	@echo "Listing ship..."
-	@cat tmp/data-dirs.tmp | xargs grep -R "^ship " | grep "\.txt:" | sed "s/^.*\.txt:ship //" | tools/unquote-ship.sh | sort | uniq > tmp/tmp.list.tmp
+tmp/ship-lines.list.tmp: tmp/data-dirs.tmp | tmp
+	@echo "Finding ship definitions..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^ship " | grep "\.txt:" | sed "s/^.*\.txt:ship //" | sort | uniq > $@
+
+tmp/base-ships.list.tmp: tmp/ship-lines.list.tmp tmp/deprecated-ships.list.tmp | tmp
+	@echo "Listing base ships..."
+	@cat tmp/ship-lines.list.tmp | tools/unquote-ship-base.sh | sort | uniq > tmp/tmp.list.tmp
 	@comm -23 tmp/tmp.list.tmp tmp/deprecated-ships.list.tmp > $@
+
+tmp/ships.list.tmp: tmp/ship-lines.list.tmp | tmp
+	@echo "Listing ships..."
+	@cat tmp/ship-lines.list.tmp | tools/unquote-ship.sh | sort | uniq > tmp/tmp.list.tmp
+	@comm -23 tmp/tmp.list.tmp tmp/deprecated-ships.list.tmp > $@
+
+tmp/ship-variants.list.tmp: tmp/base-ships.list.tmp tmp/ships.list.tmp | tmp
+	@echo "Listing ship variants..."
+	@comm -23 tmp/ships.list.tmp tmp/base-ships.list.tmp > $@
 
 tmp/systems.list.tmp: tmp/data-dirs.tmp | tmp
 	@echo "Listing systems..."
@@ -112,19 +127,24 @@ tmp/licenses.list.tmp: tmp/data-dirs.tmp | tmp
 	@echo "Listing licenses..."
 	@cat tmp/data-dirs.tmp | xargs grep -P -R "outfit.*License" | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sed 's| License$$||' | sort | uniq > $@
 
-.PHONY: data/all-vanilla-outfits-outfitter.txt
-data/all-vanilla-outfits-outfitter.txt: tmp/outfits.list.tmp | tmp
+.PHONY: data/outfitters/all-outfits.txt
+data/outfitters/all-outfits.txt: tmp/outfits.list.tmp | tmp
 	@echo "Updating all-outfits outfitter..."
 	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
 	@cat tmp/outfits.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
 
-.PHONY: data/all-vanilla-ships-shipyard.txt
-data/all-vanilla-ships-shipyard.txt: tmp/ships.list.tmp | tmp
-	@echo "Updating all-ships shipyard..."
+data/shipyards/all-base-ships.txt: tmp/base-ships.list.tmp | tmp
+	@echo "Updating base-ships shipyard..."
 	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@cat tmp/ships.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
+	@cat tmp/base-ships.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
+
+data/shipyards/all-ship-variants.txt: tmp/ship-variants.list.tmp | tmp
+	@echo "Updating ship-variants shipyard..."
+	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
+	@mv tmp/tmp.tmp $@
+	@cat tmp/ship-variants.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
 
 data/map/planets/RTF-%-P.txt: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
 	@printf "Updating planet %s...\n" $@
@@ -132,8 +152,8 @@ data/map/planets/RTF-%-P.txt: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | t
 	@mv tmp/tmp.tmp $@
 	@echo '\toutfitter "Ruin-The-Fun Outfits"' >> $@
 	@echo '\toutfitter "Ruin-The-Fun Stat Outfits"' >> $@
-	@echo '\toutfitter "Ruin-The-Fun All Vanilla Outfits"' >> $@
-	@echo '\tshipyard "Ruin-The-Fun All Vanilla Ships"' >> $@
+	@echo '\toutfitter "Ruin-The-Fun All Outfits"' >> $@
+	@echo '\tshipyard "Ruin-The-Fun All Base Ships"' >> $@
 	@cat tmp/outfitters.list.tmp | sed 's/^\(.*\)$$/\toutfitter `\1`/' >> $@
 	@cat tmp/shipyards.list.tmp | sed 's/^\(.*\)$$/\tshipyard `\1`/' >> $@
 

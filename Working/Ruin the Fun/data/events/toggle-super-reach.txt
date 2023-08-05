@@ -1,25 +1,5 @@
-mission "Ruin-the-Fun Super Reach"
-	job
-	name "Super Reach"
-	description "Increase the RTF systems jump range, so you can jump far away, even with no god drive. Abort this job to revert the effect."
-	"apparent payment" 1000000000
-	repeat
-	source
-		government "Ruin-The-Fun"
-	to accept
-		not "Ruin-the-Fun Super Reach: active"
-	to complete
-		never
-	to fail
-		never
-	on accept
-		set "Ruin-The-Fun Super Reach: enabled"
-		event "Ruin-The-Fun Super Reach (Enable)"
-	on abort
-		clear "Ruin-The-Fun Super Reach: enabled"
-		event "Ruin-The-Fun Super Reach (Disable)"
-
 event "Ruin-The-Fun Super Reach (Enable)"
+	set "Ruin-The-Fun Super Reach: enabled"
 	system RTF0
 		"jump range" 10000
 	system RTF1
@@ -44,6 +24,7 @@ event "Ruin-The-Fun Super Reach (Enable)"
 		"jump range" 10000
 
 event "Ruin-The-Fun Super Reach (Disable)"
+	clear "Ruin-The-Fun Super Reach: enabled"
 	system RTF0
 		"jump range" 60
 	system RTF1

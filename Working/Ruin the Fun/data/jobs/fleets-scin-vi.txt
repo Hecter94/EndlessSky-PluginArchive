@@ -1,0 +1,31 @@
+mission "Ruin-the-Fun Chaos (Scins vs Vis)"
+	job
+	name "[toggle fleet] Scins vs Vis"
+	description "Adds Gegno Scin vs Vi fleets to RTF0, be sure to interfere."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	destination RTF0-P
+	to accept
+		not "Ruin-the-Fun Chaos (Scins vs Vis): active"
+	to complete
+		never
+	to fail
+		never
+	on accept
+		set "Ruin-the-Fun Chaos (Scins vs Vis): enabled"
+		event "Ruin-the-Fun Chaos (Scins vs Vis) (Enable)"
+	on abort
+		clear "Ruin-the-Fun Chaos (Scins vs Vis): enabled"
+		event "Ruin-the-Fun Chaos (Scins vs Vis) (Disable)"
+
+event "Ruin-the-Fun Chaos (Scins vs Vis) (Enable)"
+	system RTF0
+		add fleet "Small Vi" 1900
+		add fleet "Small Scin" 1200
+
+event "Ruin-the-Fun Chaos (Scins vs Vis) (Disable)"
+	system RTF0
+		remove fleet "Small Vi"
+		remove fleet "Small Scin"
