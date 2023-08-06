@@ -1,0 +1,68 @@
+mission "Ruin-the-Fun Reputations"
+	job
+	name "Reputations"
+	description "Configure your government reputations. 'The world will forget your name. That is regrettable. We will not.' - Dionysos"
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			`	Set government reputations globally:`
+			label begin
+			choice
+				`	(Make all factions friendly.)`
+					goto friendly
+				`	(Make all factions hostile.)`
+					goto hostile
+				`	(Reset reputations with all governments.)`
+					goto reset
+				`	Reset reputations with initially friendly governments only.`
+					goto "reset friendly"
+				`	(Toggle reputations individually...)`
+					goto "toggles menu"
+				`	(Done.)`
+					decline
+					
+			label reset
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
+			action
+REPUTATION_RESET_ALL
+			`	Reputations have been reset.`
+				decline
+			
+			label "reset friendly"
+			# cat default_saved_reputations.tmp | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
+			action
+REPUTATION_RESET_FRIENDLIES
+			`	Friendly factions are now friendly again.`
+				goto begin
+			
+			label friendly
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = 1/'
+			action
+REPUTATION_FRIENDLY_ALL
+			`	All factions are now friendly.`
+				decline
+			
+			label hostile
+			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = -1/'
+			action
+REPUTATION_HOSTILE_ALL
+			`	Everyone now wants to make an argument with you.`
+				decline
+			
+			label "toggles menu"
+			`	Click on a government to toggle your reputation with them.`
+			
+			label toggles
+			choice
+				`	(Done.)`
+					decline
+				`	(Toggle reputations globally...)`
+					goto begin
+REPUTATION_TOGGLE_CHOICES
+			
+REPUTATION_TOGGLE_LABELS
+		fail

@@ -39,6 +39,7 @@ Adds a new civilization to the Korath Space (now named the '[Empire Space](https
 * Adds governments that are related to the vanilla storyline (kind of).
 * Expand various civilizations:
   * Quarg
+  * Drak
   * Pug
   * Remnant
   * Ka'Het
