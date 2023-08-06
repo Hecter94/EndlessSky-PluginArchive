@@ -1,10 +1,8 @@
-#pylint:disable=E0602
 import os
 import requests
 from datetime import datetime
-from PIL import Image
 
-iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = pluginissues = updatecheck =""
+iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = pluginissues = updatecheck = readme = repo_last_commit = ""
 allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
 categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
 plist = []
@@ -29,6 +27,18 @@ with open("res/config.txt") as f:
 			assetfullpath = line.split(" = ")[1]
 		if line.find("newsamount") == 0:	# i.e. newsamount = 20
 			newsamount = line.split(" = ")[1]
+
+# read last commit pluginname and date to put it into 2 lists		
+commit_p = []
+commit_d = []
+with open("res/last_commits.txt", "r") as file1:
+	last_commits = file1.readlines()
+for commit in last_commits:
+	splitted = commit[:len(commit) -1].split("|")
+	commit_p.append(splitted[0])
+	commit_d.append(splitted[1])
+	
+
 			
 def replacevar(string): # replaces %variables% in header template with real values
 	if cat == "AllPlugins":
@@ -86,7 +96,9 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%news%", news)
 	string = string.replace("%newsamount%", newsamount)	
 	string = string.replace("%pluginissues%", pluginissues)
-	string = string.replace("%updatecheck%", updatecheck)	
+	string = string.replace("%updatecheck%", updatecheck)
+	string = string.replace("%readme%", readme)
+	string = string.replace("%last_commit%", repo_last_commit)
 	if website == "N/A": # for prevent [N/A](N/A) links
 		websitecheck = "N/A"
 		websitelink = ""
@@ -239,18 +251,13 @@ with open(indexfile, "w") as file1:
 					alllines = alllines + ">" + lines + "\n"
 				description = alllines
 				if os.path.exists(pathtoplugins + pluginname + "/icon.png") == True: # check for icon.png, resize it, or hide it
-					im = Image.open(pathtoplugins + pluginname + "/icon.png")
-					w, h = im.size
 					iconpath = pathtoplugins + pluginname
 					iconpath = iconpath.replace("&", "%26")
 					iconpath = iconpath.replace("'", "%27")
 					iconpath = iconpath.replace("(", "%28")
 					iconpath = iconpath.replace(")", "%29")
 					iconpath = iconpath.replace(",", "%2C")
-					if h > w:
-						iconpng = "<img src='"+ iconpath + "/icon.png' height='100'></img><br>\n"
-					else:
-						iconpng = "<img src='"+ iconpath + "/icon.png' width='100'></img><br>\n"
+					iconpng = "<img src='"+ iconpath + "/icon.png' height='100'></img><br>\n"
 				else:
 					iconpng = ""
 				# get last modified date and size from the assetfiles
@@ -286,5 +293,24 @@ with open(indexfile, "w") as file1:
 					else:
 						updatecheck = "<img src='res/img/cross.png' width='15' ></img>"
 				assetfile =  withdots + ".zip"
+				
+				# get last commit from the plugin repo
+				for each in commit_p:
+					if pluginname == each:
+						index = commit_p.index(each)
+						repo_last_commit = "(last commit " + commit_d[index] + ")"
+						break
+					else:
+						repo_last_commit = ""
+				
+				
+				# check for readme.md readme Readme.md readme.txt
+				readme = ""
+				check_readme = os.listdir(pathtoplugins + pluginname + "/")
+				for each in check_readme:		
+					if each.lower().find("readme") != -1:
+						with open(pathtoplugins + pluginname + "/" + each) as readmefile:
+							readme = "<details>\n<summary>:blue_book: Plugin readme</summary>\n<blockquote>" + readmefile.read() + "\n</blockquote>\n</details>"
+					
 				file1.writelines(replacevarp(tempplug)) # write plugin template entry, exchanging %variables%
 		file1.writelines(tempcatdownt) # write lower category template

@@ -1,15 +1,3 @@
-mission "revealVariants"
-	description `Adds ship Variants to sales, this is not recommended as it massively bloats shipyards. You will need to depart from the planet before changes are made to shipyards.`
-	job
-	name `Toggle Variants`
-	on accept
-		event "revealVariants"
-		set "variantsRevealed"
-	repeat
-	source
-		government "Faction" "Omnis" "Plugin"
-	to offer
-		not `variantsRevealed`
 event "revealVariants"
 	planet "Everything "
 		add shipyard "deprecatedVariants"
@@ -26,7 +14,6 @@ event "revealVariants"
 		add shipyard "wandererVariants"
 	planet "Deprecated "
 		add shipyard "deprecatedVariants"
-	#	Factions
 	planet " Coalition"
 		add shipyard "coalitionVariants"
 	planet "  Coalition"
@@ -67,18 +54,6 @@ event "revealVariants"
 		add shipyard "wandererVariants"
 	planet "  Wanderer"
 		add shipyard "wandererVariants"
-mission "hideVariants"
-	description `Hides ship Variants from sales. If the shipyard UI has become too bloated, this is recommended. You will need to depart from the planet before changes are made to shipyards.`
-	job
-	name `Toggle Variants`
-	on accept
-		event "hideVariants"
-		clear "variantsRevealed"
-	repeat
-	source
-		government "Faction" "Omnis" "Plugin"
-	to offer
-		has "variantsRevealed"
 event "hideVariants"
 	planet "Everything "
 		remove shipyard "deprecatedVariants"
@@ -95,7 +70,6 @@ event "hideVariants"
 		remove shipyard "wandererVariants"
 	planet "Deprecated "
 		remove shipyard "deprecatedVariants"
-	#	Factions
 	planet " Coalition"
 		remove shipyard "coalitionVariants"
 	planet "  Coalition"

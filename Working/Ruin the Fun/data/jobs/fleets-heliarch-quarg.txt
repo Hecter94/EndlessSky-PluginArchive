@@ -1,0 +1,31 @@
+mission "Ruin-the-Fun Chaos (Heliarchs vs Quargs)"
+	job
+	name "[toggle fleet] Heliarchs vs Quargs"
+	description "Adds friendly Quarg and Heliarch fleets to RTF0, to bring even more peace."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	destination RTF0-P
+	to accept
+		not "Ruin-the-Fun Chaos (Heliarchs vs Quargs): active"
+	to complete
+		never
+	to fail
+		never
+	on accept
+		set "Ruin-the-Fun Chaos (Heliarchs vs Quargs): enabled"
+		event "Ruin-the-Fun Chaos (Heliarchs vs Quargs) (Enable)"
+	on abort
+		clear "Ruin-the-Fun Chaos (Heliarchs vs Quargs): enabled"
+		event "Ruin-the-Fun Chaos (Heliarchs vs Quargs) (Disable)"
+
+event "Ruin-the-Fun Chaos (Heliarchs vs Quargs) (Enable)"
+	system RTF0
+		add fleet Heliarch 350
+		add fleet "Large Quarg" 2000
+
+event "Ruin-the-Fun Chaos (Heliarchs vs Quargs) (Disable)"
+	system RTF0
+		remove fleet Heliarch
+		remove fleet "Large Quarg"

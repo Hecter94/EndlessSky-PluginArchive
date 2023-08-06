@@ -797,6 +797,8 @@ mission "MGF: Canaveral Naval Yard expansion 1"
 
 event "mgf: canaveral naval yard expansion 1 begin"
 
+event "mgf: canaveral naval yard expansion 1 auto"
+
 mission "MGF: Canaveral Naval Yard Expansion Auto"
 	landing
 	invisible
@@ -1047,6 +1049,15 @@ fleet "MGF: Navy CounterBH Task Force"
 		"Rainmaker" 6
 		"Gunboat" 4
 
+mission "MGF: Player Reduced AntiMHL Activity"
+	landing
+	invisible
+	to offer
+		"MGF: MHL destory BH job done" >= 16
+	on offer
+		event "mgf: reduced antimhl activity" 30
+		fail
+
 event "mgf: reduced antimhl activity"
 	system Zubeneschamali
 		add fleet "Large Bounty Hunters (AntiMHL)" 50800
@@ -1079,6 +1090,113 @@ event "mgf: reduced antimhl activity"
 		add fleet "Large Bounty Hunters (AntiMHL)" 50800
 	system Cebalrai
 		add fleet "Large Bounty Hunters (AntiMHL)" 50800
+
+mission "MGF: Reduced Navy CounterBH Task Force"
+	landing
+	invisible
+	to offer
+		has "event: mgf: reduced antimhl activity"
+	on offer
+		event "mgf: reduced navy counterbh fleet" 90
+		fail
+
+event "mgf: reduced navy counterbh fleet"
+	system Rutilicus
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+	system "Kaus Australis"
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+	system Peacock
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+	system Ascella
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+	system Rasalhague
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+	system Cebalrai
+		remove fleet "MGF: Navy CounterBH Task Force" 18000
+
+	system Rutilicus
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+	system "Kaus Australis"
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+	system Peacock
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+	system Ascella
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+	system Rasalhague
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+	system Cebalrai
+		add fleet "MGF: Navy CounterBH Task Force" 58000
+
+mission "MGF: AntiMHL Bounty Hunter Hunts Player"
+	landing
+	invisible
+	repeat
+	to offer
+		random > 5
+		"MGF: MHL destory BH job done" >= 6
+		"armament detterence" < 80
+		"reputation: MGF: Bounty Hunter (AntiMHL)" < 0
+	
+	npc kill
+		government "MGF: Bounty Hunter (AntiMHL)"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+	npc kill
+		to spawn
+			"armament detterence" > 40
+		government "MGF: Bounty Hunter (AntiMHL)"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+	npc kill
+		to spawn
+			"armament detterence" > 60
+		government "MGF: Bounty Hunter (AntiMHL)"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+mission "MGF: MHL-Marstel Exclusive Unlock"
+	landing
+	name "MarStel Exclusive Warehouse"
+	description `Maryhal Logistic have made a deal with MarStel Industries to allow you to purchase special outfits and and unreleased ships.`
+	waypoint Zubeneschamali
+	waypoint `Alpha Centauri`
+	deadline 2
+	source
+		near "Sol" 0 200
+	to offer
+		or
+			"MGF: MHL destory BH job done" >= 3
+			and
+				"MGF: MHL scouting job done" >= 24
+				"reputation: MGF: Bounty Hunter (AntiMHL)" < 0
+		"reputation: MGF: Maryhal Logistic" >= 200
+	on offer
+		event "mgf: marstel exclusive unlock"
+			conversation
+				`Upon landing you received a message from Maryhal Logistic. As a thanks to your recent help with scouting and destroying mercenary fleet attacking MHL convoy a deal have been made with MarSteal Industries to provide you access to unique outfits and unreleased ships avaliable for purchase at Zug and Chiron.`
+					decline
+
+event "mgf: marstel exclusive unlock"
+	planet Zug
+		add outfitter "MarStel Advanced Exclusive"
+		add shipyard "MarStel Advanced Exclusive"
+	planet Chiron
+		add outfitter "MarStel Advanced Exclusive"
+		add shipyard "MarStel Advanced Exclusive"
 
 #===========================NGK
 

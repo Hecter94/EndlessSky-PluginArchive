@@ -72,7 +72,7 @@ mission "SB-Labs Vindicator 3"
 	name "Escort Vindicator"
 	description "Escort the SB-Labs Vindicator to <destination>."
 	source "Rust"
-	destination "Glaze"
+	destination "Zug"
 	to offer
 		has "SB-Labs Vindicator 2: done"
 	on offer
@@ -138,7 +138,7 @@ mission "SB-Labs Vindicator 4"
 	landing
 	name "Return to <planet>"
 	description "Oathbreakers have started a siege in the <system> system. Escape the siege, then return Barmy Edwards to <destination>."
-	source "Glaze"
+	source "Zug"
 	destination "Rust"
 	to offer
 		has "SB-Labs Vindicator 3: done"
@@ -230,7 +230,7 @@ mission "SB-Labs Vindicator 4"
 			has "event: Pirate Glaze Reinforcements"
 		government "Pirate"
 		personality entering staying uninterested
-		system "Aldhibain"
+		system "Zubeneschamali"
 		fleet "Marauder Parade" 4
 
 	on complete
@@ -238,7 +238,7 @@ mission "SB-Labs Vindicator 4"
 		payment 100000
 		log `After a series of adventures, I am now the lawful owner of Southbound Shipyards prototype Vindicator heavy warship. While the concentrated firing mount is an interesting concept, I hope to one day find a gun that truly diplays the potential of this ship.` 
 		conversation
-			`Barmy Edwards thanks you for safely returning him home. You receive a few messages when you land. The timing of the pirate attack couldn't have been more fortunate. Ricardo managed to convince everyone that you had taken the Vindicator in order to distract the pirates. Luring away a significant portion of their fleet may have turned the tide of battle in favor of the defenders. Glaze is even rewarding you with <payment> for your contribution to the planetary defense. Southbound Shipyards has decided to let you keep the Vindicator to avoid any public backlash for antagonizing the new hero of Glaze.`
+			`Barmy Edwards thanks you for safely returning him home. You receive a few messages when you land. The timing of the pirate attack couldn't have been more fortunate. Ricardo managed to convince everyone that you had taken the Vindicator in order to distract the pirates. Luring away a significant portion of their fleet may have turned the tide of battle in favor of the defenders. Zug is even rewarding you with <payment> for your contribution to the planetary defense. Southbound Shipyards has decided to let you keep the Vindicator to avoid any public backlash for antagonizing the new hero of Zug.`
 
 event "Pirate Glaze Reinforcements"
 
@@ -304,7 +304,7 @@ mission "Oathbreaker Liberator 3"
 	name "Escort Liberator"
 	description "Escort the SB-Labs Liberator to <destination>."
 	source "Rust"
-	destination "Glaze"
+	destination "Zug"
 	to offer
 		has "Oathbreaker Liberator 2: done"
 	on offer
@@ -370,7 +370,7 @@ mission "Oathbreaker Liberator 4"
 	landing
 	name "Return to <planet>"
 	description "Oathbreakers have started a siege in the <system> system. Escape the siege, then return Barmy Edwards to <destination>."
-	source "Glaze"
+	source "Zug"
 	destination "Rust"
 	to offer
 		has "Oathbreaker Liberator 3: done"
@@ -457,7 +457,7 @@ mission "Oathbreaker Liberator 4"
 			has "event: Oathbreaker Glaze Reinforcements"
 		government "Oathbreaker"
 		personality entering staying uninterested
-		system "Aldhibain"
+		system "Zubeneschamali"
 		fleet "Large Oathbreaker" 4
 		fleet "Small Oathbreaker" 8
 
@@ -466,7 +466,7 @@ mission "Oathbreaker Liberator 4"
 		payment 100000
 		log `After a series of adventures, I am now the lawful owner of Southbound Shipyards prototype Liberator heavy warship. While the concentrated firing mount is an interesting concept, I hope to one day find a gun that truly diplays the potential of this ship.` 
 		conversation
-			`Barmy Edwards thanks you for safely returning him home. You receive a few messages when you land. The timing of the Oathbreaker attack couldn't have been more fortunate. Ricardo managed to convince everyone that you had taken the Liberator in order to distract the Oathbreakers. Luring away a significant portion of their fleet may have turned the tide of battle in favor of the defenders. Glaze is even rewarding you with <payment> for your contribution to the planetary defense. Southbound Shipyards has decided to let you keep the Liberator to avoid any public backlash for antagonizing the new hero of Glaze.`
+			`Barmy Edwards thanks you for safely returning him home. You receive a few messages when you land. The timing of the Oathbreaker attack couldn't have been more fortunate. Ricardo managed to convince everyone that you had taken the Liberator in order to distract the Oathbreakers. Luring away a significant portion of their fleet may have turned the tide of battle in favor of the defenders. Zug is even rewarding you with <payment> for your contribution to the planetary defense. Southbound Shipyards has decided to let you keep the Liberator to avoid any public backlash for antagonizing the new hero of Zug.`
 
 event "Oathbreaker Glaze Reinforcements"
 
@@ -538,6 +538,8 @@ mission "Plasma Cluster Cannons 3"
 	to offer
 		has "event: Plasma Cluster Cannon pirate development"
 	on offer
+		event "Plasma Cluster Cannons pirate core"
+		set "plasma cluster cannon new tortuga patched"
 		conversation
 			scene "outfit/plasma cluster cannon"
 			`You overhear some bounty hunters mention that the <npc> is a vicious warship. It seems the ship is armed with Plasma Cluster Cannons. A bounty is offering a reward of <payment> for destroying it and its fleet.`
@@ -546,8 +548,6 @@ mission "Plasma Cluster Cannons 3"
 					accept
 				`	(Let it go.)`
 					decline
-	on decline
-		event "Plasma Cluster Cannons pirate core"
 	npc kill
 		government "Bounty"
 		system
@@ -558,7 +558,6 @@ mission "Plasma Cluster Cannons 3"
 		ship "Marauder Vanguard (Plasma Cluster)" "Fire Spitter"
 		dialog `You've defeated the <npc> and it's fleet. Return to <destination> for payment.`
 	on complete
-		event "Plasma Cluster Cannons pirate core"
 		payment 600000
 		log `Pirates must have used the Plasma Cluster Cannon that was stolen from you to develop their own.`
 		conversation
@@ -569,17 +568,33 @@ outfitter "Plasma Cluster Cannon"
 	"Plasma Cluster Cannon"
 			
 event "Plasma Cluster Cannons pirate core"
-	planet "Buccaneer Bay"
-		add outfitter "Plasma Cluster Cannon"
-	planet Covert
-		add outfitter "Plasma Cluster Cannon"
-	planet "Deadman's Cove"
-		add outfitter "Plasma Cluster Cannon"
-	planet Stormhold
+	planet "New Tortuga"
 		add outfitter "Plasma Cluster Cannon"
 	fleet "Large Core Pirates"
 		add variant 1
 			"Vanguard (Plasma Cluster)"
+
+mission "Plasma Cluster Cannon New Tortuga Patch"
+	landing
+	invisible
+	to offer
+		has "event: Plasma Cluster Cannons pirate core"
+		not "plasma cluster cannon new tortuga patched"
+	on offer
+		event "plasma cluster cannon new tortuga patch"
+		fail
+
+event "plasma cluster cannon new tortuga patch"
+	planet "New Tortuga"
+		add outfitter "Plasma Cluster Cannon"
+	planet "Buccaneer Bay"
+		remove outfitter "Plasma Cluster Cannon"
+	planet Covert
+		remove outfitter "Plasma Cluster Cannon"
+	planet "Deadman's Cove"
+		remove outfitter "Plasma Cluster Cannon"
+	planet Stormhold
+		remove outfitter "Plasma Cluster Cannon"
 
 
 
@@ -587,7 +602,10 @@ mission "Plexus Prototype 1"
 	minor
 	name "Investigate Zug"
 	description "Something happened near <destination>, but Southbound Shipyards is keeping it a secret."
-	source "Glaze"
+	source
+		government "Free Worlds"
+		attributes "spaceport"
+		not attributes "station" "uninhabited"
 	destination "Zug"
 	to offer
 		has "event: Oathbreaker diminish 2"
@@ -603,15 +621,15 @@ mission "Plexus Prototype 1"
 			branch "Liberator"
 				has "Oathbreaker Liberator 4: done"
 
-			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Vindicator. "I'd heard the <ship> arrived and decided I should welcome you back to Glaze. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Vindicator. Management is dead set on getting it into production as soon as possible."`
+			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Vindicator. "I'd heard the <ship> arrived and decided I should contact you. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Vindicator. Management is dead set on getting it into production as soon as possible."`
 				goto Plexus
 
 			label Liberator
-			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Liberator. "I'd heard the <ship> arrived and decided I should welcome you back to Glaze. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Liberator. Management is dead set on getting it into production as soon as possible."`
+			`	"Captain <last>!" It's Ricardo Astillero, the engineer from Southbound Shipyards R&D who asked you to steal the Liberator. "I'd heard the <ship> arrived and decided I should contact you. I thought perhaps you might be interested in helping us test the Plexus, the original design for the Liberator. Management is dead set on getting it into production as soon as possible."`
 
 			label Plexus
 			`	Before you can respond, Ricardo's communicator beeps loudly. "Sorry, I have to take this call." Ricardo takes the call. But after a minute of listening, he reacts in shock. "What! The Plexus? When did they find out? Mmmhmm. Near Zug? Alright, I'll be there."`
-			`	After putting the communicator away, Ricardo turns to you, "I have to get back to the office. Unfortunately, we won't be able to test the Plexus today."`
+			`	After putting the communicator away, Ricardo turns to you, "I have to get back to the office. Unfortunately, we won't be able to test the Plexus any time soon."`
 			choice
 				`	"Did something happen to the Plexus?"`
 				`	"What's near Zug?"`
@@ -625,7 +643,7 @@ mission "Plexus Prototype 1"
 
 	on complete
 		conversation
-			`After asking around Zug, you've learned that a pirate ship that resembles a Dreadnought attacked a few days ago then fled. Perhaps pirates stole the Plexis prototype. Unfortunately, no one here knows where they are now.`
+			`After asking around Zug, you've learned that a pirate ship that resembles a Dreadnought attacked a few days ago then fled. Perhaps pirates stole the Plexus prototype. Unfortunately, no one here knows where they are now.`
 
 mission "Plexus Prototype 2"
 	landing
@@ -810,6 +828,7 @@ mission "Plasma Cluster Cannons: Rust"
 	description "Deliver a set of Plasma Cluster Cannons to Southbound Shipyards on <destination>. Payment is <payment>."
 	cargo "Plasma Cluster Cannons" 175
 	source Rust
+	destination Zug
 	to offer
 		or
 			has "event: Dreadnought Evolution - Vindicator"
@@ -821,12 +840,12 @@ mission "Plasma Cluster Cannons: Rust"
 			branch "liberator"
 				has "event: Dreadnought Evolution - Liberator"
 			
-			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Vindicator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to Glaze. Would like to take on the delivery job? It pays <payment>."`
+			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Vindicator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to <destination>. Would like to take on the delivery job? It pays <payment>."`
 				goto end
 			
 			label liberator
 			
-			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Liberator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to Glaze. Would like to take on the delivery job? It pays <payment>."`
+			`You run into Barmy at the spaceport. "Hey <first>, it looks like Southbound Shipyards ended up making the Liberator after all. The outfitter here began stocking Plasma Cluster Cannons. We also just produced a fresh batch of them that need to get to <destination>. Would like to take on the delivery job? It pays <payment>."`
 			
 			label end
 			

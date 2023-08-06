@@ -1,14 +1,14 @@
-name: (scheduled) check updated plugins
+name: (scheduled) check updated plugins + readme
 env:
   github_token: ${{ secrets.GITHUB_TOKEN }}
 on: 
   schedule: 
-    - cron: '30 23 * * *' 
-    # runs at 23:30 utc every day
+    - cron: '00 23 * * *' 
+    # runs at 23:00 utc every day
     # minute(0-59) / hour(0-23) / day of month(1-31) / month(1-12) / day of week(0-6)
 jobs:
   First:
-    name: First job
+    name: check updated plugins + readme
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "script" 
           git config user.email "<>"
-          git add res/ Working/
+          git add 'res/news.txt' 'res/last_commits.txt' 'Working/'
           git commit -m "Plugins updated" || true
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -42,19 +42,14 @@ jobs:
           replacesArtifacts: true
           updateOnlyUnreleased: false
           artifacts: "temp/*.zip"
-      - name: Delete zips
-        run: |
-          import shutil
-          import os
-          if os.path.isdir("temp"):
-            shutil.rmtree("temp")
-        shell: python
+      - name: Make README.md
+        run: python res/src/makemd.py
       - name: Commit file
         run: |
           git config user.name "script" 
           git config user.email "<>"
-          git add .
-          git commit -m "Plugins updated" || true
+          git add 'README.md' 'res/allnews.md'
+          git commit -m "Plugin md generated" || true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

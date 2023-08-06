@@ -10,7 +10,7 @@ Ruin-The-Fun lets you change your captain's name, choose the color swizzle of yo
 
 This assumes you have installed and enabled the plugin. If not, see [Install Instructions](#install-instructions).
 
-**Be advised against using this plugin with your favorite pilot's save**, since it will make your hours of labor nonsensical.
+⚠️ **Be advised against using this plugin with your favorite pilot's save**, since it will make your hours of labor nonsensical.
 If you want to use this plugin for an existing save anyway, then **MAKE A BACKUP OF YOUR PILOT** (for instance with the `Add snapshot` button).
 
 ![new pilot menu](./images/screenshot/add-snapshot.png)
@@ -141,12 +141,12 @@ This will only work if all plugins, including RTF, are in the same `plugins` fol
 ## Moving an RTF system
 You can use a mission and an event like this to move a RTF system to your plugin's galaxy:
 ```
-mission "MYPLUGIN: Move RTF10"
+mission "MYPLUGIN Move RTF10"
     landing
     on offer
-        event "MYPLUGIN: Move RTF10"
+        event "MYPLUGIN Move RTF10"
         fail
-event "MYPLUGIN: Move RTF10"
+event "MYPLUGIN Move RTF10"
 	system "RTF10"
 		pos -2700 -1500
 ```

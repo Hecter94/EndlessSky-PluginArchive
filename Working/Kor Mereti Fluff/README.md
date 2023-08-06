@@ -1,3 +1,5 @@
+## This plugin is deprecated and you can find the updated version merged with the [`Cromha-Expansion-plugin`](https://github.com/OcelotWalrus/Cromha-Expansion-plugin)
+
 <p align=center><img src="https://github.com/OcelotWalrus/Kor-Mereti-Fluff/assets/87318892/69c9863e-98cc-46d1-a922-6ca735e990b5" /></p>
 
 <h1><p align=center>Endless Sky Plugin:<br />Kor Mereti Fluff</p></h1>
