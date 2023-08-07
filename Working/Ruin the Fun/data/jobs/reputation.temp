@@ -28,28 +28,36 @@ mission "Ruin-the-Fun Reputations"
 			label reset
 			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
 			action
-REPUTATION_RESET_ALL
+[[tmp/reputation-resets.tmp
+				\1
+]]
 			`	Reputations have been reset.`
 				decline
 			
 			label "reset friendly"
 			# cat default_saved_reputations.tmp | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = \1/'
 			action
-REPUTATION_RESET_FRIENDLIES
+[[tmp/friendlies-reputation-resets.tmp
+				\1
+]]
 			`	Friendly factions are now friendly again.`
 				goto begin
 			
 			label friendly
 			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = 1/'
 			action
-REPUTATION_FRIENDLY_ALL
+[[tmp/friendly-reputation-sets.tmp
+				\1
+]]
 			`	All factions are now friendly.`
 				decline
 			
 			label hostile
 			# cat default_saved_reputations.tmp | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$/\1 \2/" | sed -r 's/ ([^ ]*)$/" = -1/'
 			action
-REPUTATION_HOSTILE_ALL
+[[tmp/hostile-reputation-sets.tmp
+				\1
+]]
 			`	Everyone now wants to make an argument with you.`
 				decline
 			
@@ -62,7 +70,29 @@ REPUTATION_HOSTILE_ALL
 					decline
 				`	(Toggle reputations globally...)`
 					goto begin
-REPUTATION_TOGGLE_CHOICES
+[[tmp/governments.list.tmp
+				`	\1:	Currently Friendly	(toggle)`
+					to display
+						"reputation: \1" >= 0
+					goto "toggle hostile: \1"
+				`	\1:	Currently Hostile	(toggle)`
+					to display
+						"reputation: \1" < 0
+					goto "toggle friendly: \1"
+]]
 			
-REPUTATION_TOGGLE_LABELS
+[[tmp/governments.list.tmp
+			label "toggle friendly: \1"
+			action
+				"reputation: \1" = 10
+			`	Reputation with \1 changed to Friendly.`
+				goto toggles
+]]
+[[tmp/governments.list.tmp
+			label "toggle hostile: \1"
+			action
+				"reputation: \1" = -10
+			`	Reputation with \1 changed to Hostile.`
+				goto toggles
+]]
 		fail

@@ -128,6 +128,7 @@ I have several people that really needs credits for my work here, first because 
     * He made great plugins with great ideas that have me other great ideas.
   * [`@Petersupes`](https://github.com/Petersupes)
     * He created the [Sheragi Rebirth](https://github.com/Petersupes/sheragi-rebirth) plugin, which I partially copied.
+  * The whole Endless Sky content creator community!
 
 
 [es]: https://github.com/endless-sky/endless-sky

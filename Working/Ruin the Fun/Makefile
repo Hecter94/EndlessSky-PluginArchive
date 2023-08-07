@@ -127,7 +127,18 @@ tmp/licenses.list.tmp: tmp/data-dirs.tmp | tmp
 	@echo "Listing licenses..."
 	@cat tmp/data-dirs.tmp | xargs grep -P -R "outfit.*License" | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sed 's| License$$||' | sort | uniq > $@
 
-.PHONY: data/outfitters/all-outfits.txt
+tmp/reputation-resets.tmp: default-reputations.txt | tmp
+	@cat default-reputations.txt | sed -e "s/^\(\t\"\|\t\)/\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
+
+tmp/friendlies-reputation-resets.tmp: default-reputations.txt | tmp
+	@cat default-reputations.txt | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
+
+tmp/friendly-reputation-sets.tmp: tmp/governments.list.tmp | tmp
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/"reputation: \1" = 10/' > $@
+
+tmp/hostile-reputation-sets.tmp: tmp/governments.list.tmp | tmp
+	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/"reputation: \1" = -10/' > $@
+
 data/outfitters/all-outfits.txt: tmp/outfits.list.tmp | tmp
 	@echo "Updating all-outfits outfitter..."
 	@cat $@ | sed "/\t/d" > tmp/tmp.tmp
@@ -179,35 +190,13 @@ default-reputations.txt:
 	$(error This is currently not generated)
 	#TODO: generate from $(ES_DEFAULT_PILOT_SAVE)
 
-tmp/REPUTATION_RESET_ALL.txt: default-reputations.txt | tmp
-	@cat default-reputations.txt | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
+data/jobs/reputation.txt: data/jobs/reputation.temp tmp/reputation-resets.tmp tmp/friendlies-reputation-resets.tmp tmp/friendly-reputation-sets.tmp tmp/hostile-reputation-sets.tmp
+	@echo "Generating $@..."
+	@tools/substitute-template.py $< > $@
 
-tmp/REPUTATION_RESET_FRIENDLIES.txt: default-reputations.txt | tmp
-	@cat default-reputations.txt | sed "/ -/d" | sed -e "s/^\(\t\"\|\t\)/\t\t\t\t\"reputation: /" | sed "s/\(.*\)\" \(-\?.*\)$$/\1 \2/" | sed -r 's/ ([^ ]*)$$/" = \1/' > $@
-
-tmp/REPUTATION_FRIENDLY_ALL.txt: tmp/governments.list.tmp | tmp
-	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = 10/' > $@
-
-tmp/REPUTATION_HOSTILE_ALL.txt: tmp/governments.list.tmp | tmp
-	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t"reputation: \1" = -10/' > $@
-
-tmp/REPUTATION_TOGGLE_CHOICES.tmp: tmp/governments.list.tmp | tmp
-	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\t\t\`\t\1:\tCurrently Friendly\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" >= 0\n\t\t\t\t\tgoto "toggle hostile: \1"\n\t\t\t\t\`\t\1:\tCurrently Hostile\t(toggle)\`\n\t\t\t\t\tto display\n\t\t\t\t\t\t"reputation: \1" < 0\n\t\t\t\t\tgoto "toggle friendly: \1"/' > $@
-
-tmp/REPUTATION_TOGGLE_LABELS.tmp: tmp/governments.list.tmp | tmp
-	@rm -f $@
-	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle friendly: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = 10\n\t\t\t\`\tReputation with \1 changed to Friendly.\`\n\t\t\t\tgoto toggles/' >> $@
-	@cat tmp/governments.list.tmp | sed 's/^\(.*\)$$/\t\t\tlabel "toggle hostile: \1"\n\t\t\taction\n\t\t\t\t"reputation: \1" = -10\n\t\t\t\`\tReputation with \1 changed to Hostile.\`\n\t\t\t\tgoto toggles/' >> $@
-
-data/jobs/reputation.txt: tmp/REPUTATION_RESET_ALL.txt tmp/REPUTATION_RESET_FRIENDLIES.txt tmp/REPUTATION_FRIENDLY_ALL.txt tmp/REPUTATION_HOSTILE_ALL.txt tmp/REPUTATION_TOGGLE_CHOICES.tmp tmp/REPUTATION_TOGGLE_LABELS.tmp
-	@echo "Generating job $@..."
-	@cp data/jobs/reputation.txt.src data/jobs/reputation.txt
-	@sed -i -e "/REPUTATION_RESET_ALL/{r tmp/REPUTATION_RESET_ALL.txt" -e ";d;}" $@
-	@sed -i -e "/REPUTATION_RESET_FRIENDLIES/{r tmp/REPUTATION_RESET_FRIENDLIES.txt" -e ";d;}" $@
-	@sed -i -e "/REPUTATION_FRIENDLY_ALL/{r tmp/REPUTATION_FRIENDLY_ALL.txt" -e ";d;}" $@
-	@sed -i -e "/REPUTATION_HOSTILE_ALL/{r tmp/REPUTATION_HOSTILE_ALL.txt" -e ";d;}" $@
-	@sed -i -e "/REPUTATION_TOGGLE_CHOICES/{r tmp/REPUTATION_TOGGLE_CHOICES.tmp" -e ";d;}" $@
-	@sed -i -e "/REPUTATION_TOGGLE_LABELS/{r tmp/REPUTATION_TOGGLE_LABELS.tmp" -e ";d;}" $@
+%.txt: %.temp
+	@echo "Generating $@..."
+	@tools/substitute-template.py $< > $@
 
 .PHONY: update
 clean:
