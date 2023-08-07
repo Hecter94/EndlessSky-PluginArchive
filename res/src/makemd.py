@@ -198,7 +198,7 @@ for each in  newslist:
 		if ncat == "N/A":
 			ncat = "uncategorized"
 		# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
-		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + indexfile + "#" + ncat + ")<br>\n"
+		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + "plugins.md#" + ncat + ")<br>\n"
 	else: # no listfile found, plugin must got deleted or renamed
 		nline = ndate + " | " + nnew_or_update + " Plugin " + nname + " | Plugin got deleted or renamed <br>\n"
 	allnews = allnews + nline
@@ -216,6 +216,7 @@ with open(indexfile, "w") as file1:
 	temphead = replacevar(temphead)
 	temphead = replacevarp(temphead)
 	file1.writelines(temphead) # writer header template
+with open("plugins.md", "w") as file1:
 	for cat in categories: # for each category
 		tempcatupt = tempcatup.replace("%category%", cat)
 		tempcatupt = replacevar(tempcatupt)
