@@ -23,11 +23,25 @@ RTF_PLANET_FILES += data/map/planets/RTF-8-P.txt
 RTF_PLANET_FILES += data/map/planets/RTF-9-P.txt
 RTF_PLANET_FILES += data/map/planets/RTF-10-P.txt
 RTF_JOB_FILES += data/jobs/reputation.txt
+RTF_JOB_FILES += data/jobs/conditions/conditions.txt
 RTF_JOB_FILES += data/jobs/visit-systems.txt
 RTF_JOB_FILES += data/jobs/visit-planets.txt
 GENERATED_DATA_FILES += $(RTF_PLANET_FILES)
 GENERATED_DATA_FILES += $(RTF_JOB_FILES)
 GENERATED_DATA_FILES += data/events/all-licenses.txt
+
+# List of files that must be included in the plugin's zip
+# This may not exactly match .gitignore
+PLUGIN_FILES += about.txt
+PLUGIN_FILES += copyright
+PLUGIN_FILES += data
+PLUGIN_FILES += default-reputations.txt
+PLUGIN_FILES += icon.png
+PLUGIN_FILES += images
+PLUGIN_FILES += LICENSE
+PLUGIN_FILES += Makefile
+PLUGIN_FILES += README.md
+PLUGIN_FILES += tools
 
 
 
@@ -48,6 +62,10 @@ tmp:
 tmp/data-dirs.tmp: | tmp $(ES_DATA)
 	@echo "Overriding data sources..."
 	@echo $(ES_DATA) > $@
+	@echo "Sources used:"
+	@cat $@
+	@echo "_deprecated folders:"
+	@cat $@ | sed "s|$$|_deprecated/|"
 
 tmp/enabled-plugins.tmp: ../../plugins.txt | tmp
 	@echo "Updating enabled plugin list..."
@@ -191,14 +209,15 @@ default-reputations.txt:
 	#TODO: generate from $(ES_DEFAULT_PILOT_SAVE)
 
 data/jobs/reputation.txt: data/jobs/reputation.temp tmp/reputation-resets.tmp tmp/friendlies-reputation-resets.tmp tmp/friendly-reputation-sets.tmp tmp/hostile-reputation-sets.tmp
-	@echo "Generating $@..."
-	@tools/substitute-template.py $< > $@
-
+data/jobs/conditions/conditions.txt: data/jobs/conditions/conditions.temp data/jobs/conditions/condition-switches.list data/jobs/conditions/karma-values.list
 %.txt: %.temp
-	@echo "Generating $@..."
+	@echo "Generating $@ from $<..."
 	@tools/substitute-template.py $< > $@
 
-.PHONY: update
+tmp/es-ruin-the-fun.zip: update | $(PLUGIN_FILES) tmp
+	zip -r $@ $(PLUGIN_FILES)
+
+.PHONY: clean
 clean:
 	@echo "Cleaning up..."
 	@rm -rf tmp/

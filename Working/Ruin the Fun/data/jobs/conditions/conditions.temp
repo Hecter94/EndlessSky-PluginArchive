@@ -1,0 +1,83 @@
+mission "Ruin-the-Fun Conditions"
+	job
+	name "Conditions"
+	description "Set your karma and other conditions."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			label choices
+			`	Choose:`
+			label `re-choices`
+			choice
+[[condition-switches.list
+				`	[  ] "\1"`
+					to display
+						not `\1`
+					goto `switch on \1`
+				`	[x] "\1"`
+					to display
+						`\1` == 1
+					goto `switch off \1`
+				`	[n] "\1" (currently not 0 nor 1)`
+					to display
+						`\1` != 0
+						`\1` != 1
+					goto `switch off \1`
+]]
+				`	karma...`
+					goto karma
+				`	(Done.)`
+					decline
+			
+[[condition-switches.list
+			label `switch on \1`
+			action
+				set `\1`
+			`Set "\1".`
+				goto `re-choices`
+			label `switch off \1`
+			action
+				clear `\1`
+			`Cleared "\1".`
+				goto `re-choices`
+]]
+			
+			label karma
+			`Choose your karma.`
+				to display
+					and
+						karma >= -4
+						karma <= 6
+			`Choose your karma (Currently under -4).`
+				to display
+					karma < -4
+			`Choose your karma (Currently over 6).`
+				to display
+					karma > 6
+			label `karma re-choice`
+			choice
+[[karma-values.list
+				`	\1 <- current`
+					to display
+						karma == \1
+					goto karma
+				`	\1`
+					to display
+						karma != \1
+					goto `karma \1`
+]]
+				`	(Done.)`
+					goto choices
+
+[[karma-values.list
+			label `karma \1`
+			action
+				karma = \1
+			`Your karma have been changed to \1`
+				goto `karma re-choice`
+]]
+		fail

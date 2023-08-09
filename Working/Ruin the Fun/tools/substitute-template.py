@@ -11,16 +11,15 @@ local_dir = "./"
 source_file_lines = ""
 
 mode = os.fstat(0).st_mode
-if stat.S_ISFIFO(mode):
-	assert(len(sys.argv) == 1)
-	source_file_lines = sys.stdin.read()
-elif stat.S_ISREG(mode):
-    raise Exception("What are you doing?")
-else:
-	assert(len(sys.argv) == 2)
+if len(sys.argv) == 2:
+	if stat.S_ISFIFO(mode):
+		print("WARNING: Ignoring standard input, an argument was provided!", file=sys.stderr)
 	local_dir = os.path.dirname(sys.argv[1]) + "/"
 	with open(sys.argv[1]) as f:
 		source_file_lines = list(f.read().splitlines())
+else:
+	assert(stat.S_ISFIFO(mode))
+	source_file_lines = sys.stdin.read()
 
 
 

@@ -1171,7 +1171,7 @@ mission "MGF: AntiMHL Bounty Hunter Hunts Player"
 mission "MGF: MHL-Marstel Exclusive Unlock"
 	landing
 	name "MarStel Exclusive Warehouse"
-	description `Maryhal Logistic have made a deal with MarStel Industries to allow you to purchase special outfits and and unreleased ships.`
+	description `Maryhal Logistic have made a deal with MarStel Industries to allow you to purchase special outfits and unreleased ships.`
 	waypoint Zubeneschamali
 	waypoint `Alpha Centauri`
 	deadline 2
@@ -1769,6 +1769,124 @@ mission "MGF: Syndi Platinum License Cancel (afr 1yr)"
 		clear "license: Syndicate Platinum"
 		fail
 
+#Requires 0.10.3/Continuous for take ship
+mission "MGF: Syndicate Hunt Rogue Fusillade"
+	job
+	name "Stolen Prototype Warship"
+	description `A group of rogue Syndicate employee has stolen a prototype warship called <npc>. It is last seen heading to <waypoints>. Destory it and the payment is <payment>.`
+	deadline 45
+	to offer
+		never
+		"combat rating" > 8000
+		"reputation: Syndicate" > 110
+	source
+		government Syndicate
+		attributes shipyard
+		not attributes station
+	waypoint "Misam"
+
+	npc kill
+		government "Pirate"
+		personality 
+			confusion 30
+			staying disables harvests plunders
+		system Misam
+		fleet
+			names "pirates"
+			variant
+				"AP-22 Fusillade"
+	
+	on complete
+		payment 2500000
+		conversation
+			branch "captured"
+				has "ship model: AP-22 Fusillade"
+			`The Syndicate thanks you for your assistace and transfer you <payment>.`
+			label end
+			``
+				decline
+
+			label captured
+			`	You were directed to land at a Syndicate private spaceport and as soon as you landed a few Syndicate personnels arrive to thank you for the assistance and hands you <payment>.`
+			`	"We've noticed that you've managed to capture the prototype as well." one of the representative speaks peeking at the ship you just captured landing next to you.`
+			`	"We would like to offer you additional 50,000,000 credits to buy it back so we can continue working on it into a more refined product."`
+			choice
+				`	(Sell the ship.)`
+					goto sell50M
+				`	"No."`
+			`	"How about 10 times of that offer?" he says.`
+			choice
+				`	(Sell the ship.)`
+					goto sell500M
+				`	"No."`
+			action
+				"reputation: Syndicate" -= 100
+				"MGF: kept fusillade" = 1
+			`	"Alright. Thank you for your time." He says while keeping a smiling face but something is telling you he's not happy about it. The team of Syndicate personnels leaves without bothering you any further.`
+				decline
+
+			label sell50M
+			action
+				payment 50000000
+				"reputation: Syndicate" += 50
+				take ship "AP-22 Fusillade"
+
+			`	"Perfect!" He says and take out his phone to transfer you 50 million credits as agreed, "Pleasure doing business with you.", immediately the team rushes toward the ship and take it into a massive hangar nearby.`
+				decline
+
+			label sell500M
+			action
+				payment 500000000
+				"reputation: Syndicate" += 30
+				take ship "AP-22 Fusillade"
+
+			`	"Perfect!" He says and take out his phone to transfer you 500 million credits as agreed, "Pleasure doing business with you.", immediately the team rushes toward the ship and take it into a massive hangar nearby.`
+				decline
+			
+mission "MGF: Syndicate Kept Fusillade - Hunted"
+	landing
+	invisible
+	repeat 5
+	to offer
+		random < 40
+		has "ship model (all): AP-22 Fusillade"
+		has "MGF: kept fusillade"
+		not "MGF: Syndicate Kept Fusillade - Hunted: active"
+
+	npc kill
+		government "Bounty Hunter"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+	npc kill
+		to spawn
+			"armament detterence" > 35
+		government "Bounty Hunter"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+	npc kill
+		to spawn
+			"armament detterence" > 55
+		government "Bounty Hunter"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting
+		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+
+
+
 # A job to be more interactive and make player more aware of which planet they can earn money at instead of invisible payment that player may or may not notice or annoying pop ups on every other planet they land.
 #TODO: More sophisticated system, allowing player to select some option like techniques they'll use and possibly area. With consequence, e.g. if player used the skimming maneuver too often on a planet that planet might restrict player from doing it or demand fees. Also maybe gain experience which can lead to better pay.
 #Todo make multiple ships stack abit
@@ -1827,6 +1945,8 @@ mission "MGF: Mieusbar Release Announcement"
 	description `You marked <destination> for visiting later to check out the new space liner "TS-1L260 Mieusbar" they just released. (NOTE: Marker will be removed when you visit.)`
 	source
 		government "Republic" "Free Worlds" "Syndicate"
+		attributes spaceport
+		not attributes uninhabited
 	destination Zug
 	to offer
 		has "event: mgf: mieusbar released"
@@ -1849,6 +1969,8 @@ mission "MGF: Ialmuslati Release Announcement"
 	description `You marked <destination> for visiting later to check out the new transport "AD-0032 Ialmuslati" they just released. (NOTE: Marker will be removed when you visit.)`
 	source
 		government "Republic" "Free Worlds" "Syndicate"
+		attributes spaceport
+		not attributes uninhabited
 	destination Follower
 	to offer
 		has "event: mgf: ialmuslati released"
@@ -1865,11 +1987,61 @@ mission "MGF: Ialmuslati Release Announcement"
 				`	(Leave)`
 					decline
 		
+mission "MGF: Zummenstoss Release Announcement"
+	landing
+	name `Check out new ship`
+	description `You marked <destination> for visiting later to check out the new warship "GKS-48 Zummenstoss" they just released. (NOTE: Marker will be removed when you visit.)`
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes spaceport
+		not attributes uninhabited
+	destination 
+		planet Follower Prime Millrace
+		distance 0 10
+	to offer
+		has "event: mgf: zummenstoss on sale"
+		#not "month" >= 10
+		#"year" == 3014
+	on offer
+		conversation
+			scene "scene/mgf zummenstoss combat"
+			`You noticed the TV screen seems to be broadcasting a video of a warship you don't recognize in combat against a pirate Garrison attracting the eyes of several merchant captains and bounty hunters. The Zummenstoss is advertised to be the most powerful warship in the civilian market. According to the ad the ship is now available at for purchase at Follower in Alphard system, Millrace in Fomalhaut system, and Prime in Betelguese system.`
+			choice
+				`	(Mark the planet for visit)`
+					accept
+				`	(Leave)`
+					decline
+
+mission "MGF: H-Class Release Announcement"
+	landing
+	name `Check out new ship`
+	description `You marked <destination> for visiting later to check out the new warship "H-Class Super Container Ship" they just released. (NOTE: Marker will be removed when you visit.)`
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes spaceport
+		not attributes uninhabited
+	destination 
+		planet Hephaestus Foundry
+		distance 0 10
+	to offer
+		has "event: mgf: h-class on sale"
+	on offer
+		conversation
+			scene "thumbnail/mgf hclass inatmos"
+			`Unlike the usual today's Syndicate ads is a little different so you take a look. It shows a new freighter with over double the capacity of previous largest freighter at 13,200 tons to drive the economy forward with even cheaper shipping. It also features a bay for a fleet of drones for to assist during unloading of cargoes. `
+			`	The ship is now available for purchase at Hephaestus and Foundry, two of Syndicate's largest shipyard.`
+			choice
+				`	(Mark the planet for visit)`
+					accept
+				`	(Leave)`
+					decline
+
 mission "MGF: Celestine Available for player"
 	landing
 	name "Celestine Available"
 	to offer
 		"reputation: Luna Winery" >= 250
+		"MGF: Luna Winery Escort Done" >= 3
 	on offer
 		event "mgf: celestine available for player"
 		conversation

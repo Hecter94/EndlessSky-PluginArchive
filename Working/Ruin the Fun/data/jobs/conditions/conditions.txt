@@ -1,0 +1,251 @@
+mission "Ruin-the-Fun Conditions"
+	job
+	name "Conditions"
+	description "Set your karma and other conditions."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			label choices
+			`	Choose:`
+			label `re-choices`
+			choice
+				`	[  ] "chosen sides"`
+					to display
+						not `chosen sides`
+					goto `switch on chosen sides`
+				`	[x] "chosen sides"`
+					to display
+						`chosen sides` == 1
+					goto `switch off chosen sides`
+				`	[n] "chosen sides" (currently not 0 nor 1)`
+					to display
+						`chosen sides` != 0
+						`chosen sides` != 1
+					goto `switch off chosen sides`
+				`	[  ] "main plot completed"`
+					to display
+						not `main plot completed`
+					goto `switch on main plot completed`
+				`	[x] "main plot completed"`
+					to display
+						`main plot completed` == 1
+					goto `switch off main plot completed`
+				`	[n] "main plot completed" (currently not 0 nor 1)`
+					to display
+						`main plot completed` != 0
+						`main plot completed` != 1
+					goto `switch off main plot completed`
+				`	[  ] "free worlds plot completed"`
+					to display
+						not `free worlds plot completed`
+					goto `switch on free worlds plot completed`
+				`	[x] "free worlds plot completed"`
+					to display
+						`free worlds plot completed` == 1
+					goto `switch off free worlds plot completed`
+				`	[n] "free worlds plot completed" (currently not 0 nor 1)`
+					to display
+						`free worlds plot completed` != 0
+						`free worlds plot completed` != 1
+					goto `switch off free worlds plot completed`
+				`	karma...`
+					goto karma
+				`	(Done.)`
+					decline
+			
+			label `switch on chosen sides`
+			action
+				set `chosen sides`
+			`Set "chosen sides".`
+				goto `re-choices`
+			label `switch off chosen sides`
+			action
+				clear `chosen sides`
+			`Cleared "chosen sides".`
+				goto `re-choices`
+			label `switch on main plot completed`
+			action
+				set `main plot completed`
+			`Set "main plot completed".`
+				goto `re-choices`
+			label `switch off main plot completed`
+			action
+				clear `main plot completed`
+			`Cleared "main plot completed".`
+				goto `re-choices`
+			label `switch on free worlds plot completed`
+			action
+				set `free worlds plot completed`
+			`Set "free worlds plot completed".`
+				goto `re-choices`
+			label `switch off free worlds plot completed`
+			action
+				clear `free worlds plot completed`
+			`Cleared "free worlds plot completed".`
+				goto `re-choices`
+			
+			label karma
+			`Choose your karma.`
+				to display
+					and
+						karma >= -4
+						karma <= 6
+			`Choose your karma (Currently under -4).`
+				to display
+					karma < -4
+			`Choose your karma (Currently over 6).`
+				to display
+					karma > 6
+			label `karma re-choice`
+			choice
+				`	4 <- current`
+					to display
+						karma == 4
+					goto karma
+				`	4`
+					to display
+						karma != 4
+					goto `karma 4`
+				`	3 <- current`
+					to display
+						karma == 3
+					goto karma
+				`	3`
+					to display
+						karma != 3
+					goto `karma 3`
+				`	2 <- current`
+					to display
+						karma == 2
+					goto karma
+				`	2`
+					to display
+						karma != 2
+					goto `karma 2`
+				`	1 <- current`
+					to display
+						karma == 1
+					goto karma
+				`	1`
+					to display
+						karma != 1
+					goto `karma 1`
+				`	0 <- current`
+					to display
+						karma == 0
+					goto karma
+				`	0`
+					to display
+						karma != 0
+					goto `karma 0`
+				`	-1 <- current`
+					to display
+						karma == -1
+					goto karma
+				`	-1`
+					to display
+						karma != -1
+					goto `karma -1`
+				`	-2 <- current`
+					to display
+						karma == -2
+					goto karma
+				`	-2`
+					to display
+						karma != -2
+					goto `karma -2`
+				`	-3 <- current`
+					to display
+						karma == -3
+					goto karma
+				`	-3`
+					to display
+						karma != -3
+					goto `karma -3`
+				`	-4 <- current`
+					to display
+						karma == -4
+					goto karma
+				`	-4`
+					to display
+						karma != -4
+					goto `karma -4`
+				`	-5 <- current`
+					to display
+						karma == -5
+					goto karma
+				`	-5`
+					to display
+						karma != -5
+					goto `karma -5`
+				`	-6 <- current`
+					to display
+						karma == -6
+					goto karma
+				`	-6`
+					to display
+						karma != -6
+					goto `karma -6`
+				`	(Done.)`
+					goto choices
+
+			label `karma 4`
+			action
+				karma = 4
+			`Your karma have been changed to 4`
+				goto `karma re-choice`
+			label `karma 3`
+			action
+				karma = 3
+			`Your karma have been changed to 3`
+				goto `karma re-choice`
+			label `karma 2`
+			action
+				karma = 2
+			`Your karma have been changed to 2`
+				goto `karma re-choice`
+			label `karma 1`
+			action
+				karma = 1
+			`Your karma have been changed to 1`
+				goto `karma re-choice`
+			label `karma 0`
+			action
+				karma = 0
+			`Your karma have been changed to 0`
+				goto `karma re-choice`
+			label `karma -1`
+			action
+				karma = -1
+			`Your karma have been changed to -1`
+				goto `karma re-choice`
+			label `karma -2`
+			action
+				karma = -2
+			`Your karma have been changed to -2`
+				goto `karma re-choice`
+			label `karma -3`
+			action
+				karma = -3
+			`Your karma have been changed to -3`
+				goto `karma re-choice`
+			label `karma -4`
+			action
+				karma = -4
+			`Your karma have been changed to -4`
+				goto `karma re-choice`
+			label `karma -5`
+			action
+				karma = -5
+			`Your karma have been changed to -5`
+				goto `karma re-choice`
+			label `karma -6`
+			action
+				karma = -6
+			`Your karma have been changed to -6`
+				goto `karma re-choice`
+		fail
