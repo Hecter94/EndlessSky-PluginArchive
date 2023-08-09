@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-08-09 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
+2023-08-09 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
+2023-08-09 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-08 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
 2023-08-08 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-08 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
@@ -17,9 +20,6 @@
 2023-08-06 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-06 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-05 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
-2023-08-05 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
-2023-08-05 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
-2023-08-05 | updated Plugin 'additional.command.buttons' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#graphics)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -878,15 +878,16 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.57 mb | 2023-08-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-07) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-09) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># es-ruin-the-fun
+<blockquote>Ruin-The-Fun (es-ruin-the-fun)
+===
 
 Cheat plugin for [endless-sky](https://github.com/endless-sky/endless-sky), to ruin your fun, or to assist you in making or testing another plugin.
 
@@ -894,7 +895,21 @@ Ruin-The-Fun lets you change your captain's name, choose the color swizzle of yo
 
 
 
-# Startup
+## Downloads
+
+- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/latest/es-ruin-the-fun.zip):
+  This is a tested and recommended version. But perhaps not the latest.
+- [🎁 Ruin-The-Fun: (Endless Sky latest version)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-latest-version) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/v0.0.18-for-es-v0.10.2/es-ruin-the-fun-auto-updated.zip):
+  This version is automatically generated on every new game version (either pre-release or release).
+  It should feature the latest game content.
+  However, if the data file syntax was changed by the new version, this might cause warnings or errors.
+- [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/es-ruin-the-fun-for-es-continuous.zip):
+  This version is periodically generated to match continuous builds of Endless Sky.
+  If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
+
+
+
+## Startup
 
 This assumes you have installed and enabled the plugin. If not, see [Install Instructions](#install-instructions).
 
@@ -918,7 +933,7 @@ There is other RTF systems everywhere on the map, so you do not have to cross it
 
 
 
-# Spaceport
+## Spaceport
 
 ![Spaceport](./images/screenshot/spaceport-button.png)
 
@@ -927,7 +942,7 @@ More actions are available from the `Job Board`.
 
 
 
-# Job Board
+## Job Board
 
 ![Job Board](./images/screenshot/job-board-button.png)
 
@@ -959,7 +974,7 @@ The following jobs are toggles, their effect is reverted when you abort them:
 
 
 
-# Shipyard
+## Shipyard
 
 ![Shipyard](./images/screenshot/shipyard-button.png)
 
@@ -967,7 +982,7 @@ From the RFT shipyards, all ships in the game are available to you.
 
 
 
-# Outfitter
+## Outfitter
 
 ![Outfitter](./images/screenshot/outfitter-button.png)
 
@@ -984,7 +999,7 @@ RTF also adds a few outfits, all listed under the `Special` category:
 
 
 
-# Assets (placeholders)
+## Assets (placeholders)
 
 You can use those assets as placeholders:
  - [Outfits](./images/outfit/rtf/)
@@ -994,7 +1009,7 @@ If needed, info about individual assets are available from [./copyright](./copyr
 
 
 
-# Install Instructions
+## Install Instructions
 
 This plugin was last made for endless-sky `v0.10.2`, but is likely to include later content.
 
@@ -1012,10 +1027,10 @@ The `plugins` folder should be located at one of those locations:
 
 If the `plugins` folder does not exist, create it.
 
-## Plugin Conflicts
+### Plugin Conflicts
 All the content added by this plugin is prefixed, to avoid conflicts with other plugins.
 
-## Updating Content
+### Updating Content
 You can **update the plugin's vanilla content** by running the following command inside the plugin's directory:
 > make update
 
@@ -1026,7 +1041,7 @@ You can **include content from other plugins** by running the following command 
 
 This will only work if all plugins, including RTF, are in the same `plugins` folder.
 
-## Moving an RTF system
+### Moving an RTF system
 You can use a mission and an event like this to move a RTF system to your plugin's galaxy:
 ```
 mission "MYPLUGIN Move RTF10"
@@ -1041,13 +1056,13 @@ event "MYPLUGIN Move RTF10"
 
 
 
-# Bugs / Suggestions
+## Bugs / Suggestions
 
 Please submit bug reports or suggestions using [GitHub issues](https://github.com/Pshy0/es-ruin-the-fun/issues).
 
 
 
-# License
+## License
 
  > This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  > This Source Code Form is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.
@@ -9368,9 +9383,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 131.76 mb | 2023-08-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 133.35 mb | 2023-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-08-08) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-08-09) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -11346,9 +11361,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cromha Expansion/icon.png' height='100'></img><br>
 
 
-[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 112.95 mb | 2023-08-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.1 mb | 2023-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
 Author: OcelotWalrus | Category: Story <br>
-[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-08) <br>
+[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-09) <br>
 
 >Adds a new civilization to the Korath Space (now named the 'Empire Space'): The Cromha Empire. Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government, that has kind of remixed outfits and ships from other vanilla governments. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory.
 
@@ -11481,7 +11496,7 @@ I have several people that really needs credits for my work here, first because 
   * [`@1010todd`](https://github.com/1010todd)
     * This guys is an insane plugin creator who made tons of great assets, plugins and also have insane ideas. Lot of ideas from this project originally come from some of his work. You can check his plugins [here](https://github.com/endless-sky/endless-sky/discussions/7928). Respect to this guy.
   * [`@MidnightPlugins`](https://github.com/MidnightPlugins)
-    * He made great plugins with great ideas that have me other great ideas.
+    * He made great plugins with great ideas that have have to me other great ideas.
   * [`@Petersupes`](https://github.com/Petersupes)
     * He created the [Sheragi Rebirth](https://github.com/Petersupes/sheragi-rebirth) plugin, which I partially copied.
   * The whole Endless Sky content creator community!
