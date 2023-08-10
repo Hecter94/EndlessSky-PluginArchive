@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-08-10 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
+2023-08-10 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-09 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#ships)<br>
 2023-08-09 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
 2023-08-09 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
@@ -18,8 +20,6 @@
 2023-08-07 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
 2023-08-06 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
 2023-08-06 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-08-06 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#story)<br>
-2023-08-05 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#cheats)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -878,9 +878,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-09) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-10) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 
@@ -897,14 +897,14 @@ Ruin-The-Fun lets you change your captain's name, choose the color swizzle of yo
 
 ## Downloads
 
-- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/latest/es-ruin-the-fun.zip):
+- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
 - [🎁 Ruin-The-Fun: (Endless Sky latest version)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-latest-version) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/v0.0.18-for-es-v0.10.2/es-ruin-the-fun-auto-updated.zip):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
 - [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/es-ruin-the-fun-for-es-continuous.zip):
-  This version is periodically generated to match continuous builds of Endless Sky.
+  This version is periodically generated to match continuous builds of Endless Sky. This is also the latest untested RTF version.
   If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
 
 
@@ -916,20 +916,20 @@ This assumes you have installed and enabled the plugin. If not, see [Install Ins
 ⚠️ **Be advised against using this plugin with your favorite pilot's save**, since it will make your hours of labor nonsensical.
 If you want to use this plugin for an existing save anyway, then **MAKE A BACKUP OF YOUR PILOT** (for instance with the `Add snapshot` button).
 
-![new pilot menu](./images/screenshot/add-snapshot.png)
+![add snapshot button](./images/screenshot/add-snapshot.png)
 
 If your intent is rather to use this plugin with a new pilot, you may use one of the starts provided by this plugin to do so:
 
-![new pilot menu](./images/screenshot/rtf-starts.png)
+![new pilot starts menu](./images/screenshot/rtf-starts.png)
 You will spawn in an RTF system, from which cheat features are available.
 
 Cheat features are available from, and only from, the RTF systems. One of them has an hyperlink to `Rutilicus` (the default start system), so that you can reach it with an Hyperdrive:
 
-![new pilot menu](./images/screenshot/rtf0-on-map.png)
+![map screenshot](./images/screenshot/rtf0-on-map.png)
 
 There is other RTF systems everywhere on the map, so you do not have to cross it whole.
 
-![new pilot menu](./images/screenshot/rtf-systems-on-map.png)
+![map screenshot](./images/screenshot/rtf-systems-on-map.png)
 
 
 
@@ -949,28 +949,31 @@ More actions are available from the `Job Board`.
 The `Job Board` contains most of this plugin's features.
 
 The following jobs can be used after every landing on an RTF planet:
-- `All Useful Things`: Get money, reveal the map, and earn combat rank 14.
-- `Escort: * Barges` (3 variants): Get escorted by dreadful Star Barges.
-- `Escort: Tek Far 109`: Get escorted by a customized drone transporter.
-- `Fight Combat Drones`: Summon an amount of hostile Combat Drones.
-- `Fight Kestrels`: Summon a combination of hostile Kestrels.
-- `Fight Tek Far 109`: Summon an hostile customized drone transporter.
-- `Fleets: Heliarchs vs Quargs`: Adds Heliarch and Quarg fleets to RTF0.
-- `Fleets: Meretis vs Sestors`: Adds Mereti and Sestor fleets to RTF0.
-- `Fleets: Scin vs Vis`: Adds Scin and Vi fleets to RTF0.
-- `Free Money`: Obtain 1B credits.
-- `Name`: Change your captain's name.
-- `Rank`: Set your combat rank. Optionally spawn a target in space, to get xp from.
-- `Reputations`: Change your reputation with other governments.
-- `Reputations`: Customize your reputation per government, or turn everyone friendly or hostile, or, reset reputations to default.
-- `Reveal Planet Infos`: Reveal all vanilla planets information (upon take of, does not reveal systems).
-- `Reveal Systems`: Reveal the whole system map (upon take of).
-- `Swizzle`: Change the color of your ships.
-- `Vanilla Events And Conditions`: Let you edit a few vanilla conditions.
+- `[basic] All Useful Things`: Get money, reveal the map, and earn combat rank 14.
+- `[basic] Color Swizzle`: Change the color of your ships.
+- `[basic] Combat Rank`: Set your combat rank. Optionally spawn a target in space, to get xp from.
+- `[basic] Conditions`: Set your karma and other conditions.
+- `[basic] Events`: Let you edit a few vanilla conditions.
+- `[basic] Free Money`: Obtain 1B credits.
+- `[basic] Government Reputations`: Change your reputation with other governments.
+- `[basic] Pilot Name`: Change your captain's name.
+- `[basic] Reveal Map`: Reveal the whole system map (upon take of).
+- `[basic] Reveal Planet Infos`: Reveal all vanilla planets information (upon take of, does not reveal systems).
+- `[escort] * Barges` (3 variants): Get escorted by dreadful Star Barges.
+- `[escort] Tek Far 109`: Get escorted by a customized drone transporter.
+- `[fight] Combat Drones`: Summon an amount of hostile Combat Drones.
+- `[fight] Kestrels`: Summon a combination of hostile Kestrels.
+- `[fight] Tek Far 109`: Summon an hostile customized drone transporter.
+- `[special] Automatic Galaxy Map`: Automatically reveal all connected systems upon landing.
+- `[special] RTF Advanced Start`: Replays the advanced start conversation.
 
 The following jobs are toggles, their effect is reverted when you abort them:
-- `Hide RTF Systems`: Hide the RTF systems, so that they do not interfere.
-- `Super Reach`: While in an RTF system, you can jump to any system on the map, even without a God Drive. By default, RTF systems have a lower jump range, to lower their impact on surrounding content.
+- `[toggle fleet] Heliarchs vs Quargs`: Adds Heliarch and Quarg fleets to RTF0.
+- `[toggle fleet] Meretis vs Sestors`: Adds Mereti and Sestor fleets to RTF0.
+- `[toggle fleet] Scin vs Vis`: Adds Scin and Vi fleets to RTF0.
+- `[toggle] Hide RTF Systems`: Hide the RTF systems, so that they do not interfere.
+- `[toggle] Super Reach`: While in an RTF system, you can jump to any system on the map, even without a God Drive. By default, RTF systems have a lower jump range, to lower their impact on surrounding content.
+- `[toggle] Variants`: Enable ship variants in the RTF shipyards.
 
 
 
@@ -11361,9 +11364,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cromha Expansion/icon.png' height='100'></img><br>
 
 
-[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.1 mb | 2023-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.1 mb | 2023-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
 Author: OcelotWalrus | Category: Story <br>
-[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-09) <br>
+[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-10) <br>
 
 >Adds a new civilization to the Korath Space (now named the 'Empire Space'): The Cromha Empire. Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government, that has kind of remixed outfits and ships from other vanilla governments. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory.
 
@@ -11475,7 +11478,7 @@ If you want the `sources/` directory (a directory for the plugin assets like `.b
 git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git --recursive
 ```
 
- If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
+ If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/9.9.9-continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
 
 ## Keeping the plugin updated
 If you're not familiar with git, you just have to run that command into the installed plugin.
