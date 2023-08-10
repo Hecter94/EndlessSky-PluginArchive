@@ -1,0 +1,24 @@
+mission "Ruin-the-Fun Automatic Galaxy Map"
+	job
+	name "[toggle] Automatic Galaxy Map"
+	description "Automatically reveal all connected systems upon landing. This allows you to reveal large portions of a map this plugin does not know about. Abort this job to disable."
+	"apparent payment" 1000000000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	to accept
+		not "Ruin-the-Fun Automatic Galaxy Map: active"
+	on accept
+		outfit "Ruin-The-Fun Large Map"
+	to complete
+		never
+
+mission "Ruin-the-Fun Automatic Galaxy Map (Triggered)"
+	landing
+	invisible
+	repeat
+	to offer
+		has "Ruin-the-Fun Automatic Galaxy Map: active"
+	on offer
+		outfit "Ruin-The-Fun Large Map"
+		fail

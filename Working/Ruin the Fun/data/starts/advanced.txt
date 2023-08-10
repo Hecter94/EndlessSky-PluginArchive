@@ -16,54 +16,44 @@ start "Ruin-The-Fun (Avanced)"
 
 conversation "Ruin-The-Fun Intro (Avanced)"
 	action
-		event "Ruin-The-Fun All Licenses"
 		set "Ruin-The-Fun Existing Save Warning: skip"
 	scene "scene/sagittarius a"
 	`	Zeus kneels in front of you. "What name would you like us to call you, sir?"`
 	name
-	`	Even without the gods at your service, you would still be the world's suzerain. But their contribution should make everything a little bit faster.`
-	label config
+	label "choose starter"
+	`	"I have outfitted a few ships with the best available tech, which one would you like to fly?"`
 	choice
-		`	(First, Reveal the map.)`
-			goto "reveal map"
-		`	(Start, with an outfitted Albatross)`
+		`	"An Albatross (legit tech)"`
 			goto albatross
-		`	(Start, with an outfitted Tubfalet)`
+		`	"A Tubfalet (legit tech)"`
 			goto tubfalet
-		`	(Start, with an outfitted Tek Far 109 and optimized drones)`
+		`	"A Tek Far 109 (with its drones)"`
 			goto "109"
-		`	(Start, with an outfitted Kar Ik Vot 349 relying on Bombardment Turrets)`
+		`	"A Kar Ik Vot 349 (legit tech, relies on Bombardment Turrets)"`
 			goto "349"
-		`	(Start, with a Punisher outfitted with plundered quarg tech.)`
+		`	"A Punisher (quarg tech)"`
 			goto punisher
-		`	(Start, with a 577 outfitted with plundered quarg tech.)`
+		`	"A Lor'kas Ik 577 (quarg tech)"`
 			goto "577"
-		`	(Start, and let be build my ship.)`
-			goto end
-	
-	label "reveal map"
-	action
-		event "Ruin-the-Fun Visit Systems"
-		event "Ruin-the-Fun Visit Planets"
-	`	Systems and planets info revealed.`
-		goto config
+		`	(Build my own ship.)`
+			goto settings
 	
 	label "albatross"
 	action
 		"combat rating" = 1202604 + 1
 		give ship "Ruin-The-Fun Albatross (Starter)" "Snappy Starter"
 		event "Ruin-The-Fun Swizzle 1"
+		set "Ruin-the-Fun player chose a starter ship"
 	`	You have been given an outfitted Albatross.`
-		goto end
-	
+		goto "re-settings"
 	label "tubfalet"
 	action
 		"combat rating" = 1202604 + 1
 		give ship "Ruin-The-Fun Tubfalet (Starter)" "Savage Starter"
 		event "Ruin-The-Fun Swizzle 3"
+		set "Ruin-the-Fun player chose a starter ship"
 	`	You have been given an outfitted Tubfalet.`
-		goto end
-	
+		goto "re-settings"
 	label "109"
 	action
 		"combat rating" = 1202604 + 1
@@ -85,32 +75,100 @@ conversation "Ruin-The-Fun Intro (Avanced)"
 		give ship "Ruin-The-Fun Flycatcher" "Threatening Escort"
 		give ship "Ruin-The-Fun Flycatcher" "Detrimental Escort"
 		event "Ruin-The-Fun Swizzle 9"
+		set "Ruin-the-Fun player chose a starter ship"
 	`	You have been given an outfitted Tek Far 109.`
-		goto end
-	
+		goto "re-settings"
 	label "349"
 	action
 		"combat rating" = 1202604 + 1
 		give ship "Ruin-The-Fun 349 (Starter)" "Unreachable Starter"
 		event "Ruin-The-Fun Swizzle 9"
+		set "Ruin-the-Fun player chose a starter ship"
 	`	You have been given an outfitted Kar Ik Vot 349.`
-		goto end
-	
+		goto "re-settings"
 	label "punisher"
 	action
 		"combat rating" = 1202604 + 1
 		give ship "Ruin-The-Fun Punisher (Starter)" "Graceful Starter"
 		event "Ruin-The-Fun Swizzle 6"
-	`	A Punisher with quarg tech, ironic?`
-		goto end
-	
+		set "Ruin-the-Fun player chose a starter ship"
+	`	A Punisher with quarg tech...`
+		goto "re-settings"
 	label "577"
 	action
 		"combat rating" = 1202604 + 1
 		give ship "Ruin-The-Fun 577 (Starter)" "Funky Starter"
 		event "Ruin-The-Fun Swizzle 6"
+		set "Ruin-the-Fun player chose a starter ship"
 	`	The ground shakes under the weigh of your 577. No Korath child inside.`
-		goto end
+		goto "re-settings"
+	
+	label settings
+	`	"Can I help further in setting up your journey?"`
+	label "re-settings"
+	choice
+		`	(Reveal the map.)`
+			goto "reveal map"
+		`	(Receive all licenses.)`
+			goto "all licenses"
+		`	([  ] Equip flagship with a God Drive.)`
+			to display
+				has "Ruin-the-Fun player chose a starter ship"
+				not "outfit: Ruin-The-Fun God Drive"
+			goto "install god drive"
+		`	([x] Equip flagship with a God Drive.)`
+			to display
+				has "outfit: Ruin-The-Fun God Drive"
+			goto "uninstall god drive"
+		`	([  ] Equip flagship with a Cloaking Device.)`
+			to display
+				has "Ruin-the-Fun player chose a starter ship"
+				not "outfit: Cloaking Device"
+			goto "install cloaking device"
+		`	([x] Equip flagship with a Cloaking Device.)`
+			to display
+				has "outfit: Cloaking Device"
+			goto "uninstall cloaking device"
+		`	(Done.)`
+			goto end
+	
+	label "install god drive"
+	action
+		outfit "Ruin-The-Fun God Drive"
+	`Installed a God Drive on your flagship.`
+		goto "re-settings"
+	label "uninstall god drive"
+	action
+		outfit "Ruin-The-Fun God Drive" -1
+	`Removed the God Drive from your flagship.`
+		goto "re-settings"
+	
+	label "install cloaking device"
+	action
+		outfit "Cloaking Device"
+	`Installed a Cloaking Device on your flagship.`
+		goto "re-settings"
+	label "uninstall cloaking device"
+	action
+		outfit "Cloaking Device" -1
+	`Removed the Cloaking Device from your flagship.`
+		goto "re-settings"
+	
+	label "reveal map"
+	action
+		event "Ruin-the-Fun Visit Systems"
+		event "Ruin-the-Fun Visit Planets"
+	`	Systems and planets info revealed.`
+		goto "re-settings"
+	
+	label "all licenses"
+	action
+		event "Ruin-The-Fun All Licenses"
+	`	You received all licenses, you should see them next time you land.`
+		goto "re-settings"
 	
 	label end
-	`	Divine services are available from the Job Board. Visit the Spaceport for information and quick actions. But you do not need any of that, you are omnipotent and omniscient, right? Or did you lure the gods...`
+	action
+		clear "Ruin-the-Fun player chose a starter ship"
+	`	Divine services are available from the Job Board. Visit the Spaceport for information and quick actions.`
+	`But you do not need any of that, you are omnipotent and omniscient, right? Or did you lure the gods...`

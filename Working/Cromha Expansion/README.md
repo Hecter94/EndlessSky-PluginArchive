@@ -104,7 +104,7 @@ If you want the `sources/` directory (a directory for the plugin assets like `.b
 git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git --recursive
 ```
 
- If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
+ If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/9.9.9-continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
 
 ## Keeping the plugin updated
 If you're not familiar with git, you just have to run that command into the installed plugin.
