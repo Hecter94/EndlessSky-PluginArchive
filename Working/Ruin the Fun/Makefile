@@ -34,14 +34,14 @@ GENERATED_DATA_FILES += data/events/all-licenses.txt
 # This may not exactly match .gitignore
 PLUGIN_FILES += about.txt
 PLUGIN_FILES += copyright
-PLUGIN_FILES += data
-PLUGIN_FILES += default-reputations.txt
+PLUGIN_FILES += $(shell find data/ -type f -name '*.txt')
 PLUGIN_FILES += icon.png
-PLUGIN_FILES += images
+PLUGIN_FILES += images/hardpoint
+PLUGIN_FILES += images/icon
+PLUGIN_FILES += images/outfit
+PLUGIN_FILES += images/projectile
 PLUGIN_FILES += LICENSE
-PLUGIN_FILES += Makefile
 PLUGIN_FILES += README.md
-PLUGIN_FILES += tools
 
 
 
@@ -214,8 +214,10 @@ data/jobs/conditions/conditions.txt: data/jobs/conditions/conditions.temp data/j
 	@echo "Generating $@ from $<..."
 	@tools/substitute-template.py $< > $@
 
-tmp/es-ruin-the-fun.zip: update | $(PLUGIN_FILES) tmp
-	zip -r $@ $(PLUGIN_FILES)
+tmp/es-ruin-the-fun.zip: $(PLUGIN_FILES) | tmp
+	@echo "Generating $@..."
+	@rm -f $@
+	@zip -r $@ $(PLUGIN_FILES)
 
 .PHONY: clean
 clean:
