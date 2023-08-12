@@ -654,9 +654,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-11) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-12) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 
@@ -4251,7 +4251,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.Slow.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Slow.Ships.zip) | 3.73 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Slow%20Ships/) <br>
 Author: Darcy Manoel | Category: Overhauls <br>
-[https://github.com/Adde-Endless-Sky-Mods/Slow-Ships](https://github.com/Adde-Endless-Sky-Mods/Slow-Ships) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Slow-Ships](https://github.com/Adde-Endless-Sky-Mods/Slow-Ships)  <br>
 
 >Changes ships and outfits stats to make them slower
 
@@ -5988,7 +5988,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Korath.zip) | 2.97 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Korath/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff](https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff](https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff)  <br>
 
 >A collection of changes and additions to Endless Sky regarding the fallen empire: The Korath.
 >
@@ -6037,7 +6037,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.Quarg.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Quarg.zip) | 7.44 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Quarg/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff](https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff](https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff)  <br>
 
 >A collection of changes and additions to Endless Sky regarding the advanced alien species: The Quarg. 
 >
@@ -6976,9 +6976,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-03) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-12) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -7761,7 +7761,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.Human.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Human.Fluff.zip) | 946.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Human%20Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Human-Fluff](https://github.com/Adde-Endless-Sky-Mods/Human-Fluff) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Human-Fluff](https://github.com/Adde-Endless-Sky-Mods/Human-Fluff)  <br>
 
 >N/A
 
@@ -11795,16 +11795,16 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Kraz Expanded
 
 
-[Kraz.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Expanded.zip) | 711.85 kb | 2023-07-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Expanded/) <br>
+[Kraz.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Expanded.zip) | 6.54 mb | 2023-08-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Expanded/) <br>
 Author: Oskatel | Category: Story <br>
-[https://github.com/Oskatel/Kraz-Expanded](https://github.com/Oskatel/Kraz-Expanded) (last commit 2023-07-28) <br>
+[https://github.com/Oskatel/Kraz-Expanded](https://github.com/Oskatel/Kraz-Expanded) (last commit 2023-08-12) <br>
 
 >This plugin continues the story of Kraz Cybernetics. Including new alien race, outfits and ships.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Kraz-Expanded
-Plugin for Endless Sky that continues the story of Kraz Cybernetics. Including new alien race, outfits and ships. (Work in progress)
+<blockquote># The Aura Space
+Plugin for Endless Sky. Including new alien race, outfits and ships. (Work in progress)
 
 Discord Server: https://discord.gg/c4S3UsrAaK 
 
@@ -14166,7 +14166,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.Boarding.Ease.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Boarding.Ease.zip) | 0.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Boarding%20Ease/) <br>
 Author: Darcy Manoel | Category: N/A <br>
-[https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease](https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease](https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease)  <br>
 
 >Reduces automata self destruction chance, adds self destruction chance to marauder pirates and some korath exiles.
 
@@ -14188,7 +14188,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.No.Pleiades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Pleiades.zip) | 1.38 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Pleiades/) <br>
 Author: Darcy Manoel | Category: N/A <br>
-[https://github.com/Adde-Endless-Sky-Mods/No-Pleiades](https://github.com/Adde-Endless-Sky-Mods/No-Pleiades) (last commit 2023-04-28) <br>
+[https://github.com/Adde-Endless-Sky-Mods/No-Pleiades](https://github.com/Adde-Endless-Sky-Mods/No-Pleiades)  <br>
 
 >N/A
 
