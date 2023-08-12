@@ -1,0 +1,28 @@
+name: (on issue) create txt
+on: 
+  issues: 
+    types: 
+      - opened
+      - edited
+jobs:
+  getissue:
+    name: First job
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Create txt file out of issue body
+        run: |
+          ISSUE_INPUT="${{ github.event.issue.body }}" python3 res/src/onissue.py
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: added a plugin txt
+          title: New plugin added
+          body: This is a script generated PR.
+          branch-suffix: timestamp
+          delete-branch: true
+          assignees: Hecter94
+          reviewers: Hecter94
