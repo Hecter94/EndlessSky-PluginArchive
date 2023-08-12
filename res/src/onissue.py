@@ -25,7 +25,7 @@ with open("res/config.txt") as f:
 
 def format_content():
 	splitted = content.split('\n')
-	if splitted[0] == '### Pluginname\r':
+	if splitted[0] == '### Name\r':
 		print('SUCCESS: Newly created issue is a plugin addition.')
 		pluginname = splitted[2].strip()
 		author = 'author=' + splitted[6].replace('\r', '\n')
