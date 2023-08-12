@@ -41,6 +41,7 @@ PLUGIN_FILES += images/icon
 PLUGIN_FILES += images/outfit
 PLUGIN_FILES += images/projectile
 PLUGIN_FILES += LICENSE
+PLUGIN_FILES += plugin.txt
 PLUGIN_FILES += README.md
 
 
