@@ -12,8 +12,64 @@
 
 
 #contents:
+# - midnight pug tributes
 # - midnight pug reinforcements
 # - dream crystal missions
+
+
+
+######################################
+#
+# Midnight Pug Tributes
+#
+######################################
+
+
+
+mission "Midnight Pug Tribute"
+	landing
+	invisible
+	on offer
+		event "midnight pug tribute"
+		fail
+
+event "midnight pug tribute"
+	planet "Vara Pug"
+		tribute 1
+			threshold 3000
+			fleet "Small Pug (Wanderer)" 15
+			fleet "Large Pug (Wanderer)" 3
+	planet Pugglemug
+		tribute 1
+			threshold 3000
+			fleet "Small Pug" 15
+			fleet "Large Pug" 3
+	planet Pugglequat
+		tribute 1
+			threshold 3000
+			fleet "Small Pug" 15
+			fleet "Large Pug" 3
+
+mission "Midnight Pug Deneb Game Over"
+	landing
+	invisible
+	to offer
+		has "event: midnight pug tribute"
+		or
+			has "event: pug flee"
+			has "event: pug territory liberated"
+			has "event: fwc pug defeated"
+	on offer
+		event "midnight pug deneb game over"
+		clear "tribute: Pugglemug"
+		clear "tribute: Pugglequat"
+		fail
+
+event "midnight pug deneb game over"
+	planet Pugglemug
+		remove tribute
+	planet Pugglequat
+		remove tribute
 
 
 
