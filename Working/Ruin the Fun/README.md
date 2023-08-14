@@ -11,7 +11,7 @@ Ruin-The-Fun lets you change your captain's name, choose the color swizzle of yo
 
 - [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
-- [🎁 Ruin-The-Fun: (Endless Sky latest version)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-latest-version) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/v0.0.18-for-es-v0.10.2/es-ruin-the-fun-auto-updated.zip):
+- [🎁 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
