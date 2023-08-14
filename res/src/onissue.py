@@ -25,19 +25,20 @@ with open("res/config.txt") as f:
 
 def format_content():
 	splitted = content.split('\n')
-	if splitted[0] == '### Name\r':
+	print(splitted)
+	if splitted[0] == '### Name':
 		print('SUCCESS: Newly created issue is a plugin addition.')
 		pluginname = splitted[2].strip()
-		author = 'author=' + splitted[6].replace('\r', '\n')
-		website = 'website=' + splitted[10].replace('\r', '\n')
+		author = 'author=' + splitted[6] + '\n'
+		website = 'website=' + splitted[10] + '\n'
 		if website == 'website=_No response_\n':
 			website = 'website=N/A\n'
-		directlink = 'directlink=' + splitted[14].replace('\r', '\n')
+		directlink = 'directlink=' + splitted[14] + '\n'
 		if directlink == 'directlink=_No response_\n':
 			directlink = 'directlink=N/A\n'
-		category = 'category=' + splitted[18].replace('\r', '\n')
-		status = 'status=' + splitted[22].replace('\r', '\n')
-		description = 'description=' + splitted[26].replace('\r', '\n')
+		category = 'category=' + splitted[18] + '\n'
+		status = 'status=' + splitted[22] + '\n'
+		description = 'description=' + splitted[26] + '\n'
 		with open(listfolder + pluginname + '.txt', 'w') as file1:
 			file1.writelines(author)
 			file1.writelines(website)
