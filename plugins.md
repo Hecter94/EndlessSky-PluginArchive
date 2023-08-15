@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.27 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-13) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-15) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -654,7 +654,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
 [https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-14) <br>
 
@@ -856,7 +856,7 @@ You are welcome to submit bug reports and suggestions using [GitHub issues](http
 </details>
 
 Status: Released for 0.10.2. Other versions are available on the plugin's website. <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -4538,9 +4538,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Beyond the Sky
 
 
-[Beyond.the.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beyond.the.Sky.zip) | 15.45 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Beyond%20the%20Sky/) <br>
+[Beyond.the.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Beyond.the.Sky.zip) | 15.48 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Beyond%20the%20Sky/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Beyond-the-Sky](https://github.com/1010todd/Beyond-the-Sky) (last commit 2023-05-19) <br>
+[https://github.com/1010todd/Beyond-the-Sky](https://github.com/1010todd/Beyond-the-Sky) (last commit 2023-08-15) <br>
 
 >Additional ships and reaction to being farmed for high tier alien(Pug, Quarg).
 >
@@ -5914,9 +5914,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 25.32 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 35.85 kb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-05-22) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-15) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -5963,9 +5963,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 6.31 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 6.31 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-13) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-15) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -6676,6 +6676,30 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### ES-Galactic-Exploration
+
+
+[ES-Galactic-Exploration.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES-Galactic-Exploration.zip) | 73.94 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES-Galactic-Exploration/) <br>
+Author: Roger Tabris | Category: Races <br>
+[https://github.com/lumbar527/ES-Galactic-Exploration](https://github.com/lumbar527/ES-Galactic-Exploration) (last commit 2023-08-10) <br>
+
+>A plugin, partially inspired by 1010todd's Galactic War, that adds a the Rainbow Cloud (a large group of systems with several alien races), a small cluster of systems (with another alien race), and two mysterious ships that are each larger than a dwarf galaxy!
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># ES-Galactic-Exploration
+A plugin, partially inspired by 1010todd's Galactic War, that adds a the Rainbow Cloud (a large group of systems with several alien races), a small cluster of systems (with another more alien race), and two mysterious ships that are each larger than a dwarf galaxy!
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Eternals
 <img src='Working/Eternals/icon.png' height='100'></img><br>
 
@@ -6977,9 +7001,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-14) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-15) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -7737,9 +7761,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Fluff
 
 
-[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
+[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-13) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-15) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 
@@ -8174,9 +8198,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Derogam/icon.png' height='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.72 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.73 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
 Author: Lorantine | Category: Ships <br>
-[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2023-07-02) <br>
+[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2023-08-15) <br>
 
 >A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
@@ -14173,7 +14197,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>25 plugins in this category.<p>
+<p>26 plugins in this category.<p>
 
 <details>
 
