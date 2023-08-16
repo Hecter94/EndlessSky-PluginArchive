@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-15) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-16) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -519,8 +519,9 @@ Author: MinneIceCube | Category: Cheats <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
-This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. As such, the changes are as follows:
+<blockquote>Kestrel Rework Readme:
+This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
+This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. as such, the changes are as follows:
 
 -The requirements for the Kestrel sub-quest have been changed:
 	-The combat rating was increased from 8,000 (Combat rank 9: "Force to be reckoned with") --> 22,000 (Combat rank "Fearsome Scrapper). Intended to limit obtaining the newly buffed ship until the player is on a similar power level.
@@ -531,7 +532,7 @@ This does not make much sense according to the lore, but I personally prefer the
 	-Shields 19,400 --> 49,700
 	-Hull 7,200 --> 30,400
 	-Fuel Capacity 500 --> 700
-	-Outfit space 810 --> 870
+	-Outfit space 810 --> 900
 	-Weapon capacity 390 --> 410
 	-Engine Capacity 210 --> 230
 	-Bunks 128 --> 150
@@ -546,9 +547,6 @@ This does not make much sense according to the lore, but I personally prefer the
 
 -Weapon Kestrel:
 	-Weapon Capacity 40 --> 150
-  
-  I made these edits mostly for personal useage, and as such these are the numbers I found acceptable for my late game ship. If you feel otherwise, feel free to make edits as you please.
-
 </blockquote>
 </details>
 
@@ -1616,46 +1614,42 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
-
-# Gatling Ammo Fix
+<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
-![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-
-## Installing
-
+[h1]Installing[/h1]
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
-Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
+[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
 
+[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
 
-It **won't** work if the directory structure will be anything like:
+It [b]won't[/b] work if the directory structure will be anything like:
 
-```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
-
-
-## Author
-
-* **Cat Lady**
+[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
 
 
-## License
+[h1]Author[/h1]
 
-This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+[list][*][b]Cat Lady[/b][/list]
 
-## Acknowledgments
+
+[h1]License[/h1]
+
+This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+
+
+
+[h1]Acknowledgments[/h1]
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
-
 </blockquote>
 </details>
 
@@ -2871,16 +2865,10 @@ Author: Cat-Lady | Category: Graphics <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
-
-# Swizzle Player
-
-This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
-
-![Swizzle Player Image](/swizzle-player/icon.png?raw=true "Swizzle Player Image")
+<blockquote>This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
 
 
-## Installing
+[h1]Installing[/h1]
 
 Check:
 https://github.com/Cat-Lady/swizzle-player/releases
@@ -2888,33 +2876,35 @@ https://github.com/Cat-Lady/swizzle-player/releases
 ...for latest, pre-packaged version.
 
 
-**1.** Unpack ``swizzle-player`` to your ES plugins folder. Be sure that you have single ``swizzle-player`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
+[b]1.[/b] Unpack [i]swizzle-player[/i] to your ES plugins folder. Be sure that you have single [i]swizzle-player[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
 
-```(...)/plugins/swizzle-player/(.../data/ and other stuff)```
+[code](...)/plugins/swizzle-player/(.../data/, /images/ and other stuff)[/code]
 
+It [b]won't[/b] work if the directory structure will be anything like:
 
-It **won't** work if the directory structure will be anything like:
-
-```(...)/plugins/swizzle-player/swizzle-player/(...)```
-
-
-## Author
-
-* **Cat Lady**
+[code](...)/plugins/swizzle-player/swizzle-player/(...)[/code]
 
 
-## License
 
-This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details
+[h1]Author[/h1]
 
-## Acknowledgments
+[list][*][b]Cat Lady[/b][/list]
+
+
+
+[h1]License[/h1]
+
+This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+
+
+
+[h1]Acknowledgments[/h1]
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game
 
-![James the Bot](https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot) from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
+[url=https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot]James the Bot[/url] from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
 
 Iggy Pop for singing "She want's to be your James Bot" (and don't even try to convince me that he meant something else).
-
 </blockquote>
 </details>
 
@@ -7001,9 +6991,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-15) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-16) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -12968,17 +12958,25 @@ Author: Amazinite | Category: Story <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># ES-Syndicate-Campaign
-The development repository for the Syndicate campaign of Endless Sky. Spoilers ahead.
+<blockquote># Syndicate Storyline for Endless Sky, v0.4
 
-### What's this exta stuff folder?
-I'm keeping my workflow public for anyone to check out and comment on. This folder contains all the things I'm using to help create the campaign, from Blender files of any new models to text files containing any work for the development process. Given the nature of my workflow, this will be a mix of new and old stuff, some (maybe even most) of which that may not make any sense whatsoever and may never be used. It can also get rather unorganized. Below is a description of the text files in the extra stuff folder, but just take everything you see in these files with a grain of salt as none of it is set in stone.
+This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
 
-* everything syndicate.txt: a file containing every reference to the Syndicate in the game.
-* syndicate info.txt: a distilled, summarized version of the above file.
-* character sheet.txt: a file containing info on all the characters new and old that are part of the Syndicate.
-* syndicate notes.txt: a file of random notes that I've taken during the development of the campaign.
-* rough storyboard.txt: a file that contains a VERY rough (WIP) storyboard of how things will go. More polished storyboards will be located in the data folder once I'm actually about to start writing that part.
+## Current status
+
+Main story and most side-things, complete. This will take you up to the end of the civil war, all completed and ready to continue the game as if you'd completed the main-game story.
+
+Remaining: logs on all the events; a few more epilogue conversations; and various hopefully-minor issues, both discovered and undiscovered.
+
+## How to play/install
+
+First play Endless Sky (https://github.com/endless-sky/endless-sky/). I recommend playing the main version first, up to the end of the main Free Worlds storyline. This alternate-start's intro is not as helpful for beginners, and maybe the story is more fun if you already know what's happening on the Free Worlds side... or, maybe it's fun the other way around! Good point! Well, up to you then.
+
+To play, download this repository (or a release folder) into your plugins directory for Endless Sky. You probably already know how. If not, let me know, and I'll get round to updating this readme with the instructions.
+
+You need Endless Sky minimum version 0.9.15, which at time of writing is the continuous build in the main Endless Sky project.
+
+- Changes to the Korath have impacted this plugin. The current version tracks the current git repository for endless sky. (2022-09-04)
 
 </blockquote>
 </details>
