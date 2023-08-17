@@ -276,6 +276,8 @@ with open("plugins.md", "w") as file1:
 					response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True) # get header of the release asset zips
 					response.raise_for_status()
 				except requests.exceptions.HTTPError as err:
+					with open('res/errorlog.txt', 'a') as errorfile:
+						errorfile.writelines("check release zip for plugin: " + pluginname + "\n")
 					print(err)
 					lastmodified = "N/A"
 					size = "N/A" 
