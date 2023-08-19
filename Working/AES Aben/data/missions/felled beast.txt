@@ -1,14 +1,15 @@
-mission "abenFelledBeast 1A"
+mission "abenFelledBeast [1A]"
 	landing
 	source "Nis"
 	to offer
 		has "abenLogisticsRegister: done"
+		random < 20
 	on offer
 		conversation
 			`On your descent to the shining capital of the Aben, you notice a flare blowing in the sky, shot from the surface. You decide to investigate before docking, but it could be out of your jurisdiction as a trader.`
 			choice
 				`	(Investigate.)`
-			`	You follow the intense glare of the flare and the fading plume of its' tail. Your monitors show from surface scans that there is a massive corpse strewn across the landscape, seemingly as large as a building and knocking down many towering trees at the edge of a forest. There is a gathering of tents established alongside the underbelly of the beast with figures regularly conducting tests on the corpse.`
+			`	You follow the intense glare of the flare and the fading plume of its tail. Your monitors show from surface scans that there is a massive corpse strewn across the landscape, seemingly as large as a building and knocking down many towering trees at the edge of a forest. There is a gathering of tents established alongside the underbelly of the beast with figures regularly conducting tests on the corpse.`
 			`	The flat base of a nearby cliffside serves as your landing area for the moment. You make the trip over to the site and notice when closer that they are wearing what is presumably breathing implements, they cover the mouth and ears sleekly, almost like a decor mask with straps behind the neck and top of their heads.`
 			`	At first you are ignored and worked around but are soon collected by another, who seems to be supervising the operation. You follow the supervisor into a tent where they find a large cube and place it onto the ground in between you two. Brightly diffused lights along the side shine from the bottom and climb up the cube before a hologram appears above, the display is not unlike a glitchy video game character coming into focus, going from blocky pixels to sharp details in no time.`
 			`	Struck by the outfit worn in the hologram, you recognise Saed and share a brief moment of thoughtful silence. Saed begins, "Hello Partner, much like the devices used to convey contracts to our partners, these holograms are trusted to the possession of supervisory personnel to avoid communication failures in such situations."`
@@ -28,15 +29,30 @@ mission "abenFelledBeast 1A"
 				`	"Can I help to remove the device?"`
 			`	"I appreciate your offer Partner, I'll need transport for the excavated device once secured within a safe enclosure. Please standby while we prepare the device for transport."`
 				decline
-mission "abenFelledBeast 1B"
+mission "abenFelledBeast [1B]"
 	landing
 	source "Nis"
 	to offer
 		has "abenLogisticsRegister: done"
+		not "abenFelledBeast [1A]: offered"
+		random < 20
 	on offer
 		payment 40000
 		conversation
 			`You land at the spire as instructed and are met with a crew standing at attention behind Saed, "Welcome back, please allow my crew to remove the device from your ship."`
 			`	The courtesy of the request is washed away by the crew springing into action, without time for you to reply. Once loaded with the device, a platform lowers the device to the research floor below, and an empty platform returns shortly after, leaving no obvious seam in the floor for where it lies.`
 			`	"Thank you for your service, it was a short journey but you prevented a larger effort on our part. We can transfer a payment of 40 thousand credits to you for the inconvenience."`
+				decline
+mission "abenFelledBeast [2]"
+	landing
+	source "Nis"
+	to offer
+		has "abenFelledBeast [1A]: offered"
+		not "abenFelledBeast [1B]: offered"
+	on offer
+		payment 24000
+		conversation
+			`You land at the spire as instructed, but not when you were asked. Saed meets you when you depart your ship, "Welcome back Captain, when you offer your help, please follow my instruction promptly."`
+			`	A crew of Aben enters the hanger and works around you to remove the device you took aboard your ship. Once loaded with the device, a platform lowers the device to the research floor below, and an empty platform returns shortly after, leaving no obvious seam in the floor for where it lies.`
+			`	"Thank you for your service, I only hope you will take our requests more seriously in the future. We can transfer a payment of 24 thousand credits to you for the inconvenience."`
 				decline
