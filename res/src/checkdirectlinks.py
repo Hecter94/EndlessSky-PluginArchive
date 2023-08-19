@@ -27,8 +27,8 @@ with open("res/config.txt") as f:
 
 # creating temp directory			
 if os.path.isdir("temp") == False: 
-	os.mkdir("temp")			
-	
+	os.mkdir("temp")
+
 # creating res/last_commits.txt
 with open("res/last_commits.txt", "w") as file1:
 	file1.write("")
@@ -97,6 +97,8 @@ for entry in entries:
 			response = requests.head(directlink, allow_redirects=True)
 			response.raise_for_status()
 		except requests.exceptions.HTTPError as err:
+			with open('res/errorlog.txt', 'a') as errorfile:
+				errorfile.writelines("check directlink for plugin: " + pluginname + " | " + directlink + "\n")
 			print("ERROR: directlink not reachable: " + directlink)
 			print(err)
 			continue
@@ -118,6 +120,8 @@ for entry in entries:
 						params = {'page': '1', 'per_page': '1'}
 						response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
 					except:
+						with open('res/errorlog.txt', 'a') as errorfile:
+							errorfile.writelines("check github website for plugin: " + pluginname + " | not reachable, can't read last commit\n")
 						print("ERROR: github api not reachable: " + plug)
 						linklastmodified = "FALSE"
 						continue
@@ -131,6 +135,8 @@ for entry in entries:
 		if linksize != "FALSE":
 			if linksize >= 307200:
 				print("ABORTING: directlink is bigger than 300 mb")
+				with open('res/errorlog.txt', 'a') as errorfile:
+					errorfile.writelines("file size for plugin: " + pluginname + " is bigger than 300mb, needs to be rised\n")
 				continue
 				
 		if linklastmodified != "FALSE":
