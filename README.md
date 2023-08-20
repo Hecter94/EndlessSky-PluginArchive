@@ -5,6 +5,14 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-08-20 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-08-20 | new Plugin 'Endless AI Invade' by OcelotWalrus | [Race](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Race)<br>
+2023-08-20 | updated Plugin 'AES Aben' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
+2023-08-20 | new Plugin 'Chroma Expansion' by OcelotWalrus | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2023-08-20 | new Plugin 'Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-08-20 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2023-08-20 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2023-08-20 | updated Plugin 'sensor' by orbitalsupershell | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons)<br>
 2023-08-19 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
 2023-08-19 | updated Plugin 'AES Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-08-19 | updated Plugin 'AES Aben' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
@@ -12,14 +20,6 @@
 2023-08-18 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-08-18 | updated Plugin 'AES Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-08-18 | updated Plugin 'AES Aben' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2023-08-17 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
-2023-08-16 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2023-08-16 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
-2023-08-15 | updated Plugin 'Beyond the Sky' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
-2023-08-15 | updated Plugin 'Derogam' by Lorantine | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2023-08-15 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
-2023-08-15 | updated Plugin 'AES Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2023-08-15 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -61,7 +61,7 @@ Provide a direct link to your zipped plugin to enable automatic updating.<br>
 
 # Introduction
 
-A comprehensive library of 546 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 549 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -215,10 +215,10 @@ To keep these files related, you must give them the same name.
 
 # Plugin Download
 
-All Plugins (546)
+All Plugins (549)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay) (40) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics) (22) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits) (44)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls) (47) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites) (5) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (137) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (76) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (26)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (137) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (76) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (29)<br>
 
 

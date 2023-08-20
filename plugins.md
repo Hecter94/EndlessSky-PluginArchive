@@ -1734,9 +1734,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Kor.Mereti.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Mereti.Fluff.zip) | 2.62 mb | 2023-08-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Mereti%20Fluff/) <br>
 Author: OcelotWalrus | Category: Gameplay <br>
-[https://github.com/OcelotWalrus/Kor-Mereti-Fluff](https://github.com/OcelotWalrus/Kor-Mereti-Fluff)  <br>
+N/A[]()  <br>
 
 >It is a plugin that expand the ships and the outfits of the Kor Mereti faction.
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -1823,8 +1824,8 @@ Thanks to all the people in the Endless Sky community and people who contributed
 </blockquote>
 </details>
 
-Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Status: Merged into Chroma Expansion <br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -4252,9 +4253,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.Slow.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Slow.Ships.zip) | 3.73 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Slow%20Ships/) <br>
 Author: Darcy Manoel | Category: Overhauls <br>
-[https://github.com/Adde-Endless-Sky-Mods/Slow-Ships](https://github.com/Adde-Endless-Sky-Mods/Slow-Ships)  <br>
+N/A[]()  <br>
 
 >Changes ships and outfits stats to make them slower
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -4264,7 +4266,7 @@ Author: Darcy Manoel | Category: Overhauls <br>
 </details>
 
 Status: Abandoned <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -5914,9 +5916,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 38.32 kb | 2023-08-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.52 kb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-19) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-20) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -5989,7 +5991,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Korath.zip) | 2.97 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Korath/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff](https://github.com/Adde-Endless-Sky-Mods/Korath-Fluff)  <br>
+N/A[]()  <br>
 
 >A collection of changes and additions to Endless Sky regarding the fallen empire: The Korath.
 >
@@ -6002,7 +6004,7 @@ Author: Darcy Manoel | Category: Races <br>
 </details>
 
 Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -6038,9 +6040,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.Quarg.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Quarg.zip) | 7.44 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Quarg/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff](https://github.com/Adde-Endless-Sky-Mods/Quarg-Fluff)  <br>
+N/A[]()  <br>
 
->A collection of changes and additions to Endless Sky regarding the advanced alien species: The Quarg. 
+>A collection of changes and additions to Endless Sky regarding the advanced alien species: The Quarg.
 >
 
 <details>
@@ -6051,7 +6053,7 @@ Author: Darcy Manoel | Category: Races <br>
 </details>
 
 Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -6362,6 +6364,164 @@ Author: Saugia | Category: Races <br>
 
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### Chroma Expansion
+<img src='Working/Chroma Expansion/icon.png' height='100'></img><br>
+
+
+[Chroma.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Chroma.Expansion.zip) | 114.51 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Chroma%20Expansion/) <br>
+Author: OcelotWalrus | Category: Races <br>
+[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-20) <br>
+
+>Adds a new civilization to the Korath Space (now named the 'Empire Space': The Cromha Empire. Also known as 'The Empire'
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote><p align=center><img src="https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/0210316e-92d1-4d32-ae96-b95cf7466fea" alt="https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/0210316e-92d1-4d32-ae96-b95cf7466fea" /></p>
+
+<h1><p align=center>Endless Sky Plugin:<br />Cromha-Expansion</p></h1>
+
+[![CD](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/cd.yaml/badge.svg?branch=main)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/cd.yaml)
+[![Submodule Updates](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/sub-modules-update.yaml/badge.svg?branch=main)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/sub-modules-update.yaml)
+[![Codespaces Prebuilds](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/codespaces/create_codespaces_prebuilds)
+
+## 
+
+This is a plugin for the free, open-source game [Endless Sky][es]. This plugin
+is developed and tested against the [Endless Sky continuous][continuous] build.
+Learn more [about Endless Sky][esweb].
+**You can join the discord server [here](https://discord.gg/tafa8dVH5Q)** if you want to discuss about the plugin or ask more in depth questions to me.
+
+
+<details>
+
+  <summary>Summary</summary>
+
+* [About plugin](#about-plugin)
+    * [This plugin](#this-plugin)
+* [Contributing](#contributing)
+* [Development status](#development-status)
+* [System Requirements](#system-requirements)
+  * [Known Issues](#known-issues)
+* [Installation](#installation)
+    * [Install steps](#install-steps)
+    * [Keeping the plugin updated](#keeping-the-plugin-updated)
+* [Special Thanks](#special-thanks)
+
+</details>
+
+# About Plugin:
+
+Adds a new civilization to the Korath Space (now named the '[Empire Space](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Regions-of-the-galaxy#the-empire-space)': [The Cromha Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Cromha-Empire). Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory. Know more about the plugin in the [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki)! (or test the game yourself) Also, there is another empire that is set up next to the Paradise Planets. It is called the [Lumbarian Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Lumbarian-Empire).
+## This plugin:
+
+* Adds governments that are related to the vanilla storyline (kind of).
+* Expand various civilizations:
+  * Quarg
+  * Drak
+  * Pug
+  * Remnant
+  * Ka'Het
+  * Kor Automatons (Kor Mereti and Kor Sestor)
+  * Korath
+* The Lumbarian Empire that wants to replace the Republic and the Free Worlds and the Syndicate
+* The storyline that the plugin adds is made so it is the most similar possible to the vanilla one.
+* Add new outfits and ships from different governments.
+* Expands upon the existing map for exploration (New Systems in the north of the galaxy and near the Deep Space).
+* Adds a new galaxy where there is Sheragi is but it is still in work.
+
+# Contributing
+
+All Contributions are welcome!
+
+_Check the [Contributing Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide) before creating any issue or pull request._
+
+To contribute to the plugin, you can create [issues](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues) to describe an error from spelling errors to mission bug or anything else.
+You can also create an [issue](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues) or a [pull request](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/pulls) to request specific feature.
+
+# Development Status
+It is currently a Beta plugin.
+
+* A medium WIP (work in progress) plugin
+* Story is not fully implemented but for most of the part, it is
+* Spaceport and planets descriptions are not fully done
+* Quarg-Pug Expansion not finished
+* Ember Watse/Remnant/Dark Expansion not finished
+* Many more civilizations expansions to do
+* Outfits and ships descriptions are not fully done.
+* The whole 'Empire Rebels' part is not started very yet. (check [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Governments-&-Major-Factions))
+* The [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/) still in work and most of the Gameplay section is outdated
+* The Lumbarian Empire is currently in a very early stage. Help create the storyline [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/discussions/117)
+
+# System requirements
+Endless Sky has very minimal system requirements, meaning most systems should be able to run the game. But this plugin is kind of heavy.
+
+|| Minimum | Recommended |
+|---|----:|----:|
+|RAM | 4 MB | 8 GB |
+|Graphics | OpenGL 3.0 | OpenGL 3.3 |
+|Storage Free | 900 MB | 3 GB |
+
+## Known issues
+  * Game crash when loading resources (don't have enough RAM)
+
+# Installation
+If you're new in the Endless Sky community, check the [User Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) to learn the basics!
+
+## Install steps
+
+To install the plugin you just have to clone this repository into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
+You can use the following command if you're used to command line.
+
+```
+git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git
+```
+
+If you want the `sources/` directory (a directory for the plugin assets like `.blend` files or `.xcf` for contributor), run the following command to enable sub-modules:
+
+```
+git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git --recursive
+```
+
+ If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/9.9.9-continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
+
+## Keeping the plugin updated
+If you're not familiar with git, you just have to run that command into the installed plugin.
+
+```
+git pull
+```
+
+If it don't work, you can just re-download the plugin at [releases](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases) and put it in your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins). And make sure you deleted the old Cromha Expansion plugin folder.
+
+## Special thanks
+
+Check [copyright.txt](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/blob/main/copyright.txt) for full credits.
+I have several people that really needs credits for my work here, first because some of them helped me but also some of them did great work on the endless sky community:
+
+  * [`@lumbar527`](https://github.com/lumbar527)
+    * He helped me by a lot on the plugin and had a lot of great ideas.
+  * [`@1010todd`](https://github.com/1010todd)
+    * This guys is an insane plugin creator who made tons of great assets, plugins and also have insane ideas. Lot of ideas from this project originally come from some of his work. You can check his plugins [here](https://github.com/endless-sky/endless-sky/discussions/7928). Respect to this guy.
+  * [`@MidnightPlugins`](https://github.com/MidnightPlugins)
+    * He made great plugins with great ideas that have have to me other great ideas.
+  * [`@Petersupes`](https://github.com/Petersupes)
+    * He created the [Sheragi Rebirth](https://github.com/Petersupes/sheragi-rebirth) plugin, which I partially copied.
+  * The whole Endless Sky content creator community!
+
+
+[es]: https://github.com/endless-sky/endless-sky
+[continuous]: https://github.com/endless-sky/endless-sky/releases/tag/continuous
+[esweb]: https://endless-sky.github.io/
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -7781,28 +7941,6 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
-### AES Human Fluff
-
-
-[AES.Human.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Human.Fluff.zip) | 946.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Human%20Fluff/) <br>
-Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Human-Fluff](https://github.com/Adde-Endless-Sky-Mods/Human-Fluff)  <br>
-
->N/A
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Merged into `Fluff`
-
-</blockquote>
-</details>
-
-Status: Merged into AES Fluff <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
 ### Ambriel
 
 
@@ -8449,6 +8587,30 @@ Author: TheronEpic | Category: Ships <br>
 
 Status: N/A <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Fluff
+
+
+[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.69 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
+Author: Darcy Manoel | Category: Ships <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-19) <br>
+
+>As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Fluff
+> As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
+
+</blockquote>
+</details>
+
+Status: Merged into AES Fluff <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -9192,9 +9354,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 133.82 mb | 2023-08-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 133.82 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-08-18) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-08-20) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -11170,9 +11332,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cromha Expansion/icon.png' height='100'></img><br>
 
 
-[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.51 mb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.51 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
 Author: OcelotWalrus | Category: Story <br>
-[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-14) <br>
+[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-20) <br>
 
 >Adds a new civilization to the Korath Space (now named the 'Empire Space'): The Cromha Empire. Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government, that has kind of remixed outfits and ships from other vanilla governments. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory.
 
@@ -12074,9 +12236,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.54 mb | 2023-08-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-13) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-20) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -14027,9 +14189,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/sensor/icon.png' height='100'></img><br>
 
 
-[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 166.7 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sensor/) <br>
+[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 167.37 kb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sensor/) <br>
 Author: orbitalsupershell | Category: Weapons <br>
-[https://github.com/orbitalsupershell/sensor](https://github.com/orbitalsupershell/sensor) (last commit 2023-05-02) <br>
+[https://github.com/orbitalsupershell/sensor](https://github.com/orbitalsupershell/sensor) (last commit 2023-08-20) <br>
 
 >Tiny mod for adding weapons, still in progress!
 >
@@ -14197,7 +14359,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>26 plugins in this category.<p>
+<p>29 plugins in this category.<p>
 
 <details>
 
@@ -14210,9 +14372,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.Boarding.Ease.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Boarding.Ease.zip) | 0.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Boarding%20Ease/) <br>
 Author: Darcy Manoel | Category: N/A <br>
-[https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease](https://github.com/Adde-Endless-Sky-Mods/Boarding-Ease)  <br>
+N/A[]()  <br>
 
 >Reduces automata self destruction chance, adds self destruction chance to marauder pirates and some korath exiles.
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -14222,7 +14385,30 @@ Author: Darcy Manoel | Category: N/A <br>
 </details>
 
 Status: Abandoned <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### AES Human Fluff
+
+
+[AES.Human.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Human.Fluff.zip) | 946.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Human%20Fluff/) <br>
+Author: N/A | Category: Uncategorized <br>
+N/A[]()  <br>
+
+>N/A
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Merged into `Fluff`
+
+</blockquote>
+</details>
+
+Status: N/A <br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -14232,9 +14418,10 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [AES.No.Pleiades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Pleiades.zip) | 1.38 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Pleiades/) <br>
 Author: Darcy Manoel | Category: N/A <br>
-[https://github.com/Adde-Endless-Sky-Mods/No-Pleiades](https://github.com/Adde-Endless-Sky-Mods/No-Pleiades)  <br>
+N/A[]()  <br>
 
 >N/A
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -14244,7 +14431,7 @@ Author: Darcy Manoel | Category: N/A <br>
 </details>
 
 Status: Merged into AES Fluff <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---

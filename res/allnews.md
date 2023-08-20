@@ -1,3 +1,11 @@
+2023-08-20 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-08-20 | new Plugin 'Endless AI Invade' by OcelotWalrus | [Race](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Race)<br>
+2023-08-20 | updated Plugin 'AES Aben' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
+2023-08-20 | new Plugin 'Chroma Expansion' by OcelotWalrus | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2023-08-20 | new Plugin 'Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-08-20 | updated Plugin 'Cromha Expansion' by OcelotWalrus | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2023-08-20 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2023-08-20 | updated Plugin 'sensor' by orbitalsupershell | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons)<br>
 2023-08-19 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
 2023-08-19 | updated Plugin 'AES Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-08-19 | updated Plugin 'AES Aben' by Darcy Manoel | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
@@ -99,7 +107,7 @@
 2023-07-23 | new Plugin 'Endless Zombies' by Zoura | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2023-07-23 | new Plugin 'Unfettered Innovations' by Hurleveur | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-07-23 | new Plugin 'Endless Seas' by Zoura | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
-2023-07-23 | new Plugin 'AES Human Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-07-23 | new Plugin 'AES Human Fluff' by N/A | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2023-07-23 | new Plugin 'AES Boarding Ease' by Darcy Manoel | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2023-07-23 | new Plugin 'Rymeilema Skylark II' by Rymeilema | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-07-23 | new Plugin 'Fire Corporation' by lumbar527 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
