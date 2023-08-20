@@ -1,0 +1,344 @@
+mission "Intro [2 Interceptor]"
+	priority
+	name "Delivery to <planet>"
+	description "Deliver <commodity> to <destination>, while avoiding pirate attacks."
+	blocked `When you meet up with James in the spaceport, he says, "Hi there, <first>! I found you another mission, but it looks like you'll need <capacity> in order to take it on. So, you'll either have to cancel another mission, or come back here later to continue this one. Sorry!"`
+	passengers 1
+	cargo gemstones 15
+	source "Gemstone"
+	destination "Ingot"
+	to offer
+		has "Intro [1 Interceptor]: done"
+	npc
+		government Pirate
+		personality entering plunders
+		ship "Defiler (Pirate)" "Hammer of Thor"
+	
+	on offer
+		conversation
+			`You find James in the spaceport bar, talking with a woman wearing a business suit. The expression on James' face is growing increasingly concerned as she speaks. Seeing you come in, he waves to you and you join them at the table.`
+			`	"Hello <first>," says James. "This is Marissa, a senior manager at the mines." You shake hands with her.`
+			`	"Here's the deal," says Marissa. "Most of the gemstones we mine here are industrial grade, not pretty enough to be worth using as anything but sandpaper grit or drill bits. But every once in a while we happen on some higher quality gems. No one in this sector has the money to spend on jewelry, so we ship them north to the Paradise Worlds.`
+			`	"But in the past few months, every shipment we've sent has been attacked by a pirate ship, the Hammer of Thor. We don't have the money to pay a bounty hunter to take out the Hammer, so instead we're going to pay you to outrun it. Is the <ship> a fast ship?"`
+			choice
+				`	"As fast as they come. Nothing bigger than a fighter could chase it down."`
+				`	"Not fast enough. I don't think I can risk taking on this mission."`
+					decline
+			`	"Great," she says. "My people will load up your ship immediately. Good luck, Captain."`
+			`	After she leaves, James says to you, "Now, get one thing clear. This is not your David and Goliath moment. The Hammer's shields are ten times as strong as yours, and if it's able to bring its weapons to bear, we'll be dead in two seconds. So, the moment we're in the sky, we head straight for hyperspace. Don't even wait around to see if the Hammer is coming or not. Got it?"`
+			choice
+				`	"Got it."`
+					accept
+				`	"I really shouldn't try to fight?"`
+			`	"It just isn't feasible," he says. "If a ship has turrets, your Sparrow can't get close enough to hit it with your guns without being damaged, and then it's just a matter of whose weapons and shields are stronger. And one heavy rocket hit could nearly disable you. Also, if it has anti-missile turrets, you can't count on hanging back and bombarding it with missiles from long distances, or at least not with weapons that can fit in a Sparrow. So, don't risk it. It's like rock paper scissors; recognize what your enemy's strengths and weaknesses are, as well as your own."`
+				accept
+	
+	on complete
+		payment 40000
+		conversation
+			`As you land on Ingot, James says, "Well, you made it in one piece! Still think you want to be piloting a Sparrow?"`
+			choice
+				`	"Sure, but I can't wait until I've got a ship big enough to stand up to pirates instead of running from them."`
+				`	"Well, maybe I should've bought a freighter instead."`
+			`	"Better start saving up then," he says. "I know a number of old Sparrow pilots who made their first million credits mining asteroids before they could afford a more combat-worthy ship. They had to look around for a while before finding a system with any asteroids worth mining, but it was worth it. Anyway, let's go get your payment." You walk out of the ship and sign the papers to hand off the <commodity> to the dock workers on <planet>. They hand you a credit chip worth <payment>.`
+			`	"If you're willing to take me on one more journey," says James, "meet me in the spaceport bar in a little while."`
+
+mission "Escort (Extra Large, Northern, Dangerous Destination, Xtra)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 15
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Millipede"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Extra Large, Northern, Dangerous Origin, Xtra)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely out of this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 15
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 1
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Millipede"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Extra Large, Core, Dangerous Destination, Xtra)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Millipede"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Extra Large, Core, Dangerous Origin)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely out of this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 3 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Core Pirates"
+		fleet "Large Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Millipede"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Extra Large, Southern, Dangerous Origin or Destination)"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely through this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Millipede"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+misssion "Omega Beam Acquisition"
+	name "A Matter of Firepower"
+	to offer
+		"combat rating" > 1100
+	source
+		outfits "Beam Laser"
+	stopover
+		distance 2 4
+	on complete
+		event "omega-beam in stock"
+
+misssion "Xperimental Engine Acquisition"
+	name "An Interesting X-periment"
+	to offer
+		or
+			and
+				has outfit "A520 Atomic Thruster"
+				has outfit "A525 Atomic Steering"
+			and
+				has outfit "A860 Atomic Thruster"
+				has outfit "A865 Atomic Steering"
+		
+ 	source "New Wales"
+	stopover "Hydra Station"
+	destination "New Wales"
+	on offer
+		conversation
+			`A man wearing some engineers overalls aproaches you.`
+			`	"I saw those impressive engines on your ship as you were flying in Captain. You must be a person who likes to go fast."`
+			choice
+				`	"I do like going fast, but unfortunatly my ship can't take anything bigger"`
+				`	"Not really, I just had the money"`
+					decline
+			`	"Then you may be in luck, my company has been working on somthing special, but we are in need of another test pilot."`
+			`	"What happened to your other test pilot?" You ask.`
+			`	The man squirms and fidgets for a moment "Um... he had a small containment faliure... However, we are confident that we have corrected greater than 90 percent of the errors. Are you still interested?"
+			choice
+				`Better than 90 percent is better than my odds on some missions."`
+				accept
+				`I prefer to stay amongst the living, so that will have to be a no."`
+				decline
+			
+	on complete
+		event "xperimental in stock"
+
+event "omega-beam in stock"
+	outfitter "Basic Weapons"
+		"Omega Beam Laser"
+		"Omega Laser Turret"
+
+event "xperimental in stock"
+	outfitter "Deep Sky Advanced"
+		"Xperimental"
+		"Xperimental Mini"
