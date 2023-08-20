@@ -1118,6 +1118,57 @@ mission "Hijacked Escort"
 
 
 
+mission "Large Bulk Station Supply"
+	name "Large bulk supplies to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Industrial" 40 2 .02
+	to offer
+		random < 40
+		"cargo space" > 100
+	source
+		attributes "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "station"
+		not attributes "uninhabited"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Rush Station Supply"
+	name "Large rush supplies to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Industrial" 20 6 .1
+	to offer
+		random < 50
+		"cargo space" >= 50
+	source
+		attributes "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 7 18
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "station"
+		not attributes "uninhabited"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 44000
+		dialog phrase "generic cargo delivery payment"
+
+
+
 mission "Medical Bay: Patient Transport"
 	job
 	deadline
@@ -2294,6 +2345,55 @@ mission "Rescue: Sabotaged Ship (Republic)"
 		clear "sabotaged ship ambush"
 		payment 1000000
 		dialog "The government of <planet> rewards you with <payment> for rescuing the <npc>."
+
+
+
+mission "Strike Breakers [station]"
+	name "Strike breakers to <planet>"
+	job
+	repeat
+	description "Bring <bunks> strike breakers to <destination>, to take the place of station workers who are on strike. The company will pay you <payment>."
+	passengers 5 5 .2
+	to offer
+		random < 10
+		"passenger space" > 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "station"
+		not attributes "military"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog "You unload the strike breakers amid an angry crowd of protesters held back by station security. When you return to your ship, you find that the company has transferred the agreed-upon payment of <payment> into your account."
+
+
+
+mission "Transport workers to <planet> [station]"
+	job
+	repeat
+	name "Transport workers to <planet>"
+	description "This group of <bunks> workers is hoping to find work on <destination>, and they will pay you <payment> to take them there."
+	passengers 2 2 .8
+	to offer
+		random < 80
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "station"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
+
 
 
 
