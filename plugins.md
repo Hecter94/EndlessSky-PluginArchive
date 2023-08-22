@@ -5644,7 +5644,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### XtraStuf
 
 
-[XtraStuf.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/XtraStuf.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/XtraStuf/) <br>
+[XtraStuf.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/XtraStuf.zip) | 10.15 mb | 2023-08-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/XtraStuf/) <br>
 Author: Ishaname | Category: Overhauls <br>
 [https://www.nexusmods.com/endlesssky/mods/8](https://www.nexusmods.com/endlesssky/mods/8)  <br>
 
@@ -5653,7 +5653,7 @@ Author: Ishaname | Category: Overhauls <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 </details>
@@ -6233,9 +6233,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-21) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-22) <br>
 
 >Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
 >
@@ -10098,7 +10098,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Republic Rising
 
 
-[Republic.Rising.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Rising.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Republic%20Rising/) <br>
+[Republic.Rising.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Republic.Rising.zip) | 8.26 mb | 2023-08-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Republic%20Rising/) <br>
 Author: wolffe420 | Category: Ships <br>
 [https://www.moddb.com/mods/endless-sky-republic-rising](https://www.moddb.com/mods/endless-sky-republic-rising)  <br>
 
