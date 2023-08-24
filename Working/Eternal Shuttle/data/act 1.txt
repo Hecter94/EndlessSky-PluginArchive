@@ -191,6 +191,94 @@ mission "Eternal Shuttle: Anti-Piracy 1"
 		dialog `As soon as you touch down on <planet>, the nameless soldier hurries off your ship, leaving behind a credit chip worth <payment> and instructions to meet up with a certain Commodore Calbraith Perry in the spaceport bar if you're interested in more work.`
 		payment 12000
 
+mission "Eternal Shuttle: Anti-Piracy 2"
+	name "Defend Marble from pirates"
+	description "<destination> is under attack by pirate raiders. Fight them off and then return to <planet>."
+	source "Marble"
+	npc
+		personality
+			staying
+			heroic
+			vindictive
+			opportunistic
+			confusion 10
+		government "Luma Union"
+		fleet
+			names "luminaran"
+			variant
+				"Raven"
+				"Sparrow (Patrol)"
+				"Scout"
+	npc
+		personality
+			launching
+			staying
+			heroic
+			vindictive
+			opportunistic
+			confusion 10
+		government "Luma Union"
+		fleet
+			names "luminaran"
+			variant
+				"Raven (Heavy)"
+				"Berserker"
+				"Sparrow (Patrol)"
+				"Berserker (Afterburner)"
+	npc evade
+		personality staying target
+		government "Zorbad's Gang"
+		fleet
+			names "pirate"
+			variant
+				"Leviathan"
+				"Firebird"
+				"Berserker" 2
+	to offer
+		has "Eternal Shuttle: Anti-Piracy 1: done"
+	on offer
+		conversation
+			`It doesn't take you long to find Commodore Perry in the spaceport bar. The Commodore in question is a tall, heavily built man who doesn't quite fit the general-issue dress uniform he's wearing. He's holding a small package in his hands, which he places on the table as soon as you approach.`
+			`	"Why, hello, Captain <last>," he says, rising to greet you. "I'm sure you've been wondering what's in the package you brought us. Sit down, and we can open it together. Care for a drink?"`
+			choice
+				`	"Yes, please."`
+					goto yesdrink
+				`	"No, thanks."`
+					goto nodrink
+				`	"Wait, that's the vitally important package the soldier was carrying?"`
+			`	"Why, yes. You seem surprised. Now, would you like a drink or not?"`
+			choice
+				`	"Yes, please."`
+				`	"No, thanks."`
+					goto nodrink
+			label yesdrink
+			`	The Commodore buys each of you a drink, and then pulls a small clasp knife out of his pocket.`
+				goto open
+			label nodrink
+			`	The Commodore buys himself a drink, and takes a long sip of it, before sitting back and pulling a clasp knife out of his pocket.`
+			label open
+			`	Opening the knife without saying a word, he procedes to slit open the tape binding the parcel. Then, he turns to you.`
+			`	"Would you care to do the honours, Captain?"`
+			`	At his urging, you open the package, revealing a small pile of cloth napkins. Before you can do anything else, however, a shrill air raid siren sounds. Bargoers dash for cover as the field outside is obscured by a brilliant flash of white light, and then the windows blow in.`
+			`	No sooner is the attack over than Commodore Perry is scrambling to his feet beside you. He bellows something, but you can't here it over the ringing in your ears. He shouts again, and this time you can just make out what he says as a cry for all able captains to assist in fighting the raiders.`
+			choice
+				`	(Join the defense.)`
+					goto join
+				`	(Hunker down and wait.)`
+			`	A few more flashes come from farther away, and then the world is silent. Crawling out from under a table, you gaze upon the ruin of the spaceport. Luckily, your ship is undamaged, but many others have been less fortunate and the sky is glazed in smoke as the napkins on the floor beside you flutter in the breeze.`
+				decline
+			label join
+			`	You follow the commodore and a couple of other pilots out to the wreckage of the spaceport. Climbing into your miraculously unscathed shuttle, you prepare to launch.`
+				launch
+	on visit
+		dialog `You've landed on <destination>, but the raiders are still circling overhead, preparing to drop more bombs. You should take off again to help fight them off.`
+	on complete
+		dialog `After landing on <destination>, you receive a message from Commodore Perry. The message reads as follows: "Captain <last>, please meet me where the spaceport bar used to be as soon as possible." Evidently the bar has been destroyed.`
+		"Finite Heaven death chance" += 5
+	on decline
+		"Finite Heaven death chance" += 5
+		set "Eternal Shuttle: Ready to blow"
+
 mission "Eternal Shuttle: Goodbye Finite Heaven"
 	landing
 	source
