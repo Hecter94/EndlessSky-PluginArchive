@@ -2321,9 +2321,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/additional.command.buttons/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 159.75 kb | 2023-08-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
+[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 159.76 kb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-24) <br>
 
 >2Made for the mobile version and adds several new buttons to the lower right corner.
 >(inspired by theweirednut)
@@ -2366,7 +2366,10 @@ Additional there are some functions in this plugin that the original mobile ui c
 This plugin overwrites `interface "main buttons"` and `interface "hud"`, so it isn't compatible with other plugins modifying these.<br>
 <br>
 <br>
-Changelog:<br>
+Chancelog:<br>
+<br>
+2023-08-24<br>
+fixed non-fireing attack button<br>
 <br>
 2023-08-05<br>
 moved the hidden ammo box to a visible place<br>
@@ -2380,7 +2383,6 @@ added descriptions inside script to exchange buttons functions<br>
 <br>
 2023-07-06<br>
 changed 'fire afterburner' to new 'fleet: harvest flotsam', because afterburner can easily toggled by double tapping<br>
-
 </blockquote>
 </details>
 
@@ -7151,9 +7153,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-23) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-24) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -11749,9 +11751,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Eternal Shuttle/icon.png' height='100'></img><br>
 
 
-[Eternal.Shuttle.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eternal.Shuttle.zip) | 325.13 kb | 2023-08-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Eternal%20Shuttle/) <br>
+[Eternal.Shuttle.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eternal.Shuttle.zip) | 326.67 kb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Eternal%20Shuttle/) <br>
 Author: mOctave | Category: Story <br>
-[https://github.com/mOctave/eternal-shuttle](https://github.com/mOctave/eternal-shuttle) (last commit 2023-08-14) <br>
+[https://github.com/mOctave/eternal-shuttle](https://github.com/mOctave/eternal-shuttle) (last commit 2023-08-24) <br>
 
 >An Endless Sky plugin about the end of humanity and fighting off an alien invasion in a Shuttle.
 >
@@ -12414,9 +12416,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Moar Humanity/icon.png' height='100'></img><br>
 
 
-[Moar.Humanity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Humanity.zip) | 16.69 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Moar%20Humanity/) <br>
+[Moar.Humanity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Humanity.zip) | 28.75 kb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Moar%20Humanity/) <br>
 Author: mOctave | Category: Story <br>
-[https://github.com/mOctave/moar-humanity](https://github.com/mOctave/moar-humanity) (last commit 2023-07-11) <br>
+[https://github.com/mOctave/moar-humanity](https://github.com/mOctave/moar-humanity) (last commit 2023-08-24) <br>
 
 >Moar Humanity is my dump for everything human related that involves original creation (read, not ship splices). Some of this new content is actually somewhat realistic, but a lot of it, especially the setup with Marauding Max, is completely illogical and designed for comic relief rather than sanity.
 
