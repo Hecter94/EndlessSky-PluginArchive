@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-26) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-27) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -43,7 +43,7 @@ So how do you use this plugin? Well there are two very simple methods of [access
 </details>
 
 Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <br>
 
 
 ---
@@ -5968,9 +5968,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 6.31 mb | 2023-08-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 6.31 mb | 2023-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-26) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-27) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -12239,9 +12239,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-20) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-27) <br>
 
 >A mission focused plugin for Endless Sky.
 >
