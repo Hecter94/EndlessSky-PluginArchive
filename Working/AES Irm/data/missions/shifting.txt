@@ -1,8 +1,8 @@
-mission "Irm enableWaypointShift"
+mission "Irm: enable waypoint shift"
 	invisible
 	landing
 	on offer
-		set "Irm originalWaypoint"
+		set "Irm: original waypoint"
 		conversation
 			`In this abandoned station, there are few places of intrigue left as the port has been almost completely ransacked, which might have been from passing pirates. The origins of this place are of course a mystery, but the structure seems decayed from countless years of abandon.`
 			`	It feels like a daunting journey to return to Human space, it has already consumed a lot of fuel to get this far. Unfamiliar ships were seen flying in and out of this system since your arrival. There may be a colony nearby where you can refuel and gather information about this place.`
@@ -14,7 +14,7 @@ mission "Irm enableWaypointShift"
 		or
 			not "outfit: Quantum Key Stone"
 			not "outfit: Quantum Keystone"
-mission "Irm shiftIntroduction1"
+mission "Irm: shift introduction 1"
 	invisible
 	landing
 	on offer
@@ -27,11 +27,11 @@ mission "Irm shiftIntroduction1"
 	source
 		planet "Slic Airn"
 	to offer
-		has "Irm originalWaypoint"
+		has "Irm: original waypoint"
 		or
 			has "outfit: Quantum Key Stone"
 			has "outfit: Quantum Keystone"
-mission "Irm shiftIntroduction2"
+mission "Irm: shift introduction 2"
 	on offer
 		outfit "Keystone Stabilizer" 1
 		conversation
@@ -49,9 +49,9 @@ mission "Irm shiftIntroduction2"
 	source
 		government "Remnant"
 	to offer
-		has "Irm shiftIntroduction1: offered"
+		has "Irm: shift introduction 1: offered"
 		has "Remnant: Technology Available: offered"
-mission "Irm shiftWaypoint"
+mission "Irm: shift waypoint"
 	invisible
 	landing
 	on offer
@@ -59,23 +59,21 @@ mission "Irm shiftWaypoint"
 			`When you land on the station, you're surprised to find that the hull of your ship exhibits a yellow haze, you find the same of the surfaces of the dock when you depart your ship. With a feeling of unease around the situation, you check on your Keystone, recalling that it exhibited a similar appearance last time you were here.`
 			`	Unlike last time, the Keystone appears to not be vibrating anymore, but maintaining the same yellow aura as anything else here. The stabilization of the Keystone, allowed by the Remnants gift to you, must have had some unforseen reaction to the stations past effects on it.`
 				launch
-		clear "Irm originalWaypoint"
-		event "Irm shiftWaypoint"
-		set "Irm shiftedWaypoint"
+		clear "Irm: original waypoint"
+		event "Irm: shift waypoint"
+		set "Irm: shifted waypoint"
 	source
 		planet "Slic Airn"
 	to offer
-		has "Irm originalWaypoint"
+		has "Irm: original waypoint"
 		has "outfit: Keystone Stabilizer"
-mission "Irm shiftWaypointRepeat"
+mission "Irm: shift waypoint repeat"
 	invisible
 	landing
-	to offer
-		not "Expanding Business [9c]: active"
 	on offer
-		clear "Irm originalWaypoint"
-		event "Irm shiftWaypoint"
-		set "Irm shiftedWaypoint"
+		clear "Irm: original waypoint"
+		event "Irm: shift waypoint"
+		set "Irm: shifted waypoint"
 		conversation
 			`The mysterious effect of your Keystone Stabilizer on the Keystone at this station occurs once more, taking you somewhere new, or even a different time entirely.`
 				launch
@@ -83,10 +81,11 @@ mission "Irm shiftWaypointRepeat"
 	source
 		planet "Slic Airn"
 	to offer
-		has "Irm originalWaypoint"
-		has "Irm shiftWaypoint: offered"
+		has "Irm: original waypoint"
+		has "Irm: shift waypoint: offered"
 		has "outfit: Keystone Stabilizer"
-event "Irm shiftWaypoint"
+		not "Irm: expanding business [9c]: active"
+event "Irm: shift waypoint"
 	system "Heia Due"
 		remove link "Waypoint"
 	system "Persolus"
@@ -284,13 +283,13 @@ event "Irm shiftWaypoint"
 			period 1818.85
 			sprite "planet/sheragi_postverta"
 				scale 0.5
-mission "Irm resetWaypoint"
+mission "Irm: reset waypoint"
 	invisible
 	landing
 	on offer
-		clear "Irm shiftedWaypoint"
-		event "Irm resetWaypoint"
-		set "Irm originalWaypoint"
+		clear "Irm: shifted waypoint"
+		event "Irm: reset waypoint"
+		set "Irm: original waypoint"
 		conversation
 			`When landing back on the station, all the yellow glow from arriving here is absent. It doesn't make sense, but you are no scientist.`
 				launch
@@ -298,8 +297,8 @@ mission "Irm resetWaypoint"
 	source
 		planet "Slic Airn"
 	to offer
-		has "Irm shiftedWaypoint"
-event "Irm resetWaypoint"
+		has "Irm: shifted waypoint"
+event "Irm: reset waypoint"
 	system "Heia Due"
 		add link "Waypoint"
 	system "Persolus"

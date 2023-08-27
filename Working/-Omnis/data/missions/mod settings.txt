@@ -1,47 +1,16 @@
-mission " Mod Settings: Omnis"
+mission "Omnis: mod settings"
+	description `Accept this job to open a settings menu, it's in the title.`
 	job
+	name ` Mod Settings: Omnis`
 	on accept
 		conversation
 #	Menu
 			label "return"
 			choice
-				`	Automatic Map Reveal`
-					goto "1"
 				`	Shipyard Variants`
 					goto "2"
 				`	(Exit.)`
-					defer
-#	Automatic Map Reveal
-			label "1"
-			`Currently enabled.`
-				to display
-					has "global: Omnis: Automatic Map Reveal"
-			`Currently disabled.`
-				to display
-					not "global: Omnis: Automatic Map Reveal"
-			`Defaultly disabled`
-			`When enabled, landing anywhere within the Omnis galaxy will reveal the entire vanilla map.`
-			choice
-				`	(Enable.)`
-					to display
-						not "global: Omnis: Automatic Map Reveal"
-					goto "1 1"
-				`	(Disable.)`
-					to display
-						has "global: Omnis: Automatic Map Reveal"
-					goto "1 2"
-				`	(Return.)`
-					goto "return"
-			label "1 1"
-			action
-				set "global: Omnis: Automatic Map Reveal"
-			`Enabled Automatic Map Reveal.`
-				goto "return"
-			label "1 2"
-			action
-				clear "global: Omnis: Automatic Map Reveal"
-			`Disabled Automatic Map Reveal.`
-				goto "return"
+					launch
 #	Ship Variants
 			label "2"
 			`Currently enabled.`
@@ -65,11 +34,13 @@ mission " Mod Settings: Omnis"
 					goto "return"
 			label "2 1"
 			action
+				event "Omnis: shipyard variants enabled"
 				set "global: Omnis: Shipyard Variants"
 			`Enabled Shipyard Variants.`
 				goto "return"
 			label "2 2"
 			action
+				event "Omnis: shipyard variants disabled"
 				clear "global: Omnis: Shipyard Variants"
 			`Disabled Shipyard Variants.`
 				goto "return"
