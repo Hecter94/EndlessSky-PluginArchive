@@ -39,3 +39,14 @@ This is why there is no colon after the namespace.
 In `es-ruin-the-fun`, the prefix is `Ruin-The-Fun` to be more explicit, but also sometimes `RTF` when it's more convenient, so that some object types without a "display name" are still decently rendered. It would look like this:
 - `Ruin-The-Fun Object Name: Subobject Name`
 - `RTF Object Name: Subobject Name`
+
+
+
+## Delimiting a single token with ` instead of "
+
+Some objects in vanilla include a `"` in their name, requiring the use of `` ` `` to define them.
+Additionally, `"` is used in frequently conversation text.
+
+On the other hand, `` ` `` is exclusively used when `"` cannot be.
+
+Therefore, it makes sense only using `` ` ``
