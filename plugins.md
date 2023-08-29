@@ -6250,7 +6250,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: Spectre907YT | Category: Races <br>
 [https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-22) <br>
 
->Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
+>Adds a faction (or 2) which supplies some interesting fighters and powerful weapons.
 >
 
 <details>
