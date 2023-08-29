@@ -659,9 +659,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-28) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-29) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -673,19 +673,19 @@ Author: Pshy0 | Category: Cheats <br>
 
 Cheat plugin for [endless-sky](https://github.com/endless-sky/endless-sky), to ruin your fun, or to assist you in making or testing another plugin.
 
-Ruin-The-Fun lets you change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. It also makes all ships and outfits available from a few added systems.
+Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more.
 
 
 
 ## Downloads
 
-- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/es-ruin-the-fun.zip):
+- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
 - [🎁 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
-- [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/es-ruin-the-fun-for-es-continuous.zip):
+- [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
   This version is periodically generated to match continuous builds of Endless Sky. This is also the latest untested RTF version.
   If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
 
@@ -861,7 +861,7 @@ You are welcome to submit bug reports and suggestions using [GitHub issues](http
 </details>
 
 Status: Released for 0.10.2. Other versions are available on the plugin's website. <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -1972,17 +1972,38 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 51.76 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 11.49 kb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-28) <br>
 
 >Adds several repeatable boarding missions.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### more boarding missions <br>
-(21 boarding mission)(made for 0.10.1)<br>
-Adds seven pirate bounty boarding missions, seven human assisting boarding missions and seven Hai assisting boarding missions(20%, different credit rewards, repeatable).<br>
+<br>
+<br>
+Adds 27 boarding and assisting missions. Boarding Free Worlds, Republic, Syndicate, Militia, Pirates, Korath or Hai can trigger them. Bigger ships give higher rewards.<br>
+<br>
+<ul>
+<li> 7 Pirate boarding missions for credits<br>
+  (by ship categories, 20% chance, 5.000 to 25.000 credits, repeatable)</li>
+<li> 4 Pirate boarding missions for an android<br>
+  (by ship categories, 1-4% chance, outfit "NDR-114 Android" as reward, repeatable)</li>
+<li> 7 Human assisting boarding missions<br>
+  (by ship categories, 20% chance, 10.000 to 30.000 credits, repeatable)</li>
+<li> 7 Hai assisting boarding missions<br>
+  (by ship categories, 20% chance, 20.000 to 60.000 credits, repeatable)</li>
+<li> 2 Korath boarding missions<br>
+  (for the bigger ship categories, 2-3% chance, outfit "Cloaking Device" as reward, repeatable)</li>
+</ul>
+<br>
+<br>
+2023-08-29<br>
+added 2 korath boarding missions with a rare chance for a cloaking device<br>
+added 4 pirate boarding missions with rare chance for an android<br>
+added icon and reworked readme<br>
+
 </blockquote>
 </details>
 
@@ -3870,9 +3891,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/snowfeather.robotics/icon.png' height='100'></img><br>
 
 
-[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 53.6 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
+[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 21.22 kb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-21) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-28) <br>
 
 >Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
 >
@@ -3880,10 +3901,17 @@ Author: zuckung | Category: Outfits <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### snowfeather robotics <br>
-(story, 1 new outfit)(made for 0.10.1) <br>
+<br>
 <br>
 Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space). <br>
-Starts on Snowfeather(Bore Fah) after completing mission "remnant: shattered light 4" and have at least one android installed. <br>
+Starts on Snowfeather(Bore Fah) when having at least one android installed. <br>
+<br>
+To get an android, which is needed to start this plugin, do the remnant mission 'shattered light 4'. Alternatively my plugin 'more.boarding.missions' give androids as rare reward for boarding pirates.<br>
+The new buyable androids are a little bit more expensive than the original ones.<br>
+<br>
+<br>
+2023-08-29<br>
+removed remnant mission requirement<br>
 </blockquote>
 </details>
 
@@ -5919,9 +5947,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.25 kb | 2023-08-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.24 kb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-26) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-29) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -6246,18 +6274,33 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-22) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-29) <br>
 
 >Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
 >
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Arion - Air Superiority (An Endless Sky plugin)
-An Endless Sky plugin that adds a bunch of new weapons, outfits, h2h weapons, modified ships, real life fighter jets and bombers, ace combat superplanes and xenonauts fighters, alongside 7 custom ships. To get access to the goodies, visit Earth, Valhalla, Hephaestus or Bourne and do a short "campaign". Or simply finish the main campaign. Or eliminate a lot of enemies.
+<blockquote># Arion - Air Superiority
+An Endless Sky plugin that adds a variety of things to endless sky, including: 
+- Real life fighters
+- Real life bombers
+- Ace combat super planes
+- Xenonauts fighters
+- A bunch of new H2H weapons based on real life weapons
+- New outfits 
+- New and powerful weapons
+- Superweapons
+- Custom ships
+- Some new missions and jobs
+- ETC
+
+To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps do a short "campaign" there to get all of the content, or simply either finish the main campaign or eliminate a lot of enemies. 
+
 There are also some bonus content if you have the midnight, mega freight, czartraks ships or navycampaign plugin. To access the bonus content, move the respective files from the bonus file to the data file.
+
 (Special thanks to 1010todd and yuyuko_saigyouji. from the Endless Sky discord server for letting me borrow some sprites)
 
 </blockquote>
