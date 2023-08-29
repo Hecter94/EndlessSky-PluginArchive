@@ -1,0 +1,71 @@
+mission "Ruin-the-Fun Pre-Outfitted Ships"
+	job
+	name "[basic] Ships (pre-outfitted)"
+	description "Pick ships that have already been outfitted. Those are not in the shipyard, so you do not confuse them and the original ships."
+	"apparent payment" 1000
+	repeat
+	source
+		government "Ruin-The-Fun"
+	deadline 1
+	on accept
+		conversation
+			`	Choose any number of those ships to add to your escort.`
+			
+			label options
+			action
+				set "Ruin-The-Fun Services: player met Zeus"
+			choice
+				`	(Outfit me an Albatross with legit tech.)`
+					goto albatross
+				`	(Outfit me a Tubfalet with legit tech.)`
+					goto tubfalet
+				`	(Outfit me a Punisher with stolen Quarg tech.)`
+					goto punisher
+				`	(Outfit me a 577 with stolen Quarg tech.)`
+					goto 577
+				`	(Give me a Petrel fighter.)`
+					goto petrel
+				`	(Give me a Flycatcher drone.)`
+					goto flycatcher
+				`	(Done.)`
+					goto end
+			
+			label "albatross"
+			action
+				give ship "Ruin-The-Fun Albatross (Starter)" "Snappy Present"
+			`	You have been given an outfitted Albatross.`
+				goto options
+			
+			label "tubfalet"
+			action
+				give ship "Ruin-The-Fun Tubfalet (Starter)" "Savage Present"
+			`	You have been given an outfitted Tubfalet.`
+				goto options
+	
+			label "punisher"
+			action
+				give ship "Ruin-The-Fun Punisher (Starter)" "Graceful Present"
+			`	A Punisher with quarg tech, ironic?`
+				goto options
+			
+			label "577"
+			action
+				give ship "Ruin-The-Fun 577 (Starter)" "Funky Present"
+			`	The ground shakes under the weigh of your 577. No Korath child inside.`
+				goto options
+			
+			label "petrel"
+			action
+				give ship "Ruin-The-Fun Petrel" "Expensive Replacement"
+			`	You have been given a replacement Petrel`
+				goto options
+			
+			label "flycatcher"
+			action
+				give ship "Ruin-The-Fun Flycatcher" "Expensive Replacement"
+			`	You have been given a replacement Flycatcher`
+				goto options
+			
+			label end
+			`	You can now customize your ships.`
+				decline

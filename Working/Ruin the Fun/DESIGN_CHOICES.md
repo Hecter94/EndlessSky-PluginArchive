@@ -7,6 +7,18 @@ I may also use it as a reference for other plugins.
 
 
 
+## Prefixing the plugin's name with "-"
+
+The plugin's internal name is `-Ruin The Fun` and not `Ruin The Fun`,
+so that it gets loaded first and does not override content from plugins
+loaded after it.
+
+This should allow RTF to use default definitions for objects defined in other plugins,
+so that if it is not eventually defined (cf because the plugin is not enabled),
+it does not cause warnings or errors referencing those objects.
+
+
+
 ## Placing assets in `rtf/` folders
 
 Resources from different plugins may collide.
