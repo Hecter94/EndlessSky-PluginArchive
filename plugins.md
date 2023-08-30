@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-27) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-30) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -659,9 +659,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.58 mb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-29) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-30) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -850,6 +850,8 @@ event "MYPLUGIN Move RTF10"
 
 You are welcome to submit bug reports and suggestions using [GitHub issues](https://github.com/Pshy0/es-ruin-the-fun/issues).
 
+You can also contact me on discord (`Pshy#7998`).
+
 
 
 ## License
@@ -861,7 +863,7 @@ You are welcome to submit bug reports and suggestions using [GitHub issues](http
 </details>
 
 Status: Released for 0.10.2. Other versions are available on the plugin's website. <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -5947,9 +5949,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.24 kb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.94 kb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-29) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-30) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -5996,9 +5998,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 6.31 mb | 2023-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-27) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-30) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -6274,30 +6276,41 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-29) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-30) <br>
 
->Adds a shipyard and outfitter to Luna which supplies some tier 1-3+ gear.
+>Adds a faction (or 2) that supplies real life fighters and other interesting stuff.
 >
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Arion - Air Superiority
 An Endless Sky plugin that adds a variety of things to endless sky, including: 
+
 - Real life fighters
+  
 - Real life bombers
+  
 - Ace combat super planes
+  
 - Xenonauts fighters
+  
 - A bunch of new H2H weapons based on real life weapons
-- New outfits 
-- New and powerful weapons
+  
+- Advanced outfits
+  
+- Specialized weapons
+  
 - Superweapons
+  
 - Custom ships
+  
 - Some new missions and jobs
+  
 - ETC
 
-To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps do a short "campaign" there to get all of the content, or simply either finish the main campaign or eliminate a lot of enemies. 
+To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps helping them out by doing some jobs and mission is a good idea.
 
 There are also some bonus content if you have the midnight, mega freight, czartraks ships or navycampaign plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
@@ -6306,7 +6319,7 @@ There are also some bonus content if you have the midnight, mega freight, czartr
 </blockquote>
 </details>
 
-Status: Should work in Continuous/0.9.15/0.9.16 <br>
+Status: Should work in Continuous/0.10.2 <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -7967,9 +7980,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Fluff
 
 
-[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-08-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
+[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-26) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-30) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 
@@ -8640,9 +8653,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Fluff
 
 
-[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.69 mb | 2023-08-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
+[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.69 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-26) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-30) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 >
@@ -12282,9 +12295,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-27) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-08-30) <br>
 
 >A mission focused plugin for Endless Sky.
 >
