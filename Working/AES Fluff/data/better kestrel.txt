@@ -132,20 +132,13 @@ ship "Kestrel (Promotional)"
 	explode "huge explosion" 30
 	"final explode" "final explosion large"
 #	Missions
-mission "Kestrel Promotion"
+mission "Fluff: kestrel promotion"
 	invisible
-	source "Wayfarer"
-	to offer
-		and
-			"credits" > 140000000
-			has "Kestrel Available: offered"
-			or
-				"combat rating" > 24000
-				and
-					"combat rating" > 6000
-					has "global: promoted kestrel"
+	on accept
+		payment -140000000
+		give ship "Kestrel (Promotional)" "Sparks Pulsar"
 	on offer
-		"global: promoted kestrel" ++
+		set "global: promoted kestrel"
 		conversation
 			`Within the spaceport bar, you are approached by a familiar face. Charles Atinoda excitedly fawns over some of your famous exploits and wastes no time in revealing what he wants from you.`
 			`	"Captain <last>, I'm sure you remember helping us test our latest ship release." Charles leaves open, "I do." you say.`
@@ -159,10 +152,17 @@ mission "Kestrel Promotion"
 					accept
 				`	(Refuse.)`
 					decline
-	on accept
-		payment -140000000
-		give ship "Kestrel (Promotional)" "Sparks Pulsar"
-mission "kestrel promotion check yes"
+	source "Wayfarer"
+	to offer
+		and
+			"credits" > 140000000
+			has "Kestrel Available: offered"
+			or
+				"combat rating" > 24000
+				and
+					"combat rating" > 6000
+					has "global: promoted kestrel"
+mission "Fluff: kestrel promotion check yes"
 	invisible
 	repeat
 	landing
@@ -172,7 +172,7 @@ mission "kestrel promotion check yes"
 		"salary: Tarazed Influencer" = 28000
 	on accept
 		fail
-mission "kestrel promotion check no"
+mission "Fluff: kestrel promotion check no"
 	invisible
 	repeat
 	landing

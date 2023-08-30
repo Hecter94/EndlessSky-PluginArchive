@@ -1,0 +1,87 @@
+mission `Ruin-the-Fun Combat Ships`
+	job
+	name "[fight] Fight Ships"
+	description "Select the ships to spawn as part of an hostile fleet."
+	"apparent payment" 100
+	repeat
+	source
+		government "Ruin-The-Fun"
+	on accept
+		conversation
+			`/!\ Accepting this mission more than once will spawn the selected ships that many times, and deselected ships will no longer be spawned. You cannot spawn each ship individually.`
+				to display
+					has `Ruin-the-Fun Combat Ships: really active`
+			`Choose the ships to spawn:`
+			label begin
+			choice
+				`	(Done. You have not selected any ship, so no ship will spawn.)`
+					goto end
+					to display
+						not `Ruin-the-Fun Combat Ships count`
+				`	(Done. Selected ships will be spawned.)`
+					goto end
+					to display
+						has `Ruin-the-Fun Combat Ships count`
+				`	(Reset.)`
+					goto reset
+[[tmp/base-ships.list.tmp
+				`	[  ] \1`
+					to display
+						not `Ruin-the-Fun Combat Ships: \1`
+					goto `enable \1`
+				`	[x] \1`
+					to display
+						has `Ruin-the-Fun Combat Ships: \1`
+					goto `disable \1`
+]]
+				`	(Done. You have not selected any ship, so no ship will spawn.)`
+					goto end
+					to display
+						not `Ruin-the-Fun Combat Ships count`
+				`	(Done. Selected ships will be spawned.)`
+					goto end
+					to display
+						has `Ruin-the-Fun Combat Ships count`
+
+			label reset
+			action
+[[tmp/base-ships.list.tmp
+				clear `Ruin-the-Fun Combat Ships: \1`
+]]
+				clear `Ruin-the-Fun Combat Ships count`
+			`	All ships have been unchecked`
+				goto begin
+
+[[tmp/base-ships.list.tmp
+			label `enable \1`
+			action
+				set `Ruin-the-Fun Combat Ships: \1`
+				`Ruin-the-Fun Combat Ships count` += 1
+			`	The \1 have been added to the fleet.`
+				goto begin
+			label `disable \1`
+			action
+				clear `Ruin-the-Fun Combat Ships: \1`
+				`Ruin-the-Fun Combat Ships count` -= 1
+			`	The \1 have been removed from the fleet.`
+				goto begin
+]]
+				
+			label end
+			`Press [D] 3 times to depart.`
+				accept
+		`Ruin-the-Fun Combat Ships: really active` += 1
+	on fail
+		`Ruin-the-Fun Combat Ships: really active` -= 1
+	on complete
+		`Ruin-the-Fun Combat Ships: really active` -= 1
+[[tmp/base-ships.list.tmp
+	npc disable
+		government `Ruin-The-Fun (Hostile)`
+		ship `\1` `\1`
+		personality heroic disables
+		to spawn
+			has `Ruin-the-Fun Combat Ships: \1`
+		to despawn
+			not `Ruin-the-Fun Combat Ships: \1`
+]]

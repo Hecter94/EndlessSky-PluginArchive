@@ -11,22 +11,14 @@ ES_DEFAULT_PILOT_SAVE = "../../saves/Default Pilot"
 GENERATED_DATA_FILES += data/outfitters/all-outfits.txt
 GENERATED_DATA_FILES += data/shipyards/all-base-ships.txt
 GENERATED_DATA_FILES += data/shipyards/all-ship-variants.txt
-RTF_PLANET_FILES += data/map/planets/RTF-0-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-1-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-2-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-3-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-4-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-5-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-6-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-7-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-8-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-9-P.txt
-RTF_PLANET_FILES += data/map/planets/RTF-10-P.txt
+GENERATED_DATA_FILES += data/map/planets.txt
+GENERATED_DATA_FILES += data/map/systems.txt
 RTF_JOB_FILES += data/jobs/reputation.txt
 RTF_JOB_FILES += data/jobs/conditions/conditions.txt
+RTF_JOB_FILES += data/jobs/combat-ships/combat-ships.txt
+RTF_JOB_FILES += data/jobs/combat-fleets/combat-fleets.txt
 RTF_JOB_FILES += data/jobs/visit-systems.txt
 RTF_JOB_FILES += data/jobs/visit-planets.txt
-GENERATED_DATA_FILES += $(RTF_PLANET_FILES)
 GENERATED_DATA_FILES += $(RTF_JOB_FILES)
 GENERATED_DATA_FILES += data/events/all-licenses.txt
 
@@ -142,6 +134,10 @@ tmp/governments.list.tmp: tmp/data-dirs.tmp | tmp
 	@echo "Listing governments..."
 	@cat tmp/data-dirs.tmp | xargs grep -R "^government" | grep "\.txt:" | sed "s/^.*\.txt:government //g" | tools/unquote.sh | sort | uniq | sed "/^Escort$$/d" > $@
 
+tmp/fleets.list.tmp: tmp/data-dirs.tmp | tmp 
+	@echo "Listing fleets..."
+	@cat tmp/data-dirs.tmp | xargs grep -R "^fleet" | grep "\.txt:" | sed "s/^.*\.txt:fleet //g" | tools/unquote.sh | sort | uniq > $@
+
 tmp/licenses.list.tmp: tmp/data-dirs.tmp | tmp
 	@echo "Listing licenses..."
 	@cat tmp/data-dirs.tmp | xargs grep -P -R "outfit.*License" | grep "\.txt:" | sed "s/^.*\.txt:outfit //" | tools/unquote.sh | sed 's| License$$||' | sort | uniq > $@
@@ -176,9 +172,9 @@ data/shipyards/all-ship-variants.txt: tmp/ship-variants.list.tmp | tmp
 	@mv tmp/tmp.tmp $@
 	@cat tmp/ship-variants.list.tmp | sed 's|^\(.*\)$$|\t`\1`|' >> $@
 
-data/map/planets/RTF-%-P.txt: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
-	@printf "Updating planet %s...\n" $@
-	@cat $@ | sed "/^\tshipyard /d" | sed "/\toutfitter /d" > tmp/tmp.tmp
+data/map/planets.temp: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
+	@printf "Updating RTF planet template...\n"
+	@cat $@ | sed "/^\tshipyard /d" | sed "/\toutfitter /d" | sed "/^]]$$/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
 	@echo '\toutfitter "Ruin-The-Fun Outfits"' >> $@
 	@echo '\toutfitter "Ruin-The-Fun Stat Outfits"' >> $@
@@ -186,6 +182,7 @@ data/map/planets/RTF-%-P.txt: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | t
 	@echo '\tshipyard "Ruin-The-Fun All Base Ships"' >> $@
 	@cat tmp/outfitters.list.tmp | sed 's/^\(.*\)$$/\toutfitter `\1`/' >> $@
 	@cat tmp/shipyards.list.tmp | sed 's/^\(.*\)$$/\tshipyard `\1`/' >> $@
+	@echo "]]" >> $@
 
 data/jobs/visit-systems.txt: tmp/systems.list.tmp | tmp
 	@echo "Updating job $@..."
@@ -211,6 +208,10 @@ default-reputations.txt:
 
 data/jobs/reputation.txt: data/jobs/reputation.temp tmp/reputation-resets.tmp tmp/friendlies-reputation-resets.tmp tmp/friendly-reputation-sets.tmp tmp/hostile-reputation-sets.tmp
 data/jobs/conditions/conditions.txt: data/jobs/conditions/conditions.temp data/jobs/conditions/condition-switches.list data/jobs/conditions/karma-values.list
+data/jobs/combat-ships/combat-ships.txt: tmp/base-ships.list.tmp
+data/jobs/combat-fleets/combat-fleets.txt: tmp/fleets.list.tmp
+data/map/planets.txt: data/map/systems.csv
+data/map/systems.txt: data/map/systems.csv
 %.txt: %.temp
 	@echo "Generating $@ from $<..."
 	@tools/substitute-template.py $< > $@

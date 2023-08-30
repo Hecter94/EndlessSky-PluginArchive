@@ -180,6 +180,8 @@ event "MYPLUGIN Move RTF10"
 
 You are welcome to submit bug reports and suggestions using [GitHub issues](https://github.com/Pshy0/es-ruin-the-fun/issues).
 
+You can also contact me on discord (`Pshy#7998`).
+
 
 
 ## License
