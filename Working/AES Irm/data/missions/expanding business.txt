@@ -1,28 +1,10 @@
 mission "Irm: expanding business [8]"
-	name "Next stage in business"
 	description `By David Turner's request, attend a dinner to discuss the business you helped establish with him. The daily stipend you receive for your help gives you 4000 reasons to attend.`
-	landing
-	source
-		government
-			"Free Worlds"
-			"Hai"
-			"Republic"
-			"Syndicate"
-	to offer
-		and
-			random < 15
-			has "Irm: discovery [2]: offered"
-			has "event: shipyard on greenwater"
-	on offer
-		conversation
-			`Shorty after beginning landing procedures you receive a message from David Turner. Tempted as you are to open it, you decide to not distract yourself from the task at hand, sure you would rather land in one piece.`
-			`	"Captain <last>, I've been wanting to organize a dinner to discuss business on Greenwater. This operation has been my most profitable venture to date, but I still like to maintain discussions on the future of the enterprise with prospective business partners. I'm currently on <destination>, I will extend my stay and I am looking forward to meeting with you again.`
-			`	-Sincerely, David Turner, Turner Incorporated"`
-			`	Turner pays you 4000 credits a day, the least you can do is take him up on a company dinner.`
-				accept
 	destination
 		attributes "hai"
 		attributes "urban"
+	landing
+	name "Next stage in business"
 	on complete
 		event "Irm: breaking ground" 14
 		conversation
@@ -73,53 +55,74 @@ mission "Irm: expanding business [8]"
 			`	"Captain, I must know what you had in mind!"`
 			`	Launching right into it, you go into detail about your recent discoveries beyond the reach of most; the sight of the fantastical megastructure and the few systems beyond.`
 			`	As the night goes on it becomes clear that David has plans that he's ruminating on. There's no telling how far he's planned with his 'station' project, having just learned that he's had similar ambitions. It comes time to call it a night and you both end up leaving behind unfinished meals, you shake hands, and he thanks you for your input before you part ways. As you two start to depart, however, David turns to say, "Oh <first>! I almost forgot this wasn't just only a social call, I'll be in touch when I can set aside time for a venture. I'm looking forward to breaking ground on this with you."`
-event "Irm: breaking ground"
-mission "Irm: expanding business [9a]"
-	name "Rendezvous with David"
-	description `David Turner has carved substantial time away from his business to accompany you. Meet him at <destination>.`
-	landing
+				decline
+	on offer
+		conversation
+			`Shorty after beginning landing procedures you receive a message from David Turner. Tempted as you are to open it, you decide to not distract yourself from the task at hand, sure you would rather land in one piece.`
+			`	"Captain <last>, I've been wanting to organize a dinner to discuss business on Greenwater. This operation has been my most profitable venture to date, but I still like to maintain discussions on the future of the enterprise with prospective business partners. I'm currently on <destination>, I will extend my stay and I am looking forward to meeting with you again.`
+			`	-Sincerely, David Turner, Turner Incorporated"`
+			`	Turner pays you 4000 credits a day, the least you can do is take him up on a company dinner.`
+				accept
 	source
-		government "Hai"
+		government
+			"Free Worlds"
+			"Hai"
+			"Republic"
+			"Syndicate"
 	to offer
 		and
 			random < 15
-			has "event: Irm: breaking ground"
+			has "Irm: discovery [2]: offered"
+			has "event: shipyard on greenwater"
+event "Irm: breaking ground"
+mission "Irm: expanding business [9a]"
+	description `David Turner has carved substantial time away from his business to accompany you. Meet him at <destination>.`
+	destination "Allhome"
+	landing
+	name "Rendezvous with David"
+	on fail
+		dialog "You've abandoned David after making plans to pick him up, he left a scathing message for you. Whoops."
 	on offer
 		event "Irm: abandoned david" 10
 		conversation
 			`When you land on <planet>, you receive a direct communication from David regarding the business. It seems he's been able to clear his schedule for an extended expedition, now you have only to transport David to get the ball rolling for the business.`
 			`	David sent over specific details on where he'll rendezvous with you. Meet at <destination> before traveling to the alternate Waypoint.`
 				accept
+	source
+		government "Hai"
 	to fail
 		has "event: Irm: abandoned david"
-	on fail
-		dialog "You've abandoned David after making plans to pick him up, he left a scathing message for you. Whoops."
-	destination "Allhome"
-event "Irm: abandoned david"
-mission "Irm: expanding business [9b]"
-	name "Travel to Slic Airn"
-	description `With David in your company, you can finally share your discovery with somebody.`
-	source
-		planet "Allhome"
 	to offer
 		and
-			has "Irm: expanding business [9a]: offered"
-			not "event: Irm: abandoned david"
+			random < 15
+			has "event: Irm: breaking ground"
+event "Irm: abandoned david"
+mission "Irm: expanding business [9b]"
+	description `With David in your company, you can finally share your discovery with somebody.`
+	destination "Slic Airn"
+	name "Travel to Slic Airn"
 	on offer
 		conversation
 			`You search the spaceport for David after setting down nearby his requested pick-up point, but soon after find yourself lost in the crowd of Hai and Human. You decide to wait beside your ship and ping his person hoping that he gets a move on.`
 			`	Within a few minutes, you receive a response that he lost track of time talking with a local vendor, and that he will be at your ship soon.`
 			`	Once David arrives, you soon depart for Waypoint.`
 				accept
-	destination "Slic Airn"
-mission "Irm: expanding business [9c]"
-	name "Travel Through the Obscure"
-	description `You've shown David the barebones station that allows you to travel to the alternate Waypoint. Depart with him to show off your discovery.`
-	landing
 	source
-		planet "Slic Airn"
+		planet "Allhome"
 	to offer
-		has "Irm: expanding business [9b]: offered"
+		and
+			has "Irm: expanding business [9a]: offered"
+			not "event: Irm: abandoned david"
+mission "Irm: expanding business [9c]"
+	description `You've shown David the barebones station that allows you to travel to the alternate Waypoint. Depart with him to show off your discovery.`
+	destination "Arx"
+	landing
+	name "Travel Through the Obscure"
+	on enter "Waypoint"
+		conversation
+			`The epitome of bewilderment paints David's face, he's almost in disbelief at what he sees once your ship leaves the port. "We set down with that manipulated Keystone and depart, and now we're somehow somewhere else entirely?" David asks rhetorically. After a silent moment, while you distance the ship from the station, he asks, "Could you obtain more of those devices that allow ships to enter here? I don't want to get ahead of myself but I think this is exactly what the next step for the business looks like."`
+			`	With a promise that you'll try to get more, while you intentionally omit your source out of consideration for the Remnant, you'd best set off for the Remnant when you're done here.`
+			`	Perhaps landing on the ringworld will further inspire David, for some purpose.`
 	on offer
 		clear "Irm: original waypoint"
 		event "Irm: shift waypoint"
@@ -131,20 +134,15 @@ mission "Irm: expanding business [9c]"
 			`	"It's just an abandoned station, the supports are crumbling, the rooms were pilfered at some point, and pirates had their fun painting the walls at some point." A pause follows your affirmation, you unintentionally leave David confused, before signaling for him to follow you back into your ship. David follows closely behind you to your Quantum Keystone that lies within the stabilizing casing that the Remnant gave to you, while he cautiously approaches and asks various questions regarding what it is and what it does, you do your best to explain in detail your experience with the Keystone's odd behavior relating to this station.`
 			`	All that's left to do now is to depart and show David the rest of your discovery.`
 				accept
-	on enter "Waypoint"
-		conversation
-			`The epitome of bewilderment paints David's face, he's almost in disbelief at what he sees once your ship leaves the port. "We set down with that manipulated Keystone and depart, and now we're somehow somewhere else entirely?" David asks rhetorically. After a silent moment, while you distance the ship from the station, he asks, "Could you obtain more of those devices that allow ships to enter here? I don't want to get ahead of myself but I think this is exactly what the next step for the business looks like."`
-			`	With a promise that you'll try to get more, while you intentionally omit your source out of consideration for the Remnant, you'd best set off for the Remnant when you're done here.`
-			`	Perhaps landing on the ringworld will further inspire David, for some purpose.`
-	destination "Arx"
-mission "Irm: expanding business [10a]"
-	name "Return David to Greenwater"
-	description `You've taken David to see your discovery first hand, and landed down on Arx with him. Now drop him back off on Greenwater in Hai space so he can discern where to go from here.`
-	landing
 	source
-		planet "Arx"
+		planet "Slic Airn"
 	to offer
-		has "Irm: expanding business [9c]: offered"
+		has "Irm: expanding business [9b]: offered"
+mission "Irm: expanding business [10a]"
+	description `You've taken David to see your discovery first hand, and landed down on Arx with him. Now drop him back off on Greenwater in Hai space so he can discern where to go from here.`
+	destination "Slic Airn"
+	landing
+	name "Return David to Greenwater"
 	on offer
 		conversation
 			`You set your ship down atop a rocky outcrop overlooking a great lake, all the stone in sight is covered in a thick moss blanket that could be mistaken for forests from far above. The atmosphere outside your ship is breathable but a touch richer than you're used to. The moss is easily traversable on the surface as below the soft fuzzy exterior, it holds an incredibly tough composition, unable to be broken through without tools.`
@@ -156,40 +154,44 @@ mission "Irm: expanding business [10a]"
 			`	"You're a funny one <last>, funny <last>."`
 			label "reasonable"
 			`	"I should be getting back to Greenwater before long, but I won't be able to shake what I've seen here." David tells while walking back into your ship.`
-	destination "Slic Airn"
-mission "Irm: expanding business [10b]"
-	name "Return David to Greenwater"
-	description `You've taken David to see your discovery first hand, and landed down on Arx with him. Now drop him back off on Greenwater in Hai space so he can discern where to go from here.`
-	landing
+				decline
+	source
+		planet "Arx"
 	to offer
-		has "Irm: expanding business [10a]: offered"
+		has "Irm: expanding business [9c]: offered"
+mission "Irm: expanding business [10b]"
+	description `You've taken David to see your discovery first hand, and landed down on Arx with him. Now drop him back off on Greenwater in Hai space so he can discern where to go from here.`
 	destination "Greenwater"
+	landing
+	name "Return David to Greenwater"
 	on complete
 		event "Irm: davids turn" 21
 		dialog
 			`"I'll be on-world while I decide our next steps. If you do manage to get any more of those stabilizers, please deliver them to me directly."`
+	to offer
+		has "Irm: expanding business [10a]: offered"
 event "Irm: davids turn"
 mission "Irm: expanding business [11a]"
-	name "Obtain Additional Stabilizers"
 	description `David asked if you could acquire additional sets of the equipment that allows you to traverse the Slic Airn station. You presume he intends to discover how to control the effects in a reliable manner.`
+	destination "Caelian"
 	landing
+	name "Obtain Additional Stabilizers"
 	to offer
 		has "Irm: expanding business [9c]: offered"
-	destination "Caelian"
 mission "Irm: expanding business [11b]"
-	name "Obtain Additional Stabilizers"
-	description `David asked if you could acquire additional sets of the equipment that allows you to traverse the Slic Airn station. You presume he intends to discover how to control the effects in a reliable manner.`
-	landing
-	source
-		planet "Caelian"
-	to offer
-		has "Irm: expanding business [11a]: offered"
-	on offer
-		dialog
-			`You arrive on <planet> to pick up extra Keystone Stabilizers for David. The Remnant give you no hassle and no charge, weird.`
 	cargo "Keystone Stabilizers" 12
+	description `David asked if you could acquire additional sets of the equipment that allows you to traverse the Slic Airn station. You presume he intends to discover how to control the effects in a reliable manner.`
 	destination "Greenwater"
+	landing
+	name "Obtain Additional Stabilizers"
 	on complete
 		payment 500000
 		dialog
 			`You're greeted warmly by David when you return and he is ecstatic when you offload the stabilizers for him to test with his people. He pays you a bonus of <payment> for your trouble without hesitation.`
+	on offer
+		dialog
+			`You arrive on <planet> to pick up extra Keystone Stabilizers for David. The Remnant give you no hassle and no charge, weird.`
+	source
+		planet "Caelian"
+	to offer
+		has "Irm: expanding business [11a]: offered"

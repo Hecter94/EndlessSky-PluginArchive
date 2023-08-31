@@ -9,15 +9,21 @@ Access all ships and outfits, change your captain's name, choose the color swizz
 
 ## Downloads
 
-- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
+- [📦 Ruin-The-Fun: Sources](https://github.com/Pshy0/es-ruin-the-fun/) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/archive/refs/heads/main.zip):
+  This is the latest commit to the plugin. It may or may not be stable, and it may also not work at all or break your save.
+  Includes partial **built-in plugin support**.
+- [🎁 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
-- [🎁 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
+  Includes partial **built-in plugin support**.
+- [📦 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
-- [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
+  No built-in plugin support.
+- [📦 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
   This version is periodically generated to match continuous builds of Endless Sky. This is also the latest untested RTF version.
   If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
+  No built-in plugin support.
 
 
 
@@ -39,7 +45,7 @@ The game's `plugins` folder should be located at one of those locations:
 
 If the `plugins` folder does not exist, you can create it.
 
-If you did it right, there should be a file `plugins/es-ruin-the-fun/about.txt` or `plugins/Ruin The Fun/about.txt`.
+If you did it right, there should be a file `plugins/-es-ruin-the-fun/about.txt` or `plugins/-Ruin The Fun/about.txt`.
 
 > This plugin should not conflict with any other, because it uses separate systems and prefixes objects it defines.
 
@@ -96,6 +102,8 @@ The following jobs can be used after every landing on an RTF planet:
 - `[escort] * Barges` (3 variants): Get escorted by dreadful Star Barges.
 - `[escort] Tek Far 109`: Get escorted by a customized drone transporter.
 - `[fight] Combat Drones`: Summon an amount of hostile Combat Drones.
+- `[fight] Fight Fleet`: Pick hostile fleets to spawn.
+- `[fight] Fight Ships`: Pick hostile ships to spawn.
 - `[fight] Kestrels`: Summon a combination of hostile Kestrels.
 - `[fight] Tek Far 109`: Summon an hostile customized drone transporter.
 - `[special] RTF Advanced Start`: Replays the advanced start conversation.
@@ -188,3 +196,15 @@ You can also contact me on discord (`Pshy#7998`).
 
  > This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  > This Source Code Form is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.
+
+
+
+## References
+
+### Non-Cheat Alternatives
+If you are interested by some features of this plug-in but do not want to be cheating, you may check the following ones:
+
+- [A Coalition at War](https://github.com/mathwhiz1212/ES-conscience-plugin): **Get help from the Quarg** so you don't have to nuke Zenith
+- [Advanced Starts](https://github.com/kestrel1110/ES-Advanced-Starts/): **Adds more starts.**
+- [Lampyrid Start](https://github.com/Zitchas/ES_Lampyrid_Start): **Faster and easier start**, made slightly more challenging by pirates.
+- [Prism Plugin](https://github.com/Startingfresher/Prism-Plug-in): **Unlock ship color swizzles** by achieving progress in the game

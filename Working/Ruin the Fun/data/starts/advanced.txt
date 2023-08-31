@@ -111,6 +111,7 @@ conversation "Ruin-The-Fun Intro (Avanced)"
 			goto "reveal map"
 		`	(Receive all licenses.)`
 			goto "all licenses"
+		
 		`	([  ] Equip flagship with a God Drive.)`
 			to display
 				has "Ruin-the-Fun player chose a starter ship"
@@ -120,6 +121,7 @@ conversation "Ruin-The-Fun Intro (Avanced)"
 			to display
 				has "outfit: Ruin-The-Fun God Drive"
 			goto "uninstall god drive"
+		
 		`	([  ] Equip flagship with a Cloaking Device.)`
 			to display
 				has "Ruin-the-Fun player chose a starter ship"
@@ -129,6 +131,37 @@ conversation "Ruin-The-Fun Intro (Avanced)"
 			to display
 				has "outfit: Cloaking Device"
 			goto "uninstall cloaking device"
+		
+		`	([  ] Equip flagship with quantum keystone.)`
+			to display
+				has "Ruin-the-Fun player chose a starter ship"
+				not "outfit: Ruin-The-Fun Stat Access quantum keystone"
+			goto "install quantum keystone"
+		`	([x] Equip flagship with quantum keystone.)`
+			to display
+				has "outfit: Ruin-The-Fun Stat Access quantum keystone"
+			goto "uninstall quantum keystone"
+		
+		`	([  ] Equip flagship with gaslining.)`
+			to display
+				has "Ruin-the-Fun player chose a starter ship"
+				not "outfit: Ruin-The-Fun Stat Access gaslining"
+			goto "install gaslining"
+		`	([x] Equip flagship with gaslining.)`
+			to display
+				has "outfit: Ruin-The-Fun Stat Access gaslining"
+			goto "uninstall gaslining"
+		
+		`	([  ] Equip flagship with tactical scan power.)`
+			to display
+				has "Ruin-the-Fun player chose a starter ship"
+				not "outfit: Ruin-The-Fun Stat Scan tactical scan power * 100000000"
+			goto "install tactical scan power"
+		`	([x] Equip flagship with tactical scan power.)`
+			to display
+				has "outfit: Ruin-The-Fun Stat Scan tactical scan power * 100000000"
+			goto "uninstall tactical scan power"
+		
 		`	(Done.)`
 			goto end
 	
@@ -152,6 +185,39 @@ conversation "Ruin-The-Fun Intro (Avanced)"
 	action
 		outfit "Cloaking Device" -1
 	`Removed the Cloaking Device from your flagship.`
+		goto "re-settings"
+	
+	label "install quantum keystone"
+	action
+		outfit "Ruin-The-Fun Stat Access quantum keystone"
+	`Your flagship now has the quantum keystone stat.`
+		goto "re-settings"
+	label "uninstall quantum keystone"
+	action
+		outfit "Ruin-The-Fun Stat Access quantum keystone" -1
+	`Your flagship no longer has the quantum keystone stat.`
+		goto "re-settings"
+	
+	label "install gaslining"
+	action
+		outfit "Ruin-The-Fun Stat Access gaslining"
+	`Your flagship now has the gaslining stat.`
+		goto "re-settings"
+	label "uninstall gaslining"
+	action
+		outfit "Ruin-The-Fun Stat Access gaslining" -1
+	`Your flagship no longer has the gaslining stat.`
+		goto "re-settings"
+	
+	label "install tactical scan power"
+	action
+		outfit "Ruin-The-Fun Stat Scan tactical scan power * 100000000"
+	`Your flagship now has the tactical scan power stat.`
+		goto "re-settings"
+	label "uninstall tactical scan power"
+	action
+		outfit "Ruin-The-Fun Stat Scan tactical scan power * 100000000" -1
+	`Your flagship no longer has the tactical scan power stat.`
 		goto "re-settings"
 	
 	label "reveal map"
