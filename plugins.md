@@ -659,9 +659,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.61 mb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-30) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-31) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -679,15 +679,21 @@ Access all ships and outfits, change your captain's name, choose the color swizz
 
 ## Downloads
 
-- [📦 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
+- [📦 Ruin-The-Fun: Sources](https://github.com/Pshy0/es-ruin-the-fun/) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/archive/refs/heads/main.zip):
+  This is the latest commit to the plugin. It may or may not be stable, and it may also not work at all or break your save.
+  Includes partial **built-in plugin support**.
+- [🎁 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
-- [🎁 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
+  Includes partial **built-in plugin support**.
+- [📦 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
-- [🎁 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
+  No built-in plugin support.
+- [📦 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
   This version is periodically generated to match continuous builds of Endless Sky. This is also the latest untested RTF version.
   If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
+  No built-in plugin support.
 
 
 
@@ -709,7 +715,7 @@ The game's `plugins` folder should be located at one of those locations:
 
 If the `plugins` folder does not exist, you can create it.
 
-If you did it right, there should be a file `plugins/es-ruin-the-fun/about.txt` or `plugins/Ruin The Fun/about.txt`.
+If you did it right, there should be a file `plugins/-es-ruin-the-fun/about.txt` or `plugins/-Ruin The Fun/about.txt`.
 
 > This plugin should not conflict with any other, because it uses separate systems and prefixes objects it defines.
 
@@ -766,6 +772,8 @@ The following jobs can be used after every landing on an RTF planet:
 - `[escort] * Barges` (3 variants): Get escorted by dreadful Star Barges.
 - `[escort] Tek Far 109`: Get escorted by a customized drone transporter.
 - `[fight] Combat Drones`: Summon an amount of hostile Combat Drones.
+- `[fight] Fight Fleet`: Pick hostile fleets to spawn.
+- `[fight] Fight Ships`: Pick hostile ships to spawn.
 - `[fight] Kestrels`: Summon a combination of hostile Kestrels.
 - `[fight] Tek Far 109`: Summon an hostile customized drone transporter.
 - `[special] RTF Advanced Start`: Replays the advanced start conversation.
@@ -859,11 +867,23 @@ You can also contact me on discord (`Pshy#7998`).
  > This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
  > This Source Code Form is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.
 
+
+
+## References
+
+### Non-Cheat Alternatives
+If you are interested by some features of this plug-in but do not want to be cheating, you may check the following ones:
+
+- [A Coalition at War](https://github.com/mathwhiz1212/ES-conscience-plugin): **Get help from the Quarg** so you don't have to nuke Zenith
+- [Advanced Starts](https://github.com/kestrel1110/ES-Advanced-Starts/): **Adds more starts.**
+- [Lampyrid Start](https://github.com/Zitchas/ES_Lampyrid_Start): **Faster and easier start**, made slightly more challenging by pirates.
+- [Prism Plugin](https://github.com/Startingfresher/Prism-Plug-in): **Unlock ship color swizzles** by achieving progress in the game
+
 </blockquote>
 </details>
 
 Status: Released for 0.10.2. Other versions are available on the plugin's website. <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -5661,20 +5681,33 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/unique.fix/icon.png' height='100'></img><br>
 
 
-[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | 95.83 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/unique.fix/) <br>
+[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | 202.25 kb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/unique.fix/) <br>
 Author: zuckung | Category: Overhauls <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-31) <br>
 
 >Removes mass and outfit space from the cloaking device. Removes mass and outfit space from outskirts gauger and puts it in unique category. Gives outfit '"Puny"' a portrait.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>### unique fix <br>
-(3 outfit attributes changed)(made for 0.10.1) <br>
+<blockquote>### unique fix
 <br>
-Removes mass and outfit space from the cloaking device. <br>
-Removes mass and outfit space from outskirts gauger and puts it in unique category. <br>
-Gives outfit '"Puny"' a portrait. <br>
+<br>
+Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. See the readme for details.<br>
+<br>
+<br>
+<ul>
+<li> Removes mass and outfit space from the cloaking device. </li>
+<li> Removes mass and outfit space from outskirts gauger and puts it in unique category. </li>
+<li> Gives outfit '"Puny"' a portrait. </li>
+<li> Puts outfit 'Mug' into unique category and gives it a portrait </li>
+</ul>
+<img src='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/unique.fix/screenshot.png' width='400'>
+<br>
+<br>
+2023-8-31<br>
+added 'Mug' to unique category and added a portrait<br>
+changed puny portrait<br>
+changed icon.png<br>
 </blockquote>
 </details>
 
@@ -5949,7 +5982,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.94 kb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.93 kb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
 [https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-30) <br>
 
@@ -5998,7 +6031,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
 [https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-30) <br>
 
