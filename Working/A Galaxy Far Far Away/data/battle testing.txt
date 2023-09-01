@@ -1,0 +1,1207 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "() TESTING BATTLE TREE"
+	name "TESTING BATTLE TREE"
+	description "TESTING BATTLE TREE"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+		not "() TESTING BATTLE TREE: active"
+	on accept
+		"smallimperialfleet" = 0
+		"mediumimperialfleet" = 0
+		"largeimperialfleet" = 0
+		conversation
+			`Which Imperial fleet would you like to face?`
+			choice
+				"	(Small)"
+					goto smallimperialfleet
+				"	(Medium)"
+					goto mediumimperialfleet
+				"	(Large)"
+					goto largeimperialfleet
+			label smallimperialfleet
+			apply
+					"smallimperialfleet" = 1
+			`Small fleet.`
+				goto end
+			label mediumimperialfleet
+			apply
+					"mediumimperialfleet" = 1
+			`Medium Fleet.`
+				goto end
+			label largeimperialfleet
+			apply
+					"largeimperialfleet" = 1
+			`Large fleet.`
+				goto end
+			label end
+			`Mission confirmed.`
+	npc kill
+		to spawn
+			"smallimperialfleet" == 1
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet "imperialpatrol" 1
+		dialog "Imperial patrol destroyed."
+	npc kill
+		to spawn
+			"mediumimperialfleet" == 1
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet "missionimperialblockade"
+		dialog "Imperial fleet destroyed."
+	npc kill
+		to spawn
+			"largeimperialfleet" == 1
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet "missionimperialblockade" 3
+		dialog "Imperial fleet destroyed."
+	npc kill
+		to spawn
+			"largeimperialfleet" == 1
+		government "Galactic Empire"
+		personality heroic vindictive staying
+		system destination
+		ship "Golan I Space Defence SpaceGun" "Golan I"
+		ship "TIE/LN Fighter (Bay)" "Psi Leader"
+		ship "TIE/LN Fighter (Bay)" "Psi 2"
+		ship "TIE/LN Fighter (Bay)" "Psi 3"
+		ship "TIE/LN Fighter (Bay)" "Psi 4"
+		ship "TIE/LN Fighter (Bay)" "Psi 5"
+		ship "TIE/LN Fighter (Bay)" "Psi 6"
+		ship "TIE/LN Fighter (Bay)" "Psi 7"
+		ship "TIE/LN Fighter (Bay)" "Psi 8"
+		ship "TIE/LN Fighter (Bay)" "Psi 9"
+		ship "TIE/LN Fighter (Bay)" "Psi 10"
+		ship "TIE/LN Fighter (Bay)" "Psi 11"
+		ship "TIE/LN Fighter (Bay)" "Psi 12"
+		ship "TIE/LN Fighter (Bay)" "Psi 13"
+		ship "TIE/LN Fighter (Bay)" "Psi 14"
+		ship "TIE/LN Fighter (Bay)" "Psi 15"
+		ship "TIE/LN Fighter (Bay)" "Psi 16"
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Wandrau Ion Battery" "Wandrau I1"
+		ship "Wandrau Ion Battery" "Wandrau I2"
+		ship "Wandrau Ion Battery" "Wandrau I3"
+		ship "Wandrau Laser Battery" "Wandrau L1"
+		ship "Wandrau Laser Battery" "Wandrau L2"
+		ship "Wandrau Laser Battery" "Wandrau L3"
+		ship "Gun Emplacement" "Wandrau E1"
+		ship "Gun Emplacement" "Wandrau E2"
+		ship "Gun Emplacement (Large)" "Wandrau LE1"
+		ship "Gun Emplacement (Large)" "Wandrau LE2"
+		ship "Gun Emplacement (Large/Mod)" "Wandrau LM1"
+		ship "Gun Emplacement (Large/Mod)" "Wandrau LME2"
+		dialog "Imperial defences destroyed."
+	on complete
+		"smallimperialfleet" = 0
+		"mediumimperialfleet" = 0
+		"largeimperialfleet" = 0
+		payment 500000
+		dialog "Mission complete."
+
+
+
+
+
+
+
+
+government "Testing"
+	swizzle 0
+	color .78 0 0
+	"player reputation" -10
+	"attitude toward"
+		"Bounty Hunter" -0.04
+		"Civilian" -0.04
+		"Galactic Empire" -0.04
+		"Rebel Alliance" -0.04
+		"Scum & Villainy" -0.04
+	"bribe" .1
+	"fine" 0
+	"friendly hail" "friendly pirate"
+	"hostile hail" "hostile pirate"
+	raid "pirate raid"
+
+system "Battle Testing"
+	pos 5664.14 -7287.71
+	government Testing
+	habitable 700
+	belt 1440
+	object "Battle Testing Wormhole"
+		sprite planet/vergeancescatter/vergeancescatterpattern
+		distance 1500
+		period 42.1828
+		offset 46.4731
+	object "Battle Testing"
+		sprite planet/shipyard
+		period 10
+	object allegiancestardestroyer
+		sprite planet/rock1
+		distance 3000
+	object arquitenscruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		period 5
+	object assaultfrigatemarkii
+		sprite planet/rock1
+		distance 3000
+		period 10
+	object cr90corvette
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 15
+	object cr90corvetteescorted
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 15
+	object dreadnaughtheavycruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 20
+	object ef76nebulonfrigateb
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 25
+	object imperialidestroyer
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 30
+	object mc80astarcruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 35
+	object neutronstarbulkcruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 40
+	object subjugatorheavycruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 45
+	object tartanpatrolcruiser
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 50
+	object victoryidestroyer
+		sprite planet/rock1
+		distance 3000
+		period 360
+		offset 55		
+
+planet "Battle Testing"
+	landscape land/coruscant
+	music ambient/hangar
+	description `Description`
+	spaceport `	Spaceport`
+	government "Independent"
+	shipyard "Rebel Alliance Ships"
+	shipyard "Imperial Navy Ships"
+	shipyard "Miscellaneous Ships"
+	shipyard "Galactic Republic Ships"
+	shipyard "Separatist Alliance Ships"
+	shipyard "New Republic Ships"
+	shipyard "Resistance Ships"
+	shipyard "First Order Ships"
+	shipyard "Legacy Ships"
+	shipyard "Vong Ships"
+	outfitter "Miscellaneous Outfits"
+	outfitter "Secondary Weapons Outfits"
+
+
+planet allegiancestardestroyer
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet allegiancestardestroyer
+
+planet arquitenscruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet arquitenscruiser
+
+planet assaultfrigatemarkii
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet assaultfrigatemarkii
+
+planet cr90corvette
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet cr90corvette
+
+planet cr90corvetteescorted
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet cr90corvetteescorted
+
+planet dreadnaughtheavycruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet dreadnaughtheavycruiser
+
+planet ef76nebulonfrigateb
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet ef76nebulonfrigateb
+
+planet imperialidestroyer
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet imperialidestroyer
+
+planet mc80astarcruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet mc80astarcruiser
+
+planet neutronstarbulkcruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet neutronstarbulkcruiser
+
+planet subjugatorheavycruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet subjugatorheavycruiser
+
+planet tartanpatrolcruiser
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet tartanpatrolcruiser
+
+planet victoryidestroyer
+	landscape land/unknown
+	tribute 100000
+		threshold 0
+		fleet victoryidestroyer
+
+
+fleet allegiancestardestroyer
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Allegiance Battlecruiser"
+
+fleet arquitenscruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Arquitens Light Cruiser"
+
+fleet assaultfrigatemarkii
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Assault Frigate Mark II"
+
+fleet cr90corvette
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"CR90 Corvette"
+
+fleet cr90corvetteescorted
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"CR90 Corvette (Liberator)"
+		"RZ-1 A-Wing Without Missiles (Bay)" 3
+		"CR90 Corvette"
+		"RZ-1 A-Wing Without Missiles (Bay)" 3
+
+ship "RZ-1 A-Wing (Bay)" "RZ-1 A-Wing Without Missiles (Bay)"
+	sprite "ship/rz1awingblue"
+	thumbnail "thumbnail/rz1awingblue"
+	attributes
+		category "Starfighter (Bay) "
+		"absolute threshold" 20
+		"cost" 175000
+		"shields" 1600
+		"hull" 1600
+		"required crew" 1
+		"bunks" 1
+		"mass" 20
+		"drag" 0.9
+		"heat dissipation" .9
+		"fuel capacity" 700
+		"cargo space" 0
+		"outfit space" 16
+		"weapon capacity" 4
+		"engine capacity" 5
+		"hullslot capacity" 1
+		"shieldslot capacity" 1
+		weapon
+			"blast radius" 30
+			"shield damage" 300
+			"hull damage" 150
+			"hit force" 450
+	outfits
+		"R1 Laser Cannon" 2
+		"Concussion Missile Launcher" 2
+		
+		"P1 Power Converter"
+		"D0 Shield Slot"
+		"D1 Deflector Shield"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+		
+		"O1 Sublight Engine"
+		"H1 Hyperspace Motivator"
+
+
+fleet dreadnaughtheavycruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Dreadnaught Heavy Cruiser"
+
+fleet ef76nebulonfrigateb
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"EF76 Nebulon-B Frigate"
+
+fleet imperialidestroyer
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Imperial II Star Destroyer"
+
+fleet mc80astarcruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"MC80A Star Cruiser"
+
+fleet neutronstarbulkcruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Neutron Star Bulk Cruiser"
+
+fleet subjugatorheavycruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Subjugator Heavy Cruiser"
+
+fleet tartanpatrolcruiser
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Tartan Patrol Cruiser"
+
+fleet victoryidestroyer
+	government "Testing"
+	cargo 1
+	personality
+		opportunistic
+	variant 10
+		"Victory II Star Destroyer"
+
+mission "Rebel vs Imperial Fighters"
+	name "Rebel vs Imperial Fighters"
+	description "Rebel vs Imperial Fighters"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	destination
+		distance 1 4
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"TIE/LN Fighter" 22
+				"TIE/IN Interceptor" 12
+				"TIE/SA Bomber" 5
+	npc
+		personality heroic staying vindictive unconstrained
+		government "Rebel Alliance"
+		system destination
+		fleet
+			variant 50
+				"T-65B X-Wing" 8
+				"BTL-A4 Y-Wing" 8
+				"RZ-1 A-Wing" 6
+				"A/SF-01 B-Wing" 4
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "Rebel vs Imperial Fighters (w/Corvettes)"
+	name "Rebel vs Imperial Fighters (w/Corvettes)"
+	description "Rebel vs Imperial Fighters"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	destination
+		distance 1 4
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"TIE/LN Fighter" 22
+				"TIE/IN Interceptor" 10
+				"TIE/SA Bomber" 6
+				"Raider II Corvette" 2
+	npc
+		personality heroic staying vindictive unconstrained
+		government "Rebel Alliance"
+		system destination
+		fleet
+			variant 50
+				"T-65B X-Wing" 8
+				"BTL-A4 Y-Wing" 8
+				"RZ-1 A-Wing" 4
+				"A/SF-01 B-Wing" 4
+				"CR90 Corvette" 2
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "Rebel vs Imperial Corvette"
+	name "Rebel vs Imperial Corvette"
+	description "Rebel vs Imperial Fighters"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	destination
+		distance 1 4
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"Raider II Corvette"
+	npc
+		personality heroic staying vindictive unconstrained
+		government "Rebel Alliance"
+		system destination
+		fleet
+			variant 50
+				"T-65B X-Wing"
+				"BTL-A4 Y-Wing"
+				"RZ-1 A-Wing"
+				"A/SF-01 B-Wing"
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "Rebel Corvette vs Imperial Fighters"
+	name "Rebel Corvette vs Imperial Fighters"
+	description "Rebel vs Imperial Fighters"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	destination
+		distance 1 4
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"TIE/LN Fighter" 5
+				"TIE/IN Interceptor"
+				"TIE/SA Bomber"
+	npc
+		personality heroic staying vindictive unconstrained
+		government "Rebel Alliance"
+		system destination
+		fleet
+			variant 50
+				"CR90 Corvette"
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "Rebel vs Imperial Fleet"
+	name "Rebel vs Imperial Fleet"
+	description "Rebel vs Imperial Fleet"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	destination
+		distance 1 4
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"Imperial II Star Destroyer"
+				"TIE/LN Fighter (Bay)" 12
+				"TIE/SA Bomber (Bay)" 6
+				"TIE/IN Interceptor (Bay)" 4
+				"Quasar Fire I Bulk Cruiser"
+				"TIE/LN Fighter (Bay)" 18
+				"Arquitens Light Cruiser" 2
+				"TIE/LN Fighter (Bay)" 6
+				"Raider II Corvette" 2
+				"TIE/LN Fighter (Bay)" 10
+				"Gozanti Assault Cruiser" 2
+				"TIE/LN Fighter (Bay)" 8
+				"VT-49 Decimator"
+	npc
+		personality heroic staying vindictive unconstrained
+		government "Rebel Alliance"
+		system destination
+		fleet
+			variant 50
+				"MC80 Liberty Cruiser"
+				"T-65B X-Wing (Bay)" 8
+				"BTL-A4 Y-Wing (Bay)" 8
+				"EF76 Nebulon-B Frigate" 2
+				"T-65B X-Wing (Bay)" 8
+				"BTL-A4 Y-Wing (Bay)" 8
+				"CR90 Corvette" 2
+				"RZ-1 A-Wing (R) (Bay)" 6
+				"GR-75 Transport" 2
+				"Sphyrna Corvette (Modified)"
+				"VCX-100 Light Freighter"
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "() Combat Rating"
+	name "Combat Rating"
+	description "Change combat rating to 8."
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	on accept
+		"combat rating" = 10000
+	on complete
+		payment 0
+
+mission "() Align Reputation"
+	name "Align Reputation"
+	description "Align reputation with faction."
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	on accept
+		conversation
+			`Which faction would you like to align with?`
+			choice
+				"	(Rebel Alliance)"
+					goto rebelalliance
+				"	(Galactic Empire)"
+					goto galacticempire
+				"	(Scum & Villany)"
+					goto scum&villainy
+			label rebelalliance
+			apply
+					"reputation: Rebel Alliance" = 1000
+					"reputation: Galactic Empire" = -1000
+					"reputation: Scum & Villainy" = -1000
+			`Aligned with the Rebel Alliance.`
+				goto next
+			label galacticempire
+			apply
+					"reputation: Rebel Alliance" = -1000
+					"reputation: Galactic Empire" = 1000
+					"reputation: Scum & Villainy" = -1000
+			`Aligned with the Galactic Empire".`
+				goto next
+			label scum&villainy
+			apply
+					"reputation: Rebel Alliance" = -1000
+					"reputation: Galactic Empire" = -1000
+					"reputation: Scum & Villainy" = 1000
+			`Aligned with the Scum & Villainy.`
+				goto next
+			label next
+			`Reputation Set.`
+				decline
+
+mission "Galaxy Fleet"
+	name "Galaxy Fleet"
+	description "Galaxy Fleet"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		government "Galactic Empire" "Rebel Alliance" "Unaffiliated" "Sith Eternal"
+	destination
+		distance 2 50
+	npc
+		personality heroic staying vindictive unconstrained escort
+		government "Escort"
+		fleet
+			variant 50
+				"A/SF-01 B-Wing"
+				"A/SF-01 B-Wing (Bay)"
+				"A/SF-01 B-Wing (Stripe)"
+				"A/SF-01 B-Wing (Stripe) (Bay)"
+				"A/SF-01 B-Wing B6"
+				"A/SF-01 B-Wing B6 (Bay)"
+				"A/SF-01 Dual B-Wing"
+				"A/SF-01 Dual B-Wing (Bay)"
+				"Assault Frigate Mark II"
+				"Bussard Tanker"
+				"BTL-A4 Y-Wing"
+				"BTL-A4 Y-Wing (Bay)"
+				"BTL-S3 Y-Wing"
+				"BTL-S3 Y-Wing (Bay)"
+				"BTL-S8 K-Wing"
+				"BTL-S8 K-Wing (Bay)"
+				"BTL-S8 K-Wing (Ion Bombs)"
+				"BTL-S8 K-Wing (B)"
+				"BTL-S8 K-Wing (B) (Bay)"
+				"BTL-S8 K-Wing (B) (Ion Bombs)"
+				"BTS-A2 H-Wing"
+				"BTS-A2 H-Wing (Bay)"
+				"CC-7700 Interdictor Frigate"
+				"CR90 Corvette"
+				"CR90 Corvette (Liberator)"
+				"CR90 Corvette (Modified)"
+				"CR92a Assassin Corvette"
+				"Dauntless Heavy Cruiser"
+				"DP20 Frigate"
+				"DP20 Frigate (Modified)"
+				"EF76 Nebulon-B Frigate"
+				"EF76 Nebulon-B2 Frigate"
+				"GR-75 Transport"
+				"Marauder Corvette"
+				"MC5 Fighter"
+				"MC5 Fighter (Bay)"
+				"MC20 Escort Corvette"
+				"MC25 Tide Frigate"
+				"MC30c Escort Frigate"
+				"MC40a Light Cruiser"
+				"MC75 Barracuda Cruiser"
+				"MC75 Star Cruiser"
+				"MC80A Chatnoir Cruiser"
+				"MC80A Star Cruiser"
+				"MC80 Home One Star Cruiser"
+				"MC80 Heavy Cruiser"
+				"MC80 Liberty Cruiser"
+				"MF69 Frigate"
+				"Pelta Frigate (Modified)"
+				"R-41 Starchaser"
+				"R-41 Starchaser (Bay)"
+				"RZ-1 A-Wing"
+				"RZ-1 A-Wing (Bay)"
+				"RZ-1 A-Wing (R)"
+				"RZ-1 A-Wing (R) (Bay)"
+				"Sphyrna Corvette"
+				"Sphyrna Corvette (Modified)"
+				"T-65B X-Wing"
+				"T-65B X-Wing (Bay)"
+				"T-65 XJ-3 Stealth X-Wing"
+				"T-65 XJ-3 Stealth X-Wing (Bay)"
+				"U-22 Orbital Loadlifter"
+				"UT-60D U-Wing"
+				"UT-60D U-Wing (Bay)"
+				"X4 Gunship"
+				"A-6 Interceptor"
+				"A-6 Interceptor (Bay)"
+				"A-9 Vigilance Fighter"
+				"A-9 Vigilance Fighter (Bay)"
+				"A519 Invader Close Support Starfighter"
+				"A519 Invader Close Support Starfighter (Bay)"
+				"AA-9 Coruscant Freighter"
+				"AA-9 Coruscant Freighter (Refugee)"
+				"Action VI Transport"
+				"Action VI Transport (Maroon)"
+				"Action VI Transport (Stripe)"
+				"AEG-77 Vigo"
+				"AEG-77 Vigo (Modified)"
+				"Aggressor Assault Fighter"
+				"Aggressor Assault Fighter (Bay)"
+				"Aggressor Star Destroyer"
+				"Ajuur Heavy Cruiser"
+				"ARC-170 Starfighter (Jsec)"
+				"ARC-170 Starfighter (Jsec) (Bay)"
+				"Aurek Tactical Strike Fighter"
+				"Aurek Tactical Strike Fighter (Bay)"
+				"Aurra Sing's Blockade Runner"
+				"Aurra Sing's Fighter Runner"
+				"Auzituck Anti-Slaver Gunship"
+				"Azalus Hutt Dreadnought"
+				"B28 Extinction Bomber"
+				"B28 Extinction Bomber (Bay)"
+				"Basilisk War Droid"
+				"Baudo Star Yacht"
+				"Belbullab-22 Starfighter"
+				"Belbullab-22 Starfighter (Bay)"
+				"Besh-type Personal Starfighter"
+				"Besh-type Personal Starfighter (Bay)"
+				"Beskad Cruiser MkII"
+				"Bespin Bandit"
+				"Beta Battle Cruiser"
+				"BFF-1 Bulk Freighter"
+				"Blitz Assault Bomber"
+				"Bothan Frigate"
+				"Broadside cruiser kdb-1"
+				"Brute Hutt Support Corvette"
+				"BT7 Thunderclap"
+				"Bulwark Support Frigate"
+				"C-3 Passenger Liner"
+				"Cargo Ferry"
+				"CD-710 Heavy Destroyer"
+				"Centurion Battlecruiser"
+				"Chu'unthor"
+				"CloakShape Fighter"
+				"CloakShape Fighter (Bay)"
+				"CloakShape Fighter (New)"
+				"CloakShape Fighter (New) (Bay)"
+				"Conqueror Assault Ship"
+				"Constable Pirate Corvette"
+				"Container Transport"
+				"Crescent-X9 Heavy Courier"
+				"Crimson Axe"
+				"C-ROC Gozanti Cruiser"
+				"C-ROC Gozanti Cruiser (Orange)"
+				"Crusader Corvette"
+				"CSA ChaseMaster"
+				"CT-11 Space Tug"
+				"CT-11 Space Tug (Bay)"
+				"D5-Mantis Patrol Craft"
+				"D5-Mantis Patrol Craft (Gold)"
+				"Dart Gunship"
+				"Davaab-type Starfighter"
+				"Davaab-type Starfighter (Bay)"
+				"Defender Corvette"
+				"Delaya Courier"
+				"Delta JV-7 Shuttle"
+				"Dornean Gunship"
+				"D-Type Trifoil Starfighter"
+				"D-Type Trifoil Starfighter (Bay)"
+				"Dusty Duck"
+				"Dynamic Freighter"
+				"Dynamic Freighter (Old)"
+				"EF76 Nebulon-B Frigate (Jsec)"
+				"Empress Super Freighter"
+				"Eternal Battlecruiser"
+				"Fang Fighter"
+				"Fang Fighter (Bay)"
+				"Fang Fighter Black"
+				"Fang Fighter Black (Bay)"
+				"Ferryboat Liner"
+				"Firespray-31 Patrol Craft (B)"
+				"Firespray-31 Patrol Craft"
+				"Firespray-31 Patrol Craft (W)"
+				"Flarestar Attack Shuttle"
+				"Foray Blockade Runner"
+				"FT-6 Pike Starfighter"
+				"FT-6 Pike Starfighter (Bay)"
+				"FT-7B Clarion Starfighter"
+				"FT-7B Clarion Starfighter (Bay)"
+				"Fury Sith Imperial Interceptor"
+				"G-1A Starfighter"
+				"G-1A Starfighter (Bay)"
+				"G1-M4-C Dunelizard Fighter"
+				"G1-M4-C Dunelizard Fighter (Bay)"
+				"G1-M4-C Dunelizard Fighter 2"
+				"G1-M4-C Dunelizard Fighter 2 (Bay)"
+				"G1-M4-C Dunelizard Fighter 3"
+				"G1-M4-C Dunelizard Fighter 3 (Bay)"
+				"G-400 Starfighter"
+				"General Freighter"
+				"Ghtroc Class 720 Freighter"
+				"Gozanti Cruiser"
+				"Gozanti Cruiser (Carrier)"
+				"Gozanti Cruiser (Black Sun)"
+				"Gozanti Cruiser (Carrier) (Black Sun)"
+				"GR-75 Transport (Jsec)"
+				"Gravestone"
+				"G-Type Light Shuttle"
+				"GX1 Lantillian Short Hauler"
+				"GX1 Lantillian Short Hauler (Diplomatic)"
+				"GX1 Lantillian Short Hauler (Phoenix)"
+				"G-X1 Onslaught"
+				"G-X1 Onslaught (Bay)"
+				"H-2 Executive Shuttle"
+				"Hammerhead Cruiser"
+				"Hapan Battle Dragon"
+				"Harrower Dreadnought"
+				"HCT-2001 Dragonboat Reugeot 905 Freighter"
+				"Heavy Lifter"
+				"Helot Medium Space Transport"
+				"Herald Shuttle"
+				"Heraklon Support Frigate"
+				"HWK-290 Light Freighter (Modified)"
+				"HWK-290 Light Freighter (Stock)"
+				"I4 Ioniser Starfighter"
+				"I4 Ioniser Starfighter (Bay)"
+				"IL-5 Ocula Starfighter"
+				"IL-5 Ocula Starfighter (Bay)"
+				"Inexpugnable Tactical Command Ship"
+				"Interceptor Frigate"
+				"Interdictor Sith Cruiser"
+				"Invincible Dreadnaught Heavy Cruiser"
+				"Iradia Corvette"
+				"IRD Starfighter"
+				"IRD Starfighter (Bay)"
+				"Ixiyen Fast Attack Craft"
+				"Ixiyen Fast Attack Craft (Bay)"
+				"K-52 Strongarm Demolisher"
+				"Kandosii-type Dreadnought"
+				"Keldabe Battleship"
+				"Kihraxz Assault Fighter"
+				"Kihraxz Assault Fighter (Bay)"
+				"Kom'rk Fighter"
+				"Krayt Dragon Ship"
+				"KR-TB Doomtreader"
+				"KT-400 Military Droid Carrier"
+				"KT-600 Military Transport"
+				"Lancer Pursuit Craft"
+				"Lancer Pursuit Craft (B)"
+				"Lancer Pursuit Craft (P)"
+				"Lethisk Armed Freighter"
+				"Liberator Cruiser"
+				"Liberator Fighter"
+				"Liberator Fighter (Bay)"
+				"Liberator Fighter (Modified)"
+				"Liberator Fighter (Modified) (Bay)"
+				"Lok Revenants Assault Fighter"
+				"M3-A Scyk Fighter B"
+				"M3-A Scyk Fighter B (Bay)"
+				"M3-A Scyk Fighter"
+				"M3-A Scyk Fighter (Bay)"
+				"M3-A Scyk Fighter 2"
+				"M3-A Scyk Fighter 2 (Bay)"
+				"M12-L Kimogila Heavy Fighter"
+				"M12-L Kimogila Heavy Fighter (Bay)"
+				"M12-L Kimogila Heavy Fighter 2"
+				"M12-L Kimogila Heavy Fighter 2 (Bay)"
+				"M22-T Krayt Gunship"
+				"M22-T Krayt Gunship (Bay)"
+				"Mareel Fighter"
+				"Mareel Fighter (Bay)"
+				"Miy'til Starfighter"
+				"Miy'til Starfighter (Bay)"
+				"Mobquet MB-C1 Medium Transport"
+				"Mobquet MB-C1 Medium Transport (Starhook Ten)"
+				"Modular Conveyor"
+				"Muurian Transport"
+				"N-1 Starfighter"
+				"N-1 Starfighter (Bay)"
+				"N-1 Starfighter (Jsec)"
+				"N-1 Starfighter (Jsec) (Bay)"
+				"Nar Shaddaa Destroyer"
+				"NB-1S Royal Bomber"
+				"NB-1S Royal Bomber (Bay)"
+				"Nimbus V-wing Starfighter (Jsec)"
+				"Nimbus V-wing Starfighter (Jsec) (Bay)"
+				"Nova Battle Cruiser"
+				"Old Republic Diplomatic Transport"
+				"Pinook Fighter"
+				"Pinook Fighter (Bay)"
+				"Planetary Defender"
+				"Planetary Defender (Bay)"
+				"Ranger Gunboat"
+				"R60 T-Wing"
+				"R60 T-Wing (Bay)"
+				"R60 T-Wing (Prototype)"
+				"R60 T-Wing (Prototype) (Bay)"
+				"ST-70 Assault Ship"
+				"Sabaoth Cavik Toth's Starfighter"
+				"Sabaoth Cavik Toth's Starfighter (Bay)"
+				"SCT Scout Craft"
+				"Scurrg H-6 Prototype Bomber"
+				"Scurrg H-6 Prototype Bomber (Bay)"
+				"Scurrg H-6 Prototype Bomber (Black Sun Orange)"
+				"Scurrg H-6 Prototype Bomber (Black Sun Orange) (Bay)"
+				"Scurrg H-6 Prototype Bomber (Black Sun Red)"
+				"Scurrg H-6 Prototype Bomber (Black Sun Red) (Bay)"
+				"Scurrg H-6 Prototype Bomber (Maroon)"
+				"Scurrg H-6 Prototype Bomber (Maroon) (Bay)"
+				"StarViper Attack Platform"
+				"Taylander Shuttle"
+				"Teroch Mandalorian Cruiser"
+				"Toscan 8-Q Starfighter"
+				"Toscan 8-Q Starfighter (Bay)"
+				"Ugly Twin Tie X-Wing"
+				"Ugly Twin Tie X-Wing (Bay)"
+				"Ugly Tie Y-Wing"
+				"Ugly Tie Y-Wing (Bay)"
+				"Ugly Tie X-Wing"
+				"Ugly Tie X-Wing (Bay)"
+				"Ugly Tie Headhunter"
+				"Ugly Tie Headhunter (Bay)"
+				"Ugly X-Ceptor"
+				"Ugly X-Ceptor (Bay)"
+				"Ugly X-Fighter"
+				"Ugly X-Fighter (Bay)"
+				"Ugly Y-Interceptor"
+				"Ugly Y-Interceptor (Bay)"
+				"Vaksai Assault Fighter"
+				"Vaksai Assault Fighter (Bay)"
+				"VCX-100 Light Freighter"
+				"VCX-series Auxiliary Starfighter"
+				"VCX-series Auxiliary Starfighter (Bay)"
+				"Venator Star Destroyer (Black)"
+				"Xiytiar Transport"
+				"XS Stock Light Freighter"
+				"YG-4210 Freighter"
+				"YT-1300 Light Freighter"
+				"YT-1300 Light Freighter (Millennium Falcon)"
+				"YT-1300 Light Freighter (R)"
+				"YT-1350XT Light Freighter"
+				"YZ-2200 Heavy Transport"
+				"Zakuul Shuttle"
+				"Zenith Cruiser"
+				"Purrgil (Destroyer)"
+				"Purrgil (Frigate)"
+				"Purrgil (Corvette)"
+				"Purrgil (Transport)"
+				"Purrgil (Fighter)"
+				"Acclamator Assault Ship"
+				"ARC-170 Starfighter"
+				"ARC-170 Starfighter (Bay)"
+				"ARC-170 Starfighter (R)"
+				"ARC-170 Starfighter (R) (Bay)"
+				"BTL-B Y-Wing"
+				"BTL-B Y-Wing (Bay)"
+				"Consular Cruiser (Aurek)"
+				"Consular Cruiser (Besh)"
+				"Consular Cruiser (Cresh)"
+				"CR25 Carrier"
+				"Delta-7 Aethersprite Interceptor"
+				"Delta-7 Aethersprite Interceptor (Customised)"
+				"Eta-2 Actis Interceptor"
+				"Eta-2 Actis Interceptor (Bay)"
+				"Eta-2 Actis Interceptor (R)"
+				"Eta-2 Actis Interceptor (R) (Bay)"
+				"Eta-2 Actis Interceptor (M)"
+				"Eta-2 Actis Interceptor (M) (Bay)"
+				"Eta Shuttle"
+				"G9 Rigger Light Freighter"
+				"JumpMaster 5000 Long Range Scout"
+				"LAAT/c Gunship"
+				"LAAT/i Gunship"
+				"Nimbus V-wing Starfighter"
+				"Nimbus V-wing Starfighter (Bay)"
+				"Pelta Frigate"
+				"Venator Star Destroyer"
+				"Bulwark Mark I Battleship"
+				"Bulwark Mark II Battleship"
+				"C-9979 Landing Craft"
+				"Captor Heavy Munitions Cruiser"
+				"Diamond Cruiser"
+				"Droid Tri-Fighter"
+				"Droid Tri-Fighter (Bay)"
+				"Droid Tri-Fighter (Yellow)"
+				"Droid Tri-Fighter (Yellow) (Bay)"
+				"Geonosian Corvette"
+				"Ginivex Starfighter"
+				"Ginivex Starfighter (Bay)"
+				"Gozanti Cruiser (CIS)"
+				"Gozanti Cruiser (Carrier) (CIS)"
+				"Hoersch-Kessel Drive Core Ship"
+				"Hardcell Interstellar Transport"
+				"HMP Droid Gunship"
+				"Hyena Bomber"
+				"Hyena Bomber (Bay)"
+				"Lucrehulk Battleship"
+				"Mankvim-418 Interceptor"
+				"Mankvim-418 Interceptor (Bay)"
+				"Maxillipede Transport Shuttle"
+				"Mechanised Assault Flyer"
+				"Munificent Star Frigate"
+				"Nantex Territorial Defence Starfighter"
+				"Nantex Territorial Defence Starfighter (Bay)"
+				"Providence Cruiser (Stock)"
+				"Providence Cruiser (Dreadnought)"
+				"Recusant Light Destroyer"
+				"Recusant Light Destroyer (Dreadnought)"
+				"Subjugator Heavy Cruiser"
+				"Umbaran Starfighter"
+				"Umbaran Starfighter (Bay)"
+				"Vulture Droid Starfighter"
+				"Vulture Droid Starfighter (Bay)"
+				"E-7 E-Wing"
+				"E-7 E-Wing (Bay)"
+				"E-7 E-Wing (R)"
+				"E-7 E-Wing (R) (Bay)"
+				"Galactic Battle Carrier"
+				"MC80B Star Cruiser"
+				"Starhawk Battlecruiser Mark I"
+				"Starhawk Battlecruiser (Prototype)"
+				"Viscount Star Defender"
+		dialog "The battle has concluded."
+	on complete
+		payment 250000
+		dialog "Mission complete."
+
+mission "Destroy the Republic Fleet"
+	name "Destroy the Republic Fleet"
+	description "Destroy the Republic Fleet"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		system "N'zoth"
+	destination
+		system "Foerost"
+	clearance
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"Venator Star Destroyer" 5
+				"ARC-170 Starfighter (R) (Bay)" 40
+		dialog "Destroy the Republic Fleet"
+	on complete
+		payment 250000
+		dialog "Destroy the Republic Fleet"
+
+mission "Destroy the Subjugator"
+	name "Destroy the Subjugator"
+	description "Destroy the Subjugator"
+	repeat
+	job
+	to offer
+		random < 99
+		has "agffa sandbox start"
+	source
+		system "N'zoth"
+	destination
+		system "Foerost"
+	clearance
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		system destination
+		fleet
+			variant 50
+				"Subjugator Heavy Cruiser"
+				"Vulture Droid Starfighter (Bay)" 56
+				# "Lucrehulk Battleship"
+				# "Vulture Droid Starfighter (Bay)" 56
+				# "Recusant Light Destroyer (Dreadnought)"
+				# "Vulture Droid Starfighter (Bay)" 52
+				# "Providence Cruiser (Dreadnought)"
+				# "Vulture Droid Starfighter (Bay)" 56
+				"Providence Cruiser (Stock)"
+				"Vulture Droid Starfighter (Bay)" 48
+				# "Bulwark Mark I Battleship"
+				# "Umbaran Starfighter" 12
+				"Recusant Light Destroyer" 2
+				"Hyena Bomber (Bay)" 44
+				"Munificent Star Frigate"
+				"Vulture Droid Starfighter (Bay)" 24
+				"Captor Heavy Munitions Cruiser" 2
+				"Geonosian Corvette"
+				"Mankvim-418 Interceptor (Bay)" 48
+				"Diamond Cruiser" 2
+				"Hardcell Interstellar Transport" 3
+		dialog "Destroy the Republic Fleet"
+	on complete
+		payment 250000
+		dialog "Destroy the Subjugator"

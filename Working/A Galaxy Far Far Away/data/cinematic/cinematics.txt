@@ -1,0 +1,2107 @@
+# Governments
+
+government "Trade Federation"
+	swizzle 0
+	color 1.5 1.5 1.5
+	"player reputation" -1000
+	"attitude toward"
+		"Bounty Hunter" 0
+		"Civilian" 0.04
+		"Galactic Republic" -0.04
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly galacticempire"
+	"hostile hail" "hostile galacticempire"
+
+government "Galactic Republic"
+	"player reputation" 1000
+	swizzle 0
+	"crew attack" 0
+	"crew defense" 0
+
+government "CIS"
+	swizzle 0
+	color 1.5 1.5 1.5
+	"player reputation" -1000
+	"attitude toward"
+		"Bounty Hunter" 0
+		"Civilian" 0.04
+		"Galactic Republic" -0.04
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly galacticempire"
+	"hostile hail" "hostile galacticempire"
+
+government "First Order"
+	swizzle 0
+	color 1.5 1.5 1.5
+	"player reputation" -1000
+	"attitude toward"
+		"Bounty Hunter" 0
+		"Civilian" 0.04
+		"Resistance" -0.04
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly galacticempire"
+	"hostile hail" "hostile galacticempire"
+
+government "Resistance"
+	swizzle 0
+	color 2 0 0
+	"player reputation" 0
+	"attitude toward"
+		"Bounty Hunter" 0
+		"Civilian" 0.04
+		"First Order" -0.04
+		"Scum & Villainy" -0.04
+	bribe 0
+
+government "Final Order"
+	swizzle 0
+	color 1.5 1.5 1.5
+	"player reputation" -1000
+	"attitude toward"
+		"Bounty Hunter" 0
+		"Civilian" 0.04
+		"Resistance" -0.04
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly galacticempire"
+	"hostile hail" "hostile galacticempire"
+
+# _________________________________________________________
+
+# Episode 1: Battle over Naboo
+
+fleet "vulturedroids_ep1"
+	government "Trade Federation"
+	names "separatist fighter"
+	fighters "separatist fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Vulture Droid Starfighter" 80
+
+fleet "naboo_ep1"
+	government "Galactic Republic"
+	names "naboo_ep1 fighter"
+	fighters "naboo_ep1 fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"N-1 Starfighter" 60
+
+phrase "naboo_ep1 fighter"
+	word
+		"Bravo "
+	phrase
+		"number"
+
+mission "Episode 1: Space Battle of Naboo"
+	name "Episode 1: Space Battle of Naboo"
+	description "Episode 1: Space Battle of Naboo"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Naboo"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Trade Federation"
+		fleet "vulturedroids_ep1"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Trade Federation"
+		ship "Lucrehulk Battleship" "Vuutun Palaa"
+		fleet
+			fighters "separatist fighter"
+			variant 30
+				"Vulture Droid Starfighter (Bay)" 26
+	npc
+		personality heroic staying
+		government "Galactic Republic"
+		fleet "naboo_ep1"
+	on offer
+		conversation
+			`Would you like to simulate "Episode 1: Space Battle of Naboo"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 150000
+		dialog "Episode 1: Space Battle of Naboo"
+
+
+# _________________________________________________________
+
+# Episode 2: Dogfight over Geonosis
+
+ship "Firespray-31 Patrol Craft" "Firespray-31 Patrol Craft (Slave I)"
+	sprite "ship/firespray31patrolcraftgreen"
+	thumbnail "thumbnail/firespray31patrolcraftgreen"
+	attributes
+		category "Patrol Craft "
+		"cost" 180000
+		"shields" 3200
+		"hull" 4800
+		"required crew" 1
+		"bunks" 7
+		"mass" 132
+		"drag" 4.49
+		"heat dissipation" .6
+		"fuel capacity" 700
+		"cargo space" 30
+		"outfit space" 69
+		"weapon capacity" 8
+		"engine capacity" 22
+		weapon
+			"blast radius" 300
+			"shield damage" 700
+			"hull damage" 350
+			"hit force" 800
+	outfits
+		"R1 Burst Cannon" 2
+		"Advanced Homing Missile Launcher" 2 
+		"Advanced Homing Missile Storage Rack"
+		"Advanced Homing Missile" 11
+		
+		"P2 Power Converter"
+		"D2 Deflector Shield"
+		"C2 Coolant System"
+		
+		"B2 Sublight Engine"
+		"H2 Hyperspace Motivator"
+
+	engine -6 10
+	engine 6 10
+	gun -4 -10 "R1 Burst Cannon"
+	gun 4 -10 "R1 Burst Cannon"
+	gun -2 -8 "Advanced Homing Missile Launcher"
+	gun 2 -8 "Advanced Homing Missile Launcher"
+	gun 0 -7
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	"final explode" "final explosion large" 1
+	description "The Firespray-31 patrol and attack craft is a patrol and transport starship designed by Kuat Systems Engineering initially for use by the Republic Correctional Authority. The most well known of the starships is Jango and Boba Fett's ship, the Slave I."
+	description "Artwork/model by Unusualsuspex"
+
+mission "Episode 2: Dogfight over Geonosis"
+	name "Episode 2: Dogfight over Geonosis"
+	description "Episode 2: Dogfight over Geonosis"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Geonosis"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Bounty Hunter"
+		ship "Firespray-31 Patrol Craft (Slave I)" "Slave I"
+	on offer
+		conversation
+			`Would you like to simulate "Episode 2: Dogfight over Geonosis"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+
+	on complete
+		payment 150000
+		dialog "Episode 2: Dogfight over Geonosis"
+
+
+
+# _________________________________________________________
+
+# Clone Wars: Battle of Lola Sayu
+
+fleet "lolasayu_blockade"
+	government "CIS"
+	names "separatist holdout"
+	fighters "separatist fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Providence Cruiser (Stock)"
+		"Munificent Star Frigate" 6
+		"Vulture Droid Starfighter (Bay)" 50
+
+mission "Clone Wars: Battle of Lola Sayu"
+	name "Clone Wars: Battle of Lola Sayu"
+	description "Clone Wars: Battle of Lola Sayu"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Florn"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "CIS"
+		system "Lola Sayu"
+		fleet "lolasayu_blockade"
+	on offer
+		conversation
+			`Would you like to simulate "Clone Wars: Battle of Lola Sayu"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 150000
+		dialog "Clone Wars: Battle of Lola Sayu"
+# _________________________________________________________
+
+# Episode 3: Battle of Coruscant
+
+fleet "cis_ep3"
+	government "CIS"
+	names "separatist holdout"
+	fighters "separatist fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Lucrehulk Battleship"
+		"Providence Cruiser (Dreadnought)"
+		"Recusant Light Destroyer (Dreadnought)"
+		"Providence Cruiser (Stock)" 4
+		"Recusant Light Destroyer" 9
+		"Munificent Star Frigate" 7
+		"Captor Heavy Munitions Cruiser" 4
+		"Hardcell Interstellar Transport" 5
+		"Diamond Cruiser" 5
+		"Geonosian Corvette" 2
+		"C-9979 Landing Craft" 3
+		"Gozanti Cruiser (Carrier) (CIS)" 5
+
+fleet "cis_fighters_ep3"
+	government "CIS"
+	names "separatist fighter"
+	fighters "separatist fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Vulture Droid Starfighter" 100
+		"Vulture Droid Starfighter (Bay)" 26
+		"Droid Tri-Fighter" 80
+		"Droid Tri-Fighter (Bay)" 20
+		"Hyena Bomber" 60
+		"Hyena Bomber (Bay)" 10
+		"Nantex Territorial Defence Starfighter" 5
+		"Ginivex Starfighter (Bay)" 5
+
+fleet "republic_ep3"
+	government "Galactic Republic"
+	names "rebel capital"
+	fighters "rebel fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Venator Star Destroyer" 15
+		"Acclamator Assault Ship" 7
+		"Pelta Frigate" 4
+		"Consular Cruiser (Aurek)"
+		"Consular Cruiser (Besh)"
+		"Consular Cruiser (Cresh)"
+
+fleet "republic_fighters_ep3"
+	government "Galactic Republic"
+	names "rebel fighter"
+	fighters "rebel fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"ARC-170 Starfighter" 20
+		"ARC-170 Starfighter (Bay)" 10
+		"ARC-170 Starfighter (R)" 70
+		"ARC-170 Starfighter (R) (Bay)" 20
+		"BTL-B Y-Wing" 80
+		"BTL-B Y-Wing (Bay)" 20
+		"Nimbus V-wing Starfighter" 20
+		"Nimbus V-wing Starfighter (Bay)" 10
+		"JumpMaster 5000 Long Range Scout" 3
+		"Eta-2 Actis Interceptor (R)" 5
+
+mission "Episode 3: Battle of Coruscant"
+	name "Episode 3: Battle of Coruscant"
+	description "Episode 3: Battle of Coruscant"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Coruscant"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "CIS"
+		fleet "cis_ep3"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "CIS"
+		fleet "cis_fighters_ep3"
+	npc
+		personality heroic staying
+		government "Galactic Republic"
+		fleet "republic_ep3"
+	npc
+		personality heroic staying
+		government "Galactic Republic"
+		fleet "republic_fighters_ep3"
+	on offer
+		conversation
+			`Would you like to simulate "Episode 3: Battle of Coruscant"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 150000
+		dialog "Episode 3: Battle of Coruscant"
+# _________________________________________________________
+
+# Solo: Kessel Run
+
+mission "Solo: Kessel Run"
+	name "Solo: Kessel Run"
+	description "Solo: Kessel Run"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Kessel"
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		ship "Imperial I Star Destroyer" "Avenger"
+		ship "TIE/RB Heavy Fighter (Bay)" "Brute Ace"
+		ship "TIE/LN Fighter (Bay)" "Brute L"
+		ship "TIE/LN Fighter (Bay)" "Brute 2"
+		ship "TIE/LN Fighter (Bay)" "Brute 3"
+		ship "TIE/LN Fighter (Bay)" "Brute 4"
+		dialog "Solo: Kessel Run"
+	on offer
+		conversation
+			`Would you like to simulate "Solo: Kessel Run"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Solo: Kessel Run"
+
+# _________________________________________________________
+
+# Star Wars Rebels: Battle of Atollon
+
+mission "Star Wars Rebels: Battle of Atollon"
+	name "Star Wars Rebels: Battle of Atollon"
+	description "Star Wars Rebels: Battle of Atollon"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Lothal"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Rebel Alliance"
+		system "Atollon"
+		fleet "chopperbase"
+	on offer
+		conversation
+			`Would you like to simulate "Star Wars Rebels: Battle of Atollon"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+
+	on complete
+		payment 150000
+		dialog "Star Wars Rebels: Battle of Atollon"
+
+# _________________________________________________________
+
+# Rogue One: Battle of Scarif
+
+mission "Rogue One: Battle of Scarif"
+	name "Rogue One: Battle of Scarif"
+	description "Rogue One: Battle of Scarif"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Ukio"
+	npc kill
+		government "Galactic Empire"
+		personality heroic vindictive staying
+		system "Scarif"
+		ship "Imperial I Star Destroyer" "Devastator"
+		ship "Imperial I Star Destroyer" "Intimidator"
+		ship "Imperial I Star Destroyer" "Persecutor"
+		ship "TIE/LN Fighter (Bay)" "Basalt Leader"
+		ship "TIE/LN Fighter (Bay)" "Basalt 2"
+		ship "TIE/LN Fighter (Bay)" "Basalt 3"
+		ship "TIE/LN Fighter (Bay)" "Basalt 4"
+		ship "TIE/LN Fighter (Bay)" "Basalt 5"
+		ship "TIE/LN Fighter (Bay)" "Basalt 6"
+		ship "TIE/LN Fighter (Bay)" "Basalt 7"
+		ship "TIE/LN Fighter (Bay)" "Basalt 8"
+		ship "TIE/LN Fighter (Bay)" "Basalt 9"
+		ship "TIE/LN Fighter (Bay)" "Basalt 10"
+		ship "TIE/LN Fighter (Bay)" "Basalt 11"
+		ship "TIE/LN Fighter (Bay)" "Basalt 12"
+		ship "TIE/LN Fighter (Bay)" "Basalt 13"
+		ship "TIE/LN Fighter (Bay)" "Basalt 14"
+		ship "TIE/LN Fighter (Bay)" "Basalt 15"
+		ship "TIE/LN Fighter (Bay)" "Basalt 16"
+		ship "TIE/LN Fighter (Bay)" "Basalt 17"
+		ship "TIE/LN Fighter (Bay)" "Basalt 18"
+		ship "TIE/LN Fighter (Bay)" "Basalt 19"
+		ship "TIE/LN Fighter (Bay)" "Basalt 20"
+		ship "TIE/LN Fighter (Bay)" "Basalt 21"
+		ship "TIE/LN Fighter (Bay)" "Dacite Leader"
+		ship "TIE/LN Fighter (Bay)" "Dacite 2"
+		ship "TIE/LN Fighter (Bay)" "Dacite 3"
+		ship "TIE/LN Fighter (Bay)" "Dacite 4"
+		ship "TIE/LN Fighter (Bay)" "Dacite 5"
+		ship "TIE/LN Fighter (Bay)" "Dacite 6"
+		ship "TIE/LN Fighter (Bay)" "Dacite 7"
+		ship "TIE/LN Fighter (Bay)" "Dacite 8"
+		ship "TIE/LN Fighter (Bay)" "Dacite 9"
+		ship "TIE/LN Fighter (Bay)" "Dacite 10"
+		ship "TIE/LN Fighter (Bay)" "Dacite 11"
+		ship "TIE/LN Fighter (Bay)" "Dacite 12"
+		ship "TIE/LN Fighter (Bay)" "Dacite 13"
+		ship "TIE/LN Fighter (Bay)" "Dacite 14"
+		ship "TIE/LN Fighter (Bay)" "Dacite 15"
+		ship "TIE/LN Fighter (Bay)" "Dacite 16"
+		ship "TIE/LN Fighter (Bay)" "Dacite 17"
+		ship "TIE/LN Fighter (Bay)" "Dacite 18"
+		ship "TIE/LN Fighter (Bay)" "Dacite 19"
+		ship "TIE/LN Fighter (Bay)" "Dacite 20"
+		ship "TIE/LN Fighter (Bay)" "Dacite 21"
+		ship "TIE/LN Fighter (Bay)" "Scoria Leader"
+		ship "TIE/LN Fighter (Bay)" "Scoria 2"
+		ship "TIE/LN Fighter (Bay)" "Scoria 3"
+		ship "TIE/LN Fighter (Bay)" "Scoria 4"
+		ship "TIE/LN Fighter (Bay)" "Scoria 5"
+		ship "TIE/LN Fighter (Bay)" "Scoria 6"
+		ship "TIE/LN Fighter (Bay)" "Scoria 7"
+		ship "TIE/LN Fighter (Bay)" "Scoria 8"
+		ship "TIE/LN Fighter (Bay)" "Scoria 9"
+		ship "TIE/LN Fighter (Bay)" "Scoria 10"
+		ship "TIE/LN Fighter (Bay)" "Scoria 11"
+		ship "TIE/LN Fighter (Bay)" "Scoria 12"
+		ship "TIE/LN Fighter (Bay)" "Scoria 13"
+		ship "TIE/LN Fighter (Bay)" "Scoria 14"
+		ship "TIE/LN Fighter (Bay)" "Scoria 15"
+		ship "TIE/LN Fighter (Bay)" "Scoria 16"
+		ship "TIE/LN Fighter (Bay)" "Scoria 17"
+		ship "TIE/LN Fighter (Bay)" "Scoria 18"
+		ship "TIE/LN Fighter (Bay)" "Scoria 19"
+		ship "TIE/LN Fighter (Bay)" "Scoria 20"
+		ship "TIE/LN Fighter (Bay)" "Scoria 21"
+		dialog "Rogue One: Battle of Scarif"
+	on offer
+		conversation
+			`Would you like to simulate "Rogue One: Battle of Scarif"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Rogue One: Battle of Scarif"
+
+# _________________________________________________________
+
+# Episode 4: Secret Mission to Tatooine
+
+mission "Episode 4: Secret Mission to Tatooine"
+	name "Episode 4: Secret Mission to Tatooine"
+	description "Episode 4: Secret Mission to Tatooine"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Tatooine"
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		ship "Imperial I Star Destroyer" "Devastator"
+		dialog "Episode 4: Secret Mission to Tatooine"
+	on offer
+		conversation
+			`Would you like to simulate "Episode 4: Secret Mission to Tatooine"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Episode 4: Secret Mission to Tatooine"
+
+# _________________________________________________________
+
+# Episode 5: Asteroid Field
+
+mission "Episode 5: Asteroid Field"
+	name "Episode 5: Asteroid Field"
+	description "Episode 5: Asteroid Field"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Hoth"
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		ship "Imperial I Star Destroyer" "Avenger"
+		ship "Imperial I Star Destroyer" "Conquest"
+		ship "Imperial I Star Destroyer" "Stormhawk"
+		ship "TIE/LN Fighter (Bay)" "Scythe L"
+		ship "TIE/LN Fighter (Bay)" "Scythe 2"
+		ship "TIE/LN Fighter (Bay)" "Scythe 3"
+		ship "TIE/LN Fighter (Bay)" "Scythe 4"
+		dialog "Episode 5: Asteroid Field"
+	on offer
+		conversation
+			`Would you like to simulate "Episode 5: Asteroid Field"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Episode 5: Asteroid Field"
+
+# _________________________________________________________
+
+# Episode 6: Battle of Endor
+
+mission "Episode 6: Battle of Endor"
+	name "Episode 6: Battle of Endor"
+	description "Episode 6: Battle of Endor"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Bakura"
+	npc kill
+		personality heroic staying target
+		government "Galactic Empire"
+		system "Endor"
+		ship "TIE/D Fighter" "Obsidian Ace"
+		#fleet "imperial_ep6"
+		dialog "Episode 6: Battle of Endor"
+	on offer
+		give ship "MC80 Home One Star Cruiser" "Home One"
+		give ship "MC80A Star Cruiser" "Defiance"
+		give ship "MC80A Star Cruiser" "Independence"
+		give ship "MC80A Star Cruiser" "Nautilian"
+		give ship "MC80A Star Cruiser" "Aurora Flare"
+		give ship "MC80A Chatnoir Cruiser" "Chatnoir"
+		give ship "MC80A Chatnoir Cruiser" "Hope"
+		give ship "MC80A Chatnoir Cruiser" "Link"
+		give ship "MC80A Chatnoir Cruiser" "Solidarity"
+		give ship "Dauntless Heavy Cruiser" "Dauntless"
+		give ship "MC80 Heavy Cruiser" "Topaz"
+		give ship "MC80 Liberty Cruiser" "Liberty"
+		give ship "MC80 Liberty Cruiser" "Independence"
+		give ship "MC80 Liberty Cruiser" "Ardent"
+		give ship "MC80 Liberty Cruiser" "Crucible"
+		give ship "MC80 Liberty Cruiser" "Reef Home"
+		give ship "MC75 Star Cruiser" "Acuity"
+		give ship "EF76 Nebulon-B Frigate" "Akaga"
+		give ship "EF76 Nebulon-B Frigate" "Anvil"
+		give ship "EF76 Nebulon-B Frigate" "Chancellor"
+		give ship "EF76 Nebulon-B Frigate" "Firelance"
+		give ship "EF76 Nebulon-B Frigate" "Huntress"
+		give ship "EF76 Nebulon-B Frigate" "Meteor"
+		give ship "EF76 Nebulon-B Frigate" "Olinor"
+		give ship "EF76 Nebulon-B Frigate" "Priam"
+		give ship "EF76 Nebulon-B Frigate" "Redemption"
+		give ship "EF76 Nebulon-B Frigate" "Salvation"
+		give ship "MC20 Escort Corvette" "Galvaniser"
+		give ship "CR90 Corvette" "Astin"
+		give ship "CR90 Corvette" "Candor"
+		give ship "CR90 Corvette" "Dodonna's Pride"
+		give ship "CR90 Corvette" "Hyko"
+		give ship "CR90 Corvette" "Jaina's Light"
+		give ship "CR90 Corvette" "Novaflare"
+		give ship "CR90 Corvette" "Tarnta"
+		give ship "CR90 Corvette (Liberator)" "Windswept"
+		give ship "Dornean Gunship" "Apailana"
+		give ship "Dornean Gunship" "Braha'tok"
+		give ship "Dornean Gunship" "Orion"
+		give ship "Dornean Gunship" "Torktarak"
+		give ship "DP20 Frigate (Modified)" "Bruiser"
+		give ship "DP20 Frigate (Modified)" "Incomparable"
+		give ship "DP20 Frigate (Modified)" "Pulsar"
+		give ship "DP20 Frigate (Modified)" "Watchful"
+		give ship "Pelta Frigate (Modified)" "Warmaker"
+		give ship "Sphyrna Corvette (Modified)" "Champion"
+		give ship "Sphyrna Corvette (Modified)" "Destiny"
+		give ship "Sphyrna Corvette (Modified)" "Redoubt"
+		give ship "GR-75 Transport" "Anuti"
+		give ship "GR-75 Transport" "Gilder"
+		give ship "GR-75 Transport" "Jowa"
+		give ship "GR-75 Transport" "Limnate"
+		give ship "GR-75 Transport" "Luminous"
+		give ship "GR-75 Transport" "Moonrise"
+		give ship "GR-75 Transport" "Panteer"
+		give ship "GR-75 Transport" "Rescue 1"
+		give ship "GR-75 Transport" "T-37"
+		give ship "GR-75 Transport" "Vasudra"
+		give ship "GR-75 Transport" "Vaneer"
+		give ship "GR-75 Transport" "Wanderhome"
+		give ship "Bussard Tanker" "Bussard"
+		give ship "X4 Gunship" "Twilight L"
+		give ship "X4 Gunship" "Twilight 2"
+		give ship "X4 Gunship" "Twilight 3"
+		give ship "X4 Gunship" "Twilight 4"
+		give ship "T-65B X-Wing (Bay)" "Red L"
+		give ship "T-65B X-Wing (Bay)" "Red 2"
+		give ship "T-65B X-Wing (Bay)" "Red 3"
+		give ship "T-65B X-Wing (Bay)" "Red 4"
+		give ship "T-65B X-Wing (Bay)" "Red 5"
+		give ship "T-65B X-Wing (Bay)" "Red 6"
+		give ship "T-65B X-Wing (Bay)" "Red 7"
+		give ship "T-65B X-Wing (Bay)" "Red 8"
+		give ship "T-65B X-Wing (Bay)" "Red 9"
+		give ship "T-65B X-Wing (Bay)" "Red 10"
+		give ship "T-65B X-Wing (Bay)" "Red 11"
+		give ship "T-65B X-Wing (Bay)" "Red 12"
+		give ship "T-65B X-Wing (Bay)" "Blue L"
+		give ship "T-65B X-Wing (Bay)" "Blue 2"
+		give ship "T-65B X-Wing (Bay)" "Blue 3"
+		give ship "T-65B X-Wing (Bay)" "Blue 4"
+		give ship "T-65B X-Wing (Bay)" "Blue 5"
+		give ship "T-65B X-Wing (Bay)" "Blue 6"
+		give ship "T-65B X-Wing (Bay)" "Blue 7"
+		give ship "T-65B X-Wing (Bay)" "Blue 8"
+		give ship "T-65B X-Wing (Bay)" "Blue 9"
+		give ship "T-65B X-Wing (Bay)" "Blue 10"
+		give ship "T-65B X-Wing (Bay)" "Blue 11"
+		give ship "T-65B X-Wing (Bay)" "Blue 12"
+		give ship "T-65B X-Wing (Bay)" "Scarlet L"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 2"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 3"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 4"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 5"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 6"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 7"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 8"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 9"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 10"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 11"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 12"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold L"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 2"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 3"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 4"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 5"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 6"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 7"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 8"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 9"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 10"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 11"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 12"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur L"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 2"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 3"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 4"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 5"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 6"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 7"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 8"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 9"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 10"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 11"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 12"
+		give ship "RZ-1 A-Wing (Bay)" "Azure L"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 2"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 3"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 4"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 5"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 6"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 7"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 8"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze L"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 2"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 3"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 4"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 5"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 6"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 7"
+		give ship "A/SF-01 B-Wing (Bay)" "Bronze 8"
+		give ship "T-65B X-Wing (Bay)" "Red L"
+		give ship "T-65B X-Wing (Bay)" "Red 2"
+		give ship "T-65B X-Wing (Bay)" "Red 3"
+		give ship "T-65B X-Wing (Bay)" "Red 4"
+		give ship "T-65B X-Wing (Bay)" "Red 5"
+		give ship "T-65B X-Wing (Bay)" "Red 6"
+		give ship "T-65B X-Wing (Bay)" "Red 7"
+		give ship "T-65B X-Wing (Bay)" "Red 8"
+		give ship "T-65B X-Wing (Bay)" "Red 9"
+		give ship "T-65B X-Wing (Bay)" "Red 10"
+		give ship "T-65B X-Wing (Bay)" "Red 11"
+		give ship "T-65B X-Wing (Bay)" "Red 12"
+		give ship "T-65B X-Wing (Bay)" "Blue L"
+		give ship "T-65B X-Wing (Bay)" "Blue 2"
+		give ship "T-65B X-Wing (Bay)" "Blue 3"
+		give ship "T-65B X-Wing (Bay)" "Blue 4"
+		give ship "T-65B X-Wing (Bay)" "Blue 5"
+		give ship "T-65B X-Wing (Bay)" "Blue 6"
+		give ship "T-65B X-Wing (Bay)" "Blue 7"
+		give ship "T-65B X-Wing (Bay)" "Blue 8"
+		give ship "T-65B X-Wing (Bay)" "Blue 9"
+		give ship "T-65B X-Wing (Bay)" "Blue 10"
+		give ship "T-65B X-Wing (Bay)" "Blue 11"
+		give ship "T-65B X-Wing (Bay)" "Blue 12"
+		give ship "T-65B X-Wing (Bay)" "Scarlet L"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 2"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 3"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 4"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 5"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 6"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 7"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 8"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 9"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 10"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 11"
+		give ship "T-65B X-Wing (Bay)" "Scarlet 12"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold L"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 2"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 3"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 4"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 5"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 6"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 7"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 8"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 9"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 10"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 11"
+		give ship "BTL-A4 Y-Wing (Bay)" "Gold 12"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur L"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 2"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 3"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 4"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 5"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 6"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 7"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 8"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 9"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 10"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 11"
+		give ship "BTL-A4 Y-Wing (Bay)" "Sulphur 12"
+		give ship "RZ-1 A-Wing (Bay)" "Azure L"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 2"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 3"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 4"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 5"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 6"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 7"
+		give ship "RZ-1 A-Wing (Bay)" "Azure 8"
+		give ship "UT-60D U-Wing (Bay)" "Blue 1"
+		give ship "UT-60D U-Wing (Bay)" "Blue 2"
+		give ship "VCX-100 Light Freighter" "Ghost"
+		conversation
+			`Would you like to simulate "Episode 6: Battle of Endor"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Episode 6: Battle of Endor"
+
+fleet "imperial_ep6"
+	government "Galactic Empire"
+	names "imperial capital"
+	fighters "imperial fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Executor Star Dreadnought"
+		"Praetor Mark II Battlecruiser"
+		"Imperial I Star Destroyer" 2
+		"Imperial II Star Destroyer" 10
+		"Interdictor Star Destroyer"
+		"Tector Star Destroyer"
+		"Victory II Star Destroyer"
+		"Immobiliser 418 Cruiser" 2
+		"Vindicator Heavy Cruiser" 2
+		"Raider II Corvette"
+		"TIE/LN Fighter" 250
+		"TIE/IN Interceptor" 50
+		"TIE/SA Bomber" 50
+
+# _________________________________________________________
+
+# The Mandalorian: Slave I vs Shuttle
+
+mission "The Mandalorian: Slave I vs Shuttle"
+	name "The Mandalorian: Slave I vs Shuttle"
+	description "The Mandalorian: Slave I vs Shuttle"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Kalist"
+	npc kill
+		personality pacifist staying unconstrained target fleeing uninterested
+		government "Galactic Empire"
+		ship "Lambda T-4a Shuttle"
+	npc kill
+		personality timid vindictive staying
+			confusion 120
+		government "Galactic Empire"
+		ship "Arquitens 546 Cruiser (Cinematic)" "Gideon's Light Cruiser"
+		ship "TIE/LN Fighter (Bay)" "Obsidian L"
+		ship "TIE/LN Fighter (Bay)" "Obsidian Two"
+	on offer
+		conversation
+			`Would you like to simulate "The Mandalorian: Slave I vs Shuttle?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+
+	on complete
+		payment 150000
+		dialog "The Mandalorian: Slave I vs Shuttle"
+
+ship "Arquitens 546 Cruiser" "Arquitens 546 Cruiser (Cinematic)"
+	sprite "ship/arquitenscruiser546"
+	thumbnail "thumbnail/arquitenscruiser"
+	attributes
+		licenses
+			Imperial
+		category "Cruiser "
+		"cost" 21300000
+		"shields" 67600
+		"hull" 31250
+		"required crew" 370
+		"bunks" 1200
+		"mass" 9765
+		"drag" 31.95
+		"heat dissipation" .45
+		"fuel capacity" 1000
+		"cargo space" 300
+		"outfit space" 1498
+		"weapon capacity" 740
+		"engine capacity" 550
+		"force protection" 1000000
+		weapon
+			"blast radius" 320
+			"shield damage" 1100
+			"hull damage" 550
+			"hit force" 950
+	outfits
+		"G5Quad Turbolaser Turret" 2
+		"G4Dual Turbolaser Turret" 2
+		"G3 Turbolaser Turret" 2
+		
+		"P5 Power Converter"
+		"D5 Deflector Shield"
+		"C5 Coolant System"
+		
+		"B5 Sublight Engine"
+		"H5 Hyperspace Motivator"
+		
+	engine 0 566.5 1.5
+	engine -170 566.5 1.5
+	engine 170 566.5 1.5
+	engine -69 544.5
+	engine 69 544.5
+	engine -96.5 545
+	engine 96.5 545
+	turret -35 -523.5
+	turret 35 -523.5
+	turret -55 -396
+	turret 55 -396
+	turret -95 -307 "G4Dual Turbolaser Turret"
+	turret 95 -307 "G4Dual Turbolaser Turret"
+	turret -47.5 -257
+	turret 47.5 -257
+	turret -157 -135.5
+	turret 157 -135.5
+	turret -101 -123
+	turret 101 -123
+	turret -47.5 -87
+	turret 47.5 -87
+	turret -136 -24 "G5Quad Turbolaser Turret"
+	turret 136 -24 "G5Quad Turbolaser Turret"
+	turret -184 104.5 "G3 Turbolaser Turret"
+	turret 184 104.5 "G3 Turbolaser Turret"
+	turret -104 372
+	turret 104 372
+	bay "Starfighter (Bay) " 0 -376
+	bay "Starfighter (Bay) " 0 -376
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " -184 105
+		angle -90
+	bay "Starfighter (Bay) " 184 105
+		angle 90
+	bay "Starfighter (Bay) " 184 105
+		angle 90
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description  "The Class 546 Cruiser is a model of light cruiser that resembles an Arquitens-class command cruiser of the Galactic Empire. Although similar to the command cruiser model, the Class 546 houses a large internal hangar bay that can be accessed by port and starboard hangar doors and a launch tube at the centre of the vessel between the ship's two prongs. Its bridge is also different from the standard Arquitens-class model, and is equipped with three primary and four secondary sublight engines."
+	description "Artwork/model by Alexander Ivanov"
+
+
+# _________________________________________________________
+
+# Star Wars Resistance: Colossus vs Resurgent
+
+mission "Star Wars Resistance: Colossus vs Resurgent"
+	name "Star Wars Resistance: Colossus vs Resurgent"
+	description "Star Wars Resistance: Colossus vs Resurgent"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Castilon"
+	npc kill
+		personality heroic vindictive unconstrained target
+		system "Ring of Kafrene"
+		government "First Order"
+		ship "Resurgent Star Destroyer" "Tierny"
+		ship "TIE/FO Fighter (Bay)" "Onyx L"
+		ship "TIE/FO Fighter (Bay)" "Onyx 2"
+		ship "TIE/FO Fighter (Bay)" "Onyx 3"
+		ship "TIE/FO Fighter (Bay)" "Onyx 4"
+		ship "TIE/FO Fighter (Bay)" "Onyx 5"
+		ship "TIE/FO Fighter (Bay)" "Onyx 6"
+		ship "TIE/FO Fighter (Bay)" "Onyx 7"
+		ship "TIE/FO Fighter (Bay)" "Onyx 8"
+		ship "TIE/FO Fighter (Bay)" "Onyx 9"
+		ship "TIE/FO Fighter (Bay)" "Onyx 10"
+		ship "TIE/FO Fighter (Bay)" "Onyx 11"
+		ship "TIE/FO Fighter (Bay)" "Onyx 12"
+		ship "TIE/FO Fighter (Bay)" "Onyx 13"
+		ship "TIE/FO Fighter (Bay)" "Onyx 14"
+		ship "TIE/SF Fighter (Bay)" "Shade L"
+		ship "TIE/SF Fighter (Bay)" "Shade 2"
+		ship "TIE/SF Fighter (Bay)" "Shade 3"
+		ship "TIE/SF Fighter (Bay)" "Shade 4"
+		ship "TIE/SE Bomber (Bay)" "Umbra L"
+		ship "TIE/SE Bomber (Bay)" "Umbra 2"
+		ship "TIE/SE Bomber (Bay)" "Umbra 3"
+		ship "TIE/SE Bomber (Bay)" "Umbra 4"
+	npc
+		personality heroic staying
+		government "Resistance"
+		ship "Supertanker Fuel Depot" "Colossus"
+		ship "T-85 X-Wing (Bay)" "Jade L"
+		ship "T-85 X-Wing (Bay)" "Jade 2"
+		ship "T-85 X-Wing (Bay)" "Jade 3"
+		ship "T-85 X-Wing (Bay)" "Jade 4"
+		ship "T-85 X-Wing (Bay)" "Jade 5"
+		ship "T-85 X-Wing (Bay)" "Jade 6"
+		ship "T-85 X-Wing (Bay)" "Jade 7"
+		ship "T-85 X-Wing (Bay)" "Jade 8"
+		ship "T-85 X-Wing (Bay)" "Jade 9"
+		ship "T-85 X-Wing (Bay)" "Jade 10"
+		ship "T-85 X-Wing (Bay)" "Jade 11"
+		ship "T-85 X-Wing (Bay)" "Jade 12"
+		ship "T-85 X-Wing (Bay)" "Jade 13"
+		ship "T-85 X-Wing (Bay)" "Jade 14"
+	on offer
+		conversation
+			`Would you like to simulate ""Star Wars Resistance: Colossus vs Resurgent"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 150000
+		dialog ""Star Wars Resistance: Colossus vs Resurgent"
+
+
+# _________________________________________________________
+
+# Episode 7: Battle of Starkiller Base
+
+mission "Episode 7: Battle of Starkiller Base"
+	name "Episode 7: Battle of Starkiller Base"
+	description "Episode 7: Battle of Starkiller Base"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "The Redoubt"
+	on offer
+		give ship "T-70 X-Wing (Bay)" "Red L"
+		give ship "T-70 X-Wing (Bay)" "Red 2"
+		give ship "T-70 X-Wing (Bay)" "Red 3"
+		give ship "T-70 X-Wing (Bay)" "Red 4"
+		give ship "T-70 X-Wing (Bay)" "Red 5"
+		give ship "T-70 X-Wing (Bay)" "Red 6"
+		give ship "T-70 X-Wing (Bay)" "Red 7"
+		give ship "T-70 X-Wing (Bay)" "Red 8"
+		give ship "T-70 X-Wing (Bay)" "Red 9"
+		give ship "T-70 X-Wing (Bay)" "Red 10"
+		give ship "T-70 X-Wing (Bay)" "Red 11"
+		give ship "T-70 X-Wing (Bay)" "Red 12"
+		give ship "T-70 X-Wing (Bay)" "Blue L"
+		give ship "T-70 X-Wing (Bay)" "Blue 2"
+		give ship "T-70 X-Wing (Bay)" "Blue 3"
+		give ship "T-70 X-Wing (Bay)" "Blue 4"
+		give ship "T-70 X-Wing (Bay)" "Blue 5"
+		give ship "T-70 X-Wing (Bay)" "Blue 6"
+		give ship "T-70 X-Wing (Bay)" "Blue 7"
+		give ship "T-70 X-Wing (Bay)" "Blue 8"
+		give ship "T-70 X-Wing (Bay)" "Blue 9"
+		give ship "T-70 X-Wing (Bay)" "Blue 10"
+		give ship "T-70 X-Wing (Bay)" "Blue 11"
+		give ship "T-70 X-Wing (Bay)" "Blue 12"
+		conversation
+			`Would you like to simulate "Episode 7: Battle of Starkiller Base"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Episode 7: Battle of Starkiller Base"
+
+fleet "starkillerbase_ep7"
+	government "First Order"
+	names "imperial capital"
+	fighters "imperial fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"TIE/FO Fighter (Bay)" 35
+		"TIE/SF Fighter (Bay)" 15
+
+# _________________________________________________________
+
+# Episode 8: Battle of D'Qar
+
+mission "Episode 8: Battle of D'Qar"
+	name "Episode 8: Battle of D'Qar"
+	description "Episode 8: Battle of D'Qar"
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "D'Qar"
+	on offer
+		give ship "MG-100 Starfortress SF-17" "Cobalt Hammer"
+		give ship "MG-100 Starfortress SF-17" "Cobalt 2"
+		give ship "MG-100 Starfortress SF-17" "Cobalt 3"
+		give ship "MG-100 Starfortress SF-17" "Cobalt 4"
+		give ship "MG-100 Starfortress SF-17 (R)" "Crimson Hail-storm"
+		give ship "MG-100 Starfortress SF-17 (R)" "Crimson Smiter"
+		give ship "MG-100 Starfortress SF-17 (R)" "Crimson 3"
+		give ship "MG-100 Starfortress SF-17 (R)" "Crimson 4"
+		give ship "T-70 X-Wing (Bay)" "Red L"
+		give ship "T-70 X-Wing (Bay)" "Red 2"
+		give ship "T-70 X-Wing (Bay)" "Red 3"
+		give ship "T-70 X-Wing (Bay)" "Red 4"
+		give ship "RZ2 A-Wing (R) (Bay)" "Red 5"
+		give ship "RZ2 A-Wing (R) (Bay)" "Red 6"
+		give ship "RZ2 A-Wing (Bay)" "Blue L"
+		give ship "RZ2 A-Wing (Bay)" "Blue 2"
+		give ship "T-70 X-Wing (Bay)" "Blue 3"
+		give ship "T-70 X-Wing (Bay)" "Blue 4"
+		give ship "T-70 X-Wing (Bay)" "Blue 5"
+		give ship "T-70 X-Wing (Bay)" "Blue 6"
+		conversation
+			`Would you like to simulate "Episode 8: Battle of D'Qar"?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog "Episode 8: Battle of D'Qar"
+
+fleet "dreadnought_ep8"
+	government "First Order"
+	names "fulminatrix"
+	fighters "imperial fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Mandator IV Siege Dreadnought (w/out)"
+
+phrase "fulminatrix"
+	word
+		"Fulminatrix"
+
+ship "Mandator IV Siege Dreadnought" "Mandator IV Siege Dreadnought (w/out)"
+	sprite "ship/mandatorivdreadnought"
+	thumbnail "thumbnail/mandatorivdreadnought"
+	attributes
+		category "Dreadnought "
+		"cost" 1940000000
+		"shields" 250000
+		"hull" 104000
+		"required crew" 1950
+		"bunks" 2450
+		"mass" 94000
+		"drag" 79
+		"heat dissipation" .2
+		"fuel capacity" 2000
+		"cargo space" 700
+		"outfit space" 5018
+		"weapon capacity" 4210
+		"engine capacity" 550
+		"force protection" 1000000
+		"defenceless capacity" -32
+		weapon
+			"blast radius" 320
+			"shield damage" 1100
+			"hull damage" 550
+			"hit force" 950
+	outfits
+		"Defenceless" 32
+		
+		"P5 Power Converter"
+		"D5 Deflector Shield"
+		"C5 Coolant System"
+		
+		"O5 Sublight Engine"
+		"H5 Hyperspace Motivator"
+		
+	engine -1901 4274 2
+	engine 1901 4274 2
+	engine -1737 4307 2
+	engine 1737 4307 2
+	engine -1515 4342 2
+	engine 1515 4342 2
+	engine -1072 4384 4
+	engine 1072 4384 4
+	engine -695 4472 4
+	engine 695 4472 4
+	turret -1711 3721 "Defenceless"
+	turret 1711 3721 "Defenceless"
+	turret -775 3513 "Defenceless"
+	turret 775 3513 "Defenceless"
+	turret -1503 2848 "Defenceless"
+	turret 1503 2848 "Defenceless"
+	turret -465 2825 "Defenceless"
+	turret 465 2825 "Defenceless"
+	turret -750 2449.5 "Defenceless"
+	turret 750 2449.5 "Defenceless"
+	turret -1345 2346 "Defenceless"
+	turret 1345 2346 "Defenceless"
+	turret -441 2368 "Defenceless"
+	turret 441 2368 "Defenceless"
+	turret -1301 1637 "Defenceless"
+	turret 1301 1637 "Defenceless"
+	turret -349 1732 "Defenceless"
+	turret 349 1732 "Defenceless"
+	turret -1029 974 "Defenceless"
+	turret 1029 974 "Defenceless"
+	turret -625 480 "Defenceless"
+	turret 625 480 "Defenceless"
+	turret -699 -400 "Defenceless"
+	turret 699 -400 "Defenceless"
+	turret -501 -1629 "Defenceless"
+	turret 501 -1629 "Defenceless"
+	turret -233 -2270 "Defenceless"
+	turret 233 -2270 "Defenceless"
+	turret -146 -2657 "Defenceless"
+	turret 146 -2657 "Defenceless"
+	turret -150 -3583 "Defenceless"
+	turret 150 -3583 "Defenceless"
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	fighter 0 0
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description "The Mandator IV Siege Dreadnought is a model of Siege Dreadnought used by the First Order during their conflict with the Resistance. The Mandator IV is armed with two orbital autocannons that could fire a salvo of two rounds each in quick succession before a recharge was needed."
+	description "Artwork/model by Nomada_Firefox"
+
+fleet "dreadnoughtfighters_ep8"
+	government "First Order"
+	names "imperial capital"
+	fighters "imperial fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"TIE/FO Fighter (Bay)" 15
+		"TIE/SF Fighter (Bay)" 5
+
+# _________________________________________________________
+
+# Episode 9: Battle of Exegol
+
+mission "Episode 9: Battle of Exegol"
+	name Episode 9: Battle of Exegol
+	description Episode 9: Battle of Exegol
+	repeat
+	to offer
+		random < 99
+		has "agffa cinematic start"
+	source
+		system "Wayfinder 5"
+	npc kill
+		personality heroic staying vindictive unconstrained target
+		government "Sith Eternal"
+		system "Exegol"
+		fleet sitheternal_ep9
+	npc
+		personality heroic
+		government "Civilian"
+		system "Wayfinder 5"
+		fleet "citizenfleet_ep9"
+	on offer
+		give ship "CR90 Corvette (OP)" "Tantive IV"
+		give ship "T-70 X-Wing (OP)" "Red L"
+		give ship "T-70 X-Wing (OP)" "Red 2"
+		give ship "T-70 X-Wing (OP)" "Red 3"
+		give ship "T-70 X-Wing (OP)" "Red 4"
+		give ship "T-70 X-Wing (OP)" "Red 5"
+		give ship "T-70 X-Wing (OP)" "Red 6"
+		give ship "T-70 X-Wing (OP)" "Red 7"
+		give ship "T-70 X-Wing (OP)" "Red 8"
+		give ship "T-70 X-Wing (OP)" "Red 9"
+		give ship "T-70 X-Wing (OP)" "Red 10"
+		give ship "T-70 X-Wing (OP)" "Red 11"
+		give ship "T-70 X-Wing (OP)" "Red 12"
+		give ship "T-70 X-Wing (OP)" "Blue L"
+		give ship "T-70 X-Wing (OP)" "Blue 2"
+		give ship "T-70 X-Wing (OP)" "Blue 3"
+		give ship "T-70 X-Wing (OP)" "Blue 4"
+		give ship "T-70 X-Wing (OP)" "Blue 5"
+		give ship "T-70 X-Wing (OP)" "Blue 6"
+		give ship "T-70 X-Wing (OP)" "Blue 7"
+		give ship "T-70 X-Wing (OP)" "Blue 8"
+		give ship "T-70 X-Wing (OP)" "Blue 9"
+		give ship "T-70 X-Wing (OP)" "Blue 10"
+		give ship "T-70 X-Wing (OP)" "Blue 11"
+		give ship "T-70 X-Wing (OP)" "Blue 12"
+		give ship "RZ2 A-Wing (OP)" "Jade L"
+		give ship "RZ2 A-Wing (OP)" "Jade 2"
+		give ship "RZ2 A-Wing (OP)" "Jade 3"
+		give ship "RZ2 A-Wing (OP)" "Jade 4"
+		give ship "RZ2 A-Wing (OP)" "Jade 5"
+		give ship "RZ2 A-Wing (OP)" "Jade 6"
+		give ship "RZ2 A-Wing (OP)" "Jade 7"
+		give ship "RZ2 A-Wing (OP)" "Jade 8"
+		give ship "RZ2 A-Wing (OP)" "Jade 9"
+		give ship "RZ2 A-Wing (OP)" "Jade 10"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen L"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 2"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 3"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 4"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 5"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 6"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 7"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 8"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 9"
+		give ship "A/SF-01 B-Wing (OP)" "Carmen 10"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold L"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 2"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 3"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 4"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 5"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 6"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 7"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 8"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 9"
+		give ship "BTL-A4 Y-Wing (OP)" "Gold 10"
+		conversation
+			`Would you like to simulate Episode 9: Battle of Exegol?`
+			choice
+				"	(No.)"
+					decline
+				"	(Yes.)"
+			"Running simulation."
+				launch
+	on complete
+		payment 250000
+		dialog Episode 9: Battle of Exegol
+
+ship "CR90 Corvette" "CR90 Corvette (OP)"
+	sprite "ship/cr90corvette"
+	thumbnail "thumbnail/cr90corvette"
+	attributes
+		category "Corvette "
+		"cost" 3500000
+		"shields" 240000
+		"hull" 96000
+		"required crew" 46
+		"bunks" 240
+		"mass" 1500
+		"drag" 9.25
+		"heat dissipation" .45
+		"fuel capacity" 700
+		"cargo space" 115
+		"outfit space" 326
+		"weapon capacity" 174
+		"engine capacity" 88
+		weapon
+			"blast radius" 300
+			"shield damage" 700
+			"hull damage" 350
+			"hit force" 800
+	outfits
+		"R2 Laser Cannon" 2
+		"R2Heavy Laser Turret" 4
+		"R4Dual Turbolaser Turret" 2
+		
+		"P3 Power Converter"
+		"D3 Deflector Shield"
+		"C3 Coolant System"
+		
+		"O3 Sublight Engine"
+		"H3 Hyperspace Motivator"
+		
+	engine -45.5 189
+	engine 45.5 189
+	engine -30.5 189
+	engine 30.5 189
+	engine -15 189
+	engine 15 189
+	engine 0 189
+	gun -22.5 -174 "R2 Laser Cannon"
+	gun 22.5 -174 "R2 Laser Cannon"
+	turret -27 -50 "R2Heavy Laser Turret"
+	turret 27 -50 "R2Heavy Laser Turret"
+	turret -27 -74.5 "R2Heavy Laser Turret"
+	turret 27 -74.5 "R2Heavy Laser Turret"
+	turret 0 -107.5 "R4Dual Turbolaser Turret"
+	turret 0 -107.5 "R4Dual Turbolaser Turret"
+	fighter -44 48 under
+	fighter 44 48 under
+	fighter 0 48
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	"final explode" "final explosion large" 1
+	description "CR90 corvettes, also known as Corellian corvettes or blockade runners, are consular vessels manufactured by the Corellian Engineering Corporation, initially used within the late Galactic Republic and Imperial Senate. Despite not being designed as a combat-oriented vessel, many vessels have been appropriated by the early rebellion and Rebel Alliance."
+	description "Artwork/model by Unusualsuspex"
+
+ship "T-70 X-Wing" "T-70 X-Wing (OP)"
+	sprite ship/t70xwingblue
+	thumbnail thumbnail/t70xwingblue
+	attributes
+		category "Starfighter "
+		"absolute threshold" 20
+		cost 170000
+		shields 168000
+		hull 30800
+		"required crew" 1
+		bunks 1
+		mass 22
+		drag 0.99
+		"heat dissipation" 0.8
+		"fuel capacity" 700
+		"outfit space" 19
+		"weapon capacity" 6
+		"engine capacity" 5
+		"hullslot capacity" 1
+		"shieldslot capacity" 1
+		"astromechsocket capacity" 1
+		weapon
+			"blast radius" 40
+			"shield damage" 320
+			"hull damage" 170
+			"hit force" 460
+	outfits
+		"R1 Laser Cannon" 4
+		"Proton Torpedo Launcher" 2
+		"Proton Torpedo" 6
+
+		"P1 Power Converter"
+		"D0 Shield Slot"
+		"D1 Deflector Shield"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+		"A0 Astromech Socket"
+
+		"P1 Sublight Engine"
+		"H1 Hyperspace Motivator"
+
+	engine -5.5 19
+	engine 5.5 19
+	gun -17 -6.5 "R1 Laser Cannon"
+	gun 17 -6.5 "R1 Laser Cannon"
+	gun -17 -6.5 "R1 Laser Cannon"
+	gun 17 -6.5 "R1 Laser Cannon"
+	gun -2 -2 "Proton Torpedo Launcher"
+	gun 2 -2 "Proton Torpedo Launcher"
+	explode "large explosion" 3
+	description "The T-70 X-wing starfighter is the successor to the T-65B X-wing starfighter, manufactured by Incom-FreiTek for use by the New Republic Defence Fleet. Faster and more expensive and complex than the former T-65B, the T-70 features advanced weaponry. The design has proved to be more versatile than its predecessor, becoming essential in both dogfights and capital-ship scale combat operations."
+	description "Artwork/model by Unusualsuspex"
+
+ship "RZ2 A-Wing" "RZ2 A-Wing (OP)"
+	sprite "ship/rz2awingblue"
+	thumbnail "thumbnail/rz2awingblue"
+	attributes
+		category "Starfighter "
+		"absolute threshold" 20
+		"cost" 185000
+		"shields" 168000
+		"hull" 16800
+		"required crew" 1
+		"bunks" 1
+		"mass" 20
+		"drag" 0.86
+		"heat dissipation" .9
+		"fuel capacity" 700
+		"cargo space" 0
+		"outfit space" 17
+		"weapon capacity" 5
+		"engine capacity" 5
+		"hullslot capacity" 1
+		"shieldslot capacity" 1
+		weapon
+			"blast radius" 30
+			"shield damage" 300
+			"hull damage" 150
+			"hit force" 450
+	outfits
+		"R1 Laser Cannon" 2
+		"Concussion Missile Launcher" 2
+		"Concussion Missile" 6
+		"R1 Laser Turret (AI)"
+		
+		"P1 Power Converter"
+		"D0 Shield Slot"
+		"D1 Deflector Shield"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+		
+		"O1 Sublight Engine"
+		"H1 Hyperspace Motivator"
+		
+	engine -5 18
+	engine 5 18
+	gun -10 -1 "R1 Laser Cannon"
+	gun 10 -1 "R1 Laser Cannon"
+	gun -3 -7.5 "Concussion Missile Launcher"
+	gun 3 -7.5 "Concussion Missile Launcher"
+	turret 0 1.5 "R1 Laser Turret (AI)"
+	explode "large explosion" 3
+	"final explode" "final explosion large"
+	description "The RZ-2 A-wing interceptor is a wedge-shaped starfighter that began production by Kuat Systems Engineering after the success of the former RZ-1 A-wing interceptor used by the Alliance during the Galactic Civil War. The RZ-2 incorporates and standardises years of RZ-1 field modifications by the Rebellion, along with making the chassis slimmer and longer to yield even more speed. As such, piloting the ultra-fast yet temperamental starfighter is a matter of pride for various Resistance pilots regarding their skills and daring."
+	description "Artwork/model from FlyCasual" 
+
+ship "BTL-A4 Y-Wing" "BTL-A4 Y-Wing (OP)"
+	sprite ship/btla4ywing
+	thumbnail thumbnail/btla4ywing
+	attributes
+		category "Starfighter "
+		"absolute threshold" 20
+		cost 135000
+		shields 160000
+		hull 48000
+		"required crew" 1
+		bunks 1
+		mass 35
+		drag 1.35
+		"heat dissipation" 0.7
+		"fuel capacity" 700
+		"cargo space" 0
+		"outfit space" 20
+		"weapon capacity" 7
+		"engine capacity" 5
+		"hullslot capacity" 1
+		"shieldslot capacity" 1
+		"astromechsocket capacity" 1
+		weapon
+			"blast radius" 42
+			"shield damage" 325
+			"hull damage" 175
+			"hit force" 465
+	outfits
+		"R1 Laser Cannon" 2
+		"I1 Ion Cannon"
+		"Proton Torpedo Launcher" 2
+		"Proton Torpedo Storage Rack" 2
+		"Proton Torpedo" 16
+
+		"P1 Power Converter"
+		"D0 Shield Slot"
+		"D1 Deflector Shield"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+		"A0 Astromech Socket"
+
+		"P1 Sublight Engine"
+		"H1 Hyperspace Motivator"
+
+	engine -12 13.5
+	engine 12 13.5
+	gun -1.5 -25.5 "R1 Laser Cannon"
+	gun 1.5 -25.5 "R1 Laser Cannon"
+	gun -3 -18 "Proton Torpedo Launcher"
+	gun 3 -18 "Proton Torpedo Launcher"
+	gun 0 -14 "I1 Ion Cannon"
+	explode "large explosion" 3
+	description "The BTL-A4 Y-wing assault starfighter/bomber, also referred to simply as the Y-wing, is a one seat assault starfighter and bomber manufactured by Koensayr Manufacturing. It is used by the Rebel Alliance Starfighter Corps during the Galactic Civil War. An effective marriage between speed and firepower, Y-wings serve their respective causes extremely well."
+	description "Artwork/model by Unusualsuspex" 
+
+ship "A/SF-01 B-Wing" "A/SF-01 B-Wing (OP)"
+	sprite "ship/asf01bwinggrey"
+	thumbnail "thumbnail/asf01bwinggrey"
+	attributes
+		category "Starfighter "
+		"absolute threshold" 20
+		"cost" 220000
+		"shields" 320000
+		"hull" 32000
+		"required crew" 1
+		"bunks" 1
+		"mass" 40
+		"drag" 1.19
+		"heat dissipation" .7
+		"fuel capacity" 700
+		"cargo space" 0
+		"outfit space" 22
+		"weapon capacity" 10
+		"engine capacity" 5
+		"hullslot capacity" 1
+		"shieldslot capacity" 1
+		weapon
+			"blast radius" 40
+			"shield damage" 320
+			"hull damage" 170
+			"hit force" 460
+	outfits
+		"R2 Laser Cannon"
+		"R1 Burst Cannon"
+		"I1 Ion Cannon" 3
+		"Proton Torpedo Launcher" 2
+		"Proton Torpedo Storage Rack" 2
+		"Proton Torpedo" 16
+
+		"P1 Power Converter"
+		"D0 Shield Slot"
+		"D1 Deflector Shield"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+
+		"P1 Sublight Engine"
+		"H1 Hyperspace Motivator"
+		
+	engine -1.5 8
+	engine 2.5 8
+	gun -40.5 -8 "R2 Laser Cannon"
+	gun 15 -10.5 "R1 Burst Cannon"
+	gun -40.5 -8 "I1 Ion Cannon"
+	gun -4 -9 "I1 Ion Cannon"
+	gun -4 -9 "I1 Ion Cannon"
+	gun 6 -7.5 "Proton Torpedo Launcher"
+	gun 6 -7.5 "Proton Torpedo Launcher"
+	explode "large explosion" 3
+	description "The A/SF-01 B-wing starfighter, more commonly referred to as the B-wing, is a heavily armed Rebel Alliance single-pilot starfighter and bomber manufactured by Slayn & Korpil. The B-Wing is a relatively poor dogfighter, primarily designed as a 'blockade buster' to attack and destroy large capital ships. As such, it is equipped with weaponry and systems normally reserved for much larger craft. Indeed, the B-wing boasted more firepower than most patrol ships and corvettes."
+	description "Artwork/model by Unusualsuspex" 
+
+fleet "sitheternal_ep9"
+	government "Sith Eternal"
+	names "imperial capital"
+	fighters "imperial fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"Imperial I Star Destroyer" 100
+		"TIE/DG Fighter" 200
+		"Resurgent Star Destroyer"
+		"TIE/FO Fighter" 50
+		"TIE/SF Fighter" 10
+
+fleet "citizenfleet_ep9"
+	government "Civilian"
+	names "rebel capital"
+	fighters "rebel fighter"
+	cargo 1
+	personality
+		opportunistic
+	variant 80
+		"A/SF-01 B-Wing" 10
+		"A/SF-01 B-Wing (Bay)"
+		"A/SF-01 B-Wing (Stripe)"
+		"A/SF-01 B-Wing (Stripe) (Bay)"
+		"A/SF-01 B-Wing B6"
+		"A/SF-01 B-Wing B6 (Bay)"
+		"A/SF-01 Dual B-Wing"
+		"A/SF-01 Dual B-Wing (Bay)"
+		"Assault Frigate Mark II"
+		"Bussard Tanker"
+		"BTL-A4 Y-Wing" 10
+		"BTL-A4 Y-Wing (Bay)"
+		"BTL-S3 Y-Wing"
+		"BTL-S3 Y-Wing (Bay)"
+		"BTL-S8 K-Wing" 3
+		"BTL-S8 K-Wing (Bay)"
+		"BTL-S8 K-Wing (Ion Bombs)"
+		"BTL-S8 K-Wing (B)"
+		"BTL-S8 K-Wing (B) (Bay)"
+		"BTL-S8 K-Wing (B) (Ion Bombs)"
+		"BTS-A2 H-Wing" 3
+		"BTS-A2 H-Wing (Bay)"
+		"CC-7700 Interdictor Frigate"
+		"CR90 Corvette" 5
+		"CR90 Corvette (Liberator)"
+		"CR90 Corvette (Modified)"
+		"CR92a Assassin Corvette"
+		"Dauntless Heavy Cruiser" 2
+		"DP20 Frigate"
+		"DP20 Frigate (Modified)"
+		"EF76 Nebulon-B Frigate" 10
+		"EF76 Nebulon-B2 Frigate"
+		"GR-75 Transport" 20
+		"Marauder Corvette" 3
+		"MC5 Fighter"
+		"MC5 Fighter (Bay)"
+		"MC20 Escort Corvette"
+		"MC25 Tide Frigate"
+		"MC30c Escort Frigate"
+		"MC40a Light Cruiser" 2
+		"MC75 Barracuda Cruiser"
+		"MC75 Star Cruiser" 2
+		"MC80A Chatnoir Cruiser" 2
+		"MC80A Star Cruiser" 2
+		"MC80 Home One Star Cruiser"
+		"MC80 Heavy Cruiser" 2
+		"MC80 Liberty Cruiser" 3
+		"MF69 Frigate"
+		"Pelta Frigate (Modified)" 2
+		"R-41 Starchaser" 10
+		"R-41 Starchaser (Bay)"
+		"RZ-1 A-Wing" 10
+		"RZ-1 A-Wing (Bay)"
+		"RZ-1 A-Wing (R)"
+		"RZ-1 A-Wing (R) (Bay)"
+		"Sphyrna Corvette" 5
+		"Sphyrna Corvette (Modified)"
+		"T-65B X-Wing" 10
+		"T-65B X-Wing (Bay)"
+		"T-65 XJ-3 Stealth X-Wing"
+		"T-65 XJ-3 Stealth X-Wing (Bay)"
+		"U-22 Orbital Loadlifter"
+		"UT-60D U-Wing" 10
+		"UT-60D U-Wing (Bay)"
+		"X4 Gunship"
+		"A-6 Interceptor"
+		"A-6 Interceptor (Bay)"
+		"A-9 Vigilance Fighter"
+		"A-9 Vigilance Fighter (Bay)"
+		"A519 Invader Close Support Starfighter"
+		"A519 Invader Close Support Starfighter (Bay)"
+		"AA-9 Coruscant Freighter"
+		"AA-9 Coruscant Freighter (Refugee)"
+		"Action VI Transport"
+		"Action VI Transport (Maroon)"
+		"Action VI Transport (Stripe)"
+		"AEG-77 Vigo"
+		"AEG-77 Vigo (Modified)"
+		"Aggressor Assault Fighter" 4
+		"Aggressor Assault Fighter (Bay)"
+		"Aggressor Star Destroyer"
+		"Ajuur Heavy Cruiser"
+		"ARC-170 Starfighter (Jsec)"
+		"ARC-170 Starfighter (Jsec) (Bay)"
+		"Aurek Tactical Strike Fighter"
+		"Aurek Tactical Strike Fighter (Bay)"
+		"Aurra Sing's Blockade Runner"
+		"Aurra Sing's Fighter Runner"
+		"Auzituck Anti-Slaver Gunship"
+		"Azalus Hutt Dreadnought"
+		"B28 Extinction Bomber"
+		"B28 Extinction Bomber (Bay)"
+		"Basilisk War Droid"
+		"Baudo Star Yacht"
+		"Belbullab-22 Starfighter"
+		"Belbullab-22 Starfighter (Bay)"
+		"Besh-type Personal Starfighter"
+		"Besh-type Personal Starfighter (Bay)"
+		"Beskad Cruiser MkII"
+		"Bespin Bandit"
+		"Beta Battle Cruiser"
+		"BFF-1 Bulk Freighter" 5
+		"Blitz Assault Bomber"
+		"Bothan Frigate"
+		"Broadside cruiser kdb-1"
+		"Brute Hutt Support Corvette"
+		"BT7 Thunderclap"
+		"Bulwark Support Frigate"
+		"C-3 Passenger Liner"
+		"Cargo Ferry"
+		"CD-710 Heavy Destroyer"
+		"Centurion Battlecruiser"
+		"CloakShape Fighter" 5
+		"CloakShape Fighter (Bay)"
+		"CloakShape Fighter (New)"
+		"CloakShape Fighter (New) (Bay)"
+		"Conqueror Assault Ship"
+		"Constable Pirate Corvette"
+		"Container Transport"
+		"Crescent-X9 Heavy Courier"
+		"Crimson Axe"
+		"C-ROC Gozanti Cruiser"
+		"C-ROC Gozanti Cruiser (Orange)"
+		"Crusader Corvette" 3
+		"CSA ChaseMaster"
+		"CT-11 Space Tug"
+		"CT-11 Space Tug (Bay)"
+		"D5-Mantis Patrol Craft"
+		"D5-Mantis Patrol Craft (Gold)"
+		"Dart Gunship"
+		"Davaab-type Starfighter"
+		"Davaab-type Starfighter (Bay)"
+		"Defender Corvette"
+		"Delaya Courier"
+		"Delta JV-7 Shuttle"
+		"Dornean Gunship" 3
+		"D-Type Trifoil Starfighter"
+		"D-Type Trifoil Starfighter (Bay)"
+		"Dusty Duck"
+		"Dynamic Freighter"
+		"Dynamic Freighter (Old)"
+		"EF76 Nebulon-B Frigate (Jsec)"
+		"Empress Super Freighter"
+		"Eternal Battlecruiser"
+		"Fang Fighter" 10
+		"Fang Fighter (Bay)"
+		"Fang Fighter Black"
+		"Fang Fighter Black (Bay)"
+		"Ferryboat Liner"
+		"Firespray-31 Patrol Craft (B)"
+		"Firespray-31 Patrol Craft"
+		"Firespray-31 Patrol Craft (W)"
+		"Flarestar Attack Shuttle"
+		"Foray Blockade Runner"
+		"FT-6 Pike Starfighter"
+		"FT-6 Pike Starfighter (Bay)"
+		"FT-7B Clarion Starfighter"
+		"FT-7B Clarion Starfighter (Bay)"
+		"Fury Sith Imperial Interceptor"
+		"G-1A Starfighter"
+		"G-1A Starfighter (Bay)"
+		"G1-M4-C Dunelizard Fighter" 5
+		"G1-M4-C Dunelizard Fighter (Bay)"
+		"G1-M4-C Dunelizard Fighter 2"
+		"G1-M4-C Dunelizard Fighter 2 (Bay)"
+		"G1-M4-C Dunelizard Fighter 3"
+		"G1-M4-C Dunelizard Fighter 3 (Bay)"
+		"G-400 Starfighter"
+		"General Freighter"
+		"Ghtroc Class 720 Freighter"
+		"Gozanti Cruiser" 10
+		"Gozanti Cruiser (Carrier)"
+		"Gozanti Cruiser (Black Sun)"
+		"Gozanti Cruiser (Carrier) (Black Sun)"
+		"GR-75 Transport (Jsec)"
+		"G-Type Light Shuttle"
+		"GX1 Lantillian Short Hauler" 3
+		"GX1 Lantillian Short Hauler (Diplomatic)"
+		"GX1 Lantillian Short Hauler (Phoenix)"
+		"G-X1 Onslaught"
+		"G-X1 Onslaught (Bay)"
+		"H-2 Executive Shuttle"
+		"Hammerhead Cruiser"
+		"Hapan Battle Dragon" 2
+		"Harrower Dreadnought"
+		"HCT-2001 Dragonboat Reugeot 905 Freighter"
+		"Heavy Lifter"
+		"Helot Medium Space Transport"
+		"Herald Shuttle"
+		"Heraklon Support Frigate" 3
+		"HWK-290 Light Freighter (Modified)"
+		"HWK-290 Light Freighter (Stock)"
+		"I4 Ioniser Starfighter"
+		"I4 Ioniser Starfighter (Bay)"
+		"IL-5 Ocula Starfighter"
+		"IL-5 Ocula Starfighter (Bay)"
+		"Inexpugnable Tactical Command Ship"
+		"Interceptor Frigate" 2
+		"Interdictor Sith Cruiser"
+		"Invincible Dreadnaught Heavy Cruiser"
+		"Iradia Corvette"
+		"IRD Starfighter"
+		"IRD Starfighter (Bay)"
+		"Ixiyen Fast Attack Craft" 5
+		"Ixiyen Fast Attack Craft (Bay)"
+		"K-52 Strongarm Demolisher"
+		"Kandosii-type Dreadnought"
+		"Keldabe Battleship"
+		"Kihraxz Assault Fighter" 5
+		"Kihraxz Assault Fighter (Bay)"
+		"Kom'rk Fighter"
+		"Krayt Dragon Ship"
+		"KR-TB Doomtreader"
+		"KT-400 Military Droid Carrier"
+		"KT-600 Military Transport"
+		"Lancer Pursuit Craft"
+		"Lancer Pursuit Craft (B)"
+		"Lancer Pursuit Craft (P)"
+		"Lethisk Armed Freighter"
+		"Liberator Cruiser" 2
+		"Liberator Fighter"
+		"Liberator Fighter (Bay)"
+		"Liberator Fighter (Modified)"
+		"Liberator Fighter (Modified) (Bay)"
+		"Lok Revenants Assault Fighter"
+		"M3-A Scyk Fighter B" 10
+		"M3-A Scyk Fighter B (Bay)"
+		"M3-A Scyk Fighter"
+		"M3-A Scyk Fighter (Bay)"
+		"M3-A Scyk Fighter 2"
+		"M3-A Scyk Fighter 2 (Bay)"
+		"M12-L Kimogila Heavy Fighter"
+		"M12-L Kimogila Heavy Fighter (Bay)"
+		"M12-L Kimogila Heavy Fighter 2"
+		"M12-L Kimogila Heavy Fighter 2 (Bay)"
+		"M22-T Krayt Gunship"
+		"M22-T Krayt Gunship (Bay)"
+		"Mareel Fighter"
+		"Mareel Fighter (Bay)"
+		"Miy'til Starfighter"
+		"Miy'til Starfighter (Bay)"
+		"Mobquet MB-C1 Medium Transport" 5
+		"Mobquet MB-C1 Medium Transport (Starhook Ten)"
+		"Modular Conveyor" 3
+		"Muurian Transport"
+		"N-1 Starfighter" 10
+		"N-1 Starfighter (Bay)"
+		"N-1 Starfighter (Jsec)"
+		"N-1 Starfighter (Jsec) (Bay)"
+		"Nar Shaddaa Destroyer"
+		"NB-1S Royal Bomber"
+		"NB-1S Royal Bomber (Bay)"
+		"Nimbus V-wing Starfighter (Jsec)"
+		"Nimbus V-wing Starfighter (Jsec) (Bay)"
+		"Nova Battle Cruiser"
+		"Old Republic Diplomatic Transport"
+		"Pinook Fighter" 10
+		"Pinook Fighter (Bay)"
+		"Planetary Defender" 10
+		"Planetary Defender (Bay)"
+		"Ranger Gunboat"
+		"R60 T-Wing" 8
+		"R60 T-Wing (Bay)"
+		"R60 T-Wing (Prototype)"
+		"R60 T-Wing (Prototype) (Bay)"
+		"ST-70 Assault Ship"
+		"Sabaoth Cavik Toth's Starfighter"
+		"Sabaoth Cavik Toth's Starfighter (Bay)"
+		"SCT Scout Craft"
+		"Scurrg H-6 Prototype Bomber" 5
+		"Scurrg H-6 Prototype Bomber (Bay)"
+		"Scurrg H-6 Prototype Bomber (Black Sun Orange)"
+		"Scurrg H-6 Prototype Bomber (Black Sun Orange) (Bay)"
+		"Scurrg H-6 Prototype Bomber (Black Sun Red)"
+		"Scurrg H-6 Prototype Bomber (Black Sun Red) (Bay)"
+		"Scurrg H-6 Prototype Bomber (Maroon)"
+		"Scurrg H-6 Prototype Bomber (Maroon) (Bay)"
+		"StarViper Attack Platform" 10
+		"Taylander Shuttle"
+		"Teroch Mandalorian Cruiser"
+		"Toscan 8-Q Starfighter" 10
+		"Toscan 8-Q Starfighter (Bay)"
+		"Ugly Twin Tie X-Wing"
+		"Ugly Twin Tie X-Wing (Bay)"
+		"Ugly Tie Y-Wing"
+		"Ugly Tie Y-Wing (Bay)"
+		"Ugly Tie X-Wing"
+		"Ugly Tie X-Wing (Bay)"
+		"Ugly Tie Headhunter"
+		"Ugly Tie Headhunter (Bay)"
+		"Ugly X-Ceptor"
+		"Ugly X-Ceptor (Bay)"
+		"Ugly X-Fighter"
+		"Ugly X-Fighter (Bay)"
+		"Ugly Y-Interceptor"
+		"Ugly Y-Interceptor (Bay)"
+		"Vaksai Assault Fighter" 5
+		"Vaksai Assault Fighter (Bay)"
+		"VCX-100 Light Freighter"
+		"VCX-series Auxiliary Starfighter"
+		"VCX-series Auxiliary Starfighter (Bay)"
+		"Venator Star Destroyer (Black)"
+		"Xiytiar Transport" 5
+		"XS Stock Light Freighter"
+		"YG-4210 Freighter"
+		"YT-1300 Light Freighter"
+		"YT-1300 Light Freighter (Millennium Falcon)"
+		"YT-1300 Light Freighter (R)"
+		"YT-1350XT Light Freighter"
+		"YZ-2200 Heavy Transport"
+		"Zakuul Shuttle"
+		"Zenith Cruiser"
+		"Purrgil (Corvette)" 5
+		"Purrgil (Transport)"
+		"Purrgil (Bay)" 5
+		"Acclamator Assault Ship" 2
+		"ARC-170 Starfighter" 5
+		"ARC-170 Starfighter (Bay)"
+		"ARC-170 Starfighter (R)"
+		"ARC-170 Starfighter (R) (Bay)"
+		"BTL-B Y-Wing" 5
+		"BTL-B Y-Wing (Bay)"
+		"Consular Cruiser (Aurek)"
+		"Consular Cruiser (Besh)"
+		"Consular Cruiser (Cresh)"
+		"CR25 Carrier"
+		"Delta-7 Aethersprite Interceptor"
+		"Delta-7 Aethersprite Interceptor (Customised)"
+		"Eta-2 Actis Interceptor"
+		"Eta-2 Actis Interceptor (Bay)"
+		"Eta-2 Actis Interceptor (R)"
+		"Eta-2 Actis Interceptor (R) (Bay)"
+		"Eta-2 Actis Interceptor (M)"
+		"Eta-2 Actis Interceptor (M) (Bay)"
+		"Eta Shuttle"
+		"G9 Rigger Light Freighter"
+		"JumpMaster 5000 Long Range Scout"
+		"LAAT/c Gunship"
+		"LAAT/i Gunship"
+		"Nimbus V-wing Starfighter"
+		"Nimbus V-wing Starfighter (Bay)"
+		"Pelta Frigate"
+		"Venator Star Destroyer"
+		"Bulwark Mark I Battleship"
+		"Bulwark Mark II Battleship"
+		"C-9979 Landing Craft"
+		"Captor Heavy Munitions Cruiser"
+		"Diamond Cruiser" 2
+		"Droid Tri-Fighter"
+		"Droid Tri-Fighter (Bay)"
+		"Droid Tri-Fighter (Yellow)"
+		"Droid Tri-Fighter (Yellow) (Bay)"
+		"Geonosian Corvette" 2
+		"Ginivex Starfighter"
+		"Ginivex Starfighter (Bay)"
+		"Gozanti Cruiser (CIS)"
+		"Gozanti Cruiser (Carrier) (CIS)"
+		"Hoersch-Kessel Drive Core Ship"
+		"Hardcell Interstellar Transport" 2
+		"HMP Droid Gunship"
+		"Hyena Bomber"
+		"Hyena Bomber (Bay)"
+		"Lucrehulk Battleship"
+		"Mankvim-418 Interceptor" 5
+		"Mankvim-418 Interceptor (Bay)"
+		"Maxillipede Transport Shuttle"
+		"Mechanised Assault Flyer"
+		"Munificent Star Frigate" 2
+		"Nantex Territorial Defence Starfighter"
+		"Nantex Territorial Defence Starfighter (Bay)"
+		"Providence Cruiser (Stock)"
+		"Providence Cruiser (Dreadnought)"
+		"Recusant Light Destroyer" 2
+		"Recusant Light Destroyer (Dreadnought)"
+		"Subjugator Heavy Cruiser"
+		"Umbaran Starfighter" 3
+		"Umbaran Starfighter (Bay)"
+		"Vulture Droid Starfighter" 20
+		"Vulture Droid Starfighter (Bay)"
+		"E-7 E-Wing" 3
+		"E-7 E-Wing (Bay)"
+		"E-7 E-Wing (R)"
+		"E-7 E-Wing (R) (Bay)"
+		"MC80B Star Cruiser" 2
+		"Starhawk Battlecruiser Mark I" 2
+		"Starhawk Battlecruiser (Prototype)"

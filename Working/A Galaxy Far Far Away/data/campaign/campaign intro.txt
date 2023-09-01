@@ -1,0 +1,1037 @@
+mission "AGFFA Campaign – Intro 0"
+	name "Leaving Jelucan"
+	description "Leaving Jelucan"
+	landing
+	clearance "Clearance has been granted."
+	stopover "Carosi VI"
+	to offer
+		has "agffa campaign start"
+	source
+		system "Jelucan"
+	destination
+		planet "Carosi VIII"
+	on offer
+		conversation
+			`AGFFA Campaign – Intro 0. Enlist in the Imperial Navy?`
+			choice
+				`	(Join the Empire)`
+					accept
+				`	(Decline)`
+					decline
+	on accept
+		event "Intro 0 Wormhole – Open"
+		# give ship "TIE/LN Fighter (Bay)" "Cadet 4"
+	on enter "Carosus"
+		conversation
+			`As the Gozanti enters the Carosus system and your fighters undock, the Imperial Gozanti captain calls to you over the comm channel. "Welcome to the Carosus system, your new home for the foreseeable future. There are two Imperial Academies in this system, the Kwymar Sector Imperial Academy located on Carosi VIII and the Kwymar Elite Naval Academy located on Carosi VI. The cadet welcome ceremony is on Carosi VI, so hail the planet for clearance to land. Any questions?"`
+			choice
+				`	"Which Academy will we be training at?"`
+					goto whichacademy
+				`	"No questions sir."`
+					goto end
+			label whichacademy
+			`	The officer scoffs. "You will be training at the Sector Imperial Academy on Carosi VIII for the time being, which is not where the cadet ceremony is. If you show promise during your training, you may be transferred to the Elite Naval Academy."`
+			choice
+				`	(Next)`
+					goto end
+			label end
+			`	Hail Carosi VI for clearance to land, and prepare for debriefing.`
+	on decline
+		dialog "You have declined an essential AGFFA campaign mission. If you want to complete the storyline, revert to the autosave or another earlier snapshot of the game."
+	on visit
+		conversation
+			`"What are you doing here? The cadet welcome ceremony is at the Kwymar Elite Naval Academy located on Carosi VI! This is Carosi VIII! Did you hail Carosi VI for clearance to land?`
+			choice
+				`	"Uhh, no?"`
+					goto snarkyresponse
+				`	(Leave in embarrassment)`
+					launch
+			label snarkyresponse
+			`	The officer stares at you for a few seconds. "Well what are you waiting for, cadet? Get moving!`
+				launch
+	on stopover
+		event "Intro 0 Wormhole – Close"
+		conversation
+			`"Welcome to the Kwymar Elite Imperial Academy. While new cadets such as yourselves are trained at the Sector Imperial Academy rather than here, we like to give you something to strive for."`
+			choice
+				`	(Next)`
+			`Conversation with fellow TIE cadets. Make friends with a few? Meet instructor Commander ___ who gives a description of Imperial training.`
+			choice
+				`	(Option 1)`
+				`	(Option 2)`
+			`Time to leave for Carosi VIII, the location of the Elite Academy's sister Academy.`
+				launch
+	on complete
+		conversation
+			`Report to the spaceport for your first training exercise.`
+
+
+event "Intro 0 Wormhole – Open"
+	system Jelucan
+		pos 6695.82 -8261.15
+		government "Galactic Empire"
+		habitable 719.96
+		music ambient/wait
+		arrival 1000
+		link Telos
+		link Seelos
+		asteroids "small rock" 7 3.224
+		asteroids "medium rock" 29 6.812
+		asteroids "large rock" 93 7.176
+		asteroids "small metal" 46 3.12
+		asteroids "medium metal" 9 7.02
+		asteroids "large metal" 12 3.796
+		object
+			sprite star/k0
+			distance 30.1337
+			period 13.37
+			offset 180
+		object
+			sprite star/m4
+			distance 62.8663
+			period 13.37
+		object
+			sprite planet/rock1
+			distance 256.106
+			period 61.0993
+		object Jelucan
+			sprite planet/jelucan
+			distance 481.266
+			period 157.392
+		object "Gozanti Assault Cruiser"
+			sprite campaign/gozantiassaultcruiser
+			distance 620
+			period 157.392
+			offset 90
+		object
+			sprite planet/gas8
+			distance 1232.83
+			period 645.296
+			object
+				sprite planet/oberon
+				distance 182
+				period 13.0703
+			object
+				sprite planet/tethys
+				distance 258
+				period 22.06
+			object
+				sprite planet/dust5
+				distance 400
+				period 42.586
+		object
+			sprite planet/gas6
+			distance 2240.08
+			period 1580.52
+			object
+				sprite planet/ice7
+				distance 281
+				period 12.0316
+	system Carosus
+		pos 6637.24 -8280.77
+		government "Galactic Empire"
+		habitable 973.36
+		fleet imperialpatrol 3000
+		link Telos
+		object
+			sprite star/m-giant
+			period 17.9179
+		object "Carosi VI"
+			sprite planet/desert0
+			distance 300
+			period 64.0093
+		object
+			sprite planet/desert0-b
+			distance 500
+			period 100
+		object "Carosi VIII"
+			sprite planet/forest4-b
+			distance 800
+			period 163.933
+		object
+			sprite planet/desert8
+			distance 1300
+			period 240
+			offset 90
+		object
+			sprite planet/gas10
+			distance 1500
+			period 404.957
+			object
+				sprite planet/lava0
+				distance 218
+				period 16.9427
+		object "Gozanti Assault Cruiser"
+			sprite campaign/gozantiassaultcruiser
+			distance 1800
+			period 800
+		object
+			sprite planet/gas3
+			distance 2056.9
+			period 1196.03
+			object
+				sprite planet/dust0
+				distance 279
+				period 11.9034
+			object
+				sprite planet/ice8
+				distance 355
+				period 17.0847
+	planet "Gozanti Assault Cruiser"
+		description ""
+		spaceport ""
+		government "Inaccessible Wormhole"
+
+
+event "Intro 0 Wormhole – Close"
+	system Jelucan
+		pos 6695.82 -8261.15
+		government "Galactic Empire"
+		habitable 719.96
+		music ambient/wait
+		arrival 1000
+		link Telos
+		link Seelos
+		asteroids "small rock" 7 3.224
+		asteroids "medium rock" 29 6.812
+		asteroids "large rock" 93 7.176
+		asteroids "small metal" 46 3.12
+		asteroids "medium metal" 9 7.02
+		asteroids "large metal" 12 3.796
+		object
+			sprite star/k0
+			distance 30.1337
+			period 13.37
+			offset 180
+		object
+			sprite star/m4
+			distance 62.8663
+			period 13.37
+		object
+			sprite planet/rock1
+			distance 256.106
+			period 61.0993
+		object Jelucan
+			sprite planet/jelucan
+			distance 481.266
+			period 157.392
+		object
+			sprite planet/gas8
+			distance 1232.83
+			period 645.296
+			object
+				sprite planet/oberon
+				distance 182
+				period 13.0703
+			object
+				sprite planet/tethys
+				distance 258
+				period 22.06
+			object
+				sprite planet/dust5
+				distance 400
+				period 42.586
+		object
+			sprite planet/gas6
+			distance 2240.08
+			period 1580.52
+			object
+				sprite planet/ice7
+				distance 281
+				period 12.0316
+	system Carosus
+		pos 6637.24 -8280.77
+		government "Galactic Empire"
+		habitable 973.36
+		fleet imperialpatrol 3000
+		link Telos
+		object
+			sprite star/m-giant
+			period 17.9179
+		object "Carosi VI"
+			sprite planet/desert0
+			distance 300
+			period 64.0093
+		object
+			sprite planet/desert0-b
+			distance 500
+			period 100
+		object "Carosi VIII"
+			sprite planet/forest4-b
+			distance 800
+			period 163.933
+		object
+			sprite planet/desert8
+			distance 1300
+			period 240
+			offset 90
+		object
+			sprite planet/gas10
+			distance 1500
+			period 404.957
+			object
+				sprite planet/lava0
+				distance 218
+				period 16.9427
+		object
+			sprite planet/gas3
+			distance 2056.9
+			period 1196.03
+			object
+				sprite planet/dust0
+				distance 279
+				period 11.9034
+			object
+				sprite planet/ice8
+				distance 355
+				period 17.0847
+		
+
+ship "TIE/LN Fighter (Bay)" "TIE/LN Fighter (Bay) Plot Armour"
+	sprite "ship/tielnfighter"
+	thumbnail "thumbnail/tielnfighter"
+	attributes
+		licenses
+			Imperial
+		category "Starfighter (Bay) "
+		"absolute threshold" 20
+		"cost" 60000
+		"shields" 0
+		"hull" 2400
+		"required crew" 1
+		"bunks" 1
+		"mass" 20
+		"drag" 1.08
+		"heat dissipation" .9
+		"outfit space" 12
+		"weapon capacity" 2
+		"engine capacity" 5
+		"hullslot capacity" 1
+		weapon
+			"blast radius" 12
+			"shield damage" 120
+			"hull damage" 60
+			"hit force" 180
+	outfits
+		"GI1 Laser Cannon" 2
+		
+		"P1 Power Converter"
+		"C1 Coolant System"
+		"HH0 Hull Slot"
+		"HH1 Ferroceramic Hull"
+		"Plot Armour"
+
+		"I1 Sublight Engine"
+		
+	engine -2.5 2.5
+	engine 2.5 2.5
+	gun -3 -2 "GI1 Laser Cannon"
+	gun 3 -2 "GI1 Laser Cannon"
+	explode "large explosion" 3
+
+mission "AGFFA Campaign – Intro 1"
+	name "First Training Mission"
+	description "First Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 0: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A (Unarmed)" "Mine A1"
+		ship "Mine Type A (Unarmed)" "Mine A2"
+		ship "Mine Type A (Unarmed)" "Mine A3"
+		ship "Mine Type A (Unarmed)" "Mine A4"
+		ship "Mine Type A (Unarmed)" "Mine A5"
+		ship "Mine Type A (Unarmed)" "Mine A6"
+		ship "Mine Type A (Unarmed)" "Mine A7"
+		ship "Mine Type A (Unarmed)" "Mine A8"
+		ship "Mine Type A (Unarmed)" "Mine A9"
+		ship "Mine Type A (Unarmed)" "Mine A10"
+		ship "Mine Type A (Unarmed)" "Mine A11"
+		ship "Mine Type A (Unarmed)" "Mine A12"
+		dialog "The mines have been destroyed. Return to base."
+	on offer
+		conversation
+			`Time for your first training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro1"
+			`You will be facing a single kind of mine, which are unarmed. These are easy to destroy.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive first mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 2"
+	name "Second Training Mission"
+	description "Second Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 1: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type A" "Mine A10"
+		dialog "The mines have been destroyed. Return to base."
+	on offer
+		conversation
+			`Time for your second training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro2"
+			`You will be facing a single kind of mine, which are armed with ion cannons. These are easy to destroy.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive second mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 3"
+	name "Third Training Mission"
+	description "Third Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 2: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type B" "Mine B10"
+		dialog "The mines have been destroyed. Return to base."
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing a single kind of mine, which are armed with laser cannons. These are easy to destroy.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 4"
+	name "Fourth Training Mission"
+	description "Fourth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 3: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Mine Type C" "Mine C3"
+		ship "Mine Type C" "Mine C4"
+		ship "Mine Type C" "Mine C5"
+		ship "Mine Type C" "Mine C6"
+		ship "Mine Type C" "Mine C7"
+		ship "Mine Type C" "Mine C8"
+		ship "Mine Type C" "Mine C9"
+		ship "Mine Type C" "Mine C10"
+		dialog "The mines have been destroyed. Return to base."
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing a single kind of mine, which are armed with laser cannons and homing missiles. These are easy to destroy.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 5"
+	name "Fifth Training Mission"
+	description "Fifth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 4: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Vulture Droid Starfighter" "Vulture 1"
+		dialog "The vulture droid has been destroyed. Return to base."
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing a single vulture droid. This fighter is nimble and more difficult to destroy than the stationary targets of previous training missions.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive mission. Report to the spaceport for your next training exercise. From now on you will fly training missions in your designated cadet squad. `
+
+mission "AGFFA Campaign – Intro 6"
+	name "Sixth Training Mission"
+	description "Sixth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 5: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Wandrau Ion Battery" "Wandrau I1"
+		ship "Wandrau Ion Battery" "Wandrau I2"
+		ship "Wandrau Ion Battery" "Wandrau I3"
+		ship "Wandrau Laser Battery" "Wandrau L1"
+		ship "Wandrau Laser Battery" "Wandrau L2"
+		ship "Wandrau Laser Battery" "Wandrau L3"
+		dialog "The wandrau batteries have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing two kinds of wandrau batteries, one with laser cannons and the other with ion cannons. These batteries are relatively difficult to destroy, having high shield but low hull values. You will be flying in a squad of 4, a squad which you'll remain in for the duration of your training. Get used to working together.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 7"
+	name "Seventh Training Mission"
+	description "Seventh Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 6: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Gun Emplacement" "Arakyd E1"
+		ship "Gun Emplacement (Large)" "Arakyd LE1"
+		ship "Gun Emplacement (Large/Mod)" "Arakyd LME1"
+		dialog "The gun emplacements have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing three kinds of gun emplacements, each one being more dangerous than the previous. These emplacements are difficult to destroy, having a number of turrets each.  You will be flying in your same squad of 4.`
+				launch
+	on complete
+		dialog `Success!`
+		conversation
+			`That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 8"
+	name "Eighth Training Mission"
+	description "Eighth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 7: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Vulture Droid Starfighter" "Vulture 1"
+		ship "Vulture Droid Starfighter" "Vulture 2"
+		dialog "The mines have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing a number of vulture droids. You will be flying in your same squad of 4.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 9"
+	name "Ninth Training Mission"
+	description "Ninth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 8: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type A" "Mine A10"
+		ship "Mine Type A" "Mine A11"
+		ship "Mine Type A" "Mine A12"
+		ship "Mine Type A" "Mine A13"
+		ship "Mine Type A" "Mine A14"
+		ship "Mine Type A" "Mine A15"
+		ship "Mine Type A" "Mine A16"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type B" "Mine B10"
+		ship "Mine Type B" "Mine B11"
+		ship "Mine Type B" "Mine B12"
+		ship "Mine Type B" "Mine B13"
+		ship "Mine Type B" "Mine B14"
+		ship "Mine Type B" "Mine B15"
+		ship "Mine Type B" "Mine B16"
+		dialog "The mines have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing two types of mines that you have encountered already (ion and laser variants). You will be flying in your same squad of 4.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 10"
+	name "Tenth Training Mission"
+	description "Tenth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 9: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type A" "Mine A10"
+		ship "Mine Type A" "Mine A11"
+		ship "Mine Type A" "Mine A12"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type B" "Mine B10"
+		ship "Mine Type B" "Mine B11"
+		ship "Mine Type B" "Mine B12"
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Mine Type C" "Mine C3"
+		ship "Mine Type C" "Mine C4"
+		ship "Mine Type C" "Mine C5"
+		ship "Mine Type C" "Mine C6"
+		ship "Mine Type C" "Mine C7"
+		ship "Mine Type C" "Mine C8"
+		ship "Mine Type C" "Mine C9"
+		ship "Mine Type C" "Mine C10"
+		ship "Mine Type C" "Mine C11"
+		ship "Mine Type C" "Mine C12"
+		dialog "The mines have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing all three types of mines that you have encountered already (ion, laser and homing missile variants). You will be flying in your same squad of 4.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 11"
+	name "Eleventh Training Mission"
+	description "Eleventh Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 10: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type A" "Mine A10"
+		ship "Mine Type A" "Mine A11"
+		ship "Mine Type A" "Mine A12"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type B" "Mine B10"
+		ship "Mine Type B" "Mine B11"
+		ship "Mine Type B" "Mine B12"
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Mine Type C" "Mine C3"
+		ship "Mine Type C" "Mine C4"
+		ship "Mine Type C" "Mine C5"
+		ship "Mine Type C" "Mine C6"
+		ship "Mine Type C" "Mine C7"
+		ship "Mine Type C" "Mine C8"
+		ship "Mine Type C" "Mine C9"
+		ship "Mine Type C" "Mine C10"
+		ship "Mine Type C" "Mine C11"
+		ship "Mine Type C" "Mine C12"
+		ship "Wandrau Ion Battery" "Wandrau I1"
+		ship "Wandrau Ion Battery" "Wandrau I2"
+		ship "Wandrau Ion Battery" "Wandrau I3"
+		ship "Wandrau Laser Battery" "Wandrau L1"
+		ship "Wandrau Laser Battery" "Wandrau L2"
+		ship "Wandrau Laser Battery" "Wandrau L3"
+		dialog "The targets have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing all three types of mines that you have encountered already (ion, laser and homing missile variants), along with wandrau batteries. You will be flying in your same squad of 4.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 12"
+	name "Twelth Training Mission"
+	description "Twelth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 11: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Mine Type C" "Mine C3"
+		ship "Mine Type C" "Mine C4"
+		ship "Mine Type C" "Mine C5"
+		ship "Mine Type C" "Mine C6"
+		ship "Mine Type C" "Mine C7"
+		ship "Mine Type C" "Mine C8"
+		ship "Mine Type C" "Mine C9"
+		ship "Wandrau Ion Battery" "Wandrau I1"
+		ship "Wandrau Laser Battery" "Wandrau L1"
+		ship "Gun Emplacement" "Arakyd E1"
+		ship "Gun Emplacement (Large)" "Arakyd LE1"
+		dialog "The targets have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`You will be facing all three types of mines that you have encountered already (ion, laser and homing missile variants), along with wandrau batteries. You will be flying in your same squad of 4.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 13"
+	name "Thirteenth Training Mission"
+	description "Thirteenth Training Mission"
+	source
+		planet "Carosi VIII"
+	to offer
+		has "AGFFA Campaign – Intro 12: done"
+	npc kill
+		government "Target Practice (Anti-Imperial)"
+		personality heroic vindictive staying
+		ship "Mine Type A" "Mine A1"
+		ship "Mine Type A" "Mine A2"
+		ship "Mine Type A" "Mine A3"
+		ship "Mine Type A" "Mine A4"
+		ship "Mine Type A" "Mine A5"
+		ship "Mine Type A" "Mine A6"
+		ship "Mine Type A" "Mine A7"
+		ship "Mine Type A" "Mine A8"
+		ship "Mine Type A" "Mine A9"
+		ship "Mine Type A" "Mine A10"
+		ship "Mine Type A" "Mine A11"
+		ship "Mine Type A" "Mine A12"
+		ship "Mine Type A" "Mine A13"
+		ship "Mine Type A" "Mine A14"
+		ship "Mine Type B" "Mine B1"
+		ship "Mine Type B" "Mine B2"
+		ship "Mine Type B" "Mine B3"
+		ship "Mine Type B" "Mine B4"
+		ship "Mine Type B" "Mine B5"
+		ship "Mine Type B" "Mine B6"
+		ship "Mine Type B" "Mine B7"
+		ship "Mine Type B" "Mine B8"
+		ship "Mine Type B" "Mine B9"
+		ship "Mine Type B" "Mine B10"
+		ship "Mine Type B" "Mine B11"
+		ship "Mine Type B" "Mine B12"
+		ship "Mine Type B" "Mine B13"
+		ship "Mine Type B" "Mine B14"
+		ship "Mine Type C" "Mine C1"
+		ship "Mine Type C" "Mine C2"
+		ship "Mine Type C" "Mine C3"
+		ship "Mine Type C" "Mine C4"
+		ship "Mine Type C" "Mine C5"
+		ship "Mine Type C" "Mine C6"
+		ship "Mine Type C" "Mine C7"
+		ship "Mine Type C" "Mine C8"
+		ship "Mine Type C" "Mine C9"
+		ship "Mine Type C" "Mine C10"
+		ship "Mine Type C" "Mine C11"
+		ship "Mine Type C" "Mine C12"
+		ship "Mine Type C" "Mine C13"
+		ship "Mine Type C" "Mine C14"
+		ship "Wandrau Ion Battery" "Wandrau I1"
+		ship "Wandrau Ion Battery" "Wandrau I2"
+		ship "Wandrau Laser Battery" "Wandrau L1"
+		ship "Wandrau Laser Battery" "Wandrau L2"
+		ship "Gun Emplacement" "Arakyd E1"
+		ship "Gun Emplacement" "Arakyd E2"
+		ship "Gun Emplacement (Large)" "Arakyd LE1"
+		ship "Gun Emplacement (Large)" "Arakyd LE2"
+		ship "Gun Emplacement (Large/Mod)" "Arakyd LME1"
+		ship "Gun Emplacement (Large/Mod)" "Arakyd LME2"
+		ship "Vulture Droid Starfighter" "Vulture 1"
+		ship "Vulture Droid Starfighter" "Vulture 2"
+		ship "Vulture Droid Starfighter" "Vulture 3"
+		ship "Vulture Droid Starfighter" "Vulture 4"
+		ship "Vulture Droid Starfighter" "Vulture 5"
+		ship "Vulture Droid Starfighter" "Vulture 6"
+		dialog "The targets have been destroyed. Return to base."
+	npc
+		personality escort heroic disables
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 1 (Davin)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 2 (Vince)"
+		ship "TIE/LN Fighter (Bay) Plot Armour" "Cadet 3 (Elara)"
+		dialog "Your fellow cadets have been killed   :(("
+	npc
+		personality escort heroic disables waiting
+			confusion 90
+		government "Galactic Empire (Cadet)"
+		ship "TIE/LN Fighter (Bay)" "Cadet 1"
+		ship "TIE/LN Fighter (Bay)" "Cadet 2"
+		ship "TIE/LN Fighter (Bay)" "Cadet 3"
+		ship "TIE/LN Fighter (Bay)" "Cadet 4"
+		ship "TIE/LN Fighter (Bay)" "Cadet 5"
+		ship "TIE/LN Fighter (Bay)" "Cadet 6"
+		ship "TIE/LN Fighter (Bay)" "Cadet 7"
+		ship "TIE/LN Fighter (Bay)" "Cadet 8"
+		ship "TIE/LN Fighter (Bay)" "Cadet 9"
+		ship "TIE/LN Fighter (Bay)" "Cadet 10"
+		ship "TIE/LN Fighter (Bay)" "Cadet 11"
+		ship "TIE/LN Fighter (Bay)" "Cadet 12"
+		ship "TIE/LN Fighter (Bay)" "Cadet 13"
+		ship "TIE/LN Fighter (Bay)" "Cadet 14"
+		ship "TIE/LN Fighter (Bay)" "Cadet 15"
+		ship "TIE/LN Fighter (Bay)" "Cadet 16"
+	on offer
+		conversation
+			`Time for your next training exercise. Ready for the briefing?`
+			choice
+				`	(Yes)`
+				`	(Not yet)`
+					defer
+			scene "campaign/intro3"
+			`For your final training mission, you will be facing all three types of mines that you have encountered already (ion, laser and homing missile variants),  wandrau batteries, gun emplacements and vulture droids. You will be flying in your same squad of 4, and will be working alongside other cadet squads.`
+				launch
+	on complete
+		conversation
+			`Success. That was an impressive mission. Report to the spaceport for your next training exercise.`
+
+mission "AGFFA Campaign – Intro 14"
+	name "Graduation Ceremony at Imperial Academy"
+	description "Graduation Ceremony at Imperial Academy"
+	clearance "Clearance has been granted."
+	stopover "Carosi VI"
+	to offer
+		has "AGFFA Campaign – Intro 13: done"
+	source
+		planet "Carosi VIII"
+	destination
+		planet "Carosi VIII"
+	on offer
+		conversation
+			`Graduation ceremony is at the Kwymar Elite Imperial Academy on Carosi VI.`
+			choice
+				`	(Go)`
+					launch
+	on visit
+		conversation
+			`"What are you doing here? The graduation welcome ceremony is on the Corosi VI! Did you hail Carosi VI for clearance to land?`
+			choice
+				`	(Leave in embarrassment)`
+					launch
+	on stopover
+		conversation
+			`"Graduation ceremony. Blah blah blah.`
+			choice
+				`	(Next)`
+			`Conversation with other cadets.`
+			choice
+				`	(Option 1)`
+				`	(Option 2)`
+			`Time to return to Carosi VI.`
+				launch
+	on complete
+		conversation
+			`Report to the spaceport to receive your assignment details.`
