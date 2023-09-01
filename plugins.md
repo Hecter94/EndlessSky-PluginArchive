@@ -1166,9 +1166,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/automata.in.human.space/icon.png' height='100'></img><br>
 
 
-[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | 52.44 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.in.human.space/) <br>
+[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | 34.94 kb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.in.human.space/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
 >Brings jump drive equipped automata into human space after the wanderer campaign. 
 >You can find them where Korath ships in human space are usually found(ember waste and eastern syndicate). 
@@ -1176,12 +1176,20 @@ Author: zuckung | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>### automata in human space <br>
-(14 ship variants, 16 variants in 4 fleets)(made for 0.10.1) <br>
+<blockquote>### automata in human space
+<br>
 <br>
 Brings jump drive equipped automata into human space after the wanderer campaign. <br>
+<br>
 You can find them where Korath ships in human space are usually found(ember waste and eastern syndicate). <br>
 The chance to encounter previous Korath ships or automata is like 50/50. <br>
+<br>
+<br>
+2023-09-01<br>
+added more fleet variants <br>
+reworked readme <br>
+changed icon.png<br>
+
 </blockquote>
 </details>
 
@@ -1861,18 +1869,82 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/kor.efret.shipyard/icon.png' height='100'></img><br>
 
 
-[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 51.36 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
+[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.46 kb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
 >Adds a shipyard with the the three Kor Efret ships(Arch-Carrack, Charm-Shallop, Echo-Galleon) to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>### kor efret shipyard <br>
-(outfitter and shipyard added)(made for 0.10.1) <br>
+<blockquote>### kor.efret.shipyard
 <br>
-Adds a shipyard with the the three Kor Efret ships(Arch-Carrack, Charm-Shallop, Echo-Galleon) to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships. <br>
+<br>
+Adds a shipyard with the three Kor Efret ships to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships and some Korath Exiles outfits. <br>
+<br>
+<br>
+Available ships:<br>
+<ul> 
+<li>Arch-Carrack</li>
+<li>Charm-Shallop</li>
+<li>Echo-Galleon</li>
+</ul>
+<br>
+Available outfits:<br>
+<ul>
+<li>Digger Mining Beam</li>
+<li>Banisher Grav-Turret</li>
+<li>Warder Anti-Missile</li>
+<li>Grab-Strike Turret</li>
+<li>Fuel Processor</li>
+<li>Small Heat Shunt</li>
+<li>Large Heat Shunt</li>
+<li>Liquid Sodium Cooler</li>
+<li>Scram Drive</li>
+<li>System Core (Large)</li>
+<li>System Core (Medium)</li>
+<li>System Core (Small)</li>
+<li>Plasma Core</li>
+<li>Double Plasma Core</li>
+<li>Triple Plasma Core</li>
+<li>Afterburner (Asteroid Class)</li>
+<li>Afterburner (Comet Class)</li>
+<li>Afterburner (Lunar Class)</li>
+<li>Afterburner (Planetary Class)</li>
+<li>Afterburner (Stellar Class)</li>
+<li>Generator (Furnace Class)</li>
+<li>Generator (Candle Class)</li>
+<li>Generator (Inferno Class)</li>
+<li>Farves GP Hybrid Thruster</li>
+<li>Gaktem GP Hybrid Steering</li>
+<li>Gaktem GP Hybrid Thruster</li>
+<li>Nelmeb GP Hybrid Steering</li>
+<li>Nelmeb GP Hybrid Thruster</li>
+<li>Engine (Meteor Class)</li>
+<li>Bow Drive (Meteor Class)</li>
+<li>Reverser (Asteroid Class)</li>
+<li>Reverser (Comet Class)</li>
+<li>Reverser (Lunar Class)</li>
+<li>Reverser (Planetary Class)</li>
+<li>Reverser (Stellar Class)</li>
+<li>Thruster (Asteroid Class)</li>
+<li>Thruster (Comet Class)</li>
+<li>Thruster (Lunar Class)</li>
+<li>Thruster (Planetary Class)</li>
+<li>Thruster (Stellar Class)</li>
+<li>Steering (Asteroid Class)</li>
+<li>Steering (Comet Class)</li>
+<li>Steering (Lunar Class)</li>
+<li>Steering (Planetary Class)</li>
+<li>Steering (Stellar Class)</li>
+<li>Thermal Repeater Rifle</li>
+</ul>
+<br>
+<br>
+2023-xx-xx<br>
+added 28 korath outfits(no weapons)<br>
+added new icon.png<br>
+reworked readme<br>
 </blockquote>
 </details>
 
@@ -1994,9 +2066,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 11.49 kb | 2023-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-28) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
 >Adds several repeatable boarding missions.
 
@@ -2005,21 +2077,33 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### more boarding missions <br>
 <br>
 <br>
-Adds 27 boarding and assisting missions. Boarding Free Worlds, Republic, Syndicate, Militia, Pirates, Korath or Hai can trigger them. Bigger ships give higher rewards.<br>
+Adds 40 boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai or Hai Unfettered can trigger them. Bigger ships give higher rewards.<br>
 <br>
 <ul>
 <li> 7 Pirate boarding missions for credits<br>
   (by ship categories, 20% chance, 5.000 to 25.000 credits, repeatable)</li>
-<li> 4 Pirate boarding missions for an android<br>
+<li> 4 Pirate boarding missions for outfit<br>
   (by ship categories, 1-4% chance, outfit "NDR-114 Android" as reward, repeatable)</li>
-<li> 7 Human assisting boarding missions<br>
+<li> 7 Human assisting missions for credits<br>
   (by ship categories, 20% chance, 10.000 to 30.000 credits, repeatable)</li>
-<li> 7 Hai assisting boarding missions<br>
+<li> 7 Hai assisting missions for crecits<br>
   (by ship categories, 20% chance, 20.000 to 60.000 credits, repeatable)</li>
+<li> 5 Hai Unfettered assisting missions for credits<br>
+  (by ship categories, 20% chance, 30.000 to 90.000 credits, repeatable)</li>
+<li> 5 Hai Unfettered boarding missions for credits<br>
+  (by ship categories, 10% chance, 30.000 to 90.000 credits, repeatable)</li>
+<li> 3 Hai Unfettered boarding missions for outfit<br>
+  (by reward, 3% chance, outfit one of the 3 weapon prototypes, repeatable)</li>
 <li> 2 Korath boarding missions<br>
   (for the bigger ship categories, 2-3% chance, outfit "Cloaking Device" as reward, repeatable)</li>
 </ul>
 <br>
+<br>
+2023-09-01<br>
+added 5 hai unfettered assisting missions <br>
+added 5 hai unfettered boarding missions <br>
+added 3 hai unfettered boarding missions for weapon prototypes <br>
+added "Merchant" and "Independant" to human assisting missions
 <br>
 2023-08-29<br>
 added 2 korath boarding missions with a rare chance for a cloaking device<br>
@@ -4228,10 +4312,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ---
 
 ### A Galaxy Far Far Away
-<img src='Working/A Galaxy Far Far Away/icon.png' height='100'></img><br>
 
 
-[A.Galaxy.Far.Far.Away.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/A.Galaxy.Far.Far.Away.zip) | 641.3 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/A%20Galaxy%20Far%20Far%20Away/) <br>
+[A.Galaxy.Far.Far.Away.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/A.Galaxy.Far.Far.Away.zip) | 282.33 mb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/A%20Galaxy%20Far%20Far%20Away/) <br>
 Author: Ember369 | Category: Overhauls <br>
 [https://github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away](https://github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away) (last commit 2021-11-06) <br>
 
@@ -4240,8 +4323,10 @@ Author: Ember369 | Category: Overhauls <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Endless-Sky-(A-Galaxy-Far-Far-Away)
-Just a plugin that I made that aims to replicate Star Wars (or at least tries to) in Endless Sky. During the past year or so, I've managed to create around 280 ships, ranging from one-man fighters to capital ships, all from a variety of eras and factions (The Old Republic, the Republic & CIS, the Empire & Rebels, the First Order & Resistance, and even some from Legends). Currently, there is no existing storyline or a functioning galaxy map, though I intend to finish another 100 ships before I develop other aspects of the plugin (their sprites can be found in the plugin already).
+<blockquote># Endless Sky – A Galaxy Far Far Away (AGFFA)
+A Galaxy Far Far Away (AGFFA) is an experimental plugin that brings the Star Wars franchise to Endless Sky (or at least tries to). Adding hundreds of ships, ranging from one-man starfighters to star destroyers or even star dreadnoughts, the plugin encompasses ships from a variety of eras and factions (The Old Republic, the Republic & CIS, the Empire & Rebels, the First Order & Resistance, and even some from Legends).
+
+Currently, the plugin is highly unbalanced, has no existing storyline, has an incomplete galaxy, and is just a fun side project that I occasionally mess around with in my free time.
 
 ### Documentation 
 (https://www.moddb.com/mods/endless-sky-a-galaxy-far-far-away)
@@ -4255,13 +4340,36 @@ Currently, the plugin is unbalanced, buggy and overall frustrating at times, and
 
 "May the Force be with you!"
 __________________________________________________________________________________________________
-## Useful Links:
+## Notes
+
+### Useful Links:
 - https://www.moddb.com/mods/endless-sky-a-galaxy-far-far-away
-- https://www.youtube.com/watch?v=X0iwpfe96mc
 - https://github.com/Ember369/Endless-Sky-A-Galaxy-Far-Far-Away
 
+### Videos:
+- https://www.youtube.com/watch?v=1-_KH3Umhe4
+- https://www.youtube.com/watch?v=X0iwpfe96mc
+
 __________________________________________________________________________________________________
-## Notes:
+### Known Issues:
+1) The maximum number of turrets that a ship can have is 32, limiting the capital ships' abilities to fight
+2) Starfighter AI struggle to deploy proton bombs properly due to their high drags
+3) Similar to vanilla Endless Sky, starfighters can die far too easily
+4) I have created both "Starfighter" and "Starfighter (Bay)" versions of each starfighter so that some may be docked while some cannot. This is less than ideal, but works alright
+5) Ship balancing in general is pretty terrible at the moment (it's really quite difficult to follow SW lore)
+6) Some computers are unable to load AGFFA due to the plugin's absurdly large file size
+    
+__________________________________________________________________________________________________
+### Limitations:
+1) The galaxy map is barely complete (only a few systems have been filled, though all of them have been created)
+2) I didn't know whether to set the plugin in the Galactic Republic era, the Imperial era, or the New Republic/First Order era. (I added ships from all eras just in case –> including the Old Republic)
+3) Outfits & weapons are currently just placeholders since I tried to standardise them just to make it easier for balancing.
+4) Missions are currently non-existent (though I have added a few simply for the purposes of making some videos https://www.youtube.com/watch?v=1-_KH3Umhe4)
+5) Fleets are also essentially non-existent, though there are a couple around.
+6) I'm running out of things to say, but I'm sure some other problems will be discovered at some point.
+
+__________________________________________________________________________________________________
+### Adding ships:
 The "images/ship" folder contains many ships that have been yet to be added to the plugin. If you wish to add them to the game, follow the steps below:
 1) Scale the png. file down to a size that is comparable to the rest of the other ships (just estimate)
 2) Use the website (endless-sky.github.io/ship_builder.html) to place engines, turrets and guns.
@@ -4270,28 +4378,6 @@ The "images/ship" folder contains many ships that have been yet to be added to t
    - For the description, copy & paste from the wookiepedia entry of the ship.
 4) Add the ship name to the "data/sales" txt. file.
 5) Finished!
-
-__________________________________________________________________________________________________
-Known Issues:
-1) The particularly large ships occasionally seem to accelerate backwards after entering another system.
-2) The particularly large ships have a collision box that prevents smaller ships directly above it from being hit by enemies.
-3) The maximum number of turrets that a ship can have is 32, limiting the capital ships' abilities to fight.
-4) The MG-100 Bombers are currently useless (the ship AI can't deploy the proton bombs properly due to their 0 acceleration).
-5) Similar to vanilla Endless Sky, fighters can often be useless
-6) I have created both "interceptor" and "fighter" versions of each starfighter so that some may be docked while some cannot.
-    - "Fighter" versions do not have a hyperdrive, since this would crash the game (trust me, I tried) 
-    
-__________________________________________________________________________________________________
-Limitations:
-1) The galaxy map is barely complete (only a few systems have been filled, though all of them have been created)
-2) I didn't know whether to set the plugin in the Galactic Republic era, the Imperial era, or the New Republic/First Order era. (I added ships from all eras just in case –> including the Old Republic)
-3) The outfits & weapons are currently just placeholders since I tried to standardise them just to make it easier for balancing.
-4) I couldn't upload the ship designs of the "Assertor Star Dreadnought", the "Bellator Star Dreadnought" and the "Secutor Star Dreadnought", since their files exceeded Github's 25mb limit.
-5) Missions are currently non-existent (though I have added a few simply for the purposes of making my video https://www.youtube.com/watch?v=X0iwpfe96mc&feature=youtu.be)
-6) Fleets are also essentially non-existent, though there are a couple around.
-   - The fleets involving Star Destroyers currently have an absurd number of fighters that is impossible to fight against (though fits          Wookiepedia information)
-7) I'm running out of things to say, but I'm sure some other problems will be discovered at some point.
-
 </blockquote>
 </details>
 
@@ -5627,9 +5713,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/too.many.asteroids/icon.png' height='100'></img><br>
 
 
-[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 55.5 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
+[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
 Author: zuckung | Category: Overhauls <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-21) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
 >Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched. 
 >Improves game performance.
@@ -5637,18 +5723,29 @@ Author: zuckung | Category: Overhauls <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### too many asteroids <br>
-(2654 system attributes changed, in 552 systems)(made for 0.10.1) <br>
+<br>
 <br>
 Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched. <br>
 Increases game performance.<br>
 <br>
-2023/06/17 updated to 0.10.1<br>
-2023/06/17 added a python script which generates the asteroids.txt(in case I don't update this mod, everyone can do it in no time.)<br>
+<br>
+Every of the 552 base game systems(0.10.2) is edited via remove command for full compatibility with other system altering plugins. A total of 2654 asteroid entries got removed.<br>
+In case i won't update this plugin to the newest game version, a python script for generating an updated plugin can be found <a href="https://github.com/zuckung/endless-sky-plugins/tree/main/tools/too_many_asteroids_plugin_script">here</a>.<br>
+<br>
+<br>
+2023-09-01<br>
+added new icon.png<br>
+reworked readme<br>
+removed py script<br>
+<br>
+2023-06-17<br>
+updated to 0.10.1<br>
+added a python script which generates the asteroids.txt(in case I don't update this mod, everyone can do it in no time.)<br>
 </blockquote>
 </details>
 
 Status: tested with 0.10.2 <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -6461,164 +6558,6 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
-### Chroma Expansion
-<img src='Working/Chroma Expansion/icon.png' height='100'></img><br>
-
-
-[Chroma.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Chroma.Expansion.zip) | 114.51 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Chroma%20Expansion/) <br>
-Author: OcelotWalrus | Category: Races <br>
-[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-08-20) <br>
-
->Adds a new civilization to the Korath Space (now named the 'Empire Space': The Cromha Empire. Also known as 'The Empire'
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote><p align=center><img src="https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/0210316e-92d1-4d32-ae96-b95cf7466fea" alt="https://github.com/OcelotWalrus/Cromha-Expansion-plugin/assets/87318892/0210316e-92d1-4d32-ae96-b95cf7466fea" /></p>
-
-<h1><p align=center>Endless Sky Plugin:<br />Cromha-Expansion</p></h1>
-
-[![CD](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/cd.yaml/badge.svg?branch=main)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/cd.yaml)
-[![Submodule Updates](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/sub-modules-update.yaml/badge.svg?branch=main)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/sub-modules-update.yaml)
-[![Codespaces Prebuilds](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/actions/workflows/codespaces/create_codespaces_prebuilds)
-
-## 
-
-This is a plugin for the free, open-source game [Endless Sky][es]. This plugin
-is developed and tested against the [Endless Sky continuous][continuous] build.
-Learn more [about Endless Sky][esweb].
-**You can join the discord server [here](https://discord.gg/tafa8dVH5Q)** if you want to discuss about the plugin or ask more in depth questions to me.
-
-
-<details>
-
-  <summary>Summary</summary>
-
-* [About plugin](#about-plugin)
-    * [This plugin](#this-plugin)
-* [Contributing](#contributing)
-* [Development status](#development-status)
-* [System Requirements](#system-requirements)
-  * [Known Issues](#known-issues)
-* [Installation](#installation)
-    * [Install steps](#install-steps)
-    * [Keeping the plugin updated](#keeping-the-plugin-updated)
-* [Special Thanks](#special-thanks)
-
-</details>
-
-# About Plugin:
-
-Adds a new civilization to the Korath Space (now named the '[Empire Space](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Regions-of-the-galaxy#the-empire-space)': [The Cromha Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Cromha-Empire). Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory. Know more about the plugin in the [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki)! (or test the game yourself) Also, there is another empire that is set up next to the Paradise Planets. It is called the [Lumbarian Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Lumbarian-Empire).
-## This plugin:
-
-* Adds governments that are related to the vanilla storyline (kind of).
-* Expand various civilizations:
-  * Quarg
-  * Drak
-  * Pug
-  * Remnant
-  * Ka'Het
-  * Kor Automatons (Kor Mereti and Kor Sestor)
-  * Korath
-* The Lumbarian Empire that wants to replace the Republic and the Free Worlds and the Syndicate
-* The storyline that the plugin adds is made so it is the most similar possible to the vanilla one.
-* Add new outfits and ships from different governments.
-* Expands upon the existing map for exploration (New Systems in the north of the galaxy and near the Deep Space).
-* Adds a new galaxy where there is Sheragi is but it is still in work.
-
-# Contributing
-
-All Contributions are welcome!
-
-_Check the [Contributing Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Contributor-Guide) before creating any issue or pull request._
-
-To contribute to the plugin, you can create [issues](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues) to describe an error from spelling errors to mission bug or anything else.
-You can also create an [issue](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/issues) or a [pull request](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/pulls) to request specific feature.
-
-# Development Status
-It is currently a Beta plugin.
-
-* A medium WIP (work in progress) plugin
-* Story is not fully implemented but for most of the part, it is
-* Spaceport and planets descriptions are not fully done
-* Quarg-Pug Expansion not finished
-* Ember Watse/Remnant/Dark Expansion not finished
-* Many more civilizations expansions to do
-* Outfits and ships descriptions are not fully done.
-* The whole 'Empire Rebels' part is not started very yet. (check [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Governments-&-Major-Factions))
-* The [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/) still in work and most of the Gameplay section is outdated
-* The Lumbarian Empire is currently in a very early stage. Help create the storyline [here](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/discussions/117)
-
-# System requirements
-Endless Sky has very minimal system requirements, meaning most systems should be able to run the game. But this plugin is kind of heavy.
-
-|| Minimum | Recommended |
-|---|----:|----:|
-|RAM | 4 MB | 8 GB |
-|Graphics | OpenGL 3.0 | OpenGL 3.3 |
-|Storage Free | 900 MB | 3 GB |
-
-## Known issues
-  * Game crash when loading resources (don't have enough RAM)
-
-# Installation
-If you're new in the Endless Sky community, check the [User Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) to learn the basics!
-
-## Install steps
-
-To install the plugin you just have to clone this repository into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
-You can use the following command if you're used to command line.
-
-```
-git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git
-```
-
-If you want the `sources/` directory (a directory for the plugin assets like `.blend` files or `.xcf` for contributor), run the following command to enable sub-modules:
-
-```
-git clone https://github.com/OcelotWalrus/Cromha-Expansion-plugin.git --recursive
-```
-
- If not, you can download the [continuous build](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases/tag/9.9.9-continuous) and put the folder into your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins).
-
-## Keeping the plugin updated
-If you're not familiar with git, you just have to run that command into the installed plugin.
-
-```
-git pull
-```
-
-If it don't work, you can just re-download the plugin at [releases](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/releases) and put it in your [endless sky plugin directory](https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins). And make sure you deleted the old Cromha Expansion plugin folder.
-
-## Special thanks
-
-Check [copyright.txt](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/blob/main/copyright.txt) for full credits.
-I have several people that really needs credits for my work here, first because some of them helped me but also some of them did great work on the endless sky community:
-
-  * [`@lumbar527`](https://github.com/lumbar527)
-    * He helped me by a lot on the plugin and had a lot of great ideas.
-  * [`@1010todd`](https://github.com/1010todd)
-    * This guys is an insane plugin creator who made tons of great assets, plugins and also have insane ideas. Lot of ideas from this project originally come from some of his work. You can check his plugins [here](https://github.com/endless-sky/endless-sky/discussions/7928). Respect to this guy.
-  * [`@MidnightPlugins`](https://github.com/MidnightPlugins)
-    * He made great plugins with great ideas that have have to me other great ideas.
-  * [`@Petersupes`](https://github.com/Petersupes)
-    * He created the [Sheragi Rebirth](https://github.com/Petersupes/sheragi-rebirth) plugin, which I partially copied.
-  * The whole Endless Sky content creator community!
-
-
-[es]: https://github.com/endless-sky/endless-sky
-[continuous]: https://github.com/endless-sky/endless-sky/releases/tag/continuous
-[esweb]: https://endless-sky.github.io/
-
-</blockquote>
-</details>
-
-Status: In Progress <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
 ### Core Mining Inc
 <img src='Working/Core Mining Inc/icon.png' height='100'></img><br>
 
@@ -7253,9 +7192,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-08-24) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-09-01) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -12471,9 +12410,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Scrapyard/icon.png' height='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.16 mb | 2023-08-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.18 mb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2023-08-11) <br>
+[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2023-09-01) <br>
 
 >A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
 >
@@ -14459,7 +14398,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>29 plugins in this category.<p>
+<p>28 plugins in this category.<p>
 
 <details>
 
