@@ -1,0 +1,74 @@
+mission "Omnis: existing save warning"
+	description `You've accepted the offering of Omnis, and are being led to the Omnis systems.`
+	destination "Everything "
+	landing
+	name `Go to Omnis`
+	on complete
+		dialog
+			`Well, the damage is done now, you're on your own.`
+	on offer
+		conversation
+			`Hold on there pal!`
+			`	You just started using the Omnis plugin, and you should decide something before you can continue. Whether you allow Omnis to affect this save is up to you and in what capacity. It's recommended to disable Omnis on legitimate saves as it may ruin the fun having unrestricted access in the game.`
+			`	This choice won't offer again after this conversation.`
+			label "return"
+			choice
+				`	(Accept Omnis boons.)`
+					goto "boons"
+				`	(Enable Omnis but don't accept boons.)`
+					accept
+				`	(Disable Omnis.)`
+					decline
+			label "boons"
+			`	Are you sure about this? This will change your save in the following ways:`
+			``
+			`		- Limitless Wealth:`
+			`	Sets credits to an impossibly high value.`
+			`		- Reveal Map:`
+			`	Will reveal all systems on the map, and continuously map new areas.`
+			`		- All Licenses:`
+			`	Every outfit or ship locked behind a license will be made available.`
+			`		- Developer Outfits:`
+			`	Gives cheat outfits to make your flagship omnicapable.`
+			``
+			`	A marker will indicate the way to the Omnis systems for the full experience.`
+			choice
+				`	(Continue.)`
+				`	(Abort.)`
+					goto "return"
+			action
+				event "Omnis: reveal omnis"
+				event "Omnis: reveal vanilla"
+				outfit "Omnipotence"
+				outfit "Omnipresence"
+				outfit "Omniscience"
+				payment 922e16
+				set "license: City-Ship"
+				set "license: Coalition"
+				set "license: Gegno Civilian"
+				set "license: Gegno Driller"
+				set "license: Heliarch"
+				set "license: Militia"
+				set "license: Navy Auxiliary"
+				set "license: Navy Carrier"
+				set "license: Navy Cruiser"
+				set "license: Navy"
+				set "license: Pilot's"
+				set "license: Remnant Capital"
+				set "license: Remnant"
+				set "license: Scin Adjutant"
+				set "license: Scin Architect"
+				set "license: Scin Hoplologist"
+				set "license: Unfettered Militia"
+				set "license: Vi Centurion"
+				set "license: Vi Evocati"
+				set "license: Vi Lord"
+				set "license: Wanderer Military"
+				set "license: Wanderer Outfits"
+				set "license: Wanderer"
+				set "Omnis: enable map reveal"
+			`	Congratulations, you're a god now.`
+				accept
+	to offer
+		not "omnisStart"
+	waypoint "Rutilicus"
