@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.27 mb | 2023-09-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-08-30) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-09-02) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -110,8 +110,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: zuckung | Category: Cheats <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
 
->Modifies the self destruction chance of Sestor and Mereti ships.
->Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.0 (0%).
+>Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%). See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -137,8 +136,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: zuckung | Category: Cheats <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
 
->Modifies the self destruction chance of Sestor and Mereti ships.
->Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.12 (23%).
+>Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.12 (23%). See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -164,8 +162,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: zuckung | Category: Cheats <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
 
->Modifies the self destruction chance of Sestor and Mereti ships.
->Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.3 (51%).
+>Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.3 (51%). See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -191,8 +188,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: zuckung | Category: Cheats <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
 
->Modifies the self destruction chance of Sestor and Mereti ships.
->Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.5 (75%).
+>Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.5 (75%). See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -1170,9 +1166,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 Author: zuckung | Category: Gameplay <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
->Brings jump drive equipped automata into human space after the wanderer campaign. 
->You can find them where Korath ships in human space are usually found(ember waste and eastern syndicate). 
->The chance to encounter previous Korath ships or automata is like 50/50.
+>Brings jump drive equipped automata into human space after the wanderer campaign. See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -1608,7 +1602,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 Author: zuckung | Category: Gameplay <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-25) <br>
 
->Implements a two mission chain that enables regular spaceport investment opportunities which result in small daily income. Starts in human, quarg and hai space with 2 million credits cash.
+>Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
 
 <details>
@@ -1873,7 +1867,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 Author: zuckung | Category: Gameplay <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
->Adds a shipyard with the the three Kor Efret ships(Arch-Carrack, Charm-Shallop, Echo-Galleon) to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships.
+>Adds a shipyard with the three Kor Efret ships to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships and some Korath Exiles outfits. See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -2066,11 +2060,11 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 12.92 kb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
->Adds several repeatable boarding missions.
+>Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -2463,7 +2457,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 Author: zuckung | Category: Graphics <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-24) <br>
 
->2Made for the mobile version and adds several new buttons to the lower right corner.
+>Made for the mobile version and adds several new buttons to the lower right corner. See the readme for details.
 >(inspired by theweirednut)
 >
 >
@@ -4002,6 +3996,7 @@ Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-28) <br>
 
 >Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
+>Starts on Snowfeather(Bore Fah) when having at least one android installed. See the readme for details.
 >
 
 <details>
@@ -5713,12 +5708,12 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/too.many.asteroids/icon.png' height='100'></img><br>
 
 
-[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
+[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 17.56 kb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
 Author: zuckung | Category: Overhauls <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
 
->Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched. 
->Improves game performance.
+>Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched.
+>Increases game performance. See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -5745,7 +5740,7 @@ added a python script which generates the asteroids.txt(in case I don't update t
 </details>
 
 Status: tested with 0.10.2 <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -5782,7 +5777,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 Author: zuckung | Category: Overhauls <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-08-31) <br>
 
->Removes mass and outfit space from the cloaking device. Removes mass and outfit space from outskirts gauger and puts it in unique category. Gives outfit '"Puny"' a portrait.
+>Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -5853,7 +5848,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.No.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Asteroids.zip) | 237.25 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Asteroids/) <br>
 Author: Darcy Manoel | Category: Overwrites <br>
-[https://github.com/Adde-Endless-Sky-Mods/No-Asteroids](https://github.com/Adde-Endless-Sky-Mods/No-Asteroids) (last commit 2023-04-07) <br>
+[https://github.com/Adde-Endless-Sky-Mods/No-Asteroids](https://github.com/Adde-Endless-Sky-Mods/No-Asteroids)  <br>
 
 >Overwrites asteroid images with empty images.
 
@@ -7952,9 +7947,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Fluff
 
 
-[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.69 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
+[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.88 mb | 2023-09-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-30) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-02) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 
@@ -8625,9 +8620,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Fluff
 
 
-[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.69 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
+[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.88 mb | 2023-09-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-08-30) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-02) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 >

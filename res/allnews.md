@@ -1,3 +1,6 @@
+2023-09-02 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
+2023-09-02 | updated Plugin 'AES Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2023-09-02 | updated Plugin 'Fluff' by Darcy Manoel | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-09-01 | updated Plugin 'too.many.asteroids' by zuckung | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
 2023-09-01 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2023-09-01 | updated Plugin 'automata.in.human.space' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay)<br>
