@@ -1113,7 +1113,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ## Gameplay
 
-<p>40 plugins in this category.<p>
+<p>41 plugins in this category.<p>
 
 <details>
 
@@ -1211,6 +1211,52 @@ Author: lifeyouristhis | Category: Gameplay <br>
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### better.starts
+<img src='Working/better.starts/icon.png' height='100'></img><br>
+
+
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 20.04 kb | 2023-09-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-03) <br>
+
+>Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### better.starts <br>
+<br>
+Adds 8 new start options with different ships, background storys, credits and debts.<br>
+<br>
+<ul>
+<li>Start: Cheater | Leviathan: 100m credits, full visible human space, Jump Drive, in Sol system, no story</li>
+<li>Start: Salvager | Shuttle: equipped for boarding, in Aldhibain system</li>
+<li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
+<li>Start: Miner | Clipper: equipped for mining, in Rasalhague system</li>
+<li>Start: Trader | Freighter: equipped for cargo transport, in Merak system</li>
+<li>Start: Trader (Hai) | Aphid: equipped for cargo transport, in Fah Soom system(Hai space)</li>
+<li>Start: Explorer to Remnant | Heavy Shuttle: equipped for exploring the Remnant, in Tania Australis system</li>
+<li>Start: Explorer to Automata | Bounder: equipped for exploring the Kor Automata, in Mirfak system(Hai space)</li>
+</ul>
+<br>
+Beside the cheater start option, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role.<br>
+<br>
+<br>
+2023-09-03<br>
+changed miner start to a system with outfitter<br>
+added Start Trader Freighter<br>
+added Start Trader (Hai) Aphid<br>
+added Start Explorer to Remnant<br>
+added Start Explorer to Automata<br>
+
+</blockquote>
+</details>
+
+Status: tested with 0.10.2 <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -5848,14 +5894,15 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.No.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Asteroids.zip) | 237.25 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Asteroids/) <br>
 Author: Darcy Manoel | Category: Overwrites <br>
-[https://github.com/Adde-Endless-Sky-Mods/No-Asteroids](https://github.com/Adde-Endless-Sky-Mods/No-Asteroids)  <br>
+[https://github.com/DarcyManoel/Fluff](https://github.com/DarcyManoel/Fluff) (last commit 2023-09-02) <br>
 
 >Overwrites asteroid images with empty images.
+>
 
 
 
-Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Status: Merged into Fluff <br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -10966,7 +11013,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ## Story
 
-<p>76 plugins in this category.<p>
+<p>77 plugins in this category.<p>
 
 <details>
 
@@ -11154,6 +11201,55 @@ This plug-in adds additional boarding missions to the game increasing the chance
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### bunrodea.missions
+<img src='Working/bunrodea.missions/icon.png' height='100'></img><br>
+
+
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 47.36 kb | 2023-09-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-02) <br>
+
+>Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### bunrodea.missions
+<br>
+<br>
+This plugin adds some missions to destroy Korath ships, which enable job board missions for raising the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships.<br>
+<br>
+Unlocking the planet with all ships needs 100 reputation. Unlocking the last of the planets needs 500 reputation.<br>
+<br>
+10 rep for vanilla first contact mission<br>
+20 rep for the first mission which unlocks repeatable jobs.<br>
+5-7 rep for repeatable transport jobs<br>
+10 rep for Korath ship killing job<br>
+At 100 rep the second mission starts, which gives 30 rep and unlocks the second repeatable job which gives 30 rep.<br>
+<br>
+As a little bonus, the three eastern uninhabited systems spawn jumpdrive equipped "Lor'kas Ik 577" or "Ra'gru Ik 618" or "Ra'at Ik 621".<br>
+<br>
+<br>
+2023-09-02<br>
+changed fleet missions/jobs to include only Palavret and Rano'erek<br>
+added korath fleets to Era Natta, Genta Bo and Eneva Katta<br>
+added 6 transport/passenger jobs<br>
+<br>
+2023-09-01<br>
+added a 2nd mission and a 2nd repeatable job<br>
+<br>
+2023-08-26<br>
+intial release<br>
+
+
+</blockquote>
+</details>
+
+Status: tested with 0.10.2 <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
