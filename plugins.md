@@ -2106,9 +2106,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 12.92 kb | 2023-09-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 14.41 kb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-04) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -2117,37 +2117,38 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### more boarding missions <br>
 <br>
 <br>
-Adds 40 boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai or Hai Unfettered can trigger them. Bigger ships give higher rewards.<br>
+Adds 53 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer) and Wanderer can trigger them. Bigger ships give higher rewards.<br>
 <br>
 <ul>
-<li> 7 Pirate boarding missions for credits<br>
-  (by ship categories, 20% chance, 5.000 to 25.000 credits, repeatable)</li>
-<li> 4 Pirate boarding missions for outfit<br>
-  (by ship categories, 1-4% chance, outfit "NDR-114 Android" as reward, repeatable)</li>
-<li> 7 Human assisting missions for credits<br>
-  (by ship categories, 20% chance, 10.000 to 30.000 credits, repeatable)</li>
-<li> 7 Hai assisting missions for crecits<br>
-  (by ship categories, 20% chance, 20.000 to 60.000 credits, repeatable)</li>
-<li> 5 Hai Unfettered assisting missions for credits<br>
-  (by ship categories, 20% chance, 30.000 to 90.000 credits, repeatable)</li>
-<li> 5 Hai Unfettered boarding missions for credits<br>
-  (by ship categories, 10% chance, 30.000 to 90.000 credits, repeatable)</li>
-<li> 3 Hai Unfettered boarding missions for outfit<br>
-  (by reward, 3% chance, outfit one of the 3 weapon prototypes, repeatable)</li>
-<li> 2 Korath boarding missions<br>
-  (for the bigger ship categories, 2-3% chance, outfit "Cloaking Device" as reward, repeatable)</li>
+<li> 7 Human assisting missions (by ship categories, 20% chance, 10.000 to 30.000 credits)</li>
+<li> 7 Pirate boarding missions (by ship categories, 20% chance, 5.000 to 25.000 credits)</li>
+<li> 4 Pirate boarding missions (by ship categories, 1-4% chance, outfit "NDR-114 Android")</li>
+<li> 7 Hai assisting missions (by ship categories, 20% chance, 20.000 to 60.000 credits)</li>
+<li> 5 Hai Unfettered assisting missions (by ship categories, 20% chance, 30.000 to 90.000 credits)</li>
+<li> 5 Hai Unfettered boarding missions (by ship categories, 10% chance, 30.000 to 90.000 credits)</li>
+<li> 3 Hai Unfettered boarding missions (by reward, 3% chance, outfit one of the 3 weapon prototypes)</li>
+<li> 2 Korath boarding missions (for the bigger ship categories, 2-3% chance, outfit "Cloaking Device")</li>
+<li> 3 Pug boarding missions (by ship categories, 10% chance, 100.000 to 200.000 credits)</li>
+<li> 3 Pug boarding missions (by ship categories, 1-3% chance, new outfit "Pug War Staff")</li>
+<li> 7 Wanderer assisting missions (by ship categories, 10% chance, 50.000 to 100.000 credits)</li>
 </ul>
 <br>
 <br>
+2023-09-04<br>
+added 7 wanderer assisting missions (credits)<br>
+added 3 pug boarding missions (credits)<br>
+added 3 pug boarding missions (outfit)<br>
+added new outfit "Pug War Staff"<br>
+<br>
 2023-09-01<br>
-added 5 hai unfettered assisting missions <br>
-added 5 hai unfettered boarding missions <br>
-added 3 hai unfettered boarding missions for weapon prototypes <br>
-added "Merchant" and "Independant" to human assisting missions
+added 5 hai unfettered assisting missions (credits)<br>
+added 5 hai unfettered boarding missions (credits)<br>
+added 3 hai unfettered boarding missions (outfit)<br>
+added "Merchant" and "Independant" to human assisting missions<br>
 <br>
 2023-08-29<br>
-added 2 korath boarding missions with a rare chance for a cloaking device<br>
-added 4 pirate boarding missions with rare chance for an android<br>
+added 2 korath boarding missions (outfit)<br>
+added 4 pirate boarding missions (outfit)<br>
 added icon and reworked readme<br>
 
 </blockquote>
@@ -2756,9 +2757,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 557.67 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 557.75 mb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-05-09) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-09-03) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -6121,9 +6122,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.93 kb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.95 kb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-08-30) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-09-02) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -6170,9 +6171,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-08-30) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-02) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -6448,9 +6449,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.22 mb | 2023-08-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.44 mb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-08-30) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-09-05) <br>
 
 >Adds a faction (or 2) that supplies real life fighters and other interesting stuff.
 >
@@ -11276,9 +11277,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Coalition-At-War
 
 
-[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 40.55 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
+[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 40.74 kb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
 Author: mathwhiz1212 | Category: Story <br>
-[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2023-03-12) <br>
+[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2023-09-05) <br>
 
 >You hear a lot about the conflict between the Coalition and the Quarg, but you never see it.
 >
