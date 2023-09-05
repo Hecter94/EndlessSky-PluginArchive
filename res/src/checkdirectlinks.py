@@ -158,9 +158,14 @@ for entry in entries:
 				if modified == 1:
 					print("SUCCESS: linkfile is newer: " + pluginname)
 					print("datediff: " + str(datediff.days) + " " + str(datediff.seconds) + " | asset: " + str(assetlastmodified) + " | link: " + str(linklastmodified) + "\n")
-					with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
-						r = requests.get(directlink, allow_redirects=True)
-						file2.write(r.content)
+					try:
+						with open("temp/" + pluginname + ".zip", "wb") as file2: # create zip file
+							r = requests.get(directlink, allow_redirects=True)
+							file2.write(r.content)
+					except:
+						print('ERROR: Cant download zip! maybe too big?')
+						with open('res/errorlog.txt', 'a') as errorfile:
+							errorfile.writelines("cant download zip for plugin: " + pluginname + " | maybe zip currupt? temporary github problem?\n")
 			else:
 				print("no assetfile, must be a new plugin: " + pluginname + "\n")
 				with open("temp/new_plugin_" + pluginname + ".zip", "wb") as file2: # create zip file, naming it see if it a new one

@@ -1,11 +1,15 @@
 import os
 import requests
 from datetime import datetime
+import time
 
 iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = pluginissues = updatecheck = readme = repo_last_commit = ""
 allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
 categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
 plist = []
+
+# giving github enough Time for the zip uploads
+time.sleep(600)
 
 # read paths and files
 with open("res/config.txt") as f:
