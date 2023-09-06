@@ -165,7 +165,7 @@ mission "Irm: expanding business [10b]"
 	landing
 	name "Return David to Greenwater"
 	on complete
-		event "Irm: davids turn" 21
+		event "Irm: davids turn" 61
 		dialog
 			`"I'll be on-world while I decide our next steps. If you do manage to get any more of those stabilizers, please deliver them to me directly."`
 	to offer
@@ -186,6 +186,7 @@ mission "Irm: expanding business [11b]"
 	name "Obtain Additional Stabilizers"
 	on complete
 		payment 500000
+		event "Irm: delivered stabilizers" 11
 		dialog
 			`You're greeted warmly by David when you return and he is ecstatic when you offload the stabilizers for him to test with his people. He pays you a bonus of <payment> for your trouble without hesitation.`
 	on offer
@@ -195,3 +196,160 @@ mission "Irm: expanding business [11b]"
 		planet "Caelian"
 	to offer
 		has "Irm: expanding business [11a]: offered"
+event "Irm: delivered stabilizers"
+mission "Irm: expanding business [12a]"
+	description `You were transmitted a recording from David Turner requesting you to make your way to Arx, given your de-facto partnership, you should do your best to stay in the loop.`
+	destination "Slic Airn"
+	landing
+	name "Checking in with David"
+	on offer
+		event "Irm: delivered stabilizers"
+		dialog
+			`"Captain, this is Turner Inc. passing on a message from Mr. Turner." You assume that to be a receptionists greeting, which ends more abruptly than you expect.`
+			`A short audio message was transmitted to you with the preamble, "<first>, this is David, please meet me on the ringworld, you'll find the way."`
+	source
+		government "Hai"
+	to offer
+		has "event: Irm: davids turn"
+		has "event: Irm: delivered stabilizers"
+		random < 10
+mission "Irm: expanding business [12b]"
+	description `You were transmitted a recording from David Turner requesting you to make your way to Arx, given your de-facto partnership, you should do your best to stay in the loop.`
+	destination "Arx"
+	landing
+	name "Checking in with David"
+	on enter "Waypoint"
+		dialog
+			`On take off from <planet>, your ship begins picking up a repeating signal from the surface of the ring. Following the signal will surely lead you to David.`
+	source "Slic Airn"
+	to offer
+		has "Irm: expanding business [12a]: offered"
+mission "Irm: excavating Arx [1]"
+	description `Unwilling to wait for the arriving ship, passing time by exploring the uninhabited planet in Waypoint presented as a better use of your time.`
+	destination "Huer"
+	landing
+	name "Investigate Huer"
+	on offer
+		fail "Irm: expanding business [12b]"
+		conversation
+			`You descend towards the ringworld, unsure of the nature of David's summons. As the surface begins to come into view, you make out a collection of ships, all of Human design, closely parked together to act as a makeshift site of operations.`
+			`	A communication from David is picked up, he instructs you on where to land and which ship is his. After which he asks you to meet him on board his ship so that he can appraise you of the state of operations. You're unsure of the nature of these 'operations', exploratory or otherwise but you trust enough that whatever is planned, David knows what he's doing.`
+			`	You find David's ship in the collection, walk up the landing ramp, and find him waiting for you there. Luckily you won't be in the weird situation of divining the directions around this ship, rather, you are led straight to a room that is very well-lit and filled with a handful of David's people. David quickly gets to action as he's walking in, "The fortunate timing of Captain <last>'s arrival will kick off this meeting. All of this is their discovery so please, treat the captain as though they are paying half your salary." His opener is met with a quick applause and some laughter at the quip. The response could well be out of obligation rather than being a genuine reaction to your significance, but it doesn't matter much either way.`
+			`	"Many of you already know what we're doing here and the progress of affairs, but we'll take it from the top for Captain <last>s sake." A short pause follows as David readies his report, while your focus diverts to scanning the room. A tight group of seven people including David and you fill the room, and a small console sits center-of-room. "After receiving the devices that allow ships to travel here from Waypoint, we set down on the ring and began coordinating exploratory teams to geographically map the immediate area. As far as we have found, the surface is a convincing replication of a typical temperate world, or so I'm told by Cassipeau and Lyra." he extends an indicating hand towards two women standing closer to the console than the rest. The group has so far seemed thoroughly unimpressed by the summation of events, right until one of the two women interrupts, "Of course, there are large pits scattered across the terrain, that's not typical."`
+			`	"Thank you Lyra, yes, there are large pits and we are unsure of what they are for. I think-", David again gets cut off by someone from the group, all heads turn to one man, "We know what you think, they're not vents." A short and almost uncivil exchange of reasoning follows between David, Lyra, and the man.`
+			`	David soon after reins in the discussion. "It doesn't matter what I think at the moment, as my expeditionary advisors have advised that a ship should descend down one of these pits, given that they're large enough to fit a ship." David subtly expresses a defeated tone when mentioning 'expeditionary advisors'.`
+			choice
+				`	"Is that where I come in then?"`
+			`	David seems amused at the idea, and smirking without even turning to face you, "Goodness no, there is a team set to arrive shortly with a ship for that purpose. They set off shortly before you arrived and shouldn't be getting back here for at least a few days yet."`
+			choice
+				`	"'At least'? That doesn't sound very confident."`
+				`	"So where do I come in?"`
+					goto "skip questions"
+			`	This time he turns to face you, "You might have noticed only receiving a signal after departing the station, unfortunate to this operation is the lack of communication access with Hai space. I suppose that's best for secrecy, I don't know if we're supposed to be here, or if anyone else even knows about this place."`
+			label "skip questions"
+			`	"I wanted you here to be made aware of our current plans," The others in the room shuffle out through a door opposite the side you entered from.`
+			`	"It must have slipped my mind to make introductions for the others, they're some key advisors I've got on the payroll for the foreseeable future, that actually pales compared to the legal set-aside for their confidentiality agreements." A chuckle comes from David and shows transparently how anxious he is already. "We have the unique claim to this marvel of a system with no apparent owner or custodian. I, of course, want to jump on this opportunity before we might lose it."`
+			choice
+				`	"What are you planning to do here?"`
+				`	"How do you expect to not be found out?"`
+					goto "secret"
+			`	"I have ambitions now to form a base of operations in this system, to bring the company into new heights of unimpeded progress. It's not about the money we make but we can make something real here, of course with a tidy profit to keep things on track but that's how things get done." His demeanor is no more serious than before but there is a certain gravity behind his words, this may be your opportunity to build something for yourself and not operate only to navigate other people's messes.`
+			`	You ask David a question that is integral to the outcome of his plans, "How do you expect to keep this secret from the Hai, or Humans, even Quarg?"`
+			label "secret"
+			`	David huffs, amused at the potential scope of his upcoming difficulties, "I don't know <first>, for now, I'd like to only worry about this stage. You can stay here with us while we wait for the ship to arrive for further exploration, if you'd like."`
+			choice
+				`	(Wait here with the ground crew.)`
+				`	(Explore the planet within the system.)`
+					launch
+			`The collection of ships that form the makeshift site of operations serves an unexpectedly warm community. All around, there are crew spread across the various landing ramps in small groups, popping jokes, telling stories, anything to fritter away time they aren't working. Flames shoot up from a large hotplate on wheels, cooking up a sumptuous spread of meats, some are thinly cut while across the serving table, some mounds look more like imposing slabs of near-black grumble.`
+			`	You look across the way, plotting your way back to your ship when your eyes land on a familiar face, not too familiar but it is someone you can engage with. You walk up and prepare to garner her attention, when she turns from her faced-away direction and walks right into you. Bouncing back onto her arms as she falls, she drops a discreetly sized tablet from her hands, "Shoot! I'm awful, I've my head buried in the work I've got myself in." You instantly notice her studying you quizzically, trying to figure out who you are.`
+			choice
+				`	"The captain, from the briefing."`
+				`	(Pick up the tablet.)`
+					goto "tablet"
+			`	Your explanation falls on a distant mind as it takes a second to process your introduction, she hides no part of the momentary confusion as she briefly doesn't remember a briefing. As everything she was trying so hard to remember strikes her in one moment, she back-tracks and apologizes again for the collision, motioning in some self-deprecation of her intelligence.`
+			`	"My head is somewhere, what's going on captain from the briefing?" she says with a grin, and some form of held-back expression. Your chance to speak is quickly interrupted by her picking up her tablet, you cut yourself off from your attempted opening. Her full attention returns to you as she stands back up.`
+				goto "engage"
+			label "tablet"
+			`	You squat down to pick up her tablet from the naturally soft surface of the plant-covered plateau, her gaze on you as you rise. She takes the tablet from your hands, thanking you, "You're very nice, new guy from the briefing. See, I'm sure you thought I wouldn't recognize you."`
+			`	"Well, maybe I thought that." you return, noting her incessant rubbing along the side of her tablet.`
+			`	She asks, at full attention, "Can I help you with something?"`
+			label "engage"
+			choice
+				`	"You're one of David's advisors, right?"`
+				`	"You seem busy, is everything okay?"`
+					goto "concern"
+			`	"That I am, I've been with the company for a while. To be honest I don't very well know what I'm doing here." she muses, somewhere between confession and contained amusement. You ask her why she says that and she waves it off, explaining that she is 'just not used to working off-world.'`
+			label "concern"
+			`	A brief pause follows before she breaks the silence, and a directionless stare also, "Don't worry, I'm only anxious because we're all just waiting for that ship to get here. Trying to stay busy, good thing that it's hard to fall short of work on an alien 'world' like this." She quotes with her fingers as she speaks, drawing intentional ambiguity to her use of 'world' to describe this structure.`
+			`	You cautiously make a quip, "You must be looking in the wrong places, the crew all seem to find time to enjoy themselves." She softly responds, "I'm not them, thankfully. They can enjoy their moment, sitting on idle hands isn't my thing."`
+			`	The two of you finish your chat after a short time, sharing your respective reactions when traveling here for the first time, then joking about the vent debacle from the briefing. You return to your ship, not lasting as long as you expected before beaming off-world in fervent eagerness. You set your course for Huer to explore the only remaining planet in this system.`
+				launch
+	source "Arx"
+	to offer
+		has "Irm: expanding business [12b]: offered"
+mission "Irm: excavating Arx [2]"
+	description `Return to the ringworld, David and the rest of the crew surely have something for you to do now.`
+	destination "Arx"
+	landing
+	name "Return to Arx"
+	on offer
+		conversation
+			`Huer may once have been an idillic home to an untold number of inhabitants, but it now lies in ruin with no others to inherit, or remember, the fruits of their toil. The scale of devastation is far-reaching as the land shifts and cracks to reclaim the landscape, even in the face of these most destructive natural forces, cities remain.`
+			`	Gargantuan rows of tracks coalesce and descend underground to shoot past bodies of water, arising in another nearby city. The infrastructure of these cities seems to rely on these tracks more than any alternative in view, with every direction out from the cities being presentated as either the coming together of tracks for distanced travel, or a futher extension of these cities. In larger cities it is apparent that while the former inhabitants built large and far, they respected the geography of their planet, with great lakes and mountains built around and not over, surely much to the pain of their planners.`
+			`	Reminiscant of the ancestral Earth and it's many imitations, much of the skyline reaches the clouds and leaves other buildings in shadow. Like Earth, this is concentrated towards the center of the cities with more distanced structures seemingly stunted in height, easily marking dense metropolitan areas.`
+			choice
+				`	(Land close to the city.)`
+				`	(Leave.)`
+					launch
+			`	Your ship lands beside the tracks on a large platform unaffected yet by the changing geography, this serves as your landing spot, it's a long walk to the nearby city but it's unlikely you'll find a safer spot to land closer. The tracks, as you notice up close, are coming up from the foundations, unbreaking, but deformed. The damage to the infrastructure is obvious as great lengths of track are spotted by arches and crooks, made completely unsuitable to use anymore, despite the relatively good condition it is in, in stark comparison to the rest of the structures that you can see.`
+			`	You continue to walk along and while not expecting much to begin with, the uninviting state of the city still dissapoints you. Trees present in seemingly unnatural contortions but being now unconstrained by those that would curate their stature, they grew past their impedances with great fervour. The overgrowth stretches along the sides of buildings and buries small landmarks, almost like an infection that was never to be let fester.`
+			`	Despite the great labor this planet represents, nothing seems to be here for you.`
+			choice
+				`	(Leave.)`
+					launch
+	source "Huer"
+	to offer
+		has "Irm: excavating Arx [1]: offered"
+mission "Irm: excavating Arx [3]"
+	invisible
+	landing
+	on offer
+		event "hanger secured" 16
+		conversation
+			`The collection of ships sits idly in mostly the same place as you left them, only some around the edges have come and gone since you've been here. There are not only Human ships here now, as you spot one shield beetle on the fringe of the site, somewhat distanced. Deciding to land near the shield beetle, you still maintain some distance from it but it's only a short walk.`
+			`	Walking towards a group convening nearby the shield beetle, you find David watching from the edge of the group as his advisors instruct the crew on the task at hand. Soon, only you and David remain as the rest board the ship, and he remarks on your fortunate arrival yet again. "<first>, you must have a sense for these things. I'm glad you are here for this because they're just leaving now to probe the 'vent'." He walks off, expecting you to follow and you do, to the same room you were given a briefing in just days earlier.`
+			`	The console shines brightly up as a hologram displays a misshapen map, not sprawling from the site of the operation as you expected but long branches in each direction with non-sensical paths outwards from those. "The ship isn't too far out yet but will reach the destination before too long. They thought it better to invest in a more sturdy frame in the worst case, not that I can argue with the precaution, but it wasn't cheap."`
+			choice
+				`	"What do they expect to find down there?"`
+			`	David keeps his eyes on the console, soon answering you without facing your way, "They say that the thickness of the ring wouldn't be accounted for by just the surface terrain. They also argue the creators wouldn't build all this just to start building their civilization over again, and there should be some purpose to this place beyond the landscape. What do you think <first>?"`
+			choice
+				`	"I think this ring will change all of our lives."`
+				`	"I'm wary that we're the first ones here."`
+					goto "first"
+				`	"How can a whole species just disappear?"`
+					goto "disappear"
+			`	"That's a nice thought, and too true. Let's just hope it's for the better." You ask him how he expects this to go badly, "We're alone out here with no one knowing where we are and no way to get to us if they did. We also don't know why this ring is abandoned, or why the planet fell to ruin. Of course, we could run out of funding and have to return to civilization in a worse position than we started." Falling out of his stare, David turns to face you and acts as if stumbling onto something so obvious, "The immediate concern is our limited fuel reserves, we need to establish a convoy to stabilize that situation. That's why all our ships are grounded right now unless needed out on the field."`
+				goto "update"
+			label "first"
+			`	"I don't know, the Quarg surely know. I mean how could they not? They're the Quarg." With the exasperation leaving his face in irreverence, he shifts his gaze across the hologram in swift motions, as if he missed something that just happened. He seems too tense for this.`
+				goto "update"
+			label "disappear"
+			`	"Why don't we ask about the magic of the station that gets us here? There are enough questions well above our heads, I don't think we can afford to concern ourselves with unknowables at this time. That's too good a question, it might just keep me up at night."`
+			label "update"
+			`	Just when you and David begin to share questions and half-baked theories, a sharp -ping- sounds off. Darting his gaze onto the console, David holds down a button on the edge of the console and speaks to it, "Echelon II, how are you doing over there?" Without delay, diffused lights shine from the corners of the room, following the lights comes another -ping- but much louder than before. "Ready to move on, Precept, we are at the vent." Soft chuckles are heard in the background before the transmission cuts, and David briefly mimics a monotonic laugh, "Ha- Ha-"`
+			`	"Let's get on with it Echelon, descend at will when in position."`
+			`	"Received and confirmed, Precept."`
+			`	A short delay keeps you both waiting, feeling like minutes go by before anything is relayed back to you two.`
+			`	"And we have- not a vent." Almost rhythmically pronounced, "The pit extends much further than anticipated, almost immediately opening up into a coned space. It's a large hangar that I dare say is the docking area for ships. Not sure how to explain the look of this place. It's distinctly alien of course but it's not-- it's much different than Hai or Quarg architecture, there are fluidic curves all around. You should come and see this David, the precaution was thankfully unnecessary."`
+			`	David leaves a few instructions with them such as securing the area, and being sure to relay back scans to update the map. You follow David who briskly walks out of the room and suggests that you both take your ship to investigate.`
+			choice
+				`	(Depart for the marked entrance.)`
+			`	It's not long before you reach the entrance to the hanger. The opening is fortunately much wider than you expected, more than enough to fit your ship through.`
+			`	As you descend into the hanger, you're inclined to think of it as a cavern by the large open spaces within. No description would have done this justice over the comms. "This looks.. fortunate. Every opening like this one on the surface must be an entrance." David is right, the hanger stretches beyond what you can discern, unsure if you can notice the slight curvature of the ring or if you are just unable to make out the far-away objects.`
+			`	The first team had already parked their ship down, landing pad out and extended, floodlights shining against the course but level foundations. "David, captain, the immediate area is safe, but this isn't just some comically large space. By all attempts from the time we got here, there's no endpoint, I might think this expansive of the entire ring." David thanks the team leader and turns to you, "This will take some time to move forward. You're welcome to check in, but I recommend you leave me to handle this stage. I'm sure you have things to do back at civilization anyway."`
+				decline
+	source "Arx"
+	to offer
+		has "Irm: excavating Arx [2]: offered"
+event "hanger secured"
