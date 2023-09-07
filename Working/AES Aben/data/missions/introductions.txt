@@ -1,4 +1,4 @@
-mission "Aben: first fontact"
+mission "Aben: first contact [1]"
 	landing
 	on offer
 		conversation
@@ -21,15 +21,44 @@ mission "Aben: first fontact"
 				`	"Loud?"`
 					goto "loud"
 			`	"Don't understand, Humans were not the first to meet us, but have long been friendly."`
-				goto "dontUnderstand"
+				goto "dont understand"
 			label "land"
 			`	"The ship is here, you can land away from the city." They say, but you're unsure if they are telling you to land somewhere else or if your ship is fine where it is. You ask them, "Am I not allowed in the city?"`
 			`	They shoot a glance to the other, who you swear you just saw shrug, "The city is not here, it is big and tall."`
-				goto "dontUnderstand"
+				goto "dont understand"
 			label "loud"
 			`	They smile and answer you, "Yes, they are bright and big. They don't talk much."`
-			label "dontUnderstand"
+			label "dont understand"
 			`	They don't seem to understand you very well, despite how direct you try to be. The taller one of the two points towards the spire that you can still faintly see in the distance, considering how little they understand of what you've been saying, the gesture could mean anything.`
 				decline
 	source
 		planet "Nis"
+mission "Aben: first contact [2]"
+	landing
+	on offer
+		event "Aben: nis outfitter"
+		conversation
+			`Thinking back to your last encounter here, exhaustion quickly creeps over as you remember how untenable your communication efforts were. Still, there's a lot to explore in this world and they were welcoming enough the first time around.`
+			`	Docking near the very end of the space elevator tether, but below the counterweight, you're surprised to have found a hanger to maneuver into. A lone alien meets you as you leave your ship, "Hello, Human, is it?"`
+			choice
+				`	"Hello, yes that's right."`
+				`	"You speak my language too?"`
+			`	"Yes, okay. Many are trained to talk with outsiders, but please forgive me if there is a misunderstanding." This one seems more capable than when you landed terrestrially, and had a lot of misunderstandings with another of these aliens.`
+			`	"Can you tell me about this place?" you ask.`
+			`	"Of course, we enjoy visitors. For a long time, we have put forward an idea to reach toward the stars and look for friends among them. Some aliens have been awful to us but we met stronger, friendly, aliens first. We have been well defended since they came, but we still build defenses of our own for if they fail us."`
+			choice
+				`	"What aliens have you met?"`
+				`	"Do you sell technology?"`
+					goto "sell"
+			`	"We don't know your words for these aliens, but you will meet them if you aren't friendly with us. Please don't try to meet them." You ponder for a short moment, considering the aliens you know before being cut off from your thoughts.`
+			label "sell"
+			`	"We sell technology if you are interested, trade is important."`
+			`	You finish your interaction with the alien, and you now know their species is called the Aben. The Aben you just met is presented much like the first two, with no encumbrances bar the art piece adorning their shoulders and neck.`
+				decline
+	source
+		planet "Nis"
+	to offer
+		has "Aben: first contact [1]: offered"
+event "Aben: nis outfitter"
+	planet "Nis"
+		outfitter "nis outfitter"
