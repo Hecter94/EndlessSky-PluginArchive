@@ -3,7 +3,7 @@
 
 ## Cheats
 
-<p>38 plugins in this category.<p>
+<p>35 plugins in this category.<p>
 
 <details>
 
@@ -106,97 +106,36 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/automata.destruction.0percent/icon.png' height='100'></img><br>
 
 
-[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 51.32 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
+[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 43.31 kb | 2023-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-07) <br>
 
 >Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%). See the readme for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>### automata destruction 0percent <br>
-(14 ship attributes changed)(made for 0.10.1) <br>
+<blockquote>### automata destruction 0percent
 <br>
-Modifies the self destruction chance of Sestor and Mereti ships. <br>
-Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.0 (0%). <br>
-</blockquote>
-</details>
-
-Status: tested with 0.10.2 <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
-### automata.destruction.23percent
-<img src='Working/automata.destruction.23percent/icon.png' height='100'></img><br>
-
-
-[automata.destruction.23percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.23percent.zip) | 51.34 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.23percent/) <br>
-Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
-
->Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.12 (23%). See the readme for details.
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote>### automata destruction 23percent <br>
-(14 ship attributes changed)(made for 0.10.1) <br>
 <br>
-Modifies the self destruction chance of Sestor and Mereti ships. <br>
-Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.12 (23%). <br>
-</blockquote>
-</details>
-
-Status: tested with 0.10.2 <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
-### automata.destruction.51percent
-<img src='Working/automata.destruction.51percent/icon.png' height='100'></img><br>
-
-
-[automata.destruction.51percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.51percent.zip) | 51.34 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.51percent/) <br>
-Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
-
->Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.3 (51%). See the readme for details.
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote>### automata destruction 51percent <br>
-(14 ship attributes changed)(made for 0.10.1) <br>
+Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%).<br>
 <br>
-Modifies the self destruction chance of Sestor and Mereti ships. <br>
-Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.3 (51%). <br>
-</blockquote>
-</details>
-
-Status: tested with 0.10.2 <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
-### automata.destruction.75percent
-<img src='Working/automata.destruction.75percent/icon.png' height='100'></img><br>
-
-
-[automata.destruction.75percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.75percent.zip) | 51.34 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.75percent/) <br>
-Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-06-17) <br>
-
->Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.5 (75%). See the readme for details.
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote>### automata destruction 75percent <br>
-(14 ship attributes changed)(made for 0.10.1) <br>
+Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.0 (0%) now.<br>
+You can easily change the values in automata.txt for each ship ('"self destruct" .0') to a value of your choice. I.e. 0.12 is 23%, 0.3 is 51%, 0.5 is 75%. Its calculated twice, first the chance for self destruction on boarding(i.e. 0.3) is 30%, then of the remaining 70% again 30% chance for self destruction on capturing. That makes 30% + 21% = 51% overall chance for self destruction on a capturing try.<br>
 <br>
-Modifies the self destruction chance of Sestor and Mereti ships. <br>
-Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.5 (75%). <br>
+<br>
+2023-09-07<br>
+changed icon<br>
+changed about.txt<br>
+changed readme<br>
+
+
+
+
+
+
+
+
+
 </blockquote>
 </details>
 
@@ -6122,9 +6061,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### AES Aben
 
 
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 30.95 kb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
+[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.95 kb | 2023-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-09-02) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-09-06) <br>
 
 >New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
 >
@@ -6171,9 +6110,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.11 mb | 2023-09-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-06) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-07) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
