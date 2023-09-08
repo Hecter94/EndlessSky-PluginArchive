@@ -100,6 +100,8 @@ The following jobs can be used after every landing on an RTF planet:
 - `[basic] Reveal Map`: Reveal the whole system map (upon take of).
 - `[basic] Reveal Planet Infos`: Reveal all vanilla planets information (upon take of, does not reveal systems).
 - `[escort] * Barges` (3 variants): Get escorted by dreadful Star Barges.
+- `[escort] Escort Fleets`: Select fleets to spawn as NPC escorts.
+- `[escort] Escort Ships`: Select ships to spawn as NPC escorts.
 - `[escort] Tek Far 109`: Get escorted by a customized drone transporter.
 - `[fight] Combat Drones`: Summon an amount of hostile Combat Drones.
 - `[fight] Fight Fleet`: Pick hostile fleets to spawn.
@@ -112,7 +114,7 @@ The following jobs are toggles, their effect is reverted when you abort them:
 - `[toggle fleet] Heliarchs vs Quargs`: Adds Heliarch and Quarg fleets to RTF0.
 - `[toggle fleet] Meretis vs Sestors`: Adds Mereti and Sestor fleets to RTF0.
 - `[toggle fleet] Scin vs Vis`: Adds Scin and Vi fleets to RTF0.
-- `[toggle] Automatic Galaxy Map`: Automatically reveal all connected systems upon landing.
+- `[toggle] Automatic Galaxy Map`: Automatically reveal all connected systems upon entering one.
 - `[toggle] Hide RTF Systems`: Hide the RTF systems, so that they do not interfere.
 - `[toggle] Super Reach`: While in an RTF system, you can jump to any system on the map, even without a God Drive. By default, RTF systems have a lower jump range, to lower their impact on surrounding content.
 - `[toggle] Variants`: Enable ship variants in the RTF shipyards.

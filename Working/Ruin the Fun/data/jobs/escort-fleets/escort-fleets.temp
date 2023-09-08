@@ -1,0 +1,86 @@
+mission `Ruin-the-Fun Escort Fleets`
+	job
+	name "[escort] Escort Fleets"
+	description "Select fleets to spawn as NPC escorts."
+	"apparent payment" 1
+	repeat
+	source
+		government "Ruin-The-Fun"
+	on accept
+		conversation
+			`/!\ Accepting this mission more than once will spawn the selected fleets that many times, and deselected fleets will no longer be spawned. You cannot spawn each fleet individually.`
+				to display
+					has `Ruin-the-Fun Escort Fleets: really active`
+			`Choose the fleets to spawn:`
+			label begin
+			choice
+				`	(Done. You have not selected any fleet, so no fleet will spawn.)`
+					goto end
+					to display
+						not `Ruin-the-Fun Escort Fleets count`
+				`	(Done. Selected fleets will be spawned.)`
+					goto end
+					to display
+						has `Ruin-the-Fun Escort Fleets count`
+				`	(Reset.)`
+					goto reset
+[[tmp/fleets.list.tmp
+				`	[  ] \1`
+					to display
+						not `Ruin-the-Fun Escort Fleets: \1`
+					goto `enable \1`
+				`	[x] \1`
+					to display
+						has `Ruin-the-Fun Escort Fleets: \1`
+					goto `disable \1`
+]]
+				`	(Done. You have not selected any fleet, so no fleet will spawn.)`
+					goto end
+					to display
+						not `Ruin-the-Fun Escort Fleets count`
+				`	(Done. Selected fleets will be spawned.)`
+					goto end
+					to display
+						has `Ruin-the-Fun Escort Fleets count`
+
+			label reset
+			action
+[[tmp/fleets.list.tmp
+				clear `Ruin-the-Fun Escort Fleets: \1`
+]]
+				clear `Ruin-the-Fun Escort Fleets count`
+			`	All fleets have been unchecked`
+				goto begin
+
+[[tmp/fleets.list.tmp
+			label `enable \1`
+			action
+				set `Ruin-the-Fun Escort Fleets: \1`
+				`Ruin-the-Fun Escort Fleets count` += 1
+			`	The \1 will spawn.`
+				goto begin
+			label `disable \1`
+			action
+				clear `Ruin-the-Fun Escort Fleets: \1`
+				`Ruin-the-Fun Escort Fleets count` -= 1
+			`	The \1 will no longer spawn.`
+				goto begin
+]]
+				
+			label end
+			`Press [D] 3 times to depart.`
+				accept
+		`Ruin-the-Fun Escort Fleets: really active` += 1
+	on fail
+		`Ruin-the-Fun Escort Fleets: really active` -= 1
+	on complete
+		`Ruin-the-Fun Escort Fleets: really active` -= 1
+[[tmp/fleets.list.tmp
+	npc disable
+		fleet `\1`
+		personality heroic disables
+		to spawn
+			has `Ruin-the-Fun Escort Fleets: \1`
+		to despawn
+			not `Ruin-the-Fun Escort Fleets: \1`
+]]
