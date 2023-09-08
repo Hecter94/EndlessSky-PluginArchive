@@ -594,9 +594,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.61 mb | 2023-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.65 mb | 2023-09-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-08-31) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-09-08) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -705,6 +705,8 @@ The following jobs can be used after every landing on an RTF planet:
 - `[basic] Reveal Map`: Reveal the whole system map (upon take of).
 - `[basic] Reveal Planet Infos`: Reveal all vanilla planets information (upon take of, does not reveal systems).
 - `[escort] * Barges` (3 variants): Get escorted by dreadful Star Barges.
+- `[escort] Escort Fleets`: Select fleets to spawn as NPC escorts.
+- `[escort] Escort Ships`: Select ships to spawn as NPC escorts.
 - `[escort] Tek Far 109`: Get escorted by a customized drone transporter.
 - `[fight] Combat Drones`: Summon an amount of hostile Combat Drones.
 - `[fight] Fight Fleet`: Pick hostile fleets to spawn.
@@ -717,7 +719,7 @@ The following jobs are toggles, their effect is reverted when you abort them:
 - `[toggle fleet] Heliarchs vs Quargs`: Adds Heliarch and Quarg fleets to RTF0.
 - `[toggle fleet] Meretis vs Sestors`: Adds Mereti and Sestor fleets to RTF0.
 - `[toggle fleet] Scin vs Vis`: Adds Scin and Vi fleets to RTF0.
-- `[toggle] Automatic Galaxy Map`: Automatically reveal all connected systems upon landing.
+- `[toggle] Automatic Galaxy Map`: Automatically reveal all connected systems upon entering one.
 - `[toggle] Hide RTF Systems`: Hide the RTF systems, so that they do not interfere.
 - `[toggle] Super Reach`: While in an RTF system, you can jump to any system on the map, even without a God Drive. By default, RTF systems have a lower jump range, to lower their impact on surrounding content.
 - `[toggle] Variants`: Enable ship variants in the RTF shipyards.
@@ -5834,7 +5836,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [AES.No.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Asteroids.zip) | 237.25 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Asteroids/) <br>
 Author: Darcy Manoel | Category: Overwrites <br>
-[https://github.com/DarcyManoel/Fluff](https://github.com/DarcyManoel/Fluff) (last commit 2023-09-02) <br>
+[https://github.com/DarcyManoel/Fluff](https://github.com/DarcyManoel/Fluff) (last commit 2023-09-08) <br>
 
 >Overwrites asteroid images with empty images.
 >
@@ -6110,9 +6112,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-07) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-08) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -7934,9 +7936,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Fluff
 
 
-[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.88 mb | 2023-09-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
+[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.88 mb | 2023-09-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-02) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-08) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 
@@ -8607,9 +8609,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Fluff
 
 
-[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.88 mb | 2023-09-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
+[Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.88 mb | 2023-09-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-02) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-08) <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 >
