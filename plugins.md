@@ -52,9 +52,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/All Content Plugin/icon.png' height='100'></img><br>
 
 
-[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 141.9 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
+[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 148.77 kb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
 Author: Michael Zahniser | Category: Cheats <br>
-[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2022-10-29) <br>
+[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2023-09-09) <br>
 
 >This mod starts you on Greenrock with a trillion (10^12) credits and access to almost every ship and outfit in the game. It is intended for testing purposes, but of course, as its description says, "it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it." 
 >
@@ -159,6 +159,68 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### captureable.person.ships
+<img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
+
+
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 170.56 kb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+Author: zuckung | Category: Cheats <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-09) <br>
+
+>Makes person ships capturable. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### capturable.person.ships
+<br>
+<br>
+Makes person ships captureable.<br> 
+<br>
+<br>
+Well, technically this plugin disables the person ships, and creates new ones(with a space more in its names) which are captureable(due to the limitations of changing parts of originals). Also adds all of them to the author government, adjusts some personalities, sets all frequencies to 1000 and changes the game rules to prevent that no ship spawns.<br>
+So attacking one of them makes all your enemies.<br>
+The average spawn time is 10 minutes.<br>
+<br>
+Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Except for "Zitchas" which needed less dmg weapons and max flamethrowers to prevent its cloaking. Also boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too. Another problem is "Tranquility" which has no weapons and therefore avoids fight. Tested different personality settings and best choice was to let it stay in system after spawn(yellow dot on radar).<br>
+<br>
+<img src='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/captureable.person.ships/screenshot.jpg' width='400'>
+<ul>
+<li>"Michael Zahniser" (found everywhere | Kestrel + Finch)</li>
+<li>"Cap'n Pester" (found everywhere | Quarg Wardragon)</li>
+<li>"Marauding Max" (found everywhere | Marauder Fury)</li>
+<li>"Captain Nate" (found everywhere | Vanguard)</li>
+<li>"Tranquility" (found everywhere | Lampyrid)</li>
+<li>"Power of the People" (found everywhere | Modified Osprey)</li>
+<li>"Local God" (found everywhere | Ursa Polaris)</li>
+<li>"Subsidurial" (found in uninhabited | Subsidurial)</li>
+<li>"Prototype B3-CC4" (found in Ember Waste | Shooting Star)</li>
+<li>"Rais Iris XVIII" (found everywhere | Marauder Bactrian)</li>
+<li>"Zitchas" (found in Ember Waste | Heron + Peregrine + 4x Petrel + 32x Tern)</li>
+<li>"Brick" (found everywhere | 3x Modified Boxwing)</li>
+<li>"Gefullte Taubenbrust" (found everywhere | Modified Battleship)</li>
+<li>"MasterOfGrey" (found in Hai space | Modified Ladybug)</li>
+</ul>
+<br>
+<br>
+Changelog:<br>
+<br>
+2023-09-09<br>
+changed all frequencies to 1000<br>
+changed gamerules to prevent no spawning chance<br>
+<br>
+2023-09-08<br>
+initial release<br>
+
+</blockquote>
+</details>
+
+Status: complete on 0.10.2 <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -4946,9 +5008,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Endless-Endless-Sky/icon.png' height='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.09 mb | 2023-07-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/) <br>
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.09 mb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/) <br>
 Author: 1010Todd | Category: Overhauls <br>
-[https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky) (last commit 2023-07-29) <br>
+[https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky) (last commit 2023-09-09) <br>
 
 >Python scripts to generate new procedurally generated galaxy. Comes with pre-generated data for instant playing.
 >
@@ -14431,7 +14493,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>28 plugins in this category.<p>
+<p>29 plugins in this category.<p>
 
 <details>
 
