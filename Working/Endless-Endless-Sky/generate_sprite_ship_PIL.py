@@ -67,6 +67,14 @@ def polar_to_cartesian(angle, amplitude):
     y = amplitude * math.sin(angle)
     return x,y
 
+def customOpenImage(string):
+    string = string.removesuffix(".PNG")
+    string = string.removesuffix(".png")
+    try:
+        return Image.open(string+".png")
+    except FileNotFoundError:
+        return Image.open(string+".PNG")
+
 def get_overlay_pattern(faction,palette,pattern_complexity=3,style=0,color_style=0):
     w, h = 110, 220
 
@@ -241,12 +249,12 @@ def pick_part_dir (partDir): #TODO: check and choose appropriate sprite size for
     #print("Dir")
     #note parts already got directory attached.
     try:
-        Image.open(partDir+"-r.png")
+        customOpenImage(partDir+"-r.png")
         Lexist = True
     except FileNotFoundError:
         Lexist = False
     try:
-        Image.open(partDir+"-l.png")
+        customOpenImage(partDir+"-l.png")
         Rexist = True
     except FileNotFoundError:
         Rexist = False
@@ -254,18 +262,18 @@ def pick_part_dir (partDir): #TODO: check and choose appropriate sprite size for
     if Lexist and Rexist:
         part_suffix_l = "-l.png"
         part_suffix_r = "-r.png"
-        part = [Image.open(partDir+part_suffix_l),
-                Image.open(partDir+part_suffix_r)]
+        part = [customOpenImage(partDir+part_suffix_l),
+                customOpenImage(partDir+part_suffix_r)]
     elif Lexist and not Rexist:
         part_suffix_l = "-l.png"
         part_suffix_r = "-l.png"
-        part = [Image.open(partDir+part_suffix_l),
-                Image.open(partDir+part_suffix_l)]
+        part = [customOpenImage(partDir+part_suffix_l),
+                customOpenImage(partDir+part_suffix_l)]
     elif Rexist and not Lexist:
         part_suffix_l = "-r.png"
         part_suffix_r = "-r.png"
-        part = [Image.open(partDir+part_suffix_r),
-                Image.open(partDir+part_suffix_r)]
+        part = [customOpenImage(partDir+part_suffix_r),
+                customOpenImage(partDir+part_suffix_r)]
     return part
 
 #Sort bounds by smallest
@@ -363,7 +371,7 @@ def get_part_pos (partlist,newboundmin,newboundmax,mode,part,part_size,uniMode,s
                     part = pick_part_dir(n)
                     part_size = [p.size for p in part]
                 else:
-                    part = Image.open(n+".png")
+                    part = customOpenImage(n+".png")
                     part = [part, part]  
                     part_size = [p.size for p in part]
         
@@ -465,9 +473,9 @@ def place_parts(core_img,
     partlistobj = []
     partlistobj2 =[]
     for pfiles in part_dir_dict[part_type]:
-        partlistobj.append(Image.open(pfiles+"-l.png"))
+        partlistobj.append(customOpenImage(pfiles+"-l.png"))
     for pfiles in part_uni_dict[part_type]:
-        partlistobj2.append(Image.open(pfiles+".png"))
+        partlistobj2.append(customOpenImage(pfiles+".png"))
     partlistobj,partlistname = sort_parts(partlistobj,'y',0,core_img.size[0]*.65)
     partlistobj2,partlistname2 = sort_parts(partlistobj2,'y',0,core_img.size[0]*.65)
     if len(partlistname) > 0:
@@ -485,7 +493,7 @@ def place_parts(core_img,
         if(len(partlistdir) != 0):
             part = pick_part_dir(partlistdir[0])
         else:
-            part = Image.open(partlistuni[0]+".png")
+            part = customOpenImage(partlistuni[0]+".png")
             part = [part,
                     part]
             uniMode = True
@@ -493,7 +501,7 @@ def place_parts(core_img,
         if(len(partlistuni) == 0):
             part = pick_part_dir(partlistdir[0])
         else:
-            part = Image.open(partlistuni[0]+".png")
+            part = customOpenImage(partlistuni[0]+".png")
             part = [part,
                     part]
             uniMode = True
@@ -647,9 +655,9 @@ def place_parts(core_img,
                 print(f"{part_type}:{randX,randY}")
                 print(f"{part_type}:{posX,posY}")
                 print(f"{part_type}:{nposX,nposY}")
-                debugpart = Image.open("imgparts/human/qs-perimeter-r"+".png")
+                debugpart = customOpenImage("imgparts/human/qs-perimeter-r"+".png")
                 core_img.paste(debugpart,(posX, posY),debugpart)
-                debugpart2 = Image.open("imgparts/human/qs-perimeter-rd"+".png")
+                debugpart2 = customOpenImage("imgparts/human/qs-perimeter-rd"+".png")
                 core_img.paste(debugpart2,(nposX, nposY),debugpart2)
             #symX = centW - round(part_size[1][0]/2) - randX
             symX = width- round(part_size[1][0]/2) - randX + 1#it was 1 px off for some reason.
@@ -699,9 +707,9 @@ def place_parts(core_img,
                 print(f"core:{randX,randY}")
                 print(f"core:{posX,posY}")
                 print(f"core:{nposX,nposY}")
-                debugpart = Image.open("imgparts/human/qs-perimeter-r"+".png")
+                debugpart = customOpenImage("imgparts/human/qs-perimeter-r"+".png")
                 core_img.paste(debugpart,(posX, posY),debugpart)
-                debugpart = Image.open("imgparts/human/qs-perimeter-rd"+".png")
+                debugpart = customOpenImage("imgparts/human/qs-perimeter-rd"+".png")
                 core_img.paste(debugpart,(nposX, nposY),debugpart)
             
             #print(f"Newmax:{[nposX,nposY]}")
@@ -913,7 +921,7 @@ def generate_sprite(faction,category="Heavy Warship",width=0,height=0,part_list=
                                                                                     clustermode=True)
     if faction != None:
         global patt_overlay_path
-        patt_overlay = Image.open(f"{patt_overlay_path}{faction.name}.png")
+        patt_overlay = customOpenImage(f"{patt_overlay_path}{faction.name}.png")
         pto_x = random.randrange(0,width/2)
         pto_y = random.randrange(10,round(height*.5))
         col_img = Image.new('RGBA', (width,height), faction.shipcoloring) 
@@ -951,6 +959,7 @@ def generate_sprite(faction,category="Heavy Warship",width=0,height=0,part_list=
     return boarderimg,gpoints,tpoints,epoints
     #new_img.save('test.png')
     #new_img.show()
+
 StandaloneMode = False
 TestMode = False
 TestPattMode = False
