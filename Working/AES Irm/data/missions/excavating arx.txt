@@ -4,7 +4,6 @@ mission "Irm: excavating Arx [1]"
 	landing
 	name "Investigate Huer"
 	on offer
-		fail "Irm: expanding business [12b]"
 		conversation
 			`You descend towards the ringworld, unsure of the nature of David's summons. As the surface begins to come into view, you make out a collection of ships, all of Human design, closely parked together to act as a makeshift site of operations.`
 			`	A communication from David is picked up, he instructs you on where to land and which ship is his. After which he asks you to meet him on board his ship so that he can appraise you of the state of operations. You're unsure of the nature of these 'operations', exploratory or otherwise but you trust enough that whatever is planned, David knows what he's doing.`
@@ -61,7 +60,7 @@ mission "Irm: excavating Arx [1]"
 				launch
 	source "Arx"
 	to offer
-		has "Irm: expanding business [12b]: offered"
+		has "Irm: expanding business [12a]: offered"
 mission "Irm: excavating Arx [2]"
 	description `Return to the ringworld, David and the rest of the crew surely have something for you to do now.`
 	destination "Arx"
@@ -91,6 +90,7 @@ mission "Irm: excavating Arx [3]"
 	on offer
 		event "Irm: hanger secured" 16
 		set "Irm: first unread"
+		set "Irm: unread updates"
 		conversation
 			`The collection of ships sits idly in mostly the same place as you left them, only some around the edges have come and gone since you've been here. There are not only Human ships here now, as you spot one shield beetle on the fringe of the site, somewhat distanced. Deciding to land near the shield beetle, you still maintain some distance from it but it's only a short walk.`
 			`	Walking towards a group convening nearby the shield beetle, you find David watching from the edge of the group as his advisors instruct the crew on the task at hand. Soon, only you and David remain as the rest board the ship, and he remarks on your fortunate arrival yet again. "<first>, you must have a sense for these things. I'm glad you are here for this because they're just leaving now to probe the 'vent'." He walks off, expecting you to follow and you do, to the same room you were given a briefing in just days earlier.`
@@ -134,7 +134,21 @@ event "Irm: hanger secured"
 		government "Turner"
 		spaceport `Spacious caverns beneath the surface terrain are where ships were presumed to have landed when Arx was inhabited, now barren and claimed by Turner Inc. The architecture within is clearly not well matched with Human or Hai technology, as other parked ships stick out sorely.`
 		spaceport `	Large, obviously out of place fuel tanks have been set up to allow for refueling. It's difficult to imagine this place will ever feel like Humans belong here.`
-mission "Irm: ordaria discovery"
+mission "Irm: set excavation chance"
+	invisible
+	landing
+	on offer
+		"Irm: excavation chance" = ( 100 / 4 )
+	repeat
+	to offer
+		"Irm: excavation chance" != ( 100 / 4 )
+mission "Irm: set random"
+	invisible
+	landing
+	repeat
+	on offer
+		"Irm: random" = random
+mission "Irm: excavated ordaria"
 	invisible
 	landing
 	on offer
@@ -144,8 +158,14 @@ mission "Irm: ordaria discovery"
 	to offer
 		has "event: Irm: hanger secured"
 		"Irm: ongoing projects" <= 2
-		random == 1
-mission "Irm: ospora discovery"
+		and
+			"Irm: random" >= ( "Irm: excavation chance" * 0 )
+			"Irm: random" < ( "Irm: excavation chance" * 1 )
+event "Irm: ordaria sale"
+	"Irm: ongoing projects" --
+	planet "Arx"
+		add outfitter "ordaria"
+mission "Irm: excavated ospora"
 	invisible
 	landing
 	on offer
@@ -155,8 +175,14 @@ mission "Irm: ospora discovery"
 	to offer
 		has "event: Irm: hanger secured"
 		"Irm: ongoing projects" <= 2
-		random == 2
-mission "Irm: odus discovery"
+		and
+			"Irm: random" >= ( "Irm: excavation chance" * 1 )
+			"Irm: random" < ( "Irm: excavation chance" * 2 )
+event "Irm: ospora sale"
+	"Irm: ongoing projects" --
+	planet "Arx"
+		add outfitter "ospora"
+mission "Irm: excavated odus"
 	invisible
 	landing
 	on offer
@@ -166,8 +192,14 @@ mission "Irm: odus discovery"
 	to offer
 		has "event: Irm: hanger secured"
 		"Irm: ongoing projects" <= 2
-		random == 3
-mission "Irm: tekina discovery"
+		and
+			"Irm: random" >= ( "Irm: excavation chance" * 2 )
+			"Irm: random" < ( "Irm: excavation chance" * 3 )
+event "Irm: odus sale"
+	"Irm: ongoing projects" --
+	planet "Arx"
+		add outfitter "odus"
+mission "Irm: excavated tekina"
 	invisible
 	landing
 	on offer
@@ -177,14 +209,20 @@ mission "Irm: tekina discovery"
 	to offer
 		has "event: Irm: hanger secured"
 		"Irm: ongoing projects" <= 2
-#		random == 4
+		and
+			"Irm: random" >= ( "Irm: excavation chance" * 3 )
+			"Irm: random" < ( "Irm: excavation chance" * 4 )
+event "Irm: tekina sale"
+	"Irm: ongoing projects" --
+	planet "Arx"
+		add outfitter "tekina"
 mission "Irm: Arx discoveries"
 	invisible
 	landing
-	on enter "Waypoint"
+	on enter "Waypoint "
 		clear "Irm: first unread"
 		conversation
-			`Much to your frustration, there is no way for typical communications to break through the barrier for entry unless someone triggers the station to travel through. It seems, however, that David's people have set up a mailbox system to relay missed messages.`
+			`Much to your frustration, there is no way for typical communications to break through the barrier for entry unless someone triggers the station to travel through. However, David's people have set up a mailbox system to relay missed messages when arriving.`
 			`	'You have <unread> incoming messages.'`
 			action
 				clear "Irm: unread updates"
@@ -193,44 +231,45 @@ mission "Irm: Arx discoveries"
 					has "Irm: first unread"
 			branch "ordaria"
 				and
-					has "Irm: ordaria discovery: offered"
-					not "Irm: ordaria block"
+					has "Irm: excavated ordaria: offered"
+					not "Irm: block ordaria"
 			branch "ospora"
 				and
-					has "Irm: ospora discovery: offered"
-					not "Irm: ospora block"
+					has "Irm: excavated ospora: offered"
+					not "Irm: block ospora"
 			branch "odus"
 				and
-					has "Irm: odus discovery: offered"
-					not "Irm: odus block"
+					has "Irm: excavated odus: offered"
+					not "Irm: block odus"
 			branch "tekina"
 				and
-					has "Irm: tekina discovery: offered"
-					not "Irm: tekina block"
+					has "Irm: excavated tekina: offered"
+					not "Irm: block tekina"
 			`	'End of stored communications.'`
 				decline
 			label "ordaria"
 			action
-				set "Irm: ordaria block"
+				set "Irm: block ordaria"
 			`		"Ordaria System Cooler, lightweight and powerful, very energy efficient."`
 				decline
 			label "ospora"
 			action
-				set "Irm: ospora block"
+				set "Irm: block ospora"
 			`		"Ospora Habitation Cooler, unwieldy size but offers unparalleled thermal stability. Not viable to remove from Arx."`
 				decline
 			label "odus"
 			action
-				set "Irm: odus block"
+				set "Irm: block odus"
 			`		"Odus Reformatory, unbelievably powerful cooling with a significant drain on energy reserves. Locked within secure areas of Arx, presumably experimental research equipment."`
 				decline
 			label "tekina"
 			action
-				set "Irm: tekina block"
+				set "Irm: block tekina"
 			`		"Tekina Engine, fully manueverable set of engines, highly efficient. Revolutionary leap."`
 				decline
 	repeat
-	source "Slic Airn"
+	source
+		not system "Waypoint "
 	substitutions
 		"<unread>" "1"
 			"Irm: unread updates" == 1
@@ -242,20 +281,8 @@ mission "Irm: Arx discoveries"
 			"Irm: unread updates" == 4
 	to offer
 		has "event: Irm: hanger secured"
-		has "Irm: unread updates"
-event "Irm: ordaria sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "ordaria"
-event "Irm: ospora sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "ospora"
-event "Irm: odus sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "odus"
-event "Irm: tekina sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "tekina"
+		or
+			has "Irm: unread updates"
+			and
+				has "Irm: first unread"
+				"Irm: unread updates" > 1
