@@ -167,9 +167,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 170.56 kb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 170.47 kb | 2023-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-15) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -182,9 +182,8 @@ Author: zuckung | Category: Cheats <br>
 Makes person ships captureable.<br> 
 <br>
 <br>
-Well, technically this plugin disables the person ships, and creates new ones(with a space more in its names) which are captureable(due to the limitations of changing parts of originals). Also adds all of them to the author government, adjusts some personalities, sets all frequencies to 1000 and changes the game rules to prevent that no ship spawns.<br>
-So attacking one of them makes all your enemies.<br>
-The average spawn time is 10 minutes.<br>
+Well, technically this plugin disables the person ships, and creates new ones(with a space more in its names, due to limitations of changing parts of originals) which are captureable. Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000.<br>
+So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
 <br>
 Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Except for "Zitchas" which needed less dmg weapons and max flamethrowers to prevent its cloaking. Also boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too. Another problem is "Tranquility" which has no weapons and therefore avoids fight. Tested different personality settings and best choice was to let it stay in system after spawn(yellow dot on radar).<br>
 <br>
@@ -208,6 +207,10 @@ Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti be
 <br>
 <br>
 Changelog:<br>
+<br>
+2023-09-15<br>
+changed gamerules back, because it caused mass spawning<br>
+changed some personalities<br>
 <br>
 2023-09-09<br>
 changed all frequencies to 1000<br>
@@ -1225,9 +1228,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 20.04 kb | 2023-09-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.0 kb | 2023-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-03) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-15) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 
@@ -1235,21 +1238,30 @@ Author: zuckung | Category: Gameplay <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### better.starts <br>
 <br>
-Adds 8 new start options with different ships, background storys, credits and debts.<br>
+Adds 9 new start options with different ships, background storys, credits and debts.<br>
 <br>
 <ul>
-<li>Start: Cheater | Leviathan: 100m credits, full visible human space, Jump Drive, in Sol system, no story</li>
-<li>Start: Salvager | Shuttle: equipped for boarding, in Aldhibain system</li>
-<li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
-<li>Start: Miner | Clipper: equipped for mining, in Rasalhague system</li>
 <li>Start: Trader | Freighter: equipped for cargo transport, in Merak system</li>
 <li>Start: Trader (Hai) | Aphid: equipped for cargo transport, in Fah Soom system(Hai space)</li>
+<li>Start: Passenger Transport | Scout: equipped for passenger transport, Talita system</li>
+<li>Start: Miner | Clipper: equipped for mining, in Rasalhague system</li>
+<li>Start: Salvager | Shuttle: equipped for boarding, in Aldhibain system</li>
+<li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
 <li>Start: Explorer to Remnant | Heavy Shuttle: equipped for exploring the Remnant, in Tania Australis system</li>
-<li>Start: Explorer to Automata | Bounder: equipped for exploring the Kor Automata, in Mirfak system(Hai space)</li>
+<li>Start: Explorer to Automata | Bounder: equipped for exploring the Kor Automata, in Mirfak system</li>
+<li>Start: Cheater | Heron: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
 </ul>
 <br>
-Beside the cheater start option, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role.<br>
+Beside the cheater start option, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role. The intro missions on New Bosten are set as completed. Same goes for the Hai start with the Hai first contact mission.<br>
 <br>
+<br>
+Changelog:<br>
+<br>
+2023-09-15<br>
+added passenger transport start<br>
+set intro missions to done for all starts<br>
+doubled bank loan duration / halfed interest rate for all starts<br>
+changed cheater start ship and credits<br>
 <br>
 2023-09-03<br>
 changed miner start to a system with outfitter<br>
