@@ -6,11 +6,45 @@ mission "Omnis: mod settings"
 		conversation
 #	Menu
 			label "return"
+			`WARNING: These options perpetrate all saves that interact with Omnis, consider the effects of each before continuing.`
 			choice
+				`	Automatic Map Reveal`
+					goto "1"
 				`	Shipyard Variants`
 					goto "2"
 				`	(Exit.)`
 					launch
+#	Automatic Map Reveal
+			label "1"
+			`Currently enabled.`
+				to display
+					has "global: Omnis: Automatic Map Reveal"
+			`Currently disabled.`
+				to display
+					not "global: Omnis: Automatic Map Reveal"
+			`Defaultly disabled`
+			`When enabled, landing anywhere within the Omnis galaxy will reveal the entire vanilla map.`
+			choice
+				`	(Enable.)`
+					to display
+						not "global: Omnis: Automatic Map Reveal"
+					goto "1 1"
+				`	(Disable.)`
+					to display
+						has "global: Omnis: Automatic Map Reveal"
+					goto "1 2"
+				`	(Return.)`
+					goto "return"
+			label "1 1"
+			action
+				set "global: Omnis: Automatic Map Reveal"
+			`Enabled Automatic Map Reveal.`
+				goto "return"
+			label "1 2"
+			action
+				clear "global: Omnis: Automatic Map Reveal"
+			`Disabled Automatic Map Reveal.`
+				goto "return"
 #	Ship Variants
 			label "2"
 			`Currently enabled.`
