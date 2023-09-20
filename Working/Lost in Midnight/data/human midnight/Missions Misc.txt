@@ -403,6 +403,7 @@ mission "Executive Guard: Syndicate Extremists"
 	clearance
 	to offer
 		has "FW Syndicate Extremists 1A: done"
+		not "FW Syndicate Extremists 1B: done"
 		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 7
 	npc
 		government "Syndicate (Extremist)"
@@ -436,7 +437,83 @@ mission "Executive Guard: Syndicate Extremists"
 			variant
 				"Vanguard" 2
 	on complete
-		log "Defeated an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
+		log "Defeated the S.S. Longinus, an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
+
+mission "Executive Guard: Syndicate Extremist Post War"
+	minor
+	name "Syndicate Extremists"
+	description "An Executive Guard named S.S. Longinus us rumored to lead a fleet of Syndicate Extremists at <waypoints>. Eliminate the S.S. Longinus before returning to <destination>. Payment is <payment>."
+	source
+		government "Syndicate"
+	waypoint "Algenib"
+	to offer
+		has "free worlds reconciliation"
+		not "Executive Guard: Syndicate Extremists: offered"
+		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 7
+		random < 70
+	on offer
+		conversation
+			scene "outfit/proton gun"
+			`As you are wandering the spaceport, someone shoves a flier advertising Syndicate Systems into your hands before disappearing into the crowd. You notice something written on the back...`
+			``
+			`------------------------------`
+			``
+			`	"Captain <first> <last>, there are rumors in the Syndicate that remnants of the Syndicate Extremists have appeared at <waypoints>. The corporate leadership will probably waste time deliberating on this development rather than taking decisive action. Based on your previous experience dealing with the extremists, I feel you are the best person to outsource for handling this job. Retern to <origin> after eliminating their flagship, the Executive Guard named S.S. Longinus, and a reward of <payment> will be deposited into your account. Put this flier into your pocket if you accept this job. Throw it away if you do not."`
+			``
+			`------------------------------`
+			``
+			choice
+				`	(Put the flier into your pocket.)`
+					accept
+				`	(Toss the flier into the trash.)`
+					decline
+	npc
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		ship "Barb (Proton)" "F-001" 
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"
+	npc
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Marauder Vanguard"
+				"Marauder Protector"
+				"Marauder Manta"
+				"Marauder Manta (Weapons)"
+				"Marauder Manta (Engines)"
+				"Marauder Splinter"
+				"Marauder Splinter (Weapons)"
+				"Marauder Splinter (Engines)"
+	npc
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate small"
+			variant
+				"Marauder Quicksilver"
+				"Marauder Quicksilver (Weapons)"
+				"Marauder Quicksilver (Engines)"
+	npc kill
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		ship "Executive Guard" "S.S. Longinus"
+	on complete
+		payment 1000000
+		log "Defeated the S.S. Longinus, an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
+		conversation
+			scene "ship/executive guard/executive guard"
+			`When you arrive, <payment> is deposited into your account. The amount matches what was promised for eliminating the S.S. Longinus.`
+
 
 
 mission "Gremlin Protoype Escort"
