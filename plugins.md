@@ -11926,15 +11926,17 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Fire Corporation/icon.png' height='100'></img><br>
 
 
-[Fire.Corporation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fire.Corporation.zip) | 1016.1 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fire%20Corporation/) <br>
+[Fire.Corporation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fire.Corporation.zip) | 1.01 mb | 2023-09-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fire%20Corporation/) <br>
 Author: lumbar527 | Category: Story <br>
-[https://github.com/lumbar527/Fire-Corporation](https://github.com/lumbar527/Fire-Corporation) (last commit 2023-06-20) <br>
+[https://github.com/lumbar527/Fire-Corporation](https://github.com/lumbar527/Fire-Corporation) (last commit 2023-09-21) <br>
 
 >An Endless Sky plugin about a manufacturing corporation that hates pirates. 
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Fire-Corporation
+<blockquote># **_THIS REPOSITORY IS NO LONGER BEING MAINTAINED. IT HAS BEEN REPLACED BY https://github.com/Cromha-Plugins/Fire-Corporation!_**
+
+# Fire-Corporation
 
 One of the greatest manufacturers in human space (in their own opinion) is Fire Corporation. They produce several ships for civilian and military uses.
 If you were worried about fighting pirates using their ships, you don't have to worry; that's what they do.
@@ -12384,9 +12386,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.59 mb | 2023-09-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.61 mb | 2023-09-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-09-20) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-09-21) <br>
 
 >A mission focused plugin for Endless Sky.
 >
