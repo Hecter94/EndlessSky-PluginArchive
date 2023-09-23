@@ -2646,3 +2646,265 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Saryd)"
 		payment
 		payment 30000
 		dialog phrase "coalition peacekeepers dialog"
+
+
+
+mission "Culminator Ammo [Outfitter]"
+	outfitter
+	minor
+	invisible
+	repeat
+	source
+		government "Coalition"
+	to offer
+		has "coalition dissension"
+		"credits" > 2400000
+		or
+			and
+				not "Culminator Ammo [Outfitter]: offered"
+				random < 70
+			and
+				has "Culminator Ammo [Outfitter]: offered"
+				random < 5
+	on offer
+		require "Culminator Pod"
+		conversation
+			scene "outfit/culminator storage"
+			`While visiting the outfitter, someone carts in some dusty storage tubes filled with ancient Culminator Torpedos. The sales clerk is busy with a different customer...`
+			choice
+				`	"Where did you find those?"`
+				`	(Ignore this.)`
+					decline
+			branch find1
+				random < 80
+			`	"Found in the basement of a deceased relative, I did. Antiques from the war which liberated the Coalition, these are."`
+				goto purchase
+			label find1
+			branch find2
+				random < 75
+			`	"Found in the attic of an old house recently acquired, I did. Antiques from the war which liberated the Coalition, these are."`
+				goto purchase
+			label find2
+			branch find3
+				random < 66
+			`	"Found buried under the garden of an old farm, I did. Antiques from the war which liberated the Coalition, these are."`
+				goto purchase
+			label find3
+			branch find4
+				random < 50
+			`	"Found hidden in an abandoned warehouse, I did. Antiques from the war which liberated the Coalition, these are."`
+				goto purchase
+			label find4
+			`	"Salvaged from an old wrecked ship, I did. Antiques from the war which liberated the Coalition, these are."`
+			label purchase
+			`	The sales clerk hasn't noticed you and is still preoccupied with the other customer...`
+			choice
+				`	"Are you here to sell them?"`
+			`	"Plan to sell them I do. But wait long it seems I must..."`
+			`	The sales clerk still hasn't noticed you and is now haggling with the other customer...`
+			choice
+				`	"Let me buy them."`
+					goto buy
+				`	"I'm sure they'll be done eventually."`
+			`	You both wait in silence until the sales clerk is ready to handle your tranactions.`
+				decline
+			label buy
+			`	"Certain this is a good idea, I am not..."`
+			choice
+				`	"I'll pay 1,200,000."`
+					goto end
+				`	"Nevermind."`
+			`	You both wait in silence until the sales clerk is ready to handle your tranactions.`
+				decline
+			label end
+			action
+				payment -1200000
+				outfit "Culminator Storage Tube" 2
+				outfit "Culminator Torpedo" 40
+			`	"A good deal, that is. Alright! To you I will sell." The sales clerk is still busy with the other customer and doesn't notice your exchange...`
+				decline
+
+mission "Culminator Cache [Shifting Sand] 1"
+	minor
+	name "Retire to <planet>"
+	description "Help an old Saryd visit <stopovers> before going to <destination> for retirement."
+	source
+		government "Coalition"
+		attributes "arach" "kimek"
+		not attributes "coalition station"
+	destination "Shifting Sand"
+	stopover "Cold Horizon"
+	passengers 1
+	to offer
+		has "coalition dissension"
+		"reputation: Heliarch" < 30
+		random < 70
+	on offer
+		conversation
+			scene "planet/ice1"
+			`You find an elderly Saryd waiting at the <ship>'s landing pad. "Transportation to <stopovers> I require. A final journey before retiring on <destination> I must undertake."`
+			choice
+				`	"I am <first> <last>. Welcome aboard."`
+				`	"Sorry, I can't help you."`
+					decline
+			`	"Sedorum. For your assistance you I thank ."`
+				accept
+	on stopover
+		dialog `Sedorum thanks you for helping him reach <stopovers>. A small package is waiting for him at the spaceport. After bringing it aboard, he is ready for the final leg of his trip.`
+	on enter "Good Omen"
+		conversation
+			scene "planet/ice1"
+			`"Finally arrived we have!" While looking at the planet below, Sedorum asks, "<first>, seen our great Coalition you have. Of the society we built what think you?"`
+			choice
+				`	"It is a peaceful society."`
+					goto peace
+				`	"It is an orderly society."`
+					goto order
+				`	"I'm not sure."`
+			`	Sedorum guffaws. "Much to learn about us, you still have!" After calming down he quietly mutters, "What opinion you will have once learn more you do?"`
+				accept
+			label peace
+			`	Sedorum smiles. "Keeping the peace, the Heliarch always are. But to achieve that, a cost we must pay..."`
+				accept
+			label order
+			`	Sedorum frowns. "Order we have, under the Heliarch's watch. But to maintain that, a price we pay..."`
+				accept
+	on complete
+		log "People" "Sedorum" `An old Saryd who retired on Shifting Sand in the Good Omen system on the edge of Saryd space.`
+		conversation
+			scene "outfit/map"
+			`	After arriving, Sedorum hands you a pair of scrolls from the package he received on <stopovers>. "Retired I am. A use for these I no longer have. Please take as payment for you I thank." Studying them after Sedorum departs, you see they are maps of locations on Vibrant Water in the Lone Cloud system and Shadowed Valley in the Fallen Leaf system. Notes are written on them, but you are unable to discern what they mean.`
+
+mission "Culminator Cache [Shifting Sand] 2"
+	landing
+	invisible
+	source "Shifting Sand"
+	to offer
+		has "Culminator Cache [Vibrant Water] 2: declined"
+		has "Culminator Cache [Shadowed Valley] 2: declined"
+	on offer
+		log "People" "Sedorum" `The Heliarch placed Sedorum under arrest for being a dissident recruiter.`
+		conversation
+			scene "thumbnail/heliarch hunter"
+			`You witness the Heliarch placing Sedorum under arrest for recruiting dissidents. He shouts something in his language before being lead away.`
+				decline
+
+mission "Culminator Cache [Vibrant Water] 1"
+	landing
+	name "Vibrant Water Island"
+	description "Sedorum gave you a map of an island on <destination>. Perhaps something is hidden there."
+	destination "Vibrant Water"
+	to offer
+		has "Culminator Cache [Shifting Sand] 1: done"
+
+mission "Culminator Cache [Vibrant Water] 2"
+	landing
+	invisible
+	source "Vibrant Water"
+	to offer
+		has "Culminator Cache [Vibrant Water] 1: done"
+	on offer
+		conversation
+			scene "outfit/map"
+			`<origin> is one of the locations on the maps given to you by Sedorum. Do you want to explore the island depicted on it?`
+			choice
+				`	(Search the island.)`
+				`	(Not right now.)`
+					defer
+			scene "scene/scene-wooden crates"
+			`	You fly out to the island and park on a wide stretch of beach. A thick jungle spreads out before you. After a few hours of hiking through the exotic foliage, you find the place where the map is marked with some notes. Several large crates are hidden in the bushes.`
+			choice
+				`	(Crack one open.)`
+				`	(Haul them back to your ship.)`
+					goto haul
+			scene "scene/scene-devoured"
+			`	The lid is difficult to crack open. With some effort, you start to pry it open by pounding a wedge into the seam. Unfortunately, the noise attracts a pack of local predators that sneak up on you! Although each one is no larger than a common house cat, there are too many of them. They seem to sense where your arteries are and each bite results in a spray of blood that splatters the area. This only excites the ravaging predators into a frenzy and you are quickly devoured.`
+				die
+			label haul
+			scene "outfit/culminator pod"
+			`	It takes multiple trips, but you manage to haul back half of the crates. Inside, you find a pair of weapon pods and what appears to be their ammunition. The sun is starting to set...`
+			choice
+				`	(Retrieve the remaining crates.)`
+				`	(Wait until morning.)`
+					goto morning
+				`	(Leave.)`
+					goto leave
+			scene "scene/scene-devoured"
+			`	The sky gradually darkens as you trudge back through the jungle. Something seems odd. The local wildlife has gotten quiet. As your eyes adjust to the gloomy twilight, something leaps out from the brush and you feel a sharp pain in your neck! The creature's vicious attack cut into an artery, sending a spray of blood gushing out into the cool evening air. Suddenly, the jungle springs to life as more of these predators swarm out from the underbrush. There is no time to react as you are quickly devoured by them in a bloodthirsty frenzy.`
+				die
+			label morning
+			scene "thumbnail/heliarch rover"
+			`	You settle in for the night. The following morning you awaken to the sound of engines flying overhead. A Heliarch patrol flies over the island and hails you. "For what on this island you do seek? Find in the jungle something you have?".`
+			choice
+				`	"I found an old weapons cache."`
+				`	"None of your business!"`
+					goto fight
+			`	"Property of the Coalition these weapons are. Surrender them you will. Resist you shall not."`
+			choice
+				`	(Surrender the weapons cache.)`
+				`	(Flee.)`
+					goto fight
+			`	You hand over the crates you retrieved. The Heliarch thank you for your cooperation and dispatch a search party to confiscate the rest. You return to the spaceport empty handed.`
+				decline
+			label fight
+			action
+				outfit "Culminator Pod" 2
+				outfit "Culminator Torpedo" 14
+				"reputation: Heliarch" <?= -1000
+			scene "thumbnail/heliarch judicator"
+			`	You fire up your engines and launch the <ship>! A Heliarch Judicator is in orbit and moves to intercept!`
+				launch
+			label leave
+			action
+				outfit "Culminator Pod" 2
+				outfit "Culminator Torpedo" 14
+			`	You abandon the remaining crates and head back to the spaceport for the evening. The following morning, the Heliarch announce that a weapons cache was discovered on the island. They are searching for whoever was hiding the weapons there...`
+				decline
+	npc kill
+		government "Heliarch"
+		personality waiting heroic opportunistic
+		fleet
+			names "heliarch"
+			fighters "heliarch fighter"
+			cargo 1
+			variant
+				"Heliarch Judicator"
+				"Heliarch Rover" 6
+
+mission "Culminator Cache [Shadowed Valley] 1"
+	landing
+	name "Shadowed Valley Caverns"
+	description "Sedorum gave you a map of a cavern on <destination>. Perhaps something is hidden there."
+	destination "Shadowed Valley"
+	to offer
+		has "Culminator Cache [Shifting Sand] 1: done"
+
+mission "Culminator Cache [Shadowed Valley] 2"
+	landing
+	invisible
+	source "Shadowed Valley"
+	to offer
+		has "Culminator Cache [Shadowed Valley] 1: done"
+	on offer
+		conversation
+			scene "outfit/map"
+			`<origin> is one of the locations on the maps given to you by Sedorum. Do you want to explore the caverns depicted on it?`
+			choice
+				`	(Search the caverns.)`
+				`	(Not right now.)`
+					defer
+			`	The caverns are located in a remote mountain range some distance from the spaceport. You find a spot near the caverns just large enough to park the <ship>, but it leaves a portion of the hull hanging precariously off the edge of a cliff. The caverns, like many on this world, are filled with strange crystals that reflect and refract the light you brought with you, casting everything in sight with a strange multi-colored hue.`
+			`	You find the location marked on the map with several notes. There doesn't appear to be anything here but a large pool of water.`
+			choice
+				`	(Go for a swim.)`
+				`	(Return to your ship.)`
+					goto return
+			`	The water chills you to the bone. As you swim out you start to have trouble making your arms and legs move the way you want them to. It's uncertain whether this is the result of the freezing temperature or poison in the water. Either way, you are unable to keep your head above the surface and drown.`
+				die
+			label return
+			action
+				outfit "Culminator Storage Tube" 4
+				outfit "Culminator Torpedo" 80
+			scene "outfit/culminator storage"
+			`	You aren't sure if the water is safe. Returning to your ship, you don a space suit before returning to the pool. Wading out into the depths, you find several crates hidden below the surface. Hauling them back to your ship, you find that they contain ammunition, but the weapon that uses them is not included.`
+				decline
