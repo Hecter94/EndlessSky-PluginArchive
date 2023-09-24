@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-09-17) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-09-24) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -2778,9 +2778,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 557.75 mb | 2023-09-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 558.13 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-09-20) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-09-24) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -3442,6 +3442,43 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### expert.crew.members
+<img src='Working/expert.crew.members/icon.png' height='100'></img><br>
+
+
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 482.87 kb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+Author: zuckung | Category: Outfits <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-19) <br>
+
+>Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### expert.crew.members
+<br>
+<br>
+Adds unique crew members, aquireable through low chance missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc.<br>
+<br>
+Currently there are 20 expert crew members. Visit spaceports on human worlds with an outfitter to find the missions.(2% chance)<br>
+The technology fields are: hull(2), energy(2), storage(3), scanner(3), cooling(3), engine(2), fuel(3), shield(2)<br>
+In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
+They have the positive stats of a medium human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
+<br>
+<img src='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/screenshot.jpg' width='400'>
+<br>
+<br>
+2023-09-19<br>
+initial release<br>
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -6196,9 +6233,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### AES Irm
 
 
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
+[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
 Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-19) <br>
+[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-24) <br>
 
 >New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
 >
@@ -12951,6 +12988,54 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### real.fluff
+<img src='Working/real.fluff/icon.png' height='100'></img><br>
+
+
+[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 1.13 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-23) <br>
+
+>A bunch of side missions which reward unique fluffy pets. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### real.fluff
+<br>
+<br>
+A bunch of side missions which reward unique pets. <br>
+<br>
+Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 10% chance of appearing.<br>
+<ul>
+<li>Ferret - mission found on Bivrost</li>
+<li>Hamster - mission found on Twinstar</li>
+<li>Koala - mission found on New Portland</li>
+<li>Rabbit - mission found on Starcross</li>
+<li>Squirrel - mission found on Heartvalley (Hai space)</li>
+</ul>
+<img src='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/real.fluff/screenshot.jpg' width='400'>
+<br>
+<br>
+2023-09-23<br>
+added ferret mission
+added koala mission<br>
+added rabbit mission<br>
+added hamster mission<br>
+<br>
+2023-09-20<br>
+added squirrel mission chain<br>
+added 5 pet outfits with images<br>
+initial release<br>
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Red Cross
 
 
@@ -14509,7 +14594,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>29 plugins in this category.<p>
+<p>31 plugins in this category.<p>
 
 <details>
 
