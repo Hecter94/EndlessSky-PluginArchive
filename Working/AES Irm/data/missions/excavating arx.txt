@@ -56,7 +56,7 @@ mission "Irm: excavating Arx [1]"
 			label "concern"
 			`	A brief pause follows before she breaks the silence, and a directionless stare also, "Don't worry, I'm only anxious because we're all just waiting for that ship to get here. Trying to stay busy, good thing that it's hard to fall short of work on an alien 'world' like this." She quotes with her fingers as she speaks, drawing intentional ambiguity to her use of 'world' to describe this structure.`
 			`	You cautiously make a quip, "You must be looking in the wrong places, the crew all seem to find time to enjoy themselves." She softly responds, "I'm not them, thankfully. They can enjoy their moment, sitting on idle hands isn't my thing."`
-			`	The two of you finish your chat after a short time, sharing your respective reactions when traveling here for the first time, then joking about the vent debacle from the briefing. You return to your ship, not lasting as long as you expected before beaming off-world in fervent eagerness. You set your course for Huer to explore the only remaining planet in this system.`
+			`	The two of you finish your chat after a short time, sharing your respective reactions when traveling here for the first time, then joking about the vent debacle from the briefing. You return to your ship, not lasting as long as you expected before beaming off-world in a fervent eagerness. You set your course for Huer to explore the only remaining planet in this system.`
 				launch
 	source "Arx"
 	to offer
@@ -130,159 +130,153 @@ mission "Irm: excavating Arx [3]"
 event "Irm: hanger secured"
 	system "Waypoint "
 		government "Turner"
+		add fleet "Magni Port convoys" 1100
+	system "Waypoint"
+		add fleet "Magni Port convoys" 1400
 	planet "Arx"
 		government "Turner"
-		spaceport `Spacious caverns beneath the surface terrain are where ships were presumed to have landed when Arx was inhabited, now barren and claimed by Turner Inc. The architecture within is clearly not well matched with Human or Hai technology, as other parked ships stick out sorely.`
-		spaceport `	Large, obviously out of place fuel tanks have been set up to allow for refueling. It's difficult to imagine this place will ever feel like Humans belong here.`
-mission "Irm: set excavation chance"
-	invisible
-	landing
-	on offer
-		"Irm: excavation chance" = ( 100 / 4 )
-	repeat
-	to offer
-		"Irm: excavation chance" != ( 100 / 4 )
-mission "Irm: set random"
-	invisible
-	landing
-	repeat
-	on offer
-		"Irm: random" = random
-mission "Irm: excavated ordaria"
-	invisible
-	landing
-	on offer
-		event "Irm: ordaria sale" 120 240
-		"Irm: unread updates" ++
-		"Irm: ongoing projects" ++
-	to offer
-		has "event: Irm: hanger secured"
-		"Irm: ongoing projects" <= 2
-		and
-			"Irm: random" >= ( "Irm: excavation chance" * 0 )
-			"Irm: random" < ( "Irm: excavation chance" * 1 )
-event "Irm: ordaria sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "ordaria"
-mission "Irm: excavated ospora"
-	invisible
-	landing
-	on offer
-		event "Irm: ospora sale" 120 240
-		"Irm: unread updates" ++
-		"Irm: ongoing projects" ++
-	to offer
-		has "event: Irm: hanger secured"
-		"Irm: ongoing projects" <= 2
-		and
-			"Irm: random" >= ( "Irm: excavation chance" * 1 )
-			"Irm: random" < ( "Irm: excavation chance" * 2 )
-event "Irm: ospora sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "ospora"
-mission "Irm: excavated odus"
-	invisible
-	landing
-	on offer
-		event "Irm: odus sale" 120 240
-		"Irm: unread updates" ++
-		"Irm: ongoing projects" ++
-	to offer
-		has "event: Irm: hanger secured"
-		"Irm: ongoing projects" <= 2
-		and
-			"Irm: random" >= ( "Irm: excavation chance" * 2 )
-			"Irm: random" < ( "Irm: excavation chance" * 3 )
-event "Irm: odus sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "odus"
-mission "Irm: excavated tekina"
-	invisible
-	landing
-	on offer
-		event "Irm: tekina sale" 120 240
-		"Irm: unread updates" ++
-		"Irm: ongoing projects" ++
-	to offer
-		has "event: Irm: hanger secured"
-		"Irm: ongoing projects" <= 2
-		and
-			"Irm: random" >= ( "Irm: excavation chance" * 3 )
-			"Irm: random" < ( "Irm: excavation chance" * 4 )
-event "Irm: tekina sale"
-	"Irm: ongoing projects" --
-	planet "Arx"
-		add outfitter "tekina"
-mission "Irm: Arx discoveries"
-	invisible
-	landing
-	on enter "Waypoint "
-		clear "Irm: first unread"
+		spaceport `Spacious caverns beneath the surface terrain are where ships are presumed to have landed when Arx was inhabited, now barren and claimed by Turner Inc. The architecture within is clearly not well matched with Human or Hai technology, as currently parked ships stick out sorely.`
+		spaceport `	Large, obviously out of place fuel tanks have been set up to allow for refueling. An array of pulleys and harnesses hang along the walls, allowing for on-the-spot ship repairs within a hanger not meant for Human affairs. It's difficult to imagine this place will ever feel like you belong.`
+mission "Irm: Magni Port [1]"
+	description "David is wary about the Quarg, insisting that they should know about your venture before too much time has passed. Any warning that the Quarg might offer you is important too, David assures you as much."
+	destination "Alta Hai"
+	name "Petition the Quarg"
+	on complete
 		conversation
-			`Much to your frustration, there is no way for typical communications to break through the barrier for entry unless someone triggers the station to travel through. However, David's people have set up a mailbox system to relay missed messages when arriving.`
-			`	'You have <unread> incoming messages.'`
-			action
-				clear "Irm: unread updates"
-			`		"We are working to unearth new equipment. There's a trove of new technologies here that we hope to use to our collective benefit."`
-				to display
-					has "Irm: first unread"
-			branch "ordaria"
-				and
-					has "Irm: excavated ordaria: offered"
-					not "Irm: block ordaria"
-			branch "ospora"
-				and
-					has "Irm: excavated ospora: offered"
-					not "Irm: block ospora"
-			branch "odus"
-				and
-					has "Irm: excavated odus: offered"
-					not "Irm: block odus"
-			branch "tekina"
-				and
-					has "Irm: excavated tekina: offered"
-					not "Irm: block tekina"
-			`	'End of stored communications.'`
-				decline
-			label "ordaria"
-			action
-				set "Irm: block ordaria"
-			`		"Ordaria System Cooler, lightweight and powerful, very energy efficient."`
-				decline
-			label "ospora"
-			action
-				set "Irm: block ospora"
-			`		"Ospora Habitation Cooler, unwieldy size but offers unparalleled thermal stability. Not viable to remove from Arx."`
-				decline
-			label "odus"
-			action
-				set "Irm: block odus"
-			`		"Odus Reformatory, unbelievably powerful cooling with a significant drain on energy reserves. Locked within secure areas of Arx, presumably experimental research equipment."`
-				decline
-			label "tekina"
-			action
-				set "Irm: block tekina"
-			`		"Tekina Engine, fully manueverable set of engines, highly efficient. Revolutionary leap."`
-				decline
-	repeat
-	source
-		not system "Waypoint "
-	substitutions
-		"<unread>" "1"
-			"Irm: unread updates" == 1
-		"<unread>" "2"
-			"Irm: unread updates" == 2
-		"<unread>" "3"
-			"Irm: unread updates" == 3
-		"<unread>" "4"
-			"Irm: unread updates" == 4
+			`You have no difficulty finding a Quarg to speak with, in fact, there are multiple groups of Quarg immediately nearby where you dock. You find one solitary Quarg to speak with, meddling with some device you don't recognize. You waste no time to get to your point, and lay out for them what you can tell about the venture on Arx.`
+			`	"The ring is mighty. It is a shame to go to waste." They say, ominously cavalier, as if you had not stumbled onto the home of a dead species.`
+			`	Continuing, they try to put you at ease, "Wise to confess your actions despite your caution. I can see your ship has been there before, it carries an energy to it that is rare to find."`
+			choice
+				`	"I thought you would care."`
+					goto "care"
+				`	"Did you know we had found a way there?"`
+			`	"Not myself, but it is curious that it has deterred so many before you. We would have known, but I had not until now."`
+			label "care"
+			`	"Their sodden failure is a mark on their space. Do you mean to bring life or more deaths?"`
+			choice
+				`	"Life, we want to make something of our own."`
+					goto "life"
+				`	"We only want to be away from the strife of civilization."`
+			`	"Must you humans answer indirect?"`
+			choice
+				`	"Life, we want to make something of our own."`
+			label "life"
+			`	The Quarg pauses briefly in thought, "You should carry your wisdom forward, with caution as you have. We are without blind, violent ambition, but I believe your own are not."`
+			`	You piece together what you can of your interaction, accepting the warning you were given, and relieved that the Quarg are not immediately concerned with your actions. David will be put at ease when he hears about this.`
+	on fail
+		conversation
+			`Enough time has passed that David will have assumed you have visited the Quarg. You should get back to Arx before too long though, lying to David or not, you did promise to return.`
+	on offer
+		event "Irm: Quarg timer" 24
+		conversation
+			`A regular band of workmen greets you as you land, eager to ply a story from a new visitor. They soon rush to work on their newly arrived job of refueling your ship, and methodically checking for damage on the off-chance they should start to anticipate danger aboard Arx.`
+			`	You stop to weigh your options once you finish your meet and greet with the workers.`
+			label "options"
+			choice
+				`	(Find David.)`
+					goto "david"
+				`	(Ask the workers how busy the port is.)`
+				`	(Leave.)`
+					decline
+			`	The supervisor of the work team quickly notices you as you walk back towards the landing area, and walks to meet you. "Can I help you, Captain?" he asks, and you reply, "Yes, actually, I was wondering how busy this port is. It's still very new, isn't it?"`
+			`	"It sure is new, one of a kind I've got to say. Not sure we'll ever fit in with how it all looks of course." He drags on the impressively alien hanger, "Oh yeah, we get plenty of arrivals. Only ever Turners people, not quite sure he wants to get public." You thank the man and walk off to explore some of the hangers.`
+			label "david"
+			`	Passing several groups standing around looking leisurely, you press on to further explore what Davids crew has set up since you last left them. The entire stretch of occupied bays and work areas sit in heavy-handed disorder, giving a starkly contrasting feeling from the leisure of the idle workers. There is no clear pace of work being done around here.`
+			`	Your communicator signals, "<first>, I'm standing by your ship. Meet me back here when you can." David sure seems to know when you're around, it would be best to get the story from him directly. You return to your ship and walk towards a conversation between David and the work team supervisor, you notice David thanking the man and slipping him a credit chip through a handshake. "<first>, how do you like the place? We really made a mess of things so far, but things are progressing, in fact -"`
+			`	David is interrupted by the man he just thanked and sent off, thanking David in return, having just noticed the amount of credits he was given. You two are then left to continue your conversation without interruption, "Anyway, I want to show you around. Maybe next time you won't be strolling like a lost lamb around the port."`
+			`	He gives you a 'brief' tour, which is anything but, as the size of this port may have indicated. As things wrap up, you do notice a subtle system for the layout, an understanding which you barely manage to hang onto.`
+			choice
+				`	"Have you found anything of note yet?"`
+				`	"Why are there so many people here?"`
+					goto "people"
+				`	(Leave.)`
+					decline
+			`	"We can get to that later, I am really excited to bring you to up to speed." he says, dismissive of your interest.`
+				goto "help"
+			label "people"
+			`	"We need more manpower if we are to make progress. I understand your point though, we need to maintain a certain level of secrecy about our operation. At least until we can maintain our claim on the system." David looks at you puzzled, as if forgetting something, "We are to stay here of course. I hope to rely on you in the future if alternatives have been exhausted."`
+			choice
+				`	"What do you expect me to do exactly?"`
+				`	"Of course, I expected you to make the most of this opportunity."`
+			label "help"
+			`	David looks tired, exhausted from the demands of this venture. "I actually might appreciate your help currently, I want everyone available to me here. I'll fill you in soon, but for now, I'd like you to petition the Quarg. I'm afraid it's been rash to expect the Quarg not to notice our travels here and I think we should know what they know if there is anything they would tell us."`
+			choice
+				`	"No. If they knew, we would know by now."`
+				`	"They probably do, I'll ask them"`
+					accept
+			`	David persists, adamant that the Quarg should know, and you are sent on your way. You could pretend to have asked the Quarg if you wanted, but why go against David now?`
+				accept
+	source "Arx"
+	to fail
+		has "event: Irm: Quarg timer"
 	to offer
 		has "event: Irm: hanger secured"
+event "Irm: Quarg timer"
+mission "Irm: Magni Port [2a]"
+	description "The Quarg offered you no resistance, and little warning to your actions going forward. Return to Arx to report your interaction with the Quarg."
+	destination "Arx"
+	landing
+	name "Return to Arx"
+	on complete
+		conversation
+			`You're met by David as you come to a landing, he must have noticed your ship arriving and anticipated hearing about your interactions with the Quarg.`
+			`	He looks well rested, better than last you saw him. You say to him, "I saw the Quarg about what you wanted." David stands stern, confident. You tell him all about the Quarg's irreverence, or interest, noting that it's completely in character for the Quarg to leave you befuddled. David is particularly relieved that the Quargs warning is presumably only regarding Human piracy, a concern that David admits to being worried about himself in the beginning.`
+			`	A message on David's communicator reports that two Quarg Wardragons entered the system. With haste, he asks that you stay in the hanger, and he leaves you to your own devices so that he can deal with the situation.`
+	source "Alta Hai"
+	to offer
+		has "Irm: Magni Port [1]: done"
+		not "Irm: Magni Port [1]: failed"
+mission "Irm: Magni Port [2b]"
+	invisible
+	landing
+	npc "kill"
+		government "Quarg (Hai)"
+		ship "Quarg Wardragon" "Koor ee lim"
+		ship "Quarg Wardragon" "Quar o rook"
+		system "Waypoint "
+	on offer
+		conversation
+			`You receive a communication from David hours later, detailing the Quarg situation. Apparently, they landed planet-side and waited to be met by someone aboard the ring. David details a long interaction but it boils down to a succinct point, the Quarg will patrol the system of their own accord and leave the company to operate on their own.`
+			`	Both you and David share a point of concern about the Quarg's presence, apparently, they offered little justification for their being here even after being pressed. Neither of you pursue the matter and hope that all will be well.`
+				accept
+	source "Arx"
+	to offer
+		has "Irm: Magni Port [2a]: offered"
+mission "Irm: Magni Port [2c]"
+	landing
+	source "Arx"
+	on offer
+		conversation
+			`You're met by David as you come to a landing, he must have noticed your ship arriving and anticipated hearing about your interactions with the Quarg.`
+			`	He looks well rested, better than last you saw him. You lie to him, "I saw the Quarg about what you wanted." David stands stern, confident. You spin a tale about the Quarg's irreverence, or interest, noting that it's completely in character for the Quarg to leave you befuddled. David is particularly relieved when you say that the Quarg only warn of Human piracy, a concern that David admits to being worried about himself in the beginning.`
+			`	David is none the wiser about your deception, and what the Quarg doesn't know won't hurt them.`
+				decline
+	to offer
+		has "Irm: Magni Port [1]: failed"
+		not "Irm: Magni Port [1]: done"
+mission "Irm: Magni Port [3]"
+	invisible
+	on offer
+		conversation
+			`The mood in the spaceport is one of irreverence, with everyone in some rush. You leave your ship in the hands of the work team and set off to find David, hoping that he will have time for you during the bustle throughout the port. You walk across from arrivals and happen to find David standing on top of the incline of a ship landing ramp, frustrated by someone on the other end of his communicator.`
+			`	He doesn't immediately notice you waiting by the foot of the ramp and you wait and wait. He turns to address you shortly, noticing you during his heated exchange and before concluding his business on the communicator. "<first>, I didn't get a notice of your arrival. As you can see, things are moving at pace now, we have exciting discoveries being unearthed all the time, much more than we can do anything about."`
+			choice
+				`	"Do you need any help?"`
+					goto "help"
+				`	"What are you finding?"`
+			`	"Much of the technology here is well beyond Human standards as was always a reasonable assumption. We've even found shipbound technologies, such as engine units fitting fighter models." David is eager to discuss the technology that his teams have unearthed but it's apparent that he means to move past this initial stage, where he currently wants to understand the environment better.`
+			`	"Do you need any help?" you ask, cutting to the point.`
+			label "help"
+			`	"Not me personally, but of course we need help throughout the entire operation. I'm currently not as involved with the specifics of any one area, but we have two major departments here, being development and logistics." David seldom lacks an offer for work, but at least he may point you in the right direction.`
+			`	You're taken for an introduction to the development team, but not being given one in the end, "They seem to be out for now, but you'll recognize some of the faces in there. Our two advisors from the beginning head the team, in the face of our changing focus to explore the interior structure."`
+			`	David assures you that they both have highly accomplished backgrounds in the sciences, without being prompted for their qualifications, but you suppose it's good to know things are being handled by the professionals.`
+			`	"The more crucial operations lie with the logistics team though. Any material we need, or food and drink of course, needs to come from somewhere and we have convoys on a rotating basis to deliver us what is needed through the facade of the company on Greenrock. If you want something to do, you can talk to a port team supervisor to cover a logistics request."`
+			``
+			`	(Logistics work will always be available through the "Job Board".)`
+			`	(The "Spaceport" will occasionally offer special work to assist in the research and development of excavated technology.)`
+				decline
+	source "Arx"
+	to offer
 		or
-			has "Irm: unread updates"
-			and
-				has "Irm: first unread"
-				"Irm: unread updates" > 1
+			has "Irm: Magni Port [2b]: offered"
+			has "Irm: Magni Port [2c]: offered"
