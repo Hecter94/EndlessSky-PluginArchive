@@ -2509,7 +2509,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Graphics
 
-<p>22 plugins in this category.<p>
+<p>23 plugins in this category.<p>
 
 <details>
 
@@ -3051,6 +3051,33 @@ A visual mod that improves the look of many vanilla human outfits, either greatl
 
 Status: N/A <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### swiftclaws.additional.command.buttons
+<img src='Working/swiftclaws.additional.command.buttons/icon.png' height='100'></img><br>
+
+
+[swiftclaws.additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/swiftclaws.additional.command.buttons.zip) | 389.02 kb | 2023-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/swiftclaws.additional.command.buttons/) <br>
+Author: swiftclaw | Category: Graphics <br>
+[https://drive.google.com/file/d/17RstjG7nxM0KzhfwpVh50NrgCO9cQ375/view](https://drive.google.com/file/d/17RstjG7nxM0KzhfwpVh50NrgCO9cQ375/view)  <br>
+
+>Modified version of additional.command.buttons plugin
+>
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### swiftclaws.additional.command.buttons <br>
+<br>
+<img src='https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/swiftclaws.additional.command.buttons/screenshot.jpg' width='400'>
+
+</blockquote>
+</details>
+
+Status: tested with 0.10.2 <br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -7297,9 +7324,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-09-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-09-11) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-09-25) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
