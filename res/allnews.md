@@ -1,3 +1,4 @@
+2023-09-27 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2023-09-25 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2023-09-24 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
 2023-09-24 | new Plugin 'real.fluff' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
