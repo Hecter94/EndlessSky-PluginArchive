@@ -52,9 +52,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/All Content Plugin/icon.png' height='100'></img><br>
 
 
-[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 148.77 kb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
+[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 148.81 kb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
 Author: Michael Zahniser | Category: Cheats <br>
-[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2023-09-09) <br>
+[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2023-10-03) <br>
 
 >This mod starts you on Greenrock with a trillion (10^12) credits and access to almost every ship and outfit in the game. It is intended for testing purposes, but of course, as its description says, "it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it." 
 >
@@ -233,7 +233,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Casual.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Casual.Mod.zip) | 403.08 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Casual%20Mod/) <br>
 Author: PPhoto  | Category: Cheats <br>
-[https://github.com/pphotography/EndlessSky_CasualMod](https://github.com/pphotography/EndlessSky_CasualMod) (last commit 2020-02-16) <br>
+[https://github.com/pphotography/EndlessSky_CasualMod](https://github.com/pphotography/EndlessSky_CasualMod)  <br>
 
 >Makes gameplay more casual
 >Ships are heavier making navigation and combat slower
@@ -659,9 +659,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.65 mb | 2023-09-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.65 mb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-09-11) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-10-01) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -4736,9 +4736,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Better Vanilla Pirates/icon.png' height='100'></img><br>
 
 
-[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 69.8 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Pirates/) <br>
+[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 72.76 kb | 2023-10-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Pirates/) <br>
 Author: ZBok | Category: Overhauls <br>
-[https://github.com/ZBok/BetterVanillaPirates](https://github.com/ZBok/BetterVanillaPirates) (last commit 2022-06-26) <br>
+[https://github.com/ZBok/BetterVanillaPirates](https://github.com/ZBok/BetterVanillaPirates) (last commit 2023-10-01) <br>
 
 >Enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game.
 >
@@ -9128,9 +9128,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Kor-Fighter-Additions
 
 
-[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 4.44 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor-Fighter-Additions/) <br>
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor-Fighter-Additions/) <br>
 Author: EjoThims | Category: Ships <br>
-[https://github.com/EjoThims/Kor-Fighter-Additions](https://github.com/EjoThims/Kor-Fighter-Additions) (last commit 2023-05-17) <br>
+[https://github.com/EjoThims/Kor-Fighter-Additions](https://github.com/EjoThims/Kor-Fighter-Additions) (last commit 2023-10-01) <br>
 
 >Additional fighters for Korath Exiles.
 >
@@ -10783,9 +10783,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### The Peacebringer
 
 
-[The.Peacebringer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Peacebringer.zip) | 3.74 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Peacebringer/) <br>
+[The.Peacebringer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Peacebringer.zip) | 4.45 kb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Peacebringer/) <br>
 Author: Polaria1 | Category: Ships <br>
-[https://github.com/Polaria1/The-Peacebringer](https://github.com/Polaria1/The-Peacebringer) (last commit 2023-07-03) <br>
+[https://github.com/Polaria1/The-Peacebringer](https://github.com/Polaria1/The-Peacebringer) (last commit 2023-10-02) <br>
 
 >End-game flagship with *jazz hands* modularity! 
 
@@ -10795,10 +10795,11 @@ Author: Polaria1 | Category: Ships <br>
 Plugin for Endless Sky
 WORK IN PROGRESS!!!
 
-  "The Peacebringer is a one of a kind ship, commissioned not for sport, nor in exchange for money, or any other material offering that could conceivably produce any standard spacecraft into reality, but instead as a reparation to a remarkable individual who has woven together the failing strings of the galaxy with their bare hands; a gift to one who has saved humanity one or more times from an otherwise hopeless drive to extinction. It is tribute, to ensure that this individual, whomever they may be, can continue their extraordinary drive to keep the universe together."
+  "The Peacebringer is a one of a kind ship, commissioned not for sport, nor in exchange for money, or any other material offering that could conceivably produce any standard spacecraft into reality, but instead as a reparation to a remarkable individual who has woven together the failing strings of the galaxy with their bare hands; a gift to one who has saved humanity one or more times from an otherwise hopeless drive to extinction. It is tribute, to ensure that this individual, whomever they may be, can continue their extraordinary drive to keep the universe together.
+  I guess you could also just... y'know, buy it from the Omnis shipyard, but that's kind of mean."
 ~ shipyard description
 
-The Peacebringer is (going to be) a near end-game flagship "rewarded" to the player immediately after the (spoilers!) Kor Sestor missions involving their breach of human space. Well, when I say "rewarded", I mean that they're going to be sent across the galaxy on a wild goose chase for the most advanced technologies that each species has to offer in order to build, piece by piece, the most powerful starship that humanity has ever witnessed. A culmination of all creations advanced and arcane combined together into an unmatched set of speed, firepower, stealth, and modularity, the Peacebringer is kind of like the Heron in the sense that it fucks shit up, just slightly less so.
+The Peacebringer is (going to be) a near end-game flagship "rewarded" to the player immediately after the (spoilers!) Kor Sestor missions involving their breach of human space. Well, when I say "rewarded", I mean that they're going to be sent across the galaxy on a wild goose chase for the most advanced technologies that each species has to offer in order to build, piece by piece, the most powerful starship that humanity has ever witnessed. A culmination of all creations advanced and arcane combined together into an unmatched set of speed, firepower, stealth, and modularity, the Peacebringer is kind of like a mini Heron but has a bunch of different alien technologies instead of just stuff from the Remnant.
 
 To-do, generally:
 - find appropriate, somewhat lore-friendly way to introduce
@@ -12448,9 +12449,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.62 mb | 2023-09-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.67 mb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-09-23) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-10-05) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -13017,9 +13018,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/real.fluff/icon.png' height='100'></img><br>
 
 
-[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 1.13 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
+[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 1.93 mb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-09-23) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-03) <br>
 
 >A bunch of side missions which reward unique fluffy pets. See the readme for details.
 >
@@ -13031,16 +13032,24 @@ Author: zuckung | Category: Story <br>
 <br>
 A bunch of side missions which reward unique pets. <br>
 <br>
-Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 10% chance of appearing.<br>
+Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 10% chance of appearing, except alien mission which has  100%.<br>
 <ul>
+<li>Alien - land somewhere in human space, hidden destination is Danoa system</li>
 <li>Ferret - mission found on Bivrost</li>
 <li>Hamster - mission found on Twinstar</li>
 <li>Koala - mission found on New Portland</li>
+<li>Ocelot - mission found on Farpoint</li>
 <li>Rabbit - mission found on Starcross</li>
+<li>Raccoon - mission found on Foundry </li>
 <li>Squirrel - mission found on Heartvalley (Hai space)</li>
 </ul>
 <img src='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/real.fluff/screenshot.jpg' width='400'>
 <br>
+<br>
+2023-10-03<br>
+added ocelot mission<br>
+added raccoon mission<br>
+added alien mission<br>
 <br>
 2023-09-23<br>
 added ferret mission
