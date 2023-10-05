@@ -47,7 +47,6 @@ for entry in entries:
 		x = file1.readline()
 		directlink = x.replace("directlink=","")
 	if directlink == "N/A\n": # when there is no direct
-		
 		# check for website github to get last commit, then continue to next
 		website = website.strip()
 		if website[:18] == "https://github.com":
@@ -63,13 +62,18 @@ for entry in entries:
 				linklastmodified = "FALSE"
 				continue
 			else: # get last commit date and time
-				cont = str(response.content)
-				dateandtime = cont.split(",")[4]
-				commitdate = dateandtime[8:18] + " " + dateandtime[19:27]
-				linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d %H:%M:%S')
-				with open("res/last_commits.txt", "a") as commit:
-					commit.writelines(entry[:len(entry) - 4] + "|" + str(linklastmodified.date()) + "\n")
-				continue
+				try:
+					cont = str(response.content)
+					dateandtime = cont.split(",")[4]
+					commitdate = dateandtime[8:18] + " " + dateandtime[19:27]
+					linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d %H:%M:%S')
+					with open("res/last_commits.txt", "a") as commit:
+						commit.writelines(entry[:len(entry) - 4] + "|" + str(linklastmodified.date()) + "\n")
+					continue
+				except:
+					print("ERROR: check WEBSITE for " + plug + " can't read last commit!")
+					with open('res/errorlog.txt', 'a') as errorfile:
+						errorfile.writelines("check WEBSITE for plugin: " + pluginname + " | " + website + "\n")
 		continue
 		
 	else: # has directlink
