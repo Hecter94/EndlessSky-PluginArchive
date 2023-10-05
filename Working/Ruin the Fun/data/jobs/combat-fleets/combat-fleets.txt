@@ -936,6 +936,14 @@ mission `Ruin-the-Fun Combat Fleets`
 					to display
 						has `Ruin-the-Fun Combat Fleets: Pincer Beast`
 					goto `disable Pincer Beast`
+				`	[  ] pirate explosive`
+					to display
+						not `Ruin-the-Fun Combat Fleets: pirate explosive`
+					goto `enable pirate explosive`
+				`	[x] pirate explosive`
+					to display
+						has `Ruin-the-Fun Combat Fleets: pirate explosive`
+					goto `disable pirate explosive`
 				`	[  ] pirate raid`
 					to display
 						not `Ruin-the-Fun Combat Fleets: pirate raid`
@@ -1581,6 +1589,7 @@ mission `Ruin-the-Fun Combat Fleets`
 				clear `Ruin-the-Fun Combat Fleets: Navy Surveillance that won't enter the wormhole`
 				clear `Ruin-the-Fun Combat Fleets: Paradise Merchants`
 				clear `Ruin-the-Fun Combat Fleets: Pincer Beast`
+				clear `Ruin-the-Fun Combat Fleets: pirate explosive`
 				clear `Ruin-the-Fun Combat Fleets: pirate raid`
 				clear `Ruin-the-Fun Combat Fleets: Quarg`
 				clear `Ruin-the-Fun Combat Fleets: Quarg (Gegno)`
@@ -3017,6 +3026,18 @@ mission `Ruin-the-Fun Combat Fleets`
 				clear `Ruin-the-Fun Combat Fleets: Pincer Beast`
 				`Ruin-the-Fun Combat Fleets count` -= 1
 			`	The Pincer Beast will no longer spawn.`
+				goto begin
+			label `enable pirate explosive`
+			action
+				set `Ruin-the-Fun Combat Fleets: pirate explosive`
+				`Ruin-the-Fun Combat Fleets count` += 1
+			`	The pirate explosive will spawn.`
+				goto begin
+			label `disable pirate explosive`
+			action
+				clear `Ruin-the-Fun Combat Fleets: pirate explosive`
+				`Ruin-the-Fun Combat Fleets count` -= 1
+			`	The pirate explosive will no longer spawn.`
 				goto begin
 			label `enable pirate raid`
 			action
@@ -4719,6 +4740,14 @@ mission `Ruin-the-Fun Combat Fleets`
 			has `Ruin-the-Fun Combat Fleets: Pincer Beast`
 		to despawn
 			not `Ruin-the-Fun Combat Fleets: Pincer Beast`
+	npc disable
+		government `Ruin-The-Fun (Hostile)`
+		fleet `pirate explosive`
+		personality heroic disables
+		to spawn
+			has `Ruin-the-Fun Combat Fleets: pirate explosive`
+		to despawn
+			not `Ruin-the-Fun Combat Fleets: pirate explosive`
 	npc disable
 		government `Ruin-The-Fun (Hostile)`
 		fleet `pirate raid`

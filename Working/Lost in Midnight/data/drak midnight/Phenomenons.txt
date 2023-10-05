@@ -1513,7 +1513,7 @@ mission "Unknown Element: Sundive 1"
 		log "People" "Dr. Seth Baxter" `A researcher of astronomical objects. He has a lab on Sundive in the Sheratan system.`
 	on enter Deneb
 		dialog `The mysterious comet must be somewhere in this system...`
-	npc "scan outfits" "scan cargo"
+	npc save "scan outfits" "scan cargo"
 		government "Uninhabited"
 		system "Deneb"
 		personality target waiting staying mining surveillance mute
@@ -1709,5 +1709,16 @@ mission "Pleiades Mysterious Comets"
 event "pleiades mysterious comets"
 	system "Over the Rainbow"
 		add fleet "Mysterious Comet" 80000
+
+mission "Pleiades Mysterious Comets Patch"
+	landing
+	invisible
+	to offer
+		has "event: pleiades mysterious comets"
+	on offer
+		event "pleiades mysterious comets patch"
+		fail
+
+event "pleiades mysterious comets patch"
 	system "Terra Incognita"
-		add fleet "Mysterious Comet" 80000
+		remove fleet "Mysterious Comet"

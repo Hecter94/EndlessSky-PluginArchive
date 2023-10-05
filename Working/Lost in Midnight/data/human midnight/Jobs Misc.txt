@@ -100,6 +100,7 @@ mission "Engineering Room: Prototype Test 1"
 	job
 	description "A prototype will be installed on your ship. Disable the robotic target dummy ship in <system> then land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral" "Pirate"
 		attributes "research"
 		not attributes "outfitter"
 	to offer
@@ -148,6 +149,7 @@ mission "Engineering Room: Prototype Test 2"
 	job
 	description "A prototype will be installed on your ship. Disable the robotic target dummy ship in <system> then land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral" "Pirate"
 		attributes "research"
 		not attributes "outfitter"
 	to offer
@@ -197,6 +199,7 @@ mission "Engineering Room: Prototype Test 3"
 	job
 	description "The prototype will be installed on your ship. Disable the robotic target dummy ship in <system> then land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral" "Pirate"
 		attributes "research"
 		not attributes "outfitter"
 	to offer
@@ -246,6 +249,7 @@ mission "Engineering Room: Prototype Test 4"
 	job
 	description "A prototype will be installed on your ship. Disable the robotic target dummy ship in <system> then land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral" "Pirate"
 		attributes "research"
 		not attributes "outfitter"
 	to offer
@@ -302,6 +306,7 @@ mission "Engineering Room: Prototype Test 5"
 	job
 	description "A prototype will be installed on your ship. Disable the robotic target dummy ship in <system> then land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral" "Pirate"
 		attributes "research"
 		not attributes "outfitter"
 	to offer
@@ -435,7 +440,7 @@ mission "Executive Guard: Syndicated Systems"
 		conversation
 			action
 				"reputation: Syndicate" <?= -1000
-			scene "outfit/brig"		
+			scene "outfit/brig"
 			`You've captured the CEO of Syndicated Systems! Return to <destination> where he'll be held for ransom.`
 	on fail
 		"reputation: Pirate" --
@@ -527,7 +532,7 @@ mission "Executive Guard: Syndicated Shipyards"
 		conversation
 			action
 				"reputation: Syndicate" <?= -1000
-			scene "outfit/brig"		
+			scene "outfit/brig"
 			`You've captured the CEO of Syndicated Shipyards! Return to <destination> where he'll be held for ransom.`
 	on fail
 		"reputation: Pirate" --
@@ -591,7 +596,6 @@ mission "Holiday: Saint Nick"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		not attributes "frontier"
-		not attributes "uninhabited"
 		not attributes "station"
 	destination
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
@@ -1176,6 +1180,30 @@ mission "Medical Bay: Patient Transport"
 	name "Patient Transport"
 	description "A patient too ill to travel without the aid of a Medical Bay needs to reach <destination> by <date> for experimental life saving surgery. Payment is <payment>."
 	passengers 1
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "research"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "research" "medical"
+		not attributes "uninhabited"
+		distance 5 100
+	to offer
+		random < 10
+	on offer
+		require "Medical Bay"
+	on complete
+		payment
+		payment
+		dialog `You wish the patient good luck with their surgery. An insurance company deposits <payment> into your account.`
+
+mission "Medical Bay: Patient Transport [family]"
+	job
+	deadline
+	repeat
+	name "Patient Transport"
+	description "A family of <bunks> with a patient too ill to travel without the aid of a Medical Bay needs to reach <destination> by <date> for experimental life saving surgery. Payment is <payment>."
+	passengers 2 5
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		not attributes "research"
