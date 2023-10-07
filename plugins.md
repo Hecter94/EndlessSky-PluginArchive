@@ -4736,9 +4736,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Better Vanilla Pirates/icon.png' height='100'></img><br>
 
 
-[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 72.76 kb | 2023-10-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Pirates/) <br>
+[Better.Vanilla.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Better.Vanilla.Pirates.zip) | 97.01 kb | 2023-10-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Better%20Vanilla%20Pirates/) <br>
 Author: ZBok | Category: Overhauls <br>
-[https://github.com/ZBok/BetterVanillaPirates](https://github.com/ZBok/BetterVanillaPirates) (last commit 2023-10-01) <br>
+[https://github.com/ZBok/BetterVanillaPirates](https://github.com/ZBok/BetterVanillaPirates) (last commit 2023-10-07) <br>
 
 >Enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game.
 >
@@ -4747,11 +4747,31 @@ Author: ZBok | Category: Overhauls <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Better Vanilla Pirates for Endless Sky
 
-## Do you love vanilla ES everything but wish that the human pirates, bounty hunters and related combat missions (spaceport + job board), were a little more interesting, and stayed challenging with worthwhile mission payouts even in the late game?
+## 2.0
 
-Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien tech. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle dreadnought or pulse cannon Firebird, etc.
+2.0 keeps all 1.0 functionality (see below) and adds something new - player can now purchase highly buffed, "Mk II" human ships from New Tortuga after completing a short mission which also gives the player a free Mk II heavy warship as a reward. This is offered at New Tortuga, after player has completed Kestrel missions and FW story.
+
+Human space has a huge and beautiful variety of ships to play with, but when player gets into mid-late game it's hard to justify using them compared to much stronger alien ships. 
+
+These Mk II ships have heavily buffed shields/hull, and in most cases slightly buffed outfit/weapon/engine space. They are generally slightly tankier than Hai/Remnant but nowhere near Wanderer/Automata, and they are rather expensive.
+
+The Kestrel Mk II you are able to buy should respect your design choice in the Kestrel missions. The Kestrel Mk II and Dreadnought Mk II are buffed slightly less than the others due to already being relatively strong, and Bactrian is buffed far less due to it already being imba af.
+
+The mission to unlock this stuff is completely optional, and even completing it won't change anything in your game other than allowing you to purchase upgraded ships if you wish. None of the new ships introduced are used by any NPC's, ambient or mission related. Yet.
+
+If you encounter bugs pls report them.
+
+## 1.0 Do you love vanilla ES everything but wish that the human pirates, bounty hunters and related combat missions (spaceport + job board), were a little more interesting, and stayed challenging with worthwhile mission payouts even in the late game?
+
+Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien outfits. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle dreadnought or pulse cannon Firebird, etc.
 
 This plugin is designed to enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game. It does not contain any new weapons/ships/sprites, or any new or replacement storylines, nor does it make the early game any harder. It achieves all this by the adding the following (POTENTIAL SPOILERS BELOW!)
+
+- Dozens more pirate ship variants including 21 different Kestrel setups (7 for each of the Kestrel choices), like Proton Kestrels, Pulse cannon/Hai Tracker Bactrians and dozens of other combinations, military ships, more Marauder variants, some which have low level alien tech.
+
+- Introduces pirates with Hai+limited Korath exile outfits (heat shunts only), and the Kestrel, and then finally Hai/Korath fitted Kestrels, into ambient pirate/merchant fleets, mission targets (as described above), and the Marauder Bounty Hunted fleet (that Marauder fleet that hunts you down occasionally if your combat rating is high enough).
+
+- Introduces pirates in military ships including Dreadnought, Skein, Frigate, Gunboat after main story completion. You'll see these rarely in ambient fleets and as mission targets.
 
 - *NEW* Minor mission thread with three instalments unlocked at CR9, 10, 11, and more incoming soon (up to CR 13 or 14). These involve a shady NPC who offers you detailed information on unique bounty hunting groups coming to get you. The next few instalments will involve a longer mission finale and unlocking some powerful upgraded human weapons.
 
@@ -4760,12 +4780,6 @@ This plugin is designed to enhance/improve/fill gaps in many aspects of pirate c
 - Note that no existing missions/jobs are altered, just new ones added. All new missions are repeating and can be declined with no penalty.
 
 - Many new variations of the "Marauder Hunted" mission, the "invisible" mission present in vanilla, where Marauder Bounty Hunters will occasionally hunt you down without warning if your combat rating is high enough. These new variations scale with combat rating, and come in two distinct flavours; small, homogeneous fleets of elite heavy warships with expensive outfit combinations, and larger rag-tag fleets including all types of ships.
-
-- Dozens more pirate ship variants including 21 different Kestrel setups (7 for each of the Kestrel choices), like Proton Kestrels, Pulse cannon/Hai Tracker Bactrians and literally dozens of other combinations, military ships, more Marauder variants, some which have low level alien tech.
-
-- Introduces pirates with Hai+limited Korath exile outfits (heat shunts only), and the Kestrel, and then finally Hai/Korath fitted Kestrels, into ambient pirate/merchant fleets, mission targets (as described above), and the Marauder Bounty Hunted fleet (that Marauder fleet that hunts you down occasionally if your combat rating is high enough).
-
-- Introduces pirates in military ships including Dreadnought, Skein, Frigate, Gunboat after main story completion. You'll see these rarely in ambient fleets and as mission targets.
 
 - Additions described above that are based on storyline completion or Kestrel mission completion are applied retroactively. This means that you'll see all the changes on a save where you've completed these already, at least after you land once or twice post plugin install.
 
@@ -4791,7 +4805,7 @@ This plugin is designed to enhance/improve/fill gaps in many aspects of pirate c
 - Once you complete the Wanderer missions where the Korath Exiles begin using Sestor/Mereti automata as their own, some Syndicate systems will offer spaceport defence missions where the Korath are raiding the system with JD equipped automata! The payouts for these missions are relatively low, but they allow the player to obtain Sestor/Mereti ships after the Wanderer campaign (not possible in vanilla).
 
 
-It is designed to be quite difficult at times even for large fleets so take care. You may find that human missiles become a serious problem in large numbers, with the large impact force capable of isolating and destroying your escorts with ease, anti-missile turrets come in very handy.
+The job board/spaceport missions are designed to be quite difficult at times even for large fleets so take care. You may find that human missiles become a serious problem in large numbers, with the large impact force capable of isolating and destroying your escorts with ease, anti-missile turrets may come in very handy.
 
 Please make backups of your pilot file before using this plugin. The changes this plugin makes to fleets (adding pirates/merchants with Hai tech, adding pirate/merchant Kestrels, etc) are stored in your save file. If you remove the plugin, it may not work anymore. Backup your pilot file just in case you don't like this plugin.
 
