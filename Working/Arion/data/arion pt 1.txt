@@ -6,7 +6,7 @@ mission "Arion Installed"
 	on accept
 		fail
 
-mission "Arion=First Contact"
+mission "First Contact : Arion"
 	name "A mysterious signal"
 	landing
 	destination "Luna"
@@ -17,6 +17,10 @@ mission "Arion=First Contact"
 			and
 				not "chosen sides"
 				has "main plot completed"
+		"reputation: Republic" >= 0
+		"reputation: Syndicate" >= 0
+		"reputation: Free Worlds" >= 0
+		"reputation: Merchant" >= 0
 	on offer
 		conversation
 			`	While you are on the ground, you receive a mysterious message.`
@@ -96,10 +100,8 @@ mission "Arion=First Contact"
 		
 			label end
 			`	"Well i guess that concludes the tour of the base. Have fun with the equipment that you can purchase here," the Handler says to you. "Hopefully, you will be able to help us with our missions and we will be able to help you too."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -112,8 +114,8 @@ mission "Arion:North Supply 1"
 	source "Luna"
 	destination "Sunracer"
 	to offer
-		has "Arion=First Contact: done"
-		not "Arion leaves"
+		has "First Contact : Arion"
+		not "event: Arion leaves"
 	on offer 
 		conversation
 			`	After concluding the base tour, the Handler approaches you. "Well i guess it's time for your first mission. You will be escorting the 11th transport squadron of the SFF and help deliver some needed supplies. You can accept this mission whenever you're ready. I recommend that you use something that can capture Heavy Warships, although isn’t really necessary, since that's only needed if you want some bonus rewards. After all we might not even need backup since our ships should be able to handle themselves."`
@@ -123,9 +125,6 @@ mission "Arion:North Supply 1"
 				`	Maybe Later`
 					defer
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -138,7 +137,7 @@ mission "Arion:North Supply 2"
 	destination "Farpoint"
 	to offer 
 		has "Arion:North Supply 1: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you enter the Spaceport, a captain wearing a black captains hat and uniform with Arion markings, 3 Silver Striped shoulder marks (which you assume denotes rank) and white stripes down the sleeves and pants approaches you. He is armed with a tactical looking conventional pistol. You assume that this is who you are supposed to meet and approach them.`
@@ -163,9 +162,6 @@ mission "Arion:North Supply 2"
 	on fail
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "Arion:North Supply 3"
 	name "Operation Giver"
@@ -176,7 +172,7 @@ mission "Arion:North Supply 3"
 	destination "Sunracer"
 	to offer 
 		has "Arion:North Supply 2: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`"Alright Captain," Sam explains to you. "We have confirmation that the ships you just took out were quite important for that gang, expect them to try to take revenge Captain."`
@@ -207,10 +203,8 @@ mission "Arion:North Supply 3"
 		log "People" "Commodore Sam" "The leader of the 11th Transport Squadron."
 		conversation
 			`"Great work dealing with the pirate leader Captain. Although, we should be prepared since we most definitely have enraged their gang. That is however a problem for later. You should check their leaders ship, i heard they keep a trophy gun. Think of it as a special reward for capturing their ship. Anyways Captain, I'm sure we both have tasks to return to. Good luck and goodbye, may our paths cross again," Sam says to you as he returns to his ship."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -224,7 +218,7 @@ mission "Arion:North Scout 1"
 	destination Farpoint
 	to offer
 		has "Arion:North Supply 3: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you return to the base, the Handler approaches you. "Good job completing your first assignment Captain. It's good to know that we can count on you. For your next mission you will be scouting out the pirate's base to determine their strength. As usual, you can do this mission whenever you are ready."`
@@ -233,10 +227,8 @@ mission "Arion:North Scout 1"
 					accept
 				`	Maybe Later`
 					defer
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -249,7 +241,7 @@ mission "Arion:North Scout 2"
 	destination "Haven"
 	to offer
 		has "Arion:North Scout 1: offered"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	After landing, you head straight to the spaceport. When you enter the spaceport, you see a man wearing a mask and hooded version of the uniform worn by Sam armed with a small suppressed handgun using a laptop. You have a feeling that he is your man.`
@@ -261,10 +253,8 @@ mission "Arion:North Scout 2"
 		government "Arion (SFF)"
 		personality escort disables hunting unconstrained merciful
 		ship "Arion Headhunter Block IIIA" "SFF Overseer"
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -276,7 +266,7 @@ mission "Arion:North Scout 3"
 	destination "Farpoint"
 	to offer 
 		has "Arion:North Scout 2: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	The SFF Overseer approaches the enemy base as you remain higher up to defend the Overseer in case enemy reinforcements come in.`
@@ -299,10 +289,8 @@ mission "Arion:North Scout 3"
 		conversation
 			`	You quickly land near the spaceport, the SFF Overseer following quickly behind you. Hopefully, you were able to get some important information.`
 			`	"Well Captain,” Tom says to you, “Looks like we got some interesting intel, hopefully we got something useful out of it. Like i said while at Haven, it appears we hit em quite hard. While the 11th Transport Squadron sent some reports of pirates attacking their convoys, it appears that they are becoming disorganized since they are using less Heavy Warships and more Splinters and Ravens. However, there are rumors of their second in command attempting to hunt us down. I'll look over this information for now. You can meet in the spaceport later, maybe i'll have some information by then." You then see Tom go to the spaceport and open his laptop to analyze the information you have received. `
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -315,7 +303,7 @@ mission "Arion:North Scout 4"
 	destination "Haven"
 	to offer
 		has "Arion:North Scout 3: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`When you enter the spaceport, you can see that Tom is displeased with what he has discovered.`
@@ -336,10 +324,8 @@ mission "Arion:North Scout 4"
 		ship "Arion Headhunter Block IIIA" "SFF Overseer"
 		ship "Arion Argosy Block IIIA" "SFF Evergiven"
 		ship "Arion Argosy Block IIIA" "SFF Evergreen"
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -351,7 +337,7 @@ mission "Arion:North Scout 5"
 	destination "Farpoint"
 	to offer
 		has "Arion:North Scout 4: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you are just about to approach their base, someone hails you.`
@@ -390,10 +376,8 @@ mission "Arion:North Scout 5"
 			`	"Well, looks like the 4 of us make a good team, Commodore Sam says."`
 			`	"I agree," Commodore Tom replies.`
 			`	"Well then Captain <first> <last>, looks like we did a hell of a good job, those pirates should be down and out for a very long time. Just like with their leader, i heard that their 2nd in command also keeps a trophy gun. Well, me and the boys in the 11th Squadron have to return to our duties, maybe the boys in Luna have a new job for you. Good luck Captain, and may your journey be full of good luck," Tom says to you as he and Sam return to their duties.`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -408,7 +392,7 @@ mission "Arion:Exile Defense 1"
 	to offer
 		has "Arion:North Supply 3: done"
 		has "Arion:North Scout 5: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer 
 		conversation
 			`	The Handler approaches you once more, it looks like he has another task for you. "Good job helping the 11th transport and 7th scouting squadron. You have proven yourself to be competent and reliable. We have another mission for you. This time instead of helping the SFF and only operating with small squadrons, you will be working the Arion Foreign Legion and work with a full sized Strike Group."`
@@ -418,9 +402,6 @@ mission "Arion:Exile Defense 1"
 				`	Maybe Later`
 					defer
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -433,7 +414,7 @@ mission "Arion:Exile Defense 2"
 	destination "Shangri-La"
 	to offer 
 		has "Arion:Exile Defense 1: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you approach the Landing Pads, you see a modified Bactrian, Auxiliary, Leviathan and Falcon. It appears that these are the ships of the 2nd Strike Group.`
@@ -471,10 +452,8 @@ mission "Arion:Exile Defense 2"
 		payment "800000"
 		conversation
 			`	"Good job with helping us eliminate the 'Raider' ships. I will inform you later if we have any further tasks."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -487,7 +466,7 @@ mission "Arion:Exile Defense 3"
 	destination "Shangri-La"
 	to offer 
 		has "Arion:Exile Defense 2: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	"Alright Captain," Jean speaks to you. "This time, we will be facing a 'Raider' fleet at full strength. Apparently, they strayed too far and are currently stuck in Persian. We should eliminate this threat before they threaten Syndicate and Merchant Ships. I highly recommend taking their jump drives since you will need them in the future."`
@@ -518,10 +497,8 @@ mission "Arion:Exile Defense 3"
 		log "People" "Vice Admiral Jean" "The leader of the 2nd Strike Group."
 		conversation
 			`	"Alright, that should be it for now. We have cleared out the 'Raider' stragglers, Syndicate shipping lanes should be safe for now. I guess you can head back to the Luna FOB and see if we have anymore tasks for you, though you probably need a Jump Drive for the next part. Perhaps we will meet again Captain. Goodbye."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -537,7 +514,7 @@ mission "Arion:Exile Strike 1"
 		has "Arion:North Supply 3: done"
 		has "Arion:North Scout 5: done"
 		has "Arion:Exile Defense 3: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer 
 		require "Jump Drive"
 		conversation
@@ -547,10 +524,8 @@ mission "Arion:Exile Strike 1"
 					accept
 				`	Maybe Later`
 					defer
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -563,7 +538,7 @@ mission "Arion:Exile Strike 2"
 	destination "Shangri-La"
 	to offer 
 		has "Arion:Exile Strike 1: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you approach the Landing Pads, you see the 2nd Strike Group and some other ships. There is a Bactrian and an Auxiliary, as usual and 2 cruisers plus a carrier.`
@@ -619,10 +594,8 @@ mission "Arion:Exile Strike 2"
 			`	"Well, practically all fighters pilots got reassigned, so we aren't getting any manned fighters for most of the time. This mission is also not the most challenging so we don't really need the larger drones. Anyways, you should get ready for the next mission.`
 			label end
 			`	You then see Williams return to his fleet.`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -635,7 +608,7 @@ mission "Arion:Exile Strike 3"
 	destination "Shangri-La"
 	to offer 
 		has "Arion:Exile Strike 2: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	"Alright Captain," Williams explains to you. "We will be striking the 'Raiders' one more time to hopefully cripple them for a while."`
@@ -679,10 +652,8 @@ mission "Arion:Exile Strike 3"
 			`	When you approach to land, you see that the 2nd Strike Group has returned once more. Entering the spaceport, you can see Vice Admiral Jean waiting for the both of you.`
 			`	"Well looks like the both of you have done a good job!" Jean exclaims.`
 			`	"Captain <first> <last> did good job out there," Vice Admiral Williams replies calmly. "I guess i understand why we decided to stay here after all." Anyways," Williams speaks to you, "You should probably head back to the Luna base. I think you are finally about to be tasked to do something challenging."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -696,7 +667,7 @@ mission "Arion:Gauntlet 1"
 	destination "Hephaestus"
 	to offer 
 		has "Arion:Exile Strike 3: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	When you land in the base, the Handler approaches once more.`
@@ -727,10 +698,8 @@ mission "Arion:Gauntlet 1"
 		"salary: Arion" = 17500
 		conversation
 			`	You receive a message from the Handler. "It appears you are more than capable of defeating those ships, good job Captain."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -742,7 +711,7 @@ mission "Arion:Gauntlet 2"
 	destination "Hephaestus"
 	to offer 
 		has "Arion:Gauntlet 1: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	The transmission continues. "However, your trial is not done, it appears they brought back up. Get ready Captain, this is your final trial."`
@@ -768,10 +737,8 @@ mission "Arion:Gauntlet 2"
 		payment "2500000"
 		conversation
 			`	You receive a message from the Handler. "Well done completing all our missions Captain, head back to Luna, we have something for you."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -790,7 +757,7 @@ mission "Arion:FOB Bravo Reveal"
 		has "Arion:Exile Defense 3: done"
 		has "Arion:Exile Strike 3: done"
 		has "Arion:Gauntlet 2: done"
-		not "Arion leaves"
+		not "event: Arion leaves"
 	on offer
 		conversation
 			`	As you land in the FOB, the Handler approaches once more. "Hello Captain, it appears that you have successfully done the missions we have given you. You have proven yourself to be a useful asset. As such, i have been authorized to bring you to our main base. We can go now but if you want you can do it later."`
@@ -922,9 +889,7 @@ mission "Arion:FOB Bravo Reveal"
 		
 			label end
 			`	"Well Captain," Eliza says to you, "I guess that's it. Welcome to Arion, i hope you enjoy your stay. Feel free to explore this base more when you have the time. See you next time Captain."`
+
 	on fail
-		event "Arion leaves"
-		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		event "Arion leaves"
 		dialog `You have failed/aborted an essential Arion mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`

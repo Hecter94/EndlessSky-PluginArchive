@@ -1,66 +1,145 @@
-mission "NCD=First Contact"
+mission "First Contact : NCD"
 	name "An interesting complex"
 	landing
 	source 
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
+		and
+			not "First Contact : NCD Alternate: declined"
+			not "First Contact : Arion: done"
+			not "event: Arion leaves"
 	on offer
 		conversation
-			`	While on approach to the landing zone, you see a unique building complex in the distance. It has a landing pad, 2 runways and hangars that looks like an outfitter and a small shipyard. You could probably try to get a closer look.`
+			`	While you are preparing to land, you spot a unique complex. It appears to be a large spaceport of sorts with a large landing area, but uniquely enough you can see what looks like an airport and heliport next it.`
 			choice
-				`	(Visit the complex)`
-				`	(Maybe next time)`
+				`	(Approach)`
+				`	(Ignore it)`
 					defer
-			`	You proceed to approach the landing site. When you get closer, you can see that there are fighters on the airbase and anti air installments. You can continue approaching, it doesn't look like they are hostile.`
+			`	You proceed to approach the complex. However when you get closer, you can see that the complex is very heavily armed. Some fighters are on standby in the airbase while some helicopters are standing by in the heliport. You also see what you think are anti air batteries.`
 			choice
 				`	(Continue approaching)`
-				`	(Run away)`
+				`	(Flee)`
 					defer
-			`	Even after seeing the fighters and anti air, you continue approaching. When you get closer you are hailed.`
-			`	"Welcome to the <origin> branch of the National Combined Defense contracting," the voice speaks out to you. "If you want to look at some products that you can purchase, you can land at landing pad 2."`
+			branch hostile
+				"reputation: Merchant" <= -100
+			`	Even after seeing that the base is heavily armed, you continue to approach the complex. When you get close enough, the base hails you.`
+			`	"Hello Captain, welcome to the <origin> branch of the National Combined Defense contracting," the voice speaks out to you. "If you wish to land and purchase some equipment, please proceed to landing pad 1.`
 			choice
-				`	(Proceed to land)`
-				`	(Run away)`
+				`	(Land)`
+				`	(Maybe next time)`
 					defer
-			`	You then proceed to land at the complex. It is a large facility, with a large central building with a parking lot, landing pads and an airbase surrounding it. It has quite a bit of air defenses, with 2 fighter squadrons on the airbase and 12 anti air tanks across the complex. The fighters and AA tanks are unique looking, they look very similar to vehicles from the 21st century. You have a feeling however that their looks are deceiving. You then see someone who looks like the manager of the complex and 2 guards approach you. Strangely enough, the guards also look like they are using guns from the 21st century.`
-			`	"Hello Captain," the manager greets you. "I am the manager of this facility. Here in the <origin> branch of NCD co, we sell high quality ships and outfits. We also sell some high quality hand to hand outfits. We can give you a tour of the facility if you want, but either way you can return to here or any of our 4 facilities on Earth, Bourne, Valhalla and Hephaestus."`
+			`	You proceed to land at the designated landing zone. When you land, you see that the complex is composed of a large central building with a landing zone for spacecraft in front of it with multiple large hangars. There is also a small parking area near it filled with armed vehicles which you assume belongs to the complex. There is also a heliport and airport next to the building. It is filled with fighters and both cargo and armed helicopters.`
+			`	You then see 3 people approaching you. 2 of them armed with rifles. The man in the center is wearing a business suit. While he appears unarmed, you can see a slight bulge in his suit which you assume is a weapon.`
+			`	"Hello Captain," the man with the suit introduces himself. "I am Sergei, the Manager of the National Combined Defense co. We are a relatively small company selling a lot of equipment ranging from firearms to large spacecraft. While we may be relatively unknown company, the effectiveness of our products makes it very favoured by anyone who knows of our existence." Sergei then stops talking for a few seconds before suddenly asking for your name. "Sorry Captain, it appears that i was too busy advertising the company to you that i forgot to ask for your name."`
+			choice
+				`	"I am Captain <first> <last> of the <ship>."`
+				`	"Captain <last>. <first> <last>."`
+			`	"Well then Captain <first> <last>," Sergei excitedly says to you. "It appears that this facility has been idling around today! So we have time to show around the facility, if you would like to."`
 			choice
 				`	(Agree to the tour)`
 				`	(Decline the tour)`
-					decline
-			`	You are then brought across the facility. The facility is surprisingly empty, you suspect that most of this base is automated. You were shown a bunch of outfits and weapons that are now available to you. You were also brought to the base shipyard, where you see what appears to be 21st century fighters for sale. Despite their looks, they are only similar to those 21st century fighters in only appearance, as they share practically no compatible parts, has shields and can fly in space. You are then finally brought to the gun store. Inside, there are a bunch of guns that you can purchase, everything from pistols to anti material rifles. There are also bounties on the mission board. This detour sure was worth it.`
+					goto decline
+			`	Sergei then appears excited. "Well then Captain, let us have a look around the facility!"`
+			`	You are first toured the spaceport area. There are multiple hangars in the spaceport. You see a ship in one of the hangars. It is one of the largest ships you have ever seen. It looks like it has a large gun running down its center.`
+			choice
+				`	"What is that ship?"`
+			scene "thumbnail/arionstarspear"
+			`	Sergei then chuckles to himself. "That Captain, is the Starspear class railgun battleship. It is a formidable ship which has the capability to mount a special spinal railgun. I recon that it could easily take on a Navy cruiser or carrier. It also has a few drones just in case."`
+			`	"If you want one, you'll have to gain our contractor license, which means that you have to earn it. Your best way of earning it is to do jobs for us."`
+			`	"Anyways Captain, let's continue to the next area."`
+			choice
+				`	(Enter the main building)`
+			`	When you enter the building, you see a clean interior with very little people walking around. Only a few of them are wearing uniforms, which you assume are the uniform of people working here. Sergei then turns toward you. "This is the main facility structure," Sergei explains to you. "Almost all of our products are manufactured on site. It is heavily automated so the only employees essential to this bases function are customer service, security guards and a small number of engineers to ensure that the factory runs well. Anyways Captain, let us see the manufacturing area."`
+			choice 
+				`	(Enter the manufacturing facility)`
+			`	You then go deeper into the facility to reach the production sector. You see robots and machines working on everything from pistols and rifles to fighters and capital ships. There are maybe around only a total of a dozen people. "These robots and machines are one of the key reasons of why our products are so powerful," Sergei explains to you. "They can make a product with practically no defects and do it quickly, safely and with less cost than a normal factory. Alright then, i think thats enough of the manufacturing section. Let us move on the 'proving grounds'."`
+			choice 
+				`	(Enter the proving grounds)`
+			`	You go back to the surface and reach the proving grounds. "This is the proving grounds, which is basically just a glorified shooting range," Sergei explains to you. "Here we test everything from rifles to ship mounted weaponry. Anyways, i think we can test out a few rifles here. Excuse me while a bring out some weapons for you to test."`
+			`	Sergei then leaves you with one of his bodyguards and proceeds to go to the armory. When he returns he brings 2 rifles. "Alright Captain, i have 2 guns for you to test out. I have an AKS 74U and a M4A1. Which one do you prefer?."`
+			choice
+				`	"I prefer the AKS 74U."`
+				`	"I prefer the M4A1."`
+					goto m4a1
+			action
+				outfit "AKs 74u"
+			scene "outfit/aks74u"
+			`	"Alright then Captain, here is the AKs 74u. It's a neat carbine that you can use in tight spaces. It has a short barrel and a folding stock, so it is relatively easy to conceal, although relatively is a keyword."`
+				goto guntest
+			label m4a1
+			action
+				outfit "M4A1"
+			scene "outfit/m4a1"
+			`	"Alright then Captain, here is the M4A1. It's an assault rifle that you can use in CQB. It has an adjustable stock and a decent length barrel, so it is useful even outside of CQB."`
+				goto guntest
+			label guntest
+			`	Sergei then gives you your new gun. "Remember Captain, be responsible with this firearm. Keep your finger off the trigger until you are ready to fire and don't point the gun at anything you aren't willing to destroy. Alright then, let us test this gun in the firing range." You are then brought to the firing range. It is a large open area. There are some targets down range for you to shoot.`
+			choice
+				`	Shoot at the targets further away in semi automatic mode.`
+				`	Shoot at the targets near you in fully automatic.`
+					goto fullauto
+			`	You carefully shoot at the targets downrange. You hit a decent amount of your shots. Sergei is impressed. "Nice shooting Captain, that was decently accurate for someone shooting a carbine. Anyways, let us continue the tour."`
+				goto HMMWV
+			label fullauto
+			`	You switch to full auto and shred the targets. You shoot some bursts at first but after reloading you decide to magdump one of the targets. Sergei is impressed. "Nice shooting, you handled that recoil decently well. You can keep the gun. Anyways Captain, let us continue the tour"`
+				goto HMMWV
+			label HMMWV
+			`	You are then brought outside the main building. Sergei then speaks to you. "Alright then Captain, that should be it for the main building. Let us continue to the Heliport and the Airport. But before that let us see the motor pool."`
+			`	You then see a car park in front of you. It has a big machine gun on top. "This is a HUMVEE. It's a light utility vehicle that we use when we are contracted to protect people on the ground. It has a M2 Browning mounted on top just in case anyone tries to mess with us. It's a relatively older vehicle but it is sufficient. Anyways, let's go to the motor pool."`
+			choice
+				`	Enter the car`
+			`	You are then brought to the motor pool. You can see a bunch of vehicles in there. There isn't too much vehicles, probably around a hundred vehicles are there total, but there is a lot of variety. "Here we have a lot of ground vehicles. We have everything from small utility vehicles to cargo trucks, recovery vehicles, infantry fighting vehicles and main battle tanks. Anyways, let's look around." The 4 of you then exit the car and look around. You got to see a bunch of these vehicles up close. After you are done seeing these vehicles, Sergei brings you to one of the armored vehicles. "For the next part of our journey, let's use this Namer IFV."`
+			choice
+				`	Enter the armored vehicle`
+			`	The armored vehicle is tracked. It is as large as a main battle tank but it can also carry infantry like an infantry fighting vehicle or armored personnel carrier. Much like the HUMVEE it is armed with a M2 Browning. "This is one of our main armored personnel carriers. This thing is basically a turtle, it's really hard to kill, although it lacks in firepower. It owes this durability due to the fact that its hull is based on an MBT. Besides its weight however one of its major drawbacks is that it's a major pain in the ass to transport since its so heavy. Anyways, let's go to the heliport."`
+			`	The heliport is decently large. There are around a dozen helicopters currently in the heliport, although it looks like it can hold up to 4 times its current capacity. "We currently have 3 helicopter squadrons on standby," Sergei explains to you. We have a cargo, transport and attack squadron. We usually use a CH-47 Chinook, CH-53 Stallion or a V-22 Osprey for cargo while we use a Blackhawk or Super Huey for transport, although sometimes we use a Mi-35 Super Hind for areas with a lot more resistance. For attack we usually use a AH-1 Viper or AH-64 Apache, with the occasional KA-52. Obviously, this isn't a complete list of helis we fly, but that is the most common ones."`
+			`	"Anyways Captain," Sergei says as he walks towards a helicopter starting up, "I think to go to the final part of our tour we can try flying in one of these helis."`
+			choice 
+				`	Enter the helicopter`
+			`	The helicopter has a lot of weapons on board but it also has a compartment for passengers. "This is one of the helicopters i was talking about before," Sergei says as he boards the helicopter. "The Mi-35 is what happens when you combine an attack helicopter and a transport helicopter. It can carry a lot of weapons like rockets and anti tank missiles but can also carry troops at the same time. It can drop troops and then remain in the battlefield to support the troops. Personally, i think this is one of the best things to ever come out of the Soviet Union. Anyways," Sergei says as the helicopter starts up, "Lets give this thing a test ride."`
+			`	The helicopter takes off and starts flying towards the airport. From the air you can see that there is quite a lot of planes in the airport. The helicopter lands with a solid thud and the doors open.`
+			choice
+				`	Exit the helicopter`
+			`	There are all sorts of planes in the airport. Some appear to be transport planes while most appear to be fighter jets. "We currently have 9 squadrons at our disposal. A F22 and F15 squadron for air superiority. A F23 and F14 squadron to intercept enemies who get too close. A F35 and AV8 Squadron for ground attack just in case we get a contract to eliminate some enemy bases. And a F16 and F18 squadron for backup. We also have a C130 Squadron to transport supplies across the planet. Usually we also have an additional training squadron to train any buyer who wishes to purchase our aircraft but they are currently busy."`
+			`	"Anyways Captain," Sergei says to you, "That should conclude today's tour. I hope that you will be a valuable customer or maybe even contractor for NCD co. Hopefully i will see you next time Captain," Sergei says as he starts to head back to the helicopter. "See you next time Captain <first> <last>."` 
 				decline
+			label decline
+			`	Sergei appears to be disappointed with your answer. "Well then Captain, i will at least tell you some key points. You now have access to our ships and outfits in Earth, Bourne, Valhalla and Hephaestus. You can also check out the job boards for jobs that you can do for us in these locations. If you do tasks for us you will have access to more advanced jobs and maybe even access to our most advanced stuff. That should be all the key points Captain. Hopefully i will see you next time." Sergei and his 2 bodyguards then proceed to leave.`
+				decline
+			label hostile
+			`	A few seconds after continuing to approach, you see some missiles approaching you from behind. Before you can react, they slam into your ship! The explosions causes some damage and stuns your ship.`
+			`	Before you can retaliate, you see the base firing everything they have at you, from ground based artillery to SAM sites and AA batteries. You did not stand a chance.` 
+			`	The last things you see before you hit the ground are fighter jets flying over you from behind you while helicopters fly towards you from the base.`
+				die
 	on decline
 		event "NCD stores access"
+		log "People" "Sergei" "The manager of NCD co."
 		log "Gained access to a National Combined Defense corporation facility. They have weapons, outfits, ships and bounties. Maybe i should do some of these contracts."
-		log "Factions" "National Combined Defense corporation" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks like 21st century hardware, but are actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board."
+		log "Factions" "National Combined Defense contracting" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks like 21st century hardware, but are actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board."
 
 
 
 mission "NCD: Low Threat Contract 1"
-	name "Small HVT"
+	name "Small NCD High Value Target"
 	description "A contract has been posted for a notorious ship thief. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		has "NCD=First Contact: declined"
-		not "Arion=First Contact: done"
-		not "NCD=Alternate First Contact: declined"
-		not "Arion leaves"
+		has "First Contact : NCD: declined"
+		not "First Contact : Arion: done"
+		not "First Contact : NCD Alternate": declined"
+		not "event: Arion leaves"
 		"ncd contracter" >= 3
 	on offer
 		conversation
-			`	When you land, you are immediately approached by an NCD manager and 2 guards.`
-			`	"Hello Captain," the manager greets you. "It appears that you have been doing a lot of contracts for us. We have a proposition for you. There are some higher value targets that we give to people we trust. Now, seeing that you are capable enough to do the contracts on the job board, we want you to do some of these. Of course, the payment will be increased, and if you succeed in enough of these missions, you will be given access to higher paying bounties. Are you interested, Captain?"`
+			`	When you land, you are immediately approached by Sergei and his 2 guards.`
+			`	"Nice to see you again Captain!" Sergei greets you. "It appears that you have done some contracts for us. So, we have some higher value jobs for you Captain. It shouldn't be too hard, it's just for some small ships. Do you think you're up for the challenge Captain?"`
 			choice
-				`	"Ok, i'll do these missions."`
-				`	"Maybe next time."`
+				`	"I'm interested."`
+				`	"Not right now."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Splendid!" Sergei exclaims. "For your first High Value Target you will be hunting down a notorious ship thief. Wether it be on the ground or in space this thief has stolen a decent amount of ships and cost a lot of people a lot of money. So much so that somebody contracted us to put them six feet under. It shouldn't be too hard seeing that it's just a Scout. Good luck Captain."`
 				accept
 	npc kill
 		government Bounty
@@ -68,39 +147,74 @@ mission "NCD: Low Threat Contract 1"
 		system 
 			distance 1 1
 		fleet
-			names "pirate"
+			names "northstar pmc"
 			variant
-				"Scout (NCD Bounty)"
+				"Scout (Northstar PMC)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "250000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		conversation
+			`	While approaching the landing zone you immediately receive a message from Sergei. "Not bad for a rookie. You did a good job eliminating the target. You should have received <payment> already."`	
+
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "NCD: Low Threat Contract 2"
-	name "Small HVT 2"
-	description "A contract has been posted for a notorious bandit. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	name "Small NCD High Value Target 2"
+	description "A contract has been posted for a notorious smuggler. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: Low Threat Contract 1: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	When you land, you are once again approached by the manager.`
-			`	"You have unsurprisingly proved your competence Captain," explains the manager. "Keep up the good work and we could have a very profitable venture for the both of us. We have another mission for you, would you like to accept it?"`
+			`	When you land, you are once again approached by Sergei and his 2 bodyguards.`
+			`	"Well since you did well in your last contract we have another one for you," Sergei explains. "This time it's for a notorious smuggler. Wether it be drugs, exotic animals or weapons, this guy will smuggle it all. Although they are most well known for smuggling weapons. Rumor has it that they are one of the biggest sellers of our equipment on the black market. This makes them quite an important target. Luckily of course, someone else also wants them gone so they contracted us. The ship is an Argosy. While it is technically a freighter it still has some teeth in it so you should still be careful. Anyways, can you do the job now?"`
 			choice
-				`	"Ok, i'll do the contract."`
-				`	"Maybe next time."`
+				`	"Consider it done."`
+				`	"Maybe later."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Alright then Captain, good luck."`
+				accept
+	npc kill
+		government Bounty
+		personality staying waiting target
+		system 
+			distance 1 1
+		fleet
+			names "northstar pmc"
+			variant
+				"Modified Argosy (Northstar PMC Mk 1)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on complete
+		payment "270000"
+		conversation
+			`	You receive a message from Sergei while you enter the atmosphere. "Good job Captain. <payment> should have been transferred to your account."`	
+
+	on fail
+		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "NCD: Low Threat Contract 3"
+	name "Small NCD High Value Target 3"
+	description "A contract has been posted for a notorious smuggler. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	landing
+	source
+		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
+	to offer 
+		has "NCD: Low Threat Contract 2: done"
+		not "event: Arion leaves"
+	on offer
+		conversation
+			`	When you land, you can see that Sergei and his 2 bodyguards are waiting for you.`
+			`	"It is quite peculiar that the last 2 contracts had a lot of our equipment. The anti missile system isn't too surprising, but the engines and the rifles? Those are less common. Only people who know us directly has those. Although there is no need to dwell on that for now, we have another contract for you Captain."`
+			`	"This time, you will be fighting an actual warship. No more transports or freighters. A bandit has been harassing a lot of merchants lately. That of course pissed off a lot of people. So obviously someone put out a contract for them. Usually they hunt with a gang but right now they have split up. So this is a good opportunity to bag one of them. Will you do the job Captain?"`
+			choice
+				`	"Yes sir."`
+				`	"Not now."`
+					defer
+			`	"Perfect. I will see you later Comrade. Good luck."`
 				accept
 	npc kill
 		government Bounty
@@ -114,39 +228,37 @@ mission "NCD: Low Threat Contract 2"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "300000"
+		"salary: NCD co" = 500
 		log "Completed some NCD co High Value contracts. Was told to do more bounties to gain access to more High Value contracts."
 		conversation
-			`	When you land, you are greeted again by the manager.`
-			`	"Alright Captain, that is the smaller high value targets taken care of. If you would like to do more of these missions, you will need to do some more contracts on the job board."`
-			
+			`	When you land Sergei and his 2 bodyguards immediately greet you.`
+			`	"Well that should be all the small High Value Targets completed. Due to your successes i have decided to give you a small salary. Remember that if you do more of these missions we will probably provide you with more high value contracts. Thank you for helping us Comrade and see you later."`
+
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 
 
 mission "NCD: Medium Threat Contract 1"
-	name "Medium HVT"
-	description "A contract has been posted for a notorious slaver. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	name "Medium NCD High Value Target"
+	description "A contract has been posted for a notorious mercenary. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
-		has "NCD: Low Threat Contract 2: done"
+		has "NCD: Low Threat Contract 3: done"
 		"ncd contracter" >= 5
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	When you land, you are once again approached by an NCD manager and 2 guards.`
-			`	"It appears that you have done some more contracts for us," the manager explains. "I have been greenlit to provide you with more high value targets. This time, the targets will be stronger. Are you ready for the missions?"`
+			`	When you land, you can see a Mi-35 landing near you. You then see Sergei and his 2 bodyguards exit the helicopter. Sergei then greets you.`
+			`	"Good to see you again Comrade! It appears that you have done even more missions for us. Therefore we will be giving you more high value targets. This time you will be hunting down medium sized ships so it will be slightly more challenging than before. Although i am sure that you are more than capable of doing this. Are you ready Comrade?"`
 			choice
-				`	"Ok, i'll do these missions."`
-				`	"Maybe next time."`
+				`	"I'm ready."`
+				`	"Not right now."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Perfect. To ease you into hunting larger targets we will be sending you against something that isn't really a proper warship, although beware that this target can still bite back."`
+			`	"You will be hunting down a notorious mercenary ship. They specialize in ground combat and ship boarding. Do not mistake your target to be a simple transport ship, because this target can fight back. Besides the advanced weaponry on board the target also possesses a deadly fighter. Apparently they managed to obtain one of our Tomcats. Also note that they are apparently armed with some of our anti missile systems and H2H weapons." Sergei then mumbles to himself ,"why do they have so much of our equipment." Sergei then snaps back. "Anyways Comrade they apparently messed with too much people and now someone wants them gone. Good luck Comrade."`
 				accept
 	npc kill
 		government Bounty
@@ -154,81 +266,39 @@ mission "NCD: Medium Threat Contract 1"
 		system 
 			distance 1 1
 		fleet
-			names "pirate"
+			names "northstar pmc"
+			fighters
+				names "northstar fighters"
 			variant
-				"Mule (NCD Bounty)"
-				"A/S-4w Skyhawk (Merchant)"
+				"F/S-14w Tomcat (Northstar PMC)"
+				"Mule (Northstar PMC)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "420000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		conversation
+			`	While you are entering the atmosphere, you receive a message from Sergei. "Good job eliminating the target Comrade. <payment> should already have been transferred to your account. Although it is worrying that quite a lot of our targets have access to our equipment."`
+
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "NCD: Medium Threat Contract 2"
-	name "Medium HVT 2"
+	name "Medium NCD High Value Target 2"
 	description "A contract has been posted for a notorious privateer. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		and
-			not "NCD=Alternate First Contact: declined"
-			not "Arion=First Contact: done"
-			not "Arion leaves"
-			has "NCD: Medium Threat Contract 1: done"
+		has "NCD: Medium Threat Contract 1: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	In the spaceport, you are once again approached by the manager.`
-			`	"Alright, you are unsurprisingly capable of doing larger High Value contracts. This time, you will be facing a proper warship. Are you ready?"`
+			`	After landing in the landing zone, Sergei and his 2 bodyguards greet you once more.`
+			`	"Alright then Comrade, since you have been successful in your last mission you will now be tasked with dealing with a proper warship. A privateer armed with a fast medium warship has been harassing a lot of merchants. Obviously someone had enough of this and contracted us to bury them. Are you up to the task Comrade?"`
 			choice
 				`	"Yes."`
 				`	"Maybe next time."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
-				accept
-	npc kill
-		government Bounty
-		personality staying waiting target
-		system 
-			distance 1 1
-		fleet
-			names "pirate"
-			variant
-				"Marauder Splinter (NCD Bounty)"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on complete
-		payment "420000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
-	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-
-mission "NCD: Medium Threat Contract 3"
-	name "Medium HVT 3"
-	description "A contract has been posted for a notorious assassin. They were last seen around <system>. Eliminate them for a payment of <payment>."
-	landing
-	source
-		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
-	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
-		has "NCD: Medium Threat Contract 2: done"
-	on offer
-		conversation
-			`	You are once again approached by the manager.`
-			`	"It appears that you can also deal with proper warships, so this next contract should be easy for you. Are you ready for it?"`
-			choice
-				`	"Yes."`
-				`	"Maybe next time."`
-					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Perfect. I will leave you to it Comrade."`
 				accept
 	npc kill
 		government Bounty
@@ -241,40 +311,74 @@ mission "NCD: Medium Threat Contract 3"
 				"Marauder Manta (NCD Bounty)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
-		payment "420000"
-		log "Completed even more NCD co High Value contracts. Was told to do even more contracts."
+		payment "450000"
 		conversation
-			`	When you land, you are once greeted again by the manager.`
-			`	"Unsurprisingly, you are able to complete all of our medium High Value contracts. As usual, for more high value contracts, you must do more contracts first."`
-			
+			`	While you are entering the atmosphere, you receive a message from Sergei. "Nice work Comrade. <payment> should already have been transferred to your account."`
+
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
+
+mission "NCD: Medium Threat Contract 3"
+	name "Medium NCD High Value Target 3"
+	description "A contract has been posted for a notorious assassin. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	landing
+	source
+		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
+	to offer 
+		has "NCD: Medium Threat Contract 2: done"
+		not "event: Arion leaves"
+	on offer
+		conversation
+			`	As usual, after landing Sergei and his 2 bodyguards approach you.`
+			`	"Alright, i will be 100% honest with you Captain. This next target will be very dangerous. In fact this isn't the first time someone contracted us to kill them. A Splinter armed with NCD weaponry has been attacking both merchant and government ships regularly. They are armed with 2 76mm turrets, an OTOMATIC anti missile gun and 2 of our UGT-1 torpedo tubes. They have regularly taken out Heavy Warships so this will be a very challenging fight. My recommendation is that you avoid being hit by the torpedoes, wether it be by using a lot of anti missiles or just dodging them. Are you ready for this challenge Comrade <first> <last>?"`
+			choice
+				`	"I'm ready."`
+				`	"I don't think so."`
+					defer
+			`	"Alright then Comrade, good luck. You'll need it."`
+				accept
+	npc kill
+		government Bounty
+		personality staying waiting target
+		system 
+			distance 1 1
+		fleet
+			names "pirate"
+			variant
+				"Splinter (NCD Bounty)"
+		dialog phrase "generic hunted bounty eliminated dialog"
+	on complete
+		payment "500000"
+		"salary: NCD co" += 1000
+		log "Completed even more NCD co High Value contracts. Was told to do even more contracts."
+		conversation
+			`	When you land, you are once greeted again by Sergei and his 2 bodyguards.`
+			`	"It appears that you have talent Comrade. I am glad that you are able to return. Due to your success we have increased your salary further. As usual you can do more of our normal contracts if you want to do more of these high value ones. See you next time Comrade." Sergei and his 2 bodyguards then walk towards the Mi-35.`
+
+	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 
 
 mission "NCD: High Threat Contract 1"
-	name "Large HVT"
-	description "A contract has been posted for a notorious raider. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	name "Large NCD High Value Target"
+	description "A contract has been posted for a notorious mercenary. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: Medium Threat Contract 3: done"
+		not "event: Arion leaves"
 		"ncd contracter" >= 8
 	on offer
 		conversation
-			`	While you are relaxing in the spaceport, you are once again approached by an NCD manager and 2 guards.`
-			`	"Once again, you have successfully done more contracts for us. Now, we have more High Value contracts for you. Unsurprisingly, it will be even harder this time, but we are 99% sure that you should be able to accomplish the task. Are you willing to do these contracts right now?"`
+			`	When you land, you see a familiar Mi-35, 2 bodyguards and Sergei waiting for you. As usual Sergei greets you.`
+			`	"As usual, since you have done more contracts for us, we have decided to give you more High Value contracts. Obviously it will be more challenging than before, since you will be hunting down heavy warships this time. I think you're up for the challenge, so you will you do it?"`
 			choice
-				`	"Ok, i'll do these missions."`
+				`	"I'm ready."`
 				`	"Maybe next time."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Great Comrade! I knew you were up to the task. Alright then this time we will be hunting another mercenary team. Much like last time they appear to have access to our equipment, so this job should be challenging. It also makes this contract high priority. They have access to 3 of our Rafales. Much like last time they are also armed with some of our outfits. The ship you are hunting down is a Bactrian so i strongly recommend that you capture it. Anyways, good luck Comrade."`
 				accept
 	npc kill
 		government Bounty
@@ -282,40 +386,41 @@ mission "NCD: High Threat Contract 1"
 		system 
 			distance 1 1
 		fleet
-			names "pirate"
+			names "northstar pmc"
+			fighters
+				names "northstar fighters"
 			variant
-				"Bactrian (NCD Bounty)" 
-				"A/S-4w Skyhawk (Merchant)" 3
+				"Dassault Rafale W/S (Northstar PMC)" 3
+				"Bactrian (Northstar PMC)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "640000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		conversation
+			`	While you are entering the atmosphere, you receive a message from Sergei. "Good job Comrade. You have successfully made sure that one less enemy will use our equipment. Hopefully we will be able to stop them from stealing more of our equipment. We will have to ask you to transfer your ships scanner data from the previous fight."`
+			choice
+				`	Send the data`
+			`	"Alright Comrade, we have received the data. Hopefully we will be able to get to the bottom of this. See you on the ground Comrade."`
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "NCD: High Threat Contract 2"
-	name "Large HVT 2"
+	name "Large NCD High Value Target 2"
 	description "A contract has been posted for a notorious raider. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: High Threat Contract 1: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	The manager approaches you once more.`
-			`	"Yet again, you have successfully completed the contract. This time, you will be facing a proper warship. Are you ready?"`
+			`	When you land you see Sergei and his 2 bodyguards waiting for you once more.`
+			`	"Alright then, as usual you have successfully completed another contract. So of course it's time for another contract, should you choose to accept it anyways."`
 			choice
-				`	"Yes."`
-				`	"Maybe next time."`
+				`	"I accept."`
+				`	"Not yet."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Alright then, as usual you will be dealing with a proper warship. A modified Falcon has been harassing people in the area and now someone wants us to take out the trash. I am confident that you will be able to do this task Comrade. I will see you later."`
 				accept
 	npc kill
 		government Bounty
@@ -329,33 +434,30 @@ mission "NCD: High Threat Contract 2"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "600000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		conversation
+			`	When you enter the atmosphere, Sergei has sent a message to you. "Well that's another target down Comrade, good job. It's a good thing that this target doesn't have that much access to NCD equipment, it's nice to see a change of pace."`	
+
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "NCD: High Threat Contract 3"
-	name "Large HVT 3"
+	name "Large NCD High Value Target 3"
 	description "A contract has been posted for a notorious raider. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: High Threat Contract 2: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	When you land, the manager approaches you again as usual.`
-			`	"As usual, you have successfully completed the contract. We have one more High Value target for you to take out, and then you should be done. Will you accept the mission?"`
+			`	When you land, you see Sergei and his 2 bodyguards approach you.`
+			`	"Well, good job completing another contract Comrade. We have one more large High Value contract for you captain. A modified Leviathan has been taking bounties on important government ships. Therefore we have been contracted to eliminate this threat. Can you do it Comrade?"`
 			choice
-				`	"Yes."`
+				`	"Yes, i can."`
 				`	"Maybe next time."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Good, we will send you the details later. Good luck Comrade."`
 				accept
 	npc kill
 		government Bounty
@@ -368,42 +470,49 @@ mission "NCD: High Threat Contract 3"
 				"Marauder Leviathan (NCD Bounty)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
-		payment "600000"
-		"salary: NCD co" = 1000
+		payment "700000"
+		"salary: NCD co" += 1500
 		log "Completed more NCD High Value contracts. Was once again told to do more job board contracts."
 		conversation
-			`	When you land, you are once greeted again by the manager.`
-			`	"Unsurprisingly, you are able to complete all of our large High Value contracts. As usual, for more high value contracts, you must do more contracts on the job board first. Also, due to your constant success in completing our contracts, we have decided to give you a daily salary to help you fund a larger fleet."`
-			
+			`	When you land, you are once greeted again by Sergei and his 2 bodyguards.`
+			`	"Unsurprisingly, you are able to complete all of our large High Value contracts. As usual, if you want more you need to do more of our job board missions. Also, we have decided to increase your salary even more to help you fund a larger fleet."`
+			`	"Alright then Tovarisch," Sergei says as his Mi-35 lands behind him, "I will have to go now to find out more information about some of your recent contracts. We will have to get to the bottom of this. See you next time Tovarisch," Sergei says as he enters the helicopter. After entering, he closes the door and the helicopter takes off.`
+
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 
 
-mission "NCD: Small Threat Fleet Contract"
-	name "Small HVT fleet"
-	description "A contract has been posted for a notorious bandit gang. They were last seen around <system>. Eliminate them for a payment of <payment>."
+mission "NCD: Low Threat Fleet Contract"
+	name "Small NCD High Value fleet"
+	description "A contract has been posted for a notorious smuggler gang. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: High Threat Contract 3: done"
 		"ncd contracter" >= 12
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	While you are eating in a restaurant, you are once again approached by the manager and 2 guards.`
-			`	"Alright you know the drill, you have successfully completed some more contracts for us and now you can do a High Value contract. This time, you will be facing a small fleet, are you ready?"`
+			`	When you land, you can see the Mi 35 approaching you rapidly. It then proceeds to quickly land. When it touches down you can see Sergei and his 2 bodyguards hurriedly exiting the helicopter. Sergei then greets you.`
+			`	"Good to see you again Captain. I have some good news for you Captain. Not only do we have some more High Value contracts for you but we also have a lead for the case of the mercenary group with our equipment. This time you will be hunting down fleets. Do you think you are prepared Tovarisch?"`
 			choice
-				`	"Ok, i'll do these missions."`
-				`	"Maybe next time."`
+				`	"I'm ready."`
+				`	"Not right now."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Excellent. Alright, so we have reports that a smuggling group has been a major ally to this mercenary group. They have been a major help in transporting equipment that were bought by shell companies to the mercenaries bases. One of these smuggling groups just so happen to be nearby. Now there are 2 things that make this even better. One is the fact that there is a bounty on their heads due to their notoriety as a weapons and narcotics smuggler. The other good thing is the fact that there is a mercenary ship helping to guard them. Your mission is to eliminate the 4 smuggler ships and board the mercenary ship so we can get more info. I will leave you to prepare Tovarisch."`
 				accept
+	npc kill board
+		government Bounty
+		personality staying waiting target
+		system 
+			distance 1 1
+		fleet
+			names "northstar pmc"
+			variant
+				"Modified Argosy (Northstar PMC Mk 2)"
+		dialog phrase "generic hunted bounty eliminated dialog"
 	npc kill
 		government Bounty
 		personality staying waiting target
@@ -412,39 +521,52 @@ mission "NCD: Small Threat Fleet Contract"
 		fleet
 			names "pirate"
 			variant
-				"Scout (NCD Bounty)"
-				"Headhunter (NCD Bounty)" 3
+				"Argosy (NCD Bounty)" 4
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
-		payment "560000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		payment "1200000"
+		conversation
+			`	While you are entering the atmosphere, you receive a message from Sergei. "As usual, good job Tovarisch. We should already have sent you <payment>. Please transfer any information you have gathered from the ship you boarded to us."`
+			choice
+				`	Send the data`
+			`	"Perfect Tovarisch, we will look over the data. We will be sure to inform you if we have any breakthroughs. See you later Tovarisch."`
+
 	on fail
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 mission "NCD: Medium Threat Fleet Contract"
-	name "Medium HVT fleet"
-	description "A contract has been posted for a notorious PMC fleet. They were last seen around <system>. Eliminate them for a payment of <payment>."
+	name "Medium NCD High Value fleet"
+	description "A contract has been posted for a notorious raider fleet. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
-		has "NCD: Small Threat Fleet Contract: done"
+		has "NCD: Low Threat Fleet Contract: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	The manager approaches you once more. This time, they look slightly worried.`
-			`	"Well Captain, there has been an unexpected development. The last fleet you took out belonged to a rival PMC. They are a notorious company that usually do the dirty work of anyone who can pay. They are unhappy with your existence due to you taking out a few of their ships in a previous contract, and now that you have destroyed a fleet of theirs, they want revenge. Luckily of course, they just so happen to be your next target. Are you ready?"`
+			`	Once again the Mi 35 lands near you when you land. As usual, Sergei and his 2 bodyguards come out.`
+			`	"Alright then Captain, we have more info for you. Turns out the mercenary group we have been taking contracts on used to be a former client of ours called Northstar PMC. They used to be a well respected private military company until they started working for an unsavory group. We cut business ties with them and have not been on good terms."`
+			`	"Anyways for your next contract, you will be messing with the Northstar PMC even more. A ship of theirs have been training some raiders in how to use our fighters nearby. Luckily someone also wants these raiders dead. Therefore your next mission should you choose to accept it will be to eliminate the enemy ships and board a Northstar ship once more. Will you do it?"`
 			choice
 				`	"Yes."`
 				`	"Maybe next time."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"Then i will leave you to prepare Tovarisch, good luck."`
 				accept
+	npc kill board
+		government Bounty
+		personality staying waiting target
+		system 
+			distance 1 1
+		fleet
+			names "northstar pmc"
+			fighters
+				names "northstar fighters"
+			variant
+				"F/S-14w Tomcat (Northstar PMC)"
+				"Mule (Northstar PMC)"
+		dialog phrase "generic hunted bounty eliminated dialog"
 	npc kill
 		government Bounty
 		personality staying waiting target heroic unconstrained vindictive
@@ -453,40 +575,39 @@ mission "NCD: Medium Threat Fleet Contract"
 		fleet
 			names "pirate"
 			variant
-				"Mule (NCD Bounty)"
-				"A/S-4w Skyhawk (Merchant)"
-				"Marauder Splinter (NCD Bounty)"
-				"Marauder Manta (NCD Bounty)" 2
+				"Mig/S-35w Fulcrum (NCD Bounty)" 8
+				"Valkyrie (NCD Bounty)" 4
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
-		payment "900000"
-		dialog `The target has been confirmed to be eliminated and the payment has been transferred to your account.`
-			
+		payment "1800000"
+		log "Factions" "Northstar PMC" "Northstar PMC was a trust worthy PMC and a business partner of NCD co until things went south. They now operate for anyone with enough money to pay them."
+		conversation
+			`	While you are entering the atmosphere, you receive a message from Sergei. "Another good job Tovarisch. I have a feeling that with this information that you have gathered we will be able to finally hit these mercs where it hurts. Anyways please send over the data Tovarisch."`
+			choice
+				`	Send the data`
+			`	"Excellent, we will look over the data, we should be done once we touch down. See you later Tovarisch."`
+
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
-mission "NCD: Large Threat Fleet Contract"
-	name "Large HVT fleet"
-	description "A contract has been posted for a notorious raider. They were last seen around <system>. Eliminate them for a payment of <payment>."
+mission "NCD: High Threat Fleet Contract"
+	name "Large NCD High Value fleet"
+	description "A contract has been posted for a massive PMC fleet. They were last seen around <system>. Eliminate them for a payment of <payment>."
 	landing
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		not "NCD=Alternate First Contact: declined"
-		not "Arion=First Contact: done"
-		not "Arion leaves"
 		has "NCD: Medium Threat Fleet Contract: done"
+		not "event: Arion leaves"
 	on offer
 		conversation
-			`	The manager approaches you once more. Their expression is a worried face, but at the same time you can see a glimmer of hope.`
-			`	"All right, seeing as you have taken out another one of their fleets, the PMC is now really pissed. They have assembled a large fleet and have begun attacking merchants. You will need to locate and destroy them. Are you ready for them?"`
+			`	When you land you see the Mi 35 for waiting for you. You also see 2 different bodyguards waiting for you this time. They tell you to enter the main facility and enter Sergei's main office. When you enter Sergei's office you see him waiting for you. He tells you to have a seat.`
+			`	"Ok Tovarisch, i have news for you. The Northstar PMC have amassed a large fleet nearby. It appears that they may be preparing to strike something. If we can take out this massive fleet it will not only put a dent in them economically, but it will also put a dent into their operations and will most likely have them stopping their operations for quite some time." Sergei then looks you straight into your eyes. "I won't lie to you Tovarisch, this will be an extremely dangerous task, i can't guarantee you surviving. Your mission should you choose to accept it is to eliminate this fleet containing a Bactrian with 3 of our fighters, 2 Heavy Warships, a Medium Warship and a Light Warship."`
 			choice
-				`	"Yes."`
-				`	"Maybe next time."`
+				`	"I can do it."`
+				`	"I don't think i can do it yet."`
 					defer
-			`	"Good, we will send you the details later. Good luck Captain."`
+			`	"I will leave you to prepare. Happy hunting Tovarsich and good luck, you'll need it."`
 				accept
 	npc kill
 		government Bounty
@@ -494,54 +615,60 @@ mission "NCD: Large Threat Fleet Contract"
 		system 
 			distance 1 1
 		fleet
-			names "pirate"
+			names "northstar pmc"
+			fighters
+				names "northstar fighters"
 			variant
-				"Bactrian (NCD Bounty)" 
-				"A/S-4w Skyhawk (Merchant)" 3
-				"Marauder Falcon (NCD Bounty)"
-				"Marauder Leviathan (NCD Bounty)"
-				"Headhunter (NCD Bounty)" 2
+				"Marauder Raven (Northstar PMC)"
+				"Marauder Splinter (Northstar PMC)"
+				"Marauder Falcon (Northstar PMC)"
+				"Marauder Leviathan (Northstar PMC)"
+				"Dassault Rafale W/S (Northstar PMC)" 3
+				"Bactrian (Northstar PMC)"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		set "NCD Contractor"
 		event "NCD Contractor Access"
-		payment "2500000"
-		"salary: NCD co" = 5000
+		set "license: NCD Contractor"
+		set "license: NCD Platinum"
+		payment "10000000"
+		"salary: NCD co" += 2000
 		log "Completed the last NCD co High Value contracts. Was told to expect someone to contact me."
 		conversation
-			`	When you land, you are once greeted again by the manager. This time, they have an expression of joy.`
-			`	"I should not be surprised that you are alright. You might be special after all. I think doing these contracts might be a waste of time for someone with your..... abilities. I expect a 'friend' of mine to contact you soon. You have a bright future ahead of you. And before i forget, we have not only increased your salary, but also gave you more access to our catalog. Good bye Captain."`
-			
+			`	When you land you are immediately greeted by Sergei and his 2 bodyguards. He looks surprised and excited.`
+			`	"I should have known that you would be alright Tovarisch! You are probably one of the most talented people i have ever worked with! As such, i will give you not only our NCD Platinum license, but also our Contractor license. We have also increased your salary. I have a feeling that i might now someone who would have a use for someone with your talents. Expect them to contact you very soon. See you next time Tovarisch."`
+			`	Sergei and his 2 bodyguards then start walking to his Mi-35. When you check your account you see that <payment> has been added to your account.`
+
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on abort
-		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
 
 
-mission "NCD=Alternate First Contact"
+mission "First Contact : NCD Alternate"
 	name "An interesting complex"
 	landing
 	source 
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer
-		has "Arion=First Contact: done"
-		not "NCD=First Contact: declined"
-		not "Arion leaves"
+		and
+			has "First Contact : Arion: done"
+			not "First Contact : NCD: declined"
+			not "event: Arion leaves"
 	on offer
 		conversation
-			`	While on approach to the landing zone, you see a unique building complex in the distance. It has a landing pad, 2 runways and hangars that looks like an outfitter and a small shipyard. You could probably try to get a closer look.`
+			`	While you are preparing to land, you spot a unique complex. It appears to be a large spaceport of sorts with a large landing area, but uniquely enough you can see what looks like an airport and heliport next it.`
 			choice
-				`	(Visit the complex)`
-				`	(Maybe next time)`
+				`	(Approach)`
+				`	(Ignore it)`
 					defer
-			`	You proceed to approach the landing site. When you get closer, you can see that there are fighters on the airbase and anti air installments. You can continue approaching, it doesn't look like they are hostile.`
+			`	You proceed to approach the complex. However when you get closer, you can see that the complex is very heavily armed. Some fighters are on standby in the airbase while some helicopters are standing by in the heliport. You also see what you think are anti air batteries.`
 			`	However, before you can react further, you are hailed by the complex. `
-			`	"Hello Captain <first> <last>, and welcome to the National Combined Defense corporation facility. But i think you are more familiar of the nation we belong to. We are a military 'surplus' store of Arion. You are more than welcome to tour the facility and purchase the items within Captain."`
+			`	"Hello Captain <first> <last>, and welcome to the National Combined Defense corporation facility. We are a company owned by Arion. You are more than welcome to tour the facility and purchase the items within Captain."`
 			`	The broadcast then cuts off.`
 				decline
 	on decline
 		event "NCD stores access"
 		event "NCD Contractor Access"
+		set "license: NCD Contractor"
 		log "Gained access to a National Combined Defense corporation facility. They have weapons, outfits, ships and bounties."
 		log "Factions" "National Combined Defense corporation" "The National Combined Defense contracting (or NCD co) is a military arms producer and private military company with equipment that looks like 21st century hardware, but are actually more advanced. They have facilities on Earth, Valhalla, Hephaestus and Bourne. Each facility has an outfitter, shipyard and bounty/contract board. They are a company owned by Arion."
