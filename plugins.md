@@ -233,7 +233,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Casual.Mod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Casual.Mod.zip) | 403.08 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Casual%20Mod/) <br>
 Author: PPhoto  | Category: Cheats <br>
-[https://github.com/pphotography/EndlessSky_CasualMod](https://github.com/pphotography/EndlessSky_CasualMod)  <br>
+N/A[]()  <br>
 
 >Makes gameplay more casual
 >Ships are heavier making navigation and combat slower
