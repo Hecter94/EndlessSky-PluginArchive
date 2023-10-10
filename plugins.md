@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 5.28 mb | 2023-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-09-24) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-10-10) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -52,9 +52,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/All Content Plugin/icon.png' height='100'></img><br>
 
 
-[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 148.81 kb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
+[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 148.81 kb | 2023-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
 Author: Michael Zahniser | Category: Cheats <br>
-[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2023-10-03) <br>
+[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2023-10-10) <br>
 
 >This mod starts you on Greenrock with a trillion (10^12) credits and access to almost every ship and outfit in the game. It is intended for testing purposes, but of course, as its description says, "it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it." 
 >
