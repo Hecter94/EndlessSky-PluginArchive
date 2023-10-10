@@ -3,6 +3,8 @@ mission "Omnis: existing save warning"
 	destination "Everything "
 	landing
 	name `Go to Omnis`
+	on accept
+			payment 922e16
 	on complete
 		dialog
 			`Well, the damage is done now, you're on your own.`
@@ -16,7 +18,7 @@ mission "Omnis: existing save warning"
 				`	(Accept Omnis boons.)`
 					goto "boons"
 				`	(Enable Omnis but don't accept boons.)`
-					accept
+					goto "noBoons"
 				`	(Disable Omnis.)`
 					decline
 			label "boons"
@@ -37,12 +39,13 @@ mission "Omnis: existing save warning"
 				`	(Abort.)`
 					goto "return"
 			action
+				event "Omnis: open wormhole"
 				event "Omnis: reveal omnis"
 				event "Omnis: reveal vanilla"
 				outfit "Omnipotence"
 				outfit "Omnipresence"
 				outfit "Omniscience"
-				payment 922e16
+				payment -922e16
 				set "license: City-Ship"
 				set "license: Coalition"
 				set "license: Gegno Civilian"
@@ -69,6 +72,15 @@ mission "Omnis: existing save warning"
 				set "Omnis: enable map reveal"
 			`	Congratulations, you're a god now.`
 				accept
+			label "noBoons"
+			action
+				event "Omnis: open wormhole"
+			`	Omnis can always be accessed through a wormhole in Rutilicus. I wonder how long it'll take for you to give in to cheating.`
+				decline
 	to offer
 		not "omnisStart"
 	waypoint "Rutilicus"
+event "Omnis: open wormhole"
+	system "Rutilicus"
+		add object "omnisGateway"
+			sprite "sprite/wispGreen"
