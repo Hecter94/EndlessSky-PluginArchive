@@ -10,6 +10,9 @@ local_dir = "./"
 
 file_lines_cache = {}
 def GetRelativeFileLines(file_name):
+	"""
+		Load a file and returns it's lines.
+	"""
 	if os.path.exists(local_dir + file_name):
 		file_name = local_dir + file_name
 	if file_name in file_lines_cache:
@@ -25,6 +28,9 @@ def GetRelativeFileLines(file_name):
 
 file_data_cache = {}
 def GetFileData(file_name):
+	"""
+		Load a file and return it as a string.
+	"""
 	if file_name in file_data_cache:
 		return file_data_cache[file_name]
 	else:
@@ -46,12 +52,28 @@ class CSVFile:
 		assert(data != None)
 		self.lines = list(data.rstrip('\n').split("\n"))
 		self.lines = [line.split(",") for line in self.lines]
-		self.field_count = len(self.lines[0])
+		# columns
+		if len(self.lines) >= 2 and len(self.lines[1]) == 1 and (self.lines[1][0] == "") or (self.lines[1][0] == "---"):
+			self.column_names = self.lines.pop(0)
+			self.lines.pop(0)
+		else:
+			self.column_names = [str(i_c) for i_c in range(len(self.lines[0]))] 
+		self.column_indices = {}
+		for i_column in range(len(self.column_names)):
+			self.column_indices[self.column_names[i_column]] = i_column
+		#
+		self.column_count = len(self.column_names)
 		for line in self.lines:
-			assert len(line) == self.field_count, "CSV file lines does not all have the same field count"
+			assert len(line) == self.column_count, "CSV file lines does not all have the same field count " + str(line)
+		
 
-	def __getitem__(self, index):
-		return self.lines[index]
+	def get(self, line_index, column_name):
+		if column_name is int:
+			return self.lines[line_index][column_name]
+		elif column_name is str:
+			return self.lines[line_index][self.column_indices[column_name]]
+		else:
+			raise Exception("column_name must be the column index or name")
 
 
 
@@ -123,10 +145,11 @@ while i_source_file_line < len(source_file_lines):
 				template += source_file_line
 			i_source_file_line += 1
 		# proceed
-		for replacement_fields in csv_file:
+		for replacement_fields in csv_file.lines:
 			to_print = template
-			for i in range(0, csv_file.field_count):
+			for i in range(0, csv_file.column_count):
 				to_print = to_print.replace('\\' + str(i + 1), replacement_fields[i])
+				to_print = to_print.replace('\\{' + str(csv_file.column_names[i] + '}'), replacement_fields[i])
 			print(to_print)
 	elif source_file_line.endswith("]]"):
 		raise Exception("closed non-opened template")

@@ -2035,6 +2035,62 @@ mission "Protection: Marauder"
 
 
 
+mission "Sketchy Cargo [Geminus]"
+	name "Delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <tons> of cargo to <destination> by <date>. Payment is <payment>."
+	cargo "unlabeled cargo" 25 3 .05
+	to offer
+		or
+			"year" < 3014
+			and
+				"year" = 3014
+				"month" < 6
+		random < 15
+	source
+		attributes "core"
+		attributes "frontier"
+		not attributes "pirate"
+	destination "Geminus"
+	on accept
+		dialog `You follow the directions specified in the job to an abandoned-looking warehouse and find your cargo in unlabeled crates. As you load it onto your ship, you get the feeling that you are being watched.`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog "You drop off the unlabeled cargo in a warehouse not too dissimilar to the one you picked it up in. A man dressed in a cloak hands you <payment> after the last crate is removed from your ship."
+
+mission "Sketchy Cargo [Martini]"
+	name "Delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <tons> of cargo to <destination> by <date>. Payment is <payment>."
+	cargo "unlabeled cargo" 25 3 .05
+	to offer
+		or
+			"year" < 3014
+			and
+				"year" = 3014
+				"month" < 6
+		random < 15
+	source
+		attributes "core"
+		attributes "frontier"
+		not attributes "pirate"
+	destination "Martini"
+	on accept
+		dialog `You follow the directions specified in the job to an abandoned-looking warehouse and find your cargo in unlabeled crates. As you load it onto your ship, you get the feeling that you are being watched.`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog "You drop off the unlabeled cargo in a warehouse not too dissimilar to the one you picked it up in. A man dressed in a cloak hands you <payment> after the last crate is removed from your ship."
+
+
+
 mission "Star Explorer: Missing Science Vessel"
 	name "Rescue Mission near <waypoints>"
 	description "The science vessel <npc> was last seen on an expedition heading to <waypoints>. It has not been seen since. Locate and rescue the vessel. Then return it safely to <destination> for <payment>."
@@ -2165,6 +2221,86 @@ mission "Stealing From Rival Smugglers"
 	on complete
 		payment 350000
 		dialog "The pirates of <planet> take the smuggled cargo from your cargo hold and pay you <payment>."
+
+
+
+mission "Syndicate Uranium Mining [small]"
+	job
+	deadline 14
+	repeat
+	name "Mining: Uranium to <system>"
+	description "The outfitter on <destination> has a shortage of Uranium. Bring 10 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Syndicate"
+		attributes outfitter
+	to offer
+		not "event: war begins"
+		or
+			"year" < 3014
+			and
+				"year" = 3014
+				"month" < 5
+		or
+			and
+				not "event: remembrance day"
+				random < 1
+			and
+				has "event: remembrance day"
+				random < 3
+	on complete
+		outfit "Uranium" -10
+		payment 75000
+		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
+
+mission "Syndicate Uranium Mining [medium]"
+	job
+	deadline 14
+	repeat
+	name "Mining: Uranium to <system>"
+	description "The outfitter on <destination> has a shortage of Uranium. Bring 20 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Syndicate"
+		attributes outfitter
+	to offer
+		not "event: war begins"
+		or
+			"year" < 3014
+			and
+				"year" = 3014
+				"month" < 5
+		random < 2
+	on complete
+		outfit "Uranium" -20
+		payment 150000
+		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
+
+mission "Syndicate Uranium Mining [large]"
+	job
+	deadline 14
+	repeat
+	name "Mining: Uranium to <system>"
+	description "The outfitter on <destination> has a shortage of Uranium. Bring 40 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Syndicate"
+		attributes outfitter
+	to offer
+		not "event: war begins"
+		or
+			"year" < 3014
+			and
+				"year" = 3014
+				"month" < 5
+		or
+			and
+				not "event: remembrance day"
+				random < 3
+			and
+				has "event: remembrance day"
+				random < 1
+	on complete
+		outfit "Uranium" -40
+		payment 300000
+		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
 
 
 
