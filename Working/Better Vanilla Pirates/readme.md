@@ -1,10 +1,18 @@
 # Better Vanilla Pirates for Endless Sky
 
+## 2.1
+
+2.0 did not have Mk II Navy ships as they aren't purchasable in vanilla.
+
+However then I realised the Navy License has been a planned part of the game for years, it's intended that player should be able to get access to these ships sooo - I decided to add Mk II Navy ships with no license requirement until the Navy license becomes obtainable in vanilla.
+
+Balance feedback welcome
+
 ## 2.0
 
-2.0 keeps all 1.0 functionality (see below) and adds something new - player can now purchase highly buffed, "Mk II" human ships from New Tortuga after completing a short mission which also gives the player a free Mk II heavy warship as a reward. This is offered at New Tortuga, after player has completed Kestrel missions and FW story.
-
 Human space has a huge and beautiful variety of ships to play with, but when player gets into mid-late game it's hard to justify using them compared to much stronger alien ships. 
+
+2.0 keeps all 1.0 functionality (see below) and adds something new - player can now purchase highly buffed, "Mk II" human ships from New Tortuga after completing a short mission which also gives the player a free Mk II heavy warship as a reward. This is offered at New Tortuga, after player has completed Kestrel missions and FW story.
 
 These Mk II ships have heavily buffed shields/hull, and in most cases slightly buffed outfit/weapon/engine space. They are generally slightly tankier than Hai/Remnant but nowhere near Wanderer/Automata, and they are rather expensive.
 
@@ -16,7 +24,7 @@ If you encounter bugs pls report them.
 
 ## 1.0 Do you love vanilla ES everything but wish that the human pirates, bounty hunters and related combat missions (spaceport + job board), were a little more interesting, and stayed challenging with worthwhile mission payouts even in the late game?
 
-Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien outfits. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle dreadnought or pulse cannon Firebird, etc.
+Like I want to see pirates in Kestrels sometimes. And in military ships even more rarely. And maybe with alien outfits. Also I want to see pirates (and merchants too?) in weird variants like full proton Kestrel or particle Dreadnought or pulse cannon Firebird, etc.
 
 This plugin is designed to enhance/improve/fill gaps in many aspects of pirate combat in Human space, especially in the late-game. It does not contain any new weapons/ships/sprites, or any new or replacement storylines, nor does it make the early game any harder. It achieves all this by the adding the following (POTENTIAL SPOILERS BELOW!)
 
