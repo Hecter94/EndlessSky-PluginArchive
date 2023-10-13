@@ -12739,9 +12739,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 2.34 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 5.19 mb | 2023-10-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
 Author: kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2022-08-19) <br>
+[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2023-10-13) <br>
 
 >My Navy campaign which I hope to get implemented when finished.
 >
@@ -12751,6 +12751,30 @@ Author: kestrel1110 | Category: Story <br>
 <blockquote># Navy-Campaign
 My Navy campaign which I hope to get implemented when finished.
 Thanks to Warlord Mike, Disiuze, Kiko, Moonbeam, and Kat for helping.
+
+TO DO LIST:
+
+[x] intro missions (parallel of southern mutual defense pact)
+
+[x] joining the navy
+
+[x] pirate recon sequence
+
+[x] geminus
+
+[x] Electron sequence
+
+[x] kornephoros attack
+
+[] navy intelligence sequence (when the prowler is developed)
+
+[] infiltrating the FW (stealing data on all new FW tech)
+
+[] counterattacking against FW expansion
+
+
+
+[] to be continued...
 
 </blockquote>
 </details>
