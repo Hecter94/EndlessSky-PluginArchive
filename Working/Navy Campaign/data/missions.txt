@@ -142,7 +142,7 @@ mission "Republic Bounty 3"
 		"assisted republic" ++
 		payment 250000
 		dialog `Soon after you land, Captain Shah contacts you. "The hostages were recovered safely," she says, with a smile. "The Republic owes you a debt of gratitude. If you are interested in more tangible benefits, <payment> have been transferred to your account, and I have informed my superiors that you can be counted on."`
-		log "Captain Shah says she has informed her superiors of my contributions."
+		log "Disabled the <npc> as instructed. Captain Shah says she has informed her superiors of my contributions."
 
 
 
@@ -209,7 +209,7 @@ mission "Republic Scouting 2"
 
 	on offer
 		dialog
-			`You receive a message from Jane, the Navy captain who asked you to fly through some uninhabited systems to the north. "I need some data from a few dead end systems," she says. "There might be some pirate fleets in the area but I just need logs again. Interested?"`
+			`You receive a message from Jane, the Navy captain who asked you to fly through some uninhabited systems to the north. "Hello Captain. I need some data from a few dead end systems. There might be some pirate fleets in the area, but I just need logs again. Interested?"`
 
 	on complete
 		payment 40000
@@ -314,7 +314,6 @@ mission "Republic Shipping 1"
 		log "Accepted a job transporting some marines and their cargo to <destination>."
 
 	on complete
-		payment
 		payment 50000
 		log "People" "Jeff Haas" "Jeff Haas is the head of the Jeff Haas Shipping Company. He is often contracted by the Republic Navy."
 		dialog `After a very quiet journey, you land on <destination>. The marines unload their cargo without saying a single word to you. A different navy officer thanks you for your assistance, and pays you the respectable sum of 50,000 credits.`
@@ -356,7 +355,6 @@ mission "Republic Shipping 2"
 		log "Accepted a job to transport some furniture to <destination>."
 
 	on complete
-		payment
 		payment 30000
 		dialog `When you land, the merchant captain thanks you for the escort and use of your cargo space. She gives you a cut of the total payment, <payment>.`
 
@@ -418,14 +416,13 @@ mission "Republic Shipping 3"
 
 	on complete
 		"assisted republic" ++
-		payment
 		payment 120000
 		log "The Navy officer from earlier said they'd put in a good word for me."
 		dialog `As you land, Jeff pays you <payment>, and the officer you shuttled lets you know they will put in a good word for you.`
 
 mission "Joining the Navy"
 	autosave
-	name "Navy Candidate"
+	name "Navy Commission"
 	description "Destroy the pirate vessel named <npc> near the <system> system and return to <planet> for an opportunity to join the republic navy."
 	source
 		government "Republic"
@@ -443,25 +440,27 @@ mission "Joining the Navy"
 		conversation
 			`Your ship's communicator lights with an official announcement from the Republic:`
 			``
-			`	[Hello, Captain <last>,] the message begins, [as of now, the Republic Navy is seeking captains skilled in combat to serve in the Navy. However, to discourage people hoping for handouts, applicants need to prove that they want to serve in the Navy. Recently, we've been having issues with a pirate vessel called the <npc> - our intel reports that it was spotted skulking around the <system> system. Destroy the <npc>, and return to <destination> to be formally accepted into the Navy.]`
+			`	[Hello, Captain <last>,] the message begins, [as of now, the Republic Navy is seeking captains skilled in combat to serve in the Navy. However, to discourage people hoping for handouts, privateers must prove that they want to serve in the Navy and display the characteristics of honor, integrity, and courage, and the prowess of a skilled captain. Thus, if you are interested, report to the system Castor and disable a dummy ship in a combat test to prove your worth.]`
 			choice
-				`	I'm interested - I'll take on that ship.`
+				`	Reply - [I'm interested, I'll take on that ship.]`
 					goto jobAccept
-				`	Sorry, but I have no desire to join the navy at this time.`
+				`	Reply - [Sorry, but I have no desire to join the navy at this time.]`
 					defer
+				`	Reply - [Sorry, but I have no intent to join the navy at any point.]`
+					decline
                     
 			label jobAccept
-			`	[We look forward to seeing you on <destination> once the mission is over,] the message reads. [Good luck!]`
+			`	[We look forward to seeing you on <destination> once the mission is over.] the message reads. [Good luck!]`
 					accept
 
 	on accept
-		log "Accepted an enlistment offer from the Republic Navy."
+		log "Accepted a commision into the Republic Navy."
             
-	npc kill
+	npc disable
 		personality heroic staying nemesis target
-		government "Pirate"
+		government "Test Dummy"
 		system "Castor"
-		ship "Raven" "Blackfury"
+		ship "Raven" "Combat Test Dummy"
 				
 	on complete
 		"reputation: Republic" += 10
@@ -469,25 +468,46 @@ mission "Joining the Navy"
 		"reputation: Escort" = 500
 		"salary: Navy" = 500
 		set "license: Navy"
+		set "chosen sides"
+		give ship "Frigate" "R.N.S. Dublin"
 		event "naval employment earned"
 		event "Navy Painted"
-		log "Was able to destroy the pirate ship and prove my worth to the Navy. The Navy has inducted me as a Private and given me a small salary."
+		log "Was able to complete a combat test and prove my worth to the Navy. The Navy has inducted me as a Private and given me a small salary, and I have recieved a Navy ship to carry out orders from."
 		conversation
 			`As you cycle the hatch to exit the ship, you are greeted by two Navy personnel flanking the entryway, armed with rifles. Between them, a Navy officer stands with his arms folded in front of him.`
 			``
 			`	"I assume you are <first> <last>?" he asks. You nod, saluting with your right hand. "Yes sir. And you are...?"`
-			`	"Colonel Marcus Howell," he replies. "Well met, Captain <last> - or rather, Ensign <last>."`
+			`	"Colonel Marcus Howell," he replies. "Well met, captain <last> - or rather, Private <last>."`
 			`	You nod, still saluting. "Thank you, sir. I hope to be of great service to the Republic."`
-			`	"I have a feeling you'll be just the man we need, <last>," he states while making a slight bounce on the tips of his feet, smiling. "The speed and skill with which your ship, the <ship>, destroyed that Raven, in addition to your past endeavors, proves you are both serious about joining the Navy...and it's ready for battle."`
+			`	"I have a feeling you'll be just the man we need, <last>," he states while making a slight bounce on the tips of his feet, smiling. "The speed and skill with which your ship, the <ship>, took out that Raven, in addition to your past endeavors, proves you are both serious about joining the Navy...and it's ready for battle."`
 			``
-			`Howell's expression hardens as his gaze turns left and skyward. "With rumblings of war starting in the South, and pirates massing in the North, the Navy is going to be stretched thin." His gaze returns to you. "As of today, you haved been approved for Navy Tier I Enlistment status. As part of being inducted as a Navy Private, you'll receive a daily stipend of 500 credits per day. At ease."`
+			`Howell's expression hardens as his gaze turns left and skyward. "With rumblings of war starting in the South, and pirates massing in the North, the Navy is going to be stretched thin." His gaze returns to you. "As of today, you haved been approved for Navy Tier I Enlistment status. As part of being inducted as a Navy Private, you'll receive a daily stipend of 500 credits per day, and you will recieve a Navy Frigate as your first deployment. At ease."`
 			``
 			`	You let your hand drop to your side as you nod firmly. "What are my orders, Colonel?"
-			`	"Your first assignment," he begins, taking a uniform handed to him by the trooper to his left (your right), "will be to rendezvous with Admiral William Danforth - he's been tasked to deal with the pirates that are starting to gather up North."`
+			`	"Your first assignment," he begins, taking a uniform handed to him by the trooper to his left (your right), "will be to rendezvous with Admiral William Danforth - he's been tasked to deal with the pirates that are starting to gather up North. As for your civilian ships, well, just as in the days of the American Revolution, we do not object to the assistance, but your personal property is *your* responsibility. Understood?"`
+			`"Yes, sir!"`
 			`He hands you the uniform - it's the familiar blue Navy jumpsuit, speckled with orange and gold highlights here and there. Your hands are trembling slightly as you take the uniform from his hands - *this is really happening,* you think to yourself.`
 			`	"Make your way to the spaceport and you'll find his contact there. Any further questions?"`
 			`	"None, sir."`
 			`	"Excellent. And before I forget...welcome to the Navy."`
+
+
+# Ranking system is as follows:
+
+# (you begin as a privateer "captain," but not as the rank Captain, but as a title due to yourself being captain of a vessel)
+# (serving on a ship, you are given the rank ensign, cannot be ensign if you are a captain already, so player starts at next rank)
+
+# following commission, captain's ranking includes:
+
+# Private
+# Lieutenant
+# Seargeant
+# Captain
+# Lieutenant Commander
+# Commander
+# Commodore
+# Admiral
+
 
 event "Navy Painted"
 	government "Escort"
@@ -501,12 +521,15 @@ mission "Report to Danforth"
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
 		has "Joining the Navy: done"
-		not "chosen sides"
+		has "chosen sides"
 	on offer
 		conversation
 			`Before you set out for the spaceport, you decide to try your new uniform on. Amazingly, it fits like a glove - you have to wonder how they managed to get the size so perfectly.`
 			`	Stepping out of your ship, fully-dressed, you make your way to the spaceport. The walk is uneventful, for the most part, but every now and again, some of the locals slightly turn to look at you. Given the current climate, you can't tell if it's because they're looks of awe or suspicion - you decide to settle on the former.`
-			`	After about ten minutes, you finally meet up with Admiral Danforth's contact. "Ensign <last>? I'm Warrant Officer O'Keefe - I'm here to escort you to the Admiral's chambers.`
+			`	After about ten minutes, you finally meet up with Admiral Danforth's contact. "Private <last>? I'm Warrant Officer O'Keefe - I'm here to escort you to the Admiral's chambers.`
+
+# Warrant Officer is a below-captain rank
+
 			`You meet with Admiral Danforth in a modestly-sized conference room. There are many others who have enlisted sitting around you. "Welcome to Navy services," Danforth begins, "otherwise known as boot camp. There's a lot you'll be learning, but let me start with one of the most important things first: Navy Ships are expensive." There's a few chuckles from the seated enlisted, but stern looks from both Danforth and their peers quickly quiets them down.`
 			`Danforth clears his throat before he continues. "While you are stationed here with us, you will be paid for each Navy ship that you assist in Northern Pirate Territory, which includes the following systems:`
 			``
@@ -543,30 +566,26 @@ mission "Navy Pirate Patrol 1"
 	to offer
 		has "event: naval employment earned"
 		has "Report to Danforth: done"
-		not "chosen sides"
+		has "chosen sides"
 	on offer
 		conversation
-			`Not long after you begin to land your ship, you communicator alerts you to an incoming hail from Admiral Danforth. "I'm glad you could make it, Ensign <last> - I just finished reading the dossier Colonel Howell compiled on you. Your combat skills are certainly impressive, and I commend your bravery. Right now, however, we are in need of a more critical skill: reconaissance."`
+			`Not long after you begin to land your ship, you communicator alerts you to an incoming hail from Admiral Danforth. "I'm glad you could make it, Private <last> - I just finished reading the dossier Colonel Howell compiled on you. Your combat skills are certainly impressive, and I commend your bravery. Right now, however, we are in need of a more critical skill: reconaissance."`
 			``
-			`	Danforth brings up a display of the Galaxy map, highlighting three systems. "This is what we would call a 'mid-range' scouting mission - nothing too hard, but it won't be a cakewalk, either. Your mission, should you choose to accept it, is to fly through Mintaka, Gorvi and Tortor - record pirate fleet presence in those systems, and return here so we can analyze your sensor logs."`
+			`	Danforth brings up a display of the Galaxy map, highlighting three systems. "This is what we would call a 'mid-range' scouting mission - nothing too hard, but it won't be a cakewalk, either. Your mission is to fly through Mintaka, Gorvi and Tortor - record pirate fleet presence in those systems, and return here so we can analyze your sensor logs."`
 			choice
 				`	"Understood, sir. I won't let you down."`
 					goto missionAccept
-				`	"Sorry, sir, but I don't know if I'm ready just yet."`
-					goto missionDecline
 
 			label missionAccept
 			`	"Very good. Now, remember - this is a *scouting* mission. I do not expect, much less require, that you destroy every pirate ship you find. Engage them if you feel you must, but if it becomes clear you're in over your head, jump to hyperspace. Make it back here once your patrol is complete, and there's 100,000 credits waiting for you, in addition to whatever financial gratitude other Navy ships will lend."`
 					accept
 
-			label missionDecline
-			`	"Don't worry, Ensign - there's no real timetable for the scouting, but I understand your hesitancy. Contact me again when you think you're ready."`
-					defer
-	
+# removed defer option, as player had the opportunity to do so when accepting commission - these are *orders*
+
 	on complete
-		payment 100000
+		payment 75000
 		dialog
-			`"Good job making it back in one piece," Danforth congratulates as a lower-ranking intelligence officer quickly collects your ship's sensor logs while handing you your payment. "Make your way to the spaceport when you're ready for your next assignment."`
+			`"Good job making it back in one piece," Danforth congratulates, "Remember, for certain dangerous tasks, you will recieve a bonus. Today you recieve <payment> credits." Meanwhile, a lower-ranking intelligence officer quickly collects your ship's sensor logs while handing you your bonus. "Make your way to the spaceport when you're ready for your next assignment."`
 
 
 mission "Navy Pirate Patrol 2"
@@ -579,12 +598,12 @@ mission "Navy Pirate Patrol 2"
 	source "Farpoint"
 	to offer
 		has "Navy Pirate Patrol 1: done"
-		not "chosen sides"
+		has "chosen sides"
 	on offer
 		conversation
 			`	A short stroll through the spaceport makes you realize Farpoint is appropriately-named - beyond the walls of the base, the scorching desert sands stretch farther than the eye can see. If this isn't the middle of nowhere, you could certainly see it from here. Which, you muse to yourself, isn't necessarily a bad thing - the remoteness and elevated security means someone would need unfathomably poor judgement to try anything out here.`
 			`	You sit down on a bench near one of the pubs while you wait for the Admiral. Not 10 minutes after you arrive, you see Danforth walking towards you and you wave him over.`
-			`	"Thank you once again for your assistance, Ensign <last>," he begins as he sits down next to you. "The sensor logs you provided don't seem to indicate much change in pirate activity - granted, those are just the three nearest systems, so it's somewhat expected." He sits up a bit straighter, leaning back slightly while doing so. "But now, we need to do a bit more in-depth analysis. The next systems we need scanned are Almaaz and Unagi - as you'll be passing by Freedom, which is well-known for its anarchy, this mission is beyond what most other merchants would be comfortable with...and as a result, the payment will also be substantially more. Are you up to it?"`
+			`	"Thank you once again for your assistance, Private <last>," he begins as he sits down next to you. "The sensor logs you provided don't seem to indicate much change in pirate activity - granted, those are just the three nearest systems, so it's somewhat expected." He sits up a bit straighter, leaning back slightly while doing so. "But now, we need to do a bit more in-depth analysis. The next systems we need scanned are Almaaz and Unagi - as you'll be passing by Freedom, which is well-known for its anarchy, this mission is beyond what most other merchants would be comfortable with...and as a result, the payment will also be substantially more. Are you up to it?"`
 			choice
 				`	"Absolutely, Admiral. A few pirates can't scare me."`
 					goto missionAccept
@@ -592,7 +611,7 @@ mission "Navy Pirate Patrol 2"
 					goto missionDecline
 
 			label missionAccept
-			`	"I wish all our officers and enlisted had the same attitude you do, Ensign," he replies, smiling broadly. "As before, you don't have to (and in fact, shouldn't) attack every pirate you meet on the way - remember, your objective is to monitor pirate movements, not necessarily intercept them. Make it back here with the logs, and you'll receive 150,000 credits for your work."`
+			`	"I wish all our officers and enlisted had the same attitude you do, Private," he replies, smiling broadly. "As before, you don't have to (and in fact, shouldn't) attack every pirate you meet on the way - remember, your objective is to monitor pirate movements, not necessarily intercept them. Make it back here with the logs, and you'll receive 100,000 credits for your work."`
 					accept
 
 			label missionDecline
@@ -600,7 +619,7 @@ mission "Navy Pirate Patrol 2"
 					defer
 
 	on complete
-		payment 150000
+		payment 100000
 		dialog
 			`Upon landing, you discover Admiral Danforth is there to personally collect the logs and hand you your payment. "These will be essential to our efforts in keeping these pirates contained," he remarks. "As soon as you're ready, meet me at the Stardust Pub in the spaceport."`
 
@@ -618,20 +637,20 @@ mission "Navy Pirate Patrol 3"
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
 		has "Navy Pirate Patrol 2: done"
-		not "chosen sides"
+		has "chosen sides"
 	on offer
 		conversation
 			`	While there are scant few establishments to begin with, the Stardust Pub appears to be one of the more popular places to eat, judging by the crowd at the entrance. Among those gathered, you notice, and subsequently join, Admiral Danforth; however, his expression is one that you can only describe as "hesistant."`
-			`	"You've done a fantastic job so far, Ensign <last>," he begins, looking straight ahead, "and I need your talents once more. We're sending you straight into the heart of the Northern Pirates to track their fleet presence in Arneb, Alnilam and Hatsya. I won't lie to you - even most Navy recruits tend to be wary operating so remotely, and you will be compensated appropriately."`
+			`	"You've done a fantastic job so far, Private <last>," he begins, looking straight ahead, "and I need your talents once more. We're sending you straight into the heart of the Northern Pirates to track their fleet presence in Arneb, Alnilam and Hatsya. I won't lie to you - even most Navy recruits tend to be wary operating so remotely, and you will be compensated appropriately."`
 			`	Danforth then turns his head slightly in your direction. "Can I count on you to scan these systems?"`
 			choice
 				`	"Without question, Admiral."`
 					goto missionAccept
-				`	"I can't say I'm willing to potentially kick the hornet's nest, Admiral."`
+				`	"I can't say I'm willing to potentially kick the hornet's nest in my current situation, Admiral."`
 					goto missionDecline
 
 			label missionAccept
-			`	Danforth smiles broadly. "We need more men and women like you in the Navy, Ensign - you certainly are a rare breed. Come on. My treat," he says, as he walks into the pub.`
+			`	Danforth smiles broadly. "We need more men and women like you in the Navy, Private - you certainly are a rare breed. Come on. My treat," he says, as he walks into the pub.`
 			`	The two of you are shown a table along one of the walls of the Stardust. Just from what you see, it's clear the owners wanted their patrons to feel more like they were part of civilization, not on a barren rock as far away as one could be from it. After the waitstaff takes your orders, Danforth makes a couple glances left and right before he addresses you.`
 			`	"You probably guessed it already, but there's an ulterior motive to meet here, <last>. I've been reviewing the logs you collected, and what I'm seeing bothers me. So far, it doesn't look like much has changed in the level of activity we're used to seeing in those systems - frankly, if anything, there's actually been *less* activity in those systems. You know that old saying: 'It's quiet. *Too* quiet.'"`
 			`	"Yeah," you agree, looking slightly downward as you put a hand to your chin. "It feels like the calm before the storm."`
@@ -640,7 +659,7 @@ mission "Navy Pirate Patrol 3"
 			`	"That's the other reason I brought you here, <last>," he adds while the two of you exit the Stardust. "I wanted to make it clear that just because I have a higher rank, that does *not* mean I should also feel superior to you. We're both humans, and on that note, equals. I'm sure my actions have proved as much, but my position does *not* give me the right to treat you like dirt, and any Admiral who tells you otherwise is either delusional, drunk, a liar or an idiot. Or all of the above."`
 			`The two of you laugh for a second at his comment. "Anyway," he continues, "just like before, there's no need to engage any hostiles on your patrol. Just beware of Zenith and Haven - considering their locations, they're fairly well-guarded. Report back to me with the logs, and I'll personally make sure that you'll receive 250,000 credits for your work. Furthermore...I'm going to put in a good word on possibly getting you promoted straight to Lieutenant-grade."`
 			`	"That is very gracious of you, sir," you reply with a nod. "And thank you for taking the time to talk to me - I promise you, I won't let you down."`
-			`	"I know you won't, Ensign. Good luck, and God Bless."`
+			`	"I know you won't, Private. Good luck, and God Bless."`
 					accept
 
 			label missionDecline
@@ -652,23 +671,23 @@ mission "Navy Pirate Patrol 3"
 		conversation
 			`When you come in for a landing, you can't help but feel like something's wrong. Just from how remote Farpoint is, the activity in the base usually rather low. But now the hangars are swarming with crews and ships ready to take off. In addition, unlike most times when you might have to wait up to 20 minutes to land, the control tower gives you clearance almost immediately. For you to be moved to the front of the line so quickly, while certainly a nice change of pace, also sends a slight twinge of dread down your spine...which soon proves to be well-founded.`
 			`	You quickly disembark the <ship> to find Danforth's aide waiting for you. The two of you quickly hurry to the Admiral's quarters, and find he's joined by other Navy officers. As you enter the room, instictively saluting as you do so, all eyes shift away from the table and towards you - and the looks you receive, in particular Danforth's, make you feel uneasy.`
-			`	"Ensign <last>, your timing is impeccable," Danforth says. "We just obtained your sensor logs, and it may have just been enough to prevent things from getting worse."`
+			`	"Private <last>, your timing is impeccable," Danforth says. "We just obtained your sensor logs, and it may have just been enough to prevent things from getting worse."`
 			`	"...Worse, sir?" you ask, cautiously.`
-			`	"Indeed," one of the officers says. "Shit well and truly hit the fan right as you got here."`
+			`	"Indeed," one of the officers says. "Crap well and truly hit the fan right as you got here."`
 			`	"Hines, please," Danforth exasperatedly shushes the officer, raising his hand. "Just as we finished downloading your logs, a pirate fleet suddenly warped in. Most of them were either destroyed or routed back into the North, but one ship managed to escape. Most of us believe it's thanks to your sensor logs that we were able to halt their advance as much as we did."`
 			`	"Even so, that one ship is now running amok amongst the systems South of us," another officer adds. "We could have done more if we'd-"`
 			`	"We did as much as we could," you interrupt, silencing the room. "None of us could have possibly anticipated, let alone prepared for anything more than what those logs indicated."`
 			`Most of the officers quietly talk amongst themselves at your response, but Hines keeps staring you down. You don't know why, but it seems like he feels threatened by you speaking as though you were a higher rank than he was.`
-			`	"Ensign <last>, at ease," Danforth finally says as he stands up from behind his desk. "We can go over the details later in the spaceport," he adds, walking towards you. "In the meantime, here's your payment of 250,000 credits, as promised."`
+			`	"Private <last>, at ease," Danforth finally says as he stands up from behind his desk. "We can go over the details later in the spaceport," he adds, walking towards you. "In the meantime, here's your bonus of 250,000 credits, as promised."`
 
 
 mission "Navy vs Pirate"
 	landing
-	name "Destroy <npc>"
+	name "Destroy the <npc>"
 	description "A pirate vessel named <npc> has broken through the Navy defenses in Alnitak and is currently in the Saiph system. Destroy it before it can move further into Republic space and return to <planet> for additional orders."
 	to offer
 		has "Navy Pirate Patrol 3: done"
-		not "chosen sides"
+		has "chosen sides"
 	source "Farpoint"
 	waypoint "Saiph"
 	on fail
@@ -691,7 +710,7 @@ mission "Navy vs Pirate"
 	on offer
 		conversation
 			`Farpoint feels a lot different when the entire base is on alert. Normally, you could easily see from one side of the compound to the other and only have the odd soldier or vehicle break your vision. Since the pirate ship that broke through, however, the farthest you can see is maybe 50 feet due to the mass of guards, crewmen, machinery and munitions.`
-			`	Eventually, you find the Admiral near his ship, the N.S. Peacemaker; other crewmen are busily loading his ship while he stares intently at a clipboard, clearly distraught about something.`
+			`	Eventually, you find the Admiral near his ship, the R.N.S. Peacemaker; other crewmen are busily loading his ship while he stares intently at a clipboard, clearly distraught about something.`
 			choice
 				`	(Ask him what he's looking at.)`
 					goto ask
@@ -726,9 +745,9 @@ mission "Navy vs Pirate"
 				goto mission
 
 			label wait
-			`You patiently stand by for a few minutes before Danforth realizes you're there. "Sorry about that, Ensign <last>," he apologizes. "I just had to take care of some internal matters - I hope you weren't waiting long."`
+			`You patiently stand by for a few minutes before Danforth realizes you're there. "Sorry about that, Private <last>," he apologizes. "I just had to take care of some internal matters - I hope you weren't waiting long."`
 			`	"Just a few minutes, Admiral. I didn't want to interrupt if it was something important."`
-			`Danforth scoffs, smiling. "Don't ever be afraid to ask, Ensign - honestly, you being here helps me take my mind off of things."
+			`Danforth scoffs, smiling. "Don't ever be afraid to ask, Private - honestly, you being here helps me take my mind off of things."
 			label mission
 			`	Danforth procures a small holo-projector from his pocket, which shows the nearby systems. "We've managed to track the pirate to the Saiph system, <first>," he says, right as Saiph is highlighted. "The ship in question is a Leviathan-class warship known as the '<npc>' - they've been reported terrorizing merchants passing through the system. Once you destroy the <npc>, report back here for further instructions."`
 			choice
@@ -741,10 +760,10 @@ mission "Navy vs Pirate"
 		log "Succeeded in destroying the pirate ship in Saiph. For my efforts, I have been promoted to the rank of Lieutenant, with an impending increase to my salary."
 		payment 350000
 		conversation
-			`As your ship pierces <destination>'s atmosphere, you notice that the base has reverted to its much-less active state. It isn't long before the control tower radios in: [Ensign <last>, proceed to Hangar 357 - Admiral Danforth is expecting you.]`
-			`Sure enough, Admiral Danforth is present to greet you at Hangar 357, accompanied by Colonel Howell and, to your dismay, Hines. Howell appears as chipper as he was when you first met, but the scowl on Hines' face is worse than you remember. Nonetheless, you salute the trio as you exit the <ship>. "Ensign <last>," Danforth begins, "with the destruction of <npc>, you did more than just prove your mettle in combat - you kept what could have become an interstellar incident contained to the Far North."`
+			`As your ship pierces <destination>'s atmosphere, you notice that the base has reverted to its much-less active state. It isn't long before the control tower radios in: [Private <last>, proceed to Hangar 357 - Admiral Danforth is expecting you.]`
+			`Sure enough, Admiral Danforth is present to greet you at Hangar 357, accompanied by Colonel Howell and, to your dismay, Hines. Howell appears as chipper as he was when you first met, but the scowl on Hines' face is worse than you remember. Nonetheless, you salute the trio as you exit the <ship>. "Private <last>," Danforth begins, "with the destruction of <npc>, you did more than just prove your mettle in combat - you kept what could have become an interstellar incident contained to the Far North."`
 			`	"Just doing my job, Admiral," you reply, maintaining your salute.`
-			`Danforth smiles. "I wish we had more men and women who had your definition of 'just doing their job,' Ensign...or should I say, 'Lieutenant.'"`
+			`Danforth smiles. "I wish we had more men and women who had your definition of 'just doing their job,' Private...or should I say, 'Lieutenant.'"`
 			`Your eyes widen slightly, though you maintain your salute. "L-lieutenant?"`
 			`	"Per High Command's recommendation," Howell beams. "Your performance, in addition to the Admiral's suggestions, was all the evidence they needed. You have certainly earned the promotion, Lieutenant <last>."`
 			branch angry
@@ -778,10 +797,11 @@ mission "Geminus 1"
 	destination "Geminus"
 	to offer
 		has "Navy vs Pirate: done"
-		not "chosen sides"
+		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
+		"salary: Navy" = 1000
 		conversation
 			`As you walk to the spaceport, several large shadows pass overhead - your gaze shifts skyward to see Navy Auxiliaries coming in to land. While not terribly new, the modularity of the ships also makes them a rare sight - and if you had to guess, they're for whatever mission Danforth has planned.`
 			`Sure enough, you spot Danforth by one of the Auxiliaries. "Thank you for coming, Lieutenant <last>," he begins. "Up until now, I wasn't sure I could trust anyone in the Navy with the assignment I'm about to give you."`
@@ -834,7 +854,7 @@ mission "Geminus 1"
 		conversation
 			`Your clearance to land on Lodestone was delayed by volcanic ash for about ten minutes before the port authorities allowed your fleet to land. "Fourth Port," as the spaceport is called, was built after the previous three ports were buried under Lodestone's numerous eruptions. Unlike your previous stay at <source>, where you would have struggled to have found a speck of dust in the mess hall, Fourth Port is a testament to the Syndicate's standards: warehouses of rusted sheetmetal, towering metal smokestacks that belching caustic ash, and barrels containing a disgusting yellowish liquid you can only hope are cleaning chemicals and not...something else.`
 			`	 Landing in the hangar designated for your fleet doesn't do the Syndicate's image any favors, either. Workers are actively repairing parts of the walls and ceiling that you felt should've been replaced long ago, and the rickety scaffolding they've erected for the repair crews makes you worried, to say the least. The air in the hangar is also thick and stagnant, and almost makes you gag. You quickly call over the captains of the auxiliaries and make your way to the loading docks - it takes about ten minutes to make your way through the maze of corridors before you reach your destination.`
-			`	Upon reaching the docks, several Syndicate dockworkers call you over to a large collection of cargo containers filled with the building materials bound for Geminus. "Took you long enough," one says with a cigarette hanging out the side of his mouth. "We've been waiting here for five hours with our thumbs up our collective asses for you Navy jarheads. One of your own came by here about a month ago and acted like they owned the place - I tell ya, my boss doesn't pay me enough to put up with shit like theirs."`
+			`	Upon reaching the docks, several Syndicate dockworkers call you over to a large collection of cargo containers filled with the building materials bound for Geminus. "Took you long enough," one says with a cigarette hanging out the side of his mouth. "We've been waiting here for five hours with our thumbs up our collective arses for you Navy jarheads. One of your own came by here about a month ago and acted like they owned the place - I tell ya, my boss doesn't pay me enough to put up with B.S. like theirs."`
 			choice
 				`	"Sorry to have kept you waiting. We came as quickly as we could."`
 					goto end
@@ -849,14 +869,14 @@ mission "Geminus 1"
 			`"Yeah, yeah, we'll get on it," he replies. "And thanks for proving my point, you jumpy little shit," he pointedly directs at you. Only then do you realize Danforth will probably hear of your behavior - and it's a sure bet he will not be pleased by your conduct.
 				goto end
 			label investigate
-			`"Who the FUCK did you think I meant, asshole?!" he almost screams at you as the cigarette falls out of his mouth. "You know goddamn well I meant someone from the Navy! I knew you fuckers were uptight, but don't tell me you're all a bunch of fucking idiots, too!"`
+			`"Who the HELL did you think I meant, numbskull?!" he almost screams at you as the cigarette falls out of his mouth. "You know goddamn well I meant someone from the Navy! I knew you fuckers were uptight, but don't tell me you're all a bunch of fucking idiots, too!"`
 			choice
 				`	"Whoa, calm down - I didn't mean to set you off like that. I was just curious, is all."`
 					goto calmDown
 				`	"Relax. I'm just trying to get more information. I promise you, I'll bring the offender to justice, but I need to know what happened."`
 					goto incident
 			label calmDown
-			`He sighs. "Sorry. These days, it feels like I can never quite keep up with my orders and it's starting to weigh on me," he says glumly. "Come on, let's get this shit loaded onto your ships," he adds, fumbling for a new cigarette.`
+			`He sighs. "Sorry. These days, it feels like I can never quite keep up with my orders and it's starting to weigh on me," he says glumly. "Come on, let's get this crap loaded onto your ships," he adds, fumbling for a new cigarette.`
 				goto end
 			label incident
 			`The dockworker stops dead in his tracks at your genuine honesty. "Wait...you're serious?"`
@@ -866,7 +886,7 @@ mission "Geminus 1"
 			`The dockworker thinks for a minute while he pulls out another cigarette. "Alright," he finally replies, "I'll talk. But only alone, and not here - too many prying eyes, you understand." You nod, and he signals the other dockworkers to begin loading the ships while the two of you head to a small office near the docks.`
 			`Under a small, flickering light, the two of you sit down at a folding table. "Here's what happened," he finally says. "Last month, we got an order of some building materials for the base at New Iceland. Thing is, the guy they sent felt like he was entitled to the materials and gave us an earful for being, quote, 'ungrateful of their protection of Syndicate space,' unquote."`
 			`	"The Navy is only responsible for protecting the Republic - the Syndicate tends to look after itself," you comment.`
-			`	"See, that's what *I* told him. But the moment I did, he punched me right in the jaw and knocked me to the ground, telling me, 'you need to learn your place, you piece of shit.' Once we had loaded the materials into his ships, he pulled me aside and specifically told me, 'if you tell anyone of what I did, I will kill you, your family, and everyone you loved - and I have files on hand to help me.' As large as the Navy is, I was inclined to believe him."`
+			`	"See, that's what *I* told him. But the moment I did, he punched me right in the jaw and knocked me to the ground, telling me, 'you need to learn your place, you piece of sh*t.' Once we had loaded the materials into his ships, he pulled me aside and specifically told me, 'if you tell anyone of what I did, I will kill you, your family, and everyone you loved - and I have files on hand to help me.' As large as the Navy is, I was inclined to believe him."`
 			`	"I'm guessing you didn't report this to your bosses."`
 			`	"Hell, no. One, they wouldn't have done anything - most likely just brushed it off as 'he was having a bad day,' but that's the Syndicate for you. Two, they probably would've docked me a few days' pay for raising the issue - the Syndicate pays well, to be sure, but it's still just barely enough to make ends meet. And I wasn't about to call his bluff - no way am I putting my wife, my daughter and two sons in danger."`
 			`	"Can you describe him?"`
@@ -887,8 +907,8 @@ mission "Geminus 1"
 			choice
 				`	"I had a feeling it might be Ranulph Hines."`
 			`"Really? What makes you say that?" he asks, slightly alarmed.`
-			`	You quickly explain what Danforth told you - how Ranulph feels the need to make himself seen as a "hero of the Republic," but his actions prove he is anything *but.* With some trepidation, you even mention how Hines dealt with the slavers to the dockworkers, calling his actions "reprehensible," and can't believe a man such as he would even be allowed to serve in the Navy."`
-			`"Son of a *bitch,*" the dockworker finally says, "he really *is* batshit insane."`
+			`	You quickly explain what Danforth told you - how Ranulph feels the need to make himself seen as a "hero of the Republic," but his actions prove he is anything but. With some trepidation, you even mention how Hines dealt with the slavers to the dockworkers, calling his actions "reprehensible," and can't believe a man such as he would even be allowed to serve in the Navy."`
+			`"Sonnova-," the dockworker finally says, "that numbskull really is insane!"`
 			`	"That's putting it mildly," you reply. "I can only hope that he sees the fallacy of his actions, and does something about it before it's too late. Do you mind if I get copies of these? I might be able to pull a few strings and keep you and your family safe."`
 			`	"Take 'em," Hadley eagerly replies. He heads back to the file cabinet and procures a few holodisks - likely security footage of the event. "You'll need these, too, if you want to prove your claims; plus, if Hines comes here again, he won't find anything on me."`
 			`As the two of you make your way back to the docks, you can't help but notice how much the fellow has changed from your initial encounter. What started off as an argument that could have spiraled out of control has ended with a potential ally. "You know, I don't think I ever got your name," you say. "Mine's <first> <last>."`
@@ -942,7 +962,6 @@ mission "Geminus 2A"
 	stopover "New Wales"
 	to offer
 		has "Geminus 1: done"
-		not "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -956,7 +975,7 @@ mission "Geminus 2A"
 				goto debriefing
 			label youDoneGoofed
 			apply
-				payment -1000000
+				payment -1500000
 			`As you make your way through the "shipyard" (admittedly, more like a clearing with gun emplacements) to Admiral Danforth, you notice the auxiliaries are being modified - their rear halves are still the giant cargo containers, but the front of each auxiliary appears to have gained a set of fins - and a sleeker body. "They're being retrofitted to carry more personnel," Danforth says as he suddenly appears by your side. "For the next stage of the reconstruction, we need to bring in personnel and equipment - in addition to fresh recruits, we also need better defenses than the turrets we currently have."`
 			`	"That makes sense," you remark, turning towards the admiral. "If the pirates decide to attack again, we might not be able to drive them off with what we have."`
 			`	"Precisely. Now, Lieutenant <last>, if you would, please follow me to my quarters here."`
@@ -987,7 +1006,7 @@ mission "Geminus 2A"
 			`	"I met a dockworker at Lodestone named Lucas Hadley. He says that Hines stopped by about a month ago to pick up some materials for the base at New Iceland - is that true?"`
 			`"Let me see," Danforth says, checking his computer. It takes a moment, but he eventually finds his calendar. "Ah, yes. I had sent him out to pick up some framulators for the base. Though I'm curious, <first>...why do you ask?"`
 			`You glance over your shoulder, even though there's no-one who could possibly see you. "Admiral, Hines apparently *decked* Hadley because the latter offended his twisted sense of honor."`
-			`"What?!?" he exclaims, visibly shocked. "Lieutenant, this is a *very* serious accusation you're making," he warns, gravely. "I hope you have evidence to substantiate your claim."`
+			`"What?!?" he exclaims, visibly shocked. "Lieutenant, this is a very serious accusation you're making," he warns, gravely. "I hope you have evidence to substantiate your claim."`
 			`"One step ahead of you, Admiral," you say as you reach inside your vest. "Hadley provided these photos and holotapes to document the whole event."`
 			`	"Wait," the admiral says. He presses a button on his desk, to which you suddenly hear numerous locking sounds. "Don't want to take any chances, <first> - I've locked all points of access so we can't be disturbed."`
 			`	"Pretty slick, admiral," you reply, impressed. "Now...you need to see these."`
@@ -1066,7 +1085,7 @@ mission "Geminus 2B"
 	stopover "Asgard"
 	to offer
 		has "Geminus 2A: done"
-		not "chosen sides"
+		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -1128,7 +1147,7 @@ mission "Geminus 2B"
 			apply
 				set "family"
 			`	"Did the topic of terraforming ever come up in the conversation?"`
-			`Heisenberg scratches his head in thought. "Well, now that you mention it, he *did* make references to the idea of terraforming some locations for, quote, 'reinforcing our front lines.' But to what end? It would be silly to waste resources trying to stabilize a planet just so our troops don't have to worry about the weather or the ground beneath their feet."`
+			`Heisenberg scratches his head in thought. "Well, now that you mention it, he did make references to the idea of terraforming some locations for, quote, 'reinforcing our front lines.' But to what end? It would be silly to waste resources trying to stabilize a planet just so our troops don't have to worry about the weather or the ground beneath their feet."`
 			`	"I think there's more to it than that. Did he ever make mention of Geyser during one of his tirades?"`
 			`	"Actually...yes, yes he did! But...why do you ask, <last>?"`
 			`	"I heard he has family on that planet. Perhaps it was less about making life easier for the Navy and more about trying to save a dying world."`
@@ -1139,7 +1158,7 @@ mission "Geminus 2B"
 	on complete
 		payment 2500000
 		dialog
-			`When the fleet comes in to land at Geminus, you find not grass but concrete pads for landing on. [Outstanding work once again, Lieutenant <last>!] Danforth cheers over the communicator. [Geminus continues to get better with each passing day. You'll be pleased to know that 2.5 million credits have been added to your account as thanks. Meet up with me when you're ready for your next mission.]`
+			`When the fleet comes in to land at Geminus, you find not grass but concrete pads for landing on. [Outstanding work once again, Lieutenant <last>!] Danforth cheers over the communicator. [Geminus continues to get better with each passing day. You'll be pleased to know that 2.5 million credits have been added to your account in gratitude. Meet up with me when you're ready for your next mission.]`
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
@@ -1164,7 +1183,7 @@ mission "Geminus 3A"
 	stopover "New China"
 	to offer
 		has "Geminus 2B: done"
-		not "chosen sides"
+		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -1186,7 +1205,7 @@ mission "Geminus 3A"
 			`	"Lieutenant, one other thing before you go."`
 			`You stop and turn to face the Admiral. "What is it, sir?"`
 			`Danforth looks both ways before pressing a piece of paper in your hands. "Make you're in a secure location before you read this," he whispers. "You'll see what I mean." You nod, carefully pocketing the document - whatever's inside, Danforth feels it's serious enough that he can't even risk telling you here.`
-			`On the way back to the ship, you notice a familiar scowl: Ranulph Hines. Despite your efforts to not look like you're avoiding him, he approaches you regardless. "You think you're hot shit, don't you?" he threatens. "Well listen here, Lieutenant - *I'm* the star, here. I don't know what the Admiral sees in you, but he's making the wrong decision to trust you with all these deliveries."`
+			`On the way back to the ship, you notice a familiar scowl: Ranulph Hines. Despite your efforts to not look like you're avoiding him, he approaches you regardless. "You think you're hot shit, don't you?" he threatens. "Well listen here, Lieutenant - I'm the hero, here. I don't know what the Admiral sees in you, but he's making the wrong decision to trust you with all these deliveries."`
 			branch defiance
 				has "family"
 			`You brush off his angry tirade for a while longer before he finally leaves. That man seems out to get you any which way he can, and it's starting to become a problem.`
@@ -1256,7 +1275,7 @@ mission "Geminus 3B"
 	stopover "Chiron"
 	to offer
 		has "Geminus 3A: done"
-		not "chosen sides"
+		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -1312,7 +1331,7 @@ mission "Geminus 3C"
 	destination "Geminus"
 	to offer
 		has "Geminus 3B: done"
-		not "chosen sides"
+		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -1453,146 +1472,886 @@ mission "Tier Boost"
 		has "Geminus 3C: done"
 		has event "geminus rebuilt"
 	on offer
+		event "geminus2weekleave" 14
 		log "Was promoted because of my assistance with rebuilding the shipyards on Geminus."
 		"reputation: Republic" += 10
 		"reputation: Free Worlds" = 500
 		"reputation: Escort" = 500
-		"salary: Navy" = 2500
+		"salary: Navy" = 2000
 		set "license: Navy Auxiliary"
-		set "license: Navy Cruiser"
-		set "license: Navy Carrier"
 		conversation
-			`	A message comes in from Danforth: "Lieutenant <last>! As a reward for your assistance in rebuilding the shipyard on Geminus, you have been promoted to Tier II enlistment. Your new salary shall be 2500 credits per day. You also now have access to Auxiliaries, Cruisers and Carriers."`
+			`	A message comes in from Danforth: "<first>! As a reward for your assistance in rebuilding the shipyard on Geminus, you have been promoted to the rank of Sergeant. Your new salary shall be 2000 credits per day. You also now have purchasing access for Auxiliaries, and have been granted leave of two weeks."`
 				decline
 
-########    <electron sequence here>
+event "geminus2weekleave"
 
-mission "Reassigned to Sol"
-	name "Reassigned to the Sol defense fleets"
+mission "Electrons 1A"
+	name `Weapons Development`
+	description `Report to Epsilon Leonis to aid in weapons development.`
+	to offer
+		has event "geminus2weekleave"
+		has "Tier Boost: declined"
+		has "Geminus 3C: done"
+	deadline
+	source
+		government Republic
+		not Valhalla
+	destination "Valhalla"
+	landing
+	on offer
+		dialog `You receive a message from Naval Command: "Sergeant <last>, please report to Epsilon Leonis. The scientists there require you to aid with certain reasearch and development.`
+	on complete
+		log "People" "John Withers" "A Deep Scientist who works on developing new weapons and technology for the Navy. Him and his associate, Walter Heisenburg, are directly responsible for the development of the heavy laser. Now, it seems, he is working on a new project."
+		conversation 
+			`As you begin your landing approach, your ship's console beeps as you recieve a message from the control tower.`
+			`	[Sergeant <last>, please redirect to the following coordinates- you are expected:]`
+			`The message then lists a set of global coordinates about 20 miles to the west of the spaceport. Following the instructions, you redirect to the designated spot.`
+			`After about two minutes, you see a old dilapidated warehouse with several concrete landing pads in front of it. You land at one of the pads and are greeted by a scientist in a white lab coat.`
+			`	"Hello Sergeant! My name is John Withers," as he reaches out and shakes your hand. "I'm sure you've met my collegue, Dr. Heisenberg. He and I worked on the Heavy Laser back in the day. Now though, I have a new project, and for this one I'll be needing your help."`
+			`As the mechanic refuels your ship, you follow the scientist to a shuttle waiting nearby. The shuttle starts moving, and heads into the warehouse, which seems much larger on the inside, large enough to fit a frigate at least, and is full of what looks to be prototypes of ships and weapons. The shuttle stops, and you all climb out.`
+			`You follow the scientists down a short corridor leaving the main area of the warehouse, ending in a well-lit elevator lobby. John puts a code into a keypad, which opens the elevator doors. You walk in and it begins its descent. You step into a sleek lab, filled with scientists hunched over various displays and devices, of which you can guess the purpose of very few. John leads you down a long hallway to a sealed room, flanked by two marines with rifles. He pulls a key card out of his pocket, motions to one of the guards, who pulls out a card of his own, and they swipe them simultaneously. The door opens with a hiss and reveals a perfectly white room, and a table on which is seated a long device, which appears to be the latest from the Deep.`
+			scene "outfit/electron beam"
+			`John motions you over, saying, "Here it is! We call it the Electron Beam. Twenty tons of pure destruction- but it doesn't work. Because of increased pirate problems in Syndicate space, we are missing some crucial materials. We need you to get those materials before we can get this working. Your destination is Lodestone, in the Ankaa system. You will need twenty-one tons of cargo space free for this mission. We have some fun for you when you get back," he says with a wink. You nod assent, even though you are still enamored by this elegant weapon, but John pulls you away and ushers you back to your ship.`
+				done
+
+mission "Electrons 1B"
+	name "Weapons Development"
+	description `Head to <destination> to pick up materials for the new weapons.`
+	to offer
+		has "Electrons 1A: done"
+	source Valhalla
+	destination Lodestone
+	landing
+	on complete
+		conversation 
+			`You land on Lodestone and find the shipment ready to go, so you head over to the dock master to do the paperwork for the delivery. You finish filing the order with the dock master, but as you turn back to your ship in the distance, you realize something is wrong: it is surrounded by ships painted red, and there are dozens of men walking in and out of your ship, carrying what you realize with dread is your cargo. You scream at the dock master to get ships in the air, but the pirates see them coming. The last of the men run into their ships and they bolt into the atmosphere, where you see the silhouette of a bulk freighter, of all things, waiting for you, guns pulsing with energy.`
+
+	
+mission "Electrons 1C"
+	name "Stolen Cargo"
+	description `Board the Pulsar and retrieve the cargo it has stolen.`
+	to offer
+		has "Electrons 1B: done"
+	source Lodestone
+	landing
+	destination Lodestone
+	on offer
+		conversation
+			`	You dash into your ship, expecting it to be stripped of everything, but surprisingly everything is untouched, except for the cargo hold, where you find the doors busted open and the tracks of a mobile truck running across the threshold. You quickly dash into the cockpit and radio control tower for permission to depart. Within seconds you have gained priority access and are shooting out of the atmosphere. Now it is up to you to face the pirate fleet, and take back the cargo that is now aboard the bactrian. (Remember, do not destroy the ship until you have taken all the cargo from it!)`
+				launch
+	npc board
+		government "Pirate"
+		personality staying nemesis target
+		system Ankaa
+		ship "Bulk Freighter (cargo target)" "Pulsar"
+	npc
+		government "Pirate"
+		personality heroic staying harvests plunders entering
+		system Ankaa
+		fleet "Small Northern Pirates"
+	on visit
+		dialog "You land on <planet>, but you don't have the special cargo! Return to the <npc> and bring the cargo back to <planet>."
+	on complete
+		outfit "Special Cargo" -1
+		payment 1500000
+        	conversation
+        		`	After having eliminated the pirate threat, and reclaimed the cargo, you land back on <destination>, relieved that you survived that. Suddenly your communicator beeps, as a message from the Syndicate goes through:`
+			`	[Captain <last>, as gratitude for your destruction of the Pulsar, which has been raiding convoys in the area for weeks, 1.5 million credits have been transferred to your account.]`
+			`	Now that you have the cargo, you should head back to Valhalla.`
+			
+
+ship "Bulk Freighter" "Bulk Freighter (cargo target)"
+	outfits
+		"Sidewinder Missile Launcher" 2
+		"Sidewinder Missile" 90
+		"Laser Turret" 3
+		"Heavy Anti-Missile Turret" 2
+		
+		"RT-I Radiothermal"
+		"LP144a Battery Pack"
+		"D23-QP Shield Generator"
+		"Laser Rifle"
+		
+		"X3700 Ion Thruster"
+		"X3200 Ion Steering"
+		"X1100 Ion Reverse Thruster"
+		"Scram Drive"
+		
+		"Special Cargo"
+	
+outfit "Special Cargo"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "Cargo stolen from the docks of Lodestone by a pirate ship; has hidden secrets to special weapons development by the Navy."
+	
+mission "Electrons 1D"
+	source Lodestone
+	destination Valhalla
+	name "Weapons Development"
+	landing
+	description "Bring the special cargo to Valhalla to assist in the development of the Electron Beam."
+	on fail
+		dialogue "You have failed an essential Navy mission. Try reloading the save and trying again."
+	to offer
+		has "Electrons 1C: done"
+	on complete
+		event "e-beam delay 1" 17
+		payment 300000
+		conversation 
+			`You managed to escort the auxiliaries home safe, it was a miracle you encountered so little resistance after the encounter with the bactrian. You notify the control tower of your approach, and slowly glide towards the secure facility. You land and exit your ship, and workers quickly unload the cargo. You meet John on his way out, and his face is unusually concerned, but as he sees you and your ship, his expression becomes one of relief, and he hurries to meet you.`
+			`"Are you all right, <last>? I heard that there was trouble on Lodestone, and even heard talk of a pirate Bulk Freighter!"`
+			choice
+				`"Yeah there *was* one. Not anymore though!"`
+					goto easy
+				`"There was, and it was a hard fight, but I managed to win."`
+					goto duel
+				`"There was one, and he kindly lost both the space and boarding battles to me, and so now I have a new ship!"`
+					goto capped
+			label easy
+				`"Well, at least he won't be a problem anymore. I wonder how he got that deep into Syndicate territory anyway," John says. "And now, come with me to the facility, I have something to speak about with you."`
+					goto end
+			label duel
+				`"Well, congratulations, and you got the cargo back, so that is very helpful! And now, come with me to the facility, I have something to speak about with you."`
+					goto end
+			label capped
+				`"John stares in astonishment and congratulates you, and then continues, "And now, come with me to the facility, I have something to speak about with you."`
+					goto end
+			label end
+				`You follow him into the warehouse and through the elevator. Once again you find yourself in a white, polished, lab with devices you could never guess about what they do. John bids you to follow him to his office, and you do so. Inside, John thanks you for your assistance, and tells you to come back in a couple weeks to continue aiding them. He gives you <payment> credits and sends you on your way.`
+					done
+
+event "e-beam delay 1"
+
+mission "Electrons 1E"
+	source
+		government Republic
+		not Valhalla
+	destination Valhalla
+	landing
+	name "Report to the weapons lab."
+	description "You have been instructed to return to the weapons lab on Valhalla. Report there immediately."
+	deadline
+	to offer
+		has "Electrons 1D: done"
+		has "event: e-beam delay 1"
+	on offer
+		conversation
+			`You receive a communique from John, the scientist who is working on the electron beams: "<first> <last>, please report to Valhalla immediately, your assistance is required."`
+				accept
+	on complete
+		conversation
+			`You arrive on Valhalla and contact the control tower, which immediately responds with instructions to proceed to designated coordinates, ones that look quite familiar. You follow them to the site of John's lab, and as you land you receive another message telling you to proceed to the lab and meet John in his office. You do so, and soon find yourself being greeted by a familiar face. "Hello, <first>, it's good you came so quickly! I have some work for you to do, and as I recall, you like fighting. Lucky for you, your task will involve that! Please meet me in the spaceport lounge in four hours for your next assignment. I'll be waiting for you there, but for now I need to go sort out some business of my own. I'll see you then!"`
+				done
+
+outfit "Electron Beam (Prototype)"
+	category "Guns"
+	cost 170000
+	thumbnail "outfit/electron beam"
+	"mass" 21
+	"outfit space" -21
+	"weapon capacity" -21
+	"gun ports" -1
+	weapon
+		sprite "projectile/electron"
+			"frame rate" 60
+		sound "electron beam"
+		"hit effect" "electron impact"
+		"inaccuracy" .4
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.5
+		"firing heat" 2.1
+		"shield damage" 2.8
+		"hull damage" 2.7
+	description "This is a prototype to the final Electron Beam."
+
+ship "Mule" "Mule Test Dummy (Electrons)"
+	outfits
+		"Anti-Missile Turret" 3
+		"D67-TM Shield Generator"
+		"Electron Beam (Prototype)" 2
+		"Heavy Laser Turret"
+		Hyperdrive
+		"KP-6 Photovoltaic Array"
+		"LP072a Battery Pack"
+		"Laser Rifle"
+		"NT-200 Nucleovoltaic"
+		Ramscoop
+		"Small Radar Jammer" 2
+		"A370 Atomic Thruster"
+		"A375 Atomic Steering"
+
+ship "Barb" "Barb Test Dummy (Electrons)"
+	outfits
+		"D14-RN Shield Generator"
+		"Electron Beam (Prototype)"
+		Supercapacitor
+		"X1050 Ion Engines"
+		"nGVF-AA Fuel Cell"
+
+mission "Electrons 1F"
+	source Valhalla
+	waypoint Aspidiske
+	destination Valhalla
+	to offer
+		has "Electrons 1E: done"
+	on offer
+		conversation
+			`You head back to the main planetary spaceport and to the spaceport lounge as you remember John saying, and sure enough, you see him there waiting. You go over to him, and he tells you what your task is. "You are to travel to the <waypoint> system. There you will find a mule and a barb in orbit, and you are to disable them without destroying them. Then report back to me. Any questions?"
+			choice
+				`	"No questions."`
+			`"All right, good. Have fun!"`
+				accept
+	npc disable save
+		personality staying disables nemesis target
+		government "Test Dummy"
+		system Aspidiske
+		ship "Mule Test Dummy (Electrons)" "Test Dummy"
+		ship "Barb Test Dummy (Electrons)" "Test Dummy"
+		dialogue "You've killed the Test ships you were supposed to disable. Congradulations? Now I suggest you reload your save and try again."
+	on complete
+		event "e-beam delay 2" 8		
+		payment 1750000
+		conversation
+			`You arrive on Valhalla and proceed to the secure facility where John works, and he meets you outside of your ship. "Well, how was the fight, <first>?"
+			choice
+				`	"It was pretty hard, but I managed to pull through. Those were some pretty impressive weapons though!"`
+					goto hard
+				`	"It was pretty easy, but they put up a good fight. Were those the Electron Beams?"`
+					goto easy
+			label hard
+			`	"Well, glad to have you back, and I'm glad they worked so well!`
+					goto end
+			label easy
+			`	"Yes they were, and I'm glad you weren't harmed."
+			label end
+				`"Anyhow, give me a week or so to make the necessary alterations, and then I'll let you know to report back. Until then, you got some time to yourself and a reward of <payment> credits."
+					done
+
+event "e-beam delay 2"
+	outfitter "Deep Sky Basics"
+		"Electron Beam"
+	outfitter "Deep Sky Advanced"
+		"Electron Beam"
+
+mission "Electrons 1G"
+	source
+		government Republic
+		not Valhalla
+	destination Valhalla
+	landing
+	name "Report to the weapons lab."
+	description "You have been instructed to return to the weapons lab on Valhalla. Report there immediately."
+	deadline
+	to offer
+		has "Electrons 1F: done"
+		has "event: e-beam delay 2"
+	on offer
+		conversation
+			`You receive a communique from John, the scientist who is working on the electron beams: "<first> <last>, please report to Valhalla immediately, your assistance is required."`
+
+mission "Electrons 2A"
+	source Valhalla
+	stopover Lodestone
+	destination Valhalla
+	landing
+	name "Transport Materials"
+	description "Fetch materials from <destination> for development on the new Electron Turret."
+	to offer
+		has "Electrons 1G: done"
+	on offer
+		conversation
+			`You land on Valhalla once more and head to the old warehouse. You take the elevator down to the lab, escorted by two uniformed guards. Once you reach the lab, you head to John's office, where he meets you. "Ah, <first>, you're just in time! I have a task that I need you to do. Please escort two Auxiliaries to Lodestone and back to retrieve some materials for a new prototype we have been working on."`
+			choice
+				`"What are these materials?"`
+					goto what
+				`"On my way."`
+					accept
+			label what
+				`"They are materials for heavy gears and such machinery. As you could probably guess, we're building a turret mount."`
+			choice
+				`"On my way."`
+					accept
+	on stopover
+		conversation
+			`Thankfully, you arrive on Lodestone without a problem. The Auxiliaries load up their materials and the captains relay to you the signal that they are ready.`
+	on complete
+		event "e-beam delay 3" 6
+		conversation
+			`You arrive again on Valhalla, and immediately head to the lab, where you meet up with John. He asks for you to come to his office, where he says, "Thank you again, captain, for safely escorting the Auxiliaries. You are free to take a few days of leave while we assemble these components, and then we'll request for you again. You might find your next job... more fun."`
+	npc accompany save
+		personality escort timid
+		fleet
+			names "republic" "capital"
+			variant
+				"Auxiliary (Cargo)" 2
+
+event "e-beam delay 3"
+
+mission "Electrons 2B"
+	source
+		government Republic
+		not Valhalla
+	destination Valhalla
+	landing
+	name "Report to the weapons lab."
+	description "You have been instructed to return to the weapons lab on Valhalla. Report there immediately."
+	deadline
+	to offer
+		has "Electrons 2A: done"
+		has "event: e-beam delay 3"
+	on offer
+		conversation
+			`As you come in for a landing, you find you have received another communique from John: "<first> <last>, please report to Valhalla immediately, we have some fun for you."`
+
+outfit "Electron Turret (Prototype)"
+	category "Turrets"
+	cost 720000
+	thumbnail "outfit/electron turret"
+	"mass" 54
+	"outfit space" -54
+	"weapon capacity" -54
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/2x electron"
+			"frame rate" 60
+		"hardpoint sprite" "hardpoint/electron turret"
+		"hardpoint offset" 8.
+		sound "electron beam"
+		"hit effect" "electron impact"
+		"inaccuracy" .4
+		"turret turn" 1.4
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 3.0
+		"firing heat" 4.2
+		"shield damage" 5.6
+		"hull damage" 5.4
+	description "This is a prototype to the final Electron Turret."
+
+
+ship "Mule" "Mule Test Dummy (Electrons+Turret)"
+	outfits
+		"A370 Atomic Thruster"
+		"A375 Atomic Steering"
+		"Anti-Missile Turret"
+		"D41-HY Shield Generator"
+		"Electron Beam (Prototype)" 2
+		"Electron Turret (Prototype)" 2
+		Hyperdrive
+		"KP-6 Photovoltaic Array"
+		"LP072a Battery Pack"
+		"Laser Rifle"
+		"NT-200 Nucleovoltaic"
+		Ramscoop
+		"Small Radar Jammer" 2
+
+mission "Electrons 2C"
+	source Valhalla
+	waypoint Aspidiske
+	destination Valhalla
+	to offer
+		has "Electrons 2B: done"
+	on offer
+		conversation
+			`Upon arriving on Valhalla, you hail the spaceport control tower as usual for your landing pad coordinates, but after sending them they also send a short message. It is from John: "Once again, we have a combat test for you. You are to travel to the <waypoint> system where you shall find another Mule in orbit. Please disable the mule and its fighter, as they have been equipped with out current prototypes and destroying them would lose years of progress."
+				accept
+	npc disable save
+		personality staying disables nemesis target
+		government "Test Dummy"
+		system Aspidiske
+		ship "Mule Test Dummy (Electrons+Turret)" "Test Dummy"
+		ship "Barb Test Dummy (Electrons)" "Test Dummy"
+		dialogue "You've killed the Test ships you were supposed to disable. Congradulations? Now I suggest you reload your save and try again."
+	on complete
+		event "30-day-leave" 30
+		event "all-electrons-available" 10
+		conversation
+			`You arrive on Valhalla and proceed to the secure facility where John works, and he meets you outside of your ship. "Well, how was the fight, <first>?"
+			choice
+				`"It was pretty fun, but in the end I disabled them and your precious weapons are safe."`
+					goto end
+			label end
+				`"Well, I'm glad you enjoyed in and everything turned out okay. I got to admit, though, these tests make me nervous, even though I know I can trust you. I guess it's just a thing with us scientists. Anyhow, give me a couple days to continue maximising the outputs and energy requirements, and then I'll let you know to report back. Until then, apparently you have a month of leave!"`
+					done
+
+event "30-day-leave"
+
+event "all-electrons-available"
+	outfitter "Deep Sky Basics"
+		"Electron Beam"
+	outfitter "Deep Sky Advanced"
+		"Electron Beam"
+		"Electron Turret"
+
+mission "Typhoons 1A"
+	source
+		government Republic
+		not Valhalla
+	destination Valhalla
+	landing
+	name "Report to the weapons lab."
+	description "You have been instructed to return to the weapons lab on Valhalla. Report there immediately."
+	deadline
+	to offer
+		has "event: 30-day-leave"
+	on offer
+		conversation
+			`As you come in for a landing, you find you have received another communique from John: "Captain, instead of coming to the warehouse, head to the spaceport where I'll meet you for your next assignment."`
+			`You follow his directions and soon arrive at the spaceport bar, where you immediately recognize John. You walk over to him, and he calls out to you. "<first>? There you are! Well, let's get straight to buisiness. Your next task will be to assist in the development of a new weapon. However, instead of a beam weapon, you shall test a new projectile weapon. As this is not a secure location, I cannot tell you more at this time, but if you'll follow my ship to a protected location on Valhalla, we may discuss this in detail."`
+			choice
+				`"Sounds good. Let's go!"`
+					accept
+				`"Sure, but how did you know I'd be heading here?"`
+					goto notthecia
+				`"Actually, I have a more pressing matter at this time, but I'll get back to you as soon as possible."`
+					defer
+			label notthecia
+				`He laughs and winks at you, and begins walking to his ship. You shrug your shoulders and head to your own ship, and prepare to follow him to Valhalla.`
+					accept
+	npc accompany save
+		personality escort timid
+		government "Deep Security"
+		ship "Flivver" "John's Ship"
+mission "Typhoons 1B"
+	source Valhalla
+	stopover Crossroads
+	destination Valhalla
+	name "Ferry materials"
+	description "Escort a Navy frieghter to Crossroads and back to bring John's team the materials for the new Torpedo Launcher."
+	deadline
+	on offer
+		log "People" "John Withers" "It seems that John has also expanded his knowledge area in development projects to missile & torpedo systems- who knows what he'll do next..."
+		conversation
+			`You slowly bring your ship into a low orbit while you are waiting for your acknowledgement from the control tower. You look off to your left and see John's Flivver mirroring your approach. Finally you recieve your clearance from the tower, but instead of a landing slot, you are given a set of coordinates to (unsurprisingly) an abandoned factory, which you guess is the 'secure location' John mentioned. You see John's ship already accelerating, and so you quickly order the helm to follow suite.`
+			`Several minutes later, you get a notification that you are closing on the designated coordinates, and you begin to descend. Quickly, the factory comes into view, but as you look closely, you notice several slightly hidden anti-aircraft guns trained on your ship. You continue to descend, and as you come within a reasonable distance, you get another notification- you're being scanned. As soon as the scan completes, you watch the AAA guns cease to lock on to your ship, and begin scanning the skies once more. Soon, the automatic landing gear extend, and you touch down on the landing pad. After you complete your post-flight checks, you leave your ship and meet John outside. He beckons you to follow, with a smirk. As you follow a similar pattern of security checks and descending elevators as the last facility.`
+			`Eventually, you reach another white shiny room full of tech way beyond your understanding, half of which looks like it would disintegrate you with a mere fraction of its possible power. In the middle of it all is a stairway, which John escorts you down. At the bottom is a large bay in which the largest torpedoe you have ever seen rests. Pulsing with a radioactive green energy, you wonder what sorcery these crazy scientists have concocted up now. However, you soon discover it is not sorcery, but just another powerful bomb. John begins explaining how much more advanced this weapon is than the atom bombs of old, but soon you zone out. He continues for a few more minutes but notices your eyes glazing over, and apologizes for taking so long. He then gives you your instructions.`
+				`"For this assignment, we will need you to escort some more ships from the Syndicate to Valhalla. We have built a number of the prototype torpedos, but we need a few more items for the launcher. So, please escort one Auxilliary from here to Crossroads and back in order to bring us the necessary materials."`
+			choice
+				`"Yes sir!"`
+					accept
+		on stopover
+			conversation
+				`Despite the harassment from the mercenaries, you manage to safely touch down roughly within your landing beacons on the pad. Thankfully, the Auxiliary has survived without major damage, and after a short inspection, Syndicate dockworkers begin loading it up with heavily armored crates with an atomic symbol on it. After an hour or two, the load is complete, and you head to the control center?.
+	on complete
+		conversation
+			`With surprisingly no resistence, you manage to bring the Auxiliary home relatively unscathed, with all its cargo intact. As you touch down on the pad, you recieve another message from John informing you to meet him inside the lab.`
+	npc accompany save
+		personality escort timid
+		fleet
+			names "republic" "capital"
+			variant
+				"Auxiliary (Cargo)"
+	npc
+		government "Pirate"
+		personality heroic staying harvests plunders entering
+		system Diphda
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality heroic staying harvests plunders entering
+		system Ankaa
+		fleet "Large Northern Pirates"
+		fleet "Small Northern Pirates"
+
+
+mission "Typhoons 1C"
+	source Valhalla
+	destination Valhalla
+	waypoint Aspidiske
+	name "Conduct weapons testing"
+	decription "Participate in the combat testing of a new torpedo invented by the Deep. The test will involve your ship and a Test Dummy mule, which you are not supposed to destroy. Upon conclusion of the test, report back to Valhalla to report the results."
+	on offer
+		conversation
+			`You follow the instructions left for you, and after a few minutes you catch sight of John in an office. You go up to the door and knock, and he shouts, "Come in! Ah, <first>. Glad you could make it. Now that we have those materials, it shouldn't be long until the torpedo is finished. And after that, we will conduct another combat test- which I'm sure you're excited for. Remember, please don't destroy the testing ship, as it costs a lot of money, and is crewed by real people, and we cannot replace them. Any questions?"`
+			choice
+				`"No, Sir!"`
+					accept
+	on complete
+		event "typhoons ending" 3
+		conversation
+			`You land on Valhalla once again, and repeat the procedures that are now routine to you, and finally find yourself again in John's office, where he welcomes you back. "Coffee, Captain?"`
+			choice
+				`"Yes, please."`
+				`"No, thank you though."`
+					goto aftercoffee
+			`You gratefully accept his offer, and a moment later you find yourself with a steaming cup of homebrewed natural coffee, which is a welcome surprise from the processed drink you're used to. You take a sip, and listen to what John has to say.`
+			label aftercoffee
+			`John opens a computer and pulls up the logs you submitted after the battle. He gives a cursory scan, and then asks you for your report.`
+			choice
+				`"The weapons performed perfectly, and although they were a little slow, when one did hit, it was definitely powerful enough for its purpose."`
+			`"Wondeful, Captain! In that case, as soon as we make a few more adjustments they should be ready for commercial use!`
+				done
+	npc disable save
+		personality staying disables nemesis target
+		government "Test Dummy"
+		system Aspidiske
+		ship "Mule Test Dummy (Typhoons)" "Test Dummy"
+		ship "Lance" "Test Dummy"
+		dialogue "You've killed the Test ships you were supposed to disable. Congratulations? Now I suggest you reload your save and try again."
+
+ship "Mule" "Mule Test Dummy (Typhoons)"
+	outfits
+		"A370 Atomic Thruster"
+		"A375 Atomic Steering"
+		"Anti-Missile Turret" 2
+		"Breeder Reactor"
+		Brig
+		"D41-HY Shield Generator"
+		"Heavy Laser Turret"
+		Hyperdrive
+		"LP144a Battery Pack"
+		"Laser Rifle" 43
+		"Laser Turret"
+		"Liquid Helium Cooler"
+		"Outfits Expansion" 5
+		Ramscoop
+		"Small Radar Jammer" 2
+		"Typhoon Launcher" 2
+		"Typhoon Storage Tube" 2
+		"Typhoon Torpedo" 90
+
+event "typhoons ending"
+	outfitter "Deep Sky Basics"
+		"Typhoon Torpedo"
+		"Electron Beam"
+	outfitter "Deep Sky Advanced"
+		"Typhoon Torpedo"
+		"Electron Beam"
+		"Typhoon Launcher"
+		"Typhoon Pod"
+		"Typhoon Storage Tube"
+		"Electron Turret"
+
+mission "Catalytic Ramscoops 1A"
+	name "A New Task"
+	description "Your presence has once again been requested on Valhalla, please report there to assist in what ways you are needed."
+	to offer
+		has "Typhoons 1C: done"
+	landing
+	source
+		government "Republic"
+		not Valhalla
+	destination Valhalla
+	on offer
+		conversation
+			`Upon settling the <ship> into its berth on <source>, you are relayed another message from the science team: Captain, please report back to Valhalla, as once again your assistance is required.`
+	on complete
+		conversation
+			`Once again you have arrived on Valhalla to participate in the endless experiments of the science team based there. Figuring that you will find more directions there, you go to the spaceport authorities, and sure enough, there you find directions to John's lab. You catch a taxi back to your ship, and prepare for a short ride through the atmosphere.`
+
+#antipode- electronics/rare earth metals
+#crossroads- uranium/radioactive metals
+#lodestone- general mining
+
+mission "Catalytic Ramscoops 1B"
+	name "Escort to Lodestone"
+	description "Escort two Navy Auxiliaries to Antipode and back, to bring back critical components of a new technology that John's Science team is developing."
+	to offer
+		has "Catalytic Ramscoops 1A: done"
+	landing
+	source Valhalla
+	destination Antipode
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`Several minutes later, you spot the new location- a third warehouse. After going through the usual checks with security, you are escorted down to John's office.`
+			`	"Sergeant! Good to see you again. I have once again been contracted to develop something- so naturally I called on your aid. What I have been asked to build this time is not a weapon of war- but a device of exploration. You see, the ramscoops we have today are quite outdated- and although it is quite rare to run out of fuel nowadays, it seems the Navy felt they wanted to increase the operational range of their ships."`
+			`	"And so, as you might have guessed, I have been requested to build a new ramscoop. Here's my design."`
+			scene "outfit/Catalytic ramscoop"
+			`	"I've increased the filter quality, gotten a better collection funnel design, and increased the amount of funnels, all for a definite increase in efficiency. However, these are just the blueprints. We haven't even begun building it. And that's where you come in. You see, we need some special circuitry and rare metal filters that are only available on the Syndicate world of Antipode. The drawback is, that system, Matar, is so far south near the pirate systems that our typical Deep Sky escorts will not go, as they are 'over-extending themselves.' Whatever their real motives may be, I need you to escort two Auxiliaries that Logistics kindly let us use to Antipode and back. There shouldn't be too much trouble, but keep an eye out. Can you do this"`
+			choice
+				`	"Absolutely!"`
+					accept
+	on enter Antipode
+		conversation
+			`Faced with minimal difficulties on the way, you are shocked as you enter the system to find a large Pirate fleet in orbit. And, even more to your chagrin, they all immediately begin turning towards you, some of them already training their turrets on you. Evidently, your convoy is the target of a coordinated attack...but for now you focus on something more important- your own survival.`
+	on visit
+		dialogue "You have not destroyed all of the Pirate raiders yet. Relaunch and destroy them as soon as possible."
+			launch
+	on complete
+		payment 510200
+		conversation
+			`Having destroyed the Pirate fleet in orbit, you can now safely load the cargo onto the Auxiliaries. When you radio the control tower for your landing confirmation, a very impressed-sounding operator quickly replies, giving you your landing pad designation, and adds that the local government is very grateful for your assistance, and has relayed you an alotted compensation of 510,200 credits in order to express their gratitude. You politely thank him and proceed with your landing checks.`
+			`A few hours later, the cargo is loaded, and you are ready to depart.`
+	npc kill
+		government Pirate
+		system Matar
+		personality heroic nemesis staying target
+		fleet
+			names "pirate"
+			variant
+				"Splinter (Laser)"
+				"Manta" 2
+				"Quicksilver" 2
+				"Vanguard (Particle)"
+				"Protector (Laser)"
+		conversation
+			`That should be the last of the ships; it should be safe to land on the planet now.`
+	npc
+		government Pirate
+		system Zozma
+		personality heroic staying
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Heavy)"
+				"Firebird (Plasma)" 2
+	npc accompany save
+		personality escort timid
+		ship "Auxiliary (Cargo)" "R.N.S. Hector"
+		ship "Auxiliary (Cargo)" "R.N.S. Achilles"
+
+mission "Catalytic Ramscoops 1C"
+	name "Escort to Valhalla"
+	description "Return the Auxiliaries and their cargo to Valhalla safely. John is counting on you."
+	landing
+	source Antipode
+	destination Valhalla
+	to offer
+		has "Catalytic Ramscoops 1B: done"
+	on complete
+		event "c ramscoop built" 18
+		payment 2000000
+		conversation
+			`Upon making it back safely, you breathe a sigh of relief. Simultaneously, your ship's communicator lights up with a notification of a message from John:`
+			`	[Hello Sergeant, glad to see you made it back. I apologise for the difficulties, but then again it is part of your job. However, would you please join me at my lab? Thank you.]`
+			``
+			`Ten minutes later you arrive at John's lab. After going through security, you make it to John's office again.`
+			`	"Hello captain, how was the mission?" he asks."`
+			choice
+				`	"Good, we encountered little trouble, and the trouble we did encounter, we easily overcame."`
+					goto ez
+				`	"I hope I never have to do that again. There were so many pirates, we nearly lost the entire fleet!"`
+					goto hard
+				label ez
+				`	"Well, I'm glad you fared well. Now to buisiness."`
+					goto end
+				label hard
+				`	"I do too. Hopefully at leaast that'll prove that we can't just send unprotected convoys marching past anarchist space. Now, though, to buisiness."
+				label end
+				`	"In reward for your services, you have been given a bonus of two million credits. I hope it serves you well. My team will be spending the next few weeks assembling this device, after which we shall request your services again. Until then, you are on leave."`
+
+	npc accompany save
+		personality escort timid
+		ship "Auxiliary (Cargo)" "R.N.S. Hector"
+		ship "Auxiliary (Cargo)" "R.N.S. Achilles"
+
+
+event "c ramscoop built"
+
+
+mission "Catalytic Ramscoops 1D"
+	landing
+	name "Efficiency test"
+	description "John has requested your presence back on Valhalla to help him run an efficiency test on the Catalytic Ramscoop he has built."
+	source
+		government Republic
+		not Valhalla
+	destination Valhalla
+	to offer
+		has "event: c ramscoop built"
+	on offer
+		conversation
+			`You recieve a message from John: [Sergeant, my team has completed the first of the new ramscoops. Please meet me on Valhalla to conduct an efficiency test on them. Thank you!]
+				accept
+	on complete
+		log "People" "John Withers" "John was then hired by the Navy to build a new and improved, more efficient ramscoop."
+		outfit "Catalytic Ramscoop" 1
+		conversation
+			`Following the procedure which has become muscle memory by now, you soon arrive at John's lab. Once inside you meet up with him, this time on a catwalk above a construction area, where you can see two loading pallets with what you assume to be Catalytic ramscoops aboard.`
+			`	John says, "Well captain, its done. The first prototypes. You may be wondering, though, how will we test them-"`
+			choice
+				`	"Yeah, I mean these aren't weapons that you can put on a ship and fight in a combat test."`
+			`	"Exactly. So, I've come up with a different test. I want you to use the ramscoops to explore. I will send you a route through some of the northern uninhabited systems, and you can fly through them, using the ramscoop to refuel. How does that sound?"
+			choice
+				`	"Great! I trust your invention completely!"`
+					goto end
+				`	"Are you sure about this..?"`
+			`	"Yes, of course!"
+			label end
+			`	 "And, I've worked things out with Admiral Danforth so that you can double-task and run a patrol for him too! So head to the outfitter, make sure you've got space for it, and install that ramscoop on your ship!"`
+			choice
+				`	"Will do!"`
+		
+mission "Catalytic Ramscoops 1E"
+	landing
+	name "Efficiency Test"
+	description "Use the Catalytic Ramscoop to travel through the uninhabited systems in the north-east, then stop by Farpoint to drop off your sensor logs with Admiral Danforth. Then return to Valhalla for the test results."
+	source Valhalla
+	waypoint Nihal
+	waypoint Volax
+	waypoint Cardax
+	waypoint Sumar
+	waypoint Hassaleh
+	waypoint Rigel
+	destination Farpoint
+	to offer
+		has "Catalytic Ramscoops 1D: done"
+	on complete
+		payment 100000
+		conversation
+			`Having safely made it through the dead stretch of northern systems and arrived at Farpoint, you begin your descent through the atmosphere. The skies are clear today, and you see the desert stretching far away on all sides, and the relatively small compaund begins to loom up to you. You radio control for clearance, and after a short wait it is granted.`
+			`Following the tower's guidance, you land on the designated pad and step out into the hot air. A slight breeze is blowing, and the compound seems relatively quiet today. The serenity is suddenly broken, however, when your communicator loudly buzzes. It's from Admiral Daforth, whom you realize you actually haven't seen in a while.`
+			`	[Hello captain! Please report to my office, it's been a while (and I need those logs). See you in a few.]`
+			`You head to Danforth's office, following the old familiar route, and soon find yourself knocking on the door again.`
+			`	"Come in!"`
+			`As you enter, you notice Danforth sitting in his chair behind a monitor reading intently, but upon seeing you, he looks up and smiles.`
+			branch hines
+				has "rivalry"
+			`	"Sit down, Sergeant. How are you doing these days?"`
+			choice
+				`	"Great. The tasks are enjoyable, and I like my work!"`
+				`	"Poorly. The work is unenjoyable, but orders are orders."`
+			`Danforth nods, and asks what you've been doing for the scientists in the Deep. You describe your work, and before you know it, an hour has passed while you were chatting.`
+			label hines
+			choice
+				`Ask Danforth how Hines is doing.`
+					goto hines2
+			label end
+			choice
+				`Give Danforth your sensor logs
+			`	"Thank you Captain. It really is so helpful for you to be able to take one more ship off of patrol duty. Oh, and by the way- here's a small bonus as compensation for that long detour."`
+			`You tank the Admiral and say goodbye, and walk out of the base into the sun.`
+				done
+			label hines2
+			`	"How is Ranulf Hines doing, Admiral?" you ask.`
+			`	"He's managed to stay out of trouble," Danforth replies, "probably because the war is brewing and he is focusing less on his rivalry with you and more on getting to the front when the time comes, because sadly, it looks like it will come. Anyways Sergeant, it's been good catching up with you. Now, if you have those sensor logs, that would be great," he says in an exaggerated Bill Lumbergh accent, winking at you. Your mind quickly flashes to a 20th century comedy, and then the momentary vision dissapears.`
+				goto end
+			
+### http://media.makeameme.org/created/ThatD-be-great.jpg
+
+mission "Catalytic Ramscoops 1F"
+	landing
+	name "Efficiency Test"
+	decription "Now that you have completed your patrol, return to Valhalla to submit the test results."
+	source Farpoint
+	destination Valhalla
+	on complete
+		payment 2500000
+		event "deep sky tech available" 3
+		event "mk ii ships for sale" 7
+		conversation
+			`Upon reaching your final destination of Valhalla, you proceed as before to John's lab. Entering his office, you find him pouring over a monitor filled with what looks to be data and specifications on the new ramscoop. You get his attention and he says,`
+			`	"Ah Sergeant! You're back- it felt like it took so long but it was really only a few weeks! How did my ramscoop perform?"`
+			choice
+				`	"Very well, it certainly is an improvement over the previous generation."`
+				`	"It worked well, but the size might be a problem at some point."`
+			`	"Well, thak you for the feedback. I'm glad it served you well. He hands you a credit chip worth <payment> credits. Give me a few days, and I should have everything set to begin production. It's been great working with you, <first>." You shake hands with him, and then go to your ship.`
+
+event "mk ii ships for sale"
+	shipyard "Navy Basics"
+		"Rainmaker"
+		"Rainmaker (Mark II)"
+		"Gunboat"
+		"Gunboat (Mark II)"
+		"Lance"
+		"Combat Drone"
+		"Surveillance Drone"
+		"Dropship"
+	shipyard "Navy Advanced"
+		"Frigate"
+		"Cruiser"
+		"Carrier"
+		"Auxiliary"
+		"Frigate (Mark II)"
+		"Cruiser (Mark II)"
+		"Carrier (Mark II)"
+
+mission "Electrons Final"
+	landing
+	source Farpoint
+	to offer
+		has "Catalytic Ramscoops 1F: done"
+		has "event: mk ii ships for sale"
+	on offer
+		log "Was promoted to the rank of Captain. Ironic, how they refer to civilian captains as the same, and then have their own rank, with the only difference being a capital 'C'"
+		"reputation: Republic" += 10
+		"reputation: Free Worlds" = 500
+		"reputation: Escort" = 500
+		"salary: Navy" = 2500
+		set "license: Navy Cruiser"
+		conversation
+			`	The <ship>'s intercom suddenly beeps with a message from Admiral Danforth: "Sergeant <last>! For your contributions to the recent weapons development programs on Valhalla, you have been promoted to the rank of Captain, and your daily stipend henceforth shall be 2500 credits per diem. You have also recieved a license to purchase cruisers."`
+				decline
+
+mission "Reassignment to SDF"
+	name "Reassignment"
+	description "Report to the Solar Defense Flotilla under Commodore Joseph Cruz by <deadline>."
 	landing
 	deadline
 	source
 		government "Republic"
+		not Earth
 	destination Earth
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
-		has "Electrons Final: done"
+		has "Electrons Final: declined"
 	on offer
-		log "Was reassigned to the defense fleets on Sol."
+		log "Was reassigned to the defense fleets in Sol, under the command of Commodore Joseph Cruz."
+		log "People" "Joseph Cruz" "A Navy Commodore in charge of the Solar Defence Flotilla, known for his strict behavior in relation to the rules, and his firm allegiance to Parliament."
 		conversation
-			`	A message comes in from Naval Command: "Lieutenant <first> <last>, because of a recent turn of events with the Free Worlds and the Geminus Bombing Investigation, you are from this point on assigned to the defense fleets in Sol. Please report there soon to Commodore Joseph Cruz. Thank you."`
+			`	A message comes in from Naval Command: "Captain <first> <last>, because of a recent turn of events with the Free Worlds and the Geminus Bombing Investigation, you are from this point on assigned to the defense fleets in Sol. Please report there immediately to Commodore Joseph Cruz. Thank you."`
+			accept
 
-
-
-mission "Reassigned to Sol [completion]"
+mission "Reassigned to Sol [cruiser]"
 	landing
 	source Earth
-	destination Earth
+	destination Luna
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
 		has "Reassigned to Sol: offered"
 	on offer
-		log "Was given a cruiser to prepare for a Free Worlds invasion."
-		event "deep sky tech available"
 		event "navy using mark ii ships"
 		conversation
-			`	As you land on earth, <ship>'s communicator beeps, and a Navy officer who you presume is Cruz comes on. "Good evening, Lieutenant <last>! The Geminus Bombing Investigation believes that the culprit for the Geminus bombing is the Free Worlds. Because of this, the Navy shall be attacking the system of Kornephoros under orders from Parliament. Therefore, as the new shipyards are complete, you shall be given a single Cruiser and four combat drones with the hope of it serving you well. 
-
-		give ship "Cruiser (Mark II)(empty)" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-government "Donation"
-	swizzle 6
-	color .78 0 0
-	"player reputation" -10000
-
-ship "Carrier" "Carrier (Mark II)(empty)"
-	outfits
-		"Electron Beam" 4
-		"Sidewinder Missile Launcher" 4
-		"Sidewinder Missile" 180
-		"Electron Turret" 2
-		"Heavy Anti-Missile Turret" 2
-		"Armageddon Core"
-		"Dwarf Core"
-		"LP036a Battery Pack"
-		"Supercapacitor" 3
-		"D94-YV Shield Generator"
-		"Large Radar Jammer" 2
-		"Liquid Helium Cooler"
-		"Outfits Expansion" 3
-		"Brig"
-		"Laser Rifle" 45
-		"Fragmentation Grenades" 45
-		"A860 Atomic Thruster"
-		"A525 Atomic Steering"
-		"Hyperdrive"
-	gun "Electron Beam"
-	gun "Electron Beam"
-	gun "Sidewinder Missile Launcher"
-	gun "Sidewinder Missile Launcher"
-	gun "Electron Beam"
-	gun "Electron Beam"
-	gun "Sidewinder Missile Launcher"
-	gun "Sidewinder Missile Launcher"
-	turret "Heavy Anti-Missile Turret"
-	turret "Electron Turret"
-	turret "Heavy Anti-Missile Turret"
-	turret "Electron Turret"
+			`	As you land on earth, <ship>'s communicator beeps, and a Navy officer whom you presume to be the Commodore comes on. "Good evening, Captain <last>! The Geminus Bombing Investigation believes that the most promising culprit for the Geminus bombing is the Free Worlds. Because of this, the Navy shall be attacking the system of Kornephoros under orders from Parliament. Therefore, as the new shipyards are complete, you shall be requisitioned a single Cruiser and four combat drones with the hope of them serving you well. Report to the shipyards on Luna to recieve them."`
+	on complete
+		log "Was given a cruiser and its complement of drones in order to prepare for an invasion of the Free Worlds."
+		give ship "Cruiser (Mark II)" "R.N.S. Horizon"
+		give ship "Combat Drone" "Gamma one"
+		give ship "Combat Drone" "Gamma two"
+		give ship "Combat Drone" "Gamma three"
+		give ship "Combat Drone" "Gamma four"
+		conversation
+			`	Upon landing, you immediately visit the shipyards, as instructed. You meet the receptionist, who sees your uniform, and requests your license. After she scans it, she directs you to a specific hangar in the rear area of the shipyards.`
+			`	A few minutes later, you spot a door marked 'Restricted Access: Authorised Navy Personnel Only.' The door is flanked by a marine with a laser rifle. You show your license to him, and he motions you inside.`
+			scene "thumbnail/cruiser"
+			`	"Well Captain," the marine says, "There she is. What a *beauty.* She's all ready to go. Hope she can serve you well!"`
+			`	"What is her name?" you ask."
+			`		"The Horizon"`
 
 
+########## get scene of cruiser + combat drones with vew from below for ^^^
 
-ship "Cruiser" "Cruiser (Mark II)(empty)"
-	outfits
-		"Typhoon Launcher" 2
-		"Typhoon Torpedo" 60
-		"Sidewinder Missile Launcher" 4
-		"Sidewinder Missile" 180
-		"Electron Turret" 2
-		"Heavy Anti-Missile Turret" 2
-		"Armageddon Core"
-		"LP144a Battery Pack"
-		"D94-YV Shield Generator"
-		"Large Radar Jammer"
-		"Small Radar Jammer" 2
-		"Liquid Helium Cooler"
-		"Fuel Pod"
-		"Laser Rifle" 25
-		"Fragmentation Grenades" 25
-		"A520 Atomic Thruster"
-		"A525 Atomic Steering"
-		"Hyperdrive"
-	gun "Sidewinder Missile Launcher"
-	gun "Sidewinder Missile Launcher"
-	gun "Sidewinder Missile Launcher"
-	gun "Sidewinder Missile Launcher"
-	gun "Typhoon Launcher"
-	gun "Typhoon Launcher"
-	turret "Heavy Anti-Missile Turret"
-	turret "Electron Turret"
-	turret "Electron Turret"
-	turret "Heavy Anti-Missile Turret"
 
 mission "Report to Seginus"
 	landing
 	deadline
-	source Earth
+	source Luna
 	destination Clark
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
-		has "Reassigned to Sol [completion]: done"
+		has "Reassigned to Sol [cruiser]: done"
 	on offer
 		log "Was assigned to an attack fleet for attacking the Free Worlds."
 		conversation
-			`	As you land, <ship>'s communicator beeps again, and Commodore Cruz comes on. "Good evening, Lieutenant <last>! As you have now acquired your cruiser, please report to Seginus immediately for preparations on the Kornephoros attack.`
-				decline
+			`	As you land, <ship>'s communicator beeps again, and Commodore Cruz appears again. "Good evening, Captain! As you have now aquired your ships, report to Seginus immediately with your fleet for preparations to attack Kornephoros.`
+			choice
+				`	"Yes, sir!"`
+				accept
 
 mission "Seginus Gathering"
+	name "Attack Kornephoros"
+	description "Escort Commodore Cruz' ship, the R.N.S. Victory, to the planet <destination> where Cruz will try to force a surrender of Kornephoros."
 	landing
 	source Clark
 	destination Deep
@@ -1600,49 +2359,45 @@ mission "Seginus Gathering"
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	clearance
 	to offer
-		has "Report to Seginus: declined"
+		has "Report to Seginus: done"
 	on offer
-		event "start of hostilities(NAVY)"
+		log "Preparing to go to war. I wonder if I'll die in a few days..."
 		event "prepare for battle of Kornephoros"
 		conversation
-			`	As you land you find a fleet gathered in the spaceport and around it, what you estimate is about 4 cruisers, 3 carriers, and a huge amount of gunboats, rainmakers, drones, and fighters. You land and immediately an officer greets you.
-			`	"<last>, please prepare for launching at 0600 tomorrow morning. We have sent scouts to Kornephoros and they reported a mid-sized fleet there. Good luck!"`
+			`	As you land you find a fleet gathered in the spaceport and around it, what you estimate is about a dozen cruisers, a couple carriers, and a ridiculous amount of smaller ships and fighters. You land and immediately an officer greets you.`
+			`	"Captain! If you would follow me, Commodore Cruz wishes to see you in his briefing room."
+			`	You follow the officer, and soon find yourself seated in a room with several dozen officers. You can't help but notice that Hines is not present. Danforth must have put him on another assignment to prevent his participation in what is to come. After few minutes, you see Commodore Cruz take the podium in the front of the room.`
+			`	"Gentlemen," he says, "This is the moment. It has finally happened. War."`
+			`	"War is terrible, and I do not relish sacrificing lives for a supposed glory. There is little glory in war. Some of us may not survive the next few days. However, we must not dwell on that. We have a mission. We have honor to uphold. We have our comrades, in this room, their lives to uphold."
+			`	"Our mission is to get to the planet <destination>'s surface. There is a mid-sized defence fleet in orbit that we must evade. Once on the surface we will confront the planet authorities with the evidence that the Geminus Investigation has produced, and hopefully force a surrender of the system."`
+			`	"As I will be conducting the negotiations as per Parliament's orders, your goal is to hold off the defenders until I can get to the surface. My ship is the R.N.S. Victory. Any questions?"` 
+			choice
+				`	"No, sir!"`
+					goto no
+				`	"Sir, what is the evidence we have?"`
+			`	"Apparently the Free Worlds tested a nuke, with a similar signature as to the one used on Geminus, on the mining world of Clink."
+			`	This sparks gasps and remarks of anger in the assembled officers as they depart the room, and you head back to your ship to get some sleep.`
+				goto end
+			label no
+			`	The room quickly empties, as most (including yourself) wish to get back to their ships and rest for the upcoming battle.`
+			label end
+			`	Once on your ship, you lie down in your bunk, and wonder about what is soon to come...`
 				accept
-	on visit
-		dialog
-			`	You should take off and assist your comrades, as there are still active Free Worlds ships in orbit.`
-		
+			
 	on complete
 		event "navy captures kornephoros"
-		log "Successfully captured Kornephoros, a Free Worlds planet."
+		log "Successfully captured Kornephoros, a Free Worlds planet. Thankfully there wasn't much of a fight, as we showed them evidence of guilt on their part in terms of the Geminus bombing, and they immediately surrendered."
 		conversation
-			`You land on <planet> that has just been captured, and you see a group of Free Worlds members, and a Navy officer tells you one of them is named Katya Reynolds. He tells you she is the suspected perpetrator of the Geminus attack.`
-			choice
-				`	Katya Reynolds? Who's that?`
-					goto katya
-
-				`	Katya Reynolds? She should be put before a firing squad!`
-					goto squad
-
-				`	Katya Reynolds? Shouldn't she be on trial by now?`
-					goto trial
-
-			label katya
-			`	Katya Reynolds is a former member of Parliament who defected to the Free Worlds. She is about to be sent to Earth for her trial.`
-				goto next
-
-			label squad
-			`	The officer looks at you in disbelief. "We're not murderers, <first>! She will get her trial on Earth, just like everyone else.`
-				goto next
-
-			label trial
-			`	The officer looks at you in confusion. "That's where she's going, <last>, to Earth."`
-				goto next
-
-			label next
-			`	"She will be picked up later by Navy Intelligence. Anyhow, Lieutenant, you are needed for the next assignment. Go to Clark and figure out what to do next."`
-
-
+			`	With the Free Worlds fleet occupied, you and the R.N.S. Victory plunge through the atmosphere down to the island containing the government buildings. Shortly you touch down outside the capital and the Victory sends out a unit of Marines to secure the premises.`
+			`	There were few guards around, and most, when they saw themselves outnumbered, surrendured, but a few fought until they were brought down by marine stun blasts. Soon you enter the office of the governor, and Commodore Cruz puts down a datapad on the governor's desk.`
+			`	"Governor, here is the evidence. Nuclear blasts have a detectable signature. The Intelligence bureau has identified that the signature of the blast on Geminus matches the signature of a test site on your moon, Clink. Therefore, I request that you order a ceacefire, and surrender control of the system to the Republic."`
+			`	The governor stares at the datapad with his head in his hands. "Commodore, I can't believe this. Is what you say really true?"`
+			`	"It is, all of it," says Cruz. "I suggest you surrender control of the system before more lives are lost."`
+			`	Shaking his head, the governor complies. As soon as he gives the order, two Navy Intelligence operatives take him away.`
+	npc save
+		personality heroic escort disables target
+		government Republic
+		ship "Cruiser (Mark II)" "R.N.S. Victory"
 	npc
 		personality heroic escort disables
 		government Republic
@@ -1650,17 +2405,17 @@ mission "Seginus Gathering"
 			names "republic capital"
 			fighters "republic fighter"
 			variant
-				"Cruiser (Mark II)" 2
-				"Combat Drone" 8
-				"Frigate (Mark II)" 2
-				"Gunboat (Mark II)" 2
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 16
+				"Frigate (Mark II)" 4
+				"Gunboat (Mark II)" 8
 		fleet
 			names "republic capital"
 			fighters "republic fighter"
 			variant
-				"Cruiser (Heavy)" 2
-				"Combat Drone" 8
-				"Gunboat" 2
+				"Cruiser (Heavy)" 3
+				"Combat Drone" 12
+				"Gunboat" 4
 				"Frigate" 2
 				"Rainmaker" 2
 		fleet
@@ -1669,435 +2424,189 @@ mission "Seginus Gathering"
 			variant
 				"Carrier (Mark II)" 3
 				"Combat Drone" 18
-				"Lance" 12
-				
-
+				"Lance" 12	
 	npc evade
 		personality staying disables heroic
 		government "Free Worlds"
 		system Kornephoros
 		fleet
 			names "free worlds capital"
-			variant
+			variant 20
 				"Falcon" 8
 				"Osprey" 2
-			variant
+			variant 20
 				"Bastion" 6
 				"Argosy (Missile)" 8
-			variant
+			variant 20
 				"Argosy (Blaster)" 4
 				"Hawk" 20
 				"Hawk (Rocket)" 10
-			variant
-				"Sparrow" 40
+			variant 1
+				"Skein" 6
+				"Roost" 4
+				"Nest" 6
+				"Finch" 64
 		fleet
 			names "free worlds capital"
-				"Falcon" 8
+				"Falcon" 2
+				"Osprey" 6
+		fleet
+			names "free worlds capital"
+				"Falcon" 3
+				"Clipper" 7
+				"Hawk" 3
+				"Sparrow" 4
+				"Bastion" 2
+
+mission "Escort Intelligence Prisoners"
+	landing
+	source Deep
+	deadline
+	clearance
+	destination "Huginn Station"
+	to offer
+		has "Seginus Gathering: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`	Hours later, while bringing your ship back to the spaceport, you look at the control panel and see a notification of a message, probably from Commodore Cruz. Once you set down on the landing pad you read the message.`
+			`	[Captain <last>, because of your exemplary performance in the Battle of Kornephoros, and due to your background as a merchant captain, your next assignment is to escort a prisoner convoy to Huginn Station in the Deep, the location of Navy Intelligence's interrogation and prisoner facilities, by <deadline>. This convoy is incredibly important, and must be protected at all costs. There will be other escort ships, but although they amount to a sizeable fleet, do not in any way consider yourself safe. Good luck, and fare well.]
+			`		Sincerely,`
+			`			Commodore Cruz.`
+				accept
+	on enter "Tania Australis"
+		conversation
+			`Upon entering the system, your radar lights up with dozens of contacts. They seem to identify as Merchants, but have hostile beacons. As they begin to attack, you have no choice but to defend yourself...`
+	on complete
+		log "Was promoted again to Lieutenant Commander due to my performance at Kornephoros and in the convoy escort. I now have access to purchasing every navy ship, and a substantial salary. It's a wonder how I am managing to fly through the ranks like this. Also, I'm noting that I am now the same rank as Ranulf Hines..I wonder what may happen because of this..."
+		"reputation: Republic" += 10
+		"reputation: Free Worlds" = 500
+		"reputation: Escort" = 500
+		"salary: Navy" = 3000
+		set "license: Navy Carrier"
+		conversation
+			`	As you dock with the station, thankfully with the Auxiliary still intact, you recieve a message from Naval High Command: [Captain <last>, congratulations on successfully bringing back the Intelligence transport. In order to express our gratitude for completing such a sensitive mission, we are promoting you to the rank of Lieutenant Commander, with full access to the Navy shipyards. You will be temporarily reassigned to the Navy Intelligence branch to work on a new research project based on Luna. Please report there promptly. Thank you.]
+	npc evade
+		personality staying disables heroic
+		government "Free Worlds Sympathiser"
+		system "Tania Australis"
+		fleet
+			names "merchant"
+			variant 200
+				"Falcon" 5
+				"Skein"
+				"Finch" 14
+				"Roost" 2
+			variant 200
+				"Falcon" 1
 				"Osprey" 3
-				"Sparrow" 20
-
-
-event "navy captures kornephoros"
-	system "Kornephoros"
-		government "Republic"
-		fleet "Small Southern Merchants" 1200
-		fleet "Large Southern Merchants" 1400
-		fleet "Small Republic" 300
-		fleet "Large Republic" 500
-		fleet "Navy Surveillance" 800
-	system "Sabik"
-		fleet "Small Southern Merchants" 800
-		fleet "Large Southern Merchants" 1000
-		fleet "Small Free Worlds" 400
-		fleet "Large Free Worlds" 600
-	planet "Clink"
-		description `The mining outpost is swarming with Navy guards; they seem to have turned this moon into a temporary base of operations. The mine has been shut down, and no one is being allowed in or out of the mining outpost. It is not clear whether the miners are prisoners, or merely under a very tight watch.`
-		security 1
-	planet "Deep"
-		spaceport `The spaceport is built on a large island, a now-extinct volcano with an elevation of several kilometers at its center. Most of the large-scale fishing here is done by a single company, Poseidon Industries, who also built and maintain the spaceport. Steep winding roads and sturdy cement homes and warehouses line the mountain slopes, and below you in the harbor several massive trawling vessels are moored. On the outskirts of the spaceport are the ramshackle houses and open-air marketplace used by the smaller, independent fishing families.`
-		spaceport `	There are hundreds of Navy officers patrolling this small spaceport, looking for any signs of local resistance.`
-		security 1
-	
-
-
+				"Clipper" 2
+				"Bastion (Heavy)" 2
+				"Skein" 2
+				"Finch" 24
+				"Roost" 2
+				"Nest" 2
+			variant 200
+				"Bastion" 6
+				"Argosy (Missile)" 8
+				"Nest" 4
+				"Finch" 8
+			variant 200
+				"Argosy (Blaster)" 4
+				"Hawk" 8
+				"Hawk (Rocket)" 4
+				"Skein" 3
+				"Roost" 2
+				"Nest" 4
+				"Finch" 34
+			variant 200
+				"Skein" 4
+				"Roost" 8
+				"Nest" 10
+				"Finch" 76
+	npc accompany save
+		government "Navy Intelligence"
+		personality escort timid
+		fleet
+			names "republic" "capital"
+			variant
+				"Auxiliary (Transport)" 1			
+	npc
+		personality heroic escort
+		government Republic
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 28
+				"Frigate (Mark II)" 7
+				"Gunboat (Mark II)" 9
+				"Rainmaker (Mark II)" 8
+				"Carrier (Mark II)" 2
+				"Lance" 8
+government "Free Worlds Sympathiser"
+	"display name" "Merchant"
+	swizzle 5
+	"player reputation" -100
+	"fine" 0
+	"friendly hail" "friendly free worlds"
+	"hostile hail" "hostile free worlds"
+	"attitude toward"
+		"Republic" -100
 
 event "start of hostilities(NAVY)"
 	government "Republic"
 		"attitude toward"
 			"Free Worlds" -.2
-			"Merchant" .01
-			"Pirate" -.01
 	government "Free Worlds"
 		"attitude toward"
 			"Republic" -.2
 	"reputation: Free Worlds" <?= -10
 
-
-mission "Report back to Seginus"
+mission "NavyIntel [0]"
+	name "Report to Navy Intelligence"
+	description "Report to a Navy Intelligence base on Mars
 	landing
-	source Deep
-	destination Clark
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	to offer
-		has "Seginus Gathering: done"
-	on offer
-		log "Visited Clark to find out my next assignment."
-	on complete
-		event "oathkeepers founded"
-		conversation
-			`You land on <planet> and immediately <ship>'s communicator buzzes. "<first> <last>? <first> <last>? You there?"
-			choice
-				`Yes, who is this?`
-
-			`"It's Commodore Cruz. <first>, you are needed on Earth. You have a promotion apparently and several other things to do.`
-				accept
-
-mission "Go to Earth"
-	landing
-	source Clark
-	deadline
-	destination Earth
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	to offer
-		has "Report back to Seginus: done"
-	on complete
-		log "Received another promotion to the rank of 'Captain'."
-		conversation
-			`Lieutenant <last>, welcome back! For your assistance with Kornephoros, you shall receive a salary raise and a promotion to the rank of 'Captain'. Congratulations!`
-			`Please meet Commodore Cruz on Luna for your next assignment.`
-		"salary: Navy = 5000"
-
-mission "Next Assignment"
-	landing
-	source Earth
+	source "Huginn Station"
 	destination Luna
+	to offer
+		has "Escort Intelligence Prisoners: done"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	to offer
-		has "Go to Earth: offered"
 	on complete
-		log "Was sent back to Admiral Danforth for more work in the North."
+		event "recapture of Kornephoros"
+		event "temporary ceasefire"
+		event "start of hostilities" 8
+		event "oathkeepers founded navy pov" 50
 		conversation
-			`Captain <last>, you are being reassigned back to Admiral Danforth, to help suppress the northern pirates.`
-			choice
-				`	Yes sir!`
-					accept
-				`	But why can't I fight in the south?`
-					goto no
-				label no
-				`	"<last>, when you are given an order you are expected to obey it. Go to Admiral Danforth."`
-			choice
-				`	Yes sir!`
-					accept
-				`	You know what, no. Screw this, I quit.
-					goto badboy
-				label badboy
-				`	"So be it."`
-						"reputation: Republic" <?= -100
-						fail
+			`As you are landing you notice a news report stating that the Navy attacked the Free Worlds system Sabik, but was repulsed. This was followed by a swift counterattack on Kornephoros leading to its recapture by the Free Worlds. Many Navy personnel were captured, but the Free Worlds decided to give anyone who swore an oath to abstain from the war parole, and so a ceasefire lasting for around a week was negotiated to give the Free Worlds time to transport the prisoners to Republic space.`
+			``
+			`	Your communicator lights up with a notification from Naval Command:`
+			`	[Lieutenant Commander <last>, ]
 
 
-mission "Head back to Danforth"
-	name "Go to Admiral Danforth"
+
+
+event "oathkeepers founded navy pov"
+
+mission "oathkeepers founded [navy]"
 	landing
-	source Luna
-	destination Farpoint
 	to offer
-		has "Next Assignment: done"
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on complete
-		event "chosen sides"
+		has "event: oathkeepers founded navy pov"
+	source
+		government "Republic"
+	on offer
 		log "Factions" "Oathkeepers" `The "Oathkeepers" are a regiment of Navy officers who were captured by the Free Worlds and paroled on the condition that they take no further part in fighting against the Free Worlds. Led by none other than Admiral William Danforth, himself, their "official" mission is to protect the Paradise Worlds from the pirates who live on the anarchist worlds in the far north of human space. Unofficially, however, Danforth and the Oathkeepers are using their new position to investigate the bombings of Geminus and Martini.`
 		log "People" "William Danforth" `Due to recent events in the South, Danforth has been placed in charge of the Navy regiment who call themselves the "Oathkeepers."`
 		conversation
-			`As you are landing, Admiral Danforth contacts you: "Captain <last>, please meet me in the spaceport, you have an assignment."`
-			choice
-				`Yes sir!`
+			`When you land on <origin>, it seems that everyone in the spaceport is talking about a recent news story: the Navy has just announced the formation of a new regiment, called the Oathkeepers. This regiment is staffed mostly by prisoners paroled from Kornephoros, who want to honor their oath to take no further part in the conflict against the Free Worlds. They will be headquartered on Farpoint, in the far north, to defend that region of space against pirate incursions.`
+			`	Furthermore, the leader of the Oathkeepers will be Admiral Danforth, your good friend. Although he was not one of the paroled prisoners, he has become an outspoken advocate for a diplomatic solution to the Free Worlds conflict.`
+			`	It's heartening news, but you also can't help noticing how many people in the spaceport are talking now about how the Free Worlds might actually be full of "decent" and "honorable" people, and it's a shame that the Navy has to fight them. By responding to the Free Worlds' generous gesture with one of their own, the Navy has won a definite political victory, and given that they needed to defend the North anyway, it is a victory that cost them very little.`
 
 
 
-mission "Moooooore pirate surveillance [0]"
-	name "Pirate Surveillance"
-	source Farpoint
-	destination Farpoint
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	to offer
-		has "Head back to Danforth: done"
-	on offer
-		log "Was sent on another pirate recon mission."
-		conversation
-			`You meet Admiral Danforth, and he says: "Captain <last>, as there have been reports of increased pirate activity, please fly through the systems that are marked on your map, then report back here. Oh, and by the way, you're probably going to be reassigned soon. The Free Worlds got together a massive fleet and took most of the southern systems, even getting close to Sol.`
-		event "FREEWORLDSEXPANSION"
-
-
-
-
-
-event "FREEWORLDSEXPANSION"
-	government "Republic"
-		"attitude toward"
-			"Free Worlds" -.2
-			"Merchant" .01
-			"Pirate" -.01
-	government "Free Worlds"
-		"attitude toward"
-			"Republic" -.2
-	"reputation: Free Worlds" = -100
-	system "Kornephoros"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Wei"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Alnasl"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Eber"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Alpha Arae"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Rastaban"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Girtab"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Albaldah"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Lurata"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Albireo"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Tarazed"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Umbral"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Dabih"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Kaus Australis"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Eltanin"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Delta Sagittarii"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Seginus"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Alphecca"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Alioth"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Kaus Borealis"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Boral"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Naper"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Ascella"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Tais"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Peacock"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Orvala"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Zeta Aquilae"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Rasalhague"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Cebalrai"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Hintar"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Rutilicus"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Holeb"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Vindemiatrix"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Sarin"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Muhlifain"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Arcturus"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Gacrux"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Cor Caroli"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Mizar"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-	system "Ipsing"
-		government "Free Worlds"
-		fleet "Small Free Worlds" 800
-		fleet "Large Free Worlds" 1100
-
-
-
-
-mission "Moooooore pirate surveillance [1]"
-	name "Pirate Surveillance"
-	source Farpoint
-	destination Farpoint
-	waypoint Mintaka
-	waypoint Gorvi
-	waypoint Tortor
-	waypoint Almaaz
-	waypoint Unagi
-	waypoint Hatysa
-	waypoint Alnilam
-	waypoint Arneb
-	landing
-	to offer
-		has "Head back to Danforth: done"
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on complete
-		event "dreadnoughts for sale"
-		event "dreadnought deployment"
-		payment 1500000
-		conversation
-			`You meet Admiral Danforth and give him your sensor logs. He gives you <payment>, and tells you to report to Silver in the Vega system.`
-
-mission "Moooooore pirate surveillance [2]"
-	name "Report to Vega for attack fleet"
-	source Farpoint
-	destination Silver
-	landing
-	to offer
-		has "Moooooore pirate surveillance [1]: done"
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on offer
-		log "Was sent to Vega for an attack fleet to retaliate against the Free Worlds."
-
-
-mission "DONATIONS"
-	"Pick up donations"
-	source Silver
-	destination Silver
-	landing
-	to offer
-		has "Moooooore pirate surveillance [2]: offered"
-	on fail
-		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
-	on offer
-		log "Picking up some more donations because there is such a hard set of battles lying ahead."
-		conversation
-			`You land on <planet> and see a massive Navy fleet. Then you realize that you are probably going to have to liberate the entire Republic territory with this fleet. When you meet up with a Navy officer and he tells you that there is a large donation for you. Go to the  spaceport for instructions.
-		give ship "Cruiser (Mark II)(empty)" ""
-		give ship "Cruiser (Mark II)(empty)" ""
-		give ship "Carrier (Mark II)(empty)" ""
-		give ship "Lance (empty)" ""
-		give ship "Lance (empty)" ""
-		give ship "Lance (empty)" ""
-		give ship "Lance (empty)" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-		give ship "Combat Drone" ""
-				accept
-
-
-ship "Lance" "Lance(empty)"
-	outfits
-		"Sidewinder Missile Launcher" 2
-		"Sidewinder Missile" 45
-		Supercapacitor
-		"nGVF-BB Fuel Cell"
-		"D14-RN Shield Generator"
-		"X1700 Ion Thruster"
-		"X1200 Ion Steering"
-
-
-		event "dreadnoughts for sale"
-		event "dreadnought deployment"
 
 mission "ATTACK [0]"
 	name "Assault on the Free Worlds"
@@ -2476,10 +2985,9 @@ mission "ATTACK [7]"
 			`"Captain <last>, well done on securing a foothold in Free Worlds territory. As much as we would like to capitalize on our gains, there are some other matters we need to attend to."`
 			`	"Why? What's wrong?" you ask, confused.`
 			`	"Have a look at this."`
-			``
 			`Your primary display changes to show a newsreel of several Syndicate ships in orbit above Earth. On many of the ships, your eyes are drawn to launchers that are several times the size of any missile or rocket launcher - even torpedo tubes wouldn't come close to that size.`
 			`	"Yesterday, a Syndicate fleet appeared in orbit above Earth - it wasn't long before we determined that the ships were armed with multiple nuclear warheads, and began issuing demands.`
-			`	(Wait...armed with WHAT?!) you think to yourself.`
+			`	(Wait...armed with nukes?!) you think to yourself.`
 			`Suddenly, new ships materialize out of nowhere in a haze of bluish particles and surround the Syndicate ships. The new ships are almost organic in their designs - the best description you can give likens them to yellow-colored coral. "Only a few hours after the fleet's arrival, the fleet of unknown alien design you see appeared, apparently using hyperdrives like those possessed by the Quarg. And as soon as they arrived..."`
 			`Right as Cruz narrates, the unknown ships open fire on the Syndicate fleet with their weapons, and reduce the Syndicate ships to little more than drifting hulks. And as swiftly as they appeared, the unknown ships vanish, and the feed goes dead.`
 			``
