@@ -1,2 +1,0 @@
-# Irm
-> Explore a curiosity of a long gone and mysterious species in this intwined story of adventure and vision. Familiar friends will capitalise on what remains in the midst of noble opportunity, as the player you will find yourself to be relied on by unassuming forces.
