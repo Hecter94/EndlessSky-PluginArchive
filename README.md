@@ -61,7 +61,7 @@ Provide a direct link to your zipped plugin to enable automatic updating.<br>
 
 # Introduction
 
-A comprehensive library of 551 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 540 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -215,10 +215,10 @@ To keep these files related, you must give them the same name.
 
 # Plugin Download
 
-All Plugins (551)
+All Plugins (540)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats) (35) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay) (41) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics) (23) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits) (44)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls) (47) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites) (5) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (137) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (31)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races) (62)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (136) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (28)<br>
 
 

@@ -4357,7 +4357,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Overhauls
 
-<p>47 plugins in this category.<p>
+<p>46 plugins in this category.<p>
 
 <details>
 
@@ -4512,29 +4512,6 @@ The "images/ship" folder contains many ships that have been yet to be added to t
 
 Status: unfinished but playable <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
-### AES Slow Ships
-
-
-[AES.Slow.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Slow.Ships.zip) | 3.73 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Slow%20Ships/) <br>
-Author: Darcy Manoel | Category: Overhauls <br>
-N/A[]()  <br>
-
->Changes ships and outfits stats to make them slower
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Abandoned
-
-</blockquote>
-</details>
-
-Status: Abandoned <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -5991,29 +5968,11 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Overwrites
 
-<p>5 plugins in this category.<p>
+<p>4 plugins in this category.<p>
 
 <details>
 
  
-
----
-
-### AES No Asteroids
-
-
-[AES.No.Asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Asteroids.zip) | 237.25 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Asteroids/) <br>
-Author: Darcy Manoel | Category: Overwrites <br>
-[https://github.com/DarcyManoel/Fluff](https://github.com/DarcyManoel/Fluff) (last commit 2023-09-30) <br>
-
->Overwrites asteroid images with empty images.
->
-
-
-
-Status: Merged into Fluff <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
 
 ---
 
@@ -6192,7 +6151,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Races
 
-<p>67 plugins in this category.<p>
+<p>62 plugins in this category.<p>
 
 <details>
 
@@ -6228,30 +6187,6 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
-### AES Aben
-
-
-[AES.Aben.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Aben.zip) | 31.94 kb | 2023-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Aben/) <br>
-Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Aben](https://github.com/Adde-Endless-Sky-Mods/Aben) (last commit 2023-09-17) <br>
-
->New aliens that are incapable of spaceflight as far as the player is concerned, offers the player multiple missions in aiding the Aben which also benefit the player in turn.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Aben
-> Beyond the reaches of ordinary space-faring civilizations lies the cluster of systems afforded to the Aben, though they have yet to lay claim to the greater selection of worlds available to them. Impressive technological advancement contrasts the clear non-expansionist nature of the Aben, they believe in cooperation between all life and rarely show signs of hostility.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
 ### AES Fallen
 <img src='Working/AES Fallen/icon.png' height='100'></img><br>
 
@@ -6267,102 +6202,6 @@ N/A[]()  <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Adde Fallen
 > Inspired by an old and unfortunately unfinished fan favourite plugin that offered truly unique content. While this might not mimic the original in design, hopefully it can stoke a similarly unique experience.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
-
----
-
-### AES Irm
-
-
-[AES.Irm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Irm.zip) | 2.12 mb | 2023-09-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Irm/) <br>
-Author: Darcy Manoel | Category: Races <br>
-[https://github.com/Adde-Endless-Sky-Mods/Irm](https://github.com/Adde-Endless-Sky-Mods/Irm) (last commit 2023-09-30) <br>
-
->New aliens to the north of human space that can only be described as technocratic isolationists. They will not begin or turn hostile towards the player under normal circumstances, but you would be one unlucky pilot if you were to find yourself on bad terms with the Irm.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Irm
-> Explore a curiosity of a long gone and mysterious species in this intwined story of adventure and vision. Familiar friends will capitalise on what remains in the midst of noble opportunity, as the player you will find yourself to be relied on by unassuming forces.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
-
----
-
-### AES Korath
-
-
-[AES.Korath.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Korath.zip) | 2.97 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Korath/) <br>
-Author: Darcy Manoel | Category: Races <br>
-N/A[]()  <br>
-
->A collection of changes and additions to Endless Sky regarding the fallen empire: The Korath.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Merged into `Fluff`
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
-
----
-
-### AES Misc
-<img src='Working/AES Misc/icon.png' height='100'></img><br>
-
-
-[AES.Misc.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Misc.zip) | 16.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Misc/) <br>
-Author: Darcy Manoel | Category: Races <br>
-N/A[]()  <br>
-
->Any Adde content that doesn't fit in another or deserve it's own repository. This includes many new outfits and ships for various aspects of the vanilla game, even new missions here and there.
->
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Adde Misc
-> Any Adde content that doesn't fit in another or deserve it's own repository. This includes many new outfits and ships for various aspects of the vanilla game, even new missions here and there.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
-
----
-
-### AES Quarg
-
-
-[AES.Quarg.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Quarg.zip) | 7.44 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Quarg/) <br>
-Author: Darcy Manoel | Category: Races <br>
-N/A[]()  <br>
-
->A collection of changes and additions to Endless Sky regarding the advanced alien species: The Quarg.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Merged into `Fluff`
 
 </blockquote>
 </details>
@@ -8093,34 +7932,11 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Ships
 
-<p>137 plugins in this category.<p>
+<p>136 plugins in this category.<p>
 
 <details>
 
  
-
----
-
-### AES Fluff
-
-
-[AES.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Fluff.zip) | 5.88 mb | 2023-09-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Fluff/) <br>
-Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff) (last commit 2023-09-30) <br>
-
->As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Fluff
-> As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
-
 
 ---
 
@@ -14682,80 +14498,11 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>31 plugins in this category.<p>
+<p>28 plugins in this category.<p>
 
 <details>
 
  
-
----
-
-### AES Boarding Ease
-
-
-[AES.Boarding.Ease.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Boarding.Ease.zip) | 0.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Boarding%20Ease/) <br>
-Author: Darcy Manoel | Category: N/A <br>
-N/A[]()  <br>
-
->Reduces automata self destruction chance, adds self destruction chance to marauder pirates and some korath exiles.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Abandoned
-
-</blockquote>
-</details>
-
-Status: Abandoned <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
-
----
-
-### AES Human Fluff
-
-
-[AES.Human.Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.Human.Fluff.zip) | 946.82 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20Human%20Fluff/) <br>
-Author: N/A | Category: Uncategorized <br>
-N/A[]()  <br>
-
->N/A
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Merged into `Fluff`
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
-
----
-
-### AES No Pleiades
-
-
-[AES.No.Pleiades.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AES.No.Pleiades.zip) | 1.38 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AES%20No%20Pleiades/) <br>
-Author: Darcy Manoel | Category: N/A <br>
-N/A[]()  <br>
-
->N/A
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Merged into `Fluff`
-
-</blockquote>
-</details>
-
-Status: Merged into AES Fluff <br>
-Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
-
 
 ---
 
