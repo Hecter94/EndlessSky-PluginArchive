@@ -6397,9 +6397,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.6 mb | 2023-10-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.93 mb | 2023-10-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-10-12) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-10-16) <br>
 
 >Adds a faction (or 2) that supplies real life fighters and other interesting stuff.
 >
@@ -6407,6 +6407,7 @@ Author: Spectre907YT | Category: Races <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Arion - Air Superiority
+
 An Endless Sky plugin that adds a variety of things to endless sky, including: 
 
 - Real life fighters
@@ -6425,7 +6426,7 @@ An Endless Sky plugin that adds a variety of things to endless sky, including:
   
 - Superweapons
   
-- Custom ships
+- Custom capital ships
   
 - Some new missions and jobs
   
@@ -6435,7 +6436,7 @@ To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne
 
 There are also some bonus content if you have the midnight, mega freight, czartraks ships or navycampaign plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
-(Special thanks to 1010todd and yuyuko_saigyouji. from the Endless Sky discord server for letting me borrow some sprites)
+(Special thanks to 1010todd, yuyuko_saigyouji. and gefulltetaubenbrust from the Endless Sky discord server for letting me borrow some sprites)
 
 </blockquote>
 </details>
