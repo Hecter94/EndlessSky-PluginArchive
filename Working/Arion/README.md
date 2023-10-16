@@ -1,4 +1,5 @@
 # Arion - Air Superiority
+
 An Endless Sky plugin that adds a variety of things to endless sky, including: 
 
 - Real life fighters
@@ -17,7 +18,7 @@ An Endless Sky plugin that adds a variety of things to endless sky, including:
   
 - Superweapons
   
-- Custom ships
+- Custom capital ships
   
 - Some new missions and jobs
   
@@ -27,4 +28,4 @@ To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne
 
 There are also some bonus content if you have the midnight, mega freight, czartraks ships or navycampaign plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
-(Special thanks to 1010todd and yuyuko_saigyouji. from the Endless Sky discord server for letting me borrow some sprites)
+(Special thanks to 1010todd, yuyuko_saigyouji. and gefulltetaubenbrust from the Endless Sky discord server for letting me borrow some sprites)
