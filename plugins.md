@@ -13377,9 +13377,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Syndicate Story/icon.png' height='100'></img><br>
 
 
-[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 285.84 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Story/) <br>
+[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 284.75 kb | 2023-10-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Story/) <br>
 Author: leklachu | Category: Story <br>
-[https://github.com/leklachu/endless-sky-syndicate](https://github.com/leklachu/endless-sky-syndicate) (last commit 2023-02-06) <br>
+[https://github.com/leklachu/endless-sky-syndicate](https://github.com/leklachu/endless-sky-syndicate) (last commit 2023-10-18) <br>
 
 >This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
 >
@@ -14806,27 +14806,9 @@ Author: virmitio | Category: N/A <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>## Intent:
+<blockquote>This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
 
-Performing the below actions should result in a working directory `<work_dir>` which will permit the map editor and game to both correctly load the plugin while still keeping the plugin repository safely seperated from the root game data.
-
-### Assumptions:
-   - The repo was simply cloned to `%appdata%\endless-sky\plugins\ES_ExpandedTerritory`
-   - that steam is installed to the default location `%ProgramFiles(x86)%\Steam`
-   - that Endless Sky is installed to the default install location set by steam (`<steam_dir>\steamapps\common\...`)
-
-### Commands:
-```
-cd <work_dir>
-mklink /J data "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\data"
-mklink /J images "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink /J repo "%appdata%\endless-sky\plugins\ES_ExpandedTerritory"
-
-cd "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink es_et "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\images\es_et"
-```
-
-When opening in the map editor, please open files by way of the `<work_dir>\data` directory tree.
+At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
 
 </blockquote>
 </details>
