@@ -113,7 +113,7 @@ planet "Canaveral Naval Yard"
 	description `To further advance the Republic Navy and secure humanity's future, the government is building a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion.`
 	spaceport `The spaceport have few basic accommodations, mostly as resting area for construction workers.`
 	security .8
-
+#Random note: based on calculations a complete ring would have 3556 docks which means up to 3556 superheavies can be built concurrently at a time.
 event "mgf: canaveral naval yard 50 trigger"
 
 mission `MGF: Canaveral Naval Yard 50 Early`
@@ -822,17 +822,91 @@ event "mgf: canaveral naval yard expansion 1 done"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v5 50"
+				sprite "planet/canaveral naval yard v2"
 				distance 150.24
 				period 27.3
 	planet "Canaveral Naval Yard"
-		landscape land/space0
 		attributes station
-		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is very heavily armed with countless of artillery turrets and advanced anti-missile system spread across the surface. There's also always a fleet carrier in nearby orbit, always within clear visual range.`
-		description `The shipyard was recently expanded with 4 additional building docks for additional construction capacity giving the Navy more capacity to build the large superheavy warships in times of need. When not building a superheavy vessel each of these building docks can handle up to a dozen ship construction in parallel.`
-		spaceport `With the recent expansion the spaceport is now larger and contain more facilites almost comparable to urban planets.`
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
+		description `The shipyard was recently expanded with 4 additional building docks giving the Navy more capacity to build the large superheavy warships in times of need. When not building a superheavy vessel each of these building docks can handle up to a dozen ship construction in parallel.`
+		spaceport `With the recent expansion the spaceport is now larger and contain more facilites, almost comparable to urban planets.`
 
+mission "MGF: Canaveral Naval Yard expansion 2"
+	landing
+	invisible
+	to offer
+		has "event: mgf: Grose Bochse development"
+	on offer
+		event "mgf: canaveral naval yard expansion 2 begin" 1440 #~4 years
+		event "mgf: canaveral naval yard expansion 2 auto" 2180 #~6 years
+	on accept
+		fail
 
+event "mgf: canaveral naval yard expansion 2 begin"
+	system Sol
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard v2"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard v3 50"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		attributes station
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
+		description `The shipyard is currently undergoing another expansion to increase the amount of docks available.`
+
+event "mgf: canaveral naval yard expansion 2 auto"
+
+mission "MGF: Canaveral Naval Yard Expansion 2 Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: canaveral naval yard expansion 2 auto"
+	on offer
+		event "mgf: canaveral naval yard expansion 2 done"
+	on accept
+		fail
+
+event "mgf: canaveral naval yard expansion 2 done"
+	system Sol
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard v3 50"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/canaveral naval yard v3"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		attributes station
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
+		description `The naval yard was recently expanded with additional docks. Unlike older docks which were exclusively constructing only Republic Navy ships, these new docks are open to orders from the public building several civilian ships of various role and size. When not building a superheavy vessel each of these building docks can handle up to a dozen ship construction in parallel.`
+		spaceport `With the recent expansion the spaceport is now larger and contain more facilites to accomodate larger amount of workers and visitors. From quick look the amount of stores and restaurant is almost comparable to an urban spaceport.`
+		add shipyard "Betelgeuse Basic"
+		add shipyard "Betelgeuse Advanced"
+		add shipyard "Thyrupp AG Advanced"
+		add shipyard "Vessa Shipworks Advanced"
+		add shipyard "Freight Galactic Advanced"
+		add outfitter "Ammo North"
+		add outfitter "Syndicate Basic"
+		add outfitter "Deep Sky Basic"
+		add outfitter "Lovelace Basic"
+		add outfitter "Lovelace Advanced"
+#random note, assuming ratio of cargo ship to population is the same ES with population of 1 trillion would have around 1.888 million cargo ships (half of which would be bigger and more capacious than ES vanilla freighters..)
 mission "MGF: Ranseur Class Development"
 	landing
 	invisible
@@ -1722,6 +1796,167 @@ mission "MGF: Espion: Neodymium at Delta Velorum"
 		conversation
 			`The ground crew unloads 15 tons of the material and pays you <payment>. You bid farewell to the other captains and head on your own way.`
 			
+mission "MGF: Espion: Titanite Station Construction Begin"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+	on offer
+		event "mgf: espion: titanite station begin" 720 #2yrs
+		event "mgf: espion: titanite station done" 1084 #done in 3yrs
+	on accept
+		fail
+
+planet "EB-14A Titanite Station"
+	attributes station south #factory "mgf: large refinery station"
+	landscape `land/loc0`
+	music ambient/mgf_oil_refinery
+	description `Titanite Station is a cooperation project between the Free Worlds and Espion Mining Co. to construct another major supplier of refined metal in the south as part of the Free Worlds effort to be less reliant on the Republic and create more job opportunities for their population.`
+	description `The station is currently underconstruction .`
+	spaceport `Unlike some other refinery stations the visitor port of this station is sizeable and rather fancy for an industrial station.`
+	bribe 0.15
+	security 0.5
+	shipyard "Espion Basic"
+	shipyard "Espion Advanced"
+	outfitter "Espion Basic"
+	outfitter "Espion Advanced"
+	tribute 1420
+		threshold 7500
+		fleet "Small Espion Guard" 14
+		fleet "Large Espion Guard" 8
+
+planet "MGF: Fake Sundrinker"
+	attributes "requires: unlandable" "requires: oisdjfsn"
+	description `If you can land here it is a bug.`
+
+event "mgf: espion: titanite station begin"
+	system "Dschubba"
+		#Use fake planet so we can modify the moon/station that orbits it without touching the planet itself.
+		#Else there's no way to access just the moon.
+		add object "MGF: Fake Sundrinker"
+			distance 412.314
+			period 149.024
+			object "EB-14A Titanite Station"
+				sprite "planet/mgf titanite station 50"
+				distance 150.24
+				period 31.52
+
+mission "MGF: Espion: Titanite Station Completion Accelerated"
+	landing
+	invisible
+	to offer
+		"mgf: titanite construction assist" >= 12
+		has "event: espion: titanite station begin"
+	on offer
+		event "mgf: espion: titanite station done" 14
+	on accept
+		fail
+
+event "mgf: espion: titanite station done"
+	system "Dschubba"
+		remove object "MGF: Fake Sundrinker"
+			distance 412.314
+			period 149.024
+			object "EB-14A Titanite Station"
+				sprite "planet/mgf titanite station 50"
+				distance 150.24
+				period 31.52
+		add object "MGF: Fake Sundrinker"
+			distance 412.314
+			period 149.024
+			object "EB-14A Titanite Station"
+				sprite "planet/mgf titanite station"
+				distance 150.24
+				period 31.52
+		planet "EB-14A Titanite Station"
+			add attributes factory "mgf: large refinery station"
+			description `Titanite Station is a cooperation project between the Free Worlds and Espion Mining Co. to construct another major supplier of refined metal in the south as part of the Free Worlds effort to be less reliant on the Republic and create more job opportunities for their population.`
+			description `With the station completed, it now supplies vast amount of materials to nearby industries and create vast amount of jobs for the local population both directly and indirectly.`
+
+#=========================Ship retrofit/upgrade/switch
+#Upgrading Falcon -> Aplomado/Eleonare, etc.
+
+#EXPERIMENTAL.
+mission "MGF: Aplomado Conversion Offer"
+	landing
+	name "Aplomado Conversion"
+	description	`You've accepted a deal to pay 6,000,000 credits to convert your Falcon into an Aplomado. Go to the spaceport to complete the deal. Make sure to remove any unique outfit you want to keep before doing so.`
+	source
+		planet "Greenrock"
+		government "Pirate" "South Pirate" "Pirate (South)"
+	to offer
+		"reputation: Pirate" >= 400
+		"credits" > 8250000 #abit more so you can buy a Scrapper to fly around I guess.
+		has "ship model: Falcon"
+		random < 10
+	on offer
+		conversation
+			`A you leave your ship you see what appears to be heavily modified Falcon commonly called Aplomado by the priates taking off from a hangar nearby. Fast, high capacity, and durable, one of these would make smuggling across the entire Republic space a breeze. It's many smuggler's dream ship.`
+			`	You look back at the hangar and noticed a mechanic walking towards you.`
+			`	"Interested?" He asked, "I could make yours into the same thing as that one." he says looking at your Tarazed Falcon parked behind you.`
+			`	"Just 8 mil and leave her with us for half a year." he says.`
+			choice
+				`	(Accept, Convert your Falcon into an Aplomado.)`
+				`	(Later.)`
+					defer
+				`	(Never.)`
+					decline
+			`	"Good. Take your stuffs out then come back to the port in an hour." He says and walk back to the hangar.`
+				accept
+
+mission "MGF: Aplomado Conversion"
+	name "Aplomado Conversion"
+	description `You left your Falcon at <origin> to be converted into an Aplomado. It should be done by <date>.`
+	deadline 182
+	source
+		planet "Greenrock"
+		government "Pirate" "South Pirate" "Pirate (South)"
+	to offer
+		"reputation: Pirate" >= 400
+		"credits" > 8250000
+		has "ship model: Falcon"
+		has "MGF: Aplomado Conversion Offer: offered"
+		not "MGF: Aplomado Conversion Offer: done"
+		not "MGF: Aplomado Conversion Offer: declined"
+	on offer
+		payment 8000000
+		take ship "Falcon"
+		event "MGF: Aplomado Conversion Timer" 180
+		conversation
+			`You meet with the mechanic at the spaceport as arranged and pay him 6 Million credits for the conversion. He say he'll send you a message when the work is done.`
+				accept
+
+event "MGF: Aplomado Conversion Timer"
+
+mission "MGF: Aplomado Conversion Done Notif"
+	landing
+	name "Aplomado Conversion Notif"
+	source
+		near "Sol" 200
+	to offer
+		has "event: MGF: Aplomado Conversion Timer"
+	on offer
+		conversation
+			scene "thumbnail/mgf aplomado" #todo proper scene
+			`Upon landing you received a message, it's from the mechanic on Greenrock telling you that the conversion is done. He also attached a picture of your new ship. Time to go to Greenrock to pick it up.`
+				decline
+
+mission "MGF: Aplomado Conversion Done"
+	landing
+	source "Greenrock"
+	to offer
+		has "event: MGF: Aplomado Conversion Timer"
+	on offer
+		give ship "Aplomado"
+			id "mgf: converted aplomado"
+		fail "MGF: Aplomado Conversion"
+		conversation
+			`You arrived at the hangar where your Aplomado is parked. After some quick inspection the ship quality looks rather good, for pirate standard. The mechanic ensured that they've done this dozens of times already and they have tested flying into space already and everything should work fine.`
+			`	You accepted the ship and fly it to an empty landing pad.`
+				decline
+
+#=========================SYNDICATE
+
 mission "MGF: Syndi Platinum License Upkeep"
 	landing
 	invisible
