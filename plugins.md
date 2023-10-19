@@ -9408,9 +9408,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 133.82 mb | 2023-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 134.02 mb | 2023-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-08-20) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-10-19) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -12114,7 +12114,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Kraz.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Expanded.zip) | 6.54 mb | 2023-08-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Expanded/) <br>
 Author: Oskatel | Category: Story <br>
-[https://github.com/Oskatel/Kraz-Expanded](https://github.com/Oskatel/Kraz-Expanded) (last commit 2023-08-12) <br>
+[https://github.com/Oskatel/Kraz-Expanded](https://github.com/Oskatel/Kraz-Expanded)  <br>
 
 >This plugin continues the story of Kraz Cybernetics. Including new alien race, outfits and ships.
 
