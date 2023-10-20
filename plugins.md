@@ -12114,9 +12114,10 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Kraz.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kraz.Expanded.zip) | 6.54 mb | 2023-08-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kraz%20Expanded/) <br>
 Author: Oskatel | Category: Story <br>
-[https://github.com/Oskatel/Kraz-Expanded](https://github.com/Oskatel/Kraz-Expanded)  <br>
+N/A[]()  <br>
 
 >This plugin continues the story of Kraz Cybernetics. Including new alien race, outfits and ships.
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
@@ -12129,7 +12130,7 @@ Discord Server: https://discord.gg/c4S3UsrAaK
 </details>
 
 Status: Work in Progress <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -12347,9 +12348,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.67 mb | 2023-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 61.67 mb | 2023-10-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-10-11) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2023-10-20) <br>
 
 >A mission focused plugin for Endless Sky.
 >
