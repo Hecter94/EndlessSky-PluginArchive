@@ -2806,9 +2806,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 558.13 mb | 2023-09-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 557.92 mb | 2023-10-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-09-30) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-10-21) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -9408,9 +9408,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 134.02 mb | 2023-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 134.02 mb | 2023-10-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-10-19) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2023-10-21) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -9441,19 +9441,20 @@ And other things:
 * Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, etc.)
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
+* Just a lot more jobs which are often location-specific. Planet that mines radioactive things export more of that. Leading electronics manufacturer export more of advanced electronics. etc. (WIP)
 * New sub-factions often with unique variants, weapons, or even ships (Espion Mining, Rangphenn, Ugyr, Jack's, Rakin, Black Death, Crossguard, Sulso, Maryhal, NGK, Core Food, Core Nuclear, Solacer, Luna Winery).
 * NPC fleets using the new ships.
 * Persistent NPC (Battlestations in 3 systems, 2 of which can respawn after some time.)
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
-* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea)
+* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite)
 * Gradual progression of the universe both dependent and independent of story missions. 
   * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
-  * New ships and technologies (time and/or story missions)
-  * Station constructions.
+  * New ships and technologies (timed and/or locked behind story missions)
+  * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
 
-Requires 0.10.1 or above (Will work with 0.10.0 as of 2023-05-31 but just to be safe.)
+Requires Unstable Build/0.10.3 or above.
 
 # Recommended 
 
