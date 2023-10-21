@@ -22,19 +22,20 @@ And other things:
 * Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, etc.)
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
+* Just a lot more jobs which are often location-specific. Planet that mines radioactive things export more of that. Leading electronics manufacturer export more of advanced electronics. etc. (WIP)
 * New sub-factions often with unique variants, weapons, or even ships (Espion Mining, Rangphenn, Ugyr, Jack's, Rakin, Black Death, Crossguard, Sulso, Maryhal, NGK, Core Food, Core Nuclear, Solacer, Luna Winery).
 * NPC fleets using the new ships.
 * Persistent NPC (Battlestations in 3 systems, 2 of which can respawn after some time.)
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
-* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea)
+* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite)
 * Gradual progression of the universe both dependent and independent of story missions. 
   * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
-  * New ships and technologies (time and/or story missions)
-  * Station constructions.
+  * New ships and technologies (timed and/or locked behind story missions)
+  * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
 
-Requires 0.10.1 or above (Will work with 0.10.0 as of 2023-05-31 but just to be safe.)
+Requires Unstable Build/0.10.3 or above.
 
 # Recommended 
 

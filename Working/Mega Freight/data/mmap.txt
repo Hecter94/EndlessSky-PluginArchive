@@ -379,7 +379,7 @@ planet "MGF: Fake Tinker"
 			
 planet "Yokosuka Naval Arsenal"
 	government "MGF: NGK Security"
-	attributes "core" "near earth" station factory research
+	attributes "core" "near earth" station factory research "medium factory"
 	landscape land/sivael5
 	music ambient/machinery
 	description `A large station serving as shipyard and factory for MJK Heavy Industries for manufacturing various ship-related products and building starships as well as hosting one of the largest and most advanced research facilities. Though the station itself predates the Republic it is perhaps one of the most well-maintained station around with everything interior and exterior looking like it was completed just a year ago.`
@@ -411,7 +411,7 @@ planet "Yokosuka Naval Arsenal"
 
 planet "Ourea Naval Arsenal"
 	government "Syndicate"
-	attributes station "core"
+	attributes station "core" "medium factory"
 	landscape `land/space0`
 	music ambient/machinery
 	description `Ourea Naval Arsenal is a huge shipyard station with massive docks for building largest type of ships ever designed as well as building regular ships in parallel.`
@@ -540,7 +540,7 @@ planet "MGF: Fake Prime"
 	attributes "requires: unlandable" "requires: sdfsdfs"
 	description `If you can land here it is a bug.`
 
-system "Phecda"
+system "Betelgeuse"
 	add object "MGF: Fake Prime"
 		distance 3581.98
 		period 1459.94
@@ -548,6 +548,24 @@ system "Phecda"
 			sprite "planet/mgf ankaim defense orbital"
 			distance 210
 			period 32
+
+mission "MGF: Ankaim location patch"
+	landing
+	invisible
+	on offer
+		event "mgf: ankaim location patch"
+	on accept
+		fail
+
+event "mgf: ankaim location patch"
+	system "Phecda"
+		remove object "MGF: Fake Prime"
+			distance 3581.98
+			period 1459.94
+			object "Ankaim Orbital Station"
+				sprite "planet/mgf ankaim defense orbital"
+				distance 210
+				period 32
 
 #==========================Espion
 #Asteroid mining company.
@@ -2801,6 +2819,7 @@ system Shaula
 
 #==================additional tag for planets
 #For jobs. Mostly based on planet description
+#Todo: tag small,medium,large shipyards/outfitter.
 
 planet Sundrinker
 	add attributes "ranching" #low

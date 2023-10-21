@@ -1,5 +1,26 @@
 
 #=========================ESCORT
+#For jobs, centralize stuffs and make it easier to change.
+#Also allow other mod to add to the list if they want to.
+fleet "MGF: Escort Huge" 
+	government "Merchant"
+		names "civilian"
+		cargo 4
+		personality
+			confusion 30
+			timid appeasing
+	variant 50
+		"CH-6 Carrack"
+	variant 50
+		"CDB-6K Jupiter"
+	variant 30
+		"FPd45 Clinker"
+	variant 30
+		"FAd36 Flint"
+	variant 40
+		"FUe02a Gebrant"
+	variant 40
+		"FUe04a Gebrant II"
 
 mission "MGF: Escort (Huge 1, Dangerous Destination)"
 	name "Escort to <planet>"
@@ -39,10 +60,11 @@ mission "MGF: Escort (Huge 1, Dangerous Destination)"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
-		fleet
-			names "civilian"
-			variant
-				"CH-6 Carrack"
+		fleet "MGF: Escort Huge" 
+		#fleet
+		#	names "civilian"
+		#	variant
+		#		"CH-6 Carrack"
 	on complete
 		payment 350000
 		dialog phrase "generic safe escort completion dialog"
@@ -2818,7 +2840,7 @@ mission "MGF: Large Refinery Station Coke Import [0]"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
 		attributes mining oil
 	destination
-				attributes "mgf: large refinery station"
+		attributes "mgf: large refinery station"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
 	on visit
 		dialog phrase "generic cargo on visit"
@@ -3365,6 +3387,71 @@ mission "MGF: Large Refinery Station Chem Import (Sulfuric 1)"
 		dialog phrase "mgf: unload chemical station"
 		payment 500000 11000
 
+mission "MGF: Large Refinery Station Machine Parts Import [0]"
+	name "Large delivery to <planet>"
+	job
+	repeat
+	description "Industrial equipment at <planet> requires constant repair and maintenance. Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Machinery Parts" 100 300
+	to offer
+		random < 40
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "large factory" "medium factory"
+	destination
+		attributes "mgf: large refinery station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "MGF: Espion Mining Co."
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 5000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Large Refinery Station Machine Parts Import [1]"
+	name "Large delivery to <planet>"
+	job
+	repeat
+	description "Industrial equipment at <planet> requires constant repair and maintenance. Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Machinery Parts" 150 300
+	to offer
+		random < 35
+		"cargo space" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "large factory" "medium factory"
+	destination
+		attributes "mgf: large refinery station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "MGF: Espion Mining Co."
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Large Refinery Station Machine Parts Import [2]"
+	name "Large delivery to <planet>"
+	job
+	repeat
+	description "Industrial equipment at <planet> requires constant repair and maintenance. Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Machinery Parts" 200 400
+	to offer
+		random < 30
+		"cargo space" > 150
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "large factory" "medium factory"
+	destination
+		attributes "mgf: large refinery station"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "MGF: Espion Mining Co."
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7000
+		dialog phrase "generic cargo delivery payment"
 #============================Dry Bulk (requires bulk carrier)
 		
 trade
@@ -3604,11 +3691,102 @@ mission "MGF: Hire Large Crossguard Escort"
 			`The captain of <npc> informs you that they've completed the 1 month contract and give you a farewell.`
 	to complete
 		never
-		
+
+trade
+	commodity "Delicate Electronics"
+		#random scifi-sounding bs.
+		"sensitive circuit boards"
+		"display screens"
+		"delicate microchips"
+		"processors"
+		"delicate microtransistors"
+		"nanotransistors"
+		"nanochips"
+		"nanoprocessors"
+		"optical processors"
+		"neural cores"
+		"neural processors"
+		"quantum processors"
+		"graphics cores"
+		"3k-series graphic processors"
+		"G-series simulation engine"
+		"nanoprocessor templates"
+		"specialized processors"
+		"silicon wafers"
+
+mission "MGF: Delicate Electronics Export [0]"
+	name "Export delicate electronics to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Delicate Electronics" 25 3 .01
+	to offer
+		random < 50
+		"cargo space" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "electronics export"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes urban "medium factory" "large factory"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Delicate Electronics Export [1]"
+	name "Export delicate electronics to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Delicate Electronics" 25 3 .01
+	to offer
+		random < 45
+		"cargo space" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "electronics export"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes urban "medium factory" "large factory"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7300
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Delicate Electronics Export [2]"
+	name "Export delicate electronics to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Delicate Electronics" 25 3 .01
+	to offer
+		random < 40
+		"cargo space" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "electronics export"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes urban "medium factory" "large factory"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7500
+		dialog phrase "generic cargo delivery payment"
+
 #===================================NGK
 
 #Todo Yokosuka resupply jobs, ship transporting jobs.
-mission "MGF: NGK Import [0]"
+mission "MGF: Yokosuka Import [0]" #MGF: NGK Import [0]
 	name "Import raw materials to <planet>"
 	job
 	repeat
@@ -3631,7 +3809,7 @@ mission "MGF: NGK Import [0]"
 		payment 5000
 		dialog phrase "generic cargo delivery payment"
 
-mission "MGF: NGK Import [1]"
+mission "MGF: Yokosuka Import [1]"
 	name "Import raw materials to <planet>"
 	job
 	repeat
@@ -3654,7 +3832,7 @@ mission "MGF: NGK Import [1]"
 		payment 5000
 		dialog phrase "generic cargo delivery payment"
 
-mission "MGF: NGK Import [2]"
+mission "MGF: Yokosuka Import [2]"
 	name "Import raw materials to <planet>"
 	job
 	repeat
@@ -3677,7 +3855,99 @@ mission "MGF: NGK Import [2]"
 		payment 5000
 		dialog phrase "generic cargo delivery payment"
 
-mission "MGF: NGK Export [0]"
+mission "MGF: Yokosuka Electronics Import [0]"
+	name "Import electronics to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Delicate Electronics" 25 3 .01
+	to offer
+		random < 50
+		"cargo space" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "electronics export"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Electronics Import [1]"
+	name "Import electronics to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Delicate Electronics" 50 3 .01
+	to offer
+		random < 50
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "electronics export"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7800
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Industrial Gemstone Import [0]"
+	name "Import gemstone to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Industrial-grade Gemstone" 50 250
+	to offer
+		random < 50
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "gemstone mining"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Industrial Gemstone Import [1]"
+	name "Import gemstone to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Industrial-grade Gemstone" 50 250
+	to offer
+		random < 35
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "gemstone mining"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 7000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Export [0]"
 	name "Export to <planet>"
 	job
 	repeat
@@ -3699,7 +3969,7 @@ mission "MGF: NGK Export [0]"
 		payment 8000
 		dialog phrase "generic cargo delivery payment"
 
-mission "MGF: NGK Export [1]"
+mission "MGF: Yokosuka Export [1]"
 	name "Export to <planet>"
 	job
 	repeat
@@ -3721,7 +3991,7 @@ mission "MGF: NGK Export [1]"
 		payment 8000
 		dialog phrase "generic cargo delivery payment"
 
-mission "MGF: NGK Export [2]"
+mission "MGF: Yokosuka Export [2]"
 	name "Export to <planet>"
 	job
 	repeat
@@ -3741,6 +4011,98 @@ mission "MGF: NGK Export [2]"
 	on complete
 		payment
 		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Starship Parts Export [0]"
+	name "Export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Starship Parts" 50 250
+	to offer
+		random < 70
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes shipyard
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Starship Parts Export [1]"
+	name "Export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Starship Parts" 50 250
+	to offer
+		random < 70
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes shipyard
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Starship Parts Export [2]"
+	name "Export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Starship Parts" 50 250
+	to offer
+		random < 65
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes shipyard
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8500
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Yokosuka Starship Parts Export [3]"
+	name "Export to <planet>"
+	job
+	repeat
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "Starship Parts" 50 250
+	to offer
+		random < 50
+		"cargo space" > 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Yokosuka Naval Arsenal"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes shipyard
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9000
 		dialog phrase "generic cargo delivery payment"
 
 mission "MGF: NGK Corporate Saboteur Arrest"
@@ -5108,13 +5470,17 @@ phrase "mgf: unload nuclear fuel"
 	word
 		`You landed at special area of the port a bit away from other ships where you find local inspectors waiting. After some initial inspection around the ship the cargo was proceed to be unloaded. After the last cask was lifted out <payment> is transferred into your account.`
 
+phrase "mgf: unload nuclear fuel station"
+	word
+		`You waited in an orbit close by the staion to wait for cargo inspection drones. After some initial scans were done you proceed to dock and unload the cargo. After the last cask was lifted out <payment> is transferred into your account.`
+
 mission "MGF: Radioactive Transport"
 	name "Radioactive cargo to <planet>"
-	description "Ship <cargo> to <destination> by <date>. Payment is <payment>. To accept this job you need flagship capable of carrying radioactive."
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>. To accept this job you need a ship specifically designed for carrying radioactive cargo."
 	job
 	repeat
 	deadline
-	cargo "Radioactive Cargo" 20 150
+	cargo "Radioactive Cargo" 20 75
 	to offer
 		or
 			random < 20
@@ -5130,6 +5496,7 @@ mission "MGF: Radioactive Transport"
 	destination
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		not attributes frontier
+		not attributes station
 		distance 3 10
 	to accept
 		or
@@ -5142,6 +5509,111 @@ mission "MGF: Radioactive Transport"
 	on complete
 		dialog phrase "mgf: unload nuclear fuel"
 		payment 780000 680
+
+mission "MGF: Radioactive Transport (to station)"
+	name "Radioactive cargo to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>. To accept this job you need a ship specifically designed for carrying radioactive cargo."
+	job
+	repeat
+	deadline
+	cargo "Nuclear Fuel" 20 75
+	to offer
+		or
+			random < 30
+			and
+				random < 30
+				"flagship attribute: radioactive cargo space" > 0
+			and
+				random < 30
+				"ship model: SRC41C Curie" > 0
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "radioactive mining"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes station
+		distance 3 10
+	to accept
+		or
+			"flagship attribute: radioactive cargo space" > 0
+			"ship model: SRC41C Curie" > 0
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+
+	on complete
+		dialog phrase "mgf: unload nuclear fuel station"
+		payment 780000 680
+
+mission "MGF: Radioactive Transport (mining source) [0]"
+	name "Radioactive cargo to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>. To accept this job you need a ship specifically designed for carrying radioactive cargo."
+	job
+	repeat
+	deadline
+	cargo "Nuclear Fuel" 50 150
+	to offer
+		or
+			random < 50
+			and
+				random < 30
+				"flagship attribute: radioactive cargo space" > 0
+			and
+				random < 30
+				"ship model: SRC41C Curie" > 0
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "radioactive mining"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		not attributes frontier
+		distance 3 8
+	to accept
+		or
+			"flagship attribute: radioactive cargo space" > 0
+			"ship model: SRC41C Curie" > 0
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+
+	on complete
+		dialog phrase "mgf: unload nuclear fuel"
+		payment 780000 600
+
+mission "MGF: Radioactive Transport (mining source) [1]"
+	name "Radioactive cargo to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>. To accept this job you need a ship specifically designed for carrying radioactive cargo."
+	job
+	repeat
+	deadline
+	cargo "Nuclear Fuel" 50 150
+	to offer
+		or
+			random < 50
+			and
+				random < 30
+				"flagship attribute: radioactive cargo space" > 0
+			and
+				random < 30
+				"ship model: SRC41C Curie" > 0
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "radioactive mining"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		not attributes frontier
+		distance 3 8
+	to accept
+		or
+			"flagship attribute: radioactive cargo space" > 0
+			"ship model: SRC41C Curie" > 0
+	on visit
+		dialog phrase "generic cargo on visit"
+	on fail
+
+	on complete
+		dialog phrase "mgf: unload nuclear fuel"
+		payment 780000 600
 
 mission "MGF: Radioactive Waste Transport"
 	name "Radioactive cargo to <planet>"
@@ -7027,6 +7499,48 @@ trade
 		"butter"
 		"quick-frozen products"
 		"frozen juice"
+
+	commodity "Refrigerated Fruit"
+		"ackee"
+		"apples"
+		"avocados"
+		"bananas"
+		"baobab"
+		"bergamot"
+		"blackberry"
+		"blueberry"
+		"breadfruit"
+		"cranberry"
+		"cherry"
+		"che fruit"
+		"cloudberry"
+		"durian"
+		"elderberry"
+		"fig"
+		"grape"
+		"grapefruit"
+		"green sapote"
+		"guavas"
+		"lemon"
+		"lime"
+		"longan"
+		"luma berry"
+		"lychee"
+		"mangoes"
+		"melon"
+		"mulberry"
+		"nance fruit"
+		"oranges"
+		"pineapples"
+		"papaya"
+		"pomelo"
+		"raspberry"
+		"rambutan"
+		"rose apple"
+		"star apple"
+		"star fruit"
+		"watermelon"
+		"wineberry"
 		
 phrase "mgf: refrigerated transport complete"
 	word
@@ -7040,7 +7554,12 @@ mission "MGF: Small Refrigerated Transport 1"
 	deadline 1 1
 	cargo "Refrigerated Food" 5 20
 	to offer
-		random < 50
+		#offer if you have reefer ship, higher chance on planet with fruit export attribute
+		or
+			random < 50
+			and
+				random < 80
+				has "flagship planet attribute: fruit export"
 		or
 			has "flagship attribute: refrigerated space"
 			has "ship model: QYG-30r Qazan"
@@ -7080,7 +7599,11 @@ mission "MGF: Small Refrigerated Transport 2"
 	deadline 1 1
 	cargo "Refrigerated Food" 5 20
 	to offer
-		random < 50
+		or
+			random < 50
+			and
+				random < 80
+				has "flagship planet attribute: fruit export"
 		or
 			has "flagship attribute: refrigerated space"
 			has "ship model: QYG-30r Qazan"
@@ -7119,7 +7642,11 @@ mission "MGF: Small Refrigerated Transport 3"
 	deadline 1 1
 	cargo "Refrigerated Food" 5 20
 	to offer
-		random < 30
+		or
+			random < 30
+			and
+				random < 70
+				has "flagship planet attribute: fruit export"
 		or
 			has "flagship attribute: refrigerated space"
 			has "ship model: QYG-30r Qazan"
@@ -7274,7 +7801,11 @@ mission "MGF: Large Refrigerated Transport 1"
 	deadline 1 1
 	cargo "Refrigerated Food" 60 120
 	to offer
-		random < 45
+		or
+			random < 45
+			and
+				random < 75
+				has "flagship planet attribute: fruit export"
 		or
 			has "flagship attribute: refrigerated space"
 			has "ship model: QYG-30r Qazan"
