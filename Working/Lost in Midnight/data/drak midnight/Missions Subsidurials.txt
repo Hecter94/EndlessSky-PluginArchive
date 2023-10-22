@@ -679,8 +679,10 @@ mission "Day of Subsidurius"
 mission "Weaponized Subsidurial Bounty"
 	job
 	repeat
+	deadline 14
 	name "Weaponized Subsidurials near <system>"
-	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy the <npc> and report to <destination>. Payment is <payment>." 
+	description "The <npc> and its herd of weaponized Subsidurials are attacking merchants near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 250000
 	source
 		government "Free Worlds"
 	to offer
@@ -710,10 +712,10 @@ mission "Weaponized Subsidurial Bounty"
 		personality target entering staying vindictive
 			confusion 20
 		fleet "Poachers"
-		dialog `The <npc> has been defeated. Return to <planet> to collect your reward.`
-	on complete
-		payment 250000
-		dialog `The government of <planet> pays you <payment> for helping eliminate the <npc>.`
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 250000
+			fail
 
 
 

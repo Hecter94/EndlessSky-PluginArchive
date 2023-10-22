@@ -83,7 +83,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge A"
 	on enter
 		conversation
 			scene "thumbnail/world-ship a"
-			`Your recent visit to <origin> reminded you of the three Korath ships that brought automaton technology back to the Exiles and you had a strange dream about battling against those same three ships. Your memories of the Lor'kas Ik 577, the Seskerat Pratka, are particularly vivid in your mind. Somehow, you feel certain that these three ships are still somewhere in Korath space.`
+			`Your recent visit to <origin> reminded you of the three Korath ships that brought automaton technology back to the Exiles and you had a strange dream about battling against those same three ships. Your memories of the Lor'kas Ik 577, Seskerat Pratka, are particularly vivid in your mind. Somehow, you feel certain that these three ships are still somewhere in Korath space.`
 	on enter "Kor Fel'tar"
 		conversation
 			scene "thumbnail/world-ship a"
@@ -123,7 +123,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge B"
 	on enter
 		conversation
 			scene "thumbnail/world-ship b"
-			`During your visit to <origin> you had another strange dream about battling against the three Korath ships that brought automaton technology back to the Exiles. This time your memories of the Ra'gru Ik 618, the Eskretakfakta, are particularly vivid in your mind. You've destroyed one of the three, but Eskretakfakta and another may yet be out in Korath space.`
+			`During your visit to <origin> you had another strange dream about battling against the three Korath ships that brought automaton technology back to the Exiles. This time your memories of the Ra'gru Ik 618, Eskretakfakta, are particularly vivid in your mind. You've destroyed one of the three, but Eskretakfakta and another may yet be out in Korath space.`
 	on enter "Kor Ak'Mari"
 		conversation
 			scene "thumbnail/world-ship b"
@@ -199,7 +199,7 @@ fleet "Korath Explorers"
 	cargo 0
 	variant 8
 		"Kor Explorer"
-		"'olofez" 3
+		"Kas'ik Tek 7" 3
 
 mission "Midnight: Kor Explorers"
 	landing
@@ -212,26 +212,18 @@ mission "Midnight: Kor Explorers"
 		conversation
 			scene "thumbnail/korsmanath a-awoj"
 			`You've only barely disembarked from your ship when a shadow passes overhead. It isn't one of those strange crystalline structures floating in this system. It's too large. From the shape of the shadow, you can guess what sort of ship it is.`
-	npc
-		government "Korath (Civilian)"
-		personality waiting staying mining harvests surveillance
-		fleet
-			names "korath"
-			fighters "korath"
-			cargo 3
-			variant 6
-				"'olofez (Expeller)" 13
-				"'olofez (Digger)" 6
-				"'olofez" 5
+				accept
 	npc kill
 		government "Korath (Civilian)"
 		personality waiting staying mining harvests surveillance
 		fleet
 			names "korath"
-			fighters "korath"
 			cargo 3
 			variant 21
 				"Korsmanath A'awoj (Jump)"
+				"'olofez (Expeller)" 13
+				"'olofez (Digger)" 6
+				"'olofez" 5
 		conversation
 			action
 				event "korath defense at tekochtli"
@@ -240,23 +232,32 @@ mission "Midnight: Kor Explorers"
 
 event "midnight kor explorers"
 	system "Kor Ak'Mari"
-		add fleet "Korath Explorers" 40000
-	system "Sagittarius A*"
 		add fleet "Korath Explorers" 50000
+	system "Sagittarius A*"
+		add fleet "Korath Explorers" 60000
 	system Tekochtli
-		add fleet "Korath Explorers" 30000
-	system Kalsolli
-		add fleet "Korath Explorers" 30000
-	system Temeh
 		add fleet "Korath Explorers" 40000
+	system Kalsolli
+		add fleet "Korath Explorers" 40000
+	system Temeh
+		add fleet "Korath Explorers" 50000
 
 event "korath defense at tekochtli"
 	system Tekochtli
-		add fleet "Korath Defense" 20000
+		add fleet "Korath Defense" 30000
 	system Kalsolli
 		add fleet "Korath Defense" 40000
 	system Temeh
 		add fleet "Korath Defense" 50000
+
+mission "Midnight: Kor Explorers Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight: Kor Explorers: declined"
+	on offer
+		clear "Midnight: Kor Explorers: offered"
+		fail
 
 
 

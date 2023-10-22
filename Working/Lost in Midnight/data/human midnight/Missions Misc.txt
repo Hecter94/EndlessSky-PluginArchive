@@ -101,10 +101,10 @@ mission "Biohazard 2: Bulk Freighter"
 		"combat rating" > 600
 		or
 			and
-				not "Randomize Star Explorer Biohazard"
+				not "Randomize Bulk Freighter Biohazard"
 				random < 70
 			and
-				has "Randomize Star Explorer Biohazard"
+				has "Randomize Bulk Freighter Biohazard"
 				random < 5
 	on offer
 		conversation
@@ -129,14 +129,14 @@ mission "Biohazard 2: Bulk Freighter"
 				`	(Take the job to hunt down the Biohazard-013.)`
 				`	(Ignore this.)`
 					decline
-			`	If this ship is anything like the previous Biohazard you encountered, the missing slaves could have been harvested for some horrible experiment.`
+			`	If this ship is anything like the previous Biohazard you encountered, the missing slaves could have been harvested for some terrible experiment.`
 				accept
 	on defer
-		set "Randomize Star Explorer Biohazard"
+		set "Randomize Bulk Freighter Biohazard"
 	on enter Atik
 		conversation
 			scene "thumbnail/bulk freighter"
-			`You find the Biohazard-013 lurking in this system with several Headhunters escorting it. The freighter hails you: "You were responsible for the incident with BH-031. You will not be permitted to interfere with our operation."`
+			`You find the Biohazard-013 lurking in this system with several Headhunters escorting it. The freighter hails you: "You were responsible for the incident with BH-031. We will not permit you to interfere with our operation."`
 			`	Suddenly, the Biohazard releases a cloud of drones that move to attack!`
 	npc
 		government "Bounty"
@@ -327,7 +327,7 @@ mission "Bounty Hunting: Angry Chicken"
 		personality target waiting staying disables harvests
 			confusion 20
 		ship "Modified Firebird" "Angry Chicken"
-		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <destination> and claim our reward."`
+		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <planet> and split the reward."`
 	on fail
 		dialog `[MISSION FAILED]: The Sunriser was destroyed. If life were a game, you could load a save file and try again.`
 	on complete
@@ -872,7 +872,8 @@ mission "Infiltrator: War Begins"
 		system Castor
 		personality staying waiting surveillance timid mute
 		fleet
-			fighters "republic fighter"
+			fighters
+				names "republic fighter"
 			cargo 0
 			variant
 				"Surveillance Drone" 4
@@ -886,7 +887,8 @@ mission "Infiltrator: War Begins"
 		system Pollux
 		personality staying waiting surveillance timid mute
 		fleet
-			fighters "republic fighter"
+			fighters
+				names "republic fighter"
 			cargo 0
 			variant
 				"Surveillance Drone" 4
@@ -1133,15 +1135,15 @@ mission "Midnight Paradise Fortune 2"
 			label serious1
 			branch serious2
 				random < 66
-			`	"You can't be serious! Come on <first>! I really need your help here! These pirates aren't playing around!"`
+			`	"Please don't joke like that! Come on <first>! I'm begging for your help here! These pirates are really dangerous!"`
 				goto seriouschoice
 			label serious2
 			branch serious3
 				random < 50
-			`	"What? Are you serious? Come on <first>! These pirates are no joke! I really need your help!"`
+			`	"That's not funny! Come on <first>! I really need your help! These pirates are no joke!"`
 				goto seriouschoice
 			label serious3
-			`	"You can't be serious! Come on <first>! These pirates are no joke! I really need your help!"`
+			`	"You can't be serious! Come on <first>! These pirates aren't kidding around! You're my only hope!"`
 				goto seriouschoice
 			label details
 			scene "thumbnail/bactrian"
@@ -1154,7 +1156,10 @@ mission "Midnight Paradise Fortune 2"
 			choice
 				`	"No, I'm hoping to collect a bounty on you instead."`
 				`	"Get real. She's not worth that much."`
-			`	You cut them off and prepare to fight. To rescue Diane, you'll have to board the <npc> and defeat its crew without destroying it first.`
+					goto worth
+			`	One of the pirate crew whispers something in the other captain's ear. He turns and yells, "What? Find her!" The pirate crew can be heard arguing amongst themselves in the background, their negotiation with you already forgotten.`
+			`	You cut them off and prepare to fight. Hopefully Diane is safe. To rescue her, you'll have to board the <npc> and defeat its crew without destroying it first.`
+				accept
 	npc
 		government "Bounty"
 		system "Tortor"
@@ -1168,14 +1173,14 @@ mission "Midnight Paradise Fortune 2"
 	npc capture
 		government "Bounty"
 		system "Tortor"
-		personality target waiting staying plunders timid
+		personality target waiting staying forebearing timid
 		"cargo settings"
 			cargo 1
 			commodities "Luxury Goods"
 		ship "Bactrian (Shield Suppressor)" "Vicious Rain"
 		conversation
 			scene "outfit/shield suppressor"
-			`The battle was suspiciously easier than you expected and it isn't long before Diane runs up to you. Her backpack is noticeably empty. She grins and says, "Thanks for coming to rescue me <first>! I managed to stick those suppressor thingies all over the ship while they were distracted by you. When the shields stopped working, they started blaming each other..." With Diana safely in your custody, you should head to <destination>. With luck there may actually be a bounty worth collecting on the <npc>.`
+			`The battle was suspiciously easier than you expected and it isn't long before you find Diane hiding in the cooling ducts. Her backpack is noticeably empty. She grins and says, "Thanks for coming to rescue me <first>! I managed to stick those suppressor thingies all over the ship while they were distracted by you. When the shields stopped working, they started blaming each other..." With Diana safely in your custody, you should head to <destination>. With luck there may actually be a bounty worth collecting on the <npc>.`
 	on fail
 		dialog `[MISSION FAILED] You failed to bring Diana Howl to safety. If life were a game, you could load a save file and try again.`
 	on complete
@@ -1446,7 +1451,8 @@ mission "Midnight Striker"
 		personality target waiting staying disables
 			confusion 10
 		fleet
-			fighters "free worlds fighters"
+			fighters
+				names "free worlds fighters"
 			variant
 				"Striker Drone" 6
 				"Striker Drone (Meteor)" 6
@@ -2020,7 +2026,8 @@ mission "Pirate FW invite 2"
 		personality target heroic opportunistic
 		fleet
 			names "republic capital"
-			fighters "republic fighter"
+			fighters
+				names "republic fighter"
 			cargo 0
 			variant
 				"Dropship (Troops)" 4
@@ -2115,7 +2122,8 @@ mission "Pirate FW invite 3"
 		fleet
 			names "republic capital"
 			cargo 0
-			fighters "republic fighter"
+			fighters
+				names "republic fighter"
 			variant
 				"Combat Drone" 4
 	npc kill

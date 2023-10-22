@@ -142,6 +142,7 @@ mission "Medical Bay: Injured Crewmember (Human)"
 		dialog `You failed to deliver the injured crewmember to a hospital in time...`
 	on complete
 		payment
+		payment 10000
 		dialog `You inform the spaceport that you have an injured crewmember who needs to be taken to the hospital. An emergency transport arrives shortly and whisks the injured crewmember away. An insurance company deposits <payment> into your account.`
 
 
@@ -359,7 +360,8 @@ mission "Rogue Asteroid (Pirate)"
 	deadline 2
 	minor
 	name "Rogue Asteroid"
-	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	description "A rogue asteroid may collide with <destination>. Destroy it to claim the reward (<payment>)."
+	"apparent payment" 10000
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes "frontier" "dirt belt"
@@ -394,16 +396,17 @@ mission "Rogue Asteroid (Pirate)"
 			variant
 				"Mysterious Asteroid"
 				"Dagger" 5
-		dialog `You've destroyed the rogue asteroid and the pirate ships that were hiding on it. Return to <planet> for your reward.`
-	on complete
-		payment 10000
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+		on kill
+			payment 10000
+			fail
 
 mission "Rogue Asteroid (Rich World)"
 	deadline 2
 	minor
 	name "Rogue Asteroid"
-	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
+	description "A rogue asteroid may collide with <destination>. Destroy it to claim the reward (<payment>)."
+	"apparent payment" 10000
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes "paradise" "urban" "rich" "tourist"
@@ -438,11 +441,10 @@ mission "Rogue Asteroid (Rich World)"
 			outfitters "Iron" "Lead" "Silicon"
 			variant
 				"Rogue Asteroid"
-		dialog `You've destroyed the rogue asteroid. Return to <planet> for your reward.`
-
-	on complete
-		payment 20000
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+		on kill
+			payment 20000
+			fail
 
 mission "Rogue Asteroid (Ambush)"
 	landing
@@ -469,9 +471,9 @@ mission "Rogue Asteroid (Ambush)"
 			variant 1
 				"Mysterious Asteroid"
 				"Dagger" 4
-	on complete
-		clear "Rogue Asteroid (Ambush): offered"
-
+		on kill
+			clear "Rogue Asteroid (Ambush): offered"
+			fail
 
 
 phrase "blackwing scan request"

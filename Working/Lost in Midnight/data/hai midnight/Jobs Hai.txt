@@ -20,7 +20,7 @@ mission "Unfettered Raiders (Hai)"
 	repeat
 	deadline 14
 	name "Unfettered Raiders"
-	description "An Unfettered fleet lead by a warship named the <npc> has fought several Hai patrols near <system>. Locate the fleet and disable it. Then report to <destination> by <date> for payment [<payment>]."
+	description "An Unfettered warship named the <npc> has fought several Hai patrols near <system>. Locate and disable it. Then report to <destination> by <date> for payment [<payment>]."
 	source
 		government "Hai"
 		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
@@ -35,47 +35,10 @@ mission "Unfettered Raiders (Hai)"
 				has "event: wanderers: unfettered invasion starts"
 				random < 10
 	npc disable
-		government "Bounty"
+		government "Hai (Unfettered)"
 		system
 			distance 1 2
-		personality target waiting staying heroic vindictive
-		fleet
-			names "hai"
-			cargo 3
-			commodities "Food" "Medical"
-			variant
-				"Armor Beetle"
-				"Lightning Bug" 4
-		dialog `You've disabled the <npc> and its fleet. Return to <destination> to collect your reward.`
-	on complete
-		payment 800000
-		"reputation: Hai" += 5
-		dialog phrase "generic bounty hunting payment dialog"
-
-mission "Unfettered Raiders (Hai Disguised)"
-	job
-	repeat
-	deadline 30
-	name "Unfettered Elusive"
-	description "A specialized Unfettered warship named the <npc> has eluded Hai patrols near <system>. Locate the ship and disable it. Then report to <destination> by <date> for payment [<payment>]."
-	source
-		government "Hai"
-		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
-		not planet "Darkwaste"
-	to offer
-		"combat rating" > 8000
-		or
-			and
-				not "event: wanderers: unfettered invasion starts"
-				random < 10
-			and
-				has "event: wanderers: unfettered invasion starts"
-				random < 5
-	npc disable
-		government "Bounty (Disguised)"
-		system
-			distance 1 2
-		personality target waiting staying heroic vindictive
+		personality target waiting staying heroic vindictive marked
 		fleet
 			names "hai"
 			cargo 3
@@ -83,10 +46,14 @@ mission "Unfettered Raiders (Hai Disguised)"
 			variant
 				"Armor Beetle"
 		dialog `You've disabled the <npc>. Return to <destination> to collect your reward.`
+		on kill
+			dialog `The Hai cancel the reward when they learn that the <npc> was destroyed instead of disabled.`
+			fail
 	on complete
 		payment 600000
 		"reputation: Hai" += 5
 		dialog phrase "generic bounty hunting payment dialog"
+
 
 mission "Cloudfire Escort (medium)"
 	job
@@ -450,3 +417,44 @@ mission "Ion Flash Bang Support"
 		event "ion flash bang support"
 		fail
 event "ion flash bang support"
+
+# Deprecated due to changes in Hai attitudes toward Unfettered
+mission "Unfettered Raiders (Hai Disguised)"
+	job
+	repeat
+	deadline 30
+	name "Unfettered Elusive"
+	description "A specialized Unfettered warship named the <npc> has eluded Hai patrols near <system>. Locate the ship and disable it. Then report to <destination> by <date> for payment [<payment>]."
+	source
+		government "Hai"
+		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
+		not planet "Darkwaste"
+	to offer
+		never
+#		"combat rating" > 8000
+#		or
+#			and
+#				not "event: wanderers: unfettered invasion starts"
+#				random < 10
+#			and
+#				has "event: wanderers: unfettered invasion starts"
+#				random < 5
+	npc disable
+		government "Bounty (Disguised)"
+		system
+			distance 1 2
+		personality target waiting staying heroic vindictive
+		fleet
+			names "hai"
+			cargo 3
+			commodities "Food" "Medical"
+			variant
+				"Armor Beetle"
+		dialog `You've disabled the <npc>. Return to <destination> to collect your reward.`
+		on kill
+			dialog `The Hai cancel the reward when they learn that the <npc> was destroyed instead of disabled.`
+			fail
+	on complete
+		payment 600000
+		"reputation: Hai" += 5
+		dialog phrase "generic bounty hunting payment dialog"

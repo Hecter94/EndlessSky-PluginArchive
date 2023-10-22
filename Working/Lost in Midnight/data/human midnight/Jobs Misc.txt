@@ -15,7 +15,8 @@ mission "Bounty Hunting: Mother Goose"
 	job
 	deadline 14
 	name "Wanted Bandit near <system>"
-	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Eliminate the fleet, then report to <destination> for payment (<payment>)."
+	description "An old Aerie named the Mother Goose and its fighters have been attacking merchants near <system>. Destroy them by <day> for payment (<payment>)."
+	"apparent payment" 150000
 	source
 		government "Republic"
 		attributes "deep"
@@ -31,18 +32,17 @@ mission "Bounty Hunting: Mother Goose"
 		ship "Aerie (Energy Cannons)" "Mother Goose"
 		ship "Dagger" "Jack"
 		ship "Dagger" "Jill"
-		dialog `The Mother Goose and their fleet have been eliminated. You can claim the bounty payment by returning to <destination>.`
-	on visit
-		dialog `You've landed on <planet>, but the Mother Goose has not been eliminated yet. Hunt it down and destroy it before returning.`
-	on complete
-		payment 150000
-		dialog `The government of <planet> gratefully pays you <payment> for eliminating the Mother Goose and their fleet.`
+		dialog `The Mother Goose and their fleet have been eliminated. Shortly afterwards, the government of <planet> sends you <payment> along with a message of gratitude.`
+		on kill
+			payment 150000
+			fail
 
 mission "Bounty Hunting: Humpty Dumpty"
 	job
 	deadline 14
 	name "Wanted Bandit near <system>"
-	description "An old Hauler named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
+	description "An old Hauler named the <npc> has been attacking merchants near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 175000
 	source
 		government "Syndicate"
 		attributes "frontier"
@@ -56,18 +56,17 @@ mission "Bounty Hunting: Humpty Dumpty"
 		personality target waiting staying plunders harvests
 			confusion 20
 		ship "Hauler (Energy Cannons)" "Humpty Dumpty"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 175000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 175000
+			fail
 
 mission "Bounty Hunting: Jabberwocky"
 	job
 	deadline 14
 	name "Wanted Bandit near <system>"
-	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Eliminate the ship, then report to <destination> for payment (<payment>)."
+	description "A Modified Aerie named the <npc> has been attacking merchants near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 200000
 	source
 		government "Republic"
 		attributes "frontier"
@@ -81,12 +80,10 @@ mission "Bounty Hunting: Jabberwocky"
 		personality target waiting staying plunders harvests
 			confusion 20
 		ship "Modified Aerie" "Jabberwocky"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 200000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 200000
+			fail
 
 
 
@@ -555,7 +552,8 @@ mission "Holiday: Cupid's Arrow"
 	job
 	deadline 14
 	name "Cupid's Arrow"
-	description "Chocolate deliveries are being raided by a pirate ship known as Cupid's Arrow near <system>. Destroy the ship then return to <planet> for payment (<payment>)."
+	description "Chocolate deliveries are being raided by a pirate ship known as Cupid's Arrow near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 100000
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		not attributes "uninhabited"
@@ -574,9 +572,10 @@ mission "Holiday: Cupid's Arrow"
 			commodities "Food"
 			variant
 				"Cupid's Arrow"
-	on complete
-		payment 100000
-		dialog `The authorities on <planet> reward you with <payment> for putting a stop to the <npc> and its raids on chocolate deliveries.`
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 100000
+			fail
 
 ship "Marauder Arrow" "Cupid's Arrow"
 	sprite "ship/marrowscupid"
@@ -661,10 +660,11 @@ mission "Holiday: Saint Nick"
 
 mission "Bounty Hunting (Small, Hidden Dirtbelt)"
 	name "Disguised bandit near <system>"
-	description "A small pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name, then destroy it and return to <planet> by <day> for payment (<payment>)."
+	description "A small pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name and destroy it <day> for payment (<payment>)."
 	repeat
 	job
 	deadline 30
+	"apparent payment" 360000
 	to offer
 		"combat rating" > 200
 		random < 5
@@ -685,19 +685,18 @@ mission "Bounty Hunting (Small, Hidden Dirtbelt)"
 			variant
 				"Modified Hauler (Turbo Blaster)"
 				"Shuttle Pod (Turbo Blaster)"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 360000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 360000
+			fail
 
 mission "Bounty Hunting (Medium, Hidden Dirtbelt)"
 	name "Disguised pirate near <system>"
-	description "A medium pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name, then destroy it and return to <planet> by <day> for payment (<payment>)."
+	description "A medium pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name and destroy it by <day> for payment (<payment>)."
 	repeat
 	job
 	deadline 30
+	"apparent payment" 480000
 	to offer
 		"combat rating" > 350
 		random < 5
@@ -718,19 +717,18 @@ mission "Bounty Hunting (Medium, Hidden Dirtbelt)"
 			variant
 				"Modified Hauler II (Turbo Blaster)"
 				"Shuttle Pod (Turbo Blaster)" 2
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 480000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 480000
+			fail
 
 mission "Bounty Hunting (Big, Hidden Dirtbelt)"
 	name "Disguised warlord near <system>"
-	description "A sizable pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name, then destroy it and return to <planet> by <day> for payment (<payment>)."
+	description "A sizable pirate warship named the <npc> is posing as a merchant ship near the <system> system. Find a merchant ship with a matching name and destroy it by <day> for payment (<payment>)."
 	repeat
 	job
 	deadline 30
+	"apparent payment" 600000
 	to offer
 		"combat rating" > 500
 		random < 5
@@ -751,12 +749,10 @@ mission "Bounty Hunting (Big, Hidden Dirtbelt)"
 			variant
 				"Modified Hauler III (Turbo Blaster)"
 				"Shuttle Pod (Turbo Blaster)" 3
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 600000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 600000
+			fail
 
 
 
@@ -772,17 +768,18 @@ mission "Bounty Hunting (Secret Prototype)"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
-	npc board
+	npc disable
 		government "Bounty (Disguised)"
 		personality heroic staying
 		system
-			distance 1 1
+			distance 1 2
 		fleet
 			names "pirate"
 			cargo 3
 			commodities "Electronics" "Equipment" "Industrial"
 			variant
 				"Marauder Behemoth (Secret Prototype)"
+				"Dagger" 2
 			variant
 				"Marauder Falcon (Secret Prototype)"
 			variant
@@ -795,7 +792,7 @@ mission "Bounty Hunting (Secret Prototype)"
 	on fail
 		dialog `[MISSION FAILED]: You failed to recover the Secret Prototype before destroying the <npc>.`
 	on visit
-		dialog phrase "generic bounty hunting on visit"
+		dialog "You still havn't recovered Secret Prototype from the <npc>."
 	on complete
 		outfit "Secret Prototype" -1
 		payment 1500000
@@ -1080,6 +1077,8 @@ mission "Hijacked Escort"
 	npc
 		government "Pirate"
 		personality nemesis harvests plunders
+		system
+			distance 1 2
 		fleet "Small Northern Pirates"
 		fleet "Large Northern Pirates"
 	npc
@@ -1092,7 +1091,7 @@ mission "Hijacked Escort"
 		government "Pirate"
 		personality nemesis harvests plunders
 		system
-			distance 1 1
+			distance 1 2
 		fleet "Large Northern Pirates"
 	
 	npc capture
@@ -1910,7 +1909,8 @@ mission "Raider Bounty"
 	repeat
 	deadline 14
 	name "Alien Raider near <system>"
-	description "An alien ship has been attacking merchants near <system>. Destroy the ship then return to <planet> for payment [<payment>]."
+	description "An alien ship has been attacking merchants near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 300000
 	source
 		planet "Sundive"
 		planet "Shangri-La"
@@ -1922,17 +1922,17 @@ mission "Raider Bounty"
 	npc kill
 		government "Korath"
 		system
-			distance 1 1
+			distance 1 2
 		personality target waiting staying plunders
 		fleet
 			names "pirate"
 			variant
 				"Palavret"
 				"'olofez" 2
-	on complete
-		payment 300000
-		dialog `The government of <planet> pays you <payment> for eliminating the alien raider threat.`
-
+		dialog `The alien ship has been eliminated. Shortly afterwards, the government of <planet> sends you <payment> along with a message of gratitude.`
+		on kill
+			payment 300000
+			fail
 
 
 
@@ -2492,7 +2492,6 @@ mission "Rescue: Sabotaged Ship (Republic)"
 		personality target waiting derelict
 		fleet
 			names "republic capital"
-			fighters "republic fighter"
 			cargo 0
 			variant
 				"Carrier (Sabotaged)"
