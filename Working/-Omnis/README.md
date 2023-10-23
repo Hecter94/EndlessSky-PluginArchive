@@ -5,6 +5,7 @@ In order of release, known competitors have been:
 - [All Content Plugin](https://github.com/endless-sky/all-content-plugin)
 - [World Forge](https://github.com/EndlessSkyCommunity/world-forge)
 - [Ciu Kreo](https://github.com/RestingImmortal/Ciu-Kreo)
+- [Ruin the Fun](https://github.com/Pshy0/es-ruin-the-fun)
 
 ### What to expect
 There is no need to worry about breaking existing saves when installing, it only adds a developer area to the map that doesn't affect regular gameplay in any way.
