@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 7.74 mb | 2023-10-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 7.74 mb | 2023-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-10-15) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2023-10-23) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -30,6 +30,7 @@ In order of release, known competitors have been:
 - [All Content Plugin](https://github.com/endless-sky/all-content-plugin)
 - [World Forge](https://github.com/EndlessSkyCommunity/world-forge)
 - [Ciu Kreo](https://github.com/RestingImmortal/Ciu-Kreo)
+- [Ruin the Fun](https://github.com/Pshy0/es-ruin-the-fun)
 
 ### What to expect
 There is no need to worry about breaking existing saves when installing, it only adds a developer area to the map that doesn't affect regular gameplay in any way.
@@ -2948,7 +2949,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Pi game mods
 
 
-[Pi.game.mods.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pi.game.mods.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pi%20game%20mods/) <br>
+[Pi.game.mods.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pi.game.mods.zip) | 158.06 kb | 2022-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pi%20game%20mods/) <br>
 Author: Pilover100 | Category: Graphics <br>
 N/A[]()  <br>
 
@@ -2958,7 +2959,7 @@ N/A[]()  <br>
 
 
 Status: Playable on 0.9.15/0.9.16. <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
