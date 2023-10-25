@@ -8,7 +8,7 @@ In order of release, known competitors have been:
 - [Ruin the Fun](https://github.com/Pshy0/es-ruin-the-fun)
 
 ### What to expect
-There is no need to worry about breaking existing saves when installing, it only adds a developer area to the map that doesn't affect regular gameplay in any way.
+There is no need to worry about breaking existing saves when installing, you will be presented with a warning that lets you choose what level of involvement you want that save to have with Omnis. To avoid any interaction, there's an option to abort which will kill the player and disallow saving the interaction.
 
 So how do you use this plugin? Well there are two very simple methods of [accessing Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis/wiki/Access), there is a wormhole in Rutilicus to travel there, and there is a custom start that can be chosen when making a new pilot.
 
