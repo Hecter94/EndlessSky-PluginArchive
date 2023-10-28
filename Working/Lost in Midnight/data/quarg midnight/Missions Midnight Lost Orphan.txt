@@ -21,6 +21,7 @@ mission "Midnight Lost Orphan Atrocity: Quarg"
 	invisible
 	source
 		attributes quarg
+		not attributes uninhabited
 	to offer
 		random < 50 + "captain of atrocity"
 	on offer
@@ -81,6 +82,7 @@ mission "Midnight Lost Orphan Evidence"
 mission "Midnight Lost Orphan: Abandoned Halcyon"
 	landing
 	invisible
+	deadline 3
 	source "Orphan"
 	to offer
 		has "Cartography: Midnight's Lost Orphan: done"
@@ -99,23 +101,28 @@ mission "Midnight Lost Orphan: Abandoned Halcyon"
 		set "curse of the carabao"
 		give ship "Carabao (Quash Abandoned)" "Halcyon"
 		outfit "Command Center" 1
-		
-	npc kill
-		government "Drak"
-		personality waiting vindictive staying
-		ship "Archon" "Warden of Atrocity"
 
 	npc kill
 		government "Quarg"
-		personality waiting heroic vindictive
+		personality entering heroic vindictive
 		fleet
 			names "quarg"
 			cargo 1
 			variant
-				"Quarg Skylark (Scanner)" 4
+				"Quarg Skylark (Scanner)" 2
 				"Quarg Wardragon (Scanner)" 4
-				
-				
+
+mission "Midnight Lost Orphan: Abandoned Halcyon Cleanup"
+	landing
+	invisible
+	source
+		not attributes uninhabited
+	to offer
+		has "Midnight Lost Orphan: Abandoned Halcyon: active"
+	on offer
+		fail "Midnight Lost Orphan: Abandoned Halcyon"
+		fail
+
 
 mission "Midnight Lost Orphan: Captain of Atrocity"
 	boarding
@@ -1137,6 +1144,93 @@ mission "Midnight Lost Orphan Atrocity: Rulei"
 			``
 			`	With your shout the voices suddenly cease, like shutting the door on an angry mob. You are alone in your thoughts again.`
 				decline
+
+
+
+mission "Lost in Midnight Drak Government Update"
+	landing
+	invisible
+	on offer
+		require "Midnight's Lost Orphan" 1
+		event "lost in midnight drak governments update"
+		fail
+
+event "lost in midnight drak governments update"
+	government "Drak"
+		add atrocities
+			"Midnight's Lost Orphan"
+
+mission "Midnight Lost Orphan: Warden of Atrocity"
+	landing
+	invisible
+	repeat
+	deadline 3
+	source
+		attributes uninhabited
+	to offer
+		"reputation: Drak" >= 0
+		or
+			and
+				not "Midnight Lost Orphan: Warden of Atrocity: offered"
+				random < "captain of atrocity"
+			and
+				has "Midnight Lost Orphan: Warden of Atrocity: offered"
+				random < 5
+	on offer
+		require "Midnight's Lost Orphan" 1
+		conversation
+			scene "outfit/midnight lost orphan"
+			`	You suddenly sense a strange emotion. Is this fear? Anxiety? Whatever it is, the sensation appears to be coming from Midnight's Lost Orphan. It seems to be recoiling in horror from... something. And then all traces of the Orphan's presence vanishes from your perception.`
+			``
+			`	Soon after, you get the impression that another alien entity is probing your consciousness. The barely noticeable feeling might be described as faint and delicate. You might not have noticed it if not for your experience with the-...`
+			choice
+				`	(Clear your thoughts.)`
+				`	(Try something desperate.)`
+					goto desperate
+			scene "outfit/unknown"
+			`	You clear your mind, meditating on the empty void that surrounds you when flying through space. Your consciousness seems to drift a moment before the image of your flagship pops into focus. Before you realize it, you're considering possible outfit loadouts, weapon placements, and the current bunk and cargo capacity. You feel like you've just given a tour of the <ship> to an invisible guest...`
+				accept
+			label desperate
+			branch one
+				random < 75
+			scene "outfit/unknown"
+			`	Desperately trying to keep control of your thoughts, your consciousness seems to drift a moment before the image of your flagship pops into focus. Before you realize it, you're considering possible outfit loadouts, weapon placements, and the current bunk and cargo capacity. You feel like you've just given a tour of the <ship> to an invisible guest...`
+				accept
+			label one
+			branch two
+				random < 66
+			scene "outfit/unknown"
+			`	Desperately trying to keep control of your thoughts, you draw your side arm and begin smacking it against your temple. After bashing it against your head several times, the pain overwhelms your consciousness to the exclusion of anything else. After a while, you stop, sensing that whatever was probing your mind has fled from the pain.`
+				defer
+			label two
+			branch three
+				random < 50
+			scene "outfit/unknown"
+			`	Desperately trying to keep control of your thoughts, you begin singing an annoying song you remember sticking in your head from a while back. After a while, you're certain the alien presence is gone. But the song lingers, echoing in the back of your head for hours on end.`
+				defer
+			label three
+			scene "outfit/attention"
+			`	Desperately trying to keep control of your thoughts, you close your eyes and try to focus on something to keep your mind from wandering. But images of roaches and other bugs keep appearing in your head. The sensation of insects crawling over your skin is overwhelming. Opening your eyes, you are shocked to see roaches and other vermin swarming over you! Your mind breaks in two, the rational half unable to convince the irrational that what you are witnessing is merely some sort of hallucination. There is a vague awareness that you've drawn your side arm and are aiming it at your temple. A moment later, your lifeless body lies motionless, the insects nowhere to be seen.`
+				die
+	npc kill
+		government "Drak"
+		personality waiting vindictive surveillance mute
+		ship "Archon (Surveillance)" "Warden of Atrocity"
+		on kill
+			set "warden of atrocity killed"
+			"captain of atrocity" += 2
+			"reputation: Drak" <?= -1000
+			fail
+
+ship "Archon" "Archon (Surveillance)"
+	"never disabled"
+	add attributes
+		"outfit scan power" 350
+		"outfit scan efficiency" 240
+		"cargo scan power" 150
+		"cargo scan efficiency" 36
+	"final explode" "archon a teleport"
+
 
 
 mission "Quash Lives!"

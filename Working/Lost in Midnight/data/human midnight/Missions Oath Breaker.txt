@@ -478,12 +478,11 @@ mission "Oathbreakers: Rum Cellar Fight"
 			
 			branch "not alone"
 				"flagship crew" > 1
-			
-			`	There's no avoiding this fight. Unfortunately, the seven of them overpower you before you can fire a shot. They grab your Pilot's License as a trophy then toss you out an airlock.`
+			scene "scene/scene-airlock"
+			`	There's no avoiding this fight. Unfortunately, the seven of them overpower you before you can fire a shot. They grab your Pilot's License as a trophy then toss you out of an airlock.`
 				die
 				
 			label "not alone"
-
 			branch "fight"
 				"flagship required crew" < 14
 
@@ -496,17 +495,14 @@ mission "Oathbreakers: Rum Cellar Fight"
 
 			label fight
 			scene "outfit/laser rifle"
-
 			branch "victory"
 				random < ( "flagship required crew" - 7 )
-
 			`	There's no avoiding this fight. Your own crew tries to back you up, but a stray shot still finds its way into your vital organs.`
 				die
 
 			label victory
 			`	There's no avoiding this fight. Your crew acts heroically, killing a couple of the Oathbreakers in the shootout while the rest flee. Not knowing if they've got reinforcements to back them up, you quickly board your ship.`
 				launch
-
 
 	npc
 		to spawn
@@ -518,7 +514,7 @@ mission "Oathbreakers: Rum Cellar Fight"
 		fleet "Fugitive Oathbreaker" 3
 
 	on complete
-		payment 500000
+		payment 250000
 		"Oathbreaker escalation" ++
 		log `It seems the Oathbreakers have access to the Rum Cellar on Chasm. This gives them a strong border base near the Free Worlds capital in Gamma Corvi.`
 		conversation
@@ -527,7 +523,6 @@ mission "Oathbreakers: Rum Cellar Fight"
 event "Oathbreakers in Rum Cellar"
 	system "Chasm"
 		add fleet "Fugitive Oathbreaker" 16000
-
 
 
 
@@ -553,7 +548,7 @@ mission "Oathbreaker Pirate Gossip"
 			`	"Neither," replies the scarred man. "He has some weird alien ship that was salvaged by Marauders before he confiscated it. One of their crew referred to it as a 'Shield Fortress'. They attached parts of a carrier to it, giving it a huge wing span. The thing is a beast of a ship. A real monster."`
 				decline
 
-		
+
 
 mission "Oathbreaker Bounty, Free Worlds"
 	landing
@@ -1355,7 +1350,7 @@ mission "Oathbreaker Thermopylae"
 	npc kill
 		system "Wei"
 		government "Oathbreaker"
-		personality target waiting staying timid opportunistic
+		personality target waiting staying opportunistic
 		ship "Thermopylae Station" "Thermopylae"
 		dialog `The space battle station Thermopylae is about to explode. Retreat to a safe distance before it does. Also, if you haven't already searched planet Hope for any additional fortifications, make sure to do so before reporting back to <origin>.`
 
@@ -1366,7 +1361,7 @@ mission "Oathbreaker Thermopylae"
 		dialog `Stop the Oathbreakers from setting up a base in the Wei system, a critical choke point between the Free Worlds and the rest of the galaxy.`
 
 	on complete
-		payment 250000
+		payment 1000000
 		"Oathbreaker escalation" ++
 		event "Oathbreaker diminish"
 		log `Destroyed the space battle station Thermopylae, a major base of operations for the Oathbreakers. Hopefully their sphere of influence has diminished after this battle.`
