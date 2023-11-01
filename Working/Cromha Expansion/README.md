@@ -34,6 +34,8 @@ Learn more [about Endless Sky][esweb].
 # About Plugin:
 
 Adds a new civilization to the Korath Space (now named the '[Empire Space](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Regions-of-the-galaxy#the-empire-space)': [The Cromha Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Cromha-Empire). Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory. Know more about the plugin in the [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki)! (or test the game yourself) Also, there is another empire that is set up next to the Paradise Planets. It is called the [Lumbarian Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Lumbarian-Empire).
+**Please do not use this plugin with your existing saves! This plugin is highly beta and it could corrupt your saves or make them unusable!**
+
 ## This plugin:
 
 * Adds governments that are related to the vanilla storyline (kind of).
@@ -76,6 +78,7 @@ It is currently a Beta plugin.
 
 # System requirements
 Endless Sky has very minimal system requirements, meaning most systems should be able to run the game. But this plugin is kind of heavy.
+It is also important that you play using the **latest unstable beta version of Endless Sky**, the main branch of the official [Endless Sky repository](https://github.com/endless-sky/endless-sky).
 
 || Minimum | Recommended |
 |---|----:|----:|
@@ -84,7 +87,8 @@ Endless Sky has very minimal system requirements, meaning most systems should be
 |Storage Free | 900 MB | 3 GB |
 
 ## Known issues
-  * Game crash when loading resources (don't have enough RAM)
+  * Game sometimes crash when loading resources (don't have enough RAM)
+  * Some outfits or ships don't have texture: it's because we're currently revamping them (the textures to be revamped are in [images/_TEMP/](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/tree/main/images/_TEMP))
 
 # Installation
 If you're new in the Endless Sky community, check the [User Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) to learn the basics!

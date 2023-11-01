@@ -1,7 +1,7 @@
 mission "Empire: Technology Testing"
 	landing
 	name "Empire: Technology Testing"
-	description "Disable the robotic target dummy ship in <system>, collect test data for Cromha Empire engineers by scanning it with the multiphasic scanner tech, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
+	description "Disable the robotic target dummy ship in <system>, then collect data for the Cromha Empire engineers by scanning it with the multiphasic scanner tech, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
 		government "Cromha Empire"
 		not attributes uninhabited
@@ -12,25 +12,25 @@ mission "Empire: Technology Testing"
 		government "Cromha Empire"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
-			`	"Disable the robotic target dummy ship in <system>, collect test data for Cromha Empire engineers by scanning it with the multiphasic scanner tech, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`	"Disable the robotic target dummy ship in <system>, then collect data for the Cromha Empire engineers by scanning it with the multiphasic scanner tech, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."`
 				accept
 	on accept
 		outfit "Multiphasic Scanner" 1
 	on complete
-		log "Empire" "You tested some new Empire Scanning technology."
+		log "Empire" "You tested some new Empire scanning tech."
 		"reputation: Cromha Empire" += 10
 		"empire jobs" += 1
 		outfit "Multiphasic Scanner" -1
 		payment
 		payment 10000
-		dialog "You send the scans to The Empire and recieve <payment> and an extra Multiphasic Scanner."
+		dialog "You send the scans to The Empire and receive <payment>."
 	npc save disable "scan cargo"
 		government "Test Dummy"
 		personality disables staying heroic target
 			confusion 120
 		system destination
-		ship "Gunboat (modified)" "Cromha Empire Test Vessel"
+		ship Dreadful "Z-92-NA.12"
 		dialog "You scan the disabled craft and take careful measurements of the battle damage. Time to deliver the results on <planet>."
 
 mission "Empire: Espionage Remnants"
@@ -45,21 +45,22 @@ mission "Empire: Espionage Remnants"
 	destination "Empire Listening Station"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
 			`	"Go to the Pantica system and scan the remnant ship <npc> and its outfits. Then land on the Empire Listening Station. Payment is <payment>. Beware the Remnants will surely attack you if you scan them. Don't destroy the ship."`
 			`	They also inform you that after the missions the Remnants will no longer attack you. Just skip the attacking ships and land on <planet>.`
 				accept
 	on fail
+		"reputation: Cromha Empire" -= 10000000000
 		dialog "The Empire inform you that you failed the mission and that they will count you as an enemy to them."
 	on accept
 		"espionage empire" 1
 	on complete
 		"reputation: Cromha Empire" += 10
 		"empire jobs" += 1
-		log "Empire" "You espionned Remnants for The Empire."
+		log "Empire" "You spied on the Remnants for The Empire."
 		payment
 		payment 700000
-		dialog "You land on <planet> and give the results of the scans to an Empire officer and get your paymentof <payment>."
+		dialog "You land on <planet> and give the results of the scans to an Empire officer and get your payment of <payment>."
 	npc "scan outfits" save
 		government "Remnant (empire mission)"
 		personality staying disables board target
@@ -71,7 +72,7 @@ mission "Empire: Espionage Remnants"
 mission "Empire: Ring Assist"
 	landing
 	name "Empire: Ring Assist"
-	description "The Empire Ring Station in <system> system is attacked by some Bounty Hunters. Dirige an Empire Fleet to the <system> and destroy all the Bounty Hunters."
+	description "The Empire Ring Station in <system> system is attacked by some Bounty Hunters. Escort an Empire Fleet to the <system> and destroy all the Bounty Hunters."
 	source
 		government "Cromha Empire"
 		not attributes uninhabited
@@ -80,8 +81,8 @@ mission "Empire: Ring Assist"
 	destination "Empire Ring"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
-			`	"The Empire Ring Station in <system> system is attacked by some Bounty Hunters. Dirige an Empire Fleet to the <system> and destroy all the Bounty Hunters."`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`	"The Empire Ring Station in <system> system is attacked by some Bounty Hunters. Escort an Empire Fleet to the <system> and destroy all the Bounty Hunters."`
 			`	They also inform you that an entire fleet is waiting you on the <planet> ring station.`
 				accept
 	on complete
@@ -90,9 +91,10 @@ mission "Empire: Ring Assist"
 		set "license: Empire Navy"
 		give ship "Empire Galactik" "empire fleet names"
 		give ship "Empire Galactik" "empire fleet names"
+		log "You successfully escort and empire defense fleet to the Empire Ring to defeat some Bounty Hunters. You got recompensed by 2 Empire Galactiks and an Empire Navy License."
 		payment
 		payment 300000
-		dialog "You land on <planet> and recieve <payment>. There is an entire Empire fleet of 2 Empire Galactik. You also won an Empire Navy License."
+		dialog "You land on <planet> and receive <payment>. There is an entire Empire fleet of 2 Empire Galactik. You also won an Empire Navy License."
 	npc kill
 		government "Bounty Hunter"
 		personality staying disables target
@@ -125,7 +127,7 @@ mission "Empire: Scientists Researches in Ember Waste 1"
 		has "Empire: Ring Assist: done"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
 			`	"Go to <system> in the Ember Waste and scan a Void Sprite for the Empire Scientists. Then Land on <planet> to get your payment of <payment>."`
 				accept
 	on complete
@@ -134,7 +136,7 @@ mission "Empire: Scientists Researches in Ember Waste 1"
 		"reputation: Cromha Empire" += 10
 		"empire jobs" += 1
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Gerenus"
 		personality staying timid target
 		ship "Void Sprite"
@@ -160,7 +162,7 @@ mission "Empire: Scientists Researches in Ember Waste 2"
 				`	"Is there any way to make better scans of this creature?"`
 					goto next
 			label next
-			`	"I see these creatures are interesting you. For now I can't tell you more but i have smoething in my head: if you could kill one and puts the rests of the creature in your argo, i would be able to learn more stuff. And of course as always you will be well recompensed."`
+			`	"I see these creatures are interesting you. For now I can't tell you more but i have something in my head: if you could kill one and puts the rests of the creature in your argo, i would be able to learn more stuff. And of course as always you will be well recompensed."`
 			choice
 				`	"Of course, I'll be glad to help! I'm impatient to learn more stuff about it"`
 					goto yes
@@ -195,9 +197,9 @@ mission "Empire: Search for Void Sprites"
 		has "Empire: Scientists Researches in Ember Waste 2: done"
 	on offer
 		conversation
-			`You depose the rests of the Void Sprite in the station spaceport so the scientists can analyse it. You see the head scientist going foward you. He greets you and says:`
-			`	"Wow! I didn't imagine that the Void Sprites were this big! Anyway, i want to thank you a lot! You helped me a lot. Here is 5M credits, as payment. For now i don't have any missions for you. Just search in the Ember Waste for new types of creatures then come back here. Here is a list of the systems where you can search for." And he gives a small piece of paper.`
-			`	"You are very genereous thank you! I will explore the Ember Waste as you asked. I hope you will contact me the soonest posible. This Void Sprite thing is so interesting!" you say with a big smile."`
+			`You depose the rests of the Void Sprite in the station spaceport so the scientists can analyze it. You see the head scientist going to you. He greets you and says:`
+			`	"Wow! I didn't imagine that the Void Sprites were this big! Anyway, i want to thank you a lot! You really helped me. Here is 5M credits, as a payment. For now i don't have any special missions for you. Just search in the Ember Waste for new types of creatures then come back here. Here is a list of the systems where you can search for." And he gives a small piece of paper.`
+			`	"You are very generous thank you! I will explore the Ember Waste as you asked. I hope you will contact me as soon as possible. This Void Sprite thing is so interesting!" you say it with a big smile."`
 			`	You two greets again and he leaves. You look at the piece of paper and can read:`
 			`	"-Gerenus`
 			`	 -Esix`
@@ -212,35 +214,35 @@ mission "Empire: Search for Void Sprites"
 		"empire jobs" += 1
 		log "Empire" "You did researches about Void Sprite in the Ember Waste for the Lifdots Researches Labs Industries."
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Gerenus"
 		personality staying target timid
 		fleet Void-sprite-family
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Esix"
 		personality staying target timid
 		fleet Void-sprite-family
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Nona"
 		personality staying target timid
 		fleet Void-sprite-family
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Paeli"
 		personality staying target timid
 		fleet Void-sprite-family
 	npc "scan outfits" save
-		government "Unknow"
+		government "Indigene Creature"
 		system "Polerius"
 		personality staying target timid
 		fleet Void-sprite-family
 
 mission "Empire: Get Manta Plans"
 	landing
-	name "Empire: Get Manta Plans"
-	description "Disable the lost Syndicate Manta ship at Edusa, then board it an stole the plans of the ship. Bring the plans back to <destination>. Payment is <payment>. You can keep the ship if you'd like to."
+	name "Empire: Get Korath Rai'alorej Plans"
+	description "Disable the lost Korath Rai'alorej ship at Edusa, then board it and stole the plans of the ship. Bring the plans back to <destination>. Payment is <payment>. You can keep the ship if you'd like to."
 	source
 		government "Cromha Empire"
 		not attributes uninhabited
@@ -250,12 +252,12 @@ mission "Empire: Get Manta Plans"
 	on offer
 		conversation
 			`As always, you enter the station, go see the head scientist and give him your results. You say:`
-			`	"I searched in the systems that you requested and scanned all outfits of the Void Sprites i met. Also i found that there was infant Void Sprite. Unlike adult Void Sprites, the infant ones don't have a that much developped system so the scans are more sucessful that the first ones. I hope it will help you."`
-			`	"Of course, it's amazing" says the scientist. "I'll analyse these scans later. I need your help please. As you know the Void Sprites are very developped and The Empire want from us to create the best ship ever with the Void Sprites systems. But for do that we need a new model for the ship. What we want from you is to board a detected Syndicate Manta lost in the Ember Waste in the Edusa system, board it and stole the ship's plans. We will pay you <payment>. You could keep the ship if you'd like too."`
+			`	"I searched in the systems that you requested and scanned all data of the Void Sprites I met. Also I've found that there was infant Void Sprite too. Unlike adult Void Sprites, the infant ones don't have a that much developed system so the scans are more successful that the first ones. I hope it will help you."`
+			`	"Of course, it's amazing" says the scientist. "I'll analyze these later. I need your help please. As you know the Void Sprites are very developed and The Empire want from us to create the best ship ever with the Void Sprites systems. But in order to do that we need a new model for the ship. What we want from you is to board a detected Korath Rai'alorej lost in the Ember Waste in the Edusa system, board it and stole the ship's plans. We will pay you <payment>. You can keep the ship if you'd like too."`
 			choice
 				`	"OK, sounds great for me"`
 					accept
-				`	"I'm not sure about attacking a Syndicate ship, sorry but i'm the wrong person"`
+				`	"I'm not sure about attacking a Korath ship, sorry but i'm the wrong guy"`
 					decline
 	on complete
 		payment
@@ -265,14 +267,14 @@ mission "Empire: Get Manta Plans"
 		log "Empire" "You stolen the Manta plans."
 		event "Black Manta Building Station Appear"
 		conversation
-			`"Perfect!" says the scientist "You can leave the Ember Waste, we will avert you when the ship will be finished. I heard that The Empier had serious problems recently with the Rebels. You should help them, the Empire Navy pays very well. Anyway, it's been a pleasure!"`
+			`"Perfect!" says the scientist "You can leave the Ember Waste, we will avert you when the ship will be finished. I heard that The Empire had serious problems recently with the Rebels. You should help them, the Empire Navy pays very well. Anyway, it's been a pleasure!"`
 			`	"Also, you can come whenever you want in the Black Manta Spacial Dock in the Delia system."`
 			`	He leaves the room and let you <payment>.`
 	npc board
-		government "Syndicate (empire mission)"
+		government "Korath (empire mission)"
 		personality timid target staying
 		system "Edusa"
-		ship "Manta" "small syndicate"
+		ship "Rai'alorej" "Kah'Star All"
 		dialog "You board the ship and stole the ship's plans."
 
 mission "Empire: Bring Resources"
@@ -304,7 +306,7 @@ mission "Empire: Bring Resources"
 	on decline
 		conversation
 			`	"Oh... I see it's okay."`
-			`	And he leaves with disapointment.`
+			`	And he leaves with disappointment.`
 	on complete
 		outfit "Titanium" -25
 		outfit "Gold" -8
@@ -323,7 +325,7 @@ mission "Empire: Bring Resources"
 mission "Empire: Defense Solifar"
 	landing
 	name "Empire: Defense Solifar"
-	description "Defense Solifar from Empire Rebels fleet that attacked a Mineria Convoit. There will be an Empire fleet that will help you. Then land on <destination>. Payment is <payment>."
+	description "Defense Solifar from Empire Rebels fleet that attacked a Mineria covet. There will be an Empire fleet that will help you. Then land on <destination>. Payment is <payment>."
 	source
 		government "Cromha Empire"
 		not attributes uninhabited
@@ -332,8 +334,8 @@ mission "Empire: Defense Solifar"
 		has "Empire: Bring Resources: done"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
-			`	"Defense Solifar from Empire Rebels fleet that attacked a Mineria Convoit. There will be an Empire fleet that will help you. Then land on <destination>. Payment is <payment>."`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`	"Defense Solifar from Empire Rebels fleet that attacked a Mineria covet. There will be an Empire fleet that will help you. Then land on <destination>. Payment is <payment>."`
 				accept
 	on complete
 		payment
@@ -361,8 +363,8 @@ mission "Empire: Defense Solifar"
 
 mission "Empire: Escort Convoit"
 	landing
-	name "Empire: Escort Convoit"
-	description "Escort a mineria convoit from Empire Rebels. Get to <destination> before the Empire Rebels intercept you. You'll get an Bulk Freighter if you sccues in this mission."
+	name "Empire: Escort Covet"
+	description "Escort a mineria covet from Empire Rebels. Get to <destination> before the Empire Rebels intercept you. You'll get an Bulk Freighter if you succeed in this mission."
 	source
 		government "Cromha Empire"
 		not attributes uninhabited
@@ -375,8 +377,8 @@ mission "Empire: Escort Convoit"
 		has "Empire: Defense Solifar: done"
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
-			`	"Escort a mineria convoit from Empire Rebels. Get to <destination> before the Empire Rebels intercept you. You'll get an Bulk Freighter if you sccues in this mission".`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`	"Escort a mineria covet from Empire Rebels. Get to <destination> before the Empire Rebels intercept you. You'll get an Bulk Freighter if you succeed in this mission".`
 				accept
 	on complete
 		give ship "Empire Bulker" "empire fleet names"
@@ -448,7 +450,7 @@ mission "Empire: Study Black Hole"
 		distance 1 5
 	on offer
 		conversation
-			`You land on <planet> and recieve an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
+			`You land on <planet> and receive an other message for the Empire missions. You click on the pop-up and the app opens. You can see written on the screen:`
 			`	"Go to the As'har system to study the Blackhole, then go back to <destination> to depose the scans. Payment is <payment>."`
 				accept
 	on complete
@@ -476,7 +478,7 @@ mission "Empire: Bring Resources 2"
 		has "Empire: Study Black Hole: done"
 	on offer
 		conversation
-			`You enter the planet spaceport when you recieve a message from the Black Manta scentists: they whant you to collect minerals again.`
+			`You enter the planet spaceport when you receive a message from the Black Manta scientists: they want you to collect minerals again.`
 			`	"10 tons of Titanium, 18 tons of Gold, 35 tons of Neodyium, 2 tons of Uranium, 1 Teleportation Dock and 1 Mineria Key Stone."`
 				accept
 	on complete
@@ -494,4 +496,4 @@ mission "Empire: Bring Resources 2"
 		"empire jobs" += 1
 		conversation
 			`You enter the station spaceport and see the same guy that the other time. He greets you and says:`
-			`	"Thanks for you help, here is <payment>. I'm sure we will finish the prototype soon. We will call you in a month approximativly to test the Black Manta. You should go back to the Empire Ringworld, they get attacked by Empire Rebels recently, i think they'll be glad to have your help."`
+			`	"Thanks for you help, here is <payment>. I'm sure we will finish the prototype soon. We will call you in a month approximately to test the Black Manta. You should go back to the Empire Ringworld, they get attacked by Empire Rebels recently, i think they'll be glad to have your help."`
