@@ -1734,42 +1734,46 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Gatling Ammo Fix
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
+![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-[h1]Installing[/h1]
+
+## Installing
+
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
+Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
-
-[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
+```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
 
 
-[h1]Author[/h1]
+It **won't** work if the directory structure will be anything like:
 
-[list][*][b]Cat Lady[/b][/list]
-
-
-[h1]License[/h1]
-
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
 
 
+## Author
 
-[h1]Acknowledgments[/h1]
+* **Cat Lady**
+
+
+## License
+
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
+
 </blockquote>
 </details>
 
@@ -3126,10 +3130,16 @@ Author: Cat-Lady | Category: Graphics <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Swizzle Player
+
+This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+
+![Swizzle Player Image](/swizzle-player/icon.png?raw=true "Swizzle Player Image")
 
 
-[h1]Installing[/h1]
+## Installing
 
 Check:
 https://github.com/Cat-Lady/swizzle-player/releases
@@ -3137,35 +3147,33 @@ https://github.com/Cat-Lady/swizzle-player/releases
 ...for latest, pre-packaged version.
 
 
-[b]1.[/b] Unpack [i]swizzle-player[/i] to your ES plugins folder. Be sure that you have single [i]swizzle-player[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
+**1.** Unpack ``swizzle-player`` to your ES plugins folder. Be sure that you have single ``swizzle-player`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[code](...)/plugins/swizzle-player/(.../data/, /images/ and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/swizzle-player/swizzle-player/(...)[/code]
+```(...)/plugins/swizzle-player/(.../data/ and other stuff)```
 
 
+It **won't** work if the directory structure will be anything like:
 
-[h1]Author[/h1]
-
-[list][*][b]Cat Lady[/b][/list]
-
+```(...)/plugins/swizzle-player/swizzle-player/(...)```
 
 
-[h1]License[/h1]
+## Author
 
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+* **Cat Lady**
 
 
+## License
 
-[h1]Acknowledgments[/h1]
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game
 
-[url=https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot]James the Bot[/url] from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
+![James the Bot](https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot) from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
 
 Iggy Pop for singing "She want's to be your James Bot" (and don't even try to convince me that he meant something else).
+
 </blockquote>
 </details>
 
@@ -6454,9 +6462,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.96 mb | 2023-10-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
+[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.96 mb | 2023-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
 Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-10-30) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-11-01) <br>
 
 >Adds a faction (or 2) that supplies real life fighters and other interesting stuff.
 >
@@ -6491,7 +6499,7 @@ An Endless Sky plugin that adds a variety of things to endless sky, including:
 
 To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps helping them out by doing some jobs and mission is a good idea. You can also just have a high combat rating or finish the main campaign (although you should probably just visit the mentioned planets).
 
-There are also some bonus content if you have the lost in midnight, mega freight, czartraks ships, amphibious ships or navycampaign (by kestrel1110) plugin. To access the bonus content, move the respective files from the bonus file to the data file.
+There are also some bonus content if you have the lost in midnight, mega freight, czartraks ships, amphibious ships, altera or navycampaign (by kestrel1110) plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
 (Special thanks to 1010todd, yuyuko_saigyouji. and gefulltetaubenbrust from the Endless Sky discord server for letting me borrow some sprites)
 
@@ -8239,9 +8247,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 4.16 mb | 2023-10-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 5.05 mb | 2023-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2023-10-29) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2023-11-01) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -8860,7 +8868,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### IJN Yamato
 
 
-[IJN.Yamato.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/IJN.Yamato.zip) | 997.63 kb | 2023-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/IJN%20Yamato/) <br>
+[IJN.Yamato.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/IJN.Yamato.zip) | 997.68 kb | 2023-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/IJN%20Yamato/) <br>
 Author: Hiloki Zheng | Category: Ships <br>
 [https://github.com/hilokiyz/IJN-Yamato-Endless-Sky](https://github.com/hilokiyz/IJN-Yamato-Endless-Sky) (last commit 2023-10-31) <br>
 
@@ -8871,6 +8879,9 @@ Author: Hiloki Zheng | Category: Ships <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># IJN-Yamato-Endless-Sky
 The creation of the biggest WW2 battleship in Endless Sky
+
+Where to acquire: 
+Look for an isolated system near the south of Hai space
 
 </blockquote>
 </details>
@@ -11445,9 +11456,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cromha Expansion/icon.png' height='100'></img><br>
 
 
-[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.56 mb | 2023-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
+[Cromha.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cromha.Expansion.zip) | 114.85 mb | 2023-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cromha%20Expansion/) <br>
 Author: OcelotWalrus | Category: Story <br>
-[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-10-31) <br>
+[https://github.com/OcelotWalrus/Cromha-Expansion-plugin](https://github.com/OcelotWalrus/Cromha-Expansion-plugin) (last commit 2023-11-01) <br>
 
 >Adds a new civilization to the Korath Space (now named the 'Empire Space'): The Cromha Empire. Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government, that has kind of remixed outfits and ships from other vanilla governments. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory.
 
@@ -11489,6 +11500,8 @@ Learn more [about Endless Sky][esweb].
 # About Plugin:
 
 Adds a new civilization to the Korath Space (now named the '[Empire Space](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Regions-of-the-galaxy#the-empire-space)': [The Cromha Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Cromha-Empire). Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory. Know more about the plugin in the [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki)! (or test the game yourself) Also, there is another empire that is set up next to the Paradise Planets. It is called the [Lumbarian Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Lumbarian-Empire).
+**Please do not use this plugin with your existing saves! This plugin is highly beta and it could corrupt your saves or make them unusable!**
+
 ## This plugin:
 
 * Adds governments that are related to the vanilla storyline (kind of).
@@ -11531,6 +11544,7 @@ It is currently a Beta plugin.
 
 # System requirements
 Endless Sky has very minimal system requirements, meaning most systems should be able to run the game. But this plugin is kind of heavy.
+It is also important that you play using the **latest unstable beta version of Endless Sky**, the main branch of the official [Endless Sky repository](https://github.com/endless-sky/endless-sky).
 
 || Minimum | Recommended |
 |---|----:|----:|
@@ -11539,7 +11553,8 @@ Endless Sky has very minimal system requirements, meaning most systems should be
 |Storage Free | 900 MB | 3 GB |
 
 ## Known issues
-  * Game crash when loading resources (don't have enough RAM)
+  * Game sometimes crash when loading resources (don't have enough RAM)
+  * Some outfits or ships don't have texture: it's because we're currently revamping them (the textures to be revamped are in [images/_TEMP/](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/tree/main/images/_TEMP))
 
 # Installation
 If you're new in the Endless Sky community, check the [User Guide](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/User-Guide) to learn the basics!
@@ -13331,25 +13346,17 @@ Author: Amazinite | Category: Story <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Syndicate Storyline for Endless Sky, v0.4
+<blockquote># ES-Syndicate-Campaign
+The development repository for the Syndicate campaign of Endless Sky. Spoilers ahead.
 
-This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
+### What's this exta stuff folder?
+I'm keeping my workflow public for anyone to check out and comment on. This folder contains all the things I'm using to help create the campaign, from Blender files of any new models to text files containing any work for the development process. Given the nature of my workflow, this will be a mix of new and old stuff, some (maybe even most) of which that may not make any sense whatsoever and may never be used. It can also get rather unorganized. Below is a description of the text files in the extra stuff folder, but just take everything you see in these files with a grain of salt as none of it is set in stone.
 
-## Current status
-
-Main story and most side-things, complete. This will take you up to the end of the civil war, all completed and ready to continue the game as if you'd completed the main-game story.
-
-Remaining: logs on all the events; a few more epilogue conversations; and various hopefully-minor issues, both discovered and undiscovered.
-
-## How to play/install
-
-First play Endless Sky (https://github.com/endless-sky/endless-sky/). I recommend playing the main version first, up to the end of the main Free Worlds storyline. This alternate-start's intro is not as helpful for beginners, and maybe the story is more fun if you already know what's happening on the Free Worlds side... or, maybe it's fun the other way around! Good point! Well, up to you then.
-
-To play, download this repository (or a release folder) into your plugins directory for Endless Sky. You probably already know how. If not, let me know, and I'll get round to updating this readme with the instructions.
-
-You need Endless Sky minimum version 0.9.15, which at time of writing is the continuous build in the main Endless Sky project.
-
-- Changes to the Korath have impacted this plugin. The current version tracks the current git repository for endless sky. (2022-09-04)
+* everything syndicate.txt: a file containing every reference to the Syndicate in the game.
+* syndicate info.txt: a distilled, summarized version of the above file.
+* character sheet.txt: a file containing info on all the characters new and old that are part of the Syndicate.
+* syndicate notes.txt: a file of random notes that I've taken during the development of the campaign.
+* rough storyboard.txt: a file that contains a VERY rough (WIP) storyboard of how things will go. More polished storyboards will be located in the data folder once I'm actually about to start writing that part.
 
 </blockquote>
 </details>
