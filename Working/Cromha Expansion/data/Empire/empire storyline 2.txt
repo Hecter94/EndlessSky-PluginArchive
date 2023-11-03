@@ -438,3 +438,200 @@ mission "Empire: Caltalytic Tear Transport2"
 		system
 			distance 2 3
 		fleet "Kor Efret Home" 6
+
+mission "Empire: Get Stolen Detonator Engine Prototype"
+	name "Empire: Get Stolen Prototype"
+	description "Go to the Lumbarian 7-KJ Base, Mirzam and get back a stolen Empire prototype."
+	landing
+	source
+		government "Cromha Empire"
+	to offer
+		has "Empire: Caltalytic Tear Transport2: done"
+	destination "Lumbarian 7-KJ Base"
+	on offer
+		conversation
+			`When landing on <origin>, you slowly dock to the spaceport and right after get a hail from a Empire Navy ship, it's an Empire Hydra. They seems to be cloaked because you can't find them in the sky.`
+			choice
+				`Hail back`
+					goto next
+				`Don't hail back.`
+					decline
+			label next
+			`"Hey! We need you to land on the Lumbarian 7-KJ Base, Mirzam. It's an asteroid base and you'll need to get back a stolen prototype engine." The right after close the signal and you cannot hail them back. They did not gave you any information about how looks the prototype and where is that 'asteroid base'.`
+				accept
+	on accept
+		"empire detonator mission active" += 1
+		outfit "Empire Detonator Attribute Secret" 1
+	on complete
+		outfit "Empire Detonator Engine Secret" 1
+		outfit "Empire Detonator Attribute Secret" -1
+		"reputation: Lumbarian Empire" -= 1000000000000
+		log "Empire" "You got back a stolen prototype of an empire engine detained in a secret Lumbarian Empire military lab."
+	npc
+		government "Lumbarian Empire"
+		personality staying
+		system "Mirzam"
+		fleet "Lumbarian Cruiser"
+		fleet "Large L Navy"
+		fleet "Large L Navy"
+		fleet "Large L Navy"
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+
+mission "Empire: Evade Lumbarian Fleets"
+	name "Empire: Evade Lumbarian Navy"
+	description "Evade from the Lumbarian Navy then land on Crodust, Lifdot to get your payment of <payment>."
+	landing
+	to offer
+		has "Empire: Get Stolen Detonator Engine Prototype: done"
+	destination "Crodust"
+	on offer
+		"empire detonator mission active" -= 1
+		conversation
+			`You finally land on the Lumbarian 7-KJ Asteroid Base despites the huge Lumbarian Navy fleets staying near. You land and furtively open the blast door of your ship and leave the ship to enter the closest military lab.`
+			choice
+				`next`
+					goto next
+			label next
+			`You put some C4 on the military lab principal door and you tell your crews to prepare. The C4 explode and let the big door all open. You enter and search for a room with the prototype. After fights with Lumbarian militaries troops, you finally find the prototype and get back to your ship and immediately leave the planet.`
+				launch
+	on complete
+		payment
+		payment 17000000
+		outfit "Empire Detonator Engine Secret" -1
+		dialog "You succedeed on your mission. They Cromha Empire are really impressed of your work. They paid you <payment>."
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system "Lumbaria"
+		fleet "Lumbarian Cruiser"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Small L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Small L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Small L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Large L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Large L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Large L Navy"
+
+mission "Empire: Transport Prototype Detonator Engine"
+	name "Empire: Transport Prototype Engine"
+	description "Transport in your cargo a prototype lifdot industries lab engine to <destination> in the Cromha Rim. Do not get scan by any Lumabarian Empire Navy ship on your way."
+	landing
+	to offer
+		has "Empire: Evade Lumbarian Fleets: done"
+		random < 8
+	source
+		government "Cromha Empire" "Mineria Colonies" "Quarg"
+	destination "Stilfa"
+	on offer
+		conversation
+			`After landing on <origin>, you again receive a message from the Empire Workforces. A pop-up opens in your ship's computer dashboard screen:`
+			`	"EMPIRE WORKFORCES:`
+			`	Captain <first> <last>, please consider this extremely important missions that we can only give to you;`
+			`	as you know, we are currently designing a prototype for a engine, more particularry an afterburner, since you got it back from an secret Lumbarian military lab in the Mirzan system. Well, we need you to secretly transport the almost finished prototype in your cargo, to <destination> in the Cromha Rim.`
+			` The only information that we can tell about going to <destination>, is that you'll first need to get to the Minkar system, in the far north of the Rim space.`
+			`	Please, accept this mission, you'll be extremely well recompensed by us and the Quargs.`
+			choice
+				`Click on accept.`
+					accept
+				`Close the pop-up.`
+					decline
+				`Click on deny.`
+					decline
+	on accept
+		dialog "Right after clicking on 'accept', the prototype outfit get teleported right into your cargo."
+		outfit "Empire Detonator Engine Secret" 1
+	on enter Minkar
+		dialog "You get a message on a empire top-secret freequences and loose the signal right after receiving: 't**s ju** **nnel wil* make you ***er the **omha r*m'. The message seems to be crypted and only a few letters are able to be de-crypted."
+	on complete
+		conversation
+			`You finnaly land on <destination>, and decide to get some rest while waiting for some empire authorities to come to you. You play a game for about 01:38 hours. It's not empire authorities who come to your blast door but Quargs, 3 quargs to be accurate.`
+			`You open your blast door to let them enter. They greet you and then unplug the prototype engine from your systems and unload it from your cargo. They leave an say bye. You want to ask them for the payment but they're already way far from your ship.`
+			`But when looking at your cargo camera, you can see a crate who seems to contains money and a particular quarg outfit who seems to be a weapon or a anti-missile turret. You go check and you can find 3M credits in the crate as well as a 'Doomscythe', who seems to be an extreme quarg weapon.`
+		payment
+		payment 3000000
+		outfit Doomscythe 1
+		outfit "Empire Detonator Engine Secret" -1
+		log "Empire" "You successfully secretely transported an prototype of an empire engine to a secret region of the space, the Cromha Rim, even if there were huge Lumbarian and Rebels fleets on your way."
+	npc evade
+		government "Empire Rebels"
+		personality target hunting daring plunders vindictive ramming appeasing
+		system
+			distance 1 3
+		fleet empire-rebels-raiders
+		fleet empire-rebels-raiders
+	npc evade
+		government "Empire Rebels"
+		personality target hunting daring plunders vindictive ramming appeasing
+		system
+			distance 1 3
+		fleet empire-rebels-raiders
+		fleet empire-rebels-raiders
+	npc evade
+		government "Empire Rebels"
+		personality target hunting daring plunders vindictive ramming appeasing
+		system
+			distance 1 3
+		fleet empire-rebels-merchants
+		fleet empire-rebels-merchants
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+		fleet "Large L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Small L Navy"
+		fleet "Small L Navy"
+		fleet "Large L Navy"
+	npc evade
+		government "Lumbarian Empire"
+		personality target
+		system
+			distance 1 3
+		fleet "Lumbarian Cruiser"
+	npc
+		government "Quarg"
+		system "Kalisto"
+		personality staying
+		fleet "Quarg Protectionist"
+		fleet "Large Quarg"
+		fleet "Quarg"
