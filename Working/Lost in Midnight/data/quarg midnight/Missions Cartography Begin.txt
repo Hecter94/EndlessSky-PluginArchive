@@ -537,7 +537,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 		government "Pirate"
 		personality launching plunders harvests coward
 		ship "Mule (Hai Weapons)" "Mad Hatter"
-		ship "Corvette (Hai)" "Cheshire Cat"		
+		ship "Corvette (Hai)" "Dormouse"
 
 	npc
 		government "Pirate"
@@ -550,7 +550,13 @@ mission "Cartography: Quarg Hitchhiker 4"
 		log `Ran into Quash again on Wang Xiang Tai, a pirate station in the Diyu system. I took him to a pirate meeting in the underground caverns of Naihe Qiao, where he acquired a device he refers to as a Celestial Compass.`
 		conversation
 			scene "outfit/celestial compass"
-			`Quash pulls an object out of his pocket. "A Celestial Compass. With the right mapping data, I can use this to project the movements of celestial objects across the galaxy. Meet me at the spaceport later, and I should have something to share."`
+			branch pug
+				has "main plot completed"
+			`Quash pulls an object out of its pocket. It appears to be alien in origin... "A Celestial Compass. With the right mapping data, I can use this to project the movements of celestial objects across the galaxy. Meet me at the spaceport later, and I should have something to share."`
+				accept
+			label pug
+			`Quash pulls an object out of its pocket. The design is similar to devices you've seen used by the Pug... "A Celestial Compass. With the right mapping data, I can use this to project the movements of celestial objects across the galaxy. Meet me at the spaceport later, and I should have something to share."`
+				accept
 
 
 
@@ -938,10 +944,14 @@ mission "Cartography: Midnight's Lost Orphan"
 				die
 
 			label run
-			`	You get back into orbit and are deciding your next course of action when a fleet of Quarg warships arrives. They hail you.`
+			scene "outfit/celestial compass"
+			`	You snatch up the compass and run. As you flee through the empty passages back to your ship, the alien sound of Quash's tortured wails echo behind you. Boarding the <ship>, you get back into orbit and are deciding your next course of action when a fleet of Quarg warships arrives. They hail you.`
 			`	"Where is The Outcast?" they ask.`
+			choice
+				`	"Still on the planet."`
+				`	"What Outcast?"`
 			scene "scene/scene-vindictivequarg"
-			`	Before you can answer, the Halcyon launches. Most of the Quarg fleet moves to intercept. The old city ship is no match for them. Once the Halcyon is completely destroyed, the Quarg ships leave.`
+			`	Before the words leave your lips, the Halcyon launches. Most of the Quarg fleet moves to intercept. The old city ship is no match for them. Once the Halcyon is completely destroyed, the Quarg ships depart.`
 				flee
 
 			label disobey
@@ -950,8 +960,12 @@ mission "Cartography: Midnight's Lost Orphan"
 			choice
 				`	(Some time later...)`
 				
+			scene "outfit/celestial compass"
+			`	You wake up on the floor of the containment chamber. There is something in your hand. After a moment, you recognize the object gripped tightly between your fingers as the Celestial Compass. The pain is gone. Instead you feel refreshed, energized even.`
+			choice
+				`	(Look around.)`
 			scene "scene/scene-station5dark"
-			`	You wake up on the floor of the containment chamber. There is something you are holding in your hand. After a moment, you recognize it as the Celestial Compass. The pain is gone. Instead you feel refreshed, energized even. Standing up, you regard your surroundings. The first thing you notice is a dead Quarg lying in a pool of blood. Weird. Nothing else here looks interesting and you feel an urge to leave this place and get back to exploring the galaxy...`
+			`	Standing up, you regard your surroundings. The first thing you notice is a dead Quarg lying in a pool of blood. Weird. Nothing else here looks interesting and you feel an urge to leave this place and get back to exploring the galaxy...`
 				launch
 	
 	on decline

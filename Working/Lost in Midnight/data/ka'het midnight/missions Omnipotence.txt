@@ -191,38 +191,6 @@ mission "Omnipotence: Grave Digger Epilogue 2"
 
 
 
-fleet "Ka'het Scout"
-	government "Ka'het"
-	personality
-		plunders harvests surveillance forbearing coward
-	variant 6
-		"Maeri'het (Scanner)"
-	variant
-		"Maeri'het (Scanner, Disable-able)"
-
-mission "Add Ka'het Scouts"
-	landing
-	invisible
-	on offer
-		event "add ka'het scouts"
-		fail
-		
-event "add ka'het scouts"
-	system Polerius
-		add fleet "Ka'het Scout" 2500
-	system Paeli
-		add fleet "Ka'het Scout" 2500
-	system Esix
-		add fleet "Ka'het Scout" 3000
-	system Gerenus
-		add fleet "Ka'het Scout" 2500
-	system Nona
-		add fleet "Ka'het Scout" 3000
-	system Ritilas
-		add fleet "Ka'het Scout" 2500
-
-
-
 mission "Omnipotence Map: Hint"
 	landing
 	to offer
@@ -529,23 +497,38 @@ mission "Omnipotence Map: Builder Drones part 2"
 				`	(Do not activate the shipyard.)`
 					defer
 			scene "scene/scene-builder drones"
-			`	The sound of newly activated machinery fills the area as the automated systems prepare the shipyard for business. When it's ready, you'll be able to buy Builder drones from here.`
+			`	After several hours of trial and error, the sound of newly activated machinery fills the area as the automated systems prepare the shipyard for business. When it's ready, you'll be able to buy Builder drones from here.`
 				accept
 	on defer
 		set "Randomize Omnipotence Map: Builder Drones 2"
 	on accept
 		event "activate Parii'het shipyard"
+		set "omnipotence map: parii'het outfitter patched"
 		fail
 
 shipyard "Builder Drones"
 	"Selii'mar"
 	"Faes'mar"
+	"Ool'mar"
 
 event "activate Parii'het shipyard"
 	planet "Parii'het"
 		add shipyard "Builder Drones"
+		add outfitter "Basic Expansions"
 
+mission "Omnipotence Map: Parii'het Outfitter Patch"
+	landing
+	invisible
+	to offer
+		has "event: activate Parii'het shipyard"
+		not "omnipotence map: parii'het outfitter patched"
+	on offer
+		event "omnipotence map: parii'het outfitter patch"
+		fail
 
+event "omnipotence map: parii'het outfitter patch"
+	planet "Parii'het"
+		add outfitter "Basic Expansions"
 
 mission "Omnipotence Map: Ka'het Outfitter part 1"
 	landing
@@ -581,7 +564,7 @@ mission "Omnipotence Map: Ka'het Outfitter part 1"
 		government "Ka'het"
 		system Giribea
 		personality
-			target waiting staying plunders harvests surveillance forbearing coward
+			target waiting staying surveillance forbearing coward
 		fleet "Ka'het Scout"
 
 
@@ -608,7 +591,7 @@ mission "Omnipotence Map: Ka'het Outfitter part 2"
 				`	(Do not activate the outfitter.)`
 					defer
 			scene "scene/scene-kahet outfits"
-			`	The sound of newly activated machinery fills the area as the automated systems prepare the outfitter for business. When it's ready, you'll be able to buy Ka'het outfits from here.`
+			`	After several hours of trial and error, the sound of newly activated machinery fills the area as the automated systems prepare the outfitter for business. When it's ready, you'll be able to buy Ka'het outfits from here.`
 				accept
 	on defer
 		set "Randomize Omnipotence Map: Ka'het Outfitter 2"

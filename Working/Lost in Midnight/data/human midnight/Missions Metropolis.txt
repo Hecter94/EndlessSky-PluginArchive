@@ -258,19 +258,45 @@ mission "Balthazar Delivery"
 	destination Luna
 	to offer
 		has "Balthazar 6: done"
+		or
+			not "Balthazar on Standby"
+			and
+				has "Balthazar on Standby"
+				"reputation: Republic" >= 0
 	on offer
 		conversation
 			scene "ship/metro district"
+			branch retrieval
+				has "Balthazar on Standby" 
+			`The Balthazar is ready to launch...`
+			choice
+				`	(Launch the Balthazar).`
+					goto launchtime
+				`	(Keep the Balthazar on standby).`
+					goto standby
+					to display
+						"reputation: Republic" < 0
+			label standby
+			`	The Republic is currently hostile towards you. Keeping the Balthazar on standby until that is resolved is a wise choice.`
+				defer
+			label retrieval
+			`	The Balthazar is ready to launch...`
+			choice
+				`	(Launch the Balthazar).`
+				`	(Not yet.)`
+					defer
+			label launchtime
 			`	A small crowd of locals and tourists have gathered to watch the launch. A parade of sorts was organized by Barnacle Bobby to follow the ship as it is towed from the hangar to the local spaceport. As the Balthazar is finally parked on the launchpad, Bobby tearfully says his goodbyes to you and the salvage team. After months of hard work, the District city ship Balthazar is ready to fly once again. As you previously agreed, Maria Carpenter and her team will crew the ship. The time has come to deliver it to Joseph Welder on Luna.  `
 				launch
-
+	on defer
+		set "Balthazar on Standby"
+	on accept
+		clear "Balthazar on Standby"
 	on abort
 		give ship "District" "Balthazar"
 		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the District ship Balthazar to your fleet instead.`
-
 	on enter
 		dialog `The launch was a success! Maria and her team did an excellent job fixing the Balthazar. Now you just have to safely escort it to Luna in the Sol system.`
-
 	npc
 		system Kugel
 		government "Pirate"
@@ -285,13 +311,10 @@ mission "Balthazar Delivery"
 		government "Escort"
 		personality launching escort timid
 		ship "District" "Balthazar"
-
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
-
 	on visit Luna
 		dialog phrase "generic arrived-without-npc dialog"
-
 	on complete
 		log `Delivered the District ship Balthazar to Joseph Welder on Luna. Once all three of the component city ships are delivered, we can combine them into the Metropolis ship, Exodus.`
 		dialog `Maria and her team will remain on standby with Balthazar at Luna until you are ready to combine the three city ships to form the Metropolis city ship Exodus.`
@@ -358,7 +381,6 @@ mission "Melchior 3"
 			`	The man notices the picture on the card and is momentarily speechless. Finally he asks, "Can I have that?"`
 			choice
 				`	(Give him the postcard.)`
-
 			`	He looks at the card as he says, "When dad passed away my sister, Cathleen, inherited that ship. She and I never really got along. When the Free Worlds declared independence from the Republic, she took it with her to Bourne." He passes the card back to you. "Thanks for the memories. But I'd rather forget."`
 				accept
 	on accept
@@ -380,7 +402,6 @@ mission "Melchior 4"
 			`	"I donated it to the war effort. But to be honest, the upkeep costs were more than I could handle. The Melchior was the crown jewel of dad's collection, but most of the actual money making assets went to my brother. Maybe dad was hoping we could reconcile our differences. But it just didn't work out." She holds up the postcard you presented to her. "May I keep this postcard?"`
 			choice
 				`	(Give her the postcard.)`
-
 			scene "scene/scene-melchiorbattle"
 			`	"Thanks! You might want to try searching for it on Rust. Last I heard, they were using it for weapons research there."`
 			`	You imagine them using it for target practice...`
@@ -409,10 +430,8 @@ mission "Melchior 5"
 		conversation
 			branch barmy
 				has "FW Plasma Testing 1B: done"
-			
 			`You arrive at Kraz Cybernetics and ask about the Melchior. It turns out that it's scheduled to test a new shielding system today! You inform the receptionist that you are interested in purchasing the ship and she directs you to their R&D department. After rushing over there, you find the person in charge.`			
 				goto negotiate
-
 			label barmy
 			scene scene/loc5
 			`	You find Barmy Edward, Chief Offensive Engineer at Kraz Cybernetics working on some new type of gun turret.`
@@ -427,33 +446,27 @@ mission "Melchior 5"
 				`	"BARMY!"`
 			`	"Huh? What?" He pauses, regarding you quizzicaly.`
 				goto negotiate
-
 			label negotiate
 			`	"I want to purchase the Melchior."`
 			`	He takes a moment to process what you've just said. "That old thing? Are you sure?"`
 			`	You nod your affirmation.`
-
 			branch "purchase"
 				has "license: City-Ship"
-
 			`	"You know, the Melchior is technically a city ship. Do you have a license?"`
 			choice
 				`	"Do I really need one?"`
 			`	You press your case. "Wasn't the whole point of the Free Worlds to get away from oppressive Republic regulations?"`
 			`	He takes a moment to think about it. "I guess you've got a point. This isn't The Deep, and those licenses are really only for purchasing Bactrians."`
 				goto purchase
-				
 			label purchase
 			`	"Alright." He looks something up on a data pad. "6,000,000 credits. Don't bother haggling. I've already cut down the suggested price."`
 			`	You look at the data pad and see that he has given you a huge discount.`
 			`	"Do you have a crew set up for it?" he asks.`
 			choice
 				`	"I know someone who's able to help with that."`
-
 			`	"Great. You can hold off on completing the transaction until you bring the crew here. In the meantime, how about helping us test out our new shielding system?"`
 			choice
 				`	"I think I'll pay for the ship now."`
-				
 			`	"I wouldn't want it to get blown up in one of your experiments." You complete the transaction and he marks the Melchior as unavailable for all of their future projects.`
 			`	With that settled, you get ready to return to Bourne and recruit Cathleen Wigglebottom to crew the Melchior.`
 				accept
@@ -514,27 +527,50 @@ mission "Melchior Delivery"
 	destination Luna
 	to offer
 		has "Melchior 7: done"
+		or
+			not "Melchior on Standby"
+			and
+				has "Melchior on Standby"
+				"reputation: Republic" >= 0
 	on offer
 		conversation
+			scene "ship/metro prefecture"
+			branch launchtime
+				has "Melchior on Standby" 
 			branch barmy
 				has "FW Plasma Testing 1B: done"
-
-			scene "ship/metro prefecture"
-			`	The Prefecture city ship Melchior is ready to fly. Kraz Cybernetics even scrubbed off the scorch marks from previous experiments. As you previously agreed, Cathleen Wigglebottom and her team will crew the ship while her brother Richard pilots it. Thankfully, you'll remain on your own ship, out of earshot from their constant bickering. The time has come to deliver Melchior to Joseph Welder on Luna.`
-				launch
-
+			`	The Prefecture city ship Melchior is ready to fly. Kraz Cybernetics even scrubbed off the scorch marks from previous experiments. As you previously agreed, Cathleen Wigglebottom and her team will crew the ship while her brother Richard pilots it. Thankfully, you'll remain on your own ship, out of earshot from their constant bickering.`
+			choice
+				`	(Launch the Melchior).`
+					goto launchtime
+				`	(Keep the Melchior on standby).`
+					goto standby
+					to display
+						"reputation: Republic" < 0
 			label barmy
-			scene "ship/metro prefecture"
-			`	The Prefecture city ship Melchior is ready to fly. Barmy Edwards even scrubbed off the scorch marks from previous experiments. As you previously agreed, Cathleen Wigglebottom and her team will crew the ship while her brother Richard pilots it. Thankfully, you'll remain on your own ship, out of earshot from their constant bickering. The time has come to deliver Melchior to Joseph Welder on Luna.`
+			`	The Prefecture city ship Melchior is ready to fly. Barmy Edwards even scrubbed off the scorch marks from previous experiments. As you previously agreed, Cathleen Wigglebottom and her team will crew the ship while her brother Richard pilots it. Thankfully, you'll remain on your own ship, out of earshot from their constant bickering.`
+			choice
+				`	(Launch the Melchior).`
+					goto launchtime
+				`	(Keep the Melchior on standby).`
+					goto standby
+					to display
+						has "reputation: Republic" < 0
+			label standby
+			`	The Republic is currently hostile towards you. Keeping the Melchior on standby until that is resolved is a wise choice.`
+				defer
+			label launchtime
+			`	The time has come to deliver Melchior to Joseph Welder on Luna.`
 				launch
-
+	on defer
+		set "Melchior on Standby"
+	on accept
+		clear "Melchior on Standby"
 	on enter
 		dialog `The Melchior launches without any issues. Hopefully the journey to Luna in the Sol system will be a quiet and peaceful one.`
-
 	on abort
 		give ship "Prefecture" "Melchior"
 		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the Prefecture ship Melchior to your fleet instead.`
-
 	npc
 		system Ildaria
 		government "Pirate"
@@ -544,13 +580,10 @@ mission "Melchior Delivery"
 		government "Escort"
 		personality launching escort timid
 		ship "Prefecture" "Melchior"
-
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
-
 	on visit Luna
 		dialog phrase "generic arrived-without-npc dialog"
-
 	on complete
 		log `Delivered the Prefecture city ship Melchior to Joseph Welder on Luna. Once all three of the component city ships are delivered, we can combine them into the Metropolis ship, Exodus.`
 		dialog `The Wigglebottoms and their crew will remain on standby with Melchior at Luna. Hopefully they won't drive Joseph insane before you are able to  combine the three city ships into the Metropolis city ship Exodus.`
@@ -616,12 +649,16 @@ mission "Caspar 1"
 	npc	assist accompany
 		system "Alphard"
 		government "Merchant"
-		personality target derelict fleeing
-		ship "Behemoth" "Guiding Star"
+		personality target derelict fleeing marked
+		ship "Behemoth (threshold 50%)" "Guiding Star"
 		dialog `"We were attacked by pirates. Thanks for your help! Could you escort us down to the planet? I'll make sure to reward you once we land."`
 	on complete
 		payment 10000
 		dialog `The captain of the Guiding Star thanks you for your assistance and rewards you with <payment>. "If we'd been able to head north into The Deep, we probably would have been safe from those pirates."`
+
+ship "Behemoth" "Behemoth (threshold 50%)"
+	add attributes
+		"threshold percentage" .5
 
 mission "Caspar 2"
 	landing
@@ -632,11 +669,12 @@ mission "Caspar 2"
 	on offer
 		log `The Caspar was last seen heading towards Follower in the Alphard system. Here, the trail goes cold. My search for this city ship will have to be put on hold until I can find another lead.`
 		conversation
+			scene "outfit/unknown"
 			`"Caspar?" replies the bartender. "Never heard of it."`
-			`	"I know about Caspar." A kid at the corner vending machine speaks up. "It's a ghost ship that terrorizes the far eastern reaches of The Dirt Belt."`
+			`	"I know about Caspar." A kid at the corner vending machine speaks up. "It's a ghost ship that terrorizes the far western reaches of The Dirt Belt."`
 			`	"Aliens!" a one-eyed man yells out. "They took over the ship after it was attacked and are hiding in the void between the hyper space links!"`
 			`	"Don't be ridiculous," interjects a woman with a mo-hawk. "The ship was definitely taken over by Alphas. I'll bet they're hiding somewhere in The Deep."`
-			`	You've been asking around the spaceport while searching for clues to what happened to the Municipality ship. But all the responses conflict in some way. The trail seems to have gone cold here. Perhaps you'll get lucky and stumble upon it again someday. But for now, your search for Caspar has reached a dead end.`
+			`	You've been asking around the spaceport while searching for clues to what happened to the Municipality ship Caspar. But all the responses conflict in some way. The trail seems to have gone cold here. Perhaps you'll get lucky and stumble upon it again someday. But for now, your search for Caspar has reached a dead end.`
 				decline
 
 
@@ -648,7 +686,7 @@ mission "Caspar Capture"
 		not planet "Vesta"
 	destination Vesta
 	to offer
-		has "event: Archipelago reveal"
+		has "Cartography: Quarg Hitchhiker 1: done"
 		has "Caspar 2: declined"
 		has "Balthazar Delivery: done"
 		has "Melchior Delivery: done"
@@ -669,9 +707,7 @@ mission "Caspar Capture"
 				`	"Your crew is already repairing the ship. What do you need me for?"`
 				`	"I'll help, on the condition that you relinquish your ship."`
 					goto recruitment
-			
 			`	"Earning our freedom was a hard battle. There were a lot of deaths on both sides. But what now? Our parents are dead and we have no homes to return to. I'm only captain because I'm the oldest one here."`
-			
 			label recruitment
 			`	"We need guidance and would willingly join your fleet, Captain <last>. However, we demand that all of us be allowed to continue to operate Caspar as its primary crew." From his expression, you can tell he is sincere.`
 			choice
@@ -690,19 +726,45 @@ mission "Caspar Delivery"
 	destination Luna
 	to offer
 		has "Caspar Capture: done"
+		or
+			not "Caspar on Standby"
+			and
+				has "Caspar on Standby"
+				"reputation: Republic" >= 0
 	on offer
 		conversation
 			scene "ship/metro municipality"
-			`Your ships are refueled. It's time to deliver Caspar to Luna and reassemble the Metropolis ship Exodus!`
+			branch retrieval
+				has "Caspar on Standby" 
+			`Your ships are refueled...`
+			choice
+				`	(Launch the Caspar).`
+					goto launchtime
+				`	(Keep the Caspar on standby).`
+					goto standby
+					to display
+						has "reputation: Republic" < 0
+			label standby
+			`	The Republic is currently hostile towards you. Keeping the Caspar on standby until that is resolved is a wise choice.`
+				defer
+			label retrieval
+			`	The Caspar is ready to launch...`
+			choice
+				`	(Launch the Caspar).`
+				`	(Not yet.)`
+					defer
+			label launchtime
+			`	It's time to deliver Caspar to Luna and reassemble the Metropolis ship Exodus!`
 				launch
-
+	on defer
+		set "Caspar on Standby"
+	on accept
+		clear "Caspar on Standby"
 	on enter
 		dialog `The Caspar is flying good as new. Set your heading to Luna in the Sol system before you attract the attention of some pirates.`
-
 	on abort
 		give ship "Municipality" "Caspar"
 		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the Municipality ship Caspar to your fleet instead.`
-
 	npc evade
 		system Lolami
 		government "Bounty Hunter"
@@ -718,19 +780,15 @@ mission "Caspar Delivery"
 		government "Bounty Hunter"
 		personality disables
 		fleet "Hired Guns"
-
 	npc accompany save
 		system Archipelago
 		government "Escort"
 		personality launching escort timid
 		ship "Municipality" "Caspar"
-
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
-
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
-
 	on complete
 		log `Finally delivered the last of the city ship sections to Luna. I look forward to reassembling the metropolis city ship, Exodus.`
 		conversation
@@ -874,6 +932,14 @@ mission "Metropolis 2"
 				names "pirate"
 			variant
 				"Dagger" 3
+
+	npc evade
+		to spawn
+			has "FW Bounty 2: done"
+		system Sol
+		government "Pirate"
+		personality target entering disables
+		ship "Mammoth (Moonless)" "Moonlit Night"
 
 	npc evade
 		to spawn

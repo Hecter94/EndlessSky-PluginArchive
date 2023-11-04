@@ -535,6 +535,20 @@ event "Ionic Leech North"
 	system Oblate
 		add fleet "Small Ionic Leech" 40000
 
+mission "Ionic Leech Oathkeeper Update"
+	landing
+	invisible
+	to offer
+		has "event: oathkeepers founded"
+		has "event: Ionic Leech North"
+	on offer
+		event "ionic leech oathkeeper update"
+		fail
+
+event "ionic leech oathkeeper update"
+	system Rigel
+		add fleet "Small Ionic Leech" 40000
+
 
 
 ship "Astero Nautilus"
@@ -914,8 +928,9 @@ mission "First Contact: Astero Nautilus"
 		personality waiting staying marked mining harvests plunders unconstrained mute
 		ship "Astero Nautilus" "Astero Nautilus"
 		ship "Astero Nautilus B" "Astero Nautilus"
-	on complete
-		event "Astero Nautilus Provoked"
+		on kill
+			event "Astero Nautilus Provoked"
+			fail
 
 event "Astero Nautilus Provoked"
 	system "Pebble Beach"
@@ -1239,10 +1254,45 @@ event "Rock Scavengers Flee Astero Nautilus"
 	system Ildaria
 		add fleet  "Rock Scavenger" 20000
 
+mission "Rock Scavengers Return to Alpha Arae"
+	landing
+	invisible
+	to offer
+		has "event: Rock Scavengers in Dirt Belt"
+		not "event: Rock Scavengers Flee Astero Nautilus"
+		has "main plot completed"
+	on offer
+		event "rock scavengers return to alpha arae"
+		fail
+
+event "rock scavengers return to alpha arae"
+	system "Alpha Arae"
+		add fleet "Rock Scavenger" 20000
+
 mission "Rock Scavenger: Kitchen Delivery"
 	invisible
 	repeat
 	minor
+	substitutions
+		"<recipe>" "Rock Scavenger pizza is"
+		"<recipe>" "Rock Scavenger gumbo is"
+			random < 90
+		"<recipe>" "Rock Scavenger bisque is"
+			random < 80
+		"<recipe>" "Rock Scavenger sushi rolls are"
+			random < 70
+		"<recipe>" "Rock Scavenger sandwiches are"
+			random < 60
+		"<recipe>" "Rock Scavenger tacos are"
+			random < 50
+		"<recipe>" "Grilled Rock Scavenger with guacamole is"
+			random < 40
+		"<recipe>" "Sauteed Rock Scavenger with garlic butter is"
+			random < 30
+		"<recipe>" "Barbecued Rock Scavenger with teriyaki sauce is"
+			random < 20
+		"<recipe>" "Roasted Rock Scavenger with lemon pepper is"
+			random < 10
 	source
 		attributes "paradise"
 	to offer
@@ -1258,28 +1308,48 @@ mission "Rock Scavenger: Kitchen Delivery"
 				`	(Keep the meat.)`
 					defer
 			scene "outfit/rock scavenger meat"
-			`	The restaurant management pays you 1,200,000 credits for a ton of Rock Scavenger meat!`
-			branch "garlic butter"
+			branch 1150000
+				random < 80
+			action
+				outfit "Rock Scavenger Meat" -1
+				payment 1100000
+			`	After some discussion, restaurant management pays you 1,100,000 credits for a ton of Rock Scavenger meat.`
+			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "<recipe> back on the menu!"`
+				decline
+			label 1150000
+			branch 1200000
 				random < 75
-			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "Grilled Rock Scavenger with guacamole is back on the menu!"`
-				accept
-			label "garlic butter"
-			branch "teriyaki sauce"
-				random < 66
-			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "Rock Scavenger sauteed in garlic butter is back on the menu!"`
-				accept
-			label "teriyaki sauce"
-			branch "sushi"
+			action
+				outfit "Rock Scavenger Meat" -1
+				payment 1150000
+			`	After some discussion, restaurant management pays you 1,150,000 credits for a ton of Rock Scavenger meat.`
+			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "<recipe> back on the menu!"`
+				decline
+			label 1200000
+			branch 1250000
 				random < 50
-			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "Rock Scavenger barbecued with teriyaki sauce is back on the menu!"`
-				accept
-			label "sushi"
-			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "Rock Scavenger sushi rolls are back on the menu!"`
-				accept
-	on accept
-		outfit "Rock Scavenger Meat" -1
-		payment 1200000
-		fail
+			action
+				outfit "Rock Scavenger Meat" -1
+				payment 1200000
+			`	After some discussion, restaurant management pays you 1,200,000 credits for a ton of Rock Scavenger meat.`
+			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "<recipe> back on the menu!"`
+				decline
+			label 1250000
+			branch 1300000
+				random < 25
+			action
+				outfit "Rock Scavenger Meat" -1
+				payment 1250000
+			`	After some discussion, restaurant management pays you 1,250,000 credits for a ton of Rock Scavenger meat.`
+			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "<recipe> back on the menu!"`
+				decline
+			label 1300000
+			action
+				outfit "Rock Scavenger Meat" -1
+				payment 1300000
+			`	After some discussion, restaurant management pays you 1,300,000 credits for a ton of Rock Scavenger meat.`
+			`	As you deliver the Rock Scavenger meat to the kitchen, the chef exclaims, "<recipe> back on the menu!"`
+				decline
 
 
 

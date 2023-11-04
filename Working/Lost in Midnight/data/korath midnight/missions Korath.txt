@@ -101,7 +101,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge A"
 	npc kill
 		system "Kor Fel'tar"
 		government "Korath"
-		personality timid staying
+		personality target waiting staying timid
 		fleet
 			names "Seskerat Pratka"
 			cargo 5
@@ -142,7 +142,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge B"
 	npc kill
 		system "Kor Ak'Mari"
 		government "Korath"
-		personality timid staying
+		personality target timid waiting staying
 		fleet
 			names "Eskretakfakta"
 			cargo 5
@@ -181,7 +181,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge C"
 	npc kill
 		system "Kor Nor'peli"
 		government "Korath"
-		personality timid staying
+		personality target timid waiting staying
 		fleet
 			names "Prekaprat Skata"
 			cargo 5
@@ -194,7 +194,7 @@ mission "Midnight Wanderers: Sestor: Final Revenge C"
 
 fleet "Korath Explorers"
 	government "Korath (Civilian)"
-	personality mining harvests surveillance timid coward
+	personality mining harvests timid coward
 	names "korath"
 	cargo 0
 	variant 8
@@ -213,22 +213,29 @@ mission "Midnight: Kor Explorers"
 			scene "thumbnail/korsmanath a-awoj"
 			`You've only barely disembarked from your ship when a shadow passes overhead. It isn't one of those strange crystalline structures floating in this system. It's too large. From the shape of the shadow, you can guess what sort of ship it is.`
 				accept
-	npc kill
+	npc
 		government "Korath (Civilian)"
-		personality waiting staying mining harvests surveillance
+		system Tekochtli
+		personality waiting staying mining harvests
 		fleet
 			names "korath"
 			cargo 3
 			variant 21
-				"Korsmanath A'awoj (Jump)"
 				"'olofez (Expeller)" 13
 				"'olofez (Digger)" 6
 				"'olofez" 5
-		conversation
-			action
-				event "korath defense at tekochtli"
-			scene "thumbnail/korsmanath a-awoj"
-			`You've destroyed the <npc>. This will provoke a response from the Korath. Expect their military ships to start patrolling this region of space.`
+	npc kill
+		government "Korath (Civilian)"
+		system Tekochtli
+		personality waiting staying mining harvests
+		ship "Korsmanath A'awoj (Jump)" "Perelect Entor"
+		on kill
+			event "korath defense at tekochtli"
+			set "Midnight: Kor Explorers: done"
+			conversation
+				scene "thumbnail/korsmanath a-awoj"
+				`You've destroyed the <npc>. This will provoke a response from the Korath. Expect their military ships to start patrolling this region of space.`
+			fail
 
 event "midnight kor explorers"
 	system "Kor Ak'Mari"
