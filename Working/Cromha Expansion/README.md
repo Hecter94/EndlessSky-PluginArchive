@@ -34,24 +34,27 @@ Learn more [about Endless Sky][esweb].
 # About Plugin:
 
 Adds a new civilization to the Korath Space (now named the '[Empire Space](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Regions-of-the-galaxy#the-empire-space)': [The Cromha Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Cromha-Empire). Also known as 'The Empire', it is a government that dirige a huge part of the north of the Milky Way. It also a very high advanced government. They are human but don't directly have contact with human Merchants, they have contact with the Syndicate, the Republic but they don't allow them to enter their territory. Know more about the plugin in the [wiki](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki)! (or test the game yourself) Also, there is another empire that is set up next to the Paradise Planets. It is called the [Lumbarian Empire](https://github.com/OcelotWalrus/Cromha-Expansion-plugin/wiki/Lumbarian-Empire).
+
 **Please do not use this plugin with your existing saves! This plugin is highly beta and it could corrupt your saves or make them unusable!**
+
+*I want to clarify that this plugin is no made to be compatible with any plugin, to prevent your save to be corrupted, only play with this plugin with a specific save just for the plugin.*
 
 ## This plugin:
 
-* Adds governments that are related to the vanilla storyline (kind of).
+* Adds governments, factions and species that are related to the vanilla storyline (kind of).
 * Expand various civilizations:
-  * Quarg
-  * Drak
-  * Pug
-  * Remnant
-  * Ka'Het
-  * Kor Automatons (Kor Mereti and Kor Sestor)
-  * Korath
+  * Quarg (expand weapons with different category with tiers, large new variety of ships, new systems and new lore)
+  * Drak (new outfits and systems as well as lore)
+  * Pug (new outfits, new lore and new systems)
+  * Remnant (new colony living in the Empire Space and in the Sentar Galaxy, new outfits and new ships)
+  * Ka'Het (new outfits, ships and systems)
+  * Kor Automatons {Kor Mereti and Kor Sestor} (new outfits, new ships and new systems)
+  * Korath (new lore, new systems, new outfits and new ships)
 * The Lumbarian Empire that wants to replace the Republic and the Free Worlds and the Syndicate
 * The storyline that the plugin adds is made so it is the most similar possible to the vanilla one.
-* Add new outfits and ships from different governments.
+* Add new outfits and ships from different governments and factions and species.
 * Expands upon the existing map for exploration (New Systems in the north of the galaxy and near the Deep Space).
-* Adds a new galaxy where there is Sheragi is but it is still in work.
+* Adds a new galaxy where there is the Sheragi civilization.
 
 # Contributing
 
