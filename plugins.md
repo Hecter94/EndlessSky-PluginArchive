@@ -6450,15 +6450,15 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
-### Arion
-<img src='Working/Arion/icon.png' height='100'></img><br>
+### Arion - Air Superiority
+<img src='Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.zip) | 2.96 mb | 2023-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion/) <br>
-Author: Spectre907YT | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-11-01) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 2.97 mb | 2023-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+Author: Spectre907 | Category: Races <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2023-11-07) <br>
 
->Adds a faction (or 2) that supplies real life fighters and other interesting stuff.
+>Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
 
 <details>
@@ -6498,7 +6498,7 @@ There are also some bonus content if you have the lost in midnight, mega freight
 </blockquote>
 </details>
 
-Status: Should work in Continuous/0.10.2 <br>
+Status: Should work in Continuous/0.10.3+ <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -7241,9 +7241,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-11-05) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-11-07) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
