@@ -65,12 +65,13 @@ mission "First Contact: Naltok (Telashki)"
 			`	The Naltok joins in before you can respond "My name is Choshkal."`
 				goto choshkal
 			label tellname
-			`	The Alpha smiles. "My name is Izarna. This is Choshkal, a friend of mine from the Ministry of Alien Life."`
+			`	The Alpha smiles. "My name is Izarna. This is Choshkal, a friend of mine from the Ministry of Alien Life. If you wish to know more, visiting the Ministry on Kutora would be a good idea."`
 			label choskal
 			`	Choshkal's expression changes in what you presume is the Naltok equivalent of a smile "Anyways, I would like to welcome you to our space on behalf of the Ministry of Alien Life. We hope you have a good time here, and there are probably many things you can help us with."`
 			`	Choshkal says something to the onlookers in the Naltok language and the crowd disperses, leaving you free to wander the planet.`
 				decline
 	on enter
+		event "telashki ministry names"
 		"reputation: Telashki" <?= -10
 #		"reputation: Xochira" >?= 0
 		log "Factions" "Telashki" `The Telashki govern the north of Naltok space. They are apparently harbouring at least one Alpha, though you did not have the opportunity to learn more.`
@@ -79,12 +80,19 @@ mission "First Contact: Naltok (Telashki)"
 		log `Encountered an amphibian-like alien species called the Naltok to the west of the Deep. Met an Alpha there, and escaped alive, but angered the 'Telashki' in the process.`
 		fail
 	on decline
+		event "telashki ministry names"
 		log "Factions" "Telashki" `The Telashki govern the north of Naltok space. They are harbouring several Alphas, all of whom arrived prior to the Xochira's formation and are now trapped. The central governing body of their society appears to be the "ministries", one of which is the Ministry of Alien Life.`
 		log "Factions" "Xochira" `According to the Telashki, the Xochira are a group of "xenophobes and technophobes" who control the south of Naltok space. Whatever their nature, they attacked you when you first entered their space.`
 		log "Factions" "Naltok" `The Naltok are a species of aliens living on the westernmost fringes of the galaxy. They resemble newts, or perhaps salamanders or toads, and seem to prefer to live in relatively damp conditions - most of their living spaces are wholly or partially flooded with water. Their space is divided between two rival factions, the Telashki in the north and the Xochira in the south.`
 		log "People" "Izarna" `Izarna is an Alpha living in Telashki space, who apparently arrived before the Xochira split off from the rest of the Naltok and is now trapped there.`
 		log "Minor People" "Choshkal" `A member of the Ministry of Alien Life who greeted you when you first arrived in Telashki space.`
 		log `Encountered an amphibian-like alien species called the Naltok to the west of the Deep. Met an Alpha who is living in their space, and had a fairly pleasant meeting - she is apparently trapped there due to the 'Xochira'.`
+
+event "telashki ministry names"
+	government "Telashki (Ministry of War)"
+		"display name" "Ministry of War"
+	government "Telashki (Ministry of Transport)"
+		"display name" "Ministry of Transport"
 
 mission "First Contact: Naltok (Xochira)"
 	boarding
@@ -167,6 +175,7 @@ mission "First Contact: Naltok (Xochira)"
 			`	You reach for your gun and pull the trigger. The alien stumbles and falls down, apparently dead.` 
 			`	Perhaps things could have ended differently, but any chance of peace between you and these aliens is now gone. All that remains now is to continue with your plans to either loot or steal this ship.`
 				decline #todo: have the boarded ship lose one crew member here
+			label peacesuccess
 	on accept
 		"reputation: Xochira" >?= 1
 	on fail

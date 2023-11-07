@@ -8,6 +8,33 @@
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
+mission "Telashki: Ally Against Quarg"
+	landing
+	invisible
+	to offer
+		or
+			"reputation: Quarg (Naltok)" < -100
+			has "ship model: Quarg Skylark"
+			has "ship model: Quarg Wardragon"
+	source
+		government Telashki
+	on offer
+		"reputation: Telashki" += 150
+		"reputation: Telashki (Ministry of War)" += 150
+		"reputation: Telashki (Ministry of Transport)" += 150
+		conversation
+			`As you step off your ship, you are greeted by a group of Naltok wearing the uniform of the Ministry of War.`
+			choice
+				`	"Why don't you like the Quarg?"`
+					goto explain
+				`	"Thank you."`
+				`	"It wasn't just me. I was fighting alongside the Heliarchs."`
+					to display
+						has "joined the heliarchs" #todo: move this to whatever point in the heliarch campaign the Quarg become hostile
+					goto heliarchs
+				decline
+			
+
 mission "Telashki: Bright Star Biophotovoltaics: Mist"
 	name `Star Research`
 	description `Travel to <waypoints>, and observe the way that your Mist Cell behaves in the bright starlight.`
