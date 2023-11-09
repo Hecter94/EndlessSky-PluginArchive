@@ -667,3 +667,255 @@ mission "Empire: Colony Importation2"
 	on complete
 		dialog "You land on <destination> and succesfully complete your mission."
 		log "Empire Workforce" "LOG" "You transported 15 Hai colony workers to the brand new Kalisty colony, Lifdot. You got credited 2.3M credits by the Hai Emperor himself."
+
+mission "Empire: Attack Heliarch"
+	name "Empire: Attack Coalition Heliarch"
+	description "Go to Stilfa, Kalisto to stopover and meet the Quarg covets then go to the Quaru system in the Coalition Space to destroy Heliarch fleet and land on Flastub, Kalisto."
+	landing
+	stopover "Stilfa"
+	destination "Flastub"
+	to offer
+		has "Empire: Colony Importation2: done"
+		random < 50
+	source
+		government "Cromha Empire" "Mineria Colonies" "Quarg" "Hai" "Wanderer"
+	on offer
+		dialog "You receive a notification from the Empire Workforces and they need you for an urgent mission: 'go to Stilfa, Kalisto to stopover and meet the Quarg covets then go to the Quaru system in the Coalition Space to destroy Heliarch fleet and land on Flastub, Kalisto.'"
+	on stopover
+		dialog "You quickly meet the Quarg covets and launch right after"
+		"spawn quarg fleet" += 1
+	on complete
+		log "Empire Workforce" "LOG" "You attacked a whole Heliarch system Quaru with the help of Quarg covets."
+		dialog "You successfully completed your mission but did not get any payment. They said you should receive a special outfit in a few days."
+		"spawn quarg fleet" -= 1
+	npc kill
+		government Heliarch
+		personality target vindictive staying
+		system Quaru
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		fleet Heliarch
+		dialog "All the Heliarch targets have been eliminated."
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet Quarg
+		fleet Quarg
+		fleet Quarg
+		fleet Quarg
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet Quarg
+		fleet Quarg
+		fleet Quarg
+		fleet Quarg
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet Quarg
+		fleet Quarg
+		fleet Quarg
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet "Large Quarg"
+		fleet "Large Quarg"
+		fleet "Large Quarg"
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet "Large Quarg"
+		fleet "Large Quarg"
+		fleet "Large Quarg"
+	npc
+		system Kalisto
+		to spawn
+			"spawn quarg fleet" == 1
+		government Quarg
+		personality target
+		fleet "Quarg Protectionist"
+		fleet "Quarg Protectionist"
+		fleet "Quarg Protectionist"
+
+mission "Empire: Get Detonator Engines Prototypes"
+	name "Empire: Escort Mineria Supply Covet"
+	description "Land on Flastub, Kalisto to meet the Mineria Colonies covet and escort them to <destination> to supply the Lifdot Industries in Empire Detonator Engines prototypes. Payment is <payment>."
+	landing
+	stopover "Flastub"
+	destination "Crodust"
+	source
+		not attributes uninhabited
+	to offer
+		has "Empire: Attack Heliarch: done"
+		random < 20
+	on offer
+		dialog "You get a notification from the Empire Workforces, it says you need to immediately land on Flastub, Kalisto. You do not get further information but it seems to be urgent."
+	on stopover
+		dialog "You land on Flastub, Kalisto and see a whole Mineria Colonies covet waiting for you. They say they need you to safely get them to <destination>. They'll pay you <payment>."
+		"spawn mineria covet" += 1
+		"spawn enemies covets" += 1
+	on complete
+		log "Empire Workforce" "LOG" "You escorted an huge Mineria Colonies covet to <destination> and successfully defeated a Lumbarian Navy Fork-Class Destroyer"
+		dialog "You succeeded in completing the mission and you get paid <payment>."
+		"spawn mineria covet" -= 1
+		"spawn enemies covets" -= 1
+		payment
+		payment 650320
+		event "Empire Detonator Engines Appears"
+	npc
+		government "Empire Rebels"
+		personality target
+		system
+			government "Empire Rebels"
+		to spawn
+			"spawn enemies covets" == 1
+		fleet empire-rebels-merchants
+		fleet empire-rebels-merchants
+		fleet empire-rebels-merchants
+	npc
+		government "Empire Rebels"
+		personality target
+		system
+			government "Empire Rebels"
+		to spawn
+			"spawn enemies covets" == 1
+		fleet empire-rebels-raiders
+		fleet empire-rebels-raiders
+		fleet empire-rebels-raiders
+	npc kill
+		government "Lumbarian Empire"
+		personality target staying
+		system "Lifdot"
+		to spawn
+			"spawn enemies covets" == 1
+		fleet "Fork-Class"
+		dialog "The last Lumbarian Empire ship has been destroyed. You can land on <destination>."
+	on enter "Lifdot"
+		dialog "You enter the Lifdot system but you immediately detect a huge signal... A Lumbarian Navy Fork-Class Destroyer seems to be waiting for the Mineria Colonies supply covet! You'll need to destroy it before landing on <destination>."
+	npc save
+		government "Mineria Colonies"
+		personality escort timid
+		to spawn
+			"spawn mineria covet" == 1
+		fleet mineria-transports
+		fleet mineria-transports
+		fleet mineria-transports
+
+mission "Empire: Collect Resources3"
+	name "Empire: Collect Resources"
+	description "To help setting up a new colony in the Lifdot system, collect the following resources: 16 tons of silver, 4 tons of Quatalant and 10 tons of copper. You'll get a special outfit in you succeed. Then land on <destination>."
+	destination "Dragon Station"
+	deadline 33
+	landing
+	source
+		government "Cromha Empire" "Mineria Colonies"
+	to offer
+		has "Empire: Get Detonator Engines Prototypes: done"
+		random < 15
+	on offer
+		dialog "You receive a new mission from the Empire Workforces: you have to collect 16 tons of silver, 4 tons of Quatalant and 10 tons of copper. Then land at <destination>."
+	on complete
+		outfit "Silver" -16
+		outfit "Copper" -10
+		outfit "Quatalant" -4
+		outfit "Empire Nuke Fabricator" 1
+		event "Lifdot Colonization2"
+		payment
+		payment 25000
+		dialog "You succeeded in the missions and you got an Empire Nuke Fabricator and got paid <payment>."
+
+mission "Empire: Sarbutaro Colonization"
+	name "Empire: Sarbutaro Colonization"
+	description "Escort a mobile Mineria Colonies refinery station to the Sarbutaro system. Protect the station from getting attacked by any way. Land on <destination> to get your payment of <payment>."
+	landing
+	destination "Solima Skarati"
+	source
+		government "Cromha Empire" "Mineria Colonies"
+	to offer
+		has "Empire: Collect Resources3: done"
+		random < 15
+	on offer
+		conversation
+			`After landing on <origin>, you see a huge mobile Mineria Colonies station. You decide to approach the station and to dock on it to take a loot and see if you can give some help. You dock on the station and go talk to the nearest Empire authorities that seems to play some card game together. You ask them:`
+			`	"Hey! I've just landed and what to know if I can give some help!"`
+			`They answer:`
+			`	"Hey! Is this beautiful Empire Hydra is yours?"`
+			choice
+				`"Yes, I'm very proud of it"`
+					goto next
+				`"No, it's not mine"`
+					decline
+			label next
+			`"You still want to help? Because I think you're the perfect guy for us. We're searching for some war captain that would be able to escort by himself this station to <destination> without getting attack by Kor Mereti fleets."`
+			choice
+				`"Yes! I would love too."`
+					goto next2
+				`"How much would I got paid?"`
+					goto next2
+				`"Sorry, does not sounds like me"`
+					decline
+			label next2
+			`"Great! Well, first you'll get paid <payment>. This mission consist on escorting this station to <destination> without getting it destroyed by some Kor Mereti covets. They will be tons on the way. Wish you good luck!"`
+				accept
+	on complete
+		payment
+		payment 3200000
+		dialog "You succeeded in your mission. You got paid <payment>."
+		log "Empire Workforce" "LOG" "You escorted a Mineria Colonies mobile station to <destination> and helped to set it up in the system."
+		event "Quaru'y Refinery Appears"
+	npc save
+		personality escort
+		government "Mineria Colonies"
+		ship "Quaru'y Refinery"
+	npc evade
+		government "Kor Mereti"
+		personality target
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		system
+			government "Kor Mereti"
+	npc evade
+		government "Kor Mereti"
+		personality target
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		system
+			government "Kor Mereti"
+	npc evade
+		government "Kor Mereti"
+		personality target
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		fleet "Large Kor Mereti"
+		system
+			government "Kor Mereti"
+
