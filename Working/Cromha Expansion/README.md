@@ -11,7 +11,7 @@
 This is a plugin for the free, open-source game [Endless Sky][es]. This plugin
 is developed and tested against the [Endless Sky continuous][continuous] build.
 Learn more [about Endless Sky][esweb].
-**You can join the discord server [here](https://discord.gg/tafa8dVH5Q)** if you want to discuss about the plugin or ask more in depth questions to me.
+**You can join or create any discussion [here](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/discussions)** if you want to discuss about the plugin or ask more in depth questions to me.
 
 
 <details>
