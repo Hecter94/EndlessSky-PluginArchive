@@ -919,3 +919,63 @@ mission "Empire: Sarbutaro Colonization"
 		system
 			government "Kor Mereti"
 
+mission "Empire: Assist Z.KA-85 Enterprise"
+	name "Empire: Assist Z.KA-85 Enterprise"
+	description "An old Z.KA-85 Enterprise ship dating from the very starts of The Empire has been detected in the Celeborim system. Assist them and make them safely land on <destination>. Payment is <payment>."
+	landing
+	destination "Crodust"
+	source "Empire Listening Station"
+	to offer
+		has "Empire: Sarbutaro Colonization: done"
+	on offer
+		conversation
+			`You land on <origin> and go out of your ship to try to find the empire scientist that once gave you missions about Void Sprites. You search everywhere in the station but can't find him. You decide to enter on a corridor of all the labs. You open the blast door of a room that you remember to be the lab of the scientist.`
+			`You finally find him and you both greets.`
+			`"Hey! It's been a very long time!" you say, "How the researches are going since then?".`
+			`"Very good! We've actually almost finished the first prototype of the Black Manta." A ringing sound seems to come from the whole station. Then a great voice come out of the speakers and says:`
+			`"ALERT! Every ship in the spaceport has to go to the Celeborim system by now to assist a ship!"`
+			`The scientist says to you:`
+			`"I've just go a message from the Cromha Emperor: an very old ship prototype dating from the very start of The Empire has been discovered in the Celeborim system in the Kor Sestor systems. It's the Z.KA-85 Enterprise, a prototype that after leaded to todays Empire Dredger. Every ship is the spaceport has to help us assisting this ship who is being attacked. I'm awared of your warship and captain skills. Would you like to lead us?"`
+			choice
+				`accept`
+					launch
+				`decline`
+					goto decline
+			label decline
+			`"Oh..."`
+				decline
+	on complete
+		payment
+		payment 30000000
+		dialog "You succeeded in your mission and you got paid <payment> from the Cromha Empire himself and some of the empire scientists."
+		log "Empire Workforce" "LOG" "You assisted an old derelict Empire Z.KA-85 Enterprise dating from the very start of The Empire."
+	on enter "Celeborim"
+		dialog "You can see the Enterprise on your radar. Time to save him from the Kor Sestors. You see some Empire Navy fleet enter the system too."
+	on accept
+		dialog "You can see a few scientists on their ships willing to come with you."
+	npc save
+		government "Cromha Empire"
+		personality timid launching escort
+		ship "Arbiter (keystone)" "The James"
+		ship "Sunder (keystone)" "Dread's Careful"
+	npc save
+		government "Cromha Empire"
+		personality timid launching escort
+		ship "Sunder (keystone)" "Crisis Deflector"
+	npc save assist
+		government "Mineria Colonies"
+		personality timid derelict escort
+		ship "Empire Z.KA-85 Enterprise" "Z.KA-85 Enterprise"
+		system "Celeborim"
+	npc
+		government "Cromha Empire"
+		personality entering uninterested staying
+		system "Celeborim"
+		fleet cromha-fleet-protectionist
+	npc
+		government "Kor Sestor"
+		personality target uninterested staying
+		fleet "Large Kor Sestor"
+		fleet "Large Kor Sestor"
+		system "Celeborim"
+

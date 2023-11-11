@@ -1,0 +1,50 @@
+mission "NCD Side: NCD Outpost"
+	name "NCD Outfits"
+	outfitter
+	source
+		planet "Zug" "Wayfarer" "Geminus" "Sunracer" "Farpoint"
+	to offer
+		or
+			has "First Contact : NCD Alternate: declined"
+			has "First Contact : NCD: declined"
+		not "event: Arion leaves"
+	on offer
+		conversation
+			`	While exploring the outfitter, you see some NCD outfits.`
+			choice
+				`	(Ask about it)`
+				`	(Ignore it)`
+					defer
+			branch hostile
+				"reputation: Merchant" <= -100
+			`	You ask one of the employees in the outfitter about the NCD outfits. They tell you to ask one of the soldiers guarding the outfitter for more information. When you approach the soldier you see that he is using an NCD guard uniform and is carrying a conventional assault rifle. After asking him about the the outfits he explains that NCD has outposts across human space to allow NCD customers to purchase more ammunition easily. You thank him for his time and leave.`
+				decline
+			label hostile
+			`	Before you have a chance to react, you hear a bang come from behind you before everything goes dark.`
+				die
+	on decline
+		event "NCD outpost access"
+		log "Found some smaller NCD outposts selling H2H weapons and ammo."
+
+mission "NCD Side: NCD Stolen Gear"
+	name "Stolen Weapons"
+	outfitter
+	source 
+		planet "Trinket" "Greenrock" "New Tortuga" "Freedom" "Haven" "Zenith" "Bloodsea" "Thule"
+	to offer
+		or
+			has "First Contact : NCD Alternate: declined"
+			has "First Contact : NCD: declined"
+	on offer
+		conversation
+			`	While exploring the outfitter, you see some NCD outfits.`
+			choice
+				`	(Ask about it)`
+				`	(Ignore it)`
+					defer
+			`	You ask one of the employees in the outfitter about the NCD outfits. They laugh and tell you that they have managed to steal these weapons and have even managed to reverse engineer some of them. They then continue their business.`
+				decline
+	on offer
+		event "NCD stolen access"
+	on decline
+		log "Some pirates have managed to steal and even reverse engineer some NCD outfits."

@@ -27,7 +27,7 @@ mission "First Contact : NCD"
 				`	(Land)`
 				`	(Maybe next time)`
 					defer
-			`	You proceed to land at the designated landing zone. When you land, you see that the complex is composed of a large central building with a landing zone for spacecraft in front of it with multiple large hangars. There is also a small parking area near it filled with armed vehicles which you assume belongs to the complex. There is also a heliport and airport next to the building. It is filled with fighters and both cargo and armed helicopters.`
+			`	You proceed to land at the designated landing zone. When you land, you see that the complex is composed of a large central building with a landing zone for spacecraft in front of it with multiple large hangars. There is also a small parking area near it filled with armed vehicles which you assume belongs to the complex. There is also a heliport and airport next to the building. It is filled with fighters and helicopters.`
 			`	You then see 3 people approaching you. 2 of them are armed with rifles, while the man in the center is wearing a business suit. While he appears unarmed, you can see a slight bulge in his suit which you assume is a weapon.`
 			`	"Hello Captain," the man with the suit introduces himself. "I am Sergei, the Manager of the National Combined Defense co. We are a relatively small company selling a lot of equipment ranging from firearms to large spacecraft. While we may be relatively unknown company, the effectiveness of our products makes it very favoured by anyone who knows of our existence." Sergei then stops talking for a few seconds before suddenly asking for your name. "Sorry Captain, it appears that i was too busy advertising the company to you that i forgot to ask for your name."`
 			choice
@@ -125,8 +125,9 @@ mission "NCD: Low Threat Contract 1"
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		has "First Contact : NCD: declined"
+		random < 75
 		"ncd contracter" >= 3
+		has "First Contact : NCD: declined"
 		not "First Contact : NCD Alternate: declined"
 		not "event: Arion leaves"
 	on offer
@@ -243,8 +244,9 @@ mission "NCD: Medium Threat Contract 1"
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		has "NCD: Low Threat Contract 3: done"
+		random < 75
 		"ncd contracter" >= 5
+		has "NCD: Low Threat Contract 3: done"
 		not "First Contact : NCD Alternate: declined"
 		not "event: Arion leaves"
 	on offer
@@ -364,8 +366,9 @@ mission "NCD: High Threat Contract 1"
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		has "NCD: Medium Threat Contract 3: done"
+		random < 75
 		"ncd contracter" >= 8
+		has "NCD: Medium Threat Contract 3: done"
 		not "First Contact : NCD Alternate: declined"
 		not "event: Arion leaves"
 	on offer
@@ -470,12 +473,13 @@ mission "NCD: High Threat Contract 3"
 		dialog phrase "generic hunted bounty eliminated dialog"
 	on complete
 		payment "700000"
+		set "license: NCD Platinum"
 		"salary: NCD co" += 1500
 		log "Completed more NCD High Value contracts. Was once again told to do more job board contracts."
 		conversation
 			`	When you land, you are once greeted again by Sergei and his 2 bodyguards.`
 			`	"Unsurprisingly, you are able to complete all of our large High Value contracts. As usual, if you want more you need to do more of our job board missions. Also, we have decided to increase your salary even more to help you fund a larger fleet."`
-			`	"Alright then Tovarisch," Sergei says as his Mi-35 lands behind him, "I will have to go now to find out more information about some of your recent contracts. We will have to get to the bottom of this. See you next time Tovarisch," Sergei says as he enters the helicopter. After entering, he closes the door and the helicopter takes off.`
+			`	"Alright then Tovarisch," Sergei says as his Mi-35 lands behind him, "I will have to go now to find out more information about some of your recent contracts. We will have to get to the bottom of this. Also, due to your performance, we have decided to give you our Platinum license so that you can access better equipment. See you next time Tovarisch," Sergei says as he enters the helicopter. After entering, he closes the door and the helicopter takes off.`
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -488,8 +492,9 @@ mission "NCD: Low Threat Fleet Contract"
 	source
 		planet "Earth" "Bourne" "Valhalla" "Hephaestus"
 	to offer 
-		has "NCD: High Threat Contract 3: done"
+		random < 75
 		"ncd contracter" >= 12
+		has "NCD: High Threat Contract 3: done"
 		not "First Contact : NCD Alternate: declined"
 		not "event: Arion leaves"
 	on offer
@@ -628,13 +633,12 @@ mission "NCD: High Threat Fleet Contract"
 	on complete
 		set "NCD Contractor"
 		set "license: NCD Contractor"
-		set "license: NCD Platinum"
 		payment "10000000"
 		"salary: NCD co" += 2000
 		log "Completed the last NCD co High Value contracts. Was told to expect someone to contact me."
 		conversation
 			`	When you land you are immediately greeted by Sergei and his 2 bodyguards. He looks surprised and excited.`
-			`	"I should have known that you would be alright Tovarisch! You are probably one of the most talented people i have ever worked with! As such, i will give you not only our NCD Platinum license, but also our Contractor license. We have also increased your salary. I have a feeling that i might now someone who would have a use for someone with your talents. Expect them to contact you very soon. See you next time Tovarisch."`
+			`	"I should have known that you would be alright Tovarisch! You are probably one of the most talented people i have ever worked with! As such, i will give you our NCD Contractor license. We have also increased your salary. I have a feeling that i might now someone who would have a use for someone with your talents. Expect them to contact you very soon. See you next time Tovarisch."`
 			`	Sergei and his 2 bodyguards then start walking to his Mi-35. When you check your account you see that <payment> has been added to your account.`
 	on fail
 		dialog `You have failed/aborted an essential NCD mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
