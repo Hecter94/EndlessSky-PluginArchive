@@ -19,6 +19,7 @@ Learn more [about Endless Sky][esweb].
   <summary>Summary</summary>
 
 * [About plugin](#about-plugin)
+    * [Gameplay Images](#gameplay-images)
     * [This plugin](#this-plugin)
 * [Contributing](#contributing)
 * [Development status](#development-status)
@@ -38,6 +39,31 @@ Adds a new civilization to the Korath Space (now named the '[Empire Space](https
 **Please do not use this plugin with your existing saves! This plugin is highly beta and it could corrupt your saves or make them unusable!**
 
 *I want to clarify that this plugin is no made to be compatible with any plugin, to prevent your save to be corrupted, only play with this plugin with a specific save just for the plugin.*
+
+## Gameplay Images
+
+<details>
+
+  <summary>Gameplay Images</summary>
+
+![Screenshot from 2023-11-12 15-18-12](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/0f2c0321-9069-4fdd-a10e-0315e80a5be2)
+![Screenshot from 2023-11-12 15-17-56](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/7612c87e-12af-402c-a6db-4280a7e856bb)
+![Screenshot from 2023-11-12 15-17-06](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/fa3e45ee-6f28-49e8-ac4d-d25a4482543a)
+![Screenshot from 2023-11-12 15-19-18](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/3278b930-375e-490c-a23a-98ea227beaa4)
+![Screenshot from 2023-11-12 15-20-19](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/0bb1fd62-792d-4a40-a8be-c1f2ab86ab6c)![Screenshot from 2023-11-12 15-26-03](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/f531a15d-f295-4601-8dc9-5ca043302b3e)
+![Screenshot from 2023-11-12 15-25-53](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/6d24c1bb-8ab6-4a4f-8b9a-1bd466c793c1)
+![Screenshot from 2023-11-12 15-25-47](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/729c4ab9-dbb5-4333-acd3-0e4c8b7e5797)
+![Screenshot from 2023-11-12 15-25-42](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/1b6b884c-daf4-4b8c-9686-42f3f54d4442)
+![Screenshot from 2023-11-12 15-25-34](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/43878094-3e1e-4c39-848e-07760e4346eb)
+![Screenshot from 2023-11-12 15-22-54](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/244e12f9-f110-44b0-bbf4-45344d34a721)
+![Screenshot from 2023-11-12 15-22-50](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/25961eec-20cd-4eb0-b433-e04713235db0)
+![Screenshot from 2023-11-12 15-22-27](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/37ced000-d985-481f-8c98-58ef571c25b7)
+![Screenshot from 2023-11-12 15-22-10](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/76661b7b-bd5f-4830-8b18-424a1cfcdc5c)
+![Screenshot from 2023-11-12 15-21-02](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/9016d6fd-09d2-409d-be2e-db977addb336)
+![Screenshot from 2023-11-12 15-20-37](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/c59e5fc7-be95-4df3-94df-fb5ece5bbeea)
+![Screenshot from 2023-11-10 18-51-46](https://github.com/Cromha-Plugins/Cromha-Expansion-plugin/assets/87318892/d874ec67-1530-4e22-9340-1c6e8d5de687)
+
+</details>
 
 ## This plugin:
 
