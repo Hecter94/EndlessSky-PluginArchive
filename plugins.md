@@ -7241,9 +7241,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-11-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-11-07) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-11-13) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -8319,9 +8319,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Czartraks Ship Pack
 
 
-[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | 13.01 mb | 2023-11-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Czartraks%20Ship%20Pack/) <br>
+[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | 13.01 mb | 2023-11-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Czartraks%20Ship%20Pack/) <br>
 Author: Czartrak | Category: Ships <br>
-[https://github.com/czartrak/Czartraks-Ship-Pack](https://github.com/czartrak/Czartraks-Ship-Pack) (last commit 2023-11-12) <br>
+[https://github.com/czartrak/Czartraks-Ship-Pack](https://github.com/czartrak/Czartraks-Ship-Pack) (last commit 2023-11-13) <br>
 
 >This mod adds various new ships to Endless Sky.
 >
