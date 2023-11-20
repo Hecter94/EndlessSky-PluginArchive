@@ -1322,3 +1322,329 @@ event "blight terrors in sayaiban"
 		add fleet "Small Blight Horror" 30000
 		add fleet "Small Blight Terror" 20000
 
+
+
+
+#****************************
+#*
+#* Bonus Missions
+#*
+#****************************
+
+mission "Midnight Titania Blight Shadow Cancel"
+	landing
+	invisible
+	to offer
+		has "event: Shadowblight Human"
+		has "event: titania station construction a"
+	on offer
+		event "Shadowblight Cancel Eteron"
+		fail
+
+event "Shadowblight Cancel Eteron"
+	system Eteron
+		remove fleet "Large Blight Shadow"
+
+mission "Midnight Titania Blight Shadow Hatchlings"
+	landing
+	invisible
+	deadline 2
+	to offer
+		has "event: Shadowblight Human"
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+	on offer
+		conversation
+			`After finishing your business here, you notice an open doorway leading into restricted areas of the facility. You may not get another chance to see what lies beyond once the station is fully operational.`
+			choice
+				`	(Explore.)`
+				`	(Ignore.)`
+					decline
+			`	You walk through the doorway into empty hallways and dark corridors. No security guards are here to stop you. After a while, you get lost.`
+			choice
+				`	(Call out for help.)`
+				`	(Try to find your way back.)`
+					goto search
+			`	Your voice echoes through the empty passages. The silence that replies is filled with an eerie sense of loneliness.`
+			label search
+			`	You stumble down a dark corridor, hoping it will lead the way back to your ship when you suddenly hear a scream! That wasn't an echo...`
+			choice
+				`	(Run towards the sound.)`
+				`	(Run away.)`
+					goto return
+			`	You rush in the direction you think the scream originated. This leads you to a scattered pile of tools sitting in front of a sealed emergency blast door. Black slime oozes around the door's seams...`
+			label door
+			choice
+				`	(Try to force the door open.)`
+				`	(Knock on the door.)`
+					goto knock
+				`	(Run away.)`
+					goto return
+			`	You strain against the door to no avail. Some of the black slime smears you...`
+			choice
+				`	(Try using the tools scattered on the floor.)`
+				`	(Knock on the door.)`
+					goto knock
+				`	(Run away.)`
+					goto return
+			`	Looking through what's available, you find a laser cutter and begin cutting through the blast door. After several long minutes, you manage to poke a small hole into the door. The sound of air rushing into the hole can only mean one thing: The other side of the door is exposed to the external void of space! With some effort, you manage to weld the hole shut.`
+			choice
+				`	(Run away.)`
+					goto return
+			label knock
+			`	You knock on the door. There is no reaction.`
+				goto door
+			label return
+			`	You begin running away from the slime splattered door. After what seems like hours, you make it back to the docking bay where the <ship> sits undisturbed.`
+			choice
+				`	(Try to contact station management.)`
+				`	(Do nothing.)`
+					accept
+			`	Your attempt to contact station management is successful. They inform you that a hull breach has occured on another section of the station and they are working to contain it. There is nothing more for you to do.`
+				accept
+	npc kill
+		government "Invasive Predator"
+		personality fleeing disables unconstrained mute
+		fleet "Small Blight Hatchling"
+		on kill
+			fail
+
+mission "Midnight Titania Docking Bay 13"
+	landing
+	invisible
+	to offer
+		has "event: titania station construction d"
+		has "event: Shadowblight Human"
+	on offer
+		event "midnight titania docking bay 13"
+	on enter Eteron
+		dialog "Titania Station sends out a general notice: Docking Bay 13 is currently closed for maintenance. All ships visiting the station are advised to use the other docking bays."
+		fail
+
+event "midnight titania docking bay 13"
+	system Eteron
+		add fleet "Small Blight Shadow" 50000
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8
+				distance 122
+				period 25
+			object "Docking Bay 13"
+				distance 122
+				period 25
+				offset 45
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+
+planet "Docking Bay 13"
+	attributes uninhabited
+	landscape land/midnight-sivael9dark
+	music ambient/derelictB
+	description `Unexplained power failures at Titania Station have reignited rumors that someone died during the station's construction. Strangely, the management has sealed off Docking Bay 13 and the areas connected to it rather than solve whatever is causing these outages. This has only fueled stories of ghosts haunting these dark abandoned passageways.`
+	government "Uninhabited"
+
+
+
+mission "Midnight Docking Bay 13 Investigation"
+	landing
+	name "Docking Bay 13"
+	description "Investigate the Power Generator attached to <stopovers>. Report your findings to <origin> to collect payment. (<payment>)"
+	source "Titania Station"
+	stopover "Docking Bay 13"
+	to offer
+		"combat rating" > 8000
+		has "event: midnight titania docking bay 13"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Some time after landing, one of the station managers approaches you. "Captain <last>? Would you be able to take on a job only courageous captains like yourself can handle?"`
+			choice
+				`	"Depends on the pay."`
+				`	"What sort of job?"`
+					goto job
+				`	"Not interested."`
+					decline
+			`	"Quite a lot, actually. How does <payment> sound?"`
+			choice
+				`	"What's the catch?"`
+				`	"Not interested."`
+					decline
+			label job
+			`	"If you recall, Docking Bay 13 is currently not in use. The power to that section of the station is out. But our engineers have been unable to figure out why. We would like you to head over there and check things out."`
+			choice
+				`	"I'm a starship captain, not an engineer."`
+				`	"Why doesn't your staff just go there?"`
+			`	He hesitates before answering. "Well, you see, there are rumors that someone died during the construction of the station. And now people are afraid that a ghost is haunting that section. We don't actually expect you to fix the problem. Just verify that it's safe."`
+			choice
+				`	"Alright, I'll check it out."`
+				`	"Not interested."`
+					decline
+			`	"Excellent! The internal security doors to that area are sealed, so you'll have to access it from outside."`
+			``
+			`	(If you're having trouble finding it, open your map and double click on Docking Bay 13 on the Port data tab.)`
+				accept
+	on stopover
+		set "Docking Bay 13 Blight Infestation"
+		conversation
+			`	You exit your ship with a flashlight and a thermal imager. The docking bay is eerily quiet. The area is dark, though there are occasional flashes of light from random lamps randomly flaring up before rapidly dimming. A doorway leads deeper into the station.`
+			choice
+				`	(Proceed through the door.)`
+				`	(Shine a flashlight around the docking bay.)`
+					goto darkbay
+				`	(Scan the chamber.)`
+					goto scan
+				`	(Quietly listen...)`
+					goto listen
+			scene "scene/scene-wooden crates"
+			`	You move past the door and find a cargo bay. Several large crates occupy the room. It's too dark to clearly see the other side of the chamber. Nearby, a cooling duct blows a steady gust of air that sends a chill up your spine.`
+			label cargobay
+			choice
+				`	(Proceed to the far side of the cargo bay.)`
+				`	(Shine your flashlight on the crates.)`
+					goto crates
+				`	(Check the cooling duct.)`
+					goto duct
+				`	(Scan the room.)`
+					goto scan2
+				`	(Quietly listen...)`
+					goto listen
+			scene "outfit/small radiothermal"
+			`	As you approach the opposite wall, you find a dooway that's been ripped apart. Twisted sheets of metal that once separated this room from the area beynd lie mangled on the floor nearby. Through the doorway, you spot the generator that provides power to this section of the station. Several objects, obscured by the darkness, are clumped around it.`
+			label generator
+			choice
+				`	(Get a closer look.)`
+				`	(Shine a flashlight at the objects.)`
+					goto darkgen
+				`	(Scan the area.)`
+					goto scan3
+				`	(Quietly listen...)`
+					goto listen
+			scene "outfit/blight egg"
+			`	You walk towards the generator. It appears to be working. However the objects arranged around it are Blight Shadow eggs. Several tendrils growing out of the leathery membranes surrounding the eggs are attached to the generator, probably diverting power away from the station.`
+			choice
+				`	(Smash the eggs.)`
+				`	(Take the eggs.)`
+					goto grab
+				`	(Run.)`
+					goto trapped
+			label eggs
+			scene "thumbnail/blightshadow-thumb"
+			`	You draw your weapon and aim at the nearest egg. But before you can pull the trigger, you are suddenly surrounded by absolute darkness! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. The leathery membranes on the eggs shift slightly in response, as if in anticipation for their occupants first meal...`
+				die
+			label listen
+			scene "thumbnail/blightshadow-thumb"
+			`	You pause and quietly listen to your surroundings. The air shifts slightly and you are suddenly enveloped by absolute darkness! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. It may be a while before anyone finds your corpse...`
+				die
+			label darkbay
+			scene "thumbnail/blightshadow-thumb"
+			`	You sweep the docking area with your flashlight. You notice a patch of darkness above that your light can't seem to penetrate. Before you can fathom how far away the ceiling must be, the darkness suddenly drops towards you! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. The flashlight lies a few feet away, its batteries as dead as you are.`
+				die
+			label scan
+			scene "thumbnail/blightshadow-thumb"
+			`	Scanning the room with the thermal imager, you notice a blob of intense cold near the ceiling. Suddenly you are surrounded by absolute darkness! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. Your corpse is covered in a thin layer of frost that quickly melts away. The thermal imager lies a few feet away, its batteries as dead as you are.`
+				die
+			label crates
+			scene "thumbnail/blightshadow-thumb"
+			`	You shine your flashlight at the crates, causing a chaotic array of shadows to dance against the wall. You notice the crates closest to you contains food that expired months ago, an indicator of how long this area of the station has been abandoned. Before you can ponder this for too long, one of the shadows suddenly envelops you with absolute darkness! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. The flashlight lies a few feet away, its batteries as dead as you are.`
+				die
+			label duct
+			scene "outfit/cooling ducts"
+			`	You approach the cooling duct. The air current is steady, unlike the lights. A small trickle of some sort of dark liquid is leaking out.`
+			choice
+				`	(Ignore this.)`
+					goto cargobay
+				`	(Look closer.)`
+				`	(Run.)`
+					goto escape
+			scene "thumbnail/blightshadow-thumb"
+			`	You take a closer look at the cooling duct. The dark liquid is black and viscuous. Something lashes out from inside the darkness of the dark duct and pulls you in! It happens so fast you don't even have time to scream before whatever it is kills you...`
+				die
+			label scan2
+			scene "outfit/attention"
+			`	You scan the cargo bay with the thermal imager. A large mass of intense cold sits behind a group of crates on the other side of the room. It starts moving towards you...`
+			choice
+				`	(Approach it.)`
+				`	(Run.)`
+					goto escape
+			scene "outfit/unknown"
+			`	You head towards the cold mass. As you close the distance, it vanishes from your thermal imager...`
+				goto cargobay
+			label darkgen
+			scene "outfit/blight egg"
+			`	You shine your light at the strange objects and see that they are a cluster of Blight Shadow eggs. Several tendrils growing out of the leathery membranes surrounding the eggs are attached to the generator, probably diverting power away from the station.`
+			choice
+				`	(Smash the eggs.)`
+					goto eggs
+				`	(Take the eggs.)`
+					goto grab
+				`	(Run.)`
+					goto escape
+			label scan3
+			scene "outfit/unknown"
+			`	You scan the area with your thermal imager. Whatever those objects are, they're leeching heat away from the generator...`
+				goto generator
+			label grab
+			scene "thumbnail/blightshadow-thumb"
+			`	You approach one of the eggs and reach out to it. Suddenly you are surrounded by absolute darkness! You feel cold as a blindingly bright red light flashes to fill your vision. The darkness pulls away, dropping your dessicated husk onto the floor. The leathery membranes on the eggs shift slightly in response, as if in anticipation for their occupants first meal...`
+				die
+			label trapped
+			scene "thumbnail/blightshadow-thumb"
+			`	You turn to run and are suddenly enveloped by absolute darkness! You feel cold as a blindingly bright red light suddenly fills your vision. The darkness pulls away, dropping your dessicated husk onto the floor. The flashlight lies a few feet away, its batteries as dead as you are.`
+				die
+			label escape
+			scene "scene/scene-wooden crates"
+			`	You head back towards the docking bay. As you pass through the door, something knocks over a stack of crates in the cargo bay. A patch of darkness, blacker and more indistinct than the other shadows in the room, writhes among the scattered crates.`
+			choice
+				`	(Walk back into the cargo bay.)`
+				`	(Get out of here.)`
+					goto leave
+			scene "thumbnail/blightshadow-thumb"
+			`	You head towards the scattered crates. Whatever caused the ruckus is nowhere to be seen. Suddenly you are surrounded by absolute darkness! You feel cold as a blindingly bright red light flashes to fill your vision. The darkness pulls away, dropping your dessicated husk onto the floor. Your corpse lies motionless, the room becoming still again.`
+				die
+			label leave
+			`	You board the <ship> and launch, leaving the ominous shadows of Docking Bay 13 behind. The familiar stars of the Endless Sky are a welcome sight.`
+				launch
+	npc
+		to spawn
+			has "Docking Bay 13 Blight Infestation"
+		government "Invasive Predator"
+		personality entering staying unconstrained mute nemesis
+		fleet "Small Blight Shadow"
+		on kill
+			clear "Docking Bay 13 Blight Infestation"
+	on enter
+		payment 1000000
+		"reputation: Syndicate" -= 10
+		conversation
+			`	You are hailed by Titania Station. "Well Captain <first>, what did you find?"`
+			choice
+				`	"Evacuate the station. Now."`
+				`	"Everyone needs to get out of there."`
+			`	The manager shouts, "That's not what I wanted to hear! Look, I'm sure whatever it is can't be that bad. Just take your payment and stay quiet about it. I'm not evacuating Titania just because some people think Docking Bay 13 is haunted." The manager transfers <payment> to your account and closes communications.`
+	on complete
+		clear "Docking Bay 13 Blight Infestation"

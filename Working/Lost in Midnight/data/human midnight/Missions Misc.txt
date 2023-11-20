@@ -825,10 +825,13 @@ mission "Free Worlds Infiltrator 2 failure"
 mission "Infiltrator: Secret Data"
 	landing
 	invisible
-	deadline
+	deadline 30
 	source
 		government "Pirate"
+		not attributes "dirt belt pirate"
 	destination Earth
+	to offer
+		random < 70
 	on enter
 		conversation
 			scene "thumbnail/infiltrator-thumb"
@@ -1198,6 +1201,215 @@ mission "Midnight Paradise Fortune Patch"
 		clear "Midnight Paradise Fortune 2: offered"
 		fail "Midnight Paradise Fortune 2"
 		fail
+
+
+
+mission "Midnight Tanker Shipyard Alfheim"
+	minor
+	invisible
+	source Alfheim
+	to offer
+		has "event: phoenix station defense job success"
+		random < 80 - ( 75 * "Randomize Midnight Tanker Shipyard Alfheim" )
+	on offer
+		conversation
+			scene "thumbnail/cannikin-thumb"
+			`You notice a pilot cleaning a Cannikin land on a nearby landing pad. It looks brand new.`
+			choice
+				`	(Ask him where he bought it.)`
+				`	(Ignore him.)`
+					defer
+			`	You approach. The pilot looks up from wiping a spot on the hull. He says "Go away old timer. I've got better things to do."`
+			choice
+				`	"Old timer?"`
+				`	"That's no way to talk to your elders!"`
+			scene "planet/station1"
+			`	Before he can respond, a woman exits the Cannikin. "Jack, don't be rude! Our guest came over from the <ship>." Turning to you she says, "Captain <last> I presume? I heard you helped defend Phoenix Station from the worst pirate raid in my lifetime. Sorry about my ill mannered brother. My name is Jill. Is there something we can help you with?"`
+			choice
+				`	"I noticed your ship looks new."`
+				`	"Did you buy this ship recently?"`
+			scene "thumbnail/cannikin-thumb"
+			`	"Isn't it a beaut?" Jack exclaims while packing up his cleaning supplies. "Got it today from the local shipyard."`
+			`	"Don't get too attached to it." Jill interjects, "With me managing you, I'm sure it won't be long before you'll be piloting a better ship."`
+			choice
+				`	"There's a shipyard near here?"`
+			`	"Didn't you know?" Jack answers, "It's just a few miles away from the spaceport."`
+			`	Jill adds, "It's on the main road. You'll find it once you get past the oil rigs."`
+			choice
+				`	"Thanks, I'll check it out."`
+					goto end
+				`	"Can you show me how to get there?"`
+			`	Jack says, "Unfortunately you'll have to find it on your own. We're about to launch."`
+			label end
+			action
+				event "midnight tanker shipyard alfheim"
+				clear "Randomize Midnight Tanker Shipyard Alfheim"
+			`	Jill says, "It may be too late in the day to visit them now, but I'm sure they'll be open again tomorrow." After you thank them for the information, the siblings take their new ship out into space.`
+				decline
+	on defer
+		set "Randomize Midnight Tanker Shipyard Alfheim"
+
+event "midnight tanker shipyard alfheim"
+	planet Alfheim
+		add shipyard "Human Fuel Logistics"
+		add shipyard "Rusty Ships"
+
+mission "Midnight Tanker Shipyard Delve"
+	landing
+	invisible
+	source "Delve"
+	to offer
+		has "event: charybdis station advanced fuel outfitter"
+		random < 80
+	on offer
+		event "midnight tanker shipyard delve"
+		conversation
+			scene "thumbnail/deuterium tanker-thumb"
+			`You receive a message from the local shipyard:`
+			``
+			`Greeting Captain <last>. In gratitude for your participation in the defense of Charybdis Station, we are granting you access to an expanded selection of options in our inventory.`
+				decline
+
+event "midnight tanker shipyard delve"
+	planet Delve
+		add shipyard "Human Fuel Logistics"
+
+mission "Midnight Tanker Shipyard Glaze"
+	landing
+	invisible
+	source "Glaze"
+	to offer
+		has "event: charon station advanced fuel outfitter"
+		random < 80
+	on offer
+		event "midnight tanker shipyard glaze"
+		conversation
+			scene "thumbnail/deuterium tanker-thumb"
+			`You receive a message from the local shipyard:`
+			``
+			`Greeting Captain <last>. In gratitude for your participation in the defense of Charon Station, we are granting you access to an expanded selection of options in our inventory.`
+				decline
+
+event "midnight tanker shipyard glaze"
+	planet Glaze
+		add shipyard "Human Fuel Logistics"
+
+mission "Midnight Tanker Shipyard New Wales"
+	minor
+	name "Escort to <planet>"
+	description "The captain of the <npc>, grateful for your assistance in the defense of Hydra Station, has offered to show you how to reach a little known shipyard on <destination>."
+	source
+		near Algorel 1 5
+		not attributes uninhabited
+	destination "New Wales"
+	to offer
+		has "event: hydra station advanced fuel outfitter"
+		random < 80 - ( 75 * "Randomize Midnight Tanker Shipyard New Wales" )
+	on offer
+		conversation
+			scene "planet/station13"
+			`While at the spaceport bar, several freighter captains express their gratitude to you for helping defend Hydra Station from a pirate raid. One captain, a pilot of a Deuterium Tanker, asks if he can help in some way.`
+			choice
+				`	"Where can I buy a Deuterium Tanker of my own?"`
+				`	"I don't need any help at the moment."`
+					defer
+			scene "planet/cloud6"
+			action
+				clear "Randomize Midnight Tanker Shipyard New Wales"
+				event "midnight tanker shipyard new wales"
+			`	"New Wales has a small shipyard that caters to fuel haulers. I'm headed in that direction. Would you like me to show you where it is?"`
+			choice
+				`	"Sounds good. I'll tag along."`
+				`	"Thanks, but I'll find it on my own."`
+					decline
+			scene "thumbnail/deuterium tanker-thumb"
+			`	"Great! My ship is the <npc>. See you in orbit Captain <last>."`
+				accept
+	on defer
+		set "Randomize Midnight Tanker Shipyard New Wales"
+	npc accompany save
+		government "Merchant"
+		personality target escort launching appeasing timid
+		"cargo settings"
+			cargo 3
+			outfitters "Advanced Fuel"
+		ship "Deuterium Tanker" "Rusty Pumpjack"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on complete
+		dialog "The captain of the <npc> hails a taxi and instructs the driver to take you to the shipyard. He thanks you again for your help and wishes you farewell."
+
+event "midnight tanker shipyard new wales"
+	planet "New Wales"
+		add shipyard "Human Fuel Logistics"
+		add shipyard "Rusty Ships"
+
+mission "Midnight Tanker Shipyard Poseidos"
+	minor
+	name "Escort to <planet>"
+	description "Distrubute flyers advertising the shipyard on <origin> in the spaceports at <stopovers>. Then return to <destination>."
+	source Poseidos
+	stopover Dune
+	stopover Skymoot
+	stopover Starcross
+	cargo "promotional materials" 3
+	to offer
+		has "event: wyvern station advanced fuel outfitter"
+		random < 80
+	on offer
+		conversation
+			scene "planet/station8"
+			`While refueling your ship, one of the locals approaches you. "So this is the <ship>? That would make you Captain <last>. I heard you were involved in the defense of Wyvern Station from a nasty pirate raid. Would you be willing to help me out?" He offers you a paper flier.`
+			choice
+				`	(Take the flier.)`
+			scene "thumbnail/cannikin-thumb"
+			`	It's an advertisement for a local shipyard located on an island a short distance away from where you are now.`
+			choice
+				`	"Poseidos has a shipyard?"`
+			`	You place the flier in your pocket as the man explains, "Not for long if I can't get more customers. We're a small operation, focused on new pilots and a niche market of fuel logistics suppliers. I'm hoping someone who knows his way around the nearby star systems can distribute these fliers at the spaceports on nearby planets. I have enough fliers for <stopovers>."`
+			choice
+				`	"I'll help you keep the shipyard open."`
+					goto end
+				`	"I can't help you. Find someone else."`
+			`	The man walks away while you finish refueling the <ship>. As you put away the fuel pump, you realize that the flier advertising the shipyard is still in your pocket. But there's no point in keeping a flier for a shipyard that might go out of business before you even have a chance to visit it. You toss the flier into the trash and go about your business.`
+				decline
+			label end
+			scene "scene/scene-wooden crates"
+			`	"Thank you!" The man delivers three crates of fliers to your ship and wishes you a safe journey.`
+				accept
+	on stopover
+		event "midnight tanker shipyard poseidos"
+		dialog "You hand out the last of the fliers advertising the shipyard on <origin>. Perhaps you should visit it yourself."
+	on complete
+		dialog "While you were gone it looks like the owner of the shipyard posted a few fliers around the local spaceport himself. Hopefully he's getting enough customers to keep the shipyard open."
+
+event "midnight tanker shipyard poseidos"
+	planet Poseidos
+		add shipyard "Human Fuel Logistics"
+		add shipyard "Rusty Ships"
+
+mission "Midnight Tanker Shipyard Reunion"
+	landing
+	invisible
+	source "Reunion"
+	to offer
+		has "event: kraken station advanced fuel outfitter"
+		random < 80
+	on offer
+		event "midnight tanker shipyard reunion"
+		conversation
+			scene "thumbnail/deuterium tanker-thumb"
+			`You receive a message from the local shipyard:`
+			``
+			`Greeting Captain <last>. In gratitude for your participation in the defense of Kraken Station, we are granting you access to an expanded selection of options in our inventory.`
+				decline
+
+event "midnight tanker shipyard reunion"
+	planet Reunion
+		add shipyard "Human Fuel Logistics"
+
+
+
 
 mission "Pandora's Problems 1"
 	invisible

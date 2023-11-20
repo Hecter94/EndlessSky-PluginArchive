@@ -1072,7 +1072,7 @@ mission "Hijacked Escort"
 #jumps 2
 	on enter
 #jumps 3
-		"reputation: Bounty (Disguised)" <?= -1
+		"reputation: Bounty (Disguised)" <?= -1000
 		dialog `The <npc> hails you: "Emergency! Pirate stowaways have taken over the ship! Get over here and save us!" Retaking the ship to rescue the passengers may not be easy.`
 	npc
 		government "Pirate"
@@ -1667,209 +1667,681 @@ mission "Militia: Joint Operations (Falcon)"
 
 
 
-mission "Mining: Silicon"
+mission "Mining: Silicon [small]"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Silicon to <system>"
-	description "The shipyard on <destination> has a shortage of Silicon. Bring 20 tons of Silicon to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Silicon."
+	description "The outfitter on <destination> has a shortage of Silicon. Bring 5 tons of Silicon to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Silicon."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Silicon" -5
+		payment 3000
+		dialog `The outfitters on <planet> accept your delivery of Silicon and pay you <payment>.`
+
+mission "Mining: Silicon"
+	job
+	deadline 30
+	repeat
+	name "Mining: Silicon to <system>"
+	description "The shipyard on <destination> has a shortage of Silicon. Bring 10 tons of Silicon to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Silicon."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Silicon" -10
+		payment 6000
+		dialog `The shipyards on <planet> accept your delivery of Silicon and pay you <payment>.`
+
+mission "Mining: Silicon [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Silicon to <system>"
+	description "The metals exchange on <destination> has a shortage of Silicon. Deliver 20 tons of Silicon by <date>. Payment is <payment>, 50% above the usual market rate for Silicon."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Silicon" -20
 		payment 12000
-		dialog `The shipyards on <planet> accept your delivery of Silicon and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Silicon and pay you <payment>.`
+
+mission "Mining: Lead [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Lead to <system>"
+	description "The outfitter on <destination> has a shortage of Lead. Bring 5 tons of Lead to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Lead."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Lead" -5
+		payment 6750
+		dialog `The outfitters on <planet> accept your delivery of Lead and pay you <payment>.`
 
 mission "Mining: Lead"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Lead to <system>"
-	description "The shipyard on <destination> has a shortage of Lead. Bring 20 tons of Lead to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Lead."
+	description "The shipyard on <destination> has a shortage of Lead. Bring 10 tons of Lead to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Lead."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Lead" -10
+		payment 13500
+		dialog `The shipyards on <planet> accept your delivery of Lead and pay you <payment>.`
+
+mission "Mining: Lead [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Lead to <system>"
+	description "The metals exchange on <destination> has a shortage of Lead. Deliver 20 tons of Lead by <date>. Payment is <payment>, 50% above the usual market rate for Lead."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Lead" -20
 		payment 27000
-		dialog `The shipyards on <planet> accept your delivery of Lead and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Lead and pay you <payment>.`
+
+mission "Mining: Iron [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Iron to <system>"
+	description "The outfitter on <destination> has a shortage of Iron. Bring 5 tons of Iron to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Iron."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Iron" -5
+		payment 9000
+		dialog `The outfitters on <planet> accept your delivery of Iron and pay you <payment>.`
 
 mission "Mining: Iron"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Iron to <system>"
-	description "The shipyard on <destination> has a shortage of Iron. Bring 20 tons of Iron to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Iron."
+	description "The shipyard on <destination> has a shortage of Iron. Bring 10 tons of Iron to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Iron."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Iron" -10
+		payment 18000
+		dialog `The shipyards on <planet> accept your delivery of Iron and pay you <payment>.`
+
+mission "Mining: Iron [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Iron to <system>"
+	description "The metals exchange on <destination> has a shortage of Iron. Deliver 20 tons of Iron by <date>. Payment is <payment>, 50% above the usual market rate for Iron."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Iron" -20
 		payment 36000
-		dialog `The shipyards on <planet> accept your delivery of Iron and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Iron and pay you <payment>.`
+
+mission "Mining: Pyrite [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Pyrite to <system>"
+	description "The outfitter on <destination> has a shortage of Pyrite. Bring 5 tons of Pyrite to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Pyrite."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Pyrite" -5
+		payment 11250
+		dialog `The outfitters on <planet> accept your delivery of Pyrite and pay you <payment>.`
+
+mission "Mining: Pyrite"
+	job
+	deadline 30
+	repeat
+	name "Mining: Pyrite to <system>"
+	description "The shipyard on <destination> has a shortage of Pyrite. Bring 10 tons of Pyrite to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Pyrite."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Pyrite" -10
+		payment 22500
+		dialog `The shipyards on <planet> accept your delivery of Pyrite and pay you <payment>.`
+
+mission "Mining: Pyrite [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Pyrite to <system>"
+	description "The metals exchange on <destination> has a shortage of Pyrite. Deliver 20 tons of Pyrite by <date>. Payment is <payment>, 50% above the usual market rate for Pyrite."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Pyrite" -20
+		payment 45000
+		dialog `The metals exchange on <planet> accept your delivery of Pyrite and pay you <payment>.`
+
+mission "Mining: Aluminum [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Aluminum to <system>"
+	description "The outfitter on <destination> has a shortage of Aluminum. Bring 5 tons of Aluminum to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Aluminum."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Aluminum" -5
+		payment 13500
+		dialog `The outfitters on <planet> accept your delivery of Aluminum and pay you <payment>.`
 
 mission "Mining: Aluminum"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Aluminum to <system>"
-	description "The shipyard on <destination> has a shortage of Aluminum. Bring 20 tons of Aluminum to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Aluminum."
+	description "The shipyard on <destination> has a shortage of Aluminum. Bring 10 tons of Aluminum to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Aluminum."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Aluminum" -10
+		payment 27000
+		dialog `The shipyards on <planet> accept your delivery of Aluminum and pay you <payment>.`
+
+mission "Mining: Aluminum [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Aluminum to <system>"
+	description "The metals exchange on <destination> has a shortage of Aluminum. Deliver 20 tons of Aluminum by <date>. Payment is <payment>, 50% above the usual market rate for Aluminum."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Aluminum" -20
 		payment 54000
-		dialog `The shipyards on <planet> accept your delivery of Aluminum and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Aluminum and pay you <payment>.`
+
+mission "Mining: Titanium [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Titanium to <system>"
+	description "The outfitter on <destination> has a shortage of Titanium. Bring 5 tons of Titanium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Titanium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Titanium" -5
+		payment 18750
+		dialog `The outfitters on <planet> accept your delivery of Titanium and pay you <payment>.`
 
 mission "Mining: Titanium"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Titanium to <system>"
-	description "The shipyard on <destination> has a shortage of Titanium. Bring 20 tons of Titanium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Titanium."
+	description "The shipyard on <destination> has a shortage of Titanium. Bring 10 tons of Titanium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Titanium."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Titanium" -10
+		payment 37500
+		dialog `The shipyards on <planet> accept your delivery of Titanium and pay you <payment>.`
+
+mission "Mining: Titanium [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Titanium to <system>"
+	description "The metals exchange on <destination> has a shortage of Titanium. Deliver 20 tons of Titanium by <date>. Payment is <payment>, 50% above the usual market rate for Titanium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Titanium" -20
 		payment 75000
-		dialog `The shipyards on <planet> accept your delivery of Titanium and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Titanium and pay you <payment>.`
+
+mission "Mining: Copper [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Copper to <system>"
+	description "The outfitter on <destination> has a shortage of Copper. Bring 5 tons of Copper to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Copper" -5
+		payment 22500
+		dialog `The outfitters on <planet> accept your delivery of Copper and pay you <payment>.`
 
 mission "Mining: Copper"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Copper to <system>"
-	description "The shipyard on <destination> has a shortage of Copper. Bring 20 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
+	description "The shipyard on <destination> has a shortage of Copper. Bring 10 tons of Copper to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Copper" -10
+		payment 45000
+		dialog `The shipyards on <planet> accept your delivery of Copper and pay you <payment>.`
+
+mission "Mining: Copper [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Copper to <system>"
+	description "The metals exchange on <destination> has a shortage of Copper. Deliver 20 tons of Copper by <date>. Payment is <payment>, 50% above the usual market rate for Copper."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Copper" -20
 		payment 90000
-		dialog `The shipyards on <planet> accept your delivery of Copper and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Copper and pay you <payment>.`
+
+mission "Mining: Neodymium [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Neodymium to <system>"
+	description "The outfitter on <destination> has a shortage of Neodymium. Bring 5 tons of Neodymium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Neodymium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Neodymium" -5
+		payment 28500
+		dialog `The outfitters on <planet> accept your delivery of Neodymium and pay you <payment>.`
 
 mission "Mining: Neodymium"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Neodymium to <system>"
-	description "The shipyard on <destination> has a shortage of Neodymium. Bring 20 tons of Neodymium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Neodymium."
+	description "The shipyard on <destination> has a shortage of Neodymium. Bring 10 tons of Neodymium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Neodymium."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Neodymium" -10
+		payment 57000
+		dialog `The shipyards on <planet> accept your delivery of Neodymium and pay you <payment>.`
+
+mission "Mining: Neodymium [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Neodymium to <system>"
+	description "The metals exchange on <destination> has a shortage of Neodymium. Deliver 20 tons of Neodymium to by <date>. Payment is <payment>, 50% above the usual market rate for Neodymium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Neodymium" -20
 		payment 114000
-		dialog `The shipyards on <planet> accept your delivery of Neodymium and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Neodymium and pay you <payment>.`
+
+mission "Mining: Tungsten [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Tungsten to <system>"
+	description "The outfitter on <destination> has a shortage of Tungsten. Bring 5 tons of Tungsten to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Tungsten."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Tungsten" -5
+		payment 33750
+		dialog `The outfitters on <planet> accept your delivery of Tungsten and pay you <payment>.`
 
 mission "Mining: Tungsten"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Tungsten to <system>"
-	description "The shipyard on <destination> has a shortage of Tungsten. Bring 20 tons of Tungsten to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Tungsten."
+	description "The shipyard on <destination> has a shortage of Tungsten. Bring 10 tons of Tungsten to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Tungsten."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Tungsten" -10
+		payment 67500
+		dialog `The shipyards on <planet> accept your delivery of Tungsten and pay you <payment>.`
+
+mission "Mining: Tungsten [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Tungsten to <system>"
+	description "The metals exchange on <destination> has a shortage of Tungsten. Deliver 20 tons of Tungsten by <date>. Payment is <payment>, 50% above the usual market rate for Tungsten."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Tungsten" -20
 		payment 135000
-		dialog `The shipyards on <planet> accept your delivery of Tungsten and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Tungsten and pay you <payment>.`
+
+mission "Mining: Uranium [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Uranium to <system>"
+	description "The outfitter on <destination> has a shortage of Uranium. Bring 5 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Uranium" -5
+		payment 37500
+		dialog `The outfitters on <planet> accept your delivery of Uranium and pay you <payment>.`
 
 mission "Mining: Uranium"
 	job
-	deadline 14
+	deadline 30
 	repeat
 	name "Mining: Uranium to <system>"
-	description "The shipyard on <destination> has a shortage of Uranium. Bring 20 tons of Uranium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	description "The shipyard on <destination> has a shortage of Uranium. Bring 10 tons of Uranium to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes shipyard
 	to offer
 		random < 1
 	on complete
+		"mining jobs done" ++
+		outfit "Uranium" -10
+		payment 75000
+		dialog `The shipyards on <planet> accept your delivery of Uranium and pay you <payment>.`
+
+mission "Mining: Uranium [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Uranium to <system>"
+	description "The metals exchange on <destination> has a shortage of Uranium. Deliver 20 tons of Uranium by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
 		outfit "Uranium" -20
 		payment 150000
-		dialog `The shipyards on <planet> accept your delivery of Uranium and pay you <payment>.`
+		dialog `The metals exchange on <planet> accept your delivery of Uranium and pay you <payment>.`
+
+mission "Mining: Silver [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Silver to <system>"
+	description "The outfitter on <destination> has a shortage of Silver. Bring 5 tons of Silver to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Silver."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Silver" -5
+		payment 90000
+		dialog `The outfitters on <planet> accept your delivery of Silver and pay you <payment>.`
 
 mission "Mining: Silver"
 	job
-	deadline 7
+	deadline 30
 	repeat
 	name "Mining: Silver to <system>"
-	description "Market speculation on <destination> has created a run on Silver. Bring 10 tons of Silver to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Silver. Due to market volatility, this offer may be rescinded at any time."
+	description "The shipyard on <destination> has a shortage of Silver. Bring 10 tons of Silver to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Silver."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes urban
+		attributes shipyard
 	to offer
-		random < 2
-	to fail
 		random < 1
-	on fail
-		dialog `The market rate for Silver has returned to normal on <destination>. Your Silver contract is cancelled.`
 	on complete
+		"mining jobs done" ++
 		outfit "Silver" -10
-		payment 120000
-		dialog `The metals exchange on <planet> accepts your delivery of Silver and pays you <payment>.`
+		payment 90000
+		dialog `The shipyards on <planet> accept your delivery of Silver and pay you <payment>.`
+
+mission "Mining: Silver [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Silver to <system>"
+	description "The metals exchange on <destination> has a shortage of Silver. Deliver 20 tons of Silver by <date>. Payment is <payment>, 50% above the usual market rate for Silver."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Silver" -20
+		payment 180000
+		dialog `The metals exchange on <planet> accept your delivery of Silver and pay you <payment>.`
+
+mission "Mining: Gold [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Gold to <system>"
+	description "The outfitter on <destination> has a shortage of Gold. Bring 5 tons of Gold to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Gold."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Gold" -5
+		payment 60000
+		dialog `The outfitters on <planet> accept your delivery of Gold and pay you <payment>.`
 
 mission "Mining: Gold"
 	job
-	deadline 7
+	deadline 30
 	repeat
 	name "Mining: Gold to <system>"
-	description "Market speculation on <destination> has created a run on Gold. Bring 10 tons of Gold to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Gold. Due to market volatility, this offer may be rescinded at any time."
+	description "The shipyard on <destination> has a shortage of Gold. Bring 10 tons of Gold to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Gold."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes urban
+		attributes shipyard
 	to offer
-		random < 2
-	to fail
 		random < 1
-	on fail
-		dialog `The market rate for Gold has returned to normal on <destination>. Your Gold contract is cancelled.`
 	on complete
+		"mining jobs done" ++
 		outfit "Gold" -10
-		payment 160000
-		dialog `The metals exchange on <planet> accepts your delivery of Gold and pays you <payment>.`
+		payment 120000
+		dialog `The shipyards on <planet> accept your delivery of Gold and pay you <payment>.`
+
+mission "Mining: Gold [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Gold to <system>"
+	description "The metals exchange on <destination> has a shortage of Gold. Deliver 20 tons of Gold by <date>. Payment is <payment>, 50% above the usual market rate for Gold."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Gold" -20
+		payment 240000
+		dialog `The metals exchange on <planet> accept your delivery of Gold and pay you <payment>.`
+
+mission "Mining: Platinum [small]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Platinum to <system>"
+	description "The outfitter on <destination> has a shortage of Platinum. Bring 5 tons of Platinum to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Platinum."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Platinum" -5
+		payment 75000
+		dialog `The outfitters on <planet> accept your delivery of Platinum and pay you <payment>.`
 
 mission "Mining: Platinum"
 	job
-	deadline 7
+	deadline 30
 	repeat
 	name "Mining: Platinum to <system>"
-	description "Market speculation on <destination> has created a run on Platinum. Bring 10 tons of Platinum to the metals exchange by <date>. Payment is <payment>, 100% above the usual market rate for Platinum. Due to market volatility, this offer may be rescinded at any time."
+	description "The shipyard on <destination> has a shortage of Platinum. Bring 10 tons of Platinum to the shipyard by <date>. Payment is <payment>, 50% above the usual market rate for Platinum."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes urban
+		attributes shipyard
 	to offer
-		random < 2
-	to fail
 		random < 1
-	on fail
-		dialog `The market rate for Platinum has returned to normal on <destination>. Your Platinum contract is cancelled.`
 	on complete
+		"mining jobs done" ++
 		outfit "Platinum" -10
-		payment 200000
-		dialog `The metals exchange on <planet> accepts your delivery of Platinum and pays you <payment>.`
+		payment 150000
+		dialog `The shipyards on <planet> accept your delivery of Platinum and pay you <payment>.`
+
+mission "Mining: Platinum [large]"
+	job
+	deadline 30
+	repeat
+	name "Mining: Platinum to <system>"
+	description "The metals exchange on <destination> has a shortage of Platinum. Deliver 20 tons of Platinum by <date>. Payment is <payment>, 50% above the usual market rate for Platinum."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes shipyard
+		attributes outfitter
+	to offer
+		random < 1
+	on complete
+		"mining jobs done" ++
+		outfit "Platinum" -20
+		payment 300000
+		dialog `The metals exchange on <planet> accept your delivery of Platinum and pay you <payment>.`
 
 
 
@@ -2226,7 +2698,7 @@ mission "Stealing From Rival Smugglers"
 
 mission "Syndicate Uranium Mining [small]"
 	job
-	deadline 14
+	deadline 15
 	repeat
 	name "Mining: Uranium to <system>"
 	description "The outfitter on <destination> has a shortage of Uranium. Bring 10 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
@@ -2248,13 +2720,14 @@ mission "Syndicate Uranium Mining [small]"
 				"year" = 3014
 				"month" < 5
 	on complete
+		"mining jobs done" ++
 		outfit "Uranium" -10
 		payment 75000
 		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
 
 mission "Syndicate Uranium Mining [medium]"
 	job
-	deadline 14
+	deadline 15
 	repeat
 	name "Mining: Uranium to <system>"
 	description "The outfitter on <destination> has a shortage of Uranium. Bring 20 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
@@ -2270,13 +2743,14 @@ mission "Syndicate Uranium Mining [medium]"
 				"year" = 3014
 				"month" < 5
 	on complete
+		"mining jobs done" ++
 		outfit "Uranium" -20
 		payment 150000
 		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
 
 mission "Syndicate Uranium Mining [large]"
 	job
-	deadline 14
+	deadline 15
 	repeat
 	name "Mining: Uranium to <system>"
 	description "The outfitter on <destination> has a shortage of Uranium. Bring 40 tons of Uranium to the outfitter by <date>. Payment is <payment>, 50% above the usual market rate for Uranium."
@@ -2298,6 +2772,7 @@ mission "Syndicate Uranium Mining [large]"
 				"year" = 3014
 				"month" < 5
 	on complete
+		"mining jobs done" ++
 		outfit "Uranium" -40
 		payment 300000
 		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`

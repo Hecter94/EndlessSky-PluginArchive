@@ -19,96 +19,16 @@ start
 	planet "Earth"
 	conversation "space shuttle intro"
 	account
-		credits 2000
+		credits 1000
 		score 400
 		mortgage Mortgage
 			principal 480000
 			interest 0.004
 			term 365
 	set "license: Pilot's"
-	set "Space Shuttle Start"
+	set "Space Shuttle Start (Original)"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
-	ship "Space Shuttle"
-		name "Enterprise"
-		sprite "ship/spaceshuttle"
-		thumbnail "thumbnail/spaceshuttle_thumb"
-		swizzle 0
-		attributes
-			category "Utility"
-			"cost" 460000
-			"shields" 2100
-			"hull" 5200
-			"required crew" 4
-			"bunks" 14
-			"mass" 660
-			"drag" 5.9
-			"heat dissipation" .7
-			"fuel capacity" 400
-			"cargo space" 172
-			"outfit space" 270
-			"weapon capacity" 32
-			"engine capacity" 80
-			weapon
-				"blast radius" 60
-				"shield damage" 600
-				"hull damage" 300
-				"hit force" 900
-		outfits
-			"Anti-Missile Turret"
-			"nGVF-BB Fuel Cell"
-			"LP036a Battery Pack"
-			"D14-RN Shield Generator"
-			
-			"Antique Afterburner"
-			"Chipmunk Plasma Thruster"
-			"Chipmunk Plasma Steering" 2
-			"Hyperdrive"
-		engine -17 61.5
-			zoom .8
-			under
-		engine 17 61.5
-			zoom .9
-			under
-		engine -12 64
-			zoom 1
-			under
-		engine 12 64
-			zoom .8
-			under
-		engine -5.5 65.5
-			zoom .9
-			under
-		engine 5.5 65.5
-			zoom 1
-			under
-		"steering engine" -14.5 -60
-			zoom 0.5
-			angle 55.997314
-			under
-			right
-		"steering engine" 14.5 -60
-			zoom 0.5
-			angle -55.997314
-			under
-			left
-		"reverse engine" 0 -91.5
-			zoom .3
-			over
-		turret 0 -17.5
-		gun -2.5 -90
-		gun 2.5 -90
-		bay Drone 0 5
-		leak "leak" 60 50
-		leak "flame" 60 80
-		explode "tiny explosion" 10
-		explode "small explosion" 25
-		explode "medium explosion" 25
-		explode "large explosion" 10
-		"final explode" "final explosion medium"
-		description "This is an old relic from centuries before the development of the Hyperdrive. Most of its original systems are gone, replaced with modern outfits."
-
-
 
 conversation "space shuttle intro"
 	scene "planet/earth"
@@ -121,17 +41,61 @@ conversation "space shuttle intro"
 	scene "outfit/license"
 	`	You pull out your license in anticipation of being asked for it, but the agent frowns while looking through her database. "I don't see <first> <last> registered here. What kind of ship is it?"`
 	choice
-		`	"Sorry, that's my name. My ship is the '<ship>'."`
-		`	"<first> <last> is my name. Lookup '<ship>'."`
+		`	"Sorry, that's my name. My ship is the 'Enterprise'."`
+		`	"<first> <last> is my name. Lookup 'Enterprise'."`
 	scene "scene/spaceshuttle"
 	`	She types in the name of your ship then gasps. "So you're the owner of that old thing? Are you sure it'll fly?"`
 	choice
-		`	"I oversaw the repairs myself."`
-		`	"Just schedule a launch time."`
+		`	"Just schedule a launch time." (Basic Space Shuttle; more starting money.)`
+		`	"I oversaw the upgrades myself." (Upgraded Space Shuttle; less starting money.)`
+			goto upgrades
 	scene "scene/space shuttle 2"
-	`	"Alright, you're set to launch in an hour. That should be enough time to buy life insurance if you don't already have it."`
+	action
+		give ship "Space Shuttle" "Enterprise"
+		payment 24000
+	`	She types something into the system. "Alright, you're set to launch in an hour. That should be enough time to buy life insurance if you don't already have it."`
 	`	This isn't the most reassuring start to your journey...`
-
+		accept
+	label upgrades
+	`	"Really? What sort of upgrades?" She looks skeptical...`
+	choice
+		`	"I added extra shields."`
+		`	"I added weapons."`
+			goto weapons
+		`	"I added engines."`
+			goto engines
+	scene "outfit/small shield"
+	action
+		give ship "Space Shuttle (Shields)" "Enterprise"
+	`	The Enterprise has additional shield emitters and an upgraded shield generator.`
+	`	"Well, I hope the added cost was worth it."`
+	choice
+		`	"Just schedule a launch time."`
+			goto end
+	label weapons
+	scene "outfit/antique anti-missile"
+	action
+		give ship "Space Shuttle (Weapons)" "Enterprise"
+		clear "Space Shuttle Start (Original)"
+		set "Space Shuttle Start"
+	`	The Enterprise has weapon ports and some anti-missile defense.`
+	`	"Well, I hope the added cost was worth it."`
+	choice
+		`	"Just schedule a launch time."`
+			goto end
+	label engines
+	scene "outfit/reverse thruster ion"
+	action
+		give ship "Space Shuttle (Engines)" "Enterprise"
+	`	The Enterprise has more space for engines and reverse thrusters.`
+	`	"Well, I hope the added cost was worth it."`
+	choice
+		`	"Just schedule a launch time."`
+	label end
+	scene "scene/space shuttle 2"
+	`	She types something into the system. "Alright, you're set to launch in an hour. That should be enough time to buy life insurance if you don't already have it."`
+	`	This isn't the most reassuring start to your journey...`
+		accept
 
 
 mission "Space Shuttle: First Launch"
@@ -150,7 +114,6 @@ mission "Space Shuttle: First Launch"
 			
 			branch james
 				has "Intro [0 Space Shuttle]: active"
-			
 			``
 				goto end
 			
@@ -188,88 +151,6 @@ mission "Space Shuttle Left Earth"
 
 
 
-start
-	name "Space Shuttle Start (Original)"
-	description `The original version of Space Shuttle Start with no weapons or drone bay! For players seeking an extra challenge... You were born on New Boston, but moved to Earth at a young age. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. A few years later, your dream came true when you got a bargain on an old Earth relic that was up for auction.`
-	thumbnail "scene/space shuttle"
-	date 16 11 3013
-	system "Sol"
-	planet "Earth"
-	conversation "space shuttle intro"
-	account
-		credits 20000
-		score 400
-		mortgage Mortgage
-			principal 480000
-			interest 0.004
-			term 365
-	set "license: Pilot's"
-	set "Space Shuttle Start (Original)"
-	set "Intro [0]: offered"
-	set "Intro [0]: declined"
-	ship "Space Shuttle"
-		name "Enterprise"
-		sprite "ship/space shuttle"
-		thumbnail "ship/space shuttle"
-		attributes
-			category "Light Freighter"
-			"cost" 460000
-			"shields" 2100
-			"hull" 5200
-			"required crew" 4
-			"bunks" 14
-			"mass" 660
-			"drag" 5.9
-			"heat dissipation" .7
-			"fuel capacity" 400
-			"cargo space" 210
-			"outfit space" 270
-			"weapon capacity" 0
-			"engine capacity" 80
-			weapon
-				"blast radius" 60
-				"shield damage" 600
-				"hull damage" 300
-				"hit force" 900
-		outfits
-			"nGVF-BB Fuel Cell"
-			"LP072a Battery Pack"
-			"D23-QP Shield Generator"
-			
-			"Antique Afterburner"
-			"Chipmunk Plasma Thruster"
-			"Chipmunk Plasma Steering" 2
-			"Hyperdrive"
-			
-		engine -9 72.5
-		engine 9 72.5
-		engine 0 74.5
-		engine -8 78
-		engine 8 78
-		"steering engine" -13.5 -55.5
-			zoom 0.5
-			angle 56
-			under
-			right
-		"steering engine" 13.5 -55.5
-			zoom 0.5
-			angle -56
-			under
-			left
-		"reverse engine" 0 -91
-			zoom 0.5
-			under
-		leak "leak" 60 50
-		leak "flame" 60 80
-		explode "tiny explosion" 10
-		explode "small explosion" 25
-		explode "medium explosion" 25
-		explode "large explosion" 10
-		"final explode" "final explosion medium"
-		description "This is an old relic from centuries before the development of the Hyperdrive. It has no weapons, but lots of cargo space. Most of its original systems are gone, replaced with modern outfits."
-
-
-
 mission "Space Shuttle: Add I.S.S."
 	landing
 	invisible
@@ -302,5 +183,5 @@ planet "I.S.S."
 	attributes station "near earth" tourism
 	landscape land/space5ver8
 	music ambient/machinery
-	description `The construction of the original International Space Station was a milestone of humanities earliest attempts at gaining a foothold into space. Sadly, it was destroyed during the early Turf Wars. This station was created as a monument to the original. While the exterior matches visual records of what the first I.S.S. looked like, the interior layout has replaced the science and research labs with a museum dedicated to the history of human space exploration.`
+	description `The construction of the original International Space Station was a milestone of humanity's earliest attempts at gaining a foothold into space. Sadly, it was destroyed during the early Turf Wars. This station was created as a monument to the original. While the exterior matches visual records of what the first I.S.S. looked like, the interior layout has replaced the science and research labs with a museum dedicated to the history of human space exploration.`
 	spaceport `Many of the visitors are families or students on school field trips. The gift shop next to the docking ports sells various historically accurate models, science kits, and other knick-knacks meant to appeal to parents and teachers looking for something educational to bring home from their visit.`

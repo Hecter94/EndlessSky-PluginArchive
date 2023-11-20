@@ -27,6 +27,36 @@ mission "Global: main plot completed"
 		"global: main plot completed" ++
 		fail
 
+# Makes it easier to pick up the Bactrian mission chain after one of your other pilots obtains the City-Ship license
+mission "Global City-Ship License"
+	landing
+	invisible
+	to offer
+		has "license: City-Ship"
+	on offer
+		"global: City-Ship License" ++
+		fail
+
+mission "Midnight: Global City Ship License"
+	landing
+	invisible
+	to offer
+		has "global: City-Ship License"
+		or
+			has "Time Skip start"
+			has "Blood Rage start"
+			has "Mata Hari start"
+			has "Gremlin start"
+			has "Kamikaze start"
+			has "Guncraft start"
+			has "Space Shuttle Start"
+			has "Space Shuttle Start (Original)"
+	on offer
+		"reputation: Deep Security" += 4
+		"mystery cube" += 2
+		"deep convoy" ++
+		fail
+
 start
 	name "Time Skip"
 	to unlock
@@ -215,7 +245,7 @@ start
 				"hit force" 450
 		outfits
 			"Energy Cannon" 1
-			"Energy Blaster" 2
+			"Kludge Blaster" 2
 			"nGVF-CC Fuel Cell"
 			"LP072a Battery Pack"
 			"D23-QP Shield Generator"
@@ -229,8 +259,8 @@ start
 		engine -10 45
 		engine 10 45
 		gun 0 -45 "Energy Cannon"
-		gun -20 12 "Energy Blaster"
-		gun 20 12 "Energy Blaster"
+		gun -20 12 "Kludge Blaster"
+		gun 20 12 "Kludge Blaster"
 		leak "leak" 60 50
 		leak "flame" 80 80
 		explode "tiny explosion" 10
@@ -260,7 +290,7 @@ conversation "blood rage intro"
 	scene "outfit/rusty asteroid scanner"
 	`	You smell grease and dirt and rocket fuel; wonderful smells. As you understand it, your uncle bought this used Berserker for asteroid mining. You're not sure if the rusty old asteroid scanner installed on it is worth keeping, but it does still work. Unfortunately the effective range is so low you might not realize an asteroid is minable until you're practically on top of it.`
 	scene "outfit/energy cannon"
-	`	The one who sold this ship to your uncle salvaged it from a war zone. Its weapons layout is different from the standard Berserker. The weapons pods on the wingtips have been converted into cargo pods while a gun has been installed in the ship's foreward section. You note the guns mounted on the ship are two different sizes. The larger one is an Energy Cannon, a brutal relic from a war that occured long ago. Hopefully you won't have to actually kill someone with this...`
+	`	The one who sold this ship to your uncle salvaged it from a war zone. Its weapons layout is different from the standard Berserker. The weapons pods on the wingtips have been converted into cargo pods while a gun has been installed in the ship's foreward section. You note the guns mounted on the ship are two different sizes. The larger one is an Energy Cannon, a brutal relic from a war that occured long ago. Hopefully you won't have to actually kill anyone with this...`
 
 
 
@@ -465,6 +495,7 @@ mission "Rogue Asteroid [Blood Rage]"
 
 	on complete
 		payment 10000
+		set "midnight mining at turais pyrite"
 		event "midnight mining at turais"
 		conversation
 			scene "outfit/harvested gold"
@@ -472,9 +503,25 @@ mission "Rogue Asteroid [Blood Rage]"
 
 event "midnight mining at turais"
 	system Turais
-		add minables "copper" 9 6.91427
-		add minables "gold" 3 8.10341
+		add minables "pyrite" 3 6
+		add minables "copper" 2 7
+		add minables "gold" 1 8
 
+mission "Midnight Mining at Turais Pyrite"
+	landing
+	invisible
+	to offer
+		has "event: midnight mining at turais"
+		not "midnight mining at turais pyrite"
+	on offer
+		event "midnight mining at turais pyrite"
+		fail
+
+event "midnight mining at turais pyrite"
+	system Turais
+		add minables "pyrite" 3 6
+		add minables "copper" 2 7
+		add minables "gold" 1 8
 
 #############################
 
@@ -1660,6 +1707,7 @@ mission "Kamikaze Ambush"
 mission "Bounty Hunting (Kamikaze Very Tiny)"
 	name "Wanted corsair near <system>"
 	description "A small pirate fighter named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	"apparent payment" 25000
 	repeat
 	job
 	deadline 14
@@ -1713,16 +1761,15 @@ mission "Bounty Hunting (Kamikaze Very Tiny)"
 				"Wasp (Plasma)"
 			variant
 				"Wasp (Proton)"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 25000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 25000
+			fail
 
 mission "Bounty Hunting (Kamikaze Tiny)"
 	name "Wanted outlaw near <system>"
 	description "A well armed pirate fighter named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	"apparent payment" 50000
 	repeat
 	job
 	deadline 14
@@ -1768,16 +1815,15 @@ mission "Bounty Hunting (Kamikaze Tiny)"
 				"Fury (Laser)"
 			variant
 				"Fury (Bomber)"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 50000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 50000
+			fail
 
 mission "Bounty Hunting (Kamikaze Marauder I)"
 	name "Marauder interceptor near <system>"
 	description "A Marauder interceptor named the <npc> has been attacking merchants near the <system> system. Destroy it and return to <planet> by <day> for payment (<payment>)."
+	"apparent payment" 130000
 	repeat
 	job
 	deadline 14
@@ -1798,12 +1844,10 @@ mission "Bounty Hunting (Kamikaze Marauder I)"
 		system
 			distance 1 1
 		fleet "Marauder I"
-		dialog phrase "generic hunted bounty eliminated dialog"
-	on visit
-		dialog phrase "generic bounty hunting on visit"
-	on complete
-		payment 130000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 130000
+			fail
 
 
 ####################################
@@ -2211,8 +2255,8 @@ mission "Guncraft VII"
 			and
 				has "Randomize Guncraft VII"
 				random < 5
-	cargo "illegal cargo" 5
-	illegal 1000000 `In addition to the fine, the illegal cargo is confiscated from your cargo hold.`
+	cargo "illegal firearms" 5
+	illegal 1000000 `In addition to the fine, the illegal firearms are confiscated from your cargo hold.`
 	stealth
 	on offer
 		require "Guncraft VI"

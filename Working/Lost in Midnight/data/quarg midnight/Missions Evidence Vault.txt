@@ -363,6 +363,9 @@ mission "Vault Weapon Quash 1"
 	to offer
 		has "free worlds plot completed"
 		has "Vault Weapon Level 2"
+		"reputation: Republic" > 0
+		"reputation: Syndicate" > 0
+		"reputation: Free Worlds" > 0
 		random < 20
 		or
 			not "Cartography: Quarg Hitchhiker 1: offered"
@@ -381,11 +384,11 @@ mission "Vault Weapon Quash 1"
 			`	"Sorry, I wasn't told what the contents on the chip are. I only know it's top secret!"`	
 				goto end
 			label salute
-			`	You give the officer a salute and she salutes back.`
+			`	You give the officer a salute and she salutes back before leaving.`
 			label end
 			``
 			scene "planet/forest0-b"
-			`	After returning to the <ship>, you find a message from Alondo. "Hello <first>. We received a request from Republic Navy Intelligence asking for your assistance with a sensitive matter on <destination>. In the interest of maintaining good relations with the Republic, the Free Worlds would like you to go there and help in any way that you can." It seems you have a long trip ahead of you.`
+			`	After returning to the <ship>, you check the data to find a message from Alondo. "Hello <first>. We received a request from Republic Navy Intelligence asking for your assistance with a sensitive matter on <destination>. In the interest of maintaining good relations with the Republic, the Free Worlds would like you to go there and help in any way that you can." It seems you have a long trip ahead of you.`
 				accept
 
 mission "Vault Weapon Quash 2"
@@ -414,7 +417,7 @@ mission "Vault Weapon Quash 2"
 					goto how
 				`	"What can you tell me about the Quantum Phase Pistol?"`
 					goto pistol
-				`	"What can you tell me about the Graviton Generator more dangerous?"`
+				`	"What can you tell me about the Graviton Generator?"`
 					goto graviton
 				`	"What diplomatic concerns are there with the Quarg?"`
 					goto diplomatic
@@ -427,8 +430,8 @@ mission "Vault Weapon Quash 2"
 			`	"Like the other exotic stolen weapons, they were confiscated from pirates during the early days of the Republic. The pirates claimed that these weapons were sold to them by a rogue Quarg named..." She pauses to look through some notes. "Quiche? That must be a typo. Well, I suppose that's not important. These events took place centuries ago and likely have no bearing on the current situation."`
 				goto questions
 			label pistol
-			scene "outfit/graviton generator"
-			`	"The data indicates that once this weapon locks onto a target, projectiles fired will home in on their target, phasing though any matter blocking its path. Very suitable for assassinations."`
+			scene "outfit/quantum phase pistol"
+			`	"The data indicates that once this weapon locks onto a target, the energy projectiles it fires will home in on their target, phasing though any matter blocking its path. Very suitable for assassinations."`
 				goto questions
 			label graviton
 			scene "outfit/graviton generator"
@@ -521,7 +524,7 @@ mission "Vault Weapon Quash 4"
 				has "vaultwpnquashbridge"
 			action
 				set "vaultwpnquashbridge"
-			`	While nearby, the bridge is some distance away from the stage where the candidate and his entourage will be standing. But it's difficult the hide here. A sniper would using the bridge would be easy to spot. No one else is here at the moment.`
+			`	While nearby, the bridge is some distance away from the stage where the candidate and his entourage will be standing. But it's difficult the hide here. A sniper using the bridge would be easy to spot. No one else is here at the moment.`
 				goto search
 			label bridge2
 			`	When you return to the bridge, onlookers have gathered on the side facing the plaza. None of them appear to be armed.`
@@ -569,7 +572,7 @@ mission "Vault Weapon Quash 4"
 				`	"Who hired you?"`
 				`	"Where did you get this?"`
 			scene "planet/cloud4"
-			`	The assassin spits at you. Rally security arrives with Korban. Alastair says, "We meet again Captain <last>. It seems I am in your debt. This assassin was likely hired by the Covert mining cartel. We've always been at odds, even after I resigned." Alistair's eyes linger on the alien pistol gripped in your hand, but says nothing. Looking down at the assassin he continues, "We'll handle the rest. The Syndicate Security and Republic Intelligence will have a lot of questions for this one."`
+			`	The assassin spits at you. Rally security arrives with Korban. Alastair says, "We meet again Captain <last>. It seems I am in your debt. This assassin was likely hired by the Covert mining cartel. We've always been at odds, even after I resigned." Alistair's eyes linger on the alien pistol gripped in your hand, but says nothing. Looking down at the assassin he continues, "We'll handle the rest. Syndicate Security and Republic Intelligence will have a lot of questions for this one."`
 			``
 			`	Having retrieved the Quantum Phase Pistol, it's not clear where to search next. With no other leads on the Graviton Generator, you consider heading to Covert.`
 				accept
@@ -597,16 +600,10 @@ mission "Vault Weapon Quash 4 (gift checkmate)"
 		has "free worlds checkmate"
 		has "Vault Weapon Quash 4: done"
 	on offer
-		outfit "Ionic Afterburner"
-		outfit "S-270 Regenerator"
-		outfit "S-970 Regenerator"
-		outfit "Proton Gun-CF8" 2
-		outfit "Proton Turret-ATS" 2
+		outfit "Syndicate Stock (Preferred)"
 		conversation
-			scene "scene/scene-syndicate research"
-			scene "outfit/proton gun-cf8"
-			scene "outfit/proton turret-ats"
-			`	When you arrive on <origin>, a message from Alistair Korban pops up: "As a token of appreciation for saving my life, I've arranged for a gift package featuring some of the Syndicate's latest technology to be delivered to you."`
+			scene "outfit/syndicate stock p"
+			`	When you arrive on <origin>, a message from Alistair Korban pops up: "As a token of appreciation for saving my life, I've arranged for a share of Syndicate preferred stock to be transferred to you."`
 				decline
 
 mission "Vault Weapon Quash 4 (gift reconciliation)"
@@ -628,7 +625,7 @@ mission "Vault Weapon Quash 4 (gift reconciliation)"
 mission "Vault Weapon Quash 5"
 	landing
 	name "Diabolos Bounty"
-	description "A heavy warship name Diabolos has been raiding cartel ships near Gienah. Find the ship and destroy it. Then report to <destination> for payment. (<payment>)"
+	description "A heavy warship named Diabolos has been raiding cartel ships near Gienah. Find the ship and destroy it. Then report to <destination> for payment. (<payment>)"
 	source Covert
 	to offer
 		has "Vault Weapon Quash 4: done"

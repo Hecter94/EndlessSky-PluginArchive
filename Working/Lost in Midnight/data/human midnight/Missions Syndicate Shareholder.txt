@@ -1,0 +1,691 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+# Missions involving Syndicate stock shares
+
+
+
+mission "Midnight Earth Retirement Inheritance Timer"
+	landing
+	invisible
+	to offer
+		has "Earth Retirement: done"
+	on offer
+		event "midnight earth retirement inheritance timer" 365
+		fail
+
+event "midnight earth retirement inheritance timer"
+
+mission "Midnight Earth Retirement Inheritance"
+	landing
+	name "Funeral on <planet>"
+	description "Travel to <destination> by <date> and participate in the funeral of Charles, who you previously transported to <planet> for retirement."
+	source
+		attributes "near earth"
+		attributes spaceport
+	destination Earth
+	to offer
+		has "event: midnight earth retirement inheritance timer"
+		random < 50
+	on offer
+		log "Minor People" "Charles and Donna" `An elderly couple you helped relocate to Earth for their retirement. They seemed to be under stress, abandoned by what Charles referred to as "spoiled brats".`
+		conversation
+			scene "planet/earth"
+			`Upon landing on <origin> you receive a message from Donna: "Captain <last>, I hope this message finds you well. Charles and I were very grateful for your assistance in helping with our retirement. Sadly, he passed away after becoming ill. If you can, would you please attend the funeral on Earth? It can't be held any later than <date>. I would appreciate your participation. I'm sure Charles would too."`
+			`	While you weren't particularly close to Charles and Donna, apparently the short time you spent with them was very impactful to their lives. Earth is only a short distance away. What will you do?`
+			choice
+				`	(Attend Charles' funeral.)`
+				`	(Ignore this.)`
+					decline
+			`	You reply to the message with your RSVP and prepare for the trip to Earth.`
+				accept
+	on complete
+		conversation
+			`You travel from the spaceport to the cemetary where the funeral will be held. Most of the graves are centuries old and only the extremely wealthy can afford to be buried instead of cremated. Donna, dressed in a black dress, greets you. The ceremony is open casket. The morticians did an excellent job with Charles. He doesn't look much different from how you remember his appearance the last time you saw him. "Thank you for coming Captain <first>." Donna is well composed. She is either out of tears or is holding them back for later. You don't see any other guests.`
+			choice
+				`	"Are you alright?"`
+					goto alright
+				`	"I'm sorry for your loss."`
+					goto loss
+				`	"Am I the first guest to arrive?"`
+			`	She frowns. "Only one other will be attending. Thomas may seem rude, but please forgive him. He is paying for today's ceremony afterall."`
+				goto thomas
+			label alright
+			`	She smiles. "We were doing well the first few months after you brought us here. Charles and I actually enjoyed being retired at first. But then he fell ill. Thomas paid for the medical bills, but this only strained the relationship between him and Charles."`
+				goto thomas
+			label loss
+			`	"Thank you." She smiles. "We were doing well the first few months after you brought us here. Charles and I actually enjoyed being retired at first. But then he fell ill. Thomas paid for the medical bills, but this only strained the relationship between him and Charles."`
+			label thomas
+			`	A black limousine approaches. The driver gets out and helps a man in a suit exit the vehicle. He carries the aura of a young corporate executive. This must be Thomas. He strides towards you and Donna, pausing briefly to regard Charles. Briefly glancing at you he addresses her. "Are you well mother?"`
+			`	"Well enough." She responds. "And you?"`
+			`	Thomas nods. After briefly taking in the scenery of the cemetary, he starts walking back to the limousine.`
+			choice
+				`	"Aren't you going to stay for the ceremony?"`
+				`	"Your mom asked you a question."`
+				`	(Let him go.)`
+					goto release
+			`	Thomas snarls at you. "Mind your own business! I provided for them back home! Gave them a job! Paid the medical bills when he got sick! Paid for today's ceremony! Me! They should be grateful!"`
+			choice
+				`	"So you're one of the 'spoiled brats' Charles mentioned?"`
+				`	(Reach for your gun.)`
+				`	(Remain silent.)`
+			`	Donna grabs your arm. "Let it go. Please." She starts to tear up.`
+			label release
+			`	The rear window of the limousine lowers and a young woman wearing an expensive looking gown and jewelry leans out. She calls out to Thomas. "Is this going to take much longer babe?"`
+			`	Thomas doesn't hesitate to get back into the vehicle and they quickly depart, leaving you and Donna alone again.`
+			`	"Sorry you had to see that." Donna apologizes. A short while later, the minister arrives and completes the ceremony. Before you leave, Donna hands you an envelope. "Thanks again for being here today. Please take this. It may not seem like much, but Charles wanted you to have it."`
+			choice
+				`	"I'm glad you invited me."`
+				`	"Take care of yourself."`
+			scene "outfit/syndicate stock p"
+			action
+				outfit "Syndicate Stock (Preferred)"
+			`	After returning to the <ship>, you open the envelope to find a Syndicate preferred stock certificate and a note from Charles: "Hello <first>. I know we only met briefly, but you were the last friendly face we saw on that miserable planet we called home. Truth be told, Earth isn't as horrible as we expected it to be. In some ways it's nicer. The people here aren't as pretentious and stuck up. I'm giving you this stock certificate that my father passed on to me. My son, Thomas, wouldn't appreciate it. He's already got everything he thinks he needs. But back when I was young, this certificate was a symbol that helped motivate me to keep working towards being able to build my own fortune. In the end, I never got there. Hopefully, you'll have better luck at it. Sincerely, Charles."`
+
+
+
+mission "Titania: Syndicate Stock Vote"
+	minor
+	invisible
+	source
+		government "Syndicate"
+	to offer
+		has "main plot completed"
+		random < 70
+	on offer
+		conversation
+			`You receive the following message from Syndicate Financial Holdings:`
+			``
+			`-----NOTICE OF SHAREHOLDER ELECTION-----`
+			``
+			`Greeting Shareholder,`
+			``
+			`	As a holder of Syndicate preferred stock, you are qualified to vote on an important matter regarding the future direction of the Syndicate. With the changing economic landscape following the war between the Republic and the Free Worlds, our financial strategists have identified opportunities to push forward the Titania Station project in the Eteron system. In order to gain control of the Eteron system and complete Titania Station, shall the Syndicate issue ten year bonds valued at one billion credits with a five percent annual interest rate to be paid at maturity?`
+			scene "planet/station5ver8"
+			label decide
+			choice
+				`	(Sounds good. Vote yes.)`
+					goto yes
+				`	(Sounds bad. Vote no.)`
+					goto no
+				`	(I'm not sure...)`
+			`	Searching for info on the hyperspace network, it seems that the Syndicate is asking for permission to fund the construction of a new space station in the Eteron system by borrowing money from outside sources that will be paid back with interest after ten years. The Eteron system is currently controlled by the Republic. Some of that money will probably be used to "persuade" Republic officials to transfer control of Eteron to the Syndicate.`
+				goto decide
+			label yes
+			scene "outfit/syndicate stock p"
+			action
+				event "titania: syndicate bonds issued"
+				event "titania: syndicate bonds matured" 3650
+			`	You vote to fund the creation of a new space station in the Eteron system through the use of corporate bonds.`
+				decline
+			label no
+			scene "outfit/syndicate stock p"
+			`	You vote not to fund the creation of a new space station in the Eteron system through the use of corporate bonds.`
+				decline
+
+event "titania: syndicate bonds issued"
+	outfitter "Syndicate Stock"
+		add "Syndicate Bond (Titania)"
+
+event "titania: syndicate bonds matured"
+
+mission "Titania: Syndicate Bond Mature"
+	outfitter
+	minor
+	invisible
+	repeat
+	source
+		government "Syndicate"
+	to offer
+		has "event: titania: syndicate bonds matured"
+		random < 70
+	on offer
+		require "Syndicate Bond (Titania)" 1
+		conversation
+			scene "outfit/syndicate bond"
+			`One of you Syndicate Bonds has reached maturity. Reclaim the principal plus interest? (1,500,000,000 credits)`
+			choice
+				`	(Reclaim your credits.)`
+				`	(Not now.)`
+					defer
+			scene "outfit/syndicate bond"
+			action
+				outfit "Syndicate Bond (Titania)" -1
+				payment 1500000000
+			`	You trade in your bond, adding 1,500,000,000 credits into your account.`
+				decline
+
+mission "Titania: Syndicate Republic Bribery"
+	minor
+	deadline 30
+	name "Syndicate Agent to <planet>"
+	description "Transport a Syndicate agent to <destination> by <date>. Do not let the authorities scan you."
+	passengers 1
+	illegal 50000 `In addition to the fine, the Syndicate agent is taken into custody.`
+	stealth
+	source
+		government "Syndicate"
+	destination "Earth"
+	to offer
+		has "event: titania: syndicate bonds issued"
+		random < 70
+	on offer
+		conversation
+			`As you walk through a secluded area of the spaceport, a man in a suit approaches you. He's carrying a briefcase handcuffed to his wrist. "Captain <last>, I presume? The Syndicate has need of your services."`
+			choice
+				`	"What does the Syndicate want with me?"`
+				`	"I'm not taking jobs right now."`
+			`	"You voted to go forward with the Titania project, did you not?" Titania is the name of the space station that the Syndicate wants to build in the Eteron system. "I've been assigned to help lobby for the Republic to transfer control of Eteron to the Syndicate. I need a competent starship captain to provide transportation for myself and this package to <planet>. Of course, we must avoid being scanned by Republic patrols. But getting caught by Syndicate Security could also cause problems. Can you assist me with this endeavor?" The man patiently waits for your response.`
+			choice
+				`	"How do I know you are who you say you are?"`
+					goto identify
+				`	"What's in it for me?"`
+					goto reward
+				`	"No, I don't want to be involved."`
+			label final
+			`	"Are you certain? Billions in corporate bonds have been issued and this is only one of several planned diplomatic lobbying missions, some of which have already been completed." His expression is grim.`
+			choice
+				`	"I won't do it!"`
+				`	"Alright, I'll do it."`
+					goto end
+			`	"Very well, I respect your decision. Please excuse me." As you walk away you hear a gunshot. Warm liquid spurts from a hole in the back of your head and another hole in your forehead. Your corpse collapses to the ground, the source of the bullet already gone.`
+				die
+			label identify
+			`	"I've been asked to maintain secrecy. If you don't want to trust me, I suppose I'll have to find someone else. But I must say, you are probably the most experienced starship captain in port right now."`
+				goto decide
+			label reward
+			`	"Financially? I suppose I can give out some pocket change. <payment> should be adequate. As a Syndicate shareholder, you'll benefit as well. Outside of finances, I'll make sure my superiors are aware of your assistance in this matter."`
+			label decide
+			choice
+				`	"No, I don't want to be involved."`
+					goto final
+				`	"Alright, I'll do it."`
+			label end
+			`	"You've made the right choice." The man heads towards the <ship>'s landing pad...`
+				accept
+	on complete
+		event "titania syndicate enters eteron" 30
+		event "titania station construction a" 90
+		event "titania station construction b" 180
+		event "titania station construction c" 270
+		event "titania station construction d" 360
+		"reputation: Syndicate" += 10
+		payment 150000
+		dialog `During the trip, the Syndicate agent doesn't speak much other than to express confidence in the future financial performance of the Syndicate. As soon as you land, he hands you a payment of <payment> and promises to tell his superiors of your assistance before heading towards Parliament.`
+
+event "titania syndicate enters eteron"
+	outfitter "Syndicate Stock"
+		remove "Syndicate Bond (Titania)"
+	system Eteron
+		add fleet "Small Syndicate" 4000
+
+event "titania station construction a"
+	system Eteron
+		remove fleet "Small Republic"
+		add fleet "Small Republic" 6000
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object
+				sprite planet/station5ver8a
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+
+event "titania station construction b"
+	system Eteron
+		remove fleet "Large Republic"
+		add fleet "Large Republic" 12000
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object
+				sprite planet/station5ver8a
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object
+				sprite planet/station5ver8b
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+
+event "titania station construction c"
+	system Eteron
+		government Syndicate
+		add fleet "Large Syndicate" 8000
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object
+				sprite planet/station5ver8b
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8c
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+
+event "titania station construction d"
+	system Eteron
+		remove fleet "Large Republic"
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8c
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+	planet "Titania Station"
+		remove attributes uninhabited
+		landscape land/midnight-sivael9
+		music ambient/machinery
+		description `Titania Station is a deuterium refinery owned and operated by the Syndicate, and aside from a few docking bays for visiting ships to use in an emergency, the rest of the station is sealed off to non-employees. The structure was hastily constructed using a modified blueprint of Oberon Station. Other than the fresh coat of paint, this station is almost indistinguishable from its predecessor.`
+		description `	The Syndicate has spent decades trying to persuade the Republic Parliament to cede control of the Eteron system and its lucrative mining and harvesting rights. Economic hardships endured by the Republic during the war is certain to have played a role in convincing more than a few Councilors to welcome these lobbying efforts.`
+		"required reputation" 10
+		bribe 0.03
+		security 0.4
+		tribute 400
+			threshold 2000
+			fleet "Small Syndicate" 5
+
+
+mission "Titania: Bulk Rush Delivery [Kraken, Job A]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania syndicate enters eteron"
+		not "event: titania station construction c"
+		random < 50
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Kraken Station"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 36000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Kraken, Job B]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania syndicate enters eteron"
+		not "event: titania station construction c"
+		random < 60
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Kraken Station"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 38000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Kraken, Job C]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania syndicate enters eteron"
+		not "event: titania station construction c"
+		random < 70
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Kraken Station"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 40000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Titania, Job A]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 60
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 50
+		government "Pirate"
+		system destination
+		personality entering plunders harvests coward
+		fleet "Small Core Pirates" 2
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 38000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Titania, Job B]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 70
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 50
+		government "Pirate"
+		system destination
+		personality entering plunders harvests coward
+		fleet "Large Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 40000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Titania, Job C]"
+	name "Bulk Rush delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 80
+	source
+		attributes "factory"
+		government "Syndicate"
+		not attributes "station"
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 50
+		government "Pirate"
+		system destination
+		personality entering plunders harvests coward
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates" 2
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 42000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Bulk Rush Delivery [Titania, Spaceport]"
+	name "Bulk Rush delivery to <planet>"
+	deadline
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	minor
+	cargo "Construction" 25 2 .05
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 15
+	source
+		government "Syndicate"
+		not attributes "factory"
+		not attributes "station"
+	destination "Titania Station"
+	on offer
+		dialog `As you are walking through the spaceport, a man approaches you and says, "Excuse me, Captain. I took on a rush delivery of <cargo> to <planet>, but my ship needs repairs and there's no way I can make it there before <day>. Can you take this job for me? The payment for the job is <payment>."`
+	npc
+		government "Pirate"
+		system destination
+		personality entering plunders harvests coward
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates" 2
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 44000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Titania: Transport workers to <planet> [small]"
+	job
+	repeat
+	name "Transport workers to <planet>"
+	description "This group of <bunks> technicians is hoping to find work on <destination>, and they will pay you <payment> to take them there."
+	passengers 2 2 .8
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 80
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes frontier
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 80
+		government "Pirate"
+		personality entering plunders harvests coward
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
+
+mission "Titania: Transport workers to <planet> [medium]"
+	job
+	repeat
+	name "Transport workers to <planet>"
+	description "This group of <bunks> technicians is hoping to find work on <destination>, and they will pay you <payment> to take them there."
+	passengers 4 2 .8
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "near earth"
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 60
+		government "Pirate"
+		system
+			distance 2 3
+		personality entering plunders harvests coward
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 4000
+		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
+
+mission "Titania: Transport workers to <planet> [large]"
+	job
+	repeat
+	name "Transport workers to <planet>"
+	description "This group of <bunks> technicians is hoping to find work on <destination>, and they will pay you <payment> to take them there."
+	passengers 8 2 .8
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes frontier
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 40
+		government "Pirate"
+		system
+			distance 3 4
+		personality entering plunders harvests coward
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 8000
+		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
+
+mission "Titania: Transport workers to <planet> [huge]"
+	job
+	repeat
+	name "Transport workers to <planet>"
+	description "This group of <bunks> technicians is hoping to find work on <destination>, and they will pay you <payment> to take them there."
+	passengers 16 2 .8
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "near earth"
+	destination "Titania Station"
+	npc
+		to spawn
+			random < 20
+		government "Pirate"
+		system
+			distance 5 6
+		personality entering plunders harvests coward
+		fleet "pirate raid"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 16000
+		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
+

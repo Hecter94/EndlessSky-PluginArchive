@@ -415,8 +415,8 @@ mission "Cartography: Diyu Link"
 	minor
 	source "Wang Xiang Tai"
 	to offer
-		not "Cartography: Quarg Hitchhiker 1: offered"
-		random < 50
+		not "event: Diyu hyperlinks"
+		random < 70
 	on offer
 		conversation
 			scene "outfit/unknown"
@@ -440,7 +440,6 @@ mission "Cartography: Diyu Link"
 
 
 mission "Cartography: Quarg Hitchhiker 3"
-	minor
 	name "Underworld Hitchhiker"
 	description "Bring Quash to an underground pirate hideout on <planet> to complete a trade. Then return it to <origin>."
 	source "Wang Xiang Tai"
@@ -449,7 +448,6 @@ mission "Cartography: Quarg Hitchhiker 3"
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
 	to offer
 		has "Cartography: Quarg Hitchhiker 2: offered"
-		random < 70
 	on offer
 		conversation
 			`While walking around the spaceport, you notice a Quarg towering over the crowd. It spots you and approaches. As it gets closer you recognize Quash, the Quarg you transported to the Archipelago.`
@@ -458,10 +456,9 @@ mission "Cartography: Quarg Hitchhiker 3"
 				`	"How many of these systems are there?"`
 				`	"What brings you to Wang Xiang Tai?"`
 					goto business
-					
 			`	"You assume I know them all..."`
-			
 			label business
+			``
 			`	"There is a specific hidden system I am searching for. Perhaps you could help me once again."`
 			choice
 				`	"What do you need me to do?"`
@@ -472,14 +469,27 @@ mission "Cartography: Quarg Hitchhiker 3"
 				`	"What happened to the ship you had the last time we met?"`
 				
 			`	"I do not feel comfortable piloting a ship of that size through underground caverns..."`
-			`	Quash makes a good point.`
 			choice
-				`	"How much are you offering?"`
-			
-			`	"I can share the knowledge I gain of the hidden system I am looking for. I'll add in the hyperspace link codes for Diyu if you don't already have them."`
+				`	"Good point. So how much are you offering?"`
+					goto reward
+				`	"What makes you think I can do it?"`
+			`	Quash gently pats you on the shoulder. "Have confidence in yourself. Other humans have spoken highly of your piloting skills. After our previous journey together, I have no doubt that reputation is well earned."`
+			choice
+				`	"Thanks. So how much are you offering?"`
+			label reward
+			branch diyulinked
+				has "event: Diyu hyperlinks"
+			`	"I can share the knowledge I gain of the hidden system I am looking for. I'll add in the hyperspace link codes for Diyu if you don't already have them." A chance to uncover another hidden system isn't something to pass up on.`
 			choice
 				`	"Sounds good. I accept."`
-					accept
+					goto end
+			label diyulinked
+			`	"I can share the knowledge I gain of the hidden system I am looking for. A chance to uncover another hidden system isn't something to pass up on."`
+			choice
+				`	"Sounds good. I accept."`
+			label end
+			`	You tell Quash where your ship is docked and the Quarg agrees to meet you there. Hopefully you won't have trouble piloting the <ship> through those tunnels...`
+				accept
 	on accept
 		event "Diyu hyperlinks"
 	on complete

@@ -47,6 +47,32 @@ mission "Engineering Room: Salvaged Supercapacitor"
 
 
 
+mission "Independent Refugee"
+	name "Passenger to <planet>"
+	repeat
+	description "Help <fare> escape from <origin> to <destination>. Payment is <payment>."
+	minor
+	passengers 1
+	to offer
+		random < 5
+	source
+		government "Pirate"
+		not attributes uninhabited
+	destination
+		distance 0 5
+		government "Independent" "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	on offer
+		dialog phrase "generic refugee offer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"reputation: Independent" ++
+		payment
+		payment 1000
+		dialog phrase "generic refugee dropoff payment"
+
+
+
 mission "Medical Bay: Injured Crewmember (Coalition)"
 	assisting
 	deadline
@@ -256,20 +282,7 @@ mission "Mining: Claim Jumpers"
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 	to offer
-		or
-			has "Mining: Iron Challenge: done"
-			has "Mining: Silicon: done"
-			has "Mining: Lead: done"
-			has "Mining: Iron: done"
-			has "Mining: Aluminum: done"
-			has "Mining: Titanium: done"
-			has "Mining: Copper: done"
-			has "Mining: Neodymium: done"
-			has "Mining: Tungsten: done"
-			has "Mining: Uranium: done"
-			has "Mining: Silver: done"
-			has "Mining: Gold: done"
-			has "Mining: Platinum: done"
+		"mining jobs done" >= 1
 		random < 5
 	on offer
 		require "Asteroid Scanner"
@@ -348,6 +361,7 @@ mission "Mining: Iron Challenge"
 				"Berserker (Energy Cannons)"
 			
 	on complete
+		"mining jobs done" ++
 		outfit "Iron" -15
 		payment 30000
 		conversation
@@ -398,6 +412,7 @@ mission "Rogue Asteroid (Pirate)"
 				"Dagger" 5
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
 		on kill
+			"mining jobs done" ++
 			payment 10000
 			fail
 
@@ -443,6 +458,7 @@ mission "Rogue Asteroid (Rich World)"
 				"Rogue Asteroid"
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
 		on kill
+			"mining jobs done" ++
 			payment 20000
 			fail
 

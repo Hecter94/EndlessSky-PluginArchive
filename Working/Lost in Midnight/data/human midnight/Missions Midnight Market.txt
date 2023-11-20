@@ -17,6 +17,62 @@
 
 
 
+mission "Midnight Market: Fool's Gold"
+	minor
+	invisible
+	source
+		attributes "frontier" "dirt belt"
+		not attributes "outfitter"
+	to offer
+		credits > 8000
+		random < 70
+	on offer
+		conversation
+			scene "outfit/harvested gold"
+			`You are approached by one of the locals with a cart loaded with glittering ore. "Greetings Captain. Can I convince you to take this Gold for 4,000 credits? I must liquidate this quickly to afford my loan payments." That is a good price for Gold. What will you do?`
+			choice
+				`	"I'll buy it!"`
+				`	"Not interested."`
+					goto disinterested
+			action
+				outfit "Pyrite"
+				payment -4000
+				"Midnight Market" ++
+			scene "outfit/harvested pyrite"
+			`	You exchange 4,000 credits for the "Gold" and load it into your cargo bay. Looking closely at the ore, you notice some small veins of quartz embedded into the mineral. You should probably have it thoroughly examined the next time you visit an outfitter...`
+				decline
+			label disinterested
+			`	"Please! I beg you, I need the credits! How about 3,000?"`
+			choice
+				`	"Alright, I'll buy it."`
+				`	"I said I'm not interested!"`
+					goto disinterested2
+			action
+				outfit "Pyrite"
+				payment -3000
+				"Midnight Market" ++
+			scene "outfit/harvested pyrite"
+			`	You exchange 3,000 credits for the "Gold" and load it into your cargo bay. Looking closely at the ore, you notice some small veins of quartz embedded into the mineral. You should probably have it thoroughly examined the next time you visit an outfitter...`
+				decline
+			label disinterested2
+			`	"Please reconsider! I'll be ruined if I don't get some credits soon! How about 2,000?"`
+			choice
+				`	"Fine, I'll buy it."`
+				`	"I refuse! Go away!"`
+					goto refuse
+			action
+				outfit "Pyrite"
+				payment -2000
+				"Midnight Market" ++
+			scene "outfit/harvested pyrite"
+			`	You exchange 2,000 credits for the "Gold" and load it into your cargo bay. Looking closely at the ore, you notice some small veins of quartz embedded into the mineral. You should probably have it thoroughly examined the next time you visit an outfitter...`
+				decline
+			label refuse
+			`	"Hmph, I hope you crash into an asteroid!" The seller drives their cart over to the landing pad of a newly arrived ship, perhaps hoping to have better luck with a different captain.`
+				decline
+
+
+
 mission "Midnight Market: Jump Drives 1"
 	minor
 	name "Mysterious Buyer"

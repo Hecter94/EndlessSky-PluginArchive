@@ -671,6 +671,79 @@ mission "Jump Drive Theft 2"
 
 
 
+mission "Kudgel's Cudgel"
+	minor
+	name "Mining Expedition"
+	description "Travel to <waypoints> and protect the Kudgel's Cudgel while they mine asteroids. Then escort the ship back to <destination>. Payment is 200,000 credits."
+	source
+		attributes "frontier"
+		not attributes "pirate"
+	waypoint
+		government "Pirate"
+		distance 2 3
+	to offer
+		combat rating > 400
+		"ships: Heavy Warship" <= 5
+		random < 70 - ( 65 * "randomize Kudgel's Cudgel" )
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
+		conversation
+			`Another starship captain approaches you. "Pardon me Captain, but are you able to provide escort protection service?"`
+			choice
+				`	"Where are you headed?"`
+			scene "outfit/harvested gold"
+			`	"I'm hoping to find gold from mining asteroids at <waypoints>. But pirate attacks have been increasing recently. Would you be interested in providing security services until we get back safely? I can afford to pay 200,000 credits." That seems like a generous offer for an escort job.`
+			choice
+				`	"Alright, I'll keep the pirates off your back."`
+				`	"Sorry, I'm not interested in that sort of work right now."`
+					defer
+			scene "thumbnail/mule"
+			`	"Thanks. The name's Kudgel. My ship is Kudgel's Cudgel, a Mule outfitted for mining."`
+				accept
+	on accept
+		clear "randomize Kudgel's Cudgel"
+	on defer
+		set "randomize Kudgel's Cudgel"
+	on waypoint
+		"reputation: Bounty (Disguised)" <?= -1000
+		dialog "Something is wrong. The Kudgel's Cudgel doesn't seem to be interested in mining and isn't responding to hails..."
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 2
+		government "Pirate"
+		system
+			distance 3 4
+		personality waiting plunders harvests
+		fleet "pirate raid"
+	npc
+		to spawn
+			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 3
+		government "Pirate"
+		system
+			distance 4 5
+		personality waiting plunders harvests
+		fleet "pirate raid" 2
+	npc kill
+		government "Bounty (Disguised)"
+		personality target launching plunders heroic mute
+			confusion 20
+		"cargo settings"
+			cargo 0
+		ship "Mule (Cudgel)" "Kudgel's Cudgel"
+		ship "Dagger (Cudgel)" "Kudgel's Surprise"
+		on kill
+			"reputation: Bounty (Disguised)" >?= 0
+			dialog "You survived the trecherous attack by Kudgel's Cudgel and its fighter escort. Check with the authorities on <destination> for any outstanding bounties on Captain Kudgel's crew."
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
+	on complete
+		payment 300000
+		dialog "You report the incident with Kudgel's Cudgel to the <planet> government and are rewarded with a bounty of <payment>."
+
+
+
 outfitter "Syndicate Research"
 	"Ionic Afterburner"
 	"S-270 Regenerator"

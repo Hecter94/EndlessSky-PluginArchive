@@ -11,7 +11,7 @@
 
 
 
-# Jobs defending space stations. The station participates in the battle and preventing its destruction is required to succeed. Originally intended for failure to result in #removing the station from the map. While this can be done, I concluded that the potential "feel bads" from broken missions involving the station isn't worth the risk. So failure results in "death" instead.
+# Jobs defending space stations. The station participates in the battle and preventing its destruction is required to succeed. Originally intended for failure to result in removing the station from the map. While this can be done, I concluded that the potential "feel bads" from broken missions involving the station isn't worth the risk. So failure results in "death" instead.
 
 
 
@@ -1300,6 +1300,7 @@ mission "Midnight Oberon Station Defense Job"
 					goto credits
 			action
 				event "oberon station advanced fuel outfitter"
+				set "oberon syndicate stock patch"
 				"reputation: Syndicate" += 100
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
@@ -1360,6 +1361,20 @@ event "oberon station defense job success"
 event "oberon station advanced fuel outfitter"
 	planet "Oberon Station"
 		add outfitter "Advanced Fuel"
+		add outfitter "Syndicate Stock"
+
+mission "Midnight Oberon Syndicate Stock Patch"
+	landing
+	invisible
+	to offer
+		has "event: oberon station advanced fuel outfitter"
+		not "oberon syndicate stock patch"
+	on offer
+		event "oberon syndicate stock patch"
+
+event "oberon syndicate stock patch"
+	planet "Oberon Station"
+		add outfitter "Syndicate Stock"
 
 
 
@@ -2695,6 +2710,7 @@ mission "Midnight Kraken Station Defense Job"
 					goto credits
 			action
 				event "kraken station advanced fuel outfitter"
+				set "kraken syndicate stock patch"
 				"reputation: Syndicate" += 100
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
@@ -2755,6 +2771,20 @@ event "kraken station defense job success"
 event "kraken station advanced fuel outfitter"
 	planet "Kraken Station"
 		add outfitter "Advanced Fuel"
+		add outfitter "Syndicate Stock"
+
+mission "Midnight Kraken Syndicate Stock Patch"
+	landing
+	invisible
+	to offer
+		has "event: kraken station advanced fuel outfitter"
+		not "kraken syndicate stock patch"
+	on offer
+		event "kraken syndicate stock patch"
+
+event "kraken syndicate stock patch"
+	planet "Kraken Station"
+		add outfitter "Syndicate Stock"
 
 
 
@@ -4411,6 +4441,7 @@ mission "Midnight Charybdis Station Defense Job"
 					goto credits
 			action
 				event "charybdis station advanced fuel outfitter"
+				set "charybdis syndicate stock patch"
 				"reputation: Syndicate" += 100
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
@@ -4471,3 +4502,316 @@ event "charybdis station defense job success"
 event "charybdis station advanced fuel outfitter"
 	planet "Charybdis Station"
 		add outfitter "Advanced Fuel"
+		add outfitter "Syndicate Stock"
+
+mission "Midnight Charybdis Syndicate Stock Patch"
+	landing
+	invisible
+	to offer
+		has "event: charybdis station advanced fuel outfitter"
+		not "charybdis syndicate stock patch"
+	on offer
+		event "charybdis syndicate stock patch"
+
+event "charybdis syndicate stock patch"
+	planet "Charybdis Station"
+		add outfitter "Syndicate Stock"
+
+
+
+# Titania Station is added to the Eteron system after some missions
+mission "Midnight Titania Station Defense Job"
+	job
+	autosave
+	name "Defend <planet>!"
+	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
+	source "Titania Station"
+	to offer
+		or
+			"combat rating" > 8000
+			and
+				"combat rating" > 2000
+				has "global: main plot completed"
+		or
+			and
+				not "Midnight Titania Station Defense Job: done"
+				random < 50
+			and
+				has "Midnight Titania Station Defense Job: done"
+				random < 5
+	on accept
+		event "titania station defense job"
+		dialog "The attack is expected to begin soon. Finish your final preparations before joining the defense fleet in orbit. Be aware that you won't have the opportunity to land on the station during the battle."
+	on enter
+		dialog "The calm before the storm settles in..."
+	npc
+		government "Pirate"
+		personality target entering plunders harvests heroic
+			confusion 20
+		fleet "Small Core Pirates" 8
+		fleet "Large Core Pirates" 4
+		fleet "pirate raid" 3
+	npc
+		government "Pirate"
+		system
+			distance 1
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Dirt Belt Pirates" 4
+		fleet "Large Dirt Belt Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 1
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Southern Pirates" 4
+		fleet "Large Southern Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 1
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Northern Pirates" 4
+		fleet "Large Northern Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 2
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Dirt Belt Pirates" 4
+		fleet "Large Dirt Belt Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 2
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Southern Pirates" 4
+		fleet "Large Southern Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 2
+		personality target waiting plunders harvests heroic
+			confusion 20
+		fleet "Small Northern Pirates" 4
+		fleet "Large Northern Pirates" 2
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 3
+		personality target waiting plunders harvests heroic
+			confusion 10
+		fleet "Marauder fleet III"
+		fleet "Marauder fleet II"
+		fleet "Marauder fleet I"
+	npc
+		government "Pirate"
+		system
+			distance 3
+		personality target waiting plunders harvests heroic
+			confusion 10
+		fleet "Marauder fleet VI"
+		fleet "pirate raid" 2
+	npc
+		government "Pirate"
+		system
+			distance 3
+		personality target waiting plunders harvests heroic
+			confusion 10
+		fleet "Marauder fleet X"
+		fleet "pirate raid" 2
+	npc disable
+		to spawn
+			not "event: kestrel available: more engines"
+			not "event: kestrel available: more shields"
+			not "event: kestrel available: more weapons"
+		government "Pirate"
+		system
+			distance 5
+		personality target waiting plunders harvests timid
+			confusion 10
+		fleet
+			names "pirate"
+			variant
+				"Bactrian (Hired Gun)"
+		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
+	npc disable
+		to spawn
+			has "event: kestrel available: more engines"
+		government "Pirate"
+		system
+			distance 5
+		personality target waiting plunders harvests timid
+			confusion 10
+		fleet
+			names "pirate"
+			variant
+				"Kestrel (Battle Engines)"
+		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
+	npc disable
+		to spawn
+			has "event: kestrel available: more shields"
+		government "Pirate"
+		system
+			distance 5
+		personality target waiting plunders harvests timid
+			confusion 10
+		fleet
+			names "pirate"
+			variant
+				"Kestrel (Battle Shields)"
+		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
+	npc disable
+		to spawn
+			has "event: kestrel available: more weapons"
+		government "Pirate"
+		system
+			distance 5
+		personality target waiting plunders harvests timid
+			confusion 10
+		fleet
+			names "pirate"
+			variant
+				"Kestrel (Battle Weapons)"
+		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
+	npc
+		government "Syndicate"
+		personality launching staying heroic
+			confusion 10
+		fleet "Small Syndicate"
+	npc accompany save
+		government "Syndicate"
+		personality target launching staying timid opportunistic
+			confusion 30
+		"cargo settings"
+			cargo 3
+			commodities "Heavy Metals" "Metal" "Plastic"
+		ship "Titania Station" "Titania"
+	on visit
+		fail
+		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+	on abort
+		fail
+	on fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
+	on complete
+		event "titania station defense job success"
+		conversation
+			scene "outfit/unknown"
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
+			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
+			choice
+				`	(Request access to their fuel equipment.)`
+				`	(Just accept the credits.)`
+					goto credits
+			action
+				event "titania station advanced fuel outfitter"
+				set "titania syndicate stock patch"
+				"reputation: Syndicate" += 100
+			scene "outfit/industrial ramscoop"
+			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
+				accept
+			label credits
+			action
+				payment 1000000
+				"reputation: Syndicate" += 100
+				clear "Midnight Titania Station Defense Job: offered"
+			`	1,000,000 credits are deposited into your account.`
+
+event "titania station defense job"
+	system Eteron
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/smoke
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+	planet "Titania Station"
+		add attributes uninhabited
+		government Uninhabited
+
+event "titania station defense job success"
+	system Eteron
+		remove object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/smoke
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+		add object
+			sprite planet/uranus
+			distance 1126.76
+			period 1302.08
+			object "Titania Station"
+				sprite planet/station5ver8
+				distance 122
+				period 25
+			object
+				sprite planet/dust1-b
+				distance 244
+				period 15.3766
+			object
+				sprite planet/mercury
+				distance 366
+				period 28.2485
+	planet "Titania Station"
+		remove attributes uninhabited
+		government clear
+
+event "titania station advanced fuel outfitter"
+	planet "Titania Station"
+		add outfitter "Advanced Fuel"
+		add outfitter "Syndicate Stock"
+
