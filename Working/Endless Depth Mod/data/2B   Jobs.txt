@@ -1,507 +1,253 @@
-#-----------------------
-# NORMAL JOBS
-#-----------------------
+phrase "generic hunted merchant fleet boarded dialog"
+	word
+		# Make the stolen cargo outfits illegal, some portion of how much they're worth.
+		`The cargo the <npc> is carrying should fetch a good price, but the authorities will be watching for it.`
 
-mission "P Cargo [0]"
-	name "Delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 5 2 .1
-	source
-		government "Pirate" "Northern Raiders" "Mafia""Southern Raiders"
-	destination
-		distance 2 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+# Possibly change them to an auto-triggering mission with a warning in the spaceport, sort of like a traffic warning but its a pirate raid?
 
-mission "P Cargo [1]"
-	name "Delivery to <planet>"
-	job
+mission "Merchant Fleet (Paradise/Near Earth)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
 	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 90
-	source
-		government "Pirate"
-	destination
-		distance 2 10
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Cargo [2]"
-	name "Delivery to <planet>"
 	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 80
-	source
-		attributes pirate
-		government "Pirate"
-	destination
-		distance 2 12
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Cargo [3]"
-	name "Delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 70
-	source
-		attributes pirate
-		government "Pirate"
-	destination
-		distance 3 14
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 2000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Cargo [4]"
-	name "Delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 60
-	source
-		attributes pirate
-		government "Pirate"
-	destination
-		distance 4 16
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 4000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Bulk Delivery [0]"
-	name "Bulk delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 25 2 .05
-	to offer
-		random < 70
-	source
-		government "Pirate"
-	destination
-		distance 2 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Bulk Delivery [1]"
-	name "Bulk delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 25 2 .05
-	to offer
-		random < 60
-	source
-		government "Pirate"
-	destination
-		distance 3 12
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 2000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Bulk Delivery [2]"
-	name "Bulk delivery to <planet>"
-	job
-	repeat
-	description "Deliver <cargo> to <destination>. Payment is <payment>."
-	cargo random 25 2 .05
-	to offer
-		random < 50
-	source
-		attributes pirate
-		government "Pirate"
-	destination
-		distance 4 16
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 4000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-
-mission "P Rush Delivery [0]"
-	name "Rush delivery to <planet>"
-	job
-	repeat
 	deadline
-	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
-	cargo random 5 2 .1
 	to offer
-		random < 90
+		"combat rating" > 600
+		random < 5
 	source
-		government "Pirate"
+		attributes "near earth" paradise
 	destination
-		distance 4 10
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 16000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+		distance 	1 6
 
-mission "P Rush Delivery [1]"
-	name "Rush delivery to <planet>"
-	job
-	repeat
-	deadline
-	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 80
-	source
+	npc
 		government "Pirate"
-	destination
-		distance 5 12
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 18000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+		personality heroic waiting staying plunders harvests
+			confusion 10
+		system destination
+		fleet "Large Northern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+			confusion 10
+		system destination
+		fleet "Large Northern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
 
-mission "P Rush Delivery [2]"
-	name "Rush delivery to <planet>"
-	job
+mission "Merchant Fleet (Deep)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
 	repeat
+	job
 	deadline
-	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
-	cargo random 5 2 .1
 	to offer
-		random < 70
+		"combat rating" > 600
+		random < 5
 	source
-		attributes mining textiles factory farming fishing oil
-		government "Pirate"
+		government "Republic"
+		attributes "deep" 
 	destination
-		distance 6 14
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 20000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+		distance 1 6
 
-mission "P Rush Delivery [3]"
-	name "Rush delivery to <planet>"
-	job
-	repeat
-	deadline
-	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
-	cargo random 5 2 .1
-	to offer
-		random < 60
-	source
-		attributes pirate
+	npc
 		government "Pirate"
-	destination
-		distance 7 16
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment
-		payment 22000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Bounty Hunting (Big)"
-	name "Hunt down <npc>"
-	description "A Republic vessel has been halting our raids near the <system> system. Destroy it and return to <planet> for payment (<payment>)."
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Northern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Northern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Pirate Northern)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
 	repeat
 	job
+	deadline
 	to offer
-		"combat rating" > 500
+		"combat rating" > 600
 		random < 20
 	source
-		government Pirate
-	npc kill
-		personality heroic staying nemesis
-		government Republic
-		system
-			distance 1 2
-		fleet
-			government "Republic"
-			names "republic capital"
-			fighters "republic fighter"
-			variant 5
-				"Frigate" 2
-				"Rainmaker"
-				"Gunboat"
-			variant 3
-				"Cruiser"
-				"Combat Drone" 4
-			variant 3
-				"Cruiser"
-				"Combat Drone" 4
-				"Frigate"
-				"Rainmaker"
-			variant 2
-				"Carrier"
-				"Lance" 4
-				"Combat Drone" 6
-			variant 1
-				"Carrier"
-				"Lance" 4
-				"Combat Drone" 6
-				"Cruiser"
-				"Combat Drone" 4
-				"Frigate" 2
-				"Rainmaker" 2
-				"Gunboat" 2
-			variant 1
-				"Cruiser"
-				"Combat Drone" 4
-				"Frigate" 2
-			variant 1
-				"Frigate"
-				"Rainmaker" 2
-				"Gunboat"
-		dialog "The <npc> has been eliminated. You can claim the bounty payment by returning to <destination>."
-	on complete
-		payment 250000
-		dialog "The pirates of <planet> gratefully pays you <payment> for eliminating the <npc>."
-
-mission "P Bounty Hunting (Medium)"
-	name "Hunt down <npc>"
-	description "A Republic vessel has been halting our raids near the <system> system. Destroy it and return to <planet> for payment (<payment>)."
-	repeat
-	job
-	to offer
-		"combat rating" > 400
-		random < 20
-	source
-		government Pirate
-	npc kill
-		personality heroic staying nemesis
-		government Republic
-		system
-			distance 1 2
-		fleet
-			names "republic capital"
-			fighters "republic fighter"
-			variant 10
-				"Cruiser"
-				"Combat Drone" 4
-			variant 10
-				"Gunboat" 2
-		dialog "The <npc> has been eliminated. You can claim the bounty payment by returning to <destination>."
-	on complete
-		payment 200000
-		dialog "The pirates of <planet> gratefully pays you <payment> for eliminating the <npc>."
-
-mission "P Bounty Hunting (Small)"
-	name "Hunt down <npc>"
-	description "A Republic vessel has been halting our raids near the <system> system. Destroy it and return to <planet> for payment (<payment>)."
-	repeat
-	job
-	to offer
-		"combat rating" > 300
-		random < 20
-	source
-		government Pirate
-	npc kill
-		personality heroic staying nemesis
-		government Republic
-		system
-			distance 1 2
-		fleet
-			names "republic small"
-			variant 6
-				"Rainmaker" 2
-			variant 5
-				"Gunboat"
-				"Rainmaker"
-			variant 4
-				"Frigate"
-			variant 3
-				"Gunboat" 2
-			variant 1
-				"Rainmaker" 3
-			variant 6
-				"Gunboat"
-		dialog "The <npc> has been eliminated. You can claim the bounty payment by returning to <destination>."
-	on complete
-		payment 150000
-		dialog "The pirates of <planet> gratefully pays you <payment> for eliminating the <npc>."
-		
-#-----------------------
-# PIRATE-ONLY JOBS
-#-----------------------
-
-mission "P Narco [0]"
-	name "Smuggling to <planet>"
-	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, its over. Payment of <payment> on delivery."
-	cargo "Narcotics" 4 8
-		stealth
-		illegal 500000
-	to offer
-		"reputation: Pirate" > 50
-	source
-		government "Pirate" 
+		attributes "north pirate"
 	destination
 		distance 2 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 50000 150
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Slave [0]"
-	name "Smuggling to <planet>"
-	job
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Northern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Northern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Lawful Northern)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
 	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, you will become an enemy of the state. Payment of <payment> on delivery."
-	cargo "Slaves" 4 8
-		stealth
-		illegal -1
+	job
+	deadline
 	to offer
-		"reputation: Pirate" > 50
+		"combat rating" > 600
+		random < 10
 	source
-		government "Pirate" 
+		government "Republic" "Syndicate"
+		attributes "north"
+	destination
+		distance 1 6
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Northern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Northern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Pirate Southern)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
+	repeat
+	job
+	deadline
+	to offer
+		"combat rating" > 600
+		random < 20
+	source
+		attributes "south pirate"
 	destination
 		distance 2 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 50000 150
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Narco [1]"
-	name "Smuggling to <planet>"
-	job
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Southern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Southern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Lawful Southern)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
 	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, its over. Payment of <payment> on delivery."
-	cargo "Narcotics" 8 16
-		stealth
-		illegal 750000
-	to offer
-		"reputation: Pirate" > 125
-	source
-		government "Pirate" 
-	destination
-		distance 3 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 50000 300
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Slave [1]"
-	name "Smuggling to <planet>"
 	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, you will become an enemy of the state. Payment of <payment> on delivery."
-	cargo "Slaves" 8 16
-		stealth
-		illegal -1
+	deadline
 	to offer
-		"reputation: Pirate" > 125
+		"combat rating" > 600
+		random < 10
 	source
-		government "Pirate" 
+		government "Free Worlds" "Republic"
+		attributes "dirt belt" rim south
 	destination
-		distance 3 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 50000 300
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Narco [2]"
-	name "Smuggling to <planet>"
+		distance 1 6
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Southern Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Southern Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Pirate Core)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
+	repeat
 	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, its over. Payment of <payment> on delivery."
-	cargo "Narcotics" 16 32
-		stealth
-		illegal 1000000
+	deadline
 	to offer
-		"reputation: Pirate" > 250
+		"combat rating" > 600
+		random < 20
 	source
-		government "Pirate" 
+		attributes "core pirate"
 	destination
-		distance 4 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 60000 600
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Slave [2]"
-	name "Smuggling to <planet>"
+		distance 2 8
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Core Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Core Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+mission "Merchant Fleet (Lawful Core)"
+	name "Merchant Fleet Intelligence"
+	description "Rumors suggest that a large merchant fleet led by the <npc> will be passing through the <system> system sometime before <date>. It sounds like local pirate gangs are very interested."
+	repeat
 	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, you will become an enemy of the state. Payment of <payment> on delivery."
-	cargo "Slaves" 16 32
-		stealth
-		illegal -1
+	deadline
 	to offer
-		"reputation: Pirate" > 250
+		"combat rating" > 600
+		random < 10
 	source
-		government "Pirate" 
+		government "Syndicate"
+		attributes "core"
 	destination
-		distance 4 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 60000 600
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Narco [3]"
-	name "Bulk Drug Running to <planet>"
+		distance 1 6
+
+	npc
+		government "Pirate"
+		personality heroic waiting staying plunders harvests
+		system destination
+		fleet "Large Core Pirates"
+	npc board
+		government "Merchant"
+		personality timid uninterested entering staying
+		system destination
+		fleet "Large Core Convoy"
+		dialog phrase "generic hunted merchant fleet boarded dialog"
+
+# After this I will add salvage jobs which can be found mostly on pirate planets and a few on lawful worlds.
+# Some will be regular salvage jobs, some may contain valuable cargo like the convoy fleets above, and some may have survivors if I can get that to work.
+# Which one is which will not be obvious at first for regular salvage jobs, although some may request specific items to be returned that only have value for the job.
+# The basic layout of the jobs will be: A derelict variant of a ship using the "Scrap" faction will start disabled in a nearby system, carrying unspecified cargo and outfits. The completion requirement is Board, and there is no reward for completion other than the loot you get.
+
+mission "salvage test"
+	name "Derelict Freighter"
+	description "Talk around the spaceport is that there was a small skirmish in <system>. There may be something worth scavenging."
+	repeat
 	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, you will become an enemy of the state. Payment of <payment> on delivery."
-	cargo "Narcotics" 32 64
-		stealth
-		illegal 5000000
-	to offer
-		"reputation: Pirate" > 500
+	deadline 1 3
 	source
-		government "Pirate" 
+		government "Pirate"
 	destination
-		distance 4 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 75000 1000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
-		
-mission "P Slave [3]"
-	name "Bulk Slave Running to <planet>"
-	job
-	repeat
-	infiltrating
-	description "Smuggle <cargo> to <destination>. If you are scanned with the cargo, you will become an enemy of the state. Payment of <payment> on delivery."
-	cargo "Slaves" 32 64
-		stealth
-		illegal -1
-	to offer
-		"reputation: Pirate" > 500
-	source
-		government "Pirate" 
-	destination
-		distance 4 8
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
-	on complete
-		payment 75000 1000
-		dialog "You drop off your cargo of <commodity> and collect your payment of <payment>."
+		distance 1 6
+	
+	npc
+		government "Scavenger"
+		personality waiting staying timid frugal mining harvests plunders
+		system destination
+		fleet "Northern Scavengers"
+	npc
+		government "Scavenger"
+		personality entering staying timid frugal mining harvests plunders
+		system destination
+		fleet "Northern Scavengers"
+	npc board
+		government "Scrap"
+		personality waiting derelict
+		system destination
+		# I am lacking derelicts still.
+		fleet "PLACEHOLDER"
