@@ -116,7 +116,7 @@ mission "Skeleton Key North 2"
 				`	(Stay and watch what happens.)`
 			scene "scene/scene-empty box"
 			`	"And where's that boy now?" asks the first pirate captain, looking around."`
-			`	The other captain, suddenly aware of Tod's absence, yanks the lid of the crate open. "Empty!" The pirates all draw their weapons. "Find the boy! Find the treasure!" Turning to Tod, you notice he's already running off, in the wrong direction of your ship! As you move to follow, someone shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and scream of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
+			`	The other captain, suddenly aware of Tod's absence, yanks the lid of the crate open. "Empty!" The pirates all draw their weapons. "Find the boy! Find the treasure!" Turning to Tod, you notice he's already running off, in the wrong direction of your ship! As you move to follow, someone shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and screams of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
 				die
 			label escape
 			`	You lead Tod through the canyon back to your ship. "The crate's a decoy setup by the pirate captain you rescued me from. What they're really looking for is in my head."`
@@ -237,7 +237,7 @@ mission "Skeleton Key North 2"
 		dialog `[MISSION FAILED] You lost track of Tod! If life were a game, you could load a save file and try again.`
 	on complete
 		payment -1000000
-		log "People" "Tod Copper" `The boy you rescued from slavers recalled a secret code that revealed the location of a pirate's treasure.`
+		log "Minor People" "Tod Copper" `The boy you rescued from slavers recalled a secret code that revealed the location of a pirate's treasure.`
 		log `Found a strange key amongst some pirate treasure hidden in the asteroids of Gorvi. I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
 		conversation
 			scene "outfit/treasure"
@@ -263,7 +263,6 @@ mission "Skeleton Key South 1"
 	destination "Smuggler's Den"
 	to offer
 		has "Smuggler's Den: Follow Up: failed"
-		has "main plot completed"
 		random < 50 + ( 20 * "skeleton key north" ) + ( 20 * "skeleton key core")
 	on offer
 		conversation
@@ -533,7 +532,7 @@ mission "Skeleton Key Core 2"
 	on complete
 		payment 160000
 		log "Minor People" "Pocahontas (Pookie)" `	Pookie was kidnapped while being looked after by her "aunt". The pirates who took her had sold the dog to a kennel on Stormhold. Found Pookie wandering in the snow and brought her back to her "aunt" on Shroud.`
-		log `Rescued Pookie on the dog Stormhold after she was kidnapped by pirates. When I found her she had retrieved a severed arm that had been buried in the snow. In the arm's clenched fist was some sort of key... I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
+		log `Rescued Pookie the dog on Stormhold after she was kidnapped by pirates. When I found her she had retrieved a severed arm that had been buried in the snow. In the arm's clenched fist was some sort of key... I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
 		dialog `The journey with Pookie was just as it was the last time you took her aboard your ship. Pookie's aunt pays you <payment> and thanks you for rescuing the dog. "I know she's a pain to handle, but her owner would be really sad if we lost her."`
 
 mission "Skeleton Keys, Three 1"
@@ -895,6 +894,20 @@ event "smuggler's den rebellion ends"
 		fleet "Small Northern Pirates" 2000
 		fleet "Large Northern Pirates" 4000
 
+mission "Skeleton Key Restore Men Comets"
+	landing
+	invisible
+	to offer
+		or
+			has "event: smuggler's den independent restored"
+			has "event: smuggler's den rebellion ends"
+	on offer
+		event "skeleton key restore men comets"
+		fail
+
+event "skeleton key restore men comets"
+	system Men
+		add fleet "Comet" 40000
 
 
 mission "Skeleton Keys Starcadia Deep Epilogue"
