@@ -1,5 +1,7 @@
 #Lilac -----------
 
+
+
 mission "Arena-I"
 	name "Arena: Interceptor"
 	description "A new player with a ship known as <npc> has challenged you to a battle. Fight and beat them at Tirax to bet a prize of <payment>."
@@ -165,32 +167,12 @@ mission "Arena-Rand"
 
 
 
+
 #-HERE AND DOWN-----------------------------Non-Repeatable; Rewards++
 
-mission "Arena-QW"
-	name "Arena: Quarg Wardragon"
-	description "A veteran arena player claims that their ship, <npc> which takes the form of a Quarg Wardragon is unbeatable, and has challanged you to a battle at Tirax. Fight and beat them to recive an award of <payment> along with a brand new Quarg Skylark to yourself."
-	job
-	source Lilac
-	npc kill
-		government "Arena (Players)"
-		personality heroic staying nemesis target
-		system Tirax
-		fleet
-			names "arena"
-			variant
-				"Quarg Wardragon"
-		dialog "You have defeated the <npc>, you should land back on Lilac now."
-	on visit
-		dialog "You have went back to Lilac, but have not defeated the <npc>! You should get back to the private arena to finish him off."
-	on complete
-		payment 1500000
-		dialog "You land back down with a roar from the croud louder than ever before and collect your payment as well as recive the keycard to a brand new Quark Skylark parker right beside the spaceport."
-		give ship "Quarg Skylark" "Quarg Skylark"
-		
 mission "Arena-CA"
 	name "Arena: Carrier"
-	description "A navy officer proudly presents his Carrier which he claims to be indestructible. He says that anyone that can beat his Carrier he will steal another to give to the winner and risk loosing his job."
+	description "A Navy officer proudly presents his Carrier which he claims to be indestructible. He says that anyone that can beat his Carrier he will steal another to give to the winner and risk loosing his job. You may also attempt capture on this mission."
 	job
 	source Lilac
 	npc kill
@@ -207,13 +189,12 @@ mission "Arena-CA"
 	on visit
 		dialog "You have went back to Lilac, but have not defeated the <npc>! You should get back to the private arena to finish him off."
 	on complete
-		payment 1500000
-		dialog "You land back down with quite a loud roar from the croud and collect your payment as well as recive the keycard to a brand new Quark Skylark parker right beside the spaceport."
+		dialog "You land back down with quite a loud roar from the croud and collect your payment as well as recive the keycard to a brand new Navy Carrier parked right beside the spaceport."
 		give ship "Carrier" "Carrier"
 
 mission "Arena-CR"
 	name "Arena: Crusier"
-	description "A navy officer claims to have bought three Cruisers and says that anyone who is able to beat two crusisers at once will recive the thrid one."
+	description "A Navy officer has bought three Cruisers and says that anyone who is able to beat two crusisers at once will recive the thrid one. You may also attempt capture on this mission."
 	job
 	source Lilac
 	npc kill
@@ -232,11 +213,56 @@ mission "Arena-CR"
 		dialog "You land back down with quite a loud roar from the croud and collect the keycard to a brand new Cruiser right beside the spaceport."
 		give ship "Cruiser" "Cruiser"
 
+mission "License-CC"
+	name "Arena: Special License Offer"
+	description "Because you have bested the navy fleets inside of the arena; you are offered a challange that may reward you with a Navy license! (BE WARNED, EXTREMLY HARD)"
+	job
+	source Lilac
+	to offer
+		has "Arena-CR: done"
+		has "Arena-CA: done"
+	npc kill
+		government "Arena (Players)"
+		personality heroic staying nemesis target
+		system Tirax
+		fleet
+			names "arena"
+			variant
+				"Carrier" 2
+				"Lance" 12
+				"Combat Drone" 36
+				"Cruiser" 6
+				"Auxiliary" 2
+		dialog "You have defeated the enemies. You should land back on Lilac to claim your prize."
+	on visit
+		dialog "You have went back to Lilac, but have not defeated the enemies! You should get back to the private arena to finish him off."
+	on complete
+		dialog "Instead of the croud cheering, they seem to be booing. You recive your 4 Navy licenses and head to the spaceport to cool off for a bit."
+		set "license: Navy Auxiliary"
+		set "license: Navy"
+		set "license: Navy Cruiser"
+		set "license: Navy Carrier"
 
 		
-		
-		
-		
-		
+mission "Arena-BA"
+	name "Arena: Bactrian"
+	description "Mike, your old tour guide offers to give a city-ship license if you can defeat his Bactrian."
+	job
+	source Lilac
+	npc kill
+		government "Arena (Players)"
+		personality heroic staying nemesis target
+		system Tirax
+		fleet
+			names "arena"
+			variant
+				"Bactrian" 1
+				"Lance" 3
+		dialog "You have defeated Mike. You should land back on Lilac to claim your prize."
+	on visit
+		dialog "..."
+	on complete
+		dialog "Ann gives you a funny look and slides you your new license. They might need a new tour guide."
+		set "license: City-Ship"
 
-		
+
