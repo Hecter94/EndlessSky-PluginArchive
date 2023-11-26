@@ -135,13 +135,14 @@ From the RFT shipyards, all ships in the game are available to you.
 
 From the RFT outfitters, all outfits in the game are available to you.
 
-RTF also adds a few outfits, all listed under the `Special` category:
+RTF also adds a few outfits, all listed under the `RTF God Outfits` category:
 - `God Drive`: Jump drive, with no range limit, that does not consume fuel.
 - `God Mode`: Makes you immortal.
 - `God Turret`: Turret that one-shot most ships.
 - `100000 Outfit Space`: Gives you more than enough outfit space.
 - `100000 Cargo Space`: Gives you so much cargo space that this will trigger pirate raids.
-- (property name): Change individual stats of a ship. They look like this:
+
+You can also find outfits that only change a single stat in the `Individual Stats` category. They look like this:
 ![Outfitter](./images/screenshot/wheel-examples.png)
 
 

@@ -210,6 +210,8 @@ data/map/planets.temp: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
 	@echo '\toutfitter "Ruin-The-Fun Stat Outfits"' >> $@
 	@echo '\toutfitter "Ruin-The-Fun All Outfits"' >> $@
 	@echo '\tshipyard "Ruin-The-Fun All Base Ships"' >> $@
+	@echo '\tshipyard `modships`' >> $@
+	@echo '\toutfitter `modoutfits`' >> $@
 	@cat tmp/outfitters.list.tmp | sed 's/^\(.*\)$$/\toutfitter `\1`/' >> $@
 	@cat tmp/shipyards.list.tmp | sed 's/^\(.*\)$$/\tshipyard `\1`/' >> $@
 	@echo "]]" >> $@
