@@ -668,9 +668,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.65 mb | 2023-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.65 mb | 2023-11-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-10-11) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2023-11-26) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -814,13 +814,14 @@ From the RFT shipyards, all ships in the game are available to you.
 
 From the RFT outfitters, all outfits in the game are available to you.
 
-RTF also adds a few outfits, all listed under the `Special` category:
+RTF also adds a few outfits, all listed under the `RTF God Outfits` category:
 - `God Drive`: Jump drive, with no range limit, that does not consume fuel.
 - `God Mode`: Makes you immortal.
 - `God Turret`: Turret that one-shot most ships.
 - `100000 Outfit Space`: Gives you more than enough outfit space.
 - `100000 Cargo Space`: Gives you so much cargo space that this will trigger pirate raids.
-- (property name): Change individual stats of a ship. They look like this:
+
+You can also find outfits that only change a single stat in the `Individual Stats` category. They look like this:
 ![Outfitter](./images/screenshot/wheel-examples.png)
 
 
@@ -893,7 +894,7 @@ If you are interested by some features of this plug-in but do not want to be che
 </blockquote>
 </details>
 
-Status: Released for 0.10.2. Other versions are available on the plugin's website. <br>
+Status: Updated for 0.10.4. Other versions are available on the plugin's website. <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -2807,9 +2808,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 558.09 mb | 2023-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 558.09 mb | 2023-11-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-11-05) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2023-11-26) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
