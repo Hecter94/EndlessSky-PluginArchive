@@ -9,8 +9,7 @@ plugins[Blended Ships]=https://github.com/mOctave/blended-ships
 plugins[BSRC]=https://github.com/phenix2/BSRC
 plugins[Celestial Strands]=https://github.com/Saugia/celestial-strands
 plugins[Chroma Expansion]=https://github.com/OcelotWalrus/Cromha-Expansion-plugin
-#plugins[Czartraks Ship Pack]=https://github.com/czartrak/Czartraks-Ship-Pack
-	# error in data
+plugins[Czartraks Ship Pack]=https://github.com/czartrak/Czartraks-Ship-Pack
 plugins[Derogam]=https://github.com/Lorantine/derogam
 plugins[ES Galactic Exploration]=https://github.com/lumbar527/ES-Galactic-Exploration
 plugins[Eternals]=https://github.com/comnom/Eternals
