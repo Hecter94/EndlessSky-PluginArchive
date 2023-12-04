@@ -111,7 +111,7 @@ It is also important that you play using the **latest unstable beta version of E
 
 || Minimum | Recommended |
 |---|----:|----:|
-|RAM | 4 MB | 8 GB |
+|RAM | 4 GB | 8 GB |
 |Graphics | OpenGL 3.0 | OpenGL 3.3 |
 |Storage Free | 900 MB | 3 GB |
 
