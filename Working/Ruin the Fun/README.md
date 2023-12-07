@@ -11,19 +11,16 @@ Access all ships and outfits, change your captain's name, choose the color swizz
 
 - [📦 Ruin-The-Fun: Sources](https://github.com/Pshy0/es-ruin-the-fun/) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/archive/refs/heads/main.zip):
   This is the latest commit to the plugin. It may or may not be stable, and it may also not work at all or break your save.
-  Includes partial **built-in plugin support**.
 - [🎁 Ruin-The-Fun: Tested Release](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/latest) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/latest/download/-es-ruin-the-fun.zip):
   This is a tested and recommended version. But perhaps not the latest.
-  Includes partial **built-in plugin support**.
+  Has better plugin support than other releases.
 - [📦 Ruin-The-Fun: (Automatic Updates)](https://github.com/Pshy0/es-ruin-the-fun/releases/):
   This version is automatically generated on every new game version (either pre-release or release).
   It should feature the latest game content.
   However, if the data file syntax was changed by the new version, this might cause warnings or errors.
-  No built-in plugin support.
 - [📦 Ruin-The-Fun: (Endless Sky continuous)](https://github.com/Pshy0/es-ruin-the-fun/releases/tag/es-continuous) [(direct download)](https://github.com/Pshy0/es-ruin-the-fun/releases/download/es-continuous/-es-ruin-the-fun-for-es-continuous.zip):
   This version is periodically generated to match continuous builds of Endless Sky. This is also the latest untested RTF version.
   If you do not use continuous Endless Sky builds, do not use this version, as it will contain things that are not yet in you game (that will be a problem).
-  No built-in plugin support.
 
 
 
