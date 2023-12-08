@@ -1,0 +1,86 @@
+mission "Casino"
+	source "Darkcloak"
+	to offer
+		has "outfit: Jump Drive"
+	on offer
+		conversation
+			`As you get into the spaceport you notice a recent addition to the usual set of buildings one can find here, clearly standing out by being the cleanest building in the whole spaceport!`
+			choice
+				`	(Go take a look.)`
+				`	(Maybe next time.)`
+					defer
+			`	Apparently the only thing required to enter this very select casino is the posession of a Jump Drive. As soon as the guard at the entrance gets wind of your valuable posession, they raise their fist and get out of your way, allowing you to head in.`
+			`	Once inside you see most of the clients consist in Unfettered captains lucky enough to have acquired the odd Jump Drive. Your gut tells you they must have done so by any means, meaning that you would do well to be on your guard here. You even spot a few not so Hai-looking fellows, judging by their much more imposing stature.`
+			`	Despite the relatively important presence of Captains, there is actually only one table where one can play, as the supply of Jump Drive is very limited. The prizes are very clearly displayed, ranging from money in very varied quantities to weapons and even ships!`
+			label bet?
+			choice
+				`	(Wait and see how the next captain does.)`
+					to display
+						not "unfettered: seen casino"
+				`	(Bet a Jump Drive.)`
+					to display
+						has "outfit: Jump Drive"
+					goto bet
+				`	(Leave.)`
+					decline
+			action
+				set "unfettered: seen casino"
+			`	You go around a table with a good view on the betting place. As you do you feel like all eyes are upon you, being new here. You figure they must all know each others. One hooded figure addresses you.`
+			`	"You new here, kid?"`
+			choice
+				`	"Maybe."`
+					goto maybe
+				`	"No I come here all the time, are you new?"`
+					goto bigboi
+				`	"I'm not a kid."`
+			`	"Whatever you say, kid." He gives you a deep, dark look, and you can guess red eyes behind the hood. You quickly look another direction, and get back to your business.`
+				goto bet?
+			label bigboi
+			`	"Ha! You got yourself some spirit. That's good, so long as you know when you're in over your head." They stand on all their might, towering over you. "Like now."`
+			`	They approach you, and you can almost feel their might as well as deep, unending anger. "Out. Now." As they say this all of them look at you, ready to make use of their very apparent weapons. You have no choice but to leave.`
+				decline
+			label maybe
+			`	"In that case, allow me to explain the music to you. You get Jump Drives, you bring them here, and in exchange you may win weapons or even ships. Nobody will bother you with things like where it all came from, but you don't ask no questions either, got it? Well, what are you waiting for, get to it!" They continue on their way to leave, probably done with their supply of Jump Drives.`
+				goto bet?
+
+			label bet
+			action
+				outfit "Jump Drive" -1
+			branch ship!
+			branch ship
+				random < 2
+			branch weapon
+				random < 10
+			branch bigmoney
+				random < 20
+			branch money
+				random < 30
+			`	Unfortunately you did not win anything. Better luck next time!`
+				goto bet?
+			label ship!
+			action
+				give ship "Bigeminate Sigil"
+			`	You win a very special stealthy looking ship.`
+				goto bet?
+			label ship
+			action
+				give ship "Shield Beetle"
+			`	You win a Shield Beetle!`
+				goto bet?
+			label weapon
+			action
+				outfit "Ionic Turret Prototype"
+			`	You win an Ionic Turret Prototype!`
+				goto bet?
+			label bigmoney
+			action
+				payment 5000000
+			`	You win 5 million credits!`
+				goto bet?
+			label money
+			action
+				payment 2000000
+			`	You win 2 million credits!`
+				goto bet?
+	on decline
+		clear "seen casino"
