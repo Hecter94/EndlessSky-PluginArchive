@@ -267,10 +267,11 @@ mission "Scrapyard Exploring the Persitar Wreck"
 	on offer
 		"Scrapyard Threat Level" ++
 		event "Blight Shadows Nest In Persitar"
-		outfit "Obsolete Transceiver" 10000
+		set "blight shadow persitar patched"
+		outfit "Obsolete Transceiver" 5000
 		conversation
 			scene "outfit/obsolete transceiver"
-			`While exploring the derelict, you find several crates of Obsolete Transceivers. While there's no practical use for them, they can be sold for scrap. You also find black slime splattered all over one of the damaged areas of the ship. As you are loading the transceivers onto your ship, something bangs on the hull of the derelict...`
+			`While exploring the derelict, you find several crates of Obsolete Transceivers. While there's no practical use for them, they can be sold for scrap. You also find black slime splattered all over one of the damaged areas of the ship. As you are loading the transceivers into your cargo hold, something bangs on the hull of the derelict...`
 				accept
 	npc kill
 		government "Invasive Predator"
@@ -298,6 +299,7 @@ mission "Scrapyard Patch: Blight Shadows Nest In Persitar"
 	invisible
 	to offer
 		has "event: Blight Shadows Nest In Persitar"
+		not "blight shadow persitar patched"
 	on offer
 		event "Patch: Blight Shadows Nest In Persitar"
 		fail
@@ -305,6 +307,59 @@ mission "Scrapyard Patch: Blight Shadows Nest In Persitar"
 event "Patch: Blight Shadows Nest In Persitar"
 	system Persitar
 		remove fleet "Large Blight Shadow" 1000
+
+mission "Scrapyard Persitar Wreck Distress Signal"
+	landing
+	invisible
+	repeat
+	deadline 7
+	source "Persitar Wreck"
+	to offer
+		has "event: Blight Shadows Nest In Persitar"
+		random < 5
+	npc kill
+		government "Kor Sestor"
+		system Persitar
+		personality waiting heroic vindictive
+		fleet "Kor Sestor Expedition"
+	npc kill
+		to spawn
+			random < 25
+		government "Kor Sestor"
+		system Persitar
+		personality waiting heroic vindictive
+		fleet "Kor Sestor Expedition"
+	npc kill
+		to spawn
+			random < 5
+		government "Kor Sestor"
+		system Persitar
+		personality waiting heroic vindictive
+		fleet "Kor Sestor Expedition"
+
+mission "Scrapyard Obsolete Transmitter Distress Signal"
+	landing
+	invisible
+	repeat
+	deadline 7
+	source
+		attributes uninhabited
+		not attributes korath scrapyard
+	to offer
+		has "outfit (installed): Obsolete Transmitter"
+		random < 1
+	on enter
+		conversation
+			scene "outfit/obsolete transmitter"
+			`The Obsolete Transmitter suddenly sends out a pulse...`
+	npc kill
+		government "Kor Sestor"
+		system Persitar
+		personality waiting heroic vindictive
+		fleet "Kor Sestor Expedition"
+
+
+
 
 
 
@@ -345,7 +400,7 @@ mission "Scrapyard Stakoshstar 1"
 			variant
 				"Grakerat 572"
 				"Tercheldar 150" 4
-				"Skoretak 13" 8
+				"Skoretak 13" 14
 				"Stakoshtar 187"
 		conversation
 			scene "ship/stakoshtar 187/stakoshtar"
@@ -375,17 +430,29 @@ mission "Scrapyard Stakoshstar Expeditions"
 		has "event: stakoshtar in prakacha'a"
 	on offer
 		event "Stakoshstar Expeditions"
+		set "stakoshstar expeditions patched"
 		fail
 
 event "Stakoshstar Expeditions"
 	fleet "Kor Sestor Expedition"
-		add variant 1
+		add variant 6
 			"Grakerat 572"
-			"Tercheldar 150" 4
-			"Skoretak 13" 8
+			"Tercheldar 150" 6
+			"Skoretak 13" 14
 			"Stakoshtar 187(SD)"
-		add variant 1
+		add variant 5
 			"Grakerat 572"
-			"Tercheldar 150" 4
-			"Skoretak 13" 8
+			"Tercheldar 150" 6
+			"Skoretak 13" 16
 			"Stakoshtar 187(SD)" 2
+
+mission "Scrapyard Stakoshstar Expeditions Patch"
+	landing
+	invisible
+	to offer
+		has "event: Stakoshstar Expeditions"
+		not "stakoshstar expeditions patched"
+	on offer
+		event "Stakoshstar Expeditions"
+		fail
+

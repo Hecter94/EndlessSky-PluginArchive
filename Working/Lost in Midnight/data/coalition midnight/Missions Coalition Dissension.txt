@@ -11,6 +11,38 @@
 
 
 
+mission "Sabotage: Fuel Dissipator (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Heliarch"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Fuel Dissipator (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Fuel Dissipator (boarding): offered"
+				random < 2
+	on offer
+		outfit "Fuel Dissipator" 1
+		conversation
+			scene "outfit/shield diluter"
+			`You notice a leak in the fuel storage system of your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Heliarch"
+		personality entering vindictive heroic
+		fleet "Heliarch"
+
+
+
 mission "Coalition Dissension: Add Deflectors/Barriers"
 	minor
 	invisible

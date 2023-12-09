@@ -547,6 +547,7 @@ mission "Treasure Map: Terminus"
 		payment -1000000
 		"Treasure Hunter" ++
 		event "Treasure: Terminus"
+		set "Treasure: Terminus Patched"
 	on enter "Terminus"
 		dialog `There is someone else mining the asteroids. Perhaps you're not the only one who bought a treasure map.`
 	npc kill
@@ -557,10 +558,18 @@ mission "Treasure Map: Terminus"
 		fleet "Treasure Hunters"
 
 event "Treasure: Terminus"
-	system Kugel
+	system Terminus
 		add minables treasure 1 3
-		
 
+mission "Treasure Map: Terminus Patch"
+	landing
+	invisible
+	to offer
+		has "event: Treasure: Terminus"
+		not "Treasure: Terminus Patched"
+	on offer
+		event "Treasure: Terminus"
+		fail
 
 mission "Treasure Map: Kugel"
 	minor
@@ -603,8 +612,21 @@ mission "Treasure Map: Kugel"
 event "Treasure: Kugel"
 	system Kugel
 		add minables treasure 1 3
-		
 
+mission "Treasure Map: Kugel Patch"
+	landing
+	invisible
+	to offer
+		has "event: Treasure: Terminus"
+		not "Treasure: Terminus Patched"
+		not "event: Treasure: Kugel"
+	on offer
+		event "Treasure: Kugel Patch"
+		fail
+
+event "Treasure: Kugel Patch"
+	system Kugel
+		remove minables treasure 1 3
 
 mission "Treasure Map: Gamma Cassiopeiae"
 	minor

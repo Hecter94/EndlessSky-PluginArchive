@@ -1,0 +1,2215 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+shipyard "Sunracer"
+	"Sunracer"
+
+mission "Midnight Add Sunracers"
+	landing
+	invisible
+	on offer
+		event "midnight add sunracers"
+		fail
+
+event "midnight add sunracers"
+	system Mirfak
+		add fleet "Merchant Sunracers" 3600
+		add object "Checkpoint Solus"
+			sprite planet/checkpoint
+				delay 2
+			distance 1887
+			period 12
+			offset 120
+		add object "Checkpoint Geminae"
+			sprite planet/checkpoint
+				delay 2
+			distance 1887
+			period 12
+			offset 240
+		add object "Checkpoint Tertio"
+			sprite planet/checkpoint
+				delay 2
+			distance 1887
+			period 12
+			offset 360
+	planet Sunracer
+		add shipyard Sunracer
+
+mission "Midnight Sunracer Intro"
+#	minor
+	invisible
+	source Sunracer
+	to offer
+#		random < 90
+	on offer
+		conversation
+			`While walking through the spaceport you see an advertisement for the Sunracer Qualifiers:`
+			``
+			scene "thumbnail/sunracer-thumb"
+			``
+			`-----{ S U N R A C E R * Q U A L I F I E R }-----`
+			``
+			`Apply to become a professional race pilot! Check the job board often for Sunracer Qualifier opportunities.`
+			``
+			`Requirements:`
+			`	~ Must be piloting a ship solo`
+			`	~ Maximum weight limit is 300 tons (including installed outfits)`
+			`	~ Testing Fee: 1,000 credits`
+			``
+			`Pilots who meet the qualification requirements will be issued a Sunracer license. (License Fee: 50,000 credits)`
+				decline
+
+mission "Midnight Sunracer Qualifier 1"
+	job
+	deadline 2
+	name "Sunracer: Qualifier"
+	description "Want to be a professional racer? Earn a Sunracer License by passing the Sunracer Qualifier! Visit <planet> then return to <origin>. Crew Limit: 1 (Weight Limit: 300 tons) [Test Fee: 1,000 credits / License Fee: 50,000 credits]"
+	source Sunracer
+	destination "Checkpoint Solus"
+	to offer
+		has "Midnight Sunracer Intro: declined"
+		credits > 100000
+		"flagship required crew" == 1
+		"flagship attribute: mass" <= 300000
+		random < 90
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 300000
+	on accept
+		payment -1000
+		outfit "Solus Token" 1
+		clear "Midnight Sunracer Qualifier 2: offered"
+		clear "Midnight Sunracer Qualifier 1: done"
+		conversation
+			scene "scene/scene-sunracer solus"
+			`There's a 1,000 credit fee to take the Sunracer Qualifier. To pass, you'll need to visit <planet> then return to <origin>. Don't take too long or you'll fail. Your piloting experience will also be evaluated. You won't be charged the 50,000 credit License Fee unless you pass the test.`
+			`	You pay the entry fee and prepare to take the Sunracer Qualifier. Do not change your flagship during the qualifier.`
+	on enter
+		dialog "Head for <planet> before time runs out!"
+	on fail
+		outfit "Solus Token" -1
+		clear "Midnight Sunracer Qualifier 1: offered"
+		dialog "You were disqualified from the Sunracer Qualifier. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Solus Token" -1
+		clear "Midnight Sunracer Qualifier 1: offered"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Solus Token" -1
+			clear "Midnight Sunracer Qualifier 1: offered"
+			dialog "You were disqualified from the Sunracer Qualifier. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+
+mission "Midnight Sunracer Qualifier 2"
+	landing
+	deadline 2
+	name "Sunracer: Qualifier"
+	description "Want to be a professional racer? Earn a Sunracer License by passing the Sunracer Qualifier! Visit <planet> then return to <origin>. Crew Limit: 1 (Weight Limit: 300 tons)"
+	source "Checkpoint Solus"
+	destination Sunracer
+	to offer
+		has "Midnight Sunracer Qualifier 1: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 300000
+	on offer
+		outfit "Solus Token" -1
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch pass
+				has "days since start" >= 90
+			`You see another ship pass through the center of <origin>. You try to follow. While you make it through, your hull scrapes against the inner edge...`
+				launch
+			label pass
+			`You see another ship pass through the center of <origin>. You try to follow. You easily make it through, your experience flying a ship over the past several months make maneuvers like this normal for you...`
+				launch
+	on enter
+		dialog "Hurry back to <planet> to finish the qualifier!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			clear "Midnight Sunracer Qualifier 1: offered"
+			dialog "You were disqualified from the Sunracer Qualifier. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	on fail
+		clear "Midnight Sunracer Qualifier 1: offered"
+		dialog "You were disqualified from the Sunracer Qualifier. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		clear "Midnight Sunracer Qualifier 1: offered"
+	on complete
+		conversation
+			branch timeskip
+				has "Time Skip start"
+			branch rookie
+				"days since start" >= 30
+			action
+				clear "Midnight Sunracer Qualifier 1: offered"
+			scene "outfit/attention"
+			`After landing, your piloting skills are evaluated. "You just got you're license, didn't you? It's way too early for you to be flying in professional races. Try again after you've gotten a few more months of flight experience."`
+				accept
+			label rookie
+			branch newb
+				"days since start" >= 60
+			action
+				clear "Midnight Sunracer Qualifier 1: offered"
+			scene "outfit/attention"
+			`After landing, your piloting skills are evaluated. "You just started flying recently, didn't you? You have some skill, but you're still not ready to fly in professional races. Try again after you've logged a couple more months of flight experience."`
+				accept
+			label newb
+			branch pass
+				"days since start" >= 90
+			action
+				clear "Midnight Sunracer Qualifier 1: offered"
+			scene "outfit/attention"
+			`After landing, your piloting skills are evaluated. "Hmm... You're almost ready to fly in professional races. Almost. Get a little more practice and try again next month."`
+				accept
+			label timeskip
+			label pass
+			action
+				set "license: Sunracer"
+				payment -50000
+			scene "outfit/license sunracer"
+			`After landing, your piloting skills are evaluated. "Congratulations! You've passed the test and are qualified to participate in official Sunracer competitions." The racing commission presents you with the license after you pay the 50,000 credit license fee.`
+
+mission "Midnight Sunracer Test Dummy 1"
+	job
+	repeat
+	deadline 4
+	name "Sunracer: Test Dummy"
+	description "Megaparsec engineers want to test an automated ship's ability to pilot a ship through the race course. All three checkpoints will be used. Return to <origin> for payment. (1,000 credits)"
+	source Sunracer
+	stopover "Checkpoint Solus"
+	stopover "Checkpoint Geminae"
+	stopover "Checkpoint Tertio"
+	to offer
+		has "license: Sunracer"
+		or
+			"racing position solus" < 0
+			"racing position geminae" < 0
+		"flagship attribute: mass" <= 300000
+	on accept
+		outfit "Solus Token" 1
+		clear "Midnight Sunracer Test Dummy 2: offered"
+		clear "Midnight Sunracer Test Dummy 3: offered"
+		clear "Midnight Sunracer Test Dummy 4: offered"
+		conversation
+			scene "scene/scene-sunracer tertio"
+			`Your opponent in this race is an automated test ship. You'll need to visit Checkpoint Solus, Checkpoint Geminae, and Checkpoint Tertio before returning to <origin>. Do not change your flagship during the test race. There's no prize or entry fee on the line, so this might be a good opportunity to study the race course.`
+				accept
+	on enter
+		dialog "First, head for Checkpoint Solus."
+	npc save
+		government "Test Dummy"
+		personality launching staying uninterested pacifist
+		ship "Sunracer (Auto)" "Megaparsec Test Ship"
+		on kill
+			payment -400000
+			dialog "The researchers send you an angry message after destroying their test ship, along with a bill for 400,000 credits..."
+	on abort
+		outfit "Solus Token" -1
+		outfit "Geminae Token" -1
+		outfit "Tertio Token" -1
+	on fail
+		outfit "Solus Token" -1
+		outfit "Geminae Token" -1
+		outfit "Tertio Token" -1
+	on complete
+		payment 1000
+		conversation
+			scene "outfit/license sunracer"
+			`The researchers thank you for giving the automated racer a challenge and reward you with the agreed upon 1,000 credits. More importantly, you've gained some insight into the three checkpoints that will hopefully help you the next time you race.`
+
+mission "Midnight Sunracer Test Dummy 2"
+	landing
+	invisible
+	deadline 1
+	source "Checkpoint Solus"
+	destination "Checkpoint Geminae"
+	to offer
+		has "Midnight Sunracer Test Dummy 1: active"
+	on offer
+		outfit "Solus Token" -1
+		outfit "Geminae Token" 1
+		"racing position solus" >?= 0
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			`You've arrived before the automated test ship. This gives you a few moments to spare for examining Checkpoint Solus before it catches up.`
+				accept
+	on fail
+		fail "Midnight Sunracer Test Dummy 1"
+		outfit "Geminae Token" -1
+	on enter
+		dialog "Next stop: Geminae."
+
+mission "Midnight Sunracer Test Dummy 3"
+	landing
+	invisible
+	deadline 1
+	source "Checkpoint Geminae"
+	destination "Checkpoint Tertio"
+	to offer
+		has "Midnight Sunracer Test Dummy 1: active"
+	on offer
+		outfit "Geminae Token" -1
+		outfit "Tertio Token" 1
+		"racing position geminae" >?= 0
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			`You've arrived before the automated test ship. This gives you a few moments to spare for examining Checkpoint Geminae before it catches up.`
+				accept
+	on fail
+		fail "Midnight Sunracer Test Dummy 1"
+		outfit "Tertio Token" -1
+	on enter
+		dialog "Tertio is the next Checkpoint."
+
+mission "Midnight Sunracer Test Dummy 4"
+	landing
+	invisible
+	deadline 1
+	source "Checkpoint Tertio"
+	destination Sunracer
+	to offer
+		has "Midnight Sunracer Test Dummy 1: active"
+	on offer
+		outfit "Tertio Token" -1
+		"racing position tertio" >?= 1
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			`You've arrived before the automated test ship. This gives you a few moments to spare for examining Checkpoint Tertio before it catches up.`
+				accept
+	on fail
+		fail "Midnight Sunracer Test Dummy 1"
+	on enter
+		dialog "Return to Sunracer and finish the mock race."
+
+mission "Midnight Sunracer Repair Solus"
+	job
+	repeat
+	deadline 2
+	name "Maintenance at Solus"
+	description "<stopovers> is in need of maintenance. Bring 25 technicians and their equipment to the artificial satellite. Then return them to <origin>. Payment is <payment>."
+	source Sunracer
+	stopover "Checkpoint Solus"
+	passengers 25
+	cargo "maintenance equipment" 25
+	to offer
+		"flagship required crew" > 1
+		or
+			random < 90 - ( "racing position solus" * 30 )
+	on offer
+		outfit "Solus Token" 1
+	on stopover
+		outfit "Solus Token" -1
+		"racing position solus" ++
+		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on complete
+		payment 5000
+		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
+
+mission "Midnight Sunracer Repair Geminae"
+	job
+	deadline 2
+	name "Maintenance at Geminae"
+	description "<stopovers> is in need of maintenance. Bring 20 technicians and their equipment to the artificial satellite. Then return them to <origin>. Payment is <payment>."
+	source Sunracer
+	stopover "Checkpoint Geminae"
+	passengers 20
+	cargo "maintenance equipment" 20
+	to offer
+		"flagship required crew" > 1
+		random < 60 - ( "racing position geminae" * 20 )
+	on offer
+		outfit "Geminae Token" 1
+	on stopover
+		outfit "Geminae Token" -1
+		"racing position geminae" ++
+		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on complete
+		payment 10000
+		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
+
+mission "Midnight Sunracer Repair Tertio"
+	job
+	deadline 2
+	name "Maintenance at Tertio"
+	description "<stopovers> is in need of maintenance. Bring 15 technicians and their equipment to the artificial satellite. Then return them to <origin>. Payment is <payment>."
+	source Sunracer
+	stopover "Checkpoint Tertio"
+	passengers 15
+	cargo "maintenance equipment" 15
+	to offer
+		"flagship required crew" > 1
+		random < 30 - ( "racing position tertio" * 10 )
+	on offer
+		outfit "Tertio Token" 1
+	on stopover
+		outfit "Tertio Token" -1
+		"racing position tertio" ++
+		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on complete
+		payment 20000
+		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
+
+mission "Midnight Sunracer Solus 1"
+	job
+	repeat
+	deadline 1
+	name "Sunracer: Solus"
+	description "Compete in the Solus League! Visit Checkpoint Solus then return to <origin>. Crew Limit: 1 (Weight Limit: 250 tons) [Entry Fee: 5,000 credits]"
+	source Sunracer
+	destination "Checkpoint Solus"
+	to offer
+		has "license: Sunracer"
+		not "license: Solus Champion"
+		"racing position solus" >= 0
+		credits > 10000
+		"flagship required crew" == 1
+		"flagship attribute: mass" <= 250000
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 250000
+	on accept
+		payment -5000
+		outfit "Solus Token" 1
+		clear "Midnight Sunracer Solus 2: offered"
+		clear "Midnight Sunracer Solus 1: done"
+		conversation
+			scene "scene/scene-sunracer solus"
+			`There's a 5,000 credit fee to compete in a Solus League race. Like the Sunracer Qualifier, you'll need to visit <planet> then return to <origin>. Don't take too long or you'll fail to place. Your ship's equipment and the decisions you make while piloting will help or hinder your performance. Top prize is 51,200 credits.`
+			`	You pay the entry fee and prepare to compete in the Solus League race. Do not change your flagship during the race.`
+				accept
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Solus Token" -1
+			dialog "You were disqualified from the Solus race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		government "Independent (Killable)"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sparrow"
+			variant
+				"Scrapper (Minimal)"
+	npc
+		government "Republic"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+			variant
+				"Outrider"
+	npc
+		government "Syndicate"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Wasp"
+	on fail
+		outfit "Solus Token" -1
+		"racing position solus" --
+		dialog "You were disqualified from the Solus race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Solus Token" -1
+		"racing position solus" --
+
+mission "Midnight Sunracer Solus 2"
+	landing
+	name "Sunracer: Solus"
+	description "Compete in the Solus League! Return to Sunracer and learn the race results. Crew Limit: 1 (Weight Limit: 250 tons)"
+	deadline 1
+	source "Checkpoint Solus"
+	destination "Sunracer"
+	to offer
+		has "Midnight Sunracer Solus 1: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 300000
+	on offer
+		outfit "Solus Token" -1
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch plasma
+				"flagship attribute: thrust" > 9030
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pace
+			branch fortune
+				random < 20
+			action
+				"racing position solus" --
+			`	You try to keep pace with the other ship, but your engines aren't up to the task...`
+				launch
+			label fortune
+			`	You try to keep pace with the other ship, but your engines aren't up to the task... Fortunately the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to catch up while the other ship corrects its course.`
+				launch
+			label pace
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			`	You fire up the afterburner and manage to avoid falling behind...`
+				launch
+			label plasma
+			branch atomic
+				"flagship attribute: thrust" > 14500
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pass
+			branch fortune2
+				random < 15
+			action
+			`	You manage to keep pace with the other ship, but your engines are being pushed to the limit...`
+				launch
+			label fortune2
+				"racing position solus" ++
+			`	You try to keep pace with the other ship, but your engines are being pushed to the limit... Fortunately the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to gain the lead while the other ship corrects its course.`
+				launch
+			label pass
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			action
+				"racing position solus" ++
+			`	You fire up the afterburner and manage to pull ahead!`
+				launch
+			label atomic
+			action
+				"racing position solus" ++
+			`	You zip through the checkpoint, passing one of the other competitors! Hopefully the rest of the race is this easy.`
+				launch
+			label noafterburner
+				"racing position solus" -= 2
+			`	You try to fire up the afterburner only to realize that the <ship> doesn't have one installed! The engines stall momentarily and another competitor passes you...`
+				launch
+	on enter
+		dialog "Hurry back to <planet> to finish the race!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			dialog "You were disqualified from the Solus race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		government "Merchant"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Racing)"
+			variant
+				"Sunracer (Racing)"
+
+	on fail
+		"racing position solus" --
+		dialog "You were disqualified from the Solus race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		"racing position solus" --
+	on complete
+		conversation
+			branch 7th
+				has "racing position solus" > -1
+			action
+				payment 400
+				"racing position solus" >?= 0
+			scene "outfit/license sunracer"
+			`	You finished in last place. A consolation prize of 400 credits is awarded to you. You need more practice. Installing better thrusters might help. Never give up!`
+				accept
+			label 7th
+			branch 6th
+				has "racing position solus" > 0
+			action
+				payment 800
+			scene "outfit/license sunracer"
+			`	You finished in 7th place. A consolation prize of 800 credits is awarded to you. Better luck next time!`
+				accept
+			label 6th
+			branch 5th
+				has "racing position solus" > 1
+			action
+				payment 1600
+			scene "outfit/license sunracer"
+			`	You finished in 6th place. A consolation prize of 1,600 credits is awarded to you. Better luck next time!`
+				accept
+			label 5th
+			branch 4th
+				has "racing position solus" > 2
+			action
+				payment 3200
+			scene "outfit/license sunracer"
+			`	You finished in 5th place. A consolation prize of 3,200 credits is awarded to you. Better luck next time!`
+				accept
+			label 4th
+			branch 3rd
+				has "racing position solus" > 3
+			action
+				payment 6400
+			scene "outfit/license sunracer"
+			`	You finished in 4th place. A consolation prize of 6,400 credits is awarded to you. Better luck next time!`
+				accept
+			label 3rd
+			branch 2nd
+				has "racing position solus" > 4
+			action
+				payment 12800
+			scene "outfit/license sunracer"
+			`	You finished in 3rd place. A prize payment of 12,800 credits is awarded to you. Keep up the good work!`
+				accept
+			label 2nd
+			branch 1st
+				has "racing position solus" > 5
+			action
+				payment 25600
+			scene "outfit/license sunracer"
+			`	You finished in 2nd place. A prize payment of 25,600 credits is awarded to you. Keep up the good work!`
+				accept
+			label 1st
+			action
+				payment 51200
+				set "license: Solus Champion"
+			scene "outfit/license solus"
+			`	You finished in 1st place. A prize payment of 51,200 credits is awarded to you. You also receive a Solus trophy! This qualifies you to compete in the Geminae League. Congratulations!`
+
+mission "Midnight Sunracer Geminae 1"
+	job
+	repeat
+	deadline 1
+	name "Sunracer: Geminae"
+	description "Compete in the Geminae League! Visit Checkpoint Solus then Checkpoint Geminae and return to Sunracer. Crew Limit: 1 (Weight Limit: 200 tons) [Entry Fee: 10,000 credits]"
+	source Sunracer
+	destination "Checkpoint Solus"
+	to offer
+		has "license: Solus Champion"
+		not "license: Geminae Champion"
+		"racing position geminae" >= 0
+		credits > 20000
+		"flagship required crew" == 1
+		"flagship attribute: mass" <= 200000
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 200000
+	on accept
+		payment -10000
+		outfit "Solus Token" 1
+		clear "Midnight Sunracer Geminae 2: offered"
+		clear "Midnight Sunracer Geminae 1: done"
+		conversation
+			scene "scene/scene-sunracer geminae"
+			`There's a 10,000 credit fee to compete in a Geminae League race. Like the Solus League race, you'll need to visit <planet>. After that, you'll need to visit Checkpoint Geminae, then return to <origin>. Don't take too long or you'll fail to place. Your ship's equipment and the decisions you make while piloting will help or hinder your performance. Top prize is 102,400 credits.`
+			`	You pay the entry fee and prepare to compete in the Geminae League race. Do not change your flagship during the race.`
+				accept
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Solus Token" -1
+			dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		government "Merchant"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Racing)"
+			variant
+				"Sunracer (Plasma Afterburner)"
+	npc
+		government "Republic"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver"
+			variant
+				"Sunracer (Atomic Afterburner)"
+	npc
+		to spawn
+			not "event: Sunracer Afterburner Development"
+		government "Syndicate"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Luxury)"
+			variant
+				"Sunracer (Racing)"
+	npc
+		to spawn
+			has "event: Sunracer Afterburner Development"
+		government "Independent (Killable)"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Sunracer Afterburner)"
+			variant
+				"Sunracer (Sunracer Afterburner)"
+	on fail
+		outfit "Solus Token" -1
+		"racing position geminae" --
+		dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Solus Token" -1
+		"racing position geminae" --
+
+mission "Midnight Sunracer Geminae 2"
+	landing
+	name "Sunracer: Geminae"
+	description "Compete in the Geminae League! Visit Checkpoint Geminae then return to Sunracer. Crew Limit: 1 (Weight Limit: 200 tons)"
+	deadline 1
+	source "Checkpoint Solus"
+	destination "Checkpoint Geminae"
+	to offer
+		has "Midnight Sunracer Geminae 1: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 200000
+	on offer
+		outfit "Solus Token" -1
+		outfit "Geminae Token" 1
+		clear "Midnight Sunracer Geminae 3: offered"
+		clear "Midnight Sunracer Geminae 2: done"
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch plasma
+				"flagship attribute: thrust" > 9030
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pace
+			branch fortune
+				random < 15
+			action
+				"racing position geminae" --
+			`	You try to keep pace with the other ship, but your engines aren't up to the task...`
+				launch
+			label fortune
+			`	You try to keep pace with the other ship, but your engines aren't up to the task... Fortunately the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to catch up while the other ship corrects its course.`
+				launch
+			label pace
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			`	You fire up the afterburner and manage to avoid falling behind...`
+				launch
+			label plasma
+			branch atomic
+				"flagship attribute: thrust" > 14500
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pass
+			branch fortune2
+				random < 10
+			`	You manage to keep pace with the other ship, but your engines are being pushed to the limit...`
+				launch
+			label fortune2
+				"racing position geminae" ++
+			`	You try to keep pace with the other ship, but your engines are being pushed to the limit... Fortunately the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to gain the lead while the other ship corrects its course.`
+				launch
+			label pass
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			action
+				"racing position geminae" ++
+			`	You fire up the afterburner and manage to pull ahead!`
+				launch
+			label atomic
+			action
+				"racing position geminae" ++
+			`	You zip through the checkpoint, passing one of the other competitors! Hopefully the rest of the race is this easy.`
+				launch
+			label noafterburner
+				"racing position geminae" -= 2
+			`	You try to fire up the afterburner only to realize that the <ship> doesn't have one installed! The engines stall momentarily and another competitor passes you...`
+				launch
+	on enter
+		dialog "Checkpoint Geminae is next!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Geminae Token" -1
+			dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			not "event: Sunracer Afterburner Development"
+		government "Independent (Killable)"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Racing)"
+			variant
+				"Sunracer (Racing)"
+	npc
+		to spawn
+			has "event: Sunracer Afterburner Development"
+		government "Syndicate"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Ion Afterburner)"
+			variant
+				"Sunracer (Ion Afterburner)"
+	on fail
+		outfit "Geminae Token" -1
+		"racing position geminae" --
+		dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Geminae Token" -1
+		"racing position geminae" --
+
+mission "Midnight Sunracer Geminae 3"
+	landing
+	name "Sunracer: Geminae"
+	description "Compete in the Geminae League! Return to Sunracer and learn the race results. Crew Limit: 1 (Weight Limit: 200 tons)"
+	deadline 1
+	source "Checkpoint Geminae"
+	destination "Sunracer"
+	to offer
+		has "Midnight Sunracer Geminae 2: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 200000
+	on offer
+		outfit "Geminae Token" -1
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch crash
+				random < 50
+			scene "asteroid/fossil/spin"
+			`	As you zip through the checkpoint, a large asteroid crosses your path!`
+			choice
+				`	(Try to destroy it.)`
+				`	(Try to dodge it.)`
+					goto dodge
+			action
+				"racing position geminae" --
+				set "sunracer asteroid"
+				set "sunracer rogue"
+			`	You slow down to fire on the asteroid. Another racer passes as you do so.`
+				launch
+			label dodge
+			branch plasmaturn
+				"flagship attribute: turn" > 192000
+			action
+				"racing position geminae" --
+				set "sunracer rogue"
+			`	Your engines require you to slow down to avoid the asteroid. Another racer passes as you do so.`
+				launch
+			label plasmaturn
+			branch atomicturn
+				"flagship attribute: turn" > 307000
+			action
+				set "sunracer rogue"
+			`	You and another racer manage to dodge the asteroid.`
+				launch
+			label atomicturn
+			action
+				"racing position geminae" ++
+				set "disabled rogue"
+			`	You easily dodge the asteroid. One of your competitors isn't as fortunate...`
+				launch
+			label crash
+			action
+				set "disabled rogue"
+			`	As you zip through the checkpoint, two other racers crash. One of them spins out of control towards you!`
+			choice
+				`	(Try to knock it away.)`
+				`	(Try to evade it.)`
+					goto evade
+			action
+				"racing position geminae" --
+				set "sunracer rogue"
+			`	You slow down to fire on the out of control ship. The other racer pulls ahead as you do so.`
+				launch
+			label evade
+			branch plasmadodge
+				"flagship attribute: turn" > 192000
+			action
+				"racing position geminae" --
+				set "sunracer rogue"
+			`	Your engines require you to slow down to evade the out of control ship. The other racer pulls ahead as you do so.`
+				launch
+			label plasmadodge
+			branch atomicdodge
+				"flagship attribute: turn" > 307000
+			action
+				set "sunracer rogue"
+			`	You evade the out of control ship while keeping pace with the ship that tried to pull ahead.`
+				launch
+			label atomicdodge
+			action
+				"racing position geminae" ++
+			`	You easily dodge the out of control ship. One of your competitors isn't as fortunate...`
+				launch
+	on fail
+		"racing position geminae" --
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+		dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		"racing position geminae" --
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+	on enter
+		dialog "Return to Sunracer and finish the race!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			clear "sunracer asteroid"
+			clear "sunracer rogue"
+			clear "disabled rogue"
+			dialog "You were disqualified from the Geminae race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			has "sunracer asteroid"
+		government "Uninhabited"
+		personality target uninterested launching staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Iron" "Copper" "Titanium"
+			variant
+				"Rogue Asteroid"
+		on destroy
+			"racing position geminae" --
+	npc
+		to spawn
+			has "sunracer rogue"
+		government "Pirate (Rivals)"
+		personality launching staying uninterested
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Javelin)"
+			variant
+				"Sunracer (Javelin)"
+	npc
+		to spawn
+			has "disabled rogue"
+		government "Independent (Killable)"
+		personality launching staying derelict uninterested
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Javelin)"
+			variant
+				"Sunracer (Javelin)"
+		on board
+			"racing position geminae" --
+			dialog "Another racer passes while you stop to board the disabled ship."
+		on assist
+			"racing position geminae" --
+			"reputation: Indepdendent" ++
+			dialog "Another racer passes while you stop to assist the disabled ship."
+	on complete
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+		conversation
+			branch 7th
+				has "racing position geminae" > 0
+			action
+				payment 800
+				"racing position geminae" >?= 0
+			scene "outfit/license solus"
+			`	You finished in last place. A consolation prize of 800 credits is awarded to you. You need more practice. Installing better steering might help. Never give up!`
+				accept
+			label 7th
+			branch 6th
+				has "racing position geminae" > 1
+			action
+				payment 1600
+			scene "outfit/license solus"
+			`	You finished in 7th place. A consolation prize of 1,600 credits is awarded to you. Better luck next time!`
+				accept
+			label 6th
+			branch 5th
+				has "racing position geminae" > 2
+			action
+				payment 3200
+			scene "outfit/license solus"
+			`	You finished in 6th place. A consolation prize of 3,200 credits is awarded to you. Better luck next time!`
+				accept
+			label 5th
+			branch 4th
+				has "racing position geminae" > 3
+			action
+				payment 6400
+			scene "outfit/license solus"
+			`	You finished in 5th place. A consolation prize of 6,400 credits is awarded to you. Better luck next time!`
+				accept
+			label 4th
+			branch 3rd
+				has "racing position geminae" > 4
+			action
+				payment 12800
+			scene "outfit/license solus"
+			`	You finished in 4th place. A prize payment of 12,800 credits is awarded to you. Keep up the good work!`
+				accept
+			label 3rd
+			branch 2nd
+				has "racing position geminae" > 5
+			action
+				payment 25600
+			scene "outfit/license solus"
+			`	You finished in 3rd place. A prize payment of 25,600 credits is awarded to you. Keep up the good work!`
+				accept
+			label 2nd
+			branch 1st
+				has "racing position geminae" > 6
+			action
+				payment 51200
+			scene "outfit/license solus"
+			`	You finished in 2nd place. A prize payment of 51,200 credits is awarded to you. Keep up the good work!`
+				accept
+			label 1st
+			action
+				payment 102400
+				set "license: Geminae Champion"
+			scene "outfit/license geminae"
+			`	You finished in 1st place. A prize payment of 102,400 credits is awarded to you. You also receive a Geminae trophy! This qualifies you to compete in the Tertio League. Congratulations!`
+
+mission "Midnight Sunracer Tertio 1"
+	job
+	repeat
+	deadline 1
+	name "Sunracer: Tertio"
+	description "Compete in the Tertio League! Visit Checkpoint Solus, Checkpoint Geminae, then Checkpoint Tertio and return to Sunracer. Crew Limit: 1 (Weight Limit: 150 tons) [Entry Fee: 20,000 credits]"
+	source Sunracer
+	destination "Checkpoint Solus"
+	to offer
+		has "license: Geminae Champion"
+		credits > 40000
+		"flagship required crew" == 1
+		"flagship attribute: mass" <= 150000
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 150000
+	on accept
+		payment -20000
+		outfit "Solus Token" 1
+		clear "Midnight Sunracer Tertio 2: offered"
+		clear "Midnight Sunracer Tertio 1: done"
+		conversation
+			scene "scene/scene-sunracer tertio"
+			`There's a 20,000 credit fee to compete in a Tertio League race. Like the Geminae League race, you'll need to visit Checkpoint Solus and Checkpoint Geminae. After that, you'll need to visit Checkpoint Tertio, then return to <origin>. Don't take too long or you'll fail to place. Your ship's equipment and the decisions you make while piloting will help or hinder your performance. Top prize is 1,024,000 credits.`
+			branch cheat
+				has "tertio cheat token"
+			`	You pay the entry fee and prepare to compete in the Tertio League race. Do not change your flagship during the race.`
+				accept
+			label cheat
+			branch cheatfailed
+				has "cheat failed"
+			`	You pay the entry fee and prepare to compete in the Tertio League race. Do not change your flagship during the race. You receive a message from Mister Cologne: "Remember not to push yourself too hard." It's a reminder of your agreement to get last place in the qualified rankings...`
+				accept
+			label cheatfailed
+			`	You pay the entry fee and prepare to compete in the Tertio League race. Do not change your flagship during the race. You receive a message from Mister Cologne: "Hey. Don't mess this up. You'd better get it right this time." It's a reminder of your agreement to get last place in the qualified rankings...`
+				accept
+
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Solus Token" -1
+			dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			not "tertio bounty"
+		government "Merchant"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Plasma Afterburner)"
+	npc
+		government "Republic"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Atomic Afterburner)"
+	npc
+		to spawn
+			not "event: Sunracer Afterburner Development"
+		government "Syndicate"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Racing)"
+	npc
+		to spawn
+			has "event: Sunracer Afterburner Development"
+		government "Syndicate"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Sunracer Afterburner)"
+	npc
+		to spawn
+			has "tertio bounty"
+		government "Bounty Hunter"
+		personality launching staying heroic disables
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+	on fail
+		outfit "Solus Token" -1
+		"racing position tertio" --
+		dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Solus Token" -1
+		"racing position tertio" --
+
+mission "Midnight Sunracer Tertio 2"
+	landing
+	name "Sunracer: Tertio"
+	description "Compete in the Geminae League! Visit Checkpoint Geminae and Checkpoint Tertio, then return to Sunracer. Crew Limit: 1 (Weight Limit: 150 tons)"
+	deadline 1
+	source "Checkpoint Solus"
+	destination "Checkpoint Geminae"
+	to offer
+		has "Midnight Sunracer Tertio 1: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 150000
+	on offer
+		outfit "Solus Token" -1
+		outfit "Geminae Token" 1
+		clear "Midnight Sunracer Tertio 3: offered"
+		clear "Midnight Sunracer Tertio 2: done"
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch plasma
+				"flagship attribute: thrust" > 9030
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pace
+			branch fortune
+				random < 10
+			action
+				"racing position tertio" --
+			`	You try to keep pace with the other ship, but your engines aren't up to the task...`
+				launch
+			label fortune
+			`	You try to keep pace with the other ship, but your engines aren't up to the task... But the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to catch up while the other ship corrects its course.`
+				launch
+			label pace
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			`	You fire up the afterburner and manage to avoid falling behind...`
+				launch
+			label plasma
+			branch atomic
+				"flagship attribute: thrust" > 14500
+			`	One of the other racers passes you!`
+			choice
+				`	(Try to keep up.)`
+				`	(Fire up the afterburner!)`
+					goto pass
+			branch fortune2
+				random < 5
+			`	You manage to keep pace with the other ship, but your engines are being pushed to the limit...`
+				launch
+			label fortune2
+				"racing position tertio" ++
+			`	You try to keep pace with the other ship, but your engines are being pushed to the limit... Fortunately the other ship suddenly turns aside to avoid crashing into an asteroid! You manage to gain the lead while the other ship corrects its course.`
+				launch
+			label pass
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			action
+				"racing position tertio" ++
+			`	You fire up the afterburner and manage to pull ahead!`
+				launch
+			label atomic
+			action
+				"racing position tertio" ++
+			`	You zip through the checkpoint, passing one of the other competitors! Hopefully the rest of the race is this easy.`
+				launch
+			label noafterburner
+				"racing position tertio" -= 2
+			`	You try to fire up the afterburner only to realize that the <ship> doesn't have one installed! The engines stall momentarily and another competitor passes you...`
+				launch
+	on enter
+		dialog "Checkpoint Geminae is next!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Geminae Token" -1
+			dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			not "event: Sunracer Afterburner Development"
+			not "tertio bounty"
+		government "Independent (Killable)"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Hai)"
+	npc
+		to spawn
+			has "event: Sunracer Afterburner Development"
+			not "tertio bounty"
+		government "Independent (Killable)"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Ion Afterburner)"
+	npc
+		to spawn
+			has "tertio bounty"
+		government "Bounty Hunter"
+		personality launching staying heroic disables
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+	on fail
+		outfit "Geminae Token" -1
+		"racing position tertio" --
+		dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Geminae Token" -1
+		"racing position tertio" --
+
+mission "Midnight Sunracer Tertio 3"
+	landing
+	name "Sunracer: Tertio"
+	description "Compete in the Geminae League! Visit Checkpoint Tertio, then return to Sunracer. Crew Limit: 1 (Weight Limit: 150 tons)"
+	deadline 1
+	source "Checkpoint Geminae"
+	destination "Checkpoint Tertio"
+	to offer
+		has "Midnight Sunracer Tertio 2: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 150000
+	on offer
+		outfit "Geminae Token" -1
+		outfit "Tertio Token" 1
+		clear "Midnight Sunracer Tertio 4: offered"
+		clear "Midnight Sunracer Tertio 3: done"
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch nocheat
+				not "tertio cheat token"
+			branch slow
+				"racing position tertio" > 1
+			`	You're still in position to make last place in the qualified rankings...`
+			``
+				goto nocheat
+			label slow
+			`	You're doing well. Too well. If you don't ease up, you'll rank higher than last place in the qualified rankings...`
+			``
+			label nocheat
+			branch crash
+				random < 50
+			scene "asteroid/fossil/spin"
+			`	As you zip through the checkpoint, a large asteroid crosses your path!`
+			choice
+				`	(Try to destroy it.)`
+				`	(Try to dodge it.)`
+					goto dodge
+			action
+				"racing position tertio" --
+				set "sunracer asteroid"
+				set "sunracer rogue"
+			`	You slow down to fire on the asteroid. Another racer passes as you do so.`
+				launch
+			label dodge
+			branch plasmaturn
+				"flagship attribute: turn" > 192000
+			action
+				"racing position tertio" --
+				set "sunracer rogue"
+			`	Your engines require you to slow down to avoid the asteroid. Another racer passes as you do so.`
+				launch
+			label plasmaturn
+			branch atomicturn
+				"flagship attribute: turn" > 307000
+			action
+				set "sunracer rogue"
+			`	You and another racer manage to dodge the asteroid.`
+				launch
+			label atomicturn
+			action
+				"racing position tertio" ++
+				set "disabled rogue"
+			`	You easily dodge the asteroid. One of your competitors isn't as fortunate...`
+				launch
+			label crash
+			action
+				set "disabled rogue"
+			scene "thumbnail/sunracer-thumb"
+			`	As you zip through the checkpoint, two other racers crash. One of them spins out of control towards you!`
+			choice
+				`	(Shoot at it.)`
+				`	(Try to evade it.)`
+					goto evade
+			action
+				"racing position tertio" --
+				set "sunracer rogue"
+			`	You slow down to aim at the out of control ship. The other racer pulls ahead as you do so!`
+				launch
+			label evade
+			branch plasmadodge
+				"flagship attribute: turn" > 192000
+			action
+				"racing position tertio" --
+				set "sunracer rogue"
+			`	Your engines require you to slow down to evade the out of control ship. The other racer pulls ahead as you do so.`
+				launch
+			label plasmadodge
+			branch atomicdodge
+				"flagship attribute: turn" > 307000
+			action
+				set "sunracer rogue"
+			`	You evade the out of control ship while keeping pace with the ship that tried to pull ahead.`
+				launch
+			label atomicdodge
+			action
+				"racing position tertio" ++
+			`	You easily dodge the out of control ship. One of your competitors isn't as fortunate...`
+				launch
+	on fail
+		outfit "Tertio Token" -1
+		"racing position tertio" --
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+		dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+	on abort
+		outfit "Tertio Token" -1
+		"racing position tertio" --
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+	on enter
+		dialog "Only one left, head for Checkpoint Tertio!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			outfit "Tertio Token" -1
+			clear "sunracer asteroid"
+			clear "sunracer rogue"
+			clear "disabled rogue"
+			dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			has "sunracer asteroid"
+		government "Uninhabited"
+		personality target uninterested launching staying mute
+		fleet
+			names "asteroid names"
+			cargo 3
+			outfitters "Iron" "Copper" "Titanium"
+			variant
+				"Rogue Asteroid"
+		on destroy
+			"racing position tertio" --
+	npc
+		to spawn
+			has "sunracer rogue"
+			not "tertio bounty"
+		government "Pirate (Rivals)"
+		personality launching staying disables
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+	npc
+		to spawn
+			has "tertio bounty"
+		government "Bounty Hunter"
+		personality launching staying heroic disables
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+	npc
+		to spawn
+			has "disabled rogue"
+		government "Independent (Killable)"
+		personality launching staying derelict uninterested
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+		on board
+			"racing position tertio" --
+			dialog "Another racer passes while you stop to board the disabled ship."
+		on assist
+			"racing position tertio" --
+			"reputation: Indepdendent" ++
+			dialog "Another racer passes while you stop to assist the disabled ship."
+	on complete
+		clear "sunracer asteroid"
+		clear "sunracer rogue"
+		clear "disabled rogue"
+
+mission "Midnight Sunracer Tertio 4"
+	landing
+	name "Sunracer: Tertio"
+	description "Compete in the Geminae League! Return to Sunracer and learn the race results. Crew Limit: 1 (Weight Limit: 150 tons)"
+	deadline 1
+	source "Checkpoint Tertio"
+	destination Sunracer
+	to offer
+		has "Midnight Sunracer Tertio 3: done"
+	to fail
+		"flagship crew" > 1
+		"flagship attribute: mass" > 150000
+	on offer
+		outfit "Tertio Token" -1
+		conversation
+			scene "scene/scene-checkpoint"
+			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
+			``
+			branch nocheat
+				not "tertio cheat token"
+			branch slow
+				"racing position tertio" > 1
+			`	You're still in position to make last place in the qualified rankings...`
+			``
+				goto nocheat
+			label slow
+			`	You're doing well. Too well. If you don't ease up, you'll rank higher than last place in the qualified rankings...`
+			``
+			label nocheat
+			branch atomic
+				"flagship attribute: thrust" > 14500
+			`	You've made it to the third checkpoint. One of the other racers is trying to pass you!`
+			choice
+				`	(Try to stay ahead.)`
+				`	(Fire up the afterburner!)`
+					goto pace
+			action
+				"racing position tertio" --
+			`	You try to maintain your lead over the other ship, but your engines aren't up to the task...`
+				goto trouble
+			label pace
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			`	You fire up the afterburner and manage to maintain your lead over the other ship...`
+				goto trouble
+			label atomic
+			`	You've made it to the third checkpoint. One of the other racers is trying to pass you!`
+			choice
+				`	(Try to stay ahead.)`
+				`	(Fire up the afterburner!)`
+					goto pass
+			action
+			`	You manage to maintain your lead over the other ship, but your engines are being pushed to the limit...`
+				goto trouble
+			label pass
+			branch noafterburner
+				not "flagship attribute: afterburner thrust"
+			action
+				"racing position tertio" ++
+			`	You fire up the afterburner and pull away from your pursuer!`
+				goto trouble
+			label noafterburner
+			action
+				"racing position tertio" -= 2
+			`	You try to fire up the afterburner only to realize that the <ship> doesn't have one installed! The engines stall momentarily and the other competitor is able to overtake you...`
+				launch
+			label trouble
+			branch sabotage
+				random < 20
+			branch atomicturn
+				"flagship attribute: turn" > 307000
+			action
+				"racing position tertio" --
+				set "sunracer hunter"
+			scene "scene/scene-explosion"
+			`	The other ship suddenly opens fire on you! The pilot must be desperate. You struggle to avoid the shots, but the distraction is enough to make you veer off course...`
+				launch
+			label atomicturn
+			action
+				set "sunracer hunter"
+			scene "outfit/javelin"
+			`	The other ship suddenly opens fire on you! The pilot must be desperate. You manage to avoid the shots, but your pursuer is still on your tail...`
+				launch
+			label sabotage
+			branch circuit
+				has "outfit (flagship installed): Security Circuit"
+			branch node
+				has "outfit (flagship installed): Security Node"
+			action
+				"racing position tertio" -= 2
+			scene "outfit/attention"
+			`	Suddenly your engines shut down! It seems someone hacked into the <ship>'s computer and initiated a system failure! The other ship overtakes you while you wait for your ship's computer to reboot!`
+				launch
+			label circuit
+			action
+				outfit "Security Circuit" -1
+				outfit "Security Circuit (Damaged)" 1
+			scene "outfit/damaged security circuit"
+			`	There's a sudden brief power spike that overloads a Security Circuit! Fortunately, no other systems were damaged and the <ship> is able to continue the race without slowing down.`
+				launch
+			label node
+			action
+				outfit "Security Node" -1
+				outfit "Security Node (Damaged)" 1
+			scene "outfit/damaged security node"
+			`	There's a sudden brief power spike that overloads a Security Node! Fortunately, no other systems were damaged and the <ship> is able to continue the race without slowing down.`
+				launch
+	on enter
+		dialog "Return to <planet> to complete the race!"
+	npc
+		government "Test Dummy"
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			clear "sunracer hunter"
+			dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+			fail
+	npc
+		to spawn
+			or
+				has "sunracer hunter"
+				has "tertio bounty"
+		government "Bounty Hunter"
+		personality launching staying heroic disables
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Javelin)"
+	on abort
+		clear "sunracer hunter"
+		"racing position tertio" --
+	on fail
+		clear "sunracer hunter"
+		"racing position tertio" --
+		dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
+	on complete
+		conversation
+			branch cheat
+				has "tertio cheat token"
+			branch 7th
+				has "racing position tertio" > 1
+			branch bountyloss
+				has "tertio bounty"
+			action
+				payment 8000
+				"racing position tertio" >?= 0
+			scene "outfit/license geminae"
+			`	You finished in last place. A consolation prize of 8,000 credits is awarded to you. You need more practice. Installing better engines might help. Never give up!`
+				accept
+			label bountyloss
+			action
+				payment 8000
+			scene "outfit/license geminae"
+			`	You finished in last place. A consolation prize of 8,000 credits is awarded to you. During the race, more than a few racers took an agressive stance towards you, as if there's a bounty to keep you out of the top rankings...`
+				accept
+			label cheat
+			branch cheatfail
+				has "racing position tertio" > 1
+			action
+				payment 508000
+				clear "tertio cheat token"
+				clear "cheat failed"
+				"racing position tertio" >?= 1
+			scene "outfit/license geminae"
+			`	You finished in last place. A consolation prize of 8,000 credits is awarded to you. Mister Cologne sent a message of encouragement and an additional 500,000 credits is deposited into your account from Mister Cologne's organization, a "gift" for your efforts.`
+				accept
+			label cheatfail
+			branch cheatout
+				has "cheat failed"
+			action
+				clear "tertio cheat token"
+				set "cheat failed"
+			scene "outfit/attention"
+			`	You receive a message from an angry Mister Cologne: "What was that? Do you not understand our arrangement? I lost a lot of money in this last race because of you! Do that again and I'll make sure the rest of your racing career is hell! HELL!"`
+				goto 7th
+			label cheatout
+			action
+				clear "tertio cheat token"
+				clear "tertio cheater"
+				set "tertio bounty"
+				log "Minor People" "Al Cologne" `Mr. Cologne cut ties with me after some Tertio race results didn't meet his expectations. He was very threatening in his final message regarding that business.`
+			scene "outfit/attention"
+			`	You receive a message from an angry Mister Cologne: "You did it again! That's it! Your finished! Do you understand me? FINISHED!" It seems your partnership with Mister Cologne has come to an end.`
+				goto 7th
+			label 7th
+			branch 6th
+				has "racing position tertio" > 2
+			action
+				payment 16000
+			scene "outfit/license geminae"
+			`	You finished in 7th place. A consolation prize of 16,000 credits is awarded to you. Better luck next time!`
+				accept
+			label 6th
+			branch 5th
+				has "racing position tertio" > 3
+			action
+				payment 32000
+			scene "outfit/license geminae"
+			`	You finished in 6th place. A consolation prize of 32,000 credits is awarded to you. Better luck next time!`
+				accept
+			label 5th
+			branch 4th
+				has "racing position tertio" > 4
+			action
+				payment 64000
+			scene "outfit/license geminae"
+			`	You finished in 5th place. A consolation prize of 64,000 credits is awarded to you. Better luck next time!`
+				accept
+			label 4th
+			branch 3rd
+				has "racing position tertio" > 5
+			action
+				payment 128000
+			scene "outfit/license geminae"
+			`	You finished in 4th place. A prize payment of 128,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label 3rd
+			branch 2nd
+				has "racing position tertio" > 6
+			action
+				payment 256000
+			scene "outfit/license geminae"
+			`	You finished in 3rd place. A prize payment of 256,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label 2nd
+			branch 1st
+				has "racing position tertio" > 7
+			action
+				payment 512000
+			scene "outfit/license geminae"
+			`	You finished in 2nd place. A prize payment of 512,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label 1st
+			branch trophy
+				not "license: Tertio Champion"
+			branch cheater
+				has "tertio cheater"
+			branch bountywin
+				has "tertio bounty"
+			branch hardreset
+				random < 66
+			action
+				payment 1024000
+				"racing position tertio" <?= 2
+			scene "outfit/license tertio"
+			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label hardreset
+			branch easyreset
+				random < 50
+			label bountywin
+			action
+				payment 1024000
+				"racing position tertio" <?= 0
+			scene "outfit/license tertio"
+			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label easyreset
+			action
+				payment 1024000
+				"racing position tertio" <?= 4
+			scene "outfit/license tertio"
+			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. Keep up the good work!`
+				accept
+			label cheater
+			action
+				payment 1024000
+				"racing position tertio" <?= -1
+				set "tertio cheat token"
+			scene "outfit/license tertio"
+			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. You know what Mister Cologne expects of you for the next race...`
+				accept
+			label trophy
+			action
+				payment 1024000
+				set "license: Tertio Champion"
+				"racing position tertio" <?= 4
+			scene "outfit/license tertio"
+			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. You also receive a Tertio trophy! This is the highest honor a Sunracer can achieve. Congratulations!`
+
+mission "Midnight Sunracer Pirate Hack 1"
+	minor
+	name "Sunracer Hacking"
+	description "Smuggle 1 ton of hacking equipment to <waypoints>. The equipment will do the rest. Do not let law enforcement scan your ship. Go to <destination> when done."
+	cargo "hacking equipment" 1
+	illegal 700000 `Law enforcement rush their way onto your ship through the airlocks, suited head to toe in armor and armed to the teeth. The <commodity> is confiscated from your cargo hold. The officers consider detaining you as well, but eventually decide to minimize their paperwork by only issuing a fine. Whatever your employer was trying to accomplish will have to be done by someone else.`
+	source
+		government "Pirate"
+		not attributes uninhabited
+	waypoint Mirfak
+	destination Stormhold
+	to offer
+		not "license: Sunracer"
+		has "How to Hack a Science Drone For Fun and Profit"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/data pad"
+			`You are appoached by a cyborg. It speaks to you with a mechanical male voice, a hint of the person buried underneath the external machinery. "YoU aRe <first> <last>, CaPtAiN oF ThE <ship>. YoU HaVe ExPeRiEnCe HaCkInG dRoNeS. wE hAvE a JoB fOr YoU." You notice it speaks differently when it says the name of you and your ship...`
+			choice
+				`	"What sort of job?"`
+				`	"Go away, I'm not interested."`
+					goto refuse
+			scene "planet/checkpoint"
+			`	You hear a series of beeps and clicks before it responds, "YoU wIlL tRaNsPoRt OnE tOn Of HaCkInG eQuIpMeNt To ChEcKpOiNt Tertio In ThE Mirfak SyStEm. OnCe ThErE, tHe EqUiPmEnT wIlL dO tHe ReSt."`
+			choice
+				`	"Sounds risky. What are you paying?"`
+				`	"Go away, I'm not interested."`
+					goto refuse
+			`	There is another series of mechanical sounds before it responds, "CoMpEnSaTiOn WiLl Be OnE mIlLiOn CrEdItS." Big jobs have big rewards.`
+			choice
+				`	"One more thing. What's your name?"`
+					goto name
+				`	"Alright, I'll do it."`
+					goto load
+				`	"That's not enough. I want a share."`
+				`	"Go away, I'm not interested."`
+					goto refuse
+			action
+				set "sunracer pirate hacking share"
+			`	There is another series of mechanical sounds while it considers your counter offer. After several minutes of this, it suddenly speaks, "We AcCePt. YoU wIlL gAiN a ShArE oF tHe PrOfItS."`
+			choice
+				`	"One more thing. What's your name?"`
+				`	"Great. Let's load that equipment."`
+					goto load
+				`	"Go away, I'm not interested."`
+					goto refuse
+			label name
+			action
+				clear "sunracer pirate hacking share"
+			scene "scene/scene-guts"
+			`	The cyborg stands motionless after you ask that question. There are no clicks, beeps, or other sounds of internal machinery. Just silence. He struggles to speak, saying with a normal, but tortured, voice, "Th... thank you! Mm... my name... is..." But he never gets a chance to finish the sentence. The machinery suddenly fails, with circuits catching fire sending sparks, smoke, and blood spraying from his joints! His body collapses, the artificial limbs and organs falling apart in a heap of blood soaked metal, rubber, and plastic. Whatever job his masters intended for you to do will have to be taken up by someone else.`
+				decline
+			label load
+			scene "outfit/cargo scanner"
+			`	The cyborg loads the equipment onto your ship. "Do NoT lEt LaW eNfOrCeMeNt CaTcH yOu. AfTeRwArDs Go To <destination> aNd DiSpOsE oF tHiS EvIdEnCe." The cyborg gestures towards the equipment then leaves, never giving you its name.`
+				accept
+			label refuse
+			scene "scene/scene-explosion"
+			`	"UnAcCePtAbLe. BuT wE wIlL fInD sOmEoNe ElSe." There are a series of beeps before the cyborg suddenly explodes, incinerating you and anyone else who might have been close enough to listen in on your conversation.`
+				die
+	on enter Mirfak
+		dialog "The hacking equipment starts beeping. It seems to be sending an encrypted signal to Checkpoint Tertio. You'll have to wait until it finishes. Don't let the authorities scan you!"
+	npc
+		government "Syndicate"
+		system Mirfak
+		personality waiting staying surveillance
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc disable
+		government "Test Dummy"
+		system Mirfak
+		personality waiting staying unconstrained heroic nemesis
+		ship "Phantom Drone Timer" "Timer"
+		on disable
+			dialog "The equipment is winding down. Land on <destination> without being scanned."
+	on abort
+		clear "sunracer pirate hacking share"
+		"reputation: Pirate" -= 5
+	on fail
+		clear "sunracer pirate hacking share"
+		"reputation: Pirate" -= 5
+	on visit
+		dialog "The equipment hasn't finished doing what it needs to do. Return to space to complete the hacking job."
+	on complete
+		conversation
+			branch share
+				has "sunracer pirate hacking share"
+			action
+				payment 1000000
+				"reputation: Pirate" ++
+			`The hacking equipment finally falls silent before you reach the spaceport, its task complete. As you land the <ship>, <payment> is deposited into your account...`
+				accept
+			label share
+			action
+				clear "sunracer pirate hacking share"
+				"salary: Third String Incorporated" += 1000
+				event "midnight third string investigated" 30
+				"reputation: Pirate" += 2
+			`The hacking equipment finally falls silent before you reach the spaceport, its task complete. As you land the <ship>, an accounts receivable for "Third String Incorporated" has linked to your account. Your employer is probably going to influence the outcome of races using whatever hacking program this equipment activated. A share of those ill gotten gains would then be deposited into your account from this shell company.`
+				accept
+
+
+event "midnight third string investigated"
+
+mission "Midnight Sunracer Pirate Hack 2"
+	minor
+	invisible
+	source Sunracer
+	to offer
+		has "salary: Third String Incorporated"
+		random < 1
+	on offer
+		"reputation: Syndicate" <?= -1000
+		clear "salary: Third String Incorporated"
+		set "wanted for hacking tertio"
+		conversation
+			scene "outfit/attention"
+			`While walking through the spaceport, a nearby screen broadcasts some news that catches your attention. "Investigators have evidence that Third String Incorporated has been involved in hacking Checkpoint Tertio and influencing the outcomes of Tertio League races." People around the spaceport stop to watch. The races are a major part of Sunracer culture, so that shouldn't be too surprising. More than a few people in the crowd probably bet money on these races. "Third String's accounts have been frozen and anyone tied to them will be apprehended." That's not good. The Syndicate authorities probably have you on their list. You'd better wrap up whatever business you have here and leave. Soon.`
+				decline
+
+
+
+mission "Sunracer Afterburner 1"
+	minor
+	name "Tag. You're it!"
+	description "Race the <npc> to <destination>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		near "Mirfak" 1 5
+	destination Sunracer
+	to offer
+		has "main plot completed"
+		month == 3
+		"credits" > 220000
+		random < 70
+	on offer
+		conversation
+			scene "outfit/license"
+			`	A young man in a green flight suit approaches you. "You're a pilot too, right?"`
+			choice
+				`	"Yeah, I'm a pilot. Do you need something?"`
+					goto race
+				`	"Beat it kid. I don't have time to train you."`
+			`	"I'm not looking for training," he says.`
+			choice
+				`	"Then what do you want?"`
+			label race
+			scene "thumbnail/flivver"
+			`	"Are you up for a race to Sunracer? My name's Patrick. That's my Flivver over there. If you beat me, I'll give you some insider info on a new racing outfit. How about it?"`
+			`	Information on a new outfit might be useful. On the other hand, this may be a scam. What do you tell him?`
+			choice
+				`	"Last one to Sunracer is a rotten egg!"`
+					accept
+				`	"Sorry kid, I'm not interested."`
+					decline
+	on visit
+		dialog `This was too close to call. You and Patrick agree to another race. Try to evade the <npc> then return to <planet>.`
+	npc evade save
+		government "Merchant"
+		personality target escort pacifist
+		ship "Flivver (Hybrid Afterburner 18)" "Shamrock"
+	on fail
+		dialog `[MISSION FAILED] The <npc> was destroyed! If life were a game, you could load a save file and try again.`
+
+mission "Sunracer Afterburner 2"
+	landing
+	invisible
+	source Sunracer
+	to offer
+		has "Sunracer Afterburner 1: done"
+	on offer
+		conversation
+			scene "outfit/hybrid afterburner"
+			`	The Shamrock arrives soon after you finish landing the <ship>. Patrick congratulates you on winning the race. "I guess this still needs more work." He gestures at the Shamrock's afterburner. "It's a prototype, using both hyperspace fuel and battery power to give it a kick. But I don't think this is good enough for competitive racing. Would you be interested in buying it? 110,000 credits should cover it. I could use the funds to work on an upgraded model."`
+			`	Buying the Hybrid Afterburner now could help Patrick develop a superior version eventually. On the other hand, 110,000 credits is no small investment. What will you do?`
+			choice
+				`	(Buy the Hybrid Afterburner.)`
+				`	(Do not buy the Hybrid Afterburner.)`
+					decline
+			`	You agree to purchase the Hybrid Afterburner and wish Patrick luck on developing a superior version.`
+				accept
+	on accept
+		outfit "Hybrid Afterburner" 1
+		payment -110000
+		event "Sunracer Afterburner Development" 360
+		log "Minor People" "Patrick of Sunracer" `A young race pilot hoping to develop a superior Hybrid Afterburner.`
+		fail
+
+outfitter "Sunracer Afterburner"
+	"Sunracer Afterburner"
+
+event "Sunracer Afterburner Development"
+	planet Sunracer
+		add outfitter "Sunracer Afterburner"
+
+mission "Sunracer Afterburner 3"
+	landing
+	invisible
+	source Sunracer
+	to offer
+		has "event: Sunracer Afterburner Development"
+	on offer
+		log `It seems Patrick succeeded in making a better version of the Hybrid Afterburner.`
+		conversation
+			scene "outfit/sunracer afterburner"
+			`	You notice a new afterburner in the outfitter. It looks like Patrick suceeded in making a better version of the prototype Hybrid Afterburner.`
+				decline
+
+mission "Midnight Sunracer Afterburner Update"
+	landing
+	invisible
+	to offer
+		has "event: Sunracer Afterburner Development"
+	on offer
+		event "midnight sunracer afterburner update"
+		fail
+
+event "midnight sunracer afterburner update"
+	fleet "Merchant Sunracers"
+		variant 1
+			"Sunracer (Atomic Afterburner 0)"
+			"Sunracer (Plasma Afterburner 2)"
+			"Sunracer (Hai 3)"
+			"Sunracer (Ion Afterburner 4)"
+			"Sunracer (Sunracer Afterburner 5)"
+			"Sunracer (Javelin 6)"
+
+mission "Midnight Sunracer Tertio Puppet"
+	minor
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "urban"
+	to offer
+		has "license: Tertio Champion"
+		has "racing position tertio" > 3
+		random < 70
+	on offer
+		conversation
+			`Some men in suits appoach you. "This fine space faring vessel is the <ship>, which would indubitably make you the one and only Captain <last>. We come to you on this fine day, to extend a formal invitation to a very exclusive and elite private business meeting with our most esteemed boss, Mister Al Cologne." It would appear you've attracted the attention of the local mafia. "We strongly advise you not to turn down this most fortunate of opportunities our boss has chosen to grace you with." They probably want you to do something highly illegal...`
+			label decisions
+			choice
+				`	"Alright, take me to your boss."`
+					goto meeting
+				`	"I don't feel like meeting him."`
+					to display
+						not "parley failed"
+					goto parley
+				`	(Skip the small talk and just start blasting.)`
+					to display
+						not "parley failed"
+					goto blasting
+				`	(Skip the small talk and just start blasting.)`
+					to display
+						has "parley failed"
+					goto outplayed
+				`	(Wield the terrifying power of Midnight's Lost Orphan)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan
+				`	(Draw the Quantum Keyblade)`
+					to display
+						or
+							has "outfit (flagship installed): Quantum Key Blade"
+							has "outfit (flagship installed): Quantum Dragon Blade"
+							has "outfit (flagship installed): Quantum Phoenix Blade"
+							has "outfit (flagship installed): Quantum Snake Blade"
+							has "outfit (flagship installed): Quantum Tiger Blade"
+							has "outfit (flagship installed): Quantum Turle Blade"
+					goto keyblade
+				`	(Run.)`
+					to display
+						not "outfit (flagship installed): Midnight's Lost Orphan"
+			label run
+			scene "effect/blood"
+			`	They start to lead you down a side street. As you pass the entrance to a nearby alleyway, you break away make a run for it. You seem to be making good progress, but then a shot rings out and you no longer have the strength to keep running. Strange. Sure, they shot you in the back so it was impossible to dodge. But a single shot? Low level henchmen never had such good aim in the movies. Such are your last thoughts as death claims you...`
+				die
+			label blasting
+			scene "effect/blood"
+			`	You draw your weapon and open fire. You manage to take down a few mafia men, but the rain of bullets is impossible to dodge and you go down in a bloody heap...`
+				die
+			label orphan
+			action
+				clear "parley failed"
+				outfit "Evidence of ********" 5
+				"captain of atrocity" += 5
+			scene "outfit/midnight lost orphan"
+			`	You will the Orphan to make the their blood flow backwards. The mafia men scream in agony as their blood vessels rupture, causing them to collapse into a pile of bloody flesh. The horrible scene fills you with a depraved delight which a rapidly shrinking part of your mind recoils from in revulsion...`
+				decline
+			label keyblade
+			action
+				clear "parley failed"
+				clear "keyblade wind"
+			scene "outfit/quantum key blade"
+			`	You take a deep breath and activate the Quantum Keyblade as the mafia men draw their guns and open fire!`
+			label wind
+			choice
+				`	(Stay and fight.)`
+				`	(Flee.)`
+					goto vanish
+			branch winded
+				random < 0 + ( "keyblade wind" * 20 )
+			action
+				"reputation: Pirate" --
+				"combat rating" ++
+				"keyblade wind" ++
+			scene "outfit/quantum key blade"
+			`	You let the bullets pass through, then deactivate the blade and cut one of the mafia men down! You strain to gasp fresh air before the next burst of bullets hits and you phase out again...`
+				goto wind
+			label winded
+			scene "effect/blood"
+			`	You let the bullets pass through, then deactivate the blade and cut one of the mafia men down! Unfortunately, you've relied on the blade for too long and are winded. While you gasp for air the next burst of bullets strike, ventilating your body before you are able to phase out again. The new holes do nothing to help you breath better.`
+				die
+			label vanish
+			action
+				log "Minor People" "Al Cologne" `The head of a mafia organization. He had a business proposal for me but I didn't stay around to hear what it was.`
+			`	You dive through a nearby wall and flee the mafia men for the safety of your ship. Once you are safely aboard, you make an emergency launch and leave <origin> behind.`
+				flee
+			label parley
+			action
+				set "parley failed"
+			`	"Oh? Is that so?" You feel the barrel of a gun nudge your back...`
+				goto decisions
+			label meeting
+			action
+				clear "parley failed"
+			"outfit/rock scavenger meat"
+			`	The mafia men escort you to a large manor. After passing though a well tended garden, you arrive at a patio where an aged man in fine robes is enjoying what appears to be a meal of roasted Rock Scavener. He cuts off a piece and gulps it down as you approach. "Ah, if it isn't the great Tertio Champion, <first> <last>, here in the flesh! Welcome! Welcome. Have a seat and I'll get the maids to bring out a plate for you." He extends his hand towards you...`
+			choice
+				`	"Thank you. But why am I here?"`
+					goto why
+				`	"No thank you. Why am I here?"`
+				`	"I'm busy. Why did your goons drag me here?"`
+					goto chops
+			"outfit/attention"
+			`	"No thank you?" He pulls his hand back, scowling. "What? You think you're too good for my hospitality? Huh!?!" He picks up his knife and stabs it into the roast. "A man welcomes you into his home and generously offers you the priveledge of partaking in the good Lord's bounty for which he has shed his own blood, sweat, and tears for. YET THIS IS HOW YOU REACT!?!" He picks up a wine glass and takes a sip before sighing. "The kids, they have no respect these days."`
+			choice
+				`	"I'm sorry Mister Cologne, but why am I here?"`
+					goto why
+				`	"I'm not hungry. Now, why am I here?"`
+			label chops
+			"outfit/rock scavenger meat"
+			`	"You got chops on you kid!" He starts cutting a fresh slice off the roast. Blood gushes from the charred outer crust as the blade sinks into the pink flesh. "But that's probably why you were able to scrape your way to the top." He bites into the roasted meat and some of the juice runs down his chin. Wiping it away, he leans back and sizes you up.`
+			label why
+			"outfit/unknown"
+			`	"Why?" Cologne pauses and allows the silence to hang in the air. "Why? Why? Why? Tell me, <first>... Do mind if I call you <first>?" Without pausing to hear your answer he continues on. "Why do you race? Is it for pride? Honor? Prestige?" This time, he waits for an answer.`
+			choice
+				`	"I do it for pride!"`
+				`	"I do it for honor!"`
+				`	"I do it for prestige!"`
+				`	"I do it for money..."`
+					goto money
+			label ideal
+			action
+				"racing position tertio" <?= -8
+				set "tertio bounty"
+				log "Minor People" "Al Cologne" `The head of a mafia organization. He had a business proposal for me but after some discussion he seemed to think that I'm too idealistic and changed his mind before telling me his plan.`
+			`	"That's very idealistic of you." A maid walks in carrying a fresh plate. He waves her away. "But I don't think you're the pilot I'm looking for afterall." He raises his glass towards you. "I think you'll find that your future in the Tertio League will be especially challenging. Escort the good captain out fellas." The men who brought you here take you back to the spaceport.`
+				decline
+			label money
+			`	Cologne starts laughing. "I think I'm going to like having you work for me kid!" He gulps down the rest of his wine. "Together, we'll make loads of money. It'll be easy work."`
+			choice
+				`	"What sort of work?"`
+			scene "thumbnail/sunracer-thumb"
+			`	"Nothing complicated. From now on, whenever you win first place in the Tertio League, I want you to take last place in the qualified rankings of the following Tertio race." He wants to be able to control where each pilot ends up in the final rankings. You'll still have to do well enough to be ranked, so getting disqualified isn't an option. But by having you take last place in every race after you win first, he'll be able to profit from making bets based on that knowledge. For your cooperation, a portion of the gambling winnings will make its way into your account.`
+			choice
+				`	"Sounds good. I'm in!"`
+					goto good
+				`	"Cheating is wrong!"`
+			`	Cologne laughs, but then notices from the expression on your face that you're not joking.`
+				goto ideal
+			label good
+			action
+				"racing position tertio" >?= 8
+				set "tertio cheater"
+				log "Minor People" "Al Cologne" `The head of a mafia organization. He has worked out a gambling scheme that will be mutually beneficial if you lose certain Tertio League races on purpose.`
+			"outfit/rock scavenger meat"
+			`	"Perfectly timed," Cologne exclaims as a maid walks in carrying a fresh plate and sets on the table for you. "Go on." He gestures to you. "Have a seat at the table. We're partners now." You take your place at the table...`
+				decline
+			label outplayed
+			scene "outfit/handgun black"
+			`You are shot in the back as soon as you reach for your weapon. Knowing when you've been outplayed is an important survival skill. Unfortunately, this is the last life lesson you learn before you pass away.`
+				die
+
+mission "Midnight Sunracer Drug Running"
+	name "Drug Running"
+	description "Bring a shipment of <cargo> to <destination>. Payment will be <payment>. If you are caught with this cargo, you may be fined."
+	minor
+	source Sunracer
+	destination
+		attributes "paradise"
+		distance 1 100
+	cargo "illegal drugs" 5 2 .1
+	illegal 80000 `In addition to the fine, the illegal drugs are confiscated from your cargo hold.`
+	stealth
+	to offer
+		has "license: Tertio Champion"
+		random < 20
+	on offer
+		clear "said no to drugs"
+		clear "rejected illegal jobs"
+		dialog `As you are walking through the spaceport, a man pulls you aside and asks if you would like to help transport <tons> of "recreational pharmaceuticals" to <planet> for <payment>. He says it should be easy for a Tertio Champion like yourself to outrun "The Scan". It seems the fame you've earned at the race track attracts all kinds of attention...`
+	on accept
+		"said no to drugs" --
+	on decline
+		"said no to drugs" ++
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 160000
+		"drug smuggler" ++
+		dialog `Some disreputable-looking locals unload the illegal drugs from your cargo bay, and hand you your payment of <payment>.`
+
+mission "Midnight Sunracer Shady passenger transport"
+	name "Shady passenger transport"
+	description "Discreetly transport a passenger to <destination>. Payment will be <payment>. If you are caught with him, you may be fined."
+	minor
+	source Sunracer
+	destination
+		attributes "frontier" "dirt belt" "rim" "north" "south" "pirate"
+		distance 2 3
+	passengers 1
+	illegal 150000 `Your passenger turns out to be a wanted criminal. As he is hauled off in chains, you vehemently protest that you knew nothing of his shady history. You wind up quite a bit poorer through a combination of fines and bribes (the breakdown remains somewhat unclear).`
+	stealth
+	to offer
+		has "license: Tertio Champion"
+		random < 20
+	on offer
+		clear "said no to drugs"
+		clear "rejected illegal jobs"
+		dialog `While having a drink at one of the spaceport's bars, a somewhat scruffy-looking man in a dark cloak pulls you aside and offers <payment> for discreet, no-questions-asked passage to <destination>, which is quite close by. He says it should be easy for a Tertio Champion like yourself to outrun "The Scan". It seems the fame you've earned at the race track attracts all kinds of attention...`
+	on accept
+		"rejected illegal jobs" --
+	on decline
+		"rejected illegal jobs" ++
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"getaway driver" ++
+		payment 100000
+		dialog `Your mysterious passenger has spoken hardly a word during the entire trip. As soon as you land, he hands you your payment of <payment> and disappears into a crowd.`
+
+mission "Midnight Sunracer Lionheart Sponsorship 1"
+	minor
+	name "Lionheart Sponsorship"
+	description "You've been invited to participate in a promotional sponsorship by Lionheart Industries. Travel to <destination> to participate."
+	source Sunracer
+	destination Valhalla
+	to offer
+		has "License: Tertio Champion"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/modified flivver-thumb"
+			`You receive a message from Lionheart Industries. "Greetings Captain <last>. Lionheart Industries invites you to participate in an exclusive promotional sponsorship. Visit our shipyards on <destination> to participate."`
+			``
+			`	There is a picture of what appears to be a heavily modified Flivver included.`
+			choice
+				`	(Visit <destination>.)`
+				`	(Ignore this.)`
+					goto ignore
+			scene "planet/earth"
+			`	You prepare to make the long journey to <destination>.`
+				accept
+			label ignore
+			`	You've decided not to participate in Lionheart's promotional sponsorship.`
+				decline
+
+mission "Midnight Sunracer Lionheart Sponsorship 2"
+	landing
+	name "Lionheart Sponsorship"
+	description "Claim the Accelerator at <destination>. Lionheart Industries will pay you 500 credits on each day you fly it."
+	source Valhalla
+	destination Sunracer
+	to offer
+		has "Midnight Sunracer Lionheart Sponsorship 1: done"
+	on offer
+		conversation
+			scene "thumbnail/modified flivver-thumb"
+			`When you arrive at Lionheart's shipyard the manager greets you. "Welcome! Captain <last>, we at Lionheart are impressed with your Tertio League victory and would like for you to pilot the Accelerator." The manager presents you with the Modified Flivver you saw in the invitation. "This Flivver has been specifically modified to meet the stringent Tertio League weight requirements." A technician shows you its specs. The ship is lighter and more maneuverable than a Sunracer. In order to accomplish this, it no longer has a Hyperdrive and the hull is made from more fragile materials. To help protect the ship, the Accelerator has been outfitted with stronger shield emitters. "How about it, would you like to pilot the Accelerator?"`
+			choice
+				`	"What will it cost me?"`
+				`	"No, I'm not interested."`
+					goto refuse
+			scene "outfit/license tertio"
+			`	"Nothing at all!" The manager explains, "We'll be the ones paying you 500 credits for every day you fly the Accelerator. A Tertio Champion piloting it will help support our ad campaign for the Flivver."`
+			choice
+				`	"Wait, so it's not to promote the Accelerator?"`
+				`	"Do I have to use it while racing?"`
+					goto racing
+			`	"Unfortunately, the Accelerator is just meant to be used as a promotional model. Ideally, you would use it to compete in the Tertio League. So how about it?"`
+				goto decision
+			label racing
+			`	"That would be ideal. But just using it for normal flying is fine too. Just don't leave it parked. We're paying for the ship to be seen in use by you. So how about it?"`
+			label decision
+			choice
+				`	"Okay, I'll fly it!"`
+				`	"No, I'm not interested."`
+					goto refuse
+			scene "planet/forest4"
+			`	"Great! We'll have it shipped to Sunracer. Head over there when you're ready to receive it."`
+				accept
+			label refuse
+			`	"That's too bad. Please let us know if you want to buy something. Our sales clerks will be happy to help you." The manager leaves you alone on the sales floor.`
+				decline
+	on complete
+		give ship "Modified Flivver" "Accelerator"
+		conversation
+			scene "thumbnail/modified flivver-thumb"
+			`When you leave the <ship> there is a camera crew waiting for you. A Lionheart representative arrives with the Accelerator in tow. They make a big show of publicly registering it to you. The photo op ends with the representative wishing you good luck on your next race.`

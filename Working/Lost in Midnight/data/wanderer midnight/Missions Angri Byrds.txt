@@ -17,6 +17,55 @@
 
 
 
+mission "Sabotage: Armament Pacifier (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Wanderer" "Wanderer (Hostile)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Armament Pacifier (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Armament Pacifier (boarding): offered"
+				random < 2
+	on offer
+		outfit "Armament Pacifier" 1
+		conversation
+			scene "outfit/armament pacifier"
+			`You notice a malfunction with the weapons circuits on your ship. You should probably have them checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Wanderer (Hostile)"
+		personality entering heroic vindictive
+		fleet
+			names "wanderer"
+			cargo 1
+			commodities "Medical"
+			variant 3
+				"Strong Wind"
+				"Summer Leaf" 2
+			variant
+				"Summer Leaf" 5
+			variant 2
+				"Strong Wind" 2
+			variant 2
+				"Strong Wind"
+				"Summer Leaf"
+			variant
+				"Strong Wind"
+				"Summer Leaf" 3
+			variant
+				"Strong Wind" 3
+
+
 
 #----------Wanderer worlds retained by Wanderers after Unfettered invasion------------
 

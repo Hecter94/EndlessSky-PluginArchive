@@ -10,7 +10,140 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-# The negative reputation requirement is a placeholder until PR9086 is gets into stable
+
+mission "Quash: Humanika Infiltration 1"
+	minor
+	infiltrating
+	passengers 4
+	name "Humanika Infiltration"
+	description "Take your passengers to <destination>. Then transport them to Trinket in the Sargas system. Payment is 400,000 credits."
+	source
+		attributes "pirate"
+	destination "Humanika"
+	to offer
+		has "First Contact: Quarg: offered"
+		not "Cartography: Quarg Hitchhiker 1: offered"
+		or
+			and
+				not "tribute: Albatross"
+				not "event: albatross joins free worlds"
+			and
+				not "tribute: Bloodsea"
+				not "event: bloodsea independent"
+				not "event: bloodsea joins free worlds"
+			and
+				and
+					not "tribute: Thule"
+					not "tribute: Smuggler's Den"
+				not "event: Thule becomes independent"
+			not "tribute: Buccaneer Bay"
+			not "tribute: Covert"
+			not "tribute: Deadman's Cove"
+			not "tribute: Freedom"
+			not "tribute: Greenrock"
+			not "tribute: Haven"
+			not "tribute: Stormhold"
+			not "tribute: Zenith"
+			not "tribute: New Tortuga"
+		random < 10
+	on offer
+		conversation
+			scene "outfit/map"
+			`As you are walking through the spaceport, three men and a woman all wearing nondescript clothing appear out of nowhere and offer you 400,000 credits for discreet passage to <destination>. After they complete some business there, they'll need transportation to Trinket in the Sargas system.`
+			choice
+				`	"Sure, I can do that."`
+					accept
+				`	(Think it over.)`
+			`Seeing you hesitate, they explain that their previous pilot was caught smuggling ringworld shavings, an illegal drug, and they need a replacement pilot for a job they couldn't refuse. Transporting them might be very dangerous. On the other hand, they're offering a small fortune...`
+			choice
+				`	"Sure, I can do that."`
+					accept
+				`	"Sorry, not interested."`
+					decline
+	on decline
+		"rejected illegal jobs" ++
+	on enter "Sadalmelik"
+		conversation
+			scene "planet/ocean7"
+			`As you approach <planet>, your passengers start unpacking and equipping some gear. They're all armed now. One of the men even has a sniper rifle. It's obvious they're up to no good. But it's too late to back out. Their leader, the one they refer to as "Commander," tells you to land at a specific site. You notice that this location is nowhere near the spaceport...`
+
+mission "Quash: Humanika Infiltration 2"
+	landing
+	passengers 1
+	name "Humanika Infiltration"
+	description "Take your passenger to <destination>. Payment is 400,000 credits."
+	source "Humanika"
+	destination "Trinket"
+	to offer
+		has "Quash: Humanika Infiltration 1: done"
+	on offer
+		conversation
+			scene "outfit/sniper rifle"
+			`You land at the designated site, a parking lot of what appears to be a ruined building abandoned long ago. Commander tells you to wait for them. He promises that you'll get your 400,000 credits once you've safely delivered them to Trinket in the Sargas system. The four well armed passengers disembark from your ship, off to do whatever it is they came here for.`
+			choice
+				`	(Wait for them.)`
+					goto wait
+				`	(Abandon them.)`
+			`	It's obvious they're up to no good and you want no part of that. You fire up your engines and head out, abandoning your passengers and their promised reward.`
+				flee
+			label wait
+			``
+			`After an hour, Commander returns... alone and injured. "Go! The others are dead. Get us out of here!" You fire up your engines...`
+				launch
+	on decline
+		"rejected illegal jobs" ++
+	on accept
+		"stored reputation: Quarg" = "reputation: Quarg"
+		"reputation: Quarg" <?= -10
+		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
+		"reputation: Quarg (Hai)" <?= -10
+		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Kor Efret)" <?= -10
+		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
+		"reputation: Quarg (Gegno)" <?= -10
+	on enter
+		conversation
+			`You can hear Commander muttering to himself,"'It'll be easy,' it said. 'You're the best,' it said. I never should have trusted that damn Quarg..."`
+			choice
+				`	"What Quarg?"`
+			scene "thumbnail/wardragon"
+			`	"Nevermind that! There's a Wardragon on our tail! Just focus on getting us to Trinket in one piece."`
+	npc evade
+		government "Quarg"
+		personality entering opportunistic
+		fleet
+			names "quarg"
+			cargo 10
+			variant
+				"Quarg Wardragon (Scanner)"
+	on complete
+		"reputation: Quarg" >?= "stored reputation: Quarg"
+		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
+		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
+		"getaway driver" ++
+		payment 100000
+		outfit "Sniper Rifle" 1
+		log `Took a mercenary transport job that involved a stopover at Humanika. Something happened while we were there and only one of the original passengers made it back to the ship. He kept muttering about how he shouldn't have trusted a certain Quarg. It seems this Quarg had hired them to do something on Humanika and things didn't go as expected.`
+		conversation
+			scene "outfit/sniper rifle"
+			`When you land, Commander hands over <payment>. "Sorry it's not what we agreed on, but the others were each responsible for paying a portion of it. Now that they're..." He hesitates a moment, then hands over the Sniper Rifle. "I guess you could also try selling this. That's the best I can offer." He departs, never explaining anything about what happened on Humanika or the mysterious Quarg he was cursing.`
+
+mission "Quash: Humanika Infiltration 2 Patch"
+	landing
+	invisible
+	to offer
+		has "Quash: Humanika Infiltration 2: done"
+		not "Cartography: Quarg Hitchhiker 5: offered"
+	on offer
+		"reputation: Quarg" >?= 1
+		"reputation: Quarg (Hai)" >?= 1
+		"reputation: Quarg (Kor Efret)" >?= 1
+		"reputation: Quarg (Gegno)" >?= 1
+		fail
+
+
+
 mission "Cartography: Quarg Hitchhiker 1"
 	minor
 	name "Quarg Hitch Hiker"
@@ -535,7 +668,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 				launch
 				
 	on enter Diyu
-		dialog `It doesn't take long for the pirate ship you encountered earlier to follow you along with a few other ships in tow. Quash remarks, "They lost quite a few ships stealing this for me." He taps his pocket. "Perhaps the hyperspace links to Archipelago wasn't enough compensation for them."`
+		dialog `It doesn't take long for the pirate ship you encountered earlier to follow you along with a few other ships in tow. Quash remarks, "They lost more than a few lives stealing this for me." He taps his pocket. "Perhaps the hyperspace links to Archipelago wasn't enough compensation for them."`
 		
 	npc kill
 		government "Pirate"

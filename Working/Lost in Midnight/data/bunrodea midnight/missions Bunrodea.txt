@@ -1,0 +1,73 @@
+# Copyright (c) 2021 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Sabotage: Thermal Insulator (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Bunrodea" "Bunrodea (Erabu)" "Bunrodea (Megasa)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Thermal Insulator (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Thermal Insulator (boarding): offered"
+				random < 2
+	on offer
+		outfit "Thermal Insulator" 1
+		"reputation: Bunrodea" <?= -1
+		conversation
+			scene "outfit/thermal insulator"
+			`You notice a sudden spike in heat aboard your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Bunrodea"
+		personality entering heroic vindictive
+		fleet "Bunrodea Defense"
+
+mission "Sabotage: Thermal Insulator (Guard) (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Bunrodea (Guard)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Thermal Insulator (Guard) (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Thermal Insulator (Guard) (boarding): offered"
+				random < 2
+	on offer
+		outfit "Thermal Insulator" 1
+		"reputation: Bunrodea (Guard)" <?= -1
+		conversation
+			scene "outfit/thermal insulator"
+			`You notice a sudden spike in heat aboard your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Bunrodea"
+		personality entering heroic vindictive
+		fleet "Bunrodea Royal Guard"

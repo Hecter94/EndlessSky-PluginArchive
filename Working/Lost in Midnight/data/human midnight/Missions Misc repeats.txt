@@ -383,10 +383,10 @@ mission "Rogue Asteroid (Pirate)"
 	to offer
 		"combat rating" > 100
 		or
-			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"
-			has "Rogue Asteroid (Poor World): failed"
-			has "Rogue Asteroid (Poor World): aborted"
+			has "Rogue Asteroid (Rich World): done"
+			has "Rogue Asteroid (Rich World): declined"
+			has "Rogue Asteroid (Rich World): failed"
+			has "Rogue Asteroid (Rich World): aborted"
 		random < 5
 	on offer
 		conversation
@@ -428,12 +428,7 @@ mission "Rogue Asteroid (Rich World)"
 		not attributes "uninhabited"
 	to offer
 		"combat rating" > 100
-		or
-			has "Rogue Asteroid (Poor World): done"
-			has "Rogue Asteroid (Poor World): declined"
-			has "Rogue Asteroid (Poor World): failed"
-			has "Rogue Asteroid (Poor World): aborted"
-		random < 5
+		random < 10
 	on offer
 		conversation
 			`The spaceport is a flurry of activity as pilots rush to prepare their ships for liftoff.`
@@ -863,30 +858,6 @@ conversation "sabotage: shield suppressor"
 	`You notice a malfunction with the shield generator of your ship. You should probably have it checked out the next time you're at an outfitter...`
 		accept
 
-mission "Sabotage: Shield Suppressor (assisting)"
-	assisting
-	invisible
-	minor
-	repeat
-	deadline 1
-	source
-		government "Merchant" "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
-		not attributes "automaton"
-	destination "Earth"
-	to offer
-		"combat rating" >= 1097
-		has "Sabotage: Shield Suppressor (boarding): offered"
-		random < 1
-	on offer
-		require "Shield Suppressor" 0
-		outfit "Shield Suppressor" 1
-		conversation "sabotage: shield suppressor"
-	npc kill
-		government "Bounty Hunter"
-		personality nemesis entering heroic
-		fleet "Bounty Hunters" 2
-
-
 mission "Sabotage: Shield Suppressor (boarding)"
 	boarding
 	invisible
@@ -908,7 +879,6 @@ mission "Sabotage: Shield Suppressor (boarding)"
 				has "Sabotage: Shield Suppressor (boarding): offered"
 				random < 2
 	on offer
-		require "Shield Suppressor" 0
 		outfit "Shield Suppressor" 1
 		conversation "sabotage: shield suppressor"
 	npc kill
@@ -923,20 +893,25 @@ mission "Sabotage: Shield Suppressor (boarding rival)"
 	repeat
 	deadline 1
 	source
-		government "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		government "Pirate (Rival)" "Pirate (Rivals)" "Independent" "Independent (Killable)" "Bounty (Disguised)"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
 		"reputation: Pirate" >= 0
-		"reputation: Pirate (Rival)" < 0
+		"reputation: Pirate (Rivals)" < 0
 		"combat rating" >= 403
-		random < 2
+		or
+			and
+				not "Sabotage: Shield Suppressor (boarding rival): offered"
+				random < 20
+			and
+				has "Sabotage: Shield Suppressor (boarding rival): offered"
+				random < 2
 	on offer
-		require "Shield Suppressor" 0
 		outfit "Shield Suppressor" 1
 		conversation "sabotage: shield suppressor"
 	npc kill
-		government "Pirate (Rival)"
+		government "Pirate (Rivals)"
 		personality nemesis harvests plunders entering
 		fleet "pirate raid" 2
 
@@ -985,3 +960,26 @@ mission "Rogue Asteroid (Poor World)"
 	on complete
 		payment 10000
 		dialog `The government of <planet> rewards you with <payment> for destroying the asteroid threat.`
+
+mission "Sabotage: Shield Suppressor (assisting)"
+	assisting
+	invisible
+	minor
+#	repeat
+	deadline 1
+	source
+		government "Merchant" "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		never
+#		"combat rating" >= 1097
+#		has "Sabotage: Shield Suppressor (boarding): offered"
+#		random < 1
+	on offer
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Bounty Hunter"
+		personality nemesis entering heroic
+		fleet "Bounty Hunters" 2

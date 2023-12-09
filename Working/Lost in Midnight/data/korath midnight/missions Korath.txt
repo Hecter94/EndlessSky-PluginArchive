@@ -40,6 +40,72 @@ event "add shock-strike turrets"
 			"'olofez" 19
 
 
+
+mission "Sabotage: Microbot Corroder (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Korath" "Korath (Civilian)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Microbot Corroder (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Microbot Corroder (boarding): offered"
+				random < 2
+	on offer
+		outfit "Microbot Corroder" 1
+		conversation
+			scene "outfit/microbot corroder"
+			`You notice hull sections of your ship spontaneously corrode. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Korath"
+		personality entering plunders heroic
+		fleet "Korath Raid"
+
+mission "Sabotage: Shield Diluter (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Kor Efret"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+#		has "flagship attribute: shields"
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Shield Diluter (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Shield Diluter (boarding): offered"
+				random < 2
+	on offer
+		outfit "Shield Diluter" 1
+		conversation
+			scene "outfit/shield diluter"
+			`You notice a malfunction with the shields on your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Kor Efret"
+		personality entering plunders heroic
+		fleet "Kor Efret Home"
+
+
+
+
+
 mission "Midnight Remnant: Cognizance 29 plus"
 	landing
 	invisible
@@ -265,6 +331,360 @@ mission "Midnight: Kor Explorers Patch"
 	on offer
 		clear "Midnight: Kor Explorers: offered"
 		fail
+
+
+
+mission "Midnight Secured Kor Sestor"
+	boarding
+	invisible
+	source
+		government "Kor Sestor"
+		outfits "Control Transceiver"
+		not category "Fighter" "Drone"
+	destination Earth
+	on offer
+		event "midnight secured kor sestor"
+		conversation
+			scene "outfit/control transceiver"
+			`Suddenly, the ship scans you! There is a series of odd beeps followed by silence...`
+				decline
+
+mission "Midnight Secured Kor Sestor Tutorial"
+	boarding
+	invisible
+	source
+		government "Kor Sestor"
+		outfits "Security Circuit"
+		not category "Fighter" "Drone"
+	destination Earth
+	on offer
+		conversation
+			scene "outfit/security circuit"
+			`This ship has what appears to be a supplementary security system installed on it. Simply removing this device is probably not enough to guarantee success in capturing the ship it's installed on, but doing so should shift the odds in your favor.`
+				decline
+
+event "midnight secured kor sestor"
+	fleet "Small Kor Sestor"
+		add variant 1
+			"Met Par Tek 53 (Secured)" 3
+		add variant 1
+			"Met Par Tek 53 (Secured)" 2
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Met Par Tek 53 (Secured)"
+			"Met Par Tek 53 (Sniper)" 2
+		add variant 1
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 10
+		add variant 1
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 6
+		add variant 1
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 4
+		add variant 1
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 2
+		add variant 1
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 9
+		add variant 1
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 7
+		add variant 1
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 5
+		add variant 1
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 2
+		add variant 1
+			"Tek Far 109 (Secured)"
+			"Far Lek 14" 9
+			"Far Osk 27" 7
+		add variant 1
+			"Tek Far 109 (Secured)"
+			"Far Lek 14" 6
+			"Far Osk 27" 3
+		add variant 1
+			"Tek Far 109 (Secured)"
+			"Far Lek 14" 3
+			"Far Osk 27" 2
+	fleet "Large Kor Sestor"
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 10
+			"Met Par Tek 53 (Secured)" 2
+		add variant 1
+			"Kar Ik Vot 349 (Offense)"
+			"Tek Far 71 - Lek"
+			"Far Lek 14" 9
+			"Met Par Tek 53 (Secured)"
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Kar Ik Vot 349 (Trapper)"
+			"Tek Far 71 - Lek (Close Quarters)"
+			"Far Lek 14" 7
+			"Met Par Tek 53 (Secured)"
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 9
+			"Met Par Tek 53 (Secured)"
+		add variant 1
+			"Kar Ik Vot 349 (Defense)"
+			"Tek Far 78 - Osk (Close Quarters)"
+			"Far Osk 27" 7
+			"Met Par Tek 53 (Secured)"
+		add variant 1
+			"Kar Ik Vot 349 (Offense)"
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 8
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 6
+			"Met Par Tek 53 (Secured)"
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 10
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 9
+		add variant 1
+			"Kar Ik Vot 349 (Defense)"
+			"Tek Far 71 - Lek (Close Quarters)"
+			"Far Lek 14" 8
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 8
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 71 - Lek"
+			"Far Lek 14" 9
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 7
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Tek Far 71 - Lek (Secured)"
+			"Far Lek 14" 7
+			"Tek Far 78 - Osk (Secured)"
+			"Far Osk 27" 6
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+		add variant 1
+			"Kar Ik Vot 349 (Secured)"
+			"Met Par Tek 53 (Secured)" 3
+		add variant 1
+			"Kar Ik Vot 349 (Defense)"
+			"Met Par Tek 53 (Secured)" 2
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Kar Ik Vot 349 (Offense)"
+			"Met Par Tek 53 (Secured)"
+			"Met Par Tek 53 (Sniper)" 2
+		add variant 1
+			"Kar Ik Vot 349 (Trapper)"
+			"Met Par Tek 53 (Secured)" 2
+			"Met Par Tek 53 (Sniper)"
+		add variant 1
+			"Tek Far 109 (Secured)" 3
+			"Far Lek 14" 27
+			"Far Osk 27" 21
+		add variant 1
+			"Tek Far 109 (Secured)"
+			"Tek Far 71 - Lek (Secured)"
+			"Tek Far 78 - Osk (Secured)"
+			"Far Lek 14" 17
+			"Far Osk 27" 13
+			"Met Par Tek 53 (Sniper)" 2
+		add variant 1
+			"Tek Far 109 (Secured)"
+			"Tek Far 71 - Lek (Close Quarters)"
+			"Tek Far 78 - Osk (Close Quarters)"
+			"Far Lek 14" 17
+			"Far Osk 27" 13
+			"Met Par Tek 53 (Secured)" 2
+
+
+mission "Midnight Secured Kor Mereti"
+	boarding
+	invisible
+	source
+		government "Kor Mereti"
+		outfits "Reasoning Node"
+		not category "Fighter" "Drone"
+	destination Earth
+	on offer
+		event "midnight secured kor mereti"
+		conversation
+			scene "outfit/reasoning node"
+			`Suddenly, the ship scans you! There is a series of odd beeps followed by silence...`
+				decline
+
+mission "Midnight Secured Kor Mereti Tutorial"
+	boarding
+	invisible
+	source
+		government "Kor Mereti"
+		outfits "Security Node"
+		not category "Fighter" "Drone"
+	destination Earth
+	on offer
+		conversation
+			scene "outfit/security node"
+			`This ship has what appears to be a supplementary security system installed on it. Simply removing this device is probably not enough to guarantee success in capturing the ship it's installed on, but doing so should shift the odds in your favor.`
+				decline
+
+event "midnight secured kor mereti"
+	fleet "Small Kor Mereti"
+		add variant 1
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 2
+		add variant 1
+			"Model 128 (Secured)"
+		add variant 1
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 2
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 5
+		add variant 1
+			"Model 32 (Secured)" 2
+			"Model 16 (Secured)" 3
+		add variant 1
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+		add variant 1
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 4
+		add variant 1
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 3
+		add variant 1
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 16 (Secured)" 3
+		add variant 1
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 32 (Secured)"
+		add variant 1
+			"Model 64 (Secured)"
+	fleet "Large Kor Mereti"
+		add variant 1
+			"Model 512 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 512 (Secured)"
+		add variant 1
+			"Model 512 (Secured)"
+			"Model 256 (Secured)"
+			"Model 128 (Secured)"
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 512 (Secured)"
+			"Model 256 (Secured)" 2
+		add variant 1
+			"Model 512 (Secured)"
+			"Model 128 (Secured)" 2
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 2
+		add variant 1
+			"Model 512 (Secured)"
+			"Model 32 (Secured)" 5
+			"Model 16 (Secured)" 8
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 128 (Secured)" 2
+			"Model 64 (Secured)" 3
+			"Model 32 (Secured)" 5
+			"Model 16 (Secured)" 8
+		add variant 1
+			"Model 256 (Secured)" 2
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 3
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 64 (Secured)" 4
+		add variant 1
+			"Model 256 (Secured)" 3
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 128 (Secured)"
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 256 (Secured)" 2
+			"Model 128 (Secured)"
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 64 (Secured)" 2
+		add variant 1
+			"Model 128 (Secured)" 3
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 128 (Secured)"
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 256 (Secured)" 2
+		add variant 1
+			"Model 128 (Secured)" 2
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 2
+		add variant 1
+			"Model 128 (Secured)" 2
+			"Model 64 (Secured)" 3
+			"Model 32 (Secured)" 5
+			"Model 16 (Secured)" 8
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 64 (Secured)"
+			"Model 32 (Secured)" 3
+			"Model 16 (Secured)" 2
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 64 (Secured)" 2
+		add variant 1
+			"Model 256 (Secured)" 2
+		add variant 1
+			"Model 128 (Secured)"
+			"Model 64 (Secured)"
+			"Model 32 (Secured)"
+			"Model 16 (Secured)"
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 128 (Secured)"
+		add variant 1
+			"Model 256 (Secured)"
+			"Model 64 (Secured)"
+		add variant 1
+			"Model 128 (Secured)" 2
+	fleet "Kor Mereti Miners"
+		add variant 1
+			"Model 8 (Secured)"
+		add variant 1
+			"Model 8 (Secured)" 2
+		add variant 1
+			"Model 8 (Secured)" 3
 
 
 

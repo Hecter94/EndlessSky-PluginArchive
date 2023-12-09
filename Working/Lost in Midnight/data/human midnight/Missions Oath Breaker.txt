@@ -376,12 +376,16 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		not "event: Oathbreaker diminish 2"
 		random < 20 + "Oathbreaker escalation"
 	on offer
-		require "Shield Suppressor" 0
 		outfit "Shield Suppressor" 1
 	on enter
 		conversation
 			scene "outfit/shield suppressor"
+			branch averted
+				not "outfit (flagship installed): Shield Suppressor"
 			`As you leave the atmosphere of <origin> an Oathbreaker fleet ambushes you! One of the ships hails to taunt you: "Captain <last>, you won't be so tough with your shields compromised!" A saboteur must have planted a Shield Suppressor somewhere on your ship...`
+				accept
+			label averted
+			`As you leave the atmosphere of <origin> an Oathbreaker fleet ambushes you! One of the ships hails to taunt you: "Captain <last>, you won't be so tough with your shields compromised!" Fortunately, you removed the Shield Suppressor someone planted on your ship at the outfitter before leaving <origin>.`
 	npc evade
 		to spawn
 			"ships: Heavy Warship" + "ships: Utility" >= 4

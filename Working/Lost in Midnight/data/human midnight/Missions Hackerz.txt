@@ -42,7 +42,7 @@ mission "Drone Hacking 1"
 mission "Drone Hacking 10"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 8
+		"How to Hack a Science Drone For Fun and Profit" >= 8
 	on offer
 		"salary: Hackerz" += 10
 		conversation
@@ -53,7 +53,7 @@ mission "Drone Hacking 10"
 mission "Drone Hacking 100"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 16
+		"How to Hack a Science Drone For Fun and Profit" >= 16
 	on offer
 		"salary: Hackerz" += 90
 		conversation
@@ -64,7 +64,7 @@ mission "Drone Hacking 100"
 mission "Drone Hacking 1000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 32
+		"How to Hack a Science Drone For Fun and Profit" >= 32
 	on offer
 		"salary: Hackerz" += 900
 		conversation
@@ -75,7 +75,7 @@ mission "Drone Hacking 1000"
 mission "Drone Hacking 2000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 64
+		"How to Hack a Science Drone For Fun and Profit" >= 64
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -86,7 +86,7 @@ mission "Drone Hacking 2000"
 mission "Drone Hacking 3000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 128
+		"How to Hack a Science Drone For Fun and Profit" >= 128
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -97,7 +97,7 @@ mission "Drone Hacking 3000"
 mission "Drone Hacking 4000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 256
+		"How to Hack a Science Drone For Fun and Profit" >= 256
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -108,7 +108,7 @@ mission "Drone Hacking 4000"
 mission "Drone Hacking 5000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 512
+		"How to Hack a Science Drone For Fun and Profit" >= 512
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -119,7 +119,7 @@ mission "Drone Hacking 5000"
 mission "Drone Hacking 6000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 1024
+		"How to Hack a Science Drone For Fun and Profit" >= 1024
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -130,7 +130,7 @@ mission "Drone Hacking 6000"
 mission "Drone Hacking 7000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 2048
+		"How to Hack a Science Drone For Fun and Profit" >= 2048
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -141,7 +141,7 @@ mission "Drone Hacking 7000"
 mission "Drone Hacking 8000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 4096
+		"How to Hack a Science Drone For Fun and Profit" >= 4096
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -152,7 +152,7 @@ mission "Drone Hacking 8000"
 mission "Drone Hacking 9000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 8198
+		"How to Hack a Science Drone For Fun and Profit" >= 8198
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -163,7 +163,7 @@ mission "Drone Hacking 9000"
 mission "Drone Hacking 10000"
 	landing
 	to offer
-		has "How to Hack a Science Drone For Fun and Profit" >= 16396
+		"How to Hack a Science Drone For Fun and Profit" >= 16396
 	on offer
 		"salary: Hackerz" += 1000
 		conversation
@@ -238,10 +238,30 @@ mission "Hackerz"
 		personality waiting surveillance
 		ship "Hacker Drone" "Hackerz"
 		conversation
+			branch circuit
+				has "outfit (flagship installed): Security Circuit"
+			branch node
+				has "outfit (flagship installed): Security Node"
 			action
 				set "You've been hacked"
 			scene "ship/science drone"
 			`	Your ship's hyperspace network relay starts making unusual sounds. After a moment it returns to normal...`
+				accept
+			label circuit
+			action
+				outfit "Security Circuit" -1
+				outfit "Security Circuit (Damaged)" 1
+			scene "outfit/damaged security circuit"
+			`	There's a sudden brief power spike that overloads a Security Circuit! Fortunately, no other systems were damaged...`
+				accept
+			label node
+			action
+				outfit "Security Node" -1
+				outfit "Security Node (Damaged)" 1
+			scene "outfit/damaged security node"
+			`	There's a sudden brief power spike that overloads a Security Node! Fortunately, no other systems were damaged...`
+				accept
+
 
 mission "Hackerz: You've Been Hacked"
 	landing

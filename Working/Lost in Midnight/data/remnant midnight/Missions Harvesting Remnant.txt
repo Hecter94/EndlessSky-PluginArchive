@@ -11,6 +11,140 @@
 
 
 
+mission "Sabotage: Engine Restraint (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Remnant"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Engine Restraint (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Engine Restraint (boarding): offered"
+				random < 2
+	on offer
+		outfit "Engine Restraint" 1
+		conversation
+			scene "outfit/engine restraint"
+			`You notice a malfunction with the engines on your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Remnant"
+		personality entering heroic plunders
+		fleet "Large Remnant"
+
+
+
+mission "Midnight Remnant Keystone Exchange [tiny]"
+	job
+	repeat
+	name "Exchange Quantum Keystones"
+	description "Deliver 2 Quantum Keystones to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+	destination
+		distance 1 5
+		government "Remnant"
+		attributes "outfitter"
+	to offer
+		"outfit: Quantum Keystone" >= 2
+		has "Remnant: Keystone Research 6: done"
+		random < 90
+	on complete
+		outfit "Quantum Keystone" -2
+		payment 60000
+		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
+
+mission "Midnight Remnant Keystone Exchange [small]"
+	job
+	repeat
+	name "Exchange Quantum Keystones"
+	description "Deliver 5 Quantum Keystones to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+		not attributes "station"
+	destination
+		government "Remnant"
+		attributes "outfitter"
+	to offer
+		"outfit: Quantum Keystone" >= 5
+		has "Remnant: Keystone Research 6: done"
+		random < 80
+	on complete
+		outfit "Quantum Keystone" -5
+		payment 150000
+		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
+
+mission "Midnight Remnant Keystone Exchange [medium]"
+	job
+	repeat
+	name "Exchange Quantum Keystones"
+	description "Deliver 10 Quantum Keystones to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+		not attributes "station"
+	destination
+		government "Remnant"
+		attributes "outfitter"
+	to offer
+		"outfit: Quantum Keystone" >= 10
+		has "Remnant: Keystone Research 6: done"
+		random < 40
+	on complete
+		outfit "Quantum Keystone" -10
+		payment 300000
+		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
+
+mission "Midnight Remnant Keystone Exchange [large]"
+	job
+	repeat
+	name "Exchange Quantum Keystones"
+	description "Deliver 20 Quantum Keystones to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+		not attributes "station"
+	destination
+		government "Remnant"
+		attributes "outfitter"
+	to offer
+		"outfit: Quantum Keystone" >= 20
+		has "Remnant: Keystone Research 6: done"
+		random < 20
+	on complete
+		outfit "Quantum Keystone" -20
+		payment 600000
+		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
+
+mission "Midnight Remnant Keystone Exchange [huge]"
+	job
+	repeat
+	name "Exchange Quantum Keystones"
+	description "Deliver 40 Quantum Keystones to <destination>. Payment is <payment>."
+	source
+		government "Remnant"
+		not attributes "station"
+	destination
+		government "Remnant"
+		attributes "outfitter"
+	to offer
+		"outfit: Quantum Keystone" >= 40
+		has "Remnant: Keystone Research 6: done"
+		random < 10
+	on complete
+		outfit "Quantum Keystone" -40
+		payment 1200000
+		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
+
+
+
 mission "Harvesting Quantumium Research"
 	minor
 	name "Quantumium Research"
@@ -43,6 +177,7 @@ mission "Harvesting Quantumium Research"
 				decline
 			label end
 			`	"May the Embers burn bright for you captain." He taps at his commlink and walks away.`
+				accept
 	on defer
 		set "Randomize Harvesting Quantumium Research"
 	on enter "Sagittarius A*"

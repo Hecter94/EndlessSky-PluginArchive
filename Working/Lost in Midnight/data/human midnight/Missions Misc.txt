@@ -873,7 +873,7 @@ mission "Infiltrator: War Begins"
 	npc
 		government "Republic"
 		system Castor
-		personality staying waiting surveillance timid mute
+		personality waiting staying surveillance timid mute
 		fleet
 			fighters
 				names "republic fighter"
@@ -883,12 +883,12 @@ mission "Infiltrator: War Begins"
 	npc kill
 		government "Republic"
 		system Castor
-		personality staying waiting surveillance timid mute
+		personality waiting staying surveillance timid mute
 		ship "Infiltrator" "Subterfuge"
 	npc
 		government "Republic"
 		system Pollux
-		personality staying waiting surveillance timid mute
+		personality waiting staying surveillance timid mute
 		fleet
 			fighters
 				names "republic fighter"
@@ -898,7 +898,7 @@ mission "Infiltrator: War Begins"
 	npc kill
 		government "Republic"
 		system Pollux
-		personality staying waiting surveillance timid mute
+		personality waiting staying surveillance timid mute
 		ship "Infiltrator" "Discretion"
 
 
@@ -1688,7 +1688,7 @@ mission "Midnight Striker"
 			`	Barmy crosses his arms and closes his eyes. "You know, people take drones for granted. A lot of captains view them as disposable fodder. But it takes considerable effort to program them! This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly. "We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
 				goto report
 			label navy
-			`	Barmy crosses his arms and closes his eyes. "Southbound designed the hull, not Kraz. We were all working on a tight deadline and Kraz ended up slapping together something that looks like a knockoff Surveillance Drone. At least they finished their part on time! Programming the AI was another story. This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly. "We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
+			`	Barmy crosses his arms and closes his eyes. "Southbound designed the hull, not Kraz. We were all working on a tight deadline and Southbound ended up slapping together something that looks like a knockoff Surveillance Drone. At least they finished their part on time! Programming the AI was another story. This past week I haven't gotten any sleep." You notice that Barmy does appear to be somewhat sickly. "We needed to have them ready a week ago, but errors in the AI kept popping up." Barmy smiles, "But today was different! This morning we turned the drones on and they didn't immediately try to shoot the lab technicians. Real progress!" Sounds rough.`
 			label report
 			``
 			`	Barmy calms down before continuing, "So, during the battle, you may have noticed that some of the drones were armed with Javelins while others had Meteor Missiles. Which ones do you think fared better?"`
@@ -1701,9 +1701,19 @@ mission "Midnight Striker"
 				`	"Couldn't they be armed with something else?"`
 					to display
 						not "striker non-missiles"
+				`	"I still think Kludge Blasters are the way to go."`
+					to display
+						has "striker non-missiles"
+					goto kludge
 			action
 				set "striker non-missiles"
-			`	Barmy sighs, "Unfortunately, Southbound didn't leave enough weapon space to cram in anything but the smallest of missile pods. I suppose one could try Sidewinders, but there'd be problems with sourcing the ammo." It seems even a basic Energy Blaster won't fit in the alotted weapon space.`
+			`	Barmy sighs, "Unfortunately, Southbound didn't leave enough weapon space to cram in much more than the smallest of missile pods. I suppose one could try Sidewinders, but there'd be problems with sourcing the ammo." It seems even a basic Energy Blaster won't fit in the alotted weapon space.`
+			choice
+				`	"What about installing a Kludge Blaster?"`
+				`	"I suppose you're right."`
+					goto final
+			scene "outfit/kludge blaster"
+			`	Barmy frowns. "There's enough space to accomodate one. But Kludge Blasters work best when used in multiples. We need to more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
 				goto final
 			label javelin
 			action
@@ -1711,13 +1721,22 @@ mission "Midnight Striker"
 				event "add striker drones javelin" 30
 			scene "outfit/javelin"
 			`	Barmy nods, "I'd have to agree. While the reliance on ammunition means they'll run out of steam during a protracted battle, the Javelins will do more damage than just about any other gun during the first few moments of fighting." Barmy makes a note of this. "Thanks for your help. While I can't go into detail with what these drones will be used for, you'll be able to use your Militia license to buy them for yourself at Southbound's bigger shipyards about a month from now. Take care, <first>."`
-				accept
+				decline
 			label meteor
 			action
 				clear "striker non-missiles"
 				event "add striker drones meteor" 30
 			scene "outfit/meteor"
 			`	Barmy nods, "I'd have to agree. While the reliance on ammunition means they'll run out of steam during a protracted battle, the Meteors will be able to soften up the opposition from a distance during the first few moments of fighting." Barmy makes a note of this. "Thanks for your help. While I can't go into detail with what these drones will be used for, you'll be able to use your Militia license to buy them for yourself at Southbound's bigger shipyards about a month from now. Take care, <first>."`
+				decline
+			label kludge
+			action
+				clear "striker non-missiles"
+				event "add striker drones kludge" 30
+			scene "outfit/kludge blaster"
+			`	"Are you serious?" Barmy sighs, "Alright. You've got more combat experience, so I'll make sure your advice is taken into consideration." Barmy makes a note of this. "Thanks for your help. While I can't go into detail with what these drones will be used for, you'll be able to use your Militia license to buy them for yourself at Southbound's bigger shipyards about a month from now. Take care, <first>."`
+				decline
+
 
 event "add striker drones javelin"
 	shipyard "Southbound Advanced"
@@ -1727,6 +1746,9 @@ event "add striker drones meteor"
 	shipyard "Southbound Advanced"
 		add "Striker Drone (Meteor)"
 
+event "add striker drones kludge"
+	shipyard "Southbound Advanced"
+		add "Striker Drone (Kludge Blaster)"
 
 
 mission "Shield Suppressor Intro"
@@ -2594,246 +2616,4 @@ ship "Protector" "Protector Test-PTATS"
 	turret "Anti-Missile Turret"
 
 
-
-mission "Quash: Humanika Infiltration 1"
-	minor
-	infiltrating
-	passengers 4
-	name "Humanika Infiltration"
-	description "Take your passengers to <destination>. Then transport them to Trinket in the Sargas system. Payment is 400,000 credits."
-	source
-		attributes "pirate"
-	destination "Humanika"
-	to offer
-		has "First Contact: Quarg: offered"
-		not "Cartography: Quarg Hitchhiker 1: offered"
-		or
-			and
-				not "tribute: Albatross"
-				not "event: albatross joins free worlds"
-			and
-				not "tribute: Bloodsea"
-				not "event: bloodsea independent"
-				not "event: bloodsea joins free worlds"
-			and
-				and
-					not "tribute: Thule"
-					not "tribute: Smuggler's Den"
-				not "event: Thule becomes independent"
-			not "tribute: Buccaneer Bay"
-			not "tribute: Covert"
-			not "tribute: Deadman's Cove"
-			not "tribute: Freedom"
-			not "tribute: Greenrock"
-			not "tribute: Haven"
-			not "tribute: Stormhold"
-			not "tribute: Zenith"
-			not "tribute: New Tortuga"
-		random < 10
-	on offer
-		conversation
-			scene "outfit/map"
-			`As you are walking through the spaceport, three men and a woman all wearing nondescript clothing appear out of nowhere and offer you 400,000 credits for discreet passage to <destination>. After they complete some business there, they'll need transportation to Trinket in the Sargas system.`
-			choice
-				`	"Sure, I can do that."`
-					accept
-				`	(Think it over.)`
-			`Seeing you hesitate, they explain that their previous pilot was caught smuggling ringworld shavings, an illegal drug, and they need a replacement pilot for a job they couldn't refuse. Transporting them might be very dangerous. On the other hand, they're offering a small fortune...`
-			choice
-				`	"Sure, I can do that."`
-					accept
-				`	"Sorry, not interested."`
-					decline
-	on decline
-		"rejected illegal jobs" ++
-	on enter "Sadalmelik"
-		conversation
-			scene "planet/ocean7"
-			`As you approach <planet>, your passengers start unpacking and equipping some gear. They're all armed now. One of the men even has a sniper rifle. It's obvious they're up to no good. But it's too late to back out. Their leader, the one they refer to as "Commander," tells you to land at a specific site. You notice that this location is nowhere near the spaceport...`
-
-mission "Quash: Humanika Infiltration 2"
-	landing
-	passengers 1
-	name "Humanika Infiltration"
-	description "Take your passenger to <destination>. Payment is 400,000 credits."
-	source "Humanika"
-	destination "Trinket"
-	to offer
-		has "Quash: Humanika Infiltration 1: done"
-	on offer
-		conversation
-			scene "outfit/sniper rifle"
-			`You land at the designated site, a parking lot of what appears to be a ruined building abandoned long ago. Commander tells you to wait for them. He promises that you'll get your 400,000 credits once you've safely delivered them to Trinket in the Sargas system. The four well armed passengers disembark from your ship, off to do whatever it is they came here for.`
-			choice
-				`	(Wait for them.)`
-					goto wait
-				`	(Abandon them.)`
-			`	It's obvious they're up to no good and you want no part of that. You fire up your engines and head out, abandoning your passengers and their promised reward.`
-				flee
-			label wait
-			``
-			`After an hour, Commander returns... alone and injured. "Go! The others are dead. Get us out of here!" You fire up your engines...`
-				launch
-	on decline
-		"rejected illegal jobs" ++
-	on accept
-		"stored reputation: Quarg" = "reputation: Quarg"
-		"reputation: Quarg" <?= -10
-		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
-		"reputation: Quarg (Hai)" <?= -10
-		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
-		"reputation: Quarg (Kor Efret)" <?= -10
-		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
-		"reputation: Quarg (Gegno)" <?= -10
-	on enter
-		conversation
-			`You can hear Commander muttering to himself,"'It'll be easy,' it said. 'You're the best,' it said. I never should have trusted that damn Quarg..."`
-			choice
-				`	"What Quarg?"`
-			scene "thumbnail/wardragon"
-			`	"Nevermind that! There's a Wardragon on our tail! Just focus on getting us to Trinket in one piece."`
-	npc evade
-		government "Quarg"
-		personality entering opportunistic
-		fleet
-			names "quarg"
-			cargo 10
-			variant
-				"Quarg Wardragon (Scanner)"
-	on complete
-		"reputation: Quarg" >?= "stored reputation: Quarg"
-		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
-		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
-		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
-		"getaway driver" ++
-		payment 100000
-		outfit "Sniper Rifle" 1
-		log `Took a mercenary transport job that involved a stopover at Humanika. Something happened while we were there and only one of the original passengers made it back to the ship. He kept muttering about how he shouldn't have trusted a certain Quarg. It seems this Quarg had hired them to do something on Humanika and things didn't go as expected.`
-		conversation
-			scene "outfit/sniper rifle"
-			`When you land, Commander hands over <payment>. "Sorry it's not what we agreed on, but the others were each responsible for paying a portion of it. Now that they're..." He hesitates a moment, then hands over the Sniper Rifle. "I guess you could also try selling this. That's the best I can offer." He departs, never explaining anything about what happened on Humanika or the mysterious Quarg he was cursing.`
-
-mission "Quash: Humanika Infiltration 2 Patch"
-	landing
-	invisible
-	to offer
-		has "Quash: Humanika Infiltration 2: done"
-		not "Cartography: Quarg Hitchhiker 5: offered"
-	on offer
-		"reputation: Quarg" >?= 1
-		"reputation: Quarg (Hai)" >?= 1
-		"reputation: Quarg (Kor Efret)" >?= 1
-		"reputation: Quarg (Gegno)" >?= 1
-		fail
-
-
-
-mission "Sunracer Afterburner 1"
-	minor
-	name "Tag. You're it!"
-	description "Race the <npc> to <destination>."
-	source
-		near "Mirfak" 5 10
-	destination Sunracer
-	to offer
-		has "main plot completed"
-		month == 3
-		"credits" > 700000
-		random < 70
-	on offer
-		conversation
-			scene "outfit/license"
-			`	A young man in a green flight suit approaches you. "You're a pilot too, right?"`
-			choice
-				`	"Yeah, I'm a pilot. Do you need something?"`
-					goto race
-				`	"Beat it kid. I don't have time to train you."`
-			`	"I'm not looking for training," he says.`
-			choice
-				`	"Then what do you want?"`
-			label race
-			scene "thumbnail/quicksilver"
-			`	"Are you up for a race to Sunracer? My name's Patrick. That's my Quicksilver over there. If you beat me, I'll give you some insider info on a new racing outfit. How about it?"`
-			`	Information on a new outfit might be useful. On the other hand, this may be a scam. What do you tell him?`
-			choice
-				`	"Last one to Sunracer is a rotten egg!"`
-					accept
-				`	"Sorry kid, I'm not interested."`
-					decline
-	on visit
-		dialog `This was too close to call. You and Patrick agree to another race. Try to evade the <npc> then return to <planet>.`
-	npc evade save
-		government "Merchant"
-		personality target escort pacifist
-		ship "Marauder Quicksilver (Shamrock)" "Shamrock"
-	on fail
-		dialog `[MISSION FAILED] The <npc> was destroyed! If life were a game, you could load a save file and try again.`
-
-ship "Marauder Quicksilver" "Marauder Quicksilver (Shamrock)"
-	sprite "ship/mquicksilvere"
-	thumbnail "thumbnail/mquicksilvere"
-	swizzle 3
-	add attributes
-		"engine capacity" 40
-	outfits
-		"Anti-Missile Turret"
-		"Fission Reactor"
-		"S-270 Regenerator"
-		"LP036a Battery Pack"
-		"Water Coolant System"
-		"Fuel Pod"
-		"Ramscoop"
-		"Laser Rifle" 5
-		"Hybrid Afterburner"
-		`"Biroo" Atomic Thruster`
-		`"Biroo" Atomic Steering`
-		"Hyperdrive"
-	engine -16 52
-	engine 0 52
-	engine 16 52
-	description "This Quicksilver has even more space available for engine use - and even another thruster port! It's also got a few extra shield projectors, more hull plating, and another bunk. This aftermarket model also features a turret mount, perhaps in response to Lionheart's Headhunter. Whoever modified this ship wanted to chase their prey down with vicious speed."
-
-mission "Sunracer Afterburner 2"
-	landing
-	invisible
-	source Sunracer
-	to offer
-		has "Sunracer Afterburner 1: done"
-	on offer
-		conversation
-			scene "outfit/hybrid afterburner"
-			`	The Shamrock arrives soon after you finish landing the <ship>. Patrick congratulates you on winning the race. "I guess this still needs more work." He gestures at the Shamrock's afterburner. "It's a prototype, using both hyperspace fuel and battery power to give it a kick. But I don't think this is good enough for competitive racing. Would you be interested in buying it? 374,000 credits should cover it. I could use the funds to work on an upgraded model."`
-			`	Buying the Hybrid Afterburner now could help Patrick develop a superior version eventually. On the other hand, 374,000 credits is no small investment. What will you do?`
-			choice
-				`	(Buy the Hybrid Afterburner.)`
-				`	(Do not buy the Hybrid Afterburner.)`
-					decline
-			`	You agree to purchase the Hybrid Afterburner and wish Patrick luck on developing a superior version.`
-				accept
-	on accept
-		outfit "Hybrid Afterburner" 1
-		payment -374000
-		event "Sunracer Afterburner Development" 360
-		log "Minor People" "Patrick of Sunracer" `A young race pilot hoping to develop a superior Hybrid Afterburner.`
-		fail
-
-outfitter "Sunracer Afterburner"
-	"Sunracer Afterburner"
-
-event "Sunracer Afterburner Development"
-	planet Sunracer
-		add outfitter "Sunracer Afterburner"
-
-mission "Sunracer Afterburner 3"
-	landing
-	invisible
-	source Sunracer
-	to offer
-		has "event: Sunracer Afterburner Development"
-	on offer
-		log `It seems Patrick succeeded in making a better version of the Hybrid Afterburner.`
-		conversation
-			scene "outfit/sunracer afterburner"
-			`	You notice a new afterburner in the outfitter. It looks like Patrick suceeded in making a better version of the prototype Hybrid Afterburner.`
-				decline
 

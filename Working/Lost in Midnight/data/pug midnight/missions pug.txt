@@ -18,6 +18,48 @@
 
 
 
+mission "Sabotage: Jump Drive (Pug) (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Pug" "Pug (Wanderer)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		has "outfit (flagship installed): Jump Drive"
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Jump Drive (Pug) (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Jump Drive (Pug) (boarding): offered"
+				random < 2
+	on offer
+		outfit "Jump Drive" -1
+		outfit "Jump Drive (Limit Fuel)" 1
+		conversation
+			scene "outfit/jump drive (damaged)"
+			`As soon as you dock with the Pug ship, a strange energy wave flows across your hull and into the Jump Drive on your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		to spawn
+			"reputation: Pug" < 0
+		government "Pug (Wanderer)"
+		personality entering heroic vindictive
+		fleet "Small Pug"
+	npc kill
+		to spawn
+			"reputation: Pug (Wanderer)" < 0
+		government "Pug (Wanderer)"
+		personality entering heroic vindictive
+		fleet "Large Pug (Wanderer)"
+
+
+
 ######################################
 #
 # Midnight Pug Tributes

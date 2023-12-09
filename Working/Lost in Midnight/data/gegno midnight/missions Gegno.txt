@@ -1,0 +1,108 @@
+# Copyright (c) 2023 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+mission "Midnight Gegno Vi Rescue"
+	assisting
+	repeat
+	name "Gegno to <planet>"
+	description `Transport the Gegno you rescued from a destroyed ship to the location designated on the map.`
+	passengers 1
+	clearance
+	source
+		government "Gegno Vi"
+	destination
+		government "Gegno Vi" "Gegno"
+		attributes spaceport
+		not attributes "station" "requires: vi access"
+	to offer
+		has "First Contact: Gegno Vi: done"
+		"reputation: Gegno" == 0
+		"reputation: Gegno Vi" == 0
+		random < 10
+	to fail
+		"reputation: Gegno" < -100
+	on abort
+		"reputation: Gegno" --
+	on fail
+		conversation
+			`Despite knowing you are transporting one of them, you made the conscious decision to fire upon Gegno ships, and the rest of your trip to this world was extremely awkward. Rather than settle in a bunk, the Gegno passenger stood close behind you in your cockpit the entire time. You occasionally turned to observe their behavior and even made attempts to communicate, but they wouldn't so much as look in your direction.`
+			`	Strangely, they didn't seem to be upset at all, at least in a way you could tell. Regardless, the tension became extremely uncomfortable, but now that you've landed your ship, perhaps you could address it.`
+			choice
+				`	(Try to communicate with the alien.)`
+			scene "outfit/savagery pike"
+			`	Before you could turn to speak to them, you feel an immense force go straight through your torso, and your body slowly starts to lift up. You try to speak, but nothing comes out, and struggling your head, you turn to see that the alien has pierced you through your chest with their spear weapon. As your vision slowly fades, the last glimpse you could see of them wasn't a look of hatred, but one of disappointment.`
+				die
+	on offer
+		conversation
+			scene "scene/scene-explosion"
+			`As soon as you dock with the disabled ship, one of the Gegno pushes through the entry hatch then hurriedly seals it shut. Noticing you, the alien yells something in a language you don't understand. The sound of distant explosions can be heard from the other side of the hatch. The Gegno gestures away from the hatch and screams the same words again! There's another explosion, louder than before and strong enough to feel in the floor boards. It might be a good idea to undock from the other ship...`
+			choice
+				`	(Pull away from the wrecked ship.)`
+			scene "outfit/map"
+			`	Awkward silence ensues, and the alien looks you up and down in an unenthused way. They emit a very deep grumble, and with a loud snort, reach into a crevice in their armor to grab something. Pulling out what looks to be some sort of star map, they point to a location on it, gesture to themselves, then lower the device slowly to you. It seems they want to be taken to one of their species' planets. You could try to jettison your uninvited passenger out of the airlock, but there could be unforeseen consequences if the other Gegno witness you or find the body...`
+				launch
+	on complete
+		conversation
+			`	After you touch down, several Gegno that are of a similar appearance to the one next to you begin to line up in a formation towards your ship, all carrying various types of weaponry. However, they don't show any signs of aggression and simply hold their position in a coordinated display of might. The alien beside you gestures for their compass device they gave you earlier.`
+			choice
+				`	(Hand them the device.)`
+			`	A few moments later, another group of Gegno arrive with what looks to be some type of fueling device, and after a minute or so of fidgeting with it, they manage to hook it up to your ship. Once your ship's fuel has been filled, the alien that has been guiding you gestures towards the sky. It seems your visit to this world will have to be cut short.`
+				launch
+
+mission "Midnight Gegno Scin Rescue"
+	assisting
+	repeat
+	name "Gegno to <planet>"
+	description `Transport the Gegno you rescued from a destroyed ship to the location designated on the map.`
+	passengers 1
+	clearance
+	source
+		government "Gegno Scin"
+	destination
+		government "Gegno Scin" "Gegno"
+		attributes spaceport
+		not attributes "station" "requires: scin access"
+	to offer
+		has "First Contact: Gegno Vi: done"
+		"reputation: Gegno" == 0
+		"reputation: Gegno Scin" == 0
+		random < 10
+	to fail
+		"reputation: Gegno" < -100
+	on abort
+		"reputation: Gegno" --
+	on fail
+		conversation
+			`Despite knowing you are transporting one of them, you made the conscious decision to fire upon Gegno ships, and the rest of your trip to this world was extremely awkward. Rather than settle in a bunk, the Gegno passenger stood close behind you in your cockpit the entire time. You occasionally turned to observe their behavior and even made attempts to communicate, but they wouldn't so much as look in your direction.`
+			`	Strangely, they didn't seem to be upset at all, at least in a way you could tell. Regardless, the tension became extremely uncomfortable, but now that you've landed your ship, perhaps you could address it.`
+			choice
+				`	(Try to communicate with the alien.)`
+			scene "outfit/plasmasickle"
+			`	Before you could turn to speak to them, you feel hot pain slice straight through your neck. You try to speak, but nothing comes out, and realize that your head has been severed from you body by the alien's blade weapon. As your vision slowly fades, the last glimpse you could see of them wasn't a look of hatred, but one of disappointment.`
+				die
+	on offer
+		conversation
+			scene "scene/scene-explosion"
+			`As soon as you dock with the disabled ship, one of the Gegno pushes through the entry hatch then hurriedly seals it shut. Noticing you, the alien yells something in a language you don't understand. The sound of distant explosions can be heard from the other side of the hatch. The Gegno gestures away from the hatch and screams the same words again! There's another explosion, louder than before and strong enough to feel in the floor boards. It might be a good idea to undock from the other ship...`
+			choice
+				`	(Pull away from the wrecked ship.)`
+			scene "outfit/map"
+			`	Awkward silence ensues, and the alien looks you up and down in an unenthused way. They emit a very deep grumble, and with a loud snort, reach into a crevice in their armor to grab something. Pulling out what looks to be some sort of star map, they point to a location on it, gesture to themselves, then lower the device slowly to you. It seems they want to be taken to one of their species' planets. You could try to jettison your uninvited passenger out of the airlock, but there could be unforeseen consequences if the other Gegno witness you or find the body...`
+				launch
+	on complete
+		conversation
+			`	After you touch down, several Gegno that are of a similar appearance to the one next to you begin to line up in a formation towards your ship, all carrying various types of bladed weaponry. However, they don't show any signs of aggression and simply hold their position in a coordinated display of might. The alien beside you gestures for their compass device they gave you earlier.`
+			choice
+				`	(Hand them the device.)`
+			`	A few moments later, another group of Gegno arrive with what looks to be some type of fueling device, and after a minute or so of fidgeting with it, they manage to hook it up to your ship. Once your ship's fuel has been filled, the alien that has been guiding you gestures towards the sky. It seems your visit to this world will have to be cut short.`
+				launch

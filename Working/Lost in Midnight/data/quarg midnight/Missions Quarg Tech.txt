@@ -60,21 +60,100 @@ mission "Lost in Midnight Celestial Compass patch"
 		not "lost in midnight celestial compass patched"
 	on offer
 		event "lost in midnight celestial compass patch"
+		set "lost in midnight celestial compass patched2"
 		fail
 
 event "lost in midnight celestial compass patch"
 	government "Quarg"
-		remove atrocities
-			"Celestial Compass"
+		atrocities
+			remove "Celestial Compass"
 	government "Quarg (Hai)"
-		remove atrocities
-			"Celestial Compass"
+		atrocities
+			remove "Celestial Compass"
 	government "Quarg (Kor Efret)"
-		remove atrocities
-			"Celestial Compass"
+		atrocities
+			remove "Celestial Compass"
 	government "Quarg (Gegno)"
-		remove atrocities
-			"Celestial Compass"
+		atrocities
+			remove "Celestial Compass"
+
+mission "Lost in Midnight Celestial Compass patch2"
+	landing
+	invisible
+	to offer
+		has "event: lost in midnight celestial compass patch"
+		not "lost in midnight celestial compass patched2"
+	on offer
+		event "lost in midnight celestial compass patch2"
+		fail
+
+event "lost in midnight celestial compass patch2"
+	government "Quarg"
+		add atrocities
+			"Nanotech Battery"
+			"Antimatter Core"
+			"Quarg Skylance"
+			"Quarg Anti-Missile"
+			"Intrusion Countermeasures"
+			"Medium Graviton Thruster"
+			"Medium Graviton Steering"
+			"Quantum Shield Generator"
+			"Antimatter Core (Damaged)"
+			"Nanotech Battery (Damaged)"
+			"Quantum Shield Generator (Damaged)"
+			"Insurgent Subjugation Gear"
+			"Quarg Graviton Generator"
+			"Quarg Quantum Phase Pistol"
+	government "Quarg (Hai)"
+		add atrocities
+			"Nanotech Battery"
+			"Antimatter Core"
+			"Quarg Skylance"
+			"Quarg Anti-Missile"
+			"Intrusion Countermeasures"
+			"Medium Graviton Thruster"
+			"Medium Graviton Steering"
+			"Quantum Shield Generator"
+			"Antimatter Core (Damaged)"
+			"Nanotech Battery (Damaged)"
+			"Quantum Shield Generator (Damaged)"
+			"Insurgent Subjugation Gear"
+			"Quarg Graviton Generator"
+			"Quarg Quantum Phase Pistol"
+	government "Quarg (Kor Efret)"
+		add atrocities
+			"Nanotech Battery"
+			"Antimatter Core"
+			"Quarg Skylance"
+			"Quarg Anti-Missile"
+			"Intrusion Countermeasures"
+			"Medium Graviton Thruster"
+			"Medium Graviton Steering"
+			"Quantum Shield Generator"
+			"Antimatter Core (Damaged)"
+			"Nanotech Battery (Damaged)"
+			"Quantum Shield Generator (Damaged)"
+			"Insurgent Subjugation Gear"
+			"Quarg Graviton Generator"
+			"Quarg Quantum Phase Pistol"
+	government "Quarg (Gegno)"
+		add atrocities
+			"Nanotech Battery"
+			"Antimatter Core"
+			"Quarg Skylance"
+			"Quarg Anti-Missile"
+			"Intrusion Countermeasures"
+			"Medium Graviton Thruster"
+			"Medium Graviton Steering"
+			"Quantum Shield Generator"
+			"Antimatter Core (Damaged)"
+			"Nanotech Battery (Damaged)"
+			"Quantum Shield Generator (Damaged)"
+			"Insurgent Subjugation Gear"
+			"Quarg Graviton Generator"
+			"Quarg Quantum Phase Pistol"
+
+
 
 mission "Lost in Midnight Quarg Governments Update 2"
 	landing
@@ -96,6 +175,40 @@ event "lost in midnight quarg governments update 2"
 	government "Quarg (Gegno)"
 		add atrocities
 			"Insurgent Subjugation Gear"
+
+
+
+mission "Sabotage: Jump Drive (Quarg) (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Quarg" "Quarg (Hai)" "Quarg (Kor Efret)" "Quarg (Gegno)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		has "outfit (flagship installed): Jump Drive"
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Jump Drive (Quarg) (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Jump Drive (Quarg) (boarding): offered"
+				random < 2
+	on offer
+		outfit "Jump Drive" -1
+		outfit "Jump Drive (Limit Distance)" 1
+		conversation
+			scene "outfit/jump drive (damaged)"
+			`As soon as you dock with the Quarg ship, a strange energy wave flows across your hull and into the Jump Drive on your ship. You should probably have it checked out the next time you're at an outfitter...`
+				accept
+	npc kill
+		government "Quarg"
+		personality entering vindictive heroic
+		fleet "Large Quarg"
 
 
 
