@@ -166,20 +166,21 @@ mission "QKBlade: House Unuk Door Delivery"
 
 mission "QKBlade: Quantum Key Blade 1"
 	landing
+	clearance
 	name "Visit the Hai Council of Elders"
 	description "Go to <planet> in the <system> system and meet with the council of elders to discuss a recent incident involving the Unfettered."
 	source
 		government "Hai"
 		not planet "Darkwaste"
 		not planet "Hai-home"
-	destination
-		planet "Hai-home"
+	destination "Hai-home"
 	to offer
 		has "Wanderers Hai Assistance Fleet: offered"
 		has "QKBlade: House Unuk Door Delivery: done"
 		or
 			has "event: pond strider mass production"
 			has "event: pond strider mass production v2"
+		"reputation: Hai" >= 100
 	on offer
 		conversation
 			`You receive an urgent message from Ambassador Sayari when you land. "A new Unfettered war ship entered Wah Ki and made an outrageous request for safe passage to Ultima Thule. The council of elders denied the request. Amazingly, the captain of the ship respected their decision and returned to Unfettered space. However, the council of elders has asked that you meet them on Hai-Home to discuss an issue related to this recent development.`
@@ -187,10 +188,10 @@ mission "QKBlade: Quantum Key Blade 1"
 
 mission "QKBlade: Quantum Key Blade 2"
 	landing
+	clearance
 	name "The Kotetsu"
-	description `Hunt down the Unfettered warrior Gai Ro Nin and his ship named "Kotetsu".`
-	source
-		planet Hai-home
+	description `Hunt down the Unfettered warrior Gai Ro Nin and his ship named "Kotetsu". Then return the Quantum Key Blade to <destination>.`
+	source "Hai-home"
 	to offer
 		has "QKBlade: Quantum Key Blade 1: done"
 	to complete
@@ -310,7 +311,9 @@ mission "QKBlade: Quantum Key Blade 4"
 		has "QKBlade: Quantum Key Blade 3: active"
 		not "QKBlade: Quantum Key Blade 5: offered"
 	on offer
-		dialog `Several of the other ships at port are being repaired for heavy damage. There is a lot of chatter about a small fleet of alien ships that recently tore through this system. You must press on to Unukalhai!`
+		dialog `Several of the other ships at port are being repaired for heavy damage. There is a lot of chatter about a small fleet of alien ships that recently tore through this system. From the description of these ships, it is probably Gai Ro Nin's fleet. You must press on to Unukalhai!`
+	on accept
+		fail
 
 mission "QKBlade: Quantum Key Blade 5"
 	landing
@@ -322,7 +325,9 @@ mission "QKBlade: Quantum Key Blade 5"
 	to offer
 		has "QKBlade: Quantum Key Blade 3: active"
 	on visit
-		dialog `Several of the other ships at port are being repaired for heavy damage. There is a lot of chatter about a small fleet of alien ships that recently tore through this system. You must press on to Unukalhai!`
+		dialog `Several of the other ships at port are being repaired for heavy damage. There is a lot of chatter about a small fleet of alien ships that recently tore through this system. From the description of these ships, it is probably Gai Ro Nin's fleet. You must press on to Unukalhai!`
+	on accept
+		fail
 
 mission "Nemesis: Quantum Key Blade"
 	landing
@@ -486,6 +491,7 @@ mission "QKBlade: House Unuk Secrets"
 	to offer
 		has "event: House Unuk Recovery timer"
 		has "QKBlade: Bearer of The Blade 1: declined"
+		not "Bearer of The Blade"
 	on offer
 		conversation
 			`It has been some time since the day you fought Gai and took hold of the Quantum Key Blade. Now that you've returned to Unukalhai, it might be a good idea to check up on House Unuk.`
@@ -506,36 +512,43 @@ mission "QKBlade: Bearer of The Blade 1"
 	source "Hai-home"
 	to offer
 		has "QKBlade: Quantum Key Blade 2: done"
+		has "outfit (flagship installed): Quantum Key Blade"
 	on offer
-		require "Quantum Key Blade"
 		conversation
 			scene "outfit/quantum key blade"
-			`You report to the council of elders your battle with the Kotetsu and the fate of Gai Ro Nin. At the end you raise up the Quantum Key Blade.`
+			branch honorable
+				"reputation: Hai" > 0
+			action
+				"Honor of the Blade Bearer" --
+			`When you first arrive, you have some trouble convincing the guards that you have legitimate business with the council. After showing them the Quantum Key Blade, they allow you to enter.`
+			``
+			label honorable
+			action
+				"reputation: Hai" >?= 100
+			`You report to the elders your battle with the Kotetsu and the fate of Gai Ro Nin. At the end you raise up the Quantum Key Blade.`
 			`	"During your absence, the council decided that, should you desire it, you would be allowed to bear the blade while you live. Know that this permission does not extend to your heirs, and once you pass from this mortal realm the Hai government expects the blade to be returned," decrees one elder.`
 			`	"Will you bear this burden?" asks another elder."`
 			choice
-				`	(Keep the blade.)`
+				`	"I accept. Thank you for this honor."`
 					goto burden
-				`	(Return the blade.)`
-
-			`	"Thank you, but I am unworthy of this honor. I believe it is in the best interest of everyone that the blade is returned to the Hai people."`
+				`	"Thank you, but I am unworthy of this honor."`
+			action
+				log `I have returned the Quantum Key Blade to the Hai people. I believe that is where the artifact truly belongs.`
+				outfit "Quantum Key Blade" -1
+				"reputation: Hai" += 10
+				clear "Honor of the Blade Bearer"
+			`	"It is in the best interest of everyone that the blade is returned to the Hai people." The elders accept the blade's return. There is a short ceremony where you are honored for your heroic actions.`
 				decline
-			
+
 			label burden
-			`	"I accept. Thank you for this honor."`
+			action
+				log `I have accepted the honor and responsibility of carrying the Quantum Key Blade with me on my journey across the stars.`
+				"Bearer of The Blade" ++
+				event "stolen Quantum Key Blade timer" 30
 			`	There is some chattering amongst the elders. Then they address you.`
 			`	"With this, all five of the Quantum Key Blades are accounted for. As you carry that one on your journeys, word will spread that you are in possession of it. Take care that you do not lose it to any Unfettered assassin who tries to claim it."`
 			`	As the meeting adjourns, you wonder if you made the right choice.`
-				accept
-	on decline
-		log `I have returned the Quantum Key Blade to the Hai people. I believe that is where the artifact truly belongs.`
-		outfit "Quantum Key Blade" -1
-		"reputation: Hai" ++
-	on accept
-		log `I have accepted the honor and responsibility of carrying the Quantum Key Blade with me on my journey across the stars.`
-		"Bearer of The Blade" ++
-		event "stolen Quantum Key Blade timer" 30
-		fail
+				decline
 
 event "stolen Quantum Key Blade timer"
 
@@ -547,8 +560,8 @@ mission "QKBlade: Bearer of The Blade 2"
 		not planet "Darkwaste"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
+		has "outfit (flagship installed): Quantum Key Blade"
 	on offer
-		require "Quantum Key Blade"
 		conversation
 			`A large crowd has gathered at the entrance to the space port. Apparently, one of the Quantum Key Blades was loaned to a local culture festival and has been put on display for a daily show demonstrating its powers. The next showing is supposed to start soon.`
 			choice
@@ -609,7 +622,12 @@ mission "QKBlade: Bearer of The Blade 3A"
 		government "Hai" "Hai (Unfettered)"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		has "outfit (flagship installed): Quantum Dragon Blade"
+		or
+			has "outfit (flagship installed): Quantum Dragon Blade"
+			has "outfit (flagship installed): Quantum Phoenix Blade"
+			has "outfit (flagship installed): Quantum Snake Blade"
+			has "outfit (flagship installed): Quantum Tiger Blade"
+			has "outfit (flagship installed): Quantum Turle Blade"
 		or
 			and
 				has "flagship planet attribute: unfettered"
@@ -621,16 +639,12 @@ mission "QKBlade: Bearer of The Blade 3A"
 				random < 15
 			and
 				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 3
-				random < 10
-			and
-				has "flagship planet attribute: unfettered"
 				"QKBlade: duels won" >= 5
-				random < 5
+				random < 10
 			and
 				has "flagship planet attribute: hai"
 				"QKBlade: duels won" >= 3
-				random < 2
+				random < 5
 	on offer
 		conversation
 			scene "outfit/quantum dragon blade"
@@ -674,7 +688,12 @@ mission "QKBlade: Bearer of The Blade 3B"
 		government "Hai" "Hai (Unfettered)"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		has "outfit (flagship installed): Quantum Dragon Blade"
+		or
+			has "outfit (flagship installed): Quantum Dragon Blade"
+			has "outfit (flagship installed): Quantum Phoenix Blade"
+			has "outfit (flagship installed): Quantum Snake Blade"
+			has "outfit (flagship installed): Quantum Tiger Blade"
+			has "outfit (flagship installed): Quantum Turle Blade"
 		or
 			and
 				has "flagship planet attribute: unfettered"
@@ -686,16 +705,12 @@ mission "QKBlade: Bearer of The Blade 3B"
 				random < 15
 			and
 				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 3
-				random < 10
-			and
-				has "flagship planet attribute: unfettered"
 				"QKBlade: duels won" >= 5
-				random < 5
+				random < 10
 			and
 				has "flagship planet attribute: hai"
 				"QKBlade: duels won" >= 3
-				random < 2
+				random < 5
 	on offer
 		conversation
 			scene "outfit/quantum dragon blade"
@@ -739,7 +754,12 @@ mission "QKBlade: Bearer of The Blade 3C"
 		government "Hai" "Hai (Unfettered)"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		has "outfit (flagship installed): Quantum Dragon Blade"
+		or
+			has "outfit (flagship installed): Quantum Dragon Blade"
+			has "outfit (flagship installed): Quantum Phoenix Blade"
+			has "outfit (flagship installed): Quantum Snake Blade"
+			has "outfit (flagship installed): Quantum Tiger Blade"
+			has "outfit (flagship installed): Quantum Turle Blade"
 		or
 			and
 				has "flagship planet attribute: unfettered"
@@ -751,16 +771,12 @@ mission "QKBlade: Bearer of The Blade 3C"
 				random < 15
 			and
 				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 3
-				random < 10
-			and
-				has "flagship planet attribute: unfettered"
 				"QKBlade: duels won" >= 5
-				random < 5
+				random < 10
 			and
 				has "flagship planet attribute: hai"
 				"QKBlade: duels won" >= 3
-				random < 2
+				random < 5
 	on offer
 		conversation
 			scene "outfit/quantum dragon blade"
@@ -824,6 +840,7 @@ mission "QKBlade: Bearer of The Blade 4"
 
 mission "QKBlade: Bearer of The Blade 5"
 	minor
+	clearance
 	name "Return the Snake"
 	description "Return the stolen Quantum Key Blade with the snake carved hand guard to the council of elders on Hai-home."
 	source
@@ -834,6 +851,7 @@ mission "QKBlade: Bearer of The Blade 5"
 		has "QKBlade: Bearer of The Blade 4: declined"
 		has "outfit (flagship installed): Quantum Dragon Blade"
 		"QKBlade: duels won" >= 3
+		"reputation: Hai" >= 100
 		random < 70
 	on offer
 		conversation
@@ -944,32 +962,38 @@ mission "QKBlade: Bearer of The Blade 5"
 	on complete
 		payment 500000
 		outfit "Quantum Snake Blade" -1
-		"reputation: Hai" ++
+		"Honor of the Blade Bearer" ++
+		"reputation: Hai" >?= 90
+		"reputation: Hai" += 10
 		conversation
 			`The council of elders is surprised and delighted that you managed to locate and return the stolen Quantum Key Blade to them.`
 			`	"To think that an Alpha got ahold of it! We must tighten the security on these artifacts," exclaims one elder.`
 			`	"Funding will be granted to the Museum of Galactic History for this purpose," replies another elder.`
 			`	"Once again, Captain <first> <last>, you have proven your friendship to the Hai," states a third elder.`
 			`	"A reward of <payment> for the return of the blade was planned, but we will just deposit that to your account."`
-	
+
 mission "QKBlade: Thief of Blades"
 	invisible
-	infiltrating
 	minor
 	source "Mirrorlake"
 	to offer
 		has "Sheragi Archaeology: Epilogue: done"
 		has "QKBlade: Bearer of The Blade 5: done"
 		has "outfit (flagship installed): Quantum Dragon Blade"
-		"Honor of the Blade Bearer" < 5
-		random < ( 20 - "Honor of the Blade Bearer" )
+		random < 20 - ( "Resisted Thief of Blades" * 4 )
 	on offer
 		conversation
 			scene "scene/scene-thunderstorm"
-			`It's late at night and a thunderstorm rages overhead. While watching the blades of lightning slice through the clouds, you recall that the other four Quantum Key Blades are secured by the Museum of Galactic History here on Mirrorlake. A malicious thought occurs to you. Do you want to steal them?`
+			`It's late at night and a thunderstorm rages overhead. While watching the blades of lightning slice through the clouds, you recall that the other four Quantum Key Blades are secured by the Museum of Galactic History here on Mirrorlake. A malicious thought occurs to you. Do you want to steal them? Doing so would probably irrepairably damage your relationship with the Hai...`
 			choice
 				`	(Uphold the trust the Hai have placed in you.)`
-					defer
+					to display
+						not "outfit (flagship installed): Midnight's Lost Orphan"
+					goto refuse
+				`	(Uphold the trust the Hai have placed in you.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto resist
 				`	(Betray the trust of the Hai and take the remaining blades.)`
 
 			scene "scene/scene-fourblades"
@@ -977,8 +1001,18 @@ mission "QKBlade: Thief of Blades"
 			`	Unfortunately, while Quantum phasing allows you to walk through walls, it does not render you invisible. The security cameras provide evidence that you are responsible for the theft and you are no longer welcomed by the Hai.`
 				launch
 
-	on defer
-		"Honor of the Blade Bearer" ++
+			label refuse
+			action
+				"Honor of the Blade Bearer" ++
+			scene "outfit/quantum dragon blade"
+			`	You banish these malicious thoughts from your mind and choose to uphold the trust the Hai have placed in you.`
+				decline
+
+			label resist
+			`	"Resisted Thief of Blades" ++
+			scene "outfit/midnight lost orphan"
+			`	With some effort, you banish these tempting thoughts from your mind and choose to uphold the trust the Hai have placed in you.`
+				defer
 
 	on accept
 		log `Quantum Key Blades are amazing weapons. After some consideration, I decided to betray the trust the Hai have placed in me and take the remaining Quantum Key Blades for my own use.`
@@ -987,47 +1021,61 @@ mission "QKBlade: Thief of Blades"
 		outfit "Quantum Turtle Blade" 1
 		outfit "Quantum Phoenix Blade" 1
 		clear "Honor of the Blade Bearer"
+		"reputation: Hai Merchant (Sympathizers)" <?= -1
 		"reputation: Hai" <?= 0
 		event "thief of blades"
 
+	npc evade
+		government "Hai"
+		personality waiting surveillance unconstrained
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Shield Beetle (Police)"
+				"Grasshopper (Surveillance)" 5
+				"Lightning Bug (Surveillance)" 3
+
 event "thief of blades"
-	planet Snowfeather
-		"required reputation" 100
-	planet Newhome
-		"required reputation" 100
-	planet Frostmark
-		"required reputation" 100
-	planet Greenbloom
-		"required reputation" 100
-	planet Darkwaste
-		"required reputation" 100
-	planet Greenwater
-		"required reputation" 100
-	planet Allhome
-		"required reputation" 100
-	planet Stonebreak
-		"required reputation" 100
-	planet Heartvalley
+	planet Cloudfire
 		"required reputation" 100
 	planet Darkmetal
 		"required reputation" 100
 	planet Dustmaker
 		"required reputation" 100
-	planet Makerplace
+	planet Everhope
 		"required reputation" 100
-	planet Icelake
-		"required reputation" 100
-	planet Cloudfire
-		"required reputation" 25
 	planet Farwater
+		"required reputation" 100
+	planet Frostmark
+		"required reputation" 100
+	planet Giverstone
+		"required reputation" 100
+	planet Greenbloom
+		"required reputation" 100
+	planet Greenview
+		"required reputation" 100
+	planet Greymoon
 		"required reputation" 100
 	planet Hai-home
 		"required reputation" 200
+	planet Heartvalley
+		"required reputation" 100
+	planet Makerplace
+		"required reputation" 100
 	planet Mirrorlake
-		"required reputation" 200
-	planet Giverstone
+		"required reputation" 100
+	planet Newhome
+		"required reputation" 100
+	planet Ochrescoop
 		"required reputation" 100
 	planet Skyfarm
+		"required reputation" 100
+	planet Snowfeather
+		"required reputation" 100
+	planet Stonebreak
+		"required reputation" 100
+	planet Swiftsong
 		"required reputation" 100
 
 
@@ -1053,14 +1101,13 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Hai)"
 		conversation
 			`"Captain <last>? Captain <last>!" A Hai dressed in the clothes worn by their diplomats rushes towards you. "Are you by chance headed for <system>? I need something to be delivered to <planet> by <date>."`
 			choice
-				`	(Accept the job.)`
-				`	(Decline the job.)`
+				`	"I can do that."`
+				`	"I'm not going there."`
 					decline
 			`	"Excellent! The Hai government is grateful for the cooperation of the Bearer of The Blade. Please be discreet about this." The Hai hands a data chip to you. "This is sensitive information. The chip is encrypted, but you should destroy it if it appears that you'll lose posession of it to hostile hands. Safe journey, captain."`
 				accept
 	on complete
 		"reputation: Hai" += 5
-		"Honor of the Blade Bearer" ++
 		dialog `The government of <planet> accepts the encrypted chip. Your service to the Hai is noted and appreciated.`
 
 
@@ -1087,16 +1134,15 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Unfettered)"
 		conversation
 			`"Captain <last>? Captain <last>!" A Hai dressed in the clothes worn by their diplomats rushes towards you. "Are you by chance headed for <system>? I need something to be delivered to <planet> by <date>." You notice that is a planet under Unfettered control.`
 			choice
-				`	(Accept the job.)`
-				`	(Decline the job.)`
+				`	"I can do that."`
+				`	"I'm not going there."`
 					decline
 			`	"Excellent! The Hai government is grateful for the cooperation of the Bearer of The Blade. Please be discreet about this." The Hai hands a data chip to you. "This is sensitive information. The chip is encrypted, but you should destroy it if it appears that you'll lose posession of it to hostile hands. Safe journey, captain."`
 				accept
 	on complete
 		"reputation: Hai" += 10
 		"reputation: Hai (Unfettered)" += 5
-		"Honor of the Blade Bearer" ++
-		dialog `The Unfettered leaders on <planet> accepts the encrypted chip. Your status as the Bearer of the Blade is noted with awe and perhaps a bit of contempt.`
+		dialog `The Unfettered leaders on <planet> accept the encrypted chip. Your status as the Bearer of the Blade is noted with awe and perhaps a bit of contempt.`
 
 
 
