@@ -324,6 +324,7 @@ mission "Midnight Sunracer Repair Solus"
 		outfit "Solus Token" 1
 	on stopover
 		outfit "Solus Token" -1
+		"racing position solus" >?= 0
 		"racing position solus" ++
 		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
 	on complete
@@ -346,6 +347,7 @@ mission "Midnight Sunracer Repair Geminae"
 		outfit "Geminae Token" 1
 	on stopover
 		outfit "Geminae Token" -1
+		"racing position geminae" >?= 0
 		"racing position geminae" ++
 		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
 	on complete
@@ -363,11 +365,12 @@ mission "Midnight Sunracer Repair Tertio"
 	cargo "maintenance equipment" 15
 	to offer
 		"flagship required crew" > 1
-		random < 30 - ( "racing position tertio" * 10 )
+		random < 30 - ( "racing position tertio" * 30 )
 	on offer
 		outfit "Tertio Token" 1
 	on stopover
 		outfit "Tertio Token" -1
+		"racing position tertio" >?= 0
 		"racing position tertio" ++
 		dialog "The technicians disembark from you ship and begin performing maintenance on the artificial satellite. This gives you some time to study the how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
 	on complete
@@ -936,6 +939,8 @@ mission "Midnight Sunracer Geminae 3"
 				"Flivver (Javelin)"
 			variant
 				"Sunracer (Javelin)"
+		on disable
+			"racing position geminae" >?= 0
 	npc
 		to spawn
 			has "disabled rogue"
@@ -1068,15 +1073,6 @@ mission "Midnight Sunracer Tertio 1"
 			dialog "You were disqualified from the Tertio race. Either you took too long or your flagship no longer meets the race requirements."
 			fail
 	npc
-		to spawn
-			not "tertio bounty"
-		government "Merchant"
-		personality launching staying uninterested forbearing
-		fleet
-			names "civilian"
-			variant
-				"Sunracer (Plasma Afterburner)"
-	npc
 		government "Republic"
 		personality launching staying uninterested forbearing
 		fleet
@@ -1103,13 +1099,26 @@ mission "Midnight Sunracer Tertio 1"
 				"Sunracer (Sunracer Afterburner)"
 	npc
 		to spawn
+			not "tertio bounty"
+		government "Merchant"
+		personality launching staying uninterested forbearing
+		fleet
+			names "civilian"
+			variant
+				"Sunracer (Plasma Afterburner)"
+	npc
+		to spawn
 			has "tertio bounty"
+			not "tertio bounty ward"
 		government "Bounty Hunter"
 		personality launching staying heroic disables
 		fleet
 			names "civilian"
 			variant
 				"Sunracer (Javelin)"
+		on disable
+			"racing position tertio" >?= 0
+			set "tertio bounty ward"
 	on fail
 		outfit "Solus Token" -1
 		"racing position tertio" --
@@ -1231,6 +1240,9 @@ mission "Midnight Sunracer Tertio 2"
 			names "civilian"
 			variant
 				"Sunracer (Javelin)"
+		on disable
+			"racing position tertio" >?= 0
+			set "tertio bounty ward"
 	on fail
 		outfit "Geminae Token" -1
 		"racing position tertio" --
@@ -1378,6 +1390,7 @@ mission "Midnight Sunracer Tertio 3"
 			variant
 				"Rogue Asteroid"
 		on destroy
+			clear "sunracer asteroid"
 			"racing position tertio" --
 	npc
 		to spawn
@@ -1385,6 +1398,7 @@ mission "Midnight Sunracer Tertio 3"
 			not "tertio bounty"
 		government "Pirate (Rivals)"
 		personality launching staying disables
+			confusion 20
 		fleet
 			names "civilian"
 			variant
@@ -1393,11 +1407,14 @@ mission "Midnight Sunracer Tertio 3"
 		to spawn
 			has "tertio bounty"
 		government "Bounty Hunter"
-		personality launching staying heroic disables
+		personality waiting staying heroic disables
 		fleet
 			names "civilian"
 			variant
 				"Sunracer (Javelin)"
+		on disable
+			"racing position tertio" >?= 0
+			set "tertio bounty ward"
 	npc
 		to spawn
 			has "disabled rogue"
@@ -1547,6 +1564,9 @@ mission "Midnight Sunracer Tertio 4"
 			names "civilian"
 			variant
 				"Sunracer (Javelin)"
+		on disable
+			"racing position tertio" >?= 0
+			set "tertio bounty ward"
 	on abort
 		clear "sunracer hunter"
 		"racing position tertio" --
@@ -1571,8 +1591,11 @@ mission "Midnight Sunracer Tertio 4"
 			label bountyloss
 			action
 				payment 8000
+				"racing position tertio" >?= -1
 			scene "outfit/license geminae"
 			`	You finished in last place. A consolation prize of 8,000 credits is awarded to you. During the race, more than a few racers took an agressive stance towards you, as if there's a bounty to keep you out of the top rankings...`
+			``
+			`	You might have to get your hands dirty. Disabling one of these aggressive racers might convince some of the others to back off in the future.`
 				accept
 			label cheat
 			branch cheatfail
@@ -1673,6 +1696,7 @@ mission "Midnight Sunracer Tertio 4"
 			action
 				payment 1024000
 				"racing position tertio" <?= 0
+				clear "tertio bounty ward"
 			scene "outfit/license tertio"
 			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. Keep up the good work!`
 				accept
@@ -1698,6 +1722,8 @@ mission "Midnight Sunracer Tertio 4"
 				"racing position tertio" <?= 4
 			scene "outfit/license tertio"
 			`	You finished in 1st place. A prize payment of 1,024,000 credits is awarded to you. You also receive a Tertio trophy! This is the highest honor a Sunracer can achieve. Congratulations!`
+
+
 
 mission "Midnight Sunracer Pirate Hack 1"
 	minor
@@ -2210,6 +2236,7 @@ mission "Midnight Sunracer Lionheart Sponsorship 2"
 				decline
 	on complete
 		give ship "Modified Flivver" "Accelerator"
+		"racing position tertio" >?= 6
 		conversation
 			scene "thumbnail/modified flivver-thumb"
 			`When you leave the <ship> there is a camera crew waiting for you. A Lionheart representative arrives with the Accelerator in tow. They make a big show of publicly registering it to you. The photo op ends with the representative wishing you good luck on your next race.`
