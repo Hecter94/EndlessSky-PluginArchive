@@ -207,12 +207,12 @@ data/map/planets.temp: tmp/outfitters.list.tmp tmp/shipyards.list.tmp | tmp
 	@printf "Updating RTF planet template...\n"
 	@cat $@ | sed "/^\tshipyard /d" | sed "/\toutfitter /d" | sed "/^]]$$/d" > tmp/tmp.tmp
 	@mv tmp/tmp.tmp $@
-	@echo '\toutfitter "Ruin-The-Fun Outfits"' >> $@
-	@echo '\toutfitter "Ruin-The-Fun Stat Outfits"' >> $@
-	@echo '\toutfitter "Ruin-The-Fun All Outfits"' >> $@
-	@echo '\tshipyard "Ruin-The-Fun All Base Ships"' >> $@
-	@echo '\tshipyard `modships`' >> $@
-	@echo '\toutfitter `modoutfits`' >> $@
+	@printf "\toutfitter \`Ruin-The-Fun Outfits\`\n" >> $@
+	@printf "\toutfitter \`Ruin-The-Fun Stat Outfits\`\n" >> $@
+	@printf "\toutfitter \`Ruin-The-Fun All Outfits\`\n" >> $@
+	@printf "\tshipyard \`Ruin-The-Fun All Base Ships\`\n" >> $@
+	@printf "\tshipyard \`modships\`\n" >> $@
+	@printf "\toutfitter \`modoutfits\`\n" >> $@
 	@cat tmp/outfitters.list.tmp | sed 's/^\(.*\)$$/\toutfitter `\1`/' >> $@
 	@cat tmp/shipyards.list.tmp | sed 's/^\(.*\)$$/\tshipyard `\1`/' >> $@
 	@echo "]]" >> $@
