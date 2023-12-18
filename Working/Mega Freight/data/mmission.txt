@@ -815,14 +815,14 @@ event "mgf: canaveral naval yard expansion 1 done"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard"
+				sprite "planet/mgf canaveral naval yard"
 				distance 150.24
 				period 27.3
 		add object "MGF Fake Mars"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v2"
+				sprite "planet/mgf canaveral naval yard v2"
 				distance 150.24
 				period 27.3
 	planet "Canaveral Naval Yard"
@@ -848,14 +848,14 @@ event "mgf: canaveral naval yard expansion 2 begin"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v2"
+				sprite "planet/mgf canaveral naval yard v2"
 				distance 150.24
 				period 27.3
 		add object "MGF Fake Mars"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v3 50"
+				sprite "planet/mgf canaveral naval yard v3 50"
 				distance 150.24
 				period 27.3
 	planet "Canaveral Naval Yard"
@@ -874,21 +874,22 @@ mission "MGF: Canaveral Naval Yard Expansion 2 Auto"
 		event "mgf: canaveral naval yard expansion 2 done"
 	on accept
 		fail
-
+#random note: putting things into scale and calculate, a full ring around Mars can house ~27k of the shipyard, each with two docks so 54k ship building docks when the ring is fully complete.
+#Or not, recalculated again and it seems like the number is wrong and the station is oversized by almost 10x.
 event "mgf: canaveral naval yard expansion 2 done"
 	system Sol
 		remove object "MGF Fake Mars"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v3 50"
+				sprite "planet/mgf canaveral naval yard v3 50"
 				distance 150.24
 				period 27.3
 		add object "MGF Fake Mars"
 			distance 1471.43
 			period 687.001
 			object "Canaveral Naval Yard"
-				sprite "planet/canaveral naval yard v3"
+				sprite "planet/mgf canaveral naval yard v3"
 				distance 150.24
 				period 27.3
 	planet "Canaveral Naval Yard"
@@ -944,6 +945,72 @@ event "mgf: ranseur development"
 			"Combat Drone" 20
 			"Cruiser (Mark II)" 2
 			"Combat Drone" 8
+
+mission "MGF: Canaveral Naval Yard Expansion 3 Trig"
+	landing
+	invisible
+	to offer
+		has "event: mgf: canaveral naval yard expansion 2 done"
+	on offer
+		event "mgf: canaveral naval yard expansion 3 begin" 360
+		event "mgf: canaveral naval yard expansion 3 auto" 2180
+	on accept
+		fail
+
+event "mgf: canaveral naval yard expansion 3 begin"
+	system Sol
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/mgf canaveral naval yard v3"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/mgf canaveral naval yard v4 50"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		attributes station "heavy industry"
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
+		description `The yard is currently undergoing another expansion, but in additon to more docks it's also getting additonal space for facilities to allow more in-house refining and manufacturing of materials. As well as space for installing additional defenses.`
+
+event "mgf: canaveral naval yard expansion 3 auto"
+
+mission "MGF: Canaveral Naval Yard Expansion 3 Auto"
+	landing
+	invisible
+	to offer
+		has "event: mgf: canaveral naval yard expansion 3 auto"
+	on offer
+		event "mgf: canaveral naval yard expansion 3 done"
+	on accept
+		fail
+
+event "mgf: canaveral naval yard expansion 3 done"
+	system Sol
+		add fleet "Human Miners" 1800
+		remove object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/mgf canaveral naval yard v4 50"
+				distance 150.24
+				period 27.3
+		add object "MGF Fake Mars"
+			distance 1471.43
+			period 687.001
+			object "Canaveral Naval Yard"
+				sprite "planet/mgf canaveral naval yard v4"
+				distance 150.24
+				period 27.3
+	planet "Canaveral Naval Yard"
+		attributes station "heavy industry"
+		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
+		description `In addition to constructing civilian and military ships the station also recently received an expansion which allow more of its material to be made within the station itself decreasing cost and dependency on other systems for its material.`
 
 #===========================Nordlin
 
@@ -1060,6 +1127,78 @@ event "mgf: mhl combat response fleet"
 	system Cebalrai
 		add fleet "Maryhal Logistic Defense" 17000
 
+mission "MGF: MHL Deal with Black Death"
+	landing
+	invisible
+	to offer
+		or
+			has "event: mgf: mhl combat response fleet"
+			has "event: MGF: NGK explosive go off (New China)"
+	on offer
+		event "mgf: mhl deal with black death"
+		event "mgf: black death chemvt use" 60
+		fail
+
+event "mgf: mhl deal with black death"
+	government "MGF: Black Death"
+		"attitude toward"
+			"MGF: Maryhal Logistic" 0
+			"MGF: Maryhal Defense" 0
+			"MGF: Bounty Hunter (AntiMHL)" -.01
+	government "MGF: Maryhal Defense"
+		"attitude toward"
+			"MGF: Black Death" 0
+	government "MGF: Maryhal Logistic"
+		"attitude toward"
+			"MGF: Black Death" 0
+
+event "mgf: black death chemvt use"
+	fleet "Small Black Death"
+		add variant 3
+			"Modified Argosy (Black Death)"
+			"Hawk (Black Death, Disruptor)"
+			"Hawk (Speedy)"
+		add variant 4
+			"Sparrow (Black Death)" 2
+			"Hawk (Black Death, Disruptor)"
+		add variant 3
+			"Hawk (Speedy)" 2
+			"Hawk (Black Death, Disruptor)"
+		add variant 2
+			"Quicksilver (Black Death)" 2
+			"Hawk (Black Death, Disruptor)"
+
+	fleet "Large Black Death"
+		add variant 4
+			"Aplomado (Black Death, Disruptor)"
+			"Hawk (Speedy)"
+			"Modified Argosy (Black Death)"
+		add variant 4
+			"Aplomado (Black Death)"
+			"Osprey (Black Death, Disruptor)"
+			"Osprey (Black Death)"
+		add variant 4
+			"Aplomado (Black Death)"
+			"Aplomado (Black Death, Disruptor)"
+		add variant 2
+			"CSE-6 Steward" #6
+			"Dagger" 4
+			"Lance" 2
+			"Osprey (Black Death, Disruptor)"
+		add variant 1
+			"CSE-6 Steward" #6
+			"Dagger" 2
+			"Dagger (Black Death)" 2
+			"Lance" 2
+			"Osprey (Black Death, Disruptor)"
+		add variant 1
+			"CS-24 Garrison"
+			"Lance" 5
+			"AGT-31 Xencar" 5
+			"Dagger (Black Death)" 8
+			"Aplomado (Black Death, Disruptor)"
+			"Osprey (Black Death, Disruptor)"
+
 mission "MGF: Navy Respond to AntiMHL Bounty Hunter"
 	landing
 	invisible
@@ -1165,6 +1304,275 @@ event "mgf: reduced antimhl activity"
 	system Cebalrai
 		add fleet "Large Bounty Hunters (AntiMHL)" 50800
 
+mission "MGF: Reduced Black Death Activity"
+	landing
+	invisible
+	to offer
+		has "event: mgf: navy attack antimhl bountyhunter 2"
+	on offer
+		event "mgf: reduced black death activity" 45
+		fail
+
+event "mgf: reduced black death activity"
+	system Acrux
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 32600
+	system Albaldah
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 32300
+	system Albireo
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 32900
+	system Aldhibain
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 22900
+	system Algorel
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 32400
+	system Alioth
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 20600
+	system Alkaid
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 30200
+	system Alnasl
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 22800
+	system Alniyat
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 26800
+	system "Alpha Arae"
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 22100
+	system Alphecca
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 26700
+	system Antares
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 22100
+	system Arcturus
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 38000
+	system Ascella
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 45800
+	system Atria
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 20200
+	system "Beta Lupi"
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 24400
+	system Boral
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 28000
+	system Cebalrai
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 45600
+	system "Cor Caroli"
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 45800
+	system Dabih
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 40200
+	system "Delta Sagittarii"
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 34000
+	system "Delta Velorum"
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 49800
+	system Dschubba
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 24800
+	system Eber
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 28000
+	system Eltanin
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 24400
+	system Fala
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 53000
+	system Gacrux
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 30100
+	system "Gamma Corvi"
+		add fleet "Small Black Death" 25500
+		add fleet "Large Black Death" 58300
+	system Girtab
+		add fleet "Small Black Death" 14600
+		add fleet "Large Black Death" 24700
+	system Graffias
+		add fleet "Small Black Death" 13500
+		add fleet "Large Black Death" 20000
+	system Hadar
+		add fleet "Small Black Death" 15700
+		add fleet "Large Black Death" 40000
+	system Han
+		add fleet "Small Black Death" 13800
+		add fleet "Large Black Death" 26900
+	system Hintar
+		add fleet "Small Black Death" 15500
+		add fleet "Large Black Death" 37800
+	system Holeb
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 21400
+	system Ildaria
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 23800
+	system Ipsing
+		add fleet "Small Black Death" 18600
+		add fleet "Large Black Death" 53800
+	system Izar
+		add fleet "Small Black Death" 18700
+		add fleet "Large Black Death" 42100
+	system "Kappa Centauri"
+		add fleet "Small Black Death" 13600
+		add fleet "Large Black Death" 24700
+	system "Kaus Australis"
+		add fleet "Small Black Death" 18900
+		add fleet "Large Black Death" 52100
+	system "Kaus Borealis"
+		add fleet "Small Black Death" 15800
+		add fleet "Large Black Death" 36200
+	system Kochab
+		add fleet "Small Black Death" 18500
+		add fleet "Large Black Death" 47600
+	system Kornephoros
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 23000
+	system Kraz
+		add fleet "Small Black Death" 18500
+		add fleet "Large Black Death" 50300
+	system Lesath
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 10900
+	system Limen
+		add fleet "Small Black Death" 50700
+		add fleet "Large Black Death" 80300
+	system Lolami
+		add fleet "Small Black Death" 55500
+		add fleet "Large Black Death" 80500
+	system Lurata
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 24900
+	system Men
+		add fleet "Small Black Death" 7600
+		add fleet "Large Black Death" 18300
+	system Menkent
+		add fleet "Small Black Death" 18600
+		add fleet "Large Black Death" 58900
+	system Mimosa
+		add fleet "Small Black Death" 29000
+		add fleet "Large Black Death" 49600
+	system Minkar
+		add fleet "Small Black Death" 29000
+		add fleet "Large Black Death" 49600
+	system Mizar
+		add fleet "Small Black Death" 15500
+		add fleet "Large Black Death" 38500
+	system Mora
+		add fleet "Small Black Death" 45500
+		add fleet "Large Black Death" 53600
+	system Muhlifain
+		add fleet "Small Black Death" 14500
+		add fleet "Large Black Death" 29700
+	system Naper
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 25700
+	system Nunki
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 21600
+	system Orbona
+		add fleet "Small Black Death" 40600
+		add fleet "Large Black Death" 48700
+	system Orvala
+		add fleet "Small Black Death" 41600
+		add fleet "Large Black Death" 47600
+	system Peacock
+		add fleet "Small Black Death" 25800
+		add fleet "Large Black Death" 44500
+	system Phecda
+		add fleet "Small Black Death" 25500
+		add fleet "Large Black Death" 47100
+	system Pherkad
+		add fleet "Small Black Death" 14900
+		add fleet "Large Black Death" 22500
+	system Rasalhague
+		add fleet "Small Black Death" 32800
+		add fleet "Large Black Death" 49000
+	system Rastaban
+		add fleet "Small Black Death" 14800
+		add fleet "Large Black Death" 26800
+	system Rutilicus
+		add fleet "Small Black Death" 14700
+		add fleet "Large Black Death" 24800
+	system Sabik
+		add fleet "Small Black Death" 17600
+		add fleet "Large Black Death" 30000
+	system Sadalmelik
+		add fleet "Small Black Death" 17900
+		add fleet "Large Black Death" 34400
+	system Sadalsuud
+		add fleet "Small Black Death" 17600
+		add fleet "Large Black Death" 39300
+	system Sadr
+		add fleet "Small Black Death" 17600
+		add fleet "Large Black Death" 18500
+	system Sargas
+		add fleet "Small Black Death" 10700
+		add fleet "Large Black Death" 20300
+	system Sarin
+		add fleet "Small Black Death" 17800
+		add fleet "Large Black Death" 38400
+	system Seginus
+		add fleet "Small Black Death" 17700
+		add fleet "Large Black Death" 29700
+	system Shaula
+		add fleet "Small Black Death" 7700
+		add fleet "Large Black Death" 12300
+	system Spica
+		add fleet "Small Black Death" 17500
+		add fleet "Large Black Death" 26300
+	system Tais
+		add fleet "Small Black Death" 17700
+		add fleet "Large Black Death" 23800
+	system "Tania Australis"
+		add fleet "Small Black Death" 17800
+		add fleet "Large Black Death" 24200
+	system Tarazed
+		add fleet "Small Black Death" 17800
+		add fleet "Large Black Death" 33500
+	system Terminus
+		add fleet "Small Black Death" 37500
+		add fleet "Large Black Death" 53000
+	system Turais
+		add fleet "Small Black Death" 17700
+		add fleet "Large Black Death" 34700
+	system Umbral
+		add fleet "Small Black Death" 37700
+		add fleet "Large Black Death" 53200
+	system Unukalhai
+		add fleet "Small Black Death" 17900
+		add fleet "Large Black Death" 38500
+	system Vindemiatrix
+		add fleet "Small Black Death" 17500
+		add fleet "Large Black Death" 32000
+	system Wei
+		add fleet "Small Black Death" 17600
+		add fleet "Large Black Death" 20100
+	system "Yed Prior"
+		add fleet "Small Black Death" 17800
+		add fleet "Large Black Death" 24700
+	system "Zeta Aquilae"
+		add fleet "Small Black Death" 17600
+		add fleet "Large Black Death" 20100
+	system "Zeta Centauri"
+		add fleet "Small Black Death" 17900
+		add fleet "Large Black Death" 29100
+	system Zubenelgenubi
+		add fleet "Small Black Death" 17800
+		add fleet "Large Black Death" 38700
+
 mission "MGF: Reduced Navy CounterBH Task Force"
 	landing
 	invisible
@@ -1255,8 +1663,9 @@ mission "MGF: MHL-Marstel Exclusive Unlock"
 		or
 			"MGF: MHL destory BH job done" >= 3
 			and
-				"MGF: MHL scouting job done" >= 24
+				"MGF: MHL scouting job done" >= 12
 				"reputation: MGF: Bounty Hunter (AntiMHL)" < 0
+			"mgf: assisted mhl" >= 10
 		"reputation: MGF: Maryhal Logistic" >= 200
 	on offer
 		event "mgf: marstel exclusive unlock"
@@ -1275,6 +1684,67 @@ event "mgf: marstel exclusive unlock"
 #===========================NGK
 #Random Todo: mission to buy alien ship from player which can accelerate development of certain on-going projects or even start a new ship development. Would also count towards shipyard unlock
 
+mission "MGF: NGK Microbot Development Begin trigger"
+	landing
+	invisible
+	to offer
+		"MGF: NGK sold system core" >= 8
+	on offer
+		event "mgf: ngk microbot development done" 4368 #12 yrs
+		fail
+
+mission "MGF: NGK Microbot Development Accelerated 1"
+	landing
+	invisible
+	to offer
+		"MGF: NGK sold system core" >= 20
+	on offer
+		event "mgf: ngk microbot development done" 3640 #10 yrs
+		fail
+
+mission "MGF: NGK Microbot Development Accelerated 2"
+	landing
+	invisible
+	to offer
+		"MGF: NGK sold system core" >= 44
+	on offer
+		event "mgf: ngk microbot development done" 2912 #8 yrs
+		fail
+
+mission "MGF: NGK Microbot Development Begin Auto Trig"
+	landing
+	invisible
+	to offer
+		#Where they begin deploying special fleet to patrol Korath boarder.
+		has "event: mgf: early kaga deployed"
+	on offer
+		event "mgf: ngk microbot development done" 2184 #6 yrs
+		fail
+
+#Todo
+#New Outfit used by NGK and occasionally Syndicate Security.
+#New job from pirate to steal said stuffs.
+#Boost amount of industrial jobs offered by NGK and Syndicate
+event "mgf: ngk microbot development done"
+	outfitter "MJK Heavy Industries Advanced Exclusive"
+		"H-466e Repair Core"
+		"H-688e Repair Core"
+
+mission "MGF: NGK Microbot Development Done"
+	landing
+	invisible
+	to offer
+		has "event: mgf: ngk microbot development done"
+	on offer
+		event "mgf: ngk microbot refinement" 1820 #5 yrs
+		fail
+
+event "mgf: ngk microbot refinement"
+	outfitter "MJK Heavy Industries Advanced Exclusive"
+		"H-077 Repair Core"
+		"H-154 Repair Core"
+		"H-308 Repair Core"
+
 mission "MGF: NGK Exclusive Shipyard Unlock"
 	landing
 	name `MJK Exlusive Warehouse`
@@ -1289,6 +1759,7 @@ mission "MGF: NGK Exclusive Shipyard Unlock"
 			"MGF: NGK saboteur arrest job done" >= 12
 			"MGF: assisted NGK/MJK" >= 12
 		"reputation: MGF: NGK Security" >= 500
+		not "MGF: explosive delivery snitch"
 	on offer
 		event "mgf: ngk exclusive unlock"
 		conversation
@@ -1304,7 +1775,10 @@ mission `MGF: Reisen Development Trigger`
 	invisible
 	landing
 	to offer
-		has "main plot completed"
+		or
+			has "main plot completed"
+			#date 23 01 3020
+			"days since epoch" > 1100429 + 2257
 	on offer
 		event "mgf: experimental reisen deployed" 1800
 		event "mgf: early reisen deployed" 2520 #~7 years
@@ -2505,6 +2979,36 @@ event "mgf: ankulah fw"
 		government "Free Worlds"
 	planet "Ankulah Ship Breaking Station"
 		government "Free Worlds"
+
+mission "MGF: Ankulah FW Swizzle"
+	landing
+	invisible
+	to offer
+		has "event: mgf: ankulah fw"
+	on offer
+		event "mgf: ankulah fw swizzle"
+		fail
+
+event "mgf: ankulah fw swizzle"
+	government "MGF: Ankulah Crew"
+		"display name" "Ankulah"
+		swizzle 3
+		color "governments: Free"
+
+mission "MGF: Tarazed FW Swizzle"
+	landing
+	invisible
+	to offer
+		has "event: fw tarazed joins"
+	on offer
+		event "mgf: tarazed fw swizzle"
+		fail
+
+event "mgf: tarazed fw swizzle"
+	government "MGF: Tarazed Corporation"
+		"display name" "Tarazed Corp."
+		swizzle 3
+		color "governments: Free"
 
 mission "MGF: Ankulah Patrol"
 	landing

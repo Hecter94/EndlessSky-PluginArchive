@@ -601,6 +601,44 @@ mission "MGF CNY: Escort (Huge 1, Dangerous Origin)"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
+#=========================Navy
+
+mission "MGF: Navy Targeted Surveillance"
+	name "Scan Target Ship"
+	description "The <npc>, a ship owned by NGK, is about to enter this system. Intercept it and make detailed scans of its cargo for Navy Intelligence on <destination>; proceed there before <date> for <payment> after retrieving the data."
+	job
+	deadline 1 7
+	repeat
+	to offer
+		random < 10
+		"reputation: MGF: NGK Hauling" >= 1
+		"reputation: MGF: NGK Security" >= 1
+		"reputation: MGF: Republic" >= 1
+	source
+		government Republic Neutral
+	destination
+		government Republic
+		attributes military
+		distance 1 5
+	npc "scan cargo"
+		government "MGF: NGK Hauling"
+		personality fleeing uninterested entering target
+		fleet
+			names "ngk name"
+			variant 4
+				"Nasprite (NGK Secure Cargo)"
+			variant
+				"E-VC14 Zuiho (Secure Cargo)"
+				"Xencar (NGK)" 6
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		"reputation: MGF: NGK Security" -= 1
+		"reputation: MGF: NGK Security" >?= 0
+		"reputation: MGF: Republic" += 1
+		"mgf: assisted navy" += 1
+		dialog `You transmit your scans and receive you payment of <payment>. The Navy officer quickly thanks you and immediately cut the comms.`
+		payment 92000
+
 #===========================Nordlin Navy Yard
 
 mission "MGF NNY: Large Construction Supplies [0]"
@@ -727,6 +765,164 @@ mission "MGF GGS: Mega Construction Supplies [0]"
 		payment 3200000
 		"mgf: gs1 construction assist" += 3
 		dialog phrase "generic cargo delivery payment"
+
+#=====================Vinci
+#export, vacuum research, station research, build station.
+
+mission "MGF: CPU Export"
+	name "Export to <planet>"
+	job
+	repeat
+	deadline 30
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "CPU" 30 50
+	to offer
+		random < 30
+		#Probably want something decently tough to carry such valuable cargo, not just any Star Barges.
+		or
+			"flagship attribute: hull" > 4000 * 1000
+			"flagship attribute: shields" > 3000 * 1000 # * 1000 as values returned are x1000 of the data, see ES wiki for info.
+	source
+		attributes "electronics export" "processor export"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+	destination
+		distance 3 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes "medium factory" "large factory"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 50000 2500
+		dialog phrase "generic cargo delivery payment"
+
+#Research mission requiring heavy ship as stable platform
+mission "MGF: Vinci Vacuum Research"
+	name "Research Project"
+	job
+	repeat
+	deadline 30
+	description "Transport <cargo> and <bunks> of researchers to <waypoint> and back by <date>. Payment is <payment>. To accept you need a ship heavier than 2000 tons for stability."
+	cargo "Research Instruments" 100
+	passengers 12
+	to offer
+		random < 30
+		"MGF: CPU Export: done" >= 3
+		"armament deterrence" > 5
+		not "mgf: vinci station research phase 1 done"
+	to accept
+		"flagship attribute: mass" > 2000 * 1000
+	source
+		attributes "electronics export" "processor export"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Vinci"
+	waypoint
+		distance 2 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 150000 2700
+		dialog phrase "generic cargo delivery payment"
+
+mission "MGF: Vinci Station Research Phase 1"
+	landing
+	invisible
+	to offer
+		or
+			"MGF: Vinci Vacuum Research: done" >= 3
+			"year" >= 3020
+	on offer
+		"mgf: vinci station research phase 1 done" = 1
+		fail
+
+mission "MGF: Vinci Station Tour"
+	name "Researcher transport to <planet>"
+	job
+	description "Bring <bunks> researchers to <stopovers> for a meeting and back. Payment is <payment>."
+	passengers 3
+	source
+		attributes "electronics export" "processor export"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		planet "Vinci"
+	stopover "EB-1A Forge Station"
+	to offer
+		not "mgf: vinci station research phase 2 done"
+		"armament deterrence" > 4
+	on visit
+		dialog phrase "generic passenger on visit"
+	on stopover
+		dialog
+			`You docked at the station and shortly after the researchers left your ship to go to their meeting. They return after a few hours and repare to leave. You hear them talking about space and how very few industries ever consider the benefits of it and even fewer took advantage of it, as if most of humanity collectively forget about possible use of space stations beyond refineries and shipyards for a good portion of the millennium.`
+	on complete
+		payment
+		payment 8000
+		event "mgf: vinci hoerni station construction begin" 360
+		dialog phrase "generic passenger dropoff payment"
+
+mission "MGF: Vinci Station Research Phase 2"
+	landing
+	invisible
+	to offer
+		"MGF: Vinci Station Tour: done" <= 0
+		"year" >= 3021
+	on offer
+		event "mgf: vinci hoerni station construction begin" 360
+		fail
+
+planet "MGF: Fake Vinci"
+	attributes "requires: sdfksdfo"
+	description `If you can land here its a bug.`
+#TODO
+planet "Nt24 Hoerni Station"
+	attributes station research #add export later.
+	landscape "land/station23"
+	description `A large station owned by Selcon Corporation for research and manufacturing electronic chips especially various kind of processors taking various advantage of micro-gravitiy environment to decrease defects resulting in higher quality products in higher quantity.`
+	description `Currently the facilities on the station are being tested and with limited production mostly for research purpose. Though, it is estimated that once the station goes into full production it can rival multiple planetary fabrication plants combined.`
+	spaceport `Like most other part on the station, the port is very clean and painted in white. There's very few basic ameneties available and most other area are off-limits for visitors.`
+
+event "mgf: vinci hoerni station construction begin"
+	system Miaplacidus
+		add object "MGF: Fake Vinci"
+			distance 274.75
+			period 85.8737
+			object "Nt24 Hoerni Station"
+				sprite "station/mgf hoerni station 50"
+				offset 180
+				distance 167
+				period 20.3008
+
+mission "MGF: Vinci Station Construction Complete"
+	landing
+	invisible
+	to offer
+		has "event: mgf: vinci hoerni station construction begin"
+	on offer
+		event "mgf: vinci hoerni station construction done" 360
+		fail
+
+event "mgf: vinci hoerni station construction done"
+	system Miaplacidus
+		remove object "MGF: Fake Vinci"
+			distance 274.75
+			period 85.8737
+			object "Nt24 Hoerni Station"
+				sprite "station/mgf hoerni station 50"
+				offset 180
+				distance 167
+				period 20.3008
+		add object "MGF: Fake Vinci"
+			distance 274.75
+			period 85.8737
+			object "Nt24 Hoerni Station"
+				sprite "station/mgf hoerni station"
+				offset 180
+				distance 167
+				period 20.3008
+	planet "Nt24 Hoerni Station"
+		attributes station research "electronics export" "processor export"
+		landscape "land/station23"
+		description `A large station owned by Selcon Corporation for research and manufacturing electronic chips especially various kind of processors taking various advantage of micro-gravitiy environment to decrease defects resulting in higher quality products in higher quantity.`
+		description `With the testing phase completed the station manufacturing is running at full capacity completely overtaking.`
+		spaceport `Like most other part on the station, the port is very clean and painted in white. There's very few basic ameneties available and most other area are off-limits for visitors.`
 
 #========================Ourea Station
 
@@ -1309,6 +1505,7 @@ trade
 			"kovar"
 			"chromel"
 			"silicon carbide"
+			"covetics"
 			#usable byproducts excl. ones that already have their own export.
 	commodity "Multi-Metal Smelter Solid Byproduct"
 			"magnesium chloride"
@@ -4532,7 +4729,205 @@ mission "MGF: NGK Sketchy Passenger [0]"
 		payment 2000 180
 		dialog phrase "mgf: ngk sketchy passenger done"
 
-		
+mission "MGF: NGK Transport executive to <planet>"
+	job
+	repeat
+	deadline
+	description "An executive needs immediate yet comfortable and well defended transportation to attend an urgent meeting on <destination> by <date>. Payment is <payment>."
+	passengers 1
+	to offer
+		random < 20
+		"combat rating" > 500
+		"armament detterence" > 3
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "reputation: MGF: NGK Security" "Syndicate"
+	destination
+		distance 3 15
+		government "reputation: MGF: NGK Security" "Syndicate"
+		attributes "paradise" "rich" "core" "near earth" "ngk base"
+
+	npc
+		to spawn
+			random < 30
+		government "Bounty Hunter"
+		system
+			distance 0 1
+		personality
+			confusion 20
+			hunting plunders harvests
+		fleet "Bounty Hunters"
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 7000 780
+		dialog "The executive rushes off your ship without even a goodbye, fancy briefcase in hand. You collect your payment of <payment>."
+
+mission "MGF: NGK Sell Alien Tech (Systems Core Tiny)"
+	name "Sell Alien Outfit"
+	description `MJK Heavy Industries is interested in purchasing your alien outfit, a Systems Core (Tiny) for <payment>.`
+	job
+	repeat 28
+	deadline 1
+	to offer
+		random < 50
+		or
+			has "outfit (installed): Systems Core (Tiny)"
+			has "outfit (cargo): Systems Core (Tiny)"
+	source
+		government "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes outfitter
+	on accept
+		outfit "Systems Core (Tiny)" -1
+		payment 931500 #(1.5x)
+		"MGF: NGK sold system core" += 1
+		"MGF: assisted NGK/MJK" += 1
+		"reputation: MGF: NGK Hauling" += 1
+		"reputation: MGF: NGK Security" += 1
+		fail
+
+mission "MGF: NGK Sell Alien Tech (Systems Core Small)"
+	name "Sell Alien Outfit"
+	description `MJK Heavy Industries is interested in purchasing your alien outfit, a Systems Core (Small) for <payment>.`
+	job
+	repeat 18
+	deadline 1
+	to offer
+		random < 50
+		or
+			has "outfit (installed): Systems Core (Small)"
+			has "outfit (cargo): Systems Core (Small)"
+	source
+		government "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes outfitter
+	on accept
+		outfit "Systems Core (Small)" -1
+		payment 2178000 #(1.5x)
+		"MGF: NGK sold system core" += 2
+		"MGF: assisted NGK/MJK" += 2
+		"reputation: MGF: NGK Hauling" += 2
+		"reputation: MGF: NGK Security" += 2
+		fail
+
+mission "MGF: NGK Sell Alien Tech (Systems Core Medium)"
+	name "Sell Alien Outfit"
+	description `MJK Heavy Industries is interested in purchasing your alien outfit, a Systems Core (Medium) for <payment>.`
+	job
+	repeat 12
+	deadline 1
+	to offer
+		random < 50
+		or
+			has "outfit (installed): Systems Core (Medium)"
+			has "outfit (cargo): Systems Core (Medium)"
+	source
+		government "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes outfitter
+	on accept
+		outfit "Systems Core (Medium)" -1
+		payment 5445000 #(1.5x)
+		"MGF: NGK sold system core" += 3
+		"MGF: assisted NGK/MJK" += 3
+		"reputation: MGF: NGK Hauling" += 3
+		"reputation: MGF: NGK Security" += 3
+		fail
+
+mission "MGF: NGK Sell Alien Tech (Systems Core Large)"
+	name "Sell Alien Outfit"
+	description `MJK Heavy Industries is interested in purchasing your alien outfit, a Systems Core (Large) for <payment>.`
+	job
+	repeat 10
+	deadline 1
+	to offer
+		random < 50
+		or
+			has "outfit (installed): Systems Core (Large)"
+			has "outfit (cargo): Systems Core (Large)"
+	source
+		government "MGF: NGK Hauling" "MGF: NGK Security"
+		attributes outfitter
+	on accept
+		outfit "Systems Core (Large)" -1
+		payment 13612500 #(1.5x)
+		"MGF: NGK sold system core" += 4
+		"MGF: assisted NGK/MJK" += 4
+		"reputation: MGF: NGK Hauling" += 4
+		"reputation: MGF: NGK Security" += 4
+		fail
+
+mission "MGF: NGK Explosive Delivery (New China)"
+	job
+	deadline
+	name "Package to <planet>"
+	description `Deliver <tons> package with unknown content to a specific coordinate at <destination> by <deadline>. Payment is <payment>.`
+	cargo "unknown package" 12
+	to offer
+		random < 10
+		not "MGF: NGK explosive fuse set (New China)"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "Pirate"
+	destination "New China"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 88000 500
+		set "MGF: NGK explosive fuse set (New China)"
+		event "MGF: NGK explosive go off (New China)" 30
+		dialog 
+			`You dropped off the package at the specified coordinate, mid day and seemingly in the middle of nowhere. After confirming the delivery <payment> is transferred into your account.`
+
+event "MGF: NGK explosive go off (New China)"
+
+event "MGF: NGK explosive go off auto begin (New China)"
+	date 16 01 3019
+	set "MGF: NGK explosive fuse set (New China)"
+
+mission "MGF: NGK Explosive Auto (New China)"
+	landing
+	invisible
+	to offer
+		or
+			not "chosen sides"
+			has "main plot complete"
+		not "MGF: NGK explosive fuse set (New China)"
+		has "event: MGF: NGK explosive go off auto begin (New China)"
+	on offer
+		set "MGF: NGK explosive fuse set (New China)"
+		event "MGF: NGK explosive go off (New China)" 30
+
+mission "MGF: NGK explosive go off auto begin (New China) overdue"
+	landing
+	invisible
+	to offer
+		not "event: MGF: NGK explosive go off auto begin (New China)"
+		#date 16 01 3019
+		"days since epoch" > 1100429 + 1886
+	on offer
+		event "MGF: NGK explosive go off auto begin (New China)"
+		fail
+
+mission "MGF: NGK Explosive Delivery News (New China)"
+	minor
+	invisible
+	source
+		near Sol 0 200
+	to offer
+		has "event: MGF: NGK explosive go off (New China)"
+		has "MGF: NGK Explosive Delivery (New China): done"
+	on offer
+		conversation
+			`As you're going on with your day you glance at the news screen and notice it reporting about an explosion on New China right next to a Maryhaul Logistic's office. Several dead, more injured, officials have no clue on the cause yet. Though the location is entirely different, the estimated yield is unnervingly close to the package mass of that sketchy job you took about a month ago.`
+			choice
+				`	(Contact a police about info you have.)`
+				`	(Don't get involved.)`
+					decline
+			action #blocked off from NGK, instead might potentially get Republic/Navy jobs.
+				set "MGF: explosive delivery snitch"
+			`	You contact the nearest police station and gave them the information about a sketchy delivery job you did a while ago. They thank you for the information and kept your contact for future question if required.`
+				decline
+	
 #===================================MHL
 
 mission "MGF: MHL Scout Route (Rim Route)"
@@ -4543,7 +4938,7 @@ mission "MGF: MHL Scout Route (Rim Route)"
 	deadline
 	to offer
 		random < 20
-		"reputation: Maryhaul Logistic" >= 3
+		"reputation: Maryhaul Logistic" >= 2
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "dirt belt" rim "south" "near earth"
@@ -4587,7 +4982,7 @@ mission "MGF: MHL Scout Route (Tarazed Route)"
 	deadline
 	to offer
 		random < 20
-		"reputation: Maryhaul Logistic" >= 3
+		"reputation: Maryhaul Logistic" >= 2
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "dirt belt" rim "south" "near earth"
@@ -4653,7 +5048,7 @@ mission "MGF: MHL Destory Bounty Hunter (Wei)"
 		system Wei
 		personality
 			confusion 20
-			hunting staying
+			hunting staying target
 		fleet "Large Bounty Hunters (AntiMHL)" 1
 		dialog `mgf: mhl destory bountyhunter complete`
 	
@@ -4695,7 +5090,7 @@ mission "MGF: MHL Destory Bounty Hunter (Kaus Australis)"
 		system "Kaus Australis"
 		personality
 			confusion 20
-			hunting staying
+			hunting staying target
 		fleet "Large Bounty Hunters (AntiMHL)" 1
 		dialog `mgf: mhl destory bountyhunter complete`
 	
@@ -4708,6 +5103,262 @@ mission "MGF: MHL Destory Bounty Hunter (Kaus Australis)"
 		"reputation: Maryhaul Logistic" += 3
 		"MGF: MHL destory BH job done" += 1
 		payment 750000
+
+mission "MGF: MHL Corporate Espionage"
+	name "Corporate Espionage"
+	description "The <npc>, a vessel owned by NGK, is about to enter this system. Intercept it and make detailed scans of its cargo for researchers on <destination>; proceed there before <date> for <payment> after retrieving the data."
+	job
+	deadline 1 7
+	repeat
+	to offer
+		random < 10
+		"reputation: MGF: NGK Hauling" >= 1
+		"reputation: MGF: NGK Security" >= 1
+	source
+		government Republic Neutral
+	destination
+		government Republic "MGF: Maryhal Defense"
+		attributes urban
+		distance 1 5
+	npc "scan cargo"
+		government "MGF: NGK Hauling"
+		personality fleeing uninterested entering target
+		fleet
+			names "ngk name"
+			variant 4
+				"Nasprite (NGK Secure Cargo)"
+			variant
+				"E-VC14 Zuiho (Secure Cargo)"
+				"Xencar (NGK)" 6
+		dialog "You manage to make the requested scans of the <npc>'s cargo. Time to head to <planet>."
+	on complete
+		"reputation: MGF: NGK Security" -= 1
+		"reputation: MGF: NGK Security" >?= 0
+		"mgf: assisted mhl" += 1
+		dialog `You transmit your scans and receive a hearty congratulations, as well as <payment>. "This will save us months!" you hear someone say in the background as you close the audio link.`
+		payment 85000
+
+phrase "MGF: MHL agent on complete"
+	word
+		"Upon arrival you were directed to land at seemingly random location. The agent quickly depart from your ship and <payment> is soon transferred into your account."
+
+phrase "MGF: MHL agent on complete station"
+	word
+		"Upon docking with the station the agent hands you <payment> and left your ship."
+
+mission "MGF: MHL Saboteur Transport (Not Station)"
+	job
+	repeat
+	name "Transport to <planet>"
+	description "A special agent affiliated with Maryhal Logistic is looking for transport to <destination> by <date>. Payment will be <payment>."
+	passengers 1
+	deadline
+	clearance
+	to offer
+		random < 10
+		"reputation: Maryhaul Logistic" >= 190
+		"combat rating" > 500
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes urban
+	destination
+		government "Republic" "Syndicate" "Neutral" "Independent" "MGF: NGK Security" "MGF: NGK Hauling"
+		attributes urban shipyard
+		not attributes station
+		distance 3 7
+	npc
+		to spawn
+			random < 35
+		government "Bounty Hunter"
+		personality hunting staying
+		system destination
+		fleet "Hired Guns"
+	npc
+		to spawn
+			random < 10
+		government "Bounty Hunter"
+		personality hunting
+		system
+			near destination 2
+		fleet "Hired Guns"
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 80000
+		"reputation: Maryhaul Logistic" += 2
+		"MGF: MHL Agent transport done" += 1
+		dialog phrase "MGF: MHL agent on complete"
+
+mission "MGF: MHL Saboteur Transport (Station)"
+	job
+	repeat
+	name "Transport to <planet>"
+	description "A special agent affiliated with Maryhal Logistic is looking for transport to <destination> by <date>. Payment will be <payment>."
+	passengers 1
+	deadline
+	to offer
+		random < 5
+		"reputation: Maryhaul Logistic" >= 190
+		"combat rating" > 500
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes urban
+	destination
+		government "Republic" "Syndicate" "Neutral" "Independent" "MGF: NGK Security" "MGF: NGK Hauling"
+		attributes shipyard
+		attributes station
+		distance 3 7
+	npc
+		to spawn
+			random < 30
+		government "Bounty Hunter"
+		personality hunting entering
+		fleet "Hired Guns"
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 120000
+		"reputation: Maryhaul Logistic" += 2
+		"MGF: MHL Agent transport done" += 1
+		dialog phrase "MGF: MHL agent on complete station"
+
+phrase "MGF: MHL agent extract pickup"
+	word
+		"You pickup your passenger at agreed location away from the spaceport. After your passenger is on board you're asked to depart as soon as possible."
+
+mission "MGF: MHL Saboteur Extraction (Not Station)"
+	job
+	repeat
+	name "Transport to <planet>"
+	description "A special agent affiliated with Maryhal Logistic is looking for quick transport off <origin> to <destination>. Payment will be <payment>. This may not be liked by rivialling corporation."
+	passengers 1
+	deadline
+	to offer
+		random < 10
+		"reputation: Maryhaul Logistic" >= 190
+		"combat rating" > 500
+	source
+		government "Republic" "Syndicate" "Neutral" "Independent" "MGF: NGK Security" "MGF: NGK Hauling"
+		attributes urban
+		not attributes station
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" 
+		attributes urban
+		distance 3 7
+	npc
+		to spawn
+			random < 40
+		government "Bounty Hunter"
+		personality hunting
+		fleet "Hired Guns"
+	on accept
+		dialog phrase "MGF: MHL agent extract pickup"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 220000
+		"reputation: Maryhaul Logistic" += 2
+		"reputation: NGK Security" -= 1
+		"MGF: MHL Agent transport done" += 1
+		dialog phrase "MGF: MHL agent on complete"
+
+phrase "mgf: delivery to black death done"
+	word
+		`You were directed to land at a fortress owned by the Black Death gang. After a few talk and some waiting you get to land in one piece. The cargo was partially unloaded before they stopped to open and check the tanks. As they open the tanks a terrible, indescribable and potentially harmful smell hits you and force you back into your ship and wait as the pirates do their thing. After a short while the unloading continued and <payment> is transferred into your account.`
+
+mission "MGF: MHL Sample Delivery to Black Death"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "unlabelled chemical tanks" 20
+	clearance
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 12
+		government "Pirate" "Pirate (South)" "South Pirate"
+		planet Greenrock
+	to offer
+		random < 15
+		or
+			has "event: mgf: mhl combat response fleet"
+			has "event: MGF: NGK explosive go off (New China)"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 95000 700
+		"reputation: MGF: Black Death" >?= 0
+		dialog phrase "mgf: delivery to black death done"
+
+mission "MGF: MHL Sample Delivery to Black Death"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "unlabelled chemical tanks" 20
+	clearance
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes station
+	destination
+		distance 3 12
+		government "Pirate" "Pirate (South)" "South Pirate"
+		planet Greenrock
+	to offer
+		random < 15
+		or
+			has "event: mgf: mhl combat response fleet"
+			has "event: MGF: NGK explosive go off (New China)"
+		"reputation: MGF: Black Death" > -1000
+		"reputation: MGF: Maryhal Defense" > 50
+		not "event: mgf: black death chemvt use"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 95000 700
+		"reputation: MGF: Black Death" >?= 0
+		dialog phrase "mgf: delivery to black death done"
+
+mission "MGF: MHL Delivery to Black Death"
+	job
+	repeat
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "unlabelled chemical tanks" 500
+	clearance
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes station
+	destination
+		distance 3 12
+		government "Pirate" "Pirate (South)" "South Pirate"
+		planet Greenrock
+	to offer
+		or
+			and
+				random < 35
+				not "event: mgf: reduced black death activity"
+			and
+				random < 15
+				has "event: mgf: reduced black death activity"
+		or
+			has "event: mgf: mhl combat response fleet"
+			has "event: MGF: NGK explosive go off (New China)"
+		"reputation: MGF: Black Death" > -1000
+		"reputation: MGF: Maryhal Defense" > 50
+		has "event: mgf: black death chemvt use"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 155000 600
+		"reputation: MGF: Black Death" >?= 0
+		dialog phrase "mgf: delivery to black death done"
 
 #================================Ankulah
 
@@ -5398,6 +6049,184 @@ mission "MGF: Recover Huge Wreckage (Sadr)"
 	on visit
 		dialog phrase "mgf: arrived-without-wreckage dialog"
 
+fleet "MGF: Ankulah Cargo Escort" 
+	government "Merchant"
+		names "civilian"
+		cargo 2
+		personality
+			confusion 30
+			timid appeasing
+	variant 50
+		"CH-6 Carrack"
+	variant 50
+		"CDB-6K Jupiter"
+	variant 30
+		"FAd36 Flint"
+	variant 40
+		"FUe02a Gebrant"
+
+fleet "MGF: Recovery Escort Medium" 
+	government "Independent"
+		names "civilian"
+		cargo 2
+		personality
+			confusion 30
+			timid appeasing
+	variant 50
+		"AKH-8 Mlitgante"
+#TODO: test and make the rest of it.
+mission "MGF: Recovery Escort (Medium 1, Eltanin)"
+	name "Escort to <planet>"
+	description "The captain of the <npc>, a wreckage recovery ship, will pay you <payment> to escort them safely on their trip to <waypoints> and back to <destination>."
+	repeat
+	job
+	waypoint "Eltanin"
+	to offer
+		random < 15
+		"combat rating" > 400
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "ship breaking"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders disables
+		system destination
+		fleet "Small Northern Pirates"
+	npc accompany save
+		government "Independent"
+		personality escort timid
+		fleet "MGF: Recovery Escort Medium" 
+	npc accompany save
+		government "Independent"
+		personality escort mute derelict
+		fleet "MGF: Wreckage Recovery Medium"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "MGF: Scrap Carrier Escort [0]"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 7
+	to offer
+		random < 15
+		"combat rating" > 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "ship breaking"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory" "shipyard"
+		distance 1 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "scrap metal"
+		fleet "MGF: Ankulah Cargo Escort" 
+
+	on complete
+		payment 100000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "MGF: Scrap Carrier Escort [1]"
+	name "Escort to <planet>"
+	description "The captain of the <npc> will pay you <payment> to escort them safely into a dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 7
+	to offer
+		random < 15
+		"combat rating" > 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "ship breaking"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory" "shipyard"
+		distance 1 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "scrap metal"
+		fleet "MGF: Ankulah Cargo Escort" 
+
+	on complete
+		payment 100000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "MGF: Ankulah Pirate Attack"
+	name "Defend <planet>"
+	description "Defeat a pirate raid on <destination>."
+	minor
+	repeat
+	to offer
+		"combat rating" > 100
+		random < 10
+		"reputation: Independent" > 0
+		"reputation: MGF: Ankulah Crew" > 0
+	source
+		not government "Pirate"
+		planet "Ankulah Ship Breaking Station"
+	npc evade
+		government "Pirate"
+		personality hunting target harvests plunders
+		fleet "Small Northern Pirates" 3
+		fleet "Large Northern Pirates"
+	npc
+		government "MGF: Ankulah Crew"
+		personality hunting staying
+		fleet "MGF: Ankulah Guard"
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting: "We are under attack by pirates! We need every combat-worthy ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					decline
+				`	(Join the defense fleet.)`
+			`The local Ankulah guard power up their few barely combat-worthy ship preparing to repel the pirate attack. You join them, and take off together...`
+				launch
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		"reputation: Independent" += 1
+		"reputation: MGF: Ankulah Crew" += 1
+		payment 200000
+		dialog phrase "generic pirate attack payment dialog"
+
+#========================Scrap
+
 mission "MGF: Scrap Metal [0]"
 	name "Scrap metal to <planet>"
 	job
@@ -5644,6 +6473,157 @@ mission "MGF: Large Bulk Scrap Metal [0]"
 	on complete
 		payment 0 100
 		dialog phrase "generic cargo delivery payment"
+
+#==============================Tarazed
+
+mission "MGF: Escort (Medium, Tarazed, Outbound)"
+	name "Escort to <planet>"
+	description "The captain of <npc>, a Tarazed Corp cargo ship, will pay you <payment> to escort them safely through this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 50
+		"reputation: MGF: Tarazed Corporation" > 0
+		"reputation: Merchant" > 0
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		system Tarazed
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "medium factory"  "large factory" "electronics export"
+		distance 5 6
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates" 2
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Southern Pirates" 2
+		fleet "Large Southern Pirates"
+	
+	npc accompany save
+		government "MGF: Tarazed Corporation"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"PF-80 Intrepid (Plasma Engine)"
+	on complete
+		payment 220000
+		"reputation: MGF: Tarazed Corporation" += 1
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "MGF: Escort (Medium, Tarazed, Inbound)"
+	name "Escort to <planet>"
+	description "The captain of <npc>, a Tarazed Corp cargo ship, will pay you <payment> to escort them safely through this dangerous region of space to reach <destination> by <date>."
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 50
+		"reputation: MGF: Tarazed Corporation" > 0
+		"reputation: Merchant" > 0
+		not "event: MGF: Pirate Advancement III"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "medium factory"  "large factory" "electronics export"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		system Tarazed
+		distance 5 6
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates" 2
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Southern Pirates" 2
+		fleet "Large Southern Pirates"
+	
+	npc accompany save
+		government "MGF: Tarazed Corporation"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"PF-80 Intrepid (Plasma Engine)"
+	on complete
+		payment 220000
+		"reputation: MGF: Tarazed Corporation" += 1
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+outfit "MGF: Tarazed Secret Cargo"
+	"display name" "Tarazed Tech"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "Mysterious cargo owned by Tarazed stolen by pirates."
+
+ship "Aplomado" "Aplomado (Heavy, Tarazed Tech)"
+	outfits
+		"Torpedo Launcher" 2
+		"Torpedo" 60
+		"Heavy Laser Turret" 5
+		"Heavy Anti-Missile Turret" 1
+		
+		"Breeder Reactor"
+		"LP072a Battery Pack"
+		"D94-YV Shield Generator"
+		"Liquid Nitrogen Cooler"
+		"Laser Rifle" 50
+
+		"MGF: Tarazed Secret Cargo"
+		
+		"Tyrant Plasma Thruster"
+		"Orca Plasma Steering"
+		"Hyperdrive"
+
+mission "MGF: Tarazed Tech Retreival [0]"
+	name "Stolen tech at <system>"
+	job
+	repeat
+	description `A pirate ship that has stolen a Tarazed tech is spotted near <system> system. Board the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
+	to offer
+		random < 7
+		"combat rating" > 3000
+		"reputation: MGF: Tarazed Corporation" >= 10
+	deadline 14
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		near Tarazed 0 2
+	npc
+		government "Pirate"
+		personality staying heroic target
+		system
+			distance 1
+		fleet
+			names "pirate"
+			variant
+				"Aplomado (Heavy, Tarazed Tech)"
+	on visit
+		dialog "You land on <planet>, but you don't have the secret cargo! Return to the <npc> and bring the cargo back to <planet>."
+	on complete
+		"reputation: MGF: Tarazed Corporation" += 3
+		outfit "MGF: Tarazed Secret Cargo" -1
+		payment 2000000
+		dialog "You were directed to land at Tarazed private port where heavily armed Tarazed security team recieve the secret cargo and pay you <payment>."
+
 #===================================Heavy Lift jobs
 
 phrase "mgf: heavy lift complete"
@@ -7168,6 +8148,7 @@ mission "MGF: Car Shipping 1"
 			#For car carriers from Mega Freight it will be listed individually so they still works on escorts.
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7179,12 +8160,14 @@ mission "MGF: Car Shipping 1"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 25
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 12000 180
@@ -7201,6 +8184,7 @@ mission "MGF: Car Shipping 2"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7212,12 +8196,14 @@ mission "MGF: Car Shipping 2"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 30
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 30
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 12000 180
@@ -7234,6 +8220,7 @@ mission "MGF: Car Shipping 3"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		not attributes "station"
@@ -7245,12 +8232,14 @@ mission "MGF: Car Shipping 3"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 20
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 13000 200
@@ -7267,6 +8256,7 @@ mission "MGF: Bulk Car Shipping 1"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7278,12 +8268,14 @@ mission "MGF: Bulk Car Shipping 1"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 75
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 12000 160
@@ -7300,6 +8292,7 @@ mission "MGF: Bulk Car Shipping 2"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7311,12 +8304,14 @@ mission "MGF: Bulk Car Shipping 2"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 75
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 12000 150
@@ -7333,6 +8328,7 @@ mission "MGF: Bulk Car Shipping 3"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7344,12 +8340,14 @@ mission "MGF: Bulk Car Shipping 3"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 75
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 70
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 12000 140
@@ -7360,12 +8358,13 @@ mission "MGF: Large Bulk Car Shipping 1"
 	job
 	repeat
 	deadline
-	cargo "RORO Cargo" 250 880
+	cargo "RORO Cargo" 250 580
 	to offer
 		random < 30
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 200
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7377,12 +8376,14 @@ mission "MGF: Large Bulk Car Shipping 1"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 200
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 24000 150
@@ -7393,12 +8394,13 @@ mission "MGF: Large Bulk Car Shipping 2"
 	job
 	repeat
 	deadline
-	cargo "RORO Cargo" 250 880
+	cargo "RORO Cargo" 250 580
 	to offer
 		random < 15
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7410,12 +8412,14 @@ mission "MGF: Large Bulk Car Shipping 2"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 24000 140
@@ -7426,12 +8430,13 @@ mission "MGF: Large Bulk Car Shipping 3"
 	job
 	repeat
 	deadline
-	cargo "RORO Cargo" 450 1000
+	cargo "RORO Cargo" 450 600
 	to offer
 		random < 15
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
 		attributes "factory" "manufacturing"
@@ -7443,16 +8448,126 @@ mission "MGF: Large Bulk Car Shipping 3"
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 450
 	on visit
 		dialog phrase "generic cargo on visit"
 	to complete
 		or
 			has "flagship attribute: car carrier"
 			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 250
 	on complete
 		dialog phrase "mgf: car shipping complete"
 		payment 20000 130
 		
+mission "MGF: Huge Bulk Car Shipping 1"
+	name "Huge bulk vehicles to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	deadline
+	cargo "RORO Cargo" 650 1000
+	to offer
+		random < 15
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 500
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "factory" "manufacturing"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		distance 2 12
+		not attributes "station"
+	to accept
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on visit
+		dialog phrase "generic cargo on visit"
+	to complete
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on complete
+		dialog phrase "mgf: car shipping complete"
+		payment 40000 130
+
+mission "MGF: Huge Bulk Car Shipping 2"
+	name "Huge bulk vehicles to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	deadline
+	cargo "RORO Cargo" 650 1000
+	to offer
+		random < 15
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 500
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "factory" "manufacturing"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		distance 2 12
+		not attributes "station"
+	to accept
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on visit
+		dialog phrase "generic cargo on visit"
+	to complete
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on complete
+		dialog phrase "mgf: car shipping complete"
+		payment 40000 130
+
+mission "MGF: Huge Bulk Car Shipping 3"
+	name "Huge bulk vehicles to <planet>"
+	description "Ship <cargo> to <destination> by <date>. Payment is <payment>."
+	job
+	repeat
+	deadline
+	cargo "RORO Cargo" 650 1000
+	to offer
+		random < 15
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 500
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security" "SpaceCrate"
+		attributes "factory" "manufacturing"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "MGF: NGK Hauling" "MGF: NGK Security"
+		distance 2 12
+		not attributes "station"
+	to accept
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on visit
+		dialog phrase "generic cargo on visit"
+	to complete
+		or
+			has "flagship attribute: car carrier"
+			has "ship model: LVC-2 Sandura"
+			"outfit (installed): MGF: Car Cargo Bay" >= 650
+	on complete
+		dialog phrase "mgf: car shipping complete"
+		payment 40000 130
+
 #======================================Livestock
 
 trade
