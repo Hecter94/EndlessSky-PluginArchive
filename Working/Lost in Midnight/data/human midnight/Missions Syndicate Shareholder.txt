@@ -130,7 +130,6 @@ mission "Titania: Syndicate Stock Vote"
 			scene "outfit/syndicate stock p"
 			action
 				event "titania: syndicate bonds issued"
-				event "titania: syndicate bonds matured" 3650
 			`	You vote to fund the creation of a new space station in the Eteron system through the use of corporate bonds.`
 				decline
 			label no
@@ -142,33 +141,7 @@ event "titania: syndicate bonds issued"
 	outfitter "Syndicate Stock"
 		add "Syndicate Bond (Titania)"
 
-event "titania: syndicate bonds matured"
 
-mission "Titania: Syndicate Bond Mature"
-	outfitter
-	minor
-	invisible
-	repeat
-	source
-		government "Syndicate"
-	to offer
-		has "event: titania: syndicate bonds matured"
-		random < 70
-	on offer
-		require "Syndicate Bond (Titania)" 1
-		conversation
-			scene "outfit/syndicate bond"
-			`One of you Syndicate Bonds has reached maturity. Reclaim the principal plus interest? (1,500,000,000 credits)`
-			choice
-				`	(Reclaim your credits.)`
-				`	(Not now.)`
-					defer
-			scene "outfit/syndicate bond"
-			action
-				outfit "Syndicate Bond (Titania)" -1
-				payment 1500000000
-			`	You trade in your bond, adding 1,500,000,000 credits into your account.`
-				decline
 
 mission "Titania: Syndicate Republic Bribery"
 	minor
@@ -218,15 +191,24 @@ mission "Titania: Syndicate Republic Bribery"
 			label end
 			`	"You've made the right choice." The man heads towards the <ship>'s landing pad...`
 				accept
+	on abort
+		event "titania bond cancel"
+		"reputation: Syndicate" -= 1000
+		dialog "You've become an enemy of the Syndicate after pushing the Syndicate agent out of your airlock."
 	on complete
 		event "titania syndicate enters eteron" 30
 		event "titania station construction a" 90
 		event "titania station construction b" 180
 		event "titania station construction c" 270
 		event "titania station construction d" 360
+		event "titania: syndicate bonds matured" 3600
 		"reputation: Syndicate" += 10
 		payment 150000
 		dialog `During the trip, the Syndicate agent doesn't speak much other than to express confidence in the future financial performance of the Syndicate. As soon as you land, he hands you a payment of <payment> and promises to tell his superiors of your assistance before heading towards Parliament.`
+
+event "titania bond cancel"
+	outfitter "Syndicate Stock"
+		remove "Syndicate Bond (Titania)"
 
 event "titania syndicate enters eteron"
 	outfitter "Syndicate Stock"
@@ -389,9 +371,101 @@ event "titania station construction d"
 			threshold 2000
 			fleet "Small Syndicate" 5
 
+event "titania: syndicate bonds matured"
+
+
+
+mission "Titania: Syndicate Bond Mature"
+	outfitter
+	minor
+	invisible
+	repeat
+	source
+		government "Syndicate"
+	to offer
+		has "event: titania: syndicate bonds matured"
+		random < 70
+	on offer
+		require "Syndicate Bond (Titania)" 1
+		conversation
+			scene "outfit/syndicate bond"
+			`One of you Syndicate Bonds has reached maturity. Reclaim the principal plus interest? (1,500,000,000 credits)`
+			choice
+				`	(Reclaim your credits.)`
+				`	(Not now.)`
+					defer
+			scene "outfit/syndicate bond"
+			action
+				outfit "Syndicate Bond (Titania)" -1
+				payment 1500000000
+			`	You trade in your bond, adding 1,500,000,000 credits into your account.`
+				decline
+
+
+
+mission "Titania Announce Construction 1"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		attributes spaceport
+	to offer
+		has "event: titania station construction a"
+		not "event: titania station construction b"
+	on offer
+		conversation
+			scene "planet/station5ver8a"
+			`You receive a notification from the Syndicate: "Construction on Titania Station has begun in the Eteron System! Staging of construction materials will be at Kraken Station in the Caph System."`
+				decline
+
+mission "Titania Announce Construction 2"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		attributes spaceport
+	to offer
+		has "event: titania station construction b"
+		not "event: titania station construction c"
+	on offer
+		conversation
+			scene "planet/station5ver8b"
+			`You receive a notification from the Syndicate: "Construction of the core section for Titania Station in the Eteron System is complete!"`
+				decline
+
+mission "Titania Announce Construction 3"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		attributes spaceport
+	to offer
+		has "event: titania station construction c"
+		not "event: titania station construction d"
+	on offer
+		conversation
+			scene "planet/station5ver8c"
+			`You receive a notification from the Syndicate: "Construction of the main habitat sections for Titania Station in the Eteron System is complete! Delivery of construction materials can now be accepted at the station."`
+				decline
+
+mission "Titania Announce Construction 4"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		attributes spaceport
+	to offer
+		has "event: titania station construction d"
+	on offer
+		conversation
+			scene "planet/station5ver8"
+			`You receive a notification from the Syndicate: "With the construction of the outer docking bays complete, Titania Station in the Eteron System is officially open for business!"`
+				decline
+
+
 
 mission "Titania: Bulk Rush Delivery [Kraken, Job A]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -414,7 +488,7 @@ mission "Titania: Bulk Rush Delivery [Kraken, Job A]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Kraken, Job B]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -437,7 +511,7 @@ mission "Titania: Bulk Rush Delivery [Kraken, Job B]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Kraken, Job C]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -460,7 +534,7 @@ mission "Titania: Bulk Rush Delivery [Kraken, Job C]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Titania, Job A]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -490,7 +564,7 @@ mission "Titania: Bulk Rush Delivery [Titania, Job A]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Titania, Job B]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -520,7 +594,7 @@ mission "Titania: Bulk Rush Delivery [Titania, Job B]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Titania, Job C]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	job
 	repeat
 	deadline
@@ -551,7 +625,7 @@ mission "Titania: Bulk Rush Delivery [Titania, Job C]"
 		dialog phrase "generic cargo delivery payment"
 
 mission "Titania: Bulk Rush Delivery [Titania, Spaceport]"
-	name "Bulk Rush delivery to <planet>"
+	name "Construction Supplies to <planet>"
 	deadline
 	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
 	minor

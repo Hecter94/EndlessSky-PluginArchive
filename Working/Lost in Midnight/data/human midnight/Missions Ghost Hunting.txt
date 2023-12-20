@@ -1222,20 +1222,14 @@ mission "Ghost Hunting: Curse of the Carabao 1"
 		attributes "deep"
 		not attributes "station" "uninhabited" "pirate" "shipyard"
 	to offer
+		never
 #
-# The game isn't detecting the "Carabao AI" from an escort. Deactivating this mission until this is fixed.
+# Decided to keep the Carabao unique to the Midnight Lost Orphan path (Quarg folder content).
 #
-		has "Ghost Hunting: Curse of the Carabao 1: done"
-		has "Ghost Hunting: Curse of the Carabao 1: failed"
-		has "Ghost Hunting: Curse of the Carabao 1: aborted"
-		has "Ghost Hunting: Curse of the Carabao 1: declined"
-#
-#		"credits" >= 18000000
-#		or
-#			not "Randomize Ghost Hunting: Curse of the Carabao 1"
-#			and
-#				has "Randomize Ghost Hunting: Curse of the Carabao 1"
-#				random < 5
+		has "Cartography: Midnight's Lost Orphan: offered"
+		not "celestial compass"
+		"credits" >= 18000000
+		random < 15 - ( "Randomize Ghost Hunting: Curse of the Carabao 1" * 10 )
 	on offer
 		conversation
 			scene "thumbnail/carabao-thumb"
@@ -1293,16 +1287,19 @@ mission "Ghost Hunting: Curse of the Carabao 1"
 
 
 mission "Ghost Hunting: Curse of the Carabao 2"
+	minor
 	source
 		attributes "frontier"
-		not attributes "uninhabited"
+		attributes spaceport
+		not attributes "uninhabited" "station"
 	to offer
 		has "curse of the carabao"
+		has "outfit (installed): Carabao AI"
+		random < 70
 	on offer
-		require "Carabao AI"
 		conversation
 			scene "thumbnail/carabao-thumb"
-			`You notice one of the locals looking at the Carabao from the edge of the landing pad.`
+			`You notice one of the local dockworkers looking at the Carabao from the edge of the landing pad.`
 			`He notices you and says, "I feel sorry for whoever owns that ship."`
 			choice
 				`	"Why?"`
@@ -1310,34 +1307,8 @@ mission "Ghost Hunting: Curse of the Carabao 2"
 			`He responds, "That's a Carabao. Those ships are cursed! Back in the colonization days, the unfortunate colonists who traveled on those ships died grisly and gruesome deaths as the automated systems went haywire and run amok."`
 			choice
 				`	"I own that ship."`
-
-			`"Oh."`
+			`"Oh." After a moment of awkward silence, the worker leaves.`
 				decline
-			
-
-phrase "curse of the carabao"
-	word
-		`When you arrive at port, you discover that one of your passengers `
-	word
-		`died in a horrifying accident involving `
-		`died in a tragic mishap caused by `
-		`died in a grisly tragedy as a result of `
-	word
-		`a food processor `
-		`a security `
-		`a power conduit `
-		`an air lock `
-		`a life support `
-		`a weapons `
-		`a fuel injection `
-		`a sonic shower `
-	word
-		`safety failure. `
-		`system failure. `
-		`system malfunction. `
-		`safety malfunction. `
-	word
-		`The specific details are quite gruesome. While spaceport authorities investigate the death, your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey.`
 
 
 
@@ -1345,10 +1316,12 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
 	landing
 	repeat
 	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral"
 		attributes spaceport
 		not attributes "uninhabited"
 	to offer
 		has "curse of the carabao"
+		has "outfit (installed): Carabao AI"
 		or
 			has "Transport scientists: active"
 			has "To Remembrance Day celebration [0]: active"
@@ -1408,10 +1381,38 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
 			has "Transport executive to <planet>: active"
 			has "Corporate retreat from <origin>: active"
 		random < 10
+	substitutions
+		"<carabao curse A>" "died in a horrifying accident involving"
+			random < 33
+		"<carabao curse A>" "died in a tragic mishap caused by"
+			random < 33
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
+			random < 33
+		"<carabao curse B>" "a food processor"
+			random < 13
+		"<carabao curse B>" "a security"
+			random < 13
+		"<carabao curse B>" "a power conduit"
+			random < 13
+		"<carabao curse B>" "an air lock"
+			random < 13
+		"<carabao curse B>" "a life support"
+			random < 13
+		"<carabao curse B>" "a weapons"
+			random < 13
+		"<carabao curse B>" "a fuel injection"
+			random < 13
+		"<carabao curse B>" "a sonic shower"
+			random < 13
+		"<carabao curse C>" "safety failure"
+			random < 25
+		"<carabao curse C>" "system failure"
+			random < 25
+		"<carabao curse C>" "system malfunction"
+			random < 25
+		"<carabao curse C>" "safety malfunction"
+			random < 25
 	on offer
-		require "Carabao AI"
-		dialog phrase "curse of the carabao"
-	on decline
 		fail "Transport scientists"
 		fail "To Remembrance Day celebration [0]"
 		fail "From Remembrance Day celebration [0]"
@@ -1469,64 +1470,235 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
 		fail "Han Sizer Month [2]"
 		fail "Transport executive to <planet>"
 		fail "Corporate retreat from <origin>"
-	on accept
-		fail "Transport scientists"
-		fail "To Remembrance Day celebration [0]"
-		fail "From Remembrance Day celebration [0]"
-		fail "From Remembrance Day celebration [1]"
-		fail "FW Reinforcements [0]"
-		fail "FW Reinforcements [1]"
-		fail "FW Refugees [0]"
-		fail "FW Refugees [1]"
-		fail "FW Refugees [2]"
-		fail "FW Bulk Refugees [0]"
-		fail "Frontier Emigration [0]"
-		fail "Frontier Emigration [1]"
-		fail "Frontier Emigration [2]"
-		fail "Passengers [0]"
-		fail "Passengers [1]"
-		fail "Passengers [2]"
-		fail "Passengers [3]"
-		fail "Passengers [4]"
-		fail "Transport miners to <planet>"
-		fail "Transport farmers to <planet>"
-		fail "Transport mill workers to <planet>"
-		fail "Transport workers to <planet>"
-		fail "Tourists out [0]"
-		fail "Tourists out [1]"
-		fail "Wealthy tourists out"
-		fail "Tourists back [0]"
-		fail "Tourists back [1]"
-		fail "Wealthy tourists back"
-		fail "Family [0]"
-		fail "Family [1]"
-		fail "Family [2]"
-		fail "Family [3]"
-		fail "Strike Breakers [mining]"
-		fail "Strike Breakers [textile]"
-		fail "Strike Breakers [factory]"
-		fail "Colonists [0]"
-		fail "Colonists [1]"
-		fail "Stranded Field Trip"
-		fail "Released Prisoners [0]"
-		fail "Released Prisoners [1]"
-		fail "Released Prisoners [2]"
-		fail "Historical field trip to <planet>"
-		fail "To Earth Day celebration [0]"
-		fail "From Earth Day celebration [0]"
-		fail "From Earth Day celebration [1]"
-		fail "Paradise Job: Newlyweds"
-		fail "Transport partiers [1]"
-		fail "Transport partiers [2]"
-		fail "Paradise Jobs: Contract Laborers"
-		fail "Transport high-class tourists"
-		fail "Paradise Job: Retirees"
-		fail "Paradise Job: Wilderness Retreat"
-		fail "Han Sizer Month [0]"
-		fail "Han Sizer Month [1]"
-		fail "Han Sizer Month [2]"
-		fail "Transport executive to <planet>"
-		fail "Corporate retreat from <origin>"
-		fail
+		conversation
+			scene "scene/scene-guts"
+			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
+				decline
 
+
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [coalition]"
+	landing
+	repeat
+	source
+		government "Coalition"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "outfit (installed): Carabao AI"
+		or
+			has "Coalition: Ringworld Workers 1: active"
+			has "Coalition: Ringworld Workers 2: active"
+			has "Coalition: Ringworld Workers 3: active"
+			has "Coalition: Ringworld Volunteers 1: active"
+			has "Coalition: Ringworld Volunteers 2: active"
+			has "Coalition: Ringworld Volunteers 3: active"
+			has "Coalition: Heliarch Candidate: active"
+			has "Coalition: Interpreters 1: active"
+			has "Coalition: Interpreters 2: active"
+			has "Coalition: Interpreters 3: active"
+			has "Coalition: Peacekeepers 1: active"
+			has "Coalition: Peacekeepers 2: active"
+			has "Coalition: Saryd Interspecies 1: active"
+			has "Coalition: Saryd Interspecies 2: active"
+			has "Coalition: Kimek Interspecies 1: active"
+			has "Coalition: Kimek Interspecies 2: active"
+			has "Coalition: Arach Interspecies 1: active"
+			has "Coalition: Arach Interspecies 2: active"
+			has "Coalition: Transfer 1: active"
+			has "Coalition: Transfer 2: active"
+			has "Coalition: Transfer 3: active"
+			has "Coalition: Tourists Out 1: active"
+			has "Coalition: Tourists Out 2: active"
+			has "Coalition: Tourists Out 3: active"
+			has "Coalition: Tourists Home 1: active"
+			has "Coalition: Tourists Home 2: active"
+			has "Coalition: Tourists Home 3: active"
+			has "Coalition: Doctors: active"
+			has "Coalition: Cadets 1: active"
+			has "Coalition: Cadets 2: active"
+			has "Coalition: To Games 1: active"
+			has "Coalition: To Games 2: active"
+			has "Coalition: To Games 3: active"
+			has "Coalition: From Games 1: active"
+			has "Coalition: From Games 2: active"
+			has "Coalition: From Games 3: active"
+		random < 10
+	substitutions
+		"<carabao curse A>" "died in a horrifying accident involving"
+			random < 33
+		"<carabao curse A>" "died in a tragic mishap caused by"
+			random < 33
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
+			random < 33
+		"<carabao curse B>" "a food processor"
+			random < 13
+		"<carabao curse B>" "a security"
+			random < 13
+		"<carabao curse B>" "a power conduit"
+			random < 13
+		"<carabao curse B>" "an air lock"
+			random < 13
+		"<carabao curse B>" "a life support"
+			random < 13
+		"<carabao curse B>" "a weapons"
+			random < 13
+		"<carabao curse B>" "a fuel injection"
+			random < 13
+		"<carabao curse B>" "a sonic shower"
+			random < 13
+		"<carabao curse C>" "safety failure"
+			random < 25
+		"<carabao curse C>" "system failure"
+			random < 25
+		"<carabao curse C>" "system malfunction"
+			random < 25
+		"<carabao curse C>" "safety malfunction"
+			random < 25
+	on offer
+		fail "Coalition: Ringworld Workers 1"
+		fail "Coalition: Ringworld Workers 2"
+		fail "Coalition: Ringworld Workers 3"
+		fail "Coalition: Ringworld Volunteers 1"
+		fail "Coalition: Ringworld Volunteers 2"
+		fail "Coalition: Ringworld Volunteers 3"
+		fail "Coalition: Heliarch Candidate"
+		fail "Coalition: Interpreters 1"
+		fail "Coalition: Interpreters 2"
+		fail "Coalition: Interpreters 3"
+		fail "Coalition: Peacekeepers 1"
+		fail "Coalition: Peacekeepers 2"
+		fail "Coalition: Saryd Interspecies 1"
+		fail "Coalition: Saryd Interspecies 2"
+		fail "Coalition: Kimek Interspecies 1"
+		fail "Coalition: Kimek Interspecies 2"
+		fail "Coalition: Arach Interspecies 1"
+		fail "Coalition: Arach Interspecies 2"
+		fail "Coalition: Transfer 1"
+		fail "Coalition: Transfer 2"
+		fail "Coalition: Transfer 3"
+		fail "Coalition: Tourists Out 1"
+		fail "Coalition: Tourists Out 2"
+		fail "Coalition: Tourists Out 3"
+		fail "Coalition: Tourists Home 1"
+		fail "Coalition: Tourists Home 2"
+		fail "Coalition: Tourists Home 3"
+		fail "Coalition: Doctors"
+		fail "Coalition: Cadets 1"
+		fail "Coalition: Cadets 2"
+		fail "Coalition: To Games 1"
+		fail "Coalition: To Games 2"
+		fail "Coalition: To Games 3"
+		fail "Coalition: From Games 1"
+		fail "Coalition: From Games 2"
+		fail "Coalition: From Games 3"
+		conversation
+			scene "scene/scene-guts"
+			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
+				decline
+
+
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [hai]"
+	landing
+	repeat
+	source
+		government "Hai"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "outfit (installed): Carabao AI"
+		or
+			has ": active"
+		random < 10
+	substitutions
+		"<carabao curse A>" "died in a horrifying accident involving"
+			random < 33
+		"<carabao curse A>" "died in a tragic mishap caused by"
+			random < 33
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
+			random < 33
+		"<carabao curse B>" "a food processor"
+			random < 13
+		"<carabao curse B>" "a security"
+			random < 13
+		"<carabao curse B>" "a power conduit"
+			random < 13
+		"<carabao curse B>" "an air lock"
+			random < 13
+		"<carabao curse B>" "a life support"
+			random < 13
+		"<carabao curse B>" "a weapons"
+			random < 13
+		"<carabao curse B>" "a fuel injection"
+			random < 13
+		"<carabao curse B>" "a sonic shower"
+			random < 13
+		"<carabao curse C>" "safety failure"
+			random < 25
+		"<carabao curse C>" "system failure"
+			random < 25
+		"<carabao curse C>" "system malfunction"
+			random < 25
+		"<carabao curse C>" "safety malfunction"
+			random < 25
+	on offer
+		conversation
+			scene "scene/scene-guts"
+			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
+				decline
+
+
+
+mission "Ghost Hunting: Curse of the Carabao Passengers [wanderer]"
+	landing
+	repeat
+	source
+		government "Wanderer"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		has "curse of the carabao"
+		has "outfit (installed): Carabao AI"
+		or
+			has ": active"
+		random < 10
+	substitutions
+		"<carabao curse A>" "died in a horrifying accident involving"
+			random < 33
+		"<carabao curse A>" "died in a tragic mishap caused by"
+			random < 33
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
+			random < 33
+		"<carabao curse B>" "a food processor"
+			random < 13
+		"<carabao curse B>" "a security"
+			random < 13
+		"<carabao curse B>" "a power conduit"
+			random < 13
+		"<carabao curse B>" "an air lock"
+			random < 13
+		"<carabao curse B>" "a life support"
+			random < 13
+		"<carabao curse B>" "a weapons"
+			random < 13
+		"<carabao curse B>" "a fuel injection"
+			random < 13
+		"<carabao curse B>" "a sonic shower"
+			random < 13
+		"<carabao curse C>" "safety failure"
+			random < 25
+		"<carabao curse C>" "system failure"
+			random < 25
+		"<carabao curse C>" "system malfunction"
+			random < 25
+		"<carabao curse C>" "safety malfunction"
+			random < 25
+	on offer
+		conversation
+			scene "scene/scene-guts"
+			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
+				decline
 
