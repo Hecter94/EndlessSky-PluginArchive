@@ -11275,9 +11275,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Coalition-At-War
 
 
-[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 40.74 kb | 2023-09-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
+[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 39.89 kb | 2023-12-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
 Author: mathwhiz1212 | Category: Story <br>
-[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2023-09-05) <br>
+[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2023-12-23) <br>
 
 >You hear a lot about the conflict between the Coalition and the Quarg, but you never see it.
 >
