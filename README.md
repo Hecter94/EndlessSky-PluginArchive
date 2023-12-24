@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2023-12-24 | new Plugin 'Mil'taj Protectorate' by Demolish238 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2023-12-24 | new Plugin 'QOL-Outfits' by Demolish238 | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
+2023-12-24 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2023-12-23 | updated Plugin 'Coalition-At-War' by mathwhiz1212 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2023-12-20 | updated Plugin 'Unfettered Innovations' by Hurleveur | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2023-12-20 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
@@ -17,9 +20,6 @@
 2023-12-15 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2023-12-13 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2023-12-13 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
-2023-12-12 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
-2023-12-11 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2023-12-11 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -61,7 +61,7 @@ Provide a direct link to your zipped plugin to enable automatic updating.<br>
 
 # Introduction
 
-A comprehensive library of 540 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 542 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -215,10 +215,10 @@ To keep these files related, you must give them the same name.
 
 # Plugin Download
 
-All Plugins (540)
+All Plugins (542)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats) (35) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay) (41) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics) (23) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits) (44)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races) (62)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (136) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (28)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (136) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (30)<br>
 
 

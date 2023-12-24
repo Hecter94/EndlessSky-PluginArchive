@@ -4039,6 +4039,55 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### QOL-Outfits
+
+
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.64 mb | 2023-12-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+Author: Demolish238 | Category: Outfits <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2023-12-23) <br>
+
+>An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># QOL Outfits
+Hi I am the original author of the Amalgamation plugin, while I have gotten back into Endless Sky recently my ideas of polish have changed greatly over these 4 years.
+
+I decided that while I wasn't satisfied with Amalgamation as a whole, many of the outfits from plugins like Shields up were still interesting to me, and something I wanted in the game all these years later.
+
+So rather than uploading a massive plugin that turns away many people by its sheer size again, I would upload this, a small quality of life plugin that adds many of the smaller outfits I personally believe make building ships more fun overall.
+
+I am also working on an independent plugin for the Shields Up 'Mil'taj' race, since that was where I put the most effort and had the most interest when making Amalgamation back in the day.
+
+
+This Plugin adds a new armoury outfit that allows you to equip powerful boarding weaponry, while costing upkeep and space. A smaller outfit space expansion, external fuel pods, extended bunk rooms, a handful of basic human outfits to add a slight bit of variation and huge tier 5 radiant engines along with a small tier 0.
+
+No other plugins are needed with this and implementation into the grander game is minimal outside of outfitters, since most of these are mostly for player use rather than to make AI ships more interesting.
+
+Reccomended Plugins:
+
+https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protectorate) (My other plugin)
+
+Used Plugins:
+
+https://github.com/Amazinite/Shields-Up (Shields Up)
+
+https://github.com/Amazinite/Enigma-Corp (Enigma Corps)
+
+https://www.nexusmods.com/endlesssky/mods/1 (Space Conversion)
+
+If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
+
+</blockquote>
+</details>
+
+Status: 0.10.4 compatible <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Quarg Outfit Overhaul
 
 
@@ -7219,6 +7268,55 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
+### Mil'taj Protectorate
+
+
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 10.43 mb | 2023-12-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+Author: Demolish238 | Category: Races <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2023-12-23) <br>
+
+>This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Mil'taj Protectorate
+Hi I am the original author of the Amalgamation plugin, while I have gotten back into Endless Sky recently my ideas of polish have changed greatly over these 4 years.
+
+I decided that while I wasn't satisfied with Amalgamation as a whole, but a race of aliens from the plugin Shields up were still interesting to me, and something I wanted in the game all these years later.
+
+This is my attempt to morph the Mil'taj into their own fully functional developed race, with a simple opening mission chain and plenty of lore.
+
+It is recommended to avoid the Mil'taj storyline until you can at least defeat a Wardragon, otherwise you will have a bad time.
+
+ATM you can choose to either align yourself with the Mil'taj against the Quarg, or make them an enemy. I do not plan to ever have a Quarg side to the campaign, they just want you to piss off.
+
+
+Reccomended Plugins:
+
+https://github.com/1010todd/Beyond-the-Sky (Beyond the Sky) (Makes the Quarg actually scary as a threat and makes the higher tier Mil'taj ships make sense in comparison)
+
+https://github.com/demolish238/QOL-Outfits (QOL outfits) (My other plugin)
+
+Used Plugins:
+
+https://github.com/Amazinite/Shields-Up (Shields Up) (The original creator of the Mil'taj)
+
+https://github.com/Makuta-Miras/The-Enclave/tree/master (Enclave) (For Mil'taj weapons and outfits)
+
+https://github.com/mdsmestad/ES-COTSA-Pluggin (Cultures of the Southern Arm) (For the Avendri Ships)
+
+If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
+
+</blockquote>
+</details>
+
+Status: 0.10.4 compatible <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Military Plugin
 
 
@@ -7246,9 +7344,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-12-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2023-12-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-12-11) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2023-12-24) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -14598,7 +14696,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>28 plugins in this category.<p>
+<p>30 plugins in this category.<p>
 
 <details>
 
