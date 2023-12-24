@@ -1,0 +1,404 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Rogue Avendri Hunt 1"
+	landing
+	name "Rogue Avendri Fleet"
+	description "Find and destroy the rebel fleet that are hiding out near Mil'taj Don to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 1600000
+	source
+		government "Mil'taj"
+	to offer
+		random < 30
+		has "Rogue Avendri Elimination 1: done"
+	to fail
+		has "Final Mil'taj Test A: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Don" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 1600000
+			fail
+
+mission "Rogue Avendri Hunt 1B"
+	landing
+	name "Rogue Avendri Fleet"
+	description "Find and destroy the rebel fleet that are hiding out near Mil'taj Con to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 1600000
+	source
+		government "Mil'taj"
+	to offer
+		random < 30
+		has "Rogue Avendri Elimination 1: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Con" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 1600000
+			fail
+
+mission "Rogue Avendri Hunt 1C"
+	landing
+	name "Rogue Avendri Fleet"
+	description "Find and destroy the rebel fleet that are hiding out near Mil'taj Foh to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 1600000
+	source
+		government "Mil'taj"
+	to offer
+		random < 30
+		has "Rogue Avendri Elimination 1: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Foh" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 1600000
+			fail
+
+mission "Rogue Avendri Hunt 2"
+	landing
+	name "Rogue Avendri Large Fleet"
+	description "Find and destroy the rebel fleet and the stolen military vessals that are hiding out near Mil'taj Don to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 7400000
+	source
+		government "Mil'taj"
+	to offer
+		random < 10
+		has "Rogue Avendri Elimination 1: done"
+	to fail
+		has "Final Mil'taj Test A: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Don" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels Large"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 7400000
+			fail
+
+mission "Rogue Avendri Hunt 2B"
+	landing
+	name "Rogue Avendri Large Fleet"
+	description "Find and destroy the rebel fleet and the stolen military vessals that are hiding out near Mil'taj Con to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 7400000
+	source
+		government "Mil'taj"
+	to offer
+		random < 10
+		has "Rogue Avendri Elimination 1: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Con" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels Large"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 7400000
+			fail
+
+mission "Rogue Avendri Hunt 2C"
+	landing
+	name "Rogue Avendri Large Fleet"
+	description "Find and destroy the rebel fleet and the stolen military vessals that are hiding out near Mil'taj Foh to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 7400000
+	source
+		government "Mil'taj"
+	to offer
+		random < 10
+		has "Rogue Avendri Elimination 1: done"
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Foh" 1 1
+		personality target nemesis staying plunders harvests
+		fleet "Avendri Rebels Large"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 7400000
+			fail
+
+mission "Medical Delivery"
+	name "Medical delivery to <planet>"
+	job
+	repeat
+	deadline 10
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "medical supplies" 30 3 .1
+	to offer
+		random < 90
+		has "Mil Medical 1B: done"
+	source
+		attributes "Avendri"
+	destination
+		government "Mil'taj"
+		not attributes "Avendri"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 67000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Medical Bulk Delivery"
+	name "Medical bulk delivery to <planet>"
+	job
+	repeat
+	deadline 10
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "medical supplies" 160 4 .05
+	to offer
+		random < 70
+		has "Mil Medical 1B: done"
+	source
+		attributes "Avendri"
+	destination
+		government "Mil'taj"
+		not attributes "Avendri"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 248000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Prisoners Exchange 1"
+	name "Prisoner Exchange"
+	job
+	repeat
+	deadline 30
+	description "Transport <bunks> Quarg to <stopovers>, where they will be exchanged for the same number of Mil'taji. They must be held in suitable facilities made for the transfer of criminals. Payment is <payment>."
+	passengers 5 5 .2
+	to offer
+		random < 25
+		has "Mil Prisoner Exchange 1B: done"
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Mil'taj"
+	stopover
+		attributes "near mil'taj"
+	on stopover
+		dialog "The Quarg a released and the Mil'taj are in turn brought onto your ship. Time to being them back to <origin>."
+	on complete
+		payment
+		payment 600000
+		dialog "The Mil'taji pour from your ship and into the nearby buildings. Your comms ping as the payment of <payment> is deposited into your account."
+
+mission "Prisoners Exchange 1B"
+	name "Prisoner Exchange"
+	job
+	repeat
+	deadline 30
+	description "Transport <bunks> Quarg to <stopovers>, where they will be exchanged for the same number of Mil'taji. They must be held in suitable facilities made for the transfer of criminals. Payment is <payment>."
+	passengers 40 4 .08
+	to offer
+		random < 15
+		has "Mil Prisoner Exchange 1B: done"
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Mil'taj"
+	stopover
+		attributes "near mil'taj"
+	on stopover
+		dialog "The Quarg are released, and the Mil'taj are in turn brought onto your ship. Time to bring them back to <origin>."
+	on complete
+		payment
+		payment 2500000
+		dialog "The Mil'taji pour from your ship and into the nearby buildings. Your comms ping as the payment of <payment> is deposited into your account."
+
+mission "Quarg Hunt 1"
+	landing
+	name "Quarg Elimination"
+	description "Find and destroy the Quarg Wardragon that has been patroling around <origin> to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 5400000
+	source
+		government "Mil'taj"
+	to offer
+		random < 10
+		has "Mil'taj Ceremony: declined"
+	"distance calculation settings"
+		"assumes jump drive"
+	npc kill
+		government "Quarg"
+		system
+			distance 1 2
+		personality target nemesis staying plunders harvests
+		ship "Quarg Wardragon"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 5400000
+			fail
+
+mission "Quarg Hunt 1B"
+	landing
+	name "Quarg Elimination"
+	description "Find and destroy the Quarg Skylark that has been patroling around <origin> to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 4000000
+	source
+		government "Mil'taj"
+	to offer
+		random < 10
+		has "Mil'taj Ceremony: declined"
+	"distance calculation settings"
+		"assumes jump drive"
+	npc kill
+		government "Quarg"
+		system
+			distance 1 2
+		personality target nemesis staying plunders harvests
+		ship "Quarg Skylark"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 4000000
+			fail
+
+mission "Quarg Fleet Hunt 2"
+	landing
+	name "Quarg Fleet Elimination"
+	description "Find and destroy the Quarg fleet that has been patroling around <origin> to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 12000000
+	source
+		government "Mil'taj"
+	to offer
+		random < 5
+		has "Mil'taj Ceremony: declined"
+	"distance calculation settings"
+		"assumes jump drive"
+	npc kill
+		government "Quarg"
+		system
+			distance 1 2
+		personality target nemesis staying heroic
+		fleet "Quarg" 3
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 12000000
+			fail
+
+mission "Quarg Fleet Hunt 2B"
+	landing
+	name "Quarg Attack Fleet Elimination"
+	description "Find and destroy the Quarg attack fleet that has been attacking ships around <origin> to receive (<payment>)."
+	deadline 30
+	repeat
+	job
+	"apparent payment" 35000000
+	source
+		government "Mil'taj"
+	to offer
+		random < 3
+		has "Mil'taj Ceremony: declined"
+	"distance calculation settings"
+		"assumes jump drive"
+	npc kill
+		government "Quarg"
+		system
+			distance 1 1
+		personality target nemesis staying heroic
+		fleet "Large Quarg"
+		dialog "The rebels have been eliminated. Shortly afterwards you are sent <payment> as agreed upon."
+		on kill
+			payment 35000000
+			fail
+
+mission "Secret Delivery A"
+	name "High Priority delivery to <planet>"
+	job
+	repeat
+	deadline 10
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "flowing metal" 200 6 .05
+	to offer
+		random < 5
+		has "Mil'taj Zun Intro: offered"
+	source
+		government "Mil'taj"
+		not attributes "Zun"
+	destination "Mil'taj Zun"
+	on visit
+		dialog "You land on <planet>, but realize that your escort carrying the delivery hasn't entered the system yet. Better depart and wait for it to arrive."
+	on complete
+		payment
+		payment 15000000
+		dialog "Heavily armed Mil'taji and Avendri hurridly offload the supplies from your ship. You are notified <payment> has been delivered to your account."
+
+mission "Secret Delivery B"
+	name "High Priority delivery to <planet>"
+	job
+	repeat
+	deadline 10
+	description "Deliver <cargo> to <destination> by <date>. Payment is <payment>."
+	cargo "flowing metal" 200 6 .05
+	"apparent payment" 15000000
+	to offer
+		random < 5
+		has "Mil'taj Zun Intro: offered"
+	source
+		government "Mil'taj"
+		not attributes "Avendri" "Zun"
+	destination "Mil'taj Zun"
+	on visit
+		dialog "You land on <planet>, but realize that your escort carrying the delivery hasn't entered the system yet. Better depart and wait for it to arrive."
+	npc
+		government "Quarg"
+		system
+			distance 2 3
+		personality nemesis heroic unconstrained opportunistic vindictive
+		fleet "Large Quarg"
+		dialog "The hunting Quarg have been eliminated."
+	on complete
+		payment
+		payment 22000000
+		dialog "Heavily armed Mil'taji and Avendri hurridly offload the supplies from your ship. You are notified <payment> has been delivered to your account, along with a bonus for the danger posed by the Quarg."

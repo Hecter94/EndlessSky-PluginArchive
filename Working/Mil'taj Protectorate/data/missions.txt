@@ -1,0 +1,1292 @@
+
+mission "Drak guarding Deba"
+	invisible
+	landing
+	repeat
+	to offer
+		not "Drak guarding Deba: active"
+	to complete
+		never
+	npc save
+		government "Drak Mil"
+		personality heroic vindictive staying frugal forbearing
+		system Deba
+		ship "Archon" "Patient Warden"
+
+mission "Drak guarding Gami"
+	invisible
+	landing
+	repeat
+	to offer
+		not "Drak guarding Gami: active"
+	to complete
+		never
+	npc save
+		government "Drak Mil"
+		personality heroic vindictive staying frugal forbearing
+		system Gami
+		ship "Archon" "Waiting Guardian"
+
+mission "Erebus guarding Toh"
+	invisible
+	landing
+	repeat
+	to offer
+		not "Erebus guarding Toh: active"
+	to complete
+		never
+	npc save
+		government Mil'taj
+		personality heroic vindictive staying unconstrained
+		system "Mil'taj Toh"
+		ship "Erebus" "Nol'Zai"
+
+mission "Mil'taj Archon Message"
+	invisible
+	landing
+	to complete
+		never
+	on enter Deba
+		fail
+		conversation
+			`A voice says, "Human, the conflict you will see in the systems nearby is delicate, do not interfere."`
+			`	After a second, you realize that the voice must be the Archon your sensors pick up floating nearby.`
+			choice
+				`	(Ignore it.)`
+				`	"Why shouldn't I?"`
+					goto why
+				`	"You can't tell me what to do."`
+					goto why
+			`	"You would do well to heed my warning." The thought comes again.`
+			choice
+				`	"Why should I care, i've seen plenty of 'conflict'."`
+				`	(Continue Ignoring it)`
+				`	"I can handle anything the universe throws at me, I'll be fine."`
+			label why
+			`	A feeling of anger washes over you as it says, "If the balance of this conflict is broken an entire species will perish. So if you decide to push forward do not interfere. You will be held accountable for the results of your actions."`
+			choice
+				`	"I'm just curious, I won't involve myself furthur than that."`
+					goto end
+				`	(Hold up your middle finger and fire up the engines)`
+				`	"I do as I like, I'm not scared of you or whatever is past these system."`
+			`	An ancient sigh echoes through you mind. "Such arrogance, that is always how the young work it seems. Do not take my warning lightly, as this is the only time I will give it."`
+			label end
+			`	"Remember my warning." The presence inside your head seems to fall away, and you are left talking to thin air.`
+				decline
+	on enter Gami
+		fail
+		conversation
+			`A voice says, "Human, it is stange how you arrived here, but the conflict you will see in the systems nearby is delicate, do not interfere."`
+			`	After a second, you realize that the voice must be the Archon your sensors pick up floating nearby.`
+			choice
+				`	(Ignore it.)`
+				`	"Why shouldn't I?"`
+					goto why
+				`	"You can't tell me what to do."`
+					goto why
+			`	"You would do well to heed my warning." The thought comes again.`
+			choice
+				`	"Why should I care, i've seen plenty of 'conflict'."`
+				`	(Continue Ignoring it)`
+				`	"I can handle anything the universe throws at me, I'll be fine."`
+			label why
+			`	A feeling of anger washes over you as it says, "If the balance of this conflict is broken an entire species will perish. So if you decide to push forward do not interfere. You will be held accountable for the results of your actions."`
+			choice
+				`	"I'm just curious, I won't involve myself furthur than that."`
+					goto end
+				`	(Hold up your middle finger and fire up the engines)`
+				`	"I do as I like, I'm not scared of you or whatever is past these system."`
+			`	An ancient sigh echoes through you mind. "Such arrogance, that is always how the young work it seems. Do not take my warning lightly, as this is the only time I will give it."`
+			label end
+			`	"Remember my warning." The presence inside your head seems to fall away, and you are left talking to thin air.`
+				decline
+
+mission "Mil'taj: First Contact"
+	invisible
+	landing
+	source
+		attributes "near mil'taj"
+	to offer
+		has "First Contact: Quarg: offered"
+	on offer
+		conversation
+			`Upon landing on <origin>, a small group of Quarg quickly approach you and your ship. They appear to be analyzing your ship as they look it over and speak in their own language. One of them begins to speak to your in your language.`
+			`	"What is it that brings a human this far from Earth?" it asks.`
+			choice
+				`	"I am exploring the galaxy with my Jump Drive."`
+				`	"I am looking for new species to contact while exploring."`
+			`	The Quarg begin to speak to eachother in their own language again, seemingly surprised that a human would have access to a Jump Drive.`
+			`	"It would be most wise of you to leave this place and explore elsewhere, for these systems are no place for a human."`
+			choice
+				`	"What do you mean by that?"`
+					goto mil'taj
+				`	"You can't tell me what to do."`
+				`	"Understood. I will leave."`
+					decline
+			`	"It is your life that is at risk, not ours. But if you wish to be so stubborn, then do not be surprised at what comes your way."`
+				decline
+			label mil'taj
+			`	One of the other Quarg begins speaking. "Near this region of space resides a species known as the Mil'taj. They are a violent race, likely more powerful than anything you have viewed before."`
+			`	"They are invaders. Once we watched them with mild interest as they entered our galaxy, until they found the Avendri taking their first steps into the stars."`
+			`	The Quargs skin ripples black for a moment. "Before we could react to their meeting, the Mil'taj showed their true nature and conquered the young Avendri, enslaving them."`
+			`	"We fought them for many centuries, but even we were forced into a stalemate, their abominable weapons could not be stopped, until the Drak intervened."`
+			choice
+				`	"The Drak, the aliens you take orders from?"`
+			`	"The same" The Quarg nods. "The worlds they stole were extinguished, their way home broken, their forces shattered, but still for many millennia they still fight."`
+			`	Another Quarg speaks next "Now we contain them to the Avendrian systems, ensuring they cannot enslave others, while waiting for them to decay into nothing."`
+			choice
+				`	"What do you mean decay?"`
+					goto decay
+				`	"So you are leaving these Avendri enslaved until the Mil'taj die off?"`
+					goto decay
+				`	"Sounds like these Mil'taj are already beaten, can't be that dangerous."`
+				`	"Interesting, thank you for telling me what to expect."`
+					decline
+			`	"Do not take our words as a lessening of the Mil'taj, even now they are far more powerful than any other race you will have met, even the foolish Heliarchs are less than the abominable Mil'taj."`
+			label decay
+			`	"The Mil'taj are not of this galaxy. They come from another, far from here, only in this galaxy due to a wormhole that appeared long ago. Something about our galaxy is incompatible with their biology, their lifespans are shortened and a plague like cancer culls their young randomly."`
+			`	"Their numbers have been in decline for centuries now, soon their numbers will be too small to fight, too small to continue their resistance. Then we shall free the Avendri and eliminate the Mil'taj."`
+			`	You thank it for its time, and the crowd of Quarg that has been gawking at your ship slowly disperses.`
+				decline
+
+mission "Empty System Mil'taj Goh"
+	invisible
+	landing
+	to complete
+		never
+	on enter "Mil'taj Goh"
+		fail
+		dialog "Upon entering this area, the hyperlanes indicate there should be a system here, but nothing except dust and void can be seen from your viewports."
+
+mission "Empty System Mil'taj Doh"
+	invisible
+	landing
+	to complete
+		never
+	on enter "Mil'taj Doh"
+		fail
+		dialog "Upon entering this system, you expect a star or at least some planets, but nothing except dust and void can be seen from your viewports."
+
+mission "Empty System Mil'taj Foh"
+	invisible
+	landing
+	to complete
+		never
+	on enter "Mil'taj Foh"
+		fail
+		dialog "Upon entering this place, the system you would expect to find is instead empty, nothing except dust and void can be seen from your viewports."
+
+mission "Destroyed Sun"
+	invisible
+	landing
+	to complete
+		never
+	on enter "Mil'taj Don"
+		fail
+		dialog "As you jump into the system, you find a strange sight. A collection of planets adrift through empty space, your sensors indicate all the planets are drifting in a circular pattern, slowly floating into the void beyond from the lack of a force holding them in the system."
+
+mission "Entering Mil'taj Capital"
+	invisible
+	landing
+	to complete
+		never
+	on enter "Mil'taj Toh"
+		"reputation: Mil'taj" = 10
+		"reputation: Mil'taj Subjects" = 10
+		conversation
+			`Upon entering this system, your ships sensors suddenly begin screaming at you before a pulse of energy hammers against your ship knocking you back a step. After calling for reports on the ships status, you get an urgent message from your engine bay, your jump drive was apparently overloaded by that strange energy pulse and was completely destroyed.`
+			`	Not only that but you quickly find the pulse was sent from the planet as soon as your jump was detected, and none of the nearby Mil'taj vessels seem affected.`
+			choice
+				`	Fire up the weapon systems!`
+			`	As you prepare for a fight a hail is sent from the planet, once you open the connection your computer detects a request for access to your system from an external source. You also receive a pictogram of a ship like your own being destroyed alongside the request.`
+			choice
+				`	Open your systems to the aliens, allowing them to access only non-vital information.`
+					goto diplo
+				`	No way am I trusting hostile aliens with access to information about humanity, block all hails and prepare for combat, maybe it's hopeless but I’m not risking humanity because of my own actions, I’ll go down fighting!`
+					goto pointless
+			label pointless
+			action
+				"reputation: Mil'taj" = -1000
+				"reputation: Mil'taj Subjects" = -1000
+			`	You hope that your engineers can perform a miracle and figure out how to repair the broken jumpdrive, because the capital ship aiming for you is clearly not going to give you much time to try.`
+				decline
+			label diplo
+			`	A few tense minutes pass as your systems record numerous different downloads of information, all the while the nearby Mil'tah vessals seem to simply be stationed in defensive formations, waiting it seems. As you glance at the logs you see most downloads seem to be technical manuals and dictionaries.`
+			`	Then suddenly a new hail comes through and a robotic voice states, "Human captain, land on port bay 3C in Zor'Cal spire, coordinates being transferred." and as the voice stated, a set of coordinates appear on your display indicating the largest city on the planet below. No point leaving them waiting.`
+				decline
+
+mission "A Meeting with the Mil'taj"
+	invisible
+	landing
+	to complete
+		never
+	source "Mil'taj Tul"
+	on offer
+		conversation
+			`As you enter the atmosphere of <origin> a dozen warships escort your flagship as it descends, following you until you arrive at the port you were sent to. Below you see dozens of armoured figures holding weaponry waiting, along with a small group who wear no armour.`
+			`	Upon landing you exit your ship, only to be immediately surrounded. The soldiers filter into your ship behind you and you are brought before the unarmoured ones with a gun aimed at your back.`
+			`	Most of the aliens are covered in advanced green armour, standing bipedal at around 4 foot tall with arms and legs that seem to have too many joints to count, along with an additional arm extending from their back, this one significantly longer than the others. The unarmoured ones wear few clothes, but are covered in metallic augmentations interspaced with black leathery skin which pulses disturbingly even as they stand waiting, along with two additional multi-jointed arms. Once you get close though you can tell that only the shorter arms are natural, the others looking robotic in nature.`
+			`	Other than those aliens, you also see a number of dull grey coloured raven like humanoids moving around behind the rows of soldiers. Their winged arms seem too small to fly, and they are shockingly tall at almost 9 foot from what you can see, though most move about hunched over to appear smaller. There seem to be much fewer of those creatures in the area, with only a single one among the leading group. The one with the leaders also has two additional robotic arms, styled after its natural arms instead of multi-jointed like the others.`
+			choice
+				`	"I demand to know what you want with me and my ship!"`
+				`	Wait for them to speak.`
+				`	"I mean your race no harm, I was only exploring."`
+			`	They do not acknowledge you for a time as they seem to be waiting, until you notice another of the raven like aliens approaching, it has no additional arms and it quickly hands a device to the alien at the head of the unarmoured group before making a gesture and leaving quickly.`
+			`	Attaching the device to its neck, the creature who must be the leader of the group speaks, "Human, you stand before a representative of the Mil'taj Portectorate, you are being detained for invading our claimed systems under Quarg support."`
+			`	The many creatures seem to bristle in what might be anger as it speaks the word Quarg.`
+			choice
+				`	"I don't work for the Quarg."`
+				`	"The Quarg? They never let outsiders get involved with their business."`
+				`	"I didn't mean to make you think I was invading you, I was only exploring on my own accord."`
+				`	"I hate the Quarg as much as you, they are no friends of mine!"`
+			branch "main story finished"
+				has "free worlds plot completed"
+			`	They listen to your words and discuss something together, switching between a guttural harsh sounding language, and when directing the discussion to the raven alien they use a flowing almost music like tongue.`
+			`	"Next question, a jump drive you possess, we Mil'taj took many centuries to work out its intrinsic nature and create our own. How does a lesser race come across one, if not being given it by a better?" It finishes with an unplesant undulation rippling across its chest.`
+			choice
+				`	"I have no reason to tell you where I got it from, just that it wasn't the Quarg."`
+					goto anger
+				`	"I stole it from a Korathi Raider, aliens that raid human space."`
+					goto korath
+			label "main story finished"
+			`	They listen to your words and discuss something together, switching between a guttural harsh sounding language, and when directing the discussion to the raven alien they use a flowing almost music like language.`
+			`	"Next question, a jump drive you possess, we Mil'taj took many centuries to work out its intrinsic nature and create our own. How does a lesser race come across one, if not being given it by a better?" It finishes with an unplesant undulation rippling across its chest.`
+			choice
+				`	"I gained it while fighting a species called the Pug."`
+					goto pug
+				`	"I have no reason to tell you where I got it from, just that it wasn't the Quarg."`
+					goto anger
+				`	"I stole it from a Korathi Raider, aliens that raid human space."`
+					goto korath
+			label korath
+			`	It looks upon one of its robotic arms, where a small display can be seen, it scrolls for some minutes before nodding, "Heard of these Korath we have, an idiotic race who failed when given the chance to grasp greatness. Not that they would have been allowed to grasp it here either way."`
+			choice
+				`	They seem to have a low opinion of the Korath.`
+					goto continue
+			label pug
+			`	It looks upon one of its robotic arms, where a small display can be seen, it scrolls for some minutes before shaking looking shocked, "Fought the childish ones we did, our history says they fled our wrath, it seems they may have escaped here alongside us or before us, no matter."`
+			choice
+				`	Aparently they fought the Pug too, the Pug are everywhere it seems.`
+					goto continue
+			label anger
+			`	It looks at you for a moment before giving a signal with its arms, causing the guards grasping you to slam their weapons into your back, causing you to crumple from the pain, it then speaks, "The Protectorate will not be insulted by mindless bravado, you answer when we ask."`
+			label continue
+			`	A beeping can be heard from it's limb, it turns and looks back as the one who brought it the original device returns, this time with a small black and green finger sized stick. It is handed off and slotted into the arm of the representative while the servant leaves swiftly, the Mil'taji then turns back to you.`
+			`	"We have determined through analysis of your flight logs you are telling the truth that you are no Quarg spy, but that does not mean you are an ally of the Protectorate." The guards tighten their grip on their weapons.`
+			`	Some of them speak again and the lead one holds its arms out to silence them. "We shall give you a choice, perform tasks for us and we shall no longer consider you an enemy target, or we will grant you mercy to leave our space and never return, on threat of death." It speaks the words with a finality, awaiting your choice.`
+			choice
+				`	"Will I be paid for these tasks?"`
+					goto accept
+				`	"I've never liked the Quarg, fine I'll help you with some tasks."`
+					goto accept
+				`	"Fuck you."`
+					goto die
+				`	"I'll leave then, I learnt my lesson."`
+				`	"Thank you for your mercy, I'll be leaving."`
+			`	The creature bristles for a moment before speaking, "Very well, a new drive will be installed upon your craft, leave and never return." Within 10 minutes you are taking off, spotting the alien warships also preparing to take off, apparently their mercy only extends to the atmosphere of the planet.`
+			`	Hopefully this doesn’t count as interfering to the Drak.`
+				flee
+			label die
+			`	The creature turns its head from you and speaks a quick word in its native language, a burst of energy is fired at the back of your head at point blank range, you die before you realise what's happening.`
+				die
+			label accept
+			`	The creature opens its mouth and a long tongue curls outward as it shows its pointed teeth, it might be a smile for its species. It speaks in a more energetic tone than before, "All details will be sent to your craft, along with a new jump drive installed, leave our world now, I believe you will be of great use to the Protectorate."`
+			`	The guards release you and it only takes 10 minutes before you are sitting inside your ship, prepared to leave with a new drive.`
+				accept
+	on accept
+		"reputation: Mil'taj" = 0
+		"reputation: Mil'taj Subjects" = 0
+		event "mil'taj capital untrapped"
+	on decline
+		"reputation: Mil'taj" = -1000
+		"reputation: Mil'taj Subjects" = -1000
+		event "mil'taj capital untrapped"
+
+mission "Mil'taj Job Offers"
+	invisible
+	landing
+	to complete
+		never
+	source "Mil'taj Tul"
+	to offer
+		not "A Meeting with the Mil'taj: declined"
+	on enter "Mil'taj Toh"
+		fail
+		dialog "You recieve a long transcript of what might be legal documents, followed by a much smaller message detailing your right to accept jobs from certain Mil'taj worlds."
+
+event "mil'taj capital untrapped"
+	system "Mil'taj Toh"
+		pos 717.13 21.967
+		government Mil'taj
+		arrival 1500
+		habitable 625
+		"jump range" 0
+		asteroids "small rock" 52 5.8548
+		asteroids "medium rock" 2 4.6172
+		asteroids "large rock" 46 3.57
+		asteroids "small metal" 1 2.4276
+		asteroids "medium metal" 1 5.6168
+		asteroids "large metal" 3 5.0456
+		trade Clothing 375
+		trade Electronics 852
+		trade Equipment 569
+		trade Food 385
+		trade "Heavy Metals" 801
+		trade Industrial 812
+		trade "Luxury Goods" 1468
+		trade Medical 915
+		trade Metal 297
+		trade Plastic 454
+		fleet "Small Mil'taj" 1000
+		fleet "Large Mil'taj" 3000
+		fleet "Home Mil'taj" 40000
+		object
+			sprite star/g5
+			period 10
+		object
+			sprite planet/rock12
+			distance 183.04
+			period 39.6222
+		object
+			sprite planet/dust2
+			distance 425.29
+			period 140.329
+		object "Mil'taj Tul"
+			sprite planet/ocean7
+			distance 600.65
+			period 235.533
+		object
+			sprite planet/rock19
+			distance 1536.49
+			period 963.639
+
+mission "Mil'taj: Second Contact"
+	invisible
+	landing
+	source
+		attributes "near mil'taj"
+	to offer
+		has "A Meeting with the Mil'taj: offered"
+	on offer
+		conversation
+			`Upon landing on <origin>, you notice on your ships external cameras, a team of armoured Quarg are waiting outside your landing ramp.`
+			choice
+				`	Open the ramp and greet them.`
+				`	Fire up the engines and flee.`
+					goto decline
+			`	Upon exiting your ship the Quarg march forward and declare. "We are seizing your ships sensor and navigation logs based upon your recent travel to the Mil'taj Toh system. For your own safety and that of countless others do not resist."`
+			`	They unceremoniously stride past you while another Quarg approaches. "Apologies captain but any logs of that system must be handed over to us as a matter of galactic safety."`
+			choice
+				`	"How dare you do this, I have my rights!`
+					goto rights
+				`	"This feels like an intimidation attempt."`
+					goto intimidate
+				`	"Its alright, your at war, I understand.`
+				`	Shoot the Quarg.`
+					goto die
+			`	The Quarg does a bow and after a minute the soldiers return and hand the Quarg a data chip. "Thank you for your generous cooperation Captain <last>, remember to not involve yourself with the Mil'taj, they are dangerous and difficult to predict. Nothing good comes from allying with invaders."`
+			`	They swiftly leave, and you are left to ponder whether this has put you on any lists you should be concerned about.`
+				decline
+			label rights
+			`	"None of which are applicable when dealing with threats to the galaxy itself, do not make this harder than it needs to be captain, we shall be done quickly and you may leave right after." After a minute the soldiers return and hand the Quarg a data chip.`
+			`	The Quarg stares at you for a moment. "Do not make a mistake upon choosing your allies captain. The Mil'taj are a force that brings death and destruction in their wake, and they must be exorcised from this galaxy to ensure no others suffer the fate of the Avendri."`
+			`	They swiftly leave, and you are left with a dark feeling in your stomach that won't go away. You should be careful in your future decisions. `
+				decline
+			label intimidate
+			`	The Quarg shakes its head and gives you a sad look. "If we intended to intimidate you captain, we would be more overt and effective in the attempt. We are simply ensuring fewer lives are lost in this prolonged conflict we are forced to continue."`
+			`	After a minute the soldiers return and hand the Quarg a data chip. "And do not misinterpret me captain, if we believe you are allying yourself with the invaders, you will quickly find exactly how effective at intimidation we can be."`
+			`	They swiftly leave, and you are left feeling like that was both a warning and a promise. You should porbably be carful if you don't want to make enemies here.`
+				decline
+			label decline
+			`	You are able to take off without issue. On the monitors you can see the Quarg staring at your ship as you flee.`
+				depart
+			label die
+			`	As soon as you fire the shot into the shocked Quarg's chest, a barrage of energy bolts slam into you, disintegrating you totally.`
+				die
+
+mission "Rogue Avendri Elimination 1"
+	landing
+	name "Rogue Avendri Elimination"
+	description "A group of extremist Avendri assaulted a spaceport, stealing three Bodkins along with a fleet of retrofitted Avendri ships. Find and destroy the fleet in <system> to receive (<payment>)."
+	source "Mil'taj Yun"
+	deadline 14
+	to offer
+		has "A Meeting with the Mil'taj: active"
+	to fail
+		has "Rogue Avendri Elimination 1B: offered"
+	on offer
+		conversation
+				branch "quarg hate"
+					"reputation: Quarg" <= -1
+			`Upon landing upon <planet>, you are approached by a Mil'taji. The Mil'taji says nothing as it hands you a small data stick (seemingly designed to be plugged into a computer) before turning to leave.`
+			choice
+				`	Enter your ship and plug the drive into your computer.`
+					goto continue
+				`	"Hello, can I ask you some questions?"`
+				`	Toss the stick into the bin.`
+					goto decline
+			`	The Mil'taji doesn’t look back, disappearing into a building as other Mil'taji go about their business ignoring you. You sigh and enter your ship, going to your ship board computer.`
+			label continue
+			`	At your computer you open the contents and pages of Mil'taji text appears, forcing you to scroll until you find words near the bottom that you can read.`
+			`	"Human, an offer is available for your fleet. A large group of extremist Avendri assaulted a spaceport on one of our worlds, the death toll is still being counted, but three Bodkin class interceptors were stolen, along with enough weaponry to retrofit a fleet of Avendri vessels."`
+			`	"Data suggests they are most likely within a jump of the Mil'taj Don system awaiting aid. Eliminate these rebels and ensure the Bodkins do not escape and you will be paid <payment>." The message ends abruptly. It seems the Mil'taj aren't ones to wish you luck before sending you on a mission.`
+			choice
+				`	You reply, "Alright, consider them already dealt with."`
+					goto accept
+				`	You reply, "The pay seems good, I'll take it."`
+					goto accept
+				`	You quickly type, "I'm sorry, I'm not interested in getting into a fight for the Mil'taj."`
+					goto decline
+			label accept
+			branch "quarg hate"
+				"reputation: Quarg" <= -1
+			`	You receive a confirmation ping and a reminder that you likely only have two weeks before the rebels move into hiding.`
+			`	If the Mil'taj are dealing with rebels they might not be the best ally to cosy up to. It might be a good option to take this info to the Quarg and get on their good side rather than dig yourself into a deeper hole with the Mil'taj.`
+			`	It goes without saying the Mil'taj will be pretty angry if you do that.`
+				accept
+			label "quarg hate"
+			action
+			`	You receive a confirmation ping and a reminder that you likely only have two weeks before the rebels move into hiding.`
+				accept
+			label decline
+			`	Within moments a reply is recieved, "A shame, human."`
+				decline
+	on visit
+		dialog "The rebel fleet seems to be waiting in this system, you receive hails in an alien language but cannot understand them. After receiving no reply the rebels fire up their weapons systems."
+	npc kill
+		government "Avendri Rebels"
+		system
+			near "Mil'taj Don" 1 1
+		personality target nemesis staying plunders harvests
+			confusion 20
+		ship "Bodkin"
+		ship "Bodkin"
+		ship "Bodkin"
+		fleet "Avendri Rebels"
+		dialog `The rebels have been eliminated.`
+	on complete
+		"reputation: Mil'taj" += 10
+		payment 5000000
+		dialog `You are sent a message as you land, "The Rogue Avendri fleet has been eliminated. Payment has been transmitted." You notice <payment> has been deposited into your account.`
+
+mission "Rogue Avendri Elimination 1B"
+	landing
+	name "Rogue Avendri Saved"
+	description "You helped the rogue Avendri by informing the Quarg of their location. In response a kill fleet has been sent after you by the Mil'taj for this treachery."
+	source
+		attributes "near mil'taj"
+	to offer
+		has "Rogue Avendri Elimination 1: active"
+	on offer
+		"reputation: Mil'taj" = 1000
+		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Quarg" += 5
+		"reputation: Quarg (Hai)" += 5
+		"reputation: Quarg (Kor Efret)" += 5
+		"reputation: Quarg (Gegno)" += 5
+		conversation
+			`As you land you quickly leave your ship and find the closest Quarg and inform them of the situation. "Your actions in this have been reckless captain, only bringing danger to yourself you have. We shall move to bring these rebels under our protection if they will allow us."`
+			`	A Quarg rushes over and speaks in their language hurriedly before they turn back to you. "A war fleet of Mil'taji has been sighted approaching this system, it seems their gaze you did not escape when bringing us this information, go now for this fight will not wait for you."`
+			`	You prepare for take off and recieve a forboding message from the Mil'taj directly, "Disappointed in you we are human, thought an ally you might become, this betrayal will be met with swift vengeance."`
+			choice
+				`	You suppose you can't blame them for seeing this as a betrayal.`
+					accept
+	npc kill
+		government "Mil'taj"
+		personality target heroic opportunistic vindictive unconstrained
+		system
+			distance 1
+		fleet "Mil'taj Raid"
+		dialog `	A short message is received from the Quarg planet you informed of the rebels, "Captain <last>, you have our thanks for giving us the knowledge to save the Avendri, we hope this payment sooths whatever damage the Mil'taj inflicted upon you."`
+		on kill
+			payment 2500000
+			fail
+
+mission "Mil Medical 1"
+	landing
+	name "Medical Emergency"
+	description "Stop at <destination>, collect the advanced medical supplies and transport them to Savandra in the Mil'taj Non system."
+	source "Mil'taj Ful"
+	destination "Savandra"
+	clearance
+	to offer
+		has "A Meeting with the Mil'taj: active"
+	on offer
+		conversation
+			`Upon landing upon <planet>, you see many Mil'taji rushing to repair and recover pilots from a collection of badly damaged crafts. What seems to be a senior officer with two additional arms approaches as you watch them work. It wears the translation device you saw before and speaks to you.`
+			`	"You are," It glances down at its arm before looking back at you, "the human correct, we require aid for a civilian emergency and no more military vessels can be afforded for this situation currently."`
+			choice
+				`	Nod. "Sure."`
+					goto continue
+				`	"Yes I'm the human, what help do you need?"`
+					goto continue
+				`	"Nope sorry, no humans here."`
+				`	"I'm not interested in helping the Mil'taj anymore, you will have to look somewhere else."`
+					goto decline
+			`	It double checks it's arm display before speaking, "You match the details we were given on the human, if this is humour do not waste time when our people's lives are at stake."`
+			label continue
+			`	The officer grunts as it continues, "The usual shipment of medical supplies from Savandra to Mil'taj Gun have been waylaid by a Quarg fleet, these ships are some of the survivors of the reinforcement fleet sent to repel them."`
+			`	It gestures to the many damaged craft, "Repel them we failed to do, so a fleet able to bypass the blockade is needed to ensure the supplies reach the planet within time to stop the next outbreak."`
+			`	"You are not aligned in our war, medical supplies would not make the Quarg hostile to you, and so your help we are forced to ask." Its chest writhes signalling an unknown emotion.`
+			choice
+				`	"I won't let people die needlessly, I’ll deliver the medicine."`
+				`	"I'll do it if I’m paid enough.`
+				`	"No, I'm not willing to help the Mil'taj in this way."`
+					goto decline
+			`	The officer reaches into a pocket and produces a data stick, "Payment of three million will be transferred once delivery is complete. Expected load is within 300 tons." With that the officer turns and goes back to organising the Mil'taji around the port.`
+				accept
+			label decline
+			`	"If that is your prerogative, know that many will die because of your decision here." It turns and leaves before you can reply.`
+				decline
+	on accept
+		"stored reputation: Quarg" = "reputation: Quarg"
+		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
+		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
+		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
+
+mission "Mil Medical 1B"
+	landing
+	name "Medical Emergency"
+	description "Bring vital medical supplies to <destination>."
+	source "Savandra"
+	destination "Mil'taj Gun"
+	clearance
+	deadline 3
+	cargo "medical supplies" 280 330
+	blocked `You have reached <origin>, but you need <capacity> in order to take the advanced medical supplies. Return here when you have the required space free.`
+	to offer
+		has "Mil Medical 1: done"
+	on offer
+		conversation
+			`Your ship is signalled to a large spire on the edge of a sprawling city. Hundreds of Avendri rush to load the crates holding the medical supplies into your ships, no Mil'taji can be seen in the area other than a handful of guards far off at the entrance to the spire itself.`
+			`	An Avendri wearing a translator approaches you, "Human ally of the Mil'taj Protectorate, from reports an outbreak is already on the verge of spiralling out of control upon Gun, make sure these supplies reach the planet before <date> otherwise their need will have passed." It lowers its head before whispering, "Too many will still die."`
+			choice
+				`	"Don't worry, I'm used to tight deadlines."`
+				`	"I'll make sure to get there in time!"`
+				`	"As long as I'm paid it will get there."`
+			`	"I hope your confidence is warranted. May the wind crush any Quarg in your path!" It does an elaborate gesture and moves to enter the spire, leaving you to renter your ship.`
+				accept
+	npc
+		system "Mil'taj Gon"
+		government "Quarg"
+		personality staying heroic opportunistic vindictive
+		fleet "Large Quarg"
+	on visit
+		dialog `	You land on <planet>, but realize that your escort carrying the medical supplies hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		"reputation: Mil'taj" += 10
+		"reputation: Quarg" += 1000
+		"reputation: Quarg (Hai)" += 1000
+		"reputation: Quarg (Kor Efret)" += 1000
+		"reputation: Quarg (Gegno)" += 1000
+		payment 3000000
+		conversation
+			`When you land on <planet>, your ships are almost overwhelmed as what are apparently doctors surge aboard to collect the supplies.`
+			`	You notice a handful of smaller Mil'taji outside the ship seem to have unusual growths pulsating in various positions across their body, the doctors seem to immediately begin using the medical supplies to treat the tumours, as the rest of the supplies are ferried off to other parts of planet.`
+			`	Among the throngs of doctors, you manage to notice a group of heavily armed Mil'taj collect a single armoured crate from the piles of supplies.`
+			`	A ding from your computers allows you to notice <payment> has been deposited into your account.`
+			`	You also see a message sent from an unknown source on your computer, opening it reveals a short sentence.`
+			`	"Remember the lives you have damned captain, for we shall. The Quarg will remember your actions this day." Hopefully they are just being overdramatic.`
+	on fail
+		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, leave our space and never return." Comms indicate that the formerly friendly Mil'taj world is now hostile to your systems.`
+		"reputation: Mil'taj" = 1000
+		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Quarg" >?= "stored reputation: Quarg"
+		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
+		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
+
+mission "Quarg Demand your Attention"
+	invisible
+	landing
+	to complete
+		never
+	to offer
+		has "Mil Medical 1: done"
+	on enter "Mil'taj Gon"
+		conversation
+			branch "quarg hate"
+				"reputation: Quarg" <= -1
+			`A fleet of Quarg ships sit in orbit around Mil'taj Gun, upon arrival to the system your ship is quickly hailed by the vessels, a militaristic looking Quarg greets you on your monitors, he looks surprised for a moment to see a human on his monitor.`
+			`	"Far from home your travels have brought you captain, I can only assume from the vast quantities of Mil'taji technologies our scanners are picking up, that you are here to involve yourself in our conflict." His skin shifts to a reddish colour and his gaze becomes intense through the view screen.`
+			choice
+				`	"I'm only hauling medical equipment, I have no intention of getting involved in this war."`
+					goto ignorance
+				`	"Out of my way Quarg, you can't stop me from helping the Mil'taj."`
+					goto pissed
+				`	"I've got a job to do, if I have to go through you to do it I will."`
+					goto pissed
+			label ignorance
+			`	He tilts his head, "You lack the insight to see the obvious, medical most of the supplies may be, but a small few are designed to harm rather than heal, developed to torture our kin held deep underground." He shifts red for a moment as he states, "Our kin who we shall save when enough of the abomidable defenders have perished. Jettison your cargo and leave this system."`
+			choice
+				`	"You would damn thousands to a slow death from disease to save a handful of your own, I can't abide by that."`
+					goto anger
+				`	"I didn't know they held Quarg here, I would never have accepted this job if I knew." Jettison your cargo bays, you want no part in this.`
+					goto good
+			label good
+			action
+				fail "Mil Medical 1B"
+			`	"We will not hold your ignorance against you, we never wished for this conflict to begin, we only continue it to preserve peace in the galaxy."`
+			`	"Thank you for understanding and making the right choice." Communications are cut as the Quarg ships go back to orbiting the planet.`
+				decline
+			label pissed
+			action
+				"reputation: Quarg" -= 1000
+				"reputation: Quarg (Hai)" -= 1000
+				"reputation: Quarg (Kor Efret)" -= 1000
+				"reputation: Quarg (Gegno)" -= 1000
+			`	"Your wisdom it seems is lacking, we are Quarg, break us you cannot, let you pass we will not." The Quarg ships begin to power up their weapons systems, "We shall educate you about your ignorance in this matter."`
+				decline
+			label anger
+			action
+				"reputation: Quarg" -= 1000
+				"reputation: Quarg (Hai)" -= 1000
+				"reputation: Quarg (Kor Efret)" -= 1000
+				"reputation: Quarg (Gegno)" -= 1000
+			`	"Your wisdom it seems is lacking, we are Quarg, instruct us you cannot, let you pass we will not." The Quarg ships begin to power up their weapons systems, "We shall educate you about your ignorance in this matter."`
+				decline
+			label "quarg hate"
+			action
+			`A fleet of Quarg ships sit in orbit around Mil'taj Gun, upon arrival to the system your ship is quickly hailed by the vessels, a militaristic looking Quarg greets you on your monitors, he looks surprised for a moment to see a human on his monitor.`
+			`	He then recognises your face and falls still, "<first> <last>, you are wanted for crimes against the Quarg, prepare to be boarded, resistance will be met with force." The Quarg ships begin to power up their weapons systems, they don't seem interested in talking with a criminal.`
+				decline
+
+mission "Mil Prisoner Exchange 1"
+	landing
+	name "Prisoner Exchange"
+	description "Bring the Quarg prisoners to <destination> in the Novae system to exchange them for Mil'taj prisoners."
+	source "Mil'taj Wuh"
+	destination "Dupelepe"
+	passengers 20 40
+	to offer
+		has "A Meeting with the Mil'taj: active"
+	on offer
+		conversation 
+			`Upon landing you are shocked with just how desolate the landscape is for miles around. The green spire awkwardly sitting beside a small dead lake is the only object of interest within sight, all else being grey dead rock.`
+			`	As you were distracted gazing across the land, an Avendri with an additional arm and a translation device suddenly drops from the sky beside you, apparently gliding down from the spires upper floors. "Human, you are approved to aid the Mil'taj Protectorate. I have a job only an unaffiliated third party can complete."`
+			branch brig
+				has "outfit (installed): Brig"
+			`	"Ah, apologies. Your ship is currently not suited to holding prisoners. If you are interested in helping please return with a Brig and a large passenger capacity." The Avendri makes a wide geasture and leaves you to your business.`
+				defer
+			label brig
+			choice
+				`	"Alright, tell me the job."`
+					goto continue
+				`	"Could you answer my questions if I accept?"`
+					goto sad
+				`	"I'm not taking jobs right now."`
+					defer
+				`	"I'm not interested get lost."`
+					goto decline
+			label sad
+			`	The Avendri pauses for a moment, "Details about most things I am not authorised to share. Until you are an official citizen of the Protectorate, even the simplest of our history cannot be given to an outsider."`
+			choice
+				`	"Alright, tell me the job."`
+					goto continue
+				`	"Then I have no interest in the job."`
+					goto decline
+			label continue
+			`	The Avendri lets out a strange gurgling caw in apparent happiness, "Excellent, many will be returned to their rightful homes with your help today." `
+			`	It reaches into a pouch in it's clothes and withdraws a data stick, "Details of payment are inside, I believe it is 2 million of your credits. You are needed to transfer <passengers> Quarg prisoners to the world of <destination> in the Novae system. There you will exchange them for however many Mil'taji they hold captive in their prisons."`
+			`	"The Quarg often execute any Mil'taji they capture and brainwash Avendri, but when we hold their own like this we can ensure they will also capture rather than kill Mil'taji to ensure their own are returned.`
+			`	The Avendri looks saddened as it says, "Due to this no Avendri can be exchanged, even for their own they refuse to return my captured kin, only the Mil'taji we can rescue with this trick."`
+			branch "quarg hate"
+				"reputation: Quarg" <= -1
+			choice
+				`	"Don't worry, I'll make sure they make it back safe and sound."`
+				`	"If the pay is enough I'll do any job, hand the stick over."`
+				`	"I have no interest in 'saving' Mil'taji, get someone else to do this."`
+					goto decline
+			`	With a rustle of it's feathers it does a small jump on the spot. "Brilliant, the prisoners will be loaded quickly." It brings up the mechanical arm and types something. "You are likely to need at least 250 bunks to collect the Mil'taji, I wish you smooth winds."`
+			`	After a few minutes, dozens of Mil'taji march out of the spire escorting rows of Quarg prisoners covered in restraints. They are swiftly brought aboard and you are left to deliver them.`
+				accept
+			label "quarg hate"
+			choice
+				`	"Unfortunately the Quarg hate my guts so they will probably just shoot me."`
+			action
+				fail
+				"reputation: Mil'taj" += 10
+			`	Its feathers wilt. "Ah, wish I had been told, it seems I must ask for an Avendri group to take this task. Either way the Protectorate can respect a fellow enemy of the Quarg, may your winds be swift." With that they leave.`
+			label decline
+			`	"This is an outcome I had hoped I would not have to report. I will tell my superiors of your decision, farewell human." Its feathers wilt as they turn and leave before you can reply.`
+				decline
+	on enter "Novae"
+		conversation
+			`You see a message pop up on your console, a crew member informs you one of the Quarg wishes to talk with you.`
+			choice
+				`	"The Quarg can stay quite in their cells, don't bother me about this again."`
+					decline
+				`	"Send them up, I can spare a few minutes."`
+			`	The Quarg that enters is on the larger side, struggling to get through the doorway and having to sit upon entering, "Captain, I am the representative of all the Quarg you currently hold captive. As our jailor, I must ask what you intend to do with us, now that we have been taken from the Mil'taj prisons."`
+			choice
+				`	"I'm exchanging you for Mil'taj prisoners, you will be home soon."`
+					goto continue
+				`	"I'm going to drop you all into deep space."`
+					goto shock
+			label continue
+			`	It thinks for a long time, before looking at you with an intense stare, "Do you believe the Mil'taj deserve to be free, after all they have done?"`
+			choice
+				`	"Yes, and more than you, so don't ask that again. You can leave now."`
+					decline
+				`	"Yes, no one deserves to be imprisoned."`
+					goto understandable
+				`	"No, but it's not my place to decide that."`
+					goto understandable
+				`	"No and I hate that I have to free those creatures."`
+			`	It's skin ripples pink, "We are of a mind then."`
+			label decision
+			`	"We request you do not conduct this transfer, simply drop us on Dupelepe and leave, the idea of Mil'taj being freed for our lives, would leave us wishing death was given when we failed on our mission. We will ensure you are rewarded for this act, and undoubtedly you will be counted as a friend of the Quarg for the danger you will be taking on to do this."`
+			choice
+				`	"No, no I can't, I dislike the Mil'taj but not enough to sign my own death warrant by betraying them like this. I'm sorry."`
+					decline
+				`	"I've been thinking of doing that myself, the Quarg haven't done me any wrong while the Mil'taj tried to kill me before, I'll do it!"`
+				`	"I was planning on betraying them anyway, this seems like a fine way to do it.`
+			action
+				fail
+			`	The Quarg reaches a hand out for a handshake, before standing to tell the others of your decision, "Thank you for choosing the correct choice captain, we hope the flight will be swift."`
+			label understandable
+			`	"That is an understandable stance, admirable even, but you must know the story of our situation. We were captured on a simple research mission, underestimated the Mil'taj's protectiveness of one ruined planet, tortured and killed in experiments using abominable machines. Our current number is a mere tenth of what it was upon our capture."`
+				goto decision
+			label shock
+			`	The Quarg seems in shock at your response, it's skin rippling black, "What sort of madman are you, you would make an enemy of both the Quarg and Mil'taj, for no discernible reason?!"`
+			choice
+				`	"Wait no I was joking, sorry. I'm just transporting you for a prisoner exchange."`
+					goto continue
+				`	"Honestly, I just hate both species, crew take this one back to their cell and don't let them see the others. Actually, just kill it and take the rest to the loading bay, might as well do this now!"`
+					goto madness
+			label madness
+			action
+				fail
+				"reputation: Mil'taj" = -1000
+				"reputation: Mil'taj Subjects" = -1000
+				"reputation: Quarg" -= 1000
+				"reputation: Quarg (Hai)" -= 1000
+				"reputation: Quarg (Kor Efret)" -= 1000
+				"reputation: Quarg (Gegno)" -= 1000
+			`	The looks of terror you see on each Quargs face as you jettison them into the vacuum of space is pleasing, perhaps now these old ignorant bastards will take you seriously as a threat.`
+			`	A crew member rushes to inform you of the Quarg craft in system powering their weapons as they pick up the dying life signs of their kin. You wanted a fight, time to have it. This should be fun!`
+
+mission "Mil Prisoner Exchange 1B"
+	landing
+	name "Prisoner Exchange"
+	description "Bring the Mil'taj prisoners back to <destination>."
+	source "Dupelepe"
+	destination "Mil'taj Wuh"
+	passengers 200 250
+	blocked `You have reached <origin>, but you need <capacity> in order to exchange the prisoners. Return here when you have the required rooms free.`
+	to offer
+		has "Mil Prisoner Exchange 1: done"
+	on offer
+		conversation
+			`The world of <origin> is not exactly a place you can call comfortable, but it suits the Quarg just fine. As soon as you land a group of armoured Quarg are waiting at the bottom of your landing ramp. "Captain, we received word of the exchange, once we determine the prisoners are safe we will allow you to take the Mil'taj."`
+			branch "quarg free"
+				not "Mil Prisoner Exchange 1: failed"
+			`	The Quarg work quick, making sure the prisoners are all accounted for before signalling for the Mil'taji to be brought. Hundreds of restrained Mil'taj are brought to your ship while the Quarg and offloaded. None look malnourished nor mistreated, but the colours the Quarg turn indicate they are not happy to see them go free.`
+			choice
+				`	"Well our business is done, time to go get paid."`
+					accept
+				`	"Your people are safe, you should be happy."`
+				`	"Finally I can go."`
+					accept
+			`	The nearest Quarg turns to you, "Are you happy when the killer of your family is freed so another of your family is not slain as well?" The Quarg soon indicate you are to leave, it's best to go while they are honouring your neutrality.`
+				accept
+			label "quarg free"
+			action
+				fail
+			`	The Quarg are confused initially when the prisoners leave your ship unbound. But once the leader of the prisoners begins talking, they all seem to understand what happened. "Thank you Captain, I hope no trouble is brought to your travels from your aid of our peoples."`
+	npc
+		system "Novae"
+		government "Quarg"
+		personality staying heroic opportunistic vindictive
+		fleet "Large Quarg"
+	on visit
+		dialog `	You land on <planet>, but realize that your escort carrying the Quarg hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		"reputation: Mil'taj" += 10
+		payment 2000000
+		conversation
+			`You land and the Mil'taji flood from the ship, they spend little time crying nor talking with the Mil'taj that greet them, instead sorting into groups and quickly entering the spire, until you are left with just the Avendri from before.`
+			`	"I thank you for your aid this day human, you have saved numerous lives and proven yourself capable, I hope to see your name among our ranks in the future." They bow and briskly stride to the spires entrance.`
+			`	As you enter your ship a ping tells you that <payment> has been transferred to your account, a job well done.`
+	on fail
+		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, leave our space and never return." Comms indicate that the formally friendly Mil'taj world is now hostile to your systems.`
+		"reputation: Mil'taj" = 1000
+		"reputation: Mil'taj Subjects" = -1000
+
+mission "Mil Prisoner Exchange 1C"
+	landing
+	name "Rogue Avendri Saved"
+	description "You betrayed the Mil'taj by freeing the Quarg prisoners, they are unlikely to let you get away with this."
+	source
+		attributes "near mil'taj"
+	to offer
+		has "Mil Prisoner Exchange 1B: failed"
+		not "Mil Prisoner Exchange 1: failed"
+	on offer
+		"reputation: Quarg" += 5
+		"reputation: Quarg (Hai)" += 5
+		"reputation: Quarg (Kor Efret)" += 5
+		"reputation: Quarg (Gegno)" += 5
+	npc kill
+		government "Mil'taj"
+		personality target heroic opportunistic vindictive unconstrained
+		system "Mil'taj Toh"
+		fleet "Mil'taj Raid"
+		dialog `	A short message is received from the Quarg you dropped off, "Captain <last>, you have our thanks for returning us to our home, we hope this payment sooths whatever damage the Mil'taj inflicted upon you."`
+		on kill
+			payment 4000000
+			fail
+
+mission "Final Mil'taj Test A"
+	landing
+	name "Final Test"
+	description "The final test before the Mil'taj can trust you, there is no going back once accepted. Find and destroy the Quarg in <system> and defend the construction team to receive (30.000M Credits)."
+	source "Mil'taj Tul"
+	destination "Mil'taj Dun"
+	to offer
+		has "Mil Prisoner Exchange 1B: done"
+		has "Mil Medical 1B: done"
+		"reputation: Mil'taj" >= 30
+	on offer
+		conversation
+			`Returning to Mil'taj Tul, you quickly find your ship being intercepted by Bodkins which seem to be diverting you to land on port 3C in Zor'Cal spire, similar to your first visit to the capital of the Mil'taj.`
+			`	Exiting your craft you are met with the group who originally interrogated you when you were trapped by the unknown weapon. This time all of them wear translation devices on their necks.`
+			`	"Welcome human, the final test of your dedication to becoming an ally of the Protectorate has been decided. You must decide if you wish to fight with us, or against us." The leader stares you down, his skin perfectly still.`
+			choice
+				`	"I would need to hear the task before I come to any conclusions."`
+					goto continue
+				`	"Will I be able to purchase your technology once this is done?"`
+				`	"Sure, I'm up to help in any way I can."`
+					goto continue
+				`	"No, I've seen enough to know I have no interest in helping you further."`
+					goto decline
+				`	Turn and walk back onto your ship.`
+					goto decline
+			`	The Mil'taji bears his teeth as he states, "Our weapons are for trusted members of the Protectorate. This test will see if you are worthy to be counted among our numbers."`
+			label continue
+			`	The Mil'taji leader steps forward and pulls out a metallic box which opens to reveal a data stick. "Designed to fool even Quarg scanners, the details are all inside. A small fleet will be assigned to assist you for this task, and to also monitor your fleet’s abilities."`
+			`	The Avendri steps beside the Mil'taji rising to its full height. "A Quarg fleet patrols the graveyard of the first Mil'taj world settled within this galaxy. The former capital of the Empire before the Protectorate was formed from its ashes. They defile the tomb world with their mere presence, and are there primarily to stop us from studying the collapsed wormhole that sits in that system."`
+			`	A frail Mil'taji, who can only walk due to cybernetic enhancements steps to the other side. "They wish us to slowly die a cowardly death. Ridding us of any chance to escape this fate through military might, lest the dreaded Drak return. Or through peaceful research to find a way home, which is constantly hampered by Quarg interference."`
+			`	The leader continues, "Destroy this fleet, and bring a construction Halberd upon the planet so it may build a temporary spire to secure the system. Ensure it is not harmed by Quarg reinforcements." They allow you to process the information before continuing.`
+			`	"Know that to help us, means making the slaves of the Drak your enemy, forcing you to face their full might from now onward.`
+			branch "quarg hate"
+				"reputation: Quarg" <= -1
+			choice
+				`	"The Quarg are going too far, I will help you against them."`
+				`	"The Quarg are bad business partners, hoarding technology and restricting trade, we would be better with them gone."`
+				`	"Killing the Quarg was all you had to say."`
+				`	"No, I'm not willing to actually fight the Quarg, that seems like suicide."`
+					goto decline
+				`	"I see no reason to help you in this fight directly, I would prefer to just stay as a neutral ally."`
+					goto decline
+			label end
+			`	Handing you the box, the leader suddenly grips your shoulders with its two mechanical arms and pulls you close, "We are putting great trust in you, the first outsider ally the protectorate has ever had. Perhaps a great change will be brought by you, maybe our people are not as doomed as we thought."`
+			`	You are allowed to step back and can see the Mil'taji are almost vibrating from how much their skin ripples and quakes. The Avendri snaps its beak periodically. They seem quite excited to see how you fare in this test.`
+			`	Seeing nothing else to do, you venture back into your ship holding the metal box and prepare for take-off.`
+				accept
+			label "quarg hate"
+			choice
+				`	"Killing the Quarg was all you had to say."`
+					goto end
+				`	"I never meant to make an enemy of the Quarg on my own, allying with their enemy seems like suicide, no."`
+					goto decline
+				`	"I see no reason to help you in this fight directly, I would prefer to just stay as a neutral ally."`
+					goto decline
+			label decline
+			`	"As I thought, outsiders cannot be trusted. Leave our systems, we have no desire for an outsider to have free passage through our home." They make no move to harm you, but you are sure they are angered by your decision.`
+				decline
+	on visit
+		dialog `	You land on <planet>, but realize that there are still Quarg ships in orbit, better deal with them before they destroy the Halberd.`
+	npc accompany save
+		government "Mil'taj"
+		system "Mil'taj Toh"
+		personality target escort unrestricted
+		ship "Halberd"
+	npc
+		government "Mil'taj"
+		system "Mil'taj Toh"
+		personality escort unrestricted
+		ship "Ballista"
+		ship "Bodkin"
+		ship "Bodkin"
+		ship "Bodkin"
+	npc kill
+		government "Quarg"
+		system "Mil'taj Don"
+		personality target heroic opportunistic vindictive staying
+		ship "Quarg Wardragon"
+		ship "Quarg Wardragon"
+		ship "Quarg Wardragon"
+	on decline
+		"reputation: Mil'taj" = 1000
+		"reputation: Mil'taj Subjects" = -1000
+
+mission "Final Mil'taj Test B"
+	landing
+	name "Final Test"
+	description "The final test before the Mil'taj can trust you, there is no going back once accepted. Find and destroy the Quarg in <system> and defend the construction team to receive (<payment>)."
+	source "Mil'taj Dun"
+	destination "Mil'taj Dun"
+	deadline 3
+	to offer
+		has "Final Mil'taj Test A: done"
+	on offer
+		conversation
+			`As you land on <origin> you see the Halberd qucikly land nearby and dozens of Mil'taji in environmental suits begin offloading supplies, along with large vehicals pulling buildings straight from the Halberds cargo bay.`
+			`	While you would love to stay and watch them build their signiture spire, you are needed in orbit to protect the planet while they work.`
+			choice
+				`	Time for the real fight.`
+					accept
+	npc kill
+		system "Mil'taj Don"
+		government "Quarg"
+		personality target entering staying heroic opportunistic vindictive unconstrained
+		fleet "Large Quarg"
+	on visit
+		dialog `	You land on <planet>, but realize that there are still Quarg ships in orbit, better deal with them before they destroy the spire.`
+	on complete
+		payment 30000000
+		event "Mil'taj Dun: inhabited"
+		conversation
+			`You land and a Mil'taj officer approaches your hatch, "The defensive spire is constructed, fleets will arrive to reinforce and resupply shortly, you are to report back to the Kalisk's for your reward." It stares for a moment.`
+			choice
+				`	"Yes?"`
+				`	Turn and enter your ship, time to go.`
+					launch
+			`	They continue, "We are appreciative for the aid you have rendered us, the Quarg response was larger than expected, that you defeated them is a clear sign that you are worthy to be one of us." It performs a wide armed gesture and leaves you to your business.`
+				launch
+	on fail
+		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, you have failed this test, leave our space and never return." Comms indicate that the formerly friendly Mil'taj worlds are now hostile to your fleet.`
+		"reputation: Mil'taj" = 1000
+		"reputation: Mil'taj Subjects" = -1000
+
+event "Mil'taj Dun: inhabited"
+	planet "Mil'taj Dun"
+		attributes "Mil'taj"
+		landscape land/canyon0
+		description `Extraordinarily barren, there are only ruins on this planet, all life snuffed out suddenly one day. What was once populated in the billions as the first planet the Mil'taj colonized, Mil'taj Dun is left as a memory of past mistakes, along with dozens of other planets purged by the Drak, leaving the once great Mil'taj as a small mark on the galaxy.`
+		spaceport `A small temporary defensive spire is placed on a large rocky outcropping on the northern side of the planet. Mil'taj ships are parked for refuelling while construction teams are building a small settlement around the spire.`
+		"required reputation" 0
+		bribe 0.03
+		security 0
+	system	"Mil'taj Don"
+		fleet "Small Mil'taj" 4000
+		fleet "Large Mil'taj" 8000
+		fleet "Large Quarg" 30000
+	system "Mil'taj Ton"
+		fleet "Small Mil'taj" 6000
+		fleet "Large Mil'taj" 10000
+		fleet Quarg 26000
+	system "Mil'taj Won"
+		fleet "Small Mil'taj" 6000
+		fleet "Large Mil'taj" 10000
+
+mission "Quarg Ultimatum"
+	invisible
+	landing
+	to complete
+		never
+	source "Mil'taj Tul"
+	to offer
+		has "Mil Prisoner Exchange 1B: done"
+		has "Mil Medical 1B: done"
+		"reputation: Mil'taj" >= 30
+	to fail
+		has "Final Mil'taj Test A: declined"
+	on enter "Mil'taj Don"
+		"reputation: Quarg" -= 1000
+		"reputation: Quarg (Hai)" -= 1000
+		"reputation: Quarg (Kor Efret)" -= 1000
+		"reputation: Quarg (Gegno)" -= 1000
+		conversation
+			branch "quarg hate"
+				"reputation: Quarg" <= -1
+			`The Quarg ships you are seeking pop up on your display as you jump into the system, you are quickly hailed by the vessels, a militaristic looking Quarg greets you on your monitors, he could even be the same one you spoke with before.`
+			`	"Captain, I will not ask why you bring Mil'taj to us, for the answer is plain to see. You have chosen a side in a war you should never have even been aware of. Prolonging a conflict that should have ended long ago if the vermin were less rooted in."`
+			`	The Quarg's colouration is distinctly red throughout his speech, "If you are forcing yourself upon this aged battle, we will meet you with all our might, and you shall be forever marked for this transgression."`
+			choice
+				`	"You are trying to cause a genocide, if opposing that makes me the bad guy then sure."`
+					goto sad
+				`	"Surrender, and I might spare you."`
+					goto pissed
+				`	"It's just business, nothing personal."`
+					goto pissed
+			label sad
+			`	It shakes its head in a deliberately human gesture, "Defeating you will prevent a genocide, you have deluded yourself with blind empathy. I am sorry it must come to this."`
+				decline
+			label pissed
+			`	"Those like you are a blight upon the fabric of this galaxies peace, I will take no pleasure from ending your life, but will be brought great joy from stopping the tragedies you will bring."`
+				decline
+			label "quarg hate"
+			action
+			`The Quarg ships you are seeking pop up on your display as you jump into the system, you are quickly hailed by the vessels, a militaristic looking Quarg greets you on your monitors, he could even be the same one you spoke with before.`
+			`	He recognises your face and turns a deep red, "<first> <last>, a criminal turned Mil'taj ally, you cannot be allowed to live, prepare to face the full force of my fleet." The Quarg ships begin to power up their weapons systems, it seems you're famous.`
+				decline
+
+mission "Mil'taj Ceremony"
+	invisible
+	landing
+	source "Mil'taj Tul"
+	to offer
+		has "Final Mil'taj Test A: done"
+	on offer
+		conversation
+			`Descending through the atmosphere you are sent a message to land at the largest spire on the planet, reaching almost 3 kilometres into the sky and bearing over a dozen landing pads for even the largest of ships.`
+			`	Upon landing, you are greeted by Mil'taj guards at your landing ramp, and the one in the lead steps forward, a translation device connected to its neck. "Your presence is requested by the High Kalisk's."`
+			`	They don’t seem interested in telling you more and proceed to escort you deep into the bowels of the spire which soon open up into a large auditorium where a large number of Mil'taji and Avendri await.`
+			`	Other than the guards, all within this chamber seem to have two additional arms, though a small number in elevated seating near the back bear four additional arms and are covered head to toe in cybernetic augmentations. What little discussion was being had is silenced as you enter and one of the four armed Mil'taji stands.`
+			`	"Voting of the Kalisk's on the human’s citizenship status shall now begin. Human, make your case to the Mil'taj Protectorate on why you should receive this honour that none outside our two races has ever been given." They don't take much time to get to the point it seems.`
+			choice
+				`	"I have made myself an enemy of the Quarg and wish to fight alongside you against them. I cannot do that as an outsider."`
+				`	"Your people are fighting a losing war, and I believe I can tip the tide and give you the chance to obtain peace after all this time."`
+				`	"I have helped your people in numerous ways. Why do I need to list them when my actions can speak for me?"`
+			`	The hall fills with discussion as those Mil'taj at the back stare you down, each judging you with an inscrutable gaze.`
+			`	It takes ten minutes before the hall is silenced again by a loud chime echoing from the back. "Deliberation has ended and all Kalisk's present have uploaded their vote. Approval has been given. We oldest of the Protectorate declare that this choice is to be honoured and that the human known as Captain <first> <last> shall be an honorary citizen from this day onwards. Do not fail us."`
+			`	As the announcement is made, other than some quiet murmurs from the crowd, everyone seems to take the announcement without much fanfare. The guards usher you out of the hall and back to your ship, where a lone Mil'taji awaits – the one who spoke to you the last two times you were here, just without his entourage.`
+			`	"Welcome to the Protectorate Captain <last>. My name is Gal'Za, and I shall by the Kalisk assigned to you for the foreseeable future. You will find your digital licence sent directly to your ship’s computers. I am glad my initial decision to vouch for your use by the Protectorate worked out as well as it has."`
+			choice
+				`	"Can I actually ask you questions now?"`
+					goto questions
+				`	"So I can buy Mil'taj weapons now?"`
+					goto weapons
+				`	"Thank you for the honour."`
+					goto honour
+				`	"It's about time.`
+			`	"The oldest take their time to deliberate, but when you fought the Quarg on our behalf, their choice became inevitable." Gal'Za makes a wide sweeping gesture with their arms and shows their teeth to you. "But I believe you would have questions for me. Ask them and I shall attempt to give an accurate answer.`
+				goto continue
+			label honour
+			`	"The honour should be ours. You fought the Quarg, making enemies of them and their masters. The burden you took upon yourself in doing so shows your worthiness." Gal'Za makes a wide sweeping gesture with their arms and shows their teeth to you. "But I believe you would have questions for me, ask them and I shall attempt to give an accurate answer.`
+				goto continue
+			label questions
+			`	Gal'Za shows their teeth as they speak, "You deserve answers to the many questions you no doubt have amassed on your travels among our stars, I shall attempt to give you the best explanations that I am able to."`
+				goto continue
+			label weapons
+			`	"A warrior inside and out – a respectable trait to have, especially with the enemies we contend with. I can say you are now able to buy our simplest weapons like any citizen, but I can answer any questions you have, not simply those about violence."`
+			label continue
+			choice
+				`	"The Quarg said the Avendri were slaves to the Mil'taj?"`
+					goto lies
+				`	"You seem to have a problem with terrorists."`
+					goto terror
+				`	"What's with the arms?"`
+					goto mecha
+				`	"How did you translate my language so fast?"`
+					goto translate
+				`	"Can you tell me about how your people came to this galaxy?"`
+					goto wormhole
+				`	"Why are your people dependant on frequent medical aid?"`
+					goto medical
+				`	"What the hell is that ship patrolling this system?"`
+					goto ship
+				`	"I've learned enough, thank you for telling me all this."`
+					goto end
+			label lies
+			`	They close their arms together and say, "The Mil'taj empire from before was flawed, our people came here to conquer and colonize new worlds, as we had already claimed the whole of our home galaxy. Our people separated servant species into castes, with all below us no matter their abilities nor loyalty."`
+			`	Gal'Za continues in a proud tone of voice, "The Protectorate was formed after the great purge as an alliance of the two remaining Avendri worlds and the remnants of our people. Our race knew we could not survive as we had. Keeping those we claim to rule as slaves was foolish when what we needed was loyalty and strength of will. Those ideals are greater than any ideas of racial superiority, and we have been stronger ever since we turned our back on the old ways."`
+			`	Taking a moment to calm themselves, they look you in the eyes. "Dedication to the Protectorate, and to our mutual fight for survival is all that truly matters. Perhaps when the war is won and peace reigns, our offspring will see things differently, but for those surviving now, that is the only truth we can rely on."`
+			`	"Do you have any other questions?"`
+				goto continue
+			label terror
+			`	Their skin undulates unpleasantly. "There are those among the population that have unfavourable views of my kind, believing that for our errors in the past we deserve death or enslavement. Truly they are a violent group that only seek to destabilise us enough for the Quarg to slaughter us on their behalf, cowards that they are."`
+			`	"They don't fight for freedom as they are already as free as we can be under the Quarg, and they don't fight for justice as our worlds burned for what we did as punishment for our mistakes.” Their skin ripples violently as the words leave their mouth. “Many of our people must work long and hard to keep us all alive, not just Avendri but Mil'taji as well, but they only see their own working and dying, blind to our burdens and struggles even as we are right beside them.`
+			`	Gal'Za becomes quiet and steadies themselves. After taking the moment to calm down they say, "Apologies I lost myself for a moment. I have lost many friends to their pointless attacks. Did you have another question?"`
+				goto continue
+			label mecha
+			`	Their long mechanical arms flex and twist in the air, "A symbol of office, the more augmented spinal arms you have installed, the higher your rank. A single arm is for soldiers, local leaders, and those who have shown loyalty beyond the norm. Two arms are for Kalisk's like myself, officers, diplomats, and other high ranking figures."`
+			`	"Finally we have those with four arms. They are the High Kalisk's, the oldest living Mil'taji and Avendri, and the leaders of the Protectorate. Our people's life spans are three centuries in your years, but augmentation can extend that indefinitely, albeit at exorbitant cost. The High Kalisk's are more machine than organic now, but their minds are still flesh and they have always led us without issue."`
+			`	"A single spinal arm requires a tiny amount of material from our home galaxy, meaning each is a treasure and an honour to receive. We discovered Avendri are compatible with the technology after adjustments, but the procedure even with my kind is dangerous, and one in five operations result in failure, inflicting disability or death on the subject. Thus, only those truly willing to serve the Protectorate choose to undertake the procedure."`
+			`	"Do you have any other questions?"`
+				goto continue
+			label translate
+			`	"A simple question with a simple answer: we did not. Long before we even entered this galaxy, an artificial mind was created for the sole purpose of understanding the many languages of our subjects. It has always been an important artefact of our people, and it was brought to this galaxy when the Quarg were first encountered.`
+			`	"It is sealed deep within this spire, but connected to most computerised systems we maintain to allow it to continually be updated with any deviations our languages may take. Most basic vocal augmentations allow Avendri to Mil'taji translations, but external hardware is required for your unique tongue."`
+			`	"Do you have any more questions?"`
+				goto continue
+			label wormhole
+			`	"Our home galaxy was finally subjugated after a series of long bloody wars many thousands of your years ago. The final of these wars was with the Pug, who, rather than lose, fled our galaxy entirely, leaving empty systems and worlds for our people to find."`
+			`	"When colonizing this abandoned space, the wormhole to this galaxy suddenly appeared over the Pug's former capital during its colonization."`
+			`	"At first, they only sent scouts and the occasional survey fleet to detect any Pug that might have used it to flee, but we only found empty space and a new frontier to claim. Over what I believe to be approximately two millennia of your years, the Mil'taj empire explored and expanded into this Galaxy, limited by the few hyperdrive connections they found, until the Quarg attempted contact."`
+			`	"Fighting quickly started. They saw our race as invaders and the empire desired an enemy to fight. At first, the Quarg did little other than skirmish, as their Jumpdrives meant our people could never launch proper attacks. In this time of tension, a young race within a nearby hyperlane network began to colonise systems just as prototype Jumpdrives were developed: the Avendri."`
+			`	"The empire struck quickly. New Jumpdrives were used to rapidly conquer the Avendri and prepare the race for subjugation. That’s when the Quarg truly began attacking. Entire worlds were burned, thousands of ships fought bitterly and, despite what you may think, the empire was winning, as our war fleets poured in for this new conflict."`
+			`	Gal'Za stops briefly, the skin upon the sides of his face pulling inward in a painful expression, "Then the Drak involved themselves. Our weapons were like toys to them and our greatest ships like grass to be cut. We had lost the minute they entered the conflict, and when the wormhole collapsed, we had nowhere to run."`
+			`	He takes another pause before continuing, "The only planets spared were those with a majority Avendri population. All others were stripped of life or erased from the galaxy entirely. Plagues of disease decimated the remaining population, and the Quarg swept in, shattering our few surviving fleets. Today there might be less than a billion Mil'taj in this galaxy, but when we were at our peak, we numbered in the trillions."`
+			`	"But that is all history, now. We fight for our future, not the past. Any more questions?"`
+				goto continue
+			label medical
+			`	"A disease we cannot stop nor slow down is eating away at our people. When we first came to your galaxy, our advanced medical technologies allowed us to easily treat the cancerous decay we experienced here, but once the purge happened, many of those supplies were either impossible to replenish or knowledge of how to replicate them was lost. What we can create now is barely able to keep the disease at bay."`
+			`	Their skin ripples in violent waves as they continue, "Those of us who have reached old age tend to have a resilience to the disease, but our young are afflicted by it frequently and randomly. Once a single Mil'taji develops the tell-tale tumours, the disease begins to spread like a wave until we can treat all affected, or until there are no more Mil'taji for it to claim."`
+			`	"Please ask another question now. I do not wish to talk more of this."`
+				goto continue
+			label ship
+			`	A large toothy smile emerges on Gal'Za's face. "Our race’s ultimate weapon, an Erebus class warship, able to defeat even the Quarg’s mightiest ships. Few remain, as their hulls are formed from a material not native to this galaxy. They are able to weld themselves together even after the most violent of impacts and deadliest of weapons.`
+			`	"I have only seen one used in combat twice, each time against Quarg scout ships sent to this system. The footage of its defense of the capital has been used in numerous broadcasts, primarily to show that no matter how strong the Quarg may seem, even they must break and falter against our might. We have not seen them attempt to scout this system in many decades, they may have realised the futility at long last." `
+			`	"Do you have another question?"`
+				goto continue
+			label end
+			`	"Hopefully these insights help you understand our plight better, and illustrate how thankful we are that someone without a connection to our conflict has decided to lend us aid. I thought that you would be a great ally for the Protectorate the first time we talked, and that I was proven right, I can only be thankful for."`
+			`	Gal'Za grips your shoulders and attempts to mimic a human smile. "I have personally put in a recommendation that, under future supervision, if you prove yourself an even greater asset to our cause, that you are to be granted access to our military technology. Do not let me down."`
+			`	They step back, make the open arm gesture you have seen before and leave, allowing you to make your way onto your ship to find your new digital license ready to be used.`
+				decline
+	on decline
+		set "license: Mil'taj Citizen"
+		"reputation: Mil'taj" += 100
+		"reputation: Mil'taj Subjects" += 100
+		"reputation: Drak Mil" = -1000
+
+mission "Mil'taj Archon Anger"
+	invisible
+	landing
+	to offer
+		has "Mil'taj Ceremony: declined"
+	to complete
+		never
+	on enter Deba
+		fail
+		conversation
+			`Before the ship has even finished jumping, a deep feeling of anger boils deep in your chest. It burns through your body, making you feel like you are on fire. "We warned you child, not to interfere."`
+			`	The archon is all you can see as you look up, as if you are floating in space mere inches from its form. "Yet you chose the side of the invaders, to go against the Quarg and try to upset this delicate balance that has been kept for millennia."`
+			choice
+				`	"The Mil'taj aren’t monsters, they deserve a chance to live!"`
+				`	"You destroyed their way home, they aren't a threat to the galaxy!"`
+					goto danger
+				`	"I am myself, and I choose my own path, not you, not gods, not anybody else!`
+					goto arrogance
+			`	The sight of atrocities and horrors flies past your eyes. "They have done enough to condemn their entire race, nothing they could do now can change that."`
+			label danger
+			`	"They enslaved thousands of species, fought destructive wars for no reason but arrogance. They have not changed, they have simply become cages animals." You see cities being bombed, worlds being burned and numerous aliens you have never seen before being worked in massive facilities, often to death.`
+				goto end
+			label arrogance
+			`	The burning wells up threatening to erupt. "Your race is the shortest lived and yet, the most arrogant we have met in eons. Even the Korath never reached such disgusting pride as you hold within."`
+			choice
+				`	Smile. "Thanks for the compliment."`
+				`	"End this and fight me, I can tell you can't kill me like this, you already would have if you could."`
+			label end
+			`	"My vigil is to ensure no Mil'taj escape this prison, you shall not leave now that you are one of them." The burning suddenly fades into a dull ache in your chest. Your hearing returns as your crew are screaming at you to get up. The Archon has been registered as hostile by your sensors.`
+				decline
+	on enter Gami
+		fail
+		conversation
+			`Before the ship has even finished jumping, a deep feeling of anger boils deep in your chest. It burns through your body, making you feel like you are on fire. "We warned you child, not to interfere."`
+			`	The archon is all you can see as you look up, as if you are floating in space mere inches from its form. "Yep you chose the side of the invaders, to go against the Quarg and try to upset this delicate balance that has been kept for millennia."`
+			choice
+				`	"The Mil'taj aren’t monsters, they deserve a chance to live!"`
+				`	"You destroyed their way home, they aren't a threat to the galaxy!"`
+					goto danger
+				`	"I am myself, and I choose my own path, not you, not gods, not anybody else!`
+					goto arrogance
+			`	The sight of atrocities and horrors flies past your eyes. "They have done enough to condemn their entire race, nothing they could do now can change that."`
+			label danger
+			`	"They enslaved thousands of species, fought destructive wars for no reason but arrogance. They have not changed, they have simply become cages animals." You see cities being bombed, worlds being burned and numerous aliens you have never seen before being worked in massive facilities, often to death.`
+				goto end
+			label arrogance
+			`	The burning wells up threatening to erupt. "Your race is the shortest lived and yet, the most arrogant we have met in eons. Even the Korath never reached such disgusting pride as you hold within."`
+			choice
+				`	Smile. "Thanks for the compliment."`
+				`	"End this and fight me, I can tell you can't kill me like this, you already would have if you could."`
+			label end
+			`	"My vigil is to ensure no Mil'taj escape this prison, you shall not leave now that you are one of them." The burning suddenly fades into a dull ache in your chest. Your hearing returns as your crew are screaming at you to get up. The Archon has been registered as hostile by your sensors.`
+				decline
+
+mission "Mil'taj Zun Intro"
+	invisible
+	landing
+	source "Mil'taj Zun"
+	to offer
+		has "Mil'taj Ceremony: declined"
+	on offer
+		conversation
+			`As your ship drops through the icy skies of Mil'taj Zun, you see no sight of the usual spires of the Mil'taj, nor any kind of civilization in any direction. When you are close to giving up on finding a landing pad, your ship is sent a set of coordinates over a vast field of icy plains.`
+			`	Arriving at the destination you also see no signs of life, but moments after positioning your ship over the fields the ground begins tearing open. A multiple kilometre tear in the earth opens up, hydraulics pulling the very ground open, revealing under the dirt layers of steel and metal.`
+			`	Your console pings a message from inside the hole. "Captain <last>, please enter the complex carefully, we do not wish you to damage your ship upon your first visit to Zun." It seems your meant to fly inside, fun.`
+			`	Being extremely careful, you lower your ship through almost a kilometre of stone before coming out into a vast cavernous complex. Dozens of Mil'taj ships can be seen docked here, alongside vast amounts of weaponry and outfits.`
+			`	You park on a designated landing pad, and are quickly greeted outside your boarding ramp by a Mil'taji Kalisk. "Captain, this is Mil'taj Zun, the reason we can fight the Quarg. The Drak destroyed the surface, but fortunately this complex survived."`
+			choice
+				`	"How can this place even exist, shouldn't the ceiling collapse?"`
+					goto collapse
+				`	"Amazing, can I buy some of those parked ships?"`
+			`	A series of vibrations ripple across the Kalisk's body along with a coughing sound. "I can understand your eagerness, our ships are mighty indeed. Unfortunately citizens are not authorised to use our warships. But any Avendri craft are built for civilian duty, so they are available for you to peruse."`
+			`	Placing their hands on your shoulders they continue. "We hope you understand the importance of this facility. If the Quarg were to destroy this place, we would be neutered in our war with them. If the time comes we hope to have you alongside us in the defence of this world."`
+				goto buy
+			label collapse
+			`	"The techniques our people used to build this facility are unknown even to us. It was a grand secret project of the old empire that only reached far enough to become a storage hub. Even that is of great benefit to us currently, especially due to its defensible and hidden nature."`
+			`	Placing their hands on your shoulders they continue. "We hope you understand the importance of this facility. If the Quarg were to destroy this place, we would be neutered in our war with them. If the time comes we hope to have you alongside us in the defence of this world.`
+			label buy
+			choice
+				`	"I'm a citizen now, it would be my pleasure to fight alongside you."`
+				`	"My ship is always ready to fight the Quarg."`
+				`	"You can count on me as long as there are credits to earn."`
+					goto laugh
+			`	"Thank you, now onto why I waylaid you like this. We wish to give you access to a job only those trusted by the Protectorate can perform."`
+			`	Releasing you, they pull out a data stick. "Certain materials we use are of increasingly limited supply, we only transport them under the heaviest of guard."`
+			`	"Your fleet took on a Quarg attack fleet and meets the specifications to perform this duty. Whenever we require assistance we shall post a job under an encrypted frequency. The decoder is within this drive."`
+			`	Handing you the data stick, they quickly add. "Make note that the Quarg often are monitoring for any sign of this material. If they catch wind of a delivery they will send a significant force to destroy you. So while we make every effort to keep these deliveries secret we are dealing with a persistent foe."`
+				decline
+			label laugh
+			`	The skin across the Kalisk ripples in waves while they make a choking sound from deep within their throat. "That is the gall that Gal'Za spoke of in his description of you. I am glad to see his messages were accurate. Now onto the reason for this discussion." We wish to give you access to a job only those trusted by the Protectorate can perform."`
+			`	Releasing you, they pull out a data stick. "Certain materials we use are of increasingly limited supply, we only transport them under the heaviest of guard."`
+			`	"Your fleet took on a Quarg attack fleet and meets the specifications to perform this duty. Whenever we require assistance we shall post a job under an encrypted frequency. The decoder is within that drive."`
+			`	Handing you the data stick, they quickly add. "Make note that the Quarg often are monitoring for any sign of this material. If they catch wind of a delivery they will send a significant force to destroy you. So while we make every effort to keep these deliveries secret we are dealing with a persistent foe."`
+				decline
+
+mission "Mil'taj Avendaria Intro"
+	invisible
+	landing
+	source "Avendaria"
+	to offer
+		has "Discovered Wanderer Space: failed"
+		has "Mil'taj Ceremony: declined"
+	on offer
+		conversation
+			`The skies of Avendaria are saturated with small craft and spires that pierce the clouds. Buildings are built vertically, and you can often see Avendri simply gliding down from high floors to lower ones.`
+			`	Now that you are a Protectorate citizen, perhaps you can ask an Avendri some questions from their point of view?`
+			choice
+				`	Flag down a nearby Avendri.`
+				`	I'm not that curious.`
+					decline
+			`	An Avendri guard with a translator comes over at your gestations, and asks what you require. When you inform them that you wish to talk to a local about the planet and Protectorate, they nod and bring you to a small information booth beside the spaceport.`
+			`	Equipping their own translator, the Avendri behind the desk speaks in an upbeat voice. "It is an honour meeting the outsider who has sided with us. Whatever you wish help with I hope I can be of service, you may call me Siclipia."`
+			choice
+				`	"Other than your name, what do I refer to you as, I’ve just been calling everyone it so far?"`
+			`	Their head tilts to the side, before they let out a loud series of caws. "Ah I think I can see your confusion. I am an egg laying Avendri, we are shorter than our male counterparts and our neck feathers are more refined." She presents up her neck feathers proudly. "Do your people need two to reproduce as well?"`
+			choice
+				`	"Yes, of course, isn't that the baseline?"`
+				`	"That seems to be the norm from my travels?"`
+			`	"We are also like that, but the Mil'taj are different. Their reproductive cycle involves a single Mil'taji collecting genetic material of multiple others, before a new Mil'taji is created in a long process." Her claws tap on the desk. "It can sound like mating, but it is more of a clinical process to them from what I have heard."`
+			`	"Well now that the awkwardness is out of the way, feel free to ask me any questions you might have."`
+			label questions
+			choice
+				`	"What do the Avendri think of the Mil'taj?"`
+					goto mil
+				`	"Do you know anything about a species called the Wanderers?"`
+					goto wanderers
+				`	"Are you all actually free citizens?"`
+					goto slaves
+				`	"That's everything I wanted to know, thank you."`
+					goto end
+			label slaves
+			`	Pulling a wing over her face, Siclipia lets out a short shrill sound. "You should learn to not ask such a humiliating question as that. We earned our freedom and place in the Mil'taj Protectorate. None may question that."`
+			`	She pulls her arm down and clicks her beak loudly. "When the purge came for the Mil'taj, we were not idle. Asala and Karkola, the first High Kalisk’s of our people, led two simultaneous rebellions against the Mil'taj Empire. They defeated our slavers on Avendaria and Savandra in a sudden organised uprising, catching the Mil’taji completely off-guard."`
+			`	“They prepared every ship they could for the inevitable counterattack. For days they waited ready, but what came was not what they ever expected. Fleets of damaged Mil’taji craft swarmed our systems, all carrying one thing. Refugees.`
+			`	She waits a moment before continuing.`
+			`	"The purge had come so suddenly, our untouched worlds only found out once it had already been completed. The Drak cut hyperlanes and altered the very distances between stars, ensuring the purge was quick and terrifyingly effective. The great empire we had risen to fight was already crushed. The leaders who caused our suffering dead, or participating in a suicidal charge against the Quarg blockades."`
+			`	Her beak rattles as she speaks. "And we found that our brothers and sisters, who had been taken from our worlds that we had sought to free. The very ones which the rebellion was built upon, were butchered along with our slavers. Given no chance to escape, the Drak’s efficiency ensured none survived.`
+			`	"Our leaders were the best of us, they did not slaughter the survivors for their empires crimes. We took them in, healed them and most importantly, gained their respect and trust. Soon after the Protectorate was formed, the ones who had participated in our suffering were punished, and as a united people we moved to a brighter future."`
+			`	"At least, we would have if the Quarg did not continue their violent and pointless war of genocide against those we forgave millennia ago." Siclipia looks into your eyes in silence.`
+			`	Suddenly she drops the look letting our a joyful caw. "Apologies if I sounded too grim for a moment. I had to ensure you knew how the average Avendri would feel being asked such an insulting thing. This is all history any Avendri would know, High Kalisk Asala herself still guides us to this day, so the fact some still think the Mil’taji are our enemies is a frustrating fact to many of us."`
+			`	"Moving on, I hope that helped with your insight into our people. Any other questions?"`
+				goto questions
+			label mil
+			`	"I assume you are not asking for the usual, 'they are our comrades in arms' speech. I have my own opinions, but the general consensus is usually mutual respect. The Quarg claim to wish to 'save' us, but they destroy ships filled with Avendri just as often and those with Mil'taji inside."`
+			`	She picks some loose feathers from her arms in a lazy gesture. "Some still hold old grudges over how our species were treated in the past. Most of us though, are simply trying to survive in this Quarg made cage."`
+			`	"Also of note, every year more Avendri pass the training to be allowed into the military, with almost a third of all ships you see in our space piloted by one of us. `
+				goto questions
+			label wanderers
+			`	Siclipia pulls up a panel from the desk and begins typing, before looking back to you. "I can't find anything about a species named that that in our databases. Could you describe them for me?" You give a brief description of the Wanderers and their culture to her as she continues typing.`
+			`	"It doesn’t seem like the Mil'taj have ever encountered a species matching that description, but I can understand why you would ask. From your description they seem strikingly similar to ourselves, perhaps we hold some connection to them from ancient times that is unrecorded." Marking something down she closes the panel.`
+			`	"I have logged this down as a special inquiry, perhaps someone will be able to find something eventually. Sorry that I couldn't be of more help, do you wish to know anything else?"`
+				goto questions
+			label end
+			`	"You are welcome, but I must say something else. While I glossed over some of our problems, they do exist. We struggle to feed everybody, medical talents are monopolised by the Mil'taji, for understandable reasons, and many of cities are dangerous, forcing routine patrols to keep the factories running".`
+			`	"Our people suffer under this constant war. Many blame the Mil'taji, most the Quarg, some both. The only difference between them is that one fights alongside us for their own freedom. While the other fights to extinguish an entire race for crimes they have already paid for."`
+			`	"Now if that was all you needed. I hope your winds guide you gracefully Captain <last>.`
+				decline
