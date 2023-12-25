@@ -10,6 +10,12 @@ It is recommended to avoid the Mil'taj storyline until you can at least defeat a
 ATM you can choose to either align yourself with the Mil'taj against the Quarg, or make them an enemy. I do not plan to ever have a Quarg side to the campaign, they just want you to piss off.
 
 
+Currently something I cannot do myself is art. So the licences are just wanderer licences until I can get custom ones.
+
+For the rest of the plugin all art assets are taken from dead plugins that years ago I worked on updating to the then current game version.
+
+The idealised goal would be to replace them all with custom assets just for this plugin, but I doubt that will happen, so I'm mainly hoping someone will be interested in adding their own custom made Mil'taj licences for the plugin.
+
 Reccomended Plugins:
 
 https://github.com/1010todd/Beyond-the-Sky (Beyond the Sky) (Makes the Quarg actually scary as a threat and makes the higher tier Mil'taj ships make sense in comparison)
