@@ -7271,9 +7271,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Mil'taj Protectorate
 
 
-[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 10.43 mb | 2023-12-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 10.43 mb | 2023-12-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
 Author: Demolish238 | Category: Races <br>
-[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2023-12-25) <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2023-12-26) <br>
 
 >This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
 >
