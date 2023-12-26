@@ -206,8 +206,8 @@ mission "Entering Mil'taj Capital"
 					goto pointless
 			label pointless
 			action
-				"reputation: Mil'taj" = -1000
-				"reputation: Mil'taj Subjects" = -1000
+				"reputation: Mil'taj" <?= -1000
+				"reputation: Mil'taj Subjects" <?= -1000
 			`	You hope that your engineers can perform a miracle and figure out how to repair the broken jumpdrive, because the capital ship aiming for you is clearly not going to give you much time to try.`
 				decline
 			label diplo
@@ -294,12 +294,12 @@ mission "A Meeting with the Mil'taj"
 			`	The guards release you and it only takes 10 minutes before you are sitting inside your ship, prepared to leave with a new drive.`
 				accept
 	on accept
-		"reputation: Mil'taj" = 0
-		"reputation: Mil'taj Subjects" = 0
+		"reputation: Mil'taj" <?= 0
+		"reputation: Mil'taj Subjects" <?= 0
 		event "mil'taj capital untrapped"
 	on decline
-		"reputation: Mil'taj" = -1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 		event "mil'taj capital untrapped"
 
 mission "Mil'taj Job Offers"
@@ -424,7 +424,7 @@ mission "Rogue Avendri Elimination 1"
 					goto continue
 				`	"Hello, can I ask you some questions?"`
 				`	Toss the stick into the bin.`
-					goto decline
+					decline
 			`	The Mil'taji doesn’t look back, disappearing into a building as other Mil'taji go about their business ignoring you. You sigh and enter your ship, going to your ship board computer.`
 			label continue
 			`	At your computer you open the contents and pages of Mil'taji text appears, forcing you to scroll until you find words near the bottom that you can read.`
@@ -478,8 +478,8 @@ mission "Rogue Avendri Elimination 1B"
 	to offer
 		has "Rogue Avendri Elimination 1: active"
 	on offer
-		"reputation: Mil'taj" = 1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 		"reputation: Quarg" += 5
 		"reputation: Quarg (Hai)" += 5
 		"reputation: Quarg (Kor Efret)" += 5
@@ -582,15 +582,15 @@ mission "Mil Medical 1B"
 		payment 3000000
 		conversation
 			`When you land on <planet>, your ships are almost overwhelmed as what are apparently doctors surge aboard to collect the supplies.`
-			`	You notice a handful of smaller Mil'taji outside the ship seem to have unusual growths pulsating in various positions across their body, the doctors seem to immediately begin using the medical supplies to treat the tumours, as the rest of the supplies are ferried off to other parts of planet.`
+			`	You notice a handful of smaller Mil'taji outside the ship seem to have unusual growths, pulsating in various positions across their body. The doctors seem to immediately begin using the medical supplies to treat the tumours, as the rest of the supplies are ferried off to other parts of planet.`
 			`	Among the throngs of doctors, you manage to notice a group of heavily armed Mil'taj collect a single armoured crate from the piles of supplies.`
 			`	A ding from your computers allows you to notice <payment> has been deposited into your account.`
 			`	You also see a message sent from an unknown source on your computer, opening it reveals a short sentence.`
 			`	"Remember the lives you have damned captain, for we shall. The Quarg will remember your actions this day." Hopefully they are just being overdramatic.`
 	on fail
 		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, leave our space and never return." Comms indicate that the formerly friendly Mil'taj world is now hostile to your systems.`
-		"reputation: Mil'taj" = 1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 		"reputation: Quarg" >?= "stored reputation: Quarg"
 		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
 		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
@@ -601,8 +601,11 @@ mission "Quarg Demand your Attention"
 	landing
 	to complete
 		never
+	source "Savandra"
 	to offer
-		has "Mil Medical 1: done"
+		has "Mil Medical 1: offered"
+	to fail
+		has "Mil Medical 1: declined"
 	on enter "Mil'taj Gon"
 		conversation
 			branch "quarg hate"
@@ -707,6 +710,7 @@ mission "Mil Prisoner Exchange 1"
 				fail
 				"reputation: Mil'taj" += 10
 			`	Its feathers wilt. "Ah, wish I had been told, it seems I must ask for an Avendri group to take this task. Either way the Protectorate can respect a fellow enemy of the Quarg, may your winds be swift." With that they leave.`
+				decline
 			label decline
 			`	"This is an outcome I had hoped I would not have to report. I will tell my superiors of your decision, farewell human." Its feathers wilt as they turn and leave before you can reply.`
 				decline
@@ -757,12 +761,12 @@ mission "Mil Prisoner Exchange 1"
 			label madness
 			action
 				fail
-				"reputation: Mil'taj" = -1000
-				"reputation: Mil'taj Subjects" = -1000
-				"reputation: Quarg" -= 1000
-				"reputation: Quarg (Hai)" -= 1000
-				"reputation: Quarg (Kor Efret)" -= 1000
-				"reputation: Quarg (Gegno)" -= 1000
+				"reputation: Mil'taj" <?= -1000
+				"reputation: Mil'taj Subjects" <?= -1000
+				"reputation: Quarg" <?= -1000
+				"reputation: Quarg (Hai)" <?= -1000
+				"reputation: Quarg (Kor Efret)" <?= -1000
+				"reputation: Quarg (Gegno)" <?= -1000
 			`	The looks of terror you see on each Quargs face as you jettison them into the vacuum of space is pleasing, perhaps now these old ignorant bastards will take you seriously as a threat.`
 			`	A crew member rushes to inform you of the Quarg craft in system powering their weapons as they pick up the dying life signs of their kin. You wanted a fight, time to have it. This should be fun!`
 
@@ -810,8 +814,8 @@ mission "Mil Prisoner Exchange 1B"
 			`	As you enter your ship a ping tells you that <payment> has been transferred to your account, a job well done.`
 	on fail
 		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, leave our space and never return." Comms indicate that the formally friendly Mil'taj world is now hostile to your systems.`
-		"reputation: Mil'taj" = 1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 
 mission "Mil Prisoner Exchange 1C"
 	landing
@@ -837,6 +841,30 @@ mission "Mil Prisoner Exchange 1C"
 			payment 4000000
 			fail
 
+mission "Mil'taj Failure A"
+	invisible
+	landing
+	source "Mil'taj Tul"
+	to offer
+		has "Rogue Avendri Elimination 1: offered"
+		has "Mil Prisoner Exchange 1: offered"
+		has "Mil Medical 1: offered"
+		"reputation: Mil'taj" <= 29
+	on offer
+		conversation
+			`Returning to Mil'taj Tul, you quickly find your ship being intercepted by Bodkins which seem to be diverting you to land on port 3C in Zor'Cal spire, similar to your first visit to the capital of the Mil'taj.`
+			`	Exiting your craft you are met with the group who originally interrogated you when you were trapped by the unknown weapon. Guards surround the landing pad, and seem ready to spring into action if you try anything.`
+			`	"Human, we have seen that you are not fully aligned with our cause." The leader stares you down, his skin perfectly still. "I believed you could be an asset to us. An ally from outside our two races to turn the tide of this war. I was wrong."`
+			`	"We are providing you with 300 million credits, and the demand to leave our space and never return. We would like our parting to be amicable, as you have not shown you are against our cause, but unfortunately we cannot allow an outsider within our space who is not fully aligned with us."`
+			`	"You will be stripped from our records and you will be treated as an invader once again if you venture back within our space. Do not treat this as an insult, not all are able to conform to the needs of the Protectorate, as this war has forced us to choose our allies carefully."`
+			`	Mechanical arms move to block your sight of the leaders face. "I do hope your fleet is fast, to ensure you can flee before the Erebus uses you as a test of its might." Leaving you with that warning, they all leave until only the guards remain, waiting for you to leave.`
+			`	It seems your efforts to make the Mil'taj allies has been in vain, you wonder if you could have done anything differently as you enter your ship and prepare for a frenzied flight to freedom.`
+				flee
+	on decline
+		payment 300000000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
+
 mission "Final Mil'taj Test A"
 	landing
 	name "Final Test"
@@ -844,7 +872,7 @@ mission "Final Mil'taj Test A"
 	source "Mil'taj Tul"
 	destination "Mil'taj Dun"
 	to offer
-		has "Mil Prisoner Exchange 1B: done"
+		has "Rogue Avendri Elimination 1: done"
 		has "Mil Medical 1B: done"
 		"reputation: Mil'taj" >= 30
 	on offer
@@ -918,8 +946,8 @@ mission "Final Mil'taj Test A"
 		ship "Quarg Wardragon"
 		ship "Quarg Wardragon"
 	on decline
-		"reputation: Mil'taj" = 1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 
 mission "Final Mil'taj Test B"
 	landing
@@ -957,8 +985,8 @@ mission "Final Mil'taj Test B"
 				launch
 	on fail
 		dialog `	An incoming transmission is received from the Mil'taj, "Disappointed in you we are human, thought an ally you might become, you have failed this test, leave our space and never return." Comms indicate that the formerly friendly Mil'taj worlds are now hostile to your fleet.`
-		"reputation: Mil'taj" = 1000
-		"reputation: Mil'taj Subjects" = -1000
+		"reputation: Mil'taj" <?= -1000
+		"reputation: Mil'taj Subjects" <?= -1000
 
 event "Mil'taj Dun: inhabited"
 	planet "Mil'taj Dun"
@@ -994,10 +1022,10 @@ mission "Quarg Ultimatum"
 	to fail
 		has "Final Mil'taj Test A: declined"
 	on enter "Mil'taj Don"
-		"reputation: Quarg" -= 1000
-		"reputation: Quarg (Hai)" -= 1000
-		"reputation: Quarg (Kor Efret)" -= 1000
-		"reputation: Quarg (Gegno)" -= 1000
+		"reputation: Quarg" <?= -1000
+		"reputation: Quarg (Hai)" <?= -1000
+		"reputation: Quarg (Kor Efret)" <?= -1000
+		"reputation: Quarg (Gegno)" <?= -1000
 		conversation
 			branch "quarg hate"
 				"reputation: Quarg" <= -1
@@ -1131,7 +1159,7 @@ mission "Mil'taj Ceremony"
 		set "license: Mil'taj Citizen"
 		"reputation: Mil'taj" += 100
 		"reputation: Mil'taj Subjects" += 100
-		"reputation: Drak Mil" = -1000
+		"reputation: Drak Mil" <?= -1000
 
 mission "Mil'taj Archon Anger"
 	invisible
