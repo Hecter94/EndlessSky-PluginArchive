@@ -7,7 +7,6 @@ So rather than uploading a massive plugin that turns away many people by its she
 
 I am also working on an independent plugin for the Shields Up 'Mil'taj' race, since that was where I put the most effort and had the most interest when making Amalgamation back in the day.
 
-
 This Plugin adds a new armoury outfit that allows you to equip powerful boarding weaponry, while costing upkeep and space. A smaller outfit space expansion, external fuel pods, extended bunk rooms, a handful of basic human outfits to add a slight bit of variation and huge tier 5 radiant engines along with a small tier 0.
 
 No other plugins are needed with this and implementation into the grander game is minimal outside of outfitters, since most of these are mostly for player use rather than to make AI ships more interesting.

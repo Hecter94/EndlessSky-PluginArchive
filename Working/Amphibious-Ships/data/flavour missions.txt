@@ -1,0 +1,111 @@
+phrase "Navarch Ship Favorites (Captain)"
+	word
+		`the Supravitae. It's our mainstay flagship for a reason: Carrying a pair of our hyperdrive malformers, plus its own fighter complement, and logistical support facilities makes it our magnum opus," He chuckles.` 3
+		`the Epiregalimen. Its fighter capacity can't be beat; I'd argue it should replace the Supravitae as our capital flagship," He laughs, "Might lack punch of its own, but it can lay down the heat just the same."` 2
+		`the Imperium. It was once our only heavy auxiliary vessel, you know; back before we had the Parvregalimen or Dominium to carry cargo, or the Microphylum to transport our lot around. In my opinion, we should've just accepted perfection when we'd made it and focused R'n'D on other warships."` 2
+		`the Parvregalimen. It's not the biggest ship, nor the most combat-capable, but it's excellent for mining with its good mix of cargo space and a generous capacity for fighters. It also helps that it's not too awfully slow as far as carriers go." He grins again.`
+		`the Phylum. They're cooking up good stuff deep in the research labs on Resei; and the Phylum's among the premier showcases of that. It really is a shame they don't play around with beams very often; I've had quite good fun commanding THELs in my day," He laughs.`
+		`the Dominium, in its standard configuration. It's a real hunk of a ship, and it's a pain in the tail to unload in smaller ports, but there's nothing that'll get more gear moving for the price," He says.` 2
+		`the Dominium, with its experimental twist. The combination of stealth-carrying and its powerful long-ranged blasters make it a great support ship, and it still carries enough cargo for us to make some credits on the side." He nods self-affirmatively.`
+		`the Regalis. It's our old reliable beast of a warship, old as dirt and just as solid under duress. Sure, more modern superweapons might make its main guns feel less potent nowadays, but there's thousands of 'em still kicking for a reason." He slaps his thigh with a loud sound, as if to prove his point.`
+		`the Regio. Sure, it isn't our biggest carrier anymore, but it's stuck around despite its age for a good reason. I highly doubt it'll get phased out any time soon, even with the behemoth that is the Epiregalimen trying to kick it to the curb," He predicts.` 2
+		`the Subsectio. Outriggers have been old news since I was crawling, but there's something to be said for the versatility they offer a ship at stations with the ability to change them around. Sure, fighters can have their guts ripped out to accomodate cargo, but a fighter can't go carrying other fighters or Ransacker launchers." He taps his chin thoughtfully.`
+		`the Subfamilia. Our smaller ships don't get much love nowadays, but they still fulfill important roles; generally as missile boats. Ransackers are potent, especially against big swarms; and their huge area denial potential makes even one Subfamilia a mobile space hazard in our favor," He says.`
+		`the Divisio. It's the oldest of our battleship designs still in service today; it's small by modern standards, but back then it was the biggest and meanest ship we fielded, for fear that the Quarg might try to focus anything larger. Granted, a fair amount of them have been decomissioned by now, but during the peak days of our un-exiled war machine, there was an estimate that one in every ten ships was a Divisio; and that includes fighters!" He laughs.`
+		`the Regnum. It's been the standard for our carriers since before our exile; it even predates the Divisio! Some captains say it's so old we were using similar designs back when we were a civilization around humanity's level," He explains, "I can't say I buy it going that far back, but it's certainly been around for a good chunk of our history."`
+
+mission "Navarch Small Talk I"
+	source
+		government "Navarch"
+	to offer
+		and
+			random > 85
+			has "First Contact: Navarchs: declined"
+	on offer
+		conversation
+			`As you walk into the spaceport, there seems to be a significant amount of Navarchs here; given their general demeanor, they likely wouldn't take issue with you striking up some conversation.`
+			choice
+				`	(Don't talk for now.)`
+					defer
+				`	(Approach a set of dockworkers.)`
+					goto dockworks
+					to display
+						and
+							not "asked about massive ships"
+							not "asked about workdays"
+				`	(Approach a captain.)`
+					goto captain
+
+			label dockworks
+			`	A pair of Navarch dockworkers perk up as you approach. One of them speaks up, "Do you need something, human?" He asks.`
+			choice
+				`	"What's it like to work on such massive ships?"`
+					goto massiveships
+					to display
+						and
+							not "asked about massive ships"
+				`	"What are your workdays like?"`
+					goto workdays
+					to display
+						and
+							not "asked about workdays"
+
+			label massiveships
+			action
+				set "asked about massive ships"
+			`	The dockworks take a moment to ponder your question. "Well, it certainly keeps things busy," The first one remarks with a chuckle, "There's plenty of us to go around, though; work's easy when there's a few thousand of us handling any given task."`
+			`	The other dockwork nods. "Usually, it's the small ships that give us trouble; when a Regio or an Epiregalimen land to get all their fighters fixed? THAT'S a handful," He laughs.`
+			`	You nod a bit and take in the information, bantering with the dockworkers a bit more before preparing to leave.`
+				goto end
+
+			label workdays
+			action
+				set "asked about workdays"
+			`	One of the dockworks chuckles. "It's not often two days are exactly alike; each ship is big enough that we can go years without doing the exact same job," He replies.`
+			`	His compatriot briefly turns to him. "Well, unless we're on fighter duty. That'd drive anybody insane," The second Navarch snorts.`
+			`	"What's so bad about fighter duty?" You ask.`
+			`	The second Navarch laughs. "Individually, not much, but I'm sure you've seen our carriers. When we've got some hundred fighters scheduled for full-maint, it's a scramble to get any and all deck space cleared out for all the incoming ships. Plus, we usually work in units on fighters, so it's not uncommon we're doing the same job several times in a row," He explains.`
+			`	You nod a bit, unable to suppress a smile at the mental image of a human shipyard panicking to open up repair bays for the fighter payload of one of the big Navarch carriers. After a bit more less-interesting banter, you walk back to your ship.`
+				goto end
+
+			label captain
+			`	You approach a Navarch in a particularly detailed uniform. He smiles at you, bearing many long, pointy teeth. "Ah, the visitor among us! How can I help you?" He asks.`
+			choice
+				`	"Why do you hate the Quarg?"`
+					goto quarg
+					to display
+						and
+							not "asked about quarg"
+				`	"Did your kind always have those claws?"`
+					goto claws
+					to display
+						and
+							not "asked about claws"
+				`	"I'm curious as to your favorite ship, actually."`
+					goto favoritecaptain
+
+			label quarg
+			action
+				set "asked about quarg"
+			`	The Navarch's face turns into an earnest smile. "Well, 'hate' isn't the right word; we're warriors, and the Quarg are among the few races in the galaxy that we can comfortably call our equals," He explains, "We respect them as equals, and strive to engage them in combat. Quite frankly, I believe they wish the same, given that they've employed the automata to test our mettle."`
+			`	You nod and ponder this for a moment; the Quarg despise war from what you've seen, yet the Navarch makes an interesting point.`
+			`	The Navarch captain continues. "We've been told many times our warlike ways are unusual among the galaxy, so I can't blame your misunderstanding. I hope I've eased some of your concerns," He concludes, beginning to walk off.`
+			`	You thank him for his time and head back to your ship.`
+				goto end
+
+			label claws
+			action
+				set "asked about claws"
+			`	The captain laughs. "Our bodies nowadays are more our own than nature's," The Navarch explains, "Our ancient ancestors were much more eel-like than we are now; much of our early history mentions a lack of legs, lackluster claws, and feeble, soft skin. However, that all changed during the Recreation: Our forefathers instituted a massive genetic engineering campaign. We evolved ourselves where nature refused to, into the much more land-friendly forms you see now."`
+			`	You nod, unable to help but compare this to stories of the creation of the Alphas. You keep that comparison to yourself.`
+			`	"Of course, we hold a great respect for those forebearers; even if their bodies were inferior, their minds were just as sharp as ours today; if not even moreso," He adds.`
+			`	You thank the Navarch for his time and walk off.`
+				goto end
+
+			label favoritecaptain
+			`	The captain ponders this question for a moment. "Well, I can't say I've ever been asked that before," He replies, "But if I had to pick one, I'd probably say ${Navarch Ship Favorites (Captain)}`
+				goto end
+
+			label end
+			``
+				defer
