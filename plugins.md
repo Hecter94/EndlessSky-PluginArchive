@@ -490,9 +490,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Hilo2000 Arena/icon.png' height='100'></img><br>
 
 
-[Hilo2000.Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hilo2000.Arena.zip) | 28.72 kb | 2023-11-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hilo2000%20Arena/) <br>
+[Hilo2000.Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hilo2000.Arena.zip) | 28.72 kb | 2023-12-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hilo2000%20Arena/) <br>
 Author: Mielo Symeonidis | Category: Cheats <br>
-[https://github.com/Hilo2000/arena/blob/main/](https://github.com/Hilo2000/arena/blob/main/) (last commit 2023-11-25) <br>
+[https://github.com/Hilo2000/arena/blob/main/](https://github.com/Hilo2000/arena/blob/main/) (last commit 2023-12-27) <br>
 
 >This plugin adds an arena with multiple hard and easy challenges.
 >
@@ -4040,11 +4040,12 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ---
 
 ### QOL-Outfits
+<img src='Working/QOL-Outfits/icon.png' height='100'></img><br>
 
 
-[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.64 mb | 2023-12-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2023-12-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2023-12-23) <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2023-12-27) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
@@ -4059,7 +4060,6 @@ I decided that while I wasn't satisfied with Amalgamation as a whole, many of th
 So rather than uploading a massive plugin that turns away many people by its sheer size again, I would upload this, a small quality of life plugin that adds many of the smaller outfits I personally believe make building ships more fun overall.
 
 I am also working on an independent plugin for the Shields Up 'Mil'taj' race, since that was where I put the most effort and had the most interest when making Amalgamation back in the day.
-
 
 This Plugin adds a new armoury outfit that allows you to equip powerful boarding weaponry, while costing upkeep and space. A smaller outfit space expansion, external fuel pods, extended bunk rooms, a handful of basic human outfits to add a slight bit of variation and huge tier 5 radiant engines along with a small tier 0.
 
@@ -7269,11 +7269,12 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ---
 
 ### Mil'taj Protectorate
+<img src='Working/Mil%27taj Protectorate/icon.png' height='100'></img><br>
 
 
-[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 10.43 mb | 2023-12-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 10.52 mb | 2023-12-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
 Author: Demolish238 | Category: Races <br>
-[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2023-12-26) <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2023-12-27) <br>
 
 >This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
 >
@@ -7292,7 +7293,7 @@ It is recommended to avoid the Mil'taj storyline until you can at least defeat a
 ATM you can choose to either align yourself with the Mil'taj against the Quarg, or make them an enemy. I do not plan to ever have a Quarg side to the campaign, they just want you to piss off.
 
 
-Currently something I cannot do myself is art. So the licences are just wanderer licences until I can get custom ones.
+Currently something I cannot do myself is art. So the mil'taj licences are just wanderer licences until I can get custom ones.
 
 For the rest of the plugin all art assets are taken from dead plugins that years ago I worked on updating to the then current game version.
 
@@ -8128,9 +8129,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 12.3 mb | 2023-12-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/) <br>
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 13.46 mb | 2023-12-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/) <br>
 Author: Zoura | Category: Ships <br>
-[https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships) (last commit 2023-12-19) <br>
+[https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships) (last commit 2023-12-27) <br>
 
 >Adds sea-to-space ships to Endless Sky.
 >
@@ -8142,7 +8143,7 @@ Author: Zoura | Category: Ships <br>
  This is a plugin for Endless Sky adding a T3-ish race whose ships and weapons are inspired by modern day naval ships. The ships added range from pesky missile boats all the way to super battleships and heavy carriers, with powerful fighters to compliment them.
 Currently the plugin features:
 - 35 new systems
-- 25 new ships: 11 Warships, 3 Dedicated Carriers, 6 Logistical Ships (1 of which has a special variant), 2 Outriggers (with 5 uniquely sprited and statted variants each), 2 Fighters, and 1 Drone.
+- 26 new ships: 11 Warships, 4 Dedicated Carriers, 6 Logistical Ships (1 of which has a special variant), 2 Outriggers (with 5 uniquely sprited and statted variants each), 2 Fighters, and 1 Drone.
 - 20 new weapons
 - A new engine set (6 thrusters, 6 steerings)
 - 27 unique outfits
