@@ -15,6 +15,8 @@ Reccomended Plugins:
 
 https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protectorate) (My other plugin)
 
+https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
+
 Used Plugins:
 
 https://github.com/Amazinite/Shields-Up (Shields Up)

@@ -22,6 +22,8 @@ https://github.com/1010todd/Beyond-the-Sky (Beyond the Sky) (Makes the Quarg act
 
 https://github.com/demolish238/QOL-Outfits (QOL outfits) (My other plugin)
 
+https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
+
 Used Plugins:
 
 https://github.com/Amazinite/Shields-Up (Shields Up) (The original creator of the Mil'taj)

@@ -114,19 +114,19 @@ mission "Scrapyard Kor Sestor Hostile to Hai"
 
 event "Kor Sestor Hostile to Hai"
 	government "Kor Sestor"
-		"attitude toward"
-			"Kor Mereti" -.01
-			"Wanderer" -.01
-			"Republic" -.01
-			"Merchant" -.01
-			"Navy (Oathkeeper)" -.01
-			"Syndicate" -.01
+		add "attitude toward"
 			"Hai" -.01
 			"Hai Merchant" -.01
 			"Hai Merchant (Human)" -.01
 			"Hai Merchant (Sympathizers)" -.01
 			"Hai (Unfettered)" -.01
 			"Hai (Wormhole Access)" -.01
+#			"Kor Mereti" -.01
+#			"Wanderer" -.01
+#			"Republic" -.01
+#			"Merchant" -.01
+#			"Navy (Oathkeeper)" -.01
+#			"Syndicate" -.01
 
 
 
@@ -223,6 +223,41 @@ mission "Scrapyard Bore Fah Attack"
 		payment 500000
 		dialog `The authorities of <planet> reward you with <payment> for helping to defend against the alien threat.`
 
+
+
+mission "Scrapyard Sera Natta Expeditionary Fleet"
+	landing
+	invisible
+	destination Olohoa
+	to offer
+		has "event: Sestor Expeditionary Fleets"
+	on offer
+		event "scrapyard sestor expeditionary fleets bunrodea update"
+	on enter "Sera Natta"
+		dialog `It's a Kor Sestor expedtionary fleet. They can not be allowed to land!`
+	npc kill
+		system "Sera Natta"
+		government "Kor Sestor"
+		personality target waiting staying
+		fleet
+			names "kor sestor"
+			variant
+				"Grakerat 572"
+				"Tercheldar 150" 4
+				"Skoretak 13" 8
+		dialog `The Sestor fleet has been defeated. You should check <planet> for any signs of a Sestor incursion.`
+	on complete
+		dialog "Fortunately, there are no signs that the Sestor have landed on <planet>..."
+
+event "scrapyard sestor expeditionary fleets bunrodea update"
+	system "Sera Natta"
+		add fleet "Kor Sestor Expedition" 80000
+	government "Kor Sestor"
+		add "attitude toward"
+			"Bunrodea" -0.01
+			"Bunrodea (Erabu)" -0.01
+			"Bunrodea (Megasa)" -0.01
+			"Bunrodea (Guard)" -0.01
 
 
 
@@ -360,9 +395,6 @@ mission "Scrapyard Obsolete Transmitter Distress Signal"
 
 
 
-
-
-
 mission "Scrapyard Stakoshstar 1"
 	minor
 	name "Sestor Expeditionary Fleet"
@@ -455,4 +487,28 @@ mission "Scrapyard Stakoshstar Expeditions Patch"
 	on offer
 		event "Stakoshstar Expeditions"
 		fail
+
+
+
+mission "Scrapyard Ae Il B-11 Expeditionary Fleet"
+	landing
+	invisible
+	to offer
+		has "event: Stakoshstar Expeditions"
+	on enter "Ae Il B-11"
+		dialog `It's a large Kor Sestor expedtionary fleet. They can not be allowed to land!`
+	npc kill
+		system "Ae Il B-11"
+		government "Kor Sestor"
+		personality target waiting staying
+		fleet
+			names "kor sestor"
+			variant
+				"Grakerat 572"
+				"Tercheldar 150" 6
+				"Skoretak 13" 16
+				"Stakoshtar 187(SD)" 2
+		on kill
+			dialog `The Sestor fleet has been defeated. The uninhabited planets in this isolated system don't show any signs of a Sestor incursion...`
+			fail
 

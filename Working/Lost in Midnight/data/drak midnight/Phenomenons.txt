@@ -1459,6 +1459,7 @@ outfit "Unknown Element"
 	thumbnail "outfit/harvested unknown"
 	"flotsam sprite" "effect/flotsam mysterious comet"
 	"mass" 1
+	"flotsam chance" 1
 	"installable" -1
 	description "This doesn't match anything in your ship's database. It could be very valuable to the right person."
 
@@ -1482,6 +1483,43 @@ fleet "Mysterious Comet"
 	outfitters "Unknown Element"
 	variant
 		"Mysterious Comet"
+
+ship "Comet" "Mysterious Comet (Specimen)"
+	swizzle 3
+	sprite "ship/shooting star/shooting star"
+	"never disabled"
+	attributes
+		category "Phenomenon"
+		"hull" 10000
+		"mass" 1000
+		"drag" 10
+		"heat dissipation" .1
+		"automaton" 1
+		"required crew" 0
+		"bunks" 0
+		"cargo space" 15
+		"afterburner thrust" 1.0
+		"afterburner effect" "mystery dust"
+		"turn" 100
+		"afterburner energy" 1
+		"turning energy" 1
+		"fuel capacity" 200
+		"jump drive" 1
+		"jump effect" "invisible jump"
+		"jump in sound" "ion tiny"
+		"jump out sound" "ion tiny"
+		"energy generation" 3
+		"inscrutable" 1
+		"atmosphere scan" 100
+		"fuel generation" .01
+	outfits
+		"Unknown Element"
+	engine 0 0
+		over
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
 
 
 mission "Unknown Element: Sundive 1"
@@ -1553,8 +1591,13 @@ mission "Unknown Element: Sundive 2"
 		government "Uninhabited"
 		system "Deneb"
 		personality target waiting staying surveillance mute
-		fleet "Mysterious Comet"
-		dialog `You've destroyed the mysterious comet. Collect any pieces that surived and head for <destination> to deliver the Unknown Element.`
+		"cargo settings"
+			cargo 1
+			outfitters "Unknown Element"
+		ship "Mysterious Comet (Specimen)" "???"
+		conversation
+			scene "scene/scene-mysterious comet"
+			`You've destroyed the mysterious comet. Collect any pieces that surived and head for <destination> to deliver the Unknown Element.`
 	on abort
 		dialog `You abandon the search for the Mysterious Comet.`
 	on complete

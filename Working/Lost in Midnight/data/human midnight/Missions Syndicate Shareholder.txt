@@ -193,8 +193,14 @@ mission "Titania: Syndicate Republic Bribery"
 				accept
 	on abort
 		event "titania bond cancel"
+		event "titania: syndicate bonds matured" 3600
 		"reputation: Syndicate" -= 1000
-		dialog "You've become an enemy of the Syndicate after pushing the Syndicate agent out of your airlock."
+		dialog "You've become an enemy of the Syndicate after pushing their agent out of your airlock."
+	on fail
+		event "titania bond cancel"
+		event "titania: syndicate bonds matured" 3600
+		"reputation: Syndicate" -= 1000
+		dialog "You've become an enemy of the Syndicate after their agent died while riding on one of your ships."
 	on complete
 		event "titania syndicate enters eteron" 30
 		event "titania station construction a" 90
