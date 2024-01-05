@@ -17,6 +17,8 @@ https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protector
 
 https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
 
+https://github.com/demolish238/Capitalis-Major (Capitalis Major) (My other plugin)
+
 Used Plugins:
 
 https://github.com/Amazinite/Shields-Up (Shields Up)

@@ -1,0 +1,904 @@
+# Copyright (c) 2014-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "Monolith Job"
+	landing
+	name "A Job Offer"
+	description "Travel to <destination> to find out about Lionheart Industries job offer."
+	source
+		attributes "deep"
+		not planet "Valhalla"
+	destination "Valhalla"
+	to offer
+		random < 100
+		has "main plot completed"
+		has "event: deep sky tech available"
+	on offer
+		conversation
+			`	Your console lights up as you receive a message from a representative of Lionheart Industries.`
+			choice
+				`	Delete, not interested in marketing.`
+					decline
+				`	Open the message.`
+			`	"Captain <last>, you have worked with Deep Security in the past. We would like to offer you a job to recover stolen Lionheart property. We are offering 6 million credits for completion of this job."`
+			`	"If you are interested, simply reply to this message and come to Valhalla, associates from Deep Security will brief you on the jobs details when you arrive."`
+			choice
+				`	Send a confirmation and plot a course to Valhalla.`
+					accept
+				`	Delete the message, you have enough on your plate already.`
+					decline
+	on decline
+		event "Monolith of the Shallow" 250 300
+
+mission "Monolith of Lionheart"
+	landing
+	name "Hacker Warfare"
+	description "Travel to <destination> deep in pirate space, transporting a team of Deep Security soldiers to recover the data stolen from Lionheart Industries."
+	source "Valhalla"
+	stopover "Haze"
+	destination "Haven"
+	deadline 20
+	to offer
+		has "Monolith Job: offered"
+	to fail
+		has "Monolith Assualt: failed"
+	on visit
+		dialog `There are still enemy ships in orbit, it's too dangerous to release the troops yet. Take off and eliminate the remaining defenders.`
+	on offer
+		conversation
+			`	Your ship is directed to a landing pad on a tall building bearing the Lionheart Industries logo. Greeting you are two women, one in a fine suit tailored to perfection with not a speck of dirt to be seen. The other is wearing a simple uniform, her appearance is of someone who you could easily miss in a crowd.`
+			`	The Lionheart representative steps forward holding out a hand. "Welcome to Lionheart Industries main corporate office, Captain <last>, I hope the journey here was pleasant?"`
+			choice
+				`	"As pleasant as space travel can be."`
+					goto good
+				`	"Got to blow up some pirates on the way, so yep plenty fun."`
+					goto macabre
+				`	"What's the job?"`
+			`	"Straight to the point, good, I like that in perspective clients."`
+				goto continue
+			label good
+			`	She gives a fake chuckle. "It is a chaotic profession, but you are clearly well suited to that lifestyle, if your reputation is anything to go by."`
+				goto continue
+			label macabre
+			`	You see she struggles to respond for a second. "How macabre, but I suppose in your line of work that attitude is needed."`
+			label continue
+			`	She gestures to the plain women behind her. "This here is Miss Gallard of Deep Security, she will be the one who debriefs you about the job itself. I am simply here to greet and inform you that, Lionheart Industries is at risk to lose billions of credits if this job does not go smoothly, so we are placing a great deal of trust in you."`
+			`	Her corporate smile fades for a moment into a serious look, before returning as she signs something on a pad and hands it to you. "Sign here, here and here." You sign. "Excellent, thank you Captain, hopefully having a war hero on the job will allow the Board to rest easy that this will be settled soon."`
+			`	She turns and swiftly exits leaving you with the Deep Security agent who steps forward, her face stoic.`
+			choice
+				`	"Can I actually get the job details now?"`
+					goto nod
+				`	"Not one to smile are you."`
+			`	She breaths in deep and looks into your eyes. "I would appreciate professionalism from a Captain as renowned as yourself. We are offering a large sum for what should be a simple job on your side so please keep your comments to yourself."`
+				goto job
+			label nod
+			`	She nods.`
+			label job
+			`	"Some weeks ago a large portion of the Lionheart database was hit by a large scale cyberattack. A group from Haven claims responsibility and is holding the data for ransom, threatening to delete the data within a month if they do not receive several billion credits in payment."`
+			`	"Normally such a breach would be dealt with internally, but the majority of the design documents for a ship Lionheart has been designing alongside Deep Security was also stolen, one which was only months away from being finalised. If the hackers delete that data we will be set back over a century of work, on a design that the Deep has poured trillions into over that time."`
+			`	"It goes without saying that we are unwilling to lose such an invaluable amount of research."`
+			choice
+				`	"Surly you have backups, or at least some physical documents?"`
+					goto backup
+				`	"Okay, I get how important it is, what is my role in this?"`
+					goto end
+			label backup
+			`	She shakes her head. "We have enough to complete the design eventually, but not at the same scope as we hoped. Parts of the ship were only finalised thanks to research into Pug tech, most of which was of limited supply and all of the related data was lost in the breach."`
+			`	"It goes without saying that obtaining new Pug tech to redo this research will cost the Deep billions and push us back years."`
+			label end
+			`	"We need a capable fleet to deliver an assault force directly to Haven, and to defend the location until they can recover the hard drives with the data. We expect they will not expect a direct assault on Haven simply to recover a data breach, so the element of surprise is what we will be relying on."`
+			`	"You will have to get the team to Haven within 20 days to ensure the data is not lost. Any questions?"`
+			`	You shake your head.`
+			`	"Good, collect the assault force on Haze in the Dubhe system, you will need 40 bunks for them all, then go straight to Haven. The more time you take, the higher the chance of the hackers catching on to our plan. God speed."`
+			`	You enter your ship and prepare for the journey.`
+				accept
+	on enter "Arneb"
+		dialog `You find that, as soon you jump into the system, a small fleet takes off from Haven, weapons ready. They must realise you are here for the hackers.`
+	npc kill
+		government "Pirate"
+		personality target staying nemesis heroic
+		system "Arneb"
+		ship "Marauder Leviathan"
+		ship "Marauder Firebird (Weapons)"
+		ship "Marauder Firebird (Weapons)"
+	on fail
+		event "Monolith of the Shallow" 250 300
+		dialog `Unfortunately you were unable to deliver the soldiers to Haven, it seems like Lionheart are going to have to accept the loss.`
+
+mission "Monolith Assualt"
+	landing
+	invisible
+	source "Haze"
+	destination "Haven"
+	blocked `The soldiers are ready to board, but you need <capacity> for all of them.`
+	passengers 40
+	to offer
+		has "Monolith of Lionheart: active"
+	on offer
+		conversation
+			`	Upon landing it only takes minutes for the soldiers and their equipment to be brought aboard. Onwards to Haven.`
+				launch
+
+mission "Monolith Raid"
+	landing
+	name "Hacker Warfare"
+	description "Eliminate the massive fleet that has arrived to defend the Deep soldiers."
+	source "Haven"
+	to offer
+		has "Monolith of Lionheart: done"
+	on visit
+		dialog `There are still enemy ships in orbit. Take off and eliminate the remaining attackers.`
+	on offer
+		conversation
+			`	You land at the location the Deep believes the hackers signal to originate from, a small town in the middle of nowhere. The soldiers immediately disembark and begin sweeping through the town. Suddenly you see bullets flying from the buildings and a soldier drops to the ground.`
+			`	Just as the fighting starts, your ships sensors begin blaring warnings about hostiles in orbit. When you check you see a truly massive collection of pirates are jumping into the system, the lead ship, a Leviathan sending you a message.`
+			`	"Captain <last>, didn't expect the Deep to send someone like you to get back this data, must be worth more than I thought. With that data and your head, Beelzebub will have no choice but to allow me into his inner circle."`
+			`	You can't let them near Haven, or the Assualt team is as good as dead!`
+				launch
+	npc disable
+		government "Pirate"
+		personality target staying nemesis heroic vindictive
+		system "Arneb"
+		ship "Marauder Leviathan (Engines)"
+		fleet "Marauder fleet X" 3
+
+mission "Monolith Returning"
+	landing
+	name "Hacker Warfare"
+	description "Travel back to <destination> and deliver the recovered Lionheart Industries data."
+	source "Haven"
+	destination "Valhalla"
+	passengers 21 32
+	to offer
+		has "Monolith Raid: done"
+	on offer
+		conversation
+			`	You land and <bunks> soldiers pile onto your ship, the only survivors of the attack. The commander rushes into your cockpit. "We have the data, take off and get us back to Valhalla, pirate reinforcements are on the way!"`
+				launch
+	npc
+		government "Pirate"
+		personality target nemesis heroic vindictive
+		systemR
+			distance 1 2
+		fleet "Marauder fleet X"
+	npc
+		government "Pirate"
+		personality target nemesis heroic vindictive
+		system
+			distance 2 3
+		fleet "Marauder fleet X"
+	on complete
+		payment 10000000
+		event "Monolith of the Deep" 30
+		conversation
+			`	As you land the soldiers depart without a word. Miss Gallard is standing nearby with the commander handing off a data stick to her.`
+			`	"Good work Captain, with the data recovered the ship should be avaliable for purchase within the month. As the owner of a city-ship licence, you are one of the few who it will be available to. I hope along with an increased payment of <payment> makes up for the difficulties you encountered on this job."`
+			choice
+				`	"That's it, no more celebration, I was hoping to see you smile?"`
+					goto really
+				`	"Good working with the Deep again."`
+				`	"Just make sure I get my money."`
+			`	"Of course, good day Captain <last>." She nods and leaves. Soon enough your communicator dings, informing you of <payment> going into your account.`
+				decline
+			label really
+			`	She just stares at you for a moment. "I hope you have a good day Captain." She turns and leaves without another word. Soon enough your communicator dings, informing you of <payment> going into your account.`
+				decline
+	on fail
+		event "Monolith of the Shallow" 250 300
+		dialog `Unfortunatly the data was destroyed along with the soldiers you lost, it seems like Lionheart are going to have to accept the loss.`
+
+event "Monolith of the Deep"
+	fleet "Large Deep Security"
+		add variant
+			"Monolith"
+			"Dagger" 12
+			"Corvette" 2
+			"Raven" 2
+		add variant 
+			"Monolith"
+			"Aerie"
+			"Dagger" 14
+			"Corvette (Speedy)" 2
+	fleet "Large Deep Merchants"
+		add variant
+			"Monolith"
+			"Aerie"
+			"Dagger" 12
+			"Raven (Heavy)"
+	shipyard "Lionheart Advanced"
+		"Monolith"
+
+event "Monolith of the Shallow"
+	fleet "Large Deep Security"
+		add variant
+			"Monolith Lesser"
+			"Dagger" 12
+			"Corvette" 2
+			"Raven" 2
+		add variant 
+			"Monolith Lesser"
+			"Aerie"
+			"Dagger" 14
+			"Corvette (Speedy)" 2
+	fleet "Large Deep Merchants"
+		add variant
+			"Monolith Lesser"
+			"Aerie"
+			"Dagger" 12
+			"Raven (Heavy)"
+	shipyard "Lionheart Advanced"
+		"Monolith"
+
+ship "Stolen Prototype"
+	sprite "ship/aesalon"
+	thumbnail "thumbnail/aesalon2x"
+	attributes
+		category "Superheavy"
+		"cost" 26520000
+		"shields" 28900
+		"hull" 9700
+		"required crew" 161
+		"bunks" 273
+		"mass" 2605
+		"drag" 47.6
+		"heat dissipation" 0.45
+		"fuel capacity" 900
+		"cargo space" 205
+		"outfit space" 1310
+		"weapon capacity" 390
+		"engine capacity" 325
+		"self destruct" .325
+	outfits
+		"Caldera Afterburner"
+		"D94-YV Shield Generator" 3
+		"Fragmentation Grenades" 30
+		"Heavy Anti-Missile Turret" 2
+		"Impala Plasma Thruster"
+		"LP288a Battery Pack"
+		"Large Radar Jammer" 2
+		"Laser Rifle" 190
+		"Liquid Helium Cooler"
+		"Liquid Nitrogen Cooler"
+		"Outfits Expansion" 2
+		"Proton Gun" 5
+		"Proton Turret" 2
+		Ramscoop
+		"Scram Drive"
+		"Security Station" 9
+		"Fission Reactor"
+		"Stack Core"
+		Torpedo 180
+		"Torpedo Launcher" 4
+		"Torpedo Storage Rack" 4
+		"Tyrant Plasma Steering"
+		"Tyrant Plasma Thruster"
+	gun -31 -165
+	gun 31 -165
+	gun 83 28
+	gun -83 28
+	gun -104 67
+	gun 104 67
+	gun -10 -225.5
+	gun 10 -225.5
+	gun 0 -265.5
+	turret -0 70
+	turret -36 -47
+	turret 36 -47
+	turret 0 -70
+	engine -30 273
+	engine 30 273
+	explode "tiny explosion" 15
+	explode "small explosion" 35
+	explode "medium explosion" 50
+	explode "huge explosion" 25
+	explode "big explosion" 70
+
+mission "Aesalon Roars"
+	landing
+	name "Warship Retreaval"
+	description "Travel to the <waypoints> system recover a prototype warship that was stolen from the Tarazed Corporation. Do not destroy the ship, or you will lose your payment and your opportunity to buy one."
+	source "Wayfarer"
+	waypoint "Shaula"
+	deadline 20
+	to offer
+		has "main plot completed"
+		has "event: stack core for sale"
+		has "kestrel available"
+	on offer
+		conversation
+			`You receive a message from Charles Atinoda, the ship designer at Tarazed Corporation: "<first> <last>, I have a time sensitive job available if you are able to meet me at our offices."`
+			choice
+				`	Reply that you are on your way, and go to the offices.`
+				`	Send a reply. "Sorry, I don't have time, you will have to ask someone else."`
+					decline
+			`	Arriving at the Tarazed headquarters, you can see a large statue has been placed in it's plaza, though it is covered in sheets right now. Atinoda meets you at the entrance. "Captain, thank god you came. We recently finished constructing our largest ship to date, a graceful craft second in beauty only to the Kestral."`
+			`	He rubs the back of his neck anxiously. "I decided to hire an up and coming captain, similar to you to test its prototypes capabilities. Unfortunately my background checks where not thorough enough. He had connections to pirate groups, and jumped at the chance to capture the crew and steal the prototype."`
+			choice
+				`	"And you want me to blow it up?"`
+					goto explode
+				`	"Can't you just make a new one?"`
+			`	"Not if I want to keep my job, a massive exhibition to the company’s shareholders is planned for <date> in three weeks. The CEO himself informed me that, verbatim. 'If you fail to get that ship back, it's your job on the chopping block!' So I am in dire need of its recovery in a timely manner." He says.`
+				goto kestrel
+			label explode
+			`	"NO! No, not that. I need the prototype back for an exhibition to the shareholders on <date> in three weeks. I have been told by the CEO that, verbatim. 'If you fail to get that ship back, it's your job on the chopping block!' So I am in dire need of its recovery in a timely manner." He says.`
+			label kestrel
+			`	He breaths in dramatically. "And I can imagine no one else is as able to fulfil this task, as the renowned war hero Captain <last>!" A desperate smile is plastered over his face. At this point you notice he has dark bags under his eyes, most likely from a lack of sleep or stress.`
+			choice
+				`	"I'll get that ship back, no worries."`
+					goto end
+				`	"What will I receive in return?"`
+					goto cash
+				`	"Not interested, sorry."`
+					goto decline
+			label cash
+			`	"13 million credits, in full, that is the remaining funds I managed to scrounge up from the development of the Aesalon," he says. "And the right to purchase one of the very first units off the production line, if you wish."`
+			`	"Sounds fair," you say.`
+			label end
+			`	"Thank you so much, I am sure the ship will be recovered swiftly with you on the job!" He claps his hands together as he finishes.`
+			choice
+				`	"No problem. Now where did they take the ship?"`
+			`	"Ah yes, we setup the testing in the Umbral system like usual, but shortly after the captain left we lost contact. Before we could investigate, the prototype came barreling through, dumping escape pods filled with the crew, and disappearing in the direction of <waypoints>" he says. "The Free Worlds told us a strange ship did pass through, and that it hasn't been sighted leaving <waypoints>, but they don't have the ships to dive straight into a pirate stronghold. I wish you luck on this Captain."`
+				accept
+			label decline
+			`	"Oh, are you sure? Damnation where else am I going to find a fleet that can take on the Aesalon!" He storms off, pulling out a phone and typing in numbers rapidly. No point in sticking around here where security are giving you the stink eye.`
+	on complete
+		payment 13000000
+		event "Aesalon Roars" 30
+		take ship "Stolen Prototype" "Tarazed Prototype"
+		conversation
+			`Atinoda meets up with you soon after you land. "You have the ship, I cannot thank you enough!" He says in a euphoric tone. "Thank the lord the Aesalon Project won't be scrapped, ugh, this stress has taken years off my life."`
+			choice
+				`	"Payment?"`
+					goto yes
+				`	"Can I keep it after the exhibition?"`
+			`	He lets out a deep hearty laugh, before stopping when he sees that you aren’t laughing with him. "Wait, you're serious? This is exclusive property of the Tarazed Corporation, and some systems need to be polished more before they are market ready. But know that once they are on the markets you will be the first to be offered one!" He shakes your hand and a team takes the prototype from your possession, minutes later your communicator pings that <payment> has entered your account.`
+				decline
+			label yes
+			`	"Don't worry, the payment should be through within the day, and we will personally contact you when the first model is pushed off of the production line and into the markets!" He shakes your hand and a team takes the prototype from your possession, minutes later your communicator pings that <payment> has entered your account.`
+				decline
+
+mission "Killa Kid"
+	landing
+	invisible
+	source "Wayfarer"
+	to offer
+		has "main plot completed"
+		has "event: stack core for sale"
+		has "kestrel available"
+	to complete
+		not "Aesalon Roars: active"
+
+mission "Hes just a Kid"
+	landing
+	invisible
+	source "Wayfarer"
+	to offer
+		has "main plot completed"
+		has "event: stack core for sale"
+		has "kestrel available"
+	to fail
+		has "Aesalon Roars: declined"
+	on enter "Shaula"
+		"stored reputation: Pirate" = "reputation: Pirate"
+		"reputation: Pirate" = 0
+		conversation
+			`You enter the system and your scanner immediately picks up a large unknown craft sitting in orbit of Greenrock. It looks like an enlarged Falcon at first glance, and right after spotting it you are hailed.`
+			scene "scene/Orbit of Greenrock"
+			`	A young man who can't be more than 20 appears on your screen wearing a cocky grin, which is whipped away as soon as he sees you. "Shit, Captain <last>, I served on your crew for a few months, your my hero, wha-what brings you to Greenrock Captain, you interested in my new ship, it's one of a kind!"`
+			choice
+				`	"I'm here to take back the prototype.`
+					goto damn
+				`	"Yeah, it’s a pretty cool ship, how much for it?`
+					goto buy
+				`	"If you know me, you know to give up that ship or you're dead.`
+					goto killer
+			label killer
+			action
+				"reputation: Pirate" = "stored reputation: Pirate"
+			`	He visibly pales as you say that. "Look man I just got this ship, and, and it's no push over, I can destroy a whole fleet with just this thing. So even if you are a war hero, you ain't taking my flagship, not when I'm planning on using it to become even more famous than you! And you know what, EVERYONE will know me after I killed the great Captain <last>!"`
+			`	Your crew announces that the ships weapons systems are powering up, it seems you will need to take the ship by force.`
+				decline
+			label damn
+			action
+				"reputation: Pirate" = "stored reputation: Pirate"
+			`	His face becomes crestfallen as you announce this. "Oh, so that means your here to kill me, fuck." He takes a moment to think before looking back at the screen, determined. "Well, this thing is a beast of a ship, and I bet if I use it to take out the great Captain <last>, everyone will hear about it, and, and I will become even more famous than you! So just try and take my flagship, I’m gonna blow you outa the sky!"`
+			`	Your crew announces that the ships weapons systems are powering up, it seems you will need to take the ship by force.`
+				decline
+			label buy
+			`	"Oh, ugh, I don't think I can sell this. Not only is it my new flagship, something that’s gonna get my name heard throughout the whole galaxy..." He waivers for a moment. "I also need to do a bunch of jobs for the Jaluchi Family, it's a whole thing, not important just, no, I can't sell it, sorry." He scratches the back of his head as he doesn’t seem to know where to take the conversation now.`
+			choice
+				`	"How much are your debts kid, give me the ship and I'll pay you enough to pay them all off."`
+				`	"Ok I've had enough, give me the ship or die."`
+					goto killer
+				`	"Well too bad, I still need that prototype though."`
+					goto damn
+			branch rich
+				credits >= 300000000
+			`	He seems to be shocked by your declaration. "What, why would a big time captain like you help me? Plus I don't think there is anyone with 300 million credits lying around to spend on a group of pirates and their leader, and that's why I need this ship to earn that money. No other way about it, it's not for sale."`
+			choice
+				`	"Yeah 300 million is way too much, you screwed yourself kid, now give me the prototype."`
+					goto damn
+			label rich
+			`	He seems to be shocked by your declaration. "What, why would a big time captain like you help me? Plus I don't think there is anyone with 300 million credits lying around to spend on a group of pirates and their leader, and that's why I need this ship to earn that money. No other way about it, it's not for sale."`
+			choice
+				`	Open your console and wire 300 million over to the pirate.`
+				`	"Yeah 300 million is way too much, you screwed yourself kid, now give me the prototype."`
+					goto damn
+			`	A moment passes as he looks around awkwardly, a couple of rough looking crew can be seen in the background looking over, some of them looking like they are only in their teens. Suddenly the kid's computer pings and he looks shocked along with everyone behind him. "Wait. What, what is this. Why, how do you have this much. No, no of course THE <first> <last> is that rich but, just, why. You don't even know me, were pirates?!"`
+			choice
+				`	"This is pocket change for me, don't worry about it. Now the ship?"`
+				`	"You don't seem like some ruthless pirate, clean up your debt, get a good ship, and earn a fortune like I did, you can do it if you got this far."`
+				`	Shrug. "It's my money, I can do what I want with it, and I want that ship."`
+			action
+				fail "Killa Kid"
+				payment -300000000
+			`	The kid looks close to crying, but he keeps it together as he answers. "Alright, alright, it's yours, land on Greenrock, I'll give you the ship..." He waits a moment, looking like he is struggling to say something. "Thank you, Captain <last>, I hope one day I'm even a little bit as awesome as you are."`
+				decline
+	npc capture
+		government "Pirate"
+		personality disables staying nemesis heroic
+		system "Shaula"
+		ship "Stolen Prototype" "Tarazed Prototype"
+		to despawn
+			has "Thats alotta money: declined"
+
+mission "Thats alotta money"
+	landing
+	invisible
+	source "Greenrock"
+	to offer
+		has "Killa Kid: failed"
+		has "Aesalon Roars: active"
+	on offer
+		give ship "Stolen Prototype" "Tarazed Prototype"
+		"reputation: Pirate" = "stored reputation: Pirate"
+		conversation
+			`You land on a concreate landing pad in a quite part of Greenrock, the prototype sitting nearby, with the young man you spoke to standing on its landing ramp. He scratches at his head nervously as you exit your craft, flanked by some crew as this is a pirate world.`
+			choice
+				`	"Go on, my crew will take the prototype from here, go pay your debts."`
+					goto thanks
+				`	"I'm listening, you clearly have a story, tell it."`
+					goto story
+				`	"Piss off, my weekly good deed is over with.`
+					goto thanks
+			label thanks
+			action
+				fail "Hes just a Kid"
+			`	Your words shake him out of his stupor and he bows to you. "Thank you so much for this, I won’t forget it!" Then he quickly runs off.`
+			`	The pirates who were in his crew either have left already or come over and ask to be taken on board your own fleet, they number enough to form a skeleton crew for the prototype so you take them on.`
+				decline
+			label story
+			`	He looks around as he thinks of where to start, before deciding on the beginning. "I'm from new Boston, like you're meant to be. Never had much, but as soon as I was able, I signed up onto a ship. The pay was enough to send back to my mother and let me save a little. The ship was one of yours actually, how I heard of you."`
+			`	"After half a year I signed off, realised I wanted to be captain, and I had earned enough credits to be allowed to take a syndicate loan. So I got a ship and went on my own.`
+			`	"I was dumb back then, took bad jobs, lost a lot and couldn't pay the interest. They said I would lose my ship, and cause I had to have someone else signed on to the loan, my mom would lose everything too."`
+			`	"That's when the Jaluchi's came. Said I was a good pilot, great even, paid off my debt for me and got me jobs. But no matter what I earned the interest kept rising, and suddenly the 400k they paid off turned into a 100 million debt to the most ruthless crime family in Greenrock. Thought I was gonna be forced into piracy when this job came, fight a prototype and get some good money."`
+			`	"But when I saw this beauty, I realised this might be it, my way out. So, I stole it."`
+			`	He chuckles. "Both the dumbest and best thing I've ever done apparently. The Jaluchi's were thrilled and pissed, said the 13 mill I lost them would be added to the debt, but I could keep the ship as long as a I stayed nearby."`
+			`	"I was put on shakedown duty, any merchants or Jaluchi rivals come to Shaula, I fly over and take their money or their lives. Then you arrived and here we are." He looks a mixture of embarrassed and ashamed as he ends his speech.`
+			`	You shake your head. "You're still young, you got time to turn yourself around."`
+			`	He lets a few tears fall as he says. "Truly, thanks for this, I'm gonna pay off me and my crews debts and take my ship outa here. Next time you hear my name it’ll be on every screen from here to earth." He gives a thumbs up as he goes to leave.`
+			choice
+				`	"Wait, you never told me your name?"`
+				`	Let the Kid go, you probably won't remember him anyway.`
+			action
+				fail "Hes just a Kid"
+			`	Lets get that ship back to Tarazed!`
+				decline
+			action
+				fail "Hes just a Kid"
+			`	Stopping in his tracks he twirls around and looks embarrassed. "Oh crap sorry, it's Jacob. Jacob Conroy, I hope I get to meet you again someday <first>, your an amazing person.`
+			`	The pirates who were in his crew either have left already or come over and ask to be taken on board your own fleet, they number enough to form a skeleton crew for the prototype so you take them on.`
+				decline
+
+event "Aesalon Roars"
+	fleet "Large Militia"
+		add variant
+			"Aesalon"
+			"Bastion (Laser)"
+			"Osprey (Laser)" 2
+		add variant
+			"Aesalon"
+			"Falcon (Laser)"
+			"Hawk" 3
+			"Sparrow" 4
+	fleet "Large Core Merchants"
+		add variant 
+			"Aesalon"
+			"Bulk Freighter (Blaster)"
+			"Bulk Freighter (Proton)"
+			"Wasp" 2
+	fleet "Large Southern Merchants"
+		add variant 
+			"Aesalon"
+			"Freighter (Fancy)" 3
+			"Star Barge (Armed)" 4
+			"Sparrow" 2
+	fleet "Large Independent"
+		add variant 
+			"Aesalon"
+			"Clipper (Speedy)"
+	fleet "Large Southern Pirates"
+		add variant 
+			"Aesalon"
+			"Sparrow" 2
+	fleet "Large Core Pirates"
+		add variant 
+			"Aesalon"
+			"Hawk (Bomber)" 2
+	shipyard "Tarazed Advanced"
+		"Aesalon"
+
+mission "Krieg: Material Collection"
+	landing
+	name "Special Delivery"
+	description "Barmy Edward asked you to collect some deliveries from Valhalla, Prime and Makerplace for a secret project they are working on. Expect pirates as details of the deliveries were leaked."
+	source
+		near Sol 100
+	stopover "Makerplace"
+	stopover "Prime"
+	stopover "Valhalla"
+	destination "Rust"
+	to offer
+		random < 3
+		has "main plot completed"
+		has "event: plasma turret available"
+		has "event: stack core for sale"
+	to complete
+		has "Krieg: Material Collection A: done"
+		has "Krieg: Material Collection B: done"
+		has "Krieg: Material Collection C: done"
+	to fail
+		or
+			has "Krieg: Material Collection A: failed"
+			has "Krieg: Material Collection B: failed"
+			has "Krieg: Material Collection C: failed"
+	on offer
+		conversation
+			`Soon after landing on <origin>, you receive a message from Barmy Edward's.`
+			`	"Captain <last>, just wondering if you have time to help me on a project I'm working on, need some rare materials collected and brought to Rust. You can find them in the file connected. Oh and we can give around <payment> for your help. Also a ton of our internal memos got leaked onto the darklane. Expect some scum will probably be out hunting you, since these supplies cost more than a Dreadnaught."`
+			choice
+				`	Send a confirmation back and enter the planets into your console.`
+				`	Send a Reply. "Haven't got the time right now, sorry."`
+					decline
+			`	After entering the locations, it seems you will need a whopping 1200 tons of cargo space and need to travel to, Valhalla, Prime and most surprisingly, Makerplace. Who knows where Barney heard about the Hai. It seems he is working on something big back at Rust.`
+				accept
+	on complete
+		payment 3000000
+		event "Krieg Stands" 30 50
+		conversation
+			`As your fleet lands, a veritable hoard of Southbound Shipyard employees come pouring out to begin the time consuming task of collecting and organising the mountain of materials you have delivered. You notice Barmy wading through the mass of people towards you.`
+			`	"Hope you didn't have to blow up too many ships to get all this here." He lets out a chuckle. "Anyway, come with me, you will want to see this." Without waiting for confirmation Barmy begins wading back towards the building he exited from.`
+			`	You are led through the facility until you get to, what might loosely be considered an office. A collection of sheets blocking sight to a corner of a large workshop, dozens of prototypes scattered haphazardly around the area.`
+			`	Barmy pulls out a blueprint and unrolls it onto the table. On it you can see the plans for a truly massive warship. He then pushes some clutter hiding a projector which then forms a small hologram of the ship in the designs.`
+			scene "scene/Kriegsmacher Holo"
+			choice
+				`	"That pile of scrap is what I was dragging materials from the other side of the galaxy for?"`
+					goto critic
+				`	"It looks, big. Too big honestly. Will that thing even fly?"`
+					goto critic
+				`	"I want one. No ten."`
+			`	"Hehe, I knew you would love it. The Dreadnaught was practical, but this is a masterpiece I've wanted to shape for a long, long time."`
+				goto end
+			label critic
+			`	"Ugh, everyone’s a critic. This thing is a masterpiece I will have you know."`
+			label end
+			`	"Originally this would never work. It would crush itself under it's own weight before even being able to take off. But thanks to one of my interns bringing in some data on a very unique ship some alien squirrels apparently made. I realised the techniques they used would allow me to finally finish this moving weapons platform!"`
+			`	"Said intern was also fired for getting over a dozen viruses onto his work console, because the dolt decided he wanted some excitement at work. All the work memos sent to him were then leaked. So you can thank him for both getting this job, and getting hounded by a dozen pirates during it."`
+			choice
+				`	Shrug "It gave me something to do."`
+					goto continue
+				`	"Give me his address so I can mail him a rocket from orbit please"`
+					goto bomb
+				`	"Without him you would have never been able to make this. He deserves some slack."`
+			`	"He deserved my foot up his arse for all the trouble he caused. But I suppose I got to fulfil one of my life goals thanks to him, so sure."`
+				goto continue
+			label bomb
+			`	"Hahaha, I'll make sure to send it later."`
+			label continue
+			`	"Anyway forget about him. This beauty is called the Kriegsmacher. It weighs over four thousand tons, carries enough guns plasma turrets are tiny on it, and best of all, even had room for some fighter bays to be installed.`
+			`	It's going to be our insurance in case of any future conflicts, plus I bet no pirates will ever want to go up against this hunk of steel."`
+			`	You say. "Wont that make it as slow as a freighter?"`
+			`	He gives a half smile. "Slower, so I would recommend ripping the engines out and forking over the cash for Deep Skies jets. But even if it's slow not much can damage it, and if you get some alien tech from those Hai things it could be even tougher. That's something I would love to see."`
+			`	"They should be off the production lines in a month or so, as long as nothing blows up in the building phase. Got to teach these idiots how to handle both Deep Sky tech and alien tech too, so who knows? I'll make sure to message you when they can be bought by Militia captains."`
+			`	He reaches out and shakes your hand. "Always good dealing with you <last>, I hope you get plenty of use out of the Kriegsmacher in the future."`
+			`	You take that as your cue to leave, arriving back at your ship just to have to wait another hour for the last crates to be unloaded. Better start saving up.`
+				decline
+	on decline
+		event "Krieg Stands" 120 150
+	on fail
+		event "Krieg Stands" 250 300
+
+mission "Krieg: Material Collection A"
+	invisible
+	landing
+	source
+		planet "Valhalla"
+	destination "Rust"
+	cargo "Electronics" 200
+	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
+	to offer
+		has "Krieg: Material Collection: active"
+	on offer
+		conversation
+			`As soon as you land on <origin>, workers of Lionheart Shipyards launch into action, loading dozens of crates onto your fleet, each labelled with numerous hazard and fragile warnings. As the last crates are loaded, you receive a notification from Deep Security. They warn you a pirate who stole a Batrican some months back, has been detected in the nearby systems recently, hunting anyone with Lionheart deliveries.`
+				accept
+	npc
+		government "Bounty Hunter"
+		personality heroic opportunistic plunders unconstrained
+		system
+			distance 5 8
+		ship "Bactrian (Hired Gun)"
+		ship "Marauder Leviathan (Engines)"
+		ship "Marauder Firebird (Weapons)"
+		ship "Marauder Firebird (Weapons)"
+		ship "Marauder Raven"
+		ship "Marauder Raven"
+		ship "Marauder Manta"
+		ship "Marauder Manta"
+		ship "Marauder Manta"
+
+mission "Krieg: Material Collection B"
+	invisible
+	landing
+	source
+		planet "Prime"
+	destination "Rust"
+	cargo "Metals" 400
+	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
+	to offer
+		has "Krieg: Material Collection: active"
+	on offer
+		conversation
+			`As soon as you land on <origin>, workers from Betelgeuse Shipyards immediately begin working to load the hundreds of crates onto your fleet. As the last crates are loaded, a crew member informs you they noticed some spectators taking pictures of your ships. Hopefully they were just fans of you.`
+				accept
+	npc
+		government "Bounty Hunter"
+		personality heroic opportunistic plunders unconstrained
+		system
+			distance 5 8
+		fleet "Marauder fleet X" 2
+
+mission "Krieg: Material Collection C"
+	invisible
+	landing
+	source
+		planet "Makerplace"
+	destination "Rust"
+	cargo "Metals" 600
+	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
+	to offer
+		has "Krieg: Material Collection: active"
+	on offer
+		conversation
+			`The Hai are efficient as they load the crates of metals onto your ship. It still takes some hours due to the sheer amount of material, but soon enough the cargo is loaded up and you are given the green light to take off. Here's hoping none of the pirates who know of the Hai were the ones who heard about your job.`
+				accept
+	npc
+		government "Bounty Hunter"
+		personality heroic opportunistic plunders unconstrained
+		system
+			distance 5 8
+		ship "Shield Beetle"
+		ship "Leviathan (Hai Weapons)"
+		ship "Corvette (Hai)"
+		ship "Headhunter (Hai)"
+		ship "Headhunter (Hai)"
+		ship "Water Bug"
+		ship "Water Bug"
+		ship "Water Bug"
+
+event "Krieg Stands"
+	fleet "Large Free Worlds"
+		add variant 
+			"Kriegsmacher"
+			"Finch" 4
+			"Falcon (Heavy)"
+			"Fury (Bomber)" 2
+			"Sparrow" 4
+		add variant 
+			"Kriegsmacher"
+			"Finch" 4
+			"Bastion (Heavy)"
+			"Bastion (Laser)"
+			"Hawk (Speedy)" 3
+	fleet "Large Militia"
+		add variant 
+			"Kriegsmacher"
+			"Finch" 4
+			"Falcon (Heavy)"
+			"Hawk" 4
+			"Sparrow" 3
+	shipyard "Southbound Advanced"
+		"Kriegsmacher"
+
+mission "Krieg Rolled Out"
+	invisible
+	landing
+	source
+		near Sol 100
+	to offer
+		has "event: Krieg Stands"
+	on offer
+		conversation
+			`	You recieve a message form Barmy. "Captain <last>, the Krieg is officially avaliable, we can only build a handful but I've made sure to put the first one aside for you. They will soon be seen across the Free Worlds."`
+				decline
+
+mission "Sestor Factory Ship Elimination"
+	landing
+	name "Unknown Sestor Factory"
+	description "At the edge of korath space, an unusual number of Sestor ships have been appearing. Scouting is needed to determin if a Sestor factory is still functional somewhere."
+	source "Desi Seledrak"
+	deadline 30
+	to offer
+		random <  30
+		has "Wanderers: Sestor: Final: Patched: done"
+		has "event: wanderers: sestor eliminated"
+	to fail
+		has "event: wanderers: Kar Ik Vot 927"
+	on offer
+		conversation
+			`You exit your craft and go to explore the spaceport, but a Wanderer intercepts your path. "You are Captain <last> correct? We [desire, need] aid with a task that is [suited, complementary] to your particular skill set."`
+			choice
+				`	"Alright go ahead and tell me what you need."`
+					goto continue
+				`	"I've got time if there is something in it for me."`
+				`	"Sorry I've got a full plate right now, another time.`
+					defer
+			`	"We have a [suitable, appropriate] payment set aside for you, do not worry."`
+			label continue
+			`	With a ruffle of his feathers he continues. "As you know, the Sestor fleets have been in [decay, decline] since your [partnership, collaboration] with the Exiles ended in their factory being [dismantled, destroyed]."`
+			`	"We projected a [swift, fast] decline in the number of Sestor vessels, but [inconceivably, strangely] they have managed to sustain themselves at a [intimidating, significant] size in the northern most region of their space." He pulls up a starmap showing the abandoned northern section of sestor space.`
+			`	"Our [belief, theory] is that a secondary [lesser, smaller] factory is within this region of space. We hope you will be able to find the source of these newly created [drones, ships] before they become a [danger, problem] again." You see that below the starmap, a payment of <payment> is listed as being offered for this service.`
+			choice
+				`	"Alright, I'll find this other factory."`
+				`	"Sure I can do it."`
+				`	"I've seen enough Sestor drones to last a lifetime, no thanks."`
+					goto decline
+			`	"Thank you Captain, we hope you succeed in your [exploration, scouting] north."`
+				accept
+			label decline
+			`	The Wanderer's form slumps. "This task is something we must deal with ourselves it seems, thank you for at least listening to our request Captain <last>."`
+				decline
+	on enter "Celeborim"
+		dialog "Your sensors pick up a massive Sestor vessal sitting in orbit around Firka Tesk. Unlike any you have seen before, it is a hulking monstrosity bristling with guns. Where the Sestor hid this thing you have no idea. As you watch, a freshly made 349 is dispensed from the thing, as a Shield Bettle is swallowed into a massive grinder. You realise if you don't deal with this now, it will become a much bigger threat later."
+	npc kill
+		system "Celeborim"
+		government "Kor Sestor"
+		personality target nemesis staying vindictive unconstrained opportunistic
+		ship "Kar Ik Vot 927"
+		dialog `The factory ship has been shutdown, here's hoping it is the last Sestor mothership you will ever have to fight. Time to return to Desi Seledrak and tell them the threat has been dealt with.`
+	npc
+		system "Celeborim"
+		government "Kor Sestor"
+		personality nemesis staying vindictive unconstrained swarming
+		ship "Kar Ik Vot 349"
+		ship "Kar Ik Vot 349 (Offense)"
+		ship "Kar Ik Vot 349 (Trapper)"
+		ship "Kar Ik Vot 349 (Defense)"
+		ship "Tek Far 109"
+		ship "Tek Far 109"
+		ship "Tek Far 109"
+		ship "Tek Far 109"
+		ship "Tek Far 71 - Lek"
+		ship "Tek Far 71 - Lek"
+		ship "Tek Far 71 - Lek"
+		ship "Tek Far 71 - Lek (Close Quarters)"
+		ship "Tek Far 71 - Lek (Close Quarters)"
+		ship "Far Osk 27" 39
+		ship "Far Lek 14" 57
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53 (Sniper)"
+		ship "Met Par Tek 53 (Sniper)"
+	npc
+		system "Celeborim"
+		government "Hai (Unfettered)"
+		personality derelict timid
+		ship "Solifuge (Jump)"
+		ship "Shield Beetle (Jump)"
+		ship "Shield Beetle (Jump)"
+	on complete
+		payment 10000000
+		dialog `You are sent a message as you land about the massive vessal and that it has been eliminated. "Thank you Captain <last>, we do not wish to [think, imagine] what would have happened if it was allowed to establish itself upon a planet." A ping informs you the payment of <payment> has come through.`
+	on fail
+		event "wanderers: Kar Ik Vot 927 Escaped" 30
+		dialog `You send what you learnt to the Wanderers, hopefully your inability to sort this out quickly won't cause issues down the line.`
+
+event "wanderers: Kar Ik Vot 927 Escaped"
+	system "Is Il Z-59"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 30000
+		fleet "Kor Sestor Mothership" 150000
+	system "Is Ce G-460"
+		fleet "Small Kor Sestor" 7000
+		fleet "Large Kor Sestor" 20000
+		fleet "Kor Sestor Mothership" 120000
+	system "Ae Il A-3"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 30000
+		fleet "Kor Sestor Mothership" 150000
+	system "Ae Il G-66"
+		fleet "Small Kor Sestor" 7000
+		fleet "Large Kor Sestor" 20000
+		fleet "Kor Sestor Mothership" 120000
+	system "Ae Il I-99"
+		fleet "Small Kor Sestor" 5000
+		fleet "Large Kor Sestor" 10000
+		fleet "Kor Sestor Mothership" 100000
+	system "Is Ce J-591"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 30000
+		fleet "Kor Sestor Mothership" 150000
+	system "Ae Il H-24"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 30000
+		fleet "Kor Sestor Mothership" 150000
+
+fleet "Kor Sestor Mothership"
+	government "Kor Sestor"
+	names "kor sestor"
+	fighters
+		names "kor sestor fighter"
+	commodities Plastic Equipment Industrial Electronics "Heavy Metals"
+	personality
+		opportunistic disables plunders
+	add variant
+		"Kar Ik Vot 927 (Jump)"
+		"Kar Ik Vot 349 (Jump)" 4
+
+ship "Kar Ik Vot 927" "Kar Ik Vot 927 (Jump)"
+	sprite "ship/Kar Ik Vot 927"
+	add attributes
+		"self destruct" .9
+	outfits
+		"Control Transceiver"
+		"Double Plasma Core"
+		"Fuel Processor"
+		"Jump Drive"
+		"Korath Detainer" 2
+		"Korath Detainer Turret" 2
+		"Large Heat Shunt" 10
+		"Piercer Missile" 346
+		"Piercer Missile Launcher" 6
+		"Piercer Missile Rack" 10
+		"Reverser (Stellar Class)"
+		"Small Heat Shunt"
+		"Steering (Lunar Class)"
+		"Steering (Stellar Class)"
+		"Systems Core (Large)" 4
+		"Systems Core (Small)"
+		"Thermal Repeater Turret" 6
+		"Thruster (Stellar Class)" 2
+		"Triple Plasma Core" 2
+		"Warder Anti-Missile" 6
+	description "Nothing in korath space can compare to the behemoth that is the 927, more a moving factory than a warship. While it's factories were damaged beyond repair in the fighting to claim this vessel, the sheer armament and power it has makes it a worthy capital all on its own."
+
+ship "Kar Ik Vot 349" "Kar Ik Vot 349 (Jump)"
+	sprite "ship/kar ik vot 349"
+	thumbnail "thumbnail/kar ik vot 349"
+	outfits
+		"Control Transceiver"
+		"Fuel Processor"
+		"Generator (Furnace Class)"
+		"Jump Drive"
+		"Korath Detainer Turret" 2
+		"Large Heat Shunt" 5
+		"Outfits Expansion" 2
+		"Piercer Missile" 156
+		"Piercer Missile Launcher" 4
+		"Piercer Missile Rack" 2
+		"Steering (Planetary Class)"
+		"Systems Core (Large)"
+		"Thermal Repeater Turret" 4
+		"Thruster (Stellar Class)"
+		"Triple Plasma Core"
+		"Warder Anti-Missile" 2
+	description "The largest and deadliest of the Kor Sestor robotic warships, a single one of these battlecruisers can hold its own against an entire fleet of lesser ships."
