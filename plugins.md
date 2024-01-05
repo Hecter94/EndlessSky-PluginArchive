@@ -4043,9 +4043,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/QOL-Outfits/icon.png' height='100'></img><br>
 
 
-[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-01-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-01-01) <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-01-05) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
@@ -4070,6 +4070,8 @@ Reccomended Plugins:
 https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protectorate) (My other plugin)
 
 https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
+
+https://github.com/demolish238/Capitalis-Major (Capitalis Major) (My other plugin)
 
 Used Plugins:
 
@@ -7274,9 +7276,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Mil%27taj Protectorate/icon.png' height='100'></img><br>
 
 
-[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 2.29 mb | 2024-01-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 2.29 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
 Author: Demolish238 | Category: Races <br>
-[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-01-01) <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-01-05) <br>
 
 >This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
 >
@@ -7308,6 +7310,8 @@ https://github.com/1010todd/Beyond-the-Sky (Beyond the Sky) (Makes the Quarg act
 https://github.com/demolish238/QOL-Outfits (QOL outfits) (My other plugin)
 
 https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
+
+https://github.com/demolish238/Capitalis-Major (Capitalis Major) (My other plugin)
 
 Used Plugins:
 
@@ -7355,9 +7359,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.2 mb | 2024-01-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-04) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-05) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -8389,6 +8393,50 @@ with ships from drone class to battleship class
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### Capitalis Major
+<img src='Working/Capitalis Major/icon.png' height='100'></img><br>
+
+
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 2.08 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+Author: Demolish238 | Category: Ships <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-05) <br>
+
+>A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Capitalis Major
+A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
+
+
+Plugins:
+
+https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protectorate) (My other plugin)
+
+https://github.com/demolish238/QOL-Outfits (QOL outfits) (My other plugin)
+
+https://github.com/demolish238/Korath-Retribution (Korath Retribution) (My other plugin)
+
+Credits:
+
+Darcy Manoel (Aesalon)
+
+https://github.com/Amazinite/Shields-Up (Shields Up) (For Kriegsmacher and Monolith)
+
+Unknown (Detainer Turret, Kar Ik Vot 927)
+
+If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
+
+</blockquote>
+</details>
+
+Status: 0.10.4 compatible <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -12264,9 +12312,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Korath Retribution/icon.png' height='100'></img><br>
 
 
-[Korath.Retribution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Retribution.zip) | 78.39 kb | 2024-01-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Retribution/) <br>
+[Korath.Retribution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Retribution.zip) | 79.01 kb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Retribution/) <br>
 Author: Demolish238 | Category: Story <br>
-[https://github.com/demolish238/Korath-Retribution](https://github.com/demolish238/Korath-Retribution) (last commit 2024-01-01) <br>
+[https://github.com/demolish238/Korath-Retribution](https://github.com/demolish238/Korath-Retribution) (last commit 2024-01-05) <br>
 
 >Hello, this plugin adds consequences for Worldship hunting, from the Quarg being disapproving, to Korath Revenge fleets and the Efreti being angered.
 >
@@ -12283,6 +12331,8 @@ https://github.com/MidnightPlugins/Lost-in-Midnight (Lost in Midnight) (Allows y
 https://github.com/demolish238/Mil-taj-Protectorate/tree/main (Mil'taj Protectorate) (My other plugin)
 
 https://github.com/demolish238/QOL-Outfits (QOL outfits) (My other plugin)
+
+https://github.com/demolish238/Capitalis-Major (Capitalis Major) (My other plugin)
 
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
 
@@ -14742,7 +14792,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>31 plugins in this category.<p>
+<p>32 plugins in this category.<p>
 
 <details>
 
