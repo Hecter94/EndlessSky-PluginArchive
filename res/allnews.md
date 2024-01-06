@@ -1,3 +1,5 @@
+2024-01-06 | updated Plugin 'Capitalis Major' by Demolish238 | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
+2024-01-06 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-01-05 | new Plugin 'Capitalis Major' by Demolish238 | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
 2024-01-05 | updated Plugin 'Korath Retribution' by Demolish238 | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-01-05 | updated Plugin 'QOL-Outfits' by Demolish238 | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>

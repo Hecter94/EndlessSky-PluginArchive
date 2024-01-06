@@ -7359,9 +7359,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-01-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-05) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-06) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -8402,9 +8402,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 2.08 mb | 2024-01-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 2.08 mb | 2024-01-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-05) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-06) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
