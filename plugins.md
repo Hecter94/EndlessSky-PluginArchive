@@ -12312,9 +12312,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Korath Retribution/icon.png' height='100'></img><br>
 
 
-[Korath.Retribution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Retribution.zip) | 79.87 kb | 2024-01-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Retribution/) <br>
+[Korath.Retribution.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korath.Retribution.zip) | 79.49 kb | 2024-01-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korath%20Retribution/) <br>
 Author: Demolish238 | Category: Story <br>
-[https://github.com/demolish238/Korath-Retribution](https://github.com/demolish238/Korath-Retribution) (last commit 2024-01-10) <br>
+[https://github.com/demolish238/Korath-Retribution](https://github.com/demolish238/Korath-Retribution) (last commit 2024-01-11) <br>
 
 >Hello, this plugin adds consequences for Worldship hunting, from the Quarg being disapproving, to Korath Revenge fleets and the Efreti being angered.
 >
