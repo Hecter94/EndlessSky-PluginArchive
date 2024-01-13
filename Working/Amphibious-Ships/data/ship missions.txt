@@ -1,0 +1,384 @@
+mission "Navarch Archives"
+	source
+		planet "Resei"
+	to offer
+		and
+			random > 30
+			has "First Contact: Navarchs: declined"
+	on offer
+		conversation
+			`While waiting for your ships to be refueled and restocked, you catch an advertisement for what seems to be a grand archive of Navarch ship designs. Care to have a peek?`
+			choice
+				`	(Go and view the archives.)`
+					goto archives
+				`	(Not right now.)`
+					defer
+
+			label archives
+			`After some asking around, you manage to find the archives. The building is massive; bigger than most industrial human buildings. Inside is a massive library, out of some sort of fantasy movie; the records here seem remarkably detailed. You could spend months reading and not even make a dent in the available material.`
+			`	What strikes you is how calm and quiet it is inside, with any and all Navarch occupants being respectfully quiet. It seems some places are sacred ground, no matter how racketous a species' general temperament is.`
+			choice
+				`	(Go reading.)`
+					goto reading
+				`	(Browse quickly and leave for now.)`
+					defer
+
+			label reading
+			`You manage to squeeze your way between a few Navarch pedestrians who are also here to read and start walking down the aisles for something interesting. The archives are extensive; there's a whole aisle dedicated just to light warships with twenty to twenty five fighter bays, and another dedicated to warship-freighter hybrids in the four- to ten-thousand ton range.`
+			`	Eventually, a Navarch wearing a sort of loose-fitted dress and an archive nametag smiles at you. "Are you looking for something in particular, human? You've been meandering for some time," She asks.`
+			choice
+				`	"I'm curious about potential prototypes."`
+					goto prototypes
+				`	"I'm just browsing, thank you."`
+					goto browsing
+
+			label prototypes
+			`"Ah, you're just like the young ones; so curious," She says, a small bit of wistfulness in her voice, "Come with me," She says gently. You nod and follow her down several rows of books, until you find a small, cordoned off exhibit, festooned with not just books, but models as well.`
+			`	"Though much of the archive is based on ships that were once built, we reserve this portion of the building for surviving scale-replicas and the most in-depth operations manuals," She explains, gesturing to the vast array of well-stocked tables, "Many of these are so detailed that a modern shipyard could reconstruct the ships within, given time and a budget."`
+			choice
+				`	"What's stopping them, then?"`
+					goto stopping
+
+			label stopping
+			`The archivist's smile widens. "Well, not much," She supposes, "We have plenty of resources and manpower to go around, what with the Quarg Automata being a self-containing threat due to their lack of drives. I'm sure if you showed a properly detailed collection to the right team, they'd love the opportunity to experiment."`
+			`You nod contemplatively and begin browsing the prototypes section, looking over the more in-depth pieces. You question the rationale of trying to inspire an alien space to re-create ships from their past, but the Navarchs seem particularly open to having new things to do.`
+			choice
+				`	(Investigate the "Klados".)`
+					goto klados
+					to display
+						and
+							not "acquired klados plans"
+
+			label klados
+			`You find a particularly interesting model called the "Klados", which appears to be a modular warship of some sort. The scale model even reflects this, with "stackable" sections that allow you to make the ship either shorter and lighter, or longer and more well-armed.`
+			`	The archivist, having followed you, smiles. "Ahh, the Klados... When our ancestors were at war with the Quarg, their researchers underwent a nearly explosive period of development; anything to act as a force multiplier. Electromagnetic hyperdrives, fuelless energy, and other such pursuits," She recalls, "I haven't read the journals in a long time, but if I recall correctly, the idea was to create a ship that could be built quickly in shipyards that expected Quarg attacks, but could be later expanded when time and supplies were more available."`
+			`	You nod and take this all in. "Why didn't it ever get off the ground?" You ask.`
+			`	"As I said, there was much innovation during that period. During that time, our shipbuilding doctrine shifted towards smaller, lighter vessels; many of the missile boats you see in space today can trace their ancestry to that time period," She elaborates, "When faced with ships that were effective against Quarg while requiring less materials, less workspace, and less training for captains to operate, the more complex design of the Klados was likely ruled out."`
+			`	"That's a shame," You reply, "We have ships that use similar modularity to great effect."`
+			`	"Perhaps you should show those old models and manuals to one of the industrial shipyards... Venif would be a good place. There are many shipyards with massive spare budgets waiting for interesting uses of their time," The archivist explains.`
+			`	"You'd allow me to take them?" You ask.`
+			`	"Of course. You don't think I'd suggest such a thing while prohibiting you from doing so, do you?" She asks, a sly smile on her face.`
+			`	You contemplate the idea...`
+			choice
+				`	"I'll do it; for science."`
+					goto kladosaccept
+				`	"I don't think I should be persuading you all to build more warships."`
+					goto kladosdeny
+
+			label kladosaccept
+			action
+				set "acquired klados plans"
+			`The archivist helps you gather the necessary models and journals in a padded bag for transport. "Keep them safe; they are not the originals, but we still value our history a great deal," She requests.`
+			`	You thank her for her assistance and prepare to leave, winding through the numerous passages. Hopefully you remember where Venif is.`
+				goto end
+
+			label kladosdeny
+			`"I understand," The archivist replies with a disappointed nod, her smile fading, "As much as we would like to see you act more prominently in our space, the Quarg's judgment can be very harsh at times."`
+			`	You nod a bit and thank her for her time regardless, preparing to wind your way through the archive's many halls.`
+
+			label browsing
+			`You browse a bit longer, but don't find anything that particularly catches your eye. Eventually, you receive an alert that your ship is refueled, and you need to leave. You'll have to come dig again some other day.`
+
+			label end
+			``
+				defer
+
+mission "Navarch Klados [1]"
+	landing
+	source
+		planet "Venif"
+	to offer
+		and
+			has "First Contact: Navarchs: declined"
+			has "acquired klados plans"
+	on offer
+		event "Navarch Klados Waiting Period" 37
+		conversation
+			`As you touch down on Venif, you remember to take the Klados documentation with you, setting yourself on a mission to deliver them to one of the local shipyards. It takes some time for you to find a good directory, but you're soon on a shuttleboat to meet with with one of the smaller local shipyards, known as "Venalend Worksmiths".`
+			`	Compared to more established Navarch shipyards, Venalend Worksmiths' yard is a relatively small afair, consisting of several floating docks and surrounding support structures. Despite this, it's still nearly twice the size of a typical human civilian shipyard, presumably for the sole purpose of sating the Navarchs' desire for particularly sizable ships.`
+			`	You soon come face to face with a tall Navarch in what appears to be a work jumper. "Captain <last>! A pleasure to meet you in the flesh," She greets in a gruff, but jovial tone, firmly shaking your hand. You're not sure if it's a cultural thing, or if Navarchs are just that much stronger than humans, but the handshake leaves you trying to shake your fingers apart.`
+			`	"I'm Staza; please, make yourself at home among my workspace," She introduces, still smiling. If there's one thing you appreciate about the Navarchs, it's that they rarely seem to be in a bad mood, "I heard you might have something for me and my crew here."`
+			choice
+				`	"I've got some plans from the archives for a ship called the Klados."`
+					goto klados
+
+			label klados
+			`You offer Staza the bag of documentations and the model, and she takes it, settling it down on her desk with utmost care. A few other Navarchs crowd around, taking various journals and manuals. After what feels like a bit too long for what's presumably a cursory overlook, she turns to you and nods. "Yep, this is plenty to build from, alright," Staza eventually says.`
+			`	Before you can answer, she gives a grin. "Now we just need some funding to start the project!"`
+			choice
+				`	"I seem to have forgotten my wallet."`
+					goto nomoney
+				`	"Would a hundred million credits get you started?"`
+					goto money
+				`	"I'll offer up whatever it takes."`
+					goto money
+
+			label nomoney
+			`Staza and some of her cohort laughs. "You don't need to worry about a thing, human," She says, still chuckling, "We aren't a greedy race; not in that manner, at least. Our space is bountiful, and our economy is mighty. Cultivating a prototype, or even a few, like this, is how we contribute to our culture, and the central markets pay good money for creativity and progress," Staza explains.`
+				goto business
+
+			label money
+			`Staza laughs and shakes her head. "Relax, human, we don't expect to be bankrolled by one curious benefactor," She explains, "Our space is... Collaborative, one might say; everything feeds into everything else. For example, paying a foundry worker will make us alloy to build a ship that will transport a student to their new school so they can become a foundry worker," She explains, "So long as our ships can fly and our space can suit our needs for resources, curiosity and interest will be payment enough; at least for matters of speculation."`
+
+			label business
+			`	You nod a bit. "How soon can you have a prototype ready?" You ask.`
+			`	Staza smiles. "Now that's a good question. We're not the largest team, but give us a month and change to secure resources and hammer something out. We'll give you a call when it's ready," She says.`
+			`	You nod and thank her for her time, excitedly awaiting the new development. There's something about contributing to a species' development, even in a small way, that makes you giddy.`
+				decline
+
+event "Navarch Klados Waiting Period"
+
+mission "Navarch Klados [2]"
+	name "Klados Testing"
+	description "Staza is ready for you to test the Klados on Venif."
+	destination
+		planet "Venif"
+	landing
+	to offer
+		and
+			has "event: Navarch Klados Waiting Period"
+	on offer
+		conversation
+			`As you land, you receive a message from Staza. "Greetings, Captain <last>!" She begins, "We've got ourselves a batch of prototypes ready for testing; come on over when you're ready."`
+			`	Attached is a picture of several ships, matching various configurations of the model. Guess you'll have to go to Venif again.`
+				accept
+
+mission "Navarch Klados [3]"
+	landing
+	name "Klados Test Fight"
+	description "Fight the Klados!"
+	source
+		planet "Venif"
+	to offer
+		or
+			has "Navarch Klados [2]: active"
+			has "Navarch Klados [2]: done"
+			has "Navarch Klados [2]: declined"
+			has "Navarch Klados [2]: aborted"
+	on offer
+		conversation
+			scene "thumbnail/klados i"
+			`As you land on Venif, now landing at the coordinates given to you by Staza, you step out to greet her. She smiles a big, toothy grin and waves before looking out at the surprisingly moderately-sized vessel currently moored at one of the docks.`
+			`	"Quite a looker for something so old, wouldn't you say?" She asks.`
+			choice
+				`	"I expected bigger."`
+					goto bigger
+				`	"Please never say 'looker' and 'old' in the same sentence again."`
+					goto old
+				`	"I'll say."`
+					goto agree
+
+			label bigger
+			`Staza laughs. "Well, if that's what you're worried about, there's two configurations larger than this one; modularity's a treat, let me tell you," She chuckles, "This configuration is just the smallest that'll let us test everything all at once."`
+				goto end
+
+			label old
+			`Staza laughs hard enough that she's nearly doubled over, propping herself up on her desk. "And here I was told you had a sense of humour," She jokes, taking a deep breath and still snickering to herself as she resteadies herself, "Anyways, the design had to be modernized a bit to keep up with all our new technologies since the war; it's better than it's ever been."`
+				goto end
+
+			label agree
+			`"That's the spirit," Staza says, "Now all we have to do is test it out and make sure nothing's going to blow up except what it's shooting at."`
+				goto end
+
+			label end
+			`	You nod. "How do you plan to test it?" You ask.`
+			`	Staza grins. "Well, I'm not the pilot between us," She says, "We're sending you into orbit with it and testing it against you!"`
+			`	You gulp a bit, but nod. Hopefully you've the firepower to take it down.`
+			`	"Just disable it, try not to blow it up. We've got soldiers on that ship," She remarks sternly. Again, you nod, and prepare to head back to your ship.`
+				accept
+
+	npc disable save
+		government "Test Dummy"
+		personality disables staying nemesis heroic
+		system "Lenigrahad"
+		ship "Klados I" "Klados I Testbed"
+
+	on complete
+		event "Klados Early Sales" 45
+		event "Klados Full Sales" 75
+		event "Klados Early Adoption" 60
+		event "Klados Full Adoption" 120
+		conversation
+			`As you land, Staza and her crew are already looking over data being sent from the disabled testbed. "Excellent fighting, Captain; I see how you managed to get all the way out here," She compliments, grinning at you, "We've got everything we need, here. Not to mention, your fight with the ship has even drawn the eye of some curious admirals; we might have to upscale in the coming months!" She laughs.`
+			`	You smile. "That's great news," You reply.`
+			`	"Well, we're done with you for now; keep your eyes out. We might be ramping up production in the next little while!" She grins widely.`
+
+event "Klados Early Sales"
+	planet "Venif"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+		add shipyard "Navarch Klados Advanced"
+		add shipyard "Navarch Klados Expert"
+	planet "Porwant Station"
+		add shipyard "Navarch Klados Basics"
+	planet "Uladant Station"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+	planet "Tyrrhen"
+		add shipyard "Navarch Klados Basics"
+	planet "Cagliari"
+		add shipyard "Navarch Klados Basics"
+	planet "Pechora"
+
+event "Klados Full Sales"
+	planet "Porwant Station"
+		add shipyard "Navarch Klados Intermediate"
+	planet "Uladant Station"
+		add shipyard "Navarch Klados Advanced"
+	planet "Tyrrhen"
+		add shipyard "Navarch Klados Intermediate"
+	planet "Pechora"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+		add shipyard "Navarch Klados Advanced"
+	planet "Secelt"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+	planet "Gulfosala"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+		add shipyard "Navarch Klados Advanced"
+		add shipyard "Navarch Klados Expert"
+	planet "Byscay"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+	planet "Curoni"
+		add shipyard "Navarch Klados Basics"
+	planet "Straido"
+		add shipyard "Navarch Klados Basics"
+		add shipyard "Navarch Klados Intermediate"
+		add shipyard "Navarch Klados Advanced"
+
+event "Klados Early Adoption"
+	fleet "Tiny Navarch"
+		add variant 6
+			"Klados"
+			"Forma" 4
+			"Nixus"
+	fleet "Small Navarch"
+		add variant 10
+			"Tribus"
+			"Klados"
+			"Legio"
+			"Subvarietas" 22
+			"Forma" 8
+			"Subclassis"
+		add variant 8
+			"Klados I"
+			"Parvregalimen"
+			"Subvarietas" 36
+			"Forma" 10
+		add variant 4
+			"Klados II"
+			"Imperium"
+			"Forma" 16
+	fleet "Medium Navarch"
+		add variant 10
+			"Tribus"
+			"Genus"
+			"Subfamilia"
+			"Klados II"
+			"Regnum"
+			"Nixus"
+			"Microphylum"
+			"Forma" 18
+			"Subvarietas" 40
+		add variant 6
+			"Klados I" 2
+			"Infracohors"
+			"Microphylum"
+			"Dominium"
+		add variant 6
+			"Supratribus" 2
+			"Klados II"
+			"Imperium"
+			"Subsectio (Mine Carrier)"
+			"Forma" 8
+			"Subvarietas" 20
+		add variant 4
+			"Regalis"
+			"Klados III"
+			"Dominium"
+			"Forma" 16
+	fleet "Large Navarch"
+		add variant 8
+			"Klados III"
+			"Epiregalimen"
+			"Subclassis"
+			"Dominium"
+			"Subsectio (Missile Carrier)"
+			"Forma" 34
+			"Subvarietas" 190
+
+event "Klados Full Adoption"
+	fleet "Tiny Navarch"
+		add variant 4
+			"Klados I"
+			"Forma" 8
+			"Nixus"
+		add variant 4
+			"Klados"
+			"Forma" 4
+			"Subclassis"
+	fleet "Small Navarch"
+		add variant 10
+			"Klados I"
+			"Microphylum"
+			"Infrafamilia (Missile)"
+			"Forma" 4
+		add variant 2
+			"Tribus" 2
+			"Supratribus"
+			"Klados"
+			"Klados I"
+			"Nixus"
+			"Forma" 12
+		add variant 2
+			"Subsectio"
+			"Supratribus"
+			"Klados"
+			"Klados I"
+			"Nixus"
+			"Forma" 12
+	fleet "Medium Navarch"
+		add variant 8
+			"Ordo" 2
+			"Klados" 2
+			"Klados I"
+			"Subclassis" 3
+			"Forma" 16
+		add variant 6
+			"Familia"
+			"Klados III"
+			"Microphylum"
+			"Infrafamilia (Logistic)"
+			"Subsectio (Mine Logistic)"
+			"Subsectio (Missile Logistic)"
+			"Forma" 16
+		add variant 4
+			"Divisio"
+			"Klados"
+			"Klados II"
+			"Imperium"
+			"Subsectio (Missile Carrier)"
+			"Forma" 12
+			"Subvarietas" 20
+	fleet "Large Navarch"
+		add variant 6
+			"Ordo" 2
+			"Infracohors" 2
+			"Klados I"
+			"Klados III"
+			"Infravitae"
+			"Nixus"
+			"Microphylum"
+			"Imperium"
+			"Forma" 20
+		add variant 6
+			"Ordo"
+			"Klados"
+			"Klados II"
+			"Klados III" 2
+			"Dominium (Experimental)"
+			"Nixus" 2
+			"Microphylum"
