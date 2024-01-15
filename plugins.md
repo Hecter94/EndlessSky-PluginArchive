@@ -2811,9 +2811,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 558.97 mb | 2024-01-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 561.97 mb | 2024-01-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-01-09) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-01-15) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -7276,9 +7276,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Mil%27taj Protectorate/icon.png' height='100'></img><br>
 
 
-[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 2.3 mb | 2024-01-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 2.3 mb | 2024-01-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
 Author: Demolish238 | Category: Races <br>
-[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-01-12) <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-01-15) <br>
 
 >This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
 >
@@ -7359,9 +7359,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-01-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-01-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-14) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-01-15) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -8402,9 +8402,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 2.08 mb | 2024-01-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 2.08 mb | 2024-01-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-10) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-15) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
@@ -11432,9 +11432,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Coalition-At-War
 
 
-[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 40.17 kb | 2024-01-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
+[Coalition-At-War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Coalition-At-War.zip) | 40.07 kb | 2024-01-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Coalition-At-War/) <br>
 Author: mathwhiz1212 | Category: Story <br>
-[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2024-01-09) <br>
+[https://github.com/mathwhiz1212/A-Coalition-At-War](https://github.com/mathwhiz1212/A-Coalition-At-War) (last commit 2024-01-15) <br>
 
 >You hear a lot about the conflict between the Coalition and the Quarg, but you never see it.
 >
