@@ -643,8 +643,7 @@ mission "Krieg: Material Collection"
 mission "Krieg: Material Collection A"
 	invisible
 	landing
-	source
-		planet "Valhalla"
+	source "Valhalla"
 	destination "Rust"
 	cargo "Electronics" 200
 	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
@@ -672,8 +671,7 @@ mission "Krieg: Material Collection A"
 mission "Krieg: Material Collection B"
 	invisible
 	landing
-	source
-		planet "Prime"
+	source "Prime"
 	destination "Rust"
 	cargo "Metals" 400
 	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
@@ -693,8 +691,7 @@ mission "Krieg: Material Collection B"
 mission "Krieg: Material Collection C"
 	invisible
 	landing
-	source
-		planet "Makerplace"
+	source "Makerplace"
 	destination "Rust"
 	cargo "Metals" 600
 	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
@@ -759,9 +756,9 @@ mission "Sestor Factory Ship Elimination"
 	name "Unknown Sestor Factory"
 	description "At the edge of korath space, an unusual number of Sestor ships have been appearing. Scouting is needed to determin if a Sestor factory is still functional somewhere."
 	source "Desi Seledrak"
-	deadline 30
+	deadline 10
 	to offer
-		random <  30
+		random <  60
 		or
 			has "Wanderers: Sestor: Final: Patched: done"
 			has "Wanderers: Sestor: Final: done"
@@ -804,27 +801,8 @@ mission "Sestor Factory Ship Elimination"
 		system "Celeborim"
 		government "Kor Sestor"
 		personality nemesis staying vindictive unconstrained swarming
-		ship "Kar Ik Vot 349"
-		ship "Kar Ik Vot 349 (Offense)"
-		ship "Kar Ik Vot 349 (Trapper)"
-		ship "Kar Ik Vot 349 (Defense)"
-		ship "Tek Far 109"
-		ship "Tek Far 109"
-		ship "Tek Far 109"
-		ship "Tek Far 109"
-		ship "Tek Far 71 - Lek"
-		ship "Tek Far 71 - Lek"
-		ship "Tek Far 71 - Lek"
-		ship "Tek Far 71 - Lek (Close Quarters)"
-		ship "Tek Far 71 - Lek (Close Quarters)"
-		ship "Far Osk 27" 39
-		ship "Far Lek 14" 57
-		ship "Met Par Tek 53"
-		ship "Met Par Tek 53"
-		ship "Met Par Tek 53"
-		ship "Met Par Tek 53"
-		ship "Met Par Tek 53 (Sniper)"
-		ship "Met Par Tek 53 (Sniper)"
+		fleet "Small Kor Sestor" 2
+		fleet "Large Kor Sestor" 3
 	npc
 		system "Celeborim"
 		government "Hai (Unfettered)"
@@ -843,48 +821,92 @@ event "wanderers: Kar Ik Vot 927 Escaped"
 	system "Is Il Z-59"
 		fleet "Small Kor Sestor" 10000
 		fleet "Large Kor Sestor" 30000
-		fleet "Kor Sestor Mothership" 150000
 	system "Is Ce G-460"
-		fleet "Small Kor Sestor" 7000
-		fleet "Large Kor Sestor" 20000
-		fleet "Kor Sestor Mothership" 120000
+		fleet "Small Kor Sestor" 5000
+		fleet "Large Kor Sestor" 10000
 	system "Ae Il A-3"
 		fleet "Small Kor Sestor" 10000
 		fleet "Large Kor Sestor" 30000
-		fleet "Kor Sestor Mothership" 150000
 	system "Ae Il G-66"
-		fleet "Small Kor Sestor" 7000
-		fleet "Large Kor Sestor" 20000
-		fleet "Kor Sestor Mothership" 120000
-	system "Ae Il I-99"
 		fleet "Small Kor Sestor" 5000
 		fleet "Large Kor Sestor" 10000
-		fleet "Kor Sestor Mothership" 100000
+	system "Ae Il I-99"
+		government "Kor Sestor"
+		fleet "Small Kor Sestor" 3000
+		fleet "Large Kor Sestor" 6000
 	system "Is Ce J-591"
 		fleet "Small Kor Sestor" 10000
 		fleet "Large Kor Sestor" 30000
-		fleet "Kor Sestor Mothership" 150000
 	system "Ae Il H-24"
 		fleet "Small Kor Sestor" 10000
 		fleet "Large Kor Sestor" 30000
-		fleet "Kor Sestor Mothership" 150000
+	planet "Ae Il I-Delta"
+		attributes moon korath
+		description "Barren and lifeless, this rock is almost entirely uninteresting, other than higher than usual amounts of rare minerals within the crust and extreme earthquakes that rock the surface periodically. Now a massive Sestor factory is continually churning out vast amounts of ships, the Sestor Mothership stands guard over the factory complex, challenging you to dare approach."
 
-fleet "Kor Sestor Mothership"
-	government "Kor Sestor"
-	names "kor sestor"
-	fighters
-		names "kor sestor fighter"
-	commodities Plastic Equipment Industrial Electronics "Heavy Metals"
-	personality
-		opportunistic disables plunders
-	add variant
-		"Kar Ik Vot 927 (Jump)"
-		"Kar Ik Vot 349 (Jump)" 4
+mission "Wanderer Sestor Confusion"
+	invisible
+	landing
+	source
+		government "Wanderer"
+	to offer
+		has "event: wanderers: Kar Ik Vot 927 Escaped"
+	on offer
+		conversation
+			`A message is sent to you as you land. "Captain <last>, we last [spoke, interacted] when you investigated the strange number of Kor Sestor ships in the north of Korath space. [Fortunately, Thankfully] the number of ships has returned to [expected, predicted] levels but a strange occurrence happened."`
+			`	"The Mereti reported a large [unknown, unidentified] Sestor craft appearing in the abandoned Sestor systems to the east and then [disappearing, vanishing] just as quickly only days after you retuned from scouting. We hope this isn't a [prelude, buildup] to worse events, but as of now the Sestor threat seems to be [finished, over]. We encourage you to [investigate, search], as you are able to travel outside the hyper lane connections, but please be [careful, cautious].`
+				decline
 
-ship "Kar Ik Vot 927" "Kar Ik Vot 927 (Jump)"
-	sprite "ship/Kar Ik Vot 927"
-	add attributes
-		"self destruct" .9
+mission "Ae Il I-Delta Found"
+	invisible
+	landing
+	to offer
+		has "event: wanderers: Kar Ik Vot 927 Escaped"
+		not "Ae Il I-Delta Found: failed"
+	to complete
+		never
+	on enter "Ae Il I-99"
+		fail
+		dialog `	You find a suprising sight, what you thought was an uninhabited system is instead being guarded by a fleet of Kor Sestor ships!.`
+
+mission "Ae Il I-Delta Defence Fleet"
+	invisible
+	landing
+	to offer
+		has "event: wanderers: Kar Ik Vot 927 Escaped"
+		not "Ae Il I-Delta Defence Fleet: active"
+	to complete
+		never
+	npc save
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality staying heroic
+		ship "Kar Ik Vot 349"
+		ship "Tek Far 109"
+		ship "Tek Far 78 - Osk"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Far Osk 27"
+		ship "Tek Far 71 - Lek"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Far Lek 14"
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53"
+		ship "Met Par Tek 53 (Sniper)"
+
+ship "Kar Ik Vot 927" "Kar Ik Vot 927 (jump)"
 	outfits
 		"Control Transceiver"
 		"Double Plasma Core"
@@ -906,26 +928,213 @@ ship "Kar Ik Vot 927" "Kar Ik Vot 927 (Jump)"
 		"Thruster (Stellar Class)" 2
 		"Triple Plasma Core" 2
 		"Warder Anti-Missile" 6
-	description "Nothing in korath space can compare to the behemoth that is the 927, more a moving factory than a warship. While it's factories were damaged beyond repair in the fighting to claim this vessel, the sheer armament and power it has makes it a worthy capital all on its own."
 
-ship "Kar Ik Vot 349" "Kar Ik Vot 349 (Jump)"
-	sprite "ship/kar ik vot 349"
-	thumbnail "thumbnail/kar ik vot 349"
-	outfits
-		"Control Transceiver"
-		"Fuel Processor"
-		"Generator (Furnace Class)"
-		"Jump Drive"
-		"Korath Detainer Turret" 2
-		"Large Heat Shunt" 5
-		"Outfits Expansion" 2
-		"Piercer Missile" 156
-		"Piercer Missile Launcher" 4
-		"Piercer Missile Rack" 2
-		"Steering (Planetary Class)"
-		"Systems Core (Large)"
-		"Thermal Repeater Turret" 4
-		"Thruster (Stellar Class)"
-		"Triple Plasma Core"
-		"Warder Anti-Missile" 2
-	description "The largest and deadliest of the Kor Sestor robotic warships, a single one of these battlecruisers can hold its own against an entire fleet of lesser ships."
+mission "Sestor Factory Mothership"
+	landing
+	name `Sestor Mothership Elimination`
+	description `Eliminate the Kor Sestor Mothership and shut down the new factory on <source>.`
+	source "Ae Il I-Delta"
+	to offer
+		has "event: wanderers: Kar Ik Vot 927 Escaped"
+	on offer
+		conversation
+			`As you enter the gravitational pull of the small moon, you sensors make a striking discovery. A large factroy complex sits in the deepest ravine on the moon, reaching into the crust of the planetoid extracting vast amounts of untapped resources, and quckly churning them into fresh Kor Sestor ships.`
+			`	You begin to approach the factory, but as your ship nears, your sensors go wild with dozens of contacts, before a single gargantuan ship fills your feed. What can only be called a mothership has stationed itself over the factory complex, it's powerful shield array protecting the delicate machinery below.`
+			`	The readings your crew pick up indicate that the other Sestor ships are moving in perfect formation with the Mothership, similar to how the Kor Sestor acted before their original control bunker was breached. You will need to pull the Mothership into orbit and defeat it, along with the vast defence fleet to have any hope of taking down this new factory.`
+			choice
+				`	"Power up weapons, we are taking them down now!"`
+					goto fight
+				`	"Retreat while the Mothership is non-hostile." This is too much for just your fleet.`
+			`	You pull out of orbit and make haste away from the moon, the only ones who might be able to help you are the Quarg, but if not you will have to build up a fleet able to take on dozens of Sestor capitals and that moster of a mothership.`
+				flee
+			label fight
+			`	The Sestor detect your weapons coming online, and swiftly begin rising into orbit, it's time to remove the Kor Sestor as a threat fully.`
+				launch
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained opportunistic launching
+		ship "Kar Ik Vot 927 (jump)"
+		on kill
+			dialog `	The mothership is down, now to clean up the remaining Sestor vessels and land to destroy the factory.`
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained swarming launching
+		fleet "Small Kor Sestor" 3
+		fleet "Large Kor Sestor" 2
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained swarming entering
+		fleet "Small Kor Sestor" 2
+		fleet "Large Kor Sestor" 4
+	on complete
+		dialog `	You fly over the factory complex, and make short work of the recently built infastructure. The geological instability of the planet aiding you greatly, as the quakes made from weapon impacts cause most of the ravine to collapse in on the remains of the facility. That should stop any new Sestor ships from being built here.`
+		event "Sestor Second Factory Eliminated A"
+		event "Sestor Second Factory Eliminated B" 60
+		event "Sestor Second Factory Eliminated C" 120
+
+mission "Quarg Sestor Aid"
+	landing
+	name `Quarg Help`
+	description `You gained the help of the Quarg to destroy the Sestor factory on <destination>.`
+	destination "Ae Il I-Delta"
+	source
+		attributes "gegno quarg" quarg
+	to offer
+		has "Sestor Factory Mothership: declined"
+	to complete
+		has "Sestor Factory Mothership Rematch: done"
+	on offer
+		conversation
+			`You land and have an opportunity to ask the Quarg for help with the Kor Sestor mothership nearby.`
+			choice
+				`	Approach the nearest Quarg. "Hello, I have something important I need help with."`
+				`	No, you are capable of dealing with the automata yourself.`
+					decline
+			`	The Quarg motions for you to wait and leaves, a handful of minutes later another Quarg approaches and kneels down to eye level before speaking. "I am able to aid with anything you need help with human."`
+			choice
+				`	"A Kor Sestor mothership has built a factory in the empty systems to the north east of Korth space, it must have jump drives."`
+					goto help
+				`	"I failed to destroy a Kor Sestor mothership, it managed to flee to the empty systems to the north east of Korth space, and is building an armada there."`
+					goto help
+				`	"Actually, never mind, I don't need any help. Sorry about bothering you."`
+			`	The Quarg stares intensely as you awkwardly step backwards, before rushing back to your ship, feeling their gaze on you until the hatch finally shuts.`
+			`	It is better that you deal with this yourself.`
+				decline
+			label help
+			`	The Quarg's skin turns yellow for a moment. "It is good you have come to us with this information. If the automata have gained the ability to travel without restriction, they must be dealt with immediately."`
+			`	It stands to its full height. "A small fleet will be assigned to assist you in destroying this craft, we cannot allow it to enter Gegno space." In mere hours a whole fleet of Quarg ships have assembled to aid you in crushing the Automata fleet, they will follow you to the Sestor factory.`
+				accept
+	npc
+		government "Quarg"
+		personality escort vindictive heroic launching
+		fleet "Large Quarg"
+	on complete
+		payment 8000000
+		dialog `	Your Quarg escort hails you. "Captain <first> <last>, we shall ensure the elimination of these machines, you are no longer needed and may leave. We thank you for informing us of this possible disaster and participating in its resolution. We hope you will take this token of our appreciation." You receive a message that <payment> has been deposited into your account.`
+
+mission "Sestor Factory Mothership Rematch"
+	landing
+	name `Sestor Mothership Elimination`
+	description `Eliminate the Kor Sestor Mothership and shut down the new factory on <source>.`
+	source "Ae Il I-Delta"
+	to offer
+		has "Sestor Factory Mothership: declined"
+	on offer
+		conversation
+			branch Quarg
+				has "Quarg Sestor Aid: active"
+			`You approach the factory, sensors indicate that in the time since you were last here the Kor Sestor have built up a larger presence to defend the factory complex.`
+			choice
+				`	It's time to destroy the Kor Sestor threat fully. "Power up weapons!"`
+					goto fight
+				`	You're not ready yet, pull out of engagement range.`
+					depart
+			label fight
+			`	The mothership rises to engage, alongside a vast number of lesser ships. Their numbers are hard to count and numerous other signals are picked up jumping into the system.`
+			`	This will be hell of a fight.`
+				launch
+			label Quarg
+			`You approach the factory, sensors indicate that in the time since you were last here the Kor Sestor have built up a larger presence to defend the factory complex.`
+			`	Before you can do anything, your Quarg escorts power up their weapons systems and move towards the factory. The mothership rises to engage, alongside a vast number of lesser ships. Their numbers are hard to count and numerous other signals are picked up jumping into the system.`
+			`	It's time to see if this many Quarg craft are enough to tip the scales in your favour.`
+				launch
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained opportunistic launching
+		ship "Kar Ik Vot 927 (jump)"
+		on kill
+			dialog `	The mothership is down, now to clean up the remaining Sestor vessels and land to destroy the factory.`
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained swarming launching
+		fleet "Small Kor Sestor" 5
+		fleet "Large Kor Sestor" 3
+	npc kill
+		system "Ae Il I-99"
+		government "Kor Sestor"
+		personality target staying vindictive unconstrained swarming entering
+		fleet "Small Kor Sestor" 3
+		fleet "Large Kor Sestor" 5
+	on complete
+		dialog `	You fly over the factory complex and make short work of the recently built infastructure. The geological instability of the planet aiding you greatly, as the quakes made from weapon impacts cause most of the ravine to collapse in on the remains of the facility. That should stop any new Sestor ships from being built here.`
+		event "Sestor Second Factory Eliminated A"
+		event "Sestor Second Factory Eliminated B" 60
+		event "Sestor Second Factory Eliminated C" 120
+
+event "Sestor Second Factory Eliminated A"
+	system "Is Il Z-59"
+		fleet "Small Kor Sestor" 15000
+		fleet "Large Kor Sestor" 40000
+	system "Is Ce G-460"
+		fleet "Small Kor Sestor" 8000
+		fleet "Large Kor Sestor" 15000
+	system "Ae Il A-3"
+		fleet "Small Kor Sestor" 15000
+		fleet "Large Kor Sestor" 40000
+	system "Ae Il G-66"
+		fleet "Small Kor Sestor" 8000
+		fleet "Large Kor Sestor" 15000
+	system "Ae Il I-99"
+		government Uninhabited
+		fleet "Small Kor Sestor" 4500
+		fleet "Large Kor Sestor" 10000
+	system "Is Ce J-591"
+		fleet "Small Kor Sestor" 15000
+		fleet "Large Kor Sestor" 40000
+	system "Ae Il H-24"
+		fleet "Small Kor Sestor" 15000
+		fleet "Large Kor Sestor" 40000
+	planet "Ae Il I-Delta"
+		attributes moon uninhabited
+		description "Barren and lifeless, this rock is almost entirely uninteresting, other than higher than usual amounts of rare minerals within the crust and extreme earthquakes that rock the surface periodically. Derelict Kor Sestor ships litter the area the former factory occupied."
+
+event "Sestor Second Factory Eliminated B"
+	system "Is Il Z-59"
+		fleet "Small Kor Sestor" 20000
+		fleet "Large Kor Sestor" 60000
+	system "Is Ce G-460"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 20000
+	system "Ae Il A-3"
+		fleet "Small Kor Sestor" 20000
+		fleet "Large Kor Sestor" 60000
+	system "Ae Il G-66"
+		fleet "Small Kor Sestor" 10000
+		fleet "Large Kor Sestor" 20000
+	system "Ae Il I-99"
+		fleet "Small Kor Sestor" 6000
+		fleet "Large Kor Sestor" 12000
+	system "Is Ce J-591"
+		fleet "Small Kor Sestor" 20000
+		fleet "Large Kor Sestor" 60000
+	system "Ae Il H-24"
+		fleet "Small Kor Sestor" 20000
+		fleet "Large Kor Sestor" 60000
+
+event "Sestor Second Factory Eliminated C"
+	system "Is Il Z-59"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Is Ce G-460"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Ae Il A-3"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Ae Il G-66"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Ae Il I-99"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Is Ce J-591"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
+	system "Ae Il H-24"
+		remove fleet "Small Kor Sestor"
+		remove fleet "Large Kor Sestor"
