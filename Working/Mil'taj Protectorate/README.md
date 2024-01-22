@@ -34,4 +34,6 @@ https://github.com/Makuta-Miras/The-Enclave/tree/master (Enclave) (For Mil'taj w
 
 https://github.com/mdsmestad/ES-COTSA-Pluggin (Cultures of the Southern Arm) (For the Avendri Ships)
 
+https://tearcellgames.itch.io/cosmic-canidae-assets (Mal'korbra assets)
+
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
