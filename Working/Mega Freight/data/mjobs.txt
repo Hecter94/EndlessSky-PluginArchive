@@ -869,9 +869,10 @@ mission "MGF: Vinci Station Research Phase 2"
 		fail
 
 planet "MGF: Fake Vinci"
-	attributes "requires: sdfksdfo"
+	government "MGF: Fake Planets"
+	attributes "requires: unlandable" "requires: sdfksdfo"
 	description `If you can land here its a bug.`
-#TODO
+
 planet "Nt24 Hoerni Station"
 	attributes station research #add export later.
 	landscape "land/station23"
@@ -885,7 +886,7 @@ event "mgf: vinci hoerni station construction begin"
 			distance 274.75
 			period 85.8737
 			object "Nt24 Hoerni Station"
-				sprite "station/mgf hoerni station 50"
+				sprite "planet/mgf hoerni station 50"
 				offset 180
 				distance 167
 				period 20.3008
@@ -900,12 +901,13 @@ mission "MGF: Vinci Station Construction Complete"
 		fail
 
 event "mgf: vinci hoerni station construction done"
+	"mgf: hoerni station post 23012024 patch" = 1
 	system Miaplacidus
 		remove object "MGF: Fake Vinci"
 			distance 274.75
 			period 85.8737
 			object "Nt24 Hoerni Station"
-				sprite "station/mgf hoerni station 50"
+				sprite "planet/mgf hoerni station 50"
 				offset 180
 				distance 167
 				period 20.3008
@@ -913,7 +915,7 @@ event "mgf: vinci hoerni station construction done"
 			distance 274.75
 			period 85.8737
 			object "Nt24 Hoerni Station"
-				sprite "station/mgf hoerni station"
+				sprite "planet/mgf hoerni station"
 				offset 180
 				distance 167
 				period 20.3008
@@ -923,6 +925,29 @@ event "mgf: vinci hoerni station construction done"
 		description `A large station owned by Selcon Corporation for research and manufacturing electronic chips especially various kind of processors taking various advantage of micro-gravitiy environment to decrease defects resulting in higher quality products in higher quantity.`
 		description `With the testing phase completed the station manufacturing is running at full capacity completely overtaking.`
 		spaceport `Like most other part on the station, the port is very clean and painted in white. There's very few basic ameneties available and most other area are off-limits for visitors.`
+
+event "mgf: hoerni station sprite patch"
+	system Miaplacidus
+		remove object "MGF: Fake Vinci"
+		add object "MGF: Fake Vinci"
+			distance 274.75
+			period 85.8737
+			object "Nt24 Hoerni Station"
+				sprite "planet/mgf hoerni station"
+				offset 180
+				distance 167
+				period 20.3008
+
+mission "MGF: Hoerni Station Sprite Patch"
+	landing
+	invisible
+	to offer
+		has "event: mgf: vinci hoerni station construction done"
+		not "event: mgf: hoerni station sprite patch"
+		not "mgf: hoerni station post 20240123 patch"
+	on offer
+		event "mgf: hoerni station sprite patch"
+		fail
 
 #========================Ourea Station
 
