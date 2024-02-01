@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-02-01 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
+2024-02-01 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-01-28 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-01-28 | updated Plugin 'QOL-Outfits' by Demolish238 | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
 2024-01-28 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
@@ -18,8 +20,6 @@
 2024-01-22 | updated Plugin 'Mil'taj Protectorate' by Demolish238 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-01-21 | updated Plugin 'Capitalis Major' by Demolish238 | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
 2024-01-20 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-01-16 | updated Plugin 'QOL-Outfits' by Demolish238 | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
-2024-01-16 | updated Plugin 'Capitalis Major' by Demolish238 | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
