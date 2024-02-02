@@ -173,9 +173,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 170.71 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 172.8 kb | 2024-02-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-02) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -209,10 +209,14 @@ Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti be
 <li>"Brick" (found everywhere | 3x Modified Boxwing)</li>
 <li>"Gefullte Taubenbrust" (found everywhere | Modified Battleship)</li>
 <li>"MasterOfGrey" (found in Hai space | Modified Ladybug)</li>
+<li>"Patrol Team" (found everywhere | 6x Waverider)</li>
 </ul>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-02-02<br>
+added 0.10.5 person "Patrol Team"<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
