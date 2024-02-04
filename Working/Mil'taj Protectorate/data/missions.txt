@@ -135,7 +135,7 @@ mission "Pug in Mil'taj Space"
 			choice
 				`	(Yes.)`
 				`	(No, don't risk it.)`
-					goto ship
+					goto shipB
 			`	You try to talk to several of the Pug who are meandering along, but other than getting to watch as one falls flat on its face before a small spider like robot wakes it with an injection, none even seem to realise you are there. If you stand to block their path, they just bump into you, before turning and continuing in another random direction. It's like they are all lost in their own worlds.`
 			`	You could risk grabbing one and forcing it to talk, though unlike the Pug themselves, you can see the spider bots turn their sensors to look at you as they walk by.`
 			choice
@@ -145,7 +145,7 @@ mission "Pug in Mil'taj Space"
 			`	You grab one of the Pug by the arm. "You need to give me some answers," you say. It wobbles for a moment, before gently tugging on its arm. As you hold firm you see a door slide open, and a well-dressed Pug wielding one of their staff-like weapons marches over, before wielding the weapon in a half-hearted gesture, probably intended to be menacing.`
 			choice
 				`	(Let the Pug go, and walk away.)`
-					goto ship
+					goto shipB
 				`	(Threaten to shoot them.)`
 			`	The moment you reach for your gun, the Pug fires a burst of grey light from its staff showing reflexes that belie it's lethargic state, and a feeling of lethargy and powerlessness washes over you - suddenly everything feels pointless, like every achievement you made was worthless and futile. In a fog, you drag yourself towards your ship, the colour of the world drained, as you see how stupid this all was. What were you hoping for, that these aliens would decide to reveal all their secrets to a pathetic captain from a no name backwater world like you? You barely survived getting here, and honestly, the series of flukes that allowed you to live so long are bound to run out soon. You should have just retired at your first million, lived a good life rather than running to your death, full of false bravado and greed. Slumping into bed, you pass out thinking what your mother would think seeing you now... You think she would be disappointed.`
 			`	A few hours later, you wake in a start, a raging headache and a rush of adrenaline forcing you fully awake, that was the worst, and you never want to experience that again.`
@@ -239,35 +239,93 @@ mission "Destroyed Sun"
 		dialog "As you jump into the system, you find a strange sight. A collection of planets adrift through empty space, your sensors indicate all the planets are drifting in a circular pattern, slowly floating into the void beyond from the lack of a force holding them in the system."
 
 mission "Entering Mil'taj Capital"
-	autosave
 	invisible
 	landing
 	to complete
 		never
 	on enter "Mil'taj Toh"
-		"reputation: Mil'taj" = 10
-		"reputation: Mil'taj Subjects" = 10
 		conversation
+			action
+				outfit "Jump Drive" -1
+				outfit "Jump Drive (Broken)" 1
 			`Upon entering this system, your ships sensors suddenly begin screaming at you before a pulse of energy hammers against your ship knocking you back a step. After calling for reports on the ships status, you get an urgent message from your engine bay, your jump drive was apparently overloaded by that strange energy pulse and was completely destroyed.`
 			`	Not only that but you quickly find the pulse was sent from the planet as soon as your jump was detected, and none of the nearby Mil'taj vessels seem affected.`
 			choice
 				`	Fire up the weapon systems!`
-			`	As you prepare for a fight a hail is sent from the planet, once you open the connection your computer detects a request for access to your system from an external source. You also receive a pictogram of a ship like your own being destroyed alongside the request.`
+			`	As you prepare for a fight, a hail is sent from the planet, once you open the connection your computer detects a request for access to your system from an external source. You also receive a pictogram of a ship like your own being destroyed alongside the request.`
 			choice
-				`	Open your systems to the aliens, allowing them to access only non-vital information.`
+				`	Open your systems to the aliens, attempt to only allow them access to non-vital information.`
 					goto diplo
-				`	No way am I trusting hostile aliens with access to information about humanity, block all hails and prepare for combat, maybe it's hopeless but I’m not risking humanity because of my own actions, I’ll go down fighting!`
-					goto pointless
-			label pointless
+				`	No way am I trusting hostile aliens with access to my ships systems, block all hails and prepare for combat!`
 			action
 				"reputation: Mil'taj" <?= -1000
 				"reputation: Mil'taj Subjects" <?= -1000
 			`	You hope that your engineers can perform a miracle and figure out how to repair the broken jumpdrive, because the capital ship aiming for you is clearly not going to give you much time to try.`
 				decline
 			label diplo
+			action
+				"reputation: Mil'taj" = 10
+				"reputation: Mil'taj Subjects" = 10
 			`	A few tense minutes pass as your systems record numerous different downloads of information, all the while the nearby Mil'tah vessals seem to simply be stationed in defensive formations, waiting it seems. As you glance at the logs you see most downloads seem to be technical manuals and dictionaries.`
 			`	Then suddenly a new hail comes through and a robotic voice states, "Human captain, land on port bay 3C in Zor'Cal spire, coordinates being transferred." and as the voice stated, a set of coordinates appear on your display indicating the largest city on the planet below. No point leaving them waiting.`
 				decline
+
+ship "Timer2 Ship"
+	attributes
+		"heat dissipation" 1
+		"hull" 3
+		"hull repair rate" .0008
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+	outfits
+		"Timer2 Weapon"
+	gun 0 0
+
+outfit "Timer2 Weapon"
+	category "Guns"
+	thumbnail "outfit/unknown"
+	"gun ports" -1
+	weapon
+		"velocity" 10
+		"lifetime" 2
+		"reload" 100
+		"blast radius" 10
+		"split range" 200
+		"submunition" "Timer2 Submunition"
+
+outfit "Timer2 Submunition"
+	weapon
+		"lifetime" 20
+		"trigger radius" 200
+		"blast radius" 20
+		"hull damage" .15
+		"no damage scaling"
+
+mission "Annoying Timer that Sucks"
+	landing
+	invisible
+	to complete
+		never
+	to fail
+		has "A Meeting with the Mil'taj: offered"
+	npc disable
+		government "Test Dummy"
+		system "Mil'taj Toh"
+		personality unconstrained heroic nemesis
+		ship "Timer2 Ship" "Timer"
+		conversation
+			action
+				outfit "Jump Drive (Broken)" -1
+				outfit "Jump Drive (Damaged)" 1
+			`An explosion rocks the bridge, the battle continues to rage as you, somehow manage to survive against the endless hordes of alien vessels that hammer against your hull. You can see that you won't last under this prolonged assault.`
+			`	A crew member appears on your display, he appears to be in engineering and you can see the purple pulse of your jump drive in the background. He quickly announces that, while they cannot fix the damage to the Jump Drive, they managed to jury rig a connection to whatever the core of it is, and with a large charge of power pumped into it along with fuel, they believe it will either allow the ship to jump or destroy the whole system.`
+			`	Seeing how you are dead either way, you have to take the risk and hope you have enough power and fuel to make it back to Quarg space.`
+			choice
+				`	"Fire it up!"`
+					decline
 
 mission "A Meeting with the Mil'taj"
 	autosave
@@ -278,6 +336,9 @@ mission "A Meeting with the Mil'taj"
 	source "Mil'taj Tul"
 	on offer
 		conversation
+			action
+				outfit "Jump Drive (Broken)" -1
+				outfit "Jump Drive" 1
 			`As you enter the atmosphere of <origin> a dozen warships escort your flagship as it descends, following you until you arrive at the port you were sent to. Below you see dozens of armoured figures holding weaponry waiting, along with a small group who wear no armour.`
 			`	Upon landing you exit your ship, only to be immediately surrounded. The soldiers filter into your ship behind you and you are brought before the unarmoured ones with a gun aimed at your back.`
 			`	Most of the aliens are covered in advanced green armour, standing bipedal at around 4 foot tall with arms and legs that seem to have too many joints to count, along with an additional arm extending from their back, this one significantly longer than the others. The unarmoured ones wear few clothes, but are covered in metallic augmentations interspaced with black leathery skin which pulses disturbingly even as they stand waiting, along with two additional multi-jointed arms. Once you get close though you can tell that only the shorter arms are natural, the others looking robotic in nature.`
@@ -351,11 +412,9 @@ mission "A Meeting with the Mil'taj"
 	on accept
 		"reputation: Mil'taj" <?= 0
 		"reputation: Mil'taj Subjects" <?= 0
-		event "mil'taj capital untrapped"
 	on decline
 		"reputation: Mil'taj" <?= -1000
 		"reputation: Mil'taj Subjects" <?= -1000
-		event "mil'taj capital untrapped"
 
 mission "Mil'taj Job Offers"
 	invisible
@@ -368,52 +427,6 @@ mission "Mil'taj Job Offers"
 	on enter "Mil'taj Toh"
 		fail
 		dialog "You recieve a long transcript of what might be legal documents, followed by a much smaller message detailing your right to accept jobs from certain Mil'taj worlds."
-
-event "mil'taj capital untrapped"
-	system "Mil'taj Toh"
-		pos 1241.352 7.819
-		government Mil'taj
-		arrival 1500
-		habitable 625
-		"jump range" 0
-		asteroids "small rock" 52 5.8548
-		asteroids "medium rock" 2 4.6172
-		asteroids "large rock" 46 3.57
-		asteroids "small metal" 1 2.4276
-		asteroids "medium metal" 1 5.6168
-		asteroids "large metal" 3 5.0456
-		trade Clothing 375
-		trade Electronics 852
-		trade Equipment 569
-		trade Food 385
-		trade "Heavy Metals" 801
-		trade Industrial 812
-		trade "Luxury Goods" 1468
-		trade Medical 915
-		trade Metal 297
-		trade Plastic 454
-		fleet "Small Mil'taj" 1000
-		fleet "Large Mil'taj" 3000
-		fleet "Home Mil'taj" 40000
-		object
-			sprite star/g5
-			period 10
-		object
-			sprite planet/rock12
-			distance 183.04
-			period 39.6222
-		object
-			sprite planet/dust2
-			distance 425.29
-			period 140.329
-		object "Mil'taj Tul"
-			sprite planet/ocean7
-			distance 600.65
-			period 235.533
-		object
-			sprite planet/rock19
-			distance 1536.49
-			period 963.639
 
 mission "Mil'taj: Second Contact"
 	invisible
