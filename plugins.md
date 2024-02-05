@@ -4045,9 +4045,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/QOL-Outfits/icon.png' height='100'></img><br>
 
 
-[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-01-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-01-28) <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-02-05) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
@@ -7286,9 +7286,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Mil%27taj Protectorate/icon.png' height='100'></img><br>
 
 
-[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 42.21 mb | 2024-02-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
+[Mil.taj.Protectorate.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mil.taj.Protectorate.zip) | 42.28 mb | 2024-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mil'taj%20Protectorate/) <br>
 Author: Demolish238 | Category: Races <br>
-[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-02-04) <br>
+[https://github.com/demolish238/Mil-taj-Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) (last commit 2024-02-05) <br>
 
 >This plugin contains the Mil'taj race placed in the right arm of the galaxy. They are tier 3 and contain a small mission chain to experience.
 >
@@ -7332,6 +7332,8 @@ https://github.com/Makuta-Miras/The-Enclave/tree/master (Enclave) (For Mil'taj w
 https://github.com/mdsmestad/ES-COTSA-Pluggin (Cultures of the Southern Arm) (For the Avendri Ships)
 
 https://tearcellgames.itch.io/cosmic-canidae-assets (Mal'korbra assets)
+
+https://github.com/MidnightPlugins/Lost-in-Midnight (Lost in Midnight) (Damaged Jump Drive Image)
 
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
 
