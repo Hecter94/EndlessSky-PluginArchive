@@ -36,4 +36,6 @@ https://github.com/mdsmestad/ES-COTSA-Pluggin (Cultures of the Southern Arm) (Fo
 
 https://tearcellgames.itch.io/cosmic-canidae-assets (Mal'korbra assets)
 
+https://github.com/MidnightPlugins/Lost-in-Midnight (Lost in Midnight) (Damaged Jump Drive Image)
+
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
