@@ -539,9 +539,8 @@ Author: MinneIceCube | Category: Cheats <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>Kestrel Rework Readme:
-This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
-This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. as such, the changes are as follows:
+<blockquote>This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
+This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. As such, the changes are as follows:
 
 -The requirements for the Kestrel sub-quest have been changed:
 	-The combat rating was increased from 8,000 (Combat rank 9: "Force to be reckoned with") --> 22,000 (Combat rank "Fearsome Scrapper). Intended to limit obtaining the newly buffed ship until the player is on a similar power level.
@@ -552,7 +551,7 @@ This does not make much sense according to the lore, but I personally prefer the
 	-Shields 19,400 --> 49,700
 	-Hull 7,200 --> 30,400
 	-Fuel Capacity 500 --> 700
-	-Outfit space 810 --> 900
+	-Outfit space 810 --> 870
 	-Weapon capacity 390 --> 410
 	-Engine Capacity 210 --> 230
 	-Bunks 128 --> 150
@@ -567,6 +566,9 @@ This does not make much sense according to the lore, but I personally prefer the
 
 -Weapon Kestrel:
 	-Weapon Capacity 40 --> 150
+  
+  I made these edits mostly for personal useage, and as such these are the numbers I found acceptable for my late game ship. If you feel otherwise, feel free to make edits as you please.
+
 </blockquote>
 </details>
 
@@ -7373,9 +7375,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-02-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-02-01) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-02-07) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -13577,25 +13579,17 @@ Author: Amazinite | Category: Story <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Syndicate Storyline for Endless Sky, v0.4
+<blockquote># ES-Syndicate-Campaign
+The development repository for the Syndicate campaign of Endless Sky. Spoilers ahead.
 
-This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
+### What's this exta stuff folder?
+I'm keeping my workflow public for anyone to check out and comment on. This folder contains all the things I'm using to help create the campaign, from Blender files of any new models to text files containing any work for the development process. Given the nature of my workflow, this will be a mix of new and old stuff, some (maybe even most) of which that may not make any sense whatsoever and may never be used. It can also get rather unorganized. Below is a description of the text files in the extra stuff folder, but just take everything you see in these files with a grain of salt as none of it is set in stone.
 
-## Current status
-
-Main story and most side-things, complete. This will take you up to the end of the civil war, all completed and ready to continue the game as if you'd completed the main-game story.
-
-Remaining: logs on all the events; a few more epilogue conversations; and various hopefully-minor issues, both discovered and undiscovered.
-
-## How to play/install
-
-First play Endless Sky (https://github.com/endless-sky/endless-sky/). I recommend playing the main version first, up to the end of the main Free Worlds storyline. This alternate-start's intro is not as helpful for beginners, and maybe the story is more fun if you already know what's happening on the Free Worlds side... or, maybe it's fun the other way around! Good point! Well, up to you then.
-
-To play, download this repository (or a release folder) into your plugins directory for Endless Sky. You probably already know how. If not, let me know, and I'll get round to updating this readme with the instructions.
-
-You need Endless Sky minimum version 0.9.15, which at time of writing is the continuous build in the main Endless Sky project.
-
-- Changes to the Korath have impacted this plugin. The current version tracks the current git repository for endless sky. (2022-09-04)
+* everything syndicate.txt: a file containing every reference to the Syndicate in the game.
+* syndicate info.txt: a distilled, summarized version of the above file.
+* character sheet.txt: a file containing info on all the characters new and old that are part of the Syndicate.
+* syndicate notes.txt: a file of random notes that I've taken during the development of the campaign.
+* rough storyboard.txt: a file that contains a VERY rough (WIP) storyboard of how things will go. More polished storyboards will be located in the data folder once I'm actually about to start writing that part.
 
 </blockquote>
 </details>
@@ -15057,9 +15051,27 @@ Author: virmitio | Category: N/A <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
+<blockquote>## Intent:
 
-At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
+Performing the below actions should result in a working directory `<work_dir>` which will permit the map editor and game to both correctly load the plugin while still keeping the plugin repository safely seperated from the root game data.
+
+### Assumptions:
+   - The repo was simply cloned to `%appdata%\endless-sky\plugins\ES_ExpandedTerritory`
+   - that steam is installed to the default location `%ProgramFiles(x86)%\Steam`
+   - that Endless Sky is installed to the default install location set by steam (`<steam_dir>\steamapps\common\...`)
+
+### Commands:
+```
+cd <work_dir>
+mklink /J data "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\data"
+mklink /J images "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
+mklink /J repo "%appdata%\endless-sky\plugins\ES_ExpandedTerritory"
+
+cd "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
+mklink es_et "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\images\es_et"
+```
+
+When opening in the map editor, please open files by way of the `<work_dir>\data` directory tree.
 
 </blockquote>
 </details>
