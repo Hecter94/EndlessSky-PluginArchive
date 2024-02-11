@@ -2370,7 +2370,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Spacefarer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacefarer.zip) | 220.79 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Spacefarer/) <br>
 Author: samrocketman | Category: Gameplay <br>
-[https://github.com/samrocketman/Spacefarer](https://github.com/samrocketman/Spacefarer) (last commit 2023-02-04) <br>
+[https://github.com/samrocketman/Spacefarer](https://github.com/samrocketman/Spacefarer) (last commit 2024-02-11) <br>
 
 >One Jump Drive; No ship capturing; No plundering installed outfits.
 >
@@ -4411,11 +4411,12 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ---
 
 ### Zoura's Outfits Expanded
+<img src='Working/Zoura%27s Outfits Expanded/icon.png' height='100'></img><br>
 
 
-[Zoura.s.Outfits.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zoura.s.Outfits.Expanded.zip) | 251.96 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zoura's%20Outfits%20Expanded/) <br>
+[Zoura.s.Outfits.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zoura.s.Outfits.Expanded.zip) | 1.56 mb | 2024-02-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zoura's%20Outfits%20Expanded/) <br>
 Author: Zoura | Category: Outfits <br>
-[https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded) (last commit 2023-06-27) <br>
+[https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded) (last commit 2024-02-11) <br>
 
 >Expands outfit variety across all castes of vanilla Endless Sky.
 
@@ -15223,9 +15224,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Sounds Of Endless Sky
 
 
-[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 51.51 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sounds%20Of%20Endless%20Sky/) <br>
+[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 51.59 mb | 2024-02-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sounds%20Of%20Endless%20Sky/) <br>
 Author: samrocketman | Category: N/A <br>
-[https://github.com/samrocketman/sounds-of-endless-sky](https://github.com/samrocketman/sounds-of-endless-sky) (last commit 2023-03-05) <br>
+[https://github.com/samrocketman/sounds-of-endless-sky](https://github.com/samrocketman/sounds-of-endless-sky) (last commit 2024-02-11) <br>
 
 >This is a plugin aiming to provide music for Endless Sky as well as remaster the audio to balance it.
 >
@@ -15247,12 +15248,30 @@ The original uncompressed WAV files released by Anthrophantasmus can be found at
 
 Other profiles:
 
+- Music under [sounds/music/ByAnthrophantasmus](sounds/music/ByAnthrophantasmus)
 - [Anthrophantasmus YouTube channel][Anthrophantasmus-youtube]
 - [Anthrophantasmus GitHub profile][Anthrophantasmus-github]
 
 [Anthrophantasmus-youtube]: https://www.youtube.com/channel/UCryMx7RshwDKNHQ-amgEm0A
 [Anthrophantasmus-github]: https://github.com/Anthrophantasmus
-[raw-sounds-of-endless-sky]: https://github.com/samrocketman/raw-sounds-of-endless-sky
+
+# Music by Thorne11
+
+Licensed CC-BY-4.0.  See [copyright](copyright) for licensing.
+
+The original uncompressed WAV files released by Thorne11 can be found at
+[raw-sounds-of-endless-sky][raw-sounds-of-endless-sky].
+
+Other profiles:
+
+- Music under [sounds/music/ByThorne11](sounds/music/ByThorne11)
+- Copied with permission from [ES-Ambience][ES-Ambience].
+- [Thorne11 Bandcamp profile][Thorne11-bandcamp]
+- [Thorne11 GitHub profile][Thorne11-github]
+
+[ES-Ambience]: https://github.com/Thorne11/ES-Ambience
+[Thorne11-bandcamp]: https://horrowithl.bandcamp.com/track/generative-ambient-test-track
+[Thorne11-github]: https://github.com/Thorne11
 
 # Audio conversion
 
@@ -15274,6 +15293,8 @@ MP3 specifically requires stereo format (2-channel) bit rate 179kb/s at 44100
 Hz.
 
     ffmpeg -i original.wav -f mp3 -ar 44100 -ab 179k -ac 2 sounds/music.mp3
+
+[raw-sounds-of-endless-sky]: https://github.com/samrocketman/raw-sounds-of-endless-sky
 
 </blockquote>
 </details>
