@@ -12,12 +12,30 @@ The original uncompressed WAV files released by Anthrophantasmus can be found at
 
 Other profiles:
 
+- Music under [sounds/music/ByAnthrophantasmus](sounds/music/ByAnthrophantasmus)
 - [Anthrophantasmus YouTube channel][Anthrophantasmus-youtube]
 - [Anthrophantasmus GitHub profile][Anthrophantasmus-github]
 
 [Anthrophantasmus-youtube]: https://www.youtube.com/channel/UCryMx7RshwDKNHQ-amgEm0A
 [Anthrophantasmus-github]: https://github.com/Anthrophantasmus
-[raw-sounds-of-endless-sky]: https://github.com/samrocketman/raw-sounds-of-endless-sky
+
+# Music by Thorne11
+
+Licensed CC-BY-4.0.  See [copyright](copyright) for licensing.
+
+The original uncompressed WAV files released by Thorne11 can be found at
+[raw-sounds-of-endless-sky][raw-sounds-of-endless-sky].
+
+Other profiles:
+
+- Music under [sounds/music/ByThorne11](sounds/music/ByThorne11)
+- Copied with permission from [ES-Ambience][ES-Ambience].
+- [Thorne11 Bandcamp profile][Thorne11-bandcamp]
+- [Thorne11 GitHub profile][Thorne11-github]
+
+[ES-Ambience]: https://github.com/Thorne11/ES-Ambience
+[Thorne11-bandcamp]: https://horrowithl.bandcamp.com/track/generative-ambient-test-track
+[Thorne11-github]: https://github.com/Thorne11
 
 # Audio conversion
 
@@ -39,3 +57,5 @@ MP3 specifically requires stereo format (2-channel) bit rate 179kb/s at 44100
 Hz.
 
     ffmpeg -i original.wav -f mp3 -ar 44100 -ab 179k -ac 2 sounds/music.mp3
+
+[raw-sounds-of-endless-sky]: https://github.com/samrocketman/raw-sounds-of-endless-sky
