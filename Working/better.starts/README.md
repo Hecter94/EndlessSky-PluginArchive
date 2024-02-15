@@ -6,7 +6,7 @@ Adds 9 new start options with different ships, background storys, credits and de
 <li>Start: Trader | Freighter: equipped for cargo transport, in Merak system</li>
 <li>Start: Trader (Hai) | Aphid: equipped for cargo transport, in Fah Soom system(Hai space)</li>
 <li>Start: Passenger Transport | Scout: equipped for passenger transport, Talita system</li>
-<li>Start: Miner | Clipper: equipped for mining, in Rasalhague system</li>
+<li>Start: Miner | Sunder: equipped for mining, in Rasalhague system</li>
 <li>Start: Salvager | Shuttle: equipped for boarding, in Aldhibain system</li>
 <li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
 <li>Start: Explorer to Remnant | Heavy Shuttle: equipped for exploring the Remnant, in Tania Australis system</li>
@@ -18,6 +18,10 @@ Beside the cheater start option, all others are balanced and lore friendly. A bi
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-02-15<br>
+Start: Cheater... fixed map not showing all systems<br>
+Start: Miner... changed ship to "Sunder" with Mining Drones<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
