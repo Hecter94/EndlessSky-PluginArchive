@@ -11372,9 +11372,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 47.67 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 47.72 kb | 2024-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-18) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -11397,6 +11397,9 @@ As a little bonus, the three eastern uninhabited systems spawn jumpdrive equippe
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-02-18<br>
+fixed unplayable first mission, if it gets started direct after the first contact<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
