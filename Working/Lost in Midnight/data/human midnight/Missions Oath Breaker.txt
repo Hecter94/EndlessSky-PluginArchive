@@ -134,7 +134,7 @@ mission "Oathbreaker Siege 1"
 	on complete
 		payment 10000
 		event "Oathbreaker planning" 14
-		"reputation: Free Worlds" ++
+		"reputation: Free Worlds" += 100
 		dialog 
 			`The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack.`
 		conversation
@@ -165,7 +165,7 @@ mission "Oathbreaker Siege 2"
 			`You're trying to relax at the bar when the holovideos are interrupted. A familiar image of a gruff man in a disheveled navy uniform appears. "Greetings, people of 'The Free Worlds'. You may have driven off our fleet previously. But know this: We fight on."`
 			`	The transmission cuts out and the regular holoprogram returns.`
 			`	Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<destination> is being occupied by what appears to be a navy fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!"`
-			`	Before you have time to consider your next course of action, the holoprogram is interrupted again. This time it's an official bulletin posted by the <planet> government. Apparently The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined ten million credit bounty on Captain Arnold Benedict. He is, officially, the most wanted man in the galaxy.` 
+			`	Before you have time to consider your next course of action, the holoprogram is interrupted again. This time it's an official bulletin posted by the <planet> government. Apparently The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined hundred million credit bounty on Captain Arnold Benedict. He is, officially, the most wanted man in the galaxy.` 
 			choice
 				`	(Don't join the fight.)`
 					decline
@@ -176,7 +176,7 @@ mission "Oathbreaker Siege 2"
 	on decline
 		"reputation: Free Worlds" -= 2
 		dialog `Rumors have spread that you refused to join in the defense against the Oathbreaker siege...`
-		log "People" "Arnold Benedict" `Captain Arnold Benedict appears to be the leader of the Oathbreakers, a group of dissident former Oathkeepers who have launched attacks on The Free Worlds. He has been dishonorably discharged from the Navy. The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined ten million credit bounty for information leading to his capture or death. He is, officially, the most wanted man in the galaxy.`
+		log "People" "Arnold Benedict" `Captain Arnold Benedict appears to be the leader of the Oathbreakers, a group of dissident former Oathkeepers who have launched attacks on The Free Worlds. He has been dishonorably discharged from the Navy. The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined hundred million credit bounty for information leading to his capture or death. He is, officially, the most wanted man in the galaxy.`
 
 	npc
 		government "Bounty Hunter (licensed)"
@@ -202,7 +202,7 @@ mission "Oathbreaker Siege 2"
 	on visit
 		dialog `You've landed on <planet>, but the battle is still raging overhead. You should take off and help drive off the invaders.`
 	on complete
-		"reputation: Free Worlds" ++
+		"reputation: Free Worlds" += 100
 		payment 20000
 		dialog 	
 			`The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack. Unfortunately, Arnold Benedict escaped.`
@@ -210,7 +210,7 @@ mission "Oathbreaker Siege 2"
 			scene "scene/scene-oathbreakercollision"
 			`The siege was particularly fierce this time. Just prior to your arrival in <system>, one of the Oathbreaker frigates rammed into a Dreadnought. Both warships fell to the planet and crashed into a residential area. This may be the worst tragedy <planet> has had in recent history.`
 			`	Nearby, a holodisplay featuring a news report shows an image of Captain Benedict from one of his previous transmissions. Looking at his face, you see cold rage staring back at you.`
-		log "People" "Arnold Benedict" `Captain Arnold Benedict appears to be the leader of the Oathbreakers, a group of dissident former Oathkeepers who have launched attacks on The Free Worlds. He has been dishonorably discharged from the Navy. The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined ten million credit bounty for information leading to his capture or death. He is, officially, the most wanted man in the galaxy.`
+		log "People" "Arnold Benedict" `Captain Arnold Benedict appears to be the leader of the Oathbreakers, a group of dissident former Oathkeepers who have launched attacks on The Free Worlds. He has been dishonorably discharged from the Navy. The Republic and The Free Worlds, with support from The Syndicate, have pooled together a combined hundred million credit bounty for information leading to his capture or death. He is, officially, the most wanted man in the galaxy.`
 
 
 
@@ -238,9 +238,7 @@ mission "Oathbreaker Siege (Random)"
 				random < 3
 	on offer
 		conversation
-			`You're trying to relax at the bar when the holovideos are interrupted. A familiar image of a gruff man in a disheveled navy uniform appears. "Greetings, people of 'The Free Worlds'. You may have driven off our fleet previously. But know this: We fight on."`
-			`	The transmission cuts out and the regular holoprogram returns.`
-			`	Suddenly you hear raised voices and shouting outside as pilots run for their ships: "<destination> is being occupied by what appears to be a navy fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!"`
+			`You're trying to relax at the bar when suddenly you hear raised voices and shouting outside as pilots run for their ships: "<destination> is being occupied by an Oathbreaker fleet! They are requesting help from any combat-worthy ship in the region to join the defenses!"`
 			choice
 				`	(Don't join the fight.)`
 					decline
@@ -284,10 +282,9 @@ mission "Oathbreaker Siege (Random)"
 	on visit
 		dialog `You've landed on <planet>, but the battle is still raging overhead. You should take off and help drive off the invaders.`
 	on complete
-		"reputation: Free Worlds" ++
+		"reputation: Free Worlds" += 100
 		payment 20000
-		dialog 	
-			`The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack. Unfortunately, Arnold Benedict escaped. He must have a hideout somewhere...`
+		dialog `The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack.`
 
 
 
@@ -297,11 +294,10 @@ mission "Oathbreaker Supply Run"
 	description "You've stumbled across an Oathbreaker fleet on <planet>. Fight or flight time."
 	source
 		government "Pirate"
-		not attributes "uninhabited"
-		not attributes "station"
+		not attributes "uninhabited" "station" "ccor" "dirt belt pirate"
 	to offer
 		has "Oathbreaker Siege 2: done"
-		random < 50
+		random < 70
 	on offer
 		conversation
 			`You've just finished parking your ship in a hangar when you hear a loud commotion outside. A fleet of Oathbreaker ships has just landed and the locals are stocking them with supplies.` 
@@ -344,24 +340,41 @@ mission "Oathbreaker Supply Run"
 		
 event "Oathbreaker Random"
 	system "Beta Lupi"
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Hintar
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Ildaria
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Lesath
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Minkar
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Naper
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Orvala
-		add fleet "Fugitive Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Wei
-		add fleet "Small Oathbreaker" 8000
+		add fleet "Fugitive Oathbreaker" 10000
 	system Zubenelgenubi
-		add fleet "Fugitive Oathbreaker" 8000
-
+		add fleet "Fugitive Oathbreaker" 10000
+	system Alnasl
+		add fleet "Fugitive Oathbreaker" 10000
+	system "Alpha Arae"
+		add fleet "Fugitive Oathbreaker" 10000
+	system Boral
+		add fleet "Fugitive Oathbreaker" 10000
+	system Eber
+		add fleet "Fugitive Oathbreaker" 10000
+	system Eltanin
+		add fleet "Fugitive Oathbreaker" 10000
+	system Lurata
+		add fleet "Fugitive Oathbreaker" 10000
+	system Sadr
+		add fleet "Fugitive Oathbreaker" 10000
+	system Tais
+		add fleet "Fugitive Oathbreaker" 10000
+	system Umbral
+		add fleet "Fugitive Oathbreaker" 10000
 
 
 mission "Oathbreaker Sabotage: Shield Suppressor"
@@ -391,7 +404,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 			"ships: Heavy Warship" + "ships: Utility" >= 4
 		government "Oathbreaker"
 		personality waiting heroic vindictive
-		fleet "Fugitive Oathbreaker" 2
+		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
 			"ships: Heavy Warship" + "ships: Utility" >= 5
@@ -399,7 +412,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		system
 			distance 1
 		personality waiting heroic vindictive
-		fleet "Fugitive Oathbreaker" 2
+		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
 			"ships: Heavy Warship" + "ships: Utility" >= 6
@@ -433,7 +446,7 @@ mission "Oathbreakers: Rum Cellar Fight"
 		not attributes "station"
 	stopover "Rum Cellar"
 	to offer
-		has "event: reveal Chasm"
+		has "event: link chasm"
 		has "event: Oathbreaker Random"
 		not "event: Oathbreaker diminish 3"
 		random < 70
@@ -477,18 +490,19 @@ mission "Oathbreakers: Rum Cellar Fight"
 	on stopover
 		event "Oathbreakers in Rum Cellar"
 		conversation
+			scene "outfit/attention"
 			`	You follow the instructions Magdalena gave you and find the seller who has the stolen rare medicine she wanted. The seller confirms Magdalena deposited the payment and hands you a case of the goods. Everything is going smoothly when suddenly someone calls out...`
 			`	"Well, well, if it isn't Captain <first> <last>, hero of the war!" The disheveled Navy uniforms on a pirate station tells you that you've crossed paths with a group of Oathbreakers. There are seven of them, probably the crew of a Gunboat.`
-			
+
 			branch "not alone"
 				"flagship crew" > 1
 			scene "scene/scene-airlock"
 			`	There's no avoiding this fight. Unfortunately, the seven of them overpower you before you can fire a shot. They grab your Pilot's License as a trophy then toss you out of an airlock.`
 				die
-				
+
 			label "not alone"
 			branch "fight"
-				"flagship required crew" < 14
+				"flagship required crew" < 7
 
 			`	Before things turn violent, their captain orders them to stand down. He must have noticed that you have a crew of your own to back you up. The Oathbreakers glare at you as they stand aside.`
 			choice
@@ -505,6 +519,8 @@ mission "Oathbreakers: Rum Cellar Fight"
 				die
 
 			label victory
+			action
+				set "defeated gunboat ruffians"
 			`	There's no avoiding this fight. Your crew acts heroically, killing a couple of the Oathbreakers in the shootout while the rest flee. Not knowing if they've got reinforcements to back them up, you quickly board your ship.`
 				launch
 
@@ -513,11 +529,26 @@ mission "Oathbreakers: Rum Cellar Fight"
 			has "event: Oathbreakers in Rum Cellar"
 		system Chasm
 		government "Oathbreaker"
+		personality entering heroic coward
+		fleet "Fugitive Oathbreaker"
+	npc
+		to spawn
+			has "event: Oathbreakers in Rum Cellar"
+		system Chasm
+		government "Oathbreaker"
+		personality waiting heroic coward
+		fleet "Fugitive Oathbreaker"
+	npc
+		to spawn
+			has "event: Oathbreakers in Rum Cellar"
+			not "defeated gunboat ruffians"
+		system Chasm
+		government "Oathbreaker"
 		personality launching heroic coward
 		ship "Gunboat (Mark II)" "Red Cliffs"
-		fleet "Fugitive Oathbreaker" 3
 
 	on complete
+		clear "defeated gunboat ruffians"
 		payment 250000
 		"Oathbreaker escalation" ++
 		log `It seems the Oathbreakers have access to the Rum Cellar on Chasm. This gives them a strong border base near the Free Worlds capital in Gamma Corvi.`
@@ -526,7 +557,7 @@ mission "Oathbreakers: Rum Cellar Fight"
 
 event "Oathbreakers in Rum Cellar"
 	system "Chasm"
-		add fleet "Fugitive Oathbreaker" 16000
+		add fleet "Fugitive Oathbreaker" 20000
 
 
 
@@ -535,21 +566,25 @@ mission "Oathbreaker Pirate Gossip"
 	minor
 	source
 		government "Pirate"
+		attributes "shipyard"
 	to offer
 		has "event: Oathbreaker Random"
 		random < 70
 	on offer
-		log `Among the pirates there are rumors that Captain Arnold Benedict's flagship is of alien origin. A "Shield Fortress" that is described as having a huge wing span.`
+		log `Among the pirates there are rumors that Captain Arnold Benedict's flagship is of alien origin. A "Shield Fortress" that is described as having a huge wing span. It's officially named "Kornephoros" but many just call it "The Oath Breaker" instead.`
 		conversation
 			`As you try to relax in the bar you hear someone mention the name of Arnold Benedict.`
-			`	"It was really him! He looked just like on the holovideos," says a man with a scar on his face.`
+			`	"It was really him! He looked just like he did on the holovideos," says a man with a scar on his face.`
 			`	"What was he doing on <planet>?" asks a woman with a mohawk.`
-			`	"Repairs and maintenance. A wanted fugitive like him fits in on worlds like this," replies the scarred man.`
-			`	Another man, one wearing a stereotypical pirate eyepatch, asks, "Does he use a carrier or a cruiser?"`
+			`	"Repairs and maintenance. A wanted fugitive like him fits right in on worlds like ours," replies the scarred man.`
+			`	"I heard he has a fancy flagship," replies the mohawk woman. "What was it called again?"`
+			`	The scarred man responds, "It's officially named Kornephoros, like the star system where the Republic and Free Worlds had one of their first big clashes. From what I've been told, all the Oathbreaker ships are supposed to be named after historical battles. But everyone I know just calls it The Oath Breaker."`
+			`	Another man, one wearing a stereotypical pirate eyepatch, asks, "Is The Oath Breaker a carrier or a cruiser?"`
 			choice
 				`	(Keep listening.)`
 			scene "scene/scene-shieldfortress"
-			`	"Neither," replies the scarred man. "He has some weird alien ship that was salvaged by Marauders before he confiscated it. One of their crew referred to it as a 'Shield Fortress'. They attached parts of a carrier to it, giving it a huge wing span. The thing is a beast of a ship. A real monster."`
+			`	"Neither," replies the scarred man. "He has some weird alien ship that was salvaged by Marauders before he confiscated it. One of their crew referred to it as a 'Shield Fortress'. They attached parts of a wrecked Navy Carrier to it, giving it a huge wing span. The thing is a beast of a ship. A real monster."`
+			`	Eyepatch man downs his drink in one gulp and gets up to leave. The mohawk woman also excuses herself, despite the scarred man's offers of more free drinks. You should probably get going too. If either eyepatch man or mohawk woman are bounty hunters, they may have already shared this information on the Kornephoros, The Oath Breaker, to the authorities for a piece of the reward...`
 				decline
 
 
@@ -567,7 +602,7 @@ mission "Oathbreaker Bounty, Free Worlds"
 	to fail
 		or
 			has "Oathbreaker Bounty, Republic: declined"
-			has "Oathbreaker Bounty, Syndicate: declined"		
+			has "Oathbreaker Bounty, Syndicate: declined"
 	on offer
 		event "Oathbreaker Piracy"
 		payment 50000
@@ -589,7 +624,7 @@ mission "Oathbreaker Bounty, Republic"
 	to fail
 		or
 			has "Oathbreaker Bounty, Free Worlds: declined"
-			has "Oathbreaker Bounty, Syndicate: declined"		
+			has "Oathbreaker Bounty, Syndicate: declined"
 	on offer
 		event "Oathbreaker Piracy"
 		payment 45000
@@ -611,7 +646,7 @@ mission "Oathbreaker Bounty, Syndicate"
 	to fail
 		or
 			has "Oathbreaker Bounty, Free Worlds: declined"
-			has "Oathbreaker Bounty, Republic: declined"		
+			has "Oathbreaker Bounty, Republic: declined"
 	on offer
 		event "Oathbreaker Piracy"
 		payment 35000
@@ -680,6 +715,227 @@ mission "Oathbreaker Fugitives Hideout Job 2"
 		"Oathbreaker escalation" ++
 		payment 150000
 		dialog "The Free Worlds government pays you <payment> credits for helping to eliminate the Oathbreaker threat."
+
+
+
+mission "Oathbreakers: CCOR Conscriptor 1"
+	minor
+	name "Rogue Navy Ship"
+	description "A rogue Navy Cruiser has been conscripting pirate ships in this region of space. Find this fleet and destroy it if they pose a threat to the Free Worlds."
+	source Gagarin
+	stopover Bailey
+	stopover Jakobsen
+	to offer
+		has "event: Oathbreaker Random"
+		not "event: Oathbreaker diminish"
+		random < 70
+	on offer
+		conversation
+			`Strange rumors of a rogue Navy Cruiser are circulating around the spaceport. Not only is it unlikely that the Navy would be operating in this remote region, far from Republic space, the captain has supposedly been conscripting the pirate crews instead of arresting or executing them. With the Oathbreakers on the loose, the possibility that this ship might be a threat to the Free Worlds can't be ignored.`
+				accept
+	to complete
+		never
+
+mission "Oathbreakers: CCOR Conscriptor 2a"
+	landing
+	invisible
+	source
+		planet Jakobsen
+	to offer
+		has "Oathbreakers: CCOR Conscriptor 1: active"
+	on offer
+		conversation
+			scene "thumbnail/cruiser"
+			`The rogue Navy ship sometimes lands on <origin>. The locals say the ship is named Austerlitz...`
+				decline
+
+mission "Oathbreakers: CCOR Conscriptor 2b"
+	landing
+	invisible
+	source
+		planet Bailey Alvorada
+	to offer
+		has "Oathbreakers: CCOR Conscriptor 1: active"
+	on offer
+		conversation
+			scene "thumbnail/cruiser"
+			`The rogue Navy ship has been to <origin>. The locals say it was ambushed by a fleet representing the Confederated Councils of the Outer Rim and fled the system...`
+				decline
+
+mission "Oathbreakers: CCOR Conscriptor 2c"
+	landing
+	invisible
+	source
+		planet "Mordente-Bridi"
+	to offer
+		has "Oathbreakers: CCOR Conscriptor 1: active"
+	on offer
+		conversation
+			scene "thumbnail/cruiser"
+			`The rogue Navy ship has been to <origin>. The locals say that the ship's crew is affiliated with the Oathbreakers...`
+				decline
+
+mission "Oathbreakers: CCOR Conscriptor 3"
+	landing
+	name "The Austerlitz"
+	description "The Austerlitz fleet should still be nearby. Find and destroy it before they leave the Outer Rim."
+	source
+		attributes ccor
+		not attributes uninhabited
+	to offer
+		has "Oathbreakers: CCOR Conscriptor 2a: declined"
+		has "Oathbreakers: CCOR Conscriptor 2b: declined"
+		has "Oathbreakers: CCOR Conscriptor 2c: declined"
+		not "Oathbreaker Thermopylae: offered"
+		"midnight austerlitz escaped" < 3
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you prepare to land the <ship>, one of the other ships docked at the spaceport hails you. "Hey, you're the one who's been asking about the Austerlitz, right? They were here just yesterday. If you hurry, you might be able to catch them in one of the nearby systems!" You have no way to verify if what they're telling you is true. What will you do?`
+			choice
+				`	(Cancel the landing and search for the Austerlitz!)`
+				`	(Complete the landing.)`
+					goto land
+			`	There's no time to waste! While you're not certain if the rumor is true, you can't risk letting the Austerlitz slip away. Firing up the engines, you cancel the landing and have the <ship> head back into space.`
+				launch
+			label land
+			action
+				"midnight austerlitz escaped" ++
+			scene "outfit/unknown"
+			`	You have other business at the moment that takes precedence over unverified rumors. Hopefully, the Austerlitz fleet won't escape while you're preoccupied...`
+				defer
+	on enter Fumalsamakah
+		dialog `You've found the Austerlitz! It is accompanied by a large fleet of pirate ships conscripted from the area. Stop them here before they can threaten the Free Worlds.`
+	npc
+		government "Pirate"
+		system Fumalsamakah
+		personality waiting staying vindictive
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			variant
+				"Modified Hogshead (Modified Blaster)"
+				"Broadsword"
+				"Shuttle Pod" 3
+				"Basket-hilt"
+				"Saber"
+				"Modified Saber"
+				"Firebird"
+				"Modified Firebird"
+				"Enforcer"
+				"Modified Enforcer"
+				"Berserker"
+				"Modified Berserker"
+				"Hauler II"
+	npc
+		government "Oathbreaker"
+		system Fumalsamakah
+		personality waiting staying vindictive
+		fleet
+			names "Oathbreaker fighter"
+			cargo 0
+			variant
+				"Combat Drone" 4
+	npc kill
+		government "Oathbreaker"
+		system Fumalsamakah
+		personality target waiting staying vindictive
+		"cargo settings"
+			cargo 3
+			outfitters "Ammo North"
+		ship "Cruiser (Heavy)" "Austerlitz"
+		on kill
+			set "Oathbreakers: CCOR Conscriptor 3: done"
+			dialog "You've destroyed the Austerlitz. Its fleet of conscripted pirates will probably fall apart without the flagship to lead them."
+			fail
+
+mission "Oathbreakers: CCOR Conscriptor 4"
+	minor
+	name "The Austerlitz"
+	description "The Austerlitz fleet has set a siege on <destination>! Break the siege by destroying the fleet."
+	source
+		government "Free Worlds"
+		attributes "south" "frontier" "rim"
+		not attributes uninhabited
+	destination
+		distance 2 3
+		government "Free Worlds"
+		attributes "south" "frontier" "rim"
+		not attributes uninhabited
+	to offer
+		or
+			"midnight austerlitz escaped" >= 3
+			has "Oathbreakers: CCOR Conscriptor 3: aborted"
+		not "Oathbreaker Thermopylae: offered"
+		random < 70 - ( "austerlitz slacker" * 60 )
+	on offer
+		conversation
+			scene "thumbnail/cruiser"
+			`You are about to order a meal at one of the local dining establishments when the holo monitor broadcast is interrupted by an announcement. A strange Oathbreaker fleet from the Outer Rim laid siege on <destination>! It seems the Austerlitz fleet has resurfaced in Oathbreaker campaign against the Free Worlds. What will you do?`
+			choice
+				`	(Let the <planet> militia handle it.)`
+				`	(Join the battle.)`
+					goto join
+			`	You've decided to sit this one out. Other than the Cruiser, the rest are just a bunch of outdated ships aren't they? Surely the local militia can handle it on their own...`
+				defer
+			label join
+			`	You're technically still part of the Free Worlds. You cancel your order and head back to the <ship>. <planet> must be liberated!`
+				accept
+	on defer
+		set "austerlitz slacker"
+	on accept
+		clear "austerlitz slacker"
+	npc
+		government "Militia"
+		personality heroic staying
+		system destination
+		fleet "Small Militia"
+	npc
+		government "Oathbreaker"
+		system destination
+		personality target waiting staying heroic vindictive
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			cargo 1
+			variant
+				"Berserker"
+				"Modified Berserker"
+				"Shuttle Pod" 3
+				"Combat Drone" 4
+	npc kill
+		government "Oathbreaker"
+		system destination
+		personality target waiting staying heroic vindictive
+		"cargo settings"
+			cargo 3
+			outfitters "Ammo North" "Ammo South"
+		ship "Cruiser (Heavy)" "Austerlitz"
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			cargo 1
+			variant
+				"Modified Hogshead (Modified Blaster)"
+				"Broadsword"
+				"Basket-hilt"
+				"Saber"
+				"Modified Saber"
+				"Firebird"
+				"Modified Firebird"
+				"Enforcer"
+				"Modified Enforcer"
+				"Hauler II"
+		dialog "You've destroyed the Austerlitz and its fleet. Land on <planet> to check in with the local government."
+	on visit
+		dialog `You've landed on <planet>, but the battle is still raging overhead. You should take off and help drive off the invaders.`
+	on complete
+		"reputation: Free Worlds" += 100
+		payment 20000
+		dialog "The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack."
 
 
 
@@ -1055,7 +1311,7 @@ mission "Oathbreaker Poisonwood"
 		government "Oathbreaker"
 		system Ascella
 		personality target waiting staying vindictive
-		ship "Gunboat (Mark II)"
+		ship "Gunboat (Mark II)" "Gogunda"
 
 	on enter Peacock
 		dialog `You've found an elite Oathbreaker navy scout ship. The R.N.S. Poisonwood may by nearby.`
@@ -1063,7 +1319,7 @@ mission "Oathbreaker Poisonwood"
 		government "Oathbreaker"
 		system Peacock
 		personality target waiting staying vindictive
-		ship "Rainmaker (Mark II)"
+		ship "Rainmaker (Mark II)" "Karbala"
 
 	on enter "Kaus Australis"
 		dialog `You've found an elite Oathbreaker navy scout ship. The R.N.S. Poisonwood may by nearby.`
@@ -1071,7 +1327,7 @@ mission "Oathbreaker Poisonwood"
 		government "Oathbreaker"
 		system "Kaus Australis"
 		personality target waiting staying vindictive
-		ship "Gunboat (Mark II)"
+		ship "Gunboat (Mark II)" "Dunbar"
 
 	on enter "Delta Sagittarii"
 		dialog `You've found an elite Oathbreaker navy scout ship. The R.N.S. Poisonwood may by nearby.`
@@ -1079,7 +1335,7 @@ mission "Oathbreaker Poisonwood"
 		government "Oathbreaker"
 		system "Delta Sagittarii"
 		personality target waiting staying vindictive
-		ship "Rainmaker (Mark II)"
+		ship "Rainmaker (Mark II)" "Dresden"
 
 	npc
 		government "Oathbreaker"
@@ -1309,6 +1565,35 @@ mission "Oathbreaker Thermopylae"
 
 	npc
 		to spawn
+			has "Oathbreakers: CCOR Conscriptor 4: declined"
+			has "Oathbreakers: CCOR Conscriptor 4: aborted"
+			has "Oathbreakers: CCOR Conscriptor 4: failed"
+		government "Oathbreaker"
+		system Wei
+		personality waiting staying vindictive
+		ship "Cruiser (Heavy)" "Austerlitz"
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			cargo 1
+			variant
+				"Modified Hogshead (Modified Blaster)"
+				"Broadsword"
+				"Shuttle Pod" 3
+				"Basket-hilt"
+				"Saber"
+				"Modified Saber"
+				"Firebird"
+				"Modified Firebird"
+				"Enforcer"
+				"Modified Enforcer"
+				"Berserker"
+				"Modified Berserker"
+				"Hauler II"
+
+	npc
+		to spawn
 			or
 				has "Oathbreaker Alpine Larch: aborted"
 				has "Oathbreaker Alpine Larch: failed"
@@ -1375,32 +1660,59 @@ mission "Oathbreaker Thermopylae"
 
 event "Oathbreaker diminish"
 	system "Beta Lupi"
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Hintar
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Ildaria
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Lesath
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 12000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Minkar
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Naper
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Orvala
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Wei
-		remove fleet "Small Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 	system Zubenelgenubi
-		remove fleet "Fugitive Oathbreaker" 8000
-		add fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Alnasl
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system "Alpha Arae"
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Boral
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Eber
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Eltanin
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Lurata
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Sadr
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Tais
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
+	system Umbral
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 20000
 
 
 
@@ -1441,7 +1753,7 @@ mission "Oathbreaker Fugitives Hideout Random"
 
 mission "Nemesis: Oath Breaker"
 	name "Oath Breaker"
-	description "Defeat the Oathbreaker fleet, then return to <destination>."
+	description "Defeat the main Oathbreaker fleet, then return to <destination>."
 	source
 		government "Free Worlds"
 		attributes spaceport
@@ -1454,7 +1766,7 @@ mission "Nemesis: Oath Breaker"
 	on offer
 		conversation
 			scene "scene/scene-oathbreakerfinal"
-			`You're trying to relax at a bar when suddenly you hear raised voices and shouting outside as pilots run for their ships: "An Oathbreaker fleet has appeared over <planet> and is demanding tribute! The local militia has already been wiped out and the government of <planet> is requesting help from any combat-worthy ship at the spaceport to join the defenses!" The authorities of <planet> will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			`You're trying to relax at a bar when suddenly you hear raised voices and shouting outside as pilots run for their ships: "The main Oathbreaker fleet has appeared over <planet> and is demanding tribute! The local militia has already been wiped out and the government of <planet> is requesting help from any combat-worthy ship at the spaceport to join the defenses!" Joining the battle could be an opportunity to finally put an end to Benedict's campaign of terror, but this could also be an easy way to get yourself killed.`
 			choice
 				`	(Don't join the fight.)`
 					goto coward
@@ -1521,7 +1833,7 @@ mission "Nemesis: Oath Breaker"
 			fighters
 				names "Oathbreaker fighter"
 			variant
-				"Marauder Falcon (Engines)"
+				"Marauder Falcon"
 				"Marauder Bastion"
 				"Marauder Osprey"
 				"Gunboat (Mark II)"
@@ -1534,7 +1846,7 @@ mission "Nemesis: Oath Breaker"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
 		system destination
-		ship "Saryd Trailblazer (Pug)" "Revenant"
+		ship "Saryd Trailblazer (Pug)" "Gravelines"
 
 	npc
 		to spawn
@@ -1542,7 +1854,7 @@ mission "Nemesis: Oath Breaker"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
 		system destination
-		ship "Strategos" 
+		ship "Strategos" "Poisonwood"
 		fleet
 			names "Oathbreaker"
 			fighters
@@ -1592,7 +1904,7 @@ mission "Nemesis: Oath Breaker"
 		government "Nemesis"
 		personality target waiting heroic vindictive
 		system destination
-		ship "Shield Fortress" "Oath Breaker"
+		ship "Shield Fortress" "Kornephoros"
 		dialog `Captain Arnold Benedict is no longer able to terrorize the Free Worlds. Return to <planet> and claim your reward.`
 
 	on complete
@@ -1669,65 +1981,110 @@ ship "Auxiliary" "Auxiliary (Oathbreaker)"
 
 event "Oathbreaker diminish 2"
 	system "Beta Lupi"
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Hintar
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Ildaria
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Lesath
-		remove fleet "Fugitive Oathbreaker" 12000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Minkar
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Naper
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Orvala
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Wei
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 	system Zubenelgenubi
-		remove fleet "Fugitive Oathbreaker" 16000
-		add fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Alnasl
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system "Alpha Arae"
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Boral
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Eber
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Eltanin
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Lurata
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Sadr
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Tais
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
+	system Umbral
+		remove fleet "Fugitive Oathbreaker"
+		add fleet "Fugitive Oathbreaker" 40000
 
 event "Oathbreaker diminish 3"
 	system "Beta Lupi"
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Hintar
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Ildaria
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Lesath
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Minkar
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Naper
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Orvala
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Wei
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
 	system Zubenelgenubi
-		remove fleet "Fugitive Oathbreaker" 32000
+		remove fleet "Fugitive Oathbreaker"
+	system Alnasl
+		remove fleet "Fugitive Oathbreaker"
+	system "Alpha Arae"
+		remove fleet "Fugitive Oathbreaker"
+	system Boral
+		remove fleet "Fugitive Oathbreaker"
+	system Eber
+		remove fleet "Fugitive Oathbreaker"
+	system Eltanin
+		remove fleet "Fugitive Oathbreaker"
+	system Lurata
+		remove fleet "Fugitive Oathbreaker"
+	system Sadr
+		remove fleet "Fugitive Oathbreaker"
+	system Tais
+		remove fleet "Fugitive Oathbreaker"
+	system Umbral
+		remove fleet "Fugitive Oathbreaker"
 
 mission "Oathbreaker Rum Cellar update"
 	landing
 	invisible
 	to offer
 		has "event: Oathbreakers in Rum Cellar"
-		has "event: Oathbreaker diminish 3"
+		has "event: Oathbreaker diminish 2"
 	on offer
 		event "Oathbreakers clear Rum Cellar"
 
 event "Oathbreakers clear Rum Cellar"
 	system "Chasm"
-		remove fleet "Fugitive Oathbreaker" 16000
+		remove fleet "Fugitive Oathbreaker"
 
 
 mission "Oathbreaker expeditionary 1"

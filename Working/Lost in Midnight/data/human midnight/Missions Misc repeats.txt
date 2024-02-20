@@ -17,36 +17,6 @@
 
 
 
-mission "Engineering Room: Salvaged Supercapacitor"
-	boarding
-	repeat
-	invisible
-	minor
-	source
-		not category "Drone"
-		attributes "automaton"
-	destination Earth
-	to offer
-		random < 5
-	on offer
-		require "Engineering Room"
-		conversation
-			scene "outfit/supercapacitor"
-			`While searching the derelict, your engineer finds a loose component that is the equivalent of a Supercapacitor. Take it?`
-			choice
-				`	(Take it.)`
-					accept
-				`	(Leave it.)`
-					decline
-	on accept
-		outfit "Supercapacitor" 1
-#		"engineer salvaged supercapacitor" ++
-		fail
-#	on decline
-#		"engineer salvaged supercapacitor" --
-
-
-
 mission "Independent Refugee"
 	name "Passenger to <planet>"
 	repeat
@@ -73,204 +43,362 @@ mission "Independent Refugee"
 
 
 
-mission "Medical Bay: Injured Crewmember (Coalition)"
+mission "Midnight Blaster Roulette 0 (Assist)"
 	assisting
-	deadline
-	repeat
 	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Coalition" "Heliarch"
-		not attributes "automaton"
-	destination
-		government "Coalition" "Heliarch"
-		attributes spaceport
-		not attributes "uninhabited"
-		distance 1 3
+	name "Puppetmaster"
+	description "Bring a Blaster Charger to <destination> to take the Puppetmaster's Challenge."
 	to offer
-		has "known to the heliarchs"
-		random < 5
+		random < 70
+	source
+		government "Pirate" "Independent"
+		not attributes "automaton"
 	on offer
-		require "Medical Bay"
+		payment 5000
+		outfit "Blaster Charger" 1
 		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+			scene "outfit/blaster charger"
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. Before you leave, the captain also offers you a Blaster Charger.`
+			choice
+				`	"What's this for?"`
+			scene "planet/lava0"
+			`The captain says, "If you're feeling lucky, bring that to Bailey in the Citadelle system and take the Puppetmaster's challenge. If you can survive, you'll receive a special prize."`
+				decline
+	destination "Bailey"
 	on complete
-		"reputation: Coalition" ++
-		"reputation: Heliarch" ++
-		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+		dialog "Visit the spaceport to search for the Puppetmaster."
 
-
-
-mission "Medical Bay: Injured Crewmember (Hai)"
-	assisting
-	deadline
-	repeat
+mission "Midnight Blaster Roulette 1"
 	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Hai"
-		not attributes "automaton"
-	destination
-		government "Hai"
-		attributes spaceport
-		not attributes "uninhabited"
-		distance 1 3
+	invisible
+	source Bailey
 	to offer
-		has "First Contact: Hai: declined"
-		random < 5
+		has "Midnight Blaster Roulette 0 (Assist): done"
+		has "outfit (flagship installed): Blaster Charger"
 	on offer
-		require "Medical Bay"
 		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
-	on complete
-		"reputation: Hai" ++
-		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+			scene "outfit/blaster charger"
+			`You've been told that there is a special prize to be won by bringing a Blaster Charger to the Puppetmaster and surviving some sort of challenge...`
+			choice
+				`	(Search for the Puppetmaster.)`
+					goto search
+				`	(Sell the Blaster Charger.)`
+			action
+				payment 5000
+				outfit "Blaster Charger" -1
+			scene "outfit/blaster charger"
+			`	You have no problem trying to sell the Blaster Charger and receive 5,000 credits for it, ten times what it's worth elsewhere.`
+				decline
+			label search
+			branch coalition
+				has "Coalition: First Contact: offered"
+			scene "thumbnail/heliarch stalker"
+			`	After asking around, you learn that the Puppetmaster is currently parked at a landing pad at the edge of the spaceport. You arrive to find an exotic ship parked there. A terminal near the landing pad's entryway allows you to hail the ship.`
+			choice
+				`	(Use the terminal.)`
+					goto puppetmaster
+			label coalition
+			scene "thumbnail/heliarch stalker"
+			`	After asking around, you learn that the Puppetmaster is currently parked at a landing pad at the edge of the spaceport. You arrive to find a ship parked there that appears to be from the Coalition. A terminal near the landing pad's entryway allows you to hail the ship.`
+			choice
+				`	(Use the terminal.)`
+					goto puppetmaster
+			label puppetmaster
+			`	A mechanical voice answers. "Want what do you?"`
+			choice
+				`	"I'm here for the challenge."`
+				`	"Are you from the Coalition?"`
+					to display
+						has "Coalition: First Contact: offered"
+					goto fugitive
+			scene "outfit/blaster charger"
+			`	You hold up the Blaster Charger. The Puppetmaster responds, "Enter you may, but leave your weapons by the entrance you must."`
+			choice
+				`	"Forget it, I changed my mind."`
+				`	"Alright, I can do that."`
+					goto enter
+			scene "outfit/attention"
+			`	A strange hollow laughter comes from the terminal. "Coward! Lost you get."`
+			choice
+				`	"Alright, I'll play by your rules."`
+				`	(Walk away. You want no part of this.)`
+					decline
+			label enter
+			`	The entry hatch pops open and you walk in. An empty table is conveniently located nearby for you to place your weapons on.`
+			choice
+				`	(Abide by the Puppetmaster's rules.)`
+					goto proceed
+				`	("Forget" to place your basic sidearm on the table.)`
+			`	When you try to walk farther in, a mechanical voice speaks from a loudspeaker. "A weapon you still have. The weapon you leave or lost you get!" The ship must have some internal security scanners. You've come this far. Might as well go all in.`
+			choice
+				`	(Drop your sidearm and proceed.)`
+			label proceed
+			branch orphan
+				has "outfit (flagship installed): Midnight's Lost Orphan"
+			scene "outfit/unknown"
+			`	A door opens into a dimly lit room. After walking through, the door closes behind you. An empty table sits in the center and the lights brighten to reveal a strange masked figure wearing a cloak. With the same mechanical voice it says, "Welcome." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
+			choice
+				`	(Pick up the pistol and load it.)`
+					goto first
+			label orphan
+			scene "outfit/unknown"
+			`	A door opens into a dimly lit room. After walking through, the door closes behind you. An empty table sits in the center and the lights brighten to reveal a strange masked figure wearing a cloak. With the same mechanical voice it says, "Welcome." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you." You notice Midnight's Lost Orphan observing from the side and get the impression it wants to feed on any feelings of hopelessness or despair you might experience during this encounter...`
+			choice
+				`	(Pick up the pistol and load it.)`
+			label first
+			scene "outfit/mod blaster pistol"
+			`	All three blaster chargers look the same. You randomly choose one and load it into the pistol.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of3
+				`	(Shoot yourself.)`
+					goto self1of3
+			label self1of3
+			branch death
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and look at the remaining two chargers. The cloaked figure speaks with its mechanical voice, "Carefully choose. One only is charged. Empty the other is." You load one and consider your next action.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of2
+				`	(Shoot yourself.)`
+					goto self1of2
+			label self1of2
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and load it with the final charger.`
+			label finalshot
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto kill
+			label death
+			scene "projectile/ionball"
+			`	There is a bright flash of light followed by nothingness. "Unfortunate you are." The Puppetmaster takes your Blaster Charger from your corpse and adds it to the ones on the table.`
+				die
+			label shoot1of3
+			branch kill
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it and aims it at you before firing.`
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. The cloaked figure passes the pistol to you. You set aside the empty charger and load it with the remaining charger.`
+				goto finalshot
+			label shoot1of2
+			branch kill
+				random < 50
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it with the final charger and aims it at you before firing.`
+			choice
+				`	(Calmly accept your fate.)`
+					goto death
+				`	(Beg for mercy.)`
+			`	The cloaked figure ignores your pitiful pleas and pulls the trigger.`
+				goto death
+			label kill
+			action
+				outfit "Modified Blaster Pistol" 1
+				outfit "Blaster Charger" -1
+			scene "outfit/mod blaster pistol"
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. The Modified Blaster Pistol and chargers you may take."`
+				decline
+			label fugitive
+			`	The speaker crackles with static before going silent. Suddenly, the engines on the Puppetmaster roar to life and the ship lifts off! This area of the spaceport is too far for you to return to your ship in time to go after it. Whoever is in there was spooked by your question regarding their relation to the Coalition...`
+				decline
 
-
-
-mission "Medical Bay: Injured Crewmember (Human)"
-	assisting
-	deadline
+mission "Midnight Blaster Roulette 2"
+	job
 	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Republic" "Syndicate" "Free Worlds"
-		not attributes "automaton"
-	destination
-		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes spaceport
-		not attributes "uninhabited"
-		distance 1 3
+	name "Blaster Charger"
+	description "Used Blaster Charger for sale. May need some repair. Asking price is 10,000 credits. (You can challenge the Puppetmaster again with this.)"
+	source Bailey
 	to offer
-		random < 5
-	on offer
-		require "Medical Bay"
+		"credits" >= 20000
+		has "Midnight Blaster Roulette 1: offered"
+		has "outfit (flagship installed): Modified Blaster Pistol"
+		random < 50
+	on accept
+		payment -10000
 		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
-	on complete
-		payment
-		payment 10000
-		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away. An insurance company deposits <payment> into your account.`
+			scene "outfit/blaster charger"
+			`It wasn't cheap, but you should  be able to challenge the Puppetmaster again with this.`
+			branch orphan
+				has "outfit (flagship installed): Midnight's Lost Orphan"
+			scene "outfit/unknown"
+			`	After taking the effort to locate the Puppetmaster and going through the entry procedures, you once again find yourself in a dimly lit room with no weapons, staring at the same cloaked figure standing on the opposite side of an empty table. With a familiar mechanical voice it says, "Return you have." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
+			choice
+				`	(Pick up the pistol and load it.)`
+					goto first
+			label orphan
+			scene "outfit/unknown"
+			`	Aftertaking the effort to locate the Puppetmaster and going through the entry procedures, you once again find yourself in a dimly lit room with no weapons, staring at the same cloaked figure standing on the opposite side of an empty table. With a familiar mechanical voice it says, "Return you have." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you." You notice Midnight's Lost Orphan observing from the side and get the impression it wants to feed on any feelings of hopelessness or despair you might experience during this encounter...`
+			choice
+				`	(Pick up the pistol and load it.)`
+			label first
+			scene "outfit/mod blaster pistol"
+			`	All three blaster chargers look the same. You randomly choose one and load it into the pistol.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of3
+				`	(Shoot yourself.)`
+					goto self1of3
+			label self1of3
+			branch death
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and look at the remaining two chargers. The cloaked figure speaks with its mechanical voice, "Carefully choose. One only is charged. Empty the other is." You load one and consider your next action.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of2
+				`	(Shoot yourself.)`
+					goto self1of2
+			label self1of2
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and load it with the final charger.`
+			label finalshot
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto kill
+			label death
+			scene "projectile/ionball"
+			`	There is a bright flash of light followed by nothingness. "Unfortunate you are." The Puppetmaster takes your Blaster Charger from your corpse and adds it to the ones on the table.`
+				die
+			label shoot1of3
+			branch kill
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it and aims it at you before firing.`
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. The cloaked figure passes the pistol to you. You set aside the empty charger and load it with the remaining charger.`
+				goto finalshot
+			label shoot1of2
+			branch kill
+				random < 50
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it with the final charger and aims it at you before firing.`
+			choice
+				`	(Calmly accept your fate.)`
+					goto death
+				`	(Beg for mercy.)`
+			`	The cloaked figure ignores your pitiful pleas and pulls the trigger.`
+				goto death
+			label kill
+			action
+				outfit "Modified Blaster Pistol" -1
+				outfit "Dual Mod Blaster Pistols" 1
+			scene "outfit/dual mod blaster pistols"
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. The Modified Blaster Pistol and chargers you may take." With a second of these Modified Blaster Pistols, you can now dual wield them.`
+				decline
 
-
-
-mission "Medical Bay: Injured Crewmember (Kor Efret)"
-	assisting
-	deadline
+mission "Midnight Blaster Roulette 3"
+	job
 	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Kor Efret"
-		not attributes "automaton"
-	destination
-		government "Kor Efret"
-		attributes spaceport
-		not attributes "uninhabited"
+	name "Blaster Charger"
+	description "Used Blaster Charger for sale. May need some repair. Asking price is 20,000 credits. (You can challenge the Puppetmaster again with this.)"
+	source Bailey
 	to offer
-		or
-			has "First Contact: Korati Efreti: declined"
-			has "First Contact: Laki Nemparu: declined"
-			has "First Contact: Karek Fornati: declined"
-			has "First Contact: Setar Fort: declined"
-		random < 5
-	on offer
-		require "Medical Bay"
+		"credits" >= 40000
+		has "Midnight Blaster Roulette 2: offered"
+		not "outfit (flagship installed): Modified Blaster Pistol"
+		has "outfit (all): Dual Mod Blaster Pistols"
+		random < 33
+	on accept
+		payment -20000
 		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
-	on complete
-		"reputation: Kor Efret" ++
-		dialog `Despite the language barrier, you manage to inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Remnant)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Remnant"
-		not attributes "automaton"
-	destination
-		government "Remnant"
-		attributes spaceport
-		not attributes "uninhabited"
-	to offer
-		has "remnant blood test pure"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
-	on complete
-		"reputation: Remnant" ++
-		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
-
-
-
-mission "Medical Bay: Injured Crewmember (Wanderer)"
-	assisting
-	deadline
-	repeat
-	minor
-	name "Injured Crewmember"
-	description "Bring an injured crewmember to <destination>."
-	passengers 1
-	source
-		government "Wanderer"
-		not attributes "automaton"
-	destination
-		government "Wanderer"
-		attributes spaceport
-		not attributes "uninhabited"
-		distance 1 3
-	to offer
-		has "language: Wanderer"
-		random < 5
-	on offer
-		require "Medical Bay"
-		conversation
-			scene "outfit/medical bay"
-			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
-				accept
-	on fail
-		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
-	on complete
-		"reputation: Wanderer" ++
-		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+			scene "outfit/blaster charger"
+			`It wasn't cheap, but you should be able to challenge the Puppetmaster again with this.`
+			branch orphan
+				has "outfit (flagship installed): Midnight's Lost Orphan"
+			`	After taking the effort to locate the Puppetmaster and going through the entry procedures, you once again find yourself in a dimly lit room with no weapons, staring at the same cloaked figure standing on the opposite side of an empty table. With a familiar mechanical voice it says, "Return you have." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
+			choice
+				`	(Pick up the pistol and load it.)`
+					goto first
+			label orphan
+			`	Aftertaking the effort to locate the Puppetmaster and going through the entry procedures, you once again find yourself in a dimly lit room with no weapons, staring at the same cloaked figure standing on the opposite side of an empty table. With a familiar mechanical voice it says, "Return you have." The cloaked figure drops a Modified Blaster Pistol and three Blaster Chargers onto the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you." You notice Midnight's Lost Orphan observing from the side and get the impression it wants to feed on any feelings of hopelessness or despair you might experience during this encounter...`
+			choice
+				`	(Pick up the pistol and load it.)`
+			label first
+			scene "outfit/mod blaster pistol"
+			`	All three blaster chargers look the same. You randomly choose one and load it into the pistol.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of3
+				`	(Shoot yourself.)`
+					goto self1of3
+			label self1of3
+			branch death
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and look at the remaining two chargers. The cloaked figure speaks with its mechanical voice, "Carefully choose. One only is charged. Empty the other is." You load one and consider your next action.`
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto shoot1of2
+				`	(Shoot yourself.)`
+					goto self1of2
+			label self1of2
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. You set aside the empty charger and load it with the final charger.`
+			label finalshot
+			choice
+				`	(Shoot the cloaked figure.)`
+					goto kill
+			label death
+			action
+				clear "blaster roulette doubled"
+			scene "projectile/ionball"
+			`	There is a bright flash of light followed by nothingness. "Unfortunate you are." The Puppetmaster takes your Blaster Charger from your corpse and adds it to the ones on the table.`
+				die
+			label shoot1of3
+			branch kill
+				random < 33
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it and aims it at you before firing.`
+			branch death
+				random < 50
+			scene "outfit/mod blaster pistol"
+			`	Nothing happens. The cloaked figure passes the pistol to you. You set aside the empty charger and load it with the remaining charger.`
+				goto finalshot
+			label shoot1of2
+			branch kill
+				random < 50
+			`	Nothing happens. "Unfortunate you are. My turn it is now." Taking the pistol, the cloaked figure loads it with the final charger and aims it at you before firing.`
+			choice
+				`	(Calmly accept your fate.)`
+					goto death
+				`	(Beg for mercy.)`
+			`	The cloaked figure ignores your pitiful pleas and pulls the trigger.`
+				goto death
+			label kill
+			branch doubled
+				has "blaster roulette doubled"
+			scene "outfit/attention"
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations..." Suddenly, the cloaked figure rises back to the opposite side of the table! "Or Double or Nothing would you dare to take?"`
+			choice
+				`	"Okay, I'll go for double or nothing."`
+					goto double
+				`	"No, I've had enough."`
+			action
+				outfit "Modified Blaster Pistol" 1
+			`	The mechanical voice answers, "The Modified Blaster Pistol and chargers you may take."`
+				decline
+			label double
+			action
+				set "blaster roulette doubled"
+			`	The cloaked figure places three fresh chargers on the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
+				goto first
+			label doubled
+			action
+				clear "blaster roulette doubled"
+				outfit "Dual Mod Blaster Pistols" 1
+			scene "outfit/dual mod blaster pistols"
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. These Modified Blaster Pistols and chargers you may take." The cloaked figure returns to the table with a second Modified Blaster Pistol.`
+				decline
 
 
 
@@ -292,26 +420,23 @@ mission "Mining: Claim Jumpers"
 		fleet
 			names "civilian"
 			cargo 0
-			variant 6
-				"Sparrow (Afterburner)" 3
-			variant 6
-				"Fury (Miner)"
-				"Sparrow" 2
-			variant 6
-				"Modified Berserker"
-				"Sparrow" 2
-			variant 6
-				"Hawk (Miner)"
-				"Sparrow" 2
-			variant 6
-				"Headhunter (Miner)"
-				"Sparrow" 2
+			variant 2
+				"Sparrow (Kludge Blaster)" 3
 			variant 1
-				"Rancor"
-				"Sparrow" 2
+				"Modified Berserker (Kludge Blaster)"
+				"Sparrow (Kludge Blaster)" 2
 			variant 1
-				"Diamondback (Mining)"
-				"Sparrow" 2
+				"Rancor (Kludge Blaster)"
+				"Sparrow (Kludge Blaster)" 2
+			variant 1
+				"Wasp (Kludge Blaster)"
+				"Sparrow (Kludge Blaster)" 2
+			variant 1
+				"Fury (Kludge Blaster)"
+				"Sparrow (Kludge Blaster)" 2
+			variant 1
+				"Stingray (Kludge Blaster)"
+				"Sparrow (Kludge Blaster)" 2
 
 mission "Mining: Iron Challenge"
 	deadline 7
@@ -692,11 +817,18 @@ mission "Lares Exploring"
 				defer
 
 			label "treasure"
+			action
+				outfit "Mysterious Treasure" 1
 			scene "outfit/treasure"
 			`	You find an old crate. Inside is a Mysterious Treasure! You could probably sell it for a decent sum anywhere, but getting it appraised by someone knowledgeable about archaeology might yield better results.`
-				accept
+				decline
 			
 			label "weapons"
+			action
+				outfit "Sniper Rifle" 1
+				outfit "Fragmentation Grenades" 1
+				outfit "Bullet Boxes" 1
+				outfit "Gatling Gun Ammo" 1500
 			scene "scene/scene-weapons cache"
 			`	You find an old weapons cache. These look ancient, but probably still work.`
 				decline
@@ -770,16 +902,8 @@ mission "Lares Exploring"
 				defer
 
 			label "empty"
-			`	The cavern is empty. Perhaps you are the first living creature to set eyes on these rock formations.`
+			`	The cavern is empty. Perhaps you are the first human to set eyes on these rock formations.`
 				defer
-	on decline
-		outfit "Sniper Rifle" 1
-		outfit "Fragmentation Grenades" 1
-		outfit "Bullet Boxes" 1
-		outfit "Gatling Gun Ammo" 1500
-	on accept
-		outfit "Mysterious Treasure" 1
-		fail
 
 
 
@@ -791,11 +915,10 @@ mission "Pirate Raid: Shield Suppressor"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Neutral" "Independent"
 	to offer
+		has "outfit (installed): Shield Suppressor"
 		"reputation: Pirate" < 0
 		"combat rating" >= 403
 		random < 10
-	on offer
-		require "Shield Suppressor"
 	npc
 		government "Pirate"
 		personality nemesis harvests plunders entering
@@ -851,69 +974,6 @@ mission "Pirate Raid: Shield Suppressor"
 		fleet "Large Core Pirates"
 		fleet "Large Northern Pirates"
 
-
-
-conversation "sabotage: shield suppressor"
-	scene "outfit/shield suppressor"
-	`You notice a malfunction with the shield generator of your ship. You should probably have it checked out the next time you're at an outfitter...`
-		accept
-
-mission "Sabotage: Shield Suppressor (boarding)"
-	boarding
-	invisible
-	minor
-	repeat
-	deadline 1
-	source
-		government "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
-		not attributes "automaton"
-	destination "Earth"
-	to offer
-		"reputation: Pirate" < 0
-		"combat rating" >= 403
-		or
-			and
-				not "Sabotage: Shield Suppressor (boarding): offered"
-				random < 20
-			and
-				has "Sabotage: Shield Suppressor (boarding): offered"
-				random < 2
-	on offer
-		outfit "Shield Suppressor" 1
-		conversation "sabotage: shield suppressor"
-	npc kill
-		government "Pirate"
-		personality nemesis harvests plunders entering
-		fleet "pirate raid" 2
-
-mission "Sabotage: Shield Suppressor (boarding rival)"
-	boarding
-	invisible
-	minor
-	repeat
-	deadline 1
-	source
-		government "Pirate (Rival)" "Pirate (Rivals)" "Independent" "Independent (Killable)" "Bounty (Disguised)"
-		not attributes "automaton"
-	destination "Earth"
-	to offer
-		"reputation: Pirate" >= 0
-		"reputation: Pirate (Rivals)" < 0
-		"combat rating" >= 403
-		or
-			and
-				not "Sabotage: Shield Suppressor (boarding rival): offered"
-				random < 20
-			and
-				has "Sabotage: Shield Suppressor (boarding rival): offered"
-				random < 2
-	on offer
-		outfit "Shield Suppressor" 1
-		conversation "sabotage: shield suppressor"
-	npc kill
-		government "Pirate (Rivals)"
-		personality nemesis harvests plunders entering
-		fleet "pirate raid" 2
 
 
 ##################################

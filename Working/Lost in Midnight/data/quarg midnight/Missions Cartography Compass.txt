@@ -32,6 +32,7 @@ mission "Cartography Compass: Hazehai"
 	on offer
 		require "Celestial Compass"
 		event "reveal Hazehai"
+		set "hazehai inaccessible patched"
 		conversation
 			scene "outfit/celestial compass"
 			`The Celestial Compass is highlighting an area of the map near the Limen system. Several hidden systems are waiting to be explored!`
@@ -72,12 +73,26 @@ mission "Cartography Compass: Hazehai"
 event "reveal Hazehai"
 	system Ehmahai
 		remove hidden
+		remove attributes "inaccessible"
 	system Hazehai
 		remove hidden
+		remove attributes "inaccessible"
 	system Heiahai
 		remove hidden
+		remove attributes "inaccessible"
 	system Zubahai
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Hazehai Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Hazehai"
+		not "hazehai inaccessible patched"
+	on offer
+		event "reveal Hazehai"
+		fail
 
 
 
@@ -98,12 +113,25 @@ mission "Cartography: Pebble Beach"
 				accept
 	on accept
 		event "reveal Pebble Beach"
+		set "pebble beach inaccessible patched"
 	on enter "Pebble Beach"
 		dialog `There is an alien construct orbiting the star. It resembles the constructs you have seen in the other hidden systems. But this one is damaged. There's a hole large enough for your ship to squeeze through...`
 
 event "reveal Pebble Beach"
 	system "Pebble Beach"
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Pebble Beach Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Pebble Beach"
+		not "pebble beach inaccessible patched"
+	on offer
+		event "reveal Pebble Beach"
+		fail
+
 
 mission "Cartography: Pebble Beach Link"
 	landing
@@ -228,12 +256,24 @@ mission "Cartography: Aya'arak"
 				accept
 	on accept
 		event "reveal Aya'arak"
+		set "aya'arak inaccessible patched"
 	on enter "Aya'arak"
 		dialog `There is a space station orbiting the second planet. It might be worth checking out.`
 
 event "reveal Aya'arak"
 	system "Aya'arak"
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Aya'arak Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Aya'arak"
+		not "aya'arak inaccessible patched"
+	on offer
+		event "reveal Aya'arak"
+		fail
 
 
 
@@ -303,6 +343,7 @@ mission "Cartography: The Garden"
 				accept
 	on accept
 		event "reveal Genesis"
+		set "genesis inaccessible patched"
 	on enter Genesis
 		conversation
 			scene "scene/scene-thundermaker"
@@ -319,3 +360,14 @@ mission "Cartography: The Garden"
 event "reveal Genesis"
 	system "Genesis"
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Genesis Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Genesis"
+		not "genesis inaccessible patched"
+	on offer
+		event "reveal Genesis"
+		fail

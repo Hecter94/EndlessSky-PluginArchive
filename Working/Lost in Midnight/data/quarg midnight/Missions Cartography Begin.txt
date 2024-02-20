@@ -220,6 +220,7 @@ mission "Cartography: Quarg Hitchhiker 1"
 
 	on accept
 		event "Archipelago reveal"
+		set "archipelago inaccessible patched"
 
 	on defer
 		set "randomize Cartography: Quarg Hitchhiker 1"
@@ -245,8 +246,18 @@ mission "Cartography: Quarg Hitchhiker 1"
 event "Archipelago reveal"
 	system Archipelago
 		remove hidden
+		remove attributes "inaccessible"
 	link Orbona Archipelago
 
+mission "Archipelago Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: Archipelago reveal"
+		not "archipelago inaccessible patched"
+	on offer
+		event "Archipelago reveal"
+		fail
 
 
 mission "Cartography: Quarg Hitchhiker 2"
@@ -537,10 +548,24 @@ mission "Cartography: The Map (Alexandria) 2"
 				
 	on decline
 		event "Diyu reveal"
+		set "diyu inaccessible patched"
 
 event "Diyu reveal"
 	system Diyu
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Diyu Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: Diyu reveal"
+		not "diyu inaccessible patched"
+	on offer
+		event "Diyu reveal"
+		fail
+
+
 
 # For pilots who find Diyu before finding Archipelago.
 mission "Cartography: Diyu Link"
@@ -712,6 +737,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 		has "Cartography: Quarg Hitchhiker 4: done"
 	on offer
 		event "reveal Chasm"
+		set "chasm inaccessible patched"
 		conversation
 			`You find the landing pad where Quash's ship is docked. The Quarg comes out to meet you and hands over a data chip. "A small system near Gacrux."`
 			choice
@@ -770,6 +796,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
 		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
 		event "reveal Nebulous"
+		set "nebulous inaccessible patched"
 		event "Quash Ring of Wisdom" 5
 		log `Escorted Quash's ship, the Halcyon, to the Ring of Friendship in Coalition space. Amazingly, the Heliarch allowed Quash to land. Quash seems to have made some sort of deal with the Heliarch and we parted ways while Quash works with them.`
 		log "People" "Quash" `The Heliarch refer to Quash as 'The Outcast'. Apparently, Quash is some sort of criminal amongst the Quarg. Considering that the previous two times I've met Quash were on pirate worlds, I shouldn't be surprised.`
@@ -791,12 +818,24 @@ mission "Cartography: Quarg Hitchhiker 5"
 event "reveal Chasm"
 	system Chasm
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Chasm Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Chasm"
+		not "chasm inaccessible patched"
+	on offer
+		event "reveal Chasm"
+		fail
 
 event "Quash Ring of Wisdom"
 
 event "reveal Nebulous"
 	system Nebulous
 		remove hidden
+		remove attributes "inaccessible"
 
 mission "Cartography: Nebulous Patch"
 	landing
@@ -804,6 +843,17 @@ mission "Cartography: Nebulous Patch"
 	to offer
 		has "Cartography: Quarg Hitchhiker 5: done"
 		not "event: reveal Nebulous"
+	on offer
+		event "reveal Nebulous"
+		set "nebulous inaccessible patched"
+		fail
+
+mission "Nebulous Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Nebulous"
+		not "nebulous inaccessible patched"
 	on offer
 		event "reveal Nebulous"
 		fail
@@ -918,6 +968,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 		has "Cartography: Quarg Hitchhiker 6: done"
 	on offer
 		event "reveal Quarantine"
+		set "quarantine inaccessible patched"
 		conversation
 			`You find Quash refueling its ship. "I have the data I need. Do you wish to join me on the final leg of my search?"`
 			choice
@@ -1022,7 +1073,20 @@ mission "Cartography: Quarg Hitchhiker 7"
 event "reveal Quarantine"
 	system Quarantine
 		remove hidden
-		
+		remove attributes "inaccessible"
+
+mission "Quarantine Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: reveal Quarantine"
+		not "quarantine inaccessible patched"
+	on offer
+		event "reveal Quarantine"
+		fail
+
+
+
 mission "Cartography: Midnight's Lost Orphan"
 	landing
 	invisible

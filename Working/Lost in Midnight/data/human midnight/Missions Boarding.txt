@@ -1,0 +1,1316 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+
+mission "Engineering Room: Salvaged Supercapacitor"
+	boarding
+	repeat
+	invisible
+	minor
+	source
+		not category "Drone"
+		attributes "automaton"
+	destination Earth
+	to offer
+		random < 5
+	on offer
+		require "Engineering Room"
+		conversation
+			scene "outfit/supercapacitor"
+			`While searching the derelict, your engineer finds a loose component that is the equivalent of a Supercapacitor. Take it?`
+			choice
+				`	(Take it.)`
+					accept
+				`	(Leave it.)`
+					decline
+	on accept
+		outfit "Supercapacitor" 1
+#		"engineer salvaged supercapacitor" ++
+		fail
+#	on decline
+#		"engineer salvaged supercapacitor" --
+
+
+
+mission "Medical Bay: Injured Crewmember (Coalition)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Coalition" "Heliarch"
+		not attributes "automaton"
+	destination
+		government "Coalition" "Heliarch"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "known to the heliarchs"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		"reputation: Coalition" ++
+		"reputation: Heliarch" ++
+		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Hai)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Hai"
+		not attributes "automaton"
+	destination
+		government "Hai"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "First Contact: Hai: declined"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		"reputation: Hai" ++
+		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Human)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		not attributes "automaton"
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		payment
+		payment 10000
+		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away. An insurance company deposits <payment> into your account.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Kor Efret)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Kor Efret"
+		not attributes "automaton"
+	destination
+		government "Kor Efret"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		or
+			has "First Contact: Korati Efreti: declined"
+			has "First Contact: Laki Nemparu: declined"
+			has "First Contact: Karek Fornati: declined"
+			has "First Contact: Setar Fort: declined"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		"reputation: Kor Efret" ++
+		dialog `Despite the language barrier, you manage to inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Remnant)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Remnant"
+		not attributes "automaton"
+	destination
+		government "Remnant"
+		attributes spaceport
+		not attributes "uninhabited"
+	to offer
+		has "remnant blood test pure"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		"reputation: Remnant" ++
+		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Medical Bay: Injured Crewmember (Wanderer)"
+	assisting
+	deadline
+	repeat
+	minor
+	name "Injured Crewmember"
+	description "Bring an injured crewmember to <destination>."
+	passengers 1
+	source
+		government "Wanderer"
+		not attributes "automaton"
+	destination
+		government "Wanderer"
+		attributes spaceport
+		not attributes "uninhabited"
+		distance 1 3
+	to offer
+		has "language: Wanderer"
+		random < 5
+	on offer
+		require "Medical Bay"
+		conversation
+			scene "outfit/medical bay"
+			`You've helped repair the <origin>, but one of their crewmembers was critically injured and needs to be transported in your medical bay to a nearby hospital by <date> for adequate treatment.`
+				accept
+	on fail
+		dialog `You failed to deliver the injured crewmember from the <origin> to a hospital in time...`
+	on complete
+		"reputation: Wanderer" ++
+		dialog `You inform the spaceport that you have an injured crewmember from the <origin> who needs medical attention. An emergency transport arrives shortly and whisks the injured crewmember away.`
+
+
+
+mission "Midnight Assist Rescue Merchant (Small)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Rescue the <npc>"
+	description "The <npc> was separated from its escort. You've been asked to search for it in the systems nearby. If you don't find them by <date>, you should abandon the search."
+	to offer
+		random < 15
+	source
+		government "Merchant"
+		category "Interceptor" "Light Warship"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		payment 10000
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "We were separated from the <npc>, a ship we were escorting. Could you search the nearby systems to for them?" The <npc> may still be in one of the neighboring systems and need assistance...`
+			choice
+				`	"Alright, I'll look for them."`
+					goto search
+				`	"Sorry, I have no time to spare."`
+			`	"I understand." With a grim expression, the captain of the <origin> bids you farewell.`
+				decline
+			label search
+			`	"Thank you! Hopefully there's still a chance to save them, but if you can't find the <npc> after a week no one can fault you for abandoning the search."`
+				accept
+	npc assist
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting derelict fleeing
+		fleet
+			names "civilian"
+			cargo 0
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+		on assist
+			payment 10000
+			dialog `You've successfully rescued the crew of the <npc>! The captain thanks you for your assistance and pays you <payment>.`
+			fail
+
+mission "Midnight Assist Rescue Merchant (Medium)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Rescue the <npc>"
+	description "The <npc> was separated from its escort. You've been asked to search for it in the systems nearby. If you don't find them by <date>, you should abandon the search."
+	to offer
+		random < 10
+	source
+		government "Merchant"
+		category "Medium Warship" "Light Warship" "Utility"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		payment 20000
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "We were separated from the <npc>, a ship we were escorting. Could you search the nearby systems to for them?" The <npc> may still be in one of the neighboring systems and need assistance...`
+			choice
+				`	"Alright, I'll look for them."`
+					goto search
+				`	"Sorry, I have no time to spare."`
+			`	"I understand." With a grim expression, the captain of the <origin> bids you farewell.`
+				decline
+			label search
+			`	"Thank you! Hopefully there's still a chance to save them, but if you can't find the <npc> after a week no one can fault you for abandoning the search."`
+				accept
+	npc assist
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting derelict fleeing
+		fleet
+			names "civilian"
+			cargo 0
+			variant 2
+				"Freighter"
+			variant 1
+				"Hauler"
+		on assist
+			payment 20000
+			dialog `You've successfully rescued the crew of the <npc>! The captain thanks you for your assistance and pays you <payment>.`
+			fail
+
+mission "Midnight Assist Rescue Merchant (Large)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Rescue the <npc>"
+	description "The <npc> was separated from its escort. You've been asked to search for it in the systems nearby. If you don't find them by <date>, you should abandon the search."
+	to offer
+		random < 5
+	source
+		government "Merchant"
+		category "Medium Warship" "Heavy Warship"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		payment 30000
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "We were separated from the <npc>, a ship we were escorting. Could you search the nearby systems to for them?" The <npc> may still be in one of the neighboring systems and need assistance...`
+			choice
+				`	"Alright, I'll look for them."`
+					goto search
+				`	"Sorry, I have no time to spare."`
+			`	"I understand." With a grim expression, the captain of the <origin> bids you farewell.`
+				decline
+			label search
+			`	"Thank you! Hopefully there's still a chance to save them, but if you can't find the <npc> after a week no one can fault you for abandoning the search."`
+				accept
+	npc assist
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting derelict fleeing
+		fleet
+			names "civilian"
+			cargo 0
+			variant 1
+				"Bulk Freighter"
+			variant 1
+				"Container Transport"
+			variant 1
+				"Hauler III"
+		on assist
+			payment 30000
+			dialog `You've successfully rescued the crew of the <npc>! The captain thanks you for your assistance and pays you <payment>.`
+			fail
+
+
+
+mission "Midnight Assisting Independent (Small)"
+	assisting
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 20
+	source
+		government "Merchant"
+		category "Interceptor" "Light Warship" "Transport" "Light Freighter"
+		not attributes "automaton"
+	destination "Earth"
+	on offer
+		"reputation: Independent" ++
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and warns you that a small pirate fleet is operating nearby.`
+				accept
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid"
+
+mission "Midnight Assisting Independent (Medium)"
+	assisting
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 15
+	source
+		government "Merchant"
+		category "Medium Warship" "Heavy Freighter"
+		not attributes "automaton"
+	destination "Earth"
+	on offer
+		"reputation: Independent" += 3
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and warns you that a medium pirate fleet is operating nearby.`
+				accept
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+
+mission "Midnight Assisting Independent (Large)"
+	assisting
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 10
+	source
+		government "Merchant"
+		category "Heavy Warship" "Utility"
+		not attributes "automaton"
+	destination "Earth"
+	on offer
+		"reputation: Independent" += 5
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and warns you that a large pirate fleet is operating nearby.`
+				accept
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 3
+
+
+
+mission "Midnight Assist Pirate Raider (Small)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Easy Pickings..."
+	description "A vulnerable merchant ship named the <npc> is passing through the nearby systems. Plunder their valuable cargo. If you don't find them by <date>, they probably escaped."
+	to offer
+		random < 15
+	source
+		government "Pirate"
+		category "Interceptor" "Light Warship"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to plunder them off yourself."`
+				accept
+	npc save
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting staying appeasing
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+		on board
+			payment 5000
+			dialog `You've successfully tracked down the <npc>! You find a crate of <payment> in their cargo hold. An easy plunder!`
+			fail
+
+mission "Midnight Assist Pirate Raider (Medium)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Easy Pickings..."
+	description "A vulnerable merchant ship named the <npc> is passing through the nearby systems. Plunder their valuable cargo. If you don't find them by <date>, they probably escaped."
+	to offer
+		random < 10
+	source
+		government "Pirate"
+		category "Medium Warship" "Utility"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to finish them off yourself."`
+				accept
+	npc save
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting staying appeasing
+		fleet
+			names "civilian"
+			variant 2
+				"Freighter"
+			variant 1
+				"Hauler"
+		on board
+			payment 10000
+			dialog `You've successfully tracked down the <npc>! You find a crate of <payment> in their cargo hold. An easy plunder!`
+			fail
+
+mission "Midnight Assist Pirate Raider (Large)"
+	assisting
+	repeat
+	minor
+	deadline 7
+	name "Easy Pickings..."
+	description "A vulnerable merchant ship named the <npc> is passing through the nearby systems. Plunder their valuable cargo. If you don't find them by <date>, they probably escaped."
+	to offer
+		random < 5
+	source
+		government "Pirate"
+		category "Heavy Warship"
+		not attributes "automaton"
+	destination
+		distance 0
+	on offer
+		conversation
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to finish them off yourself."`
+				accept
+	npc save
+		government "Merchant"
+		system
+			distance 1
+		personality target waiting staying appeasing
+		fleet
+			names "civilian"
+			cargo 0
+			variant 1
+				"Bulk Freighter"
+			variant 1
+				"Container Transport"
+			variant 1
+				"Hauler III"
+		on board
+			payment 15000
+			dialog `You've successfully tracked down the <npc>! You find a crate of <payment> in their cargo hold. An easy plunder!`
+			fail
+
+
+
+conversation "midnight boarding captives"
+	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. It might be easier to just toss them out of the airlock. What will you do?`
+	choice
+		`	(Throw them in your Brig.)`
+		`	(Send them on a spacewalk.)`
+			goto spacewalk
+			to display
+				not "outfit (flagship installed): Midnight's Lost Orphan"
+		`	(Send them on a spacewalk.)`
+			goto airlock
+			to display
+				has "outfit (flagship installed): Midnight's Lost Orphan"
+	scene "outfit/brig"
+	`	The unarmed passengers are at your mercy. You throw them in your Brig, expecting a hefty bounty for delivering them to slavers on <destination>.`
+		accept
+	label spacewalk
+	scene "scene/scene-airlock"
+	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. You order them to put on these spacesuits and send them out the airlock...`
+		decline
+	label airlock
+	scene "scene/scene-airlock"
+	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies...`
+	choice
+		`	( ! )`
+	action
+		"captain of atrocity" ++
+	scene "outfit/midnight lost orphan"
+	`	But you hit the button to open the external airlock hatch without giving them time to put these suits on! Their screams for mercy as they are dragged out into the empty void are music to your ears...`
+		decline
+
+mission "Midnight Boarding Captives (Core, Small)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 3
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 1 2
+	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "core pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Syndicate"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	on complete
+		payment
+		payment 40000
+		"reputation: Pirate" += 5
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (Core, Medium)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 2
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 3 5
+	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "core pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Syndicate"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government "Syndicate"
+		system destination
+		personality waiting heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	on complete
+		payment
+		payment 80000
+		"reputation: Pirate" += 10
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (Core, Large)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 1
+	source
+		government "Merchant"
+		category "Transport" "Space Liner"
+	passengers 6 10
+	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "core pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Syndicate"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government "Syndicate"
+		system destination
+		personality waiting heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government "Syndicate"
+		personality entering heroic surveillance
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant
+				"Quicksilver (Scanner)"
+	on complete
+		payment
+		payment 120000
+		"reputation: Pirate" += 20
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+
+
+mission "Midnight Boarding Captives (Dirt Belt, Small)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		has "event: Archipelago reveal"
+		has "event: Diyu hyperlinks"
+		has "event: link chasm"
+		random < 3
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 1 2
+	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "dirt belt pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	on complete
+		payment
+		payment 40000
+		"reputation: Pirate" += 5
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (Dirt Belt, Medium)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		has "event: Archipelago reveal"
+		has "event: Diyu hyperlinks"
+		has "event: link chasm"
+		random < 2
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 3 5
+	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "dirt belt pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		government "Militia"
+		system destination
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	on complete
+		payment
+		payment 80000
+		"reputation: Pirate" += 10
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (Dirt Belt, Large)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		has "event: Archipelago reveal"
+		has "event: Diyu hyperlinks"
+		has "event: link chasm"
+		random < 1
+	source
+		government "Merchant"
+		category "Transport" "Space Liner"
+	passengers 6 10
+	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "dirt belt pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		government "Militia"
+		system destination
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	npc
+		government "Militia"
+		personality entering heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	on complete
+		payment
+		payment 120000
+		"reputation: Pirate" += 20
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+
+
+mission "Midnight Boarding Captives (North, Small)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 3
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 1 2
+	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "north pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Republic"
+		system
+			distance 2 3
+		personality waiting heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			cargo 0
+			variant
+				"Gunboat"
+	on complete
+		payment
+		payment 40000
+		"reputation: Pirate" += 5
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (North, Medium)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 2
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 3 5
+	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "north pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Republic"
+		system
+			distance 2 3
+		personality waiting heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			cargo 0
+			variant
+				"Gunboat"
+	npc
+		government "Republic"
+		system destination
+		personality waiting heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant
+				"Cruiser"
+				"Surveillance Drone" 4
+	on complete
+		payment
+		payment 80000
+		"reputation: Pirate" += 10
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (North, Large)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 1
+	source
+		government "Merchant"
+		category "Transport" "Space Liner"
+	passengers 6 10
+	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "north pirate"
+		not attributes "uninhabited" "station"
+	npc
+		government "Republic"
+		system
+			distance 2 3
+		personality waiting heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			cargo 0
+			variant
+				"Gunboat"
+	npc
+		government "Republic"
+		system destination
+		personality waiting heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant
+				"Cruiser"
+				"Surveillance Drone" 4
+	npc
+		government "Republic"
+		personality entering heroic surveillance opportunistic
+		fleet
+			names "republic capital"
+			cargo 0
+			variant
+				"Gunboat"
+	on complete
+		payment
+		payment 120000
+		"reputation: Pirate" += 20
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+
+
+mission "Midnight Boarding Captives (South, Small)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 3
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 1 2
+	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "south pirate"
+		not attributes "uninhabited" "station"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Free Worlds"
+		system
+			distance 2 3
+		personality waiting heroic surveillance disables
+		fleet
+			names "free worlds small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	on complete
+		payment
+		payment 40000
+		"reputation: Pirate" += 5
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (South, Medium)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 2
+	source
+		government "Merchant"
+		category "Transport"
+	passengers 3 5
+	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "south pirate"
+		not attributes "uninhabited" "station"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		system destination
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Free Worlds"
+		system
+			distance 2 3
+		personality waiting heroic surveillance disables
+		fleet
+			names "free worlds small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Free Worlds"
+		system destination
+		personality waiting heroic surveillance disables
+		fleet
+			names "free worlds capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	on complete
+		payment
+		payment 80000
+		"reputation: Pirate" += 10
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+mission "Midnight Boarding Captives (South, Large)"
+	boarding
+	repeat
+	minor
+	name "Captives to <planet>"
+	description "Deliver <bunks> fresh captives to <destination>. Slavers will probably pay <payment> for them."
+	to offer
+		has "outfit (flagship installed): Brig"
+		random < 1
+	source
+		government "Merchant"
+		category "Transport" "Space Liner"
+	passengers 6 10
+	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	on offer
+		conversation "midnight boarding captives"
+	destination
+		distance 0 5
+		government "Pirate"
+		attributes "south pirate"
+		not attributes "uninhabited" "station"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		system
+			distance 2 3
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		system destination
+		personality waiting heroic surveillance
+			confusion 20
+		fleet
+			names "militia capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	npc
+		to spawn
+			not "event: war begins"
+		government "Militia"
+		personality entering heroic surveillance
+			confusion 20
+		fleet
+			names "militia small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Free Worlds"
+		system
+			distance 2 3
+		personality waiting heroic surveillance disables
+		fleet
+			names "free worlds small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Free Worlds"
+		system destination
+		personality waiting heroic surveillance disables
+		fleet
+			names "free worlds capital"
+			cargo 0
+			variant
+				"Bastion (Scanner)"
+	npc
+		to spawn
+			has "event: war begins"
+		government "Militia"
+		personality entering heroic surveillance disables
+		fleet
+			names "free worlds small"
+			cargo 0
+			variant
+				"Sparrow (Patrol)"
+	on complete
+		payment
+		payment 120000
+		"reputation: Pirate" += 20
+		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+
+
+conversation "sabotage: shield suppressor"
+	scene "outfit/shield suppressor"
+	`You notice a malfunction with the shield generator of your ship. You should probably have it checked out the next time you're at an outfitter...`
+		accept
+
+mission "Sabotage: Shield Suppressor (boarding)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Pirate" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"reputation: Pirate" < 0
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Shield Suppressor (boarding): offered"
+				random < 20
+			and
+				has "Sabotage: Shield Suppressor (boarding): offered"
+				random < 2
+	on offer
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2
+
+mission "Sabotage: Shield Suppressor (boarding rival)"
+	boarding
+	invisible
+	minor
+	repeat
+	deadline 1
+	source
+		government "Pirate (Rival)" "Pirate (Rivals)" "Independent" "Independent (Killable)" "Bounty (Disguised)"
+		not attributes "automaton"
+	destination "Earth"
+	to offer
+		"reputation: Pirate" >= 0
+		"reputation: Pirate (Rivals)" < 0
+		"combat rating" >= 403
+		or
+			and
+				not "Sabotage: Shield Suppressor (boarding rival): offered"
+				random < 20
+			and
+				has "Sabotage: Shield Suppressor (boarding rival): offered"
+				random < 2
+	on offer
+		outfit "Shield Suppressor" 1
+		conversation "sabotage: shield suppressor"
+	npc kill
+		government "Pirate (Rivals)"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid" 2

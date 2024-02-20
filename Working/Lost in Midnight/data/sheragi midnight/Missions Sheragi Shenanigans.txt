@@ -138,7 +138,7 @@ mission "Sheragi Shenanigans: Sapphire Shield 4"
 				die
 				
 			label public
-			`	"The Sapphire Shield is a fake," you publically accuse Dr. Stumpernickle! I have scanner data that proves it!`
+			`	"The Sapphire Shield is a fake," you publically accuse Dr. Stumpernickle! "I have scanner data that proves it"!`
 			`	"That's... that's an outrageous accusation," retorts Wesley. "We painstakingly reconstructed the vessel from Sheragi ship parts salvaged in an asteroid field using scans of the Emerald Sword as a guide. While we may have gotten a few things wrong, I assure you we spared no effort to making the Sapphire Shield as close to accurate as possible!"`
 			`	You respond, "You can't really call that an accurate representation of a Sheragi ship!"`
 			`	The crowd is eating up this confrontation as the harsh words give way to foul language. Eventually, Dr. Stumpernickle storms off back to the Sapphire Shield.`
@@ -483,6 +483,16 @@ mission "Sheragi Shenanigans: Ruby Dagger 4"
 
 
 
+mission "Midnight Emerald Sword Unlocked"
+	landing
+	invisible
+	to offer
+		has "Sheragi Archaeology: Epilogue: done"
+		not "global: emerald sword unlocked"
+	on offer
+		"global: emerald sword unlocked" ++
+		fail
+
 mission "Diamondback Sale"
 	minor
 	name "Diamondback"
@@ -491,7 +501,18 @@ mission "Diamondback Sale"
 		attributes "rim"
 		attributes "shipyard"
 	to offer
-		random < 50
+		or
+			random < 50
+			and
+				"credits" >= 1000000
+				random < 70
+			and
+				has "global: emerald sword unlocked"
+				random < 70
+			and
+				has "global: emerald sword unlocked"
+				"credits" >= 1000000
+				random < 90
 	on offer
 		conversation
 			scene "ship/diamondback"

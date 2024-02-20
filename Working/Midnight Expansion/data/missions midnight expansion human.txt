@@ -27,17 +27,16 @@ mission "Midnight Expansion: Add Garbage Scows"
 	invisible
 	on offer
 		event "add garbage scows"
+		set "added ccor garbage scows"
 		fail
 
 event "add garbage scows"
-	shipyard "Common Freighters"
-		add "Garbage Scow"
 	shipyard "Advanced Northern Pirates"
 		add "Garbage Scow"
 	shipyard "Advanced Core Pirates"
 		add "Garbage Scow"
 	shipyard "Advanced Southern Pirates"
-		add "Garbage Scow (Jammer)"
+		add "Garbage Scow"
 	fleet "Large Northern Merchants"
 		add variant 1
 			"Garbage Scow"
@@ -52,8 +51,13 @@ event "add garbage scows"
 			"Garbage Scow (Turbo)"
 		add variant 1
 			"Modified Garbage Scow"
-			"Rancor (Berserker)"
-			"Rancor (Turbo Blaster)"
+			"Rancor (Turbo Blaster)" 2
+	fleet "Large CCOR"
+		add variant 1
+			"Garbage Scow (Stinger)"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+			"Berserker (Limit Break)" 2
 	fleet "pirate raid"
 		add variant 1
 			"Garbage Scow (Stinger)"
@@ -64,6 +68,24 @@ event "add garbage scows"
 		add variant 1
 			"Garbage Scow (Stinger)"
 
+mission "Midnight Expansion: Add CCOR Garbage Scows"
+	landing
+	invisible
+	to offer
+		has "event: add garbage scows"
+		not "added ccor garbage scows"
+	on offer
+		event "add ccor garbage scows"
+		fail
+
+event "add ccor garbage scows"
+	fleet "Large CCOR"
+		add variant 1
+			"Garbage Scow (Stinger)"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+			"Berserker (Limit Break)" 2
+
 mission "Midnight Expansion: Update Garbage Scows"
 	landing
 	invisible
@@ -71,17 +93,20 @@ mission "Midnight Expansion: Update Garbage Scows"
 		has "event: war begins"
 	on offer
 		event "update garbage scows"
+		set "added raid modified garbage scows"
 		fail
 
 event "update garbage scows"
+	shipyard "Common Freighters"
+		add "Garbage Scow"
 	shipyard "Dirt Belt Pirates"
 		add "Modified Garbage Scow (Quad Blaster)"
 	shipyard "Advanced Northern Pirates"
 		remove "Garbage Scow"
-		add "Modified Garbage Scow (Heavy)"
+		add "Modified Garbage Scow (Quad Blaster)"
 	shipyard "Advanced Core Pirates"
 		remove "Garbage Scow"
-		add "Modified Garbage Scow (Proton)"
+		add "Modified Garbage Scow (Quad Blaster)"
 	shipyard "Advanced Southern Pirates"
 		remove "Garbage Scow (Jammer)"
 		add "Modified Garbage Scow (Quad Blaster)"
@@ -96,14 +121,39 @@ event "update garbage scows"
 			"Garbage Scow (Proton)"
 		add variant 1
 			"Modified Garbage Scow (Proton)"
-			"Hawk (Stinger)" 2
+			"Stingray (Proton)" 2
 	fleet "Large Southern Pirates"
 		add variant 1
 			"Garbage Scow (Quad Blaster)"
 		add variant 1
 			"Modified Garbage Scow (Quad Blaster)"
-			"Hawk (Stinger)"
-			"Fury (Bomber Limit Break)"
+			"Hawk (Stinger)" 2
+	fleet "pirate raid"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+	fleet "pirate raid (rivals)"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+
+mission "Midnight Expansion: Add Raid Modified Garbage Scows"
+	landing
+	invisible
+	to offer
+		has "event: update garbage scows"
+		not "added raid modified garbage scows"
+	on offer
+		event "add raid modified garbage scows"
+		fail
+
+event "add raid modified garbage scows"
+	fleet "pirate raid"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+	fleet "pirate raid (rivals)"
+		add variant 1
+			"Modified Garbage Scow (Quad Blaster)"
+
+
 
 mission "Midnight Expansion: Bounty Hunting (Boarding, Stinger Missile)"
 	assisting

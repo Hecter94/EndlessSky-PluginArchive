@@ -421,6 +421,7 @@ mission "Geddonia's Folly (Corpse)"
 	destination "Corpse"
 	on enter Kalsolli
 		event "Reveal Temeh"
+		set "temeh inaccessible patched"
 		log "Factions" "Geddonia" `Geddonia was a highly advanced species older than the Drak. They were small spheres of light with telekinetic powers that lived in large crystalline structures. The only active remnant of their civilization is a doomsday device called the Worldcrusher.`
 		conversation
 			`Soon after entering the system, a voice speaks directly to your mind.`
@@ -437,6 +438,17 @@ mission "Geddonia's Folly (Corpse)"
 event "Reveal Temeh"
 	system Temeh
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Temeh Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: Reveal Temeh"
+		not "temeh inaccessible patched"
+	on offer
+		event "Reveal Temeh"
+		fail
 
 
 mission "First Contact: Geddonia"

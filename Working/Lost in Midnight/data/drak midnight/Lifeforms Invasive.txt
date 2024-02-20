@@ -418,6 +418,7 @@ mission "First Contact: Star Gazer"
 		has "event: wanderers: the eye opens"
 	on offer
 		event "Reveal Watcher's Nest"
+		set "watcher's nest inaccessible patched"
 	on enter "Watcher's Nest"
 		event "Star Gazers In Wanderer Space"
 		dialog `A strange creature is lurking in this system. It watches you silently with multiple eyes.`
@@ -430,6 +431,19 @@ mission "First Contact: Star Gazer"
 event "Reveal Watcher's Nest"
 	system "Watcher's Nest"
 		remove hidden
+		remove attributes "inaccessible"
+
+mission "Watcher's Nest Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		has "event: Reveal Watcher's Nest"
+		not "watcher's nest inaccessible patched"
+	on offer
+		event "Reveal Watcher's Nest"
+		fail
+
+
 
 event "Star Gazers In Wanderer Space"
 	system "Watcher's Nest"

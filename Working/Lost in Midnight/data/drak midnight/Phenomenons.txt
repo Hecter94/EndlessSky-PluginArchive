@@ -27,6 +27,10 @@ phrase "asteroid names"
 		"greek alphabet"
 		
 ship "Rogue Asteroid" "Mysterious Asteroid"
+	"never disabled"
+	outfits
+		"Asteroid Collision?"
+	turret 0 0 "Asteroid Collision?"
 	bay "Fighter" 0 0 
 	bay "Fighter" 0 0 
 	bay "Fighter" 0 0 
@@ -39,8 +43,10 @@ ship "Rogue Asteroid"
 	noun "asteroid"
 	sprite "asteroid/fossil/spin"
 		"frame rate" 10
+		"scale" 2
 	"never disabled"
 	attributes
+		category "Light Freighter"
 		"fuel capacity" 1
 		"hull" 20000
 		"mass" 1000
@@ -59,10 +65,10 @@ ship "Rogue Asteroid"
 	outfits
 		"Asteroid Collision?"
 	turret 0 0 "Asteroid Collision?"
-	explode "small explosion" 25
-	explode "medium explosion" 35
-	explode "large explosion" 45
-	explode "huge explosion" 30
+	explode "tiny explosion" 5
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
 
 
 
@@ -72,19 +78,44 @@ outfit "Asteroid Collision?"
 	"turret mounts" -1
 	"unplunderable" 1
 	weapon
+		sprite "projectile/meteoroid"
 		"turret turn" 180
+		"fire effect" "smoke"
 		"hit effect" "asteroid collision"
-		"hit effect" "bolide"
-		"inaccuracy" .4
-		"velocity" 2
-		"lifetime" 1
-		"reload" 1
-		"hit force" 3
-		"shield damage" 6
-		"hull damage" 13
+		"die effect" "flotsam death"
+		sound "asteroid crunch medium"
+		"inaccuracy" 50
+		"velocity" 0.2
+		"random velocity" 0.1
+		"lifetime" 50
+		"reload" 150
+		"burst count" 3
+		"burst reload" 45
+		"hit force" 30
+		"submunition" "meteorite chunk" 3
+
+outfit "meteorite chunk"
+	weapon
+		sprite "projectile/meteoroid"
+		"fire effect" "flotsam death"
+		"hit effect" "asteroid collision"
+		"die effect" "flotsam death"
+		sound "asteroid crunch small"
+		"inaccuracy" 100
+		"velocity" 0.3
+		"random velocity" 0.2
+		"lifetime" 850
+		"hit force" 10
+		"shield damage" 45
+		"hull damage" 90
 
 effect "asteroid collision"
-	sound "hull impact"
+	sprite "effect/sidewinder fire"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 9
+	"random velocity" 2
+	sound "asteroid crunch small"
 
 
 

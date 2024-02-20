@@ -8,9 +8,6 @@
 
 
 
-
-
-
 mission "Hunting Beelzebub: Modified Kestrel 1"
 	passengers 1
 	minor
@@ -43,9 +40,10 @@ mission "Hunting Beelzebub: Modified Kestrel 1"
 			has "Remnant: Deep Surveillance: failed"
 			has "Remnant: Scanning Tolerances: done"
 		or
-			has "event: kestrel available: more weapons"
+			has "event: kestrel available: more bays"
 			has "event: kestrel available: more engines"
 			has "event: kestrel available: more shields"
+			has "event: kestrel available: more weapons"
 		or
 			and
 				not "ignored paris"
@@ -136,7 +134,6 @@ mission "Hunting Beelzebub: Modified Kestrel 2"
 			scene "thumbnail/kestrel"
 			`You bump into Tom near the spaceport entrance. "I got a tip that the <npc> will be arriving soon. We should get into orbit."`
 				accept
-
 	on enter Sargas
 		dialog `The "Dreams of Darkness" is actually two Kestrels! That would explain how they've been spotted in systems that are impossible to travel between with a normal Hyperdrive. Tom says to capture both ships.`
 	npc
@@ -148,6 +145,15 @@ mission "Hunting Beelzebub: Modified Kestrel 2"
 			variant
 				"Shadow Hawk (B)" 4
 				"Finch (Inhibitor)" 4
+	npc capture
+		to spawn
+			has "event: kestrel available: more bays"
+		government "Bounty"
+		system Sargas
+		personality target entering staying plunders
+		ship "Modified Kestrel (Remnant Engines)" "Dreams of Darkness"
+		ship "Modified Kestrel (Remnant Weapons)" "Dreams of Darkness"
+		dialog `Both Kestrels were captured. Paris asks you to land on <planet>.`
 	npc capture
 		to spawn
 			has "event: kestrel available: more weapons"
@@ -216,7 +222,11 @@ mission "Hunting Beelzebub: Modified Bactrian 1"
 			has "Remnant: Deep Surveillance: failed"
 		or
 			has "defeated scar's legion"
+			has "hr defeated scar's legion"
 			has "Pirate Troubles [4]: done"
+			has "Hai Reveal: Pirate Troubles [4]: done"
+			has "Pirate Troubles [4]: declined"
+			has "Hai Reveal: Pirate Troubles [4]: declined"
 		or
 			and
 				not "ignored paris"
@@ -319,10 +329,12 @@ mission "Hunting Beelzebub: Modified Bactrian 2"
 			`	"Alright, some of my navy contacts suggested the Cosmic Horror might be hiding there, but they have yet to find the location of Scar's Hideout. Can you take me to it?"`
 			choice
 				`	(Agree to take Tom to Scar's Hideout.)`
-					accept
 				`	(Refuse to take Tom to Scar's Hideout.)`
-					decline
-			
+					goto refuse
+			`	"Thank you. I won't ask how you know the hideout's location. I probably wouldn't be able to find it without your help."`
+				accept
+			label refuse
+			`	"I understand you must have your reasons for not doing so. Thanks for taking me this far. I'll find my own way there myself." Tom leaves, his face set with determination.`
 	on enter Danoa
 		dialog `The "Cosmic Horror" is here! Tom's information about them using Scar's Hideout was correct. He asks you to capture the ship.`
 	npc
@@ -873,6 +885,19 @@ mission "Hunting Beelzebub: Ember Nightmare"
 				"Finch (Inhibitor)" 4
 	npc
 		to spawn
+			has "event: kestrel available: more bays"
+			not "Hunting Beelzebub: Modified Kestrel 1: offered"
+		government "Phenomenon (dangerous)"
+		system Terminus
+		personality waiting staying plunders heroic unconstrained marked mute
+		ship "Modified Kestrel (Remnant Engines)" "Dreams of Darkness"
+		ship "Modified Kestrel (Remnant Weapons)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 4
+	npc
+		to spawn
 			has "event: kestrel available: more weapons"
 			not "Hunting Beelzebub: Modified Kestrel 1: offered"
 		government "Phenomenon (dangerous)"
@@ -880,6 +905,10 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		personality waiting staying plunders heroic unconstrained marked mute
 		ship "Modified Kestrel (Remnant Shields)" "Dreams of Darkness"
 		ship "Modified Kestrel (Remnant Engines)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 4
 	npc
 		to spawn
 			has "event: kestrel available: more engines"
@@ -889,6 +918,10 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		personality waiting staying plunders heroic unconstrained marked mute
 		ship "Modified Kestrel (Remnant Shields)" "Dreams of Darkness"
 		ship "Modified Kestrel (Remnant Weapons)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 4
 	npc
 		to spawn
 			has "event: kestrel available: more shields"
@@ -898,6 +931,35 @@ mission "Hunting Beelzebub: Ember Nightmare"
 		personality waiting staying plunders heroic unconstrained marked mute
 		ship "Modified Kestrel (Remnant Weapons)" "Dreams of Darkness"
 		ship "Modified Kestrel (Remnant Engines)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 4
+	npc
+		to spawn
+			or
+				has "event: kestrel available: more engines"
+				has "event: kestrel available: more shields"
+				has "event: kestrel available: more weapons"
+		government "Phenomenon (dangerous)"
+		system Terminus
+		personality waiting staying plunders heroic unconstrained marked mute
+		ship "Modified Kestrel (Remnant Bays)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 6
+	npc
+		to spawn
+			has "event: kestrel available: more bays"
+		government "Phenomenon (dangerous)"
+		system Terminus
+		personality waiting staying plunders heroic unconstrained marked mute
+		ship "Modified Kestrel (Remnant Shields)" "Dreams of Darkness"
+		fleet
+			names "pirate"
+			variant
+				"Finch (Inhibitor)" 2
 	npc kill
 		government "Nemesis"
 		system Terminus
@@ -971,6 +1033,7 @@ ship "Ember Nightmare"
 		"Systems Core (Large)"
 		"Thermoelectric Cooler" 4
 		"Outfits Expansion" 2
+		"Barracks" 2
 		"Quantum Key Stone"
 		"Engineering Room"
 		"Tuning Rifle" 42
@@ -1027,66 +1090,59 @@ ship "Ember Nightmare"
 
 
 
-ship "Modified Kestrel"
-	sprite "ship/kestrel"
-	thumbnail "thumbnail/kestrel"
-	attributes
-		category "Heavy Warship"
-		"cost" 14700000
-		"shields" 19400
-		"hull" 7200
-		"required crew" 64
-		"bunks" 128
-		"mass" 740
-		"drag" 11
-		"heat dissipation" .6
-		"fuel capacity" 500
-		"cargo space" 120
-		"outfit space" 810
-		"weapon capacity" 390
-		"engine capacity" 210
-		weapon
-			"blast radius" 260
-			"shield damage" 2600
-			"hull damage" 1300
-			"hit force" 3900
+ship "Kestrel" "Modified Kestrel (Remnant Bays)"
+	"display name" "Modified Kestrel"
+	sprite "ship/kestrelc"
+	thumbnail "thumbnail/kestrelc"
+	add attributes
+		"mass" 60
+		"weapon capacity" -20
 	outfits
-		"Particle Cannon" 4
-		"Torpedo Launcher" 2
-		"Torpedo" 60
-		"Heavy Laser Turret" 4
-		
-		"Fusion Reactor"
-		"LP144a Battery Pack"
-		"D94-YV Shield Generator"
+		"Aeon Cell"
+		"Cargo Scanner" 2
+		"Crystal Capacitor"
+		"D94-YV Shield Generator" 2
+		"Epoch Cell"
+		"Forge-Class Thruster"
+		"Fragmentation Grenades" 32
+		Hyperdrive
+		"Inhibitor Blaster" 4
+		"KP-6 Photovoltaic Panel" 3
+		"Laser Rifle" 32
 		"Liquid Nitrogen Cooler"
+		"Medical Bay"
+		"Outfit Scanner" 2
+		"Outfits Expansion"
+		"Point Defense Turret" 2
+		"Security Station (Staffed)"
+		"Smelter-Class Steering"
 		"Tactical Scanner" 2
-		
-		"Orca Plasma Thruster"
-		"Orca Plasma Steering"
-		"Hyperdrive"
-	engine -14 177
-	engine 14 177
-	bay "Fighter" -46 106 under
-	bay "Fighter" 46 106 under
-	gun -75 57 "Torpedo Launcher"
-	gun 75 57 "Torpedo Launcher"
-	gun -53 61 "Particle Cannon"
-	gun 53 61 "Particle Cannon"
-	gun -31 66 "Particle Cannon"
-	gun 31 66 "Particle Cannon"
-	turret -7 -4 "Heavy Laser Turret"
-	turret 7 -4 "Heavy Laser Turret"
-	turret -23 14 "Heavy Laser Turret"
-	turret 23 14 "Heavy Laser Turret"
-	explode "small explosion" 25
-	explode "medium explosion" 35
-	explode "large explosion" 45
-	explode "huge explosion" 30
-	"final explode" "final explosion large"
-	description "Several years ago, while visiting a sweat lodge in search of spiritual renewal, Tarazed's chief ship designer fell into a trance and journeyed to a reality separate from our own. There he saw visions of a strange and elegant starship. Returning to his work with renewed purpose, he spent the next seven years making the Kestrel a reality."
+		"Thrasher Turret" 2
+		"Tuning Rifle" 32
+	gun -73.5 46 "Inhibitor Blaster"
+	gun 73.5 46 "Inhibitor Blaster"
+	gun -29.5 52 "Inhibitor Blaster"
+	gun 29.5 52 "Inhibitor Blaster"
+	turret -8 -10.5 "Thrasher Turret"
+	turret 8 -10.5 "Thrasher Turret"
+	turret -20.5 9 "Point Defense Turret"
+	turret 20.5 9 "Point Defense Turret"
+	bay "Fighter" -46 106
+		"launch effect" "human internal"
+	bay "Fighter" 46 106
+		"launch effect" "human internal"
+	bay "Fighter" -62 78
+		"launch effect" "human internal"
+	bay "Fighter" 62 78
+		"launch effect" "human internal"
+	bay "Fighter" -56 70
+		"launch effect" "human internal"
+	bay "Fighter" 56 70
+		"launch effect" "human internal"
+	description "Featuring more fighter bays, this Kestrel has been altered from the retail version to serve as a fighter carrier."
 
-ship "Modified Kestrel" "Modified Kestrel (Remnant Engines)"
+ship "Kestrel" "Modified Kestrel (Remnant Engines)"
+	"display name" "Modified Kestrel"
 	sprite "ship/kestrele"
 	thumbnail "thumbnail/kestrele"
 	add attributes
@@ -1120,9 +1176,10 @@ ship "Modified Kestrel" "Modified Kestrel (Remnant Engines)"
 	turret "Thrasher Turret"
 	turret "Point Defense Turret"
 	turret "Point Defense Turret"
-	description "Featuring more engine space and extra fuel capacity, his Kestrel has been altered from the retail version to emphasize speed over all else."
+	description "Featuring more engine space and extra fuel capacity, this Kestrel has been altered from the retail version to emphasize speed over all else."
 
-ship "Modified Kestrel" "Modified Kestrel (Remnant Shields)"
+ship "Kestrel" "Modified Kestrel (Remnant Shields)"
+	"display name" "Modified Kestrel"
 	sprite "ship/kestrels"
 	thumbnail "thumbnail/kestrels"
 	add attributes
@@ -1158,7 +1215,8 @@ ship "Modified Kestrel" "Modified Kestrel (Remnant Shields)"
 	turret "Point Defense Turret"
 	description "Featuring additional shield emitters and a reinforced hull, this Kestrel has been altered from the retail version to emphasize defense over all else."
 
-ship "Modified Kestrel" "Modified Kestrel (Remnant Weapons)"
+ship "Kestrel" "Modified Kestrel (Remnant Weapons)"
+	"display name" "Modified Kestrel"
 	sprite "ship/kestrelw"
 	thumbnail "thumbnail/kestrelw"
 	add attributes

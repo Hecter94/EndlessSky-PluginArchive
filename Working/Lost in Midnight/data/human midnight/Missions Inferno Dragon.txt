@@ -20,6 +20,7 @@ mission "Inferno Dragon: Inferno Rocket Fleets"
 		has "event: remembrance day"
 	on offer
 		event "inferno rocket fleets"
+		set "inferno rocket ccor updated"
 	npc kill
 		government "Independent (Killable)"
 		system Merak
@@ -33,6 +34,9 @@ mission "Inferno Dragon: Inferno Rocket Fleets"
 		ship "Gunboat (Inferno Rockets)" "Dragon's Guard"
 		ship "Rainmaker (Inferno Rockets)" "Dragon's Sentry"
 		ship "Rainmaker (Inferno Rockets)" "Dragon's Sentnel"
+		on kill
+			fail "Inferno Dragon: Pirate Dragons"
+			fail
 	npc
 		government "Independent (Killable)"
 		system Sargas
@@ -331,6 +335,107 @@ event "inferno rocket fleets"
 			"Berserker (Limit Break)"
 			"Berserker (Afterburner Limit Break)"
 			"Berserker (Inferno Rockets)"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+	fleet "Small CCOR"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+		add variant 2
+			"Berserker (Inferno Rockets)"
+		add variant 1
+			"Berserker (Inferno Rockets)" 2
+	fleet "Large CCOR"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+			"Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+			"Berserker (Inferno Rockets)"
+		add variant 1
+			"Broadsword (Inferno Rockets)"
+			"Shuttle Pod" 2
+	fleet "Small Dirt Belt Pirates"
+		add variant 2
+			"Modified Berserker (Inferno Rockets)"
+		add variant 1
+			"Modified Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Enforcer (Turbo Inferno Rockets)"
+		add variant 1
+			"Missileboat (Inferno Rockets)"
+	fleet "Large Dirt Belt Pirates"
+		add variant 1
+			"Modified Enforcer (Turbo Inferno Rockets)"
+			"Modified Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Saber (Turbo Inferno Rockets)"
+		add variant 1
+			"Longsword (Inferno Rockets)"
+		add variant 1
+			"Missileboat (Inferno Rockets)"
+			"Patrolboat (Turbo Blaster)"
+
+mission "Midnight Inferno Rocket CCOR Update"
+	landing
+	invisible
+	to offer
+		has "event: inferno rocket fleets"
+		not "inferno rocket ccor updated"
+	on offer
+		event "midnight inferno rocket ccor update"
+		fail
+
+event "midnight inferno rocket ccor update"
+	fleet "pirate raid"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+	fleet "Small CCOR"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+		add variant 2
+			"Berserker (Inferno Rockets)"
+		add variant 1
+			"Berserker (Inferno Rockets)" 2
+	fleet "Large CCOR"
+		add variant 1
+			"Modified Enforcer (Inferno Rockets)"
+			"Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Saber (Inferno Rockets)"
+			"Berserker (Inferno Rockets)"
+		add variant 1
+			"Broadsword (Inferno Rockets)"
+			"Shuttle Pod" 2
+	fleet "Small Dirt Belt Pirates"
+		add variant 2
+			"Modified Berserker (Inferno Rockets)"
+		add variant 1
+			"Modified Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Enforcer (Turbo Inferno Rockets)"
+		add variant 1
+			"Missileboat (Inferno Rockets)"
+	fleet "Large Dirt Belt Pirates"
+		add variant 1
+			"Modified Enforcer (Turbo Inferno Rockets)"
+			"Modified Berserker (Inferno Rockets)" 2
+		add variant 1
+			"Modified Saber (Turbo Inferno Rockets)"
+		add variant 1
+			"Longsword (Inferno Rockets)"
+		add variant 1
+			"Missileboat (Inferno Rockets)"
+			"Patrolboat (Turbo Blaster)"
+
+
 
 mission "Inferno Dragon: Diyu Dragon"
 	landing
@@ -439,7 +544,7 @@ mission "Inferno Dragon: Pirate Dragons"
 			confusion 10
 		ship "Frigate (Inferno Rockets)" "Dragon's Horn"
 
-				
+
 mission "Inferno Dragon: Dragon's Wings"
 	invisible
 	minor
@@ -503,7 +608,6 @@ mission "Inferno Dragon: Six Piece Clue"
 				has "Randomize Inferno Dragon: Six Piece Clue"
 				random < 10
 	on offer
-		log "Inferno Dragon Notes: The six lines of the poem are divided into three pairs. One pair related to the sky, one pair related to the ocean, and one pair related to the earth."
 		conversation
 			`While trying to relax at the bar, the mystery of the Inferno Dragon poem nags at you...`
 			choice
@@ -538,16 +642,18 @@ mission "Inferno Dragon: Six Piece Clue"
 			choice
 				`	"Pairs?"`
 				`	"How?"`
+			action
+				log "Inferno Dragon Notes: The six lines of the poem can be divided into three pairs. One pair related to the sky, one pair related to the ocean, and one pair related to the earth."
 			`"Like this:"`
 			``
-			`The Inferno Dragon's ambition reaches the heavens.`
-			`The Inferno Dragon's wings spread across the endless sky.`
+			`	The Inferno Dragon's ambition reaches the heavens.`
+			`	The Inferno Dragon's wings spread across the endless sky.`
 			``
-			`The Inferno Dragon's thirst can never be quenched.`
-			`The Inferno Dragon's breath boils the boundless ocean.`
+			`	The Inferno Dragon's thirst can never be quenched.`
+			`	The Inferno Dragon's breath boils the boundless ocean.`
 			``
-			`The Inferno Dragon's presence causes all to tremble.`
-			`The Inferno Dragon's claws ravage the timeless earth.`
+			`	The Inferno Dragon's presence causes all to tremble.`
+			`	The Inferno Dragon's claws ravage the timeless earth.`
 			``
 			`"Or something like that."`
 			choice
@@ -555,8 +661,6 @@ mission "Inferno Dragon: Six Piece Clue"
 					decline
 	on defer
 		set "Randomize Inferno Dragon: Six Piece Clue"
-
-
 
 
 
@@ -693,8 +797,15 @@ event "inferno rocket pod patch"
 phrase "red dragon"
 	phrase
 		"bad outcomes"
+		"pirate adjectives that don't work as titles"
 	word
 		" Dragon"
+
+phrase "red dragon"
+	word
+		"Red Dragon "
+	phrase
+		"pirate nouns that work after bad outcomes"
 
 phrase "red dragon"
 	word
@@ -702,7 +813,6 @@ phrase "red dragon"
 		"Chang An"
 		"Chang Sha"
 		"Cheng Du"
-		"Chin"
 		"Fu Shui"
 		"Guang Ling"
 		"Guang Zong"
@@ -714,12 +824,10 @@ phrase "red dragon"
 		"Jin Du"
 		"Ling Ling"
 		"Luo Yang"
-		"Luo"
 		"Nan Yang"
 		"Qing Zhou"
 		"Ru Nan"
 		"Wu Ling"
-		"Wu"
 		"Xu Zhou"
 		"Yang Zhou"
 		"Yuan"
@@ -1223,8 +1331,12 @@ mission "Inferno Dragon: FW Bounty [1]"
 
 
 
-
+######################
+#
 # fixes a mistake in original version that that overwrote fleets instead of adding to them
+#
+######################
+
 mission "Inferno Rockets Appear Patch"
 	landing
 	invisible

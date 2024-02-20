@@ -1,0 +1,282 @@
+# Copyright (c) 2024 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+# astral system for sestor colony
+
+system "Is Ce S-4"
+	pos 435.769 -698.875
+	government Uninhabited
+	attributes "bright star" "notable star" "supergiant star" "midnight"
+	arrival 5000
+	habitable 17025
+	belt 2658 2
+	haze _menu/haze-67
+	asteroids "small rock" 76 5.73
+	asteroids "medium rock" 37 5.957
+	asteroids "large rock" 94 7.314
+	asteroids "small metal" 1 6.56
+	asteroids "medium metal" 1 5.052
+	asteroids "large metal" 2 4.524
+	minables titanium 8 3.793
+	minables uranium 17 2.26
+	minables copper 8 3.793
+	fleet "Vyrmeid (Boomerang)" 3000
+	fleet "Vyrmeid (Cephalopod)" 2000
+	fleet "Vyrmeid (Plankton)" 1000
+	fleet Astral 50000
+	object
+		sprite star/b-supergiant
+		period 10
+	object
+		sprite planet/gas7-hot
+		distance 2154
+		period 306.467
+		object
+			sprite planet/lava3
+			distance 292
+			period 188.614
+	object
+		sprite planet/gas2
+		distance 3876
+		period 1043.78
+	object
+		sprite planet/gas0-b
+		distance 7948.3
+		period 6174.30
+		object
+			sprite planet/dust3-b
+			distance 271
+			period 168.638
+			offset 120
+		object
+			sprite planet/dust0
+			distance 310
+			period 240.638
+			offset 240
+	object
+		sprite planet/desert1
+		distance 15520
+		period 14540
+		offset 280
+	object
+		sprite planet/forest5
+		distance 17025
+		period 14540
+		offset 40
+		object
+			sprite planet/tethys
+			distance 168
+			period 56.988
+	object
+		sprite planet/rock12
+		distance 18480
+		period 14540
+		offset 160
+
+planet "Sestor Baran"
+	attributes uninhabited
+	landscape land/desert0ver8
+	description `This desert world may have resources useful to the Sestor, but the automata don't appear to be doing anything beyond scanning its surface. Perhaps they are wary of the violent sand storms that occasionally rage across the sandy dunes.`
+	bribe 0
+	security 0
+
+planet "Sestor Isfar"
+	attributes korath
+	landscape land/lava6ver8
+	description `The forests of this world have fallen to the Sestor industrial effort. The wood from larger trees fuels the furnaces used to process harvested ore into usable metal for construction. But smaller plants are simply burned off to clear the way for more factories.`
+	spaceport `Concrete and metal landing pads stretch out for miles. Parked at the center of it all is the original colony ship that first landed on this planet.`
+	"required reputation" 1
+	bribe 0
+	security 0
+
+planet "Sestor Kava"
+	attributes uninhabited
+	landscape land/badlands0ver8
+	description `This rocky world is rich in untapped ore deposits. The Sestor have barely begun to dig into the surface. The visiting automata ships are working on developing a staging area to facilitate mining operations.`
+	bribe 0
+	security 0
+
+mission "Midnight Expansion Sestor Colony"
+	landing
+	invisible
+	to offer
+		has "event: Sestor Expeditionary Fleets"
+	on offer
+		event "midnight expansion sestor colony"
+	on enter "Is Ce S-4"
+		conversation
+			scene "thumbnail/Midnight-Becca-far ek tek 243"
+			`An unfamiliar Kor Sestor ship is mining the asteroids when you enter the system. It is outfitted with weapons matching those of the Sestor expditionary fleets. Several interceptors and a warship rise up from one of the planets, a hint that the Kor Sestor may have established a colony in this system.`
+	npc kill
+		government "Kor Sestor"
+		system "Is Ce S-4"
+		personality waiting staying mining harvests timid
+		fleet
+			names "kor sestor"
+			cargo 0
+			variant
+				"Ekfar Tek 23"
+				"Tercheldar 150"
+				"Skoretak 13" 2
+		on kill
+			fail
+
+event "midnight expansion sestor colony"
+	unvisit "Is Ce S-4"
+		government "Kor Sestor"
+		remove fleet "Vyrmeid (Boomerang)"
+		remove "Vyrmeid (Cephalopod)"
+		remove fleet "Vyrmeid (Plankton)"
+		remove fleet Astral
+		add fleet "Large Sestor Colony" 5000
+		remove object
+			sprite planet/desert1
+			distance 15520
+			period 260.354
+		remove object
+			sprite planet/forest5
+			distance 17025
+			period 1704
+		remove object
+			sprite planet/rock12
+			distance 18480
+			period 240.531
+		add object "Sestor Baran"
+			sprite planet/desert1
+			distance 15520
+			period 1520
+		add object "Sestor Isfar"
+			sprite planet/forest5
+			distance 17025
+			period 1704
+			object
+				sprite planet/tethys
+				distance 168
+				period 56.988
+		add object "Sestor Kava"
+			sprite planet/rock12
+			distance 18480
+			period 1880
+
+fleet "Large Sestor Colony"
+	government "Kor Sestor" 
+	names "kor sestor"
+	personality mining harvests vindictive
+	cargo 1
+	commodities Metal "Heavy Metals"
+	variant 3
+		"Ekfar Tek 23"
+	variant 2
+		"Ekfar Tek 23"
+		"Skoretak 13" 4
+	variant 1
+		"Ekfar Tek 23"
+		"Tercheldar 150"
+	variant 2
+		"Tercheldar 150 (Tormentor)"
+	variant 1
+		"Tercheldar 150 (Tormentor)" 2
+	variant 1
+		"Tercheldar 150"
+		"Ekfar Tek 23" 2
+		"Skoretak 13" 4
+	variant 1
+		"Tercheldar 150"
+		"Skoretak 13" 6
+
+mission "Midnight Expansion Sestor Baran Salvage"
+	landing
+	invisible
+	repeat
+	source "Sestor Baran"
+	to offer
+		has "outfit (cargo): Jump Drive"
+		random < 70 - ( Sestor Baran Salvaged * 60 )
+	on offer
+		conversation
+			branch interceptor
+				has "Sestor Baran Salvaged"
+				random < 70
+			scene "thumbnail/Midnight-Becca-far ek tek 243"
+			`While flying over the sandy wastes, you spot a wrecked Ekfar Tek 23 half buried in a dune. A storm is approaching. Do you want to investigate?`
+			choice
+				`	(Take the risk.)`
+				`	(Ignore this.)`
+					goto ignore
+			scene "outfit/jump drive"
+			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
+			choice
+				`	(Risk a salvage operation.)`
+				`	(Ignore this.)`
+					goto ignore
+			branch storm
+				random < 33
+			action
+				give ship "Ekfar Tek 23 (Salvaged)" "00-000.0"
+				set "Sestor Baran Salvaged"
+			scene "thumbnail/Midnight-Becca-far ek tek 243"
+			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
+				depart
+
+			label interceptor
+			branch warship
+				random < 50
+			scene "thumbnail/skoretak 13-thumb"
+			`While flying over the sandy wastes, you spot a wrecked Skoretak 13 half buried in a dune. A storm is approaching. Do you want to investigate?`
+			choice
+				`	(Take the risk.)`
+				`	(Ignore this.)`
+					goto ignore
+			scene "outfit/jump drive"
+			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
+			choice
+				`	(Risk a salvage operation.)`
+				`	(Ignore this.)`
+					goto ignore
+			branch storm
+				random < 33
+			action
+				give ship "Skoretak 13 (Salvaged)" "00-000.0"
+			scene "thumbnail/skoretak 13-thumb"
+			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
+				depart
+
+			label warship
+			scene "thumbnail/tercheldar 150-thumb"
+			`While flying over the sandy wastes, you spot a wrecked Tercheldar 150 half buried in a dune. A storm is approaching. Do you want to investigate?`
+			choice
+				`	(Take the risk.)`
+				`	(Ignore this.)`
+					goto ignore
+			scene "outfit/jump drive"
+			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
+			choice
+				`	(Risk a salvage operation.)`
+				`	(Ignore this.)`
+					goto ignore
+			branch storm
+				random < 33
+			action
+				give ship "Tercheldar 150 (Salvaged)" "00-000.0"
+			scene "thumbnail/tercheldar 150-thumb"
+			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
+				depart
+
+			label storm
+			action
+				outfit "Jump Drive" -1
+			scene "outfit/attention"
+			`	Unfortunately, the storm arrives sooner than you anticipated! The Jump Drive is already partially installed. With no time to undo the work, you must abandon both it and the wrecked ship to avoid being buried alive in the sand storm.`
+				flee
+			label ignore
+			`	The threat of getting caught in the sand storm is too great a risk and you leave the wreck to be buried in the approaching storm.`
+				flee
