@@ -8416,9 +8416,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2024-01-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2024-02-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-01-23) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-02-21) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
@@ -8426,8 +8426,10 @@ Author: Demolish238 | Category: Ships <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Capitalis Major
-A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
+A collection of four superheavy ships, each with their own missions to unlock them, all of which are only available after the main story has been finished.
 
+For those who want the Sestor capital ship, don't worry if you can't capture it the first time you find it, as long as it isn't destroyed it will be available to fight in a different location later on where you can challenge it when you are prepared.
+Only one Sestor capital is available unlike the other ships in this plugin.
 
 Plugins:
 
@@ -12744,9 +12746,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Scrapyard/icon.png' height='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.31 mb | 2024-02-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.31 mb | 2024-02-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-02-20) <br>
+[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-02-21) <br>
 
 >A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
 >
