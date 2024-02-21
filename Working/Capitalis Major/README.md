@@ -1,6 +1,8 @@
 # Capitalis Major
-A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
+A collection of four superheavy ships, each with their own missions to unlock them, all of which are only available after the main story has been finished.
 
+For those who want the Sestor capital ship, don't worry if you can't capture it the first time you find it, as long as it isn't destroyed it will be available to fight in a different location later on where you can challenge it when you are prepared.
+Only one Sestor capital is available unlike the other ships in this plugin.
 
 Plugins:
 
