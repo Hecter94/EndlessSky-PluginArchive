@@ -1087,10 +1087,13 @@ event "midnight sales update 1"
 outfitter "Basic Fuel"
 	"Fuel Canister"
 	"Fuel Pod"
+	"Fuel Tank"
 
 outfitter "Advanced Fuel"
 	"Fuel Canister"
+	"Fuel Canister (Reinforced)"
 	"Fuel Pod"
+	"Fuel Pod (Reinforced)"
 	"Fuel Tank"
 	"Fuel Tank (Reinforced)"
 	"Ramscoop"
@@ -2621,6 +2624,8 @@ event "outrider mark II update"
 			"Outrider" 2
 
 
+outfitter "Twin Torpedo Pod"
+	"Twin Torpedo Pod"
 
 mission "Add Twin Torpedo Pods"
 	landing
@@ -2630,11 +2635,16 @@ mission "Add Twin Torpedo Pods"
 	on offer
 		event "add twin torpedo pods"
 		set "added pirate raid rivals twin torpedo pods"
+		set "restricted twin torpedo pods"
 		fail
 
 event "add twin torpedo pods"
-	outfitter "Pirate Outfits"
-		add "Twin Torpedo Pod"
+	planet "Smuggler's Den"
+		add outfitter "Twin Torpedo Pod"
+	planet "Thule"
+		add outfitter "Twin Torpedo Pod"
+	planet "New Tortuga"
+		add outfitter "Twin Torpedo Pod"
 	fleet "pirate raid"
 		add variant 1
 			"Modified Argosy (Twin Torpedo Pod)"
@@ -2744,6 +2754,26 @@ event "add twin torpedo pods rivals patch"
 		add variant 1
 			"Fury (Heavy)" 2
 			"Firebird (Twin Torpedo Pod)"
+
+mission "Restrict Twin Torpedo Pods Patch"
+	landing
+	invisible
+	to offer
+		has "event: add twin torpedo pods"
+		not "restricted twin torpedo pods"
+	on offer
+		event "restrict twin torpedo pods"
+		fail
+
+event "restrict twin torpedo pods"
+	outfitter "Pirate Outfits"
+		remove "Twin Torpedo Pod"
+	planet "Smuggler's Den"
+		add outfitter "Twin Torpedo Pod"
+	planet "Thule"
+		add outfitter "Twin Torpedo Pod"
+	planet "New Tortuga"
+		add outfitter "Twin Torpedo Pod"
 
 
 event "kraz twin torpedo pods"

@@ -20,6 +20,143 @@
 
 
 
+mission "Midnight Korbschläger 1"
+	minor
+	name "Navy Patrol"
+	description "A Navy Gunboat named R.N.S. Hongshui has been harassing our patrols at <waypoints>. Drive them off or capture the ship without killing the crew if possible. Destroy them only as a last resort. Payment is [<payment>]."
+	"apparent payment" 150000
+	source
+		government "Free Worlds"
+		near "Kornephoros" 1 3
+		not attributes uninhabited
+	to offer
+		has "Liberate Kornephoros: done"
+		not "FW Defend New Tibet: done"
+		"reputation: Republic" < 0
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/gunboat"
+			`A militia officer approaches you. "Captain <first> <last>! The militia is trying to hunt down a Navy Gunboat named R.N.S. Hongshui that has been harassing our patrols at <waypoints>. Any assistance you can provide would be greatly appreciated. Our objective is to drive them off or capture the ship without killing the crew if possible. We are only to destroy them only as a last resort. There's a <payment> reward for successfully completing this mission. Please pass the word on to any other militia pilots you meet.`
+				accept
+	on waypoint
+		conversation
+			scene "thumbnail/saber"
+			`You arrive at <waypoints> to find the R.N.S. Hongshui disabled and under heavy fire from a Saber named Korbschläger. This isn't the sort of ship normally used by militia pilots and captains...`
+			choice
+				`	(Hail the Korbschläger.)`
+				`	(Hail the R.N.S. Hongshui.)`
+					goto hongshui
+				`	(Observe.)`
+					goto observe
+			`	There is no response.`
+				goto observe
+			choice
+				`	(Hail the R.N.S. Hongshui.)`
+				`	(Observe.)`
+					goto observe
+			label hongshui
+			`	A panicked voice answers. "We surrender! Please stop your attack!"`
+				goto observe
+			label observe
+			``
+			scene "scene/scene-explosion"
+			`	The Korbschläger continues it's brutal assault on the R.N.S. Hongshui showing no signs of relenting. Inevitably, a Javelin strike pushes the battered and broken Gunboat crew beyond any hope of salvation as it explodes in a ball of flames. The Korbschläger slowly turns towards you and sends a hail.`
+			choice
+				`	(Answer.)`
+			scene "thumbnail/saber"
+			`	The hail is audio only. A man's gruff voice addresses you. "Better luck next time. The reward for the Hongshui is ours."`
+			choice
+				`	"They were already trying to surrender!"`
+				`	"You aren't like the other militia I've worked with."`
+					goto ccor
+			action
+				fail
+			`	The man doesn't hesitate to reply. "We are at war. I think you'll find that Republic scum won't be so merciful when you find yourself at their mercy. Captain Mensur signing off." The Korbschläger cuts the connection and moves away.`
+				decline
+			label ccor
+			action
+				fail
+			`	The man laughs. "I signed up after the war started just for the opportunity to kill Republic scum. Make sure you stay out of my way if you don't want to get caught in the crossfire. Captain Mensur signing off." The Korbschläger cuts the connection and moves away.`
+				decline
+	npc
+		government "Militia"
+		system "Kornephoros"
+		personality target waiting staying uninterested timid vindictive
+		ship "Saber" "F.S. Korbschläger"
+		on kill
+			set "korbschläger destroyed"
+
+mission "Midnight Korbschläger 2"
+	landing
+	invisible
+	source
+		government "Free Worlds"
+		attributes "south" "dirtbelt"
+		not attributes uninhabited
+	to offer
+		has "FW Southern Battle 2: done"
+		has "Midnight Korbschläger 1: failed"
+		not "korbschläger destroyed"
+		"reputation: Republic" < 0
+	on enter Rastaban
+		conversation
+			scene "thumbnail/basket-hilt-thumb"
+			`	You spot an oddity among the other militia and Free World ships. It takes a moment before you realize it's the Korbschläger. Captain Mensur must have upgraded his ship since your last encounter. A Republic Rainmaker flees the system and the Korbschläger pursues them despite your orders to let them flee.`
+			`	A merchant ship speaking on an open line remarks, "That was savage. The Korbschläger mercilessly destroyed a pair of Navy Outriders before leaving to chase that Rainmaker. The captain must be from the Outer Rim."`
+			choice
+				`	"Outer Rim?"`
+			action
+				fail
+			`	"The anarchists of the Outer Rim have a hatred for the Republic that started long before the formation of the Free Worlds. It shouldn't be too surprising that some of them might join the Militia."`
+				decline
+
+mission "Midnight Korbschläger 3"
+	job
+	name "Korbschläger"
+	description "A former militia ship named Korbschläger attacked a Free Worlds fleet transporting a Republic ambassador. Capture Captain Mensur in your Brig and bring him to <destination> to stand trial."
+	passengers 1
+	source
+		government "Free Worlds"
+		not attributes uninhabited
+	destination Bourne
+	to offer
+		has "Midnight Korbschläger 2: failed"
+		has "event: fw armistice"
+	on offer
+		require "Brig"
+	on enter "Thuban"
+		conversation
+			scene "thumbnail/broadsword-thumb"
+			`You've found the Korbschläger. Captain Mensur hails you. "I see you and the rest of the Free Worlds serve the Republic now. Go to hell!"`
+	npc
+		government "Bounty"
+		system "Thuban"
+		personality waiting staying vindictive
+		ship "Dagger" "Cinquedea"
+		ship "Dagger" "Misericorde"
+	npc board
+		government "Bounty"
+		system "Thuban"
+		personality target waiting staying vindictive
+		ship "Broadsword" "Korbschläger"
+		dialog "You finally meet captain Mensur face to face. He is old and his hands shake as he clutches his gun. Glaring at you in defiance, there is a moment of tension before he surrenders. Bring him to Bourne to stand trial."
+	on complete
+		payment 200000
+		conversation
+			scene "outfit/brig"
+			branch oathbreaker
+				has "Oathbreaker Siege 1: offered"
+			`You hand Captain Mensur over to the authorities and are rewarded with <payment>. As they are about to take him away, he remarks, "This isn't over <last>. Mark my words, there are those on the other side who are still just as willing to fight as I am."`
+			`	The evidence against Mensur is clear and a conviction is likely. The security guards drag him off, never to be seen again.`
+				accept
+			label oathbreaker
+			`You hand Captain Mensur over to the authorities and are rewarded with <payment>. As they are about to take him away, he remarks, "This isn't over <last>. Those "Oathbreakers" that have been giving you trouble are just one example of those on the other side who are still just as willing to fight as I am."`
+			`	The evidence against Mensur is clear and a conviction is likely. The security guards drag him off, never to be seen again.`
+				accept
+
+
+
 phrase "R.N.S. Poisonwood"
 	word
 		"R.N.S. Poisonwood"
@@ -92,7 +229,7 @@ mission "Oathbreaker Siege 1"
 		not attributes "uninhabited"
 	to offer
 		has "First Contact: Hai: declined"
-		has "free worlds plot completed"
+		has "Oathbreaker Strategos Deployed: offered"
 		random < 70
 	on offer
 		conversation
@@ -571,20 +708,20 @@ mission "Oathbreaker Pirate Gossip"
 		has "event: Oathbreaker Random"
 		random < 70
 	on offer
-		log `Among the pirates there are rumors that Captain Arnold Benedict's flagship is of alien origin. A "Shield Fortress" that is described as having a huge wing span. It's officially named "Kornephoros" but many just call it "The Oath Breaker" instead.`
+		log `Among the pirates there are rumors that Captain Arnold Benedict's flagship is of alien origin. A "Shield Fortress" that is described as having a huge wing span. It's officially named "Kornephoros" but many just call it the "Oath Breaker."`
 		conversation
 			`As you try to relax in the bar you hear someone mention the name of Arnold Benedict.`
 			`	"It was really him! He looked just like he did on the holovideos," says a man with a scar on his face.`
 			`	"What was he doing on <planet>?" asks a woman with a mohawk.`
 			`	"Repairs and maintenance. A wanted fugitive like him fits right in on worlds like ours," replies the scarred man.`
 			`	"I heard he has a fancy flagship," replies the mohawk woman. "What was it called again?"`
-			`	The scarred man responds, "It's officially named Kornephoros, like the star system where the Republic and Free Worlds had one of their first big clashes. From what I've been told, all the Oathbreaker ships are supposed to be named after historical battles. But everyone I know just calls it The Oath Breaker."`
-			`	Another man, one wearing a stereotypical pirate eyepatch, asks, "Is The Oath Breaker a carrier or a cruiser?"`
+			`	The scarred man responds, "It's officially named Kornephoros, like the star system where the Republic and Free Worlds had one of their first big clashes. From what I've been told, all the Oathbreaker ships are supposed to be named after historical battles. But everyone I know just calls it the Oath Breaker."`
+			`	Another man, one wearing a stereotypical pirate eyepatch, asks, "Is the Oath Breaker a carrier or a cruiser?"`
 			choice
 				`	(Keep listening.)`
 			scene "scene/scene-shieldfortress"
 			`	"Neither," replies the scarred man. "He has some weird alien ship that was salvaged by Marauders before he confiscated it. One of their crew referred to it as a 'Shield Fortress'. They attached parts of a wrecked Navy Carrier to it, giving it a huge wing span. The thing is a beast of a ship. A real monster."`
-			`	Eyepatch man downs his drink in one gulp and gets up to leave. The mohawk woman also excuses herself, despite the scarred man's offers of more free drinks. You should probably get going too. If either eyepatch man or mohawk woman are bounty hunters, they may have already shared this information on the Kornephoros, The Oath Breaker, to the authorities for a piece of the reward...`
+			`	Eyepatch man downs his drink in one gulp and gets up to leave. The mohawk woman also excuses herself, despite the scarred man's offers of more free drinks. You should probably get going too. If either the eyepatch man or mohawk woman are bounty hunters, they may already be on their way to share this information on the Kornephoros, the Oath Breaker, to the authorities for a piece of the reward...`
 				decline
 
 
