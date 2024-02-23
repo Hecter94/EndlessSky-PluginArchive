@@ -4044,9 +4044,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/QOL-Outfits/icon.png' height='100'></img><br>
 
 
-[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-02-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-02-05) <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-02-23) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
@@ -6647,7 +6647,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Celestial.Strands.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.zip) | 21.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands/) <br>
 Author: Saugia | Category: Races <br>
-[https://github.com/Saugia/celestial-strands](https://github.com/Saugia/celestial-strands) (last commit 2023-06-29) <br>
+[https://github.com/Saugia/celestial-strands](https://github.com/Saugia/celestial-strands)  <br>
 
 >Celestial Strands is a plug-in for Endless Sky that adds a new area of content based on the original Escape Velocity games, primarily Escape Velocity: Override. 
 
@@ -6664,7 +6664,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Celestial.Strands.HighDPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.HighDPI.zip) | 52.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands%20HighDPI/) <br>
 Author: Saugia | Category: Races <br>
-[https://github.com/Saugia/celestial-strands-highdpi](https://github.com/Saugia/celestial-strands-highdpi) (last commit 2023-06-29) <br>
+[https://github.com/Saugia/celestial-strands-highdpi](https://github.com/Saugia/celestial-strands-highdpi)  <br>
 
 >High DPI for the Celestial Strands plug-in. 
 
@@ -8391,7 +8391,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [BSRC.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BSRC.zip) | 4.68 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/BSRC/) <br>
 Author: phenix2 | Category: Ships <br>
-[https://github.com/phenix2/BSRC](https://github.com/phenix2/BSRC) (last commit 2020-01-08) <br>
+[https://github.com/phenix2/BSRC](https://github.com/phenix2/BSRC)  <br>
 
 >A Endless Sky plugin with ships from drone class to battleship class
 
@@ -9592,9 +9592,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 135.48 mb | 2024-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 135.48 mb | 2024-02-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-02-13) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-02-23) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -11193,7 +11193,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Advanced.Starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Advanced.Starts.zip) | 11.72 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Advanced%20Starts/) <br>
 Author: Kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts) (last commit 2021-06-03) <br>
+[https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts)  <br>
 
 >Adds more starting options.
 >
