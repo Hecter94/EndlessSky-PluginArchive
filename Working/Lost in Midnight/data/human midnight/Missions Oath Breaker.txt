@@ -29,9 +29,10 @@ mission "Midnight Korbschläger 1"
 		government "Free Worlds"
 		near "Kornephoros" 1 3
 		not attributes uninhabited
+	waypoint Kornephoros
 	to offer
 		has "Liberate Kornephoros: done"
-		not "FW Defend New Tibet: done"
+		not "event: fw armistice"
 		"reputation: Republic" < 0
 		random < 70
 	on offer
@@ -40,6 +41,7 @@ mission "Midnight Korbschläger 1"
 			`A militia officer approaches you. "Captain <first> <last>! The militia is trying to hunt down a Navy Gunboat named R.N.S. Hongshui that has been harassing our patrols at <waypoints>. Any assistance you can provide would be greatly appreciated. Our objective is to drive them off or capture the ship without killing the crew if possible. We are only to destroy them only as a last resort. There's a <payment> reward for successfully completing this mission. Please pass the word on to any other militia pilots you meet.`
 				accept
 	on waypoint
+		log "People" "Captain Mensur" `Militia captain of the Korbschläger, an old Saber that is an unusual ship to find in the Militia. He has a deep hatred for the Republic.`
 		conversation
 			scene "thumbnail/saber"
 			`You arrive at <waypoints> to find the R.N.S. Hongshui disabled and under heavy fire from a Saber named Korbschläger. This isn't the sort of ship normally used by militia pilots and captains...`
@@ -72,20 +74,13 @@ mission "Midnight Korbschläger 1"
 					goto ccor
 			action
 				fail
-			`	The man doesn't hesitate to reply. "We are at war. I think you'll find that Republic scum won't be so merciful when you find yourself at their mercy. Captain Mensur signing off." The Korbschläger cuts the connection and moves away.`
+			`	The man doesn't hesitate to reply. "We are at war. I think you'll find that Republic scum won't be so merciful when you find yourself at their mercy. Captain Mensur signing off." The Korbschläger cuts the connection and leaves the system.`
 				decline
 			label ccor
 			action
 				fail
-			`	The man laughs. "I signed up after the war started just for the opportunity to kill Republic scum. Make sure you stay out of my way if you don't want to get caught in the crossfire. Captain Mensur signing off." The Korbschläger cuts the connection and moves away.`
+			`	The man laughs. "I signed up after the war started just for the opportunity to kill Republic scum. Make sure you stay out of my way if you don't want to get caught in the crossfire. Captain Mensur signing off." The Korbschläger cuts the connection and leaves the system.`
 				decline
-	npc
-		government "Militia"
-		system "Kornephoros"
-		personality target waiting staying uninterested timid vindictive
-		ship "Saber" "F.S. Korbschläger"
-		on kill
-			set "korbschläger destroyed"
 
 mission "Midnight Korbschläger 2"
 	landing
@@ -97,9 +92,9 @@ mission "Midnight Korbschläger 2"
 	to offer
 		has "FW Southern Battle 2: done"
 		has "Midnight Korbschläger 1: failed"
-		not "korbschläger destroyed"
 		"reputation: Republic" < 0
 	on enter Rastaban
+		log `The anarchists of the Outer Rim have a hatred for the Republic that started long before the formation of the Free Worlds. It seems some of them might have joined the Militia.`
 		conversation
 			scene "thumbnail/basket-hilt-thumb"
 			`	You spot an oddity among the other militia and Free World ships. It takes a moment before you realize it's the Korbschläger. Captain Mensur must have upgraded his ship since your last encounter. A Republic Rainmaker flees the system and the Korbschläger pursues them despite your orders to let them flee.`
@@ -121,14 +116,14 @@ mission "Midnight Korbschläger 3"
 		not attributes uninhabited
 	destination Bourne
 	to offer
-		has "Midnight Korbschläger 2: failed"
+		has "Midnight Korbschläger 2: declined"
 		has "event: fw armistice"
 	on offer
 		require "Brig"
 	on enter "Thuban"
 		conversation
 			scene "thumbnail/broadsword-thumb"
-			`You've found the Korbschläger. Captain Mensur hails you. "I see you and the rest of the Free Worlds serve the Republic now. Go to hell!"`
+			`You've found the Korbschläger. It appears to have been upgraded to a Broadsword. Captain Mensur hails you. "I see you and the rest of the Free Worlds serve the Republic now. Go to hell!"`
 	npc
 		government "Bounty"
 		system "Thuban"
@@ -143,6 +138,7 @@ mission "Midnight Korbschläger 3"
 		dialog "You finally meet captain Mensur face to face. He is old and his hands shake as he clutches his gun. Glaring at you in defiance, there is a moment of tension before he surrenders. Bring him to Bourne to stand trial."
 	on complete
 		payment 200000
+		log "People" "Captain Mensur" `Captain Mensur has been arrested for treason after attacking a Free Worlds fleet in an alleged attempt to assassinate a Republic ambassador.`
 		conversation
 			scene "outfit/brig"
 			branch oathbreaker
@@ -2053,41 +2049,6 @@ mission "Nemesis: Oath Breaker"
 
 
 
-ship "Saryd Trailblazer" "Saryd Trailblazer (Pug)"
-	outfits
-		"Pug Seeker" 4
-		"Quad Blaster Turret" 4
-		"Heavy Anti-Missile Turret" 2
-		"Cooling Module" 5
-		"Large Shield Module"
-		"Scanning Module"
-		"Small Shield Module" 2
-		"Large Battery Module"
-		"Large Collector Module" 2
-		"Large Reactor Module"
-		"Small Battery Module" 3
-		"Small Collector Module" 2
-		"Small Reactor Module"
-		"Large Steering Module" 4
-		"Large Thrust Module" 2
-		"Small Steering Module" 2
-		"Small Thrust Module" 2
-		"Sniper Rifle"
-		"Fragmentation Grenades" 26
-		"Laser Rifle" 52
-		Hyperdrive
-	gun -23 -106 "Pug Seeker"
-	gun 23 -106 "Pug Seeker"
-	gun -15 -125 "Pug Seeker"
-	gun 15 -125 "Pug Seeker"
-	turret -17 -104 "Quad Blaster Turret"
-	turret 17 -104 "Quad Blaster Turret"
-	turret -1 -96 "Heavy Anti-Missile Turret"
-	turret -41 -6 "Quad Blaster Turret"
-	turret 41 -6 "Quad Blaster Turret"
-	turret -1 157 "Heavy Anti-Missile Turret"
-
-
 ship "Auxiliary" "Auxiliary (Oathbreaker)"
 	"crew" 250
 	outfits
@@ -2245,7 +2206,7 @@ mission "Oathbreaker expeditionary 1"
 		ship "Cruiser (Coalition)" "Yorktown"
 		ship "Gunboat (Coalition)" "Granicus River"
 	on complete
-		log "People" "Captain Magna" `Leader of an Oathbreaker expeditionary fleet in Coalition territory. This fleet is no longer interested in fighting and has settled into a peaceful life with the Coalition.`
+		log "Minor People" "Captain Magna" `Leader of an Oathbreaker expeditionary fleet in Coalition territory. This fleet is no longer interested in fighting and has settled into a peaceful life with the Coalition.`
 
 mission "Oathbreaker expeditionary 2"
 	landing

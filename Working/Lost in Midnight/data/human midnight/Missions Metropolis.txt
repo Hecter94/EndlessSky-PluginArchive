@@ -199,7 +199,7 @@ mission "Balthazar 4"
 				accept
 	on accept
 		payment -5000000
-		log "People" "Barnacle Bobby" `Owner of a fishing operation on Nimbus. He was squatting on the salvaging rights to the Balthazar for far longer than the local port authority should have allowed. He eventually sold the rights to me after some negotiation.`
+		log "Minor People" "Barnacle Bobby" `Owner of a fishing operation on Nimbus. He was squatting on the salvaging rights to the Balthazar for far longer than the local port authority should have allowed. He eventually sold the rights to me after some negotiation.`
 
 mission "Balthazar 5"
 	landing
@@ -292,24 +292,30 @@ mission "Balthazar Delivery"
 		set "Balthazar on Standby"
 	on accept
 		clear "Balthazar on Standby"
-	on abort
-		give ship "District" "Balthazar"
-		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the District ship Balthazar to your fleet instead.`
 	on enter
 		dialog `The launch was a success! Maria and her team did an excellent job fixing the Balthazar. Now you just have to safely escort it to Luna in the Sol system.`
 	npc
 		system Kugel
 		government "Pirate"
 		personality plunders
-		fleet "pirate raid"
+			confusion 20
+		fleet "Small Core Pirates"
 	npc
 		system Acamar
 		government "Pirate"
 		personality plunders
-		fleet "pirate raid"
+			confusion 20
+		fleet "Small Core Pirates"
+	npc
+		system Eteron
+		government "Pirate"
+		personality plunders
+			confusion 20
+		fleet "Small Core Pirates"
 	npc accompany save
 		government "Escort"
-		personality launching escort timid
+		personality target launching escort timid
+			confusion 30
 		ship "District" "Balthazar"
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
@@ -318,6 +324,22 @@ mission "Balthazar Delivery"
 	on complete
 		log `Delivered the District ship Balthazar to Joseph Welder on Luna. Once all three of the component city ships are delivered, we can combine them into the Metropolis ship, Exodus.`
 		dialog `Maria and her team will remain on standby with Balthazar at Luna until you are ready to combine the three city ships to form the Metropolis city ship Exodus.`
+
+mission "Balthazar Standby Reminder"
+	landing
+	name "Retrieve Balthazar"
+	description "Retrieve the District ship, Balthazar, from <destination>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination Nimbus
+	to offer
+		has "Balthazar on Standby"
+		"reputation: Republic" >= 0
+	on offer
+		conversation
+			scene "ship/metro district"
+			`With the cease in hostilities between you and the Republic, now may be a good time to retrieve Balthazar from <destination>.`
+				accept
 
 
 
@@ -430,7 +452,7 @@ mission "Melchior 5"
 		conversation
 			branch barmy
 				has "FW Plasma Testing 1B: done"
-			`You arrive at Kraz Cybernetics and ask about the Melchior. It turns out that it's scheduled to test a new shielding system today! You inform the receptionist that you are interested in purchasing the ship and she directs you to their R&D department. After rushing over there, you find the person in charge.`			
+			`You arrive at Kraz Cybernetics and ask about the Melchior. It turns out that it's scheduled to test a new shielding system today! You inform the receptionist that you are interested in purchasing the ship and she directs you to their R&D department. After rushing over there, you find the person in charge.`
 				goto negotiate
 			label barmy
 			scene scene/loc5
@@ -467,7 +489,7 @@ mission "Melchior 5"
 			`	"Great. You can hold off on completing the transaction until you bring the crew here. In the meantime, how about helping us test out our new shielding system?"`
 			choice
 				`	"I think I'll pay for the ship now."`
-			`	"I wouldn't want it to get blown up in one of your experiments." You complete the transaction and he marks the Melchior as unavailable for all of their future projects.`
+			`	You explain, "I wouldn't want it to get blown up in one of your experiments." You complete the transaction and he marks the Melchior as unavailable for all of their future projects.`
 			`	With that settled, you get ready to return to Bourne and recruit Cathleen Wigglebottom to crew the Melchior.`
 				accept
 	on accept
@@ -568,17 +590,28 @@ mission "Melchior Delivery"
 		clear "Melchior on Standby"
 	on enter
 		dialog `The Melchior launches without any issues. Hopefully the journey to Luna in the Sol system will be a quiet and peaceful one.`
-	on abort
-		give ship "Prefecture" "Melchior"
-		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the Prefecture ship Melchior to your fleet instead.`
 	npc
 		system Ildaria
 		government "Pirate"
 		personality waiting plunders harvests
-		fleet "Large Southern Pirates"
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc
+		system Sargas
+		government "Pirate"
+		personality waiting plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc
+		system Nocte
+		government "Pirate"
+		personality waiting plunders harvests
+			confusion 20
+		fleet "Small Southern Pirates"
 	npc accompany save
 		government "Escort"
-		personality launching escort timid
+		personality target launching escort timid
+			confusion 30
 		ship "Prefecture" "Melchior"
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
@@ -587,6 +620,22 @@ mission "Melchior Delivery"
 	on complete
 		log `Delivered the Prefecture city ship Melchior to Joseph Welder on Luna. Once all three of the component city ships are delivered, we can combine them into the Metropolis ship, Exodus.`
 		dialog `The Wigglebottoms and their crew will remain on standby with Melchior at Luna. Hopefully they won't drive Joseph insane before you are able to  combine the three city ships into the Metropolis city ship Exodus.`
+
+mission "Melchior Standby Reminder"
+	landing
+	name "Retrieve Melchior"
+	description "Retrieve the Prefecture ship, Melchior, from <destination>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination Rust
+	to offer
+		has "Melchior on Standby"
+		"reputation: Republic" >= 0
+	on offer
+		conversation
+			scene "ship/metro prefecture"
+			`With the cease in hostilities between you and the Republic, now may be a good time to retrieve Melchior from <destination>.`
+				accept
 
 
 
@@ -645,11 +694,13 @@ mission "Caspar 1"
 		system "Alphard"
 		government "Pirate"
 		personality plunders waiting staying
+			confusion 20
 		fleet "Small Southern Pirates"
 	npc	assist accompany
 		system "Alphard"
 		government "Merchant"
 		personality target derelict fleeing marked
+			confusion 30
 		ship "Behemoth (threshold 50%)" "Guiding Star"
 		dialog `"We were attacked by pirates. Thanks for your help! Could you escort us down to the planet? I'll make sure to reward you once we land."`
 	on complete
@@ -711,7 +762,7 @@ mission "Caspar Capture"
 			label recruitment
 			`	"We need guidance and would willingly join your fleet, Captain <last>. However, we demand that all of us be allowed to continue to operate Caspar as its primary crew." From his expression, you can tell he is sincere.`
 			choice
-				`	"Once the ship is operational, your first mission is to follow me to Vesta for refueling."`
+				`	"Once the ship is operational, your first mission is to follow me to Vesta for refueling and repair."`
 					accept
 	on accept
 		log `Found the Caspar in the Archipelago. The pirate crew mutinied against their captain and offered to join my fleet.`
@@ -762,28 +813,29 @@ mission "Caspar Delivery"
 		clear "Caspar on Standby"
 	on enter
 		dialog `The Caspar is flying good as new. Set your heading to Luna in the Sol system before you attract the attention of some pirates.`
-	on abort
-		give ship "Municipality" "Caspar"
-		dialog `You have abandoned the quest to reassemble Exodus and have chosen to add the Municipality ship Caspar to your fleet instead.`
 	npc evade
 		system Lolami
 		government "Bounty Hunter"
 		personality disables
 		fleet "Bounty Hunters"
+			confusion 10
 	npc evade
 		system Regulus
 		government "Bounty Hunter"
 		personality disables
 		fleet "Bounty Hunters"
+			confusion 10
 	npc evade
 		system Fingol
 		government "Bounty Hunter"
 		personality disables
-		fleet "Hired Guns"
+			confusion 10
+		fleet "Bounty Hunters"
 	npc accompany save
 		system Archipelago
 		government "Escort"
-		personality launching escort timid
+		personality target launching escort timid
+			confusion 20
 		ship "Municipality" "Caspar"
 	on fail
 		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
@@ -794,6 +846,24 @@ mission "Caspar Delivery"
 		conversation
 			`During the journey you learned more about Tyler and his crew. They were captured two years ago by slavers and sold to a pirate captain. While the captain taught them discipline and the skills to operate a star ship, he was a cruel tyrant who used physical torture to punish his crew. It was only after a battle with another pirate faction that the crew was able to mutiny.`
 			`You also informed Tyler about your plans for the Exodus. While he was apprehensive at first, you assured him that he and his crew would be able to stay together as part of the Exodus crew after Caspar combines with the other two ships.`
+
+mission "Caspar Standby Reminder"
+	landing
+	name "Retrieve Caspar"
+	description "Retrieve the Municipality ship, Caspar, from <destination>."
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+	destination Vesta
+	to offer
+		has "Caspar on Standby"
+		"reputation: Republic" >= 0
+	on offer
+		conversation
+			scene "ship/metro municipality"
+			`With the cease in hostilities between you and the Republic, now may be a good time to retrieve Caspar from <destination>.`
+				accept
+
+
 
 mission "Metropolis 2"
 	name "Exodus Test Flight"
@@ -853,6 +923,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Kestrel (Battle Bays)" "Dark Reflection"
+			confusion 10
 		fleet
 			fighters
 				names "pirate"
@@ -866,6 +937,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Kestrel (Battle Engines)" "Dark Reflection"
+			confusion 10
 		fleet
 			fighters
 				names "pirate"
@@ -879,6 +951,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Kestrel (Battle Shields)" "Dark Reflection"
+			confusion 10
 		fleet
 			fighters
 				names "pirate"
@@ -892,6 +965,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Kestrel (Battle Weapons)" "Dark Reflection"
+			confusion 10
 		fleet
 			fighters
 				names "pirate"
@@ -905,6 +979,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Modified Dromedary (Metro)" "Shard of Light"
+			confusion 20
 		fleet
 			fighters
 				names "pirate"
@@ -918,6 +993,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Carrier (Alpha)" "Surprise Party"
+			confusion 10
 		fleet
 			fighters
 				names "pirate"
@@ -931,6 +1007,7 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Leviathan (Plasma Repeater)" "Chunk"
 
 	npc evade
@@ -940,6 +1017,7 @@ mission "Metropolis 2"
 		government "Pirate"
 		personality target entering disables
 		ship "Bactrian (Cosmic Devil)" "Cosmic Revenge"
+			confusion 20
 		fleet
 			fighters
 				names "pirate"
@@ -952,6 +1030,7 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Mammoth (Moonless)" "Moonlit Night"
 
 	npc evade
@@ -960,6 +1039,7 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Marauder Firebird (Hai)" "Cashew"
 		ship "Marauder Splinter (Hai)" "Pistachio"
 		ship "Marauder Quicksilver (Hai)" "Pecan"
@@ -971,6 +1051,7 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Osprey (Alien Weapons)" "Silver Beak"
 
 	npc evade
@@ -979,6 +1060,7 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Vanguard (Plasma Slow)" "Sea Devil"
 
 	npc evade
@@ -987,22 +1069,37 @@ mission "Metropolis 2"
 		system Sol
 		government "Pirate"
 		personality target entering disables
+			confusion 20
 		ship "Leviathan (Hai Weapons)" "Callus"
 
 	npc evade
 		system Sol
 		government "Pirate"
 		personality target waiting disables
+			confusion 10
 		fleet "Marauder Parade"
+
+	npc
+		system Sol
+		government "Escort"
+		personality launching escort timid
+			confusion 30
+		fleet
+			names "civilian"
+			cargo 0
+			variant
+				"Shuttle Pod" 4
+				"Mining Drone" 2
 
 	npc accompany save
 		system Sol
 		government "Escort"
 		personality launching escort timid
+			confusion 30
 		ship "Metropolis" "Exodus"
 
 	on fail
-		dialog `[MISSION FAILED]: You have failed as essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
+		dialog `[MISSION FAILED]: You have failed an essential part of the Exodus missions. If life were a game, you could reload a previous save file and try again.`
 
 	on visit Earth
 		conversation
@@ -1010,16 +1107,6 @@ mission "Metropolis 2"
 				launch
 	on complete
 		give ship "Metropolis" "Exodus"
-		outfit "D14-RN Shield Generator"
-		outfit "D41-HY Shield Generator" 2
-		outfit "D67-TM Shield Generator"
-		outfit "Fusion Reactor" 2
-		outfit "Hyperdrive" 2
-		outfit "LP144a Battery Pack" 2
-		outfit "Large Radar Jammer" 2
-		outfit "Ramscoop" 2
-		outfit "X4700 Ion Thruster" 2
-		outfit "X5200 Ion Steering" 2
 		log "People" "Joseph Welder" `Joseph passed away the day after the restored Exodus' test flight. One of his ancestors was on the design team for the Exodus. Seeing that ship fly again was a childhood dream of Joseph's. His dream will live on as the Exodus returns to the Endless Sky.`
 		log `The Exodus had an exciting test flight. Unfortunately, damage to the interlocking mechanisms from an attack by Marauders prevents the Exodus from splitting into its component sub-ships.`
 		conversation

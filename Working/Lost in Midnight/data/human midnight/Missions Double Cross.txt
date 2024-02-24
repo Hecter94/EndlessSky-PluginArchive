@@ -168,133 +168,116 @@ mission "Escort Independence"
 	description "Escort the <npc> to <destination> by <date>. The <npc> is the last Mastodon city ship still in service. Pirates may try to hijack such a rare ship. Payment is <payment>."
 	source
 		government "Republic"
+		attributes "paradise"
 	destination
 		government "Republic"
-		distance 8 12
+		distance 4 5
 	to offer
+		has "event: war begins"
 		"reputation: Republic" > 0
 		"reputation: Merchant" > 0
-		"combat rating" > 10
+		"reputation: Pirate" < 0
+		"combat rating" > 100
 		random < ( ( 30 - "day" ) / 2 )
-
-	on abort
-		"reputation: Merchant" --
-		dialog `Your failure to escort the <npc> safely to its destination has been filed with the Merchant's Association...`
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 7
-		government "Republic"
-		personality entering heroic
-		fleet "Small Republic" 2
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 8
-		government "Republic"
-		personality waiting heroic
-		system
-			distance 2 3
-		fleet "Small Republic" 2
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 9
-		government "Republic"
-		personality waiting heroic
-		system destination
-		fleet "Large Republic"
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 10
-		government "Republic"
-		personality entering heroic
-		system destination
-		fleet "Large Republic"
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 11
-		government "Republic"
-		personality entering heroic
-		system
-			distance 2 3
-		fleet "Large Republic"
-
+	on enter
+		dialog "You aren't the only one escorting the Independence. A pirate would have to be crazy to attack such a heavily fortified fleet..."
 	npc
 		government "Merchant"
-		personality launching heroic
-		fleet
-			names "civilian"
-			variant
-				"Headhunter (Strike)"
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 2
-		government "Merchant"
-		personality launching heroic
+		personality launching heroic vindictive
 		fleet
 			names "civilian"
 			variant
 				"Aerie"
+				"Argosy (Missile)"
+				"Bastion (Scanner)"
+				"Berserker (Strike)"
+				"Clipper"
+				"Corvette (Missile)"
+				"Dagger" 3
+				"Falcon (Heavy)"
+				"Firebird (Missile)"
+				"Hawk"
 				"Headhunter (Strike)"
-				"Dagger" 2
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 3
-		government "Merchant"
-		personality launching heroic
-		fleet
-			names "civilian"
-			variant
+				"Leviathan (Heavy)"
+				"Manta"
+				"Missileboat"
+				"Mule"
 				"Osprey (Missile)"
-				"Aerie"
-				"Dagger" 2
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 4
-		government "Merchant"
-		personality launching heroic
-		fleet
-			names "civilian"
-			variant
-				"Firebird (Missile)"
-				"Osprey (Missile)"
-
-	npc
-		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 5
-		government "Merchant"
-		personality launching heroic
-		fleet
-			names "civilian"
-			variant
+				"Outrider"
+				"Patrolboat"
 				"Protector"
-				"Firebird (Missile)"
+				"Quicksilver (Scanner)"
+				"Raven (Heavy)"
+				"Sparrow (Patrol)"
+				"Splinter"
+				"Stingray"
+				"Vanguard (Missile)"
+				"Wasp (Meteor)"
 
 	npc
 		to spawn
-			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 6
-		government "Merchant"
-		personality launching heroic
-		fleet
-			names "civilian"
-			variant
-				"Protector"
-				"Vanguard"
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Small Republic" 4
+	npc
+		to spawn
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Small Republic" 2
+	npc
+		to spawn
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Large Republic" 2
+	npc
+		to spawn
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Large Republic"
+	npc
+		to spawn
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Navy Surveillance" 2
+	npc
+		to spawn
+			or
+				"reputation: Merchant" < 0
+				"reputation: Republic" < 0
+				"reputation: Pirate" > 0
+		government "Republic"
+		personality entering heroic vindictive
+		fleet "Navy Surveillance"
 
 	npc accompany save
 		government "Merchant"
-		personality launching timid escort
+		personality target launching timid escort
 		ship "Mastodon" "Independence"
 
 	on fail
 		log `Everyone assumes that I hijacked the Mastodon city ship Independence while I was escorting it. Even if I had hijacked it, I wouldn't incriminate myself here...`
-		"reputation: Merchant" -= 2
+		"reputation: Merchant" <?= -1000
+		"reputation: Republic" <?= -1000
 		dialog `News that the Mastodon city ship "Independence" failed to reach its destination spreads quickly. There are some nasty rumors that you actually betrayed your employer and hijacked the ship yourself...`
 
 	on visit
@@ -1769,19 +1752,50 @@ mission "Prisoner Bribe Release (Job)"
 		payment 25000 400
 	on enter
 		log `After accepting a bribe to release the notorious felon Dirk Malone, he sent his fleet of pirate raiders to attack me.`
-		dialog 	`You receive a message from the felon you just released: "You got your payment, so technically I've done my part of the agreement. Now we're just going to do what pirates do...`
+		dialog 	`You receive a message from the felon you just released: "You got your payment, so technically I've fufilled my part of the agreement. Now we're just going to do what pirates do...`
 	npc evade
 		government "Pirate"
 		personality entering nemesis plunders
 			confusion 20
-		fleet "pirate raid" 6
+		fleet "pirate raid" 2
+	npc evade
+		government "Pirate"
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc evade
+		government "Pirate"
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 2
 	npc evade
 		government "Pirate"
 		system
 			distance 2 3
 		personality entering nemesis plunders
 			confusion 20
-		fleet "pirate raid" 12
+		fleet "pirate raid" 3
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 3
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 3
+	npc evade
+		government "Pirate"
+		system
+			distance 2 3
+		personality entering nemesis plunders
+			confusion 20
+		fleet "pirate raid" 3
 
 
 
