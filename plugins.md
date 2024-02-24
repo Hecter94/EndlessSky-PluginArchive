@@ -6647,7 +6647,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Celestial.Strands.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.zip) | 21.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands/) <br>
 Author: Saugia | Category: Races <br>
-[https://github.com/Saugia/celestial-strands](https://github.com/Saugia/celestial-strands)  <br>
+[https://github.com/Saugia/celestial-strands](https://github.com/Saugia/celestial-strands) (last commit 2023-06-29) <br>
 
 >Celestial Strands is a plug-in for Endless Sky that adds a new area of content based on the original Escape Velocity games, primarily Escape Velocity: Override. 
 
@@ -6664,7 +6664,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Celestial.Strands.HighDPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Celestial.Strands.HighDPI.zip) | 52.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Celestial%20Strands%20HighDPI/) <br>
 Author: Saugia | Category: Races <br>
-[https://github.com/Saugia/celestial-strands-highdpi](https://github.com/Saugia/celestial-strands-highdpi)  <br>
+[https://github.com/Saugia/celestial-strands-highdpi](https://github.com/Saugia/celestial-strands-highdpi) (last commit 2023-06-29) <br>
 
 >High DPI for the Celestial Strands plug-in. 
 
@@ -8371,9 +8371,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 5.03 mb | 2023-11-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 5.03 mb | 2024-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2023-11-03) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-02-24) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -8391,7 +8391,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [BSRC.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/BSRC.zip) | 4.68 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/BSRC/) <br>
 Author: phenix2 | Category: Ships <br>
-[https://github.com/phenix2/BSRC](https://github.com/phenix2/BSRC)  <br>
+[https://github.com/phenix2/BSRC](https://github.com/phenix2/BSRC) (last commit 2020-01-08) <br>
 
 >A Endless Sky plugin with ships from drone class to battleship class
 
@@ -11193,7 +11193,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [Advanced.Starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Advanced.Starts.zip) | 11.72 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Advanced%20Starts/) <br>
 Author: Kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts)  <br>
+[https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts) (last commit 2021-06-03) <br>
 
 >Adds more starting options.
 >
@@ -12603,9 +12603,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 65.68 mb | 2024-02-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 65.98 mb | 2024-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-02-22) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-02-24) <br>
 
 >A mission focused plugin for Endless Sky.
 >
