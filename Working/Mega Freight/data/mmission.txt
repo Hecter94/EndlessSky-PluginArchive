@@ -1681,6 +1681,40 @@ event "mgf: marstel exclusive unlock"
 		add outfitter "MarStel Advanced Exclusive"
 		add shipyard "MarStel Advanced Exclusive"
 
+mission "MGF: MHL Hit Squad"
+	landing
+	invisible
+	repeat 5
+	source
+		near "Sol" 5
+	to offer
+		random < 15
+		or
+			"reputation: MGF: Maryhal Defense" < -1000
+			"reputation: MGF: Maryhal Logistic" < -1000
+
+	npc kill
+		to spawn
+			"armament detterence" > 40
+		government "MGF: NGK Security"
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "Maryhal Hunt Fleet"
+	
+	npc kill
+		to spawn
+			"armament detterence" > 70
+		government "MGF: NGK Security"
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "Maryhal Hunt Fleet"
+
 #===========================NGK
 #Random Todo: mission to buy alien ship from player which can accelerate development of certain on-going projects or even start a new ship development. Would also count towards shipyard unlock
 
@@ -1770,6 +1804,40 @@ event "mgf: ngk exclusive unlock"
 	planet "Yokosuka Naval Arsenal"
 		add shipyard "MJK Heavy Industries Advanced Exclusive"
 		add outfitter "MJK Heavy Industries Advanced Exclusive"
+
+mission "MGF: NGK Hit Squad"
+	landing
+	invisible
+	repeat 5
+	source
+		near "Diphda" 4
+	to offer
+		random < 20
+		or
+			"reputation: MGF: NGK Security" < -1000
+			"reputation: MGF: NGK Hauling" < -1000
+
+	npc kill
+		to spawn
+			"armament detterence" > 40
+		government "MGF: NGK Security"
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "MJK Hunt Fleet"
+	
+	npc kill
+		to spawn
+			"armament detterence" > 70
+		government "MGF: NGK Security"
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "MJK Hunt Fleet"
 
 mission `MGF: Reisen Development Trigger`
 	invisible
@@ -2094,6 +2162,31 @@ event "mgf: early yamato deployed"
 			"F-VC56 Kaga"
 			"S-FS06 Reisen (Refined I)" 90
 
+#===========================ICS
+
+mission "MGF: ICS: Shipyard Unlock"
+	landing
+	source
+		government "Republic" "Free Worlds" "Syndicate" "MGF: NGK Security" "Independent" "Neutral"
+	to offer
+		"mgf: ics escort done" >= 10
+		"reputation: MGF: ICS" >= 200
+	on offer
+		conversation
+			event "mgf: ics shipyard unlock"
+			`Soon after you landed you recieve a message from ICS. They thanks you for your recent assitance with the company and offers to sell you some of their exclusive ships in the reserve fleet. Avaliable at ICS logistic hub on Earth and Follower.`
+				decline
+
+event "mgf: ics shipyard unlock"
+	planet "Earth"
+		add shipyard "ICS Custom Intermediate"
+	planet "Follower"
+		add shipyard "ICS Custom Intermediate"
+	planet "Ada"
+		add shipyard "ICS Custom Basic"
+	planet "Geminus"
+		add shipyard "ICS Custom Intermediate"
+	
 #=============================ESPION
 
 mission "MGF: Espion co. job ad"
@@ -2273,6 +2366,50 @@ mission "MGF: Espion: Neodymium at Delta Velorum"
 		conversation
 			`The ground crew unloads 15 tons of the material and pays you <payment>. You bid farewell to the other captains and head on your own way.`
 			
+mission "MGF: Espion Hit Squad"
+	landing
+	invisible
+	repeat 5
+	source
+		near "Kornephoros" 5
+	to offer
+		random < 20
+		or
+			"reputation: MGF: Espion Mining Co." < -1000
+
+	npc kill
+		to spawn
+			"armament detterence" > 40
+		government "MGF: Espion Mining Co."
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "Large Espion Guard" 4
+	
+	npc kill
+		to spawn
+			"armament detterence" > 70
+		government "MGF: Espion Mining Co."
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "Large Espion Hunter"
+
+	npc kill
+		to spawn
+			"armament detterence" > 130
+		government "MGF: Espion Mining Co."
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "Huge Espion Hunter"
+
 mission "MGF: Espion: Titanite Station Construction Begin"
 	landing
 	invisible
@@ -2560,6 +2697,8 @@ mission "MGF: Syndicate Kept Fusillade - Hunted"
 	landing
 	invisible
 	repeat 5
+	source
+		near "Sol" 100
 	to offer
 		random < 40
 		has "ship model (all): AP-22 Fusillade"
@@ -2596,6 +2735,18 @@ mission "MGF: Syndicate Kept Fusillade - Hunted"
 			confusion 20
 			hunting
 		fleet "Large Bounty Hunters (AntiMHL)" 1
+
+	npc kill
+		to spawn
+			"armament detterence" > 75
+			"reputation: MGF: NGK Security" < -50
+		government "MGF: NGK Security"
+		system
+			distance 0 1
+		personality
+			confusion 15
+			hunting
+		fleet "MJK Hunt Fleet"
 
 
 
@@ -2809,9 +2960,25 @@ mission "MGF: Hunt Death Harmonica"
 				`	(Ignore it)`
 					decline
 				
+	to fail
+		has "event: MGF: Death Harmonica despawn"
+	on fail
+		dialog phrase "death harmonica hunted by fw"
+	on abort
+		dialog
+			`Job aborted.`
+
 	on complete
 		payment 20000000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "death harmonica hunting payment dialog"
+
+phrase "death harmonica hunting payment dialog"
+	word
+		`The government of <planet> gratefully pays you <payment> for eliminating the Death Harmonica.`
+
+phrase "death harmonica hunted by fw"
+	word
+		`There are report that the Death Harmonica you're looking for has been dealt with by the Free Worlds. The job is now cancelled.`
 
 event "MGF: Death Harmonica despawn"
 
@@ -2829,10 +2996,18 @@ mission "MGF: Hunt Death Harmonica Job"
 	
 	to complete
 		has "MGF: Hunt Death Harmonica Spawn: failed"
+
+	to fail
+		has "event: MGF: Death Harmonica despawn"
+	on fail
+		dialog phrase "death harmonica hunted by fw"
+	on abort
+		dialog
+			`Job aborted.`
 		
 	on complete
 		payment 20000000
-		dialog phrase "generic bounty hunting payment dialog"
+		dialog phrase "death harmonica hunting payment dialog"
 
 mission "MGF: Hunt Death Harmonica Spawn"
 	landing
