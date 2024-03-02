@@ -85,7 +85,7 @@ mission "Vault Weapon Ion Pulse Shotgun"
 	npc capture
 		government Bounty
 		system
-			distance 2
+			distance 1
 		personality target waiting staying timid vindictive
 		ship "Marauder Leviathan (Ion Pulse Shotgun)" "Seeds of Doom"
 		conversation
@@ -223,6 +223,52 @@ mission "Vault Weapon Thermal Repeater Rifle"
 			scene "outfit/korath rifle"
 			`The pirate captain wielded an exotic rifle... This must be the weapon that was stolen from the evidence vault on Farpoint.`
 
+mission "Vault Weapon Lasher Pistol"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
+	source
+		government Syndicate
+	to offer
+		"combat rating" > 8000
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/quicksilver"
+			`The crew of a Syndicate Quicksilver is receiving their orders before boarding their ship. Listen in?`
+			choice
+				`	(Listen as they receive their orders.)`
+				`	(Ignore them.)`
+					decline
+			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Hell Scourge, which has been known to operate in the area. The crew that captures this ship and recovers the stolen weapon can expect bonus pay with their next scheduled credit deposit."`
+			`	"Aye!" They accept their orders and board their ship. If you find the Hell Scourge before they do, you could take the stolen weapon for your own use...`
+			choice
+				`	(Search for the Hell Scourge.)`
+					accept
+				`	(Don't get involved.)`
+					decline
+	npc
+		government Republic
+		personality waiting staying surveillance uninterested
+			confusion 10
+		ship "Quicksilver" "S-21A3"
+	npc
+		government Pirate
+		personality entering plunders harvests
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+		ship "Marauder Protector (Lasher Pistol)" "Hell Scourge"
+		conversation
+			action
+				set "Vault Weapon Level 1"
+				fail "Vault Weapon Lasher Pistol"
+			scene "outfit/lasher pistol"
+			`The pirate captain wielded an exotic pistol... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+
 mission "Vault Weapon Meltdown Cannon"
 	minor
 	name "<npc>"
@@ -304,52 +350,6 @@ mission "Vault Weapon Enforcer Confrontation Gear"
 				fail "Vault Weapon Enforcer Confrontation Gear"
 			scene "outfit/enforcer confrontation gear"
 			`The pirate captain wielded an exotic weapon... This must be the weapon that was stolen from the evidence vault on Farpoint.`
-
-mission "Vault Weapon Lasher Pistol"
-	minor
-	name "<npc>"
-	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before the authorities do."
-	source
-		government Syndicate
-	to offer
-		has "Vault Weapon Level 1"
-		random < 50
-	on offer
-		conversation
-			scene "thumbnail/quicksilver"
-			`The crew of a Syndicate Quicksilver is receiving their orders before boarding their ship. Listen in?`
-			choice
-				`	(Listen as they receive their orders.)`
-				`	(Ignore them.)`
-					decline
-			`	"Whoever raided the evidence vault on Farpoint stole some very exotic weapons. We suspect one of them is being used by the captain of a pirate ship named the Hell Scourge, which has been known to operate in the area. The crew that captures this ship and recovers the stolen weapon can expect bonus pay with their next scheduled credit deposit."`
-			`	"Aye!" They accept their orders and board their ship. If you find the Hell Scourge before they do, you could take the stolen weapon for your own use...`
-			choice
-				`	(Search for the Hell Scourge.)`
-					accept
-				`	(Don't get involved.)`
-					decline
-	npc
-		government Republic
-		personality waiting staying surveillance uninterested
-			confusion 10
-		ship "Quicksilver" "S-21A3"
-	npc
-		government Pirate
-		personality entering plunders harvests
-		fleet "pirate raid"
-	npc capture
-		government Bounty
-		system
-			distance 1
-		personality target waiting staying timid vindictive
-		ship "Marauder Protector (Lasher Pistol)" "Hell Scourge"
-		conversation
-			action
-				set "Vault Weapon Level 2"
-				fail "Vault Weapon Lasher Pistol"
-			scene "outfit/lasher pistol"
-			`The pirate captain wielded an exotic pistol... This must be the weapon that was stolen from the evidence vault on Farpoint.`
 
 
 

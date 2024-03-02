@@ -234,13 +234,23 @@ mission "Blue Ridge 2"
 	source Longjump
 	to offer
 		has "license: Militia"
-		has "Blue Ridge 1: offered"
-		not "Blue Ridge 1: declined"
+		has "Blue Ridge 1: done"
 		"credits" >= 6000000
 	on offer
 		conversation
 			scene "outfit/militia license"
-			`You visit the Museum of Space Exploration to place a bid on the Blue Ridge, the ship Han Sizer used to explore the Southern Rim. To prove your eligibility, you show the receptionist your Militia license.`
+			`The Museum of Space Exploration on <origin> is hosting an auction for the Blue Ridge, the ship Han Sizer used to explore the Southern Rim. They are only accepting bids from militia members. Do you want to check it out?`
+			choice
+				`	(Visit the Museum of Space Exploration.)`
+					goto visit
+				`	(I'm not interested in this.)`
+			action
+				log `Decided to ignore the auction of the "Blue Ridge," the ship once used by Han Sizer to explore the galactic rim.`
+			`	You've decided to ignore the auction of the Blue Ridge.`
+				decline
+			label visit
+			scene "ship/hipparion"
+			`	You visit the Museum of Space Exploration to see how the auction on the Blue Ridge is progressing. To prove your eligibility, you show the receptionist your Militia license.`
 			`	"Your license checks out," she says after looking you up in the computer system. "You have perfect timing Captain <last>! The auction ends today. Once bidding hit a million credits, we started only accepting bids in increments of 100,000 credits to help limit the auction to serious bidders only. The current bid is at 5,900,000 credits. Would you like to place a bid for 6,000,000 credits?"`
 			choice
 				`	(Bid 6,000,000 credits.)`
@@ -251,8 +261,15 @@ mission "Blue Ridge 2"
 				`	(Bid 6,000,000 credits.)`
 					goto win
 				`	(Do not bid.)`
-					decline
+			action
+				log `Decided not to place any bids on the "Blue Ridge," the Hipparion once used by Han Sizer to explore the galactic rim.`
+			`	You leave the Museum of Space Exploration without placing any bid on the Blue Ridge.`
+				decline
 			label win
+			action
+				payment -6000000
+				give ship "Hipparion" "Blue Ridge"
+				log `Purchased the "Blue Ridge," the Hipparion once used by Han Sizer to explore the galactic rim. The ship was lacking a Hyperdrive. Supposedly, it was removed for security. But maybe there's more to it than that...`
 			`	"I've placed your bid into the system," she says. "Come back once the Museum closes to learn the result."`
 			choice
 				`	(Return later.)`
@@ -263,12 +280,8 @@ mission "Blue Ridge 2"
 				`	"Why isn't there a Hyperdrive?"`
 			scene "outfit/unknown"
 			`	She grins and answers, "It's for security, so thieves can't just take the ship and flee the system." It sounds like a reasonable explanation.`
-			`	But then she leans in and whispers conspiratorially, "There are rumors that Han Sizer got ahold of some alien device, like the ones the Quarg use instead of a Hyperdrive. Supposedly the government confiscated it after he died." She leans back, "But whether that's true or not, who can say?" She smiles mishieviously and you wonder if that's just a story they tell museum guests to enhance the legend of Han Sizer.`
+			`	But then she leans in and whispers conspiratorially, "There are rumors that Han Sizer got ahold of some alien device, like the ones the Quarg use instead of a Hyperdrive. Supposedly, the government confiscated it after he died." She leans back, "But whether that's true or not, who can say?" She smiles mishieviously and you wonder if that's just a story they tell museum guests to enhance the legend of Han Sizer.`
 				decline
-	on decline
-		payment -6000000
-		give ship "Hipparion" "Blue Ridge"
-		log `Purchased the "Blue Ridge," the Hipparion once used by Han Sizer to explore the galactic rim. The ship was lacking a Hyperdrive. Supposedly, it was removed for security. But maybe there's more to it than that...`
 
 
 
@@ -1366,7 +1379,7 @@ mission "Midnight Tanker Shipyard Poseidos"
 			`	It's an advertisement for a local shipyard located on an island a short distance away from where you are now.`
 			choice
 				`	"Poseidos has a shipyard?"`
-			`	You place the flier in your pocket as the man explains, "Not for long if I can't get more customers. We're a small operation, focused on new pilots and a niche market of fuel logistics suppliers. I'm hoping someone who knows his way around the nearby star systems can distribute these fliers at the spaceports on nearby planets. I have enough fliers for <stopovers>."`
+			`	You place the flier in your pocket as the man explains, "Not for long if I can't get more customers. We're a small operation, focused on new pilots and a niche market of fuel logistics suppliers. I'm hoping someone who knows their way around the nearby star systems can distribute these fliers at the spaceports on nearby planets. I have enough fliers for <stopovers>."`
 			choice
 				`	"I'll help you keep the shipyard open."`
 					goto end

@@ -19,6 +19,7 @@ mission "Sabotage: Engine Restraint (boarding)"
 	deadline 1
 	source
 		government "Remnant"
+		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -38,9 +39,79 @@ mission "Sabotage: Engine Restraint (boarding)"
 				accept
 	npc kill
 		government "Remnant"
-		personality entering heroic plunders
+		personality entering disables heroic plunders appeasing secretive
 		fleet "Large Remnant"
 
+mission "Midnight Remnant Distress"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Remnant" "Remnant (Research)"
+		not attributes "automaton"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you prepare to board the <origin>, a warning alert indicates that it is sending out a distress signal to Remnant ships in the area...`
+				launch
+	destination "Earth"
+	npc kill
+		government "Remnant"
+		personality entering disables heroic plunders appeasing secretive
+		fleet "Small Remnant"
+	npc kill
+		to spawn
+			random < 75
+		government "Remnant"
+		personality entering disables heroic plunders appeasing secretive
+		fleet "Small Remnant"
+	npc kill
+		to spawn
+			random < 50
+		government "Remnant"
+		personality entering disables heroic plunders appeasing secretive
+		fleet "Small Remnant"
+	npc kill
+		to spawn
+			random < 25
+		government "Remnant"
+		personality entering disables heroic plunders appeasing secretive
+		fleet "Small Remnant"
+
+
+
+mission "Midnight Remnant: Graveyard Surface Expedition Job"
+	job
+	repeat
+	name "Surface Expedition on <stopovers>"
+	description "Visit <stopovers> with a Research Laboratory to collect samples, then return to <destination>."
+	source
+		government "Remnant"
+	stopover
+		attributes "ka'het"
+		not attributes "station" "requires: ka'sei"
+	to offer
+		has "Remnant: Expanded Horizons Astral 2: done"
+		random < 50
+	on offer
+		require "Research Laboratory"
+		require "Graveyard Map"
+	on accept
+		conversation
+			scene "outfit/graveyard map"
+			`Something about <stopovers> indicated on the Graveyard Map has piqued the interest of your scientist. For this mission, you'll have to land on the planet rather than simply visiting the system.`
+	on stopover
+		conversation
+			scene "outfit/graveyard map"
+			`Your scientist unpacks the laboratory and collects samples from the area. A short while later, they place the samples into storage and inform you that everything is ready for departure.`
+	on complete
+		payment 500000
+		"reputation: Remnant" ++
+		dialog "When you land, a researcher quickly retrieves the samples collected from your visit to <stopovers> and hands you the logistics allotment of <payment>."
 
 
 mission "Midnight Remnant Keystone Exchange [tiny]"

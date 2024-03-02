@@ -82,6 +82,16 @@ mission "Midnight Korbschläger 1"
 			`	The man laughs. "I signed up after the war started just for the opportunity to kill Republic scum. Make sure you stay out of my way if you don't want to get caught in the crossfire. Captain Mensur signing off." The Korbschläger cuts the connection and leaves the system.`
 				decline
 
+mission "Midnight Korbschläger 1 Patch"
+	landing
+	invisible
+	to offer
+		has "Midnight Korbschläger 1: done"
+	on offer
+		clear "Midnight Korbschläger 1: offered"
+		clear "Midnight Korbschläger 1: done"
+		fail
+
 mission "Midnight Korbschläger 2"
 	landing
 	invisible
@@ -508,6 +518,61 @@ event "Oathbreaker Random"
 		add fleet "Fugitive Oathbreaker" 10000
 	system Umbral
 		add fleet "Fugitive Oathbreaker" 10000
+
+
+
+mission "Oathbreaker Pirate Ambush"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		has "Pirate Ambush: offered"
+		random < 70 - ( "oathbreaker pirate ambushed" * 65 )
+	source
+		government "Oathbreaker"
+		category "Interceptor" "Light Warship" "Transport" "Light Freighter"
+		not attributes "automaton"
+	on offer
+		conversation
+			branch ambushed
+				has "oathbreaker pirate ambushed"
+			action
+				set "oathbreaker pirate ambushed"
+			scene "outfit/unknown"
+			`You board the <origin>, but find no crew aboard. This situation seems familiar...`
+			choice
+				`	(Head for the cockpit.)`
+			`	When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. It seems the Oathbreakers have adopted common pirate tactics. The <origin> is emitting a distress signal to attract nearby pirates, and a self-destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+			label ambushed
+			`You board the <origin>, but find no crew aboard. When you reach the cockpit of the ship, you look out into space to see an escape pod floating away. The <origin> is emitting a distress signal to attract nearby pirates, and a self-destruct sequence has been activated! You run back to your ship and get ready to fight.`
+				launch
+	destination "Earth"
+	npc kill
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid"
+	npc kill
+		to spawn
+			random < 75
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid"
+	npc kill
+		to spawn
+			random < 50
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid"
+	npc kill
+		to spawn
+			random < 25
+		government "Pirate"
+		personality nemesis harvests plunders entering
+		fleet "pirate raid"
+
 
 
 mission "Oathbreaker Sabotage: Shield Suppressor"
@@ -2030,7 +2095,7 @@ mission "Nemesis: Oath Breaker"
 		ship "Cruiser (Pug)" "Midway"
 		ship "Frigate (Pug)" "Lexington"
 		ship "Gunboat (Pug)" "Iwo Jima"
-		ship "Rainmaker (Mark II)" "Pearl Harbor"
+		ship "Rainmaker (Pug)" "Pearl Harbor"
 		ship "Auxiliary (Oathbreaker)" "Gettysburg"
 
 	npc kill
@@ -2047,34 +2112,6 @@ mission "Nemesis: Oath Breaker"
 		dialog `The government of <planet> thanks you for eliminating the Oathbreaker threat and rewards you with <payment>, the last of the reward money. With their leader gone, the remaining Oathbreakers will eventually fall apart.`
 		log `Fought the main Oathbreaker fleet today. Arnold Benedict will no longer terrorize the Free Worlds. Some of his surviving followers will still need to be hunted down. I was rewarded with the last of the reward money, a meager 4,321 credits.`
 
-
-
-ship "Auxiliary" "Auxiliary (Oathbreaker)"
-	"crew" 250
-	outfits
-		"Sidewinder Missile Launcher" 2
-		"Sidewinder Missile" 90
-		"Quad Blaster Turret" 2
-		"Heavy Anti-Missile Turret" 2
-		"Fusion Reactor"
-		"LP288a Battery Pack"
-		"D94-YV Shield Generator"
-		"D67-TM Shield Generator"
-		"Water Coolant System"
-		"Large Radar Jammer"
-		"Ramscoop"
-		"X4700 Ion Thruster"
-		"X1700 Ion Thruster"
-		"X5200 Ion Steering"
-		"Scram Drive"
-		"Medical Bay"
-		"Sniper Rifle" 5
-		"Fragmentation Grenades" 45
-		"Laser Rifle" 200
-	turret "Heavy Anti-Missile Turret"
-	turret "Quad Blaster Turret"
-	turret "Quad Blaster Turret"
-	turret "Heavy Anti-Missile Turret"
 
 
 event "Oathbreaker diminish 2"

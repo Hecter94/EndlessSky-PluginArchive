@@ -715,13 +715,8 @@ mission "Midnight Scum & Villainy 1A"
 		has "main plot completed"
 		not "Midnight Scum & Villainy 1B: active"
 		not "Midnight Scum & Villainy 1B: done"
-		or
-			and
-				not "Randomize Midnight Scum & Villainy 1A"
-				random < 70
-			and
-				has "Randomize Midnight Scum & Villainy 1A"
-				random < 5
+		not "Midnight Scum & Villainy 1B: failed"
+		random < 70 - ( "Randomize Midnight Scum & Villainy 1A" * 65 )
 	on offer
 		conversation
 			`A freighter captain approaches you. Gesturing at your ship, he says, "If that's the <ship>, then you must be Captain <first> <last>. I'm organizing a convoy through the Northern passage to reach <destination> by <date>, and you're welcome to join us."`
@@ -809,19 +804,15 @@ mission "Midnight Scum & Villainy 1B"
 		has "main plot completed"
 		not "Midnight Scum & Villainy 1A: active"
 		not "Midnight Scum & Villainy 1A: done"
-		or
-			and
-				not "Randomize Midnight Scum & Villainy 1B"
-				random < 70
-			and
-				has "Randomize Midnight Scum & Villainy 1B"
-				random < 5
+		not "Midnight Scum & Villainy 1A: failed"
+		random < 70 - ( "Randomize Midnight Scum & Villainy 1B" * 65 )
 	on offer
 		conversation
 			`A transport captain approaches you. Gesturing at your ship, she says, "If that's the <ship>, then you must be Captain <first> <last>. I'm traveling through the Northern passage to reach <destination> by <date>, and would like for you to escort us."`
 			choice
 				`	"Sure, there's safety in numbers."`
 				`	"Sorry, I'm headed in a different direction."`
+					goto refuse
 			`	"My name's Lia Skystrider, captain of the Tomboy Princess. Truth be told, I wasn't certain a war hero would be willing to take on a civilian escort job. I'm glad I was wrong. See you in orbit." Lia leaves to make preparations for launch.`
 				accept
 			label refuse

@@ -27,7 +27,8 @@ mission "Sabotage: Ionic Snare (boarding)"
 	repeat
 	deadline 1
 	source
-		government "Hai (Unfettered)" "Hai (Unfettered Wanderer Tribute)" "Hai (Friendly Unfettered)" "Hai (Unfettered Civilians)" 
+		government "Hai (Unfettered)" "Hai (Unfettered Wanderer Tribute)"
+		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -57,7 +58,8 @@ mission "Sabotage: Ionic Snare (Hai) (boarding)"
 	repeat
 	deadline 1
 	source
-		government "Hai" "Hai Merchant" "Hai Merchant (Human)" 
+		government "Hai"
+		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -81,6 +83,80 @@ mission "Sabotage: Ionic Snare (Hai) (boarding)"
 		fleet "Large Hai"
 
 
+
+mission "Midnight Hai Distress"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 10
+	source
+		government "Hai" "Hai Merchant" "Hai Merchant (Human)" "Merchant"
+		not attributes "automaton"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you prepare to board the <origin>, a warning alert indicates that it is sending out a distress signal to Hai ships in the area...`
+				launch
+	destination "Earth"
+	npc kill
+		government "Hai"
+		personality entering disables opportunistic merciful
+		fleet "Hai Surveillance"
+	npc kill
+		to spawn
+			random < 75
+		government "Hai"
+		personality entering disables opportunistic merciful
+		fleet "Hai Surveillance"
+	npc kill
+		to spawn
+			random < 50
+		government "Hai"
+		personality entering disables opportunistic merciful
+		fleet "Hai Surveillance"
+	npc kill
+		to spawn
+			random < 25
+		government "Hai"
+		personality entering disables opportunistic merciful
+		fleet "Hai Surveillance"
+
+mission "Midnight Unfettered Distress"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Hai (Unfettered)" "Hai (Unfettered Wanderer Tribute)" "Hai (Friendly Unfettered)" "Hai (Unfettered Civilians)"
+		not attributes "automaton"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you prepare to board the <origin>, a warning alert indicates that it is sending out a distress signal to Unfettered ships in the area...`
+				launch
+	destination "Earth"
+	npc kill
+		government "Hai (Unfettered)"
+		personality entering disables plunders
+		fleet "Large Unfettered"
+	npc kill
+		to spawn
+			random < 66
+		government "Hai (Unfettered)"
+		personality entering disables plunders
+		fleet "Small Unfettered"
+	npc kill
+		to spawn
+			random < 33
+		government "Hai (Unfettered)"
+		personality entering disables plunders
+		fleet "Small Unfettered"
 
 
 
@@ -542,39 +618,10 @@ mission "Angry Squirrels: Countermeasures 3"
 
 
 #########################################
+#
 # Allows domination of Unfettered worlds.
+#
 #########################################
-
-
-mission "Angry Squirrels: Dominate Unfettered"
-	landing
-	invisible
-	to offer
-		has "First Contact: Unfettered: offered"
-	on offer
-		event "unfettered tribute main"
-		fail
-
-event "unfettered tribute main"
-	planet Firelode
-		tribute 2000
-			threshold 10000
-			fleet "Large Unfettered" 15
-			fleet "Small Unfettered" 5
-	planet Darkcloak
-		tribute 3500
-			threshold 10000
-			fleet "Large Unfettered" 25
-			fleet "Small Unfettered" 15
-	planet Warfeed
-		tribute 6000
-			threshold 10000
-			fleet "Large Unfettered" 10
-			fleet "Small Unfettered" 100
-
-
-
-# Allows domination of Wanderer worlds conqured by the Unfettered
 
 mission "Angry Squirrels: planet Varu Mer'ek"
 	landing
@@ -1260,4 +1307,42 @@ mission "Danger In Darkwaste Escape Epilogue"
 	on decline
 		event "add quantum bloodstones"
 		log "The authorities claim the existance of the Hai cultists is nothing more than a conspiracy theory. A Hai criminal claims that the Hai cultists are real and that they are associated with Quantum Bloodstones."
+
+
+
+
+############################################
+#
+# deprecated
+#
+############################################
+
+mission "Angry Squirrels: Dominate Unfettered"
+	landing
+	invisible
+	to offer
+		never
+#		has "First Contact: Unfettered: offered"
+	on offer
+		event "unfettered tribute main"
+		fail
+
+event "unfettered tribute main"
+	planet Firelode
+		tribute 2000
+			threshold 10000
+			fleet "Large Unfettered" 15
+			fleet "Small Unfettered" 5
+	planet Darkcloak
+		tribute 3500
+			threshold 10000
+			fleet "Large Unfettered" 25
+			fleet "Small Unfettered" 15
+	planet Warfeed
+		tribute 6000
+			threshold 10000
+			fleet "Large Unfettered" 10
+			fleet "Small Unfettered" 100
+
+
 

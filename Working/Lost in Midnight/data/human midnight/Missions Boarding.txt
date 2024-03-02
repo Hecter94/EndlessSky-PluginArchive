@@ -11,7 +11,6 @@
 
 
 
-
 mission "Engineering Room: Salvaged Supercapacitor"
 	boarding
 	repeat
@@ -467,7 +466,7 @@ mission "Midnight Assist Pirate Raider (Small)"
 		distance 0
 	on offer
 		conversation
-			`When you repair the <origin>, the captain thanks you for your assistance. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to plunder them off yourself."`
+			`When you repair the <origin>, the captain thanks you for your assistance. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to plunder them yourself."`
 				accept
 	npc save
 		government "Merchant"
@@ -537,7 +536,7 @@ mission "Midnight Assist Pirate Raider (Large)"
 		distance 0
 	on offer
 		conversation
-			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to finish them off yourself."`
+			`When you repair the <origin>, the captain thanks you for your assistance and pays you <payment>. "I've been hunting a merchant ship called the <npc> in the nearby systems. Their escort has already been destroyed. Feel free to plunder them yourself."`
 				accept
 	npc save
 		government "Merchant"
@@ -564,11 +563,11 @@ conversation "midnight boarding captives"
 	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. It might be easier to just toss them out of the airlock. What will you do?`
 	choice
 		`	(Throw them in your Brig.)`
-		`	(Send them on a spacewalk.)`
+		`	(Let them go free.)`
 			goto spacewalk
 			to display
 				not "outfit (flagship installed): Midnight's Lost Orphan"
-		`	(Send them on a spacewalk.)`
+		`	(Let them go free.)`
 			goto airlock
 			to display
 				has "outfit (flagship installed): Midnight's Lost Orphan"
@@ -577,17 +576,17 @@ conversation "midnight boarding captives"
 		accept
 	label spacewalk
 	scene "scene/scene-airlock"
-	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. You order them to put on these spacesuits and send them out the airlock...`
+	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities. You order them to put on these spacesuits and send them out the airlock...`
 		decline
 	label airlock
 	scene "scene/scene-airlock"
-	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies...`
+	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
 	choice
 		`	( ! )`
 	action
 		"captain of atrocity" ++
 	scene "outfit/midnight lost orphan"
-	`	But you hit the button to open the external airlock hatch without giving them time to put these suits on! Their screams for mercy as they are dragged out into the empty void are music to your ears...`
+	`	But you suddenly hit the button to open the external airlock hatch without giving them time to put these suits on! Their screams for mercy as they are dragged out into the empty void are music to your ears...`
 		decline
 
 mission "Midnight Boarding Captives (Core, Small)"
@@ -1250,6 +1249,115 @@ mission "Midnight Boarding Captives (South, Large)"
 		payment 120000
 		"reputation: Pirate" += 20
 		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
+
+
+
+conversation "midnight boarding sos"
+	scene "outfit/attention"
+	`As you dock with the <origin>, they send out a distress call on an open channel...`
+		accept
+
+mission "Midnight Boarding SOS (Bounty)"
+	boarding
+	invisible
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Merchant" "Independent" "Bounty Hunter"
+	on offer
+		conversation "midnight boarding sos"
+	destination Earth
+	npc
+		government "Bounty Hunter"
+		personality entering heroic frugal
+			confusion 10
+		fleet "Bounty Hunters"
+	npc
+		to spawn
+			random < 50
+		government "Bounty Hunter"
+		personality entering heroic frugal
+			confusion 10
+		fleet "Bounty Hunters"
+
+mission "Midnight Boarding SOS (Deep)"
+	boarding
+	invisible
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Deep Security"
+	on offer
+		conversation "midnight boarding sos"
+	destination Earth
+	npc
+		government "Deep Security"
+		personality entering heroic frugal
+			confusion 10
+		fleet "Small Deep Security"
+
+mission "Midnight Boarding SOS (Militia)"
+	boarding
+	invisible
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Militia" "Free Worlds"
+	on offer
+		conversation "midnight boarding sos"
+	destination Earth
+	npc
+		government "Militia"
+		personality entering heroic frugal
+			confusion 20
+		fleet "Small Militia"
+
+mission "Midnight Boarding SOS (Republic)"
+	boarding
+	invisible
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Republic" "Deep Security"
+	on offer
+		conversation "midnight boarding sos"
+	destination Earth
+	npc
+		government "Republic"
+		personality entering heroic frugal
+			confusion 10
+		fleet "Small Republic"
+
+mission "Midnight Boarding SOS (Syndicate)"
+	boarding
+	invisible
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Syndicate"
+	on offer
+		conversation "midnight boarding sos"
+	destination Earth
+	npc
+		government "Syndicate"
+		personality entering heroic frugal
+			confusion 10
+		fleet "Small Syndicate"
 
 
 

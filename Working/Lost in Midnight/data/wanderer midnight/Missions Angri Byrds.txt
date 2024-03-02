@@ -24,7 +24,8 @@ mission "Sabotage: Armament Pacifier (boarding)"
 	repeat
 	deadline 1
 	source
-		government "Wanderer" "Wanderer (Hostile)"
+		government "Wanderer"
+		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -43,27 +44,43 @@ mission "Sabotage: Armament Pacifier (boarding)"
 			`You notice a malfunction with the weapons circuits on your ship. You should probably have them checked out the next time you're at an outfitter...`
 				accept
 	npc kill
-		government "Wanderer (Hostile)"
-		personality entering heroic vindictive
-		fleet
-			names "wanderer"
-			cargo 1
-			commodities "Medical"
-			variant 3
-				"Strong Wind"
-				"Summer Leaf" 2
-			variant
-				"Summer Leaf" 5
-			variant 2
-				"Strong Wind" 2
-			variant 2
-				"Strong Wind"
-				"Summer Leaf"
-			variant
-				"Strong Wind"
-				"Summer Leaf" 3
-			variant
-				"Strong Wind" 3
+		government "Wanderer"
+		personality entering heroic opportunistic
+		fleet "Wanderer Defense"
+
+mission "Midnight Wanderer Distress"
+	invisible
+	boarding
+	repeat
+	minor
+	deadline 1
+	to offer
+		random < 5
+	source
+		government "Wanderer"
+		not attributes "automaton"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As you prepare to board the <origin>, a warning alert indicates that it is sending out a distress signal to Wanderer ships in the area...`
+				launch
+	destination "Earth"
+	npc kill
+		government "Wanderer"
+		personality entering heroic opportunistic
+		fleet "Wanderer Defense"
+	npc kill
+		to spawn
+			random < 66
+		government "Wanderer"
+		personality entering heroic opportunistic
+		fleet "Wanderer Defense"
+	npc kill
+		to spawn
+			random < 33
+		government "Wanderer"
+		personality entering heroic opportunistic
+		fleet "Wanderer Defense"
 
 
 
