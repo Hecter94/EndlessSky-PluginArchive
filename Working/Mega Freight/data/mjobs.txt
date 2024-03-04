@@ -4756,6 +4756,7 @@ mission "MGF: NGK Sketchy Passenger [0]"
 
 mission "MGF: NGK Transport executive to <planet>"
 	job
+	name "Transport executive to <planet>"
 	repeat
 	deadline
 	description "An executive needs immediate yet comfortable and well defended transportation to attend an urgent meeting on <destination> by <date>. Payment is <payment>."
@@ -4954,6 +4955,89 @@ mission "MGF: NGK Explosive Delivery News (New China)"
 			`	You contact the nearest police station and gave them the information about a sketchy delivery job you did a while ago. They thank you for the information and kept your contact for future question if required.`
 				decline
 	
+mission "MGF: NGK Intercept Illegal Convoy"
+	job
+	repeat
+	deadline
+	description "A convoy carrying illegal goods will be gathering at <waypoints>, destory it. Payment is <payment>."
+	to offer
+		random < 10
+		"combat rating" > 500
+		"armament detterence" > 5
+		"reputation: MGF: NGK Security" > 2
+	source
+		government "MGF: NGK Security" "Syndicate"
+	waypoint
+		distance 1 3
+	npc
+		government "Pirate (Disguised)"
+		system waypoint
+		personality
+			confusion 30
+			staying timid
+		fleet "MGF: Disguised Convoy"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 180000
+			"MGF: assisted NGK/MJK" += 1
+			fail
+
+fleet "MGF: Disguised Convoy"
+	government "Pirate (Disguised)"
+	names "pirates"
+	cargo 4
+	personality
+		confusion 30
+	variant 50
+		"Freighter" 2
+		"Vanguard"
+	variant 40
+		"Container Transport"
+		"Vanguard"
+	variant 40
+		"Container Transport"
+		"Protector"
+	variant 30
+		"Behemoth"
+		"Leviathan"
+	variant 30
+		"Behemoth"
+		"Freighter"
+		"Manta" 2
+	variant 30
+		"Bastion" 2
+		"Firebird"
+	variant 20
+		"Steward"
+		"Xencar (Particle)" 6
+		"Freighter" 3
+	variant 30
+		"Typ057 Lanzhou"
+		"PF-80 Intrepid"
+	variant 30
+		"Aplomado"
+		"Manta"
+	variant 45
+		"Freighter" 3
+		"Splinter" 2
+		"Typ064 Xuchang"
+
+mission "MGF: NGK Survey MHL"
+	job
+	repeat
+	deadline
+	description "A convoy carrying illegal goods will be gathering at <waypoints>, destory it. Payment is <payment>."
+	to offer
+		never #wip
+		random < 10
+		"combat rating" > 500
+		"armament detterence" > 5
+		"reputation: MGF: NGK Security" > 2
+	source
+		government "MGF: NGK Security" "Syndicate"
+	waypoint
+		distance 1 3
+
 #===================================MHL
 
 mission "MGF: MHL Scout Route (Rim Route)"

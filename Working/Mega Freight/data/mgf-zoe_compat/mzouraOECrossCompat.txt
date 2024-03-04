@@ -6,13 +6,16 @@ mission "MGF-Zoura's Outfits Expanded trigger"
 	invisible
 	repeat
 	to offer
-		never
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: cross-compat activate"
-		has "installed plugin: Zoura's Outfits Expanded"
+		has "mgf dev mode"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-Zoura's Outfits Expanded trigger: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
-		dialog
-			`MGF-ZOE Triggered`
+		# dialog
+		# 	`MGF-ZOE Triggered`
 		event "mgf-zoe: cross-compat activate"
+		"mgf-zoe compat active" = 1
 	on accept
 		fail
 
@@ -99,12 +102,15 @@ mission "MGF-ZOE fw warship trigger"
 	invisible
 	repeat
 	to offer
-		never
+		has "mgf dev mode"
 		has "event: mgf: fw converted warships"
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: fw converted warships"
-		has "installed plugin: Zoura's Outfits Expanded"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-ZOE fw warship trigger: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
 		event "mgf-zoe: fw converted warships"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" += "MGF-ZOE fw warship trigger: offered"
 	on accept
 		fail
 
@@ -188,10 +194,12 @@ mission "MGF-ZOE fw warship 2-2 trigger"
 	invisible
 	repeat
 	to offer
-		never
+		has "mgf dev mode"
 		has "event: mgf: fw converted warships 2-2"
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: fw converted warships 2-2"
-		has "installed plugin: Zoura's Outfits Expanded"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-ZOE fw warship 2-2 trigger: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
 		event "mgf-zoe: fw converted warships 2-2"
 	on accept
@@ -217,16 +225,18 @@ event "mgf-zoe: fw converted warships 2-2"
 			"Finch" 20
 			"AGT-31 Xencar" 60
 
-mission "MGF-zoe: FW plasma turret available"
+mission "MGF-ZOE: FW plasma turret available"
 	landing
 	invisible
 	repeat
 	deadline 1
 	to offer
-		never
+		has "mgf dev mode"
 		has "event: plasma turret available"
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: fw plasma turret"
-		has "installed plugin: Zoura's Outfits Expanded"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-ZOE: FW plasma turret available: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
 		event "mgf-zoe: fw plasma turret"
 
@@ -254,10 +264,12 @@ mission "MGF-ZOE: Add Navy Mark II"
 	invisible
 	deadline 1
 	to offer
-		never
+		has "mgf dev mode"
 		has "FW Diplomacy 1D: done"
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: navy mark ii"
-		has "installed plugin: Zoura's Outfits Expanded"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-ZOE: Add Navy Mark II: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
 		event "mgf-zoe: navy mark ii"
 			
@@ -351,10 +363,13 @@ mission "MGF-ZOE: Ranseur"
 	invisible
 	repeat
 	to offer
-		never
+		has "mgf dev mode"
 		has "event: mgf: ranseur development"
 		has "FW Diplomacy 1D: done"
-		"event: mgf-zoe: cross-compat deactivate" >= "event: mgf-zoe: navy mark ii"
+		"MGF-Zoura's Outfits Expanded deactivation: offered" >= "MGF-ZOE: Ranseur: offered"
+		or
+			has "installed plugin: Zoura's Outfits Expanded"
+			has "installed plugin: Zoura-s-Outfits-Expanded-main"
 	on offer
 		event "mgf-zoe: ranseur"
 	on accept
@@ -378,6 +393,21 @@ event "mgf-zoe: ranseur"
 			"Cruiser (Mark II)" 2
 			"Combat Drone" 8
 
+mission "MGF-Zoura's Outfits Expanded deactivation"
+	landing
+	invisible
+	repeat
+	to offer
+		has "mgf dev mode"
+		"mgf-zoe compat active" > 0
+		and
+			not "installed plugin: Zoura's Outfits Expanded"
+			not "installed plugin: Zoura-s-Outfits-Expanded-main"
+	on offer
+		event "mgf-zoe: cross-compat deactivate"
+		"mgf-zoe compat active" = 0
+	on accept
+		fail
 
 event "mgf-zoe: cross-compat deactivate"
 	fleet "Large Free Worlds"

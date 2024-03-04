@@ -3,12 +3,32 @@ mission "MGF Debug: Toggle Event Mode"
 	job
 	deadline 1
 	name `MGF Debug`
-	description `Accept this job if new ships don't spawn. Depart and land again then it should work. Effect is permanent.`
+	description `Accept this job if new ships don't spawn in vanilla fleets. Depart and land again then it should work. Effect is permanent. Warning: if enabled when it's working correctly could double effective spawnrate for Mega Freight ships.`
 	source
 		government "cheat" Omnis
 	on accept
 		"mgf event spawn" = 1
 	
+mission "MGF Debug: Enable Dev Mode"
+	job
+	deadline 1
+	name `MGF Enable Dev Mode`
+	description `Enable highly experimental and untested features. Chances to ruin a save really badly.`
+	source
+		government "cheat" Omnis
+	on accept
+		"mgf dev mode" = 1
+
+mission "MGF Debug: Disable Dev Mode"
+	job
+	deadline 1
+	name `MGF Disable Dev Mode`
+	description `Disable dev mode. Will not deactivate previous features and implementation added by dev mode but will prevent future ones from activating.`
+	source
+		government "cheat" Omnis
+	on accept
+		"mgf dev mode" = 0
+
 mission "MGF Debug: Trig All Pirate Advancement"
 	job
 	deadline 1
@@ -22,7 +42,6 @@ mission "MGF Debug: Trig All Pirate Advancement"
 		event "MGF: Pirate Advancement III"
 		event "MGF: Pirate Advancement II"
 		event "MGF: Pirate Advancement I"
-		fail
 
 mission `MGF: Canaveral Naval Yard Begin Debug`
 	job
@@ -1016,6 +1035,7 @@ mission "MGF: Add ships to fleets (Pirate Update)"
 	invisible
 	deadline 1
 	to offer
+		never #Shifted most of it to delayed spawn by "Pirate Advancement" events.
 		has "mgf event spawn"
 	on offer
 		event "MGF: Add Ships to Fleets (Pirate Update)"
@@ -1287,7 +1307,7 @@ mission "MGF: Add ships to fleets (Light Freighter Update)"
 		#never
 		has "mgf event spawn"
 	on offer
-		event "MGF: Add Ships to Fleets (Light Freighter Update)" #WIP
+		event "MGF: Add Ships to Fleets (Light Freighter Update)"
 
 event "MGF: Add Ships to Fleets (Light Freighter Update)"
 	fleet "Small Southern Merchants"
@@ -1381,11 +1401,12 @@ mission "MGF: Add ships to fleets (Syndicate HW Update)"
 	invisible
 	deadline 1
 	to offer
+		never #Fusillade removed from regular spawn.
 		has "mgf event spawn"
 	on offer
-		event "MGF: Add ships to fleets (Syndicate HW Update)" #WIP
+		event "MGF: Add ships to fleets (Syndicate HW Update)"
 		
-event "MGF: Add ships to fleets (Syndicate HW Update)" #WIP
+event "MGF: Add ships to fleets (Syndicate HW Update)"
 	fleet "Large Core Merchants"
 		add variant 1
 			"AP-22 Fusillade"
@@ -1401,3 +1422,1232 @@ event "MGF: Add ships to fleets (Syndicate HW Update)" #WIP
 			"Protector" 2
 			"Quicksilver (Proton)" 4
 			
+mission "MGF: Remove Syndicate HW Update Fusillade spawn"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "event: MGF: Add ships to fleets (Syndicate HW Update)"
+		has "mgf event spawn"
+	on offer
+		event "MGF: Remove Fusillade from spawn"
+
+event "MGF: Remove Fusillade from spawn"
+	fleet "Large Core Merchants"
+		add variant 1
+			"AP-22 Fusillade"
+			"FG-7 Conveyor-A" 3
+			"Barb (Proton)" 24
+			"CS-24 Garrison" #18
+			"Lance" 18
+			
+	fleet "Large Syndicate"
+		add variant 1
+			"AP-22 Fusillade"
+			"Vanguard" 2
+			"Protector" 2
+			"Quicksilver (Proton)" 4
+
+mission "MGF: Add ships to fleets (Catch up 2024-02-29)"
+	landing
+	invisible
+	deadline 1
+	to offer
+		has "mgf event spawn"
+	on offer
+		event "MGF: Add ships to fleets (Syndicate HW Update)"
+
+# I usuall don't thank my old self but leaving empty lines between each fleet variant added by each update really made this a lot easier.
+event "MGF: Add ships to fleets (Catch up 2024-02-29)"
+	fleet "Small Southern Merchants"
+		add variant 6
+			"S-PT06 Harukaze"
+		add variant 2
+			"S-PT06 Harukaze (Armed)"
+		add variant 3
+			"S-PT06 Harukaze (Quad Blaster)"
+
+		add variant 5
+			"SMC-2 Kipuka"
+			"Hawk"
+		add variant 4
+			"SMC-2 Kipuka"
+			"Sparrow"
+
+		add variant 5
+			"LMS-43 Mullsammler"
+
+		add variant 1
+			"EMS-28 Niessbarkurier"
+		add variant 4
+			"EMS-28 Niessbarkurier"
+			"Clipper"
+		add variant 2
+			"EMS-28 Niessbarkurier"
+			"Sparrow"
+		add variant 5
+			"EMS-28 Niessbarkurier"
+			"Hawk" 2
+
+		add variant 2
+			"Typ057 Lanzhou"
+			"TS-650 Herrenbal"
+		add variant 1
+			"Typ057 Lanzhou"
+			"FG-6 Startrain"
+
+		add variant 4
+			"FG-8 Shipment"
+		add variant 2
+			"FG-8 Shipment"
+			"Hawk"
+
+		add variant 8
+			"Typ115 Qiongsha"
+		add variant 4
+			"Typ115 Qiongsha"
+			"Sparrow"
+		add variant 4
+			"Typ115 Qiongsha" 2
+			"Fury"
+		add variant 1
+			"Typ115 Qiongsha" 2
+			"Typ073 Xinhui"
+			
+	fleet "Large Southern Merchants"
+		add variant 5
+			"LAC-4 Lithalsa"
+			"Bastion"
+			
+		add variant 6
+			"CDB-6K Jupiter"
+		add variant 5
+			"CDB-6K Jupiter"
+			"Bastion"
+		add variant 4
+			"CDB-6K Jupiter"
+			"Osprey"
+		add variant 2
+			"CDB-6K Jupiter"
+			"CSE-6 Steward"
+			"Lance" 6
+			
+		add variant 3
+			"CDB-12K Saturn"
+		add variant 4
+			"CDB-12K Saturn"
+			"Bastion" 2
+		add variant 2
+			"CDB-12K Saturn"
+			"CDB-6K Jupiter"
+			"Osprey" 2
+		add variant 3
+			"CDB-12K Saturn"
+			"Falcon"
+		add variant 3
+			"CDB-12K Saturn"
+			"CDB-6K Jupiter"
+			"Falcon"
+		
+		add variant 3
+			"FPd45 Clinker"
+		add variant 4
+			"FPd45 Clinker"
+			"Hawk" 2
+		add variant 3
+			"FPd45 Clinker"
+			"Headhunter (Particle)"
+			
+		add variant 4
+			"FAd36 Flint"
+		add variant 3
+			"FAd36 Flint"
+			"Argosy"
+		add variant 2
+			"FAd36 Flint"
+			"Headhunter"
+
+		add variant 5
+			"FUe02a Gebrant"
+			"Quicksilver" 2
+		add variant 5
+			"FUe02a Gebrant"
+			"Hawk" 3
+		add variant 5
+			"FUe02a Gebrant"
+			"Bastion"
+		add variant 3
+			"FUe04a Gebrant II"
+			"Splinter"
+		add variant 2
+			"FUe04a Gebrant II" 2
+			"Falcon"
+		add variant 2
+			"FUe04a Gebrant II"
+			"Argosy"
+			"Argosy (Proton)"
+			"Argosy (Missile)"
+		add variant 2
+			"FUe06a Gebrant III"
+			"Falcon"
+			"Hawk" 2
+
+		add variant 5
+			`DSSN-S90 Lynchyoseu`
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"Splinter"
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"QYG-30r Qazan"
+
+		add variant 6
+			"SV80-n Catirfel"
+		add variant 4
+			"SV80-n Catirfel"
+			"Bastion"
+		add variant 2
+			"SV80-n Catirfel" 2
+			"Falcon"
+		add variant 1
+			"SV80-n Catirfel" 3
+			"Falcon"
+
+		add variant 4
+			"LPC-2 Atletha"
+			"Bastion"
+		add variant 2
+			"LPC-2 Atletha"
+		add variant 2
+			"LPC-2 Atletha"
+			"Osprey"
+
+		add variant 1
+			"SBS-12 Ossun"
+
+		add variant 1
+			"CH-6 Carrack"
+			"Lance" 4
+			"E-FD23 Kanran"
+		add variant 2
+			"FUe06a Gebrant III"
+			"E-FD23 Kanran"
+		add variant 1
+			"CDB-6K Jupiter"
+			"E-FD23 Kanran"
+
+		add variant 2
+			"CDB-6K Jupiter"
+			"Typ057 Lanzhou"
+		add variant 1
+			"Typ057 Lanzhou"
+			"CH-6 Carrack"
+			"Lance" 4
+		add variant 1
+			"Typ057 Lanzhou (Triple J13s)"
+			"CH-6 Carrack"
+			"Lance" 4
+		add variant 1
+			"CDB-12K Saturn"
+			"Typ057 Lanzhou"
+			"Typ057 Lanzhou (G22)"
+		add variant 2
+			"FUe06a Gebrant III"
+			"Typ057 Lanzhou"
+
+		add variant 1
+			"QYG-60 Sandiq (Quad Blaster)"
+			"QYG-60 Sandiq (Feiyu Turret)"
+		add variant 2
+			"CDB-6K Jupiter"
+			"Typ073 Xinhui" 3
+		add variant 2
+			"FUe06a Gebrant III"
+			"Typ073 Xinhui" 2
+		add variant 3
+			"CDB-12K Saturn"
+			"Typ073 Xinhui" 2
+		add variant 6
+			"TS-CH0 Kratzbal"
+			"Typ073 Xinhui (Proton)" 2
+		add variant 5
+			"FUe02a Gebrant"
+			"Typ073 Xinhui (Swordfish)" 2
+		add variant 5
+			"PT-60 Gallant"
+			"Typ073 Xinhui (Swordfish 2)"
+			"Typ073 Xinhui (Dual Swordfish)"
+		add variant 3
+			"PT-60 Gallant"
+			"Typ073 Xinhui (Swordfish 2)" 2
+			
+	fleet "Small Core Merchants"
+		add variant 8
+			"S-PT06 Harukaze"
+		add variant 4
+			"S-PT06 Harukaze (Armed)"
+		add variant 4
+			"S-PT06 Harukaze (Quad Blaster)"
+
+		add variant 3
+			"SMC-2 Kipuka"
+		add variant 2
+			"SMC-2 Kipuka"
+			"Sparrow"
+
+		add variant 5
+			"LMS-43 Mullsammler"
+
+		add variant 3
+			"EMS-28 Niessbarkurier"
+		add variant 4
+			"EMS-28 Niessbarkurier"
+			"Quicksilver"
+		add variant 3
+			"TMS-64 Kernstoff"
+			"Manta"
+			"Splinter" 2
+
+		add variant 1
+			"FG-6 Startrain"
+			"Typ064 Xuchang (Anti Missile)"
+
+		add variant 4
+			"FG-8 Shipment"
+		add variant 2
+			"FG-8 Shipment"
+			"Quicksilver"
+
+		add variant 10
+			"Typ115 Qiongsha"
+		add variant 5
+			"Typ115 Qiongsha"
+			"Wasp"
+		add variant 5
+			"Typ115 Qiongsha" 2
+			"Wasp"
+		add variant 3
+			"QYG-30 Qazan" 2
+			"Typ073 Xinhui"
+			
+	fleet "Large Core Merchants"
+		add variant 5
+			"LAC-4 Lithalsa"
+			"Splinter"
+			
+		add variant 8
+			"CDB-6K Jupiter"
+		add variant 6
+			"CDB-6K Jupiter"
+			"Quicksilver" 2
+		add variant 4
+			"CDB-6K Jupiter"
+			"Splinter" 2
+		add variant 4
+			"CDB-6K Jupiter"
+			"Vanguard"
+		add variant 2
+			"CDB-6K Jupiter"
+			"CSE-6 Steward"
+			"Lance" 6
+			
+		add variant 5
+			"CDB-12K Saturn"
+		add variant 4
+			"CDB-12K Saturn"
+			"Quicksilver" 3
+		add variant 1
+			"CDB-12K Saturn" 2
+			"Vanguard"
+		add variant 3
+			"CDB-12K Saturn"
+			"CDB-6K Jupiter"
+			"CSE-6 Steward"
+			"Lance" 6
+		add variant 3
+			"CDB-12K Saturn" 2
+			"Vanguard"
+			"Splinter" 2
+		add variant 4
+			"CDB-12K Saturn"
+			"Splinter"
+		add variant 4
+			"CDB-12K Saturn"
+			"CDB-6K Jupiter"
+			"Vanguard"
+		add variant 4
+			"CDB-12K Saturn"
+			"CDB-6K Jupiter" 2
+			"Vanguard"
+			"Quicksilver" 3
+			
+		add variant 5
+			"FPd45 Clinker"
+		add variant 4
+			"FPd45 Clinker"
+			"Hawk" 2
+		add variant 3
+			"FPd45 Clinker"
+			"Headhunter (Particle)"
+			
+		add variant 5
+			"FAd36 Flint"
+		add variant 4
+			"FAd36 Flint"
+			"Splinter"
+		add variant 3
+			"FAd36 Flint"
+			"FPd45 Clinker"
+			"Quicksilver" 3
+
+		add variant 15
+			"FUe02a Gebrant"
+			"Quicksilver" 2
+		add variant 15
+			"FUe02a Gebrant" 2
+			"Splinter"
+		add variant 15
+			"FUe02a Gebrant" 3
+			"Protector"
+			"Splinter"
+		add variant 15
+			"FUe02a Gebrant" 3
+			"Vanguard"
+		add variant 10
+			"FUe04a Gebrant II"
+			"Splinter"
+		add variant 10
+			"FUe04a Gebrant II" 2
+			"Splinter" 2
+		add variant 8
+			"FUe04a Gebrant II"
+			"Manta"
+		add variant 5
+			"FUe06a Gebrant III"
+			"Vanguard"
+
+		add variant 5
+			`DSSN-S90 Lynchyoseu`
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"Splinter"
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"QYG-30r Qazan"
+			
+		add variant 1
+			`DSSN-C40 Dulumi`
+			"Manta"
+
+		add variant 8
+			"SV80-n Catirfel"
+		add variant 6
+			"SV80-n Catirfel"
+			"Splinter"
+		add variant 4
+			"SV80-n Catirfel" 2
+			"Vanguard"
+		add variant 2
+			"SV80-n Catirfel" 3
+			"Vanguard"
+
+		add variant 3
+			"LPC-2 Atletha"
+			"Splinter" 2
+
+		add variant 1
+			"SBS-12 Ossun"
+
+		add variant 2
+			"CH-6 Carrack"
+			"Lance" 4
+			"E-FD23 Kanran"
+		add variant 3
+			"FUe06a Gebrant III"
+			"E-FD23 Kanran"
+		add variant 2
+			"CDB-6K Jupiter"
+			"E-FD23 Kanran"
+
+		add variant 1
+			"CDB-6K Jupiter"
+			"Typ057 Lanzhou"
+		add variant 1
+			"CDB-6K Jupiter"
+			"Typ057 Lanzhou (Proton)"
+		add variant 3
+			"Typ057 Lanzhou"
+			"CH-6 Carrack"
+			"Lance" 4
+		add variant 2
+			"Typ057 Lanzhou (Triple J13s)"
+			"FG-5 Bluewhale-A"
+		add variant 2
+			"CDB-12K Saturn"
+			"Typ057 Lanzhou"
+			"Typ057 Lanzhou (G22)"
+		add variant 1
+			"FUe06a Gebrant III"
+			"Typ057 Lanzhou"
+		add variant 1
+			"FUe06a Gebrant III"
+			"Typ057 Lanzhou (Proton)"
+		add variant 1
+			"FUe06a Gebrant II"
+			"Typ057 Lanzhou"
+		add variant 2
+			"FUe06a Gebrant"
+			"Typ057 Lanzhou"
+		add variant 2
+			"Container Transport"
+			"Typ057 Lanzhou"
+		add variant 1
+			"FG-7 Conveyor-A"
+			"Typ057 Lanzhou"
+		add variant 1
+			"Strata (Hydrazine Filled)"
+			"Typ057 Lanzhou"
+		add variant 10
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou"
+		add variant 4
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou (Proton)"
+		add variant 4
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou (Missile)"
+		add variant 5
+			"Freighter" 2
+			"Typ057 Lanzhou (Missile)"
+		add variant 2
+			"Freighter" 3
+			"Typ057 Lanzhou (Triple J13s)"
+		add variant 3
+			"LCC-3 Sierra"
+			"Typ064 Xuchang (Missile)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 10
+			"QYG-60 Sandiq" 2
+			"Typ064 Xuchang (Proton Turret)"
+		add variant 2
+			"QYG-60 Sandiq" 2
+			"Typ064 Xuchang"
+		add variant 5
+			"Freighter" 2
+			"Typ064 Xuchang (Missile)"
+		add variant 5
+			"Freighter"
+			"Typ064 Xuchang"
+		add variant 2
+			"Freighter" 3
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 7
+			"FG-7 Conveyor"
+			"Typ057 Lanzhou (Triple J13s)"
+			"Typ064 Xuchang (Missile)" 2
+		add variant 3
+			"FG-7 Conveyor" 3
+			"Barb" 24
+			"CS-24 Garrison" #18
+			"Lance" 18
+			"Typ064 Xuchang (Anti Missile)" 2
+		add variant 3
+			"FUe06a Gebrant"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 1
+			"Strata (Sulfuric Acid Filled)"
+			"Typ064 Xuchang (Anti Missile)" 2
+		add variant 2
+			"LPC-3 Lavaka"
+			"Typ064 Xuchang (Proton Turret)"
+			"Typ064 Xuchang (Missile)"
+		add variant 8
+			"QYG-30r Qazan" 2
+			"Typ064 Xuchang (Missile)"
+
+		add variant 25
+			"QYG-60 Sandiq (Feiyu Turret)" 2
+		add variant 20
+			"QYG-60 Sandiq (Quad Blaster)"
+			"QYG-60 Sandiq (Feiyu Turret)" 2
+		add variant 10
+			"QYG-60 Sandiq (Feiyu Turret)" 2
+			"Typ073 Xinhui" 2
+		add variant 5
+			"FUe06a Gebrant III"
+			"Typ073 Xinhui (Swordfish 2)"
+		add variant 8
+			"FUe04a Gebrant II"
+			"Typ073 Xinhui (Swordfish)"
+		add variant 5
+			"Freighter"
+			"Typ073 Xinhui"
+		add variant 2
+			"CDB-12K Saturn"
+			"Typ057 Lanzhou"
+			"Typ073 Xinhui" 2
+		add variant 2
+			"CDB-12K Saturn"
+			"Typ073 Xinhui (Swordfish 2)"
+			"Typ073 Xinhui (Dual Swordfish)"
+		add variant 3
+			"FPd45 Clinker"
+			"Typ073 Xinhui (Proton)"
+		add variant 5
+			"CDB-6K Jupiter"
+			"Typ073 Xinhui (Proton)" 2
+		add variant 3
+			"FG-5 Bluewhale-A"
+			"Typ073 Xinhui (Proton)" 2
+		add variant 5
+			"FG-7 Conveyor"
+			"AGT-31 Xencar" 8
+			"Typ073 Xinhui (Swordfish 2)" 2
+			
+	fleet "Paradise Merchants"
+		add variant 2
+			"CDB-6K Jupiter"
+		add variant 2
+			"CDB-6K Jupiter"
+			"Bastion"
+			
+		add variant 2
+			"CDB-12K Saturn"
+
+		add variant 3
+			"FUe02a Gebrant"
+		add variant 2
+			"FUe04a Gebrant II"
+		add variant 1
+			"FUe06a Gebrant III"
+
+		add variant 1
+			"SRC-41C Curie"
+			"Headhunter" 2
+			"Corvette"
+
+		add variant 8
+			"S-PT06 Harukaze"
+		add variant 4
+			"S-PT06 Harukaze (Armed)"
+		add variant 4
+			"S-PT06 Harukaze (Quad Blaster)"
+
+		add variant 5
+			`DSSN-S90 Lynchyoseu`
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"Splinter"
+		add variant 3
+			`DSSN-S90 Lynchyoseu`
+			"QYG-30r Qazan"
+
+		add variant 1
+			`DSSN-C40 Dulumi`
+			"Manta"
+
+		add variant 2
+			"SV80-n Catirfel"
+		add variant 1
+			"SV80-n Catirfel"
+			"Splinter"
+
+		add variant 4
+			"FG-8 Shipment"
+
+		add variant 8
+			"Typ115 Qiongsha"
+		add variant 4
+			"Typ115 Qiongsha"
+			"Sparrow"
+		add variant 4
+			"Typ115 Qiongsha" 2
+	
+	fleet "Small Northern Merchants"
+		add variant 7
+			"S-PT06 Harukaze"
+		add variant 2
+			"S-PT06 Harukaze (Armed)"
+		add variant 3
+			"S-PT06 Harukaze (Quad Blaster)"
+
+		add variant 5
+			"LMS-43 Mullsammler"
+
+		add variant 3
+			"EMS-28 Niessbarkurier"
+		add variant 4
+			"EMS-28 Niessbarkurier"
+			"Headhunter"
+		add variant 3
+			"TMS-64 Kernstoff"
+			"Firebird"
+			"Splinter" 2
+		
+		add variant 2
+			"FG-6 Startrain-A"
+			"Typ064 Xuchang (Anti Missile)"
+
+		add variant 6
+			"FG-8 Shipment"
+		add variant 4
+			"FG-8 Shipment"
+			"Headhunter"
+
+		add variant 8
+			"Typ115 Qiongsha"
+		add variant 4
+			"Typ115 Qiongsha"
+			"Sparrow"
+		add variant 4
+			"Typ115 Qiongsha" 2
+		add variant 1
+			"FG-6 Startrain-A"
+			"Typ073 Xinhui (Swordfish)"
+			
+	fleet "Large Northern Merchants"
+		add variant 3
+			"LAC-4 Lithalsa"
+			"Firebird"
+			
+		add variant 5
+			"CDB-6K Jupiter"
+		add variant 5
+			"CDB-6K Jupiter"
+			"Firebird"
+		add variant 4
+			"CDB-6K Jupiter"
+			"Raven" 2
+		add variant 2
+			"CDB-6K Jupiter"
+			"CSE-6 Steward"
+			"Dagger" 6
+			
+		add variant 4
+			"CDB-12K Saturn"
+		add variant 4
+			"CDB-12K Saturn"
+			"Firebird"
+			
+		add variant 4
+			"FPd45 Clinker"
+		add variant 3
+			"FPd45 Clinker"
+			"Berserker" 2
+		add variant 2
+			"FPd45 Clinker"
+			"Headhunter (Particle)"
+			
+		add variant 5
+			"FAd36 Flint"
+		add variant 4
+			"FAd36 Flint"
+			"Raven" 2
+		add variant 3
+			"FAd36 Flint"
+			"FPd45 Clinker"
+			"Headhunter (Particle)" 2
+
+		add variant 20
+			"FUe02a Gebrant"
+			"Headhunter"
+		add variant 20
+			"FUe02a Gebrant" 2
+			"Firebird"
+		add variant 20
+			"FUe02a Gebrant" 3
+			"Firebird (Plasma)"
+		add variant 15
+			"FUe04a Gebrant II"
+			"Headhunter"
+			"Berserker"
+		add variant 10
+			"FUe06a Gebrant III"
+			"Firebird"
+		add variant 5
+			"FUe06a Gebrant III"
+			"Leviathan"
+
+		add variant 1
+			`DSSN-C40 Dulumi`
+			"Manta"
+
+		add variant 8
+			"SV80-n Catirfel"
+		add variant 6
+			"SV80-n Catirfel"
+			"Firebird"
+		add variant 4
+			"SV80-n Catirfel" 2
+			"Leviathan"
+		add variant 2
+			"SV80-n Catirfel" 3
+			"Leviathan"
+
+		add variant 4
+			"LPC-2 Atletha"
+			"Splinter" 2
+
+		add variant 3
+			"CH-6 Carrack"
+			"Lance" 4
+			"E-FD23 Kanran"
+		add variant 4
+			"FUe06a Gebrant III"
+			"E-FD23 Kanran"
+		add variant 5
+			"FG-5 Bluewhale-A"
+			"E-FD23 Kanran"
+
+		add variant 5
+			"CH-6 Carrack"
+			"Lance" 4
+			"Typ064 Xuchang (Anti Missile)" 2
+		add variant 3
+			"LCC-3 Sierra"
+			"Typ064 Xuchang (Missile)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 3
+			"FG-5 Bluewhale-A"
+			"Typ064 Xuchang (Missile)"
+		add variant 4
+			"FG-7 Conveyor-A"
+			"Lance" 8
+			"Typ064 Xuchang (Missile)"
+		add variant 4
+			"FG-5 Bluewhale"
+			"Typ064 Xuchang (Missile)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 7
+			"FG-7 Conveyor-A"
+			"Typ064 Xuchang (Anti Missile)"
+			"CSE-6 Steward" #6
+			"Dagger" 6
+		add variant 10
+			"QYG-30 Qazan" 3
+			"Typ057 Lanzhou"
+		add variant 3
+			"QYG-30 Qazan" 3
+			"Typ057 Lanzhou (Missile)"
+		add variant 2
+			"QYG-30 Qazan" 3
+			"Typ057 Lanzhou (G22)"
+		add variant 2
+			"QYG-30 Qazan" 3
+			"Typ057 Lanzhou (G22)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 2
+			"QYG-30 Qazan" 3
+			"Typ064 Xuchang (Anti Missile)" 2
+		add variant 2
+			"QYG-30 Qazan" 3
+			"Typ064 Xuchang (Missile)"
+		add variant 12
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou (Triple J13s)"
+			"Typ064 Xuchang (Missile)"
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou"
+			"Typ064 Xuchang (Missile)"
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou (Triple J13s)"
+			"Typ064 Xuchang (Proton Turret)"
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Typ057 Lanzhou (Triple J13s)"
+			"Typ064 Xuchang (Full Proton)"
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Typ064 Xuchang"
+		add variant 1
+			"Strata (Sulfuric Acid Half-Filled)"
+			"Typ064 Xuchang (Laser)"
+		add variant 1
+			"Strata (Hydrazine Filled)"
+			"Typ064 Xuchang (Missile)"
+		add variant 1
+			"Strata (Sulfuric Acid Half-Filled)"
+			"Typ057 Lanzhou (Triple J13s)"
+		add variant 1
+			"Strata (Hydrazine Filled)"
+			"Typ057 Lanzhou"
+		add variant 1
+			"CDB-6K Jupiter"
+			"Typ057 Lanzhou" 2
+		add variant 1
+			"CDB-6K Jupiter"
+			"Typ064 Xuchang (Missile)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 1
+			"CDB-6K Jupiter"
+			"Typ064 Xuchang (Laser)" 2
+		add variant 2
+			"CDB-12K Saturn"
+			"Typ057 Lanzhou"
+			"Typ057 Lanzhou (Triple J13s)"
+		add variant 10
+			"FUe02a Gebrant" 3
+			"Typ057 Lanzhou (Triple J13s)"
+			"Typ064 Xuchang (Missile)"
+		add variant 3
+			"FUe02a Gebrant"
+			"Typ064 Xuchang"
+		add variant 6
+			"FUe04a Gebrant II"
+			"Typ064 Xuchang (Missile)"
+		add variant 4
+			"FUe06a Gebrant III"
+			"Typ057 Lanzhou"
+
+		add variant 5
+			"CDB-6K Jupiter"
+			"Typ073 Xinhui (Swordfish)" 2
+		add variant 4
+			"FUe06a Gebrant III"
+			"Typ073 Xinhui (Proton)" 2
+		add variant 2
+			"CDB-12K Saturn"
+			"Typ057 Lanzhou"
+			"Typ073 Xinhui" 2
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Typ073 Xinhui" 2
+		add variant 3
+			"LCC-3 Sierra"
+			"Typ073 Xinhui" 2
+		add variant 4
+			"FG-5 Bluewhale"
+			"Typ073 Xinhui (Swordfish 2)" 2
+		add variant 3
+			"SV80-n Catirfel"
+			"Typ073 Xinhui (Swordfish 2)"
+			"Typ073 Xinhui (Dual Swordfish)"
+		add variant 2
+			"QYG-30 Qazan" 3
+			"Typ073 Xinhui (Swordfish 2)"
+			"Typ073 Xinhui (Dual Swordfish)"
+		add variant 4
+			"TS-CH0 Kratzbal"
+			"Typ073 Xinhui (Proton)"
+			
+	fleet "Large Human Merchants (Hai)"
+		add variant 3
+			"SV-4450 Sovereign"
+			"Lance" 32
+		add variant 6 #Say no to Xenos ships.
+			"FG-7 Conveyor" 3 
+			"Dagger" 24
+			"CS-24 Garrison" #18
+			"Lance" 18
+		add variant 6
+			"FG-5 Bluewhale"
+		add variant 5
+			"FG-5 Bluewhale" 2
+			"CSE-6 Steward" #6
+			"Dagger" 6
+			
+		add variant 6
+			"FG-5 Bluewhale-A"
+		add variant 5
+			"FG-5 Bluewhale-A" 2
+			"CSE-6 Steward" #6
+			"Dagger" 6
+			
+		add variant 3
+			"FTV-33 Acareus"
+			
+		add variant 1
+			"CK50T Stahbar"
+		add variant 1
+			"AD-012C Iaphia"
+		add variant 1
+			"AD-019A Iabayi"
+			
+		add variant 1
+			"CK80T Tlielart"
+			"Firebird" 2
+		add variant 2
+			"CK40T Treibard" 2
+			
+		add variant 3
+			"FG-7 Conveyor-A" 3 
+			"Dagger" 24
+			"CS-24 Garrison" #18
+			"Lance" 18
+		add variant 3
+			"FG-5 Bluewhale-A"
+		add variant 2
+			"FG-5 Bluewhale-A" 2
+			"CSE-6 Steward" #6
+			"Dagger" 6
+			
+		add variant 5
+			"CH-6 Carrack"
+			"Lance" 4
+		add variant 2
+			"CH-6 Carrack" 3
+			"Lance" 12
+			"Firebird" 2
+			
+		add variant 1
+			"AYS-17 Proetida"
+		
+		add variant 4
+			"CDB-6K Jupiter"
+		
+		add variant 2
+			"CDB-12K Saturn"
+		
+		add variant 4
+			"FUe02a Gebrant"
+		add variant 4
+			"FUe04a Gebrant II"
+		add variant 4
+			"FUe06a Gebrant III"
+
+		add variant 6
+			"SV80-n Catirfel"
+
+	fleet "Large Hai Merchant"
+		add variant 1
+			"AYS-17 Proetida"
+			"Shield Beetle"
+			"Lightning Bug" 3
+			
+	fleet "Large Hai Merchant (Sympathizers)"
+		add variant 1
+			"AYS-17 Proetida"
+			"Shield Beetle"
+			"Lightning Bug" 2
+
+	fleet "Human Miners"
+		add variant 3
+			"CF-50 Cart"
+		add variant 1
+			"SMM-111 Bagger"
+			"Barb (Proton)" 4
+			
+		add variant 1
+			"SMM-111 Bagger"
+			"Barb (Proton)" 2
+			"Boxwing" 2
+			
+		add variant 3
+			"Sparrow (Chainsaw)"
+			
+		add variant 2
+			"Argosy (Laser)"
+		add variant 2
+			"Clipper (Heavy Laser)"
+			
+		add variant 1
+			"HMM-190 Kotroger"
+
+	fleet "Bounty Hunters"
+		add variant 1
+			"Typ057 Lanzhou (Triple J13s)"
+		add variant 1
+			"Typ064 Xuchang (Laser)"
+			"Fury (Missile)"
+
+	fleet "Small Militia"
+		add variant 1
+			"Typ064 Xuchang (Laser)"
+
+	fleet "Large Militia"
+		add variant 1
+			"Eleonorae"
+			"Bastion"
+		add variant 1
+			"Eleonorae"
+			"Hawk" 2
+			"Sparrow" 3
+		add variant 2
+			"TS-CH0 Kratzbal"
+
+	fleet "Small Free Worlds"
+		add variant 4
+			"CY-10 (Fighter)"
+			"Finch"
+		add variant 3
+			"CY-10 (Fighter)"
+			"AGT-31 Xencar"
+
+	fleet "Large Free Worlds"
+		add variant 8
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 5
+			"CSE-6 Steward" 2 #6
+			"Finch" 12
+		add variant 5
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 4
+			"CS-24 Garrison" 2
+			"Finch" 36
+		add variant 6
+			"Bastion"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 6
+			"Bastion"
+			"Osprey"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 3
+			"Bastion (Heavy)"
+			"Osprey (Missile)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 3
+			"Bastion (Laser)"
+			"Osprey (Laser)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 4
+			"Bastion"
+			"Sparrow" 2
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 2
+			"Falcon"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"Falcon (Heavy)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"Falcon (Laser)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 2
+			"Falcon"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"Falcon (Heavy)"
+			"CS-24 Garrison (Aphelion)"
+			"Finch" 18
+		add variant 1
+			"Falcon (Laser)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 2
+			"Falcon (Heavy)"
+			"Falcon"
+			"CS-24 Garrison (Aphelion)" 2
+			"Finch" 36
+		add variant 3
+			"CS-24 Garrison" 3
+			"Finch" 54
+		add variant 1
+			"Falcon (Heavy)" 2
+			"Falcon" 2
+			"CS-24 Garrison" 5
+			"Finch" 90
+			
+		add variant 1
+			"Falcon (Heavy)" 2
+			"Falcon" 2
+			"CS-24 Garrison" 5
+			"Finch" 54
+			"AGT-31 Xencar" 36
+		add variant 4
+			"CS-24 Garrison" 2
+			"Finch" 24
+			"AGT-31 Xencar" 12
+		add variant 5
+			"Bastion"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+			
+		add variant 5
+			"Eleonorae"
+			"Falcon (Heavy)"
+		add variant 1
+			"Eleonorae"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 2
+			"Eleonorae"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 1
+			"Eleonorae"
+			"Falcon (Heavy)"
+			"CS-24 Garrison"
+			"Finch" 18
+		add variant 2
+			"Eleonorae" 2
+		add variant 3
+			"Eleonorae"
+			"Osprey (Missile)"
+			"CSE-6 Steward" #6
+			"Finch" 6
+			
+		add variant 7 #turns out they make decent frigate
+			"TS-CH0 Kratzbal (Plasma Steering)"
+		add variant 5
+			"TS-CH0 Kratzbal" 2
+
+	fleet "Large Syndicate"
+		add variant 1
+			"AP-7 Sentinel"
+			"Vanguard" 2
+			"Protector" 2
+			"Quicksilver (Proton)" 4
+			
+	fleet "Large Southern Pirates"
+		add variant 2
+			"Aplomado"
+		add variant 1
+			"Aplomado (Snatcher)"
+		add variant 1
+			"CSE-6 Steward" #6
+			"Dagger" 4
+			"Lance" 1
+		add variant 1
+			"E-FD23 Kanran (Ankulah)"
+
+		add variant 1
+			"Typ064 Xuchang (Proton Turret)"
+
+		add variant 2
+			"Modified Argosy (Snatcher)"
+		add variant 2
+			"Modified Argosy (Snatcher Alt)"
+
+	fleet "Large Northern Pirates"
+		add variant 5
+			"Aplomado"
+		add variant 3
+			"Battle Behemoth"
+		add variant 2
+			"Battle Behemoth (Proton)"
+
+		add variant 2
+			"Typ064 Xuchang (Proton Turret)" 2
+
+	fleet "Large Core Pirate"
+		add variant 6
+			"Aplomado"
+		add variant 5
+			"Battle Bulk"
+			"Sparrow" 3
+		add variant 5
+			"Battle Bulk"
+		add variant 1
+			"E-FD23 Kanran"
+
+		add variant 1
+			"Typ057 Lanzhou (Proton)"
+		add variant 2
+			"Typ064 Xuchang (Proton Turret)" 2
+
+		add variant 2
+			"Modified Argosy (Snatcher)"
