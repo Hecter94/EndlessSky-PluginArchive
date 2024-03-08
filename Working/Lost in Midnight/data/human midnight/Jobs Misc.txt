@@ -651,6 +651,41 @@ mission "Holiday: Saint Nick"
 
 
 
+mission "Stranded In Paradise: Erin Epilogue"
+	job
+	name "Passenger transport to <planet>"
+	description "Bring <fare> to <destination>. Payment is <payment>."
+	passengers 1
+	to offer
+		random < 70
+		has "Stranded In Paradise 2: offered"
+		has "free worlds plot completed"
+	source
+		attributes "rim" "south"
+		not government "Pirate"
+	destination "Winter"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on accept
+		conversation
+			`This client looks somewhat familiar, but you're not sure where you've seen her before. After studying your face for a moment she asks,"Are you Captain <last>?"`
+			choice
+				`	"That's me. But have we met before?"`
+			`	"I'm Erin. Erin Burnbeck! I'm pretty sure you're the same captain that helped my family get back home after the war started. Those were scary times..."`
+			`	You remember transporting the Burnbecks back during those early days of the war. Shirley and Darren were worried for their family back then. But seeing Erin all grown up now is a reminder that a lot has happened since then.`
+			choice
+				`	"So you're headed to <destination>?"`
+			`	"Yup!" She beams with pride, "I got a teaching job at the Conservatory there." Ijs and Katya set up that institution.`
+			choice
+				`	"Congratulations! I know some of the people in charge there. I'm sure you'll fare well."`
+			`	"I sure hope so!" Erin brings her luggage aboard and you show her to her bunk.`
+				accept
+	on complete
+		payment
+		payment 500
+		dialog "Erin pays you <payment> after you arrive at <planet>. She says farewell and you wish her luck with her new job at the Conservatory."
+
+
 
 ##########################
 # Jobs that repeat
@@ -2471,6 +2506,50 @@ mission "Navy: Captured Ship"
 	on complete
 		payment 200000
 		dialog `The Navy administrators reward you with <payment> for stopping the <npc>.`
+
+
+
+mission "Quicksilver Mixup (Midnight Job) [1]"
+	job
+	repeat
+	deadline 20
+	name "Misposted Mail Delivery"
+	description "Deliver <tons> of misposted mail from <origin> to <planet> and then come back by <date> with the return shipment. You will be paid <payment> after you return from <planet>."
+	source "Silver"
+	stopover "Quicksilver"
+	cargo "misposted mail" 25 40
+	to offer
+		has "Quicksilver Mixup 3: done"
+		not "Quicksilver Mixup (Midnight Job) [2]: active"
+		random < "day"
+	on stopovers
+		dialog `You contact the spaceport authorities and they direct you to the respective landing pad, where the post office staff is already waiting. They transfer the cargo and you prepare to head back to <origin>.`
+	on visit
+		dialog `You have reached <planet>, but your escort carrying the misposted mail has not arrived. Better depart and wait for your escorts to arrive in this star system.`
+	on complete
+		payment 100000
+		dialog `The postmaster's office thanks you for handling the misposted mail before handing you the credit chip for payment.`
+
+mission "Quicksilver Mixup (Midnight Job) [2]"
+	job
+	repeat
+	deadline 20
+	name "Misposted Mail Delivery"
+	description "Deliver <tons> of misposted mail from <origin> to <planet> and then come back by <date> with the return shipment. You will be paid <payment> after you return from <planet>."
+	source "Quicksilver"
+	stopover "Silver"
+	cargo "misposted mail" 25 40
+	to offer
+		has "Quicksilver Mixup 3: done"
+		not "Quicksilver Mixup (Midnight Job) [1]: active"
+		random < ( 31 - "day" )
+	on stopovers
+		dialog `You contact the spaceport authorities and they direct you to the respective landing pad, where the post office staff is already waiting. They transfer the cargo and you prepare to head back to <origin>.`
+	on visit
+		dialog `You have reached <planet>, but your escort carrying the misposted mail has not arrived. Better depart and wait for your escorts to arrive in this star system.`
+	on complete
+		payment 100000
+		dialog `The postmaster's office thanks you for handling the misposted mail before handing you the credit chip for payment.`
 
 
 

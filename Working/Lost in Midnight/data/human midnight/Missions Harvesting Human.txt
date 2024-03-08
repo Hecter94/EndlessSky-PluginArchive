@@ -298,7 +298,128 @@ phrase "angry treasure pirates"
 		`the treasure of `
 	phrase
 		"pirate"
-		
+
+
+
+mission "Harvesting: Mysterious Treasure Greenrock"
+	minor
+	invisible
+	deadline 3
+	source "Greenrock"
+	to offer
+		has "Saving Artifacts 2: done"
+		random < 50
+	on offer
+		require "Mysterious Treasure"
+		conversation
+			scene "outfit/treasure"
+			`You notice the shop "Fine Art and Cultural Treasures" is open. Do you want to have them appraise your Mysterious Treasure?`
+			choice
+				`	(Enter the shop.)`
+				`	(Not now.)`
+					defer
+			`	The clerk welcomes you back. After looking over the Mysterious Treasure, he says it's a rare Earth Artifact and offers to buy it outright for 200,000 credits.`
+			choice
+				`	(Sell the Earth Artifact.)`
+				`	(Keep the Earth Artifact.)`
+					goto keep
+			action
+				outfit "Mysterious Treasure" -1
+				payment 200000
+			`	The clerk grins and hands over 200,000 credits in exchange for the Earth Artifact. "Thanks. One of the local warlords has been looking for this. If any of his people spotted you walking around the spaceport with it, you would have attracted unwanted attention..."`
+				decline
+			label keep
+			action
+				outfit "Mysterious Treasure" -1
+				outfit "Earth Artifact" 1
+			`	You decide to keep the Earth Artifact. A smirk begins to crawl across his face, and he leans in. "Take care. One of the local warlords has been looking for this. If any of his people spots you walking around the spaceport with it, you might attract unwanted attention..."`
+				accept
+	on enter
+		dialog `One of the pirate ships hails you. "You have something I want. Prepare to be boarded!" This must be the warlord the Fine Art and Cultural Treasures clerk warned you about.`
+	npc
+		government "Pirate"
+		personality target waiting heroic plunders
+			confusion 20
+		fleet "Small Southern Pirates" 4
+	npc
+		to spawn
+			random < 50
+		government "Pirate"
+		personality target waiting heroic plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc
+		to spawn
+			random < 25
+		government "Pirate"
+		personality target waiting heroic plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc kill
+		government "Pirate"
+		personality target waiting heroic plunders
+			confusion 20
+		fleet
+			names "pirate"
+			cargo 1
+			variant
+				"Falcon"
+			variant
+				"Falcon (Flamethrower)"
+			variant
+				"Falcon (Inferno Rockets)"
+			variant
+				"Falcon (Isochronal)"
+			variant
+				"Falcon (Quad Mod Blaster)"
+			variant
+				"Falcon (Twin Torpedo Pod)"
+			variant
+				"Falcon (Heavy)"
+			variant
+				"Falcon (Prisoner Transport)"
+			variant
+				"Falcon (Laser)"
+			variant
+				"Falcon (Plasma)"
+			variant
+				"Falcon (Laser Chaser)"
+			variant
+				"Falcon (Javelin)"
+			variant
+				"Osprey"
+			variant
+				"Osprey (Flamethrower)"
+			variant
+				"Osprey (Inferno Rockets)"
+			variant
+				"Osprey (Isochronal)"
+			variant
+				"Osprey (Twin Torpedo Pod)"
+			variant
+				"Osprey (Laser)"
+			variant
+				"Osprey (Missile)"
+			variant
+				"Osprey (Particle Anti-Missile)"
+			variant
+				"Bastion"
+			variant
+				"Bastion (Flamethrower)"
+			variant
+				"Bastion (Inferno Rockets)"
+			variant
+				"Bastion (Quad Mod Blaster)"
+			variant
+				"Bastion (Heavy)"
+			variant
+				"Bastion (Laser)"
+			variant
+				"Bastion (Gatling)"
+		on kill
+			fail
+
+
 
 mission "Harvesting: Mysterious Treasure Researcher"
 	invisible

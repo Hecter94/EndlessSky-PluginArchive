@@ -560,14 +560,14 @@ mission "Midnight Assist Pirate Raider (Large)"
 
 
 conversation "midnight boarding captives"
-	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. It might be easier to just toss them out of the airlock. What will you do?`
+	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. If the authorities catch you, slave trafficking is considered an atrocity punishable by death. It might be easier to just toss them out of the airlock. What will you do?`
 	choice
 		`	(Throw them in your Brig.)`
-		`	(Let them go free.)`
+		`	(Send them on a spacewalk.)`
 			goto spacewalk
 			to display
 				not "outfit (flagship installed): Midnight's Lost Orphan"
-		`	(Let them go free.)`
+		`	(Send them on a spacewalk.)`
 			goto airlock
 			to display
 				has "outfit (flagship installed): Midnight's Lost Orphan"
@@ -576,13 +576,16 @@ conversation "midnight boarding captives"
 		accept
 	label spacewalk
 	scene "scene/scene-airlock"
-	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities. You order them to put on these spacesuits and send them out the airlock...`
+	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
+	choice
+		`	(Set them free.)`
+	`	You order them to put on these spacesuits and send them out the airlock...`
 		decline
 	label airlock
 	scene "scene/scene-airlock"
 	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
 	choice
-		`	( ! )`
+		`	(Set them free.)`
 	action
 		"captain of atrocity" ++
 	scene "outfit/midnight lost orphan"

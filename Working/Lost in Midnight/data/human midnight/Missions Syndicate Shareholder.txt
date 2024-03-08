@@ -208,6 +208,7 @@ mission "Titania: Syndicate Republic Bribery"
 		event "titania station construction c" 270
 		event "titania station construction d" 360
 		event "titania: syndicate bonds matured" 3600
+		set "titania docking bay patched"
 		"reputation: Syndicate" += 10
 		payment 150000
 		dialog `During the trip, the Syndicate agent doesn't speak much other than to express confidence in the future financial performance of the Syndicate. As soon as you land, he hands you a payment of <payment> and promises to tell his superiors of your assistance before heading towards Parliament.`
@@ -330,6 +331,13 @@ event "titania station construction d"
 		music ambient/machinery
 		description `Titania Station is a deuterium refinery owned and operated by the Syndicate, and aside from a few docking bays for visiting ships to use in an emergency, the rest of the station is sealed off to non-employees. The structure was hastily constructed using a modified blueprint of Oberon Station. Other than the fresh coat of paint, this station is almost indistinguishable from its predecessor.`
 		description `	The Syndicate has spent decades trying to persuade the Republic Parliament to cede control of the Eteron system and its lucrative mining and harvesting rights. Economic hardships endured by the Republic during the war is certain to have played a role in convincing more than a few Councilors to welcome these lobbying efforts.`
+		port "Docking Bay"
+			description `A computer terminal at the docking bay allows communications with the station crew. Anyone using this system must watch an advertisement for Syndicate products and services before proceeding.`
+			recharges
+				shields
+				energy
+			services
+				"job board"
 		"required reputation" 10
 		bribe 0.03
 		security 0.4
@@ -339,6 +347,27 @@ event "titania station construction d"
 
 event "titania: syndicate bonds matured"
 
+
+
+mission "Titania Station Docking Bay Patch"
+	landing
+	invisible
+	to offer
+		has "event: titania station construction d"
+		not "titania docking bay patched"
+	on offer
+		event "titania station docking bay patch"
+		fail
+
+event "titania station docking bay patch"
+	planet "Titania Station"
+		add port "Docking Bay"
+			description `A computer terminal at the docking bay allows communications with the station crew. Anyone using this system must watch an advertisement for Syndicate products and services before proceeding.`
+			recharges
+				shields
+				energy
+			services
+				"job board"
 
 
 mission "Titania: Syndicate Bond Mature"

@@ -2630,3 +2630,61 @@ ship "Protector" "Protector Test-PTATS"
 
 
 
+mission "Southern Fiance (Parker, Perlman, Hoakes) 1"
+	landing
+	invisible
+	to offer
+		has "Southern Fiance 1: offered"
+		not "event: carl elected governor"
+	on offer
+		set "Southern Fiance 4: offered"
+		set "Southern Fiance 5: offered"
+		set "Southern Fiance 6: offered"
+		fail
+
+mission "Southern Fiance (Parker, Perlman, Hoakes) 2"
+	landing
+	invisible
+	source
+		government "Free Worlds"
+	to offer
+		has "Southern Fiance 3: declined"
+		has "Southern Fiance (Parker, Perlman, Hoakes) 1: failed"
+	on offer
+		conversation
+			`You receive a message: "Greetings <first> <last>. Our lawfirm, Parker, Perlman, and Hoakes, is currently preparing a class-action lawsuit against Carl Ardwright-Chamberlain for abuses of his governmental authority." You recall that Carl is the husband of Tom, the man you brought south from the Core. "Can you confirm that the spaceport controller diverted your ship to an alternate landing pad and detained you against your will during your last visit to Cornucopia? If so, you may be eligible to receive damages if the lawsuit is successful." The message confinues with additional legal details.`
+			choice
+				`	(Confirm the accusation against Carl.)`
+				`	(Deny the accusation against Carl.)`
+					goto deny
+			action
+				set "joined Parker, Perlman, Hoakes lawsuit"
+				log "Minor People" "Parker, Perlman, and Hoakes" `A southern lawfirm that filed a class action lawsuit against Carl Ardwright-Chamberlain for abusing his government power to illegally divert and detain pilots at Cornucopia's spaceport.`
+			`	You do recall being redirected to an alternate landing pad where Carl and Tom were waiting for you. Although they invited you to dinner, you felt refusing their invitation was not an option you could take. After submitting this testimony, you join the plaintiffs. These are other clients working with the lawfirm. They claim that Carl has abused his government position to delay and detain pilots at the spaceport. The record of your testimonial message is all that they require. No additonal action on your part is needed. Expect a message from Parker, Perlman, and Hoakes once the court proceedings have concluded.`
+				decline
+			label deny
+			action
+				clear "Southern Fiance 4: offered"
+				clear "Southern Fiance 5: offered"
+				clear "Southern Fiance 6: offered"
+			`	You do recall being redirected to an alternate landing pad where Carl and Tom were waiting, however you deny being detained against your will. If they were hoping for someone to testify against Carl, they'll have to find a different client.`
+				decline
+
+mission "Southern Fiance (Parker, Perlman, Hoakes) 3"
+	landing
+	invisible
+	source
+		government "Free Worlds"
+	to offer
+		has "joined Parker, Perlman, Hoakes lawsuit"
+		has "event: carl elected governor"
+	on offer
+		clear "joined Parker, Perlman, Hoakes lawsuit"
+		payment 20000
+		log "Minor People" "Tom and Carl" `Carl Ardwright-Chamberlain was forced out of his bid for the governorship of Cornucopia due to his involvement with a scandal in which Syndicate shipments arranged by his husband, Tom Ardwright-Chamberlain, were being given preferential priority at the spaceport by detaining other pilots.`
+		conversation
+			`In the spaceport, you notice a news bulletin announcing Carl Ardwright-Chamberlain dropping out of the governor's race on Cornucopia. Apparently, he was involved with a scandal in which Syndicate shipments arranged by his husband, Tom Ardwright-Chamberlain, were being given preferential priority at the spaceport by detaining other pilots.`
+			`	Shortly afterward, you receive a message: "Greetings <first> <last>. Our lawfirm, Parker, Perlman, and Hoakes, has successfully concluded our lawsuit against Carl Ardwright-Chamberlain. As one of the plaintiffs, you are entitled to a portion of the financial judgement. After subtracting legal fees, your share has been calculated at <payment>, which has been deposited to your account. Parker, Perlman, and Hoakes thanks you for your participation.`
+				decline
+
+
