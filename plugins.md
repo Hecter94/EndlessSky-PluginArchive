@@ -6523,9 +6523,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-03-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-03-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
 Author: Spectre907 | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-03-06) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-03-10) <br>
 
 >Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
@@ -6536,19 +6536,15 @@ Author: Spectre907 | Category: Races <br>
 
 An Endless Sky plugin that adds a variety of things to endless sky, including: 
 
-- Real life fighters
+- Real life fighters and bombers
   
-- Real life bombers
-  
-- Ace combat super planes
-  
-- Xenonauts fighters
+- Fighters from some other games
   
 - A bunch of new H2H weapons based on real life weapons
   
 - Advanced outfits
   
-- Specialized weapons
+- Powerful and unique weapons
   
 - Superweapons
   
@@ -6558,7 +6554,7 @@ An Endless Sky plugin that adds a variety of things to endless sky, including:
   
 - ETC
 
-To get access to some of the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps helping them out by doing some jobs and mission is a good idea. You can also just have a high combat rating or finish the main campaign (although you should probably just visit the mentioned planets).
+To get access to the content visit Earth, Valhalla, Hephaestus or Bourne. Perhaps helping them out by doing some jobs and missions is a good idea. You could also just have a high combat rating or finish the main campaign (although i reccomend just visiting the previously planets first for more content).
 
 There are also some bonus content if you have the lost in midnight, mega freight, czartraks ships, amphibious ships, altera or navycampaign (by kestrel1110) plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
@@ -12255,6 +12251,86 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### gegno.pirates
+<img src='Working/gegno.pirates/icon.png' height='100'></img><br>
+
+
+[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.14 kb | 2024-03-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-09) <br>
+
+>Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### gegno.pirates
+<br>
+<br>
+Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear.<br>
+<br>
+The new government "Gegno Pirates" inhabit the new System "Zaron"(between Huud, Vesvii and Cotpoxi). The surrounding systems, up to 3 jumps away, have new pirate fleets.<br>
+Killing pirates and assisting Gegno/Scin/Vi gives reputation now. The needed reputation to land on the Gegno planets got changed to higher values. Killing like 80 Gegno pirates should allow you to land on all Gegno planets and use their shipyards and outfitters.<br>
+Boarding Gegno Pirates gives you a 5% chance to obtain one of the 8 Gegno licenses.<br> 
+After gaining full reputation for all planets and obtaining all Gegno licenses you get a mission to a new system with all outfitters/shipyards centralized.<br>
+<br>
+Warning: As soon as new Gegno story content is added to the base game, it is highly advised to remove this plugin and/or do a new playthrough. If not, the new story missions, which are probably based on reputation, won't appear in the planned order. If you want to keep your save you have to remove this plugin and edit your savegame. To do so ... open your savegame and find the lines with the different Gegno reputations looking like the following lines and change the values to 0.	<br>
+<br>
+ Gegno 5544.86<br>
+ "Gegno Pirates" -4871.9<br>
+ "Gegno Scin" 517.5<br>
+ "Gegno Scin (Neutral)" 517.5<br>
+ "Gegno Vi" 517.5<br>
+ "Gegno Vi (Duelist A)" 0<br>
+ "Gegno Vi (Duelist B)" 0<br>
+ "Gegno Vi (Neutral)" 517.5<br>
+<br>
+then find the position where the licenses are saved, looking like this:<br>
+<br>
+licenses<br>
+ City-Ship<br>
+ Coalition<br>
+ "Gegno Civilian"<br>
+ "Gegno Driller"<br>
+ Heliarch<br>
+ ...<br>
+<br>
+Remove the 8 lines containing: "Gegno Civilian" "Gegno Driller"	 "Scin Adjutant" "Scin Architect 	"Scin Hoplologist" "Vi Centurion" "Vi Evocati" 	"Vi Lord". Save it and then you are ready to start the new Gegno storylines as planned.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-03-09<br>
+adjustments and fixes<br>
+compatibility fix in missions<br>
+<br>
+2024-03-08<br>
+adjustments and fixes<br>
+added plugin removal guide to the readme<br>
+added several missions<br>
+added new planet with all outfits/ships for easier browsing<br>
+<br>
+2024-03-07<br>
+adjustments and fixes<br>
+added different license pngs<br>
+added missing outfits and ships<br>
+<br>
+2024-03-05<br>
+initial release<br>
+
+
+
+
+
+</blockquote>
+</details>
+
+Status: made for 0.10.6 <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Inheritance
 
 
@@ -12959,6 +13035,44 @@ I want to keep tier II and tier III story lines lined up with the main story but
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### navy.licenses
+<img src='Working/navy.licenses/icon.png' height='100'></img><br>
+
+
+[navy.licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/navy.licenses.zip) | 18.83 kb | 2024-03-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/navy.licenses/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-17) <br>
+
+>Adds a mission on Stormhold(Alcyone system) which leads you to Geminus(Castor system) to buy the four Navy licenses. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### navy.licenses
+<br>
+<br>
+Adds a mission on Stormhold(Alcyone system) which leads you to Geminus(Castor system) to buy the four Navy licenses.<br>
+<br>
+The mission can get started with 2,5 million credits cash available. You have to pay 50.000 credits for the contact and 2 million for the four licenses.<br>
+If you reject the mission, you can restart it on other visits.<br>
+You get the following licenses : Navy license, Navy Auxiliary license, Navy Cruiser license, Navy Carrier license.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-02-17<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: made for 0.10.6 <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -14819,7 +14933,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>32 plugins in this category.<p>
+<p>34 plugins in this category.<p>
 
 <details>
 
