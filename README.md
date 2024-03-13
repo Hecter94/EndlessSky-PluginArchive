@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-03-13 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2024-03-13 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2024-03-13 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-03-12 | new Plugin 'too.many.asteroids' by zuckung | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
 2024-03-12 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2024-03-11 | updated Plugin 'bunrodea.missions' by zuckung | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
@@ -17,9 +20,6 @@
 2024-03-08 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-03-08 | updated Plugin 'Logbook Help' by MidnightPlugins | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2024-03-06 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-03-05 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-03-04 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2024-03-03 | updated Plugin 'sensor' by orbitalsupershell | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

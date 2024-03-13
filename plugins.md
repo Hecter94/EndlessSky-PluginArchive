@@ -1738,42 +1738,46 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Gatling Ammo Fix
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
+![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-[h1]Installing[/h1]
+
+## Installing
+
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
+Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
-
-[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
+```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
 
 
-[h1]Author[/h1]
+It **won't** work if the directory structure will be anything like:
 
-[list][*][b]Cat Lady[/b][/list]
-
-
-[h1]License[/h1]
-
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
 
 
+## Author
 
-[h1]Acknowledgments[/h1]
+* **Cat Lady**
+
+
+## License
+
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
+
 </blockquote>
 </details>
 
@@ -3133,10 +3137,16 @@ Author: Cat-Lady | Category: Graphics <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Swizzle Player
+
+This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+
+![Swizzle Player Image](/swizzle-player/icon.png?raw=true "Swizzle Player Image")
 
 
-[h1]Installing[/h1]
+## Installing
 
 Check:
 https://github.com/Cat-Lady/swizzle-player/releases
@@ -3144,35 +3154,33 @@ https://github.com/Cat-Lady/swizzle-player/releases
 ...for latest, pre-packaged version.
 
 
-[b]1.[/b] Unpack [i]swizzle-player[/i] to your ES plugins folder. Be sure that you have single [i]swizzle-player[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
+**1.** Unpack ``swizzle-player`` to your ES plugins folder. Be sure that you have single ``swizzle-player`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[code](...)/plugins/swizzle-player/(.../data/, /images/ and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/swizzle-player/swizzle-player/(...)[/code]
+```(...)/plugins/swizzle-player/(.../data/ and other stuff)```
 
 
+It **won't** work if the directory structure will be anything like:
 
-[h1]Author[/h1]
-
-[list][*][b]Cat Lady[/b][/list]
-
+```(...)/plugins/swizzle-player/swizzle-player/(...)```
 
 
-[h1]License[/h1]
+## Author
 
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+* **Cat Lady**
 
 
+## License
 
-[h1]Acknowledgments[/h1]
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game
 
-[url=https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot]James the Bot[/url] from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
+![James the Bot](https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot) from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
 
 Iggy Pop for singing "She want's to be your James Bot" (and don't even try to convince me that he meant something else).
+
 </blockquote>
 </details>
 
@@ -12687,9 +12695,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 66.32 mb | 2024-03-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 66.48 mb | 2024-03-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-03-08) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-03-13) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -12777,9 +12785,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Expansion/icon.png' height='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.16 mb | 2024-03-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.42 mb | 2024-03-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-03-02) <br>
+[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-03-13) <br>
 
 >Plugin using ships, outfits, or other resources from plugins by other creators or derivatives of their original creations. Some content may require the Lost in Midnight or Midnight Scrapyard plugins to unlock. 
 >
@@ -12830,9 +12838,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Scrapyard/icon.png' height='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.31 mb | 2024-03-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.35 mb | 2024-03-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-03-08) <br>
+[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-03-13) <br>
 
 >A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
 >
@@ -13704,25 +13712,17 @@ Author: Amazinite | Category: Story <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># Syndicate Storyline for Endless Sky, v0.4
+<blockquote># ES-Syndicate-Campaign
+The development repository for the Syndicate campaign of Endless Sky. Spoilers ahead.
 
-This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
+### What's this exta stuff folder?
+I'm keeping my workflow public for anyone to check out and comment on. This folder contains all the things I'm using to help create the campaign, from Blender files of any new models to text files containing any work for the development process. Given the nature of my workflow, this will be a mix of new and old stuff, some (maybe even most) of which that may not make any sense whatsoever and may never be used. It can also get rather unorganized. Below is a description of the text files in the extra stuff folder, but just take everything you see in these files with a grain of salt as none of it is set in stone.
 
-## Current status
-
-Main story and most side-things, complete. This will take you up to the end of the civil war, all completed and ready to continue the game as if you'd completed the main-game story.
-
-Remaining: logs on all the events; a few more epilogue conversations; and various hopefully-minor issues, both discovered and undiscovered.
-
-## How to play/install
-
-First play Endless Sky (https://github.com/endless-sky/endless-sky/). I recommend playing the main version first, up to the end of the main Free Worlds storyline. This alternate-start's intro is not as helpful for beginners, and maybe the story is more fun if you already know what's happening on the Free Worlds side... or, maybe it's fun the other way around! Good point! Well, up to you then.
-
-To play, download this repository (or a release folder) into your plugins directory for Endless Sky. You probably already know how. If not, let me know, and I'll get round to updating this readme with the instructions.
-
-You need Endless Sky minimum version 0.9.15, which at time of writing is the continuous build in the main Endless Sky project.
-
-- Changes to the Korath have impacted this plugin. The current version tracks the current git repository for endless sky. (2022-09-04)
+* everything syndicate.txt: a file containing every reference to the Syndicate in the game.
+* syndicate info.txt: a distilled, summarized version of the above file.
+* character sheet.txt: a file containing info on all the characters new and old that are part of the Syndicate.
+* syndicate notes.txt: a file of random notes that I've taken during the development of the campaign.
+* rough storyboard.txt: a file that contains a VERY rough (WIP) storyboard of how things will go. More polished storyboards will be located in the data folder once I'm actually about to start writing that part.
 
 </blockquote>
 </details>
@@ -15184,9 +15184,27 @@ Author: virmitio | Category: N/A <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
+<blockquote>## Intent:
 
-At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
+Performing the below actions should result in a working directory `<work_dir>` which will permit the map editor and game to both correctly load the plugin while still keeping the plugin repository safely seperated from the root game data.
+
+### Assumptions:
+   - The repo was simply cloned to `%appdata%\endless-sky\plugins\ES_ExpandedTerritory`
+   - that steam is installed to the default location `%ProgramFiles(x86)%\Steam`
+   - that Endless Sky is installed to the default install location set by steam (`<steam_dir>\steamapps\common\...`)
+
+### Commands:
+```
+cd <work_dir>
+mklink /J data "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\data"
+mklink /J images "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
+mklink /J repo "%appdata%\endless-sky\plugins\ES_ExpandedTerritory"
+
+cd "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
+mklink es_et "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\images\es_et"
+```
+
+When opening in the map editor, please open files by way of the `<work_dir>\data` directory tree.
 
 </blockquote>
 </details>
