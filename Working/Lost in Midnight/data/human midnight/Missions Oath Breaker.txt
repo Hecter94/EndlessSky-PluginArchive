@@ -73,24 +73,14 @@ mission "Midnight Korbschläger 1"
 				`	"You aren't like the other militia I've worked with."`
 					goto ccor
 			action
-				fail
+				fail "Midnight Korbschläger 1"
 			`	The man doesn't hesitate to reply. "We are at war. I think you'll find that Republic scum won't be so merciful when you find yourself at their mercy. Captain Mensur signing off." The Korbschläger cuts the connection and leaves the system.`
 				decline
 			label ccor
 			action
-				fail
+				fail "Midnight Korbschläger 1"
 			`	The man laughs. "I signed up after the war started just for the opportunity to kill Republic scum. Make sure you stay out of my way if you don't want to get caught in the crossfire. Captain Mensur signing off." The Korbschläger cuts the connection and leaves the system.`
 				decline
-
-mission "Midnight Korbschläger 1 Patch"
-	landing
-	invisible
-	to offer
-		has "Midnight Korbschläger 1: done"
-	on offer
-		clear "Midnight Korbschläger 1: offered"
-		clear "Midnight Korbschläger 1: done"
-		fail
 
 mission "Midnight Korbschläger 2"
 	landing
@@ -101,7 +91,9 @@ mission "Midnight Korbschläger 2"
 		not attributes uninhabited
 	to offer
 		has "FW Southern Battle 2: done"
-		has "Midnight Korbschläger 1: failed"
+		or
+			has "Midnight Korbschläger 1: done"
+			has "Midnight Korbschläger 1: failed"
 		"reputation: Republic" < 0
 	on enter Rastaban
 		log `The anarchists of the Outer Rim have a hatred for the Republic that started long before the formation of the Free Worlds. It seems some of them might have joined the Militia.`
@@ -2283,3 +2275,21 @@ mission "Oathbreaker Legacy"
 		conversation
 			`When you board the pirate ship, you notice a few of their crew members are wearing old tattered Navy uniforms. Even though Benedict was defeated and their organization fell apart, there are still former Oathbreakers hiding amongst the pirates.`
 				decline
+
+
+######################################
+#
+# deprecated
+#
+######################################
+
+mission "Midnight Korbschläger 1 Patch"
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		clear "Midnight Korbschläger 1: offered"
+		clear "Midnight Korbschläger 1: done"
+		fail
+

@@ -883,8 +883,6 @@ mission "Midnight Boarding Captives (Dirt Belt, Large)"
 		"reputation: Pirate" += 20
 		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
 
-
-
 mission "Midnight Boarding Captives (North, Small)"
 	boarding
 	repeat
@@ -1027,8 +1025,6 @@ mission "Midnight Boarding Captives (North, Large)"
 		payment 120000
 		"reputation: Pirate" += 20
 		dialog `You sell the captives taken from the <origin> into slavery. Some will be sent off into a life of hard labor while others are destined be the victims of unspeakable horrors. The slavers look them over and hand you <payment>, what they consider a fair price for fresh inventory.`
-
-
 
 mission "Midnight Boarding Captives (South, Small)"
 	boarding
@@ -1255,6 +1251,86 @@ mission "Midnight Boarding Captives (South, Large)"
 
 
 
+mission "Midnight Boarding Pillagers"
+	boarding
+	minor
+	invisible
+	repeat
+	source
+		attributes "required crew"
+		not attributes "automaton"
+		category "Utility" "Medium Warship" "Heavy Warship" "Superheavy"
+	destination Earth
+	to offer
+		or
+			"outfit (flagship installed): Bunk Room" >= 2
+			"outfit (flagship installed): Small Bunk Room" >= 2
+		random < 1
+	on offer
+		conversation
+			branch SBR1
+				"outfit (flagship installed): Bunk Room" < 2
+			scene "scene/scene-burningbunks"
+			branch BR2
+				"outfit (flagship installed): Bunk Room" >= 3
+				random < 60
+			action
+				outfit "Bunk Room" -1
+				outfit "Bunk Room (Burned)" 1
+			`While you were boarding the <origin>, some of their crew also boarded your ship! One of your Bunkrooms was looted and burned...`
+				decline
+			label BR2
+			branch BR3
+				"outfit (flagship installed): Bunk Room" >= 4
+				random < 50
+			action
+				outfit "Bunk Room" -2
+				outfit "Bunk Room (Burned)" 2
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Two of your Bunkrooms were looted and burned...`
+				decline
+			label BR3
+			branch BR4
+				"outfit (flagship installed): Bunk Room" >= 5
+				random < 33
+			action
+				outfit "Bunk Room" -3
+				outfit "Bunk Room (Burned)" 3
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Three of your Bunkrooms were looted and burned...`
+				decline
+			label BR4
+			action
+				outfit "Bunk Room" -4
+				outfit "Bunk Room (Burned)" 4
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Four of your Bunkrooms were looted and burned...`
+				decline
+			label SBR1
+			scene "scene/scene-burningbunkssmall"
+			branch SBR2
+				"outfit (flagship installed): Small Bunk Room" >= 3
+				random < 40
+			action
+				outfit "Small Bunk Room" -1
+				outfit "Small Bunk Room (Burned)" 1
+			`While you were boarding the <origin>, some of their crew also boarded your ship! One of your Small Bunkrooms was looted and burned...`
+				decline
+			label SBR2
+			branch SBR3
+				"outfit (flagship installed): Small Bunk Room" >= 4
+				random < 25
+			action
+				outfit "Small Bunk Room" -2
+				outfit "Small Bunk Room (Burned)" 2
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Two of your Small Bunkrooms were looted and burned...`
+				decline
+			label SBR3
+			action
+				outfit "Small Bunk Room" -3
+				outfit "Small Bunk Room (Burned)" 3
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Three of your Small Bunkrooms were looted and burned...`
+				decline
+
+
+
 conversation "midnight boarding sos"
 	scene "outfit/attention"
 	`As you dock with the <origin>, they send out a distress call on an open channel...`
@@ -1333,7 +1409,7 @@ mission "Midnight Boarding SOS (Republic)"
 	to offer
 		random < 5
 	source
-		government "Republic" "Deep Security"
+		government "Republic"
 	on offer
 		conversation "midnight boarding sos"
 	destination Earth
