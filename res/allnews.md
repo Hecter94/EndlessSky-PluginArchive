@@ -1,3 +1,6 @@
+2024-03-14 | updated Plugin 'captureable.person.ships' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
+2024-03-14 | updated Plugin 'expert.crew.members' by zuckung | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
+2024-03-14 | updated Plugin 'snowfeather.robotics' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
 2024-03-13 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-03-13 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-03-13 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>

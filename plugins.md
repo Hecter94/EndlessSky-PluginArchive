@@ -173,9 +173,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 172.8 kb | 2024-02-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 174.39 kb | 2024-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-14) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -190,6 +190,8 @@ Makes person ships captureable.<br>
 <br>
 Well, technically this plugin disables the person ships, and creates new ones(with a space more in its names, due to limitations of changing parts of originals) which are captureable. Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000.<br>
 So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
+<br>
+At Earth's job board you can find a repeatable job that displays which persons you have already killed, which are alive and where to find them<br>
 <br>
 Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Except for "Zitchas" which needed less dmg weapons and max flamethrowers to prevent its cloaking. Also boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too. Another problem is "Tranquility" which has no weapons and therefore avoids fight. Tested different personality settings and best choice was to let it stay in system after spawn(yellow dot on radar).<br>
 <br>
@@ -214,6 +216,10 @@ Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti be
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-14<br>
+bugfixes<br>
+added person destroyed check on Earth job board<br>
 <br>
 2024-02-02<br>
 added 0.10.5 person "Patrol Team"<br>
@@ -3519,9 +3525,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 493.63 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 2.56 mb | 2024-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-14) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3533,16 +3539,27 @@ Author: zuckung | Category: Outfits <br>
 <br>
 Adds unique crew members, aquireable through spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regeneration, more thrust, more cargo etc.<br>
 <br>
-Currently there are 40 expert crew members. Visit spaceports on human worlds with an outfitter to find the missions(5% chance).<br>
-Their technology fields are: combat(4) cooling(5) energy(4) engine(3) fuel(5) hull(3) jamming(4) scanner(4) shield(3) storage(5).<br>
+Currently there are 65 expert crew members. Visit spaceports with an outfitter to find the missions(3% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea, Remnant, Wanderer(after translation device), Kor Efret(after Rek went to Kor Efret).<br>
+Their technology fields are: combat(6) cooling(7) energy(7) engine(7) fuel(7) hull(6) jamming(6) scanner(6) shield(6) storage(7).<br>
 In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
 They have the positive stats of a medium human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
-See data/crew.list.txt of this plugin for locations, an stat infos.<br>
+See crew.list.txt of this plugin for locations, and stat infos.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/expert.crew.members/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-14<br>
+bugfixes<br>
+changed outfit descriptions to show race and source<br>
+changed chance to from 5% to 3%<br>
+generated 25 alien portaits<br>
+added 5 Hai experts<br>
+added 5 Bunrodea experts<br>
+added 5 Wanderer experts<br>
+added 5 Korath experts<br>
+added 5 Remnant experts<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
@@ -4235,9 +4252,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/snowfeather.robotics/icon.png' height='100'></img><br>
 
 
-[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 21.55 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
+[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 613.07 kb | 2024-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-14) <br>
 
 >Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
 >Starts on Snowfeather(Bore Fah) when having at least one android installed. See the readme for details.
@@ -4256,6 +4273,13 @@ The new buyable androids are a little bit more expensive than the original ones.
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-14<br>
+bugfixes<br>
+changed icon<br>
+added new android outfit png<br>
+added 2 scenes to the missions<br>
+lowered wait time from 60 to 30 days<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
