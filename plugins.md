@@ -1248,9 +1248,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.29 kb | 2024-02-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.84 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 
@@ -1269,7 +1269,7 @@ Adds 9 new start options with different ships, background storys, credits and de
 <li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
 <li>Start: Explorer to Remnant | Heavy Shuttle: equipped for exploring the Remnant, in Tania Australis system</li>
 <li>Start: Explorer to Automata | Bounder: equipped for exploring the Kor Automata, in Mirfak system</li>
-<li>Start: Cheater | Heron: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
+<li>Start: Cheater | Heron + 10xKIV: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
 </ul>
 <br>
 Beside the cheater start option, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role. The intro missions on New Bosten are set as completed. Same goes for the Hai start with the Hai first contact mission.<br>
@@ -1277,9 +1277,13 @@ Beside the cheater start option, all others are balanced and lore friendly. A bi
 <br>
 Changelog:<br>
 <br>
+2024-03-15<br>
+Start: Cheater, changed Heron weapons and added 10x KIV with beam weapons<br>
+Start: Cheater, added mission for full visible human space to the outfitter<br>
+<br>
 2024-02-15<br>
 Start: Cheater... fixed map not showing all systems<br>
-Start: Miner... changed ship to "Sunder" with Mining Drones<br>
+Start: Miner... changed ship to "Sunder" with 2 Mining Drones<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
@@ -2164,9 +2168,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 14.74 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 25.74 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -2175,7 +2179,7 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### more.boarding.missions <br>
 <br>
 <br>
-Adds 53 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer) and Wanderer can trigger them. Bigger ships give higher rewards.<br>
+Adds 67 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer), Wanderer, Gegno Vi and Gegno Scin can trigger them. Bigger ships give higher rewards.<br>
 <br>
 <ul>
 <li> 7 Human assisting missions (by ship categories, 20% chance, 10.000 to 30.000 credits)</li>
@@ -2189,10 +2193,18 @@ Adds 53 repeatable boarding and assisting missions. Boarding/assisting Free Worl
 <li> 3 Pug boarding missions (by ship categories, 10% chance, 100.000 to 200.000 credits)</li>
 <li> 3 Pug boarding missions (by ship categories, 1-3% chance, new outfit "Pug War Staff")</li>
 <li> 7 Wanderer assisting missions (by ship categories, 10% chance, 50.000 to 100.000 credits)</li>
+<li> 7 Gegno Scin assisting missions (by ship categories, 20% chance, 14.000 to 50.000 credits)</li>
+<li> 7 Gegno Vi assisting missions (by ship categories, 20% chance, 16.000 to 50.000 credits)</li>
 </ul>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-15<br>
+bugfixes<br>
+added 7 Gegno Scin assisting mission<br>
+added 7 Gegno Vi assisting mission<br>
+added color changed outfit png for pug war staff<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
@@ -6054,9 +6066,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/unique.fix/icon.png' height='100'></img><br>
 
 
-[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | 346.28 kb | 2024-02-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/unique.fix/) <br>
+[unique.fix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/unique.fix.zip) | 428.57 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/unique.fix/) <br>
 Author: zuckung | Category: Overhauls <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-04) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. See the readme for details.
 
@@ -6074,10 +6086,12 @@ Removes mass and outfit space from some uniques, puts others into unique categor
 <li> Gives outfit '"Puny"' a portrait. </li>
 <li> Puts outfit 'Mug' into unique category </li>
 </ul>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/unique.fix/screenshot.png' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-15<br>
+changed Puny png to ai generated<br>
 <br>
 2024-02-04<br>
 removed mug image, because it got added in 0.10.5<br>
@@ -11072,9 +11086,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Unfettered Innovations/icon.png' height='100'></img><br>
 
 
-[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 1.99 mb | 2023-12-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
+[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
 Author: Hurleveur | Category: Ships <br>
-[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2023-12-20) <br>
+[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2024-03-15) <br>
 
 >endless sky plugin for the Unfettered ships and outfits to come in the campaign
 
@@ -11405,9 +11419,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 50.53 kb | 2024-03-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 128.75 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-11) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -11422,21 +11436,29 @@ Unlocking the planet with all ships needs 100 reputation. Unlocking the last of 
 <br>
 10 rep for vanilla first contact mission<br>
 20 rep for the first mission which unlocks repeatable jobs.<br>
-5-9 rep for repeatable jobs<br>
+5-10 rep for repeatable jobs<br>
 10 rep for Korath ship killing job<br>
 At 100 rep the second mission starts, which gives 30 rep and unlocks the second repeatable fighting job which gives 30 rep.<br>
 At 200 rep the third mission starts, which gives 40 rep and unlocks the third repeatable fighting job which gives 40 rep.<br>
 <br>
+Since it's often questioned, here is a guide to the bunrodea first contact mission. Travel through Bunrodea territory till you killed at least one Bunrodea ship, then fly to the human pirate system Misam, start and land there till you get a mission(10% on landing), that mission brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
+<br>
 <br>
 Changelog:<br>
 <br>
+2024-03-15<br>
+bugfixes<br>
+added first contact guide to readme<br>
+added unique outfit "Bunrodea Translation Device"<br>
+added 2 more hunt criminal jobs<br>
+<br>
 2024-03-11<br>
-fixed missions not starting bug<br>
+fixed missions not starting bug <br>
 removed worldship fleets from the 3 border systems<br>
 added normal korath fleets to the 3 border systems<br>
 added 3rd fight mission(worldship) and repeatable job(25% chance)<br>
 added 3 rush delivery jobs<br>
-added criminal hunt culture conversation(25% chance) and repeatable job(35% chance)<br>
+added criminal hunt culture conversation(25% chance) and repeatable job(35% chance) after<br>
 added final mission at 500 reputation<br>
 <br>
 2024-02-18<br>
@@ -12295,9 +12317,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/gegno.pirates/icon.png' height='100'></img><br>
 
 
-[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.14 kb | 2024-03-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
+[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.17 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear. See the readme for details.
 >
@@ -12339,6 +12361,9 @@ Remove the 8 lines containing: "Gegno Civilian" "Gegno Driller"	 "Scin Adjutant"
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-15<br>
+adjustments and fixes<br>
 <br>
 2024-03-09<br>
 adjustments and fixes<br>
@@ -12719,9 +12744,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 66.48 mb | 2024-03-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 66.48 mb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-03-13) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-03-14) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -13350,9 +13375,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/real.fluff/icon.png' height='100'></img><br>
 
 
-[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 1.93 mb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
+[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 2.66 mb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
 
 >A bunch of side missions which reward unique fluffy pets. See the readme for details.
 >
@@ -13367,18 +13392,25 @@ A bunch of side missions which reward unique pets. <br>
 Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 10% chance of appearing, except alien mission which has  100%.<br>
 <ul>
 <li>Alien - land somewhere in human space, hidden destination is Danoa system</li>
-<li>Ferret - mission found on Bivrost</li>
-<li>Hamster - mission found on Twinstar</li>
-<li>Koala - mission found on New Portland</li>
-<li>Ocelot - mission found on Farpoint</li>
-<li>Rabbit - mission found on Starcross</li>
-<li>Raccoon - mission found on Foundry </li>
-<li>Squirrel - mission found on Heartvalley (Hai space)</li>
+<li>Cat - mission found on Deadman's Cove (Almach)</li>
+<li>Ferret - mission found on Bivrost (Markeb)</li>
+<li>Hamster - mission found on Twinstar (Alniyat)</li>
+<li>Koala - mission found on New Portland (Delta Sagittarii)</li>
+<li>Ocelot - mission found on Farpoint (Alnitak) needs 100 combat xp</li>
+<li>Rabbit - mission found on Starcross (Acrux)</li>
+<li>Raccoon - mission found on Foundry (Achernar)</li>
+<li>Squirrel - mission found on Heartvalley (Io Lowe, Hai space)</li>
 </ul>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/real.fluff/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-15<br>
+bugfixes<br>
+added cat mission<br>
+added 4 new scene images<br>
+changed images to ai generated<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
