@@ -63,13 +63,25 @@ mission "Midnight Blaster Roulette 0 (Assist)"
 				`	"What's this for?"`
 			scene "planet/lava0"
 			`The captain says, "If you're feeling lucky, bring that to Bailey in the Citadelle system and take the Puppetmaster's challenge. If you can survive, you'll receive a special prize."`
-				decline
+				accept
 	destination "Bailey"
 	on complete
-		dialog "Visit the spaceport to search for the Puppetmaster."
+		dialog "Visit the spaceport to search for the Puppetmaster or sell the Blaster Charger to one of the locals."
+
+mission "Midnight Blaster Roulette 0 (Assist) Patch"
+	landing
+	name "Puppetmaster"
+	description "Bring a Blaster Charger to <destination> to take the Puppetmaster's Challenge."
+	to offer
+		has "Midnight Blaster Roulette 0 (Assist): declined"
+	on offer
+		clear "Midnight Blaster Roulette 0 (Assist): declined"
+		set "Midnight Blaster Roulette 0 (Assist): done"
+	destination "Bailey"
+	on complete
+		dialog "Visit the spaceport to search for the Puppetmaster or sell the Blaster Charger to one of the locals."
 
 mission "Midnight Blaster Roulette 1"
-	minor
 	invisible
 	source Bailey
 	to offer
@@ -78,28 +90,28 @@ mission "Midnight Blaster Roulette 1"
 	on offer
 		conversation
 			scene "outfit/blaster charger"
-			`You've been told that there is a special prize to be won by bringing a Blaster Charger to the Puppetmaster and surviving some sort of challenge...`
+			`You've been told that there is a special prize to be won by bringing a Blaster Charger to a person called the "Puppetmaster" and surviving some sort of challenge...`
 			choice
 				`	(Search for the Puppetmaster.)`
 					goto search
-				`	(Sell the Blaster Charger.)`
+				`	(Sell the Blaster Charger instead.)`
 			action
 				payment 5000
 				outfit "Blaster Charger" -1
 			scene "outfit/blaster charger"
-			`	You have no problem trying to sell the Blaster Charger and receive 5,000 credits for it, ten times what it's worth elsewhere.`
+			`	You decide to ignore the Puppetmaster's challenge and have no problem selling the Blaster Charger to one of the locals. You find a buyer willing to pay 5,000 credits for it, ten times what it's worth elsewhere.`
 				decline
 			label search
 			branch coalition
 				has "Coalition: First Contact: offered"
 			scene "thumbnail/heliarch stalker"
-			`	After asking around, you learn that the Puppetmaster is currently parked at a landing pad at the edge of the spaceport. You arrive to find an exotic ship parked there. A terminal near the landing pad's entryway allows you to hail the ship.`
+			`	After asking around, you learn that the Puppetmaster's ship is currently parked at a landing pad at the edge of the spaceport. You arrive to find an exotic ship parked there. A terminal near the landing pad's entryway allows you to hail the ship.`
 			choice
 				`	(Use the terminal.)`
 					goto puppetmaster
 			label coalition
 			scene "thumbnail/heliarch stalker"
-			`	After asking around, you learn that the Puppetmaster is currently parked at a landing pad at the edge of the spaceport. You arrive to find a ship parked there that appears to be from the Coalition. A terminal near the landing pad's entryway allows you to hail the ship.`
+			`	After asking around, you learn that the Puppetmaster's ship is currently parked at a landing pad at the edge of the spaceport. You arrive to find a ship parked there that appears to be from the Coalition. A terminal near the landing pad's entryway allows you to hail the ship.`
 			choice
 				`	(Use the terminal.)`
 					goto puppetmaster
@@ -200,11 +212,12 @@ mission "Midnight Blaster Roulette 1"
 			action
 				outfit "Modified Blaster Pistol" 1
 				outfit "Blaster Charger" -1
+				log "Minor People" "The Puppetmaster" `A strange hermit that can be found at the spaceport on Bailey. This person accepts challenges to a deadly game of Blaster Roulette. Those who succeed are rewarded with a Modified Blaster, but the Puppetmaster may be cheating somehow...`
 			scene "outfit/mod blaster pistol"
-			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. The Modified Blaster Pistol and chargers you may take."`
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. The Modified Blaster Pistol and chargers you may take." You return to the <ship> with your prize.`
 				decline
 			label fugitive
-			`	The speaker crackles with static before going silent. Suddenly, the engines on the Puppetmaster roar to life and the ship lifts off! This area of the spaceport is too far for you to return to your ship in time to go after it. Whoever is in there was spooked by your question regarding their relation to the Coalition...`
+			`	The speaker crackles with static before going silent. Suddenly, the engines on the Puppetmaster's ship roar to life and the ship lifts off! This area of the spaceport is too far for you to return to your ship in time to go after it. Whoever is in there was spooked by your question regarding their relation to the Coalition...`
 				decline
 
 mission "Midnight Blaster Roulette 2"
@@ -385,19 +398,19 @@ mission "Midnight Blaster Roulette 3"
 				`	"No, I've had enough."`
 			action
 				outfit "Modified Blaster Pistol" 1
-			`	The mechanical voice answers, "The Modified Blaster Pistol and chargers you may take."`
+			`	The mechanical voice answers, "The Modified Blaster Pistol and chargers you may take." You return to the <ship> with your prize.`
 				decline
 			label double
 			action
 				set "blaster roulette doubled"
-			`	The cloaked figure places three fresh chargers on the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
+			`	The door behind you slides shut. The cloaked figure places three fresh chargers on the table. "Charged one. Empty two. On yourself use empty, again can go. On me use empty, pass pistol. Hit with charged, lose. Go first, you."`
 				goto first
 			label doubled
 			action
 				clear "blaster roulette doubled"
 				outfit "Dual Mod Blaster Pistols" 1
 			scene "outfit/dual mod blaster pistols"
-			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. These Modified Blaster Pistols and chargers you may take." The cloaked figure returns to the table with a second Modified Blaster Pistol.`
+			`	There is a bright flash of light. The cloaked figure is slammed back into the darkness. The door behind you opens and a mechanical voice from an unseen speaker says, "Congratulations. These Modified Blaster Pistols and chargers you may take." The cloaked figure returns to the table with a second Modified Blaster Pistol. You return to the <ship> with your prize.`
 				decline
 
 
