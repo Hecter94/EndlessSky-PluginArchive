@@ -1,0 +1,260 @@
+# Copyright (c) 2024 by mOctave
+#
+# Blended Ships is free software: you can redistribute it and/or modify it under the
+# terms of the GNU Affero General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Blended Ships is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+disable "FWC Checkmate 1"
+disable "FWC Checkmate 1: Equipment"
+disable "FWC Checkmate 1: Equipment 2"
+
+mission "FWC Checkmate 1 (Barquentine)"
+	mission "FWC Checkmate 1"
+	landing
+	name "Defend Cebalrai"
+	description "Destroy the Republic ships that are attacking this system, then land and decide what to do next. Free Worlds reinforcements should be on their way."
+	autosave
+	source Tundra
+	to offer
+		has "FWC Diplomacy 1C: done"
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		event "fwc defend cebalrai"
+		conversation
+			`When you land on Tundra, Tomek seems glad to see Katya back, but you sense that he's also a little wary of how she will respond to the choices the Free Worlds have been making. "Using nukes, threatening orbital bombardment," says Katya, "treating the Syndicate as an ally. Anything else I missed while I was gone?"`
+			choice
+				`	"We only want this war to be over as soon as possible."`
+				`	"We've just been trying to avoid being destroyed by the Navy, and things have gotten a bit out of hand."`
+			`	"I see," she says. "Did you have a plan for what comes next, or are we just winging it now?"`
+			`	Alondo says, "Unfortunately, we do have a plan. Our very last contingency plan. We call it the 'checkmate' option. Our fleet will push north--"`
+			`	He is interrupted by one of Tomek's men running into the room. "Sir, we have a major Navy fleet incoming. We need all ships in the air immediately to repulse them. Reinforcements are on their way, but they may not get here for a while."`
+			`	Tomek says, "So, it begins. Captain <last>, get back to your ship and aid in the defense."`
+				launch
+	
+	npc
+		government "Free Worlds"
+		personality heroic escort
+		fleet
+			names "free worlds capital"
+			fighters
+				names "free worlds fighters"
+			variant
+				"Dreadnought"
+				"Skein"
+				"Finch" 6
+				"Fury (Flamethrower)" 4
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon (Heavy)"
+				"Hawk" 2
+		fleet
+			names "free worlds capital"
+			variant
+				"Osprey"
+				"Argosy (Blaster)" 2
+	
+	npc
+		personality heroic waiting
+		government "Free Worlds"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Bastion (Laser)"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon (Laser)"
+	
+	npc evade
+		personality staying heroic
+		government "Republic"
+		fleet 3
+			names "republic small"
+			fighters
+				names "republic fighter"
+			variant
+				"Frigate (Mark II)"
+				"Gunboat (Mark II)" 2
+				"Rainmaker (Mark II)" 2
+	
+	npc evade
+		personality heroic
+		government "Republic"
+		system Menkent
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 4
+				"Combat Drone" 6
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+	
+	npc evade
+		personality heroic
+		government "Republic"
+		system Sol
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 4
+				"Combat Drone" 6
+		fleet 3
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+	
+	npc evade
+		personality heroic
+		government "Republic"
+		system Pollux
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 4
+				"Combat Drone" 6
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+	
+	npc
+		personality heroic
+		system Rastaban
+		government "Free Worlds"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Bastion"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon (Plasma)"
+	
+	npc
+		personality heroic
+		system Pherkad
+		government "Free Worlds"
+		fleet
+			names "free worlds capital"
+			fighters
+				names "free worlds fighters"
+			variant
+				"Dreadnought"
+				"Skein"
+				"Finch" 6
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon (Heavy)"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Falcon (Plasma)"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought"
+				"Osprey (Missile)"
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Navy ships circling overhead. You should take off and help finish them off.`
+	on complete
+		set "FWC Checkmate 1: done"
+		set "FWC Checkmate 1: active"
+		give ship "Barquentine" "F.S. Kauri"
+		log "Defended Tundra against a major Navy counter-offensive. From here, the only recourse available to the Free Worlds seems to be to push deep into Republic territory and capture the Sol system, forcing the Navy to surrender. Nuclear weapons are now for sale on Solace to aid in the final assault. Also given ownership of the F.S. Kauri, the Free Worlds' only Barquentine-class warship."
+		event "fwc defended cebalrai"
+		event "fwc solace has nukes"
+		"salary: Free Worlds" = 17000
+		conversation
+			`Tomek and Alondo meet you when you land. Tomek says, "Good work aiding in the defense. Now we need to move before the Navy has time to regroup. And the Senate has decided that you will be in charge of the fleet that makes our counterattack."`
+			`	Alondo says, "They have also approved a salary increase for you, to seventeen thousand credits per diem. I know that's probably still not enough, but we are running a bit low on cash."`
+			`	"One other thing," says Tomek. "Since you're going to be leading the counterattack, we decided it would be best if you had a more powerful warship. Ever since the Dreadnought was rolled out, Southbound's engineers have been working on a flagship for our fleet, the Barquentine. It was going to be mine, but I think you're going to need it more than me."`
+			`	Tomek leads you out to the ship, a gleaming giant of polished titanium and green paint. One entire half of the otherwise ordinary Dreadnought has been removed, and no fewer than sixteen gun barrels stand in its place.`
+			`	"Isn't the F.S. Kauri beautiful? She's both faster and more powerful than the Dreadnought, and fitted with all the latest technology. That includes nukes, by the way, although you can always sell them back to the outfitter and fit something else in their place. Make any improvements you feel are necessary to her: she's all yours, now and forever. Just make sure you take good care of her. She's the only Barquentine in our whole fleet at the moment, and if we win this war soon we may never build another."`
+			`	Leaving you to admire the F.S. Kauri, Tomek turns to walk away. "Oh, and meet us back in the spaceport as soon as you've got her kitted out and ready to fly. Of course, if you're ready to go immediately that's fine, too."`
+
+disable "FW Pug 3B"
+
+mission "FW Pug 3B (Barquentine)"
+	landing
+	name "Escort to <planet>"
+	description "Travel to <planet> with two Free Worlds Dreadnoughts that will be joining the fight against the Pug."
+	autosave
+	source Zug
+	destination Geminus
+	clearance
+	to offer
+		has "FW Pug 3A: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		give ship "Barquentine" "F.S. Kauri"
+		"salary: Free Worlds" = 17000
+		log "Was given the keys to the F. S. Kauri, the Free Worlds' only Barquentine-class warship."
+		conversation
+			`Freya meets you soon after you land. "I've heard the news," she says. "I talked to the Senate, and they think that I should travel with you during your assault on the Pug, in case I can help figure out their technology, maybe even how to restore the hyperspace links. And they say they need Alondo back here to do diplomatic visits and help keep people from panicking."`
+			`	"I guess that makes sense," says Alondo.`
+			`	"Also," says Freya, "Southbound has just finished producing another warship for us, based off the Dreadnought. Unfortunately, there's only one, but we thought it would be fitting for you to be the one to fly it. This way, you'll be able to go into battle against the Pug with the strongest ship possible."`
+			`	Freya leads you out to the ship, a gleaming giant of polished titanium and green paint. One entire half of the otherwise ordinary Dreadnought has been removed, and no fewer than sixteen gun barrels stand in its place.`
+			`	"Isn't the F.S. Kauri beautiful? She's both faster and more powerful than the Dreadnought, and fitted with all the latest technology. Make any improvements you feel are necessary to her: she's all yours, now and forever. Just make sure you take good care of her. She's the only Barquentine in our whole fleet at the moment, and if we win are able to defeat the Pug we may never build another."`
+			`	As Alondo leaves to catch a transport to Bourne, Freya turns to face you. "Oh, and one more thing, <first>. The Senate approved a raise for you. Your new salary will be seventeen thousand credits a day."`
+			`	Freya takes you to the spaceport and introduces you to the captains of the two Dreadnoughts that have volunteered to fight the Pug. She also asks you all sorts of technical questions: what sort of propulsion and energy sources the Pug seem to use, what their weapon capabilities are, and whether you saw any sign of the technology that was used to destroy the hyperspace links. You have a hard time answering her, but are glad that she will be with you this time to see the aliens firsthand.`
+				accept
+	
+	npc accompany save
+		government "Free Worlds"
+		personality escort disables
+		ship "Dreadnought" "F.S. Independence"
+		ship "Dreadnought" "F.S. Freedom"
+	
+	on visit
+		dialog "You have reached <planet>, but the dreadnoughts are lagging behind you because they are using ordinary hyperdrives. Better depart and wait for them to arrive in this star system."
+
+	on complete
+		set "FW Pug 3B: done"
+		set "FW Pug 3B: active"
