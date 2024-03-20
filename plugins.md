@@ -1692,9 +1692,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/galactic.capital.investment/icon.png' height='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 26.58 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 1.86 mb | 2024-03-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-20) <br>
 
 >Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
@@ -1703,20 +1703,30 @@ Author: zuckung | Category: Gameplay <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### galactic.capital.investment <br>
 <br>
-Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. <br>
-(inspired by a-alhusaini's investment bank plugin) <br>
+Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 1000 million credits.<br>
+(inspired by a-alhusaini's investment bank plugin)<br>
 <br>
-There are missions for 1 million, 5 million, 10 million, 50 million and 100 million credits. The chance for the jobs to appear on the job board are 25% for each one. Unfortunately you have to take off and land again on the same planet to clear the mission marker.<br>
-1 million = 600 credits daily <br>
-5 million = 3.400 credits daily <br>
-10 million = 7.200 credits daily <br>
-50 million = 37.000 credits daily <br>
-100 million = 76.100 credits daily <br>
+There are missions for 1 million, 5 million, 10 million, 50 million, 100 million and 1 billion credits. The chance for the jobs to appear on the job board getting lower with the amount to invest. Unfortunately you have to take off and land again on the same planet to clear the mission marker.<br>
+At 1 billion credits a longer mission chain starts and enables a reapeatable job board investment of 1 billion credits. The chain has some breaks and finish after a year.<br>
 <br>
-These investments pay off after 3,5 to 4,5 years. Higher Investments pay off faster.<br>
+1 million = 600 credits daily (60% chance)<br>
+5 million = 3.400 credits daily (50% chance)<br>
+10 million = 7.200 credits daily (40% chance)<br>
+50 million = 37.000 credits daily (30% chance)<br>
+100 million = 76.100 credits daily (20% chance)<br>
+1 billion = 2 million credits daily (2% chance)<br>
+<br>
+These investments pay off after 2,3 to 4,5 years. Higher Investments pay off faster.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-20<br>
+changed icon<br>
+added 5 new conversation scenes<br>
+added 9-mission-chain to get credits for a planet colonization<br>
+added unique trophy outfit at the end of the chain<br>
+added a new rare repeatable job after the colonization chain<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
@@ -3537,9 +3547,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 2.56 mb | 2024-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 3.87 mb | 2024-03-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-14) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-20) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3551,21 +3561,29 @@ Author: zuckung | Category: Outfits <br>
 <br>
 Adds unique crew members, aquireable through spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regeneration, more thrust, more cargo etc.<br>
 <br>
-Currently there are 65 expert crew members. Visit spaceports with an outfitter to find the missions(3% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea, Remnant, Wanderer(after translation device), Kor Efret(after Rek went to Kor Efret).<br>
-Their technology fields are: combat(6) cooling(7) energy(7) engine(7) fuel(7) hull(6) jamming(6) scanner(6) shield(6) storage(7).<br>
+Currently there are 80 expert crew members. Visit spaceports with an outfitter to find the missions(3% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
+Their technology fields are: combat(8) cooling(8) energy(8) engine(8) fuel(8) hull(8) jamming(8) scanner(8) shield(8) storage(8).<br>
 In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
 They have the positive stats of a medium human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
-See crew.list.txt of this plugin for locations, and stat infos.<br>
+If you collect them all, you'll get a special mission<br>
+See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/crew.list.txt'>crew.list.txt</a> of this plugin for locations, and stat infos.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/expert.crew.members/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
 <br>
+2024-03-20<br>
+generated 15 alien portraits<br>
+added 5 Saryd experts<br>
+added 5 Arachi experts<br>
+added 5 Kimek experts<br>
+added mission and reward after collecting all crew members<br>
+<br>
 2024-03-14<br>
 bugfixes<br>
 changed outfit descriptions to show race and source<br>
-changed chance to from 5% to 3%<br>
+changed chance from 5% to 3%<br>
 generated 25 alien portaits<br>
 added 5 Hai experts<br>
 added 5 Bunrodea experts<br>
@@ -7415,9 +7433,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-02-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-03-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-02-26) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-03-20) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -8873,7 +8891,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fluff.zip) | 5.88 mb | 2023-10-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fluff/) <br>
 Author: Darcy Manoel | Category: Ships <br>
-[https://github.com/Adde-Endless-Sky-Mods/Fluff](https://github.com/Adde-Endless-Sky-Mods/Fluff)  <br>
+N/A[]()  <br>
 
 >As expected, this mod fluffs the edges of various different aspects of the game. Many new ships and outfits scattered about to add more to an already enticing experience, some content may blend well and remain unnoticed while other content will stick out sorely.
 >
@@ -8887,7 +8905,7 @@ Author: Darcy Manoel | Category: Ships <br>
 </details>
 
 Status: Merged into AES Fluff <br>
-Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 
 ---
