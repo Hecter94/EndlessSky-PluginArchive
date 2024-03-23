@@ -173,9 +173,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 174.39 kb | 2024-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 174.5 kb | 2024-03-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-14) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-23) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -188,12 +188,12 @@ Author: zuckung | Category: Cheats <br>
 Makes person ships captureable.<br> 
 <br>
 <br>
-Well, technically this plugin disables the person ships, and creates new ones(with a space more in its names, due to limitations of changing parts of originals) which are captureable. Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000.<br>
+Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesnt flee. And changed "Zitchas" personality to "decloaked", so it doesnt flee and regenerate while cloaked.<br>
 So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
 <br>
-At Earth's job board you can find a repeatable job that displays which persons you have already killed, which are alive and where to find them<br>
+At every job board you can find a repeatable job that displays which persons you have already killed, which is alive and where to find it<br>
 <br>
-Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Except for "Zitchas" which needed less dmg weapons and max flamethrowers to prevent its cloaking. Also boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too. Another problem is "Tranquility" which has no weapons and therefore avoids fight. Tested different personality settings and best choice was to let it stay in system after spawn(yellow dot on radar).<br>
+Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/captureable.person.ships/screenshot.jpg' width='400'>
 <ul>
@@ -216,6 +216,12 @@ Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti be
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-23<br>
+set "no person spawn weight" to 0<br>
+added person destroyed check job to every planet with a job board<br>
+added a gun to Tranquility so that it stays for fighting<br>
+changed Zitchas personality, so that it doesn't cloak<br>
 <br>
 2024-03-14<br>
 bugfixes<br>
@@ -2524,7 +2530,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Weapon Ranges
 
 
-[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 1.54 kb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Weapon%20Ranges/) <br>
+[Weapon.Ranges.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Weapon.Ranges.zip) | 1.54 kb | 2024-03-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Weapon%20Ranges/) <br>
 Author: EjoThims | Category: Gameplay <br>
 [https://github.com/EjoThims/Weapon-Ranges](https://github.com/EjoThims/Weapon-Ranges) (last commit 2023-05-18) <br>
 
@@ -3547,9 +3553,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 3.87 mb | 2024-03-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.16 mb | 2024-03-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-23) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3573,12 +3579,15 @@ See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/
 <br>
 Changelog:<br>
 <br>
+2024-03-23<br>
+generated 40 new human portraits<br>
+<br>
 2024-03-20<br>
 generated 15 alien portraits<br>
 added 5 Saryd experts<br>
 added 5 Arachi experts<br>
 added 5 Kimek experts<br>
-added mission and reward after collecting all crew members<br>
+added mission after collecting all crew members<br>
 <br>
 2024-03-14<br>
 bugfixes<br>
