@@ -57,6 +57,7 @@ def generate_outfitter(faction, fileout=''):
 
     all_outfits = faction.outfitlist
     all_outfits.extend(faction.weaponlist)
+    all_outfits.extend(faction.engineslist)
     outfitlist_sorted = outfit_sort(all_outfits)
     outfitperoutfitter = math.floor(len(outfitlist_sorted)/outfitter_count)
     outfitterlist = []
