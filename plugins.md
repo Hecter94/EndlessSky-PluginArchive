@@ -3553,9 +3553,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.16 mb | 2024-03-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.16 mb | 2024-03-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-23) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-27) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3578,6 +3578,10 @@ See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-27<br>
+added option to decline the hiring, they will be offered later again<br>
+fixed human experts showing the image name as race<br>
 <br>
 2024-03-23<br>
 generated 40 new human portraits<br>
@@ -5270,9 +5274,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Endless-Endless-Sky/icon.png' height='100'></img><br>
 
 
-[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.09 mb | 2023-09-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/) <br>
+[Endless-Endless-Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless-Endless-Sky.zip) | 11.09 mb | 2024-03-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless-Endless-Sky/) <br>
 Author: 1010Todd | Category: Overhauls <br>
-[https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky) (last commit 2023-09-09) <br>
+[https://github.com/1010todd/Endless-Endless-Sky](https://github.com/1010todd/Endless-Endless-Sky) (last commit 2024-03-27) <br>
 
 >Python scripts to generate new procedurally generated galaxy. Comes with pre-generated data for instant playing.
 >
