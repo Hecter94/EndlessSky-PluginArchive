@@ -20,6 +20,7 @@
 outfitter "Korath Basics"
 	"Korath Scanner"
 	"Scavenger Turret"
+	"Korath Fireswarm Nest"
 
 
 
@@ -184,7 +185,7 @@ mission "Echo Galleon Construction Shortage 1 - Scan"
 			`	The Echo-Galleon seems like a formidable ship. Are you sure that you aren't interested in ever buying one?`
 			choice
 				`	(I'm definitely not interested in buying an Echo-Galleon.)`
-				decline
+					decline
 				`	(I'll try to get a scan of an Echo-Galleon.)`
 			label scan
 			scene "outfit/outfit scanner"
@@ -610,6 +611,10 @@ mission "Scrapyard Derelict World Ship"
 		government "Kor Efret"
 		system "Celeborim"
 		personality escort target waiting derelict pacifist
+		"cargo settings"
+			cargo 3
+			commodities "Metal" "Heavy Metals"
+			outfitters "Scrap Metal"
 		ship "Scrapyard World-Ship (Crippled)" "Lekfarosk"
 
 	on enter "Kaliptari"
@@ -630,15 +635,15 @@ ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	add attributes
 		"fused circuits" -5
 	outfits
+		"Korath Fireswarm Nest"
 		"Triple Plasma Core (Damaged)"
 		"Systems Core (Damaged)"
 		"Large Heat Shunt"
 		"Small Heat Shunt" 2
-		"Thermal Repeater Rifle" 150
 		"Thruster (Planetary Class)(Damaged)"
 		"Steering (Planetary Class)(Damaged)"
 		"Hyperdrive (Damaged)"
-		"Scrap Metal" 200
+		"Scrap Metal" 100
 	engine -37 343 .8
 	engine 0 343 .9
 	engine 37 343 .8
@@ -789,7 +794,7 @@ mission "Scrapyard: Efret Salvage License 1"
 		or
 			has "event: Korath Ranger Construction Completed"
 			has "event: Warmonger Construction Completed"
-		random < 40
+		random < 70
 	on offer
 		conversation
 			scene "scene/scene-korath weapons"
@@ -823,11 +828,11 @@ mission "Scrapyard: Efret Salvage License 2"
 		set "license: Efret Salvage"
 		event "access efret salvage"
 		conversation
-			`	You find Rek giving a presentation at a meeting of some sort. It appears to be about the colony at Sabira Eseskrai, though you can't figure out the details. After waiting for her to finish, you approach her. "These shadow creature attacks have caused some colonists to have second thoughts about settling on planets farther than the Quarg ring. I can't blame them. The ship I was on was also attacked. It was an unnerving experience. The worst part wasn't the attack itself. It was being stranded in space on a derelict with no power without knowing how long it would take for someone to rescue us... or if we'd even be rescued."`
+			`You find Rek giving a presentation at a meeting of some sort. It appears to be about the colony at Sabira Eseskrai, though you can't figure out the details. After waiting for her to finish, you approach her. "These shadow creature attacks have caused some colonists to have second thoughts about settling on planets farther than the Quarg ring. I can't blame them. The ship I was on was also attacked. It was an unnerving experience. The worst part wasn't the attack itself. It was being stranded in space on a derelict with no power and not knowing how long it would take for someone to rescue us... or if we'd even be rescued."`
 			choice
 				`	"It would help me fight the shadows if I were able to buy weapons from the Kor Efret."`
 			scene "outfit/efret salvage license"
-			`"Let's visit the outfitter and see if we can arrange something." After exchanging the customary greeting, Rek talks with the outfitter for a bit. The outfitter grabs something from the back of the shop and hands it to you. Rek translates, "Simply present this to any Kor Efret outfitter and they'll give you access to their stock of salvaged outfits."`
+			`	"You have a valid point. Let's visit the outfitter and see if we can arrange something." After exchanging the customary greeting, Rek talks with the outfitter for a bit. The outfitter grabs something from the back of the shop and hands it to you. Rek translates, "Simply present this to any Kor Efret outfitter and they'll give you access to their stock of salvaged outfits."`
 
 
 outfitter "Efret Salvage"
@@ -1353,7 +1358,6 @@ event "laki nemparu bullies defeated"
 	planet "Laki Nemparu"
 		add shipyard "Kor Efret Scrapyard"
 		add outfitter "Korath Basics"
-		add outfitter "Korath Fireswarm"
 		add outfitter "Efret Salvage"
 		add outfitter "Efret Salvage Advanced"
 

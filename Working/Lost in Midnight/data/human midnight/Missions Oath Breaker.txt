@@ -1036,14 +1036,28 @@ mission "Oathbreakers: CCOR Conscriptor 3"
 			outfitters "Ammo North"
 		ship "Cruiser (Heavy)" "Austerlitz"
 		on kill
+			fail "Oathbreakers: CCOR Conscriptor 1"
 			set "Oathbreakers: CCOR Conscriptor 3: done"
 			dialog "You've destroyed the Austerlitz. Its fleet of conscripted pirates will probably fall apart without the flagship to lead them."
 			fail
 
+mission "Oathbreakers: CCOR Conscriptor 1 Clearance Patch"
+	landing
+	invisible
+	to offer
+		has "Oathbreakers: CCOR Conscriptor 1: active"
+		or
+			has "Oathbreakers: CCOR Conscriptor 3: done"
+			has "Oathbreakers: CCOR Conscriptor 4: offered"
+			has "Oathbreaker Thermopylae: offered"
+	on offer
+		fail "Oathbreakers: CCOR Conscriptor 1"
+		fail
+
 mission "Oathbreakers: CCOR Conscriptor 4"
 	minor
 	name "The Austerlitz"
-	description "The Austerlitz fleet has set a siege on <destination>! Break the siege by destroying the fleet."
+	description "An Oathbreaker fleet lead by the Austerlitz has set a siege on <destination>! Break the siege by destroying the fleet."
 	source
 		government "Free Worlds"
 		attributes "south" "frontier" "rim"
@@ -1057,12 +1071,17 @@ mission "Oathbreakers: CCOR Conscriptor 4"
 		or
 			"midnight austerlitz escaped" >= 3
 			has "Oathbreakers: CCOR Conscriptor 3: aborted"
+			has "Oathbreakers: CCOR Conscriptor 1: aborted"
 		not "Oathbreaker Thermopylae: offered"
 		random < 70 - ( "austerlitz slacker" * 60 )
 	on offer
 		conversation
 			scene "thumbnail/cruiser"
+			branch Austerlitz
+				has "Oathbreakers: CCOR Conscriptor 1: aborted"
+				not "austerlitz aborted late intro"
 			`You are about to order a meal at one of the local dining establishments when the holo monitor broadcast is interrupted by an announcement. A strange Oathbreaker fleet from the Outer Rim laid siege on <destination>! It seems the Austerlitz fleet has resurfaced in Oathbreaker campaign against the Free Worlds. What will you do?`
+			label decision
 			choice
 				`	(Let the <planet> militia handle it.)`
 				`	(Join the battle.)`
@@ -1072,6 +1091,11 @@ mission "Oathbreakers: CCOR Conscriptor 4"
 			label join
 			`	You're technically still part of the Free Worlds. You cancel your order and head back to the <ship>. <planet> must be liberated!`
 				accept
+			label Austerlitz
+			action
+				set "austerlitz aborted late intro"
+			`You are about to order a meal at one of the local dining establishments when the holo monitor broadcast is interrupted by an announcement. A strange Oathbreaker fleet from the Outer Rim laid siege on <destination>! It seems rumors of the rogue navy Cruiser gathering a fleet from that region were true. This Cruiser, named Austerlitz, has joined Oathbreaker campaign against the Free Worlds. What will you do?`
+				goto decision
 	on defer
 		set "austerlitz slacker"
 	on accept
