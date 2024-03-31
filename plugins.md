@@ -1698,9 +1698,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/galactic.capital.investment/icon.png' height='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 1.86 mb | 2024-03-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 2.16 mb | 2024-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-31) <br>
 
 >Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
@@ -1710,7 +1710,6 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### galactic.capital.investment <br>
 <br>
 Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 1000 million credits.<br>
-(inspired by a-alhusaini's investment bank plugin)<br>
 <br>
 There are missions for 1 million, 5 million, 10 million, 50 million, 100 million and 1 billion credits. The chance for the jobs to appear on the job board getting lower with the amount to invest. Unfortunately you have to take off and land again on the same planet to clear the mission marker.<br>
 At 1 billion credits a longer mission chain starts and enables a reapeatable job board investment of 1 billion credits. The chain has some breaks and finish after a year.<br>
@@ -1726,6 +1725,10 @@ These investments pay off after 2,3 to 4,5 years. Higher Investments pay off fas
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-31<br>
+fixed some errors<br>
+changed scene pngs to jpg<br>
 <br>
 2024-03-20<br>
 changed icon<br>
@@ -3553,9 +3556,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.16 mb | 2024-03-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.66 mb | 2024-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-27) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-31) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3567,10 +3570,10 @@ Author: zuckung | Category: Outfits <br>
 <br>
 Adds unique crew members, aquireable through spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regeneration, more thrust, more cargo etc.<br>
 <br>
-Currently there are 80 expert crew members. Visit spaceports with an outfitter to find the missions(3% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
+Currently there are 85 expert crew members. Visit spaceports with an outfitter to find the missions(1% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Gegno, Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
 Their technology fields are: combat(8) cooling(8) energy(8) engine(8) fuel(8) hull(8) jamming(8) scanner(8) shield(8) storage(8).<br>
 In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
-They have the positive stats of a medium human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
+They have the positive stats of a small human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
 If you collect them all, you'll get a special mission<br>
 See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/crew.list.txt'>crew.list.txt</a> of this plugin for locations, and stat infos.<br>
 <br>
@@ -3578,6 +3581,11 @@ See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-04-01<br>
+added 5 gegno experts<br>
+changed mission chance from 3% to 1%<br>
+halfed most stats<br>
 <br>
 2024-03-27<br>
 added option to decline the hiring, they will be offered later again<br>
@@ -13364,9 +13372,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Prometheus-Flame/icon.png' height='100'></img><br>
 
 
-[Prometheus-Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometheus-Flame.zip) | 12.1 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometheus-Flame/) <br>
+[Prometheus-Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometheus-Flame.zip) | 4.06 mb | 2024-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometheus-Flame/) <br>
 Author: CruzEli | Category: Story <br>
-[https://github.com/CruzEli/Prometheus-Flame](https://github.com/CruzEli/Prometheus-Flame) (last commit 2023-04-28) <br>
+[https://github.com/CruzEli/Prometheus-Flame](https://github.com/CruzEli/Prometheus-Flame) (last commit 2024-03-31) <br>
 
 >A content expansion plugin that aims to overhaul the campaign and human content in general to make it relevant for mid and late game while introducing new ships, factions and storylines fleshing out the world of Endless Sky. It introduces a new corporation: "Paradeigm AT Group", a major player in the periphery which became vital to the Free Worlds war effort and later the development of human civilization.
 
@@ -13406,9 +13414,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/real.fluff/icon.png' height='100'></img><br>
 
 
-[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 2.66 mb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
+[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 3.02 mb | 2024-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-31) <br>
 
 >A bunch of side missions which reward unique fluffy pets. See the readme for details.
 >
@@ -13420,22 +13428,30 @@ Author: zuckung | Category: Story <br>
 <br>
 A bunch of side missions which reward unique pets. <br>
 <br>
-Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 10% chance of appearing, except alien mission which has  100%.<br>
+Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 20% chance of appearing, except alien mission which has 100%.<br>
 <ul>
 <li>Alien - land somewhere in human space, hidden destination is Danoa system</li>
 <li>Cat - mission found on Deadman's Cove (Almach)</li>
 <li>Ferret - mission found on Bivrost (Markeb)</li>
 <li>Hamster - mission found on Twinstar (Alniyat)</li>
 <li>Koala - mission found on New Portland (Delta Sagittarii)</li>
-<li>Ocelot - mission found on Farpoint (Alnitak) needs 100 combat xp</li>
+<li>Ocelot - mission found on Farpoint (Alnitak) needs 1000 combat xp</li>
 <li>Rabbit - mission found on Starcross (Acrux)</li>
 <li>Raccoon - mission found on Foundry (Achernar)</li>
 <li>Squirrel - mission found on Heartvalley (Io Lowe, Hai space)</li>
 </ul>
+After collecting them all, you get a missions (20%) with unique rewards.<br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/real.fluff/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-31<br>
+new category pets<br>
+gave puny an image and added to pets<br>
+a new missions, after collecting all pets, with a unique reward<br>
+converted scene pngs to jpg<br>
+minor tweaks<br>
 <br>
 2024-03-15<br>
 bugfixes<br>
