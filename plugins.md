@@ -1068,9 +1068,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/World Forge/icon.png' height='100'></img><br>
 
 
-[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.1 kb | 2024-02-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
+[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.1 kb | 2024-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
 Author: Amazinite | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2024-02-03) <br>
+[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2024-04-01) <br>
 
 >"This plugin was made to allow content creators to have access to all outfits in a single place, for the purpose of designing and testing outfit loadouts for new ships. Of course, it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it."
 >World Forge does this as well, but extends this: not only all outfits in one place, but sorted by race additionally, a way to change the swizzle(derived from ProjectRunabout), a easy way to add own outfits and ships into the existing scheme, and  missions to change your reputation with factions! 
@@ -7454,9 +7454,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-03-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-03-21) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-04-02) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -9311,9 +9311,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Lampyrid Start/icon.png' height='100'></img><br>
 
 
-[Lampyrid.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lampyrid.Start.zip) | 41.0 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lampyrid%20Start/) <br>
+[Lampyrid.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lampyrid.Start.zip) | 55.88 kb | 2024-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lampyrid%20Start/) <br>
 Author: Zitchas | Category: Ships <br>
-[https://github.com/Zitchas/ES_Lampyrid_Start](https://github.com/Zitchas/ES_Lampyrid_Start) (last commit 2022-02-27) <br>
+[https://github.com/Zitchas/ES_Lampyrid_Start](https://github.com/Zitchas/ES_Lampyrid_Start) (last commit 2024-04-02) <br>
 
 >Alternate start with Lampyrid ship.
 >
@@ -9329,7 +9329,17 @@ Be warned, however, that all is not peace, prosperity, and clear skies: Despite 
 
 So long as you can avoid the pirates, this will be an easier and faster start than the standard ones. The pirate risk can make it a little riskier and slightly more challenging, though. Just think of them as Reavers, and it'll be just like flying in the Firefly universe.
 
+This plugin adds four starts:
+- Normal start, which is identical to the usual new pilot experience except starting with a "Lampyrid Mk. III" ship.
+- 3011 start, which is identical to the normal start, except you start one year early. This means you have a year to get used to the galaxy before the war starts.
+- 3010 start, which is identical to the normal start, except you start two years early.
+- 3011 no-loan start. This start has you begin a year early compared to the default ES new game, and instead of starting with a loan, you just have 10k credits and your "Lampyrid Mk. III" spaceship.
+- The Deep start. This is intended to be on par with the default start, just that you start in the Deep instead of the Dirt Belt.
+- The Paradise start. This is an easier start, without the pressure of a mortgage to pay off and startinng in a safer area.
+- The South start. This is a harder start in a more dangerous area.
+
 Copyright Zitchas @ 2021
+Copyright Zitchas @ 2022
 
 </blockquote>
 </details>
