@@ -7454,9 +7454,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-04-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.23 mb | 2024-04-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-04-03) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-04-04) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -11468,9 +11468,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 128.75 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 804.69 kb | 2024-04-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-04) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -11481,19 +11481,30 @@ Author: zuckung | Category: Story <br>
 <br>
 This plugin adds some missions to destroy Korath ships, which enable job board missions for raising the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships.<br>
 <br>
-Unlocking the planet with all ships needs 100 reputation. Unlocking the last of the planets needs 500 reputation.<br>
+Unlocking the planets is based on reputation, so you get access step by step. Unlocking the last of the planets(with the big shipyard) needs 500 reputation.<br>
 <br>
 10 rep for vanilla first contact mission<br>
 20 rep for the first mission which unlocks repeatable jobs.<br>
-5-10 rep for repeatable jobs<br>
+5-9 rep for repeatable passenger/rush/cargo jobs<br>
 10 rep for Korath ship killing job<br>
-At 100 rep the second mission starts, which gives 30 rep and unlocks the second repeatable fighting job which gives 30 rep.<br>
-At 200 rep the third mission starts, which gives 40 rep and unlocks the third repeatable fighting job which gives 40 rep.<br>
+At 100 rep the second mission starts, which gives 30 rep and unlocks the second repeatable fighting job for 30 rep.<br>
+At 200 rep the third mission starts, which gives 40 rep and unlocks the third repeatable fighting job for 40 rep.<br>
+At 300 rep a culture conversation starts, which enables the criminal hunting job for 12 to 14 rep<br>
+At 500 rep you are done and get the last mission, its an escort mission with a gift at the end<br>
+Averagely you have to do 50 jobs.<br>
 <br>
-Since it's often questioned, here is a guide to the bunrodea first contact mission. Travel through Bunrodea territory till you killed at least one Bunrodea ship, then fly to the human pirate system Misam, start and land there till you get a mission(10% on landing), that mission brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
+Since it's often questioned, here guide to the bunrodea first contact mission. Travel through Bunrodea territory till you killed at least one attacking Bunrodea ship, then fly to the human pirate system Misam, start and land there till you get a mission(10% on landing), that mission brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-04-04<br>
+added lots of spaceport news, with portraits<br>
+added 3 new medium transport jobs<br>
+changed execution culture conversation and jobs to 300 rep<br>
+changed korath defense missions from landing to spaceport, and added choice to defer<br>
+changed reputation needed on Bunthro and Erabuthro to reflect the progression<br>
+changed chance for the 577 worldship to 10%<br>
 <br>
 2024-03-15<br>
 bugfixes<br>
@@ -15469,7 +15480,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Sounds Of Endless Sky
 
 
-[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 51.59 mb | 2024-02-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sounds%20Of%20Endless%20Sky/) <br>
+[Sounds.Of.Endless.Sky.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sounds.Of.Endless.Sky.zip) | 51.59 mb | 2024-04-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sounds%20Of%20Endless%20Sky/) <br>
 Author: samrocketman | Category: N/A <br>
 [https://github.com/samrocketman/sounds-of-endless-sky](https://github.com/samrocketman/sounds-of-endless-sky) (last commit 2024-02-11) <br>
 
