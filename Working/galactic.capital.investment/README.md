@@ -17,6 +17,10 @@ These investments pay off after 2,3 to 4,5 years. Higher Investments pay off fas
 <br>
 Changelog:<br>
 <br>
+2024-04-05<br>
+removed duplicate pngs<br>
+resized land jpg<br>
+<br>
 2024-03-31<br>
 fixed some errors<br>
 changed scene pngs to jpg<br>
@@ -32,5 +36,5 @@ added a new rare repeatable job after the colonization chain<br>
 added plugin.txt<br>
 <br>
 2023-08-25<br>
-added pirate planets as mission source
-moved investment missions from spaceport mission to job board
+added pirate planets as mission source<br>
+moved investment missions from spaceport mission to job board<br>
