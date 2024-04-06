@@ -173,9 +173,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 174.5 kb | 2024-03-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 268.67 kb | 2024-04-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-23) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-06) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -191,9 +191,10 @@ Makes person ships captureable.<br>
 Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesnt flee. And changed "Zitchas" personality to "decloaked", so it doesnt flee and regenerate while cloaked.<br>
 So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
 <br>
-At every job board you can find a repeatable job that displays which persons you have already killed, which is alive and where to find it<br>
+At Earths job board you can find a repeatable job that displays which persons you have already killed, which is alive and where to find it.<br>
+After you've killed them all, you receive a small unique gift.<br>
 <br>
-Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
+Tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/captureable.person.ships/screenshot.jpg' width='400'>
 <ul>
@@ -216,6 +217,10 @@ Tested this plugin with 10x KIV349 and 10x Model512, all equipped with Mereti be
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-04-06<br>
+set person killed job back to earth only, less annoying when you are done<br>
+added a mission with unique reward, after killing all person ships<br>
 <br>
 2024-03-23<br>
 set "no person spawn weight" to 0<br>
@@ -8659,9 +8664,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Derogam/icon.png' height='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.73 mb | 2023-08-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.66 mb | 2024-04-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
 Author: Lorantine | Category: Ships <br>
-[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2023-08-15) <br>
+[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-04-06) <br>
 
 >A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
