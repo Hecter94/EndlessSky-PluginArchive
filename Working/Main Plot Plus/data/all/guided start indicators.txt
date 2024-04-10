@@ -1,0 +1,118 @@
+mission "Guided Start: Free Worlds"
+    name "Join the Free Worlds"
+    description "Head to 'Bourne' to join the Free Worlds."
+    priority
+    repeat
+    clearance
+    to offer
+        has "guided start: fw"
+        not "neutral spaceport deadline"
+        not "Guided Start: Free Worlds: active"
+    to complete
+        never
+    to fail
+        has "chosen sides"
+    source
+        near Sol 100
+    destination "Bourne"
+    on offer
+        conversation
+            `Granted clearance and marked the location of 'Bourne' on your map.`
+                accept
+
+
+mission "Guided Start: Neutrality"
+    name "Choose neutrality"
+    description "Head to '<planet>' to choose neutrality."
+    priority
+    repeat
+    clearance
+    to offer
+        has "guided start: neutral"
+        not "neutral spaceport deadline"
+        not "Guided Start: Neutrality: active"
+    to complete
+        never
+    to fail
+        or
+            has "chosen sides"
+            has "Neutrality 2: declined"
+    source
+        near Sol 100
+    destination
+        system "Zeta Aquilae" "Rasalhague" "Orvala" "Vega" "Altair" "Delta Capricorni" "Alderamin"
+    on offer
+        conversation
+            `Granted clearance and marked the location of '<planet>' on your map.`
+                accept
+
+
+mission "Guided Start: Crisis in Management"
+    name "Side with the Syndicate"
+    description "Head to 'Crossroads' and use the spaceport to side with the Syndicate."
+    priority
+    repeat
+    clearance
+    to offer
+        has "guided start: scs"
+        not "neutral spaceport deadline"
+        not "Guided Start: Crisis in Management: active"
+    to complete
+        never
+    to fail
+        or
+            has "chosen sides"
+            has "guided start: changed mind"
+    source
+            near Sol 100
+            not planet "Crossroads"
+    destination "Crossroads"
+    on offer
+        conversation
+            `Do you want to set a reminder to visit the Crossroads spaceport?`
+            choice
+                (Yes)
+                (No)
+                    goto "map"
+            action
+                set "guided start: scs spaceport reminder"
+            `Spaceport reminder set.`
+            label "map"
+            `Do you want to receive clearance and mark the location of Crossroads on your map?`
+            choice
+                (Yes)
+                (No)
+                    decline
+            `Granted clearance and marked the location of 'Crossroads' on your map.`
+                accept
+    on fail
+        clear "guided start: scs spaceport reminder"
+
+
+mission "Guided Start: ScS Spaceport Reminder"
+    invisible
+    landing
+    repeat
+    to offer
+        has "guided start: scs spaceport reminder"
+        has "Guided Start: Crisis in Management: active"
+    source "Crossroads"
+    on offer
+        conversation
+            branch "reminder"
+                "guided start: unsure" == 3
+            `Do you still want to side with the Syndicate?`
+            choice
+                `(Yes)`
+                    goto "reminder"
+                `(No)`
+            action
+                set "guided start: changed mind"
+                fail "Guided Start: Crisis in Management"
+            `Land on any planet to receive another prompt to select a side.`
+                decline
+
+            label "reminder"
+            `Remember, you must visit the spaceport to side with the Syndicate.`
+                decline
+

@@ -1,0 +1,191 @@
+ship "Aerie" "Aerie (Research)"
+    remove bays
+    bay "Drone" -43.5 2
+        "launch effect" "human internal"
+    bay "Drone" 43.5 2
+        "launch effect" "human internal"
+    outfits
+        "A250 Atomic Thruster"
+        "A255 Atomic Steering"
+        "Cooling Ducts"
+        "D41-HY Shield Generator"
+        "Heavy Anti-Missile Turret"
+        "Heavy Laser Turret" 2
+        Hyperdrive
+        "KP-6 Photovoltaic Panel" 2
+        "LP072a Battery Pack"
+        "Large Radar Jammer"
+        "Laser Rifle" 3
+        "NT-200 Nucleovoltaic"
+        Ramscoop 2
+        "Sidewinder Missile" 90
+        "Sidewinder Missile Launcher" 2
+    description "This is a variation on the Lionheart Aerie, replacing its fighter bays with a complement of drone bays instead, intended to be used for scientific research."
+
+ship "Aerie" "Aerie (Drones)"
+    remove bays
+    bay "Drone" -43.5 2
+        "launch effect" "human internal"
+    bay "Drone" 43.5 2
+        "launch effect" "human internal"
+    outfits
+        "A250 Atomic Thruster"
+        "A255 Atomic Steering"
+        "Cooling Ducts"
+        "D41-HY Shield Generator"
+        "Heavy Anti-Missile Turret"
+        "Heavy Laser Turret" 2
+        Hyperdrive
+        "KP-6 Photovoltaic Panel" 2
+        "LP072a Battery Pack"
+        "Large Radar Jammer"
+        "Laser Rifle" 3
+        "NT-200 Nucleovoltaic"
+        Ramscoop 2
+        "Sidewinder Missile" 90
+        "Sidewinder Missile Launcher" 2
+    description "This is a variation on the Lionheart Aerie, replacing its fighter bays with a complement of drone bays instead, intended to be used for scientific research, but also popular amongst miners."
+
+ship "Aerie" "Aerie (Drone Miner)"
+    outfits
+        "Mining Laser" 2
+        "Mining Laser Turret" 2
+        "Tractor Beam"
+
+        "Asteroid Scanner" 2
+        "NT-200 Nucleovoltaic"
+        "KP-6 Photovoltaic Panel" 2
+        "LP072a Battery Pack"
+        "D67-TM Shield Generator"
+        "Cargo Expansion"
+        "Large Radar Jammer"
+        "Laser Rifle" 3
+
+        "X1100 Ion Reverse Thruster"
+        "X3700 Ion Thruster"
+        "X3200 Ion Steering"
+        "Hyperdrive"
+    gun "Mining Laser"
+    gun "Mining Laser"
+    turret "Tractor Beam"
+    turret "Mining Laser Turret"
+    turret "Mining Laser Turret"
+
+    remove bays
+    bay "Drone" -43.5 2
+        "launch effect" "human internal"
+    bay "Drone" 43.5 2
+        "launch effect" "human internal"
+    description "This is a variation on the Lionheart Aerie, replacing its fighter bays with a complement of drone bays instead, intended to be used for scientific research, but also popular amongst miners."
+
+ship "Science Drone" "Science Drone (Purchasable)"
+    add attributes
+        "atmosphere scan" 100
+        "drag" 100
+        "energy capacity" .000009
+        "thrust" .00001
+        "thrusting energy" .00001
+        "turn" .00001
+        "turning energy" .00001
+    "description" "The Deep Science Drone is a civilian version of the Surveillance Drone, which can still collect atmospheric data but cannot move or scan ships."
+
+fleet "Deep Research"
+    government "Deep Security"
+    names "deep"
+    fighters
+        names "deep fighter"
+    cargo 0
+    personality
+        coward disables frugal merciful opportunistic secretive surveillance timid
+    variant
+        "Aerie (Research)"
+        "Science Drone (Purchasable)" 2
+
+shipyard "All Ships"
+    "Aerie (Drones)"
+    "Science Drone (Purchasable)"
+
+shipyard "Deep Research"
+    "Aerie (Research)"
+    "Science Drone (Purchasable)"
+
+mission "Deep Research Ships Timer"
+    invisible
+    landing
+    to offer
+        has "Deep: Project Hawking: done"
+    on offer
+        event "deep research ships available" 180
+        event "miners use drone aerie" 240
+        fail
+
+event "deep research ships available"
+    planet Asgard
+        shipyard "Deep Research"
+    planet Valhalla
+        shipyard "Deep Research"
+    system Aspidiske
+        fleet "Deep Research" 10000
+    system Algieba
+        fleet "Deep Research" 20000
+    system "Epsilon Leonis"
+        fleet "Deep Research" 30000
+    system Gomeisa
+        fleet "Deep Research" 30000
+    system Naos
+        fleet "Deep Research" 30000
+    system Zosma
+        fleet "Deep Research" 30000
+    system Fala
+        fleet "Deep Research" 40000
+    system Lolami
+        fleet "Deep Research" 40000
+    system Mora
+        fleet "Deep Research" 40000
+    system Limen
+        fleet "Deep Research" 50000
+    system Orbona
+        fleet "Deep Research" 60000
+    system Regor
+        fleet "Deep Research" 60000
+    system Terminus
+        fleet "Deep Research" 60000
+    system "Tania Australis"
+        fleet "Deep Research" 90000
+
+event "miners use drone aerie"
+    shipyard "Deep Research"
+        remove "Aerie (Research)"
+        add "Aerie (Drones)"
+    fleet "Deep Research"
+        remove variant
+            "Aerie (Research)"
+            "Science Drone (Purchasable)" 2
+        add variant
+            "Aerie (Drones)"
+            "Science Drone (Purchasable)" 2
+    fleet "Human Miners"
+        remove variant
+            "Aerie (Miner)"
+            "Dagger" 2
+        remove variant
+            "Aerie"
+            "Dagger (Miner)" 2
+        remove variant
+            "Sunder"
+            "Mining Drone" 2
+        remove variant
+            "Sunder"
+            "Mining Drone" 2
+        remove variant
+            "Sunder (Heavy)"
+            "Mining Drone" 2
+        add variant 12
+            "Aerie (Drone Miner)"
+            "Mining Drone" 2
+        add variant
+            "Sunder (Heavy)"
+            "Mining Drone" 2
+        add variant
+            "Sunder"
+            "Mining Drone" 2

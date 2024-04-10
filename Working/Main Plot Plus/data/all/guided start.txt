@@ -1,0 +1,191 @@
+mission "Guided Start Prompt"
+    invisible
+    landing
+    on offer
+        conversation
+            `Would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
+            choice
+                `(Enable Guided Start)`
+                `(Disable Guided Start)`
+                    decline
+            action
+                set "enabled guided start"
+            `Guided start has been enabled.`
+                decline
+
+mission "Guided Start"
+    deadline 90
+    invisible
+    landing
+    repeat
+    to offer
+        "year" >= 3017
+        not "chosen sides"
+        not "Guided Start: active"
+        has "enabled guided start"
+        "guided start: unsure" <= 3
+    to complete
+        never
+    source
+        near Sol 100
+    on offer
+        clear "FW Commitment: aborted"
+        clear "ScS Catch a Fly: declined"
+        clear "neutral spaceport deadline"
+        clear "guided start: fw"
+        clear "guided start: neutral"
+        clear "guided start: scs"
+        conversation
+            branch "repeat"
+                has "Guided Start: failed"
+            `It has been several years since the bombing of Geminus and Martini. Do you really want to choose a side in the human civil war?`
+                goto "choose to choose"
+            label "repeat"
+            `Either you have rejected the side you previously chose, or you have chosen a side and then not joined it for several months. Do you really still want to choose a side in the human civil war?`
+            `This is your last attempt to choose a side. If you reject your chosen side again and don't find a way to choose a side the standard way, the war will never be finished.`
+                to display
+                    "guided start: unsure" == 3
+            label "choose to choose"
+            choice
+                `(Choose a side)`
+                `(Don't choose a side)`
+                    goto "not chosen sides"
+            `Select which side to join.`
+            label "choose remaining sides"
+            choice
+                `(Join the Free Worlds)`
+                    goto "free worlds"
+                `(Join the Syndicate)"`
+                    goto "syndicate"
+                    to display
+                        not "no scs"
+                `(Join the Navy)`
+                    to display
+                        not "navy campaign when"
+                `(Actually, don't choose a side)`
+                    goto "not chosen sides"
+
+            action
+                set "navy campaign when"
+            `Sorry, the Navy campaign isn't implemented yet. Which side do you want to join instead?`
+                goto "choose remaining sides"
+
+            label "free worlds"
+            branch "fw repeat"
+                has "Guided Start: failed"
+            action
+                set "FW Commitment: offered"
+                set "guided start: fw"
+            label "fw repeat"
+            action
+                clear "navy campaign when"
+                clear "no scs"
+            branch "fw in progress"
+                has "FW Commitment: active"
+            branch "at bourne"
+                has "flagship planet: Bourne"
+            `Conditions set. Head to the planet 'Bourne' to join the Free Worlds. If you aren't sure where this is or need clearance, depart and land or reload your save, then head over to this planet's spaceport to ping the destination on your map and receive clearance.`
+                accept
+
+            label "at bourne"
+            `Conditions set. Depart from this planet and land again or reload your save to join.`
+                accept
+
+            label "fw in progress"
+            action
+                set "neutral spaceport deadline"
+            branch "deferred fw commitment"
+                has "flagship planet: Bourne"
+            `You have an active offer to join the Free Worlds. Head on over to the planet 'Bourne' as specified by the offer to join.`
+                accept
+
+            label "deferred fw commitment"
+            `You have an active offer to join the Free Worlds. Depart from this planet and land again or reload your save to join.`
+                accept
+
+
+            label "syndicate"
+            branch "no scs"
+                and
+                    # Test to make sure installed plugin autocondition works.
+                    has "installed plugin: Main Plot Plus"
+                    not "installed plugin: endless-sky-syndicate"
+
+            branch "fully supported"
+                has "installed plugin: Main Plot Plus"
+
+            action
+                set "installed plugin: Main Plot Plus"
+            `You are using an older version of the game, which does not support testing if a plugin is installed. Do you have the 'Crisis in Management' plugin installed?`
+            choice
+                `(I have the plugin installed.)`
+                `(I do not have the plugin installed.)`
+                    goto "no scs"
+            action
+                set "installed plugin: endless-sky-syndicate"
+
+            label "fully supported"
+            branch "scs repeat"
+                has "Guided Start: failed"
+            action
+                set "ScS Check the Navy: done"
+                set "guided start: scs"
+            label "scs repeat"
+            action
+                clear "ScS Catch a Fly 1: offered"
+                clear "no scs"
+                clear "navy campaign when"
+            branch "at crossroads"
+                has "flagship planet: Crossroads"
+            `Conditions set. Head to the planet 'Crossroads' and enter the spaceport to side with the Syndicate. If you aren't sure where this is or need clearance, depart and land or reload your save and head over to this planet's spaceport to ping the destination on your map and receive clearance.`
+                accept
+            label "at crossroads"
+            action
+                set "neutral spaceport deadline"
+            `Conditions set. Depart and land or reload your save, then enter this planet's spaceport to side with the Syndicate.`
+
+            label "no scs"
+            action
+                set "no scs"
+            `Sorry, the Syndicate campaign isn't implemented yet. However, there is a plugin called 'Crisis in Management' that adds an alternative start where you can join the Syndicate.`
+                goto "choose remaining sides"
+
+            label "not chosen sides"
+            action
+                clear "no scs"
+                clear "navy campaign when"
+                clear "Neutrality 2: offered"
+                set "guided start: neutral"
+                set "pug reputation override"
+            branch "neutral repeat"
+                has "Guided Start: failed"
+            action
+                event "pug notice neutrality"
+            label "neutral repeat"
+            branch "last attempt"
+                "guided start: unsure" == 3
+            `Conditions set. To choose neutrality, head to one of the near Earth planets where a system that cannot be navigated to by hyperdrive is included inside the circle that appears on your map around the system you are in. If you need clearance or aren't sure where these are or what this means, depart and land or reload your save and head over to this planet's spaceport to ping a suitable destination on your map and receive clearance.`
+                accept
+            label "last attempt"
+            `Conditions set. This is your last attempt to choose neutrality. If you reject neutrality and don't find a way to choose a side the standard way, the war will never be finished. To choose neutrality, head to one of the near Earth planets where a system that cannot be navigated to by hyperdrive is included inside the circle that appears on your map around the system you are in. If you need clearance or aren't sure where these are or what this means, depart and land or reload your save and head over to this planet's spaceport to ping a suitable destination on your map and receive clearance.`
+                accept
+    on enter
+    on enter
+        set "neutral spaceport deadline"
+
+mission "Guided Start: Changed Mind"
+    invisible
+    landing
+    repeat
+    to offer
+        not "chosen sides"
+        or
+            has "FW Commitment: aborted"
+            has "Neutrality 2: declined"
+            has "guided start: changed mind"
+    on offer
+        clear "FW Commitment: aborted"
+        clear "guided start: changed mind"
+        clear "Neutrality 2: declined"
+        "guided start: unsure" ++
+        fail "Guided Start"

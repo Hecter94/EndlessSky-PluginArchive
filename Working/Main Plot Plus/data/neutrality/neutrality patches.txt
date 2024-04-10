@@ -1,0 +1,170 @@
+disable mission "Paradise Fortune 4"
+
+# Based on the "liberation of poisonwood" event in "campaign events.txt"
+event "Poisonwood description patch"
+    planet "Poisonwood"
+        spaceport `The starport is a hodgepodge of small metal structures, built from the remains of Navy and pirate ships that fought for control of this world. The locals are unusually courteous and proud to welcome you to their planet.`
+        spaceport `    The tavern in the center of the port is named The Parting Glass. Its walls are covered with photographs from after the war: liberated slaves boarding Navy ships to leave this planet that had brought them so much pain; Navy officers leaving their ships to retire on this world that they liberated; friends gone away; friends left behind. There are newer pictures, too: a Cruiser and two Falcons, side by side; armored troops walking away from a factory; a free worlds captain talking to a man. It is a strange feeling to sit here so deeply immersed in signs of a history that you had no part in.`
+
+event "reputation patch"
+    planet "Martini"
+        "required reputation" 10
+    planet "Thrall"
+        "required reputation" 0
+    planet "Geminus"
+        "required reputation" 10
+    planet "Hestia"
+        "required reputation" 0
+    planet "Vinci"
+        "required reputation" 0
+    planet "Vail"
+        "required reputation" 0
+    planet "Calda"
+        "required reputation" 0
+    planet "Pearl"
+        "required reputation" 0
+    planet "Glory"
+        "required reputation" 0
+    planet "Farseer"
+        "required reputation" 0
+    planet "Ada"
+        "required reputation" 2
+    planet "Hermes"
+        "required reputation" 10
+    planet "Mainsail"
+        "required reputation" 0
+
+# Taken almost entirely from "Paradise Fortune 4" in "human missions.txt"
+mission "Paradise Fortune 4 (patched)"
+    name `Exchange of Goods`
+    description `Travel to <destination> and hand the backpack of credits and Diana Howl's note over to the Navy.`
+    landing
+    to offer
+        has "Paradise Fortune 3: done"
+    source "Bourne"
+    destination "New Boston"
+    on offer
+        conversation
+            `While in flight, Diana tells you the stories that she heard of the war. In the Paradise Planets region, they were told that declaring independence and bombing Geminus and Martini was the Free Worlds' first step in overthrowing the Republic.`
+            `    "We should talk to Alondo," Diana says. "He'll be able to handle this situation."`
+            branch "knows alondo"
+                or
+                    has "FW Escort Second Chance: offered"
+                    has "free worlds plot completed"
+            `    "Alondo?" you ask.`
+            `    At this, Diana puts her head down.`
+            `    "You don't know? He was part of the Free Worlds council. Here, why don't you contact him. I'll give you his information and wait outside." Diana scribbles something down and hands it to you. As soon as you land, she then storms off, making an effort to create as much noise as possible with the stomps of her feet.`
+            `    You try to use the information given to contact Alondo, but he doesn't pick seem to pick up. Either the contact information was wrong, or Alondo is not available at this time. After trying several times, you give up, but when you try to go outside to find Diana, you notice that she has left her backpack and a written note. The paper has noticeable tear stains in one of the corners.`
+                goto letter
+
+            label "knows alondo"
+            `    As you're coming in for a landing, you contact Alondo, who is luckily on Bourne. "What have you gotten yourself into?" he responds after you mention that you need his help.`
+            choice
+                `    "I'll explain the situation when we meet."`
+
+            label conversation
+            `    You meet with Alondo at his office in the Free Worlds Senate building. After he and Diana exchange greetings, you explain the situation to him.`
+            `    "You what?" Alondo responds. "You have to turn her in. The war may be over, Captain, but there is still tension between the Republic and Free Worlds that we cannot have a situation like this exacerbating."`
+            `    "You can't do that!" Diana yells in protest. "I thought the Free Worlds was supposed to be all about going against the Republic, but you're just going to give in?"`
+            `    "Look here, kid," Alondo says in a stern tone. "The Free Worlds was never about being against the Republic, it was only ever about being against Parliament. There's a big difference there. What you've done is a crime, even to the Free Worlds. We are not about to gain a reputation of harboring criminals of the Republic."`
+            `    Diana, instead of protesting further, puts her head down. "I'll be in your ship, Captain," she says. Diana storms off, making an effort to create as much noise as possible with the stomps of her feet.`
+            `    "Spoiled kid," Alondo says quietly. "Attitudes like that are why I joined the Southern Defense Pact. Anyway Captain, I suggest you hand her over to the Navy immediately. I'll contact the Republic if you need me to."`
+            choice
+                `    "Alright, I'll hand her over."`
+                `    "Sorry, Alondo, but I agree with her cause."`
+                    goto agree
+
+            action
+                set "navy contacted"
+            `    Alondo breathes a sigh of relief. "You should probably go check on her. I'll message you where the Navy wants to pick her up."`
+                goto end
+
+            label agree
+            `    "I understand. Please, just don't drag the Free Worlds into this."`
+
+            label end
+            `    You say goodbye to Alondo and return to your ship. When you arrive and look around, Diana is notably absent. In your pilot's seat she has left her backpack and a written note. The paper has noticeable tear stains in one of the corners.`
+
+            label letter
+            ``
+            `Dear <first> <last>,`
+            `    I don't care about the credits anymore, but I can't go back to my family. I'll be too much of a disgrace, and I can't even imagine looking my parents in the eyes after what I've done. I've left the credits with you. You can do with them as you wish.`
+            `    I've taken this chance to escape from my old life. I want to become my own person in the world, and I want to do it on my own. Please don't come looking for me, because wherever I am I'll be happier than when I was with my parents. I've failed myself today, but I'm still going to strive for the betterment of the less fortunate. Thank you for trying to make my dreams come true, even if you couldn't succeed.`
+            `    Sincerely,`
+            `                Diana W. Howl`
+            ``
+            `    You stare down at the backpack, stuffed full with over half a billion credits.`
+            choice
+                `    (Hand the credits over to the Navy.)`
+                `    (Steal the credits.)`
+                    goto steal
+
+            branch navy
+                has "navy contacted"
+            `    You fold the note and slip it into the backpack so that you can show it to the Navy to explain why Diana is not with you. You contact the Navy's crime report hotline and tell them that you have the stolen credits. A few minutes later, they respond telling you that a fleet is waiting on <destination> to retrieve the credits.`
+                accept
+
+            label navy
+            action
+                clear "navy contacted"
+            `    You fold the note and slip it into the backpack so that you can show it to the Navy to explain why Diana is not with you. Alondo sends you a message, telling you that the Navy says they are waiting on <destination> for the credits.`
+                accept
+
+            label steal
+            `    You rip the note apart and begin counting the credits. In total, the backpack contains a whopping 525,894,400 credits. Over half a billion credits richer, you sit down and wonder what you will spend it on.`
+                decline
+    on complete
+        payment 1000000
+        conversation
+            `You spot a fleet of docked Navy ships as you come in for a landing. A small squad of troops gather around your ship after you land. You are greeted by a Navy officer upon exiting your ship and explain to him where Diana is, showing him the note she wrote.`
+            `    "That is unfortunate," he responds with a troubled look on his face. "We'll contact the Howl family about this." Before letting you go, the officer hands you <payment>. "This is the reward that Mr. Howl put out for the return of his credits. Thank you for doing the right thing, Captain."`
+        log "People" "Diana Howl" `A teenager who stole half a billion credits from her family's wealth, she decided to start a new life outside the Paradise Planets while you dutifully turned in the credits to the authorities to keep the peace. You received a substantial reward for your integrity.`
+    on accept
+        "reputation: Republic" >?= "stored reputation: Republic"
+    on decline
+        payment 525894400
+        "reputation: Republic" <?= -1000
+        log "People" "Diana Howl" `A teenager who stole half a billion credits from her family's wealth, she decided to start a new life outside the Paradise Planets while you decided to pocket the substantial fortune she left behind to avoid being hunted down.`
+
+# The same event but without unvisiting planets. Based on the "fwc navy retakes cebalrai" event in "campaign events.txt"
+event "fwc navy retakes cebalrai (patched)"
+    system "Cebalrai"
+        government "Republic"
+        fleet "Small Southern Merchants" 1000
+        fleet "Large Southern Merchants" 1500
+        fleet "Small Republic" 500
+        fleet "Large Republic" 600
+        fleet "Large Free Worlds" 5000
+    system "Menkent"
+        government "Republic"
+        fleet "Small Southern Merchants" 700
+        fleet "Large Southern Merchants" 1900
+        fleet "Small Republic" 300
+        fleet "Large Republic" 400
+        fleet "Large Free Worlds" 2000
+        fleet "Human Miners" 2000
+
+# prevents plugins like "Constellations" from blocking you from leaving, then allows you to return for heliarch expeditions
+event "pug flee (patched)"
+    system "Over the Rainbow"
+        remove object "Pug Wormhole"
+            sprite planet/wormhole
+        add object "Neutrality: Pug Wormhole"
+            sprite planet/wormhole
+    # This is to ensure heliarch expeditions isn't broken
+    system "Deneb"
+        remove object "Pug Wormhole"
+            sprite planet/wormhole
+            distance 2320.29
+            period 1788.27
+        add object "Neutrality: Pug Wormhole"
+            sprite planet/wormhole
+            distance 2320.29
+            period 1788.27
+
+planet "Neutrality: Pug Wormhole"
+    wormhole "Neutrality: Pug Wormhole"
+
+wormhole "Neutrality: Pug Wormhole"
+    link "Over the Rainbow" "Deneb"
+    link "Deneb" "Over the Rainbow"
