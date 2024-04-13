@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-04-13 | updated Plugin 'Zoura's Outfits Expanded' by Zoura | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
+2024-04-13 | updated Plugin 'snowfeather.robotics' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
+2024-04-13 | updated Plugin 'real.fluff' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-04-10 | new Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-04-10 | updated Plugin 'Prometheus-Flame' by CruzEli | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-04-10 | updated Plugin 'bunrodea.missions' by zuckung | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
@@ -17,9 +20,6 @@
 2024-04-04 | new Plugin 'Sounds Of Endless Sky' by samrocketman | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2024-04-03 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-04-02 | updated Plugin 'Lampyrid Start' by Zitchas | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2024-04-02 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-04-02 | updated Plugin 'World Forge' by Amazinite | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
-2024-03-31 | updated Plugin 'Prometheus-Flame' by CruzEli | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
