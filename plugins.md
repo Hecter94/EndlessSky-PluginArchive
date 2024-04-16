@@ -2199,9 +2199,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 25.74 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 1.62 mb | 2024-04-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-16) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -2210,7 +2210,7 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### more.boarding.missions <br>
 <br>
 <br>
-Adds 67 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer), Wanderer, Gegno Vi and Gegno Scin can trigger them. Bigger ships give higher rewards.<br>
+Adds 70 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer), Wanderer, Ka'het, Gegno Vi and Gegno Scin can trigger them. Bigger ships give higher rewards.<br>
 <br>
 <ul>
 <li> 7 Human assisting missions (by ship categories, 20% chance, 10.000 to 30.000 credits)</li>
@@ -2226,10 +2226,19 @@ Adds 67 repeatable boarding and assisting missions. Boarding/assisting Free Worl
 <li> 7 Wanderer assisting missions (by ship categories, 10% chance, 50.000 to 100.000 credits)</li>
 <li> 7 Gegno Scin assisting missions (by ship categories, 20% chance, 14.000 to 50.000 credits)</li>
 <li> 7 Gegno Vi assisting missions (by ship categories, 20% chance, 16.000 to 50.000 credits)</li>
+<li> 3 Ka'het boarding missions (by ship categories, 25-35% chance, 150.000 to 250.000 credits)</li>
+<li> support for plugin more.arfectas(6 pug farm boarding missions)</li>
 </ul>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/more.boarding.missions/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-04-16<br>
+added 3 Ka'het boarding missions<br>
+added 23 scene images, boarding looks great now<br>
+added support for plugin more.arfectas<br>
+reorganized/renamed files(delete old files on update)<br>
 <br>
 2024-03-15<br>
 bugfixes<br>
@@ -10486,6 +10495,50 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### RW Ships
+<img src='Working/RW Ships/icon.png' height='100'></img><br>
+
+
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.27 mb | 2024-04-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+Author: Anonymous | Category: Ships <br>
+N/A[]() (last commit 2024-04-16) <br>
+
+>A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+
+ESDD link: https://github.com/starmlerp/ESDefenseDronePlugin
+
+Alt. link: https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#defense-drone-plugin
+
+
+
+About the ships:
+
+CARGO DRONE - 
+An EV Nova classic that I always felt was missing from the game. Unarmed, cheap, and fast; they're designed to be able to keep up with (Heavy) Shuttles and be easy to keep buying more of in the early game as you can afford them to exponentially grow your profits on a small scale, but watch out for your piracy threat rating if you spam them. Later on, they can also be useful in conjunction with Mining Drones and the rest of the ships in this plugin to collect flotsam and such.
+
+MUDROCK - 
+A medium-heavy freighter/warship hybrid; intended to be comparable to the IDA Frigate from EV Nova, but kinda turned into its own thing. It's meant to look and feel like an older design, retaining a ramscoop, auxiliary solar power, and weak anti-missile defences. Modern refits can substantially improve the ship by using its extensive outfit space more efficiently. Size- and stat-wise it falls between the Hauler III and Behemoth, but with an unusually strong hull and an emphasis on outfits over cargo; it's also comparable to the Mule.
+
+GEMSTONE - 
+Basically an Aerie that carries 4 drones instead of 2 fighters. With 2 guns and 4 turret hardpoints, it's intended to be a versatile platform for carrying various utility items like Tractor Beams. Its large capacity relative to its mass makes it noticeably slower when fully loaded with both drones and cargo.
+
+DEEPVALE - 
+Big boy ship for some real industrial-scale asteroid sweeping. With 10 turrets and 8 drone bays, it can carry any utilities it might need and follow in the wake of its drones vacuuming up all the flotsam. Being designed with mining in mind, it is relatively fast for such a heavy ship, albeit not quite to the level of the Auxiliary and Bactrian.
+
+</blockquote>
+</details>
+
+Status: Complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Rymeilema Skylark
 <img src='Working/Rymeilema Skylark/icon.png' height='100'></img><br>
 
@@ -15157,7 +15210,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>35 plugins in this category.<p>
+<p>36 plugins in this category.<p>
 
 <details>
 
