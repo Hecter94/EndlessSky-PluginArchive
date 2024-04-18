@@ -10491,9 +10491,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/RW Ships/icon.png' height='100'></img><br>
 
 
-[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.27 mb | 2024-04-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.28 mb | 2024-04-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-N/A[]() (last commit 2024-04-16) <br>
+N/A[]() (last commit 2024-04-18) <br>
 
 >A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
