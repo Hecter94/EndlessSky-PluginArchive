@@ -116,6 +116,7 @@ mission "Midnight Add Kludge Blasters"
 		event "midnight add kludge blasters"
 		set "midnight added more kludge variants"
 		set "midnight scrounger patched"
+		set "midnight pirate scrounger patched"
 		fail
 
 event "midnight add kludge blasters"
@@ -129,6 +130,12 @@ event "midnight add kludge blasters"
 		add "Kludge Blaster"
 		add "Twin Kludge Blaster"
 		add "Kludge Blaster Turret"
+	shipyard "Northern Pirates"
+		add "Scrounger"
+	shipyard "Southern Pirates"
+		add "Scrounger"
+	shipyard "Core Pirates"
+		add "Scrounger"
 	fleet "Human Miners"
 		add variant 1
 			"Sparrow (Kludge Blaster)"
@@ -150,27 +157,27 @@ event "midnight add kludge blasters"
 			"Scrapper (Kludge Blaster)"
 		add variant 1
 			"Scrounger (Kludge Blaster)"
-		add variant 1
-			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
 	fleet "Small Southern Pirates"
 		add variant 1
 			"Scrapper (Kludge Blaster)"
 		add variant 1
 			"Scrounger (Kludge Blaster)"
-		add variant 1
-			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
 	fleet "Small Core Pirates"
 		add variant 1
 			"Scrapper (Kludge Blaster)"
 		add variant 1
 			"Scrounger (Kludge Blaster)"
-		add variant 1
-			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
 	fleet "Small Independent"
 		add variant 1
 			"Scrapper (Kludge Blaster)"
 		add variant 1
-			"Scrounger"
+			"Scrounger (Tractor)"
 	fleet "Small Southern Merchants"
 		add variant 1
 			"Scrounger"
@@ -250,17 +257,53 @@ event "midnight scrounger patch"
 		remove "Scrapper (Kludge Blaster)"
 		remove "Scrounger (Kludge Blaster)"
 		add "Scrapper"
-		add "Scrounger"
 	shipyard "Southern Pirates"
 		remove "Scrapper (Kludge Blaster)"
 		remove "Scrounger (Kludge Blaster)"
 		add "Scrapper"
-		add "Scrounger"
 	shipyard "Core Pirates"
 		remove "Scrapper (Kludge Blaster)"
 		remove "Scrounger (Kludge Blaster)"
 		add "Scrapper"
+
+mission "Midnight Pirate Scrounger Patch"
+	landing
+	invisible
+	to offer
+		has "event: midnight add kludge blasters"
+		not "midnight pirate scrounger patched"
+	on offer
+		event "midnight pirate scrounger patch"
+		fail
+
+event "midnight pirate scrounger patch"
+	shipyard "Northern Pirates"
 		add "Scrounger"
+	shipyard "Southern Pirates"
+		add "Scrounger"
+	shipyard "Core Pirates"
+		add "Scrounger"
+	fleet "Small Northern Pirates"
+		remove variant 1
+			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
+	fleet "Small Southern Pirates"
+		remove variant 1
+			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
+	fleet "Small Core Pirates"
+		remove variant 1
+			"Scrounger (Modified Blaster)"
+		add variant 2
+			"Scrounger (Tractor)"
+	fleet "Small Independent"
+		remove variant 1
+			"Scrounger"
+		add variant 1
+			"Scrounger (Tractor)"
+
 
 mission "Midnight Add Heavy Hauler"
 	landing
@@ -2939,17 +2982,7 @@ event "add modified clippers"
 			"Hawk" 2
 	fleet "Hired Guns"
 		add variant 1
-			"Leviathan (Laser)"
-			"Modified Clipper (Bounty Hunter)" 2
-		add variant 1
 			"Falcon (Laser)"
-			"Modified Clipper (Bounty Hunter)" 2
-		add variant 1
-			"Vanguard (Particle)"
-			"Modified Clipper (Bounty Hunter)" 2
-		add variant 1
-			"Bactrian (Hired Gun)"
-			"Dagger" 3
 			"Modified Clipper (Bounty Hunter)" 2
 	fleet "Human Miners"
 		add variant 1
@@ -3315,14 +3348,14 @@ event "add midnight navy surplus ships"
 			"Missileboat"
 		add variant 1
 			"Patrolboat"
-			"Berserker (Strike)"
+			"Outrider"
 		add variant 1
 			"Missileboat"
-			"Berserker (Strike)"
+			"Outrider"
 		add variant 1
 			"Patrolboat"
 			"Missileboat"
-			"Headhunter (Particle)"
+			"Outrider" 3
 	fleet "Hired Guns"
 		add variant 1
 			"Patrolboat" 3
@@ -3504,5 +3537,454 @@ event "midnight add human fuel logistics"
 			"Deuterium Tanker"
 			"Splinter"
 
+mission "Midnight Add Heavy Freighters"
+	landing
+	invisible
+	on offer
+		event "midnight add heavy freighters"
+		fail
 
+event "midnight add heavy freighters"
+	shipyard "Syndicate Advanced"
+		add "Light Freighter"
+		add "Heavy Freighter"
+	fleet "Small Southern Merchants"
+		add variant 1
+			"Light Freighter"
+		add variant 1
+			"Light Freighter (Blasters)"
+		add variant 1
+			"Star Barge" 2
+			"Light Freighter"
+		add variant 1
+			"Star Barge (Armed)" 2
+			"Light Freighter (Blasters)"
+		add variant 1
+			"Light Freighter"
+			"Sparrow"
+		add variant 1
+			"Light Freighter (Laser)"
+		add variant 1
+			"Light Freighter (Blasters)"
+			"Sparrow"
+		add variant 1
+			"Light Freighter (Laser)"
+			"Sparrow"
+	fleet "Large Southern Merchants"
+		add variant 1
+			"Heavy Freighter"
+			"Hawk"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Hawk"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Sparrow" 2
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+			"Sparrow" 2
+		add variant 1
+			"Bastion"
+			"Heavy Freighter"
+			"Freighter" 2
+			"Light Freighter"
+			"Star Barge" 2
+			"Fury"
+			"Sparrow" 2
+		add variant 1
+			"Bastion (Heavy)"
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)" 2
+			"Light Freighter (Laser)"
+			"Star Barge (Armed)" 2
+			"Fury (Missile)"
+			"Sparrow" 2
+	fleet "Small Core Merchants"
+		add variant 6
+			"Light Freighter (Blasters)"
+		add variant 3
+			"Heavy Freighter"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+		add variant 1
+			"Heavy Freighter (Proton)"
+		add variant 1
+			"Heavy Freighter"
+			"Wasp"
+		add variant 2
+			"Heavy Freighter"
+			"Star Barge (Armed)" 2
+		add variant 2
+			"Heavy Freighter"
+			"Shuttle" 2
+			"Quicksilver"
+		add variant 1
+			"Heavy Freighter"
+			"Wasp" 2
+	fleet "Large Core Merchants"
+		add variant 3
+			"Heavy Freighter"
+			"Freighter"
+			"Quicksilver" 2
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+		add variant 1
+			"Heavy Freighter (Proton)"
+			"Freighter (Proton)"
+			"Quicksilver" 2
+		add variant 2
+			"Light Freighter (Blasters)"
+			"Star Barge (Armed)" 2
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Quicksilver" 2
+			"Splinter" 1
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+			"Light Freighter (Laser)" 2
+			"Quicksilver" 2
+			"Splinter (Laser)" 1
+		add variant 1
+			"Heavy Freighter (Proton)"
+			"Freighter (Proton)"
+			"Light Freighter (Proton)" 2
+			"Quicksilver" 2
+			"Splinter (Proton)" 1
+		add variant 1
+			"Heavy Freighter (Shields)"
+			"Freighter"
+			"Light Freighter"
+			"Star Barge" 2
+			"Protector" 1
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+			"Light Freighter (Laser)"
+			"Star Barge" 2
+			"Protector (Laser)" 1
+		add variant 1
+			"Heavy Freighter (Proton)"
+			"Freighter (Proton)"
+			"Light Freighter (Proton)"
+			"Star Barge" 2
+			"Protector (Proton)" 1
+	fleet "Small Northern Merchants"
+		add variant 1
+			"Heavy Freighter"
+			"Shuttle" 2
+		add variant 1
+			"Heavy Freighter"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+		add variant 1
+			"Heavy Freighter (Proton)"
+		add variant 1
+			"Heavy Freighter"
+			"Shuttle" 4
+		add variant 1
+			"Heavy Freighter"
+			"Modified Berserker"
+		add variant 1
+			"Heavy Freighter"
+			"Modified Berserker (Afterburner)"
+		add variant 1
+			"Heavy Freighter"
+			"Modified Berserker (Meteor Missile)"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Shuttle" 4
+		add variant 1
+			"Heavy Freighter (Proton)"
+			"Shuttle" 4
+		add variant 1
+			"Heavy Freighter"
+			"Freighter" 2
+			"Sparrow" 1
+	fleet "Large Northern Merchants"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Firebird"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Berserker (Limit Break)"
+			"Modified Berserker"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Berserker (Afterburner)"
+			"Berserker (Afterburner Limit Break)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Berserker (Meteor Missile)"
+			"Berserker (Strike Limit Break)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Firebird (Sidewinder)"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+			"Modified Firebird (Laser)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Firebird (Meteor)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Modified Firebird"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Modified Firebird (Sidewinder)"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)"
+			"Light Freighter (Laser)" 2
+			"Modified Firebird (Laser)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Modified Firebird (Meteor)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Corvette"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Corvette (Speedy)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Corvette (Missile)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Corvette"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Corvette (Speedy)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Corvette (Missile)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Corvette"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter" 2
+			"Light Freighter" 2
+			"Leviathan"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter" 2
+			"Light Freighter" 2
+			"Leviathan (Heavy)"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)" 2
+			"Light Freighter (Laser)" 2
+			"Leviathan (Laser)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)" 2
+			"Light Freighter" 2
+			"Leviathan"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter" 2
+			"Light Freighter" 2
+			"Sparrow" 2
+			"Modified Firebird"
+		add variant 1
+			"Heavy Freighter (Fancy)"
+			"Freighter (Fancy)" 2
+			"Light Freighter (Laser)" 2
+			"Sparrow" 2
+			"Modified Firebird (Laser)"
+		add variant 1
+			"Heavy Freighter (Proton)"
+			"Freighter (Proton)" 2
+			"Light Freighter (Proton)" 2
+			"Sparrow" 2
+			"Modified Firebird (Sidewinder)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)" 2
+			"Light Freighter" 2
+			"Sparrow" 2
+			"Modified Firebird (Hai Shields)"
+	fleet "Small Human Merchants (Hai)"
+		add variant 1
+			"Light Freighter"
+			"Shuttle" 2
+		add variant 1
+			"Heavy Freighter"
+		add variant 1
+			"Heavy Freighter (Hai)"
+		add variant 1
+			"Heavy Freighter"
+			"Shuttle" 4
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Modified Berserker"
+		add variant 1
+			"Heavy Freighter"
+			"Modified Berserker (Afterburner)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Shuttle" 4
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Sparrow" 1
+		add variant 1
+			"Light Freighter"
+			"Aphid"
+	fleet "Large Human Merchants (Hai)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Firebird (Hai Shields)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Berserker (Limit Break)"
+			"Modified Berserker"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Modified Berserker (Afterburner)"
+			"Berserker (Afterburner Limit Break)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Modified Firebird (Hai Weapons)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Modified Firebird (Meteor)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Light Freighter" 2
+			"Modified Firebird (Hai Shields)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Modified Firebird (Hai Weapons)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Modified Firebird (Meteor)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Corvette"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Corvette (Hai)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Corvette (Missile)"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter"
+			"Light Freighter" 2
+			"Corvette"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)"
+			"Light Freighter" 2
+			"Corvette (Hai)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)" 2
+			"Light Freighter" 2
+			"Leviathan"
+		add variant 1
+			"Heavy Freighter"
+			"Freighter" 2
+			"Light Freighter" 2
+			"Leviathan (Hai Weapons)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)" 2
+			"Light Freighter" 2
+			"Leviathan (Hai Engines)"
+		add variant 1
+			"Heavy Freighter (Hai)"
+			"Freighter (Hai)" 2
+			"Light Freighter" 2
+			"Sparrow" 2
+			"Modified Firebird (Used)"
+		add variant 1
+			"Freighter (Fancy)" 4
+			"Sparrow" 2
+			"Modified Firebird (Laser)" 1
+	fleet "Human Miners"
+		add variant 2
+			"Light Freighter (Miner)"
+		add variant 1
+			"Heavy Freighter (Miner A)"
+		add variant 1
+			"Heavy Freighter (Miner B)"
+		add variant 1
+			"Modified Firebird (Miner)"
+
+
+outfitter "Advanced Pirate Power"
+	"Modified RT-I Radiothermal"
+	"Modified nGVF-DD Fuel Cell"
+	"Modified nGVF-EE Fuel Cell"
+
+outfitter "Basic Pirate Power"
+	"Modified nGVF-AA Fuel Cell"
+	"Modified nGVF-BB Fuel Cell"
+	"Modified nGVF-CC Fuel Cell"
+
+mission "Midnight Pirate Power"
+	landing
+	invisible
+	on offer
+		event "midnight pirate power"
+		fail
+
+event "midnight pirate power"
+	outfitter "Pirate Outfits"
+		add "Modified nGVF-AA Fuel Cell"
+		add "Modified nGVF-BB Fuel Cell"
+		add "Modified nGVF-CC Fuel Cell"
+	planet "New Tortuga"
+		add outfitter "Advanced Pirate Power"
+	planet "Smuggler's Den"
+		add outfitter "Advanced Pirate Power"
+	planet Haven
+		add outfitter "Advanced Pirate Power"
+	planet Freedom
+		add outfitter "Basic Pirate Power"
 

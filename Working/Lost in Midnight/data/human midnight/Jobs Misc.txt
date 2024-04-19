@@ -861,8 +861,10 @@ mission "Bounty Hunting (Smuggler)"
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
 		distance 2 6
+	on accept
+		"reputation: Bounty (Disguised)" >?= 1
 	npc board
-		government "Bounty"
+		government "Bounty (Disguised)"
 		personality timid fleeing uninterested entering target
 		fleet
 			names "civilian"
@@ -873,8 +875,13 @@ mission "Bounty Hunting (Smuggler)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
-		dialog "You blast your way onto the ship and confine the captain to your ship's brig. Time to deliver them to <planet>."
+			variant
+				"Modified Enforcer (Smuggler)"
+		on board
+			"reputation: Bounty (Disguised)" >?= 1
+			dialog "You blast your way onto the ship and confine the captain to your ship's brig. Time to deliver them to <planet>."
 	on complete
+		"reputation: Bounty (Disguised)" >?= 1
 		payment 350000
 		dialog "The government of <planet> gratefully pays you <payment> for helping to stop the flow of illegal smuggling through their region of space."
 
@@ -2853,23 +2860,35 @@ mission "Stealing From Rival Smugglers"
 		"combat rating" > 200
 	source
 		government "Pirate"
-	cargo "Smuggled Cargo" 1
+	on accept
+		"reputation: Bounty (Disguised)" >?= 1
 	npc board
-		government "Bounty"
+		government "Bounty (Disguised)"
 		personality timid fleeing uninterested entering target
 		fleet
 			names "civilian"
 			outfitters "Contraband"
 			variant
-				"Modified Clipper (Smuggler)"
+				"Modified Clipper (Smuggled Cargo)"
 			variant
-				"Modified Argosy (Shields Smuggler)"
+				"Modified Argosy (Smuggled Cargo)"
 			variant
-				"Modified Firebird (Smuggler)"
-		dialog "You blast your way onto the ship and steal the smuggled cargo. Deliver it to <planet>."
+				"Modified Firebird (Smuggled Cargo)"
+			variant
+				"Modified Enforcer (Smuggled Cargo)"
+		dialog "Take the Smuggled Cargo from the <npc>'s cargo. Then deliver it to <planet>."
 	on complete
+		"reputation: Bounty (Disguised)" >?= 1
+		outfit "Smuggled Cargo" -1
 		payment 350000
 		dialog "The pirates of <planet> take the smuggled cargo from your cargo hold and pay you <payment>."
+
+outfit "Smuggled Cargo"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "Cargo stolen from a smuggler which has caught the interest of a pirate warlord."
 
 
 

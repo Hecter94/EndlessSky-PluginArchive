@@ -124,38 +124,39 @@ mission "Escort Core Pirate Home"
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them return to their base on <destination> by <date>."
 	source
-		government "Pirate"
-		attributes "dirt belt pirate"
+		attributes "pirate"
+		not attributes "uninhabited" "core pirate"
 	destination
 		government "Pirate"
 		attributes "core pirate"
+		not attributes "uninhabited"
 	to offer
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
-
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system
 			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Small Republic"
+		fleet "Bounty Hunter (licensed)"
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system
 			distance 3 4
 		personality waiting heroic vindictive
-		fleet "Large Republic"
+		fleet "Hired Guns (licensed)"
 	npc
-		government "Syndicate"
+		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting staying heroic vindictive
-		fleet "Small Syndicate"
-		fleet "Large Syndicate"
-
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 	npc accompany save
-		government "Pirate"
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
 			variant 3
@@ -174,7 +175,6 @@ mission "Escort Core Pirate Home"
 				"Vanguard"
 			variant 1
 				"Falcon"
-				
 	on complete
 		payment 375000
 		"reputation: Pirate" ++
@@ -190,33 +190,38 @@ mission "Escort Core Pirate to Dirt Belt"
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them reach <destination> by <date>."
 	source
-		government "Pirate"
 		attributes "core pirate"
+		not attributes "uninhabited"
 	destination
 		government "Pirate"
 		attributes "dirt belt pirate"
+		not attributes "uninhabited"
 	to offer
 		has "event: Archipelago reveal"
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Syndicate"
+		government "Bounty Hunter (licensed)"
+		system destination
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+	npc
+		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
 		personality waiting heroic vindictive
-		fleet "Small Syndicate"
-		fleet "Large Syndicate"
+		fleet "Hired Guns (licensed)"
 	npc
-		government "Syndicate"
-		system destination
-		personality entering heroic vindictive
-		fleet "Small Syndicate"
-		fleet "Large Syndicate"
-
+		government "Bounty Hunter (licensed)"
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 	npc accompany save
-		government Pirate
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
 			variant 3
@@ -235,15 +240,12 @@ mission "Escort Core Pirate to Dirt Belt"
 				"Vanguard"
 			variant 1
 				"Falcon"
-				
 	on complete
 		payment 375000
 		"reputation: Pirate" ++
 		dialog phrase "generic safe escort completion dialog"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
-
-
 
 mission "Escort North Pirate Home"
 	job
@@ -251,38 +253,40 @@ mission "Escort North Pirate Home"
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them return to their base on <destination> by <date>."
 	source
-		government "Pirate"
-		attributes "dirt belt pirate"
+	source
+		attributes "pirate"
+		not attributes "uninhabited" "north pirate"
 	destination
 		government "Pirate"
 		attributes "north pirate"
+		not attributes "uninhabited"
 	to offer
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
-
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system
 			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Small Republic"
+		fleet "Bounty Hunter (licensed)"
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system
 			distance 3 4
 		personality waiting heroic vindictive
-		fleet "Large Republic"
+		fleet "Hired Guns (licensed)"
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting staying heroic vindictive
-		fleet "Small Republic"
-		fleet "Large Republic"
-
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 	npc accompany save
-		government Pirate
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
 			variant 3
@@ -299,7 +303,6 @@ mission "Escort North Pirate Home"
 				"Mule (Hai Weapons)"
 			variant 1
 				"Bactrian"
-				
 	on complete
 		"reputation: Pirate" ++
 		payment 375000
@@ -307,42 +310,43 @@ mission "Escort North Pirate Home"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
-
-
 mission "Escort North Pirate to Dirt Belt"
 	job
 	deadline
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them reach <destination> by <date>."
 	source
-		government "Pirate"
 		attributes "north pirate"
 	destination
 		government "Pirate"
 		attributes "dirt belt pirate"
+		not attributes "uninhabited"
 	to offer
 		has "event: Archipelago reveal"
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
-
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
+		system destination
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+	npc
+		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
 		personality waiting heroic vindictive
-		fleet "Small Republic"
-		fleet "Large Republic"
+		fleet "Hired Guns (licensed)"
 	npc
-		government "Republic"
-		system destination
-		personality waiting entering heroic vindictive
-		fleet "Small Republic"
-		fleet "Large Republic"
-
+		government "Bounty Hunter (licensed)"
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 	npc accompany save
-		government Pirate
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
 			variant 3
@@ -359,7 +363,6 @@ mission "Escort North Pirate to Dirt Belt"
 				"Mule (Hai Weapons)"
 			variant 1
 				"Bactrian"
-				
 	on complete
 		"reputation: Pirate" ++
 		payment 375000
@@ -375,56 +378,57 @@ mission "Escort South Pirate Home"
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them return to their base on <destination> by <date>."
 	source
-		government "Pirate"
-		attributes "dirt belt pirate"
+		attributes "pirate"
+		not attributes "uninhabited"
 	destination
 		government "Pirate"
 		attributes "south pirate"
+		not attributes "uninhabited"
 	to offer
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
-
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Republic"
+		government "Bounty Hunter (licensed)"
 		system
-			distance 1 2
+			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Small Republic"
-		fleet "Large Republic"
+		fleet "Bounty Hunter (licensed)"
 	npc
-		government "Militia"
+		government "Bounty Hunter (licensed)"
+		system
+			distance 3 4
+		personality waiting heroic vindictive
+		fleet "Hired Guns (licensed)"
+	npc
+		government "Bounty Hunter (licensed)"
 		system destination
-		personality waiting staying heroic
-		fleet "Small Militia"
-		fleet "Large Militia"
-
+		personality waiting staying heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 	npc accompany save
-		government Pirate
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
-			variant 1
+			variant 3
 				"Osprey"
-			variant 1
+			variant 3
 				"Osprey (Missile)"
-			variant 1
+			variant 3
 				"Osprey (Laser)"
-			variant 1
-				"Clipper"
-			variant 1
-				"Clipper (Speedy)"
-			variant 1
-				"Clipper (Heavy)"
-			variant 1
+			variant 2
 				"Modified Argosy (Shields)"
-			variant 1
+			variant 2
 				"Modified Argosy (Shields Blaster)"
-			variant 1
+			variant 2
 				"Modified Argosy (Shields Heavy)"
-			variant 1
+			variant 2
 				"Modified Argosy (Shields Missile)"
-
+			variant 1
+				"Falcon"
 	on complete
 		"reputation: Pirate" ++
 		payment 375000
@@ -432,64 +436,63 @@ mission "Escort South Pirate Home"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 
-		
-
 mission "Escort South Pirate to Dirt Belt"
 	job
 	deadline
 	name "Protection to <planet>"
 	description "The captain of the <npc> will pay you <payment> to help them reach <destination> by <date>."
 	source
-		government "Pirate"
 		attributes "south pirate"
+		not attributes "uninhabited"
 	destination
 		government "Pirate"
 		attributes "dirt belt pirate"
+		not attributes "uninhabited"
 	to offer
 		has "event: Archipelago reveal"
 		random < 40
 		"combat rating" > 400
 		"reputation: Pirate" > 0
-
+	on offer
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
-		government "Militia"
+		government "Bounty Hunter (licensed)"
+		system destination
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+	npc
+		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
-		personality heroic
-		fleet "Small Militia"
-		fleet "Large Militia"
+		personality waiting heroic vindictive
+		fleet "Hired Guns (licensed)"
 	npc
-		government "Militia"
-		system destination
-		personality entering heroic
-		fleet "Small Militia"
-		fleet "Large Militia"
+		government "Bounty Hunter (licensed)"
+		personality waiting heroic vindictive
+		fleet "Bounty Hunter (licensed)"
+		fleet "Hired Guns (licensed)"
 
 	npc accompany save
-		government Pirate
-		personality escort
+		government "Bounty (Disguised)"
+		personality target escort timid
 		fleet
 			names "pirate"
-			variant 1
+			variant 3
+				"Modified Argosy (Shields)"
+			variant 3
+				"Modified Argosy (Shields Blaster)"
+			variant 3
+				"Modified Argosy (Shields Heavy)"
+			variant 3
+				"Modified Argosy (Shields Missile)"
+			variant 2
 				"Osprey"
-			variant 1
+			variant 2
 				"Osprey (Missile)"
-			variant 1
+			variant 2
 				"Osprey (Laser)"
 			variant 1
-				"Clipper"
-			variant 1
-				"Clipper (Speedy)"
-			variant 1
-				"Clipper (Heavy)"
-			variant 1
-				"Modified Argosy (Shields)"
-			variant 1
-				"Modified Argosy (Shields Blaster)"
-			variant 1
-				"Modified Argosy (Shields Heavy)"
-			variant 1
-				"Modified Argosy (Shields Missile)"
+				"Falcon"
 
 	on complete
 		"reputation: Pirate" ++
@@ -984,6 +987,7 @@ mission "Smuggler Exchange (Dirt Belt, Terminus)"
 			variant
 				"Gunboat"
 	on enter "Terminus"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -998,6 +1002,8 @@ mission "Smuggler Exchange (Dirt Belt, Terminus)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1046,6 +1052,7 @@ mission "Smuggler Exchange (Dirt Belt, Lolami)"
 			variant
 				"Gunboat"
 	on enter "Lolami"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1060,6 +1067,8 @@ mission "Smuggler Exchange (Dirt Belt, Lolami)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1108,6 +1117,7 @@ mission "Smuggler Exchange (Dirt Belt, Ipsing)"
 			variant
 				"Gunboat"
 	on enter "Ipsing"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1122,6 +1132,8 @@ mission "Smuggler Exchange (Dirt Belt, Ipsing)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1170,6 +1182,7 @@ mission "Smuggler Exchange (Dirt Belt, Boral)"
 			variant
 				"Gunboat"
 	on enter "Boral"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1184,6 +1197,8 @@ mission "Smuggler Exchange (Dirt Belt, Boral)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1232,6 +1247,7 @@ mission "Smuggler Exchange (Dirt Belt, Hintar)"
 			variant
 				"Gunboat"
 	on enter "Hintar"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1246,6 +1262,8 @@ mission "Smuggler Exchange (Dirt Belt, Hintar)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1294,6 +1312,7 @@ mission "Smuggler Exchange (Dirt Belt, Orvala)"
 			variant
 				"Gunboat"
 	on enter "Orvala"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1308,6 +1327,8 @@ mission "Smuggler Exchange (Dirt Belt, Orvala)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -1356,6 +1377,7 @@ mission "Smuggler Exchange (Dirt Belt, Naper)"
 			variant
 				"Gunboat"
 	on enter "Naper"
+		"reputation: Bounty (Disguised)" >?= 1
 		dialog "You've located the <npc> and exchanged cargo with it. Return to <destination> for payment."
 	npc
 		government "Bounty (Disguised)"
@@ -1370,6 +1392,8 @@ mission "Smuggler Exchange (Dirt Belt, Naper)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -2650,6 +2674,8 @@ mission "Smuggler Exchange (Dirt Belt, Regulus)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -2713,6 +2739,8 @@ mission "Smuggler Exchange (Dirt Belt, Fingol)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -2776,6 +2804,8 @@ mission "Smuggler Exchange (Dirt Belt, Nocte)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -2839,6 +2869,8 @@ mission "Smuggler Exchange (Dirt Belt, Umbral)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
@@ -2902,6 +2934,8 @@ mission "Smuggler Exchange (Dirt Belt, Sadr)"
 				"Modified Argosy (Shields Smuggler)"
 			variant
 				"Modified Firebird (Smuggler)"
+			variant
+				"Modified Enforcer (Smuggler)"
 	on abort
 		clear "New China Supplies to Diyu: done"
 		clear "New China Supplies to Diyu 2: done"
