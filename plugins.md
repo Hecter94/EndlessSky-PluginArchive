@@ -10491,16 +10491,16 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/RW Ships/icon.png' height='100'></img><br>
 
 
-[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.28 mb | 2024-04-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.56 mb | 2024-04-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-N/A[]() (last commit 2024-04-18) <br>
+N/A[]() (last commit 2024-04-20) <br>
 
 >A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+<blockquote>A small collection of custom ships: one drone and some multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 
 ESDD link: https://github.com/starmlerp/ESDefenseDronePlugin
 
@@ -10521,6 +10521,9 @@ Basically an Aerie that carries 4 drones instead of 2 fighters. With 2 guns and 
 
 DEEPVALE - 
 Big boy ship for some real industrial-scale asteroid sweeping. With 10 turrets and 8 drone bays, it can carry any utilities it might need and follow in the wake of its drones vacuuming up all the flotsam. Being designed with mining in mind, it is relatively fast for such a heavy ship, albeit not quite to the level of the Auxiliary and Bactrian.
+
+PACKET LINER - 
+Passenger/cargo hybrid ship. Stat-wise it's quite literally half a Star Queen with a Freighter bolted on. It can also be described as a bigger Blackbird, and like the Blackbird it makes for a decent warship.
 
 </blockquote>
 </details>
@@ -12447,9 +12450,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/gegno.pirates/icon.png' height='100'></img><br>
 
 
-[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.17 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
+[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.22 kb | 2024-04-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-20) <br>
 
 >Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear. See the readme for details.
 >
@@ -12491,6 +12494,9 @@ Remove the 8 lines containing: "Gegno Civilian" "Gegno Driller"	 "Scin Adjutant"
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-03-20<br>
+fixed missing hyperlink from asio to uuba (thx isaias for reporting)<br>
 <br>
 2024-03-15<br>
 adjustments and fixes<br>

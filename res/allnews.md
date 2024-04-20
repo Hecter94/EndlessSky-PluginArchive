@@ -1,3 +1,5 @@
+2024-04-20 | updated Plugin 'RW Ships' by Anonymous | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
+2024-04-20 | updated Plugin 'gegno.pirates' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-04-19 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-04-19 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-04-19 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
