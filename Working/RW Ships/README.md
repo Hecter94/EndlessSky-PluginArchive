@@ -1,4 +1,4 @@
-A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+A small collection of custom ships: one drone and some multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 
 ESDD link: https://github.com/starmlerp/ESDefenseDronePlugin
 
@@ -19,3 +19,6 @@ Basically an Aerie that carries 4 drones instead of 2 fighters. With 2 guns and 
 
 DEEPVALE - 
 Big boy ship for some real industrial-scale asteroid sweeping. With 10 turrets and 8 drone bays, it can carry any utilities it might need and follow in the wake of its drones vacuuming up all the flotsam. Being designed with mining in mind, it is relatively fast for such a heavy ship, albeit not quite to the level of the Auxiliary and Bactrian.
+
+PACKET LINER - 
+Passenger/cargo hybrid ship. Stat-wise it's quite literally half a Star Queen with a Freighter bolted on. It can also be described as a bigger Blackbird, and like the Blackbird it makes for a decent warship.
