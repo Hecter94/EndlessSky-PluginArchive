@@ -1,6 +1,6 @@
 #!/bin/bash
 declare -A plugins
-plugins[Aben]=https://github.com/Adde-Endless-Sky/Aben
+#plugins[Aben]=https://github.com/Adde-Endless-Sky/Aben
 plugins[Adamas Project]=https://github.com/kestrel1110/Adamas-Project
 plugins[Amphibious Ships]=https://github.com/AvianGeneticist/Amphibious-Ships
 plugins[Arion]=https://github.com/Spectre907YT/Endless-Sky---Arion
@@ -15,12 +15,12 @@ plugins[ES Galactic Exploration]=https://github.com/lumbar527/ES-Galactic-Explor
 plugins[Eternals]=https://github.com/comnom/Eternals
 plugins[Fighter Factory]=https://github.com/1010todd/Fighter-Factory
 plugins[Fire Corporation Plugin]=https://github.com/lumbar527/Fire-Corporation
-plugins[Fluff]=https://github.com/Adde-Endless-Sky-Mods/Fluff
+#plugins[Fluff]=https://github.com/Adde-Endless-Sky-Mods/Fluff
 plugins[Galactic War]=https://github.com/1010todd/Galactic-War
 plugins[Galaxias]=https://github.com/mdpiper/galaxias
 plugins[Gander]=https://github.com/williaji/Gander
 plugins[Haulers Expansion]=https://github.com/JPG7D/Haulers-Expansion-v2
-plugins[Irm]=https://github.com/Adde-Endless-Sky-Mods/Irm
+#plugins[Irm]=https://github.com/Adde-Endless-Sky-Mods/Irm
 plugins[Kinetic Weaponry]=https://github.com/kestrel1110/KineticWeaponry
 plugins[Kor Fighter Additions]=https://github.com/EjoThims/Kor-Fighter-Additions
 plugins[Legendary Pirates]=https://github.com/Galaucus/Endless-Sky-Legendary-Pirates
