@@ -691,9 +691,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.66 mb | 2024-02-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.66 mb | 2024-04-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2024-02-04) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2024-04-29) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -8680,9 +8680,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Derogam/icon.png' height='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.79 mb | 2024-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.77 mb | 2024-04-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
 Author: Lorantine | Category: Ships <br>
-[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-04-28) <br>
+[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-04-29) <br>
 
 >A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
