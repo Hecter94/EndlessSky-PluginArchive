@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-04-30 | updated Plugin 'Derogam' by Lorantine | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2024-04-30 | updated Plugin 'bunrodea.missions' by zuckung | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-04-29 | updated Plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
 2024-04-29 | updated Plugin 'Derogam' by Lorantine | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2024-04-28 | updated Plugin 'Derogam' by Lorantine | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
@@ -18,8 +20,6 @@
 2024-04-20 | updated Plugin 'gegno.pirates' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-04-19 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-04-19 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-04-19 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
-2024-04-19 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
