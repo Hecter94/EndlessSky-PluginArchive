@@ -22,3 +22,8 @@ Big boy ship for some real industrial-scale asteroid sweeping. With 10 turrets a
 
 PACKET LINER - 
 Passenger/cargo hybrid ship. Stat-wise it's quite literally half a Star Queen with a Freighter bolted on. It can also be described as a bigger Blackbird, and like the Blackbird it makes for a decent warship.
+
+THUNDERER - 
+A high-speed ship good for a lot of things since it's basically a medium warship with the weapon and engine capacities swapped. The original design intent was to be a relatively large ship that can achieve the speed to mine fast-moving asteroid fields, but it also makes for a great pirating or smuggling ship.
+
+Some of these ships also have variants in the style of the vanilla Navy Auxiliary, with different models and base stats.
