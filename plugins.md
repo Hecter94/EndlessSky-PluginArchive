@@ -8688,9 +8688,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Derogam/icon.png' height='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.82 mb | 2024-04-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.82 mb | 2024-05-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
 Author: Lorantine | Category: Ships <br>
-[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-04-29) <br>
+[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-05-05) <br>
 
 >A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
@@ -10510,9 +10510,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/RW Ships/icon.png' height='100'></img><br>
 
 
-[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 1.56 mb | 2024-04-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.26 mb | 2024-05-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-N/A[]() (last commit 2024-04-20) <br>
+N/A[]() (last commit 2024-05-05) <br>
 
 >A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
@@ -10543,6 +10543,11 @@ Big boy ship for some real industrial-scale asteroid sweeping. With 10 turrets a
 
 PACKET LINER - 
 Passenger/cargo hybrid ship. Stat-wise it's quite literally half a Star Queen with a Freighter bolted on. It can also be described as a bigger Blackbird, and like the Blackbird it makes for a decent warship.
+
+THUNDERER - 
+A high-speed ship good for a lot of things since it's basically a medium warship with the weapon and engine capacities swapped. The original design intent was to be a relatively large ship that can achieve the speed to mine fast-moving asteroid fields, but it also makes for a great pirating or smuggling ship.
+
+Some of these ships also have variants in the style of the vanilla Navy Auxiliary, with different models and base stats.
 
 </blockquote>
 </details>
