@@ -13,11 +13,49 @@
 
 # Jobs defending space stations. The station participates in the battle and preventing its destruction is required to succeed. Originally intended for failure to result in removing the station from the map. While this can be done, I concluded that the potential "feel bads" from broken missions involving the station isn't worth the risk. So failure results in "death" instead.
 
+################################
+#
+#     UNINHABITED ERROR: 
+#     version 0.10.5 of Endless Sky introduced an error
+#     that does not resolve events removing or overwriting
+#     the "uninhabited" attribute from planets. This causes
+#     the planet to not have the trading, job board, and hiring
+#     panel restored after completing the space station
+#     defense job.
+#
+#     An issue has been opened regarding this bug:
+#     https://github.com/endless-sky/endless-sky/issues/10051
+#
+#     This version of Lost in Midnight no longer adds the
+#     uninhabited attribute for these missions. New pilots
+#     doing these missions for the first time will be not be
+#     affected by this error.
+#
+#     For pilots that completed these missions in previous versions
+#     of Lost in Midnight that have this issue, it cannot be fixed with
+#     a patch since the error in the game code causes it to not recognize
+#     the updates to the planet attributes in the save file. If this
+#     error is fixed in a future update to Endless Sky, edits to your
+#     save file should be unnecessary.
+#
+#     To fix this error for those pilots immediately instead of waiting
+#     for an Endless Sky update, it is necessary to manually edit the
+#     "changes" section in the save file by deleting the lines that adds
+#     the uninhabited attribute to the planet.
+#
+#     Example line to delete from the changes section of your save file:
+#
+#      |	planet <station name>
+#      |		add attributes uninhabited	<--delete this line
+#      |		government Uninhabited
+#
+################################
 
 
 mission "Midnight Phoenix Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Phoenix Station"
@@ -215,7 +253,13 @@ mission "Midnight Phoenix Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -262,7 +306,7 @@ event "phoenix station defense job"
 				distance 257
 				period 12.3538
 	planet "Phoenix Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "phoenix station defense job success"
@@ -289,6 +333,7 @@ event "phoenix station defense job success"
 mission "Midnight Triton Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Triton Station"
@@ -481,7 +526,13 @@ mission "Midnight Triton Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -528,7 +579,7 @@ event "triton station defense job"
 				distance 261
 				period 11.3132
 	planet "Triton Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "triton station defense job success"
@@ -560,6 +611,7 @@ event "triton station ammo outfitter"
 mission "Midnight Fenrir Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Fenrir Station"
@@ -752,7 +804,13 @@ mission "Midnight Fenrir Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -799,7 +857,7 @@ event "fenrir station defense job"
 				distance 212
 				period 15.2148
 	planet "Fenrir Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "fenrir station defense job success"
@@ -830,6 +888,7 @@ event "fenrir station advanced fuel outfitter"
 mission "Midnight Typhon Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Typhon Station"
@@ -1039,7 +1098,13 @@ mission "Midnight Typhon Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -1086,7 +1151,7 @@ event "typhon station defense job"
 				distance 226
 				period 13.7068
 	planet "Typhon Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "typhon station defense job success"
@@ -1117,6 +1182,7 @@ event "typhon station advanced fuel outfitter"
 mission "Midnight Oberon Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Oberon Station"
@@ -1313,7 +1379,13 @@ mission "Midnight Oberon Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -1361,7 +1433,7 @@ event "oberon station defense job"
 				distance 246
 				period 13.6082
 	planet "Oberon Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "oberon station defense job success"
@@ -1408,6 +1480,7 @@ event "oberon syndicate stock patch"
 mission "Midnight Leviathan Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Leviathan Station"
@@ -1600,7 +1673,13 @@ mission "Midnight Leviathan Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -1647,7 +1726,7 @@ event "leviathan station defense job"
 				distance 252
 				period 15.4109
 	planet "Leviathan Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "leviathan station defense job success"
@@ -1678,6 +1757,7 @@ event "leviathan station advanced fuel outfitter"
 mission "Midnight Alexandria Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source Alexandria
@@ -1871,7 +1951,13 @@ mission "Midnight Alexandria Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -1932,7 +2018,7 @@ event "alexandria station defense job"
 				distance 178.482
 				period 29.3849
 	planet Alexandria
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 
@@ -1986,6 +2072,7 @@ mission "Midnight Alexandria Station Maretar Hold"
 mission "Midnight Wyvern Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Wyvern Station"
@@ -2190,7 +2277,13 @@ mission "Midnight Wyvern Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -2237,7 +2330,7 @@ event "wyvern station defense job"
 				distance 201
 				period 12.6652
 	planet "Wyvern Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "wyvern station defense job success"
@@ -2268,6 +2361,7 @@ event "wyvern station advanced fuel outfitter"
 mission "Midnight Carbuncle Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Carbuncle Station"
@@ -2461,7 +2555,13 @@ mission "Midnight Carbuncle Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -2508,7 +2608,7 @@ event "carbuncle station defense job"
 				distance 253
 				period 12.546
 	planet "Carbuncle Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "carbuncle station defense job success"
@@ -2539,6 +2639,7 @@ event "carbuncle station lovelace laboratory outfitter"
 mission "Midnight Kraken Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Kraken Station"
@@ -2750,7 +2851,13 @@ mission "Midnight Kraken Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -2798,7 +2905,7 @@ event "kraken station defense job"
 				distance 278
 				period 10.5056
 	planet "Kraken Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "kraken station defense job success"
@@ -2843,6 +2950,7 @@ event "kraken syndicate stock patch"
 mission "Midnight Arachne Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Arachne Station"
@@ -3048,7 +3156,13 @@ mission "Midnight Arachne Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -3116,7 +3230,7 @@ event "arachne station defense job"
 				distance 228
 				period 16.9693
 	planet "Arachne Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "arachne station defense job success"
@@ -3147,6 +3261,7 @@ event "arachne station tarazed laboratory outfitter"
 mission "Midnight Muninn Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Muninn Station"
@@ -3349,7 +3464,13 @@ mission "Midnight Muninn Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of one of the stations... If this were a game, you could load a save file and have another try at defending the stations from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -3360,6 +3481,7 @@ mission "Midnight Muninn Station Defense Job"
 				die
 	on complete
 		event "muninn station defense job success"
+		set "muninn station defense job success patched"
 		conversation
 			scene "outfit/unknown"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack as well as keeping Huginn Station from remaining under pirate control, the commander offers you 2,000,000 credits as payment.`
@@ -3418,7 +3540,7 @@ event "muninn station defense job"
 				distance 272
 				period 12.9498
 	planet "Muninn Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "muninn station defense job success"
@@ -3465,6 +3587,7 @@ mission "Midnight Muninn Station Defense Sprite Patch"
 	invisible
 	to offer
 		has "event: muninn station defense job success"
+		not "muninn station defense job success patched"
 	on offer
 		event "muninn station defense job success"
 		fail
@@ -3474,6 +3597,7 @@ mission "Midnight Muninn Station Defense Sprite Patch"
 mission "Midnight Hydra Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Hydra Station"
@@ -3680,7 +3804,13 @@ mission "Midnight Hydra Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -3727,7 +3857,7 @@ event "hydra station defense job"
 				distance 277
 				period 12.3693
 	planet "Hydra Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "hydra station defense job success"
@@ -3758,6 +3888,7 @@ event "hydra station advanced fuel outfitter"
 mission "Midnight Charon Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Charon Station"
@@ -3962,7 +4093,13 @@ mission "Midnight Charon Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -4009,7 +4146,7 @@ event "charon station defense job"
 				distance 211
 				period 13.622
 	planet "Charon Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "charon station defense job success"
@@ -4040,6 +4177,7 @@ event "charon station advanced fuel outfitter"
 mission "Midnight Smuggler's Den Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Smuggler's Den"
@@ -4234,7 +4372,13 @@ mission "Midnight Smuggler's Den Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -4281,7 +4425,7 @@ event "smuggler's den station defense job"
 				distance 302
 				period 14.0811
 	planet "Smuggler's Den"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 	government "Independent"
 		add "attitude toward"
@@ -4318,6 +4462,7 @@ event "smuggler's den station marauder basics shipyard"
 mission "Midnight Charybdis Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Charybdis Station"
@@ -4514,7 +4659,13 @@ mission "Midnight Charybdis Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -4562,7 +4713,7 @@ event "charybdis station defense job"
 				distance 281
 				period 13.1034
 	planet "Charybdis Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "charybdis station defense job success"
@@ -4608,6 +4759,7 @@ event "charybdis syndicate stock patch"
 mission "Midnight Titania Station Defense Job"
 	job
 	autosave
+	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
 	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
 	source "Titania Station"
@@ -4800,7 +4952,13 @@ mission "Midnight Titania Station Defense Job"
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
 	on abort
-		fail
+		conversation
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 	on fail
 		conversation
 			scene "outfit/attention"
@@ -4855,7 +5013,7 @@ event "titania station defense job"
 				distance 366
 				period 28.2485
 	planet "Titania Station"
-		add attributes uninhabited
+#		add attributes uninhabited
 		government Uninhabited
 
 event "titania station defense job success"

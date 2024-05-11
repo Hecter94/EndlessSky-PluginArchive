@@ -394,6 +394,16 @@ mission "Hackerz 3"
 		never
 	on enter "Alpha Centauri"
 		dialog `You've found the <npc>! Board the ship to catch the Hackerz.`
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting staying surveillance mute
+		fleet
+			names "republic fighter"
+			fighters
+				names "republic fighter"
+			variant
+				"Surveillance Drone (ExplosiveSD)" 2
 	npc assist save
 		government "Derelict"
 		system "Alpha Centauri"
@@ -480,6 +490,7 @@ mission "Hackerz 4"
 		distance 4 5
 	to offer
 		has "Hackerz 3: failed"
+		"combat rating" >= 300
 		random < 25
 	on accept
 		conversation
@@ -514,6 +525,16 @@ mission "Hackerz 4"
 			label revisit
 			`The angry bountry hunter is still pursuing you in his Headhunter.`
 				launch
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting staying surveillance mute
+		fleet
+			names "republic fighter"
+			fighters
+				names "republic fighter"
+			variant
+				"Surveillance Drone (ExplosiveSD)" 4
 	npc save
 		to spawn
 			has "Hackerz Angry Bounty Hunter"
@@ -521,6 +542,7 @@ mission "Hackerz 4"
 		system destination
 		personality launching heroic vindictive unconstrained nemesis
 		ship "Headhunter (Berserk)" "Payback"
+
 	on fail
 		clear "Hackerz Angry Bounty Hunter"
 		log `The latest Hackerz job was a dud. Another bounty hunter mistook me for one of them. I'm lucky I didn't lose my head. If I hadn't been interrupted, the abandoned warehouse I was searching would've probably turned out to become another dud. I'm starting to suspect that the job board system itself has been hacked and all of the jobs for tracing the Hackerz are another one of their sick jokes.`
@@ -549,6 +571,7 @@ mission "Hackerz 5"
 	destination "Hope"
 	to offer
 		has "Hackerz 4: failed"
+		"combat rating" >= 1000
 		random < 25
 	to complete
 		never
@@ -642,6 +665,16 @@ mission "Hackerz 5"
 			label revisit
 			`The hostile drones are still targetting you.`
 				launch
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting staying surveillance mute
+		fleet
+			names "republic fighter"
+			fighters
+				names "republic fighter"
+			variant
+				"Surveillance Drone (ExplosiveSD)" 6
 	npc save
 		to spawn
 			has "Trace Hackerz Hope Ambush"
@@ -652,8 +685,9 @@ mission "Hackerz 5"
 			confusion 60
 		fleet
 			variant
-				"Combat Drone (ExplosiveSD)" 35
-				"Pirate Drone (ExplosiveSD)" 35
+				"Combat Drone (ExplosiveSD)" 20
+				"Mining Drone (ExplosiveSD)" 30
+				"Pirate Drone (ExplosiveSD)" 20
 	npc save
 		to spawn
 			has "Trace Hackerz Hope Ambush"
@@ -664,8 +698,10 @@ mission "Hackerz 5"
 			confusion 60
 		fleet
 			variant
-				"Combat Drone (Explosive)" 35
-				"Pirate Drone (Explosive)" 35
+				"Combat Drone (Explosive)" 20
+				"Mining Drone (Explosive)" 30
+				"Pirate Drone (Explosive)" 20
+
 	on fail
 		clear "Trace Hackerz Hope Ambush"
 		log `The Hackerz set up a trap at the abandoned "Subsi Land" amusement park on Hope. I was able to avoid being killed by robots armed with gatling guns and drones rigged with explosives.`
@@ -679,8 +715,8 @@ ship "Combat Drone" "Combat Drone (ExplosiveSD)"
 			"shield damage" 450
 			"hull damage" 225
 			"hit force" 675
-	explode "large explosion" 5
-	"final explode" "final explosion large"
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
 
 ship "Combat Drone" "Combat Drone (Explosive)"
 	add attributes
@@ -690,8 +726,30 @@ ship "Combat Drone" "Combat Drone (Explosive)"
 			"shield damage" 450
 			"hull damage" 225
 			"hit force" 675
-	explode "large explosion" 5
-	"final explode" "final explosion large"
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
+
+ship "Mining Drone" "Mining Drone (ExplosiveSD)"
+	add attributes
+		"self destruct" 1
+		weapon
+			"blast radius" 43
+			"shield damage" 430
+			"hull damage" 215
+			"hit force" 645
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
+
+ship "Mining Drone" "Mining Drone (Explosive)"
+	add attributes
+		"self destruct" .50
+		weapon
+			"blast radius" 43
+			"shield damage" 430
+			"hull damage" 215
+			"hit force" 645
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
 
 ship "Pirate Drone" "Pirate Drone (ExplosiveSD)"
 	add attributes
@@ -701,8 +759,8 @@ ship "Pirate Drone" "Pirate Drone (ExplosiveSD)"
 			"shield damage" 450
 			"hull damage" 225
 			"hit force" 675
-	explode "large explosion" 5
-	"final explode" "final explosion large"
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
 
 ship "Pirate Drone" "Pirate Drone (Explosive)"
 	add attributes
@@ -712,8 +770,8 @@ ship "Pirate Drone" "Pirate Drone (Explosive)"
 			"shield damage" 450
 			"hull damage" 225
 			"hit force" 675
-	explode "large explosion" 5
-	"final explode" "final explosion large"
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
 
 mission "Hackerz 6"
 	job
@@ -725,6 +783,7 @@ mission "Hackerz 6"
 	destination "Huginn Station"
 	to offer
 		has "Hackerz 5: failed"
+		"combat rating" >= 8000
 		random < 25
 	to complete
 		never
@@ -815,6 +874,16 @@ mission "Hackerz 6"
 			scene "scene/scene-weapons cache"
 			`	When you return, your airlock is overrun by hundreds of rioting prisoners armed with weapons stolen from the station's armory! You are killed as the <ship> is quickly overtaken.`
 				die
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting staying surveillance mute
+		fleet
+			names "republic fighter"
+			fighters
+				names "republic fighter"
+			variant
+				"Surveillance Drone (ExplosiveSD)" 8
 	npc save
 		to spawn
 			has "Trace Hackerz Prison Break"
@@ -844,9 +913,9 @@ mission "Hackerz 6"
 			cargo 3
 			outfitters "Ammo North"
 			variant
-				"Frigate" 2
-				"Gunboat" 2
-				"Rainmaker" 2
+				"Frigate"
+				"Gunboat"
+				"Rainmaker"
 	npc save
 		to spawn
 			has "Trace Hackerz Prison Break"
@@ -861,9 +930,219 @@ mission "Hackerz 6"
 			outfitters "Ammo North"
 			variant
 				"Cruiser"
-				"Gunboat" 2
-				"Rainmaker" 2
+				"Gunboat"
+				"Rainmaker"
 				"Combat Drone" 4
+	on fail
+		clear "Trace Hackerz Prison Break"
+		log `The Hackerz set up a trap at Huginn Station, a high security station. They remotely unlocked all the prison cells, which resulted in a violent riot. To make matters worse, I was suspected of aiding the prisoners due to my presence on the station while the riot was in progress.`
+
+ship "Surveillance Drone" "Surveillance Drone (ExplosiveSD)"
+	add attributes
+		"self destruct" 1
+		weapon
+			"blast radius" 43
+			"shield damage" 430
+			"hull damage" 215
+			"hit force" 645
+	explode "small explosion" 5
+	"final explode" "final explosion medium"
+
+mission "Hackerz 6 Log Patch"
+	landing
+	invisible
+	to offer
+		has "Hackerz 6: failed"
+		has "Trace Hackerz Prison Break"
+	on offer
+		clear "Trace Hackerz Prison Break"
+		log `The Hackerz set up a trap at Huginn Station, a high security station. They remotely unlocked all the prison cells, which resulted in a violent riot. To make matters worse, I was suspected of aiding the prisoners due to my presence on the station while the riot was in progress.`
+		fail
+
+mission "Hackerz 7"
+	job
+	name "Trace Hackerz"
+	description "The source of the mysterious Hackerz has been traced back to <destination>. Apprehend these criminals and bring them in for a reward of 1,000,000 credits."
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+	destination "New America"
+	to offer
+		has "Hackerz 6: failed"
+		random < 25
+	to complete
+		never
+	on accept
+		conversation
+			scene "planet/desert4"
+			`New America is an isolated world sparsely populated with anarchists. With your previous experiences tracking down the Hackerz, this is almost certain to be a trap...`
+			``
+			`But you've chosen to go anyway.`
+			choice
+				`	(Prepare for launch.)`
+			branch syndicate
+				not "tribute: Earth"
+			branch sol
+				or
+					has "tribute: Luna"
+					has "tribute: Mars"
+					has "tribute: I.S.S."
+			action
+				"tribute: Earth" <?= 0
+			scene "outfit/unknown"
+			`	Suddenly, you receive a message from Earth's government. "The Republic appreciates that you've released Earth from your tribute requirements." You don't recall making an offer to relinquish the tribute on Earth...`
+				goto syndicate
+			label sol
+			action
+				"tribute: Earth" <?= 0
+			scene "outfit/unknown"
+			`	Suddenly, you receive a message from Earth's government. "The Republic appreciates that you've released Earth from your tribute requirements. We ask that you consider releasing the rest of Sol as well." You don't recall making an offer to relinquish the tribute on Earth...`
+			choice
+				`	(Release tribute for the rest of Sol.)`
+				`	(Ignore their request.)`
+					goto syndicate
+			action
+				"reputation: Republic" >?= 10
+				"tribute: Luna" <?= 0
+				"tribute: Mars" <?= 0
+				"tribute: I.S.S." <?= 0
+			`	You release tribute from the rest of Sol...`
+			label syndicate
+			branch FW
+				not "tribute: Foundry"
+			branch hephaestus
+				has "tribute: Hephaestus"
+			action
+				"tribute: Foundry" <?= 0
+			scene "outfit/unknown"
+			`	You get an alert informing you that a message from the Syndicate has arrived. "The Syndicate is grateful that you've released Foundry from your tribute requirements." You don't recall making an offer to relinquish the tribute on Foundry...`
+				goto FW
+			label hephaestus
+			action
+				"tribute: Foundry" <?= 0
+			scene "outfit/unknown"
+			`	You get an alert informing you that a message from the Syndicate has arrived. "The Syndicate is grateful that you've released Foundry from your tribute requirements. We ask that you release Hephaestus as well." You don't recall making an offer to relinquish the tribute on Foundry...`
+			choice
+				`	(Release tribute for Hephaestus.)`
+				`	(Ignore their request.)`
+					goto FW
+			action
+				"reputation: Syndicate" >?= 10
+				"tribute: Hephaestus" <?= 0
+			`	You release tribute from Hephaestus...`
+			label FW
+			branch end
+				not "tribute: Bourne"
+			branch militia
+				has "license: Militia"
+			action
+				"tribute: Bourne" <?= 0
+			scene "outfit/unknown"
+			`	When you get back aboard the <ship>, you receive a message from Bourne. "The Free Worlds appreciates your offer to relinquish Bourne's tribute commitment. We gratefully accept." You don't recall making an offer to relinquish the tribute on Bourne...`
+				goto end
+			label militia
+			scene "outfit/unknown"
+			`	When you get back aboard the <ship>, a representative from the Free Worlds contacts you. "Greetings Captain <last>! I need to confirm if your request to relinquish tribute on Bourne is real. While the Free Worlds appreciates the offer, I just wanted to make sure this wasn't a miscommunication or some sort of hacking fraud." You don't recall making an offer to relinquish the tribute on Bourne...`
+			choice
+				`	(Release tribute for Bourne.)`
+				`	(Deny making this request.)`
+					goto end
+			action
+				"reputation: Free Worlds" >?= 10
+				"tribute: Bourne" <?= 0
+			`	You release tribute from Bourne...`
+			label end
+			scene "outfit/attention"
+			`	After completing launch preparations you get a message, but the data inside is corrupted...`
+	on visit "New America"
+		conversation
+			branch ambush
+				has "hackerz new america ambush"
+			`Your search for the Hackerz has brought you to New America. It continues to be sparsely populated by anarchists who value their privacy. While exploring one of the abandoned ghost towns, you notice a Surveillance Drone observing you.`
+			label choose
+			choice
+				`	(Try to communicate with it.)`
+				`	(Shoot it down.)`
+					goto shoot
+				`	(Return to the <ship>.)`
+					goto ship
+			`	The drone responds with a series of beeps and chirps.`
+				goto choose
+			label shoot
+			scene "scene/scene-explosion"
+			`	The drone must have been rigged with a bomb. It explodes more violently than you expected a normal Surveillance Drone to, engulfing you in the blast despite maintaining what should have been a safe distance.`
+				die
+			label ship
+			action
+				set "hackerz new america ambush"
+			`	Remaining on the surface could be dangerous. You retreat to the safety of the <ship> and fire up the engines.`
+				launch
+			label ambush
+			`	You find no refuge on the surface. The automated ships are still a threat.`
+				launch
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting staying surveillance mute
+		fleet
+			names "republic fighter"
+			fighters
+				names "republic fighter"
+			variant
+				"Surveillance Drone (ExplosiveSD)" 10
+	npc save
+		to spawn
+			has "hackerz new america ambush"
+			"ships: Heavy Warship" + "ships: Medium Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 7
+		government "Test Dummy"
+		system destination
+		personality target waiting vindictive nemesis mute
+			confusion 120
+		fleet
+			names "error test ship"
+			variant
+				"Leviathan Test Dummy"
+				"Mule Test Dummy"
+				"Firebird Test Dummy"
+				"Berserker Test Dummy2"
+				"Combat Drone (ExplosiveSD)" 4
+				"Mining Drone (ExplosiveSD)" 2
+				"Pirate Drone (ExplosiveSD)" 4
+	npc save
+		to spawn
+			has "hackerz new america ambush"
+			"ships: Heavy Warship" + "ships: Medium Warship" + "ships: Heavy Freighter" + "ships: Utility" >= 4
+		government "Test Dummy"
+		system destination
+		personality target waiting vindictive nemesis mute
+			confusion 120
+		fleet
+			names "error test ship"
+			variant
+				"Falcon Test Dummy"
+				"Modified Argosy Test Dummy"
+				"Argosy Test Dummy"
+				"Hauler Test Dummy"
+				"Combat Drone (ExplosiveSD)" 4
+				"Mining Drone (ExplosiveSD)" 2
+				"Pirate Drone (ExplosiveSD)" 4
+	npc save
+		government "Test Dummy"
+		system destination
+		personality target waiting vindictive nemesis mute
+			confusion 120
+		fleet
+			names "error test ship"
+			variant
+				"Vanguard Test Dummy2"
+				"Splinter Test Dummy2"
+				"Quicksilver Test Dummy2"
+				"Freighter Test Dummy"
+				"Combat Drone (ExplosiveSD)" 4
+				"Mining Drone (ExplosiveSD)" 2
+				"Pirate Drone (ExplosiveSD)" 4
+	on fail
+		clear "hackerz new america ambush"
+		log `The Hackerz set up an ambush at New America, an isolated anarchist world. In addition to drones, a fleet of automated Test Dummy ships was arrayed against me.`
 
 
 

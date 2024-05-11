@@ -14,7 +14,7 @@
 ship "Behemoth" "Behemoth (North Wind Cooling)"
 	outfits
 		"Heavy Laser Turret" 4
-		"Heavy Anti-Missile Turret" 2		
+		"Heavy Anti-Missile Turret" 2
 		"NT-200 Nucleovoltaic"
 		"LP144a Battery Pack"
 		"D94-YV Shield Generator"
@@ -830,7 +830,25 @@ mission "Turner Inc.: Hai Power 7"
 				`	(Rescue them from the pirates.)`
 				`	(Bargain with the pirates.)`
 					goto bargain
-					
+				`	(Use the Quantum Keyblade.)`
+					to display
+						or
+							has "outfit (flagship installed): Quantum Key Blade"
+							has "outfit (flagship installed): Quantum Dragon Blade"
+							has "outfit (flagship installed): Quantum Phoenix Blade"
+							has "outfit (flagship installed): Quantum Snake Blade"
+							has "outfit (flagship installed): Quantum Tiger Blade"
+							has "outfit (flagship installed): Quantum Turle Blade"
+					goto keyblade
+				`	(Use T.H.O.R.)`
+					to display
+						or
+							has "outfit (flagship installed): T.H.O.R."
+					goto thor
+				`	(Use Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan
 			branch "victory"
 				random < "flagship crew" - 22
 			`	Your crew fights bravely. Unfortunately, a stray bullet finds its way into your vital organs.`
@@ -840,10 +858,61 @@ mission "Turner Inc.: Hai Power 7"
 				launch
 			
 			label bargain
-			scene "scene/scene-caged subsidurial"
-			`	The pirates take your money and add you to their captured hostages. You eventually get sold as a slave working latrine duty for an illegal zoo stocked with exotic animals. Your days traveling the stars are over.`
+			`	The pirates take your money and add you to their captured hostages. "You lot are going to be sold at the slave markets."`
+			choice
+				`	"Wait, don't you know who I am?"`
+				`	(Keep quiet.)`
+					goto slavery
+				`	(Use Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan
+			`	The pirates look at each other in confusion. "No. Should we?"`
+			choice
+				`	"I'm Captain <first> <last>!"`
+				`	"Nevermind."`
+					goto slavery
+				`	(Use Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan
+			`	"Oh yeah?" Their leader turns to another pirate. "Are there any bounties on this one?"`
+			`	The other pirate reads some info off of a data pad, "Sixteen offers to capture alive. Lowest is five hundred thousand credits and highest is eight hundred thousand credits. But we can only claim one."`
+			`	"And dead?"`
+			`	Looking at his data pad, the other pirate answers "Fifty three offers. The lowest is one hundred thousand credits and highest is four hundred thousand credits. Altogether, about ten million credits. We just have to record it."`
+			`	Their leader smiles as another pirate pulls out a video recorder.`
+			choice
+				`	"Wait, listen..."`
+			scene "scene/scene-bloodyknife"
+			`	The leader cuts your throat open in front of the camera and exclaims, "I'm the pirate that killed <first> freakin' <last>!" The sound of his maniacal laughter is the last thing you hear as you bleed out.`
 				die
-
+			label slavery
+			scene "scene/scene-caged subsidurial"
+			`	You eventually get sold as a slave working latrine duty for an illegal zoo stocked with exotic animals. Your days traveling the stars are over.`
+				die
+			label keyblade
+			scene "outfit/quantum key blade"
+			`	You step forward into the pirates field of vision. "Intruder!" They draw their weapons and open fire. You take a deep breath and activate the Quantum Keyblade just in time to let the barrage of bullets phase through. The confusion and panic of pirates upon seeing this gives you an opening to strike down the closest of them. Seeing this, some of them flee while others try shooting you again. You manage to quantum shift before the bullets strike. The few pirates who didn't run away earlier turn tail to escape.`
+			choice
+				`	(Cut them down.)`
+				`	(Let them go.)`
+					goto breath
+			`	You finish off the terrified pirates before releasing the captives. David eyes the Quantum Keyblade. "I'd heard rumors about the Quantum Keyblades, but after seeing one in action I have a better understanding for why the Hai consider it one of their greatest treasures."`
+				launch
+			label breath
+			`	You let the pirates run away and deactivate the Quantum Keyblade. The fight left you winded. After taking a moment to catch your breath, you release the captives. David eyes the Quantum Keyblade. "I'd heard rumors about the Quantum Keyblades, but after seeing one in action I have a better understanding for why the Hai consider it one of their greatest treasures."`
+				launch
+			label thor
+			scene "outfit/thor"
+			`	You remotely activate T.H.O.R. A minute passes without anything happening. Then it suddenly crashes through the main entrance! The pirates shoot at it but their weapons have no effect on T.H.O.R.'s armored plating. T.H.O.R. uses it's heavy laser rifle to snipe each pirate with surgical precision. None of the captives were harmed. As you are releasing them, David remarks, "You have a T.H.O.R. test model? I guess your connections with the Free Worlds has some extra benefits."`
+				launch
+			label orphan
+			action
+				outfit "Evidence of ********" 1
+				"captain of atrocity" ++
+			scene "outfit/midnight lost orphan"
+			`	You allow Midnight's Lost Orphan to exert its full influence on the pirates. After a few moments, they start arguing among themselves. The arguments give way to violence and a firefight breaks out! Eventually, only one pirate remains. You easily shoot him in the back. Some of the captives were caught in the crossfire. Fortunately, David Turner was unharmed. "Thanks for the save." Shocked and bewildered, he looks upon his blood splattered crew members. "Such senseless violence. I don't understand what came over the pirates. Despite the criminal nature of their work, they seemed like professionals until just a few moments ago."`
+				launch
 	npc
 		government "Pirate"
 		personality waiting staying harvests plunders

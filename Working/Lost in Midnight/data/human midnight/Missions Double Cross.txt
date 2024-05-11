@@ -550,6 +550,40 @@ mission "Protection: Marauder Double Cross"
 
 
 
+# Double cross version of "Independent Refugee"
+mission "Illegal Refugee"
+	name "Passenger to <planet>"
+	repeat
+	description "Help <fare> escape from <origin> to <destination>. Payment is <payment>."
+	minor
+	passengers 1
+	illegal 50000 `Your passenger turns out to be in possession of a forged ID. As he is hauled off to be investigated, you vehemently protest that you know nothing of his shady history. You wind up quite a bit poorer through a combination of fines and bribes (the breakdown remains somewhat unclear).`
+	stealth
+	to offer
+		has "Independent Refugee: done"
+		random < 3 - "rejected illegal jobs"
+	source
+		government "Pirate"
+		not attributes uninhabited
+	destination
+		distance 0 5
+		government "Independent" "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	on offer
+		dialog phrase "generic refugee offer"
+	on accept
+		"rejected illegal jobs" --
+	on decline
+		"rejected illegal jobs" ++
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"getaway driver" ++
+		payment
+		payment 1000
+		dialog phrase "generic refugee dropoff payment"
+
+
+
 mission "Jump Drive Theft 1"
 	landing
 	infiltrating

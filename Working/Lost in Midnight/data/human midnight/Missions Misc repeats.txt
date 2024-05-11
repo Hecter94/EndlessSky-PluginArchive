@@ -16,7 +16,6 @@
 #########################
 
 
-
 mission "Independent Refugee"
 	name "Passenger to <planet>"
 	repeat
@@ -24,7 +23,7 @@ mission "Independent Refugee"
 	minor
 	passengers 1
 	to offer
-		random < 5
+		random < 5 - "rejected illegal jobs"
 	source
 		government "Pirate"
 		not attributes uninhabited
@@ -33,10 +32,15 @@ mission "Independent Refugee"
 		government "Independent" "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
 	on offer
 		dialog phrase "generic refugee offer"
+	on accept
+		"rejected illegal jobs" --
+	on decline
+		"rejected illegal jobs" ++
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
 		"reputation: Independent" ++
+		"getaway driver" ++
 		payment
 		payment 1000
 		dialog phrase "generic refugee dropoff payment"

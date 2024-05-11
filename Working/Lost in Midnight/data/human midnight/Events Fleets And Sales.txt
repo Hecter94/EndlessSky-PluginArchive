@@ -1871,7 +1871,7 @@ mission "North Pirate Drone Test"
 	source
 		attributes "north pirate"
 	to offer
-		random < 20
+		random < 70
 		"reputation: Pirate" < -100
 		has "event: northern pirate drones"
 		not "event: southern carriers 4"
@@ -1918,7 +1918,6 @@ mission "Core Pirate Drones"
 event "core pirate drones"
 	shipyard "Advanced Core Pirates"
 		add "Modified Nest"
-		add "Modified Roost"
 		add "Pirate Drone"
 	shipyard "Northern Pirates"
 		add "Pirate Drone"
@@ -1929,7 +1928,7 @@ mission "Core Pirate Drone Test"
 	source
 		attributes "core pirate"
 	to offer
-		random < 50
+		random < 70
 		"reputation: Pirate" < -100
 		has "event: core pirate drones"
 		not "event: Oathbreaker planning"
@@ -3988,3 +3987,52 @@ event "midnight pirate power"
 	planet Freedom
 		add outfitter "Basic Pirate Power"
 
+
+
+mission "Midnight Star King"
+	landing
+	invisible
+	on offer
+		event "midnight star king"
+		fail
+
+event "midnight star king"
+	fleet "Paradise Merchants"
+		add variant 1
+			"Star King"
+
+mission "Midnight Star King Sales"
+	minor
+	invisible
+	to offer
+		or
+			has "hr: secret leaks"
+			has "FW Epilogue: Ijs and Katya: offered"
+			has "FW Epilogue: Alondo: offered"
+			has "FW Epilogue: Freya: offered"
+			has "FW Epilogue: Danforth: offered"
+			has "FW Epilogue: Edward: offered"
+	source
+		attributes "paradise"
+		attributes "shipyard"
+	on offer
+		event "midnight star king sales"
+		conversation
+			`While walking through the spaceport crowd, a woman in a business suit calls out to you. "Captain <last>!"`
+			choice
+				`	(Stop and see what she wants.)`
+				`	(Avoid her.)`
+					goto avoid
+			scene "thumbnail/star king-thumb"
+			`	She makes her way through the crowd towards you. Catching her breath she says, "Thanks for stopping! I work for Betelgeuse Shipyards. To celebrate the end of the war, we're bringing the Star King back into production. If you're looking to transition towards non-warships in this new era of peace, please give us your consideration!" She thanks you again for taking the time to listen to her sales pitch before letting you continue on your way.`
+				decline
+			label avoid
+			`	You turn away from her and rush away, quickly losing the woman in the crowd.`
+				decline
+
+event "midnight star king sales"
+	shipyard "Betelgeuse Advanced"
+		add "Star King"
+	fleet "Large Human Merchants (Hai)"
+		add variant 1
+			"Star King (Hai Engines)"

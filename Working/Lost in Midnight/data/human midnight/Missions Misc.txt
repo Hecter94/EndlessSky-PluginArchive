@@ -1053,6 +1053,86 @@ mission "Limit Breaker Syndicate Patrol"
 
 
 
+mission "Midnight Modified Skein"
+	minor
+	name "Dirty Dozen"
+	description "Pirates have created a Modified Skein named the <npc>. They are rumored to be testing it at <waypoints>. Scan the ship's outfits then destroy it. Deliver the scanner data to <destination> for analysis."
+	source
+		government "Free Worlds"
+		attributes "spaceport"
+	destination Zug
+	waypoint Sadr
+	to offer
+		has "free worlds plot completed"
+		random < 70
+	on offer
+		conversation
+			scene "thumbnail/modified skein-thumb"
+			`You receive a message from JJ marked confidential. "Captain <last>, my sources on Greenrock have informed me that a pirate has constructed a Modified Skein named the <npc>. They are rumored to be testing it at <waypoints>. I need you to scan it with an Outfit Scanner, then destroy it. Hopefully that will discourage other pirates from making more. I'm headed to Southbound Shipyards on Zug. Deliver the scanner data to me there. We need to determine whether this Modified Skein was based on the original Skein's blueprints or if they reverse engineered it.`
+			choice
+				`	"I'll do my best to hunt them down."`
+					goto vigilant
+				`	"Sorry, I'm busy with something else now."`
+					goto slacker
+			label vigilant
+			`	"Thanks <first>. Good luck with the hunt."`
+				accept
+			label slacker
+			`	"I'd rather not have to ask someone else to do it. The fewer people who know this ship exists, the better. Please just get this done as quickly and discreetly as you can."`
+				accept
+	on abort
+		"reputation: Free Worlds" --
+		dialog `Word gets around that you are a quitter who gave up the search for the <npc>...`
+	on enter Sadr
+		conversation
+			scene "thumbnail/modified skein-thumb"
+			`You've located the <npc>, but it's not alone! Remember to scan the ship with an Outfit Scanner before destroying it.`
+	npc
+		government "Pirate"
+		system Sadr
+		personality waiting staying plunders harvests
+		fleet
+			names "pirate"
+			cargo 1
+			variant
+				"Modified Nest"
+				"Modified Roost"
+				"Pirate Drone" 12
+	npc
+		government "Bounty"
+		system Sadr
+		personality waiting staying heroic vindictive
+		ship "Pirate Drone (Modified)" "Aries"
+		ship "Pirate Drone (Modified)" "Taurus"
+		ship "Pirate Drone (Modified)" "Gemini"
+		ship "Pirate Drone (Modified)" "Cancer"
+		ship "Pirate Drone (Modified)" "Leo"
+		ship "Pirate Drone (Modified)" "Virgo"
+		ship "Pirate Drone (Modified)" "Libra"
+		ship "Pirate Drone (Modified)" "Scorpio"
+		ship "Pirate Drone (Modified)" "Sagittarius"
+		ship "Pirate Drone (Modified)" "Capricornus"
+		ship "Pirate Drone (Modified)" "Aquarius"
+		ship "Pirate Drone (Modified)" "Pisces"
+	npc "scan outfits" kill
+		government "Bounty"
+		system Sadr
+		personality target waiting staying timid
+		ship "Modified Skein" "Dirty Dozen"
+		dialog `You've destroyed the <npc>. Deliver the scanner data to <destination> for analysis.`
+	on fail
+		dialog `You failed to get the scans JJ requested of the <npc>. They mystery of whether they created the ship from stolen blueprints or somehow reverse engineered the design remains unsolved...`
+	on visit
+		dialog `You have yet to scan and destroy the <npc>. Report back here once you've scanned and destroyed that Modified Skein.`
+	on complete
+		"reputation: Free Worlds" ++
+		payment 250000
+		conversation
+			scene "thumbnail/modified skein-thumb"
+			`You deliver the scanner data of the <npc> to JJ. "Thanks <first>. Southbound Shipyard's engineers will take it from here. I've authorized a Free Worlds payment of <payment> to be deposited into your account for assisting in this matter.`
+
+
+
 mission "Midnight Paradise Fortune 1"
 	minor
 	name "Bring Diana to <planet>"
@@ -1173,7 +1253,7 @@ mission "Midnight Paradise Fortune 2"
 				`	"No, I'm hoping to collect a bounty on you instead."`
 				`	"Get real. She's not worth that much."`
 			`	One of the pirate crew whispers something in the other captain's ear. He turns and yells, "What? Find her!" The pirate crew can be heard arguing amongst themselves in the background, their negotiation with you already forgotten.`
-			`	You cut them off and prepare to fight. Hopefully Diane is safe. To rescue her, you'll have to board the <npc> and defeat its crew without destroying it first.`
+			`	You cut them off and prepare to fight. Hopefully Diana is safe. To rescue her, you'll have to board the <npc> and defeat its crew without destroying it first.`
 				accept
 	npc
 		government "Bounty"
@@ -1195,7 +1275,7 @@ mission "Midnight Paradise Fortune 2"
 		ship "Bactrian (Shield Suppressor)" "Vicious Rain"
 		conversation
 			scene "outfit/shield suppressor"
-			`The battle was suspiciously easier than you expected and it isn't long before you find Diane hiding in the cooling ducts. Her backpack is noticeably empty. She grins and says, "Thanks for coming to rescue me <first>! I managed to stick those suppressor thingies all over the ship while they were distracted by you. When the shields stopped working, they started blaming each other..." With Diana safely in your custody, you should head to <destination>. With luck there may actually be a bounty worth collecting on the <npc>.`
+			`The battle was suspiciously easier than you expected and it isn't long before you find Diana hiding in the cooling ducts. Her backpack is noticeably empty. She grins and says, "Thanks for coming to rescue me <first>! I managed to stick those suppressor thingies all over the ship while they were distracted by you. When the shields stopped working, they started blaming each other..." With Diana safely in your custody, you should head to <destination>. With luck there may actually be a bounty worth collecting on the <npc>.`
 	on fail
 		dialog `[MISSION FAILED] You failed to bring Diana Howl to safety. If life were a game, you could load a save file and try again.`
 	on complete
@@ -1726,7 +1806,7 @@ mission "Midnight Striker"
 				`	"I suppose you're right."`
 					goto final
 			scene "outfit/kludge blaster"
-			`	Barmy frowns. "There's enough space to accomodate one. But Kludge Blasters work best when used in multiples. We need to more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
+			`	Barmy frowns. "There's enough space to accomodate one. But Kludge Blasters work best when used in multiples. We need to muster more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
 				goto final
 			label javelin
 			action

@@ -16,6 +16,102 @@
 
 
 
+# restores access to FW Epilogue: Alondo
+mission "Midnight Hai Restore: FW Epilogue: Alondo"
+	landing
+	source "Bourne"
+	to offer
+		has "free worlds plot completed"
+		has "hr: secret leaks"
+		not "event: hai-human resolution announced"
+		not "FW Epilogue: Alondo: offered"
+		or
+			not "Paradise Fortune 3: done"
+			has "Paradise Fortune 4: offered"
+	
+	on offer
+		set "FW Epilogue: Alondo: offered"
+		set "FW Epilogue: Alondo: declined"
+		conversation
+			`As you're coming in for a landing on Bourne, you receive a message from Alondo. "<first>!" he says. "I just heard that you were in system. Want to meet up for a drink and talk about old times?"`
+			choice
+				`	"Sure, I'd be glad to."`
+				`	"Sorry, I'm busy right now."`
+					defer
+			`	You meet up with Alondo at a local pub. He tells you that his life has continued to be quite full since the war ended and the Council was dissolved: he's been placed in charge of the Free Worlds diplomatic corps, whose main job appears to be to make sure all the individual planets feel like their concerns are being listened to. "It means lots of travel," he says, "and lots of fine meals with important people. And they're always interested to hear my stories from the war times."`
+			`	You tell Alondo a bit about what you've been doing since the war ended. "Of course," he says, "you're traveling the galaxy. I knew from the start you weren't the kind who would quickly put down roots on a single planet."`
+			`	Alondo goes on to describe some of the inner workings of the Free Worlds Senate, and the mutual defense arrangement that forms the backbone of the government. "For a while there," he says, "it felt like there was so much bureaucracy that we couldn't get anything done, but now it's finally starting to function in the way all of us imagined. Quite an honor to have had a hand in the birth of a new government."`
+			choice
+				`	"Spoken like a true bureaucrat."`
+					goto bureaucrat
+				`	"I really do hope the Free Worlds can live up to our original vision of justice and equality."`
+					goto vision
+			
+			label bureaucrat
+			`	"Fair enough," he says, "but I really do believe we've created a government here that is less prone to the inequalities that they're still struggling with in the Republic."`
+				goto end
+			
+			label vision
+			`	"Me too," he says. "We've got a good start, but then again, so did the Republic, back in the day."`
+				goto end
+			
+			label end
+			`	He is quiet for a moment, and then says, "I guess that's why I'm still here in the thick of things, instead of just settling down somewhere and leaving public life behind. I don't believe society or government just naturally becomes good or stays good without effort. So I'm here to speak up when we start to stray from our original vision."`
+			`	You sit and talk with each other for quite a while longer, reminiscing about old times. Then, you wish him well in his work, and he tells you to stop by and say hello any time you're in the area. You head back to your ship.`
+				decline
+
+
+
+# restores access to Paradise Fortune
+mission "Midnight Hai Restore: Paradise Fortune 1"
+	minor
+	name `Flee to <planet>`
+	description `Flee from <origin> to <destination> with the girl you let on to your ship.`
+	source
+		planet "Follower" "Mainsail"
+	destination
+		attributes spaceport
+		distance 1 1
+	passengers 1
+	to offer
+		random < 50 + ( "outfit (flagship installed): Popcorn Box" * 20 )
+		has "main plot completed"
+		has "hr: secret leaks"
+		not "event: hai-human resolution announced"
+		not "Paradise Fortune 1: offered"
+	
+	on offer
+		set "Paradise Fortune 1: offered"
+		conversation
+			`As with all Paradise Worlds, the air is just the right temperature when you step out of your ship, and a light breeze rustles the leaves of the trees planted around the spaceport. While taking a moment to breathe in the fresh air, you hear yelling coming from the entrance to the <origin> shipyard. Looking over, you spot a young girl with a backpack running from two spaceport security guards. "Get back here!" they yell at the girl, chasing her with no success.`
+			`	"Someone help me!" the girl shrieks out. As she runs, a credit chip falls out of her backpack.`
+			choice
+				`	(Let her onto my ship.)`
+					goto continue
+				`	(Ignore the scene.)`
+			
+			`	The girl looks you in the eyes as she approaches, expecting help that will never come. Air rushes past you as she and the security guards run by. After a few meters, the security guards catch up to the girl, tackling her to the ground and detaining her as they remove her backpack full of credit chips.`
+				decline
+			
+			label continue
+			`	You open the hatch to your ship and yell "Get on!" as the girl approaches. "Thank you, Captain," she says while getting closer, to much protest from the approaching security guards.`
+			`	As she enters your ship, she grabs your arm and pulls you in with her before closing the hatch. "Launch and go to <destination>, now! I'll explain when we get there."`
+				launch
+	on accept
+		set "Paradise Fortune 1: active"
+	on visit
+		dialog `You land on <planet>, but realize that the girl is in one of your escorts that hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on abort
+		clear "Paradise Fortune 1: active"
+		set "Paradise Fortune 1: aborted"
+	on fail
+		clear "Paradise Fortune 1: active"
+		set "Paradise Fortune 1: failed"
+	on complete
+		clear "Paradise Fortune 1: active"
+		set "Paradise Fortune 1: done"
+
+
 # restores access to Hiding in Plain Sight
 mission "Midnight Hai Restore: Hiding in Plain Sight"
 	description "Bring Arthur and his Hai friend Kiru to <destination> for a gaming convention by <date>."
@@ -27,9 +123,10 @@ mission "Midnight Hai Restore: Hiding in Plain Sight"
 	passengers 2
 	deadline 30
 	to offer
-		random < 30
+		random < 30 + ( "outfit (flagship installed): Popcorn Box" * 40 )
 		has "First Contact: Hai: offered"
 		has "hr: secret leaks"
+		not "event: hai-human resolution announced"
 		not "Hiding in Plain Sight: offered"
 	on offer
 		set "Hiding in Plain Sight: offered"
@@ -80,15 +177,14 @@ mission "Midnight Hai Restore: Nanachi 1"
 	destination "Cloudfire"
 	deadline 2 1
 	to offer
-		random < 15
+		random < 15 + ( "outfit (flagship installed): Popcorn Box" * 55 )
 		"net worth" > 20000000
 		"combat rating" > 1200
 		year > 3018
 		has "First Contact: Hai: offered"
+		has "hr: secret leaks"
+		not "event: hai-human resolution announced"
 		not "Nanachi 1: offered"
-		or
-			has "hr: secret leaks"
-			not "event: hai-human resolution announced"
 	on offer
 		set "Nanachi 1: offered"
 		conversation
@@ -161,8 +257,8 @@ mission "Midnight Hai Restore: Expanding Business [1]"
 	to offer
 		has "First Contact: Hai: offered"
 		has "main plot completed"
-		not "Expanding Business [1]: offered"
 		not "event: hai-human resolution announced"
+		not "Expanding Business [1]: offered"
 	on offer
 		set "Expanding Business [1]: offered"
 		conversation
@@ -265,11 +361,11 @@ mission "Midnight Hai Restore: Hai Reveal: Pirate Troubles [0]"
 		near "Waypoint" 2
 		government "Hai"
 	to offer
-		has "First Contact: Unfettered: offered"
-		not "Hai Reveal: Pirate Troubles [0]: offered"
-		not "Hai Reveal [A03a] Symbol Identification: offered"
 		"combat rating" > 1100
-		random < 10
+		has "First Contact: Unfettered: offered"
+		not "Hai Reveal [A03a] Symbol Identification: offered"
+		not "Hai Reveal: Pirate Troubles [0]: offered"
+		random < 10 + ( "outfit (flagship installed): Popcorn Box" * 60 )
 	on offer
 		set "Hai Reveal: Pirate Troubles [0]: offered"
 		conversation
@@ -333,8 +429,8 @@ mission "Midnight Hai Restore: Hai Reveal: Pirate Troubles [1]"
 	destination "Hai-home"
 	clearance
 	to offer
-		not "Hai Reveal: Pirate Troubles [1]: offered"
 		has "Midnight Hai Restore: Hai Reveal: Pirate Troubles [0]: done"
+		not "Hai Reveal: Pirate Troubles [1]: offered"
 	on offer
 		set "Hai Reveal: Pirate Troubles [0]: done"
 		set "Hai Reveal: Pirate Troubles [1]: offered"
@@ -400,7 +496,7 @@ mission "Midnight Hai Restore: Unwanted Cargo Trigger"
 		government "Hai"
 		not attributes "uninhabited"
 	to offer
-		random < 1
+		random < 1 + ( "outfit (flagship installed): Popcorn Box" * 69 )
 		"cargo space" > 0
 		has "hr: secret leaks"
 		not "Unwanted Cargo Trigger: offered"

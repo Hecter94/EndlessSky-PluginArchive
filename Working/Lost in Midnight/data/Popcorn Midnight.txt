@@ -1,0 +1,401 @@
+# Copyright (c) 2024 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+# Emulated vanilla missions only accessed via Popcorn Box outfit installed on flagship
+# The random chance is 70 minus the vanilla random chance
+# This gives the player a second random roll equal to the difference between the vanilla chance and most Midnight story missions which are set to 70
+
+
+mission "Midnight Popcorn: Deep Archaeology 1"
+	minor
+	name "Deep Archaeology"
+	description "Drop this archaeologist off on <destination>, before making a trip to Midgard in the Deep to collect some samples."
+	source
+		attributes "paradise" "north" "near earth"
+		near Miaplacidus 1 20
+	destination Vinci
+	to offer
+		not "Deep Archaeology 1: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 55
+		"combat rating" > 15
+	passengers 1
+	on offer
+		set "Deep Archaeology 1: offered"
+		conversation
+			`As you are walking through the spaceport, a man in an expensive suit approaches you. "Pardon me, Captain," he says. "I wonder if you would be willing to talk privately about a very lucrative job opportunity."`
+			choice
+				`	"Is this something illegal?"`
+				`	"Sure, let's return to my ship and talk there."`
+					goto ship
+			`	"Not illegal," he says, "but it could help to uncover a secret with enormous ramifications. A secret that certain people do not want known."`
+			`	"Okay," you say, "let's return to my ship, and I'll hear you out."`
+			label ship
+			`	You lead him back to your ship. "I'm an archaeologist," he explains, "studying the early history of the space era. And in particular, a set of persistent folk tales about contact with alien species. Many of these tales have to do with the region of the galaxy we call the Deep. I need someone to travel to Midgard and retrieve some samples from an ancient site there."`
+			choice
+				`	"Why can't you travel there yourself?"`
+				`	"What sort of samples? Will this get me in trouble?"`
+					goto samples
+			`	"Well, let's just say I've made myself somewhat unpopular in the Deep," he says. "Asking too many questions. If I were seen walking around on Midgard, they would probably ask me to leave immediately."`
+			`	You say, "And, is the work you're asking me to do going to make me equally unpopular?"`
+			label samples
+			`	"Not if you are circumspect," he says. "I need two samples from a certain village. One is simple: wood from a living or recently deceased tree. Any tree will do."`
+			`	He pauses for a minute, then continues. "The other is more... sensitive. There is a historical site on Midgard, an ancient church. Not something they publish in the official tourist guides, mind you. I need a small sample of the wood that the church is built with. A small splinter would suffice."`
+			choice
+				`	"Sure, if it's in the interest of science, I can do that."`
+					goto yes
+				`	"You're asking me to vandalize a historical site?"`
+			`	"I need only the tiniest of samples," he says, "maybe a splinter of wood that is already peeling off, or from a place where the wood is worn and cracked. And what we discover from that sample could be of immense importance."`
+			choice
+				`	"Sorry, that sounds a bit too shady to me."`
+					decline
+				`	"Okay, I'm willing to do that."`
+			label yes
+			`	"Thank you," he says. "Trust me, this could give us some very important information. I'll need you to drop me off on Vinci first, to meet with some scientists. We can then meet up back on Vinci once you have the samples."`
+				accept
+	on accept
+		set "Deep Archaeology 1: active"
+	on fail
+		clear "Deep Archaeology 1: active"
+		set "Deep Archaeology 1: failed"
+	on abort
+		clear "Deep Archaeology 1: active"
+		set "Deep Archaeology 1: aborted"
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying the archaeologist hasn't entered the system yet. Better depart and wait for it.`
+	on complete
+		clear "Deep Archaeology 1: active"
+		set "Deep Archaeology 1: done"
+
+
+
+mission "Midnight Popcorn: Remnant: Learn Sign 1"
+	minor
+	name "Learn Remnant Sign"
+	description `Travel to <destination> for more lessons on how to speak using Remnant sign language.`
+	source "Caelian"
+	destination "Aventine"
+	to offer
+		has "Remnant: Void Sprites 3: done"
+		has "Remnant: Defense 3: done"
+		not "Remnant: Learn Sign 1: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 40
+		or
+			has "Remnant: Key Stones: done"
+			has "Remnant: Key Stones (Hai): done"
+			has "Remnant: Key Stones (Pre-Hai) 2: done"
+			has "Remnant: Broken Jump Drive 2: done"
+	on offer
+		set "Remnant: Learn Sign 1: offered"
+		conversation
+			`As you make your way through the spaceport, you become increasingly aware of how quiet it is. Looking around, you note that it doesn't seem any less busy than usual, just that only a handful of people are paying attention to you. As a result, they have reverted to their normal gestures instead of singing. It feels oddly isolating, and eerie, to realize that there are hundreds of conversations going on around you, yet you can't understand a single one.`
+			choice
+				`	(Ask someone to teach me.)`
+				`	(Ignore it.)`
+					decline
+					
+			`	Looking around the spaceport, you eventually find someone at what looks like an information desk.`
+			choice
+				`	"I would like to learn your sign language."`
+					goto words
+				`	(Sing a short verse about not understanding people because my hands are still.)`
+					goto song
+			label words
+			`	She looks at you with a confused expression, her hands making a few quick gestures. After a moment she points at the hand scanner embedded in the desk.`
+				goto scan
+			label song
+			`	She looks surprised, but then recovers and sings a verse about how hands can learn, but must be cautious, and gestures at the hand scanner embedded in the desk.`
+			label scan
+			`	As you place your hand on the scanner, you feel a quick tingle as it scans your hand, then a pinprick as it extracts a drop of blood. The lady behind the desk looks at her screen. She nods, taps on the screen a few times, then retrieves a data pad from beneath the desk.`
+			`	She hands the pad to you, and sings a brief verse about perseverance and hope.`
+			`	Back on your ship you flip the pad on. The data pad appears to be loaded with a number of historic musicals and operas where the meaning of the lyrics has been replicated with gestures as subtitles. It is interspersed with what appear to be Remnant children's videos slowly explaining gestures and pausing to give you the opportunity to practice.`
+			`	You spend a few hours going through the lessons. It takes a while to start vaguely understanding the signs, but you eventually learn how to sign a number of basic phrases. Eventually, the pad goes black and a note pops up on the screen informing you that additional lessons are available from the director's desk on Aventine.`
+				accept
+	on accept
+		set "Remnant: Learn Sign 1: active"
+	on abort
+		clear "Remnant: Learn Sign 1: active"
+		set "Remnant: Learn Sign 1: aborted"
+	on complete
+		clear "Remnant: Learn Sign 1: active"
+		set "Remnant: Learn Sign 1: done"
+
+
+
+mission "Midnight Popcorn: Sheragi Archaeology: The Box 1"
+	minor
+	name "The Sheragi Bunker"
+	description "Visit Albert Foster on <destination> to see what he has discovered."
+	source
+		near "Zubeneschamali" 1 100
+	destination "Zug"
+
+	to offer
+		has "event: rim archaeology results"
+		has "First Contact: Unfettered: offered"
+		has "main plot completed"
+		not "Sheragi Archaeology: The Box 1: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 66
+
+	on offer
+		set "Sheragi Archaeology: The Box 1: offered"
+		dialog
+			`You receive an encoded message from Albert Foster, the archaeologist who you helped to uncover the mysterious Sheragi ruins on Zug. He seems to be very excited.`
+			`	"<first>! Been a while, hasn't it? Remember the Sheragi dig site? We've just found something incredible here. Please, come visit me on Zug. I don't think I can trust anyone else with this."`
+	on accept
+		set "Sheragi Archaeology: The Box 1: active"
+	on abort
+		clear "Sheragi Archaeology: The Box 1: active"
+		set "Sheragi Archaeology: The Box 1: aborted"
+	on complete
+		set "Sheragi Archaeology: The Box 1: done"
+
+
+
+mission "Midnight Popcorn: There Might Be Riots 1"
+	name "Transport band to <planet>"
+	description `Give the band "There Might Be Riots" a ride to <destination>.`
+	minor
+	source
+		near Tarazed 5 10
+		government "Republic" "Free Worlds" "Neutral"
+	destination "Wayfarer"
+	cargo "musical equipment" 4
+	passengers 8
+	to offer
+		not "There Might Be Riots 1: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 55
+	
+	on offer
+		set "There Might Be Riots 1: offered"
+		conversation
+			`A woman in a well-tailored suit approaches you. "Captain <last>?" You nod. "Are you available for a transport job?" she asks.`
+			choice
+				`	"What is it?"`
+				`	"Not right now."`
+					defer
+			`	"My name is Becca," she says. "I'm a stage manager for a band, and the transport we had under contract bailed out on us. Any chance you could take <fare> and <tons> of cargo to <destination>? Given the circumstances, we can pay quite well."`
+			choice
+				`	"Sure!"`
+				`	"Sorry, I'm not headed in that direction right now."`
+					decline
+			`	"Great," she says, "I'll tell the boys to start loading their gear into your ship." About a half an hour later the road crew begins carting instruments and amplifiers into your cargo hold. Soon after that, you hear the roar of a crowd in the distance and another group of men comes running into your ship. "We're with the band," they say. "Quick, shut the hatch." Half a minute later, a mob of people has surrounded your ship and a few of them are even climbing on top of it. It takes you a second to realize they're not angry or bent on destruction - they're just a group of crazy fans.`
+			`	"Happens everywhere we go," says one of the musicians, calmly, as he watches a video feed of the mob on one of your monitors. He tells you that he's Ulrich, the lead singer. Then he introduces the rest of the singers and musicians.`
+			choice
+				`	"Pleased to meet you all. What's the name of your band?"`
+			`	"Oh," Ulrich says, "we call ourselves, 'There Might Be Riots.'"`
+			`	Eventually, the spaceport police arrive and disperse the crowd, and the band settles in for their trip to <destination>.`
+				accept
+	on accept
+		set "There Might Be Riots 1: active"
+	on visit
+		dialog `You arrive on <planet>, but realize that your escort carrying the band and their supplies has not arrived yet. Better depart and wait for your escorts to enter the system.`
+	on abort
+		clear "There Might Be Riots 1: active"
+		set "There Might Be Riots 1: aborted"
+	on fail
+		clear "There Might Be Riots 1: active"
+		set "There Might Be Riots 1: failed"
+	on complete
+		clear "There Might Be Riots 1: active"
+		set "There Might Be Riots 1: done"
+		payment
+		payment 100000
+		log `Dropped the famous band "There Might Be Riots" off on Wayfarer. They drew quite the crowd, and paid very well.`
+		conversation
+			`You drop off the band "There Might Be Riots" on <destination>. Along the way, you got to hear some of their music, which is mostly characterized by frenzied instrumentals, a very energetic brass section, and bizarre lyrics. One day while you were in transit, they nearly drove you insane by playing their catchy but nonsensical song "Henhouse In Your Soul" for four hours straight, but other than that they have been good passengers, and their stage manager gives you an incredibly generous payment of <payment>.`
+			`	"We've already got a gig lined up for tonight," says Ulrich. "Want to come? We'll give you free tickets." Given how well they just paid you, it might be worth going just to build a relationship with the band, even if not for the music itself.`
+			choice
+				`	"Sure!"`
+				`	"Sorry, I've got other things to do."`
+					decline
+			`	The band is even louder in concert than they were when practicing in the confines of your ship. About thirty minutes into the concert, the energy of the crowd and the surreal lyrics finally begin to soak in, and rather than seeming meaningless their music feels fraught with meaning that hovers just beyond your grasp.`
+			`	Finally the band announces that their last song will be "Sad Archie." You've never heard of it, but the fans scream in approval. It's a slow, ballad-like song about a man named Archie who lives forever and is sad because the friends he makes all grow old and die. Archie has a pet dragon, and he builds a beautiful house for the dragon, but the dragon dies young. Archie is so sad seeing the dragon's house empty and gathering dust that he rents it out to some friends, but they fight with each other and trash the place. The story makes no sense, but some of the fans are wiping away tears as the song ends.`
+			`	Becca, who is sitting next to you in the VIP section, says, "We learned years ago that we need to end every concert with a sad song. Otherwise the fans leave with way too much energy and start destroying public property."`
+			`	The concert ends, and you say goodbye to the band. They say they'll be in touch if they ever need a ride again.`
+
+mission "Midnight Popcorn: There Might Be Riots part 2"
+	name "Transport band to <planet>"
+	description `Give the band "There Might Be Riots" a ride to <destination>.`
+	minor
+	source
+		government Syndicate
+	destination "Prime"
+	cargo "musical equipment" 4
+	passengers 8
+	to offer
+		has "There Might Be Riots 1: done"
+		has "Deep Archaeology 5: done"
+		not "There Might Be Riots part 2: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 40
+	
+	on offer
+		set "There Might Be Riots part 2: offered"
+		conversation
+			`As you walk through the spaceport, you see a large crowd gathered outside a small pub, and hear the unmistakable music of There Might Be Riots from inside. The concert seems to be just winding down. Do you want to wait around and say hello to them?`
+			choice
+				`	(Okay.)`
+				`	(Not right now.)`
+					defer
+			`	"<first>!" says Ulrich, when they see you. "What luck! We're doing a concert tonight on landing pad ninety-four, part of our 'Trouble on the Tarmac Tour.' We're going to need a lift to <planet> right after the concert. Or possibly in the middle of it. Can you help us out?"`
+			choice
+				`	"Okay. But why the hurry to leave?"`
+					goto okay
+				`	"Sorry, I've got other plans."`
+			`	"Please," he says, "I'm serious. You'll be saving our skins. Whatever else you've got, it's not this important."`
+			choice
+				`	"Okay, I'll do it. Why's it so urgent?"`
+				`	"Sorry, I really don't want to work with you guys anymore."`
+					decline
+			label okay
+			`	"You'll see," he says. "You should park your ship right behind us in case the natives get restless and we need to skedaddle."`
+			`	With some trepidation, you sit by the hatchway of your ship and watch as the band sets up directly outside it and the concert begins. Nothing seems out of the ordinary until the band introduces a song called "Gluttony," and you can feel a sudden tension fill the air. The Syndicate security guards, who until now have been standing at the periphery of the landing pad, begin to disperse themselves throughout the crowd.`
+			`	It's a song about a man who will die if he ever stops eating, so he eats more and more and grows bigger and bigger. A second after you realize that the whole thing is a thinly veiled critique of the Syndicate, a group up front unrolls a banner that reads "End Wage Slavery!" and begins shouting and chanting slogans. As the band plays on, there is some sort of scuffle at the back of the crowd, and then you see stun guns begin to flash, and rising plumes of what you would guess is tear gas.`
+			`	As the demonstrators are driven away, a group of guards approach you. "What is your connection to these musicians?" they ask.`
+			choice
+				`	"I'm just their transport. They're paying me to carry them to their next destination."`
+					goto transport
+				`	"They're friends of mine. Why? They haven't done anything illegal, that I can see."`
+			`	"Be careful what friends you choose," says the guard, "or you might find that no one in this sector will offer you any jobs. Now, get them packed up and get out of here." You have no choice but to leave the planet immediately...`
+				launch
+			label transport
+			`	"Then I suggest you do your job and transport them. Immediately." The guards leave. As soon as the band is packed up, you leave the planet...`
+				launch
+	on accept
+		set "There Might Be Riots part 2: active"
+	on visit
+		dialog `You arrive on <planet>, but realize that your escort carrying the band and their supplies has not arrived yet. Better depart and wait for your escorts to enter the system.`
+	on abort
+		clear "There Might Be Riots part 2: active"
+		set "There Might Be Riots part 2: aborted"
+	on fail
+		clear "There Might Be Riots part 2: active"
+		set "There Might Be Riots part 2: failed"
+	on complete
+		clear "There Might Be Riots part 2: active"
+		set "There Might Be Riots part 2: done"
+		payment
+		payment 200000
+		conversation
+			`As generous as before, the band pays you generously: <payment>. "Where will you be going next, from here?" you ask.`
+			`	"Who knows," says Ulrich. "Our music has taken us throughout human space, and beyond."`
+			choice
+				`	"What do you mean, 'beyond' human space?"`
+				`	"Well, I'll look forward to the next time we meet."`
+					accept
+			branch notpublic
+				not "event: hai-human resolution announced"
+			`	Ulrich launches into a story. "Years ago when the band was young and we had a month off in between gigs, we found an old gray merchant captain with a glass eye and asked him to transport us to one of the Paradise worlds for an extended 'drug vacation,' if you know what I mean. He said, 'Boys, why don't you leave the drugs behind, and I'll take you on a real mind-altering trip,' and a few days later we were playing a concert on this world where the people were giant squirrels. They loved our music, too. Of course, these days that story isn't half as interesting as it once was."`
+				goto revealed
+			label notpublic
+			`	Ulrich launches into a story. "Years ago when the band was young and we had a month off in between gigs, we found an old gray merchant captain with a glass eye and asked him to transport us to one of the Paradise worlds for an extended 'drug vacation,' if you know what I mean. He said, 'Boys, why don't you leave the drugs behind, and I'll take you on a real mind-altering trip,' and a few days later we were playing a concert on this world where the people were giant squirrels. They loved our music, too. Never did find anyone who could take us back there, though."`
+			branch known
+				has "First Contact: Hai: offered"
+			`	You're tempted to laugh, but he sounds serious. "Well," you say, "if I ever find a planet of intelligent squirrels, I'll be glad to take you guys there." You help them to unload their stuff, and say goodbye for now.`
+				accept
+			label known
+			action
+				set "met hai before TMBR"
+			`	"It sounds like you were visiting Hai space," you say, and you describe the aliens who live beyond the wormhole. "Yeah, that would be them," says Ulrich. "I'd love to go back there some time, but for now we have commitments closer to home." You help them to unload their stuff, and say goodbye for now.`
+				accept
+			label revealed
+			action
+				set "met hai before TMBR"
+			`	"Well, now that they're not hiding away anymore, seems like you might have a new market you could go back to," you say.`
+			`	"I'd love to go back there some time," says Ulrich, "but for now we have commitments closer to home." You help them to unload their stuff, and say goodbye for now.`
+				accept
+
+
+mission "Midnight Popcorn: There Might Be Riots part 3A"
+	name "Transport band to <planet>"
+	description `Give the band "There Might Be Riots" a ride to <destination>.`
+	minor
+	source
+		attributes "dirt belt" "south" "rim"
+		government "Republic" "Free Worlds" "Neutral"
+	destination "Pilot"
+	clearance
+	infiltrating
+	cargo "musical equipment" 4
+	passengers 8
+	to offer
+		has "There Might Be Riots part 2: done"
+		has "First Contact: Hai: offered"
+		not "There Might Be Riots part 3A: offered"
+		random < "outfit (flagship installed): Popcorn Box" * 40
+	
+	on offer
+		set "There Might Be Riots part 3A: offered"
+		conversation
+			`As you walk through the spaceport, you see a distinctive group of people lugging a collection of instruments: the band There Might Be Riots. Would you like to see if there is anything more you can do for them?`
+			choice
+				`	(Yes.)`
+				`	(Not right now.)`
+					defer
+			`	They're very happy to see you. "You always seem to have amazing timing," says Ulrich. "We were just wondering who could transport us to a... gig of sorts... up north, and then you come along. Any chance you could take us to <destination>?"`
+			`	You've heard of that planet. "The weapons testing world for Lovelace Labs?" you ask. "I'm surprised you'd be able to find a big audience there."`
+			`	"Oh, we'll have an audience, all right," he says. "We've just put out a new album called 'Songs for the End of Civilization.' A war protest album. We want to film ourselves playing a concert right in the middle of the missile testing range. Of course, we'll probably end up running out of there with Republic Intelligence nipping at our heels. What do you say?"`
+			choice
+				`	"Sorry, that's further than I'm willing to go for you guys."`
+					goto no
+				`	"Sounds like a worthy cause. Count me in!"`
+					goto yes
+				`	"You're going to do a concert on ground that could be littered with unexploded ordnance?"`
+			`	"Yeah. What an adventure!" he says. "Come on, it will be worth it."`
+			choice
+				`	"Sorry, that's further than I'm willing to go for you guys."`
+					goto no
+				`	"Sounds like a worthy cause. Count me in!"`
+					goto yes
+			label no
+			`	"Are you sure?" he asks. "We'll pay you with more than just money. Do this for us, and I'll share a story with you that very few have heard."`
+			choice
+				`	"Sorry, but it's still a 'no.'"`
+					decline
+				`	"Okay, I'm intrigued. But it still sounds risky."`
+			label yes
+			branch known
+				has "met hai before TMBR"
+			`	"Great," he says. "Now, the only question is where we'll go afterwards until the fuss dies down. Say, did you ever find that planet of squirrel people? We'd love to go back there."`
+			`	"Yes," you say, "they're called the Hai. They live in a whole big region to the north."`
+				goto end
+			label known
+			branch notpublic
+				not "event: hai-human resolution announced"
+			`	"Great," he says. "Now, the only question is where we'll go afterwards until the fuss dies down."`
+			`	"Didn't you say the Hai really liked you before?" you ask. "I think now might be the perfect opportunity to go back to the Hai."`
+			`	"Aww yeah!" he exclaims, "those squirrel people were rad cool. We go thumb our noses at the military industrial complex, then you take us to stay with the peaceful squirrel people where the government won't bother us."`
+			`	Once more, they begin loading their stuff onto your ship, while you chart a course to <destination>.`
+				accept
+			label notpublic
+			`	"Great," he says. "Now, the only question is where we'll go afterwards until the fuss dies down. I was thinking it'd be a great chance for our band to reconnect with the squirrel people - what did you call them?"`
+			`	"The Hai," you say.`
+			label end
+			`	"Excellent," he says. "We go thumb our noses at the military-industrial complex, then you take us to stay with the peaceful squirrel people where the government won't bother us."`
+			`	Once more, they begin loading their stuff onto your ship, while you chart a course to <destination>.`
+				accept
+	on accept
+		set "There Might Be Riots part 3A: active"
+	on visit
+		dialog `You arrive on <planet>, but realize that your escort carrying the band and their supplies has not arrived yet. Better depart and wait for your escorts to enter the system.`
+	on abort
+		clear "There Might Be Riots part 3A: active"
+		set "There Might Be Riots part 3A: aborted"
+	on fail
+		clear "There Might Be Riots part 3A: active"
+		set "There Might Be Riots part 3A: failed"
+	on complete
+		clear "There Might Be Riots part 3A: active"
+		set "There Might Be Riots part 3A: done"
+
+
+
