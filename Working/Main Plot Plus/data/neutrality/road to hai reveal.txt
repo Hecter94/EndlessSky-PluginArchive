@@ -40,71 +40,71 @@ event "hr: secret leaks"
 
 # Based almost entirely on "hr: meet alondo" from "hai reveal 0 prologue.txt"
 conversation "hr: meet rain and fiona"
-    branch settled1
+    branch "settled 1"
         has "event: hr: friend settled in"
     `While wandering the spaceport, you spot some familiar faces that you only somewhat expected to find here: Rain and Fiona are being escorted around the spaceport by a small group of Hai. One of the Hai seems to be explaining something to Fiona, while two others, dressed in what look like loose-fitting tuxedos and sunglasses, stand nearby surveying the crowd.`
     choice
         `    (Walk up to them to see why they're here.)`
-            goto walk
+            goto "walk"
         `    (Ignore them.)`
     `    You keep your distance, and eventually Rain, Fiona, and the Hai with him move on to another section of the spaceport, out of sight. It's mildly curious that Rain and Fiona would be here. Perhaps it has something to do with the recent human news reports about the Hai.`
         decline
 
-    label walk
+    label "walk"
     action
         set "hr: met rain and fiona"
     `    "Rain! Fiona!" you say as you approach.`
     `    "Captain <last>!" Rain responds, waving you over. Before you can get too close, one of the dressed Hai stands in your way.`
-        goto business
+        goto "business"
 
-    label settled1
+    label "settled 1"
     `You land on <origin> and survey the people roaming the spaceport while you refill your ship.`
-    branch witnessed
+    branch "witnessed"
         has "Hai Reveal: Secret Leaks: Hai: offered"
     `    It seems that news of the Hai's existence being somewhat exposed on human news networks has reached the Hai, as you can overhear discussions about the news reports and what might happen next.`
-        goto rainfiona
+        goto "rain and fiona"
 
-    label witnessed
+    label "witnessed"
     `    The Hai still seem energetic and chatty about the news of the Hai's existence being somewhat exposed to humanity.`
 
-    label rainfiona
+    label "rain and fiona"
     `    Luckily, it appears that nothing bad has come of it, at least not yet. Even if a lot of humans who saw the news believed it, it's likely that the Hai's location is still remote enough to prevent most captains from stumbling upon it. It's also likely to be only a matter of time before the lid gets entirely blown off of the situation.`
     `    As you finish refueling your ship, you hear a familiar voice call to you. "Captain <last>! Funny seeing you here." You turn around to find Rain and Fiona approaching you, flanked by two Hai dressed in what look like loose-fitting tuxedos and sunglasses. Before they can reach you, one of the Hai swiftly steps forward and stands directly in front of you.`
 
-    label business
+    label "business"
     `    "Please state your name and business," the Hai commands. This might be a bit more menacing of a situation if Hai weren't so short relative to most humans.`
     `    "Don't worry, Mep. This is Captain <first> <last>, who I spoke of earlier," Rain vouches for you. "They helped take out a big pirate fleet that had stolen Hai technology."`
     `    The Hai seems to ponder Rain's words for a moment, then steps aside while still keeping a close eye on you.`
     choice
         `    "What brings you here?"`
-            goto news
+            goto "news"
         `    "What's up with him?"`
     `    "The Hai government is very... on edge, at the moment," Rain says. "They're typically quite open, from what I understand, but these recent news reports have many Hai officials feeling as though they've been betrayed. They're being highly cautious as a result."`
     `    "So what brings you here?" you ask.`
-        goto task
-    label news
+        goto "task"
+    label "news"
     `    "I'm sure you've heard the news circulating around humanity," Fiona responds.`
-    label task
+    label "task"
     `    "We're investigators of alien activity, remember? There's a lot of alien activity going on now. Although now that I say that out loud, I'm starting to realize just how absurd of a situation this is. I certainly didn't have 'Become engaged in an alien civil crisis' on my bingo card for this year. I guess we should have expected something like this to happen when we agreed to investigate alien activity. From what I've heard, not everyone was given the proper warnings during the war.`
 
-    branch settled2
+    branch "settled 2"
         has "event: hr: friend settled in"
     `    "Anyway," says Rain, "the Hai have been giving us a tour of their systems since we returned here. While we've already seen the Hai before all this went down, a lot has changed. We'll be meeting with others from the Free Worlds, Republic, and Syndicate on <planet> for a briefing after we've done our tour here! You should probably come with us. You remained neutral during one war, so maybe you can help prevent another one! We wouldn't want a misunderstanding between humanity and the Hai to turn into a conflict."`
-        goto help
+        goto "help"
 
-    label settled2
+    label "settled 2"
     `    "Anyway," says Rain, "we've been here for some time now doing what we can to help keep this situation from blowing up. We'll be meeting with others from the Free Worlds, Republic, and Syndicate on <planet> soon for a briefing. You should probably come with us. You remained neutral during one war, so maybe you can help prevent another one! We wouldn't want a misunderstanding between humanity and the Hai to turn into a conflict."`
 
-    label help
+    label "help"
     choice
         `    "I'd be glad to come."`
         `    "Sorry, but I have other things to get to at the moment."`
-            goto busy
+            goto "busy"
     `    "That's good to hear!" Rain says. "In a situation like this, the Hai need humans they can trust. They seem to trust us enough so far, so hopefully they'll also trust you by proxy, or, at the very least, you can gain their trust in short order.`
     `    "Meet our ships in orbit after I'm finished with my business here. In case you forgot, my ship is the R.N.S. Hamuy, and Fiona's is the F.S. Baobab." You assure Rain and Fiona that you'll be there, and the Hai escort them away.`
         accept
 
-    label busy
+    label "busy"
     action
         event "road to hai reveal: join later" 20
     `    "We'll probably reach out to you for help later, then. In a situation like this, the Hai need humans they can trust. They seem to trust us enough so far, so hopefully they'll also trust you by proxy, or, at the very least, you can gain their trust in short order.`
@@ -140,23 +140,23 @@ mission "War Reactions: Asteroid Miners (patched)"
                 `    "Oh, the Pug were real alright. I was abducted by some."`
                     to display
                         has "skipped main plot"
-                    goto nobody
+                    goto "nobody"
                 `    "Oh, the Pug were real alright. I met some and fought them."`
                     to display
                         has "free worlds plot completed"
-                    goto nobody
+                    goto "nobody"
                 `    "Oh, the Pug were real alright. I helped stage a resistance movement against some."`
                     to display
                         and
                             has "ScS plot completed"
                             not "ScS Pug Support 2: done"
-                    goto nobody
+                    goto "nobody"
                 `    "Oh, the Pug were real alright. Some of them helped me chase down a group of Alphas."`
                     to display
                         has "ScS Pug Support 2: done"
-                    goto nobody
+                    goto "nobody"
                 `    "I think you both need to shave."`
-                    goto scowl
+                    goto "scowl"
             `    One twin rolls his eyes while the other twitches his mustache awkwardly. He rewinds the video to the Parliamentary discussion, where Danforth is reassuring councilors about the Navy's ability to patrol the fringes of human space.`
             `    The left twin says, "Look at this bozo! Bounty's Councilor Maduena Kabiru, he keeps ranting against this Navy guy, uh, this Admiral..." He snaps his fingers trying to remember the name.`
             `    "Admiral Danforth," says the right twin.`
@@ -164,7 +164,7 @@ mission "War Reactions: Asteroid Miners (patched)"
             `    "Like terrorists nuking us," says the right twin.`
             choice
                 `    "The Navy is skilled and honorable. I trust them to protect us."`
-                    goto eyes
+                    goto "eyes"
                 `    "No, don't worry about that. I ended the bomb threat."`
                     to display
                         has "free worlds plot completed"
@@ -172,12 +172,12 @@ mission "War Reactions: Asteroid Miners (patched)"
                             has "free worlds reconciliation"
                             has "event: fwc solace has augmented nukes"
                 `    "Maybe you're right."`
-                    goto shrug
+                    goto "shrug"
                 `    "All we can do is get on with our lives, right?"`
-                    goto shrug
+                    goto "shrug"
                 `    "If you don't shave soon, people will think you're wearing masks."`
-                    goto scowl
-            label nobody
+                    goto "scowl"
+            label "nobody"
             `    Both of them give hard belly laughs, sending waves through their mustaches from the breeze of their breath.`
             `    The left twin says, "Who are you, Admiral Danforts?"`
             `    His twin corrects him. "Danforth. Admiral Danforth. Did the Navy fire you or are you here on holiday?"`
@@ -188,22 +188,22 @@ mission "War Reactions: Asteroid Miners (patched)"
                 `    "What? I was trying to stay neutral, and then the Pug abducted me!"`
                     to display
                         has "skipped main plot"
-                    goto shrug
+                    goto "shrug"
                 `    "Never mind."`
-                    goto shrug
+                    goto "shrug"
                 `    "At least I don't have a disheveled hamster stuck to my upper lip."`
-                    goto scowl
+                    goto "scowl"
             `    Both twins look confused, and the left one responds. "We've been mining asteroids the whole war. The war was a big deal, but most of us had to keep living our lives. Do you think we have time to keep track of every warring captain?"`
             `    The right one says apologetically, "Thank you for your service, Captain <last>."`
             `    They both give clumsy but well-intentioned salutes and return to their ships.`
                 decline
-            label eyes
+            label "eyes"
             `    The left twin laughs and says, "Pardon us if we keep our eyes open and trust to our own guns." Both twins nod and depart to their ships.`
                 decline
-            label shrug
+            label "shrug"
             `    Both twins shrug and leave for their ships.`
                 decline
-            label scowl
+            label "scowl"
             `    Both twins' faces twist in a way that might indicate embarrassment or annoyance. It's hard to tell since their facial hair is halting any emotive power. They walk away in the direction of their ships.`
                 decline
 
@@ -238,21 +238,21 @@ mission "War Reactions: Navy and Free Worlds Captains (patched)"
                 to display
                     has "skipped main plot"
             `    "We've been patrolling together and we saw your ship, so we've come to say hi."`
-            label questions
+            label "questions"
             action
                 "WR: Captains: question" ++
             choice
                 `    "Why are Navy and Free Worlds captains traveling together?"`
-                    goto navy
+                    goto "navy"
                     to display
                         not "WR: Captains: navy"
                 `    "Have you found any new aliens?"`
-                    goto aliens
+                    goto "aliens"
                     to display
                         not "WR: Captains: aliens"
                         has "WR: Captains: navy"
                 `    "Did you fight on the other side of the war from each other?"`
-                    goto opposite
+                    goto "opposite"
                     to display
                         not "WR: Captains: opposite"
                 `    "It was good meeting you both, but I must get back to my business now."`
@@ -266,7 +266,7 @@ mission "War Reactions: Navy and Free Worlds Captains (patched)"
             `    "The war might be over, but I'm sure there's still plenty of work for a captain such as yourself to <do>," says Captain Fiona. "Well it was at least nice to meet you. Stay well."`
                 decline
 
-            label navy
+            label "navy"
             action
                 set "WR: Captains: navy"
             `    "Joint police operation," says Captain Rain. "It's more common than you may think."`
@@ -274,22 +274,22 @@ mission "War Reactions: Navy and Free Worlds Captains (patched)"
             `    "Not a match for a Dreadnought and an Auxiliary, though," brags Rain.`
             `    "We have to fly all over Republic and Free Worlds space, so we have a joint patrol with one ship from each state."`
             `    "Of course, we have another mission," says Fiona. "Everywhere we go, we look out for new alien activity."`
-                goto questions
+                goto "questions"
 
-            label aliens
+            label "aliens"
             action
                 set "WR: Captains: aliens"
             `    "Only the usual assortment of hoaxes," says Rain. They both laugh at this.`
             `    "Seriously, though, both the Free Worlds Senate and Republic Parliament are up in arms over fear of aliens," says Fiona. Rain adds, "Only metaphorically up in arms, this time.`
             `    "If we find new aliens, we'll let the necessary authorities know as soon as possible. You should do the same. Be discrete, avoid conflicts, and seek help if you need it."`
-                goto questions
+                goto "questions"
 
-            label opposite
+            label "opposite"
             action
                 set "WR: Captains: opposite"
             `    "Well, Rain went off to Earth to join the Navy Academy years ago," says Captain Fiona.`
             `    "And Fiona stayed on Longjump and joined the local militia before the Free Worlds was formed," says Captain Rain. "It's not that we wanted to fight each other, but we both believed in our own sides."`
-                goto questions
+                goto "questions"
 
 # Based almost entirely on "War Reactions: Syndicate Orphan" from "post-war reactions.txt"
 mission "War Reactions: Syndicate Orphan (patched)"
@@ -333,22 +333,22 @@ mission "War Reactions: Syndicate Orphan (patched)"
                     decline
             `    The three attackers turn around, looking furious. They eye the gun in your holster and run away.`
             `    The boy on the ground slowly rises to his feet. He looks about twelve years old. It takes him a few seconds to recover. "Thanks. Not a lot of people around here would help like that. I'm Gus." He looks worried and asks, "Can you walk me to the repair shop? I'm already late for work, and I'm afraid they'll attack me again."`
-            label questions
+            label "questions"
             choice
                 `    "Why were those boys attacking you?"`
-                    goto attacking
+                    goto "attacking"
                     to display
                         not "WR: Orphan: attacking"
                 `    "Aren't you a little young to work in a repair shop?"`
-                    goto young
+                    goto "young"
                 `    "I'm in a hurry. You're on your own."`
                     decline
-            label attacking
+            label "attacking"
             action
                 set "WR: Orphan: attacking"
             `    "My brother is a private, third class, in the Syndicate's Ancillary Security Service." He grins proudly, clearly having practiced that delivery. "He monitors the Syndicate workplaces and he turned those boys in for smoking on the job last week. I guess they finally got a break for the repair shop and came after me since they can't hurt my brother."`
-                goto questions
-            label young
+                goto "questions"
+            label "young"
             `    As you start walking, he answers. "No, I'm an orphan." He sees your confusion and explains. "The Syndicate lets some of us orphans work in industry. In return they give us better schooling, nicer housing, and doctor's visits." He puffs himself up. "Only the cleverest of us get to do it. All of the jobs for orphans are safe too; we don't use big dangerous equipment. Just ordinary stuff, like hammers, soldering irons, or sewing machines.`
             `    "Wait a minute!" He suddenly looks at you with wide eyes. "You're a captain, right? Were you in the big fights? I was on Maker when I saw some Pug ships fighting our ships on our school's big edu-screen."`
             branch "didn't fight"
@@ -357,55 +357,56 @@ mission "War Reactions: Syndicate Orphan (patched)"
                 `   "No, but I did help catch an Alpha."`
                     to display
                         has "ScS Pug Support 2: done"
-                    goto blew
+                    goto "blew"
                 `    "I blew up my share of Pug ships."`
                     to display
                         not "ScS Pug Support 2: done"
-                    goto blew
+                    goto "blew"
                 `    "Actually, I led the battle."`
-                    goto led
+                    goto "led"
                     to display
                         has "free worlds plot completed"
                 `    "Yes, I'm Captain <first> <last>."`
             `    "Oh, hold on," he says, pulling out a durable-looking data pad labeled 'Syndicate Childcare Device.' After some typing and swiping, he declares, "You're Captain <first> <last>! Wow! It's an honor to meet you. Can I shake your hand?" He puts out his hand, and you shake it.`
-                goto next
-            label led
+                goto "next"
+            label "led"
             `    "Oh, hold on," he says, pulling out a durable-looking data pad labeled 'Syndicate Childcare Device'. After some typing and swiping, he declares, "You led the attack! Wow! It's an honor to meet you. Can I shake your hand?" He puts out his hand, and you shake it.`
-                goto next
-            label blew
+                goto "next"
+            label "blew"
             `    "I bet you did! I wish I was on one of our warships, bravely defending us all. <hero move>, getting paid. It sounds amazing!"`
+                goto "next"
 
             label "didn't fight"
             choice
                 `   "No, you're probably thinking of <last> <first>. I'm <first> <last>. I didn't fight the Pug, but I was abducted by them."`
 
-            label next
+            label "next"
             `    "What was it like, <action> those nasty, evil <creatures>?"`
             choice
                 `    "<neutral>War is hell, kid. I'm not going to glorify it for you."`
-                    goto hell
+                    goto "hell"
                 `    "Actually, they're not evil. Their 'war' was a ploy to get us to stop fighting among ourselves. A lot of Pug gave their lives willingly to save us from self-destruction."`
                     to display
                         not "ScS Pug Support 2"
                 `    "Leading a battle is like chess with guns and engines. It's the most exhilarating feeling I've ever felt."`
                     to display
                         not "skipped main plot"
-                    goto chess
+                    goto "chess"
                 `    "It was an honor to protect the human race from <creatures2>."`
                     to display
                         not "skipped main plot"
-                    goto honor
+                    goto "honor"
             `    "Woah, you sound really smart. Like one of those sensible experts in the vids! Still, without people like you, the Pug's plan couldn't have worked. I still reckon you were the best, Captain."`
-                goto salute
+                goto "salute"
             label hell
             `    "<hell>That sounds less fun than I thought... Maybe I should stick to school and be an engineer instead of a pilot. I dunno."`
-                goto salute
+                goto "salute"
             label chess
             `    "The Syndicate is training me to maintain and they're even going to train me to pilot their combat ships when I'm older! One day, I'll fight aliens like you did."`
-                goto salute
+                goto "salute"
             label honor
             `    "Honor... and service. The Syndicate will train boys like me, but I've wondered about joining the Navy. It isn't as profitable, but it sounds more noble."`
-            label salute
+            label "salute"
             action
             `    You arrive at the repair shop, and an older boy, perhaps seventeen, meets the two of you. Gus stands to attention and gives you a well-practiced salute. You politely salute him in return.`
             `    As Gus ends his salute, the boy attacks him from behind, putting him into a choke hold. It's clear he's taking extreme care when doing it. "Did you wander out of the childcare district? Was it the spaceport landing area this time? I can see scratches and bruises all over you." Gus replies, "I'm sorry, Calvin! I was curious."`
@@ -542,31 +543,31 @@ mission "Road to Hai Reveal: Danforth"
                     not "Road to Hai Reveal: Danforth: deferred"
             choice
                 `(Join them)`
-                    goto join
+                    goto "join"
                 `(Ignore them)`
             `   You ignore them and head to a different table.`
                 defer
-            label join
+            label "join"
             `   You begin to approach them. They ignore you, and they both look upset.`
             `   "Fiona, I know you're upset. But you heard what the officer said. We must keep the existance of the Hai secre--"`
             `   She stops and they both turn as they notice you.`
             choice
                 `   "Don't worry, I already know about the Hai."`
-                    goto relief
+                    goto "relief"
                 `   "You should be more careful. You're lucky that I already know about the Hai."`
-                    goto relief
+                    goto "relief"
                 `   "If the Hai get revealed, we might have to perform a philosopher's liberation. Many people see the world in black and white. Not everyone is a master of grey."`
             `   Rain laughs. "I heard that the secret would have gotten out, but the Hai secret leaks were blocked by someone from Amazon. An Amazonite, if you will."`
             `   Fiona sighs.`
             `   "I didn't order that."`
             `   "Oh, sorry, wrong table," says a waiter holding a glass of wine, before heading to a neighboring table.`
             `   As the waiter leaves, you notice someone who appears to be Admiral Danforth approaching you.`
-                goto danforth
-            label relief
+                goto "danforth"
+            label "relief"
             `   Rain sighs in relief. "You didn't tell anyone, did you?"`
             `   "Why would that matter?" Fiona asks.`
             `   Before you can say anything, you notice someone who appears to be Admiral Danforth sits approaching you.`
-            label danforth
+            label "danforth"
             `   Upon noticing you, Danforth stops, checks something on a tablet, then turns, faces Fiona, and leans in so only you, Rain, and Fiona can hear.`
             `   "Excuse me. I assume you've been given the usual speech on keeping the existance of the Hai a secret."`
             `   "You know about the Hai?" Rain asks.`
@@ -576,21 +577,21 @@ mission "Road to Hai Reveal: Danforth"
             `   Danforth straightens back up and says "<first> <last>, would you please follow me?"`
             choice
                 `   "Sure."`
-                    goto follow
+                    goto "follow"
                 `   "No thanks."`
             `   "I really think you should follow me."`
             choice
                 `   "All right, fine."`
-            label follow
+            label "follow"
             `   Danforth gestures you into an empty hallway.`
             `   "Between trying to keep the existance of the Hai under wraps, and investigating the terrorists who bombed Geminus and Martini, it's becoming more and more difficult to keep pirates under control. There's a pirate fleet massing in <waypoints>. If you help take it out for me, I will be very grateful. Land on <destination> after defeating the pirates to receive <payment>. Other captains have been hired as well."`
             choice
                 `   "With the help of other captains, I can handle them."`
                 `   "Sorry, but I'm also busy. I can't help you."`
-                    goto busy
+                    goto "busy"
             `   "Thank you." You head back to the restaurant, but Fiona and Rain are nowhere to be seen.`
                 accept
-            label busy
+            label "busy"
             `   "That's too bad." You head back to the restaurant, but Fiona and Rain are nowhere to be seen. You have the feeling that you missed out on something important.`
                 decline
     on complete
@@ -730,76 +731,75 @@ mission "Road to Hai Reveal: Alondo and Sayari"
         log "People" "Alondo Gruyere" `Alondo is a member of the Free Worlds council. He is working to develop the diplomatic corps for the Free Worlds. Due to a lack of serious appointed positions (with the few already existing occupied as ambassadors to the Republic), he is looking after the Free Worlds' interests as a diplomat to the Hai.`
         log "People" "Sayari" `Ambassador Sayari, a Hai, served as their envoy to the human government a century ago (although no public records of this exist in human space). Her experience has placed her in charge of coordinating the Hai response to the crisis of their continued secrecy.`
         conversation
-            branch late
+            branch "late"
                 has "event: road to hai reveal: join later"
             `You follow Rain and Fiona's ships to the surface of <origin>. Instead of landing at the main spaceport, their ships veer off to a separate area of the city where a cluster of several large structures are set slightly apart from the rest. A Hai warship shadows you as you approach.`
             choice
                 `   (Land next to Fiona's ship)`
-                    goto fiona
+                    goto "fiona"
                 `   (Land next to Rain's ship)`
             `    Their ships touch down in a smaller port atop one of the highrises here, and you follow suit. As you touch your ship down next to Rain's, the Hai warship following you moves to idle above the spaceport, and a Hai Centipede lands nearby.`
             `    "Welcome to the secure port," Rain greets you as you exit your ship. "Our home away from home." The captain of the Centipede, who is surprisingly a human, exits the ship and goes to join you.`
-                goto landed
-            `   "Sorry about that," Alondo says. "I just needed a way to get you here, what with you being neutral and all. In exchange, you can ask me anything you want."`
+                goto "landed"
 
-            label fiona
+            label "fiona"
             `    Their ships touch down in a smaller port atop one of the highrises here, and you follow suit. As you touch your ship down next to Fiona's, the Hai warship following you moves to idle above the spaceport, and a Hai Centipede lands nearby.`
             `    "Welcome to the secure port," Fiona greets you as you exit your ship. "Our home away from home." The captain of the Centipede, who is surprisingly a human, exits the ship and goes to join you.`
-                goto landed
+                goto "landed"
 
-            label late
+            label "late"
             `As you enter the atmosphere of <origin>, the spaceport authorities contact you and give you coordinates to a landing area that is separate from the main spaceport. A Hai warship shadows you as you approach.`
             choice
                 `   (Land next to Fiona's ship)`
                 `   (Land next to Rain's ship)`
-                    goto rain
+                    goto "rain"
             `    You find that the coordinates lead to a smaller port atop one of the city's highrises, and you spot Fiona and Rain's ships along with a Hai Centipede already landed there, with Rain, Fiona, and someone you haven't seen before standing just outside of it. As you touch your ship down next to Fiona's, the Hai warship following you moves to idle above the spaceport.`
             `    "Glad you could make it," Fiona greets you as you exit your ship. "Welcome to the secure port. Our home away from home."`
-                goto landed
+                goto "landed"
 
-            label rain
+            label "rain"
             `    You find that the coordinates lead to a smaller port atop one of the city's highrises, and you spot Fiona and Rain's ships along with a Hai Centipede already landed there, with Rain, Fiona, and someone you haven't seen before standing just outside of it. As you touch your ship down next to Rain's, the Hai warship following you moves to idle above the spaceport.`
             `    "Glad you could make it," Rain greets you as you exit your ship. "Welcome to the secure port. Our home away from home."`
-                goto landed
+                goto "landed"
 
-            label landed
+            label "landed"
 
             # This is where I transition to mainline hai reveal
-            `   "Hello, I'm Alondo Gruyere, Free Worlds council member," the third person says, shaking your hand. I'm the Free Worlds-Republic envoy. I'll be taking care of you now. Thank you Fiona. I will speak to you after the briefing.`
+            `   "Hello, I'm Alondo Gruyere, Free Worlds council member," the third person says, shaking your hand. "I'm the Free Worlds-Republic envoy. I'll be taking care of you now. Thank you Fiona. I will speak to you after the briefing."`
             `   Rain's terminal beeps in what appears to sound like a train whistle. "I have to go as well. Nice seeing you again!"`
             `   Rain and Fiona re-enter their ships and are escorted by one of the Hai ships out into space.`
             `   "Sorry about that," Alondo says. "I just needed a way to get you here, what with you being neutral and all. So, do you have any questions?"`
-            label questions
+            label "questions"
             choice
                 `   "Where's <last> <first>?"`
                     to display
                         not "road to hai reveal: last first missing"
-                    goto lastfirst
+                    goto "last first"
                 `    "What's with the warship?"`
-                    goto warship
+                    goto "warship"
                 `    "What's makes this port so secure?"`
                 `    "Looks like a nice place. Let's get to that briefing."`
-                    goto briefing
+                    goto "briefing"
             `    "Well it's closed to the public, and as you can see," Alondo says while pointing up at the warship above you, "the Hai are guarding it well. There's no 'human embassy' or 'consulate' for us to make use of, so the Hai decided to put one of their old court buildings to use, allowing us to use it as our base of operations while we're navigating this crisis."`
             choice
                 `    "This entire building used to be a courthouse?"`
                 `    "It doesn't feel like much of a crisis to me."`
-                    goto crisis
+                    goto "crisis"
                 `    "Why the heavy guard? Are they expecting violence?"`
-                    goto warship
+                    goto "warship"
             `    "It was; apparently large reinforced rooms are easy to convert into landing spaces. From the little I've seen, the Hai have a rather, shall we say, labyrinthine system of government. This building was only a small part of that. Whatever the case, we have a briefing to get to," Alondo says while motioning to the door inside.`
                 goto briefing
-            label lastfirst
+            label "last first"
             action
                 set "road to hai reveal: last first missing"
             `   "The Free Worlds council member who helped fight the Pug? He disappeared a month or so back. We don't know what happened to him. He was last sighted in Deep space. But let's focus on the Hai for now. They're the more pressing issue."`
-                goto questions
-            label crisis
+                goto "questions"
+            label "crisis"
             `    "Well... I could explain more, but that's what this briefing is for," Alondo says while motioning to the door inside.`
-                goto briefing
-            label warship
+                goto "briefing"
+            label "warship"
             `    "As I mentioned earlier, their government is on edge at the moment. I'm sure they aren't expecting us to be violent, but they also want to be prepared for anything. Whatever the case, we have a briefing to get to," Alondo says while motioning to the door inside.`
-            label briefing
+            label "briefing"
             `    Alondo leads you to a meeting room that feels large for the number of people present: it looks like a lecture hall that could easily fit a hundred people, but there are only six here. Aside from Alondo and yourself, there is a shorter man in what you recognize as a Republic diplomatic uniform messing with a holoprojector that doesn't appear to be working, a taller man in a suit sitting next to a woman in a formal dress in the front row, and an older looking Hai woman sitting alone at the end of a row of seats.`
             `    "Glad you finally decided to show up, Alondo," says the man in the front.`
             `    "And you brought a guest," says the Hai.`
@@ -814,21 +814,21 @@ mission "Road to Hai Reveal: Alondo and Sayari"
             choice
                 `    "What's the problem with new arrivals?"`
                 `    "Do we not have a way of blocking captains from entering the wormhole?"`
-                    goto block
+                    goto "block"
             `    "We do not have the means of handling a large influx of humans," says the Hai. "For decades, we have dealt with a small trickle of humans arriving through the wormhole. We have grown acustomed to it. But if that trickle were to suddenly become a downpour, then our services would quickly become overrun."`
             `    The man presenting the graphs nods in agreement. "Of importance is also the effect that this situation may have for the Republic," he says while pointing at another graph labeled "artifact penetration" which shows a map of various stages of events and their outcomes.`
-                goto continue
-            label block
+                goto "continue"
+            label "block"
             `    "We could get the Navy to blockade the wormhole," says Alondo, "but such an overt action would be no different than outright stating to everyone that Campbell was telling the truth, which could easily lead to civil unrest after the events of the Pug invasion."`
             `    The man presenting the graphs nods in agreement. "Precisely my next topic," he says while pointing at another graph labeled "artifact penetration" which shows a map of various stages of events and their outcomes.`
-            label continue
+            label "continue"
             `    "Artifact penetration is the point at which a government cannot reasonably attempt to pretend something is anything but the truth, at least not while still holding to the claim of being a representative government. Our most optimistic estimates suggest the Republic may be forced to acknowledge the existence of the Hai within three months, or we would lose so much credibility as to compromise electoral stability. The actual time limit is probably sooner."`
             choice
                 `    "What are the plans to prevent that?"`
-                    goto plans
+                    goto "plans"
                 `    "Would that be so bad?"`
             `    "It is always bad to be forced into acknowledging a secret. If we act sooner, we may control the manner of that secret's release," he says. "Plus, while the Hai have let the trickle of humans that find the wormhole settle here peacefully, a massive influx is a problem nobody really wants to have to deal with.`
-            label plans
+            label "plans"
             action
                 clear "road to hai reveal: last first missing"
             `    "We are currently still gathering information and weighing various potential options. Complete containment of this situation may already be impossible, and so plans which aim for that may not be worth following. If so, we would instead follow the plans which seek to formally reveal the existence of the Hai to humanity in as controlled a manner as possible. Only time will tell if that is the case, though."`
@@ -857,12 +857,12 @@ mission "Road to Hai Reveal: Xilin"
             choice
                 `    "I think you're thinking of <last> <first>."`
                 `    "Thanks, but it wasn't as dramatic as they made it out to be, considering I fought exactly zero Pug ships during this whole 'crisis.' I was neutral."`
-                    goto humble
+                    goto "humble"
             `    "You're every inch what I expected," he assures you.`
-                goto mission
-            label humble
+                goto "mission"
+            label "humble"
             `    For a moment his expression falters, and then he seems almost relieved. "You may be a better person than I expected to meet.`
-            label mission
+            label "mission"
             `    "Now, about that task. I mentioned during our briefing that we need to determine how much of a threat these new arrivals might be. Not a threat in the sense that they will become violent, but in the sense that they could exacerbate the situation, such as by returning to our space and making a big stink about what they've found here. The best place to go for this would be <destination>."`
             `    "I would like to follow and observe," says Sayari.`
             `    "You're free to come," says Xilin. "Let me pack a few items into your ship, Captain <last>, and we can be on our way."`
