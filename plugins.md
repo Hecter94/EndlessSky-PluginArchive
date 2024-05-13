@@ -8703,9 +8703,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Derogam/icon.png' height='100'></img><br>
 
 
-[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.82 mb | 2024-05-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
+[Derogam.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Derogam.zip) | 5.82 mb | 2024-05-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Derogam/) <br>
 Author: Lorantine | Category: Ships <br>
-[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-05-07) <br>
+[https://github.com/Lorantine/derogam](https://github.com/Lorantine/derogam) (last commit 2024-05-13) <br>
 
 >A big WIP project involving a multi-alien society with ships, outfits, jobs, a storyline and more. High-quality is the aim, so older things will be redone. Perhaps one day this'll be in the main game!
 >
@@ -9734,9 +9734,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 139.53 mb | 2024-05-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 139.53 mb | 2024-05-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-05-12) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-05-13) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
