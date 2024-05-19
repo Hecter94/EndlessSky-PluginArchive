@@ -44,6 +44,7 @@ mission "Paradise Fortune 4 (patched)"
     source "Bourne"
     destination "New Boston"
     on offer
+        set "Paradise Fortune 4: offered"
         conversation
             `While in flight, Diana tells you the stories that she heard of the war. In the Paradise Planets region, they were told that declaring independence and bombing Geminus and Martini was the Free Worlds' first step in overthrowing the Republic.`
             `    "We should talk to Alondo," Diana says. "He'll be able to handle this situation."`
@@ -114,17 +115,28 @@ mission "Paradise Fortune 4 (patched)"
             `    You rip the note apart and begin counting the credits. In total, the backpack contains a whopping 525,894,400 credits. Over half a billion credits richer, you sit down and wonder what you will spend it on.`
                 decline
     on complete
+        clear "Paradise Fortune 4: active"
+        set "Paradise Fortune 4: done"
         payment 1000000
         conversation
             `You spot a fleet of docked Navy ships as you come in for a landing. A small squad of troops gather around your ship after you land. You are greeted by a Navy officer upon exiting your ship and explain to him where Diana is, showing him the note she wrote.`
             `    "That is unfortunate," he responds with a troubled look on his face. "We'll contact the Howl family about this." Before letting you go, the officer hands you <payment>. "This is the reward that Mr. Howl put out for the return of his credits. Thank you for doing the right thing, Captain."`
         log "People" "Diana Howl" `A teenager who stole half a billion credits from her family's wealth, she decided to start a new life outside the Paradise Planets while you dutifully turned in the credits to the authorities to keep the peace. You received a substantial reward for your integrity.`
     on accept
+        set "Paradise Fortune 4: active"
         "reputation: Republic" >?= "stored reputation: Republic"
     on decline
+        set "Paradise Fortune 4: declined"
         payment 525894400
         "reputation: Republic" <?= -1000
         log "People" "Diana Howl" `A teenager who stole half a billion credits from her family's wealth, she decided to start a new life outside the Paradise Planets while you decided to pocket the substantial fortune she left behind to avoid being hunted down.`
+    on fail
+        clear "Paradise Fortune 4: active"
+        set "Paradise Fortune 4: failed"
+    on abort
+        clear "Paradise Fortune 4: active"
+        set "Paradise Fortune 4: failed"
+        set "Paradise Fortune 4: aborted"
 
 # The same event but without unvisiting planets. Based on the "fwc navy retakes cebalrai" event in "campaign events.txt"
 event "fwc navy retakes cebalrai (patched)"
@@ -144,27 +156,29 @@ event "fwc navy retakes cebalrai (patched)"
         fleet "Large Free Worlds" 2000
         fleet "Human Miners" 2000
 
-# prevents plugins like "Constellations" from blocking you from leaving, then allows you to return for heliarch expeditions
-event "pug flee (patched)"
+
+mission "Neutrality: Fix Pug Wormhole"
+    invisible
+    landing
+    to offer
+        has "event: pug flee (patched)"
+    on offer
+        event "neutrality: fix pug wormhole"
+        fail
+
+# There used to be a patch to prevent a plugin called “Constellations” from preventing you from leaving if doing Neutrality, however, that plugin has been updated to prevent this issue from happening, so I have removed the patch as it can cause problems when uninstalling the plugin. This event is for old saves that still have the patched wormhole
+event "neutrality: fix pug wormhole"
     system "Over the Rainbow"
-        remove object "Pug Wormhole"
+        remove object "Neutrality: Pug Wormhole"
             sprite planet/wormhole
-        add object "Neutrality: Pug Wormhole"
+        add object "Pug Wormhole"
             sprite planet/wormhole
-    # This is to ensure heliarch expeditions isn't broken
     system "Deneb"
-        remove object "Pug Wormhole"
+        remove object "Neutrality: Pug Wormhole"
             sprite planet/wormhole
             distance 2320.29
             period 1788.27
-        add object "Neutrality: Pug Wormhole"
+        add object "Pug Wormhole"
             sprite planet/wormhole
             distance 2320.29
             period 1788.27
-
-planet "Neutrality: Pug Wormhole"
-    wormhole "Neutrality: Pug Wormhole"
-
-wormhole "Neutrality: Pug Wormhole"
-    link "Over the Rainbow" "Deneb"
-    link "Deneb" "Over the Rainbow"
