@@ -7,6 +7,11 @@ disable mission "FWC End"
 disable mission "FW Epilogue: Danforth"
 disable mission "FW Liberate Delta Sagitarii"
 
+# Mega Freight Battles patches the following missions to add its ships in, but this conflicts with my patches, so disable these patches and incorporate them into mine if the plugin is installed
+disable mission "MGFB: FW Defend New Tibet"
+disable mission "MGFB: FW Liberate Delta Sagittarii"
+disable mission "MGFB: FWC Attack Kaus Borealis"
+
 # Credit to Amazinite for most of the improvements. Credit to Azure3141 for the augmented nukes.
 
 # All Content Plugin
@@ -183,7 +188,6 @@ mission "FW Question the Syndicate"
                 "Manta (Mark II)" 3
                 "Quicksilver (Mark II)" 5
     on offer
-        set "FW Defend New Tibet: offered"
         log "As a member of the Council, must make the deciding vote on a difficult decision. A defector from the Syndicate is claiming to have proof that the Syndicate was behind the bombings of Martini and Gemini. If that is true, the Republic may agree to make peace with the Free Worlds. But, refusing to return the defector to the Syndicate would certainly earn their enmity."
         conversation
             `The fleet in orbit around Wayfarer is pitifully small, surely not enough to take on more than a couple of Navy capital ships. JJ orders one of their communication officers to try to establish a secure link to Bourne or to any Free Worlds post on the other side of the Navy blockade. After about ten minutes, the officer returns and says, "Sir, we've received communications from New Tibet sent earlier today. You need to talk to them."`
@@ -242,9 +246,16 @@ mission "FW Defector Escorts"
         has "FW Rand 1B: done"
         not "FW Defend New Tibet: offered"
     to fail
-        has "fw did not rescue defector"
-        has "FW Defend New Tibet: done"
+        or
+            and
+                not "FW Defend New Tibet (patched): active"
+                not "installed plugin: Main Plot Plus"
+            has "fw did not rescue defector"
+            has "FW Defend New Tibet: done"
     npc
+        # Force removal of escorts immediately
+        to despawn
+            not "installed plugin: Main Plot Plus"
         government "Free Worlds"
         personality disables escort heroic
         ship "Dreadnought" "F.S. Holly"
@@ -265,6 +276,18 @@ mission "FW Defector Escorts"
         ship "Finch" "Echo 6-9"
         ship "Argosy" "F.S. Nightingale"
 
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc
+        # Force removal of escorts immediately
+        to despawn
+            or
+                not "installed plugin: Mega Freight Battles"
+                not "installed plugin: Main Plot Plus"
+        government "Free Worlds"
+        personality disables escort heroic
+        ship "Eleonorae" "F.S. Resolute"
+        ship "PAS-2 Bulwark" "F.S. Morning Star"
+
 mission "FW Defend New Tibet (patched)"
     name "Defend New Tibet"
     description "Defend New Tibet from the attacking Syndicate fleet."
@@ -283,8 +306,22 @@ mission "FW Defend New Tibet (patched)"
                 "Splinter (Mark II)" 2
                 "Manta (Mark II)" 3
                 "Quicksilver (Mark II)" 5
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc evade
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government Syndicate
+        personality heroic staying
+        system Alioth
+        fleet
+            names "syndicate capital"
+            variant
+                "Splinter (Mark II)" 2
+                "Manta (Mark II)"
+                "Quicksilver (Mark II)"
     on offer
         set "FW Defend New Tibet: offered"
+        set "MGFB: FW Defend New Tibet: offered"
         conversation
             `It doesn't take long to find the monastery that contacted you earlier. The monk that you spoke to on Wayfarer approaches you and whispers, "They know where the defector is and are retrieving him now. We had to tell them before they destroyed the entire monastery looking for him." The monk then runs off to the monastery.`
             `    The Syndicate ships that were in orbit land alongside you, and a group of Syndicated Security approach, one of whom you recognize as the man you spoke to previously. "Greetings again, Councilmembers. I'm Officer Khalid," he says to you. "I take it you're here to help us search for the terrorist, but I'm afraid we already have him. My men radioed me moments ago that they found him hiding in a cave in the mountains, and they're on their way right now."`
@@ -307,6 +344,7 @@ mission "FW Defend New Tibet (patched)"
 
             action
                 set "fw did not rescue defector"
+                clear "MGFB: FW Liberate Delta Sagittarii: offered"
                 clear "FW Liberate Delta Sagittarii (patched): offered"
                 clear "FW Liberate Delta Sagittarii: offered"
             `    "Thank you, Councilmember," Khalid says with a slight bow and a smirk on his face. "We'll keep you posted on our progress, and attempt to persuade the Republic to cease fire while we uncover more."`
@@ -424,6 +462,51 @@ mission "FW Liberate Delta Sagittarii (patched)"
             variant
                 "Dreadnought"
 
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government "Free Worlds"
+        personality escort heroic
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "Eleonorae"
+                "PF-80 Intrepid"
+                "PAS-3 Barbette"
+                "PAS-2 Bulwark" 2
+                "PCS-4 Castle"
+                "Finch" 40
+                "AGT-31 Xencar" 40
+                "CS-24 Garrison"
+                "Finch" 10
+                "AGT-31 Xencar" 6
+                "TS-CH0 Kratzbal" 3
+
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government "Free Worlds"
+        personality heroic escort
+        system Dschubba
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "PCS-5 Citadel"
+                "SWV4 Ravelin" 2
+                "EP-3 Rat" 8
+                "Finch" 44
+                "AGT-31 Xencar" 100
+                "PAS-2 Bulwark" 3
+                "PAS-3 Barbette" 2
+                "PF-80 Intrepid" 2
+                "TS-CH0 Kratzbal" 5
+
     npc evade
         government "Republic"
         personality heroic staying
@@ -465,6 +548,30 @@ mission "FW Liberate Delta Sagittarii (patched)"
                 "Cruiser (Mark II)"
                 "Frigate" 4
 
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc evade
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government "Republic"
+        personality heroic
+        system "Seginus"
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Spetum Class (Mark II, ShieldRegen)"
+                "Lance" 20
+                "A-14F Rondel" 60
+                "Combat Drone" 36
+                "Carrier (Mark II)" 4
+                "Lance" 16
+                "Combat Drone" 24
+                "Frigate (Mark II)" 3
+                "Cruiser (Mark II)" 2
+                "Culverin Class (Mark II)"
+                "A-14F Rondel" 2
+
     npc
         government "Free Worlds"
         personality heroic staying
@@ -482,6 +589,7 @@ mission "FW Liberate Delta Sagittarii (patched)"
         fleet "Large Republic" 2
     on offer
         set "FW Liberate Delta Sagittarii: offered"
+        set "MGFB: FW Liberate Delta Sagittarii: offered"
         event "fwc southern battle"
         conversation
             branch surrender
@@ -613,6 +721,45 @@ mission "FWC Attack Kaus Borealis (patched)"
             variant
                 "Dreadnought"
                 "Osprey"
+
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government "Free Worlds"
+        personality heroic escort
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "PCS-5 Citadel"
+                "SWV4 Ravelin" 2
+                "EP-3 Rat" 8
+                "Finch" 44
+                "AGT-31 Xencar" 100
+                "PAS-2 Bulwark" 5
+                "PAS-3 Barbette" 3
+                "PF-80 Intrepid" 2
+                "TS-CH0 Kratzbal" 5
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "CS-24 Garrison" 2
+                "CS-24 Garrison (Parapet)"
+                "Finch" 14
+                "AGT-31 Xencar" 40
+                "CSE-6 Steward"
+                "Finch" 6
+                "Falcon"
+                "Falcon (Parapet)"
+                "FUe02y Gebrant Tender" 2
+                "SWV4 Ravelin" 2
+                "PF-80 Intrepid (Plasma Engine)"
+                "PF-80 Intrepid (Swordfish)" 2
+                "CK50T Stahbar (Proton)"
     npc
         government "Republic"
         personality derelict staying
@@ -650,8 +797,34 @@ mission "FWC Attack Kaus Borealis (patched)"
             variant
                 "Cruiser (Mark II)"
                 "Combat Drone" 4
+
+    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
+    npc evade
+        to despawn
+            not "installed plugin: Mega Freight Battles"
+        government "Republic"
+        personality heroic
+        system "Kaus Borealis"
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Spetum Class (Mark II)"
+                "Lance" 20
+                "A-14F Rondel" 60
+                "Combat Drone" 36
+                "Carrier (Mark II)" 4
+                "Lance" 16
+                "Combat Drone" 24
+                "Frigate (Mark II)" 5
+                "Cruiser (Mark II)" 5
+                "Combat Drone" 20
+                "Culverin Class (Mark II)" 3
+                "A-14F Rondel" 6
     on offer
         set "FWC Attack Kaus Borealis: offered"
+        set "MGFB: FWC Attack Kaus Borealis: offered"
         event "fwc attack kaus borealis"
         conversation
             `When you return to New Portland, a sizeable Free Worlds fleet is already parked on the landing pads surrounding the spaceport. JJ explains to you, "When the Navy struck and cut our territory in half, a lot of these ships were cut off from their chain of command and just went and sheltered wherever they could. So it took a bit of doing to gather them all together. And now what we need is another stirring victory, or they'll begin to scatter again."`
