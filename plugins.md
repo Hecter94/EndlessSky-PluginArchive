@@ -13020,9 +13020,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Main Plot Plus
 
 
-[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 145.77 kb | 2024-05-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
+[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 147.98 kb | 2024-05-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
 Author: ziproot | Category: Story <br>
-[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-05-20) <br>
+[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-05-23) <br>
 
 >A plugin mostly centered around improving the main plot.
 >
@@ -13055,6 +13055,9 @@ Do you know those test dummy missions that you have to do? Well, there's a reaso
 
 ## Improved Checkmate
 Amazinite had, a long time ago, added changes that improved the Checkmate branch, that ultimately didn't go anywhere, other than some changes in the first part of the campaign rework. These changes will likely be added as part of the next parts of the campaign rework. However, as I am a fan of the Checkmate branch already, I think more people should be doing it, so I am incorporating these changes now, along with some minor fixes. Mostly, these allow you to ask about progress made by the Syndicate in finding the terrorists, and eventually allow you to “fight” them with automatic ships after the Pug invasion. I am also changing one major thing: the nuke launcher has been replaced with “augmented nuclear missiles,” which are essentially the buffed nuclear missiles proposed by Azure3141. When these begin being sold, the Syndicate also begin using them instead of regular nukes in a new “Mark II Nuclear” loadout in the systems raided by the Korath. This Manta loadout has four augmented nuclear missiles and two sidewinder missile launchers, the latter of which ensures that the Mantas use the “missile boat” AI, making them less likely to blow themselves up. This updated plot is referenced in the Neutrality option, mentioning the Syndicate finding the “terrorists” and the automatic vessels being used as cannon fodder. Both the old nuclear missiles and the new augmented nuclear missiles are also 10x cheaper than the nuclear missiles in vanilla are, i.e. they cost 100,000 credits each instead of a million credits each.
+
+### Free Worlds Albatross Bounty
+The FW Albatross 2A mission requires you to fight Ryk Bartlett, essentially like a bounty mission, however, instead of using the Bounty government, Ryk Bartlett uses the Pirate government, allowing you to just wait for friendly ships to take the ship out. This replaces the government for Ryk Bartlett in that mission with the Bounty government.
 
 ## Deep Science Drones
 0.10.5 added the sunder and mining drones, so I decided that it was time to allow you to get your own science drones! Some time after you do project hawking, Valhalla and Asgard will begin selling a drone variant of the aerie along with science drones, and a fleets consisting of an aerie with two science drones will begin to travel around the Deep. A few months later, miners will begin using the drone variant with mining drones to mine. The aerie drone variant is also occasionally used by the pirate fleet in road to hai reveal.
