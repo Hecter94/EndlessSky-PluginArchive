@@ -65,6 +65,10 @@ mission "Neutrality 2"
     invisible
     landing
     clearance "For some reason, the spaceport controller lets you land."
+    substitutions
+        "<marginal>" "no"
+        "<marginal>" "little"
+            has "FW Katya 3: done"
     to offer
         has "event: pug notice neutrality"
         or
@@ -95,8 +99,13 @@ mission "Neutrality 2"
             choice
                 `"No."`
                     goto "neutral"
-                `"Actually, yes."`
+                `"Actually, I do."`
                     goto "changed mind"
+                    to display
+                        not "neutral: war independent"
+                `"Actually, I will."`
+                    to display
+                        has "neutral: war independent"
                 `"It's not my war."`
                     to display
                         not "neutral: war independent"
@@ -128,19 +137,14 @@ mission "Neutrality 2"
 
             action
                 set "neutral: nuke independent"
-            `"And yet you have made no effort to discover who did."`
-                to display
-                    not "FW Katya 3: done"
-            `"And yet you have made little effort to discover who did."`
-                to display
-                    has "FW Katya 3: done"
+            `"And yet you have made <marginal> effort to discover who did."`
+
             choice
                 `"Who are you?"`
 
             label "pug"
             `"We are Pug. Our goal is to bring peace and prevent your species from inflicting significant harm upon itself."`
 
-            label "staff"
             action
                 clear "neutral: nuke independent"
                 clear "neutral: war independent"
@@ -316,6 +320,8 @@ mission "Neutrality 3"
                     goto "pug"
 
             label "abducted"
+            action
+                set "neutrality: told receptionist about abduction"
             `"Really? The ones who invaded human space?"`
             choice
                 `"They invaded human space?"`
@@ -329,7 +335,11 @@ mission "Neutrality 3"
             `"That's what they said when they annexed Silver."`
 
             label "pug"
-            `"The Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. <last> <first>, a brave captain from <planet>, who was a member of the Free Worlds council, stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system!  But when they got here, the Pug were gone, with that wormhole you came from in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
+            `"The Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. <last> <first>, a brave captain from <planet>, who was a member of the Free Worlds council, stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system! But when they got here, the Pug were gone, with that wormhole you came from in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
+            branch "end"
+                not "neutrality: told receptionist about abduction"
+            action
+                clear "neutrality: told receptionist about abduction"
             `The receptionist pauses. "I'm not assuming they told you anything."`
             `"Not much," you admit.`
                 goto "end"
@@ -391,7 +401,7 @@ mission "Neutrality 3b"
             `This planet was also clearly one of the native Pug worlds. Once again, the architecture is entirely alien, yet you see people working here. As you land, you see more people gesturing towards the sky. Maybe this doesn't have to do with which planet you should visit. You should probably check the spaceport to see what is going on.`
                 decline
 
-# The last paragraph in the 'to fail' section and the log entries were based almost entirely on "oathkeepers founded" from "free worlds 1 start.txt." The first paragraph was based on the "FWC Terrorists 1" and "FWC Terrorists 1A" of Amazinite's improved checkmate campaign.
+# The last paragraph in the 'on fail' section and the log entries were based almost entirely on "oathkeepers founded" from "free worlds 1 start.txt." The first paragraph was based on the "FWC Terrorists 1" and "FWC Terrorists 1A" of Amazinite's improved checkmate campaign.
 mission "Neutrality 4"
     invisible
     to offer
