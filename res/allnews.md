@@ -1,3 +1,4 @@
+2024-05-24 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-05-23 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-05-20 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-05-19 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
