@@ -35,7 +35,7 @@ And other things:
   * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
 
-Requires Unstable Build/0.10.5 or above.
+Requires Unstable Build/0.10.7 or above.
 
 # Recommended 
 

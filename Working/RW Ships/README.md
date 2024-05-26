@@ -26,4 +26,7 @@ Passenger/cargo hybrid ship. Stat-wise it's quite literally half a Star Queen wi
 THUNDERER - 
 A high-speed ship good for a lot of things since it's basically a medium warship with the weapon and engine capacities swapped. The original design intent was to be a relatively large ship that can achieve the speed to mine fast-moving asteroid fields, but it also makes for a great pirating or smuggling ship.
 
+CAVALIER - 
+Heavy gunboat with a 5/2 gun/turret hardpoint layout and a low-drag armored hull. Middling engine capacity and poor heat dissipation make it a little clunky, but like the Raven it is undeniably capable of punching above its weight.
+
 Some of these ships also have variants in the style of the vanilla Navy Auxiliary, with different models and base stats.
