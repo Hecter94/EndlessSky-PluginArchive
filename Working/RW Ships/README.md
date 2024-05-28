@@ -29,4 +29,7 @@ A high-speed ship good for a lot of things since it's basically a medium warship
 CAVALIER - 
 Heavy gunboat with a 5/2 gun/turret hardpoint layout and a low-drag armored hull. Middling engine capacity and poor heat dissipation make it a little clunky, but like the Raven it is undeniably capable of punching above its weight.
 
+LANCIER - 
+A torpedo boat, bigger than the Navy's Rainmaker, with a total of 10(!) gun ports and a defensive turret. Its weapons array is impressive-looking but the ship itself is slow and vulnerable, so in the present day it is mainly used for intimidating merchant convoys. That said, with war looming in 3014, it might find a new lease on life.
+
 Some of these ships also have variants in the style of the vanilla Navy Auxiliary, with different models and base stats.
