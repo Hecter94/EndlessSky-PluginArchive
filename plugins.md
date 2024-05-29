@@ -173,9 +173,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 268.67 kb | 2024-04-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 138.13 kb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-28) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -195,8 +195,9 @@ At Earths job board you can find a repeatable job that displays which persons yo
 After you've killed them all, you receive a small unique gift.<br>
 <br>
 Tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
+In cap_persons.txt you find the following line under gamerules: "#	"person spawn period" 2000". If you remove the "#" the spawning speed is increased to one spawn in max a  minute.<br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/captureable.person.ships/screenshot.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/capturable.person.ships01.jpg' width='400'>
 <ul>
 <li>"Michael Zahniser" (found everywhere | Kestrel + Finch)</li>
 <li>"Cap'n Pester" (found everywhere | Quarg Wardragon)</li>
@@ -217,6 +218,11 @@ Tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was p
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-05-28<br>
+adjusted mass and drag to be like in 0.10.7<br>
+removed staying personality ftom tranquillity<br>
+renamed persons to "name (C)", was "name (Capture me)"<br>
 <br>
 2024-04-06<br>
 set person killed job back to earth only, less annoying when you are done<br>
@@ -7503,9 +7509,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-05-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-05-27) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-05-29) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -10523,9 +10529,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/RW Ships/icon.png' height='100'></img><br>
 
 
-[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.46 mb | 2024-05-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.65 mb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-N/A[]() (last commit 2024-05-26) <br>
+N/A[]() (last commit 2024-05-28) <br>
 
 >A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
@@ -10562,6 +10568,9 @@ A high-speed ship good for a lot of things since it's basically a medium warship
 
 CAVALIER - 
 Heavy gunboat with a 5/2 gun/turret hardpoint layout and a low-drag armored hull. Middling engine capacity and poor heat dissipation make it a little clunky, but like the Raven it is undeniably capable of punching above its weight.
+
+LANCIER - 
+A torpedo boat, bigger than the Navy's Rainmaker, with a total of 10(!) gun ports and a defensive turret. Its weapons array is impressive-looking but the ship itself is slow and vulnerable, so in the present day it is mainly used for intimidating merchant convoys. That said, with war looming in 3014, it might find a new lease on life.
 
 Some of these ships also have variants in the style of the vanilla Navy Auxiliary, with different models and base stats.
 
