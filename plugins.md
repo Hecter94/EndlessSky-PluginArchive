@@ -7509,9 +7509,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-06-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-05-29) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-06-01) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -10529,16 +10529,16 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/RW Ships/icon.png' height='100'></img><br>
 
 
-[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.65 mb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
+[RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.65 mb | 2024-06-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-N/A[]() (last commit 2024-05-28) <br>
+[https://github.com/43897689431805741092/RW-Ships](https://github.com/43897689431805741092/RW-Ships) (last commit 2024-06-01) <br>
 
->A small collection of custom ships: one drone and three freighter/utility ships that can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+>A small collection of custom ships: primarily drones and multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>A small collection of custom ships: one drone and some multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
+<blockquote>A small collection of custom ships: primarily drones and multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 
 ESDD link: https://github.com/starmlerp/ESDefenseDronePlugin
 
