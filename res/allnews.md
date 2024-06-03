@@ -1,3 +1,8 @@
+2024-06-03 | new Plugin 'space.fauna' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
+2024-06-03 | new Plugin 'planet.map' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
+2024-06-03 | new Plugin 'more.arfectas' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
+2024-06-03 | new Plugin 'coalition.shopping' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
+2024-06-03 | new Plugin 'quarg.farm' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
 2024-06-02 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-06-01 | updated Plugin 'RW Ships' by Anonymous | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
 2024-06-01 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>

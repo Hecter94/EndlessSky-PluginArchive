@@ -374,6 +374,55 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### coalition.shopping
+<img src='Working/coalition.shopping/icon.png' height='100'></img><br>
+
+
+[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 87.93 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
+Author: zuckung | Category: Cheats <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-04) <br>
+
+>Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### coalition.shopping
+<br>
+<br>
+Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system.<br>
+<br>
+Adds all existing coalition outfitters and shipyards to 'Far Home'. Also adds a new shipyard and a new outfitter with missing ships/outfits.<br>
+To start the mission to enable these outfitters and shipyards, you have to join Heliarch or Lunarium (complete the first chapter of these storylines) and own/pay 5 million credits. The mission starts anywhere in coalition space. I added this plausible mission to make the plugin feel less cheaty.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-05-04<br>
+added 2 scene images<br>
+added a plausible story mission for heliarch and one for lunarium players<br>
+<br>
+2024-04-21<br>
+fixed error on coalition basics outfitter<br>
+<br>
+2023-10-17<br>
+added plugin.txt<br>
+<br>
+2023-10-05<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: created for 0.10.6, complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Custom Outfitting (Chop Shop)
 
 
@@ -599,6 +648,46 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### more.arfectas
+<img src='Working/more.arfectas/icon.png' height='100'></img><br>
+
+
+[more.arfectas.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.arfectas.zip) | 30.34 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.arfectas/) <br>
+Author: zuckung | Category: Cheats <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-15) <br>
+
+>Adds the new system 'Mego Pug', in eastern Bunrodea space. There you can farm rare spawning Arfectas and other more common Pug ships, without ruining your Pug reputation. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### more.arfectas <br>
+<br>
+Adds the new system 'Mego Pug', in eastern Bunrodea space. There you can farm rare spawning Arfectas and other more common Pug ships, without ruining your Pug reputation.<br>
+<br>
+Added a new system, with new government "Pug Farm" and 3 new fleets. Two fleets are like the ones in 'Pug Iyek' and the third, rare spawning one, has 1 arfecta. It spawns within 15000 frames(~4 minutes).<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-04-14<br>
+moved the system to eastern Bunrodea territory<br>
+renamed the system, adjusted objects, added a planet<br>
+made them hostile at first contact<br>
+added a warning mission on system entering<br>
+added support for more.boarding.missions<br>
+<br>
+2023-10-17<br>
+added plugin.txt<br>
+</blockquote>
+</details>
+
+Status: made for 0.10.6 , complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### No Bactrian
 
 
@@ -669,6 +758,42 @@ Author: Carter-M-II | Category: Cheats <br>
 
 Status: N/A <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### quarg.farm
+<img src='Working/quarg.farm/icon.png' height='100'></img><br>
+
+
+[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.33 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
+Author: zuckung | Category: Cheats <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-26) <br>
+
+>Adds a new system Saquerver (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### quarg.farm
+<br>
+<br>
+Adds a new system "Saquerver" (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed.<br>
+<br>
+The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-05-26<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: made for 0.10.6 <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -2445,6 +2570,53 @@ are more attractive to the early game.
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### space.fauna
+<img src='Working/space.fauna/icon.png' height='100'></img><br>
+
+
+[space.fauna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/space.fauna.zip) | 1.67 mb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/space.fauna/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-03) <br>
+
+>Adds space fauna fleets to all systems. Useless but pretty, to make the universe more alive. See the readme for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### space.fauna
+<br>
+<br>
+Adds space fauna fleets to all systems. Useless but pretty, to make the universe more alive.<br>
+<br>
+There are 14 different organisms, 1 titan-sized, 3 superheavy-sized, 4 heavy-sized, 6 medium-sized. They are coming in fleet sized from 1 to 5 and aren't capturable/plunderable. There are 4 Hive planets around the galaxy, with increased spawn rates and a "queen". Uninhabited systems have a higher spawn chance than inhabited systems.<br>
+<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/space.fauna01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/space.fauna02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-05-03<br>
+added a titan-sized "queen" to each hive system(permanent mission npcs)<br>
+changed gun ports positions, amounts and damage <br>
+<br>
+2024-05-02<br>
+added short range weapon<br>
+added 3 organisms<br>
+<br>
+2024-05-01<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: made for 0.10.6 , complete <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -13597,6 +13769,52 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
+### planet.map
+<img src='Working/planet.map/icon.png' height='100'></img><br>
+
+
+[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.13 mb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-26) <br>
+
+>planetary map travelling concept : start a new pilot, use 'start: planet.map'
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### planet.map
+<br>
+<br>
+Planetary map travelling concept : start a new pilot, use 'start: planet.map' and follow the small story line. See the readme for details.<br>
+<br>
+This is just a proof of concept of an idea by Epsil-Astra.<br>
+Basically a planet in a starsystem is a wormhole to a starsystem with changed background, to look like a ground map. The planets there look like cities. The galaxy background is a single whole planet. It simulates travelling on a planet you've landed on. Other starsystems act as different bioms, like forest, desert, sea.<br>
+A small storyline got added.<br>
+<br>
+As in the spirit of Epsil-Astra, feel free to modify/use this plugin for your own content creation.<br> 
+<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/planet.map/screenshot.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/planet.map/screenshot1.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-03-26<br>
+fixes and adjustments<br>
+added galaxy planet<br>
+added 4 new locations, with 2 new backgrounds<br>
+<br>
+2024-03-24<br>
+initial release<br>
+</blockquote>
+</details>
+
+Status: made for 0.10.6 <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Portraits for News
 <img src='Working/Portraits for News/icon.png' height='100'></img><br>
 
@@ -15316,7 +15534,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>36 plugins in this category.<p>
+<p>41 plugins in this category.<p>
 
 <details>
 
