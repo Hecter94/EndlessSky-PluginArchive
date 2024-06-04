@@ -1,3 +1,4 @@
+2024-06-04 | updated Plugin 'Amphibious-Ships' by Zoura | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2024-06-03 | new Plugin 'space.fauna' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
 2024-06-03 | new Plugin 'planet.map' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-06-03 | new Plugin 'more.arfectas' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>

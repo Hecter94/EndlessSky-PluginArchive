@@ -8459,9 +8459,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Amphibious-Ships
 
 
-[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 17.54 mb | 2024-01-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/) <br>
+[Amphibious-Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amphibious-Ships.zip) | 17.54 mb | 2024-06-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amphibious-Ships/) <br>
 Author: Zoura | Category: Ships <br>
-[https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships) (last commit 2024-01-13) <br>
+[https://github.com/AvianGeneticist/Amphibious-Ships](https://github.com/AvianGeneticist/Amphibious-Ships) (last commit 2024-06-04) <br>
 
 >Adds sea-to-space ships to Endless Sky.
 >
