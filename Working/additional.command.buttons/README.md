@@ -21,7 +21,7 @@ and
 <br>
 (inspired by theweirednut) <br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/additional.command.buttons/screenshot.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/additional.command.buttons01.jpg' width='400'>
 <br>
 Allthough most of these commands are now implemented in other parts to the original mobile user interface or can be accessed by gestures, I personally prefer these buttons on the lower right corner.<br>
 <br>
@@ -34,6 +34,9 @@ This plugin overwrites `interface "main buttons"` and `interface "hud"`, so it i
 <br>
 Changelog:<br>
 <br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
+<br>
 2024-02-20<br>
 re-added the ammo box to main buttons (latest mobile game version needed)<br>
 <br>
@@ -41,7 +44,7 @@ re-added the ammo box to main buttons (latest mobile game version needed)<br>
 added plugin.txt<br>
 <br>
 2023-08-24<br>
-fixed non-fireing attack button<br>
+fixed non-firing attack button<br>
 <br>
 2023-08-05<br>
 moved the hidden ammo box to a visible place<br>
