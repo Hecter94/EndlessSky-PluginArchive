@@ -107,9 +107,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/automata.destruction.0percent/icon.png' height='100'></img><br>
 
 
-[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 43.6 kb | 2023-10-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
+[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 43.63 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2023-10-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%). See the readme for details.
 
@@ -120,11 +120,14 @@ Author: zuckung | Category: Cheats <br>
 <br>
 Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%).<br>
 <br>
-Sestor 349/109/78/71/53/40/27 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.0 (0%) now.<br>
+Sestor 349/109/78/71/53/27/14 and Mereti 512/256/128/64/32/16/8 ships have a self destruction value of 0.0 (0%) now.<br>
 You can easily change the values in automata.txt for each ship ('"self destruct" .0') to a value of your choice. I.e. 0.12 is 23%, 0.3 is 51%, 0.5 is 75%. Its calculated twice, first the chance for self destruction on boarding(i.e. 0.3) is 30%, then of the remaining 70% again 30% chance for self destruction on capturing. That makes 30% + 21% = 51% overall chance for self destruction on a capturing try.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
@@ -173,9 +176,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 138.13 kb | 2024-05-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 138.16 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-28) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -188,13 +191,13 @@ Author: zuckung | Category: Cheats <br>
 Makes person ships captureable.<br> 
 <br>
 <br>
-Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesnt flee. And changed "Zitchas" personality to "decloaked", so it doesnt flee and regenerate while cloaked.<br>
+Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesn't flee. And changed "Zitchas" personality to "decloaked", so it doesn'tflee and regenerate while cloaked.<br>
 So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
 <br>
-At Earths job board you can find a repeatable job that displays which persons you have already killed, which is alive and where to find it.<br>
+At Earth's job board you can find a repeatable job that displays which persons you have already killed, which are alive, and where to find them.<br>
 After you've killed them all, you receive a small unique gift.<br>
 <br>
-Tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and i tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
+I tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and I tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
 In cap_persons.txt you find the following line under gamerules: "#	"person spawn period" 2000". If you remove the "#" the spawning speed is increased to one spawn in max a  minute.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/capturable.person.ships01.jpg' width='400'>
@@ -219,9 +222,12 @@ In cap_persons.txt you find the following line under gamerules: "#	"person spawn
 <br>
 Changelog:<br>
 <br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
+<br>
 2024-05-28<br>
 adjusted mass and drag to be like in 0.10.7<br>
-removed staying personality ftom tranquillity<br>
+removed staying personality ftom Tranquility<br>
 renamed persons to "name (C)", was "name (Capture me)"<br>
 <br>
 2024-04-06<br>
@@ -766,9 +772,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/quarg.farm/icon.png' height='100'></img><br>
 
 
-[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.33 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
+[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.36 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Adds a new system Saquerver (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed. See the readme for details.
 >
@@ -780,10 +786,13 @@ Author: zuckung | Category: Cheats <br>
 <br>
 Adds a new system "Saquerver" (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed.<br>
 <br>
-The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
+The system "Saquerver" lies between "Saquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-05-26<br>
 initial release<br>
@@ -1390,9 +1399,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.84 kb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.9 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 
@@ -1418,6 +1427,9 @@ Beside the cheater start option, all others are balanced and lore friendly. A bi
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-03-15<br>
 Start: Cheater, changed Heron weapons and added 10x KIV with beam weapons<br>
@@ -1834,9 +1846,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/galactic.capital.investment/icon.png' height='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 690.1 kb | 2024-04-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 690.27 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
@@ -1849,18 +1861,23 @@ Implements a short mission chain that enables repeatable job board investment op
 <br>
 There are missions for 1 million, 5 million, 10 million, 50 million, 100 million and 1 billion credits. The chance for the jobs to appear on the job board getting lower with the amount to invest. Unfortunately you have to take off and land again on the same planet to clear the mission marker.<br>
 At 1 billion credits a longer mission chain starts and enables a reapeatable job board investment of 1 billion credits. The chain has some breaks and finish after a year.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/galactic.capital.investment01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/galactic.capital.investment02.jpg' width='400'>
 <br>
 1 million = 600 credits daily (60% chance)<br>
-5 million = 3.400 credits daily (50% chance)<br>
-10 million = 7.200 credits daily (40% chance)<br>
-50 million = 37.000 credits daily (30% chance)<br>
-100 million = 76.100 credits daily (20% chance)<br>
+5 million = 3,400 credits daily (50% chance)<br>
+10 million = 7,200 credits daily (40% chance)<br>
+50 million = 37,000 credits daily (30% chance)<br>
+100 million = 76,100 credits daily (20% chance)<br>
 1 billion = 2 million credits daily (2% chance)<br>
 <br>
-These investments pay off after 2,3 to 4,5 years. Higher Investments pay off faster.<br>
+These investments pay off after 2.3 to 4.5 years. Higher investments pay off faster.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-04-05<br>
 removed duplicate pngs<br>
@@ -2813,9 +2830,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/additional.command.buttons/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 160.12 kb | 2024-02-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
+[additional.command.buttons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.zip) | 17.65 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-19) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Made for the mobile version and adds several new buttons to the lower right corner. See the readme for details.
 >(inspired by theweirednut)
@@ -2847,7 +2864,7 @@ and
 <br>
 (inspired by theweirednut) <br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/additional.command.buttons/screenshot.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/additional.command.buttons01.jpg' width='400'>
 <br>
 Allthough most of these commands are now implemented in other parts to the original mobile user interface or can be accessed by gestures, I personally prefer these buttons on the lower right corner.<br>
 <br>
@@ -2860,6 +2877,9 @@ This plugin overwrites `interface "main buttons"` and `interface "hud"`, so it i
 <br>
 Changelog:<br>
 <br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
+<br>
 2024-02-20<br>
 re-added the ammo box to main buttons (latest mobile game version needed)<br>
 <br>
@@ -2867,7 +2887,7 @@ re-added the ammo box to main buttons (latest mobile game version needed)<br>
 added plugin.txt<br>
 <br>
 2023-08-24<br>
-fixed non-fireing attack button<br>
+fixed non-firing attack button<br>
 <br>
 2023-08-05<br>
 moved the hidden ammo box to a visible place<br>
@@ -2881,6 +2901,7 @@ added descriptions inside script to exchange buttons functions<br>
 <br>
 2023-07-06<br>
 changed 'fire afterburner' to new 'fleet: harvest flotsam', because afterburner can easily toggled by double tapping<br>
+
 </blockquote>
 </details>
 
@@ -3771,9 +3792,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.66 mb | 2024-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.18 mb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-31) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -3792,10 +3813,14 @@ They have the positive stats of a small human outfit, at the cost of a bunk and 
 If you collect them all, you'll get a special mission<br>
 See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/crew.list.txt'>crew.list.txt</a> of this plugin for locations, and stat infos.<br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/expert.crew.members/screenshot.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/expert.crew.members01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/expert.crew.members02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-04-01<br>
 added 5 gegno experts<br>
@@ -6259,9 +6284,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/too.many.asteroids/icon.png' height='100'></img><br>
 
 
-[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 17.92 kb | 2024-03-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
+[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 17.96 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
 Author: zuckung | Category: Overhauls <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-04) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched.
 >Increases game performance. See the readme for details.
@@ -6275,11 +6300,15 @@ Removes all non-mineable asteroids from all systems. Mineable asteroids and aste
 Increases game performance.<br>
 <br>
 <br>
-Every of the 558 base game systems(0.10.5) is edited via remove command for full compatibility with other system altering plugins. A total of 2663 asteroid entries got removed.<br>
-In case i won't update this plugin to the newest game version, a python script for generating an updated plugin can be found <a href="https://github.com/zuckung/endless-sky-plugins/blob/main/tools/too_many_asteroids_plugin_script">here</a>.<br>
+Every of the 558 base game systems (0.10.7) is edited via a remove command for full compatibility with other system altering plugins. A total of 2663 asteroid entries got removed.<br>
+In case I don't update this plugin to the newest game version, a python script for generating an updated plugin can be found <a href="https://github.com/zuckung/endless-sky-plugins/blob/main/tools/ES_plugin_script_too_many_asteroids">here</a>.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
+updated to 0.10.7<br>
 <br>
 2024-02-4<br>
 added the 0.10.5 systems<br>
@@ -6295,6 +6324,7 @@ removed py script<br>
 2023-06-17<br>
 updated to 0.10.1<br>
 added a python script which generates the asteroids.txt(in case I don't update this mod, everyone can do it in no time.)<br>
+
 </blockquote>
 </details>
 
@@ -11753,9 +11783,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2024-04-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-30) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -11782,6 +11812,9 @@ Since it's often questioned, here is a guide to the bunrodea first contact missi
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-04-30<br>
 fixed error on natural spawning korath fleets<br>
@@ -13570,9 +13603,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/navy.licenses/icon.png' height='100'></img><br>
 
 
-[navy.licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/navy.licenses.zip) | 80.83 kb | 2024-05-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/navy.licenses/) <br>
+[navy.licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/navy.licenses.zip) | 80.87 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/navy.licenses/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-04) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >Adds a mission on Stormhold(Alcyone system) which leads you to Geminus(Castor system) to buy the four Navy licenses. See the readme for details.
 >
@@ -13582,16 +13615,19 @@ Author: zuckung | Category: Story <br>
 <blockquote>### navy.licenses
 <br>
 <br>
-Adds a mission on Stormhold(Alcyone system) which leads you to Geminus(Castor system) to buy the four Navy licenses.<br>
+Adds a mission on Stormhold (Alcyone system) which leads you to Geminus (Castor system) to buy the four Navy licenses.<br>
 <br>
-The mission can get started with 550.000 credits cash available. You have to pay 50.000 credits for making the contact and 500.000 credits for each of the four licenses.<br>
-If you reject the mission, you can restart it on other visits. Also not buying all licenses lets the buying mission on Geminus restart on other landings(till all are bought).<br>
-You get the following licenses : Navy license, Navy Auxiliary license, Navy Cruiser license, Navy Carrier license.<br>
+The mission can get started with 550,000 credits cash available. You have to pay 50,000 credits for making the contact and 500,000 credits for each of the four licenses.<br>
+If you reject the mission, you can restart it on other visits. Also not buying all licenses lets the buying mission on Geminus restart on other landings (until all are bought).<br>
+You get the following licenses: Navy license, Navy Auxiliary license, Navy Cruiser license, Navy Carrier license.<br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/navy.licenses01.jpg' width='400'>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/navy.licenses02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-05-04<br>
 added 2 scene images<br>
@@ -13888,9 +13924,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/real.fluff/icon.png' height='100'></img><br>
 
 
-[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 2.04 mb | 2024-04-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
+[real.fluff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/real.fluff.zip) | 1.74 mb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/real.fluff/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
 
 >A bunch of side missions which reward unique fluffy pets. See the readme for details.
 >
@@ -13902,23 +13938,26 @@ Author: zuckung | Category: Story <br>
 <br>
 A bunch of side missions which reward unique pets. <br>
 <br>
-Lore-friendly, total useless, but cute pet outfits, with storylines. All missions have a 20% chance of appearing, except alien mission which has 100%.<br>
+Lore-friendly, totally useless, but cute pet outfits, with storylines. All missions have a 20% chance of appearing, except alien mission which has 100%.<br>
 <ul>
 <li>Alien - land somewhere in human space, hidden destination is Danoa system</li>
 <li>Cat - mission found on Deadman's Cove (Almach)</li>
 <li>Ferret - mission found on Bivrost (Markeb)</li>
 <li>Hamster - mission found on Twinstar (Alniyat)</li>
 <li>Koala - mission found on New Portland (Delta Sagittarii)</li>
-<li>Ocelot - mission found on Farpoint (Alnitak) needs 1000 combat xp</li>
+<li>Ocelot - mission found on Farpoint (Alnitak) needs 1000 combat rating</li>
 <li>Rabbit - mission found on Starcross (Acrux)</li>
 <li>Raccoon - mission found on Foundry (Achernar)</li>
 <li>Squirrel - mission found on Heartvalley (Io Lowe, Hai space)</li>
 </ul>
-After collecting them all, you get a missions (20%) with unique rewards.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/real.fluff/screenshot.jpg' width='400'>
+After collecting them all, you get a mission (20%) with unique rewards.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/real.fluff01.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-06-07<br>
+text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-04-21<br>
 changed size of alien.png to prevent error.txt mentioning<br>
@@ -13959,6 +13998,7 @@ added hamster mission<br>
 added squirrel mission chain<br>
 added 5 pet outfits with images<br>
 initial release<br>
+
 </blockquote>
 </details>
 
