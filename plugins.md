@@ -7711,9 +7711,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-06-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-06-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-06-01) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-06-08) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -7736,7 +7736,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [nomads.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/nomads.zip) | 1.99 mb | 2023-11-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/nomads/) <br>
 Author: RisingLeaf | Category: Races <br>
-[https://github.com/RisingLeaf/nomads](https://github.com/RisingLeaf/nomads) (last commit 2023-07-24) <br>
+[https://github.com/RisingLeaf/nomads](https://github.com/RisingLeaf/nomads)  <br>
 
 >adds several nomad fleets appearing ramndomly
 
