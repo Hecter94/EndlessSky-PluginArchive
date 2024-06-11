@@ -154,41 +154,42 @@ outfit "Dysprosium"
 	"installable" -1
 	description "Dysprosium is never naturally found as a free element. Many industries in a spacefaring civilization have a use for it."
 
-# Krypron is harvested from gas giants
+# Krypton is harvested from gas giants
 outfit "Krypton"
 	plural "Krypton"
 	category "Minerals"
-	cost 26000
+	cost 10000
 	thumbnail "outfit/harvested krypton"
+	"mass" 1
 	"gas storage" -1
 	"fuel capacity" -25
 	"fuel protection" -.03
-	"minable" 1
 	description "Krypton is used in nuclear fusion energy research and experimental particle physics."
-
-# Xenon is harvested from gas giants
-outfit "Xenon"
-	plural "Xenon"
-	category "Minerals"
-	cost 24000
-	thumbnail "outfit/harvested xenon"
-	"gas storage" -1
-	"fuel capacity" -25
-	"fuel protection" -.03
-	"minable" 1
-	description "Xenon is the preferred propellant used by Ion Engines since it is more environmentally friendly and less corrosive than other alternatives."
 
 # Radon is harvested from gas giants
 outfit "Radon"
 	plural "Radon"
 	category "Minerals"
-	cost 22000
+	cost 6000
 	thumbnail "outfit/harvested radon"
+	"mass" 1
 	"gas storage" -1
 	"fuel capacity" -25
 	"fuel protection" -.03
-	"minable" 1
 	description "Radon is used in some radiation cancer therapies. Ironically, due to its radioactive properties, it is also a carcinogen."
+
+# Xenon is harvested from gas giants
+outfit "Xenon"
+	plural "Xenon"
+	category "Minerals"
+	cost 8000
+	thumbnail "outfit/harvested xenon"
+	"mass" 1
+	"gas storage" -1
+	"fuel capacity" -25
+	"fuel protection" -.03
+	description "Xenon is the preferred propellant used by Ion Engines since it is more environmentally friendly and less corrosive than other alternatives."
+
 
 
 outfitter "Silicon"
@@ -655,44 +656,83 @@ mission "Harvesting: Krypton"
 			has "outfit (flagship installed): Fuel Tank (Reinforced)"
 			has "outfit (flagship installed): Fuel Pod (Reinforced)"
 			has "outfit (flagship installed): Fuel Canister (Reinforced)"
+			has "outfit (flagship installed): Fuel Stabilizer"
 		random < 1
 	on offer
 		conversation
 			scene "outfit/harvested krypton"
 			`The <ship> has located a pocket of Krypton gas. Harvest some?`
 			choice
+				`	(Use a Fuel Stabilizer to harvest the Krypton.)`
+					to display
+						has "outfit (flagship installed): Fuel Stabilizer"
+					goto stabilizer
 				`	(Use a reinforced Fuel Tank to harvest the Krypton.)`
 					to display
 						has "outfit (flagship installed): Fuel Tank (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 				`	(Use a reinforced Fuel Pod to harvest the Krypton.)`
 					to display
 						has "outfit (flagship installed): Fuel Pod (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto pod
 				`	(Use a reinforced Fuel Canister to harvest the Krypton.)`
 					to display
 						has "outfit (flagship installed): Fuel Canister (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto canister
 				`	(Leave it.)`
 					decline
 			action
-				outfit "Fuel Tank (Reinforced)" -1
-				outfit "Krypton" 3
+				outfit "Krypton" 4
 			scene "outfit/fuel pod reinforced c"
 			`	You fill the reinforced Fuel Tank with Krypton gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label pod
 			action
-				outfit "Fuel Pod (Reinforced)" -1
 				outfit "Krypton" 2
 			scene "outfit/fuel pod reinforced b"
 			`	You fill the reinforced Fuel Pod with Krypton gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label canister
 			action
-				outfit "Fuel Canister (Reinforced)" -1
 				outfit "Krypton" 1
 			scene "outfit/fuel pod reinforced"
 			`	You fill the reinforced Fuel Pod with Krypton gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label stabilizer
+			branch luck4
+				random < 66
+			action
+				outfit "Krypton" 3
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Krypton gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck4
+			branch luck5
+				random < 50
+			action
+				outfit "Krypton" 4
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Krypton gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck5
+			action
+				outfit "Krypton" 5
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Krypton gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 
 mission "Harvesting: Xenon"
@@ -706,22 +746,30 @@ mission "Harvesting: Xenon"
 			has "outfit (flagship installed): Fuel Tank (Reinforced)"
 			has "outfit (flagship installed): Fuel Pod (Reinforced)"
 			has "outfit (flagship installed): Fuel Canister (Reinforced)"
+			has "outfit (flagship installed): Fuel Stabilizer"
 		random < 3
 	on offer
 		conversation
 			scene "outfit/harvested xenon"
 			`The <ship> has located a pocket of Xenon gas. Harvest some?`
 			choice
+				`	(Use a Fuel Stabilizer to harvest the Xenon.)`
+					to display
+						has "outfit (flagship installed): Fuel Stabilizer"
+					goto stabilizer
 				`	(Use a reinforced Fuel Tank to harvest the Xenon.)`
 					to display
 						has "outfit (flagship installed): Fuel Tank (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 				`	(Use a reinforced Fuel Pod to harvest the Xenon.)`
 					to display
 						has "outfit (flagship installed): Fuel Pod (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto pod
 				`	(Use a reinforced Fuel Canister to harvest the Xenon.)`
 					to display
 						has "outfit (flagship installed): Fuel Canister (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto canister
 				`	(Leave it.)`
 					decline
@@ -729,18 +777,52 @@ mission "Harvesting: Xenon"
 				outfit "Xenon" 4
 			scene "outfit/fuel pod reinforced c"
 			`	You fill the reinforced Fuel Tank with Xenon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label pod
 			action
 				outfit "Xenon" 2
 			scene "outfit/fuel pod reinforced b"
 			`	You fill the reinforced Fuel Pod with Xenon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label canister
 			action
 				outfit "Xenon" 1
 			scene "outfit/fuel pod reinforced"
 			`	You fill the reinforced Fuel Canister with Xenon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label stabilizer
+			branch luck4
+				random < 66
+			action
+				outfit "Xenon" 3
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Xenon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck4
+			branch luck5
+				random < 50
+			action
+				outfit "Xenon" 4
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Xenon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck5
+			action
+				outfit "Xenon" 5
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Xenon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 
 mission "Harvesting: Radon"
@@ -755,22 +837,30 @@ mission "Harvesting: Radon"
 			has "outfit (flagship installed): Fuel Tank (Reinforced)"
 			has "outfit (flagship installed): Fuel Pod (Reinforced)"
 			has "outfit (flagship installed): Fuel Canister (Reinforced)"
+			has "outfit (flagship installed): Fuel Stabilizer"
 		random < 5
 	on offer
 		conversation
 			scene "outfit/harvested radon"
 			`The <ship> has located a pocket of Radon gas. Harvest some?`
 			choice
+				`	(Use a Fuel Stabilizer to harvest the Radon.)`
+					to display
+						has "outfit (flagship installed): Fuel Stabilizer"
+					goto stabilizer
 				`	(Use a reinforced Fuel Tank to harvest the Radon.)`
 					to display
 						has "outfit (flagship installed): Fuel Tank (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 				`	(Use a reinforced Fuel Pod to harvest the Radon.)`
 					to display
 						has "outfit (flagship installed): Fuel Pod (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto pod
 				`	(Use a reinforced Fuel Canister to harvest the Radon.)`
 					to display
 						has "outfit (flagship installed): Fuel Canister (Reinforced)"
+						not "outfit (flagship installed): Fuel Stabilizer"
 					goto canister
 				`	(Leave it.)`
 					decline
@@ -778,16 +868,50 @@ mission "Harvesting: Radon"
 				outfit "Radon" 4
 			scene "outfit/fuel pod reinforced c"
 			`	You fill the reinforced Fuel Tank with Radon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label pod
 			action
 				outfit "Radon" 2
 			scene "outfit/fuel pod reinforced b"
 			`	You fill the reinforced Fuel Pod with Radon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
 			label canister
 			action
 				outfit "Radon" 1
 			scene "outfit/fuel pod reinforced"
 			`	You fill the reinforced Fuel Canister with Radon gas.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label stabilizer
+			branch luck4
+				random < 66
+			action
+				outfit "Radon" 3
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Radon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck4
+			branch luck5
+				random < 50
+			action
+				outfit "Radon" 4
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Radon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
+				decline
+			label luck5
+			action
+				outfit "Radon" 5
+			scene "outfit/Becca fuel compressor"
+			`	You pump the Radon gas through the Fuel Stabilizer to make it easier to store.`
+			``
+			`		(It can be sold from the outfitter screen.)`
 				decline
