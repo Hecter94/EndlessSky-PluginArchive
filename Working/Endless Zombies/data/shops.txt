@@ -18,42 +18,57 @@ mission "endless zombies gun shop"
 				`	(Inspect the Wesson PDW.)`
 					to display
 						"credits" >= 10000
-						"wesson pdw bought" == 0
+						"outfit (all): Wesson PDW" == 0
 					goto WessonPDW
 				`	(Inspect the Kal-Pattern Assault Rifle.)`
 					to display
 						"credits" >= 10000
-						"kal-pattern assault rifle bought" == 0
+						"outfit (all): Kal-Pattern Assault Rifle" == 0
 					goto Kal-Pattern
 				`	(Inspect the Snakebite.)`
 					to display
 						"credits" >= 15000
-						"snakebite bought" == 0
+						"outfit (all): Snakebite" == 0
 					goto Snakebite
+				`	(Inspect the AUTUM.)`
+					to display
+						"credits" >= 20000
+						"outfit (all): AUTUM" == 0
+					goto AUTUM
+				`	(Inspect the Vyesses.)`
+					to display
+						"credits" >= 15000
+						"outfit (all): Vyesses" == 0
+					goto Vyesses
 				`	(Inspect the Interruption.)`
 					to display
 						"credits" >= 15000
-						"interruption bought" == 0
+						"outfit (all): Interruption" == 0
 					goto interruption
+				`	(Inspect the Shoulder Trauma.)`
+					to display
+						"credits" >= 25000
+						"outfit (all): Shoulder Trauma" == 0
+					goto shouldertrauma
 				`	(Inspect the Demonym LMG.)`
 					to display
 						"credits" >= 15000
-						"demonym light machine gun bought" == 0
+						"outfit (all): Demonym LMG" == 0
 					goto Demonym
 				`	(Inspect the Baleful Buzzsaw.)`
 					to display
 						"credits" >= 17500
-						"baleful buzzsaw bought" == 0
+						"outfit (all): Baleful Buzzsaw" == 0
 					goto BalefulBuzzsaw
 				`	(Inspect the Tiremon Shotgun.)`
 					to display
 						"credits" >= 12500
-						"tiremon shotgun bought" == 0
+						"outfit (all): Tiremon Pump Shotgun" == 0
 					goto TiremonShotgun
 				`	(Inspect the Asia Pond.)`
 					to display
 						"credits" >= 25000
-						"asia pond bought" == 0
+						"outfit (all): Asia Pond" == 0
 					goto AsiaPond
 				`	(Don't buy anything.)`
 					goto end
@@ -70,7 +85,6 @@ mission "endless zombies gun shop"
 			action
 				payment -10000
 				outfit "Wesson PDW" 1
-				set "wesson pdw bought"
 			`You hand over 10,000 credits for a Wesson PDW. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
@@ -90,7 +104,6 @@ mission "endless zombies gun shop"
 			action
 				payment -10000
 				outfit "Kal-Pattern Assault Rifle" 1
-				set "kal-pattern assault rifle bought"
 			`You hand over 10,000 credits for a Kal-Pattern Assault Rifle. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
@@ -110,8 +123,45 @@ mission "endless zombies gun shop"
 			action
 				payment -15000
 				outfit "Snakebite" 1
-				set "snakebite bought"
 			`You hand over 15,000 credits for a Snakebite. Be sure to buy some ammunition!`
+			choice
+				`	(Keep shopping.)`
+					goto gunlist
+				`	(Leave.)`
+					goto end
+
+			label AUTUM
+			`The AUTUM is a reliable battle rifle. It carries fifteen rounds with a modest fire rate, but considerable punch. Compared to most weapons of its range, it has very little dropoff over a distance.`
+			choice
+				`	(Buy the gun for 20,000 credits.)`
+					goto buyautum
+				`	(Return to the Gun List.)`
+					goto gunlist
+
+			label buyautum
+			action
+				payment -20000
+				outfit "AUTUM" 1
+			`You hand over 20,000 credits for an AUTUM. Be sure to buy some ammunition!`
+			choice
+				`	(Keep shopping.)`
+					goto gunlist
+				`	(Leave.)`
+					goto end
+
+			label Vyesses
+			`The Vyesses is an unconventional marksman rifle that suffers at great ranges, but compensates for its accelerated damage rate due to its two-round hyperburst. It is exceptionally accurate, but fares worse at great distances than other precision weapons.`
+			choice
+				`	(Buy the gun for 15,000 credits.)`
+					goto buyvyesses
+				`	(Return to the Gun List.)`
+					goto gunlist
+
+			label buyvyesses
+			action
+				payment -15000
+				outfit "Vyesses" 1
+			`You hand over 15,000 credits for a Vyesses. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
 					goto gunlist
@@ -130,7 +180,6 @@ mission "endless zombies gun shop"
 			action
 				payment -15000
 				outfit "Demonym LMG" 1
-				set "demonym light machine gun bought"
 			`You hand over 15,000 credits for a Demonym LMG. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
@@ -150,7 +199,6 @@ mission "endless zombies gun shop"
 			action
 				payment -17500
 				outfit "Baleful Buzzsaw" 1
-				set "baleful buzzsaw bought"
 			`You hand over 17,500 credits for a Baleful Buzzsaw. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
@@ -170,8 +218,26 @@ mission "endless zombies gun shop"
 			action
 				payment -15000
 				outfit "Interruption" 1
-				set "interruption bought"
 			`You hand over 15,000 credits for an Interruption Sniper Rifle. Be sure to buy some ammunition!`
+			choice
+				`	(Keep shopping.)`
+					goto gunlist
+				`	(Leave.)`
+					goto end
+
+			label shouldertrauma
+			`The Shoulder Trauma is the ultimate in "point-and-kill" weapon design, able to flatten groups of even the toughest zombies in single well-placed shots. It does, however, knock back and daze the shooter.`
+			choice
+				`	(Buy the gun for 25,000 credits.)`
+					goto buyshouldertrauma
+				`	(Return to the Gun List.)`
+					goto gunlist
+
+			label buyshouldertrauma
+			action
+				payment -25000
+				outfit "Shoulder Trauma" 1
+			`You hand over 25,000 credits for a Shoulder Trauma anti-tank rifle. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
 					goto gunlist
@@ -190,7 +256,6 @@ mission "endless zombies gun shop"
 			action
 				payment -12500
 				outfit "Tiremon Pump Shotgun" 1
-				set "tiremon shotgun bought"
 			`You hand over 12,500 credits for a Tiremon Shotgun. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
@@ -210,7 +275,6 @@ mission "endless zombies gun shop"
 			action
 				payment -25000
 				outfit "Asia Pond" 1
-				set "asia pond bought"
 			`You hand over 25,000 credits for an Asia Pond. Be sure to buy some ammunition!`
 			choice
 				`	(Keep shopping.)`
