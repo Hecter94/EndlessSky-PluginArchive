@@ -15802,9 +15802,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Endless Zombies
 
 
-[Endless.Zombies.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Zombies.zip) | 28.88 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Zombies/) <br>
+[Endless.Zombies.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Zombies.zip) | 62.35 kb | 2024-06-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Zombies/) <br>
 Author: Zoura | Category: N/A <br>
-[https://github.com/AvianGeneticist/Endless-Zombies](https://github.com/AvianGeneticist/Endless-Zombies) (last commit 2023-07-18) <br>
+[https://github.com/AvianGeneticist/Endless-Zombies](https://github.com/AvianGeneticist/Endless-Zombies) (last commit 2024-06-12) <br>
 
 >Adds an waved-based PvE zombies mode to Endless Sky. 
 
