@@ -6865,9 +6865,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-03-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-06-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
 Author: Spectre907 | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-03-10) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-06-15) <br>
 
 >Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
@@ -7736,7 +7736,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 [nomads.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/nomads.zip) | 14.78 mb | 2024-06-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/nomads/) <br>
 Author: RisingLeaf | Category: Races <br>
-[https://github.com/RisingLeaf/nomads](https://github.com/RisingLeaf/nomads) (last commit 2024-06-08) <br>
+[https://github.com/RisingLeaf/nomads-real](https://github.com/RisingLeaf/nomads-real) (last commit 2024-06-08) <br>
 
 >adds several nomad fleets appearing ramndomly
 >
