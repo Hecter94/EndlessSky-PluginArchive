@@ -3097,9 +3097,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 559.59 mb | 2024-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 559.59 mb | 2024-06-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-06-02) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-06-16) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -14432,9 +14432,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Syndicate Story/icon.png' height='100'></img><br>
 
 
-[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 284.75 kb | 2023-10-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Story/) <br>
+[Syndicate.Story.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Syndicate.Story.zip) | 284.75 kb | 2024-06-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Syndicate%20Story/) <br>
 Author: leklachu | Category: Story <br>
-[https://github.com/leklachu/endless-sky-syndicate](https://github.com/leklachu/endless-sky-syndicate) (last commit 2023-10-18) <br>
+[https://github.com/leklachu/endless-sky-syndicate](https://github.com/leklachu/endless-sky-syndicate) (last commit 2024-06-16) <br>
 
 >This is an alternate start for Endless Sky, with a full storyline running parallel to the Free Worlds story.
 >
