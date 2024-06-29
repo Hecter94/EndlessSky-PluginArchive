@@ -6347,9 +6347,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Undisclosed Plugin
 
 
-[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.35 mb | 2024-06-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Undisclosed%20Plugin/) <br>
+[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.35 mb | 2024-06-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Undisclosed%20Plugin/) <br>
 Author: petervdmeer | Category: Overhauls <br>
-[https://github.com/petervdmeer/endless-sky-undisclosed-plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin) (last commit 2024-06-25) <br>
+[https://github.com/petervdmeer/endless-sky-undisclosed-plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin) (last commit 2024-06-28) <br>
 
 >Various concept ideas.
 >
@@ -9996,7 +9996,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 139.53 mb | 2024-05-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight)  <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-05-26) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >

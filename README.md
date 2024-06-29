@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-06-29 | updated Plugin 'Undisclosed Plugin' by petervdmeer | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
 2024-06-26 | updated Plugin 'bunrodea.missions' by zuckung | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-06-25 | updated Plugin 'Arena of the worthy' by RisingLeaf | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-06-25 | updated Plugin 'Undisclosed Plugin' by petervdmeer | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
@@ -19,7 +20,6 @@
 2024-06-12 | updated Plugin 'Endless Zombies' by Zoura | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
 2024-06-11 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-06-10 | updated Plugin 'nomads' by RisingLeaf | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-06-08 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
