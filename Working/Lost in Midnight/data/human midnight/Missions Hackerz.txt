@@ -282,20 +282,31 @@ mission "Hackerz: You've Been Hacked"
 mission "Hackerz 1"
 	landing
 	source
-		government "Republic" "Syndicate" "Free Worlds" "Pirate"
+		government "Republic" "Syndicate" "Free Worlds"
 		not attributes "uninhabited"
 	to offer
 		has "Hackerz: offered"
 	on offer
 		event "How to Hack a Science Drone"
-		log "Factions" "Hackerz" `Someone named "P.K." wrote a guide for hacking into science drones to abuse the cargo scan and fine systems used by most governments. If a lot of people start doing this, it could become a big problem. Whoever "P.K." is, he must be a madman.`
-		conversation 
-			`As you disembark from your ship, a nearby street vendor tries to sell you a book: "How to Hack a Science Drone For Fun and Profit."`
-			`	The author is listed as "P.K." Looks like some sort of 'get rich quick' scheme.`
+		log "Factions" "Hackerz" `Someone named "P.K." wrote a guide for hacking into science drones to take advantage of the cargo scan and fine systems used by most governments. Whoever "P.K." is, he must be a madman.`
+		conversation
+			`As you disembark from your ship, a nearby street vendor tries to sell you a book: "How to Hack a Science Drone For Fun and Profit" for 60 credits.`
+			`	The author is listed as "P.K." but no further information is given about this person's identity. It seems to be some sort of 'get rich quick' scheme.`
+			choice
+				`	(Pay 60 credits for the book.)`
+				`	(Do not buy the book.)`
+					decline
+			action
+				outfit "Drone Hacking"
+				payment -60
+			scene "outfit/data pad"
+			`You pay 60 credits for the book and the street vendor hands you a data drive containing a digital copy of "How to Hack a Science Drone For Fun and Profit." Looking it over, there's nothing to indicate whether or not this is a legitimate copy of the book. While you were inspecting the data drive, the street vendor walked away without you noticing...`
 				decline
 
 event "How to Hack a Science Drone"
-	outfitter "Pirate Outfits"
+	outfitter "Pirate Basics"
+		add "Drone Hacking"
+	outfitter "Pirate Advanced"
 		add "Drone Hacking"
 
 mission "Patch Drone Hacking"
