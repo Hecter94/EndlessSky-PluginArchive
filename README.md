@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-07-01 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2024-06-30 | updated Plugin 'Arena of the worthy' by RisingLeaf | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-06-30 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-06-30 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
@@ -19,7 +20,6 @@
 2024-06-17 | updated Plugin 'Undisclosed Plugin' by petervdmeer | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
 2024-06-16 | updated Plugin 'Syndicate Story' by leklachu | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-06-16 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
-2024-06-15 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

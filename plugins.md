@@ -9994,9 +9994,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 139.53 mb | 2024-06-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 139.9 mb | 2024-07-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-06-30) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-07-01) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
