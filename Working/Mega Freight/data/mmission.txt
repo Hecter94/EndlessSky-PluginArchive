@@ -3124,6 +3124,48 @@ event "MGF: Core Nuclear Transport Upgrade I"
 			"Splinter (Mark II)"
 			"Vanguard (MGF CoreNucMKII)"
 		
+
+mission "MGF: Ankulah Mlitgante Combat Sale"
+	repeat
+	name `Combat Mlitgante for sale`
+	source
+		government "Republic" "Free Worlds" "Neutral"
+		planet "Ankulah Ship Breaking Station"
+		attributes spaceport
+		not attributes uninhabited
+	to offer
+		random < 5
+	on offer
+		conversation
+			scene "scene/mgf combat mlitgante sale"
+			`As you walk through the landing bay on the station you noitce a ship with [For Sale] sign on it. It appears to be the locally built Mlitgante without the tow system but instead two additonal gun ports at the front. It's condition is just average of the tow ships around here, some scratches, some repair marks, but nothing critical to its performance.`
+			choice
+				`	(Check it out)`
+				`	(Leave)`
+					defer
+			`	"How much?" You ask the seller standing next to it,  "6 million credits" he says. "That's less than half of what it would've been, condition is brand new, awesome speed and firepower. Best deal you'll ever get."`
+			choice
+				`	"Can you be more specific on the specs?"`
+				`	"Deal."`
+					to display
+						"credits" > 6000000
+					goto buy
+				`	(Leave)`
+					defer
+			`	"Well, I don't know the numbers but it out-ran a Marauder Quicksilver and beat the crap out of a stolen Gunboat a week ago. Pretty decent I'd say."`
+			choice
+				`	"Deal."`
+					to display
+						"credits" > 6000000
+					goto buy
+				`	(Leave)`
+					defer
+			label buy
+			action
+				payment -6000000
+			`	"Alright!" he hands you the key as you give him the credit chip. "Take a good care of her, there's only a few of these around." he walks off.`
+				decline
+
 #=====================Story Mission Addition
 
 mission "MGF: Ankulah Neutrality"

@@ -2907,12 +2907,16 @@ mission "MGF: K-Class on sale trigger"
 		has "event: mgf: ourea naval arsenal done"
 	on offer
 		event "mgf: k-class on sale" 580
+		set "mgf: k-class sale post-20240701"
 	on accept
 		fail
 
 event "mgf: k-class on sale"
 	shipyard "Syndicate Advanced"
 		"J-Class Container Feeder"
+		"Vanguard (Pocket)"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"Vanguard (Pocket, NGK)"
 	shipyard "Syndicate Advanced EX"
 		add "K-Class Ultra Container Ship"
 	planet "Ourea Naval Arsenal"
@@ -2932,20 +2936,66 @@ event "mgf: k-class on sale"
 			"K-Class Ultra Container Ship"
 			"Barb" 42
 			"Barb (Proton)" 30
-			"Vanguard" 2
+			"Vanguard (Pocket)" 4
+			"J-Class Container Feeder" 8
 	fleet "NGK Hauling HeavyFreight"
 		add variant 1
+			"K-Class Ultra Container Ship (NGK)"
+			"Xencar (NGK)" 72
+			"Vanguard (Pocket, NGK)" 2
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+			"J-Class Container Feeder" 8
+
+mission "MGF: Pocket Vanguard on sale"
+	landing
+	invisible
+	to offer
+		has "event: mgf: k-class on sale"
+		not "mgf: k-class sale post-20240701"
+	on offer
+		event "mgf: pocket vanguard sale patch"
+	on accept
+		fail
+
+event "mgf: pocket vanguard sale patch"
+	shipyard "Syndicate Advanced"
+		"Vanguard (Pocket)"
+	shipyard "MJK Heavy Industries Advanced Exclusive"
+		"Vanguard (Pocket, NGK)"
+	fleet "Large Core Merchant"
+		remove variant 1
+			"K-Class Ultra Container Ship"
+			"Barb" 42
+			"Barb (Proton)" 30
+			"Vanguard" 2
+		add variant 1
+			"K-Class Ultra Container Ship"
+			"Barb" 42
+			"Barb (Proton)" 30
+			"Vanguard (Pocket)" 4
+			"J-Class Container Feeder" 8
+	fleet "NGK Hauling HeavyFreight"
+		remove variant 1
 			"K-Class Ultra Container Ship (NGK)"
 			"Xencar (NGK)" 72
 			"Leviathan (NGK Escort)" 2
 			"L-VC28 Zuikaku"
 			"Xencar (NGK)" 20
+		add variant 1
+			"K-Class Ultra Container Ship (NGK)"
+			"Xencar (NGK)" 72
+			"Vanguard (Pocket, NGK)" 2
+			"L-VC28 Zuikaku"
+			"Xencar (NGK)" 20
+			"J-Class Container Feeder" 8
 
 mission "MGF: J-Class on sale"
 	landing
 	invisible
 	to offer
 		has "event: mgf: k-class on sale"
+		not "mgf: k-class sale post-20240701"
 	on offer
 		event "mgf: j-class on sale"
 	on accept
