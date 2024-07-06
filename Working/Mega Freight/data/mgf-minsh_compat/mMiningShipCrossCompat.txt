@@ -1,0 +1,41 @@
+mission "MGF-Mining Ship trigger"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		"MGF-Mining Ship deactivation: offered" >= "MGF-Mining Ship trigger: offered"
+		or
+			has "installed plugin: Mining Ships"
+			has "installed plugin: Mining.Ships"
+	on offer
+		event "mgf-minsh: cross-compat activate"
+		"mgf-minsh compat active" = 1
+	on accept
+		fail
+
+event "mgf-minsh: cross-compat activate"
+	fleet "Small Espion Miners"
+		add variant 1
+			"S-10b Scraper"
+
+mission "MGF-Mining Ship deactivation"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		"mgf-minsh compat active" > 0
+		and
+			not "installed plugin: Mining Ships"
+			not "installed plugin: Mining.Ships"
+	on offer
+		event "mgf-minsh: cross-compat deactivate"
+		"mgf-minsh compat active" = 0
+	on accept
+		fail
+
+event "mgf-minsh: cross-compat deactivate"
+	fleet "Small Espion Miners"
+		remove variant 1
+			"S-10b Scraper"
