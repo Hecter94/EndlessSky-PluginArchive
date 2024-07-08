@@ -8763,9 +8763,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 6.0 mb | 2024-04-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 6.0 mb | 2024-07-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-04-08) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-07-08) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -12033,9 +12033,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Cognitive Subdivision/icon.png' height='100'></img><br>
 
 
-[Cognitive.Subdivision.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cognitive.Subdivision.zip) | 13.44 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cognitive%20Subdivision/) <br>
-Author: LazurasLong | Category: Story <br>
-[https://github.com/LazurasLong/cognitive-subdivision](https://github.com/LazurasLong/cognitive-subdivision) (last commit 2018-07-29) <br>
+[Cognitive.Subdivision.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cognitive.Subdivision.zip) | 15.77 mb | 2024-07-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cognitive%20Subdivision/) <br>
+Author: myvee | Category: Story <br>
+[https://github.com/myvee/cognitive-subdivision](https://github.com/myvee/cognitive-subdivision) (last commit 2024-07-08) <br>
 
 >Cognitive Subdivision introduces a new difficult story taking place after the first part of the Wanderer Campaign
 >as well as several new maps, 2 new tier 3 factions with various unique outfits and ships of their own for you to unlock
@@ -12045,12 +12045,12 @@ Author: LazurasLong | Category: Story <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># cognitive-subdivision
+This plugin has been discontinued.
+
 A mod for Endless Sky. Takes place right around the start of the second half of the Wanderer storyline
 
-The story involves two main factions, the Algol and the Hand of Eden, as well as some vanilla factions like the Quarg and Drak.
-The player will have to aid the Algol in various tasks throughout the campaign.
-
-The completed plugin will include over 9 new tier 3 and tier 2 ships, various new outfits to count, as well as over 14 new systems in the Milky Way galaxy.
+The story involves two main factions, the Algol and the Hand of Eden, as well as some vanilla factions like the Coalition, Hai Unfettered, and of course Humanity.
+The player will have to aid the Algol in various tasks throughout the current campaign.
 
 </blockquote>
 </details>
