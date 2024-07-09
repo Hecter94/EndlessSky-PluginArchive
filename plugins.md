@@ -15933,9 +15933,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### MechSummoner
 
 
-[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 478.28 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MechSummoner/) <br>
+[MechSummoner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MechSummoner.zip) | 515.5 kb | 2024-07-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MechSummoner/) <br>
 Author: Zoura | Category: N/A <br>
-[https://github.com/AvianGeneticist/MechSummoner](https://github.com/AvianGeneticist/MechSummoner) (last commit 2023-04-01) <br>
+[https://github.com/AvianGeneticist/MechSummoner](https://github.com/AvianGeneticist/MechSummoner) (last commit 2024-07-09) <br>
 
 >Adds self-managing ally ships to Endless Sky.
 >
