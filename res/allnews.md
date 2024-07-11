@@ -1,3 +1,6 @@
+2024-07-11 | updated Plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
+2024-07-11 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
+2024-07-11 | updated Plugin 'SpaceCrate' by Arnan de Gans | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-07-10 | updated Plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 2024-07-10 | updated Plugin 'Undisclosed Plugin' by petervdmeer | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)<br>
 2024-07-09 | updated Plugin 'MechSummoner' by Zoura | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)<br>
