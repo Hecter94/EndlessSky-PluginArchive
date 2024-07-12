@@ -616,14 +616,19 @@ mission "Grave Digger: Graveyard Robbery A"
 		fleet
 			names "remnant"
 			variant
+				"Ibis (disarmed)"
+			variant
 				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on fail
 		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons is piloting a ship outfitted with a jump drive."`
 		
 mission "Grave Digger: Graveyard Robbery B"
@@ -657,14 +662,19 @@ mission "Grave Digger: Graveyard Robbery B"
 		fleet
 			names "remnant"
 			variant
+				"Ibis (disarmed)"
+			variant
 				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on fail
 		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons is piloting a ship outfitted with a cloaking device."`
 
 mission "Grave Digger: Graveyard Robbery C"
@@ -698,28 +708,22 @@ mission "Grave Digger: Graveyard Robbery C"
 		fleet
 			names "remnant"
 			variant
+				"Ibis (disarmed)"
+			variant
 				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 	on visit
 		dialog `You've returned to <planet>, but the <npc> is still lost somewhere in the Graveyard. Find the missing ship and bring it back to <planet>.`
 	on fail
 		dialog `[MISSION FAILED]: `You failed to rescue the <npc>. If life were a game, you could reload a save file and try again.`
 	on complete
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "Whoever stole our weapons was not piloting a Korath ship."`
-		
-ship "Pelican" "Pelican (disarmed)"
-	outfits
-		"Aeon Cell"
-		"Crystal Capacitor" 2
-		"Thermoelectric Cooler" 3
-		"Quantum Key Stone"
-		"Tuning Rifle" 15
-		"Smelter-Class Thruster"
-		"Smelter-Class Steering"
-		"Hyperdrive"
 
-		
+
 
 mission "Grave Digger: Lu Bu's Legend"
 	invisible
@@ -750,10 +754,28 @@ mission "Grave Digger: Lu Bu's Legend"
 
 
 
+mission "Grave Digger: Graveyard Robbery Job Hint"
+	minor
+	invisible
+	source
+		government Remnant
+		not attributes "station"
+	to offer
+		not "Nemesis: Grave Digger: offered"
+		has "Grave Digger: Graveyard Robbery A: done"
+		has "Grave Digger: Graveyard Robbery B: done"
+		has "Grave Digger: Graveyard Robbery C: done"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/attention"
+			`The job boards are especially active today, both with the number of jobs and the pilots taking them on. In particular, you notice more search and rescue jobs in the Graveyard are being posted...`
+				decline
+
 mission "Grave Digger: Graveyard Robbery Job A"
 	job
 	name "Graveyard Rescue Mission"
-	description "A Remnant research ship named <npc> has gone missing in the Graveyard. Locate the ship and bring it back to <planet>."
+	description "A Remnant ship named <npc> has gone missing. It was last spotted in Ossipago and may have entered the Graveyard. Locate the ship and bring it back to <planet>."
 	source
 		government Remnant
 	to offer
@@ -770,7 +792,7 @@ mission "Grave Digger: Graveyard Robbery Job A"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
+		random < 5 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -786,6 +808,10 @@ mission "Grave Digger: Graveyard Robbery Job A"
 			names "remnant"
 			variant
 				"Ibis (disarmed)"
+			variant
+				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 
 	on visit
@@ -798,13 +824,14 @@ mission "Grave Digger: Graveyard Robbery Job A"
 		clear "Grave Digger: Graveyard Robbery Job A: offered"
 	on complete
 		clear "Grave Digger: Graveyard Robbery Job A: offered"
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
 mission "Grave Digger: Graveyard Robbery Job B"
 	job
 	name "Graveyard Rescue Mission"
-	description "A Remnant research ship named <npc> has gone missing in the Graveyard. Locate the ship and bring it back to <planet>."
+	description "A Remnant ship named <npc> has gone missing. It was last spotted in Ossipago and may have entered the Graveyard. Locate the ship and bring it back to <planet>."
 	source
 		government Remnant
 	to offer
@@ -821,7 +848,7 @@ mission "Grave Digger: Graveyard Robbery Job B"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
+		random < 5 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -837,6 +864,10 @@ mission "Grave Digger: Graveyard Robbery Job B"
 			names "remnant"
 			variant
 				"Ibis (disarmed)"
+			variant
+				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 
 	on visit
@@ -849,13 +880,14 @@ mission "Grave Digger: Graveyard Robbery Job B"
 		clear "Grave Digger: Graveyard Robbery Job B: offered"
 	on complete
 		clear "Grave Digger: Graveyard Robbery Job B: offered"
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
 
 mission "Grave Digger: Graveyard Robbery Job C"
 	job
 	name "Graveyard Rescue Mission"
-	description "A Remnant research ship named <npc> has gone missing in the Graveyard. Locate the ship and bring it back to <planet>."
+	description "A Remnant ship named <npc> has gone missing. It was last spotted in Ossipago and may have entered the Graveyard. Locate the ship and bring it back to <planet>."
 	source
 		government Remnant
 	to offer
@@ -872,7 +904,7 @@ mission "Grave Digger: Graveyard Robbery Job C"
 			and
 				has "Grave Digger: Graveyard Robbery B: done"
 				has "Grave Digger: Graveyard Robbery C: done"
-		random < 0 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
+		random < 5 + ( 5 * ( "Grave Digger: Nightingale 1: done" + "Grave Digger: Suspicious Ship: done" + "Grave Digger: Graveyard Robbery A: done" + "Grave Digger: Graveyard Robbery B: done" + "Grave Digger: Graveyard Robbery C: done" + "Grave Digger: Prefect's Albatross 2: done" ) )
 
 	npc
 		government "Grave Diggers"
@@ -888,6 +920,10 @@ mission "Grave Digger: Graveyard Robbery Job C"
 			names "remnant"
 			variant
 				"Ibis (disarmed)"
+			variant
+				"Pelican (disarmed)"
+			variant
+				"Shrike (disarmed)"
 		dialog `The captain of <npc> thanks you for your assistance and requests an escort to <destination>. All of their ship's external weapons were stolen while other systems were damaged or destroyed.`
 
 	on visit
@@ -900,20 +936,9 @@ mission "Grave Digger: Graveyard Robbery Job C"
 		clear "Grave Digger: Graveyard Robbery Job C: offered"
 	on complete
 		clear "Grave Digger: Graveyard Robbery Job C: offered"
-		payment 200000
+		"remnant: rescue missions" ++
+		payment 400000
 		dialog `The captain of <npc> thanks you for safely escorting the ship back to <planet> and pays you <payment> in gratitude. "The thieves were not Remnant, but had Remnant ships."`
-
-ship "Ibis" "Ibis (disarmed)"
-	outfits		
-		"Epoch Cell"
-		"Millennium Cell"
-		"Crystal Capacitor" 2
-		"Thermoelectric Cooler" 2
-		"Quantum Key Stone"
-		"Tuning Rifle" 20
-		"Forge-Class Thruster"
-		"Forge-Class Steering" 2
-		"Hyperdrive"
 
 
 
@@ -1628,7 +1653,7 @@ mission "Nemesis: Grave Digger"
 		system Aki'il
 		"cargo settings"
 			cargo 6
-			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+			outfitters "Ka'het Weapons Salvage"
 		ship "Kestrel Prototype (Void Rifle)" "Grave Digger"
 		dialog `Lu Bu makes one final taunt. "You think the Remnant didn't have me run scans on you!?! Remnant only look out for Remnant. After I'm gone, you are next!"`
 
@@ -1640,7 +1665,7 @@ mission "Nemesis: Grave Digger"
 		system Aki'il
 		"cargo settings"
 			cargo 6
-			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+			outfitters "Ka'het Weapons Salvage"
 		ship "Kestrel Prototype" "Grave Digger"
 		dialog `Lu Bu makes one final taunt. "You think the Remnant didn't have me run scans on you!?! Remnant only look out for Remnant. After I'm gone, you are next!"`
 
@@ -1653,7 +1678,7 @@ mission "Nemesis: Grave Digger"
 		system Aki'il
 		"cargo settings"
 			cargo 6
-			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+			outfitters "Remnant Weapons"
 		ship "Penguin (Gravedigger)" "Black Lotus"
 
 	npc
@@ -1663,15 +1688,15 @@ mission "Nemesis: Grave Digger"
 		system Aki'il
 		"cargo settings"
 			cargo 6
-			outfitters "Remnant Weapons" "Ka'het Weapons Salvage"
+			outfitters "Remnant Weapons"
 		ship "Starling (Gravedigger)" "Nightshade Assassin"
 		ship "Starling (Gravedigger)" "Reaper of Nightmares"
 		ship "Starling (Gravedigger)" "Shadow Skulker"
 		ship "Starling (Gravedigger)" "Dark Horizon"
 		ship "Gull (Gravedigger)" "Nightfall Predator" 
 		ship "Gull (Gravedigger)" "Netherworld Guardian"
-		ship "Gull (Gravedigger)" "Underworld Harbinger"
-		ship "Gull (Gravedigger)" "Lord of Midnight"
+		ship "Wren (Gravedigger)" "Underworld Harbinger"
+		ship "Wren (Gravedigger)" "Lord of Midnight"
 		ship "Petrel" Senluo 
 		ship "Petrel" Yanluo 
 
@@ -1696,6 +1721,7 @@ mission "Nemesis: Grave Digger"
 			names "grave diggers"
 			outfitters "Ka'het Weapons Salvage" "Remnant Weapons"
 			variant
+				"Shrike (Gravedigger)"
 				"Ibis (Gravedigger)"
 				"Petrel" 2
 				"Tern" 4

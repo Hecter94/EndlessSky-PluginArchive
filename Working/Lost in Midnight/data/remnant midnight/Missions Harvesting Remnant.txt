@@ -62,22 +62,10 @@ mission "Midnight Remnant Distress"
 	npc kill
 		government "Remnant"
 		personality entering disables heroic plunders appeasing secretive
-		fleet "Small Remnant"
-	npc kill
-		to spawn
-			random < 75
-		government "Remnant"
-		personality entering disables heroic plunders appeasing secretive
-		fleet "Small Remnant"
+		fleet "Large Remnant"
 	npc kill
 		to spawn
 			random < 50
-		government "Remnant"
-		personality entering disables heroic plunders appeasing secretive
-		fleet "Small Remnant"
-	npc kill
-		to spawn
-			random < 25
 		government "Remnant"
 		personality entering disables heroic plunders appeasing secretive
 		fleet "Small Remnant"
@@ -103,11 +91,11 @@ mission "Midnight Remnant: Graveyard Surface Expedition Job"
 	on accept
 		conversation
 			scene "outfit/graveyard map"
-			`Something about <stopovers> indicated on the Graveyard Map has piqued the interest of your scientist. For this mission, you'll have to land on the planet rather than simply visiting the system.`
+			`Something about <stopovers> indicated on the Graveyard Map has piqued the interest of your Research Laboratory scientist. For this mission, you'll have to land on the planet rather than simply visiting the system.`
 	on stopover
 		conversation
 			scene "outfit/graveyard map"
-			`Your scientist unpacks the laboratory and collects samples from the area. A short while later, they place the samples into storage and inform you that everything is ready for departure.`
+			`Your scientist unpacks laboratory tools and collects samples from the area. A short while later, they place the samples into storage and inform you that everything is ready for departure.`
 	on complete
 		payment 500000
 		"reputation: Remnant" ++
@@ -404,6 +392,86 @@ mission "Salvage Dredger"
 		payment 1000000
 		"reputation: Remnant" += 2
 		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
+
+
+
+mission "Midnight Remnant: Rescue (Graveyard)"
+	job
+	repeat
+	name "Search and Rescue: Graveyard"
+	description "The <npc> has gone missing during a scouting mission in the Graveyard. Find them and help them return to <destination>."
+	source
+		government "Remnant"
+	to offer
+		has "Remnant: Learn Sign Follow Up: offered"
+		has "event: graveyard insights"
+		random < 5
+	npc accompany save
+		system
+			attributes "graveyard"
+			not attributes "black hole"
+			not attributes "inaccessible"
+			not government "Remnant"
+			not system Aki'il
+		personality derelict timid plunders
+		government "Remnant"
+		fleet
+			names "remnant"
+			variant 2
+				Wren
+			variant
+				Starling
+			variant
+				Gull
+	on complete
+		"remnant: rescue missions" ++
+		payment 400000
+		dialog
+			`Your communicator notifies you of a resource allocation of <payment>.`
+	on visit
+		dialog
+			`You have returned, yet the <npc> is still missing.`
+
+mission "Midnight Remnant: Rescue [Human]"
+	job
+	repeat
+	name "Search and Rescue: Ancestral"
+	description "The <npc> has gone missing during a scouting mission in human space. Find them and help them return to <destination>."
+	source
+		government "Remnant"
+	to offer
+		has "Remnant: Learn Sign Follow Up: offered"
+		has "Remnant: Expanded Horizons Astral 2: done"
+		random < 5
+	npc
+		government "Pirate"
+		system Terminus
+		personality waiting staying harvests plunders
+			confusion 20
+		fleet "Large Dirt Belt Pirates"
+	npc accompany save
+		system
+			government "Republic" "Free Worlds" "Syndicate" "Pirate" "Independent" "Neutral"
+			near "Terminus" 2
+		personality derelict timid appeasing secretive quiet
+		government "Remnant"
+		fleet
+			names "remnant"
+			variant
+				"Wren (Research)"
+			variant
+				"Starling (Research)"
+			variant
+				"Gull (Research)"
+	on complete
+		"remnant: rescue missions" ++
+		payment 300000
+		dialog
+			`Your communicator notifies you of a resource allocation of <payment>.`
+	on visit
+		dialog
+			`You have returned, yet the <npc> is still missing.`
+
 
 
 mission "Remnant Atmospheric Samples"
