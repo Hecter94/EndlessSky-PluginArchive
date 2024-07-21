@@ -3105,9 +3105,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 559.78 mb | 2024-07-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 580.21 mb | 2024-07-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-07-06) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-07-21) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -11638,7 +11638,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ## Story
 
-<p>77 plugins in this category.<p>
+<p>78 plugins in this category.<p>
 
 <details>
 
@@ -13724,6 +13724,37 @@ Most of them show up Hai space. The game's repository is at <https://github.com/
 </details>
 
 Status: Playable on 0.9.14, 0.9.15. <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### Old Memory
+<img src='Working/Old Memory/icon.png' height='100'></img><br>
+
+
+[Old.Memory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Old.Memory.zip) | 40.18 mb | 2024-07-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Old%20Memory/) <br>
+Author: Maryn-s | Category: Story <br>
+[https://github.com/Maryn-s/Old-Memory](https://github.com/Maryn-s/Old-Memory) (last commit 2024-07-20) <br>
+
+>A glimpse into the memories of the old ones. Meet new aliens, fight pirates, pick a side or play it safe as you uncover the burried secrets of Old Memory.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Old-Memory
+
+## Disclaimer
+A restoration of Old Memory, a plugin for endless sky that's unfinished. Meant only for archival purposes and to make it playable.
+With the recent addition of ship categories and spinal mounts, some ships and weapons have been changed to be more in line with what they were originally envisioned to be, this includes category changes and larger weapons requiring spinal mounts. All other balance issues persist and will remain unchanged unless someone wants to step in and estimate the costs or tweaks to overpowered attributes. The only changes I (the creator of the plugin) will make are those to make the game function with the current release of the game. There will be no further development for this plugin on my behalf, but anyone is free to adopt and expand on the ideas in it if they want to.
+
+## Synopsis
+A glimpse into the memories of the old ones. Meet new aliens, fight pirates, pick a side or play it safe as you uncover the burried secrets of Old Memory.
+
+</blockquote>
+</details>
+
+Status: N/A <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
