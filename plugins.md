@@ -4754,9 +4754,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Zoura%27s Outfits Expanded/icon.png' height='100'></img><br>
 
 
-[Zoura.s.Outfits.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zoura.s.Outfits.Expanded.zip) | 1.97 mb | 2024-07-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zoura's%20Outfits%20Expanded/) <br>
+[Zoura.s.Outfits.Expanded.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zoura.s.Outfits.Expanded.zip) | 2.03 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zoura's%20Outfits%20Expanded/) <br>
 Author: Zoura | Category: Outfits <br>
-[https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded) (last commit 2024-07-07) <br>
+[https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded) (last commit 2024-07-22) <br>
 
 >Expands outfit variety across all castes of vanilla Endless Sky.
 
@@ -4764,7 +4764,7 @@ Author: Zoura | Category: Outfits <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Zoura's Outfits Expanded
 
-This plugin aims to greatly expand outfit variety across all of Endless Sky; at the moment, every subfaction (except for the Quarg, Pug, and Drak) has received at least one outfit, though most have received more than that.
+This plugin aims to greatly expand outfit variety across all of Endless Sky; at the moment, every subfaction (except for the Quarg, T3 Pug, and Drak) has received at least one outfit, though most have received more than that.
 Also of note is that care has been made to ensure that outfits are all accessible by at least one means through normal, otherwise-vanilla gameplay (for example, Korath and Gegno outfits can be obtained by looting/capping, Human and Hai outfits via outfitters, et cetera).
 The mod also features support for Darcy Manoel's Omnis as well, for those who'd like to cheat- I mean, play around with the outfits in an easily accessible environment.
 
@@ -4772,6 +4772,7 @@ The primary goal of this plugin is to increase the variety in vanilla's weapon a
 
 The above said, if something seems a bit too over/underpowered, please don't hesitate to give me a shout, either here on the github (through an issue or a PR of your own) or on discord @zoura3025 (I can also be found on the Endless Sky discord).
 This plugin is also accepting community contributions! If you have an outfit you'd like to see implemented in this plugin's (lack of) style, please don't be afraid to drop an issue or PR.
+
 </blockquote>
 </details>
 
@@ -6345,9 +6346,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Undisclosed Plugin
 
 
-[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.35 mb | 2024-07-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Undisclosed%20Plugin/) <br>
+[Undisclosed.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Undisclosed.Plugin.zip) | 8.35 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Undisclosed%20Plugin/) <br>
 Author: petervdmeer | Category: Overhauls <br>
-[https://github.com/petervdmeer/endless-sky-undisclosed-plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin) (last commit 2024-07-10) <br>
+[https://github.com/petervdmeer/endless-sky-undisclosed-plugin](https://github.com/petervdmeer/endless-sky-undisclosed-plugin) (last commit 2024-07-22) <br>
 
 >Various concept ideas.
 >
@@ -7719,9 +7720,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.75 mb | 2024-07-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.81 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-07-20) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-07-22) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -13203,9 +13204,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 68.36 mb | 2024-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 68.36 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-07-14) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-07-22) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -13733,9 +13734,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Old Memory/icon.png' height='100'></img><br>
 
 
-[Old.Memory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Old.Memory.zip) | 40.18 mb | 2024-07-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Old%20Memory/) <br>
+[Old.Memory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Old.Memory.zip) | 40.18 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Old%20Memory/) <br>
 Author: Maryn-s | Category: Story <br>
-[https://github.com/Maryn-s/Old-Memory](https://github.com/Maryn-s/Old-Memory) (last commit 2024-07-20) <br>
+[https://github.com/Maryn-s/Old-Memory](https://github.com/Maryn-s/Old-Memory) (last commit 2024-07-22) <br>
 
 >A glimpse into the memories of the old ones. Meet new aliens, fight pirates, pick a side or play it safe as you uncover the burried secrets of Old Memory.
 >
@@ -13745,11 +13746,11 @@ Author: Maryn-s | Category: Story <br>
 <blockquote># Old-Memory
 
 ## Disclaimer
-A restoration of Old Memory, a plugin for endless sky that's unfinished. Meant only for archival purposes and to make it playable.
-With the recent addition of ship categories and spinal mounts, some ships and weapons have been changed to be more in line with what they were originally envisioned to be, this includes category changes and larger weapons requiring spinal mounts. All other balance issues persist and will remain unchanged unless someone wants to step in and estimate the costs or tweaks to overpowered attributes. The only changes I (the creator of the plugin) will make are those to make the game function with the current release of the game. There will be no further development for this plugin on my behalf, but anyone is free to adopt and expand on the ideas in it if they want to.
+A restoration of Old Memory, a plugin for Endless Sky that's unfinished. Meant only for archival purposes and to make it playable.
+With the recent addition of ship categories and spinal mounts, some ships and weapons have been changed to be more in line with what they were originally envisioned to be. This includes category changes, and larger weapons requiring spinal mounts. All other balance issues persist and will remain unchanged, unless someone wants to step in and estimate the costs or tweaks to overpowered attributes. The only changes I (the creator of the plugin) will make are those to make the plugin function with the current release of the game. There will be no further development for this plugin on my behalf, but anyone is free to adopt and expand on the ideas in it if they want to.
 
 ## Synopsis
-A glimpse into the memories of the old ones. Meet new aliens, fight pirates, pick a side or play it safe as you uncover the burried secrets of Old Memory.
+A glimpse into the memories of the old ones. Meet new aliens, fight pirates, pick a side, or play it safe as you uncover the buried secrets of Old Memory.
 
 </blockquote>
 </details>
