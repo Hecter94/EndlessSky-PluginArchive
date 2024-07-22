@@ -102,6 +102,42 @@ outfit "Heat Pocketizer"
 	description "This turret does not turn, but the bag forms protuberances and small ruptures on the side where hostile ships appear to launch pockets and clouds of superheated particles towards the hostiles."
 
 
+# Firing ship should have a personality (or weapon) to ensure that the ship stays at long range from the target.
+# Considered turreted version and segmented version (with pull explosions in the ships center during firing), but the beam version seems to give least amount of undesired computational and visual artefacts.
+# This weapon works best if it is installed in the center of a ship (to avoid missing the target at short range).
+outfit "Chameleon Tongue"
+	category "Guns"
+	cost 290000000
+	thumbnail "outfit/dragonflame"
+	mass 40
+	"outfit space" -40
+	"weapon capacity" -40
+	"gun ports" -1
+	"spinal mount" -1
+	"clusterers colony" -300
+	"required crew" 20
+	weapon
+		sprite "projectile/chameleon_tongue"
+			"frame rate" 15
+		#TODO: needs own sounds, hit-effects
+		sound "laser"
+		"hit effect" "beam laser impact"
+		"velocity" 2800
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 16
+		"firing heat" 10
+		# Don't grab any ships/items inbetween
+		phasing
+		# Pull strongly at a long distance, but reduce pull very close to the ship.
+		"damage dropoff" 300 600
+		"dropoff modifier" 120.
+		"hit force" -1
+		"shield damage" 0.01
+	description "Long distance hook that pulls the attacked ship towards just in front of the firing ship."
+	description "Can be used as towing weapon for friendly ships, or as hostile weapon to isolate enemy ships from their fleet."
+	description "This weapon is typically combined with short-range push-turrets and short-range high damage turrets."
+
 
 # Heat Pockets Turret: Heat sink (sphere with vertical cooling fins, skeleton around it where pockets are created on top of the heat sink.
 #   Pockets move very slowly. Contain a lot of heat.
