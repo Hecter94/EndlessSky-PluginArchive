@@ -8,32 +8,38 @@ Adds several ships for you and various factions to use adding more variety to th
 
 Summary of what this plugin adds:
 
-Over 50 ships:
+Over 150 ships:
 * 50+ Freighters including specialized cargo ships (Fuel, LNG, Chemical, etc.) + 2 Superheavy
 * 4 Transports
 * 3 Space Liner
 * 10+ Utility (Carriers, miners, etc.)
-* 17+ Warships + 2 Superheavy (Purpose-built and modification of existing.)
+* 20+ Warships + 2 Superheavy (Purpose-built and modification of existing.)
 * 1 Battlestation
-* 9 Fighters, Drones, and other carried ships (Utility and Combat)
+* 10+ Fighters, Drones, and other carried ships (Utility and Combat)
+* 1 Interceptor
+* Majority of the ships with limited turret arc both for aesthetic and gameplay.
 
 And other things:
 * A few weapons and outfits. 
-* Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, etc.)
+* Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, Salvaging, etc.)
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
 * Just a lot more jobs which are often location-specific. Planet that mines radioactive things export more of that. Leading electronics manufacturer export more of advanced electronics. etc. (WIP)
-* New sub-factions often with unique variants, weapons, or even ships (Espion Mining, Rangphenn, Ugyr, Jack's, Rakin, Black Death, Crossguard, Sulso, Maryhal, NGK, Core Food, Core Nuclear, Solacer, Luna Winery).
+* New sub-factions often with unique variants, weapons, or even ships (Espion Mining, Rangphenn, Ugyr, Jack's, Rakin, Black Death, Crossguard, Sulso, Maryhal, NGK, Core Food, Core Nuclear, Solacer, Luna Winery, GX, NBSL, KDB/Reshetka, Bellwing/Stilletto).
 * NPC fleets using the new ships.
+* Cargo fleets along major trade routes.
 * Persistent NPC (Battlestations in 3 systems, 2 of which can respawn after some time.)
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
-* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite)
+* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite, Zagreus)
 * Gradual progression of the universe both dependent and independent of story missions. 
   * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
-  * New ships and technologies (timed and/or locked behind story missions)
+  * New ships and technologies (timed and/or locked behind story missions and locked behind jobs)
   * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
+  * Unlocking secret/exclusive shipyards by gaining favour with specific sub-factions.
+* Additional shipyard and outfitter to various locations.
+* Basically overhaul human space at this point.
 
 Requires Unstable Build/0.10.7 or above.
 

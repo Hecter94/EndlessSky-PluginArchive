@@ -1,0 +1,279 @@
+mission "MGF-DAIS trigger"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		or
+			"MGF-DAIS deactivation: offered" >= "MGF-DAIS trigger: offered"
+			not "MGF-DAIS trigger: offered"
+		or
+			has "installed plugin: DAIS"
+	on offer
+		event "mgf-dais: cross-compat activate"
+		"mgf-dais compat active" = 1
+	on accept
+		fail
+
+event "mgf-dais: cross-compat activate"
+	fleet "Small Espion Guard"
+		add variant 2
+			"Hydrargyrum" 3
+
+	fleet "Small Crossguard Patrol"
+		add variant 4
+			"Hydrargyrum" 3
+		add variant 3
+			"Lindwurm" 3
+
+	fleet "Large Northern Merchants"
+		add variant 5
+			"CH-6 Carrack"
+			"Dagger" 4
+			"Lindwurm" 2
+		add variant 3
+			"FG-7 Conveyor-A"
+			"Dagger" 8
+			"Lindwurm" 2
+		add variant 5
+			"QYG-60 Sandiq" 2
+			"Lindwurm (Missile)" 2
+		add variant 3
+			"CDB-12K Saturn"
+			"Lindwurm (Missile)" 2
+		add variant 3
+			"FUe06a Gebrant III"
+			"Lindwurm"
+			"Lindwurm (Missile)"
+
+	fleet "Large Core Merchants"
+		add variant 1
+			"CH-6 Carrack"
+			"Hydrargyrum" 1
+		add variant 3
+			"QYG-60 Sandiq" 2
+			"Hydrargyrum" 2
+		add variant 3
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+		add variant 2
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 1
+			"Splinter" 1
+		add variant 1
+			"FG-5 Bluewhale-A" 2
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		add variant 1
+			"LVC-2 Sandura"
+			"Hydrargyrum" 1
+			"Splinter (Proton)" 1
+		add variant 2
+			"CDB-6K Jupiter"
+			"Hydrargyrum" 2
+			"Splinter" 1
+		add variant 3
+			"CDB-6K Jupiter"
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		add variant 3
+			"CDB-12K Saturn"
+			"Hydrargyrum" 2
+			"Splinter (Proton)" 1
+		add variant 2
+			"SV80-n Catirfel"
+			"Hydrargyrum" 1
+			"Splinter" 1
+
+mission "MGF-DAIS Erinys"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		or
+			"MGF-DAIS deactivation: offered" >= "MGF-DAIS Erinys: offered"
+			not "MGF-DAIS Erinys``: offered"
+		has "event: dreadnoughts for sale"
+		has "mgf-dais compat active"
+	on offer
+		event "mgf-dais: erinys"
+	on accept
+		fail
+
+event "mgf-dais: erinys"
+	fleet "Large Free Worlds"
+		add variant 1
+			"PAS-3 Barbette"
+			"Erinys" 2
+		add variant 4
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+			"Erinys" 2
+		add variant 4
+			"Erinys" 2
+			"CSE-6 Steward"
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		add variant 1
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		add variant 1
+			"PAS-2 Bulwark"
+			"Erinys" 2
+		add variant 1
+			"Erinys" 2
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+
+		add variant 4
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Erinys" 2
+		add variant 3
+			"Falcon (Heavy)"
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Erinys" 2
+
+		add variant 1
+			"Eleonorae"
+			"PAS-2 Bulwark"
+			"CS-24 Garrison"
+			"Finch" 18
+			"Erinys" 2
+
+mission "MGF-DAIS deactivation"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		"mgf-dais compat active" > 0
+		and
+			not "installed plugin: DAIS"
+	on offer
+		event "mgf-dais: cross-compat deactivate"
+		"mgf-dais compat active" = 0
+	on accept
+		fail
+
+event "mgf-dais: cross-compat deactivate"
+	fleet "Small Espion Guard"
+		remove variant 2
+			"Hydrargyrum" 3
+	fleet "Small Crossguard Patrol"
+		remove variant 4
+			"Hydrargyrum" 3
+		remove variant 3
+			"Lindwurm" 3
+
+	fleet "Large Northern Merchants"
+		remove variant 5
+			"CH-6 Carrack"
+			"Dagger" 4
+			"Lindwurm" 2
+		remove variant 3
+			"FG-7 Conveyor-A"
+			"Dagger" 8
+			"Lindwurm" 2
+		remove variant 5
+			"QYG-60 Sandiq" 2
+			"Lindwurm (Missile)" 2
+		remove variant 3
+			"CDB-12K Saturn"
+			"Lindwurm (Missile)" 2
+		remove variant 3
+			"FUe06a Gebrant III"
+			"Lindwurm"
+			"Lindwurm (Missile)"
+
+	fleet "Large Core Merchants"
+		remove variant 1
+			"CH-6 Carrack"
+			"Hydrargyrum" 1
+		remove variant 3
+			"QYG-60 Sandiq" 2
+			"Hydrargyrum" 2
+		remove variant 3
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+		remove variant 2
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 1
+			"Splinter" 1
+		remove variant 1
+			"FG-5 Bluewhale-A" 2
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		remove variant 1
+			"LVC-2 Sandura"
+			"Hydrargyrum" 1
+			"Splinter (Proton)" 1
+		remove variant 2
+			"CDB-6K Jupiter"
+			"Hydrargyrum" 2
+			"Splinter" 1
+		remove variant 3
+			"CDB-6K Jupiter"
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		remove variant 3
+			"CDB-12K Saturn"
+			"Hydrargyrum" 2
+			"Splinter (Proton)" 1
+		remove variant 2
+			"SV80-n Catirfel"
+			"Hydrargyrum" 1
+			"Splinter" 1
+	
+	fleet "Large Free Worlds"
+		remove variant 1
+			"PAS-3 Barbette"
+			"Erinys" 2
+		remove variant 4
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 3
+			"AGT-31 Xencar" 3
+			"Erinys" 2
+		remove variant 4
+			"Erinys" 2
+			"CSE-6 Steward"
+			"Finch" 3
+			"AGT-31 Xencar" 3
+		remove variant 1
+			"PAS-3 Barbette"
+			"CSE-6 Steward" #6
+			"Finch" 6
+		remove variant 1
+			"PAS-2 Bulwark"
+			"Erinys" 2
+		remove variant 1
+			"Erinys" 2
+			"PCS-4 Castle"
+			"Finch" 20
+			"AGT-31 Xencar" 60
+
+		remove variant 4
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Erinys" 2
+		remove variant 3
+			"Falcon (Heavy)"
+			"FUe02y Gebrant Tender"
+			"SWV4 Ravelin"
+			"Erinys" 2
+
+		remove variant 1
+			"Eleonorae"
+			"PAS-2 Bulwark"
+			"CS-24 Garrison"
+			"Finch" 18
+			"Erinys" 2

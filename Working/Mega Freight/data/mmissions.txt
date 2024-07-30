@@ -1012,6 +1012,9 @@ event "mgf: canaveral naval yard expansion 3 done"
 		description `To further advance the Republic Navy and secure humanity's future, the government built a new orbital naval yard to allow production of larger and more advanced ships and remains easily upgradable for any future improvement and expansion. The naval yard is heavily defended by countless of artillery batteries and advanced anti-missile systems spread across the surface as well as a large navy fleet in orbit within visual range.`
 		description `In addition to constructing civilian and military ships the station also recently received an expansion which allow more of its material to be made within the station itself decreasing cost and dependency on other systems for its material.`
 
+#todo: other sections
+#iirc last time calced it need at least 900 sections, at rate of 1 section per year it'd take almost a millennium to complete. Prob need to be build at 20+ a year to be slightly more practical. (which is quite a lot of concurrent construction but probably doable at Mega Freight scale.)
+
 #===========================Nordlin
 
 mission "MGF: Navy Nordlin Navy Yard Upgrade"
@@ -1696,7 +1699,7 @@ mission "MGF: MHL Hit Squad"
 	npc kill
 		to spawn
 			"armament detterence" > 40
-		government "MGF: NGK Security"
+		government "MGF: Espion Mining Co."
 		system
 			distance 0 1
 		personality
@@ -1707,7 +1710,7 @@ mission "MGF: MHL Hit Squad"
 	npc kill
 		to spawn
 			"armament detterence" > 70
-		government "MGF: NGK Security"
+		government "MGF: Espion Mining Co."
 		system
 			distance 0 1
 		personality
@@ -1743,6 +1746,15 @@ mission "MGF: NGK Microbot Development Accelerated 2"
 		"MGF: NGK sold system core" >= 44
 	on offer
 		event "mgf: ngk microbot development done" 2912 #8 yrs
+		fail
+
+mission "MGF: NGK Microbot Development Accelerated 3"
+	landing
+	invisible
+	to offer
+		"MGF: NGK sold system core" >= 82
+	on offer
+		event "mgf: ngk microbot development done" 2184 #6 yrs
 		fail
 
 mission "MGF: NGK Microbot Development Begin Auto Trig"
@@ -1847,9 +1859,25 @@ mission `MGF: Reisen Development Trigger`
 			has "main plot completed"
 			#date 23 01 3020
 			"days since epoch" > 1100429 + 2257
+		not `MGF: Reisen Development Accelerated Trigger: offered`
 	on offer
 		event "mgf: experimental reisen deployed" 1800
 		event "mgf: early reisen deployed" 2520 #~7 years
+	on accept
+		fail
+
+mission `MGF: Reisen Development Accelerated Trigger`
+	invisible
+	landing
+	to offer
+		or
+			has "main plot completed"
+			"days since epoch" > 1100429 + 1128
+		has "event: mgf: ngk microbot development done"
+		not `MGF: Reisen Development Trigger: offered`
+	on offer
+		event "mgf: experimental reisen deployed" 900
+		event "mgf: early reisen deployed" 1260
 	on accept
 		fail
 
@@ -1977,8 +2005,22 @@ mission `MGF: Kaga Development Trigger`
 	landing
 	to offer
 		has "event: mgf: early reisen deployed"
+		not `MGF: Kaga Development Accelerated Trigger: offered`
 	on offer
 		event "mgf: early kaga deployed" 720 #~2 years
+		set "mgf: early kaga deployed post 31052023"
+	on accept
+		fail
+
+mission `MGF: Kaga Development Accelerated Trigger`
+	invisible
+	landing
+	to offer
+		has "event: mgf: early reisen deployed"
+		has "event: mgf: ngk microbot development done"
+		not `MGF: Kaga Development Trigger: offered`
+	on offer
+		event "mgf: early kaga deployed" 550
 		set "mgf: early kaga deployed post 31052023"
 	on accept
 		fail
@@ -2162,6 +2204,86 @@ event "mgf: early yamato deployed"
 			"F-VC56 Kaga"
 			"S-FS06 Reisen (Refined I)" 90
 
+mission "MGF: Shokaku Development"
+	landing
+	invisible
+	to offer
+		has "event: mgf: early kaga deployed"
+	on offer
+		event "mgf: shokaku on sale" 380
+
+event "mgf: shokaku on sale"
+	shipyard "MJK Heavy Industries Advanced"
+		"F-VC38e Shokaku"
+	fleet "Large Northern Merchants"
+		add variant 3
+			"FG-7 Conveyor-A" 4
+			"Dagger" 32
+			"F-VC38e Shokaku"
+			"Dagger" 64
+		add variant 1
+			"Typ124 Lianyungang"
+			"F-VC38e Shokaku"
+			"Dagger" 64
+		add variant 1
+			"SV80-n Catirfel" 5
+			"F-VC38e Shokaku"
+			"Dagger" 64
+		add variant 2
+			"FUe06a Gebrant III" 3
+			"FUe04a Gebrant II" 2
+			"F-VC38e Shokaku"
+			"Dagger" 64
+	fleet "Large Core Merchants"
+		add variant 1
+			"G-Class Container Transport" 4
+			"UA-10 Porter" 8
+			"F-VC38e Shokaku"
+			"Barb" 64
+		add variant 2
+			"G-Class Container Transport" 4
+			"UA-10 Porter" 8
+			"F-VC38e Shokaku"
+			"Barb" 32
+			"Barb (Proton)" 32
+		add variant 2
+			"H-Class Super Container Ship"
+			"F-VC38e Shokaku"
+			"Barb" 32
+			"Barb (Proton)" 32
+		add variant 2
+			"CDB-12K Saturn" 3
+			"F-VC38e Shokaku"
+			"Barb" 32
+			"Barb (Proton)" 32
+		add variant 1
+			"FG-5 Bluewhale-A" 5
+			"F-VC38e Shokaku"
+			"Barb" 32
+			"Barb (Proton)" 32
+	fleet "Large Southern Merchants"
+		add variant 1
+			"Typ124 Lianyungang"
+			"F-VC38e Shokaku"
+			"Finch" 64
+		add variant 1
+			"CDB-12K Jupiter" 4
+			"F-VC38e Shokaku"
+			"Finch" 64
+		add variant 1
+			"CDB-12K Jupiter" 2
+			"CH-6 Carrack"
+			"Lance" 4
+			"TS-CH0 Kratzbal" 2
+			"CK50T Stahbar"
+			"FAd36 Flint"
+			"FPd45 Clinker"
+			"F-VC38e Shokaku"
+			"Dagger" 16
+			"Finch" 48
+
+#TODO : More NGK stations, possibly a few outside of Syndi space.
+
 #===========================ICS
 
 mission "MGF: ICS: Shipyard Unlock"
@@ -2172,8 +2294,8 @@ mission "MGF: ICS: Shipyard Unlock"
 		"mgf: ics escort done" >= 10
 		"reputation: MGF: ICS" >= 200
 	on offer
+		event "mgf: ics shipyard unlock"
 		conversation
-			event "mgf: ics shipyard unlock"
 			`Soon after you landed you recieve a message from ICS. They thanks you for your recent assitance with the company and offers to sell you some of their exclusive ships in the reserve fleet. Avaliable at ICS logistic hub on Earth and Follower.`
 				decline
 
@@ -2488,6 +2610,98 @@ event "mgf: espion: titanite station done"
 			description `Titanite Station is a cooperation project between the Free Worlds and Espion Mining Co. to construct another major supplier of refined metal in the south as part of the Free Worlds effort to be less reliant on the Republic and create more job opportunities for their population.`
 			description `With the station completed, it now supplies vast amount of materials to nearby industries and create vast amount of jobs for the local population both directly and indirectly.`
 
+#TODO : Deep university+shipyard station.
+#TODO : Tarazed orbital shipyard.
+#===========================Southbound-Zug
+#TODO : Expand mining operation on Clink to feed expanding industries.
+#		Zug mining coporation forms asteroid mining divison to compete
+#		against Espion. 
+
+#Southbound orbital shipyard
+# Begins shortly after titanite station.
+# todo: new ships from Southbound, Vessa, and Solomons
+mission "MGF: Zagreus Station Construction Begin"
+	landing
+	invisible
+	to offer
+		has "mgf: espion: titanite station done"
+	on offer
+		event "mgf: zagreus station begin" 188 #~half yrs
+		event "mgf: zagreus station done" 724 #done in ~2yrs
+	on accept
+		fail
+
+event "mgf: zagreus station begin"
+	system "Zubeneschamali"
+		add object "MGF: Fake Zug"
+			distance 1146.84
+			period 439.399
+			object "SBO1 Zagreus Station"
+				sprite "planet/mgf zagreus station 50"
+				distance 165.3
+				period 41.73
+
+planet "MGF: Fake Zug"
+	government "MGF: Fake Planets"
+	attributes "requires: unlandable" "requires: asdfasdfasddfasd"
+	description `If you can land here it is a bug.`
+
+planet "SBO1 Zagreus Station"
+	attributes station rim #factory
+	landscape "land/sivael1"
+	music ambient/machinery
+	description `Zagreus Station is result of an effort by Southbound Shipyards to expand their shipbuilding capacity and capabilities to match those of near-earth and Syndicate shipyards.`
+	description `The station is currently underconstruction .`
+	spaceport `With the station being heavily underconstruction, the accomodations are minimal. However, there's a poster of the concept showing an expansive and modern-looking areas, especially for a station.`
+	bribe 0.1
+	security 0.7
+	outfitter "Common Outfits"
+	outfitter "Ammo South"
+	tribute 900
+		threshold 1500
+		fleet "Large Militia" 16
+
+mission "MGF: Zagreus Station Completion Accelerated"
+	landing
+	invisible
+	to offer
+		"mgf: zagreus construction assist" >= 14
+		has "event: zagreus station begin"
+	on offer
+		event "mgf: zagreus station done" 31
+	on accept
+		fail
+
+event "mgf: zagreus station done"
+	system "Zubeneschamali"
+		remove object "MGF: Fake Zug"
+			distance 1146.84
+			period 439.399
+			object "SBO1 Zagreus Station"
+				sprite "planet/mgf zagreus station 50"
+				distance 165.3
+				period 41.73
+		add object "MGF: Fake Zug"
+			distance 1146.84
+			period 439.399
+			object "SBO1 Zagreus Station"
+				sprite "planet/mgf zagreus station"
+				distance 165.3
+				period 41.73
+	planet "SBO1 Zagreus Station"
+		add attributes factory
+		description `Zagreus Station is result of an effort by Southbound Shipyards to expand their shipbuilding capacity and capabilities to match those of near-earth and Syndicate shipyards.`
+		spaceport `Visitor area is expansive and modern looking with enough servieces and stores to match a decently-sized spaceport. It even got showrooms for some smaller ships.`
+		shipyard "Basic Ships"
+		shipyard "Southbound Basics"
+		shipyard "Southbound Advanced"
+		shipyard "Vessa Shipworks Advanced"
+		shipyard "Solomons Voidworks Advanced"
+		outfitter "Delta V Advanced"
+		outfitter "Kraz Advanced"
+
+
+
 #=========================Ship retrofit/upgrade/switch
 #Upgrading Falcon -> Aplomado/Eleonare, etc.
 
@@ -2594,7 +2808,7 @@ mission "MGF: Syndi Platinum License Cancel (bfr 1yr)"
 		has "license: Syndicate Platinum"
 		has "MGF: Syndi Platinum License Upkeep: offered"
 		#Convert years to month and count from there. This check if a year passes or not.
-		"MGF: Splatinum member regis year"  * 12 + "MGF: Splatinum member regis month" >= "year" * 12 + "month" - 12
+		0 < ( "MGF: Splatinum member regis year" * 12 + "MGF: Splatinum member regis month" ) - ( "year" * 12 + "month" - 12 )
 	on accept
 		"fine" 1820000
 		clear "salary: Syndicate Platinum"
@@ -2626,7 +2840,6 @@ mission "MGF: Syndicate Hunt Rogue Fusillade"
 	description `A group of rogue Syndicate employee has stolen a prototype warship called <npc>. It is last seen heading to <waypoints>. Destory it and the payment is <payment>.`
 	deadline 45
 	to offer
-		never
 		"combat rating" > 8000
 		"reputation: Syndicate" > 110
 	source

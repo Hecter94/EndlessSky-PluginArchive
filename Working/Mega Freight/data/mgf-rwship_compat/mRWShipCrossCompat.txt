@@ -1,0 +1,193 @@
+mission "MGF-RWSh trigger"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		or
+			"MGF-RWSh deactivation: offered" >= "MGF-RWSh trigger: offered"
+			not "MGF-RWSh trigger: offered"
+		or
+			has "installed plugin: RWSh"
+	on offer
+		event "mgf-rwsh: cross-compat activate"
+		"mgf-rwsh compat active" = 1
+	on accept
+		fail
+
+event "mgf-rwsh: cross-compat activate"
+	fleet "Small Espion Guard"
+		add variant 15
+			"Cavalier (MGF: Espion)" 3
+			#They've been looking for supplier of LW in the dirt belt/south for a while now.
+			#(Will eventually make their own LW anyway.)
+	fleet "Large Espion Guard"
+		add variant 10
+			"Vanguard"
+			"Cavalier (MGF: Espion)" 3
+		add variant 10
+			"Vanguard"
+			"Cavalier (MGF: Espion)" 2
+			"Quicksilver (Mark II)"
+
+	fleet "Large Espion Miners"
+		add variant 2
+			"Thunderer"
+		add variant 4
+			"Gemstone (MGF: Espion)"
+			"EP-1 Mole" 4
+		add variant 3
+			"Deepvale (MGF: Espion)"
+			"EP-1 Mole" 8
+
+	fleet "MGF: NBSL Large"
+		add variant 25
+			"Everest (MGF: NBSL)"
+			"Bastion (NBSL)" 2
+		add variant 20
+			"Everest (MGF: NBSL)" 2
+			"CSE-6 Steward"
+			"Lance" 6
+	
+	fleet "Large Southern Merchants"
+		add variant 6
+			"Everest"
+			"CSE-6 Steward"
+			"Lance" 6
+		add variant 3
+			"Everest"
+			"Typ073 Xinhui"
+			"Typ073 Xinhui (Swordfish)" 2
+		add variant 6
+			"Everest"
+			"Typ073 Xinhui (Proton)" 2
+
+		add variant 1
+			"Mudrock"
+			"Typ073 Xinhui" 2
+
+	fleet "Large Core Merchants"
+		add variant 4
+			"Everest"
+			"Typ057 Lanzhou (Missile)"
+		add variant 2
+			"Everest (Upgraded)"
+			"CSE-6 Steward"
+			"Lance" 6
+		add variant 2
+			"Everest (Upgraded)"
+			"Typ057 Xuchang (Missile)"
+			"Typ064 Xuchang (Anti Missile)"
+		add variant 2
+			"Everest"
+			"Typ073 Xinhui (Proton)"
+			"Typ073 Xinhui" 2
+
+		add variant 1
+			"Mudrock (Modern)"
+			"E-FD23 Kanran"
+		add variant 1
+			"Mudrock (Proton)"
+			"Typ057 Lanzhou (Proton)"
+		add variant 1
+			"Mudrock (Proton)"
+			"Typ064 Xuchang (Proton Turret)"
+		add variant 1
+			"Mudrock (Proton)"
+			"Typ073 Xinhui (Proton)"
+
+	fleet "Large Northern Merchants"
+		add variant 1
+			"Mudrock (Modern)"
+			"E-FD23 Kanran"
+		add variant 2
+			"Mudrock (Modern)"
+			"Typ057 Lanzhou (G22)"
+		add variant 1
+			"Mudrock"
+			"Typ064 Xuchang (Laser)" 2
+
+mission "MGF-RWSh deactivation"
+	landing
+	invisible
+	repeat
+	to offer
+		# has "mgf dev mode"
+		"mgf-rwsh compat active" > 0
+		and
+			not "installed plugin: RWSh"
+	on offer
+		event "mgf-rwsh: cross-compat deactivate"
+		"mgf-rwsh compat active" = 0
+	on accept
+		fail
+
+event "mgf-rwsh: cross-compat deactivate"
+	fleet "Small Espion Guard"
+		remove variant 2
+			"Hydrargyrum" 3
+	fleet "Small Crossguard Patrol"
+		remove variant 4
+			"Hydrargyrum" 3
+		remove variant 3
+			"Lindwurm" 3
+
+	fleet "Large Northern Merchants"
+		remove variant 5
+			"CH-6 Carrack"
+			"Dagger" 4
+			"Lindwurm" 2
+		remove variant 3
+			"FG-7 Conveyor-A"
+			"Dagger" 8
+			"Lindwurm" 2
+		remove variant 5
+			"QYG-60 Sandiq" 2
+			"Lindwurm (Missile)" 2
+		remove variant 3
+			"CDB-12K Saturn"
+			"Lindwurm (Missile)" 2
+		remove variant 3
+			"FUe06a Gebrant III"
+			"Lindwurm"
+			"Lindwurm (Missile)"
+
+	fleet "Large Core Merchants"
+		remove variant 1
+			"CH-6 Carrack"
+			"Hydrargyrum" 1
+		remove variant 3
+			"QYG-60 Sandiq" 2
+			"Hydrargyrum" 2
+		remove variant 3
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+		remove variant 2
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 1
+			"Splinter" 1
+		remove variant 1
+			"FG-5 Bluewhale-A" 2
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		remove variant 1
+			"LVC-2 Sandura"
+			"Hydrargyrum" 1
+			"Splinter (Proton)" 1
+		remove variant 2
+			"CDB-6K Jupiter"
+			"Hydrargyrum" 2
+			"Splinter" 1
+		remove variant 3
+			"CDB-6K Jupiter"
+			"FG-5 Bluewhale-A"
+			"Hydrargyrum" 2
+			"Splinter (Laser)" 1
+		remove variant 3
+			"CDB-12K Saturn"
+			"Hydrargyrum" 2
+			"Splinter (Proton)" 1
+		remove variant 2
+			"SV80-n Catirfel"
+			"Hydrargyrum" 1
+			"Splinter" 1
