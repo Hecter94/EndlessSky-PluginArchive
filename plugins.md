@@ -621,9 +621,8 @@ Author: MinneIceCube | Category: Cheats <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>Kestrel Rework Readme:
-This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
-This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. as such, the changes are as follows:
+<blockquote>This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
+This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. As such, the changes are as follows:
 
 -The requirements for the Kestrel sub-quest have been changed:
 	-The combat rating was increased from 8,000 (Combat rank 9: "Force to be reckoned with") --> 22,000 (Combat rank "Fearsome Scrapper). Intended to limit obtaining the newly buffed ship until the player is on a similar power level.
@@ -634,7 +633,7 @@ This does not make much sense according to the lore, but I personally prefer the
 	-Shields 19,400 --> 49,700
 	-Hull 7,200 --> 30,400
 	-Fuel Capacity 500 --> 700
-	-Outfit space 810 --> 900
+	-Outfit space 810 --> 870
 	-Weapon capacity 390 --> 410
 	-Engine Capacity 210 --> 230
 	-Bunks 128 --> 150
@@ -649,6 +648,9 @@ This does not make much sense according to the lore, but I personally prefer the
 
 -Weapon Kestrel:
 	-Weapon Capacity 40 --> 150
+  
+  I made these edits mostly for personal useage, and as such these are the numbers I found acceptable for my late game ship. If you feel otherwise, feel free to make edits as you please.
+
 </blockquote>
 </details>
 
@@ -1933,42 +1935,46 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Gatling Ammo Fix
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
+![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-[h1]Installing[/h1]
+
+## Installing
+
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
+Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
-
-[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
+```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
 
 
-[h1]Author[/h1]
+It **won't** work if the directory structure will be anything like:
 
-[list][*][b]Cat Lady[/b][/list]
-
-
-[h1]License[/h1]
-
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
 
 
+## Author
 
-[h1]Acknowledgments[/h1]
+* **Cat Lady**
+
+
+## License
+
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
+
 </blockquote>
 </details>
 
@@ -3422,10 +3428,16 @@ Author: Cat-Lady | Category: Graphics <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Swizzle Player
+
+This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+
+![Swizzle Player Image](/swizzle-player/icon.png?raw=true "Swizzle Player Image")
 
 
-[h1]Installing[/h1]
+## Installing
 
 Check:
 https://github.com/Cat-Lady/swizzle-player/releases
@@ -3433,35 +3445,33 @@ https://github.com/Cat-Lady/swizzle-player/releases
 ...for latest, pre-packaged version.
 
 
-[b]1.[/b] Unpack [i]swizzle-player[/i] to your ES plugins folder. Be sure that you have single [i]swizzle-player[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
+**1.** Unpack ``swizzle-player`` to your ES plugins folder. Be sure that you have single ``swizzle-player`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[code](...)/plugins/swizzle-player/(.../data/, /images/ and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/swizzle-player/swizzle-player/(...)[/code]
+```(...)/plugins/swizzle-player/(.../data/ and other stuff)```
 
 
+It **won't** work if the directory structure will be anything like:
 
-[h1]Author[/h1]
-
-[list][*][b]Cat Lady[/b][/list]
-
+```(...)/plugins/swizzle-player/swizzle-player/(...)```
 
 
-[h1]License[/h1]
+## Author
 
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+* **Cat Lady**
 
 
+## License
 
-[h1]Acknowledgments[/h1]
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game
 
-[url=https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot]James the Bot[/url] from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
+![James the Bot](https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot) from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
 
 Iggy Pop for singing "She want's to be your James Bot" (and don't even try to convince me that he meant something else).
+
 </blockquote>
 </details>
 
@@ -15922,27 +15932,9 @@ Author: virmitio | Category: N/A <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>## Intent:
+<blockquote>This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
 
-Performing the below actions should result in a working directory `<work_dir>` which will permit the map editor and game to both correctly load the plugin while still keeping the plugin repository safely seperated from the root game data.
-
-### Assumptions:
-   - The repo was simply cloned to `%appdata%\endless-sky\plugins\ES_ExpandedTerritory`
-   - that steam is installed to the default location `%ProgramFiles(x86)%\Steam`
-   - that Endless Sky is installed to the default install location set by steam (`<steam_dir>\steamapps\common\...`)
-
-### Commands:
-```
-cd <work_dir>
-mklink /J data "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\data"
-mklink /J images "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink /J repo "%appdata%\endless-sky\plugins\ES_ExpandedTerritory"
-
-cd "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink es_et "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\images\es_et"
-```
-
-When opening in the map editor, please open files by way of the `<work_dir>\data` directory tree.
+At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
 
 </blockquote>
 </details>
