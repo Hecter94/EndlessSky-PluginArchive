@@ -6884,9 +6884,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-07-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-08-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
 Author: Spectre907 | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-07-26) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-08-04) <br>
 
 >Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
@@ -7730,9 +7730,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.95 mb | 2024-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.95 mb | 2024-08-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-07-27) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-08-04) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -10003,9 +10003,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2024-07-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2024-08-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-07-29) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-08-03) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
