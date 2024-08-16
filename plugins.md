@@ -3152,6 +3152,58 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### human.labels
+<img src='Working/human.labels/icon.png' height='100'></img><br>
+
+
+[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 334.17 kb | 2024-08-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
+Author: zuckung | Category: Graphics <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-07-13) <br>
+
+>Reworks the Human area labels and adds area borders. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### human.labels
+<br>
+<br>
+Reworks the Human area labels and adds area borders. See the readme for details.<br>
+<br>
+The area labels of Human space are now smaller and better to see. Also there is a border drawn around each area.<br>
+On Earth's job board you can find a mission to change the color of the labels(light blue, light gray, yellow, dark red, green, dark gray, orange, purple).<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/human.labels01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/human.labels02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-07-13<br>
+corrected script error<br>
+<br>
+2024-07-09<br>
+text correction<br>
+<br>
+2024-07-08<br>
+added 4 more label colors to choose of (green, dark gray, orange, purple)<br>
+<br>
+2024-07-07<br>
+added 3 more label colors to choose of (light blue, light gray, dark red)<br>
+added job on Earth to change the label colors<br>
+<br>
+2024-06-26<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Low Quality
 
 
@@ -15689,7 +15741,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>41 plugins in this category.<p>
+<p>42 plugins in this category.<p>
 
 <details>
 
