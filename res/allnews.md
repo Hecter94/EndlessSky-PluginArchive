@@ -1,3 +1,8 @@
+2024-08-17 | new Plugin 'tribute.republic' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
+2024-08-17 | new Plugin 'landing.images.highres' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
+2024-08-17 | new Plugin 'jump.gates' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
+2024-08-17 | new Plugin 'landing.images' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
+2024-08-17 | new Plugin 'landing.images.android' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 2024-08-16 | new Plugin 'human.labels' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 2024-08-15 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-08-09 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>

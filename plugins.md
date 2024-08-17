@@ -2043,6 +2043,47 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
+### jump.gates
+<img src='Working/jump.gates/icon.png' height='100'></img><br>
+
+
+[jump.gates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/jump.gates.zip) | 1.24 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/jump.gates/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-07-19) <br>
+
+>Adds a ring of jump gates at the borders of human space to create shortcuts inside human space. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### jump.gates
+<br>
+<br>
+Adds a ring of "jump gates" at the borders of Human space to create shortcuts inside the Human space.<br>
+<br>
+A month after the game starts, the player gets a spaceport info mission about a new discovered technology, that enables the building of jump gates (if your savegame is beyond that point, this info mission starts on the next planet landing). Over the next 5 months there are regularly spaceport info missions telling you things about how far the process of building these gates has come. At the end of this period all jump gates have been built and are usable.<br>
+These jump gates are technically just wormholes with new sprites. The jump gate ring around human space is made of two gates in every of these systems: Naos (Deep) - Spica (Dirt Belt) - Alniyat (South) - Tarazed (South) - Sheratan (Core) - Alnitak (North) and from there back to Naos. Two gates, so you can move forward and backward on the ring.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates02.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates03.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-07-19<br>
+initial release<br>
+text corrections (thx to TheGiraffe3)<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Kor Mereti Fluff
 <img src='Working/Kor Mereti Fluff/icon.png' height='100'></img><br>
 
@@ -2776,6 +2817,47 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
+### tribute.republic
+<img src='Working/tribute.republic/icon.png' height='100'></img><br>
+
+
+[tribute.republic.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/tribute.republic.zip) | 21.57 kb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/tribute.republic/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-17) <br>
+
+>Allows you to tribute all Republic planets, without losing Free Worlds or Deep Security reputation. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### tribute.republic
+<br>
+<br>
+Allows you to tribute all Republic planets, without losing Free Worlds or Deep Security reputation.<br>
+<br>
+This plugin replaces Militia and Deep Security defense fleets of all hostile Republic planets (during the Free Worlds war), with Republic fleets.<br>
+To prevent mission-related changes overwriting this plugin, activate it, when you are ready to tribute the Republic planets. When you are done, you can deactivate it again, if you want.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/tribute.republic01.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-17<br>
+added Wayfarer and Arachne Station<br>
+<br>
+2024-08-09<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Weapon Ranges
 
 
@@ -3192,6 +3274,151 @@ added 3 more label colors to choose of (light blue, light gray, dark red)<br>
 added job on Earth to change the label colors<br>
 <br>
 2024-06-26<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### landing.images
+<img src='Working/landing.images/icon.png' height='100'></img><br>
+
+
+[landing.images.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.zip) | 13.94 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images/) <br>
+Author: zuckung | Category: Graphics <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-09) <br>
+
+>Replaces all planet landing images with better fitting ones. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### landing.images
+<br>
+<br>
+Replaces all planet landing images with better fitting ones.<br>
+<br>
+These images replace the boring vanilla images you see when you've landed on a planet with new, AI generated, better fitting ones. The old ones look like photos from earth or taken from public NASA archives (which they are). According to the description of the planets I tried to generate better fitting, more futuristic, more alien-looking images.<br>
+0.10.8 with 472 planets<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/landing.images01.jpg' width='400'>
+See all images <a href='https://github.com/zuckung/endless-sky-plugins-graphics/blob/main/res/md/landing.images.md'>here</a>.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-09<br>
+minor text changes (thx to TheGiraffe3)<br>
+<br>
+2024-08-02<br>
+fixed wrong size of ahr.jpg<br>
+<br>
+2024-07-31<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### landing.images.android
+<img src='Working/landing.images.android/icon.png' height='100'></img><br>
+
+
+[landing.images.android.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.android.zip) | 31.51 kb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.android/) <br>
+Author: zuckung | Category: Graphics <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-09) <br>
+
+>Moves the landing image above the textbox, instead of behind the textbox (for ES mobile). See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### landing.images.android 
+<br>
+<br>
+Moves the landing image above the textbox, instead of behind the textbox (for ES mobile).<br>
+<br>
+In case parts of the UI/the buttons are outside the screen, try rescaling your UI in the ES options<br>
+If that doesn't help, open the zip, edit 'landing.images.android/data/interface.txt' and change line 2 to 7 to:<br>
+	image "land"
+		center -60 -150
+		dimensions 250 135
+	sprite "ui/frame"
+		center -60 -150
+		dimensions 265 150
+That resizes the landing image and the frame to their half.<br>
+<br>
+Before:<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/landing.images.android01.jpg' width='400'>
+<br>
+After:<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/landing.images.android02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-09<br>
+minor text changes (thx to TheGiraffe3)<br>
+<br>
+2024-08-07<br>
+added a frame for the image<br>
+finetuned position<br>
+<br>
+2024-08-03<br>
+added hire all/fire all buttons which were missing (thx timeout.fu)<br>
+added guide to resize the image (thx Pyrrha of simpleplanes)
+<br>
+2024-08-02<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### landing.images.highres
+<img src='Working/landing.images.highres/icon.png' height='100'></img><br>
+
+
+[landing.images.highres.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.highres.zip) | 61.57 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.highres/) <br>
+Author: zuckung | Category: Graphics <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-09) <br>
+
+>High resolution files for landing.images plugin. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### landing.images.highres
+<br>
+<br>
+High resolution files for landing.images plugin.<br>
+<br>
+Adds images with 1440x720 resolution. The landing.images plugin is still needed.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-09<br>
+minor text changes (thx to TheGiraffe3)<br>
+<br>
+2024-08-02<br>
 initial release<br>
 
 
@@ -15741,7 +15968,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>42 plugins in this category.<p>
+<p>47 plugins in this category.<p>
 
 <details>
 
