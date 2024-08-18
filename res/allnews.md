@@ -1,3 +1,5 @@
+2024-08-18 | new Plugin 'Nuclear Missile Buff' by BZENDSKY | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Uncategorized)<br>
+2024-08-18 | updated Plugin 'planet.map' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
 2024-08-17 | new Plugin 'tribute.republic' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
 2024-08-17 | new Plugin 'landing.images.highres' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 2024-08-17 | new Plugin 'jump.gates' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>

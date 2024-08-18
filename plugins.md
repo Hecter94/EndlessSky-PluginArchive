@@ -14183,9 +14183,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/planet.map/icon.png' height='100'></img><br>
 
 
-[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.13 mb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
+[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.0 mb | 2024-08-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-03-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-18) <br>
 
 >planetary map travelling concept : start a new pilot, use 'start: planet.map'
 >
@@ -14195,7 +14195,7 @@ Author: zuckung | Category: Story <br>
 <blockquote>### planet.map
 <br>
 <br>
-Planetary map travelling concept : start a new pilot, use 'start: planet.map' and follow the small story line. See the readme for details.<br>
+Planetary map travelling concept : Land on Memory, visit the outfitter and follow the small story line.<br>
 <br>
 This is just a proof of concept of an idea by Epsil-Astra.<br>
 Basically a planet in a starsystem is a wormhole to a starsystem with changed background, to look like a ground map. The planets there look like cities. The galaxy background is a single whole planet. It simulates travelling on a planet you've landed on. Other starsystems act as different bioms, like forest, desert, sea.<br>
@@ -14203,11 +14203,20 @@ A small storyline got added.<br>
 <br>
 As in the spirit of Epsil-Astra, feel free to modify/use this plugin for your own content creation.<br> 
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/planet.map/screenshot.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/planet.map/screenshot1.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/planet.map01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/planet.map02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-08-18<br>
+removed the start<br>
+adjustments and finetuning<br>
+added new map locations (4 'areas', 3 'cities')<br>
+added 9 new landing images<br>
+added 7 scene images<br>
+added 6 standard jobs<br>
+added a repeatable local fauna defense mission<br>
 <br>
 2024-03-26<br>
 fixes and adjustments<br>
@@ -15968,7 +15977,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>47 plugins in this category.<p>
+<p>48 plugins in this category.<p>
 
 <details>
 
@@ -16335,6 +16344,25 @@ Author: czartrak | Category: N/A <br>
 
 Status: N/A <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Nuclear Missile Buff
+<img src='Working/Nuclear Missile Buff/icon.png' height='100'></img><br>
+
+
+[Nuclear.Missile.Buff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.Missile.Buff.zip) | 21.66 kb | 2024-08-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nuclear%20Missile%20Buff/) <br>
+Author: BZENDSKY | Category: Uncategorized <br>
+[https://github.com/BZENDSKY/Nuclear-Missile-Buff](https://github.com/BZENDSKY/Nuclear-Missile-Buff) (last commit 2024-08-18) <br>
+
+>Buffs the Nuclear Missile.
+>
+
+
+
+Status: Complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
