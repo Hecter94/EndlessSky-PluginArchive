@@ -16354,7 +16354,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Nuclear.Missile.Buff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nuclear.Missile.Buff.zip) | 21.66 kb | 2024-08-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nuclear%20Missile%20Buff/) <br>
 Author: BZENDSKY | Category: Uncategorized <br>
-[https://github.com/BZENDSKY/Nuclear-Missile-Buff](https://github.com/BZENDSKY/Nuclear-Missile-Buff) (last commit 2024-08-18) <br>
+[https://github.com/BZENDSKY/Nuclear-Missile-Buff](https://github.com/BZENDSKY/Nuclear-Missile-Buff)  <br>
 
 >Buffs the Nuclear Missile.
 >
