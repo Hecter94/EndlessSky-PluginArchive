@@ -1,3 +1,4 @@
+2024-08-22 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-08-20 | updated Plugin 'Zoura's Outfits Expanded' by Zoura | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
 2024-08-18 | new Plugin 'Nuclear Missile Buff' by BZENDSKY | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Uncategorized)<br>
 2024-08-18 | updated Plugin 'planet.map' by zuckung | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
