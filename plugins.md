@@ -13043,7 +13043,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 [Galactic.Couriers.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Couriers.zip) | 10.13 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Couriers/) <br>
 Author: Derekcz | Category: Story <br>
-[https://github.com/Derekcz/galactic-couriers](https://github.com/Derekcz/galactic-couriers)  <br>
+N/A[]()  <br>
 
 >A minor side-story taking place mostly in an isolated star system outside of the human space.
 >Main game story must be completed before this plugin's story can fully start.
