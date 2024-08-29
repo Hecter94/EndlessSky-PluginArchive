@@ -2476,7 +2476,7 @@ event "add navy outrider escorts"
 			"Gunboat" 2
 			"Outrider" 12
 	fleet "Navy Surveillance"
-		variant 1
+		add variant 1
 			"Cruiser"
 			"Surveillance Drone" 4
 			"Outrider" 6
@@ -2494,6 +2494,7 @@ mission "Outrider Mark II update"
 		has "event: navy using mark ii ships"
 	on offer
 		event "outrider mark II update"
+		set "beacon drone mark II patched"
 		fail
 
 event "outrider mark II update"
@@ -2636,13 +2637,9 @@ event "outrider mark II update"
 			"Gunboat (Mark II)" 2
 			"Outrider (Mark II)" 12
 	fleet "Navy Surveillance"
-		remove variant 1
-			"Cruiser"
-			"Surveillance Drone" 4
-			"Outrider" 6
-		variant 1
+		add variant 1
 			"Cruiser (Mark II)"
-			"Surveillance Drone" 4
+			"Beacon Drone" 4
 			"Outrider (Mark II)" 6
 	fleet "Small Oathkeeper"
 		add variant 2
@@ -2691,6 +2688,38 @@ event "outrider mark II update"
 			"Rainmaker" 2
 			"Gunboat"
 			"Outrider" 2
+
+mission "Beacon Drone Mark II Patch"
+	landing
+	invisible
+	to offer
+		has "event: outrider mark II update"
+		not "beacon drone mark II patched"
+	on offer
+		set "beacon drone mark II patched"
+		event "beacon drone mark II patch"
+		fail
+
+event "beacon drone mark II patch"
+	fleet "Navy Surveillance"
+		remove variant 1
+			"Cruiser (Mark II)"
+			"Surveillance Drone" 4
+			"Outrider (Mark II)" 6
+		add variant 1
+			"Cruiser (Mark II)"
+			"Beacon Drone" 4
+			"Outrider (Mark II)" 6
+		add variant 1
+			"Cruiser"
+			"Surveillance Drone" 4
+			"Outrider" 6
+		add variant 10
+			"Cruiser"
+			"Surveillance Drone" 4
+		add variant 10
+			"Gunboat" 2
+
 
 
 mission "Add Twin Torpedo Pods"
@@ -4069,3 +4098,207 @@ event "midnight merchant weapons kestrels"
 			"Finch" 2
 
 
+
+mission "Midnight Add Syndicate Mass Transports"
+	landing
+	invisible
+	on offer
+		event "midnight add syndicate mass transports"
+		fail
+
+event "midnight add syndicate mass transports"
+	shipyard "Syndicate Basics"
+		add "Parapet"
+		add "Rampart"
+	shipyard "Syndicate Advanced"
+		add "Palisade"
+	fleet "Small Core Merchants"
+		add variant 8
+			"Parapet"
+		add variant 2
+			"Parapet"
+			"Stingray (Blaster)"
+		add variant 2
+			"Parapet"
+			"Stingray"
+		add variant 2
+			"Parapet"
+			"Wasp"
+		add variant 2
+			"Parapet"
+			"Wasp (Proton)"
+		add variant 4
+			"Rampart"
+		add variant 1
+			"Rampart"
+			"Stingray"
+		add variant 1
+			"Rampart"
+			"Stingray (Blaster)"
+		add variant 1
+			"Rampart"
+			"Wasp"
+		add variant 1
+			"Rampart"
+			"Wasp (Proton)"
+	fleet "Large Core Merchants"
+		add variant 1
+			"Palisade"
+		add variant 1
+			"Palisade"
+			"Rampart"
+			"Parapet"
+		add variant 1
+			"Palisade"
+			"Stingray" 2
+		add variant 1
+			"Palisade"
+			"Stingray (Blaster)" 2
+		add variant 1
+			"Palisade"
+			"Wasp" 2
+		add variant 1
+			"Palisade"
+			"Wasp (Proton)" 2
+		add variant 1
+			"Palisade"
+			"Quicksilver"
+
+
+
+mission "Midnight Add Spotlight"
+	landing
+	invisible
+	on offer
+		event "midnight add spotlight"
+		fail
+
+event "midnight add spotlight"
+	shipyard "Navy Basics"
+		add "Beacon Drone"
+	outfitter "Basic Outfits"
+		add "Spotlight"
+		add "Search Light"
+	outfitter "Pirate Basics"
+		add "Spotlight"
+		add "Search Light"
+	outfitter "Pirate Advanced"
+		add "Spotlight"
+		add "Search Light"
+	system Aldebaran
+		add fleet "Republic Police" 800
+	system Alhena
+		add fleet "Republic Police" 3000
+	system Alphard
+		add fleet "Republic Police" 6000
+	system Capella
+		add fleet "Republic Police" 1400
+	system Castor
+		add fleet "Republic Police" 2000
+	system Kursa
+		add fleet "Republic Police" 8000
+	system Miaplacidus
+		add fleet "Republic Police" 3000
+	system Phurad
+		add fleet "Republic Police" 5000
+	system Pollux
+		add fleet "Republic Police" 4500
+	system Talita
+		add fleet "Republic Police" 4000
+	system Tejat
+		add fleet "Republic Police" 2000
+	system Wazn
+		add fleet "Republic Police" 5000
+	system Sol
+		add fleet "Republic Police" 2000
+	system Vega
+		add fleet "Republic Police" 5000
+	system "Alpha Centauri"
+		add fleet "Republic Police" 6000
+	system Altair
+		add fleet "Republic Police" 6000
+	system Denebola
+		add fleet "Republic Police" 2000
+	system Merak
+		add fleet "Republic Police" 4000
+	system Nocte
+		add fleet "Republic Police" 7000
+	system Porrima
+		add fleet "Republic Police" 8000
+	system Sirius
+		add fleet "Republic Police" 2500
+
+mission "Midnight Reduce Republic Police"
+	landing
+	invisible
+	to offer
+		has "event: midnight add spotlight"
+		has "event: initial deployment 1"
+	on offer
+		event "midnight reduce republic police"
+		fail
+
+event "midnight reduce republic police"
+	system Aldebaran
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 1600
+	system Alhena
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 6000
+	system Alphard
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 12000
+	system Capella
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 2800
+	system Castor
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 4000
+	system Kursa
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 16000
+	system Miaplacidus
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 6000
+	system Phurad
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 10000
+	system Pollux
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 9000
+	system Talita
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 8000
+	system Tejat
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 4000
+	system Wazn
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 10000
+	system Sol
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 4000
+	system Vega
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 10000
+	system "Alpha Centauri"
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 12000
+	system Altair
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 12000
+	system Denebola
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 4000
+	system Merak
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 8000
+	system Nocte
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 14000
+	system Porrima
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 16000
+	system Sirius
+		remove fleet "Republic Police"
+		add fleet "Republic Police" 5000

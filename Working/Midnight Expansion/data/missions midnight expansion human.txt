@@ -595,8 +595,10 @@ mission "Midnight Expansion: Rukh Blueprints"
 				`	(Wait for the authorities.)`
 				`	(Leave.)`
 					goto leave
+			action
+				set "rukh blueprints slow to follow"
 			`	You don't have to wait long for the local police to arrive. After being detained overnight for a lengthy interrogation, they determine that you weren't involved in the shooting and let you go free.`
-				decline
+			``
 			label leave
 			scene "thumbnail/Becca warbird"
 			`	The Rukh is an old warship once manufactured at the Wei shipyards on Hope.`
@@ -614,26 +616,37 @@ mission "Midnight Expansion: Rukh Blueprints"
 	on decline
 		event "add marauder rukh" 30
 	on enter
-		dialog `You receive a hail from another ship: "Did the old man tell you something? I suppose it doesn't matter. You'll be joining him in the afterlife!`
+		dialog
+			`You receive a hail from another ship: "Did the old man tell you something? I suppose it doesn't matter. You'll be joining him in the afterlife!`
+				to display
+					not "rukh blueprints slow to follow"
+			`Dealing with the authorities took a considerable amount of time. You'd better hurry to <planet>.`
+				to display
+					has "rukh blueprints slow to follow"
 	npc
 		to spawn
+			not "rukh blueprints slow to follow"
 			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 1
 		government "Bounty Hunter"
 		personality nemesis disables waiting plunders
 		fleet "Bounty Hunters"
 	npc
 		to spawn
+			not "rukh blueprints slow to follow"
 			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 2
 		government "Bounty Hunter"
 		personality nemesis disables waiting plunders
 		fleet "Bounty Hunters"
 	npc
 		to spawn
+			not "rukh blueprints slow to follow"
 			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" > 3
 		government "Bounty Hunter"
 		personality nemesis disables waiting plunders
 		fleet "Bounty Hunters"
 	npc
+		to spawn
+			not "rukh blueprints slow to follow"
 		government "Bounty Hunter"
 		personality nemesis disables waiting plunders
 		ship "Rukh (Energy Cannons)" "Rain Dancer"
@@ -641,7 +654,14 @@ mission "Midnight Expansion: Rukh Blueprints"
 		event "add marauder rukh"
 		conversation
 			scene "scene/scene-empty box"
+			branch slow
+				has "rukh blueprints slow to follow"
 			`	Someone sent bounty hunters to slow down anyone who might have gotten information from the old man. So it isn't too surprising that after spending all day searching the ruins of the Wei shipyards, you haven't found any blueprints. If they were here, they've already been plundered.`
+				accept
+			label slow
+			action
+				clear "rukh blueprints slow to follow"
+			`	The authorities on <origin> held you back for a significant amount of time. So it isn't too surprising that after spending all day searching the ruins of the Wei shipyards, you haven't found any blueprints. If they were here, they've already been plundered.`
 
 event "add marauder rukh"
 	fleet "Marauder Independent"
@@ -1096,7 +1116,7 @@ mission "Midnight Venomous Fang 2"
 		system Tortor
 		personality target waiting derelict timid
 		ship "Modified Cargo Star" "Millenium Eagle"
-		dialog "Thanks <first>! Let's head over to Farpoint before we run into more pirates."
+		dialog `Jon greets you at the air lock. "Thanks! Let's head over to Farpoint before we run into more pirates."`
 	on complete
 		payment 150000
 		conversation

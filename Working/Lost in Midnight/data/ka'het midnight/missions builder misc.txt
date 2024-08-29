@@ -160,14 +160,12 @@ mission "Hope's Salvage: Cold Storage 2"
 			`	Rysandel approaches you. "With the Dreaming Solstice gone, we are at your mercy."`
 			choice
 				`	"I need someone to pilot this ship."`
-			`	Rysandel looks doubtful. "We could do that. But captain <last>, how do you plan to get it out of the Graveyard? I don't see a Quantum Key Stone installed on it."`
+			scene "outfit/keystone"
+			`	Rysandel looks doubtful. "We could do that. But captain <last>, how do you plan to get it out of the Graveyard? I don't see a Quantum Key Stone on it. We can salvage the one in the wreckage of the Dreaming Solstice, but we lack the tools to install it."`
 			choice
 				`	"Fly this ship for me and you'll see."`
-			`	Rysandel smiles. "I guess I will be working for you from now on."`
+			`	Rysandel smiles. "I guess I will be working with you from now on."`
 				accept
-	on accept
-		give ship "Rao'xeris" "Hope's Salvage"
-		set "recovered hope's salvage"
 	npc
 		government "Ka'het"
 		personality waiting heroic vindictive
@@ -177,7 +175,28 @@ mission "Hope's Salvage: Cold Storage 2"
 			variant
 				"Vareti'het (Strong, Disable-able)"
 				"Maeri'het (EMP)" 2
+	npc accompany save
+		government "Escort"
+		personality target escort launching timid unconstrained
+		ship "Rao'xeris" "Hope's Salvage"
+	on complete
+		give ship "Rao'xeris (Key Stone)" "Hope's Salvage"
+		set "recovered hope's salvage"
+		conversation
+			scene "ship/rao'xeris"
+			`After docking the Rao'xeris onto <planet>, Rysandel and his crew use the outfitter facilities to install the Quantum Key Stone onto it. <npc> is now ready to leave the Graveyard.`
 
+ship "Rao'xeris" "Rao'xeris (Key Stone)"
+	outfits
+		"Ka'het Ravager Beam" 2
+		"Builder Anti-Missile" 2
+		"Ka'het Shield Restorer"
+		"Ka'het Support Cooling"
+		"Ka'het Scanner"
+		"Cargo Expansion" 8
+		"Quantum Key Stone"
+		"Ka'het Compact Engine" 2
+		Hyperdrive
 
 
 mission "Parii'het shipyard: Kai'teris"

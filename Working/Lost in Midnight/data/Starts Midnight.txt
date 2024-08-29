@@ -101,16 +101,16 @@ conversation "Time Skip intro"
 	scene "thumbnail/pirate scrapper"
 	action
 		event "add scrapper to basic shipyard"
-	`	The sales clerk leads you to an old Scrapper parked far from the newer model ships. At a mere 231,000 credits, this rust bucket is definitely within your price range. But the hull may not hold up against a pirate attack. Are you willing to risk your life just to save some credits?`
+	`	The sales clerk leads you to an old Scrapper parked far from the newer model ships. At a mere 194,000 credits, this rust bucket is definitely within your price range. But the hull may not hold up against a pirate attack. Are you willing to risk your life just to save some credits?`
 	choice
 		`	(Choose from among the three new models.)`
 			decline
 		`	(Buy the Scrapper.)`
 	scene "thumbnail/pirate scrapper"
-	`	You purchase the Scrapper for 231,000 credits.`
+	`	You purchase the Scrapper for 194,000 credits.`
 	action
-		give ship "Scrapper" "Yesterday's Tomorrow"
-		payment -231000
+		give ship "Scrapper (Spotlight)" "Yesterday's Tomorrow"
+		payment -194000
 
 event "add scrapper to basic shipyard"
 	shipyard "Basic Ships"
@@ -1399,15 +1399,19 @@ mission "Betelgeuse offer [Gremlin 1]"
 				`	"Sure, for <payment>."`
 				`	"Sorry, I'm headed in a different direction."`
 					decline
-			`	"Thanks! That's no problem!" You let her onto your ship.`
-				accept
+			`	"That's no problem! My name is Henrietta."`
+			choice
+				`	"I'm <first>. Welcome aboard."`
+						accept
+				`	"I'm Captain <last>. Welcome aboard."`
+						accept
 	on complete
 		event "Gremlin Betelgeuse Reminder" 360
 		payment
 		payment 5000
 		conversation
 			scene "thumbnail/gremlin-thumb"
-			`When you land, Henrietta pays you <payment> and confesses,"I'm actually a designer for Betelgeuse Shipyards. We might be interested in this 'Gremlin' you've put together. If you're interested in selling the rights, bring it back here in a year."`
+			`During the journey to <planet>, Henrietta asked a lot of questions about the Gremlin. When you land, she pays you <payment> and confesses,"I'm actually a designer for Betelgeuse Shipyards. We might be interested in this 'Gremlin' you've put together. If you're interested in selling the rights, bring it back here in a year."`
 			`	A year is a long time to hold onto this ship. Maybe they want to make sure you don't get yourself killed while flying it...`
 
 event "Gremlin Betelgeuse Reminder"
@@ -1417,7 +1421,7 @@ mission "Betelgeuse offer [Gremlin 2]"
 	name "Betelgeuse offer"
 	description "Betelgeuse has offered to pay you for the rights to use your design. Make the Gremlin your flagship and take it to <destination>."
 	source
-		government "Republic" "Syndicate" "Free Worlds"
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent" "Pirate"
 	destination "Prime"
 	to offer
 		has "event: Gremlin Betelgeuse Reminder"
@@ -1444,7 +1448,7 @@ mission "Betelgeuse offer [Gremlin 3]"
 			`You find Henrietta after checking with the receptionist at Betelgeuse headquarters. "<first> <last>, you're still al- I mean, has it been a year already? Time flies. Did you bring it?"`
 			choice
 				`	"Yeah. So how much is Betelgeuse offering?"`
-				`	"I've changed my mind. I'm not interested afterall."`
+				`	"I've changed my mind. I'm not interested after all."`
 					decline
 			`	"Betelgeuse will pay you 72,000 credits per year. Deal?" That comes out to 200 credits per day. It's not much, but it's better than nothing.`
 			choice
@@ -1461,6 +1465,9 @@ mission "Betelgeuse offer [Gremlin 3]"
 mission "Betelgeuse offer [Gremlin 4]"
 	landing
 	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
+		not attributes "uninhabited"
 	to offer
 		has "Betelgeuse offer [Gremlin 3]: failed"
 		has "event: Gremlin Betelgeuse Production"

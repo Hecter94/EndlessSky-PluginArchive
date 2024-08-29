@@ -893,6 +893,16 @@ mission "Infiltrator: War Begins"
 			cargo 0
 			variant
 				"Surveillance Drone" 4
+	npc
+		government "Republic"
+		system Castor
+		personality waiting staying mining timid mute
+		fleet
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant
+				"Beacon Drone" 4
 	npc kill
 		government "Republic"
 		system Castor
@@ -908,6 +918,16 @@ mission "Infiltrator: War Begins"
 			cargo 0
 			variant
 				"Surveillance Drone" 4
+	npc
+		government "Republic"
+		system Pollux
+		personality waiting staying mining timid mute
+		fleet
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant
+				"Beacon Drone" 4
 	npc kill
 		government "Republic"
 		system Pollux
@@ -1050,6 +1070,55 @@ mission "Limit Breaker Syndicate Patrol"
 		conversation
 			scene "thumbnail/wasp"
 			`As you part ways with Syphus he says, "Any patrol you return alive from is a good one. Thanks for the escort."`
+
+
+
+mission "Midnight FW Epilogue: JJ and Brother Greg"
+	minor
+	name "Rescue JJ"
+	description "Transport JJ to <destination>."
+	passengers 1
+	source
+		attributes "south pirate"
+	destination "Harmony"
+	to offer
+		has "free worlds plot completed"
+		not "House Bebliss 3-FW: active"
+		random < 70
+	on offer
+		conversation
+			`While wandering the spaceport, a familiar voice calls to you from a nearby alley.`
+			choice
+				`	"JJ?"`
+			`	"<first>, it's really you! Finally, a familiar face!" Looking at the source of the voice, you see JJ and brother Greg dressed as independent traders. "I'm here on an undercover mission, but I need a lift to <planet>. Can you help us with that?"`
+			choice
+				`	"What mission?"`
+				`	"Of course!"`
+					goto escape
+			`	JJ hesitates before answering, "Before you joined the Free Worlds, I arranged a large precious metals deal in case they were needed for funding the war effort. With the earliest government bonds maturing soon, the Free Worlds is going to need fresh funding. I came here to convert those precious metals back into credits. Brother Greg joined me to help negotiate that exchange."`
+			choice
+				`	"So the deal went bad?"`
+			`	Brother Greg responds, "No, that actually went fine. The problem is our ship was stolen, leaving us stranded here."`
+			choice
+				`	"Alright, I'll help you."`
+			label escape
+			`	"Thanks <first>!" You lead them back to the <ship>.`
+				accept
+	npc
+		government "Pirate"
+		personality waiting staying harvests plunders
+			confusion 10
+		ship "Marauder Leviathan (Shields)" "Golden Serpent"
+	npc
+		government "Pirate"
+		system Girtab
+		personality waiting staying harvests plunders
+			confusion 10
+		ship "Marauder Falcon (Shields)" "Golden Talons"
+	on complete
+		payment 1000000
+		conversation
+			`You and JJ exchanged war stories during the journey. Brother Greg had a few stories of his own to contribute. There were more than a few injured Navy and Militia crash survivors who arrived at the monastery seeking treatment. JJ salutes you. "Thanks again, <first>. I'll make sure you get bonus pay for your assistance." The Free Worlds deposits <payment> into your account.`
 
 
 
@@ -1748,7 +1817,7 @@ mission "Midnight Striker"
 	on enter Kraz
 		conversation
 			scene "thumbnail/striker drone-thumb"
-			`You receive an pre-recorded hail from some drones: "Hey <first>, Barmy here. We're on a tight scedule, so I'll need you to get started right away. These are some new drones we put together for a secret project. After you're done fighting them meet me planet side and we can discuss how they performed." Maybe Barmy has gotten too comfortable with expecting your assitance in these mock battles...`
+			`You receive an pre-recorded hail from some drones: "Hey <first>, Barmy here. We're on a tight scedule, so I'll need you to get started right away. These are some new drones we put together for a secret project. After you're done fighting them meet me planet side and we can discuss how they performed." Maybe Barmy has gotten too comfortable with expecting your assistance in these mock battles...`
 	npc disable
 		government "Test Dummy"
 		system Kraz
@@ -1789,7 +1858,7 @@ mission "Midnight Striker"
 			choice
 				`	"The Javelins are good for surprise strikes."`
 					goto javelin
-				`	"The Meteors are good for fire support."`
+				`	"The Meteors are good for artillery support."`
 					goto meteor
 				`	"Couldn't they be armed with something else?"`
 					to display
@@ -1800,13 +1869,13 @@ mission "Midnight Striker"
 					goto kludge
 			action
 				set "striker non-missiles"
-			`	Barmy sighs, "Unfortunately, Southbound didn't leave enough weapon space to cram in much more than the smallest of missile pods. I suppose one could try Sidewinders, but there'd be problems with sourcing the ammo." It seems even a basic Energy Blaster won't fit in the alotted weapon space.`
+			`	Barmy sighs, "Unfortunately, Southbound didn't leave enough weapon space to cram in much more than the smallest of missile pods. I suppose one could try Sidewinders, but we lack the logistical support to ensure a reliable supply of ammo." It seems even a basic Energy Blaster won't fit in the alotted weapon space.`
 			choice
-				`	"What about installing a Kludge Blaster?"`
+				`	"How about installing a Kludge Blaster?"`
 				`	"I suppose you're right."`
 					goto final
 			scene "outfit/kludge blaster"
-			`	Barmy frowns. "There's enough space to accomodate one. But Kludge Blasters work best when used in multiples. We need to muster more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
+			`	Barmy frowns. "There's enough space to accomodate one. But despite having a more powerful projectile than regular Energy Blasters, their long recharge time means Kludge Blasters work best when used in multiples. We need to muster more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
 				goto final
 			label javelin
 			action
@@ -1866,7 +1935,8 @@ mission "Smuggler's Den Advanced Shields"
 	landing
 	invisible
 	deadline 2
-	source "Smuggler's Den"
+	source 
+		planet "Smuggler's Den" "New Tortuga"
 	to offer
 		has "event: add advanced modified shields"
 	on offer

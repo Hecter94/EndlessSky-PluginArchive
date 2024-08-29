@@ -2284,7 +2284,7 @@ mission "Coalition Dissension: Restricted Spaceport (Arach)"
 		not attributes "uninhabited"
 	to offer
 		has "coalition dissension"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			scene "outfit/riot containment"
@@ -2313,7 +2313,7 @@ mission "Coalition Dissension: Restricted Spaceport (Kimek)"
 		not attributes "uninhabited"
 	to offer
 		has "coalition dissension"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			scene "outfit/riot containment"
@@ -2342,7 +2342,7 @@ mission "Coalition Dissension: Restricted Spaceport (Saryd)"
 		not attributes "uninhabited"
 	to offer
 		has "coalition dissension"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			scene "outfit/riot containment"
@@ -2367,13 +2367,14 @@ mission "Coalition Dissension: Restricted Spaceport (Saryd)"
 mission "Coalition Dissension: Spaceport Bomber (Arach)"
 	minor
 	invisible
+	deadline
 	source
 		government "Coalition"
 		attributes "arach"
 		not attributes "uninhabited"
 	to offer
 		has "Coalition Dissension: Restricted Spaceport (Arach): declined"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			`As you walk into the spaceport, an Arach nearly knocks you down. He seems to be in a rush to leave.`
@@ -2394,17 +2395,69 @@ mission "Coalition Dissension: Spaceport Bomber (Arach)"
 					goto remain
 				`	(Return to your ship.)`
 			`	As you rush to your ship, an Arach wearing a Heliarch armband orders you to stop.`
+			label decision
 			choice
 				`	(Obey.)`
+					to display
+						not "Coalition Dissension: Spaceport Bomber (Arach) stopped"
 					goto stop
+				`	(Obey.)`
+					to display
+						has "Coalition Dissension: Spaceport Bomber (Arach) stopped"
+					goto obey
+				`	(Draw the Quantum Keyblade.)`
+					to display
+						or
+							has "outfit (flagship installed): Quantum Key Blade"
+							has "outfit (flagship installed): Quantum Dragon Blade"
+							has "outfit (flagship installed): Quantum Phoenix Blade"
+							has "outfit (flagship installed): Quantum Snake Blade"
+							has "outfit (flagship installed): Quantum Tiger Blade"
+							has "outfit (flagship installed): Quantum Turtle Blade"
+					goto keyblade1
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan1
 				`	(Run.)`
+
+			label run
 			scene "outfit/enforcer confrontation gear"
 			`	You hasten your pace into a full run. The Arach takes aim and shoots you in the back! Your body spins from the impact and you find yourself sprawled on the ground. For some reason, you can't move your body and a cold chill settles over you. Soon, your vision fades to darkness and you leave this mortal realm...`
 				die
+
+			label keyblade1
+			`	You draw the Quantum Keyblade. Seeing this, the Arach takes aim and shoots! You activate Quantum Shifting and the energy blast passes through you harmlessly. Before she can fire again, you deactivated Quantum Shifting and...`
+			choice
+				`	(Run.)`
+					goto run
+				`	(Swing the blade at her.)`
+			action
+				"reputation: Heliarch" <?= -1000
+			scene "effect/blood"
+			`	You sever the appendages she used to hold her weapon. She falls to the ground, screaming! You can see more Heliarch agents approaching and flee to the <ship>. If they didn't suspect you before, they will now. Firing up the engines, you head into orbit.`
+				launch
+
+			label orphan1
+			action
+				"reputation: Heliarch" <?= -1000
+				outfit "Evidence of ********" 1
+				"captain of atrocity" ++
+			scene "effect/blood"
+			`	You cause the appendages she held her weapon with to explode, splattering the area around her with blood. She falls to the ground, screaming! You can see more Heliarch agents approaching and flee to the <ship>. If they didn't suspect you before, they will now. Firing up the engines, you head into orbit.`
+				launch
+
 			label stop
+			action
+				set "Coalition Dissension: Spaceport Bomber (Arach) stopped"
 			`	The Arach appraches you and gestures back towards the direction of the plaza. "To the plaza you must go. Many questions we have for you. Resist you must not." She is holding one of their weapons, no mere Laser Rifle. A shot from this would probably put a very large hole in you.`
+				goto decision
+
+			label obey
+				clear "Coalition Dissension: Spaceport Bomber (Arach) stopped"
 			`	Arriving at the plaza you notice that several Arachi, along with a few Kimek and Saryd, have been gathered there. You are ushered into the crowd and the Heliarch spread out around the edges, their weapons ready.`
 				goto gathering
+
 			label remain
 			`	Soon several Arachs, along with a few Kimek and Saryd, gather at your location. The Heliarch herd you all into a cluster while they spread out around the edges, their weapons held ready.`
 			label gathering
@@ -2414,13 +2467,96 @@ mission "Coalition Dissension: Spaceport Bomber (Arach)"
 					goto testify
 				`	(Remain quiet.)`
 			scene "outfit/enforcer confrontation gear"
-			`	An Arach suddenly burbles something in its native language. Soon the Kimek begin to chitter and the Saryd whinny. Several gesture towards you. The Heliarch approach with their weapons readied. "Accused of this attack you are. Claim it is true many witnesses agree. Died in the explosion several Heliarch did. Death is the sentence that is judged." The Heliarch fire their weapons, vaporizing you. All that remains is a pink mist dissipating into the wind...`
+			`	An Arach suddenly burbles something in its native language. Soon the Kimek begin to chitter and the Saryd whinny. Several gesture towards you. The Heliarch approach with their weapons readied. "Accused of this attack you are. Claim it is true many witnesses agree. Died in the explosion several Heliarch did. Death is the sentence that is judged."`
+			choice
+				`	"Wait, it wasn't me!"`
+				`	(Draw the Quantum Keyblade.)`
+					to display
+						or
+							has "outfit (flagship installed): Quantum Key Blade"
+							has "outfit (flagship installed): Quantum Dragon Blade"
+							has "outfit (flagship installed): Quantum Phoenix Blade"
+							has "outfit (flagship installed): Quantum Snake Blade"
+							has "outfit (flagship installed): Quantum Tiger Blade"
+							has "outfit (flagship installed): Quantum Turtle Blade"
+					goto keyblade2
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan2
+			`	The Heliarch fire their weapons, vaporizing you. All that remains is a pink mist dissipating into the wind...`
 				die
+			label keyblade2
+			`	You activate Quantum Shifting before the first volley hits. As their weapons charge up to fire again, you deactivate Quantum Shifting and...`
+			choice
+				`	(Make a run for it.)`
+				`	(Cut one of them down.)`
+					goto keyblade3
+			`	You scramble to flee to the <ship>, but the Heliarch shoot you in the back, vaporizing you. All that remains is a pink mist dissipating into the wind...`
+				die
+			label keyblade3
+			`	You stab your blade deep into the abdomen of the closest Heliarch, an Arach. As the others take aim, you reactivate Quantum Shifting. Methodically, you repeat the process. After several of their agents lie dead on the ground, more arrive. They seem to be staggering their shots, to the point that you can no longer find a breather to safely deactivate Quantum Shifting. Finally, one of their weapon blasts slams into your back! Your body spins from the impact and you find yourself sprawled on the ground. For some reason, you can't move your body and a cold chill settles over you. Soon, your vision fades to darkness and you leave this mortal realm...`
+				die
+			label orphan2
+			action
+				"reputation: Heliarch" <?= -1000
+				"reputation: Coalition" <?= -1000
+				outfit "Evidence of ********" 10
+				"captain of atrocity" += 10
+			`	With a gesture, the energy blasts from their weapons reverse course and decapitate all of the Heliarch present! The crowd witnessing this flee in terror. You are free to return to the <ship>, but the Heliarch and the Coalition are now your enemy.`
+				launch
 			label testify
 			`	You step forward and tell the Heliarch about the Arach who almost knocked you down in his rush away from the spaceport. After recording your statement, they ask the crowd if anyone has more information on this Arach. After gathering a few more statements and confirming your identity, you and the others are released.`
 				decline
 	on decline
 		"coalition dissension" ++
+	npc kill
+		government "Heliarch"
+		personality waiting heroic opportunistic
+		fleet
+			names "heliarch"
+			fighters
+				names "heliarch fighter"
+			cargo 1
+			variant
+				"Heliarch Punisher (Scrappy)"
+	npc kill
+		government "Heliarch"
+		personality entering heroic opportunistic
+		fleet
+			names "heliarch"
+			fighters
+				names "heliarch fighter"
+			cargo 1
+			variant
+				"Heliarch Judicator (Scrappy)"
+				"Heliarch Pursuer (Scrappy)" 2
+				"Heliarch Rover" 2
+				"Heliarch Stalker (Scrappy)" 2
+	npc kill
+		government "Heliarch"
+		personality entering heroic opportunistic
+		fleet
+			names "heliarch"
+			fighters
+				names "heliarch fighter"
+			cargo 1
+			variant
+				"Heliarch Breacher (Scrappy)"
+				"Heliarch Hunter (Scrappy)"
+	npc kill
+		government "Heliarch"
+		personality entering heroic opportunistic
+		fleet
+			names "heliarch"
+			fighters
+				names "heliarch fighter"
+			cargo 1
+			variant
+				"Heliarch Interdictor (Scrappy)"
+				"Heliarch Neutralizer (Scrappy)"
+
+
 
 mission "Coalition Dissension: Spaceport Bomber (Kimek)"
 	minor
@@ -2431,7 +2567,7 @@ mission "Coalition Dissension: Spaceport Bomber (Kimek)"
 		not attributes "uninhabited"
 	to offer
 		has "Coalition Dissension: Restricted Spaceport (Kimek): declined"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			`You are about to enter a restaurant when a Kimek carrying a large briefcase bumps into you. He chitters at you angrily in the native language of his species before skittering off in a rush.`
@@ -2472,7 +2608,7 @@ mission "Coalition Dissension: Spaceport Bomber (Saryd)"
 	passengers 5
 	to offer
 		has "Coalition Dissension: Restricted Spaceport (Saryd): declined"
-		random < 5
+		random < 5 + "coalition dissension"
 	on offer
 		conversation
 			scene "scene/scene-explosion"
@@ -2506,7 +2642,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Arach)"
 	to offer
 		has "known to the heliarchs"
 		has "Coalition Dissension: Spaceport Bomber (Arach): offered"
-		random < 5
+		random < 5 + "coalition dissension"
 	source
 		government "Heliarch"
 	destination "Ablub's Invention"
@@ -2575,7 +2711,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Kimek)"
 	to offer
 		has "known to the heliarchs"
 		has "Coalition Dissension: Spaceport Bomber (Arach): offered"
-		random < 5
+		random < 5 + "coalition dissension"
 	source
 		government "Heliarch"
 	destination "Remote Blue"
@@ -2644,7 +2780,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Saryd)"
 	to offer
 		has "known to the heliarchs"
 		has "Coalition Dissension: Spaceport Bomber (Saryd): offered"
-		random < 5
+		random < 5 + "coalition dissension"
 	source
 		government "Heliarch"
 	destination "Vibrant Water"
@@ -2779,6 +2915,7 @@ mission "Culminator Ammo [Outfitter]"
 				payment -1200000
 				outfit "Culminator Storage Tube" 2
 				outfit "Culminator Torpedo" 40
+				"coalition dissension" ++
 			`	"A good deal, that is. Alright! To you I will sell." The sales clerk is still busy with the other customer and doesn't notice your exchange...`
 				decline
 
@@ -2805,7 +2942,7 @@ mission "Culminator Cache [Shifting Sand] 1"
 				`	"I am <first> <last>. Welcome aboard."`
 				`	"Sorry, I can't help you."`
 					decline
-			`	"Sedorum. For your assistance you I thank ."`
+			`	"Sedorum. For your assistance you I thank."`
 				accept
 	on stopover
 		dialog `Sedorum thanks you for helping him reach <stopovers>. A small package is waiting for him at the spaceport. After bringing it aboard, he is ready for the final leg of his trip.`
@@ -2841,6 +2978,7 @@ mission "Culminator Cache [Shifting Sand] 2"
 		has "Culminator Cache [Vibrant Water] 2: declined"
 		has "Culminator Cache [Shadowed Valley] 2: declined"
 	on offer
+		"coalition dissension" ++
 		log "Minor People" "Sedorum" `The Heliarch placed Sedorum under arrest for being a dissident recruiter.`
 		conversation
 			scene "thumbnail/heliarch hunter"
@@ -2857,8 +2995,10 @@ mission "Culminator Cache [Vibrant Water] 1"
 
 mission "Culminator Cache [Vibrant Water] 2"
 	landing
-	invisible
+	name "Escape the Heliarch"
+	description "Flee to <destination> without killing any Coalition or Heliarch ships."
 	source "Vibrant Water"
+	destination Poisonwood
 	to offer
 		has "Culminator Cache [Vibrant Water] 1: done"
 	on offer
@@ -2873,11 +3013,33 @@ mission "Culminator Cache [Vibrant Water] 2"
 			`	You fly out to the island and park on a wide stretch of beach. A thick jungle spreads out before you. After a few hours of hiking through the exotic foliage, you find the place where the map is marked with some notes. Several large crates are hidden in the bushes.`
 			choice
 				`	(Crack one open.)`
-				`	(Haul them back to your ship.)`
+					to display
+						not "outfit (flagship installed): Quantum Key Blade"
+						not "outfit (flagship installed): Quantum Dragon Blade"
+						not "outfit (flagship installed): Quantum Phoenix Blade"
+						not "outfit (flagship installed): Quantum Snake Blade"
+						not "outfit (flagship installed): Quantum Tiger Blade"
+						not "outfit (flagship installed): Quantum Turtle Blade"
+				`	(Crack one open.)`
+					to display
+						or
+							has "outfit (flagship installed): Quantum Key Blade"
+							has "outfit (flagship installed): Quantum Dragon Blade"
+							has "outfit (flagship installed): Quantum Phoenix Blade"
+							has "outfit (flagship installed): Quantum Snake Blade"
+							has "outfit (flagship installed): Quantum Tiger Blade"
+							has "outfit (flagship installed): Quantum Turtle Blade"
+					goto quantumkeyblade
+				`	(Haul the crates back to your ship.)`
 					goto haul
 			scene "scene/scene-devoured"
 			`	The lid is difficult to crack open. With some effort, you start to pry it open by pounding a wedge into the seam. Unfortunately, the noise attracts a pack of local predators that sneak up on you! Although each one is no larger than a common house cat, there are too many of them. They seem to sense where your arteries are and each bite results in a spray of blood that splatters the area. This only excites the ravaging predators into a frenzy and you are quickly devoured.`
 				die
+			label quantumkeyblade
+			`	The lid is difficult to crack open. With some effort, you start to pry it open by wedging the Quantum Keyblade into the seam. Unfortunately, the noise attracts a pack of local predators that sneak up on you! Although each one is no larger than a common house cat, there are too many of them to fight. When the first one leaps for your throat, you instinctively activate Quantum Shifting. The creatures viciously try to attack but are quickly confused when their bites fail to find your succulent flesh. After a few moments they give up in frustration and scatter into the underbrush...`
+			`	Deactivating Quantum Shifting, you gasp for breath. You are uncertain if the predators will return.`
+			choice
+				`	(Haul the crates back to your ship.)`
 			label haul
 			scene "outfit/culminator pod"
 			`	It takes multiple trips, but you manage to haul back half of the crates. Inside, you find a pair of weapon pods and what appears to be their ammunition. The sun is starting to set...`
@@ -2885,22 +3047,30 @@ mission "Culminator Cache [Vibrant Water] 2"
 				`	(Retrieve the remaining crates.)`
 				`	(Wait until morning.)`
 					goto morning
-				`	(Leave.)`
+				`	(Leave the area.)`
 					goto leave
 			scene "scene/scene-devoured"
 			`	The sky gradually darkens as you trudge back through the jungle. Something seems odd. The local wildlife has gotten quiet. As your eyes adjust to the gloomy twilight, something leaps out from the brush and you feel a sharp pain in your neck! The creature's vicious attack cut into an artery, sending a spray of blood gushing out into the cool evening air. Suddenly, the jungle springs to life as more of these predators swarm out from the underbrush. There is no time to react as you are quickly devoured by them in a bloodthirsty frenzy.`
 				die
 			label morning
+			`	You settle in for the night...`
+			``
 			scene "thumbnail/heliarch rover"
-			`	You settle in for the night. The following morning you awaken to the sound of engines flying overhead. A Heliarch patrol flies over the island and hails you. "For what on this island you do seek? Find in the jungle something you have?".`
+			`	The following morning you awaken to the sound of engines flying overhead. A Heliarch patrol is surveilling the island and hails you. "For what on this island you do seek? Find in the jungle something you have?".`
 			choice
 				`	"I found an old weapons cache."`
 				`	"None of your business!"`
+					to display
+						not "joined the heliarchs"
+						not "assisting heliarchy"
 					goto fight
 			`	"Property of the Coalition these weapons are. Surrender them you will. Resist you shall not."`
 			choice
 				`	(Surrender the weapons cache.)`
 				`	(Flee.)`
+					to display
+						not "joined the heliarchs"
+						not "assisting heliarchy"
 					goto fight
 			`	You hand over the crates you retrieved. The Heliarch thank you for your cooperation and dispatch a search party to confiscate the rest. You return to the spaceport empty handed.`
 				decline
@@ -2909,16 +3079,23 @@ mission "Culminator Cache [Vibrant Water] 2"
 				outfit "Culminator Pod" 2
 				outfit "Culminator Torpedo" 14
 				"reputation: Heliarch" <?= -1000
+				"coalition dissension" ++
 			scene "thumbnail/heliarch judicator"
+			branch rebel
+				"reputation: Heliarch" < -1000
+			`	You fire up your engines and launch the <ship>! A Heliarch Judicator is in orbit and moves to intercept! Your only hope of getting out of this with your reputation somewhat intact is to flee Coalition space without getting into a fire fight. Perhaps you can lay low on <destination> until things here cool down.`
+				launch
+			label rebel
 			`	You fire up your engines and launch the <ship>! A Heliarch Judicator is in orbit and moves to intercept!`
 				launch
 			label leave
 			action
 				outfit "Culminator Pod" 2
 				outfit "Culminator Torpedo" 14
+				"coalition dissension" ++
 			`	You abandon the remaining crates and head back to the spaceport for the evening. The following morning, the Heliarch announce that a weapons cache was discovered on the island. They are searching for whoever was hiding the weapons there...`
 				decline
-	npc kill
+	npc evade
 		government "Heliarch"
 		personality waiting heroic opportunistic
 		fleet
@@ -2929,6 +3106,22 @@ mission "Culminator Cache [Vibrant Water] 2"
 			variant
 				"Heliarch Judicator"
 				"Heliarch Rover" 6
+		on kill
+			fail
+	to fail
+		"reputation: Heliarch" < -1000
+	on enter Graffias
+		"reputation: Heliarch" += 1000
+	on complete
+		conversation
+			branch negative
+				"reputation: Heliarch" < 0
+			scene "outfit/unknown"
+			`You've escaped Coalition space. Hopefully your reputation with the Heliarch is salvagable...`
+				accept
+			label negative
+			scene "outfit/attention"
+			`You've escaped Coalition space. Unfortunately your reputation with the Heliarch probably isn't salvagable...`
 
 mission "Culminator Cache [Shadowed Valley] 1"
 	landing
@@ -2967,3 +3160,4 @@ mission "Culminator Cache [Shadowed Valley] 2"
 			scene "outfit/culminator storage"
 			`	You aren't sure if the water is safe. Returning to your ship, you don a space suit before returning to the pool. Wading out into the depths, you find several crates hidden below the surface. Hauling them back to your ship, you find that they contain ammunition, but the weapon that uses them is not included.`
 				decline
+

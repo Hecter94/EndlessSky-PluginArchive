@@ -690,7 +690,6 @@ mission "Hunting Beelzebub: Dirt Belt Rumors"
 		or
 			and
 				not "dirt belt beelzebub rumors"
-				random < 70
 			and
 				has "dirt belt beelzebub rumors"
 				random < 20 - "dirt belt beelzebub rumors"
@@ -719,12 +718,15 @@ mission "Hunting Beelzebub: Lares Camping 1"
 			choice
 				`	(Listen closely.)`
 				`	(Ignore them.)`
-					defer
+					goto ignore
 			scene "ship/ember nightmare/ember nightmare"
 			`	"I'm telling you it's real! Beezelbob's ship, the Ember Nightmare, took off from Lares," says a pirate with a scar on his face.`
 			`	"It's Beelzebub, not Beezelbob. And how do we know you're not just making this up," asks a pirate with a data pad strapped to his arm.`
 			`	"I've seen it," says a woman wearing an eyepatch. "It's creepy how those red lights glow like embers nestled in the ships shadows."`
 				accept
+			label ignore
+			`	You ignore their conversation. If the rumors are true, you might be missing a rare chance to find the elusive pirate warlord...`
+				defer
 	on defer
 		"beelzebub trail goes cold" += 15
 
@@ -747,6 +749,7 @@ mission "Hunting Beelzebub: Rum Cellar"
 		"Hunting Beelzebub: Lares Camping 2: declined" + "Hunting Beelzebub: Lares Camping 2: failed" >= 1
 	on offer
 		conversation
+			scene "outfit/unknown"
 			`You're starting to suspect rumors of Beelzebub's presence on Lares were wrong.`
 				accept
 	on enter

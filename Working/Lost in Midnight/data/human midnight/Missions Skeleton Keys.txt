@@ -116,10 +116,31 @@ mission "Skeleton Key North 2"
 				`	(Stay and watch what happens.)`
 			scene "scene/scene-empty box"
 			`	"And where's that boy now?" asks the first pirate captain, looking around."`
-			`	The other captain, suddenly aware of Tod's absence, yanks the lid of the crate open. "Empty!" The pirates all draw their weapons. "Find the boy! Find the treasure!" Turning to Tod, you notice he's already running off, in the wrong direction of your ship! As you move to follow, someone shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and screams of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
+			`	The other captain, suddenly aware of Tod's absence, yanks the lid of the crate open. "Empty!" The pirates all draw their weapons. "Find the boy! Find the treasure!" Turning to Tod, you notice he's already running off in the wrong direction, away from your ship!`
+			choice
+				`	(Chase after him.)`
+				`	(Shoot the pirate closest to Tod.)`
+					goto protect
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+					goto orphan
+			scene "effect/blood"
+			`	As you move to follow, someone shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and screams of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
 				die
+			label protect
+			scene "effect/blood"
+			`	You fire at the pirate closest to Tod, allowing him to escape. As you do so, someone else shoots you in the back! Collapsing to the ground, you bleed out, as the sounds of more gunfire and screams of anguish briefly enter your consciousness. The pirate's temporary truce has unraveled into a chaotic bloodbath. You notice with irony that you can no longer feel the pain from your wound. Your mind starts to wander, wondering why you're lying on the ground in this canyon or what your name is. Was it Tod? No, Tod is someone else. <first>? Maybe. Yeah, that's probably it. You smile in satisfaction at the name. At least you think you're smiling. Wait, are you smiling? Why? You're not really sure. The answers to these random questions no longer seem to matter as your existence fades into a dark realm of nothingness.`
+				die
+			label orphan
+			action
+				"captain of atrocity" ++
+			scene "outfit/midnight lost orphan"
+			`	You allow Midnight's Lost Orphan to exert its full influence on the pirates. Already agitated, they begin shooting at each other. The firefight doesn't last long and soon all the pirates have either died or fled. Fortunately, Tod was unharmed. He seems confused. "How... How did I survive that?"`
+			choice
+				`	"Let's get out of here."`
 			label escape
-			`	You lead Tod through the canyon back to your ship. "The crate's a decoy setup by the pirate captain you rescued me from. What they're really looking for is in my head."`
+			`	You lead Tod through the canyon back to your ship. While walking he explains, "The crate's a decoy setup by the pirate captain you originally rescued me from. What they're really looking for is in my head."`
 			choice
 				`	"What's that supposed to mean?"`
 			scene "outfit/asteroid scanner"
@@ -191,7 +212,7 @@ mission "Skeleton Key North 2"
 	npc
 		government "Pirate"
 		system "Gorvi"
-		personality waiting staying plunders unconstrained heroic
+		personality waiting staying plunders unconstrained heroic coward
 		fleet
 			names "pirate"
 			cargo 0
@@ -202,7 +223,7 @@ mission "Skeleton Key North 2"
 			"combat rating" > 500
 		government "Pirate"
 		system "Gorvi"
-		personality waiting staying plunders unconstrained heroic
+		personality waiting staying plunders unconstrained heroic coward
 		fleet
 			names "pirate"
 			cargo 0
@@ -215,7 +236,7 @@ mission "Skeleton Key North 2"
 			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" > 1
 		government "Pirate"
 		system "Gorvi"
-		personality waiting staying plunders unconstrained heroic
+		personality waiting staying plunders unconstrained heroic coward
 		fleet
 			names "pirate"
 			cargo 0
@@ -236,12 +257,24 @@ mission "Skeleton Key North 2"
 	on fail
 		dialog `[MISSION FAILED] You lost track of Tod! If life were a game, you could load a save file and try again.`
 	on complete
-		payment -1000000
 		log "Minor People" "Tod Copper" `The boy you rescued from slavers recalled a secret code that revealed the location of a pirate's treasure.`
 		log `Found a strange key amongst some pirate treasure hidden in the asteroids of Gorvi. I've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? Perhaps someday I'll eventually find the treasure it unlocks...`
 		conversation
+			branch atrocity
+				has "outfit (flagship installed): Midnight's Lost Orphan"
 			scene "outfit/treasure"
+			action
+				payment -1000000
 			`You were able to get in touch with Tod's mother before landing. As the <ship> touched down on the landing pad, Tod wastes no time opening the hatch and running out to greet her. You hand him his share of the treasure, giving them a million credits to make a better life for themselves. Despite the incredible haul, it's not entirely certain that you and Tod found all of the hidden treasure at Gorvi before the pirates interrupted your search. Perhaps it might be worthwhile to visit the system again with an Asteroid Scanner the next time you head north. After bidding them farewell, you stick your hands into your pockets and feel your fingertips brush against a rough hewn object.`
+				goto end
+			label atrocity
+			action
+				outfit "Evidence of ********"
+				"captain of atrocity" ++
+				set "tod dead"
+			scene "outfit/midnight lost orphan"
+			`You've arrived at <planet>. For some reason, you have the lingering feeling that you're supposed to be transporting a special passenger home. But no such person is aboard your ship. You sense Midnight's Lost Orphan is curious about something in your pocket, brushing any thoughts about what may have happened to your non-existant passenger aside. Reaching in, you feel your fingertips brush against a rough hewn object.`
+			label end
 			choice
 				`	(Study the key.)`
 			scene "outfit/skeleton key"
@@ -347,15 +380,17 @@ mission "Skeleton Key South 2"
 				`	"Can I have some?"`
 					goto share
 				`	"Halt, in the name of justice!"`
+					to display
+						not "outfit (flagship installed): Midnight's Lost Orphan"
 			scene "scene/scene-bloodyknife"
-			`	The man immediately leaps towards you like a cornered animal. As the candy bars and bags of chips he was holding in his arms fall away, you see that he was holding a knife the whole time. You are impaled before both of you crash to the floor. "There's no justice here," he yells. The overwhelming stench emanating from him is the last thing to register in your mind as you lay there dying...`
+			`	The man immediately leaps towards you like a cornered animal. As the candy bars and bags of chips he was holding in his arms fall away, you see that he was holding a knife the whole time! You are impaled before both of you crash to the floor. "There's no justice here," he yells. The overwhelming stench emanating from him is the last thing to register in your mind as you lay there dying...`
 				die
 			label talk
 			`	The man thinks a moment... then starts running!"`
 			choice
 				`	"Wait!"`
 				`	"Stop!"`
-			`	But the passages on the station are a labyrinth outsiders like you can easily get lost in. He easily slips away in the dark tunnels...`
+			`	But the passages on the station are a labyrinth outsiders like you can easily get lost in. He effortlessly slips away in the dark tunnels...`
 				defer
 			label share
 			`	The man thinks a moment... then tosses you a pack of Chocolate Num Nums. You catch it and rip open the wrapper. As you reach in, you say:`
@@ -383,7 +418,7 @@ mission "Skeleton Key South 2"
 				outfit "Skeleton Key" 1
 				set "skeleton key south"
 			scene "outfit/skeleton key"
-			`The crew aboard the <npc> are dead. Some escape pods are missing, so there may be survivors. But the captain isn't among them. Clutched in his hand with a death grip is some sort of key... You've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Could this be one of them? You pocket the key.`
+			`The crew aboard the <npc> are dead. Some escape pods are missing, so there may be survivors. But the captain isn't among them. Clutched in his hand with a death grip is some sort of key... You've heard urban legends about three "Skeleton Keys" which unlock pirate treasure. Pocketing the key, you wonder if this could be one of them.`
 			``
 			`	Visit Joe on <destination> and let him know the final fate of the <npc>.`
 				launch
@@ -559,7 +594,12 @@ mission "Skeleton Keys, Three 1"
 		require "Skeleton Key" 3
 		conversation
 			scene "outfit/map"
+			branch atrocity
+				has "tod dead"
 			`You have three Skeleton Keys, but are uncertain where to find the treasure they are meant to unseal. It's time you consulted with a former pirate. While Tod was enslaved by them for a time, Joe on <destination> had more experience and may have more information that could help you.`
+				accept
+			label atrocity
+			`You have three Skeleton Keys, but are uncertain where to find the treasure they are meant to unseal. It's time you consulted with a former pirate. Joe on <destination> may have information that could help you.`
 				accept
 	on enter "Fomalhaut"
 		event "midnight: reveal cadrelock rock in eber"
@@ -1037,17 +1077,18 @@ mission "Skeletons Declined: Cadrelock Rock Reveal"
 	source
 		attributes "dirt belt" "south"
 		not government "Pirate"
+		not attributes "uninhabited"
 	to offer
 		or
-			has "Paradise Fortune 1: declined"
-			has "Paradise Fortune 1: failed"
-			has "Paradise Fortune 1: aborted"
-			has "Paradise Fortune 2: declined"
-			has "Paradise Fortune 2: failed"
-			has "Paradise Fortune 2: aborted"
-			has "Paradise Fortune 3: declined"
-			has "Paradise Fortune 3: failed"
-			has "Paradise Fortune 3: aborted"
+			has "Lost Boy 1: declined"
+			has "Lost Boy 1: failed"
+			has "Lost Boy 1: aborted"
+			has "Lost Boy 2: declined"
+			has "Lost Boy 2: failed"
+			has "Lost Boy 2: aborted"
+			has "Lost Boy 3: declined"
+			has "Lost Boy 3: failed"
+			has "Lost Boy 3: aborted"
 			has "Pookie, Part 1: declined"
 			has "Pookie, Part 1: failed"
 			has "Pookie, Part 1: aborted"

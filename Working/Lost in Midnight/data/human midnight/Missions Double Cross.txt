@@ -996,13 +996,12 @@ mission "Peace Tour 2"
 		payment 1000000
 	npc kill
 		government "Bounty"
-		system
-			distance 2 3
+		system Kugel
 		personality target uninterested fleeing
 		fleet "TMBR Billboard"
 		dialog `You finally stopped the <npc> from distributing nukes across the galaxy. Return to <origin> to collect the bounty.`
 	on complete
-		event "remove nukes of peace" 30
+		event "remove nukes of peace" 180
 		payment 1000000
 		conversation
 			scene "scene/scene-peace bounty"
@@ -1043,16 +1042,10 @@ event "remove nukes of peace"
 		remove fleet NukeSouth
 	system Archipelago
 		remove fleet NukeNorth
-		remove fleet NukeCore
-		remove fleet NukeSouth
 	system Chasm
-		remove fleet NukeNorth
-		remove fleet NukeCore
 		remove fleet NukeSouth
 	system Diyu
-		remove fleet NukeNorth
 		remove fleet NukeCore
-		remove fleet NukeSouth
 
 mission "Midnight Market: Nukes of Peace?"
 	invisible
@@ -1614,6 +1607,7 @@ conversation "microbot defense death"
 	`You park your ship and the docking bay doors open, inviting you in. On the other side the floor of the room is a grate. Below this, a pool of gelatinous sludge glistens, reflecting the bright ceiling lights above. Behind you the door slams shut and a thick cloud of smoke begins filling the room along with a strange buzzing sound. The smoke stings when it touches you and your flesh begins to melt horrifically into a gelatinous goo that filters through the grate into the pool below. Your mind detaches from the shock and you realize that you've been screaming. Although you no longer have ears to listen nor a brain to process the sound, the screaming doesn't stop until the organs that enable you to do so melt away...`
 		die
 
+# lesson learned: the clearance to land is not immediately cancelled when the mission fails
 mission "Thraal: Moreau"
 	landing
 	invisible
@@ -1644,11 +1638,22 @@ mission "Thraal: Moreau"
 				`	"You've got to be kidding!"`
 			scene "planet/station2k"
 			`	Thraal places the cover back on some recently repaired ciruits and says, "Would you like to meet them? I can arrange it." The Korath have been an implacable adversary. This could be a chance to establish peaceful relations with them. Before you respond, Thraal hails Gresku Fodar, the Korath station in this system, and speaks to them in their language. After a short exchange, he smiles at you reassuringly. "They're waiting."`
+			choice
+				`	(Visit Gresku Fodar.)`
+					accept
+				`	(Ignore their invitation.)`
+			action
+				fail "Thraal: Moreau"
+				log "People" "Thraal" `A human who supposedly survived the Korath attack on the Icarus. Thraal claims to get along well with the Korath, but the nature of his relationship with them remains unclear.`
+			`You've decided to ignore Thraal's invitation to meet the Korath. They've proven themselves to be nothing but dangerous and you have little reason to put your trust in Thraal. With no change in their disposition towards you, they will continue on as a hostile foe to be wary of.`
+		on kill
+			set "Thraal killed"
 	on visit
 		conversation "microbot defense death"
 	on complete
 		conversation "microbot defense death"
 
+# This uses accept instead of decline because the player must land on another planet before the clearance to land on Gresku Fodar is cancelled.
 mission "Thraal: Moreau (Cleanup)"
 	landing
 	invisible
@@ -1662,20 +1667,37 @@ mission "Thraal: Moreau (Cleanup)"
 		log "People" "Thraal" `A human who supposedly survived the Korath attack on the Icarus. Thraal claims to get along well with the Korath, but the nature of his relationship with them remains unclear.`
 		conversation
 			scene "planet/station2k"
-			`You decided to ignore Thraal's invitation to meet the Korath. They've proven themselves to be nothing but dangerous and you have little reason to put your trust in Thraal. With no change in their disposition towards you, they will continue on as a hostile foe to be wary of.`
-				decline
+			`You've decided to ignore Thraal's invitation to meet the Korath. They've proven themselves to be nothing but dangerous and you have little reason to put your trust in Thraal. With no change in their disposition towards you, they will continue on as a hostile foe to be wary of.`
+				accept
+	on accept
+		fail
 
+# This exists because the clearance to land on Gresku Fodar is not immediately cancelled after failing the mission that gave that clearance.
+mission "Thrall: Moreau Cleanup Decline"
+	landing
+	invisible
+	source
+		not planet "Gresku Fodar"
+	to offer
+		has "Thraal: Moreau: failed"
+		not "Thraal: Moreau (Cleanup): declined"
+	on offer
+		set "Thraal: Moreau (Cleanup): declined"
+		fail
+
+# This exists because the clearance to land on Gresku Fodar is not immediately cancelled after failing the mission that gave that clearance.
 mission "Thraal: Moreau (Failed)"
 	landing
 	invisible
 	source "Gresku Fodar"
 	to offer
 		has "Thraal: Moreau: failed"
-#		not "Thraal: Moreau (Cleanup): declined"
+		not "Thraal: Moreau (Cleanup): declined"
+		"reputation: Korath" < 0
 	on offer
 		conversation "microbot defense death"
-# This mission still runs even with the cleanup because the station still has clearance after failing the mission.
 
+# This mission is deprecated.
 mission "Thraal: Moreau (Killed)"
 	landing
 	invisible
@@ -1689,7 +1711,7 @@ mission "Thraal: Moreau (Killed)"
 		set "Thraal: Moreau (Failed): offered"
 		set "Thraal: Moreau (Failed): declined"
 		fail
-# This mission is deprecated because the clearance from "Thraal Moreau" remains after the mission is failed.
+
 
 
 mission "Prisoner Bribe Offer (Job)"
@@ -1858,14 +1880,14 @@ mission "Stranded Dirtbelt Saboteur"
 				`	(Leave them.)`
 					defer
 			scene "outfit/bunk room"
-			`	The 2 of them thank you and board your ship... But they realize they forgot something and they rush back out. "Go ahead and finish pre-flight preparations. We'll be back aboard when you leave."`
+			`	Both of them thank you and board your ship... But they realize they forgot something and they rush back out. "Go ahead and finish pre-flight preparations. We'll be back aboard when you leave."`
 				accept
 	on accept
 		outfit "Shield Suppressor" 1
 	on enter
 		conversation
 			scene "outfit/shield suppressor"
-			`Something is wrong with your shield generator... You also notice that the 2 passengers who asked to be rescued from <origin> aren't aboard your ship...`
+			`Something is wrong with your shield generator... You also notice that the pair of passengers who asked to be rescued from <origin> aren't aboard your ship...`
 			``
 			`There's large pirate fleet waiting for you... It seems you were set up!`
 	npc evade
@@ -1873,4 +1895,5 @@ mission "Stranded Dirtbelt Saboteur"
 		personality waiting plunders harvests
 			confusion 20
 		fleet "Large Dirt Belt Pirates"
+		fleet "Small Dirt Belt Pirates"
 

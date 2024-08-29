@@ -497,9 +497,8 @@ mission "Ayab's Revenge"
 				accept
 	npc kill
 		government "Indigenous Lifeform"
-		system
-			distance 1 2
-		personality target uninterested mining harvests ramming mute unconstrained
+		system Atik
+		personality target waiting staying uninterested mining harvests ramming mute
 		fleet "Gray Eye"
 		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
 	npc save
@@ -692,6 +691,7 @@ outfit "Lightning Tendril?"
 		"shield damage" 7.4
 		"hull damage" 5.8
 		"ion damage" .4
+		"scrambling damage" .4
 
 outfit Digester?
 	category "Guns"
@@ -1531,23 +1531,22 @@ mission "Investigate Missing Shipment 3"
 
 
 
-
 ship "Rock Scavenger"
 	noun "creature"
 	sprite "ship/rock scavenger"
 	"uncapturable"
 	attributes
 		category "Light Warship"
-		"cost" 50000
-		"hull" 44000
+		"hull" 22000
 		"automaton" 1
 		"mass" 1050
-		"cargo space" 65
-		"drag" 12
-		"heat dissipation" .608
+		"cargo space" 35
+		"drag" 8.2
+		"heat dissipation" .68
 		"fuel capacity" 100
-		"thrust" 45
+		"thrust" 15
 		"turn" 1200
+		"hull protection" 1
 		"hull repair rate" 3
 		"ion protection" 3
 		"scramble protection" 3
@@ -1557,6 +1556,7 @@ ship "Rock Scavenger"
 		"inscrutable" 1
 		"gaslining" 1
 		"hyperdrive" 1
+		"jump speed" .2
 	outfits
 		Mandibles? 6
 		Tail? 1
@@ -1572,7 +1572,7 @@ ship "Rock Scavenger"
 	leak "blood" 30 50
 	explode "blood" 45
 	"final explode" blood
-	description "Rock Scavengers look fearsome, but they are actually quite passive if left alone. Unfortunately they are often hunted for their meat, which is considered a delicacy in the paradise planets."
+	description "Rock Scavengers look fearsome, but they are actually quite passive if left alone. Unfortunately they are often hunted for their meat, which is considered a delicacy on the Paradise planets."
 
 outfit Mandibles?
 	category "Guns"
@@ -1611,8 +1611,10 @@ fleet "Rock Scavenger"
 	cargo 0
 	personality
 		mining harvests timid uninterested mute ramming
-	variant
-		"Rock Scavenger" 1
+	variant 99
+		"Rock Scavenger"
+	variant 1
+		"Rock Scavenger" 2
 
 mission "First Contact: Rock Scavenger"
 	landing
@@ -1943,6 +1945,8 @@ mission "First Contact: Plasma Parasite"
 		government "Swarming Lifeform"
 		personality waiting staying swarming heroic unconstrained mute
 		fleet "Plasma Parasites"
+		on kill
+			fail
 
 event "Plasma Parasites Infest Coalition"
 	system "1 Axis"
