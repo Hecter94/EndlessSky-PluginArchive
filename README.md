@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-08-29 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2024-08-29 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-08-24 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-08-22 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
 2024-08-20 | updated Plugin 'Zoura's Outfits Expanded' by Zoura | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
@@ -18,8 +20,6 @@
 2024-08-16 | new Plugin 'human.labels' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 2024-08-15 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-08-09 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
-2024-08-08 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2024-08-07 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
