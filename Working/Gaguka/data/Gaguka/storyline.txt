@@ -1,0 +1,176 @@
+mission "First Contact: Gaguka"
+	name "Qoasly to <destination>."
+	description "Take Qoasly to <destination> by <deadline>. He will pay you <payment>."
+	landing
+	deadline
+	deadline 1
+	source
+		government Gaguka
+		not planet Jubint
+	destination Jubint
+	on offer
+		conversation
+			`Upon landing on <origin>, a rhino walks up to you. You feel a bit uneasy.`
+			choice
+				`	(Shoot it.)`
+					goto shoot
+				`	(Leave the planet.)`
+					goto flee
+				`	(Stay where you are.)`
+					goto stay
+				`	(Step backwards.)`
+					goto step
+			label flee
+			action
+				"reputation: Gaguka" = -1
+			`	As you run back to your ship and prepare for takeoff, you hear the rhino say, "Go now, as opposed to later."`
+				flee
+			label stay
+			`	The rhino asks, "Can you take me to <destination>?"`
+			choice
+				`	"Okay. My name is <first> <last> of the <ship>."`
+					goto ok
+				`	(Shoot it.)`
+					goto shoot
+				`	"No thanks."`
+					goto no
+			label shoot
+			`	You fire your weapon, the rhino lowers its horn, and the <ship> disappears, you with it.`
+				die
+			label step
+			`	"Stay here!" says the rhino.`
+			choice
+				`	(Leave the planet.)`
+					goto flee
+				`	(Stay where you are.)`
+					goto stay
+				`	(Step backwards.)`
+					goto step1
+			label step1
+			`	"I said, stay here!" thunders the rhino. "Why do you not trust me, Qoasly of the Gaguka?`
+			choice
+				`	(Leave the planet.)`
+					goto flee
+				`	(Stay where you are.)`
+					goto stay
+				`	"Sorry, but you're a rhino and back in human space rhinos are wild."`
+					goto sorry
+			label sorry
+			`	"Sorry, I did not mean to scare you. Can you take me to <destination> by <day>? I will pay you <payment>."`
+			label reallyyesorno
+			choice
+				`	"Okay."`
+					accept
+				`	"No."`
+					goto decline
+			label ok
+			`	"My name is Qoasly. Pleased to meet you. I need to get to <destination> by <day>, and I will pay you <payment>.`
+				accept
+			label no
+			`	"Really? Are you really sure about that foolhardy decision?" questions the rhino.`
+				goto reallyyesorno
+			label decline
+			action
+				"reputation: Gaguka" = -1000
+				"reputation: Quarg (Gaguka)" = -1000
+			`	You walk back to your ship and prepare for takeoff. You hear the rhino say, "I warn you now that you're not the friend of the Gaguka."`
+				flee
+	on accept
+		log "People" "Qoasly" `Qoasly is a rhino of high importance, so it seems, who you happened to meet on <origin>.`
+		log "Factions" "Gaguka" `The Gaguka are a species way up North of human space. Nobody knows how they happen to be here, except maybe the Quarg and the Drak.`
+	on complete
+		payment 10000
+		conversation
+			`"Thanks for taking me here, to <destination>. I have another meeting pretty soon, so will you come when I send a message?"`
+			choice
+				`	"Sure!"`
+					goto good
+				`	"No thanks."`
+					goto end
+			label good
+			action
+				event "Qoasly wants transport 1" 7
+				set "agreed to take Qoasly next time"
+			`	"Thanks again. Good-bye." says Qoasly, and hurries off into the crowd.`
+				goto reallyend
+			label end
+			`	"That's sad. Are you sure?"`
+			choice
+				`	"I give in. I'll come."`
+					goto good
+				`	"No is no."`
+					goto okayfine
+			label okayfine
+			`	"Fine. Goodbye."`
+			label reallyend
+
+event "Qoasly wants transport 1"
+
+mission "Go to Qoasly"
+	name "Go to <destination>"
+	description "Go pick up Qoasly, who is on <destination>, for unknown reasons."
+	landing
+	deadline
+	deadline 1
+	source
+		government Gaguka
+		not planet Jubint
+	to offer
+		has "event: Qoasly wants transport 1"
+	destination Jubint
+	on offer
+		dialog `You get an incoming call from <destination>. "<first> <last>!" says Qoasly. "Can you come here to <destination>?"`
+
+mission "Transport Qoasly"
+	name "."
+	description "."
+	landing
+	source Jubint
+	to offer
+		has "Go to Qoasly: done"
+		not "Transport Qoasly already there: done"
+	destination Wop-ant
+	on offer
+		conversation
+			`f`
+				accept
+	on accept
+	on complete
+		payment 10000
+		conversation
+			`In the airspace of <destination>, Qoasly and Mushcosh, after paying you <payment>, walk off your ship. As soon as they do, a call comes in. "Relax <first>, just in case you didn't know this, we have little inflatable parachutes attached to our backs." You look out of the window, and see this is true.`
+
+mission "Transport Qoasly already there"
+	name "."
+	description "."
+	source Jubint
+	to offer
+		not "Go to Qoasly: done"
+		has "event: Qoasly wants transport 1"
+	destination Wop-ant
+	on offer
+		conversation
+			`You run into Qoasly and another rhino while walking through the spaceport. "Captain <last>," says Qoasly. "Can you take me and Mushcosh to <destination>?"`
+			choice
+				`	"Sure."`
+					goto okay
+				`	"I assume that other rhino is Mushcosh?"`
+					goto ask
+				`	"Not until you properly introduce us."`
+					goto decline
+			label okay
+			`	"Great! I've had trouble get a flight for me and Mushcosh. Thanks."`
+				accept
+			label ask
+			`	"Correct. Well?"`
+			choice
+				`	"Yes."`
+					goto okay
+				`	"No, why should I?"`
+			label decline
+			`	"That just got you into trouble," Qoasly distastefully says. Upon hearing this, all the other rhinos at the spaceport start a stampede.`
+				die
+	on complete
+		payment 10000
+		conversation
+			`In the airspace of <destination>, Qoasly and Mushcosh, after paying you <payment>, walk off your ship. As soon as they do, a call comes in. "Relax <first>, just in case you didn't know this, we have little inflatable parachutes attached to our backs." You look out of the window, and see this is true.`
