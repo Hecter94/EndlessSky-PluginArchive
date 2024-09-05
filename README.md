@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-09-05 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-09-04 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-09-03 | new Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-08-30 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
@@ -19,7 +20,6 @@
 2024-08-17 | new Plugin 'landing.images.highres' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 2024-08-17 | new Plugin 'jump.gates' by zuckung | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Gameplay)<br>
 2024-08-17 | new Plugin 'landing.images' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
-2024-08-17 | new Plugin 'landing.images.android' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
