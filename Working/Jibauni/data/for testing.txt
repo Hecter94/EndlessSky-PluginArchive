@@ -1,0 +1,331 @@
+# Copyright (c) 2024 by Loymdayddaud
+#
+# Jibauni is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Jibauni is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+shipyard "Diba"
+	Llama
+	Ithquaya
+	Arbquaya
+	Tamquaya
+	Tahquaya
+
+disable mission
+	"Scrapper test"
+	"Rebel Dislike"
+	"Rebel License"
+
+mission "Scrapper test"
+	name "Scrapper test"
+	description "ST"
+	job
+	repeat
+	source
+		government "Jibauni" "Jibauni (Rebel)"
+	on complete
+		dialog "Yay."
+	npc kill
+		government Alpha
+		personality heroic staying nemesis target marked
+		fleet
+			names pirate
+			variant
+				Scrapper
+	npc kill
+		government "Navy (Oathkeeper)"
+		personality heroic staying nemesis target marked
+		fleet
+			names pirate
+			variant
+				Furus
+
+mission "Rebel License"
+	landing
+	name "Jibauni Rebel License"
+	description "Go to <destination>."
+	source "Baitoon"
+	destination "Station of Power"
+	repeat
+	to offer
+		"reputation: Jibauni (Rebel)" == -1000
+	on offer
+		conversation
+			scene "thumbnail/gunboat"
+			`The Jibauni authorities contact your ship as you land. "Thank you for fighting the Rebel Jibauni so much," they say. "Here is a license as a thank you for your hard work." You see that you got a new license, and can now buy the Yiyharsi Light Warship.`
+			action
+				outfit "Jibauni Rebel Fighter License" 1
+				"Jibauni Government Like" += 2
+	
+	npc kill
+		personality waiting
+		government "Jibauni (Rebel)"
+		ship "Raven (Afterburner)" "D.S.S. Wyrd"
+		on kill
+			set "dps wyrd dead"
+			payment 5000000
+
+mission "Rebel Dislike"
+	repeat
+	job
+	source Baitoon
+	description "The Rebels Dislike You."
+	on offer
+		"reputation: Jibauni (Rebel)" = -1000
+		fail
+
+outfitter "Cheat"
+	"Jibauni Government Helper License"
+	"Jibauni Rebel Fighter License"
+	"Jibauni License"
+	"Rebel Jibauni License"
+	"Rebel Jibauni Capital License"
+	"Jihtah Steering"
+	"Sheragi License"
+	"Sheragi Capital License"
+	"Diba License"
+	"Jump Drive"
+	"Sheragi Pirate License"
+	"Hyperdrive"
+
+outfit "Diba License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	"unplunderable" 1
+	description "This should not be in the game at all."
+
+conversation "jibauni cheat start"
+	scene "scene/lobby"
+	label start
+	`What is your name?`
+	name
+	`	Good to know. Here is a custom ship, have fun!`
+
+conversation "jibauni start"
+	scene "scene/lobby"
+	label start
+	`You are a Jibauni, preparing to start your first interstellar travel experience. This is a very exciting day for you as you enter the bank and apply for a license.`
+	`	It has been a long path here since the day you found an abandoned spaceship near the desert on Baitoon. Restoring the ship took time and money. But finally you have gotten everything ready and gotten a small loan to start your transport business.`
+	`	The banker asks you to sign your name, and you oblige.`
+	name
+	`	You will start with a Yankul, a very small ship that has but seven bunks. However, it is possible to sell it completely and buy a Saghir so that you can live a fighting life.`
+	`	What you choose now will decide what you do in the future.`
+
+start "Cheat Jibauni"
+	name "Jibauni Tester"
+	description `A Jibauni start that should only be used for testing. Gives you almost unlimited money and a special ship.`
+	description `	Definitely cheating.`
+	thumbnail "scene/lobby"
+	date 16 11 3013
+	system "Huyya"
+	planet "Baitoon"
+	conversation "jibauni cheat start"
+	account
+		credits 596000000000000
+		score 800
+	set "license: Pilot's"
+	ship "Palavret"
+		sprite "ship/raider"
+		thumbnail "thumbnail/raider"
+		name "Tester"
+		attributes
+			category "Utility"
+			"cost" 16570000
+			"shields" 27000
+			"hull" 9000
+			"required crew" 1
+			"bunks" 2500
+			"mass" 100
+			"drag" 0.5
+			"heat dissipation" .9
+			"fuel capacity" 60000
+			"cargo space" 175
+			"outfit space" 77700
+			"weapon capacity" 33900
+			"engine capacity" 15900
+			"cloak" 1
+			weapon
+				"blast radius" 25000000
+				"shield damage" 3600000
+				"hull damage" 180000000
+				"hit force" 54000000000
+		outfits
+			"Grab-Strike Turret" 4
+			"Banisher Grav-Turret"
+			"Warder Anti-Missile"
+			"Firelight Missile Bank" 2
+			"Firelight Storage Rack"
+			"Firelight Missile" 50
+		
+			"Double Plasma Core"
+			"Generator (Inferno Class)"
+			"Systems Core (Medium)"
+			"Large Heat Shunt"
+			"Small Heat Shunt" 3
+			"Fuel Processor"
+			"Thermal Repeater Rifle" 196
+		
+			"Thruster (Planetary Class)"
+			"Steering (Planetary Class)"
+			"Bow Drive (Meteor Class)"
+			"Jump Drive"
+	
+		engine -20 127
+		engine 20 127
+		"reverse engine" -9 -154
+			zoom 0.7
+		"reverse engine" 9 -154
+			zoom 0.7
+		gun 32.5 -1 "Firelight Missile Bank"
+			angle 60
+		gun -32.5 -1 "Firelight Missile Bank"
+			angle 300
+		turret -10 -143 "Grab-Strike Turret"
+		turret 10 -143 "Grab-Strike Turret"
+		turret -36 -141 "Grab-Strike Turret"
+		turret 36 -141 "Grab-Strike Turret"
+		turret 0 41 "Banisher Grav-Turret"
+		turret 0 94 "Warder Anti-Missile"
+		gun 32.5 -1
+			angle 60
+		gun -32.5 -1
+			angle 300
+		turret -10 -143
+		turret 10 -143
+		turret -36 -141
+		turret 36 -141
+		turret 0 41
+		turret 0 94
+		gun 32.5 -1
+			angle 60
+		gun -32.5 -1
+			angle 300
+		turret -10 -143
+		turret 10 -143
+		turret -36 -141
+		turret 36 -141
+		turret 0 41
+		turret 0 94
+		gun 32.5 -1
+			angle 60
+		gun -32.5 -1
+			angle 300
+		turret -10 -143
+		turret 10 -143
+		turret -36 -141
+		turret 36 -141
+		turret 0 41
+		turret 0 94
+		bay "Fighter" -80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" 80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" -80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" 80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" -80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" 80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" -80 151 back
+			"launch effect" "korath internal"
+		bay "Fighter" 80 151 back
+			"launch effect" "korath internal"
+		explode "tiny explosion" 20
+		explode "small explosion" 45
+		explode "medium explosion" 50
+		explode "large explosion" 40
+		explode "huge explosion" 10
+		"final explode" "final explosion large"
+		description "Successive raider designs have been the Korath warship of choice for plundering neighboring species for generations. Named for a celebrated captain who gave her life to ensure her crippled vessel made it back to port with its desperately needed cargo of stolen fish, the Palavret-Class Raiding Ship continues that grim tradition."
+		description "	Like all Exile ships, the Palavret has been adapted to house as many Korath as possible, as comfortably as possible, inflating its size beyond similarly armed warships. The spaceborne construction techniques employed allow for the ship's easy replacement, facilitating continued raids of nearby systems."
+
+mission "jibauni start displayed"
+	landing
+	invisible
+	to offer
+		or
+			has "First Contact: Jibauni: done"
+			and
+				has "First Contact: Rebel Jibauni: declined"
+				not "jibauni: disliked by the rebels"
+			has "First Contact: Rebel Jibauni: done"
+	on offer
+		set "global: jibauni start displayed"
+		fail
+
+mission "jibauni start unlocked"
+	landing
+	invisible
+	to offer
+		has "jibauni start displayed"
+		has "event: jibauni rebel jibauni peace"
+	on offer
+		set "global: jibauni start unlocked"
+		fail
+
+start "jibauni space"
+	name "Jibauni Start"
+	description `You grew up on Huyya, a Jibauni planet.`
+	description `	(This is the non-cheating start that comes with the the Jibauni plugin.)`
+	thumbnail "scene/lobby"
+	system "Huyya"
+	planet "Baitoon"
+	date 16 11 3013
+	to display
+		has "jibauni start displayed"
+	on display
+		description "This start is locked."
+	to unlock
+		has "jibauni start unlocked"
+	conversation "jibauni start"
+	set "species: Jibauni"
+	set "jibauni start"
+	set "First Contact: Jibauni: offered"
+	set "Intro [0]: offered"
+	ship "Yankul"
+		sprite "ship/yankul"
+		thumbnail "thumbnail/yankul"
+		attributes
+			category "Transport"
+			"cost" 650000
+			"shields" 900
+			"hull" 500
+			"required crew" 1
+			"bunks" 7
+			"mass" 79
+			"drag" 1.53
+			"heat dissipation" .34
+			"fuel capacity" 200
+			"cargo space" 11
+			"outfit space" 45
+			"weapon capacity" 4
+			"engine capacity" 0
+			"jibauni generator" 0.5
+			"fuel protection" .7
+			"thrust" 1
+			"turn" 8
+			licenses
+				Jibauni
+			weapon
+				"blast radius" 10
+				"shield damage" 150
+				"hull damage" 65
+				"hit force" 200
+		outfits
+			"Jahgir Energy Generator"
+			"Musaghar Shield Generator"
+			"Hyperdrive"
+		engine 0 0
+		gun 0 0
+		explode "tiny explosion" 20
+		"final explode" "final explosion small"
+		description "The smallest ship the Jibauni possess, this ship is terrible at combat and only mediocre at cargo hauling. Its fame comes from the fact that it has many bunks for the cost, and that it can sport a weapon, though by default it does not come with one."

@@ -1,0 +1,187 @@
+# Copyright (c) 2024 by Loymdayddaud
+#
+# Jibauni is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Jibauni is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Discovered Jibauni Space"
+	landing
+	invisible
+	source
+		government "Jibauni" "Jibauni (Rebel)"
+	on offer
+		event "label jibauni space"
+		fail
+
+event "label jibauni space"
+	galaxy "label jibauni"
+		sprite "label/jibauni"
+
+mission "Discovered Alrodel"
+	landing
+	invisible
+	to offer
+		has "event: label diba space"
+		has "event: label jibauni space"
+		has "event: label sheragi space"
+	on offer
+		event "label alrodel"
+		fail
+
+event "label alrodel"
+	galaxy "label alrodel"
+		sprite "label/alrodel"
+
+mission "Jibauni: Ru-win 0"
+	name "Ru-win to <planet>"
+	description "Take Ru-win, who you talked to on Kanlil, to Baitoon."
+	minor
+	source "Kanlil"
+	destination "Baitoon"
+	to offer
+		has "language: Jibauni"
+		has "Jibauni Culture: Hajay Intersystem: declined"
+		not "no jibauni hajay intersystem"
+		random < 25
+	on offer
+		conversation
+			`As you walk into the spaceport, one Jibauni catches your eye. They seem to be looking for someone, and are glancing all over the place.`
+			choice
+				`	(Go and see what is going on.)`
+					goto go
+				`	(Stay here.)`
+					goto stay
+				`	(Leave.)`
+					decline
+			label go
+			`	You walk toward the Jibauni, and ask, "What is happening?" As you notice that it's Ru-win, she gives a start and replies, "At last! The human captain, <first>! There you are! Come with me over here to a more quiet place, I need to ask you something." She pushes you over to a bench.`
+				goto question
+			label stay
+			`	After a bit longer of looking around, the Jibauni heads your way, and you notice she is Ru-win. "Captain <last>! I need to ask you something! Come over to this seating area with me?" She pushes you over to a bench.`
+				goto question
+			label question
+			`	As you sit down, she says, "The thing I am looking for help with is transport to Baitoon. I need to get there and buy a ship, fast, before I run out of... well, let me tell you the story from the beginning. A while after you saw me, on Kanlil, my ship ran into snags. When I took it to the repair shop, they said they couldn't fix it. I sold it to them for a mere trifle."`
+			`	"So, what do you say? Will you take me to Baitoon? Do realize that I don't currently have the money to pay you though."`
+			choice
+				`	"Sure, I'll take you."`
+					goto accept
+				`	"No, sorry. I don't go around giving rides to random strangers."`
+					goto decline
+			label accept
+			`	"Great! Thank you so much. I'll be at your ship shortly."`
+				accept
+			label decline
+			`	"Really? Well, at any rate, best of luck to you wherever you go." Ru-win makes what you assume to be the equivalent of a sigh and disappears into the spaceport.`
+				decline
+	on complete
+		event "jibauni: second ruwin mission" 10 45
+		payment 50
+		log "Took Ru-win to Baitoon. Reason is unknown."
+		dialog `As you land on Baitoon, Ru-win gets off of your ship. Before she does, however, she presses a credit chip worth 50 credits into your hand. "This is all I can give you now, <first>. Thank you," she says.`
+
+event "jibauni: second ruwin mission"
+
+mission "Jibauni: Ru-win 1"
+	name "Ru-win back to <planet>"
+	description "Take Ru-win, who you talked to on Kanlil, to Baitoon so she can try to buy a new ship."
+	minor
+	source Baitoon
+	destination Kanlil
+	to offer
+		has "Jibauni: Ru-win 0: done"
+		has "event: jibauni: second ruwin mission"
+		random < 70
+	on offer
+		conversation
+			`On the spaceport of <origin>, Ru-win catches your eye. Coming up, she says, "<first>, will you take me back to <planet>? I have a way to get a job there."`
+			choice
+				`	"Sure."`
+					accept
+				`	"No, I have something else to do. Sorry."`
+					decline
+	on complete
+		event "jibauni: third ruwin mission" 65 75
+		payment 1000
+		log "Took Ru-win back to Kanlil, where she thinks she can get a job."
+		conversation
+			`"Thanks, <first>. I will go investigate the offering, and contact you if I need more help," Ru-win says. "Also, I will give you <payment>. Here."`
+			choice
+				`	"Keep it."`
+					goto keep
+				`	"Thanks. Goodbye."`
+					goto done
+			label keep
+			`	"No, you take it. I will go now." She presses the <payment> into your hand, and leaves before you can do anything.`
+			label done
+
+event "jibauni: third ruwin mission"
+
+mission "Jibauni: Ru-win 2"
+	name "Meet up with Ru-win"
+	description "The Jibauni lady Ru-win whom you helped investigate a job has requested you to go to <planet> for a meeting."
+	minor
+	source
+		government "Jibauni"
+	destination Taltahard
+	to offer
+		has "Jibauni: Ru-win 1: done"
+		has "event: jibauni: third ruwin mission"
+	on offer
+		dialog `Landing on <origin>, you receive a call from Ru-win. "Could you come to <planet destination>, <first>? I would like to tell you something, in person.`
+	on accept
+		event "jibauni: ruwin more than sixty days" 55
+
+event "jibauni: ruwin more than sixty days"
+
+mission "Jibauni: Ru-win 3"
+	name "Escort Ru-win"
+	description "Escort Ru-win to <planet destination> so that she can see a human planet."
+	minor
+	landing
+	source Taltahard
+	to offer
+		has "Jibauni: Ru-win 2: done"
+	on offer
+		conversation
+			`Ru-win comes running up to your ship as you land. She seems very excited, but only says, "Come with me for a moment please, Captain <last>." Following her, you are lead to a restricted part of the spaceport. The guard seems unwilling to let you in at first, but upon Ru-win flashing something at them you are speedily admitted. Finally, the two of you reach a bastion of the Jibauni military, a Nathar.`
+			`	"Well, what do you think, <first>? How do you like this?" asks Ru-win.`
+			choice
+				`	"Wow! Who is the pilot?"`
+				`	"It is very nice. Why are you showing me it?"`
+			`	"Because I am the captain of the <npc>. It is a very great honor, this captaincy for one who only joined the military sixty days ago."`
+				to display
+					not "event: jibauni: ruwin more than sixty days"
+			`	"Because I am the captain of the <npc>. It is a very great honor, this captaincy for one who only joined the military a few months ago."`
+				to display
+					has "event: jibauni: ruwin more than sixty days"
+			choice
+				`	"I'm impressed. How did you make it this far?"`
+					goto impressed
+				`	"Sixty whole days ago? I thought that you had found a job opportunity."`
+					goto jobopportunity
+			label impressed
+			`	"Well, I was able to get a loan and buy a Furus. Then, after destroying a few Rebel fighters, I was given the Rebel Fighter License and obtained permission to buy a Yiyharsi. I finally was promoted to Captain of a Nathar."`
+				goto ruwinquestion
+			label jobopportunity
+			`	"Yes. Well, no, but I thought of one. I was able to get a loan and buy a Furus. Then, after destroying a few Rebel fighters, I was given the Rebel Fighter License and obtained permission to buy a Yiyharsi. I finally was promoted to Captain of a Nathar."`
+			label ruwinquestion
+			`	"So, now I have been instructed to ask the human captain to give an escort to their space, and look at some of the worlds of your space. You can decide where to go."`
+			choice
+				`	"Sounds good! We leave tomorrow."`
+					goto accept
+				`	"No, sorry. I have other things to do, and time is pressing. Goodbye."`
+					goto decline
+			label accept
+			`	"Perfect! I will tell my crew. See you later in the spaceport!"`
+				accept
+			label decline
+			`	"Nu'tumunu, Captain. May you be protected on your travels," Ru-win responds.`
+			`	You are escorted back out of the restricted-access area with the guard frowning at you as you pass. Upon arriving at the <ship>, Ru-win turns on her heel and disappears.`
+				decline

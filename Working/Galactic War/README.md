@@ -1,19 +1,19 @@
 # Galactic-War
-This is a repository for endless sky mod "Galactic War"
-The mod is currently in development stage, many things are subjected to changes later on.
+This is a repository for the Endless Sky mod "Galactic War".
+The mod is currently in development stage, so many things are subject to change later on.
 
 Currently the mod requires Endless Sky version 0.9.15+ to work properly.
 
 ![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
 
 ## About
-This is a massive content mod about a war in another galaxy. While no storyline exist yet there's a large galaxy to explore filled with various aliens with different advancement and specializations.
+This is a massive content mod about a war in another galaxy. While no storyline exists yet, there is a large galaxy to explore, filled with various aliens that have different advancements and specializations.
 
 Currently the plugin consist of:
 
 * 1 Accessible galaxy.
 
-* 26+ Races with their own ships and outfits. Some with unique mechanic such as territory changes or even hunt you down depending on your interactions.
+* 27 Races with their own ships and outfits. Some with unique mechanics such as territory changes or they can even hunt you down depending on your interactions with them.
 
 * Over 100 Ships,
 
@@ -21,21 +21,21 @@ Currently the plugin consist of:
 
 * Over 1500 Systems.
 
-## Accessing the Contents
+## Accessing the Content
 
-To find the galaxy, head up to the system north of Ka'ch'chrai(The capital) in the Wanderer space, the wormhole will be in between Sko'karak and Pug Iyik
+To find the galaxy, head up to the system north of Ka'ch'chrai (the capital) in Wanderer space, and the wormhole will be in a system between Sko'karak and Pug Iyik.
 
-This plugin is complatible with Omnis and World Forge developer plugins, though, World Forge support will be missing some functions and may be slightly outdated.
+This plugin is complatible with the Omnis and World Forge developer plugins, though World Forge support will be missing some functions and may be slightly outdated.
 
 ## Known Issues
-Galaxy image not appearing. To fix this, turn on "reduce large graphic" option in the setting and restart the game.
+Galaxy image not appearing. To fix this, turn on "reduce large graphic" option in the settings menu and restart the game.
 
-Game slowing down when jumping with hyperdrive. Due to the number of systems this plugin add and game's pathfinding, unfortunately the only fix is to get better hardware.
+Game slowing down when jumping with hyperdrive. Due to the number of systems this plugin adds and the game's pathfinding methods, unfortunately the only fix is to get better hardware.
 
-Game slowing down/freezing when escorts have high-range jump drive. Similar reason to above, use shorter-ranged jump drive or don't use escorts.
+Game slowing down/freezing when escorts have high-range jump drive. Similar reason to above, use shorter-ranged jump drives or don't use escorts.
 
 ## Download
-To download the lastest (development) version, press the green [code] button and download as zip from this repository.
+To download the latest (development) version, press the green [code] button and download as zip from this repository.
 
 To install you can extract the zip in your plugin folder.
 
@@ -46,14 +46,14 @@ https://github.com/1010todd/Galactic-War-hi-dpi
 
 Lite version: (Very Outdated)
 
-This version will have less animation frames and exclude @2x images to reduce memory required to load the plugin. Use this if you're using low end machines or 32 bit machines.
+This version will have fewer animation frames and exclude @2x images to reduce memory required to load the plugin. Use this if you're using low end machines or 32 bit machines.
 https://mega.nz/file/8QpAAYhJ#H2vVusIAPKdlMZlzVNwTfTwzpV6tYQBsvZDXDdNhB54
 
 
 
 ## Contact
-If you found any bug/issue or have some suggestion, feel free to open an issue here or find me in Endless Sky Community discord server; https://discord.gg/ZeuASSx 
+If you find any bugs/issues or have a suggestion, feel free to open an issue here or find me in Endless Sky Community discord server; https://discord.gg/ZeuASSx 
 
-I'll sometime update development progress there in #plugin chat.
+I'll sometimes update development progress there in #plugin-chat.
 
 ![GWcap3](https://user-images.githubusercontent.com/19187937/152831081-86783ac0-a228-4abd-9dd2-54952738b864.PNG)
