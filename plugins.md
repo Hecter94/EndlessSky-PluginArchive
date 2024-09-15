@@ -388,9 +388,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/coalition.shopping/icon.png' height='100'></img><br>
 
 
-[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 87.93 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
+[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 88.02 kb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-04) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-15) <br>
 
 >Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
 >
@@ -403,12 +403,16 @@ Author: zuckung | Category: Cheats <br>
 Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system.<br>
 <br>
 Adds all existing coalition outfitters and shipyards to 'Far Home'. Also adds a new shipyard and a new outfitter with missing ships/outfits.<br>
-To start the mission to enable these outfitters and shipyards, you have to join Heliarch or Lunarium (complete the first chapter of these storylines) and own/pay 5 million credits. The mission starts anywhere in coalition space. I added this plausible mission to make the plugin feel less cheaty.<br>
+To start the mission to enable these outfitters and shipyards, you have to join Heliarch or Lunarium (complete the first chapter of these storylines) and own/pay 6/5 million credits. The mission starts anywhere in coalition space. I added this plausible mission to make the plugin feel less cheaty.<br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping01.jpg' width='400'>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-09-15<br>
+some error fixing, adjustments and text improvements (thx to timeout.fu)<br>
+more text adjustments (from TheGiraffe3)<br>
 <br>
 2024-05-04<br>
 added 2 scene images<br>
@@ -3193,9 +3197,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 580.11 mb | 2024-09-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 587.08 mb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-09-14) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-09-15) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -7714,9 +7718,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-12) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-15) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7796,9 +7800,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Jibauni/icon.png' height='100'></img><br>
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 84.42 mb | 2024-09-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 84.58 mb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-14) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-15) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
