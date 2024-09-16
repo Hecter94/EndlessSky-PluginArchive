@@ -40,9 +40,9 @@ event "label alrodel"
 		sprite "label/alrodel"
 
 mission "Jibauni: Ru-win 0"
-	name "Ru-win to <planet>"
-	description "Take Ru-win, who you talked to on Kanlil, to Baitoon."
 	minor
+	name "Ru-win to <planet>"
+	description "Take Ru-win, who you talked to on <origin>, to <planet>."
 	source "Kanlil"
 	destination "Baitoon"
 	to offer
@@ -89,9 +89,9 @@ mission "Jibauni: Ru-win 0"
 event "jibauni: second ruwin mission"
 
 mission "Jibauni: Ru-win 1"
+	priority
 	name "Ru-win back to <planet>"
 	description "Take Ru-win, who you talked to on Kanlil, to Baitoon so she can try to buy a new ship."
-	minor
 	source Baitoon
 	destination Kanlil
 	to offer
@@ -133,6 +133,8 @@ mission "Jibauni: Ru-win 2"
 	to offer
 		has "Jibauni: Ru-win 1: done"
 		has "event: jibauni: third ruwin mission"
+		has "visited planet: Solace"
+		has "visited planet: Winter"
 	on offer
 		dialog `Landing on <origin>, you receive a call from Ru-win. "Could you come to <planet destination>, <first>? I would like to tell you something, in person.`
 	on accept
@@ -141,9 +143,7 @@ mission "Jibauni: Ru-win 2"
 event "jibauni: ruwin more than sixty days"
 
 mission "Jibauni: Ru-win 3"
-	name "Escort Ru-win"
-	description "Escort Ru-win to <planet destination> so that she can see a human planet."
-	minor
+	priority
 	landing
 	source Taltahard
 	to offer
@@ -179,9 +179,31 @@ mission "Jibauni: Ru-win 3"
 				`	"No, sorry. I have other things to do, and time is pressing. Goodbye."`
 					goto decline
 			label accept
+			action
+				set "jibauni: agreed to take ruwin to solace"
 			`	"Perfect! I will tell my crew. See you later in the spaceport!"`
-				accept
+				decline
 			label decline
 			`	"Nu'tumunu, Captain. May you be protected on your travels," Ru-win responds.`
 			`	You are escorted back out of the restricted-access area with the guard frowning at you as you pass. Upon arriving at the <ship>, Ru-win turns on her heel and disappears.`
 				decline
+
+mission "Jibauni: Ru-win 4"
+	priority
+	source Taltahard
+	stopover Solace
+	destination Taltahard
+	to offer
+		has "jibauni: agreed to take ruwin to solace"
+	on offer
+		conversation
+			`Ru-win is at your rendevouz before you are. She and her crew thank you for agreeing to take them to a human planet. Then they ask, "Where are you going to take us?"`
+			choice
+				`	"I think Winter. It's a busy planet with a lot of people on it."`
+					goto winter
+				`	"I'll take you to Solace. It's a forest planet with some people but not too many."`
+					goto solace
+			label winter
+			`	"If this planet is busy, as you say, then what are the chances of us being seen? Dinosaurs roaming around, will they be received well? Somehow I doubt it," returns Ru-win. "Do you know a less busy planet?"`
+			choice
+				`	"Yes, good point. How about Solace? It's not
