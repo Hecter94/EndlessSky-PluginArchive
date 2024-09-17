@@ -423,6 +423,7 @@ mission "Republic Shipping 3"
 mission "Joining the Navy"
 	autosave
 	name "Navy Commission"
+	clearance
 	description "Destroy the pirate vessel named <npc> near the <system> system and return to <planet> for an opportunity to join the republic navy."
 	source
 		government "Republic"
@@ -645,6 +646,7 @@ mission "Navy Pirate Patrol 3"
 	waypoint "Alnilam"
 	waypoint "Hatysa"
 	source "Farpoint"
+	destination Farpoint
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
@@ -698,7 +700,7 @@ mission "Navy Pirate Patrol: Hunt"
 	name "Destroy the <npc>"
 	description "A pirate vessel named <npc> has broken through the Navy defenses in Alnitak and is currently in the Saiph system. Destroy it before it can move further into Republic space and return to <planet> for additional orders."
 	to offer
-		has "Navy Pirate Patrol 3: done"
+		has "Navy Pirate Patrol 3: offered"
 		has "chosen sides"
 	source "Farpoint"
 	waypoint "Saiph"
@@ -809,7 +811,7 @@ mission "Geminus 1"
 	stopover "Lodestone"
 	destination "Geminus"
 	to offer
-		has "Navy vs Pirate: done"
+		has "Navy Pirate Patrol: Hunt: done"
 		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
@@ -822,14 +824,14 @@ mission "Geminus 1"
 			`	"Involving the Auxie's, sir?"`
 			`"Indeed. Ever since the bombings of Geminus and Martini, there's been significant push to get the primary Naval Shipyards rebuilt. However, we can't rebuild the shipyards without any material to do so, and Navy Logistics has been tied up with disaster relief. We only just managed to convince Logistics to spare these four ships, which will be just enough for our purposes."`
 			`	"Where am I headed, Admiral?"`
-			`"The first stop for these Auxiliaries will be <waypoint>; given the planet's rich supply of heavy metals and other minerals, it's the ideal location to procure building materials for the reconstruction."` 
+			`"The first stop for these Auxiliaries will be <waypoint>; given the planet's rich supply of heavy metals and other minerals, it's the ideal location to procure building materials for the reconstruction. Before I forget, however, your salary increase should have just went through- any ways, do you have any questions?"` 
 			choice
-				`	"Without delay, Admiral."`
+				`	"Not at all - I shall leave without delay, Admiral."`
 					accept
-				`	"Any information about my route, Admiral?"`
+				`	"Do you have any information about my route, Admiral?"`
 					goto missionInfo
 			label missionInfo
-			`	"It seems that the breakthrough at Farpoint has emboldened some of the pirates around here," Danforth notes grimly. "We've received reports of massive fleets gathering in some of the uninhabited systems. Try to stay in populated systems to the best of your ability while you escort the fleet to <stopover> - remember, there's no rush, so if it results in a safer trip, take your time."`
+			`	"It seems that the breakthrough at Farpoint has emboldened some of the pirates around here," Danforth notes grimly. "We've received reports of massive fleets gathering in some of the uninhabited systems. Try to stay in populated systems to the best of your ability while you escort the fleet to Lodestone - remember, there's no rush, so if it results in a safer trip, take your time."`
 					accept
 	npc
 		government "Pirate"
@@ -975,6 +977,7 @@ mission "Geminus 2A"
 	landing
 	source "Geminus"
 	stopover "New Wales"
+	destination Geminus
 	to offer
 		has "Geminus 1: done"
 	on fail
@@ -1523,12 +1526,12 @@ mission "Electrons 1A"
 		log "People" "John Withers" "A Deep Scientist who works on developing new weapons and technology for the Navy. Him and his associate, Walter Heisenburg, are directly responsible for the development of the heavy laser. Now, it seems, he is working on a new project."
 		conversation 
 			`As you begin your landing approach, your ship's console beeps as you receive a message from the control tower.`
-			`	[Sergeant <last>, please redirect to the following coordinates- you are expected:]`
+			`	[Lieutenant Commander <last>, please redirect to the following coordinates- you are expected:]`
 			`The message then lists a set of global coordinates about 20 miles to the west of the spaceport. Following the instructions, you redirect to the designated spot.`
 			`After about two minutes, you see a old dilapidated warehouse with several concrete landing pads in front of it. You land at one of the pads and are greeted by a scientist in a white lab coat.`
-			`	"Hello Sergeant! My name is John Withers," as he reaches out and shakes your hand. "I'm sure you've met my colleague, Dr. Heisenberg. He and I worked on the Heavy Laser back in the day. Now though, I have a new project, and for this one I'll be needing your help."`
-			`As the mechanic refuels your ship, you follow the scientist to a shuttle waiting nearby. The shuttle starts moving, and heads into the warehouse, which seems much larger on the inside, large enough to fit a frigate at least, and is full of what looks to be prototypes of ships and weapons. The shuttle stops, and you all climb out.`
-			`You follow the scientists down a short corridor leaving the main area of the warehouse, ending in a well-lit elevator lobby. John puts a code into a keypad, which opens the elevator doors. You walk in and it begins its descent. You step into a sleek lab, filled with scientists hunched over various displays and devices, of which you can guess the purpose of very few. John leads you down a long hallway to a sealed room, flanked by two marines with rifles. He pulls a key card out of his pocket, motions to one of the guards, who pulls out a card of his own, and they swipe them simultaneously. The door opens with a hiss and reveals a perfectly white room, and a table on which is seated a long device, which appears to be the latest from the Deep.`
+			`	"Hello Lieutenant Commander! My name is John Withers," as he reaches out and shakes your hand. He has an incredibly thick 'southern drawl' as it would have been referred two in the distant past. "I'm sure you've met my colleague, Dr. Heisenberg. He and I worked on the Heavy Laser back in the day. Now though, I have a new project, and for this one I'll be needing your help."`
+			`As the mechanic refuels your ship, you follow the scientist to a shuttle waiting nearby. The shuttle starts moving, and heads into the warehouse, which seems much larger on the inside, large enough to fit a frigate at least, and is full of what looks to be (and are) prototypes of ships and weapons. The shuttle stops, and everyone climbs out.`
+			`You follow the scientists down a short corridor leaving the main area of the warehouse, ending in a well-lit elevator lobby. John puts a code into a keypad which makes a few silly beeping sounds, but it opens the elevator doors. You walk in and it begins its descent. You step into a sleek lab, filled with scientists hunched over various displays and devices, of which you can guess the purpose of very few. John leads you down a long hallway to a sealed room, flanked by two marines with rifles. He pulls a key card out of his pocket, motions to one of the guards, who pulls out a card of his own, and they swipe them simultaneously. The door opens with a hiss and reveals a perfectly white room, and a table on which is seated a long device, which appears to be the latest from the Deep.`
 			scene "outfit/electron beam"
 			`John motions you over, saying, "Here it is! We call it the Electron Beam. Twenty tons of pure destruction- but it doesn't work. Because of increased pirate problems in Syndicate space, we are missing some crucial materials. We need you to get those materials before we can get this working. Your destination is Lodestone, in the Ankaa system. You will need twenty-one tons of cargo space free for this mission. We have some fun for you when you get back," he says with a wink. You nod assent, even though you are still enamored by this elegant weapon, but John pulls you away and ushers you back to your ship.`
 				done
@@ -1556,13 +1559,15 @@ mission "Electrons 1C"
 	destination Lodestone
 	on offer
 		conversation
-			`	You dash into your ship, expecting it to be stripped of everything, but surprisingly everything is untouched, except for the cargo hold, where you find the doors busted open and the tracks of a mobile truck running across the threshold. You quickly dash into the cockpit and radio control tower for permission to depart. Within seconds you have gained priority access and are shooting out of the atmosphere. Now it is up to you to face the pirate fleet, and take back the cargo that is now aboard the bactrian. (Remember, do not destroy the ship until you have taken all the cargo from it!)`
+			`	You dash into your ship, expecting it to be stripped of everything, but surprisingly everything is untouched, except for the cargo hold, where you find the doors busted open and the tracks of a mobile truck running across the threshold. You quickly dash into the cockpit and radio control tower for permission to depart. Within seconds you have gained priority access and are shooting out of the atmosphere. Now it is up to you to face the pirate fleet, and take back the cargo that is now aboard the pirate freighter.`
+			``
+			`	(Remember, do not destroy the ship until you have taken all the cargo from it! You need enough space as well for the cargo on your flagship.)`
 				launch
 	npc board
 		government "Pirate"
 		personality staying nemesis target
 		system Ankaa
-		ship "Bulk Freighter (cargo target)" "Pulsar"
+		ship "Bulk Freighter (sneeki breeki)" "Pulsar"
 	npc
 		government "Pirate"
 		personality heroic staying harvests plunders entering
@@ -1579,7 +1584,7 @@ mission "Electrons 1C"
 			`	Now that you have the cargo, you should head back to Valhalla.`
 			
 
-ship "Bulk Freighter" "Bulk Freighter (cargo target)"
+ship "Bulk Freighter" "Bulk Freighter (sneeki breeki)"
 	outfits
 		"Sidewinder Missile Launcher" 2
 		"Sidewinder Missile" 90
@@ -1602,7 +1607,7 @@ outfit "Special Cargo"
 	category "Special"
 	cost 0
 	thumbnail "outfit/unknown"
-	"mass" 1
+	"mass" 21
 	description "Cargo stolen from the docks of Lodestone by a pirate ship; has hidden secrets to special weapons development by the Navy."
 	
 mission "Electrons 1D"
@@ -1620,25 +1625,20 @@ mission "Electrons 1D"
 		payment 300000
 		conversation 
 			`You managed to escort the auxiliaries home safe, it was a miracle you encountered so little resistance after the encounter with the bactrian. You notify the control tower of your approach, and slowly glide towards the secure facility. You land and exit your ship, and workers quickly unload the cargo. You meet John on his way out, and his face is unusually concerned, but as he sees you and your ship, his expression becomes one of relief, and he hurries to meet you.`
-			`"Are you all right, <last>? I heard that there was trouble on Lodestone, and even heard talk of a pirate Bulk Freighter!"`
+			`"Are you all right, <first>? I heard that there was trouble on Lodestone, and even about a stolen pirate Bulk Freighter!"`
 			choice
-				`"Yeah there was one. Not anymore though!"`
+				`"Yeah there was one. Past tense."`
 					goto easy
-				`"There was, and it was a hard fight, but I managed to win."`
+				`"There was, and its crew put up a hard fight, but I managed to pull through."`
 					goto duel
-				`"There was one, and he kindly lost both the space and boarding battles to me, and so now I have a new ship!"`
-					goto capped
 			label easy
-				`"Well, at least he won't be a problem anymore. I wonder how he got that deep into Syndicate territory anyway," John says. "And now, come with me to the facility, I have something to speak about with you."`
+				`"Well, at least he won't be a problem anymore. I wonder how he got that deep into Syndicate territory anyway- they really need to increase their defenses," John says. "And now, come with me to the facility, I have something to speak about with you."`
 					goto end
 			label duel
-				`"Well, congratulations, and you got the cargo back, so that is very helpful! And now, come with me to the facility, I have something to speak about with you."`
-					goto end
-			label capped
-				`"John stares in astonishment and congratulates you, and then continues, "And now, come with me to the facility, I have something to speak about with you."`
+				`"Well done, and you got the cargo back after all, so all is well. If that had been lost we would have been set back weeks. And now, come with me to the facility, I have something to speak about with you."`
 					goto end
 			label end
-				`You follow him into the warehouse and through the elevator. Once again you find yourself in a white, polished, lab with devices you could never guess about what they do. John bids you to follow him to his office, and you do so. Inside, John thanks you for your assistance, and tells you to come back in a couple weeks to continue aiding them. He gives you <payment> credits and sends you on your way.`
+				`You follow him into the warehouse and through the elevator. Once again you find yourself in a white, polished, lab with devices you could never guess about what they do. Crossing the large rooms between the scientists you find a path with him to his office, and he bids you to follow him inside. Sitting down, he reaches under the desk and opens a small safe, and gives you <payment> credits and sends you on your way.`
 					done
 
 event "e-beam delay 1"
@@ -1657,11 +1657,19 @@ mission "Electrons 1E"
 		has "event: e-beam delay 1"
 	on offer
 		conversation
-			`You receive a communique from John, the scientist who is working on the electron beams: "<first> <last>, please report to Valhalla immediately, your assistance is required."`
+			`You receive a brief communique from John, the scientist who is working on the electron beams: "<first> <last>, head to Valhalla immediately, you're needed."`
 				accept
 	on complete
 		conversation
-			`You arrive on Valhalla and contact the control tower, which immediately responds with instructions to proceed to designated coordinates, ones that look quite familiar. You follow them to the site of John's lab, and as you land you receive another message telling you to proceed to the lab and meet John in his office. You do so, and soon find yourself being greeted by a familiar face. "Hello, <first>, it's good you came so quickly! I have some work for you to do, and as I recall, you like fighting. Lucky for you, your task will involve that! Please meet me in the spaceport lounge in four hours for your next assignment. I'll be waiting for you there, but for now I need to go sort out some business of my own. I'll see you then!"`
+			`Descending once again through the atmosphere of the planet, you begin to pass the skyscrapers of the massive cities.`
+			`The thought occurs to you that it is slightly odd that a planet so far from home could be so advanced and swarming with technology and people, whereas systems to the south an equal distance away struggle for food. There truly must be something unique about the Deep.
+			`You radio in to the control tower: "This is the <ship>, requesting landing designation." A curt response follows, "Proceed to the designated coordinates, Lt. Commander <last>," and your ship's console promptly lights up with an incoming data transmission.`
+			`Following the data map, which looks quite familiar, you find yourself once again passing above suburbs and small buildings, budding offices for new companies, and many factories. The instructions lead you, as usual, to the site of John's lab, and as you land you receive a second message telling you to proceed to the lab and meet John in his office.
+			`You disembark, and for once there is no one to meet you. Approaching the laboratory building you spot the number pad, and notice your communicator has a small file attached with the message. The file contains a brief sequence of numbers:`
+			``
+			`		5 8 3 6 2 0 1`
+			`You punch in the numbers one at a time, only missing the 0 once (which requires you to wait thirty seconds to attempt again), and the elevator door opens with a pleasant hiss. You step in and wait for the ride down, noticing that old-fashioned elevator music from over a millenium ago is quietly murmuring from a small speaker in the back.`
+			`Finally, the elevator lands and you step out, and momentarily find yourself being greeted by a familiar face. "Hello, <first>, it's good you came so quickly!" he says with a wink. You wonder if he watched you miss the passcode, but brush the thought aside. "I have some work for you to do, and as I recall, you have an enjoyment of fighting. Luckily, your task will involve that- please meet me in the spaceport lounge in four hours for your next assignment, as I must prepare some files before my departure. I'll be waiting for you there, and so I will see you then!"`
 				done
 
 outfit "Electron Beam (Prototype)"
@@ -1719,10 +1727,10 @@ mission "Electrons 1F"
 		has "Electrons 1E: done"
 	on offer
 		conversation
-			`You head back to the main planetary spaceport and to the spaceport lounge as you remember John saying, and sure enough, you see him there waiting. You go over to him, and he tells you what your task is. "You are to travel to the <waypoint> system. There you will find a mule and a barb in orbit, and you are to disable them without destroying them. Then report back to me. Any questions?"
+			`After taking care of some business, you head back to the main planetary spaceport and to the spaceport lounge as you remember John saying, and sure enough, you see him there waiting. You go over to him, and he tells you what your task is. "Lt. Commander, your job is to get to the <waypoint> system. There you will find a Mule and a Barb in orbit, and you are to disable them without destroying them. My engineers are installing analysis cameras on your hull as we speak. They will film the interaction for my analysts to deal with, and I will need your ships logs as well. Once you're done, report back to me and give me an honest assessment of the engagement so I may finalize our adjustments. Any questions?"
 			choice
 				`	"No questions."`
-			`"All right, good. Have fun!"`
+			`Grinning, he says "All right then, good. Have fun captain!"`
 				accept
 	npc disable save
 		personality staying disables nemesis target
@@ -1739,15 +1747,15 @@ mission "Electrons 1F"
 			choice
 				`	"It was pretty hard, but I managed to pull through. Those were some pretty impressive weapons though!"`
 					goto hard
-				`	"It was pretty easy, but they put up a good fight. Were those the Electron Beams?"`
+				`	"It was decently easy, but they put up a good fight, I think it was more the difference in ships than weapons. So those were the Electron beams, huh?"`
 					goto easy
 			label hard
-			`	"Well, glad to have you back, and I'm glad they worked so well!`
+			`	"Well, I am glad to have you back, and I'm glad they worked so well- I'll be reviewing the resources from your ship and we should have these ready in the coming days.`
 					goto end
 			label easy
-			`	"Yes they were, and I'm glad you weren't harmed."
+			`	"Yes they were, and I'm glad you weren't harmed- I'll be reviewing the resources from your ship and we should have these ready in the coming days."
 			label end
-				`"Anyhow, give me a week or so to make the necessary alterations, and then I'll let you know to report back. Until then, you got some time to yourself and a reward of <payment> credits."
+			`John hands you a credit chip worth <payment> credits, and sends you on your way. "Take care, <first>, and I will see you later!"`
 					done
 
 event "e-beam delay 2"
@@ -1944,6 +1952,8 @@ mission "Typhoons 1B"
 	name "Ferry materials"
 	description "Escort a Navy frieghter to Crossroads and back to bring John's team the materials for the new Torpedo Launcher."
 	deadline
+	to offer
+		has "Typhoons 1A: done"
 	on offer
 		log "People" "John Withers" "It seems that John has also expanded his knowledge area in development projects to missile & torpedo systems- who knows what he'll do next..."
 		conversation
@@ -1985,6 +1995,8 @@ mission "Typhoons 1C"
 	waypoint Aspidiske
 	name "Conduct weapons testing"
 	description "Participate in the combat testing of a new torpedo invented by the Deep. The test will involve your ship and a Test Dummy mule, which you are not supposed to destroy. Upon conclusion of the test, report back to Valhalla to report the results."
+	to offer
+		has "Typhoons 1B: done"
 	on offer
 		conversation
 			`You follow the instructions left for you, and after a few minutes you catch sight of John in an office. You go up to the door and knock, and he shouts, "Come in! Ah, <first>. Glad you could make it. Now that we have those materials, it shouldn't be long until the torpedo is finished. And after that, we will conduct another combat test- which I'm sure you're excited for. Remember, please don't destroy the testing ship, as it costs a lot of money, and is crewed by real people, and we cannot replace them. Any questions?"`
@@ -2081,7 +2093,7 @@ mission "Catalytic Ramscoops 1B"
 	on offer
 		conversation
 			`Several minutes later, you spot the new location- a third warehouse. After going through the usual checks with security, you are escorted down to John's office.`
-			`	"Sergeant! Good to see you again. I have once again been contracted to develop something- so naturally I called on your aid. What I have been asked to build this time is not a weapon of war- but a device of exploration. You see, the ramscoops we have today are quite outdated- and although it is quite rare to run out of fuel nowadays, it seems the Navy felt they wanted to increase the operational range of their ships."`
+			`	"Lieutenant Commander! Good to see you again. I have once again been contracted to develop something- so naturally I called on your aid. What I have been asked to build this time is not a weapon of war- but a device of exploration. You see, the ramscoops we have today are quite outdated- and although it is quite rare to run out of fuel nowadays, it seems the Navy felt they wanted to increase the operational range of their ships."`
 			`	"And so, as you might have guessed, I have been requested to build a new ramscoop. Here's my design."`
 			scene "outfit/Catalytic ramscoop"
 			`	"I've increased the filter quality, gotten a better collection funnel design, and increased the amount of funnels, all for a definite increase in efficiency. However, these are just the blueprints. We haven't even begun building it. And that's where you come in. You see, we need some special circuitry and rare metal filters that are only available on the Syndicate world of Antipode. The drawback is, that system, Matar, is so far south near the pirate systems that our typical Deep Sky escorts will not go, as they are 'over-extending themselves.' Whatever their real motives may be, I need you to escort two Auxiliaries that Logistics kindly let us use to Antipode and back. There shouldn't be too much trouble, but keep an eye out. Can you do this"`
@@ -2140,7 +2152,7 @@ mission "Catalytic Ramscoops 1C"
 		payment 2000000
 		conversation
 			`Upon making it back safely, you breathe a sigh of relief. Simultaneously, your ship's communicator lights up with a notification of a message from John:`
-			`	[Hello Sergeant, glad to see you made it back. I apologise for the difficulties, but then again it is part of your job. However, would you please join me at my lab? Thank you.]`
+			`	[Hello Lieutenant Commander, glad to see you made it back. I apologise for the difficulties, but then again it is part of your job. However, would you please join me at my lab? Thank you.]`
 			``
 			`Ten minutes later you arrive at John's lab. After going through security, you make it to John's office again.`
 			`	"Hello captain, how was the mission?" he asks."`
@@ -2178,7 +2190,7 @@ mission "Catalytic Ramscoops 1D"
 		has "event: c ramscoop built"
 	on offer
 		conversation
-			`You receive a message from John: [Sergeant, my team has completed the first of the new ramscoops. Please meet me on Valhalla to conduct an efficiency test on them. Thank you!]
+			`You receive a message from John: [Lieutenant Commander, my team has completed the first of the new ramscoops. Please meet me on Valhalla to conduct an efficiency test on them. Thank you!]
 				accept
 	on complete
 		log "People" "John Withers" "John was then hired by the Navy to build a new and improved, more efficient ramscoop."
@@ -2224,7 +2236,7 @@ mission "Catalytic Ramscoops 1E"
 			`As you enter, you notice Danforth sitting in his chair behind a monitor reading intently, but upon seeing you, he looks up and smiles.`
 			branch hines
 				has "rivalry"
-			`	"Sit down, Sergeant. How are you doing these days?"`
+			`	"Sit down, Lieutenant Commander. How are you doing these days?"`
 			choice
 				`	"Great. The tasks are enjoyable, and I like my work!"`
 				`	"Poorly. The work is unenjoyable, but orders are orders."`
@@ -2241,7 +2253,7 @@ mission "Catalytic Ramscoops 1E"
 				done
 			label hines2
 			`	"How is Ranulf Hines doing, Admiral?" you ask.`
-			`	"He's managed to stay out of trouble," Danforth replies, "probably because the war is brewing and he is focusing less on his rivalry with you and more on getting to the front when the time comes, because sadly, it looks like it will come. Anyways Sergeant, it's been good catching up with you. Now, if you have those sensor logs, that would be great," he says in an exaggerated Bill Lumbergh accent, winking at you. Your mind quickly flashes to a 20th century comedy, and then the momentary vision disappears.`
+			`	"He's managed to stay out of trouble," Danforth replies, "probably because the war is brewing and he is focusing less on his rivalry with you and more on getting to the front when the time comes, because sadly, it looks like it will come. Anyways Lieutenant Commander, it's been good catching up with you. Now, if you have those sensor logs, that would be great," he says in an exaggerated Bill Lumbergh accent, winking at you. Your mind quickly flashes to a 20th century comedy, and then the momentary vision disappears.`
 				goto end
 			
 ### http://media.makeameme.org/created/ThatD-be-great.jpg
@@ -2258,7 +2270,7 @@ mission "Catalytic Ramscoops 1F"
 		event "mk ii ships for sale" 7
 		conversation
 			`Upon reaching your final destination of Valhalla, you proceed as before to John's lab. Entering his office, you find him pouring over a monitor filled with what looks to be data and specifications on the new ramscoop. You get his attention and he says,`
-			`	"Ah Sergeant! You're back- it felt like it took so long but it was really only a few weeks! How did my ramscoop perform?"`
+			`	"Ah Lieutenant Commander! You're back- it felt like it took so long but it was really only a few weeks! How did my ramscoop perform?"`
 			choice
 				`	"Very well, it certainly is an improvement over the previous generation."`
 				`	"It worked well, but the size might be a problem at some point."`
@@ -2297,7 +2309,7 @@ mission "Electrons Final"
 		"salary: Navy" = 2500
 		set "license: Navy Cruiser"
 		conversation
-			`	The <ship>'s intercom suddenly beeps with a message from Admiral Danforth: "Sergeant <last>! For your contributions to the recent weapons development programs on Valhalla, you have been promoted to the rank of Captain, and your daily stipend henceforth shall be 2500 credits per diem. You have also received a license to purchase cruisers."`
+			`	The <ship>'s intercom suddenly beeps with a message from Admiral Danforth: "Lieutenant Commander <last>! For your contributions to the recent weapons development programs on Valhalla, you have been promoted to the rank of Captain, and your daily stipend henceforth shall be 2500 credits per diem. You have also received a license to purchase cruisers."`
 				decline
 
 mission "Reassignment to SDF"
