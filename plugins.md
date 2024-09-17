@@ -1223,9 +1223,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/World Forge/icon.png' height='100'></img><br>
 
 
-[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.1 kb | 2024-04-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
+[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 576.16 kb | 2024-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
 Author: Amazinite | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2024-04-19) <br>
+[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2024-09-17) <br>
 
 >"This plugin was made to allow content creators to have access to all outfits in a single place, for the purpose of designing and testing outfit loadouts for new ships. Of course, it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it."
 >World Forge does this as well, but extends this: not only all outfits in one place, but sorted by race additionally, a way to change the swizzle(derived from ProjectRunabout), a easy way to add own outfits and ships into the existing scheme, and  missions to change your reputation with factions! 
@@ -7718,9 +7718,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-16) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-17) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7800,9 +7800,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Jibauni/icon.png' height='100'></img><br>
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.85 mb | 2024-09-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.85 mb | 2024-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-16) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-17) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -13906,9 +13906,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.36 mb | 2024-09-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.37 mb | 2024-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
 Author: kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-16) <br>
+[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-17) <br>
 
 >My Navy campaign which I hope to get implemented when finished.
 >
@@ -13916,32 +13916,10 @@ Author: kestrel1110 | Category: Story <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Navy-Campaign
-My Navy campaign which I hope to get implemented when finished.
-Thanks to Warlord Mike, Disiuze, Kiko, Moonbeam, and Kat for helping.
 
-TO DO LIST:
-
-[x] intro missions (parallel of southern mutual defense pact)
-
-[x] joining the navy
-
-[x] pirate recon sequence
-
-[x] geminus
-
-[x] Electron sequence
-
-[x] kornephoros attack
-
-[] navy intelligence sequence (when the prowler is developed)
-
-[] infiltrating the FW (stealing data on all new FW tech)
-
-[] counterattacking against FW expansion
-
-
-
-[] to be continued...
+An alternate storyline to the Free Worlds wherein the pilot is commissioned into the Navy and fights the war from the Republic perspective.
+Thanks to Warlord Mike, Disiuze, Kiko, Moonbeam, and Kat for major writing contributions.
+Thanks also to those on Github and Discord for many other things.
 
 </blockquote>
 </details>
