@@ -1,0 +1,851 @@
+# Copyright (c) 2020 by Bereskatuket
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+# Navy Campaign Project Lead: Bereskatuket
+
+
+mission "Reassignment to SDF"
+	name "Reassignment"
+	description "Report to the Solar Defense Flotilla under Commodore Joseph Cruz by <deadline>."
+	landing
+	deadline
+	source
+		government "Republic"
+		not Earth
+	destination Earth
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "Electrons Final: declined"
+	on offer
+		log "Was reassigned to the defense fleets in Sol, under the command of Commodore Joseph Cruz."
+		log "People" "Joseph Cruz" "A Navy Commodore in charge of the Solar Defence Flotilla, known for his strict behavior in relation to the rules, and his firm allegiance to Parliament."
+		conversation
+			`	A message comes in from Naval Command: "Captain <first> <last>, because of a recent turn of events with the Free Worlds and the Geminus Bombing Investigation, you are from this point on assigned to the defense fleets in Sol. Please report there immediately to Commodore Joseph Cruz. Thank you."`
+			accept
+
+mission "Reassigned to Sol [cruiser]"
+	landing
+	source Earth
+	destination Luna
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "Reassigned to Sol: offered"
+	on offer
+		event "navy using mark ii ships"
+		conversation
+			`	As you land on earth, <ship>'s communicator beeps, and a Navy officer whom you presume to be the Commodore comes on. "Good evening, Captain <last>! The Geminus Bombing Investigation believes that the most promising culprit for the Geminus bombing is the Free Worlds. Because of this, the Navy shall be attacking the system of Kornephoros under orders from Parliament. Therefore, as the new shipyards are complete, you shall be requisitioned a single Cruiser and four combat drones with the hope of them serving you well. Report to the shipyards on Luna to receive them."`
+	on complete
+		log "Was given a cruiser and its complement of drones in order to prepare for an invasion of the Free Worlds."
+		give ship "Cruiser (Mark II)" "R.N.S. Horizon"
+		give ship "Combat Drone" "Gamma one"
+		give ship "Combat Drone" "Gamma two"
+		give ship "Combat Drone" "Gamma three"
+		give ship "Combat Drone" "Gamma four"
+		conversation
+			`	Upon landing, you immediately visit the shipyards, as instructed. You meet the receptionist, who sees your uniform, and requests your license. After she scans it, she directs you to a specific hangar in the rear area of the shipyards.`
+			`	A few minutes later, you spot a door marked 'Restricted Access: Authorised Navy Personnel Only.' The door is flanked by a marine with a laser rifle. You show your license to him, and he motions you inside.`
+			scene "thumbnail/cruiser"
+			`	"Well Captain," the marine says, "There she is. What a beauty. She's all ready to go. Hope she can serve you well!"`
+			`	"What is her name?" you ask."
+			`		"The Horizon"`
+
+mission "Report to Seginus"
+	landing
+	deadline
+	source Luna
+	destination Clark
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "Reassigned to Sol [cruiser]: done"
+	on offer
+		log "Was assigned to an attack fleet for attacking the Free Worlds."
+		conversation
+			`As you land, <ship>'s communicator beeps again, and Commodore Cruz appears again. "Good evening, Captain! As you have now acquired your ships, report to Seginus immediately with your fleet for preparations to attack Kornephoros.`
+			choice
+				`	"Yes, sir!"`
+				accept
+
+mission "Seginus Gathering"
+	name "Attack Kornephoros"
+	description "Escort Commodore Cruz' ship, the R.N.S. Victory, to the planet <destination> where Cruz will try to force a surrender of Kornephoros."
+	landing
+	source Clark
+	destination Deep
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	clearance
+	to offer
+		has "Report to Seginus: done"
+	on offer
+		log "Preparing to go to war. I wonder if I'll die in a few days..."
+		event "prepare for battle of Kornephoros"
+		conversation
+			`	As you land you find a fleet gathered in the spaceport and around it, what you estimate is about a dozen cruisers, a couple carriers, and a ridiculous amount of smaller ships and fighters. You land and immediately an officer greets you.`
+			`	"Captain! If you would follow me, Commodore Cruz wishes to see you in his briefing room."
+			`	You follow the officer, and soon find yourself seated in a room with several dozen officers. You can't help but notice that Hines is not present. Danforth must have put him on another assignment to prevent his participation in what is to come. After few minutes, you see Commodore Cruz take the podium in the front of the room.`
+			`	"Gentlemen," he says, "This is the moment. It has finally happened. War."`
+			`	"War is terrible, and I do not relish sacrificing lives for a supposed glory. There is little glory in war. Some of us may not survive the next few days. However, we must not dwell on that. We have a mission. We have honor to uphold. We have our comrades, in this room, their lives to uphold."
+			`	"Our mission is to get to the planet <destination>'s surface. There is a mid-sized defence fleet in orbit that we must evade. Once on the surface we will confront the planet authorities with the evidence that the Geminus Investigation has produced, and hopefully force a surrender of the system."`
+			`	"As I will be conducting the negotiations as per Parliament's orders, your goal is to hold off the defenders until I can get to the surface. My ship is the R.N.S. Victory. Any questions?"` 
+			choice
+				`	"No, sir!"`
+					goto no
+				`	"Sir, what is the evidence we have?"`
+			`	"Apparently the Free Worlds tested a nuke, with a similar signature as to the one used on Geminus, on the mining world of Clink."
+			`	This sparks gasps and remarks of anger in the assembled officers as they depart the room, and you head back to your ship to get some sleep.`
+				goto end
+			label no
+			`	The room quickly empties, as most (including yourself) wish to get back to their ships and rest for the upcoming battle.`
+			label end
+			`	Once on your ship, you lie down in your bunk, and wonder about what is soon to come...`
+				accept
+			
+	on complete
+		event "navy captures kornephoros"
+		log "Successfully captured Kornephoros, a Free Worlds planet. Thankfully there wasn't much of a fight, as we showed them evidence of guilt on their part in terms of the Geminus bombing, and they immediately surrendered."
+		conversation
+			`	With the Free Worlds fleet occupied, you and the R.N.S. Victory plunge through the atmosphere down to the island containing the government buildings. Shortly you touch down outside the capital and the Victory sends out a unit of Marines to secure the premises.`
+			`	There were few guards around, and most, when they saw themselves outnumbered, surrendured, but a few fought until they were brought down by marine stun blasts. Soon you enter the office of the governor, and Commodore Cruz puts down a datapad on the governor's desk.`
+			`	"Governor, here is the evidence. Nuclear blasts have a detectable signature. The Intelligence bureau has identified that the signature of the blast on Geminus matches the signature of a test site on your moon, Clink. Therefore, I request that you order a ceacefire, and surrender control of the system to the Republic."`
+			`	The governor stares at the datapad with his head in his hands. "Commodore, I can't believe this. Is what you say really true?"`
+			`	"It is, all of it," says Cruz. "I suggest you surrender control of the system before more lives are lost."`
+			`	Shaking his head, the governor complies. As soon as he gives the order, two Navy Intelligence operatives take him away.`
+	npc save
+		personality heroic escort disables target
+		government Republic
+		ship "Cruiser (Mark II)" "R.N.S. Victory"
+	npc
+		personality heroic escort disables
+		government Republic
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 16
+				"Frigate (Mark II)" 4
+				"Gunboat (Mark II)" 8
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Heavy)" 3
+				"Combat Drone" 12
+				"Gunboat" 4
+				"Frigate" 2
+				"Rainmaker" 2
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Combat Drone" 18
+				"Lance" 12	
+	npc evade
+		personality staying disables heroic
+		government "Free Worlds"
+		system Kornephoros
+		fleet
+			names "free worlds capital"
+			variant 20
+				"Falcon" 8
+				"Osprey" 2
+			variant 20
+				"Bastion" 6
+				"Argosy (Missile)" 8
+			variant 20
+				"Argosy (Blaster)" 4
+				"Hawk" 20
+				"Hawk (Rocket)" 10
+			variant 1
+				"Skein" 6
+				"Roost" 4
+				"Nest" 6
+				"Finch" 64
+		fleet
+			names "free worlds capital"
+				"Falcon" 2
+				"Osprey" 6
+		fleet
+			names "free worlds capital"
+				"Falcon" 3
+				"Clipper" 7
+				"Hawk" 3
+				"Sparrow" 4
+				"Bastion" 2
+
+mission "Escort Intelligence Prisoners"
+	landing
+	source Deep
+	deadline
+	clearance
+	destination "Huginn Station"
+	to offer
+		has "Seginus Gathering: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`	Hours later, while bringing your ship back to the spaceport, you look at the control panel and see a notification of a message, probably from Commodore Cruz. Once you set down on the landing pad you read the message.`
+			`	[Captain <last>, because of your exemplary performance in the Battle of Kornephoros, and due to your background as a merchant captain, your next assignment is to escort a prisoner convoy to Huginn Station in the Deep, the location of Navy Intelligence's interrogation and prisoner facilities, by <deadline>. This convoy is incredibly important, and must be protected at all costs. There will be other escort ships, but although they amount to a sizeable fleet, do not in any way consider yourself safe. Good luck, and fare well.]
+			`		Sincerely,`
+			`			Commodore Cruz.`
+				accept
+	on enter "Tania Australis"
+		conversation
+			`Upon entering the system, your radar lights up with dozens of contacts. They seem to identify as Merchants, but have hostile beacons. As they begin to attack, you have no choice but to defend yourself...`
+	on complete
+		log "Was promoted again to Lieutenant Commander due to my performance at Kornephoros and in the convoy escort. I now have access to purchasing every navy ship, and a substantial salary. It's a wonder how I am managing to fly through the ranks like this. Also, I'm noting that I am now the same rank as Ranulf Hines..I wonder what may happen because of this..."
+		"reputation: Republic" += 10
+		"reputation: Free Worlds" = 500
+		"reputation: Escort" = 500
+		"salary: Navy" = 3000
+		set "license: Navy Carrier"
+		conversation
+			`	As you dock with the station, thankfully with the Auxiliary still intact, you receive a message from Naval High Command: [Captain <last>, congratulations on successfully bringing back the Intelligence transport. In order to express our gratitude for completing such a sensitive mission, we are promoting you to the rank of Lieutenant Commander, with full access to the Navy shipyards. You will be temporarily reassigned to the Navy Intelligence branch to work on a new research project based on Luna. Please report there promptly. Thank you.]
+	npc evade
+		personality staying disables heroic
+		government "Free Worlds Sympathiser"
+		system "Tania Australis"
+		fleet
+			names "merchant"
+			variant 200
+				"Falcon" 5
+				"Skein"
+				"Finch" 14
+				"Roost" 2
+			variant 200
+				"Falcon" 1
+				"Osprey" 3
+				"Clipper" 2
+				"Bastion (Heavy)" 2
+				"Skein" 2
+				"Finch" 24
+				"Roost" 2
+				"Nest" 2
+			variant 200
+				"Bastion" 6
+				"Argosy (Missile)" 8
+				"Nest" 4
+				"Finch" 8
+			variant 200
+				"Argosy (Blaster)" 4
+				"Hawk" 8
+				"Hawk (Rocket)" 4
+				"Skein" 3
+				"Roost" 2
+				"Nest" 4
+				"Finch" 34
+			variant 200
+				"Skein" 4
+				"Roost" 8
+				"Nest" 10
+				"Finch" 76
+	npc accompany save
+		government "Navy Intelligence"
+		personality escort timid
+		fleet
+			names "republic" "capital"
+			variant
+				"Auxiliary (Transport)" 1			
+	npc
+		personality heroic escort
+		government Republic
+		fleet
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 28
+				"Frigate (Mark II)" 7
+				"Gunboat (Mark II)" 9
+				"Rainmaker (Mark II)" 8
+				"Carrier (Mark II)" 2
+				"Lance" 8
+government "Free Worlds Sympathiser"
+	"display name" "Merchant"
+	swizzle 5
+	"player reputation" -100
+	"fine" 0
+	"friendly hail" "friendly free worlds"
+	"hostile hail" "hostile free worlds"
+	"attitude toward"
+		"Republic" -100
+
+event "start of hostilities(NAVY)"
+	government "Republic"
+		"attitude toward"
+			"Free Worlds" -.2
+	government "Free Worlds"
+		"attitude toward"
+			"Republic" -.2
+	"reputation: Free Worlds" <?= -10
+
+mission "NavyIntel [0]"
+	name "Report to Navy Intelligence"
+	description "Report to a Navy Intelligence base on Mars
+	landing
+	source "Huginn Station"
+	destination Luna
+	to offer
+		has "Escort Intelligence Prisoners: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		event "recapture of Kornephoros"
+		event "temporary ceasefire"
+		event "start of hostilities" 8
+		event "oathkeepers founded navy pov" 50
+		conversation
+			`As you are landing you notice a news report stating that the Navy attacked the Free Worlds system Sabik, but was repulsed. This was followed by a swift counterattack on Kornephoros leading to its recapture by the Free Worlds. Many Navy personnel were captured, but the Free Worlds decided to give anyone who swore an oath to abstain from the war parole, and so a ceasefire lasting for around a week was negotiated to give the Free Worlds time to transport the prisoners to Republic space.`
+			``
+			`	Your communicator lights up with a notification from Naval Command:`
+			`	[Lieutenant Commander <last>, ]
+
+
+
+
+event "oathkeepers founded navy pov"
+
+mission "oathkeepers founded [navy]"
+	landing
+	to offer
+		has "event: oathkeepers founded navy pov"
+	source
+		government "Republic"
+	on offer
+		log "Factions" "Oathkeepers" `The "Oathkeepers" are a regiment of Navy officers who were captured by the Free Worlds and paroled on the condition that they take no further part in fighting against the Free Worlds. Led by none other than Admiral William Danforth, himself, their "official" mission is to protect the Paradise Worlds from the pirates who live on the anarchist worlds in the far north of human space. Unofficially, however, Danforth and the Oathkeepers are using their new position to investigate the bombings of Geminus and Martini.`
+		log "People" "William Danforth" `Due to recent events in the South, Danforth has been placed in charge of the Navy regiment who call themselves the "Oathkeepers."`
+		conversation
+			`When you land on <origin>, it seems that everyone in the spaceport is talking about a recent news story: the Navy has just announced the formation of a new regiment, called the Oathkeepers. This regiment is staffed mostly by prisoners paroled from Kornephoros, who want to honor their oath to take no further part in the conflict against the Free Worlds. They will be headquartered on Farpoint, in the far north, to defend that region of space against pirate incursions.`
+			`	Furthermore, the leader of the Oathkeepers will be Admiral Danforth, your good friend. Although he was not one of the paroled prisoners, he has become an outspoken advocate for a diplomatic solution to the Free Worlds conflict.`
+			`	It's heartening news, but you also can't help noticing how many people in the spaceport are talking now about how the Free Worlds might actually be full of "decent" and "honorable" people, and it's a shame that the Navy has to fight them. By responding to the Free Worlds' generous gesture with one of their own, the Navy has won a definite political victory, and given that they needed to defend the North anyway, it is a victory that cost them very little.`
+
+
+
+
+mission "ATTACK [0]"
+	name "Assault on the Free Worlds"
+	source Silver
+	destination Tundra
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	to offer
+		has "DONATIONS: offered"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		log "Began the assault on the Free Worlds to liberate the captured worlds. Expecting a fierce response from Free Worlds fleets."
+		event "dreadnoughts for sale"
+		event "dreadnought deployment"
+		conversation
+			`Almost immediately upon reaching <source>'s spaceport, you are contacted by Commodore Cruz. "Captain <last>, our ships are ready to begin the assault on the Free Worlds."`
+			`	"What's the plan?"`
+			`	"High Command has determined that our only chance at success is to drive a wedge through the middle of the captured systems. In doing so, we will sever contact between the east and western halves of territory under Free Worlds control."`
+			`	"I see - cut off their ability to resupply, and they'll quickly fall. What's the first target?"`
+			`	"Cebalrai. Once we eliminate the fleet there, land on <destination> and we can continue upwards...or, downwards, as the case may be." You chuckle, shaking your head. "Any questions?"`
+			`	"None."`
+			`	"Excellent. I will update your map as we liberate planets from the Free Worlds' grasp. Best of luck to all of us...and I owe you a drink when this is all said and done."`
+				accept
+	on complete
+		conversation
+			`As you land to begin liberation of Tundra, Commodore Cruz radios in: "We're off to a good start, <last>. This is just the first of many trials that await us. The next system that needs saving is Rasalhague. Make whatever preparations you feel need to be done, and depart for Rasalhague."`
+		event "cebalrai captured"
+				
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system Cebalrai
+		fleet
+			names "free worlds capital"
+			variant
+				"Falcon" 8
+				"Osprey" 2
+			variant
+				"Bastion" 6
+				"Argosy (Missile)" 8
+			variant
+				"Argosy (Blaster)" 4
+				"Hawk" 20
+				"Hawk (Rocket)" 10
+			variant
+				"Sparrow" 40
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 8
+				"Osprey" 3
+				"Sparrow" 20
+
+event "cebalrai captured"
+	system Cebalrai
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+mission "ATTACK: Escorts"
+	source Silver
+	landing
+	invisible
+	to offer
+		has "DONATIONS: done"
+	to fail
+		has "ATTACK [7]: done"
+
+	npc kill
+		personality heroic escort disables unconstrained opportunistic
+		government Republic
+		fleet 2
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 16
+				"Frigate (Mark II)" 2
+				"Gunboat (Mark II)" 2
+				"Rainmaker (Mark II)" 2
+		fleet 2
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)" 2
+				"Combat Drone" 8
+				"Gunboat (Mark II)" 2
+				"Frigate (Mark II)" 2
+				"Rainmaker (Mark II)" 2
+		fleet 2
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 4
+				"Combat Drone" 24
+				"Lance" 16
+
+
+mission "ATTACK [1]"
+	name "Assault on the Free Worlds"
+	source Tundra
+	destination Oblivion
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	to offer
+		has "ATTACK [0]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		log "Successfully liberated Rasalhague from the Free Worlds."
+		conversation
+			`"As Republic troops make their way towards Oblivion's spaceport, Commodore Cruz contacts you. "You're doing well, <last> - our next target is Zeta Aquilae. Naval Intelligence reports that fleet presence will be less than before, though still substanial. Rearm your ships, and make haste towards Zeta Aquilae."`
+		event "Rasalhague captured"
+				
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system Rasalhague
+		fleet
+			names "free worlds capital"
+			variant
+				"Falcon" 8
+			variant
+				"Bastion" 6
+			variant
+				"Argosy (Blaster)" 4
+				"Hawk (Rocket)" 10
+		fleet
+			names "free worlds capital"
+			variant
+				"Sparrow" 40
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 8
+				"Osprey" 3
+
+event "Rasalhague captured"
+	system Rasalhague
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+mission "ATTACK [2]"
+	name "Assault on the Free Worlds"
+	source Oblivion
+	destination Rand
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [1]: done"
+	on complete
+		log "Successfully liberated Zeta Aquilae from the Free Worlds."
+		conversation
+			`Republic space is starting to resemble what it once was. "Keep up the fantastic work, <last>," Cruz radios with restrained excitement, "and get ready to mobilize towards Ascella. Be warned: Navy Intel has reported a large squadron of interceptors in the system. Be sure to deal with them first before moving on to the capital ships."`
+		event "Zeta Aquilae captured"
+
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system "Zeta Aquilae"
+		fleet
+			names "free worlds capital"
+			variant
+				"Falcon" 8
+			variant
+				"Bastion" 6
+			variant
+				"Argosy (Blaster)" 4
+				"Hawk (Rocket)" 10
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 8
+				"Osprey" 3
+
+event "Zeta Aquilae captured"
+	system "Zeta Aquilae"
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+
+mission "ATTACK [3]"
+	name "Assault on the Free Worlds"
+	source Rand
+	destination Arabia
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [2]: done"
+	on complete
+		log "Successfully liberated Ascella from the Free Worlds."
+		conversation
+			`This time when Commodore Cruz hails you, his excitement becomes clear. "We've got them on the run <last>! Navy Intel has reported only interceptors and carriers are present at Delta Sagitarii - swat the flies and the carriers will fall swiftly. Good luck!"`
+		event "Ascella captured"
+
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system Ascella
+		fleet
+			names "free worlds capital"
+			variant
+				"Falcon" 8
+			variant
+				"Bastion" 6
+			variant
+				"Argosy (Blaster)" 4
+				"Hawk (Rocket)" 10
+		fleet
+			names "free worlds capital"
+			variant
+				"Sparrow" 70
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 8
+				"Osprey" 3
+
+event "Ascella captured"
+	system Ascella
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+
+mission "ATTACK [4]"
+	name "Assault on the Free Worlds"
+	source Arabia
+	destination "New Portland"
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [3]: done"
+	on complete
+		log "Successfully liberated Delta Sagittarii from the Free Worlds."
+		conversation
+			`"Captain <last>," Commodore Cruz begins, "we may have to consider promoting you at the conclusion of this operation. High Command is reporting a massive fleet of capital ships has stationed themselves above Dancer in Rastaban - try to isolate each capital and eliminate them one at a time."`
+		event "Delta Sagittarii captured"
+
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system "Delta Sagittarii"
+		fleet
+			names "free worlds capital"
+			variant
+				"Sparrow" 40
+		fleet
+			names "free worlds capital"
+			variant
+				"Skein" 8
+				"Finch" 48
+
+event "Delta Sagittarii captured"
+	system "Delta Sagittarii"
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+mission "ATTACK [5]"
+	name "Assault on the Free Worlds"
+	source "New Portland"
+	destination Dancer
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [4]: done"
+	on complete
+		log "Successfully liberated Rastaban from the Free Worlds."
+		conversation
+			`Once again, Commodore Cruz can barely contain his excitement as he radios in. "Outstanding job, <last>! We're almost at the Free Worlds' doorstep - and from what Intel is providing, they're going to throw everything at us to halt our liberation of Girtab, mainly interceptors. It won't be long before this war is over."`
+		event "Rastaban captured"
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system Rastaban
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 15
+
+event "Rastaban captured"
+	system Rastaban
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+mission "ATTACK [6]"
+	name "Assault on the Free Worlds"
+	source Dancer
+	destination Harmony
+	description "Liberate the systems taken by the Free Worlds with the reinforcements provided by the Navy. Make an effort to keep casualties low - every ship lost will make future fights that much tougher."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [5]: done"
+	on complete
+		log "Successfully liberated Girtab from the Free Worlds."
+		conversation
+			`As you watch pieces of the Free Worlds fleet burn up in the atmosphere, you find yourself sighing glumly. These poor kids didn't deserve to die so early. Suddenly, Commodore Cruz radios in: "This is it, <last>! All that remains before we can move on the Free Worlds is some carriers and capital ships in Kaus Borealis! Make one last check of your supplies, and let's move out - it's time to end this."`
+		event "Girtab captured"
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system Girtab
+		fleet
+			names "free worlds capital"
+			variant
+				"Sparrow" 100
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 4
+				"Osprey" 6
+
+event "Girtab captured"
+	system Girtab
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+
+mission "ATTACK [7]"
+	name "Assault on the Free Worlds"
+	source Harmony
+	destination "New Iceland"
+	description "Lead a large Navy fleet to attack the Free Worlds and liberate the systems they took."
+	clearance
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [6]: done"
+	on offer
+		event "pug invasion"
+		event "pug invasion 2" 6
+		event "pug invasion 3" 10
+		event "pug invasion 4" 14
+	on complete
+		log "Successfully liberated Kaus Borealis from the Free Worlds...and at the same time, something strange has happened with the Syndicate. All hyperlinks to their systems have been severed, and in addition, a Syndicate fleet was reported orbiting Earth armed with nuclear missiles. Stranger still, the same nuclear-capable fleet was suddenly vaporized by an alien fleet. I have been instructed to go to Luna to meet with a Syndicate ambassador...and hopefully make sense of this whole mess."
+		conversation
+			`Upon landing on New Iceland, you are once again contacted by Commodore Cruz - but instead of joy, his voice is filled with concern.`
+			``
+			`"Captain <last>, well done on securing a foothold in Free Worlds territory. As much as we would like to capitalize on our gains, there are some other matters we need to attend to."`
+			`	"Why? What's wrong?" you ask, confused.`
+			`	"Have a look at this."`
+			`Your primary display changes to show a newsreel of several Syndicate ships in orbit above Earth. On many of the ships, your eyes are drawn to launchers that are several times the size of any missile or rocket launcher - even torpedo tubes wouldn't come close to that size.`
+			`	"Yesterday, a Syndicate fleet appeared in orbit above Earth - it wasn't long before we determined that the ships were armed with multiple nuclear warheads, and began issuing demands.`
+			`	(Wait...armed with nukes?!) you think to yourself.`
+			`Suddenly, new ships materialize out of nowhere in a haze of bluish particles and surround the Syndicate ships. The new ships are almost organic in their designs - the best description you can give likens them to yellow-colored coral. "Only a few hours after the fleet's arrival, the fleet of unknown alien design you see appeared, apparently using hyperdrives like those possessed by the Quarg. And as soon as they arrived..."`
+			`Right as Cruz narrates, the unknown ships open fire on the Syndicate fleet with their weapons, and reduce the Syndicate ships to little more than drifting hulks. And as swiftly as they appeared, the unknown ships vanish, and the feed goes dead.`
+			``
+			`	"This is where things get troubling. As soon as the unknown fleet left, the hyperlanes to several Syndicate systems just...disappeared along with them. It's like the systems never even existed in the first place."`
+			``
+			`You do your best to process all that just happened, but it's impossible. First, the Syndicate sends a fleet of nuclear-capable warships to Earth with the (likely) intent to demand Parliament gives complete control over to the Syndicate. Then an alien race unlike any you've seen before suddenly materializes and annihilates the Syndicate ships. Now, Cruz says that the ability to travel to Syndicate worlds has been blocked? At this point, you wouldn't be surprised if Cruz went on to mention that pigs can fly and dragons are real.`
+			``
+			`Rather than potentially go insane trying to make sense of it all, you refocus on the here and now and ask:`
+			`	"What are my orders, Commodore?"`
+			`"First, High Command needs you to report back to Luna - a Syndicate ambassador will be present to meet and accompany you to Syndicate space. You are to then investigate the systems near those severed from the known hyperlanes, and see if a 'backdoor' to the lost systems exists - possibly through the uninhabited systems to the galactic north of Syndicate space. I would give you more information, Captain <last>, but none exists. For now, report back to Luna and meet with the ambassador - we'll discuss our next move after a meeting with the Syndicate."`
+			
+		event "Kaus Borealis captured"
+
+
+	npc kill
+		personality staying disables heroic target
+		government "Free Worlds"
+		system "Kaus Borealis"
+		fleet
+			names "free worlds capital"
+			variant
+				"Dreadnought" 10
+		fleet
+			names "free worlds capital"
+			variant
+				"Skein" 8
+				"Finch" 48
+
+event "Kaus Borealis captured"
+	system "Kaus Borealis"
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+	system Hintar
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+	system Orvala
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+	system Naper
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+	system Tais
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+	system "Alpha Arae"
+		government "Republic"
+		remove fleet "Large Free Worlds"
+		remove fleet "Small Free Worlds"
+
+mission "Syndicate investigation [0]"
+	source "New Iceland"
+	destination Luna
+	name "Republic Diplomat"
+	description "Pick up a Republic Diplomat from Luna and then go to Syndicate Space to find out what has been going on with them."
+	autosave
+	landing
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "ATTACK [7]: done"
+	on complete
+		log "Picked up the Republic diplomat and am on my way to Syndicate space."
+		conversation
+			`Almost as soon as you disembark the <ship>, you spot an official dressed in a very nice suit. "My name is Johnathan Jones," he states, "Syndicate Ambassador Extraordinary and  Plenipotentiary to the Republic. Trust me, Captain <last>, we are just as confused as you are regarding recent events. And feel free to call me 'John.'"`
+
+mission "Syndicate investigation [1]"
+	source Luna
+	destination Moonshake
+	name "Syndicate Investigation"
+	description "Go to <destination> to investigate the Syndicate."
+	clearance
+	landing
+	deadline
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	to offer
+		has "Syndicate investigation [0]: done"
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		log "Apparently the Syndicate was not in control over the nuclear fleet, but a certain 'extremist' faction was. The hyperlink removals were because of an alien species, called the Pug, that has invaded human space. The Syndicate has seven Jump Drives to outfit an attack fleet with, so the fleet will only have seven ships."
+		conversation
+#### I should note that this is just the edited dialogue from Michael Zahniser's "FW Pug 2B" mission from the reconciliation branch. (because this was too hard for me to write and supposed to have the exact same outcome)
+			`As you are coming in for a landing you announce yourself to the spaceport authorities as diplomatic representatives of the Republic. The moment you land, a Syndicate employee meets you and escorts you to their headquarters, culminating with the arrival at the extravagantly-furnished (perhaps even disgustingly-so) office of Alastair Korban - the CEO of the entire Syndicate Corporation.`
+			`"I'm very glad you've come," says Alastair. "It seems unlikely that we can defeat this attack unless we work together."`
+			`	"Wait," John says, "you're saying this whole thing is not the Syndicate's doing?"`
+			`	Alastair seems taken aback. "Of course not. Seal off valuable trade routes? Why would we do that?"`
+			choice
+				`	"We thought you were walling yourselves off to escape prosecution for putting a nuke fleet in orbit around Earth!"`
+				`	"If it isn't you, then who is it?"`
+					goto who
+			
+			`	Alastair says, "That terrorism was the action of a certain extremist faction that we have since purged from our ranks, and we were in the process of hunting down the perpetrators."`
+			choice
+				`	"I think you're lying. You had years to turn over those extremists, and you did not."`
+				`	"Very well. Who is this common foe? You seem to know more than we do."`
+					goto who
+			
+			`	"We are deeply, deeply sorry for the actions of these extremists," says Alastair, "and for our own inaction in turning them in. We had hoped that we could deal with them internally, without it becoming public knowledge that we were connected with them. That was a foolish choice for us to make, and we are more than willing to make whatever reparations you demand."`
+			choice
+				`	"Okay, we'll deal with that later. For now, tell us everything you know about whoever is attacking you."`
+			label who
+			`	"They are called the Pug," says Alastair, "an irrational alien species that previously inhabited a single star system in between Syndicate and Republic space. They have since expanded their territory to include all the human systems neighboring their own star, and have essentially made those human worlds into their slaves."`
+			`	"How do you know this?" asks John.`
+			`	Alastair pauses for a minute as if trying to figure out the best way to explain himself, then says, "One of our ships traveled to the occupied systems, using a jump drive that we... acquired... from another alien species." He seems to realize how unlikely that sounds, and backpedals. "For years we've been dealing with occasional raids from a species called the Korath. As best we can tell, they're nomadic scavengers and pirates who currently inhabit the galactic core. Over the years we have disabled several of their ships and stolen their jump drives."`
+			choice
+				`	"Did it not occur to you that attacking the Korath might anger other alien species?"`
+					goto anger
+				`	"Wait, now there are two different alien species involved? Your story is getting even more convoluted and unbelievable."`
+					goto convoluted
+			
+			label anger
+			`	"That is unlikely. The equipment we stole from the Korath is most likely something they stole from someone else."`
+				goto help
+			
+			label convoluted
+			`	"Yes," he says, "it is a very convoluted mess. Which is why we need your help."`
+				goto help
+			
+			label help
+			`	"Assuming you're telling the truth," you say, "what sort of help do you need from us?"`
+			`	Alastair says, "We have only seven jump drives, so whatever fleet attacks the Pug can only contain seven ships. Unless the Quarg or someone else will give you more drives, I suppose. So those ships must be stronger than any ship we have here in Syndicate space, because the Pug are very strong. They obliterated our fleet that had been occupying the Sol system, even though that fleet was armed with the majority of our nuclear arsenal."`
+			choice
+				`	"You're saying you'll provide the jump drives, and we'll provide the ships? Sounds fair enough."`
+					goto deal
+			label deal
+			`	"Hold on," John says, "I have one condition to add. You will give us one of your jump drives immediately. We will install it in our ship and verify that you are telling the truth about the Pug. If you are, we will work together until this threat is dealt with... and once it is dealt with, we will return our attention to bringing every member of the Syndicate who had a hand in those terrorist attacks to justice. That is our best and final offer." You nod in agreement.`
+			`	It's clear that Alastair is none too happy about that deal, but he accepts it. "The jump drives are all being kept on Hephaestus," he says. "Our Systems division was trying to discover the secret behind them, with little success. If you travel there, I'll tell them to install one of the drives in your ship."`
+				accept

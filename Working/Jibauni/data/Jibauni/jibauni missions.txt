@@ -197,7 +197,7 @@ mission "Jibauni: Ru-win 4"
 		has "jibauni: agreed to take ruwin to solace"
 	on offer
 		conversation
-			`Ru-win is at your rendevouz before you are. She and her crew thank you for agreeing to take them to a human planet. Then they ask, "Where are you going to take us?"`
+			`Ru-win is at your rendevouz before you are. She and her crew thank you for agreeing to take them to a human planet. Then they ask, "Exactly where are you going to take us?"`
 			choice
 				`	"I think Winter. It's a busy planet with a lot of people on it."`
 					goto winter
@@ -206,4 +206,65 @@ mission "Jibauni: Ru-win 4"
 			label winter
 			`	"If this planet is busy, as you say, then what are the chances of us being seen? Dinosaurs roaming around, will they be received well? Somehow I doubt it," returns Ru-win. "Do you know a less busy planet?"`
 			choice
-				`	"Yes, good point. How about Solace? It's not
+				`	"Yes, good point. How about Solace? It's not that busy, and I believe it would adequetely suit your needs."`
+			label solace
+			`	"Great! Let's go, we're completely ready," says Ru-win. Her crew seem to share the sentiment, and tell you they will leave with you."`
+				accept
+	on stopover
+		conversation
+			`The Jibauni are awed at <stopovers>. They say that they have never seen trees before.`
+			`	After spending a while on the planet, you hear an airplane approaching.`
+			choice
+				`	(Tell the Jibauni to hide.)`
+					goto hidejibauni
+				`	(Attempt to destroy the airplane with the <ship>.)`
+					goto destroyedairplane
+				`	(Ignore it.)`
+					goto jibaunireported
+			label hidejibauni
+			`	"Quickly, everyone. Get back into the <ship> and the <npc>!" you call. "There is an airplane approaching that could be trouble!"`
+			`	You and the Jibauni are able to hide before anybody or anything spots you. Safe for now.`
+			`	Soon, everyone is back out of hiding. Ru-win requests that you escort her ship back to <destination> immediately.`
+				launch
+			label destroyedairplane
+			action
+				"reputation: Merchant" -= 1000
+				event "ruwin: merchant reputation back to normal" 10
+			`	A well-placed shot from the <ship>'s weapon placements sends the plane crashing to the ground. You realize that this could be trouble later.`
+			`	A member of Ru-win's crew tells you that they are ready to go. Soon you leave <planet stopovers>, hoping that nobody will realize what you have done.`
+				launch
+			label jibaunireported
+			`	After a while longer wandering in <planet stopovers>'s forests, you hear a loudspeaker in the direction of the <ship>. People seem to be approaching. Ru-win comes up to you requesting that you escort her and her crew back to <destination> immediately, before the humans arrive. You agree.`
+			`	The Jibauni and you barely make it back to your respective ships, leaving just after a search party breaks out of the woods into the clearing the <ship> and the <npc> are landed in.`
+				launch
+	on visit
+		dialog `You have landed on <planet>, but the <npc> has not yet arrived! You should take off and wait for it before landing again.`
+	on complete
+		payment 1000000
+		conversation
+			`Ru-win and her crew thank you profusely for escorting them to <planet stopovers>. "This means a lot to me, Captain <first>," says Ru-win. "I can't wait to report our discoveries to the Chief. It was nice meeting you, Captain!" With that, the crew of the <npc> leave.`
+			`	Soon afterwards, you receive a message from an anonymous source authorizing the transfer of <payment>.`
+	npc accompany save
+		government "Jibauni"
+		personality
+			disables
+			frugal
+			heroic
+			merciful
+			opportunistic
+			plunders
+			unconstrained
+			confusion 9 # these are specially trained Jibauni
+		ship "Nathar" "Muna Wasa"
+
+event "ruwin: merchant reputation back to normal"
+
+mission "Jibauni: Ru-win: Merchant reputation back to normal"
+	landing
+	invisible
+	to offer
+		has "event: ruwin: merchant reputation back to normal"
+	on offer
+		action
+			"reputation: Merchant" += 1000
+		fail

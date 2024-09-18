@@ -1,0 +1,1261 @@
+# Copyright (c) 2020 by Bereskatuket
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+# Navy Campaign Project Lead: Bereskatuket
+
+mission "Pug [0]: Hyperdrive"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	to offer
+		has "Syndicate investigation [1]"
+		not "navy given jump drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		outfit "Hyperdrive" -1
+		conversation
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your Hyperdrive and replaces it with a strange, alien-looking device that you assume must be a Jump Drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
+				accept
+	
+	on accept
+		outfit "Jump Drive" 1
+		set "navy given jump drive"
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+
+
+mission "Pug [0]: Scram Drive"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	to offer
+		has "Syndicate investigation [1]: done"
+		not "navy given jump drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		outfit "Scram Drive" -1
+		conversation
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your Scram Drive and replaces it with a strange, alien-looking device that you assume must be a Jump Drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
+				accept
+	
+	on accept
+		outfit "Jump Drive" 1
+		set "navy given jump drive"
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+
+
+mission "Pug [0]: A Jump Drive"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "Syndicate investigation [1]: done"
+		not "navy given jump drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		outfit "Jump Drive" -1
+		conversation
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and asks if they can look over your ship; a few minutes later, one of them says in surprise, "You've already got a Jump Drive! How did you manage that?" Since you don't need their equipment, they urge you to head directly for Pug space and continue your mission.`
+				accept
+	
+	on accept
+		outfit "Jump Drive" 1
+		set "navy given jump drive"
+		set "already had jump drive"
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+
+mission "Pug [1]"
+	name "Bring news to Earth"
+	description "Now that you have met with the Pug, travel to Earth and explain the situation to Parliament."
+	landing
+	source Pugglemug
+	destination Earth
+	clearance
+	to offer
+		has "navy given jump drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		log "Located the Pug homeworld, and met with some of them. They say that they have annexed the neighboring systems into the Pug Protectorate in order to stop the human civil war. However, their idea of bringing peace seems to involve conquering human space and replacing the Republic with their own government."
+		log "Factions" "Pug" `The Pug are aliens with barrel-shaped bodies, spindly legs, and milky blue blood. They claim to have intervened in the human civil war purely for the sake of preventing more bloodshed and helping humans to live together in peace.`
+		conversation
+			`This is an entirely alien world. The buildings have strangely flowing, tapered shapes not unlike the Pug starships, and from orbit you count dozens of large cities covering a large portion of the land mass. If this were a human world, you would estimate its population at over a billion. You follow one of the Pug ships that is landing, and discover a large spaceport where a surprising number of human merchant ships are parked, in addition to the aliens.`
+			`	Elsewhere they have mostly ignored you, but here your ship is quickly approached by a small group of the pale-skinned, delicate aliens. The Pug are oddly proportioned, with long arms and legs but short, barrel-shaped torsos and large heads, and although they only have two legs, their gait is vaguely insectoid. "You came from outside," one of them says. "You are not pledged to the Protectorate. Do you wish to make your vow of loyalty and peacefulness at this time?"`
+			choice
+				`	"No, we are here to find out why you attacked us, and to demand that you leave us alone."`
+				`	"We are willing to make peace, but only if you give us back control of our star systems."`
+			`	"We have no wish to harm you," says the alien. "In time you will come to recognize that. We intervened in your war only to bring peace and to keep your species from doing great harm to itself. And we must maintain control of these systems until we are certain that you will not continue fighting if the links are restored."`
+			choice
+				`	"If you wish us no harm, why did you slaughter the Syndicate fleet?"`
+				`	"You have no business invading our space and interfering in our affairs, regardless of your intentions."`
+					goto interfere
+		
+			`	"The fleet that was carrying nuclear weapons, weapons of genocide? The fleet that, when we demanded their surrender, instead attacked us with those weapons? We offered them a place in the Protectorate, but they chose violence instead, and so they perished by violence. That is justice."`
+			`	John says, "I still don't understand what makes you think you have the right to interfere in human affairs."`
+		
+			label interfere
+			`	"'Interfere'?" says the alien. "We have 'interfered' many times before, and always you have benefited. If you do not believe us, ask those who live in the place you call the Deep. We helped them defeat the twisted half-human beings that you created in your foolish attempts to improve your race's genetic code. We have helped keep those creatures in check in the centuries since then. And we have helped in many other ways."`
+			choice
+				`	"What do you want from us in return?"`
+				`	"What are you planning to do with these systems you have occupied?"`
+			`	"We have brought peace to this region," says the alien, "and we will continue to spread peace until violence has come to an end throughout human space. That is our only desire. All that we ask in return is a portion of the goods your worlds produce, to help offset the cost of watching over and protecting so many human worlds. And after some time, we will again allow human beings autonomous control of certain parts of your territory, when you show yourselves capable of living peacefully."`
+			`	"By 'spreading peace,' do you mean occupying more systems?" asks John.`
+			`	"We mean bringing an end to your war and your divisions," the alien says. "Those of your worlds and your people who have shown themselves unable to live peacefully, we must govern, to teach them peace. Any who attack us, we must destroy, because we are the bringers of peace, and whoever attacks us is not on the side of peace. And so we will send you back to your people now, to tell them that they have nothing to fear, and that they should await our peace and our protection."`
+			`	The aliens appear to think the conversation is over; they walk away and leave you puzzling over what they said. "We should report back to Earth," says John. "This situation is far beyond what we can handle alone."`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+mission "Pug [2]"
+	landing
+	name "Gather the fleet"
+	description "Travel to <destination> and requisition a Navy fleet to join in the battle against the Pug. (But if you want to visit the Quarg or the Deep, do that first.)"
+	autosave
+	source Earth
+	destination Geminus
+	to offer
+		has "Pug [1]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+	on offer
+		log "Getting an attack fleet from Geminus to attack the Pug. I am bringing them to the Syndicate first to get them outfitted with Jump Drives."
+		conversation
+			`Your ship caused quite a stir when it entered the Sol system via jump drive. Fortunately Parliament allowed you to land in one of their private hangars, but even so a few press drones managed to follow your ship into the hangar and have cameras pointed at you from the moment you and John disembark.`
+			`	You report to Parliament that the hyperspace links are being cut not by the Syndicate, but by an alien species, and that the Syndicate has offered to supply jump drives for an attack fleet if the Republic will supply the ships. You also report that the aliens' intention is to spread out to occupy more of human space and to demand a fraction of the resource production of all human planets, supposedly in the name of bringing "peace."`
+			`	One of the senators asks, "Do you think we have any chance of defeating the aliens?"`
+			choice
+				`	"It's possible. They all live in a single star system, so we outnumber them."`
+					goto questions
+				`	"It's unlikely. If we have any options other than fighting them, we should explore those options."`
+			`	"I think we have no choice," says one of the older members. "Even if it is a losing battle, we can't let the human race be enslaved without a fight."`
+			label questions
+			`	They have many other questions after that; you answer them as best you can, and leave them with full copies of your sensor logs of the alien ships and planets. Parliament agrees that the next step is for you to go to Geminus to get the fleet.`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying John hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+
+event "NAVY VS PUG"
+	"reputation: Pug" <?= -1000
+	government Pug
+		"attitude toward"
+			"Free Worlds" -.01
+			"Republic" -.01
+			"Syndicate" -.01
+			"Syndicate (Extremist)" -.01
+	system "Delta Capricorni"
+		fleet "Small Core Merchants" 1500
+
+
+mission "Pug [3]"
+	landing
+	name "Escort to Hephaestus"
+	description "Escort the Navy fleet to <destination>, where the Syndicate will fit all the ships with jump drives."
+	source Geminus
+	destination Hephaestus
+	to offer
+		has "Pug [2]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+		
+	on complete
+		log "The fleet is ready to go; it is time to attack."
+		event "NAVY VS PUG"
+		conversation
+			`The Syndicate directs you to land your ships in the private hangars for Syndicated Systems. Once you have landed, they quickly work to install jump drives in the Navy and Free Worlds ships. As they work, you hear one of the workers saying to another, "Golly, I'd forgotten how big those Navy ships are. Makes a Protector look puny by comparison, doesn't it?"`
+			branch extra
+				has "already had jump drive"
+			`	Once the work is done, you meet with a senior Syndicate executive named Marco Bugati. "I really hope this works," he says, "because these are the only jump drives we've been able to acquire. If your fleet is destroyed, we will have lost access to the occupied territory entirely."`
+				goto end
+			label extra
+			`	Once the work is done, you meet with a senior Syndicate executive named Marco Bugati. "I really hope this works," he says, "because these are the only jump drives we've been able to acquire, though you seem to have picked one up yourself; I'd like to have a chat with you and find out how, if we all survive this. I can tell you, that extra ship we've got thanks to the spare jump drive may be pivotal. But if your fleet is destroyed, we will have lost access to the occupied territory entirely."`
+			label end
+			`	You gather your fleet and prepare for an assault on Delta Capricorni, which is the occupied star system closest to Syndicate space.`
+			``
+			`[Take good care of this fleet: if ships are disabled, board them to "repair" them once the battle is over. And, when jumping into battle, remember that you can hold down the jump key to get all your ships ready to jump simultaneously, so no single ship enters the system first and bears the brunt of the enemy fire.]`
+	on offer
+		log "The Republic Navy is sending a fleet into Syndicate space, where they will be fitted with jump drives to make an assault on Pug territory. The Syndicate only has six jump drives available, so this fleet will have to survive without reinforcements until a way is found to reopen the connection to the rest of human space."
+		conversation
+			`You land on <planet> and are escorted by a Navy officer to meet the captains of the ships. You meet them and then get ready to leave.`
+				launch
+
+	npc accompany save
+		personality escort
+		government "Republic"
+		ship "Cruiser (Mark II)" "R.N.S. Everest"
+		ship "Cruiser (Mark II)" "R.N.S. Denali"
+		ship "Cruiser (Mark II)" "R.N.S. Severn"
+		ship "Carrier (Mark II)" "R.N.S. Vesuvius"
+		ship "Carrier (Mark II)" "R.N.S. Haleakala"
+		ship "Carrier (Mark II)" "R.N.S. Octavius"
+	
+	on visit
+		dialog "You have reached <planet>, but part of your fleet is not here yet. Better depart and wait for them to arrive in this star system."
+
+
+mission "Pug [3] (Extra)"
+	landing
+	invisible
+	source Geminus
+	destination Hephaestus
+	to offer
+		has "Pug [2]: done"
+		has "already had jump drive"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	
+	on offer
+		log "The Republic Navy is sending a fleet into Syndicate space, where they will be fitted with jump drives to make an assault on Pug territory. The Syndicate only has seven jump drives available, so this fleet will have to survive without reinforcements until a way is found to reopen the connection to the rest of human space."
+	
+	npc accompany save
+		personality escort
+		government "Republic"
+		ship "Cruiser (Mark II)" "R.N.S. Matterhorn"
+
+
+
+mission "Pug [4]: Escorts"
+	landing
+	invisible
+	source Hephaestus
+	to offer
+		has "Pug [3]: done"
+	to fail
+		has "Pug [12]: done"
+	npc kill
+		personality escort heroic disables
+		government "Republic"
+		ship "Cruiser (Jump)" "R.N.S. Everest"
+		ship "Cruiser (Jump)" "R.N.S. Denali"
+		ship "Carrier (Jump)" "R.N.S. Vesuvius"
+		ship "Carrier (Jump)" "R.N.S. Haleakala"
+		ship "Dagger" "Red One"
+		ship "Dagger" "Red Two"
+		ship "Dagger" "Red Three"
+		ship "Dagger" "Red Four"
+		ship "Dagger" "Red Five"
+		ship "Dagger" "Red Six"
+		ship "Dagger" "Red Seven"
+		ship "Dagger" "Red Eight"
+		ship "Cruiser (Jump)" "R.N.S. Severn"
+		ship "Carrier (Jump)" "R.N.S. Octavius"
+		ship "Dagger" "Red Nine"
+		ship "Dagger" "Red Ten"
+		ship "Dagger" "Red Eleven"
+		ship "Dagger" "Red Twelve"
+		ship "Combat Drone" "Orange One"
+		ship "Combat Drone" "Orange Two"
+		ship "Combat Drone" "Orange Three"
+		ship "Combat Drone" "Orange Four"
+		ship "Combat Drone" "Orange Five"
+		ship "Combat Drone" "Orange Six"
+		ship "Combat Drone" "Orange Seven"
+		ship "Combat Drone" "Orange Eight"
+		ship "Combat Drone" "Blue One"
+		ship "Combat Drone" "Blue Two"
+		ship "Combat Drone" "Blue Three"
+		ship "Combat Drone" "Blue Four"
+		ship "Combat Drone" "Blue Five"
+		ship "Combat Drone" "Blue Six"
+		ship "Combat Drone" "Blue Seven"
+		ship "Combat Drone" "Blue Eight"
+		ship "Combat Drone" "Blue Nine"
+		ship "Combat Drone" "Blue Ten"
+		ship "Combat Drone" "Yellow One"
+		ship "Combat Drone" "Yellow Two"
+		ship "Combat Drone" "Yellow Three"
+		ship "Combat Drone" "Yellow Four"
+		ship "Combat Drone" "Yellow Five"
+		ship "Combat Drone" "Yellow Six"
+		ship "Combat Drone" "Yellow Seven"
+		ship "Combat Drone" "Yellow Eight"
+		ship "Combat Drone" "Yellow Nine"
+		ship "Combat Drone" "Yellow Ten"
+		ship "Combat Drone" "Yellow Eleven"
+		ship "Combat Drone" "Yellow Twelve"
+
+mission "Pug [4]: Escorts (Extra)"
+	landing
+	invisible
+	source Hephaestus
+	to offer
+		has "Pug [3] (Extra): done"
+		has "already had jump drive"
+	to fail
+		has "Pug [12]: done"
+	npc kill
+		personality escort heroic disables
+		government "Republic"
+		ship "Cruiser (Jump)" "R.N.S. Matterhorn"
+		ship "Combat Drone" "Green One"
+		ship "Combat Drone" "Green Two"
+		ship "Combat Drone" "Green Three"
+		ship "Combat Drone" "Green Four"
+
+mission "Pug [4]"
+	landing
+	name "Liberate <system>"
+	description "Attempt to drive the Pug out of the <system> system, then land on <planet>."
+	source Hephaestus
+	destination Maker
+	clearance
+	to offer
+		has "Pug [3]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	npc kill
+		personality disables staying target
+		system "Delta Capricorni"
+		government Pug
+		fleet 2
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 4
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Pug ships circling overhead. You should take off and help finish them off.`
+	on complete
+		log "Successfully captured Delta Capricorni from the Pug. These are going to be a hard set of battles. An engineer found a way to restore the hyperlinks; i am supposed take a 'Graviton Reflector' back to Hephaestus and get a Syndicate fleet to help after I deploy it."
+		event "battle for delta capricorni"
+		conversation
+			`As you land on <planet>, one of the captains radios in that he has an engineer aboard that will try to restore the link between Markab and Delta Capricorni. A couple minutes later your fleet has landed and you meet the engineer, who directs you to a building that seems to have gravitational waves emanating from it. He shuts off the equipment, but the links do not open, until he begins hearing very faint, intermittent signals from the hyperspace communications relay back in the Markab system. "That means the link may not be closed completely," he says, "or at least, there's some residue remaining."`
+			`He tells you that there is some equipment that he calls a 'Graviton Reflector' that will reopen the link quickly, and he tells you to set it up on Hephaestus and return here. But the Pug might try to stop you. . .`
+
+
+
+mission "Pug [5]"
+	landing
+	name "Graviton Reflector"
+	description "Bring the graviton reflector to <destination>."
+	source Maker
+	destination Hephaestus
+	cargo "graviton reflector" 10
+	blocked "You will need <capacity> to take on the next mission."
+	to offer
+		has "Pug [4]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		log "Successfully deployed the reflector and am bringing the Syndicate fleet back with me."
+		event "NAVY- reconnected delta capricorni"
+		conversation
+			`You deploy the graviton reflector on <destination>, now attack Alderamin. Remember to kill any Pug you find attacking <source>. Also, now that the link is restored, a Syndicate fleet will travel with you.`
+	npc
+		personality waiting disables target
+		system "Delta Capricorni"
+		government Pug
+		fleet 2
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+event "NAVY- reconnected delta capricorni"
+	link "Delta Capricorni" Markab
+	system "Delta Capricorni"
+		government Syndicate
+		fleet "Small Core Merchants" 1500
+		fleet "Large Core Merchants" 3000
+		fleet "Small Pug" 2000
+		fleet "Large Syndicate" 400
+		fleet "Human Miners" 3000
+
+
+mission "Pug [5]: Syndicate Escorts"
+	landing
+	invisible
+	source Hephaestus
+	to offer
+		has "Pug [4]: done"
+	to fail
+		has "Pug [12]: done"
+
+	npc kill
+		personality disables escort
+		system Markab
+		government Syndicate
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter (Mark II)"
+				"Manta (Mark II)" 2
+				"Quicksilver (Mark II)" 4
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+
+
+
+mission "Pug [6]"
+	landing
+	name "Liberate <system>"
+	description "Attempt to drive the Pug out of the <system> system, then land on <planet>. Remember to kill any Pug invading Delta Capricorni also."
+	autosave
+	source Hephaestus
+	destination Furnace
+	waypoint "Delta Capricorni"
+	clearance
+	to offer
+		has "Pug [5]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		event "NAVY- reconnected delta capricorni"
+	npc kill
+		personality disables staying target
+		system "Alderamin"
+		government Pug
+		fleet 2
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 4
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+	npc kill
+		personality disables staying
+		system "Delta Capricorni"
+		government Pug
+		fleet
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 2
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Pug ships circling overhead. You should take off and help finish them off.`
+	on complete
+		log "Successfully captured Alderamin from the Pug."
+		event "NAVY-liberation of alderamin"
+		conversation
+			`You land on <planet> and watch as your fleet kills any Pug on the ground and frees any prisoners. You should probably see if you can open up a link to Earth. The Pug are probably very angry. . .`
+
+
+event "NAVY-liberation of alderamin"
+	"tribute: Shiver" *= 300
+	system "Alderamin"
+		government "Syndicate"
+		fleet "Small Core Merchants" 1000
+		fleet "Large Core Merchants" 2000
+		fleet "Small Pug" 2000
+		fleet "Large Syndicate" 800
+	planet "Furnace"
+		security 0.1
+		tribute 300
+			threshold 2000
+			fleet "Small Syndicate" 10
+			fleet "Large Syndicate" 2
+
+
+event "NAVY-liberation of altair"
+	"tribute: Shiver" *= 300
+	link Altair Sol
+	system "Altair"
+		government "Republic"
+		fleet "Small Core Merchants" 1000
+		fleet "Large Core Merchants" 2000
+		fleet "Small Pug" 2000
+		fleet "Large Syndicate" 800
+	planet "Shiver"
+		security 0.1
+		tribute 300
+			threshold 2000
+			fleet "Small Republic" 10
+			fleet "Large Republic" 2
+	system Fomalhaut
+		government Syndicate
+	system Diphda
+		government Syndicate
+	system Caph
+		government Syndicate
+	planet "Millrace"
+		security 0.2
+		tribute 1400
+			threshold 4000
+			fleet "Large Syndicate" 10
+	planet "Tinker"
+		security 0.4
+		tribute 1100
+			threshold 4000
+	planet "Reunion"
+		security 0.3
+		tribute 2900
+			threshold 5000
+			fleet "Large Syndicate" 19
+
+mission "Pug [7]"
+	landing
+	name "Liberate <system>"
+	description "Attempt to drive the Pug out of the <system> system, then land on <planet>."
+	source Furnace
+	destination Silver
+	clearance
+	to offer
+		has "Pug [6]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	npc kill
+		personality disables staying target
+		system "Vega"
+		government Pug
+		fleet 3
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Pug ships circling overhead. You should take off and help finish them off.`
+	on complete
+		log "Successfully captured Vega from the Pug. I am now going to try to bring another 'Graviton Reflector' to Sol, so a bigger Navy fleet can assist in the battles."
+		event "SAVEd vEgA"
+		conversation
+			`You land on <planet> and watch as your fleet kills any Pug on the ground and frees any prisoners. One of your cruisers lands and the engineer turns off the equipment. He soon finds a graviton reflector for you to take to Earth. He tells you not to waste time fighting as their sensors detected a massive incoming Pug fleet.`
+				launch
+
+event "SAVEd vEgA"
+	system Vega
+		government Republic
+
+
+mission "Pug [8]"
+	landing
+	name "Graviton Reflector"
+	description "Bring the graviton reflector to <destination>."
+	autosave
+	source Silver
+	destination Earth
+	cargo "graviton reflector" 10
+	blocked "You will need <capacity> to take on the next mission."
+	to offer
+		has "Pug [4]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		log "Successfully deployed the graviton reflector an now there is a large Navy fleet at my command."
+		event "reconnected sol"
+		conversation
+			`You deploy the graviton reflector on <destination>. A Navy officer meets you soon after and tells you that they have a large fleet for your use to drive out the Pug completely.`
+	npc
+		personality disables
+		system "Vega"
+		government Pug
+		fleet 8
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	npc
+		personality staying heroic disables
+		government "Republic"
+		system "Sol"
+		fleet 6
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Frigate (Mark II)" 2
+		fleet 4
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 4
+				"Combat Drone" 6
+				"Gunboat (Mark II)" 3
+				"Rainmaker (Mark II)" 3
+
+
+event "reconnected sol"
+	link "Vega" Sol
+	system "Vega"
+		fleet "Small Core Merchants" 1500
+		fleet "Large Core Merchants" 3000
+		fleet "Small Pug" 2000
+		fleet "Large Syndicate" 400
+		fleet "Human Miners" 3000
+
+
+
+mission "Pug [9]: Escorts"
+	landing
+	invisible
+	source Earth
+	to offer
+		has "Pug [3]: done"
+	to fail
+		has "Pug [12]: done"
+	npc kill
+		personality escort heroic disables
+		government "Republic"
+		fleet 6
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Frigate (Mark II)" 2
+		fleet 4
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 4
+				"Combat Drone" 6
+				"Gunboat (Mark II)" 3
+				"Rainmaker (Mark II)" 3
+
+
+mission "Pug [9]"
+	landing
+	name "Liberate <system>"
+	description "Attempt to drive the Pug out of the <system> system, then land on <planet>."
+	source Earth
+	destination Shiver
+	clearance
+	to offer
+		has "Pug [8]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	npc kill
+		personality disables staying target
+		system "Altair"
+		government Pug
+		fleet 4
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 4
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Pug ships circling overhead. You should take off and help finish them off.`
+	on complete
+		log "Successfully drove the Pug out of Altair."
+		event "NAVY-liberation of altair"
+		conversation
+			`You land on <planet> and your fleet gets ready for the attack on Deneb, the Pug's home system.
+mission "Pug [10]"
+	landing
+	name "Defend <system>"
+	description "Defend <system> from an incoming Pug fleet."
+	source Shiver
+	destination Silver
+	clearance
+	to offer
+		has "Pug [9]: done"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	npc kill
+		personality disables staying target
+		system "Vega"
+		government Pug
+		fleet 4
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 4
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `You've landed on <planet>, but there are still Pug ships circling overhead. You should take off and help finish them off.`
+	on complete
+		log "The Pug attempted to recapture Vega, but we drove them away. Now we must attack their home system."
+		conversation
+			`You land on <planet> as your fleet gets ready to continue the attack on the Pug.`
+
+mission "Pug [11]"
+	landing
+	name "Attack <system>"
+	description "Attempt to drive the Pug out of their home system, <system>, then land on <planet>."
+	autosave
+	source Silver
+	destination Pugglemug
+	clearance
+	to offer
+		has "Pug [10]: done"
+	passengers 1
+	on offer
+		event "pug territory liberated"
+		event "pug flee"
+		event "pug link restoration 1"
+		event "pug link restoration 2"
+		event "pug link restoration 3"
+		event "pug link restoration 4"
+		event "NAVY-pug peaceful"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	npc
+		personality disables staying derelict
+		system "Deneb"
+		government Pug
+		fleet
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	on enter Deneb
+		dialog
+			`You enter the Deneb system expecting a massive Pug battle fleet to be waiting for you. Instead, it is entirely deserted but for a few derelicts floating around in space. If the Pug fled, those must have crashed into each other in the hustle. Also, your sensors are picking up some sort of anomaly outside the orbit of the outermost planet.`
+	on complete
+		log `Now that the Pug are gone, the Navy will be able to use the "graviton reflectors" to repair the broken hyperspace links and to reconnect all of human space.`
+		log "Factions" "Pug" `The Pug disappeared from human space, and left behind more questions than answers. It is possible that the true purpose of their attack was to give human beings a common enemy that would force them to band together and forget their internal struggles.`
+		conversation
+			`As you bring your fleet in for a landing, you find that the main Pug spaceport is surprisingly empty. However, a group of Pug children are gathered in a loose circle on one of the landing pads. They appear to be playing some sort of game; they ignore your fleet overhead.`
+			choice
+				`	(Attack them.)`
+				`	(Avoid harming them and land.)`
+					goto avoid
+			
+			`	You fire a single shot into the center of the circle, leaving a dark scar on the landing pad and sending a plume of dust and smoke into the air. The children continue their game, as if nothing has happened.`
+			label avoid
+			`	You land your ship near the circle of Pug children. They are bouncing a ball back and forth between them, and studiously ignoring your presence. Aside from the sound of the ball striking the pavement, the entire city is eerily quiet. One of your captains walks up and comments, "This is really weird."`
+			choice
+				`	(Explore the city.)`
+					goto city
+				`	(Join the game.)`
+					goto join
+			
+			label join
+			`	You step into the circle and make a grab for the ball, but it passes straight through your fingers. The captain reaches out to touch one of the children, and his hand, too, passes through them. "Some sort of holographic projection," he says.`
+			`	The Navy ships are beginning to land and send crew out to explore. You and the captain, whose name is Samuel, walk into the city, passing by a pair of adult Pug who sit at a table outside what looks like some sort of cafe, playing a board game with black and white stones on a hexagonal grid. You check and find that they, too, are a holographic illusion.`
+				goto house
+			
+			label city
+			`	The Navy ships are beginning to land and send crew out to explore. You walk into the city. The streets are mostly deserted, but on one of them you pass by a pair of adult Pug who sit at a table outside what looks like some sort of cafe, playing a board game with black and white stones on a hexagonal grid.`
+			choice
+				`	(Attack them.)`
+					goto attack
+				`	(Try to talk to them.)`
+					goto talk
+			
+			label attack
+			`	You throw a punch at one of the Pug at the table, but your fist passes right through its head as if nothing is there. Surprised, Samuel reaches out to touch the other one, and again his hand passes through them. "Some sort of holographic projection," he says. You continue exploring.`
+				goto house
+			
+			label talk
+			`	You try to talk to the Pug, but they, like the children, are ignoring you completely; they do not even seem to be aware of your existence. Finally, Samuel reaches out to shake one of them by the shoulder, and his hand passes straight through it. Surprised, he waves his hands back and forth through both of them. "Some sort of holographic projection," he says.`
+				goto house
+			
+			label house
+			`	You continue to explore for a while. Aside from the illusions, the city seems to be deserted. "Let's check inside one of the houses," Samuel says at last. You climb up the steps to what looks like an apartment building and find that all the doors are unlocked. Inside one of the living spaces, you explore the different rooms and find that the water fixtures and electricity are working, but a thick layer of dust covers everything. Samuel, meanwhile, is staring at one of the electrical outlets. "<first>," he says, "do you see anything odd about this?"`
+			choice
+				`	"No, it's just an ordinary electric outlet."`
+				`	"Everything here is odd. The city, the holograms, all of it."`
+			`	He says, "It's an ordinary, human style electrical outlet. Human. In an alien city. And the steps we came up to get here: the Pug have legs half again as long as ours. But the tread spacing was at the normal human height. This building wasn't made for the Pug. It was made for us."`
+			`	Reports begin coming in as the Navy explores the rest of the planet, and they are all finding the same thing: the cities are abandoned, many of them with signs that they were never inhabited in the first place. The first time you visited this planet, you thought it must have a billion inhabitants, but now it seems that its true population was less than a million - all of whom have apparently departed to somewhere beyond the wormhole.`
+			`You should probably return to Earth to figure out what to do next.`
+
+event "NAVY-pug peaceful"
+	"reputation: Pug" = 1
+	government Pug
+		"attitude toward"
+			"Free Worlds" 0
+			"Republic" 0
+
+mission "Pug [12]"
+	landing
+	name "Return to Earth"
+	description "Goeth thou backeth to Earth"
+	source Pugglemug
+	destination Earth
+	clearance
+	deadline
+	passengers 1
+	to offer
+		has "Pug [11]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		log "Parliament has promoted me to the rank of Admiral, and gave me the decision on whether to attack the Free Worlds or occupy the Syndicate."
+		payment 80000000
+		conversation
+			`As you come in for a landing, several Gunboats come up to escort you to the Parliament building. You drop off John and are then brought inside to speak. You tell exactly what happened to the senators and then tell them of your odd experiences in Deneb, and how the Pug fled. The senators reward you with a promotion to the rank of Admiral and a large bonus of <payment> credits. Finally, the senators ask you what you think should happen about the Free Worlds.`
+			choice
+				`	"We should fight them to a stalemate, as they  are a major threat."`
+				`	"We should leave them alone, as long as they agree not to attack us again. We must turn our eyes to the Syndicate, who are the real bombers!"`
+					goto syndicate
+			`	One of the senators asks you: "Are you sure? We have received evidence that the Syndicate is behind the bombings."`
+			choice
+				`	"Yes, I am sure. There is no way we can risk losing the Syndicate, as their trade holds the Republic together. We must defeat the Free Worlds."`
+					goto "definitely defeat"
+				`	"No, you are right, the Syndicate must be held responsible for their actions."`
+					goto "definitely occupy"
+			label syndicate
+			`	About half of parliament looks at you in astonishment. "Where did you learn all this?" asks a senator.`
+			choice
+				`	"The CEO, Alastair Korban, admitted to it when he was giving me a jump drive to defeat the Pug."`
+			`	"Are you sure?" asks another senator. "A lot of lives hang in the balance."`
+			choice
+				`	"Yes, I'm sure. We must occupy the Syndicate."`
+					goto "definitely occupy"
+				`	"Fine, we will fight the Free Worlds."`
+					goto "definitely surrender"
+			
+			label "definitely defeat"
+			action
+				set "attacked the FW"
+			`	"Very well," says another senator. "In that case, we'll need you to meet with the fleet captains on Luna and figure out how to take on the Free Worlds."`
+			
+			label "definitely occupy"
+			action
+				set "occupied the Syndicate"
+			`	Some of the senators are nervous about it, but order you to report to Geminus to get a fleet."`
+
+
+
+event "REPUBLIC CEASE-FIRE not FW"
+	government "Republic"
+		"attitude toward"
+			"Free Worlds" -.2
+			"Merchant" .01
+			"Pirate" -.01
+	government "Free Worlds"
+		"attitude toward"
+			"Republic" -.2
+	"reputation: Free Worlds" <?= -10
+
+event "REPUBLIC CEASE-FIRE not Syndicate"
+	government "Republic"
+		"attitude toward"
+			"Free Worlds" .2
+			"Syndicate (Extremist)" .2
+			"Merchant" .01
+			"Pirate" -.01
+	government "Syndicate (Extremist)"
+		"attitude toward"
+			"Republic" -.2
+	government "Free Worlds"
+		"attitude toward"
+			"Republic" .2
+	"reputation: Syndicate (Extremist)" <?= -10
+	"reputation: Free Worlds" >?= 10
+
+
+mission "happenings FW"
+	invisible
+	landing
+	source Earth
+	to offer
+		has "attacked the FW"
+	on offer
+		event "REPUBLIC CEASE-FIRE not FW"
+		log "Chose to attack the Free Worlds instead of occupying the Syndicate."
+		
+
+mission "happenings Syndicate"
+	invisible
+	landing
+	source Earth
+	to offer
+		has "occupied the Syndicate"
+	on offer
+		event "REPUBLIC CEASE-FIRE not Syndicate"
+		log "Chose to occupy the Syndicate instead of attack the Free Worlds."
+
+
+mission "syndicate attack [0]"
+	name "Occupy the Syndicate"
+	description "Go to <destination> to get a fleet to occupy the Syndicate."
+	source "Earth"
+	destination Geminus
+	landing
+	to offer
+		has "occupied the Syndicate"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on complete
+		event "Alphas occupy Synd"
+		conversation
+			`As the <ship> begins to land, you receive a transmission from the control tower: "Admiral <last>, the fleet has been assembled. Report to the spaceport immediately for final preparations."`
+
+mission "syndicate attack [1]"
+	name "Occupy the Syndicate"
+	description "Go to <destination> and leave a part of your fleet there to occupy the Syndicate."
+	source "Geminus"
+	destination Millrace
+	clearance
+	to offer
+		has "syndicate attack [0]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on enter Fomalhaut
+		conversation 
+			`As you jump in to <system>, Captain Fairchild radios in - despite his otherwise calm voice, you can tell he's panicking on the inside.`
+`	"Admiral <last>...those ships aren't flying Syndicate colors. If they were with the Syndicate, they'd have purple accents, but those are pink. BRIGHT pink. And some of the bioscans of the crew aren't returning what we'd expect for normal humans..."`
+			``
+			`	"What are you saying, captain?" you reply, slightly agitated."`
+			``
+			`	"Sir...the extremists are carrying Alphas on board. And-"`
+			``
+			`	An alarm screams out just before the captain can finish his thought. Looking at the panel, you see the following alert flash in red and white...something you hoped you would never see in your lifetime:`
+			``
+			`		[DANGER: NUCLEAR MUNITIONS DETECTED]`
+			``
+			`	"...They appear to be armed with nuclear missiles, sir," Fairchild sheepishly finishes his statement. Moments later, the panel lights up yet again...`
+			``
+			`		[NEW ORDERS FROM HIGH COMMAND: NEUTRALIZE ALL ALPHA SHIPS]`
+			``
+			`	You slowly shift your gaze upwards from the panel, glaring at the Alpha Fleet with a mixture of resolution and defiance. "All hands, to stations!" you shout over the radio. "Brace for impact and prepare to engage!" As you continue to relay orders, you recognize the unmistakable dagger-like silhouettes of an alarming number of nuclear warheads speeding towards the fleet.`
+			``
+			`		Whether in victory or defeat, this will be a day long-remembered in the Republic.`
+	on offer
+		conversation
+			`	The air is charged with emotion to an almost explosive degree as you make your way to the spaceport to meet with your fellow officers. Republic High Command relayed that some Syndicate holdouts were not going along with the Republic occupation - one of which happened to be <destination>, with other planets likely to follow suit. Feelings of excitement, pride, anger, sorrow, fear and disgust all intermingle along with many more as you stride forth with determination, remembering all the events that lead up to this moment...`
+			``
+			`		The bombings of Geminus and Martini...`
+			`		The framing of the Free Worlds, and the subsequent war and reconciliation with them...'
+			`		And the (albeit brief) war with the Pug.`
+			``
+			`	It has been a long, hard road to get here. But finally, the end is so close you can almost picture yourself snatching it out of the air with your bare hands. However, there's one last hurdle to conquer before victory can be claimed at last. How fitting, you muse to yourself, that the beginning of the end takes place here...on Geminus.`
+			`	The commanding officers are seated around a large meeting table as you enter the room. You look over each and every one of them, doing your best to engrave their faces into your memory - you solemnly realize that it might be the last time you ever see them again. After some brief introductions, you are formally introduced:`
+			``
+			`		Captain Thomas Fairchild, of the R.N.S Fortitude...`
+			`		Rear Admiral Sophia Icke, of the R.N.S. Matterhorn...`
+			`		Commander Minako Tsubachi of the R.N.S. Itokawa...`
+			`		Commodore Elena Antonova of the R.N.S. Aleksandr...`
+			`		Captain Piotr Blazkowicz of the R.N.S. Krakow...`
+			`		And Admiral William "Billy" Taggart of the R.N.S. Incontrovertible.`
+			``
+			`"Right," you begin, "well, it's time to address the crews of our ships." You quickly exit the room, COs in tow, and make your way to the main hangar. There must be close to a thousand men and women gathered here, all busily working to get the ships ready.`
+			`	Near your arrival point, a small podium has been set up for your final briefing. As you step up to the microphone, some feedback squawks through the speakers, to which an audio tech quickly remedies. Once the feedback is dealt with, you bark: "All crews, fallll IN!"`
+			`	Immediately, all officers and enlisted stop what they're doing and form ranks in front of the podium. The whole experience feels like something out of a movie as you begin the briefing, your voice echoing throughout the hangar...`
+			`	"This is it, ladies and gentlemen - the complete and total surrender of the Syndicate is all but inevitable. Only a few desperate holdouts remain, and it comes down to us to finalize our victory."`
+			`	You turn to your right and slowly begin to pace back and forth in front of the officers and their crews. "We know what's at stake here. To fail now would be a fatal blow for the Republic - not just for morale, but for our people. Our united citizens, Republic and Free Worlds, alike, are looking to us for guidance...and for hope. Hope that we will see another tomorrow. Hope that we will rise from the ashes of this war far stronger than when we started. And hope that we can finally rest, peacefully, safe from all that would seek to destroy that which we value above all else: our freedom."`
+			`	"I won't sugar-coat any of this - it's quite possible that when we come back to this hangar, there may be some faces and ships absent. The average citizen in the Republic, never mind the Free Worlds, may never even know of your existence."`
+			``
+			`You stop, and turn to face the group.`
+			``
+			`	"But the enemy...the enemy will know. Through our courage and tenacity, we will forever carve an image of ourselves into the hearts and minds of the enemy. We will burn so bright that when even the last lights in the Universe wink out of existence, the enemy will still know of our actions, and never forget the scars of our heroism they experienced. And with this knowledge, we board our ships knowing that defeat is impossible for us, men - we have already claimed victory!"`
+			``
+			`		"LONG LIVE THE REPUBLIC!"`
+			``
+			`You move as one unit towards your respective ships, filled with a renewed sense of vigor. As you board the <ship>, you take one last look skyward - to your surprise, there's a rare break in the otherwise thick cloud cover, and the star casts a brilliant light over the spaceport. A warm smile breaks across your face...it almost feels like the heavens themselves are blessing you on your journey.`
+			`	Cycling the hatch, you make final preparations before setting out to <destination>...and destiny.`
+	on complete
+		event "Fomalhaut occupied"
+		conversation
+			`"Admiral <last>," the radio crackles, "with the destruction of the extremist fleet above <planet>, the occupation of <planet> can begin in earnest. Make your way to the spaceport to rendezvous with the fleet and begin the second phase of the occupation."`
+	on visit
+		conversation
+			`You've landed on <planet>, but your work's not done - there are still hostile ships circling overhead. Do some quick stretches if you need to, then man up and get back in the fight!`
+				launch
+
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Manta (Mark II)" 2
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter"
+				"Quicksilver" 3
+	
+	npc
+		government "Republic"
+		personality heroic escort
+		fleet 3
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Lance" 12
+				"Combat Drone" 18
+				"Cruiser (Mark II)" 3
+				"Combat Drone" 12
+
+
+
+
+mission "syndicate attack [2]"
+	name "Occupy the Syndicate"
+	description "Go to <destination> and destroy all Alpha ships you find, then leave a part of your fleet there to occupy the Syndicate."
+	source "Millrace"
+	destination Reunion
+	clearance
+	landing
+	to offer
+		has "syndicate attack [1]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`	Remains of Syndicate extremist ships can still be seen burning up in the atmosphere of <planet> as your fleet lands at the spaceport. On the surface, you appear calm and collected...but internally, you're a hurricane of mixed emotions. The temptation to exact retribution, in particular, burns hot enough to melt lead. You open comms to the marines standing by, and deliver their orders:`
+			`	"Marines, it's time to go to work. Sweep the planet's surface for any remaining pockets of resistance. Lethal force is not, repeat, NOT authorized unless your team comes under attack."`
+``
+`	You pause for a moment, partly to consider how the spirit of orders could be violated. Throughout history, countless individuals have used their positions to twist the interpretations of orders to better suit their needs...and you have no intention of adding yourself or any of your men to that number.`
+``
+`	"And under no circumstances will I tolerate any use of torture, coercion or other underhanded means to force surrender of any hostiles - they must willingly give themselves up. Otherwise, we are no better than the very enemy we face."`
+``
+			`You terminate the link, thankful that cooler thoughts prevailed in your wording; even so, you find yourself hoping your given orders couldn't be somehow abused. Now that the occupation of <source> is underway, you chart a course for <destination>.`
+	on complete
+		event "Caph occupied"
+		conversation
+			`Your fleet has destroyed the Alphas, and they are now securing the planet and destroying any Alphas on the surface.
+			`You should probably lead them fleet to the next planet and destroy any Alpha ships there.`
+	on visit
+		conversation
+			`You've landed on <planet>, but there are still hostile ships circling overhead. You should take off and help finish them off.`
+				launch
+
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Manta (Mark II)" 2
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter"
+				"Quicksilver" 3
+	
+	npc
+		government "Republic"
+		personality heroic escort
+		fleet 2
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Lance" 12
+				"Combat Drone" 18
+				"Cruiser (Mark II)" 3
+				"Combat Drone" 12
+
+
+mission "syndicate attack [3]"
+	name "Occupy the Syndicate"
+	description "Go to <destination> and leave a part of your fleet there to occupy the Syndicate."
+	source "Reunion"
+	destination Tinker
+	clearance
+	landing
+	to offer
+		has "syndicate attack [2]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`You head to the spaceport and meet the captains. You get to know them and then head back to <ship> and get ready to launch.`
+			`As you are warming up your ship you receive instructions from the from the control tower that the Syndicate is resisting occupation, so expect hostile ships in orbit around <destination>
+	on complete
+		event "Diphda occupied"
+		conversation
+			`Your fleet has destroyed the Alphas, and they are now securing the planet and destroying any Alphas on the surface.
+			`You should probably lead the fleet to the next planet and destroy any Alpha ships there.`
+	on visit
+		conversation
+			`You've landed on <planet>, but there are still hostile ships circling overhead. You should take off and help finish them off.`
+				launch
+
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Manta (Mark II)" 2
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter"
+				"Quicksilver" 3
+	
+	npc
+		government "Republic"
+		personality heroic escort
+		fleet 2
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Lance" 12
+				"Combat Drone" 18
+				"Cruiser (Mark II)" 4
+				"Combat Drone" 16
+
+
+
+mission "syndicate attack [3]"
+	name "Occupy the Syndicate"
+	description "Go to <destination> and leave a part of your fleet there to occupy the Syndicate."
+	source "Reunion"
+	destination Tinker
+	clearance
+	to offer
+		has "syndicate attack [2]: done"
+	on fail
+		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		conversation
+			`You head to the spaceport and meet the captains. You get to know them and then head back to <ship> and get ready to launch.`
+			`As you are warming up your ship you receive instructions from the from the control tower that the Syndicate is resisting occupation, so expect hostile ships in orbit around <destination>
+	on complete
+		
+		conversation
+			`Your fleet has destroyed the Alphas, and they are now securing the planet and destroying any Alphas on the surface.
+			`You should probably lead the fleet to the next planet and destroy any Alpha ships there.`
+	on visit
+		conversation
+			`You've landed on <planet>, but there are still hostile ships circling overhead. You should take off and help finish them off.`
+				launch
+
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Manta (Mark II)" 2
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Fomalhaut
+		personality staying heroic target
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter"
+				"Quicksilver" 3
+	
+	npc
+		government "Republic"
+		personality heroic escort
+		fleet 3
+			names "republic capital"
+			fighters "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Lance" 12
+				"Combat Drone" 18
+				"Cruiser (Mark II)" 3
+				"Combat Drone" 12
+
+
+
+
+
+
+
+
+event "Fomalhaut occupied"
+	system "Diphda"
+		government Republic
+event "Caph occupied"
+	system "Diphda"
+		government Republic
+event "Diphda occupied"
+	system "Diphda"
+		government Republic
