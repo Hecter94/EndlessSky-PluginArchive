@@ -7716,9 +7716,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-17) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-19) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7798,9 +7798,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Jibauni/icon.png' height='100'></img><br>
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.85 mb | 2024-09-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.99 mb | 2024-09-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-18) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-19) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -13904,9 +13904,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.37 mb | 2024-09-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.37 mb | 2024-09-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
 Author: kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-18) <br>
+[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-19) <br>
 
 >My Navy campaign which I hope to get implemented when finished.
 >
