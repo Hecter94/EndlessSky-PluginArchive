@@ -11,9 +11,9 @@
 # Navy Campaign Project Lead: Bereskatuket
 
 
-mission "Reassignment to SDF"
+mission "Navy FW Reassignment 1"
 	name "Reassignment"
-	description "Report to the Solar Defense Flotilla under Commodore Joseph Cruz by <deadline>."
+	description "Report to Earth"
 	landing
 	deadline
 	source
@@ -23,26 +23,32 @@ mission "Reassignment to SDF"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
-		has "Electrons Final: declined"
+		has "Electrons Final: offered"
 	on offer
 		log "Was reassigned to the defense fleets in Sol, under the command of Commodore Joseph Cruz."
 		log "People" "Joseph Cruz" "A Navy Commodore in charge of the Solar Defence Flotilla, known for his strict behavior in relation to the rules, and his firm allegiance to Parliament."
 		conversation
-			`	A message comes in from Naval Command: "Captain <first> <last>, because of a recent turn of events with the Free Worlds and the Geminus Bombing Investigation, you are from this point on assigned to the defense fleets in Sol. Please report there immediately to Commodore Joseph Cruz. Thank you."`
+			`A message comes in from Naval Command:'
+			`	"Captain <first> <last>, you are ordered to report to Commodore Joseph Cruz on Earth immediately. Further information will be provided at a later date."`
+			``
+			`Wondering at the potential work you will do next, you set your ship into pre-flight so as to leave immediately upon finishing your business at this planet.`
 			accept
 
-mission "Reassigned to Sol [cruiser]"
+mission "Navy FW Reassignment 2"
 	landing
+	name "Aquire Cruiser"
+	description "Head to the shipyards on Luna to receive your designated Cruiser."
 	source Earth
 	destination Luna
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
-		has "Reassigned to Sol: offered"
+		has "Navy FW Reassignment 1: done"
 	on offer
 		event "navy using mark ii ships"
 		conversation
-			`	As you land on earth, <ship>'s communicator beeps, and a Navy officer whom you presume to be the Commodore comes on. "Good evening, Captain <last>! The Geminus Bombing Investigation believes that the most promising culprit for the Geminus bombing is the Free Worlds. Because of this, the Navy shall be attacking the system of Kornephoros under orders from Parliament. Therefore, as the new shipyards are complete, you shall be requisitioned a single Cruiser and four combat drones with the hope of them serving you well. Report to the shipyards on Luna to receive them."`
+			`	As you land on Earth, <ship>'s communicator beeps, and a Navy officer whom you presume to be the Commodore comes on. "Good evening, Commander <last>! The Geminus Bombing Investigation believes that the most promising culprit for the Geminus bombing is the Free Worlds due to certain confidential information. Because of this, the Navy has received orders from Parliament to capture the Kornephoros system. Therefore, as the new shipyards are complete and we now have a surplus of available ships, you shall be requisitioned a single Cruiser and four combat drones to aid to your personal fighting capability during this battle. Please report to the shipyards on Luna to receive them."`
+			accept
 	on complete
 		log "Was given a cruiser and its complement of drones in order to prepare for an invasion of the Free Worlds."
 		give ship "Cruiser (Mark II)" "R.N.S. Horizon"
@@ -51,12 +57,14 @@ mission "Reassigned to Sol [cruiser]"
 		give ship "Combat Drone" "Gamma three"
 		give ship "Combat Drone" "Gamma four"
 		conversation
-			`	Upon landing, you immediately visit the shipyards, as instructed. You meet the receptionist, who sees your uniform, and requests your license. After she scans it, she directs you to a specific hangar in the rear area of the shipyards.`
-			`	A few minutes later, you spot a door marked 'Restricted Access: Authorised Navy Personnel Only.' The door is flanked by a marine with a laser rifle. You show your license to him, and he motions you inside.`
+			`	Upon landing, you immediately visit the shipyards, as instructed. Walking through the elaborate walkways with self-contained atmosphere, you find things strange. On most planets the force of gravity is relatively similar to Earth, but the Moon is so small. One step sends you flying a dozen feet down the hallway, and maintaining balance is extremely tricky. Eventually you reach the front desk for the shipyards, and the receptionist motions to you and requests your license. After she scans it, she directs you to a specific hangar in the rear area of the shipyards.`
+			`	A few minutes later, you spot a door marked 'Restricted Access: Authorized Navy Personnel Only.' The door is flanked by a marine with a laser rifle. You show your license to him, and he motions you inside.`
 			scene "thumbnail/cruiser"
-			`	"Well Captain," the marine says, "There she is. What a beauty. She's all ready to go. Hope she can serve you well!"`
+			`Waiting for you behind the door is a woman in Navy blues, with a portable handheld computer, which likely has the registry and documents for transfer of the ship.`
+			`	"Well Captain," she says, "There she is. What a beauty. She's all ready to go. Hope she can serve you well! Before you can take her, though, we just need to do a little bit of paperwork." She turns the computer and you see a river of words run past you. She simply moves the information quick enough that you can glance at it all (and see it is all mostly pointless, talking about liability and ownership and the like,) and states, "Sign here Commander." You quickly put your signature and thumbprint at the bottom, and a green light flashes.
 			`	"What is her name?" you ask."
-			`		"The Horizon"`
+			`	"The Horizon. Happy flying Commander..."`
+			`You shake her hand, and as you walk towards the boarding ramp you see her smile.`
 
 mission "Report to Seginus"
 	landing
