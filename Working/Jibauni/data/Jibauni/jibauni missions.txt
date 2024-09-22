@@ -189,6 +189,8 @@ mission "Jibauni: Ru-win 3"
 
 mission "Jibauni: Ru-win 4"
 	priority
+	name "Escort the <npc>"
+	description "Escort the ship of Ru-win, which is called <npc> to <planet stopovers> and back to <planet>. The Jibauni are interested in exploring, and this is one of the ways you can help them."
 	source Taltahard
 	stopover Solace
 	destination Taltahard
@@ -266,3 +268,38 @@ mission "Jibauni: Ru-win: Merchant reputation back to normal"
 	on offer
 		"reputation: Merchant" += 1000
 			fail
+
+
+mission "Jibauni: Ji-wi"
+	minor
+	name "Take Ji-wi to <stopovers>"
+	description "Ji-wi the Jibauni would like you to take it to <stopovers> and then back to <planet>."
+	source Kahbani
+	stopover Baitoon
+	destination Kahbani
+	to offer
+		random < 5
+	on offer
+		conversation
+			`You notice a Jibauni running between captains searching for something. Every now and then it stops to ask something. You notice the Jibauni turn towards you and start coming at a resolute pace.`
+			choice
+				`	(Wait for the Jibauni to reach you.)`
+				`	(Leave the area.)`
+					decline
+			`	As you wait, you see the Jibauni pause to speak to other apparent captains. But nothing comes of those encounters, and the Jibauni finally gets in front of you.`
+			choice
+				`	(Wait for it to say something.)`
+				`	"My name is <first> of the <ship>. How's it going?"`
+			`	"My name is Ji-wi," announces the Jibauni. "Can you take me to <stopovers> and then bring me back here? I'll pay you <payment>."`
+			choice
+				`	"I'd be happy to take you."`
+				`	"Sorry, no deal."`
+					decline
+			`	"Good! I'll be ready and at your ship by the time you get back to it," says Ji-wi. The Jibauni then leaves.`
+				accept
+	on stopover
+		dialog `Ji-wi is only gone for a moment before returning. The Jibauni asks that you go back to <planet> soon.`
+	on complete
+		payment 1500
+		conversation
+			`"Thank you for transporting me to <planet stopovers> and back," says Ji-wi, paying you <payment>. The Jibauni walks off into the spaceport of <origin>, leaving you with some questions.`
