@@ -28,15 +28,15 @@ mission "Navy FW Reassignment 1"
 		log "Was reassigned to the defense fleets in Sol, under the command of Commodore Joseph Cruz."
 		log "People" "Joseph Cruz" "A Navy Commodore in charge of the Solar Defence Flotilla, known for his strict behavior in relation to the rules, and his firm allegiance to Parliament."
 		conversation
-			`A message comes in from Naval Command:'
-			`	"Captain <first> <last>, you are ordered to report to Commodore Joseph Cruz on Earth immediately. Further information will be provided at a later date."`
+			`A message comes in from Naval Command:`
+			`	"Commander <first> <last>, you are ordered to report to Commodore Joseph Cruz on Earth immediately. Further information will be provided at a later date."`
 			``
 			`Wondering at the potential work you will do next, you set your ship into pre-flight so as to leave immediately upon finishing your business at this planet.`
 			accept
 
 mission "Navy FW Reassignment 2"
 	landing
-	name "Aquire Cruiser"
+	name "Acquire Cruiser"
 	description "Head to the shipyards on Luna to receive your designated Cruiser."
 	source Earth
 	destination Luna
@@ -61,29 +61,32 @@ mission "Navy FW Reassignment 2"
 			`	A few minutes later, you spot a door marked 'Restricted Access: Authorized Navy Personnel Only.' The door is flanked by a marine with a laser rifle. You show your license to him, and he motions you inside.`
 			scene "thumbnail/cruiser"
 			`Waiting for you behind the door is a woman in Navy blues, with a portable handheld computer, which likely has the registry and documents for transfer of the ship.`
-			`	"Well Captain," she says, "There she is. What a beauty. She's all ready to go. Hope she can serve you well! Before you can take her, though, we just need to do a little bit of paperwork." She turns the computer and you see a river of words run past you. She simply moves the information quick enough that you can glance at it all (and see it is all mostly pointless, talking about liability and ownership and the like,) and states, "Sign here Commander." You quickly put your signature and thumbprint at the bottom, and a green light flashes.
+			`	"Well captain," she says, "There she is. What a beauty. She's all ready to go. Hope she can serve you well! Before you can take her, though, we just need to do a little bit of paperwork." She turns the computer and you see a river of words run past you. She simply moves the information quick enough that you can glance at it all (and see it is all mostly pointless, talking about liability and ownership and the like,) and states, "Sign here Commander." You quickly put your signature and thumbprint at the bottom, and a green light flashes.
 			`	"What is her name?" you ask."
 			`	"The Horizon. Happy flying Commander..."`
 			`You shake her hand, and as you walk towards the boarding ramp you see her smile.`
 
-mission "Report to Seginus"
+mission "Navy FW Reassignment 3"
 	landing
 	deadline
+	name "Muster on Clark"
+	description "Report to Clark to prepare for an attack on the Free Worlds"
 	source Luna
 	destination Clark
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
-		has "Reassigned to Sol [cruiser]: done"
+		has "Navy FW Reassignment 2: done"
 	on offer
-		log "Was assigned to an attack fleet for attacking the Free Worlds."
+		log "Was assigned to lead an attack fleet against the Free Worlds."
 		conversation
-			`As you land, <ship>'s communicator beeps again, and Commodore Cruz appears again. "Good evening, Captain! As you have now acquired your ships, report to Seginus immediately with your fleet for preparations to attack Kornephoros.`
+			`As you land, <ship>'s communicator beeps again, and Commodore Cruz appears again. "Good evening, Commander! As you have now acquired your ships, report to Seginus immediately with your fleet for preparations to attack Kornephoros.`
+			``
 			choice
 				`	"Yes, sir!"`
 				accept
 
-mission "Seginus Gathering"
+mission "Navy FW Reassignment 4"
 	name "Attack Kornephoros"
 	description "Escort Commodore Cruz' ship, the R.N.S. Victory, to the planet <destination> where Cruz will try to force a surrender of Kornephoros."
 	landing
@@ -92,24 +95,25 @@ mission "Seginus Gathering"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	clearance
+	deadline
 	to offer
-		has "Report to Seginus: done"
+		has "Navy FW Reassignment 3: done"
 	on offer
 		log "Preparing to go to war. I wonder if I'll die in a few days..."
 		event "prepare for battle of Kornephoros"
 		conversation
-			`	As you land you find a fleet gathered in the spaceport and around it, what you estimate is about a dozen cruisers, a couple carriers, and a ridiculous amount of smaller ships and fighters. You land and immediately an officer greets you.`
-			`	"Captain! If you would follow me, Commodore Cruz wishes to see you in his briefing room."
-			`	You follow the officer, and soon find yourself seated in a room with several dozen officers. You can't help but notice that Hines is not present. Danforth must have put him on another assignment to prevent his participation in what is to come. After few minutes, you see Commodore Cruz take the podium in the front of the room.`
-			`	"Gentlemen," he says, "This is the moment. It has finally happened. War."`
-			`	"War is terrible, and I do not relish sacrificing lives for a supposed glory. There is little glory in war. Some of us may not survive the next few days. However, we must not dwell on that. We have a mission. We have honor to uphold. We have our comrades, in this room, their lives to uphold."
-			`	"Our mission is to get to the planet <destination>'s surface. There is a mid-sized defence fleet in orbit that we must evade. Once on the surface we will confront the planet authorities with the evidence that the Geminus Investigation has produced, and hopefully force a surrender of the system."`
-			`	"As I will be conducting the negotiations as per Parliament's orders, your goal is to hold off the defenders until I can get to the surface. My ship is the R.N.S. Victory. Any questions?"` 
+			`	As your <ship> slows its landing descent, you glance out the window to see a massive fleet gathered in the spaceport and around it, what you estimate is about a dozen cruisers, a couple carriers, and an absurd quantity of smaller ships and fighters. Moments later, your ship thuds down on the platform with a pleasant hiss, and you head for the airlock. Walking down the boarding ramp you are greeted by a waiting officer.`
+			`	"Commander! If you would follow me, Commodore Cruz wishes to see you in his briefing room."
+			`	You follow the officer, and soon find yourself seated in a room with several dozen officers. You can't help but notice that Hines is sitting on the back with a dark look on his face. You also notice that he does not seem to grow any happier by your presence. You look forward in the room and brush him out of your mind, and you focus on the Commodore as he prepares to ascend to the podium and give the briefing. Cruz is a burly man, Hispanic and in his late 60's, although he does not seem to be affected by such a number. His chest is remarkably large, and he has a short and dense silver beard and moustache that is well kept. His eyes are small, but gleam with the experience and an ever-analyzing aura that is to be expected of an accomplished tactician such as he. You watch as he straightens out his military jacket, and steps up to the dais.
+			`	"Gentlemen," he says, "This is the moment. It has finally happened. War. War is terrible, and I do not relish sacrificing lives for a supposed glory. There is little glory in war. Some of us may not survive the next few days. However, we must not dwell on that. We have a mission. We have honor to uphold. We have our comrades, in this room, their lives to uphold."
+			`	"Our mission is to get to the planet Deep's surface. There is a mid-sized defense fleet in orbit that we must evade. Once on the surface we will confront the planet authorities with the evidence that the Geminus Investigation has produced, and hopefully force a surrender of the system. Our route will be a short one- head south-west through Wei, and then south to Kornephoros. It is only a two-day trip, but do not linger in the intermediary systems, save your ammunition. We will be there a short while, but we expect retaliatory action and we need to be as conservative as possible until we decide our next courses of action."`
+			`	"As I will be conducting the negotiations, (as per Parliament's orders,) your goal is to hold off the defenders until I can get to the surface. Commander <last> and his fleet will run escort for me and the rest of you will hold a perimeter in space. My ship is the R.N.S. Victory. Any questions?"`
+			`The officers in the room respond with a resounding "No sir!" and you say:`
 			choice
 				`	"No, sir!"`
 					goto no
 				`	"Sir, what is the evidence we have?"`
-			`	"Apparently the Free Worlds tested a nuke, with a similar signature as to the one used on Geminus, on the mining world of Clink."
+			`	"Apparently the Free Worlds tested a nuclear device, with a nearly identical signature as to the one used on Geminus, on the mining world of Clink, which is a moon orbiting and under the authority of Deep."
 			`	This sparks gasps and remarks of anger in the assembled officers as they depart the room, and you head back to your ship to get some sleep.`
 				goto end
 			label no
@@ -117,7 +121,6 @@ mission "Seginus Gathering"
 			label end
 			`	Once on your ship, you lie down in your bunk, and wonder about what is soon to come...`
 				accept
-			
 	on complete
 		event "navy captures kornephoros"
 		log "Successfully captured Kornephoros, a Free Worlds planet. Thankfully there wasn't much of a fight, as we showed them evidence of guilt on their part in terms of the Geminus bombing, and they immediately surrendered."
@@ -128,10 +131,11 @@ mission "Seginus Gathering"
 			`	The governor stares at the datapad with his head in his hands. "Commodore, I can't believe this. Is what you say really true?"`
 			`	"It is, all of it," says Cruz. "I suggest you surrender control of the system before more lives are lost."`
 			`	Shaking his head, the governor complies. As soon as he gives the order, two Navy Intelligence operatives take him away.`
-	npc save
+	npc accompany save
 		personality heroic escort disables target
 		government Republic
 		ship "Cruiser (Mark II)" "R.N.S. Victory"
+		destination "Deep"
 	npc
 		personality heroic escort disables
 		government Republic
@@ -191,7 +195,6 @@ mission "Seginus Gathering"
 				"Hawk" 3
 				"Sparrow" 4
 				"Bastion" 2
-
 mission "Escort Intelligence Prisoners"
 	landing
 	source Deep
