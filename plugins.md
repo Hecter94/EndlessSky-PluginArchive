@@ -3195,9 +3195,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 587.08 mb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 600.35 mb | 2024-09-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-09-15) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-09-23) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >
@@ -4991,9 +4991,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.2 mb | 2024-09-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.3 mb | 2024-09-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-23) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -5006,7 +5006,7 @@ Removes mass and outfit space from some uniques, puts others into unique categor
 <br>
 <br>
 Uniques are great! Why aren't more ingame?<br>
-This plugin contains my former plugins unque.fix (just some vanilla unique adjustments), real.fluff (10 unique pets) and lots of new uniques with storylines.<br>
+This plugin contains my former plugins unique.fix (just some vanilla unique adjustments), real.fluff (10 unique pets) and lots of new uniques with storylines.<br>
 <br>
 <ul>
 <li> Removes mass and outfit space from the cloaking device</li>
@@ -5054,6 +5054,10 @@ added uniques<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-09-23<br>
+removed forgotten test outfitter from earth<br>
+added 2 new holo emitter missions (Snowfeather, Earth)<br>
 <br>
 2024-09-20<br>
 merged plugin with real.fluff<br>
@@ -7865,9 +7869,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Jibauni/icon.png' height='100'></img><br>
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.99 mb | 2024-09-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 83.99 mb | 2024-09-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-22) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-23) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -13971,9 +13975,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.37 mb | 2024-09-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.37 mb | 2024-09-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
 Author: kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-20) <br>
+[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-09-23) <br>
 
 >My Navy campaign which I hope to get implemented when finished.
 >
