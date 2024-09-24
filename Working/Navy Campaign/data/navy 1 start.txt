@@ -23,11 +23,11 @@ mission "Joining the Navy"
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	to offer
 		has "event: war begins"
-		not "event: joined the free worlds"
 		has "event: enlistment begins"
-		not "event: naval employment earned"
 		has "enlistment announced: offered"
 		not "chosen sides"
+		not "event: joined the free worlds"
+		not "event: naval employment earned"
 	on offer
 		conversation
 			`Your ship's communicator lights with an official announcement from the Republic:`
@@ -415,7 +415,7 @@ mission "Geminus 1"
 			`	"Involving the Auxie's, sir?"`
 			`"Indeed. Ever since the bombings of Geminus and Martini, there's been significant push to get the primary Naval Shipyards rebuilt. However, we can't rebuild the shipyards without any material to do so, and Navy Logistics has been tied up with disaster relief. We only just managed to convince Logistics to spare these four ships, which will be just enough for our purposes."`
 			`	"Where am I headed, Admiral?"`
-			`"The first stop for these Auxiliaries will be <waypoint>; given the planet's rich supply of heavy metals and other minerals, it's the ideal location to procure building materials for the reconstruction. Before I forget, however, your salary increase should have just gone through-anyways, do you have any questions?"` 
+			`"The first stop for these Auxiliaries will be <stopover>; given the planet's rich supply of heavy metals and other minerals, it's the ideal location to procure building materials for the reconstruction. Before I forget, however, your salary increase should have just gone through-anyways, do you have any questions?"` 
 			choice
 				`	"Not at all - I shall leave without delay, Admiral."`
 					accept
@@ -626,6 +626,7 @@ mission "Geminus 2A"
 			`	"It's the least I could do, Captain," he nods, smiling proudly. "Now, then. We have some troops and materiel that need to be delivered - the auxiliaries ought to be fully-retrofitted for the trip."`
 			label end
 			`Walking back out of the admiral's quarters, you find the auxiliaries in their "hybrid" configuration - perfect for the retrieval of the new recruits and base defenses. After a brief meeting with the captains of the auxiliaries, you make your way back to <ship> and prepare for takeoff.`
+				accept
 	npc accompany save
 		government "Republic"
 		personality escort timid
@@ -685,13 +686,11 @@ mission "Geminus 2A"
 mission "Geminus 2B"
 	name "Rebuilding Geminus: Science Team"
 	description "Escort several Navy Hybrid Auxiliaries to <stopover> to pick up scientists and their R&D equipment, then return to <destination> to help rebuild the Navy Shipyards there."
-	landing
-	source "Geminus"
+	source Geminus
 	stopover "Asgard"
 	destination Geminus
 	to offer
 		has "Geminus 2A: done"
-		has "chosen sides"
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 	on offer
@@ -714,7 +713,6 @@ mission "Geminus 2B"
 			label end
 			`As the last of the captains gives you the "all-clear," you climb back aboard the <ship> and warm up the engines.`
 				accept
-
 	npc accompany save
 		government "Republic"
 		personality escort timid
@@ -722,7 +720,6 @@ mission "Geminus 2B"
 			names "republic" "capital"
 			variant
 				"Auxiliary" 4
-
 	on stopover
 		event "geminus phase 2"
 		conversation
@@ -760,7 +757,6 @@ mission "Geminus 2B"
 			`	"Hmm. 'The road to Hell is paved with good intentions,'" Heisenberg muses as he thoughtfully scratches his chin. "But I suppose it's best not to dwell on that, now - we have work to do."`
 			label next
 			`By the time you finish talking with Dr. Heisenberg, the auxiliaries are already loaded with the scientists and their equipment for the long journey back to Geminus. "We'll see you on the flipside, Captain!" Heisenberg says as he races off towards one of the auxiliaries. You make your way back to the <ship> and get ready to leave <stopover>.`
-
 	on complete
 		payment 500000
 		dialog
@@ -1855,6 +1851,8 @@ mission "Catalytic Ramscoops 1F"
 	description "Now that you have completed your patrol, return to Geminus to submit the test results."
 	source Farpoint
 	destination Geminus
+	to offer
+		has "Catalytic Ramscoops 1E: done"
 	on complete
 		payment 1500000
 		event "deep sky tech available" 3
