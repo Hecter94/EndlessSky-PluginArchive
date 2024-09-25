@@ -243,6 +243,7 @@ mission "Jibauni: Kanlanmo 1"
 			branch suspicion
 				has "joined the free worlds"
 			label choice
+			`	After a suitable silence, Kanlanmo again asks, "Do you have any other questions?"`
 			choice
 				`	"Why did you want to come here?"`
 					to display
@@ -260,6 +261,10 @@ mission "Jibauni: Kanlanmo 1"
 					to display
 						not "jibauni language question"
 					goto language
+				`	"Why are your ships shaped like dinosaur skulls?"`
+					to display
+						not "jibauni dinosaur skulls"
+					goto dinosaurskulls
 				`	"I have no more questions."`
 					goto done
 			label come
@@ -290,7 +295,7 @@ mission "Jibauni: Kanlanmo 1"
 			`	"I would rather not tell you," he replies. "I believe it is a secret kept from less advanced races such as yours, and most of mine."`
 				goto choice
 			label jd
-			`	"There have been ships with Jump Drives here. The one that kidnapped our prophet was one, and there have been other strange ships around mining asteroids. Anyway, I know not much, so don't ask me more about that subject. Any other questions?"`
+			`	"There have been ships with Jump Drives here. The one that kidnapped our prophet was one, and there have been other strange ships around mining asteroids. Anyway, I know not much, so don't ask me more about that subject."`
 				goto choice
 			label language
 			action
@@ -301,6 +306,20 @@ mission "Jibauni: Kanlanmo 1"
 				goto choice
 			label heliarch
 			`	"I take it you know about the Coalition? They have ships using Jump Drives coming in to mine asteroids. We finally managed to disable one and take a translation device, which type I am using. Here is one for your own use."`
+				goto choice
+			label dinosaurskulls
+			action
+				set "jibauni dinosaur skulls"
+				log "Factions" "Jibauni" `There used to be other dinosaurs on the Jibauni home planet of Baitoon, which they used to hunt and eat. However, these dinosaurs were transplanted to Owiay, where they thrive on all the vegetation.`
+			`	"Long ago we had petty wars and duels on our home planet of Baitoon. When we discovered how to make vessels capable of spaceflight, we agreed to create our ships in the shape of the skulls of fallen friends. When the green aliens invaded, we quickly discovered that they were excellent warriors. Therefore, our warships designed for nothing but combat are in the shape of dragon skulls, as a testament to our invaders' prowess.`
+			`	"The smaller interceptors are the memorials, representing fallen friends. The appearances of non-combat ships are inspired by the skull shapes of dinosaurs we used to hunt."`
+			choice
+				`	"And what happened to those other dinosaurs? Where are they now?"`
+					goto dinosaurskullsothers
+				`	(Remain silent.)`
+					goto choice
+			label dinosaurskullsothers
+			`	"Once we discovered spaceflight, we found that we could no longer treat the other poor dinosaur types who were vegetarians so poorly. Therefore, we moved them all to Owiay, where they thrive to this day."`
 				goto choice
 			label suspicion
 			`	"And," he adds significantly, "your ship is approximately the same color as the other aliens who invaded us."`
@@ -315,21 +334,23 @@ mission "Jibauni: Kanlanmo 1"
 				`	"Sure!"`
 					accept
 				`	"For being willing to answer questions, of course!"`
-					accept
+					goto accept
 				`	"Not right now, sorry. But I'll come back soon."`
 					decline
-	on accept
-		conversation
+			label accept
 			branch manyquestions
 				and
 					has "jibauni come"
 					has "jibauni purple"
 					has "jibauni situation"
 					has "jibauni language question"
-			`"Thank you for being willing to take me. I'll be in your ship soon."`
+					has "jibauni dinosaur skulls"
+			`"Thank you for being willing to take me. I'll be in your ship soon.`
+				goto end
 			label manyquestions
-			`"You asked many questions indeed. Also, let me thank you for being willing to take me."`
-
+			`"You asked many questions indeed. Also, let me thank you for being willing to take me.`
+			label end
+			`	"I'll be in your ship soon."`
 	on complete
 		clear "jibauni come"
 		clear "jibauni purple"
