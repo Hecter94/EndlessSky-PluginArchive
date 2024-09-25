@@ -5,6 +5,10 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-09-25 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-09-25 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-09-25 | updated Plugin 'Eternals' by comnom | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
+2024-09-25 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-09-24 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-09-24 | updated Plugin 'automata.in.human.space' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay)<br>
 2024-09-24 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
@@ -16,10 +20,6 @@
 2024-09-22 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-09-22 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-09-20 | new Plugin 'uniques' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
-2024-09-20 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
-2024-09-19 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-09-19 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-09-19 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

@@ -1,3 +1,7 @@
+2024-09-25 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-09-25 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-09-25 | updated Plugin 'Eternals' by comnom | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)<br>
+2024-09-25 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
 2024-09-24 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-09-24 | updated Plugin 'automata.in.human.space' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay)<br>
 2024-09-24 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
