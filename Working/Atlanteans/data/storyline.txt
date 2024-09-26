@@ -1,0 +1,52 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+	on offer
+		conversation
+			`you see a cave as you splashdown. Do you want to explore it?`
+			choice
+				`	(no, take off again)`
+					goto leave1
+				`	(yes, why not?)`
+					goto heard
+			`	"Indeed it is," says Alondo. "Any worlds joining us would be reason to celebrate, but these four are particularly important because they are on the trade route to Tarazed. If we control those systems, our supply convoys will be much safer."`
+			`	"Why isn't this public knowledge yet?" you ask.`
+			label leave1
+			`	you take off again. Maybe it would have been a good idea to explore it. To late now, though.`
+					decline
+			choice
+				`	"Don't worry, I'm sure we can defeat them."`
+					goto defeat
+				`	"Is there any way to avoid a fight?"`
+					goto avoid
+			label defeat
+			`	"I'm sure we can," says Alondo, "but with heavy loss of life on both sides. We want to avoid that if at all possible. That's where you come in."`
+				goto plan
+			label avoid
+			`	"That's what we're hoping," he says, "and that's where you come in."`
+				goto plan
+			label plan
+			`	"How so?" you ask.`
+			`	He says, "We've arranged for you to be granted safe passage through Republic space for the next three weeks. That's enough time to bring me to Earth and back. If I can meet with Parliament in person, maybe I will be able to work something out."`
+			choice
+				`	"Okay, let's go to Earth!"`
+					accept
+				`	"How do we know this isn't a trap? You're willing to risk your life for this?"`
+			`	"If we can save thousands of lives from being lost in a needless battle, it's worth the risk," he says. "Now come on, the clock is ticking. We need to be safely back in Free space before your safe passage expires."`
+				accept
+	
+	on accept
+		event "fw safe passage starts"
+		event "fw safe passage ends" 24
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying Alondo hasn't entered the system yet. Better depart and wait for it to arrive.`
