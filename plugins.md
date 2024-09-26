@@ -7304,6 +7304,32 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 ---
 
+### Atlanteans
+<img src='Working/Atlanteans/icon.png' height='100'></img><br>
+
+
+[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 92.69 mb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
+Author: TheSilverStone | Category: Races <br>
+[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-09-26) <br>
+
+>Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Atlanteans
+
+Adds my Atlanteans for [Endless Sky](https://github.com/endless-sky/endless-sky).
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Better Korath
 
 
@@ -7791,9 +7817,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-25) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-09-26) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7873,9 +7899,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Jibauni/icon.png' height='100'></img><br>
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 84.46 mb | 2024-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 84.46 mb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-25) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-09-26) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -9292,6 +9318,34 @@ Author: Zoura | Category: Ships <br>
 
 Status: Playable on 0.9.15 Continuous. <br>
 Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Cutlass
+<img src='Working/Cutlass/icon.png' height='100'></img><br>
+
+
+[Cutlass.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cutlass.zip) | 88.68 kb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cutlass/) <br>
+Author: TheGiraffe3 | Category: Ships <br>
+[https://github.com/TheGiraffe3/es-cutlass](https://github.com/TheGiraffe3/es-cutlass) (last commit 2024-09-24) <br>
+
+>Adds a new ship called the Cutlass, the pirate version of a Gunboat.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># ES-Cutlass
+
+Adds the Cutlass, which is a heavily modified Gunboat used in small quantities by northern pirates.
+
+All data and sprites come from the closed [PR](https://github.com/endless-sky/endless-sky/pull/8104).
+
+</blockquote>
+</details>
+
+Status: Complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
 ---
@@ -13801,9 +13855,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Expansion/icon.png' height='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.42 mb | 2024-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.5 mb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-08-29) <br>
+[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-09-25) <br>
 
 >Plugin using ships, outfits, or other resources from plugins by other creators or derivatives of their original creations. Some content may require the Lost in Midnight or Midnight Scrapyard plugins to unlock. 
 >
@@ -13854,9 +13908,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Midnight Scrapyard/icon.png' height='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.4 mb | 2024-07-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.4 mb | 2024-09-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-07-12) <br>
+[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-09-25) <br>
 
 >A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
 >
@@ -16077,7 +16131,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>50 plugins in this category.<p>
+<p>52 plugins in this category.<p>
 
 <details>
 
