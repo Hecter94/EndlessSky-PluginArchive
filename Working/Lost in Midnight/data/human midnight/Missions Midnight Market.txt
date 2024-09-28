@@ -493,7 +493,7 @@ event "Stolen Cloaking Device"
 mission "Midnight Market: Cloaking Device 1"
 	minor
 	name "Myserious Sales Pitch"
-	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a pier on <planet> in the <system> system if you want to purchase it for 4,000,000 credits and one jump drive."
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a pier on <planet> in the <system> system if you want to purchase it for five jump drives."
 	source
 		government "Free Worlds"
 	destination Freedom
@@ -501,8 +501,7 @@ mission "Midnight Market: Cloaking Device 1"
 		"Midnight Market" > 4
 		"Corporate espionage: done" + "Corporate espionage [1]: done" + "Corporate espionage [2]: done" + "Free Worlds espionage: done" >= 4
 		has "event: Stolen Cloaking Device"
-		"net worth" > 8000000
-		"credits" >= 6000000
+		"net worth" > 10000000
 		or
 			and
 				not "Randomize Midnight Market: Cloaking Device 1" 
@@ -510,13 +509,10 @@ mission "Midnight Market: Cloaking Device 1"
 			and
 				has "Randomize Midnight Market: Cloaking Device 1" 
 				random < 5
-	to complete
-		"credits" >= 4000000
 	on offer
-		require "Jump Drive" 1
 		conversation
 			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience in acts of espionage, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to trade us 4,000,000 credits and one jump drive at the time of the transaction."`
+			`	"Greetings, Captain <first> <last>. As you are a legendary war hero who has experience in acts of espionage, we have determined that you would be a suitable client for a certain piece of unique merchandise that has found its way into our inventory. Come to the address in the attached data file by <date> if you are interested in purchasing this one of a kind item. Be prepared to trade us five jump drives at the time of the transaction."`
 			`	The address listed is for a pier on <planet> in the <system> system.`
 			choice
 				`	(Accept the invitation.)`
@@ -525,8 +521,10 @@ mission "Midnight Market: Cloaking Device 1"
 					defer
 	on defer
 		set "Randomize Midnight Market: Cloaking Device 1"
+	to complete
+		"outfit (cargo): Jump Drive" >= 5
 	on visit
-		dialog `You've arrived on <planet>, but you do not have enough credits. Come back with the 4,000,000 credits needed to complete the transaction.`
+		dialog `You've arrived on <planet>, but you do not have enough spare Jump Drives. Come back with five Jump Drives in your cargo hold to complete the transaction.`
 
 
 mission "Midnight Market: Cloaking Device 1B"
@@ -535,7 +533,8 @@ mission "Midnight Market: Cloaking Device 1B"
 	repeat
 	source Freedom
 	to offer
-		has "Midnight Market: Cloaking Device 1: active"
+		never
+#		has "Midnight Market: Cloaking Device 1: active"
 	on offer
 		require "Jump Drive" 0
 		dialog `You've arrived at <planet> but you don't have the jump drive that was requested! Return with the jump drive needed to complete the transaction.`
@@ -549,10 +548,8 @@ mission "Midnight Market: Cloaking Device 2"
 	destination Hephaestus
 	to offer
 		has "Midnight Market: Cloaking Device 1: done"
-		"Midnight Market" > 3
-		"credits" >= 4000000
+		"outfit (cargo): Jump Drive" >= 5
 	on offer
-		require "Jump Drive" 1
 		conversation
 			`You locate the pier that was indicated in the message and land near a bait shop. On the way down, you notice several fishermen are armed with weapons that are not suitable for regular fishing.`
 			choice
@@ -563,7 +560,7 @@ mission "Midnight Market: Cloaking Device 2"
 			`	You decide that the presence of the armed fishermen is a risk you're unwilling to bear and abort the landing.`
 				flee
 			label deal
-			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you. "Simply unload the jump drive and confirm payment on this datapad. Then it's all yours!"`
+			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you. "Simply unload the five Jump Drives. Then it's all yours!"`
 			`	"What, exactly, am I trading for?" you ask.`
 			`	"Behold!" he gestures towards the bait shop. As he speaks, the door to the bait shop swings open and the sales clerk is wheeling out a typical wooden crate. "A top secret experimental Cloaking Device recovered from a Syndicate facility on Hephaestus. After being passed around from one trader to another, it eventually found its way into our inventory."`
 			`	By the time he finishes his sales pitch, the shop clerk has pried open the crate. It appears to be empty. Reaching inside, however, you can definitely feel that there is some machinery there.`
@@ -576,14 +573,12 @@ mission "Midnight Market: Cloaking Device 2"
 			`	He motions for the Cloaking Device to be stowed away. "Unfortunately, it appears we were unable to reach an agreement. Thank you for your time. However, I suggest you depart immediately." The armed fishermen on the pier earlier are now making their way towards the bait shop and you decide to follow the man's suggestion.`
 				flee
 			label purchase
-			`	"Congratulations on your acquisition captain. I'm sure you won't regret it. We'll throw in a bonus of four hyperdrives in case you need them. You'll hear from us again if we happen to have an opportunity for you to put it to good use."`
+			`	"Congratulations on your acquisition captain. I'm sure you won't regret it. You'll hear from us again if we happen to have an opportunity for you to put it to good use."`
 				accept
 	on accept
-		log `Traded a jump drive and 4 million credits for a Cloaking Device on the Midnight Market. It works just like the one I sold back to the researchers on Hephaestus. I might swear that it's the same machine... if I could see it.`
-		payment -4000000
-		outfit "Jump Drive" -1
+		log `Traded five Jump Drives for a Cloaking Device on the Midnight Market. It works just like the one I sold back to the researchers on Hephaestus. I might swear that it's the same machine... if I could see it.`
+		outfit "Jump Drive" -5
 		outfit "Cloaking Device" 1
-		outfit "Hyperdrive" 1
 		"Midnight Market" ++
 	on complete
 		conversation
@@ -592,7 +587,6 @@ mission "Midnight Market: Cloaking Device 2"
 			choice
 				`	"Have you made any progress with your cloaking research?"`
 				`	"What are you doing all the way out here?"`
-				
 			`	"Unfortunately, I no longer work at the research facility. We were making some progress on our research, but the device you sold us got stolen too. This time, management found out and the team was let go. I came here looking for work. Don't look at me like that. A person with my skills should have no trouble qualifying for a job at the shipyards or outfitters. I just need to find an open spot..."`
 			`	You give him an encouraging smile and make a mental note to never hire him to crew your ship. It probably wouldn't go over well if he found out about the Cloaking Device you recently acquired on the Midnight Market.`
 
@@ -693,28 +687,18 @@ mission "Midnight Market: Wanderer Micro-sat"
 					goto keep
 
 			branch equipment
-				random < 33
+				random < 66
 			`	You find a street vendor selling electronics. Most of it was probably plundered off of merchant vessels.`
-			choice
-				`	(Haggle.)`
-			branch sale
-				random < 50
-			`	You try to get at least a million credits for the micro-satellite, but he is having none of it. Perhaps you'll have better luck with a different vendor.`
-				goto try
-
+				goto haggle
 			label equipment
 			branch industrial
 				random < 50
 			`	You find a street vendor selling equipment. Most of it was probably plundered off of merchant vessels.`
-			choice
-				`	(Haggle.)`
-			branch sale
-				random < 50
-			`	You try to get at least a million credits for the micro-satellite, but he is having none of it. Perhaps you'll have better luck with a different vendor.`
-				goto try
-
+				goto haggle
 			label industrial
 			`	You find a street vendor selling industrial devices. Most of it was probably plundered off of merchant vessels.`
+
+			label haggle
 			choice
 				`	(Haggle.)`
 			branch sale

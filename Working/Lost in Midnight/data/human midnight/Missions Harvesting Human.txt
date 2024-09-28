@@ -308,7 +308,11 @@ mission "Harvesting: Mysterious Treasure Greenrock"
 	source "Greenrock"
 	to offer
 		has "Saving Artifacts 2: done"
-		random < 50
+		or
+			not "outfit (flagship installed): Ancient Pictograph"
+			has "Midnight Pictograph 2: declined"
+			has "Randomize Midnight Pictograph 2"
+		random < 40
 	on offer
 		require "Mysterious Treasure"
 		conversation
@@ -324,6 +328,7 @@ mission "Harvesting: Mysterious Treasure Greenrock"
 				`	(Keep the Earth Artifact.)`
 					goto keep
 			action
+				clear "Harvesting: Mysterious Treasure Greenrock: offered"
 				outfit "Mysterious Treasure" -1
 				payment 200000
 			`	The clerk grins and hands over 200,000 credits in exchange for the Earth Artifact. "Thanks. One of the local warlords has been looking for this. If any of his people spotted you walking around the spaceport with it, you would have attracted unwanted attention..."`
@@ -419,12 +424,22 @@ mission "Harvesting: Mysterious Treasure Greenrock"
 		on kill
 			fail
 
+mission "Harvesting: Mysterious Treasure Greenrock Patch"
+	landing
+	invisible
+	to offer
+		has "Harvesting: Mysterious Treasure Greenrock: declined"
+		not "Harvesting: Mysterious Treasure Greenrock: failed"
+	on offer
+		clear "Harvesting: Mysterious Treasure Greenrock: offered"
+		fail
 
 
 mission "Harvesting: Mysterious Treasure Researcher"
 	invisible
 	repeat
 	minor
+	deadline 3
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		attributes "research"
@@ -466,18 +481,19 @@ mission "Harvesting: Mysterious Treasure Researcher"
 		personality plunders nemesis heroic
 			confusion 10
 		fleet "Hired Guns"
-
+		on kill
+			fail
 
 
 mission "Harvesting: Earth Exhibits [0]"
 	job
 	repeat
-	deadline 30
-	name "Earth Exhibits"
+	deadline 60
+	name "Earth Exhibit"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
-		not planet "Earth"
-		attributes "near earth"
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "frontier"
 	destination Earth
 	to offer
 		or
@@ -487,9 +503,11 @@ mission "Harvesting: Earth Exhibits [0]"
 			has "Harvesting: Mysterious Treasure Zug: declined"
 			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
-			month == 2
 			and
-				month == 3
+				month == 1
+				day > 22
+			and
+				month == 2
 				day < 22
 		random < 20
 	on complete
@@ -503,11 +521,12 @@ mission "Harvesting: Earth Exhibits [1]"
 	job
 	repeat
 	deadline 30
-	name "Earth Exhibits"
+	name "Earth Exhibit"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
-		not planet "Earth"
-		attributes "near earth"
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "near earth"
+		not attributes "frontier"
 	destination Earth
 	to offer
 		or
@@ -517,7 +536,9 @@ mission "Harvesting: Earth Exhibits [1]"
 			has "Harvesting: Mysterious Treasure Zug: declined"
 			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
-			month == 2
+			and
+				month == 2
+				day > 22
 			and
 				month == 3
 				day < 22
@@ -533,7 +554,40 @@ mission "Harvesting: Earth Exhibits [2]"
 	job
 	repeat
 	deadline 30
-	name "Earth Exhibits"
+	name "Earth Exhibit"
+	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		not attributes "near earth"
+		not attributes "frontier"
+	destination Earth
+	to offer
+		or
+			has "Harvesting: Mysterious Treasure 1: declined"
+			has "Harvesting: Mysterious Treasure 2: declined"
+			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
+		or
+			and
+				month == 2
+				day > 22
+			and
+				month == 3
+				day < 22
+		random < 20
+	on complete
+		outfit "Earth Artifact" -1
+		payment 400000
+		conversation
+			scene "outfit/treasure"
+			`The museum curator accepts the rare artifact and rewards you with <payment>.`
+
+mission "Harvesting: Earth Exhibits [3]"
+	job
+	repeat
+	deadline
+	name "Earth Exhibit (Rush Delivery)"
 	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
 	source
 		not planet "Earth"
@@ -547,14 +601,80 @@ mission "Harvesting: Earth Exhibits [2]"
 			has "Harvesting: Mysterious Treasure Zug: declined"
 			has "Harvesting: Mysterious Treasure Researcher: declined"
 		or
-			month == 2
 			and
 				month == 3
-				day < 22
+				day > 22
+			and
+				month == 4
+				day < 15
 		random < 20
 	on complete
 		outfit "Earth Artifact" -1
-		payment 400000
+		payment 600000
+		conversation
+			scene "outfit/treasure"
+			`The museum curator accepts the rare artifact and rewards you with <payment>.`
+
+mission "Harvesting: Earth Exhibits [4]"
+	job
+	repeat
+	deadline
+	name "Earth Exhibit (Rush Delivery)"
+	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
+	source
+		not planet "Earth"
+		attributes "near earth"
+	destination Earth
+	to offer
+		or
+			has "Harvesting: Mysterious Treasure 1: declined"
+			has "Harvesting: Mysterious Treasure 2: declined"
+			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
+		or
+			and
+				month == 3
+				day > 22
+			and
+				month == 4
+				day < 15
+		random < 20
+	on complete
+		outfit "Earth Artifact" -1
+		payment 600000
+		conversation
+			scene "outfit/treasure"
+			`The museum curator accepts the rare artifact and rewards you with <payment>.`
+
+mission "Harvesting: Earth Exhibits [5]"
+	job
+	repeat
+	deadline
+	name "Earth Exhibit (Rush Delivery)"
+	description "The Museum of History on <destination> wants to enhance their collection of exhibits in preparation for the upcoming Earth Day celebration. Deliver an Earth Artifact to the museum by <date>. Payment is <payment>."
+	source
+		not planet "Earth"
+		attributes "near earth"
+	destination Earth
+	to offer
+		or
+			has "Harvesting: Mysterious Treasure 1: declined"
+			has "Harvesting: Mysterious Treasure 2: declined"
+			has "Harvesting: Mysterious Treasure 3: declined"
+			has "Harvesting: Mysterious Treasure Zug: declined"
+			has "Harvesting: Mysterious Treasure Researcher: declined"
+		or
+			and
+				month == 3
+				day > 22
+			and
+				month == 4
+				day < 15
+		random < 20
+	on complete
+		outfit "Earth Artifact" -1
+		payment 600000
 		conversation
 			scene "outfit/treasure"
 			`The museum curator accepts the rare artifact and rewards you with <payment>.`
@@ -565,14 +685,14 @@ mission "Harvesting: Alien Exhibits"
 	job
 	repeat
 	deadline 30
-	name "Alien Exhibits"
+	name "Alien Exhibit"
 	description "The Museum of History on <destination> wants to enhance their collection for an upcoming exhibition. Deliver an Alien Artifact to the museum by <date>. Payment is <payment>."
 	source
-		government "Republic" "Free Worlds" "Syndicate"
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		not attributes "near earth"
 	destination
 		distance 1 2
-		government "Republic" "Free Worlds" "Syndicate"
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
 		attributes "urban"
 		not attributes "near earth"
 	to offer
@@ -637,7 +757,6 @@ mission "Treasure Map: Archipelago"
 event "Treasure: Archipelago"
 	system Archipelago
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Terminus"
@@ -791,7 +910,6 @@ mission "Treasure Map: Gamma Cassiopeiae"
 event "Treasure: Gamma Cassiopeiae"
 	system "Gamma Cassiopeiae"
 		add minables treasure 1 3
-		
 
 
 mission "Treasure Map: Durax"
@@ -837,7 +955,6 @@ event "Treasure: Durax"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Unagi"
 	minor
 	name "Treasure Map: Unagi"
@@ -879,7 +996,6 @@ mission "Treasure Map: Unagi"
 event "Treasure: Unagi"
 	system Unagi
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Lolami"
@@ -925,7 +1041,6 @@ event "Treasure: Lolami"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Regulus"
 	minor
 	name "Treasure Map: Regulus"
@@ -967,7 +1082,6 @@ mission "Treasure Map: Regulus"
 event "Treasure: Regulus"
 	system Regulus
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Fingol"
@@ -1013,7 +1127,6 @@ event "Treasure: Fingol"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Nocte"
 	minor
 	name "Treasure Map: Nocte"
@@ -1055,7 +1168,6 @@ mission "Treasure Map: Nocte"
 event "Treasure: Nocte"
 	system Nocte
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Hintar"
@@ -1101,7 +1213,6 @@ event "Treasure: Hintar"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Orvala"
 	minor
 	name "Treasure Map: Orvala"
@@ -1143,7 +1254,6 @@ mission "Treasure Map: Orvala"
 event "Treasure: Orvala"
 	system Orvala
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Boral"
@@ -1189,7 +1299,6 @@ event "Treasure: Boral"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Naper"
 	minor
 	name "Treasure Map: Naper"
@@ -1233,7 +1342,6 @@ event "Treasure: Naper"
 		add minables treasure 1 3
 
 
-
 mission "Treasure Map: Umbral"
 	minor
 	name "Treasure Map: Umbral"
@@ -1275,7 +1383,6 @@ mission "Treasure Map: Umbral"
 event "Treasure: Umbral"
 	system Umbral
 		add minables treasure 1 3
-
 
 
 mission "Treasure Map: Sadr"

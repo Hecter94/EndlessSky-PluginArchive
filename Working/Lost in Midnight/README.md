@@ -42,4 +42,6 @@ Some highlights:
 - Pug reinforcements armed with new technology
 - three Skeleton Keys to unlock a hidden treasure
 - space station defense jobs
-
+- Sunracer racing
+- ancestral Hai worlds
+- alternate starts (some only unlocked after completing the main plot with a different pilot)

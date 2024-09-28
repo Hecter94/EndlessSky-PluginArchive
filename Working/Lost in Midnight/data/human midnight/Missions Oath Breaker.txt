@@ -798,13 +798,13 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 			`As you leave the atmosphere of <origin> an Oathbreaker fleet ambushes you! One of the ships hails to taunt you: "Captain <last>, you won't be so tough with your shields compromised!" Fortunately, you removed the Shield Suppressor someone planted on your ship at the outfitter before leaving <origin>.`
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" >= 4
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 4
 		government "Oathbreaker"
 		personality waiting heroic vindictive
 		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" >= 5
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 5
 		government "Oathbreaker"
 		system
 			distance 1
@@ -812,7 +812,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" >= 6
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 6
 		government "Oathbreaker"
 		system
 			distance 2
@@ -820,7 +820,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		fleet "Small Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" >= 7
+			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 7
 		government "Oathbreaker"
 		system
 			distance 3
@@ -863,19 +863,22 @@ mission "Oathbreakers: Rum Cellar Fight"
 					goto haggle
 				`	"Sorry, I don't want to be involved with stolen medicine."`
 			
+			label plea
 			`	"But it's for the children! Won't you please reconsider?"`
 			choice
-				`	"No way. Find someone else to do it."`
-					decline
 				`	"Fine. This had better be legitimate. Impersonating a nun is probably a sin."`
 					goto offer
+				`	"No way. Find someone else to do it."`
+					decline
 			
 			label haggle
 			`	"Of course I can pay. Is <payment> enough?"`
 			choice
 				`	"Alright, I'll help."`
 					goto offer
-						
+				`	"That's not worth my time."`
+					goto plea
+					
 			label offer
 			`	"Thank you so much! Here are instructions for picking up the goods." She hands you a data chip. "I'll give you <payment> when you deliver the medicine to the orphanage."`
 			choice
@@ -1290,7 +1293,7 @@ mission "Oathbreakers: CCOR Conscriptor 4"
 			branch Austerlitz
 				has "Oathbreakers: CCOR Conscriptor 1: aborted"
 				not "austerlitz aborted late intro"
-			`You are about to order a meal at one of the local dining establishments when the holo monitor broadcast is interrupted by an announcement. A strange Oathbreaker fleet from the Outer Rim laid siege on <destination>! It seems the Austerlitz fleet has resurfaced in Oathbreaker campaign against the Free Worlds. What will you do?`
+			`You are about to order a meal at one of the local dining establishments when the holo monitor broadcast is interrupted by an announcement. A strange Oathbreaker fleet from the Outer Rim laid siege on <destination>! It seems the Austerlitz fleet has resurfaced in the Oathbreaker campaign against the Free Worlds. What will you do?`
 			label decision
 			choice
 				`	(Let the <planet> militia handle it.)`
@@ -1358,6 +1361,7 @@ mission "Oathbreakers: CCOR Conscriptor 4"
 		dialog `You've landed on <planet>, but the battle is still raging overhead. You should take off and help drive off the invaders.`
 	on complete
 		"reputation: Free Worlds" += 100
+		"Oathbreaker escalation" ++
 		payment 20000
 		dialog "The government of <planet> pays you <payment> for helping to drive off the Oathbreaker attack."
 
@@ -2266,7 +2270,7 @@ mission "Nemesis: Oath Breaker"
 
 	npc
 		to spawn
-			has "Stolen Trailblazer 2: declined"
+			has "Midnight Market: Trailblazer 2: declined"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
 		system destination

@@ -774,6 +774,8 @@ mission "Angri Byrds: Unfettered Strikers"
 		has "event: wanderers: unfettered invasion starts"
 		random < 20
 	npc kill
+		to spawn
+			not "event: solifuge deployment"
 		government "Hai (Unfettered)"
 		system
 			distance 1 1
@@ -783,13 +785,29 @@ mission "Angri Byrds: Unfettered Strikers"
 			cargo 3
 			commodities "Food" "Medical"
 			variant
-				"Armor Beetle"
-				"Solifuge (Ion Flash)"
-				"Violin Spider" 3
-				"Violin Spider (Pulse)" 3
+				"Armor Beetle (Ion Pulse)"
 				"Shield Beetle (Ion Pulse)" 2
-				"Sea Scorpion (Ion)" 2
+				"Sea Scorpion (Ion Pulse)" 2
 				"Lightning Bug" 4
+	npc kill
+		to spawn
+			has "event: solifuge deployment"
+		government "Hai (Unfettered)"
+		system
+			distance 1 1
+		personality target waiting staying heroic vindictive marked
+		fleet
+			names "hai"
+			cargo 3
+			commodities "Food" "Medical"
+			variant
+				"Armor Beetle (Ion Pulse)"
+				"Solifuge (Komodo)"
+				"Violin Spider" 6
+				"Shield Beetle (Ion Pulse)" 2
+				"Sea Scorpion (Ion Pulse)" 2
+				"Lightning Bug" 4
+
 		dialog `You've eliminated the <npc> and its fleet. Report to <destination> for payment.`
 	on complete
 		payment 1000000
@@ -973,7 +991,7 @@ mission "Angri Byrds: Hai Millipede 1"
 				`	(Ask what's going on.)`
 				`	(Mind your own business.)`
 					defer
-			scene "thumbnail/hai millipede-thumb"
+			scene "thumbnail/hai millipede b-thumb"
 			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] a large transport named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>." It might be viewed by the Wanderers as an act of heroism if you hunted down the <npc>. On the other hand, attempting it might get you killed.`
 			choice
 				`	(Offer to hunt the Unfettered ship.)`
@@ -1031,7 +1049,7 @@ mission "Angri Byrds: Hai Millipede 1"
 		"reputation: Wanderer" += 10
 		clear "millipede runs amok"
 		conversation
-			scene "thumbnail/hai millipede-thumb"
+			scene "thumbnail/hai millipede b-thumb"
 			`The Wanderers thank you for the critical role you played in stopping the Millipede from stealing more of their ships. You are rewarded with <payment>.`
 
 mission "Angri Byrds: Hai Millipede 2"
@@ -1053,7 +1071,7 @@ mission "Angri Byrds: Hai Millipede 2"
 				`	(Ask what's going on.)`
 				`	(Mind your own business.)`
 					defer
-			scene "thumbnail/hai millipede-thumb"
+			scene "thumbnail/hai millipede b-thumb"
 			`	A captain of one of the damaged ships tells you, "The Unfettered have been [using? piloting?] another Millipede named the <npc> to board and [steal? capture?] several Wanderer ships at <waypoints>."`
 			choice
 				`	(Offer to hunt the Unfettered ship.)`
@@ -1120,7 +1138,7 @@ mission "Angri Byrds: Hai Millipede 2"
 		"reputation: Wanderer" += 20
 		clear "millipede runs amok"
 		conversation
-			scene "thumbnail/hai millipede-thumb"
+			scene "thumbnail/hai millipede b-thumb"
 			`The Wanderers thank you for the critical role you played in stopping the Millipede from stealing more of their ships. You are rewarded with <payment>.`
 
 
@@ -1445,8 +1463,15 @@ mission "Angri Byrds Surveillance Job"
 			names "hai"
 			cargo 0
 			variant
+				"Armor Beetle (Ion Pulse)"
+				"Shield Beetle (Ion Pulse)" 2
+			variant
 				"Armor Beetle"
 				"Shield Beetle (Ion Pulse)" 2
+			variant
+				"Shield Beetle (Ion Pulse)" 2
+				"Solifuge (Komodo, Tracker)"
+				"Violin Spider (Pulse Repeater)" 6
 	npc
 		government "Hai (Unfettered)"
 		system "Chy'chra"
@@ -1455,10 +1480,15 @@ mission "Angri Byrds Surveillance Job"
 			names "hai"
 			cargo 0
 			variant
+				"Armor Beetle (Ion Pulse)"
 				"Shield Beetle (Ion Pulse)" 2
-				"Solifuge (Tracker)"
-				"Violin Spider" 4
-				"Violin Spider (Pulse)" 2
+			variant
+				"Armor Beetle"
+				"Shield Beetle (Ion Pulse)" 2
+			variant
+				"Shield Beetle (Ion Pulse)" 2
+				"Solifuge (Komodo, Tracker)"
+				"Violin Spider (Pulse Repeater)" 6
 	on complete
 		payment 100000
 		dialog `The Wanderers thank you for retrieving the data and reward you with <payment>.`

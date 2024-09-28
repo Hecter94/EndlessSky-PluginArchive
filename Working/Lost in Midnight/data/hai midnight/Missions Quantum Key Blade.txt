@@ -175,7 +175,7 @@ mission "QKBlade: Quantum Key Blade 1"
 		not planet "Hai-home"
 	destination "Hai-home"
 	to offer
-		has "Wanderers Hai Assistance Fleet: offered"
+		has "event: solifuge deployment"
 		has "QKBlade: House Unuk Door Delivery: done"
 		or
 			has "event: pond strider mass production"
@@ -197,7 +197,7 @@ mission "QKBlade: Quantum Key Blade 2"
 	to complete
 		has "Nemesis: Quantum Key Blade: done"
 	on offer
-		log `The Hai council of elders has tasked me with hunting down an Unfettered ship named "Kotetsu" which is likely working its way towards human space. It is a unique Unfettered prototype ship outfitted with plundered Wanderer technology.`
+		log `The Hai council of elders has tasked me with hunting down an Unfettered ship named "Kotetsu" which is likely working its way towards human space. It is a unique Unfettered prototype ship outfitted with new weapons the Unfettered have developed. There are also reports that it may be carrying a set of ancient weapons the Hai warn may more powerful than the nuclear missiles humans have told them about.`
 		log "People" "Gai Ro Nin" `The Unfettered captain of the Scorpion prototype, Kotetsu. He is searching for something called a Quantum Key Blade.`
 		conversation
 			`A guard patrol greets you at the spaceport and escorts you to the council of elders. When you arrive they inform you of why you've been summoned.`
@@ -213,8 +213,16 @@ mission "QKBlade: Quantum Key Blade 2"
 				`	"What kind of ship is it?"`
 			scene "scene/scene-scorpion"
 			`	"A Sword Scorpion," responds a sixth elder. "According to our intelligence reports it was one of the prototypes the Unfettered had under consideration before rejecting it in favor of what would eventually become the Solifuge."`
-			`	"Good. They likely won't be mass producing them then," exclaims another elder. "A single failed prototype ship should be no cause for concern."`
-			`	Another elder directs her statement at you. "It might interest Captain <last> to know that the Kotetsu is likely modified with technology plundered from the Wanderers. Our garrison on Cloudfire reported as much."`
+			`	"Good. They likely won't be mass producing them then," exclaims the third elder. "A single failed prototype ship should be no cause for concern."`
+			`	The fourth elder directs a statement at you, "It might interest Captain <last> to know that the Kotetsu is equipped with prototype weaponry developed by the Unfettered. Our garrison on Cloudfire reported as much."`
+			`	The second elder reacts, "I would be more concerned about the ancient weapons than any new ones. I am, of course, talking about the Nutcrackers..."`
+			choice
+				`	"Nutcrackers?"`
+			scene "outfit/hai nutcracker"
+			`	The third elder scoffs, "Rumors! Hearsay!"`
+			`	The second elder retorts, "It's true the garrison avoided scanning their vessel to avoid provoking them. But witness testimony insists that the Kotetsu is carrying a set of missiles that look like the ancient weapons that were forbidden from ever being produced again."`
+			`	The third elder exclaims, "Exactly! As you said, those weapons were banned from ever being produced again. Even the Unfettered wouldn't dare..."`
+			`	The sixth elder interjects, "It's entirely possible that the missiles Gai Ronin is carrying are old leftovers that were never disposed of. If so, their potency may have diminished over the millenia." Turning to you he says, "But even so, they may yet still be more powerful than the Nuclear missiles I have heard humans describe."`
 			`	The first elder addresses you. "Captain <last>, we believe Gai is heading to human space because the final resting place of the Quantum Key Blade is likely somewhere within that vast territory. The Unfettered must have discovered some clue specifying its location amongst their plunder from the Wanderers. Go captain, and stop him before he tears apart your people in his search."`
 				accept
 
@@ -266,7 +274,7 @@ mission "QKBlade: Quantum Key Blade 3"
 			`	You approach the Kor Efreti and make the customary gesture for greeting. He reciprocates. You try motioning towards the rifle, but at this point you need a translator.`
 			`	A nearby Quarg notices your dilemma and offers to translate.`
 			`	"Where did you get that rifle?" you ask.`
-			`	The Quarg translates the reply, "A furry alien exchanged this for some work on his ship. The furry alien had battled with bird folk before arriving here. The furry alien had also salvaged components from a Kor Mereti and wanted them installed on his ship."`
+			`	The Quarg translates the reply, "A furry alien exchanged this for some repair work on his ships. The furry alien had battled with automatons before arriving here."`
 			`	You express your thanks to both of them and prepare to leave. But before you do, the Quarg asks, "You are searching for that group of Hai, are you not? Would you explain why it is you seek them out? They refused to speak of what brought them here or where they were heading."`
 			choice
 				`	(Inform the Quarg of Gai's search for the Quantum Key Blade.)`
@@ -295,7 +303,8 @@ mission "QKBlade: Quantum Key Blade 3"
 			names "hai"
 			variant
 				"Armor Beetle (Jump)"
-				"Sea Scorpion (Pulse, Jump)" 2
+				"Sea Scorpion (Pulse, Jump)"
+				"Sea Scorpion (Pulse Repeater, Jump)"
 				"Water Bug (Jump, Ion Pulse)" 4
 				"Lightning Bug (Jump)" 3
 
@@ -349,13 +358,12 @@ mission "Nemesis: Quantum Key Blade"
 			names "hai"
 			variant
 				"Solifuge (Jump, Pulse)"
-				"Armor Beetle (Jump)"
-				"Shield Beetle (Jump, Pulse)"
+				"Shield Beetle (Jump, Pulse Repeater)"
 				"Shield Beetle (Jump, Ion Pulse)"
-				"Sea Scorpion (Pulse, Jump)" 2
+				"Sea Scorpion (Pulse, Jump)"
+				"Sea Scorpion (Pulse Repeater, Jump)"
 				"Lightning Bug (Jump)" 3
-				"Violin Spider" 3
-				"Violin Spider (Pulse)" 3
+				"Violin Spider" 6
 	npc board
 		system Unukalhai
 		government "Nemesis"
@@ -543,7 +551,7 @@ mission "QKBlade: Bearer of The Blade 1"
 			label burden
 			action
 				log `I have accepted the honor and responsibility of carrying the Quantum Key Blade with me on my journey across the stars.`
-				"Bearer of The Blade" ++
+				set "Bearer of The Blade"
 				event "stolen Quantum Key Blade timer" 30
 			`	There is some chattering amongst the elders. Then they address you.`
 			`	"With this, all five of the Quantum Key Blades are accounted for. As you carry that one on your journeys, word will spread that you are in possession of it. Take care that you do not lose it to any Unfettered assassin who tries to claim it."`

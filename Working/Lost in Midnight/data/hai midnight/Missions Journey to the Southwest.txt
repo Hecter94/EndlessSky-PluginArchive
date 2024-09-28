@@ -1,0 +1,502 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+##########################
+# Journey to the Southwest
+##########################
+
+# The event: "Hai Ancestral Lands Discovered" is triggered during a Cartography Compass/Map mission.
+
+
+# The negative reputation requirement is a placeholder until PR9086 is gets into stable
+mission "Angry Squirrels: The Monkey King"
+	landing
+	invisible
+	source
+		government "Hai" "Hai (Unfettered)"
+		not planet "Darkwaste"
+	to offer
+		or
+			and
+				"tribute: Earth" > 0
+				"tribute: Foundry" > 0
+				"tribute: Bourne" > 0
+#			and
+#				"reputation: Republic" < -50000
+#				"reputation: Syndicate" < -50000
+#				"reputation: Free Worlds" < -50000
+	on offer
+		dialog `A street vendor tries to sell you a book, "Journey to the Southwest." Apparently it's an adaptation of "Journey to the West" that's been altered to appeal to a Hai audience.`
+	on accept
+		fail
+
+
+
+mission "Angry Squirrels: Journey to the Southwest"
+	minor
+	name "Journey to the Southwest"
+	description "Guide the Unfettered pilgrims to <destination>. Try to avoid battles along the way."
+	source
+		government "Hai (Unfettered)"
+	destination "Oldhome"
+	to offer
+		has "event: solifuge deployment"
+		has "Angry Squirrels: The Monkey King: offered"
+		has "event: Hai Ancestral Lands Discovered"
+		"combat rating" > 2981
+		"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 10
+		or
+			and
+				not "Randomize Angry Squirrels: Journey to the Southwest"
+				random < 70
+			and
+				has "Randomize Angry Squirrels: Journey to the Southwest"
+				random < 15
+	on offer
+		conversation
+			`When you get back to your ship, you find that a crowd has formed at the landing pad. Before you can ask what is going on, one of the Unfettered points at you and proclaims, "The Monkey King has arrived!"`
+
+			branch "second encounter"
+				has "Randomize Angry Squirrels: Journey to the Southwest" > 0
+
+			choice
+				`	"Monkey King?"`
+				`	"Huh?"`
+			`	"Oh great warrior who has bested the three beasts and earned the right to the title of Monkey King, will you not answer the call of destiny and guide us to the ancestral lands?"`
+			choice
+				`	"Three Beasts?"`
+				`	"... Huh?"`
+			`	"The Republic, The Syndicate, and The Free Worlds, all offer tribute to you oh great Monkey King. We ask that you guide us on a Journey to the Southwest!"`
+			choice
+				`	"Ah, I see. 'Journey to the Southwest' otaku. I'm not interested."`
+					goto destiny
+				`	"What's in it for me?"`
+					goto negotiate
+
+			label "second encounter"
+			branch "third encounter"
+				has "Randomize Angry Squirrels: Journey to the Southwest" > 1
+
+			choice
+				`	"Not this again..."`
+			`	"Oh great warrior who has bested the three beasts and earned the right to the title of Monkey King, will you not answer the call of destiny and guide us to the ancestral lands?"`
+			choice
+				`	"I'm still not interested."`
+					goto destiny
+				`	"Alright, what's in it for me?"`
+					goto negotiate
+				
+			label "third encounter"
+
+			choice
+				`	"Wow, you guys are really serious..."`
+			`	"Oh great warrior who has bested the three beasts and earned the right to the title of Monkey King, will you not answer the call of destiny and guide us to the ancestral lands?"`
+			choice
+				`	"I'm still not interested."`
+					goto destiny
+				`	"I have to admit, you're persistent. So, what's in it for me?"`
+					goto negotiate
+			
+			label destiny
+			`	"You cannot deny your fate. Destiny waits for no one." The Unfettered states as the crowd disperses.`
+				defer
+
+			label negotiate
+			scene "thumbnail/hai solifuge prototype-thumb"
+			`	"The Monkey King's passion for collecting warships is infamous. I happen to have the prototype Solifuge, Muramasa. It's one of a kind, slightly different from the production model. How about it? Will you heed the call of destiny?"`
+			choice
+				`	"Sorry, destiny will have to find someone else to guide you on your Journey to the Southwest."`
+				`	"Alright, I suppose it really is my destiny to guide you to the Ancestral Lands."`
+					goto guide
+			
+			`	The Unfettered looks dejected as the crowd disperses. It seems the Muramasa was all he had to offer.`
+				decline
+				
+			label guide
+			`	The crowd cheers. "By the way, I am San Zo. I look forward to our Journey to the Southwest."`
+				accept
+
+	on defer
+		"Randomize Angry Squirrels: Journey to the Southwest" ++
+		clear "Angry Squirrels: Journey to the Southwest: offered"
+	
+	on accept
+		log "Minor People" "San Zo" `An Unfettered who convinced me to guide a group of colonists to the Hai Ancestral Lands on a Journey to the Southwest.` 
+		"reputation: Hai (Unfettered)" >?= 1
+		"reputation: Hai (Unfettered Wanderer Tribute)" >?= 1
+		"reputation: Hai Merchant (Sympathizers)" >?= 1
+		"reputation: Hai (Friendly Unfettered)" >?= 1
+		"reputation: Hai (Unfettered Civilians)" >?= 1
+		"reputation: Elenctic Commune" >?= 1
+
+	npc
+		government "Hai (Friendly Unfettered)"
+		personality heroic plunders escort
+		fleet
+			names "hai"
+			variant
+				"Shield Beetle (Jump, Pulse)"
+				"Shield Beetle (Jump, Tracker)"
+				"Sea Scorpion (Pulse, Jump)"
+				"Sea Scorpion (Tracker, Jump)"
+				"Water Bug (Jump, Pulse)" 2
+				"Water Bug (Jump)" 2
+				"Lightning Bug (Jump, Pulse)"
+				"Lightning Bug (Jump)"
+	
+	npc accompany save
+		government "Hai (Friendly Unfettered)"
+		personality heroic vindictive escort
+		ship "Solifuge Prototype" "Muramasa"
+		
+	on abort
+		"reputation: Hai (Unfettered)" <?= -1000
+	
+	on fail
+		"reputation: Hai (Unfettered)" <?= -1000
+		dialog `[MISSION FAILED] You failed to escort the Muramasa to <destination>. If life were a game, you could load a save file and try again.`
+	
+	on visit
+		dialog `The Muramasa hasn't arrived. Return to space and wait for them.`
+
+	on complete
+		"reputation: Hai (Friendly Unfettered)" >?= 100
+		give ship "Solifuge Prototype" "Muramasa"
+		event "Completed Journey to the Southwest"
+		event "Unfettered Expand in Ancestral Lands" 30
+		event "It came from the desert..." 180
+		event "It came from the canyon..." 210
+		event "It came from the ocean..." 240
+		set "midnight journey to the southwest patched"
+		conversation
+			scene "thumbnail/hai solifuge prototype-thumb"
+			`	As promised, San Zo presents you with the Muramasa. The Unfettered disperse into the forest. You can't help but wonder if it was a mistake bringing them here...`
+
+event "Completed Journey to the Southwest"
+	system Ehmahai
+		government "Hai (Friendly Unfettered)"
+		fleet "Ancestral Unfettered" 6000
+		fleet "Nova Firefly" 4000
+	planet Oldhome
+		remove attributes
+			"uninhabited"
+		add description `The Unfettered have uncovered underground bunkers filled with supplies and equipment. They've even found some completed ships, ready for launch. It's as if the Hai were prepared to return someday.`
+		spaceport `The spaceport was once concealed underneath a thick forest canopy. Despite the Unfettered's attempt to clear away the brush, branches and leaves are still scattered across the landing pads.`
+
+event "Unfettered Expand in Ancestral Lands"
+	system Ehmahai
+		fleet "Ancestral Unfettered" 3000
+		fleet "Nova Firefly" 6000
+	system Heiahai
+		government "Hai (Friendly Unfettered)"
+		fleet "Ancestral Unfettered" 6000
+		fleet "Nova Firefly" 4000
+	system Zubahai
+		government "Hai (Friendly Unfettered)"
+		fleet "Ancestral Unfettered" 6000
+		fleet "Nova Firefly" 4000
+	planet Oldhome
+		add shipyard "Unfettered Ancestral"
+		add outfitter "Unfettered Ancestral"
+	planet Nearwater
+		add description `While the Unfettered lay claim to Nearwater, they don't have the resources or patience to build an outpost in the midst of the constant storms here.`
+	planet Drywaste
+		add description `Unfettered scavengers have started digging through the sand in search of working warship parts. They aren't having much success.`
+	planet Takerstone
+		add description `Unfettered scavengers have started searching the rocky crevices in search of a salvageable warship. They aren't having much success.`
+	planet Wildland
+		remove attributes
+			"uninhabited"
+		spaceport `The Unfettered have converted part of the ruins into a spaceport. It seems the civilization that once lived here used it to launch and land terrestrial aircraft.`
+		
+event "It came from the desert..."
+	unvisit Ehmahai
+	unvisit Heiahai
+	unvisit Zubahai
+	system Hazehai
+		fleet "Nova Firefly Hatchery" 600
+		fleet "Nova Firefly" 1000
+	system Ehmahai
+		add fleet "Large Unfettered" 6000
+	system Heiahai
+		fleet "Ancestral Unfettered" 3000
+		fleet "Nova Firefly" 6000
+	system Zubahai
+		fleet "Ancestral Unfettered" 3000
+	planet Oldhome
+		tribute 300
+			threshold 800
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 10
+			fleet "Ancestral Unfettered" 5
+	planet Nearwater
+		remove attributes
+			"uninhabited"
+		spaceport `The "spaceport" is the exposed flagstones of a former Hai fortress. A section of crumbling wall provides some shelter for the Unfettered captain and his ship unfortunate enough to be assigned the duty of port authority.`
+		tribute 200
+			threshold 500
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 5
+			fleet "Ancestral Unfettered" 10
+	planet Drywaste
+		remove attributes
+			"uninhabited"
+		tribute 200
+			threshold 500
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 5
+			fleet "Ancestral Unfettered" 10
+		spaceport `A trading outpost has been set up in the shadow of a derelict Megalocoleus. Some nearby hills keep the sand from covering the area, allowing a flat surface for parking ships.`
+	planet Wildland
+		add outfitter "Unfettered Ancestral"
+		tribute 300
+			threshold 800
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 10
+			fleet "Ancestral Unfettered" 5
+
+event "It came from the canyon..."
+	system Zubahai
+		add fleet "Large Unfettered" 6000
+
+event "It came from the ocean..."
+	system Heiahai
+		add fleet "Large Unfettered" 6000
+
+mission "Angry Squirrels: Unfettered Expand in Ancestral Lands Patch"
+	landing
+	invisible
+	to offer
+		has "event: Unfettered Expand in Ancestral Lands"
+		not "midnight journey to the southwest patched"
+	on offer
+		event "Unfettered Expand in Ancestral Lands Patch"
+		fail
+
+event "Unfettered Expand in Ancestral Lands Patch"
+	system Ehmahai
+		government "Hai (Friendly Unfettered)"
+	system Heiahai
+		government "Hai (Friendly Unfettered)"
+	system Zubahai
+		government "Hai (Friendly Unfettered)"
+	planet Oldhome
+		remove shipyard "Unfettered Basics"
+		remove outfitter "Unfettered Basics"
+		remove attributes unfettered
+		add shipyard "Unfettered Ancestral"
+		add outfitter "Unfettered Ancestral"
+
+mission "Angry Squirrels: It came from the desert... Patch"
+	landing
+	invisible
+	to offer
+		has "event: It came from the desert..."
+		not "midnight journey to the southwest patched"
+	on offer
+		event "It came from the desert... Patch"
+		fail
+
+event "It came from the desert... Patch"
+	planet Oldhome
+		tribute 300
+			threshold 800
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 15
+	planet Nearwater
+		remove attributes unfettered
+		tribute 200
+			threshold 500
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 10
+	planet Drywaste
+		remove attributes unfettered
+		tribute 200
+			threshold 500
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 10
+	planet Wildland
+		remove attributes unfettered
+		remove shipyard "Unfettered Basics"
+		remove outfitter "Unfettered Basics"
+		add outfitter "Unfettered Ancestral"
+		tribute 300
+			threshold 800
+			fleet "Ancestral Unfettered Elite Defense"
+			fleet "Ancestral Unfettered Defense" 15
+
+
+
+shipyard "Unfettered Ancestral"
+	"Aphid"
+	"Cicada"
+	"Grasshopper"
+	"Horseshoe Crab"
+	"Ladybug"
+	"Shield Beetle (Unfettered Shipyards)"
+	"Water Bug"
+
+outfitter "Unfettered Ancestral"
+	"Pulse Cannon"
+	"Heavy Pulse Cannon"
+	"Hai Tracker"
+	"Bullfrog Anti-Missile"
+	"Hai Octopus Jammer"
+	"Sand Cell"
+	"Geode Reactor"
+	"Hai Williwaw Cooling"
+	"Hyperdrive"
+	"Hai Chasm Batteries"
+	"Hai Fissure Batteries"
+	"Supercapacitor"
+	"Cargo Expansion"
+	"Small Bunk Room"
+	Barracks
+	"Fuel Pod"
+	"Hai Corundum Regenerator"
+	`"Basrem" Atomic Thruster`
+	`"Basrem" Atomic Steering`
+	"Modified Nugget Finder"
+	"Value Detector"
+	"Local Map"
+	"Quantum Keystone"
+	"Pulse Rifle"
+	"Ion Flash Bang"
+	"Asteroid Scanner"
+	"Outfit Scanner"
+
+
+
+mission "Angry Squirrels: Megalocoleus Intro"
+	landing
+	name "Ancestral Lands"
+	description "Visit <destination> to see how the Unfettered are faring in the Ancestral Lands."
+	source
+		government "Hai" "Hai (Unfettered)"
+		not attributes "ancestral lands"
+	destination Oldhome
+	to offer
+		has "event: It came from the desert..."
+	on offer
+		set "midnight megalocoleus intro patched"
+		"reputation: Hai (Unfettered)" <?= 0
+		"reputation: Hai (Unfettered Wanderer Tribute)" <?= 0
+		"reputation: Hai Merchant (Sympathizers)" <?= 0
+		"reputation: Hai (Friendly Unfettered)" <?= 100
+		"reputation: Hai (Unfettered Civilians)" <?= 0
+		"reputation: Elenctic Commune" <?= 0
+		conversation
+			scene "planet/forest3"
+			`Lately, the Unfettered seem agitated. You realize it's been a while since you've visited the Ancestral Lands. Perhaps you should see how they've developed.`
+				accept
+	on complete
+		conversation
+			scene "thumbnail/hai megalocoleus-thumb"
+			`You ask about the new ship you saw patrolling the system.`
+			`Ah, you must be referring to the Megalocoleus! The scavengers finally found something worthwhile under the sand dunes of Drywaste.`
+				decline
+
+mission "Angry Squirrels: Megalocoleus Intro Patch"
+	landing
+	invisible
+	to offer
+		has "Angry Squirrels: Megalocoleus Intro: offered"
+		not "midnight megalocoleus intro patched"
+	on offer
+		"reputation: Hai (Friendly Unfettered)" >?= 100
+		fail
+
+mission "Angry Squirrels: It came from the desert..."
+	landing
+	invisible
+	source
+		government "Hai" "Hai (Unfettered)"
+		not attributes "ancestral lands"
+	destination Oldhome
+	to offer
+		has "event: It came from the desert..."
+	on enter Ehmahai
+		conversation
+			scene "scene/scene-megalocoleus1"
+			`There is a Hai ship you haven't seen before patrolling the system. But it doesn't seem new. On the contrary, its hull looks worn with age."`
+	npc kill
+		government "Hai (Friendly Unfettered)"
+		system "Ehmahai"
+		personality waiting staying timid uninterested
+		ship "Megalocoleus" "Go Jyo"
+		
+mission "Angry Squirrels: It came from the canyon..."
+	landing
+	invisible
+	source
+		government "Hai" "Hai (Unfettered)"
+		not attributes "ancestral lands"
+	destination Oldhome
+	to offer
+		has "event: It came from the canyon..."
+		has "Angry Squirrels: Megalocoleus Intro: declined"
+	on enter Zubahai
+		conversation
+			scene "scene/scene-megalocoleus2"
+			`Another old Megalocoleus is patrolling the system."`
+	npc kill
+		government "Hai (Friendly Unfettered)"
+		system "Zubahai"
+		personality waiting staying timid uninterested
+		ship "Megalocoleus" "Hak Kai"
+		
+
+mission "Ancestral Lands: Nova Firefly Swarm"
+	repeat
+	minor
+	name "Nova Firefly Swarm"
+	description "A large swarm of Nova Fireflies has entered <system>. Drive them off then land on <planet> for payment."
+	source
+		government "Hai (Unfettered)"
+		attributes "ancestral lands"
+	to offer
+		has "event: Completed Journey to the Southwest"
+		or
+			and
+				not "Randomize Ancestral Lands: Nova Firefly Swarm"
+				random < 70
+			and
+				has "Randomize Ancestral Lands: Nova Firefly Swarm"
+				random < 5
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! A swarm of Nova Fireflies has entered the system! We need every combat-worthy ship to join the defenses!" The Unfettered will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					defer
+				`	(Join the defense fleet.)`
+			`A few Unfettered pilots have gathered to help repel the Nova Firefly swarm. You join them, and take off together...`
+				launch
+	on defer
+		"reputation: Hai (Friendly Unfettered)" -= 5
+		set "Randomize Ancestral Lands: Nova Firefly Swarm"
+	npc
+		government "Hai (Friendly Unfettered)"
+		personality launching staying heroic vindictive
+		fleet "Ancestral Unfettered Defense"
+	npc evade
+		government "Invasive Lifeform"
+		personality waiting vindictive mining mute coward
+		fleet "Nova Firefly" 7
+	on visit
+		dialog `The swarm still threatens the system. Get back in the fight!`
+	on complete
+		set "Randomize Ancestral Lands: Nova Firefly Swarm"
+		"reputation: Hai (Friendly Unfettered)" += 5
+		payment 150000
+		dialog `The Unfettered pay you <payment> for your assistance.`

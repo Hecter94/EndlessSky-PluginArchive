@@ -22,6 +22,7 @@ mission "Quash: Humanika Infiltration 1"
 		not planet "Wang Xiang Tai"
 	destination "Humanika"
 	to offer
+		has "First Contact: Quarg: offered"
 		not "Cartography: Quarg Hitchhiker 3: offered"
 		or
 			and
@@ -334,8 +335,10 @@ mission "Cartography: The Map Obtained"
 		has "Rim Archaeology 6: declined"
 		has "Coalition: First Contact: done"
 	on offer
-		dialog
-			`Due to your involvement in the archaeology discovery on Zug, the government of Poisonwood invites you to investigate a similar discovery on their world.`
+		conversation
+			scene "outfit/unknown"
+			`You receive a message: "Greeting <first> <last>. Due to your involvement in the archaeology discovery on Zug, the government of Poisonwood invites you to investigate a similar discovery we've uncovered." The message gives instructions for where to land on Poisonwood, but doesn't describe what was found there.`
+				accept
 	on complete
 		outfit "Obsolete Star Map" 1
 		event "Poisonwood Trailblazer Excavation" 30
@@ -510,7 +513,8 @@ mission "Cartography: The Map (Wanderer)"
 
 mission "Cartography: The Map (Alexandria) 1"
 	landing
-	invisible
+	name "Obsolete Star Map"
+	description "Find more data regarding the Obsolete Star Map and share you findings with Alexandria's astronomy department."
 	source Alexandria
 	to offer
 		has "trailblazer map"
@@ -526,9 +530,12 @@ mission "Cartography: The Map (Alexandria) 1"
 				`	(Not now.)`
 					defer
 			`It takes a few hours, but you finally manage to find researchers who specialize in astronomy who are willing to help you. After checking your mapping data, they conclude that more data is required. They indicate they would be willing to try again if you bring them more data points to compare against.`
-				decline
-
-
+				accept
+	on visit
+		dialog "You still need more data regarding the Obsolete Star Map before Alexandria's astronomy researchers can determine anything conclusive."
+	to complete
+		has "Cartography: The Map (Hai): declined"
+		has "Cartography: The Map (Wanderer): declined"
 
 mission "Cartography: The Map (Alexandria) 2"
 	landing
@@ -548,15 +555,16 @@ mission "Cartography: The Map (Alexandria) 2"
 					defer
 
 			branch "2nd visit"
-				has "Cartography: The Map (Alexandria) 1: declined"
-			
+				or
+					has "Cartography: The Map (Alexandria) 1: declined"
+					has "Cartography: The Map (Alexandria) 1: done"
 			`	It takes a few hours, but you finally manage to find researchers who specialize in astronomy who are willing to help you. After checking your mapping data, they manage to pinpoint one star system and update your current map of the galaxy. This new system is located in the Dirt Belt, near Terminus.`
 				decline
-			
+
 			label "2nd visit"
 			`	The researchers welcome you back and eargerly add the mapping data you received from the Hai and Wanderers to their own. After completing the update, they manage to pinpoint one star system and update your current map of the galaxy. This new system is located in the Dirt Belt, near Terminus.`
 				decline
-				
+
 	on decline
 		event "Diyu reveal"
 		set "diyu inaccessible patched"
@@ -692,7 +700,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 				`	"Should I bring my weapons?"`
 				
 			scene "outfit/pulse turret"
-			`	"You should stay here. Keep the ship's weapons powered up, in case I need backup." Quash disembarks the ship and heads out to meet the pirates. Despite having a Hai ship, they look like ordinary humans. They talk for a bit and one of them hands Quash something which he pockets. They talk for a while more before going their separate ways.`
+			`	"You should stay here. Keep the ship's weapons powered up, in case I need backup." Quash disembarks the ship and heads out to meet the pirates. Despite having a Hai ship, they look like ordinary humans. They talk for a bit and one of them hands Quash something which it pockets. They talk for a while more before going their separate ways.`
 			
 			branch "armament deterrence"
 				"ships: Superheavy" + "ships: Heavy Warship" + "ships: Utility" >= 1
@@ -704,10 +712,10 @@ mission "Cartography: Quarg Hitchhiker 4"
 			label "armament deterrence"
 			`	Quash makes it safely back to the ship. "I suggest we leave while everyone is still pretending to be civilized."`
 				launch
-				
+
 	on enter Diyu
-		dialog `It doesn't take long for the pirate ship you encountered earlier to follow you along with a few other ships in tow. Quash remarks, "They lost more than a few lives stealing this for me." He taps his pocket. "Perhaps the hyperspace links to Archipelago wasn't enough compensation for them."`
-		
+		dialog `It doesn't take long for the pirate ship you encountered earlier to follow you along with a few other ships in tow. Quash remarks, "They lost more than a few lives stealing this for me." It taps its pocket. "Perhaps the hyperspace links to Archipelago wasn't enough compensation for them."`
+
 	npc kill
 		government "Pirate"
 		personality launching plunders harvests
@@ -1263,3 +1271,300 @@ mission "Midnight Cartography Quarg Rep Patch"
 		"reputation: Quarg (Kor Efret)" >?= 1
 		"reputation: Quarg (Gegno)" >?= 1
 		fail
+
+
+
+mission "Midnight Pictograph 1"
+	minor
+	name "Earth Artifacts to <planet>"
+	description "Transport some ancient Earth artifacts to <destination>. Do not, under any circumstance, look inside the crate. Payment is <payment>."
+	cargo "earth artifacts" 1
+	passengers 1
+	source Earth
+	destination Alexandria
+	to offer
+		has "First Contact: Quarg: offered"
+		has "Saving Artifacts 4: done"
+		random < 70
+	on offer
+		conversation
+			`When you return to your ship you find a strange woman with unkempt hair and soda pop spectacles tapping her foot as she waits impatiently. Gripped in her hand is a clipboard which she glances at occasionally. Upon spotting you, she rushes over and asks with a nasal voice, "Are you Captain <first> <last>?"`
+			choice
+				`	"Yeah, that's me."`
+				`	"What do you want?"`
+			`	"I'm a researcher specializing in archaeological pre-history. You've been highly recommended by my colleagues at <planet> and I'd like for you to transport some sensitive artifacts recently recovered from the west Saharan marshes to the station in <system>.`
+			choice
+				`	"Is the pay going to be the same as before?"`
+			scene "outfit/sealed crate"
+			`	"It'll be ten times what he offered. But there's a catch. Absolutely no peeking at the artifacts! The crate must remain sealed at all times." She seems determined to make sure you don't look at the contents.`
+			choice
+				`	"Why not?"`
+				`	"That sounds suspicious..."`
+			scene "outfit/unknown"
+			`	She seems taken aback before stammering out a response, "Oh, uh... They're, uh, extremely sensitive. Any exposure to normal air will damage them. Yeah, that's it..." She doesn't sound too confident with that statement.`
+			choice
+				`	"Okay, I'll help you."`
+					goto help
+				`	"No, I'm not interested in helping."`
+			`	"What? Why not? I'm offering ten times what was paid last time. Ten!"`
+			choice
+				`	"Okay, I'll help you."`
+					goto help
+				`	"Forget it. Go find someone else."`
+			`	She scowls and scribbles something on her clipboard before walking away.`
+				decline
+			label help
+			scene "outfit/sealed crate"
+			`	"You will? That's great! I'll have the crate brought here within the hour. Also, I'm coming along, so keep a bunk open for me. My name's Tart Concord." Tart scribbles something on her clipboard and walks away. This could be an interesting trip."`
+				accept
+	on accept
+		"reputation: Independent (Killable)" >?= 10
+	on enter
+		conversation
+			scene "outfit/sealed crate"
+			`Tart double checks the crate before retiring to her bunk. She says, "Remember, no peeking at what's inside! These artifacts are sensitive. Sensitive!"`
+				accept
+	on enter Markeb
+		conversation
+			scene "outfit/sealed crate"
+			`You're almost at Alexandria. Tart appears to be asleep. Do you dare peek inside the crate?`
+			choice
+				`	(Have a look inside.)`
+					goto look
+				`	(Better not...).`
+			scene "outfit/unknown"
+			`	Are you sure? This will be your last chance...`
+			choice
+				`	(Have a look inside.)`
+				`	(Definitely not...).`
+					accept
+			label look
+			scene "scene/scene-empty box"
+			`	Just as you pry the lid off, Tart screams from the entrance to the cargo bay, "What are you doing!?!" You drop the lid haphazardly back onto the crate as she rushes over and nervously asks, "Did you see? Did you see?"`
+			choice
+				`	"I saw."`
+					goto saw
+				`	"N, no..."`
+			`	There is a momentary pause as she registers your response in her brain. She quickly adjusts the lid to seal the crate back up. "Whew, that was a close call!" She smiles in relief then suddenly frowns. "Captain <last>, I'm very disappointed in you. Please get us to Alexandria so we can safely unload these artifacts someplace safe. And don't you dare try to open the crate again! Hmph." She insists on standing guard over the crate until you land.`
+				accept
+			label saw
+			action
+				set "ancient pictograph seen"
+			`	She sighs. "I suppose what was seen can't be unseen. As you probably know, the west Sahara wasn't always a jungle marsh. Centuries ago it was dry desert. But thanks to long term erosion, the sand dunes have slowly washed away. A recent typhoon finally uncovered ancient ruins that pre-date the Pyramids. That much was reported in the news." She slides the lid off the crate. "This, however, has been kept secret.`
+			choice
+				`	(Look inside.)`
+			`	"A stone tablet bearing a pictograph from a human civilization so ancient we don't know its name." It appears to depict ancient humans kneeling before a figure of some importance. "What do you make of it?"`
+			label impressions
+			scene "scene/scene-ancientpictograph"
+			choice
+				`	"Is it shooting lightning from its hand?"`
+					goto lightning
+					to display
+						not "ancient pictograph lightning"
+				`	"What's the red thing over its head?"`
+					goto red
+					to display
+						not "ancient pictograph red"
+				`	"Its legs look odd."`
+					goto legs
+					to display
+						not "ancient pictograph legs"
+				`	"I have nothing more to add."`
+					goto dismiss
+					to display
+						has "ancient pictograph archaeologist"
+						or
+							not "ancient pictograph lightning"
+							not "ancient pictograph red"
+							not "ancient pictograph legs"
+				`	"I have nothing more to add."`
+					goto conclusion
+					to display
+						has "ancient pictograph lightning"
+						has "ancient pictograph red"
+						has "ancient pictograph legs"
+				`	"I'm a pilot, not an archaeologist!"`
+					to display
+						not "ancient pictograph archaeologist"
+			action
+				set "ancient pictograph archaeologist"
+			branch foster
+				has "Rim Archaeology 6: declined"
+			`	"Alright, I suppose you have a point."`
+				goto dismiss
+			label foster
+			`	"I thought your involvement with Albert Foster's archaeological discovery on Zug might have granted you some insight. Are you sure you don't have any impressions on this?" she gestures at the pictograph.`
+				goto impressions
+
+			label lightning
+			action
+				set "ancient pictograph lightning"
+				set "ancient pictograph archaeologist"
+			`	"It might be lightning or it might be symbolic of 'magic'. If we were to show primitive humans a Laser Rifle, they might see it as having the ability to shoot lightning... Hmm." She scribbles something on her clipboard. "Does anything else stand out to you?"`
+				goto impressions
+
+			label red
+			action
+				set "ancient pictograph red"
+				set "ancient pictograph archaeologist"
+			`	"It could be a symbol for the sun or some sort of celestial entity associated with the figure standing beneath it... Hmm." She scribbles something on her clipboard. "Does anything else stand out to you?"`
+				goto impressions
+
+			label legs
+			action
+				set "ancient pictograph legs"
+				set "ancient pictograph archaeologist"
+			`	"That certainly is eye catching. It clearly depicts that figure as non-human. When one also considers its taller stature... Hmm." She scribbles something on her clipboard. "Does anything else stand out to you?"`
+				goto impressions
+
+			label conclusion
+			`	Tart looks over the notes she wrote on her clipboard. Captain <first>, do you suppose the figure the humans are kneeling to could be a Quarg?"`
+			choice
+				`	"That's definitely a Quarg."`
+				`	"I suppose that's possible."`
+				`	"No way, that's crazy talk."`
+					goto denial
+			action
+				set "ancient pictograph quarg"
+			`	Tart looks relieved. "Thank you. I happen to think so too. The red marking above its head may be symbolic of the Quarg coming down from space. But this is still only speculation. And there are some who would refuse to even consider the possibility that the Quarg might have visited prehistoric humans and meddled in our ancestor's affairs. The potential social upheaval that could result from this theory getting out might be catastrophic."`
+				goto dismiss
+
+			label denial
+			`	She scribbles something on her clipboard. "I suppose it is... Thank you for sharing your impressions with me."`
+
+			label dismiss
+			choice
+				`	"May I take a photo of the pictograph?"`
+				`	(Stay silent.)`
+					goto end
+			action
+				set "ancient pictograph photo"
+			`	Tart's response is swift and sure. "Absolutely not!" As she reaches for the lid, you instinctively glance at the nearest cargo bay security camera...`
+			label end
+			``
+			`	Tart secures the lid back onto the crate. "Please keep the existence of this artifact a secret. Until Alexandria is able to determine what this pictograph truly represents, we would prefer it not be exposed to wild speculations from the general public." She insists on standing guard over the crate until you land.`
+				accept
+	npc
+		government "Independent (Killable)"
+		system destination
+		personality waiting surveillance coward marked
+		ship "Scout (Spotlight)" "Peeping Tom"
+	on complete
+		payment 82500
+		conversation
+			branch seen
+				has "ancient pictograph seen"
+			action
+				log "Minor People" "Tart Concord" `A researcher from Alexandria specializing in archaeological pre-history. She transported ancient artifacts discovered on Earth. She was very insistent that they not be seen.`
+			` `
+				goto cleanup
+			label seen
+			branch quarg
+				has "ancient pictograph quarg"
+			action
+				log "Minor People" "Tart Concord" `A researcher from Alexandria specializing in archaeological pre-history. She transported an ancient pictograph discovered on Earth. She was very insistent that the existence of this artifact not be shared with the general public.`
+			` `
+				goto cleanup
+			label quarg
+			action
+				log "Minor People" "Tart Concord" `A researcher from Alexandria specializing in archaeological pre-history. She transported an ancient pictograph which may be evidence that the Quarg visited prehistoric humans and meddled in their affairs. She was very insistent that the existence of this artifact not be shared with the general public.`
+			` `
+			label cleanup
+			action
+				clear "ancient pictograph archaeologist"
+				clear "ancient pictograph lightning"
+				clear "ancient pictograph red"
+				clear "ancient pictograph legs"
+			scene "outfit/sealed crate"
+			branch photo
+				has "ancient pictograph photo"
+			`Tart oversees the unloading of the crate containing the artifacts and you receive <payment>, ten times what her colleague paid you for your previous delivery to Alexandria from Earth.`
+				accept
+			label photo
+			`Tart oversees the unloading of the crate containing the artifacts and you receive <payment>, ten times what her colleague paid you for your previous delivery to Alexandria from Earth.`
+			choice
+				`	(Check the cargo bay security video.)`
+				`	(Delete the cargo security video.)`
+					goto delete
+			scene "outfit/ancient pictograph"
+			action
+				outfit "Ancient Earth Pictograph" 1
+			`	When you review the security video, you find a picture of the Ancient Pictograph. It's somewhat blurry, but still might be worth something...`
+				accept
+			label delete
+			action
+				clear "ancient pictograph photo"
+			`	You delete the security video, erasing any visual record of the Ancient Pictograph from your ship's computer.`
+
+mission "Midnight Pictograph 2"
+	invisible
+	minor
+	source "Greenrock"
+	to offer
+		has "Saving Artifacts 2: done"
+		has "outfit (flagship installed): Ancient Pictograph"
+		random < 70 - ( "Randomize Midnight Pictograph 2" * 65 )
+	on offer
+		conversation
+			scene "outfit/ancient pictograph"
+			`Do you want to try selling the Ancient Pictograph to "Fine Art and Cultural Treasures"?`
+			choice
+				`	(Try your luck.)`
+				`	(Maybe another time.)`
+					defer
+				`	(I'm keeping it for myself.)`
+					decline
+			`	You enter the shop and see that he has another customer, a figure in a dark cloak. Though her face is obscured, from what you can see of her figure, she appears to be a woman. Upon your entrance, she retreats to a back room while the clerk turns his attention towards you. "Welcome back! How can I help you today?"`
+			choice
+				`	"I have something unique to sell."`
+					goto negotiate
+				`	"Maybe I should come back when you aren't busy..."`
+			`	"Don't worry about her. Tell me what brought you here today?"`
+			choice
+				`	"I have something unique to sell."`
+			label negotiate
+			`	You tell him about the photo of the Ancient Pictograph. "You're in luck. I know just the person who might be interested in this." He turns towards the back room. "Greythatch!"`
+			`	The woman from earlier peeks out from the back room. "This had better be good." Lowering her hood she asks,"What's so important you felt the need to call out my name?"`
+			`	"Sorry," apologizes the clerk, "But you have to hear this!" Graythatch waits patiently while you repeat your story about the Ancient Pictograph.`
+			`	After you finish your story she mulls it over. "Sounds ridiculous. I don't suppose you'd be willing to show me this photo of an alleged unique artifact?" What will you do?`
+			choice
+				`	(Show her the photo.)`
+					goto show
+				`	(Decline.)`
+			`	She scoffs. "Yeah, figures. Don't waste my time on nonsense." Greythatch leaves and the shop clerk decides to close up early.`
+				decline
+			label show
+			`	You try to show her the photo, taking care to obscure it as best as you can from any security cameras the "Fine Art and Cultural Treasures?" might have hidden away. Upon seeing the photo, she gasps.`
+			`	A smirk slowly crawls across the shop clerk's face. "Well, what do you think? The info we heard about Tart Concord going to Earth only to immediately turn around and haul something back to Alexandria seems to line up with this story about an Ancient Pictograph being discovered at around the same time."`
+			`	"But if this is real, that would mean..." Her words trail off. She looks at you, "The Quarg will probably freak out if they know you have this photo. Let me take it off your hands for, say, eight hundred twenty five thousand."`
+			label haggle
+			choice
+				`	"Make it a million."`
+					goto sale
+				`	"The Quarg?"`
+					to display
+						not "ancient pictograph quarg"
+				`	"Nevermind, I'll keep it."`
+					goto keep
+			action
+				set "ancient pictograph quarg"
+			`	"Isn't it obvious?" Greythatch whispers, "That tall figure flinging lightning over the crowd is definitely a Quarg. Look at its legs." Regardless of if that's true or not, there's still the issue of whether or not you'll sell the photo.`
+				goto haggle
+			label keep
+			`	Greythatch grimaces, then pulls her hood back over her head. "Suit yourself. It's just a blurry photo." Although most of her face is obscured, you can see that she's frowning. She leaves the shop and the clerk decides to close up early.`
+				decline
+			label sale
+			`	Greythatch swallows. "Fine. But make sure you delete any copies you have left. If you backstab me, I'll make sure to tell the Quarg about you!"`
+			choice
+				`	(Agree to her terms.)`
+				`	(Refuse.)`
+					goto keep
+			action
+				outfit "Ancient Earth Pictograph" -1
+				payment 1000000
+				set "ancient pictograph greythatch"
+				clear "ancient pictograph photo"
+			`	You agree to her terms and transfer your only copy of the photo to her in exchange for <payment>.`
+				decline
+	on defer
+		set "Randomize Midnight Pictograph 2"

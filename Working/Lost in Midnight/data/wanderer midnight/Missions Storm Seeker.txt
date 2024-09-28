@@ -29,7 +29,6 @@ mission "Storm Seeker Raider 1"
 		fail
 		
 mission "Storm Seeker Raider 2"
-	minor
 	name "Salvage: Raider"
 	description "Bring 145 crew and a Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source
@@ -40,15 +39,13 @@ mission "Storm Seeker Raider 2"
 	passengers 145
 	to offer
 		has "Storm Seeker Raider 1: failed"
+		has "outfit (cargo): Jump Drive"
 		or
-			and
-				not "Randomize Storm Seeker Raider 2"
-				random < 70
+			not "Randomize Storm Seeker Raider 2"
 			and
 				has "Randomize Storm Seeker Raider 2"
 				random < 20
 	on offer
-		require "Jump Drive" 2
 		conversation
 			scene "thumbnail/raider"
 			`Do you want to use one of your jump drives to salvage the abandoned pirate raider on Season's End?`
@@ -65,6 +62,8 @@ mission "Storm Seeker Raider 2"
 		conversation
 			scene "thumbnail/raider"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
+	to complete
+		has "outfit (cargo): Jump Drive"
 	on complete
 		give ship "Korath Raider (Torpedo)" "Bloody End"
 		outfit "Jump Drive" -1
@@ -108,12 +107,12 @@ mission "Storm Seeker Shallow Pond"
 		conversation
 			scene "scene/scene-shallow pond"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
-	to complete
-		has "Storm Seeker Shallow Pond Crew: done"
 	on decline
 		set "randomize Storm Seeker Shallow Pond"
+	to complete
+		has "outfit (cargo): Jump Drive"
+		has "Storm Seeker Shallow Pond Crew: done"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Shallow Pond (Jump)"
 		give ship "Flycatcher"
@@ -134,12 +133,11 @@ mission "Storm Seeker Shallow Pond Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Shallow Pond: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a crewmember to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Shallow Pond"
-	on complete
-		require "Jump Drive" 2
 
 	
 mission "Storm Seeker Skulduggery"
@@ -796,7 +794,6 @@ mission "Storm Seeker Epilogue: Spring Leaf"
 					defer
 			`	You'll have to recruit 4 crew members to pilot this ship. You'll also need an extra Jump Drive.`
 					accept
-
 	on accept
 		clear "Storm Seeker Epilogue: Spring Leaf Crew: offered"
 	on visit
@@ -805,8 +802,8 @@ mission "Storm Seeker Epilogue: Spring Leaf"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "Storm Seeker Epilogue: Spring Leaf Crew: done"
+		has "outfit (cargo): Jump Drive"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Spring Leaf (Jump)"
 		clear "Storm Seeker Epilogue: Spring Leaf Crew: done"
@@ -817,11 +814,9 @@ mission "Storm Seeker Epilogue: Spring Leaf"
 ship "Spring Leaf" "Spring Leaf (Jump)"
 	outfits
 		"Sunbeam"
-		
 		"Yellow Sun Reactor"
 		"Bright Cloud Shielding"
 		"Wanderer Ramscoop"
-		
 		"Type 3 Radiant Thruster"
 		"Type 3 Radiant Steering"
 		"Jump Drive"
@@ -836,14 +831,11 @@ mission "Storm Seeker Epilogue: Spring Leaf Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Spring Leaf: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a 4 crew members to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Epilogue: Spring Leaf"
-	on complete
-		require "Jump Drive" 2
-
-
 
 
 mission "Storm Seeker Epilogue: Winter Leaf"
@@ -864,7 +856,6 @@ mission "Storm Seeker Epilogue: Winter Leaf"
 					defer
 			`	You'll have to recruit 12 crew members to pilot this ship. You'll also need an extra Jump Drive.`
 					accept
-
 	on accept
 		clear "Storm Seeker Epilogue: Winter Leaf Crew: offered"
 	on visit
@@ -873,8 +864,8 @@ mission "Storm Seeker Epilogue: Winter Leaf"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "Storm Seeker Epilogue: Winter Leaf Crew: done"
+		has "outfit (cargo): Jump Drive"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Winter Leaf (Jump)"
 		conversation
@@ -885,11 +876,9 @@ ship "Winter Leaf" "Winter Leaf (Jump)"
 	outfits
 		"Sunbeam" 3
 		"Wanderer Anti-Missile"
-		
 		"White Sun Reactor"
 		"Bright Cloud Shielding"
 		"Wanderer Ramscoop"
-		
 		"Type 3 Radiant Thruster"
 		"Type 4 Radiant Steering"
 		"Jump Drive"
@@ -904,14 +893,12 @@ mission "Storm Seeker Epilogue: Winter Leaf Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Winter Leaf: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a 12 crew members to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Epilogue: Winter Leaf"
 		clear "Storm Seeker Epilogue: Winter Leaf: offered"
-	on complete
-		require "Jump Drive" 2
-
 
 
 mission "Storm Seeker Epilogue: Storm Seeker"
@@ -941,8 +928,8 @@ mission "Storm Seeker Epilogue: Storm Seeker"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "Storm Seeker Epilogue: Storm Seeker Crew: done"
+		has "outfit (cargo): Jump Drive"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Storm Seeker"
 		conversation
@@ -959,15 +946,12 @@ mission "Storm Seeker Epilogue: Storm Seeker Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Storm Seeker: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a 18 crew members to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Epilogue: Storm Seeker"
 		clear "Storm Seeker Epilogue: Storm Seeker: offered"
-	on complete
-		require "Jump Drive" 2
-
-
 
 
 mission "Storm Seeker Epilogue: Tornado"
@@ -988,7 +972,6 @@ mission "Storm Seeker Epilogue: Tornado"
 					defer
 			`	You'll have to recruit 41 crew members to pilot this ship. You'll also need an extra Jump Drive.`
 					accept
-
 	on accept
 		clear "Storm Seeker Epilogue: Tornado Crew: offered"
 	on visit
@@ -997,8 +980,8 @@ mission "Storm Seeker Epilogue: Tornado"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "Storm Seeker Epilogue: Tornado Crew: done"
+		has "outfit (cargo): Jump Drive"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Tornado (Jump)"
 		conversation
@@ -1010,11 +993,9 @@ ship "Tornado" "Tornado (Jump)"
 		"Sunbeam" 4
 		"Sunbeam Turret" 2
 		"Wanderer Anti-Missile" 2
-		
 		"Yellow Sun Reactor" 2
 		"Dark Storm Shielding"
 		"Wanderer Ramscoop"
-		
 		"Type 4 Radiant Thruster"
 		"Type 4 Radiant Steering"
 		"Jump Drive"
@@ -1029,15 +1010,12 @@ mission "Storm Seeker Epilogue: Tornado Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Tornado: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a 41 crew members to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Epilogue: Tornado"
 		clear "Storm Seeker Epilogue: Tornado: offered"
-	on complete
-		require "Jump Drive" 2
-
-
 
 
 mission "Storm Seeker Epilogue: Tsunami"
@@ -1058,7 +1036,6 @@ mission "Storm Seeker Epilogue: Tsunami"
 					defer
 			`	You'll have to recruit 152 crew members to pilot this ship. You'll also need an extra Jump Drive.`
 					accept
-
 	on accept
 		clear "Storm Seeker Epilogue: Tsunami Crew: offered"
 	on visit
@@ -1067,8 +1044,8 @@ mission "Storm Seeker Epilogue: Tsunami"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "Storm Seeker Epilogue: Tsunami Crew: done"
+		has "outfit (cargo): Jump Drive"
 	on complete
-		require "Jump Drive" 2
 		outfit "Jump Drive" -1
 		give ship "Tsunami (Jump)"
 		conversation
@@ -1079,13 +1056,11 @@ ship "Tsunami" "Tsunami (Jump)"
 	outfits
 		"Sunbeam" 4
 		"Sunbeam Turret" 5
-		
 		"Blue Sun Reactor"
 		"White Sun Reactor"
 		"Dark Storm Shielding" 2
 		"Wanderer Heat Sink"
 		"Wanderer Ramscoop"
-		
 		"Type 4 Radiant Thruster"
 		"Type 4 Radiant Steering"
 		"Type 2 Radiant Steering"
@@ -1101,15 +1076,12 @@ mission "Storm Seeker Epilogue: Tsunami Crew"
 	destination "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Tsunami: active"
+		has "outfit (cargo): Jump Drive"
 	on offer
 		dialog `Recruit a 152 crew members to pilot a ship you're trying to salvage?`
 	on decline
 		fail "Storm Seeker Epilogue: Tsunami"
 		clear "Storm Seeker Epilogue: Tsunami: offered"
-	on complete
-		require "Jump Drive" 2
-
-		
 
 
 mission "Storm Seeker Epilogue: Season's End"

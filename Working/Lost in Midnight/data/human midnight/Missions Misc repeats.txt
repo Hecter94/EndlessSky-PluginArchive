@@ -419,6 +419,77 @@ mission "Midnight Blaster Roulette 3"
 
 
 
+mission "Midnight Vlad De Drakul"
+	name "Vlad De Drakul"
+	description "Discreetly transport Vlad De Drakul to <destination>. Payment will be <payment>. If you are caught with him, you may be fined."
+	minor
+	repeat
+	infiltrating
+	source
+		attributes "frontier" "dirt belt" "rim" "north" "south" "core" "paradise"
+	destination Earth
+	cargo coffin 1
+	illegal 400000 `Your passenger turns out to be a notorious serial killer. As he is hauled off in chains, you vehemently protest that you knew nothing of his shady history. You wind up quite a bit poorer through a combination of fines and bribes (the breakdown remains somewhat unclear).`
+	stealth
+	to offer
+		random < 70
+		"getaway driver" > 5
+		"rejected illegal jobs" < 3
+		has "Shady passenger transport 2: done"
+		month == 10
+	on offer
+		conversation
+			scene "outfit/coffin"
+			branch returns
+				has "vlad de drakul returns"
+			`It's late at night when you find an odd man wearing strangely outdated and unfashionable clothing waiting at your ship's landing pad with a coffin. He greets you warmly and says he's willing to pay <payment> for passage to <destination> as quickly and discreetly as possible. He introduces himself as Vlad De Drakul and explains that he is making his annual pilgrimage to his ancestral home.  Something doesn't seem right about him, but he's offering a small fortune...`
+			choice
+				`	(Accept his offer.)`
+				`	(Reject his offer.)`
+					decline
+			`	When you offer to show him to his bunk, he declines, saying that he will sleep in his coffin...`
+				accept
+			label returns
+			`It's late at night when you find Vlad De Drakul waiting once again at your ship's landing pad with a coffin. He greets you warmly and says he's willing to pay <payment> to make his annual pilgrimage to <destination>.`
+			choice
+				`	(Accept his offer.)`
+				`	(Reject his offer.)`
+					decline
+			`	When you offer to show him to his bunk, he declines, saying that he will sleep in his coffin...`
+				accept
+	on accept
+		"rejected illegal jobs" --
+
+	on decline
+		"rejected illegal jobs" ++
+	on fail
+		outfit "Fake Coffin" 1
+		conversation
+			scene "outfit/coffin"
+			"Vlad De Drakul is gone, but he left his coffin behind..."
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		set "vlad de drakul returns"
+		"getaway driver" ++
+		payment 350000
+		clear "Midnight Vlad De Drakul Reset: offered"
+		dialog `Vlad De Drakul has spoken hardly a word during the entire trip, seemingly spending the entire journey in his coffin. As soon as you land, he hands you your payment of <payment> and disappears into the night.`
+
+mission "Midnight Vlad De Drakul Reset"
+	landing
+	invisible
+	to offer
+		has "Midnight Vlad De Drakul: offered"
+		not "Midnight Vlad De Drakul: failed"
+		month != 10
+	on offer
+		clear "Midnight Vlad De Drakul: offered"
+		fail
+
+
+
 mission "Mining: Claim Jumpers"
 	minor
 	invisible
@@ -489,6 +560,7 @@ mission "Mining: Iron Challenge"
 		not "ships: Space Liner"
 		not "ships: Light Freighter"
 		not "ships: Heavy Freighter"
+		not "ships: Superheavy" 
 		"ships: Interceptor" == 1
 		"flagship attribute: cargo" >= 15000
 		random < 10 ( "iron challenge declined" * 10 )

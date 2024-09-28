@@ -431,7 +431,7 @@ mission "Executive Guard: Syndicate Extremists"
 		ship "Barb (Proton)" "F-006"
 	npc evade
 		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 9
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 9
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
@@ -441,7 +441,7 @@ mission "Executive Guard: Syndicate Extremists"
 				"Protector (Proton)" 2
 	npc evade
 		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 11
+			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 11
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
@@ -462,7 +462,7 @@ mission "Executive Guard: Syndicate Extremist Post War"
 	to offer
 		has "free worlds reconciliation"
 		not "Executive Guard: Syndicate Extremists: offered"
-		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 7
+		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 7
 		random < 70
 	on offer
 		conversation
@@ -549,7 +549,7 @@ mission "Gremlin Protoype Escort"
 	destination "Prime"
 	to offer
 		not "Gremlin start"
-		"ships: Interceptor" + "ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" >= 1
+		"ships: Interceptor" + "ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 1
 		random < 50
 	on offer
 		conversation
@@ -1268,7 +1268,7 @@ mission "Midnight Paradise Fortune 2"
 				`	"You can keep them. All of them."`
 				`	"Get these off my ship right now."`
 			scene "outfit/shield suppressor"
-			`	"I'm sorry first, I really didn't know..." Diana seems to be holding back tears as she stuffs the Shield Suppressor back into her bag, then leaves. It might be a good idea to check your ship in the outfitter, just in case one got left behind.`
+			`	"I'm sorry <first>, I really didn't know..." Diana seems to be holding back tears as she stuffs the Shield Suppressor back into her bag, then leaves. It might be a good idea to check your ship in the outfitter, just in case one got left behind.`
 			``
 			choice
 				`	(...)`
@@ -1709,7 +1709,7 @@ mission "Midnight Swarm Lord"
 	on offer
 		conversation
 			scene "thumbnail/starbus-thumb"
-			`A militia officer approaches you. "Captain <last>, a local pirate ship named Swarm Lord has been ambushing Militia ships and building a fleet of captured ships. It's starting to get out of hand. Could you help us hunt it down?`
+			`A militia officer approaches you. "Captain <last>, a local pirate ship named Swarm Lord has been ambushing Militia ships and building a fleet of captured interceptors. It's starting to get out of hand. Could you help us hunt it down?`
 			choice
 				`	"Sure, I'm in the Militia too afterall."`
 				`	"Sorry, I'm busy with something else."`
@@ -2089,14 +2089,12 @@ ship "Blackbird" "Alien Blackbird"
 		"threshold percentage" 0.5
 	outfits
 		"Laser Turret" 2
-		
 		"S3 Thermionic"
 		"KP-6 Photovoltaic Array" 3
 		"LP072a Battery Pack"
 		"D23-QP Shield Generator"
 		"Small Radar Jammer"
 		"Luxury Accommodations"
-		
 		"Impala Plasma Thruster"
 		"Impala Plasma Steering"
 		"Hyperdrive"
@@ -2555,8 +2553,7 @@ mission "Stranded Dirtbelt Merchant"
 	description "<bunks> freighter crew you found stranded on <origin> have offered a reward of <payment> for transporting them to <destination>."
 	passengers 2 3
 	source
-		attributes "uninhabited"
-		attributes "dirt belt"
+		planet Hope Watcher "Eureka Station" "Cadrelock Rock"
 	destination
 		distance 3 6
 		not attributes "uninhabited"
@@ -2585,15 +2582,113 @@ mission "Stranded Dirtbelt Merchant"
 
 
 
+mission "Testing: Mega Freighter Prototype"
+	minor
+	name "Syndicate product test"
+	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
+	source
+		government Syndicate
+		near Alnair 1 3
+	destination Hippocrates
+	to offer
+		"reputation: Syndicate" > 10
+		has "main plot completed"
+		"combat rating" > 1000
+		"destroyed Syndicate target ship" < 3
+		has "Testing: Proton Gun-CF8: done"
+		has "Testing: Proton Turret-ATS: done"
+		or
+			and
+				not "Randomize Testing: Mega Freighter Prototype"
+				random < 50
+			and
+				has "Randomize Testing: Mega Freighter Prototype"
+				random < 5
+	on offer
+		conversation
+			`	You receive a message from the Syndicate. "<first> <last>, due to your combat experience and reputation after the war, we are extending an invitation for you to participate in an important product test.`
+			choice
+				`	(Sounds interesting. Read the rest.)`
+				`	(Looks like junk mail. Delete it.)`
+					defer
+			scene "thumbnail/mega freighter-thumb"
+			`	We simply request that you disable the <npc>, a robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. The target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>. Return your agreement to the attached non-disclosure form to accept this mission." The data from this test could help them release a new product...`
+			choice
+				`	(Accept this mission.)`
+					accept
+				`	(Decline this mission.)`
+					defer
+	on defer
+		set "Randomize Testing: Mega Freighter Prototype"
+	on accept
+		"reputation: Derelict" >?= 0
+	on enter Alnair
+		conversation
+			scene "thumbnail/mega freighter-thumb"
+			`You've found the Syndicate test ship, but it's already disabled! A swarm of pirate ships have attacked the ship and appear to be planning to take control of it. There'll be no reward if the ship is lost to pirates!`
+			``
+			`	If you manage to drive away the pirates without destroying the test ship, remember to scan its outfits before landing on <destination>.`
+				accept
+	npc evade
+		government "Pirate"
+		system Alnair
+		personality target waiting staying plunders harvests coward
+		fleet
+			names "pirate"
+			variant
+				"Vanguard (Missile)"
+				"Quicksilver (Plasma)"
+				"Wasp (Plasma)"
+				"Wasp (Limit Break)"
+	npc save "scan outfits"
+		government "Derelict"
+		personality target waiting staying derelict mute marked
+		system Alnair
+		ship "Mega Freighter (Prototype)" "Syndicate Test Vessel"
+		conversation
+			scene "outfit/proton turret-ats"
+			"You scan the disabled Mega Freighter and take careful measurements of the battle damage. Time to deliver the results on <planet>."
+	on visit
+		dialog "You need to drive away the pirates and scan the target dummy ship in <system>! Do that before returning here for payment."
+	on abort
+		# No penalty
+	on fail
+		dialog "The robotic target ship has been destroyed. You are hailed by an angry Syndicate official who fines you <payment> and warns you that further mistakes of this nature may remove you from eligibility for these jobs."
+		"destroyed Syndicate target ship" += 3
+		"reputation: Syndicate" -= 3
+		payment -2000000
+	on complete
+		payment 250000
+		event "Mega Freighter added to shipyards" 30
+		event "Mega Freighter added to Paradise Core Merchants" 45
+		event "Mega Freighter added to other Merchants" 60
+		conversation
+			`You transmit the scan results to a team of eager engineers and collect your payment of <payment>.`
+			choice
+				`	(Ask about the Mega Freighter.)`
+				`	(Don't ask about the Mega Freighter.)`
+					accept
+			scene "thumbnail/mega freighter-thumb"
+			`	"We're not allowed to discuss it. But keep checking for new inventory at Syndicate Shipyards and you may see it in stock someday!"`
+				accept
+
+ship "Mega Freighter" "Mega Freighter (Prototype)"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+		"bunks" -14
+
 mission "Testing: Proton Gun-CF8"
 	minor
 	name "Syndicate product test"
 	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
 		government Syndicate
+		not attributes uninhabited
 	destination
 		distance 1 3
 		government Syndicate
+		not attributes uninhabited
 	to offer
 		"reputation: Syndicate" > 10
 		has "main plot completed"
@@ -2654,10 +2749,6 @@ mission "Testing: Proton Gun-CF8"
 			`	"We're not allowed to discuss it. But keep checking for new inventory at Syndicated Systems outfitters and you may see it in stock someday!"`
 				accept
 
-event "Proton Gun-CF8 added to outfitters"
-	outfitter "Syndicate Advanced"
-		add "Proton Gun-CF8"
-
 ship "Vanguard" "Vanguard Test-PGCF8"
 	add attributes
 		"automaton" 1
@@ -2675,16 +2766,17 @@ ship "Vanguard" "Vanguard Test-PGCF8"
 		"X3700 Ion Thruster"
 		"X4200 Ion Steering"
 
-
 mission "Testing: Proton Turret-ATS"
 	minor
 	name "Syndicate product test"
 	description "Disable the robotic target dummy ship in <system>, collect test data for Syndicate engineers by scanning its outfits, and land on <planet>. Warning: the target ship is programmed to engage in self-defense behaviors to ensure a realistic simulation. Payment is <payment>."
 	source
 		government Syndicate
+		not attributes uninhabited
 	destination
 		distance 1 3
 		government Syndicate
+		not attributes uninhabited
 	to offer
 		"reputation: Syndicate" > 10
 		has "main plot completed"
@@ -2744,10 +2836,6 @@ mission "Testing: Proton Turret-ATS"
 			scene "outfit/proton turret-ats"
 			`	"We're not allowed to discuss it. But keep checking for new inventory at Syndicated Systems outfitters and you may see it in stock someday!"`
 				accept
-
-event "Proton Turret-ATS added to outfitters"
-	outfitter "Syndicate Advanced"
-		add "Proton Turret-ATS"
 
 ship "Protector" "Protector Test-PTATS"
 	add attributes
