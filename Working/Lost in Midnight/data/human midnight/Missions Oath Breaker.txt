@@ -171,14 +171,21 @@ mission "Oathbreaker Strategos Deployed"
 		has "event: geminus rebuilt"
 		random < 70
 	on offer
-		log "People" "Marcus Junius" `Captain of the Strategos class Navy super carrier "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 		conversation
+			branch spawnpatch
+				has "Oathbreaker Strategos Deployed Patch: offered"
+			action
+				log "People" "Marcus Junius" `Captain of the Strategos class Navy super carrier "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 			scene "thumbnail/strategos-thumb"
 			`There's a broadcast playing at the bar. They're showing the deployment of the Strategos class Navy super carrier, "R.N.S. Poisonwood." The first of its kind, the ship will be stationed in the Dirt Belt due to increased pirate activity there.`
 			`	There's a low whistle. A spectator in the crowd comments, "The war might've gone differently if the Navy had a few of those in their fleet."`
 			`	Another one quips, "I'll bet the real reason they're deploying to the Dirt Belt is to keep the Free Worlds in check."`
 			`	Someone else notes, "Even the name Poisonwood refers to that one southern planet that refused to leave the Republic."`
 			`	As the ceremonial wine bottle is about to break over the hull, the captain, Marcus Junius, is asked to comment. "I look forward to a successful campaign." The red wine splatters across the ship's pristine hull.`
+				accept
+			label spawnpatch
+			scene "thumbnail/enforcer drone-thumb"
+			`There's a broadcast playing at the bar. The R.N.S. Poisonwood has been hunting down pirate raiders in the Dirt Belt. The journalist is reporting on the Enforcer drones exclusively assigned to Strategos class super carriers. It almost sounds like a product placement advertisement.`
 				accept
 
 	npc
@@ -211,12 +218,23 @@ mission "Oathbreaker Strategos Deployed"
 		ship "Outrider (Mark II)" "Alpha Six"
 		ship "Outrider (Mark II)" "Alpha Seven"
 		ship "Outrider (Mark II)" "Alpha Eight"
-	npc save
+	npc kill
 		government "Republic"
 		system "Delta Velorum"
 		personality waiting staying vindictive
 		ship "Strategos" "R.N.S. Poisonwood"
+		on kill
+			set "r.n.s. poisonwood destroyed"
 
+mission "Oathbreaker Strategos Deployed Patch"
+	landing
+	invisible
+	to offer
+		has "Oathbreaker Strategos Deployed: done"
+		not "r.n.s. poisonwood destroyed"
+		not "Oathbreaker Poisonwood: offered"
+	on offer
+		clear "Oathbreaker Strategos Deployed: offered"
 
 
 mission "Oathbreaker Siege 1"
@@ -1708,9 +1726,11 @@ mission "Oathbreaker Poisonwood"
 		has "salary: Free Worlds"
 		has "event: Oathbreaker Random"
 		has "Oathbreaker Strategos Deployed: active"
+		not "r.n.s. poisonwood destroyed"
 		"Oathbreaker escalation" >= 6
 	on offer
 		fail "Oathbreaker Strategos Deployed"
+		log "People" "Marcus Junius" `He has abandoned his mission in the Dirt Belt and is suspected of planning to join the Oathbreakers.`
 		conversation
 			scene thumbnail/strategos-thumb
 			`You receive an urgent message from Alondo on Bourne. "Hello <first>! We've just got confirmation from the Republic that the Strategos class Navy super carrier "R.N.S. Poisonwood" has abandoned its mission in the Dirt Belt and is likely on its way to the south to join the Oathbreakers. We are recruiting every pilot in the area to hunt down that ship and destroy it before that happens.`
@@ -1804,7 +1824,9 @@ mission "Oathbreaker Poisonwood"
 		system Tais
 		personality target waiting staying vindictive
 		ship "Strategos" "R.N.S. Poisonwood"
-		dialog "You've eliminated the R.N.S. Poisonwood. Report to <destination>."
+		on kill
+			set "r.n.s. poisonwood destroyed"
+			dialog "You've eliminated the R.N.S. Poisonwood. Report to <destination>."
 
 	on complete
 		"reputation: Free Worlds" ++
@@ -2279,6 +2301,7 @@ mission "Nemesis: Oath Breaker"
 	npc
 		to spawn
 			has "Oathbreaker Poisonwood: aborted"
+			not "r.n.s. poisonwood destroyed"
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
 		system destination
