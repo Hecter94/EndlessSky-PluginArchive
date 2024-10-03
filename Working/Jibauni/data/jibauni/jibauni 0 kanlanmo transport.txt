@@ -13,7 +13,7 @@
 
 mission "Jibauni: Kanlanmo 0"
 	name "Take Kanlanmo to <planet>"
-	description "Kanlanmo, who is a Jibauni in the shape of a Tyrannosaurus rex, has asked to go to <planet> on your ship. He will explain once you get there."
+	description "Kanlanmo, who is a Jibauni in the shape of a Tyrannosaurus Rex, has asked to go to <planet> on your ship. He will explain more once you get there."
 	landing
 	source Baitoon
 	destination Taltahard
@@ -21,14 +21,48 @@ mission "Jibauni: Kanlanmo 0"
 		conversation
 			branch jibauniinsider
 				has "species: Jibauni"
-			`One of the weird aliens who appear to dwell here and who seem to be in the shape of the mythic Tyrannosaurus Rex, approaches your ship as you land. When you land and start out of your ship, grabbing your sidearm and donning armor as you go, it is standing by the hatch. "Hello, fair stranger," it says. "How may I serve you on this delightful day?"`
+			`Your landing location is on a large set of old landing pads. There didn't seem to be anywhere else that was available for spaceships to arrive. The city is filled with dinosaurs in the shape of the mythical Tyrannosaurus Rex, although here they are smaller then the old fables. A while after you land, one of these dinosaurs approaches your ship.`
+			choice
+				`	(Go out and meet it.)`
+					goto meeting
+				`	(Leave now, before something bad happens.)`
+					depart
+				`	(Stay in the ship.)`
+			`	The dinosaur opens its mouth, and a moment later you hear the words, "Could you come out of your ship to have a meeting?"`
+				to display
+					not "language: Coalition"
+				goto initialchoice1
+			action
+				set "knows the Jibauni have Heliarch translators"
+			`	The dinosaur opens its mouth to say something, but you notice that it has a Coalition translator box around its neck. Before you can do anything it says, "Could you come out of your ship to have a meeting?"`
+				to display
+					has "language: Coalition"
+			label initialchoice1
+			choice
+				`	(Go outside the <ship> and meet the strange beast.)`
+					goto meeting
+				`	(Leave the planet.)`
+					defer
+			label meeting
+			`	"Hello, fair stranger," it says. "Is there a way I may serve you on this delightful day?"`
+			label meetingquestions
 			choice
 				`	"Hello. My name is <first> <last>, and I come in peace."`
 					goto lastisknown
+				`	"How do you have a Coalition translator?"`
+					to display
+						has "knows the Jibauni have Heliarch translators"
+						not "asked about the Jibauni translators"
+					goto cotrans
 				`	"Hi, weirdo. What's up?"`
 					goto rude
 				`	(Shoot the alien with your sidearm.)`
 					goto deathshot
+			label cotrans
+			action
+				set "asked about the Jibauni translators"
+			`	"I am not authorized to give you that information. So how may I serve you?"`
+				goto meetingquestions
 			label lastisknown
 			`	"Yes. We know about you, <first>, Captain of the <ship>. How have you come here, for we did not detect any purple sparks?"`
 			choice
@@ -52,10 +86,9 @@ mission "Jibauni: Kanlanmo 0"
 				goto pinkship
 			label rudeentry
 			`	"There is an odd ship who seemed to come the way you did," says the alien as it fixes you with an intent gaze. "There may be something similar between your species. The ship was pink. Seen one like it?"`
-				goto pinkship
 			label pinkship
 			choice
-				`	"Yes, I have, actually, called the Dominator, an Alpha ship."`
+				`	"Yes, I have. They're probably Alphas."`
 					to display
 						has "event: liberation of Poisonwood"
 					goto knownalphas
@@ -122,7 +155,7 @@ mission "Jibauni: Kanlanmo 0"
 			`	A cluster of anti-ship weaponry is fired from all sides, immediately exploding the <ship> and everything inside it. It is sad your life had to end in such a way.`
 				die
 			label deathshot
-			`	You pull your sidearm from its holster, but before you can fire it, the anti-ship weaponry of this planet trains fire on your ship. Caught in crossfire, the <ship> immediately explodes, blowing you and everything in it sky high.`
+			`	You pull your sidearm from its holster, but before you can fire it, hidden anti-ship weaponry trains fire on your ship. Caught in crossfire, the <ship> immediately explodes, blowing you and everything in it sky high.`
 				die
 			label friendlyalpha
 			action
@@ -137,7 +170,7 @@ mission "Jibauni: Kanlanmo 0"
 				set "jibauni: first contact: why"
 			`	"Because I have some business to transact, something about the Rebel Jibauni."`
 			choice
-				`	"What are the Rebel Jibauni?"`
+				`	"Who are the Rebel Jibauni?"`
 					goto rebeljibauni
 				`	"Sounds good. I'll take you."`
 					accept
