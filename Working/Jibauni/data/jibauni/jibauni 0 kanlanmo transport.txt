@@ -21,20 +21,20 @@ mission "Jibauni: Kanlanmo 0"
 		conversation
 			branch jibauniinsider
 				has "species: Jibauni"
-			`Your landing location is on a large set of old landing pads. There didn't seem to be anywhere else that was available for spaceships to arrive. The city is filled with dinosaurs in the shape of the mythical Tyrannosaurus Rex, although here they are smaller then the old fables. A while after you land, one of these dinosaurs approaches your ship.`
+			`Your landing location is a large set of old landing pads in the middle of a city. There doesn't seem to be anywhere else available for spaceships to arrive. The city is filled with dinosaurs in the shape of the mythical Tyrannosaurus Rex, although here they are smaller then in the old fables. A while after you land, one of these dinosaurs approaches your ship.`
 			choice
 				`	(Go out and meet it.)`
 					goto meeting
 				`	(Leave now, before something bad happens.)`
 					depart
 				`	(Stay in the ship.)`
-			`	The dinosaur opens its mouth, and a moment later you hear the words, "Could you come out of your ship to have a meeting?"`
+			`	The dinosaur opens its mouth, and a moment later a growling sound rumbles through the air. Then you hear the words, "Could you come out of your ship to have a meeting?"`
 				to display
 					not "language: Coalition"
 				goto initialchoice1
 			action
 				set "knows the Jibauni have Heliarch translators"
-			`	The dinosaur opens its mouth to say something, but you notice that it has a Coalition translator box around its neck. Before you can do anything it says, "Could you come out of your ship to have a meeting?"`
+			`	The dinosaur opens its mouth to say something, and you hear a growling sound. Then you notice that it has a Coalition translator box around its neck. Before you can do anything the box says, "Could you come out of your ship to have a meeting?"`
 				to display
 					has "language: Coalition"
 			label initialchoice1
@@ -152,10 +152,10 @@ mission "Jibauni: Kanlanmo 0"
 				`	"Why apologize to a bunch of dinky T-Rex's?"`
 					goto deathexplode
 			label deathexplode
-			`	A cluster of anti-ship weaponry is fired from all sides, immediately exploding the <ship> and everything inside it. It is sad your life had to end in such a way.`
+			`	The moment the last word is out of your mouth, the dinosaur lowers its hand. Suddenly, millions of miniature projectiles come hurtling through the air, shredding the <ship> and everything in it. It is sad that your life had to end this way.`
 				die
 			label deathshot
-			`	You pull your sidearm from its holster, but before you can fire it, hidden anti-ship weaponry trains fire on your ship. Caught in crossfire, the <ship> immediately explodes, blowing you and everything in it sky high.`
+			`	The moment your hand touches your sidearm, a whining noise is heard. A huge missile comes down with a shriek, followed by another and another. <ship> is obliterated in a moment, leaving you in a pile of smoldering ash. You are taken to jail and imprisoned for life.`
 				die
 			label friendlyalpha
 			action
@@ -213,6 +213,11 @@ mission "Jibauni: Kanlanmo 0"
 				event "jibauni translated hails"
 				set "language: Jibauni"
 			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Also, here is a translator you can use, so you can talk to other Jibauni." He goes off after handing you <payment>, and you sit back to wait until the time he specified.`
+				to display
+					not "language: Coalition"
+			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Here is a translator you can use for ease of communication with other Jibauni. Yes, I am aware you have a box of the same make, but this is slightly different." He goes off after handing you <payment>, and you sit back to wait until the time he specified.`
+				to display
+					has "language: Coalition"
 				goto end
 			label insider
 			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions.`
