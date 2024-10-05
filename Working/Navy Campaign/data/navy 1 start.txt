@@ -296,6 +296,7 @@ mission "Navy Pirate Patrol: Hunt"
 	source "Farpoint"
 	waypoint "Saiph"
 	destination Farpoint
+	autosave
 	on fail
 		dialog `You have failed an essential Navy mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 
@@ -401,6 +402,7 @@ mission "Geminus 1"
 	source "Farpoint"
 	stopover "Lodestone"
 	destination "Geminus"
+	autosave
 	to offer
 		has "Navy Pirate Patrol: Hunt: done"
 		has "chosen sides"
@@ -936,6 +938,7 @@ mission "Geminus 3C"
 	source "Geminus"
 	stopover "Millrace"
 	destination "Geminus"
+	autosave
 	to offer
 		has "Geminus 3B: done"
 		has "chosen sides"
@@ -1224,11 +1227,11 @@ mission "Electrons 1D"
 				`"There was, and its crew put up a hard fight, but I managed to pull through."`
 					goto duel
 			label easy
-				`"Well, at least he won't be a problem anymore. I wonder how he got that deep into Syndicate territory anyway- they really need to increase their defenses," John says. "And now, come with me to the facility, I have something to speak about with you."`
-					goto end
+			`"Well, at least he won't be a problem anymore. I wonder how he got that deep into Syndicate territory anyway- they really need to increase their defenses," John says. "And now, come with me to the facility, I have something to speak about with you."`
+				goto end
 			label duel
-				`"It is a great relief that you got the cargo back after all, so all is well. If that had been lost we would have been set back weeks. And now, come with me to the facility, I have something to speak about with you."`
-					goto end
+			`"It is a great relief that you got the cargo back after all, so all is well. If that had been lost we would have been set back weeks. And now, come with me to the facility, I have something to speak about with you."`
+				goto end
 			label end
 				`You follow him into the warehouse and through the elevator. Once again you find yourself in a white, polished, lab with devices you could never guess about what they do. Crossing the large rooms between the scientists you find a path with him to his office, and he bids you to follow him inside. Sitting down, he reaches under the desk and opens a small safe, gives you <payment> credits, and sends you on your way.`
 
@@ -1315,6 +1318,8 @@ mission "Electrons 1F"
 	source Valhalla
 	waypoint Aspidiske
 	destination Valhalla
+	name "Weapons Testing"
+	description "Go to Aspidiske and disable a Mule with prototype weapons"
 	to offer
 		has "Electrons 1E: done"
 	on offer
@@ -1330,6 +1335,7 @@ mission "Electrons 1F"
 		system Aspidiske
 		ship "Mule Test Dummy (Electrons)" "Test Dummy"
 		ship "Barb Test Dummy (Electrons)" "Test Dummy"
+	on fail
 		dialog "You've killed the Test ships you were supposed to disable. Congratulations? Now I suggest you reload your save and try again."
 	on complete
 		event "e-beam delay 2" 8		
@@ -1480,6 +1486,9 @@ mission "Electrons 2C"
 	source Valhalla
 	waypoint Aspidiske
 	destination Valhalla
+	name "Weapons Testing"
+	description "Disable a Mule with prototype weapons in Aspidiske- again."
+	autosave
 	to offer
 		has "Electrons 2B: done"
 	on offer
@@ -1492,6 +1501,7 @@ mission "Electrons 2C"
 		system Aspidiske
 		ship "Mule Test Dummy (Electrons+Turret)" "Test Dummy"
 		ship "Barb Test Dummy (Electrons)" "Test Dummy"
+	on fail
 		dialog "You've killed the Test ships you were supposed to disable. Congratulations? Now I suggest you reload your save and try again."
 	on complete
 		event "30-day-leave" 30
@@ -1593,6 +1603,7 @@ mission "Typhoons 1C"
 	waypoint Aspidiske
 	name "Conduct weapons testing"
 	description "Participate in the combat testing of a new torpedo invented by the Deep. The test will involve your ship and a Test Dummy Mule, which you are not supposed to destroy. Upon conclusion of the test, report back to Valhalla to report the results."
+	autosave
 	to offer
 		has "Typhoons 1B: done"
 	on offer
@@ -1622,7 +1633,8 @@ mission "Typhoons 1C"
 		system Aspidiske
 		ship "Mule Test Dummy (Typhoons)" "Test Dummy"
 		ship "Lance" "Test Dummy"
-		dialog "You've killed the Test ships you were supposed to disable. Congratulations? Now I suggest you reload your save and try again."
+	on fail
+		dialog "You've killed the test ships you were supposed to disable. Congratulations? Now I suggest you reload your save and try again."
 
 ship "Mule" "Mule Test Dummy (Typhoons)"
 	outfits
@@ -1691,7 +1703,7 @@ mission "Catalytic Ramscoops 1A"
 #lodestone- general mining
 
 mission "Catalytic Ramscoops 1B"
-	name "Escort to Lodestone"
+	name "Escort to Antipode"
 	description "Escort two Navy Auxiliaries to Antipode and back, to bring back critical components of a new technology that John's Science team is developing."
 	to offer
 		has "Catalytic Ramscoops 1A: done"
@@ -1843,8 +1855,16 @@ mission "Catalytic Ramscoops 1E"
 			choice
 				`Ask Danforth how Hines is doing.`
 			`	"How is Ranulf Hines doing, Admiral?" you ask.`
-			`	"He's managed to stay out of trouble," Danforth replies, "probably because the war is brewing and he is focusing less on his rivalry with you and more on getting to the front when the time comes, because sadly, it looks like it will come. Anyways Lieutenant Commander, it's been good catching up with you. Now, if you have those sensor logs, that would be great," he says in an exaggerated Bill Lumbergh accent, winking at you. Your mind quickly flashes to a 20th century comedy, and then the momentary vision disappears.`
+			`	"He's managed to stay out of trouble," Danforth replies, "probably because the war is brewing and he is focusing less on his rivalry with you and more on getting to the front when the time comes, because sadly, it looks like it will come."`
+			branch hadley
+				has "plan"
+			label hadley
+				set "gotime"
+			`	"Also, <first>, you are about to have an opportunity to act on your plan with Henry. As soon as you get back to <source> you will have a couple weeks to yourself- I would advise you to get to Lodestone during that time and enact your rescue. This will likely be your only opportunity to do so, and as such I have sent a message through hidden networks to Hadley and Radcliff to be ready for you."`
+			choice
+				`	"Got it, sir. I won't let them down."`
 			label end
+			`	"Anyways Lieutenant Commander, it's been good catching up with you. Now, if you have those sensor logs, that would be great," he says in an exaggerated Bill Lumbergh accent, winking at you. Your mind quickly flashes to a 20th century comedy, and then the momentary vision disappears.`
 			choice
 				`Give Danforth your sensor logs`
 			`	"Thank you Captain. It really is so helpful for you to be able to take one more ship off of patrol duty. Oh, and by the way- here's a small bonus as compensation for that long detour."`
@@ -1860,12 +1880,14 @@ mission "Catalytic Ramscoops 1F"
 	description "Now that you have completed your patrol, return to Geminus to submit the test results."
 	source Farpoint
 	destination Geminus
+	autosave
 	to offer
 		has "Catalytic Ramscoops 1E: done"
 	on complete
 		payment 1500000
-		event "deep sky tech available" 3
-		event "mk ii ships for sale" 7
+		event "deep sky tech available" 6
+		event "mk ii ships for sale" 13
+		event "3 week hadley delay" 17
 		conversation
 			`Upon reaching your final destination of Geminus, you once again head to John's building. Entering his office, you find him pouring over a monitor filled with what looks to be data and specifications on the new ramscoop. You clear your throat and he looks up and says,`
 			`	"Ah Lieutenant Commander! You're back- it felt like it took so long but it was really only a few weeks! How did my ramscoop perform?"`
@@ -1876,28 +1898,29 @@ mission "Catalytic Ramscoops 1F"
 
 event "mk ii ships for sale"
 	shipyard "Navy Basics"
-		"Rainmaker"
 		"Rainmaker (Mark II)"
-		"Gunboat"
 		"Gunboat (Mark II)"
 		"Lance"
 		"Combat Drone"
 		"Surveillance Drone"
 		"Dropship"
 	shipyard "Navy Advanced"
-		"Frigate"
-		"Cruiser"
-		"Carrier"
-		"Auxiliary"
 		"Frigate (Mark II)"
 		"Cruiser (Mark II)"
 		"Carrier (Mark II)"
+		"Auxiliary (Mark II)"
+		"Auxiliary (Cargo Mark II)"
+		"Auxiliary (Transport Mark II)"
+
+#to allow time for rescue
+event "3 week hadley delay"
 
 mission "Electrons Final"
 	landing
 	to offer
 		has "Catalytic Ramscoops 1F: done"
 		has "event: mk ii ships for sale"
+		has "event: 3 week hadley delay"
 	on offer
 		log "Was promoted to the rank of Commander, and given access to the Navy Cruiser license. Pay has also substantially increased."
 		"reputation: Republic" += 10
@@ -1913,3 +1936,73 @@ mission "Electrons Final"
 			`You think to yourself that Hines will not be happy when he hears this.`
 			label end
 				decline
+
+
+mission "Dockworker Rescue 1"
+	to offer
+		has gotime
+		has "Catalytic Ramscoops 1F: done"
+		not "event: 3 week hadley delay"
+	landing
+	name "Rescue Hadley"
+	description "Get to Lodestone and pick up Lucas Hadley and his family.
+	deadline
+	destination Lodestone
+	on offer
+		conversation
+			`Having finished your mission, you now have some time to yourself. This will be your only chance to rescue Lucas Hadley and his family.`
+			`Do you do it?`
+			choice
+				`Get Lucas off of Lodestone before Hines enacts his threats.`
+					accept
+				`Lucas is a strong man, he will be fine without me.`
+					decline
+	on decline
+		set "abandoned hadley"
+	on complete
+		conversation
+			`As you orbit the planet while waiting for landing clearance, you receive a message:`
+			`	"<first>, this is Lucas. Thank you so much for coming. I am with my family and Henry, and I am ready whenever you are. We are heading to the spaceport right now- please hurry though, I do not want to stay here any longer. Talk to you later, on board your ship."
+
+mission "Dockworker Rescue 2"
+	to offer
+		has "Dockworker Rescue 1: done"
+	landing
+	source Lodestone
+	destination Hermes
+	passengers 6
+	clearance
+	name "Rescue Hadley"
+	description "Take Lucas Hadley, his family, and his friend Henry Radcliff to Hermes to start a new life out of Hines' reach."
+	on offer
+		conversation
+			`Having gotten clearance and landed, you sit in your ship waiting for your passengers. Hopefully you won't have to stay here long, Navy ships tend to attract attention- which in this one case is undesirable.`
+			`Several minutes later, you see a group of six people approaching. It is Hadley. You run down to the airlock to greet him:`
+			`	"Lucas, good to see you!"`
+			`	"Good to see you too captain," Lucas says. "This is my wife, Daphne, and my three children: Anna, Faye, and the little rambunctious one is Ivonne. And you have met Henry, of course."`
+			`Henry steps forward with a warm smile and gives you a firm handshake. Having introduced yourselves, you show them to their bunks. They should be fine inside your ship, but it would be wise to get moving soon.`
+				accept
+	on enter Ankaa
+		conversation
+			`Having left the surface finally, and with Hadley and his family settling in, you settle down in the common area and reconnect.`
+			`In the time since you last talked, Radcliff lost his job due to mass layoffs after a new robot was invented, and Lucas barely managed to keep his. Daphne, his wife, ended up getting a part time job in a small local clothing factory, and the kids have been going to school on and off.`
+			`Anna is 7, and is very quiet, and has taught herself to knit. Faye is 5, and loves to draw (not very well, but no one tells her that). While Faye is the average five-year-old with blond hair and missing teeth, Anna is quite tall for her age, with dark hair, and when she does talk it is usually about said height, which Faye is quite jealous of. Ivonne is three, and is accordingly insane. Her mother is always chasing her around, and letting her into the display room on your ship was a bad idea- you will have to do some clean up later. Ivonne knows very few words, but she loves looking out the viewing screens of the ship and talking about flying. She loves running among the crew halls with her arms out screaming as if she is some loud jet airplane from a millennium ago, which entertains the crew to no end.`
+			`Lucas is definitely relieved about what you are doing for him, and is very much anticipating his new life on Hermes, and his wife shares his view. She takes many opportunities to thank you, and helps in the kitchen, making family recipes for you and the crew.`
+			`Lucas mentions to you that in the weeks leading up to your arrival, he was starting to notice strange men following him and watching him and his family, and he believes if you hadn't come in time he might not be here with you now. Thanking you once again, he and his wife retire with the kids, leaving you to do your flying.`
+	on enter Capella
+		conversation
+			`"Captain?" Lucas radios to you, "I don't think those guys are friendly. Its quite possible that those men who were following me on Lodestone are in those ships. Forgive me, but I think that they should not make it past today to spread information about where my family is...`
+	on complete
+		set "rescued"
+		conversation
+			`Having dealt with the bounty hunters, you land on Hermes. It is done; Hadley is finally safe. You shake hands (and Ivonne gives a stout three-year-old hug about the knees) and say goodbye, and watch as he and his family walk down the gangplank. Henry comes up to you and embraces you, whispering "Thank you, <last>," and offering a salute, which you return. Henry turns and follows his friend down the walkway, and you see Anna and Faye waving.`
+			`You cycle the airlock, and smile to yourself.`
+	npc kill
+		government "Bounty Hunter"
+		system "Capella
+		personality heroic nemesis vindictive unconstrained target
+		confusion 15
+		ship "Marauder Leviathan (Weapons)" "Nemesis"
+		ship "Marauder Quicksilver (Engines)" "Hubris"
+		ship "Marauder Quicksilver (Engines)" "Ego"
+		dialog "You hear Lucas breathe a sigh of relief as the last ship is destroyed. You cannot let anyone know he is here. You also wonder who hired them..."
