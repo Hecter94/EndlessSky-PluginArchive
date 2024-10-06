@@ -155,8 +155,7 @@ mission "Jibauni: Kanlanmo 0"
 			`	The moment the last word is out of your mouth, the dinosaur lowers its hand. Suddenly, millions of miniature projectiles come hurtling through the air, shredding the <ship> and everything in it. It is sad that your life had to end this way.`
 				die
 			label deathshot
-			`	The moment your hand touches your sidearm, a whining noise is heard. A huge missile comes down with a shriek, followed by another and another. <ship> is obliterated in a moment, leaving you in a pile of smoldering ash. You are taken to jail and imprisoned for life.`
-				die
+			`	The moment your hand touches your sidearm, a whining noise is heard. A huge missile comes down with a shriek, followed by another and another. The <ship> behind you is obliterated in a moment, leaving it a pile of smoldering ash. You are taken to jail and imprisoned for life.`				die
 			label friendlyalpha
 			action
 				"reputation: Jibauni" = -1000
@@ -206,22 +205,25 @@ mission "Jibauni: Kanlanmo 0"
 	on complete
 		payment 15000
 		set "First Contact: Jibauni: offered"
+		set "license: Jibauni"
 		conversation
 			branch insider
 				has "species: Jibauni"
 			action
 				event "jibauni translated hails"
 				set "language: Jibauni"
-			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Also, here is a translator you can use, so you can talk to other Jibauni." He goes off after handing you <payment>, and you sit back to wait until the time he specified.`
+			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Also, here is a translator you can use, so you can talk to other Jibauni.`
 				to display
 					not "language: Coalition"
-			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Here is a translator you can use for ease of communication with other Jibauni. Yes, I am aware you have a box of the same make, but this is slightly different." He goes off after handing you <payment>, and you sit back to wait until the time he specified.`
+				goto end
+			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions. Here is a translator you can use for ease of communication with other Jibauni. Yes, I am aware you have a box of the same make, but this is slightly different.`
 				to display
 					has "language: Coalition"
 				goto end
 			label insider
 			`"Thank you for bringing me here so promptly," says Kanlanmo. "It was very kind of you. Now, I know you are burning with questions, but I have an urgent meeting. If you meet me in the spaceport soon, though, I can answer your questions.`
 			label end
+			`	"Also, here is a license with which you can buy any of our smaller ships. Now, I really must be going." He goes off after handing you <payment>, and you sit back to wait until the time he specified.`
 
 mission "Jibauni: Kanlanmo (0 declined)"
 	name "Take Kanlanmo to <planet>"

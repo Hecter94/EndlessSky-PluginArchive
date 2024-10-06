@@ -24,6 +24,32 @@ event "label jibauni space"
 	galaxy "label jibauni"
 		sprite "label/jibauni"
 
+mission "Jibauni: Jibauni Rebel Fighter License"
+	landing
+	priority
+	name "Rebel Fighter License"
+	description "Kill the <npc> to get the Jibauni Rebel License and access to buy their Yiyharsi."
+	source
+		government "Jibauni"
+	destination Baitoon
+	to offer
+		"reputation: Jibauni (Rebel)" < -100
+	on offer
+		conversation
+			`You receive a message from the Jibauni authorities. "Please destroy the <npc> and then come to <planet>. If you do, you will get our Rebel License and access to buy the Yiyharsi."`
+				accept
+	on complete
+		conversation
+			scene "thumbnail/gunboat"
+			#scene "outfit/jibauni rebel fighter license"
+			action
+				set "license: Jibauni Rebel Fighter"
+			`The Jibauni authorities contact your ship as you land. "Thank you for fighting the Rebel Jibauni so much," they say. "Here is the license as a thank you for your hard work."`
+	npc kill
+		personality heroic marked nemesis
+		government "Jibauni (Rebel)"
+		ship "Nathar (Laser)" "T.N.S. Kopa"
+
 mission "Jibauni: Ru-win 0"
 	minor
 	name "Ru-win to <planet>"
