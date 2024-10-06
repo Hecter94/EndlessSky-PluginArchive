@@ -1,3 +1,10 @@
+2024-10-06 | updated Plugin 'expert.crew.members' by zuckung | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
+2024-10-06 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-06 | updated Plugin 'landing.images' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
+2024-10-06 | updated Plugin 'quarg.farm' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
+2024-10-06 | updated Plugin 'landing.images.highres' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
+2024-10-06 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-06 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-05 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-05 | updated Plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
 2024-10-05 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>

@@ -780,9 +780,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/quarg.farm/icon.png' height='100'></img><br>
 
 
-[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.36 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
+[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.38 kb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
 
 >Adds a new system Saquerver (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed. See the readme for details.
 >
@@ -794,13 +794,13 @@ Author: zuckung | Category: Cheats <br>
 <br>
 Adds a new system "Saquerver" (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed.<br>
 <br>
-The system "Saquerver" lies between "Saquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
+The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
 <br>
 <br>
 Changelog:<br>
 <br>
-2024-06-07<br>
-text corrections (thx to TheGiraffe3)<br>
+2024-10-06<br>
+removed death sentence from government "Quarg (Incipias)"<br>
 <br>
 2024-05-26<br>
 initial release<br>
@@ -3300,9 +3300,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/landing.images/icon.png' height='100'></img><br>
 
 
-[landing.images.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.zip) | 13.94 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images/) <br>
+[landing.images.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.zip) | 15.3 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
 
 >Replaces all planet landing images with better fitting ones. See the README for details.
 >
@@ -3314,19 +3314,15 @@ Author: zuckung | Category: Graphics <br>
 <br>
 Replaces all planet landing images with better fitting ones.<br>
 <br>
-These images replace the boring vanilla images you see when you've landed on a planet with new, AI generated, better fitting ones. The old ones look like photos from earth or taken from public NASA archives (which they are). According to the description of the planets I tried to generate better fitting, more futuristic, more alien-looking images.<br>
+These images replace the boring vanilla images you see when you've landed on a planet with new, AI generated, better fitting ones. The old ones look like photos from earth or taken from public NASA archives(which they are). According to the description of the planets I tried to generate better fitting, more futuristic, more alien-looking images. And I think that went well :) <br>
 0.10.8 with 472 planets<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/landing.images01.jpg' width='400'>
 See all images <a href='https://github.com/zuckung/endless-sky-plugins-graphics/blob/main/res/md/landing.images.md'>here</a>.<br>
 <br>
 <br>
 Changelog:<br>
 <br>
-2024-08-09<br>
-minor text changes (thx to TheGiraffe3)<br>
-<br>
-2024-08-02<br>
-fixed wrong size of ahr.jpg<br>
+2024-10-06<br>
+added 53 landing images for 0.10.9 update<br>
 <br>
 2024-07-31<br>
 initial release<br>
@@ -3406,9 +3402,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/landing.images.highres/icon.png' height='100'></img><br>
 
 
-[landing.images.highres.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.highres.zip) | 61.57 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.highres/) <br>
+[landing.images.highres.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.highres.zip) | 67.11 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.highres/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
 
 >High resolution files for landing.images plugin. See the README for details.
 >
@@ -3424,6 +3420,9 @@ Adds images with 1440x720 resolution. The landing.images plugin is still needed.
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-10-06<br>
+added 53 landing images for 0.10.9 update<br>
 <br>
 2024-08-09<br>
 minor text changes (thx to TheGiraffe3)<br>
@@ -4095,9 +4094,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.18 mb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.94 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -4109,21 +4108,20 @@ Author: zuckung | Category: Outfits <br>
 <br>
 Adds unique crew members, aquireable through spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regeneration, more thrust, more cargo etc.<br>
 <br>
-Currently there are 85 expert crew members. Visit spaceports with an outfitter to find the missions(1% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Gegno, Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
-Their technology fields are: combat(8) cooling(8) energy(8) engine(8) fuel(8) hull(8) jamming(8) scanner(8) shield(8) storage(8).<br>
+Currently there are 90 expert crew members. Visit spaceports with an outfitter to find the missions(1% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Gegno, Successor, Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
+Their technology fields are: combat(9) cooling(9) energy(9) engine(9) fuel(9) hull(9) jamming(9) scanner(9) shield(9) storage(9).<br>
 In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
-They have the positive stats of a small human outfit, at the cost of a bunk and a daily salery of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
-If you collect them all, you'll get a special mission<br>
+They have the positive stats of a small human outfit, at the cost of a bunk and a daily salary of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
+If you collect them all, you'll get a special mission.<br>
 See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/crew.list.txt'>crew.list.txt</a> of this plugin for locations, and stat infos.<br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/expert.crew.members01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/expert.crew.members02.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/expert.crew.members/screenshot.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
 <br>
-2024-06-07<br>
-text corrections (thx to TheGiraffe3)<br>
+2024-10-06<br>
+added 5 successor experts<br>
 <br>
 2024-04-01<br>
 added 5 gegno experts<br>
@@ -4148,7 +4146,7 @@ added mission after collecting all crew members<br>
 bugfixes<br>
 changed outfit descriptions to show race and source<br>
 changed chance from 5% to 3%<br>
-generated 25 alien portaits<br>
+generated 25 alien portraits<br>
 added 5 Hai experts<br>
 added 5 Bunrodea experts<br>
 added 5 Wanderer experts<br>
@@ -7314,9 +7312,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Atlanteans/icon.png' height='100'></img><br>
 
 
-[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 88.64 mb | 2024-10-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
+[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 89.07 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-01) <br>
+[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-06) <br>
 
 >Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
 >
@@ -7823,9 +7821,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-05) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-06) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7904,9 +7902,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-05) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-06) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
