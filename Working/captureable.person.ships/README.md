@@ -35,6 +35,11 @@ In cap_persons.txt you find the following line under gamerules: "#	"person spawn
 <br>
 Changelog:<br>
 <br>
+2024-10-08 <br>
+proofreading and minor text changes (Vemenous-Repentile)<br>
+changed status mission to fail on daily<br>
+changed subsidural (1 outfit space, keystone and 300 fuel)<br>
+<br>
 2024-07-14<br>
 fixed tranquility weapon space error<br>
 removed fines from author government<br>
