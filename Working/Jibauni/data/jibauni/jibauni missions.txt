@@ -50,23 +50,76 @@ mission "Jibauni: Jibauni Rebel Fighter License"
 		government "Jibauni (Rebel)"
 		ship "Nathar (Laser)" "T.N.S. Kopa"
 
-mission "Jibauni: Jibauni Government License 1"
+
+mission "Jibauni: Government License 1"
 	landing
 	name "Go to <planet>"
 	description "Go to <planet> to talk with Kanlanmo."
 	source
 		government "Jibauni"
+	destination Baitoon
 	to offer
 		or
-			has "Kanlanmo 0: done"
-			has "Kanlanmo (0 declined): done"
-		has "Jibauni: Jibauni Rebel Fighter License"
-		not "kanlanmo in mission"
+			has "Jibauni: Kanlanmo 0: done"
+			has "Jibauni: Kanlanmo (0 declined): done"
+		has "license: Jibauni Rebel Fighter"
+#		not "kanlanmo in mission"
 	on offer
 		conversation
 			# scene "outfit/jibauni government license"
 			`Kanlanmo contacts the <ship> when you land. "Come to <planet>, please, <first>," he says in a curt tone, and hangs up.`
 				accept
+
+mission "Jibauni: Government License 2"
+	landing
+	name "Test land on <planet>"
+	description "With your new Jibauni Government License, go attempt to land on <planet>, taking Kanlanmo with you."
+	passengers 1
+	source Baitoon
+	destination Laqualk
+	to offer
+		has "Jibauni: Government License 1: done"
+	on offer
+		set "license: Jibauni Government"
+		conversation
+			`Kanlanmo is outside your ship as the <model> touches down. He comes aboard as soon as the hatch is opened. "<name>, I am charged to tell you that you are now a member of the most trusted circles in the Jibauni government. Here is a license to buy our largest warship, the Nathar. You have various other advantages, including the ability to land on the capital world."`
+			choice
+				`	"Wait what?"`
+				`	"I thought <origin> was the capital."`
+				`	"Aren't we on the capital?"`
+			`	"We have an entire planet dedicated to ruling this region of space, <first>," says Kanlanmo, sensing your confusion. "Have you been to <system> and seen the gas giant there? Well, guess what, that planet is our capital."`
+			choice
+				`	"How?"`
+				`	"Interesting."`
+			`	"Somehow our technicians have figured out technology that can cover an entire world and make it look as if landing there is impossible. However, if you'll come to <system>, then note that the huge gaseous planet is now possible to land on."`
+			choice
+				`	"I'd like to try this."`
+				`	"Sounds fun. I'm in."`
+			`	"Great! I'm ready to go when you are." Kanlanmo goes to his assigned bunk, and you are left to your own devices while <ship> is refueled.`
+				accept
+
+mission "Jibauni: Government License 3"
+	landing
+	name "Back to <planet>"
+	description "Transport Kanlanmo back to <planet> after he showed you the hidden planet of <origin>."
+	passengers 1
+	source Laqualk
+	destination Baitoon
+	to offer
+		has "Jibauni: Government License 2: done"
+	on offer
+		conversation
+			`Kanlanmo is in the cockpit as you land. "Well, what did I tell you, <first>?" he asks. "It's wonderful, isn't it?" You both look at the planet in awe, before Kanlanmo heads towards the exit. "Come on," he says. "We've got to get you registered. At the moment, you're only allowed to be here because I'm with you."`
+			`	He leads you to a small office, and signs a paper authorizing you to land at will. "Well, that's dealt with," he says. "Please take me back to <planet>. I was only told I could be gone for a short while.`
+			choice
+				`	"Sure."`
+					accept
+				`	"Thanks a lot for showing me this. I'd be happy to take you to <planet>."`
+					accept
+	on complete
+		conversation
+			`You scarcely have time to complete the status checks before a Jibauni comes up with a message for Kanlanmo. He tells you that it means he is wanted at the main government building immediately, and that it's time for him to go back to the red tape of Baitoon's government. "Goodbye," he says, and leaves.`
+
 
 mission "Jibauni: Ru-win 0"
 	minor
