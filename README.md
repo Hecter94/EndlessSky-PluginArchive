@@ -5,6 +5,12 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-10-09 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
+2024-10-09 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-09 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>
+2024-10-09 | updated Plugin 'better.starts' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay)<br>
+2024-10-09 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-09 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-08 | updated Plugin 'captureable.person.ships' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
 2024-10-08 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-08 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
@@ -14,12 +20,6 @@
 2024-10-07 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-07 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-06 | updated Plugin 'expert.crew.members' by zuckung | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
-2024-10-06 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-06 | updated Plugin 'landing.images' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
-2024-10-06 | updated Plugin 'quarg.farm' by zuckung | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
-2024-10-06 | updated Plugin 'landing.images.highres' by zuckung | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Graphics)<br>
-2024-10-06 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-06 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

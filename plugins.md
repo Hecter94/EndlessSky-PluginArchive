@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 7.74 mb | 2024-10-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.89 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2024-10-02) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2024-10-09) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -630,9 +630,8 @@ Author: MinneIceCube | Category: Cheats <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>Kestrel Rework Readme:
-This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
-This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. as such, the changes are as follows:
+<blockquote>This is a small rework of the Kestrel ship. The intent is to put it on par with several higher tiered alien outfits, most notablely Wanderer (2) outfits, as opposed to standard Human (1-1.5) Outfits. 
+This does not make much sense according to the lore, but I personally prefer the asthetic of the Kestrel compared to many of the Wanderer ships. As such, the changes are as follows:
 
 -The requirements for the Kestrel sub-quest have been changed:
 	-The combat rating was increased from 8,000 (Combat rank 9: "Force to be reckoned with") --> 22,000 (Combat rank "Fearsome Scrapper). Intended to limit obtaining the newly buffed ship until the player is on a similar power level.
@@ -643,7 +642,7 @@ This does not make much sense according to the lore, but I personally prefer the
 	-Shields 19,400 --> 49,700
 	-Hull 7,200 --> 30,400
 	-Fuel Capacity 500 --> 700
-	-Outfit space 810 --> 900
+	-Outfit space 810 --> 870
 	-Weapon capacity 390 --> 410
 	-Engine Capacity 210 --> 230
 	-Bunks 128 --> 150
@@ -658,6 +657,9 @@ This does not make much sense according to the lore, but I personally prefer the
 
 -Weapon Kestrel:
 	-Weapon Capacity 40 --> 150
+  
+  I made these edits mostly for personal useage, and as such these are the numbers I found acceptable for my late game ship. If you feel otherwise, feel free to make edits as you please.
+
 </blockquote>
 </details>
 
@@ -1416,9 +1418,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 21.9 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 22.39 kb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-09) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 
@@ -1426,7 +1428,7 @@ Author: zuckung | Category: Gameplay <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### better.starts <br>
 <br>
-Adds 9 new start options with different ships, background storys, credits and debts.<br>
+Adds several new start options with different ships, background stories, credits and debts.<br>
 <br>
 <ul>
 <li>Start: Trader | Freighter: equipped for cargo transport, in Merak system</li>
@@ -1437,13 +1439,18 @@ Adds 9 new start options with different ships, background storys, credits and de
 <li>Start: Salvager(big) | Argosy: equipped for boarding, in Aldhibain system</li>
 <li>Start: Explorer to Remnant | Heavy Shuttle: equipped for exploring the Remnant, in Tania Australis system</li>
 <li>Start: Explorer to Automata | Bounder: equipped for exploring the Kor Automata, in Mirfak system</li>
-<li>Start: Cheater | Heron + 10xKIV: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
+<li>Start: Cheater 1 | Heron + 10xKIV: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
+<li>Start: Cheater 2 | Heron + 10xSkylark: 1b credits, full visible human space, Jump Drive, in Sol system, no story</li>
 </ul>
 <br>
-Beside the cheater start option, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role. The intro missions on New Bosten are set as completed. Same goes for the Hai start with the Hai first contact mission.<br>
+Beside the cheater start options, all others are balanced and lore friendly. A bigger ship means a bigger bank loan. All starts come with 200.000 credits cash and a bank loan between 600.000 and 4,5 million credits. The ships outfits are changed to fit the role. The intro missions on New Boston are set as completed. Same goes for the Hai start with the Hai first contact mission.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-10-08 <br>
+proofreading and minor text changes (Vemenous-Repentile)<br>
+added a new cheater start with Quarg outfits, ships and more credits<br>
 <br>
 2024-06-07<br>
 text corrections (thx to TheGiraffe3)<br>
@@ -7317,9 +7324,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Atlanteans/icon.png' height='100'></img><br>
 
 
-[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 89.21 mb | 2024-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
+[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 89.21 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-08) <br>
+[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-09) <br>
 
 >Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
 >
@@ -7826,9 +7833,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-08) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-09) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7907,9 +7914,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-08) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-09) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -14043,9 +14050,9 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 ### Navy Campaign
 
 
-[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.38 mb | 2024-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
+[Navy.Campaign.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Navy.Campaign.zip) | 4.38 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Navy%20Campaign/) <br>
 Author: kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-10-05) <br>
+[https://github.com/kestrel1110/Navy-Campaign](https://github.com/kestrel1110/Navy-Campaign) (last commit 2024-10-09) <br>
 
 >My Navy campaign which I hope to get implemented when finished.
 >
