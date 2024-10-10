@@ -1,3 +1,10 @@
+2024-10-10 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
+2024-10-10 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-10 | new Plugin 'Tanager' by TheGiraffe3 | [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Ships)<br>
+2024-10-10 | new Plugin 'New Droid Regime' by czartrak | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)<br>
+2024-10-10 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
+2024-10-10 | new Plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
+2024-10-10 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-09 | updated Plugin '-Omnis' by Darcy Manoel | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)<br>
 2024-10-09 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
 2024-10-09 | updated Plugin 'Navy Campaign' by kestrel1110 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)<br>

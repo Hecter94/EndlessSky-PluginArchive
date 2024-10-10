@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.89 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2024-10-09) <br>
+[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2024-10-10) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -35,7 +35,8 @@ In order of release, known competitors have been:
 ### What to expect
 There is no need to worry about breaking existing saves when installing, you will be presented with a warning that lets you choose what level of involvement you want that save to have with Omnis. To avoid any interaction, there's an option to abort which will kill the player and disallow saving the interaction.
 
-So how do you use this plugin? Well there are two very simple methods of [accessing Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis/wiki/Access), there is a wormhole in Rutilicus to travel there, and there is a custom start that can be chosen when making a new pilot.
+So how do you use this plugin? Well there are two very simple methods of [accessing Omnis](https://github.com/EndlessSkyCommunity/-Omnis/wiki/Access). 
+There is a wormhole in each of the major factions' systems to travel there, and there is a custom start that can be chosen when making a new pilot.
 
 > [!WARNING]
 > The Omnis custom start will begin your pilot with an impossibly high credit value and brand your save with the Omnis start.
@@ -2932,7 +2933,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Graphics
 
-<p>23 plugins in this category.<p>
+<p>24 plugins in this category.<p>
 
 <details>
 
@@ -3019,7 +3020,79 @@ changed 'fire afterburner' to new 'fleet: harvest flotsam', because afterburner 
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: DEPRECATED, continued in plugin "additional.command.buttons.radial" <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
+### additional.command.buttons.radial
+<img src='Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
+
+
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 156.44 kb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+Author: zuckung | Category: Graphics <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-08) <br>
+
+>Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
+>
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### additional.command.buttons <br>
+<br>
+Reworks the main buttons ui on the lower right side. Made for the ANDROID version of ES.<br> 
+<br>
+<br>
+This plugin<br>
+- rearranges and resizes some of the buttons<br>
+- changes most icons (making a ring around as a standard)
+- adds more permanent buttons from the radial menus to make them easy accessible<br>
+- removes the radial menus<br>
+- adds a new button row to the top right for the fleet commands<br>
+- adds zoom buttons
+- greyes out inactive buttons<br>
+- puts images behind the buttons.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/additional.command.buttons.radial01.jpg' width='400'>
+<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-10-07<br>
+added fleet hold fire button<br>
+<br>
+2024-09-06<br>
+fine tuning for the graphics<br>
+<br>
+2024-09-02<br>
+fixed button radius typo on fleet gather<br>
+moved the fleet commands to the right side, so the jump systems are better seen<br>
+<br>
+2024-08-31<br>
+changed button background to look more natural<br>
+<br>
+2024-08-30<br>
+fixed an error<br>
+adjusted positions<br>
+added zoom buttons<br>
+all buttons are visible now, but greyed out if you can't use them<br>
+reworked all buttons to display a ring around them<br>
+resized the fast forward button in the upper left corner, and added a greyed out version<br>
+<br>
+2024-08-25<br>
+added a new panel for the fleet commands to the top center<br>
+reworked the toggle ammo button<br>
+removed the expandable radial menus, because all buttons are on the screen now<br>
+exchanged some of the button positions<br>
+<br>
+2024-05-09<br>
+initial release<br>
+</blockquote>
+</details>
+
+Status: complete <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -4576,18 +4649,14 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### New Droid Regime
 
 
-[New.Droid.Regime.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Droid.Regime.zip) | 19.11 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Droid%20Regime/) <br>
+[New.Droid.Regime.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Droid.Regime.zip) | 19.16 kb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Droid%20Regime/) <br>
 Author: czartrak | Category: Outfits <br>
 [https://github.com/czartrak/New-Droid-Regime](https://github.com/czartrak/New-Droid-Regime) (last commit 2017-11-13) <br>
 
 >Re-adds NDR-228 Androids at a much higher price. Installing new droids requires a Charging Dock.
 >
 
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># New-Droid-Regime
-</blockquote>
-</details>
+
 
 Status: N/A <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
@@ -7324,9 +7393,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/Atlanteans/icon.png' height='100'></img><br>
 
 
-[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 89.21 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
+[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 89.21 mb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-09) <br>
+[https://github.com/TheSilverStone/Atlanteans](https://github.com/TheSilverStone/Atlanteans) (last commit 2024-10-10) <br>
 
 >Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
 >
@@ -7833,9 +7902,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-09) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-10) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -7914,9 +7983,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.46 mb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-09) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-10) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
@@ -11762,6 +11831,35 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ---
 
+### Tanager
+<img src='Working/Tanager/icon.png' height='100'></img><br>
+
+
+[Tanager.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tanager.zip) | 71.74 kb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tanager/) <br>
+Author: TheGiraffe3 | Category: Ships <br>
+[https://github.com/TheGiraffe3/es-tanager](https://github.com/TheGiraffe3/es-tanager) (last commit 2024-10-09) <br>
+
+>Adds a new ship whose stats are a cross between that of the Shuttle and the Scout.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Tanager
+
+Adds the Tanager, which is a newer, better version of the Shuttle.
+A plugin for [Endless Sky](https://github.com/endless-sky/endless-sky).
+
+Images come from [bene-dictator's branch](https://github.com/bene-dictator/endless-sky/tree/tanager).
+
+</blockquote>
+</details>
+
+Status: Complete <br>
+Daily update check: <img src='res/img/check.png' width='15' ></img><br>
+
+
+---
+
 ### The Borg Captain
 
 
@@ -14591,7 +14689,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: complete <br>
+Status: DEPRECATED, continued in plugin "uniques" <br>
 Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 
 
@@ -16155,7 +16253,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>52 plugins in this category.<p>
+<p>53 plugins in this category.<p>
 
 <details>
 
