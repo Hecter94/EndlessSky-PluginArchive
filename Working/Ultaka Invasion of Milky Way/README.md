@@ -8,7 +8,7 @@ Endless Sky version 0.9.15 (Continuous) or higher
 
 For most of the asset.
 
-[Omnis plugin](https://github.com/Adde-Endless-Sky/-Omnis):
+[Omnis plugin](https://github.com/EndlessSkyCommunity/-Omnis):
 
 To trigger the invasion.
 
