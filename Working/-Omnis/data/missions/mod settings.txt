@@ -1,7 +1,7 @@
 mission "Omnis: mod settings"
 	description `Accept this job to open a settings menu, it's in the title.`
 	invisible
-	name ` Mod Settings: Omnis`
+	name `Mod Settings: Omnis`
 	on offer
 		conversation
 			label 0000
@@ -26,6 +26,14 @@ mission "Omnis: mod settings"
 					goto 1300
 				`	(Max Combat Rating.)`
 					goto 1400
+				`	(Remove faction wormholes.)`
+					goto 1500
+					to display
+						has "omnis: faction wormholes enabled"
+				`	(Add faction wormholes.)`
+					goto 1500
+					to display
+						not "omnis: faction wormholes enabled"
 				`	(Return.)`
 					goto 0000
 			label 1100
@@ -516,6 +524,20 @@ mission "Omnis: mod settings"
 			action
 				"combat rating" = 1318815735
 			`Your combat rating has been set to max.`
+				goto 0000
+			label 1500
+			branch 1501
+				has "omnis: faction wormholes enabled"
+			action
+				event "omnis: faction wormholes"
+				set "omnis: faction wormholes enabled"
+			`Wormholes have been added to faction systems.`
+				goto 0000
+			label 1501
+			action
+				event "omnis: no faction wormholes"
+				clear "omnis: faction wormholes enabled"
+			`Wormholes have been removed from faction systems.`
 				goto 0000
 			label 2000
 			`WARNING: These options perpetrate all saves that interact with Omnis, consider the effects of each before continuing.`
