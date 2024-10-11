@@ -3,7 +3,7 @@
 
 ## Cheats
 
-<p>35 plugins in this category.<p>
+<p>34 plugins in this category.<p>
 
 <details>
 
@@ -14,9 +14,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
-Author: Darcy Manoel | Category: Cheats <br>
-[https://github.com/Adde-Endless-Sky-Mods/-Omnis](https://github.com/Adde-Endless-Sky-Mods/-Omnis) (last commit 2024-10-10) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+Author: TheGiraffe3 | Category: Cheats <br>
+[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2024-10-11) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -3030,9 +3030,9 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 <img src='Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 156.44 kb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 164.65 kb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-08) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-11) <br>
 
 >Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
 >
@@ -3059,6 +3059,9 @@ This plugin<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-10-11<br>
+added fleet formations button<br>
 <br>
 2024-10-07<br>
 added fleet hold fire button<br>
@@ -4179,7 +4182,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 <img src='Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.94 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.94 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
 
@@ -4667,7 +4670,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Olden Things
 
 
-[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | 1.57 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
+[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | 1.57 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
 Author: RestingImmortal | Category: Outfits <br>
 [https://github.com/RestingImmortal/misc-plugins](https://github.com/RestingImmortal/misc-plugins) (last commit 2019-09-03) <br>
 
@@ -4676,7 +4679,7 @@ Author: RestingImmortal | Category: Outfits <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>### Olden Things
-Adds some ancient ES history to the current version of the game as well as makess some changes to the UI. The outfits and ships can be accessed with [Ciu Kreo](https://github.com/RestingImmortal/Ciu-Kreo) or Omnis, found within [Adde](https://github.com/Darcman99/Adde-Endless-Sky).
+Adds some ancient ES history to the current version of the game as well as makess some changes to the UI. The outfits and ships can be accessed with [Ciu Kreo](https://github.com/RestingImmortal/Ciu-Kreo) or Omnis, found [here](https://github.com/EndlessSkyCommunity/-Omnis).
 
 </blockquote>
 </details>
@@ -5541,7 +5544,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Amalgamation
 
 
-[Amalgamation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amalgamation.zip) | 42.65 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amalgamation/) <br>
+[Amalgamation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Amalgamation.zip) | 42.67 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Amalgamation/) <br>
 Author: demolish238 | Category: Overhauls <br>
 [https://github.com/SDer4illl4/ZAmalgamation-Revived](https://github.com/SDer4illl4/ZAmalgamation-Revived) (last commit 2022-07-24) <br>
 
@@ -5557,25 +5560,25 @@ A large collection of older plugins that have been edited and modified to work t
 
 The plugins included are: Shields Up, Enclave, Quarg Military Retaliation, ZRemnantX's ships, Tribute Plus, Space Conversion, Businessman, Inheritance ships, KorNewShips, Korath Automation Upgrade, Enigma Corps outfits, Cultures of the Southern Arm ships, Flamethrower Turret and The Machines are Taking Over.
 
-General changes include: Adding a large number of ships into vanilla fleets all across the galaxy. Creating multiple new jobs, mercenaries, trade routes and missions to the game. Adding tons of new variants of ships to be used in many of the fleets that allow the new outfits in this plugin to be found naturally through gameplay. Changing the stats of a huge number of ships and outfits for balance and lore purposes. And finally overhauling all the fights in the main storylines to add more variance to the fleets you fight and to make it much harder to use the old stratagy of, "If we have enough ships, they will eventually run out of missiles to kill us with!"
+General changes include: Adding a large number of ships into vanilla fleets all across the galaxy. Creating multiple new jobs, mercenaries, trade routes and missions to the game. Adding tons of new variants of ships to be used in many of the fleets that allow the new outfits in this plugin to be found naturally through gameplay. Changing the stats of a huge number of ships and outfits for balance and lore purposes. And finally overhauling all the fights in the main storylines to add more variance to the fleets you fight and to make it much harder to use the old strategy of, "If we have enough ships, they will eventually run out of missiles to kill us with!"
 
 Big thanks to BeccaBunny for the use of their sprites, allowing this plugin to have many unique ships and outfits.
 
-To use this plugin fully, the latest release (9.9), Czartrak's Ship Pack plugin, Beccas expansion and the Adde plugin are needed. 
+To use this plugin fully, the latest release (9.9), Czartrak's Ship Pack plugin, Beccas expansion and the Omnis plugin are needed. 
 
-In addition to this the (Mission Overrides) folders files need to be moved into the "Endless Sky/data" folder and allowed to overright the files there for the campaigns to have the many ships this plugin adds included.
+In addition to this the (Mission Overrides) folders files need to be moved into the "Endless Sky/data" folder and allowed to override the files there for the campaigns to have the many ships this plugin adds included.
 
 (Make sure to backup the overidden files otherwise only a reinstall will revert the game to the vanilla state!)
 
 https://github.com/czartrak/Czartraks-Ship-Pack
 
-https://github.com/Darcman99/Adde-Endless-Sky
+https://github.com/EndlessSkyCommunity/-Omnis
 
 https://github.com/beccabunny/Beccas-Endless-Expansion
 
 Recommended Plugins:
 
-https://github.com/ZBok/BetterVanillaPirates (self explanitory)
+https://github.com/ZBok/BetterVanillaPirates (self explanatory)
 
 https://github.com/tmbutterworth/boarding-missions (makes boarding worth it in human space)
 
@@ -5587,7 +5590,7 @@ Used Plugins:
 
 https://github.com/Amazinite/Shields-Up (Shields Up)
 
-https://github.com/Makuta-Miras/The-Enclave/tree/master (Enclave)
+https://github.com/Makuta-Miras/The-Enclave/ (Enclave)
 
 https://groups.google.com/forum/#!msg/endless-sky/IkoSYsZgMlQ/ (Quarg Military Retaliation)
 
@@ -5605,7 +5608,7 @@ https://github.com/Zitchas/ZRemnantX (ZRemnantX)
 
 https://github.com/mdsmestad/ES-COTSA-Pluggin (Cultures of the Southern Arm)
 
-If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
+If you have any feedback on balance problems or bugs please message me on Discord (demolish238#6398)
 
 </blockquote>
 </details>
@@ -8930,7 +8933,7 @@ Daily update check: <img src='res/img/check.png' width='15' ></img><br>
 ### Ultaka Invasion of Milky Way
 
 
-[Ultaka.Invasion.of.Milky.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultaka.Invasion.of.Milky.Way.zip) | 9.77 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ultaka%20Invasion%20of%20Milky%20Way/) <br>
+[Ultaka.Invasion.of.Milky.Way.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ultaka.Invasion.of.Milky.Way.zip) | 9.79 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ultaka%20Invasion%20of%20Milky%20Way/) <br>
 Author: 1010Todd | Category: Races <br>
 [https://github.com/1010todd/Ultaka-Invasion](https://github.com/1010todd/Ultaka-Invasion) (last commit 2022-12-23) <br>
 
@@ -8951,7 +8954,7 @@ Endless Sky version 0.9.15 (Continuous) or higher
 
 For most of the asset.
 
-[Omnis plugin](https://github.com/Adde-Endless-Sky/-Omnis):
+[Omnis plugin](https://github.com/EndlessSkyCommunity/-Omnis):
 
 To trigger the invasion.
 
@@ -16253,7 +16256,7 @@ Daily update check: <img src='res/img/cross.png' width='15' ></img><br>
 
 ## Uncategorized
 
-<p>53 plugins in this category.<p>
+<p>54 plugins in this category.<p>
 
 <details>
 
