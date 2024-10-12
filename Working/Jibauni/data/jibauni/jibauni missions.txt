@@ -56,13 +56,15 @@ mission "Jibauni: Government License 1"
 	description "Go to <planet> to talk with Kanlanmo."
 	source
 		government "Jibauni"
+		not planet Baitoon
 	destination Baitoon
 	to offer
 		or
 			has "Jibauni: Kanlanmo 0: done"
 			has "Jibauni: Kanlanmo (0 declined): done"
 		has "license: Jibauni Rebel Fighter"
-#		not "kanlanmo in mission"
+		not "kanlanmo in mission"
+		"reputation: Jibauni" > 30
 	on offer
 		conversation
 			# scene "outfit/jibauni government license"
@@ -79,9 +81,10 @@ mission "Jibauni: Government License 2"
 	to offer
 		has "Jibauni: Government License 1: done"
 	on offer
+		set "laqualk landable"
 		set "license: Jibauni Government"
 		conversation
-			`Kanlanmo is outside your ship as the <model> touches down. He comes aboard as soon as the hatch is opened. "<name>, I am charged to tell you that you are now a member of the most trusted circles in the Jibauni government. Here is a license to buy our largest warship, the Nathar. You have various other advantages, including the ability to land on the capital world."`
+			`Kanlanmo is outside your ship as the <model> touches down. He comes aboard as soon as the hatch is opened. "<first> <last>, I am charged to tell you that you are now a member of the most trusted circles in the Jibauni government. Here is a license to buy our largest warship, the Nathar. You have various other advantages, including the ability to land on the capital world."`
 			choice
 				`	"Wait what?"`
 				`	"I thought <origin> was the capital."`
@@ -109,7 +112,7 @@ mission "Jibauni: Government License 3"
 	on offer
 		conversation
 			`Kanlanmo is in the cockpit as you land. "Well, what did I tell you, <first>?" he asks. "It's wonderful, isn't it?" You both look at the planet in awe, before Kanlanmo heads towards the exit. "Come on," he says. "We've got to get you registered. At the moment, you're only allowed to be here because I'm with you."`
-			`	He leads you to a small office, and signs a paper authorizing you to land at will. "Well, that's dealt with," he says. "Please take me back to <planet>. I was only told I could be gone for a short while.`
+			`	He leads you to a small office, and signs a paper authorizing you to land at will. "Well, that's dealt with," he says. "Please take me back to <planet>. I was only told I could be gone for a short while."`
 			choice
 				`	"Sure."`
 					accept

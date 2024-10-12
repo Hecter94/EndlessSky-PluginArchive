@@ -1,4 +1,4 @@
-# Copyright (c) 2014 by Michael Zahniser
+# Copyright (c) 2014 by TheSilverStone
 #
 # Endless Sky is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
@@ -11,13 +11,13 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
-mission "First Contact: Atlantean"
+mission "First Contact: Oklen"
 	name "Arlug to <destination>."
 	description "Take Arlug to <destination>. He will pay you <payment>."
 	landing
 	source
 	repeat
-		government Atlantean
+		government Oklen
 		not planet Destor
 	destination Destor
 	passengers 1
@@ -30,12 +30,12 @@ mission "First Contact: Atlantean"
 				`	(yes, why not?)`
 					goto yes
 			label leave
-			`	you take off again. Maybe it would have been a good idea to explore it. To late now, though.`
-					decline
-			`	You bring your ship down near it, and it appears to be a old building, half corroded by time. do you want to explore it?`
+			`	you take off again. Maybe it would have been a good idea to explore it. Too late now, though.`
+				flee
 			label yes
+			`	You bring your ship down near it, and it appears to be a old building, half corroded by time. do you want to explore it?`
 			choice
-				`	(Yes, why not? it will be something to do.)`
+				`	(Of course! it will be something to do.)`
 					goto "Of Course"
 				`	(Shoot it with my weapons and totally destroy it.)`
 					goto die
@@ -43,7 +43,7 @@ mission "First Contact: Atlantean"
 					goto avoid
 			label avoid
 			`	you circle it closely, but you don't see anything wrong with it.`
-				goto yes
+				goto yes1
 			label "Of Course"
 			`	As you climb out of your ship you remember that you forgot your sidearm. do you want to go fetch it, or just don't bother?`
 			choice
@@ -51,6 +51,15 @@ mission "First Contact: Atlantean"
 					goto careful
 				`	(Don't bother, it can't be that important.)`
 					goto die2
+			label yes1
+			`	You bring your ship down near it, and it appears to be a old building, half corroded by time. do you want to explore it?`
+			choice
+				`	(Of course! it will be something to do.)`
+					goto "Of Course"
+				`	(Shoot it with my weapons and totally destroy it.)`
+					goto die
+				`	(No, it would be best to avoid it until I learn more.)`
+					goto avoid
 			label die
 			`	you fire round after round of ammo at it, and it begins to shake. a giant tentacle reaches out towards you, and grabs the <ship>. your last memory is of it drawing you towards its mouth.`
 				die
@@ -67,13 +76,13 @@ mission "First Contact: Atlantean"
 			`	you run outside and take off. As you are breaking the thin atmosphere, an alien warship jumps in, and attacks the <ship>. The <ship> is pulverized.`
 				die
 			label die3
-			`	you go downstairs, but a a giant tentacle reaches out towards you, and twirls around.`
+			`	you go downstairs, but a a giant tentacle reaches out towards you, and twirls around you, and throws you into the atmosphere. You slowly suffocate.`
 				die
 			label Arlug
 			`	You step up the stairs, which are very steep. Suddenly an arm grabs you, "don't make any noise. You'll be eaten. Can you take me to <destination> quietly?"`
 			choice
-				`	"don't surprise me like that. it's scary!"`
-					decline
+				`	"don't surprise me like that. it's scary! I'm leaving slowly and quietly."`
+					goto angry
 				`	(whisper "Yes, I will")`
 					goto accept
 			label accept
