@@ -34,6 +34,14 @@ mission "Omnis: mod settings"
 					goto 1500
 					to display
 						not "omnis: faction wormholes enabled"
+				`	(Show Plugin Outfits.)`
+					goto 1600
+					to display
+						not "omnis: plugin integration"
+				`	(Hide Plugin Outfits.)`
+					goto 1600
+					to display
+						has "omnis: plugin integration"
 				`	(Return.)`
 					goto 0000
 			label 1100
@@ -538,6 +546,36 @@ mission "Omnis: mod settings"
 				event "omnis: no faction wormholes"
 				clear "omnis: faction wormholes enabled"
 			`Wormholes have been removed from faction systems.`
+				goto 0000
+			label 1600
+			`Would you like ships and outfits from other plugins to appear on the Omnis planet for that faction? Currently this is set to off.`
+				to display
+					not "omnis: plugin integration"
+			`Would you like ships and outfits from other plugins to appear on the Omnis planet for that faction? Currently this is set to on.`
+				to display
+					has "omnis: plugin integration"
+			choice
+				`	(Turn plugin integration on.)`
+					goto 1601
+					to display
+						not "omnis: plugin integration"
+				`	(Turn plugin integration off.)`
+					goto 1602
+					to display
+						has "omnis: plugin integration"
+				`	(Go back.)`
+					goto 1000
+			label 1601
+			action
+				event "omnis: plugin integration"
+				set "omnis: plugin integration"
+			`Plugin integration has been turned on.`
+				goto 0000
+			label 1602
+			action
+				event "omnis: plugin integration removed"
+				clear "omnis: plugin integration"
+			`Plugin integration has been turned off.`
 				goto 0000
 			label 2000
 			`WARNING: These options perpetrate all saves that interact with Omnis, consider the effects of each before continuing.`
