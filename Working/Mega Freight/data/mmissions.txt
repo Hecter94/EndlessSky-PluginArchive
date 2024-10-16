@@ -3342,6 +3342,18 @@ event "MGF: Core Nuclear Transport Upgrade I"
 			"Splinter (Mark II)"
 			"Vanguard (MGF CoreNucMKII)"
 
+mission "MGF: Ankulah Mlitgante Sale Patch"
+	landing
+	invisible
+	to offer
+		has "MGF: Ankulah Mlitgante Combat Sale: declined"
+		not "mgf: mlitgante sale patch20241015"
+	on offer
+		dialog
+			`Your missing purchase has been delivered.`
+		give ship "AKH-8C Mlitgante"
+	on accept
+		fail
 
 mission "MGF: Ankulah Mlitgante Combat Sale"
 	repeat
@@ -3354,6 +3366,7 @@ mission "MGF: Ankulah Mlitgante Combat Sale"
 	to offer
 		random < 5
 	on offer
+		"mgf: mlitgante sale patch20241015" = 1
 		conversation
 			scene "scene/mgf combat mlitgante sale"
 			`As you walk through the landing bay on the station you noitce a ship with [For Sale] sign on it. It appears to be the locally built Mlitgante without the tow system but instead two additonal gun ports at the front. It's condition is just average of the tow ships around here, some scratches, some repair marks, but nothing critical to its performance.`
@@ -3380,6 +3393,7 @@ mission "MGF: Ankulah Mlitgante Combat Sale"
 					defer
 			label buy
 			action
+				give ship "AKH-8C Mlitgante"
 				payment -6000000
 			`	"Alright!" he hands you the key as you give him the credit chip. "Take a good care of her, there's only a few of these around." he walks off.`
 				decline
