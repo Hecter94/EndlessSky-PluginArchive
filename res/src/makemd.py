@@ -202,7 +202,7 @@ for each in  newslist:
 		if ncat == "N/A":
 			ncat = "uncategorized"
 		# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
-		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat + "](" + webroot + "plugins.md#" + ncat + ")<br>\n"
+		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat.lower() + "](" + webroot + 'res/mds/' + ncat.lower() + ".md)<br>\n"
 	else: # no listfile found, plugin must got deleted or renamed
 		nline = ndate + " | " + nnew_or_update + " Plugin " + nname + " | Plugin got deleted or renamed <br>\n"
 	allnews = allnews + nline
@@ -215,13 +215,15 @@ news = split_str.join(part_news)
 		
 
 
-# writing the md file
+# writing the md files
 with open(indexfile, "w") as file1:
 	temphead = replacevar(temphead)
 	temphead = replacevarp(temphead)
 	file1.writelines(temphead) # writer header template
-with open("plugins.md", "w") as file1:
-	for cat in categories: # for each category
+	if not os.path.isdir('res/mds/'):
+		os.mkdir('res/mds/')
+for cat in categories: # for each category
+	with open('res/mds/' + cat.lower() + ".md", "w") as file1:
 		tempcatupt = tempcatup.replace("%category%", cat)
 		tempcatupt = replacevar(tempcatupt)
 		tempcatupt = replacevarp(tempcatupt)
@@ -262,7 +264,7 @@ with open("plugins.md", "w") as file1:
 					iconpath = iconpath.replace("(", "%28")
 					iconpath = iconpath.replace(")", "%29")
 					iconpath = iconpath.replace(",", "%2C")
-					iconpng = "<img src='"+ iconpath + "/icon.png' height='100'></img><br>\n"
+					iconpng = "<img src='../../"+ iconpath + "/icon.png' height='100'></img><br>\n"
 				else:
 					iconpng = ""
 				# get last modified date and size from the assetfiles
@@ -296,9 +298,9 @@ with open("plugins.md", "w") as file1:
 						form = " mb"
 					size = str(round(assetsize, 2)) + form
 					if directlink != "N/A": # check if plugin has direct updating and insert png
-						updatecheck = "<img src='res/img/check.png' width='15' ></img>"
+						updatecheck = "<img src='../img/check.png' width='15' ></img>"
 					else:
-						updatecheck = "<img src='res/img/cross.png' width='15' ></img>"
+						updatecheck = "<img src='../img/cross.png' width='15' ></img>"
 				assetfile =  withdots + ".zip"
 				
 				# get last commit from the plugin repo
