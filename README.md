@@ -5,21 +5,21 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
-2024-10-16 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2024-10-16 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-16 | updated Plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)<br>
-2024-10-16 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-13 | updated Plugin '-Omnis' by TheGiraffe3 | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
-2024-10-13 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-13 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-13 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
-2024-10-12 | updated Plugin 'Atlanteans' by TheSilverStone | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-12 | updated Plugin 'Jibauni' by TheGiraffe3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-12 | updated Plugin 'Gaguka' by MIMSBZ3 | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Races)<br>
-2024-10-12 | updated Plugin 'Main Plot Plus' by ziproot | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Story)<br>
-2024-10-11 | new Plugin 'expert.crew.members' by zuckung | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Outfits)<br>
-2024-10-11 | updated Plugin '-Omnis' by TheGiraffe3 | [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#Cheats)<br>
-2024-10-11 | updated Plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)<br>
+2024-10-19 | updated Plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md)<br>
+2024-10-19 | updated Plugin 'Arion - Air Superiority' by Spectre907 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-19 | updated Plugin 'Lemurias Extra ES Stuff' by a-random-lemurian | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md)<br>
+2024-10-19 | updated Plugin 'Cutlass' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md)<br>
+2024-10-19 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-19 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-19 | updated Plugin 'Tanager' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md)<br>
+2024-10-16 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md)<br>
+2024-10-16 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-16 | updated Plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md)<br>
+2024-10-16 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-13 | updated Plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md)<br>
+2024-10-13 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-13 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)<br>
+2024-10-13 | updated Plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -44,18 +44,18 @@ Provide a direct link to your zipped plugin to enable automatic updating.<br>
 - [Plugin Naming Convention](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#plugin-naming-convention)
 
 [Plugin Download](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/README.md#plugin-download)
-- [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats)
-- [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay)
-- [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics)
-- [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits)
-- [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls)
-- [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites)
-- [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches)
-- [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races)
-- [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships)
-- [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story)
-- [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons)
-- [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized)
+- [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md)
+- [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md)
+- [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md)
+- [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md)
+- [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md)
+- [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md)
+- [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md)
+- [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md)
+- [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md)
+- [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md)
+- [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md)
+- [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md)
 
 ---
 
@@ -217,8 +217,9 @@ To keep these files related, you must give them the same name.
 
 All Plugins (567)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#cheats) (34) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#gameplay) (41) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#graphics) (24) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#outfits) (45)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overhauls) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#overwrites) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#patches) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#races) (62)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#ships) (136) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#story) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#weapons) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/plugins.md#uncategorized) (54)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (34) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (41) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (24) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (45)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (62)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (136) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (54)<br>
+
 
 
