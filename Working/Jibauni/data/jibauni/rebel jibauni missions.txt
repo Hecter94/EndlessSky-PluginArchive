@@ -70,3 +70,49 @@ mission "Rebel Jibauni: Qui-ni"
 		government "Jibauni (Rebel)"
 		personality launching waiting
 		fleet "Small Rebel Jibauni Military" 2
+
+mission "Rebel Jibauni: Scam Government Transportation 1"
+	landing
+	name "Take a Rebel to <planet>"
+	description "Take a Rebel Jibauni to <destination>."
+	source
+		government "Jibauni (Rebel)"
+	destination
+		government "Jibauni (Rebel)"
+		distance 1 2
+	passengers 1
+	to offer
+		has "event: rebel jibauni: initial transportation"
+		has "Rebel Jibauni: Landed on Andwerfen: declined"
+		has "rebel jibauni: will transport upon request"
+		random < 80
+	on offer
+		conversation
+			`A Rebel arrives panting at the door of the <ship> as it opens. "Take me to <destination>," they say. "This has been requested by Rebel Jibauni."`
+			choice
+				`	"Alright."`
+					accept
+				`	"Isn't that the wrong wording?"`
+			`	"W-wrong wording? Wha-what do you mean?" queries the Jibauni. A commotion has arisen in the spaceport behind them.`
+			choice
+				`	"Never mind. Come aboard."`
+					accept
+				`	"Others have told me this with the words, 'This has been Requested by the Real Jibauni'."`
+					goto gavethegameaway
+				`	"You gave me the wrong sequence of words. I don't think you're real."`
+			label crestfallencaught
+			action
+				payment 1000
+			`	"But..." The crestfallen Jibauni turns away, only to be captured by Rebel soldiers. One of them thanks you for helping to apprehend a criminal, and pays you a thousand credits.`
+				decline
+			label gavethegameaway
+			`	"Oh, right. Of course. I have no idea how I forgot that." The Jibauni chuckles, and repeats, "Take me to <destination>. This has been Requested by the Real Jibauni."`
+			choice
+				`	"Since you ask so nicely..."`
+					accept
+				`	"I still don't think you're real. Away from here, before I call the cops!"`
+					goto crestfallencaught
+	on complete
+		fine 3000
+		conversation
+			`The Rebel Jibauni darts off the moment the ship lands. Soon, the port authorities of <planet> come and warn you that you have been carrying a criminal. They fine you <fine> for so doing.`

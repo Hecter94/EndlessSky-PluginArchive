@@ -6,6 +6,10 @@ If I ever returned to Endless Sky and wanted to make plugins; it is likely I wou
 
 - Lemuria
 
+## Extra Notice: 2024-10-19
+
+This repository has been unarchived after I decided to start playing Endless Sky again. However, this interest might be short-lived and only last a few days or weeks, but nonetheless it might be long enough to fix the plugin's typos and other issues.
+
 # About
 This is a plugin for Endless Sky, created by Lemuria. It adds so much new content to the game that it cannot be listed in this README. Please view [this document](./docs/NEWCONTENT.md) for more information.
 

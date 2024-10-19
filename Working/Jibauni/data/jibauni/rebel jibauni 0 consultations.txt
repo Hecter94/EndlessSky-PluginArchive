@@ -12,7 +12,7 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 mission "First Contact: Rebel Jibauni"
-	name "Travel to <destination planets>"
+	name "Travel to <planet>"
 	description `Travel to <destination> to meet up with the leaders of this "Rebel Jibauni" faction.`
 	landing
 	source
@@ -169,13 +169,15 @@ mission "Rebel Jibauni: Landed on Andwerfen"
 			label refusedtotell
 			`	"Because you want to live, of course. But I suppose it does not matter, if you agree to our terms and conditions of commerce in Rebel Jibauni space. Here, look at this."`
 			label realpoint
-			`	"To continue your sojourn in our space, you must be willing to take any government official anywhere whenever we request you to. If you agree, you may stay. If not..."`
+			`	The Rebel Jibauni lays out a paper with these words on it: "To continue your sojourn in our space, you must be willing to take any government official anywhere whenever we request you to with the words: 'Requested by the Real Jibauni'. If you agree, you may stay. If not..."`
 			choice
 				`	"Oh, I'll do it alright."`
 					goto good
 				`	"Unlikely."`
 					goto thatisterrible
 			label good
+			action
+				set "rebel jibauni: will transport upon request"
 			`	"Perfect! We will contact you when we want you. Goodbye." The same Rebel who led you here takes you back to the <ship> and you are left to your own devices.`
 				decline
 			label thatisterrible
@@ -184,7 +186,6 @@ mission "Rebel Jibauni: Landed on Andwerfen"
 				`	"No. I'll take anyone who asks."`
 					goto good
 				`	"I am sure that I will never submit to your aggression."`
-					goto ouch
 			label ouch
 			`	"Your loss. Leave immediately. Or you will be-" At this point the speaker is pulled aside. They must mean it.`
 			`	Do you want to leave? They are threatening, but may not actually mean that you will have trouble.`
@@ -216,17 +217,18 @@ mission "Rebel Jibauni: Landed on Andwerfen"
 
 event "rebel jibauni: initial transportation"
 
-mission "Rebel Jibauni: Transportation 1"
+mission "Rebel Jibauni: Government Transportation 1"
 	landing
 	source Andwerfen
 	destination Sinsansun
 	passengers 1
 	to offer
 		has "event: rebel jibauni: initial transportation"
+		has "rebel jibauni: will transport upon request"
 		not "jibauni: disliked by the rebels"
 	on offer
 		conversation
-			`A Rebel Jibauni comes up and announces something. Your translator converts it to, "Take me to <planet> for our leaders and the good of the Rebel Jibauni. Do not dare refuse."`
+			`A Rebel Jibauni comes up and announces something. Your translator converts it to, "Take me to <planet> for our leaders and the good of the Rebel Jibauni. Do not dare refuse. This has been 'Requested by the Real Jibauni'."`
 				accept
 	on complete
 		event "rebel jibauni: first transportation done and second ready to offer" 2 14
@@ -235,7 +237,7 @@ mission "Rebel Jibauni: Transportation 1"
 
 event "rebel jibauni: first transportation done and second ready to offer"
 
-mission "Rebel Jibauni: Transportation 2"
+mission "Rebel Jibauni: Government Transportation 2"
 	landing
 	source Andwerfen
 	destination Minmanmun
@@ -244,7 +246,7 @@ mission "Rebel Jibauni: Transportation 2"
 		has "event: rebel jibauni: first transportation done and second ready to offer"
 	on offer
 		conversation
-			`A Rebel Jibauni comes up to the <ship> and says, "The Rebel Jibauni leaders request you to kindly transport me to <planet>. They will back it up."`
+			`A Rebel Jibauni comes up to the <ship> and says, "The Rebel Jibauni leaders request you to kindly transport me to <planet>. They will back it up. This has been 'Requested by the Real Jibauni'."`
 				accept
 	on complete
 		event "rebel jibauni: second transportation done and third ready to offer" 3 9
@@ -253,7 +255,7 @@ mission "Rebel Jibauni: Transportation 2"
 
 event "rebel jibauni: second transportation done and third ready to offer"
 
-mission "Rebel Jibauni: Transportation 3"
+mission "Rebel Jibauni: Government Transportation 3"
 	landing
 	source Andwerfen
 	destination Muntisir
@@ -262,15 +264,15 @@ mission "Rebel Jibauni: Transportation 3"
 		has "event: rebel jibauni: second transportation done and third ready to offer"
 	on offer
 		conversation
-			`A group of Rebels approach the landing pad that the <ship> is landed on and ask you to take them to <planet>. You do not seem to be able to refuse.`
+			`A group of Rebels approach the landing pad that the <ship> is landed on and ask you to take them to <planet>. You do not seem to be able to refuse, as they tell you that this transport mission has been "Requested by the Real Jibauni".`
 				accept
 	on complete
-		event "rebel jibauni: transportation done" 10 25
+		event "rebel jibauni: government transportation done" 10 25
 		payment 50000
 		conversation
 			`The group disembarks, but one of them gives you <payment>, "As a small token of our gratitude."`
 
-event "rebel jibauni: transportation done"
+event "rebel jibauni: government transportation done"
 
 mission "Rebel Jibauni: Bring Them Back"
 	name "Transport Rebels Back"
@@ -281,7 +283,7 @@ mission "Rebel Jibauni: Bring Them Back"
 	stopover Sinsansun
 	passengers 5
 	to offer
-		has "event: rebel jibauni: transportation done"
+		has "event: rebel jibauni: government transportation done"
 	on offer
 		payment 10000
 		conversation
