@@ -464,12 +464,16 @@ mission "Jibauni: Ji-wi"
 
 mission "Jibauni: Dran-li 0"
 	minor
+	name "Take Dran-li to <planet>"
+	description "Dran-li would like you to take him to <destination>, to see whether moving to Rebel Jibauni worlds is a good idea."
+	passengers 1
 	source
 		government "Jibauni"
 	destination
 		government "Jibauni (Rebel)"
 	to offer
 		random < 45
+		not "event: jibauni rebel jibauni peace"
 	on offer
 		conversation
 			`As you are walking through the spaceport, you collide with a younger Jibauni. He immediately stands up and apologizes, then notices who you are. "Oh, the strange alien! Hello! May I ask of you a favor?"`
@@ -503,6 +507,119 @@ mission "Jibauni: Dran-li 0"
 				decline
 	on complete
 		payment
-		event "jibauni: dran-li: gone" 1
+		event "jibauni: dran-li gone" 1
 		conversation
 			`Dran-li says, "I'm going to explore the spaceport. Could you meet me at the main hotel in a few hours? If you don't, I'll assume you don't want to take me back."`
+
+event "jibauni: dran-li gone"
+
+mission "Jibauni: Dran-li 1"
+	priority
+	name "Take Dran-li to <planet>"
+	description "Dran-li didn't love the way <origin> felt, and would like you to take him to <destination> to see if it was just <origin> and not all Rebel planets that were like that."
+	passengers 1
+	source
+		government "Jibauni (Rebel)"
+	destination
+		government "Jibauni (Rebel)"
+		distance 1 1
+	to offer
+		has "Jibauni: Dran-li 0: done"
+		not "event: jibauni: dran-li gone"
+	on offer
+		conversation
+			`Dran-li meets you at the main hotel, which happens to be called Jivam Dar-li. "Could you take me to <destination>? I don't get a good sense from the spaceport of <origin>. Perhaps this city in particular is just bad."`
+			choice
+				`	"Alright."`
+				`	"Nope, sorry. I agreed to take you... once. No more."`
+					goto declining?
+			`	"Perfect! I'm ready when you are."`
+				accept
+			label declining?
+			`	"You can't do that, can you? It's not very polite, and there's unlikely to be anybody who'll take me to Jibauni space. Please take me!"`
+			choice
+				`	"Oh, whatever. I'll take you to <planet>."`
+					accept
+				`	"My word is my word. Goodbye."`
+			action
+				"reputation: Jibauni" -= 3
+			`	Dran-li continues to protest, until you leave, slamming the door behind you. The Jibauni may or may not be happy about this.`
+				decline
+	on complete
+		conversation
+			`Dran-li leaves the <ship> for a scouting run. "I'll be back soon," he promises.`
+			branch "dran-li put in jail"
+				random < 3
+			choice
+				`	(Wait.)`
+			branch "dran-li likes"
+				random < 60
+				not "jibauni: dran-li: says rebels are good"
+			branch "dran-li likes with input"
+				random < 50
+				has "jibauni: dran-li: says rebels are good"
+			label "dran-li dislikes"
+			action
+				event "jibauni: dran-li abandoned" 1
+			`	He is back soon. "I really do not like this place," he announces. "It's even worse than <origin>, and that's saying a lot. Please meet me in the spaceport in an hour. I'm going to the capital to ask a few questions. I mean, I guess I can stay if you don't come, but it would really be much appreciated if you do."`
+			branch "dran-li put in jail 2"
+				random < 15
+			``
+				goto end
+			label "dran-li likes"
+			action
+				payment 5000
+				set "jibauni: dran-li stays with the rebels"
+			`	He arrives back at your ship soon. "You know, Captain, I think I like this place. Thanks for bringing me! Here's a payment for that." He disappears into the spaceport again.`
+				goto end
+			label "dran-li likes with input"
+			action
+				payment 5000
+				set "jibauni: dran-li stays with the rebels"
+			`	Dran-li is soon back. "<last>, thanks for bringing me here! It's a really great place - you were right when you said the Rebel Jibauni were good. Or should I say Real Jibauni?" He trails off, and soon leaves.`
+				goto end
+			label "dran-li put in jail"
+			`	He isn't back. After hours of waiting, you decide that you will go and try to find Dran-li. After asking around, government officials tell you that he's been put in jail, though there doesn't seem to be a reason. "It'll cost five thousand credits to get him out of there," they say.`
+			choice
+				`	"I'll pay that."`
+				`	"Of course not! That's outrageous! He can stay there for all I care."`
+					goto dranliimprisoned
+			action
+				payment -5000
+			`	Dran-li is released immediately. "Thank you," he says. "I've got one more thing to wrap up, but then meet me in the spaceport. I'm going home."`
+				goto end
+			label dranliimprisoned
+			action
+				set "jibauni: dran-li stays with the rebels"
+			`	"Well, he'll just stay there for life, then," replies the Rebel. You are taken back to the <ship> and left to ponder what you have just done.`
+				goto end
+			label "dran-li put in jail 2"
+			action
+				set "jibauni: dran-li stays with the rebels"
+			`	You figure out that Dran-li has been imprisoned, but you're not able to get him out of jail, no matter what the price. This ended sadly.`
+			label end
+			
+event "jibauni: dran-li abandoned"
+
+mission "Jibauni: Dran-li 2"
+	priority
+	name "Take Dran-li back to <planet>"
+	description "Dran-li did not like the Rebel Jibauni's method of living, and wants you to take him back to <destination>."
+	passengers 1
+	to offer
+		has "Jibauni: Dran-li 1: done"
+		not "jibauni: dran-li stays with the rebels"
+		not "event: jibauni: dran-li abandoned"
+	source
+		government "Jibauni (Rebel)"
+	destination
+		government "Jibauni"
+	on offer
+		conversation
+			`Dran-li comes rushing back to your <ship model>. "Let's leave immediately," he says, panting. You see Rebel soldiers running after him, and quickly agree.`
+				launch
+	on complete
+		payment
+		payment 750
+		conversation
+			`"Thank you so much for transporting me all over the galaxy," says Dran-li as the <ship> touches down. "It is very kind of you. Especially helping me escape from the Rebels! Here's <payment> for that." He walks into the spaceport, clearly much relieved that he survived this ordeal.`
