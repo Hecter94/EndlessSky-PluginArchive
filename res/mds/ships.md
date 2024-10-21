@@ -2309,7 +2309,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [RW.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RW.Ships.zip) | 2.65 mb | 2024-06-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RW%20Ships/) <br>
 Author: Anonymous | Category: Ships <br>
-[https://github.com/43897689431805741092/RW-Ships](https://github.com/43897689431805741092/RW-Ships) (last commit 2024-06-01) <br>
+[https://www.moddb.com/mods/rw-ships](https://www.moddb.com/mods/rw-ships)  <br>
 
 >A small collection of custom ships: primarily drones and multipurpose freighter/utility ships, most of which can carry varying amounts of drones. If the ES Defense Drone Plugin is also installed, non-miner merchants will be loaded with Defense Drones.
 >
@@ -2356,7 +2356,7 @@ Some of these ships also have variants in the style of the vanilla Navy Auxiliar
 </details>
 
 Status: Complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
