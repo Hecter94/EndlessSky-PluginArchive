@@ -189,6 +189,8 @@ mission "Oathbreaker Strategos Deployed"
 				accept
 
 	npc
+		to despawn
+			has "Oathbreaker Poisonwood: offered"
 		government "Republic"
 		system "Delta Velorum"
 		personality waiting staying vindictive
@@ -219,12 +221,15 @@ mission "Oathbreaker Strategos Deployed"
 		ship "Outrider (Mark II)" "Alpha Seven"
 		ship "Outrider (Mark II)" "Alpha Eight"
 	npc kill
+		to despawn
+			has "Oathbreaker Poisonwood: offered"
 		government "Republic"
 		system "Delta Velorum"
 		personality waiting staying vindictive
 		ship "Strategos" "R.N.S. Poisonwood"
 		on kill
 			set "r.n.s. poisonwood destroyed"
+			fail
 
 mission "Oathbreaker Strategos Deployed Patch"
 	landing
@@ -632,13 +637,7 @@ mission "Oathbreaker Supply Run"
 					goto orphan
 				`	(Draw the Quantum Keyblade.)`
 					to display
-						or
-							has "outfit (flagship installed): Quantum Key Blade"
-							has "outfit (flagship installed): Quantum Dragon Blade"
-							has "outfit (flagship installed): Quantum Phoenix Blade"
-							has "outfit (flagship installed): Quantum Snake Blade"
-							has "outfit (flagship installed): Quantum Tiger Blade"
-							has "outfit (flagship installed): Quantum Turtle Blade"
+						has "flagship attribute: quantum keyblade"
 					goto keyblade
 			scene "effect/blood"
 			`	As soon as you open the hatch, a firing squad bathes you in hellfire.`
@@ -682,17 +681,51 @@ mission "Oathbreaker Supply Run"
 		log `Found an Oathbreaker fleet using <planet>, a pirate world, as a base of operations. If I can get this information to the government, I might get a reward.`
 	npc evade
 		government "Oathbreaker"
-		personality launching heroic target unconstrained
-		fleet "Elite Oathbreaker"
-		fleet "Large Oathbreaker"
+		personality waiting heroic target unconstrained
+		fleet
+			names "Oathbreaker"
+			fighters "Oathbreaker fighter"
+			outfitters "Ammo North"
+			variant
+				"Marauder Carrier"
+				"Marauder Cruiser"
+				"Marauder Frigate"
+				"Gunboat (Mark II)"
+				"Rainmaker (Mark II)"
+				"Auxiliary (Battle)"
+				"Lance" 4
+				"Combat Drone" 10
+				"Dropship (Troops)" 4
+				"Outrider (Mark II)" 14
 	npc evade
 		government "Oathbreaker"
-		personality entering heroic target nemesis unconstrained
-		fleet "Small Oathbreaker"
+		personality entering target nemesis coward
+		fleet
+			names "Oathbreaker"
+			fighters "Oathbreaker fighter"
+			outfitters "Ammo North"
+			variant
+				"Missileboat"
+				"Outrider (Pirate)" 2
 	npc evade
 		government "Oathbreaker"
-		personality waiting heroic target nemesis unconstrained
-		fleet "Fugitive Oathbreaker"
+		personality entering target nemesis coward
+		fleet
+			names "Oathbreaker"
+			fighters "Oathbreaker fighter"
+			outfitters "Ammo North"
+			variant
+				"Patrolboat"
+				"Outrider (Pirate)" 2
+	npc evade
+		government "Oathbreaker"
+		personality entering target nemesis coward
+		fleet
+			names "Oathbreaker"
+			fighters "Oathbreaker fighter"
+			outfitters "Ammo North"
+			variant
+				"Outrider (Pirate)" 5
 	to complete
 		never
 
@@ -2050,7 +2083,7 @@ mission "Oathbreaker Thermopylae"
 		system "Wei"
 		government "Oathbreaker"
 		personality target plunders harvests staying 
-		ship "Modified Skein" "F.S. Alpine Larch"
+		ship "Modified Skein" "Alpine Larch"
 		fleet
 			fighters
 				names "free worlds fighter"
@@ -2065,9 +2098,9 @@ mission "Oathbreaker Thermopylae"
 			cargo 1
 			outfitters "Ammo South"
 			variant
-				"Marauder Falcon (Engines)"
-				"Marauder Bastion"
-				"Marauder Osprey"
+				"Marauder Falcon (Engines, Electron Beam)"
+				"Marauder Bastion (Electron Beam)"
+				"Marauder Osprey (Electron Beam)"
 				"Modified Roost"
 				"Modified Nest"
 				"Pirate Drone" 6

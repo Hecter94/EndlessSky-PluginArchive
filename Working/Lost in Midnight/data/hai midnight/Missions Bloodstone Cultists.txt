@@ -1,0 +1,1192 @@
+# Copyright (c) 2021 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+
+###############################
+# Hai Bloodstone Cultists
+###############################
+
+
+mission "Midnight Dreams of Blood & Fire 1"
+	minor
+	name "Caju's Clinic"
+	description "Transport Dr. Ca Ju, Nurse Peka, and their patient to <destination>. Payment is <payment>."
+	passengers 3
+	source
+		near "Wah Ki" 3 4
+		government "Hai"
+		attributes "spaceport"
+	destination Cloudfire
+	to offer
+		has "outfit (flagship installed): Medical Bay"
+		random < 70 - ( "Midnight Dreams of Blood & Fire 1 deferred" * 55 )
+	on offer
+		conversation
+			scene "outfit/medical bay"
+			`You receive a message from the spaceport authority. "You are captain of the <ship>, yes? Our scans indicate you have facilities for patient care on your ship. Would you be willing to conduct a patient transport?"`
+			choice
+				`	"Where to?"`
+				`	"I'm busy with other things."`
+					defer
+			`	The answer is garbled with static. The transmission picks up again mid-sentence, "... will arrive at your landing pad with the patient. Be advised that-" The message cuts off, replaced by more static.`
+			``
+			`	A short while later, two Hai arrive with a sedated man strapped to a gurney. The smaller one speaks, "Hello Captain <last>. I am Dr. Caju. Charles is my patient."`
+			`	The other Hai, large and husky, is pushing Charles' gurney. She nods at you and grunts with what sounds like a feminine voice.`
+			`	The man's eyes suddenly spring open. Looking about wildly, his eyes finally land on you and he screams,"THE BLOOD! THE FIRE! AHH!"`
+			`	"Nurse Peka!" Dr. Caju gives her some instructions in the Hai language as she pulls an exotic looking syringe from her medical bag. With it, she injects the man while the burly nurse holds their patient down without a word. As the patient drifts back into unconsciousness, Caju wipes her brow and puts the syringe away. "As you can see, this man is suffering from some sort of psychological trauma. We must get him to my clinic on <destination> for treatment."`
+			choice
+				`	"Let's get him abord my ship."`
+					goto allow
+				`	"No, I'm not letting him on my ship."`
+			`	"Is it a matter of money? We can offer <payment>. Please reconsider."`
+			choice
+				`	"Alright, let's get him abord my ship."`
+					goto allow
+				`	"No, I refuse."`
+			`	After your stern refusal, Caju and Peka wheel Charles away from your ship.`
+				decline
+			label allow
+			`	After placing Charles in your Medical Bay, Caju and Peka settle into their bunks.`
+				accept
+	on defer
+		set "Midnight Dreams of Blood & Fire 1 deferred"
+	on enter "Wah Ki"
+		conversation
+			scene "outfit/medical bay"
+			`"BLOOD! FIRE!" Somehow, Charles has gotten loose from the Medical Bay. He turns towards you, inhales...`
+			choice
+				`	(Oh no. No.)`
+			`	And screams. "AAAAHHHHHHHH!" Nurse Peka rushes up behind him and tackles Charles to the floor. After a brief struggle, the burly nurse manages to get him in a tight hold long enough for Dr. Caju to administer some sedative. Peka easily carries his limp form back to the Medical Bay. The doctor briefly says something to you before following the other two, but you don't understand. Your ears are still ringing from Charles' scream...`
+	on complete
+		payment
+		payment 12000
+		log "People" "Dr. Caju" `A Hai who specializes in treating psychological disorders. She runs a clinic on Cloudfire and has a fondness for Quantum Bloodstones.`
+		log "Minor People" "Nurse Peka" `Dr. Caju's muscular assistant. She isn't very talkative. Perhaps she only speaks Hai.`
+		conversation
+			scene "outfit/bloodstone"
+			`Nurse Peka wheels Charles off you ship while Dr. Caju rummages through her medical bag. "I owe you <payment>. Sorry, it seems I didn't bring enough credits with me. My clinic is nearby. Follow us and I can give you your full payment.`
+			``
+			`	Caju's office has white walls and white furniture. So the red Quantum Keystone on display in a shelf behind her desk stands in stark contrast to the rest of your surroundings.`
+			`	She reaches into her desk and pulls out your payment. Noticing your gaze at the red Quantum Keystone she says, "Beautiful, is it not? Quantum Bloodstones are a delight to behold."`
+			choice
+				`	"Where can I get one?"`
+				`	"Tell me more about them."`
+			`	She opens her mouth to answer, but the sound of glass smashing in the next room interrupts you conversation. You can hear Charles screaming and Nurse Peka calling for Dr. Caju to bring the sedative. Handing you your payment, Dr. Caju apologizes. "Sorry, duty calls. Thank you for your assistance." She ushers you out of her office and closes the door. Your business here is done.`
+
+mission "Midnight Dreams of Blood & Fire 2"
+	minor
+	name "Caju's Clinic"
+	description "Transport Dr. Ca Ju, Nurse Peka, and their patient to <destination>. Payment is <payment>."
+	passengers 3
+	source
+		near "Wah Ki" 4 5
+		government "Hai"
+		attributes "spaceport"
+	destination Cloudfire
+	to offer
+		has "outfit (flagship installed): Luxury Accommodations"
+		has "Midnight Dreams of Blood & Fire 1: done"
+		random < 60
+	on offer
+		conversation
+			scene "outfit/luxury accommodations"
+			`At the spaceport you encounter Dr. Caju. Nurse Peka is with her and is pushing a wheelchair with what appears to be another patient in it. This one is also a man, but he is well dressed and seems to be in control of himself. Upon noticing you, Caju waves and motions for Peka to wheel their patient towards you.`
+			`	"Hello Captain <last>. We are very fortunate to have run into you. We need to take Dexter to my clinic on <destination>."`
+			`	While Caju is explaining their situation, Dexter eyes you warily. "Looks shabby. Don't want to."`
+			`	"Aww, please be nice Dexter!" Caju turns back to you. "We have spent hours searching the spaceport for a ship befitting Dexter's... station."`
+			`	Dexter harrumphs. Assuming a pompous pose he declares, "That's Lord Dexter the Third, chief metallurgist to the king of New Boston and I'll not ride any ship that does not offer Luxury Accomodations." He makes a move to stand, but Nurse Peka places her hand on his shoulder and he quickly abandons the attempt.`
+			choice
+				`	"I've got Luxury Accomodations."`
+					goto luxury
+				`	"Good luck with this one..."`
+			`	"I am sure Captain <last>'s ship has excellent amenities." Caju looks to you, her eyes seemingly pleading for help.`
+			choice
+				`	"I've got Luxury Accomodations."`
+					goto luxury
+				`	"No, you should look elsewhere."`
+			`	"Onward to the next vessel!" Dexter urges Peka to move as if she were his personal steed. Caju, for her part, slumps her shoulders in resignation as they walk away.`
+				decline
+			label luxury
+			`	"See, I knew Captain <last> would have a ship fit for a man of your stature!" Dr. Caju tries to placate Dexter. He scowls silently while giving you a dark look. As Peka pushes Dexter towards your ship, Dr. Caju quietly whispers her thanks. "What a relief! I will make sure to pay you double the normal rate when we get back to my office."`
+				accept
+	on enter "Wah Ki"
+		conversation
+			scene planet/cloud0
+			`Nurse Peka wheels Dexter to the cockpit. Looking at <planet> in the distance he asks,"Do you dream Captain? My dreams are filled with clouds of fire and rains of blood." He turns to you. "Don't let them take me there."`
+			`	Dr. Caju arrives in the cockpit and whispers something to Peka. The nurse grunts and wheels Dexter away. "Sorry Captain! I should have instructed Peka to keep Dexter away from the cockpit.`
+			choice
+				`	(Tell Dr. Caju about Dexter's dreams.)`
+				`	(Remain silent.)`
+					accept
+			`	Caju frowns. "Oh no! I hope he did not bother you much with his delusions. Those sound like the sort of dreams brought on by the Kwasha."`
+			choice
+				`	"The Kwasha?"`
+			action
+				log `While transporting a patient to Dr. Caju's clinic, he mentioned having dreams filled with clouds of fire and rains of blood. Caju attributed these dreams to something called "the Kwasha," a mythical bogeyman which supposedly haunts Hai dreams with visions of war and conquest.`
+			`	"Ah, yes. During the early era of Hai peace, it was said that the Kwasha would haunt old soldier's dreams, stirring up visions of war and conquest. Obviously, this is just an ancient superstition. Modern psychology would likely diagnose what those soldiers experienced as a form of post traumatic stress disorder." She quickly moves to catch up with Peka.`
+	on complete
+		payment
+		payment 24000
+		conversation
+			scene "outfit/bloodstone"
+			`Dexter is asleep in his wheelchair as Nurse Peka takes him away. As before, you need to visit Dr. Caju's office to receive your full payment. It appears much as it did the last time. But you notice that there are now two of the Quantum Bloodstones glittering on her shelf. Before you can ask about them, there is suddenly a shout from the next room. You can hear Dexter yell, "Demons! DEMONS! You stay away from me! AHH!" Caju quickly hands you <payment> and ushers you out of her office. It appears she'll have her hands full with this patient as well.`
+
+mission "Midnight Dreams of Blood & Fire 3"
+	minor
+	name "Caju's Clinic"
+	description "Transport Dr. Ca Ju, Nurse Peka, and their patient to <destination>."
+	passengers 3
+	source
+		near "Wah Ki" 5 6
+		government "Hai"
+		attributes "spaceport"
+	destination Cloudfire
+	to offer
+		has "outfit (flagship installed): Brig"
+		has "Midnight Dreams of Blood & Fire 2: done"
+		random < 50
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`While you are walking through the spaceport a large Hai emerges from a side alley. You recognize her as Nurse Peka. She seems to be out of breath. Looking around, she points in your direction.`
+			choice
+				`	(Look behind yourself.)`
+			scene "outfit/attention"
+			`	You are suddenly tackled by a feral creature! It snarls while gnashing it's teeth mere inches from your face, it's fetid breath threatening to induce nausea. Peka pulls the beast off of you and you can see that it's a human woman. But she continues to growl and struggle in Peka's arms like a wild animal. Dr. Caju arrives and sedates your attacker. After the mystery woman falls unconscious, Caju notices you. "Ah, <first>! Are you well?"`
+			choice
+				`	"That woman attacked me!"`
+				`	"Is that another of your patients?"`
+			scene "outfit/brig"
+			`	As Peka hefts the unconscious woman onto her shoulder, Caju answers "Ms. Ward, as you may have concluded, is a little more out of control than my previous patients. Would you happen to have a Brig on your ship? It might be necessary to use one in order to safely transport her to my clinic."`
+			choice
+				`	"I have a brig."`
+					goto brig
+				`	"I don't want that wild woman on my ship."`
+			`	"Please reconsider. If we are not able to keep her isolated, she may be a danger to herself as well as anyone else we travel with."`
+			choice
+				`	"Alright, use my brig."`
+					goto brig
+				`	"No, absolutely not."`
+			`	"That is unfortunate." Caju and Peka haul Ms. Ward away.`
+				decline
+			label brig
+			`	"Thank you Captain!" She and Peka haul Ms. Ward to your ship and lock her up in the brig.`
+				accept
+	on enter "Wah Ki"
+		conversation
+			scene planet/cloud0
+			`You're almost at <planet>. Ms. Ward is securely locked in the brig. Nurse Peka and Dr. Caju are keeping her under constant surveillance. The journey looks like it will end without incident.`
+	on complete
+		conversation
+			`Nurse Peka hauls a sedated Ms. Ward away. Dr. Caju pulls 18,000 credits out of her medical bag. "Here's your payment!"`
+			choice
+				`	"That's not enough."`
+					goto clinic
+				`	"How are your other patients doing?"`
+			action
+				payment 18000
+				log `After questioning Dr. Caju about the well being of the patients I previously transported for her, her response was brusque and she was quick to leave.`
+			`	"They are doing fine." She hands you 18,000 credits and heads back to her office without elaborating further. Her business with you is concluded.`
+				accept
+			label clinic
+			`	Caju furrows her brow. "I should be able to get more at my office."`
+			``
+			`	When you step through the door at her office, Ms. Ward leaps at you! You instinctively raise your arm and she bites you! Dr. Caju injects her with another dose of sedative and Peka pulls her away to another room. Caju grabs your arm and inspects the wound. "<first>! Are you okay?" While she examines the area where you were bitten, your eyes wander to the now familiar shelf. There are now three Quantum Bloodstones on display.`
+			choice
+				`	"I'm fine."`
+					goto fine
+				`	"I think I deserve hazard pay."`
+			action
+				outfit "Quantum Bloodstone" 1
+				log `After transporting a particularly troublesome patient for Dr. Caju, I convinced her to compensate me with one of her precious Quantum Bloodstones.`
+			scene "outfit/bloodstone"
+			`	Caju follows your gaze and realization dawns on her. "You've been very helpful. But a Bloodstone?" She hesitates, but relents. "Fine. Take one." She shoves one of the stones into your hands. "Go before I change my mind." She ushers you out of her office and shuts the door. Your business here is concluded.`
+				accept
+			label fine
+			action
+				payment 24000
+			scene "outfit/bloodstone"
+			`	"What a relief." Dr. Caju retrieves more credits from her desk. She hands the credits to you, a total of 24,000 credits. As she does so, Peka begins calling for her assistance. She ushers you out of her office and shuts the door. Your business here is concluded.`
+
+mission "Midnight Dreams of Blood & Fire Epilogue"
+	minor
+	invisible
+	source "Cloudfire"
+	to offer
+		has "Midnight Dreams of Blood & Fire 3: done"
+		random < 10
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Dr. Caju's clinic is some distance from the spaceport. You don't have an appointment. Do you want to make a surprise visit?`
+			choice
+				`	(Visit Dr. Caju's clinic.)`
+					goto visit
+				`	(Better not...)`
+
+			`	Perhaps you'd just be in the way. She always seemed busy and would eagerly rush you out of her office before tending to her patients. Her patients...`
+			choice
+				`	(They were all human.)`
+				`	(None were Hai.)`
+			`	Now that you think about it, all her patients were human. Not once have you seen her with a Hai patient...`
+			choice
+				`	(Visit Dr. Caju's clinic.)`
+					goto visit
+				`	(Stay away.)`
+
+			`	For some reason, you hesitate to visit the clinic. Perhaps you have some subconscious fear of becoming one of her patients...`
+				decline
+
+			label visit
+			`	When you arrive, Dr. Caju greets you. "Well, this is a surprise! Welcome Captain <last>, what brings you to my clinic? I have no patients at the moment and had no idea you would be visiting." You notice several new Quantum Bloodstones adorn the shelf behind her.`
+			choice
+				`	"I was wondering what happened to the people I brought here."`
+				`	"I see you've added more Quantum Bloodstones to your collection."`
+					goto collection
+				`	"Just visiting."`
+					goto visiting
+			`	"They are doing fine." Her answer is short and she quickly changes the subject.`
+				goto visiting
+			label collection
+			`	She glances at the shelf. "Yes, aren't they marvelous? Business has been well lately." Turning back to you, she changes the subject.`
+			label visiting
+			`	"How are you feeling? You aren't in need of my services yourself are you?"`
+			choice
+				`	"What are you suggesting?"`
+				`	"No, of course not!"`
+			scene "outfit/attention"
+			`	While you are talking, sharp pain suddenly sends a shock through your left arm. Looking at the source, you see Nurse Peka has jabbed a syringe into your arm and injected you with something. The pain subsides and you slump onto the floor.`
+			`	Dr. Caju is speaking to you. While her tone of voice sounds calming, you don't understand the words. She gestures towards the shelf of Quantum Bloodstones, but your vision is becoming blurry. Soon, everything goes dark and you feel nothing at all. You've entered a dreamless sleep that you will never wake from.`
+				die
+
+
+mission "Midnight Bloodstone Murders 1"
+	minor
+	name "Transport Corpse to <planet>"
+	description "Transport Inspector Akran, Dr. Oaks and their unusual cargo to <destination>."
+	passengers 2
+	cargo coffin 1
+	source
+		government Hai
+		not planet Greenwater Darkwaste
+	destination Greenwater
+	to offer
+		has "First Contact: Hai: declined"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/coffin"
+			branch bladebearer
+				has "Bearer of The Blade"
+			`A group of Hai accompanied by a human are moving a coffin from one landing pad to another. One of the Hai is wearing the type of hat that human detectives wore in old earth videos. They arrive at your landing pad and the Hai wearing the unusual hat addresses you. "Captain <last>? A human, I see. Good. Good! I am Inspector Ku Ran Chee Akran." He gestures to the human who is pushing the coffin. "Dr. April Oaks, a medical examiner." The young woman waves as Akran turns his attention back to you. "I need transportation for myself, Dr. Oaks and one corpse to <destination>.`
+				goto corpse
+			label bladebearer
+			`A group of Hai accompanied by a human are moving a coffin from one landing pad to another. They arrive at your landing pad and the Hai in charge addresses you. "Captain <last>? The Bearer of The Blade, I see. Good. Good! I am Inspector Ku Ran Chee Akran." He gestures to the human who is pushing the coffin. "Dr. April Oaks, a medical examiner." The young woman waves as Akran turns his attention back to you. "I need transportation for myself, Dr. Oaks and one corpse to <destination>.`
+			label corpse
+			choice
+				`	"A corpse?"`
+			`	Inspector Akran pats the coffin. "Yes, unfortunately. A sad story. A human was found murdered. While Hai society is mostly peaceful, there are still rare cases of aberrant behavior. We are delivering the corpse to his family. I also have some questions for them regarding the victim's relations and associations. Standard investigative procedure. You will be compensated, of course. <payment> is above average for a transportation job of this magnitude. How about it?`
+			choice
+				`	"Sounds good. Do you have special requirements for the cargo?"`
+				`	"No way I'm taking a corpse as cargo."`
+					goto refuse
+			`	Dr. Oaks responds, "Just keep the cargo safe. The corpse has already been embalmed, so there should not be any need for refridgeration." You show Akran and Oaks to their bunks after loading the coffin into your cargo bay.`
+				accept
+			label refuse
+			`	Akran sighs. "You are not the first to express this sentiment. We have been searching all day for a pilot willing to take on this job. I had hoped a human would be more sympathetic, but I suppose it was a mistake to make such an assumption." He motions for Oaks and his other staff to move on to the next landing pad.`
+				decline
+	on visit
+		dialog "Either Inspector Akran, Dr. Oaks or their cargo must be on one of your escorts that has yet to arrive. Return here when you have them all."
+	on complete
+		payment 0 200
+		payment 4000
+		log "People" "Inspector Ku Ran Chee Akran" `A Hai investigator who wears a hat traditionally associated with ancient human detectives. He tries to maintain an upbeat attitude despite the grim nature of his work.`
+		log "Minor People" "Dr. April Oaks" `A human medical examiner in Hai space. She assists Inspector Akran with his investigations.`
+
+mission "Midnight Bloodstone Murders 2"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran with his investigation by transporting him and Dr. Oaks to <destination>."
+	passengers 2
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Greenwater
+	destination Thornlight
+	to offer
+		has "Midnight Bloodstone Murders 1: done"
+	on offer
+		conversation
+			scene "outfit/coffin"
+			`Inspector Akran pays you while Dr. Oaks unloads the coffin from your ship. "Would you be willing to give us another ride? Depending on how my conversation with the family of the deceased goes, I may need one."`
+			choice
+				`	"Sure. I'll wait here."`
+				`	"Sorry, I'm not interested."`
+					decline
+			``
+			`...`
+			``
+			`Inspector Akran and Dr. Oaks return to your ship with a grim expressions. "According to the family of the deceased, the relatives of some of their other friends have also died recently. We need to start by visiting <destination> and see what the local authorities there have to say about their deaths."`
+			choice
+				`	"Alright, get on board."`
+					accept
+				`	"Sorry, I can't take you there."`
+			`	"That is unfortunate. Thank you for your assistance earlier." They leave to find a different transport.`
+				decline
+	on complete
+		payment 0 200
+		payment 4000
+
+mission "Midnight Bloodstone Murders 3"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran with his investigation by transporting him and Dr. Oaks to <destination>."
+	passengers 2
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Thornlight
+	destination Greenbloom
+	to offer
+		has "Midnight Bloodstone Murders 2: done"
+	on offer
+		conversation
+			`The residents of <planet> are patients undergoing physical therapy. Only relatives of these patients are allowed past the reception area.  Inspector Akran isn't concerned about these restrictions. While Dr. Oaks speaks with the receptionist, Akran pays you and asks if you would be willing to transport them again.`
+			choice
+				`	"Sure. I'll wait here."`
+				`	"Sorry, I'm not interested."`
+					decline
+			``
+			`...`
+			``
+			`Inspector Akran returns to your ship with a perplexed expression. "I just had an informative discussion with the station security chief. It appears the second victim was an employee of the station, not one of the paying residents."`
+			`	Dr. Oaks adds, "Of particular interest is that the cause of death for both victims was the same."`
+			choice
+				`	"How so?"`
+				`	"Spare me the gory details."`
+					goto spare
+			`	Oaks explains, "Both were stabbed in the chest. Whatever the murder weapon was, it did not leave a clean wound. The flesh was violently ripped apart and torn open."`
+			`	Akran wipes is brow. My next stop is <destination>. Can you take me there?"`
+				goto end
+			label spare
+			`	Akran wipes is brow. "A wise choice." My next stop is <destination>. Can you take us there?"`
+			label end
+			choice
+				`	"Alright, get on board."`
+					accept
+				`	"Sorry, I can't take you there."`
+			`	"That is unfortunate. Thank you for your assistance thus far." Inspector Akran leaves to find a different transport.`
+				decline
+	on complete
+		payment 0 200
+		payment 4000
+
+mission "Midnight Bloodstone Murders 4"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran with his investigation by transporting him and Dr. Oaks to <destination>."
+	passengers 2
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Greenbloom
+	destination Ochrescoop
+	to offer
+		has "Midnight Bloodstone Murders 3: done"
+	on offer
+		conversation
+			`Inspector Akran breaths in the cool ocean breeze. "How refreshing after being on that stuffy station!" Dr. Oaks hails a taxi while Akran pays you and asks if you would be willing to wait for themm while they interview the local law enforcement officials.`
+			choice
+				`	"Sure. I'll wait here."`
+				`	"Sorry, I'm not interested."`
+					decline
+			``
+			`...`
+			``
+			`You are enjoying the coastal scenery when Inspector Akran and Dr. Oaks return. "As I expected, the third victim also suffered the same cause of death as the other two. It is clear there is a pattern here." He looks around at the scenery while Oaks pays the taxi drive. "Our next stop is <destination>."`
+			choice
+				`	"Couldn't we have gone there first?"`
+					goto first
+				`	"Alright, get on board."`
+					accept
+				`	"Sorry, I can't take you there."`
+			label refuse
+			`	"That is unfortunate. Thank you for your assistance thus far." Akran and Oaks leave to find a different transport.`
+				decline
+			label first
+			`	Akran scratches his left ear. "I am not looking forward to this next stop."`
+			`	Oaks joins the two of you and asks, "Why?"`
+			`	Akran grumbles, "It is another station. And unlike Thornlight it is a refinery. Having worked in one during my younger years, I still have bad memories about the working conditions in such places."`
+			choice
+				`	"Alright, get on board."`
+					accept
+				`	"Sorry, I can't take you there."`
+					goto refuse
+	on complete
+		payment 0 200
+		payment 8000
+
+mission "Midnight Bloodstone Murders 5"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran with his investigation by transporting him and Dr. Oaks to <destination>."
+	passengers 2
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Ochrescoop
+	destination Iritoroost
+	to offer
+		has "Midnight Bloodstone Murders 4: done"
+	on offer
+		conversation
+			`Inspector Akran scrunches up his nose when you open the hatch to the station. You and Dr. Oaks aren't affected. Perhaps the human nose isn't sensitive enough to detect whatever odors are affecting him. After handing you your payment Akran says, "I can understand if you do not want to wait for me this time. I also would rather not stay here any longer than I have to."`
+			choice
+				`	"Don't worry about that. I'll be here."`
+				`	"Yeah, sorry. Good luck with your investigation."`
+					decline
+			``
+			`...`
+			``
+			`While waiting for Inspector Akran and Dr. Oaks to return, a Hai worker says something in their language and hands you a piece of paper with something written on it. It appears to also be written in the Hai language and you aren't able to read the letters.`
+			``
+			`	When Akron returns his nose is running and Oaks is doing her best to help him. "The station staff say that the victim died in an accident. It seems this one was unrelated to the other deaths." Oaks is out of tissues and motions for him to get back on your ship.`
+			choice
+				`	(Hand him the paper.)`
+			`	He takes the paper from your hands. "Oh, what is this?" Unfolding it, Akran's eyes widen. "Captain <first>, let's get out of here." He quickly boards your ship without specifying a destination. Oaks gives you a confused look before following.`
+				launch
+	on enter
+		dialog `Once you've gotten off the station Akran says, "The note says the serial killer is hiding on <destination>. We can't verify this claim unless we go there to see for ourselves."`
+
+
+mission "Midnight Bloodstone Murders 6"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran return Dr. Oaks to her family on <destination>."
+	passengers 1
+	cargo "Dr. Oaks" 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Iritoroost
+	destination Greenwater
+	to offer
+		has "Midnight Bloodstone Murders 5: done"
+	on offer
+		conversation
+			`<planet> appears to be abandoned. Inspector Akran says, "I'm heading out to investigate. You two wait here."`
+			`	Oaks shakes her head. "No, I'm going as well."`
+			choice
+				`	"I'm going too."`
+					goto fork
+				`	"Stay safe."`
+			`	Akran nods and both of them leave. Over an hour passes with no word from them. Then you hear a scream in the distance...`
+			``
+			`	You instinctively rush out towards the source of the scream. When you arrive you find Akran unconscious on the floor while Oaks body is convulsing. The jagged edge of what appears to be a Quantum Keystone just out from a wound in her chest.`
+				goto reaction
+
+			label fork
+			`	The three of you head out. After an hour you reach a fork in the hallway. "We should split up to cover more ground. Oaks, you go with Captain <last>. It will be safer for you. Yell if you find anything."`
+			choice
+				`	"I'll keep her safe"`
+					goto split
+				`	This is a bad idea."`
+			`	Oaks agrees. Sighing with resignation, Akran picks a path and the two of you follow. Suddenly, something rushes out of the darkness and crashes into Oaks! She screams as she collapses onto the floor! Akran yells and tackles the dark shape that was standing over her. You see that Oaks has been stabbed in the chest with the jagged edge of what appears to be a Quantum Keystone. Her body twitches violently as blood gushes from the wound. "<last>!" yells Akran. The dark shape throws Akran aside and scampers down the hallway. The Inspector slams into the wall hard before slumping to the floor, unconscious.`
+				goto reaction
+				
+			label split
+			`	You and Oaks take a different hallway from Akran. As you push forward, something rushes out of the darkness and crashes into Oaks! She screams as she collapses onto the floor! A dark shape stands over her and growls at you as Akran arrives. Akran yells and tackles the mysterious attacker. You see that Oaks has been stabbed in the chest with the jagged edge of what appears to be a Quantum Keystone. Her body twitches violently as blood gushes from the wound. "<last>!" yells Akran. The dark shape throws Akran aside and scampers down the hallway. The Inspector slams into the wall hard before slumping to the floor, unconscious.`
+
+			label reaction
+			choice
+				`	(Try to help Oaks.)`
+					goto oaks
+				`	(Try to revive Akran.)`
+					goto akran
+				`	(Search for whatever attacked them.)`
+
+			scene "outfit/bloodstone"
+			branch keyblade
+				has "flagship attribute: quantum keyblade"
+
+			`	Abandoning both Oaks and Akran, you wander the dark hallways alone. Occasionally you hear something moving in the distance. As time passes the sounds seem to take on a hypnotic quality and you can no longer discern what direction they are coming from or how far away they are. Suddenly a dark shape crashses into you and something sharp pierces your chest! You crumple to the floor and vaguely realize that a thin muscular Hai is standing over you. He grabs the jagged Quantum Keystone embedded into your chest and twists it, causing more blood to gush out of the wound as unbearable pain washes over you. As your consciousness slips away, you notice the Quantum Keystone has a reddish hue...`
+				die
+
+			label keyblade
+			`	Abandoning both Oaks and Akran, you wander the dark hallways armed with the Quantum Keyblade. Occasionally you hear something moving in the distance. As time passes the sounds seem to take on a hypnotic quality and you can no longer discern what direction they are coming from or how far away they are. Suddenly a dark shape crashses into you and something sharp pierces your chest! You crumple to the floor, your grip on the Quantum Keyblade weakened from the shock. As it slips away from your hands into the darkness, you vaguely realize that a thin muscular Hai is standing over you. He grabs the jagged Quantum Keystone embedded into your chest and twists it, causing more blood to gush out of the wound as unbearable pain washes over you. As your consciousness slips away, you notice the Quantum Keystone has a reddish hue...`
+				die
+
+			label oaks
+			scene "outfit/bloodstone"
+			`	The wound in her chest is serious. The murder weapon appears to be a Quantum Keystone, albeit with an exotic reddish hue. Its sharp jagged edges have ripped into her flesh. Simply yanking it out will only make it worse. You need the med kit back on the <ship>.`
+			choice
+				`	(Retrieve the med kit.)`
+			`	When you return you notice Oaks' corpse lies still, clearly dead. Akran slowly regains consciousness only to be horrified by the sight before him. But there is no time to mourn. The sound of movement in the distance is ominous and it is clear that staying here isn't safe. The two of you carry Oaks back to the <ship> and you undock from the station.`
+				launch
+
+			label akran
+			`	You try to revive Akran. After a few moments his eyes open. Upon seeing Oaks he gasps in shock. Oaks is not breathing and her body lies still. But there is no time to mourn. The sound of movement in the distance is ominous and it is clear that staying here isn't safe. The two of you carry Oaks back to the <ship> and you undock from the station.`
+				launch
+	on accept
+		log "Minor People" "Dr. April Oaks" `She was killed by an unknown attacker while assisting Inspector Akran with his investigation of a violent serial killer.`
+	on enter
+		dialog "Akran suggests taking Oaks back to her family on Greenwater."
+	on complete
+		payment 0 200
+		payment 4000
+		log "People" "Inspector Ku Ran Chee Akran" `While investigating a series of murders, he and Dr. Oaks were ambushed by the unidentified suspect. Oaks lost her life and the suspect escaped.`
+		conversation
+			scene "outfit/bloodstone"
+			`Inspector Akran mourned the loss of Dr. Oaks during the journey. After arriving, he contacts Dr. Oaks family and arranges for the local medical examiner to study her corpse and take it to a morgue for post death processing. "Captain <last>, I will remain on <planet> for a while to explain to Dr. Oaks family what happened and attend her funeral. Thank you for your assistance these past few days. It is regrettable that it came to a tragic end. Farewell." Akran hands you a final payment of <payment> as the medical examiner arrives. Together they transport Dr. Oaks corpse and the murder weapon to the local forensic lab.`
+
+
+mission "Midnight Bloodstone Theft 1"
+	minor
+	name "Inspector Akran to <planet>"
+	description "Transport Inspector Akran to <destination> to get an update about the investigation into Dr. Oak's murderer."
+	passengers 1
+	source
+		government "Hai"
+		near "Fah Soom" 1 3
+		not attributes station
+		not planet Darkwaste Greenwater
+	destination Greenwater
+	to offer
+		has "Midnight Bloodstone Murders 6: done"
+		has "main plot completed"
+		random < 70
+	on offer
+		conversation
+			`As you are walking by the job boards you notice a Hai wearing a familiar hat posting a job request. Inspector Akran notices you after posting his job request and says, "Well, hello there Captain <last>! Would you happen to be headed towards <system>? I need transportation to <planet> to check in with the local law enforcement about the investigation into Dr. Oak's murderer."`
+			choice
+				`	"I can take you there."`
+				`	"Sorry, I'm not."`
+					goto refuse
+			`	Akran pulls down his job request. "Good. Good! I can think of no one more appropriate to take me on this journey."`
+				accept
+			label refuse
+			`	"I suppose that was too much to hope for." Akran takes another look at his job posting. Nodding in approval, he bids you farewell.`
+				decline
+	on decline
+		log "People" "Inspector Ku Ran Chee Akran" `He is still searching for whoever killed Dr. Oaks.`
+	on complete
+		payment 0 200
+		payment 2000
+		dialog "Akran pays you <payment> for your assistance."
+
+mission "Midnight Bloodstone Theft 2"
+	landing
+	name "Inspector Akran to <planet>"
+	description "Help Inspector Akran with his investigation by transporting him to <destination>."
+	passengers 1
+	cargo "quantum bloodstone" 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source Greenwater
+	destination "Hai-home"
+	to offer
+		has "Midnight Bloodstone Theft 1: done"
+	on offer
+		conversation
+			`Inspector Akran is about to depart to speak with local law enforcement about the investigation into the murder of Dr. Oaks.`
+			choice
+				`	"Would it be alright if I joined you?"`
+				`	"Farewell. I hope you catch whoever killed her."`
+					goto farewell
+			`	Akran responds warmly, "Of course! Afterall, you are the only other person who was there to witness the attack."`
+			`	It takes about an hour to get to the forensics lab. After explaining to the staff who you are, they agree to allow you into their meeting with Akran.`
+			scene "outfit/bloodstone"
+			`	They have identified the murder weapon as a Quantum Bloodstone, a rare keystone variant that has recently been gaining popularity among some Hai. Though it is clearly not a normal Quantum Keystone, most of its composition is the same. A more thorough examination isn't possible at this facility and they ask Inspector Akran to take it to <destination>.`
+			`	Akran turns to you. "So how about it, Captain <last>? Will you take me to <planet>?`
+			choice
+				`	"I'm ready whenever you are."`
+				`	"Farewell. I hope you catch whoever killed her."`
+					goto farewell
+			`	Akran nods. "Let us load this 'Quantum Bloodstone' onto your ship then."`
+				accept
+
+			label farewell
+			`	As Akran leaves, he tips his hat. "I will pursue him to the ends of the galaxy if I need to."`
+				decline
+	on decline
+		log "People" "Inspector Ku Ran Chee Akran" `He is still searching for whoever killed Dr. Oaks.`
+	on complete
+		payment 0 200
+		payment 2000
+		dialog "Akran pays you <payment> for your assistance."
+
+mission "Midnight Bloodstone Theft 3"
+	landing
+	name "Chase The Thief!"
+	description "The Quantum Bloodstone has been stolen! You've witnessed the thief headed for <system>..."
+	passengers 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Hai-home"
+	destination Ironfirth
+	to offer
+		has "Midnight Bloodstone Theft 2: done"
+	on offer
+		conversation
+			scene "outfit/bloodstone"
+			`Soon after parking, a dock worker approaches you. "Is that the murder weapon?" He gestures towards the Quantum Bloodstone. "I was told to deliver that to the Office of Criminal Investigations as soon as possible."`
+			choice
+				`	(Hand over the Quantum Bloodstone.)`
+			`	Soon after the dock worker leaves, Inspector Akran joins you on the landing pad. "I will never get used to human restroo-..." His voice trails off. "Captain <last>, where is the Quantum Bloodstone?"`
+			`	As he asks this, a different dock worker approaches. "Are you Inspector Akran? The Office of Criminal Investigations has asked me to assist you in delivering some evidence to their forensic laboratory."`
+			choice
+				`	"I think I've just been tricked."`
+			`	Akran groans. "What did the con artist look like?"`
+			`	You remember the other dock worker was a male Hai with a thin muscular build.`
+			`	Akran looks around then yells, "That could be our murder suspect!" He points to a nearby landing pad where a Hai dockworker running on all fours knocks a Grasshopper pilot aside and steals his ship. As it rises off the landing pad, Akran turns to you.`
+			choice
+				`	"Let's go after him."`
+				`	"Let the spaceport police catch him."`
+					goto refuse
+			`	Akran nods and rushes back onto the <ship>, leaving the perplexed dock worker behind. With no time to spare, you fire up the engines and make a hasty launch.`
+				launch
+			label refuse
+			`	Akran sighs in resignation. "I suppose it cannot be helped." He leaves with the dockworker to explain the situation to the Office of Criminal Investigations. Your role in this is done.`
+				decline
+	on decline
+		log "A thief stole the murder weapon that was used to kill Dr. Oaks. Inspector Akran is continuing his investigation without my assistance."
+	on enter
+		conversation
+			scene "thumbnail/hai grasshopper"
+			`Just as you leave the atmosphere, you catch a glimpse of the Grasshopper enter hyperspace. It was headed in the direction of <system>.`
+				accept
+	on enter "Ula Mon"
+		conversation
+			`You've arrived in <system>, but the Grasshopper you were chasing is nowhere in sight.`
+			`	Akran frowns. "He could have continued on to one of the adjacent systems. Or he could have landed on the planet. Or one of the stations. I am no starship pilot. <last>, what do your instincts tell you he did?`
+			choice
+				`	"Let's move on."`
+				`	"He's still here."`
+			`	Akran strokes his chin. "But where?"`
+			choice
+				`	(Consider the options.)`
+			scene "planet/desert2"
+			`	Makerplace. Several cities in the temperate regions have populations of over a hundred million Hai, and the factories surrounding the cities spread out for dozens of kilometers in all directions.`
+			choice
+				`	(Continue.)`
+			scene "planet/stationh-ancient1"
+			`	Ironfirth. This uninhabited station was mothballed sometime in the last sixty thousand years.`
+			choice
+				`	(Continue.)`
+			scene "planet/stationh-ancient0"
+			`	Goldcrawl. This is a respite home for the elderly.`
+			choice
+				`	(Continue.)`
+			`	Where should you look? You won't know if you've made the right decision until you land...`
+				accept
+
+mission "Midnight Bloodstone Theft 3 Fail"
+	landing
+	invisible
+	source
+		government "Hai"
+		not planet Darkwaste Ironfirth
+	to offer
+		has "Midnight Bloodstone Theft 3: active"
+	on offer
+		fail "Midnight Bloodstone Theft 3"
+		log "A thief stole the murder weapon that was used to kill Dr. Oaks. Despite our best efforts, Inspector Akran and I failed to catch the thief."
+		conversation
+			scene "outfit/attention"
+			`You've landed on <origin> but can find no sign of the stolen Grasshopper. By now the suspect has clearly escaped and Inspector Akran leaves to file a report with local law enforcement.`
+				decline
+
+mission "Midnight Bloodstone Theft 4"
+	landing
+	source Ironfirth
+	to offer
+		has "Midnight Bloodstone Theft 3: done"
+	on offer
+		conversation
+			scene "thumbnail/hai grasshopper"
+			`You find the stolen Grasshopper docked at <planet>. The thief must be hiding somewhere on this station. Akran stares at the abandoned ship. "He might try to escape on this while we are searching for him."`
+			choice
+				`	"You stay here and guard the Grasshopper."`
+				`	"I'll stay here and guard the Grasshopper."`
+					goto guard
+			branch bladebearer
+				has "Bearer of The Blade"
+			`	Akran scratches his ear. "Sorry captain, but this is my investigation. I insist that you stand guard while I conduct a search of the station." Whether it is because of pride or professionalism, Akran stands firm on this matter and no argument will sway him.`
+				goto guard
+
+			label bladebearer
+			`	Akran wipes his brow. "Who am I to argue with the venerated Bearer of the Blade? I will remain here to block his escape route while you flush out our quarry."`
+			`	Drawing out the Quantum Key Blade, you leave the safety of the docking bay and step into the dark passageways of <origin>. After an hour of exploring the twisting corridors and winding tunnels you find no sign of the thief.`
+			label bladesearch
+			choice
+				`	(Continue to explore.)`
+				`	(Head back to the docking bay.)`
+					goto bay
+			label continue
+			branch bladedoor
+				random < 80
+			`	After an hour of exploring the twisting corridors and winding tunnels you find no sign of the thief.`
+				goto bladesearch
+			label bladedoor
+			branch window
+				random < 20
+			`	Farther down the passage, you find a door which does not open. It may be locked or the power circuits that operate it may have been deactivated.`
+			choice
+				`	(Quantum Shift through the door.)`
+				`	(Search elsewhere.)`
+					goto continue
+			branch ransacked
+				random < 33
+			scene "outfit/attention"
+			`	The area on the other side of the door is completely dark. Deactivating Quantum Shifting, you realize that the lack of lighting is also accompanied with a lack of atmosphere!`
+			choice
+				`	(Escape!)`
+				`	(Sweep the room with your flashlight.)`
+					goto lightroom
+			label escaperoom
+			`	You Quantum Shift back through the door and gasp for air. The thief is definitely not in there.`
+				goto bladesearch
+			label lightroom
+			branch quarters
+				random < 50
+			`	This appears to be a storage room. There are a few metal crates lined up against the far wall. You could try to open them, but you can't hold your breath for much longer...`
+			choice
+				`	(Escape!)`
+					goto escaperoom
+				`	(Try opening a crate.)`
+			`	You yank on the lid, but it doesn't budge. Your lungs are about to give out...`
+			choice
+				`	(Escape!)`
+					goto escaperoom
+				`	(Keep trying!)`
+			`	As you struggle with the lid, the strain on your body proves to be too much and you die from oxygen deprivation.`
+				die
+			label quarters
+			`	All the furniture is gone, but the presence of permanent plumbing and cooking fixtures suggest that this was once a living space for the station's residents. You can see at least two other rooms from where you stand, but you can't hold your breath for much longer...`
+			choice
+				`	(Escape!)`
+					goto escaperoom
+				`	(Search one of the rooms.)`
+			`	This appears to be a bedroom, but the bed cushions and other furnishings have been removed. The closet lies open and is clearly empty.`
+			choice
+				`	(Escape!)`
+					goto escaperoom
+				`	(Search the other room.)`
+			`	This appears to be a restroom. Using the toilet is tempting but you're finding it increasingly hard to hold your breath...`
+			choice
+				`	(Escape!)`
+					goto escaperoom
+				`	(Use the toilet.)`
+			`	It has been a while since you began your search. Unfortunately, your ability to hold your breath is just as strained as your ability to hold your bladder and you die from oxygen deprivation.`
+				die
+			label ransacked
+			`	The room on the other side of the door has been completely ransacked by looters. A door on the opposite side of the room lies open to another corridor beyond.`
+				goto bladesearch
+			label window
+			branch button
+				random < 20
+			branch makerplace
+				random < 50
+			scene "planet/stationh-ancient0"
+			`	You find a viewing portal that gives a clear view of Goldcrawl in the distance.`
+					goto continue
+			label makerplace
+			scene "planet/desert2"
+			`	You find a viewing portal that gives a clear view of Makerplace in the distance.`
+					goto continue
+			label button
+			scene "outfit/unknown"
+			`	You find a control panel with a shiny red button in its center. There's something written in Hai above it, but you don't understand what it says.`
+			choice
+				`	(Push the button.)`
+				`	(Ignore it and move on.)`
+					goto continue
+			`	An alarm sounds as a barriers slam down to seal off the section of corridor you're in. Simultaneously, a door nearby slides open to the empty void outside the station.`
+			choice
+				`	(Quantum Shift.)`
+				`	(Grab a wall panel.)`
+					goto wall
+			`	You quickly Quantum Shift, but the force of the despressurization has already caused you to float out of the station. With no hope of returning to safety, your lungs give out and you die from oxygen deprivation.`
+				die
+			label wall
+			`	You quickly grab a section of wall paneling as the air is drained out of the passage. As the hallway approaches full despressurization, the force of the vaccuum diminishes. Taking advantage of this, you are able to swing yourself back towards the nearest barrier and the safety beyond. Briefly Quantum Shifting through, you land and gasp for air. The alarm continues blaring for a few seconds while you recover. When it stops, an automated voice announces something in Hai. Both Akran and the thief must have heard that...`
+			choice
+				`	(Head back to the docking bay.)`
+			label bay
+			`	You arrive at the docking bay to find Akran lying on the floor in a puddle of blood! The Grasshopper's engines are firing up. The thief is making a run for it!`
+			choice
+				`	(Go after him!)`
+				`	(Tend to Akran.)`
+					goto tend
+			scene "thumbnail/hai grasshopper"
+			`	You rush aboard the <ship> and head out in pursuit.`
+				launch
+			label tend
+			action
+				set "midnight bloodstone theft 4 akran medic"
+			`	The Grasshopper flees while you tend to Akran. He took a hard blow to the head but you are able to mitigate the bleeding. He slowly regains consciousness and asks, "Did you catch him?" Seeing the expression on your face he says, "I see." Groaning while you help him to his feet he remarks, "I think I need to get checked out. Take me to Makerplace."`
+				decline
+
+			label guard
+			`	An hour passes with nothing happening.`
+			choice
+				`	(Stand guard!)`
+				`	(Abandon your post.)`
+					goto abandon1
+
+			scene "outfit/unknown"
+			`	After an hour there is a sudden alarm followed by an automated announcement spoken in Hai. Then the silence returns. Whatever that announcement was, you're certain both Akran and the thief heard it.`
+			choice
+				`	(Stand guard!)`
+				`	(Abandon your post.)`
+					goto abandon2
+			scene "outfit/attention"
+			action
+				set "bloodstone thief void akran"
+			`	Another hour passes and the thief steps out of the darkness into the docking bay. "Hello monkey! I sent your friend on a spacewalk, without an environmental suit!" Pointing at you, he declares "You're next!"`
+			choice
+				`	(Blast him.)`
+				`	(Draw the Quantum Key Blade.)`
+					goto baykeyblade
+					to display
+						has "flagship attribute: quantum keyblade"
+				`	(Unleash T.H.O.R.)`
+					goto baythor
+					to display
+						has "outfit (flagship installed): T.H.O.R."
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+					goto bayorphan
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
+			`	You point your gun at him and open fire. The thief dodges and at you! You manage to block it with your weapon, but in the time it takes you to recover he has already rushed aboard the Grasshopper and is making his escape.`
+			choice
+				`	(Go after him!)`
+					launch
+			label baykeyblade
+			scene "thumbnail/hai grasshopper"
+			`	The thief pulls out a knife and throws it at you! You quickly Quantum Shift to avoid being impaled, but he uses that opportunity to board the Grasshopper and escape!`
+			choice
+				`	(Go after him!)`
+					launch
+			label baythor
+			scene "outfit/bloodstone"
+			action
+				outfit "Quantum Bloodstone" 1
+			`	"THOR!" A hatch on the side of the <ship> opens and T.H.O.R. showers the thief with gatling fire! Glistening in the gory pile of his remains is the Quantum Bloodstone.`
+			`	Searching the station for Investigator Akran, you find a section that has been depressurized. It appears the thief was not lying about sending Akran out into the void...`
+				decline
+			label bayorphan
+			scene "outfit/bloodstone"
+			action
+				outfit "Quantum Bloodstone" 1
+				outfit "Evidence of ********" 1
+				"captain of atrocity" ++
+			`	Glaring at the thief, you imagine him suffocating. His smirk turns to confusion upon realizing that he is unable to breath. Now matter how hard he struggles, his own lungs have become depressurized and his diaphram is unable to draw air into them. After a few agonizing moments, he dies oxygen deprivation. Collapsing to the floor, he drops the Quantum Bloodstone.`
+			`	Searching the station for Investigator Akran, you find a section that has been depressurized. It appears the thief was not lying about sending Akran out into the void...`
+				decline
+
+			label abandon1
+			action
+				set "bloodstone thief voidbay"
+			`	After an hour of exploring the twisting corridors and winding tunnels you find no sign of the thief. Suddenly you hear an alarm followed by an automated announcement spoken in Hai. Then the silence returns. Whatever that announcement was, you're certain both Akran and the thief heard it.`
+			choice
+				`	(Head back to the docking bay.)`
+					goto bayvoid
+
+			label abandon2
+			action
+				set "bloodstone thief voidbay"
+			`	Searching the station, you find a section that has been depressurized.`
+			choice
+				`	(Head back to the docking bay.)`
+
+			label bayvoid
+			`	You arrive at the docking bay to find the Grasshopper's engines are firing up. The thief is making a run for it!`
+			choice
+				`	(Go after him!)`
+			scene "thumbnail/hai grasshopper"
+			`	You rush aboard the <ship> and head out in pursuit.`
+				launch
+
+	npc kill
+		government "Phenomenon (dangerous)"
+		personality target waiting heroic marked mute
+		ship "Grasshopper (Bloodstone)" "Ma Da Ur"
+		on kill
+			dialog "Return to <origin> and check on Akran."
+
+mission "Midnight Bloodstone Theft 4B"
+	landing
+	invisible
+	source Makerplace
+	to offer
+		has "midnight bloodstone theft 4 akran medic"
+	on offer
+		payment 4000
+		log "A thief stole the murder weapon that was used to kill Dr. Oaks. Despite our best efforts, Inspector Akran and I failed to catch the thief."
+		conversation
+			scene "outfit/medical bay"
+			`You inform the spaceport authority that you have a passenger in need of medical treatment. By the time you land, a team is ready to take Inspector Akran to the local emergency room for examination and treatment. As they start to wheel him away Akran says, "We'll get him next time, I'm sure..."`
+			`	Some time later, a messenger delivers <payment> to your ship on Akran's behalf. An attached note expresses Akran's gratitude for your assistance.`
+				decline
+
+mission "Midnight Bloodstone Theft 5"
+	landing
+	name "Corpse to <planet>"
+	description "Take Inspector Akran's corpse to <destination>."
+	source Ironfirth
+	destination "Hai-home"
+	to offer
+		has "Midnight Bloodstone Theft 4: done"
+	on offer
+		log "People" "Inspector Ku Ran Chee Akran" `He was murdered while in pursuit of the thief who stole the murder weapon used to kill Dr. Oaks.`
+		conversation
+			branch akranvoid
+				has "bloodstone thief void akran"
+			branch voidbay
+				has "bloodstone thief voidbay"
+			`You find Akran's corpse just as you left him. With no instructions on what to do, there's nothing else to do but bring him back to <destination>.`
+				accept
+			label akranvoid
+			`Searching the station for Investigator Akran, you find a section that has been depressurized. It appears the thief was not lying about sending Akran to his death out in the void...`
+				decline
+			label voidbay
+			` When you return, there is still no sign of Investigator Akran at the docking bay. Searching the station, you find a section that has been depressurized. With no other leads, you can only conclude that the thief somehow sent Akran to his death out in the void...`
+				decline
+	on complete
+		payment 0 200
+		payment 2000
+		conversation
+			`You alert the spaceport authorities about the death of Inspector Akran. By the time you land, a team is ready to take Inspector Akran's corpse for forensic examination. Because of the violent nature of his death, you are temporarily detained for questioning. Afterwards, the Office of Criminal Investigations rewards you with <payment> for not abandoning his corpse.`
+
+
+mission "Danger In Darkwaste 1"
+	minor
+	name "Hai Camping Trip"
+	description "Transport Blawi and his camping club to the wilderness world of <destination> for an overnight camping trip."
+	source
+		government Hai
+		not attributes "uninhabited"
+		not planet "Darkwaste"
+	destination "Darkwaste"
+	passengers 3
+	to offer
+		month == 10
+		random < 70
+	on offer
+		conversation
+			`You return from the spaceport to find an old Hai in what looks like hiking gear waiting for you. "Greetings human, would you happen to be the captain of the <ship>?"`
+			choice
+				`	"Yes, Captain <first> <last>, at your service."`
+				`	"Yes, but I'm not taking jobs right now."`
+					goto refused
+			`	"Ah <first> <last> is it? A fine name indeed. My name is Blawi and the camping club I organize has been looking for a captain not susceptible to superstitions. We need transportation to the wilderness world of <destination> for an overnight camping trip, then a return trip to Hai-home. Would you be interested in taking the job? We can pay you 1,000,000 credits for the trouble."`
+			choice
+				`	"A million credits? Sure, no problem!"`
+				`	"What superstitions?"`
+					goto superstitions
+			label end
+			`	"Wonderful1! I'll tell the other club members the great news!"`
+				accept
+			label superstitions
+			scene "planet/rock18"
+			`	"Some Hai captains have weird notions about <planet> being cursed. Some won't even enter the system! Such a bother for camping enthusiasts like myself. So how about it? Would you be able to transport us there and back?"`
+			choice
+				`	"Alright, I'll take you there."`
+					goto end
+				`	"Sorry, not interested."`
+			label refused
+			`	"The camping club members will be so disappointed. At this rate it looks like our camping trip will be cancelled."`
+				decline
+	on accept
+		log "Minor People" "Blawi" `The organizer of a Hai camping club planning an overnight trip to the wilderness world of Darkwaste.`
+
+	on enter "Fah Root"
+		dialog `Several human ships are already in this system. "Other campers," explains Blawi. "Hurry and land before all the good spots are taken!"`
+	npc
+		government "Merchant"
+		system "Fah Root"
+		personality waiting staying uninterested
+		fleet
+			names "civilian"
+			cargo 3
+			commodities "Food" "Equipment" "Medical"
+			variant
+				"Star Queen (Hai)"
+				"Bounder"
+				"Scout (Speedy)"
+				"Shuttle" 2
+
+mission "Danger In Darkwaste 2"
+	landing
+	invisible
+	name "Hai Camping Trip"
+	description "Transport Blawi and his camping club to <destination> after their camping trip."
+	source "Darkwaste"
+	destination "Hai-home"
+	passengers 3
+	to offer
+		has "Danger In Darkwaste 1: done"
+	on offer
+		conversation
+			`As Blawi and the others unpack their things, he asks "Captain <last>, would you like to join us? Sleeping under the stars might be a nice change of pace from sleeping in your ship."`
+			choice
+				`	"Alright. Some fresh air might be refreshing."`
+				`	"No thanks, I'll be fine on the <ship>."`
+					goto end
+			scene "scene/scene-campfire"
+			`	"Don't worry about supplies. We've brought enough to share." The group welcomes you and introduce themselves as they begin their hike into the nearby mountains. After a few hours, you arrive at a place where several other groups have set up tents and campfires. By the time the sun sets Blawi's camping club has their own campfire going.`
+			`	"Let's roast chestnuts!" One of the club members, Hemijo if you remember her name correctly, is holding up a big bag of what are supposedly chestnuts. After she tears it open, Dolewi, a husky Hai who had some trouble during the earlier hike, starts impaling the nuts on barbecue sticks. From their large size and ease with which he pierced them, it's obvious that these aren't the chestnuts from Earth that are sold and distributed throughout human space. Hemijo notices your interest and explains, "Oh <first>! These aren't the chestnuts imported from human space. It's actually a tropical fruit native to Greenbloom's rainforests. We just call them chestnuts because that's what humans say they are reminded of when we roast them."`
+			`	Dolewi soon has some "chestnuts" roasting over the fire and hands one finished stick to you. As they roast, a sweet aroma fills your nostrils.`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Hand it to Hemijo.)`
+			scene "scene/scene-campfire"
+			`	You hand the stick of roasted "chestnuts" to Hemijo and she gladly accepts it. Without hesitation she bites into the still steaming fruit. There are audible wet chewing sounds as some of the juice leaks from the sides of her mouth. "My gosh! It's so good!"`
+			`	"The next one is finished." Dolewi offers the barbecue stick to you.`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Hand it to Blawi.)`
+			scene "scene/scene-campfire"
+			`	You offer the stick of roasted fruit to Blawi, who has just finished setting up a tent. "Thanks <first>!" He bites into the fruit, munching on it as some juice leaks from the corners of his mouth. "Mmm! Tasty! Just what I needed!"`
+			`	"This one is just about done." Dolewi looks at you as he holds out the stick of roasted fruit. "Be careful. It's hot."`
+			choice
+				`	(Dig in!)`
+					goto eat
+				`	(Politely refuse.)`
+			scene "scene/scene-campfire"
+			`	Dolewi shrugs and chomps down the fruit himself. "Mmh!" He sucks in air and grabs a nearby canteen for some water. "It's good but hot!" He takes another bite, wiping the juice running down the sides of his mouth and licks his paws. There's still one stick of uncooked fruit, but Dolewi doesn't seem interested in roasting it.`
+			choice
+				`	(Cook it yourself.)`
+				`	(Get a drink instead.)`
+					goto drink
+				`	(Go for a walk.)`
+					goto walk
+			scene "scene/scene-campfire"
+			`	You pick up the last stick and hold it out over the fire. "Keep it above the flame or you'll burn it," warns Dolewi. After a while you can hear the juices sizzling within. Hot steam wafts up from the roasted fruit when you pull it back from the flames. Its sweet aroma tantalizes your senses. Remembering how Dolewi reacted earlier, you blow on the "chestnut" a few times to let it cool before taking a bite. Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label eat
+			scene "scene/scene-campfire"
+			`	You accept the stick of still sizzling fruit and are about to take a bite when Hemijo yells "Stop!" Blawi and Dolewi are both startled by her exclamation. "Let it cool a bit, you don't want to burn yourself," she explains. The sizzling slows down and you carefully bite into the warm roasted "chestnut". Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label drink
+			scene "scene/scene-campfire"
+			`	You pull a flask of whisky from your pocket and help yourself to a bit of happy juice. What starts with a few sips turns into gulps and you fall asleep holding the empty bottle as Blawi, Hemijo, and Dolewi are all staring at you...`
+			choice
+				`	(The nightmare begins.)`
+			label nightmare
+			scene "scene/scene-bloodyknife"
+			``
+			`THUD.`
+			``
+			`THUD.`
+			``
+			`THUD.`
+			``
+			`	Your head is pounding as you wake up bleary eyed, your mind still wrapped in the murky fog of blissful unconsciousness. After a moment you realize that you've been tied up along with the humans from other camping groups. The Hai campers have gathered all around you, chanting in their native language. You recognize Dolewi beating a drum while Hemijo has joined in the chant. The chanting stops as Blawi stands before you. He yells, "In the name of the true Hai we offer this SACRIFICE TO THE ACORN GOD," before stabbing you in the chest! The Hai cultists cheer as the other human sacrifices look with horror at your last dying moments, knowing they'll soon meet the same fate.`
+				die
+			label walk
+			scene "scene/scene-campfire"
+			`	"I'm going for a walk," you say as you turn to leave.`
+			`	"Don't stray too far," warns Blawi.`
+			`	"Being alone in the dark can be dangerous," suggests Hemijo.`
+			`	You nod, noticing that Dolewi has set up a stew pot over the fire and is sharpening a knife, presumably to cut some vegetables. "Don't stay out too late," he says while staring at you. "It'd be a shame if you missed the main course!"`
+			choice
+				`	(Walk for a bit.)`
+			`	As you put some distance between yourself and the camp, the cold night air instills a craving for the warmth of the campfire. What will you do?`
+			choice
+				`	(Return to camp.)`
+				`	(Snoop around.)`
+					goto snoop
+				`	(Return to the <ship>)`
+					goto ship
+			`	When you return Dolewi is still chopping vegetables, but the last stick of "chestnuts" is available. After your walk in the cold, the thought of eating the warm fruit is impossible to resist and you set about roasting and eating it. Blawi, Hemijo, and Dolewi are all staring as you swallow...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label snoop
+			`	You make your way to one of the other camps and peek at them from the darkness. This group of Hai campers have begun tying up an unconscious human, probably the ship captain that brought them here. You try to listen to their chatter, but it's in a language you are unfamiliar with. You weren't expecting a fight, so all you have is a pistol.`
+			choice
+				`	(Make a rescue attempt.)`
+				`	(Seek help.)`
+					goto help
+				`	(Slip away into the darkness.)`
+					goto darkness
+			`	You pull your pistol and take aim at the nearest Hai. You're not sure why they've tied up the human but something in your gut tells you that what they're doing is wrong. The Hai are a peaceful people, right? Right?`
+			`	As these thoughts rush through your mind someone clobbers you on the back of the head...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label help
+			scene "scene/scene-bloodyknife"
+			`	You rush back to Blawi's camp to seek help. "Some of the other campers have taken a human hostage!"`
+			`	"Now calm down <first> and show us where," replies Blawi.`
+			`	"This way!" You turn towards the other Hai camp when you feel a sharp pain in your back and abdomen. Startled, you realize the tip of Dolewi's cooking knife is protruding from your belly!`
+			`	"Now's as good a time as any," mutters Blawi before screaming, "In the name of the true Hai we offer this SACRIFICE TO THE ACORN GOD!" You slump to the ground in pain as the Hai cultists begin butchering you...`
+				die
+			label darkness
+			`	You slip away into the darkness before anyone notices your presence. Checking the other camp sites, similar situations are unfolding as the Hai tie up their human guests. In the distance, you can hear a steady drum beat. The Hai begin chanting in their native language as they carry off the human captives toward the sound. Blawi and the others might have intended to do the same thing to you. Could this be some sort of cult?`
+			choice
+				`	(Head towards the sound of the drums.)`
+				`	(Return to your ship and escape from Darkwaste.)`
+					goto escape
+			`	The sound of the drums reverberates through your bones as you get closer. Suddenly, you hear Hai chittering in their native language nearby! You see a blur as something rushes through the darkness and knocks you out...`
+			choice
+				`	(The nightmare begins.)`
+					goto nightmare
+			label escape
+			`	You rush back to the <ship> and begin an emergency take off. You're not sure what's going to happen to the captured humans, but someone needs to report this to the Hai authorities. Rising above Darkwaste, the orange lights of their campfires glow like the eyes of demons in the dark...`
+				flee
+			label ship
+			`	It's a long walk to get back to the <ship>. After getting in you set the environmental controls to warm the interior and grab some canned slop from the supply chest to fill your empty belly. As you settle into your bunk for a relaxing sleep you wonder if the campers are enjoying themselves.`
+			``
+			`	The following day, Blawi and the others return to the <ship>. "You had us worried <first>. I'm glad you're okay, but that was a very selfish thing you did!" They finish stowing away their gear and are ready to head to <destination>.`
+				accept
+			label end
+			`	"Suit yourself." Blawi seems disappointed as he joins the other campers. You watch them hike towards the mountains. As the sun sets you can see them lighting their campfires, mere specks of orange light, far in the distance.`
+			``
+			`	The following day, Blawi and the others return to the <ship>, ready to go to <destination>. They seem more relaxed after enjoying their camping trip.`
+				accept
+	on enter
+		dialog `The other human captains seem to still be parked on Darkwaste. Maybe they slept in...`
+	on decline
+		log "Minor People" "Blawi" `Blawi seems to be involved in some sort of Hai cult.`
+		log "Blawi and the other Darkwaste campers may actually be cultists. During their camping trip they kidnapped humans and seemed to be preparing for some kind of ritual."
+
+	on complete
+		payment 1000000
+		conversation
+			scene "effect/blood"
+			`	After landing Blawi and his companions thank you for making the trip possible and hand over credit chips worth <payment>. That's a lot to be carrying around. After they're gone you notice a dark stain where Blawi had stored his gear. When you try wiping it away the wash cloth smears red, as if stained with blood...`
+
+mission "Danger In Darkwaste Escape Epilogue"
+	landing
+	invisible
+	source
+		government Hai
+		attributes spaceport
+		not attributes "uninhabited"
+		not planet "Darkwaste"
+	to offer
+		has "Danger In Darkwaste 2: declined"
+	on offer
+		conversation
+			scene "scene/scene-campfire"
+			`Do you want to tell the Hai authorities about your experience with Blawi's camping club on Darkwaste?`
+			choice
+				`	(Report the situation to the authorities.)`
+				`	(Not yet.)`
+					defer
+			scene "outfit/bloodstone"
+			`You find the spaceport authorities and report your tale of suspected Hai cultists and human hostages.`
+			`	"That is just a conspiracy theory," exclaims one of the officers on duty. "Stop wasting our time or I will have you arrested for interfering with Hai police operations!"`
+			`	You are about to leave when a Hai prisoner being processed yells out to you, "The cultists are real! Look for the Quantum Bloodstones!" The Hai police struggle to keep the prisoner under control, finally stunning him with a Pulse Pistol. They drag his unconscious form off to their detention facility. The officer who shot him comments, "Do not listen that criminal. He would say anything to cause a disruption and escape."`
+				decline
+	on decline
+		event "add quantum bloodstones"
+		log "The authorities claim the existance of the Hai cultists is nothing more than a conspiracy theory. A Hai criminal claims that the Hai cultists are real and that they are associated with Quantum Bloodstones."
+
+

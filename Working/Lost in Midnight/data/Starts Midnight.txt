@@ -2553,6 +2553,7 @@ conversation "conundrum intro"
 		`	"Let's find our way home."`
 			accept
 
+
 mission "Conundrum Intro [0]"
 	landing
 	name "The Long Detour Home"
@@ -2585,6 +2586,10 @@ mission "Conundrum Intro [0]"
 			label light
 			scene "outfit/search light"
 			`	Target the creature with the Spotlight or Search Light to examine it before trying to climb aboard and carve out a chunk of anything that looks edible. Beware that doing this could make its friends angry...`
+	on enter "Deep Space 1X"
+		conversation
+			scene "ship/nova egg pouch"
+			`James monitors the scanners. "This gas cloud is rich in deuterium. We can refill our fuel here." The scanner beeps, detecting a sizable object in the cloud. James looks at the data and says, "I'm not sure what that is. It doesn't appear hostile, but we should probably keep our distance."`
 	on enter "Devil-Run"
 		conversation
 			branch starvation
@@ -2593,7 +2598,7 @@ mission "Conundrum Intro [0]"
 			scene "planet/forest3"
 			`James checks the sensor data. "<first>, we might be back! <system> appears to be nearby. One more jump and we can be back on <planet>!"`
 			scene "outfit/jump drive (damaged)"
-			`	You'll need to use the Jump Drive. With the state it's currently in, make sure your fuel tanks are full in order to initiate a jump.`
+			`	You inspect the Jump Drive. With the state it's currently in, your fuel storage needs to be full in order to initiate a jump.`
 				accept
 			label starvation
 			scene "scene/scene-guts"
@@ -2618,14 +2623,15 @@ mission "Conundrum Intro [0]"
 		on assist
 			dialog "The creature suddenly twitches! It seems to be recovering. You won't be able to harvest anything from it now..."
 	npc
-		government "Forest (Prey)"
+		government "Invasive Lifeform (Passive)"
 		system "Deep Space 1X"
-		personality waiting staying derelict timid mining harvests mute
-		ship "Pincer Beast (Carcass)" " "
-		on provoke
-			dialog "Examining the creature's wound, you see what looks like edible meat exposed..."
-		on assist
-			dialog "The creature suddenly twitches! It seems to be recovering. You won't be able to harvest anything from it now..."
+		personality timid mining harvests uninterested mute
+		fleet
+			names "nova firefly"
+			cargo 0
+			variant 1
+				"Egg Pouch" 1
+				"Firefly Young" 4
 	npc
 		government "Indigenous Lifeform"
 		system "Deep Space 1Q"
@@ -2642,7 +2648,7 @@ mission "Conundrum Intro [0]"
 			dialog "The creature suddenly twitches! It seems to be recovering. You won't be able to harvest anything from it now..."
 	npc
 		government "Forest (Prey)"
-		system "Deep Space 5J"
+		system "Deep Space 5N"
 		personality waiting staying derelict timid mining harvests mute
 		ship "Pincer Beast (Carcass)" " "
 		on provoke
@@ -2651,7 +2657,7 @@ mission "Conundrum Intro [0]"
 			dialog "The creature suddenly twitches! It seems to be recovering. You won't be able to harvest anything from it now..."
 	npc
 		government "Forest (Prey)"
-		system "Deep Space 7F"
+		system "Deep Space 5J"
 		personality waiting staying derelict timid mining harvests mute
 		ship "Pincer Beast (Carcass)" " "
 		on provoke
@@ -2674,6 +2680,21 @@ mission "Conundrum Intro [0]"
 	on complete
 		"reputation: Syndicate" <?= -1
 
+mission "Conundrum Intro [0 Failure]"
+	landing
+	invisible
+	to offer
+		not "Conundrum Intro [0]: done"
+		has "flagship base attribute: the conundrum"
+	on offer
+		conversation
+			scene "scene/scene-guts"
+			`The journey to make it this far has been a difficult one. Unfortunately, despite rationing what little food was available, you and James were unable to keep yourselves adequately fed. At some point while you were away from civilization, starvation gnawed away at your last remaining shreds of rational thought. The consuming hunger needed to be sated...`
+			``
+			`...`
+			``
+			`When the spaceport authorities pry open the Conundrum's hatch, they find the leftover scraps of James' remains and a deranged lunatic smeared in James' blood. You spend the rest of your life in a mental institution, never regaining your sanity from whatever happened out there.`
+				die
 
 mission "Conundrum Intro [1]"
 	landing
@@ -2699,8 +2720,8 @@ mission "Conundrum Intro [1]"
 				`	(Launch the Conundrum!)`
 					launch
 				`	(Surrender to the authorities.)`
-			`	"<first>! They're coming! We need to go! NOW!" At this point, James is shouting...`
 			scene "outfit/attention"
+			`	"<first>! They're coming! We need to go! NOW!" At this point, James is shouting...`
 			choice
 				`	(Launch the Conundrum!)`
 					launch

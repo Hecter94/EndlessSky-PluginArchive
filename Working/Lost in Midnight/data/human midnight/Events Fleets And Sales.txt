@@ -1589,9 +1589,12 @@ mission "Southern Fleet Flamethrowers"
 		has "event: flamethrower available"
 	on offer
 		event "southern fleet flamethrowers"
+		set "southern flamethrower pirate patched"
 		fail
 
 event "southern fleet flamethrowers"
+	planet "Smuggler's Den"
+		add outfitter "Modified Plasma Turret"
 	fleet "Large Southern Merchants"
 		add variant 1
 			"Freighter"
@@ -1653,27 +1656,27 @@ event "southern fleet flamethrowers"
 		add variant 1
 			"Clipper (Flamethrower)"
 		add variant 1
-			"Osprey (Flamethrower)"
+			"Osprey (Flamethrower Pirate)"
 			"Fury (Flamethrower)"
 		add variant 1
-			"Osprey (Flamethrower)"
+			"Osprey (Flamethrower Pirate)"
 			"Sparrow (Limit Break)"
 		add variant 1
-			"Osprey (Flamethrower)"
+			"Osprey (Flamethrower Pirate)"
 			"Hawk"
 		add variant 1
 			"Modified Argosy (Flamethrower)"
 			"Fury (Flamethrower)"
 		add variant 1
-			"Bastion (Flamethrower)"
+			"Bastion (Flamethrower Pirate)"
 		add variant 1
-			"Falcon (Flamethrower)"
+			"Falcon (Flamethrower Pirate)"
 		add variant 1
-			"Falcon (Flamethrower)"
+			"Falcon (Flamethrower Pirate)"
 			"Sparrow (Modified Blaster)" 2
 			"Sparrow (Limit Break)"
 		add variant 1
-			"Falcon (Flamethrower)"
+			"Falcon (Flamethrower Pirate)"
 			"Fury (Flamethrower)" 3
 	fleet "Small Independent"
 		add variant 1
@@ -1758,6 +1761,77 @@ event "southern fleet flamethrowers"
 			"Fury (Flamethrower)" 2
 			"Sparrow" 4
 
+outfitter "Modified Plasma Turret"
+	"Modified Plasma Turret"
+
+mission "Southern Flamethrower Pirate Patch"
+	landing
+	invisible
+	to offer
+		has "event: southern fleet flamethrowers"
+		not "southern flamethrower pirate patched"
+	on offer
+		event "southern flamethrower pirate patch"
+		fail
+
+event "southern flamethrower pirate patch"
+	planet "Smuggler's Den"
+		add outfitter "Modified Plasma Turret"
+	fleet "Large Southern Pirates"
+		remove variant 1
+			"Osprey (Flamethrower)"
+			"Fury (Flamethrower)"
+		remove variant 1
+			"Osprey (Flamethrower)"
+			"Sparrow (Limit Break)"
+		remove variant 1
+			"Osprey (Flamethrower)"
+			"Hawk"
+		remove variant 1
+			"Bastion (Flamethrower)"
+		remove variant 1
+			"Falcon (Flamethrower)"
+		remove variant 1
+			"Falcon (Flamethrower)"
+			"Sparrow (Modified Blaster)" 2
+			"Sparrow (Limit Break)"
+		remove variant 1
+			"Falcon (Flamethrower)"
+			"Fury (Flamethrower)" 3
+		add variant 1
+			"Osprey (Flamethrower Pirate)"
+			"Fury (Flamethrower)"
+		add variant 1
+			"Osprey (Flamethrower Pirate)"
+			"Sparrow (Limit Break)"
+		add variant 1
+			"Osprey (Flamethrower Pirate)"
+			"Hawk"
+		add variant 1
+			"Bastion (Flamethrower Pirate)"
+		add variant 1
+			"Falcon (Flamethrower Pirate)"
+		add variant 1
+			"Falcon (Flamethrower Pirate)"
+			"Sparrow (Modified Blaster)" 2
+			"Sparrow (Limit Break)"
+		add variant 1
+			"Falcon (Flamethrower Pirate)"
+			"Fury (Flamethrower)" 3
+
+
+mission "Midnight Add Modified Plasma Turret"
+	landing
+	invisible
+	to offer
+		has "event: dreadnoughts for sale"
+	on offer
+		event "midnight add modified plasma turret"
+		fail
+
+event "midnight add modified plasma turret"
+	outfitter "Pirate Advanced"
+		add "Modified Plasma Turret"
 
 
 mission "Southern Dreadnought Flamethrowers"
@@ -2731,6 +2805,7 @@ mission "Add Twin Torpedo Pods"
 		event "add twin torpedo pods"
 		set "added pirate raid rivals twin torpedo pods"
 		set "restricted twin torpedo pods"
+		set "plasma twin torpedo pod patched"
 		fail
 
 event "add twin torpedo pods"
@@ -2744,7 +2819,7 @@ event "add twin torpedo pods"
 		add variant 1
 			"Modified Argosy (Twin Torpedo Pod)"
 		add variant 1
-			"Falcon (Twin Torpedo Pod)"
+			"Falcon (Twin Torpedo Pod Pirate)"
 		add variant 1
 			"Firebird (Twin Torpedo Pod)"
 		add variant 1
@@ -2762,7 +2837,7 @@ event "add twin torpedo pods"
 		add variant 1
 			"Modified Argosy (Twin Torpedo Pod)"
 		add variant 1
-			"Falcon (Twin Torpedo Pod)"
+			"Falcon (Twin Torpedo Pod Pirate)"
 		add variant 1
 			"Firebird (Twin Torpedo Pod)"
 		add variant 1
@@ -2787,10 +2862,10 @@ event "add twin torpedo pods"
 			"Fury (Heavy)" 2
 			"Modified Argosy (Twin Torpedo Pod)"
 		add variant 1
-			"Falcon (Twin Torpedo Pod)"
+			"Falcon (Twin Torpedo Pod Pirate)"
 	fleet "Large Core Pirates"
 		add variant 1
-			"Falcon (Twin Torpedo Pod)"
+			"Falcon (Twin Torpedo Pod Pirate)"
 		add variant 1
 			"Firebird (Twin Torpedo Pod)"
 	fleet "Small Northern Pirates"
@@ -2835,7 +2910,7 @@ event "add twin torpedo pods rivals patch"
 		add variant 1
 			"Modified Argosy (Twin Torpedo Pod)"
 		add variant 1
-			"Falcon (Twin Torpedo Pod)"
+			"Falcon (Twin Torpedo Pod Pirate)"
 		add variant 1
 			"Firebird (Twin Torpedo Pod)"
 		add variant 1
@@ -2869,6 +2944,40 @@ event "restrict twin torpedo pods"
 		add outfitter "Twin Torpedo Pod"
 	planet "New Tortuga"
 		add outfitter "Twin Torpedo Pod"
+
+mission "Plasma Twin Torpedo Pod Patch"
+	landing
+	invisible
+	to offer
+		has "event: add twin torpedo pods"
+		not "plasma twin torpedo pod patched"
+	on offer
+		event "plasma twin torpedo pod patch"
+		fail
+
+event "plasma twin torpedo pod patch"
+	fleet "pirate raid"
+		remove variant 1
+			"Falcon (Twin Torpedo Pod)"
+		add variant 1
+			"Falcon (Twin Torpedo Pod Pirate)"
+	fleet "pirate raid (rivals)"
+		remove variant 1
+			"Falcon (Twin Torpedo Pod)"
+		add variant 1
+			"Falcon (Twin Torpedo Pod Pirate)"
+	fleet "Large Southern Pirates"
+		remove variant 1
+			"Falcon (Twin Torpedo Pod)"
+		add variant 1
+			"Falcon (Twin Torpedo Pod Pirate)"
+	fleet "Large Core Pirates"
+		remove variant 1
+			"Falcon (Twin Torpedo Pod)"
+		add variant 1
+			"Falcon (Twin Torpedo Pod Pirate)"
+
+
 
 
 event "kraz twin torpedo pods"
@@ -2985,6 +3094,7 @@ mission "Add Marauder Argosy"
 		has "main plot completed"
 	on offer
 		event "add marauder argosy"
+		set "midnight marauder barb patched"
 		fail
 
 event "add marauder argosy"
@@ -2995,6 +3105,8 @@ event "add marauder argosy"
 			"Marauder Argosy (Sniper)"
 		add variant 6
 			"Marauder Argosy (Afterburner)"
+		add variant 1
+			"Marauder Barb"
 	fleet "Marauder Bounty (Disguised)"
 		add variant 6
 			"Marauder Argosy"
@@ -3002,6 +3114,8 @@ event "add marauder argosy"
 			"Marauder Argosy (Sniper)"
 		add variant 6
 			"Marauder Argosy (Afterburner)"
+		add variant 1
+			"Marauder Barb"
 	fleet "Marauder Independent (Killable)"
 		add variant 6
 			"Marauder Argosy"
@@ -3009,6 +3123,8 @@ event "add marauder argosy"
 			"Marauder Argosy (Sniper)"
 		add variant 6
 			"Marauder Argosy (Afterburner)"
+		add variant 1
+			"Marauder Barb"
 	fleet "Marauder II"
 		add variant 3
 			"Marauder Argosy"
@@ -3019,18 +3135,74 @@ event "add marauder argosy"
 	fleet "pirate raid"
 		add variant 1
 			"Marauder Argosy"
-			"Fury (Flamethrower)" 2
+			"Marauder Barb" 2
 		add variant 1
 			"Marauder Argosy (Sniper)"
-			"Hawk (Inferno Rockets)" 2
+			"Marauder Barb"
+			"Marauder Barb (Plasma Cannon)"
 		add variant 1
 			"Marauder Argosy (Afterburner)"
-			"Raven (Afterburner)" 2
+			"Marauder Barb"
+			"Marauder Barb (Proton Gun)"
 	fleet "Bounty Hunters"
 		add variant 1
 			"Marauder Argosy (Bounty Hunter)"
-			"Fury (Missile)"
+			"Marauder Barb (Energy Cannon)"
+	fleet "Marauder I"
+		add variant 3
+			"Marauder Barb"
 
+mission "Midnight Marauder Barb Patch"
+	landing
+	invisible
+	to offer
+		has "event: add marauder argosy"
+		not "midnight marauder barb patched"
+	on offer
+		event "midnight marauder barb patch"
+		fail
+
+event "midnight marauder barb patch"
+	fleet "pirate raid"
+		remove variant 1
+			"Marauder Argosy"
+			"Fury (Flamethrower)" 2
+		remove variant 1
+			"Marauder Argosy (Sniper)"
+			"Hawk (Inferno Rockets)" 2
+		remove variant 1
+			"Marauder Argosy (Afterburner)"
+			"Raven (Afterburner)" 2
+		add variant 1
+			"Marauder Argosy"
+			"Marauder Barb" 2
+		add variant 1
+			"Marauder Argosy (Sniper)"
+			"Marauder Barb"
+			"Marauder Barb (Plasma Cannon)"
+		add variant 1
+			"Marauder Argosy (Afterburner)"
+			"Marauder Barb"
+			"Marauder Barb (Proton Gun)"
+	fleet "Bounty Hunters"
+		remove variant 1
+			"Marauder Argosy (Bounty Hunter)"
+			"Fury (Missile)"
+		add variant 1
+			"Marauder Argosy (Bounty Hunter)"
+			"Marauder Barb (Energy Cannon)"
+	fleet "Marauder I"
+		add variant 3
+			"Marauder Barb"
+	fleet "Marauder Independent"
+		add variant 1
+			"Marauder Barb"
+	fleet "Marauder Bounty (Disguised)"
+		add variant 1
+			"Marauder Barb"
+	fleet "Marauder Independent (Killable)"
+		add variant 1
+			"Marauder Barb"
 
 
 mission "Add Marauder Sparrow"
@@ -4335,3 +4507,112 @@ event "Proton Gun-CF8 added to outfitters"
 event "Proton Turret-ATS added to outfitters"
 	outfitter "Syndicate Advanced"
 		add "Proton Turret-ATS"
+
+
+mission "Midnight Add Modified Barb"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+	on offer
+		event "midnight add modified barb"
+		fail
+
+event "midnight add modified barb"
+	shipyard "Advanced Core Pirates"
+		add "Modified Barb"
+		add "Modified Hauler"
+	shipyard "Dirt Belt Pirates (South)"
+		add "Modified Barb"
+	fleet "pirate raid"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb (Energy Cannon)"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb (Plasma Cannon)"
+		add variant 1
+			"Nest"
+			"Modified Barb (Energy Cannon)" 2
+		add variant 1
+			"Nest"
+			"Modified Barb (Plasma Cannon)" 2
+	fleet "Small Core Pirates"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb (Inferno Rocket)"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb (Javelin)"
+	fleet "Small Southern Pirates"
+		add variant 1
+			"Nest"
+			"Modified Barb" 2
+		add variant 1
+			"Nest"
+			"Modified Barb (Heavy Rocket)" 2
+		add variant 1
+			"Nest"
+			"Modified Barb (Inferno Rocket)" 2
+	fleet "Large Southern Pirates"
+		add variant 1
+			"Roost"
+			"Modified Barb" 4
+		add variant 1
+			"Roost"
+			"Modified Barb (Heavy Rocket)" 4
+		add variant 1
+			"Roost"
+			"Modified Barb (Inferno Rocket)" 4
+	fleet "Small Dirt Belt Pirates"
+		add variant 1
+			"Modified Hauler (Turbo Blaster)"
+			"Modified Barb"
+		add variant 1
+			"Modified Hauler (Turbo Blaster)"
+			"Modified Barb (Inferno Rocket)"
+	fleet "Large Dirt Belt Pirates"
+		add variant 1
+			"Modified Hauler II (Turbo Blaster)"
+			"Modified Barb" 2
+		add variant 1
+			"Modified Hauler II (Turbo Blaster)"
+			"Modified Barb (Inferno Rocket)" 2
+		add variant 1
+			"Modified Hauler III (Turbo Blaster)"
+			"Modified Barb" 3
+		add variant 1
+			"Modified Hauler III (Turbo Blaster)"
+			"Modified Barb (Inferno Rocket)" 3
+	fleet "Small CCOR"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb (Energy Cannon)"
+		add variant 1
+			"Modified Hauler"
+			"Modified Barb"
+	fleet "Large CCOR"
+		add variant 1
+			"Basket-hilt"
+			"Modified Barb (Energy Cannon)"
+		add variant 1
+			"Basket-hilt (CCOR)"
+			"Modified Barb"
+		add variant 1
+			"Basket-hilt b"
+			"Modified Barb (Energy Cannon)"
+		add variant 1
+			"Basket-hilt b (CCOR)"
+			"Modified Barb"
+		add variant 1
+			"Broadsword"
+			"Modified Barb (Energy Cannon)" 2
+		add variant 1
+			"Broadsword (CCOR)"
+			"Modified Barb" 2
+
+
+

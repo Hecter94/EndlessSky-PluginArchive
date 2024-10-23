@@ -25,14 +25,14 @@ mission "QKBlade: House Unuk Pickup"
 	description "Retrieve <tons> of delicious acorn cookies from <stopovers>, then return to <destination>. Payment is <payment>."
 	cargo "acorn cookies" 10 20
 	to offer
-		random < 40
+		random < 40 - ( "QKBlade: House Unuk Door Delivery: done" * 30 )
 		or
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "urban"
-		near "Unukalhai" 1 20
+		attributes "spaceport"
+		near "Unukalhai" 1 5
 		not attributes "uninhabited"
 	stopover
 		planet "Flood"
@@ -51,7 +51,7 @@ mission "QKBlade: House Unuk Imports"
 	description "Retrieve <tons> of high quality acorns from <stopovers>, then return to <destination>. Payment is <payment>."
 	cargo "high quality acorns" 10 20
 	to offer
-		random < 40
+		random < 40 - ( "QKBlade: House Unuk Door Delivery: done" * 30 )
 		or
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
@@ -59,7 +59,7 @@ mission "QKBlade: House Unuk Imports"
 		planet "Flood"
 	stopover
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		distance 1 20
+		distance 1 5
 		attributes "farming"
 		not attributes "uninhabited"
 	on stopover
@@ -77,7 +77,7 @@ mission "QKBlade: House Unuk Exports"
 	description "Deliver <tons> of delicious acorn cookies to <destination>. Payment is <payment>."
 	cargo "acorn cookies" 10 20
 	to offer
-		random < 40
+		random < 40 - ( "QKBlade: House Unuk Door Delivery: done" * 30 )
 		or
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
@@ -85,8 +85,8 @@ mission "QKBlade: House Unuk Exports"
 		planet "Flood"
 	destination
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		distance 1 20
-		attributes "urban"
+		distance 1 5
+		attributes "spaceport"
 		not attributes "uninhabited"
 	on visit
 		dialog phrase "generic missing stopover or cargo"
@@ -101,13 +101,13 @@ mission "QKBlade: House Unuk Delivery"
 	description "Deliver <tons> of high quality acorns to House Unuk on <destination>. Payment is <payment>."
 	cargo "high quality acorns" 10 20
 	to offer
-		random < 40
+		random < 40 - ( "QKBlade: House Unuk Door Delivery: done" * 30 )
 		or
 			not "Nemesis: Quantum Key Blade: done"
 			has "event: House Unuk Recovery timer"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		near "Unukalhai" 1 20
+		near "Unukalhai" 1 10
 		attributes "farming"
 		not attributes "uninhabited"
 	destination
@@ -124,16 +124,11 @@ mission "QKBlade: House Unuk Door Delivery"
 	description "Deliver a small package to House Unuk on <destination>."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		near "Unukalhai" 1 5
+		near "Unukalhai" 1 20
 		not attributes "uninhabited"
 	destination "Flood"
 	to offer
-		or
-			has "QKBlade: House Unuk Pickup: done"
-			has "QKBlade: House Unuk Exports: done"
-		or
-			has "QKBlade: House Unuk Imports: done"
-			has "QKBlade: House Unuk Delivery: done"
+		"QKBlade: House Unuk Pickup: done" + "QKBlade: House Unuk Exports: done" + "QKBlade: House Unuk Imports: done" + "QKBlade: House Unuk Delivery: done" >= 2
 	on offer
 		conversation
 			`A freighter captain approaches you.`
@@ -156,8 +151,11 @@ mission "QKBlade: House Unuk Door Delivery"
 
 			`	You spend several hours hiking through mountain trails before arriving at your destination, the remote mansion of House Unuk located high in the Zuba Fahn mountains. The mansion is concealed beneath a thick forest canopy. But peering between the trees gives you a perfect view of the spaceport in the distance.`
 			`	The building is surrounded by a high stone wall. A communication device is set up at the front gate and you try using it.`
-			`	"Hello? What business do you have at House Unuk?"`
-			`	"Just a simple delivery. I was told I would be paid if I brought this here." You hold up the package for the camera.`
+			`	A distorted mechanical voice answers. "Hello? What business do you have at House Unuk?"`
+			choice
+				`	"Just a simple delivery."`
+				`	"I was told I would be paid if I brought this here."`
+			`	You hold up the package for the camera.`
 			`	"Ah, yes! I'll send someone out shortly."`
 			`	After a moment the gate opens and a maid walks out to make the exchange.`
 			`	"Thank you. House Unuk has been expecting this for some time. In appreciation for your service please accept this additional gift from the master of the house." She smiles and hands you a package of their acorn cookies with a small delivery fee of <payment>.`
@@ -520,7 +518,7 @@ mission "QKBlade: Bearer of The Blade 1"
 	source "Hai-home"
 	to offer
 		has "QKBlade: Quantum Key Blade 2: done"
-		has "outfit (flagship installed): Quantum Key Blade"
+		has "flagship attribute: quantum keyblade"
 	on offer
 		conversation
 			scene "outfit/quantum key blade"
@@ -568,7 +566,7 @@ mission "QKBlade: Bearer of The Blade 2"
 		not planet "Darkwaste"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		has "outfit (flagship installed): Quantum Key Blade"
+		has "flagship attribute: quantum keyblade"
 	on offer
 		conversation
 			`A large crowd has gathered at the entrance to the space port. Apparently, one of the Quantum Key Blades was loaned to a local culture festival and has been put on display for a daily show demonstrating its powers. The next showing is supposed to start soon.`

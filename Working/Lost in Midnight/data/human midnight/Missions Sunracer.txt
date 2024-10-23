@@ -46,11 +46,11 @@ event "midnight add sunracers"
 		add shipyard Sunracer
 
 mission "Midnight Sunracer Intro"
-#	minor
+	minor
 	invisible
 	source Sunracer
 	to offer
-#		random < 90
+		random < 90
 	on offer
 		conversation
 			`While walking through the spaceport you see an advertisement for the Sunracer Qualifiers:`
@@ -136,7 +136,7 @@ mission "Midnight Sunracer Qualifier 2"
 			`You see another ship pass through the center of <origin>. You try to follow. While you make it through, your hull scrapes against the inner edge...`
 				launch
 			label pass
-			`You see another ship pass through the center of <origin>. You try to follow. You easily make it through, your experience flying a ship over the past several months make maneuvers like this normal for you...`
+			`You see another ship pass through the center of <origin>. You try to follow. You easily make it through, your experience flying a ship over the past several months make maneuvers like this easy for you...`
 				launch
 	on enter
 		dialog "Hurry back to <planet> to finish the qualifier!"
@@ -327,6 +327,10 @@ mission "Midnight Sunracer Repair Solus"
 		"racing position solus" >?= 0
 		"racing position solus" ++
 		dialog "The technicians disembark from your ship and begin performing maintenance on the artificial satellite. This gives you some time to study how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on fail
+		outfit "Solus Token" -1
+	on abort
+		outfit "Solus Token" -1
 	on complete
 		payment 5000
 		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
@@ -350,6 +354,10 @@ mission "Midnight Sunracer Repair Geminae"
 		"racing position geminae" >?= 0
 		"racing position geminae" ++
 		dialog "The technicians disembark from your ship and begin performing maintenance on the artificial satellite. This gives you some time to study how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on fail
+		outfit "Geminae Token" -1
+	on abort
+		outfit "Geminae Token" -1
 	on complete
 		payment 10000
 		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
@@ -373,6 +381,10 @@ mission "Midnight Sunracer Repair Tertio"
 		"racing position tertio" >?= 0
 		"racing position tertio" ++
 		dialog "The technicians disembark from your ship and begin performing maintenance on the artificial satellite. This gives you some time to study how <stopovers> operates. After an hour, they're ready for the return trip to <origin>."
+	on fail
+		outfit "Tertio Token" -1
+	on abort
+		outfit "Tertio Token" -1
 	on complete
 		payment 20000
 		dialog "The Sunracer commission pays you <payment> upon completion of the maintenance job."
@@ -428,7 +440,6 @@ mission "Midnight Sunracer Solus 1"
 		fleet
 			names "civilian"
 			variant
-			variant
 				"Outrider"
 	npc
 		government "Syndicate"
@@ -466,7 +477,7 @@ mission "Midnight Sunracer Solus 2"
 			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
 			``
 			branch plasma
-				"flagship attribute: thrust" > 9030
+				"flagship attribute: thrust" > 13545
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -488,7 +499,7 @@ mission "Midnight Sunracer Solus 2"
 				launch
 			label plasma
 			branch atomic
-				"flagship attribute: thrust" > 14500
+				"flagship attribute: thrust" > 21750
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -714,7 +725,7 @@ mission "Midnight Sunracer Geminae 2"
 			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
 			``
 			branch plasma
-				"flagship attribute: thrust" > 9030
+				"flagship attribute: thrust" > 13545
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -736,7 +747,7 @@ mission "Midnight Sunracer Geminae 2"
 				launch
 			label plasma
 			branch atomic
-				"flagship attribute: thrust" > 14500
+				"flagship attribute: thrust" > 21750
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -840,7 +851,7 @@ mission "Midnight Sunracer Geminae 3"
 				launch
 			label dodge
 			branch plasmaturn
-				"flagship attribute: turn" > 192000
+				"flagship attribute: turn" > 288000
 			action
 				"racing position geminae" --
 				set "sunracer rogue"
@@ -848,7 +859,7 @@ mission "Midnight Sunracer Geminae 3"
 				launch
 			label plasmaturn
 			branch atomicturn
-				"flagship attribute: turn" > 307000
+				"flagship attribute: turn" > 460500
 			action
 				set "sunracer rogue"
 			`	You and another racer manage to dodge the asteroid.`
@@ -874,7 +885,7 @@ mission "Midnight Sunracer Geminae 3"
 				launch
 			label evade
 			branch plasmadodge
-				"flagship attribute: turn" > 192000
+				"flagship attribute: turn" > 288000
 			action
 				"racing position geminae" --
 				set "sunracer rogue"
@@ -882,7 +893,7 @@ mission "Midnight Sunracer Geminae 3"
 				launch
 			label plasmadodge
 			branch atomicdodge
-				"flagship attribute: turn" > 307000
+				"flagship attribute: turn" > 460500
 			action
 				set "sunracer rogue"
 			`	You evade the out of control ship while keeping pace with the ship that tried to pull ahead.`
@@ -1149,7 +1160,7 @@ mission "Midnight Sunracer Tertio 2"
 			`-----{ C H E C K P O I N T * C O N F I R M E D }-----`
 			``
 			branch plasma
-				"flagship attribute: thrust" > 9030
+				"flagship attribute: thrust" > 13545
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -1171,7 +1182,7 @@ mission "Midnight Sunracer Tertio 2"
 				launch
 			label plasma
 			branch atomic
-				"flagship attribute: thrust" > 14500
+				"flagship attribute: thrust" > 21750
 			`	One of the other racers passes you!`
 			choice
 				`	(Try to keep up.)`
@@ -1299,7 +1310,7 @@ mission "Midnight Sunracer Tertio 3"
 				launch
 			label dodge
 			branch plasmaturn
-				"flagship attribute: turn" > 192000
+				"flagship attribute: turn" > 288000
 			action
 				"racing position tertio" --
 				set "sunracer rogue"
@@ -1307,7 +1318,7 @@ mission "Midnight Sunracer Tertio 3"
 				launch
 			label plasmaturn
 			branch atomicturn
-				"flagship attribute: turn" > 307000
+				"flagship attribute: turn" > 460500
 			action
 				set "sunracer rogue"
 			`	You and another racer manage to dodge the asteroid.`
@@ -1334,7 +1345,7 @@ mission "Midnight Sunracer Tertio 3"
 				launch
 			label evade
 			branch plasmadodge
-				"flagship attribute: turn" > 192000
+				"flagship attribute: turn" > 288000
 			action
 				"racing position tertio" --
 				set "sunracer rogue"
@@ -1342,7 +1353,7 @@ mission "Midnight Sunracer Tertio 3"
 				launch
 			label plasmadodge
 			branch atomicdodge
-				"flagship attribute: turn" > 307000
+				"flagship attribute: turn" > 460500
 			action
 				set "sunracer rogue"
 			`	You evade the out of control ship while keeping pace with the ship that tried to pull ahead.`
@@ -1466,7 +1477,7 @@ mission "Midnight Sunracer Tertio 4"
 			``
 			label nocheat
 			branch atomic
-				"flagship attribute: thrust" > 14500
+				"flagship attribute: thrust" > 21750
 			`	You've made it to the third checkpoint. One of the other racers is trying to pass you!`
 			choice
 				`	(Try to stay ahead.)`
@@ -1506,7 +1517,7 @@ mission "Midnight Sunracer Tertio 4"
 			branch sabotage
 				random < 20
 			branch atomicturn
-				"flagship attribute: turn" > 307000
+				"flagship attribute: turn" > 460500
 			action
 				"racing position tertio" --
 				set "sunracer hunter"
@@ -1990,13 +2001,7 @@ mission "Midnight Sunracer Tertio Puppet"
 					goto orphan
 				`	(Draw the Quantum Keyblade.)`
 					to display
-						or
-							has "outfit (flagship installed): Quantum Key Blade"
-							has "outfit (flagship installed): Quantum Dragon Blade"
-							has "outfit (flagship installed): Quantum Phoenix Blade"
-							has "outfit (flagship installed): Quantum Snake Blade"
-							has "outfit (flagship installed): Quantum Tiger Blade"
-							has "outfit (flagship installed): Quantum Turtle Blade"
+						has "flagship attribute: quantum keyblade"
 					goto keyblade
 				`	(Run.)`
 					to display

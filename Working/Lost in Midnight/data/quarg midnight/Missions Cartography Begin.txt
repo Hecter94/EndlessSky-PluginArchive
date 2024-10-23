@@ -304,15 +304,15 @@ mission "Cartography: Quarg Hitchhiker 2"
 			
 			label enter
 			scene "outfit/quarg countermeasures"
-			`	Soon after you enter, your eyes adjust to the low light. One corner of the room is occupied by an alien device that provide the only internal light source. On the floor is a pouch, a briefcase, and a series of bloodstains.`
-			`	"Sorry about the mess." Quash's voice emanates from a speaker in the ceiling. "The business associate who helped me acquire this vessel chose to alter the terms of our agreement. He chose poorly. I'm certain you are a trustworthy businessman who would not engage in such duplicitous behavior. Your payment of 90,000 credits is in the pouch on the floor. Go ahead, you've earned it."`
+			`	Soon after you enter, your eyes adjust to the low light. One corner of the room is occupied by an alien device that provides the only internal light source. On the floor is a pouch, a briefcase, and a series of bloodstains.`
+			`	"Sorry about the mess." Quash's voice emanates from a speaker in the ceiling. "The business associate who helped me acquire this vessel chose to alter the terms of our agreement. He chose poorly. I'm certain you are a trustworthy business person who would not engage in such duplicitous behavior. Your payment of 90,000 credits is in the pouch on the floor. Go ahead, you've earned it."`
 			choice
 				`	(Take the pouch.)`
 					goto departure
 				`	(Take the briefcase.)`
 				`	(Take both.)`
 				
-			`	As soon as you touch the briefcase, the entry hatch slams shut. "Tsk. tsk. Captain <first> <last>, I had hoped we could continue to do business in the future." The device in the corner of the room is glowing with an eerie light. The heat in the room is also rising. "However, I can't have business associates who are unable to follow simple instructions." Your hair and skin are burning as you bleed out on the floor. Quash's words are drowned out by your screams. After a few moments, the room is dark and silent once again.`
+			`	As soon as you touch the briefcase, the entry hatch slams shut. "Tsk. tsk. Captain <first> <last>, I had hoped we could continue to do business in the future." The device in the corner of the room brightens with an eerie light. The heat in the room is also rising. "However, I can't have business associates who are unable to follow simple instructions." Your hair and skin are burning as you bleed out on the floor. Quash's words are drowned out by your screams. After a few moments, the room is dark and silent once again.`
 				die
 			
 			label departure
@@ -750,6 +750,7 @@ mission "Cartography: Quarg Hitchhiker 4"
 
 
 mission "Cartography: Quarg Hitchhiker 5"
+	clearance
 	name "Escort to <planet>"
 	description "Esccort Quash's ship, the Halcyon to <destination>."
 	source "Wang Xiang Tai"
@@ -791,15 +792,15 @@ mission "Cartography: Quarg Hitchhiker 5"
 					accept
 
 	on accept
-		"reputation: Independent (Killable)" >?= 10
+#		"reputation: Independent (Killable)" >?= 10
 		"stored reputation: Quarg" = "reputation: Quarg"
-		"reputation: Quarg" <?= -10
+#		"reputation: Quarg" <?= -10
 		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
-		"reputation: Quarg (Hai)" <?= -10
+#		"reputation: Quarg (Hai)" <?= -10
 		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
-		"reputation: Quarg (Kor Efret)" <?= -10
+#		"reputation: Quarg (Kor Efret)" <?= -10
 		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
-		"reputation: Quarg (Gegno)" <?= -10
+#		"reputation: Quarg (Gegno)" <?= -10
 
 	npc
 		system "Albireo"
@@ -817,10 +818,10 @@ mission "Cartography: Quarg Hitchhiker 5"
 		ship "Heliarch Stalker" "Vigilant Sentinel"
 
 	npc accompany save
-		government "Independent (Killable)"
-		personality escort timid plunders harvests
+		government "Escort"
+		personality escort target timid plunders harvests
 		ship "Carabao (Quash)" "Halcyon"
-	
+
 	on fail
 		dialog `[MISSION FAILURE] You have failed as important part of the Cartography mission chain. If life were a game, you could load a save file and try again.`
 	
@@ -906,6 +907,21 @@ mission "Nebulous Inaccessible Patch"
 		fail
 
 
+
+mission "Cartography: Quarg Side Trip"
+	landing
+	repeat
+	invisible
+	source
+		attributes "quarg"
+		not planet "Humanika"
+	destination "Ring of Friendship"
+	to offer
+		has "Cartography: Quarg Hitchhiker 5: active"
+	on offer
+		dialog "Quash keeps the Halcyon some distance away from <origin>, never landing..."
+	on accept
+		fail
 
 mission "Cartography: Humanika Side Trip"
 	landing
@@ -1002,6 +1018,14 @@ mission "Cartography: Quarg Hitchhiker 6"
 		government "Heliarch"
 		personality waiting surveillance
 		ship "Heliarch Stalker" "Vigilant Watcher"
+	npc
+		system "destination"
+		government "Quarg"
+		personality heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Wardragon (Scanner)"
 
 
 
@@ -1208,7 +1232,26 @@ mission "Cartography: Midnight's Lost Orphan"
 				`	"Still on the planet."`
 				`	"What Outcast?"`
 			scene "scene/scene-vindictivequarg"
-			`	Before the words leave your lips, the Halcyon launches. Most of the Quarg fleet moves to intercept. The old city ship is no match for them. Once the Halcyon is completely destroyed, the Quarg ships depart.`
+			`	Before the words leave your lips, the Halcyon launches. Most of the Quarg fleet moves to intercept. The old city ship is no match for them. Once the Halcyon is completely destroyed, the Quarg hail you. "Human. Has The Outcast's grip on your mind been broken? Are you in control of yourself?" It waits expectantly for you to answer.`
+			choice
+				`	"What? I was never under Quash's control."`
+					goto collaborator
+				`	"Yes... I am. Thank you for saving me."`
+			action
+				log `The Quarg questioned my involvement with Quash. They seemed to believe that I was under some sort of mind control. Hopefully, allowing them to believe this will earn some leniency from them for any offenses they held against me.`
+				set "denied aiding Quash"
+			`	Satisfied with your response, the Quarg ships depart.`
+				flee
+
+			label collaborator
+			action
+				log `The Quarg questioned my involvement with Quash. They seemed to believe that I was under some sort of mind control. I confessed to willingly helping The Outcast. They weren't happy to hear that.`
+				set "confessed to aiding Quash"
+				"reputation: Quarg" <?= -1000
+				"reputation: Quarg (Hai)" <?= -1000
+				"reputation: Quarg (Kor Efret)" <?= -1000
+				"reputation: Quarg (Gegno)" <?= -1000
+			`	There is a moment of silence when you utter those words. Then the Quarg speaks, "Your role in this has been noted, human. We will deliberate your fate before making a final decision." With those ominous words, the Quarg ships depart.`
 				flee
 
 			label disobey
@@ -1519,7 +1562,7 @@ mission "Midnight Pictograph 2"
 				`	"I have something unique to sell."`
 					goto negotiate
 				`	"Maybe I should come back when you aren't busy..."`
-			`	"Don't worry about her. Tell me what brought you here today?"`
+			`	"Don't worry about her. Tell me, what brought you here today?"`
 			choice
 				`	"I have something unique to sell."`
 			label negotiate
