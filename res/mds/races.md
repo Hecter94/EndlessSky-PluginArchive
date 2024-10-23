@@ -248,9 +248,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.61 mb | 2024-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.73 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
 Author: Spectre907 | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-10-17) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-10-23) <br>
 
 >Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
@@ -825,9 +825,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-21) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-10-23) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -906,9 +906,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.5 mb | 2024-10-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.51 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-22) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-10-23) <br>
 
 >Adds the Jibauni, Diba, and re-adds the Sheragi. The Jibauni are dinosaurs, the Diba are robots, and the Sheragi are dragons.
 >
