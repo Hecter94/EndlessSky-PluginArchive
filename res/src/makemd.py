@@ -103,7 +103,7 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%updatecheck%", updatecheck)
 	string = string.replace("%readme%", readme)
 	string = string.replace("%last_commit%", repo_last_commit)
-	if website == "N/A": # for prevent [N/A](N/A) links
+	if website == "N/A" or website == "" or website == "NA": # for prevent [N/A](N/A) links
 		websitecheck = "N/A"
 		websitelink = ""
 	else:
@@ -112,6 +112,7 @@ def replacevarp(string): # replaces %variables% in plugin and category template 
 	string = string.replace("%website%", websitelink)
 	string = string.replace("%websitecheck%", websitecheck)
 	string = string.replace("%category%", category)
+	string = string.replace("%lowercategory%", category.lower())
 	string = string.replace("%status%", status)
 	string = string.replace("%iconpng%", str(iconpng))
 	string = string.replace("%pluginnameurl%", pluginnameurl)	
@@ -135,27 +136,27 @@ for entry in entries:
 			cat = file1.readline()
 			cat = file1.readline()
 			cat = file1.readline().split("=")[1].replace("\n", "")
-			if cat == "cheats": # count plugins in category
+			if cat.lower() == "cheats": # count plugins in category
 				cheats += 1
-			elif cat == "gameplay":
+			elif cat.lower() == "gameplay":
 				gameplay += 1
-			elif cat == "graphics":
+			elif cat.lower() == "graphics":
 				graphics += 1
-			elif cat == "outfits":
+			elif cat.lower() == "outfits":
 				outfits += 1
-			elif cat == "overhauls":
+			elif cat.lower() == "overhauls":
 				overhauls += 1
-			elif cat == "overwrites":
+			elif cat.lower() == "overwrites":
 				overwrites += 1
-			elif cat == "patches":
+			elif cat.lower() == "patches":
 				patches += 1
-			elif cat == "races":
+			elif cat.lower() == "races":
 				races += 1
-			elif cat == "ships":
+			elif cat.lower() == "ships":
 				ships += 1
-			elif cat == "story":
+			elif cat.lower() == "story":
 				story += 1
-			elif cat == "weapons":
+			elif cat.lower() == "weapons":
 				weapons += 1
 			else:
 				uncategorized += 1
@@ -199,10 +200,10 @@ for each in  newslist:
 			ncat = file1.readline()
 			ncat = file1.readline()
 			ncat = file1.readline().replace("category=", "").strip()
-		if ncat == "N/A":
+		if ncat == "N/A" or ncat == "" or ncat == "NA":
 			ncat = "uncategorized"
 		# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
-		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat.lower() + "](" + webroot + 'res/mds/' + ncat.lower() + ".md)<br>\n"
+		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat.lower() + "](" + webroot + 'res/mds/' + ncat.lower() + ".md#" + nname.lower().replace(' ', '-').replace('.', '') + ")<br>\n"
 	else: # no listfile found, plugin must got deleted or renamed
 		nline = ndate + " | " + nnew_or_update + " Plugin " + nname + " | Plugin got deleted or renamed <br>\n"
 	allnews = allnews + nline
@@ -235,12 +236,12 @@ for cat in categories: # for each category
 			pos = p.find("\n")
 			catcomp = p[:pos]
 			catcomp = catcomp.strip() # get category for comparing with actual category
-			if catcomp == "N/A":
+			if catcomp == "N/A" or catcomp == "" or catcomp == "NA":
 				catcomp = "Uncategorized"
 			if catcomp.capitalize() == cat:
 				# get variables out of the list item p
 				description = p.split("\n")
-				if description[0] == "N/A":
+				if description[0] == "N/A" or description == "" or description == "NA":
 					category = description[0]
 				else:
 					category = description[0].capitalize() 
@@ -320,6 +321,7 @@ for cat in categories: # for each category
 					if each.lower().find("readme") != -1:
 						with open(pathtoplugins + pluginname + "/" + each) as readmefile:
 							readme = "<details>\n<summary>:blue_book: Plugin readme</summary>\n<blockquote>" + readmefile.read() + "\n</blockquote>\n</details>"
+							readme = readme.replace('~', '')
 					
 				file1.writelines(replacevarp(tempplug)) # write plugin template entry, exchanging %variables%
 		file1.writelines(tempcatdownt) # write lower category template

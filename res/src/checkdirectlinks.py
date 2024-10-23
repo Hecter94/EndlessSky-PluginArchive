@@ -46,7 +46,7 @@ for entry in entries:
 		website = file1.readline().replace("website=", "")
 		x = file1.readline()
 		directlink = x.replace("directlink=","")
-	if directlink == "N/A\n": # when there is no direct
+	if directlink == "N/A\n" or directlink == "\n" or directlink == "NA\n": # when there is no direct
 		# check for website github to get last commit, then continue to next
 		website = website.strip()
 		if website[:18] == "https://github.com":
@@ -91,7 +91,17 @@ for entry in entries:
 			response.raise_for_status()
 		except requests.exceptions.HTTPError as err:
 			print(err)
-			assetlastmodified = "FALSE"
+			print('Retrying!')
+			try:
+				response = requests.head(assetfullpath + withdots + ".zip", allow_redirects=True)
+				response.raise_for_status()
+			except requests.exceptions.HTTPError as err:
+				print(err)
+				assetlastmodified = "FALSE"
+			else:
+				modif = response.headers['Last-Modified']
+				datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
+				assetlastmodified = datetime_object
 		else:
 			modif = response.headers['Last-Modified']
 			datetime_object = datetime.strptime(modif, '%a, %d %b %Y %H:%M:%S %Z')
@@ -119,7 +129,6 @@ for entry in entries:
 					urllist = directlink.split(os.sep)
 					author = urllist[3]
 					plug = urllist[4]
-					linksize = "FALSE"
 					try: # check github api for last commit
 						params = {'page': '1', 'per_page': '1'}
 						response = requests.get('https://api.github.com/repos/' + author +'/' + plug + '/commits', params=params, auth=(username,token))
@@ -136,12 +145,6 @@ for entry in entries:
 						linklastmodified = datetime.strptime(commitdate, '%Y-%m-%d %H:%M:%S')
 						with open("res/last_commits.txt", "a") as commit:
 							commit.writelines(pluginname + "|" + str(linklastmodified.date()) + "\n")
-		if linksize != "FALSE":
-			if linksize >= 307200:
-				print("ABORTING: directlink is bigger than 300 mb")
-				with open('res/errorlog.txt', 'a') as errorfile:
-					errorfile.writelines("file size for plugin: " + pluginname + " is bigger than 300mb, needs to be rised\n")
-				continue
 				
 		if linklastmodified != "FALSE":
 			if assetlastmodified != "FALSE":
