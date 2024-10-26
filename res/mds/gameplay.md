@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Gameplay
 
-<p>41 plugins in this category.<p>
+<p>44 plugins in this category.<p>
 
 
  
@@ -280,7 +286,7 @@ Author: WarlordMike | Category: Gameplay <br>
 es-bounty-hunters is a plugin for Endless Sky that adds a new storyline in which the player can become a Bounty Hunter. I won't spoil it for you here...
 
 ## Installation
-Download the code as a .zip and extract it to your plugins file. On Linux, it's `~/.local/share/endless-sky/plugins`, and I don't use Window or Mac, so you'll have to figure it out yourself.
+Download the code as a .zip and extract it to your plugins file. On Linux, it's `/.local/share/endless-sky/plugins`, and I don't use Window or Mac, so you'll have to figure it out yourself.
 
 ## Acknowledgements
 Thank you to everyone on the ES Discord for helping me, but special thanks to EjoThims for reviewing the first chapter of the story, Arachi for pointing out my dumb mistakes, and Warlord Mike for coming up with the names for Arthur Stalgren and Admiral Lowell. Thanks, guys!
@@ -388,9 +394,9 @@ If you take the Quarg ships anywhere other than the assigned planets and systems
 
 Windows: `%APPDATA%\endless-sky\plugins/`
 
-Mac: `~/Library/ApplicationSupport/endless-sky/plugins/`
+Mac: `/Library/ApplicationSupport/endless-sky/plugins/`
 
-Linux: `~/.local/share/endless-sky/plugins/`
+Linux: `/.local/share/endless-sky/plugins/`
 
 3. Decompress/"Unzip" the zip file.
 4. Start Endless Sky. You should be able to see "A Coalition at War" under Preferences > Plugins.
@@ -1621,5 +1627,7 @@ Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#cheats)
 
 

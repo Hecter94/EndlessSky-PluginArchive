@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Graphics
 
-<p>24 plugins in this category.<p>
+<p>28 plugins in this category.<p>
 
 
  
@@ -323,7 +329,7 @@ This is a changed user interface when in space.
 
 Unpack or git clone repo into:
 
-~/.local/share/endless-sky/plugins/
+/.local/share/endless-sky/plugins/
 
 </blockquote>
 </details>
@@ -945,5 +951,7 @@ Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#gameplay)
 
 

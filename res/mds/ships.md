@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Ships
 
-<p>136 plugins in this category.<p>
+<p>140 plugins in this category.<p>
 
 
  
@@ -1285,9 +1291,9 @@ The Loronar medium transport is sold by Loronar Corporation, on the planet Rust 
 # Install
 Place the downloaded file, "Loronar-transport", in your plugins folder found here:
 
-###### Linux: ~/.local/share/endless-sky/
+###### Linux: /.local/share/endless-sky/
 ###### Windows: %AppData%\endless-sky\
-###### Mac OS X: ~/Library/ApplicationSupport/endless-sky/
+###### Mac OS X: /Library/ApplicationSupport/endless-sky/
 ###### Steam: If using Steam right click the game in the Library and click Properties, then select Local Files and Browse Local Files.
 
 </blockquote>
@@ -1325,7 +1331,7 @@ You must create a "plugins" folder in one of two places, depending on your opera
 
 ### Linux ###
 * /usr/share/endless-sky/plugins/
-* ~/.local/share/endless-sky/plugins/
+* /.local/share/endless-sky/plugins/
 
 ### Windows ###
 * plugins\ (in the same folder as the Endless Sky executable)
@@ -1333,7 +1339,7 @@ You must create a "plugins" folder in one of two places, depending on your opera
 
 ### Mac OS X ###
 * Content/Resources/plugins/ (within the application bundle)
-* ~/Library/ApplicationSupport/endless-sky/plugins
+* /Library/ApplicationSupport/endless-sky/plugins
 
 Download the latest [release][releases] and extract it into your plugins folder.
 
@@ -1566,7 +1572,7 @@ Requires Unstable Build/0.10.7 or above.
 
 # Recommended 
 
-To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you ~~command your ships to target mineable asteroids~~(In vanilla now) and distribute fuel among your fleet with fighters. The fork also provides other gameplay improvements and bug fixes.
+To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you command your ships to target mineable asteroids(In vanilla now) and distribute fuel among your fleet with fighters. The fork also provides other gameplay improvements and bug fixes.
 
 (Possibly outdated as of 19/07/2023)
 Link: https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins
@@ -2602,7 +2608,7 @@ Installing mods is simple: place the folder containing the mod files in a folder
 Linux
 
     /usr/share/endless-sky/plugins/
-    ~/.local/share/endless-sky/plugins/
+    /.local/share/endless-sky/plugins/
 
 Windows
 
@@ -2612,7 +2618,7 @@ Windows
 Mac OS X
 
     Content/Resources/plugins/ (within the application bundle)
-    ~/Library/ApplicationSupport/endless-sky/plugins
+    /Library/ApplicationSupport/endless-sky/plugins
 
 The end result should be something like [file-path]\endless-sky\plugins\[plugin-name], which in turn will contain that specific mod's data, images, and sounds folders, and possibly readme and copyright info. 
 
@@ -2888,7 +2894,7 @@ WORK IN PROGRESS!!!
 
   "The Peacebringer is a one of a kind ship, commissioned not for sport, nor in exchange for money, or any other material offering that could conceivably produce any standard spacecraft into reality, but instead as a reparation to a remarkable individual who has woven together the failing strings of the galaxy with their bare hands; a gift to one who has saved humanity one or more times from an otherwise hopeless drive to extinction. It is tribute, to ensure that this individual, whomever they may be, can continue their extraordinary drive to keep the universe together.
   I guess you could also just... y'know, buy it from the Omnis shipyard, but that's kind of mean."
-~ shipyard description
+ shipyard description
 
 The Peacebringer is (going to be) a near end-game flagship "rewarded" to the player immediately after the (spoilers!) Kor Sestor missions involving their breach of human space. Well, when I say "rewarded", I mean that they're going to be sent across the galaxy on a wild goose chase for the most advanced technologies that each species has to offer in order to build, piece by piece, the most powerful starship that humanity has ever witnessed. A culmination of all creations advanced and arcane combined together into an unmatched set of speed, firepower, stealth, and modularity, the Peacebringer is kind of like a mini Heron but has a bunch of different alien technologies instead of just stuff from the Remnant.
 
@@ -3057,9 +3063,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Unfettered Innovations/icon.png' height='100'></img><br>
 
 
-[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2024-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
+[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
 Author: Hurleveur | Category: Ships <br>
-[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2024-03-15) <br>
+[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2024-10-25) <br>
 
 >endless sky plugin for the Unfettered ships and outfits to come in the campaign
 
@@ -3147,14 +3153,14 @@ Author: Armalarde7895 | Category: Ships <br>
 <blockquote># X-70B-Phantom
 A plugin for Endless Sky. It adds the X-70B Phantom from Star Wars.
 The X-70B Phantom-class prototype was a prototype starship of the reconstituted Sith Empire used by Imperial Intelligence.
-The X-70B Phantom-class prototype is sold by ~~Classified~~, on the planet Rust in the Kraz System.
+The X-70B Phantom-class prototype is sold by Classified, on the planet Rust in the Kraz System.
 
 # Install
 Place the downloaded file, "X70BPhantom", in your plugins folder found here:
 
-###### Linux: ~/.local/share/endless-sky/
+###### Linux: /.local/share/endless-sky/
 ###### Windows: %AppData%\endless-sky\
-###### Mac OS X: ~/Library/ApplicationSupport/endless-sky/
+###### Mac OS X: /Library/ApplicationSupport/endless-sky/
 ###### Steam: If using Steam right click the game in the Library and click Properties, then select Local Files and Browse Local Files.
 
 </blockquote>
@@ -3182,5 +3188,7 @@ Status: N/A <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#races)
 
 

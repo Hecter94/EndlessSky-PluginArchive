@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Cheats
 
-<p>34 plugins in this category.<p>
+<p>39 plugins in this category.<p>
 
 
  
@@ -13,9 +19,9 @@
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: TheGiraffe3 | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2024-10-24) <br>
+[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2024-10-25) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -358,9 +364,9 @@ To be used to assist in content creation, or just for general use.
 ## Install
 Unzip to your plugins folder found here:
 
-* Linux: ~/.local/share/endless-sky/
+* Linux: /.local/share/endless-sky/
 * Windows: %AppData%\endless-sky\
-* Mac OS X: ~/Library/ApplicationSupport/endless-sky/
+* Mac OS X: /Library/ApplicationSupport/endless-sky/
 
 </blockquote>
 </details>
@@ -686,7 +692,7 @@ Author: zuckung | Category: Cheats <br>
 <br>
 Adds the new system 'Mego Pug', in eastern Bunrodea space. There you can farm rare spawning Arfectas and other more common Pug ships, without ruining your Pug reputation.<br>
 <br>
-Added a new system, with new government "Pug Farm" and 3 new fleets. Two fleets are like the ones in 'Pug Iyek' and the third, rare spawning one, has 1 arfecta. It spawns within 15000 frames(~4 minutes).<br>
+Added a new system, with new government "Pug Farm" and 3 new fleets. Two fleets are like the ones in 'Pug Iyek' and the third, rare spawning one, has 1 arfecta. It spawns within 15000 frames(4 minutes).<br>
 <br>
 <br>
 Changelog:<br>
@@ -890,10 +896,10 @@ The game's `plugins` folder should be located at one of those locations:
   - or `C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\`
 - On Linux:
   - `/usr/share/games/endless-sky/plugins/`
-  - or `~/.local/share/endless-sky/plugins/`
+  - or `/.local/share/endless-sky/plugins/`
 - On Mac:
   - `Contents/Resources/plugins/ (within the application bundle)`
-  - or `~/Library/Application Support/endless-sky/plugins`
+  - or `/Library/Application Support/endless-sky/plugins`
 
 If the `plugins` folder does not exist, you can create it.
 
@@ -1291,5 +1297,7 @@ Status: N/A <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/.md#)
 
 

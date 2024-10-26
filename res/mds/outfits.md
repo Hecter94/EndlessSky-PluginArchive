@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Outfits
 
-<p>45 plugins in this category.<p>
+<p>47 plugins in this category.<p>
 
 
  
@@ -181,11 +187,11 @@ It's a plugin/mod for [Endless Sky](http://endless-sky.github.io) which attempts
 
 ## How do I install it?
 
-[Download the ZIP file](https://bitbucket.org/YellowApple/endless-cargo/downloads/) and extract it into your plugins folder.  Alternately, you can just `git clone` directly into the plugins folder (e.g. `git clone https://bitbucket.org/YellowApple/endless-cargo.git ~/.local/share/endless-sky/plugins/endless-cargo`).
+[Download the ZIP file](https://bitbucket.org/YellowApple/endless-cargo/downloads/) and extract it into your plugins folder.  Alternately, you can just `git clone` directly into the plugins folder (e.g. `git clone https://bitbucket.org/YellowApple/endless-cargo.git /.local/share/endless-sky/plugins/endless-cargo`).
 
 ## How does it work?
 
-The current plan is to implement a shipping container as a sort of unarmed, ~~unpropelled~~ (HAHA, turns out at least *some* propulsion is needed for them to redock if you release them) drone, and in turn to implement a container ship as a sort of drone carrier.  This means that drones and shipping containers are interchangeable.
+The current plan is to implement a shipping container as a sort of unarmed, unpropelled (HAHA, turns out at least *some* propulsion is needed for them to redock if you release them) drone, and in turn to implement a container ship as a sort of drone carrier.  This means that drones and shipping containers are interchangeable.
 
 At this time, one type of container (a generic "Cargo Container") and two container ships (the Star Barge and Freighter without the welded-in containers and with drone bays for one's own containers) are implemented.  There's also a test mission out of Greenrock to haul an empty container to a nearby factory world (like New Britain or Luna), which I plan to flesh out and turn into more missions for more planets (including with specialized container types).  Most (if not all) factory worlds in human space sell containers, and the Container Barge and Container Freighter are available from any "Syndicate Basics" shipyard (and the former from any "Basic Ships" shipyard, so you can grab a Container Barge as your first ship right out of New Boston).
 
@@ -637,7 +643,7 @@ You must create a "plugins" folder in one of two places, depending on your opera
 
 ### Linux ###
 * /usr/share/endless-sky/plugins/
-* ~/.local/share/endless-sky/plugins/
+* /.local/share/endless-sky/plugins/
 
 ### Windows ###
 * plugins\ (in the same folder as the Endless Sky executable)
@@ -645,7 +651,7 @@ You must create a "plugins" folder in one of two places, depending on your opera
 
 ### Mac OS X ###
 * Content/Resources/plugins/ (within the application bundle)
-* ~/Library/ApplicationSupport/endless-sky/plugins
+* /Library/ApplicationSupport/endless-sky/plugins
 
 Download the latest [release][releases] and extract it into your plugins folder.
 
@@ -969,7 +975,7 @@ So you get my plugin by multiple ways...
 
 From there locate your Endless Sky Plugins directory...
 
-Linux: `~/.local/share/endless-sky/plugins/`
+Linux: `/.local/share/endless-sky/plugins/`
 
 Windows: `C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\` (Replace yourusername with your PC's username)
 
@@ -1416,5 +1422,7 @@ Status: outfit is nowhere for sale <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#graphics)
 
 

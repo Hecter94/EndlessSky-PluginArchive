@@ -1,9 +1,15 @@
 
+All Plugins (568)
+
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+
 ---
 
 ## Story
 
-<p>78 plugins in this category.<p>
+<p>85 plugins in this category.<p>
 
 
  
@@ -360,9 +366,9 @@ There's few missions right now. See "Contributing" below if you have any ideas f
 
 Windows: `%APPDATA%\endless-sky\plugins/`
 
-Mac: `~/Library/ApplicationSupport/endless-sky/plugins/`
+Mac: `/Library/ApplicationSupport/endless-sky/plugins/`
 
-Linux: `~/.local/share/endless-sky/plugins/`
+Linux: `/.local/share/endless-sky/plugins/`
 
 3. Decompress/"Unzip" the zip file.
 4. Start Endless Sky. You should be able to see "A Coalition at War" under Preferences > Plugins.
@@ -1053,7 +1059,7 @@ Adds a quest that pays you with a kitten. The quest starts in New Austria.
 Create  "plugins" folder if it does not already exists
 Linux
 
-    ~/.local/share/endless-sky/plugins/
+    /.local/share/endless-sky/plugins/
 
 Windows
 
@@ -1061,7 +1067,7 @@ Windows
 
 Mac OS X
 
-    ~/Library/ApplicationSupport/endless-sky/plugins
+    /Library/ApplicationSupport/endless-sky/plugins
 
 Download the latest release and extract it into your plugins folder.
 
@@ -1406,7 +1412,7 @@ LEESt only supports the continuous build of Endless Sky due to it's use of bleed
 ### Linux
 The preferred way to install on Linux is to `cd $HOME/.local/share/endless-sky/plugins && git clone https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff`. Updating is easy, just run `git pull`. We're assuming you know how to use a terminal here, by the way.
 
-Or, you can just download the zip and extract it to `~/.local/share/endless-sky/plugins`.
+Or, you can just download the zip and extract it to `/.local/share/endless-sky/plugins`.
 
 ### Verify installation
 * Start Endless Sky and click on Preferences.
@@ -1571,9 +1577,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Lost in Midnight/icon.png' height='100'></img><br>
 
 
-[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 72.29 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
+[Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 72.26 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-10-23) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2024-10-26) <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -1753,9 +1759,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Midnight Expansion/icon.png' height='100'></img><br>
 
 
-[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.5 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
+[Midnight.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Expansion.zip) | 15.47 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Expansion/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-10-23) <br>
+[https://github.com/MidnightPlugins/Midnight-Expansion](https://github.com/MidnightPlugins/Midnight-Expansion) (last commit 2024-10-26) <br>
 
 >Plugin using ships, outfits, or other resources from plugins by other creators or derivatives of their original creations. Some content may require the Lost in Midnight or Midnight Scrapyard plugins to unlock. 
 >
@@ -1806,9 +1812,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Midnight Scrapyard/icon.png' height='100'></img><br>
 
 
-[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.43 mb | 2024-10-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
+[Midnight.Scrapyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Midnight.Scrapyard.zip) | 11.43 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Midnight%20Scrapyard/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-10-23) <br>
+[https://github.com/MidnightPlugins/Midnight-Scrapyard](https://github.com/MidnightPlugins/Midnight-Scrapyard) (last commit 2024-10-26) <br>
 
 >A plugin suggesting an epilogue for the Kor Sestor region of Endless Sky.
 >
@@ -2645,10 +2651,10 @@ Download and extract the zip file for SpaceCrate for example to your desktop of 
 Move the extracted folder in the plugins directory for your endless sky installation.
 
 On macOS:
-~/Library/Application Support/endless-sky/plugins
+/Library/Application Support/endless-sky/plugins
 
 On Linux:
-~/.local/share/endless-sky/plugins/
+/.local/share/endless-sky/plugins/
 
 On Windows:
 C:\Users\yourusername\AppData\Roaming\endless-sky\plugins\
@@ -3167,5 +3173,7 @@ Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
+
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#ships)
 
 
