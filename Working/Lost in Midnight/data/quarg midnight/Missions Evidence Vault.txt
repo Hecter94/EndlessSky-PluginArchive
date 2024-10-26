@@ -42,12 +42,14 @@ mission "Vault Weapon Pulse Rifle"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Firebird (Pulse Rifle)" "Seeds of Sin"
 		conversation
 			action
@@ -83,12 +85,14 @@ mission "Vault Weapon Ion Pulse Shotgun"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Leviathan (Ion Pulse Shotgun)" "Seeds of Doom"
 		conversation
 			action
@@ -131,12 +135,14 @@ mission "Vault Weapon Tuning Rifle"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Raven (Tuning Rifle)" "Grim Shadow"
 		conversation
 			action
@@ -170,11 +176,13 @@ mission "Vault Weapon Reverberator Rifle"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system Ildaria
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Falcon (Reverberator Rifle)" "Grim Darkness"
 		conversation
 			action
@@ -217,12 +225,14 @@ mission "Vault Weapon Thermal Repeater Rifle"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Splinter (Thermal Repeater Rifle)" "Burning Skull"
 		conversation
 			action
@@ -265,12 +275,14 @@ mission "Vault Weapon Lasher Pistol"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Protector (Lasher Pistol)" "Hell Scourge"
 		conversation
 			action
@@ -303,12 +315,14 @@ mission "Vault Weapon Meltdown Cannon"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Vanguard (Meltdown Cannon)" "Melting Point"
 		conversation
 			action
@@ -344,19 +358,21 @@ mission "Vault Weapon Enforcer Confrontation Gear"
 				`	(Don't get involved.)`
 					decline
 	npc
-		government Republic
+		government "Militia"
 		personality waiting staying surveillance uninterested
 			confusion 10
 		ship "Osprey" "I.M.S. Sassafras"
 	npc
 		government Pirate
 		personality entering plunders harvests
+			confusion 20
 		fleet "pirate raid"
 	npc capture
 		government Bounty
 		system
 			distance 1
 		personality target waiting staying timid vindictive
+			confusion 10
 		ship "Marauder Falcon (Enforcer Confrontation Gear)" "Chaos Weaver"
 		conversation
 			action
@@ -364,6 +380,54 @@ mission "Vault Weapon Enforcer Confrontation Gear"
 				fail "Vault Weapon Enforcer Confrontation Gear"
 			scene "outfit/enforcer confrontation gear"
 			`The pirate captain wielded an exotic weapon... This must be the weapon that was stolen from the evidence vault on Farpoint.`
+			``
+			`	(The stolen weapon is installed on the captured ship.)`
+
+mission "Vault Weapon Kinetic Rail Rifle"
+	minor
+	name "<npc>"
+	description "A pirate ship named <npc> may be in possession of an exotic weapon stolen from Farpoint's evidence vault. Find the ship and capture the weapon before bounty hunters do."
+	source
+		attributes "north pirate"
+	to offer
+		has "Vault Weapon Level 1"
+		random < 50
+	on offer
+		conversation
+			scene "outfit/coffin"
+			`A funeral procession makes it's way through the spaceport. From the murmurs in the crowd, it seems the leader of a powerful pirate gang is in the coffin. An assassin wielding an exotic rifle killed him. Perhaps this is another weapon stolen from Farpoint's evidence vault.`
+			choice
+				`	(Investigate this.)`
+				`	(Ignore this opportunity.)`
+					decline
+			action
+				payment -10000
+			scene "thumbnail/marauder frigate-thumb"
+			`	You end up having to spend a few thousand credits before finding a worthwhile tip. The day the assassination happened, someone carrying a very unusual rifle was seen boarding the <npc>, a Marauder Frigate. If that ship is still nearby, the passenger carrying that rifle may still be on it. One other thing you learned is that pirate gang has sent hired guns to get vengeance on the assassin...`
+				accept
+	npc
+		government "Bounty Hunter"
+		personality entering plunders harvests
+			confusion 10
+		fleet "Hired Guns"
+	npc
+		government Pirate
+		personality entering plunders harvests
+			confusion 20
+		fleet "pirate raid"
+	npc capture
+		government Bounty
+		system
+			distance 1
+		personality target waiting staying timid vindictive
+			confusion 10
+		ship "Marauder Frigate (Kinetic Rail Rifle)" "Dark Depths"
+		conversation
+			action
+				set "Vault Weapon Level 2"
+				fail "Vault Weapon Kinetic Rail Rifle"
+			scene "outfit/railgun h2h"
+			`One of the passengers wielded an exotic rifle... This must be another weapon that was stolen from the evidence vault on Farpoint.`
 			``
 			`	(The stolen weapon is installed on the captured ship.)`
 
@@ -828,7 +892,7 @@ mission "Vault Weapon Insurgent Subjugation Gear"
 	source
 		attributes "frontier"
 		attributes "south"
-		not attributes "uninhabited"
+		not attributes "uninhabited" "pirate"
 	destination "Farpoint"
 	to offer
 		or

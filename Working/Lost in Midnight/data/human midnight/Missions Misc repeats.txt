@@ -423,7 +423,6 @@ mission "Midnight Vlad De Drakul"
 	name "Vlad De Drakul"
 	description "Discreetly transport Vlad De Drakul to <destination>. Payment will be <payment>. If you are caught with him, you may be fined."
 	minor
-	repeat
 	infiltrating
 	source
 		attributes "frontier" "dirt belt" "rim" "north" "south" "core" "paradise"
@@ -437,6 +436,7 @@ mission "Midnight Vlad De Drakul"
 		"rejected illegal jobs" < 3
 		has "Shady passenger transport 2: done"
 		month == 10
+		not "Midnight Vlad De Drakul: failed"
 	on offer
 		conversation
 			scene "outfit/coffin"
@@ -450,7 +450,7 @@ mission "Midnight Vlad De Drakul"
 			`	When you offer to show him to his bunk, he declines, saying that he will sleep in his coffin...`
 				accept
 			label returns
-			`It's late at night when you find Vlad De Drakul waiting once again at your ship's landing pad with a coffin. He greets you warmly and says he's willing to pay <payment> to make his annual pilgrimage to <destination>.`
+			`It's late at night when you find Vlad De Drakul waiting once again at your ship's landing pad with his coffin. He greets you warmly and says he's willing to pay <payment> to make his annual pilgrimage to <destination>.`
 			choice
 				`	(Accept his offer.)`
 				`	(Reject his offer.)`
@@ -464,6 +464,7 @@ mission "Midnight Vlad De Drakul"
 		"rejected illegal jobs" ++
 	on fail
 		outfit "Fake Coffin" 1
+		log "Minor People" "Vlad De Drakul" `A strange client who always insisted on staying in his coffin instead of accepting a regular bunk...`
 		conversation
 			scene "outfit/coffin"
 			"Vlad De Drakul is gone, but he left his coffin behind..."
@@ -475,7 +476,7 @@ mission "Midnight Vlad De Drakul"
 		"getaway driver" ++
 		payment 350000
 		clear "Midnight Vlad De Drakul Reset: offered"
-		dialog `Vlad De Drakul has spoken hardly a word during the entire trip, seemingly spending the entire journey in his coffin. As soon as you land, he hands you your payment of <payment> and disappears into the night.`
+		dialog `You land under a moonlit sky. Vlad De Drakul has spoken hardly a word during the entire trip, seemingly spending the entire journey in his coffin. As soon as you land, he hands you your payment of <payment> and disappears into the night.`
 
 mission "Midnight Vlad De Drakul Reset"
 	landing
