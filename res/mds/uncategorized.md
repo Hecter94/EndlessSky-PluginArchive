@@ -21,7 +21,7 @@ All Plugins (568)
 
 
 [Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 90.56 mb | 2024-10-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
-Author: N/A | Category: Uncategorized <br>
+Author: N/A | Category: N/A <br>
 N/A[]()  <br>
 
 >N/A
