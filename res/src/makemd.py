@@ -4,8 +4,8 @@ from datetime import datetime
 import time
 
 iconpng = assetfile = pluginname =  lastmodified = size = author = website = category = status = description = pluginnameurl = news = allnews = pluginissues = updatecheck = readme = repo_last_commit = ""
-allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = story = weapons = uncategorized = 0
-categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Story", "Weapons", "Uncategorized"]
+allplugins = cheats = gameplay = graphics = outfits = overhauls = overwrites = patches = races = ships = starts = story = weapons = uncategorized = 0
+categories = ["Cheats", "Gameplay", "Graphics", "Outfits", "Overhauls", "Overwrites", "Patches", "Races", "Ships", "Starts", "Story", "Weapons", "Uncategorized"]
 plist = []
 
 # giving github enough Time for the zip uploads
@@ -65,6 +65,8 @@ def replacevar(string): # replaces %variables% in header template with real valu
 		string = string.replace("%amount%", str(races))
 	elif cat == "Ships":
 		string = string.replace("%amount%", str(ships))
+	elif cat == "Starts":
+		string = string.replace("%amount%", str(starts))
 	elif cat == "Story":
 		string = string.replace("%amount%", str(story))
 	elif cat == "Weapons":
@@ -81,6 +83,7 @@ def replacevar(string): # replaces %variables% in header template with real valu
 	string = string.replace("%patches%", str(patches))
 	string = string.replace("%races%", str(races))
 	string = string.replace("%ships%", str(ships))
+	string = string.replace("%starts%", str(starts))
 	string = string.replace("%story%", str(story))
 	string = string.replace("%weapons%", str(weapons))
 	string = string.replace("%uncategorized%", str(uncategorized))
@@ -154,6 +157,8 @@ for entry in entries:
 				races += 1
 			elif cat.lower() == "ships":
 				ships += 1
+			elif cat.lower() == "starts":
+				starts += 1
 			elif cat.lower() == "story":
 				story += 1
 			elif cat.lower() == "weapons":
