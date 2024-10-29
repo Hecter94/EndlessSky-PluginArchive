@@ -1,15 +1,16 @@
 
 All Plugins (568)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
 
 ---
 
 ## Ships
 
-<p>140 plugins in this category.<p>
+<p>139 plugins in this category.<p>
 
 
  
@@ -1135,49 +1136,6 @@ Author: EjoThims | Category: Ships <br>
 </details>
 
 Status: Playable on 0.10.0 continuous <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
-
----
-
-### Lampyrid Start
-<img src='../../Working/Lampyrid Start/icon.png' height='100'></img><br>
-
-
-[Lampyrid.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lampyrid.Start.zip) | 55.88 kb | 2024-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lampyrid%20Start/) <br>
-Author: Zitchas | Category: Ships <br>
-[https://github.com/Zitchas/ES_Lampyrid_Start](https://github.com/Zitchas/ES_Lampyrid_Start) (last commit 2024-04-02) <br>
-
->Alternate start with Lampyrid ship.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># ES_Lampyrid_Start
-Have you ever wanted to start Endless Sky flying something a bit more unique than the typical shuttle, starbarge, or sparrow? Have you dreamed of having a pilot that starts their career with an old ship they've been fixing up for the past few years? Well, Lampyrid Start does that. 
-
-Choosing this starts has your pilot start their career flying a slightly modified version of the Lampyrid, which is a decent balanced transport/freighter with the capacity to be fairly fast compared to others of its class.
-
-Be warned, however, that all is not peace, prosperity, and clear skies: Despite the tweak adding an anti-missile turret to the Lampyrid, it has sufficient cargo capacity to attract pirates on a semi-regular basis. Possibly even on your first launch. So you will have to be alert, and probably need to see about either upgrading your ship to be faster; or replacing the AM with a more intimidating turret.
-
-So long as you can avoid the pirates, this will be an easier and faster start than the standard ones. The pirate risk can make it a little riskier and slightly more challenging, though. Just think of them as Reavers, and it'll be just like flying in the Firefly universe.
-
-This plugin adds four starts:
-- Normal start, which is identical to the usual new pilot experience except starting with a "Lampyrid Mk. III" ship.
-- 3011 start, which is identical to the normal start, except you start one year early. This means you have a year to get used to the galaxy before the war starts.
-- 3010 start, which is identical to the normal start, except you start two years early.
-- 3011 no-loan start. This start has you begin a year early compared to the default ES new game, and instead of starting with a loan, you just have 10k credits and your "Lampyrid Mk. III" spaceship.
-- The Deep start. This is intended to be on par with the default start, just that you start in the Deep instead of the Dirt Belt.
-- The Paradise start. This is an easier start, without the pressure of a mortgage to pay off and startinng in a safer area.
-- The South start. This is a harder start in a more dangerous area.
-
-Copyright Zitchas @ 2021
-Copyright Zitchas @ 2022
-
-</blockquote>
-</details>
-
-Status: Playable on 0.9.15 Continuous. <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -3189,6 +3147,6 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 
-[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#races)
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#ships)
 
 

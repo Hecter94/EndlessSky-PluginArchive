@@ -1,65 +1,19 @@
 
 All Plugins (568)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
 
 ---
 
 ## Uncategorized
 
-<p>25 plugins in this category.<p>
+<p>23 plugins in this category.<p>
 
 
  
-
----
-
-### Atlanteans
-<img src='../../Working/Atlanteans/icon.png' height='100'></img><br>
-
-
-[Atlanteans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Atlanteans.zip) | 90.56 mb | 2024-10-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Atlanteans/) <br>
-Author: N/A | Category: N/A <br>
-N/A[]()  <br>
-
->N/A
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Oklen
-
-Adds my Oklen for [Endless Sky](https://github.com/endless-sky/endless-sky).
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
-### AuldrStarts
-
-
-[AuldrStarts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/AuldrStarts.zip) | 1.88 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/AuldrStarts/) <br>
-Author: williaji | Category: N/A <br>
-[https://github.com/williaji/AuldrStarts](https://github.com/williaji/AuldrStarts) (last commit 2023-01-08) <br>
-
->several starting options with different ships
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># AuldrStarts
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
 
 ---
 
@@ -635,6 +589,6 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 
-[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#weapons)
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#uncategorized)
 
 

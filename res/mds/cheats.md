@@ -1,15 +1,16 @@
 
 All Plugins (568)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
 
 ---
 
 ## Cheats
 
-<p>39 plugins in this category.<p>
+<p>37 plugins in this category.<p>
 
 
  
@@ -466,27 +467,6 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
-### DevStarts
-
-
-[DevStarts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/DevStarts.zip) | 1.67 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/DevStarts/) <br>
-Author: williaji | Category: Cheats <br>
-[https://github.com/williaji/DevStarts](https://github.com/williaji/DevStarts) (last commit 2023-02-05) <br>
-
->several developer start options, with credits, ships or jump drives
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># DevStarts
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
-
----
-
 ### Dragonflame Fabrication
 
 
@@ -541,24 +521,6 @@ Author: N/A | Category: Cheats <br>
 N/A[]()  <br>
 
 >A generic plugin for testing purposes.
->
-
-
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
-### Gray Box
-
-
-[Gray.Box.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gray.Box.zip) | 18.01 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gray%20Box/) <br>
-Author: granto | Category: Cheats <br>
-N/A[]()  <br>
-
->alternate start with more money and a medium warship
 >
 
 
@@ -1298,6 +1260,6 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 
-[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/.md#)
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#cheats)
 
 

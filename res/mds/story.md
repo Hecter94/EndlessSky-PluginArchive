@@ -1,42 +1,19 @@
 
 All Plugins (568)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (85) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41) | [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
 
 ---
 
 ## Story
 
-<p>85 plugins in this category.<p>
+<p>77 plugins in this category.<p>
 
 
  
-
----
-
-### Advanced Starts
-
-
-[Advanced.Starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Advanced.Starts.zip) | 23.75 kb | 2024-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Advanced%20Starts/) <br>
-Author: Kestrel1110 | Category: Story <br>
-[https://github.com/kestrel1110/ES-Advanced-Starts](https://github.com/kestrel1110/ES-Advanced-Starts) (last commit 2024-10-08) <br>
-
->Adds more starting options.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># ES-Advanced-Starts
-This is a plugin that adds more starting options to the space-trading video game, Endless-Sky.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
 
 ---
 
@@ -48,24 +25,6 @@ Author: N/A | Category: Story <br>
 N/A[]()  <br>
 
 >adds a museum tour on alexandria
->
-
-
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
-### Alternate Start Luna
-
-
-[Alternate.Start.Luna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alternate.Start.Luna.zip) | 2.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alternate%20Start%20Luna/) <br>
-Author: N/A | Category: Story <br>
-N/A[]()  <br>
-
->adds a new start option/story on luna
 >
 
 
@@ -1101,24 +1060,6 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
-### Galactic Conquest
-
-
-[Galactic.Conquest.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.Conquest.zip) | 1.55 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20Conquest/) <br>
-Author: SpiralCat | Category: Story <br>
-[https://www.moddb.com/mods/galactic-conquest](https://www.moddb.com/mods/galactic-conquest)  <br>
-
->Starts you on an abandoned alien station, where you are tasked with conquering the galaxy. Adds ships and outfits.
->
-
-
-
-Status: Abandoned. An updated version appears to have been made by 1010Todd: "Fallen" <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
 ### Galactic Couriers
 <img src='../../Working/Galactic Couriers/icon.png' height='100'></img><br>
 
@@ -1143,9 +1084,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/gegno.pirates/icon.png' height='100'></img><br>
 
 
-[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.22 kb | 2024-04-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
+[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 237.25 kb | 2024-10-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-29) <br>
 
 >Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear. See the readme for details.
 >
@@ -1188,6 +1129,9 @@ Remove the 8 lines containing: "Gegno Civilian" "Gegno Driller"	 "Scin Adjutant"
 <br>
 Changelog:<br>
 <br>
+2024-10-29<br>
+added ship Rhyolite to sale<br>
+<br>
 2024-03-20<br>
 fixed missing hyperlink from asio to uuba (thx isaias for reporting)<br>
 <br>
@@ -1221,24 +1165,6 @@ initial release<br>
 
 Status: made for 0.10.6 <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
-
----
-
-### Inheritance
-
-
-[Inheritance.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Inheritance.zip) | 304.6 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Inheritance/) <br>
-Author: N/A | Category: Story <br>
-N/A[]()  <br>
-
->alternate start with some missions
->
-
-
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -2200,58 +2126,6 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
-### Pirate Planets
-
-
-[Pirate.Planets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pirate.Planets.zip) | 61.63 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pirate%20Planets/) <br>
-Author: jjhankins | Category: Story <br>
-[https://github.com/jjhankins/pirate-planets](https://github.com/jjhankins/pirate-planets) (last commit 2017-11-06) <br>
-
->In this mod you start as a member of a poor farming community on one of the Pirate worlds. Your village has just been massacred by a rogue band of pirate raiders, yet you have managed to steal one of their ships and escape. You have a chance to seek justice, wealth, or perhaps bring true political change to the Pirate worlds.
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># pirate-planets
-## A mod with a new start and storyline for endless-sky
-
-The pirate worlds have always been an essential part of the Republic,
-necessary and despised at the same time. They take the pressure off
-inner-world jails by providing a place for scoundrels and
-ne'er-do-wells to flee, and they provide a convenient place for
-wealthy, inner-world aristos to conduct less-than-legal
-business. Savvy operators in the Pirate worlds have understood that
-this was their role since before the Republic even existed, and have
-always been sure to offer a quiet marketplace where law-abiding
-citizen can buy drugs, slaves, and other things their neighbors
-wouldn't approve of. In return, these Pirate world operators, half
-crime-lord and half medieval warlord, can rest secure in the knowledge
-that they are too useful to the Paradise worlds to ever face any
-serious attempt to bring them to justice.
-
-It's a win-win scenario - for everyone but the people of the Pirate
-worlds.  Theirs is a life of hard labor and a precarious existence,
-where the will of the local Warlord is absolute.
-
-In this mod you start as a member of a poor farming community on one
-of the Pirate worlds. Your village has just been massacred by a rogue
-band of pirate raiders, yet you have managed to steal one of their
-ships and escape. You have a chance to seek justice, wealth, or
-perhaps bring true political change to the Pirate worlds.
-
-## Notice
-
-This is a work in progress, and is not necessarily fully playable
-yet. Install it at your own risk.
-
-</blockquote>
-</details>
-
-Status: WIP abandoned <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
-
-
----
-
 ### planet.map
 <img src='../../Working/planet.map/icon.png' height='100'></img><br>
 
@@ -2535,44 +2409,6 @@ N/A[]()  <br>
 
 Status: Playable on 0.9.14, 0.9.15 Continuous. <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
-### Space Shuttle Start
-<img src='../../Working/Space Shuttle Start/icon.png' height='100'></img><br>
-
-
-[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 2.39 mb | 2024-07-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Shuttle%20Start/) <br>
-Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Space-Shuttle-Start](https://github.com/MidnightPlugins/Space-Shuttle-Start) (last commit 2024-07-12) <br>
-
->Start in the Sol system with an old Earth relic for your ship.
->
->The space shuttle has no weapons, but lots of cargo space.
->
->It has an Afterburner.
->
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote># Space-Shuttle-Start
-An alternate start for Endless Sky.
-
-Start in the Sol system with an old Earth relic for your ship.
-
-The space shuttle has lots of cargo space and a drone bay, but few weapons.
-
-It has an Afterburner.
-
-"You were born on New Boston, but moved to Earth at a young age. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. A few years later, your dream came true when you got a bargain on an old Earth relic that was up for auction. After many years working at a textile mill, you've finally saved enough credits to fix the shuttle, but there's still a debt to pay off."
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -2903,24 +2739,6 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
-### test convo
-
-
-[test.convo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/test.convo.zip) | 3.8 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/test%20convo/) <br>
-Author: N/A | Category: Story <br>
-N/A[]()  <br>
-
->All this variant/plugin adds is a little more background to the PC on start, to reduce the whole feeling of being parachuted into a bank with a loan signing hanging over your head.
->
-
-
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
 ### That Someone
 
 
@@ -3114,42 +2932,6 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
-### Warm Start
-
-
-[Warm.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warm.Start.zip) | 38.38 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Warm%20Start/) <br>
-Author: David Elworthy | Category: Story <br>
-N/A[]()  <br>
-
->This plugin gives you some alternatives for the starting character. The choices are:
->
->  the standard starting character from the official version of Endless Sky.
->  an adventurer with a good combat rating.
->  an inexperienced youth with a trust fund.
->  a merchant with a temporarily mislaid ship.
->
->For the last two of these, you'll have to complete a simple mission.
->
-
-<details>
-<summary>:blue_book: Plugin readme</summary>
-<blockquote>Once you've played Endless Sky a few times, the early stages of building up from your initial ship can be a little dull. This plugin gives you some alternatives for the starting character. The choices are:
-- the standard starting character from the official version of Endless Sky.
-- an adventurer with a good combat rating.
-- an inexperienced youth with a trust fund.
-- a merchant with a temporarily mislaid ship.
-
-For the last two of these, you'll have to complete a simple mission.
-
-</blockquote>
-</details>
-
-Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
-
-
----
-
 ### Watcher
 
 
@@ -3174,6 +2956,6 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 
-[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#ships)
+[back to top](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#story)
 
 
