@@ -1,4 +1,4 @@
-# Copyright (c) 2014 by TheSilverStone
+# Copyright (c) 2024 by TheSilverStone
 #
 # Arlug is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
@@ -12,8 +12,8 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 mission "First Contact: Arlug"
-	name "Got translation device. Oklen asked me to go to destination by <date>."
-	description "Got translation device. Oklen asked me to go to destination by <date>."
+	name "Arlug first contact."
+	description "Got translation device. Orik asked me to go to destination by <date>."
 	landing
 	repeat
 	source
@@ -23,7 +23,7 @@ mission "First Contact: Arlug"
 	passengers 1
 	on offer
 		conversation
-			`YAs you are coming down, you see a group of queer buildings. Maybe there are aliens on this planet. Do you want to explore them?`
+			`As you are coming down, you see a group of queer buildings. Maybe there are aliens on this planet. Do you want to explore them?`
 			choice
 				`	(no, take off again.)`
 					goto leave
@@ -31,14 +31,14 @@ mission "First Contact: Arlug"
 					goto yes
 			label leave
 			`	As you are taking off, a warship jumps in, and attacks. The last thing you see is a queer looking beam come out off the ship and hit your escape pod. You die.`
-				flee
+				die
 			label yes
-			`	You bring your ship down near it, and a security guard armed with a laser rifle. He halts you with the words, "Halt! The high-(he trails off into indecipherable sentences)-wants to see you." and beckons you to follow. You follow him inside a larger fancy  building, and the guard beckons you up the stairs and resumes his post outside. Do you want to go upstairs or downstairs?"`
+			`	You bring your ship down near it, and a security guard armed with a laser rifle stops you with the words, "Halt! The high-(he trails off into indecipherable sentences)-wants to see you." and beckons you to follow. You follow him inside a larger fancy  building, and the guard beckons you up the stairs and resumes his post outside. Do you want to go upstairs or downstairs?"`
 					goto careful
 			label careful
 			choice
 				`	(go upstairs)`
-					goto Oklen
+					goto Orik
 				`	(go downstairs)`
 					goto "angry guard"
 			label "angry guard"
@@ -51,13 +51,20 @@ mission "First Contact: Arlug"
 			label "very angry guard"
 			`	you creep around the corner, but you trip over a box you hadn't noticed before, and make a loud crash. The guard comes downstairs "Halt!" He says, "You must be arrested, for violating a very important rule." He drags you off to jail, where you spend the rest of your life wishing that you had gone upstairs.`
 				die
-			label Oklen
-			`	You step up the stairs, which are very steep. At the top you find a shrouded figure siting in a very nice carved chair. He says, "`
+			label "Arlug distrust"
+			`	you hurry up the two stories, and find a alien sitting in a chair. He says, "you should have been up here long before. You went downstairs." He summons the guard, who puts you in a underground cell.`
+				die
+			label Orik
+			`	You step up the stairs, which are very steep. At the top you find a typical alien siting in a very nice carved chair. He says, "My name is Orik, I'm the ruler of this group of Arlug." He pauses. "Could you go to <destination>? You will find a friend of mine there, although he won't understand you."`
 			choice
-				`	"don't surprise me like that. it's scary! I'm leaving slowly and quietly."`
-					goto angry
-				`	(whisper "Yes, I will")`
+				`	"Yes, I will if you will get me some means of translation."`
 					goto accept
+				`	(say something that indicates you won't listen)`
+					goto frustrated
 			label accept
-			`	"you take the translation device and exit.`
+			`	he brings out a queer-looking device, and says, "Take this. It is a translation device that helps us translate between different groups. Here, take it, my friend will understand you with it." you take the translation device and exit.`
 				accept
+			label frustrated
+			`	"How am I supposed to go bring your friend here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Orik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen." Then his face changes. "You leave this planet right now. And I'm telling you you're no longer a friend, or not enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
+				flee
+
