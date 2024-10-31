@@ -20,7 +20,7 @@ Over 150 ships:
 * Majority of the ships with limited turret arc both for aesthetic and gameplay.
 
 And other things:
-* A few weapons and outfits. 
+* A few weapons and outfits.
 * Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, Salvaging, etc.)
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
@@ -32,8 +32,8 @@ And other things:
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
 * A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite, Zagreus)
-* Gradual progression of the universe both dependent and independent of story missions. 
-  * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
+* Gradual progression of the universe both dependent and independent of story missions.
+  * Stronger pirate fleet over time and merchants upgrading their weapons to keep up.
   * New ships and technologies (timed and/or locked behind story missions and locked behind jobs)
   * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
@@ -41,18 +41,19 @@ And other things:
 * Additional shipyard and outfitter to various locations.
 * Basically overhaul human space at this point.
 
-Requires Unstable Build/0.10.7 or above.
+Requires Unstable Build/0.10.9 or above.
+Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
-# Recommended 
+# Recommended
 
 To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you ~~command your ships to target mineable asteroids~~(In vanilla now) and distribute fuel among your fleet with fighters. The fork also provides other gameplay improvements and bug fixes.
 
 (Possibly outdated as of 19/07/2023)
-Link: https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins
+[Link](https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins)
 
 This plugin have a few debug functionality and unobtainable ships which can be unlocked with Omnis cheat/developer plugin.
 
-Link: https://github.com/Adde-Endless-Sky-Mods/-Omnis
+[Link](https://github.com/EndlessSkyCommunity/-Omnis)
 
 # Download
 

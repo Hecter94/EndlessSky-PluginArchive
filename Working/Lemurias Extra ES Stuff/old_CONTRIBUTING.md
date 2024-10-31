@@ -16,7 +16,8 @@ faction.purpose.name.size.num
 * `size`: size of fleet, solely based on ship count, `lrg, med, sml`; definition of size can be subjective
 * `num`: for specifying different variants if more precise control instead of `variant #num` desired
 
-If two variants of a fleet exist, you may have them under 1 fleet as a variant or define them seperately for more precise control.
+If two variants of a fleet exist, you may have them under 1 fleet as a variant or define them separately for more precise control.
+
 ### Mission names
 * `st` Story missions
 * `fl` Flavor text (e.g Free Worlds secession dialogue)
@@ -45,7 +46,7 @@ tr.cargo.size.pirateRisk.num.#Faction
 
 * `pirateRisk`: `lrg, med, sml`, involvement of capital ships is considered `lrg`, medium warships `med`, interceptors and small warships `sml`. `pirateRisk` will be the risk of attack from Merchants, Syndicate, and Republic ships if the mission is offered by pirates (e.g smuggling.)
 * `num`: increments up, used for offering missions more than one at a time.
-* `#Faction`: if the mission is faction specific. use short names. ideally, you should define faction-specific missions in a seperate file.
+* `#Faction`: if the mission is faction specific. use short names. ideally, you should define faction-specific missions in a separate file.
 * if the mission falls under two categories, the two shall be separated by hyphens ("-"). the `st` flag will always go first.
 > NO: `pi-st.bunks.lrg.med.1`
 > YES: `st-pi.bunks.lrg.med.69`
