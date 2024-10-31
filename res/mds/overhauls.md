@@ -804,9 +804,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Galactic War/icon.png' height='100'></img><br>
 
 
-[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 161.21 mb | 2024-09-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
+[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 161.21 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2024-09-11) <br>
+[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2024-10-31) <br>
 
 >This is a massive content mod about a war in another galaxy. While no storyline exist yet there's a large galaxy to explore filled with various aliens with different advancement and specializations.
 >
@@ -817,7 +817,9 @@ Author: 1010todd | Category: Overhauls <br>
 This is a repository for the Endless Sky mod "Galactic War".
 The mod is currently in development stage, so many things are subject to change later on.
 
-Currently the mod requires Endless Sky version 0.9.15+ to work properly.
+Currently the mod requires Endless Sky version 0.10.3+ to work properly.
+(Only 0.10.3 feature used is the plugin.txt file really, it'll work with 0.9.15 still)
+Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
 ![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
 
@@ -864,12 +866,14 @@ Lite version: (Very Outdated)
 This version will have fewer animation frames and exclude @2x images to reduce memory required to load the plugin. Use this if you're using low end machines or 32 bit machines.
 https://mega.nz/file/8QpAAYhJ#H2vVusIAPKdlMZlzVNwTfTwzpV6tYQBsvZDXDdNhB54
 
+## Recommended
 
+This plugin have a few debug functionality and unobtainable ships which can be unlocked with Omnis cheat/developer plugin.
+
+[Link](https://github.com/EndlessSkyCommunity/-Omnis)
 
 ## Contact
-If you find any bugs/issues or have a suggestion, feel free to open an issue here or find me in Endless Sky Community discord server; https://discord.gg/ZeuASSx 
-
-I'll sometimes update development progress there in #plugin-chat.
+If you find any bugs/issues or have a suggestion, feel free to open an issue here or find me in Endless Sky Community discord server; [Link](https://discord.gg/ZeuASSx)
 
 ![GWcap3](https://user-images.githubusercontent.com/19187937/152831081-86783ac0-a228-4abd-9dd2-54952738b864.PNG)
 

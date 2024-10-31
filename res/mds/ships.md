@@ -1474,9 +1474,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2024-10-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-10-15) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-10-31) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -1505,7 +1505,7 @@ Over 150 ships:
 * Majority of the ships with limited turret arc both for aesthetic and gameplay.
 
 And other things:
-* A few weapons and outfits. 
+* A few weapons and outfits.
 * Special jobs that gets expanded with appropriate ship (Mining, Gas shipping, Chemical shipping, Heavy lift/Crane, Cars, Salvaging, etc.)
 * Additional luxury jobs/rich passengers depending on outfits.
 * Huge jobs (Passengers, Deliveries, Escorts).
@@ -1517,8 +1517,8 @@ And other things:
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
 * A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite, Zagreus)
-* Gradual progression of the universe both dependent and independent of story missions. 
-  * Stronger pirate fleet over time and merchants upgrading their weapons to keep up. 
+* Gradual progression of the universe both dependent and independent of story missions.
+  * Stronger pirate fleet over time and merchants upgrading their weapons to keep up.
   * New ships and technologies (timed and/or locked behind story missions and locked behind jobs)
   * Factions constructing new stations.
   * Limited time events that will be resolved by governments after a while.
@@ -1526,18 +1526,19 @@ And other things:
 * Additional shipyard and outfitter to various locations.
 * Basically overhaul human space at this point.
 
-Requires Unstable Build/0.10.7 or above.
+Requires Unstable Build/0.10.9 or above.
+Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
-# Recommended 
+# Recommended
 
 To fully utilize mining/utility fighters and drones provided with this plugin you can try Sam's Mining Complete fork of the game which allows you command your ships to target mineable asteroids(In vanilla now) and distribute fuel among your fleet with fighters. The fork also provides other gameplay improvements and bug fixes.
 
 (Possibly outdated as of 19/07/2023)
-Link: https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins
+[Link](https://github.com/samrocketman/endless-sky/releases/tag/continuous-with-plugins)
 
 This plugin have a few debug functionality and unobtainable ships which can be unlocked with Omnis cheat/developer plugin.
 
-Link: https://github.com/Adde-Endless-Sky-Mods/-Omnis
+[Link](https://github.com/EndlessSkyCommunity/-Omnis)
 
 # Download
 
