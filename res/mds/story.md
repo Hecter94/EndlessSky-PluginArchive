@@ -1,10 +1,10 @@
 
-All Plugins (568)
+All Plugins (574)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
-[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
@@ -948,17 +948,16 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fire Corporation/icon.png' height='100'></img><br>
 
 
-[Fire.Corporation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fire.Corporation.zip) | 1.01 mb | 2023-09-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fire%20Corporation/) <br>
+[Fire.Corporation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fire.Corporation.zip) | 1.01 mb | 2024-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fire%20Corporation/) <br>
 Author: lumbar527 | Category: Story <br>
-[https://github.com/lumbar527/Fire-Corporation](https://github.com/lumbar527/Fire-Corporation) (last commit 2023-09-21) <br>
+[https://github.com/Cromha-Plugins/Fire-Corporation](https://github.com/Cromha-Plugins/Fire-Corporation) (last commit 2023-11-12) <br>
 
 >An Endless Sky plugin about a manufacturing corporation that hates pirates. 
+>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote># **_THIS REPOSITORY IS NO LONGER BEING MAINTAINED. IT HAS BEEN REPLACED BY https://github.com/Cromha-Plugins/Fire-Corporation!_**
-
-# Fire-Corporation
+<blockquote># Fire-Corporation
 
 One of the greatest manufacturers in human space (in their own opinion) is Fire Corporation. They produce several ships for civilian and military uses.
 If you were worried about fighting pirates using their ships, you don't have to worry; that's what they do.
@@ -1290,9 +1289,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Lemurias Extra ES Stuff/icon.png' height='100'></img><br>
 
 
-[Lemurias.Extra.ES.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lemurias.Extra.ES.Stuff.zip) | 13.62 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lemurias%20Extra%20ES%20Stuff/) <br>
+[Lemurias.Extra.ES.Stuff.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lemurias.Extra.ES.Stuff.zip) | 14.38 mb | 2024-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lemurias%20Extra%20ES%20Stuff/) <br>
 Author: a-random-lemurian | Category: Story <br>
-[https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff](https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff) (last commit 2024-10-31) <br>
+[https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff](https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff) (last commit 2024-11-01) <br>
 
 >It adds so much new content to the game that it cannot be listed in this README
 >
@@ -1449,6 +1448,7 @@ None of the people mentioned here have endorsed the use of their image for this 
 | Alice                     | Natasha Ceridwen de Chroustchoff | CC BY-SA 2.0   | ([orig](https://www.geograph.org.uk/photo/1788888))
 | Geidontei Fortress        | Trevor Littlewood    | CC BY-SA 2.0 | ([orig](https://www.geograph.org.uk/photo/3406552))
 | Liminal Bastion           | aconcagua            | CC BY-SA 3.0 "Unported" | ([orig](https://commons.wikimedia.org/wiki/File:130809_La_Defense.jpg))
+| Pechara High              | The wub              | CC BY-SA 4.0 "International" | ([orig](https://commons.wikimedia.org/wiki/File:London_King%27s_Cross_rainbow_light_tunnel_-_2023-06-25.jpg))
 
 Regarding the planet named Bredehoft: Please do not inquire about the name choice with regard to any 21st century defamation court case.
 

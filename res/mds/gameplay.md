@@ -1,16 +1,16 @@
 
-All Plugins (568)
+All Plugins (574)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
-[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Gameplay
 
-<p>42 plugins in this category.<p>
+<p>43 plugins in this category.<p>
 
 
  
@@ -1134,6 +1134,32 @@ added icon and reworked readme<br>
 </details>
 
 Status: tested with 0.10.2 <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### New Planets
+<img src='../../Working/New Planets/icon.png' height='100'></img><br>
+
+
+[New.Planets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Planets.zip) | 89.04 kb | 2024-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Planets/) <br>
+Author: TheGiraffe3 | Category: Gameplay <br>
+[https://github.com/TheGiraffe3/es-new-planets](https://github.com/TheGiraffe3/es-new-planets) (last commit 2024-10-02) <br>
+
+>Adds new uninhabited planets in various systems.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># es-new-planets
+
+More uninhabited planets for [Endless Sky](https://github.com/endless-sky/endless-sky).
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

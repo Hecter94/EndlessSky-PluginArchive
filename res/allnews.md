@@ -1,3 +1,11 @@
+2024-11-01 | new Plugin 'New Planets' by TheGiraffe3 | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#new-planets)<br>
+2024-11-01 | new Plugin 'Compatibility Plugin' by lumbar527 | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#compatibility-plugin)<br>
+2024-11-01 | updated Plugin 'Fire Corporation' by lumbar527 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#fire-corporation)<br>
+2024-11-01 | updated Plugin 'Lemurias Extra ES Stuff' by a-random-lemurian | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lemurias-extra-es-stuff)<br>
+2024-11-01 | new Plugin 'es-ui-upgrades' by lumbar527 | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#es-ui-upgrades)<br>
+2024-11-01 | new Plugin 'Ace Combat Endless Skies' by Spectre907 | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#ace-combat-endless-skies)<br>
+2024-11-01 | new Plugin 'Inhibitor Turret Available' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#inhibitor-turret-available)<br>
+2024-11-01 | new Plugin 'variant-outfits' by Zarkonnen | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#variant-outfits)<br>
 2024-10-31 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
 2024-10-31 | updated Plugin 'Galactic War' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war)<br>
 2024-10-31 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>

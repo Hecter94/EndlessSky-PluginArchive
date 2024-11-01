@@ -1,16 +1,16 @@
 
-All Plugins (568)
+All Plugins (574)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (37) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (42) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (28) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (47)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (45) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
-[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (23)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Outfits
 
-<p>47 plugins in this category.<p>
+<p>48 plugins in this category.<p>
 
 
  
@@ -1335,6 +1335,37 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### variant-outfits
+<img src='../../Working/variant-outfits/icon.png' height='100'></img><br>
+
+
+[variant-outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/variant-outfits.zip) | 226.62 kb | 2024-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/variant-outfits/) <br>
+Author: Zarkonnen | Category: Outfits <br>
+[https://github.com/Zarkonnen/variant-outfits](https://github.com/Zarkonnen/variant-outfits) (last commit 2024-06-21) <br>
+
+>Adds modified versions of some of the basic human outfits. 
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Variant Outfits
+A plugin for [Endless Sky](https://endless-sky.github.io/). Adds a number of variant outfits to some outfitters. The ultimate intent would be to have EVN-style used outfits that only sometimes appear in shops.
+
+## Examples
+
+![example-variant-outfits](https://github.com/Zarkonnen/variant-outfits/assets/898230/25a6b5e1-612f-430c-b9ff-214ceba45f60)
+
+![fancyequipment](https://github.com/Zarkonnen/variant-outfits/assets/898230/bedb2546-f587-4631-b9a3-187daa6cfc2a)
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
