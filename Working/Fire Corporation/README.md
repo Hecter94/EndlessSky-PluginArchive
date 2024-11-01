@@ -1,5 +1,3 @@
-# **_THIS REPOSITORY IS NO LONGER BEING MAINTAINED. IT HAS BEEN REPLACED BY https://github.com/Cromha-Plugins/Fire-Corporation!_**
-
 # Fire-Corporation
 
 One of the greatest manufacturers in human space (in their own opinion) is Fire Corporation. They produce several ships for civilian and military uses.

@@ -148,6 +148,7 @@ None of the people mentioned here have endorsed the use of their image for this 
 | Alice                     | Natasha Ceridwen de Chroustchoff | CC BY-SA 2.0   | ([orig](https://www.geograph.org.uk/photo/1788888))
 | Geidontei Fortress        | Trevor Littlewood    | CC BY-SA 2.0 | ([orig](https://www.geograph.org.uk/photo/3406552))
 | Liminal Bastion           | aconcagua            | CC BY-SA 3.0 "Unported" | ([orig](https://commons.wikimedia.org/wiki/File:130809_La_Defense.jpg))
+| Pechara High              | The wub              | CC BY-SA 4.0 "International" | ([orig](https://commons.wikimedia.org/wiki/File:London_King%27s_Cross_rainbow_light_tunnel_-_2023-06-25.jpg))
 
 Regarding the planet named Bredehoft: Please do not inquire about the name choice with regard to any 21st century defamation court case.
 

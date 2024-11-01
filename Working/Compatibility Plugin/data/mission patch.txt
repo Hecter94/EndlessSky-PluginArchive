@@ -1,0 +1,204 @@
+# Copyright (c) 2014-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# Note: this file contains outfits that are no longer used in the game, but that
+# must be maintained in case anyone installed one of them while they were available.
+
+# Mission for those who had a savefile prior to 0.9.15 with the old Archon missions
+mission "Archon Personality Compatibility Patch"
+	invisible
+	landing
+	on offer
+		fail "Drak guarding Korath space"
+		fail "Drak guarding Sayaiban"
+		fail "Drak guarding Void Sprites"
+		fail
+
+# The mission to ensure the Pond Strider is properly added to the new Hai shipyards.
+mission "Pond Strider Patch for v2"
+	landing
+	invisible
+	to offer
+		has "event: pond strider mass production"
+	on offer
+		event "pond strider mass production v2"
+		fail
+
+# Patch mission for v0.9.13. If the player finished these missions prior to this update, then that means they must have revealed the existence of the Remnant to the Deep.
+mission "deep: player revealed remnant"
+	landing
+	invisible
+	to offer
+		has "Deep: Remnant Research: offered"
+		not "deep: did reveal remnant"
+		not "deep: did not reveal remnant"
+	on offer
+		set "deep: did reveal remnant"
+		fail
+
+# To tell players to go to Longjump to resume the story if they were in the middle of one of the deleted missions.
+mission "FW Pirates Patch"
+	landing
+	name "Return to <planet>"
+	description "Return to <destination> to continue your work with the Free Worlds."
+	source
+		not planet "Longjump"
+	destination "Longjump"
+	to offer
+		or
+			has "FW Pirates 3: offered"
+			has "FW Pirates 3.1: offered"
+			has "FW Pirates 3.2: offered"
+			has "FW Pirates 3.2A: offered"
+			has "FW Pirates 3.1B: offered"
+			has "FW Pirates 3.2B: offered"
+			has "FW Pirates 4: offered"
+			has "FW Pirates 4B: offered"
+			has "FW Pirates 4.1: offered"
+		not "FW Pirates: Attack 1: offered"
+		not "FW Senate Hearing: offered"
+		not "FW Refinery 1: offered"
+	on offer
+		conversation
+			`When you updated your game, you were in the middle of a story arc in the Free Worlds campaign that has since been changed. In order to continue, you should go to <destination>.`
+				accept
+
+mission "Fumbling Mugger Patch"
+	landing
+	invisible
+	to offer
+		has "Transport Workers B: done"
+	on offer
+		event "fumbling mugger timer" 60
+		fail
+
+# Compatibility patch for those who made contact with the Remnant prior to v0.9.15
+# v2 has been added to force those on continuous who already have the patch to get it again so that they get the post-scanning hostility/tolerance hail changes
+mission "Remnant: Blood Test Patch v2"
+	landing
+	invisible
+	to offer
+		has "event: ember waste label"
+		not "Remnant: Scanning Tolerances: done"
+	on offer
+		set "remnant: blood test pure"
+		event "remnant: change hail"
+		fail
+
+# Compatibility patch for those who completed Return the Samples 2 before 0.9.11, where it did not have the timer.
+mission "Remnant: Return the Samples Compatibility Patch"
+	landing
+	invisible
+	to offer
+		has "Remnant: Return the Samples 2: done"
+		not "event: remnant: return the samples timer"
+	on offer
+		event "remnant: return the samples timer" 2
+		fail
+
+# Replaced by the "remnant: puffin" event but the listed here so older versions of the "Remnant: Void Sprites 3" mission in their save file when they update do not have issues with this event being undefined.
+# The actual content of the event is not strictly necessary, since a patch mission already exists that applies the new event if the condition for this event is present.
+# But the event still needs to be declared so it can be considered "defined" by the game, otherwise, it will disable the mission referring to it.
+# If we ever do something that makes save files from an older version of the game incompatible, this can be removed.
+event "remnant: gascraft"
+
+mission "Wanderers: Sestor Alt: Zenith Patch"
+	landing
+	invisible
+	to offer
+		has "Wanderers: Sestor Alt: Alnilam 2: done"
+	on offer
+		event "liberated zenith"
+		fail
+
+# This patch mission is necessary for people who got the older version of the "Sestor: Final" mission without the patches integrated.
+mission "Wanderers: Sestor: Combined Patch 1"
+	landing
+	invisible
+	to offer
+		has "Wanderers: Sestor: Final: done"
+	to fail
+		has "Wanderers: Sestor: Final: Patched: offered"
+	on offer
+		set "wanderers sestor done"
+		event "wanderers: sestor planets unrestricted" 40
+		event "wanderers taking jobs from kor efreti" 5
+		event "wanderers: moonbeam mass production" 5
+		fail
+
+# Compatibility patch for saves before "language: Hai" variable was added.
+mission "Hai Language Patch"
+	landing
+	invisible
+	to offer
+		has "Visit Wanderers Again: offered"
+		not "language: Hai"
+	on offer
+		set "language: Hai"
+		fail
+
+
+
+# Compatibility patch for users pre-0.9.7 who don't have hostile Wanderer hails.
+mission "Wanderer Hail Patch"
+	landing
+	invisible
+	to offer
+		has "event: wanderer technology available"
+	on offer
+		event "wanderer technology available"
+		fail
+
+# Patching a mistake in 0.9.1:
+mission "Wanderers: Unfettered Invasion Patch"
+	landing
+	invisible
+	to offer
+		has "event: wanderers: unfettered invasion"
+	on offer
+		event "wanderers: unfettered invasion starts"
+		fail
+
+# Patch mission for v0.9.13 to make sure that some Wanderer jobs don't offer
+# after the number of Wanderer systems has decreased.
+mission "eastern evacuation"
+	landing
+	invisible
+	to offer
+		or
+			has "Wanderers Solifuge Recon 2: done"
+			has "Wanderers Pond Strider Recon 2: done"
+	on offer
+		event "eastern evacuation"
+		fail
+
+# The Riptide was added after these missions, so it is triggered separately for backward compatibility.
+mission "Wanderers Riptide Patch"
+	invisible
+	landing
+	to offer
+		has "Wanderers Evacuation 1: offered"
+	on offer
+		event "wanderers: riptide mass production" 30
+		fail
+
+# Compatibility patch for pilots that did the above missions before 0.9.7.
+ mission "Wanderers: Outfit License Patch"
+ 	landing
+ 	invisible
+ 	to offer
+ 		has "Wanderers Conversation: offered"
+ 		not "license: Wanderer Outfits"
+ 	on offer
+ 		set "license: Wanderer Outfits"
+ 		fail
