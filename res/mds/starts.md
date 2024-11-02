@@ -84,9 +84,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 22.39 kb | 2024-10-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 22.7 kb | 2024-11-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Starts <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-02) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 >
@@ -114,6 +114,9 @@ Beside the cheater start options, all others are balanced and lore friendly. A b
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-02 <br>
+changed cheater 2 start heron to have 20 heavy warship bays<br>
 <br>
 2024-10-08 <br>
 proofreading and minor text changes (Vemenous-Repentile)<br>
