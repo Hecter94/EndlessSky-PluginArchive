@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-11-03 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-11-02 | updated Plugin 'better.starts' by zuckung | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#betterstarts)<br>
 2024-11-02 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-11-02 | updated Plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
@@ -19,7 +20,6 @@
 2024-11-01 | new Plugin 'variant-outfits' by Zarkonnen | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#variant-outfits)<br>
 2024-10-31 | updated Plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
 2024-10-31 | updated Plugin 'Galactic War' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war)<br>
-2024-10-31 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
