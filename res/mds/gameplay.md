@@ -831,9 +831,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/kor.efret.shipyard/icon.png' height='100'></img><br>
 
 
-[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.83 kb | 2024-10-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
+[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.96 kb | 2024-11-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-04) <br>
 
 >Adds a shipyard with the three Kor Efret ships to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships and some Korath Exiles outfits. See the readme for details.
 
@@ -854,6 +854,14 @@ Available ships:<br>
 <br>
 Available outfits:<br>
 <ul>
+<li>"Cluster Mine Rack"</li>
+<li>"Cluster Mine"</li>
+<li>"Piercer Missile Rack"</li>
+<li>"Piercer Missile"</li>
+<li>"Firestorm Torpedo Rack"</li>
+<li>"Firestorm Torpedo"</li>
+<li>"Firelight Storage Rack"</li>
+<li>"Firelight Missile"</li>
 <li>Digger Mining Beam</li>
 <li>Banisher Grav-Turret</li>
 <li>Warder Anti-Missile</li>
@@ -905,6 +913,9 @@ Available outfits:<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-04<br>
+added korath ammunition (thx to MeretiJane)<br>
 <br>
 2024-10-29<br>
 added System Core (Tiny), (thx timeout.fu)<br>
