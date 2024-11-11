@@ -1203,9 +1203,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.3 mb | 2024-10-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.61 mb | 2024-11-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-11) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1255,6 +1255,7 @@ This plugin contains my former plugins unique.fix (just some vanilla unique adju
 <li> new unique, "Toolbox" (Clark, 3% chance)</li>
 <li> new unique, "Korath Pillow" (Laki Nemparu, 3% chance)</li>
 <li> new unique, "Gegno Starmap" (Wye Tzeou, 10% chance)</li>
+<li> new unique, "Nav Buoys" (human outfitter, after discovered shrouded systems, 10% chance)</li>
 </ul>
 vanilla uniques<br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/uniques01.jpg' width='400'>
@@ -1267,8 +1268,12 @@ added uniques<br>
 <br>
 Changelog:<br>
 <br>
+2024-10-11<br>
+fixed error<br>
+added nav buoys unique<br>
+<br>
 2024-10-02<br>
-renamed nostromo and dark star shiptypes, because of a conflict with midnight plugins (thx timeout.fu)<br>
+renamed nostromo and dark star ship types, because of a conflict with midnight plugins (thx timeout.fu)<br>
 <br>
 2024-09-23<br>
 removed forgotten test outfitter from earth<br>
