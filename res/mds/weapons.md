@@ -843,7 +843,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### YEET
 
 
-[YEET.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/YEET.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/YEET/) <br>
+[YEET.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/YEET.zip) | 280.77 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/YEET/) <br>
 Author: BCPowerhouse | Category: Weapons <br>
 N/A[]()  <br>
 
