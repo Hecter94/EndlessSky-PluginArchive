@@ -1594,9 +1594,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Main Plot Plus
 
 
-[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 152.19 kb | 2024-11-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
+[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 152.24 kb | 2024-11-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
 Author: ziproot | Category: Story <br>
-[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-11-10) <br>
+[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-11-12) <br>
 
 >A plugin mostly centered around improving the main plot.
 >
@@ -1654,7 +1654,7 @@ Most changes made by this plugin should be automatically reverted when the plugi
 My plugin takes the Crisis in Management plugin into account as much as possible, with the exception of Road to Hai Reveal. This means you still cannot do Hai Reveal if you did Crisis in Management. It also used to contain a patch to prevent the Constellations plugin from softlocking the game, but recent versions of this plugin no longer have the issue, so the patch has been removed, and loading this plugin should result in the patch also being reverted. This is because the patch would remove the wormhole if the plugin gets disabled/uninstalled, which I think is worse than old versions of one plugin breaking. Furthermore, Endless Sky Delta is a fork of Endless Sky adding in features that are not considered suitable for the base game at the moment, one of which is “engine slots” which breaks plugin ships that do not have slots assigned. As the only ship that would be broken is a person ship, I have given that person ship engine slots, as they won’t be noticed in non-Delta versions of the game anyways.
 
 ### Hai Reveal
-Additionally, the Hai Reveal closure mission is designed not to offer if Hai Reveal can continue due to the “repair Hai Reveal” plugin or the Delta fork being installed. The patched Turner Incorporated mission will not offer in this case as the secret leaks condition will never be cleared. There should be no other issues with using this plugin in Endless Sky Delta or with the “repair Hai Reveal” plugin, but if there are other issues, feel free to leave a bug report. As for the hai.side.mission.unlocker plugin, clearing the secret leaks tag will not break the plugin, and the old Turner Incorporated mission will not offer if the plugin mission offers, and will block the plugin mission from offering if it offers.
+Additionally, the Hai Reveal closure mission is designed not to offer if Hai Reveal can continue due to the “repair Hai Reveal” plugin or the Delta fork being installed. The patched Turner Incorporated mission will not offer in this case as the secret leaks condition will never be cleared. There should be no other issues with using this plugin in Endless Sky Delta or with the “repair Hai Reveal” plugin, but if there are other issues, feel free to leave a bug report. As for the hai.side.mission.unlocker and Lost in Midnight plugins, clearing the secret leaks tag will not break the plugins, and the old Turner Incorporated mission will not offer if another plugin mission offers, and will block the plugin mission from offering if it offers.
 
 ### Mega Freight Battles
 Mega Freight Battles by 1010todd contains three missions that conflict with this plugin, so my conflicting missions override the Mega Freight Battles missions and spawn the ships from Mega Freight Battles if the plugin is detected, with permission from 1010todd. This requires the plugin being called “Mega Freight Battles” and requires the plugin to be enabled for those ships to spawn. It additionally requires Endless Sky version 0.10.3 or later, and the version of Mega Freight Battles linked in the Endless Sky Community Discord in the #plugin-releases channel on 2/29/2024 at 14:45 UTC. If these requirements are not met, there is still a conflict and one of the two plugins should be disabled. If the conflict is because of an update to Mega Freight Battles, please report this as a bug and I will try to address the changes as soon as possible. This uses a fail-safe approach, so all Mega Freight Battles NPCs will despawn if the plugin is disabled or the mission is offered without the plugin being enabled, and will not respawn. This does not prevent there from being a conflict, rather, this is an attempt to workaround the conflict. In most normal circumstances, there should not be an issue, however, that doesn’t mean that there isn’t one, so keep this in mind.
@@ -2805,7 +2805,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### The Mysterious Baby
 
 
-[The.Mysterious.Baby.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Mysterious.Baby.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Mysterious%20Baby/) <br>
+[The.Mysterious.Baby.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Mysterious.Baby.zip) | 0.67 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Mysterious%20Baby/) <br>
 Author: N/A | Category: Story <br>
 N/A[]()  <br>
 
@@ -2815,7 +2815,7 @@ N/A[]()  <br>
 
 
 Status: Nonfunctional <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
