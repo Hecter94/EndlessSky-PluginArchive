@@ -1,16 +1,16 @@
 
-All Plugins (574)
+All Plugins (575)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Ships
 
-<p>139 plugins in this category.<p>
+<p>140 plugins in this category.<p>
 
 
  
@@ -387,9 +387,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Cutlass.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cutlass.zip) | 88.68 kb | 2024-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cutlass/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/es-cutlass](https://github.com/TheGiraffe3/es-cutlass) (last commit 2024-10-18) <br>
+N/A[]()  <br>
 
->Adds a new ship called the Cutlass, the pirate version of a Gunboat.
+>Adds a new ship called the Cutlass, the pirate version of a Gunboat. This plugin is deprecated; has been replaced by the Rumskib plugin.
 >
 
 <details>
@@ -404,7 +404,7 @@ All data and sprites come from the closed [PR](https://github.com/endless-sky/en
 </details>
 
 Status: Complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -1955,7 +1955,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Quarg Elder Dragon
 
 
-[Quarg.Elder.Dragon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Elder.Dragon.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20Elder%20Dragon/) <br>
+[Quarg.Elder.Dragon.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quarg.Elder.Dragon.zip) | 38.76 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quarg%20Elder%20Dragon/) <br>
 Author: mdsmestad | Category: Ships <br>
 N/A[]()  <br>
 
@@ -2264,6 +2264,38 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Rumskib
+<img src='../../Working/Rumskib/icon.png' height='100'></img><br>
+
+
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 125.67 kb | 2024-11-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+Author: TheGiraffe3 | Category: Ships <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-11-11) <br>
+
+>Adds a piratified version of the Gunboat, which is called the Cutlass, and a better Shuttle, the Tanager.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Rumskib
+
+Adds two new ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass and the Tanager.
+
+The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator.
+
+The Cutlass is a piratified Gunboat, made by 1010todd.
+
+Assets for both ships can be found [here](https://github.com/TheGiraffe3/new-ship-assets).
+
+</blockquote>
+</details>
+
+Status: Complete, but may be added to <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -2770,9 +2802,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Tanager.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tanager.zip) | 71.77 kb | 2024-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tanager/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/es-tanager](https://github.com/TheGiraffe3/es-tanager) (last commit 2024-10-18) <br>
+N/A[]()  <br>
 
->Adds a new ship whose stats are a cross between that of the Shuttle and the Scout.
+>Adds a new ship whose stats are a cross between that of the Shuttle and the Scout. This plugin is deprecated; has been replaced by the Rumskib plugin.
 >
 
 <details>
@@ -2790,7 +2822,7 @@ Assets: https://github.com/TheGiraffe3/new-ship-assets
 </details>
 
 Status: Complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
