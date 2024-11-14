@@ -12,15 +12,14 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 mission "First Contact: Arlug"
-	name "Arlug first contact."
-	description "Got translation device. Orik asked me to go to destination by <date>."
+	name "Arlug first contact"
+	description "Got translation device. Orik asked me to go to <destination> by <deadline>."
 	landing
-	repeat
 	source
 		government Arlug
-		not planet Destor
-	destination Destor
-	passengers 1
+		not planet Lmad
+	destination Lmad
+	passengers 0
 	on offer
 		conversation
 			`As you are coming down, you see a group of queer buildings. Maybe there are aliens on this planet. Do you want to explore them?`
@@ -52,19 +51,53 @@ mission "First Contact: Arlug"
 			`	you creep around the corner, but you trip over a box you hadn't noticed before, and make a loud crash. The guard comes downstairs "Halt!" He says, "You must be arrested, for violating a very important rule." He drags you off to jail, where you spend the rest of your life wishing that you had gone upstairs.`
 				die
 			label "Arlug distrust"
-			`	you hurry up the two stories, and find a alien sitting in a chair. He says, "you should have been up here long before. You went downstairs." He summons the guard, who puts you in a underground cell.`
+			`	you hurry up the two stories, and find a alien sitting in a chair. He says, "You should have been up here long before. You went downstairs." He summons the guard, who puts you in a underground cell.`
 				die
 			label Orik
-			`	You step up the stairs, which are very steep. At the top you find a typical alien siting in a very nice carved chair. He says, "My name is Orik, I'm the ruler of this group of Arlug." He pauses. "Could you go to <destination>? You will find a friend of mine there, although he won't understand you."`
+			`	You step up the stairs, which are very steep. At the top you find a typical alien siting in a very nice carved chair. He says, "My name is Orik, I'm the ruler of this group of Arlug." He pauses. "If you know the remnant, you will know that I'm a type of prefect. Could you go to <destination>? You will find a friend of mine there, although he won't understand you. His name is Arnlow."`
 			choice
 				`	"Yes, I will if you will get me some means of translation."`
 					goto accept
 				`	(say something that indicates you won't listen)`
 					goto frustrated
 			label accept
-			`	he brings out a queer-looking device, and says, "Take this. It is a translation device that helps us translate between different groups. Here, take it, my friend will understand you with it." you take the translation device and exit.`
+			`	He brings out a queer-looking device, and says, "Take this. It is a translation device that helps us translate between different groups. Here, take it, Arnlow will understand you with it." you take the translation device and exit. The guard escorts you back to your ship, and you look around like you had wanted to do in the first place.`
 				accept
 			label frustrated
-			`	"How am I supposed to go bring your friend here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Orik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen." Then his face changes. "You leave this planet right now. And I'm telling you you're no longer a friend, or not enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
+			`	"How am I supposed to go bring Arnlow here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Orik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen." Then his face changes. "You leave this planet right now. And I'm telling you you're no longer a friend, and an enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
+				"reputation: Arlug" = -1000 
 				flee
 
+mission "First Contact: Arlug 2"
+	name "Arlug first contact"
+	description "Got translation device. Orik asked me to go to <destination>."
+	landing
+	passengers 1
+	repeat
+	source Lmad
+	destination Destor
+	to offer
+		has "First Contact: Arlug: done"
+	on offer
+		conversation
+			`	You land and look around the spaceport, but you can't see Arnlow. He said that Arnlow would want to see this 'outsider' and you wouldn't have any trouble. Maybe it would be best to leave and not try anymore.`
+			choice
+				`	(Leave the planet and go back and tell Orik that I can't find his Arnlow.)`
+					goto redeath
+				`	(Keep looking, I don't want to see what happens if I don't)`
+					goto foundhim
+			label foundhim
+			`	you wait around the spaceport a while longer, and just when you decide to take of, a guard comes up "cwo hatcheck rilnor?" He asks. You bring out your translation device, and he says again "Will you follow me please? Arnlow wants to see you." You follow him down a hallway, and into a room. A Arlug sitting there says, "I'm Arnlow. I hear that you want to bring me to <destination>, correct?"`
+			choice
+				`	"Yes, Orik said to."`
+					goto takehim
+				`	"No, I was just hanging around the spaceport."`
+					goto badliar
+			label takehim
+			`	he says, "Ok, I'm coming on your ship, but I'm going to have a guard around at all times." You take him to your ship and take off.`
+				launch
+			label badliar
+			action
+				set "reputation: Arlug" -1000
+			`	He looks at you dubiously. "Orik said that a human stranger would be coming to pick me up. You liar! You shouldn't have tried to decive the Arlug. You're no friend."`
+				flee
