@@ -1,3 +1,6 @@
+2024-11-14 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>
+2024-11-14 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
+2024-11-14 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
 2024-11-13 | new Plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2024-11-13 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-11-12 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>
