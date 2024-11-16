@@ -13,7 +13,7 @@
 
 mission "First Contact: Arlug"
 	name "Arlug first contact"
-	description "Got translation device. Orik asked me to go to <destination> by <deadline>."
+	description "Got translation device. Arnik asked me to go to <destination> by <deadline>."
 	landing
 	source
 		government Arlug
@@ -37,7 +37,7 @@ mission "First Contact: Arlug"
 			label careful
 			choice
 				`	(go upstairs)`
-					goto Orik
+					goto Arnik
 				`	(go downstairs)`
 					goto "angry guard"
 			label "angry guard"
@@ -53,24 +53,26 @@ mission "First Contact: Arlug"
 			label "Arlug distrust"
 			`	you hurry up the two stories, and find a alien sitting in a chair. He says, "You should have been up here long before. You went downstairs." He summons the guard, who puts you in a underground cell.`
 				die
-			label Orik
-			`	You step up the stairs, which are very steep. At the top you find a typical alien siting in a very nice carved chair. He says, "My name is Orik, I'm the ruler of this group of Arlug." He pauses. "If you know the remnant, you will know that I'm a type of prefect. Could you go to <destination>? You will find a friend of mine there, although he won't understand you. His name is Arnlow."`
+			label Arnik
+			`	You step up the stairs, which are very steep. At the top you find a human siting in a throne that shimmers and glistens in the light. He says, "My name is Arnik, I'm the ruler of this group of Arlug." He pauses. "If you know the remnant, you will know that I'm a type of prefect. Could you go to <destination>? You will find a friend of mine there, although he won't understand you. His name is Arnlow."`
 			choice
 				`	"Yes, I will if you will get me some means of translation."`
 					goto accept
 				`	(say something that indicates you won't listen)`
 					goto frustrated
+				`	"How in the world did humans get here, and why won't he understand me? Humans should be able to."`
+					goto frustrated
 			label accept
 			`	He brings out a queer-looking device, and says, "Take this. It is a translation device that helps us translate between different groups. Here, take it, Arnlow will understand you with it." you take the translation device and exit. The guard escorts you back to your ship, and you look around like you had wanted to do in the first place.`
 				accept
 			label frustrated
-			`	"How am I supposed to go bring Arnlow here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Orik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen." Then his face changes. "You leave this planet right now. And I'm telling you you're no longer a friend, and an enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
+			`	"How am I supposed to go bring Arnlow here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Arnik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen." Then his face changes. "You leave this planet right now. And I'm telling you you're no longer a friend, and an enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
 				"reputation: Arlug" = -1000 
 				flee
 
 mission "First Contact: Arlug 2"
 	name "Arlug first contact"
-	description "Got translation device. Orik asked me to go to <destination>."
+	description "Got translation device. Arnik asked me to go to <destination>."
 	landing
 	passengers 1
 	repeat
@@ -82,22 +84,55 @@ mission "First Contact: Arlug 2"
 		conversation
 			`	You land and look around the spaceport, but you can't see Arnlow. He said that Arnlow would want to see this 'outsider' and you wouldn't have any trouble. Maybe it would be best to leave and not try anymore.`
 			choice
-				`	(Leave the planet and go back and tell Orik that I can't find his Arnlow.)`
-					goto redeath
+				`	(Leave the planet and go back and tell Arnik that I can't find his Arnlow.)`
+					goto arnikangry
 				`	(Keep looking, I don't want to see what happens if I don't)`
 					goto foundhim
 			label foundhim
-			`	you wait around the spaceport a while longer, and just when you decide to take of, a guard comes up "cwo hatcheck rilnor?" He asks. You bring out your translation device, and he says again "Will you follow me please? Arnlow wants to see you." You follow him down a hallway, and into a room. A Arlug sitting there says, "I'm Arnlow. I hear that you want to bring me to <destination>, correct?"`
+			`	You wait around the spaceport a while longer, and just when you decide to take of, a guard comes up and you bring out your translation device. The guard asks "Will you follow me please? Arnlow wants to see you." You follow him down a hallway, and into a room. A Arlug sitting there says, "I'm Arnlow. I hear that you want to bring me to <destination>, correct?"`
 			choice
-				`	"Yes, Orik said to."`
+				`	"Yes, Arnik said to."`
 					goto takehim
 				`	"No, I was just hanging around the spaceport."`
 					goto badliar
 			label takehim
-			`	he says, "Ok, I'm coming on your ship, but I'm going to have a guard around at all times." You take him to your ship and take off.`
-				launch
+			`	he says, "Ok, I'm coming on your ship, but I'm going to have a guard around at all times in case you try backstabbing me." You take him to your ship and take off.`
+					goto end
 			label badliar
+			`	He looks at you dubiously. "I thought that Arnik said that a human stranger would be coming to pick me up, but I must have been mistaken." The guard escorts you back outside, leaving you feeling thoroughly uncomfortable.`
+					goto end
+			label end
+			`	You start the launch. Just as you reach the atmosphere, Arnik's call comes in. "Did you get Arlow? Is he coming?"`
+			choice
+				`	"Yes, but he's a bit afraid I'll attack him."`
+					goto truth
+				`	"I'm sorry, but I've decided that I'm not going to work for the Arlug."`
+					goto sorryarnik
+				`	"Yes, but I'm afraid I told him that you didn't send me."`
+					goto angryarnik
+				`	"No, he didn't come in the spaceport."`
+					goto lie
+		label angryarnik
+			`	Arnik looks at you like he can't believe his ears. "What did you say?" He roars.`
+					goto lieortruth
+		label sorryarnik
+			`	Arnik says, "Ok, go mind your own business from now on." You can't believe you got away this easily. You finish launching.`
+					decline
+		label lie
+			`	Arnik says, "Ok, okay, but you've failed your mission."`
+					decline
+		label truth
+			`	Arnik looks relived. "Come to Destor as fast as you can. I'll be waiting."`
+					launch
+		label lieortruth
+			choice
+				`	"I said that he's on my ship."`
+					goto truth
+				`	"I said that I'm afraid I told him that you didn't send me."`
+					goto verysorryarnik
+
+			label verysorryarnik
 			action
 				set "reputation: Arlug" -1000
-			`	He looks at you dubiously. "Orik said that a human stranger would be coming to pick me up. You liar! You shouldn't have tried to decive the Arlug. You're no friend."`
+			`	He says, "Why did you do that? I'm afraid that I can't permit you to stay in our space." The telecom shuts down, and you finish taking of through the atmosphere.`
 				flee

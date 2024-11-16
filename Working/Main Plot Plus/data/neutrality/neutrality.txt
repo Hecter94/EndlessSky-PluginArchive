@@ -71,9 +71,6 @@ mission "Neutrality 2"
             has "FW Katya 3: done"
     to offer
         has "event: pug notice neutrality"
-        or
-            has "pug reputation override"
-            "reputation: Pug" >= 0
     to complete
         never
     source
@@ -91,10 +88,18 @@ mission "Neutrality 2"
 
             label "remote landing"
             `Your ship comes to a stop in a remote location.`
-            # Paraphrased from descriptions of the Pug in "FWC Pug 2C" from the the "free worlds 3 checkmate.txt" file in endless sky.
-            `Shortly after, strange, yellow, alien ships uncloak next to you. But it's what comes out of these ships that's really weird: pale aliens with strange proportions, large heads, and long arms and legs compared to their short, cylindrical torsoes. As they walk towards your ship, their gait appears somewhat similar to that of insects.`
+            # Paraphrased from descriptions of the Pug in "FWC Pug 2C" from the "free worlds 3 checkmate.txt" file in endless sky.
+            `Shortly after, strange, yellow, alien ships appear next to you. But it's what comes out of these ships that's really weird: pale aliens with strange proportions, large heads, and long arms and legs compared to their short, cylindrical torsoes. As they walk towards your ship, their gait appears somewhat similar to that of insects.`
+                to display
+                    not "visited system: Deneb"
+            # Ditto
+            `Shortly after, yellow ships appear next to you, that you recognize as belonging to the aliens living in the Deneb system one jump away, the Pug. What you do not recognize is what comes out of these ships: pale aliens with strange proportions, large heads, and long arms and legs compared to their short, cylindrical torsoes. As they walk towards your ship, their gait appears somewhat similar to that of insects.`
+                to display
+                    has "visited system: Deneb"
             `"So you don't want to fight your war?" asks one of the aliens.`
-
+            `They seem not to mind that you have attacked some of their ships.`
+                to display
+                    "reputation: Pug" < 1
             label "are you neutral"
             choice
                 `"No."`
@@ -125,11 +130,18 @@ mission "Neutrality 2"
             label "neutral"
             action
                 "reputation: Pug" >?= 0
-            # The Pug refer to nukes as "weapons of genocide" in "FWC Pug 2C" from the the "free worlds 3 checkmate.txt" file in endless sky.
+            # The Pug refer to nukes as "weapons of genocide" in "FWC Pug 2C" from the "free worlds 3 checkmate.txt" file in endless sky.
             `"We have been monitoring your species closely, as there have been some unsettling developments. We noticed that you had resumed your use of nuclear weapons, weapons of genocide. We are glad that you have chosen the side of peace."`
 
+            label "find more info"
             choice
                 `"Who are you?"`
+                    to display
+                        not "visited system: Deneb"
+                    goto "pug"
+                `"What are you doing here? I thought you just kept to yourself."`
+                    to display
+                        has "visited system: Deneb"
                     goto "pug"
                 `"I wasn't the one who dropped nuclear weapons."`
                     to display
@@ -138,9 +150,7 @@ mission "Neutrality 2"
             action
                 set "neutral: nuke independent"
             `"And yet you have made <marginal> effort to discover who did."`
-
-            choice
-                `"Who are you?"`
+                goto "find more info"
 
             label "pug"
             `"We are Pug. Our goal is to bring peace and prevent your species from inflicting significant harm upon itself."`
@@ -150,7 +160,9 @@ mission "Neutrality 2"
                 clear "neutral: war independent"
 
             `"Your decision to avoid war is honorable, so we shall honor it."`
-            `Without another word, a Pug rushes towards you and hits you with its staff. Everything blacks out.`
+            # Mostly copied from the description of the effects of the Pug staff in "Pug in Wanderer Space" from the "pug missions.txt" file in endless sky
+            # The reason why you black out here and not that mission is because this staff is more intense
+            `Without another word, a Pug fires an intense burst of light from its staff. A warm, pleasant feeling washes over you - the most wonderful feeling you have ever experienced. However, you barely have time to appreciate this feeling before everything blacks out.`
                 accept
     on accept
         # As relocate mission PR is closed, this is commented. It will be uncommented when that PR is reopened.
@@ -166,9 +178,6 @@ mission "Neutrality 2b"
     clearance "For some reason, the spaceport controller lets you land."
     to offer
         has "event: pug notice neutrality"
-        or
-            has "pug reputation override"
-            "reputation: Pug" >= 0
     to complete
         never
     to accept
@@ -177,7 +186,6 @@ mission "Neutrality 2b"
         system "Alderamin" "Altair" "Delta Capricorni" "Orvala" "Rasalhague" "Terra Incognita" "Vega" "Zeta Aquilae"
     destination "Pugglemug"
     on offer
-        clear "pug reputation override"
         conversation
             # Adapted from the Ruin: Landing mission in endless sky, with major parts of the description copied.
             `You wake up inside of a tank, with an insectoid robot removing the lid. You step out onto an abandoned fueling depot: a ring of landing pads around a cluster of tanks of all different shapes and sizes. Some of them must be cyrogenic, because they are covered in ice. A few other slow-moving insectoid robots are busy clearing off the ice and cleaning the tanks, but they do not appear to be armed and you see no sign of any other creatures or of any defense systems. From the fact that some of the tanks are covered in frost and others are not, you would guess that each one, besides the one you were in, contains a different fuel, as each tank besides yours has dozens of different connectors branching off from it. You find your ship parked nearby, and with surprise, you discover that it is connected to one of the tanks, and the connector is the style used in human space. Other than the robots and the fog swirling in the valley below you, there is no sign of life or motion here, and the air is uncomfortably moist and cold despite the hot steam rising up from a few nearby vents in the ground.`
@@ -285,7 +293,7 @@ mission "Neutrality 3"
         not
             planet "New Boston"
     on offer
-        # The end part of log entries was taken from log entries in "FWC Pug 6" from the the "free worlds 3 checkmate.txt" file in endless sky.
+        # The end part of log entries was taken from log entries in "FWC Pug 6" from the "free worlds 3 checkmate.txt" file in endless sky.
         log "It turns out the Pug invaded human space and cut neighboring hyperlinks, using the same claims about peace and protecting humanity as their justification for their invasion. The Free Worlds had nuclear weapons, which were no match for the Pug. Then, a Free Worlds captain was able to steal one of their 'jump drives', arouse the Navy, and restore hyperlinks. At least, that's what a receptionist on what used to be one their planets said when asked about it. It is possible that the true purpose of the Pug attack was to give human beings a common enemy that would force them to band together and forget their internal struggles."
         log "Factions" "Pug" "The Pug invaded human space and cut neighboring hyperlinks, using the same claims about peace and protecting humanity as their justification for their invasion. They were able to defeat a nuclear armed fleet, but a brave Free Worlds captain was able to steal one of their drives and reconnected the hyperspace lanes. When the Free Worlds and the Navy banded together to attack them, they disappeared into a wormhole, which goes to the planet the Pug released you onto. It is possible that the true purpose of their attack was to give human beings a common enemy that would force them to band together and forget their internal struggles."
         log "Factions" "Free Worlds" "During the war with the Pug, the Free Worlds had nuclear weapons. It is likely that this isn't the first time that they used them. After the Pug war, the Free Worlds was granted autonomy by the Republic."
