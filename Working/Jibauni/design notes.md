@@ -1,7 +1,15 @@
+**Design**
+
+Batteries
+Musaghar Shield Generator
+
 **Redesign Completely**
 
 Ruksay Missile/Missile Launcher
-Shield generators
+
+~~Jamum Shield Generator~~
+Tamum Shield Generator
+
 Altaedin Laser?
 
 ------
@@ -11,7 +19,7 @@ Altaedin Laser?
 ~~Tone down brightness of Rukjay Missile Launcher~~
 
 _Energy generators_
-Jahgir
+~~Jahgir~~
 ~~Tawasitaq~~
 ~~Watsaq~~
 ~~Daltaq~~

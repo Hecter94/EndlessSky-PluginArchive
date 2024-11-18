@@ -33,24 +33,24 @@ mission "First Contact: Arlug"
 				die
 			label yes
 			`	You bring your ship down near it, and a security guard armed with a laser rifle stops you with the words, Halt! The high-(he trails off into indecipherable sentences)-wants to see you. and beckons you to follow. You follow him inside a larger fancy  building, and the guard beckons you up the stairs and resumes his post outside. Do you want to go upstairs or downstairs?`
-					goto careful
+				goto careful
 			label careful
 			choice
 				`	(go upstairs)`
 					goto Arnik
 				`	(go downstairs)`
-					goto angry guard
-			label angry guard
+					goto "angry guard"
+			label "angry guard"
 			`	you slowly creep downstairs, and peer around the corner. There is no-one inside.`
 			choice
 				`	(Go slowly around the corner.)`
-					goto very angry guard
+					goto "very angry guard"
 				`	(Go back upstairs two stories where you where supposed to be in the first place.)`
-					goto Arlug distrust
-			label very angry guard
+					goto "Arlug distrust"
+			label "very angry guard"
 			`	you creep around the corner, but you trip over a box you hadn't noticed before, and make a loud crash. The guard comes downstairs "Halt!" He says, "You must be arrested, for violating a very important rule." He drags you off to jail, where you spend the rest of your life wishing that you had gone upstairs.`
 				die
-			label Arlug distrust
+			label "Arlug distrust"
 			`	you hurry up the two stories, and find a alien sitting in a chair. He says, "You should have been up here long before. You went downstairs." He summons the guard, who puts you in a underground cell.`
 				die
 			label Arnik
@@ -66,8 +66,9 @@ mission "First Contact: Arlug"
 			`	He brings out a queer-looking device, and says, "Take this. It is a translation device that helps us translate between different groups. Here, take it, Arnlow will understand you with it." you take the translation device and exit. The guard escorts you back to your ship, and you look around like you had wanted to do in the first place.`
 				accept
 			label frustrated
-			`	"How am I supposed to go bring Arnlow here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Arnik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen. Then his face changes. You leave this planet right now. And I'm telling you you're no longer a friend, and an enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
+			action
 				reputation: Arlug = -1000 
+			`	"How am I supposed to go bring Arnlow here if he won't understand me? I'm taking off and leaving this planet for good. I don't like people who give me jobs that are impossible to complete." Arnik leans back in his chair with his eyes closed. "Very well," he says, "you won't listen. Then his face changes. You leave this planet right now. And I'm telling you you're no longer a friend, and an enemy, of the Arlug." The guard escorts you back downstairs, and takes you to your ship. You start the autopilot to launch.`
 				flee
 
 mission "First Contact: Arlug 2"
@@ -85,7 +86,7 @@ mission "First Contact: Arlug 2"
 			`	You land and look around the spaceport, but you can't see Arnlow. He said that Arnlow would want to see this 'outsider' and you wouldn't have any trouble. Maybe it would be best to leave and not try anymore.`
 			choice
 				`	(Leave the planet and go back and tell Arnik that I can't find his Arnlow.)`
-					goto arnikangry
+					goto end
 				`	(Keep looking, I don't want to see what happens if I don't.)`
 					goto foundhim
 			label foundhim
@@ -112,45 +113,45 @@ mission "First Contact: Arlug 2"
 					goto angryarnik
 				`	"No, he didn't come in the spaceport."`
 					goto lie
-		label angryarnik
+			label angryarnik
 			`	Arnik looks at you like he can't believe his ears. "What did you say?" He roars.`
-					goto lieortruth
-		label arnikangry
-					goto end
-		label sorryarnik
+				goto lieortruth
+			label sorryarnik
 			`	Arnik says, "Ok, go mind your own business from now on." You can't believe you got away this easily. You finish launching.`
-				flee
-		label lie
+					flee
+			label lie
 			`	Arnik says, "Ok, okay, but you've failed your mission."`
 				flee
-		label truth
+			label truth
 			`	Arnik looks relived. "Come to Destor as fast as you can. I'll be waiting."`
-					launch
-		label lieortruth
+				launch
+			label lieortruth
 			choice
 				`	"I said that he's on my ship."`
 					goto truth
 				`	"I said that I'm afraid I told him that you didn't send me."`
-					goto verysorryarnik
-
 			label verysorryarnik
 			action
-				set reputation: Arlug -1000
+				set "reputation: Arlug -1000"
 			`	He says, "Why did you do that? I'm afraid that I can't permit you to stay in our space." The telecom shuts down, and you finish taking off through the atmosphere.`
 				flee
+
 mission "First Contact: Arlug 3"
 	name "Arlug first contact"
 	description "Got translation device. Arnik asked me to go to <destination>."
 	landing
 	passengers 1
 	repeat
-	source Destor
-	destination Lmad
+	npc evade
+		government "Olin"
+		personality heroic staying target harvests plunders
+		system destination
+		fleet "Small Olin" 1
 	to offer
-		has "First Contact: Arlug: 2 done"
+		has "First Contact: Arlug 2: done"
 	on offer
 		conversation
-			`	As before, you land and wait for Arnik to call for you. As you wait, you see a group of Arlug talking in whispers and looking nervously towards the building. They are armed.`
+			`	As before, you land and wait for Arnik to call for you and Arnlow. As you wait, you see a group of Arlug talking in whispers and looking nervously towards the building. They are armed.`
 			choice
 				`	(Go over and ask them what their doing.)`
 					goto youredead
@@ -159,9 +160,42 @@ mission "First Contact: Arlug 3"
 				`	(Shoot the leader and hope that I don't miss.)`
 					goto bigtrouble
 			label youredead
-			`	You walk over towards the Arlug, who immediately notice you and ask you what you're doing. When you tell them you're waiting for Arnik they shoot you and you fall down into a blackness.`
+			`	You walk over towards the Arlug, who immediately notice you and ask you what you're doing. When you tell them you're waiting for Arnik they shoot you and you fall down into the blackness of death.`
 				die
 
-			label youredead
+			label bigtrouble
 			`	You shoot the main leader, who falls dead. The other Arlug set up a howl and shoot you on the spot.`
 				die
+			label rebelarlug
+			`	When the guard comes, you point the Arlug out to him. He says, "Oh yes, the doubting ones. The don't believe that government can protect them from the Olin."`
+			choice
+				`	"Who are the Olin?"`
+					goto olinquestion
+				`	"I think they're right. Government doesn't protect anyone."`
+					goto anarchist
+				`	"What does Arnik want me to do now?"`
+					goto questionnow
+			label anarchist
+			`	His eyes narrow, and he says: "You don't approve of government?"`
+			choice
+				`	"Not really."`
+					goto veryanarchist
+				`	"Yes, I do, I meant to say government doesn't protect people on planets."`
+					goto notrue
+			label notrue
+			`	"Wrong. Here, the Arlug govern with justice, and not with cruelty." He takes you back to your spaceship.`
+				flee
+			label veryanarchist
+			`	"Then we can't permit you to stay." He escorts you back to your spaceship.`
+				flee
+			label olinquestion
+			`	He says, "The Olin are a group of aliens who think that we took over their space. You are going to be asked to fight an Olin ship called the <npc>." You follow him into the building, where Arnik says, "I'm asking you to destroy an Olin fighter whose mothership we destroyed. This is only a test, If anything goes wrong then we'll kill it."`
+			choice
+				`	"I'm with you."`
+					accept
+				`	"Sorry, my ship isn't a warship."`
+					defer
+
+
+
+
