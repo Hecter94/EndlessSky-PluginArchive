@@ -306,9 +306,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Arlug/icon.png' height='100'></img><br>
 
 
-[Arlug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arlug.zip) | 36.29 mb | 2024-11-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arlug/) <br>
+[Arlug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arlug.zip) | 36.29 mb | 2024-11-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arlug/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Arlug](https://github.com/TheSilverStone/Arlug) (last commit 2024-11-17) <br>
+[https://github.com/TheSilverStone/Arlug](https://github.com/TheSilverStone/Arlug) (last commit 2024-11-18) <br>
 
 >Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
 >
@@ -940,9 +940,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 15.34 mb | 2024-11-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 15.35 mb | 2024-11-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-11-17) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-11-18) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -1198,9 +1198,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.95 mb | 2024-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.95 mb | 2024-11-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-11-05) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-11-18) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 

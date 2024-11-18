@@ -1,3 +1,6 @@
+2024-11-18 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>
+2024-11-18 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
+2024-11-18 | updated Plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#naltok)<br>
 2024-11-17 | updated Plugin 'Arlug' by TheSilverStone | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#arlug)<br>
 2024-11-17 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-11-17 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
