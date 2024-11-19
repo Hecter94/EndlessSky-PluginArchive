@@ -1,14 +1,14 @@
 **Design**
 
 Batteries
-Musaghar Shield Generator
+~~Musaghar Shield Generator~~
 
 **Redesign Completely**
 
 Ruksay Missile/Missile Launcher
 
 ~~Jamum Shield Generator~~
-Tamum Shield Generator
+~~Tamum Shield Generator~~
 
 Altaedin Laser?
 

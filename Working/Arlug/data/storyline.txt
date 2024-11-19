@@ -72,8 +72,8 @@ mission "First Contact: Arlug"
 				flee
 
 mission "First Contact: Arlug 2"
-	name "Arlug first contact"
-	description "Got translation device. Arnik asked me to go to <destination>."
+	name "Go to Destor."
+	description "Got Anlow and am supposed to bring him to Destor."
 	landing
 	passengers 1
 	repeat
@@ -137,21 +137,17 @@ mission "First Contact: Arlug 2"
 				flee
 
 mission "First Contact: Arlug 3"
-	name "Arlug first contact"
-	description "Got translation device. Arnik asked me to go to <destination>."
+	name "Fight the Olin."
+	description "Arnik asked me to fight a group of alien warships controlled by a species called the Olin."
 	landing
 	passengers 1
 	repeat
-	npc evade
-		government "Olin"
-		personality heroic staying target harvests plunders
-		system destination
-		fleet "Small Olin" 1
+	source "Destor"
 	to offer
 		has "First Contact: Arlug 2: done"
 	on offer
 		conversation
-			`	As before, you land and wait for Arnik to call for you and Arnlow. As you wait, you see a group of Arlug talking in whispers and looking nervously towards the building. They are armed.`
+			`As before, you land and wait for Arnik to call for you and Arnlow. As you wait, you see a group of Arlug talking in whispers and looking nervously towards the building. They are armed.`
 			choice
 				`	(Go over and ask them what their doing.)`
 					goto youredead
@@ -195,7 +191,32 @@ mission "First Contact: Arlug 3"
 					accept
 				`	"Sorry, my ship isn't a warship."`
 					defer
+	npc kill
+		government "Olin"
+		personality heroic staying target harvests plunders
+		system destination
+		fleet "Medium Olin" 1
 
-
-
-
+mission "First Contact: Arlug 4"
+	name "Bring Arnik and Arnlow to <destination>."
+	description "Arnik asked me to bring him and Arnlow to <destination>."
+	landing
+	passengers 1
+	repeat
+	source "Destor"
+	destination Restredy
+	to offer
+		has "First Contact: Arlug 3: done"
+	on offer
+		conversation
+			`As before, you land and wait for Arnik to call for you and Arnlow. As you wait, you see a group of Arlug talking in whispers and looking nervously towards the building. They are armed.`
+			choice
+				`	(Go over and ask them what their doing.)`
+					goto youredead
+				`	(Keep my distance and wait for Arnik.)`
+					goto rebelarlug
+				`	(Shoot the leader and hope that I don't miss.)`
+					goto bigtrouble
+			label youredead
+			`	You walk over towards the Arlug, who immediately notice you and ask you what you're doing. When you tell them you're waiting for Arnik they shoot you and you fall down into the blackness of death.`
+				die

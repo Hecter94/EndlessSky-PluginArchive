@@ -1,0 +1,66 @@
+mission "Rumskib: Blended Ships installed"
+	landing
+	invisible
+	minor
+	repeat
+	to offer
+		has "installed plugin: Blended Ships"
+  		not "event: rumskib: blended ships installed"
+	on offer
+		event "rumskib: blended ships installed"
+		clear "event: rumskib: blended ships uninstalled"
+		fail
+
+event "rumskib: blended ships installed"
+	fleet "Small Southern Merchants"
+		add variant
+			"Catamaran"
+			"Tanager"
+		add variant
+			"Grackle"
+			"Tanager" 
+	fleet "Large Northern Pirates"
+		add variant
+			"Cutlass"
+			"Sunthief"
+		add variant
+			"Cutlass"
+			"Eagle"
+	fleet "Small Northern Pirates"
+		add variant
+			"Cutlass"
+			"Hornet"
+
+
+mission "Rumskib: Blended Ships uninstalled"
+	landing
+	invisible
+	minor
+	repeat
+	to offer
+		not "installed plugin: Blended Ships"
+  		has "event: rumskib: blended ships installed"
+	on offer
+		event "rumskib: blended ships uninstalled"
+		clear "event: rumskib: blended ships installed"
+		fail
+
+event "rumskib: blended ships uninstalled"
+	fleet "Small Southern Merchants"
+		remove variant
+			"Catamaran"
+			"Tanager"
+		remove variant
+			"Grackle"
+			"Tanager" 
+	fleet "Large Northern Pirates"
+		remove variant
+			"Cutlass"
+			"Sunthief"
+		remove variant
+			"Cutlass"
+			"Eagle"
+	fleet "Small Northern Pirates"
+		remove variant
+			"Cutlass"
+			"Hornet"
