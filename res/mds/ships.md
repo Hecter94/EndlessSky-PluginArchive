@@ -2272,9 +2272,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 125.67 kb | 2024-11-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 126.29 kb | 2024-11-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-11-11) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-11-19) <br>
 
 >Adds a piratified version of the Gunboat, which is called the Cutlass, and a better Shuttle, the Tanager.
 >
@@ -2285,9 +2285,10 @@ Author: TheGiraffe3 | Category: Ships <br>
 
 Adds two new ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass and the Tanager.
 
-The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator.
+The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator, while the Cutlass is a piratified Gunboat, made by 1010todd.
 
-The Cutlass is a piratified Gunboat, made by 1010todd.
+Cross-plugin compatibility with Blended Ships exists; so if you've got both installed there will be fleet variants with Blended Ship ships and Rumskib ships together.
+When you uninstall Blended Ships the variants should remove correctly and no errors will be caused; but I don't know how to prevent errors when Rumskib is uninstalled.
 
 Assets for both ships can be found [here](https://github.com/TheGiraffe3/new-ship-assets).
 
