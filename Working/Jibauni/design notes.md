@@ -5,7 +5,7 @@ Batteries
 
 **Redesign Completely**
 
-Ruksay Missile/Missile Launcher
+~~Ruksay Missile/Missile Launcher~~
 
 ~~Jamum Shield Generator~~
 ~~Tamum Shield Generator~~
