@@ -258,9 +258,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.35 mb | 2024-11-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.57 mb | 2024-11-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-11-11) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-11-20) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -2272,25 +2272,26 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 126.29 kb | 2024-11-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 300.06 kb | 2024-11-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-11-19) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-11-20) <br>
 
->Adds a piratified version of the Gunboat, which is called the Cutlass, and a better Shuttle, the Tanager.
+>Adds a piratified version of the Gunboat, the Cutlass, a better Shuttle, the Tanager, the Hauler IV and the Eyrie, which extend the Hauler and Hauler (Type F) lines, respectively.
 >
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Rumskib
 
-Adds two new ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass and the Tanager.
+Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass, the Tanager, the Hauler IV, and the Eyrie.
 
 The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator, while the Cutlass is a piratified Gunboat, made by 1010todd.
+The Hauler IV is a Hauler III that has been slightly expanded, while the Eyrie continues the Nest/Roost/Skein line.
 
 Cross-plugin compatibility with Blended Ships exists; so if you've got both installed there will be fleet variants with Blended Ship ships and Rumskib ships together.
-When you uninstall Blended Ships the variants should remove correctly and no errors will be caused; but I don't know how to prevent errors when Rumskib is uninstalled.
+When you uninstall Blended Ships the variants should remove correctly and no errors will be caused.
 
-Assets for both ships can be found [here](https://github.com/TheGiraffe3/new-ship-assets).
+Assets for all ships can be found [here](https://github.com/TheGiraffe3/new-ship-assets).
 
 </blockquote>
 </details>
