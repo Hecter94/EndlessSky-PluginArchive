@@ -25,6 +25,44 @@ event "label jibauni space"
 		sprite "label/jibauni"
 
 
+mission "Jibauni: Heliarch Patrol"
+	landing
+	invisible
+	repeat
+	source "Baitoon"
+	to offer
+		day == 1
+		month == 1
+	on enter
+		fail
+	npc
+		government "Heliarch"
+		personality launching quiet secretive uninterested
+		ship "Heliarch Punisher (Jump Defense)" "Gentle Guardian"
+
+
+ship "Heliarch Punisher" "Heliarch Punisher (Jump Defense)"
+	outfits
+		"Ion Rain Gun" 6
+		"Heliarch Repulsor" 4
+
+		"Large Reactor Module" 2
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 4
+		"Enforcer Riot Staff" 78
+		"Enforcer Confrontation Gear" 44
+		"Outfits Expansion" 2
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+		"Jump Drive"
+
+
 mission "Jibauni: Jibauni Rebel Fighter License"
 	landing
 	name "Rebel Fighter License"
@@ -59,13 +97,8 @@ mission "Jibauni: Government License 1"
 		government "Jibauni"
 		not planet Baitoon
 	destination Baitoon
-	to offer
-		or
-			has "Jibauni: Kanlanmo 0: done"
-			has "Jibauni: Kanlanmo (0 declined): done"
-		has "license: Jibauni Rebel Fighter"
-		not "kanlanmo in mission"
-		"reputation: Jibauni" > 30
+	to offer # Requirements should be set to halfway through the storyline when that point is reached.
+		never
 	on offer
 		conversation
 			# scene "outfit/jibauni government license"
