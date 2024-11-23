@@ -10,7 +10,7 @@ Batteries
 ~~Jamum Shield Generator~~
 ~~Tamum Shield Generator~~
 
-Altaedin Laser?
+~~Altaedin Laser~~
 
 ------
 
