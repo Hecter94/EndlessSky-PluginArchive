@@ -61,6 +61,36 @@ FW Liberate Delta Sagitarii (patched)
 FWC Attack Kaus Borealis (patched)
 ```
 
+### Mega Freight
+Additionally, to prevent breakage if Mega Freight is not installed, the Mega Freight ships and variants used in the conflicting missions are defined to be the same as plugin commit 486f09479c941c51957ef40ed0f0c181500a640a (the latest commit as of 11/25/24 at 16:13 UTC). This means that if you have a later version of Mega Freight, your ships may be downgraded. If this is the case, temporarily uninstall Main Plot Plus and report this as a bug, so I can update the ships.
+
+Conflicting ships and variants:
+```
+Eleonorae
+PF-80 Intrepid
+PF-80 Intrepid (Plasma Engine)
+PF-80 Intrepid (Swordfish)
+CK50T Stahbar (Proton)
+PAS-2 Bulwark
+PAS-3 Barbette
+PCS-4 Castle
+PCS-5 Citadel
+SWV4 Ravelin
+EP-3 Rat
+AGT-31 Xencar
+CS-24 Garrison
+CS-24 Garrison (Parapet)
+CSE-6 Steward
+Falcon (Parapet)
+FUe02y Gebrant Tender
+TS-CH0 Kratzbal
+Culverin Class (Mark II)
+Spetum Class (Mark II)
+Spetum Class (Mark II, ShieldRegen)
+A-14F Rondel
+```
+
+
 ## Copyright
 This was originally donated to the public domain, however, I am not sure if I am allowed to do that given that I have copied text from a work licensed under the GPL v3 or later. I have relicensed it under the GPL to make sure that I am not violating any rules. I would therefore recommend following the GPL v3 anyways.
 
