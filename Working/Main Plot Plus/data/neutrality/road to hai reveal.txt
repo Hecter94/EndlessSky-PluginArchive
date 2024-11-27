@@ -12,6 +12,8 @@ government "Bounty Hunter (friendly)"
     "fine" 0
     "friendly hail" "friendly civilian"
     "hostile hail" "hostile civilian"
+    "friendly disabled hail" "friendly disabled"
+    "hostile disabled hail" "hostile disabled"
 
 event "road to hai reveal: almaaz pirates"
     system Almaaz
@@ -387,7 +389,7 @@ mission "War Reactions: Syndicate Orphan (patched)"
                     goto "hell"
                 `    "Actually, they're not evil. Their 'war' was a ploy to get us to stop fighting among ourselves. A lot of Pug gave their lives willingly to save us from self-destruction."`
                     to display
-                        not "ScS Pug Support 2"
+                        not "ScS Pug Support 2: done"
                 `    "Leading a battle is like chess with guns and engines. It's the most exhilarating feeling I've ever felt."`
                     to display
                         not "skipped main plot"
@@ -419,6 +421,8 @@ mission "Road to Hai Reveal: Prep"
     landing
     to offer
         has "skipped main plot"
+        # Required if hai wormhole warning was blocked
+        has "First Contact: Hai: offered"
         or
             # Road to Hai Reveal now canonizes 'Block Hai Wormhole Warning' being a thing.
             has "Block Hai Wormhole Warning: failed"
@@ -435,7 +439,7 @@ mission "Road to Hai Reveal: Danforth"
     description "Help Danforth by taking out a pirate fleet in <waypoints>, then land on <destination> to receive <payment>. You will be joined by other captains."
     minor
     autosave
-    clearance "You explain to the spaceport manager that you are the one who took out the pirate fleet, and upon verifying your identity he grants you landing permission."
+    clearance "You explain to the spaceport manager that you are the one who took out the pirate fleet, and upon verifying your identity, he grants you landing permission."
     waypoint Almaaz
     substitutions
         "<reason>" "noticed that you were abducted by the Pug"
@@ -643,7 +647,6 @@ mission "Road to Hai Reveal: Rain and Fiona (early)"
     clearance
     to offer
         not "hr: met rain and fiona"
-        has "First Contact: Hai: offered"
         has "hr: heard the news"
         has "event: hr: friend arrives"
         not "event: hr: friend settled in"
@@ -694,7 +697,6 @@ mission "Road to Hai Reveal: Rain and Fiona (late)"
     clearance
     to offer
         not "hr: met rain and fiona"
-        has "First Contact: Hai: offered"
         has "hr: heard the news"
         has "event: hr: friend settled in"
         has "event: road to hai reveal: almaaz normal"
@@ -803,7 +805,7 @@ mission "Road to Hai Reveal: Alondo and Sayari"
             `    Alondo leads you to a meeting room that feels large for the number of people present: it looks like a lecture hall that could easily fit a hundred people, but there are only six here. Aside from Alondo and yourself, there is a shorter man in what you recognize as a Republic diplomatic uniform messing with a holoprojector that doesn't appear to be working, a taller man in a suit sitting next to a woman in a formal dress in the front row, and an older looking Hai woman sitting alone at the end of a row of seats.`
             `    "Glad you finally decided to show up, Alondo," says the man in the front.`
             `    "And you brought a guest," says the Hai.`
-            `    "I did," Alondo responds. "This is Captain <first> <last>. Remained neutral during the war. Was abducted by Pug. Helped defeat some Pirates with stolen Hai technology. A capable pilot. Am I missing anything?"`
+            `    "I did," Alondo responds. "This is Captain <first> <last>. Remained neutral during the war. Was abducted by Pug. Helped defeat some pirates with stolen Hai technology. A capable pilot. Am I missing anything?"`
             choice
                 `    "That sounds like everything."`
                 `    "Just that I'm good looking."`
@@ -856,8 +858,8 @@ mission "Road to Hai Reveal: Xilin"
             `Sayari follows you out to the landing pads to meet the presenter. "Captain <last>," he says while grasping your hand in a firm handshake. "Xilin Yang, Republic Deputy Minister of Foreign Affairs. I apologize for not introducing myself sooner. It's an honor to meet a hero of the Pug crisis such as yourself."`
             choice
                 `    "I think you're thinking of <last> <first>."`
-                `    "Thanks, but it wasn't as dramatic as they made it out to be, considering I fought exactly zero Pug ships during this whole 'crisis.' I was neutral."`
                     goto "humble"
+                `    "Thanks, but it wasn't as dramatic as they made it out to be, considering I fought exactly zero Pug ships during this whole 'crisis.' I was neutral."`
             `    "You're every inch what I expected," he assures you.`
                 goto "mission"
             label "humble"
