@@ -208,9 +208,9 @@ for each in  newslist:
 		if ncat == "N/A" or ncat == "" or ncat == "NA":
 			ncat = "uncategorized"
 		# got variables now: ndate, nnew_or_updated, nname, nauthor, ncat, define how a news line should look
-		nline = ndate + " | " +  nnew_or_update + " Plugin '" + nname + "' by " + nauthor + " | [" + ncat.lower() + "](" + webroot + 'res/mds/' + ncat.lower() + ".md#" + nname.lower().replace(' ', '-').replace('.', '') + ")<br>\n"
-	else: # no listfile found, plugin must got deleted or renamed
-		nline = ndate + " | " + nnew_or_update + " Plugin " + nname + " | Plugin got deleted or renamed <br>\n"
+		nline = ndate + " | " +  nnew_or_update.title() + " plugin '" + nname + "' by " + nauthor + " | [" + ncat.lower() + "](" + webroot + 'res/mds/' + ncat.lower() + ".md#" + nname.lower().replace(' ', '-').replace('.', '') + ")<br>\n"
+	else: # no listfile found, plugin must have been deleted or renamed
+		nline = ndate + " | " + nnew_or_update.title() + " plugin " + nname + " | Plugin was deleted or renamed <br>\n"
 	allnews = allnews + nline
 with open("res/allnews.md", "w") as file1: # writing allnews.md
 	file1.writelines(allnews)
