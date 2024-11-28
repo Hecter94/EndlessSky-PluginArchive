@@ -1213,36 +1213,40 @@ mission "Midnight Assist Pirate Raider (Large)"
 
 
 conversation "midnight boarding captives"
-	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. If the authorities catch you, slave trafficking is considered an atrocity punishable by death. It might be easier to just toss them out of the airlock. What will you do?`
+	`You've captured some of the <origin>'s passengers. You could sell them to slavers on <destination> for <payment>, but they'll take up <bunks> bunks of space. If the authorities catch you, slave trafficking is considered an atrocity punishable by death. It might be easier to just toss them out of the airlock. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
+	`	The unarmed passengers are at your mercy. What will you do?`
 	choice
 		`	(Throw them in your Brig.)`
 		`	(Send them on a spacewalk.)`
 			goto spacewalk
+	scene "outfit/brig"
+	`	You throw them in your Brig, expecting a hefty bounty for delivering them to slavers on <destination>.`
+		accept
+	label spacewalk
+	`	You herd the frightened passengers into the airlock. Some are crying while others glare at you. Sealing the door behind them, you can see them begin put on the emergency spacesuits through a glass window. There's only one thing left to do.`
+	choice
+		`	(Set them free.)`
+			goto free
 			to display
 				not "outfit (flagship installed): Midnight's Lost Orphan"
-		`	(Send them on a spacewalk.)`
+		`	(Set them free.)`
 			goto airlock
 			to display
 				has "outfit (flagship installed): Midnight's Lost Orphan"
+		`	(Throw them in your Brig instead.)`
 	scene "outfit/brig"
-	`	The unarmed passengers are at your mercy. You throw them in your Brig, expecting a hefty bounty for delivering them to slavers on <destination>.`
+	`	Their tears and pathetic mewling seems to have moved you to mercy. After bringing them back from the airlock, you throw them in your Brig. The slavers on <destination> will pay a hefty bounty for delivering them.`
 		accept
-	label spacewalk
+	label free
 	scene "scene/scene-airlock"
-	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
-	choice
-		`	(Set them free.)`
-	`	You order them to put on these spacesuits and send them out the airlock...`
+	`	As soon as they are in these spacesuits you send them out the airlock...`
 		decline
 	label airlock
-	scene "scene/scene-airlock"
-	`	The unarmed passengers are at your mercy. The <origin> has emergency spacesuits for the passengers to evacuate the ship in case of emergencies. Having to rescue them could slow down the authorities...`
-	choice
-		`	(Set them free.)`
 	action
 		"captain of atrocity" ++
+		outfit "Evidence of ********" 1
 	scene "outfit/midnight lost orphan"
-	`	But you suddenly hit the button to open the external airlock hatch without giving them time to put these suits on! Their screams for mercy as they are dragged out into the empty void are music to your ears...`
+	`	But you suddenly hit the button to open the external airlock hatch without giving them time to finish putting these suits on! Their screams for mercy as they are dragged out into the empty void are music to your ears...`
 		decline
 
 mission "Midnight Boarding Captives (Core, Small)"
@@ -1258,7 +1262,7 @@ mission "Midnight Boarding Captives (Core, Small)"
 		government "Merchant"
 		category "Transport"
 	passengers 1 2
-	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1295,7 +1299,7 @@ mission "Midnight Boarding Captives (Core, Medium)"
 		government "Merchant"
 		category "Transport"
 	passengers 3 5
-	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1341,7 +1345,7 @@ mission "Midnight Boarding Captives (Core, Large)"
 		government "Merchant"
 		category "Transport" "Space Liner"
 	passengers 6 10
-	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1400,7 +1404,7 @@ mission "Midnight Boarding Captives (Dirt Belt, Small)"
 		government "Merchant"
 		category "Transport"
 	passengers 1 2
-	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1441,7 +1445,7 @@ mission "Midnight Boarding Captives (Dirt Belt, Medium)"
 		government "Merchant"
 		category "Transport"
 	passengers 3 5
-	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1492,7 +1496,7 @@ mission "Midnight Boarding Captives (Dirt Belt, Large)"
 		government "Merchant"
 		category "Transport" "Space Liner"
 	passengers 6 10
-	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1549,7 +1553,7 @@ mission "Midnight Boarding Captives (North, Small)"
 		government "Merchant"
 		category "Transport"
 	passengers 1 2
-	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1586,7 +1590,7 @@ mission "Midnight Boarding Captives (North, Medium)"
 		government "Merchant"
 		category "Transport"
 	passengers 3 5
-	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1635,7 +1639,7 @@ mission "Midnight Boarding Captives (North, Large)"
 		government "Merchant"
 		category "Transport" "Space Liner"
 	passengers 6 10
-	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1692,7 +1696,7 @@ mission "Midnight Boarding Captives (South, Small)"
 		government "Merchant"
 		category "Transport"
 	passengers 1 2
-	illegal -10000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1744,7 +1748,7 @@ mission "Midnight Boarding Captives (South, Medium)"
 		government "Merchant"
 		category "Transport"
 	passengers 3 5
-	illegal -20000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
@@ -1819,7 +1823,7 @@ mission "Midnight Boarding Captives (South, Large)"
 		government "Merchant"
 		category "Transport" "Space Liner"
 	passengers 6 10
-	illegal -40000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
+	illegal -1000 "The authorities discovered that you are engaged in human trafficking! This is a violation of intergalactic human rights laws and you are sentenced to death upon capture."
 	on offer
 		conversation "midnight boarding captives"
 	destination
