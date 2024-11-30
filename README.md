@@ -5,21 +5,21 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
-2024-11-29 | updated Plugin 'expert.crew.members' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#expertcrewmembers)<br>
-2024-11-28 | updated Plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
-2024-11-28 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2024-11-28 | updated Plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
-2024-11-28 | updated Plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
-2024-11-28 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
-2024-11-27 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2024-11-27 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
-2024-11-27 | updated Plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
-2024-11-27 | updated Plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#blended-ships)<br>
-2024-11-26 | updated Plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
-2024-11-26 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2024-11-26 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
-2024-11-25 | updated Plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2024-11-25 | updated Plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
+2024-11-30 | New plugin 'Quickstart' by Zoura | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#quickstart)<br>
+2024-11-30 | New plugin 'Kor Ramoret' by Zoura | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#kor-ramoret)<br>
+2024-11-30 | New plugin 'Mining Start' by Loymdayddaud | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#mining-start)<br>
+2024-11-30 | New plugin 'Arc Over' by Saugia | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#arc-over)<br>
+2024-11-30 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
+2024-11-30 | Updated plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
+2024-11-30 | New plugin 'More Vanilla Missions' by Loymdayddaud | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#more-vanilla-missions)<br>
+2024-11-29 | Updated plugin 'expert.crew.members' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#expertcrewmembers)<br>
+2024-11-28 | Updated plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
+2024-11-28 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
+2024-11-28 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
+2024-11-28 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
+2024-11-28 | Updated plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
+2024-11-27 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
+2024-11-27 | Updated plugin 'Gaguka' by MIMSBZ3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#gaguka)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
@@ -62,7 +62,7 @@ Provide a direct link to your zipped plugin to enable automatic updating.<br>
 
 # Introduction
 
-A comprehensive library of 575 ancient and new plugins for the open-source game Endless Sky.
+A comprehensive library of 580 ancient and new plugins for the open-source game Endless Sky.
 
 ---
 
@@ -216,11 +216,11 @@ To keep these files related, you must give them the same name.
 
 # Plugin Download
 
-All Plugins (575)
+All Plugins (580)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 

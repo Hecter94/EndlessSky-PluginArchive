@@ -1,16 +1,16 @@
 
-All Plugins (575)
+All Plugins (580)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Races
 
-<p>67 plugins in this category.<p>
+<p>68 plugins in this category.<p>
 
 
  
@@ -859,9 +859,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-11-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-11-28) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-11-30) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -940,9 +940,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 15.52 mb | 2024-11-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 15.52 mb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-11-28) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-11-30) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -950,6 +950,30 @@ Author: TheGiraffe3 | Category: Races <br>
 
 
 Status: In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Kor Ramoret
+
+
+[Kor.Ramoret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Ramoret.zip) | 583.96 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Ramoret/) <br>
+Author: Zoura | Category: Races <br>
+[https://github.com/AvianGeneticist/Kor-Ramoret](https://github.com/AvianGeneticist/Kor-Ramoret) (last commit 2024-07-05) <br>
+
+>Adds a third Korath Automaton faction.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Kor-Ramoret
+ Adds a third Korath Automaton Faction to Endless Sky. The Kor Ramoret (or "Aggregated Korath") are a higher-tier automata faction made by combining aspects of both the Sestor and Mereti. They're a carrier-focused faction with powerful custom weapons, though they do share other Korath outfits (reactors, engines, cooling, et cetera).
+
+</blockquote>
+</details>
+
+Status: Complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

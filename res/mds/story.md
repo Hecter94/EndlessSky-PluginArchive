@@ -1,16 +1,16 @@
 
-All Plugins (575)
+All Plugins (580)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Story
 
-<p>77 plugins in this category.<p>
+<p>78 plugins in this category.<p>
 
 
  
@@ -1868,6 +1868,29 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### More Vanilla Missions
+
+
+[More.Vanilla.Missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/More.Vanilla.Missions.zip) | 18.91 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/More%20Vanilla%20Missions/) <br>
+Author: Loymdayddaud | Category: Story <br>
+[https://github.com/TheGiraffe3/extra-es-missions](https://github.com/TheGiraffe3/extra-es-missions) (last commit 2024-11-19) <br>
+
+>Adds many more missions intended to feel vanilla-like. Many of them are taken from closed pull requests to the base game.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>Adds more missions for the game [Endless Sky](https://github.com/endless-sky/endless-sky).
+
+</blockquote>
+</details>
+
+Status: Complete, but may be added to <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
