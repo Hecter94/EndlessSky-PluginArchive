@@ -1,0 +1,80 @@
+start "ms: human mining start"
+	name "Mining Start"
+	description `You grew up on Earth, the historical home of humanity. Life there was crowded, and as soon as possible, you got a loan from the bank, though the terms did raise some eyebrows. Now it's time for a quick transport to the Moon, and Luna's shipyards will offer one ship within price range - the Mining Drone. A not-so-legal outfitting corporation exists there, and offered to put in a bunk on the drone - for an extra price. Now, with a two hundred thousand credit loan, and only twenty thousand credits left, you prepare to start life as an asteroid miner...`
+	thumbnail "scene/buildings"
+	system "Sol"
+	planet "Luna"
+	date 16 05 3013
+	conversation "ms human mining start"
+	account
+		credits 20000
+		score 350
+		mortgage Mortgage
+			principle 200000
+			interest 0.006
+			term 730
+	set "license: Pilot's"
+	set "species: human"
+	set "human space start"
+	set "Intro [0]: offered"
+
+
+conversation "ms human mining start"
+	scene "scene/lobby"
+	`The bank office was a pleasant place, full of beeping monitors. Now, you prepare to head out in the first interstellar trip you have ever experienced.`
+	scene "scene/buildings"
+	`Earth is crowded, and appears doubly so for the amount of people. Luckily, you're leaving.`
+	scene "thumbnail/scout"
+	`The man transporting you doesn't ask questions, and shows you to his ship, which is called Intola. A quick hop later, and you stand on the planet of Luna. Tycho Crater's shipyard are vast, but unfortunately, they still have no ships buyable with your current funds - with the exception of the Mining Drone.`
+	choice
+		`	(Buy the Mining Drone.)`
+	scene "thumbnail/mining drone"
+	`You are asked to sign your name on the papers transferring ownership.`
+	name
+	action
+		give ship "Mining Drone (MS Start)" "Intola the Miner"
+	`Now, it's time to take the new ship to the "illegal" corporation on the other side of the Moon. Another trip, on the Mining Drone, and you reach the other side, where Modifications and Marauders adds a bunk and integrates the engines. Time for the first trip in your new Mining Drone.`
+
+
+ship "Mining Drone (MS Start)"
+	sprite "ship/mining drone"
+	thumbnail "thumbnail/mining drone"
+	attributes
+		category "Interceptor" # Unfortunately, game mechanics are such that a "Drone" category could cause problems such as no piloting.
+		"cost" 89000
+		"hull" 300
+	 	"required crew" 1
+		"bunks" 1
+		"mass" 12
+		"drag" .55
+		"heat dissipation" .8
+		"outfit space" 36
+		"weapon capacity" 12
+		"engine capacity" 0
+		"thrust" 15
+		"turn" 290
+		"flare sprite" "effect/ion flare/tiny"
+			"frame rate" 1.2
+		"flare sound" "ion tiny"
+		weapon
+			"blast radius" 3
+			"shield damage" 30
+			"hull damage" 15
+			"hit force" 45
+	outfits
+		"Mining Laser"
+
+		"nGVF-AA Fuel Cell"
+		"Supercapacitor"
+		
+	engine 0 22 0.9
+	gun 0 -22
+	explode "tiny explosion" 10
+	description "The semi-autonomous Mining Drone is used by the Syndicate alongside the Sunder mining vessel in a supportive role. Not being much more than a Mining Laser with an engine stuck to the rear of it, these drones do not last long in combat with other ships due to how fragile they are."
+	description "	Modifications on Luna made to this particular drone possess integrated steering and thrust, in addition to a built-in bunk. These changes have also required it to hold one crew member."
+
+
+system "Sol"
+	add minable "gold" 5 1.2
+	add minable "silver" 7 1.36
+	add minable "copper" 13 2.601
