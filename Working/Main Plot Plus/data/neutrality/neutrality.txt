@@ -1,14 +1,24 @@
 event "pug notice neutrality"
 
 mission "Neutrality 1"
-    deadline 0
     invisible
     minor
-    to offer
-        "year" >= 3023
-        not "chosen sides"
     source
         government "Republic" "Syndicate" "Free Worlds"
+    to offer
+        "year" >= 3017
+        not "chosen sides"
+        or
+            "The Book of Skadenga: declined" * 8 + "event: timothy radrickson forever" * 7 + "event: terraforming timer 2" * 6 + "FW Commitment: offered" * 5 + "Shady passenger transport 3 - double cross: done" * 4 + "Adelita 5: done" * 3 + "There Might Be Riots part 3B: done" * 2 + "Pookie, Part 5: declined" * 2 + "Pirate Blockade: done" * 2 + "Turn in Tarquin: declined" * 2 + "Pact Recon 3: done" * 2 + "Humanitarian 2: done" + "Smuggler's Den 2: done" + "Expedition to Hope 2: done" + "First Contact: Quarg: declined" + "Lost Boy 3: done" + "Hauler VI cargo prototype 3: done"  >= 12
+            "combat rating" > 8103
+            "net worth" >= 500000000
+            has "outfit (all): Jump Drive"
+            has "outfit (all): Mug"
+            has "license: Remnant Capital"
+            has "license: City-Ship"
+            has "landing access: Hai-home"
+            has "hai space start"
+            "year" >= 3023
     on offer
         conversation
             `As you enter the bar, a man approaches you.`
@@ -28,9 +38,6 @@ mission "Neutrality 1"
                 `No, I really am neutral.`
                     to display
                         has "claimed neutrality"
-                `(Go someplace else)`
-                    decline
-
             action
                 event "pug notice neutrality" 5
             `"Huh. Well, I admire your resolve. Can't go wrong with that."`
@@ -38,15 +45,15 @@ mission "Neutrality 1"
 
             label "free worlds"
             `"You support freedom and equality, eh? I prefer the Republic's order and stability."`
-                goto "end"
+                goto "not neutral"
 
             label "republic"
             `"You support order and stability, eh? So do I, so do I."`
-                goto "end"
+                goto "not neutral"
 
             label "syndicate"
             `"You support free markets and wealth, eh? Nothing wrong with that."`
-                goto "end"
+                goto "not neutral"
 
             label "neutral"
             action
@@ -54,6 +61,12 @@ mission "Neutrality 1"
             `The man looks taken aback.`
             `"No sides, eh? You have to pick a side!"`
                 goto "whose side are you on"
+
+            label "not neutral"
+            action
+                clear "neutral pacifist"
+                clear "neutral mercenary"
+                clear "neutral merchant"
 
             label "end"
             action
@@ -99,7 +112,7 @@ mission "Neutrality 2"
             `"So you don't want to fight your war?" asks one of the aliens.`
             `They seem not to mind that you have attacked some of their ships.`
                 to display
-                    "reputation: Pug" < 1
+                        "reputation: Pug" < 1
             label "are you neutral"
             choice
                 `"No."`
