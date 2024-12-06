@@ -1594,9 +1594,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Main Plot Plus
 
 
-[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 163.09 kb | 2024-12-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
+[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 183.22 kb | 2024-12-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
 Author: ziproot | Category: Story <br>
-[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-12-04) <br>
+[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2024-12-06) <br>
 
 >A plugin mostly centered around improving the main plot.
 >
@@ -1604,6 +1604,8 @@ Author: ziproot | Category: Story <br>
 <details>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Main Plot Plus
+[![Check Files](https://github.com/ziproot/endless-sky-main-plot-plus/actions/workflows/check-files.yml/badge.svg)](https://github.com/ziproot/endless-sky-main-plot-plus/actions/workflows/check-files.yml)
+
 A plugin for the video game “endless sky” mostly centered around improving the main plot.
 
 ## Guided Start
@@ -1619,7 +1621,7 @@ Neutrality should be compatible with most major missions in the base game. You a
 Hai Reveal is still in a work in progress state. Additionally, it at the moment requires you to specifically join the Free Worlds, or none of the missions after the leak will offer. As a result, I have a series of missions called “Road to Hai Reveal” that will allow you to do the intro of Hai Reveal if you have done Neutrality. I have also patched all the post-war reactions, see below. I have set it up so that you meet Alondo, which should allow the rest of Hai Reveal to work without issue if it gets merged as-is. If it gets changed to be more campaign agnostic, that still works and you can go down the free worlds path.
 
 ### Post War Reactions
-The post-war reactions by default all assume you have directly fought with the Pug, which isn't necessarily true in Crisis in Management and definitely isn't true in the Neutrality option. I have replaced all three of these with patch missions which vary depending on how you interacted with the Pug, based on this plugin, the vanilla Free Worlds Reconciliation branch, and Crisis in Management. It also tries to test if you have done the vanilla version of Free Worlds Checkmate instead, if needed. I also removed a stupid section about the Free Worlds and Navy captains joking about almost killing each other, and I have reverted the gender of a charcter in War Reactions: Syndicate Orphan because MasterofGrey says that the change was not justified. Other than that, doing Free Worlds should result in the same post-war reactions as vanilla, but doing Crisis in Management or the Neutrality option will give you different outcomes that make sense for what you've done.
+The post-war reactions by default all assume you have directly fought with the Pug, which isn't necessarily true in Crisis in Management and definitely isn't true in the Neutrality option. I have replaced all three of these with patch missions which vary depending on how you interacted with the Pug, based on this plugin, the vanilla Free Worlds Reconciliation branch, and Crisis in Management. It also tries to test if you have done the vanilla version of Free Worlds Checkmate instead, if needed. I also removed a stupid section about the Free Worlds and Navy captains joking about almost killing each other, and I have reverted the gender of a character in War Reactions: Syndicate Orphan because MasterofGrey says that the change was not justified. Other than that, doing Free Worlds should result in the same post-war reactions as vanilla, but doing Crisis in Management or the Neutrality option will give you different outcomes that make sense for what you've done.
 
 ## Syndicate
 The Syndicate will now use their new technology on their ships if you complete the main plot, though they still won't sell it to you if you did reconciliation. The weights of the variants are based on the ones for the republic Mark II ships. A few of the Mark II variants are used in vanilla for a few missions in the reconciliation branch, but I added a bunch more so that all the Syndicate ships used in their main fleets have Mark II variants. The Syndicate rarely uses nuclear missiles before the war in the eastern parts of the Core, where they get raided by the Korath. They stop in 3014 because of the impending war.
