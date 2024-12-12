@@ -164,9 +164,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2024-06-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2024-12-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-12) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -193,6 +193,9 @@ Since it's often questioned, here is a guide to the bunrodea first contact missi
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-10-08 <br>
+proofreading and minor text changes (Vemenous-Repentile)<br>
 <br>
 2024-06-07<br>
 text correction (thx to Dagroth)<br>
@@ -261,7 +264,7 @@ added 6 transport/passenger jobs<br>
 added a 2nd mission and a 2nd repeatable job<br>
 <br>
 2023-08-26<br>
-intial release<br>
+initial release<br>
 
 
 </blockquote>
@@ -2189,9 +2192,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/planet.map/icon.png' height='100'></img><br>
 
 
-[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.0 mb | 2024-08-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
+[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.0 mb | 2024-12-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-18) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-12) <br>
 
 >planetary map travelling concept : start a new pilot, use 'start: planet.map'
 >
@@ -2214,6 +2217,9 @@ As in the spirit of Epsil-Astra, feel free to modify/use this plugin for your ow
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-11<br>
+fixed error<br>
 <br>
 2024-08-18<br>
 removed the start<br>
