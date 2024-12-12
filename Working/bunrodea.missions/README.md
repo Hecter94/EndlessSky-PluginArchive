@@ -20,6 +20,9 @@ Since it's often questioned, here is a guide to the bunrodea first contact missi
 <br>
 Changelog:<br>
 <br>
+2024-10-08 <br>
+proofreading and minor text changes (Vemenous-Repentile)<br>
+<br>
 2024-06-07<br>
 text correction (thx to Dagroth)<br>
 <br>
@@ -87,5 +90,5 @@ added 6 transport/passenger jobs<br>
 added a 2nd mission and a 2nd repeatable job<br>
 <br>
 2023-08-26<br>
-intial release<br>
+initial release<br>
 
