@@ -205,6 +205,7 @@ mission "Jibauni: Kanlanmo 0"
 	on complete
 		payment 15000
 		set "First Contact: Jibauni: offered"
+		set "First Contact: Jibauni: done"
 		set "license: Jibauni"
 		conversation
 			branch insider
@@ -245,6 +246,7 @@ mission "Jibauni: Kanlanmo (0 declined)"
 	on complete
 		payment 8000
 		set "First Contact: Jibauni: offered"
+		set "First Contact: Jibauni: done"
 		set "license: Jibauni"
 		conversation
 			branch insider
@@ -301,6 +303,10 @@ mission "Jibauni: Kanlanmo 1"
 					to display
 						not "jibauni knowledge: dinosaur skulls"
 					goto dinosaurskulls
+				`	"How can I buy more technology from you?"`
+					to display
+						not "jibauni knowledge: rebel fighter license"
+					goto rebellicense
 				`	"I have no more questions."`
 					goto done
 			label come
@@ -357,8 +363,13 @@ mission "Jibauni: Kanlanmo 1"
 			label dinosaurskullsothers
 			`	"Once we discovered spaceflight, we found that we could no longer treat the other poor dinosaur types who were vegetarians so poorly. Therefore, we moved them all to Owiay, where they thrive to this day."`
 				goto choice
+			label rebellicense
+			action
+				set "jibauni knowledge: rebel fighter license"
+			`	"I believe that for most of them, fighting the Rebel faction to the east will give you the license. I would recommend doing that if you want to 'curry favor', would it be called? For the more important one, I'll give you a call when you've assisted us enough."`
+				goto choice
 			label done
-			`	"Okay. As you have no more questions, I need some help getting to <system>. <planet>, to be precise. Would you take me?"`
+			`	"Okay. Without more questions, I can ask if you will lend some help getting to <system>; <planet>, to be precise. Would you take me?"`
 			choice
 				`	"Sure!"`
 					accept
@@ -373,12 +384,11 @@ mission "Jibauni: Kanlanmo 1"
 					has "jibauni purple"
 					has "jibauni situation"
 					has "jibauni language question"
-			`	"Thank you for being willing to take me. I'll be in your ship soon.`
-				goto end
+			`	"Thank you for being willing to take me. I'll be in your ship soon."`
+				accept
 			label manyquestions
-			`	"You asked many questions indeed. Also, let me thank you for being willing to take me.`
-			label end
-			`	"I'll be in your ship soon."`
+			`	"You asked many questions indeed. Also, let me thank you for being willing to take me. I'll be in your ship soon."`
+				accept
 	on complete
 		clear "jibauni come"
 		clear "jibauni purple"
