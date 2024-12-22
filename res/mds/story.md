@@ -1,16 +1,16 @@
 
-All Plugins (580)
+All Plugins (581)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (78) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Story
 
-<p>78 plugins in this category.<p>
+<p>79 plugins in this category.<p>
 
 
  
@@ -1166,6 +1166,24 @@ initial release<br>
 </details>
 
 Status: made for 0.10.6 <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Jibauni Storyline Additions
+
+
+[Jibauni.Storyline.Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.Storyline.Additions.zip) | 4.65 kb | 2024-12-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni%20Storyline%20Additions/) <br>
+Author: TheGiraffe3 | Category: Story <br>
+[https://github.com/TheGiraffe3/more-Jibauni-storyline](https://github.com/TheGiraffe3/more-Jibauni-storyline) (last commit 2024-12-22) <br>
+
+>Expands the Jibauni storyline with more missions. Still beta. Requires the [Jibauni](https://github.com/TheGiraffe3/Jibauni) plugin to use.
+>
+
+
+
+Status: In Progress <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
