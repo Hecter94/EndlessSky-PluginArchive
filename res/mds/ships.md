@@ -2272,9 +2272,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 228.0 kb | 2024-12-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 228.01 kb | 2024-12-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-12-17) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2024-12-28) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
@@ -2287,7 +2287,7 @@ Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): t
 
 The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator, while the Cutlass is a piratified Gunboat, made by 1010todd. The Eyrie continues the Nest/Roost/Skein line.
 
-Cross-plugin compatibility with Blended Ships exists; so if you've got both installed there will be fleet variants with Blended Ship ships and Rumskib ships together.
+Cross-plugin compatibility with Blended Ships exists, so if you've got both installed there will be fleet variants with Blended Ship ships and Rumskib ships together.
 When you uninstall Blended Ships the variants should remove correctly and no errors will be caused.
 
 Assets for all ships can be found [here](https://github.com/TheGiraffe3/rumskib-assets).
