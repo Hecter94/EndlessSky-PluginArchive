@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2024-12-30 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-12-28 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
 2024-12-28 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-12-28 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
@@ -19,7 +20,6 @@
 2024-12-22 | New plugin 'Jibauni Storyline Additions' by TheGiraffe3 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#jibauni-storyline-additions)<br>
 2024-12-21 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2024-12-21 | Updated plugin 'Unfettered Innovations' by Hurleveur | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#unfettered-innovations)<br>
-2024-12-19 | Updated plugin 'better.starts' by zuckung | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#betterstarts)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
