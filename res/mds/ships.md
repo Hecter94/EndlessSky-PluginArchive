@@ -303,9 +303,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2024-02-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2025-01-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-02-21) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2025-01-07) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
@@ -2272,9 +2272,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 300.08 kb | 2025-01-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 126.86 kb | 2025-01-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-01) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-07) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
@@ -2283,15 +2283,13 @@ Author: TheGiraffe3 | Category: Ships <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Rumskib
 
-Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass, the Tanager, the Hauler IV, and the Eyrie.
+Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass and the Tanager.
 
 The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator, while the Cutlass is a piratified Gunboat, made by 1010todd.
-The Hauler IV is a Hauler III that has been slightly expanded. The Eyrie continues the Nest/Roost/Skein line.
 
-Cross-plugin compatibility with Blended Ships exists, so if you've got both installed there will be fleet variants with Blended Ship ships and Rumskib ships together.
-When you uninstall Blended Ships the variants should remove correctly and no errors will be caused.
+There is cross-plugin compatibility with both [Blended Ships](https://github.com/mOctave/blended-ships) and [DAIS](https://github.com/Daeridanii1/DAIS).
 
-Assets for all ships can be found [here](https://github.com/TheGiraffe3/rumskib-assets).
+Assets can be found [here](https://github.com/TheGiraffe3/homula-rumskib-assets).
 
 </blockquote>
 </details>
