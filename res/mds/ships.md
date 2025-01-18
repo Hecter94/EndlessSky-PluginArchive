@@ -3054,9 +3054,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Unfettered Innovations/icon.png' height='100'></img><br>
 
 
-[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2024-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
+[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2025-01-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
 Author: Hurleveur | Category: Ships <br>
-[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2024-12-21) <br>
+[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2025-01-18) <br>
 
 >endless sky plugin for the Unfettered ships and outfits to come in the campaign
 
