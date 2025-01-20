@@ -1,31 +1,60 @@
-start "Delayed Start"
-    name "Delayed Start"
+mission "Unlock Fast Forward"
+    invisible
+    landing
+    to offer
+        "year" >= 3016
+        or
+            "year" > 3016
+            "month" >= 11
+        or
+            "year" > 3016
+            "month" > 11
+            "day" >= 16
+    on offer
+        set "global: unlock fast forward"
+        conversation
+            `Fast Forward Unlocked!`
+            scene "fast-forward"
+            `It has been two years since you purchased your first ship, or possibly even longer if you chose an earlier start. As a result, you have unlocked fast forward. This is a start which skips ahead two years in game, meaning you will not have to worry about managing a loan or mapping out human space. Enjoy!`
+                decline
+
+start "Fast Forward"
+    name "Fast Forward"
     description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You dreamed of owning a starship ever since your first visit to the spaceport at the age of 15. After many long years of working at a textile mill, you saved enough credits to apply for a pilot's license from the Republic and buy your very own Star Barge. Now, you have traveled the sky, learned about Remembrance Day, seen the horror of the Geminus and Martini bombings, and are ready to make your first upgrade...`
+    thumbnail "fast-forward"
     date 16 11 3016
     system "Tarazed"
     planet "Wayfarer"
     account
         credits 4276673
         score 800
-    conversation "delayed start"
+    conversation "fast forward"
     set "Intro [0]: offered"
     set "remembrance day: offered"
     set "event: war begins: offered"
     set "license: Pilot's"
-    set "delayed start"
+    set "fast forward"
     set "species: human"
     set "human space start"
+    to reveal
+        has "unlock fast forward"
+    to unlock
+        has "unlock fast forward"
+    on display
+        name "Fast Forward"
+        description "This start is locked. It will be unlocked once you have played for two in game years."
+        thumbnail "fast-forward"
 
-conversation "delayed start"
+conversation "fast forward"
     `As normal, when you land, you fill out the required paperwork, one of which asks for your name.`
     name
     `Landing, visiting the spaceport, checking the job board, and viewing trades are all natural to you at this point, but you aren't planning on doing any of that yet. Today is different. Today is when you get to finally upgrade your ship. You head straight to the shipyard and sell your old, used Star Barge. Now it is time to pick your next ship.`
 
-mission "delayed start"
+mission "fast forward"
     invisible
     landing
     to offer
-        has "delayed start"
+        has "fast forward"
     on offer
         event "reveal human space"
         event "remembrance day"
@@ -70,6 +99,7 @@ event "reveal human space"
     visit "Alphecca"
     visit "Alpheratz"
     visit "Altair"
+    visit "Alpherg"
     visit "Aludra"
     visit "Ankaa"
     visit "Antares"
@@ -80,6 +110,7 @@ event "reveal human space"
     visit "Atik"
     visit "Atria"
     visit "Avior"
+    visit "Belenos"
     visit "Bellatrix"
     visit "Beta Lupi"
     visit "Betelgeuse"
@@ -90,6 +121,7 @@ event "reveal human space"
     visit "Cardax"
     visit "Castor"
     visit "Cebalrai"
+    visit "Citadelle"
     visit "Cor Caroli"
     visit "Dabih"
     visit "Danoa"
@@ -110,6 +142,7 @@ event "reveal human space"
     visit "Fala"
     visit "Fingol"
     visit "Fomalhaut"
+    visit "Fumalsamakah"
     visit "Gacrux"
     visit "Gamma Cassiopeiae"
     visit "Gamma Corvi"
@@ -212,6 +245,7 @@ event "reveal human space"
     visit "Tarazed"
     visit "Tejat"
     visit "Terminus"
+    visit "Thuban"
     visit "Tortor"
     visit "Turais"
     visit "Ultima Thule"
