@@ -2272,9 +2272,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 127.02 kb | 2025-01-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 210.27 kb | 2025-01-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-08) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-21) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
@@ -2283,9 +2283,11 @@ Author: TheGiraffe3 | Category: Ships <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Rumskib
 
-Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cutlass and the Tanager.
+Adds more ships for [Endless Sky](https://github.com/endless-sky/endless-sky): the Cleaver, the Cutlass, and the Tanager.
 
 The Tanager is a better version of the Shuttle, with the sprite made by bene-dictator, while the Cutlass is a piratified Gunboat, made by 1010todd.
+
+I made the Cleaver as a more powerful Sunder made by a different company.
 
 There is cross-plugin compatibility with both [Blended Ships](https://github.com/mOctave/blended-ships) and [DAIS](https://github.com/Daeridanii1/DAIS).
 
