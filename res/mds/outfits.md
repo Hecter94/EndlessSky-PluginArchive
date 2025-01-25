@@ -1210,9 +1210,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.61 mb | 2024-11-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.61 mb | 2025-01-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-11) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-25) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1274,6 +1274,9 @@ added uniques<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-01-25<br>
+added new 'non-blocking' to offspring mission<br>
 <br>
 2024-10-11<br>
 fixed error<br>

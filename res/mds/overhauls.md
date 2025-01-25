@@ -1521,9 +1521,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/too.many.asteroids/icon.png' height='100'></img><br>
 
 
-[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 18.43 kb | 2024-09-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
+[too.many.asteroids.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/too.many.asteroids.zip) | 19.0 kb | 2025-01-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/too.many.asteroids/) <br>
 Author: zuckung | Category: Overhauls <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-25) <br>
 
 >Removes all non-mineable asteroids from all systems. Mineable asteroids and asteroid belts are untouched.
 >Increases game performance. See the readme for details.
@@ -1537,11 +1537,13 @@ Removes all non-mineable asteroids from all systems. Mineable asteroids and aste
 Increases game performance.<br>
 <br>
 <br>
-Every of the 604 base game systems (0.10.9) is edited via a remove command for full compatibility with other system altering plugins. A total of 2788 asteroid entries got removed.<br>
-In case I don't update this plugin to the newest game version, a python script for generating an updated plugin can be found <a href="https://github.com/zuckung/endless-sky-plugins/blob/main/tools/ES_plugin_script_too_many_asteroids">here</a>.<br>
+Every of the 699 base game systems (0.10.11) is edited via a remove command for full compatibility with other system altering plugins. A total of 3149 asteroid entries got removed.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-01-25<br>
+added the 0.10.11 systems<br>
 <br>
 2024-09-29<br>
 added the 0.10.9 systems<br>
