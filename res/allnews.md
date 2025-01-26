@@ -1,3 +1,7 @@
+2025-01-26 | Updated plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
+2025-01-26 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
+2025-01-26 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
+2025-01-26 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2025-01-25 | Updated plugin 'too.many.asteroids' by zuckung | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#toomanyasteroids)<br>
 2025-01-25 | Updated plugin 'uniques' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#uniques)<br>
 2025-01-25 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>

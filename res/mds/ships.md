@@ -2272,9 +2272,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 1.16 mb | 2025-01-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 1.16 mb | 2025-01-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-23) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-01-26) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
