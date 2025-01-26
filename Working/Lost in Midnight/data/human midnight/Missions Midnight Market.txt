@@ -179,7 +179,7 @@ mission "Midnight Market: Hauler VI Prototype 0"
 		random < 70
 	on offer
 		conversation
-			scene "thumbnail/hauler vi-thumb"
+			scene "thumbnail/midnight hauler vi-thumb"
 			`As you settle in to enjoy your dinner at the bar, the news announces the theft of the Hauler VI prototype from Southbound Shipyards. You recall doing some work regarding the refrigeration system for that ship when an interview of Veronica Oxygenpocket, the woman who employed you for that job, begins to play.`
 			`	"Our team has been working very hard to make this ship a reality. I can't prove who is responsible for the theft. But our competitors should know that this is merely a minor setback. The Hauler VI will make it to market soon!"`
 				decline
@@ -246,7 +246,7 @@ mission "Midnight Market: Hauler VI Prototype 2"
 			label deal
 			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
 			`	"What, exactly, am I buying?" you ask, as you wonder why he isn't wearing a hat in this snow storm.`
-			scene "thumbnail/hauler vi-thumb"
+			scene "thumbnail/midnight hauler vi-thumb"
 			`	"Behold!" he gestures towards the hangar. As he speaks, the door to the hangar slides open and inside is a space ship. "The prototype Hauler VI! Stolen from Southbound Shipyards and left abandoned at Terminus. It eventually found its way into our inventory. While most of the original outfits were looted by scavengers and had to be replaced, the original cooling systems are still installed!"`
 			`	By the time he finishes his sales pitch, a snowplow has cleared a path for the ship to move out. All it needs is a crew to pilot it.`
 			`	The salesman holds the data pad out expectantly.`
@@ -267,12 +267,12 @@ mission "Midnight Market: Hauler VI Prototype 2"
 		"Midnight Market" ++
 		event "Hauler VI Market timer" 180
 		payment -7000000
-		give ship "Hauler VI (prototype)" "SB-Labs Revelation"
+		give ship "Midnight Hauler VI (prototype)" "SB-Labs Revelation"
 		fail
 
 event "Hauler VI Market timer"
 	shipyard "Southbound Advanced"
-		"Hauler VI"
+		add "Hauler VI"
 	fleet "Small Southern Merchants"
 		add variant 1
 			"Hauler VI"
@@ -290,19 +290,18 @@ event "Hauler VI Market timer"
 			"Berserker"
 			"Berserker (Limit Break)"
 
-
-ship "Hauler VI" "Hauler VI (prototype)"
+ship "Midnight Hauler VI" "Midnight Hauler VI (prototype)"
 	outfits
 		"Meteor Missile Pod" 2
-		"Meteor Missile" 44
-		"Meteor Missile Box" 2
+		"Meteor Missile" 14
 		"Quad Blaster Turret" 2
 		"Heavy Anti-Missile Turret" 2
 		"S3 Thermionic"
 		"LP072a Battery Pack"
 		"D23-QP Shield Generator"
 		"H6 Refrigeration Module" 6
-		"Large Radar Jammer"
+		"Outfits Expansion"
+		"Small Radar Jammer" 3
 		"Laser Rifle"
 		"Greyhound Plasma Thruster"
 		"Impala Plasma Steering"
@@ -312,6 +311,35 @@ ship "Hauler VI" "Hauler VI (prototype)"
 	turret "Heavy Anti-Missile Turret"
 	turret "Quad Blaster Turret"
 
+mission "Midnight Hauler VI Upgrade"
+	job
+	repeat
+	name "Hauler VI Recall"
+	description "Southbound Shipyards has issued a recall for the old model Hauler VI to fix a critical issue. Bring a Hauler VI to <destination> to have the this fixed. Make sure to uninstall any outfits you want to keep before doing so."
+	source
+		government "Republic" "Syndicate" "Neutral" "Independent"
+	destination
+		government "Free Worlds"
+		attributes "shipyard"
+		not attributes "pirate"
+	to offer
+		has "ship model (all): Hauler VI"
+		not "Midnight Hauler VI Upgrade: active"
+	on accept
+		conversation
+			scene "thumbnail/hauler vi-thumb"
+			`The old model Hauler VI needs to be fixed by an authorized shipyard. Make sure to uninstall any outfits you want to keep from the Hauler VI before taking it to <destination>.`
+				accept
+	on visit
+		dialog "You need to bring the older model Hauler VI to the shipyard here to have it fixed. Make sure to uninstall any outfits from it that you want to keep."
+	to complete
+		has "ship model: Hauler VI"
+	on complete
+		take ship "Hauler VI"
+		give ship "Midnight Hauler VI"
+		conversation
+			scene "thumbnail/midnight hauler vi-thumb"
+			`The shipyard on <planet> has fixed the issue on your Hauler VI. The outfits on it have been reset to its default factory configuration.`
 
 
 mission "Midnight Market: Project THOR 0"
