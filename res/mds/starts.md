@@ -483,7 +483,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Warm Start
 
 
-[Warm.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warm.Start.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Warm%20Start/) <br>
+[Warm.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Warm.Start.zip) | 38.38 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Warm%20Start/) <br>
 Author: David Elworthy | Category: Starts <br>
 N/A[]()  <br>
 
