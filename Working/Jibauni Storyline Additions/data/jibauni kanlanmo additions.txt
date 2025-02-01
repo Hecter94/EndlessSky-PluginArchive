@@ -49,11 +49,10 @@ mission "Jibauni: Escorts 0"
 		conversation
 			branch defer
 				has "Jibauni Escorts 0: deferred"
-			`	As you land and go into the spaceport, you see none other than Kasim Aboagye standing there to meet you. "Hello, <last>," he greets you. "How is it going? Your job is to escort the <npc> and company to Baitoon, and also, I'm coming in your ship. Okay?`
+			`	As you land and go into the spaceport, you see none other than Kasim Aboagye standing there to meet you. "Hello, <last>," he greets you. "How is it going? Your job is to escort the <npc> and company to Baitoon, and also, I'm coming in your ship. Okay?"`
 				goto choice
 			label defer
 			`	"Are you finally ready to take me, the <npc>, and company to Baitoon, <first>?" Kasim asks as you step out of the <ship>.`
-				goto choice
 			label choice
 			choice
 				`	"Sure thing!"`
@@ -65,6 +64,16 @@ mission "Jibauni: Escorts 0"
 					accept
 				`	"I will hurry."`
 					defer
+	on defer
+		set "Jibauni: Escorts 0: deferred"
+	on complete
+		conversation
+			`As you and Kasim get off your ship, Kanlanmo comes to greet you. "Hello! I see you've brought the ships and Kasim here all safe and sound!"`
+			choice
+				`	"Of course I have!"`
+				`	"Why wouldn't I?"`
+				`	"Yes, flying here was fun."`
+			`	"Good. Now, can you - actually, meet me in the spaceport. I'll give you instructions there, but I have a report I need to make first."`
 	npc accompany save
 		government Jibauni
 		personality
@@ -107,15 +116,6 @@ mission "Jibauni: Escorts 0"
 			confusion 10
 			heroic
 		fleet "Small Rebel Jibauni Military" 2
-	on complete
-		payment 75000
-		conversation
-			`As you and Kasim get off your ship, Kanlanmo comes to greet you. "Hello! I see you've brought the ships and Kasim here all safe and sound!"`
-			choice
-				`	"Of course I have!"`
-				`	"Why wouldn't I?"`
-				`	"Yes, flying here was fun."`
-			`	"Good. Now, can you - actually, meet me in the spaceport. I'll give you instructions there, but I have a report I need to make first."`
 
 mission "Jibauni: Escorts 1 out"
 	name "Get ships from <planet>"
@@ -126,21 +126,20 @@ mission "Jibauni: Escorts 1 out"
 	to offer
 		has "Jibauni Escorts 0: done"
 	on offer
+		payment 75000
 		conversation
-			`Kanlanmo meets you in the spaceport, and hands you seventy-five thousand credits. "These are for bringing the Hirrih and company here safely.`
+			`Kanlanmo meets you in the spaceport, and hands you <payment>. "These are for bringing the Hirrih and company here safely.`
 			`	"Also, the Leaders have decided to give you a daily salary of 200 credits, which is the entirety of the amount they can afford right now. They seem to figure having you around is advantageous.`
 			`	"Now, could you get to <planet> and pick up the Yiyarsi and its escorts? We need every ship we can get, and the offensive starts in two weeks. Don't take any longer than one week getting them back here, okay?"`
 			choice
-				`	"I'll be fast."`
+				`	"I'll be quick."`
 					accept
-				`	"I won't work with the Jibauni any more, thank you."`
-					flee
 	on accept
 		"salary: Jibauni" = 200
 	on complete
 		dialog `What seems to be the captain of the fleet you will be escorting shows up on your viewpanel. "Meet me in the spaceport," he says. "As soon as possible!"`
 
-mission "Jibauni: Escorts 2"
+mission "Jibauni: Defend Baitoon"
 	landing
 	name "Defend <planet>"
 	description "The Rebel Jibauni are attacking <destination>. Fight and drive them off, then land and receive instructions."
@@ -151,12 +150,16 @@ mission "Jibauni: Escorts 2"
 		has "Jibauni: Escorts 1 out: done"
 	on offer
 		conversation
-			`However, before you have a chance to disembark, the same captain hurries up to <ship> and shouts. The horror-filled words reach your ears, "<planet> is under attack by a Rebel force! We have to get there immediately!" You prepare to take off, followed by a number of other Jibauni ships.`
+			`However, before you have a chance to disembark, the same captain hurries up to <ship> and shouts. The horror-filled words reach your ears, "<planet> is under attack by a Rebel force! We have to get there immediately!" You immediately take off, followed by a number of other Jibauni ships.`
 				launch
 	on visit
 		conversation
 			branch alreadyvisited
 				has "jibauni: visited when the rebels attack baitoon"
+				"reputation: Jibauni" >= 1
+			branch alreadyvisitednotloserep
+				has "jibauni: visited when the rebels attack baitoon"
+				"reputation: Jibauni" < 1
 			label notvisited
 			action
 				set "jibauni: visited when the rebels attack baitoon"
@@ -166,14 +169,16 @@ mission "Jibauni: Escorts 2"
 			action
 				"reputation: Jibauni" --
 			`The same group arrives asking the same question. When they hear the answer, you are again made to leave, amid mutterings from the angry Jibauni.`
+			label alreadyvisitednotloserep
+			`The same group arrives asking the same question. When they hear the answer, you are again made to leave, amid even more mutterings.`
 	on complete
 		"salary: Jibauni" = 800
 		conversation
-			`As you land, a Larajal appears, and out of it steps Kanlanmo. "Hello there, <first>!" he says in jubilant tones. "I hear that the Rebels have been defeated, largely thanks to you. Well, thank you!"`
+			`As you land, a Larajal appears, and out of it steps Kanlanmo. "Hello there, <first>!" he says in jubilant tones. "I hear that the Rebels have been defeated, largely thanks to you. So thank you!"`
 			choice
 				`	"It was my pleasure."`
 				`	"How did the Rebel Jibauni get such a large fleet in without anyone noticing?"`
-			# DRAFT
+			`	"I have no idea how the Rebels transported all those ships here. It seems that they have been preparing this offensive for ages - it was pure bad luck that we just so happened to be preparing an offensive at the same time. Or rather, pure good luck - Baitoon would have fallen for sure if we had not been amassing this fleet."`
 	npc
 		government Jibauni
 		personality
