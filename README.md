@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2025-02-05 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
+2025-02-05 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2025-02-04 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2025-02-04 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
 2025-02-03 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
@@ -18,8 +20,6 @@
 2025-02-01 | Updated plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#ruin-the-fun)<br>
 2025-01-31 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2025-01-30 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2025-01-30 | Updated plugin 'expert.crew.members' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#expertcrewmembers)<br>
-2025-01-29 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
