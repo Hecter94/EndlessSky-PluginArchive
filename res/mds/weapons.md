@@ -74,7 +74,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Ballistic Mayhem
 
 
-[Ballistic.Mayhem.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ballistic.Mayhem.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ballistic%20Mayhem/) <br>
+[Ballistic.Mayhem.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ballistic.Mayhem.zip) | 106.54 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ballistic%20Mayhem/) <br>
 Author: SpiralCat | Category: Weapons <br>
 N/A[]()  <br>
 
