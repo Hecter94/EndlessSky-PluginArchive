@@ -164,9 +164,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2024-12-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 1.29 mb | 2025-02-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-12) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-10) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -183,16 +183,13 @@ Some missions from landing/spaceport unlock jobs. Others just give reputation or
 Averagely you have to do like 50 jobs, less if you take the fighting jobs. Like in vanilla play, hit spaceport often.<br>
 <br>
 Since it's often questioned, here is a guide to the bunrodea first contact mission. Travel through Bunrodea territory till you've killed at least one Bunrodea ship, then fly to a human system, land there and you get a mission that mission brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions02.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions03.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions04.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions05.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions06.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/bunrodea.missions07.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-10<br>
+added @2x images<br>
+changed news portraits, because of a conflict with expert.crew.members<br>
 <br>
 2024-10-08 <br>
 proofreading and minor text changes (Vemenous-Repentile)<br>
@@ -1615,9 +1612,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Main Plot Plus
 
 
-[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 191.27 kb | 2025-01-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
+[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 219.94 kb | 2025-02-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
 Author: ziproot | Category: Story <br>
-[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2025-01-20) <br>
+[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2025-02-10) <br>
 
 >A plugin mostly centered around improving the main plot.
 >
@@ -1636,7 +1633,7 @@ This is an optional feature that can be enabled or disabled upon creating a new 
 This is a start two years later than the present. To unlock it, you must have made it to the point where Fast Forward begins. It automatically reveals all of human space and puts you in Wayfarer with no loan and enough credits to buy a Blackbird. Since it is two years later, you can immediately start doing the free worlds prologue missions, but you are also unable to do pact recon.
 
 ## Neutrality
-You can choose to remain neutral in the human civil war. To do this, just play the game normally without choosing sides, then when asked what side you are on, say that you are neutral. When pressed, continue to remain neutral. Shortly after, land on any world one jump away from a Pug planet and tell the Pug that you are neutral, and you will be able to skip the main plot. However, there's a catch: a different pilot will do the free worlds campaign instead, and they will choose checkmate. If you want the reconciliation ending, join the Syndicate with the Crisis in Management plugin or join the Free Worlds and choose reconciliation. The missions are designed so that you will be relocated to Ruin and time will advance by several years, but this is waiting on several pull requests to be merged, so at the moment you will have to use your imagination.
+You can choose to remain neutral in the human civil war. To do this, just play the game normally without choosing sides, then when asked what side you are on, say that you are neutral. When pressed, continue to remain neutral. Shortly after, land on any world one jump away from a Pug planet and tell the Pug that you are neutral, and you will be able to skip the main plot. However, there's a catch: a different pilot will do the free worlds campaign instead, and they will choose checkmate. If you want the reconciliation ending, join the Syndicate with the Crisis in Management plugin or join the Free Worlds and choose reconciliation. The missions are designed so that you will be relocated to Ruin and time will advance by several years, but this is waiting on several pull requests to be merged, so at the moment you will have to use your imagination. Your reward for completing Neutrality is a subsidurial pet.
 
 ### Compatibility
 Neutrality should be compatible with most major missions in the base game. You are told about the Pug war, the Free Worlds having nuclear weapons, and some of the new outfits produced by humanity: the plasma turret, flamethrower, s-970 regenerator, s-270 regenerator, ionic afterburner, typhoon torpedo launcher, electron beam, and catalytic ramscoop. This isn't everything, as it excludes the stack core due to it not being sold by Kraz Cybernetics, but it is enough to cover everything in the Coalition intros. You also learn about the Oathkeepers, and you assist Danforth by taking out a pirate fleet, unlocking the Wanderers campaign. From there, you can start Hai Reveal through Fiona and Rain, as the pirate fleet happened to have Hai weapons. I have additionally patched a mission that assumes you know Alondo.
@@ -1654,7 +1651,10 @@ The Syndicate will now use their new technology on their ships if you complete t
 Do you know those test dummy missions that you have to do? Well, there's a reason for them. Amazinite's Checkmate improvements include “automatic” ships. I have added these ships to occasionally show up in the Syndicate fleets after the main plot. They are essentially the same as the normal “mark II” ships, except that they have a special government that can change hails to use the test dummy ones, they cannot be bribed, they have the same confusion as the target practice jobs, they have the “automaton” and “self-destruct” attributes from the jobs, they are always called “Syndicate Test Vessel,” and, being expensive, try to avoid battle and run away if threatened. Speaking of the test dummies, you can no longer fight them after the main plot, as the Syndicate has moved to the next phase of their testing and has started to incorporate them in their fleet.
 
 ## Improved Checkmate
-Amazinite had, a long time ago, added changes that improved the Checkmate branch, that ultimately didn't go anywhere, other than some changes in the first part of the campaign rework. These changes will likely be added as part of the next parts of the campaign rework. However, as I am a fan of the Checkmate branch already, I think more people should be doing it, so I am incorporating these changes now, along with some minor fixes. Mostly, these allow you to ask about progress made by the Syndicate in finding the terrorists, and eventually allow you to “fight” them with automatic ships after the Pug invasion. I am also changing one major thing: the nuke launcher has been replaced with “augmented nuclear missiles,” which are essentially the buffed nuclear missiles proposed by Azure3141. When these begin being sold, the Syndicate also begin using them instead of regular nukes in a new “Mark II Nuclear” loadout in the systems raided by the Korath. This Manta loadout has four augmented nuclear missiles and two sidewinder missile launchers, the latter of which ensures that the Mantas use the “missile boat” AI, making them less likely to blow themselves up. This updated plot is referenced in the Neutrality option, mentioning the Syndicate finding the “terrorists” and the automatic vessels being used as cannon fodder. Both the old nuclear missiles and the new augmented nuclear missiles are also 10x cheaper than the nuclear missiles in vanilla are, i.e. they cost 100,000 credits each instead of a million credits each.
+Amazinite had, a long time ago, added changes that improved the Checkmate branch, that ultimately didn't go anywhere, other than some changes in the first part of the campaign rework. These changes will likely be added as part of the next parts of the campaign rework. However, as I am a fan of the Checkmate branch already, I think more people should be doing it, so I am incorporating these changes now, along with some minor fixes. Mostly, these allow you to ask about progress made by the Syndicate in finding the terrorists, and eventually allow you to “fight” them with automatic ships after the Pug invasion. This updated plot is referenced in the Neutrality option, mentioning the Syndicate finding the “terrorists” and the automatic vessels being used as cannon fodder.
+
+### Nuclear Missile (Mark II)
+I am also changing one major thing: the nuke launcher is three times smaller, but it now launches “mark II nuclear missiles,” which are essentially the buffed nuclear missiles proposed by Azure3141. When these begin being sold, the Syndicate also begin using them instead of regular nukes in a new “Mark II Nuclear” loadout in the systems raided by the Korath. This Manta loadout has two nuclear launch bays holding four mark II missiles, and two sidewinder missile launchers holding 90 sidewinder missiles, the latter of which ensure that the Mantas use the “missile boat” AI, making them less likely to blow themselves up. The old nuclear missiles are 10x cheaper than the nuclear missiles in vanilla are, i.e. they cost 100,000 credits each instead of a million credits each. The nuclear launch bay costs 1 million credits, but each mark II nuke only costs 80,000 credits, and these nukes *are* sold at the general store, so you can restock from any outfitter. Notably, there is no storage container for the mark II nukes; each one takes up weapon and outfit space directly, which is the main reason why the nuclear launch bay takes up so little outfit space on its own.
 
 ## Other Changes
 
@@ -1663,6 +1663,9 @@ The FW Albatross 2A mission requires you to fight Ryk Bartlett, essentially like
 
 ### Deep Science Drones
 0.10.5 added the sunder and mining drones, so I decided that it was time to allow you to get your own science drones! Some time after you do project hawking, Valhalla and Asgard will begin selling a drone variant of the aerie along with science drones, and a fleets consisting of an aerie with two science drones will begin to travel around the Deep. A few months later, miners will begin using the drone variant with mining drones to mine. The aerie drone variant is also occasionally used by the pirate fleet in road to hai reveal.
+
+### General Store
+The General Store is a one-stop shop for all of your ammo purchasing needs! At the general store, you can purchase any kind of ammo you need, allowing you to refill your launchers from anywhere in the galaxy. In order to buy most types of alien ammo, you need the corresponding license; unless have the license to buy the launcher, you cannot buy the ammo. Some ammunition, such as that for the Korath, does not require a license, and the following types of ammunition are not sold at the general store: Nuclear Missile, Ka’het MHD Generator, Abyssal Composer, Jump Drive.
 
 ### Author Ships
 Author ships no longer fine you, because they aren’t canon, with the exception of Captain Pester because she’s Captain Pester.
