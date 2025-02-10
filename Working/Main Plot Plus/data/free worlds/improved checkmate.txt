@@ -12,14 +12,16 @@ disable mission "MGFB: FW Defend New Tibet"
 disable mission "MGFB: FW Liberate Delta Sagittarii"
 disable mission "MGFB: FWC Attack Kaus Borealis"
 
-# Credit to Amazinite for most of the improvements. Credit to Azure3141 for the augmented nukes.
+# Credit to Amazinite for most of the improvements, including the nuclear launch bay. Credit to Azure3141 for the augmented nukes themselves.
 
 # All Content Plugin
 outfitter "All Outfits"
+    "Nuclear Launch Bay"
     "Nuclear Missile (Augmented)"
 
 # Omnis
 outfitter "human plugin"
+    "Nuclear Launch Bay"
     "Nuclear Missile (Augmented)"
 
 government "Terrorist"
@@ -64,6 +66,7 @@ event "fwc navy done with alcyone"
 
 event "fwc solace has augmented nukes"
     outfitter "Nuke"
+        "Nuclear Launch Bay"
         "Nuclear Missile (Augmented)"
 
 outfit "Nuclear Missile"
@@ -72,14 +75,26 @@ outfit "Nuclear Missile"
         Militia
 
 outfit "Nuclear Missile (Augmented)"
-    category "Secondary Weapons"
-    cost 100000
+    "display name" "Nuclear Missile (Mark II)"
+    category "Ammunition"
+    cost 80000
     thumbnail "outfit/nuke"
     licenses
         Militia
-    "mass" 10
-    "outfit space" -10
-    "weapon capacity" -10
+    "mass" 8
+    "outfit space" -8
+    "weapon capacity" -8
+    description "This is a more powerful nuclear missile, acting as ammunition for the Nuclear Launch Bay. The mechanisms that allow nuclear missiles to be fired without a launcher have been removed."
+
+outfit "Nuclear Launch Bay"
+    category "Secondary Weapons"
+    cost 1000000
+    thumbnail "nuke-launcher"
+    licenses
+        Militia
+    "mass" 5
+    "outfit space" -5
+    "weapon capacity" -5
     "gun ports" -1
     weapon
         sprite "projectile/missile"
@@ -109,10 +124,7 @@ outfit "Nuclear Missile (Augmented)"
         "shield damage" -23700
         "hull damage" -15800
         "hit force" -5700
-        "missile strength" 200
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
-    description "    [Nuclear missiles are a one-shot weapon: each missile occupies a gun slot, and after it is fired, the slot it was in is left empty.]"
-
 
 outfit "Active Nuclear Missile"
     weapon
@@ -1217,12 +1229,15 @@ mission "FWC Epilogue: Wolf Pack"
             choice
                 `    "Yes I am. What is it?"`
                 `    "I wouldn't call myself a hero, but if you insist. What did the Syndicate bring?"`
-            `    Odie brings you to a warehouse full of crates. One of the crates is open, revealing a weapon inside. "Plans for improved nuclear missiles. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
+            scene "nuke-launcher"
+            `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to drop off the blueprints for a working feed system."`
+            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
             choice
                 `    "Now that sounds like an exciting weapon to use."`
                     goto exciting
-                `    "Why do you think they gave it to us? Why did they even have this?"`
-            `    "I don't know why they have it or why they gave it to us. I didn't ask any questions, I just got right to work making it.`
+                `    "Why do you think they gave these to us? Why did they even have these?"`
+            `    "I don't know why they have them or why they gave them to us. I didn't ask any questions, I just got right to work making the weapon.`
             label exciting
+            `    "The nuclear launch bay is able to load two missiles at a time, and it weighs 21 tons."`
             `    Odie pats you on the back and smiles. "And we're giving you access to it. For a price, of course." Odie walks off, leaving you to contemplate if you'll make use of such a weapon.`
                 decline
