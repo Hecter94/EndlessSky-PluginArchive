@@ -1,0 +1,160 @@
+# Copyright (c) 2025 by Loymdayddaud
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+
+mission "Rumskib: Syndicate: Pirate Invasion"
+	name "Defend <planet>"
+	description "<planet> is under attack by a pirate raiding party. Hold them off long enough for reinforcements to arrive."
+	source
+		government "Syndicate"
+	to offer
+		or
+			and
+				"combat rating" > 200
+				random < 1
+			and
+				"combat rating" > 600
+				random < 3
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! <planet> is under attack by a large fleet of pirates! We need every armed ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+				`	(Join the defense fleet.)`
+			`	Without even bothering to ask whether you're willing, you are told to launch by the local government. You take off along with the other ships in the fleet...`
+				launch
+	npc kill
+		government "Pirate"
+		personality harvests heroic plunders staying target
+		fleet "Rumskib Large Pirate Raiding Party"
+		fleet "Small Core Pirates"
+	npc
+		government "Syndicate"
+		personality launching staying vindictive
+		fleet "Rumskib Syndicate Defense"
+		fleet "Small Syndicate" 3
+	npc
+		government "Republic"
+		personality heroic
+		system
+			government "Republic"
+			distance 2 10
+		fleet "Large Republic" 2
+		to spawn
+			random < 20
+	npc
+		government "Syndicate"
+		personality vindictive
+		system
+			government "Syndicate"
+			distance 2 4
+		fleet "Large Syndicate" 2
+		fleet "Small Syndicate" 2
+		to spawn
+			random < 70
+
+
+mission "Rumskib: Republic: Pirate Invasion"
+	name "Defend <planet>"
+	description "<planet> is under attack by a pirate raiding party. Hold them off long enough for reinforcements to arrive."
+	source
+		government "Republic"
+		not attributes "deep" "station"
+	to offer
+		or
+			and
+				"combat rating" > 170
+				random < 1
+			and
+				"combat rating" > 400
+				random < 3
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! <planet> is under attack by a large fleet of pirates! We need every armed ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					decline
+				`	(Join the defense fleet.)`
+			`	The local Republic garrison is preparing to launch and defend. You take off along with the other ships in the fleet...`
+				launch
+	npc kill
+		government "Pirate"
+		personality harvests heroic plunders staying target
+		fleet "Rumskib Large Pirate Raiding Party"
+	npc
+		government "Republic"
+		personality heroic launching staying
+		fleet "Small Republic" 3
+	npc
+		government "Republic"
+		personality heroic
+		system
+			government "Republic"
+			distance 2 5
+		fleet "Large Republic" 2
+	npc
+		government "Republic"
+		personality heroic
+		system
+			government "Republic"
+			distance 1 3
+		fleet "Large Republic" 2
+		fleet "Small Republic" 5
+		to spawn
+			has "flagship planet attribute: paradise"
+
+
+mission "Rumskib: Free Worlds: Pirate Invasion"
+	name "Defend <planet>"
+	description "<planet> is under attack by a pirate raiding party. Hold them off long enough for reinforcements to arrive."
+	source
+		government "Free Worlds"
+	to offer
+		random < 60
+		or
+			and
+				"combat rating" > 100
+				random < 1
+			and
+				"combat rating" > 300
+				random < 3
+	on offer
+		conversation
+			`Suddenly you hear raised voices and shouting outside: "We are under attack! <planet> is under attack by a large fleet of pirates! We need every armed ship to join the defenses!" The authorities will probably pay you quite well if you assist them, but this could also be an easy way to get yourself killed.`
+			choice
+				`	(Stay here until the fight is over.)`
+					decline
+				`	(Join the defense fleet.)`
+			`	The local militia fleet is preparing to launch and defend. You take off along with the other ships in the fleet...`
+				launch
+	npc kill
+		government "Pirate"
+		personality harvests heroic plunders staying target
+		fleet "Rumskib Large Pirate Raiding Party"
+		fleet "Small Southern Pirates"
+	npc
+		government "Militia"
+		personality heroic launching staying
+		fleet "Large Militia"
+		fleet "Small Militia" 3
+	npc
+		government "Free Worlds"
+		personality heroic
+		system
+			distance 2 4
+		fleet "Large Free Worlds" 2
+	npc
+		government "Free Worlds"
+		personality heroic
+		system
+			distance 3 6
+		fleet "Large Militia" 2
+		fleet "Small Militia" 2
