@@ -1,0 +1,385 @@
+# Copyright (c) 2021 by RisingLeaf and bene-dictator
+# Copyright (c) 2022 by alexrovw
+# Copyright (c) 2024 by roadrunner56
+# Cooyright (c) 2024 by Loymdayddaud
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+mission "Rumskib: A Dead Man's Path 1"
+	name "Siblings to New China"
+	description "Bring these siblings to New China to hear their father's last will by <date>. They have offered to pay you <payment>."
+	minor
+	passengers 2
+	deadline 7
+	source
+		near "Merak" 3 6
+		not attributes "station"
+	destination "New China"
+	to offer
+		random < 20
+	on offer
+		conversation
+			`At night, the spaceport on <origin> livens up. There are porters running to and from depots with crates, crewmen buying rounds of drinks for each other around the bars before they hit the bed, and bands of Navy officers jovially greeting captains and systematically inspecting ships. The energy and self-purpose of this spaceport is on full display tonight.`
+			`	The only exception to the bustle and activity are a young man and woman, both dressed very formally, who are seemingly lost. You watch them drift from one person to another, each time being sent off without an answer. Finally, they come toward you.`
+			`	Their faces show clearly that they are on their last legs of hope. It is only with reluctance that the woman says, "Excuse me, are you a spaceship captain?"`
+			choice
+				`	"Yes, my name's Captain <last>."`
+				`	"Depends on what you want."`
+					goto suspicion
+			`	Her face brightens up with a smile, and she continues, "That's good to hear! My brother and I were searching for someone who could give us a ride to <destination>. We received notice that our father's last will is going to be published there on <day>. Do you think you could take us there? We can pay you for your service, of course: <payment>."`
+				goto "help or not"
+			label suspicion
+			`	She seems a little confused. "Oh, um... my brother and I were just searching for someone who could give us a ride to <destination>. We received notice that our father's last will is going to be published there on <day>. Do you think you could take us there? We can pay you for your service, of course: <payment>.`
+			label "help or not"
+			choice
+				`	"Of course I can."`
+					goto agreed
+				`	"I'm sorry, but I've got more urgent things to do. You'll need to find someone else."`
+			`	Her smile fades away as you say that, but they both simply nod and walk out of the spaceport with their heads down.`
+				decline
+			label agreed
+			`	"Fantastic! My name is Sophie, and this is my younger brother," she says, pointing at the man to her side, who goes to shake your hand.`
+			`	"Hi, I'm Liam. We've been looking for a ride for some time now. We were starting to worry that we wouldn't get there in time! You'll have to bring us there quickly."`
+			choice
+				`	"Don't worry, you'll be surprised how fast my ship flies. We'll get there in no time."`
+					goto "no time"
+				`	"Yes, a lot of captains are quite busy these days."`
+			`	"It seems that way," Sophie agrees. "Everyone feels more tense or uncertain. There's always more to do and less time to do it."`
+				goto ship
+			label "no time"
+			`	Liam's voice barely hides his excitement at finding an available captain. "Well, let's see that ship of yours then, and show us if it's as fast as you say it is!"`
+			label ship
+			`	You lead them to your ship and help them with their bags as they board.`
+				accept
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		log `Helped a pair of siblings named Sophie and Liam by bringing them to New China so they can hear their father's last will.`
+		dialog `When you arrive at <planet>'s spaceport, the siblings prepare to head off to the court where their father's last will will be read out. Just before they leave, Liam turns to you. "Captain <last>, I've transferred <payment> to your account. Would it be okay for you to wait here until we come back? We'll need a ride home. If you're able to take us, please meet us in the spaceport later."`
+		payment 50000
+
+mission "Rumskib: A Dead Man's Path 2"
+	name "Following Footprints"
+	description "Bring Sophie and Liam through <waypoints>, before finally bringing them to <destination>. They will pay you another <payment>."
+	passengers 2
+	source "New China"
+	destination "Prime"
+	waypoint "Terminus"
+	waypoint "Aspidiske"
+	waypoint "Gorvi"
+	waypoint "Enif"
+	to offer
+		has "Rumskib: A Dead Man's Path 1: done"
+	on offer
+		conversation
+			`After waiting two hours in the spaceport's bar, Liam and Sophie come back with unexpectedly broad smiles on their faces. You flag them down from your table and they eagerly take a seat.`
+			`	Liam speaks as soon as he can. "Captain <last>, it turns out we will need a bit more than just a ride home! Have you decided to help us again?"`
+			choice
+				`	"What do you want me to do?"`
+				`	"Tell me more before I decide."`
+			`	Sophie smiles at her brother. "Of course, Liam just can't wait to get started!" She turns back to you. "Maybe I should start with who our father was. We didn't get to know him very well - he came home only occasionally. Don't get me wrong, our parents weren't fighting, but he had this passion: he couldn't stay in one place for very long. He was a captain, not unlike you, and he was restless to explore even the furthest parts of the galaxy. We believe he traveled further than most human captains; sometimes he brought small items back home that nobody could explain."`
+			`	She pauses for a moment. "Anyway, his testament says he left something behind for us on <planet>, in <system>. He said that he wouldn't make it easy though; he loved fantasy books, and there's always an air of mystery to those stories. He told us of a few systems we should visit before we go to Prime. It'll be like one last fantasy story from dad!`
+			`	"Of course, it would be much easier if we could go directly to Prime, but we want to respect our father's last will." She looks directly at you now. "And that is why we need your help. Could you help us again and take us through all these systems?"`
+			choice
+				`	"Which systems would we have to fly through?"`
+					goto "star map"
+				`	"I'm sorry, but that sounds too complicated to me."`
+					goto "no thanks"
+
+			label "star map"
+			`	Liam pulls a star map out of his bag. "These are the systems our father wants us to visit: <waypoints>. Those systems are spread far out around human space, but apparently they all have something unique to them. We've never really traveled beyond our home planet, so it'll be quite a big adventure for us! We can offer 50,000 credits. Does that sound good?"`
+			choice
+				`	"Sounds good!"`
+				`	"Sorry, I won't be able to take you. Those systems are too far away from each other."`
+					goto "no thanks"
+			`	"Great! We weren't expecting this trip, so we'll need to buy some supplies," Sophie says, "but as soon as you're ready we'll be on board."`
+				accept
+
+			label "no thanks"
+			`	"Well, it looks like we'll need to find somebody else," Sophie says. They both thank you for bringing them this far and walk away.`
+				decline
+
+	on enter "Terminus"
+		dialog `It is often thought that there's nothing interesting in these uninhabited systems by the Deep, but Sophie points out that there is a strange anomaly in this system. "When we got to see him, our father used to describe all these unusual sights he saw on his adventures flying through wormholes or nebulae. That anomaly reminds me of one of them."`
+	on enter "Aspidiske"
+		dialog `While Sophie and Liam are both quite chatty at times, the beauty of this star stops all their conversations.`
+	on enter "Gorvi"
+		dialog `Approaching the nebula surrounding Gorvi, Sophie and Liam both chatter to each other about the marvels and mysteries of the Wolf-Rayet star at its center.`
+	on enter "Enif"
+		dialog `If there was ever a prime example of how much the human race still has to learn, it is the strange, impressive, and yet still unfinished ringworld in this system. Liam tells you, "Our father was a very curious man, and he always talked about the Quarg and their ringworlds, and how it would be another thousand years before humanity could build anything similar. We've never seen how big it was until now!"`
+
+	on visit
+		dialog phrase "generic missing waypoint or passengers"
+
+	on complete
+		log `Brought Sophie and Liam to various locations that their departed father asked them to visit in his will; ended at Prime where he left something for them.`
+		conversation
+			`The siblings are uncharacteristically quiet, perhaps in anticipation of finally arriving at their destination. It is only when you have all stepped out into Prime's spaceport that Sophie says, "Captain <last>, you've helped us immensely, and we can't thank you enough for bringing us all across the galaxy! But we have one last request. Both of us think that you should come with us to see what our father left behind. Do you want to see it?"`
+			choice
+				`	"Now that we've come so far, sure."`
+					goto continue
+				`	"I'm sorry, I've got to be somewhere else."`
+					goto "somewhere else"
+			label continue
+			`	Liam pulls out a map - not the starmap he had before, but a local map of Prime marked 'New Toulouse'. "Apparently our father bought a whole mountain on this planet, and he wants us to go there. It's to the west of us near the New Pyrenees, a little while away from Prime Central Spaceport where we are."`
+			choice
+				`	"Sounds good. I'll follow your lead."`
+					goto shuttle
+				`	"We could also have a look around here, and see why your father chose this planet."`
+			`	"You're right. I hadn't thought of that, surely there was a reason he picked here," Sophie says."`
+			`	All three of you walk around the spaceport district for some time. Coming into a giant plaza, you see one of the newest models from Betelgeuse, a Behemoth, on display in the center. The massive freighter with its many turret emplacements towers over even the plaza, an obvious showcase of Prime's leading shipbuilding industry.`
+			`	Liam's face brightens as if he just understood something. "I think our father chose this planet because he was always a fan of Betelgeuse ships. Before he went on his adventures he used to be a test pilot for the shipyard."`
+			`	Sophie nods. "Right! And once he was allowed to keep one of their experimental models as a gift for being one of their most productive pilots. Betelgeuse almost wouldn't let him go when he wanted to leave and explore the galaxy! But we're running out of time. Shall we go to the mountain now?"`
+			choice
+				`	"We should take a shuttle. It'll be the fastest way."`
+					goto shuttle
+				`	"Let's take the maglev, we should make it before it gets dark."`
+					goto maglev
+			label shuttle
+			`	After a short shuttlecraft flight on Prime's extensive and well-maintained shuttle service, you and the siblings arrive at a provincial city, where you can see a small mountain that stands alone against the rest of the landscape.`
+				goto mountain
+			label maglev
+			`	You take a maglev from the spaceport and get a tour through some of the regions of Prime's mainland; on the way you pass through the fields of New Toulouse, where the majority of the local agricultural industry is located, and into the New Pyrenees hills. After an hour you and the siblings step off at a provincial city. Although Betelgeuse starts to recede behind the horizon, you can see a small mountain that stands alone against the rest of the landscape.`
+			label mountain
+			`	Liam, with the help of the map, guides all of you to the base of the mountain, where you come across a flat wall embedded into a small cavern in its side. "There's a phrase our father left in the instructions: 'Edr- i fen,'" he explains, a little embarrassed at his inability to pronounce it. "I don't know what it means, but I'm certain it has something to do with one of these fantasy novels he used to read."`
+			choice
+				`	"Sounds funny, but let's say it."`
+				`	"You've got a strange dad, but I like his sense of humor."`
+			`	Sophie counts to three, and then all of you shout out the phrase together.`
+			`	Suddenly, a bright blue line appears on the wall. For a second, a flash blinds you and there is a dim hissing noise, like the sound of rock being cut by a laser. As you look back, the line forms into a blue rectangle, the shape rapidly expanding down the wall. When it reaches the ground, the shape has become large enough to cover a human.`
+			`	For a moment, nothing happens, and the siblings are too stunned to do anything. The rectangle starts flashing between different hues of blue, until the whole section and the stone it covered disappears suddenly to leave behind a cavity in the wall. "I could have sworn the stone was real," Liam says under his breath.`
+			choice
+				`	"Well, this is a real adventure. Lets go!"`
+					goto enter
+				`	"We don't know what's inside there. Be careful."`
+			`	"Well, now that you say it, I recently bought a small camera drone," Liam responds. "We can use it to scout out the hallway. It's only in infrared, so we won't see too many details," he adds. Liam starts the drone and guides it using a small remote control with integrated display. After some time, the drone flies back out and he tells you, "I think it is safe. We can go."`
+			label enter
+			`	In single file, the three of you enter the hallway behind the opening. Strangely, the stone walls are perfectly smoothed off, and the light that guides you through seems to come out of nowhere. "To use alien technology for something like this," Sophie laughs, "that's totally our dad."`
+			`	For a long while the three of you continue through the stone hallway, the light following your movements, until it opens up into a dome-shaped room brilliantly bathed in blue light. On the walls, there are all manner of alien artifacts lined up next to each other, but at the center of the room there is a pedestal with a sword inserted into it. A small tablet stands in a socket in front of it.`
+			choice
+				`	(Go up to the sword.)`
+					goto "sword scene"
+				`	(Take a look around first.)`
+			`	You walk around to the right of the dome to the collection of alien objects, all steel in color and rather blocky. "Wow, he must have always brought us back the small items from his expeditions, because these artifacts over here are huge!" Liam exclaims from another part of the dome. "How did he even move all these here?"`
+			`	Now that Liam points it out, many of the larger artifacts over his way look similar to the Sheragi technology you studied with Albert Foster.`
+				to display
+					has "Sheragi Archaeology: The Emerald Sword 3: done"
+			`	After some time, Sophie calls you both to come and look at the tablet.`
+			choice
+				`	(Go over to Sophie.)`
+			label "sword scene"
+			`	Approaching the tablet, there is a short message written on it:`
+			`			"My dear children. The galaxy runs far and wide, and I have traveled many places, more than most in many lifetimes. I have seen many worlds, both alien and human, too. It was my life's work.`
+			`			"But still, there were many paths I did not take, many rocks I have left unturned, and many worlds I have not yet landed on. And I suspect that you will have read this before those destinations were reached. Well, I have arrived at a different destination now, the only one nobody can understand, but everybody reaches eventually. Do not fear for me.`
+			`			"This room you are in now is the culmination of all my work. I hope you understand that it was for your sake that I kept these a secret. My journey was long and unforgiving, but it was my life. I hope you continue that journey, to understand the universe a little better.`
+			`			"Your father."`
+			`	Understanding the personal nature of the message, you leave the two of them alone for a bit, walking around and looking at the artifacts on the left of the dome.`
+			`	After some time, the siblings call you back. Sophie says, "Captain <last>, Liam and I have thought about this, and we think that we would never be able to live up to our father's expectations if we kept this sword. We can study all these artifacts and understand more about the universe through them, but we cannot study this one. To understand its power, it needs to be used.`
+			`	"This sword was always at our father's side, and it has been many places. Take it to many more." She pulls the sword from the pedestal, and gives it one last look over before handing over it to you. "It is yours now."`
+			choice
+				`	"I would be more than grateful to accept it."`
+					goto accepted
+				`	"This is too much for me to take."`
+			`	"Are you sure?" Sophie asks. "This is a one time offer. It would be wasted on us."`
+			choice
+				`	"Yes, I'm sure."`
+					goto declined
+				`	"Well, if you frame it that way, I'll take it."`
+					goto accepted
+			
+			label accepted
+			action
+				outfit "Old Man's Sword" 1
+			`	You take the strange sword from Sophie. It's abnormally light, and you don't really know how to use it yet, but it has some strange feeling of power that seems to emanate from it.`
+				goto conclusion
+
+			label declined
+			action
+				set "declined old man's sword"
+			`	"I see... please, if you won't take our father's sword, take an extra payment for having to put up with us all the way up until now." She takes the sword away and inserts it back into the pedestal.`
+
+			label conclusion
+			`	"Well, we'll need some time to take it all in and arrange things, find a place to stay on Prime and all that," Sophie says, "but we won't keep you from your ship any longer. It was a pleasure to travel with you, Captain <last>."`
+			`	Liam adds, "We will always be grateful for your help with our father's will. We never imagined that we would come so far, and we would have never done it without you. It means so much to us. We wish you well through the stars, Captain <last>."`
+
+			branch "accepted sword" "extra money"
+				not "declined old man's sword"
+
+			label "accepted sword"
+			action
+				payment 50000
+			`	After Liam hands you a credit chip for <payment>, you say goodbye to the two siblings and leave them in their father's mysterious dome.`
+				decline
+
+			label "extra money"
+			action
+				payment 100000
+			`	After Liam hands you a few credit chips for <payment>, you say goodbye to the two siblings and leave them in their father's mysterious dome.`
+				decline
+
+			label "somewhere else"
+			action
+				payment 100000
+			`	"Well, that's okay. We'll always appreciate the help you've given us in fulfilling our father's will. Oh, and here's your payment, and a little extra for putting up with us all this time," Liam says, handing you a few credit chips for <payment>. "We wish you well through the stars!" Again, the siblings both thank you profusely for the trip, and you watch them leave Prime's spaceport with excitement.`
+				decline
+
+
+outfit "Old Man's Sword"
+	category "Unique"
+	cost 220000
+	thumbnail "outfit/sword"
+	"capture attack" 1.4
+	"capture defense" 1
+	"unplunderable" 1
+	description "While swords are seen today as being old curios and commemorative objects, rendered useless when gunpowder became dominant on the battlefield thousands of years ago, this sword is unlike any you have seen before. Despite how heavy it looks, it is remarkably light, and there are inscriptions on the blade itself that don't appear to be like any human language."
+	description "	For whatever reason, the red beam within the blade seems to pulsate as you swing it; perhaps there is more to the sword than you know."
+
+
+
+mission "Rumskib: Keystone Registration"
+	invisible
+	source
+		government "Hai"
+		not attributes "uninhabited"
+	to offer
+		or
+			has "outfit: Quantum Keystone"
+			has "outfit: Quantum Key Stone"
+			has "outfit: Shield Beetle Pendant"
+			has "outfit: Tree Skeleton Key Stone"
+		has "First Contact: Hai: offered"
+	on offer
+		conversation
+			`Upon landing, you receive a message from the local port authority. "Hello, Captain <last>. We have been informed that you have recently installed a keystone, or its equivalent, onto your ship. We have registered you with the job board, which will allow you to take passengers that specifically request a keystone-equipped ship. However, be aware that most passengers will not board ships equipped with non-standard keystones." Once the message ends, you can hear a quiet tapping on the door of your ship's hatch. You turn to see a short Hai in a spaceport uniform peeking through your window. He waves and smiles.`
+			choice
+				`	(Open the door.)`
+					goto open
+				`	(Ignore him.)`
+			`	Your deliberate disregard for the Hai at your door doesn't appear to stop him. "I saw you had a keystone installed!" His voice is muffled despite his shouting, but you can still hear what he says. "To advertise your ship's keystone in the spaceport, my advice is to mount it on the inside of your ship's main door. When you have it open, passersby can see you have a keystone and ask for transportation. You meet some funny people that way. Good luck, Captain!"`
+				decline
+			label open
+			`	The Hai wastes no time in getting to the point; the second you open your door, he begins to speak. "I saw you had a keystone installed! To advertise your ship's keystone in the spaceport, my advice is to mount it on the inside of your ship's main door. When you have it open, passersby can see you have a keystone and ask for transportation. You meet some funny people that way. Good luck, Captain!"`
+				decline
+
+
+
+# Adds a follow-up mission to the "Earth Retirement" mission.
+# In this one, it turns out Charles and Donna have a son who
+# originally abandoned them, but later comes back.
+# This was PRed to vanilla, but rejected; as a result there's
+# a plugin for it.
+
+disable mission
+	"Earth Retirement"
+
+mission "Rumskib: Earth Retirement"
+	name "Retired Family to Earth"
+	description "Transport two seniors to <destination>, where they plan to retire. They can only promise you <payment>."
+	minor
+	source
+		attributes paradise
+	destination "Earth"
+	to offer
+		random < 15
+		not "Earth Retirement: offered"
+	passengers 2
+	on offer
+		conversation
+			`As you wander through the spaceport, you see an elderly man and woman sitting on a bench, talking about something that seems to be causing them some amount of stress.`
+			choice
+				`	(Ask them what the problem is.)`
+				`	(Ignore them.)`
+					decline
+			`	You inquire as to what's troubling them, and the woman begins telling you her life's story. "We were yard workers here on <origin> for nearly fifty years, but we're both starting to get too old for our jobs. So, we've made the hard decision to retire. We've already chosen a location on the best place we could afford, which... well, happened to be on Earth, so Charles and I are looking for someone to transport us. Oh, where are my manners? I'm Donna. Pleased to meet you."`
+			`	Donna was clearly looking for someone besides her husband to talk to, but Charles begins to frown. "I suppose you could put it like that."`
+			`	"Is that wrong?" Donna replies anxiously, bracing for the response.`
+			`	The man's look of resignation starts to turn to one of anger. "Of course it's wrong. We've spent our whole lives working for these spoiled brats, and what do we get in return? We get dumped on Earth like we're dead weight!"`
+			`	"I know you're upset about this," interrupts Donna, "but just getting angry isn't going to change anything!" Charles remains silent for a long time, and then mutters a reluctant apology.`
+			`	Donna talks to you again. "I'm sorry about that. As you can tell, we're under a lot of stress right now. I can tell that you're a star captain. Can you help take us to Earth? We don't have a lot of money, but we'll be glad to pay <payment>."`
+			choice
+				`	"I can handle two passengers."`
+				`	"I'm sorry, but I'm not headed to Earth right now."`
+					decline
+			`	You show Charles and Donna to their bunks, and they both thank you in advance.`
+				accept
+	
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		set "Earth Retirement: done"
+		conversation
+			`Once you land on Earth, Donna and Charles pick up their belongings and start to leave your ship. Before he leaves, Charles stops and takes out a large clump of credit chips. "Here you go," he mutters. "I hope your life goes better than ours has."`
+			choice
+				`	"Thank you. I hope you have the best of luck on Earth."`
+					goto payment
+				`	"You can keep those. You sound like you need them more than I do."`
+					goto reject
+			
+			label payment
+			action
+				payment 2000 80
+			`	As you count up the large clump of credits you were handed (the sum comes out to the expected <payment>), they slowly make their way to the train station. Presumably, their new apartment is far from here.`
+				accept
+			label reject
+			action
+				event "rumskib: charles donna timer" 90
+			`	Charles looks surprised for a moment, and then, for the first time you've seen, he smiles. "Thank you, Captain <last>. I wish there were more people like you in the Paradise Worlds."`
+			`	You wish the couple the best of luck on Earth, and they slowly make their way to the train station. Presumably, their new apartment is far from here.`
+
+
+event "rumskib: charles donna timer"
+
+
+mission "Rumskib: Earth Retirement 2"
+	name "Retired Family to Shangri-La"
+	description "Transport two seniors and their son to <destination>, where they plan to retire. They will pay you <payment>."
+	minor
+	source "Earth"
+	destination "Shangri-La"
+	to offer
+		or
+			has "event: rumskib: charles donna timer"
+			has "Earth Retirement: done"
+	passengers 3
+	on offer
+		conversation
+			`As you enter the spaceport, you see a familiar sight. The elderly couple Charles and Donna Singer, who you helped move to Earth a while ago, are talking to a young well-dressed man. Donna looks much the same as you remember her, but Charles is sporting a bandage on his head, and one of his arms looks like it's in a sling. When they see you, Donna points excitedly in your direction, and the entire group moves to meet you.`
+			`	"Captain! I never thought we would see you again," Donna begins. "I'd like to introduce you to my son, Abel." She gestures to the young man, who shakes your hand vigorously. Now that you're close, you can see that he is dressed very finely. His suit is made of expensive wool with ebony buttons, his shoes are emblazoned with designer logos, and you can see a jewel-encrusted watch peeking out from underneath the well-tailored cuff of one arm.`
+			`	"It's great to meet you, Captain...?"`
+			choice
+				`	"<first> <last>."`
+				`	"<last>."`
+			`	"Captain <last>," he smiles. "How very nice to meet you indeed. My parents here told me what you did for them. If I may introduce myself more fully, I am Abel Singer, Assistant Vice President of Investments for Syndicated Systems. I want to thank you for going out of your way to help my parents when they needed it most."`
+			choice
+				`	"It was nothing."`
+				`	"What happened to Charles?"`
+					goto injuries
+				`	"How could you leave them to rot..?"`
+					goto rot
+			`	"It was not nothing," Donna blurts out. "You were there for us when nobody else cared. You didn't even accept the agreed upon payment! Our former employers, our friends, even our children..." She trails off.`
+			label rot
+			`	"I've not been the best son," Abel says, staring down at his feet. "My parents are very dear to me, of course. But I was so busy with work, I thought they could take care of themselves. So I left them to their own devices. I didn't even think to wonder about their financial position, and my father here was too proud to say it out loud." He turns to look his father in the eyes. "Still, I should have known better. I'm sorry, Dad."`
+			label injuries
+			`	Charles grunts, but it is his wife who speaks up next. "Shortly after we arrived, a gang of local teenagers began terrorizing our retirement community. At first it was just vandalism, but eventually it became petty theft, burglary... Nothing would have happened if Charles had just given up the necklace-"`
+			`	"Give up your necklace?!" Charles snaps. "You know I couldn't do that. It was your mother's - the gift she gave you on the day of our wedding, to show you how proud she was. I'd face down those bullies a hundred times if it meant saving it."`
+			`	A silence follows, but it's not uncomfortable. Donna looks at Charles with tenderness; Charles looks at her with love. Abel looks at both of them with sorrow and regret. Finally, the three of them turn to you.`
+			`	"I am taking my parents to come live with me on <planet>. I think it'd be fitting if you took us. This time, I will spare no expense to ensure their safety and comfort. We will pay you <payment> for the trip."`
+			choice
+				`	"You're welcome on my ship."`
+					accept
+				`	"Sorry, I can't. I've got other things to do."`
+			`	"Well, the best of luck to you, then," Abel immediately replies. "We wish you well!" adds Charles. They all go in search of another captain.`
+				decline
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying the Singer family hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		payment 150000
+		conversation
+			`When you land on <planet>, Abel insists on carrying all of the family's personal effects. Donna and Charles are almost reluctant to say goodbye to you and the <ship>, but they look ahead smiling as their son leads them on to the better, happier retirement that they have well earned.`
+			`	Before leaving, each of them shakes your hand in turn, and Abel slyly deposits a credit chip worth <payment> in your palm at the end of the handshake. With a final wave, you bid the Singers goodbye and good luck.`

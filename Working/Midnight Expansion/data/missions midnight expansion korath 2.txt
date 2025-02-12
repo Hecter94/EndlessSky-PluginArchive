@@ -451,9 +451,11 @@ event "add Korath Electro Shock Weapons patch"
 mission "Midnight Expansion: Add Korath Electro Shocker"
 	landing
 	invisible
-	on offer
-		event "add korath electro shock weapon"
+	to offer
 		not "event: add korath electro shock weapon"
+	on offer
+		event "add korath electro shocker"
+		set "midnight expansion: eave-skiff shocker patched"
 		fail
 
 event "add korath electro shocker"
@@ -469,13 +471,56 @@ event "add korath electro shocker"
 			"Charm-Shallop (Shocker)"
 		add variant 1
 			"Korath World-Ship (Shocker)"
-			"Eave-Skiff" 3
+			"Eave-Skiff (Shocker)" 3
 		add variant 1
 			"Korath World-Ship B (Shocker)"
-			"Eave-Skiff" 3
+			"Eave-Skiff (Shocker)" 3
 		add variant 1
 			"Korath World-Ship C (Shocker)"
+			"Eave-Skiff (Shocker)" 3
+
+mission "Midnight Expansion: Add Korath Electro Shocker Patch"
+	landing
+	invisible
+	to offer
+		has "event: add korath electro shock weapon"
+		not "event: add korath electro shocker"
+	on offer
+		event "add korath electro shocker"
+		set "midnight expansion: eave-skiff shocker patched"
+		fail
+
+mission "Midnight Expansion: Eave-Skiff Shocker Patch"
+	landing
+	invisible
+	to offer
+		has "event: add korath electro shocker"
+		not "midnight expansion: eave-skiff shocker patched"
+	on offer
+		event "midnight expansion eave-skiff shocker patch"
+		fail
+
+event "midnight expansion eave-skiff shocker patch"
+	fleet "Kor Efret Home"
+		remove variant 1
+			"Korath World-Ship (Shocker)"
 			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship B (Shocker)"
+			"Eave-Skiff" 3
+		remove variant 1
+			"Korath World-Ship C (Shocker)"
+			"Eave-Skiff" 3
+		add variant 1
+			"Korath World-Ship (Shocker)"
+			"Eave-Skiff (Shocker)" 3
+		add variant 1
+			"Korath World-Ship B (Shocker)"
+			"Eave-Skiff (Shocker)" 3
+		add variant 1
+			"Korath World-Ship C (Shocker)"
+			"Eave-Skiff (Shocker)" 3
+
 
 mission "Midnight Expansion: Korath Electro Shock Weapon Patch"
 	landing
@@ -686,8 +731,8 @@ mission "Midnight Expansion: Kor Efret Tevah-Ark Coracle"
 			cargo 5
 			outfitters "Korath Basics"
 			variant
-				"Korath Ranger" 2
-				"Eave-Skiff" 6
+				"Korath Ranger (Shocker)" 2
+				"Eave-Skiff (Shocker)" 6
 	npc
 		to spawn
 			or
@@ -715,7 +760,8 @@ mission "Midnight Expansion: Kor Efret Tevah-Ark Coracle"
 				names "korath"
 			cargo 0
 			variant
-				"Eave-Skiff" 12
+				"Eave-Skiff" 6
+				"Eave-Skiff (Shocker)" 6
 	npc kill
 		government "Kor Efret"
 		system Skeruto
@@ -832,7 +878,7 @@ mission "Midnight Expansion: Scrapper Ikatila'ej Eldar"
 	on enter Persitar
 		conversation
 			scene "thumbnail/PR4987 korath refabricator"
-			`A massive world ship is parked here. It must be keeping the Blight Shadows here under control.`
+			`A massive world ship is here. Perhaps the Korath are using it as a base of operations.`
 	npc
 		government "Kor Scrappers"
 		system Persitar

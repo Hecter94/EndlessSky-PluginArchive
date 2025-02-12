@@ -1,9 +1,9 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
@@ -106,9 +106,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 908.72 kb | 2024-11-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 186.66 kb | 2025-02-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-06) <br>
 
 >Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
 >
@@ -130,15 +130,29 @@ This plugin<br>
 - adds zoom buttons
 - greyes out inactive buttons<br>
 - puts images behind the buttons.<br>
-<br>
-To change the colour of the buttons, copy the contents of your desired colour folder 'images/ui/color' to 'images/ui/' and overwrite the files there.<br>
-<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/additional.command.buttons.radial01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/additional.command.buttons.radial02.jpg' width='400'>
+- changes the ship hud<br>
 <br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-06<br>
+the targeting buttons blocked the new scanner attribute display, so i moved it up<br>
+hollowed and colorized the targeting buttons<br>
+<br>
+2025-02-04<br>
+increased the size of the fuel, energy and heat bar to handle fuel up to 4400<br>
+resized message box to not overlap with 2 rows of escorts<br>
+restored the somehow missing tactical information display<br>
+added "target nearest enemy" and "target nearest asteroid" buttons<br>
+removed the color folders, white is enough<br>
+<br>
+2024-12-28<br>
+moved the ammo box to the left side if the lower buttons<br>
+added ship hud (inspired by Upmost Bsc | https://github.com/tobersj/Central-HUD)<br>
+<br>
+2024-11-20<br>
+added small main menu button to the top left corner (requested by tarminu)<br>
 <br>
 2024-11-02<br>
 removed hold fire button, because it's unsure when/if it comes back<br>
@@ -394,9 +408,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/High DPI/icon.png' height='100'></img><br>
 
 
-[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 600.76 mb | 2024-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
+[High.DPI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/High.DPI.zip) | 774.21 mb | 2025-01-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/High%20DPI/) <br>
 Author: Michael Zahniser (Maintained by the ES Community) | Category: Graphics <br>
-[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2024-10-27) <br>
+[https://github.com/endless-sky/endless-sky-high-dpi](https://github.com/endless-sky/endless-sky-high-dpi) (last commit 2025-01-25) <br>
 
 >Official High-DPI graphics for Endless Sky.
 >

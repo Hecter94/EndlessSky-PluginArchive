@@ -1,9 +1,9 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
@@ -304,9 +304,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.94 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 7.75 mb | 2025-02-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-06) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -318,17 +318,27 @@ Author: zuckung | Category: Outfits <br>
 <br>
 Adds unique crew members, aquireable through spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regeneration, more thrust, more cargo etc.<br>
 <br>
-Currently there are 90 expert crew members. Visit spaceports with an outfitter to find the missions(1% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Gegno, Successor, Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
-Their technology fields are: combat(9) cooling(9) energy(9) engine(9) fuel(9) hull(9) jamming(9) scanner(9) shield(9) storage(9).<br>
+Currently there are 95 expert crew members. Visit spaceports with an outfitter to find the missions(1% chance). In every of the following regions  you can find 5 experts: Rim, South, Dirt Belt, Deep, Near Earth, Core, North, Paradise, Hai, Bunrodea(after first contact), Remnant, Wanderer(after translation device), Kor Efret(after Rek went to the Kor Efret), Gegno, Successor, Avgi(after first contact), Arachi, Kimek, Saryd(last 3 after coalition first contact).<br>
+Their technology fields are: combat(10) cooling(10) energy(10) engine(10) fuel(10) hull(9) jamming(9) scanner(9) shield(9) storage(9).<br>
 In case you can't afford their daily wage you can store them at the outfitter without daily costs.<br>
 They have the positive stats of a small human outfit, at the cost of a bunk and a daily salary of 2.000 to 5.000 credits. On a small ship they make a huge difference, while on a heavy warship the stats are minor.<br>
 If you collect them all, you'll get a special mission.<br>
 See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/expert.crew.members/crew.list.txt'>crew.list.txt</a> of this plugin for locations, and stat infos.<br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/expert.crew.members/screenshot.jpg' width='400'>
-<br>
 <br>
 Changelog:<br>
+<br>
+2025-02-06<br>
+added the new scanning attributes to the scanning experts<br>
+<br>
+2025-01-30<br>
+added 5 avgi experts<br>
+<br>
+2024-11-29<br>
+changed images for wanderers, korath, hai and bunrodea (for more quality and consistency)<br>
+<br>
+2024-10-08<br>
+proofreading and minor text changes (Vemenous-Repentile)<br>
 <br>
 2024-10-06<br>
 added 5 successor experts<br>
@@ -1050,9 +1060,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/snowfeather.robotics/icon.png' height='100'></img><br>
 
 
-[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 1.08 mb | 2024-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
+[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 1.73 mb | 2024-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-03) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-09) <br>
 
 >Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
 >Starts on Snowfeather(Bore Fah) when having at least one android installed. See the readme for details.
@@ -1074,6 +1084,10 @@ The new buyable worker androids are twice as expensive as the original ones, and
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-09<br>
+corrected scene size<br>
+added @2x images<br>
 <br>
 2024-05-03<br>
 added 6 combat androids<br>
@@ -1199,9 +1213,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.3 mb | 2024-10-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 9.61 mb | 2025-01-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-27) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1251,6 +1265,7 @@ This plugin contains my former plugins unique.fix (just some vanilla unique adju
 <li> new unique, "Toolbox" (Clark, 3% chance)</li>
 <li> new unique, "Korath Pillow" (Laki Nemparu, 3% chance)</li>
 <li> new unique, "Gegno Starmap" (Wye Tzeou, 10% chance)</li>
+<li> new unique, "Nav Buoys" (human outfitter, after discovered shrouded systems, 10% chance)</li>
 </ul>
 vanilla uniques<br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/uniques01.jpg' width='400'>
@@ -1263,8 +1278,19 @@ added uniques<br>
 <br>
 Changelog:<br>
 <br>
+2025-01-27<br>
+removed nav buoy mission and events for gegno space<br>
+added nav buoy mission and events for avgi space<br>
+<br>
+2025-01-25<br>
+added new 'non-blocking' to offspring mission<br>
+<br>
+2024-10-11<br>
+fixed error<br>
+added nav buoys unique<br>
+<br>
 2024-10-02<br>
-renamed nostromo and dark star shiptypes, because of a conflict with midnight plugins (thx timeout.fu)<br>
+renamed nostromo and dark star ship types, because of a conflict with midnight plugins (thx timeout.fu)<br>
 <br>
 2024-09-23<br>
 removed forgotten test outfitter from earth<br>

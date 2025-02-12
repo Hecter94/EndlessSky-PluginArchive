@@ -1,16 +1,16 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Ships
 
-<p>139 plugins in this category.<p>
+<p>140 plugins in this category.<p>
 
 
  
@@ -258,9 +258,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.35 mb | 2024-10-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.57 mb | 2025-02-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2024-10-15) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2025-02-02) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -303,9 +303,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2024-02-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2025-01-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2024-02-21) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2025-01-07) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
@@ -387,9 +387,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Cutlass.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Cutlass.zip) | 88.68 kb | 2024-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Cutlass/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/es-cutlass](https://github.com/TheGiraffe3/es-cutlass) (last commit 2024-10-18) <br>
+N/A[]()  <br>
 
->Adds a new ship called the Cutlass, the pirate version of a Gunboat.
+>Adds a new ship called the Cutlass, the pirate version of a Gunboat. This plugin is deprecated; has been replaced by the Rumskib plugin.
 >
 
 <details>
@@ -404,7 +404,7 @@ All data and sprites come from the closed [PR](https://github.com/endless-sky/en
 </details>
 
 Status: Complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -1474,9 +1474,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2025-01-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2024-10-31) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2025-01-13) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -2268,6 +2268,34 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
+### Rumskib
+<img src='../../Working/Rumskib/icon.png' height='100'></img><br>
+
+
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 1.19 mb | 2025-02-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+Author: TheGiraffe3 | Category: Ships <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-02-11) <br>
+
+>Adds a few more ships that have plausible stories for why they were invented.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Rumskib
+
+Expansion for Endless Sky.
+
+Assets can be found [here](https://github.com/TheGiraffe3/homula-rumskib-assets).
+
+</blockquote>
+</details>
+
+Status: Complete, but may be added to <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### RW Ships
 <img src='../../Working/RW Ships/icon.png' height='100'></img><br>
 
@@ -2770,9 +2798,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Tanager.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Tanager.zip) | 71.77 kb | 2024-10-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Tanager/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/es-tanager](https://github.com/TheGiraffe3/es-tanager) (last commit 2024-10-18) <br>
+N/A[]()  <br>
 
->Adds a new ship whose stats are a cross between that of the Shuttle and the Scout.
+>Adds a new ship whose stats are a cross between that of the Shuttle and the Scout. This plugin is deprecated; has been replaced by the Rumskib plugin.
 >
 
 <details>
@@ -2790,7 +2818,7 @@ Assets: https://github.com/TheGiraffe3/new-ship-assets
 </details>
 
 Status: Complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -3022,9 +3050,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Unfettered Innovations/icon.png' height='100'></img><br>
 
 
-[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2024-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
+[Unfettered.Innovations.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Unfettered.Innovations.zip) | 2.16 mb | 2025-01-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Unfettered%20Innovations/) <br>
 Author: Hurleveur | Category: Ships <br>
-[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2024-10-25) <br>
+[https://github.com/Hurleveur/unfettered-innovations](https://github.com/Hurleveur/unfettered-innovations) (last commit 2025-01-18) <br>
 
 >endless sky plugin for the Unfettered ships and outfits to come in the campaign
 

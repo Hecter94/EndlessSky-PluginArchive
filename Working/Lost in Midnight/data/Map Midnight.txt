@@ -1428,7 +1428,7 @@ planet Fossil
 	security 0
 
 planet "Haiguard"
-	attributes station uninhabited
+	attributes station uninhabited midnight "ancestral lands"
 	landscape land/midnight-unsplash5
 	music ambient/derelict
 	description `This station was mothballed during the Hai exodus. The docking area has an atmosphere, and a status panel indicates that the station's generators are functional but shut down, with standby mechanisms running on solar power alone.`
@@ -1596,11 +1596,10 @@ planet "Rum Cellar"
 
 planet "Season's End"
 	attributes uninhabited station midnight
-	landscape land/space2spring
+	landscape land/midnight-unsplash6
 	music ambient/derelict
-	description `The technology and architecture of this abandoned station reminds you of the Wanderers. Could they have built it? It would mean they occupied this part of the galaxy some time in the distant past.`
-	description `There might be something here worth salvaging if you look hard enough. You just have to sift through a lot of rusted decaying junk first. Whoever lived here in the past seemed to leave in a panicked rush. Judging from the condition of the station, the evacuation was chaotic and disorganized.`
-	spaceport `Although most of the spaceport is empty, there are a surprising amount of ships still docked here. However, a more thorough examination reveals that most are likely not in working condition.`
+	description `This abandoned station appears to have been overtaken by vegetation. But upon closer inspection, the plants are maintained by small robots which keep their growth in check. The internal architecture also suggests it was designed for a species capable of flight. There are doorways that open into wide open areas which are dangerously high off the floor.`
+	spaceport `Although most of the spaceport is empty, there are a surprising amount of ships still docked here. However, a more thorough examination reveals that most are likely not in working condition. Whoever lived here in the past seemed to leave in a panicked rush. Judging from the condition of the station, the evacuation was chaotic and disorganized. There might be something worth salvaging if you look hard enough. You just have to sift through a lot of rusted decaying junk first.`
 	government Uninhabited
 	security 0
 
@@ -1698,80 +1697,6 @@ star "star/wr1"
 	wind 4
 
 
-# The following missions/events change the land image for Season's End.
-
-mission "Season's End: Summer"
-	landing
-	invisible
-	source "Season's End"
-	to offer
-		random < 10
-		or
-			not "Season's End: Summer: failed"
-			has "Season's End: Spring: offered"
-	on offer
-		clear "Season's End: Autumn: offered"
-		clear "event: Season's End: Autumn"
-		event "Season's End: Summer"
-		fail
-		
-event "Season's End: Summer"
-	planet "Season's End"
-		landscape land/space2summer
-
-mission "Season's End: Autumn"
-	landing
-	invisible
-	source "Season's End"
-	to offer
-		random < 10
-		has "Season's End: Summer: offered"
-	on offer
-		clear "Season's End: Winter: offered"
-		clear "event: Season's End: Winter"
-		event "Season's End: Autumn"
-		fail
-
-event "Season's End: Autumn"
-	planet "Season's End"
-		landscape land/space2autumn
-
-mission "Season's End: Winter"
-	landing
-	invisible
-	source "Season's End"
-	to offer
-		random < 10
-		has "Season's End: Autumn: offered"
-	on offer
-		clear "Season's End: Spring: offered"
-		clear "event: Season's End: Spring"
-		event "Season's End: Winter"
-		fail
-
-event "Season's End: Winter"
-	planet "Season's End"
-		landscape land/space2winter
-		
-mission "Season's End: Spring"
-	landing
-	invisible
-	source "Season's End"
-	to offer
-		random < 10
-		has "Season's End: Autumn: offered"
-	on offer
-		clear "Season's End: Summer: offered"
-		clear "event: Season's End: Summer"
-		event "Season's End: Spring"
-		fail
-
-event "Season's End: Spring"
-	planet "Season's End"
-		landscape land/space2spring
-
-
-
 # The following missions/events add cosmetic effects to some systems.
 
 mission "Ringworld Debris Fields"
@@ -1800,7 +1725,6 @@ event "ringworld debris fields"
 		add asteroids "ringworld debris f" 4 1.75
 		add asteroids "ringworld debris g" 4 1.5
 		add asteroids "ringworld debris h" 4 1.25
-
 
 
 # This mission/event adds Eureka Station to the Ipsing system.
@@ -1947,6 +1871,7 @@ event "midnight conundrum start link"
 
 
 
+
 ##############################
 #
 # Deprecated
@@ -1981,3 +1906,106 @@ event "add hope to dirt belt patch"
 	planet Hope
 		remove attributes "dirt belt"
 
+
+# Some deprecated missions/events cycled through a series of land images for Season's End. This is no longer supported after the default image was changed.
+
+mission "Season's End: Summer"
+	landing
+	invisible
+	source "Season's End"
+	to offer
+		never
+#		random < 10
+#		or
+#			not "Season's End: Summer: failed"
+#			has "Season's End: Spring: offered"
+	on offer
+		clear "Season's End: Autumn: offered"
+		clear "event: Season's End: Autumn"
+		event "Season's End: Summer"
+		fail
+		
+event "Season's End: Summer"
+	planet "Season's End"
+		landscape land/space2summer
+
+mission "Season's End: Autumn"
+	landing
+	invisible
+	source "Season's End"
+	to offer
+		never
+#		random < 10
+#		has "Season's End: Summer: offered"
+	on offer
+		clear "Season's End: Winter: offered"
+		clear "event: Season's End: Winter"
+		event "Season's End: Autumn"
+		fail
+
+event "Season's End: Autumn"
+	planet "Season's End"
+		landscape land/space2autumn
+
+mission "Season's End: Winter"
+	landing
+	invisible
+	source "Season's End"
+	to offer
+		never
+#		random < 10
+#		has "Season's End: Autumn: offered"
+	on offer
+		clear "Season's End: Spring: offered"
+		clear "event: Season's End: Spring"
+		event "Season's End: Winter"
+		fail
+
+event "Season's End: Winter"
+	planet "Season's End"
+		landscape land/space2winter
+		
+mission "Season's End: Spring"
+	landing
+	invisible
+	source "Season's End"
+	to offer
+		never
+#		random < 10
+#		has "Season's End: Autumn: offered"
+	on offer
+		clear "Season's End: Summer: offered"
+		clear "event: Season's End: Summer"
+		event "Season's End: Spring"
+		fail
+
+event "Season's End: Spring"
+	planet "Season's End"
+		landscape land/space2spring
+
+# This patch updates to the new default image.
+mission "Season's End Atrium Patch"
+	landing
+	invisible
+	source "Season's End"
+	to offer
+		or
+			has "event: Season's End: Spring"
+			has "event: Season's End: Summer"
+			has "event: Season's End: Autumn"
+			has "event: Season's End: Winter"
+	on offer
+		clear "Season's End: Spring: offered"
+		clear "event: Season's End: Spring"
+		clear "Season's End: Summer: offered"
+		clear "event: Season's End: Summer"
+		clear "Season's End: Autumn: offered"
+		clear "event: Season's End: Autumn"
+		clear "Season's End: Winter: offered"
+		clear "event: Season's End: Winter"
+		event "Season's End: Atrium"
+		fail
+
+event "Season's End: Atrium"
+	planet "Season's End"
+		landscape land/midnight-unsplash6

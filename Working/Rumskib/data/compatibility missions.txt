@@ -1,0 +1,213 @@
+# Copyright (c) 2024 by Loymdayddaud
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+mission "Rumskib: Blended Ships installed"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: Blended Ships"
+		not "event: rumskib: blended ships installed"
+	on offer
+		event "rumskib: blended ships installed"
+		clear "event: rumskib: blended ships uninstalled"
+		fail
+
+event "rumskib: blended ships installed"
+	fleet "Small Southern Merchants"
+		add variant
+			"Catamaran"
+			"Tanager"
+		add variant
+			"Grackle"
+			"Tanager"
+		add variant
+			"Hare"
+			"Tanager" 2
+	fleet "Small Core Merchants"
+		add variant 2
+			"Hare"
+			"Tanager"
+		add variant
+			"Hare" 2
+			"Tanager"
+	fleet "Large Northern Pirates"
+		add variant
+			"Cutlass"
+			"Sunthief"
+		add variant
+			"Cutlass"
+			"Eagle"
+		add variant
+			"Cutlass" 2
+			"Hare (Pirate)" 2
+	fleet "Small Northern Pirates"
+		add variant
+			"Cutlass"
+			"Hornet"
+		add variant 2
+			"Cutlass"
+			"Hare (Pirate)" 2
+
+
+mission "Rumskib: Blended Ships uninstalled"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		not "installed plugin: Blended Ships"
+		has "event: rumskib: blended ships installed"
+	on offer
+		event "rumskib: blended ships uninstalled"
+		clear "event: rumskib: blended ships installed"
+		fail
+
+event "rumskib: blended ships uninstalled"
+	fleet "Small Southern Merchants"
+		remove variant
+			"Catamaran"
+			"Tanager"
+		remove variant
+			"Grackle"
+			"Tanager"
+		remove variant
+			"Hare"
+			"Tanager" 2
+	fleet "Small Core Merchants"
+		remove variant 2
+			"Hare"
+			"Tanager"
+		remove variant
+			"Hare" 2
+			"Tanager"
+	fleet "Large Northern Pirates"
+		remove variant
+			"Cutlass"
+			"Sunthief"
+		remove variant
+			"Cutlass"
+			"Eagle"
+		remove variant
+			"Cutlass" 2
+			"Hare (Pirate)" 2
+	fleet "Small Northern Pirates"
+		remove variant
+			"Cutlass"
+			"Hornet"
+		remove variant 2
+			"Cutlass"
+			"Hare (Pirate)" 2
+
+
+# This is the bare minimum to cause no errors when Blended Ships is not installed.
+ship "Hare"
+	attributes
+		"outfit space" 238
+		"weapon capacity" 80
+		"engine capacity" 120
+		"cargo space" 60
+		"drag" 4.8
+	gun -20 -29
+	gun 20 -29
+	turret 0 -26.5
+	turret -38 4
+	turret 38 4
+
+ship "Hare" "Hare (Pirate)"
+	outfits
+		"Beam Laser" 2
+		"Laser Turret" 2
+		"Anti-Missile Turret"
+
+		"nGVF-CC Fuel Cell"
+		"KP-6 Photovoltaic Array"
+		"Supercapacitor"
+
+		"D14-RN Shield Generator"
+		"Outfits Expansion"
+
+		"X3700 Ion Thruster"
+		"X3200 Ion Steering"
+
+		"Hyperdrive"
+	gun "Beam Laser"
+	gun "Beam Laser"
+	turret "Anti-Missile Turret"
+	turret "Laser Turret"
+	turret "Laser Turret"
+
+mission "Rumskib: DAIS installed"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: DAIS"
+		not "event: rumskib: DAIS installed"
+	on offer
+		event "rumskib: DAIS installed"
+		clear "event: rumskib: DAIS uninstalled"
+		fail
+
+event "rumskib: DAIS installed"
+	fleet "Small Core Merchants"
+		add variant
+			"Hydrargyrum"
+			"Tanager"
+	fleet "Large Northern Pirates"
+		add variant
+			"Cutlass"
+			"Lindwurm"
+		add variant
+			"Cutlass"
+			"Lindwurm (Laser)"
+		add variant
+			"Cutlass"
+			"Lindwurm (Missile)"
+	fleet "Large CCOR"
+		add variant
+			"Cutlass"
+			"Moonbeam"
+
+
+mission "Rumskib: DAIS uninstalled"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		not "installed plugin: DAIS"
+		has "event: rumskib: DAIS installed"
+	on offer
+		event "rumskib: DAIS uninstalled"
+		clear "event: rumskib: DAIS installed"
+		fail
+
+event "rumskib: DAIS uninstalled"
+	fleet "Small Core Merchants"
+		remove variant
+			"Hydrargyrum"
+			"Tanager"
+	fleet "Large Northern Pirates"
+		remove variant
+			"Cutlass"
+			"Lindwurm"
+		remove variant
+			"Cutlass"
+			"Lindwurm (Laser)"
+		remove variant
+			"Cutlass"
+			"Lindwurm (Missile)"
+	fleet "Large CCOR"
+		remove variant
+			"Cutlass"
+			"Moonbeam"

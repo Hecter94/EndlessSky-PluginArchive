@@ -741,13 +741,19 @@ phrase "blackwing scan request"
 		`smuggler `
 		`information broker `
 	word
+		`with a cautious expression `
+		`with a curious expression `
 		`with a cybernetic arm `
 		`with a prosthetic leg `
-		`with a data pad `
+		`with more brains than brawn `
 		`wearing an eye patch `
-		`more brains than brawn `
 		`wearing a scruffy bandanna `
 		`wearing a mask `
+		`wearing an old pilot suit `
+		`wearing a tattered cloak `
+		`wearing thick goggles `
+		`carrying an old knapsack `
+		`carrying a data pad `
 	word
 		`approaches you. "Are you familiar with the Blackwings? One is about to launch and I'll pay you 50,000 credits if you can get me a scan of their outfits."`
 
@@ -766,16 +772,25 @@ mission "Blackwing Scan Request"
 				random < 15
 			and
 				"credits" >= 500000
+				"credits" < 1000000
+				random < 10
+			and
+				"credits" >= 1000000
+				"credits" < 10000000
 				random < 5
+			and
+				"credits" >= 10000000
+				random < 1
 	on offer
 		dialog phrase "blackwing scan request"
 	npc "scan outfits"
 		government "Independent"
-		personality target timid uninterested surveillance mute
+		personality target timid lingering uninterested surveillance secretive mute
 		ship "Modified Blackbird" "Black Wings"
+		dialog `You did your best to scan the <npc>. Return to <origin> with the scanner data for your reward.`
 	on complete
 		payment 25000
-		dialog `They're not happy with the scanner data and only pay half of the reward...`
+		dialog `They're not happy with the scanner data of the <npc> and only pay half of the reward...`
 
 
 

@@ -1,0 +1,1136 @@
+# ”Clean” version that does not include MGFB compatibility for the GitHub workflow
+# Not in data folder so will not normally be executed
+
+disable mission "FW Defend New Tibet"
+disable mission "FW Liberate Delta Sagittarii"
+disable mission "FWC Scouting 1"
+disable mission "FWC Attack Kaus Borealis"
+disable mission "FWC Nuke Supply 1"
+disable mission "FWC Checkmate 1C"
+disable mission "FWC End"
+disable mission "FW Epilogue: Danforth"
+
+# Credit to Amazinite for most of the improvements, including the nuclear launch bay. Credit to Azure3141 for the augmented nukes themselves.
+
+# All Content Plugin
+outfitter "All Outfits"
+    "Nuclear Launch Bay"
+    "Nuclear Missile (Augmented)"
+
+# Omnis
+outfitter "human plugin"
+    "Nuclear Launch Bay"
+    "Nuclear Missile (Augmented)"
+
+government "Terrorist"
+    swizzle 1
+    "player reputation" -1000
+    "attitude toward"
+        "Syndicate" -.01
+        "Syndicate (Automata)" -.01
+        "Republic" -.01
+        "Navy (Oathkeeper)" -.01
+        "Free Worlds" -.01
+    "bribe" 0
+    "hostile hail" "hostile pirate"
+    "hostile disabled hail" "hostile disabled pirate"
+
+event "fwc battle of alcyone"
+    system "Alcyone"
+        fleet "Small Syndicate" 5000
+
+event "fwc navy occupies alcyone"
+    system "Alcyone"
+        government "Republic"
+        fleet "Small Republic" 500
+        fleet "Large Republic" 800
+        fleet "Large Syndicate" 800
+        fleet "Korath Large Raid" 50000
+    government "Republic"
+        "attitude toward"
+            "Korath" -.01
+
+event "fwc navy done with alcyone"
+    system "Alcyone"
+        government "Pirate"
+        fleet "Small Core Pirates" 400
+        fleet "Large Core Pirates" 600
+        fleet "Large Syndicate" 1200
+        fleet "Small Core Pirates" 400
+        fleet "Korath Large Raid" 50000
+    government "Republic"
+        "attitude toward"
+            "Korath" 0
+
+event "fwc solace has augmented nukes"
+    outfitter "Nuke"
+        "Nuclear Missile (Augmented)"
+
+outfit "Nuclear Missile"
+    cost 100000
+    licenses
+        Militia
+
+outfit "Nuclear Missile (Augmented)"
+    "display name" "Nuclear Missile (Mark II)"
+    category "Ammunition"
+    cost 80000
+    thumbnail "outfit/nuke"
+    licenses
+        Militia
+    "mass" 8
+    "outfit space" -8
+    "weapon capacity" -8
+    description "This is a more powerful nuclear missile, acting as ammunition for the Nuclear Launch Bay. The mechanisms that allow nuclear missiles to be fired without a launcher have been removed."
+
+outfit "Nuclear Launch Bay"
+    category "Secondary Weapons"
+    cost 1000000
+    thumbnail "nuke-launcher"
+    licenses
+        Militia
+    "mass" 5
+    "outfit space" -5
+    "weapon capacity" -5
+    "gun ports" -1
+    weapon
+        sprite "projectile/missile"
+            "no repeat"
+            "frame rate" .25
+        "hardpoint sprite" "hardpoint/nuke"
+        sound "nuke"
+        ammo "Nuclear Missile (Augmented)"
+        stream
+        icon "icon/nuke"
+        "submunition" "Active Nuclear Missile"
+        "split range" 300
+        "die effect" "missile death"
+        "hit effect" "medium explosion"
+        "inaccuracy" 1
+        "velocity" 6
+        "lifetime" 800
+        "reload" 400
+        "firing energy" 10
+        "firing heat" 400
+        "acceleration" .8
+        "drag" .1
+        "turn" 4
+        "homing" 4
+        "radar tracking" .5
+        "optical tracking" 1
+        "shield damage" -23700
+        "hull damage" -15800
+        "hit force" -5700
+    description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
+
+outfit "Active Nuclear Missile"
+    weapon
+        sprite "projectile/missile"
+            "no repeat"
+            "frame rate" .25
+        "hit effect" "augmented nuke explosion"
+        "hit effect" "augmented nuke residue fast" 20
+        "hit effect" "augmented nuke residue slow" 15
+        "die effect" "missile death"
+        "lifetime" 400
+        "acceleration" .8
+        "drag" .1
+        "turn" 4
+        "homing" 4
+        "radar tracking" .5
+        "optical tracking" 1
+        "trigger radius" 270
+        "blast radius" 300
+        "shield damage" 24000
+        "hull damage" 16000
+        "hit force" 6000
+        "missile strength" 200
+
+
+effect "augmented nuke explosion"
+    sprite "effect/explosion/nuke"
+        "no repeat"
+        "frame rate" 30
+        "scale" 2
+    sound "explosion nuke"
+    "lifetime" 15
+    "random angle" 360
+    "random spin" 5
+    "random velocity" 1
+    "velocity scale" .4
+
+effect "augmented nuke residue fast"
+    sprite "effect/explosion/huge"
+        "no repeat"
+        "frame rate" 15
+    "lifetime" 48
+    "random angle" 360
+    "random spin" 5
+    "random velocity" 12
+    "velocity scale" 0.1
+
+effect "augmented nuke residue slow"
+    sprite "effect/explosion/huge"
+        "no repeat"
+        "frame rate" 10
+    "lifetime" 90
+    "random angle" 360
+    "random spin" 5
+    "random velocity" 7
+    "velocity scale" 0.1
+
+mission "FW Question the Syndicate"
+    name "The Defector"
+    description "Travel to New Tibet to question the Syndicate about the defector supposedly carrying vital evidence and information that they are behind the bombings."
+    passengers 2
+    landing
+    to offer
+        has "FW Rand 1B: done"
+        not "FW Defend New Tibet: offered"
+    source "Wayfarer"
+    destination "New Tibet"
+    npc
+        government Syndicate
+        personality heroic staying
+        system Alioth
+        fleet
+            names "syndicate capital"
+            variant
+                "Splinter (Mark II)" 2
+                "Manta (Mark II)" 3
+                "Quicksilver (Mark II)" 5
+    on offer
+        log "As a member of the Council, must make the deciding vote on a difficult decision. A defector from the Syndicate is claiming to have proof that the Syndicate was behind the bombings of Martini and Gemini. If that is true, the Republic may agree to make peace with the Free Worlds. But, refusing to return the defector to the Syndicate would certainly earn their enmity."
+        conversation
+            `The fleet in orbit around Wayfarer is pitifully small, surely not enough to take on more than a couple of Navy capital ships. JJ orders one of their communication officers to try to establish a secure link to Bourne or to any Free Worlds post on the other side of the Navy blockade. After about ten minutes, the officer returns and says, "Sir, we've received communications from New Tibet sent earlier today. You need to talk to them."`
+            `    "Our fleet is there?" asks JJ.`
+            `    "No sir, the Syndicate. The Syndicate has a war fleet in Alioth."`
+            `    "What?" says JJ. He rushes into the communication room, and you and Freya follow. "Play the communication," JJ says. On the video screen is a Buddhist monk in a maroon robe; behind him, you see other monks rushing about with none of the serenity you would usually expect of them.`
+            `    The monk explains, "I pray that this communication reaches the Council. Yesterday a Syndicate ship landed near our monastery, and the pilot sought refuge with us. He claims to have evidence that the Syndicate, or some faction within the Syndicate, was behind the attacks on Geminus and Martini. Evidence that a certain faction within the Syndicate values economic growth above all else," says the monk, "and incited this war for that reason."`
+            `    "That's insane," says Freya.`
+            `    "But not completely implausible," says JJ.`
+            choice
+                `    (Continue watching the communication.)`
+            `    The video of the monk continues, "He was unable to show us this evidence, but he made claims of having plans for a nuclear device. After arriving he hid his ship in a cave, just before a Syndicate fleet appeared in orbit. They do not know where the defector landed, so they have begun searching settlement to settlement under the assumption that one is harboring him. They are currently here, wrecking the monastery in their hunt."`
+            `    After a moment, JJ says, "If these allegations are true, if we can prove that the Free Worlds was innocent of any involvement in those attacks, the Republic might make peace with us, or at least agree to a ceasefire. I vote that we try to shelter this defector and hear his story."`
+            `    "And if it's a lie," says Freya, "and we refuse the Syndicate's request, we lose our only ally. Many more civilians will be killed if we continue to fight without their backing, and we don't even know what this supposed evidence actually is. I care about justice, but trading a definite ally for a slim possibility of peace: that is an unwise investment. I vote that we hand this man over to the Syndicate."`
+            choice
+                `   (Continue watching the communication.)`
+            `    You look back at the video screen to see that the monk is gone, replaced by a man in a Syndicated Security uniform. "Greetings, Councilmembers. I'm sorry for the confusion, but please understand. We're hunting a terrorist. This man claiming that we are the ones that caused the bombings is, in fact, the leader of the extremist group that caused them. He developed the nukes with the help of a faction of pirates looking to profit from the instability, and now, when we're finally close to capturing him, he's attempting to frame us for his own crimes against humanity. Allow us to find him, and we'll-"`
+            `    The feed cuts off. "The message ended there," the communications officer says. The room falls silent.`
+            `    JJ breaks the silence. "I still say we rescue this defector. The Syndicate could be lying to us. They don't exactly have a reputation for upstanding morality, after all."`
+            `    "Or this 'defector' could easily be the one lying," Freya says. "I say we let them have him while we focus on defending against the Navy. If the Syndicate gets their hands on the true terrorist, their support will surely clear our name. Parliament won't be able to ignore the Syndicate vindicating us."`
+            `    As the third Council member present, you have the deciding vote, and the entire course of this war may rest on your decision.`
+            choice
+                `    "I say we rescue the defector, even if it means war with the Syndicate."`
+                    goto rescue
+                `    "I say we let the Syndicate have the terrorist, and focus on winning the battle against the Republic."`
+                    goto surrender
+            label rescue
+            `    "Are you sure?" asks Freya. "The Syndicate has done a lot for us in the past."`
+            choice
+                `    "Yes, I'm sure. We rescue the defector."`
+                    goto "definitely rescue"
+                `    "Fine, we'll hand him over. But I don't think it's the right thing to do."`
+                    goto "definitely surrender"
+            label surrender
+            `    "If Katya were here," says JJ, "she would tell us to choose justice over political expedience."`
+            choice
+                `    "Well, she's not here, and I say we can't afford to lose the Syndicate as an ally."`
+                    goto "definitely surrender"
+                `    "I suppose you're right. Let's mount a rescue operation."`
+                    goto "definitely rescue"
+
+            label "definitely surrender"
+            action
+                set "fw did not rescue defector"
+            `    "Very well," says JJ. "In that case, we'll need to meet with the fleet captains and figure out how to take on the Navy. Let's meet in the spaceport bar in an hour."`
+                decline
+
+            label "definitely rescue"
+            `    JJ seems very relieved at your choice. "I think that's the right choice, Captain," he says. "We can take the fleet we have here, sweep up north to avoid the thickest part of the Navy's occupying fleet, and cut over to New Tibet to question the Syndicate in person."`
+                accept
+
+mission "FW Defend New Tibet (patched)"
+    name "Defend New Tibet"
+    description "Defend New Tibet from the attacking Syndicate fleet."
+    landing
+    to offer
+        has "FW Question the Syndicate: done"
+        not "FW Defend New Tibet: offered"
+    source "New Tibet"
+    npc evade
+        government Syndicate
+        personality heroic staying
+        system Alioth
+        fleet
+            names "syndicate capital"
+            variant
+                "Splinter (Mark II)" 2
+                "Manta (Mark II)" 3
+                "Quicksilver (Mark II)" 5
+    on offer
+        set "FW Defend New Tibet: offered"
+        conversation
+            `It doesn't take long to find the monastery that contacted you earlier. The monk that you spoke to on Wayfarer approaches you and whispers, "They know where the defector is and are retrieving him now. We had to tell them before they destroyed the entire monastery looking for him." The monk then runs off to the monastery.`
+            `    The Syndicate ships that were in orbit land alongside you, and a group of Syndicated Security approach, one of whom you recognize as the man you spoke to previously. "Greetings again, Councilmembers. I'm Officer Khalid," he says to you. "I take it you're here to help us search for the terrorist, but I'm afraid we already have him. My men radioed me moments ago that they found him hiding in a cave in the mountains, and they're on their way right now."`
+            choice
+                `    "Actually, we're here to take the defector into our hands."`
+                `    "We're here to question him before you go."`
+
+            `    Khalid raises an eyebrow. "Now why might that be?"`
+            `    "New Tibet is Free Worlds territory. Therefore we have jurisdiction over any criminals here," JJ responds quickly.`
+            `    "He'll have little more than lies to tell you, Councilmember," Khalid says. "We believe that the rest of the terrorist network he is involved in is located in the Core, so we have every right to take him into our hands. Using him we'll be able to uncover the rest of the terrorist network responsible for all this and prove your innocence in due time. Unfortunately, you may need to fight this war against the Navy for a little while longer until we have enough evidence." JJ shuffles at this response.`
+
+            label approach
+            `    "Look," Freya says. "That must be them coming down the mountain slope toward us." Sure enough, you spot a group of people wearing Syndicated Security uniforms, as well as one man in ordinary attire who is restrainted.`
+            `    The supposed defector spots you when he gets close enough and begins yelling. "Please, don't believe them! I have the evidence! Underground test data, manufactured bomb casings, fissile material!"`
+            `    "Gag him," Khalid interjects, prompting one of his men to stuff a cloth into the man's mouth and tie it into place.`
+            choice
+                `    "We'll be taking him now."`
+                    goto take
+                `    "Okay, we'll let you have him."`
+
+            action
+                set "fw did not rescue defector"
+                clear "FW Liberate Delta Sagittarii (patched): offered"
+                clear "FW Liberate Delta Sagittarii: offered"
+            `    "Thank you, Councilmember," Khalid says with a slight bow and a smirk on his face. "We'll keep you posted on our progress, and attempt to persuade the Republic to cease fire while we uncover more."`
+            `    The Syndicate ships launch with the terrorist. "I thought we were here to take him!" JJ yells.`
+            `    "Well I changed my mind," you say.`
+            `    "Calm down, JJ," Freya says. "If the rest of the terrorists responsible for this are in the Core then there's nothing we could have done about it, even with that terrorist in our hands."`
+            `    "Very well," says JJ. "In that case, we'll need to meet with the fleet captains and figure out how to take on the Navy. Let's meet in the spaceport bar in an hour."`
+                decline
+
+            label take
+            `    Khalid's expression turns to one of anger. "I already told you, he's ours."`
+            `    "I'm sorry, Khalid, but I also already told you that you're in our territory," JJ snaps back. "And frankly, we have more ships than you right now. Please, hand him over."`
+            `    Khalid stares daggers at JJ, then nods to his men. "Hand him over." They push the defector over to you, who stumbles to the ground due to his restraints. "You'll regret this, Councilmember," Khalid says, looking directly at you.`
+            `    The Syndicate ships launch while you help the defector out of his restraints. "Thank you, thank you," the defector says. "The evidence is in my ship. They were unable to find it when they took me."`
+            `    Before you can begin making the journey up the mountains, you're suddenly shook as the sky lights up with incoming proton beams.`
+            `    "The Syndicate is attacking us!" one of the Free Worlds captains yells. You run to your ship and fire it up to defend.`
+                launch
+    on complete
+        clear "FW Defend New Tibet: active"
+        set "FW Defend New Tibet: done"
+        "reputation: Republic" = 1
+        event "fw armistice"
+        event "fw tarazed republic"
+        event "end battle of alioth"
+        conversation
+            `You land after taking out the Syndicate and regroup with Freya, JJ, and the defector. "Those bastards!" Freya yells. "What in the world were they thinking?"`
+            `    "They were attempting to silence me," the defector says. "And take out the rest of you with me so that the war would go on. They would have never attempted to convince the Republic to stop until one side was close to victory so that they could continue to profit."`
+            `    JJ receives a message from one of the militia crews. "Sir, you have incoming! A scout ship, with Republic markings. Apparently unarmed. Shall we intercept them?"`
+            `    "Oathkeepers?" asks JJ. "Or ordinary Navy? Who are they?"`
+            `    The voice on the other end pauses. "Neither. Navy Intelligence."`
+            `    JJ thinks about that for a second, then says, "Let them land. But follow them down, and if you see so much as a hint of them powering up weapons, blow them out of the sky. Understand?" The officer acknowledges his order and signs off.`
+            `    The scout ship comes in for a landing and skids to a halt in the dirt a few dozen meters away. A woman steps off it. She has dark skin, and is dressed entirely in black. Even the whites of her eyes are black: when she gets closer, you can see that it is actually a scleric tattoo, an intricate Celtic knotwork pattern inked into the whites of her eyes. She sees you staring at her, and winks at you with a friendly grin.`
+            choice
+                `    "I'm Captain <last> of the Free Worlds. What is your business here?"`
+                `    "Who are you, and what gives you the right to land on our planet?"`
+                    goto hostile
+            `    "My name is Raven," she says. "I'm here to question this defector. If he is telling the truth, our war with you will end today." She pauses, then adds, grimly, "And, another war will begin."`
+                goto questioning
+            label hostile
+            `    She frowns. "My name is Raven," she says. "I am here to question this defector. If you are interested in knowing the truth, you will allow me to do so."`
+            label questioning
+            `    "Now," says Raven, "I will question him alone, on my ship."`
+            choice
+                `    "No, we insist on being present for your interrogation."`
+                    goto present
+                `    "Very well, we'll wait outside."`
+            `    "No!" says JJ. "We're staying here."`
+            label present
+            `    She hesitates for a long moment. This is probably going against whatever orders she is following. But finally she says, "Very well." She approaches the defector, and reaches out her hands to him. Hesitantly, he takes her hands. It's an oddly intimate scene, the two of them quietly holding hands and locking eyes - not like any interrogation you have seen before. "Now," she says, "tell me your story."`
+            `    "My name is Sawyer," says the man. "I'm a physicist, a Syndicate employee. We had a secret project on Mutiny, a planet in a pirate system. We were developing nuclear weapons." He hesitates, and looks away for a second, then says, "They told me it was for fighting the pirates. I didn't realize otherwise until--"`
+            `    "That is a lie," says Raven, calmly.`
+            `    He seems flustered. "Okay, they didn't tell me what the weapons were for, and I didn't ask."`
+            choice
+                `    "Why would the Syndicate attack the Republic?"`
+                `    "Why did you wait so long to report this?"`
+                    goto wait
+            `    They both seem surprised at you asking a question. Sawyer says, "War is good for business, especially if you're in the business of making weapons. The Syndicate's profits have more than doubled since this conflict began."`
+            `    "What led you to report this?" asks Raven.`
+            label wait
+            `    He says, "It was when I heard that there had been another major battle. Up until then I had been telling myself that the worst of the damage was done. But after that battle, I knew that millions more could die because of our crime, and that I had the power to stop it."`
+            `    Raven continues to ask questions: who was involved, how the facility was hidden, where the raw materials came from. At one point, JJ pulls you aside and says, "She must be a Questioner. How they operate is a tightly kept secret. I'd always assumed their methods were... a bit more medieval."`
+            `    Finally, Raven is satisfied, and radios her ship. "He's telling the truth," she tells them. "Send word to the admirals at once. And, release the captive."`
+            `    The door of her ship slides open, and another woman steps out - shakily, hesitantly, shielding her eyes against the sunlight. It takes you a few seconds to realize that it's Katya.`
+            `    As you all rush over to greet Katya, Raven taps your shoulder and says quietly, "Meet me in the main spaceport in a few hours and we'll figure out what's going to happen next." She returns to her ship.`
+    on accept
+        set "FW Defend New Tibet: active"
+        "reputation: Syndicate" = -1000
+        event "fw at war with Syndicate"
+        event "battle of alioth"
+    on fail
+        clear "FW Defend New Tibet: active"
+        set "FW Defend New Tibet: failed"
+    on abort
+        clear "FW Defend New Tibet: active"
+        set "FW Defend New Tibet: aborted"
+        set "FW Defend New Tibet: failed"
+    on visit
+        dialog `You've landed on <planet>, but there are still Syndicate ships circling overhead. You should take off and help finish them off.`
+
+mission "FW Liberate Delta Sagittarii (patched)"
+    name "Liberate Delta Sagittarii"
+    description "Lead a Free Worlds fleet to drive the Navy out of Delta Sagittarii. Another fleet ought to be arriving from the Rim at about the same time."
+    passengers 2
+    clearance
+    to offer
+        has "FW Rand 1B: done"
+        or
+            not "FW Defend New Tibet: offered"
+            has "fw did not rescue defector"
+        not "FW Liberate Delta Sagittarii: offered"
+    source
+            planet "New Tibet" "Wayfarer"
+    destination "New Portland"
+    npc
+        government "Free Worlds"
+        personality escort heroic
+        fleet
+            names "free worlds capital"
+            variant
+                "Falcon (Plasma)"
+                "Osprey"
+        fleet
+            names "free worlds capital"
+            variant
+                "Falcon (Heavy)"
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "Skein" 2
+                "Finch" 12
+        fleet
+            names "free worlds capital"
+            variant
+                "Dreadnought"
+    npc evade
+        government "Republic"
+        personality heroic staying
+        system "Delta Sagittarii"
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Carrier (Mark II)"
+                "Lance" 4
+                "Combat Drone" 6
+                "Gunboat (Mark II)" 4
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Cruiser (Mark II)"
+                "Combat Drone" 4
+                "Rainmaker (Mark II)" 4
+
+    npc
+        government "Republic"
+        personality derelict staying
+        system "Delta Sagittarii"
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Carrier (Mark II)"
+                "Frigate" 2
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Cruiser (Mark II)"
+                "Frigate" 4
+    npc
+        government "Free Worlds"
+        personality heroic staying
+        system "Rastaban"
+        fleet "Large Free Worlds" 4
+    npc
+        government "Republic"
+        personality derelict staying
+        system "Rastaban"
+        fleet "Large Republic" 2
+    npc
+        government "Republic"
+        personality heroic staying
+        system "Rastaban"
+        fleet "Large Republic" 2
+    on offer
+        set "FW Liberate Delta Sagittarii: offered"
+        event "fwc southern battle"
+        conversation
+            branch surrender
+                has "fw did not rescue defector"
+            `A few of the Free Worlds crew members are still milling around the spaceport in confusion. You help to gather them together and explain that you are headed out on a very important mission to New Tibet.`
+                decline
+
+            label surrender
+            action
+                event "syndicate tech available"
+            `When you and Freya enter the spaceport bar, JJ is talking with someone on his communicator. "The code word is 'havoc,'" he says. "Yes, I'm certain. It's the only option we have left. Good luck."`
+            `    "What was that about?" asks Freya.`
+            `    JJ says, "I was calling in some reinforcements," he says. "A group of ex-militia folks and bounty hunters who want to further the cause of the Free Worlds, but want to do it freelance instead of taking orders from us or the Senate. They call themselves the 'Wolf Pack.' Have you heard of them?"`
+            branch know
+                has "FW Wolf Pack 2: offered"
+            choice
+                `    "No, I haven't."`
+            `    "Too bad," says JJ, "they've managed to get their hands on some technology I'd love to have access to. But anyway, they've agreed to make an initial strike and fade attack on the Navy fleet to soften them up, before our own fleet gets there."`
+                goto plan
+            label know
+            choice
+                `    "Yes, I helped them get access to some better ramscoop technology from the Deep."`
+                    goto yes
+                `    "No, I haven't had any dealings with them."`
+            `    "That's odd," says JJ, "I thought they said you helped them to get their hands on the catalytic ramscoop. But anyway, they've agreed to make an initial strike and fade attack on the Navy fleet to soften them up, before our own fleet gets there."`
+                goto plan
+            label yes
+            `    "Ah yes," says JJ, "an excellent piece of corporate espionage. A little shady and underhanded, of course, which is why we let the Wolf Pack handle things like that rather than doing it through official channels. But anyway, they've agreed to make an initial strike and fade attack on the Navy fleet to soften them up, before our own fleet gets there."`
+
+            label plan
+            `    "That'll need to be one hell of a strike for it to make any difference," says Freya.`
+            `    "Don't worry," says JJ, "it will be. They've been itching to get into the fray for months now. Captain <last>, we'd like you to fly along with the fleet and help to mop up whatever the Wolf Pack leaves behind in the Delta Sagittarii system. Then we'll land on New Portland and figure out what our next steps are. Freya and I will ride on your ship."`
+            `    "Oh, and one more thing. As gratitude for letting the Syndicate deal with the defector internally, they have agreed to allow us to buy some of their new technology. It may come in handy."`
+                accept
+    on complete
+        clear "FW Liberate Delta Sagittarii: active"
+        set "FW Liberate Delta Sagittarii: done"
+        event "fwc southern liberation"
+    on accept
+        set "FW Liberate Delta Sagittarii: active"
+    on fail
+        clear "FW Liberate Delta Sagittarii: active"
+        set "FW Liberate Delta Sagittarii: failed"
+    on abort
+        clear "FW Liberate Delta Sagittarii: active"
+        set "FW Liberate Delta Sagittarii: aborted"
+        set "FW Liberate Delta Sagittarii: failed"
+    on visit
+        dialog `You've landed on <planet>, but there are still Navy ships circling overhead. You should take off and help finish them off.`
+
+mission "FWC Scouting 1 (patched)"
+    name "Scout Kaus Borealis"
+    description "Travel through the <waypoints> system to determine how strong the Navy presence is there, while JJ works to gather a fleet to attack it."
+    landing
+    autosave
+    waypoint "Kaus Borealis"
+    to offer
+        has "FW Liberate Delta Sagittarii: done"
+        not "FWC Scouting 1: offered"
+    source "New Portland"
+    npc
+        personality heroic staying
+        system "Kaus Borealis"
+        government "Republic"
+        fleet "Large Republic" 5
+    on offer
+        set "FWC Scouting 1: offered"
+        log `Drove the Navy out of Delta Sagittarii with the help of the "Wolf Pack," a militia group in favor of more extreme measures who launched a preemptive strike before the main Free Worlds force arrived. The Syndicate has taken the terrorist into their own hands and will be using him to prove the Free Worlds' innocence, while the Free Worlds fight the Republic to a standstill in order to buy time.`
+        conversation
+            `It was a close battle, and could have gone very differently if it were not for the Wolf Pack strike that happened before you arrived and that disabled or destroyed the majority of the Navy fleet. You can't help but wonder how the Wolf Pack managed to assemble a large enough fleet to do that sort of damage.`
+            `    "Well," says JJ, "the die is cast. It's too late now to wonder what that business with the Syndicate was about; now we're in a fight to the finish with the Republic. And that means we must strike soon, before they have time to bring in more reinforcements. Captain <last>, I'd like you to perform a scouting mission while I'm working on gathering a new fleet. Our next target has to be the Navy base on New Iceland. If we can drive them out of that system, our position will be much better. So, I'd like you to fly through Kaus Borealis and return here to report on their fleet strength. Understood?"`
+            choice
+                `    "No problem."`
+                    goto freya
+                `    "Sure, but first, can you tell me how the Wolf Pack was able to do so much damage to the Navy?"`
+            `    "As I said," says JJ, "they've gathered a surprising number of bounty hunters and others who operate on the fringes of society, and who are sympathetic to our cause."`
+            label freya
+            `    "One more thing," says Freya, "while you're traveling up North, I wonder if you could help to escort a convoy from the Zeta Aquilae system. There's no huge rush, but they're carrying supplies we need for a new reactor core for the Dreadnoughts, so the sooner you can meet up with them, the sooner the new reactors will be available."`
+                accept
+    on complete
+        clear "FWC Scouting 1: active"
+        set "FWC Scouting 1: done"
+    on accept
+        set "FWC Scouting 1: active"
+    on fail
+        clear "FWC Scouting 1: active"
+        set "FWC Scouting 1: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on abort
+        clear "FWC Scouting 1: active"
+        set "FWC Scouting 1: aborted"
+        set "FWC Scouting 1: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "FWC Attack Kaus Borealis (patched)"
+    name "Attack Kaus Borealis"
+    description "Destroy the Navy fleet defending Kaus Borealis. The Wolf Pack will attack them first to soften them up."
+    landing
+    autosave
+    clearance
+    to offer
+        has "FWC Scouting 1: done"
+        not "FWC Attack Kaus Borealis: offered"
+    source "New Portland"
+    destination "New Iceland"
+    npc
+        government "Free Worlds"
+        personality escort heroic
+        fleet
+            names "free worlds capital"
+            fighters
+                names "free worlds fighters"
+            variant
+                "Dreadnought"
+                "Skein"
+                "Finch" 6
+        fleet
+            names "free worlds capital"
+            variant
+                "Dreadnought"
+                "Falcon (Heavy)"
+        fleet
+            names "free worlds capital"
+            variant
+                "Dreadnought"
+                "Falcon (Plasma)"
+        fleet
+            names "free worlds capital"
+            variant
+                "Dreadnought"
+                "Osprey"
+
+    npc
+        government "Republic"
+        personality derelict staying
+        system "Kaus Borealis"
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Carrier (Mark II)"
+                "Frigate" 2
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Cruiser (Mark II)"
+                "Frigate" 2
+    npc evade
+        government "Republic"
+        personality heroic staying
+        system "Kaus Borealis"
+        fleet 2
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Carrier (Mark II)"
+                "Lance" 4
+                "Combat Drone" 6
+        fleet 3
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Cruiser (Mark II)"
+                "Combat Drone" 4
+
+    on offer
+        set "FWC Attack Kaus Borealis: offered"
+        event "fwc attack kaus borealis"
+        conversation
+            `When you return to New Portland, a sizable Free Worlds fleet is already parked on the landing pads surrounding the spaceport. JJ explains to you, "When the Navy struck and cut our territory in half, a lot of these ships were cut off from their chain of command and just went and sheltered wherever they could. So it took a bit of doing to gather them all together. And now what we need is another stirring victory, or they'll begin to scatter again."`
+            choice
+                `    "Are you saying we risk having members of our militia desert?"`
+                    goto desert
+                `    "Well, the fact that they all returned to fight is a good sign."`
+                    goto fight
+            label desert
+            `    "Yes," says JJ, "some of them already have. Think of it from the perspective of a militia member: you signed up to defend one planet against occasional pirates, not to spend years traveling from system to system battling the Navy. Some people have just had enough. This war needs to end, and end soon."`
+                goto battle
+            label fight
+            `    "Well," says JJ, "at least some of them returned to fight. But many of them didn't. Think of it from the perspective of a militia member: you signed up to defend one planet against occasional pirates, not to spend years traveling from system to system battling the Navy. Some people have just had enough. This war needs to end, and end soon."`
+                goto battle
+            label battle
+            choice
+                `    "Well, we can't exactly conquer the Republic. Shouldn't we try diplomacy?"`
+                    goto diplomacy
+                `    "It sounds to me like we need to make a convincing enough show of strength that Parliament will agree to a ceasefire."`
+                    goto strength
+                `   "Have you heard anything from the Syndicate about finding the terrorists?"`
+                    goto syndicate
+            label diplomacy
+            `    "Yes," says JJ, "it will have to be a diplomatic solution in the end. But we must negotiate that solution from a position of strength, not weakness. And that means driving the Navy out of our territory."`
+                goto plan
+            label strength
+            `    "Precisely," says JJ, "and the only way to do that is to drive the Navy out of our territory. And if that isn't enough... we have plans for that contingency as well."`
+                goto plan
+            label syndicate
+            `    "Nothing," says JJ. "They've been silent since we allowed them to take the terrorist from New Tibet. I'll attempt to get in touch with them, though."`
+            label plan
+            `    "So, now we attack Kaus Borealis?" you ask.`
+            `    "That's right," he says. "Once again, the Wolf Pack will go in first and soften them up, then you and your ships will clean up. I've already given the Wolf Pack orders to attack, so please head straight to Kaus Borealis so you can join the fray before they have time to recover."`
+                accept
+    on complete
+        clear "FWC Attack Kaus Borealis: active"
+        set "FWC Attack Kaus Borealis: done"
+        event "fwc capture kaus borealis"
+    on accept
+        set "FWC Attack Kaus Borealis: active"
+    on fail
+        clear "FWC Attack Kaus Borealis: active"
+        set "FWC Attack Kaus Borealis: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on abort
+        clear "FWC Attack Kaus Borealis: active"
+        set "FWC Attack Kaus Borealis: aborted"
+        set "FWC Attack Kaus Borealis: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on visit
+        dialog `You've landed on <planet>, but there are still Navy ships circling overhead. You should take off and help finish them off.`
+
+mission "FWC Nuke Supply 1 (patched)"
+    name "Uranium Convoy"
+    description "Travel to Oblivion to escort a freighter that is delivering uranium to a warlord on Greenrock."
+    landing
+    autosave
+    to offer
+        has "FWC Cebalrai 1B: done"
+        not "FWC Nuke Supply 1: offered"
+    source Tundra
+    destination Oblivion
+    on offer
+        set "FWC Nuke Supply 1: offered"
+        conversation
+            `As you are bringing your ship in for a landing, you hear an odd plinking sound from the hull, similar to the sound of flying through a swarm of micrometeorites. After a few seconds, you realize that it's the sound of your ship being hit by small arms fire from the town below. Your hull is far too strong to be damaged by bullets, but the message is clear: you are not welcome here.`
+            `    The spaceport is apparently deserted, and no one seems eager to come out and greet you. A few bullets continue to plink harmlessly off your hull, from snipers in the nearby buildings. "I think it would be best for me to just contact the governor via radio," says Alondo.`
+            choice
+                `    "Don't they know our fleet could easily destroy them if we wanted?"`
+                    goto destroy
+                `    "Do you think we have any chance at a peace settlement?"`
+                    goto peace
+            label destroy
+            `    "That would be an awful precedent," says Alondo, "perhaps worse than the fact we're using nukes. If civilian populations become a legitimate target, any of our worlds could be attacked at any time. And it's not like there's any way to defend a world from orbital bombardment. No one would ever be able to feel safe in their own homes again."`
+                goto next
+            label peace
+            `    "I hope so," says Alondo. "We'll let them keep shooting at us for a while, to vent their anger and let them prove their point. Then once they see the Navy isn't going to rescue them, we'll negotiate. That's really our only alternative. I do not want to be the person who authorizes the first attack on civilian targets since the dawn of the Republic."`
+                goto next
+            label next
+            `    You wait for about an hour. Meanwhile, more Free Worlds ships continue to enter the system, one of which is carrying Tomek. He radios you and says, "I think we've got things under control here, which means there's a new mission for you. You probably aren't going to like this, but we need you to escort a freighter from Oblivion. Part of our ongoing deal with the Devil: a shipment of uranium headed for Greenrock."`
+            choice
+                `    "Okay, I'll get it done."`
+                    goto end
+                `    "Has JJ been able to get in contact with the Syndicate yet?"`
+            `    "Yes, but they didn't send good news. They say the terrorist they took is dead: suicide by hanging. They were able to get some names out of him before that happened though, so there's still a chance they can prove our innocence."`
+            choice
+                `    "Let's hope they do that soon."`
+                    goto end
+                `    "We don't seem very innocent anymore."`
+            `    Tomek sighs. "We're doing what we have to to save the Free Worlds. We're fighting for what we believe in. Remember that."`
+            label end
+            `    A Free Worlds ship lands close enough to your own ship that Alondo can transfer over to it without being in sight of the snipers. "Good luck," he says as he departs. "I hope when you return we will have negotiated some sort of meeting with Parliament."`
+                accept
+    on complete
+        clear "FWC Nuke Supply 1: active"
+        set "FWC Nuke Supply 1: done"
+    on accept
+        set "FWC Nuke Supply 1: active"
+    on fail
+        clear "FWC Nuke Supply 1: active"
+        set "FWC Nuke Supply 1: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on abort
+        clear "FWC Nuke Supply 1: active"
+        set "FWC Nuke Supply 1: aborted"
+        set "FWC Nuke Supply 1: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "FWC Checkmate 1C (patched)"
+    name "Capture <planet>"
+    description "Bring a fleet to <destination>, driving off any Republic ships in the system."
+    passengers 1
+    landing
+    autosave
+    clearance
+    to offer
+        has "FWC Checkmate 1B: done"
+        not "FWC Checkmate 1C: offered"
+    source "New Austria"
+    destination "Silver"
+    on offer
+        set "FWC Checkmate 1C: offered"
+        event "fwc attack vega"
+        conversation
+            `As soon as you land, you and Katya contact Tomek and inform him that the system is yours. "Excellent," he says. "Press on with your fleet and take Vega before they have time to regroup. Another Wolf Pack fleet will meet you there for the final assault on the Sol system."`
+            choice
+                `    "Understood. We will depart immediately."`
+                    goto end
+                `    "Are we really sure we want to attack Earth?"`
+                `    "Shouldn't we just be able to stall our time until the Syndicate prove our innocence?"`
+                    goto syndicate
+            `    "Have they given us any other choice?" asks Tomek. "We tried diplomacy. And we cannot hope to defeat the entire Navy.`
+                goto orders
+            label syndicate
+            `    "I wish we could just stall here, but we don't have the means to defend ourselves if the Navy decides to mount a counteroffensive large enough to overpower our nukes.`
+            label orders
+            `    "So, unless we wish to surrender and all be put on trial as war criminals, we need to press on and gain the upper hand in the only way we can. The Senate and the Council are agreed on this." You have no choice but to follow his orders and to begin getting your fleet ready for the next attack.`
+            ``
+            label end
+            `[Take good care of this fleet, because it will have to last you for the rest of this campaign: if ships are disabled, board them to "repair" them once the battle is over. And, when jumping into battle, remember that you can hold down the jump key to get all your ships ready to jump simultaneously, so no single ship enters the system first and bears the brunt of the enemy fire.]`
+                accept
+    on complete
+        clear "FWC Checkmate 1C: active"
+        set "FWC Checkmate 1C: done"
+        log "The Free Worlds have captured the Vega system, only one hyperjump away from Earth. Nuclear-armed Wolf Pack ships will be arriving shortly to spearhead the assault, but the Navy fleet defending Earth will be massive. Casualties on both sides are likely to be extremely high."
+        conversation
+            `The Vega system is eerily deserted. You suspect that the Navy must have pulled back all available ships to defend Earth, rather than trying to fight you here. You try not to think about how massive the fleet there must be, and how slim your chances are of destroying it.`
+            `    Katya says, "Well, this is it, the final assault. Meet me in the spaceport when you're ready for the attack on Earth."`
+    on accept
+        set "FWC Checkmate 1C: active"
+    on fail
+        clear "FWC Checkmate 1C: active"
+        set "FWC Checkmate 1C: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on abort
+        clear "FWC Checkmate 1C: active"
+        set "FWC Checkmate 1C: aborted"
+        set "FWC Checkmate 1C: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on visit
+        dialog `You land on <planet>, but you realize that Katya is on one of your escorts that hasn't entered the system yet. Better depart and wait for it to arrive.`
+
+# I don't care what the "official lore" is, my lore is that, as per Crisis in Management and Hai Revealed, the Pug spooked the Syndicate, and they actually are taking out the extremists, however, they're not admitting this publicly.
+
+mission "FWC Terrorists 1"
+    name "Deal with the terrorists"
+    description "Now that the Pug appear to have been driven off, the Syndicate have tracked down the rest of the terrorists. Travel to <destination> to meet with the CEO of the Syndicate."
+    passengers 1
+    to offer
+        has "FWC Pug 6: done"
+        not "FWC End: offered"
+    source "Pugglemug"
+    destination "Foundry"
+    on offer
+        "reputation: Republic" += 20
+        conversation
+            `You find Admiral Danforth inspecting the Pug spaceport. "This is all very odd," he says. "I'm glad the aliens appear to have left, but I wish we knew where they came from and whether they're likely to return."`
+            `    Freya says, "What should we do now?"`
+            `    "While we were busy fighting the Pug, the Syndicate claimed in front of Parliament that they've tracked down the culprits of the bombings, proving your innocence," Danforth says. "Your Senate agreed to an end to the war and to the Free Worlds being a semi-autonomous district of the Republic, similar to the Syndicate systems."`
+            `    Freya receives a message from Alondo. "Freya, <first>. Now that the Syndicate has tracked down where the terrorists are, the CEO of the Syndicate has requested that you meet with him on <destination> to discuss how to approach the situation."`
+            `    "I'll have my ships ready to assist you when you make your move to assault the terrorists. It's only fitting that you lead the charge against them when you've been the ones blamed for the bombings all this time," Danforth says.`
+            choice
+                `    "What about Katya?"`
+                `    "Anything you need to tell us before we leave?"`
+            `    "Oh, yes. I've contacted New Austria and told them that Councilor Reynolds is free to leave," he says. "I'd say go meet with her, but there's still work to be done."`
+                accept
+    on fail
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+
+mission "FWC Terrorists 1A"
+    name "Autonomous Fleet"
+    description "Alastair Korban has offered to you command of an autonomous fleet that will allow you to waste the terrorists' missiles. Travel to <planet>, where they will grant you access to the fleet."
+    passengers 1
+    landing
+    to offer
+        has "FWC Terrorists 1: done"
+    source "Foundry"
+    destination "Hephaestus"
+    on offer
+        log "The Syndicate have discovered the locations of the terrorists responsible for the bombings of Geminus and Martini. They are armed with nuclear missiles, but the Syndicate CEO has agreed to provide an autonomous fleet that will make the terrorists use their missiles without a loss of life."
+        conversation
+            `As soon as you land, a Syndicate employee meets you and escorts you and Freya to the office of Alastair Korban, the CEO. "Glad to see you could make it," Korban says with a jovial look. "Heroes of the galaxy now that you've defeated the alien invasion. I take it you're ready to be a hero once more and rid the galaxy of these terrorists for good?"`
+            choice
+                `    "Absolutely!"`
+                    goto absolutely
+                `    "What took you so long to find them in the first place?"`
+            `    "Unfortunately, these terrorists were far more organized than we had anticipated. Not surprising though, given that they were able to develop nukes right under our nose. And I hear you've had a... similar situation of your own down south." Freya shifts her weight, but doesn't say anything in response.`
+            choice
+                `    "We did what we had to."`
+                `    "We wouldn't have needed to use nukes of our own if you'd found the terrorists faster."`
+            `    Korban looks down, "Understandable," then looks back up at you with a smile, "but such is the cost of business, we say.`
+            label absolutely
+            `    "Now, we know that the terrorists still have nuclear weapons. We sent a ship to scout out their strength that barely made it out alive. We have a plan to take care of that, though.`
+            `    "Before the war, we began to work heavily toward developing automation for use on ships. You may have done some of our 'target practice' jobs. Those were tests of our automation technology. This allowed us to drastically reduce the crew needed to pilot ships of any size, and we'll be sending a fleet of such ships as cannon fodder to have these terrorists waste their nukes."`
+            `    Freya looks shocked, "You're sending people on a suicide mission to take the nukes out of play? Can't we use diplomacy to stop adding bodies to the pile that this war has created?"`
+            `    Korban says, "These are terrorists, dear. They aren't to be negotiated with. But fear not, because, as you would have known if you had done those 'target practice' jobs, these ships won't be manned. They'll be fully autonomous warships. Their combat skills are rough around the edges, and this will be an expensive loss - each of these ships costs us at least tens times the production of a normal ship - but much cheaper than the loss of innocent human lives."`
+            choice
+                `    "So where do we come into play?"`
+                    goto play
+                `    "What are you going to do with this automation technology after this is all said and done?"`
+            `    "This technology is far from being profitable, but we hope to someday have the skies full of autonomous freighters transporting commodities across the galaxy faster than any merchant ever could, defended by deadly autonomous warships able to outsmart any pirate threat. That's neither here nor there, though. There are more important matters at hand.`
+                goto end
+
+            label play
+            `    "We've already sent a single autonomous fleet to draw most of the terrorists' fire, but it wasn't enough. We have a second fleet at the ready, though, one for you to command. Being a skilled captain, I'm sure you'll be able to trick the terrorists into wasting whatever remains of their nukes before a proper fleet arrives to deal with them. We've contacted the Navy and told them where the terrorists are located, so they should be arriving shortly after you."`
+
+            label end
+            `    Korban tells you that the second autonomous fleet for you to lead is on Hephaestus. "The terrorists are holed up on Stormhold," says Korban, "an old pirate world. We've also made available to you some of our new technology, developed during the war. We're planning on incorporating it on most of the ships in our fleet, and they are installed on the autonomous ships I've given you. It may prove helpful to you during this final battle. Good luck, Captain."`
+                accept
+    on fail
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "FWC Terrorists 1B"
+    name "Final Battle"
+    description "A fleet of nuclear-armed terrorists is occupying the <system> system. Travel there and use the autonomous ships to draw their fire; the Oathkeeper fleet will be right behind you."
+    passengers 1
+    landing
+    clearance
+    to offer
+        has "FWC Terrorists 1A: done"
+    source "Hephaestus"
+    destination "Stormhold"
+    npc
+        government "Syndicate (Automata)"
+        personality heroic escort
+            confusion 120
+        fleet
+            names "syndicate test vessel"
+            variant
+                "Vanguard (Automata Mark II)" 2
+                "Splinter (Automata Mark II)" 3
+                "Quicksilver (Automata Mark II)" 2
+    npc evade
+        government "Terrorist"
+        personality heroic staying
+            confusion 60
+        system "Alcyone"
+        fleet
+            names "pirate"
+            variant
+                "Manta (Nuclear)" 2
+    npc evade
+        government "Terrorist"
+        personality heroic staying
+            confusion 60
+        system "Alcyone"
+        fleet
+            names "pirate"
+            variant
+                "Manta (Nuclear)" 2
+    npc evade
+        government "Terrorist"
+        personality derelict heroic staying
+            confusion 60
+        system "Alcyone"
+        fleet
+            names "pirate"
+            variant
+                "Manta (Nuclear)" 2
+    npc evade
+        government "Terrorist"
+        personality heroic staying
+            confusion 60
+        system "Alcyone"
+        fleet 2
+            names "pirate"
+            variant
+                "Protector" 2
+        fleet
+            names "pirate"
+            variant
+                "Splinter"
+                "Quicksilver" 3
+    npc evade
+        government "Terrorist"
+        personality derelict heroic staying
+            confusion 60
+        system "Alcyone"
+        fleet
+            names "pirate"
+            variant
+                "Protector" 2
+        fleet
+            names "pirate"
+            variant
+                "Splinter"
+                "Quicksilver" 3
+    npc
+        government "Syndicate (Automata)"
+        personality derelict heroic staying
+            confusion 120
+        system "Alcyone"
+        fleet
+            names "syndicate test vessel"
+            variant
+                "Vanguard (Automata Mark II)" 2
+                "Splinter (Automata Mark II)"
+                "Quicksilver (Automata Mark II)" 2
+
+    npc
+        government "Navy (Oathkeeper)"
+        personality heroic escort
+        system Deneb
+        fleet
+            names "republic capital"
+            fighters
+                names "republic fighter"
+            variant
+                "Carrier (Mark II)" 3
+                "Lance" 12
+                "Combat Drone" 18
+                "Cruiser (Mark II)" 3
+                "Combat Drone" 12
+
+    on offer
+        "reputation: Syndicate (Automata)" = "reputation: Syndicate"
+        event "fwc battle of alcyone"
+        conversation
+            `You land in a private hangar full of ships that you presume are part of the autonomous fleet. A Syndicated Shipyards engineer approaches you and gives you a set of instructions on how to handle them. "They should follow you where ever you go, but please report to us if they refuse to follow any orders. If any of them go rogue, you're better off destroying them than trying to fix them. Trust me. If they completely lock up without having been disabled, it's probably because they're downloading a software update that we kept saying 'later' to. Also, these things aren't cheap to make, so please don't get too many of them blown up. Okay?"`
+            `    Meanwhile, you contact Danforth and tell him that you're ready for the assault. You should head directly for the <system> system, so that you arrive there far enough in advance of the Oathkeeper fleet.`
+                accept
+    on fail
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on visit
+        dialog `You've landed on <planet>, but there are still terrorist ships circling overhead. You should take off and help finish them off.`
+
+
+mission "FWC Terrorists 1C"
+    name "Talk to Parliament"
+    description "Travel to Earth for another meeting with Parliament. Alondo, Katya, and Tomek will meet you there. Hopefully, it will go better than your last visit."
+    landing
+    autosave
+    to offer
+        has "FWC Terrorists 1B: done"
+    source "Stormhold"
+    destination "Earth"
+    on offer
+        set "FWC End: offered"
+        log "Succeeded in drawing the fire of the terrorists for long enough for a Navy fleet to safely arrive in-system and assist in destroying them."
+        event "fwc navy occupies alcyone"
+        event "fwc navy done with alcyone" 50
+        conversation
+            `Soon after you land, more Navy ships begin pouring into the system, including Admiral Danforth's own Cruiser. Navy soldiers and ships are scouring the whole surface of the planet; there is very little chance that any of the terrorists who remain here will be able to escape their detection. Admiral Danforth meets with you and Freya and thanks you for providing the decoy that kept his own ships from bearing the brunt of the terrorists' nuclear arsenal.`
+            `    "Do you need us to do anything more here?" asks Freya.`
+            `    "No," he says. "We'll handle the rest of this situation from here.`
+            `    "You should travel to Earth to meet with Parliament. Katya Reynolds, Alondo Gruyere, and Tomek Voigt are already there. I sent a report to Earth that places a very heavy emphasis on the role that the Free Worlds played in this victory, so Parliament ought to be quite willing to negotiate with you."`
+            choice
+                `    "Thank you. It's been an honor to fight alongside you."`
+                    goto honor
+                `    "Last time we visited Parliament, they violated our safe passage agreement and put us on trial."`
+                    goto trial
+            label honor
+            `    "No, the honor has been mine," he says. "Feel free to drop by and visit me on Farpoint any time you're in the area."`
+                accept
+            label trial
+            `    "Trust me," he says, "you won't need to worry about that this time around. Having an alien attack so close to Earth be thwarted through the assistance of the Free Worlds has put Parliament in a very... receptive mood. Good luck, Captain <last>, and I hope our paths will cross again."`
+                accept
+    on complete
+        clear "FWC End: active"
+        set "FWC End: done"
+        log "Parliament has agreed to a peace treaty, because the threat of alien invasion now seems much more pressing than the civil war with the Free Worlds. Whatever the true intention of the Pug was, the result of their interference is that humanity is at peace once more. There has been great loss of life, but nothing compared to what would have happened if the Free Worlds had tried to conquer Earth."
+        log "It may be a while before members of the Free Worlds manage to re-earn the trust of the rest of humanity, however."
+        log "Factions" "Free Worlds" `Tensions between the Free Worlds and the Republic mounted when additional systems decided to leave the Republic and join the Free Worlds culminating in a series of military confrontations, that ended when the Pug invaded human space. After humanity united to drive out the Pug invaders, the Republic officially granted the Free Worlds autonomy.`
+        event "deep sky tech available"
+        event "stack core for sale"
+        event "fwc kaus borealis ceded back"
+        event "fwc solace has augmented nukes"
+        "salary: Free Worlds" = 8900
+        set "main plot completed"
+        set "free worlds plot completed"
+        set "free worlds checkmate"
+        conversation
+            `You arrive in the Parliament building just as Alondo, Katya, and Tomek have finished meeting with them. "Good news," says Katya. "We're all officially pardoned. And you, Captain <last>, have become something of a hero."`
+            `    "Better yet," says Alondo, "the war with the Republic is over. We agreed to limiting our territory to its current size, and to a very minor tax to cover the cost of Navy protection if the aliens attack again or some other major catastrophe strikes. In return, the Free Worlds have been granted autonomy from the Republic. Additionally, the CEO of the Syndicate, Alastair Korban, is resigning."`
+            `    "Also," says Tomek, "I've received word from the Wolf Pack that the Syndicate have dropped off a gift. They didn't specify what it was, or why they left it, but it may be worth heading to Solace to see what it is."`
+            `    "In other news, now that the war has ended, and the Pug have been defeated, the Senate has voted to dissolve the Council, leaving us free to return to civilian life. However, they've also agreed to pay you, <first>, a reduced salary in honor of your service. So, what do you think you will do next?"`
+            choice
+                `    "Build a merchant fleet and live a safe, quiet life."`
+                `    "See if folks in the fringe worlds need any help against the pirates."`
+                `    "Use my jump drive to explore beyond human space."`
+            `    "Well, we all wish you the best of luck," says Freya. "We would never have won this war without you. Be sure to stay in touch." You hug each of them goodbye, and return to your ship. What you do next is up to you...`
+    on accept
+        set "FWC End: active"
+    on fail
+        clear "FWC End: active"
+        set "FWC End: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+    on abort
+        clear "FWC End: active"
+        set "FWC End: aborted"
+        set "FWC End: failed"
+        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "FW Epilogue: Danforth (patched)"
+    landing
+    to offer
+        has "free worlds plot completed"
+        not "Wanderers: Alpha Surveillance E: offered"
+        not "FW Epilogue: Danforth: offered"
+    source "Farpoint"
+    on offer
+        set "FW Epilogue: Danforth: offered"
+        conversation
+            `Would you like to stop by and see how Admiral Danforth is doing?`
+            choice
+                `    (Yes.)`
+                `    (Not right now.)`
+                    defer
+
+            branch checkmate1
+                has "free worlds checkmate"
+            `    Danforth is quite excited to see you. "Captain <last>!" he says. "So good to see you back up here in my neck of the woods again. It's funny, you'd think that with the war over they'd just dissolve the Oathkeepers, since the whole Republic is at peace with the Free Worlds and there's no longer any oath left for us to keep. But, the Oathkeepers became so well known for our role against the Pug and the Syndicate that now everyone wants to join our division."`
+                goto choice
+
+            label checkmate1
+            `    Danforth is quite excited to see you. "Captain <last>!" he says. "So good to see you back up here in my neck of the woods again. It's funny, you'd think that with the war over they'd just dissolve the Oathkeepers, since the whole Republic is at peace with the Free Worlds and there's no longer any oath left for us to keep. But, the Oathkeepers became so well known for our role against the Pug and the terrorists that now everyone wants to join our division."`
+
+            label choice
+            choice
+                `    "Glad to see you're still in the thick of things, sir!"`
+                    goto thick
+                `    "What sort of work is the Navy doing now that we're at peace?"`
+                    goto work
+
+            label thick
+            `    "Oh, you bet I am," he says. "I'll never retire from the Navy, you know. I plan to still be serving on the day I die."`
+                goto next
+
+            label work
+            `    "Just the sort of work we all signed up for in the first place," he says. "Defending the defenseless, keeping the peace, helping silly novice pilots who run out of fuel."`
+                goto next
+
+            label next
+            `    "Are the pirates giving you any trouble?" you ask.`
+            `    "A bit," he says. "We still have far too many pirates in this sector, in part due to the Free Worlds mostly driving them out of the South. The pirates grew stronger and more bold as the war dragged on, when all our fleets were busy elsewhere, but now we're beginning to get them under control again."`
+
+            branch checkmate2
+                has "free worlds checkmate"
+            `    Then he leans forward and says, more quietly, "Of course, you and I both know the pirates aren't the main threat. Raven is off infiltrating Syndicate worlds even as we speak, and several of my other best intelligence officers, too. The Syndicate wants us to believe that they've weeded out all the rotten apples from their ranks, but we're keeping an eye on them, all the same."`
+                goto end
+
+            label checkmate2
+            `    Then he leans forward and says, more quietly, "Just a heads-up that the Navy has their eye on the Free Worlds still. Just because a peace treaty was made doesn't mean you can keep your nukes forever. We destroyed all the means of making nukes for the terrorists on Stormhold for a reason."`
+
+            label end
+            `    After you talk for a while longer, Danforth wishes you luck and sends you on your way. "I'll be in touch if we ever need your assistance in the future," he says.`
+                decline
+    on decline
+        set "FW Epilogue: Danforth: declined"
+
+mission "FWC Epilogue: Wolf Pack"
+    minor
+    landing
+    to offer
+        has "event: fwc solace has augmented nukes"
+        has "event: joined the free worlds"
+    source "Solace"
+    on offer
+        conversation
+            `You recall Tomek mentioning that the Syndicate left a gift with the Wolf Pack and decide to go to the outfitter to see what it is. There you find Odie, the Wolf Pack member who oversaw the assembly of the nuclear missiles during the war. "Captain <last>! I heard you're a hero now. I was told to expect you. I take it you're here about that gift the Syndicate gave us."`
+            choice
+                `    "Yes I am. What is it?"`
+                `    "I wouldn't call myself a hero, but if you insist. What did the Syndicate bring?"`
+            scene "nuke-launcher"
+            `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to drop off the blueprints for a working feed system."`
+            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
+            choice
+                `    "Now that sounds like an exciting weapon to use."`
+                    goto exciting
+                `    "Why do you think they gave these to us? Why did they even have these?"`
+            `    "I don't know why they have them or why they gave them to us. I didn't ask any questions, I just got right to work making the weapon.`
+            label exciting
+            `    "The nuclear launch bay is able to load two missiles at a time, and it weighs 21 tons."`
+            `    Odie pats you on the back and smiles. "And we're giving you access to it. For a price, of course." Odie walks off, leaving you to contemplate if you'll make use of such a weapon.`
+                decline

@@ -1,9 +1,9 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
@@ -20,9 +20,9 @@ All Plugins (574)
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2024-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.9 mb | 2025-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: TheGiraffe3 | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2024-10-27) <br>
+[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2025-02-05) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -60,9 +60,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/All Content Plugin/icon.png' height='100'></img><br>
 
 
-[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 149.47 kb | 2024-09-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
+[All.Content.Plugin.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/All.Content.Plugin.zip) | 150.26 kb | 2025-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/All%20Content%20Plugin/) <br>
 Author: Michael Zahniser | Category: Cheats <br>
-[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2024-09-28) <br>
+[https://github.com/endless-sky/all-content-plugin](https://github.com/endless-sky/all-content-plugin) (last commit 2025-02-01) <br>
 
 >This mod starts you on Greenrock with a trillion (10^12) credits and access to almost every ship and outfit in the game. It is intended for testing purposes, but of course, as its description says, "it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it." 
 >
@@ -183,9 +183,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 138.32 kb | 2024-10-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 140.33 kb | 2025-01-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-08) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-27) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -198,17 +198,18 @@ Author: zuckung | Category: Cheats <br>
 Makes person ships captureable.<br> 
 <br>
 <br>
-Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesn't flee. And changed "Zitchas" personality to "decloaked", so it doesn'tflee and regenerate while cloaked.<br>
-So attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
+Well, technically this plugin disables the person ships, and creates new ones which are captureable (with changed names to "<name> (disable me)", due to limitations of changing parts of the originals). Also adds all of them to the author government, adjusts some personalities and sets all frequencies to 1000. Changed "Tranquility" to have a weapon, so it doesn't flee. And changed "Zitchas" personality to "decloaked", so it doesn't flee and regenerate while cloaked.<br>
+Attacking one of them makes all your enemies, they all try to disable instead of destroying, and they all have the same spawn chance which is in average within 10 minutes.<br>
 <br>
 At Earth's job board you can find a repeatable job that displays which persons you have already killed, which are alive, and where to find them.<br>
 After you've killed them all, you receive a small unique gift.<br>
 <br>
 I tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and I tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
-In cap_persons.txt you find the following line under gamerules: "#	"person spawn period" 2000". If you remove the "#" the spawning speed is increased to one spawn in max a  minute.<br>
+In cap_persons.txt you find the following line under gamerules: "#	"person spawn period" 2000". If you remove the "#" the spawning speed is increased to one spawn in max a minute.<br>
 <br>
 <img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/capturable.person.ships01.jpg' width='400'>
 <ul>
+<li>"vyu-Ir" (not a person ship, but unique | found south-western of Gegno)</li>
 <li>"Michael Zahniser" (found everywhere | Kestrel + Finch)</li>
 <li>"Cap'n Pester" (found everywhere | Quarg Wardragon)</li>
 <li>"Marauding Max" (found everywhere | Marauder Fury)</li>
@@ -224,12 +225,20 @@ In cap_persons.txt you find the following line under gamerules: "#	"person spawn
 <li>"Gefullte Taubenbrust" (found everywhere | Modified Battleship)</li>
 <li>"MasterOfGrey" (found in Hai space | Modified Ladybug)</li>
 <li>"Patrol Team" (found everywhere | 6x Waverider)</li>
+<li>"Danau" (found in human space | 1x mod. Hauler IV, 2x Hauler III, 2x Hauler II, 2x Hauler)</li>
 </ul>
 <br>
 <br>
 Changelog:<br>
 <br>
-2024-10-08 <br>
+2025-01-27<br>
+added 0.10.11 person "Danau"<br>
+<br>
+2024-11-11<br>
+made vyu-Ir captureable (unique, but no person ship)<br>
+normalized the spawn speed<br>
+<br>
+2024-10-08<br>
 proofreading and minor text changes (Vemenous-Repentile)<br>
 changed status mission to fail on daily<br>
 changed subsidural (1 outfit space, keystone and 300 fuel)<br>
@@ -400,9 +409,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/coalition.shopping/icon.png' height='100'></img><br>
 
 
-[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 88.02 kb | 2024-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
+[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 402.57 kb | 2024-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-09) <br>
 
 >Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
 >
@@ -421,6 +430,10 @@ To start the mission to enable these outfitters and shipyards, you have to join 
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-09<br>
+corrected scene size<br>
+added @2x images<br>
 <br>
 2024-09-15<br>
 some error fixing, adjustments and text improvements (thx to timeout.fu)<br>
@@ -781,9 +794,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/quarg.farm/icon.png' height='100'></img><br>
 
 
-[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.38 kb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
+[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.42 kb | 2025-01-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-27) <br>
 
 >Adds a new system Saquerver (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed. See the readme for details.
 >
@@ -795,10 +808,13 @@ Author: zuckung | Category: Cheats <br>
 <br>
 Adds a new system "Saquerver" (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed.<br>
 <br>
-The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the four other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
+The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Quarg fleets spawn there. Killing/plundering them doesn't make the other Quarg angry. Landing on the other Quarg faction's worlds doesn't end with a death sentence when you have their ships/outfits.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-01-27<br>
+adjusted system "Saquerver" position to not collide with 0.10.11 additions<br>
 <br>
 2024-10-06<br>
 removed death sentence from government "Quarg (Incipias)"<br>
@@ -838,9 +854,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Ruin the Fun/icon.png' height='100'></img><br>
 
 
-[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.66 mb | 2024-04-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
+[Ruin.the.Fun.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ruin.the.Fun.zip) | 3.55 mb | 2025-02-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ruin%20the%20Fun/) <br>
 Author: Pshy0 | Category: Cheats <br>
-[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2024-04-29) <br>
+[https://github.com/Pshy0/es-ruin-the-fun](https://github.com/Pshy0/es-ruin-the-fun) (last commit 2025-02-02) <br>
 
 >A development / cheat plugin for Endless Sky. Access all ships and outfits, change your captain's name, choose the color swizzle of your ships, edit your relation with other governments, set your combat rank, hire a powerful escort, gift yourself pre-outfitted ships, give yourself money, and much more. 
 >
@@ -979,12 +995,13 @@ From the RFT shipyards, all ships in the game are available to you.
 
 ![Outfitter](./images/screenshot/outfitter-button.png)
 
-From the RFT outfitters, all outfits in the game are available to you.
+From the RTF outfitters, all outfits in the game are available to you.
 
 RTF also adds a few outfits, all listed under the `RTF God Outfits` category:
 - `God Drive`: Jump drive, with no range limit, that does not consume fuel.
 - `God Mode`: Makes you immortal.
-- `God Turret`: Turret that one-shot most ships.
+- `God Turret`: Turret that one-shot any ships.
+- `God Disabling Turret`: Disables ships without destroying them.
 - `100000 Outfit Space`: Gives you more than enough outfit space.
 - `100000 Cargo Space`: Gives you so much cargo space that this will trigger pirate raids.
 
@@ -1057,6 +1074,8 @@ If you are interested by some features of this plug-in but do not want to be che
 - [Advanced Starts](https://github.com/kestrel1110/ES-Advanced-Starts/): **Adds more starts.**
 - [Lampyrid Start](https://github.com/Zitchas/ES_Lampyrid_Start): **Faster and easier start**, made slightly more challenging by pirates.
 - [Prism Plugin](https://github.com/Startingfresher/Prism-Plug-in): **Unlock ship color swizzles** by achieving progress in the game
+- [Mega-Freight](https://github.com/1010todd/Mega-Freight) **Adds over 150 ships to the game** (Has powerful ships you can obtain more legitimately with RTF).
+- [Capitalis-Major](https://github.com/demolish238/Capitalis-Major) **Adds powerful obtainable capital ships**, less invasive than Mega Freight.
 
 </blockquote>
 </details>

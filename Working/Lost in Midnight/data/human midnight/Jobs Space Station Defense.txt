@@ -2760,7 +2760,7 @@ mission "Midnight Alexandria Station Defense Job"
 		personality launching staying heroic
 			confusion 20
 		fleet
-			names "intellectuals"
+			names "deep science vessel"
 			cargo 1
 			commodities "Equipment"
 			variant
@@ -4561,7 +4561,7 @@ mission "Midnight Muninn Station Defense Job"
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
-	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on the station until all the attacking ships are disabled or destroyed."
+	description "Rumors of a massive coordinated pirate attack on <planet> has prompted station security to ask for volunteers to bolster their defense fleet. Once the battle begins, you won't be able to land on either station until all the attacking ships are disabled or destroyed."
 	source "Muninn Station"
 	to offer
 		or
@@ -4578,7 +4578,7 @@ mission "Midnight Muninn Station Defense Job"
 				random < 15
 	on accept
 		event "muninn station defense job"
-		dialog "The attack is expected to begin soon. Finish your final preparations before joining the defense fleet in orbit. Be aware that you won't have the opportunity to land on the station during the battle."
+		dialog "The attack is expected to begin soon. Finish your final preparations before joining the defense fleet in orbit. Be aware that you won't have the opportunity to land on either station during the battle."
 	on enter
 		conversation
 			`The calm before the storm settles in...`
@@ -4672,7 +4672,7 @@ mission "Midnight Muninn Station Defense Job"
 			confusion 10
 		fleet "Marauder fleet X"
 		fleet "pirate raid" 2
-	npc disable
+	npc
 		to spawn
 			not "event: kestrel available: more bays"
 			not "event: kestrel available: more engines"
@@ -4689,8 +4689,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Bactrian (Hired Gun)"
 			variant 1
 				"Marauder Frigate"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more bays"
 			not "main plot completed"
@@ -4707,8 +4706,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Bactrian (Hired Gun)"
 			variant 1
 				"Marauder Frigate"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more bays"
 			has "main plot completed"
@@ -4731,8 +4729,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Marauder Behemoth (Engines)"
 			variant 1
 				"Bactrian (Hired Gun)"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more engines"
 			not "main plot completed"
@@ -4749,8 +4746,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Bactrian (Hired Gun)"
 			variant 1
 				"Marauder Frigate"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more engines"
 			has "main plot completed"
@@ -4773,8 +4769,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Marauder Behemoth (Engines)"
 			variant 1
 				"Bactrian (Hired Gun)"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more shields"
 			not "main plot completed"
@@ -4791,8 +4786,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Bactrian (Hired Gun)"
 			variant 1
 				"Marauder Frigate"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more shields"
 			has "main plot completed"
@@ -4815,8 +4809,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Marauder Behemoth (Engines)"
 			variant 1
 				"Bactrian (Hired Gun)"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more weapons"
 			not "main plot completed"
@@ -4833,8 +4826,7 @@ mission "Midnight Muninn Station Defense Job"
 				"Bactrian (Hired Gun)"
 			variant 1
 				"Marauder Frigate"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
-	npc disable
+	npc
 		to spawn
 			has "event: kestrel available: more weapons"
 			has "main plot completed"
@@ -4857,13 +4849,12 @@ mission "Midnight Muninn Station Defense Job"
 				"Marauder Behemoth (Engines)"
 			variant 1
 				"Bactrian (Hired Gun)"
-		dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
 	npc
 		government "Deep Security"
 		personality launching staying heroic
 			confusion 10
 		fleet "Small Deep Security"
-	npc save
+	npc disable save
 		government "Bounty"
 		personality target launching staying timid opportunistic
 			confusion 30
@@ -4871,7 +4862,10 @@ mission "Midnight Muninn Station Defense Job"
 			cargo 3
 			commodities "Heavy Metals" "Metal" "Plastic"
 		ship "Huginn Station" "Huginn"
-		dialog "Once you've mopped up the last of the attackers, dock with the Muninn Station at its original orbital location."
+		on disable
+			dialog "Once you've mopped up the last of the attackers, dock with the station at its original orbital location."
+		on kill
+			set "midnight muninn station defense job failure"
 	npc accompany save
 		government "Republic"
 		personality target launching staying timid opportunistic
@@ -4880,6 +4874,8 @@ mission "Midnight Muninn Station Defense Job"
 			cargo 3
 			commodities "Heavy Metals" "Metal" "Plastic"
 		ship "Muninn Station" "Muninn"
+		on kill
+			set "midnight muninn station defense job failure"
 	on visit
 		fail
 		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of one of the stations... If this were a game, you could load a save file and have another try at defending the stations from the ships that attacked it."
@@ -4947,7 +4943,7 @@ event "muninn station defense job"
 			sprite planet/gas0
 			distance 1637.56
 			period 1249.53
-			object
+			object "Huginn Station"
 				sprite planet/smoke
 				distance 286
 				period 13.4547
@@ -4960,6 +4956,9 @@ event "muninn station defense job"
 				distance 272
 				period 12.9498
 	planet "Muninn Station"
+#		add attributes uninhabited
+		government Uninhabited
+	planet "Huginn Station"
 #		add attributes uninhabited
 		government Uninhabited
 
@@ -4994,13 +4993,14 @@ event "muninn station defense job success"
 	planet "Muninn Station"
 		remove attributes uninhabited
 		government clear
+	planet "Huginn Station"
+		remove attributes uninhabited
+		government clear
 
 event "muninn station ammo outfitter"
 	planet "Muninn Station"
 		add outfitter "Ammo North"
 		add outfitter "Ammo South"
-
-
 
 mission "Midnight Muninn Station Defense Sprite Patch"
 	landing
@@ -5011,6 +5011,31 @@ mission "Midnight Muninn Station Defense Sprite Patch"
 	on offer
 		event "muninn station defense job success"
 		fail
+
+# Previously, Huginn Station did not exist as a landable planet during the mission. This caused other missions referencing Huginn Station to crash.
+mission "Midnight Muninn Station Defense Huginn Landing"
+	landing
+	invisible
+	source "Huginn Station"
+	to offer
+		has "Midnight Muninn Station Defense Job: active"
+	on offer
+		conversation
+			branch failure
+				has "midnight muninn station defense job failure"
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of one of the stations... Your failure to prevent the destruction of one of the stations has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
+			label failure
+			scene "outfit/attention"
+			``
+			`--------------- [MISSION FAILED] ---------------`
+			``
+			`You failed to prevent the destruction of one of the stations, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+				die
 
 
 
@@ -5319,19 +5344,7 @@ mission "Midnight Hydra Station Defense Job"
 			confusion 10
 		fleet "Small Militia"
 	npc assist accompany save
-		to spawn
-			not "event: war begins"
 		government "Republic"
-		personality target waiting derelict staying timid opportunistic
-			confusion 30
-		"cargo settings"
-			cargo 3
-			commodities "Heavy Metals" "Metal" "Plastic"
-		ship "Hydra Station" "Hydra"
-	npc assist accompany save
-		to spawn
-			has "event: war begins"
-		government "Free Worlds"
 		personality target waiting derelict staying timid opportunistic
 			confusion 30
 		"cargo settings"
@@ -5369,14 +5382,14 @@ mission "Midnight Hydra Station Defense Job"
 					goto credits
 			action
 				event "hydra station advanced fuel outfitter"
-				"reputation: Free Worlds" += 100
+				"reputation: Republic" += 100
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
 			label credits
 			action
 				payment 1000000
-				"reputation: Free Worlds" += 100
+				"reputation: Republic" += 100
 				clear "Midnight Hydra Station Defense Job: offered"
 			`	1,000,000 credits are deposited into your account.`
 

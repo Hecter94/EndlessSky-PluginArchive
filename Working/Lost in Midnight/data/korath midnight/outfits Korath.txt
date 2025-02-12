@@ -70,6 +70,98 @@ outfit "Inferno-Trident"
 	description "Adding another Fire-Lance to the Blaze-Pike was a natural next step in Exile weapon design research. Mounting three them together in this array allows them to operate synergistically, creating an even longer, more powerful beam than the Blaze-Pike."
 
 
+outfit "Magnetic Mine"
+	category "Ammunition"
+	cost 3800
+	thumbnail "outfit/magnetic mine"
+	"mass" .7
+	"magnetic mine capacity" -1
+	description "This is ammunition for a Magnetic Mine Deployer."
+	description "	Development of this weapon was rushed to deployment at the request of Navarchs who have explored the Ember Wastes."
+
+outfit "Magnetic Mine Rack"
+	category "Ammunition"
+	cost 34600
+	thumbnail "outfit/magnetic mine storage"
+	"mass" 2.7
+	"outfit space" -9
+	"magnetic mine capacity" 9
+	ammo "Cluster Mine"
+	description "The Magnetic Mine Rack is used to store extra ammunition for a Magnetic Mine Deployer."
+	description "	These storage racks also act as a faraday cage to prevent the stored mines from accidentally interfering with the generators of the ship while carrying them."
+
+outfit "Magnetic Mine Deployer"
+	category "Secondary Weapons"
+	cost 589000
+	thumbnail "outfit/magnetic mine deployer"
+	"mass" 18
+	"outfit space" -24
+	"weapon capacity" -24
+	"energy capacity" 25
+	"gun ports" -1
+	"magnetic mine capacity" 8
+	weapon
+		sprite "projectile/magnetic mine"
+			"frame rate" 1
+		sound "minelayer"
+		ammo "Magnetic Mine"
+		icon "icon/magnetic mine"
+		"fire effect" "magnetic mine fire"
+		"hit effect" "ionball ring" 15
+		"hit effect" "ionball impact"
+		"hit effect" "ionball fragment" 24
+		"live effect" "magnetic mine spark" 14
+		"die effect" "ion impact" 5
+		"inaccuracy" 10
+		"velocity" 2
+		"random velocity" 1
+		"lifetime" 1000
+		"random lifetime" 160
+		"reload" 180
+		"firing energy" 18
+		"firing heat" 9
+		"acceleration" .01
+		"drag" .04
+		"turn" 3
+		"homing" 4
+		"tracking" .7
+		"trigger radius" 15
+		"blast radius" 20
+		"shield damage" 350
+		"hull damage" 280
+		"ion damage" 110
+		"scrambling damage" 110
+		"energy damage" 1600
+		"hit force" 135
+		"missile strength" 57
+		safe
+	description "Development of the Magnetic Mine Deployer is the result of lessons learned from the Korath's previous encounters in the Ember Waste and Graveyard."
+	description "	This new mine does less damage overall than the old Cluster Mines, but also emits electromagnetic pulses which interferes with the generators of enemy ships caught within its blast radius."
+
+effect "magnetic mine fire"
+	sprite "effect/magnetic mine"
+		"no repeat"
+		"frame rate" 3
+	"lifetime" 61
+	"random angle" 5
+	"random spin" 10
+	"random velocity" .5
+	"velocity scale" 1.2
+
+effect "magnetic mine spark"
+	sprite "effect/ion impact"
+		"no repeat"
+		"frame rate" 5
+	"lifetime" 11
+	"random angle" 360
+	"random spin" 10
+	"random velocity" 3
+	"velocity scale" 1.1
+
+outfitter "Magnetic Mine Ammo"
+	"Magnetic Mine"
+	"Magnetic Mine Rack"
+
 outfit "Scavenger Turret"
 	category "Turrets"
 	cost 84000
@@ -133,7 +225,54 @@ outfit "Shock-Strike Turret"
 		"hit force" -240
 		"ion damage" .4
 		"scrambling damage" .4
-	description "This weapon adds an ionic charge to Grab-Strike projectiles, further incapacitating the targeted ship to prevent it from escaping."
+	description "Korath Grab-Strike projectiles are designed to pull a target closer to the Korath ship, to keep it from escaping."
+	description "	This weapon adds an ionic charge to Grab-Strike projectiles, further incapacitating the targeted ship."
+
+
+outfit "Thermal Obliterator"
+	category "Secondary Weapons"
+	cost 3000000
+	thumbnail "outfit/thermal obliterator"
+	"mass" 105
+	"outfit space" -105
+	"weapon capacity" -105
+	"energy capacity" 900
+	"gun ports" -1
+	"spinal mount" -1
+	"unique" 1
+	weapon
+		sprite "projectile/thermal obliterator"
+			"frame rate" 5
+		sound "thermal obliterator"
+		icon "icon/t-obliterator"
+		"fire effect" "fusion cannon fire"
+		"hit effect" "fusion cannon explosion 1"
+		"hit effect" "fusion cannon explosion 2" 5
+		"hit effect" "fusion cannon explosion 3" 10
+		"die effect" "thermal obliterator death"
+		"inaccuracy" 4
+		"velocity" 26
+		"lifetime" 80
+		"reload" 180
+		"cluster"
+		"firing energy" 3888
+		"firing heat" 17496
+		"firing force" 90
+		"hit force" 180
+		"shield damage" 4212
+		"hull damage" 3564
+		"heat damage" 5346
+		"burn damage" 8.91
+	description "A rare sight in the Korath arsenal, Thermal Obliterators need authorization from multiple planning committees before resources can be allocated to the construction of one."
+	description "	This weapon launches huge globs of super heated plasma that can obliterate smaller ships with a single strike. As with other thermal weapons developed by the Korath, this attack requires a lengthy cooldown period before the weapon can fire again."
+
+effect "thermal obliterator death"
+	sprite "effect/repeater impact"
+		scale 4
+		"no repeat"
+		"frame rate" 12
+	"lifetime" 21
+	"random spin" 100
 
 
 outfit "Thermal Scorcher"
@@ -143,24 +282,62 @@ outfit "Thermal Scorcher"
 	"mass" 35
 	"outfit space" -35
 	"weapon capacity" -35
+	"energy capacity" 300
 	"gun ports" -1
 	weapon
 		sprite "projectile/thermal scorcher"
 			"frame rate" 5
 		sound "thermal scorcher"
 		"hit effect" "thermal scorcher impact"
+		"hit effect" "thermal scorcher smoke"
 		"inaccuracy" 4
 		"velocity" 13
-		"lifetime" 80
+		"lifetime" 120
 		"reload" 60
 		"cluster"
 		"firing energy" 432
 		"firing heat" 1944
+		"firing force" 30
+		"hit force" 60
 		"shield damage" 468
 		"hull damage" 396
 		"heat damage" 594
 		"burn damage" 0.99
-	description "The Thermal Scorcher is an ancient Korath weapon capable of firing a massive glob of super heated plasma at the target. This brutal attack generates an incredible amount of heat, requiring a significant cooldown period before the weapon can fire again."
+	description "The Thermal Scorcher is an antiquated weapon that predates the Korath civil war. It fires a large glob of super heated plasma at the target. This brutal attack generates an incredible amount of heat, requiring a significant cooldown period before the weapon can fire again."
+
+outfit "Thermal Scorcher Turret"
+	category "Turrets"
+	cost 2777000
+	thumbnail "outfit/scorcher turret"
+	"mass" 45
+	"outfit space" -45
+	"weapon capacity" -45
+	"energy capacity" 300
+	"required crew" 1
+	"turret mounts" -1
+	weapon
+		sprite "projectile/thermal scorcher"
+			"frame rate" 5
+		"hardpoint sprite" "hardpoint/thermal scorcher"
+		"hardpoint offset" 7.
+		"turret turn" 1.3
+		sound "thermal scorcher"
+		"hit effect" "thermal scorcher impact"
+		"hit effect" "thermal scorcher smoke"
+		"inaccuracy" 4
+		"velocity" 13
+		"lifetime" 120
+		"reload" 60
+		"cluster"
+		"firing energy" 432
+		"firing heat" 1944
+		"firing force" 30
+		"hit force" 60
+		"shield damage" 468
+		"hull damage" 396
+		"heat damage" 594
+		"burn damage" 0.99
+	description "Only a single Thermal Scorcher is mounted on this turret. They are a rare sight now, but during the Korath civil war battleships bristling with these sorts of armaments were  common."
 
 effect "thermal scorcher impact"
 	sprite "effect/repeater impact"
@@ -172,6 +349,18 @@ effect "thermal scorcher impact"
 	"random spin" 100
 	"random velocity" .6
 	"velocity scale" -.1
+
+effect "thermal scorcher smoke"
+	sprite "effect/smoke"
+		scale 0.5
+		"no repeat"
+		"random start frame"
+		"frame rate" 8
+	"lifetime" 60
+	"random angle" 360
+	"random spin" 5
+	"random velocity" 1
+	"velocity scale" -.01
 
 
 ################################################
@@ -258,6 +447,7 @@ outfit "Reasoning Node (Damaged)"
 	"mass" 1
 	"outfit space" -1
 	"fused circuits" 1
+	"reinstall" -1
 	"unplunderable" 1
 	description "This miniature computer appears to be damaged. Hopefully it wasn't an important part of the systems for the ship it was installed on."
 
@@ -324,6 +514,7 @@ outfit "Systems Core (Damaged)"
 	"energy consumption" 0.8
 	"heat generation" 1.2
 	"fused circuits" 1
+	"reinstall" -1
 	"unplunderable" 1
 	description `Despite massive damage, this hybrid shield generator computer system is still operational to some degree.`
 
@@ -349,6 +540,17 @@ outfit "Systems Core (Huge)"
 #
 ################################################
 
+
+outfit "Generator (Tinder Class)"
+	plural "Generators (Tinder Class)"
+	category "Power"
+	cost 247000
+	thumbnail "outfit/tiny korath generator"
+	"mass" 15
+	"outfit space" -15
+	"energy generation" 1.6
+	"heat generation" 4.0
+	description "Their preference for these supplemental generators instead of a standalone battery is a testament to the Korath's energy management philosophy."
 
 # Ancient Raider
 outfit "Korath Generator (Small)"
@@ -421,6 +623,19 @@ outfit "Korath Steering (Large)"
 ################################################
 
 
+outfit "Fentra Predator"
+	category "Hand to Hand"
+	cost 106000
+	thumbnail "outfit/mouthparts"
+	mass 3
+	"outfit space" -4
+	"capture attack" 18
+	"maintenance costs" 200
+	unplunderable 1
+	"biome" -1
+	description "This feral creature was at the top of Sarisa Fentra's natural food chain. Like other surviving specimens kept in captivity by the Korath Exiles, the world it originated from can no longer support it. Unless kept in a proper habitat, it cannot survive in captivity."
+	description "	Fentra Predators are not trained to follow commands and offer no assistance in defending the ship. However releasing one onto an enemy vessel can be incredibly disruptive for defenders unprepared to deal with something so savage."
+
 outfit "Meltdown Cannon"
 	category "Hand to Hand"
 	cost 530000
@@ -430,6 +645,19 @@ outfit "Meltdown Cannon"
 	"capture defense" 12
 	"unplunderable" 1
 	"unique" 1
+
+outfit "Seleptra Bloom"
+	category "Hand to Hand"
+	cost 27000
+	thumbnail "outfit/korath bloom"
+	mass 1
+	"outfit space" -2
+	"capture defense" 8
+	"maintenance costs" 100
+	unplunderable 1
+	"biome" -1
+	description "The Korath admire Seleptra Blooms from a distance. If a creature wanders close enough, the plant releases a cloud of spores. While not lethal to living creatures, they can induce a deep sleep that leaves its victims vulnerable to predators. If an infested creature dies, the spores inside the corpse will begin to grow."
+	description "	Spores infesting flesh processed into Nutrigel by a microbot fabricator do not survive the process, leaving a product that is safe to consume. Nutrigel made from meat infused with Seleptra Bloom spores are also more flavorful to Korath tastebuds."
 
 
 ##################

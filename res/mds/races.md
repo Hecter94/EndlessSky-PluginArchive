@@ -1,16 +1,16 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Races
 
-<p>67 plugins in this category.<p>
+<p>68 plugins in this category.<p>
 
 
  
@@ -255,9 +255,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Arion - Air Superiority/icon.png' height='100'></img><br>
 
 
-[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.83 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
+[Arion.-.Air.Superiority.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arion.-.Air.Superiority.zip) | 3.78 mb | 2024-11-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arion%20-%20Air%20Superiority/) <br>
 Author: Spectre907 | Category: Races <br>
-[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-10-31) <br>
+[https://github.com/Spectre907YT/Endless-Sky---Arion](https://github.com/Spectre907YT/Endless-Sky---Arion) (last commit 2024-11-06) <br>
 
 >Plugin that adds a bunch of interesting things, mainly some modern military planes and weapons.
 >
@@ -290,7 +290,8 @@ To get access to the content visit Earth, Valhalla, Hephaestus or Bourne. Perhap
 
 There are also some bonus content if you have the lost in midnight, mega freight, czartraks ships, amphibious ships, altera or navycampaign (by kestrel1110) plugin. To access the bonus content, move the respective files from the bonus file to the data file.
 
-(Special thanks to 1010todd, yuyuko_saigyouji. and gefulltetaubenbrust from the Endless Sky discord server for letting me borrow some sprites)
+(Special thanks to 1010todd, thisismyname563 (Yuyuko Saigyouji)
+, gefulltetaubenbrust, jenbones3135 and kitteh_cat from the Endless Sky discord server for letting me borrow some sprites)
 
 </blockquote>
 </details>
@@ -305,9 +306,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Arlug/icon.png' height='100'></img><br>
 
 
-[Arlug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arlug.zip) | 56.43 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arlug/) <br>
+[Arlug.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arlug.zip) | 35.69 mb | 2024-11-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arlug/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Arlug](https://github.com/TheSilverStone/Arlug) (last commit 2024-10-31) <br>
+[https://github.com/TheSilverStone/Arlug](https://github.com/TheSilverStone/Arlug) (last commit 2024-11-24) <br>
 
 >Adds a new T2.3 race, the Atlanteans, who came from Earth when Atlantis sank.
 >
@@ -858,9 +859,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Gaguka
 
 
-[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2024-11-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
+[Gaguka.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Gaguka.zip) | 3.1 mb | 2025-01-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Gaguka/) <br>
 Author: MIMSBZ3 | Category: Races <br>
-[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2024-11-02) <br>
+[https://github.com/MIMSBZ3/Gaguka](https://github.com/MIMSBZ3/Gaguka) (last commit 2025-01-21) <br>
 
 >Adds new aliens called the Gaguka in their own separate galaxy.
 >
@@ -923,7 +924,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Jaling.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaling.Expansion.zip) | 4.25 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaling%20Expansion/) <br>
 Author: RizkyPramudyaCJ | Category: Races <br>
-[https://github.com/RizkyPramudyaCJ/Jaling-Expansion](https://github.com/RizkyPramudyaCJ/Jaling-Expansion) (last commit 2018-03-04) <br>
+N/A[]()  <br>
 
 >Jaling Expansion adds another human civilization which not connected to human space.
 >
@@ -931,7 +932,7 @@ Author: RizkyPramudyaCJ | Category: Races <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -939,9 +940,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 73.45 mb | 2024-11-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 13.54 mb | 2025-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2024-11-02) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-02-05) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -949,6 +950,30 @@ Author: TheGiraffe3 | Category: Races <br>
 
 
 Status: In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Kor Ramoret
+
+
+[Kor.Ramoret.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor.Ramoret.zip) | 583.96 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor%20Ramoret/) <br>
+Author: Zoura | Category: Races <br>
+[https://github.com/AvianGeneticist/Kor-Ramoret](https://github.com/AvianGeneticist/Kor-Ramoret) (last commit 2024-07-05) <br>
+
+>Adds a third Korath Automaton faction.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Kor-Ramoret
+ Adds a third Korath Automaton Faction to Endless Sky. The Kor Ramoret (or "Aggregated Korath") are a higher-tier automata faction made by combining aspects of both the Sestor and Mereti. They're a carrier-focused faction with powerful custom weapons, though they do share other Korath outfits (reactors, engines, cooling, et cetera).
+
+</blockquote>
+</details>
+
+Status: Complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1197,9 +1222,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.95 mb | 2024-10-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.96 mb | 2025-02-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2024-10-04) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2025-02-06) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 

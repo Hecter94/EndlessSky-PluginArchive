@@ -1,0 +1,100 @@
+# Based on "Unfettered Jump Drive 4" by Michael Zahniser.
+# Initial conversation and idea by AvianGeneticist: https://discord.com/channels/251118043411775489/1031714960528646194/1148660182310723624.
+# Combined mission by ziproot.
+disable mission "Unfettered Jump Drive 4"
+mission "Unfettered Jump Drive 4b"
+	job
+	repeat
+	name "Sell Jump Drive"
+	description "Exchange a jump drive on your flagship or in cargo for money, permission to pet the Unfettered, or for weapons, if an outfitter is available."
+	source
+		attributes "unfettered"
+	substitutions
+		"<tab>" ""
+		"<tab>" "	"
+			has "flagship planet: Darkcloak"
+	to offer
+		has "Unfettered Jump Drive 3: offered"
+		not "event: wanderers: unfettered invasion starts"
+	to fail
+		has "Unfettered Jump Drive 4: active"
+	to accept
+		or
+			has "outfit (flagship installed): Jump Drive"
+			has "outfit (cargo): Jump Drive"
+	on accept
+		conversation
+			branch "want outfits"
+				not "unfettered: money for drives"
+				has "Unfettered Jump Drive Trading: offered"
+				has "flagship planet: Darkcloak"
+			branch headpat
+				has "jump drives for headpats"
+			label money
+			action
+				payment 1000000
+			`As usual, the Unfettered are more than willing to pay you a million credits for your jump drive, but you do not gain any additional information by talking with them.`
+				goto trade
+
+			label "want outfits"
+			`The Unfettered's usual deal of trading a jump drive for weapons still stands.`
+			choice
+				`	(Take two Tripulse Shredders.)`
+				`	(Take money.)`
+					goto money
+				`	(Ask to pet the Unfettered.)`
+					goto headpat
+			action
+				outfit "Tripulse Shredder" 2
+			`	The two Shredders are loaded onto your ship, in exchange for your jump drive.`
+				goto trade
+
+			label headpat
+			`<tab>"You want this jump drive? You know the fee," you say.`
+				to display
+					has "jump drives for headpats"
+			`<tab>"You want this jump drive? Give me permission to pet you," you say.`
+				to display
+					not "jump drives for headpats"
+			branch angry
+                             random < 50 - "unfettered headpat attitude" - 25 * "license: Unfettered"
+			`	"..."`
+			choice
+				`	"It's just four words."`
+				`	"Nevermind, just give me the credits."`
+					goto money
+			action
+				"jump drives for headpats" ++
+			branch indifferent
+				random < 50 - "unfettered headpat attitude"
+			action
+				"unfettered headpat attitude" ++
+			label indifferent
+			`	"...Can I have headpats?"`
+			scene "portrait/hai00"
+			`	You spend the next three hours petting the Unfettered, while they collect your jump drive. You do not gain any further information.`
+				goto trade
+
+			label angry
+			`	"Stupid monkey thinks they can pet a True Hai. Stupid monkey is unworthy of petting a True Hai."`
+			branch nochange
+				random < 50 + "unfettered headpat attitude"
+			action
+				"unfettered headpat attitude" --
+			label nochange
+			choice
+				`	"It's just four words."`
+				`	"Nevermind, just give me the credits."`
+					goto money
+			`	As soon as you finish speaking, one of the Unfettered runs you through with a machete and shouts "I'm not cute!"`
+				die
+
+			label trade
+			branch cargo
+				has "outfit (cargo): Jump Drive"
+			action
+				outfit "Hyperdrive" 1
+			label cargo
+			action
+				outfit "Jump Drive" -1
+				"reputation: Hai (Unfettered)" >?= 40

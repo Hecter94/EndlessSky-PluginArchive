@@ -1,16 +1,16 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Gameplay
 
-<p>43 plugins in this category.<p>
+<p>44 plugins in this category.<p>
 
 
  
@@ -31,6 +31,44 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Arc Over
+<img src='../../Working/Arc Over/icon.png' height='100'></img><br>
+
+
+[Arc.Over.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Arc.Over.zip) | 180.38 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Arc%20Over/) <br>
+Author: Saugia | Category: Gameplay <br>
+[https://github.com/Saugia/arc-over](https://github.com/Saugia/arc-over) (last commit 2024-06-26) <br>
+
+>Gives vanilla ships limited turret arcs, introducing a new aspect to combat balance.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Arc Over
+
+![arcover-h](https://github.com/Saugia/arc-over/assets/93169396/ce10ff31-532b-43ce-930b-d6d5d3ea30e3)
+
+This repository is for the Endless Sky plug-in "Arc Over". The plug-in currently encompasses all vanilla ships except person ships as well as ships not yet used in vanilla gameplay. As new ships are added to vanilla, this plug-in will be updated.
+
+## About
+Arc Over gives limited angles to turret mounts on vanilla ships, adding another balance aspect to combat gameplay. These arcs are determined by a few factors, and are given exceptions in some cases, some being more lenient than others, and others being no limits at all. For detailed information, see the `arc notes.txt` file in the data folder for general concept and specific choices for each faction.
+
+## Download
+For a "stable release", check out the Releases on the righthand side of this page and download the Source.zip file and extract to your plug-ins directory, so that there's the "arc-over-version#" folder in your plug-ins folder.
+For getting the "continuous", which can be changed at any moment, click on the green `<> Code` button at the top right of the repository and download the ZIP file, then extract it to your plug-ins folder.
+
+## Contact
+If you find any bugs or issues with this plug-in, or have any suggestions, feel free to open an Issue in this repository, or visit the Endless Sky Community Discord server here: https://discord.gg/ZeuASSx and @Saugia in #plug-in chat. Additionally, feel free to leave any feedback on how limited turret arc gameplay feels with vanilla content - whether it is beneficial, net neutral, or a detriment. 
+
+</blockquote>
+</details>
+
+Status: In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -688,9 +726,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/jump.gates/icon.png' height='100'></img><br>
 
 
-[jump.gates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/jump.gates.zip) | 1.24 mb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/jump.gates/) <br>
+[jump.gates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/jump.gates.zip) | 1.99 mb | 2025-02-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/jump.gates/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-07-19) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-07) <br>
 
 >Adds a ring of jump gates at the borders of human space to create shortcuts inside human space. See the README for details.
 >
@@ -704,12 +742,18 @@ Adds a ring of "jump gates" at the borders of Human space to create shortcuts in
 <br>
 A month after the game starts, the player gets a spaceport info mission about a new discovered technology, that enables the building of jump gates (if your savegame is beyond that point, this info mission starts on the next planet landing). Over the next 5 months there are regularly spaceport info missions telling you things about how far the process of building these gates has come. At the end of this period all jump gates have been built and are usable.<br>
 These jump gates are technically just wormholes with new sprites. The jump gate ring around human space is made of two gates in every of these systems: Naos (Deep) - Spica (Dirt Belt) - Alniyat (South) - Tarazed (South) - Sheratan (Core) - Alnitak (North) and from there back to Naos. Two gates, so you can move forward and backward on the ring.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates02.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/jump.gates03.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-07<br>
+removed label images and added wormhole names <br>
+added @2x images<br>
+resized planet images and changed scale<br>
+added compatibility mission to handle the new image sizes<br>
+<br>
+2024-11-11<br>
+fixed error<br>
 <br>
 2024-07-19<br>
 initial release<br>
@@ -831,9 +875,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/kor.efret.shipyard/icon.png' height='100'></img><br>
 
 
-[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.83 kb | 2024-10-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
+[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.96 kb | 2024-11-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-04) <br>
 
 >Adds a shipyard with the three Kor Efret ships to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships and some Korath Exiles outfits. See the readme for details.
 
@@ -854,6 +898,14 @@ Available ships:<br>
 <br>
 Available outfits:<br>
 <ul>
+<li>"Cluster Mine Rack"</li>
+<li>"Cluster Mine"</li>
+<li>"Piercer Missile Rack"</li>
+<li>"Piercer Missile"</li>
+<li>"Firestorm Torpedo Rack"</li>
+<li>"Firestorm Torpedo"</li>
+<li>"Firelight Storage Rack"</li>
+<li>"Firelight Missile"</li>
 <li>Digger Mining Beam</li>
 <li>Banisher Grav-Turret</li>
 <li>Warder Anti-Missile</li>
@@ -905,6 +957,9 @@ Available outfits:<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-11-04<br>
+added korath ammunition (thx to MeretiJane)<br>
 <br>
 2024-10-29<br>
 added System Core (Tiny), (thx timeout.fu)<br>
@@ -1037,9 +1092,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 1.4 mb | 2024-05-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 5.63 mb | 2025-02-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-08) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-10) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -1048,7 +1103,7 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### more.boarding.missions <br>
 <br>
 <br>
-Adds 87 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independant, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer), Wanderer, Ka'het, Remnant, Gegno Vi and Gegno Scin can trigger them. Bigger ships give higher rewards.<br>
+Adds 96 repeatable boarding and assisting missions. Boarding/assisting Free Worlds, Republic, Syndicate, Militia, Merchant, Independent, Pirates, Korath, Hai, Hai Unfettered, Pug, Pug (Wanderer), Wanderer, Ka'het, Aberrant, Avgi, Remnant, Gegno Vi and Gegno Scin can trigger them. Bigger ships give higher rewards.<br>
 <br>
 Only natural spawning ships can trigger these missions and ships spawned from jobs/missions or marauder hunting fleets doesn't trigger. Remnant assisting chances and Ka'het boarding chances are so high, cause of the rarity to find a boardable ship.<br>
 <br>
@@ -1062,6 +1117,8 @@ Only natural spawning ships can trigger these missions and ships spawned from jo
 <li> 7 Human assisting missions (by ship categories, 20% chance, 10.000 to 30.000 credits)</li>
 <li> 7 Human boarding missions (by ship categories, 20% chance, 10.000 to 30.000 credits)</li>
 <li> 3 Ka'het boarding missions (by ship categories, 25-35% chance, 150.000 to 250.000 credits)</li>
+<li> 2 Aberrrant boarding missions (by ship categories, 15% chance, 150.000 to 200.000 credits)</li>
+<li> 7 Avgi assist8ng missions (by ship categories, 20% chance, 14.000 to 40.000 credits)</li>
 <li> 2 Korath boarding missions (for the bigger ship categories, 15% chance, 20.000 to 30.000 credits)</li>
 <li> 2 Korath boarding missions (for the bigger ship categories, 2-3% chance, outfit "Cloaking Device")</li>
 <li> 7 Pirate boarding missions (by ship categories, 20% chance, 5.000 to 25.000 credits)</li>
@@ -1073,19 +1130,14 @@ Only natural spawning ships can trigger these missions and ships spawned from jo
 <li> 7 Wanderer assisting missions (by ship categories, 10% chance, 50.000 to 100.000 credits)</li>
 <li> support for plugin more.arfectas(6 pug farm boarding missions)</li>
 </ul>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions02.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions03.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions04.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions05.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions06.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions07.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions08.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions09.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.boarding.missions10.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-10<br>
+added @2x images<br>
+added 2 aberrant boarding missions<br>
+added 7 avgi assisting missions<br>
 <br>
 2024-05-08<br>
 fixed hai assisting to include  "Hai Merchant" "Hai Merchant (Sympathizers)" "Hai Merchant (Human)"<br>
@@ -1123,7 +1175,7 @@ added new outfit "Pug War Staff"<br>
 added 5 hai unfettered assisting missions (credits)<br>
 added 5 hai unfettered boarding missions (credits)<br>
 added 3 hai unfettered boarding missions (outfit)<br>
-added "Merchant" and "Independant" to human assisting missions<br>
+added "Merchant" and "Independent" to human assisting missions<br>
 <br>
 2023-08-29<br>
 added 2 korath boarding missions (outfit)<br>

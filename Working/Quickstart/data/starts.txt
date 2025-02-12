@@ -1,0 +1,326 @@
+start "quickstart custom"
+	name "Custom Start (Normal)"
+	description `A customizeable start for Endless Sky. Choose your starting credits and go nuts.`
+	thumbnail "scene/lobby"
+	date 16 11 3013
+	system "Rutilicus"
+	planet "New Boston"
+	conversation "quickstart"
+	account
+		credits 500000
+		score 400
+	set "license: Pilot's"
+	set "custom start used"
+
+conversation "quickstart"
+	scene "scene/lobby"
+	`You find yourself in a strange room. It resembles a hangar, but is immeasurably large. You can't tell if you're dreaming or awake; the space feels liminal, yet comforting, and everything before you is readable. The console in front of you displays a single command: "Enter User Name."`
+	name
+	`	With your name entered, the console abruptly scrolls through what looks like hundreds of lines of text in a blur, the pixels on screen almost melting into the next command. "Enter Starting Finances."`
+	label money
+	`	You have &[credits@credits].`
+	choice
+		`	(Add 500,000 credits.)`
+			goto addcredits
+		`	(Subtract 500,000 credits.)`
+			goto subcredits
+			to display
+				"credits" >= 500000
+		`	(Move onward.)`
+			goto step2
+			to display
+				"credits" > 0
+
+	label addcredits
+	action
+		payment 500000
+	`	500,000 Credits are added to your account.`
+		goto money
+
+	label subcredits
+	action
+		payment -500000
+	`	500,000 Credits are removed from your account.`
+		goto money
+
+	label step2
+	`	Again, the console's text blurs and melts into the next command line. "Enter Clearance."`
+	label licenses
+	`	A huge list of what looks like licenses awaits you.`
+	choice
+		`	(Get a Militia License.)`
+			goto militia
+			to display
+				not "license: Militia"
+		`	(Get a Navy License.)`
+			goto navy
+			to display
+				not "license: Navy"
+		`	(Get a Navy Cruiser License.)`
+			goto navycruiser
+			to display
+				not "license: Navy Cruiser"
+		`	(Get a Navy Carrier License.)`
+			goto navycarrier
+			to display
+				not "license: Navy Carrier"
+		`	(Get a Navy Auxiliary License.)`
+			goto navyauxiliary
+			to display
+				not "license: Navy Auxiliary"
+		`	(Get a City-Ship License.)`
+			goto cityship
+			to display
+				not "license: City-Ship"
+		`	(Get a Remnant License.)`
+			goto remnant
+			to display
+				not "license: Remnant"
+		`	(Get a Remnant Capital License.)`
+			goto remnantcapital
+			to display
+				not "license: Remnant Capital"
+		`	(Get a Wanderer Outfits License.)`
+			goto wandereroutfits
+			to display
+				not "license: Wanderer Outfits"
+		`	(Get a Wanderer License.)`
+			goto wanderer
+			to display
+				not "license: Wanderer"
+		`	(Get a Wanderer Military License.)`
+			goto wanderermilitary
+			to display
+				not "license: Wanderer Military"
+		`	(Get a Coalition License.)`
+			goto coalition
+			to display
+				not "license: Coalition"
+		`	(Get a Heliarch License.)`
+			goto heliarch
+			to display
+				not "license: Heliarch"
+		`	(Get a Gegno Civilian License.)`
+			goto gegnocivilian
+			to display
+				not "license: Gegno Civilian"
+		`	(Get a Gegno Driller License.)`
+			goto gegnodriller
+			to display
+				not "license: Gegno Driller"
+		`	(Get a Scin Adjutant License.)`
+			goto scinadjutant
+			to display
+				not "license: Scin Adjutant"
+		`	(Get a Scin Hoplologist License.)`
+			goto scinhoplologist
+			to display
+				not "license: Scin Hoplologist"
+		`	(Get a Scin Architect License.)`
+			goto scinarchitect
+			to display
+				not "license: Scin Architect"
+		`	(Get a Vi Evocati License.)`
+			goto vievocati
+			to display
+				not "license: Vi Evocati"
+		`	(Get a Vi Centurion License.)`
+			goto vicenturion
+			to display
+				not "license: Vi Centurion"
+		`	(Get a Vi Lord License.)`
+			goto vilord
+			to display
+				not "license: Vi Lord"
+		`	(Move onward.)`
+			goto step3
+
+	label militia
+	action
+		set "license: Militia"
+	`	An image of a Militia license appears over the screen briefly.`
+		goto licenses
+
+	label navy
+	action
+		set "license: Navy"
+	`	An image of a Navy license appears over the screen briefly.`
+		goto licenses
+
+	label navycruiser
+	action
+		set "license: Navy Cruiser"
+	`	An image of a Navy Cruiser license appears over the screen briefly.`
+		goto licenses
+
+	label navycarrier
+	action
+		set "license: Navy Carrier"
+	`	An image of a Navy Carrier license appears over the screen briefly.`
+		goto licenses
+
+	label navyauxiliary
+	action
+		set "license: Navy Auxiliary"
+	`	An image of a Navy Auxiliary license appears over the screen briefly.`
+		goto licenses
+
+	label cityship
+	action
+		set "license: City-Ship"
+	`	An image of a City-Ship license appears over the screen briefly.`
+		goto licenses
+
+	label remnant
+	action
+		set "license: Remnant"
+	`	A model of a Remnant license appears over the screen briefly.`
+		goto licenses
+
+	label remnantcapital
+	action
+		set "license: Remnant Capital"
+	`	A model of a Remnant Capital license appears over the screen briefly.`
+		goto licenses
+
+	label wandereroutfits
+	action
+		set "license: Wanderer Outfits"
+	`	An image of a Wanderer Outfits license appears over the screen briefly.`
+		goto licenses
+
+	label wanderer
+	action
+		set "license: Wanderer"
+	`	An image of a Wanderer license appears over the screen briefly.`
+		goto licenses
+
+	label wanderermilitary
+	action
+		set "license: Wanderer Military"
+	`	An image of a Wanderer Military license appears over the screen briefly.`
+		goto licenses
+
+	label coalition
+	action
+		set "license: Coalition"
+	`	An image of a Coalition license appears over the screen briefly.`
+		goto licenses
+
+	label heliarch
+	action
+		set "license: Heliarch"
+	`	A model of a Heliarch license appears over the screen briefly.`
+		goto licenses
+
+	label gegnocivilian
+	action
+		set "license: Gegno Civilian"
+	`	An image of a Gegno license appears over the screen briefly.`
+		goto licenses
+
+	label gegnodriller
+	action
+		set "license: Gegno Driller"
+	`	An image of a Gegno license appears over the screen briefly.`
+		goto licenses
+
+	label scinadjutant
+	action
+		set "license: Scin Adjutant"
+	`	An image of a Scin Adjutant license appears over the screen briefly.`
+		goto licenses
+
+	label scinhoplologist
+	action
+		set "license: Scin Hoplologist"
+	`	An image of a Scin Hoplologist license appears over the screen briefly.`
+		goto licenses
+
+	label scinarchitect
+	action
+		set "license: Scin Architect"
+	`	An image of a Scin Architect license appears over the screen briefly.`
+		goto licenses
+
+	label vievocati
+	action
+		set "license: Vi Evocati"
+	`	An image of a Vi Evocati license appears over the screen briefly.`
+		goto licenses
+
+	label vicenturion
+	action
+		set "license: Vi Centurion"
+	`	An image of a Vi Centurion license appears over the screen briefly.`
+		goto licenses
+
+	label vilord
+	action
+		set "license: Vi Lord"
+	`	An image of a Vi Lord license appears over the screen briefly.`
+		goto licenses
+
+	label step3
+	`	With another ebb and flow of its interface, the terminal spits out a long list of complicated-looking commands. You have no idea what any of them is referring to, but maybe someone more important does.`
+	label campaigns
+	choice
+		`	(Skip the Free Worlds Campaign.)`
+			goto freeworlds
+			to display
+				not "main plot completed"
+		`	(Move on.)`
+			goto end
+
+	label freeworlds
+	action
+		event "war begins" 1
+		event "initial deployment 1" 1
+		event "initial deployment 2" 1
+		event "initial deployment 3" 1
+		event "central outfitters expansion" 1
+		event "southern carriers 1" 1
+		event "southern carriers 2" 1
+		event "southern carriers 3" 1
+		event "southern carriers 4" 1
+		event "initial deployment 4" 1
+		event "fw zug expansion underway" 1
+		event "fw zug expansion complete" 2
+		event "capture of Kornephoros" 1
+		event "recapture of Kornephoros" 2
+		event "oathkeepers founded" 1
+		event "syndicate convoys to Tarazed" 1
+		event "Tarazed neutrality" 2	
+		event "syndicate assistance" 3
+		event "Thule becomes independent" 1
+		event "navy using mark ii ships" 1
+		event "fw southern expansion" 2
+		event "fw occupying the north" 3
+		event "fw northern expansion" 4
+		event "Poisonwood reverts to Republic" 5
+		event "bloodsea joins free worlds" 6
+		event "bloodsea spaceport completed" 7
+		event "albatross joins free worlds" 8
+		event "fw expanded and cut" 9
+		event "fw armistice" 10
+		event "fw tarazed joins" 11
+		event "pirate use jousting cutthroat" 1
+		event "fw conservatory founded" 1
+		event "navy out of rastaban" 11
+		event "quickstart free worlds campaign changes" 12
+		event "quickstart free worlds shop changes" 1
+		event "Deep memorial completed" 22
+		event "geminus rebuilt" 22
+		event "martini recovers" 22
+		set "event: war begins: done"
+		set "event: war begins: offered"
+		set "FW Southern Break Ends: done"
+		set "FW Southern Break Ends: offered"
+		set "chosen sides"
+		set "main plot completed"
+		"reputation: Neutral" = 100
+	`	You hear machinery clunk and whirr around you, filling you with an uncomfortable feeling. It's as if time itself is preparing to jump forward.`
+		goto campaigns
+
+	label end
+	`The terminal aburptly flashes bright enough to make you lurch awake. On your bed rests your faithful datapad displaying the credit value on the console in your apparent dream, but also a new license. You'd best not question it; the galaxy calls.`

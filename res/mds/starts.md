@@ -1,16 +1,16 @@
 
-All Plugins (574)
+All Plugins (581)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (43) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (67)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (139) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (15) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (77) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Starts
 
-<p>15 plugins in this category.<p>
+<p>17 plugins in this category.<p>
 
 
  
@@ -84,9 +84,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/better.starts/icon.png' height='100'></img><br>
 
 
-[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 22.7 kb | 2024-11-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
+[better.starts.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/better.starts.zip) | 23.08 kb | 2024-12-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/better.starts/) <br>
 Author: zuckung | Category: Starts <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-19) <br>
 
 >Adds several new start options with different ships, background storys, credits and debts. See the readme for details.
 >
@@ -295,6 +295,30 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### Mining Start
+<img src='../../Working/Mining Start/icon.png' height='100'></img><br>
+
+
+[Mining.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.Start.zip) | 27.15 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mining%20Start/) <br>
+Author: Loymdayddaud | Category: Starts <br>
+[https://github.com/TheGiraffe3/mining-start](https://github.com/TheGiraffe3/mining-start) (last commit 2024-11-30) <br>
+
+>Adds a mining start.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>A plugin for [Endless Sky](https://github.com/endless-sky/endless-sky) that adds a new start for mining.
+
+</blockquote>
+</details>
+
+Status: In progress, but may be added to <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Pirate Planets
 
 
@@ -367,6 +391,34 @@ Author: Zoura (AvianGeneticist) | Category: Starts <br>
 </details>
 
 Status: Playable on 0.9.15/0.9.16. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Quickstart
+
+
+[Quickstart.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quickstart.zip) | 4.71 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quickstart/) <br>
+Author: Zoura | Category: Starts <br>
+[https://github.com/AvianGeneticist/Quickstart](https://github.com/AvianGeneticist/Quickstart) (last commit 2024-07-08) <br>
+
+>Adds a customizable start.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Quickstart
+ Adds a customizeable start to Endless Sky.
+ 
+ Usage of this plugin is very simple; just start a new pilot with the "Custom Start" start.
+ 
+ NOTICE: The "Skip Free Worlds Campaign" feature is experimental and may cause bugs in your game. Use at your own risk.
+
+</blockquote>
+</details>
+
+Status: Complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

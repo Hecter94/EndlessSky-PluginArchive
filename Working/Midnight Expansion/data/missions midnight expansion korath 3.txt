@@ -280,3 +280,276 @@ mission "Midnight Expansion Sestor Baran Salvage"
 			label ignore
 			`	The threat of getting caught in the sand storm is too great a risk and you leave the wreck to be buried in the approaching storm.`
 				flee
+
+
+
+mission "Midnight Expansion Korbatar Makwar Antique 1"
+	landing
+	invisible
+	to offer
+		has "main plot completed"
+	on enter "Kor Ak'Mari"
+		conversation
+			scene "thumbnail/X-27 Korath Battleship thumbnail"
+			`A heavily armed Korath battleship is patrolling this system...`
+	npc kill
+		government "Korath (Civilian)"
+		system "Kor Ak'Mari"
+		personality waiting staying heroic vindictive
+		"cargo settings"
+			cargo 5
+			commodities "Food" "Medical"
+			outfitters "Firestorm Torpedo Ammo" "Cluster Mine"
+		ship "Korbatar Makwar" "Antek Bashur"
+		on kill
+			set "destroyed Korbatar Makwar Antique"
+			fail
+
+outfitter "Firestorm Torpedo Ammo"
+	"Firestorm Torpedo"
+	"Firestorm Torpedo Rack"
+
+mission "Midnight Expansion Korbatar Makwar Antique 2"
+	landing
+	invisible
+	source "Far'en Lai"
+	to offer
+		has "Midnight Expansion Korbatar Makwar Antique 1: active"
+		has "Wanderers: Sestor: Exiles 2: active"
+		not "destroyed Korbatar Makwar Antique"
+	on offer
+		fail "Midnight Expansion Korbatar Makwar Antique 1"
+	npc kill
+		government "Korath (Civilian)"
+		system "Kor Nor'peli"
+		personality waiting staying heroic vindictive
+		"cargo settings"
+			cargo 5
+			commodities "Food" "Medical"
+			outfitters "Firestorm Torpedo Ammo" "Cluster Mine"
+		ship "Korbatar Makwar" "Antek Bashur"
+		on kill
+			set "destroyed Korbatar Makwar Antique"
+			fail
+
+mission "Midnight Expansion Korbatar Makwar Efret 1"
+	minor
+	invisible
+	to offer
+		has "event: label korath space"
+		random < 50
+	on offer
+		conversation
+			scene "thumbnail/X-27 Korath Battleship thumbnail"
+			`A large crowd of Efreti are gathered around an old battleship. The owners appear to be offering tours to the local youth while elderly Efreti give lengthy speeches to them. While you can't understand the words, they remind you of teachers lecturing children on a field trip.`
+				decline
+
+mission "Midnight Expansion Korbatar Makwar Efret 2"
+	landing
+	invisible
+	to offer
+		has "Midnight Expansion Korbatar Makwar Efret 1: declined"
+		has "Scrapyard Derelict World Ship: done"
+	on enter Furmeliki
+		conversation
+			scene "thumbnail/X-27 Korath Battleship thumbnail"
+			`A heavily armed Efreti battleship is patrolling this system...`
+	npc kill
+		government "Kor Efret"
+		system Furmeliki
+		personality waiting staying heroic vindictive
+		"cargo settings"
+			cargo 4
+			commodities "Food" "Medical"
+			outfitters "Korath Fireswarm" "Cluster Mine"
+		ship "Korbatar Makwar (Efret Upgrade)" "Pratur Grator"
+		on kill
+			set "destroyed Korbatar Makwar Efret"
+			fail
+
+outfitter "Korath Fireswarm"
+	"Korath Fireswarm"
+
+outfitter "Cluster Mine"
+	"Cluster Mine"
+
+mission "Midnight Expansion Korbatar Makwar Ember 1"
+	minor
+	name "Korbatar Makwar"
+	description "The Korath have brought one of their largest battleships to <waypoints>. Capture or destroy it if you can."
+	source
+		government "Remnant"
+		not attributes "station"
+	waypoint Lucina
+	to offer
+		has "event: remnant: tubfalet appearance"
+		random < 30
+	on offer
+		event "ember korbatar makwar begin"
+		conversation
+			scene "thumbnail/X-27 Korath Battleship thumbnail"
+			`The space port is active with Remnant military personnel on high alert. When you ask one what is going on, you are informed that a Korbatar Makwar, one of the largest Korath battleships, has entered <waypoints>. Looking at the scans, one could almost mistake it for a small space station. No doubt the Remnant leadership is debating how best to deal with it.`
+				accept
+	on enter Lucina
+		conversation
+			scene "thumbnail/X-27 Korath Battleship thumbnail"
+			branch "kalishik'utar notoriety"
+				has "Thraal: Korath Ambush: failed"
+			`There it is: a massive battleship so large the Korath can use it as a mobile base. It would be quite the catch to take it for yourself... However, with the threat it poses, the Remnant should be happy enough to just see it destroyed.`
+				accept
+			label "kalishik'utar notoriety"
+			`There it is: a massive battleship so large the Korath can use it as a mobile base. It would be quite the catch to take it for yourself... However, with the threat it poses, the Remnant should be happy enough to just see it destroyed.`
+			`	Suddenly, the big ship hails! An angry Korath glares at you, its nostrils flared, and utters your name and Thraal's. It seems you've gained some notoriety after the destruction of the Kalishik'utar armada thanks to Thraal. The Korath seems to be flinging curses or insults at you, but the words are still alien to your ears. Finally it cuts communication and its fleet begins to attack.`
+				accept
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 9
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Palavret (Ember)"
+				"'olofez" 2
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 8
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Tubfalet (Magnetic Mine flip)"
+				"'olofez" 3
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 7
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Palavret (Ember Shunt)"
+				"'olofez" 2
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 6
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Tubfalet (Magnetic Mine)"
+				"'olofez" 3
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 5
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Palavret (Ember Blaze)"
+				"'olofez" 2
+	npc
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Kar'iyar (Ember)" 2
+				"Korath Scouter (Fire-Lance)" 2
+				"'olofez" 14
+	npc
+		government "Korath"
+		system Lucina
+		personality waiting staying mining harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 0
+			variant
+				"Rano'erek (Digger Scavenger)"
+				"Far'itar (Jump)" 2
+				"Far'itar B (Jump)"
+				"'olofez (Digger)" 4
+	npc kill
+		government "Korath"
+		system Lucina
+		personality waiting staying timid vindictive
+		"cargo settings"
+			cargo 5
+			commodities "Food" "Medical"
+			outfitters "Magnetic Mine Ammo" "Firelight Missile"
+		ship "Korbatar Makwar (Exile Upgrade)" "Istor Ma'akar"
+		on kill
+			set "destroyed Korbatar Makwar Ember"
+		dialog `Your attack on the Korbatar Makwar was a success. Return to <destination> and inform the Remnant.`
+	on complete
+		event "ember korbatar makwar end"
+		payment 1000000
+		conversation
+			scene "thumbnail/PR4987 korath refuge"
+			`The Remnant congratulate you on eliminating the Korbatar Makwar threat. A reward of <payment> is deposited into your account.`
+
+outfitter "Firelight Missile"
+	"Firelight Missile"
+
+event "ember korbatar makwar begin"
+	system "Lucina"
+		add fleet "Korath Raid" 25000
+	system "Parca"
+		add fleet "Korath Raid" 15000
+	system "Coluber"
+		add fleet "Korath Raid" 15000
+	system "Levana"
+		add fleet "Korath Raid" 15000
+
+event "ember korbatar makwar end"
+	system "Lucina"
+		remove fleet "Korath Raid"
+	system "Parca"
+		remove fleet "Korath Raid"
+	system "Coluber"
+		remove fleet "Korath Raid"
+	system "Levana"
+		remove fleet "Korath Raid"
+
+

@@ -1,0 +1,51 @@
+# Copyright (c) 2024 by Loymdayddaud
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
+mission "Rumskib: Large Pirate Fleet Elimination"
+	job
+	repeat
+	name "Warfleet Elimination"
+	description "Eliminate a large fleet of advanced pirates who have been harassing law enforcement ships near <system>. Payment is <payment>."
+	"apparent payment" 2500000
+	source
+		government "Free Worlds" "Neutral" "Republic" "Syndicate"
+	to offer
+		"combat rating" > 5000
+		random < 2
+		"reputation: Pirate" < -100
+	npc kill
+		government "Pirate"
+		personality heroic
+		fleet "Pirate Variants"
+		ship "Scrapper" "Ali Baba"
+		on kill
+			payment 2500000
+
+
+mission "Rumskib: Cutlass Production"
+	job
+	repeat
+	name "Capture Gunboat"
+	description "An individual on <origin> would like a Gunboat to renovate. Obtain one and bring it to <planet> for <payment>."
+	source
+		government "Pirate"
+	to offer
+		"combat rating" > 500
+		random < 22
+		"reputation: Republic" < 0
+	to complete
+		has "ship model: Gunboat"
+		not "flagship model: Gunboat"
+	on complete
+		payment 3500000
+		take ship Gunboat
+			"with outfits"
+		dialog "The Gunboat is taken off your hands and you are paid <payment>."

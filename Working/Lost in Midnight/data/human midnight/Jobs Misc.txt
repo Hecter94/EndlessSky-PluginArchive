@@ -584,9 +584,6 @@ ship "Marauder Arrow" "Cupid's Arrow"
 		"engine capacity" 20
 		"weapon capacity" 5
 
-phrase "Saint Nick"
-	word
-		"Saint Nick"
 
 mission "Holiday: Saint Nick"
 	job
@@ -609,15 +606,15 @@ mission "Holiday: Saint Nick"
 		government "Pirate"
 		system destination
 		personality plunders harvests
-		ship "Fury (Bomber)" "Rockin' Elfis"
-		ship "Fury (Bomber)" "Bah Humbug"
+		ship "Fury (Bomber)" "Krampus"
+		ship "Fury (Bomber)" "Mouse King"
 	npc
 		to spawn
 			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 1
 		government "Pirate"
 		system destination
 		personality waiting staying plunders harvests
-		ship "Marauder Falcon (Weapons)" "Krampus"
+		ship "Marauder Falcon (Weapons)" "Bah Humbug"
 	npc
 		to spawn
 			"ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 2
@@ -634,16 +631,14 @@ mission "Holiday: Saint Nick"
 		ship "Bactrian" "Bad Santa"
 		ship "Dagger" "Snow Devil"
 		ship "Dagger" "Jack Frost"
-		ship "Dagger" "Rotten Eggnog"
+		ship "Dagger" "El Caganer"
 	npc accompany save
 		government "Merchant"
 		personality target escort pacifist
-		fleet
-			names "Saint Nick"
+		"cargo settings"
 			cargo 1
 			commodities "Luxury Goods"
-			variant
-				"Container Transport (Billboard Christmas)"
+		ship "Container Transport (Billboard Christmas)" "Saint Nick"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
 	on complete
@@ -1446,6 +1441,122 @@ mission "Midnight Cargo Trap (South) [Kludge]"
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
 
 
+mission "Midnight FW Convoy Defense [Bounty Hunters]"
+	job
+	repeat
+	name `Convoy to <planet>`
+	description `The shipyard on <planet> is in need of more supplies for building warships. Immediately escort a convoy of ships to <destination> by <date>. Payment is <payment>.`
+	deadline 1 1
+	to offer
+		random < 5
+		has "salary: Free Worlds"
+		or
+			has "FW Convoy Defense [0]: done"
+			has "FW Convoy Defense [1]: done"
+			has "FW Convoy Defense [2]: done"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+		attributes "mining" "factory"
+		not attributes shipyard
+	destination
+		government "Free Worlds"
+		attributes shipyard
+		distance 2 6
+	npc
+		government "Bounty Hunter"
+		personality nemesis waiting staying heroic
+		system destination
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 2
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Ship Alloys" "Ship Systems" "Free Worlds Outfits"
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 2
+				"Bastion"
+			variant
+				"Behemoth"
+				"Clipper" 2
+			variant
+				"Behemoth" 2
+			variant
+				"Hauler III"
+				"Bastion" 2
+			variant
+				"Hauler II" 2
+				"Osprey"
+			variant
+				"Argosy" 2
+				"Osprey"
+	on complete
+		payment 270000
+		dialog phrase "free worlds convoy supplies payment"
+	on visit
+		dialog `You have reached <planet>, but you left part or all of the convoy behind! Better depart and wait for them to arrive in this star system.`
+
+mission "Midnight FW Scout Run [ambush]"
+	job
+	repeat
+	name `Scouting Run`
+	description `Fly through the <waypoints> systems and scout them out for Navy activity. Then return to <destination> by <date> where your ship's scanner logs will be analyzed. Payment is <payment>.`
+	deadline
+	to offer
+		random < 15
+		has "salary: Free Worlds"
+		or
+			has "FW Scout Run [0]: done"
+			has "FW Scout Run [1]: done"
+			has "FW Scout Run [2]: done"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	waypoint
+		distance 2 3
+		government "Republic"
+		not system "Graffias"
+	waypoint
+		distance 3 4
+		government "Republic"
+		not system "Graffias"
+	on waypoint
+		set "midnight fw scout job ambush"
+		dialog "Scanners detect signs of a large Navy fleet in the area!"
+	npc
+		to spawn
+			has "midnight fw scout job ambush"
+		government "Republic"
+		personality target entering heroic
+			confusion 10
+		fleet "Large Republic"
+		fleet "Small Republic" 2
+	on fail
+		clear "midnight fw scout job ambush"
+	on abort
+		clear "midnight fw scout job ambush"
+	on complete
+		payment 30000 180
+		clear "midnight fw scout job ambush"
+		dialog phrase "free worlds scanner payment"
+	on visit
+		dialog `You have landed on <planet>, but you have yet to scout out all the marked systems. Visit all the systems marked on your map before returning.`
+
 
 mission "Midnight: Search For Survivors (Free Worlds)"
 	job
@@ -1634,15 +1745,15 @@ mission "Midnight Spaceport Nuisance"
 			cargo 0
 			variant
 				"Scrapper (Spotlight)"
+		dialog "The government of <origin> pays you 5,000 credits for disabling the <npc>. The local authorities will handle the rest."
 		on disable
 			payment 5000
 			"combat rating" ++
-			dialog "The government of <origin> pays you 10,000 credits for disabling the <npc>. The local authorities will handle the rest."
 			fail
 		on kill
 			set "killed spaceport nuisance"
 			"combat rating" -= 10
-			dialog "The government of <origin> has barred you from accepting any more jobs handling spaceport nuisances due to the destruction of the <npc>."
+			dialog "The government of <origin> has barred you from accepting any more jobs handling spaceport nuisances due to the destruction of the mission target."
 			fail
 
 

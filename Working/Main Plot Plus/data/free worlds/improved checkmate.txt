@@ -12,10 +12,16 @@ disable mission "MGFB: FW Defend New Tibet"
 disable mission "MGFB: FW Liberate Delta Sagittarii"
 disable mission "MGFB: FWC Attack Kaus Borealis"
 
-# Credit to Amazinite for most of the improvements. Credit to Azure3141 for the augmented nukes.
+# Credit to Amazinite for most of the improvements, including the nuclear launch bay. Credit to Azure3141 for the augmented nukes themselves.
 
 # All Content Plugin
 outfitter "All Outfits"
+    "Nuclear Launch Bay"
+    "Nuclear Missile (Augmented)"
+
+# Omnis
+outfitter "human plugin"
+    "Nuclear Launch Bay"
     "Nuclear Missile (Augmented)"
 
 government "Terrorist"
@@ -29,12 +35,11 @@ government "Terrorist"
         "Free Worlds" -.01
     "bribe" 0
     "hostile hail" "hostile pirate"
+    "hostile disabled hail" "hostile disabled pirate"
 
 event "fwc battle of alcyone"
     system "Alcyone"
         fleet "Small Syndicate" 5000
-
-
 
 event "fwc navy occupies alcyone"
     system "Alcyone"
@@ -61,6 +66,7 @@ event "fwc navy done with alcyone"
 
 event "fwc solace has augmented nukes"
     outfitter "Nuke"
+        "Nuclear Launch Bay"
         "Nuclear Missile (Augmented)"
 
 outfit "Nuclear Missile"
@@ -69,14 +75,26 @@ outfit "Nuclear Missile"
         Militia
 
 outfit "Nuclear Missile (Augmented)"
-    category "Secondary Weapons"
-    cost 100000
+    "display name" "Nuclear Missile (Mark II)"
+    category "Ammunition"
+    cost 80000
     thumbnail "outfit/nuke"
     licenses
         Militia
-    "mass" 10
-    "outfit space" -10
-    "weapon capacity" -10
+    "mass" 8
+    "outfit space" -8
+    "weapon capacity" -8
+    description "This is a more powerful nuclear missile, acting as ammunition for the Nuclear Launch Bay. The mechanisms that allow nuclear missiles to be fired without a launcher have been removed."
+
+outfit "Nuclear Launch Bay"
+    category "Secondary Weapons"
+    cost 1000000
+    thumbnail "nuke-launcher"
+    licenses
+        Militia
+    "mass" 5
+    "outfit space" -5
+    "weapon capacity" -5
     "gun ports" -1
     weapon
         sprite "projectile/missile"
@@ -93,7 +111,7 @@ outfit "Nuclear Missile (Augmented)"
         "hit effect" "medium explosion"
         "inaccuracy" 1
         "velocity" 6
-        "lifetime" 60
+        "lifetime" 800
         "reload" 400
         "firing energy" 10
         "firing heat" 400
@@ -106,10 +124,7 @@ outfit "Nuclear Missile (Augmented)"
         "shield damage" -23700
         "hull damage" -15800
         "hit force" -5700
-        "missile strength" 200
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
-    description "    [Nuclear missiles are a one-shot weapon: each missile occupies a gun slot, and after it is fired, the slot it was in is left empty.]"
-
 
 outfit "Active Nuclear Missile"
     weapon
@@ -238,55 +253,6 @@ mission "FW Question the Syndicate"
             label "definitely rescue"
             `    JJ seems very relieved at your choice. "I think that's the right choice, Captain," he says. "We can take the fleet we have here, sweep up north to avoid the thickest part of the Navy's occupying fleet, and cut over to New Tibet to question the Syndicate in person."`
                 accept
-
-mission "FW Defector Escorts"
-    invisible
-    landing
-    to offer
-        has "FW Rand 1B: done"
-        not "FW Defend New Tibet: offered"
-    to fail
-        or
-            and
-                not "FW Defend New Tibet (patched): active"
-                not "installed plugin: Main Plot Plus"
-            has "fw did not rescue defector"
-            has "FW Defend New Tibet: done"
-    npc
-        # Force removal of escorts immediately
-        to despawn
-            not "installed plugin: Main Plot Plus"
-        government "Free Worlds"
-        personality disables escort heroic
-        ship "Dreadnought" "F.S. Holly"
-        ship "Falcon (Plasma)" "F.S. Nebula"
-        ship "Skein" "F.S. Larkspur"
-        ship "Finch" "Charlie 6-2"
-        ship "Finch" "Charlie 0-9"
-        ship "Finch" "Charlie 3-1"
-        ship "Finch" "Charlie 9-1"
-        ship "Finch" "Charlie 1-5"
-        ship "Finch" "Charlie 8-4"
-        ship "Skein" "F.S. Ironwood"
-        ship "Finch" "Echo 5-3"
-        ship "Finch" "Echo 4-1"
-        ship "Finch" "Echo 2-3"
-        ship "Finch" "Echo 5-8"
-        ship "Finch" "Echo 2-4"
-        ship "Finch" "Echo 6-9"
-        ship "Argosy" "F.S. Nightingale"
-
-    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
-    npc
-        # Force removal of escorts immediately
-        to despawn
-            or
-                not "installed plugin: Mega Freight Battles"
-                not "installed plugin: Main Plot Plus"
-        government "Free Worlds"
-        personality disables escort heroic
-        ship "Eleonorae" "F.S. Resolute"
-        ship "PAS-2 Bulwark" "F.S. Morning Star"
 
 mission "FW Defend New Tibet (patched)"
     name "Defend New Tibet"
@@ -461,52 +427,6 @@ mission "FW Liberate Delta Sagittarii (patched)"
             names "free worlds capital"
             variant
                 "Dreadnought"
-
-    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
-    npc
-        to despawn
-            not "installed plugin: Mega Freight Battles"
-        government "Free Worlds"
-        personality escort heroic
-        fleet
-            names "free worlds capital"
-            fighters
-                names "free worlds fighters"
-            variant
-                "Eleonorae"
-                "PF-80 Intrepid"
-                "PAS-3 Barbette"
-                "PAS-2 Bulwark" 2
-                "PCS-4 Castle"
-                "Finch" 40
-                "AGT-31 Xencar" 40
-                "CS-24 Garrison"
-                "Finch" 10
-                "AGT-31 Xencar" 6
-                "TS-CH0 Kratzbal" 3
-
-    # Taken from "mgfb missions" from "Mega Freight Battles" by 1010todd to ensure compatibility
-    npc
-        to despawn
-            not "installed plugin: Mega Freight Battles"
-        government "Free Worlds"
-        personality heroic escort
-        system Dschubba
-        fleet
-            names "free worlds capital"
-            fighters
-                names "free worlds fighters"
-            variant
-                "PCS-5 Citadel"
-                "SWV4 Ravelin" 2
-                "EP-3 Rat" 8
-                "Finch" 44
-                "AGT-31 Xencar" 100
-                "PAS-2 Bulwark" 3
-                "PAS-3 Barbette" 2
-                "PF-80 Intrepid" 2
-                "TS-CH0 Kratzbal" 5
-
     npc evade
         government "Republic"
         personality heroic staying
@@ -827,7 +747,7 @@ mission "FWC Attack Kaus Borealis (patched)"
         set "MGFB: FWC Attack Kaus Borealis: offered"
         event "fwc attack kaus borealis"
         conversation
-            `When you return to New Portland, a sizeable Free Worlds fleet is already parked on the landing pads surrounding the spaceport. JJ explains to you, "When the Navy struck and cut our territory in half, a lot of these ships were cut off from their chain of command and just went and sheltered wherever they could. So it took a bit of doing to gather them all together. And now what we need is another stirring victory, or they'll begin to scatter again."`
+            `When you return to New Portland, a sizable Free Worlds fleet is already parked on the landing pads surrounding the spaceport. JJ explains to you, "When the Navy struck and cut our territory in half, a lot of these ships were cut off from their chain of command and just went and sheltered wherever they could. So it took a bit of doing to gather them all together. And now what we need is another stirring victory, or they'll begin to scatter again."`
             choice
                 `    "Are you saying we risk having members of our militia desert?"`
                     goto desert
@@ -1280,7 +1200,7 @@ mission "FW Epilogue: Danforth (patched)"
 
             label next
             `    "Are the pirates giving you any trouble?" you ask.`
-            `    "A bit," he says. "We still have far too many pirates in this sector, in part due to the Free Worlds driving them out of the South. The pirates grew stronger and more bold as the war dragged on, when all our fleets were busy elsewhere, but now we're beginning to get them under control again."`
+            `    "A bit," he says. "We still have far too many pirates in this sector, in part due to the Free Worlds mostly driving them out of the South. The pirates grew stronger and more bold as the war dragged on, when all our fleets were busy elsewhere, but now we're beginning to get them under control again."`
 
             branch checkmate2
                 has "free worlds checkmate"
@@ -1309,12 +1229,15 @@ mission "FWC Epilogue: Wolf Pack"
             choice
                 `    "Yes I am. What is it?"`
                 `    "I wouldn't call myself a hero, but if you insist. What did the Syndicate bring?"`
-            `    Odie brings you to a warehouse full of crates. One of the crates is open, revealing a weapon inside. "Plans for improved nuclear missiles. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
+            scene "nuke-launcher"
+            `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to drop off the blueprints for a working feed system."`
+            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
             choice
                 `    "Now that sounds like an exciting weapon to use."`
                     goto exciting
-                `    "Why do you think they gave it to us? Why did they even have this?"`
-            `    "I don't know why they have it or why they gave it to us. I didn't ask any questions, I just got right to work making it.`
+                `    "Why do you think they gave these to us? Why did they even have these?"`
+            `    "I don't know why they have them or why they gave them to us. I didn't ask any questions, I just got right to work making the weapon.`
             label exciting
+            `    "The nuclear launch bay is able to load two missiles at a time, and it weighs 21 tons."`
             `    Odie pats you on the back and smiles. "And we're giving you access to it. For a price, of course." Odie walks off, leaving you to contemplate if you'll make use of such a weapon.`
                 decline
