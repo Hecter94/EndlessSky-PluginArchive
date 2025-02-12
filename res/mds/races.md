@@ -1,8 +1,8 @@
 
-All Plugins (581)
+All Plugins (582)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
-[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (68)<br>
+[Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (69)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
@@ -10,7 +10,7 @@ All Plugins (581)
 
 ## Races
 
-<p>68 plugins in this category.<p>
+<p>69 plugins in this category.<p>
 
 
  
@@ -1765,6 +1765,24 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### The Iltan Race
+
+
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 28.17 mb | 2025-02-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+Author: Zanano Quinito | Category: Races <br>
+[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-12) <br>
+
+>"The Iltan Race" adds the Iltans, along with their systems, ships, outfits, missions, and a new start. They are T3/T4.
+>
+
+
+
+Status: Playable, In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
