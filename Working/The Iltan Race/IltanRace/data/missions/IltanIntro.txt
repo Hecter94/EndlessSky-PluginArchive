@@ -1,0 +1,90 @@
+event "AllowPaintedThresholdAccess"
+	"reputation: Iltan" += 1 #Ignore for wormhole purposes
+	"reputation: PaintedThreshold1" = 1 #allows wormhole use until Reqs can update
+
+event "UpdatePTReqs"
+	planet "Painted Threshold"
+		"required reputation" 0
+
+mission "On Enter Chrali' Hajha"
+	invisible
+	landing
+	to offer
+		"IltanStart" < 1
+	to complete
+		never
+	on enter "Chrali' Hajha"
+		conversation
+			`You drop into an what you assumed was an empty region of space. Strangely, there is a single space station, and what looks like a massive floating doorway nearby. The station hails you and requests visual. After a moment, a reddish skinned humanoid appears on your viewscreen.`
+
+			branch "goodrep"
+				"reputation: Iltan" > 1
+
+			branch "badrep"
+				"reputation: Iltan" < 0
+			action
+				"IltanRepFailed" = 0
+				"reputation: Iltan" = 1
+				"reputation: PaintedThreshold1" = 1 #allows wormhole use until Reqs can update
+				event "UpdatePTReqs"
+			`	 "Greetings. Thank you for your patience, Captain. Not many humans come through here, hence the delay. I am granting you permission to use the Painted Threshold. Please visit the Foreign Ambassador's Office on Iltan. Once there, you may register yourself as a Captain and gain basic access to Iltan goods and services." `
+				decline
+			label "goodrep"
+			action
+				"reputation: Iltan" += 1 #Ignore for wormhole purposes
+				"reputation: PaintedThreshold1" = 1 #allows wormhole use until Reqs can update
+				"IltanRepFailed" = 0
+				event "UpdatePTReqs" 1
+			`	 "Challa ki', Captain. We've been hearing encouraging rumors about you. I am granting you permission to use the Painted Threshold. Please visit the Foreign Ambassador's Office on Iltan. Once there, you may register yourself as a Captain and gain basic access to Iltan goods and services."`
+				decline			
+			label "badrep"
+			action
+				set "IltanRepFailed"
+			`	 "You have some nerve showing up here. Go away." `
+				decline
+				
+mission "IltanRepImproved" #If the player was initially disallowed wormhole access due to rep, but has improved their rep since
+	landing "Kalla' Eq'"
+	to complete
+		never
+	to offer
+		"IltanRepFailed" == 1
+	on offer
+		fail
+	on complete 
+		conversation 
+			"You are allowed to dock with the Iltan gatekeeping station. As soon as you enter the station, you are greeted by an Iltan security officer."
+			` "Greetings, Captain. Welcome to Kalla' Eq'. Despite your past doings, your standing with Iltan has improved enough to allow you access to the Painted Threshold. You may enter the Iltan system." `
+			choice
+				`"..."`
+			` "Once there, please register yourself as a captain at the foreign embassy in order to do business within Iltan space. In the meantime, feel free to enjoy the amenities of our station." `
+			` Without waiting on a response, the officer turns and briskly walks away.`
+
+mission "Meeting the Ambassador"
+	landing
+	source 
+		planet "Iltan"
+	name "Register at the Iltan Foreign Embassy"
+	description "You have been instructed to visit the Iltan Foreign embassy and register yourself as a captain within their space."
+	to offer
+		"reputation: Iltan" > 0
+	on offer
+		log "Factions" "Iltan" `The Iltan are an extremely advanced race of humanoids living outside the known galaxy. They are similar to humans, but with much denser muscles, reddish skin, and a highly developed nervous system that grants them quick reflexes and extreme dexterity. `
+		conversation 
+			`	As you approach Iltan, a traffic controller sends navigation coordinates to the Foreign Embassy's landing zone. Presumably Kalla' Eq' Station sent word of you.`
+			` Landing at the Foreign Embassy, you are greeted outside your ship by three Iltans: a tall, well dressed fellow with tidy hair, a bearded man with glasses, and a security officer who looks rather bored. `
+			` "Greetings, Captain. Welcome to Iltan. My name is Tala Keen, I'm an aide to the ambassador. We won't keep you long. Let's go inside, we will get your forms filled out and you can be on your way." The tall man says, smiling gently.`
+			` You follow the three of them inside the embassy to a nicely furnished office space. You fill out the paperwork saying your origins and intent to operate in Iltan space, and the glasses wearing Iltan takes a couple of biometrics for verification. `
+			` "Okay, everything seems to be in order. You are good to go. Thank you for your cooperation. Goba' Keh, Captain.`
+			branch "NoLicense"
+				"IltanStart" < 1
+			branch "License"
+				"IltanStart" > 0
+			label "License"
+			action
+				outfit "Iltan Basics License"
+				"reputation: Iltan" += 1
+			label "NoLicense"
+			action
+				"reputation: Iltan" += 1
+		fail
