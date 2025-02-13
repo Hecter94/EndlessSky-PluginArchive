@@ -457,9 +457,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/human.labels/icon.png' height='100'></img><br>
 
 
-[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 334.17 kb | 2024-08-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
+[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 1.9 mb | 2025-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-07-13) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-13) <br>
 
 >Reworks the Human area labels and adds area borders. See the README for details.
 >
@@ -469,15 +469,17 @@ Author: zuckung | Category: Graphics <br>
 <blockquote>### human.labels
 <br>
 <br>
-Reworks the Human area labels and adds area borders. See the readme for details.<br>
+Reworks the map labels and adds area borders. See the readme for details.<br>
 <br>
-The area labels of Human space are now smaller and better to see. Also there is a border drawn around each area.<br>
-On Earth's job board you can find a mission to change the color of the labels(light blue, light gray, yellow, dark red, green, dark gray, orange, purple).<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/human.labels01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/human.labels02.jpg' width='400'>
+The area labels are now smaller and better to see. Also there is a border drawn around each human area.<br>
+On Earth's job board you can find a mission to change the color of the labels (light blue, light gray, yellow, dark red, green, dark gray, orange, purple).<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-13<br>
+added @2x images<br>
+added non-human labels<br>
 <br>
 2024-07-13<br>
 corrected script error<br>

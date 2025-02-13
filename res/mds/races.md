@@ -1770,11 +1770,12 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ---
 
 ### The Iltan Race
+<img src='../../Working/The Iltan Race/icon.png' height='100'></img><br>
 
 
-[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 28.17 mb | 2025-02-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 28.78 mb | 2025-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
 Author: Zanano Quinito | Category: Races <br>
-[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-12) <br>
+[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-13) <br>
 
 >"The Iltan Race" adds the Iltans, along with their systems, ships, outfits, missions, and a new start. They are T3/T4.
 >
