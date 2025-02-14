@@ -1615,9 +1615,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Main Plot Plus
 
 
-[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 219.94 kb | 2025-02-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
+[Main.Plot.Plus.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Main.Plot.Plus.zip) | 216.45 kb | 2025-02-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Main%20Plot%20Plus/) <br>
 Author: ziproot | Category: Story <br>
-[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2025-02-10) <br>
+[https://github.com/ziproot/endless-sky-main-plot-plus](https://github.com/ziproot/endless-sky-main-plot-plus) (last commit 2025-02-14) <br>
 
 >A plugin mostly centered around improving the main plot.
 >
@@ -1657,24 +1657,27 @@ Do you know those test dummy missions that you have to do? Well, there's a reaso
 Amazinite had, a long time ago, added changes that improved the Checkmate branch, that ultimately didn't go anywhere, other than some changes in the first part of the campaign rework. These changes will likely be added as part of the next parts of the campaign rework. However, as I am a fan of the Checkmate branch already, I think more people should be doing it, so I am incorporating these changes now, along with some minor fixes. Mostly, these allow you to ask about progress made by the Syndicate in finding the terrorists, and eventually allow you to “fight” them with automatic ships after the Pug invasion. This updated plot is referenced in the Neutrality option, mentioning the Syndicate finding the “terrorists” and the automatic vessels being used as cannon fodder.
 
 ### Nuclear Missile (Mark II)
-I am also changing one major thing: the nuke launcher is three times smaller, but it now launches “mark II nuclear missiles,” which are essentially the buffed nuclear missiles proposed by Azure3141. When these begin being sold, the Syndicate also begin using them instead of regular nukes in a new “Mark II Nuclear” loadout in the systems raided by the Korath. This Manta loadout has two nuclear launch bays holding four mark II missiles, and two sidewinder missile launchers holding 90 sidewinder missiles, the latter of which ensure that the Mantas use the “missile boat” AI, making them less likely to blow themselves up. The old nuclear missiles are 10x cheaper than the nuclear missiles in vanilla are, i.e. they cost 100,000 credits each instead of a million credits each. The nuclear launch bay costs 1 million credits, but each mark II nuke only costs 80,000 credits, and these nukes *are* sold at the general store, so you can restock from any outfitter. Notably, there is no storage container for the mark II nukes; each one takes up weapon and outfit space directly, which is the main reason why the nuclear launch bay takes up so little outfit space on its own.
+I am also changing one major thing: the nuke launcher is three times smaller, but it now launches “mark II nuclear missiles,” which are essentially the buffed nuclear missiles proposed by Azure3141. When these begin being sold, the Syndicate also begin using them instead of regular nukes in a new “Mark II Nuclear” loadout in the systems raided by the Korath. This Manta loadout has two nuclear launch bays holding four mark II missiles, and two sidewinder missile launchers holding 90 sidewinder missiles, the latter of which ensure that the Mantas use the “missile boat” AI, making them less likely to blow themselves up. The old nuclear missiles are 10x cheaper than the nuclear missiles in vanilla are, i.e. they cost 100,000 credits each instead of a million credits each. The nuclear launch bay costs 1 million credits, but each mark II nuke only costs 80,000 credits and can load two nukes, and these nukes *are* sold at the general store, so you can restock from any outfitter. There is not a storage container for nukes as each one takes up weapon and outfit space directly, which is the main reason why the nuclear launch bay takes up so little outfit space on its own. However, you can still add one ton nuclear installation chips to *load* additional nukes. This is required mainly so that the game can let you refill to whatever target you want without you having to manually rebuy the nukes yourself.
 
 ## Other Changes
 
-### Free Worlds Albatross Bounty
-The FW Albatross 2A mission requires you to fight Ryk Bartlett, essentially like a bounty mission, however, instead of using the Bounty government, Ryk Bartlett uses the Pirate government, allowing you to just wait for friendly ships to take the ship out. This replaces the government for Ryk Bartlett in that mission with the Bounty government.
+### Other Free Worlds Changes
+The FW Albatross 2A mission requires you to fight Ryk Bartlett, essentially like a bounty mission, however, instead of using the Bounty government, Ryk Bartlett uses the Pirate government, allowing you to just wait for friendly ships to take the ship out. This replaces the government for Ryk Bartlett in that mission with the Bounty government. Additionally, the longest Han Sizer Month job now gives a brief paragraph of flavor text, made by Zitchas, once you land on the final planet before heading to your destination.
 
 ### Deep Science Drones
 0.10.5 added the sunder and mining drones, so I decided that it was time to allow you to get your own science drones! Some time after you do project hawking, Valhalla and Asgard will begin selling a drone variant of the aerie along with science drones, and a fleets consisting of an aerie with two science drones will begin to travel around the Deep. A few months later, miners will begin using the drone variant with mining drones to mine. The aerie drone variant is also occasionally used by the pirate fleet in road to hai reveal.
 
 ### General Store
-The General Store is a one-stop shop for all of your ammo purchasing needs! At the general store, you can purchase any kind of ammo you need, allowing you to refill your launchers from anywhere in the galaxy. In order to buy most types of alien ammo, you need the corresponding license; unless have the license to buy the launcher, you cannot buy the ammo. Some ammunition, such as that for the Korath, does not require a license, and the following types of ammunition are not sold at the general store: Nuclear Missile, Ka’het MHD Generator, Abyssal Composer, Jump Drive.
+The General Store is an optional one-stop shop for all of your ammo purchasing needs! At the general store, you can purchase any kind of ammo you need, allowing you to refill your launchers from anywhere in the galaxy. In order to buy most types of alien ammo, you need the corresponding license; unless have the license to buy the launcher, you cannot buy the ammo. The firestorm torpedoes and firelight missiles are special, as they require you to have a “Korath Firelight” license that you get either through having a cheat plugin active or through finishing wanderers up to its current end point. The following types of ammunition are not sold at the general store: Nuclear Missile, Ka’het MHD Generator, Abyssal Composer, Jump Drive. The following types of ammunition can be removed from the general store if you so desire: Nuclear Missile (Augmented), "Orchid" Nuclear Missile, "Ophrys" Nuclear Torpedo, Finisher Torpedo, Firelight Missile, Firestorm Torpedo. Note that deactivating or removing the more powerful ammo from the general store means you will be unable to get the Korath Firelight license, since it won’t have any use.
 
 ### Author Ships
 Author ships no longer fine you, because they aren’t canon, with the exception of Captain Pester because she’s Captain Pester.
 
 ### Hai Reveal Closure and Side Missions
 Hai Reveal is *not* unlocked in Main Plot Plus, however, when you finish all there is to Hai Reveal, you now get a pop-up explaining this and are able to once again do any side missions blocked by Hai Reveal. Turner Incorporated is also unlocked until Hai Reveal starts and after the pop-up.
+
+## Security Analyses and Blueberry1vom1t’s Discount Paint Plugin
+I have included Blueberry1vom1t’s “Discount Paint Plugin,” which you can toggle on or off, allowing you to change the swizzle of your ship via the job board. I have also included jobs in nearly every populated planet that allow to see your armament deterrance, cargo attraction, and local reputation, which changes based on what I think makes the most sense, but is usually the planetary government or is mentioned in the job description. The main exceptions are the Avgi systems, which are dependent on hidden planet attributes that determine which faction the planet is likely to be aligned with, however, landing on a non tangled shroud planet will get you the generic Avgi reputation, while landing on a twilight guard or dissonance planet will get you twilight guard or angry dissonance reputation. Landing on Weledos will give you the Avgi consonance reputation, and landing on any other Consonance planet in the tangled shroud will get you the Avgi dissonance reputation.
 
 ## Bugs
 I have playtested this plugin and fixed any bugs, edge cases, and warnings I could find. There may still be bugs, and bug reports and pull requests fixing bugs are welcome.
@@ -1689,7 +1692,7 @@ My plugin takes the Crisis in Management plugin into account as much as possible
 Additionally, the Hai Reveal closure mission is designed not to offer if Hai Reveal can continue due to the “repair Hai Reveal” plugin or the Delta fork being installed. The patched Turner Incorporated mission will not offer in this case as the secret leaks condition will never be cleared. There should be no other issues with using this plugin in Endless Sky Delta or with the “repair Hai Reveal” plugin, but if there are other issues, feel free to leave a bug report. As for the hai.side.mission.unlocker and Lost in Midnight plugins, clearing the secret leaks tag will not break the plugins, and the old Turner Incorporated mission will not offer if another plugin mission offers, and will block the plugin mission from offering if it offers.
 
 ### Mega Freight Battles
-Mega Freight Battles by 1010todd contains three missions that conflict with this plugin, so my conflicting missions override the Mega Freight Battles missions and spawn the ships from Mega Freight Battles if the plugin is detected, with permission from 1010todd. This requires the plugin being called “Mega Freight Battles” and requires the plugin to be enabled for those ships to spawn. It additionally requires Endless Sky version 0.10.3 or later, and the version of Mega Freight Battles linked in the Endless Sky Community Discord in the #plugin-releases channel on 2/29/2024 at 14:45 UTC. If these requirements are not met, there is still a conflict and one of the two plugins should be disabled. If the conflict is because of an update to Mega Freight Battles, please report this as a bug and I will try to address the changes as soon as possible. This uses a fail-safe approach, so all Mega Freight Battles NPCs will despawn if the plugin is disabled or the mission is offered without the plugin being enabled, and will not respawn. This does not prevent there from being a conflict, rather, this is an attempt to workaround the conflict. In most normal circumstances, there should not be an issue, however, that doesn’t mean that there isn’t one, so keep this in mind.
+Mega Freight Battles conflicts with Main Plot Plus. This was something I was initially working around, however, Saugia is working on nerfing the Free Worlds battles and especially making the fleets in those battles smaller. Therefore, I am opting to nerf my versions of the battles as Saugia does, and opting not to support Mega Freight Battles. This is because Mega Freight Battles makes the fleets even bigger, which is contrary to Saugia’s goal of reducing fleet size, and therefore is not something I will be supporting any longer. If you have Mega Freight Battles, you CAN use this plugin, however, the following missions may be one or the other due to conflicts and race conditions:
 
 Conflicting missions:
 ```
@@ -1697,36 +1700,6 @@ FW Defend New Tibet (patched)
 FW Liberate Delta Sagitarii (patched)
 FWC Attack Kaus Borealis (patched)
 ```
-
-### Mega Freight
-Additionally, to prevent breakage if Mega Freight is not installed, the Mega Freight ships and variants used in the conflicting missions are defined to be the same as plugin commit 486f09479c941c51957ef40ed0f0c181500a640a (the latest commit as of 11/25/24 at 16:13 UTC). This means that if you have a later version of Mega Freight, your ships may be downgraded. If this is the case, temporarily uninstall Main Plot Plus and report this as a bug, so I can update the ships.
-
-Conflicting ships and variants:
-```
-Eleonorae
-PF-80 Intrepid
-PF-80 Intrepid (Plasma Engine)
-PF-80 Intrepid (Swordfish)
-CK50T Stahbar (Proton)
-PAS-2 Bulwark
-PAS-3 Barbette
-PCS-4 Castle
-PCS-5 Citadel
-SWV4 Ravelin
-EP-3 Rat
-AGT-31 Xencar
-CS-24 Garrison
-CS-24 Garrison (Parapet)
-CSE-6 Steward
-Falcon (Parapet)
-FUe02y Gebrant Tender
-TS-CH0 Kratzbal
-Culverin Class (Mark II)
-Spetum Class (Mark II)
-Spetum Class (Mark II, ShieldRegen)
-A-14F Rondel
-```
-
 
 ## Copyright
 This was originally donated to the public domain, however, I am not sure if I am allowed to do that given that I have copied text from a work licensed under the GPL v3 or later. I have relicensed it under the GPL to make sure that I am not violating any rules. I would therefore recommend following the GPL v3 anyways.
