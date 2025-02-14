@@ -1,3 +1,39 @@
+# Thanks MZ for the original mission, thanks Zitchas for the stopover text
+
+mission "Han Sizer Month [2b]"
+    name `Han Sizer celebration`
+    job
+    repeat
+    description `In celebration of Han Sizer month, bring <fare> to all the marked systems and return to <destination> for <payment>.`
+    passengers 2 10 .7
+    to offer
+        random < 10
+        month == 8
+    source
+        attributes "rim"
+    stopover
+        distance 2 3
+        attributes "rim"
+        not attributes "station"
+    stopover
+        distance 3 4
+        attributes "rim"
+        not attributes "station"
+    stopover
+        distance 4 5
+        attributes "rim"
+        not attributes "station"
+    stopover
+        distance 5 10
+        attributes "rim"
+        not attributes "station"
+    # Appears ONCE, on the last stopover. This gives you more of an incentive to visit four planets, which would otherwise seem very boring and tedious. Based on PR 7805, where this was removed due to a misunderstanding on what "on stopover" meant.
+    on stopover
+        dialog `As you land, your passengers gather together to stare out the viewport. One of them pulls out a datapad and reads what sounds like a log entry by Han Sizer, describing the initial exploration of the planet.`
+    on complete
+        payment 20000 170
+        dialog `Your guests thank you for taking them on a journey along the flightpath of Han Sizer, and cheerfully pay you <payment>. You notice one has a starchart open to look at Sabik's entry as they head off.`
+
 disable mission "FW Albatross 2A"
 
 mission "FW Albatross 2A (patched)"
@@ -70,3 +106,5 @@ mission "FW Albatross 2A (patched)"
         dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
     on visit
         dialog `You land on <planet>, but realize that you either haven't destroyed Ryk Bartlett's ship, the Dread, or your escort carrying JJ hasn't entered the system yet. Better depart and make sure that you've done everything you need to do to complete this mission.`
+
+disable mission "Han Sizer Month [2]"

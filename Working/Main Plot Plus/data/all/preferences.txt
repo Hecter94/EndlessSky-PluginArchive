@@ -1,0 +1,60 @@
+mission "Main Plot Plus Prompts"
+    invisible
+    landing
+    on offer
+        conversation
+            `Would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
+            choice
+                `(Enable guided start)`
+                `(Disable guided start)`
+                    goto noguide
+            action
+                set "enabled guided start"
+            `Guided start has been enabled.`
+                goto security
+            label noguide
+            `Guided start has been disabled.`
+            label security
+            `Would you like to enable security analysis jobs? These allow you to check your armament deterrence, cargo attraction, and local reputation in most planets that have job boards. This is information you normally are unable to see, so choose wisely.`
+            choice
+                `(Enable security analysis jobs)`
+                `(Disable security analysis jobs)`
+                    goto noanalysis
+            action
+                set "enabled security analysis jobs"
+            `Security analysis jobs have been enabled.`
+                goto paint
+            label noanalysis
+            `Security analysis jobs have been disabled.`
+            label paint
+            `Would you like to enable paint trim jobs? These allow you to change the swizzle of your ship. This will take up a lot of spaces in the job board, and you can change your mind through the job board at any time. I recommend only enabling this, changing your color, then disabling this, unless you plan to frequently change your color.`
+            choice
+                `(Enable paint trim jobs)`
+                `(Disable paint trim jobs)`
+                    goto nopaint
+            action
+                set "enabled paint trim jobs"
+            `Paint trim jobs have been enabled.`
+                goto autorestock
+            label nopaint
+            `Paint trim jobs have been disabled.`
+            label autorestock
+            `This plugin contains the ability for you to purchase ammo at any outfitter, in order to reduce the tedium of restocking launchers. Would you like this feature to be fully enabled, mostly enabled, or not enabled? If this feature is mostly enabled, certain powerful ammo like nuclear weapons or finishers cannot be auto-restocked this way, but most other types of ammo can.`
+            choice
+                `(Fully enable autorestock)`
+                `(Mostly enable autorestock)`
+                    goto partial
+                `(Do not enable autorestock)`
+                    goto manual
+            action
+                event "Full Autorestock"
+            `Autorestock has been fully enabled.`
+                decline
+            label partial
+            action
+                event "Common Autorestock"
+            `Autorestock has been mostly enabled.`
+                decline
+            label manual
+            `Autorestock has not been enabled.`
+                decline
