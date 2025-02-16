@@ -1222,9 +1222,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 1.96 mb | 2025-02-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 2.36 mb | 2025-02-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2025-02-06) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2025-02-16) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
