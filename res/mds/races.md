@@ -1773,9 +1773,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/The Iltan Race/icon.png' height='100'></img><br>
 
 
-[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 30.28 mb | 2025-02-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 31.35 mb | 2025-02-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
 Author: Zanano Quinito | Category: Races <br>
-[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-15) <br>
+[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-17) <br>
 
 >"The Iltan Race" adds the Iltans, along with their systems, ships, outfits, missions, and a new start. They are T3/T4.
 >
@@ -1786,10 +1786,8 @@ Author: Zanano Quinito | Category: Races <br>
 --Features--
 Adds the Iltan race.
 Ships, outfits, systems.
-Placeholder 2D ships for Orbi'Tah and Aggrero.
+Placeholder 2D ship for Orbi'Tah and Tetryon.
 
-WIP: 
-Lore, missions, story, news, images.
 
 By Zanano Quinito
 
