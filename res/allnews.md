@@ -1,3 +1,7 @@
+2025-02-18 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
+2025-02-18 | Updated plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#naltok)<br>
+2025-02-18 | Updated plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
+2025-02-18 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2025-02-17 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-02-17 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2025-02-16 | Updated plugin 'Naltok' by Quantumshark | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#naltok)<br>

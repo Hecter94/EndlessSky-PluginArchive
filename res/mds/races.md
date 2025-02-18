@@ -940,9 +940,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 13.54 mb | 2025-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 13.54 mb | 2025-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-02-05) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-02-18) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -1222,9 +1222,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Naltok
 
 
-[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 2.36 mb | 2025-02-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
+[Naltok.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Naltok.zip) | 2.36 mb | 2025-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Naltok/) <br>
 Author: Quantumshark | Category: Races <br>
-[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2025-02-16) <br>
+[https://github.com/Quantumshark/ES-Naltok](https://github.com/Quantumshark/ES-Naltok) (last commit 2025-02-17) <br>
 
 >A new tier 1.5 alien species, the amphibious Naltok. 
 
@@ -1773,9 +1773,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/The Iltan Race/icon.png' height='100'></img><br>
 
 
-[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 31.35 mb | 2025-02-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 36.08 mb | 2025-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
 Author: Zanano Quinito | Category: Races <br>
-[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-17) <br>
+[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-18) <br>
 
 >"The Iltan Race" adds the Iltans, along with their systems, ships, outfits, missions, and a new start. They are T3/T4.
 >
