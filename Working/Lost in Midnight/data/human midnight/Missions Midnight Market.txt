@@ -21,6 +21,7 @@ mission "Midnight Market: Fool's Gold"
 	minor
 	invisible
 	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier" "dirt belt"
 		not attributes "outfitter" "station"
 	to offer
@@ -72,94 +73,8 @@ mission "Midnight Market: Fool's Gold"
 				decline
 
 
-
-mission "Midnight Market: Jump Drives 1"
-	minor
-	name "Mysterious Buyer"
-	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
-	source
-		government "Free Worlds" "Republic" "Syndicate" "Neutral" "Independent"
-	destination Mars
-	to offer
-		or
-			and
-				not "rejected midnight market jump drive offer"
-				random < 10
-			and
-				has "rejected midnight market jump drive offer"
-				random < 5
-	on offer
-		require "Jump Drive"
-		conversation
-			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. It has come to our attention that you are in possession one or more jump drives. Bring one to the address in the attached data file if you are interested in selling one of them for <payment>. A replacement hyperdrive will be provided in case you need it."`
-			`	The address listed is for a warehouse on <destination>.`
-			choice
-				`	(Accept the invitation.)`
-					accept
-				`	(Reject the invitation.)`
-					defer
-	on defer
-		set "rejected midnight market jump drive offer"
-	on abort
-		clear "Midnight Market Jump Drives 1: offered"
-	on complete
-		log "Factions" "Midnight Market" `A network of fencers, smugglers, and patrons forming an exclusive black market community. Not sure how I got on their list, but the deals look too good to pass up.`
-		clear "rejected midnight market jump drive offer"
-		"Midnight Market" ++
-		outfit "Jump Drive" -1
-		outfit "Hyperdrive" 1
-		payment 1000000
-		conversation
-			`You easily find the warehouse indicated by your mysterious buyer. The dockworkers take the jump drive and provide you with a hyperdrive and <payment> in exchange. There is no paperwork to fill out and no receipts are given, leaving you with no record that this transaction ever took place.`
-
-mission "Midnight Market: Jump Drives 2"
-	minor
-	name "Mysterious Buyer"
-	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
-	source
-		government "Free Worlds" "Republic" "Syndicate" "Neutral" "Independent"
-	destination
-		government "Pirate"
-		not attributes "midnight"
-	to offer
-		has "Midnight Market: Jump Drives 1: done"
-		or
-			and
-				not "rejected midnight market jump drive offer"
-				random < 5
-			and
-				has "rejected midnight market jump drive offer"
-				random < 1
-	on offer
-		require "Jump Drive"
-		conversation
-			`You receive an anonymous message:`
-			`	"Greetings, Captain <first> <last>. It has come to our attention that you are in possession one or more jump drives. Bring one to the address in the attached data file if you are interested in selling one of them for <payment>. A replacement hyperdrive will be provided in case you need it."`
-			`	The address listed is for a warehouse on <destination>.`
-			choice
-				`	(Accept the invitation.)`
-					accept
-				`	(Reject the invitation.)`
-					defer
-	on defer
-		set "rejected midnight market jump drive offer"
-	on abort
-		clear "Midnight Market Jump Drives 2: offered"
-	on complete
-		clear "Midnight Market Jump Drives 2: offered"
-		clear "rejected midnight market jump drive offer"
-		"Midnight Market" ++
-		"reputation: Pirate" ++
-		outfit "Jump Drive" -1
-		outfit "Hyperdrive" 1
-		payment 1000000
-		conversation
-			`You manage to find the warehouse indicated by your mysterious buyer. The place looks deserted until a man in a suit steps out to greet you. He takes the jump drive and provides you with a hyperdrive and <payment> in exchange. There is no paperwork to fill out and no receipts are given, leaving you with no record that this transaction ever took place. As you are leaving you see a squad of well armed security guards nearby that you hadn't noticed when you first arrived.`
-	
-
-
 mission "Midnight Market: Hauler VI R&D"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -342,6 +257,187 @@ mission "Midnight Hauler VI Upgrade"
 			`The shipyard on <planet> has fixed the issue on your Hauler VI. The outfits on it have been reset to its default factory configuration.`
 
 
+mission "Midnight Market: Jump Drives 1"
+	minor
+	name "Mysterious Buyer"
+	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
+	source
+		government "Free Worlds" "Republic" "Syndicate" "Neutral" "Independent"
+	destination Mars
+	to offer
+		or
+			and
+				not "rejected midnight market jump drive offer"
+				random < 10
+			and
+				has "rejected midnight market jump drive offer"
+				random < 5
+	on offer
+		require "Jump Drive"
+		conversation
+			`You receive an anonymous message:`
+			`	"Greetings, Captain <first> <last>. It has come to our attention that you are in possession one or more jump drives. Bring one to the address in the attached data file if you are interested in selling one of them for <payment>. A replacement hyperdrive will be provided in case you need it."`
+			`	The address listed is for a warehouse on <destination>.`
+			choice
+				`	(Accept the invitation.)`
+					accept
+				`	(Reject the invitation.)`
+					defer
+	on defer
+		set "rejected midnight market jump drive offer"
+	on abort
+		clear "Midnight Market Jump Drives 1: offered"
+	on complete
+		log "Factions" "Midnight Market" `A network of fencers, smugglers, and patrons forming an exclusive black market community. Not sure how I got on their list, but the deals look too good to pass up.`
+		clear "rejected midnight market jump drive offer"
+		"Midnight Market" ++
+		outfit "Jump Drive" -1
+		outfit "Hyperdrive" 1
+		payment 1000000
+		conversation
+			`You easily find the warehouse indicated by your mysterious buyer. The dockworkers take the jump drive and provide you with a hyperdrive and <payment> in exchange. There is no paperwork to fill out and no receipts are given, leaving you with no record that this transaction ever took place.`
+
+mission "Midnight Market: Jump Drives 2"
+	minor
+	name "Mysterious Buyer"
+	description "An anonymous buyer is interested in purchasing a jump drive. You must go to a warehouse on <planet> in the <system> system if you want to sell one for <payment>."
+	clearance
+	source
+		government "Free Worlds" "Republic" "Syndicate" "Neutral" "Independent"
+	destination
+		government "Pirate"
+		not attributes "midnight"
+	to offer
+		has "Midnight Market: Jump Drives 1: done"
+		or
+			and
+				not "rejected midnight market jump drive offer"
+				random < 5
+			and
+				has "rejected midnight market jump drive offer"
+				random < 1
+	on offer
+		require "Jump Drive"
+		conversation
+			`You receive an anonymous message:`
+			`	"Greetings, Captain <first> <last>. It has come to our attention that you are in possession one or more jump drives. Bring one to the address in the attached data file if you are interested in selling one of them for <payment>. A replacement hyperdrive will be provided in case you need it."`
+			`	The address listed is for a warehouse on <destination>.`
+			choice
+				`	(Accept the invitation.)`
+					accept
+				`	(Reject the invitation.)`
+					defer
+	on defer
+		set "rejected midnight market jump drive offer"
+	on abort
+		clear "Midnight Market Jump Drives 2: offered"
+	on complete
+		clear "Midnight Market Jump Drives 2: offered"
+		clear "rejected midnight market jump drive offer"
+		"Midnight Market" ++
+		"reputation: Pirate" ++
+		outfit "Jump Drive" -1
+		outfit "Hyperdrive" 1
+		payment 1000000
+		conversation
+			`You manage to find the warehouse indicated by your mysterious buyer. The place looks deserted until a man in a suit steps out to greet you. He takes the jump drive and provides you with a hyperdrive and <payment> in exchange. There is no paperwork to fill out and no receipts are given, leaving you with no record that this transaction ever took place. As you are leaving you see a squad of well armed security guards nearby that you hadn't noticed when you first arrived.`
+
+
+mission "Midnight Market: Modified Hyperdrive"
+	minor
+	invisible
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral" "Pirate" "Scar's Legion"
+		attributes "frontier"
+		not attributes "uninhabited"
+	to offer
+		"credits" > 180000
+		random < 70
+	on offer
+		conversation
+			scene "outfit/modified hyperdrive"
+			`You notice someone trying to sell a used Hyperdrive. It looks like it's been heavily modified.`
+			choice
+				`	"Tell me more about this Hyperdrive."`
+				`	"Not interested in buying a Modified Hyperdrive right now."`
+					defer
+
+			`	The seller says "This hyperdrive has been modified to be more fuel efficient, allowing a ship to conserve fuel for long journeys. Rumors speculate that these Modified Hyperdrives are artifacts discovered in alien ruins on a planet in the Northern Frontier. There's no evidence to support such claims, but the list of humans who understand the inner workings of the hyperdrive is short and none of them have stepped forward to take credit for creating this. The price is 90,000."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'll pass on this offer for now."`
+					defer
+				`	"I'm not interested in Modified Hyperdrives."`
+					goto block
+				`	"My gun says I can take this Modified Hyperdrive for free."`
+					goto shootout
+					to display
+						has "flagship planet attribute: pirate"
+
+			label "purchase"
+			action
+				"Midnight Market" ++
+				payment -90000
+				outfit "Modified Hyperdrive"
+			`	"Thank you for your purchase!"`
+				decline
+
+			label negotiate
+			branch "deal"
+				random < "Midnight Market"
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+					goto purchase
+				`	"That's way too much. I'm not interested."`
+					decline
+				`	"My gun says I can take this Modified Hyperdrive for free."`
+					goto shootout
+
+			label "deal"
+			`	"How about we meet halfway? 67,500 credits."`
+			choice
+				`	"It's a deal. I'll buy it!`
+				`	"That's still too much. I'm not interested."`
+					decline
+				`	"My gun says I can take this Modified Hyperdrive for free."`
+					goto shootout
+
+			action
+				payment -67500
+				outfit "Modified Hyperdrive"
+			`	"Thank you for your purchase."`
+				decline
+
+			label shootout
+			branch "victory"
+				random < "flagship required crew"
+			action
+			`	You try to take the ship by force, but die during the shootout.`
+				die
+
+			label victory
+			action
+				"Midnight Market" -= 3
+				outfit "Modified Hyperdrive"
+			`	You and your crew manage to overpower the owner's crew and steal the Modified Hyperdrive!`
+				accept
+
+			label block
+			`	You have no interest in Modified Hyperdrives and leave.`
+				decline
+
+	on enter
+		dialog `Looks like the Modified Hyperdrive seller's friends were waiting to pay you back for stealing that Arrow.`
+
+	npc kill
+		government "Bounty Hunter"
+		personality waiting staying vindictive coward
+		fleet "Bounty Hunters"
+
+
 mission "Midnight Market: Project THOR 0"
 	landing
 	invisible
@@ -459,6 +555,7 @@ mission "Midnight Market: Project THOR 2"
 
 
 mission "Midnight Market: Project THOR patch"
+	non-blocking
 	landing
 	invisible
 	to offer

@@ -153,7 +153,7 @@ mission "Angry Squirrels: Journey to the Southwest"
 				"Water Bug (Jump)" 2
 				"Lightning Bug (Jump, Pulse)"
 				"Lightning Bug (Jump)"
-	
+
 	npc accompany save
 		government "Hai (Friendly Unfettered)"
 		personality heroic vindictive escort
@@ -178,33 +178,56 @@ mission "Angry Squirrels: Journey to the Southwest"
 		event "It came from the canyon..." 210
 		event "It came from the ocean..." 240
 		set "midnight journey to the southwest patched"
+		set "midnight ancestral unfettered miners patched"
 		conversation
 			scene "thumbnail/hai solifuge prototype-thumb"
 			`	As promised, San Zo presents you with the Muramasa. The Unfettered disperse into the forest. You can't help but wonder if it was a mistake bringing them here...`
 
+mission "Ancestral Unfettered Miners Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Completed Journey to the Southwest"
+		not "midnight ancestral unfettered miners patched"
+	on offer
+		event "Ancestral Unfettered Miners Patch"
+		fail
+
 event "Completed Journey to the Southwest"
 	system Ehmahai
 		government "Hai (Friendly Unfettered)"
-		fleet "Ancestral Unfettered" 6000
-		fleet "Nova Firefly" 4000
+		remove fleet "Nova Firefly"
+		add fleet "Nova Firefly" 4000
+		add fleet "Ancestral Unfettered" 6000
+		add fleet "Ancestral Unfettered Miners" 8000
 	planet Oldhome
 		remove attributes
 			"uninhabited"
 		add description `The Unfettered have uncovered underground bunkers filled with supplies and equipment. They've even found some completed ships, ready for launch. It's as if the Hai were prepared to return someday.`
 		spaceport `The spaceport was once concealed underneath a thick forest canopy. Despite the Unfettered's attempt to clear away the brush, branches and leaves are still scattered across the landing pads.`
 
+event "Ancestral Unfettered Miners Patch"
+	system Ehmahai
+		add fleet "Ancestral Unfettered Miners" 8000
+
 event "Unfettered Expand in Ancestral Lands"
 	system Ehmahai
-		fleet "Ancestral Unfettered" 3000
-		fleet "Nova Firefly" 6000
+		remove fleet "Nova Firefly"
+		add fleet "Nova Firefly" 6000
+		add fleet "Ancestral Unfettered" 3000
 	system Heiahai
 		government "Hai (Friendly Unfettered)"
-		fleet "Ancestral Unfettered" 6000
-		fleet "Nova Firefly" 4000
+		remove fleet "Nova Firefly"
+		add fleet "Nova Firefly" 4000
+		add fleet "Ancestral Unfettered" 6000
+		add fleet "Ancestral Unfettered Miners" 8000
 	system Zubahai
 		government "Hai (Friendly Unfettered)"
-		fleet "Ancestral Unfettered" 6000
-		fleet "Nova Firefly" 4000
+		remove fleet "Nova Firefly"
+		add fleet "Nova Firefly" 4000
+		add fleet "Ancestral Unfettered" 6000
+		add fleet "Ancestral Unfettered Miners" 8000
 	planet Oldhome
 		add shipyard "Unfettered Ancestral"
 		add outfitter "Unfettered Ancestral"
@@ -218,21 +241,38 @@ event "Unfettered Expand in Ancestral Lands"
 		remove attributes
 			"uninhabited"
 		spaceport `The Unfettered have converted part of the ruins into a spaceport. It seems the civilization that once lived here used it to launch and land terrestrial aircraft.`
-		
+
+mission "Unfettered Expand in Ancestral Lands Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Unfettered Expand in Ancestral Lands"
+		not "midnight ancestral unfettered miners patched"
+	on offer
+		event "Unfettered Expand in Ancestral Lands Patch"
+		fail
+
+event "Unfettered Expand in Ancestral Lands Patch"
+	system Heiahai
+		add fleet "Ancestral Unfettered Miners" 8000
+	system Zubahai
+		add fleet "Ancestral Unfettered Miners" 8000
+
 event "It came from the desert..."
 	unvisit Ehmahai
 	unvisit Heiahai
 	unvisit Zubahai
 	system Hazehai
-		fleet "Nova Firefly Hatchery" 600
-		fleet "Nova Firefly" 1000
+		add fleet "Nova Firefly Hatchery" 600
+		add fleet "Nova Firefly" 1000
 	system Ehmahai
 		add fleet "Large Unfettered" 6000
 	system Heiahai
-		fleet "Ancestral Unfettered" 3000
-		fleet "Nova Firefly" 6000
+		add fleet "Ancestral Unfettered" 3000
+		add fleet "Nova Firefly" 6000
 	system Zubahai
-		fleet "Ancestral Unfettered" 3000
+		add fleet "Ancestral Unfettered" 3000
 	planet Oldhome
 		tribute 300
 			threshold 800
@@ -274,6 +314,7 @@ event "It came from the ocean..."
 		add fleet "Large Unfettered" 6000
 
 mission "Angry Squirrels: Unfettered Expand in Ancestral Lands Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -298,6 +339,7 @@ event "Unfettered Expand in Ancestral Lands Patch"
 		add outfitter "Unfettered Ancestral"
 
 mission "Angry Squirrels: It came from the desert... Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -340,40 +382,55 @@ event "It came from the desert... Patch"
 shipyard "Unfettered Ancestral"
 	"Aphid"
 	"Cicada"
-	"Grasshopper"
 	"Horseshoe Crab"
-	"Ladybug"
+	"Questing Tick"
 	"Shield Beetle (Unfettered Shipyards)"
 	"Water Bug"
 
 outfitter "Unfettered Ancestral"
-	"Pulse Cannon"
-	"Heavy Pulse Cannon"
-	"Hai Tracker"
 	"Bullfrog Anti-Missile"
-	"Hai Octopus Jammer"
-	"Sand Cell"
+	"Bunk Room"
+	"Cargo Expansion"
+	"Cargo Scanner"
+	"Chameleon Anti-Missile"
+	"Fuel Pod"
 	"Geode Reactor"
+	"Hai Chasm Batteries"
+	"Hai Corundum Regenerator"
+	"Hai Fissure Batteries"
+	"Hai Gorge Batteries"
+	"Hai Octopus Jammer"
+	"Hai Tracker Pod"
+	"Hai Tracker"
 	"Hai Williwaw Cooling"
 	"Hyperdrive"
-	"Hai Chasm Batteries"
-	"Hai Fissure Batteries"
-	"Supercapacitor"
-	"Cargo Expansion"
-	"Small Bunk Room"
-	Barracks
-	"Fuel Pod"
-	"Hai Corundum Regenerator"
-	`"Basrem" Atomic Thruster`
-	`"Basrem" Atomic Steering`
-	"Modified Nugget Finder"
-	"Value Detector"
 	"Local Map"
-	"Quantum Keystone"
-	"Pulse Rifle"
-	"Ion Flash Bang"
-	"Asteroid Scanner"
 	"Outfit Scanner"
+	"Outfits Expansion"
+	"Pebble Core"
+	"Phantom Pallet"
+	"Pulse Cannon"
+	"Pulse Rifle"
+	"Pulse Turret"
+	"Small Bunk Room"
+	"Supercapacitor"
+	"Tracker Storage Pod"
+	"Value Detector"
+	`"Basrem" Atomic Steering`
+	`"Basrem" Atomic Thruster`
+	`"Basrem" Reverse Thruster`
+	`"Benga" Atomic Steering`
+	`"Benga" Atomic Thruster`
+	`"Benga" Reverse Thruster`
+	`"Biroo" Atomic Steering`
+	`"Biroo" Atomic Thruster`
+	`"Biroo" Reverse Thruster`
+	"Fuel Tank"
+	"Heavy Pulse Cannon"
+	"Ion Flash Bang"
+	"Modified Hyperdrive (Hai)"
+	"Modified Nugget Finder"
+	Barracks
 
 
 
@@ -383,7 +440,7 @@ mission "Angry Squirrels: Megalocoleus Intro"
 	description "Visit <destination> to see how the Unfettered are faring in the Ancestral Lands."
 	source
 		government "Hai" "Hai (Unfettered)"
-		not attributes "ancestral lands"
+		not attributes "hai ancestral lands"
 	destination Oldhome
 	to offer
 		has "event: It came from the desert..."
@@ -407,6 +464,7 @@ mission "Angry Squirrels: Megalocoleus Intro"
 				decline
 
 mission "Angry Squirrels: Megalocoleus Intro Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -417,11 +475,12 @@ mission "Angry Squirrels: Megalocoleus Intro Patch"
 		fail
 
 mission "Angry Squirrels: It came from the desert..."
+	non-blocking
 	landing
 	invisible
 	source
 		government "Hai" "Hai (Unfettered)"
-		not attributes "ancestral lands"
+		not attributes "hai ancestral lands"
 	destination Oldhome
 	to offer
 		has "event: It came from the desert..."
@@ -436,11 +495,12 @@ mission "Angry Squirrels: It came from the desert..."
 		ship "Megalocoleus" "Go Jyo"
 		
 mission "Angry Squirrels: It came from the canyon..."
+	non-blocking
 	landing
 	invisible
 	source
 		government "Hai" "Hai (Unfettered)"
-		not attributes "ancestral lands"
+		not attributes "hai ancestral lands"
 	destination Oldhome
 	to offer
 		has "event: It came from the canyon..."
@@ -463,7 +523,7 @@ mission "Ancestral Lands: Nova Firefly Swarm"
 	description "A large swarm of Nova Fireflies has entered <system>. Drive them off then land on <planet> for payment."
 	source
 		government "Hai (Unfettered)"
-		attributes "ancestral lands"
+		attributes "hai ancestral lands"
 	to offer
 		has "event: Completed Journey to the Southwest"
 		or

@@ -284,6 +284,7 @@ mission "Midnight Expansion Sestor Baran Salvage"
 
 
 mission "Midnight Expansion Korbatar Makwar Antique 1"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -310,13 +311,16 @@ outfitter "Firestorm Torpedo Ammo"
 	"Firestorm Torpedo Rack"
 
 mission "Midnight Expansion Korbatar Makwar Antique 2"
+	non-blocking
 	landing
 	invisible
 	source "Far'en Lai"
 	to offer
 		has "Midnight Expansion Korbatar Makwar Antique 1: active"
-		has "Wanderers: Sestor: Exiles 2: active"
 		not "destroyed Korbatar Makwar Antique"
+		or
+			has "Wanderers: Sestor: Exiles 2: active"
+			has "Wanderers: Sestor: Exiles 3: done"
 	on offer
 		fail "Midnight Expansion Korbatar Makwar Antique 1"
 	npc kill
@@ -338,6 +342,8 @@ mission "Midnight Expansion Korbatar Makwar Efret 1"
 	to offer
 		has "event: label korath space"
 		random < 50
+	source
+		government "Kor Efret"
 	on offer
 		conversation
 			scene "thumbnail/X-27 Korath Battleship thumbnail"
@@ -345,6 +351,7 @@ mission "Midnight Expansion Korbatar Makwar Efret 1"
 				decline
 
 mission "Midnight Expansion Korbatar Makwar Efret 2"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -353,7 +360,7 @@ mission "Midnight Expansion Korbatar Makwar Efret 2"
 	on enter Furmeliki
 		conversation
 			scene "thumbnail/X-27 Korath Battleship thumbnail"
-			`A heavily armed Efreti battleship is patrolling this system...`
+			`A heavily armed Efreti battleship is patrolling this system. It appears to be the same one whose captain was offering tours to young Efreti...`
 	npc kill
 		government "Kor Efret"
 		system Furmeliki
@@ -403,6 +410,39 @@ mission "Midnight Expansion Korbatar Makwar Ember 1"
 				accept
 	npc
 		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 11
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Korath Scouter (Fire-Lance)" 3
+				"'olofez" 3
+	npc
+		to spawn
+			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 10
+		government "Korath"
+		system Lucina
+		personality waiting staying plunders harvests heroic
+		fleet
+			names "korath"
+			fighters
+				names "korath"
+			cargo 5
+			commodities "Electronics" "Equipment" "Industrial"
+			outfitters "Remnant"
+			variant
+				"Palavret (Ember Shunt)"
+				"Korath Scouter (Fire-Lance)"
+				"'olofez" 3
+	npc
+		to spawn
 			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 9
 		government "Korath"
 		system Lucina
@@ -415,8 +455,9 @@ mission "Midnight Expansion Korbatar Makwar Ember 1"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Palavret (Ember)"
-				"'olofez" 2
+				"Palavret (Ember Blaze)"
+				"Korath Scouter (Fire-Lance)"
+				"'olofez" 3
 	npc
 		to spawn
 			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 8
@@ -447,27 +488,9 @@ mission "Midnight Expansion Korbatar Makwar Ember 1"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Palavret (Ember Shunt)"
-				"'olofez" 2
-	npc
-		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 6
-		government "Korath"
-		system Lucina
-		personality waiting staying plunders harvests heroic
-		fleet
-			names "korath"
-			fighters
-				names "korath"
-			cargo 5
-			commodities "Electronics" "Equipment" "Industrial"
-			outfitters "Remnant"
-			variant
 				"Tubfalet (Magnetic Mine)"
 				"'olofez" 3
 	npc
-		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Freighter" + "ships: Utility" + "ships: Superheavy" >= 5
 		government "Korath"
 		system Lucina
 		personality waiting staying plunders harvests heroic
@@ -479,23 +502,11 @@ mission "Midnight Expansion Korbatar Makwar Ember 1"
 			commodities "Electronics" "Equipment" "Industrial"
 			outfitters "Remnant"
 			variant
-				"Palavret (Ember Blaze)"
-				"'olofez" 2
-	npc
-		government "Korath"
-		system Lucina
-		personality waiting staying plunders harvests heroic
-		fleet
-			names "korath"
-			fighters
-				names "korath"
-			cargo 5
-			commodities "Electronics" "Equipment" "Industrial"
-			outfitters "Remnant"
-			variant
+				"Ra'gru Ik 618 (Shock Strike)"
+				"Ra'at Ik 621 (Shock Strike)"
 				"Kar'iyar (Ember)" 2
-				"Korath Scouter (Fire-Lance)" 2
-				"'olofez" 14
+				"Korath Scouter (Fire-Lance)"
+				"'olofez" 22
 	npc
 		government "Korath"
 		system Lucina

@@ -453,13 +453,14 @@ mission "Ancestral Lands: Pirate Raid"
 	waypoint Orbona
 	to offer
 		has "event: It came from the ocean..."
+		"reputation: Hai (Friendly Unfettered)" > 0
 		random < 80
 	npc
 		to spawn
 			random < 20
 		government "Pirate"
 		system Orbona
-		personality staying plunders
+		personality waiting staying plunders
 			confusion 20
 		fleet "Large Northern Pirates"
 	npc
@@ -467,7 +468,7 @@ mission "Ancestral Lands: Pirate Raid"
 			random < 20
 		government "Pirate"
 		system Orbona
-		personality staying plunders
+		personality waiting staying plunders
 			confusion 20
 		fleet "Large Southern Pirates"
 	npc
@@ -475,22 +476,43 @@ mission "Ancestral Lands: Pirate Raid"
 			random < 20
 		government "Pirate"
 		system Orbona
-		personality staying plunders
+		personality waiting staying plunders
 			confusion 20
 		fleet "Large Core Pirates"
 	npc
+		to spawn
+			random < 30
 		government "Pirate"
 		system Orbona
-		personality staying plunders
+		personality waiting staying plunders
+			confusion 20
+		fleet "Small Northern Pirates"
+	npc
+		to spawn
+			random < 30
+		government "Pirate"
+		system Orbona
+		personality waiting staying plunders
+			confusion 20
+		fleet "Small Southern Pirates"
+	npc
+		to spawn
+			random < 30
+		government "Pirate"
+		system Orbona
+		personality waiting staying plunders
+			confusion 20
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		system Orbona
+		personality waiting staying plunders
 			confusion 20
 		fleet "Small Dirt Belt Pirates"
-		fleet "Small Northern Pirates"
-		fleet "Small Southern Pirates"
-		fleet "Small Core Pirates"
 	npc disable
 		government "Pirate"
 		system Orbona
-		personality target staying plunders
+		personality target waiting staying plunders
 			confusion 20
 		fleet "Large Dirt Belt Pirates"
 		dialog `Plunder what you can and return to <origin>.`
@@ -512,6 +534,219 @@ mission "Ancestral Lands: Pirate Raid"
 		payment 10000
 		dialog `The Unfettered congratulate you on a successful raid and award you <payment>, a bonus share of the plunder.`
 
+
+mission "Ancestral Unfettered Salvage (Ladybug)"
+	job
+	repeat
+	name "Escort Salvaged Ship"
+	description "Escort a salvaged Ladybug to <destination>. Failure will not be tolerated. If the Unfettered salvage enough of these ships, their shipyards can begin selling them again."
+	source
+		government "Hai (Friendly Unfettered)"
+		attributes "hai ancestral lands"
+		not planet Oldhome
+	destination Oldhome
+	to offer
+		has "event: It came from the desert..."
+		not "event: ancestral unfettered shipyards (ladybug)"
+		random < 10
+	npc
+		government "Invasive Lifeform"
+		system destination
+		personality waiting staying vindictive mining mute
+		fleet "Nova Firefly" 2
+	npc
+		government "Invasive Lifeform"
+		personality entering vindictive mining mute coward
+		fleet "Nova Firefly"
+	npc accompany save
+		government "Hai (Friendly Unfettered)"
+		personality
+			launching target escort timid
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Ladybug"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on fail
+		"reputation: Hai (Friendly Unfettered)" -= 33
+		dialog "Your reputation with the Unfettered of the Ancestral Lands has diminished"
+	on abort
+		"reputation: Hai (Friendly Unfettered)" -= 33
+		dialog "Your reputation with the Unfettered of the Ancestral Lands has diminished"
+	on complete
+		payment 180000
+		"reputation: Hai (Friendly Unfettered)" += 5
+		conversation
+			scene "thumbnail/hai ladybug"
+			`You have safely delivered the <npc> to the shipyard on <planet>. Once they have accumulated enough Ladybugs, they can add them to the ships available for purchase. In gratitude, the Unfettered pay you <payment>.`
+
+mission "Ancestral Unfettered Shipyards (Ladybug)"
+	landing
+	invisible
+	source Oldhome
+	to offer
+		"Ancestral Unfettered Salvage (Ladybug): done" >= 3
+		random < 70
+	on offer
+		event "ancestral unfettered shipyards (ladybug)"
+		conversation
+			scene "thumbnail/hai ladybug"
+			`The shipyards are putting their inventory of Ladybugs on display. It seems they have accumulated enough to soon add them to the ships available for purchase.`
+				decline
+
+event "ancestral unfettered shipyards (ladybug)"
+	shipyard "Unfettered Ancestral"
+		add "Ladybug"
+
+mission "Ancestral Unfettered Salvage (Ladybug 2)"
+	job
+	repeat
+	name "Escort Salvaged Ship"
+	description "Escort a salvaged Ladybug to <destination>. Their shipyards are always looking for new inventory."
+	source
+		government "Hai (Friendly Unfettered)"
+		attributes "hai ancestral lands"
+		not planet Oldhome
+	destination Oldhome
+	to offer
+		has "event: ancestral unfettered shipyards (ladybug)"
+		random < 5
+	npc
+		government "Invasive Lifeform"
+		system destination
+		personality waiting staying vindictive mining mute
+		fleet "Nova Firefly" 2
+	npc
+		government "Invasive Lifeform"
+		personality waiting vindictive mining mute coward
+		fleet "Nova Firefly"
+	npc accompany save
+		government "Hai (Friendly Unfettered)"
+		personality
+			launching target escort timid
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Ladybug"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on fail
+		"reputation: Hai (Friendly Unfettered)" -= 9
+		dialog "Your reputation with the Unfettered of the Ancestral Lands has diminished"
+	on abort
+		"reputation: Hai (Friendly Unfettered)" -= 9
+		dialog "Your reputation with the Unfettered of the Ancestral Lands has diminished"
+	on complete
+		payment 120000
+		dialog "You have safely delivered the <npc> to the shipyard on <planet>. In gratitude, the Unfettered pay you <payment>."
+
+
+mission "Ancestral Unfettered Salvage (Titan Beetle)"
+	job
+	repeat
+	name "Escort Salvaged Ship"
+	description "Escort a salvaged Titan Beetle to <destination>. Failure will not be tolerated. If the Unfettered salvage enough of these ships, their shipyards can begin selling them again."
+	source
+		government "Hai (Friendly Unfettered)"
+		attributes "hai ancestral lands"
+		not planet Oldhome
+	destination Oldhome
+	to offer
+		has "event: It came from the desert..."
+		not "event: ancestral unfettered shipyards (titan beetle)"
+		random < 10
+	npc
+		government "Invasive Lifeform"
+		system destination
+		personality waiting staying vindictive mining mute
+		fleet "Nova Firefly" 2
+	npc
+		government "Invasive Lifeform"
+		personality entering vindictive mining mute coward
+		fleet "Nova Firefly"
+	npc accompany save
+		government "Hai (Friendly Unfettered)"
+		personality
+			launching target escort timid
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Titan Beetle"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on fail
+		"reputation: Hai (Friendly Unfettered)" -= 118
+	on abort
+		"reputation: Hai (Friendly Unfettered)" -= 118
+	on complete
+		payment 240000
+		"reputation: Hai (Friendly Unfettered)" += 5
+		conversation
+			scene "thumbnail/hai titan beetle-thumb"
+			`You have safely delivered the <npc> to the shipyard on <planet>. Once they have accumulated enough Titan Beetles, they can add them to the ships available for purchase. In gratitude, the Unfettered pay you <payment>.`
+
+mission "Ancestral Unfettered Shipyards (Titan Beetle)"
+	landing
+	invisible
+	source Oldhome
+	to offer
+		"Ancestral Unfettered Salvage (Titan Beetle): done" >= 3
+		random < 70
+	on offer
+		event "ancestral unfettered shipyards (titan beetle)"
+		conversation
+			scene "thumbnail/hai titan beetle-thumb"
+			`The shipyards are putting their inventory of Titan Beetles on display. It seems they have accumulated enough to soon add them to the ships available for purchase.`
+				decline
+
+event "ancestral unfettered shipyards (titan beetle)"
+	shipyard "Unfettered Ancestral"
+		add "Titan Beetle"
+
+mission "Ancestral Unfettered Salvage (Titan Beetle 2)"
+	job
+	repeat
+	name "Escort Salvaged Ship"
+	description "Escort a salvaged Titan Beetle to <destination>. Their shipyards are always looking for new inventory."
+	source
+		government "Hai (Friendly Unfettered)"
+		attributes "hai ancestral lands"
+		not planet Oldhome
+	destination Oldhome
+	to offer
+		has "event: ancestral unfettered shipyards (titan beetle)"
+		random < 5
+	npc
+		government "Invasive Lifeform"
+		system destination
+		personality waiting staying vindictive mining mute
+		fleet "Nova Firefly" 2
+	npc
+		government "Invasive Lifeform"
+		personality waiting vindictive mining mute coward
+		fleet "Nova Firefly"
+	npc accompany save
+		government "Hai (Friendly Unfettered)"
+		personality
+			launching target escort timid
+		fleet
+			names "hai"
+			cargo 0
+			variant
+				"Titan Beetle"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on fail
+		"reputation: Hai (Friendly Unfettered)" -= 42
+	on abort
+		"reputation: Hai (Friendly Unfettered)" -= 42
+	on complete
+		payment 180000
+		dialog "You have safely delivered the <npc> to the shipyard on <planet>. In gratitude, the Unfettered pay you <payment>."
 
 
 #########################
@@ -595,6 +830,3 @@ mission "Ancestral Lands: Independent Raid"
 		clear "Ancestral Lands: Pirate Raid: offered"
 		payment 30000
 		dialog `The Unfettered congratulate you on a successful raid and award you <payment>, a bonus share of the plunder.`
-
-
-

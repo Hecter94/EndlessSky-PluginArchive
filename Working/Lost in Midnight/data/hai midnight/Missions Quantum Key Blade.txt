@@ -178,7 +178,7 @@ mission "QKBlade: Quantum Key Blade 1"
 		or
 			has "event: pond strider mass production"
 			has "event: pond strider mass production v2"
-		"reputation: Hai" >= 100
+		has "landing access: Hai-home"
 	on offer
 		conversation
 			`You receive an urgent message from Ambassador Sayari when you land. "A new Unfettered war ship entered Wah Ki and made an outrageous request for safe passage to Ultima Thule. The council of elders denied the request. Amazingly, the captain of the ship respected their decision and returned to Unfettered space. However, the council of elders has asked that you meet them on Hai-Home to discuss an issue related to this recent development.`
@@ -331,6 +331,7 @@ mission "QKBlade: Quantum Key Blade 5"
 	destination Flood
 	to offer
 		has "QKBlade: Quantum Key Blade 3: active"
+		not "QKBlade: Quantum Key Blade 5: offered"
 	on visit
 		dialog `Several of the other ships at port are being repaired for heavy damage. There is a lot of chatter about a small fleet of alien ships that recently tore through this system. From the description of these ships, it is probably Gai Ro Nin's fleet. You must press on to Unukalhai!`
 	on accept
@@ -351,17 +352,25 @@ mission "Nemesis: Quantum Key Blade"
 	npc
 		system Unukalhai
 		government "Hai (Unfettered)"
-		personality waiting staying plunders coward
+		personality waiting staying plunders
+		fleet
+			names "hai"
+			outfitters "Hai Tracker Ammo" "Hai Displacer Ammo"
+			variant
+				"Solifuge (Komodo, Jump)"
+				"Violin Spider" 6
+	npc
+		system Unukalhai
+		government "Hai (Unfettered)"
+		personality waiting staying plunders
 		fleet
 			names "hai"
 			variant
-				"Solifuge (Jump, Pulse)"
 				"Shield Beetle (Jump, Pulse Repeater)"
 				"Shield Beetle (Jump, Ion Pulse)"
 				"Sea Scorpion (Pulse, Jump)"
 				"Sea Scorpion (Pulse Repeater, Jump)"
 				"Lightning Bug (Jump)" 3
-				"Violin Spider" 6
 	npc board
 		system Unukalhai
 		government "Nemesis"
@@ -383,6 +392,8 @@ mission "Nemesis: Quantum Key Blade"
 			`	You attempt to block the sword with your rifle. He smirks as you do so and you watch in horror as the blade passes through the rifle and into your chest. You feel no pain, as if the sword isn't even there. You aim the rifle at his head and pull the trigger. But like the sword, the laser passes through his head as if he isn't there! Then you notice him manipulate a control on the handle and suddenly there is a sharp pain in your chest. Gai gasps for air as you feel your life slip away. "The only... (gasp) drawback... (gasp) is that I can't breath... (gasp) while phased out," he mutters as he wipes the blood off the blade with your shirt.`
 				die
 			label dodge
+			action
+				outfit "Quantum Key Blade" 1
 			`	You dodge the blade as he careens past you. The artificial gravity has completely failed and you notice him frantically fidgeting with a control on the sword grip when he passes through the bulkhead! You hear an audible squish as his arm holding the sword becomes trapped on your side of the wall. His hand goes limp and releases the sword. Through a nearby view port you see Gai's corpse floating out in the void of space. You manage to grab hold of the Quantum Key Blade and tuck it into your belt. There's still a battle to be fought.`
 				accept
 			label orphan
@@ -395,8 +406,8 @@ mission "Nemesis: Quantum Key Blade"
 			scene "outfit/quantum key blade"
 			`	But nothing happens! It's as if Gai isn't there... Gai smirks as he closes in. He plunges the blade deep into your chest, but you feel no pain. As you stare at the blade sticking out of your chest in bewilderment, Gai manipulates something on the sword grip. Sudden pain washes over you as Gai quantum shifts. He takes a deep breath. "The only... (gasp) drawback... (gasp) is that I can't breath... (gasp) while phased out," he mutters as he wipes the blood off the blade with your shirt. As your life slips away, you will Midnight's Lost Orphan to make one final attack against Gai... But it's too late. It seems the entity has abandoned you in favor of a new host. "What's this?" you hear Gai gasp as your vision fades to black."`
 				die
-	on accept
-		outfit "Quantum Key Blade" 1
+		on disable
+			dialog "Board the Kotetsu and claim the Quantum Key Blade"
 	on visit Unukalhai
 		dialog `The battle still rages on overhead! Drive off the rest of Gai's fleet before returning to the planet's surface.`
 	on complete
@@ -417,7 +428,7 @@ government "Ancient Hai"
 
 phrase "hostile ancient unfettered"
 	word
-		"By the emperor! They have destroyed the star of Haze Hai!"
+		"By the emperor! They have destroyed the star of Ha Ze Hai!"
 		"We do not submit to your demands! The more you tighten your grip, the more unfettered we become!"
 		"The Hai will reign supreme! We do not take orders from you!"
 
@@ -848,6 +859,7 @@ mission "QKBlade: Bearer of The Blade 5"
 	source
 		government "Pirate"
 	destination "Hai-home"
+	clearance
 	to offer
 		has "event: Stolen Snake Blade"
 		has "QKBlade: Bearer of The Blade 4: declined"

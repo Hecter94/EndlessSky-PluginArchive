@@ -59,6 +59,7 @@ mission "Ghost Hunting: Dire Omen 1"
 
 
 mission "Ghost Hunting: Dire Omen 2"
+	non-blocking
 	landing
 	invisible
 	repeat 2
@@ -336,8 +337,11 @@ ship "Model 512" "Model 512 (dire omen)"
 
 
 mission "Ghost Hunting: Derelict Killable Patch"
+	non-blocking
 	landing
 	invisible
+	to offer
+		"reputation: Derelict (Killable)" >= 0
 	on offer
 		"reputation: Derelict (Killable)" <?= -1
 		fail
@@ -360,7 +364,8 @@ mission "Ghost Hunting: Poltergeist King 1"
 			`	"Testing! Testing! Hey! Is this thing working!?! Ah, I'm sure they can hear me. Hellooo people of <planet>! Tonight's entertainment is brought to you by the Poltergeist King!"`
 			`	The image then shifts to a photograph of three children.`
 			`	"Looky what I've got! If you want to rescue them, come to the Menkalinan system."`
-			
+			choice
+				`	(Keep watching.)`
 			scene "scene/scene-funhouse"
 			
 			`	The image switches back to the shot of derelict ships.`
@@ -497,6 +502,7 @@ event "Restore Menkalinan"
 		add fleet "Republic Logistics" 2000
 
 mission "Ghost Hunting: Poltergeist King Trick A"
+	non-blocking
 	landing
 	invisible
 	source
@@ -523,6 +529,7 @@ mission "Ghost Hunting: Poltergeist King Trick A"
 		conversation "Funhouse in Flames"
 
 mission "Ghost Hunting: Poltergeist King Trick B"
+	non-blocking
 	landing
 	invisible
 	source
@@ -549,6 +556,7 @@ mission "Ghost Hunting: Poltergeist King Trick B"
 		conversation "Funhouse in Flames"
 
 mission "Ghost Hunting: Poltergeist King Trick C"
+	non-blocking
 	landing
 	invisible
 	source
@@ -1024,6 +1032,7 @@ mission "Ghost Hunting: Ghost Fleet"
 	name "Ghost Ship?"
 	description "There are rumors of fleet of ghost ships attacking ships near <destination>... The reward for destroying it is <payment>."
 	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier"
 	to offer
 		"month" == 10
@@ -1158,6 +1167,7 @@ ship "Modified Argosy" "Modified Argosy Test Dummy"
 		"bunks" -12
 
 mission "Ghost Hunting: Ghost Fleet Reset"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1274,6 +1284,7 @@ mission "Ghost Hunting: Curse of the Carabao 1"
 mission "Ghost Hunting: Curse of the Carabao 2"
 	minor
 	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier"
 		attributes spaceport
 		not attributes "uninhabited" "station"
@@ -1291,9 +1302,13 @@ mission "Ghost Hunting: Curse of the Carabao 2"
 			`He responds, "That's a Carabao. Those ships are cursed! Back in the colonization days, the unfortunate colonists who traveled on those ships died grisly and gruesome deaths as the automated systems went haywire and run amok."`
 			choice
 				`	"I own that ship."`
-			`"Oh." After a moment of awkward silence, the worker leaves.`
+				`	(Remain silent.)`
+					goto silent
+			`"Oh..." After a moment of awkward silence, the worker leaves.`
 				decline
-
+			label silent
+			`	The worker appears to pray silently. After a few moments, he leaves.`
+				decline
 
 
 mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
@@ -1365,31 +1380,30 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
 			has "Corporate retreat from <origin>: active"
 		random < 10
 	substitutions
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
 		"<carabao curse A>" "died in a horrifying accident involving"
 			random < 33
 		"<carabao curse A>" "died in a tragic mishap caused by"
 			random < 33
-		"<carabao curse A>" "died in a grisly tragedy as a result of"
-			random < 33
-		"<carabao curse B>" "a food processor"
-			random < 13
-		"<carabao curse B>" "a security"
-			random < 13
-		"<carabao curse B>" "a power conduit"
-			random < 13
-		"<carabao curse B>" "an air lock"
-			random < 13
 		"<carabao curse B>" "a life support"
-			random < 13
+		"<carabao curse B>" "a food processor"
+			random < 11
+		"<carabao curse B>" "a security"
+			random < 11
+		"<carabao curse B>" "a power conduit"
+			random < 11
+		"<carabao curse B>" "an air lock"
+			random < 11
 		"<carabao curse B>" "a weapons"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a fuel injection"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a sonic shower"
-			random < 13
-		"<carabao curse C>" "safety failure"
-			random < 25
+			random < 11
+		"<carabao curse B>" "a garbage disposal"
+			random < 11
 		"<carabao curse C>" "system failure"
+		"<carabao curse C>" "safety failure"
 			random < 25
 		"<carabao curse C>" "system malfunction"
 			random < 25
@@ -1458,8 +1472,6 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [human]"
 			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
 				decline
 
-
-
 mission "Ghost Hunting: Curse of the Carabao Passengers [coalition]"
 	landing
 	repeat
@@ -1508,31 +1520,30 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [coalition]"
 			has "Coalition: From Games 3: active"
 		random < 10
 	substitutions
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
 		"<carabao curse A>" "died in a horrifying accident involving"
 			random < 33
 		"<carabao curse A>" "died in a tragic mishap caused by"
 			random < 33
-		"<carabao curse A>" "died in a grisly tragedy as a result of"
-			random < 33
-		"<carabao curse B>" "a food processor"
-			random < 13
-		"<carabao curse B>" "a security"
-			random < 13
-		"<carabao curse B>" "a power conduit"
-			random < 13
-		"<carabao curse B>" "an air lock"
-			random < 13
 		"<carabao curse B>" "a life support"
-			random < 13
+		"<carabao curse B>" "a food processor"
+			random < 11
+		"<carabao curse B>" "a security"
+			random < 11
+		"<carabao curse B>" "a power conduit"
+			random < 11
+		"<carabao curse B>" "an air lock"
+			random < 11
 		"<carabao curse B>" "a weapons"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a fuel injection"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a sonic shower"
-			random < 13
-		"<carabao curse C>" "safety failure"
-			random < 25
+			random < 11
+		"<carabao curse B>" "a garbage disposal"
+			random < 11
 		"<carabao curse C>" "system failure"
+		"<carabao curse C>" "safety failure"
 			random < 25
 		"<carabao curse C>" "system malfunction"
 			random < 25
@@ -1580,8 +1591,6 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [coalition]"
 			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
 				decline
 
-
-
 mission "Ghost Hunting: Curse of the Carabao Passengers [hai]"
 	landing
 	repeat
@@ -1614,31 +1623,30 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [hai]"
 			has "Hai Prisoner Roleplay: active"
 		random < 10
 	substitutions
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
 		"<carabao curse A>" "died in a horrifying accident involving"
 			random < 33
 		"<carabao curse A>" "died in a tragic mishap caused by"
 			random < 33
-		"<carabao curse A>" "died in a grisly tragedy as a result of"
-			random < 33
-		"<carabao curse B>" "a food processor"
-			random < 13
-		"<carabao curse B>" "a security"
-			random < 13
-		"<carabao curse B>" "a power conduit"
-			random < 13
-		"<carabao curse B>" "an air lock"
-			random < 13
 		"<carabao curse B>" "a life support"
-			random < 13
+		"<carabao curse B>" "a food processor"
+			random < 11
+		"<carabao curse B>" "a security"
+			random < 11
+		"<carabao curse B>" "a power conduit"
+			random < 11
+		"<carabao curse B>" "an air lock"
+			random < 11
 		"<carabao curse B>" "a weapons"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a fuel injection"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a sonic shower"
-			random < 13
-		"<carabao curse C>" "safety failure"
-			random < 25
+			random < 11
+		"<carabao curse B>" "a garbage disposal"
+			random < 11
 		"<carabao curse C>" "system failure"
+		"<carabao curse C>" "safety failure"
 			random < 25
 		"<carabao curse C>" "system malfunction"
 			random < 25
@@ -1669,8 +1677,6 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [hai]"
 			scene "scene/scene-guts"
 			`When you arrive at port, you discover that one of your passengers <carabao curse A> <carabao curse B> <carabao curse C>. The specific details are quite gruesome. While spaceport authorities investigate the death, most if not all, of your remaining passengers have canceled their travel plans with you and are seeking a different captain to complete their journey with.`
 				decline
-
-
 
 mission "Ghost Hunting: Curse of the Carabao Passengers [wanderer]"
 	landing
@@ -1705,31 +1711,30 @@ mission "Ghost Hunting: Curse of the Carabao Passengers [wanderer]"
 			has "Wanderers to Kor Efreti: active"
 		random < 10
 	substitutions
+		"<carabao curse A>" "died in a grisly tragedy as a result of"
 		"<carabao curse A>" "died in a horrifying accident involving"
 			random < 33
 		"<carabao curse A>" "died in a tragic mishap caused by"
 			random < 33
-		"<carabao curse A>" "died in a grisly tragedy as a result of"
-			random < 33
-		"<carabao curse B>" "a food processor"
-			random < 13
-		"<carabao curse B>" "a security"
-			random < 13
-		"<carabao curse B>" "a power conduit"
-			random < 13
-		"<carabao curse B>" "an air lock"
-			random < 13
 		"<carabao curse B>" "a life support"
-			random < 13
+		"<carabao curse B>" "a food processor"
+			random < 11
+		"<carabao curse B>" "a security"
+			random < 11
+		"<carabao curse B>" "a power conduit"
+			random < 11
+		"<carabao curse B>" "an air lock"
+			random < 11
 		"<carabao curse B>" "a weapons"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a fuel injection"
-			random < 13
+			random < 11
 		"<carabao curse B>" "a sonic shower"
-			random < 13
-		"<carabao curse C>" "safety failure"
-			random < 25
+			random < 11
+		"<carabao curse B>" "a garbage disposal"
+			random < 11
 		"<carabao curse C>" "system failure"
+		"<carabao curse C>" "safety failure"
 			random < 25
 		"<carabao curse C>" "system malfunction"
 			random < 25

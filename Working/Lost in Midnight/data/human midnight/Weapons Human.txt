@@ -61,12 +61,22 @@ outfit "Asteroid Catapult"
 		"missile strength" 200
 		"inaccuracy" 0.2
 		"velocity" 18
-		"lifetime" 200
+		"lifetime" 5
 		"range override" 4500
 		"reload" 350
-		"firing energy" 710
+		"firing energy" 350
 		"firing force" 135
-		"firing heat" 160
+		"firing heat" 720
+		"ion damage" 8
+		"scrambling damage" 8
+		"submunition" "Asteroid Catapult De-ionized" 1
+
+outfit "Asteroid Catapult De-ionized"
+	weapon
+		sprite "projectile/asteroid catapult"
+		"hit effect" "piercer impact"
+		"live effect" "ionball trail" 140
+		"lifetime" 195
 		"shield damage" 6000
 		"hull damage" 9000
 		"piercing" .5
@@ -81,6 +91,7 @@ outfit "Asteroid Catapult Deterioration"
 		"lifetime" 50
 		"shield damage" 3000
 		"hull damage" 4500
+		"hit force" 700
 
 
 
@@ -108,7 +119,7 @@ outfit "Double Anti-Missile Turret"
 
 outfit "Energy Cannon"
 	category "Guns"
-	cost 64000
+	cost 124000
 	thumbnail "outfit/energy cannon"
 	"mass" 12
 	"outfit space" -12
@@ -134,7 +145,7 @@ outfit "Energy Cannon"
 
 outfit "Energy Cannon Turret"
 	category "Turrets"
-	cost 256000
+	cost 240000
 	thumbnail "outfit/energy cannon turret"
 	"mass" 15
 	"outfit space" -15
@@ -242,7 +253,7 @@ outfit "Hyperspace Nuke"
 		ammo "Hyperspace Nuke"
 		stream
 		icon "icon/hypernuke"
-		"live effect" "hypernuke trail" 140
+		"live effect" "hypernuke trail" 280
 		"hit effect" "nuke explosion"
 		"hit effect" "nuke residue fast" 10
 		"hit effect" "nuke residue slow" 10
@@ -268,7 +279,6 @@ outfit "Hyperspace Nuke"
 		"hull damage" 7000
 		"hit force" 6000
 		"missile strength" 220
-	description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
 	description "	This Nuclear Missile has been outfitted with an experimental hyperspace fuel afterburner. It can fly faster, and potentially, farther than standard Nuclear Missiles if it doesn't explode prematurely. This increased speed helps it outpace anti-missile systems, but it has difficulty adjusting its trajectory once fired."
 	description "	[Hyperspace nukes are a one-shot weapon: each missile occupies a gun slot, and after it is fired, the slot it was in is left empty.]"
 
@@ -276,6 +286,7 @@ effect "hypernuke trail"
 	sprite "effect/afterburner"
 		"no repeat"
 		"frame rate" 30
+	sound "afterburner"
 	"lifetime" 10
 	"random angle" 30
 	"random spin" 10
@@ -740,7 +751,7 @@ outfit "Modified Plasma Turret"
 		sound "plasma"
 		"hit effect" "plasma explosion"
 		"inaccuracy" 2
-		"turret turn" 1.4
+		"turret turn" 1.8
 		"velocity" 12
 		"lifetime" 40
 		"reload" 18
@@ -778,7 +789,7 @@ outfit "Twin Particle Cannon"
 		"firing force" 30
 		"firing heat" 240
 		"cluster"
-	description "Both barrels of the Twin Particle Cannon fire similtaneously, releasing double the force of a single Particle Cannon all at once. The size of this weapon is its main drawback, as few ships can accomodate it. While this product is fully functional, the sales department has raised concerns about its viability in the marketplace."
+	description "Both barrels of the Twin Particle Cannon fire simultaneously, releasing double the force of a single Particle Cannon all at once. The size of this weapon is its main drawback, as few ships can accomodate it. While this product is fully functional, the sales department has raised concerns about its viability in the marketplace."
 	description `	This weapon is set to fire in "cluster" mode, synchronizing its rate of fire when multiple copies are installed together.`
 
 outfit "Particle Submunition"
@@ -990,7 +1001,8 @@ effect "silencer beam impact"
 
 
 outfit "Spotlight"
-	category "Secondary Weapons"
+#	category "Secondary Weapons"
+	category "Guns"
 	cost 3000
 	thumbnail "outfit/spotlight"
 	"mass" 1
@@ -999,18 +1011,20 @@ outfit "Spotlight"
 	"gun ports" -1
 	weapon
 		"fire effect" "spotlight"
-		icon "icon/spotlight"
+#		icon "icon/spotlight"
 		"velocity" 150
 		"lifetime" 1
 		"reload" 1
 		"firing energy" .067
 		"firing heat" .16
-		"phasing"
-	description "This powerful light source can be installed into one of your ship's gun ports."
+		"minable damage" 0.0001
+		"prospecting" 0.000025
+	description "This powerful light source can be installed into one of your ship's gun ports. Some miners insist that using a Spotlight to visually inspect asteroids while they work helps them improve their yield by reducing waste."
 	description "	Despite doing no damage, targeting other ships with this can still provoke them..."
 
 outfit "Search Light"
-	category "Secondary Weapons"
+#	category "Secondary Weapons"
+	category "Turrets"
 	cost 6000
 	thumbnail "outfit/search light"
 	"mass" 2
@@ -1021,15 +1035,16 @@ outfit "Search Light"
 		"fire effect" "spotlight"
 		"hardpoint sprite" "hardpoint/search light"
 		"hardpoint offset" 2.
-		icon "icon/search light"
+#		icon "icon/search light"
 		"turret turn" 1
 		"velocity" 150
 		"lifetime" 1
 		"reload" 1
 		"firing energy" .067
 		"firing heat" .16
-		"phasing"
-	description "A Spotlight mounted onto a rotating turret platform provides a wider area of coverage."
+		"minable damage" 0.0001
+		"prospecting" 0.000025
+	description "A Spotlight mounted onto a rotating turret platform provides a wider area of coverage. Whether or not this can help you locate anything lurking in the darkness is uncertain."
 	description "	Despite doing no damage, targeting other ships with this can still provoke them..."
 
 effect "spotlight"

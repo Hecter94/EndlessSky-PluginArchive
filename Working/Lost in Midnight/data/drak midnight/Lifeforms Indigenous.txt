@@ -330,8 +330,7 @@ mission "Midnight Corpse Trickster First Contact"
 				"Corpse Trickster Body"
 				"Corpse Trickster"
 		on kill
-			log "Factions" "Corpse Tricksters"
-				`These parasites possess the ability to project simple hallucinations into the minds of other creatures. It lacks the ability to travel between systems on its own, but can attach itself to the dead corpse of a Subsidurial and use it to ride the hyperspace lanes. It's uncertain if the creature evolved to resemble a Subsidurial's head or if it was simply using the head of the dead Subsidurial it was latched onto as a mask.`
+			log "Factions" "Corpse Tricksters" `These parasites possess the ability to project simple hallucinations into the minds of other creatures. It lacks the ability to travel between systems on its own, but can attach itself to the dead corpse of a Subsidurial and use it to ride the hyperspace lanes. It's uncertain if the creature evolved to resemble a Subsidurial's head or if it was simply using the head of the dead Subsidurial it was latched onto as a mask.`
 			conversation
 				scene "ship/corpse trickster/corpse trickster head"
 				`It's uncertain if the creature evolved to resemble a Subsidurial's head or if it was simply using the head of the dead Subsidurial it was latched onto as a mask. Either way, the hallucinations stop appearing after the Corpse Trickster dies.`
@@ -426,7 +425,7 @@ ship "Gray Eye"
 	leak "blood" 30 50
 	explode "blood" 45
 	"final explode" "subsidurial death"
-	description "Gray Eyes are very old Subsidurials that have developed thicker hides. They have also learned how to make a powerful slap with their tails."
+	description "Gray Eyes are very old Subsidurials that have developed thicker hides. They have also learned how to make a powerful slap with their tails. While they still retain the peaceful disposition of their younger siblings, Gray Eyes are often vindictive when attacked."
 
 ship "Gray Eye" "Gray Eyed"
 	sprite "ship/grayeye flip"
@@ -449,7 +448,7 @@ outfit Tail?
 		"cluster"
 		"shield damage" 300
 		"hull damage" 400
-		"hit force" 40
+		"hit force" 120
 
 phrase "gray eye"
 	word
@@ -460,7 +459,7 @@ fleet "Gray Eye"
 	government "Indigenous Lifeform"
 	cargo 0
 	personality
-		uninterested mining harvests ramming mute unconstrained
+		uninterested mining harvests ramming vindictive mute unconstrained
 	variant 1
 		"Gray Eye"
 	variant 2
@@ -581,11 +580,13 @@ mission "Ayab's Space Squid"
 		personality heroic escort
 		ship "Marauder Argosy (Sniper)" "Ayab's Revenge"
 	on complete
-		dialog `Ayab congratulates you on assisting him to defeat the space squid, but will part ways with your fleet here."`
+		dialog `Ayab thanks you for assisting him to defeat the space squid, but will part ways with your fleet here.`
 
 mission "Gray Eye Corpse (Yranjiu)"
 	landing
 	invisible
+	to offer
+		has "Ayab's Revenge Epilogue1: offered"
 	on enter Yranjiu
 		conversation
 			scene "thumbnail/gray eye-thumb"
@@ -599,6 +600,8 @@ mission "Gray Eye Corpse (Yranjiu)"
 			action
 				fail "Gray Eye Corpse (Yranjiu)"
 			`The Gray Eye has been dead for a long time. Its flesh is horribly rotting away.`
+		on board
+			fail
 
 ship "Gray Eye" "Gray Eye Corpse"
 	"uncapturable"
@@ -741,8 +744,7 @@ mission "First Contact: Luminazoa"
 	deadline 2
 	source "Hell's Maw"
 	on offer
-		log "Factions" "Luminazoa"
-			`The exposed mantle of Hell's Maw is home to a thriving colony of these creatures. While they are content to harmlessly scavenge for minerals, they can become dangerous when provoked. One of their tendrils is able to emit electrical bursts which can disrupt a ship's power systems.`
+		log "Factions" "Luminazoa" `The exposed mantle of Hell's Maw is home to a thriving colony of these creatures. While they are content to harmlessly scavenge for minerals, they can become dangerous when provoked. One of their tendrils is able to emit electrical bursts which can disrupt a ship's power systems.`
 		conversation
 			scene "ship/luminazoa/luminazoa"
 			`You wait until the exposed core is facing away from the sun and pick a landing spot near the edge of the planet's broken crust. Even at night the ambient heat here is intense, with temperatures slightly above the recommended safety limits for your environmental suit. Your ship's scanners alert you to the presence of several large life forms moving about on the rocky terrain below. Their translucent bodies gives them the appearance of ghostly jellyfish. While observing them consume the exposed minerals from the planet's gaping wound, you see occasional flashes of light when they create some form of energy discharge. Between the presence of these creatures and other environmental hazards, it's probably not a good idea to disembark.`
@@ -875,8 +877,7 @@ mission "First Contact: Ionic Leech"
 	source 
 		planet "Farpoint" "Maelstrom" "Sunracer" "Skillet" "Prime" "Stormhold"
 	on offer
-		log "Factions" "Ionic Leeches"
-			`These creatures have infested the Northern Passage since before humans colonized the north. They crave the power generated by ships and are somehow able to consume it through the use of organs uniquely evolved for the task. While they're a rare sight, captains who have the misfortune of encountering them will find that they attack in large swarms.`
+		log "Factions" "Ionic Leeches" `These creatures have infested the Northern Passage since before humans colonized the north. They crave the power generated by ships and are somehow able to consume it through the use of organs uniquely evolved for the task. While they're a rare sight, captains who have the misfortune of encountering them will find that they attack in large swarms.`
 		conversation
 			`As you land you notice there are piles of giant creatures that look like leeches at multiple landing pads.`
 			`A dock worker is carting away a pile from your dock. Out of curiosity, you ask what those are.`
@@ -962,8 +963,10 @@ ship "Astero Nautilus"
 		"hyperdrive" 1
 		"scram drive" .2
 		"jump speed" .2
+		"installable" 1
 	outfits
 		Tentacles? 1
+		"Dysprosium"
 	gun 13.5 -45
 	leak "blood" 15 25
 	explode "blood" 25
@@ -1357,8 +1360,10 @@ mission "Astero Nautilus Discovered"
 			has "event: link Pebble Beach to Gamma Corvi"
 			has "event: link Pebble Beach to Spica"
 	on offer
+		log "Factions" "Astero Nautilus" `Tentacled creatures native to Pebble Beach, they grow thick shells resembling the asteroids they eat. The tentacles are strong enough to pierce through shields and secrete a corrosive substance that allows them to digest most metals.`
 		fail "First Contact: Astero Nautilus"
 		event "Astero Nautilus Discovered"
+		set "Astero Nautilus Discovered Log Patched"
 
 event "Astero Nautilus Discovered"
 	system "Pebble Beach"
@@ -1367,6 +1372,16 @@ event "Astero Nautilus Discovered"
 		add fleet "Small Astero Nautilus" 10000
 	planet "Rock Cluster"
 		add description `You suspect several of these rock formations are actually sleeping Astero Nautiluses...`
+
+mission "Astero Nautilus Discovered Log Patch"
+	landing
+	invisible
+	to offer
+		has "event: Astero Nautilus Discovered"
+		not "Astero Nautilus Discovered Log Patched"
+	on offer
+		log "Factions" "Astero Nautilus" `Tentacled creatures native to Pebble Beach, they grow thick shells resembling the asteroids they eat. The tentacles are strong enough to pierce through shields and secrete a corrosive substance that allows them to digest most metals.`
+		fail
 
 mission "Astero Nautilus Cross Chasm"
 	landing
@@ -1622,6 +1637,8 @@ mission "First Contact: Rock Scavenger"
 	invisible
 	on enter "Eber"
 		event "Rock Scavengers in Dirt Belt"
+		set "First Contact: Rock Scavenger Log Patched"
+		log "Factions" "Rock Scavenger" `Large spaceborne crustaceans, Rock Scavengers are native to the Dirt Belt and their meat is prized as a delicacy on the Paradise Worlds. There was once a failed attempt to hold them in captivity in hopes of cultivating farm raised Rock Scavengers. If attempting to hunt one, bring powerful weapons. Their shells are extremely tough and difficult to crack.`
 		dialog `When you enter the system you see a large space creature.`
 	npc board
 		government "Indigenous Lifeform"
@@ -1629,7 +1646,6 @@ mission "First Contact: Rock Scavenger"
 		personality waiting staying mining harvests uninterested mute ramming
 		fleet "Rock Scavenger"
 
-		
 event "Rock Scavengers in Dirt Belt"
 	system Wei
 		add fleet "Rock Scavenger" 30000
@@ -1639,6 +1655,17 @@ event "Rock Scavengers in Dirt Belt"
 		add fleet "Rock Scavenger" 10000
 	system "Alpha Arae"
 		add fleet "Rock Scavenger" 20000
+
+mission "First Contact: Rock Scavenger Log Patch"
+	landing
+	invisible
+	to offer
+		has "event: Rock Scavengers in Dirt Belt"
+		not "First Contact: Rock Scavenger Log Patched"
+	on offer
+		log "Factions" "Rock Scavenger" `Large spaceborne crustaceans, Rock Scavengers are native to the Dirt Belt and their meat is prized as a delicacy on the Paradise Worlds. There was once a failed attempt to hold them in captivity in hopes of cultivating farm raised Rock Scavengers. If attempting to hunt one, bring powerful weapons. Their shells are extremely tough and difficult to crack.`
+		fail
+
 
 mission "Rock Scavengers Flee Astero Nautilus"
 	landing
@@ -1782,7 +1809,7 @@ ship "Plasma Parasite"
 		category "Interceptor"
 		"cost" 50000
 		"automaton" 1
-		"hull" 100
+		"hull" 10
 		"mass" 195
 		"drag" 5.4
 		"heat dissipation" .945
@@ -1817,7 +1844,7 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 	sprite "ship/plasma parasite large/plasma parasite large"
 	"never disabled"
 	add attributes
-		"hull" 100
+		"hull" 90
 		"mass" 195
 		"drag" .6
 		"heat dissipation" -.27
@@ -1836,7 +1863,7 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 ship "Plasma Parasite" "Plasma Parasite (Time Bomb 1)"
 	"never disabled"
 	add attributes
-		"hull" -97
+		"hull" -7
 		"hull repair rate" .001
 	outfits
 		"Timer Weapon"
@@ -1845,7 +1872,7 @@ ship "Plasma Parasite" "Plasma Parasite (Time Bomb 1)"
 ship "Plasma Parasite" "Plasma Parasite (Time Bomb 2)"
 	"never disabled"
 	add attributes
-		"hull" -94
+		"hull" -8
 		"hull repair rate" .001
 	outfits
 		"Timer Weapon"
@@ -1854,7 +1881,7 @@ ship "Plasma Parasite" "Plasma Parasite (Time Bomb 2)"
 ship "Plasma Parasite" "Plasma Parasite (Time Bomb 3)"
 	"never disabled"
 	add attributes
-		"hull" -91
+		"hull" -9
 		"hull repair rate" .001
 	outfits
 		"Timer Weapon"
@@ -1931,8 +1958,7 @@ fleet "Nesting Plasma Parasites"
 		"Plasma Parasite" 36
 		"Plasma Parasite (Large)" 18
 
-		
-		
+
 mission "First Contact: Plasma Parasite"
 	landing
 	invisible
@@ -1941,6 +1967,8 @@ mission "First Contact: Plasma Parasite"
 	on offer
 		event "Plasma Parasites Infest Coalition"
 	on enter
+		log "Factions" "Plasma Parasite" `Plasma Parasites are a scourge plaguing the Coalition. They are attracted to starship engine emmissions and will swarm over them. While they are not inherently hostile, they are prone to violently exploding from even minor weapons fire. Appearing only after the Coalition gained their independence, some believe they were unleashed by the Quarg as a form of retribution.`
+		set "First Contact: Plasma Parasite Log Patched"
 		dialog `A strange creature is following your engine trail. Soon after you notice this, more of them appear...`
 	npc kill
 		government "Swarming Lifeform"
@@ -1948,6 +1976,17 @@ mission "First Contact: Plasma Parasite"
 		fleet "Plasma Parasites"
 		on kill
 			fail
+
+mission "First Contact: Plasma Parasite Log Patch"
+	landing
+	invisible
+	to offer
+		has "event: Plasma Parasites Infest Coalition"
+		not "First Contact: Plasma Parasite Log Patched"
+	on offer
+		log "Factions" "Plasma Parasite" `Plasma Parasites are a scourge plaguing the Coalition. They are attracted to starship engine emmissions and will swarm over them. While they are not inherently hostile, they are prone to violently exploding from exposure to even minor weapons fire. Appearing only after the Coalition gained their independence, some believe them to be biological weapons unleashed by the Quarg.`
+		fail
+
 
 event "Plasma Parasites Infest Coalition"
 	system "1 Axis"

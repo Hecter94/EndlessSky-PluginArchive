@@ -86,6 +86,7 @@ mission "Scrapyard: Factory Scrapper"
 
 
 mission "Scrapyard Korath Tractor 1"
+	non-blocking
 	landing
 	invisible
 	destination "Laki Nemparu"
@@ -188,6 +189,7 @@ mission "Scrapyard Korath Tractor 2"
 
 
 mission "Scrapyard Devourer (Infested) 1"
+	non-blocking
 	landing
 	invisible
 	source
@@ -220,6 +222,7 @@ mission "Scrapyard Devourer (Infested) 1"
 				"Korath Devourer (Infested)"
 
 mission "Scrapyard Devourer (Infested) 1 cleanup"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -232,6 +235,7 @@ mission "Scrapyard Devourer (Infested) 1 cleanup"
 
 
 mission "Scrapyard Devourer (Neutral) 1"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -241,7 +245,9 @@ mission "Scrapyard Devourer (Neutral) 1"
 		system "Silikatakfar"
 		personality waiting staying mining harvests plunders uninterested
 		fleet "Korath Devourer (Neutral)"
-		
+		on kill
+			fail
+
 mission "Scrapyard Scrapper Siege (Faronektu)"
 	landing
 	name "Faronektu Scrapper Siege"
@@ -584,6 +590,7 @@ mission "Scrapyard Damnation 2B"
 
 
 mission "Scrapyard Damnation 2"
+	non-blocking
 	invisible
 	landing
 	source
@@ -956,6 +963,7 @@ mission "Scrapyard Damnation Epilogue"
 
 
 mission "Scrapyard Scrapper Siege Reset"
+	non-blocking
 	landing
 	invisible
 	repeat
@@ -977,6 +985,7 @@ mission "Scrapyard Scrapper Siege Reset"
 		fail
 
 mission "Scrapyard Devourer (Neutral) 2"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -986,10 +995,13 @@ mission "Scrapyard Devourer (Neutral) 2"
 		system "Eneremprukt"
 		personality waiting staying mining harvests plunders uninterested
 		fleet "Korath Devourer (Neutral)"
+		on kill
+			fail
 
 
 
 mission "Scrapyard Scrapper Base Sebra Skira"
+	non-blocking
 	landing
 	invisible
 	source
@@ -1002,7 +1014,7 @@ mission "Scrapyard Scrapper Base Sebra Skira"
 	on enter "Silikatakfar"
 		conversation
 			scene "thumbnail/world-ship b"
-			`A Korath Scrapper Ra'gru Ik 618 and its fleet of salvaged automatons launches from Sebra Skira station and targets you!`
+			`A Korath Scrapper Sapira A'awoj and its fleet of salvaged automatons launches from Sebra Skira station and targets you!`
 	npc disable
 		government "Kor Scrappers (Hostile)"
 		system "Silikatakfar"
@@ -1028,6 +1040,7 @@ mission "Scrapyard Scrapper Base Sebra Skira"
 			`A search of the abandoned station uncovers a hidden cache of Sestor ammunition.`
 
 mission "Scrapyard Scrapper Base Esperaktu"
+	non-blocking
 	landing
 	invisible
 	source
@@ -1040,7 +1053,7 @@ mission "Scrapyard Scrapper Base Esperaktu"
 	on enter "Faronektu"
 		conversation
 			scene "thumbnail/world-ship b"
-			`A Korath Scrapper Ra'gru Ik 618 and its fleet of salvaged automatons launches from Esperaktu station and targets you!`
+			`A Korath Scrapper Sapira A'awoj and its fleet of salvaged automatons launches from Esperaktu station and targets you!`
 	npc disable
 		government "Kor Scrappers (Hostile)"
 		system "Faronektu"
@@ -1066,6 +1079,7 @@ mission "Scrapyard Scrapper Base Esperaktu"
 			`A search of the abandoned station uncovers a hidden cache of Mereti ammunition.`
 
 mission "Scrapyard Scrapper Base Makwar Pratarati"
+	non-blocking
 	landing
 	invisible
 	source
@@ -1079,7 +1093,7 @@ mission "Scrapyard Scrapper Base Makwar Pratarati"
 	on enter "Mesuket"
 		conversation
 			scene "thumbnail/world-ship e"
-			`A Korath Scrapper Ra'at Ik 621 and its fleet of salvaged automatons launches from Makwar Pratarati station and targets you!`
+			`A Korath Scrapper Ikfar A'awoj and its fleet of salvaged automatons launches from Makwar Pratarati station and targets you!`
 	npc disable
 		government "Kor Scrappers (Hostile)"
 		system "Mesuket"
@@ -1142,11 +1156,12 @@ mission "Scrapyard Node 8 Hacking"
 			
 			label end
 			`	You unplug the Node 8 Jammer. Immediately, warning sirens go off. The ATM has reconnected to the network and the security cameras have identified you as a criminal hacker! Better run..."`
-				accept
+				launch
 	on decline
 		outfit "Node 8 Jammer" -1
 		payment 474105600
-	
+	to fail
+		has "Scrapyard Node 8 Hacking: active"
 	on accept
 		"Scrapyard Node 8 Hacking: offered" --
 		payment 474105600

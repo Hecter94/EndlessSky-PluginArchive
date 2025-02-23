@@ -196,6 +196,12 @@ mission "Oathbreaker Strategos Deployed"
 		ship "Lance" "Gamma Four"
 		ship "Lance" "Gamma Five"
 		ship "Lance" "Gamma Six"
+		ship "Lance" "Gamma Seven"
+		ship "Lance" "Gamma Eight"
+		ship "Lance" "Gamma Nine"
+		ship "Lance" "Gamma Ten"
+		ship "Lance" "Gamma Eleven"
+		ship "Lance" "Gamma Twelve"
 		ship "Enforcer Drone" "Delta One"
 		ship "Enforcer Drone" "Delta Two"
 		ship "Enforcer Drone" "Delta Three"
@@ -228,6 +234,7 @@ mission "Oathbreaker Strategos Deployed"
 			fail
 
 mission "Oathbreaker Strategos Deployed Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -375,6 +382,7 @@ mission "Oathbreaker Siege 2"
 
 
 mission "Midnight Oathbreaker Add Disabled Small Free Worlds"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -421,6 +429,7 @@ event "midnight add disabled small free worlds"
 		add fleet "Disabled Small Free Worlds" 40000
 
 mission "Midnight Oathbreaker Remove Disabled Small Free Worlds"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1360,6 +1369,7 @@ mission "Oathbreakers: CCOR Conscriptor 3"
 			fail
 
 mission "Oathbreakers: CCOR Conscriptor 1 Clearance Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1617,6 +1627,7 @@ mission "Oathbreaker Memoria Alpha"
 
 
 mission "Memoria Alpha Repeat"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1886,7 +1897,7 @@ mission "Oathbreaker Poisonwood"
 				"Frigate (Mark II)" 2
 				"Gunboat (Mark II)"
 				"Rainmaker (Mark II)"
-				"Lance" 6
+				"Lance" 12
 				"Enforcer Drone" 12
 				"Outrider (Mark II)" 8
 
@@ -2260,26 +2271,62 @@ mission "Oathbreaker Fugitives Hideout Random"
 		government "Free Worlds"
 	destination
 		government "Pirate"
+		attributes "pirate"
+		not attributes "south pirate"
 		neighbor near "Sol" 200
 	to offer
 		has "event: Oathbreaker diminish"
 		not "event: Oathbreaker diminish 3"
+		"Oathbreaker escalation" < 10
+	on offer
+		conversation
+			scene "outfit/unknown"
+			branch "oathbreaker stragglers"
+				has "oathbreaker stragglers"
+			action
+				set "oathbreaker stragglers"
+			`You receive a general message from the Free Worlds to all active militia: "The Oathbreakers seem to have gone into hiding since the destruction of the Thermopylae. Remain vigilant and intensify patrols in known pirate systems." The Militia will be searching the southern pirate worlds for Benedict, but it's doubtful they'll extend that search to pirate worlds farther away...`
+				accept
+			label "oathbreaker stragglers"
+			action
+				clear "oathbreaker stragglers"
+			`Checking your messages, you see scattered reports of small Oathbreaker sightings, but nothing that would constitute Benedict's main fleet. The search on southern pirate worlds continues, but someone should check the pirate worlds farther away...`
+				accept
 	npc kill
 		government "Oathbreaker"
 		system destination
 		personality target waiting staying plunders harvests coward
 		fleet "Small Oathbreaker"
 		fleet "Fugitive Oathbreaker" 2
-		dialog `<planet> may be an Oathbreaker hideout. Check the surface to be certain.`
+		on kill
+			"Oathbreaker escalation" ++
+			conversation
+				scene "outfit/attention"
+				`<planet> may be an Oathbreaker hideout. Benedict may even be here. Check the surface to be certain.`
 	on abort
 		"Oathbreaker Fugitives Hideout Random: offered" --	
 	on fail
 		"Oathbreaker Fugitives Hideout Random: offered" --
 	on complete
-		"Oathbreaker escalation" ++
 		"Oathbreaker Fugitives Hideout Random: offered" --
-		dialog `No other Oathbreaker ships rise up to challenge you.`
+		fail "Oathbreaker Fugitives Hideout Random Reminder"
+		conversation
+			scene "outfit/unknown"
+			`No other Oathbreaker ships rise up to challenge you. You find an abandoned warehouse that show signs of being the hideout for the group that attacked you. But there is no sign that Benedict was here recently. Perhaps he has returned to the south.`
 
+mission "Oathbreaker Fugitives Hideout Random Reminder"
+	landing
+	name "Search for Benedict"
+	description "The Militia has intensifying their search for Arnold Benedict since the destruction of the Thermopylae. However, their reach is limited to the South. Search for him on pirate worlds farther away."
+	source 
+		government "Free Worlds"
+	destination Bourne
+	to offer
+		has "event: Oathbreaker diminish"
+		not "event: Oathbreaker diminish 3"
+		"Oathbreaker escalation" < 10
+	to complete
+		never
 
 
 # The Nemesis were made with the lore assumption that each Nemesis npc has ventured outside of human space.
@@ -2299,11 +2346,10 @@ mission "Nemesis: Oath Breaker"
 		has "Oathbreaker Pirate Gossip: declined"
 		has "Oathbreaker Thermopylae: done"
 		"Oathbreaker escalation" >= 10
-		random < 50
 	on offer
 		conversation
 			scene "scene/scene-oathbreakerfinal"
-			`You're trying to relax at a bar when suddenly you hear raised voices and shouting outside as pilots run for their ships: "The main Oathbreaker fleet has appeared over <planet> and is demanding tribute! The local militia has already been wiped out and the government of <planet> is requesting help from any combat-worthy ship at the spaceport to join the defenses!" Joining the battle could be an opportunity to finally put an end to Benedict's campaign of terror, but this could also be an easy way to get yourself killed.`
+			`You've just taken a seat at the bar when suddenly you hear raised voices and shouting outside as pilots run for their ships: "The main Oathbreaker fleet has appeared over <planet> and is demanding tribute! The local militia has already been wiped out and the government of <planet> is requesting help from any combat-worthy ship at the spaceport to join the defenses!" Joining the battle could be an opportunity to finally put an end to Benedict's campaign of terror, but this could also be an easy way to get yourself killed.`
 			choice
 				`	(Don't join the fight.)`
 					goto coward
@@ -2376,6 +2422,7 @@ mission "Nemesis: Oath Breaker"
 				"Gunboat (Mark II)"
 				"Gunboat"
 				"Rainmaker"
+				"Pirate Drone"
 
 	npc
 		to spawn
@@ -2398,7 +2445,7 @@ mission "Nemesis: Oath Breaker"
 			fighters
 				names "Oathbreaker fighter"
 			variant
-				"Lance" 6
+				"Lance" 12
 				"Enforcer Drone" 12
 				"Outrider (Mark II)" 8
 
@@ -2549,6 +2596,7 @@ event "Oathbreaker diminish 3"
 		remove fleet "Fugitive Oathbreaker"
 
 mission "Oathbreaker Rum Cellar update"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -2563,6 +2611,7 @@ event "Oathbreakers clear Rum Cellar"
 
 
 mission "Oathbreaker expeditionary 1"
+	non-blocking
 	landing
 	invisible
 	destination "Ring of Friendship"
@@ -2572,7 +2621,7 @@ mission "Oathbreaker expeditionary 1"
 	on enter "Quaru"
 		conversation
 			scene "scene/scene-navyfleet"
-			`You're surprised when your warning alarm goes off. There is an Oathbreaker fleet in the system! But they aren't powering up their weapons. One of the ships hails you.`
+			`Your warning alarm suddenly goes off! There is an Oathbreaker fleet in the system, but they aren't powering up their weapons. One of the ships hails you.`
 			`	A woman speaks. "Good day to you, Captain <last>. I am Captain Magna of the Agincourt. We have not forgiven you. However, we are no longer interested in fighting. Not everyone in the Oathbreakers actually swore the oath. In actuality, only a few of the leaders and organizers did. The rest of us just happened to lose friends or family in the war and rallied to Benedict's banner. Eventually, those of us who were not prepared for the toll of fighting a war lost the will to fight. Unfortunately for us, we could no longer go home. When Benedict got his hands on some jump drives, he assigned us to these ships and ordered us to explore the region beyond the rim. We were uncertain of our future at first, but the Coalition has been very welcoming towards us. We will not start a fight with you in the presence of the Heliarch. And we advise you to grant us the same courtesy. Farewell."`
 				accept
 	npc save
@@ -2582,10 +2631,29 @@ mission "Oathbreaker expeditionary 1"
 		ship "Carrier (Coalition)" "Agincourt"
 		ship "Cruiser (Coalition)" "Yorktown"
 		ship "Gunboat (Coalition)" "Granicus River"
+		ship "Lance" "Breaker 01"
+		ship "Lance" "Breaker 02"
+		ship "Lance" "Breaker 03"
+		ship "Lance" "Breaker 04"
+		ship "Lance" "Breaker 05"
+		ship "Lance" "Breaker 06"
+		ship "Lance" "Breaker 07"
+		ship "Lance" "Breaker 08"
+		ship "Combat Drone" "Breaker 41"
+		ship "Combat Drone" "Breaker 42"
+		ship "Combat Drone" "Breaker 43"
+		ship "Combat Drone" "Breaker 44"
+		ship "Combat Drone" "Breaker 45"
+		ship "Combat Drone" "Breaker 46"
+		ship "Surveillance Drone" "Breaker 81"
+		ship "Surveillance Drone" "Breaker 82"
+		ship "Surveillance Drone" "Breaker 83"
+		ship "Surveillance Drone" "Breaker 84"
 	on complete
 		log "Minor People" "Captain Magna" `Leader of an Oathbreaker expeditionary fleet in Coalition territory. This fleet is no longer interested in fighting and has settled into a peaceful life with the Coalition.`
 
 mission "Oathbreaker expeditionary 2"
+	non-blocking
 	landing
 	invisible
 	source
@@ -2602,6 +2670,24 @@ mission "Oathbreaker expeditionary 2"
 		ship "Carrier (Coalition)" "Agincourt"
 		ship "Cruiser (Coalition)" "Yorktown"
 		ship "Gunboat (Coalition)" "Granicus River"
+		ship "Lance" "Breaker 01"
+		ship "Lance" "Breaker 02"
+		ship "Lance" "Breaker 03"
+		ship "Lance" "Breaker 04"
+		ship "Lance" "Breaker 05"
+		ship "Lance" "Breaker 06"
+		ship "Lance" "Breaker 07"
+		ship "Lance" "Breaker 08"
+		ship "Combat Drone" "Breaker 41"
+		ship "Combat Drone" "Breaker 42"
+		ship "Combat Drone" "Breaker 43"
+		ship "Combat Drone" "Breaker 44"
+		ship "Combat Drone" "Breaker 45"
+		ship "Combat Drone" "Breaker 46"
+		ship "Surveillance Drone" "Breaker 81"
+		ship "Surveillance Drone" "Breaker 82"
+		ship "Surveillance Drone" "Breaker 83"
+		ship "Surveillance Drone" "Breaker 84"
 	on complete
 		clear "Oathbreaker expeditionary 2: offered"
 

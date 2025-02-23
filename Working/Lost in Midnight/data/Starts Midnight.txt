@@ -857,6 +857,7 @@ mission "Shady passenger transport [Mata Hari]"
 	source
 		attributes "near earth" "core" "urban"
 	destination
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier" "dirt belt" "rim" "north" "south" "pirate"
 		distance 2 3
 	passengers 1
@@ -1304,8 +1305,6 @@ event "Gremlin Betelgeuse Production"
 			"Gremlin"
 		add variant 5
 			"Gremlin (Luxury)"
-		add variant 5
-			"Gremlin (Smuggler)"
 	fleet "Small Northern Merchants"
 		add variant 1
 			"Gremlin"
@@ -1380,8 +1379,28 @@ event "Gremlin Betelgeuse Production"
 			"Gremlin (Hai)"
 			"Behemoth" 2
 			"Firebird (Hai Weapons)" 1
+	fleet "Smugglers"
+		add variant 1
+			"Gremlin (Smuggler)"
 
+mission "Gremlin Betelgeuse Production Smuggler Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Gremlin Betelgeuse Production"
+		not "gremlin betelgeuse production smuggler patched"
+	on offer
+		event "Gremlin Betelgeuse Production Smuggler Patch"
+		fail
 
+event "Gremlin Betelgeuse Production Smuggler Patch"
+	fleet "Paradise Merchants"
+		remove variant
+			"Gremlin (Smuggler)"
+	fleet "Smugglers"
+		add variant 1
+			"Gremlin (Smuggler)"
 
 mission "Betelgeuse offer [Gremlin 1]"
 	deadline
@@ -1484,6 +1503,7 @@ mission "Betelgeuse offer [Gremlin 3]"
 				accept
 	on accept
 		event "Gremlin Betelgeuse Production" 60
+		set "gremlin betelgeuse production smuggler patched"
 		fail
 
 mission "Betelgeuse offer [Gremlin 4]"

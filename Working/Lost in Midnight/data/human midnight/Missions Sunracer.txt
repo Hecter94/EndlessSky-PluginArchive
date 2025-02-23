@@ -15,6 +15,7 @@ shipyard "Sunracer"
 	"Sunracer"
 
 mission "Midnight Add Sunracers"
+	non-blocking
 	landing
 	invisible
 	on offer
@@ -1948,6 +1949,7 @@ mission "Sunracer Afterburner 3"
 				decline
 
 mission "Midnight Sunracer Afterburner Update"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -2154,6 +2156,7 @@ mission "Midnight Sunracer Shady passenger transport"
 	minor
 	source Sunracer
 	destination
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier" "dirt belt" "rim" "north" "south" "pirate"
 		distance 2 3
 	passengers 1
@@ -2226,20 +2229,39 @@ mission "Midnight Sunracer Lionheart Sponsorship 2"
 			choice
 				`	"Wait, so it's not to promote the Accelerator?"`
 				`	"Do I have to use it while racing?"`
-					goto racing
+					goto racing2
+			label racing1
+			action
+				set "accelerator question racing1"
 			`	"Unfortunately, the Accelerator is just meant to be used as a promotional model. Ideally, you would use it to compete in the Tertio League. So how about it?"`
 				goto decision
-			label racing
+			label racing2
+			action
+				set "accelerator question racing2"
 			`	"That would be ideal. But just using it for normal flying is fine too. Just don't leave it parked. We're paying for the ship to be seen in use by you. So how about it?"`
 			label decision
 			choice
 				`	"Okay, I'll fly it!"`
+				`	"Wait, so it's not to promote the Accelerator?"`
+					goto racing1
+					to display
+						not "accelerator question racing1"
+				`	"Do I have to use it while racing?"`
+					goto racing2
+					to display
+						not "accelerator question racing2"
 				`	"No, I'm not interested."`
 					goto refuse
 			scene "planet/forest4"
+			action
+				clear "accelerator question racing1"
+				clear "accelerator question racing2"
 			`	"Great! We'll have it shipped to Sunracer. Head over there when you're ready to receive it."`
 				accept
 			label refuse
+			action
+				clear "accelerator question racing1"
+				clear "accelerator question racing2"
 			`	"That's too bad. Please let us know if you want to buy something. Our sales clerks will be happy to help you." The manager leaves you alone on the sales floor.`
 				decline
 	on complete

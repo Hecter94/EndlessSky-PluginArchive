@@ -12,6 +12,7 @@
 
 
 mission "Midnight Expansion: Add Fuel Stabilizer"
+	non-blocking
 	landing
 	invisible
 	on offer
@@ -24,6 +25,7 @@ event "add fuel stabilizer"
 		add "Fuel Stabilizer"
 
 mission "Midnight Expansion: Add Fuel Stabilizer Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -36,11 +38,13 @@ mission "Midnight Expansion: Add Fuel Stabilizer Patch"
 
 
 mission "Midnight Expansion: Add Garbage Scows"
+	non-blocking
 	landing
 	invisible
 	on offer
 		event "add garbage scows"
 		set "added ccor garbage scows"
+		set "added smuggler garbage scows"
 		fail
 
 event "add garbage scows"
@@ -80,8 +84,12 @@ event "add garbage scows"
 	fleet "Large Independent"
 		add variant 1
 			"Garbage Scow (Stinger)"
+	fleet "Smugglers"
+		add variant 2
+			"Garbage Scow (Smuggler)"
 
 mission "Midnight Expansion: Add CCOR Garbage Scows"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -99,7 +107,25 @@ event "add ccor garbage scows"
 			"Modified Garbage Scow (Quad Blaster)"
 			"Berserker (Limit Break)" 2
 
+mission "Midnight Expansion: Add Smuggler Garbage Scows"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: add garbage scows"
+		not "added smuggler garbage scows"
+	on offer
+		event "add smuggler garbage scows"
+		fail
+
+event "add smuggler garbage scows"
+	fleet "Smugglers"
+		add variant 2
+			"Garbage Scow (Smuggler)"
+
+
 mission "Midnight Expansion: Update Garbage Scows"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -149,6 +175,7 @@ event "update garbage scows"
 			"Modified Garbage Scow (Quad Blaster)"
 
 mission "Midnight Expansion: Add Raid Modified Garbage Scows"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -399,7 +426,9 @@ mission "Midnight Expansion: Garbage Escort (Double Cross)"
 				has "Randomize Midnight Expansion: Garbage Escort (Double Cross)"
 				random < 5
 	source
-		attributes station
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "station"
+		not attributes "frontier"
 	destination
 		attributes "frontier"
 		distance 9 12
@@ -494,6 +523,7 @@ mission "Midnight Expansion: Garbage Escort (Double Cross)"
 
 
 mission "Midnight Expansion: Add Rukh"
+	non-blocking
 	landing
 	invisible
 	on offer
@@ -546,20 +576,22 @@ mission "Midnight Expansion: FW Prisoner Parole Add On"
 		dialog `You are hailed by a pirate ship: "I heard you're transporting some navy scum. You can all die together!"`
 	npc 
 		to spawn
-			"ship: Medium Warship" + "ship: Heavy Warship" + "ship: Utility" + "ship: Heavy Freighter" > 1
+			"ship: Heavy Warship" + "ship: Utility" + "ship: Heavy Freighter" + "ship: Superheavy" > 1
 		government "Pirate"
 		system destination
-		personality waiting staying vindictive
-		fleet "Small Dirt Belt Pirates" 2
+		personality waiting coward
+		fleet "Large Dirt Belt Pirates"
+	npc 
+		to spawn
+			"ship: Medium Warship" + "ship: Heavy Warship" + "ship: Utility" + "ship: Heavy Freighter" + "ship: Superheavy" > 1
+		government "Pirate"
+		system destination
+		personality waiting coward
+		fleet "Small Dirt Belt Pirates"
 	npc 
 		government "Pirate"
 		system destination
-		personality waiting staying vindictive
-		fleet "Small Dirt Belt Pirates" 2
-	npc 
-		government "Pirate"
-		system destination
-		personality coward
+		personality waiting coward
 		fleet "Small Dirt Belt Pirates" 2
 	npc 
 		government "Pirate"
@@ -1014,6 +1046,7 @@ mission "Midnight Scum & Villainy 2"
 			`	She waves to you, "Hi <first>, thanks for your help. Maybe travel through the Northern Passage will be a little safer now." Having collected your share of the three million credit reward, you say goodbye to both of them.`
 
 mission "Midnight Scum & Villainy 2 Patch"
+	non-blocking
 	landing
 	invisible
 	to offer

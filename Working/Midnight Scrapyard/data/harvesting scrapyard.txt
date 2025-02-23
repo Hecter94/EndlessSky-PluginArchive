@@ -11,17 +11,9 @@
 
 
 
-minable "jump drive"
-	sprite "asteroid/jump drive/spin"
-	hull 20000
-	payload "Jump Drive" 1
-	payload "Jump Drive (Broken)" 2
-	payload "Scrap Metal" 20
-	explode "smoke" 40
-	explode "bolide" 40
-	explode "asteroid crunch small"
-
 minable "scrap metal"
+	"display name" "Scrap"
+	noun "Metal"
 	sprite "asteroid/scrap metal/spin"
 	hull 2000
 	payload "Scrap Metal" 50
@@ -29,26 +21,54 @@ minable "scrap metal"
 	explode "bolide" 40
 	explode "asteroid crunch small"
 
+minable "jump drive"
+	"display name" "Scrap"
+	noun "Metal"
+	sprite "asteroid/jump drive/spin"
+	hull 20000
+	payload "Jump Drive (Broken)" 1
+	payload "Scrap Metal" 30
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch small"
+
+minable "heat shunt"
+	"display name" "Scrap"
+	noun "Metal"
+	sprite "asteroid/heat shunt/spin"
+	hull 5000
+	payload "Small Heat Shunt" 4
+	payload "Scrap Metal" 40
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch small"
+
 minable "mereti"
+	"display name" "Scrap"
+	noun "Metal"
 	sprite "asteroid/reasoning node/spin"
 	hull 5000
 	payload "Reasoning Node" 4
-	payload "Scrap Metal" 20
+	payload "Scrap Metal" 40
 	explode "smoke" 40
 	explode "bolide" 40
 	explode "asteroid crunch small"
 
 #deprecated version of minable "mereti"
 minable "reasoning node"
+	"display name" "Scrap"
+	noun "Metal"
 	sprite "asteroid/reasoning node/spin"
 	hull 5000
-	payload "Reasoning Node" 8
-	payload "Scrap Metal" 20
+	payload "Reasoning Node" 4
+	payload "Scrap Metal" 40
 	explode "smoke" 40
 	explode "bolide" 40
 	explode "asteroid crunch small"
 
 minable "sestor"
+	"display name" "Scrap"
+	noun "Metal"
 	sprite "asteroid/control transceiver/spin"
 	hull 5000
 	payload "Control Transceiver" 4
@@ -59,10 +79,12 @@ minable "sestor"
 
 #deprecated version of minable "sestor"
 minable "control transceiver"
+	"display name" "Scrap"
+	noun "Metal"
 	sprite "asteroid/control transceiver/spin"
 	hull 5000
-	payload "Control Transceiver" 16
-	payload "Scrap Metal" 40
+	payload "Control Transceiver" 4
+	payload "Scrap Metal" 60
 	explode "smoke" 40
 	explode "bolide" 40
 	explode "asteroid crunch small"
@@ -82,6 +104,7 @@ outfit "Scrap Metal"
 
 
 mission "Scrapyard Add Scrap"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -113,12 +136,14 @@ event "Scrapyard Add Scrap"
 
 
 mission "Scrapyard More Scrap"
+	non-blocking
 	landing
 	invisible
 	to offer
 		has "event: Blight Shadow Infestation"
 	on offer
 		event "Scrapyard More Scrap"
+		set "Scrapyard More Scrap Heat Shunt Patched"
 		fail
 
 event "Scrapyard More Scrap"
@@ -127,7 +152,8 @@ event "Scrapyard More Scrap"
 	system "Makferuti"
 		add minables "scrap metal" 1 2.6
 	system "Asikafarnut"
-		add minables "jump drive" 1 2.7
+		add minables "heat shunt" 1 2.7
+		add minables "jump drive" 1 3.2
 		add minables "scrap metal" 1 2.2
 	system "Sobarati"
 		add minables "scrap metal" 1 2.5
@@ -139,3 +165,18 @@ event "Scrapyard More Scrap"
 		add minables "mereti" 1 2.7
 	system "Mesuket"
 		add minables "mereti" 1 1.4
+
+mission "Scrapyard More Scrap Heat Shunt Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Scrapyard More Scrap"
+		has "Scrapyard More Scrap Heat Shunt Patched"
+	on offer
+		event "scrapyard more scrap heat shunt patch"
+		fail
+
+event "scrapyard more scrap heat shunt patch"
+	system "Asikafarnut"
+		add minables "heat shunt" 1 2.7

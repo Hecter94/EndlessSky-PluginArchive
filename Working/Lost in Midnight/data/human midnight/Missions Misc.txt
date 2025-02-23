@@ -339,7 +339,7 @@ mission "Bounty Hunting: Angry Chicken"
 			distance 1 2
 		personality target waiting staying disables harvests
 			confusion 20
-		ship "Modified Firebird" "Angry Chicken"
+		ship "Modified Firebird (Modified Hyperdrive)" "Angry Chicken"
 		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <planet> and split the reward."`
 	on fail
 		dialog `[MISSION FAILED]: The Sunriser was destroyed. If life were a game, you could load a save file and try again.`
@@ -594,6 +594,7 @@ mission "Gremlin Protoype Escort"
 		payment
 		payment 100000
 		event "Gremlin Betelgeuse Production" 60
+		set "gremlin betelgeuse production smuggler patched"
 		log "Escorted a prototype Gremlin to the Betelgeuse Shipyards headquarters. They might add it to their lineup if the meeting went well."
 		conversation
 			scene "thumbnail/gremlin-thumb"
@@ -1754,6 +1755,43 @@ mission "Midnight Swarm Lord"
 		dialog "The local Militia rewards you with <payment> for eliminating the Swarm Lord."
 
 
+mission "Midnight Wanderlust"
+	minor
+	deadline 4
+	name "Evade the Wanderlust"
+	description `The bounty hunter ship "Wanderlust" has taken a job to hunt you down. Evade the ship or destroy it.`
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Pirate"
+		attributes "frontier"
+		not attributes "station"
+	to offer
+		"reputation: Pirate" < -300
+		"combat rating" > 300
+		"ships: Light Warship" + "ships: Medium Warship" + "ships: Heavy Freighter" >= 1
+		not "Midnight Wanderlust: done"
+		or
+			and
+				not "Midnight Wanderlust: failed"
+				random < 70
+			and
+				has "Midnight Wanderlust: failed"
+				random < 5
+	on offer
+		conversation
+			`When the bartender checks your ID, he looks up in surprise. "<first> <last>, huh? The captain of the Wanderlust was in here just yesterday looking for you. Tough bounty hunter. You must have really offended someone." He gives you a free drink, but that does little to take your mind off the news that someone is out to get you.`
+				accept
+	npc kill
+		government "Bounty Hunter"
+		personality target entering heroic vindictive nemesis
+			confusion 10
+		ship "Modified Hogshead (Modified Hyperdrive)" "Wanderlust"
+		on kill
+			set "Midnight Wanderlust: done"
+			dialog "You've finally put an end to the Wanderlust's bounty hunting. It will bother you no more."
+			fail
+	on fail
+		clear "Midnight Wanderlust: offered"
+
 
 mission "Raider Attack (Pirates)"
 	minor
@@ -1795,7 +1833,6 @@ mission "Raider Attack (Pirates)"
 	on complete
 		payment 300000
 		dialog `The government of <planet> pays you <payment> for helping to drive off the raiders.`
-
 
 
 mission "Midnight Striker"
@@ -1917,6 +1954,7 @@ mission "Shield Suppressor Intro"
 	outfitter
 	minor
 	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "frontier"
 	on offer
 		conversation
@@ -1957,7 +1995,6 @@ mission "Smuggler's Den Advanced Shields"
 				"Marauder Leviathan (Shields)"
 				"Marauder Manta (Shields)"
 				"Marauder Splinter (Shields)"
-
 
 
 mission "Star Explorer Fan Tour"
@@ -2065,6 +2102,8 @@ mission "Star Explorer Fan Tour"
 		ship "Aerie (Energy Cannons)" "Warnest"
 		ship "Dagger" "Soft Boil"
 		ship "Dagger" "Hard Boil"
+		ship "Dagger" "Scrambled"
+		ship "Dagger" "Overeasy"
 
 	npc accompany save
 		government "Merchant"
@@ -2098,7 +2137,6 @@ ship "Blackbird" "Alien Blackbird"
 		"Impala Plasma Thruster"
 		"Impala Plasma Steering"
 		"Hyperdrive"
-
 
 
 mission "Star Explorer Korath Raid"
@@ -2140,7 +2178,6 @@ mission "Star Explorer Korath Raid"
 					decline
 			scene "outfit/jump drive"
 			`	Only the final entry survived. "We landed on Sundive after testing out the strange device. It was only by chance we had the opportunity to acquire it from an alien vessel which pirates had disabled. Our journey from Polaris took but a single day! But this device, amazing as it is, consumes double the fuel of a Hyperdrive. Despite this, I have decided to set course for the systems to the east. We finally have the opportunity to explore a region of space that is truly unknown. Perhaps we may even reach the center of the galaxy! As we boldly set forth to where no human has gone before, we carry the hopes and dreams of those who precede us: to search for new life and peaceful civilizations as we explore the last frontier."`
-
 
 
 mission "Navy: Captured "Auxiliary""
@@ -2265,7 +2302,6 @@ mission "Navy: Captured Cruiser"
 	on complete
 		payment 600000
 		dialog `The Navy administrators reward you with <payment> for stopping the <npc>.`
-
 
 
 mission "Pirate FW invite 1"
@@ -2546,7 +2582,6 @@ mission "Pirate FW invite 3"
 			`	As the man lays dying, he mutters to you, "Keep hunting the Navy. Go to spaceports in the Free Worlds. Someone... should... find..." But then he's gone. With nothing else for you here, you flee before the attackers close the distance.`
 
 
-
 mission "Stranded Dirtbelt Merchant"
 	landing
 	name "Passenger to <planet>"
@@ -2579,7 +2614,6 @@ mission "Stranded Dirtbelt Merchant"
 	on complete
 		payment 50000
 		dialog `The rescued crew thank you for bringing them to planet. As promised, they pay you <payment> for your efforts.`
-
 
 
 mission "Testing: Mega Freighter Prototype"
@@ -2881,7 +2915,6 @@ mission "Southern Fiance (Parker, Perlman, Hoakes) 1"
 		set "Southern Fiance 6: offered"
 		fail
 
-# The Parker, Perlman, Hoakes missions no longer trigger with the revised and shortened Southern Fiance mission chain. They remain here for anyone playing older versions of Endless Sky, if the vanilla missions/events are restored to their original state, or if some other plugin restores the original missions/events to their original state.
 # This mission gives the player a choice whether to follow the original mission chain (which it will release the hold on) or take the shorter off-ramp.
 mission "Southern Fiance (Parker, Perlman, Hoakes) 2"
 	landing
@@ -2911,7 +2944,6 @@ mission "Southern Fiance (Parker, Perlman, Hoakes) 2"
 			`	You do recall being redirected to an alternate landing pad where Carl and Tom were waiting, however you deny being detained against your will. If they were hoping for someone to testify against Carl, they'll have to find a different client.`
 				decline
 
-# The Parker, Perlman, Hoakes missions no longer trigger with the revised and shortened Southern Fiance mission chain. They remain here for anyone playing older versions of Endless Sky, if the vanilla missions/events are restored to their original state, or if some other plugin restores the original missions/events to their original state.
 # This mission acts as the off-ramp, ending the chain one step early and giving the player a small reward.
 mission "Southern Fiance (Parker, Perlman, Hoakes) 3"
 	landing
@@ -2927,7 +2959,7 @@ mission "Southern Fiance (Parker, Perlman, Hoakes) 3"
 		log "Minor People" "Tom and Carl" `Carl Ardwright-Chamberlain was forced out of his bid for the governorship of Cornucopia due to his involvement with a scandal in which Syndicate shipments arranged by his husband, Tom Ardwright-Chamberlain, were being given preferential priority at the spaceport by detaining other pilots.`
 		conversation
 			`In the spaceport, you notice a news bulletin announcing Carl Ardwright-Chamberlain dropping out of the governor's race on Cornucopia. Apparently, he was involved with a scandal in which Syndicate shipments arranged by his husband, Tom Ardwright-Chamberlain, were being given preferential priority at the spaceport by detaining other pilots.`
-			`	Shortly afterward, you receive a message: "Greetings <first> <last>. Our lawfirm, Parker, Perlman, and Hoakes, has successfully concluded our lawsuit against Carl Ardwright-Chamberlain. As one of the plaintiffs, you are entitled to a portion of the financial judgement. After subtracting legal fees, your share has been calculated at <payment>, which has been deposited to your account. Parker, Perlman, and Hoakes thanks you for your participation.`
+			`	Shortly afterward, you receive a message: "Greetings <first> <last>. Our lawfirm, Parker, Perlman, and Hoakes, has successfully concluded our lawsuit against Carl Ardwright-Chamberlain. As one of the plaintiffs, you are entitled to a portion of the financial judgement. After subtracting legal fees, your share has been calculated at <payment>, which has been deposited to your account. Parker, Perlman, and Hoakes thanks you for your participation."`
 				decline
 
 

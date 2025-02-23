@@ -15,7 +15,7 @@
 # - Become an arms dealer for the Unfettered.
 # - Offend the Hai when they find out.
 # - Dominate the Unfettered.
-# - Uncover a secret cult of Unfettered sympathizers
+# - Jump Drive trading
 
 
 
@@ -336,19 +336,6 @@ mission "Angry Squirrels: Fragmentation Grenade Deal"
 			`The Unfettered are grateful for your delivery of 100 sets of Fragmentation Grenades and pay you the agreed amount of <payment>. You can expect orders for more sets of Fragmentation Grenades to appear on the Unfettered job boards.`
 
 
-
-fleet "unfettered weapon collectors"
-	government "Hai (Unfettered Civilians)"
-	names "hai"
-	cargo 1
-	personality
-		disables
-		plunders
-	variant 2
-		"Shield Beetle (Weapon Collector)"
-	variant 1
-		"Shield Beetle (Nutcracker Collector)"
-
 mission "Angry Squirrels: Unfettered Weapon Collectors"
 	landing
 	invisible
@@ -599,7 +586,7 @@ mission "Angry Squirrels: Countermeasures 3"
 			names "pirate"
 			variant
 				"Aerie (Energy Cannons)"
-				"Dagger" 5
+				"Dagger" 6
 	npc board
 		system "Almaaz"
 		government "Pirate"
@@ -1056,6 +1043,193 @@ mission "Midnight Pulse Repeater Order"
 			`	Go Foo Ku thanks you for your order.`
 
 
+mission "Midnight Expansion Unfettered Displacer Pod"
+	job
+	repeat
+	name "Sell Jump Drive"
+	description "Exchange a jump drive on your flagship or in cargo for money, or for weapons, if an outfitter is available."
+	source
+		attributes "unfettered"
+	to offer
+		has "Unfettered Jump Drive 4: offered"
+		not "event: wanderers: unfettered invasion starts"
+		not "unfettered: money for drives"
+		has "Unfettered Jump Drive Trading: offered"
+		has "flagship planet: Darkcloak"
+		random < 75
+	to fail
+		has "Midnight Expansion Unfettered Displacer Pod: active"
+	to accept
+		or
+			has "outfit (flagship installed): Jump Drive"
+			has "outfit (cargo): Jump Drive"
+	on accept
+		conversation
+			scene "outfit/hai displacer pod"
+
+			branch "midnight displacer pod known"
+				has "event: midnight add displacer pods"
+			action
+				event "midnight add displacer pods"
+			`The Unfettered's usual deal of trading a jump drive for weapons still stands. As you are negotiating, you notice a young Unfettered counting and re-counting their inventory of Tracker missiles. The Unfettered you are speaking with follows your gaze and grins. "Those are Displacers. Some captains have expressed a demand for additional anti-anti-missile technology. We've replaced the optical tracking hardware in these missiles with holographic emitters to make it harder for anti-missile defenses to shoot them down. Are you interested in trying them out? We can spare two fully loaded Displacer Pods. The ammunition should also be available in the outfitters soon.`
+				goto choose
+
+			label "midnight displacer pod known"
+			`The Unfettered's usual deal of trading a jump drive for weapons still stands. As you are negotiating, you notice them unpacking a fresh shipment of Displacer Pods and their ammunition...`
+
+			label choose
+			choice
+				`	(Take two Displacer Pods.)`
+					goto "displacer"
+				`	(Take two Tripulse Shredders.)`
+					goto tripulse
+				`	(Take money instead.)`
+
+			action
+				payment 1000000
+			`As usual, the Unfettered are more than willing to pay you a million credits for your jump drive, but you do not gain any additional information by talking with them.`
+				goto trade
+
+			label tripulse
+			action
+				outfit "Tripulse Shredder" 2
+			`	The two Shredders are loaded onto your ship, in exchange for your jump drive.`
+				goto trade
+
+			label displacer
+			action
+				outfit "Hai Displacer Pod" 2
+				outfit "Displacer Storage Pod" 2
+				outfit "Hai Displacer" 168
+			`	The two Displacer Pods and their ammunition are loaded onto your ship, in exchange for your jump drive.`
+
+			label trade
+			branch cargo
+				has "outfit (cargo): Jump Drive"
+			action
+				outfit "Hyperdrive" 1
+			label cargo
+			action
+				outfit "Jump Drive" -1
+				"reputation: Hai (Unfettered)" >?= 40
+
+
+mission "Midnight Hunted (Unfettered)"
+	invisible
+	landing
+	repeat
+	deadline 30
+	source
+		government "Hai" "Hai (Unfettered)" "Hai (Friendly Unfettered)"
+	to offer
+		"combat rating" > 8103
+		"armament deterrence" >= 2
+		not "Midnight Hunted (Unfettered): active"
+		or
+			has "Bearer of The Blade"
+			"tribute: Firelode" > 0
+			"tribute: Darkcloak" > 0
+			"tribute: Warfeed" > 0
+			and
+				has "event: wanderers: varu mer'ek evacuated"
+				"tribute: Varu Mer'ek" > 0
+			and
+				has "Wanderers Defend Sich'ka'ara: done"
+				"tribute: Kort Vek'kri" > 0
+			and
+				has "Wanderers Rek 2: offered"
+				or
+					"tribute: Vara Ke'sok" > 0
+					"tribute: Vara Ke'stai" > 0
+					"tribute: Var' Kar'i'i" > 0
+			and
+				has "Wanderers: Alpha Surveillance J: done"
+				"tribute: Varu K'est" > 0
+			and
+				has "event: It came from the desert..."
+				or
+					"tribute: Oldhome" > 0
+					"tribute: Nearwater" > 0
+					"tribute: Drywaste" > 0
+					"tribute: Wildland" > 0
+		random < 5
+		or
+			not "chosen sides"
+			has "main plot completed"
+	# For weaker players, killing a single one of the attacking NPCs and then landing is sufficient to "complete" the mission.
+	npc save
+		to despawn
+			or
+				"armament deterrence" < 2
+				"armament deterrence" >= 3
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Small Unfettered"
+	npc save
+		to despawn
+			or
+				"armament deterrence" < 3
+				"armament deterrence" >= 4
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Small Unfettered"
+	npc save
+		to despawn
+			or
+				"armament deterrence" < 4
+				"armament deterrence" >= 8
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Small Unfettered" 2
+	npc save
+		to despawn
+			or
+				"armament deterrence" < 8
+				"armament deterrence" >= 16
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Large Unfettered"
+		fleet "Small Unfettered"
+	npc save
+		to despawn
+			or
+				"armament deterrence" < 16
+				"armament deterrence" >= 32
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Unfettered Armor Beetle"
+		fleet "Small Unfettered" 2
+	# For stronger players, all attacking NPCs must be killed before the mission will be completed.
+	npc kill
+		to despawn
+			"armament deterrence" < 32
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Unfettered Armor Beetle"
+		fleet "Large Unfettered"
+		fleet "Small Unfettered" 4
+	npc kill
+		to despawn
+			"armament deterrence" < 64
+		government "Hai (Unfettered Challenger)"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		system
+			distance 5 5
+		fleet "Bounty Hunter (Unfettered)"
+		fleet "Small Unfettered" 2
+
 
 #########################################
 #
@@ -1064,6 +1238,7 @@ mission "Midnight Pulse Repeater Order"
 #########################################
 
 mission "Angry Squirrels: planet Varu Mer'ek"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1080,6 +1255,7 @@ event "unfettered tribute Varu Mer'ek"
 			fleet "Small Unfettered" 3
 
 mission "Angry Squirrels: planet Kort Vek'kri"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1096,6 +1272,7 @@ event "unfettered tribute Vek'kri"
 			fleet "Small Unfettered" 3
 			
 mission "Angry Squirrels: more planets"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1129,6 +1306,7 @@ event "unfettered tribute Var' Kar'i'i"
 
 
 mission "Angry Squirrels: planet Varu K'est"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -1146,6 +1324,7 @@ event "unfettered tribute Varu K'est"
 
 
 mission "Angry Squirrels: Wanderer Tribute Patch"
+	non-blocking
 	invisible
 	landing
 	to offer

@@ -12,6 +12,7 @@
 
 
 mission "Ion Pulse Cannons"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -19,12 +20,10 @@ mission "Ion Pulse Cannons"
 	on offer
 		event "ion pulse cannons"
 		set "ion pulse turret patched"
+		set "ion pulse turret patched 2"
 		fail
 
 event "ion pulse cannons"
-	outfitter "Unfettered Basics"
-		add "Ion Pulse Cannon"
-		add "Ion Pulse Turret"
 	fleet "Unfettered Tribute"
 		add variant 1
 			"Water Bug (Jump, Ion Pulse)"
@@ -105,20 +104,40 @@ event "ion pulse cannons"
 			"Shield Beetle (Ion Pulse)"
 
 mission "Ion Pulse Turret Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
-		has "event: ion pulse cannons"
-		not "ion pulse turret patched"
+		never
+#		has "event: ion pulse cannons"
+#		not "ion pulse turret patched"
 	on offer
 		event "ion pulse turret patch"
 		fail
 
 event "ion pulse turret patch"
+#	outfitter "Unfettered Basics"
+#		add "Ion Pulse Turret"
+
+mission "Ion Pulse Turret Patch 2"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: ion pulse cannons"
+		not "ion pulse turret patched 2"
+	on offer
+		event "ion pulse turret patch 2"
+		fail
+
+event "ion pulse turret patch 2"
 	outfitter "Unfettered Basics"
-		add "Ion Pulse Turret"
+		remove "Ion Pulse Cannon"
+		remove "Ion Pulse Turret"
+
 
 mission "Ion Pulse Support"
+	non-blocking
 	landing
 	invisible
 	to offer
@@ -146,10 +165,12 @@ event "ion pulse support"
 			"Violin Spider (Pulse)" 3
 
 mission "Ion Flash Bang"
+	non-blocking
 	landing
 	invisible
 	on offer
 		event "ion flash bang"
+		set "ion flash bang patched"
 		fail
 
 event "ion flash bang"
@@ -157,33 +178,35 @@ event "ion flash bang"
 		add "Ion Flash Bang"
 	outfitter "Unfettered Basics"
 		add "Ion Flash Bang"
+		add "Phantom Tracker (Gun)"
+		add "Phantom Tracker (Turret)"
 	fleet "Large Hai"
 		add variant 1
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Lightning Bug (Pulse)" 2
 		add variant 1
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Lightning Bug (Pulse)"
 			"Aphid (Armed)" 4
 		add variant 1
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Lightning Bug (Pulse)"
 			"Water Bug"
 			"Water Bug (Pulse)"
 		add variant 1
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Water Bug"
 			"Water Bug (Pulse)"
 		add variant 1
 			"Shield Beetle (Pulse)"
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 		add variant 1
 			"Shield Beetle (Pulse)"
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Lightning Bug (Pulse)" 2
 		add variant 1
 			"Geocoris (Tracker)"
-			"Shield Beetle (Ion Flash)"
+			"Shield Beetle (Police, Ion Flash)"
 			"Aphid" 2
 			"Aphid (Armed)" 
 	fleet "Hai Surveillance"
@@ -192,10 +215,12 @@ event "ion flash bang"
 	fleet "Large Plundering Unfettered"
 		add variant 1
 			"Shield Beetle (Ion Flash)"
-			"Lightning Bug (Pulse)" 2
+			"Questing Tick (Phantom Tracker)" 2
+			"Lightning Bug (Pulse)"
 		add variant 1
 			"Shield Beetle (Ion Flash)"
-			"Lightning Bug (Pulse)"
+			"Questing Tick (Phantom Tracker)" 2
+			"Modified Aphid (Phantom Tracker)"
 		add variant 1
 			"Shield Beetle (Tracker)"
 			"Shield Beetle (Ion Flash)"
@@ -207,7 +232,8 @@ event "ion flash bang"
 		add variant 1
 			"Shield Beetle (Pulse)"
 			"Shield Beetle (Ion Flash)"
-			"Lightning Bug (Pulse)" 2
+			"Questing Tick (Phantom Tracker)" 2
+			"Lightning Bug (Pulse)"
 		add variant 1
 			"Sea Scorpion (Pulse)" 2
 			"Sea Scorpion (Ion Flash)" 2
@@ -222,9 +248,117 @@ event "ion flash bang"
 			"Sea Scorpion (Ion Flash)" 2
 			"Shield Beetle (Pulse)"
 		add variant 1
+			"Questing Tick (Phantom Tracker)" 2
+			"Modified Aphid (Phantom Tracker)"
+			"Sea Scorpion (Ion Flash)"
+			"Shield Beetle (Pulse)"
+
+mission "Ion Flash Bang Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: ion flash bang"
+		not "ion flash bang patched"
+	on offer
+		event "ion flash bang patch"
+		fail
+
+event "ion flash bang patch"
+	outfitter "Unfettered Basics"
+		add "Phantom Tracker (Gun)"
+		add "Phantom Tracker (Turret)"
+	fleet "Large Hai"
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)"
+			"Aphid (Armed)" 4
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)"
+			"Water Bug"
+			"Water Bug (Pulse)"
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Water Bug"
+			"Water Bug (Pulse)"
+		remove variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Ion Flash)"
+		remove variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		remove variant 1
+			"Geocoris (Tracker)"
+			"Shield Beetle (Ion Flash)"
+			"Aphid" 2
+			"Aphid (Armed)" 
+		add variant 1
+			"Shield Beetle (Police, Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		add variant 1
+			"Shield Beetle (Police, Ion Flash)"
+			"Lightning Bug (Pulse)"
+			"Aphid (Armed)" 4
+		add variant 1
+			"Shield Beetle (Police, Ion Flash)"
+			"Lightning Bug (Pulse)"
+			"Water Bug"
+			"Water Bug (Pulse)"
+		add variant 1
+			"Shield Beetle (Police, Ion Flash)"
+			"Water Bug"
+			"Water Bug (Pulse)"
+		add variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Police, Ion Flash)"
+		add variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Police, Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		add variant 1
+			"Geocoris (Tracker)"
+			"Shield Beetle (Police, Ion Flash)"
+			"Aphid" 2
+			"Aphid (Armed)" 
+	fleet "Large Plundering Unfettered"
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)"
+		remove variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Ion Flash)"
+			"Lightning Bug (Pulse)" 2
+		remove variant 1
 			"Lightning Bug"
 			"Sea Scorpion (Ion Flash)"
 			"Shield Beetle (Pulse)"
+		add variant 1
+			"Shield Beetle (Ion Flash)"
+			"Questing Tick (Phantom Tracker)" 2
+			"Lightning Bug (Pulse)"
+		add variant 1
+			"Shield Beetle (Ion Flash)"
+			"Questing Tick (Phantom Tracker)" 2
+			"Modified Aphid (Phantom Tracker)"
+		add variant 1
+			"Shield Beetle (Pulse)"
+			"Shield Beetle (Ion Flash)"
+			"Questing Tick (Phantom Tracker)" 2
+			"Lightning Bug (Pulse)"
+		add variant 1
+			"Questing Tick (Phantom Tracker)" 2
+			"Modified Aphid (Phantom Tracker)"
+			"Sea Scorpion (Ion Flash)"
+			"Shield Beetle (Pulse)"
+
 
 event "add quantum bloodstones"
 	fleet "Small Hai Merchant (Sympathizers)"
@@ -243,17 +377,17 @@ event "add quantum bloodstones"
 			"Shield Beetle (Bloodstone)"
 
 mission "Midnight Add Komodo Anti-Missile"
+	non-blocking
 	landing
 	invisible
 	to offer
 		has "event: solifuge deployment"
 	on offer
 		event "midnight add komodo anti-missile"
+		set "midnight add komodo anti-missile patched"
 		fail
 
 event "midnight add komodo anti-missile"
-	outfitter "Unfettered Basics"
-		add "Komodo Anti-Missile"
 	fleet "Unfettered Raid"
 		add variant 1
 			"Solifuge (Komodo, Jump)"
@@ -265,7 +399,7 @@ event "midnight add komodo anti-missile"
 			"Violin Spider" 6
 		add variant 1
 			"Solifuge (Komodo, Tracker)"
-			"Violin Spider (Pulse)" 6
+			"Violin Spider (Phantom Tracker)" 6
 		add variant 1
 			"Solifuge (Komodo, Repeater)"
 			"Violin Spider (Pulse Repeater)" 6
@@ -274,7 +408,7 @@ event "midnight add komodo anti-missile"
 			"Violin Spider" 12
 		add variant 1
 			"Solifuge (Komodo, Tracker)"
-			"Violin Spider (Pulse)" 6
+			"Violin Spider (Phantom Tracker)" 6
 			"Solifuge (Komodo, Repeater)"
 			"Violin Spider (Pulse Repeater)" 6
 		add variant 1
@@ -284,7 +418,7 @@ event "midnight add komodo anti-missile"
 		add variant 1
 			"Shield Beetle (Ion Flash)"
 			"Solifuge (Komodo, Tracker)"
-			"Violin Spider (Pulse)" 6
+			"Violin Spider (Phantom Tracker)" 6
 		add variant 1
 			"Shield Beetle (Pulse Repeater)"
 			"Solifuge (Komodo, Repeater)"
@@ -295,26 +429,74 @@ event "midnight add komodo anti-missile"
 			"Sea Scorpion (Ion Pulse)" 2
 		add variant 1
 			"Solifuge (Komodo, Tracker)"
-			"Violin Spider (Pulse)" 6
+			"Violin Spider (Phantom Tracker)" 6
 			"Sea Scorpion (Ion Flash)" 2
 		add variant 1
 			"Solifuge (Komodo, Repeater)"
 			"Violin Spider (Pulse Repeater)" 6
 			"Sea Scorpion (Pulse Repeater)" 2
 
+mission "Midnight Add Komodo Anti-Missile Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: midnight add komodo anti-missile"
+		not "midnight add komodo anti-missile patched"
+	on offer
+		event "midnight add komodo anti-missile patch"
+		fail
+
+event "midnight add komodo anti-missile patch"
+	outfitter "Unfettered Basics"
+		remove "Komodo Anti-Missile"
+	fleet "Large Unfettered"
+		remove variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Pulse)" 6
+		remove variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Pulse)" 6
+			"Solifuge (Komodo, Repeater)"
+			"Violin Spider (Pulse Repeater)" 6
+		remove variant 1
+			"Shield Beetle (Ion Flash)"
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Pulse)" 6
+		remove variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Pulse)" 6
+			"Sea Scorpion (Ion Flash)" 2
+		add variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Phantom Tracker)" 6
+		add variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Phantom Tracker)" 6
+			"Solifuge (Komodo, Repeater)"
+			"Violin Spider (Pulse Repeater)" 6
+		add variant 1
+			"Shield Beetle (Ion Flash)"
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Phantom Tracker)" 6
+		add variant 1
+			"Solifuge (Komodo, Tracker)"
+			"Violin Spider (Phantom Tracker)" 6
+			"Sea Scorpion (Ion Flash)" 2
+
 
 mission "Midnight Add Pulse Repeater"
+	non-blocking
 	landing
 	invisible
 	on offer
 		event "midnight add pulse repeater"
+		set "midnight add pulse repeater patched"
 		fail
 
 event "midnight add pulse repeater"
 	outfitter "Unfettered Basics"
 		add "Barracks"
-		add "Hai Heliotrope Regenerator"
-		add "Hai Mistral Cooling"
 	fleet "Unfettered Raid"
 		add variant 1
 			"Shield Beetle (Jump, Pulse Repeater)" 3
@@ -340,3 +522,120 @@ event "midnight add pulse repeater"
 			"Sea Scorpion (Pulse Repeater)" 2
 		add variant 4
 			"Sea Scorpion (Pulse Repeater)" 3
+
+mission "Midnight Add Pulse Repeater Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: midnight add pulse repeater"
+		not "midnight add pulse repeater patched"
+	on offer
+		event "midnight add pulse repeater patch"
+		fail
+
+event "midnight add pulse repeater patch"
+	outfitter "Unfettered Basics"
+		remove "Hai Heliotrope Regenerator"
+		remove "Hai Mistral Cooling"
+
+
+mission "Midnight Add Modified Aphid"
+	non-blocking
+	landing
+	invisible
+	on offer
+		event "midnight add modified aphid"
+		fail
+
+event "midnight add modified aphid"
+	fleet "Large Plundering Unfettered"
+		add variant 1
+			"Modified Aphid (Pulse)" 2
+			"Questing Tick" 2
+			"Questing Tick (Pulse)" 2
+		add variant 1
+			"Modified Aphid (Phantom Tracker)" 2
+			"Questing Tick (Phantom Tracker)" 4
+		add variant 1
+			"Modified Aphid (Pulse Repeater)" 2
+			"Questing Tick (Pulse Repeater)" 4
+		add variant 1
+			"Modified Aphid (Pulse)" 3
+			"Questing Tick" 3
+			"Questing Tick (Pulse)" 3
+		add variant 1
+			"Modified Aphid (Phantom Tracker)" 3
+			"Questing Tick (Phantom Tracker)" 6
+		add variant 1
+			"Modified Aphid (Pulse Repeater)" 3
+			"Questing Tick (Pulse Repeater)" 6
+	fleet "Unfettered Logistics"
+		add variant 1
+			"Aphid (Unfettered)" 2
+			"Questing Tick (Pulse)" 2
+		add variant 1
+			"Aphid (Unfettered)" 3
+			"Questing Tick (Pulse)" 3
+		add variant 1
+			"Aphid (Unfettered)" 2
+			"Modified Aphid (Tracker)" 2
+		add variant 1
+			"Aphid (Unfettered)" 3
+			"Modified Aphid (Tracker)" 3
+		add variant 1
+			"Aphid (Unfettered)" 2
+			"Modified Aphid (Pulse)" 2
+		add variant 1
+			"Aphid (Unfettered)" 2
+			"Modified Aphid (Pulse)"
+			"Modified Aphid (Pulse Repeater)"
+		add variant 1
+			"Aphid (Unfettered)" 3
+			"Modified Aphid (Pulse)" 2
+			"Modified Aphid (Pulse Repeater)"
+		add variant 1
+			"Aphid (Unfettered)" 3
+			"Modified Aphid (Pulse)"
+			"Modified Aphid (Pulse Repeater)" 2
+
+
+event "midnight add displacer pods"
+	outfitter "Unfettered Basics"
+		add "Displacer Storage Pod"
+		add "Hai Displacer"
+	fleet "Small Unfettered"
+		add variant 1
+			"Lightning Bug (Displacer)" 2
+		add variant 1
+			"Lightning Bug (Displacer)"
+		add variant 1
+			"Sea Scorpion (Displacer)"
+		add variant 1
+			"Sea Scorpion (Displacer)"
+			"Lightning Bug (Displacer)"
+	fleet "Large Unfettered"
+		add variant 1
+			"Shield Beetle (Displacer)"
+			"Lightning Bug (Displacer)"
+		add variant 1
+			"Shield Beetle (Displacer)"
+			"Lightning Bug (Displacer)" 2
+		add variant 1
+			"Shield Beetle (Displacer)" 2
+			"Lightning Bug (Displacer)" 2
+		add variant 1
+			"Lightning Bug (Displacer)" 5
+		add variant 1
+			"Shield Beetle (Displacer)" 2
+		add variant 1
+			"Sea Scorpion (Displacer)" 3
+		add variant 1
+			"Sea Scorpion (Displacer)" 4
+		add variant 1
+			"Shield Beetle (Displacer)"
+			"Sea Scorpion (Displacer)" 2
+		add variant 1
+			"Shield Beetle (Displacer)"
+			"Lightning Bug (Displacer)"
+			"Sea Scorpion (Displacer)"
