@@ -106,9 +106,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 186.66 kb | 2025-02-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 189.86 kb | 2025-02-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-23) <br>
 
 >Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
 >
@@ -127,14 +127,21 @@ This plugin<br>
 - adds more permanent buttons from the radial menus to make them easy accessible<br>
 - removes the radial menus<br>
 - adds a new button row to the top right for the fleet commands<br>
-- adds zoom buttons
+- adds zoom buttons<br>
+- adds more targeting buttons<br>
 - greyes out inactive buttons<br>
-- puts images behind the buttons.<br>
+- puts images behind the buttons, to grey out unavailable.<br>
 - changes the ship hud<br>
 <br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-23<br>
+added new fleet jump button<br>
+moved targeting buttons to the lower right<br>
+removed fleet attack from normal attack button<br>
+removed targeting button from target display<br>
 <br>
 2025-02-06<br>
 the targeting buttons blocked the new scanner attribute display, so i moved it up<br>
