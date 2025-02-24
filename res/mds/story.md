@@ -1,16 +1,16 @@
 
-All Plugins (582)
+All Plugins (593)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (69)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (141) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Story
 
-<p>79 plugins in this category.<p>
+<p>80 plugins in this category.<p>
 
 
  
@@ -82,6 +82,41 @@ GPLv3 (see `COPYING`).
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### avgi.licenses
+<img src='../../Working/avgi.licenses/icon.png' height='100'></img><br>
+
+
+[avgi.licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/avgi.licenses.zip) | 374.35 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/avgi.licenses/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-06) <br>
+
+>Adds a mission on "Navigeo Yards" to get the 3 Avgi licenses. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### avgi.licenses<br>
+<br>
+Adds a mission on "Navigeo Yards" to get the 3 Avgi licenses.<br>
+<br>
+<br>
+When you have completed the Avgi Intro (Avgi: Twilight Escape 3: done), land on "Navigeo Yards". You have a 20% chance kn getting the licenses mission, which leads you to the Gossamer system, where you have to mine some stuff and bring it back. Licenses have new images. You also get an unassigned Avgi unique.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2025-02-06<br>
+initial release<br>
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -270,7 +305,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1165,7 +1200,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: made for 0.10.6 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1174,9 +1209,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Jibauni Storyline Additions
 
 
-[Jibauni.Storyline.Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.Storyline.Additions.zip) | 6.81 kb | 2025-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni%20Storyline%20Additions/) <br>
+[Jibauni.Storyline.Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.Storyline.Additions.zip) | 11.54 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni%20Storyline%20Additions/) <br>
 Author: TheGiraffe3 | Category: Story <br>
-[https://github.com/TheGiraffe3/more-Jibauni-storyline](https://github.com/TheGiraffe3/more-Jibauni-storyline) (last commit 2025-02-01) <br>
+[https://github.com/TheGiraffe3/more-Jibauni-storyline](https://github.com/TheGiraffe3/more-Jibauni-storyline) (last commit 2025-02-24) <br>
 
 >Expands the Jibauni storyline with more missions. Still beta. Requires the [Jibauni](https://github.com/TheGiraffe3/Jibauni) plugin to use.
 >
@@ -2050,7 +2085,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: made for 0.10.6 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -2202,7 +2237,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 Author: zuckung | Category: Story <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-12) <br>
 
->planetary map travelling concept : start a new pilot, use 'start: planet.map'
+>Planetary map travelling concept work: Land on Memory, visit the outfitter and follow the small story line. See the README for details.
 >
 
 <details>
@@ -2246,7 +2281,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: made for 0.10.6 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

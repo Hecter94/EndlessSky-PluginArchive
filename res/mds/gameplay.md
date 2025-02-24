@@ -1,16 +1,16 @@
 
-All Plugins (582)
+All Plugins (593)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (69)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (141) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Gameplay
 
-<p>44 plugins in this category.<p>
+<p>52 plugins in this category.<p>
 
 
  
@@ -130,7 +130,7 @@ changed icon.png<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -462,6 +462,132 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### disable.person.ships
+<img src='../../Working/disable.person.ships/icon.png' height='100'></img><br>
+
+
+[disable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.person.ships.zip) | 19.64 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.person.ships/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-02) <br>
+
+>Disables all person ships. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### disable.person.ships <br>
+<br>
+<br>
+Disables all 14 random spawning person ships.<br>
+<br>
+<ul>
+<li>	"Michael Zahniser" </li>
+<li>	"Cap'n Pester" </li>
+<li>	"Marauding Max" </li>
+<li>	"Captain Nate" </li>
+<li>	"Tranquility" </li>
+<li>	"Power of the People" </li>
+<li>	"Local God" </li>
+<li>	"Subsidurial" </li>
+<li>	"Prototype B3-CC4" </li>
+<li>	"Rais Iris XVIII" </li>
+<li>	"Zitchas" </li>
+<li>	"Brick" </li>
+<li>	"Gefullte Taubenbrust" </li>
+<li>	"MasterOfGrey" </li>
+<li>	"Patrol Team" </li>
+</ul>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-02-02<br>
+added 0.10.5 "Patrol Team"<br>
+<br>
+2023-10-17<br>
+added plugin.txt<br>
+<br>
+2013-08-31<br>
+added icon.png<br>
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### disable.spaceport.repeatables
+<img src='../../Working/disable.spaceport.repeatables/icon.png' height='100'></img><br>
+
+
+[disable.spaceport.repeatables.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.spaceport.repeatables.zip) | 20.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.spaceport.repeatables/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-26) <br>
+
+>Disables all repeatable spaceport missions. I.e. shady passenger transport, drug smuggling, time critical transport or defend planet. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### disable.spaceport.repeatables
+<br>
+<br>
+Disables all spaceport repeatable missions. These missions annoy me. Removes the 8 dialog repeatables, the 8 defend planet missions and the 4 republic catastrophe repeatables.<br>
+<br>
+<br>
+<ul>
+<li> "Shady passenger transport 1" </li>
+<li> "Shady passenger transport 2" </li>
+<li> "Shady passenger transport 3" </li>
+<li> "Drug Running 1" </li>
+<li> "Drug Running 2" </li>
+<li> "Drug Running 3" </li>
+<li> "Courier 1" </li>
+<li> "Courier 2" </li>
+<li> "Southern Pirate Attack" </li>
+<li> "Northern Pirate Attack" </li>
+<li> "Core Pirate Attack" </li>
+<li> "Pirate Occupation [0]" </li>
+<li> "Pirate Occupation [1]" </li>
+<li> "Pirate Occupation [2]" </li>
+<li> "Raider Attack 1" </li>
+<li> "Raider Attack 2" </li>
+<li> "Republic Navy Advisory System [frozen]" </li>
+<li> "Republic Navy Advisory System [volcanic]" </li>
+<li> "Republic Navy Advisory System [wildfire cargo]" </li>
+<li> "Republic Navy Advisory System [wildfire firefighters]" </li>
+<li> "Small Scale Delivery" (Kor Efret)<li>
+</ul>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-05-26<br>
+added "Small Scale Delivery" from Kor Efret<br>
+<br>
+2024-04-06<br>
+added the 4 republic catastrophe repeatables<br>
+<br>
+2023-10-17<br>
+added plugin.txt<br>
+<br>
+2023-09-03<br>
+added the 2 syndicate alien attack missions<br>
+<br>
+2023-08-31<br>
+added the 3 pirate occupation missions<br>
+added icon.png<br>
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Drop Loot
 
 
@@ -600,7 +726,7 @@ moved investment missions from spaceport mission to job board<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -690,6 +816,59 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
+### hai.side.mission.unlocker
+<img src='../../Working/hai.side.mission.unlocker/icon.png' height='100'></img><br>
+
+
+[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 32.07 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+
+>Unlocks Hai missions, that are currently blocked because of the Hai reveal rework. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### hai.side.mission.unlocker
+<br>
+<br>
+Unlocks following hai missions: Unwanted Cargo Trigger, Hiding in Plain Sight, Nanachi 1, Expanding Business [1] and Hai Reveal: Pirate Troubles [0]. If there are followups they work too. Also Devil-Run related systems are shown now.<br>
+<br>
+Currently these missions are either completely blocked or blocked after you start chapter 1 of hai reveal. This plugin fixes that.<br>
+mission "Unwanted Cargo Trigger" (removed secret leaks)<br>
+mission "Unwanted Cargo" (removed secret leaks)<br>
+mission "Hiding in Plain Sight" (removed secret leaks & resolution)<br>
+mission "Nanachi 1" (removed secret leaks & resolution) followups are ok<br>
+mission "Expanding Business [1]" (removed resolution) followups are ok<br>
+mission "Hai Reveal: Pirate Troubles [0]" (Scars Legion cut out of campaign)<br>
+<br>
+Also removes the hidden tag from system Devil-Run. It can be found near the core and opens the path to the Deep Space systems and the Devil-Hide system via wormhole.<br>
+And removes hidden tag from "Devil-Hide" and "Al Hurr", both Hai Reveal systems.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-09-06<br>
+removed HR status message from Pirate Troubles [1]<br>
+disabled the original missions, instead of a workaround<br>
+merged this plugin with the plugin devil-run.unhidden<br>
+<br>
+2024-04-19<br>
+bug fixes<br>
+<br>
+2024-04-16<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### HW Rebalance Test
 
 
@@ -769,6 +948,42 @@ fixed error<br>
 2024-07-19<br>
 initial release<br>
 text corrections (thx to TheGiraffe3)<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### kestrel.unlocks
+<img src='../../Working/kestrel.unlocks/icon.png' height='100'></img><br>
+
+
+[kestrel.unlocks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kestrel.unlocks.zip) | 6.19 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kestrel.unlocks/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-18) <br>
+
+>Unlocks all Kestrel variants after you have unlocked the first one. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### kestrel.unlocks
+<br>
+<br>
+Unlocks all Kestrel variants after you have unlocked the first one.<br>
+<br>
+After completing the Kestrel mission chain, every 30 days a new variant is unlocked and you get notified about that. If you activate this plugin after you have already completed the missions, the 30 days timer starts from then.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-18<br>
+initial release<br>
 
 
 </blockquote>
@@ -985,7 +1200,7 @@ reworked readme<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1099,6 +1314,49 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### mission.helper
+<img src='../../Working/mission.helper/icon.png' height='100'></img><br>
+
+
+[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 92.65 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-20) <br>
+
+>Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### mission.helper
+<br>
+<br>
+Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them.<br>
+<br>
+Accept the job "(mission.helper)" and click your way to the mission you want more information about.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2025-02-20<br>
+added passengers requirement<br>
+added cargo requirement<br>
+added to fail condition<br>
+added to complete condition<br>
+added to accept condition<br>
+<br>
+2025-02-17<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### more.boarding.missions
 <img src='../../Working/more.boarding.missions/icon.png' height='100'></img><br>
 
@@ -1196,7 +1454,7 @@ added icon and reworked readme<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1223,6 +1481,89 @@ More uninhabited planets for [Endless Sky](https://github.com/endless-sky/endles
 </details>
 
 Status: In Progress <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### no.more.mereti.mines
+<img src='../../Working/no.more.mereti.mines/icon.png' height='100'></img><br>
+
+
+[no.more.mereti.mines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/no.more.mereti.mines.zip) | 80.88 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/no.more.mereti.mines/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+
+>Removes the mines from Mereti ships and replaces them with Husk-Slice and Shield Disruptor guns, as well as Heat Shunts to increase game performance. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### no.more.mereti.mines
+<br>
+<br>
+Removes the mines from Mereti ships and replaces them with Mereti-typical guns to increase game performance.<br>
+<br>
+Replaces Cluster Mine Layer, Cluster Mine Racks and Cluster Mines with Husk-Slice and Shield Disruptor guns, and if need be Heat Shunts, on Model 16/32/64/128/256/512. For every removed mine layer guns and heat shunts got added. That increases game performance in mass fights, like in Mesuket system.<br>
+Added bunrodean swarm pods change by timeout.fu. Now it fires less, but with more damage.br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-09-06<br>
+fixed weapon space bug of Model 256<br>
+<br>
+2024-08-02<br>
+added shield disruptor guns (by Darcy Manoel) and heat shunts to the Mereti ships<br>
+<br>
+2024-07-24<br>
+added better performance to bunrodea swarm pods (by timeout.fu)<br>
+<br>
+2024-02-04<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### paint.your.ships
+<img src='../../Working/paint.your.ships/icon.png' height='100'></img><br>
+
+
+[paint.your.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/paint.your.ships.zip) | 133.67 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/paint.your.ships/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+
+>Offers a job on Earth to paint your ships. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### paint.your.ships
+<br>
+<br>
+Offers a job on Earth to paint your ships.<br>
+<br>
+There are already like five plugins that change the swizzle color, but this one has the colors displayed ingame (image by amazinite).<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/paint.your.ships01.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-09-06<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1377,6 +1718,56 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### show.reputation
+<img src='../../Working/show.reputation/icon.png' height='100'></img><br>
+
+
+[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 40.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-25) <br>
+
+>Enables a job on every planet's job board, that shows the reputation values. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### show.reputation
+<br>
+<br>
+Enables a job on every planet's job board, that shows the reputation values.<br>
+<br>
+Accept the job and the reputations conversation pops up. Then you can choose between viewing the 35 most useful or all.<br>
+<br>
+<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/show.reputation/screenshot.jpg' width='100'>
+<br>
+<br>
+Changelog:<br>
+<br>
+22025-01-5<br>
+added 0.10.11 govs<br>
+<br>
+2024-11-02<br>
+added 0.10.9 govs<br>
+changed to show on job accept instead of landing<br>
+<br>
+2024-03-16<br>
+added option to show all rep values or just the 35 most useful<br>
+changed to better reputation handling (thx to zoura for the tip)<br>
+<br>
+2024-03-14<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### space.fauna
 <img src='../../Working/space.fauna/icon.png' height='100'></img><br>
 
@@ -1418,7 +1809,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: made for 0.10.6 , complete <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

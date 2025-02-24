@@ -1,16 +1,16 @@
 
-All Plugins (582)
+All Plugins (593)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (69)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (141) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Ships
 
-<p>140 plugins in this category.<p>
+<p>141 plugins in this category.<p>
 
 
  
@@ -1714,6 +1714,75 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### more.person.ships
+<img src='../../Working/more.person.ships/icon.png' height='100'></img><br>
+
+
+[more.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.person.ships.zip) | 4.61 mb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.person.ships/) <br>
+Author: zuckung | Category: Ships <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-15) <br>
+
+>This plugin adds more person ships to the different regions of the galaxy. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### more.person.ships
+<br>
+<br>
+This plugin adds more person ships.<br>
+<br>
+I renamed my plugin pirate.warlords and added more person ships.<br>
+These ships have a frequency of 1000, are all captureable and currently there are 8 persons.<br>
+<br>
+List of new person ships:<br>
+<br>
+North Pirate Warlord | Human northern pirate territory | Modified Bactrian<br>
+Core Pirate Warlord | Human core pirate territory | Modified Bactrian<br>
+South Pirate Warlord | Human southern pirate territory | Modified Bactrian<br>
+The Emperor | Unfettered Hai territory | Emperor Beetle (unused vanilla ship)(@2x in official hdpi plugin)<br>
+Eco-One | Human territory | Eco (new ship)<br>
+Explorer Corps | Human territory | 3xBadger (new ship)<br>
+Coinin Tapa | east of Gegno territory| Coinin (new ship with new outfits)<br>
+Sesk Lem | Korath territory | Ikatila'ej (new ship, vanilla sprites)(@2x in official hdpi plugin)<br>
+Planet Express | everywhere | Old Bessie (new ship, stats by timeout.fu)
+<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.person.ships01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.person.ships02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-10-15<br>
+added Futurama person ship (thx timeout.fu for stats and texts)<br>
+<br>
+2024-10-08<br>
+added status mission to Earth<br>
+<br>
+2024-08-25<br>
+added person Sesk Lem<br>
+added person Coinin Tapa<br>
+<br>
+2024-06-27<br>
+renamed plugin from pirate.warlords to more.person.ships<br>
+changed mass and drag to rebalanced values<br>
+added person The Emperor<br>
+added person Eco-One<br>
+added person Explorer Corps<br>
+<br>
+2024-02-15<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Nemesis
 <img src='../../Working/Nemesis/icon.png' height='100'></img><br>
 
@@ -2272,9 +2341,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 1.19 mb | 2025-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 1.19 mb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-02-13) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2025-02-24) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
@@ -2283,7 +2352,9 @@ Author: TheGiraffe3 | Category: Ships <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Rumskib
 
-Expansion for Endless Sky.
+Large expansion for Endless Sky. Mostly ship-based, but there are new outfits, missions, systems, and starts, as well.
+
+I release this plugin with unstable ES updates, so about every four months.
 
 Assets can be found [here](https://github.com/TheGiraffe3/homula-rumskib-assets).
 

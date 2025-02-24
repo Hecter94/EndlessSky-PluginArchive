@@ -1,16 +1,16 @@
 
-All Plugins (582)
+All Plugins (593)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (44) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (48)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (69)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (140) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (79) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (141) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (24)<br>
 
 ---
 
 ## Outfits
 
-<p>48 plugins in this category.<p>
+<p>49 plugins in this category.<p>
 
 
  
@@ -822,6 +822,46 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
+### outfits.weapon.slot
+<img src='../../Working/outfits.weapon.slot/icon.png' height='100'></img><br>
+
+
+[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | 884.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
+Author: zuckung | Category: Outfits <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-30) <br>
+
+>Adds several non-weapon outfits for gun and turret ports. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### outfits.weapon.slot
+<br>
+<br>
+Adds several non-weapon outfits for gun and turret ports. See the README for details.<br>
+<br>
+These outfits use an empty gun or turret port and add stats like fuel, cargo, bunks etc.<br>
+Half the outfits are designed by timeout.fu and he did an overall balancing of all outfits (thx).<br>
+Currently there are 7 gun port outfits and 6 turret port outfits. Available on Glaze, Valhalla, Wayfarer, Luna and Sunracer.<br>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/outfits.weapon.slot01.jpg' width='400'>
+<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/outfits.weapon.slot02.jpg' width='400'>
+<br>
+<br>
+Changelog:<br>
+<br>
+2024-08-30<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Pilots License
 <img src='../../Working/Pilots License/icon.png' height='100'></img><br>
 
@@ -1113,7 +1153,7 @@ removed remnant mission requirement<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.2 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1341,7 +1381,7 @@ changed icon.png<br>
 </blockquote>
 </details>
 
-Status: tested with 0.10.8 <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
