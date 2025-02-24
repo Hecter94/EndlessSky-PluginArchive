@@ -1,0 +1,585 @@
+# Copyright (c) 2024 by Loymdayddaud
+#
+# Jibauni Storyline is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Jibauni Storyline is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Jibauni: Escorts Begin"
+	landing
+	name "Go to <planet>"
+	description "Kanlanmo has contacted you and asked you to pick up some Jibauni ships on <planet>, then report to him on Baitoon."
+	source
+		government "Jibauni" "Jibauni (Rebel)"
+	destination "Taltahard"
+	to offer
+		not "not working with jibauni"
+		has "event: jibauni gather fleet against rebels"
+	on offer
+		conversation
+			`As <ship> touches down on its landing pad, you receive a message from Kanlanmo.`
+			`	"Hello, <first>. Go to <planet>. There will be ships waiting for you to escort back to Baitoon. Meet me there after they arrive. Oh, and also have one bunk free when you get to <planet>."`
+			choice
+				`	"I'm on it!"`
+					accept
+				`	"I have an urgent delivery, but I'll come later. Send the message again to remind me."`
+					defer
+	on accept
+		log `Have begun working with the Jibauni once more. Currently supposed to escort some ships to Baitoon, the home planet.`
+	on complete
+		dialog `You should probably check the spaceport to find the ships.`
+			
+mission "Jibauni: Escorts 0"
+	landing
+	name "Ships to <planet>"
+	description "Kanlanmo has contacted you and asked you to pick up some Jibauni ships on <origin>, then report to him on <planet>."
+	source "Taltahard"
+	destination "Baitoon"
+	passengers 1
+	blocked "You do not have one bunk free. Come back later when there is more space on your ship."
+	to offer
+		has "Jibauni Escorts Begin: done"
+	on offer
+		conversation
+			branch defer
+				has "Jibauni Escorts 0: deferred"
+			`	As you land and go into the spaceport, you see none other than Kasim Aboagye standing there to meet you. "Hello, <last>," he greets you. "How is it going? Your job is to escort the <npc> and company to Baitoon, and also, I'm coming in your ship. Okay?"`
+				goto choice
+			label defer
+			`	"Are you finally ready to take me, the <npc>, and company to Baitoon, <first>?" Kasim asks as you step out of the <ship>.`
+			label choice
+			choice
+				`	"Sure thing!"`
+					accept
+				`	"Not now, sorry."`
+			`	"We can wait for a while, but please hurry. Pressing business is at hand. Are you sure about waiting?"`
+			choice
+				`	"Actually, I can take you."`
+					accept
+				`	"I will hurry."`
+					defer
+	on defer
+		set "Jibauni: Escorts 0: deferred"
+	on enter
+	on enter
+	on enter
+	on enter
+		dialog `While you are looking out the cockpit, Kasim comes up behind you. "I think I broke something," he says. "Sorry."`
+	on complete
+		conversation
+			`As you and Kasim get off your ship, Kanlanmo comes to greet you. "Hello! I see you have brought the ships and Kasim here all safe and sound!"`
+			choice
+				`	"Of course I have!"`
+				`	"Why wouldn't I?"`
+				`	"Yes, flying here was fun."`
+			`	"Good. Now, can you - actually, meet me in the spaceport. I will give you instructions there, but I have a report I need to make first."`
+	npc accompany save
+		government Jibauni
+		personality
+			disables
+			escort
+			frugal
+			heroic
+			launching
+			merciful
+			opportunistic
+		ship "Nathar" "Hirrih"
+		ship "Muraw (Fighting)" "Hirrih 1"
+		ship "Muraw (Fighting)" "Hirrih 2"
+		ship "Muraw (Fighting)" "Hirrih 3"
+		ship "Muraw" "Hirrih 4"
+		ship "Nakil" "Winner of Victory"
+		ship "Larajal" "Winner 1"
+		ship "Larajal" "Winner 2"
+		ship "Muraw" "Winner 3"
+		ship "Muraw" "Winner 4"
+		ship "Latbaliday" "Winner 5"
+		ship "Latbaliday" "Winner 6"
+		ship "Duntay" "Winner 7"
+		ship "Duntay" "Winner 8"
+		ship "Duntay" "Winner 9"
+		ship "Duntay" "Winner 10"
+	npc
+		government "Jibauni (Rebel)"
+		system destination
+		personality
+			confusion 10
+			heroic
+		fleet "Small Rebel Jibauni Military" 2
+
+
+mission "Jibauni: Escorts 1"
+	name "Get ships from <planet>"
+	description "Pick up some more ships, from <planet stopovers>, than come back to <origin>."
+	source "Baitoon"
+	stopover "Kahbani"
+	destination "Baitoon"
+	deadline
+	to offer
+		has "Jibauni Escorts 0: done"
+	on offer
+		payment 75000
+		conversation
+			`Kanlanmo meets you in the spaceport, and hands you <payment>. "These are for bringing the Hirrih and company here safely.`
+			`	"Also, the Leaders have decided to give you a daily salary of 200 credits, which is the entirety of the amount they can afford right now. They seem to figure having you around is advantageous.`
+			`	"Now, could you get to <planet> and pick up the Yiyarsi and its escorts? We need every ship we can get, and the offensive starts in two weeks. Do not take any longer than one week getting them back here, okay?"`
+			choice
+				`	"I'll be quick."`
+					accept
+	on accept
+		"salary: Jibauni" = 200
+	on stopover
+		set "jibauni: escorts 1: stopped on kahbani"
+		dialog "The fleet is waiting for you and signals that they will launch when you do."
+	npc accompany save
+		government "Jibauni"
+		personality
+			disables
+			escort
+			frugal
+			heroic
+			launching
+			merciful
+			opportunistic
+		planet "Kahbani"
+		system "Kanalsa"
+		to spawn
+			has "jibauni: escorts 1: stopped on kahbani"
+		ship "Yiyharsi" "Nabal"
+		ship "Yiyharsi" "Yabal"
+		ship "Yiyharsi" "Labal"
+		ship "Yiyharsi" "Dabal"
+		ship "Yiyharsi" "Mabal"
+		ship "Saghir" "Bronze Arrow"
+		ship "Furus" "Sinsin"
+		ship "Furus" "Binbin"
+		ship "Furus" "Minmin"
+		ship "Furus" "Linlin"
+
+
+mission "Jibauni: Escorts 2"
+	landing
+	name "Get ships from <planet>"
+	description "Pick up more Jibauni ships, from <planet>, than return to <origin>."
+	source "Baitoon"
+	destination "Kanlil"
+	deadline
+	to offer
+		has "Jibauni: Escorts 1: done"
+	on offer
+		conversation
+			`Kanlanmo meets you as you land. "Good job, <first>. One more escort mission; please go to <destination> and pick up the fleet from there."`
+				accept
+	on complete
+		dialog `The captain of the fleet you will be escorting shows up on your viewpanel. "Meet me in the spaceport," he says. "As soon as possible!"`
+
+
+mission "Jibauni: Baitoon 1"
+	landing
+	name "Defend <planet>"
+	description "The Rebel Jibauni are attacking <destination>. Fight and drive them off, then land and receive instructions."
+	source "Kanlil"
+	destination "Baitoon"
+	deadline 7
+	to offer
+		has "Jibauni: Escorts 2: done"
+	on offer
+		conversation
+			`However, before you have a chance to disembark, the same captain hurries up to <ship> and shouts. The horror-filled words reach your ears, "<planet> is under attack by a Rebel force! We have to get there immediately!" You immediately take off, followed by a number of other Jibauni ships.`
+				launch
+	on visit
+		conversation
+			branch alreadyvisited
+				has "jibauni: visited when the rebels attack baitoon"
+				"reputation: Jibauni" >= 1
+			branch alreadyvisitednotloserep
+				has "jibauni: visited when the rebels attack baitoon"
+				"reputation: Jibauni" < 1
+			label notvisited
+			action
+				set "jibauni: visited when the rebels attack baitoon"
+			`A group of Jibauni hurries up and asks, "Are the Rebel Jibauni defeated yet?" You must tell them the answer, no, and they force you to leave again and disable the Rebels.`
+				depart
+			label alreadyvisited
+			action
+				"reputation: Jibauni" --
+			`The same group arrives asking the same question. When they hear the answer, you are again made to leave, amid mutterings from the angry Jibauni.`
+			label alreadyvisitednotloserep
+			`The same group arrives asking the same question. When they hear the answer, you are again made to leave, amid even more mutterings.`
+	npc
+		government Jibauni
+		personality
+			disables
+			escort
+			frugal
+			heroic
+			launching
+			merciful
+			opportunistic
+		fleet
+			names "jibauni military"
+			cargo 0
+			variant
+				"Nathar" 2
+				"Larajal" 2
+				"Muraw" 2
+				"Yiyharsi" 2
+				"Furus" 3
+				"Saghir"
+		on kill
+			set "jibauni: kanlil fleet dead"
+	npc
+		government "Jibauni"
+		system "Huyya"
+		personality
+			disables
+			escort
+			frugal
+			heroic
+			merciful
+			opportunistic
+			staying
+		ship "Nathar" "Hirrih"
+		ship "Muraw (Fighting)" "Hirrih 1"
+		ship "Muraw (Fighting)" "Hirrih 2"
+		ship "Muraw (Fighting)" "Hirrih 3"
+		ship "Muraw" "Hirrih 4"
+		ship "Nakil" "Winner of Victory"
+		ship "Larajal" "Winner 1"
+		ship "Larajal" "Winner 2"
+		ship "Muraw" "Winner 3"
+		ship "Muraw" "Winner 4"
+		ship "Latbaliday" "Winner 5"
+		ship "Latbaliday" "Winner 6"
+		ship "Duntay" "Winner 7"
+		ship "Duntay" "Winner 8"
+		ship "Duntay" "Winner 9"
+		ship "Duntay" "Winner 10"
+		on kill
+			set "jibauni: taltahard fleet dead"
+	npc
+		government "Jibauni"
+		system "Huyya"
+		personality
+			disables
+			escort
+			frugal
+			heroic
+			merciful
+			opportunistic
+			staying
+		ship "Yiyharsi" "Nabal"
+		ship "Yiyharsi" "Yabal"
+		ship "Yiyharsi" "Labal"
+		ship "Yiyharsi" "Dabal"
+		ship "Yiyharsi" "Mabal"
+		ship "Saghir" "Bronze Arrow"
+		ship "Furus" "Sinsin"
+		ship "Furus" "Binbin"
+		ship "Furus" "Minmin"
+		ship "Furus" "Linlin"
+		on kill
+			set "jibauni: kahbani fleet dead"
+	npc
+		government "Jibauni"
+		system "Huyya"
+		personality
+			derelict
+			disables
+			escort
+			frugal
+			heroic
+			merciful
+			opportunistic
+			staying
+		fleet
+			names "jibauni military"
+			variant
+				"Nathar"
+				"Latbaliday"
+	npc disable
+		government "Jibauni (Rebel)"
+		system Huyya
+		personality
+			heroic
+			opportunistic
+			staying
+		fleet
+			names "rebel jibauni military"
+			cargo 0
+			variant
+				"Nathar" 4
+				"Latbaliday" 6
+				"Muraw" 2
+				"Yiyharsi" 7
+				"Saghir" 6
+	npc
+		government "Jibauni (Rebel)"
+		system Huyya
+		personality
+			derelict
+			heroic
+			staying
+		fleet
+			names "rebel jibauni military"
+			variant
+				"Nakil"
+				"Duntay" 3
+				"Larajal"
+
+
+mission "Jibauni: Baitoon 2"
+	landing
+	name "Attack <planet>"
+	description "Invade the Rebel Jibauni planet of <planet>, which is in the <system> system."
+	source "Baitoon"
+	destination "Andwerfen"
+	deadline
+	clearance
+	priority
+	non-blocking
+	npc kill
+		government "Jibauni (Rebel)"
+		system "Almanhaq"
+		personality
+			heroic
+			opportunistic
+			staying
+			waiting
+		fleet "Large Rebel Jibauni" 3
+		fleet "Small Rebel Jibauni" 10
+	npc
+		government "Jibauni (Rebel)"
+		system "Haqal"
+		personality
+			heroic
+			staying
+			waiting
+		fleet "Large Rebel Jibauni" 5
+		on encounter
+			"jibauni: met rebel fleets" ++
+		on kill
+			"jibauni: met rebel fleets" --
+	npc
+		government "Jibauni (Rebel)"
+		system "Yinkin"
+		personality
+			heroic
+			staying
+			waiting
+		fleet "Small Rebel Jibauni" 13
+		on encounter
+			"jibauni: met rebel fleets" ++
+		on kill
+			"jibauni: met rebel fleets" --
+	npc
+		government "Jibauni (Rebel)"
+		system "Holo"
+		personality
+			heroic
+			staying
+			waiting
+		fleet "Large Rebel Jibauni" 9
+		fleet "Small Rebel Jibauni" 7
+		on encounter
+			"jibauni: met rebel fleets" ++
+		on kill
+			"jibauni: met rebel fleets" --
+	npc
+		government "Jibauni"
+		personality
+			launching
+			timid
+		ship "Yankul" "Silvery Bells"
+	to offer
+		has "Jibauni: Defend Baitoon: done"
+	on offer
+		log "Helped to defend the Jibauni planet of Baitoon from a large Rebel attack. Received instructions to make a counterstrike on Andwerfen."
+		"salary: Jibauni" = 800
+		conversation
+			`As you land, a Larajal appears, and out of it steps Kanlanmo. "Hello there, <first>!" he says in jubilant tones. "I hear that the Rebels have been defeated, largely thanks to you. So thank you!"`
+			choice
+				`	"It was my pleasure."`
+				`	"How did the Rebel Jibauni get such a large fleet in without anyone noticing?"`
+			`	"I have no idea how the Rebels transported all those ships here. It seems that they have been preparing this offensive for ages - it was pure bad luck that we just so happened to be preparing an offensive at the same time. Or rather, pure good luck - Baitoon would have fallen for sure if we had not been amassing this fleet.`
+			`	"The leaders have approved a salary raise to 800 credits, with the unanimous approval of the whole Majmae. Meet me in the spaceport at ninety-three for further instructions."`
+			choice
+				`	(Wait.)`
+			`	Kanlanmo arrives at your meeting point looking glum. "Well, <first>, can you guess what happened? The magistrates want an immediate counterattack; they believe that the majority of the Rebel force attacked us, and that since it's been destroyed we're completely safe from further invasion.`
+			`	"Our most prominent general disagreed with this, saying that but a small portion of the Rebel force invaded us earlier, but nobody listened to him. As a result we've been ordered to attack <planet>, an unfortunate result to the years of planning.`
+			`	"However, I digress. Our fleet is ready; we'll launch when you do."`
+				accept
+	on visit
+		conversation
+			`While you were allowed to land, for some strange reason, the Rebel Jibauni immediately notice who you are and boot you off the planet.`
+				launch
+
+mission "Jibauni: Baitoon 2 Escorts"
+	invisible
+	landing
+	to offer
+		has "Jibauni: Baitoon 1: done"
+	to fail
+		has "Jibauni: Baitoon 3: done"
+	to complete
+		never
+	npc accompany
+		government "Jibauni"
+		personality
+			escort
+			heroic
+			launching
+			opportunistic
+		fleet "Large Jibauni Military" 4
+		fleet "Small Jibauni Military" 9
+
+mission "Jibauni: Baitoon 3"
+	landing
+	name "Retreat from Andwerfen"
+	description "The Rebel Jibauni have sent a massive force to reconquer Andwerfen. Retreat back to <destination> immediately before losing more troops."
+	source "Andwerfen"
+	destination "Baitoon"
+	deadline
+	to offer
+		has "Jibauni: Defend Baitoon Follow-up: done"
+	npc
+		government "Jibauni (Rebel)"
+		system "Haqal"
+		personality
+			heroic
+			waiting
+		fleet "Large Rebel Jibauni" 5
+		on encounter
+			dialog "One of the reported fleets has just entered the system."
+	npc
+		government "Jibauni (Rebel)"
+		system "Yinkin"
+		personality
+			heroic
+			waiting
+		fleet "Small Rebel Jibauni" 13
+		on encounter
+			dialog "One of the reported fleets has just entered the system."
+	npc
+		government "Jibauni (Rebel)"
+		system "Holo"
+		personality
+			heroic
+			waiting
+		fleet "Large Rebel Jibauni" 9
+		fleet "Small Rebel Jibauni" 7
+		on encounter
+			dialog "One of the reported fleets has just entered the system."
+	on offer
+		log "Captured Andwerfen and the system of Almanhaq for the Jibauni, at a heavy cost. The military leaders have decided to retreat, deeming it too difficult to hold the newly-acquired planet."
+		event "jibauni: captured Andwerfen" 0
+		event "jibauni: lost Andwerfen" 2
+		conversation
+			branch "knows some of the rebel strength"
+				"jibauni: met rebel fleets" > 0
+				"jibauni: met rebel fleets" < 3
+			branch "knows the full rebel strength"
+				"jibauni: met rebel fleets" == 3
+			`Andwerfen has been captured, but at a heavy cost - many Jibauni pilots are dead. However, there is yet hope, as the Jibauni military leaders assume that the Rebel Jibauni lost most of their strength in the attack, and will not dare to make a counterattack.`
+				goto next
+			label "knows some of the rebel strength"
+			`Andwerfen has been captured, but at a heavy cost - many Jibauni pilots are dead. In addition, you've met Rebel fleets elsewhere, and another attack is imminent.`
+				goto next
+			label "knows the full rebel strength"
+			`Andwerfen has been captured, but at a heavy cost - many Jibauni pilots are dead. And with a huge number of Rebel Jibauni fleets still above other planets, another attack is imminent, and likely to be deadly.`
+			label next
+			`	Kanlanmo arrives at your ship. "Well, Captain, I see the fight worked, but oh, what a loss. We have been called to attend a meeting of the 'top brass' in your language; the highest-ranking military generals in the Jibauni army. Please come with me."`
+			`	He silently leads you through the main city with a heavy bodyguard, parts of which are smouldering from orbital bombardment. Angry looks appear everywhere you look, and at one point a defeated Rebel Jibauni calls out in a strange language that your translator can't pick up.`
+			choice
+				`	"What did that Rebel say?"`
+				`	(Remain silent.)`
+					goto meeting
+			`	"I would prefer not to translate the exact wording, but essentially it was a heap of insults," Kanlanmo quickly responds in a low voice, then falling again into silence.`
+			label meeting
+			`	After the long trek through narrow streets and back alleys, the small army reaches a nicer part of the city. Houses here have large sloping varandas, and the upper floors are made almost entirely of glass.`
+			`	Kanlanmo leads you to the nicest one of all. Your translator tells you that the mailbox reads, "Grand Armada Admiral Nalonmo"; apparently this was where the commander-in-chief of the Rebel Jibauni fleet resode; it has now been commandeered by the Jibauni military captains.`
+			`	He leads you inside and up a wide curving staircase to a meeting room, inside of which are seated a large group of Jibauni, all wearing medals and other adornments.`
+			choice
+				`	"Who are all these people?"`
+				`	"Shall we get started?"`
+					goto begin
+			`	"This meeting comprises the entire Admiralty, and a group of lower-ranking captains of the ships that helped conquer this planet. The 'top brass', as I said." Then, Kanlanmo addresses the rest of the crowd. "Shall we get started?" he asks.`
+			label begin
+			`	The largest Jibauni in the room stands up quickly, and Kanlanmo whispers that he is the Grand Armada Admiral of the normal Jibauni fleets, named Inlinmo.`
+			`	Inlinmo clears his throat and begins to speak. "Friends, Jibauni, and fellow imperialists, allow me to begin the meeting. As you know, we recently conquered Andwerfen and the system of Almanhaq, the location we now are in. However, we have a situation. Many of our ships have been destroyed. Therefore, I would like to propose that we retreat back to Baitoon to regroup."`
+			`	A round of applause is clapped out, and one of the other Jibauni says "I agree, but would also like to hear the proposal of the human <first> <last>. Captain, do you have an opinion?"`
+			choice
+				`	"Retreating would be the best strategy, I think."`
+					goto retreat
+					to display
+						"jibauni: met rebel fleets" == 0
+				`	"Retreating would be the best strategy. I did some scouting earlier, and it seems there are other large Rebel fleets in nearby systems."`
+					goto "definitely retreat"
+					to display
+						"jibauni: met rebel fleets" > 0
+				`	"I would prefer not to give an opinion that may be controversial."`
+					goto retreat
+				`	(Remain silent.)`
+			`	An awkward pause in the meeting ensues, but eventually the Jibauni again begin to discuss whether they should retreat, though based on the expressions of some of them they disliked your decision. At the end of the hours-long discussion, an announcement is made that they will publicly reveal the decision in the town square.`
+				goto "decision announced"
+			label retreat
+			`	At this, a hubbub breaks out, until the Grand Admiral stops it with a shrill whistle. "We must remain able to hear ourselves think. Arguing endlessly will not help us with the Rebel situation. Captain Renon, you may speak first."`
+			`	The indicated Jibauni begins to talk in a quiet voice. "Retreating would indeed be the best strategy. A scoutship went to check on the other Rebel systems, and radioed back news of large fleets, before cutting out communications altogether. Our team assumes they have been captured, and the Silvery Bells destroyed."`
+			`	Another round of confusion ensues, but eventually the leaders announce that they will publicly reveal the decision in the town square shortly.`
+				goto "decision announced"
+			label "definitely retreat"
+			action
+				payment 100000
+			`	A collective gasp rises from the assemblage. "That could be trouble for sure," Kanlanmo mutters. Inlinmo, the most affected, again whistles for silence. "This is grievous news that the human has brought us, yet were it not for this who knows what might have happened? I, for one, am glad that Captain <last> made this known to us, and nominate <first> for an immediate payment of a hundred thousand credits. Who agrees with me?" The vote quickly passes - unanimously - and than further discussion ensues. Eventually, the leaders announce that there will be a public revealing of the decision in the town square.`
+			label "decision announced"
+			choice
+				`	(Head to the town square for the announcement.)`
+					goto announcement
+				`	"When will the announcement be made?"`
+			`	Nobody pays attention to your question; all Jibauni in sight are hurrying toward the square in question, eager to learn the news. Apparently the announcement is now.`
+			label announcement
+			`	As you mount the platform reserved for captains of the occupying fleet, you notice large crowds pushing around the base. While some of them may be crew members on the fleet's ships, it is almost certain that many of them are loyal Rebel Jibauni. The unclarity lies in what the motives of these "enemies" are.`
+			`	One of the lesser captains has been chosen to declare the decision of the Council. He mounts the platform, and reads aloud a proclamation that seems to have come out of nowhere. While your translator cannot catch the exact wording, the gist is clear - a retreat is scheduled for dawn.`
+			`	At that moment, a disturbance arises in the crowd. One Jibauni is rushing out of the area in the direction of the spaceport. Although a chase is quickly organized, the stranger gets away before the persuit reaches the spaceport. It seems the Rebel Jibauni will receive news of the retreat; it is moved forwards to the evening. The rest of the day is taken up in endeavors to get everything in the fleet shipshape, and when evening falls, the Jibauni fleet launches.`
+				launch
+	on complete
+		event "jibauni: built up strength to occupy kateaza" 100 200
+		payment 600000
+		conversation
+			`As you land on Baitoon with the remainder of the assault fleet behind you, a massive cheer rises from the huge crowds gathered to welcome the fleet back. The applause continues until the ship the generals are in opens its hatch to reveal the smiling figure of Admiral Inlinmo, who gestures for silence. "We greet you as those who have made a strike to the heart of the enemy's capital," he calls through a gigantic megaphone. "Although forced to retreat, we have caused severe damage in the enemy fleet size. As a result, we are now safe... for the present. We must work towards gathering strength for another great attack."`
+			`	After the remainder of the speech, delivered from a high podium that rose out of the ground for Inlinmo to leap to, a meeting of the main people responsible for the attack on - and subsequent retreat from - Andwerfen. When everybody has settled, Kanlanmo says, "Alright, what are we planning on doing after this? As the Rebels are likely to attack soon - they may even come in tomorrow. Do we retreat and lose the capital, or stay and fight; risking a loss?"`
+			choice
+				`	"We need to stay. Losing Baitoon will impact our morale severely."`
+				`	"Perhaps we should abandon Baitoon and regroup. Every Jibauni fleet could attack at once to reconquer it."`
+					goto abandon?
+			`	Another captain, Zinon, stands. "Abandoning Baitoon would be better. We could then bring every fleet in at once to reconquer."`
+			branch abandon
+				random < 1
+			`	Inlinmo stands. "No, the eminent Captain <first> is correct. The war might stop immediately if we retreat; I would prefer not to be the cause of the first loss for centuries. We must continue, no matter what the casualties are."`
+			label "don't abandon"
+			`	Further discussion ensues, but the end result remains - Baitoon must be held onto at all costs. As the Jibauni exit the room, Inlinmo whispers, "Meet me in the spaceport."`
+				goto end
+			label abandon?
+			branch abandon
+				random < 1
+			`	Inlinmo stands. "The war will stop immediately if we retreat; I would prefer not to be the casue of the first major loss for centuries. We must continue here, no matter the casualties."`
+				goto "don't abandon"
+			label abandon
+			action
+				set "jibauni: abandon baitoon"
+			`	Inlinmo stands. "I agree. Abandoning Baitoon is for the best, and we can than gather our whole strength and fight back against the Rebels. All of you, meet me in the spaceport later. There's a meeting I must attend with blue-clothed ones soon."`
+			label end
+
+event "jibauni: captured Andwerfen"
+	system "Almanhaq"
+		government "Jibauni"
+
+event "jibauni: lost Andwerfen"
+	system "Almanhaq"
+		government "Jibauni (Rebel)"
