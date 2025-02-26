@@ -747,46 +747,42 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
-
-# Gatling Ammo Fix
+<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
-![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-
-## Installing
-
+[h1]Installing[/h1]
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
-Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
+[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
 
+[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
 
-It **won't** work if the directory structure will be anything like:
+It [b]won't[/b] work if the directory structure will be anything like:
 
-```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
-
-
-## Author
-
-* **Cat Lady**
+[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
 
 
-## License
+[h1]Author[/h1]
 
-This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+[list][*][b]Cat Lady[/b][/list]
 
-## Acknowledgments
+
+[h1]License[/h1]
+
+This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+
+
+
+[h1]Acknowledgments[/h1]
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
-
 </blockquote>
 </details>
 
@@ -1318,9 +1314,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/mission.helper/icon.png' height='100'></img><br>
 
 
-[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 92.65 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
+[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 92.92 kb | 2025-02-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-26) <br>
 
 >Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them. See the README for details.
 >
@@ -1336,6 +1332,10 @@ Accept the job "(mission.helper)" and click your way to the mission you want mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-02-26<br>
+updated with 0.10.12 data<br>
+improved help text<br>
 <br>
 2025-02-20<br>
 added passengers requirement<br>
