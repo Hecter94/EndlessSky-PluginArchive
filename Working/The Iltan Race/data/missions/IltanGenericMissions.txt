@@ -361,3 +361,97 @@ mission "IltanWealthyTourists"
 	on complete
 		payment 210000 135
 		dialog phrase "generic passenger dropoff payment"
+		
+mission "Paradise Job: Birthday Supplies"
+	name "Birthday supplies to <planet>"
+	job
+	repeat
+	deadline
+	description "An elderly couple wishes to contribute <cargo> for their grandchild's birthday bash on <destination> by <date>. Payment is <payment>."
+	cargo "Luxury Goods" 1 3
+	to offer
+		random < 10
+	source
+		government "Iltan"
+		attributes "rich" "wealthy"
+	destination
+		distance 2 10
+		government "Iltan"
+		attributes "rich" "wealthy" "tourism"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 15000
+		dialog "You deliver the cargo to the garden of a large mansion located far from the spaceport. You are quickly surrounded by a swarm of guests, the majority of whom have never met a human. A butler shortly relieves you of the impromptu celebrity session and gives you your payment of <payment>."
+
+mission "Paradise Job: Art Delivery"
+	name "Art delivery to <planet>"
+	job
+	repeat
+	deadline
+	description "Deliver <cargo> for an upcoming art exhibition on <destination> by <date>. Payment is <payment>."
+	cargo "Luxury Goods" 1 2 .4
+	to offer
+		random < 10
+	source
+		government "Iltan"
+		attributes "rich"
+	destination
+		government "Iltan"
+		distance 2 5
+		attributes "tourism"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 15000
+		dialog "You land at the rear of a large complex where your cargo of <commodity> is unloaded. A dock manager gives you your payment of <payment>."
+		
+mission "Paradise Job: Newlyweds"
+	name "Newlyweds to <planet>"
+	job
+	repeat
+	deadline
+	description "This pair of newlyweds seeks passage on a luxurious ship to reach their honeymoon on <destination> by <date>, along with <tons> of their wedding gifts. They will pay you <payment> to take them there."
+	passengers 2
+	cargo "wedding gifts" 2 4
+	to offer
+		random < 10
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "urban"
+		government "Iltan"
+	destination
+		distance 2 15
+		government "Iltan"
+		attributes "tourism"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 12000 250
+		dialog "You bid the two lovebirds goodbye on <planet> and collect your payment of <payment>."
+		
+
+mission "Corporate retreat to <planet stopovers>"
+	job
+	repeat
+	deadline
+	description "A team of <bunks> engineers needs transport to a corporate retreat on <stopovers>, after which they must return back to <origin> by <date>. They want a comfortable journey, so your ship must be outfitted suitably. Payment is <payment>."
+	passengers 3 10 .56
+	to offer
+		random < 20
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Iltan"
+	stopover
+		not attributes "station" "military"
+		distance 3 12
+		government "Iltan"
+	on stopover
+		dialog "For days your ship has played host to endless discussions about load calculations, tensile strengths, and thermodynamic limits. You're grateful for some peace and quiet as the team of engineers tromps out of the hatch and heads for their exotic corporate retreat. You prepare for the return journey to <origin>."
+	on complete
+		payment 12000 160
+		dialog "The team's boss thanks you for a smooth trip and authorizes a payment of <payment>."		
