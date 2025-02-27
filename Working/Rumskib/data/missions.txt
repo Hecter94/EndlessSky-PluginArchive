@@ -1,7 +1,7 @@
 # Copyright (c) 2021 by RisingLeaf and bene-dictator
 # Copyright (c) 2022 by alexrovw
 # Copyright (c) 2024 by roadrunner56
-# Cooyright (c) 2024 by Loymdayddaud
+# Copyright (c) 2024 by Loymdayddaud
 #
 # Rumskib is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
@@ -60,6 +60,7 @@ mission "Rumskib: A Dead Man's Path 1"
 	on visit
 		dialog phrase "generic passenger on visit"
 	on complete
+		set "A Dead Man's Path 1: done"
 		log `Helped a pair of siblings named Sophie and Liam by bringing them to New China so they can hear their father's last will.`
 		dialog `When you arrive at <planet>'s spaceport, the siblings prepare to head off to the court where their father's last will will be read out. Just before they leave, Liam turns to you. "Captain <last>, I've transferred <payment> to your account. Would it be okay for you to wait here until we come back? We'll need a ride home. If you're able to take us, please meet us in the spaceport later."`
 		payment 50000
@@ -88,11 +89,9 @@ mission "Rumskib: A Dead Man's Path 2"
 			`	"Of course, it would be much easier if we could go directly to Prime, but we want to respect our father's last will." She looks directly at you now. "And that is why we need your help. Could you help us again and take us through all these systems?"`
 			choice
 				`	"Which systems would we have to fly through?"`
-					goto "star map"
 				`	"I'm sorry, but that sounds too complicated to me."`
 					goto "no thanks"
 
-			label "star map"
 			`	Liam pulls a star map out of his bag. "These are the systems our father wants us to visit: <waypoints>. Those systems are spread far out around human space, but apparently they all have something unique to them. We've never really traveled beyond our home planet, so it'll be quite a big adventure for us! We can offer 50,000 credits. Does that sound good?"`
 			choice
 				`	"Sounds good!"`
@@ -118,27 +117,25 @@ mission "Rumskib: A Dead Man's Path 2"
 		dialog phrase "generic missing waypoint or passengers"
 
 	on complete
+		set "A Dead Man's Path 2: done"
 		log `Brought Sophie and Liam to various locations that their departed father asked them to visit in his will; ended at Prime where he left something for them.`
 		conversation
 			`The siblings are uncharacteristically quiet, perhaps in anticipation of finally arriving at their destination. It is only when you have all stepped out into Prime's spaceport that Sophie says, "Captain <last>, you've helped us immensely, and we can't thank you enough for bringing us all across the galaxy! But we have one last request. Both of us think that you should come with us to see what our father left behind. Do you want to see it?"`
 			choice
 				`	"Now that we've come so far, sure."`
-					goto continue
 				`	"I'm sorry, I've got to be somewhere else."`
 					goto "somewhere else"
-			label continue
 			`	Liam pulls out a map - not the starmap he had before, but a local map of Prime marked 'New Toulouse'. "Apparently our father bought a whole mountain on this planet, and he wants us to go there. It's to the west of us near the New Pyrenees, a little while away from Prime Central Spaceport where we are."`
 			choice
 				`	"Sounds good. I'll follow your lead."`
 					goto shuttle
 				`	"We could also have a look around here, and see why your father chose this planet."`
-			`	"You're right. I hadn't thought of that, surely there was a reason he picked here," Sophie says."`
+			`	"You're right. I hadn't thought of that, surely there was a reason he picked here," Sophie says.`
 			`	All three of you walk around the spaceport district for some time. Coming into a giant plaza, you see one of the newest models from Betelgeuse, a Behemoth, on display in the center. The massive freighter with its many turret emplacements towers over even the plaza, an obvious showcase of Prime's leading shipbuilding industry.`
 			`	Liam's face brightens as if he just understood something. "I think our father chose this planet because he was always a fan of Betelgeuse ships. Before he went on his adventures he used to be a test pilot for the shipyard."`
 			`	Sophie nods. "Right! And once he was allowed to keep one of their experimental models as a gift for being one of their most productive pilots. Betelgeuse almost wouldn't let him go when he wanted to leave and explore the galaxy! But we're running out of time. Shall we go to the mountain now?"`
 			choice
 				`	"We should take a shuttle. It'll be the fastest way."`
-					goto shuttle
 				`	"Let's take the maglev, we should make it before it gets dark."`
 					goto maglev
 			label shuttle
@@ -155,12 +152,12 @@ mission "Rumskib: A Dead Man's Path 2"
 			`	Suddenly, a bright blue line appears on the wall. For a second, a flash blinds you and there is a dim hissing noise, like the sound of rock being cut by a laser. As you look back, the line forms into a blue rectangle, the shape rapidly expanding down the wall. When it reaches the ground, the shape has become large enough to cover a human.`
 			`	For a moment, nothing happens, and the siblings are too stunned to do anything. The rectangle starts flashing between different hues of blue, until the whole section and the stone it covered disappears suddenly to leave behind a cavity in the wall. "I could have sworn the stone was real," Liam says under his breath.`
 			choice
-				`	"Well, this is a real adventure. Lets go!"`
+				`	"Well, this is a real adventure. Let's go!"`
 					goto enter
 				`	"We don't know what's inside there. Be careful."`
-			`	"Well, now that you say it, I recently bought a small camera drone," Liam responds. "We can use it to scout out the hallway. It's only in infrared, so we won't see too many details," he adds. Liam starts the drone and guides it using a small remote control with integrated display. After some time, the drone flies back out and he tells you, "I think it is safe. We can go."`
+			`	"Well, now that you mention it, I recently bought a small camera drone," Liam responds. "We can use it to scout out the hallway. It's only in infrared, so we won't see too many details," he adds. Liam starts the drone and guides it using a small remote control with integrated display. After some time, the drone flies back out and he tells you, "I think it is safe. We can go."`
 			label enter
-			`	In single file, the three of you enter the hallway behind the opening. Strangely, the stone walls are perfectly smoothed off, and the light that guides you through seems to come out of nowhere. "To use alien technology for something like this," Sophie laughs, "that's totally our dad."`
+			`	In single file, the three of you enter the hallway behind the opening. Strangely, the stone walls are perfectly smooth, and the light that guides you through seems to come out of nowhere. "To use alien technology for something like this," Sophie laughs, "that's totally our dad."`
 			`	For a long while the three of you continue through the stone hallway, the light following your movements, until it opens up into a dome-shaped room brilliantly bathed in blue light. On the walls, there are all manner of alien artifacts lined up next to each other, but at the center of the room there is a pedestal with a sword inserted into it. A small tablet stands in a socket in front of it.`
 			choice
 				`	(Go up to the sword.)`
@@ -174,14 +171,14 @@ mission "Rumskib: A Dead Man's Path 2"
 			choice
 				`	(Go over to Sophie.)`
 			label "sword scene"
-			`	Approaching the tablet, there is a short message written on it:`
+			`	A short message, written on the tablet in green ink, appears as you approach:`
 			`			"My dear children. The galaxy runs far and wide, and I have traveled many places, more than most in many lifetimes. I have seen many worlds, both alien and human, too. It was my life's work.`
 			`			"But still, there were many paths I did not take, many rocks I have left unturned, and many worlds I have not yet landed on. And I suspect that you will have read this before those destinations were reached. Well, I have arrived at a different destination now, the only one nobody can understand, but everybody reaches eventually. Do not fear for me.`
 			`			"This room you are in now is the culmination of all my work. I hope you understand that it was for your sake that I kept these a secret. My journey was long and unforgiving, but it was my life. I hope you continue that journey, to understand the universe a little better.`
 			`			"Your father."`
-			`	Understanding the personal nature of the message, you leave the two of them alone for a bit, walking around and looking at the artifacts on the left of the dome.`
+			`	Understanding the personal nature of the message, you leave the two alone for a bit, walking around and looking at the artifacts on the left of the dome.`
 			`	After some time, the siblings call you back. Sophie says, "Captain <last>, Liam and I have thought about this, and we think that we would never be able to live up to our father's expectations if we kept this sword. We can study all these artifacts and understand more about the universe through them, but we cannot study this one. To understand its power, it needs to be used.`
-			`	"This sword was always at our father's side, and it has been many places. Take it to many more." She pulls the sword from the pedestal, and gives it one last look over before handing over it to you. "It is yours now."`
+			`	"This sword was always at our father's side, and it has been many places. Take it to many more." She pulls the sword from the pedestal, and gives it one last look before handing over it to you. "It is yours now."`
 			choice
 				`	"I would be more than grateful to accept it."`
 					goto accepted
@@ -191,12 +188,11 @@ mission "Rumskib: A Dead Man's Path 2"
 				`	"Yes, I'm sure."`
 					goto declined
 				`	"Well, if you frame it that way, I'll take it."`
-					goto accepted
 			
 			label accepted
 			action
 				outfit "Old Man's Sword" 1
-			`	You take the strange sword from Sophie. It's abnormally light, and you don't really know how to use it yet, but it has some strange feeling of power that seems to emanate from it.`
+			`	You take the strange sword from Sophie. It's abnormally light, and you don't really know how to use it yet, but it has a strange feeling of power emanating from it.`
 				goto conclusion
 
 			label declined
@@ -368,6 +364,7 @@ mission "Rumskib: Earth Retirement 2"
 	on visit
 		dialog `You land on <planet>, but realize that your escort carrying the Singer family hasn't entered the system yet. Better depart and wait for it to arrive.`
 	on complete
+		set "Earth Retirement 2: done"
 		payment 150000
 		conversation
 			`When you land on <planet>, Abel insists on carrying all of the family's personal effects. Donna and Charles are almost reluctant to say goodbye to you and the <ship>, but they look ahead smiling as their son leads them on to the better, happier retirement that they have well earned.`
