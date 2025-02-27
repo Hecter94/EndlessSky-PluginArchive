@@ -940,9 +940,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 14.14 mb | 2025-02-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 14.14 mb | 2025-02-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-02-26) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-02-27) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -1773,7 +1773,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/The Iltan Race/icon.png' height='100'></img><br>
 
 
-[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 37.96 mb | 2025-02-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 37.96 mb | 2025-02-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
 Author: Zanano Quinito | Category: Races <br>
 [https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-02-26) <br>
 

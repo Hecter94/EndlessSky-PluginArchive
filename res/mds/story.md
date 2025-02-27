@@ -1209,9 +1209,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Jibauni Storyline Additions
 
 
-[Jibauni.Storyline.Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.Storyline.Additions.zip) | 11.54 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni%20Storyline%20Additions/) <br>
+[Jibauni.Storyline.Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.Storyline.Additions.zip) | 11.54 kb | 2025-02-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni%20Storyline%20Additions/) <br>
 Author: TheGiraffe3 | Category: Story <br>
-[https://github.com/TheGiraffe3/more-Jibauni-storyline](https://github.com/TheGiraffe3/more-Jibauni-storyline) (last commit 2025-02-24) <br>
+[https://github.com/TheGiraffe3/more-Jibauni-storyline](https://github.com/TheGiraffe3/more-Jibauni-storyline) (last commit 2025-02-27) <br>
 
 >Expands the Jibauni storyline with more missions. Still beta. Requires the [Jibauni](https://github.com/TheGiraffe3/Jibauni) plugin to use.
 >

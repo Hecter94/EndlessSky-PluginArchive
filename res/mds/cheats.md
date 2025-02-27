@@ -411,7 +411,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 402.57 kb | 2024-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-09) <br>
 
 >Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
 >
