@@ -92,20 +92,21 @@ mission "Angri Byrds"
 	invisible
 	to offer
 		or
+			has "Wanderers Pug Hostile: offered"
 			has "Wanderers Ap'arak 3: Pug: done"
 			and
 				has "Wanderers Ap'arak 3: Pug 1: failed"
 				has "Wanderers Ap'arak 3: Pug 2: failed"
 				"reputation: Wanderer" < 0
 	on offer
-		event "angri byrds"
+#		event "angri byrds"
 		clear "license: Wanderer"
 		clear "license: Wanderer Outfits"
 		clear "license: Wanderer Military"
 		fail
 
 
-
+# this event is no longer necessary because vanilla has added wanderer planet tributes
 event "angri byrds"
 	planet "Varu Tev'kei"
 		tribute 500
@@ -164,6 +165,7 @@ mission "Angri Byrds 2"
 		has "Wanderers Ap'arak 3: done"
 		or
 			has "event: angri byrds"
+			has "Angri Byrds: offered"
 			has "Wanderers Ap'arak 3: Pug: done"
 	on offer
 		event "Wanderers tribute Spera Anatrusk"
@@ -182,6 +184,7 @@ mission "Angri Byrds 3"
 		has "Wanderers: Mentors 3: done"
 		or
 			has "event: angri byrds"
+			has "Angri Byrds: offered"
 			has "Wanderers Ap'arak 3: Pug: done"
 	on offer
 		event "Wanderer tribute Desi Seledrak" 24
@@ -202,6 +205,7 @@ event "Wanderer tribute Desi Seledrak"
 #		has "event: wanderers: sabira eseskrai colony"
 #		or
 #			has "event: angri byrds"
+#			has "Angri Byrds: offered"
 #			has "Wanderers Ap'arak 3: Pug: done"
 #	on offer
 #		event "Wanderer tribute Sabira Eseskrai"
@@ -237,7 +241,9 @@ mission "Angri Byrds License Revoked"
 	source
 		government "Wanderer"
 	to offer
-		has "event: angri byrds"
+		or
+			has "event: angri byrds"
+			has "Angri Byrds: offered"
 		not "Angri Byrds: Peace Through Strength 1: offered"
 	on offer
 		clear "license: Wanderer"
@@ -349,7 +355,9 @@ mission "Angri Byrds: Deploy Thunder Maker"
 	source
 		government "Wanderer"
 	to offer
-		has "event: angri byrds"
+		or
+			has "event: angri byrds"
+			has "Angri Byrds: offered"
 		or
 			has "Cartography: The Garden: done"
 			has "Cartography: The Map: The Garden: done"
@@ -395,20 +403,18 @@ mission "Angri Byrds: Peace Through Strength 1"
 		or
 			has "Wanderers: Sestor: Final: done"
 			has "Wanderers: Sestor: Final: Patched"
-		or
-			and
-				"tribute: Varu Tev'kei" > 0
-				"tribute: Kort Kehai" > 0
-				"tribute: Vara Rakak" > 0
-				"tribute: Tik Klai" > 0
-				"tribute: Vara Kehi'ki" > 0
-				"tribute: Vara K'chrai" > 0
-				"tribute: Varu Ek'lak'lai" > 0
-				"tribute: Var' Kayi" > 0
-				"tribute: Var' Roi" > 0
-				"tribute: Varu Tek'kai" > 0
-				"tribute: Spera Anatrusk" > 0
-				"tribute: Desi Seledrak" > 0
+		"tribute: Varu Tev'kei" > 0
+		"tribute: Kort Kehai" > 0
+		"tribute: Vara Rakak" > 0
+		"tribute: Tik Klai" > 0
+		"tribute: Vara Kehi'ki" > 0
+		"tribute: Vara K'chrai" > 0
+		"tribute: Varu Ek'lak'lai" > 0
+		"tribute: Var' Kayi" > 0
+		"tribute: Var' Roi" > 0
+		"tribute: Varu Tek'kai" > 0
+		"tribute: Spera Anatrusk" > 0
+		"tribute: Desi Seledrak" > 0
 	on offer
 		dialog
 			`You receive an invitation to a meeting on Desi Seledrak to discuss a cessation of hostilties between you and the Wanderers.`
@@ -491,7 +497,7 @@ mission "Angri Byrds Still Angry 1"
 			`A Wanderer bumps into you. It looks at you with a fierce gaze and grumbles something in its native language before walking off.`
 				accept
 	on enter
-		dialog phrase "hostile wanderer"
+		dialog `Despite the peace agreement, it seems not every Wanderer is willing to forgive and forget your past hostilities.`
 	npc
 		government "Wanderer (Hostile)"
 		personality target waiting heroic coward
@@ -513,7 +519,6 @@ mission "Angri Byrds Still Angry 1"
 				"Hurricane (Tough)"
 				"Derecho (Tough)"
 				"Tempest (Heavy)"
-		dialog `Despite the peace agreement, it seems not every Wanderer is willing to forgive and forget your past hostilities.`
 
 mission "Angri Byrds Still Angry 2"
 	landing
@@ -525,6 +530,7 @@ mission "Angri Byrds Still Angry 2"
 		not attributes "uninhabited"
 	to offer
 		has "event: Wanderers Peace Through Strength"
+		has "Angri Byrds Still Angry 1: offered"
 		random < 1
 	on offer
 		conversation

@@ -25,16 +25,18 @@ mission "Grudge Fight 1"
 	source
 		near "Hintar" 1 5
 		government "Republic" "Free Worlds" "Syndicate"
-	waypoint "Hintar"
-	destination "Tundra"
+	mark "Hintar"
+	destination Tundra
 	to offer
 		"combat rating" > 20
 		"combat rating" <= 400
 		not "ships: Medium Warship"
 		not "ships: Heavy Warship"
 		not "ships: Heavy Freighter"
+		not "ships: Space Liner"
 		not "ships: Utility"
-		"ships: Light Warship" + "ships: Light Freighter" + "ships: Transport" + "ships: Interceptor" == 1
+		not "ships: Superheavy"
+		"ships: Light Warship" + "ships: Light Freighter" + "ships: Transport" + "ships: Interceptor" + "ships: Fighter" + "ships: Drone" == 1
 		random < 70
 	on offer
 		conversation
@@ -46,11 +48,11 @@ mission "Grudge Fight 1"
 			`	The woman's expression changes to one of slight disappointment. "Oh. My mistake. Sorry for bothering you." She walks away without another word.`
 				decline
 			label offer
-			`	"It's my job to know things." She looks around then leans in to whisper in your ear, "I am a recruiter for Navy Intelligence and I believe that, considering your proficiency in piloting smaller craft, you would be a great candidate to join our team. However, there is a test you must pass. I will use one of our smaller ships in our fleet, the Majestic, to challenge you to a duel in the system of Hintar. If you manage to disable me, go to our office on Tundra, and we'll let you join."`
+			`	"It's my job to know things." She looks around then leans in to whisper in your ear, "I am a recruiter for Navy Intelligence and I believe that, after reviewing your record, you would be a great candidate to join our team. However, there is a test you must pass. I will use one of our smaller ships in our fleet, the Majestic, to challenge you to a duel in the system of Hintar. If you manage to disable me, go to our office on <planet>, and we'll let you join."`
 			choice
-				`	"I don't feel comfortable fighting a woman."`
 				`	"What sort of vessel is the Majestic?"`
 					goto vessel
+				`	"I don't feel comfortable fighting a woman."`
 
 			`	She grabs you by the collar. "Don't worry. I promise not to go easy on you." From the expression on her face when she lets go, you can tell you've hit a nerve.`
 				goto end
@@ -65,41 +67,66 @@ mission "Grudge Fight 1"
 					accept
 				`	(Ignore the invitation.)`
 					decline
-	
 	on accept
 		"reputation: Independent (Killable)" >?= 10
-
+	on fail
+		"reputation: Independent (Killable)" >?= 10
 	on abort
 		"reputation: Independent (Killable)" >?= 10
-	
 	on enter
 		dialog `When you take off, you see no sign of the Majestic. It's probably already waiting for you at Hintar.`
 	on enter "Hintar"
+		unmark "Hintar"
 		"reputation: Independent (Killable)" <?= -1000
 		conversation
+			branch "mockingbird dead"
+				has "mockingbird dead"
+			branch "mockingbird disabled"
+				has "mockingbird disabled"
+			branch "mockingbird caught"
+				has "mockingbird caught"
 			scene "scene/scene-mockingbird"
-			`When you enter Hintar, you continue to see no sign of the Majestic. Suddenly, an alarm rings out as your sensors detect that a heavily modified Hauler has followed you into the system. Before you can respond, your ship intercepts a hail, and it opens communication.`
-			`	The voice of the alleged Navy Intelligence recruiter booms out. "Ha ha ha! What a fool! Did you really think that Navy Intelligence would recruit you? Ha ha ha!"`
-			`	The modified Hauler powers up its weapons.`
-	
+			`When you enter Hintar, you continue to see no sign of the Majestic. Suddenly, an alarm rings out as your sensors detect that a heavily modified Hauler named "Mockingbird" is rapidly approaching. Before you can respond, your ship intercepts a hail, and it opens communication.`
+			`	A voice you recognize as the "Navy Intelligence recruiter" booms out. "Ha ha ha! What a fool! Why would Navy Intelligence recruit someone like you? Ha ha ha!" The Mockingbird targets you with its weapons. "Try not to bore me. My last mark died too quickly..."`
+				accept
+			label "mockingbird dead"
+			`You enter Hintar, but see no sign of the Majestic. The "Navy Intelligence recruiter" must have lied about that too. You should visit <planet> to see if you can claim some sort of reward for your fight with the Mockingbird.`
+				decline
+			label "mockingbird disabled"
+			`You enter Hintar, but see no sign of the Majestic. The "Navy Intelligence recruiter" must have lied about that too. You should revisit the system where you left the Mockingbird to make sure it has been fully destroyed.`
+				decline
+			label "mockingbird caught"
+			action
+				clear "mockingbird caught"
+			`As you enter Hintar, the Mockingbird follows behind you, and opens a hail. "Did you think that if you went to Hintar, I would let you off the hook? Ha! Now give me a real fight! Struggle desperately for your pathetic miserable life!" The Mockingbird once again targets you with its weapons. This seems extreme for a recruitment test. At this point it's clear she was serious about not being a recruiter.`
+				decline
 	npc kill
 		government "Independent (Killable)"
 		personality heroic vindictive unconstrained launching
 			confusion 20
 		ship "Marauder Hauler" "Mockingbird"
-		dialog `The Mockingbird and the "Navy Intelligence Recruiter" have been destroyed. You consider visiting Tundra to see if you can grab some sort of reward for your effort.`
-	
-	on fail
-		"reputation: Independent (Killable)" >?= 10
-	
+		on provoke
+			unmark "Hintar"
+			"reputation: Independent (Killable)" = -1000
+			set "mockingbird caught"
+			dialog `The Mockingbird hails you. A familiar voice says, "Looks like you've got the right stuff for Navy Intelligence. Too bad, I'm not actually a recruiter." The Mockingbird targets you with its weapons. "Try not to bore me. My last mark died too quickly..."`
+				decline
+		on disable
+			set "mockingbird disabled"
+		on kill
+			clear "mockingbird disabled"
+			set "mockingburd dead"
+			dialog `The Mockingbird has been destroyed. You consider visiting <planet> to see if you can grab some sort of reward for your effort.`
 	on complete
 		"reputation: Independent (Killable)" >?= 10
-		payment 100000
+		payment 250000
+		clear "mockingbird caught"
+		clear "mockingbird disabled"
 		log `Was lured into a trap by Carrie Grudge. With some effort I managed to overcome the disadvantage in our fight. Managed to collect a sizable bounty for my trouble.`
 		conversation
-			`When you land on Tundra, you look up bounties and wanted pirate documents, searching for any mention of the Mockingbird and the Majestic. Eventually, you find a bounty for the destruction of the Mockingbird. It appears that the pirate you killed was named Carrie Grudge, a smuggler with a side hobby of hunting inexperienced pilots by luring them to uninhabited star systems and bullying them with her customized ship.`
+			`When you land on <planet>, you look up bounties and wanted pirate documents, searching for any mention of the Mockingbird and the Majestic. Eventually, you find a bounty for the destruction of the Mockingbird. It appears that the pirate you killed was named Carrie Grudge, a smuggler with a side hobby of hunting inexperienced pilots by luring them to uninhabited star systems and bullying them with her customized ship.`
 			`	You head to the local authorities, and show them your combat logs of your fight against the Mockingbird. They pay you <payment> for your effort.`
-			
+
 mission "Grudge Fight 2"
 	minor
 	name "Arcturus Disaster"

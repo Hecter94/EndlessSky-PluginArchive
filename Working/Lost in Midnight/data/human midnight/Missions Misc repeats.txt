@@ -17,11 +17,14 @@
 
 
 mission "Independent Refugee"
-	name "Passenger to <planet>"
+	name "Refugee to <planet>"
 	repeat
-	description "Help <fare> escape from <origin> to <destination>. Payment is <payment>."
+	description "Help <fare> escape from <origin> to <destination>. Payment will be <payment>. If you are caught with him, you may be fined."
 	minor
 	passengers 1
+	infiltrating
+	stealth
+	illegal 10000 `The authorities discovered your passenger lacks the proper travel paperwork and detains him for a thorough background check. You wind up a bit poorer through a combination of fines and bribes (the breakdown remains somewhat unclear).`
 	to offer
 		random < 5 - "rejected illegal jobs"
 	source
@@ -29,7 +32,7 @@ mission "Independent Refugee"
 		not attributes uninhabited
 	destination
 		distance 0 5
-		government "Independent" "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+		government "Independent" "Republic" "Free Worlds" "Syndicate" "Neutral"
 	on offer
 		dialog phrase "generic refugee offer"
 	on accept
@@ -42,7 +45,7 @@ mission "Independent Refugee"
 		"reputation: Independent" ++
 		"getaway driver" ++
 		payment
-		payment 1000
+		payment 30000
 		dialog phrase "generic refugee dropoff payment"
 
 

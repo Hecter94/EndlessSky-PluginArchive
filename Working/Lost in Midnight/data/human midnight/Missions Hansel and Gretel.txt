@@ -11,30 +11,6 @@
 
 
 
-
-phrase "hansel"
-	word
-		"Hansel"
-phrase "gretel"
-	word
-		"Gretel"
-
-fleet "Hansel Medical 1"
-	government "Merchant"
-	names "hansel"
-	cargo 1
-	commodities "Medical"
-	variant
-		"Vanguard"
-fleet "Gretel Medical 1"
-	government "Merchant"
-	names "gretel"
-	cargo 1
-	commodities "Medical"
-	variant
-		"Protector"
-
-
 mission "Hansel & Gretel: Medical Supply Escort 1"
 	deadline
 	deadline 3
@@ -87,8 +63,11 @@ mission "Hansel & Gretel: Medical Supply Escort 1"
 	npc accompany save
 		government "Merchant"
 		personality target timid escort
-		fleet "Hansel Medical 1"
-		fleet "Gretel Medical 1"
+		"cargo settings"
+			cargo 1
+			commodities "Medical"
+		ship "Vanguard" "Hansel"
+		ship "Protector" "Gretel"
 	on complete
 		payment 125000
 		log "People" "Hansel and Gretel" `A pair of siblings piloting some Syndicate heavy warships named after themselves. They often take jobs delivering medical supplies to frontier worlds.`
@@ -96,7 +75,6 @@ mission "Hansel & Gretel: Medical Supply Escort 1"
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`The Hansel and Gretel made it to <planet>. The siblings thank you for escorting them safely past the pirates and give you <payment>, your share of the delivery fee.`
-
 
 
 mission "Hansel & Gretel: Medical Supply Escort 2"
@@ -135,8 +113,11 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 	npc accompany save
 		government "Merchant"
 		personality target timid escort
-		fleet "Hansel Medical 1"
-		fleet "Gretel Medical 1"
+		"cargo settings"
+			cargo 1
+			commodities "Medical"
+		ship "Vanguard" "Hansel"
+		ship "Protector" "Gretel"
 	on visit
 		dialog `You've arrived ahead of the Hansel and Gretel! Return to space and wait for them to arrive.`
 	on complete
@@ -144,7 +125,6 @@ mission "Hansel & Gretel: Medical Supply Escort 2"
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`The Hansel and Gretel made it to <planet>. The siblings thank you for escorting them safely past the pirates and give you <payment>.`
-
 
 
 mission "Hansel & Gretel: Return Escort"
@@ -192,14 +172,13 @@ mission "Hansel & Gretel: Return Escort"
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`The Hansel and Gretel made it to <planet>. The siblings thank you for escorting them safely away from the pirates and give you <payment>.`
-		
-	
+
 
 mission "Hansel & Gretel: Rescue Hansel"
 	minor
 	clearance
 	name "Rescue Hansel"
-	description "Find and rescue the Hansel. Also keep Gretel safe."
+	description "Find and rescue the Hansel. He was last seen at <system>. Also keep Gretel safe."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 	destination
@@ -233,11 +212,16 @@ mission "Hansel & Gretel: Rescue Hansel"
 	npc accompany save
 		government "Merchant"
 		personality target timid escort
+		"cargo settings"
+			cargo 2
+			commodities "Food" "Medical"
 		ship "Protector (Laser)" "Gretel"
 	npc assist accompany save
 		system destination
 		government "Merchant"
 		personality target derelict timid
+		"cargo settings"
+			cargo 0
 		ship "Vanguard (no hyperdrive)" "Hansel"
 		dialog `The Hansel has been plundered! Its Hyperdrive is among the missing outfits. Land on <planet> so they can repair the ship.`
 	on visit
@@ -256,14 +240,12 @@ ship "Vanguard" "Vanguard (no hyperdrive)"
 		"X4200 Ion Steering"
 
 
-
 mission "Hansel & Gretel: Pirate Escape"
 	landing
 	name "Pirate Escape"
 	description "Protect the Hansel and Gretel while escorting them safely back to <destination>."
 	destination
 		government "Republic" "Syndicate" "Free Worlds"
-		not attributes "frontier"
 		distance 1 5
 	to offer
 		has "Hansel & Gretel: Rescue Hansel: done"
@@ -288,6 +270,8 @@ mission "Hansel & Gretel: Pirate Escape"
 	npc accompany save
 		government "Merchant"
 		personality target timid escort
+		"cargo settings"
+			cargo 0
 		ship "Protector (Laser)" "Gretel"
 		ship "Vanguard (Unarmed Scram Drive)" "Hansel"
 	on visit
@@ -309,24 +293,6 @@ ship "Vanguard" "Vanguard (Unarmed Scram Drive)"
 		"X3700 Ion Thruster"
 		"X4200 Ion Steering"
 		"Scram Drive"
-
-
-
-fleet "Hansel Medical 2"
-	government "Merchant"
-	names "hansel"
-	cargo 1
-	commodities "Medical"
-	variant
-		"Vanguard (Particle)"
-fleet "Gretel Medical 2"
-	government "Merchant"
-	names "gretel"
-	cargo 1
-	commodities "Medical"
-	variant
-		"Protector (Laser)"
-
 
 
 mission "Hansel & Gretel: Medical Supply Escort 3"
@@ -374,8 +340,11 @@ mission "Hansel & Gretel: Medical Supply Escort 3"
 	npc accompany save
 		government "Merchant"
 		personality target timid escort
-		fleet "Hansel Medical 2"
-		fleet "Gretel Medical 2"
+		"cargo settings"
+			cargo 1
+			commodities "Medical"
+		ship "Vanguard (Particle)" "Hansel"
+		ship "Protector (Laser)" "Gretel"
 	on visit
 		dialog `You've arrived ahead of the Hansel and Gretel! Return to space and wait for them to arrive.`
 	on complete
@@ -383,7 +352,6 @@ mission "Hansel & Gretel: Medical Supply Escort 3"
 		conversation
 			scene "scene/scene-hanselandgretel 1"
 			`The Hansel and Gretel made it back to <planet>. The siblings thank you for escorting them safely past the pirates and give you <payment>.`
-
 
 
 mission "Hansel & Gretel: Pug Resistance"
@@ -419,12 +387,13 @@ mission "Hansel & Gretel: Pug Resistance"
 	npc accompany save
 		government "Escort"
 		personality heroic escort
+		"cargo settings"
+			cargo 0
 		ship "Marauder Vanguard" "Hansel"
 		ship "Marauder Protector" "Gretel"
 	on complete
 		dialog `Hansel and Gretel congratulate you on defeating the Pug, but will part ways with your fleet here."`
-		
-					
+
 
 mission "Hansel & Gretel: Protection (Epilogue)"
 	job
@@ -441,10 +410,12 @@ mission "Hansel & Gretel: Protection (Epilogue)"
 	on accept
 		conversation
 			scene "scene/scene-hanselandgretel 2"
-			`You may not actually need their help, but it'll be nice to meet the siblings again. "It will be pleasure to work with you once more, captain <last>."`
+			`You may not actually need their help, but it'll be nice to meet the siblings again. "It will be our pleasure to work with you once more, captain <last>."`
 	npc kill
 		government "Escort"
 		personality heroic
+		"cargo settings"
+			cargo 0
 		ship "Marauder Vanguard" "Hansel"
 		ship "Marauder Protector" "Gretel"
 	on fail

@@ -2016,6 +2016,7 @@ mission "Star Explorer Fan Tour"
 				has "Randomize Star Explorer Fan Tour"
 				random < 5
 	on offer
+		event "star explorer update"
 		conversation
 			scene "ship/star explorer"
 			`You notice a long line of strangely dressed passengers waiting to board one particular ship.`
@@ -2028,7 +2029,7 @@ mission "Star Explorer Fan Tour"
 			choice
 				`	"Sure. Do you need a pilot?"`
 				`	"Uh, no. No pilot's license here."`
-					decline
+					goto refuse
 			scene "ship/blackbird alien"
 			`	"As a matter of fact, our escort cancelled on us and we're in urgent need of a replacement. Just accompany us to <waypoints>. We'll be engaging in mock battles with 'aliens' flying some custom painted Blackbirds. Of course that's just for show, so make sure not to destroy them. We'll return here when we're done. Oh, and of course we'll need protection in case real pirates show up."`
 			`	Could be an interesting job.`
@@ -2036,14 +2037,13 @@ mission "Star Explorer Fan Tour"
 				`	(Escort the Star Explorer.)`
 					accept
 				`	(Do not escort the Star Explorer.)`
+			label refuse
+			`	"That's too bad. Sorry for wasting your time." He walks off to continue his search for a licensed pilot."`
 					decline
 	on defer
 		set "Randomize Star Explorer Fan Tour"
 	on accept
 		clear "star explorer pirate raid activated"
-		event "star explorer update"
-	on decline
-		event "star explorer update"
 	on enter
 		conversation
 			scene "ship/star explorer"
@@ -2140,6 +2140,7 @@ ship "Blackbird" "Alien Blackbird"
 
 
 mission "Star Explorer Korath Raid"
+	non-blocking
 	landing
 	invisible
 	source
