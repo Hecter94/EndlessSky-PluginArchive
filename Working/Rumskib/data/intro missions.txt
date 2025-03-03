@@ -1,0 +1,118 @@
+# Copyright (c) 2014 by Michael Zahniser
+# Copyright (c) 2024 by Zitchas
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+disable mission
+	"Intro [0]"
+
+mission "Rumskib: Intro [0]"
+	name "Passenger to <planet>"
+	description "This old-timer captain offered to ride along with you to <destination>, and to give you some tips along the way."
+	landing
+	passengers 1
+	source "New Boston"
+	destination "New Greenland"
+	to offer
+		not "hai space start"
+	
+	on offer
+		log "Finally scraped together enough money for a down payment on a starship. The interest on the mortgage is exorbitant."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`Representation in the Republic Parliament is based on population. That means that some individual "Paradise Worlds" have more representatives than entire regions of space like the Dirt Belt that are more sparsely settled.`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`The Syndicate is a central part of the Republic's economy, but they are also well known for selling shoddy products and for doing damage to the environment on the worlds they control. Their treatment of workers is questionable, and their opposition to organized labor is legendary. Some Syndicate factory towns have even been accused of human rights abuses.`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+		conversation
+			branch lampyrid
+				has "flagship model: Lampyrid Mk. II"
+			`With some trepidation, you give the shipyard owner your money and take your new ship for a test drive, piloting it out of the shipyard and onto a spare landing pad by the spaceport. Then you get out and look the ship over a bit more closely. You are busy polishing out a few rust spots with a piece of steel wool when an old man in grease-stained coveralls walks up.`
+			`	"Nothing quite like buying your very first starship," he says.`
+				goto firststarship
+			label lampyrid
+			`With some trepidation, you show the shipyard comptroller your license and registration. They look it over briefly before grunting and waving for you to continue on your way. Within minutes you liftoff for a test drive, piloting your Lampyrid out of the shipyard and onto a spare landing pad by the spaceport. Then you get out and look over the ship, thinking about how much of a wreck it was when you first found it. You are busy checking the torque on a recalcitrant nut when an old man in grease-stained coveralls walks up.`
+			`	"Nothing quite like your first time at the controls," he says.`
+			label firststarship
+			choice
+				`	"Yeah, I'm still kind of in shock over how much money I spent."`
+					to display
+						not "flagship model: Lampyrid Mk. II"
+					goto money
+				`	"It took a lot of work, but it feels awesome!"`
+					to display
+						has "flagship model: Lampyrid Mk. II"
+					goto hardwork
+				`	"Well, I don't plan to get too attached to this one. I'll be flying something much nicer before long."`
+					goto bigger
+				`	"Beat it, old-timer, I've got more important things to do than chat with you."`
+					decline
+			label hardwork
+			`	He grins. "It takes a lot of knowledge and skill to get a ship running. Good thing you aren't depending on a loan. It's a crime how much interest the banks charge to first-timers. It's been that way ever since when I first started out."`
+				goto captain
+			label money
+			`	He grins. "I know the feeling. It's a crime how much interest the banks charge to first-timers. It's been that way ever since when I first started out."`
+				goto captain
+			label bigger
+			`	He smiles. "I'm sure you will. But there's something nice to having a ship you can pilot all by yourself. Believe me, once you have to start managing crew and paying salaries, or keeping track of a whole fleet, you'll miss these days when everything was simple."`
+				goto captain
+			label captain
+			`	"You're a captain?" you ask.`
+			`	"Was," he says. "Sold off my fleet a few days ago, and I already miss it. But it was time. Time for me to retire." His voice trails off, then his face lights up. "Say, any chance I could hitch a ride with you, maybe show you the ropes, give you some pointers? I could pay you, of course."`
+			choice
+				`	"Sure, where are you trying to get to?"`
+				`	"Sorry, I'd rather figure things out on my own."`
+					decline
+			`	"Well," he says, "I've got a spot reserved in a retirement home, but I don't mind taking a roundabout way to get there. For starters, how about you give me a lift to <planet>? It's just one jump away from here; I can mark it on your map."`
+			choice
+				`	"Sounds good!"`
+					goto end
+				`	"How much will you pay me?"`
+			`	"That's kind of a rude question," he says, "but I'll pay you ten thousand credits. I guarantee you that's more than any captain ever gets for carrying one passenger for one day."`
+			choice
+				`	"That's really generous. Thank you."`
+					goto end
+				`	"You're treating me like a charity case? No thanks, I'll earn my money legitimately."`
+					decline
+			label end
+			`	"Great," he says. "My name is James, by the way."`
+			`	"<first> <last>," you say.`
+			branch MZ
+				has "name: Michael Zahniser"
+			`	"I'm looking forward to traveling with you, Captain <last>," says James.`
+				goto advice
+			label MZ
+			`	"<first> <last>?" he stops for a moment. "I've heard that name before. Reminds me of someone famous, I think," says James. "Anyways, I'm looking forward to traveling with you."`
+			label advice
+			`	As you're helping him wheel his luggage aboard and showing him his bunk, he says, "Before we take off, you might head on over to the trading center and stock up on medical goods; we can sell those for a good profit on <planet>. Also make sure to visit the local outfitter. While they don't sell much here compared to on the big manufacturing worlds, every world with an outfitter will at least carry a map with information on the neighboring systems. Buying them can help if you're not quite sure where you're going."`
+			branch registration
+				has "flagship model: Lampyrid Mk. II"
+			`	With that, he settles down to wait for departure.`
+				accept
+			label registration
+			`	He frowns down at his commlink, then smiles. "I see you haven't even finished the registration process yet. You should probably pull up your pilot information and register a name for your ship. If they haven't changed the forms since I last did it, you should just need to click on the ship tab, and then click on the blank where your ship name should be. Then you will be all legal."`
+				accept
+	
+	on accept
+		log "Getting some basic instructions on making a living as a merchant from an old captain named James."
+	
+	on complete
+		payment 10000
+		set "Intro [0]: done"
+		conversation
+			`As you land on <planet>, James says, "Congrats on your first trip through hyperspace! I'm impressed that you didn't throw up; most folks do, the first time."`
+			`	"Including you?" you ask.`
+			`	"Yeah, and then spent half an hour in orbit cleaning my cabin while hoping the passengers wouldn't come out of their bunk room and see the mess. Not my proudest moment. Anyway, here's your pay." He hands you <payment>.`
+			`	Then he adds, "If you're okay with giving me a lift for a while longer, sell off any of that cargo you bought and then meet me in the spaceport. I'll see if I can rustle up any interesting work for you to do."`
+			``
+			`	(Click the "Spaceport" button to continue this mission.)`
+
+
