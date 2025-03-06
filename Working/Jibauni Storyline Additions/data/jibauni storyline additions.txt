@@ -478,8 +478,8 @@ mission "Jibauni: Baitoon 3"
 			dialog "One of the reported fleets has just entered the system."
 	on offer
 		log "Captured Andwerfen and the system of Almanhaq for the Jibauni, at a heavy cost. The military leaders have decided to retreat, deeming it too difficult to hold the newly-acquired planet."
-		event "jibauni: captured Andwerfen" 0
-		event "jibauni: lost Andwerfen" 2
+		event "jibauni: captured andwerfen" 0
+		event "jibauni: lost andwerfen" 2
 		conversation
 			branch "knows some of the rebel strength"
 				"jibauni: met rebel fleets" > 0
@@ -576,12 +576,176 @@ mission "Jibauni: Baitoon 3"
 			`	Inlinmo stands. "I agree. Abandoning Baitoon is for the best, and we can than gather our whole strength and fight back against the Rebels. All of you, meet me in the spaceport later. There's a meeting I must attend with the blue-cloaked ones soon."`
 			label end
 
-
-
-event "jibauni: captured Andwerfen"
+event "jibauni: captured andwerfen"
 	system "Almanhaq"
 		government "Jibauni"
 
-event "jibauni: lost Andwerfen"
+event "jibauni: lost andwerfen"
 	system "Almanhaq"
 		government "Jibauni (Rebel)"
+
+mission "Jibauni: Defend Baitoon"
+	priority
+	name "Defend Baitoon"
+	description "Defend Baitoon from a Rebel attack, then land back on the planet for further instructions."
+	deadline 3
+	source "Baitoon"
+	to offer
+		not "jibauni: abandon baitoon"
+		has "Jibauni: Baitoon 3: done"
+	on offer
+		conversation
+			`The entire spaceport bustles about, stiff with anticipation and dread. The electric tense in the air almost makes itself felt.`
+			`	Inlinmo stands on a table in the main customs office of the spaceport, shouting orders. Behind him stands Kanlanmo, jotting notes down in a tiny book. When he sees you, he taps Inlinmo on the shoulder. The pair come over to speak to you.`
+			`	"Well, Captain, are you ready for the fight? Remember that this is to the death; we cannot afford to lose this planet now. We have signaled the fleets in other systems; they will be arriving shortly. Hopefully we do not spot the Rebels first."`
+			`	As he finishes the sentence, sirens wail to signal the approach of a Rebel fleet. "We must launch now!" Inlinmo shouts. "Hurry!"`
+				launch
+	npc kill
+		government "Jibauni (Rebel)"
+		personality entering heroic opportunistic
+		fleet "Large Rebel Jibauni" 10
+		fleet "Small Rebel Jibauni" 22
+	npc
+		government "Jibauni"
+		personality heroic launching opportunistic
+		fleet "Large Jibauni" 5
+		fleet "Small Jibauni" 11
+	npc
+		government "Jibauni"
+		personality heroic opportunistic waiting
+		system "Hajay"
+		fleet "Large Jibauni" 13
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		system "Greiun"
+		fleet "Small Jibauni" 4
+	npc
+		government "Jibauni"
+		personality derelict heroic opportunistic
+		system "Kateaza"
+		fleet "Large Jibauni"
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		system "Rabalin"
+		fleet "Small Jibauni" 9
+	on complete
+		set "jibauni: defended baitoon"
+		log `Defended Baitoon from a large Rebel attack.`
+		dialog `Kanlanmo calls you and says, "Meet me in the spaceport to receive further instructions."`
+
+mission "Jibauni: Abandon Baitoon"
+	priority
+	name "Retreat from Baitoon"
+	description "Get out of Baitoon and let the Rebel Jibauni capture it. Go to <destination> and prepare for a counterattack."
+	deadline 3
+	source "Baitoon"
+	destination
+		government "Jibauni"
+		distance 1 1
+		not planet "Lamalmuq"
+	to offer
+		has "jibauni: abandon baitoon"
+		has "Jibauni: Baitoon 3: done"
+	on offer
+		event "jibauni: rebels capture baitoon" 1
+		conversation
+			`The entire spaceport bustles about, stiff with anticipation and dread. Startling, the electric tense almost makes itself felt.`
+			`	Inlinmo stands on a table in the main customs office of the spaceport, shouting orders. Behind him stands Kanlanmo, jotting notes down in a tiny book. When he sees you, he taps Inlinmo on the shoulder. The pair come over to speak to you.`
+			`	"Well, Captain, are you ready to run? Remember that we cannot afford to lose ships, and must retreat at all costs to <destination>."`
+			`	As he finishes the sentence, sirens wail to signal the approach of a Rebel fleet. "We must flee now!" Inlinmo shouts. "Hurry!"`
+				launch
+	npc
+		government "Jibauni (Rebel)"
+		personality entering heroic opportunistic staying
+		fleet "Large Rebel Jibauni" 11
+		fleet "Small Rebel Jibauni" 22
+	npc
+		government "Jibauni"
+		personality fleeing launching opportunistic timid
+		fleet "Large Jibauni" 4
+	on complete
+		event "jibauni: lost baitoon" 0
+
+event "jibauni: lost baitoon"
+	system "Huyya"
+		government "Jibauni (Rebel)"
+
+mission "Jibauni: Attack Baitoon"
+	landing
+	name "Attack Baitoon"
+	description "Attack Baitoon with a large fleet and drive the Rebels out."
+	deadline 3
+	clearance
+	to offer
+		has "Jibauni: Abandon Baitoon: done"
+	on offer
+		set "jibauni: abandoned baitoon"
+		conversation
+			`The fleet you escorted here follows you to a landing position as <ship> touches down on <origin>, and a message comes through from Kasim. "The top brass decided to hold a meeting in the building right in front of your ship. Head there at the earliest opportunity."`
+			`	When all the documents for the landing procedure have been signed, you exit the security area and go to the building Kasim mentioned. Inside, most of the same captains that met on Andwerfen are sitting, and appear to be in the midst of a very animated discussion, which ceases the moment you enter the room.`
+			`	The reason for this becomes apparent as Inlinmo and Kanlanmo enter the room from another doorway. "Well, captains, we meet again," says the former. "This time... the circumstances are quite... different. At any rate, our duty has been clarified. Are you all ready to reattack Baitoon?"`
+			`	A single merchant captain desists from the hearty roar that arises from the rest of the crowd. "Excellent," says Inlinmo. "You are all to launch tomorrow at dawn. I'll contact you in orbit."`
+				accept
+	on enter
+		dialog `Inlinmo sends a message from his personal Yiyharsi. "Alright, you are to jump to Huyya in five minutes' time. The fleets in our other systems are preparing to as well. I will stay here."`
+	npc
+		government "Jibauni (Government)"
+		personality lingering opportunistic timid
+		ship "Yiyharsi" "Brave Tooth"
+	npc kill
+		government "Jibauni (Rebel)"
+		personality heroic opportunistic staying
+		fleet "Large Rebel Jibauni" 11
+		fleet "Small Rebel Jibauni" 22
+		dialog "The Rebel fleet has been dispatched. Time to land on Baitoon and receive further instructions."
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		fleet "Large Jibauni" 6
+		system "Rabalin"
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		fleet "Large Jibauni" 6
+		system "Kanalsa"
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		fleet "Large Jibauni" 6
+		system "Hajay"
+	npc
+		government "Jibauni"
+		personality heroic opportunistic
+		fleet "Small Jibauni" 15
+		system "Sabibal"
+	npc
+		government "Jibauni (Religious Leader)"
+		personality derelict heroic opportunistic staying
+		fleet "Small Jibauni" 2
+		system "Huyya"
+	on complete
+		event "jibauni: reconquered baitoon" 0
+		log `After a Rebel Jibauni occupation of Baitoon, managed to reconquer it.`
+		dialog `Each captain receives a message from Inlinmo: "Meet me in the spaceport when you have finished the landing procedure."`
+
+event "jibauni: reconquered baitoon"
+	system "Huyya"
+		government "Jibauni"
+
+mission "Jibauni: Baitoon Battle Follow-up"
+	priority
+	invisible
+	source Baitoon
+	to offer
+		or
+			has "Jibauni: Attack Baitoon: done"
+			has "Jibauni: Defend Baitoon: done"
+	on offer
+		conversation
+			`Inlinmo and Kanlanmo meet you in the spaceport, along with the other captains of the fleet. "Well, thank you all for helping us," says Inlinmo. "I believe your services are no longer necessary, at least for a while."`
+			`	When the other captains have dispersed, Kanlanmo tells you, "We will remind you when you need you again."`
+				decline
+
+event "jibauni: built up strength to occupy kateaza"
