@@ -1,3 +1,5 @@
+2025-03-08 | New plugin 'Your Hideout' by Zanano Quinito | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#your-hideout)<br>
+2025-03-08 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-03-06 | Updated plugin 'Jibauni Storyline Additions' by TheGiraffe3 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#jibauni-storyline-additions)<br>
 2025-03-06 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-03-06 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
