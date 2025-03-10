@@ -1577,7 +1577,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### StarSector
 
 
-[StarSector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarSector.zip) | 478.55 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/StarSector/) <br>
+[StarSector.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/StarSector.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/StarSector/) <br>
 Author: N/A | Category: Races <br>
 N/A[]()  <br>
 
