@@ -5,6 +5,11 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2025-03-11 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
+2025-03-11 | Updated plugin 'gegno.pirates' by zuckung | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#gegnopirates)<br>
+2025-03-11 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
+2025-03-11 | Updated plugin 'Your Hideout' by Zanano Quinito | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#your-hideout)<br>
+2025-03-11 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
 2025-03-10 | Updated plugin 'World Forge' by Amazinite | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#world-forge)<br>
 2025-03-10 | Updated plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
 2025-03-10 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
@@ -15,11 +20,6 @@
 2025-03-08 | New plugin 'Your Hideout' by Zanano Quinito | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#your-hideout)<br>
 2025-03-08 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-03-06 | Updated plugin 'Jibauni Storyline Additions' by TheGiraffe3 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#jibauni-storyline-additions)<br>
-2025-03-06 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
-2025-03-06 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2025-03-05 | Updated plugin 'Jibauni' by TheGiraffe3 | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#jibauni)<br>
-2025-03-04 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
-2025-03-03 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

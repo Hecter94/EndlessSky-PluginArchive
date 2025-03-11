@@ -619,14 +619,22 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Your Hideout/icon.png' height='100'></img><br>
 
 
-[Your.Hideout.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Your.Hideout.zip) | 844.18 kb | 2025-03-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Your%20Hideout/) <br>
+[Your.Hideout.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Your.Hideout.zip) | 844.42 kb | 2025-03-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Your%20Hideout/) <br>
 Author: Zanano Quinito | Category: Uncategorized <br>
-[https://github.com/Zanano/Hideout](https://github.com/Zanano/Hideout) (last commit 2025-03-06) <br>
+[https://github.com/Zanano/Hideout](https://github.com/Zanano/Hideout) (last commit 2025-03-11) <br>
 
 >Just a system with a single Asteroid Base planet with an outfitter and shipyard for storage. Sells local maps and a very slightly upgraded Mining Drone.
 >
 
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>Your Hideout
+Hideout system for storing and outfitting. Located near Zubeneschamali.
+game version 0.10.12
+	
 
+</blockquote>
+</details>
 
 Status: Feature Complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
