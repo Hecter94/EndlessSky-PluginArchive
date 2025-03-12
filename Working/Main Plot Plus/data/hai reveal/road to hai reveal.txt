@@ -416,11 +416,23 @@ mission "War Reactions: Syndicate Orphan (patched)"
             `    Sally waves goodbye as she walks her brother in.`
                 decline
 
+mission "Delay Hai Reveal"
+    invisible
+    landing
+    to offer
+        has "main plot completed"
+        not "Hai Reveal: Secret Leaks: offered"
+        not "Road to Hai Reveal: Danforth: offered"
+    on offer
+        set "Hai Reveal: Secret Leaks: offered"
+        set "Hai Reveal: Secret Leaks: Hai: offered"
+        fail
+
 mission "Road to Hai Reveal: Prep"
     invisible
     landing
     to offer
-        has "skipped main plot"
+        has "main plot completed"
         # Required if hai wormhole warning was blocked
         has "First Contact: Hai: offered"
         or
@@ -442,7 +454,11 @@ mission "Road to Hai Reveal: Danforth"
     clearance "You explain to the spaceport manager that you are the one who took out the pirate fleet, and upon verifying your identity, he grants you landing permission."
     waypoint Almaaz
     substitutions
+        "<reason>" "saw you in battle with the Pug"
+        "<reason>" "saw you in battle with the Alphas"
+            has "ScS plot completed"
         "<reason>" "noticed that you were abducted by the Pug"
+            has "skipped main plot"
         "<reason>" "talked to you about their search for alien activity"
             has "WR: Captains: navy"
     to offer
@@ -621,7 +637,9 @@ mission "Road to Hai Reveal: Hai Secret Leaks"
     invisible
     landing
     to offer
-        has "skipped main plot"
+        or
+            has "skipped main plot"
+            has "Delay Hai Reveal: offered"
         has "event: hr: secret leaks"
     on offer
         set "hr: secret leaks"
@@ -634,7 +652,9 @@ mission "Road to Hai Reveal: Hai Learn of Leaks"
     invisible
     landing
     to offer
-        has "skipped main plot"
+        or
+            has "skipped main plot"
+            has "Delay Hai Reveal: offered"
         has "event: hr: friend arrives"
     on offer
         clear "Hai Reveal: Secret Leaks: Hai: offered"
@@ -651,6 +671,7 @@ mission "Road to Hai Reveal: Rain and Fiona (early)"
         has "event: hr: friend arrives"
         not "event: hr: friend settled in"
         has "event: road to hai reveal: almaaz normal"
+        has "skipped main plot"
     source
         government "Hai"
         not attributes "uninhabited" "station"
