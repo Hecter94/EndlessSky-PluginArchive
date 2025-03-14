@@ -1987,6 +1987,88 @@ mission "Midnight Boarding Pillagers"
 				decline
 
 
+conversation "midnight boarding slave liberation offer"
+	scene "outfit/brig"
+	"The <origin> was more damaged than you expected and could explode soon. You find <bunks> slaves held in the <origin>'s Brig. Do you want to rescue them? They can offer no reward other than goodwill. <destination> is nearby and will be a safe place to drop them off."
+	choice
+		`	(Rescue them.)`
+			launch
+		`	(Abandon them.)`
+			flee
+
+phrase "midnight boarding slave liberation complete"
+	word
+		"The freed slaves are grateful for your assistance. Though they have no way to pay you, they promise to recommend you to others in need of a good starship captain."
+
+mission "Midnight Boarding Independent Slave Liberation (small)"
+	boarding
+	repeat
+	name "Slave Liberation"
+	description "Take <bunks> of freed slaves to <destination>. They can offer no reward other than goodwill."
+	passengers 2 3
+	source
+		government "Pirate" "Pirate (Rivals)"
+		outfits "Brig"
+	destination
+		distance 1 3
+		not government "Pirate"
+		not attributes "uninhabited"
+	to offer
+		not "outfit (flagship installed): Midnight's Lost Orphan"
+		random < 9
+	on offer
+		conversation "midnight boarding slave liberation offer"
+	on complete
+		"reputation: Independent" += 2
+		"reputation: Merchant" ++
+		dialog phrase "midnight boarding slave liberation complete"
+
+mission "Midnight Boarding Independent Slave Liberation (medium)"
+	boarding
+	repeat
+	name "Slave Liberation"
+	description "Take <bunks> of freed slaves to <destination>. They can offer no reward other than goodwill."
+	passengers 4 6
+	source
+		government "Pirate" "Pirate (Rivals)"
+		outfits "Brig"
+	destination
+		distance 1 3
+		not government "Pirate"
+		not attributes "uninhabited"
+	to offer
+		not "outfit (flagship installed): Midnight's Lost Orphan"
+		random < 5
+	on offer
+		conversation "midnight boarding slave liberation offer"
+	on complete
+		"reputation: Independent" += 4
+		"reputation: Merchant" += 2
+		dialog phrase "midnight boarding slave liberation complete"
+
+mission "Midnight Boarding Independent Slave Liberation (large)"
+	boarding
+	repeat
+	name "Slave Liberation"
+	description "Take <bunks> of freed slaves to <destination>. They can offer no reward other than goodwill."
+	passengers 7 9
+	source
+		government "Pirate" "Pirate (Rivals)"
+		outfits "Brig"
+	destination
+		distance 1 3
+		not government "Pirate"
+		not attributes "uninhabited"
+	to offer
+		not "outfit (flagship installed): Midnight's Lost Orphan"
+		random < 1
+	on offer
+		conversation "midnight boarding slave liberation offer"
+	on complete
+		"reputation: Independent" += 6
+		"reputation: Merchant" += 3
+		dialog phrase "midnight boarding slave liberation complete"
+
 
 conversation "midnight boarding sos"
 	scene "outfit/attention"

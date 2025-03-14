@@ -450,6 +450,7 @@ mission "Executive Guard: Syndicate Extremists"
 			variant
 				"Vanguard" 2
 	on complete
+		"reputation: Pirate" += 10
 		log "Defeated the S.S. Longinus, an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
 
 mission "Executive Guard: Syndicate Extremist Post War"
@@ -531,6 +532,7 @@ mission "Executive Guard: Syndicate Extremist Post War"
 		ship "Executive Guard" "S.S. Longinus"
 	on complete
 		payment 1000000
+		"reputation: Pirate" += 10
 		log "Defeated the S.S. Longinus, an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
 		conversation
 			scene "ship/executive guard/executive guard"
@@ -659,12 +661,13 @@ mission "Free Worlds: Katya Surveillance Pod Sale (Pirate)"
 		set "Randomize Free Worlds: Katya Surveillance Pod Sale (Pirate)"
 	on decline
 		"Midnight Market" ++
+		"reputation: Pirate" ++
 		payment -122500
 		outfit "Surveillance Pod" 1
 	on accept
 		outfit "Surveillance Pod" 1
 	on enter
-		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`	
+		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`
 	npc kill
 		government "Bounty Hunter"
 		personality waiting staying vindictive coward
@@ -726,12 +729,13 @@ mission "Free Worlds: Katya Surveillance Pod Sale (Trinket)"
 		set "Randomize Free Worlds: Katya Surveillance Pod Sale (Trinket)"
 	on decline
 		"Midnight Market" ++
+		"reputation: Independent" ++
 		payment -122500
 		outfit "Surveillance Pod" 1
 	on accept
 		outfit "Surveillance Pod" 1
 	on enter
-		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`	
+		dialog `Looks like the Surveillance Pod dealer's friends were waiting to pay you back for stealing that outfit.`
 	npc kill
 		government "Bounty Hunter"
 		personality waiting staying vindictive coward
@@ -844,6 +848,7 @@ mission "Infiltrator: Secret Data"
 		government "Pirate"
 		not attributes "dirt belt pirate"
 	destination Earth
+	clearance
 	to offer
 		random < 70
 	on enter
@@ -861,6 +866,7 @@ mission "Infiltrator: Secret Data"
 		log `Found a derelict Infiltrator with a dying Republic Intelligence Agent inside. He asked me to deliver some secret data to their headquarters on Earth. They weren't particularly grateful for the delivery...`
 		payment 15000
 		outfit "Secret Data" -1
+		"reputation: Republic" ++
 		conversation
 			scene "outfit/unknown"
 			`You deliver the encrypted data chip to the office of Republic Intelligence on Earth. The agents interrogate you about how you got it. After a few hours, they let you go with a small reward for your trouble. You never actually learn the contents of the data chip.`
@@ -1068,6 +1074,7 @@ mission "Limit Breaker Syndicate Patrol"
 		dialog `Syphus hails you: "I'll wait in orbit. If the supervisor catches me loitering down there my pay will get docked!"`
 	on complete
 		event "limit breaker syndicate patrols"
+		"reputation: Syndicate" ++
 		conversation
 			scene "thumbnail/wasp"
 			`As you part ways with Syphus he says, "Any patrol you return alive from is a good one. Thanks for the escort."`
@@ -1118,9 +1125,48 @@ mission "Midnight FW Epilogue: JJ and Brother Greg"
 		ship "Marauder Falcon (Shields)" "Golden Talons"
 	on complete
 		payment 1000000
+		"reputation: Independent" ++
 		conversation
 			`You and JJ exchanged war stories during the journey. Brother Greg had a few stories of his own to contribute. There were more than a few injured Navy and Militia crash survivors who arrived at the monastery seeking treatment. JJ salutes you. "Thanks again, <first>. I'll make sure you get bonus pay for your assistance." The Free Worlds deposits <payment> into your account.`
 
+
+mission "Midnight Independent Humanitarian"
+	name "Emergency Supplies to <planet>"
+	description "Bring <cargo> to the lawless world of <destination>, to help alleviate a natural disaster."
+	minor
+	cargo "emergency supplies" 50
+	to offer
+		random < 70
+		"combat rating" > 0
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	destination
+		government "Pirate" "Independent"
+		distance 2 10
+	clearance
+	on offer
+		conversation
+			`As you are walking through the local market, a woman says, "Captain, do you have room in your hold to bring <commodity> to natural disaster survivors on planet?"`
+			choice
+				`	"Yes, but I hadn't heard news of a large natural disaster recently."`
+				`	"Sorry, not today."`
+					decline
+			`	"No, this one wouldn't be in the news," he says. "It's <planet>, a lawless world. They're desperately in need of food, medicine, and temporary shelters, although corruption and mismanagement of resources probably resulted in them being unable to fend for themselves."`
+			choice
+				`	"I'd be glad to help."`
+				`	"Well, it sounds like they're getting exactly what they deserve. And, I have no intention of risking my life to land on a pirate world."`
+					decline
+			`	"Thank you," she says. "Your contact on <planet> will be a woman called 'White Dove.' Don't let anyone but her trick you into giving them the supplies."`
+				accept
+	
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 50000
+		"reputation: Independent" += 5
+		dialog
+			`After several shady characters have offered to buy the <commodity> off you, or threatened to rob you, "White Dove" finally shows up and collects them. She thanks you, and pays you <payment>. "Whenever a disaster strikes these distant frontier worlds, few are willing to answer the call for help. While not everyone on this planet will appreciate your efforts, others like myself will remember your kindness."`
 
 
 mission "Midnight Modified Skein"
@@ -1350,6 +1396,7 @@ mission "Midnight Paradise Fortune 2"
 		dialog `[MISSION FAILED] You failed to bring Diana Howl to safety. If life were a game, you could load a save file and try again.`
 	on complete
 		payment 1000000
+		"reputation: Independent" ++
 		log "People" "Diana Howl" `	After reuniting with Diana on a southern pirate world, I transported her to Haven where she was kidnapped. After being rescued, she decided to remain at the military outpost on Farpoint.`
 		conversation
 			`	On <planet> you find an outstanding bounty of <payment> for the <npc>. After collecting your pay, you find a note from Diana: "Thank you for rescuing me <first>. I've decided to stay on <planet> for a while and see what opportunities I can find." Other than the military, there isn't much on <planet>. But maybe being here will be a good experience for her.`
@@ -1405,6 +1452,7 @@ mission "Midnight Tanker Shipyard Alfheim"
 			`	Jack says, "Unfortunately you'll have to find it on your own. We're about to launch."`
 			label end
 			action
+				"reputation: Merchant" += 2
 				event "midnight tanker shipyard alfheim"
 				clear "Randomize Midnight Tanker Shipyard Alfheim"
 			`	Jill says, "It may be too late in the day to visit them now, but I'm sure they'll be open again tomorrow." After you thank them for the information, the siblings take their new ship out into space.`
@@ -1755,6 +1803,7 @@ mission "Midnight Swarm Lord"
 		dialog "The local Militia rewards you with <payment> for eliminating the Swarm Lord."
 
 
+# The mission can be offered again if the deadline fails the mission without the Wanderlust being killed
 mission "Midnight Wanderlust"
 	minor
 	deadline 4
@@ -1978,13 +2027,14 @@ mission "Smuggler's Den Advanced Shields"
 	to offer
 		has "event: add advanced modified shields"
 	on offer
+		"reputation: Independent (Killable)" >?= 10
 		conversation
 			scene "outfit/mod huge shield"
 			`The outfitters here have modified versions of the more advanced shield generators in stock.`
 				accept
 	npc
-		government "Pirate"
-		personality waiting staying plunders harvests
+		government "Independent (Killable)"
+		personality waiting staying plunders harvests uninterested
 		fleet
 			names "pirate"
 			cargo 1
@@ -1995,6 +2045,8 @@ mission "Smuggler's Den Advanced Shields"
 				"Marauder Leviathan (Shields)"
 				"Marauder Manta (Shields)"
 				"Marauder Splinter (Shields)"
+	on fail
+		"reputation: Independent (Killable)" >?= 10
 
 
 mission "Star Explorer Fan Tour"

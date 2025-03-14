@@ -753,7 +753,6 @@ mission "Cartography: Quarg Hitchhiker 4"
 				accept
 
 
-
 mission "Cartography: Quarg Hitchhiker 5"
 	clearance
 	name "Escort to <planet>"
@@ -769,7 +768,6 @@ mission "Cartography: Quarg Hitchhiker 5"
 			`You find the landing pad where Quash's ship is docked. The Quarg comes out to meet you and hands over a data chip. "A small system near Gacrux."`
 			choice
 				`	"Is this the system you were looking for?"`
-
 			`	"No. But I know where to find that data. Would you be interested in escorting me there?"`
 			choice
 				`	"Sure. I'd also like to learn the location of the system you are searching for."`
@@ -787,28 +785,12 @@ mission "Cartography: Quarg Hitchhiker 5"
 				`	(Let it go).`
 			`	The Quarg walks away. Wherever it's final destination is, you're not ready to follow it there.`
 				decline
-
 			label end
 			`	"Good. Our destination is The Ring of Friendship, a former Quarg ringworld."`
 			choice
 				`	"Will the Heliarchs allow a Quarg to land?"`
-
 			`	"I'm an exception."`
 					accept
-
-	on accept
-#		"reputation: Independent (Killable)" >?= 10
-#		"stored reputation: Quarg" = "reputation: Quarg"
-#		"reputation: Quarg" <?= -10
-#		"stored reputation: Quarg (Hai)" = "reputation: Quarg (Hai)"
-#		"reputation: Quarg (Hai)" <?= -10
-#		"stored reputation: Quarg (Kor Efret)" = "reputation: Quarg (Kor Efret)"
-#		"reputation: Quarg (Kor Efret)" <?= -10
-#		"stored reputation: Quarg (Gegno)" = "reputation: Quarg (Gegno)"
-#		"reputation: Quarg (Gegno)" <?= -10
-#		"stored reputation: Quarg (Incipias)" = "reputation: Quarg (Incipias)"
-#		"reputation: Quarg (Incipias)" <?= -10
-
 	npc
 		system "Albireo"
 		government "Quarg"
@@ -828,16 +810,13 @@ mission "Cartography: Quarg Hitchhiker 5"
 		government "Escort"
 		personality escort target timid plunders harvests
 		ship "Carabao (Quash)" "Halcyon"
+		on kill
+			set "halcyon destroyed"
 
 	on fail
 		dialog `[MISSION FAILURE] You have failed as important part of the Cartography mission chain. If life were a game, you could load a save file and try again.`
 
 	on complete
-#		"reputation: Quarg" >?= "stored reputation: Quarg"
-#		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
-#		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
-#		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
-#		"reputation: Quarg (Incipias)" >?= "stored reputation: Quarg (Incipias)"
 		event "reveal Nebulous"
 		set "nebulous inaccessible patched"
 		event "Quash Ring of Wisdom" 5
@@ -914,6 +893,144 @@ mission "Nebulous Inaccessible Patch"
 		event "reveal Nebulous"
 		fail
 
+conversation "Nebulous Damaged Quarloque Salvage"
+	scene "outfit/attention"
+	`As soon as the <ship> docks with the outpost, it begins to shake violently! Warning sirens alert you that the station's structural integrity is failing.`
+	label choose
+	choice
+		`	(Try to salvage something from the outpost.)`
+		`	(Retreat.)`
+			goto retreat
+	branch failure
+		random < 60 - ( "searched nebulous quarloque" * 20 )
+	scene "outfit/harvested yottrite"
+	action
+		outfit "Yottrite"
+		"searched nebulous quarloque" ++
+	`	You salvaged Yottrite from some damaged <equipment>. The station is shaking more violently. What will you do next?`
+		goto choose
+	label failure
+	`	You are rummaging through some damaged equipment components when a <structure> collapses onto you, crushing your skull instantly. The station becomes your grave as it implodes in on itself...`
+		explode
+	label retreat
+		clear "searched nebulous quarloque"
+	action
+	`	You are forced to return to the <ship> and release the docking clamps. You rapidly distance yourself to a safe distance from the station as it implodes in on itself...`
+		flee
+
+mission "Midnight Quarloque (Nebulous Damaged A)"
+	landing
+	invisible
+	source "Quarloque (Nebulous Damaged A)"
+	substitutions
+		"<equipment>" "emitters"
+		"<equipment>" "engines"
+			random < 60
+		"<equipment>" "scanners"
+			random < 45
+		"<equipment>" "projectors"
+			random < 30
+		"<equipment>" "systems"
+			random < 15
+		"<structure>" "pylon"
+		"<structure>" "bulkhead"
+			random < 60
+		"<structure>" "cargo crate"
+			random < 40
+		"<structure>" "ceiling panel"
+			random < 20
+	on offer
+		event "Midnight Destroy Quarloque (Nebulous Damaged A)"
+		conversation "Nebulous Damaged Quarloque Salvage"
+
+event "Midnight Destroy Quarloque (Nebulous Damaged A)"
+	system Nebulous
+		remove object "Quarloque (Nebulous Damaged A)"
+			sprite "planet/midnight quarloque d"
+			distance 8000
+			period 360
+			offset 80
+		add object
+			sprite "planet/midnight quarloque f"
+			distance 8000
+			period 360
+			offset 80
+
+mission "Midnight Quarloque (Nebulous Damaged B)"
+	landing
+	invisible
+	source "Quarloque (Nebulous Damaged B)"
+	substitutions
+		"<equipment>" "emitters"
+		"<equipment>" "engines"
+			random < 60
+		"<equipment>" "scanners"
+			random < 45
+		"<equipment>" "projectors"
+			random < 30
+		"<equipment>" "systems"
+			random < 15
+		"<structure>" "pylon"
+		"<structure>" "bulkhead"
+			random < 60
+		"<structure>" "cargo crate"
+			random < 40
+		"<structure>" "ceiling panel"
+			random < 20
+	on offer
+		event "Midnight Destroy Quarloque (Nebulous Damaged B)"
+		conversation "Nebulous Damaged Quarloque Salvage"
+
+event "Midnight Destroy Quarloque (Nebulous Damaged B)"
+	system Nebulous
+		remove object "Quarloque (Nebulous Damaged B)"
+			sprite "planet/midnight quarloque c"
+			distance 8000
+			period 360
+			offset 160
+		add object
+			sprite "planet/midnight quarloque e"
+			distance 8000
+			period 360
+			offset 160
+
+mission "Midnight Quarloque (Nebulous Damaged C)"
+	landing
+	invisible
+	source "Quarloque (Nebulous Damaged C)"
+	substitutions
+		"<equipment>" "emitters"
+		"<equipment>" "engines"
+			random < 60
+		"<equipment>" "scanners"
+			random < 45
+		"<equipment>" "projectors"
+			random < 30
+		"<equipment>" "systems"
+			random < 15
+		"<structure>" "pylon"
+		"<structure>" "bulkhead"
+			random < 60
+		"<structure>" "cargo crate"
+			random < 40
+		"<structure>" "ceiling panel"
+			random < 20
+	on offer
+		event "Midnight Destroy Quarloque (Nebulous Damaged C)"
+		conversation "Nebulous Damaged Quarloque Salvage"
+
+event "Midnight Destroy Quarloque (Nebulous Damaged C)"
+	system Nebulous
+		remove object "Quarloque (Nebulous Damaged C)"
+			sprite "planet/midnight quarloque d"
+			distance 8000
+			period 360
+			offset 320
+		add object
+			sprite "planet/midnight quarloque f"
+			distance 8000
+			period 360
+			offset 320
 
 
 mission "Cartography: Quarg Side Trip"
@@ -963,6 +1080,399 @@ mission "Cartography: Humanika Side Trip"
 			variant
 				"Quarg Warkite (Scanner)"
 
+mission "Cartography: Rum Cellar Side Trip"
+	invisible
+	source "Rum Cellar"
+	destination "Ring of Friendship"
+	to offer
+		has "Cartography: Quarg Hitchhiker 5: active"
+	on offer
+		clear pokerscore
+		conversation
+			`When you enter the bar, the crowd falls silent upon seeing Quash. The awkward silence is broken when a group playing poker calls out "Quash! Found your way to Rum Celler, did you? You're just in time to join in! How about it?"`
+			`	Quash shakes its head. "I'll abstain. However..." The Quarg turns to you. "Perhaps <first> would like to play."`
+			choice
+				`	"Deal me in."`
+					goto game
+				`	"No thanks."`
+			`	The players at the table deliberate then ask, "How about if we throw in the the hyperlink codes for entering this system if you can wipe us out?"`
+			choice
+				`	"Deal me in."`
+					goto game
+				`	"No, I'm not interested."`
+					accept
+			label game
+			action
+				payment -10000
+				pokerscore -= 10000
+			`	Everyone addss 10,000 credits to the pot. The cards are shuffled and dealt out...`
+			branch pair
+				random < 90
+			scene "scene/scene-pokerjunk"
+			`	After exchanging some cards to improve your hand, you wind up with junk. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+					goto bluffhigh
+				`	"Fold."`
+			label fold
+			branch bust
+				"credits" <= 10000
+			`	You forfeit this round. Play again?`
+			label replay
+			branch jackpot
+				pokerscore >= 100000
+			branch bust
+				"credits" <= 10000
+			scene "outfit/unknown"
+			choice
+				`	(Play again.)`
+					goto game
+				`	(Quit.)`
+			`	"Aww, that's too bad." They continue playing without you.`
+					accept
+			label bluffhigh
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffhighwin
+				random < 10
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffhighwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with the high card! You gain 50,000 credits.`
+				goto replay
+			label pair
+			branch twopair
+				random < 80
+			scene "scene/scene-pokerpair"
+			`	After exchanging some cards to improve your hand, you wind up with a single pair. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Fold." (forfeit this hand.)`
+					goto fold
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffpairwin
+				random < 20
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffpairwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with a single pair! You gain 50,000 credits.`
+				goto replay
+			label twopair
+			branch threeofakind
+				random < 70
+			scene "scene/scene-pokertwopair"
+			`	After exchanging some cards to improve your hand, you wind up with two pairs. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Fold." (forfeit this hand.)`
+					goto fold
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch blufftwopairwin
+				random < 30
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label blufftwopairwin
+			action
+				payment 80000
+				pokerscore += 80000
+			`	Amazingly, everyone's hand was worse and you win with two pairs! You gain 80,000 credits.`
+				goto replay
+			label threeofakind
+			branch straight
+				random < 60
+			scene "scene/scene-pokerthreeofakind"
+			`	After exchanging some cards to improve your hand, you wind up with three of a kind. It's a decent hand, but there are stronger ones. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callthreeofakind
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffthreeofakindwin
+				random < 40
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffthreeofakindwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with three of a kind! You gain 50,000 credits.`
+				goto replay
+			label callthreeofakind
+			branch callthreeofakindwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callthreeofakindwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with three of a kind! You gain 40,000 credits.`
+				goto replay
+			label straight
+			branch flush
+				random < 50
+			scene "scene/scene-pokerstraight"
+			`	After exchanging some cards to improve your hand, you wind up with a straight. It's a decent hand, but there are stronger ones. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callstraight
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffstraightwin
+				random < 50
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffstraightwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with a straight! You gain 50,000 credits.`
+				goto replay
+			label callstraight
+			branch callstraightwin
+				random < 50
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callstraightwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a straight! You gain 40,000 credits.`
+				goto replay
+			label flush
+			branch fullhouse
+				random < 40
+			scene "scene/scene-pokerflush"
+			`	After exchanging some cards to improve your hand, you wind up with a flush. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raiseflushwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raiseflushwin
+			branch nobaitflush
+				random < 60
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a flush! You gain 60,000 credits.`
+				goto replay
+			label callflush
+			branch callflushwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callflushwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a flush! You gain 50,000 credits.`
+				goto replay
+			label fullhouse
+			branch fourofakind
+				random < 30
+			scene "scene/scene-pokerfullhouse"
+			`	After exchanging some cards to improve your hand, you wind up with a full house. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callfullhouse
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisefullhousewin
+				random < 70
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisefullhousewin
+			branch nobaitfullhouse
+				random < 70
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a full house! You gain 60,000 credits.`
+				goto replay
+			label callfullhouse
+			branch callfullhousewin
+				random < 70
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callfullhousewin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a full house! You gain 40,000 credits.`
+				goto replay
+			label nobaitfullhouse
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a full house! You gain 50,000 credits.`
+				goto replay
+			label fourofakind
+			branch straightflush
+				random < 20
+			scene "scene/scene-pokerfourofakind"
+			`	After exchanging some cards to improve your hand, you wind up with four of a kind. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callfourofakind
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisefourofakindwin
+				random < 80
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisefourofakindwin
+			branch nobaitfourofakind
+				random < 80
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with four of a kind! You gain 60,000 credits.`
+				goto replay
+			label callfourofakind
+			branch callfourofakindwin
+				random < 80
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callfourofakindwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with four of a kind! You gain 40,000 credits.`
+				goto replay
+			label nobaitfourofakind
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with four of a kind! You gain 50,000 credits.`
+				goto replay
+			label straightflush
+			branch royalflush
+				random < 10
+			scene "scene/scene-pokerstraightflush"
+			`	After exchanging some cards to improve your hand, you wind up with a straight flush. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callstraightflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisestraightflushwin
+				random < 90
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisestraightflushwin
+			branch nobaitstraightflush
+				random < 90
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a straight flush! You gain 60,000 credits.`
+				goto replay
+			label callstraightflush
+			branch callstraightflushwin
+				random < 90
+			`	Amazingly, one of the other players has a royal flush.`
+				goto replay
+			label callstraightflushwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	As expected, everyone's hand was worse and you win with a straight flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitstraightflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a straight flush! You gain 50,000 credits.`
+				goto replay
+			label royalflush
+			scene "scene/scene-pokerroyalflush"
+			`	After exchanging some cards to improve your hand, you wind up with a royal flush! It's an unbeatable hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callroyalflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch nobaitroyalflush
+				random < 90
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a royal flush! You gain 60,000 credits.`
+				goto replay
+			label callroyalflush
+			action
+				payment 40000
+				pokerscore += 40000
+			`	As expected, everyone's hand was worse and you win with a royal flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitroyalflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a royal flush! You gain 50,000 credits.`
+				goto replay
+			label jackpot
+			action
+				event "link chasm"
+				clear pokerscore
+			scene scene "outfit/map"
+			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstated remarkable skill at that game. I tried playing once before. It did not suit me."`
+				accept
+			label bust
+			action
+				clear pokerscore
+			`	Unfortunately, you don't have enough credits to continue playing. "Better luck next time!" They continue playing without you.`
+				accept
+	on enter
+		conversation
+			scene "thumbnail/carabao-thumb"
+			`Quash takes longer than expected to launch. After a short delay, the Halcyon appears. "Rum Cellar is an interesting place. Apologies for the delay. I caught some fools trying to steal the Halcyon and had to remind them why no one opposes the Quarg."`
+	npc
+		government "Pirate"
+		personality waiting staying vindictive uninterested
+		ship "Marauder Falcon" "Quick Death"
+	npc
+		government "Pirate (Rivals)"
+		personality waiting staying vindictive uninterested
+		ship "Marauder Leviathan" "Vengeful Depths"
+		ship "Modified Berserker (Inferno Rockets)" "Relentless Rage"
+		ship "Modified Firebird (Meteor)" "Black Phoenix"
 
 
 mission "Cartography: Chasm Link"
@@ -971,6 +1481,8 @@ mission "Cartography: Chasm Link"
 	source "Rum Cellar"
 	to offer
 		has "event: reveal Chasm"
+		not "event: link chasm"
+		not "Cartography: Quarg Hitchhiker 5: active"
 		or
 			and
 				not "randomize Cartography: Chasm Link"
@@ -979,7 +1491,15 @@ mission "Cartography: Chasm Link"
 				has "randomize Cartography: Chasm Link"
 				random < 10
 	on offer
-		dialog `Somone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+		conversation
+			`Somone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			choice
+				`	(Buy the codes.)`
+				`	(Refuse.)`
+					decline
+			scene "outfit/map"
+			`	After handing over the credits, you receive the codes.`
+				accept
 	on decline
 		set "randomize Cartography: Chasm Link"
 		clear "Cartography: Chasm Link: offered"
@@ -999,14 +1519,13 @@ mission "Cartography: Heliarch Surveillance"
 	invisible
 	to offer
 		has "Cartography: Quarg Hitchhiker 5: done"
-	to complete
+	to fail
 		has "Cartography: Quarg Hitchhiker 6: offered"
 	npc
 		system "Ki War Ek"
 		government "Heliarch"
 		personality launching surveillance
 		ship "Heliarch Stalker" "Vigilant Observer"
-
 
 
 mission "Cartography: Quarg Hitchhiker 6"
@@ -1034,7 +1553,6 @@ mission "Cartography: Quarg Hitchhiker 6"
 			names "quarg"
 			variant
 				"Quarg Wardragon (Scanner)"
-
 
 
 mission "Cartography: Quarg Hitchhiker 7"
@@ -1135,14 +1653,24 @@ mission "Cartography: Quarg Hitchhiker 7"
 				"Quarg Warkite (Scanner)"
 
 	on enter Quarantine
-		dialog `The "system" you've entered is nothing more than an orphaned planet with a ruined shard of a Quarg ring world orbiting it. Could this really be what Quash was searching for?`
+		conversation
+			scene "_menu/haze-coal"
+			`You've arrived on the outskirts of a dark nebula. Black clouds lit by sporadic flashes of lightning roil about the <ship>. Your scanners detect a few stray asteroids, wreckage composed of unfamiliar alien alloys, and "something" more substantial deeper inside the nebula. But localized distortions in the space time curvature prevent them from determining exactly what that is.`
+			`	The Halcyon hails you. "My scanners detect an abandoned space station nearby. We could take shelter from the storm or we could try to search deeper within the nebula.`
 
 	npc accompany save
 		government "Independent (Killable)"
 		personality escort timid plunders harvests
 		ship "Carabao (Quash)" "Halcyon"
-	
+		on kill
+			set "halcyon destroyed"
+
 	on fail
+		"reputation: Quarg" >?= "stored reputation: Quarg"
+		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
+		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
+		"reputation: Quarg (Gegno)" >?= "stored reputation: Quarg (Gegno)"
+		"reputation: Quarg (Incipias)" >?= "stored reputation: Quarg (Incipias)"
 		dialog `[MISSION FAILURE] You have failed as important part of the Cartography mission chain. If life were a game, you could load a save file and try again.`
 	
 	on complete
@@ -1168,6 +1696,330 @@ mission "Quarantine Inaccessible Patch"
 		fail
 
 
+mission "Midnight Quarloque"
+	landing
+	invisible
+	source "Quarloque"
+	to offer
+		has "Cartography: Quarg Hitchhiker 7: active"
+		not "halcyon destroyed"
+	on offer
+		conversation
+			`The architecture of the station reminds you of Quarg designs you've seen before. Quash easily locates the station's control room. All of the data displays are in a language you are unfamiliar with. Quash reaches for the control panel...`
+			choice
+				`	"What are you doing?"`
+				`	(Allow Quash to operate the controls.)`
+					goto deactivate
+			scene "planet/midnight quarloque a"
+			`	Quash answers while gesturing at a data display. "This Quarloque is networked with others in the nebula. They are generating gravitational distortions that make it difficult to detect this nebula and dive deeper within. I'm going to deactivate them."`
+			choice
+				`	"I'm not sure that's a good idea."`
+				`	(Allow Quash to operate the controls.)`
+					goto deactivate
+			scene "outfit/unknown"
+			`	Quash turns towards you. "The Quarloques were placed here to prevent anyone from seeing what is hidden within the nebula. Doesn't that pique your curiosity?"`
+			choice
+				`	"I'd like to explore the rest of the nebula first."`
+				`	(Allow Quash to operate the controls.)`
+					goto deactivate
+			branch "quarloque deja vu"
+				has "quarloque deja vu"
+			action
+				"quarloque deja vu" ++
+			`	Quash backs away from the control panel. "Why do humans always choose to do things the hard way? The gravity distortions may make it difficult to dive deeper into the nebula. Take care not to crash your ship into a clump of dark matter..." Quash returns to the Halcyon.`
+				defer
+			label "quarloque deja vu"
+			branch "quarloque looper"
+				"quarloque deja vu" >= 2
+			action
+				"quarloque deja vu" ++
+			`	Quash backs away from the control panel. "I... sense that we have done this before. Could this be a time loop? Strong gravitational distortions could cause such a phenomenon."`
+			choice
+				`	"But the date and time seem correct."`
+			scene "outfit/celestial compass"
+			`The Quarg looks at the Celestial Compass. "Our spacial coordinates are also correct. Perhaps what I'm experiencing are memories from an alternate timeline. I believe humans call this Deja Vu. Do you still want to leave the Quarloques active?"`
+			choice
+				`	"Yes, I'd like to explore the rest of the nebula first."`
+				`	(Allow Quash to operate the controls.)`
+					goto deactivate
+			`	Quash puts away the Celestial Compass. "Why do humans always choose to do things the hard way? The gravity distortions may make it difficult to dive deeper into the nebula. Take care not to crash your ship into a clump of dark matter..." Quash returns to the Halcyon.`
+				defer
+					defer
+			label "quarloque looper"
+			`	Quash backs away from the control panel. "I... sense that we have done this before. Could this be a time loop? Strong gravitational distortions could cause such a phenomenon."`
+			choice
+				`	"But the date and time seem correct."`
+			scene "outfit/attention"
+			`The Quarg looks at the Celestial Compass. "Our spacial coordinates are also correct. I suppose it's possible that what I'm experiencing are memories from an alternate timeline..." After a moment of contemplation, Quash grabs the control panel. The Quarg calmly states. "I am breaking the time loop. Do not interfere."`
+			choice
+				`	(Allow Quash to operate the controls.)`
+					goto deactivate
+				`	(Interfere.)`
+			scene "planet/wormhole"
+			`	Your memories of what happens next are blurry. You feel dizzy and nauseated.`
+				launch
+			label deactivate
+			action
+				clear "quarloque deja vu"
+				event "deactivate quarloque"
+			scene "planet/midnight quarloque b"
+			`	You watch as Quash begins manipulating the station controls. The lights dim as several systems power down. "This should clear a path for us to proceed." You feel a slight shift as the gravitational distortions dissipate. Quash withdraws from the control panel and heads back towards the Halcyon. This is the first time you've seen a Quarloque being deactivated, but somehow the process seemed familiar enough that you're certain you could repeat it.`
+				decline
+	on enter
+		conversation
+			scene "thumbnail/carabao-thumb"
+			`When you recover, you find yourself back on the <ship>, the Halcyon and Quarloque are nearby.`
+			choice
+				`	(Hail the Halcyon.)`
+				`	(Do nothing.)`
+					goto nothing
+			scene "planet/midnight quarloque a"
+			`	Quash answers. "My scanners detect an abandoned space station nearby. We could take shelter from the storm or we could try to search deeper within the nebula."`
+				decline
+			label nothing
+			scene "planet/midnight quarloque a"
+			`	The Halcyon hails you. "My scanners detect an abandoned space station nearby. We could take shelter from the storm or we could try to search deeper within the nebula."`
+				decline
+		clear "Midnight Quarloque: offered"
+		fail
+
+event "deactivate quarloque"
+	planet "Quarloque"
+		landscape land/station5dark
+	system Quarantine
+		"jump range" 100
+		remove shrouded
+		remove asteroids "dark matter"
+		remove hazard "Quarloque Anti-Gravity Lock"
+		remove hazard "Quarloque Gravity Lock"
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 40
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 80
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 120
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 160
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 200
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 240
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 280
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 320
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 40
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 80
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 120
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 160
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 200
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 240
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 280
+		add object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 320
+
+event "activate quarloque"
+	planet "Quarloque"
+		landscape land/station5
+	system Quarantine
+		"jump range" 50
+		add shrouded
+		add asteroids "dark matter" 45 0.5
+		add hazard "Quarloque Anti-Gravity Lock" 1
+		add hazard "Quarloque Gravity Lock" 1
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 40
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 80
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 120
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 160
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 200
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 240
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 280
+		remove object "Quarloque"
+			sprite "planet/midnight quarloque b"
+			distance 8000
+			period 360
+			offset 320
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 40
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 80
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 120
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 160
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 200
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 240
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 280
+		add object "Quarloque"
+			sprite "planet/midnight quarloque a"
+			distance 8000
+			period 360
+			offset 320
+
+mission "Midnight Quarloque Control"
+	job
+	repeat
+	name "Quarloque Control"
+	description "Alter the settings for the Quarloques in this system."
+	source "Quarloque"
+	to offer
+		or
+			has "event: deactivate quarloque"
+			has "event: activate quarloque"
+	on accept
+		conversation
+			scene "outfit/unknown"
+			`Alter the Quarloque settings?`
+			choice
+				`(Activate the Quarloques.)`
+					goto activate
+					to display
+						has "event: deactivate quarloque"
+				`(Deactivate the Quarloques.)`
+					goto deactivate
+					to display
+						has "event: activate quarloque"
+				`(Do nothing.)`
+			`Nothing changed...`
+				decline
+			label activate
+			action
+				clear "event: deactivate quarloque"
+				event "activate quarloque"
+			scene "planet/midnight quarloque a"
+			`The Quarloques are active. You feel a slight shift as gravitational distortions manifest...`
+				decline
+			label deactivate
+			action
+				clear "event: activate quarloque"
+				event "deactivate quarloque"
+			scene "planet/midnight quarloque b"
+			`The Quarloques are inactive. You feel a slight shift as the gravitational distortions dissipate...`
+				decline
+		fail
 
 mission "Cartography: Midnight's Lost Orphan"
 	landing
@@ -1177,9 +2029,11 @@ mission "Cartography: Midnight's Lost Orphan"
 		has "Cartography: Quarg Hitchhiker 7: done"
 	on offer
 		conversation
+			scene "planet/ice0"
 			`This frozen planet has been separated from its home system and floats free in the empty void. Although the world is uninhabited, there are Quarg ruins here. Most of the buildings have been demolished by some unknown force. As is typical for a Quarg world, the air is too thin for human comfort.`
-			`You see the Halcyon parked near one of the buildings. You try hailing but there is no reply. Before you can finish putting on an environmental suit, Quash has already left the Halcyon and entered the ruin. It's as if Quash forgot that you were accompanying it.`
-
+			`	You see the Halcyon parked at one of the spaceport landing pads. Attempts to hail it results in no reply. Before you can finish putting on an environmental suit, Quash has already left the Halcyon and entered the nearby ruin. It's as if the enigmatic Quarg forgot that you were accompanying it.`
+			`	A few rusting derelict Quarg ships covered by thick frost occupy some of the other landing pads. Most show signs of combat damage. The corpses nearby give the impression that they were frantically trying to repair one of these ships when something caused an abrupt and violent end to their lives. You're uncertain how many centuries they've been here, but the cold has preserved them well enough for you to discern the horrifying expressions they had on their faces.`
+			`	Overhead, flashes of lightning from the nebula above serve as the main source of lighting on the planet's surface. The eerie glow occasionally flickers as activity shifts among the clouds, causing shadows cast by the ruins to dance about wildly. The ringworld shard seems to hover over the horizon like a tombstone for this dead world.`
 			choice
 				`	(Follow Quash into the ruin.)`
 				`	(Abandon Quash.)`
@@ -1187,14 +2041,14 @@ mission "Cartography: Midnight's Lost Orphan"
 
 			scene "scene/scene-station5dark"
 			`	The entrance leads to a network of tunnels. As you make your way deeper into the facility, you find the air is warmer and some of the power systems are still operational. A strange light in the chamber ahead beckons you forward.`
-			`	The large chamber has some kind of containment device in the center. It is a large glass tank on a pedestal. The glass is broken, with shards scattered across the floor. The reflections of light in the broken shards draw your attention to something moving near the ceiling above.`
+			`	The large chamber has some kind of containment device on a pedestal in the center. It appears to be made of the same material as a Jump Drive. The device is broken, shards of it scattered across the floor. The reflections of light in the broken shards draw your attention to something moving near the ceiling above.`
 			
 			choice
 				`	(Track the moving object.)`
 			
 			scene "outfit/midnight lost orphan"
-			`	From the way it acts, you're certain this is an alien life form. It looks translucent, as if it consists of a hazy mist. The entity seems to be aware of your presence and you suspect it is studying you. Slowly, it starts to descend towards you.`
-			`	"Back away from the entity, Captain <first> <last>." Quash enters the chamber and gives you a stern warning. The mysterious entity hesitates, seeming to observe the actions of its two guests.`
+			`	From the way it acts, you're certain this is an alien life form. It looks translucent, as if it consists of a hazy mist. The entity seems to be aware of your presence and you suspect it has been observing you. Slowly, it starts to descend.`
+			`	"Back away from the entity, Captain <first> <last>." Quash enters the chamber and gives you a stern warning. The mysterious entity hesitates, seeming to study the actions of its two guests.`
 			choice
 				`	(Do as Quash says. Back away from the entity.)`
 					goto obey
@@ -1209,10 +2063,19 @@ mission "Cartography: Midnight's Lost Orphan"
 				`	(Shoot Quash.)`
 					goto shootQuash
 				`	(Wait to see what happens.)`
-					goto quashpowerup
+					goto quashreunion
 
 			scene "outfit/celestial compass"
 			`	You shoot the entity but the bullets have no effect. It envelopes Quash and the Quarg bellows in agony. As it writhes about, the Celestial Compass falls onto the floor and rolls towards you.`
+			choice
+				`	(Grab the compass and run.)`
+					goto run
+				`	(Wait to see what happens to Quash.)`
+					goto quashpowerup
+
+			label quashreunion
+			scene "outfit/celestial compass"
+			`	The entity envelopes Quash and the Quarg bellows in agony. As it writhes about, the Celestial Compass falls onto the floor and rolls towards you.`
 			choice
 				`	(Grab the compass and run.)`
 					goto run
@@ -1236,8 +2099,15 @@ mission "Cartography: Midnight's Lost Orphan"
 				die
 
 			label run
-			scene "outfit/celestial compass"
+			branch "deactivated quarloque"
+				has "Midnight Quarloque: declined"
 			`	You snatch up the compass and run. As you flee through the empty passages back to your ship, the alien sound of Quash's tortured wails echo behind you. Boarding the <ship>, you get back into orbit and are deciding your next course of action when a fleet of Quarg warships arrives. They hail you.`
+				goto "quarg interrogation"
+			label "deactivated quarloque"
+			scene "outfit/celestial compass"
+			`	You snatch up the compass and run. As you flee through the empty passages back to your ship, the alien sound of Quash's tortured wails echo behind you. Boarding the <ship>, you get back into orbit and immediately notice that the graviton distortions are back. As you are deciding your next course of action, a fleet of Quarg warships arrives. They hail you.`
+
+			label "quarg interrogation"
 			`	"Where is The Outcast?" they ask.`
 			choice
 				`	"Still on the planet."`
@@ -1245,9 +2115,9 @@ mission "Cartography: Midnight's Lost Orphan"
 			scene "scene/scene-vindictivequarg"
 			`	Before the words leave your lips, the Halcyon launches. Most of the Quarg fleet moves to intercept. The old city ship is no match for them. Once the Halcyon is completely destroyed, the Quarg hail you. "Human. Has The Outcast's grip on your mind been broken? Are you in control of yourself?" It waits expectantly for you to answer.`
 			choice
+				`	"Yes... I am. Thank you for saving me."`
 				`	"What? I was never under Quash's control."`
 					goto collaborator
-				`	"Yes... I am. Thank you for saving me."`
 			action
 				log `The Quarg questioned my involvement with Quash. They seemed to believe that I was under some sort of mind control. Hopefully, allowing them to believe this will earn some leniency from them for any offenses they held against me.`
 				set "denied aiding Quash"
@@ -1268,7 +2138,7 @@ mission "Cartography: Midnight's Lost Orphan"
 
 			label disobey
 			scene "scene/scene-station5blood"
-			`	You ignore Quash and stretch your arms out towards the strange floating entity. It swoops down on you and envelops your body. The environmental suit does nothing to prevent it as the entity seems to be absorbed into your body. You hear the sound of agonized screams but are not sure whose voice is doing the screaming.`
+			`	You ignore Quash and stretch your arms out towards the strange floating entity. It swoops down on you and envelops your body. The environmental suit does nothing to prevent it as the entity seems to be absorbed into you. You hear the sound of agonized screams but are not sure whose voice is doing the screaming.`
 			choice
 				`	(Some time later...)`
 				
@@ -1284,8 +2154,8 @@ mission "Cartography: Midnight's Lost Orphan"
 		log `Found a strange entity on the orphaned planet in the Quarantine "system". The entity took possession of Quash and I escaped with the Celestial Compass.`
 		log "People" "Quash" `Quash and the entity that possessed it were executed by the Quarg when they destroyed the Halcyon. No fighters or escape pods were launched from the destroyed ship.`
 		outfit "Celestial Compass" 1
-		"celestial compass" ++
-		"quash dead?" ++
+		set "celestial compass"
+		set "quash dead?"
 
 	on accept
 		log `The power... It flows through me... Time... Space... The galaxy... It will all bend to our will.`
@@ -1297,7 +2167,7 @@ mission "Cartography: Midnight's Lost Orphan"
 		outfit "Midnight's Lost Orphan" 1
 		outfit "Celestial Compass" 1
 		"captain of atrocity" ++
-		"celestial compass" ++
+		set "celestial compass"
 
 	on enter
 		dialog `These Quarg seem upset. Their hails mention something about an abomination against all creation. How annoying. You feel an urge to crush them.`
@@ -1315,7 +2185,6 @@ mission "Cartography: Midnight's Lost Orphan"
 				"Quarg Warkite (Scanner)" 2
 
 
-
 mission "Midnight Cartography Quarg Rep Patch"
 	landing
 	invisible
@@ -1329,7 +2198,6 @@ mission "Midnight Cartography Quarg Rep Patch"
 		"reputation: Quarg (Gegno)" >?= 1
 		"reputation: Quarg (Incipias)" >?= 1
 		fail
-
 
 
 mission "Midnight Pictograph 1"
@@ -1476,7 +2344,7 @@ mission "Midnight Pictograph 1"
 				goto impressions
 
 			label conclusion
-			`	Tart looks over the notes she wrote on her clipboard. Captain <first>, do you suppose the figure the humans are kneeling to could be a Quarg?"`
+			`	Tart looks over the notes she wrote on her clipboard. "Captain <first>, do you suppose the figure the humans are kneeling to could be a Quarg?"`
 			choice
 				`	"That's definitely a Quarg."`
 				`	"I suppose that's possible."`
@@ -1547,7 +2415,7 @@ mission "Midnight Pictograph 1"
 			scene "outfit/ancient pictograph"
 			action
 				outfit "Ancient Earth Pictograph" 1
-			`	When you review the security video, you find a picture of the Ancient Pictograph. It's somewhat blurry, but still might be worth something...`
+			`	When you review the security video, you find a picture of the Ancient Pictograph. It's a little blurry, but still might be worth something to the right person...`
 				accept
 			label delete
 			action

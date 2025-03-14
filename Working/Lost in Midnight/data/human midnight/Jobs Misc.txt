@@ -2096,6 +2096,517 @@ mission "Midnight Holiday Passenger Job [Christmas 2]"
 		dialog phrase "generic passenger dropoff payment"
 
 
+mission "Midnight Independent Humanitarian Job (small)"
+	job
+	repeat
+	name "Emergency Supplies to <planet>"
+	description "Bring <cargo> to the lawless world of <destination>, to help alleviate a natural disaster."
+	cargo "emergency supplies" 25
+	to offer
+		or
+			has "Midnight Independent Humanitarian: done"
+			has "Humanitarian 1: done"
+			has "Humanitarian 2: done"
+		random < 15
+		"combat rating" > 0
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	destination
+		government "Pirate" "Independent"
+		distance 2 10
+	clearance
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 25000
+		"reputation: Independent" += 3
+		dialog
+			`It takes a while to figure out who exactly is in charge here. You sell off parts of your shipment of food to a few different local leaders, receiving <payment> in exchange.`
+
+mission "Midnight Independent Humanitarian Job (medium)"
+	job
+	repeat
+	name "Emergency Supplies to <planet>"
+	description "Bring <cargo> to the lawless world of <destination>, to help alleviate a natural disaster."
+	cargo "emergency supplies" 50
+	to offer
+		or
+			has "Midnight Independent Humanitarian: done"
+			has "Humanitarian 1: done"
+			has "Humanitarian 2: done"
+		random < 10
+		"combat rating" > 0
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	destination
+		government "Pirate" "Independent"
+		distance 2 10
+	clearance
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 50000
+		"reputation: Independent" += 5
+		dialog
+			`It takes a while to figure out who exactly is in charge here. You sell off parts of your shipment of food to a few different local leaders, receiving <payment> in exchange.`
+
+mission "Midnight Independent Humanitarian Job (large)"
+	job
+	repeat
+	name "Emergency Supplies to <planet>"
+	description "Bring <cargo> to the lawless world of <destination>, to help alleviate a natural disaster."
+	cargo "emergency supplies" 75
+	to offer
+		or
+			has "Midnight Independent Humanitarian: done"
+			has "Humanitarian 1: done"
+			has "Humanitarian 2: done"
+		random < 5
+		"combat rating" > 0
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
+	destination
+		government "Pirate" "Independent"
+		distance 2 10
+	clearance
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 75000
+		"reputation: Independent" += 7
+		dialog
+			`It takes a while to figure out who exactly is in charge here. You sell off parts of your shipment of food to a few different local leaders, receiving <payment> in exchange.`
+
+
+mission "Midnight Poker"
+	job
+	repeat
+	deadline 2
+	name "Wanted: Poker Players"
+	description `"Ongoing poker game at the bar. Serious players only." Might be a chance to get some easy credits, or lose them...`
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
+		attributes "pirate"
+		not attributes uninhabited
+	to offer
+		"credits" >= 100000
+		random < 50
+	on accept
+		clear pokerscore
+		conversation
+			`You find the group of poker players at the bar.`
+			choice
+				`	"Deal me in."`
+					goto game
+				`	(Forget it.)`
+					decline
+			label game
+			action
+				payment -10000
+				pokerscore -= 10000
+			`	Everyone addss 10,000 credits to the pot. The cards are shuffled and dealt out...`
+			branch pair
+				random < 90
+			scene "scene/scene-pokerjunk"
+			`	After exchanging some cards to improve your hand, you wind up with junk. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+					goto bluffhigh
+				`	"Fold."`
+			label fold
+			branch bust
+				"credits" <= 10000
+			`	You forfeit this round. Play again?`
+			label replay
+			branch jackpot
+				pokerscore >= 100000
+			branch bust
+				"credits" <= 10000
+			scene "outfit/unknown"
+			choice
+				`	(Play again.)`
+					goto game
+				`	(Quit.)`
+					decline
+			label bluffhigh
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffhighwin
+				random < 10
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffhighwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with the high card! You gain 50,000 credits.`
+				goto replay
+			label pair
+			branch twopair
+				random < 80
+			scene "scene/scene-pokerpair"
+			`	After exchanging some cards to improve your hand, you wind up with a single pair. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Fold." (forfeit this hand.)`
+					goto fold
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffpairwin
+				random < 20
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffpairwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with a single pair! You gain 50,000 credits.`
+				goto replay
+			label twopair
+			branch threeofakind
+				random < 70
+			scene "scene/scene-pokertwopair"
+			`	After exchanging some cards to improve your hand, you wind up with two pairs. You could raise 10,000 more credits and try to bluff your way to a win, but the odds are against you...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Fold." (forfeit this hand.)`
+					goto fold
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch blufftwopairwin
+				random < 30
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label blufftwopairwin
+			action
+				payment 80000
+				pokerscore += 80000
+			`	Amazingly, everyone's hand was worse and you win with two pairs! You gain 80,000 credits.`
+				goto replay
+			label threeofakind
+			branch straight
+				random < 60
+			scene "scene/scene-pokerthreeofakind"
+			`	After exchanging some cards to improve your hand, you wind up with three of a kind. It's a decent hand, but there are stronger ones. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callthreeofakind
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffthreeofakindwin
+				random < 40
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffthreeofakindwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with three of a kind! You gain 50,000 credits.`
+				goto replay
+			label callthreeofakind
+			branch callthreeofakindwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callthreeofakindwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with three of a kind! You gain 40,000 credits.`
+				goto replay
+			label straight
+			branch flush
+				random < 50
+			scene "scene/scene-pokerstraight"
+			`	After exchanging some cards to improve your hand, you wind up with a straight. It's a decent hand, but there are stronger ones. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callstraight
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch bluffstraightwin
+				random < 50
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label bluffstraightwin
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Luckily, everyone else decided to fold and you win with a straight! You gain 50,000 credits.`
+				goto replay
+			label callstraight
+			branch callstraightwin
+				random < 50
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callstraightwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a straight! You gain 40,000 credits.`
+				goto replay
+			label flush
+			branch fullhouse
+				random < 40
+			scene "scene/scene-pokerflush"
+			`	After exchanging some cards to improve your hand, you wind up with a flush. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raiseflushwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raiseflushwin
+			branch nobaitflush
+				random < 60
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a flush! You gain 60,000 credits.`
+				goto replay
+			label callflush
+			branch callflushwin
+				random < 60
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callflushwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a flush! You gain 50,000 credits.`
+				goto replay
+			label fullhouse
+			branch fourofakind
+				random < 30
+			scene "scene/scene-pokerfullhouse"
+			`	After exchanging some cards to improve your hand, you wind up with a full house. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callfullhouse
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisefullhousewin
+				random < 70
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisefullhousewin
+			branch nobaitfullhouse
+				random < 70
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a full house! You gain 60,000 credits.`
+				goto replay
+			label callfullhouse
+			branch callfullhousewin
+				random < 70
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callfullhousewin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with a full house! You gain 40,000 credits.`
+				goto replay
+			label nobaitfullhouse
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a full house! You gain 50,000 credits.`
+				goto replay
+			label fourofakind
+			branch straightflush
+				random < 20
+			scene "scene/scene-pokerfourofakind"
+			`	After exchanging some cards to improve your hand, you wind up with four of a kind. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callfourofakind
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisefourofakindwin
+				random < 80
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisefourofakindwin
+			branch nobaitfourofakind
+				random < 80
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with four of a kind! You gain 60,000 credits.`
+				goto replay
+			label callfourofakind
+			branch callfourofakindwin
+				random < 80
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label callfourofakindwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	Luckily, everyone's hand was worse and you win with four of a kind! You gain 40,000 credits.`
+				goto replay
+			label nobaitfourofakind
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with four of a kind! You gain 50,000 credits.`
+				goto replay
+			label straightflush
+			branch royalflush
+				random < 10
+			scene "scene/scene-pokerstraightflush"
+			`	After exchanging some cards to improve your hand, you wind up with a straight flush. It's a strong hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callstraightflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch raisestraightflushwin
+				random < 90
+			`	Unfortunately, one of the other players has a better hand than you.`
+				goto replay
+			label raisestraightflushwin
+			branch nobaitstraightflush
+				random < 90
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a straight flush! You gain 60,000 credits.`
+				goto replay
+			label callstraightflush
+			branch callstraightflushwin
+				random < 90
+			`	Amazingly, one of the other players has a royal flush.`
+				goto replay
+			label callstraightflushwin
+			action
+				payment 40000
+				pokerscore += 40000
+			`	As expected, everyone's hand was worse and you win with a straight flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitstraightflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a straight flush! You gain 50,000 credits.`
+				goto replay
+			label royalflush
+			scene "scene/scene-pokerroyalflush"
+			`	After exchanging some cards to improve your hand, you wind up with a royal flush! It's an unbeatable hand. You could raise 10,000 more credits or play it safe with a call...`
+			choice
+				`	"Raise." (pay 10,000 more credits into the pot.)`
+				`	"Call." (try to win with the current bet.)`
+					goto callroyalflush
+			action
+				payment -10000
+				pokerscore -= 10000
+			branch nobaitroyalflush
+				random < 90
+			action
+				payment 60000
+				pokerscore += 60000
+			`	Luckily, someone took the bait and you win with a royal flush! You gain 60,000 credits.`
+				goto replay
+			label callroyalflush
+			action
+				payment 40000
+				pokerscore += 40000
+			`	As expected, everyone's hand was worse and you win with a royal flush! You gain 40,000 credits.`
+				goto replay
+			label nobaitroyalflush
+			action
+				payment 50000
+				pokerscore += 50000
+			`	Unfortunately no one took the bait, but you still win with a royal flush! You gain 50,000 credits.`
+				goto replay
+			label jackpot
+			action
+				event "link chasm"
+				clear pokerscore
+			`	The other players have had enough and leave you with your winnings.`
+				accept
+			label bust
+			action
+				clear pokerscore
+			`	Unfortunately, you don't have enough credits to continue playing. "Better luck next time!" They continue without you.`
+				decline
+	on enter
+		dialog "Looks like at least one of the poker players was upset that you did too well at the card table."
+	npc kill
+		to despawn
+			"armament deterrence" >= 3
+		government "Bounty Hunter"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		fleet "Bounty Hunters"
+		on disable
+			fail
+	npc kill
+		to despawn
+			or
+				"armament deterrence" < 3
+				"armament deterrence" >= 4
+		government "Bounty Hunter"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		fleet "Marauder fleet I"
+		on disable
+			fail
+	npc kill
+		to despawn
+			or
+				"armament deterrence" < 4
+				"armament deterrence" >= 8
+		government "Bounty Hunter"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		fleet "Marauder fleet IV"
+		on disable
+			fail
+	npc kill
+		to despawn
+			or
+				"armament deterrence" < 8
+				"armament deterrence" >= 16
+		government "Bounty Hunter"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		fleet "Marauder fleet VII"
+		on disable
+			fail
+	npc kill
+		to despawn
+			"armament deterrence" < 16
+		government "Bounty Hunter"
+		personality heroic unconstrained waiting nemesis plunders harvests
+		fleet "Marauder fleet X"
+		on disable
+			fail
 
 mission "Midnight: Search For Survivors (Free Worlds)"
 	job

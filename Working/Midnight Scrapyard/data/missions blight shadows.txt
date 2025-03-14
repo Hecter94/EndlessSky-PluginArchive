@@ -1690,6 +1690,7 @@ mission "Scrapyard Shadowblight Twilight"
 					has "Avgi: First Contact: aborted"
 	on enter "Cusp"
 		event "Shadowblight Twilight"
+		set "Shadowblight Gossamer Patched"
 		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
 		fail
 	npc kill
@@ -1699,6 +1700,7 @@ mission "Scrapyard Shadowblight Twilight"
 		fleet "Small Blight Shadow"
 	on enter "Tide"
 		event "Shadowblight Twilight"
+		set "Shadowblight Gossamer Patched"
 		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
 		fail
 	npc kill
@@ -1708,6 +1710,7 @@ mission "Scrapyard Shadowblight Twilight"
 		fleet "Small Blight Shadow"
 	on enter "Billow"
 		event "Shadowblight Twilight"
+		set "Shadowblight Gossamer Patched"
 		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
 		fail
 	npc kill
@@ -1717,6 +1720,7 @@ mission "Scrapyard Shadowblight Twilight"
 		fleet "Small Blight Shadow"
 	on enter "Tap"
 		event "Shadowblight Twilight"
+		set "Shadowblight Gossamer Patched"
 		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
 		fail
 	npc kill
@@ -1762,8 +1766,7 @@ event "Shadowblight Twilight"
 		add fleet "Large Blight Shadow" 50000
 		add fleet "Infested Blight Aberrant" 70000
 	system Gossamer
-		add fleet "Large Blight Shadow" 50000
-		add fleet "Infested Blight Aberrant" 70000
+		add fleet "Small Blight Shadow Miners" 50000
 	system Whirlwind
 		add fleet "Large Blight Shadow" 50000
 		add fleet "Infested Blight Aberrant" 70000
@@ -1968,3 +1971,21 @@ event "Shadowblight Twilight"
 		add fleet "Small Blight Shadow" 80000
 	system Maspa-Mavra
 		add fleet "Small Blight Shadow" 80000
+
+
+mission "Scrapyard Shadowblight Gossamer Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Shadowblight Twilight"
+		not "Shadowblight Gossamer Patched"
+	on offer
+		event "Shadowblight Gossamer Patch"
+		fail
+
+event "Shadowblight Gossamer Patch"
+	system Gossamer
+		add fleet "Small Blight Shadow Miners" 50000
+		remove fleet "Large Blight Shadow"
+		remove fleet "Infested Blight Aberrant"

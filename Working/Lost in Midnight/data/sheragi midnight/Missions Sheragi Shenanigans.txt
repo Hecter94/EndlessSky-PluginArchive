@@ -11,6 +11,19 @@
 
 
 
+mission "Midnight Emerald Sword Timer"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "Sheragi Archaeology: Epilogue: done"
+	on offer
+		event "midnight emerald sword timer" 30
+		fail
+
+event "midnight emerald sword timer"
+
+
 mission "Sheragi Shenanigans: Sapphire Shield 1"
 	minor
 	name "Sheragi: Sapphire Shield"
@@ -21,7 +34,7 @@ mission "Sheragi Shenanigans: Sapphire Shield 1"
 	destination
 		attributes "paradise"
 	to offer
-		has "Sheragi Archaeology: Epilogue: done"
+		has "event: midnight emerald sword timer"
 		random < 25
 	on offer
 		log "People" "Dr. Wesley Stumpernickle" `An associate archaologist at Alexandria, he discovered the Sheragi ship "Sapphire Shield".`
@@ -313,7 +326,7 @@ mission "Sheragi Shenanigans: Ruby Dagger 1"
 		government "Syndicate"
 	stopover "Deadman's Cove"
 	to offer
-		has "Sheragi Archaeology: Epilogue: done"
+		has "event: midnight emerald sword timer"
 		random < 50
 	on offer
 		conversation
@@ -324,8 +337,9 @@ mission "Sheragi Shenanigans: Ruby Dagger 1"
 				accept
 	on stopover
 		payment -10000
+		"reputation: Independent" ++
 		conversation
-			`You search for information on the Ruby Dagger. After paying 10,000 in bribes you convince some pirates to talk.`
+			`You search for information on the Ruby Dagger. After paying 10,000 in bribes you convince some locals to talk.`
 			label questions
 			choice
 				`	"Where is the Ruby Dagger?"`
@@ -367,8 +381,9 @@ mission "Sheragi Shenanigans: Ruby Dagger 2"
 				accept
 	on stopover
 		payment -20000
+		"reputation: Independent" ++
 		conversation
-			`You search for information on the Ruby Dagger. After paying 20,000 in bribes you convince some pirates to talk.`
+			`You search for information on the Ruby Dagger. After paying 20,000 in bribes you convince some locals to talk.`
 			label questions
 			choice
 				`	"Where is the Ruby Dagger?"`
@@ -409,8 +424,9 @@ mission "Sheragi Shenanigans: Ruby Dagger 3"
 				accept
 	on stopover
 		payment -30000
+		"reputation: Independent" ++
 		conversation
-			`You search for information on the Ruby Dagger. After paying 30,000 in bribes you convince some pirates to talk.`
+			`You search for information on the Ruby Dagger. After paying 30,000 in bribes you convince some locals to talk.`
 			label questions
 			choice
 				`	"Where is the Ruby Dagger?"`
@@ -1114,6 +1130,7 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 			label enter
 			choice
 				`	(Enter the facility.)`
+			label drift
 			scene "outfit/fake pwave cannon"
 			``
 			`	The "manufacturing facility" is little more than a workshop. A Fake Sheragi Cannon dominates one side of the room, while an unfinished cannon occupies the opposite side of the chamber. The complete cannon is probably the prototype.`
@@ -1135,11 +1152,12 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 				goto computer
 			label data
 			``
-			`	You get into the computer's data files. After searching, you find the prototype blueprints for all the fake Sheragi outfits. You download a copy and delete the originals. It's time to leave.`
+			`	You get into the computer's data files. After searching, you find the prototype blueprints for all the fake Sheragi outfits. You download a copy and delete the originals.`
+			`	The prototype has been disassembled and stored in your cargo bays. It's time to leave. Bring both your cargo and the blueprint data to <destination>.`
 				accept
 			label blow
 			scene "outfit/fragmentation grenades"
-			`	You decide to brute force your way in. A box of grenades does the job, but you're certain someone must have heard the blast. The remains of the door lie open before you...`
+			`	You decide to brute force your way in. An entire box of grenades does the job, but you're certain someone must have heard the blast. The remains of the door lie open before you...`
 				goto enter
 			label "Quantum Key Blade"
 			`	You have the Quantum Key Blade...`
@@ -1148,10 +1166,10 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 				`	(Don't use the Quantum Key Blade.)`
 					goto padlock
 			scene "outfit/quantum key blade"
-			`	Taking the orbital direction of the space station into account, you activate the Quantum Key Blade and put yourself out of phase with the rest of reality.`
-				goto enter
+			`	Taking the orbital direction of the space station into account, you activate the Quantum Key Blade and put yourself out of phase with the rest of reality. You drift through the bulkhead into the room beyond.`
+				goto drift
 	on enter
-		dialog `A fleet of pirate ships is heading right for you. You might have done something to attract the counterfeiter's attention while you were in their workshop.`
+		dialog `A fleet of pirate ships is heading right for you. Some are armed with the fake cannons You might have done something to attract the counterfeiter's attention while you were in their workshop.`
 
 	npc
 		to spawn
@@ -1196,6 +1214,7 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 	npc
 		to spawn
 			"sheragi counterfeiter password rejected" > 3
+			has "Diamondback Sale: offered"
 		government "Pirate"
 		system Men
 		personality waiting plunders unconstrained nemesis
@@ -1204,6 +1223,7 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 	npc
 		to spawn
 			not "sheragi counterfeiter password rejected"
+			has "Diamondback Sale: offered"
 		government "Pirate"
 		system Men
 		personality waiting plunders unconstrained nemesis
@@ -1221,6 +1241,8 @@ mission "Sheragi Shenanigans: Counterfeits Infiltration"
 				"Marauder Firebird (Sheragi Counterfeit)"
 				"Marauder Manta (Sheragi Counterfeit)"
 				"Marauder Splinter (Sheragi Counterfeit)"
+		on kill
+			dialog "That's the last of their ships armed with the fake cannons. That should prevent them from making new blueprints."
 	on visit
 		dialog `There may still be counterfeiters armed with Fake Sheragi Cannons or the prototype is on one of your escorts that hasn't arrived in the system.`
 	on complete
