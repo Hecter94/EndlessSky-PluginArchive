@@ -1,0 +1,162 @@
+# Copyright (c) 2025 by TheSilverStone
+#
+# Wherna is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Wherna is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "First Contact: Wherna"
+	name "Wherna first contact"
+	description "Go to Varnoka as an order from Sesilani."
+	landing
+	source
+		government Wherna
+		not planet Varnoka
+	destination Varnoka
+	passengers 0
+	on offer
+		conversation
+			`As you land, you notice that strange ships are landing and taking off. They aren't like any ships you've ever seen before. You follow one to the spaceport, and then, hesitantly, land.`
+			choice
+				`	(Take off again, they may be hostile.)`
+					goto suspicious
+				`	(Walk out, they haven't attacked me yet.)`
+					goto bold
+			label suspicious
+			`	You take off again, and as you do so, a strange hail reaches your ship. "Why do you fear the Wherna, have they done you any wrong?" The voice is distant, and the harsh noise grates on your ears.`
+			choice
+				`	"Yes, they attacked me as a jumped here. Why must I be attacked? Have I done the Wherna any harm?"`
+					goto insolent
+				`	"No, there was a slight misunderstanding, but it isn't important. Apologies, I will come back some other time."`
+					defer
+			label bold
+			`	As you walk out among the strange cats that inhabit this planet, a building of a strange architecture meets your eye.`
+			choice
+				`	(Walk towards it and try to get inside.)`
+					goto meeting
+				`	(Leave the planet, I've seen enough.)`
+					goto leave
+			label leave
+			`	Immediately you head back to your ship.`
+					goto suspicious
+
+			label insolent
+			action
+				"reputation: Wherna" = -1000
+			`	A strange noise, not unlike a cat's growling fills the room. "You have dishonored us. We will lose our willingness to trust you, and you will never enter Wherna space again."`
+				flee
+
+			label meeting
+			`	As you walk up, one of the many cats stops you with a strange laser gun in his hands. "You may enter if you wish, but all consequences are on your head," he says.`
+			choice
+				`	(Walk inside and face the "consequences")`
+					goto meethim
+				`	(Leave this planet and take off.)`
+					goto suspicious
+			label meethim
+			`	You walk inside as the guard un-bars the door, and notice with a shudder he's following you. The first room you see you walk into, and come face to face with a cat lying on a red velvet couch. "Good morning, captain. <first> <last> I believe," he says in a purr.`
+			choice
+				`	"Yes, have I the honor on calling on the ruler of Wherna space?"`
+				`	"No, I think you are looking for someone else,"`
+					goto lie
+			`	He says "No, I'm only a ruler of this planet. Where is your ship?"`
+			choice
+				`	"Near the spaceport."`
+					goto end
+				`	"Around the general area of the spaceport."`
+					goto end
+			label end
+			`	"Very well. I will call on you when I need you, but first take this package to Varnoka. My name is Sesilani, I will be within call of wherever you are." He hands you a badge. "I'm promoting you to private class." You notice he has a badge too.`
+			choice
+				`	"Ok, I will."`
+					accept
+				`	"No, I'm going to leave. You're not a nice cat to be around, kitty."`
+					goto insolent
+			label lie
+			action
+				"reputation: Wherna" = -1000
+			`	"Very well," he says, "if you're not captain <first>, then you will leave Wherna space. Don't come back, ever."`
+				flee
+	on complete
+		conversation
+			`	This cargo looks like a quite valuable treasure. Do you want to keep the box for yourself?`
+			choice
+				`	(Take some: it can't hurt anything to badly.)`
+					goto treasuretrove
+				`	(Obey commands: I am not about to break trust with the Wherna.)`
+					goto obey
+			label treasuretrove
+			`	Looking around to make sure nobody is watching, you scoop one half of the treasure into your own cargo and drop the rest of as instructed. However, the guard looks at you strangely and he says: "This box weighs almost nothing; I wonder why that is?"`
+			action
+				"reputation: Wherna" = -1000
+				payment 2500000
+
+			label obey
+			`	You drop the box off as instructed: you hear Sesilani's voice in the room: "As a reward for honesty, I'm paying you 3 million credits." The voice fades, and you receive 3 million credits into your account.`
+			action
+				payment 3000000
+
+mission "First Contact: Wherna 2"
+	landing
+	invisible
+	source
+		government Wherna
+	destination Varnoka
+	to offer
+		has "First Contact: Wherna: done"
+	on enter
+	on enter
+		conversation
+			`	You suddenly hear Sesilani's voice from your badge: "Come to Varnoka, I have important business to discuss."`
+			choice
+				`	(Accept.)`
+					goto ok
+				`	(Refuse.)`
+					goto no
+			label no
+			`	"No, I refuse. I will not obey you any longer," you say.`
+				decline
+			label ok
+			`	"Ok, I'll come as quick as I can." You say, and the telecom shuts off.`
+				accept
+
+mission "wherna destruction"
+	name "Wherna first contact 2: Sesilani called."
+	description "Received order from Sesilanti, might be promoted in the near future."
+	on offer
+		conversation
+			`	A guard stops you as you step off the <ship>, and escorts you to a building much like Sesilani 's. He meets you there, and says, "There is an alien specis called the Rathalan to the West of our space, and one of its ships named the <npc> is lurking around here. Could you hunt it down? I will pay you 150,000 credits."`
+			choice
+				`	(Accept.)`
+					goto ok2
+				`	(Refuse.)`
+					goto no2
+
+			label ok2
+			`	"Thank you!" His face brightens, and he escorts you back to the <ship>. You take of right away to hunt down the <npc>.`
+						launch
+
+			label no2
+			`	His face falls. "Oh well," he sighs. "Maybe the <ship> isn't a warship."`
+				decline
+	npc kill
+		government "Dorsa"
+		personality
+			confusion 10
+			heroic
+			target
+			nemesis
+			staying
+			unconstrained
+			marked
+		ship "Ronasa" "D. Q. S. Hursa"
+		system
+			distance 1 1
+		conversation
+			`	Sesilani suddenly messages, "That ship was no Rathalan ship. Come to Wernoka, I want to look at your log."`

@@ -227,14 +227,14 @@ mission "Cartography: Quarg Hitchhiker 1"
 					goto end
 				`	"Sorry, I can't help you right now."`
 					defer
-				`	"My ship isn't outfitted to accomodate Quarg-sized passengers."`
-					goto accomodations
+				`	"My ship isn't outfitted to accommodate Quarg-sized passengers."`
+					goto accommodations
 				`	"What is a Quarg doing on a pirate world?"`
 			
 			`	"Ah, even a Quarg can fall victim to misfortune. But perhaps my fortunes will take a turn for the better."`
 				goto negotiation
 
-			label accomodations
+			label accommodations
 			`	"Do not concern yourself. I can manage some discomfort."`
 				goto negotiation
 			
@@ -297,7 +297,7 @@ mission "Cartography: Quarg Hitchhiker 2"
 		conversation
 			scene "thumbnail/carabao-thumb"
 			`When you arrive at landing pad Q, you a greeted by a dreadful sight. The Carabao, known as the "cursed" city ship, featured in many horror stories where the colonists die off one by one as the ship's automated systems accidentally kill them in grisly and gruesome ways.`
-			`	Quash's voice booms fron an external speaker. "I'm glad you finally arrived, Captain <first> <last>. I hope you had no trouble finding your way here. Please, come aboard my new ship. It's called a Carabao." A boarding ramp descends from an open entry hatch. The area within is dark, making it difficult to see the ship's interior from outside.`
+			`	Quash's voice booms from an external speaker. "I'm glad you finally arrived, Captain <first> <last>. I hope you had no trouble finding your way here. Please, come aboard my new ship. It's called a Carabao." A boarding ramp descends from an open entry hatch. The area within is dark, making it difficult to see the ship's interior from outside.`
 			choice
 				`	(Enter the ship.)`
 					goto enter
@@ -346,6 +346,7 @@ mission "Cartography: The Map Obtained"
 				accept
 	on complete
 		outfit "Obsolete Star Map" 1
+		set "obsolete star map"
 		event "Poisonwood Trailblazer Excavation" 30
 		log `Acquired an obsolete star map during an information exchange regarding a derelict Coalition war ship found on Poisonwood. Someone with more knowledge regarding the movements of the stars might be able to figure out where the systems on this map are currently located.`
 		conversation
@@ -382,7 +383,16 @@ mission "Cartography: The Map Obtained"
 			
 event "Poisonwood Trailblazer Excavation"
 
-
+mission "Cartography: Obsolete Star Map Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "outfit (all): Obsolete Star Map"
+		not "obsolete star map"
+	on offer
+		set "obsolete star map"
+		fail
 
 mission "Cartography: Poisonwood Trailblazer"
 	invisible
@@ -602,7 +612,7 @@ mission "Cartography: Diyu Link"
 	on offer
 		conversation
 			scene "outfit/unknown"
-			`Somone wearing a dragon mask approaches you. "You seem lost. Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			`Someone wearing a dragon mask approaches you. "You seem lost. Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
 			choice
 				`	"Hyperlink codes?"`
 			scene "planet/station0ver8"
@@ -830,7 +840,7 @@ mission "Cartography: Quarg Hitchhiker 5"
 				`	"Outcast?"`
 					
 			`	"Yes," replies a Kimek. "Not welcome amongst its fellow Quarg, The Outcast is. Of many crimes, The Outcast is guilty."`
-			`	Upon reflection, you recall that both times you encountered Quash were on pirate worlds. Perhaps Quash wasn't so out of place there afterall.`
+			`	Upon reflection, you recall that both times you encountered Quash were on pirate worlds. Perhaps Quash wasn't so out of place there after all.`
 			``
 			`	An Arach speaks up. "Beware human. Though cast out from its own society The Outcast is, for good reason the Quarg must have."`
 			label questions
@@ -1089,7 +1099,7 @@ mission "Cartography: Rum Cellar Side Trip"
 	on offer
 		clear pokerscore
 		conversation
-			`When you enter the bar, the crowd falls silent upon seeing Quash. The awkward silence is broken when a group playing poker calls out "Quash! Found your way to Rum Celler, did you? You're just in time to join in! How about it?"`
+			`When you enter the bar, the crowd falls silent upon seeing Quash. The awkward silence is broken when a group playing poker calls out "Quash! Found your way to Rum Cellar, did you? You're just in time to join in! How about it?"`
 			`	Quash shakes its head. "I'll abstain. However..." The Quarg turns to you. "Perhaps <first> would like to play."`
 			choice
 				`	"Deal me in."`
@@ -1129,7 +1139,7 @@ mission "Cartography: Rum Cellar Side Trip"
 					goto game
 				`	(Quit.)`
 			`	"Aww, that's too bad." They continue playing without you.`
-					accept
+				accept
 			label bluffhigh
 			action
 				payment -10000
@@ -1452,7 +1462,7 @@ mission "Cartography: Rum Cellar Side Trip"
 				event "link chasm"
 				clear pokerscore
 			scene scene "outfit/map"
-			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstated remarkable skill at that game. I tried playing once before. It did not suit me."`
+			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
 				accept
 			label bust
 			action
@@ -1492,7 +1502,7 @@ mission "Cartography: Chasm Link"
 				random < 10
 	on offer
 		conversation
-			`Somone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			`Someone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
 			choice
 				`	(Buy the codes.)`
 				`	(Refuse.)`

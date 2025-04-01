@@ -1151,7 +1151,7 @@ mission "Coalition Dissension: Rogue Heliarch Saryd (Neutralizer)"
 			near "Sol Saryd" 1 2
 		personality target waiting staying vindictive
 		fleet "Rogue Heliarch (Neutralizer)"
-		dialog `You receive a message from the Heliarch demanding to know why you have taken posession of the <npc>. Report to <destination> to explain yourself.`
+		dialog `You receive a message from the Heliarch demanding to know why you have taken possession of the <npc>. Report to <destination> to explain yourself.`
 		conversation
 			scene "thumbnail/heliarch neutralizer"
 			action
@@ -2084,7 +2084,7 @@ mission "Coalition Dissension: Heliarch Intrigues 2"
 		"heliarch intrigues" ++
 		conversation
 			scene "outfit/unknown"
-			`	You contact Chikee and share the video with him. "Embarassed I am at this video. From when I was still a student this was. Not serious, this is. But a message someone is sending me." Chikee thanks you for telling him about the video and asks you to destroy any copies you have. He pays you <payment> as a token of good faith.`
+			`	You contact Chikee and share the video with him. "Embarrassed I am at this video. From when I was still a student this was. Not serious, this is. But a message someone is sending me." Chikee thanks you for telling him about the video and asks you to destroy any copies you have. He pays you <payment> as a token of good faith.`
 
 event "kimek bramble sales"
 	shipyard "Kimek"
@@ -2382,7 +2382,7 @@ mission "Coalition Dissension: Spaceport Bomber (Arach)"
 			choice
 				`	"Hey, watch where you're going!"`
 				`	"Aren't you going to apologize?"`
-			`	The Arach turns to look at you and gurgles something in his strange gutteral language. You notice that he has no translation device. Before you have a chance to respond he is rushing off, as fast he can, away from the spaceport.`
+			`	The Arach turns to look at you and gurgles something in his strange guttural language. You notice that he has no translation device. Before you have a chance to respond he is rushing off, as fast he can, away from the spaceport.`
 			choice
 				`	Explore the spaceport.`
 			scene "thumbnail/arach courier"
@@ -2445,7 +2445,7 @@ mission "Coalition Dissension: Spaceport Bomber (Arach)"
 			label stop
 			action
 				set "Coalition Dissension: Spaceport Bomber (Arach) stopped"
-			`	The Arach appraches you and gestures back towards the direction of the plaza. "To the plaza you must go. Many questions we have for you. Resist you must not." She is holding one of their weapons, no mere Laser Rifle. A shot from this would probably put a very large hole in you.`
+			`	The Arach approaches you and gestures back towards the direction of the plaza. "To the plaza you must go. Many questions we have for you. Resist you must not." She is holding one of their weapons, no mere Laser Rifle. A shot from this would probably put a very large hole in you.`
 				goto decision
 
 			label obey
@@ -2565,7 +2565,7 @@ mission "Coalition Dissension: Spaceport Bomber (Kimek)"
 			choice
 				`	(Look outside.)`
 			scene "scene/scene-explosion"
-			`	The building next door is on fire! Alarm sirens start blaring and the spaceport exits are quickly sealed off by Riot Containment Barriers. The Heliarch are directing fire suppresion teams to put out the blaze while rescue workers retrieve the burnt remains of those who were caught in the blast. It seems this was a Heliarch facility and most of the victims are their agents. Once the fire is out, the Heliarch begin taking witness statements from everyone.`
+			`	The building next door is on fire! Alarm sirens start blaring and the spaceport exits are quickly sealed off by Riot Containment Barriers. The Heliarch are directing fire suppression teams to put out the blaze while rescue workers retrieve the burnt remains of those who were caught in the blast. It seems this was a Heliarch facility and most of the victims are their agents. Once the fire is out, the Heliarch begin taking witness statements from everyone.`
 			choice
 				`	(Tell them about the Kimek carrying a briefcase.)`
 					goto testify
@@ -2622,6 +2622,33 @@ mission "Coalition Dissension: Spaceport Bomber (Saryd)"
 		dialog `The Heliarchs take the victims of the dissident bombing on <origin> from your ship and give you <payment> in gratitude for your assistance.`
 
 
+conversation "midnight coalition dissension tinderbox"
+	`A large number of ships are waiting in orbit over <planet>. When you hail the spaceport there is no response. Instead, a Heliarch vessel informs you that the spaceport was recently attacked by dissidents and they've temporarily halted all travel to or from the surface while there is civil unrest.`
+	label wait
+	choice
+		`	(Wait until the spaceport reopens.)`
+		`	(Ask for an exception to drop off the Peacekeepers.)`
+			goto request
+	branch "waited"
+		random < 66
+	`	After waiting for an hour, there hasn't been any change. No ships are landing or taking off.`
+		goto wait
+	label "waited"
+	branch "waited waited"
+		random < 50
+	`	You've waited. Nothing is changing. No ships are landing or taking off.`
+		goto wait
+	label "waited waited"
+	`	An hour passes with no change to the situation. No ships are landing or taking off.`
+		goto wait
+	label request
+	`	You send the request for an exception.`
+	choice
+		`	(Wait for a response.)`
+		`	(Send the request again.)`
+	``
+	`	After some delay, the Heliarchs give you permission to land. During this time, you've noticed a large swarm of Plasma Parasites has been drawn to the area by the engine emissions from such a great gathering of ships. If someone were to lose their cool and fire on them...`
+		accept
 
 mission "Coalition Dissension: Tinderbox (Peacekeepers Arach)"
 	job
@@ -2636,33 +2663,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Arach)"
 		government "Heliarch"
 	destination "Ablub's Invention"
 	on enter "Ablub"
-		conversation
-			`A large number of ships are waiting in orbit over <planet>. When you hail the spaceport there is no response. Instead, a Heliarch vessel informs you that the spaceport was recently attacked by dissidents and they've temporarily halted all travel to or from the surface while there is civil unrest.`
-			label wait
-			choice
-				`	(Wait until the spaceport reopens.)`
-				`	(Ask for an exception to drop off the Peacekeepers.)`
-					goto request
-			branch "waited"
-				random < 66
-			`	After waiting for an hour, there hasn't been any change. No ships are landing or taking off.`
-				goto wait
-			label "waited"
-			branch "waited waited"
-				random < 50
-			`	You've waited. Nothing is changing. No ships are landing or taking off.`
-				goto wait
-			label "waited waited"
-			`	An hour passes with no change to the situation. No ships are landing or taking off.`
-				goto wait
-			label request
-			`	You send the request for an exeption.`
-			choice
-				`	(Wait for a response.)`
-				`	(Send the request again.)`
-			``
-			`	After some delay, the Heliarchs give you permission to land. During this time, you've noticed a large swarm of Plasma Parasites has been drawn to the area by the engine emmissions from such a great gathering of ships. If someone were to lose their cool and fire on them...`
-				accept
+		conversation "midnight coalition dissension tinderbox"
 	npc
 		government "Heliarch"
 		system destination
@@ -2705,33 +2706,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Kimek)"
 		government "Heliarch"
 	destination "Remote Blue"
 	on enter "14 Pole"
-		conversation
-			`A large number of ships are waiting in orbit over <planet>. When you hail the spaceport there is no response. Instead, a Heliarch vessel informs you that the spaceport was recently attacked by dissidents and they've temporarily halted all travel to or from the surface while there is civil unrest.`
-			label wait
-			choice
-				`	(Wait until the spaceport reopens.)`
-				`	(Ask for an exception to drop off the Peacekeepers.)`
-					goto request
-			branch "waited"
-				random < 66
-			`	After waiting for an hour, there hasn't been any change. No ships are landing or taking off.`
-				goto wait
-			label "waited"
-			branch "waited waited"
-				random < 50
-			`	You've waited. Nothing is changing. No ships are landing or taking off.`
-				goto wait
-			label "waited waited"
-			`	An hour passes with no change to the situation. No ships are landing or taking off.`
-				goto wait
-			label request
-			`	You send the request for an exeption.`
-			choice
-				`	(Wait for a response.)`
-				`	(Send the request again.)`
-			``
-			`	After some delay, the Heliarchs give you permission to land. During this time, you've noticed a large swarm of Plasma Parasites has been drawn to the area by the engine emmissions from such a great gathering of ships. If someone were to lose their cool and fire on them...`
-				accept
+		conversation "midnight coalition dissension tinderbox"
 	npc
 		government "Heliarch"
 		system destination
@@ -2774,33 +2749,7 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Saryd)"
 		government "Heliarch"
 	destination "Vibrant Water"
 	on enter "Lone Cloud"
-		conversation
-			`A large number of ships are waiting in orbit over <planet>. When you hail the spaceport there is no response. Instead, a Heliarch vessel informs you that the spaceport was recently attacked by dissidents and they've temporarily halted all travel to or from the surface while there is civil unrest.`
-			label wait
-			choice
-				`	(Wait until the spaceport reopens.)`
-				`	(Ask for an exception to drop off the Peacekeepers.)`
-					goto request
-			branch "waited"
-				random < 66
-			`	After waiting for an hour, there hasn't been any change. No ships are landing or taking off.`
-				goto wait
-			label "waited"
-			branch "waited waited"
-				random < 50
-			`	You've waited. Nothing is changing. No ships are landing or taking off.`
-				goto wait
-			label "waited waited"
-			`	An hour passes with no change to the situation. No ships are landing or taking off.`
-				goto wait
-			label request
-			`	You send the request for an exeption.`
-			choice
-				`	(Wait for a response.)`
-				`	(Send the request again.)`
-			``
-			`	After some delay, the Heliarchs give you permission to land. During this time, you've noticed a large swarm of Plasma Parasites has been drawn to the area by the engine emmissions from such a great gathering of ships. If someone were to lose their cool and fire on them...`
-				accept
+		conversation "midnight coalition dissension tinderbox"
 	npc
 		government "Heliarch"
 		system destination
@@ -2831,7 +2780,6 @@ mission "Coalition Dissension: Tinderbox (Peacekeepers Saryd)"
 		dialog phrase "coalition peacekeepers dialog"
 
 
-
 mission "Culminator Ammo [Outfitter]"
 	outfitter
 	minor
@@ -2853,7 +2801,7 @@ mission "Culminator Ammo [Outfitter]"
 		require "Culminator Pod"
 		conversation
 			scene "outfit/culminator storage"
-			`While visiting the outfitter, someone carts in some dusty storage tubes filled with ancient Culminator Torpedos. The sales clerk is busy with a different customer...`
+			`While visiting the outfitter, someone carts in some dusty storage tubes filled with ancient Culminator Torpedoes. The sales clerk is busy with a different customer...`
 			choice
 				`	"Where did you find those?"`
 				`	(Ignore this.)`
@@ -2883,13 +2831,15 @@ mission "Culminator Ammo [Outfitter]"
 			`	The sales clerk hasn't noticed you and is still preoccupied with the other customer...`
 			choice
 				`	"Are you here to sell them?"`
+				`	(Ignore this.)`
+					decline
 			`	"Plan to sell them I do. But wait long it seems I must..."`
 			`	The sales clerk still hasn't noticed you and is now haggling with the other customer...`
 			choice
 				`	"Let me buy them."`
 					goto buy
 				`	"I'm sure they'll be done eventually."`
-			`	You both wait in silence until the sales clerk is ready to handle your tranactions.`
+			`	You both wait in silence until the sales clerk is ready to handle your transactions.`
 				decline
 			label buy
 			`	"Certain this is a good idea, I am not..."`
@@ -2897,7 +2847,7 @@ mission "Culminator Ammo [Outfitter]"
 				`	"I'll pay 1,200,000."`
 					goto end
 				`	"Nevermind."`
-			`	You both wait in silence until the sales clerk is ready to handle your tranactions.`
+			`	You both wait in silence until the sales clerk is ready to handle your transactions.`
 				decline
 			label end
 			action
@@ -3003,12 +2953,7 @@ mission "Culminator Cache [Vibrant Water] 2"
 			choice
 				`	(Crack one open.)`
 					to display
-						not "outfit (flagship installed): Quantum Key Blade"
-						not "outfit (flagship installed): Quantum Dragon Blade"
-						not "outfit (flagship installed): Quantum Phoenix Blade"
-						not "outfit (flagship installed): Quantum Snake Blade"
-						not "outfit (flagship installed): Quantum Tiger Blade"
-						not "outfit (flagship installed): Quantum Turtle Blade"
+						not "flagship attribute: quantum keyblade"
 				`	(Crack one open.)`
 					to display
 						has "flagship attribute: quantum keyblade"
