@@ -940,9 +940,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Jibauni
 
 
-[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 14.37 mb | 2025-04-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
+[Jibauni.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jibauni.zip) | 14.37 mb | 2025-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jibauni/) <br>
 Author: TheGiraffe3 | Category: Races <br>
-[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-04-01) <br>
+[https://github.com/TheGiraffe3/Jibauni](https://github.com/TheGiraffe3/Jibauni) (last commit 2025-04-02) <br>
 
 >Adds the Jibauni and the Diba. The Jibauni are dinosaurs with an aversion to insults, while the Doba are robots controlled by an Alpha...
 >
@@ -2015,9 +2015,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Wherna
 
 
-[Wherna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wherna.zip) | 534.22 kb | 2025-04-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Wherna/) <br>
+[Wherna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Wherna.zip) | 1.37 mb | 2025-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Wherna/) <br>
 Author: TheSilverStone | Category: Races <br>
-[https://github.com/TheSilverStone/Wherna](https://github.com/TheSilverStone/Wherna) (last commit 2025-03-30) <br>
+[https://github.com/TheSilverStone/Wherna](https://github.com/TheSilverStone/Wherna) (last commit 2025-04-02) <br>
 
 >Adds a new alien species called the Wherna.
 >
