@@ -303,9 +303,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Capitalis Major/icon.png' height='100'></img><br>
 
 
-[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2025-01-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
+[Capitalis.Major.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Capitalis.Major.zip) | 1.96 mb | 2025-04-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Capitalis%20Major/) <br>
 Author: Demolish238 | Category: Ships <br>
-[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2025-01-07) <br>
+[https://github.com/demolish238/Capitalis-Major](https://github.com/demolish238/Capitalis-Major) (last commit 2025-04-09) <br>
 
 >A collection of four superheavy ships, each with their own missions to unlock them, all of which are only avaliable after the main story has been finished.
 >
@@ -332,7 +332,9 @@ Darcy Manoel (Aesalon)
 
 https://github.com/Amazinite/Shields-Up (Shields Up) (For Kriegsmacher and Monolith)
 
-Unknown (Detainer Turret, Kar Ik Vot 927)
+Icegriffon (Kar Ik Vot 927)
+
+Unknown (Detainer Turret)
 
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
 
