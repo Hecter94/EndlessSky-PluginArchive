@@ -18,6 +18,8 @@ Darcy Manoel (Aesalon)
 
 https://github.com/Amazinite/Shields-Up (Shields Up) (For Kriegsmacher and Monolith)
 
-Unknown (Detainer Turret, Kar Ik Vot 927)
+Icegriffon (Kar Ik Vot 927)
+
+Unknown (Detainer Turret)
 
 If you have anyfeedback on balance problems or bugs please message me on discord (demolish238#6398)
