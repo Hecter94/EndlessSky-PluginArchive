@@ -199,9 +199,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 2.92 mb | 2025-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 2.95 mb | 2025-04-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-13) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-04-13) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -221,6 +221,11 @@ Since it's often questioned, here is a guide to the bunrodea first contact missi
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-04-13<br>
+added series for the 2 uniques<br>
+added @2xicon<br>
+added support for plugin BunrodeaRebellion (by YouKnowWho)<br>
 <br>
 2025-02-13<br>
 somehow i forgot the @2x images, now they are in<br>
