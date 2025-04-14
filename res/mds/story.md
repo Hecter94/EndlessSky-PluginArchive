@@ -2210,9 +2210,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/planet.map/icon.png' height='100'></img><br>
 
 
-[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 5.0 mb | 2024-12-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
+[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 15.21 mb | 2025-04-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-12-12) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-04-14) <br>
 
 >Planetary map travelling concept work: Land on Memory, visit the outfitter and follow the small story line. See the README for details.
 >
@@ -2222,19 +2222,22 @@ Author: zuckung | Category: Story <br>
 <blockquote>### planet.map
 <br>
 <br>
-Planetary map travelling concept : Land on Memory, visit the outfitter and follow the small story line.<br>
+This is a storyline entirely on a planets surface(with fitting visuals). Available at the outfitter on planet Memory.<br>
 <br>
-This is just a proof of concept of an idea by Epsil-Astra.<br>
+This is a proof of concept of an idea by Epsil-Astra.<br>
 Basically a planet in a starsystem is a wormhole to a starsystem with changed background, to look like a ground map. The planets there look like cities. The galaxy background is a single whole planet. It simulates travelling on a planet you've landed on. Other starsystems act as different bioms, like forest, desert, sea.<br>
-A small storyline got added.<br>
+Beside showing the concept there is a storyline, 9 cities/outpost, 9 areas with 3 different bioms.<br>
 <br>
-As in the spirit of Epsil-Astra, feel free to modify/use this plugin for your own content creation.<br> 
-<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/planet.map01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/planet.map02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-04-14<br>
+added @2x images<br>
+changed dragon image<br>
+added spaceport news<br>
+renamed files<br>
+new icons<br>
 <br>
 2024-11-11<br>
 fixed error<br>
