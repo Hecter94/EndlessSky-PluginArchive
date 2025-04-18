@@ -792,9 +792,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/quarg.farm/icon.png' height='100'></img><br>
 
 
-[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 26.42 kb | 2025-01-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
+[quarg.farm.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/quarg.farm.zip) | 109.55 kb | 2025-04-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/quarg.farm/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-27) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-04-18) <br>
 
 >Adds a new system Saquerver (between human and coalition space) where you can farm a new Quarg faction. Also the death sentence from all other Quarg got removed. See the readme for details.
 >
@@ -810,6 +810,12 @@ The system "Saquerver" lies between "Serquergen" and "Ablub". The usual-sized Qu
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-04-18<br>
+added icon@2x<br>
+changed plugin.txt<br>
+typo fixes(by snoggles)<br>
+adjusted system "Saquerver" better to not interfere with avgi storyline<br>
 <br>
 2025-01-27<br>
 adjusted system "Saquerver" position to not collide with 0.10.11 additions<br>
