@@ -923,9 +923,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/QOL-Outfits/icon.png' height='100'></img><br>
 
 
-[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2024-02-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
+[QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.67 mb | 2025-04-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2024-02-23) <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2025-04-19) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
