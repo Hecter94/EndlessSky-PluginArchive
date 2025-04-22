@@ -27,7 +27,21 @@ mission "Storm Seeker Raider 1"
 				accept
 	on accept
 		fail
-		
+
+mission "Storm Seeker Raider Reminder"
+	landing
+	non-blocking
+	name "Salvage: Raider"
+	description "Bring a Jump Drive in your cargo to a spaceport in the Dirt Belt or the South. Have 145 open bunks for new crew members."
+	destination "Season's End"
+	to complete
+		never
+	to offer
+		has "Storm Seeker Raider 1: failed"
+		not "Storm Seeker Raider 2: offered"
+	to fail
+		has "Storm Seeker Raider 2: active"
+
 mission "Storm Seeker Raider 2"
 	name "Salvage: Raider"
 	description "Bring 145 crew and a Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
@@ -37,14 +51,10 @@ mission "Storm Seeker Raider 2"
 		attributes "dirt belt" "south"
 	destination "Season's End"
 	passengers 145
+	blocked "Passengers: You need <capacity> to accommodate the crew for the abandoned Raider."
 	to offer
-		has "Storm Seeker Raider 1: failed"
+		has "Storm Seeker Raider Reminder: active"
 		has "outfit (cargo): Jump Drive"
-		or
-			not "Randomize Storm Seeker Raider 2"
-			and
-				has "Randomize Storm Seeker Raider 2"
-				random < 20
 	on offer
 		conversation
 			scene "thumbnail/raider"
@@ -56,17 +66,20 @@ mission "Storm Seeker Raider 2"
 					defer
 				`	Meh. I don't really want to go through the trouble.`
 					decline
-	on defer
-		set "Randomize Storm Seeker Raider 2"
+	on accept
+		fail "Storm Seeker Raider Reminder"
 	on visit
 		conversation
 			scene "thumbnail/raider"
 			`You don't have enough crew members or spare Jump Drives to salvage this ship.`
 	to complete
 		has "outfit (cargo): Jump Drive"
+	on abort
+		clear "Randomize Storm Seeker Raider 2"
 	on complete
 		give ship "Korath Raider (Torpedo)" "Bloody End"
 		outfit "Jump Drive" -1
+		clear "Randomize Storm Seeker Raider 2"
 		conversation
 			scene "thumbnail/raider"
 			`As soon as you arrive, your crew gets to work on installing a jump drive onto the abandoned raider and cleaning out the previous... mess. Once installed, the ship is ready to launch.`
