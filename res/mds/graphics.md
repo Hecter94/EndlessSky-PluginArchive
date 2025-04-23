@@ -944,10 +944,16 @@ Author: Cat-Lady | Category: Graphics <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Swizzle Player
+
+This is a small plugin that allow to change player's swizzle in "Endless Sky" - and keep the colour after ES get updates that change goverments.txt data file.
+
+![Swizzle Player Image](/swizzle-player/icon.png?raw=true "Swizzle Player Image")
 
 
-[h1]Installing[/h1]
+## Installing
 
 Check:
 https://github.com/Cat-Lady/swizzle-player/releases
@@ -955,35 +961,33 @@ https://github.com/Cat-Lady/swizzle-player/releases
 ...for latest, pre-packaged version.
 
 
-[b]1.[/b] Unpack [i]swizzle-player[/i] to your ES plugins folder. Be sure that you have single [i]swizzle-player[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
+**1.** Unpack ``swizzle-player`` to your ES plugins folder. Be sure that you have single ``swizzle-player`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[code](...)/plugins/swizzle-player/(.../data/, /images/ and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/swizzle-player/swizzle-player/(...)[/code]
+```(...)/plugins/swizzle-player/(.../data/ and other stuff)```
 
 
+It **won't** work if the directory structure will be anything like:
 
-[h1]Author[/h1]
-
-[list][*][b]Cat Lady[/b][/list]
-
+```(...)/plugins/swizzle-player/swizzle-player/(...)```
 
 
-[h1]License[/h1]
+## Author
 
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+* **Cat Lady**
 
 
+## License
 
-[h1]Acknowledgments[/h1]
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game
 
-[url=https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot]James the Bot[/url] from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
+![James the Bot](https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot) from "endless Sky" discord forum; For easy way to check swizzle numbers, the bazzilion times I needed to do it in the past.
 
 Iggy Pop for singing "She want's to be your James Bot" (and don't even try to convince me that he meant something else).
+
 </blockquote>
 </details>
 
