@@ -568,7 +568,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Hilo2000.Arena.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Hilo2000.Arena.zip) | 28.72 kb | 2023-12-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Hilo2000%20Arena/) <br>
 Author: Mielo Symeonidis | Category: Cheats <br>
-[https://github.com/Hilo2000/arena/blob/main/](https://github.com/Hilo2000/arena/blob/main/) (last commit 2023-12-27) <br>
+[https://github.com/Hilo2000/arena/blob/main/](https://github.com/Hilo2000/arena/blob/main/)  <br>
 
 >This plugin adds an arena with multiple hard and easy challenges.
 >
