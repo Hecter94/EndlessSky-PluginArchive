@@ -1,9 +1,9 @@
 
-All Plugins (596)
+All Plugins (597)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (142) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (41)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (142) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
 
 ---
@@ -171,7 +171,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Endless Sky Gauntlet
 
 
-[Endless.Sky.Gauntlet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.Gauntlet.zip) | 6.36 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Sky%20Gauntlet/) <br>
+[Endless.Sky.Gauntlet.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Sky.Gauntlet.zip) | 13.62 mb | 2025-04-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Sky%20Gauntlet/) <br>
 Author: Galaucus | Category: N/A <br>
 [https://github.com/Galaucus/Endless-Sky-Gauntlet](https://github.com/Galaucus/Endless-Sky-Gauntlet) (last commit 2020-10-31) <br>
 
