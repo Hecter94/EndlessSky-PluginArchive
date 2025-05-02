@@ -6,7 +6,7 @@
 # - Player spends some money on lawyer (depending on choices made).
 # - Marital status:
 #   - Player stays unmarried (decline at any point)
-#   - Player gets married to a person that just wants transport to some place (for free).
+#   - Player gets married to a person that just wants transport to some place (for free). (Giant Squirrel, ends in Hai space?)
 #   - Player gets married to a person that acts as additional crew member (gender neutral name?)
 #   - Player gets married to a demanding person that bosses the player around.
 #   - Player gets married to an extremely rich person that dies soon after and leaves the player a fortune.
@@ -22,36 +22,77 @@
 #   - Clause about mariage contract costs (who will bear those costs).
 #   - Clause about the syndicate (player will or will not work there?)
 
-mission "Speeddating (Syndicate Style)"
+
+# Marriage of Convenience => Just marry for the fun of it.
+
+
+
+# Paths:
+# True Love => Queue for matching to others
+# Faithfull => Queue for matching to others
+# No More Lonely => Queue for matching to others
+# Hot and Steamy => Queue for matching to others
+# Instant Marriage => Queue for matching to others
+# In it for the money => Long Queue, matching to other 5.
+
+
+
+#conditions:
+#	married == 0 (not married)
+#	married == 1 (married, partner died)
+
+
+# Mission starts with a set of choices, ends with the player married to some Hai that just wants to go home.
+
+mission "Matchmaking 1 (Syndicate Style)"
 	to offer
 		never
+		knows: Hai
 	on offer
 		conversation
-			`One of the spaceport bars is crowded with people. Do you want to check it out?`
+			`One of the bars near the spaceport is crowded with people. Do you want to check it out?`
 			choice
 				"(Yes, let`s have a look.)"
 				"(No, crowded bars is not my thing.)"
 					decline
-			`A man in a clown-costume and a syndicate logo on his chest greets you when you enter the bar; "welcome to match and marry!"`
-			`To get to the main area, you will need to walk through one of the arcs here."`
-			`There are a number of arcs you can choose from.`
+			`A man in a clown-costume and a Syndicate logo on his chest greets you when you enter the bar; "Welcome to match and marry!"`
+			`	We will find a perfect partner for you for just 500 credits."
+			`	Note that you are not allowed to participate if you are already married."`
+			`	 Do you wish to proceed?"`
 			choice
-				`(walk through 'True Love', an arc decorated with roses)"`
-				`(walk through 'No More Lonely', an arc decorated with photos of happy people"`
+				`"Yes, I'm participating."`
+				`"I'm not looking for a partner, but I'm a spaceship captain.`
+					goto business
+				`"No, this is not for me."`
+					decline
+			`Excellent, `
+
+			`You pay 500 credits, and the man points you to a couple of different doors; "Pass one of the doors to start the process."`
+			choice
+				`(walk through the door labelled 'True Love', it is decorated with roses)"`
+					goto truelove
+				`(walk through the door labelled 'Faithfull', it is decorated with a pictures of two hands holding eachother)`
+					goto truelove
+				`(walk through the door labelled 'No More Lonely', it is decorated with photos of happy people)"`
 					goto nolonely
-				`(walk through 'Instant Marriage', an arc decorated with rings)"`
+				`(walk through the door labelled 'Religious', it is decorated with various religious symbols)`
+					goto religious
+				`(walk thorugh the door labelled 'Hot and Steamy', it is decorated with a photo of a whirlpool)`
+					goto hot
+				`(walk through the door labelled 'In it for the money', it is decorated with piles of credit-chips.)`
+					goto money
+				`(walk through the door labelled 'Instant Marriage', it is decorated with 2 rings)"`
 					goto ceremony_second
-				`(walk through 'Direct Divorce', an arc decorated with broken chains)"`
-				`(walk through 'Business Deals', a black arc with little to no decoration)"`
 				`(tell the man that you prefer to transport passengers over speeddating)`
-				`(leave the place, this is not for you)`
+				`(leave this place, this is not for you)`
 					decline
 			label truelove
 			`You walk into a room with romantic music and a small video screen. The room itself feels quite cold though.`
-			`A video starts playing and an extravagantly dressed lady appears on the screen; "Welcome! Welcome! It is so great to have a believer in true love here.`
-			`	"We have done years of research into the perfect matchmaking for true lovers."`
-			`	"If you trust our research (as much as you believe in true love), then please take the door on the right"`
-			`	"If your faith in true love is not that big, or in the unlikely event that you don't trust our research, then take the door on the left."`
+			`Both the 'True Love' door and the 'Faithfull' door appear to lead into this room.`
+			`A video starts playing and an extravagantly dressed lady appears on the screen; "Welcome! Welcome! It is so great to have a true believer in marriage here.`
+			`	"We have done years of research into the perfect matchmaking."`
+			`	"If you trust our research (as much as you believe in faithfullness or true love), then please take the door on the right"`
+			`	"If your faith or love is not that big, or in the unlikely event that you don't trust our research, then take the door on the left."`
 			choice
 				"(door on the right, unconditional trust)"
 					goto ceremony_second
@@ -83,17 +124,25 @@ mission "Speeddating (Syndicate Style)"
 				`"I'm not going to tell you."`
 			label business_purpose
 			`The lawyer responds; "You came in here visiting me. You tell me what you want. How can I help you? (This question just cost you 100 credits.)"`
-			#payment -100
 				goto business_main
 			label ceremony_second
 			`You walk into a small room and need a moment to adjust to the light.`
-			`Somebody appears to be standing besides you and you see a government offical in front you facing towards you.`
+			`Somebody appears to be standing besides you and you see a government offical in front you.`
 			`The official asks you; "Captain <first> <last>, do you take the person next to you to be your official partner in life?"`
 			choice
 				`"Yes I do."`
-				`"Hey, this is going a bit too fast for me!"`
+				`"Hey, this is going too fast for me!"`
 				`"Don't I need to know if my partner is a man or a woman?"`
-				`"My new partner already has my lastname?"`
+				`"Don't I get to know the person next to me first?"`
 				`"No, I don't!"`
 			`The official responds very uninterrested; "Whatever, you already made your choice when you walked through that door."`
 			`	"Congrats, you are now partners for life, or until you divorce, whatever comes first."`
+			`You look at the person next to you, and it turns out to be a giant squirrel.`
+			`The next couple to be married walks into the room and you recognize a spaceship captain whose old outdated Firebird is parked next to your ship.
+			`That captain appears to be getting married to a very handsome, well-dressed, possibly somewhat naive, and likely very rich, lady.`
+			`The captain pushes both you and the squirrel out of the room, apparently in a hurry to get married.`
+
+
+			`There are two long queues behind the 'Hot and Steamy' and 'In it for the money' doors. Those queues are filled with various kinds of people; some old men that are missing some teeth, young girls dressed tightly that seem more interrested in make-up and credit-chips than in the people around them, persons dressed in torn clothes and some people that smell quite badly.`
+			`All people comming from all other doors appear to be merging into a single queue, and there only seems to be a single goodlooking man in this queue.`
+			`The man in front of the short queue and an elderly lady from one of the long queues go together into the next room.`
