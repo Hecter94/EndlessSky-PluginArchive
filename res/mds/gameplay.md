@@ -1,7 +1,7 @@
 
-All Plugins (597)
+All Plugins (599)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (52) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (49)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (50)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (142) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -10,7 +10,7 @@ All Plugins (597)
 
 ## Gameplay
 
-<p>52 plugins in this category.<p>
+<p>53 plugins in this category.<p>
 
 
  
@@ -862,6 +862,47 @@ merged this plugin with the plugin devil-run.unhidden<br>
 bug fixes<br>
 <br>
 2024-04-16<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### highrollers.ltd
+<img src='../../Working/highrollers.ltd/icon.png' height='100'></img><br>
+
+
+[highrollers.ltd.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/highrollers.ltd.zip) | 1.02 mb | 2025-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/highrollers.ltd/) <br>
+Author: zuckung | Category: Gameplay <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-03-14) <br>
+
+>This plugin adds some casino space stations where you can gamble. See the README for details.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### highrollers.ltd
+<br>
+<br>
+This plugin adds some casino space stations where you can gamble.<br>
+<br>
+Adds casino space stations to Ruchbah, Tarazed, Rutilicus, and Epsilon Leonis. On each station's job board you can start six luck based games (Baccarat, Blackjack, Poker, Roulette, Craps, and Sic Bo).<br>
+Every won round has a chance of increasing your skill for this special game. The skill levels go up to 500 which means you have a 5% higher chance of winning a round on max level. The games have different start winning chances from 47% to 50%.  I.e. with max poker skill, you have 55% chance to win a poker round. The table limits range from 5,000 to 100,000 credits and are randomized. After around 160 played rounds you get tired and the games ends (for this day).<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2025-03-14<br>
+typo fix (thx zanano)<br>
+added 30 cargo/passenger jobs to/from the casinos<br>
+<br>
+2025-03-11<br>
 initial release<br>
 
 
