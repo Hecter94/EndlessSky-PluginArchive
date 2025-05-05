@@ -1502,7 +1502,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Titans
 
 
-[Titans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Titans.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Titans/) <br>
+[Titans.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Titans.zip) | 10.43 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Titans/) <br>
 Author: N/A | Category: Overhauls <br>
 N/A[]()  <br>
 
