@@ -811,7 +811,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Fallen.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fallen.zip) | 2.62 mb | 2023-05-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fallen/) <br>
 Author: Michael Feather | Category: Overhauls <br>
-[https://github.com/MrmanNaqa/Endless_Sky_PRP_Fallen](https://github.com/MrmanNaqa/Endless_Sky_PRP_Fallen)  <br>
+N/A[]()  <br>
 
 >This mod starts you on an ancient space station that was built by a fallen alien empire. You are the last member of this alien species, and the AI that awoke you has informed you that you have been tasked with reconquering the galaxy. It's a good thing the station you're on doubles as a ship construction yard.
 >
@@ -819,7 +819,7 @@ Author: Michael Feather | Category: Overhauls <br>
 
 
 Status: revival project with fixes <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
