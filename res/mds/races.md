@@ -21,7 +21,7 @@ All Plugins (600)
 <img src='../../Working/Adamas Project/icon.png' height='100'></img><br>
 
 
-[Adamas.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adamas.Project.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Adamas%20Project/) <br>
+[Adamas.Project.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Adamas.Project.zip) | 17.86 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Adamas%20Project/) <br>
 Author: toiletthings | Category: Races <br>
 [https://github.com/kestrel1110/Adamas-Project](https://github.com/kestrel1110/Adamas-Project) (last commit 2023-07-05) <br>
 
@@ -40,7 +40,7 @@ https://github.com/kestrel1110/Adamas-Project
 </details>
 
 Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
