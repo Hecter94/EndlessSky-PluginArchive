@@ -795,7 +795,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Eternals.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Eternals.zip) | 16.49 mb | 2024-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Eternals/) <br>
 Author: comnom | Category: Races <br>
-[https://github.com/comnom/Eternals](https://github.com/comnom/Eternals)  <br>
+N/A[]()  <br>
 
 >It adds two new factions northeast of Unfettered space, the Valuutians and the Lost Ones.
 >
@@ -809,7 +809,7 @@ Author: comnom | Category: Races <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---

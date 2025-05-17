@@ -794,14 +794,15 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Pug-Hud.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug-Hud.zip) | 458.21 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pug-Hud/) <br>
 Author: comnom | Category: Graphics <br>
-[https://github.com/comnom/es-huds](https://github.com/comnom/es-huds)  <br>
+N/A[]()  <br>
 
 >adds a HUD
+>
 
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
