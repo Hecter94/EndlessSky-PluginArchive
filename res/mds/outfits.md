@@ -1,7 +1,7 @@
 
-All Plugins (600)
+All Plugins (602)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (50)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -10,7 +10,7 @@ All Plugins (600)
 
 ## Outfits
 
-<p>50 plugins in this category.<p>
+<p>52 plugins in this category.<p>
 
 
  
@@ -470,6 +470,50 @@ initial release<br>
 </details>
 
 Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Fundamental.Outfit.Expansion
+<img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
+
+
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 930.1 kb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+Author: (many authors) | Category: Outfits <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-05-19) <br>
+
+>A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Fundamental Outfit Expansion ###
+
+Other fundamental content can be found in the plugin recommendation list.
+
+**Authors:**
+
+| Outfit | Creator(s) | Origin(s) | Note |
+|--------|---------|---------|-----------------|
+| Barrage Blaster | [Loyse](https://github.com/loiseeer) | [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) | Turret. |
+| Flak Cannon | [Loyse](https://github.com/loiseeer) | [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) | Turret. Consumes ammo. |
+| Heavy Blasters | [1010todd](https://github.com/1010todd) | [Heavy Blaster](https://github.com/endless-sky/endless-sky/files/14560119/Heavy.Blaster.zip) | Gun and Turret. Overhauled stats. |
+| Particle Turrets | [J.C.Hamlin](https://github.com/jchamlin) | [Marauder Bactrian](https://github.com/jchamlin/marauder-bactrian) | Single and Dual. Overhauled stats. |
+| Shipwright Gear | Darcy Manoel, [Hurleveur](https://github.com/Hurleveur) | [Fluff](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#fluff), [Unfettered Innovations](https://github.com/Hurleveur/unfettered-innovations) | Stats are a conceptual mix-up of D. Manoel's stats from Fluff, and those of Hurleveur's Repair Team from Unfettered Innovations. |
+
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2025-05-18 | 1.0.0 | Initial publication with Barrage Blaster, Flak Cannon, Heavy Blasters, Particle Turrets, Shipwright Gear. |
+
+</blockquote>
+</details>
+
+Status: in progress <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1210,7 +1254,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 931.02 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 823.26 kb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
 [https://github.com/TheronEpic/theronepic-solar-sails](https://github.com/TheronEpic/theronepic-solar-sails) (last commit 2020-10-30) <br>
 
@@ -1220,6 +1264,45 @@ Author: TheronEpic | Category: Outfits <br>
 
 
 Status: Playable on 0.9.14, 0.9.15 Continuous. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Solar.Sails
+<img src='../../Working/Solar.Sails/icon.png' height='100'></img><br>
+
+
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 823.26 kb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
+Author: TheronEpic | Category: Outfits <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2025-05-19) <br>
+
+>Epic engines, which are cheap, have only 25% of their size in mass, and consume negligible amounts of energy. Used in Human and Coalition space.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Solar Sails ###
+
+**Author: [TheronEpic](https://github.com/TheronEpic)**
+
+An overhaul and re-publication of TheronEpic's [Solar Sails](https://github.com/TheronEpic/theronepic-solar-sails). Since the last update of the plugin in October 2020 there have been made massive changes in ES considering engines, so a stat overhaul was overdue. Also various syntax bugs had to be hunted down.
+
+It seems, that TheronEpic could not complete the work on this plugin, so future updates of this re-publication will fill some gaps, e.g. considering fleets and variants.
+
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2025-05-18 | 1.0.0 | Overhaul and Re-publication. |
+| 2020-10-30 | - | Last Update of the original *Solar Sails* plugin. |
+
+</blockquote>
+</details>
+
+Status: in progress <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

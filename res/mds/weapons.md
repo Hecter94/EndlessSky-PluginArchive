@@ -1,7 +1,7 @@
 
-All Plugins (600)
+All Plugins (602)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (50)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 240.96 kb | 2025-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 282.91 kb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-03) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-19) <br>
 
 >Next-generation Flamethrower, as gun and turret. For those who like it hot.
 >
@@ -129,12 +129,14 @@ An overhaul and re-publication of [Flamethrower-Turret-1.1.0](https://github.com
 
 Therefore, N.Barry's turret was combined with the old vanilla Flamethrower image it was based on to create a next-generation Flamethrower which burns hotter -- the Bunsen Burner. Now with *blue* flames. Naturally, as we are used to, one has to complete Barmy's weapon test mission, written by N.Barry, to unlock it.
 
+Also Darcy Manoel's H2H flamethrower, which is based on the same design, was added as the Bunsen Torch. Available during the war, it will be banned afterwards as inhumane and only be obtainable on Pirate-ruled planets.
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
-| 2025-05-04 | 1.0.2 | Metadata files fixes. |
+| 2025-05-18 | 1.1.0 | Added H2H Bunsen Torch. |
+| 2025-05-03 | 1.0.2 | Metadata files fixes. |
 | 2025-04-28 | 1.0.1 | Readme and copyright fixes. |
 | 2025-04-28 | 1.0.0 | Overhaul and Re-publication as *Bunsen Burner*. |
 | 2021-01-26 | - | Last Update of the *Flamethrower Turret* plugin. |

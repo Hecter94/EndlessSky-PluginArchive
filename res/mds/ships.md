@@ -1,7 +1,7 @@
 
-All Plugins (600)
+All Plugins (602)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (50)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -258,9 +258,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Blended Ships/icon.png' height='100'></img><br>
 
 
-[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.57 mb | 2025-02-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
+[Blended.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Blended.Ships.zip) | 7.57 mb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Blended%20Ships/) <br>
 Author: mOctave | Category: Ships <br>
-[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2025-02-02) <br>
+[https://github.com/mOctave/blended-ships](https://github.com/mOctave/blended-ships) (last commit 2025-05-19) <br>
 
 >Blended Ships is the realistic spliced ship plugin. All these ships have thumbnails, believeable stats, and actual potential uses! There is also a greater variety of civilian ships available, to support various playstyles.
 >
@@ -1147,9 +1147,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Korunak.Defense.Drones/icon.png' height='100'></img><br>
 
 
-[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 540.5 kb | 2025-05-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
+[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 540.04 kb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
 Author: Starmlerp | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-04) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-19) <br>
 
 >Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only. Adds 4 ships.
 >
@@ -1175,6 +1175,7 @@ The basic *Defense Drone* is available from the beginning, the *Nock* in-war, th
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-05-18 | 1.0.3 | Cheapened the drones reasonably. Adjusted icon. |
 | 2025-05-04 | 1.0.2 | Event fix. Gun- and Enginepoint corrections. |
 | 2025-05-04 | 1.0.1 | Sprite de-hazification. Drone repricing. |
 | 2025-05-03 | 1.0.0 | Overhaul and Re-publication as *Korunak Defense Drones*. |
@@ -1317,9 +1318,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Louise.Conglomerate.Shipyards/icon.png' height='100'></img><br>
 
 
-[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.54 mb | 2025-05-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
+[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.51 mb | 2025-05-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
 Author: Loyse | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-04) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-05-19) <br>
 
 >The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Adds 6 ships and 2 weapon systems.
 >
@@ -1331,14 +1332,19 @@ Author: Loyse | Category: Ships <br>
 
 **Author: [Loyse](https://github.com/loiseeer)**
 
+**Requires**: Fundamental.Outfit.Expansion
+
 An overhaul and republication of the [More Ships Plugin](https://github.com/loiseeer/The-more-ships-plugin). This jewel had to be polished regarding the stats, as it was updated last in May 2020. Luckily Loyse gave permission, and the idea to call the shipyard *Louise*.
 
-Lore-wise the Louise Conglomerate is one of the Syndicate's megacorps with activities in many sectors. Its shipyards focus on ships for the harsh pirate-infested systems and therefore are centered around robustness and agility, at that keeping a remarkable sense for beautiful design.
+Lore-wise the Louise Conglomerate is one of the Syndicate's megacorps with activities in many sectors. Its shipyards focus on ships for the harsh pirate-infested systems and therefore are centered around robustness and agility, at that keeping a remarkable sense for beautiful design. Preferred shipyard of the Space Hansa, which despises Pirates, and has no trust at all in the ability of any government to solve this long-lasting issue.
+
+Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and signed a contract for a licensed production of 3 ship models on Makerplace, equipped with Hai technology, in an ambitious advance to mess up business of Imo Loo Meer Corporation and the Mon Ki i'Hiya Consortium.
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to FOE. Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on pirate Planets. Added shipyard on Makerplace in Hai space. |
 | 2025-05-04 | 1.0.3 | Add @2x images. |
 | 2025-05-03 | 1.0.2 | Metadata file fixes. |
 | 2025-04-27 | 1.0.1 | Fixes considering stand-alonization. |
