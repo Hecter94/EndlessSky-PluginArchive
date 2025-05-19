@@ -1,14 +1,20 @@
-# Copyright (c) 2016 by Nick Barry
-#
-# Endless Sky is free software: you can redistribute it and/or modify it under the
-# terms of the GNU General Public License as published by the Free Software
-# Foundation, either version 3 of the License, or (at your option) any later version.
-#
-# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
-# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
 event "bunsen burner available"
 	outfitter "Kraz Advanced"
 		add "Bunsen Burner"
 		add "Bunsen Burner Turret"
+		add "Bunsen Torch"
+
+mission "Bunsen Torch Banned"
+	landing
+	invisible
+	to offer
+		has "event: pug flee"
+	on offer
+		event "bunsen torch banned"
+		fail
+
+event "bunsen torch banned"
+	outfitter "Kraz Advanced"
+		remove "Bunsen Torch"
+	outfitter "Pirate Advanced"
+		add "Bunsen_Torch"
