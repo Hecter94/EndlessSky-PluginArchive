@@ -1,0 +1,105 @@
+# Copyright (c) 2025 by Loymdayddaud
+#
+# Rumskib is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Rumskib is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+mission "Rumskib: start Quad Plasma Turret timer"
+	landing
+	invisible
+	to offer
+		has "event: plasma turret available"
+	on offer
+		event "rumskib: quad plasma turret available" 360 560
+		fail
+
+mission "Rumskib: start Single Plasma Turret timer"
+	landing
+	invisible
+	to offer
+		has "event: plasma turret available"
+	on offer
+		event "rumskib: single plasma turret available" 60 180
+		fail
+
+event "rumskib: quad plasma turret available"
+	outfitter "Kraz Advanced"
+		"Quad Plasma Turret"
+
+event "rumskib: single plasma turret available"
+	outfitter "Kraz Advanced"
+		"Single Plasma Turret"
+
+mission "Rumskib: Quad Plasma Turret available"
+	landing
+	invisible
+	source
+		near "Kraz" 100
+	to offer
+		has "event: rumskib: quad plasma turret available"
+	on offer
+		conversation
+			`When you land, a message pops up on your communicator from Barmy Edward. A photograph is enclosed as well. The message reads:`
+			scene "outfit/plasma turret quad"
+			`	Well, Captain. Our team recently perfected an improved design with four Plasma Cannons instead of just two, mounted on a turret. Due to its size nobody has bought one yet, but I look forward to seeing whether you'll do so!`
+			`				Sincerely,`
+			`						B. Edward Tivrusky`
+			`						Chief Offensive Engineer`
+			`						Kraz Cybernetics`
+				decline
+
+
+
+mission "Rumskib: Single Plasma Turret available"
+	landing
+	invisible
+	source
+		near "Kraz" 100
+	to offer
+		has "event: rumskib: single plasma turret available"
+	on offer
+		conversation
+			`When you land, a message pops up on your communicator from Barmy Edward. A photograph is enclosed as well. The message reads:`
+			scene "outfit/plasma turret single"
+			`	Well, Captain. I have now perfected a redesign of the Plasma Turret with one Plasma Cannon. Due to its decreased usefulness nobody has bought one yet, but I look forward to seeing whether you'll do so!`
+			`				Sincerely,`
+			`						B. Edward Tivrusky`
+			`						Chief Offensive Engineer`
+			`						Kraz Cybernetics`
+				decline
+
+
+
+mission "Rumskib: Add Quad Gat Turret"
+	outfitter
+	invisible
+	source
+		attributes "pirate"
+	to offer
+		has "event: war begins"
+	on offer
+		event "rumskib: add quad gat turret" 0
+		conversation
+			scene "outfit/gat turret quad"
+			`When you walk into the outfitter, you notice the proprietor proudly polishing the quadruple barrels of a new Gatling Turret. "Ho, Captain!" he calls. "Come buy the new Quad Gatling Turret! Only one hundred and eighty thousand credits, for enough firepower to destroy any hostile ship!"`
+			`	The pirates must have joined the arms race when the rebellion started.`
+				decline
+
+
+
+mission "Rumskib: Add Swan to sales"
+	landing
+	invisible
+	to offer
+		has "license: Remant Capital"
+	on offer
+		event "rumskib: remnant: add swan to sales" 10
+		fail
+
+event "rumskib: remnant: add swan to sales"
+	shipyard "Remnant"
+		add "Swan (Rumskib)"

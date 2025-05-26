@@ -11,10 +11,35 @@
 
 substitutions
 	"<starting planet>" "New Boston"
-	"<starting planet>" "Greenwater"
-		has "hai space start"
+	"<starting planet>" "Midgard"
+		has "start: deep"
+	"<starting planet>" "Mainsail"
+		has "start: paradise"
 	"<starting planet>" "Earth"
-		has "rumskib: human mining start"
+		or
+			has "rumskib: human mining start"
+			has "start: syndicate"
+	"<starting planet>" "Greenwater"
+		has "start: hai"
+	"<starting planet>" "Glaze"
+		has "rumskib: free worlds start"
+	"<starting planet>" "Gagarin"
+		has "rumskib: pirate start"
+	"<home system>" "Rutilicus"
+	"<home system>" "Aludra"
+		has "start: deep"
+	"<home system>" "Alhena"
+		has "start: paradise"
+	"<home system>" "Sol"
+		or
+			has "rumskib: human mining start"
+			has "start: syndicate"
+	"<home system>" "Fah Soom"
+		has "start: hai"
+	"<home system>" "Aldhibain"
+		has "rumskib: free worlds start"
+	"<home system>" "Belenos"
+		has "rumskib: pirate start"
 
 start "rumskib: human mining start"
 	name "Mining Start"
@@ -38,8 +63,10 @@ start "rumskib: human mining start"
 	set "license: Pilot's"
 	set "species: human"
 	set "human space start"
-	set "Rumskib: Free Worlds Start Intro [0]: offered"
 	set "rumskib: human mining start"
+	set "start: earth"
+	set "Rumskib: Free Worlds Start Intro [0]: offered"
+	set "Intro [0]: offered"
 
 
 conversation "rumskib human mining start"
@@ -128,6 +155,8 @@ start "rumskib: lampyrid start"
 	set "license: Pilot's"
 	set "species: human"
 	set "human space start"
+	set "rumskib: lampyrid start"
+	set "start: lampyrid"
 	ship "Lampyrid Mk. II" "Serenity"
 
 
@@ -214,6 +243,7 @@ start "rumskib: free worlds start"
 	planet "Glaze"
 	date 16 11 3013
 	on display
+		name "???"
 		description "This start is locked."
 	to reveal
 		has "rumskib: free worlds start unlocked"
@@ -239,6 +269,7 @@ start "rumskib: free worlds start"
 	set "license: Pilot's"
 	set "species: human"
 	set "rumskib: free worlds start"
+	set "start: glaze"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
 
@@ -253,3 +284,45 @@ conversation "rumskib free worlds start"
 	name
 	`	The elevator is so well-tuned that you do not even realize it is moving until it has deposited you back in the lobby. But as you leave the bank, you are smiling. This crazy adventure suddenly feels real to you. You are going to do it. You are finally going to get off this planet.`
 	`	Compared to the bank, you feel much more at home in the shipyard, walking among the rusted out hulks and newer ships that gleam in the sunlight. You smell grease and dirt and rocket fuel; wonderful smells. There are few ship models within your price range. Which one you choose will determine your future...`
+
+
+
+start "rumskib: pirate scrapper start"
+	name "Scrapper Start"
+	description `After many long years of working your way up in a pirate lair, you have finally managed to steal a ship from one of the warlords that plague Gagarin. Now, finally, you can get out of the area and be free!`
+	thumbnail "scene/scrapper start"
+	system "Belenos"
+	planet "Gagarin"
+	date 16 11 3013
+	on display
+		name "???"
+		description "This start is locked."
+	to reveal
+		has "rumskib: pirate start unlocked"
+	on reveal
+		name "Scrapper Start"
+		description `After many long years of working your way up in a pirate lair, you have finally managed to steal a ship from one of the warlords that plague Gagarin. Now, finally, you can get out of the area and be free!`
+		system "Belenos"
+		planet "Gagarin"
+		date 16 11 3013
+		credits 1000
+	to unlock
+		has "rumskib: pirate start unlocked"
+	conversation "rumskib pirate start"
+	account
+		credits 1000
+		score 200
+	set "species: human"
+	set "rumskib: pirate start"
+	set "start: ccor"
+	set "Intro [0]: offered"
+	set "Intro [0]: declined"
+	ship "Scrapper" "Blood's Wrath"
+
+conversation "rumskib pirate start"
+	scene "scene/scrapper start"
+	`As you take a final look at your new ship before entering the cockpit, you hear shouts behind you. Turning, you see that a group of burly figures is rushing toward the door of Blood's Wrath, preparing to seize the Scrapper back.`
+	`	You hurry inside and smash your name into the shipboard computer.`
+	name
+	`	Just before the figures reach you, the Scrapper launches, saying farewell to the planet of Gagarin. You're on your own now.`
+		launch
