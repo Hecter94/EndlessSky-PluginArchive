@@ -1724,7 +1724,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Ship.Overhaul.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ship.Overhaul.zip) | 7.05 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ship%20Overhaul/) <br>
 Author: Vrok-Kronos | Category: Gameplay <br>
-[https://github.com/Vrok-Kronos/endless-sky-ship-overhaul](https://github.com/Vrok-Kronos/endless-sky-ship-overhaul) (last commit 2021-08-24) <br>
+[https://github.com/Vrok-Kronos/endless-sky-ship-overhaul](https://github.com/Vrok-Kronos/endless-sky-ship-overhaul)  <br>
 
 >Overhaul of ships and systems to make flying a capital ship feel weighty...
 >
