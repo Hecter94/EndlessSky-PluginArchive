@@ -96,25 +96,7 @@ mission "Guided Start"
 
             label "syndicate"
             branch "no scs"
-                and
-                    # Test to make sure installed plugin autocondition works.
-                    has "installed plugin: Main Plot Plus"
                     not "installed plugin: endless-sky-syndicate"
-
-            branch "fully supported"
-                has "installed plugin: Main Plot Plus"
-
-            action
-                set "installed plugin: Main Plot Plus"
-            `You are using an older version of the game, which does not support testing if a plugin is installed. Do you have the 'Crisis in Management' plugin installed?`
-            choice
-                `(I have the plugin installed.)`
-                `(I do not have the plugin installed.)`
-                    goto "no scs"
-            action
-                set "installed plugin: endless-sky-syndicate"
-
-            label "fully supported"
             branch "scs repeat"
                 has "Guided Start: failed"
             action
@@ -166,6 +148,7 @@ mission "Guided Start: Changed Mind"
     invisible
     landing
     repeat
+    non-blocking
     to offer
         not "chosen sides"
         or

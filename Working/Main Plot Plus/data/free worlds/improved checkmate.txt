@@ -17,7 +17,6 @@ outfitter "All Outfits"
     "Nuclear Launch Bay"
     "Nuclear Missile (Augmented)"
     "Nuclear Installation Chip"
-    "Pug Cloaking Device"
 
 # Omnis
 outfitter "human plugin"
@@ -25,8 +24,16 @@ outfitter "human plugin"
     "Nuclear Missile (Augmented)"
     "Nuclear Installation Chip"
 
-outfitter "pug plugin"
-    "Pug Cloaking Device"
+# Autorestock
+outfitter "Augmented Nuke Restock"
+    to sell
+        or
+            has "outfit: Nuclear Launch Bay"
+            has "outfit: Nuclear Installation Chip"
+    location
+        attributes "outfitter"
+    stock
+        "Nuclear Missile (Augmented)"
 
 government "Terrorist"
     swizzle 1
@@ -98,7 +105,7 @@ outfit "Nuclear Missile (Augmented)"
     category "Ammunition"
     series "Ammunition"
     index 01080
-    cost 40000
+    cost 75000
     thumbnail "outfit/nuke"
     licenses
         Militia
@@ -152,6 +159,7 @@ outfit "Nuclear Launch Bay"
         "scrambling damage" -6320
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
+    description "	Ammunition for this weapon can be restocked at any outfitter."
 
 outfit "Active Nuclear Missile"
     weapon
@@ -210,40 +218,6 @@ effect "augmented nuke residue slow"
     "random spin" 5
     "random velocity" 7
     "velocity scale" 0.1
-
-# This effectively makes it so that you cannot cloak if you have taken damage, but it still works for nuke dodging
-outfit "Cloaking Device"
-    "cloak hull threshold" 1
-    "high shield permeability" 0.01
-    "low shield permeability" 0.01
-
-# For the arfecta, use the old cloaking device stats
-outfit "Pug Cloaking Device"
-    category "Unique"
-    series "Functional Unique"
-    index 90010
-    cost 600000
-    "mass" 10
-    "outfit space" -10
-    "cloak" .01
-    "cloaking energy" 1
-    "cloaking fuel" .2
-    "unique" 1
-    "unplunderable" 1
-    description "You're sure the cloaking device is here somewhere, but you can't see it."
-
-ship "Pug Arfecta"
-    outfits
-        "Tier 3 Anti-Missile" 2
-        "Pug Gridfire Turret" 3
-
-        "Pug Cloaking Device"
-        "Pug Biodefenses" 12
-        "Pug Peacekeeping Staff" 36
-
-        "Pug Lohmar Thruster"
-        "Pug Lohmar Steering" 2
-        "Jump Drive"
 
 mission "FW Question the Syndicate"
     name "The Defector"
@@ -932,21 +906,22 @@ mission "FWC Terrorists 1A"
             `    Korban looks down, "Understandable," then looks back up at you with a smile, "but such is the cost of business, we say.`
             label absolutely
             `    "Now, we know that the terrorists still have nuclear weapons. We sent a ship to scout out their strength that barely made it out alive. We have a plan to take care of that, though.`
-            `    "Before the war, we began to work heavily toward developing automation for use on ships. You may have done some of our 'target practice' jobs. Those were tests of our automation technology. This allowed us to drastically reduce the crew needed to pilot ships of any size, and we'll be sending a fleet of such ships as cannon fodder to have these terrorists waste their nukes."`
+            `    "Before the war, we began to work heavily toward developing automation for use on ships.`
+            `    "You may have done some of our 'target practice' jobs. Those were tests of our automation technology. This allowed us to drastically reduce the crew needed to pilot ships of any size, and we'll be sending a fleet of such ships as cannon fodder to have these terrorists waste their nukes."`
             `    Freya looks shocked, "You're sending people on a suicide mission to take the nukes out of play? Can't we use diplomacy to stop adding bodies to the pile that this war has created?"`
             `    Korban says, "These are terrorists, dear. They aren't to be negotiated with. But fear not, because, as you would have known if you had done those 'target practice' jobs, these ships won't be manned. They'll be fully autonomous warships. Their combat skills are rough around the edges, and this will be an expensive loss - each of these ships costs us at least tens times the production of a normal ship - but much cheaper than the loss of innocent human lives."`
             choice
                 `    "So where do we come into play?"`
                     goto play
                 `    "What are you going to do with this automation technology after this is all said and done?"`
-            `    "This technology is far from being profitable, but we hope to someday have the skies full of autonomous freighters transporting commodities across the galaxy faster than any merchant ever could, defended by deadly autonomous warships able to outsmart any pirate threat. That's neither here nor there, though. There are more important matters at hand.`
+            `    "This technology is far from being profitable, but we hope to someday have the skies full of autonomous freighters transporting commodities across the galaxy faster than any merchant ever could, defended by deadly autonomous warships able to outsmart any threat. That's neither here nor there, though. There are more important matters at hand.`
                 goto end
 
             label play
             `    "We've already sent a single autonomous fleet to draw most of the terrorists' fire, but it wasn't enough. We have a second fleet at the ready, though, one for you to command. Being a skilled captain, I'm sure you'll be able to trick the terrorists into wasting whatever remains of their nukes before a proper fleet arrives to deal with them. We've contacted the Navy and told them where the terrorists are located, so they should be arriving shortly after you."`
 
             label end
-            `    Korban tells you that the second autonomous fleet for you to lead is on Hephaestus. "The terrorists are holed up on Stormhold," says Korban, "an old pirate world. We've also made available to you some of our new technology, developed during the war. We're planning on incorporating it on most of the ships in our fleet, and they are installed on the autonomous ships I've given you. It may prove helpful to you during this final battle. Good luck, Captain."`
+            `    Korban tells you that the second autonomous fleet for you to lead is on Hephaestus. "The terrorists are holed up on Stormhold," says Korban, "an old pirate world. Also, if you haven’t already done so, I would highly recommend installing some of our new technology, developed during the war. We're planning on incorporating it on most of the ships in our fleet, and they are installed on the autonomous ships I've given you. It may prove helpful to you during this final battle. Good luck, Captain."`
                 accept
     on fail
         dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
@@ -1081,7 +1056,7 @@ mission "FWC Terrorists 1C"
         event "fwc navy occupies alcyone"
         event "fwc navy done with alcyone" 50
         conversation
-            `Soon after you land, more Navy ships begin pouring into the system, including Admiral Danforth's own Cruiser. Navy soldiers and ships are scouring the whole surface of the planet; there is very little chance that any of the terrorists who remain here will be able to escape their detection. Admiral Danforth meets with you and Freya and thanks you for providing the decoy that kept his own ships from bearing the brunt of the terrorists' nuclear arsenal.`
+            `Soon after you land, more Navy ships begin pouring into the system, including Admiral Danforth's own Cruiser. Navy soldiers and ships are scouring the whole surface of the planet; there is very little chance that any of the terrorists who remain here will be able to escape their detection. Admiral Danforth meets with you and Freya and thanks you for piloting the decoys that kept his own ships from bearing the brunt of the terrorists' nuclear arsenal.`
             `    "Do you need us to do anything more here?" asks Freya.`
             `    "No," he says. "We'll handle the rest of this situation from here.`
             `    "You should travel to Earth to meet with Parliament. Katya Reynolds, Alondo Gruyere, and Tomek Voigt are already there. I sent a report to Earth that places a very heavy emphasis on the role that the Free Worlds played in this victory, so Parliament ought to be quite willing to negotiate with you."`
@@ -1112,7 +1087,7 @@ mission "FWC Terrorists 1C"
         set "free worlds checkmate"
         conversation
             `You arrive in the Parliament building just as Alondo, Katya, and Tomek have finished meeting with them. "Good news," says Katya. "We're all officially pardoned. And you, Captain <last>, have become something of a hero."`
-            `    "Better yet," says Alondo, "the war with the Republic is over. We agreed to limiting our territory to its current size, and to a very minor tax to cover the cost of Navy protection if the aliens attack again or some other major catastrophe strikes. In return, the Free Worlds have been granted autonomy from the Republic. Additionally, the CEO of the Syndicate, Alastair Korban, is resigning."`
+            `    "Better yet," says Alondo, "the war with the Republic is over. We agreed to limiting our territory to its current size, and to a very minor tax to cover the cost of Navy protection if aliens attack again or some other major catastrophe strikes. In return, the Free Worlds have been granted autonomy from the Republic. Additionally, the CEO of the Syndicate, Alastair Korban, is resigning."`
             `    "Also," says Tomek, "I've received word from the Wolf Pack that the Syndicate have dropped off a gift. They didn't specify what it was, or why they left it, but it may be worth heading to Solace to see what it is."`
             `    "In other news, now that the war has ended, and the Pug have been defeated, the Senate has voted to dissolve the Council, leaving us free to return to civilian life. However, they've also agreed to pay you, <first>, a reduced salary in honor of your service. So, what do you think you will do next?"`
             choice
@@ -1203,14 +1178,14 @@ mission "FWC Epilogue: Wolf Pack"
                 `    "Yes I am. What is it?"`
                 `    "I wouldn't call myself a hero, but if you insist. What did the Syndicate bring?"`
             scene "nuke-launcher"
-            `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to drop off the blueprints for a working feed system."`
-            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius, allowing them to damage more ships at once. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
+            `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to solve that problem for us."`
+            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius allowing them to damage more ships at once, and they are very good at disrupting enemy systems. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
             choice
                 `    "Now that sounds like an exciting weapon to use."`
                     goto exciting
                 `    "Why do you think they gave these to us? Why did they even have these?"`
             `    "I don't know why they have them or why they gave them to us. I didn't ask any questions, I just got right to work making the weapon.`
             label exciting
-            `    "The nuclear launch bay is able to load two missiles at a time, and it weighs 21 tons."`
-            `    Odie pats you on the back and smiles. "And we're giving you access to it. For a price, of course." Odie walks off, leaving you to contemplate if you'll make use of such a weapon.`
+            `    "The nuclear launch bay is able to load two missiles at a time, and it has a mass of 5 tons, with each missile having a mass of 8 tons, for a total mass of 21 tons when fully loaded. If you would like to load more missiles and have the space to do so, simply install a one ton nuclear installation chip for each additional missile."`
+            `    Odie pats you on the back and smiles. "We're giving you access to all of this. For a price, of course." Odie walks off, leaving you to contemplate if you'll make use of such a weapon.`
                 decline

@@ -1,6 +1,7 @@
 mission "Main Plot Plus Prompts"
     invisible
     landing
+    non-blocking
     on offer
         conversation
             `Would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
@@ -35,26 +36,7 @@ mission "Main Plot Plus Prompts"
             action
                 set "enabled paint trim jobs"
             `Paint trim jobs have been enabled.`
-                goto autorestock
+                decline
             label nopaint
             `Paint trim jobs have been disabled.`
-            label autorestock
-            `This plugin contains the ability for you to purchase ammo at any outfitter, in order to reduce the tedium of restocking launchers. Would you like this feature to be fully enabled, mostly enabled, or not enabled? If this feature is mostly enabled, certain powerful ammo like nuclear weapons or finishers cannot be auto-restocked this way, but most other types of ammo can.`
-            choice
-                `(Fully enable autorestock)`
-                `(Mostly enable autorestock)`
-                    goto partial
-                `(Do not enable autorestock)`
-                    goto manual
-            action
-                event "Full Autorestock"
-            `Autorestock has been fully enabled.`
-                decline
-            label partial
-            action
-                event "Common Autorestock"
-            `Autorestock has been mostly enabled.`
-                decline
-            label manual
-            `Autorestock has not been enabled.`
                 decline
