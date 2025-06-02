@@ -3,7 +3,9 @@
 
 **Author: [Loyse](https://github.com/loiseeer)**
 
-**Requires**: Fundamental.Outfit.Expansion
+**Requires**: [Fundamental.Outfit.Expansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansion)
+
+**Thanks**: Kitteh, Corvettefan
 
 An overhaul and republication of the [More Ships Plugin](https://github.com/loiseeer/The-more-ships-plugin). This jewel had to be polished regarding the stats, as it was updated last in May 2020. Luckily Loyse gave permission, and the idea to call the shipyard *Louise*.
 
@@ -15,8 +17,9 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
-| 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to FOE. Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on pirate Planets. Added shipyard on Makerplace in Hai space. |
-| 2025-05-04 | 1.0.3 | Add @2x images. |
+| 2025-06-01 | 1.1.1 | Tweaked stock sale outfits. |
+| 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to [FOE](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansion). Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on Pirate planets. Added shipyard on Makerplace in Hai space. |
+| 2025-05-04 | 1.0.3 | Added @2x images. |
 | 2025-05-03 | 1.0.2 | Metadata file fixes. |
 | 2025-04-27 | 1.0.1 | Fixes considering stand-alonization. |
 | 2025-04-27 | 1.0.0 | Overhaul and Re-publication as *Louise Conglomerate Shipyards*. |
