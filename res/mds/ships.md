@@ -2242,7 +2242,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Recovery Ships
 
 
-[Recovery.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Recovery%20Ships/) <br>
+[Recovery.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Recovery.Ships.zip) | 777.3 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Recovery%20Ships/) <br>
 Author: 1010Todd | Category: Ships <br>
 N/A[]()  <br>
 
