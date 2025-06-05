@@ -1821,9 +1821,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/more.person.ships/icon.png' height='100'></img><br>
 
 
-[more.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.person.ships.zip) | 4.61 mb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.person.ships/) <br>
+[more.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.person.ships.zip) | 4.67 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.person.ships/) <br>
 Author: zuckung | Category: Ships <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >This plugin adds more person ships to the different regions of the galaxy. See the README for details.
 >
@@ -1850,11 +1850,15 @@ Coinin Tapa | east of Gegno territory| Coinin (new ship with new outfits)<br>
 Sesk Lem | Korath territory | Ikatila'ej (new ship, vanilla sprites)(@2x in official hdpi plugin)<br>
 Planet Express | everywhere | Old Bessie (new ship, stats by timeout.fu)
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.person.ships01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/more.person.ships02.jpg' width='400'>
-<br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+colored job<br>
+added outfit series<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-10-15<br>
 added Futurama person ship (thx timeout.fu for stats and texts)<br>

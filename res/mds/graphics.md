@@ -482,9 +482,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/human.labels/icon.png' height='100'></img><br>
 
 
-[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 1.9 mb | 2025-02-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
+[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 1.98 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-13) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Reworks the Human area labels and adds area borders. See the README for details.
 >
@@ -501,6 +501,12 @@ On Earth's job board you can find a mission to change the color of the labels (l
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+colored job<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-02-13<br>
 added @2x images<br>

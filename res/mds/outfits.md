@@ -925,9 +925,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/outfits.weapon.slot/icon.png' height='100'></img><br>
 
 
-[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | 884.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
+[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | 928.98 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-30) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Adds several non-weapon outfits for gun and turret ports. See the README for details.
 >
@@ -942,11 +942,15 @@ Adds several non-weapon outfits for gun and turret ports. See the README for det
 These outfits use an empty gun or turret port and add stats like fuel, cargo, bunks etc.<br>
 Half the outfits are designed by timeout.fu and he did an overall balancing of all outfits (thx).<br>
 Currently there are 7 gun port outfits and 6 turret port outfits. Available on Glaze, Valhalla, Wayfarer, Luna and Sunracer.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/outfits.weapon.slot01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/outfits.weapon.slot02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+added outfit series<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-08-30<br>
 initial release<br>
@@ -1199,9 +1203,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/snowfeather.robotics/icon.png' height='100'></img><br>
 
 
-[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 1.73 mb | 2024-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
+[snowfeather.robotics.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/snowfeather.robotics.zip) | 1.78 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/snowfeather.robotics/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Adds three missions that lead to adding androids to the outfitter on Snowfeather(Hai space).
 >Starts on Snowfeather(Bore Fah) when having at least one android installed. See the readme for details.
@@ -1217,12 +1221,16 @@ Starts on Snowfeather(Bore Fah) when having at least one android installed. <br>
 <br>
 To get an android, which is needed to start this plugin, do the remnant mission 'shattered light 4'. Alternatively my plugin 'more.boarding.missions' gives androids as rare reward for boarding pirates.<br>
 The new buyable worker androids are twice as expensive as the original ones, and pay off after like 4 years. Also 6 fighting androids are added, technically they are h2h outfits (with attack/defense 2/2, 4/4, 6/6, 8/8, 10/10, 12/12). To keep all androids close a new outfit category "Androids" was made.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/snowfeather.robotics01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/snowfeather.robotics02.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/snowfeather.robotics03.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+added outfit series<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-11-09<br>
 corrected scene size<br>

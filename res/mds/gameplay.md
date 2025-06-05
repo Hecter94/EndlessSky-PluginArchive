@@ -648,9 +648,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/galactic.capital.investment/icon.png' height='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 4.04 mb | 2025-03-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 4.07 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-03-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
@@ -682,6 +682,14 @@ Enable and disable the investment jobs/missions<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+colored the jobs<br>
+added series<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-03-20<br>
 replaced colony ship sprite (new one created by 1010todd)<br>
@@ -825,9 +833,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/hai.side.mission.unlocker/icon.png' height='100'></img><br>
 
 
-[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 32.07 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
+[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 100.02 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Unlocks Hai missions, that are currently blocked because of the Hai reveal rework. See the README for details.
 >
@@ -837,14 +845,12 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### hai.side.mission.unlocker
 <br>
 <br>
-Unlocks following hai missions: Unwanted Cargo Trigger, Hiding in Plain Sight, Nanachi 1, Expanding Business [1] and Hai Reveal: Pirate Troubles [0]. If there are followups they work too. Also Devil-Run related systems are shown now.<br>
+Unlocks following hai missions: Unwanted Cargo Trigger, Hiding in Plain Sight and Hai Reveal: Pirate Troubles [0]. If there are followups they work too. Also Devil-Run related systems are shown now.<br>
 <br>
 Currently these missions are either completely blocked or blocked after you start chapter 1 of hai reveal. This plugin fixes that.<br>
 mission "Unwanted Cargo Trigger" (removed secret leaks)<br>
 mission "Unwanted Cargo" (removed secret leaks)<br>
 mission "Hiding in Plain Sight" (removed secret leaks & resolution)<br>
-mission "Nanachi 1" (removed secret leaks & resolution) followups are ok<br>
-mission "Expanding Business [1]" (removed resolution) followups are ok<br>
 mission "Hai Reveal: Pirate Troubles [0]" (Scars Legion cut out of campaign)<br>
 <br>
 Also removes the hidden tag from system Devil-Run. It can be found near the core and opens the path to the Deep Space systems and the Devil-Hide system via wormhole.<br>
@@ -852,6 +858,13 @@ And removes hidden tag from "Devil-Hide" and "Al Hurr", both Hai Reveal systems.
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+removed nanachi and expanding business from plugin (0.10.13 enabled them now)<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
+license, README changes<br>
 <br>
 2024-09-06<br>
 removed HR status message from Pirate Troubles [1]<br>
@@ -1364,9 +1377,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/mission.helper/icon.png' height='100'></img><br>
 
 
-[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 153.12 kb | 2025-05-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
+[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 156.09 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-05-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them. See the README for details.
 >
@@ -1382,6 +1395,11 @@ Accept the job "(mission.helper)" and click your way to the mission you want mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+updated missions to 0.10.13<br>
+added rulei and ka'het<br>
+added color code to job<br>
 <br>
 2025-05-01<br>
 added the choice to prevent race spoilers<br>
@@ -1416,9 +1434,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 5.63 mb | 2025-02-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 5.65 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-10) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -1457,6 +1475,13 @@ Only natural spawning ships can trigger these missions and ships spawned from jo
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+added outfit series<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-02-10<br>
 added @2x images<br>
@@ -1591,9 +1616,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/paint.your.ships/icon.png' height='100'></img><br>
 
 
-[paint.your.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/paint.your.ships.zip) | 133.67 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/paint.your.ships/) <br>
+[paint.your.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/paint.your.ships.zip) | 189.25 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/paint.your.ships/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Offers a job on Earth to paint your ships. See the README for details.
 >
@@ -1606,10 +1631,15 @@ Author: zuckung | Category: Gameplay <br>
 Offers a job on Earth to paint your ships.<br>
 <br>
 There are already like five plugins that change the swizzle color, but this one has the colors displayed ingame (image by amazinite).<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/paint.your.ships01.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-04<br>
+colored the job<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-09-06<br>
 initial release<br>
@@ -1777,9 +1807,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/show.reputation/icon.png' height='100'></img><br>
 
 
-[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 40.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
+[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 157.1 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-01-25) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
 >Enables a job on every planet's job board, that shows the reputation values. See the README for details.
 >
@@ -1794,10 +1824,14 @@ Enables a job on every planet's job board, that shows the reputation values.<br>
 Accept the job and the reputations conversation pops up. Then you can choose between viewing the 35 most useful or all.<br>
 <br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/myplugins/show.reputation/screenshot.jpg' width='100'>
-<br>
-<br>
 Changelog:<br>
+<br>
+2025-06-05<br>
+colored the job<br>
+added missing reputations<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 22025-01-5<br>
 added 0.10.11 govs<br>
