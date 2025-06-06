@@ -106,9 +106,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 361.03 kb | 2025-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 404.63 kb | 2025-06-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-05-03) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-06) <br>
 
 >Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
 >
@@ -133,9 +133,26 @@ This plugin<br>
 - puts images behind the buttons, to grey out unavailable.<br>
 - changes the ship hud<br>
 <br>
+merged the plugin landing.images.android:
+Moves the landing image above the textbox, instead of behind the textbox.<br>
+<br>
+In case parts of the UI/the buttons are outside the screen, try rescaling your UI in the ES options<br>
+If that doesn't help, open the zip, edit 'additional.command.buttons.radial/data/planet.txt' and change line 2 to 7 to:<br>
+	image "land"
+		center -60 -150
+		dimensions 250 135
+	sprite "ui/frame"
+		center -60 -150
+		dimensions 265 150
+That resizes the landing image and the frame to their half.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-06<br>
+merged with plugin landing.images.android<br>
+added new line of buttons to top left<br>
+added more greyed out buttons<br>
 <br>
 2025-04-26<br>
 added greyed-out attack button if you can't attack<br>
@@ -395,7 +412,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### ES Ships
 
 
-[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | 8.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
+[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
 Author: Yann | Category: Graphics <br>
 N/A[]()  <br>
 
@@ -405,7 +422,7 @@ N/A[]()  <br>
 
 
 Status: Playable on 0.9.15 Continuous. <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
