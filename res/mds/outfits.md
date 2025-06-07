@@ -521,7 +521,7 @@ The original concept for FOE's Shipwright Gear was introduced by Darcy Manoel an
 </blockquote>
 </details>
 
-Status: in progress <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1293,7 +1293,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 Author: TheronEpic | Category: Outfits <br>
 [https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2025-06-02) <br>
 
->Epic engines, which are cheap, have only 25% of their size in mass, and consume negligible amounts of energy. Used in Human and Coalition space.
+>Epic diffractive solar sails for Human and Coalition space, providing thrust, turn and solar collection, thereby using only outfitspace worth of half the consumed enginespace.
 >
 
 <details>
@@ -1322,7 +1322,7 @@ One major change made, proposed by **Kitteh**, was to switch from reflective to 
 </blockquote>
 </details>
 
-Status: in progress <br>
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

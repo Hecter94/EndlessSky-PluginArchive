@@ -331,7 +331,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Athmagr Invasion
 
 
-[Athmagr.Invasion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Athmagr.Invasion.zip) | 11.76 mb | 2022-11-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Athmagr%20Invasion/) <br>
+[Athmagr.Invasion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Athmagr.Invasion.zip) | 11.76 mb | 2025-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Athmagr%20Invasion/) <br>
 Author: 1010todd | Category: Races <br>
 [https://github.com/1010todd/Athmagr-Invasion](https://github.com/1010todd/Athmagr-Invasion) (last commit 2022-11-05) <br>
 

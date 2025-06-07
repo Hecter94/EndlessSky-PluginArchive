@@ -115,7 +115,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 Author: ItsNickBarry | Category: Weapons <br>
 [https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
 
->Next-generation Flamethrower, as gun and turret. For those who like it hot.
+>Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
 
 <details>

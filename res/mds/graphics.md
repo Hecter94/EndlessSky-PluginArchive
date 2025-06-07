@@ -412,7 +412,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### ES Ships
 
 
-[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
+[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | 8.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
 Author: Yann | Category: Graphics <br>
 N/A[]()  <br>
 
@@ -422,7 +422,7 @@ N/A[]()  <br>
 
 
 Status: Playable on 0.9.15 Continuous. <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---

@@ -1151,7 +1151,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 Author: Starmlerp | Category: Ships <br>
 [https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
 
->Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only. Adds 4 ships.
+>Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only.
 >
 
 <details>
@@ -1325,7 +1325,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 Author: Loyse | Category: Ships <br>
 [https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
 
->The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Adds 6 ships and 2 weapon systems.
+>The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Requires Fundamental.Outfit.Expansion.
 >
 
 <details>
