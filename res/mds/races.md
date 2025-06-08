@@ -1773,9 +1773,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/The Iltan Race/icon.png' height='100'></img><br>
 
 
-[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 39.17 mb | 2025-03-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
+[The.Iltan.Race.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/The.Iltan.Race.zip) | 39.17 mb | 2025-06-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/The%20Iltan%20Race/) <br>
 Author: Zanano Quinito | Category: Races <br>
-[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-03-08) <br>
+[https://github.com/Zanano/IltanRace](https://github.com/Zanano/IltanRace) (last commit 2025-06-08) <br>
 
 >"The Iltan Race" adds the Iltans, along with their systems, ships, outfits, missions, and a new start. They are T3/T4.
 >
@@ -1790,6 +1790,9 @@ Placeholder 2D ship for Tetryon.
 
 
 By Zanano Quinito
+
+Permissions: 
+If anyone would like to make content for the Iltan mod, submit it to me and I will validate and integrate it into the mod, along with adding you as a co-creator.
 
 </blockquote>
 </details>
