@@ -15,6 +15,7 @@ One major change made, proposed by **Kitteh**, was to switch from reflective to 
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-06-12 | 2.0.1 | Added series and index specifications. Removed unused files. Changed icon. |
 | 2025-06-01 | 2.0.0 | Complete rework -- Made the solar sails to be diffractive, i.e. added solar collection. Buffed relation of turn/thrust to used engine/outfit space, change from turn/thrust heat to solar heat, and removed reverse thrust. Also removed front sail variants, and KP-3 and KPM-6 panels. Added @2x images. Removed experimental status. |
 | 2025-05-18 | 1.0.0 | Overhaul and Re-publication. |
 | 2020-10-30 | - | Last Update of the original *Solar Sails* plugin. |

@@ -13,6 +13,7 @@ Also Darcy Manoel's H2H flamethrower, which is based on the same design, was add
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-06-12 | 1.1.2 | Fixes. Added series and index specifications. |
 | 2025-06-01 | 1.1.1 | Minor metadata fix. Clarification in torch's description. |
 | 2025-05-18 | 1.1.0 | Added H2H Bunsen Torch. |
 | 2025-05-03 | 1.0.2 | Metadata files fixes. |
