@@ -1,3 +1,7 @@
+2025-06-12 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>
+2025-06-12 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
+2025-06-12 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
+2025-06-12 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2025-06-10 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2025-06-08 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-06-07 | Updated plugin 'galactic.capital.investment' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#galacticcapitalinvestment)<br>

@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 283.07 kb | 2025-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 283.19 kb | 2025-06-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-12) <br>
 
 >Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
@@ -135,6 +135,7 @@ Also Darcy Manoel's H2H flamethrower, which is based on the same design, was add
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-06-12 | 1.1.2 | Fixes. Added series and index specifications. |
 | 2025-06-01 | 1.1.1 | Minor metadata fix. Clarification in torch's description. |
 | 2025-05-18 | 1.1.0 | Added H2H Bunsen Torch. |
 | 2025-05-03 | 1.0.2 | Metadata files fixes. |

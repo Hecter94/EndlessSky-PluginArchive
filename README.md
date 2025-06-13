@@ -5,6 +5,10 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2025-06-12 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>
+2025-06-12 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
+2025-06-12 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
+2025-06-12 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2025-06-10 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2025-06-08 | Updated plugin 'The Iltan Race' by Zanano Quinito | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#the-iltan-race)<br>
 2025-06-07 | Updated plugin 'galactic.capital.investment' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#galacticcapitalinvestment)<br>
@@ -16,10 +20,6 @@
 2025-06-05 | Updated plugin 'captureable.person.ships' by zuckung | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#captureablepersonships)<br>
 2025-06-05 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2025-06-05 | Updated plugin 'more.person.ships' by zuckung | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#morepersonships)<br>
-2025-06-05 | Updated plugin 'hai.side.mission.unlocker' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#haisidemissionunlocker)<br>
-2025-06-05 | Updated plugin 'snowfeather.robotics' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#snowfeatherrobotics)<br>
-2025-06-05 | Updated plugin 'human.labels' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#humanlabels)<br>
-2025-06-05 | Updated plugin 'outfits.weapon.slot' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#outfitsweaponslot)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
