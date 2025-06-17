@@ -5,6 +5,7 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2025-06-17 | Updated plugin 'better.starts' by zuckung | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#betterstarts)<br>
 2025-06-12 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>
 2025-06-12 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
 2025-06-12 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
@@ -19,7 +20,6 @@
 2025-06-05 | Updated plugin 'paint.your.ships' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#paintyourships)<br>
 2025-06-05 | Updated plugin 'captureable.person.ships' by zuckung | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#captureablepersonships)<br>
 2025-06-05 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
-2025-06-05 | Updated plugin 'more.person.ships' by zuckung | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#morepersonships)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
