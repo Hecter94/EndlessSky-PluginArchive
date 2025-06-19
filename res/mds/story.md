@@ -199,9 +199,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/bunrodea.missions/icon.png' height='100'></img><br>
 
 
-[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 2.95 mb | 2025-04-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
+[bunrodea.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/bunrodea.missions.zip) | 2.95 mb | 2025-06-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/bunrodea.missions/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-04-13) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-19) <br>
 
 >Adds some missions and jobs to increase the Bunrodea reputation. The first mission is available after the vanilla first contact mission. Doing more jobs will allow you to get access to all their planets and ships. See the readme for details.
 
@@ -217,10 +217,20 @@ Unlocking the planets is based on reputation, so you get access step by step. Un
 Some missions from landing/spaceport unlock jobs. Others just give reputation or unlock story progression. Each job gives 5 to 40 reputation.<br>
 Averagely you have to do like 50 jobs, less if you take the fighting jobs. Like in vanilla play, hit spaceport often.<br>
 <br>
-Since it's often questioned, here is a guide to the bunrodea first contact mission. Travel through Bunrodea territory till you've killed at least one Bunrodea ship, then fly to a human system, land there and you get a mission that mission brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
+Since it's often questioned, here is a guide to the bunrodea first contact mission: Travel through Bunrodea territory till you've killed at least one Bunrodea ship, then fly to a human system (Misam works), land there and you get a mission, that brings you back to the Bunrodea. You can land on 4 planets now, and at this point this plugin starts.<br>
+<br>
+If the plugin control.station is installed, it gives additional information about the missions and shows this README.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-19<br>
+added control.station support<br>
+adjusted some mission offering chances<br>
+added target personality to korath npc fleets<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
 <br>
 2025-04-13<br>
 added series for the 2 uniques<br>
@@ -245,7 +255,7 @@ text corrections (thx to TheGiraffe3)<br>
 <br>
 2024-04-30<br>
 fixed error on natural spawning korath fleets<br>
-changed some space port news and jobs to require culture conversations<br>
+changed some spaceport news and jobs to require culture conversations<br>
 changed culture conversation chance from 10% to 20%<br>
 changed icon<br>
 changed reputation needed for planet landings, to make the progression more fluent<br>
