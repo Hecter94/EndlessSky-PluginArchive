@@ -1629,9 +1629,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/paint.your.ships/icon.png' height='100'></img><br>
 
 
-[paint.your.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/paint.your.ships.zip) | 189.25 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/paint.your.ships/) <br>
+[paint.your.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/paint.your.ships.zip) | 190.51 kb | 2025-06-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/paint.your.ships/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-21) <br>
 
 >Offers a job on Earth to paint your ships. See the README for details.
 >
@@ -1643,10 +1643,13 @@ Author: zuckung | Category: Gameplay <br>
 <br>
 Offers a job on Earth to paint your ships.<br>
 <br>
-There are already like five plugins that change the swizzle color, but this one has the colors displayed ingame (image by amazinite).<br>
+There are already like five plugins that change the swizzle color, but this one has the colors displayed ingame (image by amazinite). If the plugin control.station is installed, the job changes from Earth to that station.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-21<br>
+added control.station support<br>
 <br>
 2025-06-04<br>
 colored the job<br>
@@ -1820,9 +1823,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/show.reputation/icon.png' height='100'></img><br>
 
 
-[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 157.1 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
+[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 159.22 kb | 2025-06-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-21) <br>
 
 >Enables a job on every planet's job board, that shows the reputation values. See the README for details.
 >
@@ -1832,12 +1835,15 @@ Author: zuckung | Category: Gameplay <br>
 <blockquote>### show.reputation
 <br>
 <br>
-Enables a job on every planet's job board, that shows the reputation values.<br>
+Enables a job on the Earth job board, that shows the reputation values.<br>
 <br>
-Accept the job and the reputations conversation pops up. Then you can choose between viewing the 35 most useful or all.<br>
+Accept the job and the reputations conversation pops up. Then you can choose between viewing the 35 most useful or all. If the plugin control.station is installed, the job changes from Earth to that station.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-06-21<br>
+added control.station support<br>
 <br>
 2025-06-05<br>
 colored the job<br>
