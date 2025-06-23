@@ -1,5 +1,3 @@
 # sensor
-
-Tiny mod for adding weapons, still in progress!
-
-More weapons WILL be added soon!
+Mod for adding weapons to endless sky.
+Very unbalanced.
