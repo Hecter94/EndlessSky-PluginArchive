@@ -20,7 +20,7 @@ All Plugins (602)
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.91 mb | 2025-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: TheGiraffe3 | Category: Cheats <br>
 [https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2025-06-03) <br>
 
@@ -51,7 +51,7 @@ There is a wormhole in each of the major factions' systems to travel there, and 
 </details>
 
 Status: N/A <br>
-Daily update check: <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
