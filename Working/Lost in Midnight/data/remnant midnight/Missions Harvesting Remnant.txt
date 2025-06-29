@@ -10,7 +10,6 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
 mission "Sabotage: Engine Restraint (boarding)"
 	boarding
 	invisible
@@ -69,7 +68,6 @@ mission "Midnight Remnant Distress"
 		government "Remnant"
 		personality entering disables heroic plunders appeasing secretive
 		fleet "Small Remnant"
-
 
 
 mission "Midnight Remnant: Graveyard Surface Expedition Job"
@@ -203,7 +201,6 @@ mission "Midnight Remnant Keystone Exchange [huge]"
 		dialog "The Remnant allocate <payment> to you after receiving your delivery of Quantum Keystones."
 
 
-
 mission "Harvesting Quantumium Research"
 	minor
 	name "Quantumium Research"
@@ -255,7 +252,6 @@ mission "Harvesting Quantumium Research"
 		outfit "Quantumium" -10
 		payment 10000000
 		dialog `The Remnant accept your delivery of Quantumium and reward you with <payment>.`
-
 
 
 mission "Collect Void Sprites"
@@ -322,12 +318,12 @@ mission "Collect Void Sprites"
 		dialog `The captain of the <npc> thanks you for assisting with rescuing the Void Sprites and rewards you with <payment>.`
 
 
-
 mission "Salvage Raider"
 	job
 	repeat
 	name "Track down the <npc>"
 	description "Track down and disable a Korath ship so that the Remnant may salvage it for technology. Then return to <planet> for payment [<payment>]."
+	"apparent payment" 750000
 	source
 		government "Remnant"
 		not attributes "uninhabited"
@@ -335,7 +331,7 @@ mission "Salvage Raider"
 		or
 			has "Remnant: Salvage 4: done"
 			has "Remnant: Salvage 4: failed"
-		random < 20
+		random < 10
 	npc save disable
 		government "Korath"
 		personality target waiting plunders heroic marked
@@ -353,9 +349,10 @@ mission "Salvage Raider"
 				"Palavret (Ember Shunt)"
 		dialog "You have disabled the Korath ship that the Remnant want to plunder. You can now return to <planet> and collect your payment."
 	on fail
-		dialog `You have failed to disable the Korath ship so that the Remnant can salvage it for technology...`
+		payment 350000
+		dialog `You are met by a prefect who looks upset. "The ship was supposed to be disabled so its contents could be salvaged!" he signs angrily. Nonetheless, he shoves a credit chip worth <payment> into your hand. "That's half of what you would have earned if the ship had been disabled." He pauses and shakes his head. "I think you should go find some Korath to practice disabling. It is a valuable skill among the Remnant."`
 	on complete
-		payment 750000
+		payment 700000
 		"reputation: Remnant" ++
 		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
 
@@ -364,6 +361,7 @@ mission "Salvage Dredger"
 	repeat
 	name "Track down the <npc>"
 	description "Track down and disable a Korath ship so that the Remnant may salvage it for technology. Then return to <planet> for payment [<payment>]."
+	"apparent payment" 1000000
 	source
 		government "Remnant"
 		not attributes "uninhabited"
@@ -371,10 +369,10 @@ mission "Salvage Dredger"
 		or
 			has "Remnant: Salvage 4: done"
 			has "Remnant: Salvage 4: failed"
-		random < 10
+		random < 5
 	npc save disable
 		government "Korath"
-		personality target waiting plunders heroic marked
+		personality target waiting lingering plunders heroic marked
 		system
 			distance 2 3
 		fleet
@@ -385,14 +383,16 @@ mission "Salvage Dredger"
 				"Rano'erek"
 			variant
 				"Rano'erek (Shunt)"
+			variant
+				"Rano'erek (Heaver)"
 		dialog "You have disabled the Korath ship that the Remnant want to plunder. You can now return to <planet> and collect your payment."
 	on fail
-		dialog `You have failed to disable the Korath ship so that the Remnant can salvage it for technology...`
+		payment 500000
+		dialog `You are met by a prefect who looks upset. "The ship was supposed to be disabled so its contents could be salvaged!" he signs angrily. Nonetheless, he shoves a credit chip worth <payment> into your hand. "That's half of what you would have earned if the ship had been disabled." He pauses and shakes his head. "I think you should go find some Korath to practice disabling. It is a valuable skill among the Remnant."`
 	on complete
 		payment 1000000
 		"reputation: Remnant" += 2
 		dialog `You are met by a prefect who thanks you for disabling the Korath ship and hands you a credit chip for <payment>. "Don't forget to drop off any salvaged outfits in the outfitters so the researchers can look at them."`
-
 
 
 mission "Midnight Remnant: Rescue (Graveyard)"
@@ -473,7 +473,6 @@ mission "Midnight Remnant: Rescue [Human]"
 			`You have returned, yet the <npc> is still missing.`
 
 
-
 mission "Remnant Atmospheric Samples"
 	job
 	repeat
@@ -494,7 +493,6 @@ mission "Remnant Atmospheric Samples"
 		payment
 		payment 150000
 		dialog `You arrive back on <planet> and offload the atmospheric gas sample. A logistics adjustment of <payment> has been applied to your account.`
-
 
 
 mission "Midnight Remnant Tech: Turbo Blaster"
@@ -542,7 +540,6 @@ mission "Midnight Remnant Tech: Turbo Blaster"
 		conversation
 			scene "outfit/turbo blaster"
 			`As the <ship> settles onto the pad closest to the research laboratory, you can see several people exiting an adjacent hangar with a trailer pulled by a camel. They quickly approach your landing pad and wait for you to complete your shutdown routines before boarding and starting to unload the Turbo Blasters. Once they are done one of them comes up to you and hands you your payment of <payment>. "Thank you for the delivery, Captain. We are looking forward to seeing what advances they have made to the archaic blaster weapons."`
-
 
 
 mission "Midnight Remnant: Damaged Jump Drive (Limit Distance)"
@@ -639,7 +636,6 @@ mission "Midnight Remnant: Damaged Jump Drive job (Limit Distance)"
 		dialog "The research team quickly offloads the damaged jump drive and pays you <payment> before hurrying back to their lab."
 
 
-
 mission "Midnight Remnant: Damaged Jump Drive (Limit Fuel)"
 	minor
 	repeat
@@ -732,4 +728,3 @@ mission "Midnight Remnant: Damaged Jump Drive job (Limit Fuel)"
 		"reputation: Remnant" += 2
 		"Midnight Remnant: Damaged Jump Drive (Limit Fuel): offered" --
 		dialog "The research team quickly offloads the damaged jump drive and pays you <payment> before hurrying back to their lab."
-

@@ -14,6 +14,47 @@
 # Contents: Missions which could lead to betrayal, either from you or your employer.
 
 
+mission "Midnight Dangerous Journey [Counterfeits]"
+	assisting
+	minor
+	name "Delivery to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	to offer
+		or
+			has "Midnight Dangerous Journey: done"
+			has "Dangerous Journey: done"
+		credits >= 40000
+		random < 5
+	source
+		government "Merchant"
+		category "Light Freighter" "Heavy Freighter"
+		not attributes "automaton"
+	destination
+		government "Republic" "Syndicate" "Free Worlds"
+		attributes "frontier"
+		distance 2 3
+	cargo random 5 2 .1
+	illegal 40000 `It turns out that the shipment you took on from that distressed merchant were counterfeits. In addition to the fine, your illegal cargo is confiscated.`
+	substitutions
+		"<count>" "fourth"
+		"<count>" "fifth"
+			"random" < 60
+		"<count>" "sixth"
+			"random" < 30
+	on offer
+		conversation
+			`When you repair the <origin>, the captain hails you. "This is the <count> time I've nearly died in the past week doing this job! Here, take this <cargo> to <destination> and finish this job for me. They said the payment is <payment>."`
+			choice
+				`	(Take the cargo.)`
+					accept
+				`	(Don't take the cargo.)`
+			`	The captain begins loudly swearing, so you cut the feed. Hopefully they make it to their destination in one piece.`
+				decline
+	on complete
+		payment 15000
+		clear "Midnight Dangerous Journey: offered"
+		dialog `Some disreputable-looking locals unload the shipment of <commodity> from your cargo bay. The one in charge asks why you have the shipment. You explain how the original merchant who took the job quit and handed off the cargo to you. Satisfied with your explanation, they pay you <payment>.`
+
 
 mission "Destroy Independence (North)"
 	minor
@@ -701,7 +742,7 @@ mission "Kudgel's Cudgel"
 		government "Pirate"
 		distance 2 3
 	to offer
-		combat rating > 400
+		"combat rating" > 400
 		"ships: Heavy Warship" + "ships: Superheavy" <= 5
 		random < 70 - ( 65 * "randomize Kudgel's Cudgel" )
 	on offer
@@ -788,10 +829,10 @@ mission "Missing Syndicate Supplies"
 		government "Syndicate"
 		attributes "outfitter"
 	to offer
-		random < 20
+		has "main plot completed"
 		"reputation: Syndicate" > 100
-		"combat rating" > 20
 		not "syndicate tech available"
+		random < 70
 	on accept
 		dialog `When you accept the job, the agent has you fill out a non-disclosure form. If you are successful in locating the vessel, you are not to divulge knowledge of its contents to anyone. It must contain some top secret research.`
 	npc assist accompany save
@@ -865,7 +906,7 @@ mission "Peace Tour 1"
 	destination Farseer
 	to offer
 		has "main plot completed"
-		random < 30
+		random < 5 + ( 25 * "learned nuke deactivation" )
 	on offer
 		"reputation: Bounty (Disguised)" >?= 1
 		conversation
@@ -895,7 +936,7 @@ mission "Peace Tour 1"
 		event "add nukes of peace"
 		conversation
 			scene "portrait/human59"
-			`The captain of the <npc> thanks you for your help. Your payment, and a bonus package, are waiting for you at the spaceport.`
+			`The captain of the <npc> thanks you for your help. Your payment, and a bonus package, are waiting for you in a hangar at the spaceport.`
 		dialog `Go to the spaceport to get your reward.`
 
 event "add nukes of peace"
@@ -923,6 +964,8 @@ event "add nukes of peace"
 		add fleet NukeCore 20000
 	system Oblate
 		add fleet NukeCore 20000
+	system Misam
+		add fleet NukeCore 20000
 	system Antares
 		add fleet NukeSouth 20000
 	system Men
@@ -947,8 +990,14 @@ mission "Peace Tour 2"
 		has "Peace Tour 1: done"
 	on offer
 		conversation
+			scene "outfit/unknown"
+			`A package was left for you by a client in a hangar at the spaceport. Do you want to retrieve it?`
+			choice
+				`	(Retrieve the package.)`
+				`	(Not right now...)`
+					defer
 			scene "outfit/nuke"
-			`A package was left for you by a client. You open it to find a nasty surprise: a nuclear warhead with a countdown timer!`
+			`You locate the hangar. Opening it you find a nasty surprise: a nuclear warhead with a countdown timer that triggers as soon as you find it!`
 			choice
 				`	(Run.)`
 				`	(Try to disarm it.)`
@@ -966,9 +1015,9 @@ mission "Peace Tour 2"
 			label trydisarm
 			branch disarm
 				random < 20
-				
+
 			scene "scene/scene-explosion"
-			`	Despite your effort, you were unable to disarm the warhead before it explodes. If life were a game, you could load a save file and try disarming it again. You might have had better success if you learned how these devices work.`
+			`	Despite your effort, you were unable to disarm the warhead before it explodes. If life were a game, you could load a save file and try disarming it again. You might have better success if you learn how these devices work.`
 				die
 
 			label disarm
@@ -1032,6 +1081,8 @@ event "remove nukes of peace"
 	system Durax
 		remove fleet NukeCore
 	system Gienah
+		remove fleet NukeCore
+	system Misam
 		remove fleet NukeCore
 	system Oblate
 		remove fleet NukeCore
@@ -1165,7 +1216,7 @@ mission "Midnight Market: Nukes of Peace?"
 			action
 				set "learned nuke deactivation"
 				log `Today I learned the activation code for a Nuclear Missile is the number of the beast and deactivation code is "2-3-4". The latter is supposedly inspired by Psalm 23:4 from the Bible.`
-			`	The stranger reaches over and sets the digits to "2-3-4". Closing the panel, the stranger say, "Psalm twenty three four. Well?"`
+			`	The stranger reaches over and sets the digits to "2-3-4". Closing the panel, the stranger says, "Psalm twenty three four. Well?"`
 				goto nukechoice
 			label psalm
 			action
@@ -1177,7 +1228,7 @@ mission "Midnight Market: Nukes of Peace?"
 			action
 				set "learned nuke deactivation"
 				log `Today I learned activation code for a Nuclear Missile is "6-6-6" and the deactivation code is "2-3-4". These are supposedly references to something from the Bible, but the person who taught you never specified what they are.`
-			`	Inside the panel are a set of controls for setting three digits. "The factory default is all zeroes. Activation is six, six, and six." The stranger sets all three digits to "6-6-6". A mechanism within the missile activates and you can hear a low hum that slowly fades away. "Deactivation is two, three, and four." The stranger sets the digits to "2-3-4" and closes the panel. "Well?"`
+			`	Inside the panel are a set of controls for setting three digits. "The factory default is all zeroes. Activation is six, six, and six." The stranger sets all three digits to "6-6-6". A mechanism within the missile activates and you can hear a low hum that slowly fades away. "Deactivation is two, three, and four." The stranger sets the digits to "2-3-4" and the mechanisms within make a few noises before falling silent. Satisfied, the stranger closes the panel. "Well?"`
 				goto nukechoice
 	on decline
 		outfit "Nuclear Missile" 50

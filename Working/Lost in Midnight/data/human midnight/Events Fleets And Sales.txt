@@ -169,6 +169,7 @@ mission "Midnight Blaster War Update"
 		has "event: navy using mark ii ships"
 	on offer
 		event "midnight blaster war update"
+		set "covert miners stingray patched"
 		fail
 
 event "midnight blaster war update"
@@ -193,6 +194,25 @@ event "midnight blaster war update"
 			"Firebird (Quad Turbo Blaster)"
 		add variant 1
 			"Leviathan (Quad Turbo Blaster)"
+	fleet "Covert Miners"
+		add variant 1
+			"Stingray (Kludge Blaster)"
+
+mission "Midnight Covert Miners Stingray Patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: midnight blaster war update"
+		not "covert miners stingray patched"
+	on offer
+		event "midnight covert miners stingray patch"
+		fail
+
+event "midnight covert miners stingray patch"
+	fleet "Covert Miners"
+		add variant 1
+			"Stingray (Kludge Blaster)"
 
 
 mission "Midnight Scrounger Patch"
@@ -258,6 +278,25 @@ event "midnight pirate scrounger patch"
 			"Scrounger"
 		add variant 1
 			"Scrounger (Tractor)"
+
+
+mission "Midnight Add Covert Miners"
+	landing
+	invisible
+	non-blocking
+	on offer
+		event "midnight add covert miners"
+		fail
+
+event "midnight add covert miners"
+	planet Covert
+		add shipyard "Covert Mining"
+	system Algenib
+		add fleet "Covert Miners" 10000
+	system Gienah
+		add fleet "Covert Miners" 8000
+	system Persian
+		add fleet "Covert Miners" 6000
 
 
 mission "Midnight Add Heavy Hauler"

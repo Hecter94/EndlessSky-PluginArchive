@@ -1891,6 +1891,7 @@ mission "Midnight Striker"
 	source
 		government "Free Worlds"
 		attributes "spaceport"
+		not planet "Rust"
 	destination "Rust"
 	to offer
 		has "free worlds plot completed"
@@ -1898,7 +1899,7 @@ mission "Midnight Striker"
 	on offer
 		conversation
 			scene "planet/forest6"
-			`You receive a message from Barmy Edwards: "<first>! I'd like you're input on something I've been asked to work on. Drop by <planet> when you can." He must need you to help him with another test.`
+			`You receive a message from Barmy Edwards: "<first>! I'd like your input on something I've been asked to work on. Drop by <planet> when you can." He must need you to help him with another test.`
 				accept
 	on enter Kraz
 		conversation
@@ -2162,7 +2163,13 @@ mission "Star Explorer Fan Tour"
 		personality target escort disables timid
 		ship "Star Explorer (Transport)" "Last Frontier"
 
+	on abort
+		clear "star explorer pirate raid activated"
+		"reputation: Merchant" -= 50
+		dialog `The Merchant ship "Last Frontier" was attacked during its voyage. Rumors that you failed to protect it are whispered amongst the Merchant captains...`
+
 	on fail
+		clear "star explorer pirate raid activated"
 		dialog `[MISSION FAILED]: Either you destroyed one of the mock battle ships or you failed to protect the Last Frontier from a real threat. If life were a game, you could load a save file and try again.`
 
 	on complete

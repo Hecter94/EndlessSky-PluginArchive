@@ -281,12 +281,16 @@ mission "Remnant: Bounty-Korath Scouter"
 mission "Midnight Expansion: Bounty-Korath Scouter"
 	job
 	repeat
-	name "Crippled Scout Bounty"
+	name "Crippled Sku'uta Bounty"
 	description "Hunt down a crippled Korath scout that is lurking in Remnant territory, then return to <planet> to receive your payment of <payment>."
 	source
 		government "Remnant"
 	to offer
 		has "Remnant: Defense 2: done"
+		"Remnant: Bounty: done" >= 3
+		or
+			not "remnant: ssil vida active"
+			not "flagship planet: Ssil Vida"
 		random < 30
 	npc kill
 		government "Korath"
@@ -297,12 +301,12 @@ mission "Midnight Expansion: Bounty-Korath Scouter"
 			cargo 3
 			variant
 				"Korath Scouter (Crippled)"
-				"'olofez"
 		dialog "You have destroyed the Korath ship. You can now return to <planet> to collect your payment."
 	on visit
 		dialog phrase "generic bounty hunting on visit"
 	on complete
 		payment 150000
+		"Remnant: Bounty: done" ++
 		dialog "A Remnant military leader thanks you for hunting down the <npc> and hands you a credit chip for <payment>."
 
 mission "Midnight Expansion: Salvage Scouter"

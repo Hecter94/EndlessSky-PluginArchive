@@ -421,7 +421,7 @@ mission "Angry Squirrels: Nerve Gas Exposed"
 		government "Hai"
 		not planet "Darkwaste"
 	to offer
-		has "Unfettered Arms Dealer" > 29
+		"Unfettered Arms Dealer" > 29
 		has "Unfettered Nerve Gas Smuggling: done"
 		not "event: angry squirrels"
 		random < 5
@@ -444,7 +444,7 @@ mission "Angry Squirrels: Mass Smuggling Exposed"
 		government "Hai"
 		not planet "Darkwaste"
 	to offer
-		has "Unfettered Arms Dealer" > 99
+		"Unfettered Arms Dealer" > 99
 		not "event: angry squirrels"
 		random < 10
 	on offer
@@ -507,9 +507,9 @@ mission "Angry Squirrels: Countermeasures 1"
 	source
 		government "Hai (Unfettered)"
 	to offer
-		has "Unfettered Arms Dealer" >= 3
+		"Unfettered Arms Dealer" >= 3
 	on offer
-		require "Intrusion Countermeasures"
+		require "Phalanx System"
 		conversation
 			`One of the Unfettered approaches you. "I have heard that you can get access to exotic weapons. There is a rumor that Quarg ships have powerful internal weapons systems. Would you be able to sell me one? I can offer you 1,000,000 credits."`
 			scene "outfit/quarg countermeasures"
@@ -518,10 +518,10 @@ mission "Angry Squirrels: Countermeasures 1"
 					defer
 				`	"Yes. But they are a purely defensive system."`
 			`"That's alright. I'd like to experiment with one and see what it's capable of."`
-			`You happen to already have an Intrusion Countermeasures device and unload it from your ship. He gladly hands over the agreed upon payment in exchange.`
+			`You happen to already have a Phalanx System and unload it from your ship. He gladly hands over the agreed upon payment in exchange.`
 				accept
 	on accept
-		outfit "Intrusion Countermeasures" -1
+		outfit "Phalanx System" -1
 		payment 1000000
 		"Unfettered Arms Dealer" ++
 		event "Angry Squirrels Countermeasures timer" 30
@@ -531,7 +531,7 @@ event "Angry Squirrels Countermeasures timer"
 mission "Angry Squirrels: Countermeasures 2"
 	landing
 	name "Unfettered Intrusion Device"
-	description "Meet Go Foo Ku on <planet> in the <system> system."
+	description "Meet Go Foo Ku on <destination>."
 	source
 		government "Hai (Unfettered)"
 		not planet "Darkcloak"
@@ -540,15 +540,22 @@ mission "Angry Squirrels: Countermeasures 2"
 		has "event: Angry Squirrels Countermeasures timer"
 		has "event: battle in arneb end"
 	on offer
-		log "People" "Go Foo Ku" `An Unfettered weapons researcher who purchased a Quarg Intrusion Countermeasures device from me. He seems to really enjoy his work.`
-		dialog 
-			`You receive a message: "Greetings Captain <first> <last>. My name is Go Foo Ku. Some time ago you sold me a Quarg Intrusion Countermeasures system. After experimenting with it, I now have a job for you. We can discuss the details when you come to <planet> in the <system> system."`
+		log "People" "Go Foo Ku" `An Unfettered weapons researcher who purchased a Quarg Phalanx System from me. He seems to really enjoy his work.`
+		conversation 
+			scene "outfit/quarg countermeasures"
+			`You receive a message: "Greetings Captain <first> <last>. My name is Go Foo Ku. Some time ago you sold me a Quarg Phalanx System. After experimenting with it, I now have a job for you. If you are interested, we can discuss the details when you come to <destination>."`
+			choice
+				`	(Find out what this is about.)`
+				`	(Ignore this.)`
+					decline
+			scene "planet/cloud4"
+			`	You prepare to make the journey to <destination>.`
 	on complete
 		dialog `Meet Go Foo Ku at the spaceport to find out what sort of job he has to offer you.`
 
 mission "Angry Squirrels: Countermeasures 3"
 	name "Unfettered Intrusion Device"
-	description "Go to <waypoints> and board a suitable target to test out a new Unfettered boarding weapon. Return to <planet> when you are done."
+	description "Go to <waypoints> and board a suitable target to test out a new Unfettered boarding weapon. Return to <destination> when you are done."
 	source "Darkcloak"
 	waypoint "Almaaz"
 	to offer
@@ -594,14 +601,20 @@ mission "Angry Squirrels: Countermeasures 3"
 		ship "Bactrian (Cosmic Devil)" "Cosmic Temptress"
 		conversation
 			scene "outfit/quarg countermeasures"
-			`The tarp has been removed and you can see that the Intrusion Countermeasures device has been loaded onto the hoverlift. Several smaller devices are connected to it. As soon as the docking doors blast open, Go Foo Ku operates a remote control to launch the hoverlift towards the defenders!`
-			`	Several pirates fire at it but the Intrusion Countermeasures device remains unscathed. The smaller devices are not so invulnerable and a few burst into flames. Meanwhile, the Intrusion Countermeasures device hasn't done anything to harm the defenders. All you notice is a low hum that is steadily increasing in pitch and volume.`
+			`The tarp has been removed and you can see that the Phalanx System has been loaded onto the hoverlift. Several smaller devices are connected to it. As soon as the docking doors blast open, Go Foo Ku operates a remote control to launch the hoverlift towards the defenders!`
+			`	Several pirates fire at it but the Phalanx System remains unscathed. The smaller devices are not so invulnerable and a few burst into flames. Meanwhile, the Phalanx System hasn't done anything to harm the defenders. All you notice is a low hum that is steadily increasing in pitch and volume.`
 			`	"No!" exclaims Go Foo Ku. "It's overloading! Close the blast doors! Close them NOW!"`
 			`	Just as the blast doors close, your ship is rocked by an explosion...`
 				launch
 
 	on complete
-		dialog `Go Foo Ku hasn't said anything since the Intrusion Device blew up. All his energy and excitement is gone. After you open the exit hatch he mutters his thanks and leaves. The experimental weapons business can be an unstable one. For a moment you think of Barmy Edward, Chief Offensive Engineer at Kraz Cybernetics, and wonder what he'd have to say about this venture. Then you decide it might be best to keep this story to yourself.`
+		conversation
+			`Go Foo Ku hasn't said anything since the Intrusion Device blew up. All his energy and excitement is gone. After you open the exit hatch he mutters his thanks and leaves.`
+			branch end
+				not "FW Plasma Testing 1B: done"
+			`For a moment you think of Barmy Edward, Chief Offensive Engineer at Kraz Cybernetics, and wonder what he'd have to say about this venture. Then you decide it might be best to keep this story to yourself.`
+			label end
+			`	The experimental weapons business can be an unstable occupation.`
 
 
 mission "Midnight Pulse Repeater"

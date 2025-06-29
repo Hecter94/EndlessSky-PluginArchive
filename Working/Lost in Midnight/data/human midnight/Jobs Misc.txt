@@ -387,6 +387,9 @@ outfit "Prototype Power Converter ECX"
 
 
 mission "Executive Guard: Syndicated Systems"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	passengers 1
 	name "Ransom: Syndicated Systems"
@@ -476,6 +479,7 @@ mission "Executive Guard: Syndicated Systems"
 		"reputation: Syndicate" <?= -1000
 	on complete
 		payment 10000000
+		"pirate jobs" ++
 		"reputation: Pirate" += 100
 		conversation
 			scene "outfit/brig"
@@ -483,6 +487,9 @@ mission "Executive Guard: Syndicated Systems"
 			`	Despite this, the pirates are able to negotiate with the Syndicate. The CEO is easily ransomed off for the requested amount. You claim your share of the ransom money, <payment>. Naturally, this stunt has made you an enemy of the Syndicate. Their security forces will be looking to collect bonus pay for your head.`
 
 mission "Executive Guard: Syndicated Shipyards"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	passengers 1
 	name "Ransom: Syndicated Shipyards"
@@ -571,6 +578,7 @@ mission "Executive Guard: Syndicated Shipyards"
 		"reputation: Syndicate" <?= -1000
 	on complete
 		payment 10000000
+		"pirate jobs" ++
 		"reputation: Pirate" += 100
 		conversation
 			scene "outfit/brig"
@@ -689,7 +697,7 @@ mission "Stranded In Paradise: Erin Epilogue"
 		has "Stranded In Paradise 2: offered"
 		has "free worlds plot completed"
 	source
-		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south"
 		not government "Pirate"
 	destination "Winter"
@@ -965,14 +973,12 @@ mission "Energy Cannons [small]"
 	description "Supplies of Energy Cannons are scarce. Deliver <tons> of Damaged Energy Cannons to <destination> where they will be repaired. Payment is <payment>."
 	cargo "Damaged Energy Cannons" 120
 	source Trinket
-	destination
-		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
-		attributes "pirate"
-		attributes "north" "north pirate"
-		attributes "shipyard"
+	destination "Haven"
 	to offer
+		not "event: energy cannon outfitter"
 		random < 30
 	on complete
+		"pirate jobs" ++
 		payment 300000
 		dialog "The shipyard on <planet> pays you <payment> for the shipment of Damaged Energy Cannons."
 
@@ -986,13 +992,12 @@ mission "Energy Cannons [medium]"
 		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "pirate"
 		not attributes "north" "north pirate"
-	destination
-		attributes "pirate"
-		attributes "north" "north pirate"
-		attributes "shipyard"
+	destination "Haven"
 	to offer
+		not "event: energy cannon outfitter"
 		random < 15
 	on complete
+		"pirate jobs" ++
 		payment 450000
 		dialog "The shipyard on <planet> pays you <payment> for the shipment of Damaged Energy Cannons."
 
@@ -1006,13 +1011,12 @@ mission "Energy Cannons [large]"
 		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "pirate"
 		not attributes "north" "north pirate"
-	destination
-		attributes "pirate"
-		attributes "north" "north pirate"
-		attributes "shipyard"
+	destination "Haven"
 	to offer
+		not "event: energy cannon outfitter"
 		random < 10
 	on complete
+		"pirate jobs" ++
 		payment 600000
 		dialog "The shipyard on <planet> pays you <payment> for the shipment of Damaged Energy Cannons."
 
@@ -1026,23 +1030,24 @@ mission "Energy Cannons [huge]"
 		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "pirate"
 		not attributes "north" "north pirate"
-	destination
-		attributes "pirate"
-		attributes "north" "north pirate"
-		attributes "shipyard"
+	destination "Haven"
 	to offer
+		not "event: energy cannon outfitter"
 		random < 5
 	on complete
+		"pirate jobs" ++
 		payment 1200000
 		dialog "The shipyard on <planet> pays you <payment> for the shipment of Damaged Energy Cannons."
 
 mission "Energy Cannon Outfitter"
+	non-blocking
 	landing
 	invisible
 	to offer
 		"Energy Cannons [small]: done" + "Energy Cannons [medium]: done" + "Energy Cannons [large]: done" + "Energy Cannons [huge]: done" >= 4
 	on offer
 		event "energy cannon outfitter"
+		set "energy cannon outfitter patched"
 		fail
 		
 outfitter "Energy Cannon"
@@ -1054,10 +1059,12 @@ event "energy cannon outfitter"
 		add outfitter "Energy Cannon"
 
 mission "Energy Cannon Outfitter Patch"
+	non-blocking
 	landing
 	invisible
 	to offer
 		has "event: energy cannon outfitter"
+		not "energy cannon outfitter patched"
 	on offer
 		event "energy cannon outfitter patch"
 		fail
@@ -1284,8 +1291,102 @@ mission "Medical Bay: Patient Transport [family]"
 		dialog `You wish the patient good luck with their surgery. An insurance company deposits <payment> into your account.`
 
 
+mission "Midnight Antique Sunder Escort"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	deadline
+	name "Antique Sunder Escort"
+	description "Escort the Antique Sunder ship <npc> to <destination> by <date>. The Covert Mining Cartel will reward you with <payment> on delivery."
+	source
+		attributes "pirate"
+		not planet "Covert"
+		not near Gienah 3
+	destination "Covert"
+	to offer
+		"reputation: Pirate" > 0
+		"combat rating" > 300
+		not "Midnight Antique Sunder Escort: aborted"
+		not "Midnight Antique Sunder Escort: failed"
+		random < 10
+	npc
+		government "Pirate (Rivals)"
+		system destination
+		personality heroic plunders harvests
+		fleet "pirate raid"
+	npc save accompany
+		government "Pirate"
+		personality target escort timid plunders harvests
+		fleet
+			names "pirate"
+			cargo 0
+			variant
+				"Antique Sunder"
+	on fail
+		"reputation: Pirate" -= 5
+		dialog "Your failure to deliver the <npc> has damaged your reputation with the Covert Mining Cartel."
+	on abort
+		"reputation: Pirate" -= 5
+		dialog "Your failure to deliver the <npc> has damaged your reputation with the Covert Mining Cartel."
+	on complete
+		payment 300000
+		"pirate jobs" ++
+		"reputation: Pirate" += 5
+		dialog "The Covert Mining Cartel pays you <payment> for completing the delivery of the Antique Sunder ship <npc>."
+		
+mission "Midnight Antique Sunder Retrieval"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	deadline 30
+	name "Antique Sunder Retrieval"
+	description "The <npc> was attacked before it could be delivered. Locate the ship somewhere near <system> and escort it safely to <planet> by <date>. The Covert Mining Cartel will pay <payment> on delivery."
+	source "Covert"
+	to offer
+		has "Midnight Antique Sunder Escort: done"
+		"reputation: Pirate" > 0
+		random < 10
+	npc
+		to spawn
+			has "antique sunder pirate raid active"
+		government "Pirate (Rivals)"
+		system destination
+		personality heroic plunders harvests
+		fleet "pirate raid"
+	npc save accompany assist
+		government "Pirate"
+		system
+			distance 2 3
+		personality target derelict timid plunders harvests
+		fleet
+			names "pirate"
+			cargo 1
+			commodities "Metal" "Heavy Metals"
+			variant
+				"Antique Sunder"
+		on assist
+			set "antique sunder pirate raid active"
+	on abort
+		clear "antique sunder pirate raid active"
+	on fail
+		clear "antique sunder pirate raid active"
+	on complete
+		payment 600000
+		"pirate jobs" ++
+		"reputation: Pirate" += 5
+		clear "antique sunder pirate raid active"
+		dialog "The Covert Mining Cartel pays you <payment> for retrieving the Antique Sunder ship <npc>."
+
+
 mission "Midnight Cargo Trap (North)"
 	name "Convoy near <system>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	description `A merchant convoy has been spotted near the <system> system. A local warlord is interested in having the cargo on the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
@@ -1327,10 +1428,15 @@ mission "Midnight Cargo Trap (North)"
 	on complete
 		outfit "Secret Cargo" -1
 		payment 1500000
+		"pirate jobs" ++
+		"reputation: Pirate" ++
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
 
 mission "Midnight Cargo Trap (South)"
 	name "Convoy near <system>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	description `A merchant convoy has been spotted near the <system> system. A local warlord is interested in having the cargo on the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
@@ -1369,10 +1475,15 @@ mission "Midnight Cargo Trap (South)"
 	on complete
 		outfit "Secret Cargo" -1
 		payment 1500000
+		"pirate jobs" ++
+		"reputation: Pirate" ++
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
 
 mission "Midnight Cargo Trap (South) [Meteor]"
 	name "Convoy near <system>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	description `A merchant convoy has been spotted near the <system> system. A local warlord is interested in having the cargo on the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
@@ -1411,10 +1522,15 @@ mission "Midnight Cargo Trap (South) [Meteor]"
 	on complete
 		outfit "Secret Cargo" -1
 		payment 1500000
+		"pirate jobs" ++
+		"reputation: Pirate" ++
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
 
 mission "Midnight Cargo Trap (South) [Kludge]"
 	name "Convoy near <system>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	description `A merchant convoy has been spotted near the <system> system. A local warlord is interested in having the cargo on the <npc>. Plunder it and return to <planet> by <day> for payment of <payment>.`
@@ -1453,7 +1569,166 @@ mission "Midnight Cargo Trap (South) [Kludge]"
 	on complete
 		outfit "Secret Cargo" -1
 		payment 1500000
+		"pirate jobs" ++
+		"reputation: Pirate" ++
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
+
+
+phrase "midnight frontier report"
+	word
+		"After a few hours of "
+	word
+		"wandering "
+		"exploring "
+		"investigating "
+	word
+		"the spaceport, you "
+	word
+		"learn "
+		"find out "
+		"discover "
+	word
+		"that the captain of the ${pirate} "
+	word
+		"recently added a heavy warship to his fleet. "
+		"has been smuggling slaves to a buyer in the Paradise Planets. "
+		"has acquired a strange weapon of unknown origin. "
+		"is planning to steal the ${civilian}'s cargo. "
+		"looted a weird artifact from some alien ruins. "
+		"joined forces with the captain of the ${bounty hunter}. "
+		"is secretly working with the crew of the ${civilian}. "
+		"is planning to ambush the ${republic capital}. "
+		"is distributing a new drug through the frontier. "
+		"is currently transporting a person of interest. "
+	word
+		"Hopefully delivering this information will be worth your effort."
+
+phrase "midnight frontier reward"
+	word
+		"You submit your report to Republic Intelligence. After reviewing it, they reward you with <payment>."
+
+mission "Midnight Frontier Report [Core]"
+	job
+	repeat
+	name "Frontier Report"
+	description "Reliable information on pirate activity may be valuable to the Republic. Investigate <stopovers>. Then return to <destination> and file a report with Republic Intelligence."
+	source Earth
+	stopover
+		attributes "core pirate"
+		attributes "spaceport"
+	to offer
+		"combat rating" >= 1000
+		"reputation: Republic" >= 20
+		not "event: joined the free worlds"
+	to fail
+		has "event: joined the free worlds"
+	on stopover
+		set "midnight frontier snooped"
+		"midnight frontier snooping" ++
+		dialog phrase "midnight frontier report"
+	on complete
+		payment 25000
+		clear "midnight frontier snooped"
+		dialog phrase "midnight frontier reward"
+
+mission "Midnight Frontier Report [North]"
+	job
+	repeat
+	name "Frontier Report"
+	description "Reliable information on pirate activity may be valuable to the Republic. Investigate <stopovers>. Then return to <destination> and file a report with Republic Intelligence."
+	source Earth
+	stopover
+		attributes "north pirate"
+		attributes "spaceport"
+	to offer
+		"combat rating" >= 1000
+		"reputation: Republic" >= 20
+		not "event: joined the free worlds"
+	to fail
+		has "event: joined the free worlds"
+	on stopover
+		set "midnight frontier snooped"
+		"midnight frontier snooping" ++
+		dialog phrase "midnight frontier report"
+	on complete
+		payment 25000
+		clear "midnight frontier snooped"
+		dialog phrase "midnight frontier reward"
+
+mission "Midnight Frontier Report [South]"
+	job
+	repeat
+	name "Frontier Report"
+	description "Reliable information on pirate activity may be valuable to the Republic. Investigate <stopovers>. Then return to <destination> and file a report with Republic Intelligence."
+	source Earth
+	stopover
+		attributes "south pirate"
+		attributes "spaceport"
+	to offer
+		"combat rating" >= 1000
+		"reputation: Republic" >= 20
+		not "event: joined the free worlds"
+	to fail
+		has "event: joined the free worlds"
+	on stopover
+		set "midnight frontier snooped"
+		"midnight frontier snooping" ++
+		dialog phrase "midnight frontier report"
+	on complete
+		payment 25000
+		clear "midnight frontier snooped"
+		dialog phrase "midnight frontier reward"
+
+mission "Midnight Frontier Snooping"
+	landing
+	invisible
+	repeat
+	deadline 3
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent" "Neutral"
+		not attributes "near earth"
+	to offer
+		has "midnight frontier snooped"
+		random < "midnight frontier snooping"
+	on enter
+		dialog `A ship entering the system hails you: "Our employer doesn't like rats snooping around his business. So he hired us for pest control."`
+	npc kill
+		government "Bounty Hunter"
+		personality entering heroic coward nemesis
+		fleet "Bounty Hunters"
+		on kill
+			"midnight frontier snooping" --
+			fail
+	npc kill
+		to spawn
+			"combat rating" > 3000
+			random < 50
+		government "Bounty Hunter"
+		personality entering heroic coward nemesis
+		fleet "Bounty Hunters"
+		on kill
+			"midnight frontier snooping" --
+			fail
+	npc kill
+		to spawn
+			"combat rating" > 6000
+			random < 50
+		government "Bounty Hunter"
+		personality entering heroic coward nemesis
+		fleet "Bounty Hunters"
+		on kill
+			"midnight frontier snooping" --
+			fail
+	npc kill
+		to spawn
+			"combat rating" > 9000
+			random < 50
+		government "Bounty Hunter"
+		personality entering heroic coward nemesis
+		fleet "Bounty Hunters"
+		on kill
+			"midnight frontier snooping" --
+			fail
 
 
 mission "Midnight FW Convoy Defense [Bounty Hunters]"
@@ -4242,6 +4517,9 @@ mission "Stealing From Rival Smugglers"
 	name "Rival Smuggler near <system>"
 	description "A rival gang is using the <npc> to smuggle cargo through our territory in <system>. When they do, disable and board the vessel then bring a certain item from their cargo back to <destination>. Your reward is: <payment>."
 	deadline 14
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	repeat
 	job
 	to offer
@@ -4267,6 +4545,7 @@ mission "Stealing From Rival Smugglers"
 				"Modified Enforcer (Smuggled Cargo)"
 		dialog "Take the Smuggled Cargo from the <npc>'s cargo. Then deliver it to <planet>."
 	on complete
+		"pirate jobs" ++
 		"reputation: Bounty (Disguised)" >?= 1
 		outfit "Smuggled Cargo" -1
 		payment 350000
@@ -4365,12 +4644,15 @@ mission "Syndicate Uranium Mining [large]"
 
 
 mission "Pirate Sabotage: Shield Suppressor (Republic)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	name "Pirate Sabotage"
 	description "The <npc> has been harassing pirates near <system>. Sneak a Shield Suppressor onto the ship to sabotage their defenses. Return to <planet> for payment. (<payment>)."
 	source
-		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
+		government "Pirate"
 		attributes "north pirate" "dirt belt pirate"
 		not attributes uninhabited
 	to offer
@@ -4397,17 +4679,21 @@ mission "Pirate Sabotage: Shield Suppressor (Republic)"
 		"reputation: Pirate" -= 10
 		dialog `The pirates weren't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
 	on complete
+		"pirate jobs" ++
 		payment 50000
 		"reputation: Pirate" += 10
-		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how easily that ship was subsequently destroyed thanks to your efforts.`
+		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how that ship will be at their mercy thanks to your efforts.`
 
 mission "Pirate Sabotage: Shield Suppressor (Free Worlds)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
 	job
 	repeat
 	name "Pirate Sabotage"
 	description "The <npc> has been harassing pirates near <system>. Sneak a Shield Suppressor onto the ship to sabotage their defenses. Return to <planet> for payment. (<payment>)."
 	source
-		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
+		government "Free Worlds"
 		attributes "south pirate"
 		not attributes uninhabited
 	to offer
@@ -4432,20 +4718,67 @@ mission "Pirate Sabotage: Shield Suppressor (Free Worlds)"
 		"reputation: Pirate" -= 10
 		dialog `The pirates weren't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
 	on complete
+		"pirate jobs" ++
 		payment 50000
 		"reputation: Pirate" += 10
-		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how easily that ship was subsequentially destroyed thanks to your efforts.`
+		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how that ship will be at their mercy thanks to your efforts.`
+
+mission "Pirate Sabotage: Shield Suppressor (Syndicate)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	name "Pirate Sabotage"
+	description "The <npc> has been harassing pirates near <system>. Sneak a Shield Suppressor onto the ship to sabotage their defenses. Return to <planet> for payment. (<payment>)."
+	source
+		government "Syndicate"
+		attributes "core pirate"
+		not attributes uninhabited
+	to offer
+		"reputation: Syndicate" > 0
+	npc assist
+		government "Syndicate"
+		system
+			distance 1 2
+		personality target derelict waiting staying timid
+		fleet
+			names "republic capital"
+			outfitters "Ammo North"
+			variant 1
+				"Vanguard"
+			variant 1
+				"Protector"
+		conversation
+			scene "outfit/shield suppressor"
+			action
+				"reputation: Syndicate" -= 40
+			`While assisting in the repairs of the <npc>, you discreetly attach the Shield Suppressor to their systems. Hopefully they won't realize what you've done until after you get to <destination> for your reward.`
+	on abort
+		"reputation: Pirate" -= 10
+		dialog `The pirates weren't happy to learn that you didn't install the Shield Suppressor onto the <npc>.`
+	on complete
+		"pirate jobs" ++
+		payment 50000
+		"reputation: Pirate" += 10
+		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how that ship will be at their mercy thanks to your efforts.`
+
+
 
 mission "Rescue: Sabotaged Ship (Free Worlds)"
 	job
 	name "Rescue Mission"
-	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it back to <destination>. Payment is <payment>."
+	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it to <destination>. Payment is <payment>."
 	source
 		government "Free Worlds"
-		attributes "shipyard"
-		attributes "outfitter"
+		attributes "frontier"
 		attributes "south"
 	waypoint "Lesath"
+	destination
+		distance 1 2
+		government "Free Worlds"
+		attributes "outfitter"
+		attributes "south"
 	to offer
 		"reputation: Militia" > 0
 		"combat rating" > 1000
@@ -4490,7 +4823,7 @@ mission "Rescue: Sabotaged Ship (Free Worlds)"
 			action
 				set "sabotaged ship ambush"
 			scene "outfit/shield suppressor"
-			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them back to <destination> where they will have it removed.`
+			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them to <destination> where they will have it removed.`
 	on abort
 		clear "sabotaged ship ambush"
 	on fail
@@ -4503,13 +4836,16 @@ mission "Rescue: Sabotaged Ship (Free Worlds)"
 mission "Rescue: Sabotaged Ship (Republic)"
 	job
 	name "Rescue Mission"
-	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it back to <destination>. Payment is <payment>."
+	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it to <destination>. Payment is <payment>."
 	source
 		government "Republic"
-		attributes "shipyard"
-		attributes "outfitter"
+		attributes "frontier"
 		attributes "north"
 	waypoint "Hatysa"
+	source
+		government "Republic"
+		attributes "outfitter"
+		attributes "north"
 	to offer
 		"reputation: Republic" > 0
 		"combat rating" > 1000
@@ -4561,7 +4897,7 @@ mission "Rescue: Sabotaged Ship (Republic)"
 			action
 				set "sabotaged ship ambush"
 			scene "outfit/shield suppressor"
-			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them back to <destination> where they can have it removed.`
+			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them to <destination> where they can have it removed.`
 	on abort
 		clear "sabotaged ship ambush"
 	on fail
@@ -4571,6 +4907,81 @@ mission "Rescue: Sabotaged Ship (Republic)"
 		payment 1000000
 		dialog "The government of <planet> rewards you with <payment> for rescuing the <npc>."
 
+mission "Rescue: Sabotaged Ship (Syndicate)"
+	job
+	name "Rescue Mission"
+	description "The <npc> is missing in action. It was last known to be in <waypoints> hunting pirates. Find the ship and escort it to <destination>. Payment is <payment>."
+	source
+		government "Syndicate"
+		attributes "frontier"
+		attributes "core"
+	waypoint "Gamma Cassiopeiae"
+	source
+		government "Syndicate"
+		attributes "outfitter"
+		attributes "core"
+	to offer
+		"reputation: Syndicate" > 0
+		"combat rating" > 1000
+		random < 25
+	on enter "Gamma Cassiopeiae"
+		dialog `The <npc> hails you. Their shields are not working properly, making them an easy target for pirates. Their weapons have already been plundered...`
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system destination
+		personality entering harvests plunders
+			confusion 20
+		fleet "pirate raid" 2
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Gienah"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Core Pirates"
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Almach"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Small Core Pirates"
+	npc
+		to spawn
+			has "sabotaged ship ambush"
+		government "Pirate"
+		system "Alcyone"
+		personality entering harvests plunders
+			confusion 20
+		fleet "Large Core Pirates"
+	npc assist accompany save
+		government "Syndicate"
+		system "Gamma Cassiopeiae"
+		personality target derelict waiting staying timid
+		fleet
+			names "syndicate capital"
+			outfitters "Ammo North"
+			variant 1
+				"Vanguard"
+			variant 1
+				"Protector"
+		conversation
+			action
+				set "sabotaged ship ambush"
+			scene "outfit/shield suppressor"
+			`After inspecting the <npc>, you're certain that a Shield Suppressor was planted somewhere on the ship by saboteurs. Escort them back to <destination> where they can have it removed.`
+	on abort
+		clear "sabotaged ship ambush"
+	on fail
+		clear "sabotaged ship ambush"
+	on complete
+		clear "sabotaged ship ambush"
+		payment 1000000
+		dialog "The government of <planet> rewards you with <payment> for rescuing the <npc>."
 
 
 mission "Strike Breakers [station]"
