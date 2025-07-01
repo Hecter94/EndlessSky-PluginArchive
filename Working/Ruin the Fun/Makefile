@@ -249,6 +249,8 @@ data/jobs/reputation.txt: data/jobs/reputation.temp tmp/reputation-resets.tmp tm
 data/jobs/conditions/conditions.txt: data/jobs/conditions/conditions.temp data/jobs/conditions/condition-switches.list data/jobs/conditions/karma-values.list
 data/jobs/combat-ships/combat-ships.txt: tmp/base-ships.list.tmp
 data/jobs/combat-fleets/combat-fleets.txt: tmp/fleets.list.tmp
+data/jobs/escort-ships/escort-ships.txt: tmp/base-ships.list.tmp
+data/jobs/escort-fleets/escort-fleets.txt: tmp/fleets.list.tmp
 data/map/planets.txt: data/map/systems.csv
 data/map/systems.txt: data/map/systems.csv
 %.txt: %.temp
