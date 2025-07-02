@@ -449,9 +449,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/flare.play/icon.png' height='100'></img><br>
 
 
-[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 8.27 mb | 2025-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
+[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 8.3 mb | 2025-07-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-05-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-07-02) <br>
 
 >Adds lots of engine flare outfits to the big shipyards and outfitters. These outfits are just cosmetic. Idea by 'Thermognuclear Missile' on discord. See the README for details.
 >
@@ -468,6 +468,9 @@ Missions and events: On day 1 after plugin installation, a mission shows up, exp
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-07-02<br>
+updated to 0.10.14<br>
 <br>
 2025-05-01<br>
 fixed Vi violet flare<br>
