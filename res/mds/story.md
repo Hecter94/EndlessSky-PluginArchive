@@ -2275,9 +2275,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Portraits for News/icon.png' height='100'></img><br>
 
 
-[Portraits.for.News.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Portraits.for.News.zip) | 1.09 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Portraits%20for%20News/) <br>
+[Portraits.for.News.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Portraits.for.News.zip) | 15.43 mb | 2025-07-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Portraits%20for%20News/) <br>
 Author: Anarchist2 | Category: Story <br>
-[https://github.com/Anarchist2/ES-news-portraits](https://github.com/Anarchist2/ES-news-portraits) (last commit 2023-04-06) <br>
+[https://github.com/Anarchist2/ES-news-portraits](https://github.com/Anarchist2/ES-news-portraits) (last commit 2025-07-03) <br>
 
 >This plugin re-activates the portrait system for news in ES. Many of the images for portraits are already in the game, but became unused after portraits for news was disabled by default. However, some portraits had to be added for news items after 0.9.12. Alien portraits (including transhuman portraits) are not considered canon. 
 >
@@ -2286,7 +2286,7 @@ Author: Anarchist2 | Category: Story <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote>NOTICE: This plugin's development is highly sporadic, and as such, will not always be up to date with the latest version of Endless Sky. If you want to help bring this plugin up to date, or to add more portraits (especially for aliens), feel free to make a PR.
 # Portraits for News in Endless Sky
-This plugin re-activates the portrait system for news in ES. All the images for portraits are already in the game, but became unused after portraits for news was disabled by default. Alien portraits (including transhuman portraits) are not considered canon. Compatable for most news up to 0.10.0.
+This plugin re-activates the portrait system for news in ES. Includes all of the portrait images that were removed in 0.10.14. Alien portraits (including transhuman portraits) are not considered canon. Compatable for most news up to 0.10.0.
 ###### To install
 It is highly recommended to use [ESLauncher2](https://github.com/EndlessSkyCommunity/ESLauncher2/releases/latest) to install this plugin. If you can't/don't want to install ESLauncher2, then you can install the plugin by unzipping it and placing it into ES's plugin folder.
 </blockquote>

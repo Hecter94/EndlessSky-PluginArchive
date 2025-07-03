@@ -1577,9 +1577,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Mega Freight/icon.png' height='100'></img><br>
 
 
-[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 144.54 mb | 2025-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
+[Mega.Freight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mega.Freight.zip) | 147.54 mb | 2025-07-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mega%20Freight/) <br>
 Author: 1010todd | Category: Ships <br>
-[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2025-03-14) <br>
+[https://github.com/1010todd/Mega-Freight](https://github.com/1010todd/Mega-Freight) (last commit 2025-07-03) <br>
 
 >Adds several mostly civilian ships for you and npc merchants( and pirates) to use for more variety in human space.
 >
@@ -1599,7 +1599,7 @@ Summary of what this plugin adds:
 Over 150 ships:
 * 50+ Freighters including specialized cargo ships (Fuel, LNG, Chemical, etc.) + 2 Superheavy
 * 4 Transports
-* 3 Space Liner
+* 4 Space Liner
 * 10+ Utility (Carriers, miners, etc.)
 * 20+ Warships + 2 Superheavy (Purpose-built and modification of existing.)
 * 1 Battlestation
@@ -1619,7 +1619,7 @@ And other things:
 * Persistent NPC (Battlestations in 3 systems, 2 of which can respawn after some time.)
 * Additional ship spawn for some story missions.
 * Orbital shipyard orbiting Mars after main plot.
-* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite, Zagreus)
+* A few stations (Nordlin, Ankulah, Yokosuka, GS1 Galaxy, Ourea, Forge, Ankaim, Titanite, Zagreus, Ningxi, Wilkes)
 * Gradual progression of the universe both dependent and independent of story missions.
   * Stronger pirate fleet over time and merchants upgrading their weapons to keep up.
   * New ships and technologies (timed and/or locked behind story missions and locked behind jobs)
@@ -1629,7 +1629,7 @@ And other things:
 * Additional shipyard and outfitter to various locations.
 * Basically overhaul human space at this point.
 
-Requires Unstable Build/0.10.9 or above.
+Requires Unstable Build/0.10.13 or above.
 Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
 # Recommended
