@@ -1,3 +1,5 @@
+2025-07-05 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
+2025-07-05 | Updated plugin 'World Forge' by Amazinite | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#world-forge)<br>
 2025-07-03 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
 2025-07-03 | Updated plugin 'Portraits for News' by Anarchist2 | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#portraits-for-news)<br>
 2025-07-02 | Updated plugin 'flare.play' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#flareplay)<br>
