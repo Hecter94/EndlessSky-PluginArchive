@@ -1699,6 +1699,7 @@ mission "Thraal: Moreau"
 				`	(Ignore their invitation.)`
 			action
 				fail "Thraal: Moreau"
+				set "Thraal: Moreau (Cleanup): failed"
 				log "People" "Thraal" `A human who supposedly survived the Korath attack on the Icarus. Thraal claims to get along well with the Korath, but the nature of his relationship with them remains unclear.`
 			`You've decided to ignore Thraal's invitation to meet the Korath. They've proven themselves to be nothing but dangerous and you have little reason to put your trust in Thraal. With no change in their disposition towards you, they will continue on as a hostile foe to be wary of.`
 		on kill
@@ -1751,6 +1752,19 @@ mission "Thraal: Moreau (Failed)"
 		"reputation: Korath" < 0
 	on offer
 		conversation "microbot defense death"
+
+# This exists because a required condition was not set if you decline Thraal's invitation
+mission "Thraal: Moreau failed but survived patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Thraal: Moreau: failed"
+		not "Thraal killed"
+		not "Thraal: Moreau (Cleanup): failed"
+	on offer
+		set "Thraal: Moreau (Cleanup): failed"
+		fail
 
 # This mission is deprecated.
 mission "Thraal: Moreau (Killed)"
