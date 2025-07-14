@@ -1,7 +1,7 @@
 
-All Plugins (602)
+All Plugins (603)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (53) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (54) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -10,7 +10,7 @@ All Plugins (602)
 
 ## Gameplay
 
-<p>53 plugins in this category.<p>
+<p>54 plugins in this category.<p>
 
 
  
@@ -965,6 +965,49 @@ This plugin is simple. When you are rich enough some investment banks will offer
 </details>
 
 Status: Playable on 0.9.14, 0.10.0 Continuous. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Jaws
+<img src='../../Working/Jaws/icon.png' height='100'></img><br>
+
+
+[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 8.69 mb | 2025-07-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
+Author: LixiChronikouOriou | Category: Gameplay <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-11) <br>
+
+>Completely harmless space wildlife, which you can randomly shoot at. Trust me.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Jaws ###
+
+**Author: [Timeout](https://github.com/LixiChronikouOriou)**
+
+**Artwork: [Tearcell](https://tearcellgames.itch.io/cosmic-canidae-assets)
+
+Adds the Antaren Thresher to Gossamer and neighboring systems. Consumes void fish, asteroids and since recently also Abberants. Once inhabited also Arachi space and even Antares, but out of unknown reasons went extinct there long ago.
+
+Completely harmless.
+
+Inspired by the Spaceshark from [Mil-taj Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) by [Demolish238](https://github.com/demolish238), which was derived from the Antaren Thresher in [Cosmic Canidae](https://tearcellgames.itch.io/cosmic-canidae) by [Tearcell](https://tearcellgames.itch.io).
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2025-07-11 | 1.0.0 | Creature relocation, and complete redesign of lore and stats. Reduced requirements regarding free storage space by 2/3. |
+| 2024-11-02 | - | Release of [Mil-taj Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) |
+| 2022-02-13 | - | Release of [Cosmic Canidae](https://tearcellgames.itch.io/cosmic-canidae) |
+
+</blockquote>
+</details>
+
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
