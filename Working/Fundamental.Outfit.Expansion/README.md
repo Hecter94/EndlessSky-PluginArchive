@@ -3,7 +3,7 @@
 
 **Authors:** see table
 
-**Thanks:** Kitteh, Questenberg, Unknown_Rawrs
+**Thanks:** Kassandra Haruki, Kitteh, Questenberg, Unknown_Rawrs
 
 Other fundamental content can be found in the plugin recommendation list.
 
@@ -27,6 +27,7 @@ __Note__: Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's l
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 1.4.0 | Added support for Omnis. Plus hotfixes. |
 | 2025-07-11 | 1.3.0 | Added subset of Pirate Expansion, updated with series and index specifications. Updated missile turrets after author's update. Reduced fuel consumption of the fuel shields. |
 | 2025-06-12 | 1.2.1 | Fixes. Tweaked PDP batteries. Added series and index specifications. |
 | 2025-06-01 | 1.2.0 | Added subset of ZOE with modified stats and extended by events. Added Single Plasma Turret and reworked Fuel Shields from Epic Outfits, also adding events. Established compatibility to ZOE and Epic Outfits. Limited Red Lager to Mars. |

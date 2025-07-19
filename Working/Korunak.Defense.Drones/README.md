@@ -19,6 +19,7 @@ The basic *Defense Drone* is available from the beginning, the *Nock* in-war, th
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 1.1.0 | Added support for Omnis. |
 | 2025-06-01 | 1.0.4 | Minor metadata fix. |
 | 2025-05-18 | 1.0.3 | Cheapened the drones reasonably. Adjusted icon. |
 | 2025-05-04 | 1.0.2 | Event fix. Gun- and Enginepoint corrections. |
