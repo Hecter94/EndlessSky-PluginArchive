@@ -1147,9 +1147,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Korunak.Defense.Drones/icon.png' height='100'></img><br>
 
 
-[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 540.08 kb | 2025-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
+[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 540.33 kb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
 Author: Starmlerp | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-19) <br>
 
 >Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only.
 >
@@ -1177,6 +1177,7 @@ The basic *Defense Drone* is available from the beginning, the *Nock* in-war, th
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 1.1.0 | Added support for Omnis. |
 | 2025-06-01 | 1.0.4 | Minor metadata fix. |
 | 2025-05-18 | 1.0.3 | Cheapened the drones reasonably. Adjusted icon. |
 | 2025-05-04 | 1.0.2 | Event fix. Gun- and Enginepoint corrections. |
@@ -1321,9 +1322,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Louise.Conglomerate.Shipyards/icon.png' height='100'></img><br>
 
 
-[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.51 mb | 2025-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
+[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.51 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
 Author: Loyse | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-06-02) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-19) <br>
 
 >The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Requires Fundamental.Outfit.Expansion.
 >
@@ -1349,6 +1350,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 1.2.0 | Added support for Omnis. |
 | 2025-06-01 | 1.1.1 | Tweaked stock sale outfits. |
 | 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to [FOE](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansion). Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on Pirate planets. Added shipyard on Makerplace in Hai space. |
 | 2025-05-04 | 1.0.3 | Added @2x images. |

@@ -493,9 +493,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
 
 
-[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 5.25 mb | 2025-07-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 5.22 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
 Author: (many authors) | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-07-11) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-07-19) <br>
 
 >A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
 >
@@ -507,7 +507,7 @@ Author: (many authors) | Category: Outfits <br>
 
 **Authors:** see table
 
-**Thanks:** Kitteh, Questenberg, Unknown_Rawrs
+**Thanks:** Kassandra Haruki, Kitteh, Questenberg, Unknown_Rawrs
 
 Other fundamental content can be found in the plugin recommendation list.
 
@@ -531,6 +531,7 @@ __Note__: Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's l
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 1.4.0 | Added support for Omnis. Plus hotfixes. |
 | 2025-07-11 | 1.3.0 | Added subset of Pirate Expansion, updated with series and index specifications. Updated missile turrets after author's update. Reduced fuel consumption of the fuel shields. |
 | 2025-06-12 | 1.2.1 | Fixes. Tweaked PDP batteries. Added series and index specifications. |
 | 2025-06-01 | 1.2.0 | Added subset of ZOE with modified stats and extended by events. Added Single Plasma Turret and reworked Fuel Shields from Epic Outfits, also adding events. Established compatibility to ZOE and Epic Outfits. Limited Red Lager to Mars. |
@@ -1289,7 +1290,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.74 mb | 2025-06-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.45 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
 [https://github.com/TheronEpic/theronepic-solar-sails](https://github.com/TheronEpic/theronepic-solar-sails) (last commit 2020-10-30) <br>
 
@@ -1308,9 +1309,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar.Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.74 mb | 2025-06-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.45 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2025-06-12) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2025-07-19) <br>
 
 >Epic diffractive solar sails for Human and Coalition space, providing thrust, turn and solar collection, thereby using only outfitspace worth of half the consumed enginespace.
 >
@@ -1334,6 +1335,7 @@ One major change made, proposed by **Kitteh**, was to switch from reflective to 
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-07-19 | 2.0.2 | Fixes. |
 | 2025-06-12 | 2.0.1 | Added series and index specifications. Removed unused files. Changed icon. |
 | 2025-06-01 | 2.0.0 | Complete rework -- Made the solar sails to be diffractive, i.e. added solar collection. Buffed relation of turn/thrust to used engine/outfit space, change from turn/thrust heat to solar heat, and removed reverse thrust. Also removed front sail variants, and KP-3 and KPM-6 panels. Added @2x images. Removed experimental status. |
 | 2025-05-18 | 1.0.0 | Overhaul and Re-publication. |
