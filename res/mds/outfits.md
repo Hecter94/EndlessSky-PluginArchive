@@ -1425,9 +1425,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 11.15 mb | 2025-06-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 11.99 mb | 2025-07-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-21) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-07-28) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1451,6 +1451,7 @@ This plugin contains my former plugins unique.fix (just some vanilla unique adju
 <li> vanilla: gives outfit Lancet Adamant a picture</li>
 <li> vanilla: puts outfit 'Mug' into unique category</li>
 <li> vanilla: puts outfit Trefoil Board into unique category</li>
+<li> vanilla: puts outfit Ka'het Electric Stunner into unique category</li>
 <li> new vanilla: rewrote Skadenga book mission, so you can buy the unique book</li>
 <li> new vanilla: rewrote Wanderer and Remnant missions for human cultural archive, so you get the unique archive chip</li>
 <li> new unique pet: alien "Snuggles" (land somewhere in human space, hidden destination is Danoa system (based on the Alien movies))</li>
@@ -1465,9 +1466,7 @@ This plugin contains my former plugins unique.fix (just some vanilla unique adju
 <li> new unique pet: Squirrel "Trixie" (Heartvalley, 20% chance)</li>
 <li> new unique: "Bawdy Magazines" (during "The Exotic" mission)</li>
 <li> new unique: "Glass Cat" (after collecting all pets)</li>
-<li> new unique: "Bioluminescent Plant" (Aesila, 10% chance)</li>
-<li> new unique: "Bioluminiscent Offspring" (plant followup)</li>
-<li> new unique: "Bio Reactor" (plant followup)</li>
+<li> new unique: "Bioluminescent Plant" (Aesila, 10% chance, several followup missions)</li>
 <li> new unique: "Spaceship Figurine" (Sunracer, 3% chance)</li>
 <li> new unique: "Alien Handgun" (Alix, 10% chance)</li>
 <li> new unique: "Quantum Ring" (Charon Station, 3% chance)</li>
@@ -1475,17 +1474,24 @@ This plugin contains my former plugins unique.fix (just some vanilla unique adju
 <li> new unique: "Scanning Computer" (Overseer, 10% chance)</li>
 <li> new unique: "Hai Survival Rations" (Hai space, 3% chance)</li>
 <li> new unique: "Piloting For Dummies" (Paradise worlds, 3% chance)</li>
-<li> new unique: "External Holo Emitter" (Luna, 6% chance)</li>
+<li> new unique: "External Holo Emitter" (Luna, 6% chance, several followup missions)</li>
 <li> new unique: "Toby the Teddy Bear" (Featherweight, 3% chance)</li>
 <li> new unique: "Toolbox" (Clark, 3% chance)</li>
 <li> new unique: "Korath Pillow" (Laki Nemparu, 3% chance)</li>
 <li> new unique: "Gegno Starmap" (Wye Tzeou, 10% chance)</li>
 <li> new unique: "Nav Buoys" (human outfitter, after discovering shrouded systems, 20% chance)</li>
-<li> new unique: "Derelict Scanner" (Oblivion, 100k credits, 10% chance)</li>
+<li> new unique: "Derelict Scanner" (Oblivion, 100k credits, 10% chance, several followup missions)</li>
+<li> new unique: "Landing Computer" (Ahr, 30% chance, several followup missions)</li>
 </ul>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-07-28<br>
+added landing computer unique (thx to unknown_rawrs for writing the story)<br>
+added plugin re-shrouded in root folder(not active, to revert what nav buoys do)<br>
+vanilla Ka'het Electric Stunner to unique category<br>
+removed derelict fleets/added derelict missions for scanner/with notification<br>
 <br>
 2025-06-21<br>
 added control.station support<br>
