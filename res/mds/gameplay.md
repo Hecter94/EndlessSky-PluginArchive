@@ -974,9 +974,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Jaws/icon.png' height='100'></img><br>
 
 
-[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 8.7 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
+[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 6.44 mb | 2025-08-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
 Author: LixiChronikouOriou | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-19) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-05) <br>
 
 >Completely harmless space wildlife, which you can randomly shoot at. Trust me.
 >
@@ -996,10 +996,15 @@ Completely harmless.
 
 Inspired by the Spaceshark from [Mil-taj Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) by [Demolish238](https://github.com/demolish238), which was derived from the Antaren Thresher in [Cosmic Canidae](https://tearcellgames.itch.io/cosmic-canidae) by [Tearcell](https://tearcellgames.itch.io).
 
+Can be found in Omnis under the Vyrmeids.
+
+In the Thresher's habitat you can find crunched, i.e. derelict, Aberrants with otherwise extremely rare items to plunder.
+
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-05 | 1.2.0 | Habitat expansion, added derelict Aberrants with rare items, tweaked stats, added image for ripping maw, becoming also the new icon. Reduced plugin size further. | 
 | 2025-07-19 | 1.1.0 | Added support for Omnis. |
 | 2025-07-11 | 1.0.0 | Creature relocation, and complete redesign of lore, stats and appearance. Reduced requirements regarding free storage space by 2/3. |
 | 2024-11-02 | - | Release of [Mil-taj Protectorate](https://github.com/demolish238/Mil-taj-Protectorate) |
