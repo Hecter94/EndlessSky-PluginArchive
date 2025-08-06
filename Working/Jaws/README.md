@@ -5,6 +5,8 @@
 
 **Artwork: [Tearcell](https://tearcellgames.itch.io/cosmic-canidae-assets)**
 
+**Thanks**: Zuckung
+
 Adds the Antaren Thresher to Gossamer and neighboring systems, which consumes void fish, asteroids and since recently also Abberants. Once inhabited also Arachi space and even Antares, but out of unknown reasons went extinct there long ago.
 
 Completely harmless.
@@ -19,6 +21,7 @@ In the Thresher's habitat you can find crunched, i.e. derelict, Aberrants with o
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-06 | 1.2.1 | Replaced custom on-death effect with an appropriate vanilla one, such significantly reducing file size. |
 | 2025-08-05 | 1.2.0 | Habitat expansion, added derelict Aberrants with rare items, tweaked stats, added image for ripping maw, becoming also the new icon. Reduced plugin size further. | 
 | 2025-07-19 | 1.1.0 | Added support for Omnis. |
 | 2025-07-11 | 1.0.0 | Creature relocation, and complete redesign of lore, stats and appearance. Reduced requirements regarding free storage space by 2/3. |
