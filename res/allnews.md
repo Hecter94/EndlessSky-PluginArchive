@@ -1,3 +1,4 @@
+2025-08-07 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2025-08-06 | Updated plugin 'Jaws' by LixiChronikouOriou | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#jaws)<br>
 2025-08-05 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
 2025-08-05 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
