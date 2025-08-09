@@ -1,7 +1,7 @@
 
-All Plugins (603)
+All Plugins (604)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (54) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (55) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -10,7 +10,7 @@ All Plugins (603)
 
 ## Gameplay
 
-<p>54 plugins in this category.<p>
+<p>55 plugins in this category.<p>
 
 
  
@@ -2181,6 +2181,65 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Zone.of.Control
+<img src='../../Working/Zone.of.Control/icon.png' height='100'></img><br>
+
+
+[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 38.55 kb | 2025-08-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
+Author: Timeout | Category: Gameplay <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-09) <br>
+
+>Provides a proper way to tribute human space after finishing the main plot without needing to save-edit (Free Worlds) or being dependent on time slots during campaign (Republic & Syndicate). Also handles independent systems by defining own polities to avoid issues with independent mission NPCs. And adds some vanilla mission chain related candy.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Zone of Control ###
+
+**Author: [Timeout](https://github.com/LixiChronikouOriou)**
+
+#### Introduction ####
+In vanilla, tributing human space is a bit tedious because there are no mechanisms for making peace with the factions. The only systems which don't cause issues are the Pirates' ones. To tribute the Free Worlds one has to save-edit afterwards, for tributing Republic and Syndicate one has to use the phases during the main campaign to profit from the reputation reset afterwards. Independent systems like Men cause problems with neutral mission NPCs, so one has to save-edit here, too. Also the monastery planets New Tibet cannot be tributed in vanilla, causing ugly spots on the conquest map.
+
+#### Features ####
+This post-campaign plugin solves this issue by providing a peace-making mechanism after tributing all systems of a faction, and by introducing polities for independent systems. Further, some planets will pay you tribute without a fight after the completion of a mission chain. Also New Tibet and Harmony will pay symbolic tribute of 1 credit to color the map.
+
+Has individual dialogue boxes for each of the following situations.
+
+| Faction | Requires | Results |
+|---------|----------|----------|
+| Free Worlds | Main plot complete. All FW systems except Alioth and Girtab dominated. | Recovered reputation for FW and Militia. Revoked militia license will be restored. New Tibet (Alioth) and Harmony (Girtab) will pay symbolic tribute (1 credit) to color the map properly. |
+| Republic | Main plot complete. All Republican systems dominated. | Recovered reputation for Republic and Deep Security. Revoked navy licenses will **not** be restored. |
+| Syndicate | Main plot complete. All Syndicate systems dominated. | Recovered reputation for Syndicate. |
+| Free State <sup>1</sup> | Main plot complete. All Free State systems dominated. | Recovered reputation for Free State and Militia. |
+| Commonwealth<sup>2</sup> | Main plot complete. All Commonwealth systems dominated. | Recovered reputation for Commonwealth and Militia. |
+
+1) A new polity for the independent system of Men. Includes Antares, if it remains neutral after the campaign.
+2) A new polity if the system Tarazed remains independent after the campaign. Includes also the inhabited systems Dabih and Albireo.
+
+| Planet | Requires | Results |
+|--------|----------|---------|
+| Haven | 90 days after "Ice Queen 8: done", and Haven isn't tributed currently. | Haven dominated. |
+| Norn | 90 days after "Stone to Hope: Thanks: offered", and Norn isn't tributed currently. | Norn dominated. |
+| Poisonwood | 30 days after "event: liberation of Poisonwood" (and done it the proper way) and "main plot completed", and Poisonwood isn't tributed currently. | Poisonwood dominated. |
+| Windblain | 30 days after "Hjlod Remembers Windblain: done", and Windblain isn't tributed currently. | Windblain dominated. |
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2025-08-09 | 1.0.0 | Initial release. |
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 
