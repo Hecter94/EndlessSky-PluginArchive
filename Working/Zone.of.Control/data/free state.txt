@@ -1,0 +1,73 @@
+﻿government "Free State"
+	swizzle 6
+	color "governments: Independent"
+	"player reputation" 10
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly civilian"
+	"friendly disabled hail" "friendly disabled"
+	"hostile hail" "hostile civilian"
+	"hostile disabled hail" "hostile disabled"
+	raid "Large Southern Pirates"
+
+mission "ZOC: Free State Established"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Pirate" "Quarg"
+	to offer
+		has "main plot completed"
+	on offer
+		dialog
+			`BREAKING NEWS`
+			`The citizens of Thule raise the song of freedom and their own existence as a people. Free from foreign bonds, may flourish the Free State and its citizens for many ages to come.`
+		event "ZOC: free state established"
+		fail
+
+event "ZOC: free state established"
+	system "Men"
+		government "Free State"
+
+mission "ZOC: Bloodsea joins Free State"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Free State" "Pirate" "Quarg"
+	to offer
+		has "event: ZOC: free state established"
+		not "event: bloodsea joins free worlds"
+	on offer
+		dialog
+			`SHORT NEWS`
+			`Bloodsea joins the Free State.`
+		event "ZOC: bloodsea joins free state"
+		fail
+
+event "ZOC: bloodsea joins free state"
+	system "Antares"
+		government "Free State"
+
+mission "ZOC: Free State Peace"
+	landing
+	invisible
+	source
+		government "Free State"
+
+	to offer
+		has "event: ZOC: free state established"
+		"tribute: Thule" > 0
+		"tribute: Smuggler's Den" > 0
+		or
+			not "event: bloodsea joins free state"
+			and
+				has "event: bloodsea joins free state"
+				"tribute: Bloodsea" > 0
+	on offer
+		event "ZOC: free state peace"
+		dialog
+			`You receive a message from the Free State Council: "Hail, thrice hail, our new President <first> <last>! Look down in mercy on us! Protect and guide the state, illuminate it from above!" You're not sure whether they take a joke at you, but as they'll pay and give provision to your ships for free, there's no reason to continue the hostilities.`
+		"reputation: Free State" = 1
+		"reputation: Militia" = 1
+		fail
+
+event "ZOC: free state peace"

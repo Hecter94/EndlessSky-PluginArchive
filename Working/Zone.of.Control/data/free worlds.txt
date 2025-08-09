@@ -1,0 +1,86 @@
+﻿mission "ZOC: Militia License Revokement"
+	non-blocking
+	landing
+	invisible
+	to offer
+		"reputation: Free Worlds" < 0
+	on offer
+		dialog
+			`Because of your aggression against the Free Worlds, your Militia license has been revoked by the Senate.`
+		clear "license: Militia"
+		fail
+
+mission "ZOC: Free Worlds Peace"
+	landing
+	invisible
+	source
+		government "Free Worlds"
+	to offer
+		has "main plot completed"
+		"tribute: Bourne" > 0
+		"tribute: Oasis" > 0
+		"tribute: Starcross" > 0
+		"tribute: Shorebreak" > 0
+		"tribute: Rust" > 0
+		"tribute: Poseidos" > 0
+		"tribute: Wyvern Station" > 0
+		"tribute: Dune" > 0
+		"tribute: Skymoot" > 0
+		"tribute: Typhon Station" > 0
+		"tribute: Thunder" > 0
+		"tribute: Zug" > 0
+		"tribute: Mere" > 0
+		"tribute: Longjump" > 0
+		"tribute: Flood" > 0
+		"tribute: Deep" > 0
+		"tribute: Glaze" > 0
+		"tribute: Charon Station" > 0
+		"tribute: Sundrinker" > 0
+		"tribute: Lichen" > 0
+		"tribute: Twinstar" > 0
+		"tribute: Darkstone" > 0
+		"tribute: Solace" > 0
+		"tribute: Winter" > 0
+		"tribute: Cornucopia" > 0
+		"tribute: Trinket" > 0
+		"tribute: Dancer" > 0
+		"tribute: New India" > 0
+		"tribute: New Portland" > 0
+		"tribute: New Holland" > 0
+		"tribute: Clark" > 0
+		"tribute: Oblivion" > 0
+		"tribute: Rand" > 0
+		"tribute: Arabia" > 0
+		"tribute: New Washington" > 0
+		"tribute: Hopper" > 0
+		or
+			not "event: albatross joins free worlds"
+			and 
+				has "event: albatross joins free worlds"
+				"tribute: Albatross" > 0
+		or
+			not "event: bloodsea joins free worlds"
+			and
+				has "event: bloodsea joins free worlds"
+				"tribute: Bloodsea" > 0
+		or
+			not "event: fw tarazed joins"
+			and
+				has "event: fw tarazed joins"
+				"tribute: Wayfarer" > 0
+				"tribute: Arachne Station" > 0
+				"tribute: New Britain" > 0
+				"tribute: Sinter" > 0
+	on offer
+		event "ZOC: free worlds peace"
+		dialog
+			`The Free Worlds' Senate is in disaarray, but in a last effort they are able to agree in commissioning Alondo to negotiate peace with you. He can convince you to stop the hostilities in exchange for keeping all planetary tributes, and the restoration of your landing rights and licenses. At farewell you notice, that Alondo looks very very very disappointed in you.`
+		"reputation: Free Worlds" = 1
+		"reputation: Militia" = 1
+		set "license: Militia"
+		# symbolic values to color the map
+		"tribute: New Tibet" = 1
+		"tribute: Harmony" = 1
+		fail
+
+event "ZOC: free worlds peace"

@@ -1,0 +1,115 @@
+﻿mission "ZOC: Navy License Revokement"
+	non-blocking
+	landing
+	invisible
+	to offer
+		"reputation: Republic" < 0
+	on offer
+		dialog
+			`Because of your attack on the Republic, your Navy licenses have been revoked by the Parliament.`
+		clear "license: Navy"
+		clear "license: Navy Auxiliary"
+		clear "license: Navy Cruiser"
+		clear "license: Navy Carrier"
+		fail
+
+mission "ZOC: Republic Peace"
+	landing
+	invisible
+	source
+		government "Republic"
+	to offer
+		has "main plot completed"
+		# Near Earth
+		"tribute: Earth" > 0
+		"tribute: Chiron" > 0
+		"tribute: New China" > 0
+		"tribute: Mars" > 0
+		"tribute: New Switzerland" > 0
+		"tribute: Geyser" > 0
+		"tribute: Relic" > 0
+		"tribute: Silver" > 0
+		"tribute: Shiver" > 0
+		"tribute: Luna" > 0
+		# Paradise Planets
+		"tribute: Hestia" > 0
+		"tribute: Follower" > 0
+		"tribute: Glory" > 0
+		"tribute: Mainsail" > 0
+		"tribute: Farseer" > 0
+		"tribute: Martini" > 0
+		"tribute: Calda" > 0
+		"tribute: Vail" > 0
+		"tribute: Vinci" > 0
+		"tribute: Geminus" > 0
+		"tribute: Ada" > 0
+		"tribute: Thrall" > 0
+		"tribute: Pearl" > 0
+		"tribute: Hermes" > 0
+		# Deep
+		"tribute: Valhalla" > 0
+		"tribute: Midgard" > 0
+		"tribute: Bivrost" > 0
+		"tribute: Asgard" > 0
+		"tribute: Haze" > 0
+		"tribute: Windblain" > 0
+		"tribute: Alfheim" > 0
+		"tribute: Muspel" > 0
+		"tribute: Norn" > 0
+		"tribute: Memory" > 0
+		"tribute: Helheim" > 0
+		"tribute: Nifel" > 0
+		"tribute: Mani" > 0
+		"tribute: Huginn Station" > 0
+		"tribute: Muninn Station" > 0
+		"tribute: Alexandria" > 0
+		"tribute: Leviathan Station" > 0
+		"tribute: Fenrir Station" > 0
+		"tribute: Phoenix Station" > 0
+		# Far North
+		"tribute: Prime" > 0
+		"tribute: Shroud" > 0
+		"tribute: Maelstrom" > 0
+		"tribute: Skillet" > 0
+		"tribute: Splashdown" > 0
+		"tribute: Pilot" > 0
+		"tribute: Featherweight" > 0
+		"tribute: Farpoint" > 0
+		"tribute: Serpens" > 0
+		"tribute: Triton Station" > 0
+		"tribute: Carbuncle Station" > 0
+		# Dirt Belt
+		"tribute: Bounty" > 0
+		"tribute: Gemstone" > 0
+		"tribute: Heartland" > 0
+		"tribute: Big Sky" > 0
+		"tribute: New Iceland" > 0
+		"tribute: Tundra" > 0
+		"tribute: New Kansas" > 0
+		"tribute: New Austria" > 0
+		"tribute: New Wales" > 0
+		"tribute: New Argentina" > 0
+		"tribute: New Boston" > 0
+		"tribute: New Greenland" > 0
+		"tribute: Ingot" > 0
+		"tribute: New Sahara" > 0
+		"tribute: Hydra Station" > 0
+		or
+			not "event: fw tarazed republic"
+			and
+				has "event: fw tarazed republic"
+				not "event: fw tarazed joins"
+				"tribute: Wayfarer" > 0
+				"tribute: Arachne Station" > 0
+				"tribute: New Britain" > 0
+				"tribute: Sinter" > 0
+	on offer
+		event "ZOC: republic peace"
+		dialog
+			`Parliament sends you a document with 1137 pages, titled "Memorandum on anewed Cooperation". It seems you didn't defeat the Republic in several battles, but presented your arguments. And after thorough consideration, Parliament sees your point and agrees. Please sign here, here and here. And here. But not here, that's for the notary. You messed up, but Parliament sends you a new copy.`
+			`	After signing 142 times your wrist aches, but you're happy to finally get some parsecs between you and those bureaucrats. Only the next day you note, that the new copy only had 1136 pages. After several hours you realize that the missing page was headlined "Licenses".`
+		"reputation: Republic" = 1
+		"reputation: Deep Security" = 1
+		fail
+
+event "ZOC: republic peace"

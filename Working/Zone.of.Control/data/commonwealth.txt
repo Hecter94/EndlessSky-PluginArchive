@@ -1,0 +1,64 @@
+﻿government "Commonwealth"
+	swizzle 6
+	color "governments: Independent"
+	"player reputation" 10
+	"bribe" .05
+	"fine" 0
+	"friendly hail" "friendly civilian"
+	"friendly disabled hail" "friendly disabled"
+	"hostile hail" "hostile civilian"
+	"hostile disabled hail" "hostile disabled"
+	raid "Large Southern Pirates"
+
+mission "ZOC: Commonwealth Established"
+	landing
+	invisible
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Pirate" "Quarg"
+	to offer
+		has "main plot completed"
+		not "event: fw tarazed joins"
+		not "event: fw tarazed republic"
+	on offer
+		dialog
+			`BREAKING NEWS`
+			`The people of New Britain and Wayfarer, and of all the Dominions and Territories thereunto belonging, are henceforth under the governance of the Commonwealth.`
+		event "ZOC: commonwealth established"
+		fail
+
+event "ZOC: commonwealth established"
+	system "Tarazed"
+		government "Commonwealth"
+	system "Dabih"
+		government "Commonwealth"
+	system "Albireo"
+		government "Commonwealth"
+	system "Girtab"
+		government "Commonwealth"
+	system "Umbral"
+		government "Commonwealth"
+	system "Sadr"
+		government "Commonwealth"
+	system "Lurata"
+		government "Commonwealth"
+
+mission "ZOC: Commonwealth Peace"
+	landing
+	invisible
+	source
+		government "Commonwealth"
+	to offer
+		has "event: ZOC: commonwealth established"
+		"tribute: Wayfarer" > 0
+		"tribute: Arachne Station" > 0
+		"tribute: New Britain" > 0
+		"tribute: Sinter" > 0
+	on offer
+		event "ZOC: commonwealth peace"
+		dialog
+			`<first> <last> shall be, and is hereby declared to be, Lord Protector of the Commonwealth of New Britain and Wayfarer, and the dominions thereto belonging, for his life.`
+		"reputation: Commonwealth" = 1
+		"reputation: Militia" = 1
+		fail
+
+event "ZOC: commonwealth peace"
