@@ -1,16 +1,16 @@
 
-All Plugins (604)
+All Plugins (609)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (55) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (56) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
 
 ---
 
 ## Story
 
-<p>80 plugins in this category.<p>
+<p>81 plugins in this category.<p>
 
 
  
@@ -115,7 +115,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: complete <br>
+Status: continued in plugin "licenses" <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
@@ -1533,6 +1533,62 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 ---
 
+### licenses
+<img src='../../Working/licenses/icon.png' height='100'></img><br>
+
+
+[licenses.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/licenses.zip) | 927.65 kb | 2025-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/licenses/) <br>
+Author: zuckung | Category: Story <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-05-08) <br>
+
+>Adds several side missions to acquire unobtainable licenses. See the README for details.
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### licenses
+<br>
+<br>
+Adds several side missions to acquire unobtainable licenses.<br>
+<br>
+<br>
+This plugin gives missions for the 4 navy licenses, the 3 avgi license, the missing incipias license, and the missing successors license.<br>
+<ul>
+  <li>Navy license</li>
+  <li>Navy Auxiliary license</li>
+  <li>Navy Cruiser license</li>
+  <li>Navy Carrier license</li>
+  <li>Avgi Torch License</li>
+  <li>Avgi Atomics License</li>
+  <li>Twilight Guard License</li>
+  <li>Hicemus Conflict License</li>
+  <li>High Houses License</li>
+</ul>
+The Navy mission starts on 'Stormhold' with 500k credits for each license<br>
+The Avgi mission starts 'Navigeo Yard' with 'Avgi: Twilight Escape 3: done' and by 20% chance<br>
+The Incipias mission starts on 'Pon'tes' with 'Incipias: Help The Stranded 2: done'<br>
+The Successors boarding mission starts in 'Maspa-Mavra'<br>
+<br>
+This plugin merges my other plugins 'navy.licenses' and 'avgi.licenses', and adds the other licenses.<br>
+<br>
+For the 8 Gegno licenses use my plugin 'gegno.pirates'. And for a maybe missing Heliarch license use my plugin 'coalition.shopping'.<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2025-05-08<br>
+merged navy.licenses with avgi.licenses and added more content<br>
+typo fixes(by snoggles)<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Little Addon
 
 
@@ -2066,7 +2122,7 @@ initial release<br>
 </blockquote>
 </details>
 
-Status: complete <br>
+Status: continued in plugin "licenses" <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

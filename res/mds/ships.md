@@ -1,16 +1,16 @@
 
-All Plugins (604)
+All Plugins (609)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (38) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (55) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (52)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (56) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (143) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (80) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
 
 ---
 
 ## Ships
 
-<p>143 plugins in this category.<p>
+<p>144 plugins in this category.<p>
 
 
  
@@ -2647,6 +2647,43 @@ A preview of what’s to come
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### ship.merging
+<img src='../../Working/ship.merging/icon.png' height='100'></img><br>
+
+
+[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.23 mb | 2025-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
+Author: zuckung | Category: Ships <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-10) <br>
+
+>This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship. See the README for details.
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>### ship.merging
+<br>
+<br>
+This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship.<br>
+<br>
+There is a new landable alien ship in the new "Dent" system (near the wormhole to the Hai). There you can merge a ship and 3 base versions of that ship into a T1 ship with doubled attributes. Or 3 base versions and a T1 into a T2 with trippled stats. This goes up to T10 ships with 11 times the attributes. Basically you can reduce the amount of ships in your fleet. With 10x T10 ships you have the firepower and other stats of 110 ships of that type, while paying with 310 ships for it. Not cheap, but effective.<br>
+Reduce performance issues by reducing ship amounts or just make single ships more powerful. This plugin makes it possible.<br>
+(idea by unknown_rawrs)<br>
+<br>
+<br>
+Changelog:<br>
+<br>
+2025-08-09<br>
+initial release<br>
+
+
+</blockquote>
+</details>
+
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
