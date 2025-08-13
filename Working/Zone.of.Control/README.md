@@ -4,10 +4,10 @@
 **Author: [Timeout](https://github.com/LixiChronikouOriou)**
 
 #### Introduction ####
-In vanilla, tributing human space is a bit tedious because there are no mechanisms for making peace with the factions. The only systems which don't cause issues are the Pirates' ones. To tribute the Free Worlds one has to save-edit afterwards, for tributing Republic and Syndicate one has to use the phases during the main campaign to profit from the reputation reset afterwards. Independent systems like Men cause problems with neutral mission NPCs, so one has to save-edit here, too. Also the monastery planets New Tibet cannot be tributed in vanilla, causing ugly spots on the conquest map.
+In vanilla, tributing human space is a bit tedious because there are no mechanisms for making peace with the factions. The only systems which don't cause issues are the Pirates' ones. To tribute the Free Worlds one has to save-edit afterwards, for tributing Republic and Syndicate one has to use the phases during the main campaign to profit from the reputation reset afterwards. Independent systems like Men cause problems with neutral mission NPCs, so one has to save-edit here, too. Also the monastery planets New Tibet and Harmony cannot be tributed in vanilla, causing ugly spots on the conquest map.
 
 #### Features ####
-This post-campaign plugin solves this issue by providing a peace-making mechanism after tributing all systems of a faction, and by introducing polities for independent systems. Further, some planets will pay you tribute without a fight after the completion of a mission chain. Also New Tibet and Harmony will pay symbolic tribute of 1 credit to color the map.
+This post-campaign plugin solves this issue by providing a peace-making mechanism after tributing all systems of a faction, and by introducing polities for independent systems. Further, some planets will pay you tribute without a fight after the completion of a mission chain. Also New Tibet and Harmony will pay symbolic tribute of 1 credit to color the map. Deneb will fall to you after having conquered Republic, Syndicate and Free Worlds.
 
 Has individual dialogue boxes for each of the following situations.
 
@@ -27,10 +27,12 @@ Has individual dialogue boxes for each of the following situations.
 | Haven | 90 days after "Ice Queen 8: done", and Haven isn't tributed currently. | Haven dominated. |
 | Norn | 90 days after "Stone to Hope: Thanks: offered", and Norn isn't tributed currently. | Norn dominated. |
 | Poisonwood | 30 days after "event: liberation of Poisonwood" (and done it the proper way) and "main plot completed", and Poisonwood isn't tributed currently. | Poisonwood dominated. |
+| Pugglemug<br>Pugglequat | Has tributed all of Republic, Syndicate and Free Worlds | Both planets of the Deneb system are dominated. |
 | Windblain | 30 days after "Hjlod Remembers Windblain: done", and Windblain isn't tributed currently. | Windblain dominated. |
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-13 | 1.0.1 | Added missing Deneb system. Added militia reputation to be restored after Republic tributed. Now set new reputation after conquest only to 1, if the player's faction reputation really has become smaller than 1. Resized icon. |
 | 2025-08-09 | 1.0.0 | Initial release. |
