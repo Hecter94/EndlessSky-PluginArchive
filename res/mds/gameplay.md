@@ -1,7 +1,7 @@
 
-All Plugins (609)
+All Plugins (610)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (56) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
@@ -10,7 +10,7 @@ All Plugins (609)
 
 ## Gameplay
 
-<p>56 plugins in this category.<p>
+<p>57 plugins in this category.<p>
 
 
  
@@ -727,6 +727,63 @@ N/A[]()  <br>
 
 Status: Playable on 0.9.15 Continuous. <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### Factory.Outlets
+<img src='../../Working/Factory.Outlets/icon.png' height='100'></img><br>
+
+
+[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 27.7 kb | 2025-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
+Author: Lifeyouristhis & Timeout | Category: Gameplay <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-13) <br>
+
+>Adds Factory Outlet Stations around the HQ planets of shipyard companies, where basically only ship hulls (with just few essential outfits) are sold, such reducing the price significantly.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Factory Outlets ###
+
+**Author: [Lifeyouristhis](https://github.com/lifeyouristhis), [Timeout](https://github.com/LixiChronikouOriou)**
+
+**Thanks**: Zuckung
+
+Ship price = hull + outfit prices. This simple equation has the consequence that ships can be overprized when one intends to replace most of the outfits anyway, and one would basically need only the hull.
+
+Based on an idea of [Lifeyouristhis](https://github.com/lifeyouristhis), this plugin introduces *Factory Outlets*. Around the headquarter planets of the shipyard companies stations have been placed which sell their ships with only a minimum sets of outfits, just enough to let a ship fly. For instance, a Leviathan's standard price is 17.1 Mio credits, but at the Betelgeuse Factory Outlet station it's only 9.9 Mio.
+
+No factory outlet for Navy ships, because lore. No factory outlet ship variants for fighter and drones, because senseless.
+
+Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) are supported. More are intended.
+
+| Shipyard | HQ System |
+|--------|----------|
+| Betelgeuse  | Betelgeuse |
+| Lionheart   | Epsilon Leonis |
+| [Louise](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards)      | Alphard |
+| Megaparsec  | Mirfak |
+| [Pickerberry](https://www.moddb.com/mods/rw-ships) | Dabih |
+| Southbound  | Zubeneschamali |
+| Syndicate   | Achernar |
+| Tarazed     | Tarazed |
+| Tycho       | Sol (Luna, on-planet) |
+
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2025-08-13 | 1.0.0 | Complete re-implementation. Ships come with minimal outfits, sold in factory outlet stations around the shipyards' HQ planets. Plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) supported. |
+| 2017-09-14 | - | Last update of the *Bare Ships* plugin. |
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
