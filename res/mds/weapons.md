@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 283.4 kb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 283.27 kb | 2025-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-19) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-20) <br>
 
 >Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
@@ -135,6 +135,7 @@ Also Darcy Manoel's H2H flamethrower, which is based on the same design, was add
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-20 | 1.3.0 | Doubled probability for Barmy's Bunsen-mission. Added event-triggered addition to fleets (Free Worlds, Militia, Southern Pirates). |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
 | 2025-06-12 | 1.1.2 | Fixes. Added series and index specifications. |
 | 2025-06-01 | 1.1.1 | Minor metadata fix. Clarification in torch's description. |

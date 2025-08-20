@@ -1142,9 +1142,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Jaws/icon.png' height='100'></img><br>
 
 
-[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 3.37 mb | 2025-08-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
+[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 3.46 mb | 2025-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
 Author: LixiChronikouOriou | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-06) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-20) <br>
 
 >Completely harmless space wildlife, which you can randomly shoot at. Trust me.
 >
@@ -1174,6 +1174,7 @@ In the Thresher's habitat you can find crunched, i.e. derelict, Aberrants with o
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-20 | 1.2.2 | Changed electrophorus glow effect color to blue. |
 | 2025-08-06 | 1.2.1 | Replaced custom on-death effect with an appropriate vanilla one, such significantly reducing file size. |
 | 2025-08-05 | 1.2.0 | Habitat expansion, added derelict Aberrants with rare items, tweaked stats, added image for ripping maw, becoming also the new icon. Reduced plugin size further. | 
 | 2025-07-19 | 1.1.0 | Added support for Omnis. |
