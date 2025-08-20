@@ -13,6 +13,7 @@ Also Darcy Manoel's H2H flamethrower, which is based on the same design, was add
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-20 | 1.3.0 | Doubled probability for Barmy's Bunsen-mission. Added event-triggered addition to fleets (Free Worlds, Militia, Southern Pirates). |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
 | 2025-06-12 | 1.1.2 | Fixes. Added series and index specifications. |
 | 2025-06-01 | 1.1.1 | Minor metadata fix. Clarification in torch's description. |
