@@ -1,3 +1,4 @@
+2025-08-21 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2025-08-20 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
 2025-08-20 | Updated plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#blended-ships)<br>
 2025-08-20 | Updated plugin 'Jaws' by LixiChronikouOriou | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#jaws)<br>
