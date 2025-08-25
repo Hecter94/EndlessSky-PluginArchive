@@ -568,9 +568,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/landing.images/icon.png' height='100'></img><br>
 
 
-[landing.images.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.zip) | 15.3 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images/) <br>
+[landing.images.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.zip) | 15.43 mb | 2025-08-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-25) <br>
 
 >Replaces all planet landing images with better fitting ones. See the README for details.
 >
@@ -584,10 +584,16 @@ Replaces all planet landing images with better fitting ones.<br>
 <br>
 These images replace the boring vanilla images you see when you've landed on a planet with new, AI generated, better fitting ones. The old ones look like photos from earth or taken from public NASA archives(which they are). According to the description of the planets I tried to generate better fitting, more futuristic, more alien-looking images. And I think that went well :) <br>
 0.10.8 with 472 planets<br>
-See all images <a href='https://github.com/zuckung/endless-sky-plugins-graphics/blob/main/res/md/landing.images.md'>here</a>.<br>
+See all images by clicking the "view images link" on this site.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-25<br>
+corrected size of planet Ahr and Occupas<br>
+<br>
+2025-05-19<br>
+abouttxt, README, icon@2x, plugintxt changes<br>
 <br>
 2024-10-06<br>
 added 53 landing images for 0.10.9 update<br>
@@ -670,9 +676,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/landing.images.highres/icon.png' height='100'></img><br>
 
 
-[landing.images.highres.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.highres.zip) | 67.11 mb | 2024-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.highres/) <br>
+[landing.images.highres.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/landing.images.highres.zip) | 67.35 mb | 2025-08-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/landing.images.highres/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-10-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-25) <br>
 
 >High resolution files for landing.images plugin. See the README for details.
 >
@@ -688,6 +694,12 @@ Adds images with 1440x720 resolution. The landing.images plugin is still needed.
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-25<br>
+corrected size of planet Ahr and Occupas<br>
+<br>
+2025-05-19<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-10-06<br>
 added 53 landing images for 0.10.9 update<br>
