@@ -1322,9 +1322,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Louise.Conglomerate.Shipyards/icon.png' height='100'></img><br>
 
 
-[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.51 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
+[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 2.51 mb | 2025-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
 Author: Loyse | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-07-19) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-27) <br>
 
 >The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Requires Fundamental.Outfit.Expansion.
 >
@@ -1350,6 +1350,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-27 | 1.2.1 | Ship variant fix to align with FOE 1.5.0 |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
 | 2025-06-01 | 1.1.1 | Tweaked stock sale outfits. |
 | 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to [FOE](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansion). Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on Pirate planets. Added shipyard on Makerplace in Hai space. |

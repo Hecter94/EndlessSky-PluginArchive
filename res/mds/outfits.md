@@ -533,9 +533,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
 
 
-[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 5.22 mb | 2025-07-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 4.44 mb | 2025-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
 Author: (many authors) | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-07-19) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-08-27) <br>
 
 >A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
 >
@@ -547,10 +547,14 @@ Author: (many authors) | Category: Outfits <br>
 
 **Authors:** see table
 
-**Thanks:** Kassandra Haruki, Kitteh, Questenberg, Unknown_Rawrs
+**Thanks:** Cend, Kassandra Haruki, Keilaph, Kitteh, Questenberg, Unknown_Rawrs
 
-Other fundamental content can be found in the plugin recommendation list.
+**Notes**
+- Other fundamental content can be found in the plugin recommendation list, especially see [Rumskib](https://github.com/TheGiraffe3/rumskib) for Plasma Turrets (Single, Quad) and Gatling Turrets (Single, Triple, Quad).
+- Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's lore is imho heretic to the original by 1010todd.
+- The original concept for FOE's Shipwright Gear was introduced by Darcy Manoel and  [Hurleveur](https://github.com/Hurleveur) with the Shipwright Gear in [Fluff](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#fluff) resp. the Repair Team in [Unfettered Innovations](https://github.com/Hurleveur/unfettered-innovations). The stats are a mix-up inspired from those. The concept was extended by toolset-slots and evolved into the Hesperian Toolbox.
 
+**Content**
 | Creator | Outfit | Origin |
 |---------|--------|--------|
 | *anonymous* | Afterburner Steerings<br>Heavy Rocket Turret<br>Meteor Turret<br>Sidewinder VLS<br>Dual Mining Laser Turret<br>Hailstorm Missile<br>Rapier Missile<br>Thunderbolt Missile<br>Surveillance Radar<br>Tactical Radar | [RW Extras](https://www.moddb.com/mods/rw-extras/downloads) collection
@@ -560,17 +564,14 @@ Other fundamental content can be found in the plugin recommendation list.
 | [J.C.Hamlin](https://github.com/jchamlin) | Particle Turrets | [Marauder Bactrian](https://github.com/jchamlin/marauder-bactrian) |
 | [Loyse](https://github.com/loiseeer) | Barrage Blaster<br>Flak Cannon | [Louise](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) |
 | [Timeout](https://github.com/LixiChronikouOriou) | Hesperian Toolbox<br>HTS Artisan<br>HTS Crafter<br>Hesperian Red Lager | FOE |
-| [TheronEpic](https://github.com/TheronEpic) | Plasma Turret (Single)<br>Fuel Shields | [Epic Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#epic-outfits) |
+| [TheronEpic](https://github.com/TheronEpic) | Fuel Shields | [Epic Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#epic-outfits) |
 | [	Tommaso Becca](https://github.com/beccabunny) | Slave<br>Active Radar Jammer<br>Interference Emitters<br>Javelin Pod Turret | [Pirate Expansion](https://github.com/beccabunny/Pirate-Expansion) |
-
-The original concept for FOE's Shipwright Gear was introduced by Darcy Manoel and  [Hurleveur](https://github.com/Hurleveur) with the Shipwright Gear in [Fluff](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#fluff) resp. the Repair Team in [Unfettered Innovations](https://github.com/Hurleveur/unfettered-innovations). The stats are a mix-up inspired from those. The concept was extended by toolset-slots and evolved into the Hesperian Toolbox.
-
-__Note__: Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's lore is imho heretic to the original by 1010todd.
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-27 | 1.5.0 | Event fixes and tinkering. Removed Single Plasma Turret, only left its definition for compatibility (instead see [Rumskib](https://github.com/TheGiraffe3/rumskib)). Replaced images for Single and Dual Particle Turrets by ones in modern style. Fixed restocks for Flak Cannon and Javelin Pod Turret. Fuel shields now provide fuel protection. Removed for now the negative leak protection from compressed fuel pod because there's nothing that actually causes leak damage yet. Type 0 Radiant Engines also in advanced Wanderer outfitter, not only basic one. Removed unused files, beautified icon. |
 | 2025-07-19 | 1.4.0 | Added support for Omnis. Plus hotfixes. |
 | 2025-07-11 | 1.3.0 | Added subset of Pirate Expansion, updated with series and index specifications. Updated missile turrets after author's update. Reduced fuel consumption of the fuel shields. |
 | 2025-06-12 | 1.2.1 | Fixes. Tweaked PDP batteries. Added series and index specifications. |
