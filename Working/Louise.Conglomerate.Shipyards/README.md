@@ -17,6 +17,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-27 | 1.2.1 | Ship variant fix to align with FOE 1.5.0 |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
 | 2025-06-01 | 1.1.1 | Tweaked stock sale outfits. |
 | 2025-05-18 | 1.1.0 | Re-balanced the ships and their variants. Moved weapons to [FOE](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansion). Pathfinder got 2 and Bulk Boxer 5 drone bays. Removed shipyards on Pirate planets. Added shipyard on Makerplace in Hai space. |

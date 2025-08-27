@@ -18,22 +18,32 @@ event "fw startup tech available"
 		add "FOE: Plasma Howitzer"
 		add "FOE: Compressed Fuel Pod"
 
+
+mission "FOE: Plasma Repeater Turret Availability Timer"
+	landing
+	invisible
+	to offer
+		has "event: plasma repeater advanced"
+	on offer
+		event "foe: plasma repeater turret available" 30
+		
+event "foe: plasma repeater turret available"
 	
-mission "Plasma Repeater Turret Available"
+mission "FOE: Plasma Repeater Turret Available"
 	landing
 	invisible
 	source
 		government "Free Worlds"
 	to offer
-		has "event: plasma repeater advanced"
+		has "event: foe: plasma repeater turret available"
 	on offer
-		event "plasma repeater turret" 30
+		event "foe: plasma repeater turret"
 		conversation
 			scene "outfit/plasma repeater turret"
 			"Burn, burn, burn! Nothing burns hotter for liberty than hot stuff from KRAZ!"
 				decline
 		
-event "plasma repeater turret"
+event "foe: plasma repeater turret"
 	outfitter "Kraz Advanced"
 		add "FOE: Plasma Repeater Turret"
 
@@ -47,4 +57,4 @@ mission "FOE Startup ZOE FW"
 		has "event: quickstart free worlds shop changes"
 	on offer
 		event "fw startup tech available"
-		event "plasma repeater turret"
+		event "foe: plasma repeater turret"
