@@ -1136,9 +1136,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/gegno.pirates/icon.png' height='100'></img><br>
 
 
-[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 236.92 kb | 2025-03-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
+[gegno.pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/gegno.pirates.zip) | 346.17 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/gegno.pirates/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-03-11) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds a new faction of Gegno pirates which lets you capture Gegno ships, gain Gegno/Scin/Vi reputation, open their planets for travel, loot Gegno licenses and create an outfitter/shipyard for all their gear. See the readme for details.
 >
@@ -1158,6 +1158,10 @@ After gaining full reputation for all planets and obtaining all Gegno licenses y
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-03-11<br>
 gegno pirates are now hidden till the vanilla story is done<br>
@@ -2270,9 +2274,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/planet.map/icon.png' height='100'></img><br>
 
 
-[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 15.21 mb | 2025-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
+[planet.map.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/planet.map.zip) | 15.21 mb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/planet.map/) <br>
 Author: zuckung | Category: Story <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-04-14) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Planetary map travelling concept work: Land on Memory, visit the outfitter and follow the small story line. See the README for details.
 >
@@ -2291,6 +2295,9 @@ Beside showing the concept there is a storyline, 9 cities/outpost, 9 areas with 
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
 <br>
 2025-04-14<br>
 added @2x images<br>
@@ -2318,6 +2325,7 @@ added 4 new locations, with 2 new backgrounds<br>
 <br>
 2024-03-24<br>
 initial release<br>
+
 </blockquote>
 </details>
 

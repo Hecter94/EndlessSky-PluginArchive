@@ -114,9 +114,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/automata.destruction.0percent/icon.png' height='100'></img><br>
 
 
-[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 43.63 kb | 2024-06-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
+[automata.destruction.0percent.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.destruction.0percent.zip) | 106.25 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.destruction.0percent/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-06-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Modifies the self destruction chance of Sestor and Mereti ships to a value of 0.0 (0%). See the readme for details.
 
@@ -132,6 +132,10 @@ You can easily change the values in automata.txt for each ship ('"self destruct"
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+license, README, icon@2x, plugintxt changes<br>
 <br>
 2024-06-07<br>
 text corrections (thx to TheGiraffe3)<br>
@@ -418,9 +422,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/coalition.shopping/icon.png' height='100'></img><br>
 
 
-[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 402.57 kb | 2024-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
+[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 451.32 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-09) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
 >
@@ -434,11 +438,13 @@ Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homewar
 <br>
 Adds all existing coalition outfitters and shipyards to 'Far Home'. Also adds a new shipyard and a new outfitter with missing ships/outfits.<br>
 To start the mission to enable these outfitters and shipyards, you have to join Heliarch or Lunarium (complete the first chapter of these storylines) and own/pay 6/5 million credits. The mission starts anywhere in coalition space. I added this plausible mission to make the plugin feel less cheaty.<br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/coalition.shopping02.jpg' width='400'>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-11-09<br>
 corrected scene size<br>
@@ -760,9 +766,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/more.arfectas/icon.png' height='100'></img><br>
 
 
-[more.arfectas.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.arfectas.zip) | 30.34 kb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.arfectas/) <br>
+[more.arfectas.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.arfectas.zip) | 111.94 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.arfectas/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-04-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds the new system 'Mego Pug', in eastern Bunrodea space. There you can farm rare spawning Arfectas and other more common Pug ships, without ruining your Pug reputation. See the readme for details.
 >
@@ -778,6 +784,10 @@ Added a new system, with new government "Pug Farm" and 3 new fleets. Two fleets 
 <br>
 Changelog:<br>
 <br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+license, README, icon@2x, plugintxt changes<br>
+<br>
 2024-04-14<br>
 moved the system to eastern Bunrodea territory<br>
 renamed the system, adjusted objects, added a planet<br>
@@ -787,6 +797,7 @@ added support for more.boarding.missions<br>
 <br>
 2023-10-17<br>
 added plugin.txt<br>
+
 </blockquote>
 </details>
 

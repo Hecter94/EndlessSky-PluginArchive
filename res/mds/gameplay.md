@@ -96,9 +96,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/automata.in.human.space/icon.png' height='100'></img><br>
 
 
-[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | 35.37 kb | 2024-09-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.in.human.space/) <br>
+[automata.in.human.space.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/automata.in.human.space.zip) | 96.14 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/automata.in.human.space/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-24) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Brings jump drive equipped automata into human space after the wanderer campaign. See the readme for details.
 
@@ -114,6 +114,9 @@ The chance to encounter previous Korath ships or automata is like 50/50. <br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+license, README, icon@2x, plugintxt changes<br>
 <br>
 2024-09-24<br>
 removed jumpdrive from fighters and drones and put them correctly into the carriers<br>
@@ -571,9 +574,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/disable.person.ships/icon.png' height='100'></img><br>
 
 
-[disable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.person.ships.zip) | 19.64 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.person.ships/) <br>
+[disable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.person.ships.zip) | 107.26 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.person.ships/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-02-02) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Disables all person ships. See the README for details.
 >
@@ -606,6 +609,9 @@ Disables all 14 random spawning person ships.<br>
 <br>
 Changelog:<br>
 <br>
+2025-08-29<br>
+license, README, icon@2x, plugintxt changes<br>
+<br>
 2024-02-02<br>
 added 0.10.5 "Patrol Team"<br>
 <br>
@@ -627,9 +633,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/disable.spaceport.repeatables/icon.png' height='100'></img><br>
 
 
-[disable.spaceport.repeatables.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.spaceport.repeatables.zip) | 20.13 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.spaceport.repeatables/) <br>
+[disable.spaceport.repeatables.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.spaceport.repeatables.zip) | 107.77 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.spaceport.repeatables/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Disables all repeatable spaceport missions. I.e. shady passenger transport, drug smuggling, time critical transport or defend planet. See the README for details.
 >
@@ -668,6 +674,9 @@ Disables all spaceport repeatable missions. These missions annoy me. Removes the
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+license, README, icon@2x, plugintxt changes<br>
 <br>
 2024-05-26<br>
 added "Small Scale Delivery" from Kor Efret<br>
@@ -1058,9 +1067,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/highrollers.ltd/icon.png' height='100'></img><br>
 
 
-[highrollers.ltd.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/highrollers.ltd.zip) | 1.02 mb | 2025-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/highrollers.ltd/) <br>
+[highrollers.ltd.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/highrollers.ltd.zip) | 1.06 mb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/highrollers.ltd/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-03-14) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >This plugin adds some casino space stations where you can gamble. See the README for details.
 >
@@ -1077,6 +1086,10 @@ Every won round has a chance of increasing your skill for this special game. The
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-03-14<br>
 typo fix (thx zanano)<br>
@@ -1195,9 +1208,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/jump.gates/icon.png' height='100'></img><br>
 
 
-[jump.gates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/jump.gates.zip) | 1.99 mb | 2025-02-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/jump.gates/) <br>
+[jump.gates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/jump.gates.zip) | 2.11 mb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/jump.gates/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-02-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds a ring of jump gates at the borders of human space to create shortcuts inside human space. See the README for details.
 >
@@ -1214,6 +1227,10 @@ These jump gates are technically just wormholes with new sprites. The jump gate 
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2025-02-07<br>
 removed label images and added wormhole names <br>
@@ -1242,9 +1259,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/kestrel.unlocks/icon.png' height='100'></img><br>
 
 
-[kestrel.unlocks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kestrel.unlocks.zip) | 6.19 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kestrel.unlocks/) <br>
+[kestrel.unlocks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kestrel.unlocks.zip) | 56.8 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kestrel.unlocks/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-18) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Unlocks all Kestrel variants after you have unlocked the first one. See the README for details.
 >
@@ -1260,6 +1277,10 @@ After completing the Kestrel mission chain, every 30 days a new variant is unloc
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+typo fixes by snoggles<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-08-18<br>
 initial release<br>
@@ -1380,9 +1401,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/kor.efret.shipyard/icon.png' height='100'></img><br>
 
 
-[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 29.96 kb | 2024-11-04 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
+[kor.efret.shipyard.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kor.efret.shipyard.zip) | 106.69 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kor.efret.shipyard/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-11-04) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds a shipyard with the three Kor Efret ships to Laki Nemparu(Kashikt) in Kor Efret space. Also adds an outfitter with all outfits of these three ships and some Korath Exiles outfits. See the readme for details.
 
@@ -1463,6 +1484,10 @@ Available outfits:<br>
 <br>
 Changelog:<br>
 <br>
+2025-08-29<br>
+added "Farves GP Hybrid Steering" (by snoggles)<br>
+icon@2x, plugintxt changes<br>
+<br>
 2024-11-04<br>
 added korath ammunition (thx to MeretiJane)<br>
 <br>
@@ -1476,6 +1501,7 @@ added plugin.txt<br>
 added 28 korath outfits(no weapons)<br>
 added new icon.png<br>
 reworked readme<br>
+
 </blockquote>
 </details>
 
@@ -1803,9 +1829,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/no.more.mereti.mines/icon.png' height='100'></img><br>
 
 
-[no.more.mereti.mines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/no.more.mereti.mines.zip) | 80.88 kb | 2025-02-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/no.more.mereti.mines/) <br>
+[no.more.mereti.mines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/no.more.mereti.mines.zip) | 153.32 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/no.more.mereti.mines/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-09-06) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Removes the mines from Mereti ships and replaces them with Husk-Slice and Shield Disruptor guns, as well as Heat Shunts to increase game performance. See the README for details.
 >
@@ -1822,6 +1848,9 @@ Added bunrodean swarm pods change by timeout.fu. Now it fires less, but with mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-09-06<br>
 fixed weapon space bug of Model 256<br>
@@ -2100,9 +2129,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/space.fauna/icon.png' height='100'></img><br>
 
 
-[space.fauna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/space.fauna.zip) | 1.67 mb | 2024-06-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/space.fauna/) <br>
+[space.fauna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/space.fauna.zip) | 1.74 mb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/space.fauna/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-05-03) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Adds space fauna fleets to all systems. Useless but pretty, to make the universe more alive. See the readme for details.
 >
@@ -2116,11 +2145,11 @@ Adds space fauna fleets to all systems. Useless but pretty, to make the universe
 <br>
 There are 14 different organisms, 1 titan-sized, 3 superheavy-sized, 4 heavy-sized, 6 medium-sized. They are coming in fleet sized from 1 to 5 and aren't capturable/plunderable. There are 4 Hive planets around the galaxy, with increased spawn rates and a "queen". Uninhabited systems have a higher spawn chance than inhabited systems.<br>
 <br>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/space.fauna01.jpg' width='400'>
-<img src='https://raw.githubusercontent.com/zuckung/endless-sky-plugins/master/screenshots/space.fauna02.jpg' width='400'>
-<br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+license, README, icon@2x, plugintxt changes<br>
 <br>
 2024-05-03<br>
 added a titan-sized "queen" to each hive system(permanent mission npcs)<br>
@@ -2274,9 +2303,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/tribute.republic/icon.png' height='100'></img><br>
 
 
-[tribute.republic.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/tribute.republic.zip) | 21.57 kb | 2024-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/tribute.republic/) <br>
+[tribute.republic.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/tribute.republic.zip) | 96.28 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/tribute.republic/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2024-08-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
 
 >Allows you to tribute all Republic planets, without losing Free Worlds or Deep Security reputation. See the README for details.
 >
@@ -2294,6 +2323,9 @@ To prevent mission-related changes overwriting this plugin, activate it, when yo
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-29<br>
+icon@2x, plugintxt changes<br>
 <br>
 2024-08-17<br>
 added Wayfarer and Arachne Station<br>
