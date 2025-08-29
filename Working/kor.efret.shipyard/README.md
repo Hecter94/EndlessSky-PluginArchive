@@ -73,6 +73,10 @@ Available outfits:<br>
 <br>
 Changelog:<br>
 <br>
+2025-08-29<br>
+added "Farves GP Hybrid Steering" (by snoggles)<br>
+icon@2x, plugintxt changes<br>
+<br>
 2024-11-04<br>
 added korath ammunition (thx to MeretiJane)<br>
 <br>
