@@ -1259,9 +1259,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/kestrel.unlocks/icon.png' height='100'></img><br>
 
 
-[kestrel.unlocks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kestrel.unlocks.zip) | 56.8 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kestrel.unlocks/) <br>
+[kestrel.unlocks.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/kestrel.unlocks.zip) | 56.87 kb | 2025-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/kestrel.unlocks/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-31) <br>
 
 >Unlocks all Kestrel variants after you have unlocked the first one. See the README for details.
 >
@@ -1273,13 +1273,17 @@ Author: zuckung | Category: Gameplay <br>
 <br>
 Unlocks all Kestrel variants after you have unlocked the first one.<br>
 <br>
-After completing the Kestrel mission chain, every 30 days a new variant is unlocked and you get notified about that. If you activate this plugin after you have already completed the missions, the 30 days timer starts from then.<br>
+After completing the Kestrel mission chain, every 90 days a new variant is unlocked and you get notified about that. If you activate this plugin after you have already completed the missions, the 90 days timer starts from then.<br>
 <br>
 <br>
 Changelog:<br>
 <br>
-2025-08-29<br>
-typo fixes by snoggles<br>
+2025-08-31<br>
+changed time yo next kestrel update to 90 days<br>
+set original missions done on kestrel updates<br>
+<br>
+2025-05-19<br>
+typo fixes by snoogles<br>
 icon@2x, plugintxt changes<br>
 <br>
 2024-08-18<br>

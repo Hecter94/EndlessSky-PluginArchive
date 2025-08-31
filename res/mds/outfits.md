@@ -154,9 +154,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/boss.loot/icon.png' height='100'></img><br>
 
 
-[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.47 mb | 2025-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
+[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.47 mb | 2025-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-07-03) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-31) <br>
 
 >A series of dungeon-like boss encounters for a single ship. With loottables and weapon upgrade mechanism. See the README for details.
 
@@ -178,6 +178,11 @@ This plugin is intended to be experienced like a typical RPG dungeon. You face t
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-08-31<br>
+weapon upgrade fuel dmg fix (thx Kassandra Haruki)<br>
+lowered nanite energy generation (thx to Kitteh)<br>
+added fighters to every boss (thx to Kitteh)<br>
 <br>
 2024-07-03<br>
 initial release<br>
@@ -533,9 +538,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
 
 
-[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 4.44 mb | 2025-08-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 4.45 mb | 2025-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
 Author: (many authors) | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-08-27) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-08-31) <br>
 
 >A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
 >
@@ -547,11 +552,12 @@ Author: (many authors) | Category: Outfits <br>
 
 **Authors:** see table
 
-**Thanks:** Cend, Kassandra Haruki, Keilaph, Kitteh, Questenberg, Unknown_Rawrs
+**Thanks for feedback and discussions:** AvianGeneticist, Cend, Kassandra Haruki, Keilaph, Kitteh, Questenberg, Unknown_Rawrs
 
 **Notes**
 - Other fundamental content can be found in the plugin recommendation list, especially see [Rumskib](https://github.com/TheGiraffe3/rumskib) for Plasma Turrets (Single, Quad) and Gatling Turrets (Single, Triple, Quad).
 - Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's lore is imho heretic to the original by 1010todd.
+- Contains the ES-wide only adaptive reactor -- Synatom's Sentinel Reactor.
 - The original concept for FOE's Shipwright Gear was introduced by Darcy Manoel and  [Hurleveur](https://github.com/Hurleveur) with the Shipwright Gear in [Fluff](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#fluff) resp. the Repair Team in [Unfettered Innovations](https://github.com/Hurleveur/unfettered-innovations). The stats are a mix-up inspired from those. The concept was extended by toolset-slots and evolved into the Hesperian Toolbox.
 
 **Content**
@@ -571,6 +577,7 @@ Author: (many authors) | Category: Outfits <br>
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-08-31 | 1.5.1 | Buffed the power output and made the Sentinel Reactor adaptive to the ship's current heat level. Added FOE-equipped variants to Syndicate fleets. |
 | 2025-08-27 | 1.5.0 | Event fixes and tinkering. Removed Single Plasma Turret, only left its definition for compatibility (instead see [Rumskib](https://github.com/TheGiraffe3/rumskib)). Replaced images for Single and Dual Particle Turrets by ones in modern style. Fixed restocks for Flak Cannon and Javelin Pod Turret. Fuel shields now provide fuel protection. Removed for now the negative leak protection from compressed fuel pod because there's nothing that actually causes leak damage yet. Type 0 Radiant Engines also in advanced Wanderer outfitter, not only basic one. Removed unused files, beautified icon. |
 | 2025-07-19 | 1.4.0 | Added support for Omnis. Plus hotfixes. |
 | 2025-07-11 | 1.3.0 | Added subset of Pirate Expansion, updated with series and index specifications. Updated missile turrets after author's update. Reduced fuel consumption of the fuel shields. |

@@ -481,9 +481,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/control.station/icon.png' height='100'></img><br>
 
 
-[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 2.5 mb | 2025-08-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
+[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2025-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-31) <br>
 
 >Adds a station to the Sol system that offers administrative functions started by the job board. See the README for details.
 
@@ -501,6 +501,7 @@ Current functions:<br>
 info: Show Person Ship List (where you can find them and if they are alive or dead)<br>
 info: City Ship License Guide<br>
 info: Ship Capture Progression Guide<br>
+ingo: Emerald Sword Guide<br>
 QoL: Change Pilot Name (during a pilot's play, keep everything)<br>
 QoL: Planet Attribute Visibility (expand planet's descriptions with the hidden attributes)<br>
 QoL: Change Conditions (currently just a few popular ones)
@@ -513,6 +514,10 @@ Completing the campaigns might not exactly have the same result as if the campai
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-08-31<br>
+added emerald sword guide guide<br>
+added @2x images<br>
 <br>
 2025-06-18<br>
 added city ship guide, capture progression guide, change pilot name, planet attributes, condition changer<br>
