@@ -744,9 +744,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Factory.Outlets/icon.png' height='100'></img><br>
 
 
-[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 27.7 kb | 2025-08-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
+[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 35.64 kb | 2025-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
 Author: Lifeyouristhis & Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-13) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-09-07) <br>
 
 >Adds Factory Outlet Stations around the HQ planets of shipyard companies, where basically only ship hulls (with just few essential outfits) are sold, such reducing the price significantly.
 >
@@ -766,7 +766,7 @@ Based on an idea of [Lifeyouristhis](https://github.com/lifeyouristhis), this pl
 
 No factory outlet for Navy ships, because lore. No factory outlet ship variants for fighter and drones, because senseless.
 
-Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) are supported. More are intended.
+Currently the plugins [DAIS](https://github.com/Daeridanii1/DAIS), [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) are supported. More are intended.
 
 | Shipyard | HQ System |
 |--------|----------|
@@ -778,6 +778,7 @@ Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louis
 | Southbound  | Zubeneschamali |
 | Syndicate   | Achernar |
 | Tarazed     | Tarazed |
+| [Thule](https://github.com/Daeridanii1/DAIS) | Men (Thule, on-planet) |
 | Tycho       | Sol (Luna, on-planet) |
 
 
@@ -785,8 +786,9 @@ Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louis
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-09-07 | 1.1.0 | Added support for [DAIS](https://github.com/Daeridanii1/DAIS). Adjusted icon. |
 | 2025-08-13 | 1.0.0 | Complete re-implementation. Ships come with minimal outfits, sold in factory outlet stations around the shipyards' HQ planets. Plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) supported. |
-| 2017-09-14 | - | Last update of the *Bare Ships* plugin. |
+| 2017-09-14 | - | Last update of the *Bare Ships* plugin by Lifeyouristhis. |
 
 </blockquote>
 </details>
@@ -1155,9 +1157,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Jaws/icon.png' height='100'></img><br>
 
 
-[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 3.46 mb | 2025-08-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
+[Jaws.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jaws.zip) | 3.33 mb | 2025-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jaws/) <br>
 Author: LixiChronikouOriou | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-20) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-09-07) <br>
 
 >Completely harmless space wildlife, which you can randomly shoot at. Trust me.
 >
@@ -1187,6 +1189,7 @@ In the Thresher's habitat you can find crunched, i.e. derelict, Aberrants with o
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-09-07 | 1.2.3 | Adjusted icon. |
 | 2025-08-20 | 1.2.2 | Changed electrophorus glow effect color to blue. |
 | 2025-08-06 | 1.2.1 | Replaced custom on-death effect with an appropriate vanilla one, such significantly reducing file size. |
 | 2025-08-05 | 1.2.0 | Habitat expansion, added derelict Aberrants with rare items, tweaked stats, added image for ripping maw, becoming also the new icon. Reduced plugin size further. | 
@@ -2394,9 +2397,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Zone.of.Control/icon.png' height='100'></img><br>
 
 
-[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 34.3 kb | 2025-08-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
+[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 46.09 kb | 2025-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
 Author: Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-08-13) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-09-07) <br>
 
 >Provides a proper way to tribute human space after finishing the main plot without needing to save-edit (Free Worlds) or being dependent on time slots during campaign (Republic & Syndicate). Also handles independent systems by defining own polities to avoid issues with independent mission NPCs. And adds some vanilla mission chain related candy.
 >
@@ -2419,13 +2422,13 @@ Has individual dialogue boxes for each of the following situations.
 | Faction | Requires | Results |
 |---------|----------|----------|
 | Free Worlds | Main plot complete. All FW systems except Alioth and Girtab dominated. | Recovered reputation for FW and Militia. Revoked militia license will be restored. New Tibet (Alioth) and Harmony (Girtab) will pay symbolic tribute (1 credit) to color the map properly. |
-| Republic | Main plot complete. All Republican systems dominated. | Recovered reputation for Republic and Deep Security. Revoked navy licenses will **not** be restored. |
+| Republic | Main plot complete. All Republican systems dominated. | Recovered reputation for Republic, Deep Security and Militia. Revoked navy licenses will **not** be restored. |
 | Syndicate | Main plot complete. All Syndicate systems dominated. | Recovered reputation for Syndicate. |
 | Free State <sup>1</sup> | Main plot complete. All Free State systems dominated. | Recovered reputation for Free State and Militia. |
 | Commonwealth<sup>2</sup> | Main plot complete. All Commonwealth systems dominated. | Recovered reputation for Commonwealth and Militia. |
 
 1) A new polity for the independent system of Men. Includes Antares, if it remains neutral after the campaign.
-2) A new polity if the system Tarazed remains independent after the campaign. Includes also the inhabited systems Dabih and Albireo.
+2) A new polity, emerging if the system Tarazed has not joined the Free Worlds during the campaign. Includes also the inhabited systems Dabih and Albireo.
 
 | Planet | Requires | Results |
 |--------|----------|---------|
@@ -2439,8 +2442,11 @@ Has individual dialogue boxes for each of the following situations.
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-09-07 | 1.1.0 | Tarazed will become independent as the *Commonwealth* after the main campaign, if it hasn't joined the FW. Buffed Commonwealth defense. Plus some maintenance stuff. |
 | 2025-08-13 | 1.0.1 | Added missing Deneb system. Added militia reputation to be restored after Republic tributed. Now set new reputation after conquest only to 1, if the player's faction reputation really has become smaller than 1. Resized icon. |
 | 2025-08-09 | 1.0.0 | Initial release. |
+
+
 
 </blockquote>
 </details>
