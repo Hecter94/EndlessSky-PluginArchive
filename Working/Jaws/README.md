@@ -21,6 +21,7 @@ In the Thresher's habitat you can find crunched, i.e. derelict, Aberrants with o
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-09-07 | 1.2.3 | Adjusted icon. |
 | 2025-08-20 | 1.2.2 | Changed electrophorus glow effect color to blue. |
 | 2025-08-06 | 1.2.1 | Replaced custom on-death effect with an appropriate vanilla one, such significantly reducing file size. |
 | 2025-08-05 | 1.2.0 | Habitat expansion, added derelict Aberrants with rare items, tweaked stats, added image for ripping maw, becoming also the new icon. Reduced plugin size further. | 

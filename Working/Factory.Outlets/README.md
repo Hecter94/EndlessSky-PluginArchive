@@ -11,7 +11,7 @@ Based on an idea of [Lifeyouristhis](https://github.com/lifeyouristhis), this pl
 
 No factory outlet for Navy ships, because lore. No factory outlet ship variants for fighter and drones, because senseless.
 
-Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) are supported. More are intended.
+Currently the plugins [DAIS](https://github.com/Daeridanii1/DAIS), [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) are supported. More are intended.
 
 | Shipyard | HQ System |
 |--------|----------|
@@ -23,6 +23,7 @@ Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louis
 | Southbound  | Zubeneschamali |
 | Syndicate   | Achernar |
 | Tarazed     | Tarazed |
+| [Thule](https://github.com/Daeridanii1/DAIS) | Men (Thule, on-planet) |
 | Tycho       | Sol (Luna, on-planet) |
 
 
@@ -30,5 +31,6 @@ Currently the plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louis
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-09-07 | 1.1.0 | Added support for [DAIS](https://github.com/Daeridanii1/DAIS). Adjusted icon. |
 | 2025-08-13 | 1.0.0 | Complete re-implementation. Ships come with minimal outfits, sold in factory outlet stations around the shipyards' HQ planets. Plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) supported. |
-| 2017-09-14 | - | Last update of the *Bare Ships* plugin. |
+| 2017-09-14 | - | Last update of the *Bare Ships* plugin by Lifeyouristhis. |
