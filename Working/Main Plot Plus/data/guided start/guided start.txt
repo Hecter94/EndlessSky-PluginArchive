@@ -1,6 +1,7 @@
 mission "Guided Start"
     deadline 90
     invisible
+    priority
     landing
     repeat
     to offer
@@ -13,6 +14,7 @@ mission "Guided Start"
         not "Guided Start: active"
         has "enabled guided start"
         "guided start: unsure" <= 3
+        "days since epoch" - "guided start defer date" > 30
     to complete
         never
     source
@@ -53,6 +55,8 @@ mission "Guided Start"
                         not "navy campaign when"
                 `(Actually, don't choose a side)`
                     goto "not chosen sides"
+                `(Remind me in 30 days)`
+                    goto "abstain"
 
             action
                 set "navy campaign when"
@@ -140,6 +144,11 @@ mission "Guided Start"
             label "last attempt"
             `Conditions set. This is your last attempt to choose neutrality. If you reject neutrality and don't find a way to choose a side the standard way, the war will never be finished. To choose neutrality, head to one of the near Earth planets where a system that cannot be navigated to by hyperdrive is included inside the circle that appears on your map around the system you are in. If you need clearance or aren't sure where these are or what this means, head over to this planet's spaceport to ping a suitable destination on your map and receive clearance.`
                 accept
+            label "abstain"
+            action
+                "guided start defer date" = "days since epoch"
+            `Got it. You will be reminded in 30 days.`
+                decline
     on enter
     on enter
         set "neutral spaceport deadline"
