@@ -1,0 +1,71 @@
+﻿mission "Covalent Proton Turret Available"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Syndicate"
+	to offer
+		not "event: covalent proton turret available" # backward compatibility
+		has "event: initial deployment 2"
+	on offer
+		event "foe: covalent proton turret available"
+		conversation
+			scene "outfit/covalent proton turret"
+			`Need to crush some nasty bureaucrats? Or some evil secessionists? One way or the other, the Covalent Proton Turret is the tool of choice! Two Proton guns in one turret! With covalent protons! Don't be so vanilla, get one NOW!`
+				decline
+
+
+mission "Sentinel Reactor Available"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Syndicate"
+	to offer
+		not "event: sentinel reactor available" # backward compatibility
+		has "event: initial deployment 3"
+	on offer
+		event "foe: sentinel reactor available"
+		event "foe: sentinel reactor deployed"
+		conversation
+			scene "outfit/sentinel reactor"
+			`Your shiny new weaponry draws a little too much energy? Don't despair, buy a shiny new Sentinel Reactor! With 20% more neutrons!`
+				decline
+
+
+mission "FOE: Syndicate Tech Available"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "free worlds reconciliation"
+		has "event: pug flee"
+		not "installed plugin: Lost in Midnight"
+	on offer
+		event "syndicate tech available"
+		fail
+
+
+mission "FOE: Syndicate Advanced Fleet Deployment"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: syndicate tech available"
+	on offer
+		event "foe: syndicate advanced fleet deployment"
+		fail
+
+
+mission "FOE: Quickstart Syndicate"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Syndicate"
+	to offer
+		has "event: quickstart free worlds shop changes"
+	on offer
+		event "foe: covalent proton turret available"
+		event "foe: sentinel reactor available"
+		event "foe: sentinel reactor deployed"
