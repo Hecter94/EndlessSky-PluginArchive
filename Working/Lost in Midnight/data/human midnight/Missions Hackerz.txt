@@ -258,8 +258,9 @@ mission "Hackerz"
 				has "outfit (flagship installed): Security Node"
 			action
 				set "You've been hacked"
+				music ambient/modem
 			scene "ship/science drone"
-			`	Your ship's hyperspace network relay starts making unusual sounds. After a moment it returns to normal...`
+			`	Your ship's hyperspace network relay starts making unusual sounds...`
 				accept
 			label circuit
 			action
@@ -1033,6 +1034,7 @@ mission "Hackerz 7"
 					has "tribute: I.S.S."
 			action
 				"tribute: Earth" <?= 0
+				"reputation: Republic" >?= 0
 			scene "outfit/unknown"
 			`	Suddenly, you receive a message from Earth's government. "The Republic appreciates that you've released Earth from your tribute requirements." You don't recall making an offer to relinquish the tribute on Earth...`
 				goto syndicate
@@ -1051,13 +1053,16 @@ mission "Hackerz 7"
 				"tribute: Mars" <?= 0
 				"tribute: I.S.S." <?= 0
 			`	You release tribute from the rest of Sol...`
+			`	Shortly after, you receive a message of gratitude from the Republic.`
 			label syndicate
 			branch FW
 				not "tribute: Foundry"
+				not "tribute: Hephaestus"
 			branch hephaestus
 				has "tribute: Hephaestus"
 			action
 				"tribute: Foundry" <?= 0
+				"reputation: Syndicate" >?= 0
 			scene "outfit/unknown"
 			`	You get an alert informing you that a message from the Syndicate has arrived. "The Syndicate is grateful that you've released Foundry from your tribute requirements." You don't recall making an offer to relinquish the tribute on Foundry...`
 				goto FW
@@ -1074,6 +1079,7 @@ mission "Hackerz 7"
 				"reputation: Syndicate" >?= 10
 				"tribute: Hephaestus" <?= 0
 			`	You release tribute from Hephaestus...`
+			`	Shortly after, you receive a message of gratitude from the Syndicate.`
 			label FW
 			branch end
 				not "tribute: Bourne"
@@ -1095,6 +1101,7 @@ mission "Hackerz 7"
 				"reputation: Free Worlds" >?= 10
 				"tribute: Bourne" <?= 0
 			`	You release tribute from Bourne...`
+			`	Shortly after, you receive a message of gratitude from the Free Worlds.`
 			label end
 			scene "outfit/attention"
 			`	After completing launch preparations you get a message, but the data inside is corrupted...`

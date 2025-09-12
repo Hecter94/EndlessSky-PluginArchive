@@ -498,3 +498,1227 @@ mission "Quarg Tech: Antimatter Core (Syndicate) 2"
 		outfit "Quantum Shield Generator (Damaged)" -1
 		set "Shared Quarg technology with Syndicate"
 		fail
+
+
+mission "Midnight Quarg Lagrange Ouroboros"
+	job
+	name "Research Quarg Ringworld"
+	description "Go to <waypoints> and scan the cargo of one of the larger Quarg freighters there. Then report back to <destination>. Payment is <payment>."
+	source
+		attributes "deep"
+	waypoint Enif
+	to offer
+		has "Lagrange Ring: Cargo: done"
+		or
+			and
+				not "Midnight Quarg Lagrange Ouroboros: done"
+				random < 25
+			and
+				has "Midnight Quarg Lagrange Ouroboros: done"
+				random < 5
+	on enter Enif
+		conversation
+			scene "thumbnail/quarg ouroboros-thumb" 
+			`	You're in luck. Among the human freighters bringing materials to Lagrange is a Quarg ship that dwarfs them all. This must be one of the freighters you are supposed to scan.` 
+	npc
+		government "Merchant"
+		system Enif
+		personality waiting staying appeasing uninterested
+			confusion 30
+		fleet
+			names "civilian"
+			cargo 3
+			commodities "Metal" "Heavy Metals" "Industrial"
+			variant
+				"Behemoth"
+				"Mule"
+				"Boxwing"
+				"Bulk Freighter"
+				"Container Transport"
+				"Modified Firebird"
+				"Bastion"
+				"Hauler III"
+				"Hauler II"
+				"Hauler"
+				"Sunder"
+				"Mining Drone" 2
+				"Heavy Freighter"
+				"Freighter"
+				"Light Freighter"
+				"Argosy"
+				"Clipper"
+				"Modified Enforcer"
+				"Star Barge"
+				"Scrounger"
+	npc
+		government "Quarg"
+		system Enif
+		personality waiting staying uninterested
+		fleet
+			names "quarg"
+			cargo 1
+			variant 1
+				"Quarg Drake" 4
+				"Quarg Zilant" 3
+			variant 1
+				"Quarg Drake" 3
+				"Quarg Zilant" 4
+	npc "scan cargo"
+		government "Quarg"
+		system Enif
+		personality waiting staying uninterested
+		fleet
+			names "quarg"
+			cargo 3
+			commodities "Metal" "Heavy Metals"
+			outfitters "Yottrite"
+			variant
+				"Quarg Ouroboros"
+	on complete
+		payment 1000000
+		dialog `You hand the scanner data to a group of scientists in exchange for <payment>. "Hopefully this data will shed some light on the secrets behind the Quarg and their ringworlds."`
+
+
+mission "Midnight Quarg Gorgon"
+	landing
+	invisible
+	source "Querii'ka"
+	to offer
+		or
+			not "Randomize Midnight Quarg Gorgon"
+			and
+				has "Randomize Midnight Quarg Gorgon"
+				random < 35 - "quarg gorgon deferred"
+	on offer
+		conversation
+			scene "thumbnail/skylark"
+			`	While exploring the abandoned ringworld, you find an intact hull of an old Quarg ship. But many of the internal outfits are damaged beyond repair. Do you want to try salvaging this derelict?`
+			choice
+				`	(Try salvaging the ship.)`
+				`	(Forget about it.)`
+					defer
+			`	You take note of the various outfits which need to be replaced. You're not sure where to even start looking. The Quarg are unlikely to help. You may have to steal the outfits or negotiate with someone who already has.`
+				accept
+	on defer
+		set "Randomize Midnight Quarg Gorgon"
+		"quarg gorgon deferred" += 5
+	to complete
+		has "Midnight Quarg Gorgon - Skylance: done"
+		has "Midnight Quarg Gorgon - Stratospear: done"
+		has "Midnight Quarg Gorgon - Phalanx System: done"
+		has "Midnight Quarg Gorgon - Ancile Shield Generator: done"
+		has "Midnight Quarg Gorgon - Peripheral Repair Hub: done"
+		has "Midnight Quarg Gorgon - Singularity Core: done"
+		has "Midnight Quarg Gorgon - Quantum Vacuum Battery: done"
+		has "Midnight Quarg Gorgon - Small Graviton Thruster: done"
+		has "Midnight Quarg Gorgon - Medium Graviton Steering: done"
+		has "Midnight Quarg Gorgon - Crew: done"
+	on complete
+		event "add gorgon to quarg fleets"
+		give ship "Quarg Gorgon" "Gorgon"
+		conversation
+			scene "thumbnail/skylark"
+			`You've installed all the outfits and have assembled a crew able to pilot it. The Quarg Gorgon is ready for takeoff!"`
+
+event "add gorgon to quarg fleets"
+	fleet "Quarg Ringworld Traffic"
+		add variant 1
+			"Quarg Gorgon"
+	fleet "Quarg Logistics"
+		add variant 1
+			"Quarg Gorgon"
+
+mission "Midnight Quarg Gorgon - Skylance"
+	non-blocking
+	landing
+	name "Gorgon: Skylance"
+	description "Bring a Skylance to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Skylance"
+	on complete
+		outfit "Skylance" -1
+		conversation
+			scene "outfit/quarg skylance"
+			`You've installed the Skylance and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Pirate Sales - Skylance"
+	invisible
+	minor
+	source
+		government "Pirate" "Independent"
+		attributes "south"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon - Skylance: active"
+		random < 35 - ( 5 * "Midnight Gorgon Pirate Sales - Skylance: deferred" )
+		"credits" > 18000000
+	on offer
+		conversation
+			scene "outfit/quarg skylance"
+			`	An arms dealer is trying to sell a Quarg weapon. It's a Skylance, probably looted off a disabled Quarg ship or otherwise acquired illegally. "Would you be interested in this exotic weapon? Made by the Quarg, it will be a formidable addition to your flagship's armaments. The price is 18,000,000 credits.`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label negotiate
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label shootout
+			branch "victory"
+				random < 50
+			`	You try to take the weapon by force, but die during the shootout.`
+				die
+			label victory
+			`	You and your crew manage to overpower the arms dealer's crew and steal the Skydagger!`
+				accept
+	on decline
+		"Midnight Market" ++
+		payment -18000000
+		outfit "Skylance" 1
+	on accept
+		"Midnight Market" -= 3
+		outfit "Skylance" 1
+	on enter
+		dialog `Looks like the arms dealer's friends were waiting to pay you back for stealing that Skylance.`
+	npc evade
+		government "Bounty Hunter"
+		personality waiting vindictive coward
+		fleet "L. Advanced Independent (Killable)"
+		fleet "S. Advanced Independent (Killable)" 4
+
+mission "Midnight Quarg Gorgon - Stratospear"
+	non-blocking
+	landing
+	name "Gorgon: Stratospear"
+	description "Bring a Stratospear to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Stratospear"
+	on complete
+		outfit "Stratospear" -1
+		conversation
+			scene "outfit/quarg stratospear"
+			`You've installed the Stratospear and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Pirate Sales - Stratospear"
+	invisible
+	minor
+	source
+		government "Pirate"
+		attributes "core"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon - Stratospear: active"
+		random < 35 - ( 5 * "Midnight Gorgon Pirate Sales - Stratospear: deferred" )
+		"credits" > 9000000
+	on offer
+		conversation
+			scene "outfit/quarg stratospear"
+			`	An arms dealer is trying to sell a Quarg weapon. It's a Stratospear, probably looted off a disabled Quarg ship or otherwise acquired illegally. "Would you be interested in this exotic weapon? Made by the Quarg, it will be a formidable addition to your flagship's armaments. The price is 9,000,000 credits.`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label negotiate
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label shootout
+			branch "victory"
+				random < 50
+			`	You try to take the weapon by force, but die during the shootout.`
+				die
+			label victory
+			`	You and your crew manage to overpower the arms dealer's crew and steal the Stratospear!`
+				accept
+	on decline
+		"Midnight Market" ++
+		payment -9000000
+		outfit "Stratospear" 1
+	on accept
+		"Midnight Market" -= 3
+		outfit "Stratospear" 1
+	on enter
+		dialog `Looks like the arms dealer's friends were waiting to pay you back for stealing that Stratospear.`
+	npc evade
+		government "Bounty Hunter"
+		personality waiting vindictive coward
+		fleet "L. Advanced Independent (Killable)"
+		fleet "S. Advanced Independent (Killable)" 4
+
+mission "Midnight Quarg Gorgon - Phalanx System"
+	non-blocking
+	landing
+	name "Gorgon: Phalanx System"
+	description "Bring a Phalanx System to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Phalanx System"
+	on complete
+		outfit "Phalanx System" -1
+		conversation
+			scene "outfit/quarg countermeasures"
+			`You've installed the Phalanx System and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Pirate Sales - Phalanx System"
+	invisible
+	minor
+	source
+		government "Pirate"
+		attributes "north"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon - Phalanx System: active"
+		random < 35 - ( 5 * "Midnight Gorgon Pirate Sales - Phalanx System: deferred" )
+		"credits" > 1000000
+	on offer
+		conversation
+			scene "outfit/quarg countermeasures"
+			`	An arms dealer is trying to sell a Quarg weapon. It's a Phalanx System, probably looted off a disabled Quarg ship or otherwise acquired illegally. "Would you be interested in this exotic weapon? Made by the Quarg, it will be a formidable addition to your flagship's armaments. The price is 1,000,000 credits.`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label negotiate
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this for free."`
+					goto shootout
+			`	"Thank you for your purchase!"`
+				decline
+			label shootout
+			branch "victory"
+				random < 50
+			`	You try to take the weapon by force, but die during the shootout.`
+				die
+			label victory
+			`	You and your crew manage to overpower the arms dealer's crew and steal the Phalanx System!`
+				accept
+	on decline
+		"Midnight Market" ++
+		payment -1000000
+		outfit "Phalanx System" 1
+	on accept
+		"Midnight Market" -= 3
+		outfit "Phalanx System" 1
+	on enter
+		dialog `Looks like the arms dealer's friends were waiting to pay you back for stealing that Phalanx System.`
+	npc evade
+		government "Bounty Hunter"
+		personality waiting vindictive coward
+		fleet "L. Advanced Independent (Killable)"
+		fleet "S. Advanced Independent (Killable)" 4
+
+mission "Midnight Gorgon Angry Squirrels - Phalanx System"
+	landing
+	source "Darkcloak"
+	to offer
+		has "Angry Squirrels: Countermeasures 3: done"
+		"credits" >= 1000000
+		random < 5 + ( "Midnight Quarg Gorgon - Phalanx System: active" * 65 )
+	on offer
+		conversation
+			scene "outfit/quarg countermeasures"
+			`	You notice an absurd number of Phalanx Systems stacked on a cargolift. Next to the quarg devices is a familiar Unfettered weapons developer. Ask if you can buy one?`
+			choice
+				`	(Offer to buy one.)`
+				`	(Do not offer to buy one.)`
+					decline
+			`	"You want one?" Go Foo Koo perks up. "Sure!" He hands you the data pad. The price is the same as what you charged him originally. "Thank you. I over ordered these devices and ended up in debt! This sale really helps!"`
+			`	As you prepare to haul your purchase back to your ship, you wonder what he's going to do with the rest of the devices.`
+				accept
+	on accept
+		payment -1000000
+		outfit "Phalanx System" 1
+		fail
+
+mission "Midnight Quarg Gorgon - Singularity Core"
+	non-blocking
+	landing
+	name "Gorgon: Singularity Core"
+	description "Bring a Singularity Core to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Singularity Core"
+	on complete
+		outfit "Singularity Core" -1
+		conversation
+			scene "outfit/quarg singularity core"
+			`You've installed the Singularity Core and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Heliarch Scouting - Singularity Core"
+	minor
+	name "Heliarch Espionage"
+	description "Escort the <npc> to <waypoints> to observe the ringworld. Then escort them back to <destination>."
+	source
+		government "Heliarch"
+		attributes "station"
+	waypoint Enif
+	to offer
+		has "Midnight Quarg Gorgon - Singularity Core: active"
+		has "visited system: Enif"
+		random < 35 - ( 5 * "Midnight Gorgon Heliarch Scouting - Singularity Core: deferred" )
+	on offer
+		conversation
+			scene "outfit/quarg singularity core"
+			`	You spot Heliarch technicians unloading several Singularity Cores from a freighter. Ask if you can buy one?`
+			choice
+				`	(Ask if you can buy one.)`
+				`	(Just observe.)`
+					goto observe
+			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg power system we can."`
+			choice
+				`	"What do you want me to do?"`
+			scene "thumbnail/heliarch hunter"
+			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." It should be easy enough to take them to the ringworld near Lagrange.`
+				accept
+			label observe
+			`	The technicians finish unloading the power systems and cart them away. You try following them for some distance, but they eventually pass through a door that locks behind them. A passing security patrol stops to watch as you head back towards the spaceport.`
+				defer
+	on enter Enif
+		dialog `The Quarg appear to regard the <npc> as part of your fleet. The Heliarch ask you to wait while they conduct their observations. Hopefully the Quarg don't see through their ruse...`
+	npc
+		government "Quarg"
+		system Enif
+		personality waiting staying uninterested
+		fleet
+			names "quarg"
+			variant
+				"Quarg Guivre"
+	npc disable
+		government "Test Dummy"
+		system Enif
+		personality unconstrained heroic nemesis
+		ship "Fast Timer Ship" "Timer"
+		dialog `The Heliarchs complete their observations. Escort them back to <destination>.`
+	npc accompany save
+		government "Escort"
+		personality target escort
+		fleet
+			names "heliarch"
+			variant
+				"Heliarch Hunter Ion (Jump)"
+	on complete
+		outfit "Singularity Core" 1
+		conversation
+			scene "outfit/quarg singularity core"
+			`	You return with the Heliarch surveillance team and are given the Singularity Core you asked for.`
+
+mission "Midnight Quarg Gorgon - Ancile Shield Generator"
+	non-blocking
+	landing
+	name "Gorgon: Ancile Shield Generator"
+	description "Bring a Ancile Shield Generator to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Ancile Shield Generator"
+	on complete
+		outfit "Ancile Shield Generator" -1
+		conversation
+			scene "outfit/quarg ancile shield generator"
+			`You've installed the Ancile Shield Generator and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator"
+	minor
+	name "Heliarch Espionage"
+	description "Escort the <npc> to <waypoints> to observe the ringworld. Then escort them back to <destination>."
+	source
+		government "Heliarch"
+		attributes "station"
+	waypoint "Hevru Hai"
+	to offer
+		has "Midnight Quarg Gorgon - Ancile Shield Generator: active"
+		has "visited system: Hevru Hai"
+		random < 35 - ( 5 * "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator: deferred" )
+	on offer
+		conversation
+			scene "outfit/quarg ancile shield generator"
+			`	You spot Heliarch technicians unloading several Ancile Shield Generators from a freighter. Ask if you can buy one?`
+			choice
+				`	(Ask if you can buy one.)`
+				`	(Just observe.)`
+					goto observe
+			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg shield system we can."`
+			choice
+				`	"What do you want me to do?"`
+			scene "thumbnail/heliarch hunter"
+			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." There should be a ringworld in Hai space...`
+				accept
+			label observe
+			`	The technicians finish unloading the shield systems and cart them away. You try following them for some distance, but they eventually pass through a door that locks behind them. A passing security patrol stops to watch as you head back towards the spaceport.`
+				defer
+	on enter "Hevru Hai"
+		dialog `The Quarg appear to regard the <npc> as part of your fleet. The Heliarch ask you to wait while they conduct their observations. Hopefully the Quarg don't see through their ruse...`
+	npc
+		government "Quarg"
+		system "Hevru Hai"
+		personality entering staying uninterested timid
+		fleet
+			names "quarg"
+			variant
+				"Quarg Tiamat"
+				"Quarg Cockatrice" 2
+	npc disable
+		government "Test Dummy"
+		system "Hevru Hai"
+		personality unconstrained heroic nemesis
+		ship "Fast Timer Ship" "Timer"
+		dialog `The Heliarchs complete their observations. Escort them back to <destination>.`
+	npc accompany save
+		government "Escort"
+		personality target escort
+		fleet
+			names "heliarch"
+			variant
+				"Heliarch Hunter Ion (Jump)"
+	on complete
+		outfit "Ancile Shield Generator" 1
+		conversation
+			scene "outfit/quarg ancile shield generator"
+			`	You return with the Heliarch surveillance team and are given the Ancile Shield Generator you asked for.`
+
+mission "Midnight Quarg Gorgon - Peripheral Repair Hub"
+	non-blocking
+	landing
+	name "Gorgon: Peripheral Repair Hub"
+	description "Bring a Peripheral Repair Hub to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Peripheral Repair Hub"
+	on complete
+		outfit "Peripheral Repair Hub" -1
+		conversation
+			scene "outfit/quarg peripheral repair hub"
+			`You've installed the Peripheral Repair Hub and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub"
+	minor
+	name "Heliarch Espionage"
+	description "Escort the <npc> to <waypoints> to observe the ringworld. Then escort them back to <destination>."
+	source
+		government "Heliarch"
+		attributes "station"
+	waypoint "Dokdobaru"
+	to offer
+		has "Midnight Quarg Gorgon - Peripheral Repair Hub: active"
+		has "visited system: Dokdobaru"
+		random < 35 - ( 5 * "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub: deferred" )
+	on offer
+		conversation
+			scene "outfit/quarg peripheral repair hub"
+			`	You spot Heliarch technicians unloading several Peripheral Repair Hubs from a freighter. Ask if you can buy one?`
+			choice
+				`	(Ask if you can buy one.)`
+				`	(Just observe.)`
+					goto observe
+			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg repair unit we can."`
+			choice
+				`	"What do you want me to do?"`
+			scene "thumbnail/heliarch hunter"
+			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." There should be a ringworld in Korath space...`
+				accept
+			label observe
+			`	The technicians finish unloading the repair units and cart them away. You try following them for some distance, but they eventually pass through a door that locks behind them. A passing security patrol stops to watch as you head back towards the spaceport.`
+				defer
+	on enter "Dokdobaru"
+		dialog `The Heliarch ask you to wait while they conduct their observations. The Quarg, for their part, have other visitors they are preoccupied with...`
+	npc
+		to spawn
+			not "event: wanderers: kor mereti friendly"
+		government "Kor Mereti"
+		system "Dokdobaru"
+		personality staying heroic
+		fleet
+			names "kor mereti"
+			variant
+				"Model 512" 1
+				"Model 256" 1
+				"Model 128" 2
+				"Model 64" 3
+				"Model 32" 5
+				"Model 16" 8
+	npc
+		to spawn
+			has "event: wanderers: kor mereti friendly"
+			not "event: Blight Shadow Infestation"
+		government "Korath (Civilian)"
+		system "Dokdobaru"
+		personality staying heroic disables plunders opportunistic harvests
+		fleet
+			names "korath"
+			variant
+				"Ra'gru Ik 618"
+				"Ra'at Ik 621"
+				"Akfir A'awoj (Jump Limited)"
+				"Rano'erek (Shunt)"
+				"Kar'iyar"
+				"Palavret (Blaze)"
+				"'olofez (World-Ship)" 6
+				"'olofez (Expeller)" 6
+				"'olofez" 12
+	npc
+		to spawn
+			has "event: Blight Shadow Infestation"
+		government "Invasive Predator"
+		system "Dokdobaru"
+		personality staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+	npc
+		to spawn
+			"Scrapyard Threat Level" >= 5
+		government "Invasive Predator"
+		system "Dokdobaru"
+		personality staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+	npc
+		to spawn
+			"Scrapyard Threat Level" >= 10
+		government "Invasive Predator"
+		system "Dokdobaru"
+		personality staying disables unconstrained mute
+		fleet "Large Blight Shadow"
+	npc
+		government "Quarg"
+		system "Dokdobaru"
+		personality waiting staying uninterested timid
+		fleet
+			names "quarg"
+			variant
+				"Quarg Orochi"
+				"Quarg Hydra"
+				"Quarg Wyvern"
+				"Quarg Wardragon"
+				"Quarg Drake"
+				"Quarg Zilant"
+				"Quarg Basilisk"
+	npc disable
+		government "Test Dummy"
+		system "Dokdobaru"
+		personality unconstrained heroic nemesis
+		ship "Fast Timer Ship" "Timer"
+		dialog `The Heliarchs complete their observations. Escort them back to <destination>.`
+	npc accompany save
+		government "Escort"
+		personality target escort
+		fleet
+			names "heliarch"
+			variant
+				"Heliarch Hunter Ion (Jump)"
+	on complete
+		outfit "Peripheral Repair Hub" 1
+		conversation
+			scene "outfit/quarg peripheral repair hub"
+			`	You return with the Heliarch surveillance team and are given the Peripheral Repair Hub you asked for.`
+
+mission "Midnight Quarg Gorgon - Quantum Vacuum Battery"
+	non-blocking
+	landing
+	name "Gorgon: Quantum Vacuum Battery"
+	description "Bring a Quantum Vacuum Battery to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Quantum Vacuum Battery"
+	on complete
+		outfit "Quantum Vacuum Battery" -1
+		conversation
+			scene "outfit/quarg quantum battery"
+			`You've installed the Quantum Vacuum Battery and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Market Gorgon - Quantum Vacuum Battery 1"
+	minor
+	name "Myserious Sales Pitch"
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for 3,000,000 credits."
+	source
+		government "Republic"
+	destination
+		attributes "pirate"
+		attributes "core" "south"
+	to offer
+		"Midnight Market" > 4
+		"credits" >= 3000000
+		has "Midnight Quarg Gorgon - Quantum Vacuum Battery: active"
+		random < 35 - ( 5 * "Midnight Market Gorgon - Quantum Vacuum Battery 1: deferred" )
+	on offer
+		conversation
+			`You receive an anonymous message:`
+			`	"Greetings, Captain <first> <last>. We have determined that you would be a suitable client for a certain piece of rare merchandise that has found its way into our inventory. Come to the address in the attached data file if you are interested in purchasing this one of a kind item. Be prepared to pay us 3,000,000 credits at the time of the transaction."`
+			`	The address listed is for a warehouse on <destination>.`
+			choice
+				`	(Accept the invitation.)`
+					accept
+				`	(Reject the invitation.)`
+					defer
+	to complete
+		"credits" >= 3000000
+	on visit
+		dialog `You've arrived at <planet> but you don't have the 3,000,000 credits that were requested! Return with 3,000,000 credits to negotiate with the mysterious seller.`
+
+mission "Midnight Market Gorgon - Quantum Vacuum Battery 2"
+	landing
+	invisible
+	to offer
+		has "Midnight Market Gorgon - Quantum Vacuum Battery 1: done"
+		"credits" >= 3000000
+	on offer
+		conversation
+			`You locate the warehouse that was indicated in the message and land near it. On the way down, you notice several nearby hobos huddled by bonfires. It's difficult to see, but you are certain that they are armed with weapons.`
+			choice
+				`	(Finish landing and exit your ship.)`
+					goto deal
+				`	(Leave the planet.)`
+				
+			`	You decide that the presence of the armed hobos is a risk you're unwilling to bear and abort the landing.`
+				flee
+			label deal
+			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
+			`	"What, exactly, am I buying?" you ask.`
+			scene "outfit/quarg quantum battery"
+			`	"Behold!" he gestures towards the warehouse. As he speaks, the door to one of the docking bays slides open and inside is a power system. "The Quantum Vacuum Battery! Looted from a derelict Quarg vessel, it eventually found its way into our inventory."`
+			`	By the time he finishes his sales pitch, a cargolift has positioned itself to load the bulky outfit onto your ship.`
+			`	The salesman holds the data pad out expectantly.`
+			choice
+				`	(Purchase the shield generator.)`
+					goto purchase
+				`	(Do not purchase the shield generator.)`
+			
+			`	He puts away the data pad. "Unfortunately, it appears we were unable to reach an agreement. Thank you for your time. However, I suggest you depart immediately." The armed hobos are no longer warming themselves by the fires and are instead trudging their way towards the warehouse. You decide to follow the man's suggestion.`
+				flee
+				
+			label purchase
+			`	"Congratulations on your purchase captain. I'm sure you won't regret it. You'll hear from us again if we happen to acquire any more unique merchandise that might interest you."`
+				accept
+	on accept
+		"Midnight Market" ++
+		payment -3000000
+		outfit "Quantum Vacuum Battery" 1
+		fail
+
+mission "Midnight Quarg Gorgon - Small Graviton Thruster"
+	non-blocking
+	landing
+	name "Gorgon: Small Graviton Thruster"
+	description "Bring a Small Graviton Thruster to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Small Graviton Thruster"
+	on complete
+		outfit "Small Graviton Thruster" -1
+		conversation
+			scene "outfit/small quarg thruster"
+			`You've installed the Small Graviton Thruster and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Market Gorgon - Small Graviton Thruster 1"
+	minor
+	name "Myserious Sales Pitch"
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for 12,000,000 credits."
+	source
+		government "Free Worlds"
+	destination
+		attributes "pirate"
+		attributes "north" "core"
+	to offer
+		"Midnight Market" > 4
+		"credits" >= 12000000
+		has "Midnight Quarg Gorgon - Small Graviton Thruster: active"
+		random < 35 - ( 5 * "Midnight Market Gorgon - Small Graviton Thruster 1: deferred" )
+	on offer
+		conversation
+			`You receive an anonymous message:`
+			`	"Greetings, Captain <first> <last>. We have determined that you would be a suitable client for a certain piece of rare merchandise that has found its way into our inventory. Come to the address in the attached data file if you are interested in purchasing this one of a kind item. Be prepared to pay us 12,000,000 credits at the time of the transaction."`
+			`	The address listed is for a warehouse on <destination>.`
+			choice
+				`	(Accept the invitation.)`
+					accept
+				`	(Reject the invitation.)`
+					defer
+	to complete
+		"credits" >= 12000000
+	on visit
+		dialog `You've arrived at <planet> but you don't have the 12,000,000 credits that were requested! Return with 12,000,000 credits to negotiate with the mysterious seller.`
+
+mission "Midnight Market Gorgon - Small Graviton Thruster 2"
+	landing
+	invisible
+	to offer
+		has "Midnight Market Gorgon - Small Graviton Thruster 1: done"
+		"credits" >= 12000000
+	on offer
+		conversation
+			`You locate the warehouse that was indicated in the message and land near it. On the way down, you notice several nearby hobos huddled by bonfires. It's difficult to see, but you are certain that they are armed with weapons.`
+			choice
+				`	(Finish landing and exit your ship.)`
+					goto deal
+				`	(Leave the planet.)`
+				
+			`	You decide that the presence of the armed hobos is a risk you're unwilling to bear and abort the landing.`
+				flee
+			label deal
+			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
+			`	"What, exactly, am I buying?" you ask.`
+			scene "outfit/small quarg thruster"
+			`	"Behold!" he gestures towards the warehouse. As he speaks, the door to one of the docking bays slides open and inside is a propulsion system. "The Small Graviton Thruster! Looted from a derelict Quarg vessel, it eventually found its way into our inventory."`
+			`	By the time he finishes his sales pitch, a cargolift has positioned itself to load the bulky outfit onto your ship.`
+			`	The salesman holds the data pad out expectantly.`
+			choice
+				`	(Purchase the hull repair system.)`
+					goto purchase
+				`	(Do not purchase the hull repair system.)`
+			
+			`	He puts away the data pad. "Unfortunately, it appears we were unable to reach an agreement. Thank you for your time. However, I suggest you depart immediately." The armed hobos are no longer warming themselves by the fires and are instead trudging their way towards the warehouse. You decide to follow the man's suggestion.`
+				flee
+				
+			label purchase
+			`	"Congratulations on your purchase captain. I'm sure you won't regret it. You'll hear from us again if we happen to acquire any more unique merchandise that might interest you."`
+				accept
+	on accept
+		"Midnight Market" ++
+		payment -12000000
+		outfit "Small Graviton Thruster" 1
+		fail
+
+mission "Midnight Quarg Gorgon - Medium Graviton Steering"
+	non-blocking
+	landing
+	name "Gorgon: Medium Graviton Steering"
+	description "Bring a Medium Graviton Steering to <destination>. (The outfit will automatically be removed if you bring one.)"
+	destination "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon: active"
+	to complete
+		has "outfit (cargo): Medium Graviton Steering"
+	on complete
+		outfit "Medium Graviton Steering" -1
+		conversation
+			scene "outfit/medium quarg steering"
+			`You've installed the Medium Graviton Steering and are one step closer to restoring the Quarg Gorgon!`
+
+mission "Midnight Market Gorgon - Medium Graviton Steering 1"
+	minor
+	name "Myserious Sales Pitch"
+	description "An anonymous seller is offering a unique item that would supposedly appeal to you. You must go to a warehouse on <destination> if you want to purchase it for 12,000,000 credits."
+	source
+		government "Syndicate"
+	destination
+		attributes "pirate"
+		attributes "north" "south"
+	to offer
+		"Midnight Market" > 4
+		"credits" >= 16000000
+		has "Midnight Quarg Gorgon - Medium Graviton Steering: active"
+		random < 35 - ( 5 * "Midnight Market Gorgon - Medium Graviton Steering 1: deferred" )
+	on offer
+		conversation
+			`You receive an anonymous message:`
+			`	"Greetings, Captain <first> <last>. We have determined that you would be a suitable client for a certain piece of rare merchandise that has found its way into our inventory. Come to the address in the attached data file if you are interested in purchasing this one of a kind item. Be prepared to pay us 16,000,000 credits at the time of the transaction."`
+			`	The address listed is for a warehouse on <destination>.`
+			choice
+				`	(Accept the invitation.)`
+					accept
+				`	(Reject the invitation.)`
+					defer
+	to complete
+		"credits" >= 16000000
+	on visit
+		dialog `You've arrived at <planet> but you don't have the 16,000,000 credits that were requested! Return with 16,000,000 credits to negotiate with the mysterious seller.`
+
+mission "Midnight Market Gorgon - Medium Graviton Steering 2"
+	landing
+	invisible
+	to offer
+		has "Midnight Market Gorgon - Medium Graviton Steering 1: done"
+		"credits" >= 16000000
+	on offer
+		conversation
+			`You locate the warehouse that was indicated in the message and land near it. On the way down, you notice several nearby hobos huddled by bonfires. It's difficult to see, but you are certain that they are armed with weapons.`
+			choice
+				`	(Finish landing and exit your ship.)`
+					goto deal
+				`	(Leave the planet.)`
+				
+			`	You decide that the presence of the armed hobos is a risk you're unwilling to bear and abort the landing.`
+				flee
+			label deal
+			`	You make sure the gun at your hip is fully loaded before opening the cargo bay doors. A bald man in a gaudy suit waves at you and holds up a data pad. "Simply confirm payment on this data pad and it's all yours!"`
+			`	"What, exactly, am I buying?" you ask.`
+			scene "outfit/medium quarg steering"
+			`	"Behold!" he gestures towards the warehouse. As he speaks, the door to one of the docking bays slides open and inside is a propulsion system. "The Medium Graviton Steering! Looted from a derelict Quarg vessel, it eventually found its way into our inventory."`
+			`	By the time he finishes his sales pitch, a cargolift has positioned itself to load the bulky outfit onto your ship.`
+			`	The salesman holds the data pad out expectantly.`
+			choice
+				`	(Purchase the hull repair system.)`
+					goto purchase
+				`	(Do not purchase the hull repair system.)`
+			
+			`	He puts away the data pad. "Unfortunately, it appears we were unable to reach an agreement. Thank you for your time. However, I suggest you depart immediately." The armed hobos are no longer warming themselves by the fires and are instead trudging their way towards the warehouse. You decide to follow the man's suggestion.`
+				flee
+				
+			label purchase
+			`	"Congratulations on your purchase captain. I'm sure you won't regret it. You'll hear from us again if we happen to acquire any more unique merchandise that might interest you."`
+				accept
+	on accept
+		"Midnight Market" ++
+		payment -16000000
+		outfit "Medium Graviton Steering" 1
+		fail
+
+mission "Midnight Quarg Gorgon - Recruitment"
+	non-blocking
+	landing
+	name "Gorgon - Crew"
+	description "Visit a planet with an active spaceport and 25 free bunks to gather a crew for the Gorgon."
+	source "Querii'ka"
+	to offer
+		has "Midnight Quarg Gorgon - Skylance: done"
+		has "Midnight Quarg Gorgon - Stratospear: done"
+		has "Midnight Quarg Gorgon - Phalanx System: done"
+		has "Midnight Quarg Gorgon - Ancile Shield Generator: done"
+		has "Midnight Quarg Gorgon - Peripheral Repair Hub: done"
+		has "Midnight Quarg Gorgon - Singularity Core: done"
+		has "Midnight Quarg Gorgon - Quantum Vacuum Battery: done"
+		has "Midnight Quarg Gorgon - Small Graviton Thruster: done"
+		has "Midnight Quarg Gorgon - Medium Graviton Steering: done"
+		not "Midnight Quarg Gorgon - Crew: offered"
+	on offer
+		conversation
+			scene "thumbnail/skylark"
+			`The Gorgon has been repaired. Visit a planet with an active spaceport and 25 free bunks to gather a crew."`
+	to complete
+		never
+	to fail
+		has "Midnight Quarg Gorgon - Crew: offered"
+
+mission "Midnight Quarg Gorgon - Crew"
+	landing
+	name "Gorgon - Crew"
+	description "Transport <bunks> to <destination> to serve as crew for the Gorgon"
+	destination "Querii'ka"
+	source
+		attributes "spaceport"
+		not attributes "uninhabited"
+	passengers 25
+	blocked "You need <bunks> to carry the future crew of the Gorgon."
+	to offer
+		has "Midnight Quarg Gorgon - Skylance: done"
+		has "Midnight Quarg Gorgon - Stratospear: done"
+		has "Midnight Quarg Gorgon - Phalanx System: done"
+		has "Midnight Quarg Gorgon - Ancile Shield Generator: done"
+		has "Midnight Quarg Gorgon - Peripheral Repair Hub: done"
+		has "Midnight Quarg Gorgon - Singularity Core: done"
+		has "Midnight Quarg Gorgon - Quantum Vacuum Battery: done"
+		has "Midnight Quarg Gorgon - Small Graviton Thruster: done"
+		has "Midnight Quarg Gorgon - Medium Graviton Steering: done"
+	on offer
+		conversation
+			scene "thumbnail/skylark"
+			`Hire crew to pilot the Gorgon?`
+			choice
+				`	(Hire crew.)`
+				`	(Not yet.)`
+					goto later
+			`	The crew for the Gorgon has been recruited. Transport them to <destination>.`
+				accept
+			label later
+			`	You've decided to hire the Gorgon crew at another time.`
+				defer
+	on abort
+		clear "Midnight Quarg Gorgon - Crew: offered"
+	on fail
+		clear "Midnight Quarg Gorgon - Crew: offered"
+	on complete
+		dialog `You've brought the crew for the Quarg Gorgon.`
+
+mission "Midnight Market - Tarazed Smuggling 1"
+	minor
+	name "Tarazed Smuggling"
+	description "Visit <destination> to purchase a Quarg outfit from a Tarazed smuggler. Make sure you bring 50,000,000 credits to complete the transaction."
+	source "Wayfarer"
+	destination "Trinket"
+	to offer
+		has "event: arachne station tarazed laboratory outfitter"
+		"Midnight Market" >= 5
+		"credits" > 50000000
+		random < 20 + "Midnight Market" + ( "Midnight Quarg Gorgon: active" * 45 )
+	to complete
+		"credits" >= 50000000
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`As you walk through the spaceport, a shady figure in a ragged cloak waves at you then retreats into a dark alley.`
+			choice
+				`	(Follow the cloaked figure.)`
+				`	(Too risky. Ignore this.)`
+					decline
+			`	After walking some distance away from the main street, you catch sight of the cloaked figure in the gloomy darkness. A voice whispers, "<first> <last>, you hass been givensses accisses to purchisses prototypisses from Tarazedsses, yess?" It's impossible to determine if the speaker is male or female... Or even human. "For 50,000,000 credits I cansses sellsses you a realsses outfitss of the Quargsseses. Are you interestedss?" Fifty million is a lot of credits...`
+			choice
+				`	"What sort of outfit?"`
+					goto sort
+				`	"Is it stolen?"`
+				`	"Fifty million is a lot..."`
+					goto price
+				`	"I'm not interested."`
+					goto refuse
+			`	"Worrysses not from wheress it caymesses fromss!" The voice raises slightly, perhaps offended at your question. After a brief pause, it seems to have calmed down and continues...`
+				goto sort
+			label price
+			`	"Dealing in Quarg technology is dangerous business!" The voice raises slightly, perhaps offended at your comment. After a brief pause, it seems to have calmed down and continues...`
+			label sort
+			`	"I cansses getss whateversses you needss. What sayisses you?"`
+			choice
+				`	"I could use a Quarg..."`
+				`	"I'm not interested."`
+					goto refuse
+			choice
+				`	"... anti-missile defense."`
+				`	"... energy storage unit."`
+					goto "Quantum Vacuum Battery"
+				`	"... intrusion countermeasure."`
+					goto "Phalanx System"
+				`	"... jump drive."`
+					goto "Jump Drive"
+				`	"... power supply."`
+					goto "Singularity Core"
+				`	"... propulsion system"`
+					goto "Small Graviton Thruster"
+				`	"... repair module."`
+					goto "Peripheral Repair Hub"
+				`	"... shield generator."`
+					goto "Ancile Shield Generator"
+				`	"... ship mounted weapon."`
+					goto "Skylance"
+				`	"... steering engine."`
+					goto "Medium Graviton Steering"
+				`	"... Nevermind, I'm not interested."`
+					goto refuse
+			action
+				set "midnight market tarazed smuggling: Stratospear"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Quantum Vacuum Battery"
+			action
+				set "midnight market tarazed smuggling: Quantum Vacuum Battery"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Phalanx System"
+			action
+				set "midnight market tarazed smuggling: Phalanx System"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Jump Drive"
+			`	"Unfortunateliess, that iss not a thingss I canss providesses. Sadss... Forgetss we hadss thiss meetingsses." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				decline
+			label "Singularity Core"
+			action
+				set "midnight market tarazed smuggling: Singularity Core"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Small Graviton Thruster"
+			action
+				set "midnight market tarazed smuggling: Small Graviton Thruster"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Peripheral Repair Hub"
+			action
+				set "midnight market tarazed smuggling: Peripheral Repair Hub"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Ancile Shield Generator"
+			action
+				set "midnight market tarazed smuggling: Ancile Shield Generator"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Skylance"
+			action
+				set "midnight market tarazed smuggling: Skylance"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label "Medium Graviton Steering"
+			action
+				set "midnight market tarazed smuggling: Medium Graviton Steering"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			label refuse
+			`	"Sadss... Forgetss we hadss thiss meetingsses." It rushes off deeper into the darkness of the alley. It would be dangerous to follow.`
+				decline
+
+mission "Midnight Market - Tarazed Smuggling 2"
+	landing
+	invisible
+	deadline 1
+	source "Trinket"
+	to offer
+		has "Midnight Market - Tarazed Smuggling 1: done"
+		"credits" >= 50000000
+	on offer
+		payment -50000000
+		"Midnight Market" ++
+		conversation
+			scene "scene/scene-wooden crates"
+			`	The smuggler arranges a meeting with you in a remote area of the spaceport to make the exchange. After transferring 50,000,000 credits into an anonymous account, they leave you with several large crates...`
+			choice
+				`	(Open them.)`
+			action
+				outfit "Interference Plating" 5
+			scene "outfit/unknown"
+			`	The first crate is filled with Interference Plating. Surely, the Quarg outfit is in one of the other crates...`
+			choice
+				`	(Open the second crate.)`
+			action
+				outfit "Interference Plating" 5
+			scene "outfit/interference plating"
+			`	The second crate is filled with more Interference Plating. The final crate must contain the outfit you spent fifty million credits on...`
+			choice
+				`	(Open the final crate.)`
+			branch Stratospear
+				has "midnight market tarazed smuggling: Stratospear"
+			branch "Quantum Vacuum Battery"
+				has "midnight market tarazed smuggling: Quantum Vacuum Battery"
+			branch "Phalanx System"
+				has "midnight market tarazed smuggling: Phalanx System"
+			branch "Singularity Core"
+				has "midnight market tarazed smuggling: Singularity Core"
+			branch "Small Graviton Thruster"
+				has "midnight market tarazed smuggling: Small Graviton Thruster"
+			branch "Peripheral Repair Hub"
+				has "midnight market tarazed smuggling: Peripheral Repair Hub"
+			branch "Ancile Shield Generator"
+				has "midnight market tarazed smuggling: Ancile Shield Generator"
+			branch Skylance
+				has "midnight market tarazed smuggling: Skylance"
+			branch "Medium Graviton Steering"
+				has "midnight market tarazed smuggling: Medium Graviton Steering"
+			label Stratospear
+			action
+				clear "midnight market tarazed smuggling: Stratospear"
+				outfit "Stratospear" 1
+			scene "outfit/quarg stratospear"
+			`	Inside is a Stratospear. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Quantum Vacuum Battery"
+			action
+				clear "midnight market tarazed smuggling: Quantum Vacuum Battery"
+				outfit "Quantum Vacuum Battery" 1
+			scene "outfit/quarg quantum battery"
+			`	Inside is a Quantum Vacuum Battery. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Phalanx System"
+			action
+				clear "midnight market tarazed smuggling: Phalanx System"
+				outfit "Phalanx System" 1
+			scene "outfit/quarg countermeasures"
+			`	Inside is a Phalanx System. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Singularity Core"
+			action
+				clear "midnight market tarazed smuggling: Singularity Core"
+				outfit "Singularity Core" 1
+			scene "outfit/quarg singularity core"
+			`	Inside is a Singularity Core. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Small Graviton Thruster"
+			action
+				clear "midnight market tarazed smuggling: Small Graviton Thruster"
+				outfit "Small Graviton Thruster" 1
+			scene "outfit/small quarg thruster"
+			`	Inside is a Small Graviton Thruster. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Peripheral Repair Hub"
+			action
+				clear "midnight market tarazed smuggling: Peripheral Repair Hub"
+				outfit "Peripheral Repair Hub" 1
+			scene "outfit/quarg peripheral repair hub"
+			`	Inside is a Peripheral Repair Hub. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Ancile Shield Generator"
+			action
+				clear "midnight market tarazed smuggling: Ancile Shield Generator"
+				outfit "Ancile Shield Generator" 1
+			scene "outfit/quarg ancile shield generator"
+			`	Inside is a Ancile Shield Generator. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label Skylance
+			action
+				clear "midnight market tarazed smuggling: Skylance"
+				outfit "Skylance" 1
+			scene "outfit/quarg skylance"
+			`	Inside is a Skylance. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+			label "Medium Graviton Steering"
+			action
+				clear "midnight market tarazed smuggling: Medium Graviton Steering"
+				outfit "Medium Graviton Steering" 1
+			scene "outfit/medium quarg steering"
+			`	Inside is a Medium Graviton Steering. This deal could have been a scam, but it appears to be legitimate!`
+				accept
+	on enter
+		conversation
+			scene "scene/scene-explosion"
+			`A Quarg ship enters the system and destroys a small freighter! "This smuggler was in possession of our technology. No mercy will be afforded to those who steal from us. Prepare to be searched. Resistance is futile." They must be looking for the outfit you've just purchased!`
+			`	A pirate ship responds. "WE. DO. NOT. KNEEL!" Several other pirate ships are arriving to join the battle. Hopefully, they can keep the Quarg distracted long enough for you to avoid being scanned...`
+				accept
+	npc
+		government "Pirate"
+		personality waiting plunders uninterested
+		fleet "Large Southern Pirates"
+	npc
+		government "Pirate"
+		personality entering plunders uninterested
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality entering plunders uninterested
+		fleet "pirate raid"
+	npc
+		government "Quarg"
+		personality waiting surveillance vindictive uninterested
+		ship "Quarg Basilisk" "Quox Urquat"

@@ -912,7 +912,7 @@ conversation "Nebulous Damaged Quarloque Salvage"
 		`	(Retreat.)`
 			goto retreat
 	branch failure
-		random < 60 - ( "searched nebulous quarloque" * 20 )
+		random < 10 + ( "searched nebulous quarloque" * 30 )
 	scene "outfit/harvested yottrite"
 	action
 		outfit "Yottrite"
@@ -1618,10 +1618,109 @@ mission "Cartography: Quarg Hitchhiker 7"
 		"stored reputation: Quarg (Incipias)" = "reputation: Quarg (Incipias)"
 		"reputation: Quarg (Incipias)" <?= -10
 
-	on enter Albireo
+	npc
+		to spawn
+			has "outcast detected orvala"
+		system "Orvala"
+		government "Quarg"
+		personality waiting heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Wyvern"
+				"Quarg Wardragon" 2
+				"Quarg Zilant" 2
+	on enter Peacock
+		set "outcast detected orvala"
 		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
 	npc
-		system "Albireo"
+		system "Peacock"
+		government "Quarg"
+		personality waiting staying heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Basilisk"
+
+	on enter Alnair
+		set "outcast detected orvala"
+		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
+	npc
+		system "Alnair"
+		government "Quarg"
+		personality waiting staying heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Basilisk"
+
+	npc
+		to spawn
+			has "outcast detected algenib"
+		system "Algenib"
+		government "Quarg"
+		personality waiting heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Wyvern"
+				"Quarg Wardragon" 2
+				"Quarg Zilant" 2
+
+	on enter Persian
+		set "outcast detected algenib"
+		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
+	npc
+		system "Persian"
+		government "Quarg"
+		personality waiting staying heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Basilisk"
+
+	on enter Gienah
+		set "outcast detected algenib"
+		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
+	npc
+		system "Gienah"
+		government "Quarg"
+		personality waiting staying heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Basilisk"
+
+	on enter Umbral
+		set "outcast detected algenib"
+		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
+	npc
+		system "Umbral"
+		government "Quarg"
+		personality waiting staying heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Basilisk"
+
+	npc
+		to spawn
+			has "outcast detected lurata"
+		system "Lurata"
+		government "Quarg"
+		personality waiting heroic opportunistic vindictive
+		fleet
+			names "quarg"
+			variant
+				"Quarg Wyvern"
+				"Quarg Wardragon" 2
+				"Quarg Zilant" 2
+
+	on enter "Kaus Australis"
+		set "outcast detected lurata"
+		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
+	npc
+		system "Kaus Australis"
 		government "Quarg"
 		personality waiting staying heroic opportunistic vindictive
 		fleet
@@ -1630,6 +1729,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 				"Quarg Basilisk"
 
 	on enter Dabih
+		set "outcast detected lurata"
 		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
 	npc
 		system "Dabih"
@@ -1641,6 +1741,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 				"Quarg Basilisk"
 
 	on enter Tarazed
+		set "outcast detected lurata"
 		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
 	npc
 		system "Tarazed"
@@ -1649,18 +1750,7 @@ mission "Cartography: Quarg Hitchhiker 7"
 		fleet
 			names "quarg"
 			variant
-				"Quarg Zilant"
-
-	on enter Umbral
-		dialog `A Quarg vessel sends out a general hail: "The Outcast must be stopped!"`
-	npc
-		system "Umbral"
-		government "Quarg"
-		personality waiting staying heroic opportunistic vindictive
-		fleet
-			names "quarg"
-			variant
-				"Quarg Zilant"
+				"Quarg Basilisk"
 
 	on enter Quarantine
 		conversation
@@ -1684,6 +1774,9 @@ mission "Cartography: Quarg Hitchhiker 7"
 		dialog `[MISSION FAILURE] You have failed as important part of the Cartography mission chain. If life were a game, you could load a save file and try again.`
 	
 	on complete
+		clear "outcast detected orvala"
+		clear "outcast detected algenib"
+		clear "outcast detected lurata"
 		"reputation: Quarg" >?= "stored reputation: Quarg"
 		"reputation: Quarg (Hai)" >?= "stored reputation: Quarg (Hai)"
 		"reputation: Quarg (Kor Efret)" >?= "stored reputation: Quarg (Kor Efret)"
@@ -2042,7 +2135,7 @@ mission "Cartography: Midnight's Lost Orphan"
 			scene "planet/ice0"
 			`This frozen planet has been separated from its home system and floats free in the empty void. Although the world is uninhabited, there are Quarg ruins here. Most of the buildings have been demolished by some unknown force. As is typical for a Quarg world, the air is too thin for human comfort.`
 			`	You see the Halcyon parked at one of the spaceport landing pads. Attempts to hail it results in no reply. Before you can finish putting on an environmental suit, Quash has already left the Halcyon and entered the nearby ruin. It's as if the enigmatic Quarg forgot that you were accompanying it.`
-			`	A few rusting derelict Quarg ships covered by thick frost occupy some of the other landing pads. Most show signs of combat damage. The corpses nearby give the impression that they were frantically trying to repair one of these ships when something caused an abrupt and violent end to their lives. You're uncertain how many centuries they've been here, but the cold has preserved them well enough for you to discern the horrifying expressions they had on their faces.`
+			`	A few rusting derelict Quarg ships covered by thick frost occupy some of the other landing pads. Most show signs of combat damage. The corpses nearby give the impression that they were frantically trying to repair one of these ships when something caused an abrupt and violent end to their lives. You're uncertain how many centuries they've been here, but the cold has preserved them well enough for you to discern the twisted horrifying expressions they had on their faces.`
 			`	Overhead, flashes of lightning from the nebula above serve as the main source of lighting on the planet's surface. The eerie glow occasionally flickers as activity shifts among the clouds, causing shadows cast by the ruins to dance about wildly. The ringworld shard seems to hover over the horizon like a tombstone for this dead world.`
 			choice
 				`	(Follow Quash into the ruin.)`

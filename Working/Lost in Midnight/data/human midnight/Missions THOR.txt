@@ -9,7 +9,6 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
 #T.H.O.R. is acquired in a Midnight Market mission.
 
 
@@ -33,6 +32,8 @@ mission "T.H.O.R. Repairs"
 		outfit "T.H.O.R. (Damaged)" -1
 	on visit
 		dialog "T.H.O.R. should be repaired by now, but you don't have the 1,000,000 credits to cover the repair costs!"
+	to complete
+		credits >= 1000000
 	on complete
 		payment -1000000
 		set "T.H.O.R."
@@ -40,7 +41,6 @@ mission "T.H.O.R. Repairs"
 		conversation
 			scene "outfit/thor"
 			`	T.H.O.R. looks good as new. You pay Barmy 1,000,000 credits and load the Tactical Heavy Offensive Robot onto your ship.`
-			
 
 
 mission "T.H.O.R.: Quiet Ringworld 1"
@@ -90,7 +90,6 @@ mission "T.H.O.R.: Quiet Ringworld 1"
 		clear "T.H.O.R.: Quiet Ringworld 2: offered"
 		outfit "Phalanx System" 1
 		fail
-
 
 
 mission "T.H.O.R.: Quiet Ringworld 2"
@@ -151,7 +150,6 @@ mission "T.H.O.R.: Quiet Ringworld 2"
 		outfit "T.H.O.R. (Damaged)" 1
 		clear "T.H.O.R. Repairs: offered"
 		fail
-
 
 
 mission "T.H.O.R.: Quiet Ringworld 3"
@@ -260,7 +258,6 @@ mission "T.H.O.R.: Quiet Ringworld 5"
 		fail
 
 
-
 mission "T.H.O.R.: Rock Cluster"
 	landing
 	name "T.H.O.R. Repairs"
@@ -329,7 +326,6 @@ mission "T.H.O.R.: Rock Cluster"
 		fleet "Small Astero Nautilus" 3
 
 
-
 mission "T.H.O.R.: Corpse 1"
 	landing
 	name "T.H.O.R. Repairs"
@@ -344,6 +340,11 @@ mission "T.H.O.R.: Corpse 1"
 			and
 				has "Randomize T.H.O.R.: Corpse 1"
 				random < 40
+		or
+			not "First Contact: Geddonia: done"
+			and
+				has "First Contact: Geddonia: done"
+				has "T.H.O.R.: Corpse 3: offered"
 	on offer
 		require "T.H.O.R." 1
 		conversation
@@ -388,7 +389,6 @@ mission "T.H.O.R.: Corpse 1"
 		set "T.H.O.R. (Damaged)"
 		outfit "T.H.O.R. (Damaged)" 1
 		clear "T.H.O.R. Repairs: offered"
-
 
 
 mission "T.H.O.R.: Corpse 2"
@@ -460,7 +460,7 @@ mission "T.H.O.R.: Corpse 2"
 	
 	npc kill
 		government "Derelict (Killable)"
-		personality heroic vindictive unconstrained mute
+		personality waiting staying heroic vindictive unconstrained mute
 		ship "Archon (Lich)" "Arch-Lich"
 		on kill
 			"reputation: Drak" >?= 1
@@ -480,7 +480,6 @@ ship "Archon" "Archon (Lich)"
 		"Drak Draining Field" 3
 		"Drak Draining Field (Augmented)"
 		"Drak Turret (Augmented)" 3
-		
 		"Medium Graviton Thruster"
 		"Medium Graviton Steering"
 		"Hyperdrive"
@@ -512,7 +511,9 @@ mission "T.H.O.R.: Corpse 3"
 	destination "Rust"
 	to offer
 		not "T.H.O.R."
-		has "T.H.O.R.: Corpse 2: done"
+		or
+			has "T.H.O.R.: Corpse 2: active"
+			has "T.H.O.R.: Corpse 2: done"
 	on offer
 		require "T.H.O.R." 0
 		log `Found T.H.O.R. floating amongst the asteroids of Corpse in the Temeh system.`

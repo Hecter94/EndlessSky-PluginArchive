@@ -30,7 +30,9 @@ mission "Hunting Beelzebub: Modified Kestrel 1"
 	waypoint Shaula
 	destination "Trinket"
 	to offer
-		not "Hunting Beelzebub: Prefect Perfid: declined"
+		not "Hunting Beelzebub: Prefect Perfid: offered"
+		not "Hunting Beelzebub: Modified Bactrian 1: active"
+		not "Hunting Beelzebub: Modified Bactrian 2: active"
 		has "license: City-Ship"
 		has "event: battle in arneb end"
 		has "Remnant: Tech Retrieval: done"
@@ -213,7 +215,9 @@ mission "Hunting Beelzebub: Modified Bactrian 1"
 	waypoint Hassaleh
 	waypoint Sumar
 	to offer
-		not "Hunting Beelzebub: Prefect Perfid: declined"
+		not "Hunting Beelzebub: Prefect Perfid: offered"
+		not "Hunting Beelzebub: Modified Kestrel 1: active"
+		not "Hunting Beelzebub: Modified Kestrel 2: active"
 		has "license: City-Ship"
 		has "event: battle in arneb end"
 		has "Remnant: Tech Retrieval: done"
@@ -374,7 +378,7 @@ mission "Hunting Beelzebub: Modified Bactrian 2"
 mission "Hunting Beelzebub: Inhibitor Blaster 1"
 	landing
 	name "Modified Inhibitor"
-	description "Bring an Modified Inhibitor to Taely for examination. (It must be installed on your flagship or carried in cargo.)"
+	description "Bring a Modified Inhibitor to Taely for examination. (It must be installed on your flagship or carried in cargo.)"
 	destination "Viminal"
 	to offer
 		or
@@ -407,7 +411,7 @@ mission "Hunting Beelzebub: Inhibitor Blaster Reminder"
 	name "Modified Inhibitor"
 	description "Visit Taely on <destination> to see if she's learned anything from the analysis of the Modified Inhibitor."
 	source
-		attributes "ka'het" "remnant"
+		attributes "ka'het" "remnant" "ember wastes"
 		not planet Viminal
 	to offer
 		has "event: modified inhibitor analysis"
@@ -457,7 +461,7 @@ mission "Hunting Beelzebub: Prefect Perfid"
 			`	Taely signs her response, "Your 'Beelzebub' is probably Prefect Perfid, the Deserter."`
 			`	Chilia begins to sing a sad song. It tells the tale of a Remant Prefect who lead a surveillance mission in human space. When confronted by pirates, the Prefect decided to fight rather than flee. After capturing the pirate ship, he chose to remain behind instead of returning to Remnant space.`
 			`	Torza punches a wall then signs, "He should never have been allowed to remain there."`
-			`	Chilia responds, signing "Our people are not prisoners. It is rare, but occasionally one of us does end up living amongst the ancestral humans." Chilia turns to you. "Captain <last>. Prefect Perfid, Beelzebub, has abandoned life as a Remnant to live as a pirate. We leave his fate in your capable hands." That almost sounds like an assassination order.`
+			`	Chilia responds, signing "Our people are not prisoners. It is rare, but occasionally one of us chooses to live amongst the ancestral humans." Chilia turns to you. "Captain <last>. Prefect Perfid, Beelzebub, has abandoned life as a Remnant to live as a pirate. We leave his fate in your capable hands." That almost sounds like an assassination order.`
 			`	While Chilia was singing earlier, Taely was preparing the Modified Inhibitor for transportation to your ship. She signs, "I have instructed our outfitters to supply you with more of these if you request them. Perhaps they will be useful when you confront Beelzebub."`
 			``
 			`If you're going to hunt down Beelzebub, it might be a good idea to team up with Lieutenant Paris of Deep Security. He should be on <destination>.`
@@ -478,7 +482,7 @@ mission "Hunting Beelzebub: Paris Resignation"
 				`	(Not now.)`
 					defer
 			scene "outfit/unknown"
-			`	When you ask about Tom at the receptionist, they inform you that he resigned shortly after Laura Paris died in the Star Queen incident caused by Beelzebub. His current location is unknown to Deep Security.`
+			`	When you ask about Tom at the reception area, they inform you that he resigned shortly after Laura Paris died in the Star Queen incident caused by Beelzebub. His current location is unknown to Deep Security.`
 			``
 			`	The last time you met Tom he was investigating Beelzebub. It's possible he may still be trying to find Laura's killer on one of the pirate worlds...`
 				decline
@@ -590,7 +594,7 @@ mission "Hunting Beelzebub: Stormhold Message"
 				`	(Toss it aside.)`
 					defer
 			scene "outfit/brig"
-			`	The note says, "We caught your friend from The Deep snooping around on the wrong side of the galaxy. He's on <destination> if you want him back. Convince him to head west if he truly seeks Beelzebub. This information is free of charge: consider it payment for a job to  eliminate a potential rival." The note gives some details about where to go after landing. It is signed only with a stylized image of a reptilian eye logo.`
+			`	The note says, "We caught your friend from The Deep snooping around on the wrong side of the galaxy. He's on <destination> if you want him back. Convince him to head west if he truly seeks Beelzebub. This information is free of charge: consider it payment for a job to eliminate a potential rival." The note gives some details about where to go after landing. It is signed only with a stylized image of a reptilian eye logo.`
 				accept
 	on defer
 		set "Randomize Hunting Beelzebub: Stormhold Message"
@@ -634,10 +638,16 @@ mission "Hunting Beelzebub: Rescue Paris"
 			`	"I'm not sure I have a choice. It's the closest I've got to a lead since arriving in the Core. Can you take me to <destination>?"`
 			label end
 			choice
+				`	"Sure, I'll take you there."`
+					accept
+				`	"Maybe you should let it go."`
+			`	"Laura's dead <first>. I can't let that go."`
+			choice
 				`	(Transport him to <planet>.)`
 					accept
 				`	(Refuse to transport him.)`
-					decline
+			`	"Then I'll find some other way to get there. Goodbye <first>."`
+				decline
 	npc
 		government "Pirate"
 		system "Gienah"

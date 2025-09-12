@@ -10,6 +10,30 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+mission "Bounty Hunting: Mock Turtle"
+	job
+	deadline 14
+	name "Wanted Bandit near <system>"
+	description "A Modified Buckler named the Mock Turtle has been attacking merchants near <system>. Destroy it by <day> for payment (<payment>)."
+	"apparent payment" 100000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
+		attributes "dirt belt" "south"
+	to offer
+		"combat rating" < 1050
+		"combat rating" >= 50
+		random < 25
+	npc kill
+		government "Bounty"
+		system
+			distance 1 1
+		personality target waiting staying plunders harvests
+			confusion 20
+		ship "Modified Buckler" "Mock Turtle"
+		dialog `The Mock Turtle has been eliminated. Shortly afterwards, the government of <planet> sends you <payment> along with a message of gratitude.`
+		on kill
+			payment 100000
+			fail
 
 mission "Bounty Hunting: Beanstalk"
 	job
@@ -22,14 +46,8 @@ mission "Bounty Hunting: Beanstalk"
 		attributes "dirt belt" "frontier" "deep"
 	to offer
 		"combat rating" < 1150
-		or
-			and
-				"combat rating" >= 50
-				"combat rating" < 150
-				random < 50
-			and
-				"combat rating" >= 150
-				random < 25
+		"combat rating" >= 150
+		random < 25
 	npc kill
 		government "Bounty"
 		system
@@ -39,7 +57,7 @@ mission "Bounty Hunting: Beanstalk"
 		ship "Modified Enforcer (Modified Hyperdrive)" "Beanstalk"
 		dialog `The Beanstalk has been eliminated. Shortly afterwards, the government of <planet> sends you <payment> along with a message of gratitude.`
 		on kill
-			payment 100000
+			payment 125000
 			fail
 
 mission "Bounty Hunting: Mother Goose"
@@ -106,8 +124,8 @@ mission "Bounty Hunting: Jabberwocky"
 		government "Republic" "Free Worlds" "Syndicate"
 		attributes "frontier" "deep" "north"
 	to offer
-		"combat rating" < 1400
-		"combat rating" >= 400
+		"combat rating" < 1450
+		"combat rating" >= 450
 		random < 25
 	npc kill
 		government "Bounty"
@@ -625,7 +643,6 @@ ship "Marauder Arrow" "Cupid's Arrow"
 		"engine capacity" 20
 		"weapon capacity" 5
 
-
 mission "Holiday: Saint Nick"
 	job
 	deadline
@@ -687,6 +704,17 @@ mission "Holiday: Saint Nick"
 		dialog `You safely delivered the <npc> and its cargo to <planet>! Hopefully the orphans will enjoy their holiday presents along with a happy new year. You are rewarded for your efforts with <payment>.`
 
 
+mission "Stranded In Paradise: Erin Epilogue Timer"
+	landing
+	non-blocking
+	to offer
+		has "free worlds plot completed"
+	on offer
+		event "stranded in paradise: erin epilogue timer" 1800
+		fail
+
+event "stranded in paradise: erin epilogue timer"
+	
 mission "Stranded In Paradise: Erin Epilogue"
 	job
 	name "Passenger transport to <planet>"
@@ -695,7 +723,7 @@ mission "Stranded In Paradise: Erin Epilogue"
 	to offer
 		random < 70
 		has "Stranded In Paradise 2: offered"
-		has "free worlds plot completed"
+		has "event: stranded in paradise: erin epilogue timer"
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		attributes "rim" "south"
@@ -1145,20 +1173,18 @@ mission "Hijacked Escort"
 		system
 			distance 1 2
 		fleet "Small Northern Pirates"
-		fleet "Large Northern Pirates"
 	npc
 		government "Pirate"
 		personality nemesis harvests plunders
 		system
-			distance 1 2
+			distance 2 3
 		fleet "Small Northern Pirates"
 	npc
 		government "Pirate"
 		personality nemesis harvests plunders
 		system
-			distance 1 2
+			distance 3 4
 		fleet "Large Northern Pirates"
-	
 	npc capture
 		government "Bounty (Disguised)"
 		personality target escort marked timid
@@ -1170,9 +1196,9 @@ mission "Hijacked Escort"
 				"Bactrian (Hijacked)"
 			variant 4
 				"Star Queen (Hijacked)"
-			variant 6
-				"Hogshead (Hijacked)"
 			variant 8
+				"Hogshead (Hijacked)"
+			variant 16
 				"Palisade (Hijacked)"
 		dialog `You've taken control of the <npc> from the hijackers. Bring the rescued passengers to <destination>.`
 	on abort
@@ -1320,7 +1346,7 @@ mission "Midnight Antique Sunder Escort"
 		government "Pirate"
 		personality target escort timid plunders harvests
 		fleet
-			names "pirate"
+			names "civilian"
 			cargo 0
 			variant
 				"Antique Sunder"
@@ -1363,7 +1389,7 @@ mission "Midnight Antique Sunder Retrieval"
 			distance 2 3
 		personality target derelict timid plunders harvests
 		fleet
-			names "pirate"
+			names "civilian"
 			cargo 1
 			commodities "Metal" "Heavy Metals"
 			variant
@@ -1617,9 +1643,10 @@ mission "Midnight Frontier Report [Core]"
 		attributes "core pirate"
 		attributes "spaceport"
 	to offer
+		not "event: joined the free worlds"
+		not "Midnight Frontier Report [Core]: active"
 		"combat rating" >= 1000
 		"reputation: Republic" >= 20
-		not "event: joined the free worlds"
 	to fail
 		has "event: joined the free worlds"
 	on stopover
@@ -1641,9 +1668,10 @@ mission "Midnight Frontier Report [North]"
 		attributes "north pirate"
 		attributes "spaceport"
 	to offer
+		not "event: joined the free worlds"
+		not "Midnight Frontier Report [North]: active"
 		"combat rating" >= 1000
 		"reputation: Republic" >= 20
-		not "event: joined the free worlds"
 	to fail
 		has "event: joined the free worlds"
 	on stopover
@@ -1665,9 +1693,10 @@ mission "Midnight Frontier Report [South]"
 		attributes "south pirate"
 		attributes "spaceport"
 	to offer
+		not "event: joined the free worlds"
+		not "Midnight Frontier Report [South]: active"
 		"combat rating" >= 1000
 		"reputation: Republic" >= 20
-		not "event: joined the free worlds"
 	to fail
 		has "event: joined the free worlds"
 	on stopover
@@ -1758,22 +1787,22 @@ mission "Midnight FW Convoy Defense [Bounty Hunters]"
 		personality nemesis waiting staying heroic
 		system destination
 		fleet "Hired Guns"
-		fleet "Bounty Hunters" 2
+		fleet "Bounty Hunters"
 	npc
 		government "Pirate"
-		personality nemesis harvests plunders
+		personality waiting nemesis harvests plunders
 		system destination
-		fleet "Large Southern Pirates"
 		fleet "Small Southern Pirates"
 	npc
 		government "Pirate"
-		personality nemesis harvests plunders
+		personality entering nemesis harvests plunders
 		fleet "Large Southern Pirates"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
 		"cargo settings"
-			commodities "Ship Alloys" "Ship Systems" "Free Worlds Outfits"
+			cargo 3
+			commodities "Metal" "Heavy Metals" "Equipment" "Industrial"
 		fleet
 			names "civilian"
 			variant
@@ -1854,7 +1883,7 @@ mission "Midnight Grub Delivery"
 	deadline 1
 	name "Rush <commodity> Delivery"
 	description "Someone on <planet> ordered <cargo>. Deliver it by <date> or their order is free! Payment is <payment>."
-	cargo "Restaurant Food" 5 2 .1
+	cargo "Restaurant Food" 1
 	substitutions
 		"<celebration>" "birthday party"
 		"<celebration>" "retirement party"
@@ -1862,8 +1891,6 @@ mission "Midnight Grub Delivery"
 		"<celebration>" "potluck"
 		"<celebration>" "movie night"
 		"<celebration>" "game night"
-	to offer
-		random < 99
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
 		not attributes "station"
@@ -1874,7 +1901,7 @@ mission "Midnight Grub Delivery"
 	on visit
 		dialog phrase "generic cargo on visit"
 	on complete
-		payment 4000
+		payment 1000
 		dialog "You deliver the <commodity> just in time for the client's <celebration>. <payment> is deposited into your account."
 
 
@@ -2454,6 +2481,940 @@ mission "Midnight Independent Humanitarian Job (large)"
 		"reputation: Independent" += 7
 		dialog
 			`It takes a while to figure out who exactly is in charge here. You sell off parts of your shipment of food to a few different local leaders, receiving <payment> in exchange.`
+
+
+mission "Midnight Pirate Crew Smuggling (North, Tiny)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -1000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 150 250
+	passengers 2 3
+	source
+		government "Pirate" "Scar's Legion"
+		attributes "north"
+	destination
+		government "Pirate"
+		attributes "south" "core" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Republic" >= 0
+		"reputation: Pirate" >= -10
+		random < 20
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic small"
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant 1
+				"Gunboat"
+	on abort
+		"reputation: Pirate" --
+	on complete
+		payment 500000
+		"reputation: Pirate" ++
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (North, Small)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -2000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 250 750
+	passengers 4 12
+	source
+		government "Pirate" "Scar's Legion"
+		attributes "north"
+	destination
+		government "Pirate"
+		attributes "south" "core" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Republic" >= 0
+		"reputation: Pirate" >= -10
+		random < 15
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic small"
+			cargo 0
+			variant 1
+				"Gunboat" 2
+	on abort
+		"reputation: Pirate" -= 5
+	on complete
+		payment 1000000
+		"reputation: Pirate" += 5
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (North, Medium)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -4000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 750 1000
+	passengers 10 20
+	source
+		government "Pirate" "Scar's Legion"
+		attributes "north"
+	destination
+		government "Pirate"
+		attributes "south" "core" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Republic" >= 0
+		"reputation: Pirate" >= -10
+		random < 10
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic small"
+			cargo 0
+			variant 1
+				"Gunboat"
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic small"
+			cargo 0
+			variant 1
+				"Gunboat"
+	on abort
+		"reputation: Pirate" -= 10
+	on complete
+		payment 2000000
+		"reputation: Pirate" += 10
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (North, Large)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -8000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1000 2000
+	passengers 20 40
+	source
+		government "Pirate" "Scar's Legion"
+		attributes "north"
+	destination
+		government "Pirate"
+		attributes "south" "core" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Republic" >= 0
+		"reputation: Pirate" >= -10
+		random < 5
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant 1
+				"Cruiser"
+				"Surveillance Drone" 4
+	on abort
+		"reputation: Pirate" -= 20
+	on complete
+		payment 4000000
+		"reputation: Pirate" += 20
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (North, Huge)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -16000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1500 3000
+	passengers 40 80
+	source
+		government "Pirate" "Scar's Legion"
+		attributes "north"
+	destination
+		government "Pirate"
+		attributes "south" "core" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Republic" >= 0
+		"reputation: Pirate" >= -10
+		random < 1
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			cargo 0
+			variant 1
+				"Cruiser"
+				"Surveillance Drone" 4
+	npc evade
+		government "Republic"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic small"
+			cargo 0
+			variant 1
+				"Gunboat" 2
+	on abort
+		"reputation: Pirate" -= 40
+	on complete
+		payment 8000000
+		"reputation: Pirate" += 40
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+
+mission "Midnight Pirate Crew Smuggling (Core, Tiny)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -1000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 150 250
+	passengers 2 3
+	source
+		government "Pirate"
+		attributes "core"
+	destination
+		government "Pirate"
+		attributes "south" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Syndicate" >= 0
+		"reputation: Pirate" >= -10
+		random < 20
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)"
+	on abort
+		"reputation: Pirate" --
+	on complete
+		payment 500000
+		"reputation: Pirate" ++
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Core, Small)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -2000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 250 750
+	passengers 4 12
+	source
+		government "Pirate"
+		attributes "core"
+	destination
+		government "Pirate"
+		attributes "south" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Syndicate" >= 0
+		"reputation: Pirate" >= -10
+		random < 15
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 3
+	on abort
+		"reputation: Pirate" -= 5
+	on complete
+		payment 1000000
+		"reputation: Pirate" += 5
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Core, Medium)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -4000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 750 1000
+	passengers 10 20
+	source
+		government "Pirate"
+		attributes "core"
+	destination
+		government "Pirate"
+		attributes "south" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Syndicate" >= 0
+		random < 10
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 5
+	on abort
+		"reputation: Pirate" -= 10
+	on complete
+		payment 2000000
+		"reputation: Pirate" += 10
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Core, Large)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -8000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1000 2000
+	passengers 20 40
+	source
+		government "Pirate"
+		attributes "core"
+	destination
+		government "Pirate"
+		attributes "south" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Syndicate" >= 0
+		"reputation: Pirate" >= -10
+		random < 5
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 3
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 3
+	on abort
+		"reputation: Pirate" -= 20
+	on complete
+		payment 4000000
+		"reputation: Pirate" += 20
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Core, Huge)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -16000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1500 3000
+	passengers 40 80
+	source
+		government "Pirate"
+		attributes "core"
+	destination
+		government "Pirate"
+		attributes "south" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Syndicate" >= 0
+		"reputation: Pirate" >= -10
+		random < 1
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 2
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 2
+	npc evade
+		government "Syndicate"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "syndicate small"
+			cargo 0
+			variant 1
+				"Quicksilver (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 40
+	on complete
+		payment 8000000
+		"reputation: Pirate" += 40
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+
+mission "Midnight Pirate Crew Smuggling (South, Tiny)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -1000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 150 250
+	passengers 2 3
+	source
+		government "Pirate"
+		attributes "south"
+	destination
+		government "Pirate"
+		attributes "core" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Militia" >= 0
+		"reputation: Pirate" >= -10
+		random < 20
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)"
+	on abort
+		"reputation: Pirate" --
+	on complete
+		payment 500000
+		"reputation: Pirate" ++
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (South, Small)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -2000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 250 750
+	passengers 4 12
+	source
+		government "Pirate"
+		attributes "south"
+	destination
+		government "Pirate"
+		attributes "core" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Militia" >= 0
+		"reputation: Pirate" >= -10
+		random < 15
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)" 2
+	on abort
+		"reputation: Pirate" -= 5
+	on complete
+		payment 1000000
+		"reputation: Pirate" += 5
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (South, Medium)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -4000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 750 1000
+	passengers 10 20
+	source
+		government "Pirate"
+		attributes "south"
+	destination
+		government "Pirate"
+		attributes "core" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Militia" >= 0
+		"reputation: Pirate" >= -10
+		random < 10
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)"
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)"
+	on abort
+		"reputation: Pirate" -= 10
+	on complete
+		payment 2000000
+		"reputation: Pirate" += 10
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (South, Large)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -8000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1000 2000
+	passengers 20 40
+	source
+		government "Pirate"
+		attributes "south"
+	destination
+		government "Pirate"
+		attributes "core" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Militia" >= 0
+		"reputation: Pirate" >= -10
+		random < 5
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia capital"
+			cargo 0
+			variant 1
+				"Bastion (Scanner)"
+	on abort
+		"reputation: Pirate" -= 20
+	on complete
+		payment 4000000
+		"reputation: Pirate" += 20
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (South, Huge)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -16000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1500 3000
+	passengers 40 80
+	source
+		government "Pirate"
+		attributes "south"
+	destination
+		government "Pirate"
+		attributes "core" "north" "dirt belt"
+		attributes "shipyard"
+	to offer
+		"reputation: Militia" >= 0
+		"reputation: Pirate" >= -10
+		random < 1
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia capital"
+			cargo 0
+			variant 1
+				"Bastion (Scanner)"
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)"
+	npc evade
+		government "Militia"
+		system
+			distance 3 4
+		personality waiting surveillance heroic
+		fleet
+			names "militia small"
+			cargo 0
+			variant 1
+				"Sparrow (Patrol)"
+	on abort
+		"reputation: Pirate" -= 40
+	on complete
+		payment 8000000
+		"reputation: Pirate" += 40
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+
+mission "Midnight Pirate Crew Smuggling (Dirt Belt, Tiny)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -1000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 150 250
+	passengers 2 3
+	source
+		government "Pirate"
+		attributes "dirt belt"
+	destination
+		government "Pirate"
+		attributes "core" "north" "south"
+		attributes "shipyard"
+	to offer
+		"reputation: Pirate" >= 0
+		random < 20
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	on abort
+		"reputation: Pirate" --
+	on complete
+		payment 500000
+		"reputation: Pirate" ++
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Dirt Belt, Small)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -2000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 250 750
+	passengers 4 12
+	source
+		government "Pirate"
+		attributes "dirt belt"
+	destination
+		government "Pirate"
+		attributes "core" "north" "south"
+		attributes "shipyard"
+	to offer
+		"reputation: Pirate" >= 0
+		random < 15
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	on abort
+		"reputation: Pirate" -= 5
+	on complete
+		payment 1000000
+		"reputation: Pirate" += 5
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Dirt Belt, Medium)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -4000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 750 1000
+	passengers 10 20
+	source
+		government "Pirate"
+		attributes "dirt belt"
+	destination
+		government "Pirate"
+		attributes "core" "north" "south"
+		attributes "shipyard"
+	to offer
+		"reputation: Pirate" >= 0
+		random < 10
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	on abort
+		"reputation: Pirate" -= 10
+	on complete
+		payment 2000000
+		"reputation: Pirate" += 10
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Dirt Belt, Large)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -8000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1000 2000
+	passengers 20 40
+	source
+		government "Pirate"
+		attributes "dirt belt"
+	destination
+		government "Pirate"
+		attributes "core" "north" "south"
+		attributes "shipyard"
+	to offer
+		"reputation: Pirate" >= 0
+		random < 5
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	on abort
+		"reputation: Pirate" -= 20
+	on complete
+		payment 4000000
+		"reputation: Pirate" += 20
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
+
+mission "Midnight Pirate Crew Smuggling (Dirt Belt, Huge)"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	deadline
+	repeat
+	name "Pirate Trafficking to <planet>"
+	description "Smuggle <bunks> pirates and the <tons> of parts for their ship to <destination>. Being caught smuggling a pirate crew and their ship will make you a wanted criminal. Payment is <payment>."
+	illegal -16000000 "Being caught smuggling a pirate crew and their ship has caused you to be regarded as a pirate yourself by the local authorities..."
+	cargo "ship parts" 1500 3000
+	passengers 40 80
+	source
+		government "Pirate"
+		attributes "dirt belt"
+	destination
+		government "Pirate"
+		attributes "core" "north" "south"
+		attributes "shipyard"
+	to offer
+		"reputation: Pirate" >= 0
+		random < 5
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	npc evade
+		government "Pirate (Rivals)"
+		system
+			distance 3 4
+		personality waiting vindictive heroic
+		fleet "pirate raid (rivals)"
+	on abort
+		"reputation: Pirate" -= 40
+	on complete
+		payment 8000000
+		"reputation: Pirate" += 40
+		dialog "The pirates pay you <payment> as soon as you land. They waste no time unloading the parts of their ship for reassembly."
 
 
 mission "Midnight Poker"
@@ -4247,7 +5208,7 @@ mission "Protection: Heavy"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Neutral"
 	to offer
-		random < 20
+		random < 15
 		"ships: Medium Warship" < 5
 		"ships: Heavy Warship" + "ships: Utility" <= 1
 		"ships: Superheavy" == 0
@@ -4275,7 +5236,7 @@ mission "Protection: Medium"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Neutral"
 	to offer
-		random < 25
+		random < 20
 		"ships: Medium Warship" <= 1
 		not "ships: Heavy Warship"
 		not "ships: Utility"
@@ -4304,7 +5265,7 @@ mission "Protection: Light"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Neutral"
 	to offer
-		random < 30
+		random < 25
 		"ships: Light Warship" < 5
 		not "ships: Medium Warship"
 		not "ships: Heavy Warship"
@@ -4319,6 +5280,37 @@ mission "Protection: Light"
 		government "Merchant"
 		personality heroic
 		fleet "Protection Light"
+		on provoke
+			"reputation: Merchant" -= 125
+			dialog `The <npc> sends a distress signal to other captains, warning them of your treachery!`
+	to complete
+		never
+
+mission "Protection: Interceptor"
+	job
+	repeat
+	deadline 15
+	name "Protection Escort"
+	description "Pay the <npc> 50,000 credits to escort your fleet until <date>."
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral"
+	to offer
+		random < 30
+		"ships: Interceptor" < 5
+		not "ships: Light Warship"
+		not "ships: Medium Warship"
+		not "ships: Heavy Warship"
+		not "ships: Utility"
+		not "ships: Superheavy" 
+	on accept
+		payment -50000
+		dialog `You pay the <npc> 50,000 credits to escort your fleet until <date>.`
+	on fail
+		dialog `The protection contract with <npc> has expired.`
+	npc kill
+		government "Merchant"
+		personality heroic
+		fleet "Protection Interceptor"
 		on provoke
 			"reputation: Merchant" -= 125
 			dialog `The <npc> sends a distress signal to other captains, warning them of your treachery!`
@@ -4363,10 +5355,11 @@ mission "Sketchy Cargo [Geminus]"
 	to offer
 		or
 			"year" < 3014
+			random < 15
 			and
 				"year" == 3014
 				"month" < 6
-		random < 15
+				random < 50
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "core"
@@ -4391,10 +5384,11 @@ mission "Sketchy Cargo [Martini]"
 	to offer
 		or
 			"year" < 3014
+			random < 15
 			and
 				"year" == 3014
 				"month" < 6
-		random < 15
+				random < 50
 	source
 		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Neutral" "Independent"
 		attributes "core"
@@ -4408,7 +5402,6 @@ mission "Sketchy Cargo [Martini]"
 	on complete
 		payment 0 160
 		dialog "You drop off the unlabeled cargo in a warehouse not too dissimilar to the one you picked it up in. A man dressed in a cloak hands you <payment> after the last crate is removed from your ship."
-
 
 
 mission "Star Explorer: Missing Science Vessel"
@@ -4512,7 +5505,6 @@ mission "Star Explorer: Escort"
 		payment 120000
 
 
-
 mission "Stealing From Rival Smugglers"
 	name "Rival Smuggler near <system>"
 	description "A rival gang is using the <npc> to smuggle cargo through our territory in <system>. When they do, disable and board the vessel then bring a certain item from their cargo back to <destination>. Your reward is: <payment>."
@@ -4557,7 +5549,6 @@ outfit "Smuggled Cargo"
 	thumbnail "outfit/unknown"
 	"mass" 1
 	description "Cargo stolen from a smuggler which has caught the interest of a pirate warlord."
-
 
 
 mission "Syndicate Uranium Mining [small]"
@@ -4640,7 +5631,6 @@ mission "Syndicate Uranium Mining [large]"
 		outfit "Uranium" -40
 		payment 300000
 		dialog `The outfitter on <planet> accepts your delivery of Uranium and pays you <payment>.`
-
 
 
 mission "Pirate Sabotage: Shield Suppressor (Republic)"
@@ -4762,7 +5752,6 @@ mission "Pirate Sabotage: Shield Suppressor (Syndicate)"
 		payment 50000
 		"reputation: Pirate" += 10
 		dialog `As you receive your reward for installing the Shield Suppressor onto the <npc>, your employer remarks on how that ship will be at their mercy thanks to your efforts.`
-
 
 
 mission "Rescue: Sabotaged Ship (Free Worlds)"
@@ -5008,7 +5997,6 @@ mission "Strike Breakers [station]"
 		dialog "You unload the strike breakers amid an angry crowd of protesters held back by station security. When you return to your ship, you find that the company has transferred the agreed-upon payment of <payment> into your account."
 
 
-
 mission "Transport workers to <planet> [station]"
 	job
 	repeat
@@ -5029,9 +6017,6 @@ mission "Transport workers to <planet> [station]"
 		payment
 		payment 2000
 		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
-
-
-
 
 
 ####################
@@ -5197,4 +6182,3 @@ mission "Cryostasis Organ Transplant (hard)"
 	on complete
 		payment 25000 175
 		dialog `The cryostasis pod opens with a hiss and you retrieve the last of the donated organs. A medical team rushes it to the intended recipient. Five lives may have been saved with your help. Compared to that, your payment of <payment> is just a bonus.`
-

@@ -41,6 +41,78 @@ mission "Sabotage: Engine Restraint (boarding)"
 		personality entering disables heroic plunders appeasing secretive
 		fleet "Large Remnant"
 
+
+mission "Midnight Banana Cat"
+	job
+	repeat
+	name "Banana cats to <planet>"
+	description "Deliver <cargo> to <destination>. Payment is <payment>."
+	cargo "banana cats" 1
+	source
+		government "Pirate"
+	destination
+		distance 2 200
+		government "Pirate"
+	to offer
+		has "remnant: blood test pure"
+		not "Midnight Banana Cat: active"
+		not "Midnight Banana Cat: failed"
+		random < 1
+	on accept
+		dialog "Banana cats? Are they bananas shaped like cats? Or maybe cats shaped like bananas? They're stored in crates and it doesn't seem like you're expected to feed them during the journey..."
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 50000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Midnight Banana Cat Remnant Scan"
+	landing
+	invisible
+	repeat
+	deadline 1
+	source
+		government Remnant
+	to offer
+		has "Midnight Banana Cat: active"
+		has "remnant: blood test pure"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`The Remnant scans seem particularly intense as you land. A security squad is waiting for you when you open your hatch.`
+			`	"Welcome back captain <last>. Our scans detected genetically modified material on the <ship>. We must insist that you allow us to search your ship for this material."`
+			choice
+				`	"Go ahead, I have nothing to hide."`
+				`	"I refuse."`
+					goto refuse
+			action
+				fail "Midnight Banana Cat"
+			scene "scene/scene-explosion"
+			`	After a thorough investigation, they determine that the source of genetically modified material is your cargo of banana cats. "This hazardous material must be destroyed!" The Remnant security squad confiscates the banana cats and obliterate them on the landing pad. "It is fortunate that we were able to locate this contraband before it left the spaceport. Please take care not to allow such cargo onto your ship in the future." The security team departs without compensating you for the loss in cargo.`
+				decline
+			label refuse
+			action
+				"reputation: Remnant" <?= -1
+			scene "outfit/attention"
+			`	"We cannot allow this genetically modified material onto the planet. Please depart." The mood becomes hostile. To avoid a fight, you have no choice but to leave.`
+				launch
+	on enter
+		dialog `As you leave the atmosphere, the Remnant hail you: "We must insist that you remove that offensive genetically modified material from our space."`
+	npc
+		government "Remnant"
+		personality entering heroic unconstrained
+		fleet "Remnant Home Guard"
+	npc
+		government "Remnant"
+		personality entering heroic unconstrained
+		fleet "Small Remnant"
+	npc
+		government "Remnant"
+		personality entering heroic unconstrained
+		fleet "Light Remnant Defense"
+
+
 mission "Midnight Remnant Distress"
 	invisible
 	boarding
@@ -494,6 +566,52 @@ mission "Remnant Atmospheric Samples"
 		payment 150000
 		dialog `You arrive back on <planet> and offload the atmospheric gas sample. A logistics adjustment of <payment> has been applied to your account.`
 
+
+mission "Midnight Remnant Tech: Kludge Blaster"
+	name "Retrieve Kludge Blasters"
+	description "A Remnant engineer has asked you for a delivery of two Kludge Blasters to <planet> for them to study."
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Kludge Blaster"
+		conversation
+			scene "outfit/kludge blaster"
+			`You remember that Taely was interested in seeing examples of technology from human space. Would you like to show her your Kludge Blaster?`
+			choice
+				`	(Not now.)`
+					defer
+				`	(Yes.)`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`	After asking a few people, you finally get directed to a bay in the shipyard where you find Taely just finishing the installation of a Thrasher Turret onto an Albatross. "Greetings, <first>. I will be down in a minute." She makes a few more adjustments to the turret mount, puts away her tools, and drops to the ground on a tether. "So, do you have something for me?"`
+				goto next
+			label familiar
+			`	Aware that Taely's main area of responsibility is in the shipyards, you head straight there and have almost arrived when you see Taely approaching from the direction of the cafeteria... "Greetings, Captain. I was told our scans picked up indications of uncatalogued human weaponry."`
+			choice
+				`	"I brought something that might interest you."`
+					goto next
+				`	"Did I interrupt your lunch?"`
+			`	She smiles and responds, "Yes, but I am much more interested in what you brought!"`
+			label next
+			`	You lead her back to your ship, where you show her the Kludge Blaster. "This appears to be an advanced version of the Energy Blasters our ancestors used. That component looks like a firing synchronizer..." she observes, gesturing at the Kludge Blaster. You inform her that pirates were attempting to compensate for the weapon's slow rate of fire, and she responds, "Fascinating. I would enjoy studying these a bit more. If you could deliver two to <planet> I would appreciate it."`
+				accept
+	on visit
+		dialog `You have returned to <planet>, but you don't have the two Kludge Blasters that Taely requested. Go acquire two Kludge Blasters before returning.`
+	on complete
+		outfit "Kludge Blaster" -2
+		payment 128000
+		"remnant met taely" ++
+		conversation
+			scene "outfit/kludge blaster"
+			`As the <ship> settles onto the pad closest to the research laboratory, you can see several people exiting an adjacent hangar with a trailer pulled by a camel. They quickly approach your landing pad and wait for you to complete your shutdown routines before boarding and starting to unload the Kludge Blasters. Once they are done one of them comes up to you and hands you your payment of <payment>. "Thank you for the delivery, Captain. We are looking forward to seeing what advances they have made to the archaic blaster weapons."`
 
 mission "Midnight Remnant Tech: Turbo Blaster"
 	name "Retrieve Turbo Blasters"
