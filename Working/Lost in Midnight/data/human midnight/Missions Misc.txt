@@ -1413,6 +1413,301 @@ mission "Midnight Paradise Fortune Patch"
 		fail
 
 
+mission "Midnight Republic Weapons Confiscation"
+	minor
+	invisible
+	source
+		government "Republic"
+		attributes paradise urban rich
+		not attributes station uninhabited
+	to offer
+		"flagship required crew" > 2
+		or
+			"outfit (flagship installed): Sniper Rifle" >= 10
+			"outfit (flagship installed): Fragmentation Grenades" >= 10
+			"outfit (flagship installed): Laser Rifle" >= 10
+		has "event: war begins"
+		not "chosen sides"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`When you return to your ship, a Republic Navy security team is gathered around your flagship. Your crew is loading weapons from your ship into a cart. The Navy officer in charge is overseeing this process.`
+			choice
+				`	"What's going on here?"`
+				`	(Draw your gun and point it at the Navy officer.)`
+					goto threaten
+				`	(Watch from a distance.)`
+					goto hide
+			`	The Navy officer notices you. "Are you the captain of this ship? With the destruction of our shipyards on Geminus, we are confiscating weapons to aid in our supply shortage. The Republic appreciates your cooperation in this matter."`
+			choice
+				`	"I understand."`
+					goto end
+				`	"Will I be compensated for my 'cooperation'?"`
+					goto compensation
+				`	"This is a violation of my civil rights!"`
+			label complain
+			scene "outfit/attention"
+			`	The officer scowls. "We are at war! Are you sympathizing with the enemy?" Your crew stops loading weapons onto the cart. The Navy security team tenses. Your next words dance on the edge of violence.`
+			choice
+				`	"Of course not. Sorry, please disregard my complaint."`
+					goto end
+				`	"Death to tyrants!"`
+					goto threaten
+			label threaten
+			`	You draw your gun and raise it towards the Navy officer. The landing pad erupts in weapons fire as the security team and your crew join in the shootout. Both you and the Navy officer are at the center of the fire fight. Your corpses crumple to the ground in a bloody mess as echoes of gunshots and screams echo thoughout the spaceport...`
+				die
+			label hide
+			`	You wait at the edge of the landing pad and watch them finish loading the cart.`
+				goto end
+			label compensation
+			`	"Compensation? Oh... Yes... Of course. We aren't pirates, afterall. I am authorized to offer five percent of each weapon's retail value to Republic citizens who contribute to the war effort."`
+			choice
+				`	"That's reasonable."`
+					goto end
+				`	"That's robbery!"`
+					goto complain
+			label end
+			branch "Fragmentation Grenades"
+				"outfit (flagship installed): Fragmentation Grenades" >= 10
+			branch "Sniper Rifle"
+				"outfit (flagship installed): Sniper Rifle" >= 10
+			scene "outfit/laser rifle"
+			branch "Laser Rifle 20"
+				"outfit (flagship installed): Laser Rifle" >= 20
+			action
+				outfit "Laser Rifle" -10
+				payment 4000
+			`	Your crew finishes loading the cart with 10 Laser Rifles. The Navy transfers 4,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 20"
+			branch "Laser Rifle 30"
+				"outfit (flagship installed): Laser Rifle" >= 30
+			action
+				outfit "Laser Rifle" -20
+				payment 8000
+			`	Your crew finishes loading the cart with 20 Laser Rifles. The Navy transfers 8,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 30"
+			branch "Laser Rifle 40"
+				"outfit (flagship installed): Laser Rifle" >= 40
+			action
+				outfit "Laser Rifle" -30
+				payment 12000
+			`	Your crew finishes loading the cart with 30 Laser Rifles. The Navy transfers 12,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 40"
+			branch "Laser Rifle 50"
+				"outfit (flagship installed): Laser Rifle" >= 50
+			action
+				outfit "Laser Rifle" -40
+				payment 16000
+			`	Your crew finishes loading the cart with 40 Laser Rifles. The Navy transfers 16,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 50"
+			branch "Laser Rifle 60"
+				"outfit (flagship installed): Laser Rifle" >= 60
+			action
+				outfit "Laser Rifle" -50
+				payment 20000
+			`	Your crew finishes loading the cart with 50 Laser Rifles. The Navy transfers 20,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 60"
+			branch "Laser Rifle 70"
+				"outfit (flagship installed): Laser Rifle" >= 70
+			action
+				outfit "Laser Rifle" -60
+				payment 24000
+			`	Your crew finishes loading the cart with 60 Laser Rifles. The Navy transfers 24,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 70"
+			branch "Laser Rifle 80"
+				"outfit (flagship installed): Laser Rifle" >= 80
+			action
+				outfit "Laser Rifle" -70
+				payment 28000
+			`	Your crew finishes loading the cart with 70 Laser Rifles. The Navy transfers 28,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 80"
+			branch "Laser Rifle 90"
+				"outfit (flagship installed): Laser Rifle" >= 90
+			action
+				outfit "Laser Rifle" -80
+				payment 32000
+			`	Your crew finishes loading the cart with 80 Laser Rifles. The Navy transfers 32,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 90"
+			branch "Laser Rifle 100"
+				"outfit (flagship installed): Laser Rifle" >= 100
+			action
+				outfit "Laser Rifle" -90
+				payment 36000
+			`	Your crew finishes loading the cart with 90 Laser Rifles. The Navy transfers 36,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Laser Rifle 100"
+			action
+				outfit "Laser Rifle" -100
+				payment 40000
+			`	Your crew finishes loading the cart with 100 Laser Rifles. The Navy transfers 40,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades"
+			scene "outfit/fragmentation grenades"
+			branch "Fragmentation Grenades 20"
+				"outfit (flagship installed): Fragmentation Grenades" >= 20
+			action
+				outfit "Fragmentation Grenades" -10
+				payment 8500
+			`	Your crew finishes loading the cart with 10 Fragmentation Grenades. The Navy transfers 8,500 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 20"
+			branch "Fragmentation Grenades 30"
+				"outfit (flagship installed): Fragmentation Grenades" >= 30
+			action
+				outfit "Fragmentation Grenades" -20
+				payment 17000
+			`	Your crew finishes loading the cart with 20 Fragmentation Grenades. The Navy transfers 17,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 30"
+			branch "Fragmentation Grenades 40"
+				"outfit (flagship installed): Fragmentation Grenades" >= 40
+			action
+				outfit "Fragmentation Grenades" -30
+				payment 25500
+			`	Your crew finishes loading the cart with 30 Fragmentation Grenades. The Navy transfers 25,500 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 40"
+			branch "Fragmentation Grenades 50"
+				"outfit (flagship installed): Fragmentation Grenades" >= 50
+			action
+				outfit "Fragmentation Grenades" -40
+				payment 34000
+			`	Your crew finishes loading the cart with 40 Fragmentation Grenades. The Navy transfers 34,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 50"
+			branch "Fragmentation Grenades 60"
+				"outfit (flagship installed): Fragmentation Grenades" >= 60
+			action
+				outfit "Fragmentation Grenades" -50
+				payment 42500
+			`	Your crew finishes loading the cart with 50 Fragmentation Grenades. The Navy transfers 42,500 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 60"
+			branch "Fragmentation Grenades 70"
+				"outfit (flagship installed): Fragmentation Grenades" >= 70
+			action
+				outfit "Fragmentation Grenades" -60
+				payment 51000
+			`	Your crew finishes loading the cart with 60 Fragmentation Grenades. The Navy transfers 51,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 70"
+			branch "Fragmentation Grenades 80"
+				"outfit (flagship installed): Fragmentation Grenades" >= 80
+			action
+				outfit "Fragmentation Grenades" -70
+				payment 59500
+			`	Your crew finishes loading the cart with 70 Fragmentation Grenades. The Navy transfers 59,500 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 80"
+			branch "Fragmentation Grenades 90"
+				"outfit (flagship installed): Fragmentation Grenades" >= 90
+			action
+				outfit "Fragmentation Grenades" -80
+				payment 68000
+			`	Your crew finishes loading the cart with 80 Fragmentation Grenades. The Navy transfers 68,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 90"
+			branch "Fragmentation Grenades 100"
+				"outfit (flagship installed): Fragmentation Grenades" >= 100
+			action
+				outfit "Fragmentation Grenades" -90
+				payment 76500
+			`	Your crew finishes loading the cart with 90 Fragmentation Grenades. The Navy transfers 76,500 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Fragmentation Grenades 100"
+			action
+				outfit "Fragmentation Grenades" -100
+				payment 85000
+			`	Your crew finishes loading the cart with 100 Fragmentation Grenades. The Navy transfers 85,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle"
+			scene "outfit/sniper rifle"
+			branch "Sniper Rifle 20"
+				"outfit (flagship installed): Sniper Rifle" >= 20
+			action
+				outfit "Sniper Rifle" -10
+				payment 6000
+			`	Your crew finishes loading the cart with 10 Sniper Rifles. The Navy transfers 6,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 20"
+			branch "Sniper Rifle 30"
+				"outfit (flagship installed): Sniper Rifle" >= 30
+			action
+				outfit "Sniper Rifle" -20
+				payment 12000
+			`	Your crew finishes loading the cart with 20 Sniper Rifles. The Navy transfers 12,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 30"
+			branch "Sniper Rifle 40"
+				"outfit (flagship installed): Sniper Rifle" >= 40
+			action
+				outfit "Sniper Rifle" -30
+				payment 18000
+			`	Your crew finishes loading the cart with 30 Sniper Rifles. The Navy transfers 18,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 40"
+			branch "Sniper Rifle 50"
+				"outfit (flagship installed): Sniper Rifle" >= 50
+			action
+				outfit "Sniper Rifle" -40
+				payment 24000
+			`	Your crew finishes loading the cart with 40 Sniper Rifles. The Navy transfers 24,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 50"
+			branch "Sniper Rifle 60"
+				"outfit (flagship installed): Sniper Rifle" >= 60
+			action
+				outfit "Sniper Rifle" -50
+				payment 30000
+			`	Your crew finishes loading the cart with 50 Sniper Rifles. The Navy transfers 30,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 60"
+			branch "Sniper Rifle 70"
+				"outfit (flagship installed): Sniper Rifle" >= 70
+			action
+				outfit "Sniper Rifle" -60
+				payment 36000
+			`	Your crew finishes loading the cart with 60 Sniper Rifles. The Navy transfers 36,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 70"
+			branch "Sniper Rifle 80"
+				"outfit (flagship installed): Sniper Rifle" >= 80
+			action
+				outfit "Sniper Rifle" -70
+				payment 42000
+			`	Your crew finishes loading the cart with 70 Sniper Rifles. The Navy transfers 42,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 80"
+			branch "Sniper Rifle 90"
+				"outfit (flagship installed): Sniper Rifle" >= 90
+			action
+				outfit "Sniper Rifle" -80
+				payment 48000
+			`	Your crew finishes loading the cart with 80 Sniper Rifles. The Navy transfers 48,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 90"
+			branch "Sniper Rifle 100"
+				"outfit (flagship installed): Sniper Rifle" >= 100
+			action
+				outfit "Sniper Rifle" -90
+				payment 54000
+			`	Your crew finishes loading the cart with 90 Sniper Rifles. The Navy transfers 54,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+			label "Sniper Rifle 100"
+			action
+				outfit "Sniper Rifle" -100
+				payment 60000
+			`	Your crew finishes loading the cart with 100 Sniper Rifles. The Navy transfers 60,000 credits to your account to compensate you for your contribution to the war effort.`
+				decline
+
 
 mission "Midnight Tanker Shipyard Alfheim"
 	minor

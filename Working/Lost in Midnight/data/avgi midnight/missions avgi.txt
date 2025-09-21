@@ -1,0 +1,53 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+mission "Midnight Avgi Voidlunker Auction"
+	minor
+	invisible
+	source
+		attributes avgi
+		attributes rich
+		not attributes uninhabited "aberrant siege"
+	to offer
+		has "outfit: Voidfish"
+		has "outfit: Voidlunker"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/voidfish"
+			`As you unload your catch of Voidfish, several Avgi rush to marvel at your Voidlunker. Several start a bidding war to purchase it. The prices being proposed are ludicrously high...`
+			choice
+				`	(Allow them to bid up the price.)`
+					goto auction
+				`	"Hold on, why are you willing to pay so much?"`
+			`	You are assaulted by a deluge of responses:`
+			``
+			`	"Exclamation. Never have I seen such a large voidfish."`
+			``
+			`	"Admiration. Look at its scales. The shape is exquisite."`
+			``
+			`	"Declaration. This will be the crown jewel of my Voidfish collection."`
+			``
+			label auction
+			`	The bidding is fierce. Finally the price settles at 24,000 credits. The crowd falls silent and waits for your reaction.`
+			choice
+				`	"Sold!"`
+				`	"I'd rather keep it for myself."`
+					goto reject
+			scene "outfit/voidfishlarge"
+			`	Other Avgi congratulate the winning bidder. You receive 24,000 credits in exchange for the Voidlunker. The crowd gazes with what may be awe or envy as the winner struggles to haul this legendary prize away. Future generations of Avgi will tell the tale of the day a human named <first> <last> delivered the legendary Voidlunker to <planet>.`
+				decline
+			label reject
+			scene "outfit/voidfishlarge"
+			`	The disappointment of the crowd is apparent as they slowly disperse. The legendary Voidlunker is your catch. Future generations of Avgi will tell the tale of the day their ancestors caught a glimpse of the legendary Voidlunker a human named <first> <last> brought to <planet>.`
+				decline
+
