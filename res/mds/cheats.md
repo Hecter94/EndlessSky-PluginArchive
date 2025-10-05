@@ -481,9 +481,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/control.station/icon.png' height='100'></img><br>
 
 
-[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2025-08-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
+[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2025-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-31) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-05) <br>
 
 >Adds a station to the Sol system that offers administrative functions started by the job board. See the README for details.
 
@@ -514,6 +514,9 @@ Completing the campaigns might not exactly have the same result as if the campai
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-10-05<br>
+capturing guide improvement (thx to Kassandra Haruki)<br>
 <br>
 2025-08-31<br>
 added emerald sword guide guide<br>
