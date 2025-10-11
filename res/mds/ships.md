@@ -2657,9 +2657,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/ship.merging/icon.png' height='100'></img><br>
 
 
-[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.22 mb | 2025-09-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
+[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.25 mb | 2025-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
 Author: zuckung | Category: Ships <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-09-15) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-11) <br>
 
 >This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship. See the README for details.
 
@@ -2676,6 +2676,8 @@ Reduce performance issues by reducing ship amounts or just make single ships mor
 <br>
 <br>
 Changelog:<br>
+2025-10-11<br>
+added ships "vyu-Ir", "Selii'mar" "Faes'mar", "Fetri'sei", "Subsidurial"<br>
 <br>
 2025-09-15<br>
 fix broken system link (thx to Kitteh)<br>
