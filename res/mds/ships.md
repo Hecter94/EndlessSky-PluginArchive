@@ -2657,9 +2657,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/ship.merging/icon.png' height='100'></img><br>
 
 
-[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.25 mb | 2025-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
+[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.45 mb | 2025-10-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
 Author: zuckung | Category: Ships <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-11) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-12) <br>
 
 >This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship. See the README for details.
 
@@ -2676,6 +2676,15 @@ Reduce performance issues by reducing ship amounts or just make single ships mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-10-12<br>
+reversed ship order inside the job (as wished by Darcy Manoel)<br>
+added multiplication of outfits<br>
+added multiplicatiin of gun/turret/bay subnode definitions<br>
+added a scene to the upgrade mission<br>
+added some more limited ships for users of plugins like omnis<br>
+changed a few sentences on the first contact and added a unique gift<br>
+<br>
 2025-10-11<br>
 added ships "vyu-Ir", "Selii'mar" "Faes'mar", "Fetri'sei", "Subsidurial"<br>
 <br>
