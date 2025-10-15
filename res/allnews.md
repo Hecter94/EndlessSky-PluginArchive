@@ -1,3 +1,4 @@
+2025-10-15 | Updated plugin 'Zoura's Outfits Expanded' by Zoura | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#zoura's-outfits-expanded)<br>
 2025-10-12 | Updated plugin 'ship.merging' by zuckung | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#shipmerging)<br>
 2025-10-11 | Updated plugin 'ship.merging' by zuckung | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#shipmerging)<br>
 2025-10-10 | Updated plugin 'All Content Plugin' by Michael Zahniser | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#all-content-plugin)<br>
