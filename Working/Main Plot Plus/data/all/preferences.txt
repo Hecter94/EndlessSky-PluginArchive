@@ -4,6 +4,16 @@ mission "Main Plot Plus Prompts"
     non-blocking
     on offer
         conversation
+            branch firsttime
+                not "global: main plot plus prompts"
+            `It looks like you have already made your choices on whether or not to enable guided start, security analysis jobs, and paint trim jobs in a previous save. Would you like to change them?`
+            choice
+                `(Yes)`
+                `(No)`
+                    decline
+            label firsttime
+            action
+                set "global: main plot plus prompts"
             `Would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
             choice
                 `(Enable guided start)`
