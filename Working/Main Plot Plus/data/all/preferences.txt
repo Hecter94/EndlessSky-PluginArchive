@@ -1,3 +1,33 @@
+mission "Main Plot Plus Prompts Patches (guided start)"
+    invisible
+    landing
+    to offer
+        has "enabled guided start"
+    on offer
+        set "global: enabled guided start"
+        clear "enabled guided start"
+        fail
+
+mission "Main Plot Plus Prompts Patches (paint trim jobs)"
+    invisible
+    landing
+    to offer
+        has "enabled paint trim jobs"
+    on offer
+        set "global: enabled paint trim jobs"
+        clear "enabled paint trim jobs"
+        fail
+
+mission "Main Plot Plus Prompts Patches (security analysis jobs)"
+    invisible
+    landing
+    to offer
+        has "enabled security analysis jobs"
+    on offer
+        set "global: enabled security analysis jobs"
+        clear "enabled security analysis jobs"
+        fail
+
 mission "Main Plot Plus Prompts"
     invisible
     landing
@@ -20,10 +50,12 @@ mission "Main Plot Plus Prompts"
                 `(Disable guided start)`
                     goto noguide
             action
-                set "enabled guided start"
+                set "global: enabled guided start"
             `Guided start has been enabled.`
                 goto security
             label noguide
+            action
+                clear "global: enabled guided start"
             `Guided start has been disabled.`
             label security
             `Would you like to enable security analysis jobs? These allow you to check your armament deterrence, cargo attraction, and local reputation in most planets that have job boards. This is information you normally are unable to see, so choose wisely.`
@@ -32,10 +64,12 @@ mission "Main Plot Plus Prompts"
                 `(Disable security analysis jobs)`
                     goto noanalysis
             action
-                set "enabled security analysis jobs"
+                set "global: enabled security analysis jobs"
             `Security analysis jobs have been enabled.`
                 goto paint
             label noanalysis
+            action
+                clear "global: enabled security analysis jobs"
             `Security analysis jobs have been disabled.`
             label paint
             `Would you like to enable paint trim jobs? These allow you to change the swizzle of your ship. This will take up a lot of spaces in the job board, and you can change your mind through the job board at any time. I recommend only enabling this, changing your color, then disabling this, unless you plan to frequently change your color.`
@@ -44,9 +78,11 @@ mission "Main Plot Plus Prompts"
                 `(Disable paint trim jobs)`
                     goto nopaint
             action
-                set "enabled paint trim jobs"
+                set "global: enabled paint trim jobs"
             `Paint trim jobs have been enabled.`
                 decline
             label nopaint
+            action
+                clear "global: enabled paint trim jobs"
             `Paint trim jobs have been disabled.`
                 decline
