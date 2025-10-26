@@ -10,21 +10,332 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+phrase "midnight avgi blooming orchid fleet"
+	word
+		"Orchi-"
+	word
+		"digit"
+	word
+		"digit"
+	word
+		"digit"
+
+mission "Midnight Avgi Blooming Orchid"
+	invisible
+	landing
+	non-blocking
+	repeat
+	deadline 2
+	source
+		attributes "twilight" "tangled shroud"
+		attributes "uninhabited"
+	destination "Outpost Tekis"
+	to offer
+		has "Avgi: First Contact: done"
+		not "Midnight Avgi Blooming Orchid: active"
+		not "blooming orchid destroyed"
+		or
+			and
+				not "Midnight Avgi Blooming Orchid: offered"
+				random < 70
+			and
+				has "Midnight Avgi Blooming Orchid: offered"
+				random < 10
+	on enter
+		dialog `An Avgi ship sends out a general hail: "Rejoice. The Blooming Orchid continues to fight Aberrant."`
+	npc
+		government "Avgi (Dissonance)"
+		personality entering heroic unconstrained uninterested surveillance lingering mute
+		fleet
+			names "midnight avgi blooming orchid fleet"
+			cargo 0
+			variant
+				"Optulon" 3
+	npc
+		government "Avgi (Dissonance)"
+		personality entering heroic unconstrained uninterested surveillance lingering mute
+		fleet
+			names "midnight avgi blooming orchid fleet"
+			cargo 0
+			variant
+				"Optulon" 3
+	npc
+		government "Avgi (Dissonance)"
+		personality entering heroic unconstrained uninterested surveillance lingering mute
+		fleet
+			names "midnight avgi blooming orchid fleet"
+			cargo 0
+			variant
+				"Optulon" 3
+	npc
+		government "Avgi (Dissonance)"
+		personality waiting heroic unconstrained uninterested surveillance lingering mute
+		fleet
+			names "avgi civilian names"
+			fighters
+				names "avgi fighter names"
+			variant
+				"Akoustiki"
+				"Optikon" 2
+	npc save
+		government "Avgi (Dissonance)"
+		personality entering unconstrained uninterested surveillance
+		ship "Interlari" "Blooming Orchid"
+		on kill
+			set "blooming orchid destroyed"
+			event "midnight avgi remove wandering orchids" 30
+			dialog `The Blooming Orchid sends a general hail. "Resignation. The Orchid withers. Remember our bloom."`
+			fail
+
+
+mission "Midnight Avgi Harvester License"
+	landing
+	invisible
+	source
+		government "Avgi" "Avgi (Consonance)" "Avgi (Dissonance)" "Avgi (Twilight Guard)"
+		attributes "spaceport"
+		not attributes "uninhabited"
+	to offer
+		has "Avgi: First Contact: done"
+		or
+			has "outfit (flagship installed): Voidfish"
+			has "outfit (flagship installed): Voidlunker"
+			has "outfit (flagship installed): Integral Wood"
+			has "outfit (flagship installed): Jamfruit"
+			has "outfit (flagship installed): Pollen"
+		random < 100 - ( "avgi harvester license deferred" * 90 )
+	on offer
+		clear "avgi harvester license deferred"
+		conversation
+			branch fish
+				or
+					has "outfit (flagship installed): Voidfish"
+					has "outfit (flagship installed): Voidlunker"
+			branch wood
+				has "outfit (flagship installed): Integral Wood"
+			branch fruit
+				has "outfit (flagship installed): Jamfruit"
+			scene "outfit/pollen particle"
+			`After landing, you receive a message from the <origin> spaceport authorities.`
+				goto message
+			label fish
+			scene "outfit/voidfish"
+			`After landing, you receive a message from the <origin> spaceport authorities.`
+				goto message
+			label wood
+			scene "outfit/integral wood"
+			`After landing, you receive a message from the <origin> spaceport authorities.`
+				goto message
+			label fruit
+			scene "outfit/jamfruit pod"
+			`After landing, you receive a message from the <origin> spaceport authorities.`
+			label message
+			`	"Salutations. You have cargo from Gossamer, observation. You have interest to harvest and sell these resources, question?"`
+			choice
+				`	"Yes, this cargo is for sale."`
+				`	"No, this is for my own use."`
+					goto personal
+			action
+				set "license: Avgi Harvester"
+				event "add avgi harvester sales"
+				event "link kr-84 murk"
+				log `Was granted a license to purchase specialized equipment from the Avgi for Void Harvesting. The presence of the Aberrant has made traveling to Gossamer dangerous. Because of this, the resources found there are highly sought after.`
+			scene "outfit/voidfish pendant"
+			`	"Excitement. Few Void Harvesters in Gossamer. The path, not safe. Will grant license. Access specialized tools. Wait for delivery, request."`
+			`	A short while later, a representative arrives to deliver the "license." The tiny Voidfish pendant dangling from the chain looks remarkably life-like. As it is passed to you, it jiggles back and forth, appearing as if it's trying to slip off a fishing hook.`
+			`	"Encouragement. Have good luck to catch a Voidlunker. Farewell."`
+				decline
+			label personal
+			action
+				set "avgi harvester license deferred"
+			`	The response is slow. "Envy. The fruits of Gossamer are scarce at this time. Desired by many. Disappointment." The transmission ends abruptly...`
+				defer
+
+event "link kr-84 murk"
+	link kr-84 murk
+
+
+mission "Midnight Avgi Tangled Twins"
+	landing
+	invisible
+	destination "Outpost Enka"
+	to offer
+		has "event: link kr-84 murk"
+		has "license: Avgi Harvester"
+	to complete
+		never
+	on enter Murk
+		dialog `An Avgi ship sends a hail: "Wary. We explore new system. Hopeful. No fight."`
+	npc
+		government "Avgi (Dissonance)"
+		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		system Murk
+		fleet
+			names "avgi civilian names"
+			fighters
+				names "avgi fighter names"
+			variant
+				"Akoustiki" 2
+				"Optikon" 4
+	npc save
+		to despawn
+			has "tangled twins provoked"
+		government "Avgi (Dissonance)"
+		personality waiting coward forbearing timid unconstrained uninterested surveillance
+		system Murk
+		ship "Polipolari" "Tangled Twins"
+		on kill
+			set "tangled twins destroyed"
+			fail
+		on provoke
+			set "tangled twins provoked"
+
+
+mission "Midnight Avgi Twilight Key"
+	landing
+	name "Assist Twilight Key"
+	description "The crew of the Twilight Key is stranded. Acquire some key components from <stopovers> and deliver them to <destination>."
+	cargo "key components" 1
+	source
+		attributes "uninhabited"
+		attributes "twilight"
+	stopover
+		attributes "outfitter"
+		distance 0 5
+	to offer
+		has "Avgi: First Contact: done"
+		random < 70 - ( "deferred poloptikon" * 65 )
+	on offer
+		conversation
+			scene "outfit/attention"
+			`When landing, something attempts to communicate with your ship.`
+			choice
+				`	(Open communications...)`
+				`	(Ignore the communication...)`
+					goto ignore
+			scene "outfit/unknown"
+			`	An Avgi speaks: "Desperation. Our ship was damaged by aberrant. Need key components from <stopovers>. Will help us, question?"`
+			choice
+				`	"Send me a shopping list."`
+					goto shopping
+				`	"Will you pay me?"`
+			scene "outfit/research"
+			`	"Contemplation. We have biological samples and system data."`
+			choice
+				`	"Alright, I'll help."`
+				`	"Not interested."`
+					goto refuse
+			label shopping
+			action
+				outfit "Local Map"
+			scene "thumbnail/avgi poloptikon-thumb"
+			`	They transmit some local map data and a recorded message for the outfitter on <stopovers>. "Gratitude. Twilight Key is our ship name translation. Remember us. We wait, you return."`
+				accept
+			label ignore
+			action
+				set "deferred poloptikon"
+			`	The signal continues for a moment before going silent...`
+				defer
+			label refuse
+			action
+				set "deferred poloptikon"
+				"reputation: Avgi" -= 5
+			`	The response is in a language you don't understand...`
+				defer
+	on stopover
+		dialog "After presenting the Twilight Key's message, the outfitter provides the key components. Deliver this to <destination> to help the stranded crew."
+	on complete
+		outfit "Research Data"
+		outfit "Voidfish"
+		outfit "Integral Wood"
+		outfit "Jamfruit"
+		outfit "Pollen"
+		outfit "Voidjelly"
+		"reputation: Avgi" += 5
+		conversation
+			scene "thumbnail/avgi poloptikon-thumb"
+			`You deliver the key components to the crew of the Twilight Key. "Exaltation. Gratitude for assistance." The crew gives you some biological samples they've collected and share their research data.`
+
+mission "Midnight Avgi Twilight Key Wandering"
+	invisible
+	landing
+	repeat
+	deadline 4
+	source
+		attributes "twilight"
+		attributes "uninhabited"
+	destination "Outpost Enka"
+	to offer
+		"reputation: Avgi" > -1
+		has "Midnight Avgi Twilight Key: done"
+		not "twilight key destroyed"
+		or
+			and
+				not "Midnight Avgi Twilight Key Wandering: offered"
+				random < 70
+			and
+				has "Midnight Avgi Twilight Key Wandering: offered"
+				random < 10
+	on enter
+		dialog `An Avgi ship hails you: "Well wishes. The Twilight Key seeks the Gate."`
+	to complete
+		never
+	npc
+		government "Avgi"
+		personality waiting timid disables unconstrained uninterested surveillance
+		fleet
+			names "avgi civilian names"
+			fighters
+				names "avgi fighter names"
+			variant
+				"Akoustiki"
+				"Optikon" 4
+	npc save
+		to spawn
+			not "twilight key provoked"
+			not "twilight key destroyed"
+		to despawn
+			has "twilight key provoked"
+		government "Avgi"
+		personality entering coward timid disables unconstrained uninterested surveillance
+		ship "Poloptikon" "Twilight Key"
+		on kill
+			set "twilight key destroyed"
+			dialog `The Twilight Key sends a general hail: "Lament. The Twilight Key is lost."`
+			fail
+		on provoke
+			set "twilight key provoked"
+	npc save
+		to spawn
+			has "twilight key provoked"
+			not "twilight key destroyed"
+		government "Avgi"
+		personality entering coward timid disables unconstrained uninterested fleeing
+		ship "Poloptikon" "Twilight Key"
+		on kill
+			set "twilight key destroyed"
+			dialog `The Twilight Key sends a general hail: "Lament. The Twilight Key is lost."`
+			fail
+
+
 mission "Midnight Avgi Voidlunker Auction"
 	minor
 	invisible
 	source
 		attributes avgi
 		attributes rich
-		not attributes uninhabited "aberrant siege"
+		not attributes uninhabited
 	to offer
-		has "outfit: Voidfish"
+		or
+			has "outfit: Voidfish"
+			has "outfit: Murkfish"
 		has "outfit: Voidlunker"
 		random < 70
 	on offer
 		conversation
-			scene "outfit/voidfish"
-			`As you unload your catch of Voidfish, several Avgi rush to marvel at your Voidlunker. Several start a bidding war to purchase it. The prices being proposed are ludicrously high...`
+			scene "outfit/voidfishlarge"
+			`As you unload your catch of Voidfish, several Avgi rush to marvel at your Voidlunker. A few of them start a bidding war to purchase it. The prices being proposed are ludicrously high...`
+			label choose
 			choice
 				`	(Allow them to bid up the price.)`
 					goto auction
@@ -43,6 +354,8 @@ mission "Midnight Avgi Voidlunker Auction"
 				`	"Sold!"`
 				`	"I'd rather keep it for myself."`
 					goto reject
+			action
+				payment 24000
 			scene "outfit/voidfishlarge"
 			`	Other Avgi congratulate the winning bidder. You receive 24,000 credits in exchange for the Voidlunker. The crowd gazes with what may be awe or envy as the winner struggles to haul this legendary prize away. Future generations of Avgi will tell the tale of the day a human named <first> <last> delivered the legendary Voidlunker to <planet>.`
 				decline
@@ -51,3 +364,24 @@ mission "Midnight Avgi Voidlunker Auction"
 			`	The disappointment of the crowd is apparent as they slowly disperse. The legendary Voidlunker is your catch. Future generations of Avgi will tell the tale of the day their ancestors caught a glimpse of the legendary Voidlunker a human named <first> <last> brought to <planet>.`
 				decline
 
+mission "Midnight Avgi Voidlunker Job"
+	job
+	repeat
+	name "Voidlunker to <planet>"
+	description "A wealthy Avgi has requested a Voidlunker be delivered to <destination>. Payment is <payment>."
+	destination
+		attributes avgi
+		not attributes rich
+		not attributes uninhabited
+	destination
+		attributes avgi
+		attributes rich
+		not attributes uninhabited
+	to offer
+		has "license: Avgi Harvester"
+		has "outfit: Voidlunker"
+		random < 70
+	on complete
+		outfit "Voidlunker" -1
+		payment 24000
+		dialog "The wealthy client pays you <payment> after receiving the Voidlunker."

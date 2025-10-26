@@ -1458,16 +1458,24 @@ mission "Cartography: Rum Cellar Side Trip"
 			`	Unfortunately no one took the bait, but you still win with a royal flush! You gain 50,000 credits.`
 				goto replay
 			label jackpot
+			branch chasm
+				not "event: link chasm"
 			action
-				event "link chasm"
 				clear pokerscore
 			scene scene "outfit/map"
-			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
+			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. These appear to be same codes you already have. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
 				accept
 			label bust
 			action
 				clear pokerscore
 			`	Unfortunately, you don't have enough credits to continue playing. "Better luck next time!" They continue playing without you.`
+				accept
+			label chasm
+			action
+				event "link chasm"
+				clear pokerscore
+			scene scene "outfit/map"
+			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
 				accept
 	on enter
 		conversation

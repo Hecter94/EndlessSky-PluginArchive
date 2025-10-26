@@ -3785,8 +3785,9 @@ mission "Midnight Poker"
 			`	Unfortunately no one took the bait, but you still win with a royal flush! You gain 50,000 credits.`
 				goto replay
 			label jackpot
+			branch chasm
+				not "event: link chasm"
 			action
-				event "link chasm"
 				clear pokerscore
 			`	The other players have had enough and leave you with your winnings.`
 				accept
@@ -3795,6 +3796,14 @@ mission "Midnight Poker"
 				clear pokerscore
 			`	Unfortunately, you don't have enough credits to continue playing. "Better luck next time!" They continue without you.`
 				decline
+			label chasm
+			action
+				clear pokerscore
+				event "link chasm"
+			scene "outfit/map"
+			`	The other players have had enough and leave you with your winnings. Mixed into the pile of credit chips is a data drive. It contains a map pointing to the western region of the Dirt Belt and a transmission code. There are instruction to transmit the code at either Gacrux or Minkar to access a hidden system.`
+				accept
+			
 	on enter
 		dialog "Looks like at least one of the poker players was upset that you did too well at the card table."
 	npc kill
@@ -4081,7 +4090,8 @@ mission "Militia: Joint Operations (Sparrow)"
 		fleet
 			names "militia small"
 			variant
-				"Sparrow" 5
+				"Sparrow (Patrol)" 3
+				"Sparrow (Meteor Missile)" 2
 		on kill
 			"reputation: Militia" -= 5
 			fail "Militia: Joint Operations (Sparrow)"
@@ -4130,9 +4140,8 @@ mission "Militia: Joint Operations (Hawk)"
 		fleet
 			names "militia small"
 			variant
-				"Hawk (Speedy)"
+				"Hawk (Patrol)" 3
 				"Hawk (Rocket)" 2
-				"Hawk" 2
 		on kill
 			"reputation: Militia" -= 5
 			fail "Militia: Joint Operations (Hawk)"
@@ -4181,10 +4190,11 @@ mission "Militia: Joint Operations (Fury)"
 		fleet
 			names "militia small"
 			variant
-				"Fury"
-				"Fury (Laser)"
+				"Fury (Patrol)" 3
 				"Fury (Bomber)" 2
-				"Fury (Missile)"
+			variant
+				"Fury (Patrol)" 3
+				"Fury (Missile)" 2
 		on kill
 			"reputation: Militia" -= 5
 			fail "Militia: Joint Operations (Fury)"
@@ -4242,6 +4252,8 @@ mission "Militia: Joint Operations (Argosy)"
 				"Argosy (Missile)"
 			variant
 				"Argosy (Turret)"
+			variant
+				"Argosy (Patrol)"
 		on kill
 			"reputation: Militia" -= 10
 			fail "Militia: Joint Operations (Argosy)"
@@ -4295,6 +4307,8 @@ mission "Militia: Joint Operations (Osprey)"
 				"Osprey (Missile)"
 			variant
 				"Osprey (Laser)"
+			variant
+				"Osprey (Patrol)"
 		on kill
 			"reputation: Militia" -= 15
 			fail "Militia: Joint Operations (Osprey)"
@@ -4348,6 +4362,8 @@ mission "Militia: Joint Operations (Bastion)"
 				"Bastion (Heavy)"
 			variant
 				"Bastion (Laser)"
+			variant
+				"Bastion (Patrol)"
 		on kill
 			"reputation: Militia" -= 15
 			fail "Militia: Joint Operations (Bastion)"
@@ -4401,6 +4417,8 @@ mission "Militia: Joint Operations (Falcon)"
 				"Falcon (Heavy)"
 			variant
 				"Falcon (Laser)"
+			variant
+				"Falcon (Patrol)"
 		on kill
 			"reputation: Militia" -= 20
 			fail "Militia: Joint Operations (Falcon)"

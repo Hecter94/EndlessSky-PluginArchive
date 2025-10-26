@@ -1961,11 +1961,14 @@ mission "Midnight Boarding Pillagers"
 	destination Earth
 	to offer
 		or
+			"outfit (flagship installed): Barracks" >= 2
 			"outfit (flagship installed): Bunk Room" >= 2
 			"outfit (flagship installed): Small Bunk Room" >= 2
 		random < 1
 	on offer
 		conversation
+			branch Barracks1
+				has "outfit (flagship installed): Barracks"
 			branch SBR1
 				"outfit (flagship installed): Bunk Room" < 2
 			scene "scene/scene-burningbunks"
@@ -2025,6 +2028,49 @@ mission "Midnight Boarding Pillagers"
 				outfit "Small Bunk Room" -3
 				outfit "Small Bunk Room (Burned)" 3
 			`While you were boarding the <origin>, some of their crew also boarded your ship! Three of your Small Bunkrooms were looted and burned...`
+				decline
+			label Barracks1
+			scene "scene/scene-burningbarracks"
+			branch Barracks2
+				"outfit (flagship installed): Barracks" >= 2
+				random < 60
+			action
+				outfit "Barracks" -1
+				outfit "Barracks (Burned)" 1
+			`While you were boarding the <origin>, some of their crew also boarded your ship! One of your Barracks was looted and burned...`
+				decline
+			label Barracks2
+			branch Barracks3
+				"outfit (flagship installed): Barracks" >= 3
+				random < 50
+			action
+				outfit "Barracks" -2
+				outfit "Barracks (Burned)" 2
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Two of your Barracks were looted and burned...`
+				decline
+			label Barracks3
+			branch Barracks4
+				"outfit (flagship installed): Barracks" >= 4
+				random < 33
+			action
+				outfit "Barracks" -3
+				outfit "Barracks (Burned)" 3
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Three of your Barracks were looted and burned...`
+				decline
+			label Barracks4
+			branch Barracks5
+				"outfit (flagship installed): Barracks" >= 5
+				random < 25
+			action
+				outfit "Barracks" -4
+				outfit "Barracks (Burned)" 4
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Four of your Barracks were looted and burned...`
+				decline
+			label Barracks5
+			action
+				outfit "Barracks" -5
+				outfit "Barracks (Burned)" 5
+			`While you were boarding the <origin>, some of their crew also boarded your ship! Five of your Barracks were looted and burned...`
 				decline
 
 

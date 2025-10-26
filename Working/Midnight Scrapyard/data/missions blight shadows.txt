@@ -1680,54 +1680,22 @@ mission "Midnight Docking Bay 13 Investigation"
 mission "Scrapyard Shadowblight Twilight"
 	landing
 	invisible
+	source
+		attributes "twilight" "tangled shroud"
 	to offer
 		has "Infected with Shadowblight"
 		or
-			not "avgi: lost in twilight"
-			has "discovered avgi"
-			and
-				has "avgi: lost in twilight"
-				or
-					has "Avgi: First Contact: failed"
-					has "Avgi: First Contact: aborted"
-	on enter "Cusp"
+			has "Avgi: First Contact: aborted"
+			has "Avgi: First Contact: declined"
+			has "Avgi: First Contact: done"
+			has "Avgi: First Contact: failed"
+	on enter
 		event "Shadowblight Twilight"
 		set "Shadowblight Gossamer Patched"
 		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
 		fail
 	npc kill
 		government "Invasive Predator"
-		system "Cusp"
-		personality waiting disables unconstrained mute
-		fleet "Small Blight Shadow"
-	on enter "Tide"
-		event "Shadowblight Twilight"
-		set "Shadowblight Gossamer Patched"
-		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
-		fail
-	npc kill
-		government "Invasive Predator"
-		system "Tide"
-		personality waiting disables unconstrained mute
-		fleet "Small Blight Shadow"
-	on enter "Billow"
-		event "Shadowblight Twilight"
-		set "Shadowblight Gossamer Patched"
-		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
-		fail
-	npc kill
-		government "Invasive Predator"
-		system "Billow"
-		personality waiting disables unconstrained mute
-		fleet "Small Blight Shadow"
-	on enter "Tap"
-		event "Shadowblight Twilight"
-		set "Shadowblight Gossamer Patched"
-		dialog `The Blight Shadows have reached The Twilight. Could they be following you?`
-		fail
-	npc kill
-		government "Invasive Predator"
-		system "Tap"
 		personality waiting disables unconstrained mute
 		fleet "Small Blight Shadow"
 
@@ -1991,3 +1959,19 @@ event "Shadowblight Gossamer Patch"
 		add fleet "Small Blight Shadow Miners" 50000
 		remove fleet "Large Blight Shadow"
 		remove fleet "Infested Blight Aberrant"
+
+
+mission "Scrapyard Shadowblight Murk"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: Shadowblight Twilight"
+		has "event: link kr-84 murk"
+	on offer
+		event "Shadowblight Murk"
+		fail
+
+event "Shadowblight Murk"
+	system Murk
+		add fleet "Small Blight Shadow Miners" 50000

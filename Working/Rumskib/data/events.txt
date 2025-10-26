@@ -103,3 +103,33 @@ mission "Rumskib: Add Swan to sales"
 event "rumskib: remnant: add swan to sales"
 	shipyard "Remnant"
 		add "Swan (Rumskib)"
+
+
+
+mission "Rumskib: Add Experimental Ladybug"
+	landing
+	invisible
+	to offer
+		not "event: hai ladybug available"
+	on offer
+		event "rumskib: experimental ladybug sold" 365 560
+		fail
+
+event "rumskib: experimental ladybug sold"
+	shipyard "Mon Ki i'Hiya Advanced"
+		add "Ladybug (New Description)"
+
+
+mission "Rumskib: Remove Experimental Ladybug"
+	landing
+	invisible
+	to offer
+		has "event: hai ladybug available"
+		has "event: rumskib: experimental ladybug sold"
+	on offer
+		event "rumskib: experimental ladybug no longer sold" 0
+		fail
+
+event "rumskib: experimental ladybug no longer sold"
+	shipyard "Mon Ki i'Haya Advanced"
+		remove "Ladybug (New Description)"

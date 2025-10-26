@@ -1,0 +1,322 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+minable "jelly water droplet"
+	"display name" "Tiny"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.125
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 60
+	"random hull" 60
+	payload "Voidjelly" 1
+		"toughness" 270
+	explode "droplet burst"
+
+minable "lunker water droplet"
+	"display name" "Medium"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.5
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 600
+	"random hull" 600
+	payload "Voidjelly" 30
+		"toughness" 900
+	payload "Voidfish" 15
+		"toughness" 1800
+	payload "Voidlunker" 1
+		"drop rate" 1
+		"toughness" 1377500
+	explode "droplet burst" 6
+
+outfit "Voidjelly"
+	category "Minerals"
+	plural "Voidjellies"
+	cost 100
+	thumbnail "outfit/voidjelly"
+	"flotsam sprite" "effect/flotsam voidjelly"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "Voidjellies are poisonous and have almost no commercial value. They are, however, a favorite food of certain large Voidfish that are immune to the toxin. A high enough concentration of them within a water droplet is likely to attract a Voidlunker."
+
+outfit "Voidlunker"
+	category "Special"
+	plural "Voidlunkers"
+	cost 24000
+	thumbnail "outfit/voidfishlarge"
+	"flotsam sprite" "effect/flotsam voidfishlarge"
+	"mass" 1
+	description "Occasionally, a voidborne fish grows to a particularly large size. These lunkers are highly prized among a small community of fishing enthusiasts. Such specimens are preserved through a process, similar to taxidermy, for display in private collections."
+	description "	This is a rare catch. You can install it on your ship to keep it from getting mixed in with the regular cargo."
+
+mission "Midnight Add Voidlunker"
+	landing
+	non-blocking
+	invisible
+	on offer
+		set "midnight add voidlunker patched"
+		event "midnight add voidlunker"
+		fail
+
+event "midnight add voidlunker"
+	system Gossamer
+		add minables "jelly water droplet" 30 3.9
+		add minables "lunker water droplet" 1 1.5
+
+mission "Midnight Voidlunker Patch"
+	landing
+	non-blocking
+	invisible
+	to offer
+		has "event: midnight add voidlunker"
+		not "midnight add voidlunker patched"
+	on offer
+		event "midnight add voidlunker patch"
+		fail
+
+event "midnight add voidlunker patch"
+	system Gossamer
+		add minables "jelly water droplet" 30 3.9
+
+minable "tiny murk droplet"
+	"display name" "Tiny"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 0.125
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 60
+	"random hull" 60
+	explode "droplet burst"
+
+minable "jelly murk droplet"
+	"display name" "Tiny"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 0.125
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 60
+	"random hull" 60
+	payload "Voidjelly" 1
+		"toughness" 270
+	explode "droplet burst"
+
+minable "small murk droplet"
+	"display name" "Small"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 0.25
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 180
+	"random hull" 180
+	payload "Rotting Murk Flesh" 2
+		"toughness" 270
+	payload "Murkfish" 1
+		"toughness" 540
+	explode "droplet burst" 3
+
+minable "medium murk droplet"
+	"display name" "Medium"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 0.5
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 600
+	"random hull" 600
+	payload "Rotting Murk Flesh" 7
+		"toughness" 900
+	payload "Murkfish" 8
+		"toughness" 1800
+	explode "droplet burst" 6
+
+minable "large murk droplet"
+	"display name" "Large"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 0.75
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 1800
+	"random hull" 1800
+	payload "Rotting Murk Flesh" 22
+		"toughness" 2200
+	payload "Murkfish" 23
+		"toughness" 4500
+	explode "droplet burst" 12
+
+minable "huge murk droplet"
+	"display name" "Huge"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 1
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 3600
+	"random hull" 3600
+	payload "Rotting Murk Flesh" 60
+		"toughness" 5400
+	payload "Murkfish" 60
+		"toughness" 10800
+	explode "droplet burst" 36
+
+minable "lunker murk droplet"
+	"display name" "Huge"
+	noun "Water Droplet"
+	sprite "asteroid/murk droplet/murk"
+		scale 1
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 3600
+	"random hull" 3600
+	payload "Voidjelly" 120
+		"toughness" 5400
+	payload "Murkfish" 60
+		"toughness" 10800
+	payload "Voidlunker" 1
+		"drop rate" 1
+		"toughness" 1377500
+	explode "droplet burst" 36
+
+outfit "Murkfish"
+	plural "Murkfish"
+	category "Minerals"
+	cost 4800
+	thumbnail "outfit/murkfish"
+	"flotsam sprite" "effect/flotsam murkfish"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "Most of the voidborne fish found in the dark waters of Murk appear even more alien than those caught in Gossamer. This exotic appearance is enhanced by a larger representation of species exhibiting some form of bioluminescence."
+
+outfit "Rotting Murk Flesh"
+	plural "Rotting Murk Flesh"
+	category "Minerals"
+	cost 100
+	thumbnail "outfit/murk flesh"
+	"flotsam sprite" "effect/flotsam murk flesh"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "A chunk of rotting flesh found scattered through out the waters of Murk. The size and shape suggest these came from something larger than a capital ship..."
+	description "	The flesh itself is too far gone to have any market value, but it is teeming with crustaceans, mollusks, and other small invertebrates feeding upon it. These scavengers seem like they might be edible if cooked properly."
+
+minable "wither tree a"
+	"display name" "Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither a"
+		scale 0.65
+	hull 3600
+	"random hull" 1200
+	payload "Wither Wood" 50
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Uranium" 110
+		"toughness" 10800
+	explode "timber" 12
+
+minable "wither tree aa"
+	"display name" "Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither a"
+		scale 0.75
+	hull 4800
+	"random hull" 1200
+	payload "Wither Wood" 60
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Uranium" 120
+		"toughness" 10800
+	explode "timber" 12
+
+minable "wither tree aaa"
+	"display name" "Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither a"
+		scale 0.85
+	hull 5400
+	"random hull" 1200
+	payload "Wither Wood" 70
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Uranium" 130
+		"toughness" 10800
+	explode "timber" 12
+
+minable "wither tree b"
+	"display name" "Dead Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither b"
+		scale 0.65
+	hull 3600
+	"random hull" 1200
+	payload "Wither Wood" 110
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Lead" 110
+		"toughness" 10800
+	explode "timber" 12
+
+minable "wither tree bb"
+	"display name" "Dead Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither b"
+		scale 0.75
+	hull 4800
+	"random hull" 1200
+	payload "Wither Wood" 120
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Lead" 120
+		"toughness" 10800
+	explode "timber" 12
+
+minable "wither tree bbb"
+	"display name" "Dead Wither"
+	noun "Tree"
+	sprite "asteroid/wither tree/wither b"
+		scale 0.85
+	hull 5400
+	"random hull" 1200
+	payload "Wither Wood" 130
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Lead" 130
+		"toughness" 10800
+	explode "timber" 12
+
+outfit "Wither Wood"
+	category "Minerals"
+	plural "Wither Wood"
+	cost 10000
+	thumbnail "outfit/wither wood"
+	"flotsam sprite" "effect/flotsam wither wood"
+	"mass" 0.3
+	"installable" -1
+	"minable" 1
+	description "Underneath the tree's rotting exterior, Wither Wood shines with an unearthly glow. The bio-matter has been imbued with high levels of radioactive uranium. Whether  natural evolution or artificial bio-engineering caused this is a mystery. Some may find this substance useful as an alternative energy source or weapons development material."
+

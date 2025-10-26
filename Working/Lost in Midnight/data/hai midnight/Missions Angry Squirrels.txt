@@ -27,7 +27,7 @@ mission "Sabotage: Ionic Snare (boarding)"
 	deadline 1
 	source
 		government "Hai (Unfettered)" "Hai (Unfettered Wanderer Tribute)"
-		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
+		not category "Fighter" "Drone"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -58,7 +58,7 @@ mission "Sabotage: Ionic Snare (Hai) (boarding)"
 	deadline 1
 	source
 		government "Hai"
-		category "Fighter" "Interceptor" "Light Warship" "Medium Warship" "Heavy Warship"
+		not category "Fighter" "Drone"
 		not attributes "automaton"
 	destination "Earth"
 	to offer
@@ -94,6 +94,7 @@ mission "Midnight Hai Distress"
 	source
 		government "Hai" "Hai Merchant" "Hai Merchant (Human)" "Merchant"
 		not attributes "automaton"
+		not category "Fighter" "Drone"
 	on offer
 		conversation
 			scene "outfit/attention"
@@ -134,6 +135,7 @@ mission "Midnight Unfettered Distress"
 	source
 		government "Hai (Unfettered)" "Hai (Unfettered Wanderer Tribute)" "Hai (Friendly Unfettered)" "Hai (Unfettered Civilians)"
 		not attributes "automaton"
+		not category "Fighter" "Drone"
 	on offer
 		conversation
 			scene "outfit/attention"
@@ -1350,6 +1352,74 @@ mission "Angry Squirrels: Wanderer Tribute Patch"
 		event "unfettered tribute Var' Kar'i'i"
 		fail
 
+
+mission "Midnight Voidjelly Hai"
+	minor
+	name "Kwaashi Poison"
+	description "A Hai Counsel Elder has been poisoned. Find the origin of Kwaashi Toxin and deliver it to <destination>."
+	source "Hai-home"
+	to offer
+		has "First Contact: Unfettered: offered"
+		has "First Contact: Quarg: offered"
+		random < 70
+	on offer
+		conversation
+			`There is a large assembly at the spaceport. Everyone gathered is listening to member of the council of elders giving a speech. "Apparently our brothers and sisters to the north are in need of help. I may go there someday..." The elder pauses to sip a drink that has been sitting on the lectern he is speaking from. Suddenly, he stumbles to the ground! The crowd shrieks in shock at the sight.`
+			`	Guards clear some space around the elder for a physician to provide medical attention. The elder is placed on a stretcher and hauled away. A murmur spreads through the crowd. Much of it is in the Hai language, but a few humans and Hai converse in your own language as well.`
+			choice
+				`	(Listen.)`
+			`	"Kwaashi Toxin."`
+			`	"What's that?"`
+			`	"I've never heard of it."`
+			`	"A foreign poison used generations ago."`
+			`	"I was told that none remained."`
+			`	"I heard that it caused instant death."`
+			`	One of the Hai guards joins the conversation. "If this was an antique from the olden times, it may have lost some of its potency." Looking around, the Hai continues, "We Hai are unable to make this poison. Indeed, we have long thought that Kwaashi Toxin no longer exists. If those among you who have ventured outside of Hai space can locate whatever was used to create this toxin and deliver it to us, we would greatly appreciate it."`
+			choice
+				`	"What should we look for?"`
+				`	"Can you tell us more about this toxin?"`
+					goto origin
+			`	"We are not certain, but it is probably created with some sort of poisonous plant or animal from beyond our space. Unfortunately, we do not know more."`
+			choice
+				`	"Why are you certain this came from outside Hai space?"`
+			label origin
+			`	"It was among several weapons introduced to our people by an alien who visited during our era of galactic conquest. Because it originated from beyond Hai space, the supply of this substance was limited."`
+			choice
+				`	"What sort of alien brought this weapon?"`
+			`	The Hai lowers his voice, "The legends say it was a rogue Quarg. The poison is named after it."`
+				accept
+	on complete
+		outfit "Voidjelly" -1
+		payment 1000000
+		"reputation: Hai" += 10
+		conversation
+			scene "outfit/attention"
+			`Voidjelly is a poisonous creature foreign to the Hai. Their scientists will want to investigate if it is the origin of Kwaashi Toxin.`
+			choice
+				`	(Present the Voidjelly to the Hai.)`
+			scene "outfit/voidjelly"
+			`	After studying the Voidjelly, the Hai conclude that it is related to Kwaashi Toxin! A representative of the Council of Elders presents you with <payment> credits in gratitude for solving this ancient mystery. Hopefully, an antidote can be formulated using the sample you delivered.`
+
+mission "Midnight Voidjelly Quarg"
+	landing
+	invisible
+	source
+		government "Quarg"
+		not attributes "uninhabited"
+	to offer
+		has "Midnight Voidjelly Hai: active"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Ask the Quarg about Kwaashi Toxin?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+				`	(No.)`
+					decline
+			`	You question several Quarg. None know anything about Kwaashi Toxin. One remarks "Strange it would be for a Quarg to be named 'Kwaashi.' It is remarkably short to be a Quarg's name. If the toxin really is named after a Quarg, such an individual must have been born many millenia ago, before it became our custom to have longer names..."`
+				decline
 
 
 ############################################
