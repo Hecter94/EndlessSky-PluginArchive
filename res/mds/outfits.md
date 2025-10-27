@@ -154,15 +154,15 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/boss.loot/icon.png' height='100'></img><br>
 
 
-[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.72 mb | 2025-10-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
+[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.72 mb | 2025-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-27) <br>
 
 >A series of dungeon-like boss encounters for a single ship. With loottables and weapon upgrade mechanism. See the README for details.
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>### endgame<br>
+<blockquote>### boss.loot<br>
 <br>
 A series of dungeon-like boss encounters for a single ship. With loottables and weapon upgrade mechanism.<br> 
 <br>
@@ -178,6 +178,10 @@ This plugin is intended to be experienced like a typical RPG dungeon. You face t
 <br>
 <br>
 Changelog:<br>
+<br>
+2024-10-27<br>
+update to 0.10.16<br>
+changed "endgame" in the files to boss.loot (thx to Kitteh)<br>
 <br>
 2024-10-01<br>
 update to 0.10.15<br>
@@ -497,9 +501,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/flare.play/icon.png' height='100'></img><br>
 
 
-[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 15.29 mb | 2025-09-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
+[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 15.37 mb | 2025-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-09-18) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-27) <br>
 
 >Adds lots of engine flare outfits to the big shipyards and outfitters. These outfits are just cosmetic. Idea by 'Thermognuclear Missile' on discord. See the README for details.
 >
@@ -516,6 +520,9 @@ Missions and events: On day 1 after plugin installation, a mission shows up, exp
 <br>
 <br>
 Changelog:<br>
+<br>
+2025-10-27<br>
+update to 0.10.16<br>
 <br>
 2025-09-18<br>
 added 21 recolored avgi flares (thx to Nyx for reducing their size)<br>
