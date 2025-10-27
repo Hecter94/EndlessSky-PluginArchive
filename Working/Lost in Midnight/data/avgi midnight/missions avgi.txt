@@ -139,6 +139,7 @@ mission "Midnight Avgi Harvester License"
 				set "license: Avgi Harvester"
 				event "add avgi harvester sales"
 				event "link kr-84 murk"
+				set "link kr-84 murk patched"
 				log `Was granted a license to purchase specialized equipment from the Avgi for Void Harvesting. The presence of the Aberrant has made traveling to Gossamer dangerous. Because of this, the resources found there are highly sought after.`
 			scene "outfit/voidfish pendant"
 			`	"Excitement. Few Void Harvesters in Gossamer. The path, not safe. Will grant license. Access specialized tools. Wait for delivery, request."`
@@ -152,8 +153,19 @@ mission "Midnight Avgi Harvester License"
 				defer
 
 event "link kr-84 murk"
-	link kr-84 murk
+	link Kr-84 Murk
 
+mission "Midnight link kr-84 murk patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: link kr-84 murk"
+		not "link kr-84 murk patched"
+	on offer
+		event "link kr-84 murk"
+		fail
+		
 
 mission "Midnight Avgi Tangled Twins"
 	landing
