@@ -1,3 +1,4 @@
+2025-10-28 | Updated plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
 2025-10-27 | Updated plugin 'boss.loot' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#bossloot)<br>
 2025-10-27 | Updated plugin 'flare.play' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#flareplay)<br>
 2025-10-27 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
