@@ -1,88 +1,227 @@
-mission "Main Plot Plus Prompts Patches (guided start)"
+mission "Main Plot Plus Check"
     invisible
     landing
+    non-blocking
     to offer
-        has "enabled guided start"
+        has "chosen sides"
+        not "enabled guided start"
     on offer
-        set "global: enabled guided start"
-        clear "enabled guided start"
+        set "global: does not need guided start"
         fail
-
-mission "Main Plot Plus Prompts Patches (paint trim jobs)"
-    invisible
-    landing
-    to offer
-        has "enabled paint trim jobs"
-    on offer
-        set "global: enabled paint trim jobs"
-        clear "enabled paint trim jobs"
-        fail
-
-mission "Main Plot Plus Prompts Patches (security analysis jobs)"
-    invisible
-    landing
-    to offer
-        has "enabled security analysis jobs"
-    on offer
-        set "global: enabled security analysis jobs"
-        clear "enabled security analysis jobs"
-        fail
-
 mission "Main Plot Plus Prompts"
     invisible
     landing
     non-blocking
     on offer
         conversation
-            branch firsttime
-                not "global: main plot plus prompts"
-            `It looks like you have already made your choices on whether or not to enable guided start, security analysis jobs, and paint trim jobs in a previous save. Would you like to change them?`
+            `Welcome to Main Plot Plus! I am JamesGPT. As an AI language model, it is my job to help you configure Main Plot Plus the way you want. To assist you in this effort, I have compiled several presets for you. Which one would you like to use?`
             choice
-                `(Yes)`
-                `(No)`
-                    decline
-            label firsttime
-            action
-                set "global: main plot plus prompts"
-            `Would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
+                `(Enable default features)`
+                    to display
+                        or
+                            has "global: enabled guided start"
+                            has "global: enabled security analysis jobs"
+                            has "global: enabled paint trim jobs"
+                            has "global: enabled main plot soft block"
+                    goto default
+                `(Enable recommended features)`
+                    goto recommended
+                `(Enable vanilla+ features)`
+                    goto vanillaplus
+                `(Enable all features)`
+                    goto all
+                `(Enable no features)`
+                    goto none
+                `(Do not use any of these presets)`
+
+            # No preset
+            `Got it. I will ask you about each feature, one at a time.`
+            `First, would you like to enable guided start? This allows you to pick a side or neutrality, sets all necessary conditions in order to do so, and helps you navigate to the right location. This will trigger in 3017 if you have not chosen a side.`
             choice
                 `(Enable guided start)`
                 `(Disable guided start)`
                     goto noguide
             action
-                set "global: enabled guided start"
-            `Guided start has been enabled.`
+                set "enabled guided start"
+            `Alright, I have enabled guided start.`
                 goto security
             label noguide
-            action
-                clear "global: enabled guided start"
-            `Guided start has been disabled.`
+            `Alright, I have disabled guided start.`
             label security
-            `Would you like to enable security analysis jobs? These allow you to check your armament deterrence, cargo attraction, and local reputation in most planets that have job boards. This is information you normally are unable to see, so choose wisely.`
+            `Next, would you like to enable security analysis jobs? These allow you to check your armament deterrence, cargo attraction, and local reputation in most planets that have job boards. This is information you normally are unable to see, so choose wisely.`
             choice
                 `(Enable security analysis jobs)`
                 `(Disable security analysis jobs)`
                     goto noanalysis
             action
-                set "global: enabled security analysis jobs"
-            `Security analysis jobs have been enabled.`
+                set "enabled security analysis jobs"
+            `Alright, I have enabled security analysis jobs.`
                 goto paint
             label noanalysis
-            action
-                clear "global: enabled security analysis jobs"
-            `Security analysis jobs have been disabled.`
+            `Alright, I have disabled security analysis jobs.`
             label paint
-            `Would you like to enable paint trim jobs? These allow you to change the swizzle of your ship. This will take up a lot of spaces in the job board, and you can change your mind through the job board at any time. I recommend only enabling this, changing your color, then disabling this, unless you plan to frequently change your color.`
+            `Now, would you like to enable paint trim jobs? These allow you to change the swizzle of your ship. This will take up a lot of spaces in the job board, and you can change your mind through the job board at any time. I recommend only enabling this, changing your color, then disabling this, unless you plan to frequently change your color.`
             choice
                 `(Enable paint trim jobs)`
                 `(Disable paint trim jobs)`
                     goto nopaint
             action
-                set "global: enabled paint trim jobs"
-            `Paint trim jobs have been enabled.`
-                decline
+                set "enabled paint trim jobs"
+            `Alright, I have enabled paint trim jobs.`
+                goto sethidden
             label nopaint
+            `Alright, I have disabled paint trim jobs.`
+
+            label sethidden
+            `Would you like me to mark all systems as hidden if the main plot has not been completed? This makes it so you can only see systems if they are linked to a system you are in, marked by a mission, or visited by the player. The main reason to do this is to make the game feel more immersive and to encourage completing the main plot first. Certain mods, like Shields Up, may add additional systems to the game. These systems will also be hidden if the mod is supported.`
+            choice
+                `(Mark systems as hidden)`
+                `(Do not mark systems as hidden)`
+                    goto nohidden
+
+            action
+                set "enabled main plot soft block"
+
+            `Alright, I have marked all systems as hidden. The systems I have marked as hidden will be unhidden when the main plot is completed.`
+                goto setpreset
+
+            label nohidden
+            `Alright, I have not marked additional systems as hidden.`
+
+            # Save default features
+            label setpreset
+            `Finally, would you like to save these settings as the default preset, so that you can reuse them on other saves without having to go through this process?`
+            choice
+                `(Yes)`
+                `(No)`
+                    goto nopreset
+            branch guidepreset
+                has "enabled guided start"
+            action
+                clear "global: enabled guided start"
+            branch noguidepreset
+            label guidepreset
+            action
+                set "global: enabled guided start"
+            label noguidepreset
+            branch securitypreset
+                has "enabled security analysis jobs"
+            action
+                clear "global: enabled security analysis jobs"
+            branch nosecuritypreset
+            label securitypreset
+            action
+                set "global: enabled security analysis jobs"
+            label nosecuritypreset
+            branch paintpreset
+                has "enabled paint trim jobs"
             action
                 clear "global: enabled paint trim jobs"
-            `Paint trim jobs have been disabled.`
+            branch nopaintpreset
+            label paintpreset
+            action
+                set "global: enabled paint trim jobs"
+            label nopaintpreset
+            branch hiddenpreset
+                has "enabled main plot soft block"
+            action
+                clear "global: enabled main plot soft block"
+            branch nohiddenpreset
+            label hiddenpreset
+            action
+                set "global: enabled main plot soft block"
+            label nohiddenpreset
+            `Got it. I have made your chosen settings the default preset.`
+                to display
+                    or
+                        has "global: enabled guided start"
+                        has "global: enabled security analysis jobs"
+                        has "global: enabled paint trim jobs"
+                        has "global: enabled main plot soft block"
+                goto end
+            `Got it. Since you disabled all features, I have cleared the default preset.`
+                to display
+                    not "global: enabled guided start"
+                    not "global: enabled security analysis jobs"
+                    not "global: enabled paint trim jobs"
+                    not "global: enabled main plot soft block"
+                goto end
+            label nopreset
+            `Got it. I have not updated the default preset.`
+                to display
+                    or
+                        has "global: enabled guided start"
+                        has "global: enabled security analysis jobs"
+                        has "global: enabled paint trim jobs"
+                        has "global: enabled main plot soft block"
+                goto end
+            `Got it. I have not set the default preset.`
+                to display
+                    not "global: enabled guided start"
+                    not "global: enabled security analysis jobs"
+                    not "global: enabled paint trim jobs"
+                    not "global: enabled main plot soft block"
+                goto end
+
+            # Use default features
+            label default
+            branch nodefaultguide
+                not "global: enabled guided start"
+            action
+                set "enabled guided start"
+            label nodefaultguide
+            branch nodefaultsecurity
+                not "global: enabled security analysis jobs"
+            action
+                set "enabled security analysis jobs"
+            label nodefaultsecurity
+            branch nodefaultpaint
+                not "global: enabled paint trim jobs"
+            action
+                set "enabled paint trim jobs"
+            label nodefaultpaint
+            branch nodefaulthidden
+                not "global: enabled main plot soft block"
+            action
+                set "enabled main plot soft block"
+            label nodefaulthidden
+            `Got it. I have enabled the default features.`
+                goto end
+
+            # Use recommended features
+            label recommended
+            action
+                set "enabled main plot soft block"
+            `Got it. I have enabled the recommended features.`
+                goto smart
+
+            # Use vanilla+ features
+            label vanillaplus
+            `Got it. I have enabled the vanilla+ features.`
+            label smart
+            branch norecommendedguide
+                or
+                    "days since start" > 0
+                    has "global: does not need guided start"
+            action
+                set "enabled guided start"
+            label norecommendedguide
+            branch end
+
+            # Use all features
+            label all
+            action
+                set "enabled guided start"
+                set "enabled security analysis jobs"
+                set "enabled paint trim jobs"
+                set "enabled main plot soft block"
+            `Got it. I have enabled all features.`
+                goto end
+
+            # Use no features
+            label none
+            `Got it. I have enabled no features.`
+
+            label end
+            `Thank you for using JamesGPT. Have a nice day!`
                 decline
