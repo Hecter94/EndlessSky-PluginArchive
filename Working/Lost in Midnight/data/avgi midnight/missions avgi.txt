@@ -177,8 +177,13 @@ mission "Midnight Avgi Tangled Twins"
 	to complete
 		never
 	on enter Murk
-		dialog `An Avgi ship sends a hail: "Wary. We explore new system. Hopeful. No fight."`
+		conversation
+			scene "thumbnail/avgi polipolari-thumb"
+			`An Avgi ship sends a hail: "Wary. Our ship name translation is Tangled Twins. We explore new system. Hopeful. No fight."`
+				accept
 	npc
+		to despawn
+			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
 		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
@@ -193,7 +198,63 @@ mission "Midnight Avgi Tangled Twins"
 		to despawn
 			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
-		personality waiting coward forbearing timid unconstrained uninterested surveillance
+		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		system Murk
+		ship "Polipolari" "Tangled Twins"
+		on kill
+			set "tangled twins destroyed"
+			fail
+		on provoke
+			set "tangled twins provoked"
+
+mission "Midnight Avgi Tangled Twins Research"
+	landing
+	invisible
+	destination "Outpost Enka"
+	to offer
+		has "visited Murk"
+		has "Midnight Avgi Tangled Twins: active"
+		not "tangled twins destroyed"
+	on offer
+		fail "Midnight Avgi Tangled Twins"
+	to complete
+		never
+	on enter Murk
+		conversation
+			scene "thumbnail/avgi polipolari-thumb"
+			`The ship that was exploring Murk previously is still here.`
+			choice
+				`	(Ask if they've learned anything.)`
+				`	(Don't ask.)`
+					accept
+			action
+				outfit "Research Data"
+				set "tangled twins research"
+			scene "outfit/research"
+			`	"Concern. Decomposing remains of massive voidborne impacting ecology of entire system, hypothesis. When was event precipitated, question? Curious. We continue research." They transmit data on their findings so far.`
+				accept
+	npc
+		to spawn
+			not "tangled twins destroyed"
+		to despawn
+			has "tangled twins provoked"
+		government "Avgi (Dissonance)"
+		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		system Murk
+		fleet
+			names "avgi civilian names"
+			fighters
+				names "avgi fighter names"
+			variant
+				"Akoustiki" 2
+				"Optikon" 4
+	npc save
+		to spawn
+			not "tangled twins destroyed"
+		to despawn
+			has "tangled twins provoked"
+		government "Avgi (Dissonance)"
+		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
 		ship "Polipolari" "Tangled Twins"
 		on kill

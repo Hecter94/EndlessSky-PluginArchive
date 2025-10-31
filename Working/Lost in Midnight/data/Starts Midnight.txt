@@ -2702,13 +2702,23 @@ mission "Conundrum Intro [0]"
 		ship "Science Drone (Derelict Photovoltaic)" "Tamatebako"
 		on board
 			dialog "This drone is too damaged to repair, but one of its components can be salvaged. The fact that it's here could be a sign that you aren't too far from home..."
+	npc
+		government "Derelict (Killable)"
+		system "Devil-Run"
+		personality target derelict pacifist mute
+		ship "Modified Star Barge (Derelict)" "Journeyman"
+		on board
+			dialog "This wreck is outfitted similarly to the Conundrum. Most of the equipment is unsalvageable. The emergency ramscoop is still functional, keeping the fuel tanks full. The crew is dead."
 	on complete
 		"reputation: Syndicate" <?= -1
 
 mission "Conundrum Intro [0 Failure]"
 	landing
 	invisible
+	source
+		not attributes "uninhabited"
 	to offer
+		has "Conundrum Intro [0]: offered"
 		not "Conundrum Intro [0]: done"
 		has "flagship base attribute: the conundrum"
 	on offer
@@ -2718,7 +2728,7 @@ mission "Conundrum Intro [0 Failure]"
 			``
 			`...`
 			``
-			`When the spaceport authorities pry open the Conundrum's hatch, they find the leftover scraps of James' remains and a deranged lunatic smeared in James' blood. You spend the rest of your life in a mental institution, never regaining your sanity from whatever happened out there.`
+			`When the local authorities pry open the Conundrum's hatch, they find the leftover scraps of James' remains and a deranged lunatic smeared in James' blood. You spend the rest of your life in a mental institution, never regaining your sanity from whatever happened out there.`
 				die
 
 mission "Conundrum Intro [1]"
@@ -2822,9 +2832,68 @@ ship "Pincer Beast" "Pincer Beast (Carcass)"
 	outfits
 		"Food?"
 
+ship "Modified Star Barge (Derelict)"
+	"display name" "Modified Star Barge"
+	swizzle 4
+	sprite "ship/modified star barge"
+	thumbnail "thumbnail/modified star barge-thumb"
+	attributes
+		"hull" 1000
+		"mass" 80
+		"drag" 2.2
+		"heat dissipation" .77
+		"fuel capacity" 300
+		"outfit space" 28
+	outfits
+		"Jump Drive (Broken)"
+			
 outfit "Food?"
 	plural "Food?"
 	category "Special"
 	thumbnail "outfit/unknown"
 	"mass" 1
 	description "This is barely edible, but it should be able to keep you going for another day."
+
+mission "Midnight Dust Cloud (Deep Space 19MN)"
+	landing
+	invisible
+	deadline 2
+	source "Midnight Cloud (Deep Space 19MN)"
+	to offer
+		or
+			has "Conundrum Intro [0]: active"
+			random < 20
+	on offer
+		conversation
+			branch conundrum
+				has "Conundrum Intro [0]: active"
+			branch beast
+				random < 5
+			branch deuterium
+				random < 20
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`Your atmostphere scans form a collection of unique data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label deuterium
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`You find a large chunk of frozen deuterium floating in the cosmic dust. This gas cloud may have been a proto-comet.`
+				decline
+			label beast
+			scene "thumbnail/pincer beast"
+			`A Pincer Beast was hiding in the gas cloud! It flees when it notices your presence.`
+				accept
+			label conundrum
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`A full day passes as you complete your exploration of this cloud of cosmic dust. You've acquired some interesting research data, but James is becoming impatient. "We aren't on a research mission. I don't think these atmosphere scans are getting us any closer to finding a way home..."`
+				decline
+	npc
+		government "Forest (Prey)"
+		personality waiting timid mining harvests uninterested mute
+		ship "Pincer Beast" "Pincer Beast"
+

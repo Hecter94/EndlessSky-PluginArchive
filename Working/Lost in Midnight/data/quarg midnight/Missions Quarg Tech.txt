@@ -913,6 +913,8 @@ mission "Midnight Gorgon Heliarch Scouting - Singularity Core"
 			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg power system we can."`
 			choice
 				`	"What do you want me to do?"`
+			action
+				set "midnight gorgon fast timer ship patched"
 			scene "thumbnail/heliarch hunter"
 			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." It should be easy enough to take them to the ringworld near Lagrange.`
 				accept
@@ -987,6 +989,8 @@ mission "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator"
 			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg shield system we can."`
 			choice
 				`	"What do you want me to do?"`
+			action
+				set "midnight gorgon fast timer ship patched"
 			scene "thumbnail/heliarch hunter"
 			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." There should be a ringworld in Hai space...`
 				accept
@@ -1062,6 +1066,8 @@ mission "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub"
 			`	"Interested in your credits, we are not. But perform a task for us outside of Coalition space and part with a Quarg repair unit we can."`
 			choice
 				`	"What do you want me to do?"`
+			action
+				set "midnight gorgon fast timer ship patched"
 			scene "thumbnail/heliarch hunter"
 			`	"One of our ships you must escort to a Quarg ringworld. Pose as part of your fleet it shall. Observe the Quarg they will. Then safely back to <origin> you must escort them." There should be a ringworld in Korath space...`
 				accept
@@ -1157,6 +1163,43 @@ mission "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub"
 		conversation
 			scene "outfit/quarg peripheral repair hub"
 			`	You return with the Heliarch surveillance team and are given the Peripheral Repair Hub you asked for.`
+
+
+mission "Midnight Gorgon Fast Timer Ship Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		or
+			has "Midnight Gorgon Heliarch Scouting - Singularity Core: active"
+			has "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator: active"
+			has "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub: active"
+		not "midnight gorgon fast timer ship patched"
+		not "installed plugin: Midnight Expansion"
+	on offer
+		log `The Heliarch scout lost it's way enroute to the Quarg ringworld. Perhaps another opportunity to do the scouting mission will present itself at the Heliarch's ringworlds.`
+		conversation
+			branch shield
+				not "Midnight Gorgon Heliarch Scouting - Singularity Core: active"
+			action
+				fail "Midnight Gorgon Heliarch Scouting - Singularity Core"
+				clear "Midnight Gorgon Heliarch Scouting - Singularity Core: offered"
+			label shield
+			branch repair
+				not "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator: active"
+			action
+				fail "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator"
+				clear "Midnight Gorgon Heliarch Scouting - Ancile Shield Generator: offered"
+			label repair
+			action
+				fail "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub"
+				clear "Midnight Gorgon Heliarch Scouting - Peripheral Repair Hub: offered"
+			scene "thumbnail/heliarch hunter"
+			`The Heliarch scout lost it's way enroute to the Quarg ringworld. Perhaps another opportunity to do the scouting mission will present itself at the Heliarch's ringworlds.`
+			``
+			`	(Do not abort the active missions from your missions list.)`
+				decline
+
 
 mission "Midnight Quarg Gorgon - Quantum Vacuum Battery"
 	non-blocking
