@@ -913,9 +913,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Galactic War hi-dpi
 
 
-[Galactic.War.hi-dpi.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.hi-dpi.zip) | 55.66 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War%20hi-dpi/) <br>
+[Galactic.War.hi-dpi.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.hi-dpi.zip) | 59.02 mb | 2025-11-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War%20hi-dpi/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Galactic-War-hi-dpi](https://github.com/1010todd/Galactic-War-hi-dpi) (last commit 2022-11-12) <br>
+[https://github.com/1010todd/Galactic-War-hi-dpi](https://github.com/1010todd/Galactic-War-hi-dpi) (last commit 2025-11-03) <br>
 
 >high resolution sprites for endless sky mod "Galactic War"
 
