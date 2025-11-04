@@ -439,29 +439,33 @@ mission "Road to Hai Reveal: Prep"
 mission "Road to Hai Reveal: Danforth Hint"
     name "Assistance Required"
     description "The Navy is requesting assistance from all capable pilots at <destination>. Head there and render assistance to receive <payment>."
+    landing
     "apparent payment" 2400000
     source
         near Sol 100
-        not government "Pirate"
+        not government "Pirate" "Quarg"
+        not planet "Prime"
     destination "Prime"
     to offer
-        or
-            not "road to hai reveal defer date"
-            "road to hai reveal defer date" - 5 > "days since start"
-            has "event: road to hai reveal: almaaz pirates"
+        has "event: road to hai reveal: almaaz pirates"
         "combat rating" > 1000
         not "Road to Hai Reveal: Danforth: offered"
+    to complete
+        never
+    to fail
+        has "Road to Hai Reveal: Danforth: offered"
     on offer
         conversation
             `As soon as your ship lands, you notice a secure message coming from the Republic Navy Advisory System.`
-            `"This is the Republic Navy Advisory System: The systems in the far north are under an increased pirate threat. Volunteers with substantial combat experience are requested to head to the spaceport restaurant at <destination> to assist the Navy in dealing with the pirates. A stipend of <payment> will be provided upon rendering of assistance to cover fuel, crew, and any incidental expenses."`
+            `"This is the Republic Navy Advisory System: The systems in the far north are under an increased pirate threat. Volunteers with substantial combat experience are requested to head to <destination> to assist the Navy in dealing with the pirates. A stipend of <payment> will be provided upon rendering of assistance to cover fuel, crew, and any incidental expenses."`
                 accept
+    on visit
+        dialog `You land, but a Navy officer tells you that the person you want to talk to is currently on their lunch break and that you should head to the spaceport restaurant if you want to render assistance.`
 
 
 mission "Road to Hai Reveal: Danforth"
     name "Stretched Thin"
     description "Help Danforth by taking out a pirate fleet in <waypoints>, then land on <destination> to receive <payment>. You will be joined by other captains."
-    minor
     autosave
     clearance "You explain to the spaceport manager that you are the one who took out the pirate fleet, and upon verifying your identity, he grants you landing permission."
     waypoint Almaaz
@@ -567,8 +571,6 @@ mission "Road to Hai Reveal: Danforth"
     on offer
         conversation
             `   When you enter the spaceport restaurant, you notice captains Rain and Fiona, who <reason>.`
-                to display
-                    not "Road to Hai Reveal: Danforth: deferred"
             choice
                 `(Join them)`
                     goto "join"
@@ -652,8 +654,6 @@ mission "Road to Hai Reveal: Danforth"
             `   She hands you a credit ship worth <payment>, then leaves without another word.`
     on accept
         event "road to hai reveal: almaaz empty"
-    on defer
-        "road to hai reveal defer date" = "days since start"
     on fail
         dialog `You have failed an essential Hai Reveal mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
 

@@ -3,6 +3,7 @@ mission "Unlock Fast Forward"
     landing
     non-blocking
     to offer
+        has "First Contact: Quarg: offered"
         "year" >= 3016
         or
             "year" > 3016
@@ -11,18 +12,22 @@ mission "Unlock Fast Forward"
             "year" > 3016
             "month" > 11
             "day" >= 16
-        not "global: unlock fast forward"
+        or
+            has "visited planet: Hope"
+            has "FW Katya 4: done"
+            has "Expedition to Hope 2: done"
+        not "global: main plot plus: unlock fast forward"
     on offer
-        set "global: unlock fast forward"
+        set "global: main plot plus: unlock fast forward"
         conversation
             `Fast Forward Unlocked!`
             scene "fast-forward"
-            `It has been two years since you purchased your first ship, or possibly even longer if you chose an earlier start. As a result, you have unlocked fast forward. This is a start which skips ahead two years in game, meaning you will not have to worry about managing a loan or mapping out human space. Enjoy!`
+            `You have met the Quarg, seen Hope, and it has been at least two years since you purchased your first ship. As a result, you have unlocked fast forward. This is a start which skips ahead two years in game, meaning you will not have to worry about managing a loan or mapping out human space. Enjoy!`
                 decline
 
 start "Fast Forward"
     name "Fast Forward"
-    description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You dreamed of owning a starship ever since your first visit to the spaceport at the age of 15. After many long years of working at a textile mill, you saved enough credits to apply for a pilot's license from the Republic and buy your very own Star Barge. Now, you have traveled the sky, learned about Remembrance Day, seen the horror of the Geminus and Martini bombings, and are ready to make your first upgrade...`
+    description `You grew up on New Boston, an uninteresting world in the Dirt Belt. You dreamed of owning a starship ever since your first visit to the spaceport at the age of 15. After many long years of working at a textile mill, you saved enough credits to apply for a pilot's license from the Republic and buy your very own Star Barge. Now, you have traveled the sky, learned about Hope, the Quarg, and Remembrance Day, seen the horror of the Geminus and Martini bombings, and are ready to make your first upgrade...`
     thumbnail "fast-forward"
     date 16 11 3016
     system "Tarazed"
@@ -39,9 +44,9 @@ start "Fast Forward"
     set "species: human"
     set "human space start"
     to reveal
-        has "unlock fast forward"
+        has "main plot plus: unlock fast forward"
     to unlock
-        has "unlock fast forward"
+        has "main plot plus: unlock fast forward"
     on display
         name "Fast Forward"
         description "This start is locked. It will be unlocked once you have played for two in game years."
@@ -58,6 +63,16 @@ mission "fast forward"
     to offer
         has "fast forward"
     on offer
+        log "Finally scraped together enough money to upgrade to a better ship than my Star Barge."
+        log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+            `Representation in the Republic Parliament is based on population. That means that some individual "Paradise Worlds" have more representatives than entire regions of space like the Dirt Belt that are more sparsely settled.`
+        log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady  work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+            `The Syndicate is a central part of the Republic's economy, but they are also well known for selling shoddy products and for doing damage to the environment on the worlds they control. Their treatment of workers is questionable, and their opposition to organized labor is legendary. Some Syndicate factory towns have even been accused of human rights abuses.`
+        log "Factions" "Free Worlds" `The Free Worlds are a collection of local governments in the southern galactic arm who have declared independence from the Republic after Parliament refused to address issues they raised about trade tariffs, taxation, and representation. They may be linked to the recent terrorist attacks on the Navy Yard and the galactic stock exchange, although they deny responsibility.`
+        log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+        log "Factions" "Alphas" `The Alphas were designed hundreds of years ago as genetically engineered super-soldiers, with no compassion or empathy. They escaped from their masters, enslaved entire planets, and commanded massive fleets of ships. Eventually they were defeated, and were either killed or went into hiding. They can be recognized by their green, photosynthetic skin.`
+        log "Factions" "Quarg" `The Quarg are tall, thin, inscrutable aliens who evolved on a very small planet and can live comfortably on worlds with atmosphere so thin that a human being could not breathe it. They discovered spaceflight millions of years ago. Many of them live on artificially constructed ringworlds, including one in human space. They live at peace with most sentient species and claim to be in communication with an even older species named the Drak.`
+        log "Factions" "Drak" `The Drak are supposedly the oldest living species in the galaxy. The Quarg say that the Drak act as something like galactic peacekeepers or police, and will intervene if a species invents a weapon so terrible that it could drive that species to extinction.`
         event "reveal human space"
         event "remembrance day"
         event "war begins"
@@ -65,6 +80,7 @@ mission "fast forward"
         event "initial deployment 2"
         event "initial deployment 3"
         event "initial deployment 4"
+        set "First Contact: Quarg: offered"
         fail
 
 event "reveal human space"
@@ -267,3 +283,5 @@ event "reveal human space"
     visit "Zosma"
     visit "Zubenelgenubi"
     visit "Zubeneschamali"
+    "visit planet" "Hope"
+    "visit planet" "Lagrange"

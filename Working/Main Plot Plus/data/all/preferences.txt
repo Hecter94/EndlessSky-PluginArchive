@@ -6,7 +6,7 @@ mission "Main Plot Plus Check"
         has "chosen sides"
         not "enabled guided start"
     on offer
-        set "global: does not need guided start"
+        set "global: main plot plus: does not need guided start"
         fail
 mission "Main Plot Plus Prompts"
     invisible
@@ -19,10 +19,10 @@ mission "Main Plot Plus Prompts"
                 `(Enable default features)`
                     to display
                         or
-                            has "global: enabled guided start"
-                            has "global: enabled security analysis jobs"
-                            has "global: enabled paint trim jobs"
-                            has "global: enabled main plot soft block"
+                            has "global: main plot plus: enabled guided start"
+                            has "global: main plot plus: enabled security analysis jobs"
+                            has "global: main plot plus: enabled paint trim jobs"
+                            has "global: main plot plus: enabled main plot soft block"
                     goto default
                 `(Enable recommended features)`
                     goto recommended
@@ -90,7 +90,7 @@ mission "Main Plot Plus Prompts"
 
             # Save default features
             label setpreset
-            `Finally, would you like to save these settings as the default preset, so that you can reuse them on other saves without having to go through this process?`
+            `Finally, would you like to save these settings as the default preset, so that you can reuse them on other saves without having to go through this process? Note that this will completely override the previous default preset if you had one.`
             choice
                 `(Yes)`
                 `(No)`
@@ -98,90 +98,90 @@ mission "Main Plot Plus Prompts"
             branch guidepreset
                 has "enabled guided start"
             action
-                clear "global: enabled guided start"
+                clear "global: main plot plus: enabled guided start"
             branch noguidepreset
             label guidepreset
             action
-                set "global: enabled guided start"
+                set "global: main plot plus: enabled guided start"
             label noguidepreset
             branch securitypreset
                 has "enabled security analysis jobs"
             action
-                clear "global: enabled security analysis jobs"
+                clear "global: main plot plus: enabled security analysis jobs"
             branch nosecuritypreset
             label securitypreset
             action
-                set "global: enabled security analysis jobs"
+                set "global: main plot plus: enabled security analysis jobs"
             label nosecuritypreset
             branch paintpreset
                 has "enabled paint trim jobs"
             action
-                clear "global: enabled paint trim jobs"
+                clear "global: main plot plus: enabled paint trim jobs"
             branch nopaintpreset
             label paintpreset
             action
-                set "global: enabled paint trim jobs"
+                set "global: main plot plus: enabled paint trim jobs"
             label nopaintpreset
             branch hiddenpreset
                 has "enabled main plot soft block"
             action
-                clear "global: enabled main plot soft block"
+                clear "global: main plot plus: enabled main plot soft block"
             branch nohiddenpreset
             label hiddenpreset
             action
-                set "global: enabled main plot soft block"
+                set "global: main plot plus: enabled main plot soft block"
             label nohiddenpreset
             `Got it. I have made your chosen settings the default preset.`
                 to display
                     or
-                        has "global: enabled guided start"
-                        has "global: enabled security analysis jobs"
-                        has "global: enabled paint trim jobs"
-                        has "global: enabled main plot soft block"
+                        has "global: main plot plus: enabled guided start"
+                        has "global: main plot plus: enabled security analysis jobs"
+                        has "global: main plot plus: enabled paint trim jobs"
+                        has "global: main plot plus: enabled main plot soft block"
                 goto end
             `Got it. Since you disabled all features, I have cleared the default preset.`
                 to display
-                    not "global: enabled guided start"
-                    not "global: enabled security analysis jobs"
-                    not "global: enabled paint trim jobs"
-                    not "global: enabled main plot soft block"
+                    not "global: main plot plus: enabled guided start"
+                    not "global: main plot plus: enabled security analysis jobs"
+                    not "global: main plot plus: enabled paint trim jobs"
+                    not "global: main plot plus: enabled main plot soft block"
                 goto end
             label nopreset
             `Got it. I have not updated the default preset.`
                 to display
                     or
-                        has "global: enabled guided start"
-                        has "global: enabled security analysis jobs"
-                        has "global: enabled paint trim jobs"
-                        has "global: enabled main plot soft block"
+                        has "global: main plot plus: enabled guided start"
+                        has "global: main plot plus: enabled security analysis jobs"
+                        has "global: main plot plus: enabled paint trim jobs"
+                        has "global: main plot plus: enabled main plot soft block"
                 goto end
             `Got it. I have not set the default preset.`
                 to display
-                    not "global: enabled guided start"
-                    not "global: enabled security analysis jobs"
-                    not "global: enabled paint trim jobs"
-                    not "global: enabled main plot soft block"
+                    not "global: main plot plus: enabled guided start"
+                    not "global: main plot plus: enabled security analysis jobs"
+                    not "global: main plot plus: enabled paint trim jobs"
+                    not "global: main plot plus: enabled main plot soft block"
                 goto end
 
             # Use default features
             label default
             branch nodefaultguide
-                not "global: enabled guided start"
+                not "global: main plot plus: enabled guided start"
             action
                 set "enabled guided start"
             label nodefaultguide
             branch nodefaultsecurity
-                not "global: enabled security analysis jobs"
+                not "global: main plot plus: enabled security analysis jobs"
             action
                 set "enabled security analysis jobs"
             label nodefaultsecurity
             branch nodefaultpaint
-                not "global: enabled paint trim jobs"
+                not "global: main plot plus: enabled paint trim jobs"
             action
                 set "enabled paint trim jobs"
             label nodefaultpaint
             branch nodefaulthidden
-                not "global: enabled main plot soft block"
+                not "global: main plot plus: enabled main plot soft block"
             action
                 set "enabled main plot soft block"
             label nodefaulthidden
@@ -202,7 +202,7 @@ mission "Main Plot Plus Prompts"
             branch norecommendedguide
                 or
                     "days since start" > 0
-                    has "global: does not need guided start"
+                    has "global: main plot plus: does not need guided start"
             action
                 set "enabled guided start"
             label norecommendedguide
