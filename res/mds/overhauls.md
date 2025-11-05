@@ -828,9 +828,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Galactic War/icon.png' height='100'></img><br>
 
 
-[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 161.21 mb | 2024-10-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
+[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 162.81 mb | 2025-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2024-10-31) <br>
+[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2025-11-05) <br>
 
 >This is a massive content mod about a war in another galaxy. While no storyline exist yet there's a large galaxy to explore filled with various aliens with different advancement and specializations.
 >
@@ -841,8 +841,7 @@ Author: 1010todd | Category: Overhauls <br>
 This is a repository for the Endless Sky mod "Galactic War".
 The mod is currently in development stage, so many things are subject to change later on.
 
-Currently the mod requires Endless Sky version 0.10.3+ to work properly.
-(Only 0.10.3 feature used is the plugin.txt file really, it'll work with 0.9.15 still)
+Currently the mod requires Endless Sky version 0.10.13+ to work properly.
 Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
 ![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
@@ -913,9 +912,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Galactic War hi-dpi
 
 
-[Galactic.War.hi-dpi.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.hi-dpi.zip) | 59.02 mb | 2025-11-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War%20hi-dpi/) <br>
+[Galactic.War.hi-dpi.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.hi-dpi.zip) | 59.77 mb | 2025-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War%20hi-dpi/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Galactic-War-hi-dpi](https://github.com/1010todd/Galactic-War-hi-dpi) (last commit 2025-11-03) <br>
+[https://github.com/1010todd/Galactic-War-hi-dpi](https://github.com/1010todd/Galactic-War-hi-dpi) (last commit 2025-11-05) <br>
 
 >high resolution sprites for endless sky mod "Galactic War"
 

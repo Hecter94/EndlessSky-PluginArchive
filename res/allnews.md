@@ -1,3 +1,5 @@
+2025-11-05 | Updated plugin 'Galactic War' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war)<br>
+2025-11-05 | Updated plugin 'Galactic War hi-dpi' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war-hi-dpi)<br>
 2025-11-04 | Updated plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
 2025-11-04 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2025-11-03 | Updated plugin 'Galactic War hi-dpi' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war-hi-dpi)<br>
