@@ -2,8 +2,7 @@
 This is a repository for the Endless Sky mod "Galactic War".
 The mod is currently in development stage, so many things are subject to change later on.
 
-Currently the mod requires Endless Sky version 0.10.3+ to work properly.
-(Only 0.10.3 feature used is the plugin.txt file really, it'll work with 0.9.15 still)
+Currently the mod requires Endless Sky version 0.10.13+ to work properly.
 Version above this is usually compatible as well. Endless Sky backward compatibility is exceptional so far.
 
 ![GWcap2](https://user-images.githubusercontent.com/19187937/152830096-35d610a9-1fde-46a0-b4b8-694035cab411.PNG)
