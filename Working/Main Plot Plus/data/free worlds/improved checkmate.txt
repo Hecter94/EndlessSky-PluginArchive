@@ -24,56 +24,84 @@ outfitter "human plugin"
 mission "Main Plot Plus Augmented Nukes (Normal Damage)"
     invisible
     landing
+    repeat
     non-blocking
     to offer
         not "installed plugin: LowerDamage"
         not "installed plugin: EvenLowerDamage"
+        not "augmented nukes have normal damage"
     on offer
+        clear "augmented nukes have lower damage"
+        clear "augmented nukes have even lower damage"
+        set "augmented nukes have normal damage"
         event "augmented nukes have normal damage"
         fail
 
 mission "Main Plot Plus Augmented Nukes (LowerDamage)"
     invisible
     landing
+    repeat
     non-blocking
     to offer
         has "installed plugin: LowerDamage"
         not "installed plugin: EvenLowerDamage"
+        not "augmented nukes have lower damage"
     on offer
+        clear "augmented nukes have normal damage"
+        clear "augmented nukes have even lower damage"
+        set "augmented nukes have lower damage"
         event "augmented nukes have lower damage"
         fail
 
 mission "Main Plot Plus Augmented Nukes (EvenLowerDamage)"
     invisible
     landing
+    repeat
     non-blocking
     to offer
         has "installed plugin: EvenLowerDamage"
+        not "augmented nukes have even lower damage"
     on offer
+        clear "augmented nukes have normal damage"
+        clear "augmented nukes have lower damage"
+        set "augmented nukes have even lower damage"
         event "augmented nukes have even lower damage"
         fail
 
 event "augmented nukes have normal damage"
     outfitter "All Outfits"
         "Nuclear Launch Bay"
+        remove "Nuclear Launch Bay (LowerDamage)"
+        remove "Nuclear Launch Bay (EvenLowerDamage)"
     outfitter "human plugin"
         "Nuclear Launch Bay"
+        remove "Nuclear Launch Bay (LowerDamage)"
+        remove "Nuclear Launch Bay (EvenLowerDamage)"
 
 event "augmented nukes have lower damage"
     outfitter "All Outfits"
+        remove "Nuclear Launch Bay"
         "Nuclear Launch Bay (LowerDamage)"
+        remove "Nuclear Launch Bay (EvenLowerDamage)"
     outfitter "human plugin"
+        remove "Nuclear Launch Bay"
+        remove "Nuclear Launch Bay (EvenLowerDamage)"
         "Nuclear Launch Bay (LowerDamage)"
 
 event "augmented nukes have even lower damage"
     outfitter "All Outfits"
+        remove "Nuclear Launch Bay"
+        remove "Nuclear Launch Bay (LowerDamage)"
         "Nuclear Launch Bay (EvenLowerDamage)"
     outfitter "human plugin"
+        remove "Nuclear Launch Bay"
+        remove "Nuclear Launch Bay (LowerDamage)"
         "Nuclear Launch Bay (EvenLowerDamage)"
 
 # Autorestock
 outfitter "Augmented Nuke Restock"
     to sell
+        has "gamerule: universal ammo restocking"
         or
             has "outfit: Nuclear Launch Bay"
             has "outfit: Nuclear Installation Chip"
@@ -122,20 +150,39 @@ event "fwc navy done with alcyone"
         "attitude toward"
             "Korath" 0
 
+outfitter "Nuke"
+    to sell
+        has "event: fwc solace has nukes"
+        not "installed plugin: LowerDamage"
+        not "installed plugin: EvenLowerDamage"
+    stock
+        "Nuclear Missile"
+
+outfitter "Nuke (LowerDamage)"
+    to sell
+        has "event: fwc solace has nukes"
+        has "installed plugin: LowerDamage"
+        not "installed plugin: EvenLowerDamage"
+    stock
+        "Nuclear Missile"
+
+outfitter "Nuke (EvenLowerDamage)"
+    to sell
+        has "event: fwc solace has nukes"
+        has "installed plugin: EvenLowerDamage"
+    stock
+        "Nuclear Missile"
+
 event "fwc solace has augmented nukes"
     outfitter "Nuke"
         "Nuclear Launch Bay"
         "Nuclear Missile (Augmented)"
         "Nuclear Installation Chip"
-
-event "fwc solace has augmented nukes (lowerdamage)"
-    outfitter "Nuke"
+    outfitter "Nuke (LowerDamage)"
         "Nuclear Launch Bay (LowerDamage)"
         "Nuclear Missile (Augmented)"
         "Nuclear Installation Chip"
-
-event "fwc solace has augmented nukes (evenlowerdamage)"
-    outfitter "Nuke"
+    outfitter "Nuke (EvenLowerDamage)"
         "Nuclear Launch Bay (EvenLowerDamage)"
         "Nuclear Missile (Augmented)"
         "Nuclear Installation Chip"
@@ -221,6 +268,8 @@ outfit "Nuclear Launch Bay"
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
+        to display
+            has "gamerule: universal ammo restocking"
 
 outfit "Nuclear Launch Bay (LowerDamage)"
     category "Secondary Weapons"
@@ -270,6 +319,8 @@ outfit "Nuclear Launch Bay (LowerDamage)"
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
+        to display
+            has "gamerule: universal ammo restocking"
 
 outfit "Nuclear Launch Bay (EvenLowerDamage)"
     category "Secondary Weapons"
@@ -319,6 +370,8 @@ outfit "Nuclear Launch Bay (EvenLowerDamage)"
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
+        to display
+            has "gamerule: universal ammo restocking"
 
 outfit "Active Nuclear Missile"
     weapon

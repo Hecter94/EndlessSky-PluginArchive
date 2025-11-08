@@ -9,7 +9,6 @@ mission "Terminus exploration (patched)"
     destination "Bounty"
     to offer
         "combat rating" > 20
-        has "event: deep research ships available"
     on offer
         conversation
             `As you are exploring the marketplace, a man wearing comically thick glasses comes over to talk to you. "Captain <last>?" he asks. You nod. "I hear that you're not averse to taking on risks," he says. "I'm the lead scientist on a project studying a spatial anomaly in an uninhabited system nearby. We had just launched a probe to study the anomaly more closely when a band of pirates arrived and forced us to flee the system. Would you be willing to travel there and see if you can retrieve the drone's data?"`
@@ -85,39 +84,7 @@ event "terminus normal"
         fleet "Derelict Northern" 10000
         fleet "Deep Research" 60000
 
-ship "Aerie" "Aerie (Research)"
-    remove bays
-    bay "Drone" -43.5 2
-        "launch effect" "human internal"
-    bay "Drone" 43.5 2
-        "launch effect" "human internal"
-    bay "Drone" -43.5 2
-        "launch effect" "human internal"
-    bay "Drone" 43.5 2
-        "launch effect" "human internal"
-    outfits
-        "Heavy Anti-Missile Turret" 2
-
-        "NT-200 Nucleovoltaic"
-        "KP-6 Photovoltaic Panel" 2
-        "LP072a Battery Pack"
-        "D94-YV Shield Generator"
-        "Fuel Pod" 3
-        Ramscoop 2
-        "Large Radar Jammer"
-        "Laser Rifle" 3
-
-        "A370 Atomic Thruster"
-        "A375 Atomic Steering"
-        "Scram Drive"
-    gun
-    gun
-    turret
-    turret "Heavy Anti-Missile Turret"
-    turret "Heavy Anti-Missile Turret"
-    description "This is a variation on the Lionheart Aerie, replacing its fighter bays with a complement of drone bays instead, intended to be used for scientific research."
-
-ship "Aerie" "Aerie (Drones)"
+ship "Aerie" "Aerie (Drone Research)"
     remove bays
     bay "Drone" -43.5 2
         "launch effect" "human internal"
@@ -264,26 +231,25 @@ fleet "Deep Research"
     personality
         coward disables frugal merciful opportunistic secretive surveillance timid
     variant
-        "Aerie (Research)"
+        "Aerie (Drone Research)"
         "Science Drone (Purchasable)" 4
 
 shipyard "human plugin"
     "Science Drone (Purchasable)"
 
 shipyard "humanVariants plugin"
-    "Aerie (Drones)"
+    "Aerie (Drone Research)"
+
+shipyard "humanVariantsAll plugin"
+    "Aerie (Drone Miner)"
 
 shipyard "All Ships"
-    "Aerie (Drones)"
+    "Aerie (Drone Research)"
     "Science Drone (Purchasable)"
 
 shipyard "Deep Research"
-    "Aerie (Research)"
+    "Aerie (Drone Research)"
     "Science Drone (Purchasable)"
-
-outfitter "Deep Research"
-    "Ant Core"
-    "A075 Atomic Engines"
 
 outfitter "human plugin"
     "Ant Core"
@@ -293,99 +259,46 @@ outfitter "All Outfits"
     "Ant Core"
     "A075 Atomic Engines"
 
-mission "Deep Research Ships Timer"
-    invisible
-    landing
-    non-blocking
-    to offer
-        has "Deep: Project Hawking: done"
-    on offer
-        event "deep research ships available" 180
-        event "deep research outfits available" 180
-        event "miners use drone aerie" 240
-        fail
+outfitter "Deep Research"
+    "Ant Core"
+    "A075 Atomic Engines"
 
-event "deep research outfits available"
-    planet Asgard
-        outfitter "Deep Research"
-    planet Valhalla
-        outfitter "Deep Research"
-
-event "deep research ships available"
-    planet Asgard
-        shipyard "Deep Research"
-    planet Valhalla
-        shipyard "Deep Research"
-    system Aspidiske
-        add fleet "Deep Research" 10000
-    system Algieba
-        add fleet "Deep Research" 20000
-    system "Epsilon Leonis"
-        add fleet "Deep Research" 30000
-    system Gomeisa
-        add fleet "Deep Research" 30000
-    system Naos
-        add fleet "Deep Research" 30000
-    system Zosma
-        add fleet "Deep Research" 30000
-    system Fala
-        add fleet "Deep Research" 40000
-    system Lolami
-        add fleet "Deep Research" 40000
-    system Mora
-        add fleet "Deep Research" 40000
-    system Limen
-        add fleet "Deep Research" 50000
-    system Orbona
-        add fleet "Deep Research" 60000
-    system Regor
-        add fleet "Deep Research" 60000
-    system Terminus
-        add fleet "Deep Research" 60000
-    system "Tania Australis"
-        add fleet "Deep Research" 90000
-
-mission "Deep Research Ships Available"
-    invisible
-    shipyard
-    source
-        planet Asgard Valhalla
-    to offer
-        has "event: deep research ships available"
-    on offer
-        conversation
-            `As you enter the <origin> shipyard, an advertisement catches your eye.`
-            ``
-            `"Peace. Prosperity. Progress."`
-            `"We promised. We delivered."`
-            scene "ship/science drone"
-            `"Be part of tomorrow, today."`
-            `"Introducing the Science Drone."`
-                decline
-
-mission "Science Drone Outfits Patch"
-    invisible
-    landing
-    non-blocking
-    to offer
-        has "event: deep research ships available"
-        not "event: deep research outfits available"
-    on offer
-        event "deep research outfits available"
-        fail
-
-event "miners use drone aerie"
+planet Asgard
     shipyard "Deep Research"
-        remove "Aerie (Research)"
-        add "Aerie (Drones)"
-    fleet "Deep Research"
-        remove variant
-            "Aerie (Research)"
-            "Science Drone (Purchasable)" 4
-        add variant
-            "Aerie (Drones)"
-            "Science Drone (Purchasable)" 4
-    fleet "Human Miners"
-        add variant 12
-            "Aerie (Drone Miner)"
-            "Mining Drone" 4
+    outfitter "Deep Research"
+planet Valhalla
+    shipyard "Deep Research"
+    outfitter "Deep Research"
+system Aspidiske
+    add fleet "Deep Research" 10000
+system Algieba
+    add fleet "Deep Research" 20000
+system "Epsilon Leonis"
+    add fleet "Deep Research" 30000
+system Gomeisa
+    add fleet "Deep Research" 30000
+system Naos
+    add fleet "Deep Research" 30000
+system Zosma
+    add fleet "Deep Research" 30000
+system Fala
+    add fleet "Deep Research" 40000
+system Lolami
+    add fleet "Deep Research" 40000
+system Mora
+    add fleet "Deep Research" 40000
+system Limen
+    add fleet "Deep Research" 50000
+system Orbona
+    add fleet "Deep Research" 60000
+system Regor
+    add fleet "Deep Research" 60000
+system Terminus
+    add fleet "Deep Research" 60000
+system "Tania Australis"
+    add fleet "Deep Research" 90000
+
+fleet "Human Miners"
+    add variant 5
+        "Aerie (Drone Miner)"
+        "Mining Drone" 4
