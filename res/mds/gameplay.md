@@ -758,9 +758,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Factory.Outlets/icon.png' height='100'></img><br>
 
 
-[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 35.64 kb | 2025-09-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
+[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 394.21 kb | 2025-11-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
 Author: Lifeyouristhis & Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-09-07) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-11-09) <br>
 
 >Adds Factory Outlet Stations around the HQ planets of shipyard companies, where basically only ship hulls (with just few essential outfits) are sold, such reducing the price significantly.
 >
@@ -800,6 +800,7 @@ Currently the plugins [DAIS](https://github.com/Daeridanii1/DAIS), [RW Ships](ht
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-11-09 | 1.1.1 | Added landing images for the 8 human outlet stations. |
 | 2025-09-07 | 1.1.0 | Added support for [DAIS](https://github.com/Daeridanii1/DAIS). Adjusted icon. |
 | 2025-08-13 | 1.0.0 | Complete re-implementation. Ships come with minimal outfits, sold in factory outlet stations around the shipyards' HQ planets. Plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) supported. |
 | 2017-09-14 | - | Last update of the *Bare Ships* plugin by Lifeyouristhis. |

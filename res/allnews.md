@@ -1,3 +1,6 @@
+2025-11-09 | Updated plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#blended-ships)<br>
+2025-11-09 | Updated plugin 'Factory.Outlets' by Lifeyouristhis & Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#factoryoutlets)<br>
+2025-11-09 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
 2025-11-08 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2025-11-08 | Updated plugin 'Main Plot Plus' by ziproot | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#main-plot-plus)<br>
 2025-11-06 | Updated plugin 'Galactic War' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war)<br>
