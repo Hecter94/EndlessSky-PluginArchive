@@ -1,0 +1,311 @@
+# Copyright (c) 2025 by mOctave
+#
+# Blended Ships is free software: you can redistribute it and/or modify it under the
+# terms of the GNU Affero General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Blended Ships is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# NOTE: This mission chain is meant to unlock the Missile Frigate for players who
+# have already completed the FW campaign. If/when the Republic campaign
+# is written, there will be a similar but separate mission chain that allows you to
+# unlock the Missile Frigate in the early/mid campaign when it'll probably be more useful.
+
+mission "Trial by Fire 1"
+	name "Report to <planet>"
+	description "Outfit your fancy new Missile Frigate how you see fit and then report to <destination> for the first stage of its testing."
+	source "Geminus"
+	destination "Geyser"
+	to offer
+		has "main plot completed"
+		"reputation: Republic" > 10
+		#random < 50
+	on offer
+		conversation
+			`You're walking past the gate to be a restricted section of spaceport when suddenly someone calls your name from the other side of the fence.`
+			`	"Hey, is that Captain <last>?!"`
+			`	Seeing you turn at the sound of your name, the speaker - a smartly-dressed young Navy officer - waves to you. "Wait up, Captain! We've got to talk!"`
+			choice
+				`	(See what he wants.)`
+					goto intro
+				`	(Walk away.)`
+			
+			`The spaceport is busy enough that it doesn't take much effort to fade into the crowd. The officer calls your name again, but you're gone, headed back toward your ship.`
+				decline
+			
+			label intro
+			`	Seeing that you don't immediately turn tail and run away, the officer gestures to a sailor guarding the gate to let him through. The gate slides open with nary a sound, and the man walks over to where you're standing.`
+			`	"Boy, am I glad to see you," he says, as a wide grin stretches across his face. "You're just the captain we need for this job."`
+			choice
+				`	"And what would that job be?"`
+					goto job
+				`	"Okay..."`
+				`	"Uh... why is a Navy officer so glad to see a Free Worlds captain?"`
+					goto reason
+			
+			`	"No, no, I mean it. A daring captain like you, a hero in both the Free Worlds and the Republic, but just as genuinely skilled as you are famous... you're just the person we need."`
+			`	"Need for what?" you ask.`
+				goto job
+			
+			label reason
+			`	The officer laughs nervously. "Oh, don't worry about that. We were on the same side in the end, and that's what matters. We certainly don't need you to escort trash barges to Almaaz or anything like that. As a matter of fact, I think you'll like what we've got planned for you."`
+			`	"And what would that be?" you ask.`
+			
+			label job
+			`	"Simple. We've been looking for a private captain to enlist in a little adventure of ours. How do you feel about testing out a new prototype we're working on?"`
+			choice
+				`	"Tell me more."`
+				`	"Sorry, I'm not interested."`
+					goto uninterested
+			
+			`	He clears his throat. "For far too long, the Navy has followed a strict doctrine in selecting its warships: we have patrol groups made up primarily of Gunboats and Rainmakers, and we have battle fleets made up of Cruisers and Carriers. And then we have the Frigate. Once, the Frigate was a capital ship in its own right. Now, with modern shielding and construction technology, we can build far more survivable ships for a reasonable price. Hence, the Frigate has mostly fallen out of fashion. Yet the old Frigates are still here, and although they are rapidly becoming obsolete, they aren't going anywhere. Captain, do you have any idea how many Frigates we have in the Navy?"`
+			choice
+				`	"No, I don't."`
+				`	"Lots?"`
+					goto lots
+				`	"Isn't that classified information?"`
+					goto classified
+			
+			`	"That's just it. Almost no one does. That despite the fact that we have around four thousand of them, most of which are in storage and lacking anyone to crew them. Four thousand warships - that's as many Frigates as we have Gunboats in active duty. And the current doctrine says they're useless.`
+				goto spiel
+			
+			label lots
+			`	"Exactly. Just over four thousand, in fact. The same number of ships as we have active-duty Gunboats. To make it worse, most of those Frigates are in storage, lacking anyone to crew them. And the current doctrine says they're useless.`
+				goto spiel
+			
+			label classified
+			`	"Not at all. Thanks to the Truth in Military Reporting Act, we have a responsibility to the public to disclose the precise number of all production warship models we have in active duty and in storage, excepting novel designs that aren't technically supposed to exist at all.And let me tell you, the Frigate is not a novel design.`
+			`	"No, we have around four thousand Frigates, the majority of them older than you or me, most mothballed and missing crews. Four thousand warships - that's as many Frigates as we have Gunboats in active duty. And the current doctrine says they're useless.`
+
+			label spiel
+			`	"However, we believe we may have finally found a way to make these ships relevant once again. With a few modifications, a few basic components normally found on missile boats, and a little bit of welding, we've created an entirely new ship design that should allow the Navy to commission five new Missile Frigates for the price of a Cruiser once the model is in production.`
+			`	"And that, Captain <last>, is where you come in. You see, we're not quite ready for production yet, mostly because we still need to convince a few influential individuals that this endeavour is worth investing in. We've done flight tests, of course, simulated combat and all that, but a few wealthy, powerful people haven't been won over just yet. We need something better. And what could be better than a famous war hero behind the controls of the Navy's newest masterpiece?"`
+			`	He gives a small bow, and you get the feeling that most of his speech was originally intended to win over the Republic's elite.`
+			choice
+				`	"That sounds interesting. What would it entail?"`
+				`	"What kind of pay are we talking here?"`
+					goto payment
+				`	"Sorry, I'm not interested."`
+					goto uninterested
+			
+			`	"If you choose to accept the job, we will give you one of our new prototype Missile Frigates. You will then equip it how we see fit and fly it to <destination>. There, we will ask you to park the rest of your fleet and engage in a series of three mock battles designed to showcase the model's abilities. Once you're done, you can keep the ship and - assuming you carried out your duties correctly - receive some additional monetary compensation. What do you say?"`
+			choice
+				`	"Count me in!"`
+					goto prep
+				`	"Sorry, but I can't afford to park my fleet for this."`
+					goto uninterested
+			
+			label payment
+			`	"If you carry through, you'll receive a brand-new prototype warship that's yours to keep. Thanks to your relationship with the Free Worlds, this will probably be your only chance to get your hands on said ship. Oh, and I'm sure we can arrange some small remuneration as well."`
+			choice
+				`	"Sounds reasonable. What do I have to do?"`
+				`	"You'd have to pay me a lot more than that to support the Republic's military-industrial complex."`
+					goto uninterested
+			
+			`	"That's simple. If you choose to accept the job, we will give you one of our new prototype Missile Frigates. You will then equip it how we see fit and fly it to <destination>. There, we will ask you to park the rest of your fleet and engage in a series of three mock battles designed to showcase the model's abilities. So, what do you say?"`
+			choice
+				`	"Count me in!"`
+				`	"I'd love to, but I can't afford to park my fleet for this."`
+					goto uninterested
+
+			label prep
+			`	"Great! If you follow me, we can get you a temporary pass to the Navy Yard and have you sign for your new command within the hour!"`
+			`	You follow him into the restricted section of the spaceport, where you spend fifty-nine minutes being handed forms, listening to explanations about forms, and filling out forms, before finally signing your name one final time:`
+			`		<first> <last>`
+			`	With that, you become the proud owner of the catchily-named R.N.S. FF-19a-0002.`
+			action
+				give ship "Missile Frigate" "R.N.S. FF-19a-0002"
+			`	"Anyways, Captain <last>, I'll see you on <planet>! The sooner you can get there the better, but there's no need to rush if you still have a couple jobs to finish up. Oh, and there's just one more thing I almost forgot." The officer reaches into his pocket and hands you his business card:`
+			``
+			`		Lt.Cmdr. Avery Blank`
+			`		Republic Navy`
+			`		Liaison Officer, PR/R&D`
+			``
+			`With that, he tips his cap to you and leaves you to stare at the abomination of a warship you've just been given.`
+				accept
+
+			label uninterested
+			`	The officer's face falls. "Are you sure? This is a once in a lifetime opportunity you're passing up...." Noticing that his tactics aren't working, he sighs. "Very well then. Until we meet again, Captain <last>."`
+			`	With that, he turns and trudges back into the restricted area, leaving you to return to your ship.`
+	on complete
+		conversation
+			`Avery Blank meets you when you arrive on <planet>.`
+			`	"Glad to see you, Captain <last>! We've just got a couple more things to iron out here, but if you swing by the spaceport bar in an hour after you've parked your other ships, I can give you your briefing. Just mind that you do actually park the rest of your fleet - no one's going to be impressed by footage that shows three hundred capital ships knocking out a couple of drones."`
+	on fail
+		dialog "Somehow you get the feeling that the Navy isn't going to be too happy with you absconding with their ship like this."
+		"reputation: Republic" <?= 0
+
+mission "Trial by Fire 2"
+	name "Missile Frigate Testing"
+	description "Head to Fingol and disable the Frigate there using only your Missile Frigate. Do not destroy it or else the Navy will be extremely displeased. Then, return to <planet>."
+	source "Geyser"
+	waypoint "Fingol"
+	to offer
+		has "Trial by Fire 1: done"
+		has "flagship model: Missile Frigate"
+		"total ships" == 1
+	to fail
+		not "flagship model: Missile Frigate"
+		"total ships" > 1
+	on offer
+		conversation
+			`	Lieutenant Commander Blank meets you outside the spaceport bar.`
+			`	"Ready to go? Great! Here's the plan.`
+			`	Before we do anything to show off the Missile Frigate, we first need to prove to the powers that be that it is conclusively better than what we currently have. To do so, we've set up a mock battle between you and a traditional Mark II Frigate. Head to Fingol, disable but do not destroy the other Frigate in single combat, and return here with recordings and logs of the battle. It should go without saying that you must not bring any other ships into the battle: Navy units will be on hand to provide security from pirates if necessary, although they will not interfere with the outcome of the fight."`
+				accept
+	npc save disable
+		government "Test Dummy"
+		personality disables waiting staying heroic target
+			confusion 10
+		system Fingol
+		ship "Frigate (Mark II)" "R.N.S. Kamet"
+	npc
+		government "Republic"
+		personality waiting staying heroic
+			confusion 10
+		system Fingol
+		fleet "Small Republic" 3
+	on visit
+		dialog "You've returned to <planet>, but you haven't disabled the R.N.S. Kamet yet. Better head back to Fingol to finish the job."
+	on complete
+		conversation
+			`	You are met by an enthusiastic Lt.Cmdr. Blank when you land on <planet>.`
+			`	"Great job, Captain <last>! That's exactly what we wanted to see. Now, we just need you to do it a couple more times and we're sure to have enough evidence of the Missile Frigate's capabilities."`
+			`	"See you in the spaceport bar when you're ready to continue - oh, and by the way, I've been authorized to give you a bonus of <payment>."`
+		payment 2000
+		"reputation: Republic" ++
+	on fail
+		dialog "You realize very quickly that you have seriously screwed up this job. The Republic is not going to be happy when they've heard what just happened."
+		"reputation: Republic" <?= -1
+
+mission "Trial by Fire 3"
+	name "Missile Frigate Testing"
+	description "Head to Fingol and destroy all the Combat Drones in the system using only your Missile Frigate before returning to <planet> to report back to Lt.Cmdr. Blank."
+	source "Geyser"
+	waypoint "Fingol"
+	to offer
+		has "Trial by Fire 2: done"
+		has "flagship model: Missile Frigate"
+		"total ships" == 1
+	to fail
+		not "flagship model: Missile Frigate"
+		"total ships" > 1
+	on offer
+		conversation
+			`	Once again, Blank is beaming when you find him in the spaceport bar.`
+			`	"Alright, here's your next task. Same as before, we need you to head to Fingol and show off the Missile Frigate. This time, though, instead of another Frigate, you'll be facing down a swarm of Combat Drones. We need to show that the new design can hold its own against large numbers of smaller ships, and Combat Drones are the best way to do it.`
+			`	"This time, you won't need to worry about disabling the drones. Just blast them apart and make your way back here. Make it quick, though, since you also aren't going to have any extra security this time around and pirates could make things a bit tricky for you."`
+				accept
+	npc kill
+		government "Test Dummy"
+		personality disables waiting staying heroic target
+			confusion 10
+		system Fingol
+		ship "Combat Drone" "Target One"
+		ship "Combat Drone" "Target Two"
+		ship "Combat Drone" "Target Three"
+		ship "Combat Drone" "Target Four"
+		ship "Combat Drone" "Target Five"
+		ship "Combat Drone" "Target Six"
+		ship "Combat Drone" "Target Seven"
+		ship "Combat Drone" "Target Eight"
+		dialog "Looks like that's all of them. You can head back to <planet> now."
+	npc
+		government "Pirate"
+		personality coward harvests plunders
+			confusion 20
+		system "Regulus"
+		fleet "Large Northern Pirates"
+	on visit
+		dialog "You've returned to <planet>, but you haven't destroyed all the Combat Drones yet. Better head back to Fingol to finish them off."
+	on complete
+		dialog "You arrive back on <planet> to find that Blank is nowhere to be found. Instead, you receive a message congratulating you on your success and reminding you to head to the spaceport bar when you're ready for your ship's final round of testing."
+		"reputation: Republic" ++
+	on fail
+		dialog "You realize very quickly that you have seriously screwed up this job. The Republic is not going to be happy when they've heard what just happened."
+		"reputation: Republic" <?= 0
+
+mission "Trial by Fire 4"
+	name "Pirate Hunting"
+	description "Lead a fleet of displeased Navy officers to wipe out a pirate fleet blockading <system> before landing on <planet> there."
+	source "Geyser"
+	destination "Bounty"
+	deadline 6
+	to offer
+		has "Trial by Fire 3: done"
+		has "flagship model: Missile Frigate"
+		"total ships" == 1
+	to fail
+		not "flagship model: Missile Frigate"
+		"total ships" > 1
+	on offer
+		conversation
+			`	You're met in the spaceport bar by a gaggle of Lieutenants running around like headless chickens. Seeing you walk in, one of them introduces herself as Liza Quaker and bangs on a table for silence.`
+			`	Very quickly, the bar quiets down.`
+			`	"Are you Captain <last>?" she asks.`
+			choice
+				`	"That's me."`
+				`	"Yeah, I'm <first>."`
+			`	Around you, the junior officers begin muttering about you until Lieutenant Quaker bangs her fist on the table again.`
+			`	"Look here, everyone. We've got a job to do, and by the stars we're going to do it. If our strongest warship is in the hands of a private captain, so be it. If the captain is a nuthead, so be it. But by God we are going to get our job done. Understood?"`
+			`	The muttering stops.`
+			`	"Good. Now, Captain <last>, here's the situation. Lt.Cmdr. Blank has seen fit to leave the base here on Geyser, seemingly abandoning testing. At the same time, we've received reports of a large pirate fleet blockading <system>. In this part of space, we're the strongest available force to deal with the threat - it's either we wipe out those pirates or the fine people of <planet> spend two weeks waiting for a couple of Cruisers to get off their butts and mosey over there. Unfortunately - and this goes against all established Navy policy - we're going to need your help to deal with the pirates."`
+			`	Quaker turns to the rest of the gathered officers, providing a concise but thorough briefing on the situation before dismissing them. Then, she turns back to you.`
+			`	"You better not let us down, you freewheeling Free Worlder. There's six hundred thousand people counting on you, and thanks to our glorious Republic's laws the only ship of yours you're allowed to bring to the fight is the <ship>."`
+			`	It looks like you're taking a trip to <planet>.`
+				accept
+
+	npc kill
+		government "Pirate"
+		personality waiting staying harvests plunders
+			confusion 20
+		system "Delta Velorum"
+		ship "Leviathan" "Fruitless Murder"
+		ship "Bastion" "Pointless Vengeance"
+		ship "Hawk" "Black Hatred"
+		ship "Fury" "Sound of Death"
+		ship "Sparrow" "Cruel Punishment"
+		dialog "With all the pirate ships besieging <planet> destroyed, you are now free to land."
+
+	npc
+		government "Republic"
+		personality launching heroic escort
+			confusion 10
+		ship "Gunboat" "R.N.S. Pechora"
+		ship "Gunboat" "R.N.S. Rubicon"
+		ship "Gunboat" "R.N.S. Uruguay"
+		ship "Rainmaker" "R.N.S. Narva"
+		ship "Rainmaker" "R.N.S. Naryn"
+	
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	
+	on complete
+		conversation
+			`Landing on <planet>, you are met once again by Lt.Cmdr. Blank.`
+			`	"Congratulations, Captain <last>. That wasn't exactly the battle we had planned for your ship, but your performance with it should do just fine in persuading the Navy to adopt our design. Who knows, maybe in a few years you'll be able to buy it in a shipyard?`
+			`	"That leads me to the second thing I have to say, which is that, thanks to the, er, diplomatic embarrassment of having an unlicensed Free Worlds captain destroying pirates on behalf of the Navy, I've managed to persuade certain individuals to grant you a Navy license. Use it well, Captain."`
+			`	"With that, Blank turns sharply and starts issuing commands to a group of noncoms. You are left with your prototype ship and your unexpected new license."`
+		set "license: Navy"
+		"reputation: Republic" += 8
+		event "missile frigate available" 380
+
+	on fail
+		dialog "You realize very quickly that you have seriously screwed up this job. The Republic is not going to be happy when they've heard what just happened."
+		"reputation: Republic" <?= 0
+
+event "missile frigate available"
+	shipyard "Navy Advanced"
+		"Missile Frigate"
+
+mission "Trial by Fire Epilogue"
+	invisible
+	landing
+	on offer
+		conversation
+			`	Upon landing, you receive a call from now-Commander Avery Blank, the Navy Officer who recruited you for testing the Missile Frigate around a year ago. He thanks you once again for your participation in their endeavour and lets you know that the warship is now available in limited numbers from sufficiently advanced Navy shipyards.`
