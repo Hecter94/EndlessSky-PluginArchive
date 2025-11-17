@@ -2214,7 +2214,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Spacefarer.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Spacefarer.zip) | 220.79 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Spacefarer/) <br>
 Author: samrocketman | Category: Gameplay <br>
-[https://github.com/samrocketman/Spacefarer](https://github.com/samrocketman/Spacefarer) (last commit 2024-02-11) <br>
+[https://github.com/samrocketman/Spacefarer](https://github.com/samrocketman/Spacefarer) (last commit 2025-11-17) <br>
 
 >One Jump Drive; No ship capturing; No plundering installed outfits.
 >
