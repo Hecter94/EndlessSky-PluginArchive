@@ -1,16 +1,16 @@
 
-All Plugins (610)
+All Plugins (611)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
-[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (25)<br>
+[Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Uncategorized
 
-<p>25 plugins in this category.<p>
+<p>26 plugins in this category.<p>
 
 
  
@@ -127,6 +127,35 @@ Author: comnom(maintained by samrocketman) | Category: N/A <br>
 
 
 Status: Playable on 0.9.14, 0.9.15 Continuous. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Endless Music (Egg Edition)
+<img src='../../Working/Endless Music %28Egg Edition%29/icon.png' height='100'></img><br>
+
+
+[Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2025-11-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
+Author: ziproot et al. | Category: Uncategorized <br>
+[https://git.nixnet.services/ziproot/endless-music-egg-edition](https://git.nixnet.services/ziproot/endless-music-egg-edition)  <br>
+
+>Adds 30 CC-BY/CC-BY-SA/GPL songs made by various artists that play in various conditions.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Endless Music (Egg Edition)
+This plugin adds 30 songs to the game that play in various conditions. I did not make these songs, and they are credited and sourced in the copyright file. Hopefully this will inspire improvements to the antequated music system.
+
+Note: No music will play with a new pilot using one of the vanilla starts. Music is unlocked as you progress through the game. Some plugin starts may skip you ahead, which would result in some songs playing.
+
+Main Plot Plus and Crisis in Management are supported. No other plugins are officially supported, though plugins that do not add new systems or story content, like Blended Ships, No More Inflation, or LinearHPScaling, should be supported.
+
+</blockquote>
+</details>
+
+Status: egg <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
