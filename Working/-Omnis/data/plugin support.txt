@@ -132,16 +132,23 @@ event "omnis: plugin integration"
 mission "Omnis: All Plugin Variants"
 	invisible
 	repeat
+	non-blocking
 	to offer
 		has "omnis: plugin integration"
 		has "global: Omnis: Shipyard VariantsAll"
+		not "event: omnis: all plugin variants integration"
 	on offer
 		event "omnis: all plugin variants integration"
+		clear "event: omnis: remove plugin variants integration"
+		clear "event: omnis: limited plugin variants integration"
+		fail
 
 mission "Omnis: No Plugin Variants"
 	invisible
 	repeat
+	non-blocking
 	to offer
+		not "event: omnis: remove plugin variants integration"
 		or
 			not "omnis: plugin integration"
 			and
@@ -149,16 +156,24 @@ mission "Omnis: No Plugin Variants"
 				not "global: Omnis: Shipyard Variants"
 	on offer
 		event "omnis: remove plugin variants integration"
+		clear "event: omnis: all plugin variants integration"
+		clear "event: omnis: limited plugin variants integration"
+		fail
 
 mission "Omnis: Limited Plugin Variants"
 	invisible
 	repeat
+	non-blocking
 	to offer
 		has "omnis: plugin integration"
 		not "global: Omnis: Shipyard VariantsAll"
 		has "global: Omnis: Shipyard Variants"
+		not "event: omnis: limited plugin variants integration"
 	on offer
 		event "omnis: limited plugin variants integration"
+		clear "event: omnis: all plugin variants integration"
+		clear "event: omnis: remote plugin variants integration"
+		fail
 
 event "omnis: all plugin variants integration"
 	planet "Everything "

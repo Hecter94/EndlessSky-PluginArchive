@@ -1,0 +1,145 @@
+mission "Music: Kestrel Testing"
+    invisible
+    landing
+    non-blocking
+    to offer
+        not "Kestrel Testing: done"
+        or
+            "combat rating" > 6000
+            and
+                "combat rating" > 2000
+                has "global: unlocked kestrel"
+    to accept
+        has "Kestrel Testing: active"
+    to complete
+        never
+    on accept
+        event "kestrel testing music"
+    on enter "Umbral"
+        dialog `The music you are hearing seems familiar, like it was in some kind of dream of yours. After some thinking, you come to the conclusion that it was not another escape velocity dream.`
+        fail
+
+mission "Music: Before Human Campaign - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        has "event: war begins"
+        not "event: joined the free worlds"
+        not "umbral music reset"
+    on offer
+        set "umbral music reset"
+        event "umbral before human campaign"
+        fail
+
+mission "Music: Started Human Campaign - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        has "event: joined the free worlds"
+        not "FW Defend New Tibet: offered"
+        not "umbral music reset"
+    on offer
+        set "umbral music reset"
+        event "umbral during human campaign"
+        fail
+
+mission "Music: Started Human Campaign Branch - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        has "FW Defend New Tibet: offered"
+        not "main plot completed"
+        not "umbral music reset"
+        or
+            and
+                not "event: pug invasion"
+                not "event: fwc pug invasion"
+            has "event: fwc pug defeated"
+            has "event: pug territory liberated"
+    on offer
+        set "umbral music reset"
+        event "umbral during human campaign branch"
+        fail
+
+mission "Music: Started Pug Invasion - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        or
+            has "event: pug invasion"
+            has "event: fwc pug invasion"
+        not "event: pug territory liberated"
+        not "event: fwc pug defeated"
+        not "umbral music reset"
+    on offer
+        set "umbral music reset"
+        event "umbral during pug invasion"
+        fail
+
+mission "Music: Finished Human Campaign - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        has "main plot completed"
+        not "umbral music reset"
+        or
+            not "Wanderers: Sestor Scanning: done"
+            has "Wanderers: Sestor: Return to Wanderers: done"
+            has "Wanderers: Sestor Alt: Return to Wanderers: done"
+    on offer
+        set "umbral music reset"
+        event "umbral finished human campaign"
+        fail
+
+mission "Music: Started Sestor Invasion - Umbral"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Kestrel Testing: done"
+        has "Wanderers: Sestor Scanning: done"
+        not "Wanderers: Sestor: Return to Wanderers: done"
+        not "Wanderers: Sestor Alt: Return to Wanderers: done"
+        not "umbral music reset"
+    on offer
+        set "umbral music reset"
+        event "umbral during sestor invasion"
+        fail
+
+event "kestrel testing music"
+    system "Umbral"
+        music "kestrel"
+
+event "umbral before human campaign"
+    system "Umbral"
+        music "republic"
+
+event "umbral during human campaign"
+    system "Umbral"
+        music "human"
+
+event "umbral during human campaign branch"
+    system "Umbral"
+        music "human2"
+
+event "umbral finished human campaign"
+    system "Umbral"
+        music "human3"
+
+event "umbral during pug invasion"
+    system "Umbral"
+        music "pug"
+
+event "umbral during sestor invasion"
+    system "Umbral"
+        music "wanderer4"
