@@ -330,7 +330,7 @@ event "midnight add heavy hauler"
 			"Modified Quicksilver"
 			"Stingray (Modified Blaster)" 2
 	fleet "Smugglers"
-		add variant 1
+		add variant 2
 			"Heavy Hauler (Smuggler)"
 
 mission "Midnight Heavy Hauler Smugglers Patch"
@@ -346,7 +346,7 @@ mission "Midnight Heavy Hauler Smugglers Patch"
 
 event "heavy hauler smugglers patch"
 	fleet "Smugglers"
-		add variant 1
+		add variant 2
 			"Heavy Hauler (Smuggler)"
 
 mission "Midnight Add Heavy Hauler II"
@@ -357,6 +357,7 @@ mission "Midnight Add Heavy Hauler II"
 		has "event: southern carriers 3"
 	on offer
 		event "midnight add heavy hauler ii"
+		set "heavy hauler ii smugglers patched"
 		fail
 
 event "midnight add heavy hauler ii"
@@ -385,6 +386,30 @@ event "midnight add heavy hauler ii"
 		add variant 1
 			"Heavy Hauler"
 			"Heavy Hauler II"
+	fleet "Smugglers"
+		add variant 4
+			"Heavy Hauler (Smuggler)"
+		add variant 2
+			"Heavy Hauler II (Smuggler)"
+
+mission "Midnight Heavy Hauler II Smugglers Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: midnight add heavy hauler ii"
+		not "heavy hauler ii smugglers patched"
+	on offer
+		event "heavy hauler ii smugglers patch"
+		fail
+
+event "heavy hauler ii smugglers patch"
+	fleet "Smugglers"
+		add variant 4
+			"Heavy Hauler (Smuggler)"
+		add variant 2
+			"Heavy Hauler II (Smuggler)"
+
 
 mission "Midnight Add Heavy Hauler III"
 	non-blocking
@@ -394,6 +419,7 @@ mission "Midnight Add Heavy Hauler III"
 		has "event: southern carriers 4"
 	on offer
 		event "midnight add heavy hauler iii"
+		set "heavy hauler iii smugglers patch"
 		fail
 
 event "midnight add heavy hauler iii"
@@ -465,7 +491,31 @@ event "midnight add heavy hauler iii"
 			"Heavy Hauler"
 			"Sparrow"
 	fleet "Smugglers"
-		add variant 1
+		add variant 8
+			"Heavy Hauler (Smuggler)"
+		add variant 4
+			"Heavy Hauler II (Smuggler)"
+		add variant 2
+			"Heavy Hauler III (Smuggler)"
+
+mission "Midnight Heavy Hauler III Smugglers Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: midnight add heavy hauler iii"
+		not "heavy hauler iii smugglers patched"
+	on offer
+		event "heavy hauler iii smugglers patch"
+		fail
+
+event "heavy hauler iii smugglers patch"
+	fleet "Smugglers"
+		add variant 8
+			"Heavy Hauler (Smuggler)"
+		add variant 4
+			"Heavy Hauler II (Smuggler)"
+		add variant 2
 			"Heavy Hauler III (Smuggler)"
 
 
@@ -914,6 +964,7 @@ mission "Add Stinger Missiles"
 	invisible
 	on offer
 		event "add stinger missiles"
+		set "stinger missile depot patched"
 		fail
 
 event "add stinger missiles"
@@ -922,6 +973,7 @@ event "add stinger missiles"
 	outfitter "Pirate Advanced"
 		add "Stinger Missile"
 		add "Stinger Missile Rack"
+		add "Stinger Missile Depot"
 		add "Stinger Missile Launcher"
 		add "Stinger Missile Pod"
 	planet Zenith
@@ -957,6 +1009,21 @@ event "add stinger missiles"
 	fleet "Large Southern Pirates"
 		add variant 1
 			"Modified Argosy (Stinger)"
+
+mission "Add Stinger Missile Depot Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: add stinger missiles"
+		not "stinger missile depot patched"
+	on offer
+		event "stinger missile depot patch"
+		fail
+
+event "stinger missile depot patch"
+	outfitter "Pirate Advanced"
+		add "Stinger Missile Depot"
 
 
 mission "Midnight Independent Fleet Expansion"
@@ -5418,3 +5485,163 @@ mission "Midnight Pirate (Rivals) rep patch"
 	on offer
 		"reputation: Pirate (Rivals)" <?= -10
 		fail
+
+
+mission "Midnight Add Ammunition Depots"
+	landing
+	invisible
+	non-blocking
+	on offer
+		event "midnight add ammunition depots"
+		fail
+
+event "midnight add ammunition depots"
+	outfitter "Common Outfits"
+		add "Meteor Missile Depot"
+	outfitter "Central Outfits Expansion"
+		add "Javelin Storage Depot"
+	outfitter "Deep Sky Advanced"
+		add "Torpedo Storage Depot"
+	outfitter "Lovelace Basics"
+		add "Sidewinder Missile Depot"
+	outfitter "Lovelace Advanced"
+		add "Sidewinder Missile Depot"
+		add "Torpedo Storage Depot"
+	outfitter "Lovelace Security"
+		add "Sidewinder Missile Depot"
+		add "Torpedo Storage Depot"
+	outfitter "Delta V Basics"
+		add "Javelin Storage Depot"
+	outfitter "Delta V Advanced"
+		add "Javelin Storage Depot"
+		add "Heavy Rocket Depot"
+		add "Meteor Missile Depot"
+	outfitter "Syndicate Basics"
+		add "Meteor Missile Depot"
+	outfitter "Syndicate Advanced"
+		add "Meteor Missile Depot"
+		add "Javelin Storage Depot"
+		add "Torpedo Storage Depot"
+	outfitter "Syndicated Security"
+		add "Meteor Missile Depot"
+		add "Javelin Storage Depot"
+	outfitter "Kraz Advanced"
+		add "Torpedo Storage Depot"
+	outfitter "Pirate Advanced"
+		add "Bullet Box Depot"
+	outfitter "Avgi Militia Surplus"
+		add "Speck Magazine Depot"
+	outfitter "Avgi Twilight Guard"
+		add "Speck Magazine Depot"
+	outfitter "Bunrodea Basic"
+		add "Swarm Clip Depot"
+	outfitter "Hai Intermediate"
+		add "Tracker Storage Depot"
+	outfitter "Hai Advanced"
+		add "Tracker Storage Depot"
+	outfitter "Hai Security"
+		add "Tracker Storage Depot"
+	outfitter "Korath Basics"
+		add "Piercer Missile Depot"
+		add "Cluster Mine Depot"
+	outfitter "Remnant"
+		add "EMP Torpedo Storage Depot"
+	outfitter "High Houses Light"
+		add "High-Velocity Spike Depot"
+	outfitter "High Houses Heavy"
+		add "High-Velocity Spike Depot"
+	outfitter "Wanderer Advanced"
+		add "Thunderhead Storage Depot"
+
+mission "Midnight Add Typhoon Depot"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: navy expand typhoon sales"
+	on offer
+		event "midnight add typhoon depot"
+		fail
+
+event "midnight add typhoon depot"
+	outfitter "Deep Sky Advanced"
+		add "Typhoon Storage Depot"
+	outfitter "Lovelace Advanced"
+		add "Typhoon Storage Depot"
+
+
+mission "Midnight Smugglers Expansion"
+	landing
+	invisible
+	non-blocking
+	on offer
+		event "midnight smuggler expansion"
+		fail
+
+event "midnight smuggler expansion"
+	outfitter "Pirate Basics"
+		add "Plunder Mine"
+	outfitter "Pirate Advanced"
+		add "Modified Jammer"
+		add "Plunder Mine"
+		add "Plunder Depot"
+		add "Plunder Catapult"
+	system Alcyone
+		add fleet "Smugglers" 10000
+	system Algenib
+		add fleet "Smugglers" 10000
+	system Almaaz
+		add fleet "Smugglers" 10000
+	system Almach
+		add fleet "Smugglers" 10000
+	system Alnilam
+		add fleet "Smugglers" 10000
+	system Alpherg
+		add fleet "Smugglers" 10000
+	system Antares
+		add fleet "Smugglers" 10000
+	system Arneb
+		add fleet "Smugglers" 10000
+	system Belenos
+		add fleet "Smugglers" 10000
+	system Citadelle
+		add fleet "Smugglers" 10000
+	system Durax
+		add fleet "Smugglers" 10000
+	system Fumalsamakah
+		add fleet "Smugglers" 10000
+	system Gienah
+		add fleet "Smugglers" 10000
+	system Hatysa
+		add fleet "Smugglers" 10000
+	system Men
+		add fleet "Smugglers" 10000
+	system Misam
+		add fleet "Smugglers" 10000
+	system Nunki
+		add fleet "Smugglers" 10000
+	system Oblate
+		add fleet "Smugglers" 10000
+	system Shaula
+		add fleet "Smugglers" 10000
+	system Thuban
+		add fleet "Smugglers" 10000
+	system Unagi
+		add fleet "Smugglers" 10000
+	system Algieba
+		add fleet "Smugglers" 10000
+	system Danoa
+		add fleet "Smugglers" 10000
+	system Eber
+		add fleet "Smugglers" 10000
+	system Fomalhaut
+		add fleet "Smugglers" 10000
+	system Ipsing
+		add fleet "Smugglers" 10000
+	system Kugel
+		add fleet "Smugglers" 10000
+	system Sargas
+		add fleet "Smugglers" 10000
+	system Wei
+		add fleet "Smugglers" 10000
+

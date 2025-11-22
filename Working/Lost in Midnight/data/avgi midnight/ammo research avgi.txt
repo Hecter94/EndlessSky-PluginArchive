@@ -1,0 +1,191 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Speck Access Temporary License"
+	"display name" "Speck Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 07013
+	cost 6000
+	thumbnail "outfit/tech speck round"
+	"base research rate" 0.06
+	"requires Gatling Ammo Tech" 1
+	"requires Speck Round" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Speck Rounds. Having this makes it possible for any outfitter to offer Speck Rounds even if it is normally not stocked there."
+	description "	The Aberrant threat has loosened any restrictions the Twilight Guard would normally have on sharing this technology."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+
+outfit "Speck Tech License"
+	"display name" "Speck Tech"
+	category "Licenses"
+	series "Technology"
+	index 07013
+	thumbnail "outfit/tech speck round"
+	"base research rate" 0.06
+	"requires Gatling Ammo Tech" 1
+	"requires Speck Round" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Speck Rounds. Having this makes it possible for any outfitter to offer Speck Rounds even if it is normally not stocked there."
+	description "	The Aberrant threat has loosened any restrictions the Twilight Guard would normally have on sharing this technology."
+
+outfitter "Speck Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Speck Tech"
+	location
+		attributes "outfitter"
+		outfits "Speck Round"
+	stock
+		"Speck Access Temporary License"
+
+outfitter "Speck Round Restock"
+	to sell
+		or
+			has "license: Speck Access Temporary"
+			has "license: Speck Tech"
+
+outfitter "Midnight Speck Round Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Speck Magazine Depot"
+		or
+			has "license: Speck Access Temporary"
+			has "license: Speck Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Speck Round"
+
+mission "Midnight Tech: Speck Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Speck Access Temporary"
+		not "license: Speck Tech"
+	on offer
+		clear "license: Speck Access Temporary"
+		set "license: Speck Tech"
+		fail
+
+mission "Midnight Research: Speck Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Speck Round"
+		has "outfit (flagship installed): Ammo Basics"
+		has "license: Gatling Ammo Tech"
+		not "license: Speck Access Temporary"
+		not "license: Speck Tech"
+		random < 6 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		set "license: Speck Tech"
+		conversation
+			scene "outfit/tech speck round"
+			`You have successfully completed Speck Tech research. This makes it possible for any outfitter to offer Speck Rounds even if it is normally not stocked there.`
+			``
+			`	(Gained Speck Tech)`
+				decline
+
+
+outfit "Nettle Access Temporary License"
+	"display name" "Nettle Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 07020
+	cost 450000
+	thumbnail "outfit/tech nettle kkv"
+	"base research rate" 0.05
+	"requires Meteor Tech" 1
+	"requires Sidewinder Tech" 1
+	"requires Nettle KKV" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Nettle KKVs. Having this makes it possible for any outfitter to offer Nettle KKVs even if it is normally not stocked there."
+	description "	The Aberrant threat has loosened any restrictions the Twilight Guard would normally have on sharing this technology."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Nettle Tech License"
+	"display name" "Nettle Tech"
+	category "Licenses"
+	series "Technology"
+	index 07020
+	thumbnail "outfit/tech nettle kkv"
+	"base research rate" 0.05
+	"requires Meteor Tech" 1
+	"requires Sidewinder Tech" 1
+	"requires Nettle KKV" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Nettle KKVs. Having this makes it possible for any outfitter to offer Nettle KKVs even if it is normally not stocked there."
+	description "	The Aberrant threat has loosened any restrictions the Twilight Guard would normally have on sharing this technology."
+
+outfitter "Nettle Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Nettle Tech"
+	location
+		attributes "outfitter"
+		outfits `"Nettle" KKV`
+	stock
+		"Nettle Access Temporary License"
+
+outfitter "Nettle Restock"
+	to sell
+		or
+			has "license: Nettle Access Temporary"
+			has "license: Nettle Tech"
+
+mission "Midnight Tech: Nettle Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Nettle Access Temporary"
+		not "license: Nettle Tech"
+	on offer
+		clear "license: Nettle Access Temporary"
+		set "license: Nettle Tech"
+		fail
+
+mission "Midnight Research: Nettle Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Nettle KKV"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "license: Meteor Tech"
+		has "license: Sidewinder Tech"
+		not "license: Nettle Access Temporary"
+		not "license: Nettle Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		set "license: Nettle Tech"
+		conversation
+			scene "outfit/tech nettle kkv"
+			`You have successfully completed Nettle Tech research. This makes it possible for any outfitter to offer Nettle KKVs even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Gained Nettle Tech)`
+				decline

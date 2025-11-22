@@ -629,8 +629,6 @@ mission "QKBlade: Bearer of The Blade 2"
 
 event "Stolen Snake Blade"
 
-
-
 mission "QKBlade: Bearer of The Blade 3A"
 	invisible
 	minor
@@ -681,6 +679,7 @@ mission "QKBlade: Bearer of The Blade 3A"
 			action
 				"captain of atrocity" ++
 				outfit "Evidence of ********" 1
+				set "license: Nightmare Fuel"
 			scene "outfit/midnight lost orphan"
 			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
 				decline
@@ -747,6 +746,7 @@ mission "QKBlade: Bearer of The Blade 3B"
 			action
 				"captain of atrocity" ++
 				outfit "Evidence of ********" 1
+				set "license: Nightmare Fuel"
 			scene "outfit/midnight lost orphan"
 			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
 				decline
@@ -813,6 +813,7 @@ mission "QKBlade: Bearer of The Blade 3C"
 			action
 				"captain of atrocity" ++
 				outfit "Evidence of ********" 1
+				set "license: Nightmare Fuel"
 			scene "outfit/midnight lost orphan"
 			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
 				decline
@@ -986,7 +987,6 @@ mission "QKBlade: Bearer of The Blade 5"
 			`	"A reward of <payment> for the return of the blade was planned, but we will just deposit that to your account."`
 
 
-
 mission "QKBlade: Thief of Blades"
 	invisible
 	minor
@@ -1010,25 +1010,39 @@ mission "QKBlade: Thief of Blades"
 						has "outfit (flagship installed): Midnight's Lost Orphan"
 					goto resist
 				`	(Betray the trust of the Hai and take the remaining blades.)`
-
 			scene "scene/scene-fourblades"
-			`	With your own Quantum Key Blade, you hop into a passing supply truck and ride into the facility. You evade security, walking through several walls and find the chamber where the other Quantum Key Blades are stored. Getting out is just as easy.`
-			`	Unfortunately, while Quantum phasing allows you to walk through walls, it does not render you invisible. The security cameras provide evidence that you are responsible for the theft and you are no longer welcomed by the Hai.`
+			`	With your own Quantum Key Blade, you hop into a passing supply truck and ride into the facility. You evade security, walking through several walls and find the chamber where the other Quantum Key Blades are stored. The strange twisted display stand has an empty slot for your own blade to rest in...`
+			choice
+				`	(Take the other blades.)`
+					goto thief
+				`	(Place your own blade on the stand.)`
+			scene "scene/scene-fiveblades"
+			`	The display is complete. Your own blade shines brightly at the center, a shining symbol of the trust the Hai have placed in you...`
+			choice
+				`	(Be the Bearer of the Blade.)`
+					goto bearer
+				`	(Be the Thief of Blades.)`
+			label thief
+			scene "scene/scene-zeroblades"
+			`	You help yourself to all the blades. Getting out is as easy as sneaking in. Unfortunately, while Quantum phasing allows you to walk through walls, it does not render you invisible. The security systems provide evidence that you are responsible for the theft and you are no longer welcomed by the Hai.`
 				launch
-
 			label refuse
 			action
 				"Honor of the Blade Bearer" ++
 			scene "outfit/quantum dragon blade"
 			`	You banish these malicious thoughts from your mind and choose to uphold the trust the Hai have placed in you.`
 				decline
-
 			label resist
 				"Resisted Thief of Blades" ++
 			scene "outfit/midnight lost orphan"
 			`	With some effort, you banish these tempting thoughts from your mind and choose to uphold the trust the Hai have placed in you.`
 				defer
-
+			label bearer
+				"Honor of the Blade Bearer" ++
+				"reputation: Hai" += 20
+			scene "outfit/quantum dragon blade"
+			`	Retrieving back the Quantum Dragon Blade, you renew your determination to honor your friendship with the Hai. You depart the chamber as the Bearer of the Blade.`
+				decline
 	on accept
 		log `Quantum Key Blades are amazing weapons. After some consideration, I decided to betray the trust the Hai have placed in me and take the remaining Quantum Key Blades for my own use.`
 		outfit "Quantum Snake Blade" 1

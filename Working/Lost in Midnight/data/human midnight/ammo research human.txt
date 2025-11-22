@@ -1,0 +1,1143 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Ammo Basics"
+	plural "Ammo Basics"
+	category "Special"
+	cost 50
+	thumbnail "outfit/data pad ammo"
+	description `"How Not To Blow Yourself Up: A Guide To Ammunition Development."`
+	description `	This guidebook gives novice weapons developers safety tips and best practices for experimenting with ammunition. A small disclaimer indicates that this is for informational purposes only. The publisher accepts no liability for any damage, injury, or death resulting from anyone reading this book.`
+	description `	Keep this installed on your flagship if you want to research ammunition technologies as you fly through the galaxy.`
+
+outfitter "Ammo Basics"
+	to sell
+		has "gamerule: universal ammo restocking"
+	location
+		outfits "Gatling Gun Ammo"
+	stock
+		"Ammo Basics"
+
+outfit "Ammo Expertise License"
+	"display name" "Ammo Expertise"
+	category "Licenses"
+	series "Technology"
+	index 01000
+	"requires Ammo Basics" 1
+	"requires Meteor Tech" 1
+	"requires Sidewinder Tech" 1
+	"requires Javelin Tech" 1
+	"requires Torpedo Tech" 1
+	"requires Heavy Rocket Tech" 1
+	"requires Gatling Ammo Tech" 1
+	"requires Plunder Mine Tech" 1
+	thumbnail "outfit/tech ammo expertise"
+	description "You have learned all of the basic human ammunition technologies. Perhaps this foundational knowledge might prove useful in your research endeavors."
+	description "	You must still carry a copy of Ammo Basics if you want to research new ammunition technologies."
+
+mission "Midnight Research: Ammo Expertise"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Ammo Basics"
+		has "license: Meteor Tech"
+		has "license: Sidewinder Tech"
+		has "license: Meteor Tech"
+		has "license: Javelin Tech"
+		has "license: Torpedo Tech"
+		has "license: Heavy Rocket Tech"
+		has "license: Gatling Ammo Tech"
+		has "license: Plunder Mine Tech"
+	on offer
+		set "license: Ammo Expertise"
+		conversation
+			scene "outfit/tech ammo expertise"
+			`You have learned all of the basic human ammunition technologies. Perhaps this foundational knowledge might prove useful in your research endeavors.`
+			`	You must still carry a copy of Ammo Basics if you want to research new ammunition technologies.`
+			``
+			`	(Gained Ammo Expertise)`
+				decline
+
+
+################################
+#
+# Vanilla Weapons
+#
+################################
+
+
+outfit "Meteor Access Temporary License"
+	"display name" "Meteor Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01023
+	cost 500000
+	thumbnail "outfit/tech meteor"
+	"base research rate" 0.11
+	"requires Meteor Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Meteor Missiles. Having this makes it possible for any outfitter to offer Meteor Missiles even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Meteor Tech License"
+	"display name" "Meteor Tech"
+	category "Licenses"
+	series "Technology"
+	index 01023
+	thumbnail "outfit/tech meteor"
+	"base research rate" 0.11
+	"requires Meteor Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Meteor Missiles. Having this makes it possible for any outfitter to offer Meteor Missiles even if it is normally not stocked there."
+
+outfitter "Meteor Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Meteor Tech"
+	location
+		attributes "outfitter"
+		outfits "Meteor Missile"
+	stock
+		"Meteor Access Temporary License"
+
+outfitter "Meteor Missile Restock"
+	to sell
+		or
+			has "license: Meteor Access Temporary"
+			has "license: Meteor Tech"
+
+outfitter "Midnight Meteor Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Meteor Missile Depot"
+			has "outfit: Twin Meteor Launcher"
+		or
+			has "license: Meteor Access Temporary"
+			has "license: Meteor Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Meteor Missile"
+
+mission "Midnight Tech: Meteor Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Meteor Access Temporary"
+		not "license: Meteor Tech"
+	on offer
+		clear "license: Meteor Access Temporary"
+		set "license: Meteor Tech"
+		fail
+
+mission "Midnight Research: Meteor Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Meteor Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Meteor Access Temporary"
+		not "license: Meteor Tech"
+		random < 11 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Meteor Tech"
+		conversation
+			scene "outfit/tech meteor"
+			`You have successfully completed Meteor Tech research. This makes it possible for any outfitter to offer Meteor Missiles even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Meteor Tech)`
+				decline
+
+
+outfit "Sidewinder Access Temporary License"
+	"display name" "Sidewinder Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01033
+	cost 900000
+	thumbnail "outfit/tech sidewinder"
+	"base research rate" 0.06
+	"requires Sidewinder Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Sidewinder Missiles. Having this makes it possible for any outfitter to offer Sidewinder Missiles even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Sidewinder Tech License"
+	"display name" "Sidewinder Tech"
+	category "Licenses"
+	series "Technology"
+	index 01033
+	thumbnail "outfit/tech sidewinder"
+	"base research rate" 0.06
+	"requires Sidewinder Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Sidewinder Missiles. Having this makes it possible for any outfitter to offer Sidewinder Missiles even if it is normally not stocked there."
+
+outfitter "Sidewinder Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Sidewinder Tech"
+	location
+		attributes "outfitter"
+		outfits "Sidewinder Missile"
+	stock
+		"Sidewinder Access Temporary License"
+
+outfitter "Sidewinder Missile Restock"
+	to sell
+		or
+			has "license: Sidewinder Access Temporary"
+			has "license: Sidewinder Tech"
+
+outfitter "Midnight Sidewinder Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Sidewinder Missile Depot"
+		or
+			has "license: Sidewinder Access Temporary"
+			has "license: Sidewinder Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Sidewinder Missile"
+
+mission "Midnight Tech: Sidewinder Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Sidewinder Access Temporary"
+		not "license: Sidewinder Tech"
+	on offer
+		clear "license: Sidewinder Access Temporary"
+		set "license: Sidewinder Tech"
+		fail
+
+mission "Midnight Research: Sidewinder Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Sidewinder Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Sidewinder Access Temporary"
+		not "license: Sidewinder Tech"
+		random < 6 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Sidewinder Tech"
+		conversation
+			scene "outfit/tech sidewinder"
+			`You have successfully completed Sidewinder Tech research. This makes it possible for any outfitter to offer Sidewinder Missiles even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Sidewinder Tech)`
+				decline
+
+
+outfit "Javelin Access Temporary License"
+	"display name" "Javelin Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01013
+	cost 50000
+	thumbnail "outfit/tech javelin"
+	"base research rate" 0.06
+	"requires Javelin" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Javelins. Having this makes it possible for any outfitter to offer Javelins even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Javelin Tech License"
+	"display name" "Javelin Tech"
+	category "Licenses"
+	series "Technology"
+	index 01013
+	thumbnail "outfit/tech javelin"
+	"base research rate" 0.06
+	"requires Javelin" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Javelins. Having this makes it possible for any outfitter to offer Javelins even if it is normally not stocked there."
+
+outfitter "Javelin Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Javelin Tech"
+	location
+		attributes "outfitter"
+		outfits "Javelin"
+	stock
+		"Javelin Access Temporary License"
+
+outfitter "Javelin Restock"
+	to sell
+		or
+			has "license: Javelin Access Temporary"
+			has "license: Javelin Tech"
+
+outfitter "Midnight Javelin Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Javelin Storage Depot"
+		or
+			has "license: Javelin Access Temporary"
+			has "license: Javelin Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Javelin"
+
+mission "Midnight Tech: Javelin Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Javelin Access Temporary"
+		not "license: Javelin Tech"
+	on offer
+		clear "license: Javelin Access Temporary"
+		set "license: Javelin Tech"
+		fail
+
+mission "Midnight Research: Javelin Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Javelin"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Javelin Access Temporary"
+		not "license: Javelin Tech"
+		random < 6 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Javelin Tech"
+		conversation
+			scene "outfit/tech javelin"
+			`You have successfully completed Javelin Tech research. This makes it possible for any outfitter to offer Javelins even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Javelin Tech)`
+			decline
+
+
+outfit "Torpedo Access Temporary License"
+	"display name" "Torpedo Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01053
+	cost 1400000
+	thumbnail "outfit/tech torpedo"
+	"base research rate" 0.06
+	"requires Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Torpedo Missiles. Having this makes it possible for any outfitter to offer Torpedo Missiles even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Torpedo Tech License"
+	"display name" "Torpedo Tech"
+	category "Licenses"
+	series "Technology"
+	index 01053
+	thumbnail "outfit/tech torpedo"
+	"base research rate" 0.06
+	"requires Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Torpedo Missiles. Having this makes it possible for any outfitter to offer Torpedo Missiles even if it is normally not stocked there."
+
+outfitter "Torpedo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Torpedo Tech"
+	location
+		attributes "outfitter"
+		outfits "Torpedo"
+	stock
+		"Torpedo Access Temporary License"
+
+outfitter "Torpedo Restock"
+	to sell
+		or
+			has "license: Torpedo Access Temporary"
+			has "license: Torpedo Tech"
+
+outfitter "Midnight Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Twin Torpedo Pod"
+			has "outfit: Torpedo Storage Depot"
+		or
+			has "license: Torpedo Access Temporary"
+			has "license: Torpedo Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Torpedo"
+
+mission "Midnight Tech: Torpedo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Torpedo Access Temporary"
+		not "license: Torpedo Tech"
+	on offer
+		clear "license: Torpedo Access Temporary"
+		set "license: Torpedo Tech"
+		fail
+
+mission "Midnight Research: Torpedo Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Torpedo Access Temporary"
+		not "license: Torpedo Tech"
+		random < 6 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Torpedo Tech"
+		conversation
+			scene "outfit/tech torpedo"
+			`You have successfully completed Torpedo Tech research. This makes it possible for any outfitter to offer Torpedo even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Torpedo Tech)`
+				decline
+
+
+outfit "Typhoon Access Temporary License"
+	"display name" "Typhoon Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01063
+	licenses
+		"Deep Security"
+	cost 2700000
+	thumbnail "outfit/tech typhoon"
+	"base research rate" 0.05
+	"requires Torpedo Tech" 1
+	"requires Typhoon Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Typhoon Torpedos. Having this makes it possible for any outfitter to offer Typhoon Torpedos even if it is normally not stocked there."
+	description "	Typhoon technology is a recent development of Deep Sky. It is a closely guarded trade secret not available to the general public."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+
+outfit "Typhoon Tech License"
+	"display name" "Typhoon Tech"
+	category "Licenses"
+	series "Technology"
+	index 01063
+	thumbnail "outfit/tech typhoon"
+	"base research rate" 0.05
+	"requires Torpedo Tech" 1
+	"requires Typhoon Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Typhoon Missiles. Having this makes it possible for any outfitter to offer Typhoon Torpedos even if it is normally not stocked there."
+
+outfitter "Typhoon Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Typhoon Tech"
+	location
+		attributes "outfitter"
+		outfits "Typhoon Torpedo"
+	stock
+		"Typhoon Access Temporary License"
+
+outfitter "Typhoon Torpedo Restock"
+	to sell
+		or
+			has "license: Typhoon Access Temporary"
+			has "license: Typhoon Tech"
+
+outfitter "Midnight Typhoon Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Typhoon Storage Depot"
+		or
+			has "license: Typhoon Access Temporary"
+			has "license: Typhoon Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Typhoon Torpedo"
+
+mission "Midnight Tech: Typhoon Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Typhoon Access Temporary"
+		not "license: Typhoon Tech"
+	on offer
+		clear "license: Typhoon Access Temporary"
+		set "license: Typhoon Tech"
+		fail
+
+mission "Midnight Research: Typhoon Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Typhoon Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "license: Torpedo Tech"
+		not "license: Typhoon Access Temporary"
+		not "license: Typhoon Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		set "license: Typhoon Tech"
+		conversation
+			scene "outfit/tech typhoon"
+			`You have successfully completed Typhoon Tech research. This makes it possible for any outfitter to offer Typhoon Torpedos even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Gained Typhoon Tech)`
+				decline
+
+
+outfit "Heavy Rocket Access Temporary License"
+	"display name" "Heavy Rocket Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01043
+	cost 2000000
+	thumbnail "outfit/tech rocket"
+	"base research rate" 0.06
+	"requires Heavy Rocket" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Heavy Rockets. Having this makes it possible for any outfitter to offer Heavy Rockets even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Heavy Rocket Tech License"
+	"display name" "Heavy Rocket Tech"
+	category "Licenses"
+	series "Technology"
+	index 01043
+	thumbnail "outfit/tech rocket"
+	"base research rate" 0.06
+	"requires Heavy Rocket" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Heavy Rockets. Having this makes it possible for any outfitter to offer Heavy Rockets even if it is normally not stocked there."
+
+outfitter "Heavy Rocket Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Heavy Rocket Tech"
+	location
+		attributes "outfitter"
+		outfits "Heavy Rocket"
+	stock
+		"Heavy Rocket Access Temporary License"
+
+outfitter "Heavy Rocket Restock"
+	to sell
+		or
+			has "license: Heavy Rocket Access Temporary"
+			has "license: Heavy Rocket Tech"
+
+outfitter "Midnight Heavy Rocket Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Heavy Rocket Depot"
+		or
+			has "license: Heavy Rocket Access Temporary"
+			has "license: Heavy Rocket Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Heavy Rocket"
+
+mission "Midnight Tech: Heavy Rocket Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Heavy Rocket Access Temporary"
+		not "license: Heavy Rocket Tech"
+	on offer
+		clear "license: Heavy Rocket Access Temporary"
+		set "license: Heavy Rocket Tech"
+		fail
+
+mission "Midnight Research: Heavy Rocket Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Heavy Rocket"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Heavy Rocket Access Temporary"
+		not "license: Heavy Rocket Tech"
+		random < 6 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Heavy Rocket Tech"
+		conversation
+			scene "outfit/tech rocket"
+			`You have successfully completed Heavy Rocket Tech research. This makes it possible for any outfitter to offer Heavy Rockets even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Heavy Rocket Tech)`
+				decline
+
+
+outfit "Gatling Gun Ammo Access Temporary License"
+	"display name" "Gatling Ammo Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01073
+	cost 4000
+	thumbnail "outfit/tech bullet"
+	"base research rate" 0.11
+	"requires Gatling Gun Ammo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Gatling Gun Ammo. Having this makes it possible for any outfitter to offer Gatling Gun Ammo even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Gatling Ammo Tech License"
+	"display name" "Gatling Ammo Tech"
+	category "Licenses"
+	series "Technology"
+	index 01073
+	thumbnail "outfit/tech bullet"
+	"base research rate" 0.11
+	"requires Gatling Gun Ammo" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Gatling Gun Ammo. Having this makes it possible for any outfitter to offer Gatling Gun Ammo even if it is normally not stocked there."
+
+outfitter "Gatling Gun Ammo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Gatling Ammo Tech"
+	location
+		attributes "outfitter"
+		outfits "Gatling Gun Ammo"
+	stock
+		"Gatling Gun Ammo Access Temporary License"
+
+outfitter "Gatling Gun Ammo Restock"
+	to sell
+		or
+			has "license: Gatling Gun Ammo Access Temporary"
+			has "license: Gatling Ammo Tech"
+
+outfitter "Midnight Gatling Gun Ammo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Bullet Box Depot"
+		or
+			has "license: Heavy Rocket Access Temporary"
+			has "license: Heavy Rocket Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Gatling Gun Ammo"
+
+mission "Midnight Tech: Gatling Gun Ammo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Gatling Gun Ammo Access Temporary"
+		not "license: Gatling Ammo Tech"
+	on offer
+		clear "license: Gatling Gun Ammo Access Temporary"
+		set "license: Gatling Ammo Tech"
+		fail
+
+mission "Midnight Research: Gatling Gun Ammo Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Gatling Gun Ammo"
+		has "outfit (flagship installed): Ammo Basics"
+		not "license: Gatling Gun Ammo Access Temporary"
+		not "license: Gatling Ammo Tech"
+		random < 11 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Gatling Ammo Tech"
+		conversation
+			scene "outfit/tech bullet"
+			`You have successfully completed Gatling Ammo Tech research. This makes it possible for any outfitter to offer Gatling Gun Ammo even if it is normally not stocked there.`
+			``
+			`	(Gained Gatling Ammo Tech)`
+				decline
+
+
+################################
+#
+# Midnight Weapons
+#
+################################
+
+
+# No universal restocking for Metallic Asteroids, but outfitters can supply you with cargo containers if you need them.
+outfitter "Midnight Asteroid Storage Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Asteroid Catapult"
+			has "outfit: Metallic Asteroid"
+	location
+		attributes "outfitter"
+	stock
+		"Asteroid Storage"
+
+
+outfit "Inferno Rocket Access Temporary License"
+	"display name" "Inferno Rocket Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01048
+	licenses
+		"Inferno Dragon"
+	cost 20000000
+	thumbnail "outfit/tech inferno rocket"
+	"base research rate" 0.05
+	"requires Heavy Rocket Tech" 1
+	"requires Inferno Rocket" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Inferno Rockets. Having this makes it possible for any outfitter to offer Inferno Rockets even if it is normally not stocked there."
+	description "	The Red Dragons invested a lot of time and money to create Inferno Rockets. The technology behind their construction are supposed to be secret... But this is a pirate world, where everything is for sale with the right price and connections."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Inferno Rocket Tech License"
+	"display name" "Inferno Rocket Tech"
+	category "Licenses"
+	series "Technology"
+	index 01048
+	licenses
+		"Inferno Dragon"
+	thumbnail "outfit/tech inferno rocket"
+	"base research rate" 0.05
+	"requires Heavy Rocket Tech" 1
+	"requires Inferno Rocket" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Inferno Rockets. Having this makes it possible for any outfitter to offer Inferno Rockets even if it is normally not stocked there."
+
+outfitter "Inferno Rocket Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Inferno Rocket Tech"
+	location
+		attributes "outfitter"
+		outfits "Inferno Rocket"
+	stock
+		"Inferno Rocket Access Temporary License"
+
+outfitter "Midnight Inferno Rocket Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Inferno Rocket Access Temporary"
+			has "license: Inferno Rocket Tech"
+		or
+			has "outfit: Inferno Rocket Launcher"
+			has "outfit: Inferno Rocket Pod"
+			has "outfit: Inferno Rocket Rack"
+			has "outfit: Inferno Rocket Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Inferno Rocket"
+
+mission "Midnight Tech: Inferno Rocket Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Inferno Rocket Access Temporary"
+		not "license: Inferno Rocket Tech"
+	on offer
+		clear "license: Inferno Rocket Access Temporary"
+		set "license: Inferno Rocket Tech"
+		fail
+
+mission "Midnight Research: Inferno Rocket Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Inferno Rocket"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "license: Heavy Rocket Tech"
+		not "license: Inferno Rocket Access Temporary"
+		not "license: Inferno Rocket Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		set "license: Inferno Rocket Tech"
+		conversation
+			scene "outfit/tech inferno rocket"
+			`You have successfully completed Inferno Rocket Tech research. This makes it possible for any outfitter to offer Inferno Rocket even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Gained Inferno Rocket Tech)`
+				decline
+
+
+outfit "Plunder Mine Access Temporary License"
+	"display name" "Plunder Mine Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01007
+	cost 1000000
+	thumbnail "outfit/tech plunder mine"
+	"base research rate" 0.11
+	"requires Plunder Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Plunder Mines. Having this makes it possible for any outfitter to offer Plunder Mines even if it is normally not stocked there."
+	description "	The technology used in Lovelace Labs latest products are a corporate secret not meant to be shared outside of the company."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Plunder Mine Tech License"
+	"display name" "Plunder Mine Tech"
+	category "Licenses"
+	series "Technology"
+	index 01007
+	thumbnail "outfit/tech plunder mine"
+	"base research rate" 0.11
+	"requires Plunder Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Plunder Mines. Having this makes it possible for any outfitter to offer Plunder Mines even if it is normally not stocked there."
+
+outfitter "Plunder Mine Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Plunder Mine Tech"
+	location
+		attributes "outfitter"
+		outfits "Plunder Mine"
+	stock
+		"Plunder Mine Access Temporary License"
+
+outfitter "Midnight Plunder Mine Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Plunder Mine Access Temporary"
+			has "license: Plunder Mine Tech"
+		or
+			has "outfit: Plunder Catapult"
+			has "outfit: Plunder Mine Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Plunder Mine"
+
+mission "Midnight Tech: Plunder Mine Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Plunder Mine Access Temporary"
+		not "license: Plunder Mine Tech"
+	on offer
+		clear "license: Plunder Mine Access Temporary"
+		set "license: Plunder Mine Tech"
+		fail
+
+mission "Midnight Research: Plunder Mine Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Plunder Mine"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		not "license: Plunder Mine Access Temporary"
+		not "license: Plunder Mine Tech"
+		random < 11 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		set "license: Plunder Mine Tech"
+		conversation
+			scene "outfit/tech plunder mine"
+			`You have successfully completed Plunder Mine Tech research. This makes it possible for any outfitter to offer Plunder Mines even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Gained Plunder Mine Tech)`
+				decline
+				
+				
+outfit "Stinger Missile Access Temporary License"
+	"display name" "Stinger Missile Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01028
+	cost 1000000
+	thumbnail "outfit/tech stinger missile"
+	"base research rate" 0.09
+	"requires Sidewinder Tech" 1
+	"requires Stinger Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Stinger Missiles. Having this makes it possible for any outfitter to offer Stinger Missiles even if it is normally not stocked there."
+	description "	Every outfitter that sells Stinger Missiles has their own recipe for the toxic sludge used. Beyond the chemical component, there is a biological aspect that induces nightmare fuel if you look too closely at what goes in..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Stinger Missile Tech License"
+	"display name" "Stinger Missile Tech"
+	category "Licenses"
+	series "Technology"
+	index 01028
+	thumbnail "outfit/tech stinger missile"
+	"base research rate" 0.09
+	"requires Sidewinder Tech" 1
+	"requires Stinger Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Stinger Missiles. Having this makes it possible for any outfitter to offer Stinger Missiles even if it is normally not stocked there."
+	description "	Every outfitter that sells Stinger Missiles has their own recipe for the toxic sludge used. Beyond the chemical component, there is a biological aspect that induces nightmare fuel if you look too closely at what goes in..."
+
+outfitter "Stinger Missile Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Stinger Missile Tech"
+	location
+		attributes "outfitter"
+		outfits "Stinger Missile"
+	stock
+		"Stinger Missile Access Temporary License"
+
+outfitter "Midnight Stinger Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Stinger Missile Access Temporary"
+			has "license: Stinger Missile Tech"
+		or
+			has "outfit: Stinger Missile Launcher"
+			has "outfit: Stinger Missile Pod"
+			has "outfit: Stinger Missile Rack"
+			has "outfit: Stinger Missile Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Stinger Missile"
+
+mission "Midnight Tech: Stinger Missile Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Stinger Missile Access Temporary"
+		not "license: Stinger Missile Tech"
+	on offer
+		clear "license: Stinger Missile Access Temporary"
+		set "license: Stinger Missile Tech"
+		fail
+
+mission "Midnight Research: Stinger Missile Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Stinger Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Bio)"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "license: Sidewinder Tech"
+		not "license: Stinger Missile Access Temporary"
+		not "license: Stinger Missile Tech"
+		random < 9 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Bio)" -1
+		outfit "Research Data (Chem)" -1
+		set "license: Stinger Missile Tech"
+		set "license: Nightmare Fuel"
+		conversation
+			scene "outfit/tech stinger missile"
+			`You have successfully completed Stinger Missile Tech research. This makes it possible for any outfitter to offer Stinger Missiles even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Bio))`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Gained Stinger Missile Tech)`
+			`	(Gained Nightmare Fuel)`
+				decline
+
+
+outfit "Lovelace Labs License"
+	thumbnail "outfit/unknown"
+	description "The technology used in Lovelace Labs products are a corporate secret not meant to be shared outside of the company."
+
+outfit "Swingfire Missile Access Temporary License"
+	"display name" "Swingfire Missile Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 01038
+	licenses
+		"Lovelace Labs"
+	cost 0
+	thumbnail "outfit/tech swingfire missile"
+	"base research rate" 0.05
+	"requires Sidewinder Tech" 1
+	"requires Swingfire Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Swingfire Missiles. Having this makes it possible for any outfitter to offer Swingfire Missiles even if it is normally not stocked there."
+	description "	The technology used in Lovelace Labs latest products are a corporate secret not meant to be shared outside of the company."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Swingfire Missile Tech License"
+	"display name" "Swingfire Missile Tech"
+	category "Licenses"
+	series "Technology"
+	index 01038
+	licenses
+		"Lovelace Labs"
+	thumbnail "outfit/tech swingfire missile"
+	"base research rate" 0.05
+	"requires Sidewinder Tech" 1
+	"requires Swingfire Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Swingfire Missiles. Having this makes it possible for any outfitter to offer Swingfire Missiles even if it is normally not stocked there."
+
+outfitter "Swingfire Missile Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Swingfire Missile Tech"
+	location
+		attributes "outfitter"
+		outfits "Swingfire Missile"
+	stock
+		"Swingfire Missile Access Temporary License"
+
+outfitter "Midnight Swingfire Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Swingfire Missile Access Temporary"
+			has "license: Swingfire Missile Tech"
+		or
+			has "outfit: Swingfire Missile Launcher"
+			has "outfit: Swingfire Missile Pod"
+			has "outfit: Swingfire Missile Rack"
+			has "outfit: Swingfire Missile Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Swingfire Missile"
+
+mission "Midnight Tech: Swingfire Missile Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Swingfire Missile Access Temporary"
+		not "license: Swingfire Missile Tech"
+	on offer
+		clear "license: Swingfire Missile Access Temporary"
+		set "license: Swingfire Missile Tech"
+		fail
+
+mission "Midnight Research: Swingfire Missile Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Swingfire Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Sidewinder Tech"
+		not "license: Swingfire Missile Access Temporary"
+		not "license: Swingfire Missile Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Swingfire Missile Tech"
+		conversation
+			scene "outfit/tech swingfire missile"
+			`You have successfully completed Swingfire Missile Tech research. This makes it possible for any outfitter to offer Swingfire Missiles even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Swingfire Missile Tech)`
+				decline
+
+

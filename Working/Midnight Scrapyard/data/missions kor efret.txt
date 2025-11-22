@@ -21,7 +21,6 @@ outfitter "Korath Basics"
 	"Burrower Mining Beam"
 	"Korath Scanner"
 	"Scavenger Turret"
-	"Korath Fireswarm Nest"
 
 mission "Midnight Scrapyard Add Shelf-Sloop"
 	non-blocking
@@ -77,6 +76,7 @@ event "add fireswarm kor efret"
 outfitter "Korath Fireswarm"
 	"Korath Fireswarm"
 	"Korath Fireswarm Nest"
+	"Korath Fireswarm Depot"
 	"Korath Fireswarm Launcher"
 
 
@@ -899,6 +899,7 @@ outfitter "Efret Salvage"
 	"Korath Fireswarm"
 	"Korath Fireswarm Nest"
 	"Korath Fireswarm Launcher"
+	"Korath Fireswarm Depot"
 
 outfitter "Efret Salvage Advanced"
 	"Husk-Slice"
@@ -1945,6 +1946,111 @@ mission "Scrapyard: Wanderer Survey Rescue [Mesuket]"
 		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
 
 
+outfit "Korath Fireswarm Access Temporary License"
+	"display name" "Fireswarm Missile Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04015
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech korath fireswarm"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Fireswarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Fireswarm Missiles. Having this makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Korath Fireswarm Tech License"
+	"display name" "Fireswarm Missile Tech"
+	category "Licenses"
+	series "Technology"
+	index 04015
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech korath fireswarm"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Fireswarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Korath Fireswarms. Having this makes it possible for any outfitter to offer Korath Fireswarms even if it is normally not stocked there."
+
+outfitter "Korath Fireswarm Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Korath Fireswarm Tech"
+	location
+		attributes "outfitter"
+		outfits "Korath Fireswarm"
+	stock
+		"Korath Fireswarm Access Temporary License"
+
+outfitter "Midnight Korath Fireswarm Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Korath Fireswarm Access Temporary"
+			has "license: Korath Fireswarm Tech"
+		or
+			has "outfit: Korath Fireswarm Launcher"
+			has "outfit: Korath Fireswarm Nest"
+			has "outfit: Korath Fireswarm Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Korath Fireswarm"
+
+mission "Midnight Tech: Korath Fireswarm Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Korath Fireswarm Access Temporary"
+		not "license: Korath Fireswarm Tech"
+	on offer
+		clear "license: Korath Fireswarm Access Temporary"
+		set "license: Korath Fireswarm Tech"
+		fail
+
+mission "Midnight Research: Korath Fireswarm Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Korath Fireswarm"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Torpedo Tech"
+		not "license: Korath Fireswarm Access Temporary"
+		not "license: Korath Fireswarm Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Korath Fireswarm Tech"
+		conversation
+			scene "outfit/tech korath fireswarm"
+			`You have successfully completed Korath Fireswarm Tech research. This makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Fireswarm Missile Tech)`
+				decline
+
 
 #######################
 # Deprecated
@@ -2127,6 +2233,7 @@ event "Efret Grappler Warmongers"
 mission "Add Kor Efret Fireswarms"
 	landing
 	invisible
+	non-blocking
 	to offer
 		never
 

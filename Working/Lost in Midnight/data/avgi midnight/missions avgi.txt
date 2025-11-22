@@ -170,6 +170,7 @@ mission "Midnight link kr-84 murk patch"
 mission "Midnight Avgi Tangled Twins"
 	landing
 	invisible
+	non-blocking
 	destination "Outpost Enka"
 	to offer
 		has "event: link kr-84 murk"
@@ -182,8 +183,6 @@ mission "Midnight Avgi Tangled Twins"
 			`An Avgi ship sends a hail: "Wary. Our ship name translation is Tangled Twins. We explore new system. Hopeful. No fight."`
 				accept
 	npc
-		to despawn
-			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
 		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
@@ -195,8 +194,6 @@ mission "Midnight Avgi Tangled Twins"
 				"Akoustiki" 2
 				"Optikon" 4
 	npc save
-		to despawn
-			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
 		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
@@ -210,11 +207,13 @@ mission "Midnight Avgi Tangled Twins"
 mission "Midnight Avgi Tangled Twins Research"
 	landing
 	invisible
+	non-blocking
 	destination "Outpost Enka"
 	to offer
 		has "visited Murk"
 		has "Midnight Avgi Tangled Twins: active"
 		not "tangled twins destroyed"
+		not "tangled twins provoked"
 	on offer
 		fail "Midnight Avgi Tangled Twins"
 	to complete
@@ -236,8 +235,6 @@ mission "Midnight Avgi Tangled Twins Research"
 	npc
 		to spawn
 			not "tangled twins destroyed"
-		to despawn
-			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
 		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
@@ -251,17 +248,15 @@ mission "Midnight Avgi Tangled Twins Research"
 	npc save
 		to spawn
 			not "tangled twins destroyed"
-		to despawn
-			has "tangled twins provoked"
 		government "Avgi (Dissonance)"
 		personality waiting staying forbearing timid unconstrained uninterested surveillance
 		system Murk
 		ship "Polipolari" "Tangled Twins"
+		on provoke
+			set "tangled twins provoked"
 		on kill
 			set "tangled twins destroyed"
 			fail
-		on provoke
-			set "tangled twins provoked"
 
 
 mission "Midnight Avgi Twilight Key"
@@ -458,3 +453,6 @@ mission "Midnight Avgi Voidlunker Job"
 		outfit "Voidlunker" -1
 		payment 24000
 		dialog "The wealthy client pays you <payment> after receiving the Voidlunker."
+
+
+

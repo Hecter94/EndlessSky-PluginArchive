@@ -1,0 +1,239 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+################################
+#
+# Vanilla Weapons
+#
+################################
+
+
+outfit "Finisher Access Temporary License"
+	"display name" "Finisher Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 08012
+	licenses
+		Heliarch
+	cost 32000000
+	thumbnail "outfit/tech finisher"
+	"base research rate" 0.03
+	"requires Torpedo Tech" 1
+	"requires Finisher Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Finisher Torpedos. Having this makes it possible for any outfitter to offer Finisher Torpedos even if it is normally not stocked there."
+	description "	The knowledge for recreating Heliarch technology is not available to the general public."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Finisher Tech License"
+	"display name" "Finisher Tech"
+	category "Licenses"
+	series "Technology"
+	index 08012
+	licenses
+		Heliarch
+	thumbnail "outfit/tech finisher"
+	"base research rate" 0.03
+	"requires Torpedo Tech" 1
+	"requires Finisher Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Finisher Torpedos. Having this makes it possible for any outfitter to offer Finisher Torpedos even if it is normally not stocked there."
+
+outfitter "Finisher Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Finisher Tech"
+	location
+		attributes "outfitter"
+		outfits "Finisher Torpedo"
+	stock
+		"Finisher Access Temporary License"
+
+outfitter "Finisher Torpedo Restock"
+	to sell
+		or
+			has "license: Finisher Access Temporary"
+			has "license: Finisher Tech"
+
+outfitter "Midnight Finisher Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Finisher Storage Depot"
+		or
+			has "license: Finisher Access Temporary"
+			has "license: Finisher Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Finisher Torpedo"
+
+mission "Midnight Tech: Finisher Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Finisher Access Temporary"
+		not "license: Finisher Tech"
+	on offer
+		clear "license: Finisher Access Temporary"
+		set "license: Finisher Tech"
+		fail
+
+mission "Midnight Research: Finisher Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Finisher Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Torpedo Tech"
+		not "license: Finisher Access Temporary"
+		not "license: Finisher Tech"
+		random < 3 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Finisher Tech"
+		conversation
+			scene "outfit/tech finisher"
+			`You have successfully completed Finisher Tech research. This makes it possible for any outfitter to offer Finisher Torpedos even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Finisher Tech)`
+				decline
+
+
+################################
+#
+# Midnight Weapons
+#
+################################
+
+
+outfit "Culminator Access Temporary License"
+	"display name" "Culminator Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 08008
+	licenses
+		Heliarch
+	cost 30000000
+	thumbnail "outfit/tech culminator"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Culminator Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Culminator Torpedos. Having this makes it possible for any outfitter to offer Culminator Torpedos even if it is normally not stocked there."
+	description "	The knowledge for recreating Heliarch technology is not available to the general public."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Culminator Tech License"
+	"display name" "Culminator Tech"
+	category "Licenses"
+	series "Technology"
+	index 08008
+	licenses
+		Heliarch
+	thumbnail "outfit/tech culminator"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Culminator Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Culminator Torpedos. Having this makes it possible for any outfitter to offer Culminator Torpedos even if it is normally not stocked there."
+
+outfitter "Culminator Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Culminator Tech"
+	location
+		attributes "outfitter"
+		outfits "Culminator Torpedo"
+	stock
+		"Culminator Access Temporary License"
+
+outfitter "Midnight Culminator Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Culminator Access Temporary"
+			has "license: Culminator Tech"
+		or
+			has "outfit: Culminator Pod"
+			has "outfit: Culminator Storage Tube"
+			has "outfit: Culminator Storage Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Culminator Torpedo"
+
+mission "Midnight Tech: Culminator Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Culminator Access Temporary"
+		not "license: Culminator Tech"
+	on offer
+		clear "license: Culminator Access Temporary"
+		set "license: Culminator Tech"
+		fail
+
+mission "Midnight Research: Culminator Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Culminator Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Torpedo Tech"
+		not "license: Culminator Access Temporary"
+		not "license: Culminator Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Culminator Tech"
+		conversation
+			scene "outfit/tech culminator"
+			`You have successfully completed Culminator Tech research. This makes it possible for any outfitter to offer Culminator Torpedos even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Culminator Tech)`
+				decline
+
+

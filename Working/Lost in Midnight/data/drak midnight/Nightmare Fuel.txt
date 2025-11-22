@@ -1,0 +1,601 @@
+# Copyright (c) 2025 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Nightmare Fuel License"
+	"display name" "Nightmare Fuel"
+	category "Unique"
+	series "Conditions"
+	index 01000
+	thumbnail "outfit/nightmare fuel"
+	description "You have witnessed things rational minds were not meant to see. Now, strange phantoms hover just beyond your field of vision and you hear faint echoes breaking moments of silence. It is as if the thin veneer of sanity has been torn ever so slightly, granting you awareness of another reality interposed with our own..."
+
+mission "Midnight Nightmare Fuel: Derelict Echos"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		random < 10
+	on offer
+		music ambient/derelict
+
+mission "Midnight Nightmare Fuel: Blood Storm"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		random < 5
+	on offer
+		music ambient/creepy
+	npc
+		government "Phenomenon (dangerous)"
+		personality entering heroic vindictive opportunistic unconstrained mute
+			confusion 120
+		fleet "Localized Blood Storm"
+		on kill
+			mute
+
+ship "Localized Blood Storm"
+	attributes
+		"heat dissipation" 1
+		"hull" 90
+		"hull repair rate" .001
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+		"silent jumps" 1
+		"jump drive" 1
+		"jump fuel" 1
+		"fuel capacity" 10
+	outfits
+		"Blood Storm Weapon"
+	turret 0 -100
+	turret -100 100
+	turret 100 100
+
+ship "Localized Blood Storm" "Localized Blood Storm (Weak)"
+	add attributes
+		"hull" -30
+
+ship "Localized Blood Storm" "Localized Blood Storm (Strong)"
+	add attributes
+		"hull" 30
+
+outfit "Blood Storm Weapon"
+	category "Turrets"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	"unplunderable" 1
+	weapon
+		"inaccuracy" 180
+		"turret turn" 180
+		"velocity" 5
+		"lifetime" 150
+		"random lifetime" 150
+		"reload" 100
+		"blast radius" 100
+		"split range" 200
+		"submunition" "Blood Storm Weapon Submunition"
+		"target effect" "blood" 5
+
+outfit "Blood Storm Weapon Submunition"
+	weapon
+		"inaccuracy" 180
+		"lifetime" 20
+		"trigger radius" 30000
+		"blast radius" 30000
+		"hull damage" 0.1
+		"no damage scaling"
+		"corrosion damage" 0.001
+		"target effect" "blood" 5
+
+fleet "Localized Blood Storm"
+	government "Phenomenon (dangerous)"
+	personality launching marked heroic vindictive opportunistic unconstrained mute
+		confusion 120
+	cargo 0
+	variant 1
+		"Localized Blood Storm (Weak)" 40
+	variant 2
+		"Localized Blood Storm" 60
+	variant 1
+		"Localized Blood Storm (Strong)" 80
+
+
+mission "Midnight Nightmare Fuel: False Alarm"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		random < 5
+	npc
+		government "Phenomenon (dangerous)"
+		personality entering heroic vindictive opportunistic unconstrained mute
+			confusion 120
+		ship "False Alarm" 2
+
+ship "False Alarm"
+	attributes
+		"heat dissipation" 1
+		"hull" 1
+		"hull repair rate" .001
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+		"silent jumps" 1
+		"jump drive" 1
+		"jump fuel" 1
+		"fuel capacity" 1
+	outfits
+		"False Alarm Weapon"
+	turret 0 0
+
+outfit "False Alarm Weapon"
+	category "Turrets"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	"unplunderable" 1
+	weapon
+		"inaccuracy" 180
+		"turret turn" 180
+		"velocity" 20
+		"lifetime" 100
+		"random lifetime" 100
+		"reload" 1000
+		"blast radius" 1000
+		"split range" 200
+		"submunition" "False Alarm Weapon Submunition"
+		sound "alarm"
+
+outfit "False Alarm Weapon Submunition"
+	weapon
+		"inaccuracy" 180
+		"lifetime" 20
+		"trigger radius" 30000
+		"blast radius" 30000
+		"hull damage" 0.1
+		"no damage scaling"
+		"corrosion damage" 0.01
+		"hit effect" "False Alarm"
+		"die effect" "False Alarm"
+
+effect "False Alarm"
+	sound "alarm"
+
+
+mission "Midnight Nightmare Fuel: Void Ghost"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		random < 5
+	npc
+		government "Phenomenon (harmless)"
+		personality entering marked timid lingering secretive unconstrained mute
+			confusion 120
+		ship "Void Ghost"
+		on kill
+			clear "license: Nightmare Fuel"
+	npc
+		government "Phenomenon (dangerous)"
+		personality entering heroic vindictive opportunistic unconstrained mute
+			confusion 120
+		ship "EMP Poltergeist"
+
+ship "Void Ghost"
+	sprite "ship/voidghost"
+		"delay" 2
+		"frame rate" 0.2
+		rewind
+	attributes
+		"heat dissipation" 1
+		"hull" 10
+		"hull repair rate" .001
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+		"silent jumps" 1
+		"jump drive" 1
+		"jump fuel" 1
+		"fuel capacity" 1
+		"inscrutable" 1
+		"atmosphere scan" 100
+		weapon
+			"blast radius" 50000
+			"hull damage" 1
+			"corrosion damage" 0.01
+	"final explode" "void sprite adult death"
+
+ship "EMP Poltergeist"
+	attributes
+		"heat dissipation" 1
+		"hull" 1
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+		"silent jumps" 1
+		"jump drive" 1
+		"jump fuel" 1
+		"fuel capacity" 1
+	outfits
+		"EMP Poltergeist Weapon" 3
+	turret 0 -100
+	turret -100 100
+	turret 100 100
+
+outfit "EMP Poltergeist Weapon"
+	category "Turrets"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	"unplunderable" 1
+	weapon
+		"inaccuracy" 180
+		"turret turn" 180
+		"velocity" 20
+		"lifetime" 100
+		"reload" 10
+		"blast radius" 100
+		"split range" 200
+		"submunition" "EMP Poltergeist Weapon Submunition"
+			"offset" 1 0
+			"facing" 0.45
+		"submunition" "EMP Poltergeist Weapon Submunition"
+			"offset" -1 0
+			"facing" -0.45
+		"submunition" "EMP Poltergeist Weapon Submunition"
+
+outfit "EMP Poltergeist Weapon Submunition"
+	weapon
+		"inaccuracy" 180
+		"lifetime" 20
+		"trigger radius" 30000
+		"blast radius" 30000
+		"no damage scaling"
+		"scrambling damage" 0.5
+
+
+mission "Midnight Nightmare Fuel: Stray Asteroid"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		random < 5
+	npc
+		government "Phenomenon (dangerous)"
+		personality entering heroic vindictive opportunistic unconstrained mute
+			confusion 120
+		ship "Stray Asteroid Phantom"
+		on kill
+			clear "license: Nightmare Fuel"
+
+ship "Stray Asteroid Phantom"
+	attributes
+		"heat dissipation" 1
+		"hull" 1
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+		"silent jumps" 1
+		"jump drive" 1
+		"jump fuel" 1
+		"fuel capacity" 1
+	outfits
+		"Timer Weapon" 2
+		"Stray Asteroid Weapon"
+		"Metallic Asteroid"
+	gun 0 -100 "Stray Asteroid Weapon"
+	gun -100 100
+	gun 100 100
+
+outfit "Stray Asteroid Weapon"
+	category "Secondary Weapons"
+	"gun ports" -1
+	"asteroid capacity" 1
+	weapon
+		sprite "projectile/asteroid catapult"
+		ammo "Metallic Asteroid"
+		icon "icon/masteroid"
+		"hit effect" "piercer impact"
+		"missile strength" 200
+		"inaccuracy" 0.2
+		"velocity" 18
+		"lifetime" 200
+		"range override" 4500
+		"reload" 350
+		"shield damage" 6000
+		"hull damage" 9000
+		"piercing" .5
+		"hit force" 7000
+		"submunition" "Asteroid Catapult Deterioration" 1
+		"submunition" "Phenomenon Submunition"
+
+
+outfit "Haunted Accommodations"
+	plural "Haunted Accommodations"
+	category "Systems"
+	series "Passenger"
+	index 09
+	cost 62500
+	thumbnail "outfit/haunted accommodations"
+	"mass" 7
+	"outfit space" -7
+	"bunks" 1
+	"unplunderable" 1
+	"unique" 1
+	description "Passengers claim this room is haunted. Those assigned to it report seeing strange visions or hearing weird sounds during their voyage. Although this is supposed to be Luxury Accommodations, it no longer attracts high quality customers. Instead, this is attracting clients of a different sort..."
+	description "	Ever since you had your own strange experience here you haven't set foot in it again. The Haunted Accomodations appears normal, but ship status reports indicate that it no longer occupies as much space as it used to."
+
+mission "Midnight Nightmare Fuel: Haunted Accommodations"
+	entering
+	invisible
+	repeat
+	destination Earth
+	deadline 2
+	to offer
+		has "license: Nightmare Fuel"
+		has "outfit: Luxury Accommodations"
+		not "outfit (all): Haunted Accommodations"
+		or
+			has "Transport scientists: active"
+			has "To Remembrance Day celebration [0]: active"
+			has "From Remembrance Day celebration [0]: active"
+			has "From Remembrance Day celebration [1]: active"
+			has "FW Reinforcements [0]: active"
+			has "FW Reinforcements [1]: active"
+			has "FW Refugees [0]: active"
+			has "FW Refugees [1]: active"
+			has "FW Refugees [2]: active"
+			has "FW Bulk Refugees [0]: active"
+			has "Frontier Emigration [0]: active"
+			has "Frontier Emigration [1]: active"
+			has "Frontier Emigration [2]: active"
+			has "Passengers [0]: active"
+			has "Passengers [1]: active"
+			has "Passengers [2]: active"
+			has "Passengers [3]: active"
+			has "Passengers [4]: active"
+			has "Transport miners to <planet>: active"
+			has "Transport farmers to <planet>: active"
+			has "Transport mill workers to <planet>: active"
+			has "Transport workers to <planet>: active"
+			has "Tourists out [0]: active"
+			has "Tourists out [1]: active"
+			has "Tourists back [0]: active"
+			has "Tourists back [1]: active"
+			has "Wealthy tourists out: active"
+			has "Wealthy tourists back: active"
+			has "Family [0]: active"
+			has "Family [1]: active"
+			has "Family [2]: active"
+			has "Family [3]: active"
+			has "Strike Breakers [mining]: active"
+			has "Strike Breakers [textile]: active"
+			has "Strike Breakers [factory]: active"
+			has "Colonists [0]: active"
+			has "Colonists [1]: active"
+			has "Stranded Field Trip: active"
+			has "Released Prisoners [0]: active"
+			has "Released Prisoners [1]: active"
+			has "Released Prisoners [2]: active"
+			has "Historical field trip to <planet>: active"
+			has "To Earth Day celebration [0]: active"
+			has "From Earth Day celebration [0]: active"
+			has "From Earth Day celebration [1]: active"
+			has "Paradise Job: Newlyweds: active"
+			has "Transport partiers [1]: active"
+			has "Transport partiers [2]: active"
+			has "Paradise Jobs: Contract Laborers: active"
+			has "Transport high-class tourists: active"
+			has "Paradise Job: Retirees: active"
+			has "Paradise Job: Wilderness Retreat: active"
+			has "Han Sizer Month [0]: active"
+			has "Han Sizer Month [1]: active"
+			has "Han Sizer Month [2]: active"
+			has "Transport executive to <planet>: active"
+			has "Corporate retreat from <origin>: active"
+			has "Avgi: Specialized Workers 1: active"
+			has "Avgi: Specialized Workers 2: active"
+			has "Avgi: Ergastirio Researchers 1: active"
+			has "Avgi: Ergastirio Researchers 2: active"
+			has "Avgi: Outpost Diplomats 1: active"
+			has "Avgi: Outpost Diplomats 2: active"
+			has "Avgi: Outpost Diplomats 3: active"
+			has "Avgi: Doctors 1: active"
+			has "Avgi: Doctors 2: active"
+			has "Avgi: Doctors 3: active"
+			has "Coalition: Ringworld Workers 1: active"
+			has "Coalition: Ringworld Workers 2: active"
+			has "Coalition: Ringworld Workers 3: active"
+			has "Coalition: Ringworld Volunteers 1: active"
+			has "Coalition: Ringworld Volunteers 2: active"
+			has "Coalition: Ringworld Volunteers 3: active"
+			has "Coalition: Heliarch Candidate: active"
+			has "Coalition: Interpreters 1: active"
+			has "Coalition: Interpreters 2: active"
+			has "Coalition: Interpreters 3: active"
+			has "Coalition: Peacekeepers 1: active"
+			has "Coalition: Peacekeepers 2: active"
+			has "Coalition: Saryd Interspecies 1: active"
+			has "Coalition: Saryd Interspecies 2: active"
+			has "Coalition: Kimek Interspecies 1: active"
+			has "Coalition: Kimek Interspecies 2: active"
+			has "Coalition: Arach Interspecies 1: active"
+			has "Coalition: Arach Interspecies 2: active"
+			has "Coalition: Transfer 1: active"
+			has "Coalition: Transfer 2: active"
+			has "Coalition: Transfer 3: active"
+			has "Coalition: Tourists Out 1: active"
+			has "Coalition: Tourists Out 2: active"
+			has "Coalition: Tourists Out 3: active"
+			has "Coalition: Tourists Home 1: active"
+			has "Coalition: Tourists Home 2: active"
+			has "Coalition: Tourists Home 3: active"
+			has "Coalition: Doctors: active"
+			has "Coalition: Cadets 1: active"
+			has "Coalition: Cadets 2: active"
+			has "Coalition: To Games 1: active"
+			has "Coalition: To Games 2: active"
+			has "Coalition: To Games 3: active"
+			has "Coalition: From Games 1: active"
+			has "Coalition: From Games 2: active"
+			has "Coalition: From Games 3: active"
+			has "Human Vacation [1]: active"
+			has "Hai Vacation [1]: active"
+			has "Hai Vacation [2]: active"
+			has "Hai Vacation [3]: active"
+			has "Hai Vacation [4]: active"
+			has "Wealthy Hai [1]: active"
+			has "Wealthy Hai [2]: active"
+			has "Hai Festival [1]: active"
+			has "Hai Festival [2]: active"
+			has "Hai Festival [3]: active"
+			has "Hai Passengers [1]: active"
+			has "Hai Passengers [2]: active"
+			has "Hai Passengers [3]: active"
+			has "Hai Family [0]: active"
+			has "Hai Family [1]: active"
+			has "Transport Hai miners to <planet>: active"
+			has "Transport Hai farmers to <planet>: active"
+			has "Transport Hai mill workers to <planet>: active"
+			has "Transport Hai workers to <planet>: active"
+			has "Hai Prisoner Roleplay: active"
+			has "Successors: Tourists Out 1: active"
+			has "Successors: Tourists Out 2: active"
+			has "Successors: Bold Tourists Round Trip: active"
+			has "Successors: Tourist Expedition: active"
+			has "Successors: Students Out: active"
+			has "Successors: Students In: active"
+			has "Successors: Workers Out 1: active"
+			has "Successors: Workers Out 2: active"
+			has "Successors: Researchers Out 1: active"
+			has "Successors: Large Researchers Out 1: active"
+			has "Successors: Home Researchers Out 1: active"
+			has "Successors: Researchers Transfer: active"
+			has "Wanderer Workers [0]: active"
+			has "Wanderer Workers [1]: active"
+			has "Wanderer Farmers [0]: active"
+			has "Wanderer Farmers [1]: active"
+			has "Wanderer Younglings [0]: active"
+			has "Wanderer Younglings [1]: active"
+			has "Wanderer Scientists (Pollution) [0]: active"
+			has "Wanderer Scientists (Pollution) [1]: active"
+			has "Wanderer Scientists (Phenomenon) [0]: active"
+			has "Wanderer Scientists (Phenomenon) [1]: active"
+			has "Wanderer Biologists [0]: active"
+			has "Wanderer Biologists [1]: active"
+			has "Wanderer Botanists [0]: active"
+			has "Wanderer Botanists [1]: active"
+			has "Wanderer Harvest [0]: active"
+			has "Wanderer Harvest [1]: active"
+			has "Wanderer Invasive Species [0]: active"
+			has "Wanderer Invasive Species [1]: active"
+			has "Wanderer Captured Unfettered: active"
+			has "Wanderer Governor Transport: active"
+			has "Wanderers to Kor Efreti: active"
+		random < 10
+	on offer
+		conversation
+			scene "outfit/luxury accommodations"
+			`Your crew reports that passengers are complaining that their accomodations are haunted...`
+			choice
+				`	(Check it out.)`
+				`	(Ignore this.)`
+					decline
+			scene "outfit/haunted accommodations"
+			`Nothing seems out of place in the room in question. As you look about, something about the mirror catches your attention. The person in the mirror looks like you. But the face seems wrong. You're certain the reflection staring back isn't you. It suddenly grins...`
+			choice
+				`	(...)`
+			``
+			`	You are overcome with a sense of vertigo and realize you are lying on the floor. Slowly, you feel like you can stand again.`
+			choice
+				`	(Check the mirror.)`
+				`	(Get out of here!)`
+					goto run
+			action
+				clear "license: Nightmare Fuel"
+			scene "outfit/luxury accommodations"
+			`	Nothing appears out of place. The reflection is normal...`
+				decline
+			label run
+			action
+				outfit "Luxury Accommodations" -1
+				outfit "Haunted Accommodations" 1
+			`	You rush out of the room, keeping your eyes averted from the mirror. Perhaps you can have this place checked out the next time you visit the outfitter...`
+				decline
+
+mission "Midnight Haunted Accommodations Notable Star Jump"
+	job
+	invisible
+	repeat
+	name "Sightseeing at <waypoints>"
+	description "<fare> wants to visit <waypoints> to see the notable star there. Then return to <destination> afterwards. Payment for this job is <payment>."
+	passengers 1
+	"apparent payment" 50000
+	to offer
+		has "outfit: Haunted Accommodations"
+		random < 25
+	waypoint
+		distance 5 10
+	on waypoint
+		payment
+		payment 50000
+		set "license: Nightmare Fuel"
+		conversation
+			scene "outfit/luxury accommodations"
+			`The passenger who wanted to visit this system jumps out of the airlock without a space suit! They left behind your payment plus some extra change. This passenger was staying in that room...`
+		fail
+
+mission "Midnight Haunted Accommodations Notable Star Vanish"
+	job
+	invisible
+	repeat
+	name "Sightseeing at <waypoints>"
+	description "<fare> wants to visit <waypoints> to see the notable star there. Then return to <destination> afterwards. Payment for this job is <payment>."
+	passengers 1
+	to offer
+		has "outfit: Haunted Accommodations"
+		random < 25
+	waypoint
+		distance 5 10
+	on waypoint
+		dialog `After hours of taking picures of the star, the passenger who wanted to see it is ready for the trip back to <destination>.`
+	on complete
+		set "license: Nightmare Fuel"
+		payment
+		payment 50000
+		conversation
+			scene "outfit/luxury accommodations"
+			`Your passenger who wanted to visit <waypoints> started whispering strangely afterwards. Now that passenger cannot be found. They left <payment> sitting on the desk in that room...`
+

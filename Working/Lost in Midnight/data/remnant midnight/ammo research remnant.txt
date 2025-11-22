@@ -1,0 +1,223 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Remnant Fabricator License"
+	thumbnail "outfit/unknown"
+	description "The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
+
+outfit "EMP Torpedo Access Temporary License"
+	"display name" "EMP Torpedo Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 03014
+	licenses
+		"Remnant Fabricator"
+	cost 4400000
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.04
+	"requires Heavy Rocket Tech" 1
+	"requires Torpedo Tech" 1
+	"requires EMP Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture EMP Torpedos. Having this makes it possible for any outfitter to offer EMP Torpedos even if it is normally not stocked there."
+	description "	The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "EMP Torpedo Tech License"
+	"display name" "EMP Torpedo Tech"
+	category "Licenses"
+	series "Technology"
+	index 03014
+	licenses
+		"Remnant Fabricator"
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.04
+	"requires Heavy Rocket Tech" 1
+	"requires Torpedo Tech" 1
+	"requires EMP Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture EMP Torpedos. Having this makes it possible for any outfitter to offer EMP Torpedos even if it is normally not stocked there."
+
+outfitter "EMP Torpedo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: EMP Torpedo Tech"
+	location
+		attributes "outfitter"
+		outfits "EMP Torpedo"
+	stock
+		"EMP Torpedo Access Temporary License"
+
+outfitter "EMP Torpedo Restock"
+	to sell
+		or
+			has "license: EMP Torpedo Access Temporary"
+			has "license: EMP Torpedo Tech"
+
+outfitter "Midnight EMP Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: EMP Torpedo Storage Depot"
+		or
+			has "license: EMP Torpedo Access Temporary"
+			has "license: EMP Torpedo Tech"
+	location
+		attributes "outfitter"
+	stock
+		"EMP Torpedo"
+
+mission "Midnight Tech: EMP Torpedo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: EMP Torpedo Access Temporary"
+		not "license: EMP Torpedo Tech"
+	on offer
+		clear "license: EMP Torpedo Access Temporary"
+		set "license: EMP Torpedo Tech"
+		fail
+
+mission "Midnight Research: EMP Torpedo Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): EMP Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Heavy Rocket Tech"
+		has "license: Torpedo Tech"
+		not "license: EMP Torpedo Access Temporary"
+		not "license: EMP Torpedo Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Phys)" -1
+		set "license: EMP Torpedo Tech"
+		conversation
+			scene "outfit/emp torpedo"
+			`You have successfully completed EMP Torpedo Tech research. This makes it possible for any outfitter to offer EMP Torpedos even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained EMP Torpedo Tech)`
+				decline
+
+
+outfit "Teciimach Canister Access Temporary License"
+	"display name" "Teciimach Canister Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 03024
+	licenses
+		"Remnant Fabricator"
+	cost 35500000
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.03
+	"requires EMP Torpedo Tech" 1
+	"requires Teciimach Canister" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Teciimach Canisters. Having this makes it possible for any outfitter to offer Teciimach Canisters even if it is normally not stocked there."
+	description "	The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Teciimach Canister Tech License"
+	"display name" "Teciimach Canister Tech"
+	category "Licenses"
+	series "Technology"
+	index 03024
+	licenses
+		"Remnant Fabricator"
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.03
+	"requires EMP Torpedo Tech" 1
+	"requires Teciimach Canister" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Teciimach Canisters. Having this makes it possible for any outfitter to offer Teciimach Canisters even if it is normally not stocked there."
+
+outfitter "Teciimach Canister Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Teciimach Canister Tech"
+	location
+		attributes "outfitter"
+		outfits "Teciimach Canister"
+	stock
+		"Teciimach Canister Access Temporary License"
+
+outfitter "Teciimach Canister Restock"
+	to sell
+		or
+			has "license: Teciimach Canister Access Temporary"
+			has "license: Teciimach Canister Tech"
+
+outfitter "Midnight Teciimach Canister Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Teciimach Canister Depot"
+		or
+			has "license: Teciimach Canister Access Temporary"
+			has "license: Teciimach Canister Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Teciimach Canister"
+
+mission "Midnight Tech: Teciimach Canister Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Teciimach Canister Access Temporary"
+		not "license: Teciimach Canister Tech"
+	on offer
+		clear "license: Teciimach Canister Access Temporary"
+		set "license: Teciimach Canister Tech"
+		fail
+
+mission "Midnight Research: Teciimach Canister Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Teciimach Canister"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: EMP Torpedo Tech"
+		not "license: Teciimach Canister Access Temporary"
+		not "license: Teciimach Canister Tech"
+		random < 3 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Teciimach Canister Tech"
+		conversation
+			scene "outfit/tech emp torpedo"
+			`You have successfully completed Teciimach Canister Tech research. This makes it possible for any outfitter to offer Teciimach Canisters even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Teciimach Canister Tech)`
+				decline

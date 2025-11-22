@@ -10,9 +10,6 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
-
-
 mission "Inferno Dragon: Inferno Rocket Fleets"
 	non-blocking
 	landing
@@ -821,6 +818,7 @@ mission "Inferno Dragon: Inferno Outfitters"
 		event "inferno rockets at pirate outfitters"
 		set "license: Inferno Dragon"
 		set "inferno rocket pod patched"
+		set "inferno rocket depot patched"
 		log "Inferno Dragon Notes: The Inferno Dragon poem is a password that gives access to Inferno Rockets at some outfitters."
 	on enter
 		set "Randomize Inferno Dragon: Inferno Outfitters"
@@ -873,6 +871,7 @@ event "inferno rockets at pirate outfitters"
 		add "Inferno Rocket Pod"
 		add "Inferno Rocket"
 		add "Inferno Rocket Rack"
+		add "Inferno Rocket Depot"
 	outfitter "Pirate Basics"
 		add "Inferno Rocket"
 	planet Zenith
@@ -896,6 +895,21 @@ mission "Inferno Dragon: Inferno Rocket Pod Patch"
 event "inferno rocket pod patch"
 	outfitter "Pirate Advanced"
 		add "Inferno Rocket Pod"
+
+mission "Inferno Dragon: Inferno Rocket Depot Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: inferno rockets at pirate outfitters"
+		not "inferno rocket depot patched"
+	on offer
+		event "inferno rocket depot patch"
+		fail
+
+event "inferno rocket depot patch"
+	outfitter "Pirate Advanced"
+		add "Inferno Rocket Depot"
 
 mission "Inferno Dragon License Patch"
 	non-blocking

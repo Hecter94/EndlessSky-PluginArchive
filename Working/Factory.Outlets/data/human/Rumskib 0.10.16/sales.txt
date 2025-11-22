@@ -1,0 +1,54 @@
+﻿shipyard "Cleaver Bare"
+	"Cleaver (Bare)"
+
+
+mission "Factory Outlets: Rumskib installed"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: Rumskib"
+		not "event: factory outlets: rumskib installed"
+	on offer
+		event "factory outlets: rumskib installed"
+		clear "event: factory outlets: rumskib uninstalled"
+		fail
+
+event "factory outlets: rumskib installed"
+	shipyard "Betelgeuse Bare"
+		add "Buttle (Bare)"
+	shipyard "Lionheart Bare"
+		add "Recruiter (Bare)"
+	shipyard "Syndicate Bare"
+		add "Dragonfly (Bare)"
+	shipyard "Tarazed Bare"
+		add "Tanager (Bare)"
+	planet "Shroud"
+		add shipyard "Cleaver Bare"
+
+
+mission "Factory Outlets: Rumskib uninstalled"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		not "installed plugin: Rumskib"
+		has "event: factory outlets: rumskib installed"
+	on offer
+		event "factory outlets: rumskib uninstalled"
+		clear "event: factory outlets: rumskib installed"
+		fail
+
+event "factory outlets: rumskib uninstalled"
+	shipyard "Betelgeuse Bare"
+		remove "Buttle (Bare)"
+	shipyard "Lionheart Bare"
+		remove "Recruiter (Bare)"
+	shipyard "Syndicate Bare"
+		remove "Dragonfly (Bare)"
+	shipyard "Tarazed Bare"
+		remove "Tanager (Bare)"
+	planet "Shroud"
+		remove shipyard "Cleaver Bare"

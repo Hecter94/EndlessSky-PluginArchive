@@ -1,0 +1,671 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+phrase "shadow house delivery"
+	word
+		`You `
+	word
+		`offload `
+		`deliver `
+		`hand off `
+		`drop off `
+	word
+		`the `
+		`your `
+	word
+		`shipment `
+		`cargo `
+	word
+		`of <commodity> to your contact in a `
+	word
+		`deserted `
+		`discreet `
+		`out of the way `
+	word
+		`area of the spaceport. `
+	word
+		`They give you your `
+		`They provide you with the agreed-upon `
+		`They hand over your `
+	word
+		`payment of <payment>.`
+
+mission "Midnight Successors: Shadow Blackmail 1"
+	job
+	repeat
+	name "Shadow Blackmail (minor)"
+	description "Blackmail data stored on <tons> of databanks needs to get from <origin> to <planet> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "blackmail data" 1 1
+	illegal 50000 "The High Houses have confiscated your slanderous data of a highly respected official. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 30
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	destination
+		attributes "successor"
+		attributes "wealthy" "urban" "station"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow Blackmail 2"
+	job
+	repeat
+	name "Shadow Blackmail (minor)"
+	description "Blackmail data stored on <tons> of databanks needs to get from <origin> to <planet> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "blackmail data" 1 1
+	illegal 50000 "The High Houses have confiscated your slanderous data of a highly respected official. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	destination
+		attributes "successor"
+		attributes "wealthy" "urban" "station"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow Blackmail 3"
+	job
+	repeat
+	name "Shadow Blackmail"
+	description "Blackmail data stored on <tons> of databanks needs to get from <origin> to <planet> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "blackmail data" 1 1
+	illegal 50000 "The High Houses have confiscated your slanderous data of a highly respected official. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	destination
+		attributes "successor"
+		attributes "wealthy" "urban" "station"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the blackmail data. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+trade
+	commodity "Shadow House Cargo"
+		"assassin drones"
+		"assassin robots"
+		"bioweapons"
+		"chemical weapons"
+		"nerve gas"
+		"pathogen samples"
+		"weapons-grade uranium"
+		"voidjelly toxin"
+
+phrase "shadow house cargo in"
+	word
+		`Your contact `
+	word
+		`finds your ship `
+		`was waiting when you arrived `
+		`appears from hiding `
+	word
+		`and hands over `
+		`and transfers `
+	word
+		`the cargo you agreed to deliver.`
+
+mission "Midnight Successors: Shadow House Cargo 1"
+	job
+	repeat
+	name "Shadow Cargo to <planet>"
+	description "Transport <cargo> from <stopovers> to <destination> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "Shadow House Cargo" 1 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house cargo in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow House Cargo 2"
+	job
+	repeat
+	name "Shadow Cargo to <planet>"
+	description "Transport <cargo> from <stopovers> to <destination> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "Shadow House Cargo" 1 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house cargo in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow House Cargo 3"
+	job
+	repeat
+	name "Shadow Cargo to <planet>"
+	description "Transport <cargo> from <stopovers> to <destination> by <date>. You will be paid <payment> on delivery. If the authorities catch you with this, you will be fined."
+	deadline
+	cargo "Shadow House Cargo" 1 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 5
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house cargo in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the <commodity>. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house delivery"
+		"reputation: Shadow House" ++
+
+phrase "shadow house transport in"
+	word
+		`Your passenger `
+		`Your contact `
+	word
+		`finds your ship `
+		`was waiting when you arrived `
+		`appears from hiding `
+	word
+		`and boards without a word.`
+		`and boards after making sure no one is observing.`
+
+phrase "shadow house transport out"
+	word
+		`Your passenger `
+	word
+		`was silent during the journey. `
+		`seems anxious. `
+		`cautiously looks about. `
+		`seems impatient. `
+	word
+		`They give you your `
+		`They provide you with the agreed-upon `
+		`They hand over your `
+	word
+		`payment of <payment> `
+	word
+		`and quickly leave.`
+		`and discreetly leave.`
+		`and slither away.`
+		`and sneak off.`
+
+mission "Midnight Successors: Shadow Transport 1"
+	job
+	repeat
+	name "Shadow Transport"
+	description "Transport <fare> from <stopovers> to <destination> by <date>. You will be paid <payment> on arrival. If the authorities catch you with this passenger, you will be fined."
+	deadline
+	passengers 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house transport in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house transport out"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow Transport 2"
+	job
+	repeat
+	name "Shadow Transport"
+	description "Transport <fare> from <stopovers> to <destination> by <date>. You will be paid <payment> on arrival. If the authorities catch you with this passenger, you will be fined."
+	deadline
+	passengers 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house transport in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house transport out"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Shadow Transport 3"
+	job
+	repeat
+	name "Shadow Transport"
+	description "Transport <fare> from <stopovers> to <destination> by <date>. You will be paid <payment> on arrival. If the authorities catch you with this passenger, you will be fined."
+	deadline
+	passengers 1
+	illegal 50000 "The High Houses have confiscated your illegal cargo. A small fine has been levied against you to discourage this behavior."
+	to offer
+		has "license: Shadow House"
+		random < 5
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+	stopover
+		attributes "successor"
+		attributes "crime"
+		not attributes "uninhabited" "wealthy"
+		distance 1 20
+	destination
+		attributes "successor"
+		attributes "urban" "station" "wealthy"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "shadow house transport in"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on fail
+		"reputation: Shadow House" --
+		dialog "You failed to deliver your transport. Shadow House will not be pleased to learn of this."
+	on complete
+		payment
+		payment 10000 1000
+		dialog phrase "shadow house transport out"
+		"reputation: Shadow House" ++
+
+mission "Midnight Successors: Void Jelly Intro"
+	minor
+	invisible
+	to offer
+		or
+			has "outfit (flagship installed): Voidjelly"
+			has "outfit (flagship installed): Voidfish"
+			has "outfit (flagship installed): Voidlunker"
+			has "outfit (flagship installed): Integral Wood"
+			has "outfit (flagship installed): Jamfruit"
+			has "outfit (flagship installed): Pollen"
+	on offer
+		conversation
+			scene "outfit/voidjelly"
+			`A Shadow House agent slithers out of the shadows. "Our scans shows signs that thou hast visited places where the Voidjellies dwell. Occasionally we hast use for those foul creatures. We shall add it to our requests from time to time."`
+			choice
+				`	"I'll look out for them."`
+					goto understand
+				`	"What do you use them for?"`
+			`	The agent answers in a subdued tone "Throughout our exploration of the stars, we found no better source for poison that suits our purposes."`
+			choice
+				`	"Because of how quickly it kills?"`
+			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "No. Perpetual death from this poison comes slowly and painfully. 'twere a perfect tool for sending a message."`
+			choice
+				`	"I see."`
+			label understand
+			`	The agent slithers away...`
+				decline
+
+mission "Midnight Successors: Shadow Void Jelly"
+	job
+	name "Shadow Void Jelly"
+	description "Shadow House has a use for 1000 tons of Voidjelly. You will receive <payment> after you return to <destination> with it."
+	on complete
+		outfit "Voidjelly" -1000
+		payment 1000000
+		dialog `You drop off your cargo of Voidjellies and receive <payment> in payment.`
+	to offer
+		has "license: Shadow House"
+		not "Midnight Successors: Shadow Void Jelly: active"
+		random < 25
+	to fail
+		has "Successors: Unified Defense: offered"
+	source Vade-Kella-Kaska
+
+
+mission "Midnight Shadow House Espionage (Old Houses)"
+	job
+	repeat
+	name "Shadow Espionage"
+	description "Search for the <npc> wandering near the Old Houses. Scan its outfits and deliver the data to <destination>. Payment is <payment>. If you are caught by the Old Houses, you will be sentenced to death."
+	source Vade-Kella-Kaska
+	destination
+		government "New Houses"
+		not attributes "uninhabited"
+	to offer
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+		has "event: midnight add tundra espionage scanner"
+		random < 25
+	npc "scan outfits"
+		government "Old Houses"
+		system
+			near Uuoru-Kella 0 1
+		personality target waiting staying timid secretive uninterested
+			confusion 10
+		fleet
+			names "high houses"
+			cargo 0
+			variant 3
+				"Kaskhorade"
+			variant 2
+				"Aaulqra"
+			variant 1
+				"Seiitej"
+		dialog "You've scanned the <npc>. Return to <destination> for your reward."
+		on "scan outfits"
+			outfit "Old House Secrets" 1
+	on visit
+		dialog "You have not brought scans of Old House Secrets. Return when you have the data."
+	on fail
+		outfit "Old House Secrets" -1
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the scanner data. Shadow House will not be pleased to learn of this."
+	on abort
+		outfit "Old House Secrets" -1
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the scanner data. Shadow House will not be pleased to learn of this."
+	on complete
+		outfit "Old House Secrets" -1
+		"reputation: Shadow House" ++
+		payment 300000
+		dialog `Your contact is pleased with the scanner data. You receive <payment> for your efforts.`
+
+outfit "Old House Secrets"
+	plural "Old House Secrets"
+	category "Special"
+	thumbnail "outfit/attention"
+	"scan brightness" 1
+	description "The data collected from scanning the mission target. The Old Houses will execute you if you are caught in posession of this."
+
+
+mission "Midnight Shadow House Espionage (New Houses)"
+	job
+	repeat
+	name "Shadow Espionage"
+	description "Search for the <npc> wandering near the New Houses. Scan its outfits and return to <destination>. Payment is <payment>. If you are caught by the New Houses, you will be sentenced to death."
+	source Vade-Kella-Kaska
+	destination
+		government "Old Houses"
+		not attributes "uninhabited"
+	to offer
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+		has "event: midnight add tundra espionage scanner"
+		random < 25
+	npc "scan outfits"
+		government "New Houses"
+		system
+			near Myiara-Nnesa 0 1
+		personality target waiting staying timid secretive uninterested
+			confusion 10
+		fleet
+			names "high houses"
+			cargo 0
+			variant 3
+				"Aaulqra"
+			variant 2
+				"Kaskhorade"
+			variant 1
+				"Seiitej"
+			variant 1
+				"Vujlet"
+			variant 1
+				"Veusade"
+		dialog "You've scanned the <npc>. Return to <destination> for your reward."
+		on "scan outfits"
+			outfit "New House Secrets" 1
+	on visit
+		dialog "You have not brought scans of New House Secrets. Return when you have the data."
+	on fail
+		outfit "New House Secrets" -1
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the scanner data. Shadow House will not be pleased to learn of this."
+	on abort
+		outfit "New House Secrets" -1
+		"reputation: Shadow House" --
+		dialog "You failed to deliver the scanner data. Shadow House will not be pleased to learn of this."
+	on complete
+		outfit "New House Secrets" -1
+		"reputation: Shadow House" ++
+		payment 300000
+		dialog `Your contact is pleased with the scanner data. You receive <payment> for your efforts.`
+
+outfit "New House Secrets"
+	plural "New House Secrets"
+	category "Special"
+	thumbnail "outfit/attention"
+	"scan brightness" 1
+	description "The data collected from scanning the mission target. The New Houses will execute you if you are caught in posession of this."
+
+
+mission "Midnight Shadow House Rogue (Old)"
+	job
+	repeat
+	deadline 30
+	name "Rogue Shadow"
+	description "Search for the <npc> wandering near the Old Houses. Eliminate it before its passenger can carry out their objective. Avoid fighting innocents. Payment is <payment>."
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 10
+		has "license: Shadow House"
+		has "event: midnight add tundra espionage scanner"
+		random < 25
+	npc kill
+		government "Shadow House Rogue"
+		system
+			near Uuoru-Kella 0 1
+		personality target waiting surveillance secretive timid unconstrained uninterested restricted
+			confusion 10
+		fleet
+			names "shadow house"
+			cargo 1
+			outfitters "Contraband"
+			variant
+				"Kvelqde-Sosrue (Stealth)"
+			variant
+				"Kvelqde-Sosrue (Tundra)"
+			variant
+				"Kvelqde-Sosrue (Veldt)"
+		on kill
+			"reputation: Shadow House" ++
+			payment 500000
+			dialog `You receive <payment> for stopping the rogue agent.`
+			fail
+	on abort
+		"reputation: Shadow House" --
+
+mission "Midnight Shadow House Rogue (New)"
+	job
+	repeat
+	deadline 30
+	name "Rogue Shadow"
+	description "Search for the <npc> wandering near the New Houses. Eliminate it before its passenger can carry out their objective. Avoid fighting innocents. Payment is <payment>."
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 10
+		has "license: Shadow House"
+		has "event: midnight add tundra espionage scanner"
+		random < 25
+	npc kill
+		government "Shadow House Rogue"
+		system
+			near Myiara-Nnesa 0 1
+		personality target waiting surveillance secretive timid unconstrained uninterested restricted
+			confusion 10
+		fleet
+			names "shadow house"
+			cargo 1
+			outfitters "Contraband"
+			variant
+				"Kvelqde-Sosrue (Stealth)"
+			variant
+				"Kvelqde-Sosrue (Tundra)"
+			variant
+				"Kvelqde-Sosrue (Veldt)"
+		on kill
+			"reputation: Shadow House" ++
+			payment 500000
+			dialog `You receive <payment> for stopping the rogue agent.`
+			fail
+	on abort
+		"reputation: Shadow House" --
+
+

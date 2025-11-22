@@ -17,6 +17,7 @@ mission "Midnight Expansion Genesis Scattershot Gun"
 	invisible
 	on offer
 		event "midnight expansion genesis scattershot gun"
+		set "scattershot depot patched"
 		fail
 
 event "midnight expansion genesis scattershot gun"
@@ -24,6 +25,7 @@ event "midnight expansion genesis scattershot gun"
 		add "Scattershot Gun"
 		add "Scattershot Rack"
 		add "Scattershot Ammo"
+		add "Scattershot Depot"
 	fleet "Genesis Space"
 		add variant 1
 			"Genesis Spacecraft (Scattershot)"
@@ -32,3 +34,111 @@ event "midnight expansion genesis scattershot gun"
 			"Genesis Logistic (Scattershot)"
 		add variant 1
 			"Genesis Transport (Scattershot)"
+
+mission "Midnight Expansion Scattershot Depot Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		has "event: midnight expansion genesis scattershot gun"
+		not "scattershot depot patched"
+	on offer
+		event "midnight expansion scattershot depot patch"
+		fail
+
+event "midnight expansion scattershot depot patch"
+	outfitter "Genesis"
+		add "Scattershot Depot"
+
+
+
+outfit "Scattershot Ammo Access Temporary License"
+	"display name" "Scattershot Ammo Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 99999
+	licenses
+		"Genesis"
+	cost 0
+	thumbnail "outfit/Midnight-Becca accurate gat tech"
+	"base research rate" 0.04
+	"requires Gatling Ammo Tech" 1
+	"requires Scattershot Ammo" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Scattershot Ammo. Having this makes it possible for any outfitter to offer Scattershot Ammo even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Scattershot Ammo Tech License"
+	"display name" "High Caliber Ammo Tech"
+	category "Licenses"
+	series "Technology"
+	index 99999
+	licenses
+		"Genesis"
+	thumbnail "outfit/Midnight-Becca accurate gat tech"
+	"base research rate" 0.04
+	"requires Gatling Ammo Tech" 1
+	"requires Scattershot Ammo" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Scattershot Ammo. Having this makes it possible for any outfitter to offer Scattershot Ammo even if it is normally not stocked there."
+
+outfitter "Scattershot Ammo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Scattershot Ammo Tech"
+	location
+		attributes "outfitter"
+		outfits "Scattershot Ammo"
+	stock
+		"Scattershot Ammo Access Temporary License"
+
+outfitter "Midnight Scattershot Ammo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Scattershot Ammo Access Temporary"
+			has "license: Scattershot Ammo Tech"
+		or
+			has "outfit: Scattershot Gun"
+			has "outfit: Scattershot Rack"
+			has "outfit: Scattershot Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Scattershot Ammo"
+
+mission "Midnight Tech: Scattershot Ammo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Scattershot Ammo Access Temporary"
+		not "license: Scattershot Ammo Tech"
+	on offer
+		clear "license: Scattershot Ammo Access Temporary"
+		set "license: Scattershot Ammo Tech"
+		fail
+
+mission "Midnight Research: Scattershot Ammo Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Scattershot Ammo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "license: Gatling Ammo Tech"
+		not "license: Scattershot Ammo Access Temporary"
+		not "license: Scattershot Ammo Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		set "license: Scattershot Ammo Tech"
+		conversation
+			scene "outfit/Midnight-Becca accurate gat tech"
+			`You have successfully completed Scattershot Ammo Tech research. This makes it possible for any outfitter to offer Scattershot Ammo even if it is normally not stocked there.`
+			``
+			`	(Gained Scattershot Ammo Tech)`
+				decline
+
+

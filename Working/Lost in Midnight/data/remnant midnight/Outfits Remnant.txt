@@ -16,38 +16,12 @@
 ################################################
 
 
-outfit "Flare Belcher"
-	category "Secondary Weapons"
-	licenses
-		Remnant
-	cost 300000
-	thumbnail "outfit/flare belcher"
-	"mass" 13
-	"outfit space" -13
-	"weapon capacity" -9
-	"fuel capacity" 100
-	"gun ports" -1
-	"unique" 1
-	weapon
-		sprite "effect/explosion/pug/small"
-			"frame rate" 60
-			"no repeat"
-		sound "flamethrower"
-		icon "icon/flamethrower"
-		"submunition" "Flare Belcher Projectile"
-		"inaccuracy" 12
-		"velocity" 9
-		"lifetime" 5
-		"reload" 1
-		"firing energy" .1
-		"firing fuel" .25
-		"firing heat" 2
-	description `A weapon inspired by the fire breathing Nova Fireflies. An extra tank of hyperspace fuel is included.`
-
-
 outfit "Inhibitor Blaster"
 	"display name" "Modified Inhibitor"
+	plural "Modified Inhibitors"
 	category "Guns"
+	series "Guns"
+	index 03010
 	licenses
 		Remnant
 	cost 471000
@@ -79,6 +53,8 @@ outfit "Inhibitor Blaster"
 
 outfit "Lightning Tendril"
 	category "Turrets"
+	series "Turrets"
+	index 03000
 	licenses
 		Remnant
 	cost 900000
@@ -111,8 +87,48 @@ outfit "Lightning Tendril"
 	description `A weapon inspired by the electrifying Luminazoa. The tentacle is difficult to control. The gunner must often struggle to aim at a target.`
 
 
+################################################
+#
+# Secondary
+#
+################################################
+
+
+outfit "Flare Belcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03000
+	licenses
+		Remnant
+	cost 300000
+	thumbnail "outfit/flare belcher"
+	"mass" 13
+	"outfit space" -13
+	"weapon capacity" -9
+	"fuel capacity" 100
+	"gun ports" -1
+	"unique" 1
+	weapon
+		sprite "effect/explosion/pug/small"
+			"frame rate" 60
+			"no repeat"
+		sound "flamethrower"
+		icon "icon/flamethrower"
+		"submunition" "Flare Belcher Projectile"
+		"inaccuracy" 12
+		"velocity" 9
+		"lifetime" 5
+		"reload" 1
+		"firing energy" .1
+		"firing fuel" .25
+		"firing heat" 2
+	description `A weapon inspired by the fire breathing Nova Fireflies. An extra tank of hyperspace fuel is included.`
+
+
 outfit "Quill Launcher"
 	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03000
 	licenses
 		Remnant
 	cost 436000
@@ -147,6 +163,56 @@ outfit "Quill Launcher"
 	description `A weapon inspired by the prickly Star Gazers. There is a slight delay while it regenerates the quills used as ammunition.`
 
 
+outfit "EMP Torpedo Storage Depot"
+	category "Ammunition"
+	series "Ammunition"
+	index 03013
+	licenses
+		Remnant
+	cost 196000
+	thumbnail "outfit/emp depot"
+	"mass" 10
+	"cargo space" -40
+	"energy capacity" 800
+	"emp torpedo capacity" 14
+	ammo "EMP Torpedo"
+	"required crew" 1
+	description "The EMP Torpedo Storage Depot stages extra ammunition in your cargo bay for weapons that use EMP torpedoes. The ammunition is ready to be withdrawn for use. Storing it this way uses more cargo space than if it were packed away in sealed crates. An extra crewmember is required to maintain inventory."
+
+outfit "Teciimach Canister Depot"
+	category "Ammunition"
+	series "Ammunition"
+	index 03023
+	licenses
+		Remnant
+	cost 885000
+	thumbnail "outfit/emp depot"
+	"mass" 15
+	"cargo space" -40
+	"energy capacity" 2000
+	"teciimach canister capacity" 27
+	ammo "Teciimach Canister"
+	"required crew" 1
+	description "The Teciimach Canister Depot stages extra ammunition in your cargo bay for weapons that use Teciimach Canisters. The ammunition is ready to be withdrawn for use. Storing it this way uses more cargo space than if it were packed away in sealed crates. An extra crewmember is required to maintain inventory."
+
+mission "Midnight Add Teciimach Canister Depot"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: remnant: teciimach deployment"
+		has "event: midnight add ammunition depots"
+	on offer
+		event "midnight add teciimach canister depot"
+		fail
+
+event "midnight add teciimach canister depot"
+	outfitter "Remnant"
+		remove "EMP Torpedo Storage Depot"
+		add "Teciimach Canister Depot"
+
+
+
 ################################################
 #
 # Systems
@@ -156,6 +222,8 @@ outfit "Quill Launcher"
 
 outfit "Engine Restraint"
 	category "Systems"
+	series "Sabotage"
+	index 007
 	cost 10000
 	thumbnail "outfit/engine restraint"
 	"mass" .1
@@ -166,6 +234,8 @@ outfit "Engine Restraint"
 	description "An Engine Restraint will reduce the mobility of any ship it is installed on. Remnant crews able to board an enemy ship may attach this device onto the enemy engine systems to sabotage their maneuverability."
 	description "	If you find this installed on your ship, get rid of it as soon as possible!"
 
+outfit "Research Laboratory"
+	"research bonus" 0.01
 
 ################################################
 #
@@ -176,6 +246,8 @@ outfit "Engine Restraint"
 
 outfit "Heart of Nightmare"
 	category "Unique"
+	series "Functional Unique"
+	index 10
 	cost 0
 	thumbnail "outfit/heart of nightmare"
 	"mass" 10
@@ -200,6 +272,8 @@ outfit "Heart of Nightmare"
 
 outfit "Reverberator Rifle"
 	category "Hand to Hand"
+	series "H2H"
+	index 03011
 	cost 220000
 	thumbnail "outfit/reverberator rifle"
 	description "A weapon stolen from Farpoint's evidence vault, this utilizes design concepts similar to those found in the Remant Tuning Rifle. While not as refined in its ability to pinpoint organs to liquefy, it's true potential is in the echo that grows in intensity as the soundwaves reverberate down spaceship corridors, eventually becoming strong enough to knock humans off their feet. As the sounds bounce off walls, they can even hit targets hiding behind corners. Unfortunately, this weapon is useless outside of the confines of a spaceship."

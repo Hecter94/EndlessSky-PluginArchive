@@ -1,0 +1,80 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+phrase "successor spectators out"
+	word
+		`The spectators are here to see a live performance of `
+	phrase
+		"successor media name"
+	word
+		`. They give you <payment> before rushing out to see the show.`
+
+phrase "successor media name"
+	word
+		"A Sword of Emerald"
+		"Exiled From Paradise"
+		"Fortune by Sea and Stars"
+		"Knights of The Old Empire"
+		"The Archons Must Be Crazy"
+		"The Good, The Bad, and The Outcast"
+		"The Lord of The Pearls"
+		"The Spiteful Eight"
+		"The Temple of Sand"
+		"There Will Be Sea Foam"
+		"They Were Eight"
+
+phrase "shakespeare play"
+	word
+		"Antony and Cleopatra"
+		"Coriolanus"
+		"Cymbeline"
+		"Julius Caesar"
+		"King John"
+		"King Lear"
+		"Measure for Measure"
+		"Othello"
+		"Pericles, Prince of Tyre"
+		"The Comedy of Errors"
+		"The Merchant of Venice"
+		"The Merry Wives of Windsor"
+		"The Taming of the Shrew"
+		"The Two Noble Kinsmen"
+		"The Winter's Tale"
+		"Timon of Athens"
+		"Titus Andronicus"
+		"Troilus and Cressida"
+
+mission "Successors: Spectators"
+	job
+	repeat
+	name "Successor Spectators to <planet>"
+	description "These <bunks> spectators wish to attend a performance on <date> at <destination>. They will pay you <payment> to take them there in time to watch the show."
+	deadline
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		not attributes "crime" "quiet" "uninhabited"
+	destination
+		attributes "successor"
+		not attributes "crime" "quiet" "uninhabited" "station"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 160
+		dialog phrase "successor workers out"
+		"successor jobs" ++

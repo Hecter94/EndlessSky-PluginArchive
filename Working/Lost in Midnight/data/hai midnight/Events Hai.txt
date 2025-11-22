@@ -603,6 +603,7 @@ event "midnight add modified aphid"
 event "midnight add displacer pods"
 	outfitter "Unfettered Basics"
 		add "Displacer Storage Pod"
+		add "Displacer Storage Depot"
 		add "Hai Displacer"
 	fleet "Small Unfettered"
 		add variant 1
@@ -639,3 +640,18 @@ event "midnight add displacer pods"
 			"Shield Beetle (Displacer)"
 			"Lightning Bug (Displacer)"
 			"Sea Scorpion (Displacer)"
+
+mission "Midnight Displacer Storage Depot Patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: midnight add displacer pods"
+		not "displacer storage depot patched"
+	on offer
+		event "displacer storage depot patch"
+		fail
+
+event "displacer storage depot patch"
+	outfitter "Unfettered Basics"
+		add "Displacer Storage Depot"

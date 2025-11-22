@@ -93,6 +93,7 @@ start
 	set "Intro [0]: declined"
 	set "Intro Cargo [0]: offered"
 	set "Intro Cargo [0]: declined"
+	set "human space start"
 
 conversation "Time Skip intro"
 	scene "planet/wormhole"
@@ -226,6 +227,7 @@ start
 	set "license: Pilot's"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
+	set "human space start"
 	ship "Modified Berserker"
 		name "Blood Rage"
 		sprite "ship/blood rage"
@@ -281,6 +283,8 @@ start
 
 outfit "Rusty Asteroid Scanner"
 	category "Systems"
+	series "Scanners"
+	index 01010
 	cost 12200
 	thumbnail "outfit/rusty asteroid scanner"
 	"mass" 1
@@ -568,6 +572,7 @@ start
 	set "license: Pilot's"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
+	set "human space start"
 	ship "Infiltrator"
 		name "Mata Hari"
 		sprite "ship/infiltrator/infiltrator"
@@ -589,8 +594,6 @@ start
 			"weapon capacity" 35
 			"engine capacity" 60
 			"inscrutable" 1
-			"tactical scan power" 32
-			"atmosphere scan" 100
 			"integrated systems" -1
 			weapon
 				"blast radius" 16
@@ -605,10 +608,9 @@ start
 			"LP036a Battery Pack"
 			"D14-RN Shield Generator"
 			"Brig"
-			"Broadband Amplifier"
-			"Cargo Scanner"
-			"Outfit Scanner"
+			"Spycraft Adapter"
 			"Infiltrator Tech"
+			"Surveillance Pod"
 
 			"A120 Atomic Thruster"
 			"A125 Atomic Steering"
@@ -625,7 +627,7 @@ start
 		leak "leak" 50 50
 		leak "flame" 60 80
 		"final explode" "final explosion small"
-		description "Featuring integrated tactical scanning, scanning interference and radar jamming, this is a specialized Scout used by Republic Intelligence operatives for espionage missions. They have rarely been seen in public, leading some to speculate that this ship doesn't actually exist and is nothing more than an urban legend." 
+		description "Featuring integrated scanning interference and jamming technologies, this is a specialized Scout used by Republic Intelligence operatives for espionage missions. They have rarely been seen in public, leading some to speculate that this ship doesn't actually exist and is nothing more than an urban legend." 
 
 
 
@@ -1092,6 +1094,7 @@ start
 	set "license: Pilot's"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
+	set "human space start"
 	ship "Gremlin"
 		name "Gremlin"
 		sprite "ship/gremlins"
@@ -1148,6 +1151,8 @@ start
 
 outfit "Gremlin Circuits"
 	plural "Gremlin Circuits"
+	series "Sabotage"
+	index 008
 	category "Systems"
 	thumbnail "outfit/damaged capacitor"
 	"fused circuits" 1
@@ -1558,6 +1563,7 @@ start
 	set "license: Pilot's"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
+	set "human space start"
 	ship "Marauder Sparrow"
 		name "Kamikaze"
 		sprite "ship/marauder sparrow"
@@ -1940,6 +1946,7 @@ start
 			term 365
 	set "license: Pilot's"
 	set "Guncraft start"
+	set "human space start"
 
 mission "Guncraft I"
 	landing
@@ -2501,6 +2508,7 @@ start
 	set "Intro [0]: declined"
 	set "Intro Cargo [0]: offered"
 	set "Intro Cargo [0]: declined"
+	set "human space start"
 
 ship "Star Barge" "Star Barge (Conundrum)"
 	"display name" "Modified Star Barge"
@@ -2711,12 +2719,14 @@ mission "Conundrum Intro [0]"
 			dialog "This wreck is outfitted similarly to the Conundrum. Most of the equipment is unsalvageable. The emergency ramscoop is still functional, keeping the fuel tanks full. The crew is dead."
 	on complete
 		"reputation: Syndicate" <?= -1
+		clear "conundrum dust scanned"
+		clear "conundrum dust abandoned"
 
 mission "Conundrum Intro [0 Failure]"
 	landing
 	invisible
 	source
-		not attributes "uninhabited"
+		attributes "spaceport"
 	to offer
 		has "Conundrum Intro [0]: offered"
 		not "Conundrum Intro [0]: done"
@@ -2858,42 +2868,179 @@ mission "Midnight Dust Cloud (Deep Space 19MN)"
 	landing
 	invisible
 	deadline 2
-	source "Midnight Cloud (Deep Space 19MN)"
+	repeat
+	source
+		attributes "midnight cloud devil-run"
 	to offer
 		or
 			has "Conundrum Intro [0]: active"
-			random < 20
+			random < 90 - ( "midnight dust scan" * 5 )
+		not "conundrum dust scanned"
+		not "conundrum dust abandoned"
 	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
 		conversation
-			branch conundrum
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+						not "Conundrum Intro [0]: active"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+						not "Conundrum Intro [0]: active"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+						not "Conundrum Intro [0]: active"
+				`	(Give the cloud a thorough scan.)`
+					goto conundrum-scan
+					to display
+						has "Conundrum Intro [0]: active"
+				`	(Leave it alone.)`
+			branch conundrum-leave
 				has "Conundrum Intro [0]: active"
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
 			branch beast
 				random < 5
-			branch deuterium
-				random < 20
+			branch natural
+				random < 15
+			branch research
+				random < 30 + ( "midnight dust scan" * 5 )
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
 			action
 				outfit "Research Data" 1
 			scene "outfit/research"
-			`Your atmostphere scans form a collection of unique data from the cloud of cosmic dust. This may have some scientific value.`
+			`Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
 				decline
-			label deuterium
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
 			action
 				outfit "Deuterium" 1
 			scene "outfit/harvested deuterium"
-			`You find a large chunk of frozen deuterium floating in the cosmic dust. This gas cloud may have been a proto-comet.`
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
 				decline
 			label beast
-			scene "thumbnail/pincer beast"
-			`A Pincer Beast was hiding in the gas cloud! It flees when it notices your presence.`
+			scene "outfit/attention"
+			`A creature was hiding in the dust cloud! It flees when it notices your presence.`
 				accept
-			label conundrum
+			label conundrum-scan
 			action
 				outfit "Research Data" 1
+				set "conundrum dust scanned"
 			scene "outfit/research"
 			`A full day passes as you complete your exploration of this cloud of cosmic dust. You've acquired some interesting research data, but James is becoming impatient. "We aren't on a research mission. I don't think these atmosphere scans are getting us any closer to finding a way home..."`
 				decline
+			label conundrum-leave
+			action
+				set "conundrum dust abandoned"
+			`	James sighs. "That's probably for the best. We aren't on a research mission. I don't think exploring this cloud will get us any closer to finding a way home..."`
+				accept
 	npc
+		to spawn
+			not "Conundrum Intro [0]: active"
 		government "Forest (Prey)"
-		personality waiting timid mining harvests uninterested mute
+		personality target waiting timid mining harvests uninterested mute
 		ship "Pincer Beast" "Pincer Beast"
+	npc
+		to spawn
+			has "Conundrum Intro [0]: active"
+			has "conundrum dust abandoned"
+		government "Forest (Prey)"
+		personality waiting staying derelict timid mining harvests mute
+		ship "Pincer Beast (Carcass)" "Pincer Beast"
+		on provoke
+			dialog "Examining the creature's wound, you see what looks like edible meat exposed..."
+		on assist
+			dialog "The creature suddenly twitches! It seems to be recovering. You won't be able to harvest anything from it now..."
 
+
+mission "Midnight Conundrum Dust Cleanup"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Conundrum Intro [0]: done"
+		or
+			has "conundrum dust scanned"
+			has "conundrum dust abandoned"
+	on offer
+		clear "conundrum dust scanned"
+		clear "conundrum dust abandoned"
+		fail

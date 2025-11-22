@@ -1,0 +1,130 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "High-Velocity Spike Access Temporary License"
+	"display name" "High-Velocity Spike Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 11022
+	licenses
+		"High Houses"
+	cost 35000000
+	thumbnail "outfit/tech hv spike"
+	"base research rate" 0.04
+	"requires Javelin Tech" 1
+	"requires High-Velocity Spike" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Star High-Velocity Spikes. Having this makes it possible for any outfitter to offer High-Velocity Spikes even if it is normally not stocked there."
+	description `	This is technically not meant to be for sale. "But seeing as how thou art well-esteemed amongst the High Houses, perchance our outfitter shall be willing to impart it unto thee, shouldst thou be inclined to furnish us with an exorbitant sum, no less than ten times its rightful worth..."`
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "High-Velocity Spike Tech License"
+	"display name" "High-Velocity Spike Tech"
+	category "Licenses"
+	series "Technology"
+	index 11022
+	licenses
+		"High Houses"
+	thumbnail "outfit/tech hv spike"
+	"base research rate" 0.04
+	"requires Javelin Tech" 1
+	"requires High-Velocity Spike" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture High-Velocity Spikes. Having this makes it possible for any outfitter to offer High-Velocity Spikes even if it is normally not stocked there."
+
+outfitter "High-Velocity Spike Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: High-Velocity Spike Tech"
+		has "license: High Houses"
+	location
+		attributes "outfitter"
+		outfits "High-Velocity Spike"
+	stock
+		"High-Velocity Spike Access Temporary License"
+
+
+outfitter "High-Velocity Spike Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: High-Velocity Spike Tech"
+	location
+		attributes "outfitter"
+		outfits "High-Velocity Spike"
+	stock
+		"High-Velocity Spike Access Temporary License"
+
+outfitter "Kinetic Lance Restock"
+	to sell
+		or
+			has "license: High-Velocity Spike Access Temporary"
+			has "license: High-Velocity Spike Tech"
+
+outfitter "Midnight Kinetic Lance Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: High-Velocity Spike Depot"
+		or
+			has "license: Sidewinder Access Temporary"
+			has "license: Sidewinder Tech"
+	location
+		attributes "outfitter"
+	stock
+		"High-Velocity Spike"
+
+mission "Midnight Tech: High-Velocity Spike Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: High-Velocity Spike Access Temporary"
+		not "license: High-Velocity Spike Tech"
+	on offer
+		clear "license: High-Velocity Spike Access Temporary"
+		set "license: High-Velocity Spike Tech"
+		fail
+
+mission "Midnight Research: High-Velocity Spike Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): High-Velocity Spike"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Javelin Tech"
+		not "license: High-Velocity Spike Access Temporary"
+		not "license: High-Velocity Spike Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: High-Velocity Spike Tech"
+		conversation
+			scene "outfit/tech hv spike"
+			`You have successfully completed High-Velocity Spike Tech research. This makes it possible for any outfitter to offer High-Velocity Spikes even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained High-Velocity Spike Tech)`
+				decline

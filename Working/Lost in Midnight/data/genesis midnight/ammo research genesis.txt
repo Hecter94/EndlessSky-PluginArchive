@@ -1,0 +1,212 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Genesis License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	description "..."
+
+outfit "Genesis Flak Shell Access Temporary License"
+	"display name" "Genesis Flak Shell Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 99999
+	licenses
+		"Genesis"
+	cost 0
+	thumbnail "outfit/tech genesis flak shell"
+	"base research rate" 0.05
+	"requires Heavy Rocket Tech" 1
+	"requires Genesis Flak Shell" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Genesis Flak Shells. Having this makes it possible for any outfitter to offer Genesis Flak Shells even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Genesis Flak Shell Tech License"
+	"display name" "Genesis Flak Shell Tech"
+	category "Licenses"
+	series "Technology"
+	index 99999
+	licenses
+		"Genesis"
+	thumbnail "outfit/tech genesis flak shell"
+	"base research rate" 0.05
+	"requires Heavy Rocket Tech" 1
+	"requires Genesis Flak Shell" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Genesis Flak Shells. Having this makes it possible for any outfitter to offer Genesis Flak Shells even if it is normally not stocked there."
+
+outfitter "Genesis Flak Shell Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Genesis Flak Shell Tech"
+	location
+		attributes "outfitter"
+		outfits "Genesis Flak Shell"
+	stock
+		"Genesis Flak Shell Access Temporary License"
+
+outfitter "Midnight Genesis Flak Shell Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Genesis Flak Shell Access Temporary"
+			has "license: Genesis Flak Shell Tech"
+		or
+			has "outfit: Genesis Flak Turret"
+			has "outfit: Genesis Flak Shell Crate"
+			has "outfit: Genesis Flak Shell Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Genesis Flak Shell"
+
+mission "Midnight Tech: Genesis Flak Shell Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Genesis Flak Shell Access Temporary"
+		not "license: Genesis Flak Shell Tech"
+	on offer
+		clear "license: Genesis Flak Shell Access Temporary"
+		set "license: Genesis Flak Shell Tech"
+		fail
+
+mission "Midnight Research: Genesis Flak Shell Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Genesis Flak Shell"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Heavy Rocket Tech"
+		not "license: Genesis Flak Shell Access Temporary"
+		not "license: Genesis Flak Shell Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Genesis Flak Shell Tech"
+		conversation
+			scene "outfit/tech genesis flak shell"
+			`You have successfully completed Genesis Flak Shell Tech research. This makes it possible for any outfitter to offer Genesis Flak Shells even if it is normally not stocked there.`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Genesis Flak Shell Tech)`
+				decline
+
+
+outfit "High Calibur Ammo Access Temporary License"
+	"display name" "High Calibur Ammo Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 99999
+	licenses
+		"Genesis"
+	cost 0
+	thumbnail "outfit/tech high calibur"
+	"base research rate" 0.05
+	"requires Gatling Ammo Tech" 1
+	"requires High Calibur Ammo" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture High Calibur Ammo. Having this makes it possible for any outfitter to offer High Calibur Ammo even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "High Calibur Ammo Tech License"
+	"display name" "High Caliber Ammo Tech"
+	category "Licenses"
+	series "Technology"
+	index 99999
+	licenses
+		"Genesis"
+	thumbnail "outfit/tech high calibur"
+	"base research rate" 0.05
+	"requires Gatling Ammo Tech" 1
+	"requires High Caliber Ammo" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture High Calibur Ammo. Having this makes it possible for any outfitter to offer High Calibur Ammo even if it is normally not stocked there."
+
+outfitter "High Calibur Ammo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: High Calibur Ammo Tech"
+	location
+		attributes "outfitter"
+		outfits "High Calibur Ammo"
+	stock
+		"High Calibur Ammo Access Temporary License"
+
+outfitter "Midnight High Calibur Ammo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: High Calibur Ammo Access Temporary"
+			has "license: High Calibur Ammo Tech"
+		or
+			has "outfit: High Calibur Gun"
+			has "outfit: High Calibur Boxes"
+			has "outfit: High Calibur Depot"
+	location
+		attributes "outfitter"
+	stock
+		"High Calibur Ammo"
+
+mission "Midnight Tech: High Calibur Ammo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: High Calibur Ammo Access Temporary"
+		not "license: High Calibur Ammo Tech"
+	on offer
+		clear "license: High Calibur Ammo Access Temporary"
+		set "license: High Calibur Ammo Tech"
+		fail
+
+mission "Midnight Research: High Calibur Ammo Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): High Calibur Ammo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "license: Gatling Ammo Tech"
+		not "license: High Calibur Ammo Access Temporary"
+		not "license: High Calibur Ammo Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		set "license: High Calibur Ammo Tech"
+		conversation
+			scene "outfit/tech high calibur"
+			`You have successfully completed High Calibur Ammo Tech research. This makes it possible for any outfitter to offer High Calibur Ammo even if it is normally not stocked there.`
+			``
+			`	(Gained High Calibur Ammo Tech)`
+				decline
+
+

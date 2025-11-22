@@ -548,6 +548,48 @@ mission "Midnight Independent Cargo Salvage (large)"
 		dialog phrase "Midnight Independent Cargo Salvage Complete"
 
 
+mission "Midnight Research Consolidation"
+	entering
+	invisible
+	destination Earth
+	to offer
+		"outfit (flagship installed): Research Data" >= 2
+		random < 1 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -2
+		conversation
+			branch physics
+				random < 20
+			branch chemistry
+				random < 30
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`Like pieces of a puzzle, random research has consolidated into more focused data.`
+			``
+			`	(Lost 2 Research Data)`
+			`	(Gained 1 Research Data (Bio))`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`Like pieces of a puzzle, random research has consolidated into more focused data.`
+			``
+			`	(Lost 2 Research Data)`
+			`	(Gained 1 Research Data (Chem))`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`Like pieces of a puzzle, random research has consolidated into more focused data.`
+			``
+			`	(Lost 2 Research Data)`
+			`	(Gained 1 Research Data (Phys))`
+				decline
+
+
 mission "Midnight Vlad De Drakul"
 	name "Vlad De Drakul"
 	description "Discreetly transport Vlad De Drakul to <destination>. Payment will be <payment>. If you are caught with him, you may be fined."
@@ -620,7 +662,6 @@ mission "Midnight Vlad De Drakul Reset"
 	on offer
 		clear "Midnight Vlad De Drakul: offered"
 		fail
-
 
 
 mission "Mining: Claim Jumpers"

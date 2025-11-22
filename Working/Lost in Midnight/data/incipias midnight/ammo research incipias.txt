@@ -1,0 +1,114 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Hicemus Logic License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	description "The alien intellect behind Incipias science and technology is difficult to articulate in your own language. You'll have to reverse engineer their tech using your own foundational knowledge as a guide."
+
+outfit "Star Tail Access Temporary License"
+	"display name" "Star Tail Tech"
+	category "Ammunition"
+	series "Ammunition"
+	licenses
+		"Hicemus Logic"
+	cost 1500000
+	thumbnail "outfit/tech star tail cell"
+	"base research rate" 0.01
+	"requires Star Tail Cell" 1
+	"requires Ammo Basics" 1
+	"requires Ammo Expertise" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Star Tail Cells. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+	description "	The alien intellect behind Incipias science and technology is difficult to articulate in your own language. You'll have to reverse engineer their tech using your own foundational knowledge as a guide."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Star Tail Tech License"
+	"display name" "Star Tail Tech"
+	category "Licenses"
+	series "Technology"
+	licenses
+		"Hicemus Logic"
+	thumbnail "outfit/tech star tail cell"
+	"base research rate" 0.01
+	"requires Star Tail Cell" 1
+	"requires Ammo Basics" 1
+	"requires Ammo Expertise" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Star Tail Cells. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+
+outfitter "Star Tail Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Star Tail Tech"
+	location
+		attributes "outfitter"
+		outfits "Star Tail Cell"
+	stock
+		"Star Tail Access Temporary License"
+
+outfitter "Star Tail Cell Restock"
+	to sell
+		or
+			has "license: Star Tail Access Temporary"
+			has "license: Star Tail Tech"
+
+mission "Midnight Tech: Star Tail Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Star Tail Access Temporary"
+		not "license: Star Tail Tech"
+	on offer
+		clear "license: Star Tail Access Temporary"
+		set "license: Star Tail Tech"
+		fail
+
+mission "Midnight Research: Star Tail Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Star Tail Cell"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Bio)"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Ammo Expertise"
+		not "license: Star Tail Access Temporary"
+		not "license: Star Tail Tech"
+		random < 1 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Bio)" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Star Tail Tech"
+		conversation
+			scene "outfit/tech star tail cell"
+			`You have successfully completed Star Tail Tech research. This makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Bio))`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Star Tail Tech)`
+				decline

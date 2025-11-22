@@ -1,0 +1,2872 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Pollen?"
+	plural "Pollen?"
+	category "Minerals"
+	cost 12000
+	thumbnail "outfit/pollen particle"
+	"flotsam sprite" "effect/flotsam pollen particle"
+	"mass" 0.3
+	"installable" -1
+	"minable" 1
+	"flotsam chance" 0.6
+	description "This granule of exotic pollen is not only replete with nutritious proteins, but also appears to contain valuable platinum group elements bound in organic molecules. This includes a collection of complex enzymes, which appear to be capable of catalyzing many difficult reactions with ease."
+	description "	Achoo!"
+
+outfit "Murkspores?"
+	plural "Spores?"
+	"display name" "Spores?"
+	category "Special"
+	series "Sabotage"
+	index 007
+	cost 10
+	thumbnail "outfit/murkspores"
+	"flotsam sprite" "effect/flotsam murkspores"
+	"mass" 0.1
+	"flotsam chance" 0.8
+	description "If these spores are aboard your ship, some sort of fungus may eventually start growing there."
+
+
+mission "Midnight Dust Cloud (Astral)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud astral" "midnight cloud astral spawn"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch bioroid
+				has "flagship planet attribute: midnight cloud astral spawn"
+				random < 15
+			branch natural
+				has "flagship planet attribute: midnight cloud astral"
+				random < 15
+			branch research
+				random < 35 + ( "midnight dust scan" * 5 )
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label bioroid
+			scene "scene/scene-bioroid"
+			`	A bioroid is gently floating in the dust cloud. Take it into your cargo bay?`
+			choice
+				`	(Catch it.)`
+				`	(Leave it.)`
+					decline
+			scene "scene/scene-bioroid crushed"
+			action
+				outfit "Bioroid (Crushed)"
+			branch mommy
+				random < 10
+			`	You position the <ship> to catch the bioroid. Once it is inside, you shut the cargo bay doors. It seems to be reacting to the pressurized air...`
+				decline
+			label mommy
+			`	You position the <ship> to catch the bioroid. Once it is inside, you shut the cargo bay doors. It seems to be reacting to the pressurized air...`
+				accept
+	on enter
+		dialog "This creature doesn't seem happy to see you..."
+	npc
+		government "Indigenous Lifeform (Hostile)"
+		personality target waiting mute heroic vindictive
+		fleet "Astral"
+
+outfit "Bioroid (Crushed)"
+	plural "Bioroids (Crushed)"
+	category "Special"
+	cost 100
+	thumbnail "outfit/bioroid crushed"
+	"flotsam sprite" "effect/flotsam bioroid crushed"
+	"mass" 1
+	description "The bioroid's delicate casing was crushed. The scrambled biomatter leaking out leaves a goopy mess on the floor."
+
+
+mission "Midnight Dust Cloud (Bunrodea)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud bunrodea"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch korath
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label korath
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label outfit
+			branch swarm
+				random < 5
+			branch reactor
+				random < 20
+			branch shield
+				random < 33
+			branch nanite
+				random < 50
+			action
+				outfit "Solar Cell" 1
+			scene "outfit/solar cell"
+			`	You find a Solar Cell adrift in the dust cloud. Perhaps this is all that remains of a Bunrodean ship that fought in this system some time ago.`
+				decline
+			label swarm
+			action
+				outfit "Swarm Clip" 1
+				outfit "Swarm Missile" 200
+			scene "outfit/swarm storage"
+			`	You find some Swarm Missiles adrift in the dust cloud. Perhaps this is all that remains of a Bunrodean ship that fought in this system some time ago.`
+				decline
+			label reactor
+			action
+				outfit "Reactor Overclocker" 1
+			scene "outfit/reactor overclocker"
+			`	You find a Reactor Overclocker adrift in the dust cloud. Perhaps this is all that remains of a Bunrodean ship that fought in this system some time ago.`
+				decline
+			label shield
+			action
+				outfit "Shield Relay Booster" 1
+			scene "outfit/shield booster"
+			`	You find a Shield Relay Booster adrift in the dust cloud. Perhaps this is all that remains of a Bunrodean ship that fought in this system some time ago.`
+				decline
+			label nanite
+			action
+				outfit "Nanite Enhancer" 1
+			scene "outfit/nanite enhancer"
+			`	You find a Nanite Enhancer adrift in the dust cloud. Perhaps this is all that remains of a Bunrodean ship that fought in this system some time ago.`
+				decline
+	npc
+		government "Korath"
+		personality target waiting harvests plunders coward
+			confusion 10
+		fleet "Korath Raid"
+
+
+mission "Midnight Dust Cloud (Ember Korath)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud ember korath"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch korath
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch natural
+				random < 10
+			branch salvage
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label korath
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label outfit
+			branch generator
+				random < 5
+			branch scanner
+				random < 20
+			branch shunt
+				random < 33
+			branch rifle
+				random < 50
+			action
+				outfit "Firelight Missile" 1
+			scene "outfit/firelight"
+			`	You find a Firelight Missile adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label rifle
+			action
+				outfit "Thermal Repeater Rifle" 1
+			scene "outfit/korath rifle"
+			`	You find a Thermal Repeater Rifle adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label shunt
+			action
+				outfit "Small Heat Shunt" 1
+			scene "outfit/small heat shunt"
+			`	You find a Small Heat Shunt adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label scanner
+			action
+				outfit "Korath Scanner" 1
+			scene "outfit/korath scanner"
+			`	You find a Korath Scanner adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label generator
+			action
+				outfit "Generator (Candle Class)" 1
+			scene "outfit/small korath generator"
+			`	You find a Generator (Candle Class) adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+	npc
+		government "Korath"
+		personality	target disables plunders opportunistic harvests
+		fleet "Korath Ember Waste Raid"
+
+mission "Midnight Dust Cloud (Ember Remnant)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud ember remnant"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch remnant
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch natural
+				random < 10
+			branch salvage
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label remnant
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 2000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. There is no clue to indicate its origin or destination.`
+				decline
+			label outfit
+			branch crystal
+				random < 5
+			branch plating
+				random < 20
+			branch fuel
+				random < 33
+			branch scanner
+				random < 50
+			action
+				outfit "EMP Torpedo" 1
+			scene "outfit/emp torpedo"
+			`	You find a piece of EMP Torpedo adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label crystal
+			action
+				outfit "Crystal Capacitor" 1
+			scene "outfit/crystal capacitor"
+			`	You find a piece of Crystal Capacitor adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label scanner
+			action
+				outfit "Cargo Scanner" 1
+			scene "outfit/cargo scanner"
+			`	You find a piece of Cargo Scanner adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label fuel
+			action
+				outfit "Fuel Pod" 1
+			scene "outfit/fuel pod"
+			`	You find a piece of Fuel Pod adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+			label plating
+			action
+				outfit "Interference Plating" 1
+			scene "outfit/interference plating"
+			`	You find a piece of Interference Plating adrift in the dust cloud. Perhaps the ship this came from was destroyed in an ion storm.`
+				decline
+	npc
+		government "Remnant"
+		personality	target disables plunders appeasing mining harvests surveillance secretive
+		fleet "Small Remnant"
+
+mission "Midnight Dust Cloud (Ember Shroud)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud ember shroud"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch weft
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 30
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 20
+			branch chemistry
+				random < 25
+			branch biology
+				random < 30
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label weft
+			scene "outfit/attention"
+			`	Your atmosphere scan is detecting spacial anomalies... A localized weft storm centered on the dust cloud is about to manifest!`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label outfit
+			branch cloak
+				has "license: Shadow House"
+				has "Midnight Successor Shadow Cloak: active"
+				or
+					not "outfit (all): Multimode Armor: Cloak"
+					not "multimode cloak found"
+			branch graviton
+				has "license: Shadow House"
+				random < 5
+			branch regen
+				has "license: Shadow House"
+				random < 10
+			branch thermal
+				has "license: Shadow House"
+				random < 15
+			branch pristine
+				has "license: Shadow House"
+				random < 20
+			branch stealth
+				has "license: Shadow House"
+				random < 25
+			action
+				outfit "Multimode Armor: Plate" 1
+			scene "outfit/predecessor armor plate"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label stealth
+			action
+				outfit "Multimode Armor: Stealth" 1
+			scene "outfit/predecessor armor stealth"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label pristine
+			action
+				outfit "Multimode Armor: Pristine" 1
+			scene "outfit/predecessor armor pristine"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label thermal
+			action
+				outfit "Multimode Armor: Thermal" 1
+			scene "outfit/predecessor armor thermal"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label regen
+			action
+				outfit "Multimode Armor: Regen" 1
+			scene "outfit/predecessor armor regen"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label graviton
+			action
+				outfit "Multimode Armor: Graviton" 1
+			scene "outfit/predecessor armor graviton"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label cloak
+			action
+				outfit "Multimode Armor: Cloak" 1
+				set "multimode cloak found"
+			scene "outfit/unknown"
+			`	You find an object adrift in the dust cloud. After some inspection, you conclude it to be some sort of hull armor, but you can't see it. This is probably what the Shadow House is searching for.`
+				decline
+	npc
+		government "Phenomenon (dangerous)"
+		personality launching heroic vindictive opportunistic mute
+			confusion 120
+		fleet "Localized Weft Storm"
+
+mission "Midnight Dust Cloud (Ember Wastes)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud ember wastes"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch ion
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch natural
+				random < 10
+			branch research
+				random < 35
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 10
+			branch chemistry
+				random < 15
+			branch biology
+				random < 20
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label ion
+			scene "outfit/attention"
+			`	Your atmosphere scan is detecting a chain reaction of charged particles... A localized ion storm originating from the dust cloud is about to manifest!`
+				accept
+	npc
+		government "Phenomenon (dangerous)"
+		personality launching heroic vindictive opportunistic mute
+			confusion 120
+		fleet "Localized Ion Storm"
+
+
+mission "Midnight Dust Cloud (Gegno Scin)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud gegno Scin"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch gegno
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label gegno
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label outfit
+			branch cell
+				random < 5
+			branch heavy
+				random < 10
+			branch battery
+				random < 15
+			branch thermal
+				random < 20
+			action
+				outfit "Light Scrap Plating" 1
+			scene "outfit/light scrap plating"
+			`	You find a Light Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label thermal
+			action
+				outfit "Thermal Scrap Plating" 1
+			scene "outfit/thermal scrap plating"
+			`	You find a Thermal Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label battery
+			action
+				outfit "R01 Skirmish Battery" 1
+			scene "outfit/skirmish battery"
+			`	You find a R01 Skirmish Battery adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label heavy
+			action
+				outfit "Heavy Scrap Plating" 1
+			scene "outfit/heavy scrap plating"
+			`	You find a Heavy Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label cell
+			action
+				outfit "C3 Scrap Cell" 1
+			scene "outfit/scrap cell"
+			`	You find a C3 Scrap Cell adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+	npc
+		government "Gegno Scin"
+		personality target waiting vindictive
+			confusion 10
+		fleet "Small Scin"
+
+mission "Midnight Dust Cloud (Gegno Vi)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud gegno vi"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch gegno
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label gegno
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Perhaps this was dropped during a battle some time ago.`
+				decline
+			label outfit
+			branch cannon
+				random < 5
+			branch heavy
+				random < 10
+			branch battery
+				random < 15
+			branch thermal
+				random < 20
+			action
+				outfit "Light Scrap Plating" 1
+			scene "outfit/light scrap plating"
+			`	You find a Light Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label thermal
+			action
+				outfit "Thermal Scrap Plating" 1
+			scene "outfit/thermal scrap plating"
+			`	You find a Thermal Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label battery
+			action
+				outfit "R01 Skirmish Battery" 1
+			scene "outfit/skirmish battery"
+			`	You find a R01 Skirmish Battery adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label heavy
+			action
+				outfit "Heavy Scrap Plating" 1
+			scene "outfit/heavy scrap plating"
+			`	You find a Heavy Scrap Plating adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+			label cannon
+			action
+				outfit "Irate Cannon" 1
+			scene "outfit/irate cannon"
+			`	You find a Irate Cannon adrift in the dust cloud. Perhaps this is all that remains of a Gegno ship destroyed in this system some time ago.`
+				decline
+
+	npc
+		government "Gegno Vi"
+		personality target waiting heroic vindictive
+			confusion 10
+		fleet "Small Vi"
+
+
+mission "Midnight Dust Cloud (Human)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud human"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch pirate
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 1
+			branch chemistry
+				random < 5
+			branch biology
+				random < 10
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label pirate
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch contraband
+				random < "flagship attribute: cargo scan power" / 1000
+			branch cargo
+				has "flagship attribute: cargo scan power"
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Perhaps a merchant dropped this while fleeing pirates.`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Perhaps a merchant dropped this while fleeing pirates.`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Perhaps a merchant dropped this while fleeing pirates.`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Perhaps a merchant dropped this while fleeing pirates.`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Perhaps a merchant dropped this while fleeing pirates.`
+				decline
+			label contraband
+			scene "outfit/sealed crate"
+			branch contraband5
+				random < 20
+			branch contraband4
+				random < 25
+			branch contraband3
+				random < 33
+			branch contraband2
+				random < 50
+			action
+				outfit "Contraband"
+			`	You find some contraband littering the dust cloud. Perhaps a smuggler dropped this while fleeing authorities.`
+				decline
+			label contraband2
+			action
+				outfit "Contraband" 2
+			`	You find some contraband littering the dust cloud. Perhaps a smuggler dropped this while fleeing authorities.`
+				decline
+			label contraband3
+			action
+				outfit "Contraband" 3
+			`	You find some contraband littering the dust cloud. Perhaps a smuggler dropped this while fleeing authorities.`
+				decline
+			label contraband4
+			action
+				outfit "Contraband" 4
+			`	You find some contraband littering the dust cloud. Perhaps a smuggler dropped this while fleeing authorities.`
+				decline
+			label contraband5
+			action
+				outfit "Contraband" 5
+			`	You find some contraband littering the dust cloud. Perhaps a smuggler dropped this while fleeing authorities.`
+				decline
+			label outfit
+			branch limitbreaker
+				random < 5
+			branch photovoltaic1
+				random < 20
+			branch photovoltaic2
+				random < 33
+			branch supercapacitor
+				random < 50
+			action
+				outfit "Interference Plating" 1
+			scene "outfit/interference plating"
+			`	You find a piece of Interference Plating adrift in the dust cloud. Perhaps this is all that remains of a smuggler's ship.`
+				decline
+			label supercapacitor
+			action
+				outfit "Supercapacitor" 1
+			scene "outfit/supercapacitor"
+			`	You find a Supercapacitor adrift in the dust cloud. Perhaps this is leftover from a recent battle.`
+				decline
+			label photovoltaic1
+			action
+				outfit "KP-6 Photovoltaic Panel" 1
+			scene "outfit/tiny photovoltaic"
+			`	You find a Photovoltaic Panel adrift in the dust cloud. Perhaps this is leftover from a recent battle.`
+				decline
+			label photovoltaic2
+			action
+				outfit "LCT-2 Photovoltaic Rod" 1
+			scene "outfit/photovoltaic rod"
+			`	You find a Photovoltaic Rod adrift in the dust cloud. Perhaps this is leftover from an ancient battle.`
+				decline
+			label limitbreaker
+			action
+				outfit "Limit Breaker" 1
+			scene "outfit/photovoltaic rod"
+			`	You find a Limit Breaker adrift in the dust cloud. Perhaps this is leftover from a pirate battle.`
+				decline
+	npc
+		government "Bounty (Disguised)"
+		personality target waiting harvests plunders coward
+			confusion 20
+		fleet "pirate raid"
+
+
+mission "Midnight Dust Cloud (Outer)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud outer"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch research
+				random < 30
+			branch natural
+				random < 25
+			branch subsidurial
+				random < 20
+			branch salvage
+				random < 5 + ( "midnight dust scan" * 5 )
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 2000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 2000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 5
+			branch cargo4
+				random < 10
+			branch cargo3
+				random < 15
+			branch cargo2
+				random < 20
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label outfit
+			branch concealment
+				random < 5
+			branch photoelectric
+				random < 10
+			branch radiative
+				random < 15
+			branch array
+				random < 20
+			action
+				outfit "Concentrating Solar Cell" 1
+			scene "outfit/concentrating solar cell"
+			`	You find a piece of Concentrating Solar Cell adrift in the dust cloud. Perhaps there was some sort of accident.`
+				decline
+			label array
+			action
+				outfit "Concentrating Solar Array" 1
+			scene "outfit/concentrating solar array"
+			`	You find a Concentrating Solar Array adrift in the dust cloud. Perhaps there was some sort of accident.`
+				decline
+			label radiative
+			action
+				outfit "Radiative Lamina" 1
+			scene "outfit/radiative lamina"
+			`	You find a Radiative Lamina adrift in the dust cloud. Perhaps there was some sort of accident.`
+				decline
+			label photoelectric
+			action
+				outfit "Photoelectric Lamina" 1
+			scene "outfit/photoelectric lamina"
+			`	You find a Photoelectric Lamina adrift in the dust cloud. Perhaps there was some sort of accident.`
+				decline
+			label concealment
+			action
+				outfit "Concealment Lamina" 1
+			scene "outfit/concealment lamina"
+			`	You find a piece of Concealment Lamina adrift in the dust cloud. Perhaps there was some sort of accident.`
+				decline
+			label subsidurial
+			scene "outfit/attention"
+			`	A creature was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+	npc
+		government "Indigenous Lifeform"
+		personality target waiting timid mining harvests mute unconstrained
+		fleet "Subsidurial"
+
+
+mission "Midnight Dust Cloud (Saryd)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud saryd"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch dissident
+				random < 10 + ( "midnight dust scan" * 5 )
+			branch natural
+				random < 15
+			branch research
+				random < 25
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 1
+			branch chemistry
+				random < 5
+			branch biology
+				random < 10
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label dissident
+			scene "outfit/attention"
+			`	A ship was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+	npc
+		government "Coalition Bounty (Disguised)"
+		personality target waiting timid coward
+		fleet "Dissident Saryd (small)"
+
+
+mission "Midnight Dust Cloud (Tangle)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud tangle"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch weft
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 15
+			branch chemistry
+				random < 20
+			branch biology
+				random < 25
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label weft
+			scene "outfit/attention"
+			`	Your atmosphere scan is detecting spacial anomalies... A localized weft storm centered on the dust cloud is about to manifest!`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 20
+			branch cargo4
+				random < 25
+			branch cargo3
+				random < 33
+			branch cargo2
+				random < 50
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. The ship carrying it might have been destroyed by a weft storm or Aberrants...`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. The ship carrying it might have been destroyed by a weft storm or Aberrants...`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. The ship carrying it might have been destroyed by a weft storm or Aberrants...`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. The ship carrying it might have been destroyed by a weft storm or Aberrants...`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. The ship carrying it might have been destroyed by a weft storm or Aberrants...`
+				decline
+			label outfit
+			branch shield
+				random < 5
+			branch antimissile
+				random < 10
+			branch antimatter
+				random < 5
+			branch beam
+				random < 10
+			action
+				outfit "Anomalous Mass" 1
+			scene "outfit/anomalous mass"
+			`	You find a piece of Anomalous Mass adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+			label beam
+			action
+				outfit "Nucleolysis Beam" 1
+			scene "outfit/nucleolysis beam"
+			`	You find a Nucleolysis Beam adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+			label antimatter
+			action
+				outfit "Antimatter Power Cell" 1
+			scene "outfit/antimatter power cell"
+			`	You find a piece of Anomalous Mass adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+			label antimissile
+			action
+				outfit "Telescopic Antimissile" 1
+			scene "outfit/telescopic antimissile"
+			`	You find a Telescopic Antimissile adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+			label shield
+			action
+				outfit "Anomalous Shield Restorer" 1
+			scene "outfit/anomalous shield restorer"
+			`	You find an Anomalous Shield Restorer adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+	npc
+		government "Phenomenon (dangerous)"
+		personality launching heroic vindictive opportunistic mute
+			confusion 120
+		fleet "Localized Weft Storm"
+
+
+mission "Midnight Dust Cloud (Twilight)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud twilight"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch aberrant
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch salvage
+				random < 10
+			branch natural
+				random < 15
+			branch research
+				random < 20
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 10
+			branch chemistry
+				random < 15
+			branch biology
+				random < 20
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label aberrant
+			scene "outfit/attention"
+			`	An Aberrant was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+			label salvage
+			branch outfit
+				random < "flagship attribute: outfit scan power" / 1000
+			branch cargo
+				random < "flagship attribute: cargo scan power" / 1000
+			action
+				outfit "Space Junk" 1
+			scene "outfit/space junk"
+			`	You find some worthless space junk littering the dust cloud.`
+				decline
+			label cargo
+			scene "outfit/sealed crate"
+			branch cargo5
+				random < 5
+			branch cargo4
+				random < 10
+			branch cargo3
+				random < 15
+			branch cargo2
+				random < 20
+			action
+				outfit "Miscellaneous Cargo"
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo2
+			action
+				outfit "Miscellaneous Cargo" 2
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo3
+			action
+				outfit "Miscellaneous Cargo" 3
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo4
+			action
+				outfit "Miscellaneous Cargo" 4
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label cargo5
+			action
+				outfit "Miscellaneous Cargo" 5
+			`	You find some abandoned cargo littering the dust cloud. Much of it is spoiled, indicating that it has been sitting here for a long time...`
+				decline
+			label outfit
+			branch anomalous
+				random < 5
+			branch photoelectric
+				random < 10
+			branch radiative
+				random < 15
+			branch array
+				random < 20
+			action
+				outfit "Concentrating Solar Cell" 1
+			scene "outfit/concentrating solar cell"
+			`	You find a piece of Concentrating Solar Cell adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+			label array
+			action
+				outfit "Concentrating Solar Array" 1
+			scene "outfit/concentrating solar array"
+			`	You find a Concentrating Solar Array adrift in the dust cloud. Perhaps this is leftover from a recent battle.`
+				decline
+			label radiative
+			action
+				outfit "Radiative Lamina" 1
+			scene "outfit/radiative lamina"
+			`	You find a Radiative Lamina adrift in the dust cloud. Perhaps this is leftover from a recent battle.`
+				decline
+			label photoelectric
+			action
+				outfit "Photoelectric Lamina" 1
+			scene "outfit/photoelectric lamina"
+			`	You find a Photoelectric Lamina adrift in the dust cloud. Perhaps this is leftover from a recent battle.`
+				decline
+			label anomalous
+			action
+				outfit "Anomalous Mass" 1
+			scene "outfit/anomalous mass"
+			`	You find a piece of Anomalous Mass adrift in the dust cloud. Perhaps this is all that remains of an Aberrant.`
+				decline
+	npc
+		government "Aberrant"
+		personality target hunting coward vindictive harvests mining secretive mute
+			confusion 40
+		fleet "Small Aberrant"
+
+
+mission "Midnight Dust Cloud (Umbral)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud umbral"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch trickster
+				has "event: midnight add corpse tricksters"
+				random < 5 + ( "midnight dust scan" * 5 )
+			branch natural
+				random < 15
+			branch research
+				random < 30
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 10
+			branch chemistry
+				random < 15
+			branch biology
+				random < 20
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label trickster
+			scene "outfit/attention"
+			`	A creature was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+	npc
+		government "Indigenous Predator"
+		personality waiting timid mining harvests mute unconstrained
+		fleet "Corpse Trickster"
+
+
+mission "Midnight Dust Cloud (Unclaimed)"
+	landing
+	invisible
+	deadline 2
+	repeat
+	source
+		attributes "midnight cloud unclaimed"
+	to offer
+		random < 90 - ( "midnight dust scan" * 5 )
+	on offer
+		clear "midnight dust scan default"
+		clear "midnight dust scan low"
+		clear "midnight dust scan high"
+		clear "midnight dust scan"
+		conversation
+			`This cloud of cosmic dust may have hidden secrets. Survey it with your atmosphere scanner?`
+			label begin
+			choice
+				`	(Scan using the default frequency.)`
+					goto scan-default
+					to display
+						not "midnight dust scan default"
+				`	(Scan using a low frequency.)`
+					goto scan-low
+					to display
+						not "midnight dust scan low"
+				`	(Scan using a high frequency.)`
+					goto scan-high
+					to display
+						not "midnight dust scan high"
+				`	(Leave it alone.)`
+			`	You've decided to avoid exploring the cloud for now...`
+				defer
+			label scan-default
+			action
+				set "midnight dust scan default"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-low
+			action
+				set "midnight dust scan low"
+				"midnight dust scan" ++
+			``
+				goto scan
+			label scan-high
+			action
+				set "midnight dust scan high"
+				"midnight dust scan" ++
+			``
+			label scan
+			branch subsidurial
+				random < 5
+			branch natural
+				random < 15
+			branch research
+				random < 30 + ( "midnight dust scan" * 5 )
+			scene "outfit/unknown"
+			branch full-frequency
+				has "midnight dust scan default"
+				has "midnight dust scan low"
+				has "midnight dust scan high"
+			`	Your atmosphere scans of the dust cloud are inconclusive. You could try scanning with a different frequency or entering the cloud again from a different angle to study it some more.`
+				goto begin
+			label full-frequency
+			`	After using all frequencies, your atmosphere scans of the dust cloud are inconclusive. Perhaps you could try entering the cloud again from a different angle to study it some more.`
+				defer
+			label research
+			branch physics
+				random < 5
+			branch chemistry
+				random < 10
+			branch biology
+				random < 15
+			action
+				outfit "Research Data" 1
+			scene "outfit/research"
+			`	Your atmostphere scans form a collection of data from the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label biology
+			action
+				outfit "Research Data (Bio)" 1
+			scene "outfit/research biology"
+			`	Your atmostphere scans detect unidentified DNA strands floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label chemistry
+			action
+				outfit "Research Data (Chem)" 1
+			scene "outfit/research chemistry"
+			`	Your atmostphere scans detect unidentified molecule structures floating within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label physics
+			action
+				outfit "Research Data (Phys)" 1
+			scene "outfit/research physics"
+			`	Your atmostphere scans detect unidentified energy waves within the cloud of cosmic dust. This may have some scientific value.`
+				decline
+			label natural
+			branch spores
+				random < 5
+			branch pollen
+				random < 20
+			action
+				outfit "Deuterium" 1
+			scene "outfit/harvested deuterium"
+			`	You find a large chunk of frozen deuterium floating in the cosmic dust. This dust cloud may have been a proto-comet.`
+				decline
+			label pollen
+			action
+				outfit "Pollen?" 3
+			scene "outfit/pollen particle"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of pollen. Perhaps they were spread throughout the galaxy by a form of interstellar plantlife.`
+				decline
+			label spores
+			action
+				outfit "Murkspores?" 10
+			scene "outfit/murkspores"
+			`	You find strange protein particles. The atmosphere scanner identifies them as some sort of spores. Perhaps they were spread throughout the galaxy by a form of interstellar fungus.`
+				decline
+			label subsidurial
+			scene "outfit/attention"
+			`	A creature was hiding in the dust cloud! It flees when it notices your presence.`
+				accept
+	npc
+		government "Indigenous Lifeform"
+		personality target waiting timid mining harvests mute unconstrained
+		fleet "Subsidurial"
+

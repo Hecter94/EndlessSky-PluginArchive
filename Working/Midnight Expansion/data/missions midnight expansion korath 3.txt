@@ -85,7 +85,7 @@ system "Is Ce S-4"
 planet "Sestor Baran"
 	attributes uninhabited
 	landscape land/desert0ver8
-	description `This desert world may have resources useful to the Sestor, but the automata don't appear to be doing anything beyond scanning its surface. Perhaps they are wary of the violent sand storms that occasionally rage across the sandy dunes.`
+	description `This desert world may have resources useful to the Sestor, but the automata don't appear to be doing anything beyond scanning its surface. Perhaps they are wary of the violent sand storms that occasionally rage across the dunes.`
 	bribe 0
 	security 0
 
@@ -204,29 +204,36 @@ mission "Midnight Expansion Sestor Baran Salvage"
 	on offer
 		conversation
 			branch interceptor
-				has "Sestor Baran Salvaged"
-				random < 70
+				has "Found Sestor Baran Wreck"
+				random < 66
+			action
+				set "Found Sestor Baran Wreck"
 			scene "thumbnail/Midnight-Becca-far ek tek 243"
 			`While flying over the sandy wastes, you spot a wrecked Ekfar Tek 23 half buried in a dune. A storm is approaching. Do you want to investigate?`
 			choice
 				`	(Take the risk.)`
 				`	(Ignore this.)`
 					goto ignore
+			branch scavenge
+				not "outfit (cargo): Jump Drive"
 			scene "outfit/jump drive"
 			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
 			choice
 				`	(Risk a salvage operation.)`
+				`	(Just scavenge components.)`
+					goto plunder
 				`	(Ignore this.)`
 					goto ignore
 			branch storm
-				random < 33
+				random < 25
 			action
+				outfit "Jump Drive" -1
 				give ship "Ekfar Tek 23 (Salvaged)" "00-000.0"
 				set "Sestor Baran Salvaged"
 			scene "thumbnail/Midnight-Becca-far ek tek 243"
 			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
 				depart
-
+			
 			label interceptor
 			branch warship
 				random < 50
@@ -236,15 +243,20 @@ mission "Midnight Expansion Sestor Baran Salvage"
 				`	(Take the risk.)`
 				`	(Ignore this.)`
 					goto ignore
+			branch scavenge
+				not "outfit (cargo): Jump Drive"
 			scene "outfit/jump drive"
 			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
 			choice
 				`	(Risk a salvage operation.)`
+				`	(Just scavenge components.)`
+					goto plunder
 				`	(Ignore this.)`
 					goto ignore
 			branch storm
-				random < 33
+				random < 20
 			action
+				outfit "Jump Drive" -1
 				give ship "Skoretak 13 (Salvaged)" "00-000.0"
 			scene "thumbnail/skoretak 13-thumb"
 			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
@@ -257,18 +269,53 @@ mission "Midnight Expansion Sestor Baran Salvage"
 				`	(Take the risk.)`
 				`	(Ignore this.)`
 					goto ignore
+			branch scavenge
+				not "outfit (cargo): Jump Drive"
 			scene "outfit/jump drive"
 			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Fortunately, you have a spare Jump Drive in your cargo. Do you want to try salvaging this ship?`
 			choice
 				`	(Risk a salvage operation.)`
+				`	(Just scavenge components.)`
+					goto plunder
 				`	(Ignore this.)`
 					goto ignore
 			branch storm
 				random < 33
 			action
+				outfit "Jump Drive" -1
 				give ship "Tercheldar 150 (Salvaged)" "00-000.0"
+				set "Sestor Baran Salvaged"
 			scene "thumbnail/tercheldar 150-thumb"
 			`	You waste no time in clearing the sand from the engines and installing the Jump Drive. By the time you finish, the storm is almost upon you! You signal the automaton to follow you into orbit. Hopefully, it won't go rogue once you clear the atmosphere...`
+				depart
+
+			label scavenge
+			`	All the external weapons have been torn off. The ship's engine needs to be cleared of sand and the Hyperdrive is a lost cause. Do you want to try scavenging components?`
+			choice
+				`	(Search the ship.)`
+				`	(Ignore this.)`
+					goto ignore
+			label plunder
+			branch generator
+				random < 20
+			branch shunt
+				random < 30
+			action
+				outfit "Obsolete Transceiver" 1
+			scene "outfit/obsolete transceiver"
+			`	After some time scrounging around the hull, you find an intact Obsolete Transceiver. By the time you finish loading it onto your ship, the storm is almost upon you! You abandon the wrecked ship to avoid being buried alive in the sand storm.`
+				depart
+			label shunt
+			action
+				outfit "Small Heat Shunt" 1
+			scene "outfit/small heat shunt"
+			`	After some time scrounging around the hull, you find an intact Small Heat Shunt. By the time you finish loading it onto your ship, the storm is almost upon you! You abandon the wrecked ship to avoid being buried alive in the sand storm.`
+				depart
+			label generator
+			action
+				outfit "Generator (Furnace Class)" 1
+			scene "outfit/medium korath generator"
+			`	After some time scrounging around the hull, you find an intact Generator (Furnace Class). By the time you finish loading it onto your ship, the storm is almost upon you! You abandon the wrecked ship to avoid being buried alive in the sand storm.`
 				depart
 
 			label storm

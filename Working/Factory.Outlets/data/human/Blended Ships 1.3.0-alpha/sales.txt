@@ -1,0 +1,138 @@
+﻿shipyard "Greenrock Bare"
+	"Eagle (Bare)"
+	"Enforcer (Bare)"
+	"Rawalpindi (Bare)"
+
+shipyard "Sirius Bare"
+	"Grackle (Bare)"
+
+
+mission "Factory Outlets: Blended Ships installed"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: Blended Ships"
+		not "event: factory outlets: blended ships installed"
+	on offer
+		event "factory outlets: blended ships installed"
+		clear "event: factory outlets: blended ships uninstalled"
+		fail
+
+event "factory outlets: blended ships installed"
+	system Shaula
+		object
+			sprite star/g5
+			period 10
+		object
+			sprite planet/desert3
+			distance 230.61
+			period 56.0321
+		object Greenrock
+			sprite planet/cloud1
+			distance 502.57
+			period 180.266
+			object "Greenrock Factory Outlet"
+				sprite planet/station19
+					scale 0.5
+				distance 204
+				period 12
+		object
+			sprite planet/ocean8-b
+			distance 861.82
+			period 404.804
+		object
+			sprite planet/rock1-b
+			distance 1374.03
+			period 814.918
+			object
+				sprite planet/dust0-b
+				distance 135
+				period 16.3428
+		object "Shih's Locker"
+			sprite planet/gas7
+			distance 2840.12
+			period 2421.72
+			object
+				sprite planet/miranda
+				distance 257
+				period 13.3689
+			object
+				sprite planet/lava0-b
+				distance 359
+				period 22.0718
+	shipyard "Betelgeuse Bare"
+		add "Sunthief (Bare)"
+	shipyard "Lionheart Bare"
+		add "Sunthief (Bare)"
+	shipyard "Syndicate Bare"
+		add "Catamaran (Bare)"
+		add "Caterpillar (Bare)"
+		add "Hornet (Bare)"
+		add "Trident (Bare)"
+	planet "Relic"
+		add shipyard "Sirius Bare"
+
+
+mission "Factory Outlets: Blended Ships uninstalled"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		not "installed plugin: Blended Ships"
+		has "event: factory outlets: blended ships installed"
+	on offer
+		event "factory outlets: blended ships uninstalled"
+		clear "event: factory outlets: blended ships installed"
+		fail
+
+event "factory outlets: blended ships uninstalled"
+	system Shaula
+		object
+			sprite star/g5
+			period 10
+		object
+			sprite planet/desert3
+			distance 230.61
+			period 56.0321
+		object Greenrock
+			sprite planet/cloud1
+			distance 502.57
+			period 180.266
+		object
+			sprite planet/ocean8-b
+			distance 861.82
+			period 404.804
+		object
+			sprite planet/rock1-b
+			distance 1374.03
+			period 814.918
+			object
+				sprite planet/dust0-b
+				distance 135
+				period 16.3428
+		object "Shih's Locker"
+			sprite planet/gas7
+			distance 2840.12
+			period 2421.72
+			object
+				sprite planet/miranda
+				distance 257
+				period 13.3689
+			object
+				sprite planet/lava0-b
+				distance 359
+				period 22.0718
+	shipyard "Betelgeuse Bare"
+		remove "Sunthief (Bare)"
+	shipyard "Lionheart Bare"
+		remove "Sunthief (Bare)"
+	shipyard "Syndicate Bare"
+		remove "Catamaran (Bare)"
+		remove "Caterpillar (Bare)"
+		remove "Hornet (Bare)"
+		remove "Trident (Bare)"
+	planet "Relic"
+		remove shipyard "Sirius Bare"

@@ -59,6 +59,8 @@ mission "Biohazard 1: Star Explorer"
 			confusion 10
 		ship "Star Explorer (Biohazard)" "Biohazard-031"
 		conversation
+			action
+				set "license: Nightmare Fuel"
 			scene "outfit/brig"
 			`When you board the ship, no defenders challenge you. Occasional screams can be heard in the distance. Your search for the kidnapped victims leads you to the ships brig. But the prisoners have escaped! A few dead bodies of the prisoners remain. Each has the alphanumeric sequence "BH-031" tattooed onto the back of their neck. You also notice their skin is mottled with greenish patches...`
 			choice
@@ -168,6 +170,8 @@ mission "Biohazard 2: Bulk Freighter"
 			confusion 10
 		ship "Bulk Freighter (Biohazard)" "Biohazard-013"
 		conversation
+			action
+				set "license: Nightmare Fuel"
 			scene "outfit/brig"
 			`When you board the ship, no defenders challenge you. The ship is eerily quiet. Your search for the kidnapped victims leads you to the ships brig. But no one is being held here.`
 			choice
@@ -352,7 +356,7 @@ mission "Bounty Hunting: Angry Chicken"
 mission "Drunk Pilot"
 	minor
 	name "Drunk Pilot"
-	description "The captain, and possibly the crew, of the <npc> is drunk. There's a small bounty of <payment> to disable their ship. Return to <planet> for payment."
+	description "The captain, and possibly the crew, of the <npc> is drunk. There's a small bounty of <payment> to disable their ship."
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		attributes spaceport
@@ -396,17 +400,13 @@ mission "Drunk Pilot"
 		government "Bounty"
 		personality target waiting uninterested forbearing coward appeasing mute
 			confusion 120
-		fleet
-			names "civilian"
-			variant
-				"Modified Clipper (Smuggler)"
-		dialog `You've disabled the <npc>. Leave them to sober up. Return to <destination> to collect your reward.`
-	on fail
-		dialog `[MISSION FAILED]: You failed to disable the <npc> without destroying it.`
-	on complete
-		payment 10000
-		dialog `The spaceport authorities reward you with <payment> for helping to stop the <npc>. That captain will probably have to pay a fine and take a pilot safety class or have his license revoked.`
-
+		ship "Modified Clipper (Smuggler)" "Wild Turkey"
+		on disable
+			payment 10000
+			dialog `You've disabled the Wild Turkey. Leave them to sober up. The authorities reward you with <payment> for helping to stop the Wild Turkey. That captain will probably have to pay a fine and take a pilot safety class or have his license revoked.`
+			fail
+		on kill
+			dialog `[MISSION FAILED]: You failed to disable the Wild Turkey without destroying it.`
 
 
 mission "Executive Guard: Syndicate Extremists"
@@ -539,7 +539,6 @@ mission "Executive Guard: Syndicate Extremist Post War"
 			`By the time you finish parking the <ship>, <payment> is deposited into your account. The amount matches what was promised for eliminating the S.S. Longinus.`
 
 
-
 mission "Gremlin Protoype Escort"
 	deadline
 	minor
@@ -601,7 +600,6 @@ mission "Gremlin Protoype Escort"
 		conversation
 			scene "thumbnail/gremlin-thumb"
 			`"Thanks for the escort. The Gremlin has an important meeting with some Betelgeuse agents. With any luck, you might see it show up in their shipyards soon!" Henrietta pays you <payment> and heads off to present her Gremlin to Betelgeuse.`
-
 
 
 mission "Free Worlds: Katya Surveillance Pod Sale (Pirate)"
@@ -742,7 +740,6 @@ mission "Free Worlds: Katya Surveillance Pod Sale (Trinket)"
 		fleet "Bounty Hunters"
 
 
-
 mission "Free Worlds Infiltrator 1"
 	landing
 	deadline 7
@@ -839,9 +836,8 @@ mission "Free Worlds Infiltrator 2 failure"
 		fail
 
 
-
 mission "Infiltrator: Secret Data"
-	landing
+	entering
 	invisible
 	deadline 30
 	source
@@ -851,15 +847,20 @@ mission "Infiltrator: Secret Data"
 	clearance
 	to offer
 		random < 70
-	on enter
+	on offer
 		conversation
 			scene "thumbnail/infiltrator-thumb"
-			`There's a derelict infiltrator nearby. The pirates really shot it up. It's probably already been plundered, but it might still be worth checking out.`
+			`There's a derelict infiltrator nearby. The pirates really shot it up. It's sending you a distress signal.`
+			choice
+				`	(Answer.)`
+				`	(Ignore.)`
+					decline
+			`The pilot is mortally wounded. He asks you to take the Secret Data on an encrypted data chip in his cargo hold to the office of Republic Intelligence on Earth by <date>.`
+				accept
 	npc board
 		government "Derelict (Killable)"
 		personality derelict mute marked
-		ship "Infiltrator (Derelict)" "Conundrum"
-		dialog `The pilot is mortally wounded. He asks you to take the Secret Data on an encrypted data chip in his cargo hold to the office of Republic Intelligence on Earth by <date>.`
+		ship "Infiltrator (Derelict)" "Enigma"
 	on fail
 		outfit "Secret Data" -1
 	on complete
@@ -881,7 +882,6 @@ outfit "Secret Data"
 	category "Special"
 	thumbnail "outfit/unknown"
 	description "Secret data on an encrypted chip. You have no clue what the contents are."
-
 
 
 mission "Infiltrator: War Begins"
@@ -1080,12 +1080,11 @@ mission "Limit Breaker Syndicate Patrol"
 			`As you part ways with Syphus he says, "Any patrol you return alive from is a good one. Thanks for the escort."`
 
 
-
 mission "Midnight FW Epilogue: JJ and Brother Greg"
 	minor
-	name "Rescue JJ"
-	description "Transport JJ to <destination>."
-	passengers 1
+	name "Rescue JJ and Greg"
+	description "Transport JJ and Greg to <destination>."
+	passengers 2
 	source
 		attributes "south pirate"
 	destination "Harmony"
@@ -1098,7 +1097,7 @@ mission "Midnight FW Epilogue: JJ and Brother Greg"
 			`While wandering the spaceport, a familiar voice calls to you from a nearby alley.`
 			choice
 				`	"JJ?"`
-			`	"<first>, it's really you! Finally, a familiar face!" Looking at the source of the voice, you see JJ and brother Greg dressed as independent traders. "I'm here on an undercover mission, but I need a lift to <planet>. Can you help us with that?"`
+			`	"<first>, it's really you! Finally, a familiar face!" Looking at the source of the voice, you see JJ and brother Greg dressed as independent traders. "I'm here on an undercover mission, but we need a lift to <planet>. Can you help us with that?"`
 			choice
 				`	"What mission?"`
 				`	"Of course!"`
@@ -1128,6 +1127,147 @@ mission "Midnight FW Epilogue: JJ and Brother Greg"
 		"reputation: Independent" ++
 		conversation
 			`You and JJ exchanged war stories during the journey. Brother Greg had a few stories of his own to contribute. There were more than a few injured Navy and Militia crash survivors who arrived at the monastery seeking treatment. JJ salutes you. "Thanks again, <first>. I'll make sure you get bonus pay for your assistance." The Free Worlds deposits <payment> into your account.`
+
+
+mission "Midnight FW Pug 2C: Jump Drive (Limit Distance)"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		has "outfit (flagship installed): Jump Drive (Limit Distance)"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		outfit "Jump Drive (Limit Distance)" -1
+		conversation
+			scene "outfit/jump drive (damaged)"
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and asks if they can look over your ship; a few minutes later, one of them says in surprise, "You've already got a jump drive! How did you manage that?"`
+			choice
+				`	"Actually, it's malfunctioning."`
+			action
+				outfit "Jump Drive" 1
+				set "fw given jump drive"
+			scene "outfit/jump drive"
+			`	The engineer nods. "It does look odd. We'll swap it out for a fresh one." The Syndicate engineers keep the damaged drive for research...`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying Alondo hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		set "FW Pug 2C: done"
+
+mission "Midnight FW Pug 2C: Jump Drive (Limit Fuel)"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		has "outfit (flagship installed): Jump Drive (Limit Fuel)"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		outfit "Jump Drive (Limit Fuel)" -1
+		conversation
+			scene "outfit/jump drive (damaged)"
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and asks if they can look over your ship; a few minutes later, one of them says in surprise, "You've already got a jump drive! How did you manage that?"`
+			choice
+				`	"Actually, it's malfunctioning."`
+			action
+				outfit "Jump Drive" 1
+				set "fw given jump drive"
+			scene "outfit/jump drive"
+			`	The engineer nods. "It does look odd. We'll swap it out for a fresh one." The Syndicate engineers keep the damaged drive for research...`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying Alondo hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		set "FW Pug 2C: done"
+
+mission "Midnight FW Pug 2C: Modified Hyperdrive"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		has "outfit (flagship installed): Modified Hyperdrive"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		outfit "Modified Hyperdrive" -1
+		conversation
+			scene "outfit/jump drive"
+			action
+				outfit "Jump Drive" 1
+				set "fw given jump drive"
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your hyperdrive and replaces it with a strange, alien-looking device that you assume must be a jump drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
+			choice
+				`	"I'd like to keep that Modified Hyperdrive as well."`
+				`	(Let them take it away.)`
+					accept
+			action
+				outfit "Modified Hyperdrive" 1
+			scene "outfit/modified hyperdrive"
+			`	The engineer nods. "Seems like you've done some custom tinkering with that. If we can find the space for it, we'll reinstall this. Otherwise, we'll just leave it in your cargo bay."`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying Alondo hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		set "FW Pug 2C: done"
+
+mission "Midnight FW Pug 2C: Modified Hyperdrive (Hai)"
+	landing
+	name "Investigate the Pug"
+	description "Travel to the Deneb system to investigate the Pug; if possible, make contact with them and determine what their goals and desires are."
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		has "outfit (flagship installed): Modified Hyperdrive (Hai)"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+	on offer
+		outfit "Modified Hyperdrive (Hai)" -1
+		conversation
+			scene "outfit/jump drive"
+			action
+				outfit "Jump Drive" 1
+				set "fw given jump drive"
+			`You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your hyperdrive and replaces it with a strange, alien-looking device that you assume must be a jump drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
+			choice
+				`	"I'd like to keep that Fluctuator Drive as well."`
+				`	(Let them take it away.)`
+					accept
+			action
+				outfit "Modified Hyperdrive (Hai)" 1
+			scene "outfit/modified hyperdrive"
+			`	The engineer nods. "So you call it a Fluctuator Drive? Seems like you've done some custom tinkering with that. If we can find the space for it, we'll reinstall this. Otherwise, we'll just leave it in your cargo bay."`
+				accept
+	on visit
+		dialog `You land on <planet>, but realize that your escort carrying Alondo hasn't entered the system yet. Better depart and wait for it to arrive.`
+	on complete
+		set "FW Pug 2C: done"
 
 
 mission "Midnight Independent Humanitarian"
@@ -1246,7 +1386,6 @@ mission "Midnight Modified Skein"
 		conversation
 			scene "thumbnail/modified skein-thumb"
 			`You deliver the scanner data of the <npc> to JJ. "Thanks <first>. Southbound Shipyard's engineers will take it from here. I've authorized a Free Worlds payment of <payment> to be deposited into your account for assisting in this matter.`
-
 
 
 mission "Midnight Paradise Fortune 1"

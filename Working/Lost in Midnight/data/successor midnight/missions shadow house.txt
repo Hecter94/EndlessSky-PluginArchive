@@ -1,0 +1,441 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+mission "Midnight Add Kvelqde-Sosrue"
+	landing
+	non-blocking
+	invisible
+	on offer
+		event "midnight add kvelqde-sosrue"
+		fail
+
+event "midnight add kvelqde-sosrue"
+	fleet "People's Houses Raiders"
+		add variant 1
+			"Kvelqde-Sosrue"
+		add variant 1
+			"Kvelqde-Sosrue"
+			"Kvelqde-Khora"
+
+
+mission "Midnight Successor Shadow House 0"
+	landing
+	name "Multimode Armor"
+	description "Visit <destination> to find someone who may be knowledgeable of Multimode Armor."
+	source
+		attributes successor
+		attributes outfitter
+		not attributes uninhabited
+		not planet "Kasii-Tuur-Saqru"
+	destination "Kasii-Tuur-Saqru"
+	to offer
+		has "Successors: People's Houses: First Contact: declined"
+		has "outfit: Multimode Armor: Plate"
+		not "Midnight Successor Shadow House 1: offered"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Do you want to ask the local outfitter for more information on the Multimode Armor recovered in Predecessor space?`
+			choice
+				`	(Ask about Multimode Armor.)`
+				`	(Not now.)`
+					defer
+			scene "outfit/predecessor armor plate"
+			`The sales crew are perplexed by the armor you present. "This armour doth not seem agreeable with our moderne configuratzions! I feare we cannot employ it for service upon thy ship."`
+			``
+			`	As you leave, one of the other customers approaches. Glancing about before speaking, this one says "The honest Artisans here mayhap cannot aid thee, yet knavish ones may." The suggestion is given with a discreet tone barely above a whisper. The altruist quickly moves away before anyone else notices.`
+				accept
+	npc
+		government "People's Houses (Hostile)"
+		system Kella-Uoasa
+		personality waiting staying disables harvests plunders
+			confusion 20
+		fleet "People's Houses Raiders"
+
+mission "Midnight Successor Shadow House 1"
+	landing
+	name "Multimode Armor"
+	description "Place two sculptures at the shipyards on <stopovers>. Then return to <destination>. You will be sentenced to death if the authorities catch you."
+	source Kasii-Tuur-Saqru
+	stopover Kasii-Cavasaa-Oa
+	stopover Khora-Vasa-Reyyaa
+	illegal -1000 `You've been caught with the eavesdropping sculpture! The High Houses declare you an enemy of the Successors...`
+	cargo "eavesdropping device" 1
+	to offer
+		has "Successors: People's Houses: First Contact: declined"
+		has "outfit: Multimode Armor: Plate"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Perhaps the outfitters here can provide information on the Multimode Armor recovered in Predecessor space.`
+			choice
+				`	(Ask about Multimode Armor.)`
+				`	(Not now.)`
+					defer
+			scene "outfit/predecessor armor plate"
+			`	After asking at several shops, one seems to recognize what you have. "That is a rare artefect from the days of our Predecessors, i'faith! I could tell thee of that armour. But first, I pray thee, do us a favour..." The shopkeeper reveals two intricately carved sculptures. "Privily set thou these twain at the spaceports upon, then hie thee back hither. Shouldst thou perform this task for me, I shall grant thee the knowledge and aid thou dost crave to make use of that armour." The sculptures resemble the one you received to understand their language.`
+			choice
+				`	"Are these listening devices?"`
+			scene "outfit/license shadow house"
+			`	The shopkeeper replies "Thou art a shrewd one. Aye, that is what these be. To be caught withal is punishable by death. Art thou unwilling to perform this task?"`
+			choice
+				`	"I will do it."`
+				`	"I will not help you spy on the High Houses!"`
+					goto refuse
+			`	The shopkeeper waves their tentacles "Then mayest thou prosper in this enterprise."`
+				accept
+			label refuse
+			`	The shopkeeper shoos you away with their tentacles "Then hast thou no affaire with me. Get thee hence from my sight!"`
+				decline
+	on complete
+		event "midnight successor shadow house"
+		
+event "midnight successor shadow house"
+	system Maspa-Sado
+		government "Shadow House"
+	planet Vade-Kella-Kaska
+		attributes "shadow house" crime station midnight
+		port "Space_port"
+			recharges
+				all
+			services
+				"job board"
+				"offers missions"
+			description `The spaceport here is cavernous but empty. Yet all of the equipment needed to service ships is intact and in working order, suggesting that this place may not be entirely unused.`
+		add outfitter "Shadow House"
+		"required reputation" 1
+
+
+
+mission "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa)"
+	landing
+	invisible
+	infiltrating
+	deadline 1
+	source Kasii-Cavasaa-Oa
+	to offer
+		has "Midnight Successor Shadow House 1: active"
+	on offer
+		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
+
+mission "Midnight Successor Shadow House 1 (Khora-Vasa-Reyyaa)"
+	landing
+	invisible
+	infiltrating
+	deadline 1
+	source Khora-Vasa-Reyyaa
+	to offer
+		has "Midnight Successor Shadow House 1: active"
+	on offer
+		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
+
+mission "Midnight Successor Shadow House 2"
+	landing
+	name "Multimode Armor?"
+	description "The datasphere contained a map indicating you should travel to <destination>."
+	source Kasii-Tuur-Saqru
+	destination Vade-Kella-Kaska
+	to offer
+		has "Midnight Successor Shadow House 1: done"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`As you are walking through the crowd in the spaceport, someone presses a data sphere into your hand. Whoever it was disappered into the throngs of Successors going about their business...`
+			choice
+				`	(See what is on it.)`
+			scene "outfit/map"
+			`	The datasphere contains a map leading to <destination>. This might be your reward for placing the two eavesdropping sculptures. Or it could be a trap.`
+				accept
+	on complete
+		set "license: Shadow House"
+
+mission "Midnight Successor Shadow Cloak"
+	landing
+	name "The House in Shadow"
+	description `The Shadow House is searching for an object in Predecessor space. "Thou shalt know it when thou canst not see it." Find this object and deliver it to <destination>.`
+	source Vade-Kella-Kaska
+	to offer
+		has "Midnight Successor Shadow House 2: done"
+	on offer
+		conversation
+			`As you walk through the station, the equipment hums to life. A successor in black clothing appears at the entrance to the shipyard. "Hark, alien! The graven images do work as 'twas aforethought. As I did avow, I shall tell thee of the Predecessor's harness."`
+			label questions
+			choice
+				`	"Tell me about the armor."`
+				`	"Who are you?"`
+					goto who
+				`	"Why did you tell me about Shadow House?"`
+					goto use
+					to display
+						has "multimode armor explained"
+						has "shadow house explained"
+			label armor
+			action
+				set "multimode armor explained"
+			scene "outfit/predecessor armor adaptor"
+			`	"This armour's make is a tech that were lost in th' chaos when our kin did flee the space o' our Predecessors. To employ't, certain arts must be applied besides the wonted process f'r configuring modern armours. We hast the means here to perform this feat. Alas, we cannot ourselves forge the stuff. Shouldst thee find more o' this matter, bring it hither to has't installed on modern Successor warships.`
+				goto questions
+			label who
+				set "shadow house explained"
+			scene "outfit/license shadow house"
+			`	"I speak for House Sado, whose name hath been forgot long ere our kind didst meet with thine. Shadow House might well be a name fit enow to call us by, methinks. Our numbers be but scant, yet through the ages we have laboured from the murk to guide, with subtle hand, the course of our folk."`
+				goto questions
+			label use
+			action
+				clear "shadow house explained"
+				clear "multimode armor explained"
+			`	"We have need o' thee. There be an object we desire, which may be found within the stead o' our Predecessors. Thou shalt know it when thou canst not see it. Find this object, and bring it unto us. Until then, we have other, smaller tasks, which we shall entrust thee with. Thine assistance in these matters shall be rewarded."`
+			choice
+				`	"I understand."`
+					goto end
+				`	"What if I tell the High Houses about you?"`
+			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "Then shall thee be put to death. We have insidiated all other Houses, with at least one of our agents. These are dedicate to ensure the House of Shadows remaineth but a tale amongst the common sort."`
+			choice
+				`	"I see."`
+			label end
+			`	The agent slithers away into the shadows, leaving you to explore the station on your own.`
+				accept
+	to complete
+		has "outfit: Multimode Armor: Cloak"
+
+
+mission "Midnight Successor House in Shadow"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		has "Midnight Successor Shadow Cloak: done"
+		has "outfit: Multimode Armor: Cloak"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`A Shadow House agent emerges from the shadows. "Thou hast found the thing. We may not see't, yet know we 'tis there."`
+			label meme-loop
+			choice
+				`	"Yes, I am here to deliver it to you."`
+					goto deliver
+				`	"It's mine. I have no intention of handing it over."`
+			`	"But thou must!"`
+				goto meme-loop
+			label deliver
+			action
+				outfit "Multimode Armor: Cloak" -1
+				set "midnight delivered shadow house cloak"
+				"reputation: Shadow House" ++
+				event "midnight add shadow house shipyard"
+			`	The Multimode Armor: Cloak is removed from your ship. "The Shadow House doth give thee thanks for thy service. We shall grant thee the grace to purchase our lesser vessels. It is our hope to continue in this our mutuall good accord."`
+				accept
+	on enter
+		conversation
+			scene "thumbnail/ojde-sado-thumb"
+			`A heavily modified Ojde is patrolling the system...`
+	npc kill
+		government "Shadow House"
+		personality waiting staying secretive uninterested timid coward quiet
+			confusion 10
+		ship "Ojde-Sado" "Deathless Myiara"
+		ship "Kvelqde-Kiitaa (OC)" "Myiara Raaja"
+		ship "Kvelqde-Kiitaa (OC)" "Myiara Sera"
+
+event "midnight add shadow house shipyard"
+	planet Vade-Kella-Kaska
+		add shipyard "Shadow House"
+	
+mission "Midnight Add Tundra Espionage Scanner"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+	on offer
+		event "midnight add tundra espionage scanner"
+		conversation
+			scene "outfit/tundra espionage scanner"
+			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to our scanners, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+				decline
+
+event "midnight add tundra espionage scanner"
+	outfitter "Shadow House"
+		add `"Tundra" Espionage Scanner`
+		add `"Tuur" Scanning Suite`
+		add `"Veldt" Combat Scanner`
+	government "Old Houses"
+		add atrocity "Old House Secrets"
+	government "New Houses"
+		add atrocity "New House Secrets"
+
+
+mission "Midnight Add Myiara Fire Spout"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 5
+		has "license: Shadow House"
+	on offer
+		event "midnight add myiara fire spout"
+		conversation
+			scene "outfit/successor fire spout"
+			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to our weapons, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+				decline
+
+event "midnight add myiara fire spout"
+	outfitter "Shadow House"
+		add `"Myiara" Fire Spout`
+
+mission "Midnight Add Myiara Reverser Interlink"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 10
+		has "license: Shadow House"
+	on offer
+		event "midnight add myiara reverser interlink"
+		conversation
+			scene "outfit/successor fire spout interlink"
+			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to a certaine engine, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+				decline
+
+event "midnight add myiara reverser interlink"
+	outfitter "Shadow House"
+		add `"Myiara" Reverser Interlink`
+
+mission "Midnight Successor Shadow Cloak Clue"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 15
+		has "license: Shadow House"
+		not "midnight delivered shadow house cloak"
+	on offer
+		event "midnight add myiara reverser interlink"
+		conversation
+			scene "outfit/unknown"
+			`A Shadow House agent emerges from the shadows. "Thou shalt know it when thou canst not see it. How doth thy search fare?" The agent waits for your response.`
+			choice
+				`	"I have not found it."`
+			`	The agent considers your words. "Hold fast to thy search. E'en fleeting clouds of dust may yet reveal hidden jewels." The agent slithers into the shadows.`
+				decline
+
+mission "Midnight Successor Stolsaqra-Sosrue"
+	minor
+	name "Defend <planet>!"
+	description "Unknown raiders are attacking <planet>. Eliminate them before they tell others about your activities here. Shadow House will be aiding you with a new ship."
+	source Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" >= 15
+		has "license: Shadow House"
+		has "midnight delivered shadow house cloak"
+		random < 70
+	on offer
+		conversation
+			scene "outfit/attention"
+			`A Shadow House agent emerges from the shadows. "How fortunate art thou hither! Certain interlopers have ta'en notice of thy doings, and do assault the station. We be purposing to dispatch a ship forth to confront them, but thy aid in this fray would be most welcome. What say you?"`
+			choice
+				`	"I'll assist."`
+				`	"I'd rather not."`
+					goto refuse
+			`	"Now that's the very spirit! Good fortune speed thy fight!"`
+				launch
+			label refuse
+			action
+				"reputation: Shadow House" -= 2
+			`	"Words are easy, like the wind; faithful friends are hard to find." The agent slithers into the shadows...`
+				defer
+	npc
+		government "Shadow House"
+		personality waiting staying heroic vindictive
+		ship "Stolsaqra-Sosrue (Plate)" "Myiara Airi"
+	npc kill
+		government "Phenomenon (dangerous)"
+		personality waiting lingering heroic harvests plunders mute
+		fleet
+			names "successor"
+			cargo 0
+			variant 2
+				"Myaede (Violent)"
+				"Kvelqde-Khora" 2
+		dialog `You've defeated the raiders. Return to <planet>.`
+	on abort
+		"reputation: Shadow House" --
+	on complete
+		payment 250000
+		event "midnight add stolsaqra-sosrue"
+		conversation
+			`A Shadow House agent emerges from the shadows. "These violent delights have violent ends. Thou hast fought bravely. Step forth, and claim now thy reward." The agent offers you <payment>.`
+			choice
+				`	"What was that ship?"`
+			scene "thumbnail/stolsaqra-sosrue-thumb"
+			`	"The Stolsaqra-Sosrue. A new addition 'tis to our armory. We shall grant thee the privilege to purchase them, so that thou mayest aid us with our fortifications. The agent slithers into the shadows."`
+
+event "midnight add stolsaqra-sosrue"
+	shipyard "Shadow House"
+		add "Stolsaqra-Sosrue"
+	fleet "People's Shadow"
+		add variant 1
+			"Stolsaqra-Sosrue (Stealth)"
+
+
+mission "Midnight Successor Shadow House Hostile"
+	landing
+	invisible
+	non-blocking
+	source
+		not planet Vade-Kella-Kaska
+	destination Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" < 0
+		has "license: Shadow House"
+	on offer
+		event "midnight shadow house hostile"
+		clear "license: Shadow House"
+	on complete
+		conversation
+			scene "outfit/unknown"
+			`The station appears deserted. You are unable to find any Shadow House agents here. An old tarnished data sphere lies abandoned on the dusty floor. Contained within is a simple message:`
+			``
+			`	"We shall be watching thee."`
+
+event "midnight shadow house hostile"
+	unvisit Maspa-Sado
+	unvisit planet Vade-Kella-Kaska
+	system Maspa-Sado
+		government Uninhabited
+	planet Vade-Kella-Kaska
+		attributes uninhabited crime station successor midnight
+		remove port "Space_port"
+		remove outfitter "Shadow House"
+		remove "required reputation"
+
+mission "Midnight Successor Shadow House Hostile Shipyard"
+	landing
+	invisible
+	non-blocking
+	source
+		not planet Vade-Kella-Kaska
+	destination Vade-Kella-Kaska
+	to offer
+		"reputation: Shadow House" < 0
+		has "license: Shadow House"
+		has "event: midnight add shadow house shipyard"
+	on offer
+		event "midnight shadow house hostile shipyard"
+		fail
+
+event "midnight shadow house hostile shipyard"
+	planet Vade-Kella-Kaska
+		remove shipyard "Shadow House"
+
+

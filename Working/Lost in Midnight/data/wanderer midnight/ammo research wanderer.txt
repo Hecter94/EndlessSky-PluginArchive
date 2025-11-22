@@ -1,0 +1,134 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Wanderer Crafter License"
+	thumbnail "outfit/unknown"
+	description "The Wanderers view their weapons of war as [shameful, a necessary evil]. They are averse to allowing the secrets of crafting them to [proliferate, propagate] across the galaxy."
+
+outfit "Thunderhead Access Temporary License"
+	"display name" "Thunderhead Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 09013
+	licenses
+		"Wanderer Crafter"
+	cost 1800000
+	thumbnail "outfit/tech thunderhead"
+	"base research rate" 0.03
+	"requires Meteor Tech" 1
+	"requires Sidewinder Tech" 1
+	"requires Javelin Tech" 1
+	"requires Thunderhead Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Star Thunderheads. Having this makes it possible for any outfitter to offer Thunderheads even if it is normally not stocked there."
+	description "	The Wanderers view their weapons of war as [shameful, a necessary evil]. They are averse to allowing the secrets of crafting them to [proliferate, propagate] across the galaxy."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Thunderhead Tech License"
+	"display name" "Thunderhead Tech"
+	category "Licenses"
+	series "Technology"
+	index 09010
+	licenses
+		"Wanderer Crafter"
+	thumbnail "outfit/tech thunderhead"
+	"base research rate" 0.03
+	"requires Meteor Tech" 1
+	"requires Sidewinder Tech" 1
+	"requires Javelin Tech" 1
+	"requires Thunderhead Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Thunderheads. Having this makes it possible for any outfitter to offer Thunderheads even if it is normally not stocked there."
+	description "	The Wanderers view their weapons of war as [shameful, a necessary evil]. They are averse to allowing the secrets of crafting them to [proliferate, propagate] across the galaxy."
+
+outfitter "Thunderhead Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Thunderhead Tech"
+	location
+		attributes "outfitter"
+		outfits "Thunderhead Missile"
+	stock
+		"Thunderhead Access Temporary License"
+
+outfitter "Thunderhead Missile Restock"
+	to sell
+		or
+			has "license: Thunderhead Access Temporary"
+			has "license: Thunderhead Tech"
+
+outfitter "Midnight Thunderhead Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Thunderhead Storage Depot"
+		or
+			has "license: Thunderhead Access Temporary"
+			has "license: Thunderhead Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Thunderhead Missile"
+
+mission "Midnight Tech: Thunderhead Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Thunderhead Access Temporary"
+		not "license: Thunderhead Tech"
+	on offer
+		clear "license: Thunderhead Access Temporary"
+		set "license: Thunderhead Tech"
+		fail
+
+mission "Midnight Research: Thunderhead Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Thunderhead Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Bio)"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Meteor Tech"
+		has "license: Sidewinder Tech"
+		has "license: Javelin Tech"
+		not "license: Thunderhead Access Temporary"
+		not "license: Thunderhead Tech"
+		random < 3 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Bio)" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Thunderhead Tech"
+		conversation
+			scene "outfit/tech thunderhead"
+			`You have successfully completed Thunderhead Tech research. This makes it possible for any outfitter to offer Thunderheads even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Bio))`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Thunderhead Tech)`
+				decline

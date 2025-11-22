@@ -1,0 +1,569 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+outfit "Navarch License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	description "Far'en lai ko forei lak'far."
+
+
+################################
+#
+# Vanilla Weapons
+#
+################################
+
+
+outfit "Piercer Access Temporary License"
+	"display name" "Piercer Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04034
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech piercer"
+	"base research rate" 0.05
+	"requires Javelin Tech" 1
+	"requires Piercer Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Piercer Missiles. Having this makes it possible for any outfitter to offer Piercer Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Piercer Tech License"
+	"display name" "Piercer Tech"
+	category "Licenses"
+	series "Technology"
+	index 04034
+	licenses
+		Navarch
+	thumbnail "outfit/tech piercer"
+	"base research rate" 0.05
+	"requires Javelin Tech" 1
+	"requires Piercer Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Piercer Missiles. Having this makes it possible for any outfitter to offer Piercer Missiles even if it is normally not stocked there."
+
+outfitter "Piercer Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Piercer Tech"
+	location
+		attributes "outfitter"
+		outfits "Piercer Missile"
+	stock
+		"Piercer Access Temporary License"
+
+outfitter "Piercer Missile Restock"
+	to sell
+		or
+			has "license: Piercer Access Temporary"
+			has "license: Piercer Tech"
+
+outfitter "Midnight Piercer Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Piercer Missile Depot"
+		or
+			has "license: Piercer Access Temporary"
+			has "license: Piercer Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Piercer Missile"
+
+mission "Midnight Tech: Piercer Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Piercer Access Temporary"
+		not "license: Piercer Tech"
+	on offer
+		clear "license: Piercer Access Temporary"
+		set "license: Piercer Tech"
+		fail
+
+mission "Midnight Research: Piercer Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Piercer Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Javelin Tech"
+		not "license: Piercer Access Temporary"
+		not "license: Piercer Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Piercer Tech"
+		conversation
+			scene "outfit/tech piercer"
+			`You have successfully completed Piercer Tech research. This makes it possible for any outfitter to offer Piercer Missiles even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Piercer Tech)`
+				decline
+
+
+outfit "Cluster Mine Access Temporary License"
+	"display name" "Cluster Mine Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04044
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech korath mine"
+	"base research rate" 0.05
+	"requires Plunder Mine Tech" 1
+	"requires Cluster Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Cluster Mines. Having this makes it possible for any outfitter to offer Cluster Mines even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Cluster Mine Tech License"
+	"display name" "Cluster Mine Tech"
+	category "Licenses"
+	series "Technology"
+	index 04044
+	licenses
+		Navarch
+	thumbnail "outfit/tech korath mine"
+	"base research rate" 0.05
+	"requires Plunder Mine Tech" 1
+	"requires Cluster Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Cluster Mines. Having this makes it possible for any outfitter to offer Cluster Mines even if it is normally not stocked there."
+
+outfitter "Cluster Mine Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Cluster Mine Tech"
+	location
+		attributes "outfitter"
+		outfits "Cluster Mine"
+	stock
+		"Cluster Mine Access Temporary License"
+
+outfitter "Cluster Mine Restock"
+	to sell
+		or
+			has "license: Cluster Mine Access Temporary"
+			has "license: Cluster Mine Tech"
+
+outfitter "Midnight Cluster Mine Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Cluster Mine Depot"
+		or
+			has "license: Cluster Mine Access Temporary"
+			has "license: Cluster Mine Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Cluster Mine"
+
+mission "Midnight Tech: Cluster Mine Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Cluster Mine Access Temporary"
+		not "license: Cluster Mine Tech"
+	on offer
+		clear "license: Cluster Mine Access Temporary"
+		set "license: Cluster Mine Tech"
+		fail
+
+mission "Midnight Research: Cluster Mine Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Cluster Mine"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Plunder Mine Tech"
+		not "license: Cluster Mine Access Temporary"
+		not "license: Cluster Mine Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Cluster Mine Tech"
+		conversation
+			scene "outfit/tech korath mine"
+			`You have successfully completed Cluster Mine Tech research. This makes it possible for any outfitter to offer Cluster Mines even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Cluster Mine Tech)`
+				decline
+
+
+outfit "Firelight Access Temporary License"
+	"display name" "Firelight Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04014
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech firelight"
+	"base research rate" 0.05
+	"requires Torpedo Tech" 1
+	"requires Firelight Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firelight Missiles. Having this makes it possible for any outfitter to offer Firelight Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Firelight Tech License"
+	"display name" "Firelight Tech"
+	category "Licenses"
+	series "Technology"
+	index 04014
+	licenses
+		Navarch
+	thumbnail "outfit/tech firelight"
+	"base research rate" 0.05
+	"requires Torpedo Tech" 1
+	"requires Firelight Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firelight Missiles. Having this makes it possible for any outfitter to offer Firelight Missiles even if it is normally not stocked there."
+
+outfitter "Firelight Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Firelight Tech"
+	location
+		attributes "outfitter"
+		outfits "Firelight Missile"
+	stock
+		"Firelight Access Temporary License"
+
+outfitter "Firelight Restock"
+	to sell
+		or
+			has "license: Firelight Access Temporary"
+			has "license: Firelight Tech"
+
+outfitter "Midnight Firelight Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Firelight Missile Depot"
+		or
+			has "license: Firelight Access Temporary"
+			has "license: Firelight Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Firelight Missile"
+
+mission "Midnight Tech: Firelight Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Firelight Access Temporary"
+		not "license: Firelight Tech"
+	on offer
+		clear "license: Firelight Access Temporary"
+		set "license: Firelight Tech"
+		fail
+
+mission "Midnight Research: Firelight Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Firelight Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Torpedo Tech"
+		not "license: Firelight Access Temporary"
+		not "license: Firelight Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Firelight Tech"
+		conversation
+			scene "outfit/tech firelight"
+			`You have successfully completed Firelight Tech research. This makes it possible for any outfitter to offer Firelight Missiles even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Firelight Tech)`
+				decline
+
+
+
+outfit "Firestorm Access Temporary License"
+	"display name" "Firestorm Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04024
+	licenses
+		Navarch
+	cost 19800000
+	thumbnail "outfit/tech firestorm torpedo"
+	"base research rate" 0.03
+	"requires Firelight Tech" 1
+	"requires Firestorm Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firestorm Torpedos. Having this makes it possible for any outfitter to offer Firestorm Torpedos even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Firestorm Tech License"
+	"display name" "Firestorm Tech"
+	category "Licenses"
+	series "Technology"
+	index 04024
+	licenses
+		Navarch
+	thumbnail "outfit/tech firestorm torpedo"
+	"base research rate" 0.03
+	"requires Firelight Tech" 1
+	"requires Firestorm Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firestorm Torpedos. Having this makes it possible for any outfitter to offer Firestorm Torpedos even if it is normally not stocked there."
+
+outfitter "Firestorm Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Firestorm Tech"
+	location
+		attributes "outfitter"
+		outfits "Firestorm Torpedo"
+	stock
+		"Firestorm Access Temporary License"
+
+outfitter "Firestorm Torpedo Restock"
+	to sell
+		or
+			has "license: Firestorm Access Temporary"
+			has "license: Firestorm Tech"
+
+outfitter "Midnight Firestorm Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		has "outfit: Firestorm Torpedo Depot"
+		or
+			has "license: Firestorm Access Temporary"
+			has "license: Firestorm Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Firestorm Torpedo"
+
+mission "Midnight Tech: Firestorm Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Firestorm Access Temporary"
+		not "license: Firestorm Tech"
+	on offer
+		clear "license: Firestorm Access Temporary"
+		set "license: Firestorm Tech"
+		fail
+
+mission "Midnight Research: Firestorm Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Firestorm Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Firelight Tech"
+		not "license: Firestorm Access Temporary"
+		not "license: Firestorm Tech"
+		random < 3 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Firestorm Tech"
+		conversation
+			scene "outfit/tech firestorm torpedo"
+			`You have successfully completed Firestorm Tech research. This makes it possible for any outfitter to offer Firestorm Torpedos even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Firestorm Tech)`
+				decline
+
+
+################################
+#
+# Midnight Weapons
+#
+################################
+
+
+outfit "Magnetic Mine Access Temporary License"
+	"display name" "Magnetic Mine Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 04048
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech magnetic mine"
+	"base research rate" 0.03
+	"requires Cluster Mine Tech" 1
+	"requires Magnetic Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Magnetic Mines. Having this makes it possible for any outfitter to offer Magnetic Mines even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Magnetic Mine Tech License"
+	"display name" "Magnetic Mine Tech"
+	category "Licenses"
+	series "Technology"
+	index 04048
+	licenses
+		Navarch
+	thumbnail "outfit/tech magnetic mine"
+	"base research rate" 0.03
+	"requires Cluster Mine Tech" 1
+	"requires Magnetic Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Magnetic Mines. Having this makes it possible for any outfitter to offer Magnetic Mines even if it is normally not stocked there."
+
+outfitter "Magnetic Mine Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Magnetic Mine Tech"
+	location
+		attributes "outfitter"
+		outfits "Magnetic Mine"
+	stock
+		"Magnetic Mine Access Temporary License"
+
+outfitter "Midnight Magnetic Mine Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Magnetic Mine Access Temporary"
+			has "license: Magnetic Mine Tech"
+		or
+			has "outfit: Magnetic Mine Deployer"
+			has "outfit: Magnetic Mine Rack"
+			has "outfit: Magnetic Mine Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Magnetic Mine"
+
+mission "Midnight Tech: Magnetic Mine Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Magnetic Mine Access Temporary"
+		not "license: Magnetic Mine Tech"
+	on offer
+		clear "license: Magnetic Mine Access Temporary"
+		set "license: Magnetic Mine Tech"
+		fail
+
+mission "Midnight Research: Magnetic Mine Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Magnetic Mine"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Cluster Mine Tech"
+		not "license: Magnetic Mine Access Temporary"
+		not "license: Magnetic Mine Tech"
+		random < 3 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Magnetic Mine Tech"
+		conversation
+			scene "outfit/tech magnetic mine"
+			`You have successfully completed Magnetic Mine Tech research. This makes it possible for any outfitter to offer Magnetic Mines even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Magnetic Mine Tech)`
+				decline
+

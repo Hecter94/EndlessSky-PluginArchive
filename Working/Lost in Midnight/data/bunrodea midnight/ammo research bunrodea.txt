@@ -1,0 +1,105 @@
+# Copyright (c) 2025 by Michael Arsollon
+# derived from original game at https://github.com/endless-sky/endless-sky
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+outfit "Bunrodean Artifact License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	description "The outfitter occasionally shows off rare artifacts that aren't actually for sale."
+
+outfit "Swarm Access Temporary License"
+	"display name" "Swarm Tech"
+	category "Ammunition"
+	series "Ammunition"
+	index 10013
+	licenses
+		"Bunrodean Artifact"
+	cost 0
+	thumbnail "outfit/tech swarm missile"
+	"base research rate" 0.05
+	"requires Javelin Tech" 1
+	"requires Swarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Swarm Missiles. Having this makes it possible for any outfitter to offer Swarm Missiles even if it is normally not stocked there."
+	description "	Amazingly, this is written in your language! The outfitter is presenting it as a curiosity left behind by a previous human visitor to their space. Unfortunately, it is not for sale."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	
+outfit "Swarm Tech License"
+	"display name" "Swarm Tech"
+	category "Licenses"
+	series "Technology"
+	index 10013
+	licenses
+		"Bunrodean Artifact"
+	thumbnail "outfit/tech swarm missile"
+	"base research rate" 0.05
+	"requires Javelin Tech" 1
+	"requires Swarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	description "This technical manual details how to manufacture Swarm Missiles. Having this makes it possible for any outfitter to offer Swarm Missiles even if it is normally not stocked there."
+
+outfitter "Swarm Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Swarm Tech"
+	location
+		attributes "outfitter"
+		outfits "Swarm Missile"
+	stock
+		"Swarm Access Temporary License"
+
+outfitter "Swarm Missile Restock"
+	to sell
+		or
+			has "license: Swarm Access Temporary"
+			has "license: Swarm Tech"
+
+mission "Midnight Tech: Swarm Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Swarm Access Temporary"
+		not "license: Swarm Tech"
+	on offer
+		clear "license: Swarm Access Temporary"
+		set "license: Swarm Tech"
+		fail
+
+mission "Midnight Research: Swarm Tech"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Swarm Missile"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "license: Javelin Tech"
+		not "license: Swarm Access Temporary"
+		not "license: Swarm Tech"
+		random < 5 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		set "license: Swarm Tech"
+		conversation
+			scene "outfit/tech swarm missile"
+			`You have successfully completed Swarm Tech research. This makes it possible for any outfitter to offer Swarm Missiles even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Gained Swarm Tech)`
+				decline
