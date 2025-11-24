@@ -1,3 +1,6 @@
+2025-11-24 | Updated plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#blended-ships)<br>
+2025-11-24 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
+2025-11-24 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2025-11-23 | Updated plugin 'Blended Ships' by mOctave | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#blended-ships)<br>
 2025-11-23 | Updated plugin 'boss.loot' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#bossloot)<br>
 2025-11-23 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
