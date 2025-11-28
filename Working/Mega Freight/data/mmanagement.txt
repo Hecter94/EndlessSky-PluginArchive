@@ -1,0 +1,2206 @@
+# Mega Freight Businessman expansion real
+
+#feature creep moment
+
+phrase "player company"
+	word
+		"F.L.S. "
+	phrase
+		"civilian"
+
+color "governments: Player Company 1" .06 .68 0.
+
+government "MGF: Player Company"
+	"display name" "FL co."
+	swizzle 5
+	color "governments: Player Company 1"
+	"attitude toward"
+		"Pirate" -.01
+		"Korath" -.01
+		"Scar's Legion" -.1
+		"Alpha" -.1
+		"Pirate (Devil-Run Gang)" -.01
+		"MGF: Minotaurs" -.2
+		#Lost in Midnight
+		"Invasive Lifeform" -.01
+		"Phenomenon (dangerous)" -.01
+		"Indigenous Predator" -.01
+	reputation
+		"player reputation" 1000
+		min 1
+	"fine" 0
+	"friendly hail" "friendly civilian"
+	"friendly disabled hail" "friendly disabled"
+
+substitutions
+	"<mgf shipyard headoflogistic>" "Madison"
+	"<mgf shipyard headofengineer>" "Dave"
+	"<mgf shipyard headofresearch>" "Suzuki"
+
+# destination
+# 		attributes `mgf: player shipyard`
+# 		planet "Sunracer" "Bluestone"
+
+# substitutions
+# 		"<shipyard location>" "Bluestone"
+# 			"mgf: tbab shipyard: bluestone" >= 1
+# 		"<shipyard location>" "Sunracer"
+# 			"mgf: tbab shipyard: sunracer" >= 1
+
+#TODO:
+# - order design of new ships
+# - order design of new outfits
+# - leave your alien outfits for research.
+# - tech tree...?
+# -- maybe assign research budget into areas which will produce result over time
+# - expansions
+# -- expand outfitter and shipyard to other worlds.
+# -- expand into manufacuring other things
+# -- expand logistic side
+# - licensing other outfits.
+# - copy other outfit
+# - cooperate with other companies.
+# -- cooperate with Turner inc to better conceal your shipment into Hai space.
+# - ship modification
+
+
+#possible income stream:
+# Product: ship, outfit, component, machinery, raw materials, consumer tech products, <whatever needed to vertically integrate entire production of a ship>
+# Service: ship repairs, ship modifications, ship design, logistic, personal security, mercenaries,
+
+mission "MGF: BM Weekly"
+	# invisible
+	description `Calculate weekly financials.`
+	entering
+	repeat
+	deadline 1
+	destination "New Boston"
+	to offer
+		has "event: mgf: tbab business profit calc"
+	on offer
+		clear "event: mgf: tbab business profit calc"
+		#disabled most for now, too lazy to balance and debug the math stuffs.
+		# event "mgf: tbab inc customer base" 0
+		event "mgf: tbab to makerplace fleet earning calc" 0
+		event "mgf: tbab to tarazed fleet earning calc" 0
+		# event "mgf: tbab outfitter earning calc" 0
+		event "mgf: tbab business profit calc" 7
+			#to sprinkle a bit of positivity among the rambling, instantly applied event is pretty nice.
+
+#TODO cap at some saturation point / add churn rate as soft cap
+# mission "MGF: BM Inc Customer Base"
+# 	invisible
+# 	entering #does this even work?
+# 	repeat
+# 	deadline 1
+# 	to offer
+# 		has "event: mgf: tbab inc customer base" #todo trigger this event with other mission when the first product is launched.
+# 	on offer
+# 		clear "event: mgf: tbab inc customer base"
+# 		event "mgf: tbab inc customer base" 7 14
+
+
+
+mission "MGF: TBAB On Daily"
+	entering
+	invisible
+	destination
+		planet "New Boston"
+	to offer
+		has "MGF: TBAB Business Management: offered"
+		not "MGF: TBAB On Daily: active"
+	on daily
+		"mgf_sm_dev_budget_accumulated" += "mgf_sm_dev_budget"
+		"mgf_sm_tech_budget_accumulated" += "mgf_sm_tech_budget"
+
+mission "MGF: TBAB Active Development Incrementer"
+	entering
+	invisible
+	deadline 1
+	destination
+		planet "New Boston"
+	to offer
+		"mgf: tbab dev accumulator" >= 1
+	on offer
+		"mgf: tbab dev accumulator" += "mgf_sm_dev_budget"
+		fail
+
+mission "MGF: TBAB Active Research Incrementer"
+	entering
+	invisible
+	deadline 1
+	destination
+		planet "New Boston"
+	to offer
+		"mgf: tbab tech accumulator" >= 1
+	on offer
+		"mgf: tbab tech accumulator" += "mgf_sm_tech_budget"
+		fail
+
+#Now I found myself asking how did a questline to get a ship spiral into this.
+mission "MGF: TBAB Business Management"
+	job
+	repeat
+	name "[Manage Business]"
+	color unselected 0.5 0.5 0.8
+	color selected 0.6 0.6 0.8
+	description `Accept to access the menu to manage your business.`
+	source
+		attributes `mgf: player shipyard`
+	to offer
+		has "MGF: To Build a Beast 18: offered"
+	on accept
+		conversation
+			label action_menu
+			`Net income: &[credits@salary: Shipyard Income]`
+			# `Debug customer base: &[mgf_sm_customer_base]`
+			`Note: if the plugin was updated, you will need to depart and land again to get the updated menu`
+			choice
+				`	[Open budget menu]`
+					goto budget_menu
+				`	[View financials]`
+					goto financial_menu
+				`	[Project Menu]`
+					goto project_menu
+				`	[Expansions]`
+					goto expand_menu
+				`	[Change Company Color]`
+					goto color_menu
+				`	Exit`
+					defer
+			label financial_menu #for debugging mostly
+			# `	Shipyard Operating Cost: &[credits@mgf_sm_shipyard_op_cost]`
+			# `	Outfitter Operating Cost: &[credits@mgf_sm_outfitter_op_cost]`
+			# `	Fleet Operating Cost: &[credits@mgf_sm_fleet_cost]`
+			# `	Stocking Cost: &[credits@mgf_sm_stock_cost_tol]`
+			# `	Net Operating Cost: &[credits@mgf_sm_operating_cost]`
+			# `--------------------------------------------------`
+			# `	Marketing:&[credits@mgf_sm_ad_budget]`
+			# `	Product Development:&[credits@mgf_sm_dev_budget]`
+			# `	Technology Research:&[credits@mgf_sm_tech_budget]`
+			# `--------------------------------------------------`
+			# `	Outfitter Profit: &[credits@mgf_sm_outfitter_sales]`
+			# `	Shipyard Profit: &[credits@mgf_sm_shipyard_sales]`
+			# `	Fleet Revenue: &[credits@mgf_sm_fleet_profit]`
+			# `	Total Revenue: &[credits@mgf_sm_revenue]`
+			# `Net income: &[credits@salary: Shipyard Income]`
+
+
+			`	Shipyard Operating Cost: &[mgf_sm_shipyard_op_cost]`
+			`	Outfitter Operating Cost: &[mgf_sm_outfitter_op_cost]`
+			`	Makerplace Fleet Operating Cost: &[mgf_sm_to_makerplace_op_cost]`
+			`	Tarazed Fleet Operating Cost: &[mgf_sm_to_tarazed_op_cost]`
+			`	Fleet Operating Cost: &[mgf_sm_fleet_cost]`
+			# `	Stocking Cost: &[mgf_sm_stock_cost_tol]`
+			`	Net Operating Cost: &[mgf_sm_operating_cost]`
+			`--------------------------------------------------`
+			`	Marketing:&[mgf_sm_ad_budget]`
+			`	Product Development:&[mgf_sm_dev_budget]`
+			`	Technology Research:&[mgf_sm_tech_budget]`
+			`--------------------------------------------------`
+			# `	Outfitter Profit: &[mgf_sm_outfitter_sales]`
+			# `	Shipyard Profit: &[mgf_sm_shipyard_sales]`
+			`	Makerplace Fleet Revenue: &[mgf_sm_to_makerplace_rev]`
+			`	Tarazed Fleet Revenue: &[mgf_sm_to_tarazed_rev]`
+			`	Simple Revenue: &[mgf_sm_revenue_simple]`
+			`	Fleet Revenue: &[mgf_sm_fleet_profit]`
+			`	Total Revenue: &[mgf_sm_revenue]`
+			`Net income: &[salary: Shipyard Income]`
+			choice
+				`	[Force Recalculate Financials]`
+					goto recalc_financial
+				`	Back`
+					goto action_menu
+			label recalc_financial
+			action
+				event "mgf: tbab to makerplace fleet earning calc" 0
+				event "mgf: tbab to tarazed fleet earning calc" 0
+				# event "mgf: tbab outfitter earning calc" 0
+				event "mgf: tbab business profit calc" 0
+			branch financial_menu
+			label budget_menu
+			`Current daily budget allocation:`
+			`	Marketing:&[credits@mgf_sm_ad_budget]`
+			`		Increase reach and let people know about you, boosting sales to a degree.`
+			`	Product Development:&[credits@mgf_sm_dev_budget]`
+			`		Developing new products or improve existing.`
+			`	Technology Research:&[credits@mgf_sm_tech_budget]`
+			`		Researching new technologies improving performance, efficiencies, etc.`
+			choice
+				#TODO, lock marketing behind first product. or maybe just this entire management thing.
+				`	[Adjust marketing budget]`
+					goto marketing_budget_menu
+				`	[Adjust development budget]`
+					goto development_budget_menu
+				`	[Adjust research budget]`
+					goto research_budget_menu
+				`	Back`
+					goto action_menu
+			label marketing_budget_menu
+			`Current marketing budget: &[credits@mgf_sm_ad_budget]`
+			choice
+				#quick and dirty, too lazy for more granular stuffs.'
+				#Numeric input would've been helpful. Or freetext with function to convert text to integers.
+				`	[Set to 0]`
+					goto marketing_0
+				`	[Set to 1000]`
+					goto marketing_1000
+				`	[Set to 5000]`
+					goto marketing_5000
+				`	[Set to 10000]`
+					goto marketing_10000
+				`	[Set to 30000]`
+					goto marketing_30000
+				`	Back`
+					goto budget_menu
+			label marketing_0
+			action
+				"mgf_sm_ad_budget" = 0
+			``
+				goto marketing_budget_menu
+			label marketing_1000
+			action
+				"mgf_sm_ad_budget" = 1000
+			``
+				goto marketing_budget_menu
+			label marketing_5000
+			action
+				"mgf_sm_ad_budget" = 5000
+			``
+				goto marketing_budget_menu
+			label marketing_10000
+			action
+				"mgf_sm_ad_budget" = 10000
+			``
+				goto marketing_budget_menu
+			label marketing_30000
+			action
+				"mgf_sm_ad_budget" = 30000
+			``
+				goto marketing_budget_menu
+
+			label development_budget_menu
+			`Current development budget: &[credits@mgf_sm_dev_budget]`
+			choice
+				`	[Set to 0]`
+					goto development_0
+				`	[Set to 1000]`
+					goto development_1000
+				`	[Set to 5000]`
+					goto development_5000
+				`	[Set to 10000]`
+					goto development_10000
+				`	[Set to 30000]`
+					goto development_30000
+				`	Back`
+					goto budget_menu
+			label development_0
+			action
+				"mgf_sm_dev_budget" = 0
+			``
+				goto development_budget_menu
+			label development_1000
+			action
+				"mgf_sm_dev_budget" = 1000
+			``
+				goto development_budget_menu
+			label development_5000
+			action
+				"mgf_sm_dev_budget" = 5000
+			``
+				goto development_budget_menu
+			label development_10000
+			action
+				"mgf_sm_dev_budget" = 10000
+			``
+				goto development_budget_menu
+			label development_30000
+			action
+				"mgf_sm_dev_budget" = 30000
+			``
+				goto development_budget_menu
+
+			label research_budget_menu
+			`Current research budget: &[credits@mgf_sm_tech_budget]`
+			choice
+				`	[Set to 0]`
+					goto research_0
+				`	[Set to 1000]`
+					goto research_1000
+				`	[Set to 5000]`
+					goto research_5000
+				`	[Set to 10000]`
+					goto research_10000
+				`	[Set to 30000]`
+					goto research_30000
+				`	Back`
+					goto budget_menu
+			label research_0
+			action
+				"mgf_sm_tech_budget" = 0
+			``
+				goto research_budget_menu
+			label research_1000
+			action
+				"mgf_sm_tech_budget" = 1000
+			``
+				goto research_budget_menu
+			label research_5000
+			action
+				"mgf_sm_tech_budget" = 5000
+			``
+				goto research_budget_menu
+			label research_10000
+			action
+				"mgf_sm_tech_budget" = 10000
+			``
+				goto research_budget_menu
+			label research_30000
+			action
+				"mgf_sm_tech_budget" = 30000
+			``
+				goto research_budget_menu
+
+			#Tech tree time 
+			label project_menu
+			`Available Projects, there can only be one on-going development project and research project at a time. Will only progress if there are appropriate budget allocated for the category.`
+			choice
+				`	[Develop Shield Regenerator 1]`
+					to display
+						has "mgf: tbab hai shield 1 researched"
+						not "mgf: tbab dev shield regen 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_shield_regen_1
+				`	[Develop Shield Regenerator 2]`
+					to display
+						has "mgf: tbab hai shield 2 researched"
+						not "mgf: tbab dev shield regen 2 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_shield_regen_2
+				`	[Develop Delayed Shield Regnerator]`
+					to display
+						has "mgf: tbab hai shield 2 researched"
+						not "mgf: tbab dev delayed shield regen 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_delayed_shield_regen_1
+				`	[Develop Improved Shield Emitter 1]`
+					to display
+						has "mgf: tbab hai shield 2 researched"
+						not "mgf: tbab dev shield emitter 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_improved_shield_emitter_1
+				`	[Develop Improved Shield Emitter 2]` #unlocks shield emitter outfit
+					to display
+						has "mgf: tbab hai shield 2 researched"
+						not "mgf: tbab dev shield emitter 2 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_improved_shield_emitter_2
+				`	[Develop Heavy Pulse Blaster]`
+					to display
+						# never
+						has "mgf: tbab hai shield 1 researched"
+						not "mgf: tbab dev shield regen 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_heavy_pulse
+				`	[Develop Pulse Cannon Modification]`
+					to display
+						never
+						#req heavy pulse blaster
+						#req outfitter in hai space
+						#unlocks modified pulse cannon for Hai/UHai market.
+						has "mgf: tbab hai shield 1 researched"
+						has "outfit: Pulse Cannon"
+						not "mgf: tbab dev shield regen 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto develop_mod_pulse
+				`	[Research Wanderer Shields]`
+					to display
+						never
+						has "mgf: tbab hai shield 2 researched"
+						has "outfit: Dark Storm Shielding"
+						not "mgf: tbab dev shield regen 1 start epoch"
+						not "mgf: tbab dev accumulator"
+					goto research_wanderer_shield
+				`	Back`
+					goto action_menu
+			label develop_shield_regen_1
+			`To start the development for a series of shield regenerator you'll need 1.2M credits to start and some development budget to keep going.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 1200000
+					term 1850
+				"mgf: tbab dev shield regen 1 start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for Shield Regenerator started.`
+				goto project_menu
+			label develop_shield_regen_2
+			`Start development of next generation of shield generator which is more efficient. You'll need 4.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 4200000
+					term 1850
+				"mgf: tbab dev shield regen 2 start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+
+			`	Development for 2nd gen Shield Regenerator started.`
+				goto project_menu
+			label develop_delayed_shield_regen_1
+			`Start development for delayed shield regenerator which can be significantly more powerful at cost of requiring periods of cooldown if damage was taken. You'll need 4.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 4200000
+					term 1850
+				"mgf: tbab dev delayed shield regen 1 start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for Delayed Shield Regenerator started.`
+				goto project_menu
+			label develop_improved_shield_emitter_1
+			`Start development for better shield emitter. You'll need 4.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 4200000
+					term 1850
+				"mgf: tbab dev shield emitter 1 start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for better shield emitter started.`
+				goto project_menu
+			label develop_improved_shield_emitter_2
+			`Start development for better shield emitter. You'll need 8.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 8200000
+					term 1850
+				"mgf: tbab dev shield emitter 2 start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for better shield emitter started.`
+				goto project_menu
+			label develop_heavy_pulse
+			`Start development for Heavy Pulse Blaster, a larger, more powerful Pulse Blaster. You'll need 2.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 2200000
+					term 1850
+				"mgf: tbab dev heavy pulse blaster start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for Heavy Pulse Blaster started.`
+				goto project_menu
+			label develop_mod_pulse #Unimplemented
+			`Start development for modified Pulse Cannon. You'll need 1.2M credits to start.`
+			choice
+				`	[Start]`
+				`	Back`
+					goto project_menu
+			action
+				debt 1200000
+					term 1850
+				"mgf: tbab dev mod pulse cannon start epoch" = "days since epoch"
+				"mgf: tbab dev accumulator" = 1
+			`	Development for Heavy Pulse Blaster started.`
+				goto project_menu
+			label research_wanderer_shield
+			`Start research for Wanderer Shielding system by giving two of your Dark Storm Shielding and 5M credits in funding.`
+			choice
+				`	[Start]`
+					to display
+						"outfit: Dark Storm Shielding" >= 2
+				`	Back`
+					goto project_menu
+			action
+				debt 5000000
+					term 1850
+				"mgf: tbab re dark storm shield start epoch" = "days since epoch"
+				"mgf: tbab tech accumulator" = 1
+			`	Wanderer Shielding Research project started.`
+				goto project_menu
+			label expand_menu
+			`Available Expansions`
+			choice
+				`	[Expand Logistic Division]`
+					# to display
+					# 	never
+					goto expand_logi
+				`	[Expand Security Division]`
+					to display
+						never
+					goto expand_security
+				`	[Build New Outfitter]`
+					to display
+						never
+					goto new_outfitter
+				`	Back`
+					goto action_menu
+			label expand_logi
+			`Expand your logistic fleet and establish trade routes.`
+			choice
+				`	[Create new route]`
+					goto create_route
+				`	[Expand existing route]`
+					goto expand_route
+				`	Back`
+					goto action_menu
+			label create_route
+			`Create route to?`
+			choice
+				# #Luxury Goods export, Medical import
+				# `	[To Betelguese via Paradise]`
+				# `	[To Betelguese via Uninhabited systems]`
+				# #Luxury Goods export, Industrial import
+				# `	[To Alphard]`
+				# #Food export, Medical import
+				# `	[To Merak]`
+				#Luxury Goods export, Equipment import
+				`	[To Tarazed]`
+					to display
+						not "mgf_sm_to_tarazed_op_cost"
+					goto to_tarazed
+				#Food export, Heavy Metal import
+				# `	[To Markab]`
+				# #Food export, Equipment import
+				# `	[To Epsilon Leonis]`
+				`	Back`
+					goto expand_logi
+			label to_tarazed
+			`	To: Tarazed, Export: Luxury Goods, Import: Equipment`
+			`	Expected trade profit: 767 credits/ton per round trip`
+			`	Select freighters:`
+			#I'm just going to copy-paste from the mission.
+			#Also ever wondered why functions exist?
+			label pick_fleet
+			choice
+				`	(Tlielart-class engine variant)`
+					goto opt_tlielart
+				`	(Conveyor-class)`
+					goto opt_conveyor
+				`	Back`
+					goto create_route
+				#I *love* es modding, fuck this, I'll do it when it's less insane to do.
+				# `	(One H-Class Super Container Ship)`
+				# 	to display
+				# 		has "event: mgf: h-class on sale"
+				# 	goto opt_hclass
+				# `	(One K-Class Ultra Container Ship)`
+				# 	to display
+				# 		has "event: mgf: k-class on sale"
+				# 	goto opt_kclass
+				# `	(One Exchanger-Class + Fighters)`
+				# 	to display
+				# 		has "event: mgf: exchanger-class on sale"
+				# 	goto opt_exchanger
+			label opt_tlielart
+			#Now only if I wouldn't forget to update this when if I ever rebalance them at some point.
+			#Would've been nice if we could just get the number by refering to the ship data itself.
+			`	86.3M credits stock, 5100 tons of cargo, 61 crew, the engine variant of Tlielart is quite fast for its size and tough enough to take a beating. Combination of both should allow it to escape any pirate ambushes easily.`
+			`Final Fleet: &[n_ship_tlielart] Tlielart-class Engine variant`
+			choice
+				`	(Confirm)`
+					to display
+						n_ship_tlielart > 0
+					goto confirm_1_tlielart
+				`	(Add one ship)`
+					to display
+						n_ship_tlielart < 5 #Capping for now, might remove later
+					goto add_1_tlielart
+				`	(Reset and back)`
+					goto pick_fleet
+			label add_1_tlielart
+			action
+				n_ship_tlielart += 1
+			``
+				goto opt_tlielart
+			label confirm_1_tlielart
+			action
+				n_ship_cp = n_ship_tlielart
+			label loop1
+			branch loop1_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 86333000
+					term 1825
+			branch loop1
+				n_ship_cp > 0
+			label loop1_break
+			branch spwn_tlielart_5
+				n_ship_tlielart == 5
+			branch spwn_tlielart_4
+				n_ship_tlielart == 4
+			branch spwn_tlielart_3
+				n_ship_tlielart == 3
+			branch spwn_tlielart_2
+				n_ship_tlielart == 2
+			action
+				event "mgf: sm tarazed export fleet variant 1" 0
+			``
+				goto spwn_tlielart_end
+			label spwn_tlielart_2
+			action
+				event "mgf: sm tarazed export fleet variant 2" 0
+			``
+				goto spwn_tlielart_end
+			label spwn_tlielart_3
+			action
+				event "mgf: sm tarazed export fleet variant 3" 0
+			``
+				goto spwn_tlielart_end
+			label spwn_tlielart_4
+			action
+				event "mgf: sm tarazed export fleet variant 4" 0
+			``
+				goto spwn_tlielart_end
+			label spwn_tlielart_5
+			action
+				event "mgf: sm tarazed export fleet variant 5" 0
+			label spwn_tlielart_end
+			`	You confirmed the fleet composition. Your purchasing officer will proceed with ordering the ship for the company.`
+				goto finalize_tarazed_route
+			label opt_conveyor
+			`	58M credits stock, 2000 tons of cargo, 54 crew, a common option among many larger shipping companies as they pack enough armaments to defend itself from most pirates. The design also allows for faster unloading and loading operations decreasing time at port.`
+			`	You can also add Xencar fighter for 474k credits each (3792000 per carrier) or add Dagger fighter for 401k each (3212000 per carrier)`
+			`Final Fleet: &[n_ship_conveyor] Conveyor-class`
+			`				* 8 Xencar Fighters (per ship)`
+				to display
+					n_ship_xencar > 0
+			`				* 8 Dagger Fighters (per ship)`
+				to display
+					n_ship_dagger > 0
+			choice
+				`	(Confirm)`
+					to display
+						n_ship_conveyor > 0
+					goto confirm_1_conveyor
+				`	(Add one ship)`
+					#Capping for now, might remove later
+					to display
+						n_ship_conveyor < 5
+					goto add_1_conveyor
+				`	(Add/Replace with Xencar wings, x8 per ship)`
+					to display
+						n_ship_conveyor > 0
+						n_ship_xencar < 0
+					goto add_8_xencar
+				`	(Add/Replace with Dagger wings, x8 per ship)`
+					to display
+						n_ship_conveyor > 0
+						n_ship_dagger < 0
+					goto add_8_dagger
+				`	(Reset and back)`
+					goto pick_fleet
+			label add_1_conveyor
+			action
+				n_ship_conveyor += 1
+			``
+				goto opt_conveyor
+			label add_8_xencar
+			#Too tedious to actually update the actual number of them when adding a carrier
+			#Also mixing fighters would be annoying to deal with if/when spawning the actual fleet as I'd need every single possible variant of the fleet. (See below this mission block when I'll add them)
+			#Also why I didn't allow mixing freighters or add escorts
+			#Ideally this would just be a custom ui that list all suitable ship by filter, and let player click and add them.
+			action
+				n_ship_xencar = 1
+				n_ship_dagger = 0
+			``
+				goto opt_conveyor
+			label add_8_dagger
+			action
+				n_ship_xencar = 0
+				n_ship_dagger = 1
+			``
+				goto opt_conveyor
+			label confirm_1_conveyor
+			action
+				n_ship_cp = n_ship_conveyor
+			label loop2
+			branch loop2_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 58058000
+					term 1825
+			#prob not the best implementation. Or maybe there should just be scripting so this isn't a mess to make.
+			#like, being able to put condition/some variable or expresion instead of set-number would help a ton.
+			#image 'debt 58058000 * n_ship_conveyor' instead of whatever the fuck this is.
+			branch loop2_add_xencar loop2_next1
+				n_ship_xencar >= 1
+			label loop2_add_xencar
+			action
+				debt 3792000
+					term 1825
+			label loop2_next1
+			branch loop2_add_dagger loop2_next2
+				n_ship_dagger >= 1
+			label loop2_add_dagger
+			action
+				debt 3212000
+					term 1825
+			label loop2_next2
+			branch loop2
+				n_ship_cp > 0
+			label loop2_break
+
+			branch spwn_conveyor_xencar_5
+				n_ship_conveyor == 5
+				n_ship_xencar >= 1
+				n_ship_dagger == 0
+			branch spwn_conveyor_xencar_4
+				n_ship_conveyor == 4
+				n_ship_xencar >= 1
+				n_ship_dagger == 0
+			branch spwn_conveyor_xencar_3
+				n_ship_conveyor == 3
+				n_ship_xencar >= 1
+				n_ship_dagger == 0
+			branch spwn_conveyor_xencar_2
+				n_ship_conveyor == 2
+				n_ship_xencar >= 1
+				n_ship_dagger == 0
+			branch spwn_conveyor_xencar_1
+				n_ship_conveyor == 1
+				n_ship_xencar >= 1
+				n_ship_dagger == 0
+
+			branch spwn_conveyor_dagger_5
+				n_ship_conveyor == 5
+				n_ship_dagger >= 1
+				n_ship_xencar == 0
+			branch spwn_conveyor_dagger_4
+				n_ship_conveyor == 4
+				n_ship_dagger >= 1
+				n_ship_xencar == 0
+			branch spwn_conveyor_dagger_3
+				n_ship_conveyor == 3
+				n_ship_dagger >= 1
+				n_ship_xencar == 0
+			branch spwn_conveyor_dagger_2
+				n_ship_conveyor == 2
+				n_ship_dagger >= 1
+				n_ship_xencar == 0
+			branch spwn_conveyor_dagger_1
+				n_ship_conveyor == 1
+				n_ship_dagger >= 1
+				n_ship_xencar == 0
+
+			branch spwn_conveyor_solo_5
+				n_ship_conveyor == 5
+				n_ship_xencar == 0
+				n_ship_dagger == 0
+			branch spwn_conveyor_solo_4
+				n_ship_conveyor == 4
+				n_ship_xencar == 0
+				n_ship_dagger == 0
+			branch spwn_conveyor_solo_3
+				n_ship_conveyor == 3
+				n_ship_xencar == 0
+				n_ship_dagger == 0
+			branch spwn_conveyor_solo_2
+				n_ship_conveyor == 2
+				n_ship_xencar == 0
+				n_ship_dagger == 0
+			action
+				event "mgf: sm tarazed export fleet variant 6" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_solo_2
+			action
+				event "mgf: sm tarazed export fleet variant 7" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_solo_3
+			action
+				event "mgf: sm tarazed export fleet variant 8" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_solo_4
+			action
+				event "mgf: sm tarazed export fleet variant 9" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_solo_5
+			action
+				event "mgf: sm tarazed export fleet variant 10" 0
+			``
+				goto spwn_conveyor_end
+
+			label spwn_conveyor_xencar_1
+			action
+				event "mgf: sm tarazed export fleet variant 11" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_xencar_2
+			action
+				event "mgf: sm tarazed export fleet variant 12" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_xencar_3
+			action
+				event "mgf: sm tarazed export fleet variant 13" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_xencar_4
+			action
+				event "mgf: sm tarazed export fleet variant 14" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_xencar_5
+			action
+				event "mgf: sm tarazed export fleet variant 15" 0
+			``
+				goto spwn_conveyor_end
+
+			label spwn_conveyor_dagger_1
+			action
+				event "mgf: sm tarazed export fleet variant 16" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_dagger_2
+			action
+				event "mgf: sm tarazed export fleet variant 17" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_dagger_3
+			action
+				event "mgf: sm tarazed export fleet variant 18" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_dagger_4
+			action
+				event "mgf: sm tarazed export fleet variant 19" 0
+			``
+				goto spwn_conveyor_end
+			label spwn_conveyor_dagger_5
+			action
+				event "mgf: sm tarazed export fleet variant 20" 0
+			``
+				goto spwn_conveyor_end
+			#insanity
+			label spwn_conveyor_end
+			`	You confirmed the fleet composition. Your purchasing officer will proceed with ordering the ship for the company.`
+				goto finalize_tarazed_route
+			label finalize_tarazed_route
+			action
+				"mgf_sm_fleet_to_tarazed_tlielart" = n_ship_tlielart
+				"mgf_sm_fleet_to_tarazed_conveyor" = n_ship_conveyor
+				"mgf_sm_fleet_to_tarazed_xencar" = n_ship_xencar * n_ship_conveyor * 8
+				"mgf_sm_fleet_to_tarazed_dagger" = n_ship_dagger * n_ship_conveyor * 8
+				clear n_ship_tlielart
+				clear n_ship_conveyor
+				clear n_ship_xencar
+				clear n_ship_dagger
+				event "mgf: tbab calc fleet to tarazed" 0
+				event "mgf: tbab to tarazed fleet earning calc" 0
+			branch create_route
+
+			#====================================================================================================================================
+			label expand_route
+			`Select route to expand:`
+			choice
+				`	[To Makerplace]`
+					goto expand_fleet_makerplace
+				`	[To Tarazed]`
+					to display
+						or
+							"mgf_sm_fleet_to_tarazed_tlielart" > 0
+							"mgf_sm_fleet_to_tarazed_conveyor" > 0
+					goto expand_fleet_tarazed
+				`	Back`
+					goto expand_logi
+			label expand_fleet_makerplace
+			`Increase the amount of fleet to Makerplace`
+			choice
+				`	[2x]`
+					goto expand_fleet_makerplace_2x
+				`	[3x]`
+					goto expand_fleet_makerplace_3x
+				`	Back`
+					goto expand_logi
+			label expand_fleet_makerplace_2x
+			action
+				n_new_ship_tlielart = mgf_sm_fleet_to_makerplace_tlielart * 1
+				cost_new_ship_tlielart = n_new_ship_tlielart * 86333000
+				n_new_ship_conveyor = mgf_sm_fleet_to_makerplace_conveyor * 1
+				cost_new_ship_conveyor = n_new_ship_conveyor * 58058000
+			`	Currently you have &[mgf_sm_fleet_to_makerplace_tlielart] ships, this expansion will cost you &[credits@cost_new_ship_tlielart]`
+				to display
+					mgf_sm_fleet_to_makerplace_tlielart > 0
+			`	Currently you have &[mgf_sm_fleet_to_makerplace_conveyor] ships, this expansion will cost you &[credits@cost_new_ship_conveyor]`
+				to display
+					mgf_sm_fleet_to_makerplace_conveyor > 0
+			choice
+				`	(Go ahead)`
+				`	Back`
+					goto expand_fleet_makerplace
+			action
+				n_ship_cp = mgf_sm_fleet_to_makerplace_tlielart
+			label loop_fleet_2x_tlielart
+			branch loop_fleet_2x_tlielart_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 86333000
+					term 1825
+			branch loop_fleet_2x_tlielart
+				n_ship_cp > 0
+			label loop_fleet_2x_tlielart_break
+			action
+				n_ship_cp = mgf_sm_fleet_to_makerplace_conveyor
+			label loop_fleet_2x_conveyor
+			branch loop_fleet_2x_conveyor_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 58058000
+					term 1825
+			branch loop_fleet_2x_conveyor
+				n_ship_cp > 0
+			label loop_fleet_2x_conveyor_break
+			action
+				"mgf_sm_fleet_to_makerplace_tlielart" *= 2
+				"mgf_sm_fleet_to_makerplace_conveyor" *= 2
+				event "mgf: tbab recalc component prod"
+					#currently this use solid value, only if there's some int variable I could've apply everywhere......
+					#if I want to adjust this to current number of ships you bought for the route then I'll need a bunch more branch loops and events for each number which is tedious, not doing that rn.
+			branch fleet_2x_spawn_route_conveyor_skip
+				or
+					has "event: mgf: tbab spawn fleet to makerplace 1" #don't repeat if already did, avoid bloating the file
+					has "event: mgf: tbab spawn fleet to makerplace 2"
+			action
+				event "mgf: tbab spawn fleet to makerplace 1"
+			#need individual branch for damn planet the shipyard could've been in because everything is hardcoded, fml.
+			#I'll also need to repeat this for other ship as well because any stuff that requires a bit of logic + action need to be done in conversation and there's no "function" equivalent to that unlike just adding numbers and stuffs which can use events
+			branch fleet_2x_spawn_route_conveyor_sunracer
+				or
+					not "event: mgf: tbab spawn fleet to makerplace at home sunracer 1"
+					not "event: mgf: tbab spawn fleet to makerplace at home sunracer 2"
+				has "mgf: tbab shipyard: sunracer"
+			branch fleet_2x_spawn_route_conveyor_skip #if shipyard is on bluestone, skip otherwise
+				or
+					has "event: mgf: tbab spawn fleet to makerplace at home bluestone 1"
+					has "event: mgf: tbab spawn fleet to makerplace at home bluestone 2"
+				has "mgf: tbab shipyard: bluestone"
+			action
+				event "mgf: tbab spawn fleet to makerplace at home bluestone 1"
+			``
+				goto fleet_2x_spawn_route_conveyor_skip
+			label fleet_2x_spawn_route_conveyor_sunracer
+			action
+				event "mgf: tbab spawn fleet to makerplace at home sunracer 1"
+			label fleet_2x_spawn_route_conveyor_skip
+			`	Done.`
+				goto expand_logi
+
+			label expand_fleet_makerplace_3x
+			action
+				n_new_ship_tlielart = mgf_sm_fleet_to_makerplace_tlielart * 2
+				cost_new_ship_tlielart = n_new_ship_tlielart * 86333000
+				n_new_ship_conveyor = mgf_sm_fleet_to_makerplace_conveyor * 2
+				cost_new_ship_conveyor = n_new_ship_conveyor * 58058000
+			`	Currently you have &[mgf_sm_fleet_to_makerplace_tlielart] ships, this expansion will cost you &[credits@cost_new_ship_tlielart]`
+				to display
+					mgf_sm_fleet_to_makerplace_tlielart > 0
+			`	Currently you have &[mgf_sm_fleet_to_makerplace_conveyor] ships, this expansion will cost you &[credits@cost_new_ship_conveyor]`
+				to display
+					mgf_sm_fleet_to_makerplace_conveyor > 0
+			choice
+				`	(Go ahead)`
+				`	Back`
+					goto expand_fleet_makerplace
+			action
+				n_ship_cp = mgf_sm_fleet_to_makerplace_tlielart * 2
+			label loop_fleet_3x_tlielart
+			branch loop_fleet_3x_tlielart_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 86333000
+					term 1825
+			branch loop_fleet_3x_tlielart
+				n_ship_cp > 0
+			label loop_fleet_3x_tlielart_break
+			action
+				n_ship_cp = mgf_sm_fleet_to_makerplace_conveyor * 2
+			label loop_fleet_3x_conveyor
+			branch loop_fleet_3x_conveyor_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 58058000
+					term 1825
+			branch loop_fleet_3x_conveyor
+				n_ship_cp > 0
+			label loop_fleet_3x_conveyor_break
+			action
+				"mgf_sm_fleet_to_makerplace_tlielart" *= 3
+				"mgf_sm_fleet_to_makerplace_conveyor" *= 3
+				event "mgf: tbab recalc component prod"
+			#Oh right, just copy-pasting isn't enough I gonna rename these fking thing every goddamn time
+			branch fleet_3x_spawn_route_conveyor_skip
+				has "event: mgf: tbab spawn fleet to makerplace 2"
+			action
+				event "mgf: tbab spawn fleet to makerplace 2"
+			#need individual branch for damn planet the shipyard could've been in because everything is hardcoded, fml.
+			#I'll also need to repeat this for other ship as well because any stuff that requires a bit of logic + action need to be done in conversation and there's no "function" equivalent to that unlike just adding numbers and stuffs which can use events
+			branch fleet_3x_spawn_route_conveyor_sunracer
+				or
+					not "event: mgf: tbab spawn fleet to makerplace at home sunracer 2"
+				has "mgf: tbab shipyard: sunracer"
+			branch fleet_3x_spawn_route_conveyor_skip #if shipyard is on bluestone, skip otherwise
+				or
+					has "event: mgf: tbab spawn fleet to makerplace at home bluestone 2"
+				has "mgf: tbab shipyard: bluestone"
+			action
+				event "mgf: tbab spawn fleet to makerplace at home bluestone 2"
+			``
+				goto fleet_3x_spawn_route_conveyor_skip
+			label fleet_3x_spawn_route_conveyor_sunracer
+			action
+				event "mgf: tbab spawn fleet to makerplace at home sunracer 2"
+			label fleet_3x_spawn_route_conveyor_skip
+			`	Done.`
+				goto expand_logi
+			label expand_fleet_tarazed
+			`Increase the amount of fleet to Tarazed`
+			choice
+				`	[2x]`
+					goto expand_fleet_tarazed_2x
+				`	[3x]`
+					goto expand_fleet_tarazed_3x
+				`	Back`
+					goto expand_logi
+			label expand_fleet_tarazed_2x
+			action
+				n_new_ship_tlielart = mgf_sm_fleet_to_tarazed_tlielart * 1
+				cost_new_ship_tlielart = n_new_ship_tlielart * 86333000
+				n_new_ship_conveyor = mgf_sm_fleet_to_tarazed_conveyor * 1
+				cost_new_ship_conveyor = n_new_ship_conveyor * 58058000
+			`	Currently you have &[mgf_sm_fleet_to_tarazed_tlielart] ships, this expansion will cost you &[credits@cost_new_ship_tlielart]`
+				to display
+					mgf_sm_fleet_to_tarazed_tlielart > 0
+			`	Currently you have &[mgf_sm_fleet_to_tarazed_conveyor] ships, this expansion will cost you &[credits@cost_new_ship_conveyor]`
+				to display
+					mgf_sm_fleet_to_tarazed_conveyor > 0
+			choice
+				`	(Go ahead)`
+				`	Back`
+					goto expand_fleet_tarazed
+			action
+				n_ship_cp = mgf_sm_fleet_to_tarazed_tlielart
+			label loop_fleet_2x_tlielart
+			branch loop_fleet_2x_tlielart_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 86333000
+					term 1825
+			branch loop_fleet_2x_tlielart
+				n_ship_cp > 0
+			label loop_fleet_2x_tlielart_break
+			action
+				n_ship_cp = mgf_sm_fleet_to_tarazed_conveyor
+			label loop_fleet_2x_conveyor
+			branch loop_fleet_2x_conveyor_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 58058000
+					term 1825
+			branch loop_fleet_2x_conveyor
+				n_ship_cp > 0
+			label loop_fleet_2x_conveyor_break
+			action
+				"mgf_sm_fleet_to_tarazed_tlielart" *= 2
+				"mgf_sm_fleet_to_tarazed_conveyor" *= 2
+				event "mgf: tbab recalc component prod"
+			branch fleet_2x_spawn_tarazed_route_conveyor_skip
+				or
+					has "event: mgf: tbab spawn fleet to tarazed 1"
+					has "event: mgf: tbab spawn fleet to tarazed 2"
+			action
+				event "mgf: tbab spawn fleet to tarazed 1"
+			#need individual branch for damn planet the shipyard could've been in because everything is hardcoded, fml.
+			#I'll also need to repeat this for other ship as well because any stuff that requires a bit of logic + action need to be done in conversation and there's no "function" equivalent to that unlike just adding numbers and stuffs which can use events
+			branch fleet_2x_spawn_tarazed_route_conveyor_sunracer
+				or
+					not "event: mgf: tbab spawn fleet to tarazed at home sunracer 1"
+					not "event: mgf: tbab spawn fleet to tarazed at home sunracer 2"
+				has "mgf: tbab shipyard: sunracer"
+			branch fleet_2x_spawn_tarazed_route_conveyor_skip #if shipyard is on bluestone, skip otherwise
+				or
+					has "event: mgf: tbab spawn fleet to tarazed at home bluestone 1"
+					has "event: mgf: tbab spawn fleet to tarazed at home bluestone 2"
+				has "mgf: tbab shipyard: bluestone"
+			action
+				event "mgf: tbab spawn fleet to tarazed at home bluestone 1"
+			``
+				goto fleet_2x_spawn_tarazed_route_conveyor_skip
+			label fleet_2x_spawn_tarazed_route_conveyor_sunracer
+			action
+				event "mgf: tbab spawn fleet to tarazed at home sunracer 1"
+			label fleet_2x_spawn_tarazed_route_conveyor_skip
+			`	Done.`
+				goto expand_logi
+			label expand_fleet_tarazed_3x
+			action
+				n_new_ship_tlielart = mgf_sm_fleet_to_tarazed_tlielart * 2
+				cost_new_ship_tlielart = n_new_ship_tlielart * 86333000
+				n_new_ship_conveyor = mgf_sm_fleet_to_tarazed_conveyor * 2
+				cost_new_ship_conveyor = n_new_ship_conveyor * 58058000
+			`	Currently you have &[mgf_sm_fleet_to_tarazed_tlielart] ships, this expansion will cost you &[credits@cost_new_ship_tlielart]`
+				to display
+					mgf_sm_fleet_to_tarazed_tlielart > 0
+			`	Currently you have &[mgf_sm_fleet_to_tarazed_conveyor] ships, this expansion will cost you &[credits@cost_new_ship_conveyor]`
+				to display
+					mgf_sm_fleet_to_tarazed_conveyor > 0
+			choice
+				`	(Go ahead)`
+				`	Back`
+					goto expand_fleet_tarazed
+			action
+				n_ship_cp = mgf_sm_fleet_to_tarazed_tlielart * 2
+			label loop_fleet_3x_tarazed_tlielart
+			branch loop_fleet_3x_tarazed_tlielart_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 86333000
+					term 1825
+			branch loop_fleet_3x_tarazed_tlielart
+				n_ship_cp > 0
+			label loop_fleet_3x_tarazed_tlielart_break
+			action
+				n_ship_cp = mgf_sm_fleet_to_tarazed_conveyor * 2
+			label loop_fleet_3x_tarazed_conveyor
+			branch loop_fleet_3x_tarazed_conveyor_break
+				n_ship_cp <= 0
+			action
+				n_ship_cp -= 1
+				debt 58058000
+					term 1825
+			branch loop_fleet_3x_tarazed_conveyor
+				n_ship_cp > 0
+			label loop_fleet_3x_tarazed_conveyor_break
+			action
+				"mgf_sm_fleet_to_tarazed_tlielart" *= 3
+				"mgf_sm_fleet_to_tarazed_conveyor" *= 3
+				event "mgf: tbab recalc component prod"
+				event "mgf: tbab spawn fleet to tarazed 2"
+			branch fleet_3x_spawn_tarazed_route_conveyor_skip
+				has "event: mgf: tbab spawn fleet to tarazed 2"
+			action
+				event "mgf: tbab spawn fleet to tarazed 2"
+			#need individual branch for damn planet the shipyard could've been in because everything is hardcoded, fml.
+			#I'll also need to repeat this for other ship as well because any stuff that requires a bit of logic + action need to be done in conversation and there's no "function" equivalent to that unlike just adding numbers and stuffs which can use events
+			branch fleet_3x_spawn_tarazed_route_conveyor_sunracer
+				or
+					not "event: mgf: tbab spawn fleet to tarazed at home sunracer 1"
+					not "event: mgf: tbab spawn fleet to tarazed at home sunracer 2"
+				has "mgf: tbab shipyard: sunracer"
+			branch fleet_3x_spawn_tarazed_route_conveyor_skip #if shipyard is on bluestone, skip otherwise
+				or
+					has "event: mgf: tbab spawn fleet to tarazed at home bluestone 1"
+					has "event: mgf: tbab spawn fleet to tarazed at home bluestone 2"
+				has "mgf: tbab shipyard: bluestone"
+			action
+				event "mgf: tbab spawn fleet to tarazed at home bluestone 1"
+			``
+				goto fleet_3x_spawn_tarazed_route_conveyor_skip
+			label fleet_3x_spawn_tarazed_route_conveyor_sunracer
+			action
+				event "mgf: tbab spawn fleet to tarazed at home sunracer 1"
+			label fleet_3x_spawn_tarazed_route_conveyor_skip
+			`	Done.`
+				goto expand_logi
+			label expand_security
+			`Build a security division improving effectiveness of escorts for your freighters and allow creation of security fleets to defend your properties or deploy as security service for other individuals and corporations for money.`
+			`	You estimated it will cost up to 30k credits to maintain operation which excludes initial ship purchases.`
+			choice
+				`	[Create Security Fleet]`
+					goto expand_menu
+				`	Back`
+					goto expand_menu
+			label create_security_fleet
+			`Where to?`
+				`	[Around the shipyard]`
+					goto expand_menu
+				`	[Along existing route]`
+					goto expand_menu
+				`	[As mercenary service]`
+					goto expand_menu``
+				`	Back`
+					goto expand_security
+			label new_outfitter
+			`Select where you want to build new outfitter`
+			choice
+				`	[Not implemented yet.]`
+					goto expand_menu
+				`	Back`
+					goto expand_menu
+
+			label color_menu
+			# scene "scene/swizzlepreview.png" #TODO
+			`Current swizzle: &[mgf_sm_swzl]`
+			choice
+				#TODO add the rest
+				`	(Swizzle 0)`
+					goto swz_0
+				`	(Swizzle 1)`
+					goto swz_1
+				`	(Swizzle 2)`
+					goto swz_2
+				`	(Swizzle 3)`
+					goto swz_3
+				`	(Swizzle 4)`
+					goto swz_4
+				`	(Swizzle 5)`
+					goto swz_5
+				`	(Swizzle 6)`
+					goto swz_6
+				`	(Swizzle 7)`
+					goto swz_7
+				`	(Swizzle 8)`
+					goto swz_8
+				`	(Swizzle 9)`
+					goto swz_9
+				`	(Swizzle 10)`
+					goto swz_10
+				`	Back`
+					goto action_menu
+
+			label swz_0
+			action
+				event "mgf: mn player com swz 0" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_1
+			action
+				event "mgf: mn player com swz 1" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_2
+			action
+				event "mgf: mn player com swz 2" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_3
+			action
+				event "mgf: mn player com swz 3" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_4
+			action
+				event "mgf: mn player com swz 4" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_5
+			action
+				event "mgf: mn player com swz 5" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_6
+			action
+				event "mgf: mn player com swz 6" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_7
+			action
+				event "mgf: mn player com swz 7" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_8
+			action
+				event "mgf: mn player com swz 8" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_9
+			action
+				event "mgf: mn player com swz 9" 0
+			`	Swizzle changed`
+				goto color_menu
+			label swz_10
+			action
+				event "mgf: mn player com swz 10" 0
+			`	Swizzle changed`
+				goto color_menu
+
+
+event "mgf: mn player com swz 0"
+	"mgf_sm_swzl" = 0
+	government "MGF: Player Company"
+		swizzle 0
+		#IF the int value on the right could've at least been a condition(or a variable of some sort) then maybe I wouldn't need all these unique events just to set swizzle to 7 or 5
+event "mgf: mn player com swz 1"
+	"mgf_sm_swzl" = 1
+	government "MGF: Player Company"
+		swizzle 1
+event "mgf: mn player com swz 2"
+	"mgf_sm_swzl" = 2
+	government "MGF: Player Company"
+		swizzle 2
+event "mgf: mn player com swz 3"
+	"mgf_sm_swzl" = 3
+	government "MGF: Player Company"
+		swizzle 3
+event "mgf: mn player com swz 4"
+	"mgf_sm_swzl" = 4
+	government "MGF: Player Company"
+		swizzle 4
+event "mgf: mn player com swz 5"
+	"mgf_sm_swzl" = 5
+	government "MGF: Player Company"
+		swizzle 5
+event "mgf: mn player com swz 6"
+	"mgf_sm_swzl" = 6
+	government "MGF: Player Company"
+		swizzle 6
+event "mgf: mn player com swz 7"
+	"mgf_sm_swzl" = 7
+	government "MGF: Player Company"
+		swizzle 7
+event "mgf: mn player com swz 8"
+	"mgf_sm_swzl" = 8
+	government "MGF: Player Company"
+		swizzle 8
+event "mgf: mn player com swz 9"
+	"mgf_sm_swzl" = 9
+	government "MGF: Player Company"
+		swizzle 9
+event "mgf: mn player com swz 10"
+	"mgf_sm_swzl" = 10
+	government "MGF: Player Company"
+		swizzle 10
+
+#Some sort of invisble conversation panel might be nice to do some logic in the background
+#some more advanced math function like pow, log, sin would probably go a long way at making this easier.
+event "mgf: tbab inc customer base"
+	# "mgf_sm_customer_base" += ( "mgf_sm_customer_base" * ( 2 * ( random / 50 ) ) + ( "mgf_sm_ad_budget" / 1000 ) )
+	#todo nonlinear marketing-effectiveness
+	"mgf_sm_customer_base" = ( ( ( 1030 * "mgf_sm_customer_base" ) / 1000 ) + ( 2 * ( random / 50 ) ) + ( "mgf_sm_ad_budget" / 1000 ) )
+	"mgf_sm_churn_rate" = "mgf_sm_customer_base" * "mgf_sm_customer_base" / 1000000 + ( ( "mgf_sm_customer_base" * 10 ) / ( 111 * 10 ) )
+	"mgf_sm_ad_mult" = ( "mgf_sm_ad_budget" / 5000 )
+	"mgf_sm_ad_mult" >?= 0
+	"mgf_sm_customer_base" = "mgf_sm_customer_base" * ( "mgf_sm_ad_mult"  + 1 )
+	#idk how to make function that flattens at the top so I'll just cap it.
+	"mgf_sm_churn_rate" <?= 2000000
+	# "mgf_sm_churn_rate_rand_mult" = random / 10
+	"mgf_sm_customer_base" -= "mgf_sm_churn_rate"
+	"mgf_sm_customer_base" >?= 1
+	#TODO dynamically adjust market cap depending on your product
+	"mgf_sm_customer_base" <?= 60000000000
+
+event "mgf: tbab recalculate traffic"
+	#You know what would be better than manually keying all these in? get system, get fleet spawn, numbers
+	# Now this would be prone to any rebalance to fleet spawn or event modification to the system
+	"mgf_sm_bluestone_traffic_div" = 800 + ( 1500 - ( 1500 / 3 ) ) + 1000 + ( 2000 - ( 2000 / 3 ) )
+	"mgf_sm_sunracer_traffic_div" = 500 + ( 700 - ( 700 / 3 ) ) + 1000 + ( 1800 - ( 1800 / 3 ) )
+	"mgf_sm_bluestone_traffic_div" /= 4
+	"mgf_sm_sunracer_traffic_div" /= 4
+	"mgf_sm_bluestone_traffic" = 10000 / "mgf_sm_bluestone_traffic_div"
+	"mgf_sm_sunracer_traffic" = 10000 / "mgf_sm_sunracer_traffic_div"
+	"mgf_sm_bluestone_traffic" >?= 1
+	"mgf_sm_sunracer_traffic" >?= 1
+
+#idk if this is the best way to do this..
+#only if we have struct or some to store multiple set of structed data then add a way to iterate over all those data so we don't need unique variables for every trade routes.
+event "mgf: tbab to makerplace fleet earning calc"
+	#for return trip buying some generic commodities
+	"mgf_sm_to_makerplace_eqm_profit_per_ton" = 150 #todo add some fluctuations
+	"mgf_sm_to_makerplace_profit_per_ton" = 263 #todo add some fluctuations
+	"mgf_sm_to_makerplace_cargo_cap" = ( ( "mgf_sm_fleet_to_makerplace_tlielart" * 5100 ) + ( "mgf_sm_fleet_to_makerplace_conveyor" * 2000 ) )
+	"mgf_sm_to_makerplace_rev" = ( ( "mgf_sm_to_makerplace_cargo_cap" * "mgf_sm_to_makerplace_profit_per_ton" ) + ( "mgf_sm_to_makerplace_cargo_cap" * "mgf_sm_to_makerplace_eqm_profit_per_ton" ) ) / "mgf_sm_fleet_to_makerplace_travel_days"
+	#todo calculate fighter attrition rate.
+	#Ability to define function would surely be useful here
+	"mgf_sm_to_makerplace_op_cost" = ( ( "mgf_sm_fleet_to_makerplace_tlielart" * 61 ) * 100 ) + ( ( "mgf_sm_fleet_to_makerplace_conveyor" * 54 ) * 100 ) + ( "mgf_sm_fleet_to_makerplace_xencar" * 100 ) + ( "mgf_sm_fleet_to_makerplace_dagger" * 100 )
+	#add 40% for fuel, maintenance and stuffs, prob should be calc from ship value
+	"mgf_sm_to_makerplace_op_cost" *= 140 #maybe reduce to 20%
+	"mgf_sm_to_makerplace_op_cost" /= 100
+	# "mgf_sm_to_makerplace_op_cost" += "mgf_sm_component_prod_cost_daily"
+
+event "mgf: tbab shipyard earning calc"
+	"mgf_sm_traffic" = "mgf_sm_bluestone_traffic" * ( ( "mgf_sm_ad_mult" ) + 1 ) + "mgf_sm_customer_base" / 90000
+	# "mgf_sm_shipyard_prod_cost_base" = 1200000
+	"mgf_sm_shipyard_prod_cost" = "mgf_sm_shipyard_prod_cost_base" * ( ( "mgf_sm_customer_base" / 1000000 ) + 1)
+	# "mgf_sm_shipyard_op_cost" += ( "mgf_sm_traffic" / 30 ) * "mgf_sm_shipyard_prod_cost"
+	"mgf_sm_shipyard_sales" = ( "mgf_sm_traffic" / 30 ) * ( ( "mgf_sm_shipyard_prod_cost" * 120 ) / 100 )
+
+event "mgf: tbab outfitter earning calc"
+	#This would've been easy if I could've just get an outfitter and loop through the items to count what's sold there.
+	"mgf_sm_outfitter_bluestone_stock_size" = ( "mgf: tbab prod license deltav advanced" * 11 ) + ( "mgf: tbab prod license deltav basics" * 10 ) + ( "mgf: tbab prod license deep advanced" * 16 ) + ( "mgf: tbab prod license deep basics" * 8 ) + ( "mgf: tbab prod license kraz advanced" * 18 ) + ( "mgf: tbab prod license kraz basics" * 10 ) + ( "mgf: tbab prod license syndicate advanced" * 21 ) + ( "mgf: tbab prod license syndicate basics" * 9 ) + ( "mgf: tbab prod license lovelace advanced" * 11 ) + ( "mgf: tbab prod license lovelace basics" * 5 ) + "mgf_sm_outfitter_additional_stock"
+	"mgf_sm_outfitter_sunracer_stock_size" = "mgf_sm_outfitter_bluestone_stock_size"
+	# "mgf_sm_stock_cost" = 5000
+	"mgf_sm_stock_cost" = 50
+	"mgf_sm_ad_mult" = ( "mgf_sm_ad_budget" / 5000 )
+	"mgf_sm_traffic" = "mgf_sm_bluestone_traffic" * ( ( "mgf_sm_ad_mult" ) + 1 ) + "mgf_sm_customer_base" / 90000
+	# "mgf_sm_traffic" = "mgf_sm_bluestone_traffic"
+	"mgf_sm_stock_cost_tol" = "mgf_sm_stock_cost" * "mgf_sm_outfitter_sunracer_stock_size" * "mgf_sm_traffic"
+	# "mgf_sm_profit_per_sale" = 3180 #prob should be called revenue?
+	# "mgf_sm_profit_per_sale" = 31
+	"mgf_sm_profit_per_sale" = 60
+	# "mgf_sm_ad_mult" = ( "mgf_sm_ad_budget" / 5000 )
+	# "mgf_sm_outfitter_sales" = "mgf_sm_traffic" * ( "mgf_sm_ad_mult" + 1 ) * ( "mgf_sm_outfitter_sunracer_stock_size" * "mgf: tbab shipyard: sunracer" )
+	# "mgf_sm_outfitter_sales" += "mgf_sm_traffic" * ( "mgf_sm_ad_mult" + 1 ) * ( "mgf_sm_outfitter_bluestone_stock_size" * "mgf: tbab shipyard: bluestone" )
+	"mgf_sm_outfitter_sales" = "mgf_sm_traffic" * ( "mgf_sm_outfitter_sunracer_stock_size" * "mgf: tbab shipyard: sunracer" )
+	"mgf_sm_outfitter_sales" += "mgf_sm_traffic" * ( "mgf_sm_outfitter_bluestone_stock_size" * "mgf: tbab shipyard: bluestone" )
+	"mgf_sm_outfitter_sales" *= "mgf_sm_profit_per_sale"
+
+event "mgf: tbab business profit calc"
+	# "mgf_sm_fleet_cost" = "mgf_sm_to_makerplace_op_cost"
+	# "mgf_sm_operating_cost" = "mgf_sm_shipyard_op_cost" + "mgf_sm_outfitter_op_cost" + "mgf_sm_stock_cost_tol" + "mgf_sm_fleet_cost"
+	# # "mgf_sm_sale_conv_rate" =
+	# "mgf_sm_tol_sales" = "mgf_sm_outfitter_sales" + "mgf_sm_shipyard_sales"
+	# "mgf_sm_fleet_profit" = "mgf_sm_to_makerplace_rev"
+	# "mgf_sm_revenue"  = "mgf_sm_fleet_profit" + "mgf_sm_tol_sales"
+	# "salary: Shipyard Income" = "mgf_sm_revenue" - "mgf_sm_operating_cost" - "mgf_sm_ad_budget" - "mgf_sm_dev_budget" - "mgf_sm_tech_budget"
+	#too lazy to balance the math stuffs right now, just gonna go simple for now.
+	#=============================================
+	"mgf_sm_fleet_cost" = "mgf_sm_to_makerplace_op_cost" + "mgf_sm_to_tarazed_op_cost"
+	"mgf_sm_fleet_profit" = "mgf_sm_to_makerplace_rev" + "mgf_sm_to_tarazed_rev"
+	"mgf_sm_operating_cost" = "mgf_sm_shipyard_op_cost" + "mgf_sm_outfitter_op_cost" + "mgf_sm_fleet_cost"
+	"mgf_sm_revenue" = "mgf_sm_revenue_simple" + "mgf_sm_fleet_profit"
+	"salary: Shipyard Income" = "mgf_sm_revenue" - "mgf_sm_operating_cost" - "mgf_sm_ad_budget" - "mgf_sm_dev_budget" - "mgf_sm_tech_budget"
+
+#Reward and results will come at various milestones,
+
+# mission "MGF: TBAB Product Development 1"
+# 	landing
+# 	name "New Product"
+# 	description `Your product development team have developed a new product ready for sale.`
+# 	to offer
+# 		"mgf_sm_dev_budget_accumulated" >= 630000
+# 	on offer
+# 		conversation
+# 			`Your product development team have came up with a new product.`
+
+mission "MGF: TBAB Hai Alloy Research 1"
+	landing
+	name "Research Done"
+	description `Your research team have finished researching on something.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf_sm_dev_budget_accumulated" >= 630000
+		"mgf: tbab techre hai alloy epoch" <= "days since epoch" - ( 1080 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab hai alloy 1 researched" = 1
+		conversation
+			`Your research team have discovered how to replicate the alloy used by Hai ship. This can allow production of slightly stronger hulls.`
+
+mission "MGF: TBAB Hai Shield Research 1"
+	landing
+	name "Research Done"
+	description `Your research team have finished researching on something.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf_sm_dev_budget_accumulated" >= 1390000
+		"mgf: tbab techre diamond epoch" <= "days since epoch" - ( 1080 - ( "mgf_sm_tech_budget" / 100 ) )
+	on offer
+		"mgf: tbab hai shield 1 researched" = 1
+		conversation
+			`Your research team have discovered the secrets behind Hai Shield Regenerators. This can allow production of slightly slightly improved shieldings and development of shield regenerators. You can head to project menu to start the development of shield regenerator.`
+
+mission "MGF: TBAB Shield Regenerator Development 1"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing Shield Regenerator.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 1080000
+		"mgf: tbab dev shield regen 1 start epoch" <= "days since epoch" - ( 720 - ( "mgf_sm_tech_budget" / 80 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		event "mgf: sm developed regenerator 1"
+		conversation
+			`Your product development team have finished development of new Shield Regenerators.`
+
+event "mgf: sm developed regenerator 1"
+	"mgf_sm_outfitter_additional_stock" += 7
+	"mgf_sm_revenue_simple" += 6000
+	outfitter "MGF tbab Player Basic"
+		add "MGF: SD-01 Regenerator"
+		add "MGF: SD-02 Regenerator"
+	outfitter "MGF tbab Player Intermediate"
+		add "MGF: SD-01 Regenerator"
+		add "MGF: SD-02 Regenerator"
+		add "MGF: SD-03 Regenerator"
+		add "MGF: SD-04 Regenerator"
+		add "MGF: SD-05 Regenerator"
+	outfitter "MGF tbab Player Advanced"
+		add "MGF: SD-01 Regenerator"
+		add "MGF: SD-02 Regenerator"
+		add "MGF: SD-03 Regenerator"
+		add "MGF: SD-04 Regenerator"
+		add "MGF: SD-05 Regenerator"
+		add "MGF: SD-06 Regenerator"
+		add "MGF: SD-07 Regenerator"
+	fleet "Large Core Merchants"
+		add variant 3
+			"MGF: Nasprite (MGF: SD0 Regenerator)"
+	fleet "Large Southern Merchants"
+		add variant 3
+			"MGF: Nasprite (MGF: SD0 Regenerator)"
+
+mission "MGF: Pulse Blaster and SD0 Regenerator adoption"
+	landing
+	invisible
+	non-blocking
+	deadline 1
+	to offer
+		has "event: mgf: sm developed regenerator 1"
+		has "event: mgf: tbab: pulse blaster on sale"
+	on offer
+		event "mgf: pulse blaster sd0 regenerator adoption" 0
+	on accept
+		fail
+
+event "mgf: pulse blaster sd0 regenerator adoption"
+	fleet "Small Core Merchants"
+		add variant 2
+			"S-PT06 Harukaze (MGF: Pulse Blaster, SD0 Regenerator)"
+		add variant 5
+			"Freighter"
+			"Wasp (MGF: Pulse Blaster, SD0 Regenerator)" 2
+		add variant 1
+			"Scout (MGF: Pulse Blaster, SD0 Regenerator)"
+	fleet "Paradise Merchants"
+		add variant 2
+			"S-PT06 Harukaze (MGF: Pulse Blaster, SD0 Regenerator)"
+		add variant 1
+			"Star Queen"
+			"Sparrow (MGF: Pulse Blaster, SD0 Regenerator)" 2
+			"Sparrow" 3
+		add variant 1
+			"Star Queen"
+			"Berserker (MGF: Pulse Blaster, SD0 Regenerator)" 3
+		add variant 1
+			"Blackbird"
+			"Sparrow (MGF: Pulse Blaster, SD0 Regenerator)" 2
+	fleet "Small Northern Merchants"
+		add variant 1
+			"QYG-30 Qazan"
+			"Berserker (MGF: Pulse Blaster, SD0 Regenerator)"
+		add variant 1
+			"Freighter"
+			"Berserker (MGF: Pulse Blaster, SD0 Regenerator)"
+		add variant 1
+			"Scout (MGF: Pulse Blaster, SD0 Regenerator)"
+
+mission "MGF: TBAB Shield Regenerator Development 2"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing Shield Regenerator.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 2700000
+		"mgf: tbab dev shield regen 2 start epoch" <= "days since epoch" - ( 1260 - ( "mgf_sm_tech_budget" / 80 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		event "mgf: sm developed regenerator 2"
+		conversation
+			`Your product development team have finished development of new Shield Regenerators.`
+
+event "mgf: sm developed regenerator 2"
+	"mgf_sm_outfitter_additional_stock" += 7
+	"mgf_sm_revenue_simple" += 6000
+	outfitter "MGF tbab Player Basic"
+		add "MGF: SD-11 Regenerator"
+		add "MGF: SD-12 Regenerator"
+	outfitter "MGF tbab Player Intermediate"
+		add "MGF: SD-11 Regenerator"
+		add "MGF: SD-12 Regenerator"
+		add "MGF: SD-13 Regenerator"
+		add "MGF: SD-14 Regenerator"
+		add "MGF: SD-15 Regenerator"
+	outfitter "MGF tbab Player Advanced"
+		add "MGF: SD-11 Regenerator"
+		add "MGF: SD-12 Regenerator"
+		add "MGF: SD-13 Regenerator"
+		add "MGF: SD-14 Regenerator"
+		add "MGF: SD-15 Regenerator"
+		add "MGF: SD-16 Regenerator"
+		add "MGF: SD-17 Regenerator"
+	fleet "Large Core Merchants"
+		add variant 3
+			"MGF: Nasprite (MGF: SD1 Regenerator)"
+		add variant 
+			"AD-019A Iabayi (MGF: SD1 Regenerator)"
+	fleet "Large Southern Merchants"
+		add variant 3
+			"MGF: Nasprite (MGF: SD1 Regenerator)"
+	fleet "Large Northern Merchants"
+		add variant 
+			"AD-019A Iabayi (MGF: SD1 Regenerator)"
+	fleet "Paradise Merchants"
+		add variant 
+			"AD-019A Iabayi (MGF: SD1 Regenerator)"
+
+mission "MGF: TBAB Delayed Shield Regenerator Development 1"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing Delayed Shield Regenerator.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 3600000
+		"mgf: tbab dev delayed shield regen 1 start epoch" <= "days since epoch" - ( 720 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		event "mgf: sm developed delayed regenerator 1"
+		conversation
+			`Your product development team have finished development of new Delayed Shield Regenerators.`
+
+event "mgf: sm developed delayed regenerator 1"
+	"mgf_sm_outfitter_additional_stock" += 4
+	"mgf_sm_revenue_simple" += 4700
+	outfitter "MGF tbab Player Basic"
+		add "MGF: ST-01 Regenerator"
+		add "MGF: ST-02 Regenerator"
+	outfitter "MGF tbab Player Intermediate"
+		add "MGF: ST-01 Regenerator"
+		add "MGF: ST-02 Regenerator"
+		add "MGF: ST-03 Regenerator"
+	outfitter "MGF tbab Player Advanced"
+		add "MGF: ST-01 Regenerator"
+		add "MGF: ST-02 Regenerator"
+		add "MGF: ST-03 Regenerator"
+		add "MGF: ST-04 Regenerator"
+
+	fleet "Small Core Merchants"
+		add variant 1
+			"ICV-136 Starlight (MGF: ST0 Regenerator)"
+	fleet "Small Northern Merchants"
+		add variant 1
+			"ICV-136 Starlight (MGF: ST0 Regenerator)"
+	fleet "Large Core Merchants"
+		add variant 3
+			"Freighter" 3
+			"E-FD23 Kanran (MGF: ST0 Regenerator)"
+	fleet "Large Northern Merchants"
+		add variant 3
+			"Freighter" 2
+			"Corvette (MGF: ST0 Regenerator)"
+	fleet "Paradise Merchants"
+		add variant 1
+			"S-PT06 Harukaze"
+			"ICV-136 Starlight (MGF: ST0 Regenerator)"
+
+mission "MGF: TBAB Shield Emitter Development 1"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing improved Shield Emitter.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 2700000
+		"mgf: tbab dev shield emitter 1 start epoch" <= "days since epoch" - ( 720 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		# event "mgf: sm developed delayed regenerator 1"
+		conversation
+			`Your product development team have finished development of improved Shield Emitter.`
+
+mission "MGF: TBAB Shield Emitter Development 2"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing improved Shield Emitter.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 2700000
+		"mgf: tbab dev shield emitter 2 start epoch" <= "days since epoch" - ( 720 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		event "mgf: sm developed shield emitter 2"
+		conversation
+			`Your product development team have finished development of improved Shield Emitter.`
+
+event "mgf: sm developed shield emitter 2"
+	"mgf_sm_outfitter_additional_stock" += 2
+	"mgf_sm_revenue_simple" += 8700
+	outfitter "MGF tbab Player Basic"
+		add "MGF: CS-01a Shield Capacitor"
+	outfitter "MGF tbab Player Intermediate"
+		add "MGF: CS-01a Shield Capacitor"
+		add "MGF: CS-01 Shield Capacitor"
+	outfitter "MGF tbab Player Advanced"
+		add "MGF: CS-01a Shield Capacitor"
+		add "MGF: CS-01 Shield Capacitor"
+		add "MGF: ES-01 Shield Emitter"
+	fleet "Small Core Merchants"
+		add variant 
+			"Argosy (MGF: Pulse Blaster, Shield Maxed)"
+	fleet "Small Southern Merchants"
+		add variant 
+			"Argosy (MGF: Pulse Blaster, Shield Maxed)"
+
+mission "MGF: TBAB Wanderer Shield Research 1"
+	landing
+	name "Research Done"
+	description `Your research team have finished researching and understanding Wanderer Shields.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab tech accumulator" >= 4700000
+		"mgf: tbab re dark storm shield start epoch" <= "days since epoch" - ( 2190 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab tech accumulator" = 0
+		"mgf_sm_researched_wanderer_shields" = 1
+		conversation
+			`Your research team have finished researching and understanding Wanderer Shields.`
+
+mission "MGF: TBAB Heavy Pulse Blaster Development 1"
+	landing
+	name "Development Done"
+	description `Your product development team have finished developing Heavy Pulse Blaster.`
+	source
+		near "Sol" 0 200
+	to offer
+		"mgf: tbab dev accumulator" >= 2700000
+		"mgf: tbab dev heavy pulse blaster start epoch" <= "days since epoch" - ( 1080 - ( "mgf_sm_tech_budget" / 75 ) )
+	on offer
+		"mgf: tbab dev accumulator" = 0
+		event "mgf: sm developed heavy pulse blaster"
+		conversation
+			`Your product development team have finished development of Heavy Pulse Blaster.`
+
+event "mgf: sm developed heavy pulse blaster"
+	"mgf_sm_outfitter_additional_stock" += 2
+	"mgf_sm_revenue_simple" += 6200
+	# outfitter "MGF tbab Player Basic"
+	outfitter "MGF tbab Player Intermediate"
+		add "MGF: SP-25 Heavy Pulse Blaster"
+		add "MGF: SP-25 Heavy Pulse Blaster Turret"
+	outfitter "MGF tbab Player Advanced"
+		add "MGF: SP-25 Heavy Pulse Blaster"
+		add "MGF: SP-25 Heavy Pulse Blaster Turret"
+		add "MGF: SP-25 Dual Heavy Pulse Blaster Turret"
+	fleet "Small Core Merchants"
+		add variant 3
+			"QYG-30 Qazan (MGF: Heavy Pulse Blaster)"
+		add variant 1
+			"FG-6 Startrain (MGF: Heavy Pulse Blaster)"
+	fleet "Large Core Merchants"
+		add variant 5
+			"QYG-30 Qazan (MGF: Heavy Pulse Blaster)" 2
+			"QYG-30 Qazan"
+		add variant 2
+			"G-Class Container Transport (MGF: Heavy Pulse Blaster)"
+			"UA-10 Porter" 2
+			"Quicksilver" 3
+		add variant
+			"G-Class Container Transport (MGF: Heavy Pulse Blaster)" 2
+			"UA-10 Porter" 4
+			"Protector (MGF: Heavy Pulse Blaster)"
+		add variant
+			"SV40-n Navilel (MGF: Heavy Pulse Blaster)"
+		add variant 1
+			"LVC-2 Sandura"
+			"Splinter (MGF: Heavy Pulse Blaster)"
+			"Quicksilver" 3
+		add variant 1
+			"CDB-6K Jupiter"
+			"Splinter (MGF: Heavy Pulse Blaster)"
+			"Splinter"
+		add variant 8
+			"QYG-60 Sandiq (MGF: Heavy Pulse Blaster)" 2
+		add variant 1
+			"QYG-60 Sandiq (MGF: Heavy Pulse Blaster)" 2
+			"Typ057 Lanzhou"
+			"Typ064 Xuchang (Missile)"
+	fleet "Paradise Merchants"
+		add variant 1
+			"Star Queen"
+			"Sparrow (MGF: Pulse Blaster)" 2
+			"Sparrow" 3
+		add variant 1
+			"Star Queen"
+			"Berserker (MGF: Pulse Blaster)" 3
+		add variant 1
+			"Blackbird"
+			"Sparrow (MGF: Pulse Blaster)" 2
+		add variant 3
+			"QYG-30 Qazan (MGF: Heavy Pulse Blaster)"
+	fleet "Small Northern Merchants"
+		add variant 3
+			"QYG-30 Qazan (MGF: Heavy Pulse Blaster)"
+		add variant 1
+			"FG-6 Startrain (MGF: Heavy Pulse Blaster)"
+	fleet "Large Northern Merchants"
+		add variant
+			"SV40-n Navilel (MGF: Heavy Pulse Blaster)"
+		add variant 1
+			"CDB-6K Jupiter"
+			"Firebird (MGF: Heavy Pulse Blaster)"
+		add variant 2
+			"FUe06a Gebrant III"
+			"Leviathan (MGF: Heavy Pulse Blaster Turret)"
+		variant 1
+			"Star Queen"
+			"Leviathan (MGF: Full Heavy Pulse Blaster)"
+		add variant 6
+			"QYG-60 Sandiq (MGF: Heavy Pulse Blaster)" 2
+		add variant 2
+			"QYG-60 Sandiq (MGF: Heavy Pulse Blaster)" 2
+			"Firebird (MGF: Heavy Pulse Blaster)"
+
+mission "MGF: Heavy Pulse Blaster and SD1 Regenerator adoption"
+	landing
+	invisible
+	non-blocking
+	deadline 1
+	to offer
+		has "event: mgf: sm developed regenerator 2"
+		has "event: mgf: sm developed heavy pulse blaster"
+	on offer
+		event "mgf: heavy pulse blaster sd1 regenerator adoption" 0
+	on accept
+		fail
+
+event "mgf: heavy pulse blaster sd1 regenerator adoption"
+	fleet "Large Core Merchants"
+		add variant 3
+			"FUe02a Gebrant" 3
+			"Protector (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+			"Splinter (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+		add variant 2
+			"FUe06a Gebrant III"
+			"Protector (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+			"Splinter"
+		add variant
+			"G-Class Container Transport (MGF: Heavy Pulse Blaster)" 2
+			"UA-10 Porter" 4
+			"Protector (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+		add variant 1
+			"Typ124 Lianyungang"
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD1 Regenerator)"
+		add variant 1
+			"CDB-12K Saturn" 3
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+			"Splinter (MGF: Heavy Pulse Blaster, SD0 Regenerator)" 2
+		add variant 1
+			"CDB-12K Saturn" 4
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD1 Regenerator)"
+			"CS-24 Garrison" #18
+			"Barb" 18
+		add variant 
+			"FUe06a Gebrant III"
+			"IBB-032 Wyoming (MGF: Pulse Blaster, SD0 Regenerator)"
+		add variant 
+			"Hauler III" 2
+			"IBB-032 Wyoming (MGF: Pulse Blaster, SD0 Regenerator)"
+	fleet "Large Northern Merchants"
+		add variant
+			"SV40-n Navilel (MGF: Heavy Pulse Blaster, SD1 Regenerator)"
+		add variant 2
+			"SV80-n Catirfel" 2
+			"Leviathan (MGF: Full Heavy Pulse Blaster, SD0 Regenerator)"
+		add variant 2
+			"SV80-n Catirfel" 2
+			"Leviathan (MGF: Full Heavy Pulse Blaster, SD1 Regenerator)"
+		add variant 5
+			"FG-5 Bluewhale-A" 2
+			"Leviathan (MGF: Full Heavy Pulse Blaster, SD1 Regenerator)"
+		add variant 1
+			"Typ124 Lianyungang"
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD1 Regenerator)"
+		add variant 1
+			"CK80T Tlielart"
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+		add variant 1
+			"FG-7 Conveyor-A" 3
+			"Lance" 24
+			"Typ012 Guangzhou (MGF: Heavy Pulse Blaster, SD0 Regenerator)"
+
+
+event "mgf: tbab spawn fleet to makerplace at home bluestone 1"
+	system "Bellatrix"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Mirfak"
+		add fleet "MGF: Makerplace export fleet" 20000
+event "mgf: tbab spawn fleet to makerplace at home bluestone 2"
+	system "Bellatrix"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Mirfak"
+		add fleet "MGF: Makerplace export fleet" 15000
+event "mgf: tbab spawn fleet to makerplace at home sunracer 1"
+	system "Mirfak"
+		add fleet "MGF: Makerplace export fleet" 20000
+event "mgf: tbab spawn fleet to makerplace at home sunracer 2"
+	system "Mirfak"
+		add fleet "MGF: Makerplace export fleet" 15000
+
+event "mgf: tbab spawn fleet to tarazed at home bluestone 1"
+	system "Bellatrix"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Mirfak"
+		add fleet "MGF: Tarazed export fleet" 20000
+event "mgf: tbab spawn fleet to tarazed at home bluestone 2"
+	system "Bellatrix"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Mirfak"
+		add fleet "MGF: Tarazed export fleet" 15000
+event "mgf: tbab spawn fleet to tarazed at home sunracer 1"
+	system "Mirfak"
+		add fleet "MGF: Tarazed export fleet" 20000
+event "mgf: tbab spawn fleet to tarazed at home sunracer 2"
+	system "Mirfak"
+		add fleet "MGF: Tarazed export fleet" 15000
+
+event "mgf: tbab spawn fleet to makerplace 1"
+	system "Moktar"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Cardax"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Sumar"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Rajak"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Ultima Thule"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Waypoint"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Heia Due"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Io Lowe"
+		add fleet "MGF: Makerplace export fleet" 20000
+	system "Ula Mon"
+		add fleet "MGF: Makerplace export fleet" 20000
+event "mgf: tbab spawn fleet to makerplace 2"
+	system "Moktar"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Cardax"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Sumar"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Rajak"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Ultima Thule"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Waypoint"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Heia Due"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Io Lowe"
+		add fleet "MGF: Makerplace export fleet" 15000
+	system "Ula Mon"
+		add fleet "MGF: Makerplace export fleet" 15000
+event "mgf: tbab spawn fleet to tarazed 1"
+	system "Menkar"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Zaurak"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Sheratan"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Ruchbah"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Ankaa"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Markab"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Fomalhaut"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Altair"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Vega"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Menkent"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Cebalrai"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Rasalhague"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Ascella"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Peacock"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Kaus Australis"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Dabih"
+		add fleet "MGF: Tarazed export fleet" 20000
+	system "Tarazed"
+		add fleet "MGF: Tarazed export fleet" 20000
+event "mgf: tbab spawn fleet to tarazed 2"
+	system "Menkar"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Zaurak"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Sheratan"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Ruchbah"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Ankaa"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Markab"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Fomalhaut"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Altair"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Vega"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Menkent"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Cebalrai"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Rasalhague"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Ascella"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Peacock"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Kaus Australis"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Dabih"
+		add fleet "MGF: Tarazed export fleet" 15000
+	system "Tarazed"
+		add fleet "MGF: Tarazed export fleet" 15000
+
+event "mgf: tbab calc fleet to tarazed"
+	# 14 day one-way 34 days round trip
+	"mgf_sm_to_tarazed_cargo_cap" = ( ( "mgf_sm_fleet_to_tarazed_tlielart" * 5100 ) + ( "mgf_sm_fleet_to_tarazed_conveyor" * 2000 ) )
+
+	#delay from load/unload time
+	"mgf_sm_fleet_to_tarazed_travel_days" = 34 + ( "mgf_sm_fleet_to_tarazed_tlielart" / 2 )
+	#production rate daily, need to be enough when the fleet returns
+	"mgf_sm_component_prod_rate_daily" = ( "mgf_sm_to_tarazed_cargo_cap" / "mgf_sm_fleet_to_tarazed_travel_days" ) * 105 / 100
+	"mgf_sm_component_prod_mat_cost" = 939
+	"mgf_sm_component_prod_cost_daily_new" = ( "mgf_sm_component_prod_rate_daily" * "mgf_sm_component_prod_mat_cost" ) * 105 / 100
+	"mgf_sm_component_prod_cost_daily_add" = "mgf_sm_component_prod_cost_daily_new" - "mgf_sm_component_prod_cost_daily"
+	"mgf_sm_component_prod_cost_daily" = "mgf_sm_component_prod_cost_daily_new"
+	# "mgf_sm_shipyard_op_cost" += "mgf_sm_component_prod_cost_daily_add"
+
+event "mgf: tbab to tarazed fleet earning calc"
+	#for return trip buying some generic commodities
+	"mgf_sm_to_tarazed_eqm_profit_per_ton" = 150 #todo add some fluctuations
+	"mgf_sm_to_tarazed_profit_per_ton" = 263 #todo add some fluctuations
+	"mgf_sm_to_tarazed_cargo_cap" = ( ( "mgf_sm_fleet_to_tarazed_tlielart" * 5100 ) + ( "mgf_sm_fleet_to_tarazed_conveyor" * 2000 ) )
+	"mgf_sm_to_tarazed_rev" = ( ( "mgf_sm_to_tarazed_cargo_cap" * "mgf_sm_to_tarazed_profit_per_ton" ) + ( "mgf_sm_to_tarazed_cargo_cap" * "mgf_sm_to_tarazed_eqm_profit_per_ton" ) ) / "mgf_sm_fleet_to_tarazed_travel_days"
+	#todo calculate fighter attrition rate.
+	#Ability to define function would surely be useful here
+	"mgf_sm_to_tarazed_op_cost" = ( ( "mgf_sm_fleet_to_tarazed_tlielart" * 61 ) * 100 ) + ( ( "mgf_sm_fleet_to_tarazed_conveyor" * 54 ) * 100 ) + ( "mgf_sm_fleet_to_tarazed_xencar" * 100 ) + ( "mgf_sm_fleet_to_tarazed_dagger" * 100 )
+	#add 40% for fuel, maintenance and stuffs, prob should be calc from ship value
+	"mgf_sm_to_tarazed_op_cost" *= 140 #maybe reduce to 20%
+	"mgf_sm_to_tarazed_op_cost" /= 100
+	# "mgf_sm_to_tarazed_op_cost" += "mgf_sm_component_prod_cost_daily"
+
+
+fleet "MGF: Tarazed export fleet"
+	government "MGF: Player Company"
+	names "player company"
+	cargo 1
+	personality
+		timid disables
+		confusion 40
+
+event "mgf: sm tarazed export fleet variant 1"
+	fleet "MGF: Tarazed export fleet"
+		#also note this couldn't be easily dynamically adjusted if I allow player to add more fleet to this route and some of them were the same as previous. Or might be possible but probably will be obtuse as hell as always
+		add variant 100
+			"Tlielart (Cargo Engine)"
+event "mgf: sm tarazed export fleet variant 2"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"Tlielart (Cargo Engine)" 2
+event "mgf: sm tarazed export fleet variant 3"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"Tlielart (Cargo Engine)" 3
+event "mgf: sm tarazed export fleet variant 4"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"Tlielart (Cargo Engine)" 4
+event "mgf: sm tarazed export fleet variant 5"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"Tlielart (Cargo Engine)" 5
+#regret is what I feel.
+#at least I didn't bother to allow player to pick any variant other than stock.
+event "mgf: sm tarazed export fleet variant 6"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A"
+event "mgf: sm tarazed export fleet variant 7"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 2
+event "mgf: sm tarazed export fleet variant 8"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 3
+event "mgf: sm tarazed export fleet variant 9"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 4
+event "mgf: sm tarazed export fleet variant 10"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 5
+#imagine if I ever change bay amount of the ship.
+event "mgf: sm tarazed export fleet variant 11"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A"
+			"AGT-31 Xencar" 8
+event "mgf: sm tarazed export fleet variant 12"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 2
+			"AGT-31 Xencar" 16
+event "mgf: sm tarazed export fleet variant 13"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 3
+			"AGT-31 Xencar" 24
+event "mgf: sm tarazed export fleet variant 14"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 4
+			"AGT-31 Xencar" 32
+event "mgf: sm tarazed export fleet variant 15"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 5
+			"AGT-31 Xencar" 40
+
+event "mgf: sm tarazed export fleet variant 16"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A"
+			"Dagger" 8
+event "mgf: sm tarazed export fleet variant 17"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 2
+			"Dagger" 16
+event "mgf: sm tarazed export fleet variant 18"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 3
+			"Dagger" 24
+event "mgf: sm tarazed export fleet variant 19"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 4
+			"Dagger" 32
+event "mgf: sm tarazed export fleet variant 20"
+	fleet "MGF: Tarazed export fleet"
+		add variant 100
+			"FG-7 Conveyor-A" 5
+			"Dagger" 40

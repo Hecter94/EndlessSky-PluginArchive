@@ -20,12 +20,12 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			# >700 because Deep River is largest at the time iirc.
 			branch shipTooBig
 				or
-					has "flagship model: Claymore Class"
-					has "flagship model: Lucerne Class"
-					has "flagship model: Grose Bochse Class"
-					has "flagship model: Dulle Griet Class"
-					has "flagship model: Ranseur Class"
-					has "flagship model: Spetum Class"
+					has "flagship model: MGF: Claymore Class"
+					has "flagship model: MGF: Lucerne Class"
+					has "flagship model: MGF: Grose Bochse Class"
+					has "flagship model: MGF: Dulle Griet Class"
+					has "flagship model: MGF: Ranseur Class"
+					has "flagship model: MGF: Spetum Class"
 					has "flagship model: Typ012 Guangzhou"
 					has "flagship model: AP-22 Fusillade"
 					has "flagship model: SC-1 Alcazar"
@@ -50,6 +50,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					has "flagship model: Fanis Aestre"
 					has "flagship model: AYS-17 Proetida"
 					has "flagship model: AYS-19 Peytoia"
+					has "flagship model: oU112 Altuella"
 					has "flagship model: Type-13 Sea Strait"
 
 					has "flagship model: Korsmanath A'awoj"
@@ -92,12 +93,12 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 				`	"I'm <first> <last>, here to take this gang down."`
 			branch intimidationCheck
 				or
-					has "flagship model: Claymore Class"
-					has "flagship model: Lucerne Class"
-					has "flagship model: Grose Bochse Class"
-					has "flagship model: Dulle Griet Class"
-					has "flagship model: Ranseur Class"
-					has "flagship model: Spetum Class"
+					has "flagship model: MGF: Claymore Class"
+					has "flagship model: MGF: Lucerne Class"
+					has "flagship model: MGF: Grose Bochse Class"
+					has "flagship model: MGF: Dulle Griet Class"
+					has "flagship model: MGF: Ranseur Class"
+					has "flagship model: MGF: Spetum Class"
 					has "flagship model: Typ012 Guangzhou"
 					has "flagship model: AP-22 Fusillade"
 					has "flagship model: SC-1 Alcazar"
@@ -157,12 +158,12 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 				`	"No, we'll negotiate from here."`
 			branch negotiationOutsideIntimidationCheck
 				or
-					has "flagship model: Claymore Class"
-					has "flagship model: Lucerne Class"
-					has "flagship model: Grose Bochse Class"
-					has "flagship model: Dulle Griet Class"
-					has "flagship model: Ranseur Class"
-					has "flagship model: Spetum Class"
+					has "flagship model: MGF: Claymore Class"
+					has "flagship model: MGF: Lucerne Class"
+					has "flagship model: MGF: Grose Bochse Class"
+					has "flagship model: MGF: Dulle Griet Class"
+					has "flagship model: MGF: Ranseur Class"
+					has "flagship model: MGF: Spetum Class"
 					has "flagship model: Typ012 Guangzhou"
 					has "flagship model: AP-22 Fusillade"
 					has "flagship model: SC-1 Alcazar"
@@ -178,6 +179,17 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					has "flagship model: AYS-19 Peytoia"
 
 					has "flagship model: Korsmanath A'awoj"
+
+					#Galactic War
+					has "flagship model: Ultaka Galactic Destroyer"
+					has "flagship model: Ultaka Reaper"
+					has "flagship model: Ultaka Netherward"
+					has "flagship model: Ultaka Death Bringer"
+					has "flagship model: Ultaka Vyvis"
+					has "flagship model: Mecohni"
+					has "flagship model: Zorcn Xima"
+					has "flagship model: ZN-7681 Eaxes"
+					has "flagship model: ZM-5422 Karloz"
 
 					"ships: Heavy Warship" > 8
 					"ships: Superheavy" > 2
@@ -231,6 +243,24 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					has "outfit (installed): MWG-1 Harmonic Cannon"
 					has "outfit (installed): Dragonflame Cannon"
 					has "outfit (installed): Ember Tear"
+					has "outfit (installed): Zis Dragon's Breath"
+			branch nuke
+				or
+					"outfit (installed): Nuclear Missile" >= 2
+					and
+						has "outfit (installed): Ka'het Emergency Deployer"
+						"outfit (installed): Ka'het MHD Generator" >= 1
+					and
+						has "outfit (installed): Chiryu Launch System"
+						"Chiryu Missile" >= 1
+					and
+						has "outfit (installed): Nuclear Rotary Launcher"
+						"Nuclear Missile Ammo" >= 2
+					and
+						has "outfit (installed): Nuclear Missile Turret"
+						"Nuclear Missile Ammo" >= 2
+					#Galactic War
+					has "outfit (installed): Kuzaun Missile"
 			branch overwhelmingFirepower
 				"armament deterrence" > 22
 
@@ -265,6 +295,14 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			`	The asteroid is sure big but not enough to survive your spinal gun. You distanced your ship away from the asteroid enough to not take any damage from the blast and debris and fires your spinal cannon upon the asteroid causing a massive explosion and leave only cloud of dust where the astroid once was.`
 			`	Scar's Legion hideout is no more, you can now return to Hai space.`
 				flee
+			label nuke
+			action
+				set "mgf: destoryed scars legion hideout"
+				event "mgf: remove scars legion asteroid"
+				event "mgf: remove scars legion asteroid (cleanup)" 2
+			`	The asteroid is sure big but not enough to survive a nice big explosion. You distanced your ship away from the asteroid enough to not take any damage from the blast and debris and fires a couple of your high-yield missile at the asteroid causing a massive explosion and leave only cloud of dust where the astroid once was.`
+			`	Scar's Legion hideout is no more, you can now return to Hai space.`
+				flee
 			label enterAsteroid
 			`	Upon entering the blast door, it closes behind you, leaving you in complete dark. Suddenly, floodlights flash on all around your ship. The brightness of the lights prevents you from seeing anyone beyond them, but you suspect that there are a number of weapons pointed at your ship right now.`
 			`	You checked your tactical scanner and it confirms that there are hundreds of armed pirates behind the lights.`
@@ -277,7 +315,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 				`	"I'm <first> <last>, here to take this gang down."`
 			`	The voice laughs. "Well too bad, because you're right in the middle of a hornet's nest. Fire, boys!"`
 				goto die
-			
+
 			label negotiate
 			`	The voice laughs. "Ah, yes. Those squirrels. I take it they've had enough of us plundering their systems. Boys!"`
 			`	The floodlights turn off, revealing a large room with what must be hundreds of pirates with guns of various sizes trained on your ship. One wrong move and you're toast. "Please, Captain. Step out of your ship."`
@@ -286,7 +324,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					goto comply
 				`	(Attempt to escape.)`
 			`	You activate your ship's engines to escape. The floodlights suddenly reactivate.`
-			
+
 			label die
 			#Or not really,
 			#If you bring in proper ship for the job you now have an option to screw them up.
@@ -296,10 +334,10 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			branch hitBridgeNoDamage
 				or
 					has "flagship model: SRC-41C Curie"
-					has "flagship model: Eleonorae"
-					has "flagship model: Aplomado"
+					has "flagship model: MGF: Eleonorae"
+					has "flagship model: MGF: Aplomado"
 					has "flagship model: EM-8A Armadillo"
-					has "flagship model: Culverin Class"
+					has "flagship model: MGF: Culverin Class"
 					has "flagship model: L-VC28 Zuikaku"
 					has "flagship model: E-VC14 Zuiho"
 					has "flagship model: Cruiser"
@@ -391,7 +429,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					has "flagship model: Caesennia"
 					has "flagship model: Tyar'linhalf 67-G"
 					has "flagship model: Fortress"
-						
+
 			#Civilian warships and ships designed to survive rough terrians.
 			branch hitBridgeSurvive
 				or
@@ -426,7 +464,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 						has "apoxys lv.15"
 					has "flagship model: Muesli Carrier"
 					has "flagship model: Harbinger"
-					
+
 			#Can't hit the cockpit if it doesn't exist.
 			branch noBridgenoCockpit
 				or
@@ -448,7 +486,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					has "flagship model: GKS-48 Zummenstoss"
 					has "flagship model: E-FD23 Kanran"
 					has "flagship model: HMM-190 Kotroger"
-					has "flagship model: Nasprite"
+					has "flagship model: MGF: Nasprite"
 					has "flagship model: CK50T Stahbar"
 					has "flagship model: CK40T Treibard"
 					has "flagship model: CS-24 Garrison"
@@ -521,7 +559,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			#Quite high just to be sure, this should make only higher end of T2 ships and up survive.
 			branch generalToughnessCheck
 				"flagship attribute: hull" > 15000 * 1000
-				
+
 			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying straight at your cockpit. You die instantly as the rockets impact the glass in front of you.`
 				die
 
@@ -540,7 +578,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			label fakeBridge
 			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying at observation deck they perhaps presumed it was a cockpit. It did some non-critical damage and caused no casualty on your side.`
 				goto surviveRocketChoice
-				
+
 			label generalToughnessCheck
 			`	Before you can even react, several dozen lasers and streams of bullets come flying out from behind the floodlights. You attempt to pull your ship up and fly straight through the ceiling before your ship is too damaged to move, but then you spot a number of rockets flying toward your ship. It did some damage but not enough to destroy you.`
 				goto surviveRocketChoice
@@ -564,7 +602,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 
 			label escapeCheck
 			branch escapeCrashThrough
-				#attribute are multiplied by 1000 
+				#attribute are multiplied by 1000
 				or
 					"flagship attribute: mass" > 1000 * 1000
 					"flagship attribute: hull" > 5000 * 1000
@@ -576,7 +614,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 				"armament deterrence" < 0
 			`	You aim your guns at the blast door and blow it open amist the gunfire from the pirates. Once the hole is large enough you fly out and escape the ambush.`
 				flee
-			
+
 			label escapeCrashThrough
 			`	You turn your ship around as fast as you can and ramp your engines to maximum. With the sheer mass of your ship you managed to punch straight through the blast door.`
 				flee
@@ -613,7 +651,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 					goto negotiations
 			`	The leader grimaces. "I'll cut your tongue out if you don't watch your mouth."`
 			`	You take a step back. "The Hai ask that you stop attacking their systems," you say, attempting not to get shanked.`
-			
+
 			label negotiations
 			`	"Perhaps we will stop," the leader says with a smile. "Under one condition. We'd like a one time shipment of various Hai weapons and technology. The shipment should be as big as possible. I've seen the freighters those aliens have. They're massive. Load two or three up with the goods and we'll consider focusing our attention elsewhere."`
 			choice
@@ -628,21 +666,21 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 			`	The leader paces back and forth in silence for a moment. "Well if we don't get what we want, then we're just going to need to keep on attacking. Which means that your presence here is pretty useless."`
 			`	The leader turns to the crowd. "How about a fight? To the death!" The crowd erupts in cheers. The leader turns back to you. "We fight in this system only. Just you and me. You attempt to run, my men hunt you down. How's that sound?" You attempt to respond, but before you can, the leader pulls his gun and aims it at you. "Run."`
 				launch
-			
+
 			label tribute
 			action
 				set "hr accepted scar's legion tribute"
 			`	"Excellent!" the pirate says, which is met with cheers from the rest of the pirates in the room. "But make it quick. Wouldn't want to keep us waiting." The blast doors reopen, and you return to your ship to leave immediately.`
 				flee
-	
+
 	on decline
 		set "Hai Reveal: Pirate Troubles [3]: declined"
 		clear "mgf: temp: destroyed scars fleet"
-		
+
 	on accept
 		event "battle against scar's legion"
 		clear "mgf: temp: destroyed scars fleet"
-	
+
 	npc kill
 		to spawn
 			has "mgf: scar legion duel"
@@ -650,7 +688,7 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 		personality nemesis
 		ship "Leviathan (Hai Weapons)" "Keloid"
 		dialog "You've defeated the leader of Scar's Legion. The various spectators to the fight aren't attacking you, but it may only be a matter of time before they decide to turn their guns on you for killing their leader. Better head to <planet> before that happens."
-	
+
 	npc
 		to spawn
 			has "mgf: scar legion duel"
@@ -684,10 +722,10 @@ mission "MGF Override: Hai Reveal: Pirate Troubles [3]"
 	on enter
 	on enter
 		"reputation: Scar's Legion" = -1000
-	
+
 	on visit
 		dialog phrase "generic bounty hunting on visit"
-		
+
 	on complete
 		set "Hai Reveal: Pirate Troubles [3]: done"
 		set "hr defeated scar's legion"
