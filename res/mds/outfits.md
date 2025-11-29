@@ -154,9 +154,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/boss.loot/icon.png' height='100'></img><br>
 
 
-[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.72 mb | 2025-11-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
+[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.72 mb | 2025-11-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-11-23) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-11-29) <br>
 
 >A series of dungeon-like boss encounters for a single ship. With loottables and weapon upgrade mechanism. See the README for details.
 
@@ -179,6 +179,9 @@ This plugin is intended to be experienced like a typical RPG dungeon. You face t
 <br>
 Changelog:<br>
 <br>
+2024-11-29<br>
+typo fixes (thx to Nova1422)<br>
+<br>
 2024-11-23<br>
 fixed first wormhole government issue (thx to GrayCubeT)<br>
 <br>
@@ -196,6 +199,7 @@ added fighters to every boss (thx to Kitteh)<br>
 <br>
 2024-07-03<br>
 initial release<br>
+
 </blockquote>
 </details>
 
