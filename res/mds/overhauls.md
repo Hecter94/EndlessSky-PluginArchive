@@ -828,9 +828,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Galactic War/icon.png' height='100'></img><br>
 
 
-[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 167.84 mb | 2025-11-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
+[Galactic.War.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Galactic.War.zip) | 168.03 mb | 2025-12-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Galactic%20War/) <br>
 Author: 1010todd | Category: Overhauls <br>
-[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2025-11-06) <br>
+[https://github.com/1010todd/Galactic-War](https://github.com/1010todd/Galactic-War) (last commit 2025-12-02) <br>
 
 >This is a massive content mod about a war in another galaxy. While no storyline exist yet there's a large galaxy to explore filled with various aliens with different advancement and specializations.
 >
