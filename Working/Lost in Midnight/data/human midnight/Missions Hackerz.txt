@@ -1041,6 +1041,7 @@ mission "Hackerz 7"
 			label sol
 			action
 				"tribute: Earth" <?= 0
+				"reputation: Republic" >?= 0
 			scene "outfit/unknown"
 			`	Suddenly, you receive a message from Earth's government. "The Republic appreciates that you've released Earth from your tribute requirements. We ask that you consider releasing the rest of Sol as well." You don't recall making an offer to relinquish the tribute on Earth...`
 			choice
@@ -1069,6 +1070,7 @@ mission "Hackerz 7"
 			label hephaestus
 			action
 				"tribute: Foundry" <?= 0
+				"reputation: Syndicate" >?= 0
 			scene "outfit/unknown"
 			`	You get an alert informing you that a message from the Syndicate has arrived. "The Syndicate is grateful that you've released Foundry from your tribute requirements. We ask that you release Hephaestus as well." You don't recall making an offer to relinquish the tribute on Foundry...`
 			choice
@@ -1082,11 +1084,14 @@ mission "Hackerz 7"
 			`	Shortly after, you receive a message of gratitude from the Syndicate.`
 			label FW
 			branch end
-				not "tribute: Bourne"
+				or
+					not "tribute: Bourne"
+					not "event: war begins"
 			branch militia
 				has "license: Militia"
 			action
 				"tribute: Bourne" <?= 0
+				"reputation: Free Worlds" >?= 0
 			scene "outfit/unknown"
 			`	When you get back aboard the <ship>, you receive a message from Bourne. "The Free Worlds appreciates your offer to relinquish Bourne's tribute commitment. We gratefully accept." You don't recall making an offer to relinquish the tribute on Bourne...`
 				goto end
@@ -1199,11 +1204,9 @@ mission "Hackerz 7"
 		dialog `You've survived the automated ship assault...`
 
 
-
 ########################
 # Random Science Drones to hack
 ########################
-
 
 
 mission "Hackerz: Add Science Drones"
