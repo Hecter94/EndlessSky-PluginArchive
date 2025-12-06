@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2025-12-06 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
+2025-12-06 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
+2025-12-06 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
 2025-12-05 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2025-12-05 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2025-12-05 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
@@ -17,9 +20,6 @@
 2025-12-02 | Updated plugin 'Galactic War' by 1010todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#galactic-war)<br>
 2025-12-02 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2025-12-02 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
-2025-12-01 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
-2025-12-01 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
-2025-11-30 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
