@@ -558,9 +558,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
 
 
-[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 4.84 mb | 2025-09-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 7.05 mb | 2025-12-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
 Author: (many authors) | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-09-11) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2025-12-09) <br>
 
 >A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
 >
@@ -572,7 +572,7 @@ Author: (many authors) | Category: Outfits <br>
 
 **Authors:** see table
 
-**Thanks for feedback and discussions:** AvianGeneticist, Cend, Kassandra Haruki, Keilaph, Kitteh, Questenberg, Unknown_Rawrs
+**Thanks for feedback and discussions:** AvianGeneticist, Cend, Kassandra Haruki, Keilaph, Kitteh, Questenberg, Ragno, Unknown_Rawrs
 
 **Notes**
 - Other fundamental content can be found in the plugin recommendation list, especially see [Rumskib](https://github.com/TheGiraffe3/rumskib) for Plasma Turrets (Single, Quad) and Gatling Turrets (Single, Triple, Quad).
@@ -583,11 +583,12 @@ Author: (many authors) | Category: Outfits <br>
 **Content**
 | Creator | Outfit | Origin |
 |---------|--------|--------|
-| *anonymous* | Afterburner Steerings<br>Heavy Rocket Turret<br>Meteor Turret<br>Sidewinder VLS<br>Dual Mining Laser Turret<br>Hailstorm Missile<br>Rapier Missile<br>Thunderbolt Missile<br>Surveillance Radar<br>Tactical Radar | [RW Extras](https://www.moddb.com/mods/rw-extras/downloads) collection
+| *anonymous* | Afterburner Steerings<br>Beehive Rockets<br>Heavy Rocket Turret<br>Meteor Turret<br>Heavy Meteor Launcher<br>Sidewinder VLS<br>Dual Mining Laser Turret<br>Hailstorm Missile<br>Rapier Missile<br>Thunderbolt Missile<br>Surveillance Radar<br>Tactical Radar | [RW Extras](https://www.moddb.com/mods/rw-extras/downloads) collection
 | [1010todd](https://github.com/1010todd) | Heavy Blasters<br>Nuke Turret | [Heavy Blaster](https://github.com/endless-sky/endless-sky/discussions/7928)<br>[Nuke Turret](https://github.com/endless-sky/endless-sky/discussions/7928) |
 | [AvianGeneticist](https://github.com/AvianGeneticist) | Compressed Fuel Pod<br>Covalent Proton Turret<br>Naval Shields<br>PDP Batteries<br>Plasma Howitzer<br>Plasma Repeater Turret<br>Sentinel Reactor | [ZOE](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded) |
 | [Demolish238](https://github.com/demolish238) | Small Outfit Expansion<br>Living Space Removal<br>Marine, Ranger & Trooper Gears<br>Extended Bunk Room<br>Sizeable Map<br>Type 0 & 5 Radiant Engines | [QOL Outfits](https://github.com/demolish238/QOL-Outfits) |
 | [J.C.Hamlin](https://github.com/jchamlin) | Particle Turrets | [Marauder Bactrian](https://github.com/jchamlin/marauder-bactrian) |
+| Kitteh | Autocannons<br>Light/Heavy Tractors | Cardboard Box |
 | [Loyse](https://github.com/loiseeer) | Barrage Blaster<br>Flak Cannon | [Louise](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) |
 | [MidnightPlugins](https://github.com/MidnightPlugins) | Engineering Room | [Lost in Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) |
 | [Timeout](https://github.com/LixiChronikouOriou) | Hesperian Toolbox<br>HTS Artisan<br>HTS Crafter<br>Hesperian Red Lager<br>Syracusia Tractor Beam<br>Etna Mining Ray | FOE |
@@ -598,6 +599,7 @@ Author: (many authors) | Category: Outfits <br>
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2025-12-09 | 1.7.0 | Starting to add ideas and artwork made by Kitteh: Autocannons, Light and Heavy Tractor Beams. Updated RW Extras: Added Heavy Meteor Launcher and Beehive Rockets, updated Gun Port Missiles, author's patch to fix lacking burst behavior of vanilla and plugin missile launchers. Images by Cend for the Particle Turrets have been polished by Ragno. Fixed some warnings and errors. |
 | 2025-09-11 | 1.6.0 | Added the new outfitter *Becca Finmeccanica* with lore-HQ on Delve, starting with the (heavy) Syracusia Tractor Beam and the (heavy) Etna Mining Ray Gun/Turret, artwork by Tommaso Becca. Added Engineering Room from Lost in Midnight. Added FOE-equipped variants to Republic, FW and Merchant fleets. Adjusted Sentinel Reactor. Fixes here and there. |
 | 2025-08-31 | 1.5.1 | Buffed the power output and made the Sentinel Reactor adaptive to the ship's current heat level. Added FOE-equipped variants to Syndicate fleets. |
 | 2025-08-27 | 1.5.0 | Event fixes and tinkering. Removed Single Plasma Turret, only left its definition for compatibility (instead see [Rumskib](https://github.com/TheGiraffe3/rumskib)). Replaced images for Single and Dual Particle Turrets by ones in modern style. Fixed restocks for Flak Cannon and Javelin Pod Turret. Fuel shields now provide fuel protection. Removed for now the negative leak protection from compressed fuel pod because there's nothing that actually causes leak damage yet. Type 0 Radiant Engines also in advanced Wanderer outfitter, not only basic one. Removed unused files, beautified icon. |
