@@ -1,0 +1,375 @@
+outfitter "Ammo South"
+	"Beehive Rocket"
+
+outfitter "Delta V Basics"
+	"Beehive Rocket Pod"	
+	"Beehive Rocket Launcher"
+	"Beehive Rocket"
+	"Beehive Rocket Rack"
+
+outfitter "Delta V Advanced"
+	"Beehive Rocket Pod"	
+	"Beehive Rocket Launcher"
+	"Beehive Rocket Turret"
+	"Beehive Rocket"
+	"Beehive Rocket Rack"
+
+outfitter "Pirate Outfits" # Partial backwards compatibility to the extent that it doesn't modify sales in later versions of ES.
+	"Beehive Rocket"
+
+outfitter "Pirate Basics"
+	"Beehive Rocket"
+
+outfitter "Pirate Advanced"
+	"Beehive Rocket Pod"	
+	"Beehive Rocket Launcher"
+	"Beehive Rocket Turret"
+	"Beehive Rocket"
+	"Beehive Rocket Rack"
+
+
+
+outfit "Beehive Rocket"
+	category "Ammunition"
+	series "Ammunition"
+	index 01037
+	cost 1000
+	thumbnail "outfit/beehive rocket"
+	"mass" .25
+	"beehive rocket capacity" -1
+	description "Beehive Rockets are ammunition for Beehive Rocket weapons. You cannot install one unless you have first installed a launcher to fire it from."
+
+
+
+outfit "Beehive Rocket Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 01037
+	cost 12000
+	thumbnail "outfit/beehive rocket storage"
+	"mass" 2
+	"outfit space" -6
+	"beehive rocket capacity" 16
+	ammo "Beehive Rocket"
+	description "The Beehive Rocket Rack is used to store extra ammunition for Beehive Rocket weapons."
+
+
+
+outfit "Beehive Rocket Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01077
+	cost 10000
+	thumbnail "outfit/beehive rocket pod"
+	"mass" 2
+	"outfit space" -5
+	"weapon capacity" -5
+	"gun ports" -1
+	"beehive rocket capacity" 4
+	weapon
+		sprite "projectile/beehive rocket projectile"
+		sound "rocket"
+		ammo "Beehive Rocket"
+		icon "icon/beehive rocket launcher icon"
+		"live effect" "ballistic smoke" 60
+		"hit effect" "missile death"
+		"die effect" "nettle split"
+		"inaccuracy" 6
+		"acceleration" 1.2
+		"drag" .12
+		"velocity" 6
+		"velocity override" 21 # 12 flight velocity + maximum flechette velocity, helps correct over-leading of targets on tangential trajectories
+		"range override" 1140  # (12*80) rocket + (4.5*40) average flechette
+		"lifetime" 80
+		"reload" 160
+		"burst count" 4
+		"burst reload" 60
+		"firing energy" .5
+		"firing heat" 125
+		"hit force" -360 # halved on premature impact
+		"missile strength" 12
+		"split range" 300
+		"submunition" "beehive rocket flechette" 180
+	description "Beehive Rockets are filled with vast numbers of of closely-packed rods. The warhead splits before impact, unleashing a shotgun-like cone of metal that is devastating against fighter swarms and the large surface areas of heavy warship hulls alike."
+	description "	Pods enable fighters and other light craft to carry small quantities of missiles into battle while retaining enough space for other weapons. Large ships are better off with full-size launchers."
+
+
+
+outfit "Beehive Rocket Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01078
+	cost 35000
+	thumbnail "outfit/beehive rocket launcher"
+	"mass" 7
+	"outfit space" -20
+	"weapon capacity" -20
+	"gun ports" -1
+	"beehive rocket capacity" 32
+	weapon
+		sprite "projectile/beehive rocket projectile"
+		sound "rocket"
+		ammo "Beehive Rocket"
+		icon "icon/beehive rocket launcher icon"
+		"live effect" "ballistic smoke" 60
+		"hit effect" "missile death"
+		"die effect" "nettle split"
+		"inaccuracy" 6
+		"acceleration" 1.2
+		"drag" .12
+		"velocity" 6
+		"velocity override" 21 # 12 flight velocity + maximum flechette velocity, helps correct over-leading of targets on tangential trajectories
+		"range override" 1140  # (12*80) rocket + (4.5*40) average flechette
+		"lifetime" 80
+		"reload" 80
+		"firing energy" .5
+		"firing heat" 125
+		"hit force" -360 # halved on premature impact
+		"missile strength" 12
+		"split range" 300
+		"submunition" "beehive rocket flechette" 180
+	description "Beehive Rockets are filled with vast numbers of of closely-packed rods. The warhead splits before impact, unleashing a shotgun-like cone of metal that is devastating against fighter swarms and the large surface areas of heavy warship hulls alike."
+
+
+
+outfit "Beehive Rocket Turret"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01078 # same as launcher to use less IDs since it will append alphabetically anyway
+	cost 190000
+	thumbnail "outfit/beehive rocket turret"
+	"mass" 24
+	"outfit space" -50
+	"weapon capacity" -50
+	"turret mounts" -1
+	"required crew" 1
+	"beehive rocket capacity" 64
+	weapon
+		"hardpoint sprite" "hardpoint/beehive rocket turret hardpoint"
+		"hardpoint offset" 6
+		icon "icon/beehive rocket turret icon"
+		sound "rocket"
+		"submunition" "beehive rocket turret submunition"
+			"offset" 2 0
+			"facing" 0.3
+		"submunition" "beehive rocket turret submunition"
+			"offset" -2 0
+			"facing" -0.3
+		"hit effect" "missile death" 2
+		ammo "Beehive Rocket" 2
+		"inaccuracy" 6
+			narrow
+		"turret turn" 1.7
+		"lifetime" 1
+#		"velocity" 6           # line should be un-commented if using acceleration & drag
+		"velocity override" 12 # should be 21 if using acceleration & drag
+		"range override" 1140  # (12*80) rocket + (4.5*40) average flechette
+		"reload" 80
+		"firing energy" 1
+		"firing heat" 250
+		"hit force" -360 # halved on premature impact
+#		"missile strength" 12
+		cluster # uses this instead of missile strength so anti-missile can't destroy the 1-frame-lifetime projectile before it splits into the submunitions
+	description "Beehive Rockets are filled with vast numbers of of closely-packed rods. The warhead splits before impact, unleashing a shotgun-like cone of metal that is devastating against fighter swarms and the large surface areas of heavy warship hulls alike."
+	description "	These turret-mounted launchers are notably effective when used during close-range passes against the broadside of a large target."
+
+
+
+outfit "beehive rocket turret submunition"
+	weapon
+		sprite "projectile/beehive rocket projectile"
+		"live effect" "ballistic smoke" 60
+		"hit effect" "missile death"
+		"die effect" "nettle split"
+		"inaccuracy" 3
+#		"acceleration" 1.2 # not used because turret aim is ass with acceleration & drag
+#		"drag" .12         # as above
+		"velocity" 12      # line should be commented-out if using acceleration & drag
+		"lifetime" 80
+		"hit force" -360 # halved on premature impact
+		"missile strength" 12
+		"submunition" "beehive rocket flechette" 180
+		"split range" 300
+
+
+
+outfit "beehive rocket flechette"
+	weapon
+		sprite "projectile/bullet"
+			"frame rate" 3
+			"start frame" 1
+			"rewind"
+			"no repeat"
+#		"live effect" "irate smoke" 3 # makes the spray look softer and a bit sparkly
+		"hit effect" "heaver shard hit"
+		"inaccuracy" 18
+			narrow
+		"lifetime" 40
+		"random lifetime" 20
+		"random velocity" 9
+		"shield damage" 2
+		"hull damage" 3
+		"hit force" 4
+
+
+
+
+
+# VARIANTS
+
+ship "Osprey" "Osprey (Beehive Rocket)"
+	outfits
+		"Plasma Cannon" 2
+		"Beehive Rocket Launcher" 2
+		"Beehive Rocket" 64
+		"Quad Blaster Turret"
+		"Heavy Anti-Missile Turret"
+		
+		"Breeder Reactor"
+		"LP036a Battery Pack"
+		"D41-HY Shield Generator"
+		"Large Radar Jammer"
+		"Liquid Helium Cooler"
+		"Laser Rifle" 4
+		
+		"Impala Plasma Thruster"
+		"Impala Plasma Steering"
+		"Hyperdrive"
+	gun 
+	gun 
+	gun "Beehive Rocket Launcher"
+	gun "Beehive Rocket Launcher"
+	turret 
+	turret 
+
+
+
+ship "Bastion" "Bastion (Beehive Rocket)"
+	outfits
+		"Plasma Cannon" 4
+		"Anti-Missile Turret" 2
+		"Beehive Rocket Turret"
+		"Beehive Rocket" 64
+		
+		"S3 Thermionic"
+		"LP072a Battery Pack"
+		"nGVF-BB Fuel Cell"
+		"D67-TM Shield Generator"
+		"Water Coolant System"
+		"Tactical Scanner"
+		"Laser Rifle" 8
+		
+		"Impala Plasma Thruster"
+		"Impala Plasma Steering"
+		"Hyperdrive"
+	gun 
+	gun 
+	gun 
+	gun 
+	turret "Beehive Rocket Turret"
+	turret 
+	turret 
+
+
+
+ship "Vanguard" "Vanguard (Beehive Rocket)"
+	outfits
+		"Beehive Rocket Launcher" 4
+		"Beehive Rocket" 128
+		"Proton Gun" 3
+		"Javelin Turret"
+		"Javelin Storage Crate" 2
+		"Javelin" 600
+		
+		"Fission Reactor"
+		"LP036a Battery Pack"
+		"D94-YV Shield Generator"
+		"D67-TM Shield Generator"
+		"Large Radar Jammer" 2
+		"Water Coolant System"
+		"Laser Rifle" 2
+		
+		"X3700 Ion Thruster"
+		"X4200 Ion Steering"
+		"Hyperdrive"
+	gun "Proton Gun"
+	gun "Proton Gun"
+	gun "Proton Gun"
+	gun 
+	gun 
+	gun 
+	gun 
+	turret 
+
+
+
+
+
+# FLEETS
+
+fleet "Small Free Worlds"
+	add variant 2
+		"Osprey (Beehive Rocket)"
+
+fleet "Large Free Worlds"
+	add variant 2
+		"Osprey (Beehive Rocket)"
+		"Hawk (Bomber)"
+	add variant 2
+		"Bastion (Beehive Rocket)"
+		"Sparrow" 2
+	add variant 1
+		"Bastion (Beehive Rocket)"
+		"Osprey (Beehive Rocket)"
+
+fleet "Small Militia"
+	add variant 2
+		"Osprey (Beehive Rocket)"
+
+fleet "Large Militia"
+	add variant 2
+		"Osprey (Beehive Rocket)"
+		"Fury (Missile)"
+	add variant 2
+		"Bastion (Beehive Rocket)"
+		"Sparrow" 2
+	add variant 1
+		"Bastion (Beehive Rocket)"
+		"Osprey (Beehive Rocket)"
+
+fleet "Large Southern Pirates"
+	add variant 1
+		"Osprey (Beehive Rocket)"
+	add variant 1
+		"Osprey (Beehive Rocket)"
+		"Osprey (Missile)"
+	add variant 1
+		"Bastion (Beehive Rocket)"
+
+fleet "Large Core Pirates"
+	add variant 1
+		"Vanguard (Beehive Rocket)"
+		"Wasp (Javelin)" 2
+	add variant 1
+		"Vanguard (Beehive Rocket)"
+		"Wasp (Gatling)" 2
+	add variant 1
+		"Vanguard (Beehive Rocket)"
+		"Vanguard (Missile)"
+
+fleet "Large Independent"
+	add variant 1
+		"Osprey (Beehive Rocket)"
+	add variant 1
+		"Bastion (Beehive Rocket)"
+
+fleet "pirate raid"
+	add variant 1
+		"Osprey (Beehive Rocket)"
+		"Osprey (Missile)"
+	add variant 1
+		"Vanguard (Beehive Rocket)"
+		"Wasp (Meteor)" 2
+	add variant 1
+		"Vanguard (Beehive Rocket)"
+		"Vanguard (Missile)"
