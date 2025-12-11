@@ -54,8 +54,11 @@ mission "First Contact: Naltok (Telashki)"
 				`	"I suppose you are right."`
 					goto waiting
 				`	(Return to my ship and take off.)`
+			action
+				"reputation: Telashki" <?= -10
+				"reputation: Telashki (Ministry of War)" <?= -10
 			`	The Alpha doesn't make any move to stop you, instead turning away with a disappointed look. The Naltok start moving toward you, but they are surprisingly slow, and as you never moved far from the door to your ship you have no trouble escaping them. As you ascend through the atmosphere, your sensors note that your ship is receiving fire from small-caliber weaponry. It appears you are no longer welcome here.`
-				launch
+				flee
 			label name
 			choice
 				`	"My name is <first> <last>."`
@@ -70,10 +73,8 @@ mission "First Contact: Naltok (Telashki)"
 			`	Choshkal's expression changes in what you presume is the Naltok equivalent of a smile. "Anyways, I would like to welcome you to our space on behalf of the Ministry of Alien Life. We hope you have a good time here, and there are probably many things you can help us with."`
 			`	Choshkal says something to the onlookers in the Naltok language and the crowd disperses, leaving you free to wander the planet.`
 				decline
-	on enter
+	on fail
 		event "telashki ministry names"
-		"reputation: Telashki" <?= -10
-#		"reputation: Xochira" >?= 0
 		log "Factions" "Telashki" `The Telashki govern the north of Naltok space. They are apparently harboring at least one Alpha, though you did not have the opportunity to learn more.`
 		log "Factions" "Xochira" `According to the Telashki, the Xochira are a group of "xenophobes and technophobes" who control the south of Naltok space. Whatever their nature, they attacked you when you first entered their space.`
 		log "Factions" "Naltok" `The Naltok are a species of aliens living on the westernmost fringes of the galaxy. They resemble newts, or perhaps salamanders or toads, and seem to prefer to live in relatively damp conditions - most of their living spaces are wholly or partially flooded with water. Their space is divided between two rival factions, the Telashki in the north and the Xochira in the south.`
@@ -176,6 +177,7 @@ mission "First Contact: Naltok (Xochira)"
 				decline # todo: have the boarded ship lose one crew member here
 			label peacesuccess
 			`	You cast aside your weapons. The alien hesitantly steps forward, and shows you the screen of their translating device, which now shows a map of this region of space, with a single system marked.`
+				accept
 	on accept
 		"reputation: Xochira" >?= 1
 	on fail
