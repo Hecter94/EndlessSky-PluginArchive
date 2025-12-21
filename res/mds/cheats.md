@@ -1,16 +1,16 @@
 
-All Plugins (611)
+All Plugins (614)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (39) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (41) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (42)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Cheats
 
-<p>39 plugins in this category.<p>
+<p>41 plugins in this category.<p>
 
 
  
@@ -179,6 +179,44 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### buyable_faesmar
+<img src='../../Working/buyable_faesmar/icon.png' height='100'></img><br>
+
+
+[buyable_faesmar.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_faesmar.zip) | 37.9 kb | 2025-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_faesmar/) <br>
+Author: kaiboy | Category: Cheats <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar) (last commit 2025-12-18) <br>
+
+>Lets you buy the Faes'mar.
+>
+
+
+
+Status: Completed. Playable on 0.10.16. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### buyable_unfettered_weapons
+<img src='../../Working/buyable_unfettered_weapons/icon.png' height='100'></img><br>
+
+
+[buyable_unfettered_weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_unfettered_weapons.zip) | 22.82 kb | 2025-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_unfettered_weapons/) <br>
+Author: kaiboy | Category: Cheats <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons) (last commit 2025-12-18) <br>
+
+>Lets you buy Unfettered weapons.
+>
+
+
+
+Status: Completed. Playable on 0.10.16. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
