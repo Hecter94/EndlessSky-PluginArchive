@@ -1,7 +1,7 @@
 
-All Plugins (614)
+All Plugins (615)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (41) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
@@ -10,7 +10,7 @@ All Plugins (614)
 
 ## Cheats
 
-<p>41 plugins in this category.<p>
+<p>42 plugins in this category.<p>
 
 
  
@@ -211,6 +211,25 @@ Author: kaiboy | Category: Cheats <br>
 [https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons) (last commit 2025-12-18) <br>
 
 >Lets you buy Unfettered weapons.
+>
+
+
+
+Status: Completed. Playable on 0.10.16. <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### buyable_wanderer_ships
+<img src='../../Working/buyable_wanderer_ships/icon.png' height='100'></img><br>
+
+
+[buyable_wanderer_ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_wanderer_ships.zip) | 23.59 kb | 2025-12-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_wanderer_ships/) <br>
+Author: kaiboy | Category: Cheats <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships) (last commit 2025-12-22) <br>
+
+>Allows you to buy the Cool Breeze and Winter Gale.
 >
 
 

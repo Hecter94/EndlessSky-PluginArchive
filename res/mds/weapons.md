@@ -1,7 +1,7 @@
 
-All Plugins (614)
+All Plugins (615)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (41) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (53)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
@@ -455,9 +455,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/KGS/icon.png' height='100'></img><br>
 
 
-[KGS.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/KGS.zip) | 517.83 kb | 2025-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/KGS/) <br>
+[KGS.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/KGS.zip) | 717.08 kb | 2025-12-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/KGS/) <br>
 Author: kaiboy | Category: Weapons <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#kgs](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#kgs) (last commit 2025-12-18) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#kgs](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#kgs) (last commit 2025-12-23) <br>
 
 >Adds various items kitbashed in GIMP.
 >
