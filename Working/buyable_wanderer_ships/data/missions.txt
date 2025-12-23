@@ -1,0 +1,90 @@
+# Pretty much copied from Rumskib. Thanks TheGiraffe3!
+
+mission "Buyable Wanderer Ships: Timer"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: wanderers: sestor planets unrestricted"
+	on offer
+		event "buyable wanderer ships: timer" 120 240
+
+event "buyable wanderer ships: timer"
+
+mission "Buyable Wanderer Ships: Unlock Cool Breeze and Winter Gale"
+	landing
+	source
+		government "Wanderer" "Kor Efret" "Quarg (Kor Efret)"
+	to offer
+		has "event: buyable wanderer ships: timer"
+	on offer
+		event "buyable wanderer ships: cool breeze and winter gale mass production" 0
+		conversation
+			`When you land on <origin>, you receive a message from Sobari Tele'ek. "[Greetings, Salutations]," he says. "Production of the Squall and the Hailstone has now [begun, started]. You may buy them next time you [visit, contact] us."`
+				decline
+
+event "buyable wanderer ships: cool breeze and winter gale mass production"
+	fleet "Wanderer Freight"
+		add variant
+			"Deep River 0"
+			"Cool Breeze" 3
+		add variant
+			"Deep River 1"
+			"Cool Breeze" 2
+		add variant
+			"Deep River 2"
+			"Cool Breeze" 1
+		add variant
+			"Deep River 3"
+			"Cool Breeze" 2
+		add variant
+			"Deep River 4"
+			"Cool Breeze" 3
+		add variant
+			"Deep River"
+			"Cool Breeze" 4
+	fleet "Wanderer Defense"
+		add variant
+			"Cool Breeze" 1
+		add variant 4
+			"Cool Breeze" 2
+		add variant 3
+			"Cool Breeze" 3
+		add variant 2
+			"Cool Breeze" 4
+		add variant
+			"Cool Breeze" 5
+		add variant
+			"Heavy Gust"
+			"Cool Breeze" 2
+		add variant
+			"Tempest"
+			"Cool Breeze" 3
+		add variant
+			"Derecho"
+			"Cool Breeze" 3
+		add variant
+			"Hurricane"
+			"Cool Breeze" 3
+		add variant
+			"Autumn Breeze" 3
+			"Cool Breeze" 5
+	fleet "Wanderer Kor Efret Traders"
+		add variant
+			"Deep River"
+			"Cool Breeze"
+		add variant
+			"Strong Wind"
+			"Cool Breeze" 2
+		add variant
+			"Tempest"
+			"Cool Breeze" 3
+		add variant
+			"Autumn Leaf"
+			"Cool Breeze" 2
+		add variant
+			"Autumn Leaf" 2
+			"Cool Breeze" 3
+	shipyard "Wanderer Advanced"
+		add "Cool Breeze"
+		add "Winter Gale"

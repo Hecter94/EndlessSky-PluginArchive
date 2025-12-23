@@ -1,0 +1,52 @@
+mission "KGS: More Gatling Guns"
+	minor
+	name "Retrieve Twin Gatling Guns"
+	description "Barmy Edward has asked you to bring two Twin Gatling Guns (Staggered) to <planet> for him to study."
+	source "Skymoot"
+	destination "Rust"
+	to offer
+		has "event: plasma repeater advanced"
+		or
+			has "outfit: KGS Twin Gatling"
+			has "outfit: KGS Staggered Twin Gatling"
+	on offer
+		conversation
+			`As you explore <origin>'s spaceport, you encounter Barmy Edward, Chief Offensive Engineer of Kraz Cybernetics. "I'm on vacation," he says, "and who do I run into but Captain <last>? It's good seeing you!" You shake hands, and he introduces you to his wife, Ludmina. "Barmy works too much," she says. "This is the first time I've had a real vacation with him in five years." Barmy looks embarrassed. "Well, dear, I was working on that Dual Par-" "No," says Ludmina, "don't start. Whenever he starts talking about his work, he keeps on waffling for days," she tells you laughingly. "Well, would you like to have dinner with us?"`
+			choice
+				` (Not really.)`
+					decline
+				` (Sure.)`
+			`	While waiting for dessert after a sumptious dinner, during which Ludmina has had to stop Barmy from gushing about his designs multiple times, he finally starts. "<first>," he says, "I saw you have some interesting twin Gatling Guns. Could you tell me more about them?". "Sure," you answer. "You do know the Gatling has to cool down for twice as long as it fires, right?" He nods. "There are actually two types sold," you say. "One just fires both Gatling Guns at the same time, but the other staggers their fire, quartering cooldown time to only half as long as it fires."`
+			`	Barmy looks intrigued. "That's pretty cool," he says. "However, if there were three instead of two, firing could be continuous!" "Indeed," you say, "but I don't really know how it works." Barmy waves a hand. "I'm sure I can figure it out. But what if I stuffed two of the staggered twins into a quad Gatling? Now that is some real firepower!" His eyes glow. Ludmina looks slightly alarmed. "Now, now, Barmy-" "Wait, what if I cram two of the triple Gatlings into a single gun port? That would be insane!!" He is practically bouncing up and down in excitement. "Barmy," says Ludmina sternly, "don't get overexcited. <first> was kind enough to join us for dinner, so don't wear them out with your rambling." Barmy looks guilty. "Sorry, <first>. I do have a habit of going on at times." "It's fine," you say. "I actually would quite like a triple Gatling Gun, myself." The dessert then arrives, and you all dig in.`
+			`	After dessert, during which Barmy has been looking very thoughtful, he asks you some more details about the twin Gatling Guns, which you answer to the best of your understanding. "Well, <first>," he says, "this is all frightfully interesting. Would you be so kind as to bring two of the staggered twin Gatling Guns to <destination>?"`
+			choice
+				`	(No.)`
+					decline
+				`	(Yes.)`
+			`	"Of course," you say. Ludmina smiles wryly. "I bet you're not going to sleep tonight, are you, dear?" "How did you know that?" says Barmy guiltily. The conversation turns to other topics - the aliens you've seen, the planets you've visited. Eventually, they say their goodbyes and leave.`
+				accept
+	on visit
+		dialog `You have returned to <planet>, but you don't have the two Staggered Twin Gatlings that Barmy requested. Go and get them before returning.`
+	on complete
+		outfit "KGS Staggered Twin Gatling" -2
+		payment 150000
+		event "kgs: gatling mass production" 60 90
+		conversation
+			`You ask around for Barmy, and find that he's in. "Thank you, <first>!" he says, handing you <payment>. "This will be very helpful. I think I've got the basic design for the Triple, Quad, and 2x3 Gatling Guns nailed down. They just need to be built, tested, and refined."`
+
+mission "KGS: Gatling Guns Released"
+	landing
+	source
+		near "Kraz" 100
+	to offer
+		has "event: kgs: gatling mass production"
+	on offer
+		conversation
+			`As you finish your post-landing checks, you receive a message from Barmy Edward. A photograph is enclosed as well. The message reads:`
+			scene "outfit/kgs_2x3_gat"
+			`	Good news, Captain! The next time you're on Rust, you'll be able to buy Triple, Quad, and 2x3 Gatlings for your very own.`
+			`				Regards,`
+			`						B. Edward Tivrusky`
+			`						Chief Offensive Engineer`
+			`						Kraz Cybernetics`
+				decline
