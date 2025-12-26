@@ -225,9 +225,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/buyable_wanderer_ships/icon.png' height='100'></img><br>
 
 
-[buyable_wanderer_ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_wanderer_ships.zip) | 23.59 kb | 2025-12-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_wanderer_ships/) <br>
+[buyable_wanderer_ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_wanderer_ships.zip) | 23.59 kb | 2025-12-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_wanderer_ships/) <br>
 Author: kaiboy | Category: Cheats <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships) (last commit 2025-12-22) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships) (last commit 2025-12-25) <br>
 
 >Allows you to buy the Cool Breeze and Winter Gale.
 >
