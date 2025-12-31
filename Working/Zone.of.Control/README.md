@@ -3,6 +3,8 @@
 
 **Author: [Timeout](https://github.com/LixiChronikouOriou)**
 
+**Thanks**: Xobes
+
 #### Introduction ####
 In vanilla, tributing human space is a bit tedious because there are no mechanisms for making peace with the factions. The only systems which don't cause issues are the Pirates' ones. To tribute the Free Worlds one has to save-edit afterwards, for tributing Republic and Syndicate one has to use the phases during the main campaign to profit from the reputation reset afterwards. Independent systems like Men cause problems with neutral mission NPCs, so one has to save-edit here, too. Also the monastery planets New Tibet and Harmony cannot be tributed in vanilla, causing ugly spots on the conquest map.
 
@@ -34,6 +36,7 @@ Has individual dialogue boxes for each of the following situations.
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2024-12-31 | 1.1.1 | Icon was redesigned by Xobes. |
 | 2025-09-07 | 1.1.0 | Tarazed will become independent as the *Commonwealth* after the main campaign, if it hasn't joined the FW. Buffed Commonwealth defense. Plus some maintenance stuff. |
 | 2025-08-13 | 1.0.1 | Added missing Deneb system. Added militia reputation to be restored after Republic tributed. Now set new reputation after conquest only to 1, if the player's faction reputation really has become smaller than 1. Resized icon. |
 | 2025-08-09 | 1.0.0 | Initial release. |
