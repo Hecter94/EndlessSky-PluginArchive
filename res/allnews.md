@@ -1,3 +1,4 @@
+2026-01-02 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-01-01 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2025-12-31 | Updated plugin 'Zone.of.Control' by Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#zoneofcontrol)<br>
 2025-12-31 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
