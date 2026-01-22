@@ -768,9 +768,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/sensor/icon.png' height='100'></img><br>
 
 
-[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 3.47 mb | 2025-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sensor/) <br>
+[sensor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/sensor.zip) | 3.53 mb | 2026-01-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/sensor/) <br>
 Author: orbitalsupershell | Category: Weapons <br>
-[https://github.com/orbitalsupershell/sensor](https://github.com/orbitalsupershell/sensor) (last commit 2025-06-23) <br>
+[https://github.com/orbitalsupershell/sensor](https://github.com/orbitalsupershell/sensor) (last commit 2026-01-22) <br>
 
 >Tiny mod for adding weapons, still in progress!
 >
