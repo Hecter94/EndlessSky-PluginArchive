@@ -8,6 +8,37 @@
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
+mission "Rumskib: Add Hailmaker"
+	landing
+	invisible
+	to offer
+		has "event: navy using mark ii ships"
+	on offer
+		event "rumskib: add hailmaker" 60 100
+		fail
+
+event "rumskib: add hailmaker"
+	fleet "Small Republic"
+		add variant 12
+			"Hailmaker"
+		add variant 10
+			"Hailmaker" 2
+		add variant 9
+			"Hailmaker"
+			"Rainmaker (Mark II)"
+	fleet "Large Republic"
+		add variant 12
+			"Hailmaker" 2
+		add variant 9
+			"Carrier"
+			"Lance" 8
+			"Combat Drone" 6
+			"Hailmaker"
+		add variant 6
+			"Hailmaker" 3
+
+
+
 mission "Rumskib: start Quad Plasma Turret timer"
 	landing
 	invisible
@@ -133,3 +164,58 @@ mission "Rumskib: Remove Experimental Ladybug"
 event "rumskib: experimental ladybug no longer sold"
 	shipyard "Mon Ki i'Haya Advanced"
 		remove "Ladybug (New Description)"
+
+
+mission "Rumskib: Mining Barge in Nashira"
+	invisible
+	landing
+	npc
+		on kill
+			set "dead edderkopp"
+		government "Pirate"
+		personality disables harvests mining plunders staying
+		system "Nashira"
+		ship "Mining Barge" "Edderkopp"
+	to complete
+		never
+	npc
+		government "Pirate"
+		personality disables mining
+		system "Nashira"
+		ship "Mining Drone" "Hakkespett"
+		ship "Mining Drone" "Maursluker"
+		ship "Mining Drone" "Spekkhogger"
+		ship "Mining Drone" "Flaggermus"
+
+mission "Rumskib: Pirates in Nashira"
+	invisible
+	landing
+	repeat
+	to offer
+		not "dead edderkopp"
+		not "Rumskib: Pirates in Nashira: active"
+	npc kill
+		government "Pirate"
+		personality disables harvests mining plunders staying swarming
+		system "Nashira"
+		fleet
+			names "pirate"
+			variant
+				"Protector"
+				"Splinter"
+				"Quicksilver" 2
+				"Wasp"
+			variant
+				"Protector" 2
+				"Wasp" 2
+			variant
+				"Splinter" 3
+				"Wasp"
+			variant
+				"Quicksilver" 4
+			variant
+				"Splinter" 3
+				"Quicksilver" 2
+			variant
+				"Protector"
+				"Splinter" 2

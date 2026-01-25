@@ -211,3 +211,125 @@ mission "Rumskib: Earth Retirement 2"
 		conversation
 			`When you land on <planet>, Abel insists on carrying all of the family's personal effects. Donna and Charles are almost reluctant to say goodbye to you and the <ship>, but they look ahead smiling as their son leads them on to the better, happier retirement that they have well earned.`
 			`	Before leaving, each of them shakes your hand in turn, and Abel slyly deposits a credit chip worth <payment> in your palm at the end of the handshake. With a final wave, you bid the Singers goodbye and good luck.`
+
+
+
+mission "Rumskib: Sell Nuclear Missiles"
+	landing
+	minor
+	name "Sell nuke on <planet>"
+	description "Travel to <destination> to contact someone about selling your Nuclear Missile."
+	source
+		government "Free Worlds" "Independent" "Neutral" "Pirate" "Republic" "Syndicate"
+	destination "New Tortuga"
+	clearance "You ask for your contact. After a pause of several minutes, you are given permission to land."
+	to offer
+		has "outfit (all): Nuclear Missile"
+		has "free worlds reconciliation"
+	on offer
+		dialog `You receive an anonymous message as you land. "Bring a Nuclear Missile to <planet> for a huge reward."`
+	to complete
+		has "outfit: Nuclear Missile"
+	on visit
+		dialog `You have landed on <planet>, but you do not own a Nuclear Missile in this system! Return here when it arrives.`
+	on complete
+		conversation
+			`You maneuver your ship gently down on the landing pad, only to discover that you have a new message from your mysterious contact giving you directions to an underground hideout on the other side of the planet. "Come for a big reward," is the only explanation.`
+			choice
+				`	(Fly to the base.)`
+				`	(Send a message back saying that the deal is off.)`
+					decline
+			`	You type in the coordinates of the point you were requested to visit and map a path. Apparently getting there requires a trip of several hours, so you turn on autopilot and head out of the cabin for a nap.`
+			`	Some time later when you wake up, your ship is still on its journey, getting to a point where manual control is required. Flying through the atmosphere of New Tortuga, you pass over a typhoon, overfly a tsunami, and take a short detour around a supercell thunderstorm. After another half hour of delicate flying, you approach doors more than a hundred meters tall. As they open, you can see they are ten meters thick, made of an unfamiliar brown material. Two layers of shields shut down in anticipation of your entry, each strong enough to stop a Navy Carrier. To the left and right, there are turrets with heat signatures higher than a Breeder Reactor. Whoever built this place values their safety... and has the funds and technology to secure it.`
+			`	As you disembark, a blue-cloaked and hooded figure marches up to your ship and presents you with a contract. "Sign here, please."`
+			choice
+				`	(Sign the contract.)`
+					goto contractsigned
+				`	(Read the contract.)`
+					goto readcontract
+				`	"Why?"`
+			`	"Do you or do you not want to sell a missile? The contract will give you the terms."`
+			label readcontract
+			``
+			`		  CONTRACT BETWEEN CAPTAIN <last> AND SIR JOHN SMITH`
+			``
+			`	I, Captain <last>, hereby agree to sell one (1) nuclear missile`
+			`		  to Sir John Smith, owner of the Thousand Tsunamis.`
+			`	I, Sir John Smith, hereby agree to pay Captain <last> three million`
+			`	 (3,000,000) credits to the aforesaid captain for the privilege of`
+			`				buying this Nuclear Missile. Signed,`
+			``
+			`			...`
+			`			Sir John Smith`
+			choice
+				`	(Sign the contract.)`
+					goto contractsigned
+				`	"I have more than one Nuclear Missile."`
+					goto multiplenukes
+				`	"Why do you want a Nuclear Missile?"`
+			`	"Reasons are not important. I merely wish to buy a nuke, that I may tell you. Sign if you want, or else be gone. I have no time to waste." As the man speaks, you think you see a flash of green underneath his gesturing glove.`
+			choice
+				`	(Sign the contract.)`
+					goto contractsigned
+				`	"I have more than one Nuclear Missile."`
+				`	(Leave.)`
+					flee
+			label multiplenukes
+			`	The man shows a flash of interest, quickly quelled. "You do? How many will you sell, exactly?"`
+			choice
+				`	"Two."`
+					to display
+						"outfit: Nuclear Missile" >= 2
+					goto two
+				`	"Three."`
+					to display
+						"outfit: Nuclear Missile" >= 3
+					goto three
+				`	"Four."`
+					to display
+						"outfit: Nuclear Missile" >= 4
+					goto four
+				`	"Five."`
+					to display
+						"outfit: Nuclear Missile" >= 5
+					goto five
+				`	"Ten."`
+					to display
+						"outfit: Nuclear Missile" >= 10
+			action
+				outfit "Nuclear Missile" -10
+				payment 30000000
+			`	"Excellent! I will pay you thirty million credits for that!" Sir John snaps his fingers, and a crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+				goto salecomplete
+			label five
+			action
+				outfit "Nuclear Missile" -5
+				payment 15000000
+			`	"Excellent! I will pay you fifteen million credits for that!" Sir John snaps his fingers, and a crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+				goto salecomplete
+			label four
+			action
+				outfit "Nuclear Missile" -4
+				payment 12000000
+			`	"Excellent! I will pay you twelve million credits for that!" Sir John snaps his fingers, and a crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+				goto salecomplete
+			label three
+			action
+				outfit "Nuclear Missile" -3
+				payment 9000000
+			`	"Excellent! I will pay you nine million credits for that!" Sir John snaps his fingers, and a crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+				goto salecomplete
+			label two
+			action
+				outfit "Nuclear Missile" -5
+				payment 6000000
+			`	"Excellent! I will pay you six million credits for that!" Sir John snaps his fingers, and a crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+				goto salecomplete
+			label contractsigned
+			action
+				outfit "Nuclear Missile" -1
+				payment 3000000
+			`	"Thank you!" Sir John grabs the contract from you and snaps his fingers. A crew of tough pirates comes out of a small alley and enters your ship. One heads to a loading crane. Some minutes later, they reemerge with the nuclear missiles.`
+			label salecomplete
+			`	You are quickly escorted back to your ship, Sir John tosses you a credit chip for the stipulated amount, and then encourages you to leave before anyone learns what happened.`
+				depart
