@@ -20,9 +20,9 @@ All Plugins (615)
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.91 mb | 2026-01-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.91 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: TheGiraffe3 | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2026-01-23) <br>
+[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2026-02-01) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -541,9 +541,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/control.station/icon.png' height='100'></img><br>
 
 
-[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2025-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
+[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Adds a station to the Sol system that offers administrative functions started by the job board. See the README for details.
 
@@ -574,6 +574,9 @@ Completing the campaigns might not exactly have the same result as if the campai
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+updated to 0.11.0<br>
 <br>
 2025-10-05<br>
 capturing guide improvement (thx to Kassandra Haruki)<br>

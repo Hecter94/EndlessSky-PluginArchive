@@ -1037,9 +1037,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/hai.side.mission.unlocker/icon.png' height='100'></img><br>
 
 
-[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 100.02 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
+[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 96.27 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Unlocks Hai missions, that are currently blocked because of the Hai reveal rework. See the README for details.
 >
@@ -1062,6 +1062,9 @@ And removes hidden tag from "Devil-Hide" and "Al Hurr", both Hai Reveal systems.
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+removed devil run systems<br>
 <br>
 2025-06-05<br>
 removed nanachi and expanding business from plugin (0.10.13 enabled them now)<br>
@@ -1656,9 +1659,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/mission.helper/icon.png' height='100'></img><br>
 
 
-[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 158.78 kb | 2025-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
+[mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 155.31 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them. See the README for details.
 >
@@ -1674,6 +1677,9 @@ Accept the job "(mission.helper)" and click your way to the mission you want mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+updated missions to 0.11.0<br>
 <br>
 2025-10-26<br>
 updated missions to 0.10.16<br>
@@ -1732,9 +1738,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/more.boarding.missions/icon.png' height='100'></img><br>
 
 
-[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 5.65 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
+[more.boarding.missions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.boarding.missions.zip) | 5.65 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.boarding.missions/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Adds lots of repeatable boarding and assisting missions for different factions. Boarding bigger ships give higher rewards or higher chances for credits or special items. See the readme for details.
 
@@ -1773,6 +1779,9 @@ Only natural spawning ships can trigger these missions and ships spawned from jo
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+updated to 0.11.0<br>
 <br>
 2025-06-05<br>
 added outfit series<br>
@@ -2111,9 +2120,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/show.reputation/icon.png' height='100'></img><br>
 
 
-[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 159.22 kb | 2025-06-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
+[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 158.8 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-21) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Enables a job on every planet's job board, that shows the reputation values. See the README for details.
 >
@@ -2129,6 +2138,9 @@ Accept the job and the reputations conversation pops up. Then you can choose bet
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+updated to 0.11.0<br>
 <br>
 2025-06-21<br>
 added control.station support<br>
@@ -2168,9 +2180,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/space.fauna/icon.png' height='100'></img><br>
 
 
-[space.fauna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/space.fauna.zip) | 1.74 mb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/space.fauna/) <br>
+[space.fauna.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/space.fauna.zip) | 1.74 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/space.fauna/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >Adds space fauna fleets to all systems. Useless but pretty, to make the universe more alive. See the readme for details.
 >
@@ -2186,6 +2198,9 @@ There are 14 different organisms, 1 titan-sized, 3 superheavy-sized, 4 heavy-siz
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+updated systems to 0.11.0<br>
 <br>
 2025-08-29<br>
 license, README, icon@2x, plugintxt changes<br>

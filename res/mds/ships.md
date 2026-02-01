@@ -2452,9 +2452,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rumskib/icon.png' height='100'></img><br>
 
 
-[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 5.34 mb | 2026-01-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
+[Rumskib.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rumskib.zip) | 5.33 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rumskib/) <br>
 Author: TheGiraffe3 | Category: Ships <br>
-[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2026-01-25) <br>
+[https://github.com/TheGiraffe3/rumskib](https://github.com/TheGiraffe3/rumskib) (last commit 2026-02-01) <br>
 
 >Adds a few more ships that have plausible stories for why they were invented.
 >
@@ -2658,9 +2658,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/ship.merging/icon.png' height='100'></img><br>
 
 
-[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.45 mb | 2025-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
+[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.44 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
 Author: zuckung | Category: Ships <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
 >This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship. See the README for details.
 
@@ -2677,6 +2677,9 @@ Reduce performance issues by reducing ship amounts or just make single ships mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-02-01<br>
+update to 0.11.0<br>
 <br>
 2025-10-26<br>
 update to 0.10.16<br>
