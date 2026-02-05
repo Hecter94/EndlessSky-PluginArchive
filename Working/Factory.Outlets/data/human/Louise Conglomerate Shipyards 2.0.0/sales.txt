@@ -1,0 +1,59 @@
+shipyard "Louise Conglomerate Bare"
+	"Antecursor :LCS (Bare)"
+	"Commercator :LCS (Bare)"
+	"Explorator :LCS (Bare)"
+	"Lectica :LCS (Bare)"
+	"Mercator :LCS (Bare)"
+	"Messor :LCS (Bare)"
+	"Senator :LCS (Bare)"
+	"Venditor :LCS (Bare)"
+
+
+mission "Factory Outlets: Louise installed"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: Louise.Conglomerate.Shipyards"
+		not "event: factory outlets: louise installed"
+	on offer
+		event "factory outlets: louise installed"
+		clear "event: factory outlets: louise uninstalled"
+		fail
+
+event "factory outlets: louise installed"
+	system Alphard
+		add object
+			distance 925.209
+			period 337.112
+			object "Louise Factory Outlet"
+				sprite planet/station19
+					scale 0.5
+				distance 204
+				period 12
+
+
+mission "Factory Outlets: Louise uninstalled"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		not "installed plugin: Louise.Conglomerate.Shipyards"
+		has "event: factory outlets: louise installed"
+	on offer
+		event "factory outlets: louise uninstalled"
+		clear "event: factory outlets: louise installed"
+		fail
+
+event "factory outlets: louise uninstalled"
+	system Alphard
+		remove object
+			distance 925.209
+			period 337.112
+			object "Louise Factory Outlet"
+				sprite planet/station19
+					scale 0.5
+				distance 204
+				period 12
