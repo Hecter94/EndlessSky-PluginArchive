@@ -686,7 +686,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Everything-n-More.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Everything-n-More.zip) | 148.6 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Everything-n-More/) <br>
 Author: Please-Close-This-Issue | Category: Ships <br>
-[https://github.com/Please-Close-This-Issue/everything-n-more-mod-](https://github.com/Please-Close-This-Issue/everything-n-more-mod-) (last commit 2017-08-03) <br>
+[https://github.com/Please-Close-This-Issue/everything-n-more-mod-](https://github.com/Please-Close-This-Issue/everything-n-more-mod-)  <br>
 
 >several modified ships
 >
