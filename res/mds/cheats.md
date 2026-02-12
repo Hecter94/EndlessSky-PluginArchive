@@ -187,14 +187,29 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/buyable_faesmar/icon.png' height='100'></img><br>
 
 
-[buyable_faesmar.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_faesmar.zip) | 37.9 kb | 2025-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_faesmar/) <br>
+[buyable_faesmar.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_faesmar.zip) | 120.98 kb | 2026-02-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_faesmar/) <br>
 Author: kaiboy | Category: Cheats <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar) (last commit 2025-12-18) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar) (last commit 2026-02-11) <br>
 
 >Lets you buy the Faes'mar.
 >
 
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Buyable Faes'mar
 
+Adds the Faes'mar to all Remnant shipyards.
+
+## Changelog
+
+- ### 1.1.0
+  - New icon
+  - Updated plugin.txt to be more descriptive
+  - Added this readme
+  - Removed an empty line at the end of license.txt
+
+</blockquote>
+</details>
 
 Status: Completed. Playable on 0.10.16. <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
@@ -1420,9 +1435,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/World Forge/icon.png' height='100'></img><br>
 
 
-[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 582.87 kb | 2026-02-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
+[World.Forge.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/World.Forge.zip) | 582.81 kb | 2026-02-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/World%20Forge/) <br>
 Author: Amazinite | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2026-02-07) <br>
+[https://github.com/EndlessSkyCommunity/world-forge](https://github.com/EndlessSkyCommunity/world-forge) (last commit 2026-02-12) <br>
 
 >"This plugin was made to allow content creators to have access to all outfits in a single place, for the purpose of designing and testing outfit loadouts for new ships. Of course, it can also be used by people who want to ruin the game for themselves by getting a massive fleet without needing to work for it."
 >World Forge does this as well, but extends this: not only all outfits in one place, but sorted by race additionally, a way to change the swizzle(derived from ProjectRunabout), a easy way to add own outfits and ships into the existing scheme, and  missions to change your reputation with factions! 

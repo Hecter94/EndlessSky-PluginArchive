@@ -969,42 +969,46 @@ Author: Cat-Lady | Category: Gameplay <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>[h1]This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.[/h1]
+<blockquote>#### This plugin is a part of upcoming "Endless Sky: Captain's Edition" reboot of the base game. Stay tuned - meanwhile, installing the plugins can help to preview the experience, together or in parts.
+
+# Gatling Ammo Fix
 
 This plugin fixes availability of Gatling Gun Ammo (and its boxes) - being most primitive and easiest to manufacture type of ordnance, it is now available where you would expect it to be (hint: "galactic south" and multipurpose ammo depots).
 
+![Gatling Ammo Image](/gatling-ammo-fix/icon.png?raw=true "Gatling Ammo Image")
 
-[h1]Installing[/h1]
+
+## Installing
+
 
 Check:
 https://github.com/Cat-Lady/Gatling-Ammo-Fix/releases
 
 ...for latest, pre-packaged version.
 
+Unpack to your ES plugins folder. Be sure that you have single ``gatling-ammo-fix`` directory inside your plugins folder, containing ``data`` folder. Directory structure should look like:
 
-[b]1.[/b] Unpack [i]boarding-enhancements[/i] to your ES plugins folder. Be sure that you have single [i]gatling-ammo-fix[/i] directory inside your plugins folder, containing [i]data[/i] folder. Directory structure should look like:
-
-[code](...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)[/code]
-
-It [b]won't[/b] work if the directory structure will be anything like:
-
-[code](...)/plugins/gatling-ammo-fix/gatling-ammo-fix/(...)[/code]
+```(...)/plugins/gatling-ammo-fix/(.../data/, and other stuff)```
 
 
-[h1]Author[/h1]
+It **won't** work if the directory structure will be anything like:
 
-[list][*][b]Cat Lady[/b][/list]
-
-
-[h1]License[/h1]
-
-This project is licensed under the GPL3 License - see the LICENSE.md file for details.
+```(...)/plugins/Gatling-Ammo-Fix/gatling-ammo-fix/(...)```
 
 
+## Author
 
-[h1]Acknowledgments[/h1]
+* **Cat Lady**
+
+
+## License
+
+This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
 
 "Endless Sky" Development Team and Michael Zahniser; For maintaining and creating the game.
+
 </blockquote>
 </details>
 
