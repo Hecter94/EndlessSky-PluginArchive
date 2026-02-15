@@ -578,7 +578,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Non Lethal
 
 
-[Non.Lethal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Non.Lethal.zip) | 52.62 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Non%20Lethal/) <br>
+[Non.Lethal.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Non.Lethal.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Non%20Lethal/) <br>
 Author: N/A | Category: Weapons <br>
 N/A[]()  <br>
 

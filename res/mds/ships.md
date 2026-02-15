@@ -414,7 +414,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Czartraks Ship Pack
 
 
-[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | 13.01 mb | 2023-11-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Czartraks%20Ship%20Pack/) <br>
+[Czartraks.Ship.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Czartraks.Ship.Pack.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Czartraks%20Ship%20Pack/) <br>
 Author: Czartrak | Category: Ships <br>
 [https://github.com/czartrak/Czartraks-Ship-Pack](https://github.com/czartrak/Czartraks-Ship-Pack) (last commit 2023-11-13) <br>
 
@@ -424,7 +424,7 @@ Author: Czartrak | Category: Ships <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
