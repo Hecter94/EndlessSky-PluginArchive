@@ -889,7 +889,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### MaddreMod
 
 
-[MaddreMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MaddreMod.zip) | 42.6 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MaddreMod/) <br>
+[MaddreMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MaddreMod.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MaddreMod/) <br>
 Author: Maddremor | Category: Outfits <br>
 [https://github.com/Maddremor/ES-MaddreMod](https://github.com/Maddremor/ES-MaddreMod) (last commit 2017-05-14) <br>
 
