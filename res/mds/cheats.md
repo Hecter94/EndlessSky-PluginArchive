@@ -1398,9 +1398,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Ursa Polaris/icon.png' height='100'></img><br>
 
 
-[Ursa.Polaris.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ursa.Polaris.zip) | 3.38 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ursa%20Polaris/) <br>
+[Ursa.Polaris.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ursa.Polaris.zip) | 3.38 mb | 2026-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ursa%20Polaris/) <br>
 Author: Local God | Category: Cheats <br>
-[https://github.com/LocalGod79/UrsaPolaris](https://github.com/LocalGod79/UrsaPolaris) (last commit 2020-08-21) <br>
+[https://github.com/LocalGod79/UrsaPolaris](https://github.com/LocalGod79/UrsaPolaris) (last commit 2026-02-18) <br>
 
 >Post-mainline mission to build a universal outfitter.
 >
