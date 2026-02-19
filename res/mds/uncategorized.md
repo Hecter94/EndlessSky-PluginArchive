@@ -136,7 +136,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Endless Music %28Egg Edition%29/icon.png' height='100'></img><br>
 
 
-[Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2026-02-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
+[Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2026-02-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
 Author: ziproot et al. | Category: Uncategorized <br>
 [https://git.nixnet.services/ziproot/endless-music-egg-edition](https://git.nixnet.services/ziproot/endless-music-egg-edition)  <br>
 
@@ -285,27 +285,9 @@ Author: virmitio | Category: N/A <br>
 
 <details>
 <summary>:blue_book: Plugin readme</summary>
-<blockquote>## Intent:
+<blockquote>This is a plugin for Endless Sky which adds a significant large area to fly around and explore.
 
-Performing the below actions should result in a working directory `<work_dir>` which will permit the map editor and game to both correctly load the plugin while still keeping the plugin repository safely seperated from the root game data.
-
-### Assumptions:
-   - The repo was simply cloned to `%appdata%\endless-sky\plugins\ES_ExpandedTerritory`
-   - that steam is installed to the default location `%ProgramFiles(x86)%\Steam`
-   - that Endless Sky is installed to the default install location set by steam (`<steam_dir>\steamapps\common\...`)
-
-### Commands:
-```
-cd <work_dir>
-mklink /J data "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\data"
-mklink /J images "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink /J repo "%appdata%\endless-sky\plugins\ES_ExpandedTerritory"
-
-cd "%ProgramFiles(x86)%\Steam\steamapps\common\Endless Sky\images"
-mklink es_et "%appdata%\endless-sky\plugins\ES_ExpandedTerritory\images\es_et"
-```
-
-When opening in the map editor, please open files by way of the `<work_dir>\data` directory tree.
+At this time there isn't much to see or do beyond just flying around the pair of newly accessable galaxies (which are not yet fully mapped out or populated).
 
 </blockquote>
 </details>
