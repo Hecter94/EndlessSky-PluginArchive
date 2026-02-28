@@ -1785,7 +1785,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Monitor
 
 
-[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | 23.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Monitor/) <br>
+[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Monitor/) <br>
 Author: N/A | Category: Ships <br>
 N/A[]()  <br>
 
