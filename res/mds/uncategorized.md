@@ -46,9 +46,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Disable Author Ships/icon.png' height='100'></img><br>
 
 
-[Disable.Author.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Disable.Author.Ships.zip) | 93.1 kb | 2025-11-17 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Disable%20Author%20Ships/) <br>
+[Disable.Author.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Disable.Author.Ships.zip) | 93.54 kb | 2026-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Disable%20Author%20Ships/) <br>
 Author: samrocketman | Category: N/A <br>
-[https://github.com/samrocketman/endless-sky-disable-author-ships](https://github.com/samrocketman/endless-sky-disable-author-ships) (last commit 2025-11-17) <br>
+[https://github.com/samrocketman/endless-sky-disable-author-ships](https://github.com/samrocketman/endless-sky-disable-author-ships) (last commit 2026-03-15) <br>
 
 >An endless sky plugin to remove author ships from the game. 
 
@@ -136,7 +136,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Endless Music %28Egg Edition%29/icon.png' height='100'></img><br>
 
 
-[Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2026-03-14 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
+[Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2026-03-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
 Author: ziproot et al. | Category: Uncategorized <br>
 [https://git.nixnet.services/ziproot/endless-music-egg-edition](https://git.nixnet.services/ziproot/endless-music-egg-edition)  <br>
 
