@@ -2455,9 +2455,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Zone.of.Control/icon.png' height='100'></img><br>
 
 
-[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 44.68 kb | 2025-12-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
+[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 44.76 kb | 2026-03-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
 Author: Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-12-31) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-21) <br>
 
 >Provides a proper way to tribute human space after finishing the main plot without needing to save-edit (Free Worlds) or being dependent on time slots during campaign (Republic & Syndicate). Also handles independent systems by defining own polities to avoid issues with independent mission NPCs. And adds some vanilla mission chain related candy.
 >
@@ -2502,7 +2502,8 @@ Has individual dialogue boxes for each of the following situations.
 
 | Date | Version | Comment |
 |------|---------|---------|
-| 2024-12-31 | 1.1.1 | Icon was redesigned by Xobes. |
+| 2026-03-21 | 1.1.2 | Fixed false triggering of license revocation when the player actually has no license to be revoced. |
+| 2025-12-31 | 1.1.1 | Icon was redesigned by Xobes. |
 | 2025-09-07 | 1.1.0 | Tarazed will become independent as the *Commonwealth* after the main campaign, if it hasn't joined the FW. Buffed Commonwealth defense. Plus some maintenance stuff. |
 | 2025-08-13 | 1.0.1 | Added missing Deneb system. Added militia reputation to be restored after Republic tributed. Now set new reputation after conquest only to 1, if the player's faction reputation really has become smaller than 1. Resized icon. |
 | 2025-08-09 | 1.0.0 | Initial release. |
