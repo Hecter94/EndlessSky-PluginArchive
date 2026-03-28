@@ -1000,7 +1000,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### PipMod
 
 
-[PipMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PipMod.zip) | 24.71 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PipMod/) <br>
+[PipMod.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PipMod.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PipMod/) <br>
 Author: Pipsqueak | Category: Overhauls <br>
 N/A[]()  <br>
 
@@ -1010,7 +1010,7 @@ N/A[]()  <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -1064,7 +1064,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Pug Defense/icon.png' height='100'></img><br>
 
 
-[Pug.Defense.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug.Defense.zip) | 1.11 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pug%20Defense/) <br>
+[Pug.Defense.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Pug.Defense.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Pug%20Defense/) <br>
 Author: Wyrdean | Category: Overhauls <br>
 [https://github.com/Wyrdean/Pug-Defense](https://github.com/Wyrdean/Pug-Defense) (last commit 2022-02-04) <br>
 
