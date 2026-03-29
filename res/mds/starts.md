@@ -406,7 +406,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Quickstart
 
 
-[Quickstart.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quickstart.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quickstart/) <br>
+[Quickstart.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Quickstart.zip) | 4.71 kb | 2024-11-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Quickstart/) <br>
 Author: Zoura | Category: Starts <br>
 [https://github.com/AvianGeneticist/Quickstart](https://github.com/AvianGeneticist/Quickstart) (last commit 2024-07-08) <br>
 
@@ -472,7 +472,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### test convo
 
 
-[test.convo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/test.convo.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/test%20convo/) <br>
+[test.convo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/test.convo.zip) | 3.8 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/test%20convo/) <br>
 Author: N/A | Category: Starts <br>
 N/A[]()  <br>
 
@@ -482,7 +482,7 @@ N/A[]()  <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---

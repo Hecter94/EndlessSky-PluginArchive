@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 284.13 kb | 2026-03-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 302.29 kb | 2026-03-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-24) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-29) <br>
 
 >Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
@@ -143,6 +143,7 @@ Since the changes of ES 0.10.7, which also affected heat dissipation of many shi
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-03-29 | 1.4.1 | Added license files. |
 | 2026-03-24 | 1.4.0 | Buffed the Bunsen Burners by adding burn damage and increasing accuracy. Added burn damage to the Flamethrower, too. Reworked the mission-triggering, ship variants and fleet additions. |
 | 2025-08-20 | 1.3.0 | Doubled probability for Barmy's Bunsen-mission. Added event-triggered addition to fleets (Free Worlds, Militia, Southern Pirates). |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
