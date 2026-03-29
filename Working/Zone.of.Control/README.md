@@ -36,6 +36,7 @@ Has individual dialogue boxes for each of the following situations.
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-03-29 | 1.1.3 | Added license file. |
 | 2026-03-21 | 1.1.2 | Fixed false triggering of license revocation when the player actually has no license to be revoced. |
 | 2025-12-31 | 1.1.1 | Icon was redesigned by Xobes. |
 | 2025-09-07 | 1.1.0 | Tarazed will become independent as the *Commonwealth* after the main campaign, if it hasn't joined the FW. Buffed Commonwealth defense. Plus some maintenance stuff. |

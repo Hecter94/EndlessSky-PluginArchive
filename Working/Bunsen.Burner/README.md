@@ -21,6 +21,7 @@ Since the changes of ES 0.10.7, which also affected heat dissipation of many shi
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-03-29 | 1.4.1 | Added license files. |
 | 2026-03-24 | 1.4.0 | Buffed the Bunsen Burners by adding burn damage and increasing accuracy. Added burn damage to the Flamethrower, too. Reworked the mission-triggering, ship variants and fleet additions. |
 | 2025-08-20 | 1.3.0 | Doubled probability for Barmy's Bunsen-mission. Added event-triggered addition to fleets (Free Worlds, Militia, Southern Pirates). |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
