@@ -2455,9 +2455,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Zone.of.Control/icon.png' height='100'></img><br>
 
 
-[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 50.96 kb | 2026-03-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
+[Zone.of.Control.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Zone.of.Control.zip) | 50.99 kb | 2026-03-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Zone.of.Control/) <br>
 Author: Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-29) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-30) <br>
 
 >Provides a proper way to tribute human space after finishing the main plot without needing to save-edit (Free Worlds) or being dependent on time slots during campaign (Republic & Syndicate). Also handles independent systems by defining own polities to avoid issues with independent mission NPCs. And adds some vanilla mission chain related candy.
 >
@@ -2502,6 +2502,7 @@ Has individual dialogue boxes for each of the following situations.
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-03-30 | 1.1.4 | Minor text correction considering Haven. |
 | 2026-03-29 | 1.1.3 | Added license file. |
 | 2026-03-21 | 1.1.2 | Fixed false triggering of license revocation when the player actually has no license to be revoced. |
 | 2025-12-31 | 1.1.1 | Icon was redesigned by Xobes. |

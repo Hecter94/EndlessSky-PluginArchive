@@ -1,3 +1,6 @@
+2026-03-30 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
+2026-03-30 | Updated plugin 'Zone.of.Control' by Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#zoneofcontrol)<br>
+2026-03-30 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-03-29 | Updated plugin 'Zone.of.Control' by Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#zoneofcontrol)<br>
 2026-03-29 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-03-29 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>

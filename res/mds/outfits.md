@@ -1377,7 +1377,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.45 mb | 2025-11-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-03-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
 [https://github.com/TheronEpic/theronepic-solar-sails](https://github.com/TheronEpic/theronepic-solar-sails) (last commit 2020-10-30) <br>
 
@@ -1396,9 +1396,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar.Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.45 mb | 2025-11-16 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-03-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2025-11-16) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2026-03-30) <br>
 
 >Epic diffractive solar sails for Human and Coalition space, providing thrust, turn and solar collection, thereby using only outfitspace worth of half the consumed enginespace.
 >
@@ -1416,14 +1416,16 @@ An overhaul and re-publication of TheronEpic's [Solar Sails](https://github.com/
 
 One major change made, proposed by **Kitteh**, was to switch from reflective to diffractive solar sails. Therefore the sails, besides providing thrust and turn, also generate energy. However, reverse thrust as introduced by the original, was removed because of a lack of explainability.
 
-This plugin replaces the sales of Arrow, Bounder, Clipper, Freighter, Heavy Shuttle, Hogshead, Shuttle, Star Queen, Star Barge and Sunder with sail variants, superior to the vanilla versions. Also removes the shipyard "Basic Ships" from every planet with "Betelgeuse Basics" and/or "Syndicate Basics" shipyards.
+This plugin replaces the sales of Arrow, Bounder, Clipper, Freighter, Heavy Shuttle, Hogshead, Shuttle, Star Queen, Star Barge and Sunder with sail variants, superior to the vanilla versions.
 
-Overwrites the starter ship sales on New Boston with optimized variants and an added option.
+Overwrites the starter ship sales with optimized variants of the Shuttle and Star Barge. The Flivver is replaced with a sail variant for the Luxury Shipyards, making it a starter ship for the Paradise start on Mainsail, but is untouched for the Lionheart Basics Shipyards.
+
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-03-30 | 2.1.3 | Adjusted sales to conform to the new starts since ES 0.11.0. Added license files. |
 | 2025-11-16 | 2.1.2 | Reduced acceleration penalty to make large and huge sails more usable. Reworked stock outfits for sail-ship sales. Removed Sails-Blackbird sale. Replaced starter ships on New Boston. |
 | 2025-11-09 | 2.1.1 | Added sail variants of the Clipper and Blackbird for sale and fleets. |
 | 2025-08-20 | 2.1.0 | Added sail variants for Shuttle, Heavy Shuttle, Bounder, Arrow, Hogshead, Star Queen, Star Barge, Freighter and Sunder, replacing the vanilla sales of these ships. Changed merchant fleets correspondingly with varying region-dependent probabilities. Removed shipyard "Basic Ships" from every planet with "Betelgeuse Basics" and/or "Syndicate Basics" shipyards. |
