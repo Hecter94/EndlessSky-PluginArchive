@@ -1147,9 +1147,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Korunak.Defense.Drones/icon.png' height='100'></img><br>
 
 
-[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 540.36 kb | 2025-12-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
+[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 594.44 kb | 2026-04-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
 Author: Starmlerp | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2025-12-31) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-04-02) <br>
 
 >Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only.
 >
@@ -1161,7 +1161,7 @@ Author: Starmlerp | Category: Ships <br>
 
 **Author: [Starmlerp](https://github.com/starmlerp)**
 
-**Artwork: [Loyse](https://github.com/loiseeer), [Becca](https://github.com/beccabunny)**
+**Artwork: [Loyse](https://github.com/loiseeer), [Becca](https://github.com/beccabunny), [Vasily Khazykov](https://www.deviantart.com/tugodoomer), [Anton Kuhlevskyi](https://sketchfab.com/anton.kuhlevskyi)**
 
 **Thanks**: Kitteh
 
@@ -1169,14 +1169,15 @@ An overhaul and re-publication of the [Defense Drone Plugin](https://github.com/
 
 Being distributed over a plugin and two PRs from May to October 2020, Starmlerp's idea has never been  consolidated into a whole. Nevertheless there's even a serious modern plugin, [RW Ships](https://www.moddb.com/mods/rw-ships) which takes the original plugin into account. It was time to modernize the stats, bring everything together, and round off.
 
-Korunak Robotics is a sister company of Korunak Photovoltaics. Except of houshold drones of any kind like the Vroomba or the Sheepomotion, it also became well-known for its space combat drones. Popular among merchants, the [classified] became interested to [paragraph classified]. Therefore, [2 pages classified], so finally [10 pages classified].
+Korunak Robotics is a sister company of Korunak Photovoltaics. Its experience with household robots of any kind like the Vroomba or the Sheepomotion paved the path for the success of the KRD repair droid series. To sell more repair droids Korunak also entered the defense market and started to sell space combat drones, too. Popular among merchants, the [classified] became interested to [paragraph classified]. Therefore, [2 pages classified], so finally [10 pages classified].
 
-The basic *Defense Drone* is available from the beginning, the *Nock* in-war, the *Super Nock* post-war. Further, the plugin brings a drone-carrying modification of the Freighter and involves [classified].
+The latest *KRD-2952MUX* model as well as the basic *Defense Drone* is available from the beginning, the *Nock* in-war, the *Super Nock* post-war. Further, the plugin brings a drone-carrying modification of the Freighter and involves [classified].
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-04-02 | 1.2.0 | Added the KRD-2952MUX repair droid (designed by [Vasily Khazykov](https://www.deviantart.com/tugodoomer), modelled by [Anton Kuhlevskyi](https://sketchfab.com/anton.kuhlevskyi)), and license files. |
 | 2025-12-31 | 1.1.1 | Cheapened the drones' hull price according to a smart formula. |
 | 2025-07-19 | 1.1.0 | Added support for Omnis. |
 | 2025-06-01 | 1.0.4 | Minor metadata fix. |
