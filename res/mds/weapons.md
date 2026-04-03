@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 302.29 kb | 2026-03-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 302.42 kb | 2026-04-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-03-29) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-04-03) <br>
 
 >Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
@@ -124,6 +124,8 @@ Author: ItsNickBarry | Category: Weapons <br>
 ### Bunsen Burner ###
 
 **Author: [Nick Barry](https://github.com/ItsNickBarry)**
+
+**Thanks**: Kassandra Haruki
 
 An overhaul and re-publication of [Flamethrower-Turret-1.1.0](https://github.com/ItsNickBarry/endless-sky-flamethrower-turret). Since the last update of the plugin in January 2021 the Flamethrower was nerfed and got a new outfit image, so the Flamethrower Turret didn't fit anymore to the vanilla Flamethrower.
 
@@ -137,12 +139,13 @@ Needs that 60 days have lapsed since the Flamethrower became available, that the
 
 **Balance Note**
 
-Since the changes of ES 0.10.7, which also affected heat dissipation of many ships, the vanilla Flamethrower became largely useless. Tests showed that this is valid for the Bunsen Burner, too. Hence, both have been buffed with version 1.4.0 of this plugin by adding burn damage. Also the Bunsen Burner got increased accuracy.
+Since the changes of ES 0.10.7, which also affected heat dissipation of many ships, the vanilla Flamethrower became largely useless. Tests showed that this is valid for the Bunsen Burner, too. Hence, both have been buffed with version 1.4.0 of this plugin by adding burn damage. Also the Bunsen Burner got increased accuracy. After talking to Kassandra Haruki version 1.4.2 sets the vanilla Flamethrower back to its pre-nerf heat damage of 12000 and correspondingly the Bunsen Burner to 19200. Burn damage ist set to half of the heat damage.
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-04-03 | 1.4.2 | Set heat damage of vanilla Flamethrower to pre-nerf heat damage value of 12000, and the Bunsen Burner's to 19200. Burn damage set to half of heat damage. |
 | 2026-03-29 | 1.4.1 | Added license files. |
 | 2026-03-24 | 1.4.0 | Buffed the Bunsen Burners by adding burn damage and increasing accuracy. Added burn damage to the Flamethrower, too. Reworked the mission-triggering, ship variants and fleet additions. |
 | 2025-08-20 | 1.3.0 | Doubled probability for Barmy's Bunsen-mission. Added event-triggered addition to fleets (Free Worlds, Militia, Southern Pirates). |
