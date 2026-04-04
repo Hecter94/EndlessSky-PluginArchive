@@ -244,7 +244,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Evasion Bomb
 
 
-[Evasion.Bomb.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Evasion.Bomb.zip) | 1.05 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Evasion%20Bomb/) <br>
+[Evasion.Bomb.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Evasion.Bomb.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Evasion%20Bomb/) <br>
 Author: Vilhelm | Category: Weapons <br>
 N/A[]()  <br>
 
