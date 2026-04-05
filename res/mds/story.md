@@ -1919,7 +1919,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Moar.Humanity.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Moar.Humanity.zip) | 28.75 kb | 2023-08-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Moar%20Humanity/) <br>
 Author: mOctave | Category: Story <br>
-[https://github.com/mOctave/moar-humanity](https://github.com/mOctave/moar-humanity) (last commit 2023-08-24) <br>
+[https://github.com/mOctave/moar-humanity](https://github.com/mOctave/moar-humanity)  <br>
 
 >Moar Humanity is my dump for everything human related that involves original creation (read, not ship splices). Some of this new content is actually somewhat realistic, but a lot of it, especially the setup with Marauding Max, is completely illogical and designed for comic relief rather than sanity.
 

@@ -362,7 +362,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### easier harvesting
 
 
-[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | 92.25 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/easier%20harvesting/) <br>
+[easier.harvesting.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/easier.harvesting.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/easier%20harvesting/) <br>
 Author: Endros Gunderberg | Category: Graphics <br>
 [https://github.com/EndrosG/ES-Plugins](https://github.com/EndrosG/ES-Plugins) (last commit 2017-05-28) <br>
 
@@ -372,7 +372,7 @@ Author: Endros Gunderberg | Category: Graphics <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -381,7 +381,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/EndlessSky_ARUI/icon.png' height='100'></img><br>
 
 
-[EndlessSky_ARUI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EndlessSky_ARUI.zip) | 325.62 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EndlessSky_ARUI/) <br>
+[EndlessSky_ARUI.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EndlessSky_ARUI.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EndlessSky_ARUI/) <br>
 Author: DrZingo | Category: Graphics <br>
 [https://github.com/DrZingo/EndlessSky_ARUI](https://github.com/DrZingo/EndlessSky_ARUI) (last commit 2021-05-09) <br>
 
@@ -424,7 +424,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### ES Ships
 
 
-[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | 8.06 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
+[ES.Ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES.Ships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES%20Ships/) <br>
 Author: Yann | Category: Graphics <br>
 N/A[]()  <br>
 
@@ -434,7 +434,7 @@ N/A[]()  <br>
 
 
 Status: Playable on 0.9.15 Continuous. <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---

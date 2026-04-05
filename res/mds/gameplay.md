@@ -1672,7 +1672,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [mission.helper.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/mission.helper.zip) | 155.31 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/mission.helper/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins)  <br>
 
 >Enables a job on every planet's job board, that shows missions you haven't done. It also shows the "source" and "to offer" of these missions, so you can easily find them. See the README for details.
 >
