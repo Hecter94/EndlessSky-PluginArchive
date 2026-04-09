@@ -1000,7 +1000,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Jenkins My Beloved
 
 
-[Jenkins.My.Beloved.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jenkins.My.Beloved.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jenkins%20My%20Beloved/) <br>
+[Jenkins.My.Beloved.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Jenkins.My.Beloved.zip) | 8.75 kb | 2022-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Jenkins%20My%20Beloved/) <br>
 Author: Zoura (AvianGeneticist) | Category: Ships <br>
 N/A[]()  <br>
 
