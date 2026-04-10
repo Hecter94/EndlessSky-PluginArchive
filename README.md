@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2026-04-10 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
+2026-04-10 | Updated plugin 'combat.ai' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#combatai)<br>
 2026-04-09 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-04-08 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-04-07 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
@@ -18,8 +20,6 @@
 2026-04-02 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-04-01 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
 2026-03-31 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
-2026-03-31 | Updated plugin 'Endless Music (Egg Edition)' by ziproot et al. | [uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md#endless-music-(egg-edition))<br>
-2026-03-30 | Updated plugin 'Solar.Sails' by TheronEpic | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#solarsails)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

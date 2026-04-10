@@ -339,9 +339,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/combat.ai/icon.png' height='100'></img><br>
 
 
-[combat.ai.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/combat.ai.zip) | 332.91 kb | 2025-10-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/combat.ai/) <br>
+[combat.ai.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/combat.ai.zip) | 334.8 kb | 2026-04-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/combat.ai/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-24) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-10) <br>
 
 >Offers a mission to install a combat AI, which increases your ship stats based on combat experience. See the README for details.
 
@@ -404,10 +404,15 @@ Special: Inbuild Cloaking|max 1|"cloak" .01|"cloaking energy" 1|"cloaking fuel" 
 <br>
 <br>
 Changelog:<br>
-br>
+<br>
+2025-04-10<br>
+fixed initial mission question if the combat ai should stay or get removed<br>
+added control.station option to activate/deactivate the plugin missions<br>
+hopefully fixed FW Pug 2C missions when jump drive is offered<br>
+<br>
 2025-10-24<br>
 added energy gen, missile storage, jamming (wished by Kitteh)<br>
-br>
+<br>
 2025-10-23<br>
 added the option to reject combat.ai on a fresh pilot<br>
 added inbuild scram drive, inbuild jump drive, inbuild cloaking and passive income<br>
