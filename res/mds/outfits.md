@@ -992,7 +992,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [New.Droid.Regime.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/New.Droid.Regime.zip) | 19.16 kb | 2024-10-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/New%20Droid%20Regime/) <br>
 Author: czartrak | Category: Outfits <br>
-[https://github.com/czartrak/New-Droid-Regime](https://github.com/czartrak/New-Droid-Regime)  <br>
+[https://github.com/czartrak/New-Droid-Regime](https://github.com/czartrak/New-Droid-Regime) (last commit 2017-11-13) <br>
 
 >Re-adds NDR-228 Androids at a much higher price. Installing new droids requires a Charging Dock.
 >
@@ -1129,7 +1129,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [QOL-Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/QOL-Outfits.zip) | 2.72 mb | 2025-04-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/QOL-Outfits/) <br>
 Author: Demolish238 | Category: Outfits <br>
-[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits)  <br>
+[https://github.com/demolish238/QOL-Outfits](https://github.com/demolish238/QOL-Outfits) (last commit 2025-04-26) <br>
 
 >An offshoot of my Amalgamation plugin from 4 years ago, I wanted to bring some of the old QOL outfits from that collection of plugins back into the modern Endless Sky landscape. Hope you enjoy.
 >
