@@ -55,7 +55,7 @@ mission "Omnis: mod settings"
 				`	(Return.)`
 					goto 0000
 			label 1100
-			`How would you like galactic governments to behave around you.`
+			`How would you like galactic governments to behave around you?`
 			choice
 				`	(Reset to Default.)`
 					goto 1110
@@ -1733,6 +1733,8 @@ mission "Omnis: mod settings"
 					goto 2100
 				`	(Shipyard Variants.)`
 					goto 2200
+				`	(Unobtainable Ships.)`
+					goto 2300
 				`	(Return.)`
 					goto 0000
 			label 2100
@@ -1820,6 +1822,36 @@ mission "Omnis: mod settings"
 				clear "global: Omnis: Shipyard Variants"
 				clear "global: Omnis: Shipyard VariantsAll"
 			`Disabled Shipyard Variants.`
+				goto 0000
+			label 2300
+			`Currently disabled. This means that Ka'het, Aberrant, author, and indigenous/Drak ships will not show up in the shipyard on Everything.`
+				to display
+					not "global: Omnis: Unobtainium Available"
+			`Currently enabled. This means that Ka'het, Aberrant, author, and indigenous/Drak ships will show up in the shipyard on Everything.`
+				to display
+					has "global: Omnis: Unobtainium Available"
+			choice
+				`	(Enable.)`
+					to display
+						not "global: Omnis: Unobtainium Available"
+					goto 2310
+				`	(Disable.)`
+					to display
+						has "global: Omnis: Unobtainium Available"
+					goto 2320
+				`	(Return.)`
+					goto 2000
+			label 2310
+			action
+				event "omnis: unobtainable ships in shipyards"
+				set "global: Omnis: Unobtainium Available"
+			`Added Ka'het, Aberrant, author, and indigenous/Drak ships to Everything.`
+				goto 0000
+			label 2320
+			action
+				event "omnis: unobtainable ships no longer in shipyards"
+				clear "global: Omnis: Unobtainium Available"
+			`Removed Ka'het, Aberrant, author, and indigenous/Drak ships from Everything.`
 				goto 0000
 	repeat
 	source
@@ -3183,6 +3215,53 @@ event "Omnis: shipyard variants disabled"
 	planet "  Wanderer"
 		remove shipyard "wandererVariants"
 		remove shipyard "wandererVariantsAll"
+# Unobtainability
+mission "Omnis: unobtainable ships available"
+	invisible
+	landing
+	on offer
+		event "omnis: unobtainable ships in shipyards"
+		clear "event: omnis: unobtainable ships no longer in shipyards"
+		clear "Omnis: unobtainable ships no longer available: offered"
+		fail
+	source
+		government
+			"Omnis"
+			"Faction"
+	to offer
+		has "global: Omnis: Unobtainium Available"
+mission "Omnis: unobtainable ships no longer available"
+	invisible
+	landing
+	on offer
+		event "omnis: unobtainable ships no longer in shipyards"
+		clear "event: omnis: unobtainable ships in shipyards"
+		clear "Omnis: unobtainable ships available: offered"
+		fail
+	source
+		government
+			"Omnis"
+			"Faction"
+	to offer
+		not "global: Omnis: Unobtainium Available"
+event "omnis: unobtainable ships in shipyards"
+	planet "Everything"
+		add shipyard "aberrant"
+		add shipyard "developer"
+		add shipyard "drak"
+		add shipyard "iije"
+		add shipyard "kahet"
+		add shipyard "rulei"
+		add shipyard "vyrmeid"
+event "omnis: unobtainable ships no longer in shipyards"
+	planet "Everything"
+		remove shipyard "aberrant"
+		remove shipyard "developer"
+		remove shipyard "drak"
+		remove shipyard "iije"
+		remove shipyard "kahet"
+		remove shipyard "rulei"
+		remove shipyard "vyrmeid"
 event "omnis: reveal shrouded systems"
 	# Successors
 	system "Khasola-Ryuit"

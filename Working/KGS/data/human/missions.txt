@@ -1,0 +1,264 @@
+### Miscellaneous event additions
+#   mission "KGS: Navy Mark II Upgrade"
+#   mission "KGS: Finch Upgrade"
+### Fallcoon mission chain
+#   mission "KGS: Fallcoon Development"
+#   mission "KGS: Fallcoon Developed"
+### Gatling mission chain
+#   mission "KGS: Twin Gatling Development"
+#   mission "KGS: Twin Gatlings"
+#   mission "KGS: More Gatling Guns"
+#   mission "KGS: Gatling Guns Released"
+### Plasma Assault Repeater mission chain
+#   mission "KGS: Plasma Assault Repeater Development"
+#   mission "KGS: Plasma Assault Repeater Developed"
+### Raindrop mission chain
+#   mission "KGS: Raindrop Developed"
+### Yestrel mission chain
+#   mission "KGS: Yestrel Development"
+#   mission "KGS: Yestrel Developed"
+
+
+
+### Miscellaneous event additions
+#   mission "KGS: Navy Mark II Upgrade"
+#   mission "KGS: Finch Upgrade"
+
+mission "KGS: Navy Mark II Upgrade"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: navy using mark ii ships"
+	on offer
+		event "kgs: navy mark ii upgrade"
+		fail
+
+
+
+mission "KGS: Finch Upgrade"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: southern carriers 3"
+	on offer
+		event "kgs: finch upgrade"
+		fail
+
+
+
+### Fallcoon mission chain
+#   mission "KGS: Fallcoon Development"
+#   mission "KGS: Fallcoon Developed"
+
+mission "KGS: Fallcoon Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "main plot completed"
+	on offer
+		event "kgs: fallcoon developed" 20 30
+		fail
+
+mission "KGS: Fallcoon Developed"
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: fallcoon developed"
+	on offer
+		conversation
+			`As you explore the port here, a nearby screen lights up.`
+			choice
+				`	(Take a look.)`
+				`	(Ignore it.)`
+					decline
+			` "Tarazed Shipyards is announcing the Fallcoon, a new heavy warship intended to carry as many Plasma Cannons as possible!"`
+			scene "scene/kgs_fallcoon"
+			`	"With a main weapon array of ten Plasma Cannons, the Fallcoon beats out our competitor's Dreadnought and its six Plasma Cannons. Purchase one today at a nearby Tarazed branch!"`
+				decline
+
+
+
+### Gatling mission chain
+#   mission "KGS: Twin Gatling Development"
+#   mission "KGS: Twin Gatlings"
+#   mission "KGS: More Gatling Guns"
+#   mission "KGS: Gatling Guns Released"
+
+mission "KGS: Twin Gatling Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: plasma repeater advanced"
+		has "main plot completed"
+	on offer
+		event "kgs: pirates develop twin gatlings" 100 200
+		fail
+
+mission "KGS: Twin Gatlings"
+	invisible
+	non-blocking
+	outfitter
+	source
+		outfits "KGS Twin Gatling"
+	on offer
+		event "kgs: pirates use twin gatlings"
+		conversation
+			`As you walk hurriedly through the outfitter here, you notice two new weapons: the Twin Gatling and Staggered Twin Gatling.`
+			scene "scene/kgs_twin_gat"
+				decline
+
+mission "KGS: More Gatling Guns"
+	minor
+	name "Retrieve Gatling Gun Tech"
+	description "Barmy Edward has asked you to bring a Gatling Gun, a Twin Gatling, a Staggered Twin Gatling, and 1500 rounds of Gatling Gun ammo to <planet> for him to study."
+	source "Skymoot"
+	destination "Rust"
+	to offer
+		has "KGS: Twin Gatlings: declined"
+	on offer
+		conversation
+			`As you explore <origin>'s spaceport, you encounter Barmy Edward, Chief Offensive Engineer of Kraz Cybernetics, and two children. "I'm on vacation," he says, "and who do I run into but Captain <last>? It's good seeing you!" You shake hands, and he introduces you to his two adopted daughters, Ludmina and Lunella. "Hello <first>!" they chorus in unison. Barmy looks at them affectionately. "Would you like to have dinner with us?"`
+			choice
+				` "Sure!"`
+				` "I'm a bit busy, maybe not."`
+					decline
+			`	You are all waiting for dessert after a sumptious dinner, during which the two girls have been asking you nonstop about what being a spaceship captain is like. During a rare pause in the flow of questions, Barmy asks, "Have you seen any interesting weapons recently?"`
+			choice
+				` (Tell him about the Twin Gatlings you noticed at some pirate outfitters recently.)`
+				` "No, not really."`
+					goto no
+			` "I have, actually." you say. "Do you know about the Gatling Guns that some pirates around these parts sell?" Barmy nods. "Some time ago I visited a pirate planet, and I saw what they called a Twin Gatling, two Gatlings shoved together to fit into a single gun port. What was interesting was that there was a more expensive version that supposedly fired alternately. It advertised cooldown time half as much as firing time, while the regular version fired like a normal Gatling - twice as much cooldown time as firing time.`
+			` "Wow," says Barmy, "those pirates are quite creative. I have seen the Gatling Gun; it does incredible hull damage, but the downtime is significant. The staggered design must be much more effective. Actually, if I shoved three into a gun port, I could make them fire continuously! Imagine the hull ripping capability of that, plus our shield-focused Plasma Cannons. It would be an extremely effective combination! I would definitely like to do some research on these Gatlings - could you bring a few to my lab on Rust?"`
+			choice
+				` "Sure, what do you need?"`
+					goto yes
+				` "I'm sorry, but I don't think I can do that. You'll need to find someone else."`
+			` Barmy looks slightly crestfallen. "Well," he says, "I'm sure I can find someone to get them."`
+			label no
+			` The stream of questions from Ludmina and Lunella renews. At last, dessert arrives, and you all dig in.`
+			` After dessert, the conversation turns to the aliens you've seen, the planets you've visited. Eventually, they say their goodbyes and leave.`
+				decline
+			label yes
+			` "Yay!" exclaims Barmy. "I think one copy of each Gatling, including the original, plus 1500 rounds of ammo for it would be sufficient." He gives you the address of his lab on Rust.`
+			` The stream of questions from Ludmina and Lunella renews. At last, dessert arrives, and you all dig in.`
+			` After dessert, the conversation turns to the aliens you've seen, the planets you've visited. Eventually, they say their goodbyes and leave.`
+				accept
+	on visit
+		dialog `You have returned to <planet>, but you don't have the stuff Barmy requested. Go get them before returning.`
+	on complete
+		outfit "Gatling Gun" -1
+		outfit "KGS Twin Gatling" -1
+		outfit "KGS Staggered Twin Gatling" -1
+		outfit "Gatling Gun Ammo" -1500
+		payment 200000
+		event "kgs: gatling mass production" 60 90
+		conversation
+			`You ask around for Barmy, and find that he's in. "Thank you, <first>," he says, handing you <payment>. "This will be very helpful. Keep an eye out for something in a few months."`
+
+mission "KGS: Gatling Guns Released"
+	landing
+	invisible
+	non-blocking
+	source
+		near "Kraz" 100
+	destination "Zug"
+	to offer
+		has "event: kgs: gatling mass production"
+	on offer
+		conversation
+			`As you finish your post-landing checks, you receive a message from Barmy Edward. A photograph of a scary-looking weapon is enclosed as well. The message reads:`
+			scene "outfit/kgs_2x3_gat"
+			`	Good news, <first>! The next time you're on Rust, you'll be able to buy Triple, Quad, and 2x3 Gatlings.`
+			`				Best,`
+			`						B. Edward Tivrusky`
+			`						Chief Offensive Engineer`
+			`						Kraz Cybernetics`
+				decline
+
+
+
+### Plasma Assault Repeater mission chain
+#   mission "KGS: Plasma Assault Repeater Development"
+#   mission "KGS: Plasma Assault Repeater Developed"
+
+mission "KGS: Plasma Assault Repeater Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: plasma repeater advanced"
+		has "main plot completed"
+	on offer
+		event "kgs: plasma assault repeater developed" 450 600
+		fail
+
+mission "KGS: Plasma Assault Repeater Developed"
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: plasma assault repeater developed"
+	on offer
+		conversation
+			`As you stroll through the spaceport, a nearby hologram starts playing an ad.`
+			choice
+				`	(Take a look.)`
+				`	(Ignore it.)`
+					decline
+			`	"Kraz Cybernetics is excited to present a new heavy weapon: the Plasma Assault Repeater!"`
+			scene "outfit/kgs_plasma_assault_repeater"
+			`	"A burst fire device has been implemented onto the Plasma Repeater, and we have designed it specifically for use on the Tarazed Kingfisher heavy warship. Get one today at your local Kraz Cybernetics branch!"`
+				decline
+
+
+
+### Raindrop mission chain
+#   mission "KGS: Raindrop Developed"
+
+mission "KGS: Raindrop Developed"
+	invisible
+	landing
+	non-blocking
+	to offer
+		has "event: southern carriers 1"
+	on offer
+		event "kgs: raindrop developed" 0
+		fail
+
+
+
+### Yestrel mission chain
+#   mission "KGS: Yestrel Development"
+#   mission "KGS: Yestrel Developed"
+
+mission "KGS: Yestrel Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "kestrel available"
+	on offer
+		event "kgs: yestrel developed" 730
+		fail
+
+
+
+mission "KGS: Yestrel Developed"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: yestrel developed"
+	on offer
+		conversation
+			`You receive a message from Charles Atinoda, the ship designer at Tarazed Corporation who designed the Kestrel: "Captain <last>, we are pleased to inform you that our latest Kestrel variant, with all the possible upgrades, is now available for sale here on Wayfarer."`
+				decline

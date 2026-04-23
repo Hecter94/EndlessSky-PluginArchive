@@ -1,0 +1,17 @@
+## Ideas
+- silver Swan
+- gold Remnant ships
+- even more Flamethrowers
+- more Ka'het tech
+- more Bombardment Cannons
+- more Locust Blasters
+- more Quarg tech
+- more Korath grav tech
+- turrets on the Deep River
+- more human superheavies (vanguard?)
+- side-by-side twin Freighter
+- Quad Plasma Core
+- Railguns as engines
+- Barmy nukes
+- fat ships
+- more Thoraxes
