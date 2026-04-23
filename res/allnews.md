@@ -1,3 +1,9 @@
+2026-04-23 | Updated plugin 'buyable_faesmar' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_faesmar)<br>
+2026-04-23 | Updated plugin 'buyable_unfettered_weapons' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_unfettered_weapons)<br>
+2026-04-23 | Updated plugin 'wanderer_reverse_thrusters' by Ubrief, kaiboy | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#wanderer_reverse_thrusters)<br>
+2026-04-23 | Updated plugin 'buyable_wanderer_ships' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_wanderer_ships)<br>
+2026-04-23 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
+2026-04-23 | Updated plugin 'KGS' by kaiboy | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#kgs)<br>
 2026-04-21 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2026-04-20 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2026-04-20 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>

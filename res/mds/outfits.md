@@ -1756,9 +1756,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/wanderer_reverse_thrusters/icon.png' height='100'></img><br>
 
 
-[wanderer_reverse_thrusters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/wanderer_reverse_thrusters.zip) | 572.51 kb | 2026-02-15 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/wanderer_reverse_thrusters/) <br>
+[wanderer_reverse_thrusters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/wanderer_reverse_thrusters.zip) | 572.99 kb | 2026-04-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/wanderer_reverse_thrusters/) <br>
 Author: Ubrief, kaiboy | Category: Outfits <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#wanderer_reverse_thrusters](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#wanderer_reverse_thrusters) (last commit 2026-02-15) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#wanderer_reverse_thrusters](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#wanderer_reverse_thrusters) (last commit 2026-04-23) <br>
 
 >Adds Wanderer reverse thrusters.
 >
@@ -1767,11 +1767,27 @@ Author: Ubrief, kaiboy | Category: Outfits <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Wanderer Reverse Thrusters
 
-![icon.png](icon@2x.png)
+![Icon](https://raw.githubusercontent.com/kaiboyjiang/endless-sky-plugins/v1.0.1-wanderer_reverse_thrusters/myplugins/wanderer_reverse_thrusters/icon.png)
+
+[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/kaiboyjiang/endless-sky-plugins/releases/download/v1.0.1-wanderer_reverse_thrusters/wanderer_reverse_thrusters.zip)
 
 Adds reverse versions of Wanderer thrusters to wherever the original thrusters are sold.
 
 Idea by Ubrief. Artwork and stats by Ubrief and k.AI.
+
+## Releases
+
+<details>
+<summary> v1.0.1 </summary>
+
+Shiny new download button.
+</details>
+
+<details>
+<summary> v1.0.0 </summary>
+
+First release.
+</details>
 
 </blockquote>
 </details>

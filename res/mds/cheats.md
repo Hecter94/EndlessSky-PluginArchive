@@ -20,9 +20,9 @@ All Plugins (616)
 ### -Omnis
 
 
-[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.91 mb | 2026-03-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
+[-Omnis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/-Omnis.zip) | 2.91 mb | 2026-04-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/-Omnis/) <br>
 Author: TheGiraffe3 | Category: Cheats <br>
-[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2026-03-31) <br>
+[https://github.com/EndlessSkyCommunity/-Omnis](https://github.com/EndlessSkyCommunity/-Omnis) (last commit 2026-04-23) <br>
 
 >The most extensive all-content plugin to date. It includes many opportunities to test balance or ship builds against AI driven ships or fleets, all vanilla content and the content of many plugins available to use to put together different ship builds. Many more tools are included into Omnis too!
 >
@@ -187,9 +187,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/buyable_faesmar/icon.png' height='100'></img><br>
 
 
-[buyable_faesmar.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_faesmar.zip) | 120.98 kb | 2026-02-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_faesmar/) <br>
+[buyable_faesmar.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_faesmar.zip) | 145.44 kb | 2026-04-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_faesmar/) <br>
 Author: kaiboy | Category: Cheats <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar) (last commit 2026-02-11) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_faesmar) (last commit 2026-04-23) <br>
 
 >Lets you buy the Faes'mar.
 >
@@ -198,15 +198,29 @@ Author: kaiboy | Category: Cheats <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Buyable Faes'mar
 
+![Icon](https://raw.githubusercontent.com/kaiboyjiang/endless-sky-plugins/v1.1.1-buyable_faesmar/myplugins/buyable_faesmar/icon.png)
+
+[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/kaiboyjiang/endless-sky-plugins/releases/download/v1.1.1-buyable_faesmar/buyable_faesmar.zip)
+
 Adds the Faes'mar to all Remnant shipyards.
 
-## Changelog
+## Releases
 
-- ### 1.1.0
-  - New icon
-  - Updated plugin.txt to be more descriptive
-  - Added this readme
-  - Removed an empty line at the end of license.txt
+<details>
+<summary> v1.1.1 (23 Apr 2026) </summary>
+
+- Shiny new download button
+- Reverted icon because it was soft
+</details>
+
+<details>
+<summary> v1.1.0 (11 Feb 2026) </summary>
+
+- New icon
+- Updated plugin.txt to be more descriptive
+- Added this readme
+- Removed an empty line at the end of license.txt
+</details>
 
 </blockquote>
 </details>
@@ -221,14 +235,37 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/buyable_unfettered_weapons/icon.png' height='100'></img><br>
 
 
-[buyable_unfettered_weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_unfettered_weapons.zip) | 22.82 kb | 2025-12-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_unfettered_weapons/) <br>
+[buyable_unfettered_weapons.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_unfettered_weapons.zip) | 73.38 kb | 2026-04-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_unfettered_weapons/) <br>
 Author: kaiboy | Category: Cheats <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons) (last commit 2025-12-18) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_unfettered_weapons) (last commit 2026-04-23) <br>
 
 >Lets you buy Unfettered weapons.
 >
 
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Buyable Unfettered Weapons
 
+![Icon](https://raw.githubusercontent.com/kaiboyjiang/endless-sky-plugins/v1.1.0-buyable_unfettered_weapons/myplugins/buyable_unfettered_weapons/icon.png)
+
+[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/kaiboyjiang/endless-sky-plugins/releases/download/v1.1.0-buyable_unfettered_weapons/buyable_unfettered_weapons.zip)
+
+Adds the Tripulse Shredder, Ionic Blaster Prototype, and Ionic Turret Prototype to Darkcloak in the Wah Yoot system.
+
+## Releases
+
+<details>
+<summary> v1.1.0 (23 Apr 2026) </summary>
+
+- Shiny new download button
+- 2x icon
+- Updated plugin.txt to be more descriptive
+- Added this readme
+- Updated license
+</details>
+
+</blockquote>
+</details>
 
 Status: Completed. Playable on 0.10.16. <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
@@ -240,14 +277,40 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/buyable_wanderer_ships/icon.png' height='100'></img><br>
 
 
-[buyable_wanderer_ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_wanderer_ships.zip) | 23.59 kb | 2025-12-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_wanderer_ships/) <br>
+[buyable_wanderer_ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/buyable_wanderer_ships.zip) | 76.62 kb | 2026-04-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/buyable_wanderer_ships/) <br>
 Author: kaiboy | Category: Cheats <br>
-[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships) (last commit 2025-12-25) <br>
+[https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#buyable_wanderer_ships) (last commit 2026-04-23) <br>
 
 >Allows you to buy the Cool Breeze and Winter Gale.
 >
 
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Buyable Wanderer Ships
 
+![Icon](https://raw.githubusercontent.com/kaiboyjiang/endless-sky-plugins/v1.1.0-buyable_wanderer_ships/myplugins/buyable_wanderer_ships/icon.png)
+
+[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/kaiboyjiang/endless-sky-plugins/releases/download/v1.1.0-buyable_wanderer_ships/buyable_wanderer_ships.zip)
+
+Adds the Cool Breeze and Winter Gale to all Wanderer shipyards with the Strong Wind, some time after the completion of the Wanderer campaign.
+
+Missions partially copied from Rumskib.
+
+## Releases
+
+<details>
+<summary> v1.1.0 (23 Apr 2026) </summary>
+
+- Shiny new download button
+- 2x icon
+- Modified fleets
+- Updated plugin.txt to be more descriptive
+- Added this readme
+- Updated license
+</details>
+
+</blockquote>
+</details>
 
 Status: Completed. Playable on 0.10.16. <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
