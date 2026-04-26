@@ -383,7 +383,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Play.As.Sestor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Play.As.Sestor.zip) | 26.44 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Play%20As%20Sestor/) <br>
 Author: Zoura (AvianGeneticist) | Category: Starts <br>
-[https://github.com/AvianGeneticist/Play-As-Sestor](https://github.com/AvianGeneticist/Play-As-Sestor)  <br>
+[https://github.com/AvianGeneticist/Play-As-Sestor](https://github.com/AvianGeneticist/Play-As-Sestor) (last commit 2023-05-08) <br>
 
 >Play as Sestor does what it says on the tin! Start a new life (pilot) as a kiloton-rated metal death machine! Patrol space, amass a fleet, and conquer the galaxy!
 >Oh, yeah, by the way, everyone hates you, except for your bretheren.

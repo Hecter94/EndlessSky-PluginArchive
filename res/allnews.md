@@ -1,3 +1,7 @@
+2026-04-26 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
+2026-04-26 | New plugin 'Prometheus-Flame' by CruzEli | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#prometheus-flame)<br>
+2026-04-26 | New plugin 'Old Memory' by Maryn-s | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#old-memory)<br>
+2026-04-26 | New plugin 'Ursa Polaris' by Local God | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#ursa-polaris)<br>
 2026-04-23 | Updated plugin 'buyable_faesmar' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_faesmar)<br>
 2026-04-23 | Updated plugin 'buyable_unfettered_weapons' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_unfettered_weapons)<br>
 2026-04-23 | Updated plugin 'wanderer_reverse_thrusters' by Ubrief, kaiboy | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#wanderer_reverse_thrusters)<br>

@@ -1620,7 +1620,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Lost.in.Midnight.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lost.in.Midnight.zip) | 89.49 mb | 2025-12-31 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lost%20in%20Midnight/) <br>
 Author: MidnightPlugins | Category: Story <br>
-[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight) (last commit 2025-12-31) <br>
+[https://github.com/MidnightPlugins/Lost-in-Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight)  <br>
 
 >A mission focused plugin for Endless Sky.
 >
@@ -2181,7 +2181,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Old Memory/icon.png' height='100'></img><br>
 
 
-[Old.Memory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Old.Memory.zip) | 40.18 mb | 2024-07-22 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Old%20Memory/) <br>
+[Old.Memory.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Old.Memory.zip) | 40.18 mb | 2026-04-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Old%20Memory/) <br>
 Author: Maryn-s | Category: Story <br>
 [https://github.com/Maryn-s/Old-Memory](https://github.com/Maryn-s/Old-Memory) (last commit 2024-07-22) <br>
 
@@ -2383,7 +2383,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Prometheus-Flame/icon.png' height='100'></img><br>
 
 
-[Prometheus-Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometheus-Flame.zip) | 4.06 mb | 2024-04-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometheus-Flame/) <br>
+[Prometheus-Flame.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Prometheus-Flame.zip) | 4.06 mb | 2026-04-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Prometheus-Flame/) <br>
 Author: CruzEli | Category: Story <br>
 [https://github.com/CruzEli/Prometheus-Flame](https://github.com/CruzEli/Prometheus-Flame) (last commit 2024-04-10) <br>
 
