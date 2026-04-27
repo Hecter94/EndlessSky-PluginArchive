@@ -16,6 +16,8 @@
 ###############################
 
 
+event "midnight dreams of blood & fire timer"
+
 mission "Midnight Dreams of Blood & Fire 1"
 	minor
 	name "Caju's Clinic"
@@ -69,6 +71,7 @@ mission "Midnight Dreams of Blood & Fire 1"
 	on complete
 		payment
 		payment 12000
+		event "midnight dreams of blood & fire timer" 30
 		log "People" "Dr. Caju" `A Hai who specializes in treating psychological disorders. She runs a clinic on Cloudfire and has a fondness for Quantum Bloodstones.`
 		log "Minor People" "Nurse Peka" `Dr. Caju's muscular assistant. She isn't very talkative. Perhaps she only speaks Hai.`
 		conversation
@@ -93,10 +96,12 @@ mission "Midnight Dreams of Blood & Fire 2"
 		attributes "spaceport"
 	destination Cloudfire
 	to offer
+		has "event: midnight dreams of blood & fire timer"
 		has "outfit (flagship installed): Luxury Accommodations"
 		has "Midnight Dreams of Blood & Fire 1: done"
 		random < 60
 	on offer
+		clear "event: midnight dreams of blood & fire timer"
 		conversation
 			scene "outfit/luxury accommodations"
 			`At the spaceport you encounter Dr. Caju. Nurse Peka is with her and is pushing a wheelchair with what appears to be another patient in it. This one is also a man, but he is well dressed and seems to be in control of himself. Upon noticing you, Caju waves and motions for Peka to wheel their patient towards you.`
@@ -136,6 +141,7 @@ mission "Midnight Dreams of Blood & Fire 2"
 	on complete
 		payment
 		payment 24000
+		event "midnight dreams of blood & fire timer" 30
 		conversation
 			scene "outfit/bloodstone"
 			`Dexter is asleep in his wheelchair as Nurse Peka takes him away. As before, you need to visit Dr. Caju's office to receive your full payment. It appears much as it did the last time. But you notice that there are now two of the Quantum Bloodstones glittering on her shelf. Before you can ask about them, there is suddenly a shout from the next room. You can hear Dexter yell, "Demons! DEMONS! You stay away from me! AHH!" Caju quickly hands you <payment> and ushers you out of her office. It appears she'll have her hands full with this patient as well.`
@@ -151,10 +157,12 @@ mission "Midnight Dreams of Blood & Fire 3"
 		attributes "spaceport"
 	destination Cloudfire
 	to offer
+		has "event: midnight dreams of blood & fire timer"
 		has "outfit (flagship installed): Brig"
 		has "Midnight Dreams of Blood & Fire 2: done"
 		random < 50
 	on offer
+		clear "event: midnight dreams of blood & fire timer"
 		conversation
 			scene "outfit/unknown"
 			`While you are walking through the spaceport a large Hai emerges from a side alley. You recognize her as Nurse Peka. She seems to be out of breath. Looking around, she points in your direction.`
@@ -186,6 +194,7 @@ mission "Midnight Dreams of Blood & Fire 3"
 			scene planet/cloud0
 			`You're almost at <planet>. Ms. Ward is securely locked in the brig. Nurse Peka and Dr. Caju are keeping her under constant surveillance. The journey looks like it will end without incident.`
 	on complete
+		event "midnight dreams of blood & fire timer" 30
 		conversation
 			`Nurse Peka hauls a sedated Ms. Ward away. Dr. Caju pulls 18,000 credits out of her medical bag. "Here's your payment!"`
 			choice
@@ -222,6 +231,7 @@ mission "Midnight Dreams of Blood & Fire Epilogue"
 	invisible
 	source "Cloudfire"
 	to offer
+		has "event: midnight dreams of blood & fire timer"
 		has "Midnight Dreams of Blood & Fire 3: done"
 		random < 10
 	on offer
@@ -242,7 +252,8 @@ mission "Midnight Dreams of Blood & Fire Epilogue"
 				`	(Visit Dr. Caju's clinic.)`
 					goto visit
 				`	(Stay away.)`
-
+			action
+				clear "event: midnight dreams of blood & fire timer"
 			`	For some reason, you hesitate to visit the clinic. Perhaps you have some subconscious fear of becoming one of her patients...`
 				decline
 
