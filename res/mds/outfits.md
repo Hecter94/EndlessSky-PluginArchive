@@ -238,7 +238,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Endless Cargo
 
 
-[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | 33.15 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Cargo/) <br>
+[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Cargo/) <br>
 Author: Ryan S. Northrup | Category: Outfits <br>
 [https://bitbucket.org/YellowApple/endless-cargo/downloads/](https://bitbucket.org/YellowApple/endless-cargo/downloads/)  <br>
 
@@ -516,7 +516,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/flare.play/icon.png' height='100'></img><br>
 
 
-[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 15.37 mb | 2025-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
+[flare.play.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/flare.play.zip) | 15.37 mb | 2026-04-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/flare.play/) <br>
 Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-27) <br>
 
@@ -1008,7 +1008,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Olden Things
 
 
-[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | 1.57 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
+[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
 Author: RestingImmortal | Category: Outfits <br>
 [https://github.com/RestingImmortal/misc-plugins](https://github.com/RestingImmortal/misc-plugins) (last commit 2019-09-03) <br>
 
@@ -1023,7 +1023,7 @@ Adds some ancient ES history to the current version of the game as well as makes
 </details>
 
 Status: Abandoned <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -1032,7 +1032,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/outfits.weapon.slot/icon.png' height='100'></img><br>
 
 
-[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | 928.98 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
+[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
 Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 

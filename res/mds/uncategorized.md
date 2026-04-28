@@ -138,7 +138,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Endless.Music.Egg.Edition.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Music.Egg.Edition.zip) | 178.09 mb | 2026-04-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Music%20(Egg%20Edition)/) <br>
 Author: ziproot et al. | Category: Uncategorized <br>
-[https://git.nixnet.services/ziproot/endless-music-egg-edition](https://git.nixnet.services/ziproot/endless-music-egg-edition)  <br>
+N/A[]()  <br>
 
 >Adds 30 CC-BY/CC-BY-SA/GPL songs made by various artists that play in various conditions.
 >
@@ -156,7 +156,7 @@ Main Plot Plus and Crisis in Management are supported. No other plugins are offi
 </details>
 
 Status: egg <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
