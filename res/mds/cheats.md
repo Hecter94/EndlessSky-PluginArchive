@@ -322,9 +322,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 196.83 kb | 2025-11-20 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 196.77 kb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-11-20) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -344,7 +344,7 @@ At Earth's job board you can find a repeatable job that displays which persons y
 After you've killed them all, you receive a small unique gift.<br>
 <br>
 I tested this plugin with 10x KIV349, all equipped with Mereti beam weapons, was probably an overkill on most. Boarding "Zitchas"(1000 crew) needed an Echo-Galleon, and I tried it with hand2hand outfits plugin. Maybe it works with nerve gas too.<br>
-In cap_persons.txt you find the following line under gamerules: "#	"person spawn period" 2000". If you remove the "#" the spawning speed is increased to one spawn in around half a minute.<br>
+If you set the gamerules to	"person spawn period" 2000 and "person spawn weight" 0 , the spawning speed is increased to one spawn in around half a minute.<br>
 <ul>
 <li>"vyu-Ir" (not a person ship, but unique | found south-western of Gegno)</li>
 <li>"Michael Zahniser" (found everywhere | Kestrel + Finch)</li>
@@ -367,7 +367,10 @@ In cap_persons.txt you find the following line under gamerules: "#	"person spawn
 <br>
 <br>
 Changelog:<br>
- <br>
+<br>
+2026-04-28<br>
+removed gamerules settings<br>
+<br>
 2025-11-20<br>
 changed original vyu-Ir to despawn(thx to nova1422)<br>
 <br>
@@ -619,9 +622,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/control.station/icon.png' height='100'></img><br>
 
 
-[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
+[control.station.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/control.station.zip) | 3.2 mb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/control.station/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
 
 >Adds a station to the Sol system that offers administrative functions started by the job board. See the README for details.
 
@@ -652,6 +655,9 @@ Completing the campaigns might not exactly have the same result as if the campai
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-04-28<br>
+fixed teccimach event naming from 0.11.1<br>
 <br>
 2026-02-01<br>
 updated to 0.11.0<br>

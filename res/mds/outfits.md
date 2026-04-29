@@ -238,7 +238,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Endless Cargo
 
 
-[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Cargo/) <br>
+[Endless.Cargo.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Endless.Cargo.zip) | 33.15 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Endless%20Cargo/) <br>
 Author: Ryan S. Northrup | Category: Outfits <br>
 [https://bitbucket.org/YellowApple/endless-cargo/downloads/](https://bitbucket.org/YellowApple/endless-cargo/downloads/)  <br>
 
@@ -371,9 +371,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/expert.crew.members/icon.png' height='100'></img><br>
 
 
-[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 8.07 mb | 2025-06-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
+[expert.crew.members.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/expert.crew.members.zip) | 8.07 mb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/expert.crew.members/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-25) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
 
 >Adds unique crew members, aquireable through low chance spaceport missions. These crew members are technically outfits which require a bunk and a salary, but no outfit space or mass. They add, depending on their technology field, stats to your ship. Like shield regenaration, more thrust, more cargo etc. See the readme for details.
 >
@@ -394,6 +394,9 @@ See <a href='https://github.com/zuckung/endless-sky-plugins/blob/main/myplugins/
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-04-28<br>
+fixed new plural errors from ES 0.11.1<br>
 <br>
 2025-06-25<br>
 used wrong script on last update, incipias and expertcounter were messed up, fixed<br>
@@ -1008,7 +1011,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Olden Things
 
 
-[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
+[Olden.Things.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Olden.Things.zip) | 1.57 mb | 2024-10-11 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Olden%20Things/) <br>
 Author: RestingImmortal | Category: Outfits <br>
 [https://github.com/RestingImmortal/misc-plugins](https://github.com/RestingImmortal/misc-plugins) (last commit 2019-09-03) <br>
 
@@ -1023,7 +1026,7 @@ Adds some ancient ES history to the current version of the game as well as makes
 </details>
 
 Status: Abandoned <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -1032,7 +1035,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/outfits.weapon.slot/icon.png' height='100'></img><br>
 
 
-[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
+[outfits.weapon.slot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/outfits.weapon.slot.zip) | 928.98 kb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/outfits.weapon.slot/) <br>
 Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
@@ -1519,9 +1522,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 12.75 mb | 2025-10-07 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 12.73 mb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-07) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1585,6 +1588,11 @@ In the rootfoldet of this plugin you can find the file "plugin re-shroud.txt" to
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-04-28<br>
+fixed lone pixel errors for some ship images<br>
+fixed changed korsmanath outfit space<br>
+fixed new 0.11.1 plural definition errors<br>
 <br>
 2025-10-07<br>
 added derelict scanner Korsmanath story (by Lunella)<br>
