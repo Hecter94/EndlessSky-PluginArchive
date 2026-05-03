@@ -712,7 +712,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Dangerous Games
 
 
-[Dangerous.Games.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dangerous.Games.zip) | 4.63 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dangerous%20Games/) <br>
+[Dangerous.Games.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Dangerous.Games.zip) | 615.45 kb | 2026-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Dangerous%20Games/) <br>
 Author: wispborne | Category: Story <br>
 [https://github.com/wispborne/endless-sky-dangerous-games](https://github.com/wispborne/endless-sky-dangerous-games) (last commit 2016-09-11) <br>
 
@@ -723,9 +723,22 @@ Author: wispborne | Category: Story <br>
 <summary>:blue_book: Plugin readme</summary>
 <blockquote># Dangerous Games missions
 
-This is a mission available from the planet Clark that takes you an a short adventure with the dragons of Skymoot.
+## Missions
+1. The Dragonriders [Complete]
+2. Into The Depths [WIP]
 
-Install in the plugins folder, the location of which can be found here: https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins
+## Intro
+This is a series of missions for the (free) game [Endless Sky](https://endless-sky.github.io/) that take you on high-risk, high-adventure trips around the galaxy.
+
+![Intro](screenshot1.png)
+
+## Installation
+
+Move [the latest release](https://github.com/davidwhitman/endles-sky-dangerous-games/releases), unzipped, to your plugins folder, the location of which can be found here: https://github.com/endless-sky/endless-sky/wiki/CreatingPlugins
+
+## Starting
+To begin, head to the planet Clark in the Seginus system. You must be able to carry at least 10 passengers.
+
 </blockquote>
 </details>
 

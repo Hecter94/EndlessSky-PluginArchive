@@ -1,3 +1,5 @@
+2026-05-03 | New plugin 'Dangerous Games' by wispborne | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#dangerous-games)<br>
+2026-05-03 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
 2026-04-28 | Updated plugin 'expert.crew.members' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#expertcrewmembers)<br>
 2026-04-28 | Updated plugin 'uniques' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#uniques)<br>
 2026-04-28 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>

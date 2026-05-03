@@ -106,9 +106,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/additional.command.buttons.radial/icon.png' height='100'></img><br>
 
 
-[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 412.47 kb | 2025-10-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
+[additional.command.buttons.radial.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/additional.command.buttons.radial.zip) | 412.54 kb | 2026-05-03 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/additional.command.buttons.radial/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-10-26) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-05-03) <br>
 
 >Made for the MOBILE ANDROID version. Adds several new buttons to the lower right corner. See the README for details.
 >
@@ -148,6 +148,9 @@ That resizes the landing image and the frame to their half.<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-05-03<br>
+fixed not working radar (reported by Jawster)<br>
 <br>
 2025-10-26<br>
 fixed 0.10.16 stop ship command renaming<br>

@@ -1715,7 +1715,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Mining.Pinger.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Mining.Pinger.zip) | 744.9 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Mining%20Pinger/) <br>
 Author: Zoura | Category: Ships <br>
-[https://github.com/AvianGeneticist/MiningPinger](https://github.com/AvianGeneticist/MiningPinger)  <br>
+[https://github.com/AvianGeneticist/MiningPinger](https://github.com/AvianGeneticist/MiningPinger) (last commit 2023-04-03) <br>
 
 >Some miscalleneous stuff for ES; mostly pertaining to fleets and mining 
 >

@@ -5,6 +5,8 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2026-05-03 | New plugin 'Dangerous Games' by wispborne | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#dangerous-games)<br>
+2026-05-03 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
 2026-04-28 | Updated plugin 'expert.crew.members' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#expertcrewmembers)<br>
 2026-04-28 | Updated plugin 'uniques' by zuckung | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#uniques)<br>
 2026-04-28 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
@@ -18,8 +20,6 @@
 2026-04-26 | New plugin 'Old Memory' by Maryn-s | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#old-memory)<br>
 2026-04-26 | New plugin 'Ursa Polaris' by Local God | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#ursa-polaris)<br>
 2026-04-23 | Updated plugin 'buyable_faesmar' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_faesmar)<br>
-2026-04-23 | Updated plugin 'buyable_unfettered_weapons' by kaiboy | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#buyable_unfettered_weapons)<br>
-2026-04-23 | Updated plugin 'wanderer_reverse_thrusters' by Ubrief, kaiboy | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#wanderer_reverse_thrusters)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
