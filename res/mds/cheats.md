@@ -1025,7 +1025,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Overkill.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Overkill.zip) | 3.34 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Overkill/) <br>
 Author: Carter-M-II | Category: Cheats <br>
-[https://github.com/Carter-M-II/ES-Overkill](https://github.com/Carter-M-II/ES-Overkill) (last commit 2022-02-03) <br>
+[https://github.com/Carter-M-II/ES-Overkill](https://github.com/Carter-M-II/ES-Overkill)  <br>
 
 >This mod is full of overpowered/bloated things like Ships and Outfits. Only used to beat the game but may be fun to pit on other mods with overpowered ships/outfits.
 >
