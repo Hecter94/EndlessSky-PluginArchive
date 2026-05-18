@@ -243,7 +243,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Bounty.Hunters.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bounty.Hunters.zip) | 11.3 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bounty%20Hunters/) <br>
 Author: WarlordMike | Category: Gameplay <br>
-[https://github.com/WarlordMike/es-bounty-hunters](https://github.com/WarlordMike/es-bounty-hunters) (last commit 2020-11-07) <br>
+[https://github.com/WarlordMike/es-bounty-hunters](https://github.com/WarlordMike/es-bounty-hunters)  <br>
 
 >Adds a storyline where you can become a bounty hunter.
 >
