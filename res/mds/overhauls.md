@@ -1104,7 +1104,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 [Sci-Fi.Flavours.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Sci-Fi.Flavours.zip) | 41.33 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Sci-Fi%20Flavours/) <br>
 Author: Linear Perk | Category: Overhauls <br>
-[https://github.com/LinearPerk/Sci-Fi-Flavours](https://github.com/LinearPerk/Sci-Fi-Flavours) (last commit 2022-11-06) <br>
+[https://github.com/LinearPerk/Sci-Fi-Flavours](https://github.com/LinearPerk/Sci-Fi-Flavours)  <br>
 
 >This Plugin contains:
 >About 100 new ships

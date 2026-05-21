@@ -1,3 +1,4 @@
+2026-05-21 | New plugin 'ES-Galactic-Exploration' by Roger Tabris | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#es-galactic-exploration)<br>
 2026-05-13 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2026-05-03 | New plugin 'Dangerous Games' by wispborne | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#dangerous-games)<br>
 2026-05-03 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>

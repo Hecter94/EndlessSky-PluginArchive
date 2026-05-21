@@ -768,7 +768,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### ES-Galactic-Exploration
 
 
-[ES-Galactic-Exploration.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES-Galactic-Exploration.zip) | 73.94 mb | 2023-11-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES-Galactic-Exploration/) <br>
+[ES-Galactic-Exploration.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ES-Galactic-Exploration.zip) | 73.94 mb | 2026-05-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ES-Galactic-Exploration/) <br>
 Author: Roger Tabris | Category: Races <br>
 [https://github.com/lumbar527/ES-Galactic-Exploration](https://github.com/lumbar527/ES-Galactic-Exploration) (last commit 2023-08-10) <br>
 
