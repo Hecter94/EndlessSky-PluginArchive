@@ -1122,7 +1122,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Kor-Fighter-Additions
 
 
-[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2023-10-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor-Fighter-Additions/) <br>
+[Kor-Fighter-Additions.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Kor-Fighter-Additions.zip) | 76.33 mb | 2026-05-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Kor-Fighter-Additions/) <br>
 Author: EjoThims | Category: Ships <br>
 [https://github.com/EjoThims/Kor-Fighter-Additions](https://github.com/EjoThims/Kor-Fighter-Additions) (last commit 2023-10-01) <br>
 
