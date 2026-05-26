@@ -1,3 +1,5 @@
+2026-05-26 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
+2026-05-26 | Updated plugin 'hai.side.mission.unlocker' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#haisidemissionunlocker)<br>
 2026-05-23 | New plugin 'Kor-Fighter-Additions' by EjoThims | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#kor-fighter-additions)<br>
 2026-05-23 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
 2026-05-21 | New plugin 'ES-Galactic-Exploration' by Roger Tabris | [races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md#es-galactic-exploration)<br>

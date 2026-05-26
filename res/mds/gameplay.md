@@ -1053,9 +1053,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/hai.side.mission.unlocker/icon.png' height='100'></img><br>
 
 
-[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 96.27 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
+[hai.side.mission.unlocker.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/hai.side.mission.unlocker.zip) | 96.29 kb | 2026-05-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/hai.side.mission.unlocker/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-05-25) <br>
 
 >Unlocks Hai missions, that are currently blocked because of the Hai reveal rework. See the README for details.
 >
@@ -1078,6 +1078,9 @@ And removes hidden tag from "Devil-Hide" and "Al Hurr", both Hai Reveal systems.
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-05-25<br>
+added "overwrite" to missions for more compatibility<br>
 <br>
 2026-02-01<br>
 removed devil run systems<br>
