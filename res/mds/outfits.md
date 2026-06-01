@@ -92,7 +92,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Artificial Intelligence Outfits
 
 
-[Artificial.Intelligence.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Artificial.Intelligence.Outfits.zip) | 27.32 kb | 2023-07-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Artificial%20Intelligence%20Outfits/) <br>
+[Artificial.Intelligence.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Artificial.Intelligence.Outfits.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Artificial%20Intelligence%20Outfits/) <br>
 Author: Brent Kerman | Category: Outfits <br>
 [https://www.nexusmods.com/endlesssky/mods/6](https://www.nexusmods.com/endlesssky/mods/6)  <br>
 
@@ -154,7 +154,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/boss.loot/icon.png' height='100'></img><br>
 
 
-[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 18.36 mb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
+[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
 Author: zuckung | Category: Outfits <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
 
@@ -212,7 +212,7 @@ initial release<br>
 </details>
 
 Status: complete <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
