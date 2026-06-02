@@ -92,7 +92,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Artificial Intelligence Outfits
 
 
-[Artificial.Intelligence.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Artificial.Intelligence.Outfits.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Artificial%20Intelligence%20Outfits/) <br>
+[Artificial.Intelligence.Outfits.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Artificial.Intelligence.Outfits.zip) | 27.32 kb | 2023-07-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Artificial%20Intelligence%20Outfits/) <br>
 Author: Brent Kerman | Category: Outfits <br>
 [https://www.nexusmods.com/endlesssky/mods/6](https://www.nexusmods.com/endlesssky/mods/6)  <br>
 
@@ -154,9 +154,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/boss.loot/icon.png' height='100'></img><br>
 
 
-[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
+[boss.loot.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/boss.loot.zip) | 17.76 mb | 2026-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/boss.loot/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-06-01) <br>
 
 >A series of dungeon-like boss encounters for a single ship. With loottables and weapon upgrade mechanism. See the README for details.
 
@@ -178,6 +178,10 @@ This plugin is intended to be experienced like a typical RPG dungeon. You face t
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-06-01<br>
+removed lone pixels in images<br>
+fixed some script errors<br>
 <br>
 2026-02-01<br>
 updated to 0.11.0 / fixed removed governments<br>
@@ -212,7 +216,7 @@ initial release<br>
 </details>
 
 Status: complete <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -1525,9 +1529,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/uniques/icon.png' height='100'></img><br>
 
 
-[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 12.73 mb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
+[uniques.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/uniques.zip) | 12.94 mb | 2026-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/uniques/) <br>
 Author: zuckung | Category: Outfits <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-06-01) <br>
 
 >Removes mass and outfit space from some uniques, puts others into unique category, or gives a png if there isn't one. Also adds lots of new uniques. See the README for details.
 
@@ -1556,6 +1560,7 @@ In the rootfoldet of this plugin you can find the file "plugin re-shroud.txt" to
 <li> vanilla: puts outfit Ka'het Electric Stunner into unique category</li>
 <li> new vanilla: rewrote Skadenga book mission, so you can buy the unique book</li>
 <li> new vanilla: rewrote Wanderer and Remnant missions for human cultural archive, so you get the unique archive chip</li>
+<li> new vanilla: rewrote coalition beyond the hyperdrive book</li>
 <li> new unique pet: alien "Snuggles" (with derelict scanner, land somewhere, hidden destination is the Danoa system (based on the Alien movies))</li>
 <li> new unique pet: alien "Exotic" (with derelict scanner, land somewhere, hidden destination is the Unagi system (based on the Dark Star movie))</li>
 <li> new unique pet: alien "Audrey II" (with derelict scanner, land somewhere, hidden destination is the "5 Spring Below" system (based on the Little Shop of Horrors movie))</li>
@@ -1591,6 +1596,18 @@ In the rootfoldet of this plugin you can find the file "plugin re-shroud.txt" to
 <br>
 <br>
 Changelog:<br>
+br>
+2026-06-01<br>
+fixed glass cat mission not offering<br>
+fixed landing computer typo (thx to smileytechie)<br>
+moved Southbound holo ad from Wayfarer to Zug (thx to RedTechGamer236)<br>
+changed skadenga book & cultural archive missions to "overwrite"<br>
+changed snowfeather holo ad to offer earlier<br>
+added coalition "Coalition: Struggling Author - Human Media 1" to give cultural archive<br>
+added coalition beyond the hyperdrive book<br>
+added infinite tribble population growth mission<br>
+added 3 new holo ads (turner incorporated, wayfarer corporation, highrollers ltd.)<br>
+added bioluminescent reactor mission for turning in 10 offsprings<br>
 <br>
 2026-04-28<br>
 fixed lone pixel errors for some ship images<br>

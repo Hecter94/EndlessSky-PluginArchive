@@ -763,9 +763,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Factory.Outlets/icon.png' height='100'></img><br>
 
 
-[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 413.04 kb | 2026-02-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
+[Factory.Outlets.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Factory.Outlets.zip) | 419.47 kb | 2026-06-02 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Factory.Outlets/) <br>
 Author: Lifeyouristhis & Timeout | Category: Gameplay <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-02-05) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-06-01) <br>
 
 >Adds Factory Outlet Stations around the HQ planets of shipyard companies, where basically only ship hulls (with just few essential outfits) are sold, such reducing the price significantly.
 >
@@ -785,29 +785,33 @@ Based on an idea of [Lifeyouristhis](https://github.com/lifeyouristhis), this pl
 
 No factory outlet for Navy or Pirate shipyards, because lore. No factory outlet ship variants for fighters and drones, because senseless.
 
-Currently the plugins [Blended Ships](https://github.com/mOctave/blended-ships), [DAIS](https://github.com/Daeridanii1/DAIS), [Lost in Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight), [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards), [Rumskib](https://github.com/TheGiraffe3/rumskib), and [RW Ships](https://www.moddb.com/mods/rw-ships) are supported.
+Currently human-only, someday perhaps support for aliens will be added.
 
-| Shipyard | HQ Planet | System |
-|----------|-----------|--------|
-| [ALR](https://github.com/TheGiraffe3/rumskib) | Shroud (on-planet) | Alheka |
-| Betelgeuse  | Prime | Betelgeuse |
-| [Greenrock](https://github.com/mOctave/blended-ships) | Greenrock | Shaula |
-| Lionheart   | Valhalla | Epsilon Leonis |
-| [Louise](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards)      | Follower | Alphard |
-| Megaparsec  | Sunracer | Mirfak |
-| [Pickerberry](https://www.moddb.com/mods/rw-ships) | New Britain | Dabih |
-| [Sirius](https://github.com/mOctave/blended-ships) | Relic (on-planet) | Sirius |
-| Southbound  | Zug | Zubeneschamali |
-| Syndicate   | Foundry | Achernar |
-| Tarazed     | Wayfarer | Tarazed |
-| [Thule](https://github.com/Daeridanii1/DAIS) | Thule (on-planet) | Men |
-| Tycho       | Luna (on-planet) | Sol |
+**Supported Plugins**: [Blended Ships 1.3.1](https://github.com/mOctave/blended-ships), [DAIS 1.0.0](https://github.com/Daeridanii1/DAIS), [Lost in Midnight 0.10.16.1.6](https://github.com/MidnightPlugins/Lost-in-Midnight), [Louise Conglomerate Shipyards 3.1.1](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards), [Pickerberry Shipyards 1.13.2](https://www.moddb.com/mods/rw-ships), [Rumskib 0.11.1](https://github.com/TheGiraffe3/rumskib)
+
+| Shipyard | HQ Planet | System | Outlet |
+|----------|-----------|--------|--------|
+| [ALR](https://github.com/TheGiraffe3/rumskib) | Shroud | Alheka | on ground |
+| Betelgeuse  | Prime | Betelgeuse | station |
+| [Greenrock](https://github.com/mOctave/blended-ships) | Greenrock | Shaula | station |
+| Lionheart   | Valhalla | Epsilon Leonis | station |
+| [Louise](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards)      | Follower | Alphard | station |
+| Megaparsec  | Sunracer | Mirfak | station |
+| [Pickerberry](https://www.moddb.com/mods/rw-ships) | New Britain | Dabih | station |
+| [Sirius](https://github.com/mOctave/blended-ships) | Relic | Sirius | on ground |
+| Southbound  | Zug | Zubeneschamali | station |
+| Syndicate   | Foundry | Achernar | station |
+| Tarazed     | Wayfarer | Tarazed | station |
+| [Thule](https://github.com/Daeridanii1/DAIS) | Thule | Men | on ground |
+| Tycho       | Luna | Sol | on ground |
 
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-06-02 | 1.3.3 | Updated Louise and Pickerberry support. Verified that the support for Blended Ships, DAIS, LiM and Rumskib is up to date. |
+| 2026-03-29 | 1.3.2 | Added license file. |
 | 2026-02-05 | 1.3.1 | Updated the support for Louise. Fixed the way how the outlet stations are added to avoid compatibility issues with other plugins which change star systems like Mega Freight (thx to 1010todd for pointing out the problem). |
 | 2025-11-22 | 1.3.0 | Added support for [Rumskib](https://github.com/TheGiraffe3/rumskib). Fixed missing of Sirius Pyrotechnics from Blended Ships. Improved plugin compatibility -- No warnings created if a plugin is not installed, and cleans outlet stuff properly if a plugin has been uninstalled. |
 | 2025-11-10 | 1.2.0 | Added support for [Blended Ships](https://github.com/mOctave/blended-ships) and [Lost in Midnight](https://github.com/MidnightPlugins/Lost-in-Midnight). |

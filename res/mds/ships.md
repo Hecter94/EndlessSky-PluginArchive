@@ -1201,7 +1201,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Legendary Pirates
 
 
-[Legendary.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Legendary.Pirates.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Legendary%20Pirates/) <br>
+[Legendary.Pirates.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Legendary.Pirates.zip) | 4.0 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Legendary%20Pirates/) <br>
 Author: Galaucus | Category: Ships <br>
 [https://github.com/Galaucus/Endless-Sky-Legendary-Pirates](https://github.com/Galaucus/Endless-Sky-Legendary-Pirates) (last commit 2021-06-16) <br>
 
@@ -1265,7 +1265,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### Lleytons ES Starships
 
 
-[Lleytons.ES.Starships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lleytons.ES.Starships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lleytons%20ES%20Starships/) <br>
+[Lleytons.ES.Starships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Lleytons.ES.Starships.zip) | 31.79 kb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Lleytons%20ES%20Starships/) <br>
 Author: Lleyton | Category: Ships <br>
 [https://github.com/Llalpaca/Lleytons-es-starships](https://github.com/Llalpaca/Lleytons-es-starships) (last commit 2018-06-11) <br>
 
@@ -1281,7 +1281,7 @@ Plugin for endless sky, currently only adds back in a couple of old ships, I pla
 </details>
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
@@ -1788,7 +1788,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Monitor
 
 
-[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Monitor/) <br>
+[Monitor.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Monitor.zip) | 23.0 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Monitor/) <br>
 Author: N/A | Category: Ships <br>
 N/A[]()  <br>
 
@@ -1832,7 +1832,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/more.person.ships/icon.png' height='100'></img><br>
 
 
-[more.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.person.ships.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.person.ships/) <br>
+[more.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/more.person.ships.zip) | 4.67 mb | 2025-06-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/more.person.ships/) <br>
 Author: zuckung | Category: Ships <br>
 [https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-05) <br>
 
@@ -1905,7 +1905,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Nemesis/icon.png' height='100'></img><br>
 
 
-[Nemesis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nemesis.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nemesis/) <br>
+[Nemesis.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Nemesis.zip) | 155.5 kb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Nemesis/) <br>
 Author: Zavindur | Category: Ships <br>
 N/A[]()  <br>
 
@@ -1915,7 +1915,7 @@ N/A[]()  <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/check.png' width='15' ></img><br>
+Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 
 ---
