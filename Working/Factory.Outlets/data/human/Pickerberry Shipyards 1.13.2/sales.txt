@@ -6,8 +6,10 @@ shipyard "Pickerberry Bare"
 	"Everest (Bare)"
 	"Mudrock (Bare)"
 	"Packet Liner (Bare)"
-	"Thunderer (Bare)"
 	"Stormwolf (Bare)"
+	"Tacoma (Bare)"
+	"Thunderer (Bare)"
+	"Twinbridge (Bare)"
 
 
 mission "Factory Outlets: RW Ships installed"
@@ -16,8 +18,10 @@ mission "Factory Outlets: RW Ships installed"
 	non-blocking
 	repeat
 	to offer
-		has "installed plugin: RW Ships"
 		not "event: factory outlets: rw ships installed"
+		or
+			has "installed plugin: RW Ships"
+			has "installed plugin: Pickerberry Shipyards"
 	on offer
 		event "factory outlets: rw ships installed"
 		clear "event: factory outlets: rw ships uninstalled"
@@ -41,8 +45,10 @@ mission "Factory Outlets: RW Ships uninstalled"
 	non-blocking
 	repeat
 	to offer
-		not "installed plugin: RW Ships"
 		has "event: factory outlets: rw ships installed"
+		or
+			not "installed plugin: RW Ships"
+			not "installed plugin: Pickerberry Shipyards"
 	on offer
 		event "factory outlets: rw ships uninstalled"
 		clear "event: factory outlets: rw ships installed"
