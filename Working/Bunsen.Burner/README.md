@@ -23,6 +23,7 @@ Since the changes of ES 0.10.7, which also affected heat dissipation of many shi
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-06-09 | 1.4.5 | Reworked ship and fleet variants employing the Bunsen Burner. |
 | 2026-06-05 | 1.4.4 | Aligned with [PR #12491](https://github.com/endless-sky/endless-sky/pull/12491). |
 | 2026-06-03 | 1.4.3 | Reduced fuel consumption of Flamethrower and Bunsen Burner by 75%. Reduced damage dropoff for the Flamethrower. Added ship and fleet variants which do actually use the Flamethrower, filling a gap in vanilla. Fixed a warning. |
 | 2026-04-03 | 1.4.2 | Set heat damage of vanilla Flamethrower to pre-nerf heat damage value of 12000, and the Bunsen Burner's to 19200. Burn damage set to half of heat damage. |
