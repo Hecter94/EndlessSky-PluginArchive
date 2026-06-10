@@ -111,9 +111,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Bunsen.Burner/icon.png' height='100'></img><br>
 
 
-[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 303.64 kb | 2026-06-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
+[Bunsen.Burner.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Bunsen.Burner.zip) | 303.58 kb | 2026-06-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Bunsen.Burner/) <br>
 Author: ItsNickBarry | Category: Weapons <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-06-05) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-06-09) <br>
 
 >Next-generation Flamethrower, as gun, turret and h2h. For those who like it hot.
 >
@@ -145,6 +145,7 @@ Since the changes of ES 0.10.7, which also affected heat dissipation of many shi
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-06-09 | 1.4.5 | Reworked ship and fleet variants employing the Bunsen Burner. |
 | 2026-06-05 | 1.4.4 | Aligned with [PR #12491](https://github.com/endless-sky/endless-sky/pull/12491). |
 | 2026-06-03 | 1.4.3 | Reduced fuel consumption of Flamethrower and Bunsen Burner by 75%. Reduced damage dropoff for the Flamethrower. Added ship and fleet variants which do actually use the Flamethrower, filling a gap in vanilla. Fixed a warning. |
 | 2026-04-03 | 1.4.2 | Set heat damage of vanilla Flamethrower to pre-nerf heat damage value of 12000, and the Bunsen Burner's to 19200. Burn damage set to half of heat damage. |
