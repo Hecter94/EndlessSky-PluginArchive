@@ -1,0 +1,174 @@
+
+phrase "ccor bounty small offer dialog"
+	word
+		`Walking around the spaceport of <origin>, a rugged looking man flags you down, and identifies himself as a member of the CCOR guerillas. He explains a pirate vessel known as the <npc> has been terrorizing nearby systems, and offers you <payment> to destroy them.`
+		`After a walk around the spaceport, you return to the <ship> to find a note has been left glue to the hatch. You open it to find the CCOR flag and other icons of their guerillas, printed alongside a message describing a troublesome pirate going by the <npc>. They are offering a bounty of <payment> for destroying it.`
+		`After you finish dining in one of the spaceport restaurants, you notice the waitress taking a particularly long time cleaning up your table. As she's about to move away, she hands you a handwritten note, saying "I think you dropped this." The note is from the CCOR guerillas, offering you <payment> to track down and destroy the <npc>, a pirate ship that has been terrorizing local fleets.`
+		`Touring the spaceport, a group of young students approaches you. They explain they are aspiring revolutionaries, trying to raise popular support to their cause in restoring the CCOR. They mention there is currently a bounty of <payment> for a pirate vessel, the <npc>, known for smuggling slaves and drugs to and from CCOR territory. They ask you to help them in their efforts by destroying the ship, to make the people see the CCOR's efforts.`
+
+phrase "ccor bounty large offer dialog"
+	word
+		`You return from a walk in the spaceport, to find a message waiting for you in the <ship>. "Captain <last>, the people of the CCOR suffers from attacks by slavers, brigands, smugglers and drug dealers like those led by the <npc>. Our councils are willing to pay <payment> for the destruciton of these pirates."`
+		`A representative of the CCOR guerillas quietly sits beside you as you rest in a spaceport pub. They slide messages toward you, describing the CCOR's offer of <payment> for destroying a pirate fleet under the command of the <npc>, who have been wrecking havoc in the region.`
+		`The group of workers working near the <ship> approach you as they see you stepping down the hatch. They tell you the woes their people have been suffering under the attacks and raids of a pirate fleet led by the <npc>. One of the workers steps closer, and in a hushed voice tells you they've come to know that the CCOR has set a bounty of <payment> for the destruction of the fleet.`
+
+phrase "ccor bounty return for payment"
+	word
+		`The <npc> has been destroyed. Return to <origin> to receive your payment from the CCOR.`
+
+# AI USE DISCLOSURE BLOCK
+# I was out of ideas but really wanted to have phrases with different possible offer/stopover dialogs for these, asked Grok to
+# help out with scenario ideas for the below phrases. These aren't Grok's, but I did use Grok's for getting ideas for these
+
+phrase "ccor rich offer dialog"
+	word
+		`You are flagged down by a group in CCOR uniforms, who excitedly inform you that several wealthy sympathizers from <stopovers> have contacted them and offered to help the revolution's efforts, with a donation of <cargo>. They offer you <payment> to collect it deliver the cargo.`
+		`While looking through the job board posts, you are approached by a woman wearing what looks like a CCOR badge. "Grettings, Captain! We have received excellent news, that some more fortunate people from <stopovers> have decided to aid our cause! Is your ship available to head there and pick up their donation of <cargo>? The CCOR can offer you <payment>."`
+
+phrase "ccor rich stopover dialog"
+	word
+		`You are greeted by a large group of young students in designer clothes, who are excited to help you load the <cargo> into your ship and "help with the revolution." After the cargo is all settled, they take some pictures and videos to post in their social media, and say goodbye.`
+		`A detachment of security personnel is waiting by the <cargo> when you arrive, and some workers load it into your ship. Only when they've finished, do you see the elderly gentlemen watching from the center of the group of security guards. He gives a brusque nod towards your ship, then walks off.`
+		`The wealthy benefactors have sent a group of workers to help you load the <cargo> into your ship. When they finish, one of them approaches you and mentions their employers have asked them to thank you on their behalf, for helping the CCOR.`
+
+phrase "ccor cargo offer dialog"
+	word
+		`Some workers in rugged CCOR uniforms stop you during their break. "Good captain, some sympathizers to our revolution have gotten in contact, and wish to donate <cargo> to the cause. We can offer you <payment> for heading to <stopovers> and retrieve the cargo."`
+		`From a quiet corner of the spaceport cafeteria, a man in an oversized cloak waves over at you. When you approach, he reveals himself to be a CCOR operative, who is in contact with their allies from <stopovers>, who have assembled a donation of <cargo> for the CCOR. He offers you <payment> to retrieve the cargo.`
+
+phrase "ccor volunteers offer dialog"
+	word
+		`You are waved over by a CCOR organizer close to your ship. "Captain, the CCOR is in need of a sympathetic ship willing to head to <stopovers>, and pick up <fare> locals who have volunteered to join our cause."`
+		`A janitor in the spaceport bumps into you, apologizing profusely and shaking your hands. When they leave, you find a note is in your hand. You open it up, and find a message from the CCOR, offering <payment> for you to head to <stopovers> and pick up <fare> volunteers, who wish to join their cause here.`
+
+# END OF AI USE DISCLOSURE BLOCK
+
+mission "CCOR Bounty Small"
+	name "CCOR Bounty near <system>"
+	description "The CCOR has put on a bounty of <payment> for tracking down and eliminating the pirate vessel <npc>, which has been terrorizing the area."
+	minor
+	repeat
+	source
+		attributes "ccor"
+	to offer
+		random < 15
+		"combat rating" > 200
+	on offer
+		dialog phrase "ccor bounty small offer dialog"
+	npc kill
+		government "Bounty"
+		personality heroic marked target tracked
+		system
+			distance 0 2
+		fleet "Bounty (Small)"
+		dialog phrase "ccor bounty return for payment"
+	on complete
+		payment 90000
+		"ccor jobs" += 2
+		dialog `Shortly after landing on <origin>, you notice you've received your <payment> from the CCOR. They send you a message of gratitude: "One less criminal polluting the skies of our homeland! Thank you for your efforts, comrade. Glory to the CCOR!"`
+
+mission "CCOR Bounty Large"
+	name "CCOR Bounty near <system>"
+	description "The CCOR has put on a bounty of <payment> for tracking down and eliminating a pirate fleet under the command of the <npc>, which has been terrorizing the area."
+	minor
+	repeat
+	source
+		attributes "ccor"
+	to offer
+		random < 8
+		"combat rating" > 1200
+		"ccor jobs" > 10
+	on offer
+		dialog phrase "ccor bounty large offer dialog"
+	npc kill
+		government "Bounty"
+		personality heroic marked target tracked
+		system
+			distance 0 3
+		fleet "Hired Guns"
+	on complete
+		payment 280000
+		"ccor jobs" += 4
+		dialog `A couple of seconds after you land on <origin>, you're alerted to a payment of <payment> from the CCOR. It is accompanied by a message of gratitude: "The end of this fleet is a big step towards making the CCOR safe once more! You have our thanks, comrade. Glory to the CCOR!"`
+
+mission "CCOR Rich Sympathizers"
+	name "CCOR Wealthy Donors from <stopovers>"
+	description "Head to <stopovers> to pick up <cargo>, which have been donated by wealthy sympathizers to the CCOR, and deliver it to <destination>. Payment is <payment>."
+	minor
+	repeat
+	source
+		attributes "ccor"
+	stopover
+		distance 5 100
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+		attributes "rich"
+	cargo random 5 2 .1
+	to offer
+		random < 10
+	on offer
+		dialog phrase "ccor rich offer dialog"
+	on stopover
+		dialog phrase "ccor rich stopover dialog"
+	on visit
+		dialog phrase "generic missing stopover or cargo"
+	on complete
+		payment 
+		"ccor jobs" += 2
+		dialog `Under the watchful eyes of some CCOR officers, many workers unload the <cargo> from your ship. You are handed <payment> when it's all ready for transport. One of the officers approaches you. "This is a great contribution to our cause, captain, and we are glad for your help in it. Glory to the CCOR!"`
+		payment
+		payment 7500
+
+mission "CCOR Sympathizers Cargo"
+	name "CCOR Cargo Donation from <stopovers>"
+	description "Head to <stopovers> to pick up <cargo>, which have been donated by CCOR sympathizers, and deliver it to <destination>. Payment is <payment>."
+	minor
+	repeat
+	source
+		attributes "ccor"
+	stopover
+		distance 5 100
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate" "Independent"
+		not planet "Mutiny"
+	cargo random 5 2 .1
+	to offer
+		random < 30
+	on offer
+		dialog phrase "ccor cargo offer dialog"
+	on stopover
+		dialog `The sympathizers help load the <cargo> into your ship, and wish you good luck on your trip back to the CCOR.`
+	on visit
+		dialog phrase "generic missing stopover or cargo"
+	on complete
+		payment 
+		"ccor jobs" ++
+		dialog `Several workers help unload the <cargo> from your ship, handing you <payment> when it's all ready for transport to a CCOR base. "We thank you for your aid, captain. Glory to the CCOR!"`
+		payment
+		payment 5000
+
+mission "CCOR Sympathizers Volunteers"
+	name "CCOR Volunteers from <stopovers>"
+	description "<fare> from <stopovers> have volunteered to join the CCOR and their efforts. Pick them up, and deliver them to <destination>. Payment is <payment>."
+	minor
+	repeat
+	source
+		attributes "ccor"
+	stopover
+		distance 5 100
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate" "Independent"
+		not planet "Mutiny"
+	passengers 9 28 .5
+	to offer
+		random < 15
+	on offer
+		dialog phrase "ccor volunteers offer dialog"
+	on stopover
+		dialog `The sympathizers are waiting for you when you land, and eagerly board your ship, urging you to make haste to the CCOR so that they may "help the revolution efforts."`
+	on visit
+		dialog phrase "generic missing stopover or passengers"
+	on complete
+		payment 
+		"ccor jobs" ++
+		dialog `The volunteers disembark your ship with eager smiles and a good disposition, greeting their new comrades from the CCOR as they step down the hatch. Right as the last of the group prepares to follow the others to put the new revolutionaries to work, one of the CCOR operatives approaches you and hands you your payment of <payment>. "Thanks for the help, captain. Glory to the CCOR!"`
+		payment
+		payment 5000
+

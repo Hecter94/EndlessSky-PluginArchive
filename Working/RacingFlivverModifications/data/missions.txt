@@ -1,0 +1,188 @@
+
+mission "Racing Flivver Modifications - Setup"
+	landing
+	invisible
+	source
+		not planet "Glory"
+	destination "Earth"
+	to offer
+		"flagship model" == "Racing Flivver"
+	on offer
+		event "rfm timer" 21
+
+event "rfm timer"
+
+mission "Racing Flivver Modifications - Available"
+	landing
+	invisible
+	minor
+	source "Glory"
+	destination "Earth"
+	to offer
+		has "event: rfm timer"
+		"flagship model" == "Racing Flivver"
+	on offer
+		conversation
+			`As you're preparing to land on <origin>'s main spaceport, you receive a message from Artemis Renard, calling you to meet with her in her family's mansion.`
+			`	You swiftly fly the <ship> to the Renard estate, and set down on the same landing pad you were on when you last came here, and were given the Racing Flivver.`
+			`	Artemis is waiting for you, and welcomes you with a hug. "Good to see you again, Captain <last>! I trust you and my old ride have been treating each other well?"`
+			choice
+				`	"Very well. The <ship> is very impressive, probably the fastest ship I have ever flown!"`
+				`	"It's smaller and more fragile than other ships I've used, but it's definitely got its perks. I can see the appeal in all that speed!"`
+			`	She smiles. "I'm glad to hear it. Come, let's head on inside, I'd love to swap flight stories!"`
+			`	Artemis leads you into the vast, oppulent mansion of the Renard family, and shows you around the main rooms and halls, as you two talk about different routes you've taken the <ship> in. She becomes both nostalgic and giddy as she shows you recordings of her highlights flying the ship in various races.`
+			`	After a feast of a lunch, Artemis pulls closer. "So, listen... I know I mentioned before that the <ship> isn't as fast as it used to be anymore - but I was thinking, since you're not a racer, perhaps there are other ways it could be modified, that would be more useful for you, even if we can't modify it to be the fastest in the galaxy anymore."`
+			`	She seems to gauge your interest, letting the suspense build up before continuing. "Being in this business, naturally you get to know all sorts of starshipwrights and enthusiasts. I'll admit there aren't many who have the know-how and resources to turn a simple Flivver into the beauty that is the <ship>, but those few who have... Well, I sent word to them that you're flying my old girl nowadays, and they said they'll get in touch if you ever come by their workshop, and they have cooked up some modifications for her. Cool, right?"`
+			`	You two spend some more hours catching up on your travels and Artemis' racing career, the different lives you had growing up on Glory and your own homeworld, and more. You return to the landing pads just before sunset, and Artemis sees you off, waving as you fly to the main spaceport.`
+				decline
+
+mission "Racing Flivver Modifications - Navy Grade Plating"
+	landing
+	invisible
+	minor
+	source "Geminus"
+	destination "Earth"
+	to offer
+		has "Racing Flivver Modifications - Available: offered"
+		"flagship model" == "Racing Flivver"
+	on offer
+		conversation
+			`You receive a message from one of Artemis' shipwright contacts. "Captain <first> <last>, I hope this finds you well. Miss Renard has informed me of how you rescued her, and I would be glad to offer you an upgrade to the <ship>: Navy grade hull plating, refurbishing the ship's entire plating and making it much more reliable and resistant to the elements and debris alike. The cost of the modifications is 1,103,000 credits." Accompanying the message are the coordinates to the workshop.`
+			`	Fly to the shipwright's workshop?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+				`	(No, and send back a message thanking them for the offer, but decline politely.)`
+					decline
+			action
+				payment -1103000
+				outfit "RFM - Navy Grade Plating" 1
+			`	You fly to the coordinates, landing on on one of the various pads on the workshop grounds. The shipwright greets you, and shakes your hand firmly. "We usually only work on ships commissioned for government officials, Parliament members and the like, but the Renards are full of connections, so we worked on the <ship> many times too."`
+			`	He has his team work on the ship at once, and they spend most of the day carefully swapping out the armor plates for shiny, tough-looking great plates he mentions are made for composing the hulls of Navy warships. "By the way, I also had some leftover ramscoop components, and had an idea. The men and I designed some simpler, smaller versions, and incorporated them into the plating of the wings. Should give you a decent boost to fuel collection."`
+			`	After the process is finished, you give him and his team their payment and thank them, before flying the <ship> back to the main landing pads of the city.`
+				decline
+
+mission "Racing Flivver Modifications - Hidden Compartments"
+	landing
+	invisible
+	minor
+	source "Trinket"
+	destination "Earth"
+	to offer
+		has "Racing Flivver Modifications - Available: offered"
+		"flagship model" == "Racing Flivver"
+	on offer
+		conversation
+			`You receive a message from one of Artemis' shipwright contacts. "To <first> <last>. Artemis told me you saved her file after she crashed, and asked me to cook up some modification to spice up the <ship>. The little thing is fast, but can barely serve as anything other than a quick transport, so I looked up the blueprints and think I can make use of some gaps in the interiors to add some cargo compartments. The fee is 840,000 credits." Accompanying the message are the coordinates to the workshop.`
+			`	Fly to the shipwright's workshop?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+				`	(No, and send back a message thanking them for the offer, but decline politely.)`
+					decline
+			action
+				payment -840000
+				outfit "RFM - Hidden Compartments" 1
+			`	As you fly to the workshop and land, the shipwright greets you with a smile and wave. She beckons you to step down from the ship, and sets her team to work in its interiors.`
+			`	The modifications take several hours, and by the time they are done, she pulls you aside. "I had my folk line the compartments with some layers of scan-resistant foam - purely for privacy, you know. It's not as good as that plating some folks use, but it's also simpler to use for such small spaces."`
+			`	You pay her, thank the team for their assistance, and fly away.`
+				decline
+
+mission "Racing Flivver Modifications - Convertible Bunk"
+	landing
+	invisible
+	minor
+	source "Chiron"
+	destination "Earth"
+	to offer
+		has "Racing Flivver Modifications - Available: offered"
+		"flagship model" == "Racing Flivver"
+	on offer
+		conversation
+			`You receive a message from one of Artemis' shipwright contacts. "To <first> <last>. My team and I were the ones who first started modifying the Flivver of Artemis Renard for her racing career. After her safe return to Glory, she asked me to help you further modify the ship, should you ever come by <origin>. Should you be interested, I can offer to provide the <ship> with a few extra bunks, for only 344,000 credits." Accompanying the message are the coordinates to the workshop.`
+			`	Fly to the shipwright's workshop?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+				`	(No, and send back a message thanking them for the offer, but decline politely.)`
+					decline
+			action
+				payment -344000
+				outfit "RFM - Convertible Bunk" 1
+			`	The workshop of Artemis' contact on <origin> is halfway across the globe, but the modification itself takes just under an hour. Once the shipwrights are done, you pay them, and fly back to the main spaceport.`
+				decline
+
+mission "Racing Flivver Modifications - Custom Shield Emitter"
+	landing
+	invisible
+	minor
+	source "Valhalla"
+	destination "Earth"
+	to offer
+		has "Racing Flivver Modifications - Available: offered"
+		"flagship model" == "Racing Flivver"
+	on offer
+		conversation
+			`You receive a message from one of Artemis' shipwright contacts. "Esteemed Captain <last>, our workshop has been in contact with Artemis Renard for years, and we would be glad to aid you in the process of turning the <ship> into the best it can be. We have designed a customized, miniature shield emitter that will resonate with the shield matrix of the ship, and allow it to recharge its shields independently, granting you that much more security as you travel the stars. Such custom equipment tends to be very costly, but for the saviour of one of our most loyal clients, we offer you this for the small fee of 1,830,000 credits." Accompanying the message are the coordinates to the workshop.`
+			`	Fly to the shipwright's workshop?`
+			choice
+				`	(Yes.)`
+				`	(Not now.)`
+					defer
+				`	(No, and send back a message thanking them for the offer, but decline politely.)`
+					decline
+			action
+				payment -1830000
+				outfit "RFM - Custom Shield Emitter" 1
+			`	Reaching the workshop proves harder than you anticipated. Even with the precise coordinates, you end up having to maneuver the <ship> around several skyscrapers that surround the principal building, and the high ship traffic often blocks your pathway.`
+			`	When you finally land, the shipwrights welcome you and get to work on the <ship> at once. After a bit over an hour, they have successfully installed and tested the custom shield emitter.`
+			`	You thank the shipwrights and pay them the "discount" price, before flying away.`
+				decline
+
+mission "Racing Flivver Modifications - Comfy Cockpit"
+	landing
+	invisible
+	minor
+	source "Glory"
+	destination "Earth"
+	to offer
+		and
+			has "Racing Flivver Modifications - Available: offered"
+		"flagship model" == "Racing Flivver"
+	on offer
+		require "RFM - Navy Grade Plating"
+		require "RFM - Hidden Compartments"
+		require "RFM - Convertible Bunk"
+		require "RFM - Custom Shield Emitter"
+		conversation
+			action
+				outfit "RFM - Comfy Cockpit" 1
+			`As you're flying down to the main city on <origin>, your commlink flashes with a message. "Look up!" It reads. You do, and see Artemis flying her own, brand new Racing Flivver above the <ship>.`
+			`	She speeds ahead and you start following her, reaching a tall shipyard-like building in a small, exclusive community very reminiscent of the Renard family mansion.`
+			`	When you step down the ramp, Artemis is waiting for you. "The <ship> looks amazing! I see you've taken me up on my friends' offers and modified it a whole bunch. Say, why don't we get you one more brand new modification? My treat!"`
+			`	She explains the building is another workshop, where she often takes her racing ships to modify them. After you two greet the shipwrights, she surprises you by then giving the go-ahead for another group to go into the <ship> and begin working on it - a group of interior designers carrying several bits of decoration and furniture.`
+			choice
+				`	"I'm not sure I understand."`
+				`	"No offense, but I think the shipwrights would get the job done faster."`
+			`	She smirks. "You know, I always liked Flivvers for their speed, but I know they're not the most comfortable ships to stay in for long trips. It can feel cramped and bland and boring... so a few years ago I talked with a friend who specializes in renovating and got my first cockpit makeover."`
+			`	She shows you around the workshop, while the designers do their work on the <ship>, showing some of the other race ships that are being modified here and giving you in-depth explanations about each modification and their benefits and detriments. Her comm device beeps, and she races you back to your ship.`
+			`	The cockpit of the <ship> is unrecognizeable: the metal walls are hidden by a neat wallpaper, a quality felt covers the entire floor, a retractable berth has been added right beside the pilot's chair, and as Artemis reclines the chair and rotates it you see it combine with the birth to form a bed. A removeable cover is obscuring the entire control panel, one of the side panels has a foldable table attached to it, and a brand new zero-g kettle sits amongst other utility appliances in the shelves beside the door.`
+			`	"Well, how about we take her for a ride now?" Artemis smirks and heads back to her own ship. You launch right after her, and the two of you spend over an hour flying all over <origin>. She talks with you constantly via your commlinks, and even teaches you some of the simpler maneuvers she used to do with the ship. You replicate them as best as you can, and find yourself speeding across the crafted perfection of <origin>: lakes and forests, oceans and mountain ranges, steppes and and rolling hills.`
+			`	As the sun is beginning to set, you two touch down on a cliffside, overlooking a large lake. You step out, and meet Artemis halfway between your ships. "Say... Would you mind if I stay over and we do a test drive of  the <ship>'s new accomodations?"`
+			choice
+				`	"Sure!"`
+					goto accepted
+				`	"Sorry, I think I'll head to the spaceport already. I've got some business I need to get to."`
+			`	Artemis' broad smile falters, but she quickly brushes it aside. "Well alright then, good luck with your upgraded <ship>, Captain! Maybe I'll see you around some more." She heads to her own ship, and you two fly together a bit more as you return to the city. She waves goodbye as she flies away, towards the Renard family estate.`
+				goto end
+			label accepted
+			`	"Great!" You two spend the night in a simple party in the comfort of the newly furnished cockpit of the <ship>, watching movies, snacking on numerous food items and soft drinks Artemis keeps bringing from her ship, and going to sleep late into the evening.`
+			`	When dawn breaks the darkness of the cockpit and you two wake up, Artemis gives you a warm goodbye, and heads to her own ship to fly away. "See you around, <first>! Don't be a stranger!"`
+			label end
+			`	You fly the <ship> back to the spaceport, and spend some time still admiring the work done to the cockpit's interior.`
+				decline
+
+

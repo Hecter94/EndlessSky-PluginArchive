@@ -1,0 +1,177 @@
+
+mission "CCOR: Citadelle Reclaimed"
+	landing
+	invisible
+	to offer
+		"ccor jobs" >= 30
+	source
+		near "Citadelle" 5 100
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent"
+	on offer
+		event "ccor citadelle reclaimed"
+		conversation
+			`While refuelling your ship after landing, you hear a news program mentioning the "Revival of the CCOR", and tune in to watch.`
+			`	Due to recent efforts by revolutionaries all around the galaxy providing aid, as well as a spike in counter-Pirate activity, the criminal presence in the fortress asteroid Alvorada hit a low. The Politburo - the inner circle of the CCOR's central government - took this opportunity to strike from the depths of the asteroid.`
+			`	Pirate warlords and crew alike were taken off-guard and slaughtered, and all of their ships and assets in the Citadelle system seized by the CCOR. Representing the Politburo, one Pedro Varga is announcing to the galaxy the reestablishment of the CCOR.`
+			`	"Now, more than ever, our fight - our revolution - lives on! Soon, all worlds of the Confederated Councils of the Outer Rim will be liberated from tyranny and lawlessness once more! Stand with your brethren! Stand with the people! Glory to the CCOR!"`
+			`	He salutes to the camera in the signature style of the CCOR, with arms stretched up in a "V" shape, with both fists tightly clenched. In further communications to other government entities in human space, CCOR spokespeople have insisted on their willingness to work together to eliminate the threat posed by Pirates and other criminals, and has issued a galaxy-wide call for volunteers to aid them in fully restoring their homeland.`
+			`	News analysts from around the galaxy are speculating on whether this revived CCOR government will manage to hold on to its hold to power, or if the Pirates will strike back and snuff out its remainders for good...`
+
+mission "CCOR: Alpherg Reclaimed"
+	landing
+	name "Reclaiming Alpherg"
+	description "Head to <system> and aid the CCOR forces in fighting the Pirates there, to liberate the system from Pirate forces."
+	to offer
+		has "CCOR: Citadelle Reclaimed: offered"
+		"ccor jobs" >= 45
+		"combat rating" > 700
+	source "Alvorada"
+	destination "Jakobsen"
+	on offer
+		conversation
+			`You find <origin> in a state of disarray, as dozens of captains from the CCOR Red Navy are rallying around a delegation from the Politburo, the CCOR's inner circle. Curiously, you don't spot their current Chief Secretary, Pedro Varga, among the rally leaders.`
+			`	After asking one of the Red Navy captains, you find out the CCOR are preparing to reclaim the <system> system, and they are just finishing up listening to their leaders' speeches. A grizzled woman with several medals embezzling her uniform speaks up next, appealing to the independent captains here in <origin> and asking for their help in the battle for <planet>.`
+			choice
+				`	(Volunteer to assist the CCOR forces.)`
+				`	(Go about your business.)`
+					decline
+			`	You and a few others raise your hands, and are met with cheers from the Red Navy captains. They quickly brief you on the battle plan: you are to head to <destination>, and meet up with a first wave of ships that have just departed, in order to take out the Pirate fleets there. CCOR revolutionaries planetside are ready to overtake the major infrastructure centers, including the spaceport of <planet>, once the battle is decided.`
+			`	The Politburo members salute their captains with the signature "V" of the CCOR, and disperse, with a few moving to their own ships to assist in the battle.`
+			`	You return to the <ship>, and set a course for <system>.`
+				accept
+	npc kill
+		government "Pirate"
+		personality heroic staying vindictive target
+		system "Alpherg"
+		fleet "Large Southern Pirates" 4
+		fleet "Small Southern Pirates" 7
+		dialog `The Pirates have been destroyed. You should land on Jakobsen to join the planetside CCOR forces.`
+	npc
+		government "CCOR"
+		personality heroic staying
+		system "Alpherg"
+		fleet "CCOR Red Navy" 2
+		fleet "Large CCOR (CCOR)" 3
+	npc
+		government "CCOR"
+		personality escort heroic
+		fleet "CCOR Red Navy" 2
+		fleet "Small CCOR (CCOR)" 3
+	on complete
+		payment 600000
+		event "ccor alpherg reclaimed"
+		conversation
+			`The mood on <planet> is all fanfare and fireworks as you land alongside the Red Navy warships. Chief Secretary of the CCOR, Pedro Varga, is at the helm of the celebrations, giving a speech to a crowd of revolutionaries, Red Navy personnel, and civilians alike. It seems he took part in the planetside conflict, and personally apprehended the Pirate warlords that were in charge of the spaceport during the battle.`
+			`	"Brothers and sisters of the CCOR! We have done it! Our breadbasket is ours once more! With <planet> - with <system> in our hands again, no more shall any comrade lack bread and salt at their tables! No more shall the proud workers here be subjected to the oppressive tolls and tributes of ruthless brigands! We are here, and we will remain! Glory to the CCOR!"`
+			`	You end up being dragged into the celebration for a few hours, and the Chief Secretary himself even comes to address the independent captains, including you, who assisted in the battle. Once the event is dying down, a CCOR official approaches you, and hands you a credit chip worth <payment>. "In the name of the CCOR, I thank you for your valor, Captain <last>!" He salutes, and leaves you to return to your ship.`
+
+mission "CCOR: Belenos Reclaimed"
+	landing
+	name "Reclaiming Belenos"
+	description "Head to <system> and aid the CCOR forces in fighting the Pirates there, to liberate the system from Pirate forces."
+	to offer
+		has "CCOR: Alpherg Reclaimed: done"
+		"ccor jobs" >= 65
+		"combat rating" > 2000
+	source "Alvorada"
+	destination "Gagarin"
+	on offer
+		conversation
+			`Right as you step down from the <ship>, you find a CCOR official in a pristine uniform greeting you, flanked by a trio of armed gendarme.`
+			`	"Captain <last>, greetings!" He extends his hand, and you shake it. "I am Nils Pena, Secretary of Defense of the CCOR." He adjusts his uniform. "I'll be brief, captain - the Politburo has been hard at work to prepare for our final offensive against the Pirates in <system>, and I have been instructed to find volunteer captains to not only bolster our fleets, but also to lead the offensive against the outlaws. "`
+			choice
+				`	"Of course, I'd be glad to assist your cause."`
+					goto accept
+				`	"Lead the offensive? Wouldn't it be better for someone from the Red Navy to do that?"`
+				`	"I'm sorry, but I'm not interested in getting involved with any more CCOR affairs."`
+					decline
+			`	His face sours. "That was my protest to the Politburo as well, but for all the support we have received from independent captains and the populace alike, we are still stretched very thin... The Pirates haven't taken kindly to our revival, and have been hammering hard against our corner of the Rim to try and snuff us out for good."`
+			`	Nils sighs, then reaches in his pocket for a cigarette and lighter. "Admirals Silva and Morales are blockading the Thuban system, so that no Pirate reinforcements trickle in and reinforce their position in <system>. On the other hand, Admiral Bras Bernard is leading the vanguard fleet tasked with drawing out the pirate forces from <planet>, so that this second fleet can reinforce his own and crush the criminals." He considers your ship, and all others docked here for a moment. "In addition, the Politburo has deemed it positive if a civilian captain leads this fleet, as it would be a show that the CCOR is an army for - and by - the people. So, what say you, Captain? Would you be our Admiral of the people?"`
+			label accept
+			choice
+				`	"That makes sense. Alright, I'd love to assist your cause!"`
+				`	"I'm sorry, but I'm not interested in getting involved with any more CCOR affairs."`
+					decline
+			`	Nils smiles brightly, and takes your hand in his again. "Thank you, Captain <last>! You will be handsomely rewarded once we are victorious, trust me!"`
+			`	He beckons you to follow him and the guards deep into restricted areas of the asteroid fortress of the CCOR, leading you to a war room. Several Red Navy veterans are there, and greet you with a mix of emotions. Nils briefs you all extensively on the battle plans, including the estimated fleet strength of the Pirates, and how much resistance you can expect on the ground as well, after the battle is over in space.`
+			`	Once everyone is clear on the plan, you are guided back to your ship, and the Red Navy captains signal to your ship that they are ready to follow your lead to <system>.`
+				accept
+	npc kill
+		government "Pirate"
+		personality heroic staying vindictive target
+		system "Belenos"
+		fleet "Large Southern Pirates" 9
+		fleet "Small Southern Pirates" 13
+		dialog `The Pirates have been destroyed. You should land on Gagarin to join the planetside CCOR forces.`
+	npc
+		government "CCOR"
+		personality heroic staying
+		system "Belenos"
+		fleet "CCOR Red Navy" 4
+		fleet "Large CCOR (CCOR)" 3
+		fleet "Small CCOR (CCOR)" 3
+	npc
+		government "CCOR"
+		personality escort heroic
+		fleet "CCOR Red Navy" 5
+		fleet "Small CCOR (CCOR)" 4
+	on complete
+		payment 900000
+		event "ccor belenos reclaimed"
+		conversation
+			`While you and the CCOR Red Navy forces have claimed victory in the space battle, the planetside conflict for <planet> lasts for many hours more. The fighting is still ongoing by the time Secretary of Defense Nils Pena arrives in his own ship, and he begins directing you and the other forces to help prevent any more Pirate warships from departing and forming a counterattack.`
+			`	A regiment of gendarme finally manages to breach the last major Pirate stronghold in the principal spaceport of <planet> shortly before midnight, with the Red Navy command claiming victory in <system>. Despite that, many warships remain in high alert and patrol the planet in search of any more hiding Pirate warlords.`
+			`	When you finally manage to touch down the <ship> on the spaceport, you and the other captains, volunteers and Red Navy officers alike, are welcomed with applause and cheers, from the various gendarme personnel, Politburo representatives, and from the ever growing crowds of civilians.`
+			`	You all make your way through the masses, and are directed to a large auditorium. Most of the Politburo take their seats on the stage, while you and the other captains join members of local media outlets, professors, factory owners and other influential figures of <planet> in the audience.`
+			`	Pedro Varga takes the stage, wiping tears from his eyes as he begins. "Victory!" He raises his arms in a "V", to cheers of the audience. "Brothers and sisters! Colleagues of the Politburo! Friends, one and all! We have achieved victory! Over those who would silence us! Over those who would drown the people and their voice - we have prevailed!" The crowd goes wild in celebration, and even the usually composed Politburo members are ecstatic. "For the people cannot be silenced, and the revolutionary spirit cannot be drowned! For generations the Confederated Councils stood, and could all that tradition, all that history, all those accomplishments be erased by petty criminal bands and the wretched cartels of organized crime?" He scoffs, and the crowd yells back that "No! Never." Varga continues. "Stand proud, my countrymen! Our ancestors and great founders no doubt were with us this day, and together, we shall continue to improve our great nation, and make it a beacon of progress and civilization in the galaxy!" He salutes again, and the crowd applauds for well over a minute.`
+			`	Once the Chief Secretary is finished, the Marshall of the Revolutionary People's Army and Red Navy Fleet Admiral give their own heartfelt speeches about the sacrifices their troops made this day, and praise the people of the CCOR for their unwavering loyalty and resilience even in the face of hostile, depraved occupiers.`
+			`	To close off the night, the Politburo officers all salute in unison, raising their arms in the signature "V" of the CCOR, and yell along with the huge crowd in the auditorium: "Glory to the CCOR!"`
+			`	After over an hour of making your way out through the crowds, you finally reach the <ship> just before sunrise. Once there, you find you have been awarded <payment> by the CCOR for your assistance during the battle. Now that they have reclaimed all their lost territory, the news rippling through the rest of human space speculate on what this could mean for the galactic power balance, and how this may inspire further revolutions - or maybe just give the humiliated Pirate warlords more fuel to come back and finish off the CCOR for good, once they are done licking their wounds from these battles.`
+			`	Whatever the case for the future, the CCOR has been fully reestablished for now, and you will be able to look back on your participation in the efforts to do so.`
+
+mission "CCOR: Five Year Plan"
+	landing
+	to offer
+		has "CCOR: Belenos Reclaimed: done"
+		"ccor jobs" >= 80
+	source
+		near "Alpherg" 5 100
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent"
+	on offer
+		event "ccor mendez station reformed" 223 378
+		event "ccor bailey outfitter finished" 412 693
+		conversation
+			`As you wait for your ship to be refuelled, you catch a news report commenting about a recent broadcast by the CCOR's Politburo.`
+			`	Secretary of Commerce Oriana Gomes in an interview has outlined the focus of the recently-established government's new five year plan, naming they will seek to improve the conditions of CCOR spaceports and provide better space travel conditions to stimulate interplanetary commerce and enterprise within the nation, and also to attract foreign merchant fleets to the Confederated Councils.`
+			`	"The brave men and women of our Red Navy have been dutifully ridding our systems of Pirate activity ever since we fully reestablished ourselves, so I invite any and all independent traders to come and visit what our market has to offer." She states.`
+			`	Among the goals listed by the CCOR is the reform of Mendez Station, the fuel refinery within the Alpherg system. Another point is the concept of an extensive factory module to the mobile spaceport of Bailey, to allow the planet to produce equipment and even spaceship outfits.`
+				decline
+
+mission "CCOR: Mendez Station Reformed"
+	landing
+	to offer
+		has "event: ccor mendez station reformed"
+	source
+		near "Alpherg" 5 100
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent"
+	on offer
+		conversation
+			`On the news, political analysts and commentators are all talking about the CCOR's most recent achievement - the reform of Mendez Station.`
+			`	An old deuterium refinery, the station has been given a complete overhaul with regards to its hull plating, receiving an extra outer layer of state-of-the-art heat-resistant hull.`
+			`	In addition, the Politburo has proudly announced the station now also features a spaceport, allowing visitting ships to be serviced with freshly collected hyperspace fuel.`
+				decline
+
+mission "CCOR: Bailey Outfitter Finished"
+	landing
+	to offer
+		has "event: ccor bailey outfitter finished"
+	source
+		near "Citadelle" 5 100
+		government "Republic" "Syndicate" "Free Worlds" "Pirate" "Independent"
+	on offer
+		conversation
+			`Some commerce and industry experts are discussing on the news about the recent inauguration of the galaxy's first "reassembly-capable" outfitter, on the tidally locked world of Bailey, by the CCOR government.`
+			`	The outfitter is constructed much like the rest of the spaceport of the world, meaning several self-propelling modules that can link together when not in motion, forming a stable platform that rises far above the barren world's surface.`
+			`	While the outfitter has been getting most of the attention, this most recent project by the CCOR actually includes many more factory buildings that produce all sorts of goods, which the analysts estimate will cause a new flux of workers to Bailey to try and establish themselves on the new opportunities that have opened up.`
+				decline
+	
