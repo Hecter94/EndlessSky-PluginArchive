@@ -1,16 +1,16 @@
 
-All Plugins (616)
+All Plugins (623)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (54)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (55)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Gameplay
 
-<p>57 plugins in this category.<p>
+<p>61 plugins in this category.<p>
 
 
  
@@ -745,6 +745,90 @@ N/A[]()  <br>
 
 Status: N/A <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### EvenLowerDamage
+
+
+[EvenLowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EvenLowerDamage.zip) | 8.26 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EvenLowerDamage/) <br>
+Author: Arachi | Category: Gameplay <br>
+[https://github.com/Arachi-Lover/EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage) (last commit 2026-04-20) <br>
+
+>More extreme version of LowerDamage, which rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># EvenLowerDamage
+
+This plugin is a more extreme version of [LowerDamage](https://github.com/Arachi-Lover/LowerDamage), which rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat (though this plugin may be used on its own just as well).
+
+The idea was to multiply the damage of every weapon in the game by a decimal factor, in order to make combat feel slower, with ships lasting longer and regeneration mattering more.
+
+These multipliers would apply only to damage values that affect shields and hull, be that per shot/hit or over time, as a means to also give more value to the status effect damage types. Thus, the affected damage types are:
+
+- shield
+- hull
+- discharge
+- corrosion
+
+Spacefaring creatures such as the Void Sprite and Subsidurial were not affected.
+
+Below are the multiplier values across Tiers, and some notes specific to some outfits/groups.
+
+```
+T1 and below
+	* 0.7 damage
+	(The Nuclear Missile remains unchanged, as it should continue to pose a very credible threat to human ships over the campaign, and by consequence of all other weapons being weaker, would also become a more considerable reward for picking the Checkmate branch)
+	(Of the Sheragi, only the Dragonflame Cannon was altered, as the turrets aren't particularly great as is, and also owing to the unique nature of the reward-ship and its Fighters)
+T1.5
+	* 0.75 damage
+T2
+	* 0.8 damage
+T2.5
+	* 0.85 damage
+	(The MCS Extractor was spared for it already is terrible at dealing damage)
+T3
+	* 0.9 damage
+T4
+	* 0.6 damage
+	(Only the Drak Augmented weapons were affected)
+```
+
+**EvenLowerDamage** then goes a step further, and slices all of those damage values by 2, so in practice:
+
+```
+T1 and below
+	* 0.35 damage
+T1.5
+	* 0.375 damage
+T2
+	* 0.4 damage
+T2.5
+	* 0.425 damage
+T3
+	* 0.45 damage
+T4
+	* 0.3 damage
+```
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
@@ -1612,6 +1696,125 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 
 ---
 
+### LinearHPScaling
+
+
+[LinearHPScaling.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LinearHPScaling.zip) | 3.46 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LinearHPScaling/) <br>
+Author: Arachi | Category: Gameplay <br>
+[https://github.com/Arachi-Lover/LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling) (last commit 2026-04-20) <br>
+
+>Rescales the Shield and Hull HP of most ships in the game, using the T1 human ships as a basis, and trying to scale HP linearly across Tiers.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># LinearHPScaling
+
+This plugin rescales the Shield and Hull HP of most ships in the game, using the T1 human ships as a basis, and trying to scale HP linearly across Tiers.
+
+The basic idea is that a T2 HW would now have around 2x the HP of a T1 HW. This is not always followed perfectly, as this plugin also aimed at trying to keep important match-ups roughly equal to vanilla HP values (for instance, Wanderers vs the Automata, Mereti vs Sestor, Heliarch vs Quarg), but regardless higher Tier ships have their HP cut significantly.
+
+With the difference in HP reduced, earlier ships, such as human ones, have more of a chance against higher Tier ships, meaning their usefulness is extended into later in the game should one still want to play with human ships at later points.
+
+Spacefaring creatures such as the Void Sprite and Subsidurial were not affected.
+
+Below are some before and after comparisons of HP
+
+| Ship | Previous Shields | New Shields | Previous Hull | New Hull | Previous Total | New Total|
+|------|------------------|-------------|---------------|----------|----------------|----------|
+| Derecho | 53200 | 33300 | 32700 | 16500 | 85900 | 49800 |
+| Hurricane | 72400 | 38700 | 46500 | 22300 | 118900 | 61000 |
+| Model 512 | 86400 | 42100 | 34200 | 17900 | 120600 | 60000 |
+| Kar Ik Vot 349 | 57200 | 29900 | 65400 | 34800 | 122600 | 64700 |
+| Heliarch Punisher | 108000 | 39300 | 85000 | 28200 | 193000 | 67500 |
+| Quarg Hydra | 310000 | 99000 | 80000 | 29000 | 390000 | 128000 |
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### LowerDamage
+
+
+[LowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LowerDamage.zip) | 7.72 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LowerDamage/) <br>
+Author: Arachi | Category: Gameplay <br>
+[https://github.com/Arachi-Lover/LowerDamage](https://github.com/Arachi-Lover/LowerDamage) (last commit 2026-04-20) <br>
+
+>Rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># LowerDamage
+
+This plugin rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat (though this plugin may be used on its own just as well).
+
+The idea was to multiply the damage of every weapon in the game by a decimal factor, in order to make combat feel slower, with ships lasting longer and regeneration mattering more.
+
+These multipliers would apply only to damage values that affect shields and hull, be that per shot/hit or over time, as a means to also give more value to the status effect damage types. Thus, the affected damage types are:
+
+- shield
+- hull
+- discharge
+- corrosion
+
+Spacefaring creatures such as the Void Sprite and Subsidurial were not affected.
+
+Below are the multiplier values across Tiers, and some notes specific to some outfits/groups.
+
+```
+T1 and below
+	* 0.7 damage
+	(The Nuclear Missile remains unchanged, as it should continue to pose a very credible threat to human ships over the campaign, and by consequence of all other weapons being weaker, would also become a more considerable reward for picking the Checkmate branch)
+	(Of the Sheragi, only the Dragonflame Cannon was altered, as the turrets aren't particularly great as is, and also owing to the unique nature of the reward-ship and its Fighters)
+T1.5
+	* 0.75 damage
+T2
+	* 0.8 damage
+T2.5
+	* 0.85 damage
+	(The MCS Extractor was spared for it already is terrible at dealing damage)
+T3
+	* 0.9 damage
+T4
+	* 0.6 damage
+	(Only the Drak Augmented weapons were affected)
+```
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
 ### Mass-ive Fix
 <img src='../../Working/Mass-ive Fix/icon.png' height='100'></img><br>
 
@@ -2037,6 +2240,43 @@ N/A[]()  <br>
 
 Status: Playable on 0.9.14, 0.9.15 Continuous. <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### PirateVariantsHPFix
+
+
+[PirateVariantsHPFix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PirateVariantsHPFix.zip) | 1.05 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PirateVariantsHPFix/) <br>
+Author: Arachi | Category: Gameplay <br>
+[https://github.com/Arachi-Lover/PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix) (last commit 2026-04-20) <br>
+
+>Buffs the HP of Pirate variants of ships (Bulwark etc), so that they have the most shield/hull HP values used by either variant (e.g. max of Bulwark and Bastion).
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># PirateVariantsHPFix
+
+This plugin modifies the HP of Pirate variants of ships (Bulwark to the Bastion, Mammoth to the Behemoth, Valkyrie to the Aerie), so that they have the most shield/hull HP values used by either variant.
+
+So, basically buffs them. Because I think that works better since they're (so far) unique ships, and if that changes they'd be rare anyhow. Also because hull HP is worth less than shield HP so they kinda get scammed by the tradeoff.
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---

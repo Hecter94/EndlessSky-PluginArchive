@@ -1,16 +1,16 @@
 
-All Plugins (616)
+All Plugins (623)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (54)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (55)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Outfits
 
-<p>54 plugins in this category.<p>
+<p>55 plugins in this category.<p>
 
 
  
@@ -1311,6 +1311,48 @@ Hidden Outfits:
 </details>
 
 Status: N/A <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### SmolEngines
+<img src='../../Working/SmolEngines/icon.png' height='100'></img><br>
+
+
+[SmolEngines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SmolEngines.zip) | 256.9 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/SmolEngines/) <br>
+Author: Arachi | Category: Outfits <br>
+[https://github.com/Arachi-Lover/SmolEngines](https://github.com/Arachi-Lover/SmolEngines) (last commit 2026-04-20) <br>
+
+>Adds plasma and atomic engines, complementing the ion one.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># SmolEngines
+
+You know what really grinds my gears?
+
+Carrier ships and the ships they carry not sharing the same style of engines, especially due to the engine flares.
+
+So I made 2 tiny engines similar to the Ion one the Barb uses, for Plasma and Atomics. Both become available 100 days after `event: southern carriers 2`.
+
+Thumbnails courtesy of Kitteh, thanks!
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 

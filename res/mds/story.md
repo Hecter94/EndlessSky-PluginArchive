@@ -1,16 +1,16 @@
 
-All Plugins (616)
+All Plugins (623)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (57) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (54)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (55)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (81) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Story
 
-<p>81 plugins in this category.<p>
+<p>83 plugins in this category.<p>
 
 
  
@@ -1212,6 +1212,48 @@ initial release<br>
 
 
 
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Glory to the CCOR
+<img src='../../Working/Glory to the CCOR/icon.png' height='100'></img><br>
+
+
+[Glory.to.the.CCOR.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Glory.to.the.CCOR.zip) | 42.16 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Glory%20to%20the%20CCOR/) <br>
+Author: Arachi | Category: Story <br>
+[https://github.com/Arachi-Lover/Glory-to-the-CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR) (last commit 2026-06-09) <br>
+
+>Help the Politburo reconquer their lost territory, and establish the glorious CCOR as a sovereign power once again.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># Glory to the CCOR
+
+Greetings, revolutionary Captain!
+
+Ferry in volunteer recruits, transport supply donations, and combat the wretched Pirates that have occupied the worlds of the Confederated Councils of the Outer Rim.
+
+Help the Politburo reconquer their lost territory, and establish this great nation as a sovereign power once again.
+
+**Glory to the CCOR!**
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
 
 </blockquote>
 </details>
@@ -2430,6 +2472,45 @@ N/A[]()  <br>
 
 Status: Playable on 0.9.14, 0.9.15 Continuous. <br>
 Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+
+
+---
+
+### RacingFlivverModifications
+
+
+[RacingFlivverModifications.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RacingFlivverModifications.zip) | 7.01 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RacingFlivverModifications/) <br>
+Author: Arachi | Category: Story <br>
+[https://github.com/Arachi-Lover/RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications) (last commit 2026-04-20) <br>
+
+>Short expansion to the story of Artemis Renard, the Flivver racer from Glory that the player rescues.
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote># RacingFlivverModifications
+
+This plugin gives a short expansion to the story of Artemis Renard, the Flivver racer from Glory that the player rescues.
+
+Upon revisitting Glory sometime after the , Artemis will contact the player, and tell them about how she's spoken with her contacts in the industry and vouched for the player to receive several custom modifications for the Racing Flivver.
+
+Requires acquiring the Racing Flivver *after* having this plugin active, as the modifications necessitate an attribute to be added to the ship model (or you can just save edit it into the ship in your save file).
+
+#### Arachi's Plugins
+
+[LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling)
+[LowerDamage](https://github.com/Arachi-Lover/LowerDamage)
+[EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage)
+[RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications)
+[SmolEngines](https://github.com/Arachi-Lover/SmolEngines)
+[PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix)
+[Glory to the CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR)
+
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
