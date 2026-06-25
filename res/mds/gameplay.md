@@ -752,9 +752,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### EvenLowerDamage
 
 
-[EvenLowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EvenLowerDamage.zip) | 8.26 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EvenLowerDamage/) <br>
+[EvenLowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/EvenLowerDamage.zip) | 8.26 kb | 2026-06-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/EvenLowerDamage/) <br>
 Author: Arachi | Category: Gameplay <br>
-[https://github.com/Arachi-Lover/EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/EvenLowerDamage](https://github.com/Arachi-Lover/EvenLowerDamage) (last commit 2026-06-24) <br>
 
 >More extreme version of LowerDamage, which rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat.
 >
@@ -1699,9 +1699,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### LinearHPScaling
 
 
-[LinearHPScaling.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LinearHPScaling.zip) | 3.46 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LinearHPScaling/) <br>
+[LinearHPScaling.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LinearHPScaling.zip) | 3.46 kb | 2026-06-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LinearHPScaling/) <br>
 Author: Arachi | Category: Gameplay <br>
-[https://github.com/Arachi-Lover/LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/LinearHPScaling](https://github.com/Arachi-Lover/LinearHPScaling) (last commit 2026-06-24) <br>
 
 >Rescales the Shield and Hull HP of most ships in the game, using the T1 human ships as a basis, and trying to scale HP linearly across Tiers.
 >
@@ -1751,9 +1751,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 ### LowerDamage
 
 
-[LowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LowerDamage.zip) | 7.72 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LowerDamage/) <br>
+[LowerDamage.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/LowerDamage.zip) | 7.72 kb | 2026-06-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/LowerDamage/) <br>
 Author: Arachi | Category: Gameplay <br>
-[https://github.com/Arachi-Lover/LowerDamage](https://github.com/Arachi-Lover/LowerDamage) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/LowerDamage](https://github.com/Arachi-Lover/LowerDamage) (last commit 2026-06-24) <br>
 
 >Rescales the damage of weapons throughout Endless Sky in order to make the game's combat slower, and also aid in making ships affected by LinearHPScaling last longer in combat.
 >
